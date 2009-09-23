@@ -21,7 +21,6 @@ package org.op4j.operation;
 
 import java.util.List;
 
-import org.op4j.op.operators.Iter0IterableListOperator;
 import org.op4j.type.Type;
 import org.op4j.util.TypeAggregationUtils;
 

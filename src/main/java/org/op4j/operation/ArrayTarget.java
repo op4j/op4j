@@ -19,7 +19,6 @@
  */
 package org.op4j.operation;
 
-import org.op4j.op.operators.Iter0IterableArrayOperator;
 import org.op4j.type.Type;
 import org.op4j.util.TypeAggregationUtils;
 

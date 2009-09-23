@@ -19,7 +19,6 @@
  */
 package org.op4j.objectscheme;
 
-import org.op4j.operation.CastParam;
 import org.op4j.type.Type;
 
 /**

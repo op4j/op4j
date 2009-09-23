@@ -25,7 +25,6 @@ import java.io.Serializable;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.Validate;
 import org.apache.commons.lang.text.StrBuilder;
-import org.op4j.type.Type;
 
 /**
  * <p>
