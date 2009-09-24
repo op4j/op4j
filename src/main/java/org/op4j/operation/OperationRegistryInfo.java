@@ -38,26 +38,26 @@ final class OperationRegistryInfo {
     
     private final String operationName;
     private final TypeScheme resultTypeScheme;
-    private final Map<String, Set<ArgumentsTypeScheme>> matchedArgumentTypeSchemeSetsByOperationDefClassName;
+    private final Map<String, Set<ArgumentsTypeScheme>> matchedArgumentTypeSchemeSetsByOperationImplClassName;
     private final Set<Set<ArgumentsTypeScheme>> matchedArgumentTypeSchemeSets;
     
     
     OperationRegistryInfo(final String operationName, final TypeScheme resultTypeScheme) {
         this.operationName = operationName;
         this.resultTypeScheme = resultTypeScheme;
-        this.matchedArgumentTypeSchemeSetsByOperationDefClassName = 
+        this.matchedArgumentTypeSchemeSetsByOperationImplClassName = 
             new HashMap<String,Set<ArgumentsTypeScheme>>();
         this.matchedArgumentTypeSchemeSets = new HashSet<Set<ArgumentsTypeScheme>>();
     }
     
     
-    void addMatchedArgumentTypeSchemes(final String operationDefClassName, 
+    void addMatchedArgumentTypeSchemes(final String operationImplClassName, 
             final Set<ArgumentsTypeScheme> argumentTypeSchemes) {
         final Set<ArgumentsTypeScheme> valueSet =
             Collections.unmodifiableSet(
                     new HashSet<ArgumentsTypeScheme>(argumentTypeSchemes));
-        this.matchedArgumentTypeSchemeSetsByOperationDefClassName.put(
-                operationDefClassName, valueSet);
+        this.matchedArgumentTypeSchemeSetsByOperationImplClassName.put(
+                operationImplClassName, valueSet);
         this.matchedArgumentTypeSchemeSets.add(valueSet);
     }
     
@@ -72,8 +72,8 @@ final class OperationRegistryInfo {
     }
 
     
-    Map<String,Set<ArgumentsTypeScheme>> getMatchedArgumentTypeSchemeSetsByOperationDefClassName() {
-        return Collections.unmodifiableMap(this.matchedArgumentTypeSchemeSetsByOperationDefClassName);
+    Map<String,Set<ArgumentsTypeScheme>> getMatchedArgumentTypeSchemeSetsByOperationImplClassName() {
+        return Collections.unmodifiableMap(this.matchedArgumentTypeSchemeSetsByOperationImplClassName);
     }
     
     Set<Set<ArgumentsTypeScheme>> getMatchedArgumentTypeSchemeSets() {

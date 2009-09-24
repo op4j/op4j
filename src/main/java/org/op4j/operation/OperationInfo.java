@@ -38,7 +38,7 @@ public final class OperationInfo {
     
     private final String operationName;
     private final TypeScheme resultTypeScheme;
-    private final Map<String,Set<ArgumentsTypeScheme>> matchedArgumentTypeSchemeSetsByOperationDefClassName;
+    private final Map<String,Set<ArgumentsTypeScheme>> matchedArgumentTypeSchemeSetsByOperationImplClassName;
     private final Set<ArgumentsTypeScheme> matchedArgumentTypeSchemeAggregateSet;
     
     
@@ -46,13 +46,13 @@ public final class OperationInfo {
         
         this.operationName = operationRegistryInfo.getOperationName();
         this.resultTypeScheme = operationRegistryInfo.getResultTypeScheme();
-        this.matchedArgumentTypeSchemeSetsByOperationDefClassName = 
+        this.matchedArgumentTypeSchemeSetsByOperationImplClassName = 
             Collections.unmodifiableMap(
-                    operationRegistryInfo.getMatchedArgumentTypeSchemeSetsByOperationDefClassName());
+                    operationRegistryInfo.getMatchedArgumentTypeSchemeSetsByOperationImplClassName());
         
         final Set<ArgumentsTypeScheme> tempMatchedArgumentTypeSchemeAggregateSet = new HashSet<ArgumentsTypeScheme>();
         for (Set<ArgumentsTypeScheme> typeSchemesSet : 
-                this.matchedArgumentTypeSchemeSetsByOperationDefClassName.values()) {
+                this.matchedArgumentTypeSchemeSetsByOperationImplClassName.values()) {
             tempMatchedArgumentTypeSchemeAggregateSet.addAll(typeSchemesSet);
         }
         this.matchedArgumentTypeSchemeAggregateSet =
@@ -70,14 +70,14 @@ public final class OperationInfo {
     }
 
     
-    public Set<ArgumentsTypeScheme> getMatchedArgumentTypeSchemeSetByOperationDefClassName(final String className) {
+    public Set<ArgumentsTypeScheme> getMatchedArgumentTypeSchemeSetByOperationImplClassName(final String className) {
         Validate.notNull(className, "Class name cannot be null");
-        return this.matchedArgumentTypeSchemeSetsByOperationDefClassName.get(className);
+        return this.matchedArgumentTypeSchemeSetsByOperationImplClassName.get(className);
     }
 
     
-    public Map<String,Set<ArgumentsTypeScheme>> getMatchedArgumentTypeSchemeSetsByOperationDefClassName() {
-        return this.matchedArgumentTypeSchemeSetsByOperationDefClassName;
+    public Map<String,Set<ArgumentsTypeScheme>> getMatchedArgumentTypeSchemeSetsByOperationImplClassName() {
+        return this.matchedArgumentTypeSchemeSetsByOperationImplClassName;
     }
 
     
