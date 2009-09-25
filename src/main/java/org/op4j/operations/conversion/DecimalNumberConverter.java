@@ -47,12 +47,12 @@ public abstract class DecimalNumberConverter extends NumberConverter {
 	private static final long serialVersionUID = -4692290976744290222L;
 	
 	
-	private static final TypeScheme PTS_INTEGER_ROUNDINGMODE = TypeSchemes.forName("Integer, java.math.RoundingMode");
-    private static final TypeScheme PTS_INTEGER_ROUNDINGMODE_LOCALE = TypeSchemes.forName("Integer, java.math.RoundingMode, Locale");
-    private static final TypeScheme PTS_INTEGER_ROUNDINGMODE_STRINGLOCALE = TypeSchemes.forName("Integer, java.math.RoundingMode, String");
-    private static final TypeScheme PTS_INTEGER_ROUNDINGMODE_DECIMALISCOMMA = TypeSchemes.forName("Integer, java.math.RoundingMode, 'DECIMAL_IS_COMMA'");
-    private static final TypeScheme PTS_INTEGER_ROUNDINGMODE_DECIMALISPOINT = TypeSchemes.forName("Integer, java.math.RoundingMode, 'DECIMAL_IS_POINT'");
-    private static final TypeScheme PTS_INTEGER_ROUNDINGMODE_DECIMALCANBEPOINTORCOMMA = TypeSchemes.forName("Integer, java.math.RoundingMode, 'DECIMAL_CAN_BE_POINT_OR_COMMA'");
+	private static final TypeScheme PTS_INTEGER_ROUNDINGMODE = TypeSchemes.forName("Integer scale, java.math.RoundingMode roundingMode");
+    private static final TypeScheme PTS_INTEGER_ROUNDINGMODE_LOCALE = TypeSchemes.forName("Integer scale, java.math.RoundingMode roundingMode, Locale");
+    private static final TypeScheme PTS_INTEGER_ROUNDINGMODE_STRINGLOCALE = TypeSchemes.forName("Integer scale, java.math.RoundingMode roundingMode, String");
+    private static final TypeScheme PTS_INTEGER_ROUNDINGMODE_DECIMALISCOMMA = TypeSchemes.forName("Integer scale, java.math.RoundingMode roundingMode, 'DECIMAL_IS_COMMA'");
+    private static final TypeScheme PTS_INTEGER_ROUNDINGMODE_DECIMALISPOINT = TypeSchemes.forName("Integer scale, java.math.RoundingMode roundingMode, 'DECIMAL_IS_POINT'");
+    private static final TypeScheme PTS_INTEGER_ROUNDINGMODE_DECIMALCANBEPOINTORCOMMA = TypeSchemes.forName("Integer scale, java.math.RoundingMode roundingMode, 'DECIMAL_CAN_BE_POINT_OR_COMMA'");
     
 
     private static final ArgumentsTypeScheme ATS_NUMBER_SCALE_ROUNDINGMODE = 

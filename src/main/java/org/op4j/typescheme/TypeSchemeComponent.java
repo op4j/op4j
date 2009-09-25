@@ -45,23 +45,30 @@ public final class TypeSchemeComponent implements Serializable {
     
     private final Type type;
     private final String literal;
+    private final String name;
 
     private final String stringRepresentation;
     private final int hashCode; 
 
     
     TypeSchemeComponent(final Type type) {
+        this(type, null);
+    }
+    
+    TypeSchemeComponent(final Type type, final String name) {
         super();
         this.type = type;
+        this.name = name;
         this.literal = null;
         this.stringRepresentation = 
-            TypeSchemeUtil.createTypeComponentStringRepresentation(type);
+            TypeSchemeUtil.createTypeComponentStringRepresentation(type, name);
         this.hashCode = this.stringRepresentation.hashCode();
     }
     
     TypeSchemeComponent(final String literal) {
         super();
         this.type = null;
+        this.name = null; 
         this.literal = literal;
         this.stringRepresentation = 
             TypeSchemeUtil.createLiteralComponentStringRepresentation(literal);
@@ -80,6 +87,19 @@ public final class TypeSchemeComponent implements Serializable {
      */
     public Type getType() {
         return this.type;
+    }
+    
+    
+    /**
+     * <p>
+     * Returns the name associated to this component, or null
+     * if the component contains a literal.
+     * </p>
+     * 
+     * @return the name
+     */
+    public String getName() {
+        return this.name;
     }
     
 
@@ -109,9 +129,21 @@ public final class TypeSchemeComponent implements Serializable {
     }
 
 
+    /**
+     * <p>
+     * Returns the string representation of this component. Example: "java.lang.Integer number" or "java.lang.String"
+     * </p>
+     * 
+     * @return the string representation
+     */
+    public String getStringRepresentation() {
+        return this.stringRepresentation;
+    }
+
+
     @Override
     public String toString() {
-        return this.stringRepresentation;
+        return getStringRepresentation();
     }
 
     

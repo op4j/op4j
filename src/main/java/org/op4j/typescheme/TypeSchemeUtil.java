@@ -76,8 +76,19 @@ final class TypeSchemeUtil {
                     
                 } else {
                     
-                    typeSchemeComponents[i] = 
-                        new TypeSchemeComponent(Types.forName(tokens[i]));
+                    final String[] tokenParts = StringUtils.split(tokens[i], " ");
+                    switch (tokenParts.length) {
+                        case 1:  
+                            // no name specified for the component
+                            typeSchemeComponents[i] = new TypeSchemeComponent(Types.forName(tokenParts[0]));
+                            break;
+                        case 2:
+                            // a name was specified for the component
+                            typeSchemeComponents[i] = new TypeSchemeComponent(Types.forName(tokenParts[0]), tokenParts[1]);
+                            break;
+                        default:
+                            throw new TypeSchemeRecognitionException(typeSchemeName);
+                    }
                     
                 }
                 
@@ -228,15 +239,15 @@ final class TypeSchemeUtil {
             if (i > 0) {
                 strBuilder.append(TypeSchemeNaming.TYPE_SCHEME_NAME_SEPARATOR_SYMBOL);
             }
-            strBuilder.append(typeSchemeComponents[i].toString()); 
+            strBuilder.append(typeSchemeComponents[i].getStringRepresentation()); 
         }
         return strBuilder.toString();
     }
 
     
     
-    final static String createTypeComponentStringRepresentation(final Type type) {
-        return type.getName();
+    final static String createTypeComponentStringRepresentation(final Type type, final String componentName) {
+        return type.getName() + (StringUtils.isEmpty(componentName)? "" : " " + componentName);
     }
 
     
