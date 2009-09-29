@@ -64,9 +64,9 @@ public interface IterableListOperator<T>
     public IterableListOperator<?> eachCall(final String methodName, final Object... parameters);
     public <X> IterableListOperator<X> eachCall(final Class<X> returnClass, final String methodName, final Object... parameters);
 
-    public IterableListOperator<?> eachExecUniq(
+    public IterableListOperator<?> eachExec(
             final String operationName, final Object... parameters);
-    public <X> IterableListOperator<X> eachExecUniq(
+    public <X> IterableListOperator<X> eachExec(
             final Class<X> resultClass, final String operationName, final Object... parameters);
     
     public IterableListOperator<?> eachTo(

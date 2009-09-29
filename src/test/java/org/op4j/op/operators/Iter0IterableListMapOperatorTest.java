@@ -60,25 +60,25 @@ public class Iter0IterableListMapOperatorTest extends TestCase {
 		super.tearDown();
 	}
 
-	public final void testEachExecUniqValueStringObjectArray() {
+	public final void testEachValueExecStringObjectArray() {
 		assertEquals("Dummy operation result: 1",
-				this.integerCalendarListOperator.eachExecUniqValue(DummyOperationOnOneOrTwoTargets.OPERATION_NAME)
+				this.integerCalendarListOperator.eachValueExec(DummyOperationOnOneOrTwoTargets.OPERATION_NAME)
 				.get().get(this.keys.get(0)).get(0));
 		assertEquals(null,
-				this.integerCalendarListOperator.eachExecUniqValue(DummyOperationOnOneOrTwoTargets.OPERATION_NAME)
+				this.integerCalendarListOperator.eachValueExec(DummyOperationOnOneOrTwoTargets.OPERATION_NAME)
 				.getOperatorValueType());
 		
 	}
 
-	public final void testEachExecUniqValueClassOfXStringObjectArray() {
+	public final void testEachValueExecClassOfXStringObjectArray() {
 		assertEquals("Dummy operation result: 1",
-				this.integerCalendarListOperator.eachExecUniqValue(String.class, 
+				this.integerCalendarListOperator.eachValueExec(String.class, 
 						DummyOperationOnOneOrTwoTargets.OPERATION_NAME).get().get(this.keys.get(1)).get(0).toString());
 		
 		try {
-			this.integerCalendarListOperator.eachExecUniqValue(Integer.class, 
+			this.integerCalendarListOperator.eachValueExec(Integer.class, 
 					DummyOperationOnOneOrTwoTargets.OPERATION_NAME);
-			fail("integerStringListOperator.execUniq(Integer.class, ToJson.OPERATION_NAME) should have failed as it does not return an Integer but a String");
+			fail("integerStringListOperator.exec(Integer.class, ToJson.OPERATION_NAME) should have failed as it does not return an Integer but a String");
 		} catch (InvalidOperatorCastException e) {
 			// do nothing
 		}
@@ -194,7 +194,7 @@ public class Iter0IterableListMapOperatorTest extends TestCase {
 		
 		assertEquals(all, 
 				this.integerStringListOperator.eachListValue().exec(DummyOperationOnOneOrTwoTargets.OPERATION_NAME)
-			.uniq().uneachList().get());		
+			.uneachList().get());		
 	}
 
 	public final void testEachListEntry() {
@@ -348,7 +348,7 @@ public class Iter0IterableListMapOperatorTest extends TestCase {
 				.get(Integer.valueOf(10))));		
 	}
 
-	public final void testEachCallValueStringObjectArray() {
+	public final void testEachValueCallStringObjectArray() {
 		Calendar cal1 = Calendar.getInstance();
 		Calendar cal2 = Calendar.getInstance();
 		Calendar cal3 = Calendar.getInstance();
@@ -357,7 +357,7 @@ public class Iter0IterableListMapOperatorTest extends TestCase {
 				Integer.valueOf(10), cal1, 
 				Integer.valueOf(10), cal2,
 				Integer.valueOf(20), cal3).buildListMap(Integer.class, Calendar.class)
-				.eachCallValue("get", Calendar.MILLISECOND);
+				.eachValueCall("get", Calendar.MILLISECOND);
 		assertEquals(2, result.get().size());
 		assertTrue(Arrays.asList(new Integer[] {cal1.get(Calendar.MILLISECOND), cal2.get(Calendar.MILLISECOND)}).containsAll(result
 				.get()
@@ -365,7 +365,7 @@ public class Iter0IterableListMapOperatorTest extends TestCase {
 		assertEquals(TypeSchemes.forName("Map<Integer, List<?>>"), result.getTargetTypeScheme());
 	}
 
-	public final void testEachCallValueClassOfXStringObjectArray() {
+	public final void testEachValueCallClassOfXStringObjectArray() {
 		Calendar cal1 = Calendar.getInstance();
 		Calendar cal2 = Calendar.getInstance();
 		Calendar cal3 = Calendar.getInstance();
@@ -374,7 +374,7 @@ public class Iter0IterableListMapOperatorTest extends TestCase {
 				Integer.valueOf(10), cal1, 
 				Integer.valueOf(10), cal2,
 				Integer.valueOf(20), cal3).buildListMap(Integer.class, Calendar.class)
-				.eachCallValue(Integer.class, "get", Calendar.MILLISECOND);
+				.eachValueCall(Integer.class, "get", Calendar.MILLISECOND);
 		assertEquals(2, result.get().size());
 		assertTrue(Arrays.asList(new Integer[] {cal1.get(Calendar.MILLISECOND), cal2.get(Calendar.MILLISECOND)}).containsAll(result
 				.get()
@@ -382,7 +382,7 @@ public class Iter0IterableListMapOperatorTest extends TestCase {
 		assertEquals(TypeSchemes.forName("Map<Integer, List<Integer>>"), result.getTargetTypeScheme());
 	}	
 	
-	public final void testEachToValueStringObjectArray() {
+	public final void testEachValueToStringObjectArray() {
 		Calendar cal1 = Calendar.getInstance();
 		Calendar cal2 = Calendar.getInstance();
 		Calendar cal3 = Calendar.getInstance();
@@ -391,7 +391,7 @@ public class Iter0IterableListMapOperatorTest extends TestCase {
 				Integer.valueOf(10), cal1, 
 				Integer.valueOf(10), cal2,
 				Integer.valueOf(20), cal3).buildListMap(Integer.class, Calendar.class)
-				.eachToValue(Types.STRING.getName());
+				.eachValueTo(Types.STRING.getName());
 		assertEquals(2, result.get().size());
 		assertTrue(Arrays.asList(new String[] {cal1.toString(), cal2.toString()}).containsAll(result
 				.get()
@@ -401,7 +401,7 @@ public class Iter0IterableListMapOperatorTest extends TestCase {
 		
 	}
 	
-	public final void testEachToValueClassOfXObjectArray() {
+	public final void testEachValueToClassOfXObjectArray() {
 		Calendar cal1 = Calendar.getInstance();
 		Calendar cal2 = Calendar.getInstance();
 		Calendar cal3 = Calendar.getInstance();
@@ -410,7 +410,7 @@ public class Iter0IterableListMapOperatorTest extends TestCase {
 				Integer.valueOf(10), cal1, 
 				Integer.valueOf(10), cal2,
 				Integer.valueOf(20), cal3).buildListMap(Integer.class, Calendar.class)
-				.eachToValue(String.class);
+				.eachValueTo(String.class);
 		assertEquals(2, result.get().size());
 		assertTrue(Arrays.asList(new String[] {cal1.toString(), cal2.toString()}).containsAll(result
 				.get().get(Integer.valueOf(10))));	
@@ -419,7 +419,7 @@ public class Iter0IterableListMapOperatorTest extends TestCase {
 		
 	}
 	
-	public final void testEachToValueTypeObjectArray() {
+	public final void testEachValueToTypeObjectArray() {
 		Calendar cal1 = Calendar.getInstance();
 		Calendar cal2 = Calendar.getInstance();
 		Calendar cal3 = Calendar.getInstance();
@@ -428,7 +428,7 @@ public class Iter0IterableListMapOperatorTest extends TestCase {
 				Integer.valueOf(10), cal1, 
 				Integer.valueOf(10), cal2,
 				Integer.valueOf(20), cal3).buildListMap(Integer.class, Calendar.class)
-				.eachToValue(Types.STRING);
+				.eachValueTo(Types.STRING);
 		assertEquals(2, result.get().size());
 		assertTrue(Arrays.asList(new String[] {cal1.toString(), cal2.toString()}).containsAll(result
 				.get().get(Integer.valueOf(10))));	
@@ -438,14 +438,14 @@ public class Iter0IterableListMapOperatorTest extends TestCase {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public final void testEachEvalValueEvaluatorOfVObject() {
+	public final void testEachValueEvalEvaluatorOfVObject() {
 		Evaluator<Calendar, Object> evaluator = new Evaluator<Calendar, Object>() {
 			public Object evaluate(EvalContext<Calendar> ctx) {
 				return ctx.getTarget(0).toString();
 			}			
 		};
 		Map<Integer, List<Calendar>> originalMap = this.integerCalendarListOperator.get();
-		Map resultMap = this.integerCalendarListOperator.eachEvalValue(evaluator).get();
+		Map resultMap = this.integerCalendarListOperator.eachValueEval(evaluator).get();
 		for (Map.Entry entry : (Set<Map.Entry>) resultMap.entrySet()) {
 			List<Calendar> calendarList = originalMap.get(entry.getKey());
 			int index = 0;
@@ -455,22 +455,22 @@ public class Iter0IterableListMapOperatorTest extends TestCase {
 		}
 		
 		assertEquals(Types.INTEGER, this.integerCalendarListOperator
-				.eachEvalValue(evaluator).getOperatorKeyType());
+				.eachValueEval(evaluator).getOperatorKeyType());
 		assertEquals(null, this.integerCalendarListOperator
-				.eachEvalValue(evaluator).getOperatorValueType());
+				.eachValueEval(evaluator).getOperatorValueType());
 		assertEquals(TypeSchemes.forName("Map<Integer, List<?>>"), this.integerCalendarListOperator
-				.eachEvalValue(evaluator).getTargetTypeScheme());
+				.eachValueEval(evaluator).getTargetTypeScheme());
 		
 	}
 	
-	public final void testEachEvalValueClassOfXEvaluatorOfVX() {
+	public final void testEachValueEvalClassOfXEvaluatorOfVX() {
 		Evaluator<Calendar, String> evaluator = new Evaluator<Calendar, String>() {
 			public String evaluate(EvalContext<Calendar> ctx) {
 				return ctx.getTarget(0).toString();
 			}			
 		};
 		Map<Integer, List<Calendar>> originalMap = this.integerCalendarListOperator.get();
-		Map resultMap = this.integerCalendarListOperator.eachEvalValue(String.class, evaluator).get();
+		Map resultMap = this.integerCalendarListOperator.eachValueEval(String.class, evaluator).get();
 		for (Map.Entry entry : (Set<Map.Entry>) resultMap.entrySet()) {
 			List<Calendar> calendarList = this.integerCalendarListOperator.get().get(entry.getKey());
 			int index = 0;
@@ -480,17 +480,17 @@ public class Iter0IterableListMapOperatorTest extends TestCase {
 		}
 		
 		assertEquals(Types.INTEGER, this.integerCalendarListOperator
-				.eachEvalValue(String.class, evaluator).getOperatorKeyType());
+				.eachValueEval(String.class, evaluator).getOperatorKeyType());
 		assertEquals(Types.STRING, this.integerCalendarListOperator
-				.eachEvalValue(String.class, evaluator).getOperatorValueType());
+				.eachValueEval(String.class, evaluator).getOperatorValueType());
 		assertEquals(TypeSchemes.forName("Map<Integer, List<String>>"), this.integerCalendarListOperator
-				.eachEvalValue(String.class, evaluator).getTargetTypeScheme());
+				.eachValueEval(String.class, evaluator).getTargetTypeScheme());
 		
 	}
 	
-	public final void testEachEvalValueClassOfXStringObjectArray() {
+	public final void testEachValueEvalClassOfXStringObjectArray() {
 		Map<Integer, List<Calendar>> originalMap = this.integerCalendarListOperator.get();
-		Map<Integer, List<String>> resultMap = this.integerCalendarListOperator.eachEvalValue(String.class, "#target.toString()")
+		Map<Integer, List<String>> resultMap = this.integerCalendarListOperator.eachValueEval(String.class, "#target.toString()")
 			.get();
 		for (Map.Entry<Integer,List<String>> entry : (Set<Map.Entry<Integer,List<String>>>) resultMap.entrySet()) {
 			List<Calendar> calendarList = originalMap.get(entry.getKey());
@@ -501,17 +501,17 @@ public class Iter0IterableListMapOperatorTest extends TestCase {
 		}
 		
 		assertEquals(Types.INTEGER, this.integerCalendarListOperator
-				.eachEvalValue(String.class, "#target.toString()").getOperatorKeyType());
+				.eachValueEval(String.class, "#target.toString()").getOperatorKeyType());
 		assertEquals(Types.STRING, this.integerCalendarListOperator
-				.eachEvalValue(String.class, "#target.toString()").getOperatorValueType());
+				.eachValueEval(String.class, "#target.toString()").getOperatorValueType());
 		assertEquals(TypeSchemes.forName("Map<Integer, List<String>>"), this.integerCalendarListOperator
-				.eachEvalValue(String.class, "#target.toString()").getTargetTypeScheme());
+				.eachValueEval(String.class, "#target.toString()").getTargetTypeScheme());
 		
 	}
 	
-	public final void testEachEvalValueStringObjectArray() {
+	public final void testEachValueEvalStringObjectArray() {
 		Map<Integer, List<Calendar>> originalMap = this.integerCalendarListOperator.get();
-		Map resultMap = this.integerCalendarListOperator.eachEvalValue("#target.toString()")
+		Map resultMap = this.integerCalendarListOperator.eachValueEval("#target.toString()")
 			.get();
 		for (Map.Entry entry : (Set<Map.Entry>) resultMap.entrySet()) {
 			List<Calendar> calendarList = this.integerCalendarListOperator.get().get(entry.getKey());
@@ -522,11 +522,11 @@ public class Iter0IterableListMapOperatorTest extends TestCase {
 		}
 		
 		assertEquals(Types.INTEGER, this.integerCalendarListOperator
-				.eachEvalValue("#target.toString()").getOperatorKeyType());
+				.eachValueEval("#target.toString()").getOperatorKeyType());
 		assertEquals(null, this.integerCalendarListOperator
-				.eachEvalValue("#target.toString()").getOperatorValueType());
+				.eachValueEval("#target.toString()").getOperatorValueType());
 		assertEquals(TypeSchemes.forName("Map<Integer, List<?>>"), this.integerCalendarListOperator
-				.eachEvalValue("#target.toString()").getTargetTypeScheme());
+				.eachValueEval("#target.toString()").getTargetTypeScheme());
 		
 	}
 }

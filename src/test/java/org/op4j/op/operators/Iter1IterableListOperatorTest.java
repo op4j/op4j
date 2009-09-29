@@ -62,9 +62,9 @@ public class Iter1IterableListOperatorTest extends TestCase {
 		assertEquals(null, this.calendarOperator.raw().getOperatorComponentType());
 	}
 
-	public final void testEachExecUniqClassOfXStringObjectArray() {
+	public final void testEachExecClassOfXStringObjectArray() {
 		
-		List<String> result = this.integerOperator.eachExecUniq(String.class, 
+		List<String> result = this.integerOperator.eachExec(String.class, 
 				ConverterUtils.unsafeGetOperationNameForResultType(Types.STRING))
 				.uneachList().get().get(0);
 		

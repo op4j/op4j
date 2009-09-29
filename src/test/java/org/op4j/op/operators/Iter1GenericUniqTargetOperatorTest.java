@@ -122,11 +122,11 @@ public class Iter1GenericUniqTargetOperatorTest extends TestCase {
 				.getTargetTypeScheme().getType(0)));
 	}
 
-	public final void testExecUniqStringObjectArray() {
+	public final void testExecStringObjectArray() {
 		int index = 0;
 		for (Calendar calendar : this.calendarList) {
 			assertEquals("Dummy operation result: 1",
-				this.calendarOperator.exec(DummyOperationOnOneOrTwoTargets.OPERATION_NAME).uniq()
+				this.calendarOperator.exec(DummyOperationOnOneOrTwoTargets.OPERATION_NAME)
 						.getTargets().get(index).get());
 			index++;
 		}	

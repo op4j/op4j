@@ -66,21 +66,21 @@ public class Iter0IterableListOperatorTest extends TestCase {
 		super.tearDown();
 	}
 
-	public final void testEachExecUniqStringObjectArray() {
+	public final void testEachExecStringObjectArray() {
 		assertEquals("Dummy operation result: 1",
-				this.calendarOperator.eachExecUniq(DummyOperationOnOneOrTwoTargets.OPERATION_NAME).get().get(0));
+				this.calendarOperator.eachExec(DummyOperationOnOneOrTwoTargets.OPERATION_NAME).get().get(0));
 	}
 
-	public final void testEachExecUniqClassOfXStringObjectArray() {
+	public final void testEachExecClassOfXStringObjectArray() {
 		assertEquals("Dummy operation result: 1",
-				this.calendarOperator.eachExecUniq(String.class, 
+				this.calendarOperator.eachExec(String.class, 
 						DummyOperationOnOneOrTwoTargets.OPERATION_NAME).get().get(1));
 		
 		try {
 			assertEquals("Dummy operation result: 1",
-					this.calendarOperator.eachExecUniq(Calendar.class, 
+					this.calendarOperator.eachExec(Calendar.class, 
 							DummyOperationOnOneOrTwoTargets.OPERATION_NAME));
-			fail("this.integerOperator.execUniq(Calendar.class, ToJson.OPERATION_NAME) should have failed as it does " +
+			fail("this.integerOperator.exec(Calendar.class, ToJson.OPERATION_NAME) should have failed as it does " +
 					"not return a Calendar but a String");
 		} catch (InvalidOperatorCastException e) {
 			// do nothing

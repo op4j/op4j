@@ -238,16 +238,16 @@ public class Iter0IterableArrayOperatorTest extends TestCase {
 				this.aCalendarOperator.raw().getOperatorComponentType());		
 	}
 
-	public final void testEachExecUniq() {
+	public final void testEachExec() {
 		assertEquals(Types.forName("String[]"),
 			Op.onArray(Calendar.class, new Calendar[] {Calendar.getInstance(), Calendar.getInstance()})
-				.eachExecUniq(DummyOperationOnOneOrTwoTargets.OPERATION_NAME).getTargetTypeScheme().getType(0));
+				.eachExec(DummyOperationOnOneOrTwoTargets.OPERATION_NAME).getTargetTypeScheme().getType(0));
 		assertEquals(null,
 				Op.onArray(Calendar.class, new Calendar[] {Calendar.getInstance(), Calendar.getInstance()})
-					.eachExecUniq(DummyOperationOnOneOrTwoTargets.OPERATION_NAME).getOperatorComponentType());
+					.eachExec(DummyOperationOnOneOrTwoTargets.OPERATION_NAME).getOperatorComponentType());
 	}
 
-	public final void testEachExecUniqStringObjectArray() {
+	public final void testEachExecStringObjectArray() {
 		Calendar[] calArray = new Calendar[] {Calendar.getInstance(), Calendar.getInstance()};
 		
 		String[] expectedResults = new String[] {
@@ -255,22 +255,22 @@ public class Iter0IterableArrayOperatorTest extends TestCase {
 		
 		assertTrue(Arrays.equals(expectedResults,
 				Op.onArray(Calendar.class, calArray)
-					.eachExecUniq(DummyOperationOnOneOrTwoTargets.OPERATION_NAME).get()));	
+					.eachExec(DummyOperationOnOneOrTwoTargets.OPERATION_NAME).get()));	
 	}
 
-	public final void testEachExecUniqClassOfXStringObjectArray() {
+	public final void testEachExecClassOfXStringObjectArray() {
 		Calendar[] calArray = new Calendar[] {Calendar.getInstance(), Calendar.getInstance()};
 		
 		String[] expectedResults = new String[] {"Dummy operation result: 1", "Dummy operation result: 1"};
 		
 		assertTrue(Arrays.equals(expectedResults, 
 				Op.onArray(Calendar.class, calArray)
-					.eachExecUniq(String.class, DummyOperationOnOneOrTwoTargets.OPERATION_NAME).get()));	
+					.eachExec(String.class, DummyOperationOnOneOrTwoTargets.OPERATION_NAME).get()));	
 		
 		try {
 			Op.onArray(Calendar.class, calArray)
-						.eachExecUniq(Integer.class, DummyOperationOnOneOrTwoTargets.OPERATION_NAME).get();	
-			fail("Call to execUniq(Integer.class, ToJson.OPERATION_NAME) should have failed");
+						.eachExec(Integer.class, DummyOperationOnOneOrTwoTargets.OPERATION_NAME).get();	
+			fail("Call to exec(Integer.class, ToJson.OPERATION_NAME) should have failed");
 		} catch (InvalidOperatorCastException e) {
 			// do nothing
 		}

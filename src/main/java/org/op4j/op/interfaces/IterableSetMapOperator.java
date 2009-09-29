@@ -60,17 +60,17 @@ public interface IterableSetMapOperator<K,V>
     public IterableSetMapOperator<K,V> eachFilterEntry(final String expression, final Object... optionalExpParams);
     public IterableSetMapOperator<K,V> eachFilterEntry(final Filter<Map.Entry<K,V>> filter);
 
-    public IterableSetMapOperator<K,?> eachEvalValue(
+    public IterableSetMapOperator<K,?> eachValueEval(
             final String expression, final Object... optionalExpParams);
-    public <X> IterableSetMapOperator<K,X> eachEvalValue(
+    public <X> IterableSetMapOperator<K,X> eachValueEval(
             final Class<X> resultClass, final String expression, final Object... optionalExpParams);
-    public IterableSetMapOperator<K,?> eachEvalValue(
+    public IterableSetMapOperator<K,?> eachValueEval(
             final Evaluator<V,Object> evaluator);
-    public <X> IterableSetMapOperator<K,X> eachEvalValue(
+    public <X> IterableSetMapOperator<K,X> eachValueEval(
             final Class<X> resultClass, final Evaluator<V,X> evaluator);
     
-    public IterableSetMapOperator<K,?> eachCallValue(final String methodName, final Object... parameters);
-    public <X> IterableSetMapOperator<K,X> eachCallValue(final Class<X> returnClass, final String methodName, final Object... parameters);
+    public IterableSetMapOperator<K,?> eachValueCall(final String methodName, final Object... parameters);
+    public <X> IterableSetMapOperator<K,X> eachValueCall(final Class<X> returnClass, final String methodName, final Object... parameters);
 
     public IterableSetOperator<K> keySet();
     
@@ -83,16 +83,16 @@ public interface IterableSetMapOperator<K,V>
     public IterableMapOperator<K,?> mergeValues(final String expression, final Object... optionalExpParams);
     public <X> IterableMapOperator<K,X> mergeValues(Class<X> resultClass, final String expression, final Object... optionalExpParams);
 
-    public IterableSetMapOperator<K,?> eachExecUniqValue(
+    public IterableSetMapOperator<K,?> eachValueExec(
             final String operationName, final Object... parameters);
-    public <X> IterableSetMapOperator<K,X> eachExecUniqValue(
+    public <X> IterableSetMapOperator<K,X> eachValueExec(
             final Class<X> resultClass, final String operationName, final Object... parameters);
     
-    public IterableSetMapOperator<K,?> eachToValue(
+    public IterableSetMapOperator<K,?> eachValueTo(
             final Type resultType, final Object... parameters);
-    public IterableSetMapOperator<K,?> eachToValue(
+    public IterableSetMapOperator<K,?> eachValueTo(
             final String resultTypeName, final Object... parameters);
-    public <X> IterableSetMapOperator<K,X> eachToValue(
+    public <X> IterableSetMapOperator<K,X> eachValueTo(
             final Class<X> resultClass, final Object... parameters);
 
     

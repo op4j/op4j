@@ -100,14 +100,14 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 				.getTargetObjects().get(0));
 	}
 
-	public final void testExecUniqStringObjectArray() {
-		assertEquals(this.aCalendar200006221300, this.calendarOperator.execUniq(
+	public final void testExecStringObjectArray() {
+		assertEquals(this.aCalendar200006221300, this.calendarOperator.exec(
 				ConverterUtils.unsafeGetOperationNameForResultType(Types.CALENDAR)).as(Calendar.class)
 				.get());
 	}
 
-	public final void testExecUniqClassOfXStringObjectArray() {
-		assertEquals(this.aCalendar200006221300, this.calendarOperator.execUniq(
+	public final void testExecClassOfXStringObjectArray() {
+		assertEquals(this.aCalendar200006221300, this.calendarOperator.exec(
 				Calendar.class,
 				ConverterUtils.unsafeGetOperationNameForResultType(Types.CALENDAR))
 				.get());

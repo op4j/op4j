@@ -126,37 +126,37 @@ public final class Iter1MapEntryOperator<K,V>
     }
     
 
-    final <X> Iter1MapEntryOperator<K,X> unsafeExecUniqOnValue(
+    final <X> Iter1MapEntryOperator<K,X> unsafeExecOnValue(
             final Class<X> resultClass, 
             final String operationName, final List<Object> parameters) {
         final List<Iter0MapEntryOperator<K,X>> components = 
             new ArrayList<Iter0MapEntryOperator<K,X>>();
         for (Iter0MapEntryOperator<K,V> targetOp : this.getTargets()) {
-            components.add(targetOp.unsafeExecUniqOnValue(resultClass, operationName, parameters));
+            components.add(targetOp.unsafeExecOnValue(resultClass, operationName, parameters));
         }
         return new Iter1MapEntryOperator<K,X>(getOperatorKeyType(), resultClass, components);
     }
     
 
-    public final Iter1MapEntryOperator<K,?> execUniqOnValue(
+    public final Iter1MapEntryOperator<K,?> execOnValue(
             final String operationName, final Object... parameters) {
         Validate.notNull(operationName, "Operation name cannot be null");
-        return unsafeExecUniqOnValue(null, operationName, OperatorUtils.safeOperationParameters(parameters));
+        return unsafeExecOnValue(null, operationName, OperatorUtils.safeOperationParameters(parameters));
     }
     
 
-    public final <X> Iter1MapEntryOperator<K,X> execUniqOnValue(
+    public final <X> Iter1MapEntryOperator<K,X> execOnValue(
             final Class<X> resultClass, final String operationName, 
             final Object... parameters) {
         Validate.notNull(resultClass, "Result class cannot be null");
         Validate.notNull(operationName, "Operation name cannot be null");
-        return unsafeExecUniqOnValue(resultClass, operationName, OperatorUtils.safeOperationParameters(parameters));
+        return unsafeExecOnValue(resultClass, operationName, OperatorUtils.safeOperationParameters(parameters));
     }
 
 
     final <X> Iter1MapEntryOperator<K,X> unsafeToOnValue(
             final Class<X> resultClass, final Type resultType, final List<Object> parameters) {
-        return unsafeExecUniqOnValue(
+        return unsafeExecOnValue(
                 resultClass,
                 ConverterUtils.unsafeGetOperationNameForResultType(resultType),
                 parameters);

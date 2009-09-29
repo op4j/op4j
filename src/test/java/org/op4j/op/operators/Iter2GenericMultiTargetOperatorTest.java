@@ -80,8 +80,7 @@ public class Iter2GenericMultiTargetOperatorTest extends TestCase {
 			// do nothing
 		}
 		
-		this.calendarOperator.exec(DummyOperationOnOneOrTwoTargets.OPERATION_NAME, new Object[]{})
-			.uniq();
+		this.calendarOperator.exec(DummyOperationOnOneOrTwoTargets.OPERATION_NAME, new Object[]{});
 	}
 
 	public final void testAddObj() {

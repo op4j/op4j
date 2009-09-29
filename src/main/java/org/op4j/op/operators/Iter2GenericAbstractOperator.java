@@ -115,46 +115,28 @@ abstract class Iter2GenericAbstractOperator<T>
     abstract Iter2GenericAbstractOperator<?> unsafeRaw();
     
     
-    final <X> Iter2GenericUniqTargetOperator<X> unsafeExecUniq(
+    final <X> Iter2GenericUniqTargetOperator<X> unsafeExec(
             final Class<X> resultClass, final String operationName, final List<Object> parameters) {
         final List<Iter1GenericUniqTargetOperator<X>> components = 
             new ArrayList<Iter1GenericUniqTargetOperator<X>>();
         for (Iter1GenericAbstractOperator<T> target : this.getTargets()) {
-            components.add(target.unsafeExecUniq(resultClass, operationName, parameters));
+            components.add(target.unsafeExec(resultClass, operationName, parameters));
         }
         return new Iter2GenericUniqTargetOperator<X>(resultClass, components);
     }
-
     
-    final <X> Iter2GenericMultiTargetOperator<X> unsafeExec(
-            final Class<X> resultClass, final String operationName, final List<Object> parameters) {
-        final List<Iter1GenericMultiTargetOperator<X>> components = 
-            new ArrayList<Iter1GenericMultiTargetOperator<X>>();
-        for (Iter1GenericAbstractOperator<T> target : this.getTargets()) {
-            components.add(target.unsafeExec(resultClass, operationName, parameters));
-        }
-        return new Iter2GenericMultiTargetOperator<X>(resultClass, components);
-    }
 
-    
-    public final Iter2GenericMultiTargetOperator<?> exec(
+    public final Iter2GenericUniqTargetOperator<?> exec(
             final String operationName, final Object... parameters) {
         Validate.notNull(operationName, "Operation name cannot be null");
         return unsafeExec(null, operationName, OperatorUtils.safeOperationParameters(parameters));
     }
     
-
-    public final Iter2GenericUniqTargetOperator<?> execUniq(
-            final String operationName, final Object... parameters) {
-        Validate.notNull(operationName, "Operation name cannot be null");
-        return unsafeExecUniq(null, operationName, OperatorUtils.safeOperationParameters(parameters));
-    }
     
-    
-    public final <X> Iter2GenericUniqTargetOperator<X> execUniq(
+    public final <X> Iter2GenericUniqTargetOperator<X> exec(
             final Class<X> resultClass, final String operationName, final Object... parameters) {
         Validate.notNull(resultClass, "Result class cannot be null");
-        return unsafeExecUniq(resultClass, operationName, OperatorUtils.safeOperationParameters(parameters));
+        return unsafeExec(resultClass, operationName, OperatorUtils.safeOperationParameters(parameters));
     }
     
     
@@ -163,7 +145,7 @@ abstract class Iter2GenericAbstractOperator<T>
     
     final <X> Iter2GenericUniqTargetOperator<X> unsafeTo(
             final Class<X> resultClass, final Type resultType, final List<Object> parameters) {
-        return unsafeExecUniq(
+        return unsafeExec(
                 resultClass,
                 ConverterUtils.unsafeGetOperationNameForResultType(resultType), 
                 parameters);

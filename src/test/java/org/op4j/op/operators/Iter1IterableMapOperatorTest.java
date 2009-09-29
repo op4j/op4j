@@ -116,27 +116,27 @@ public class Iter1IterableMapOperatorTest extends TestCase {
 						}).get().containsKey(this.integerStringMap.size()));	
 	}
 
-	public final void testEachEvalValueStringObjectArray() {
+	public final void testEachValueEvalStringObjectArray() {
 		for (Map.Entry<Integer, Calendar> entry : this.integerCalendarMap.entrySet()) {
 			assertEquals(entry.getValue().get(Calendar.MILLISECOND), 
-					this.integerCalendarOperator.eachEvalValue("#target.get(#param[0])", Calendar.MILLISECOND)
+					this.integerCalendarOperator.eachValueEval("#target.get(#param[0])", Calendar.MILLISECOND)
 					.getTargets().get(0).get().get(entry.getKey()));
 		}
 		
 		assertEquals(null, 
-				this.integerCalendarOperator.eachEvalValue("#target.get(#param[0])", Calendar.MILLISECOND)
+				this.integerCalendarOperator.eachValueEval("#target.get(#param[0])", Calendar.MILLISECOND)
 				.getOperatorValueType());		
 	}
 
-	public final void testEachToValueClassOfXObjectArray() {
+	public final void testEachValueToClassOfXObjectArray() {
 		for (Map.Entry<Integer, Calendar> entry : this.integerCalendarMap.entrySet()) {
 			assertEquals(entry.getValue().toString(), 
-					this.integerCalendarOperator.eachToValue(String.class)
+					this.integerCalendarOperator.eachValueTo(String.class)
 					.getTargets().get(0).get().get(entry.getKey()));
 		}
 		
 		assertEquals(Types.STRING, 
-				this.integerCalendarOperator.eachToValue(String.class)
+				this.integerCalendarOperator.eachValueTo(String.class)
 				.getOperatorValueType());
 	}
 

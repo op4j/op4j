@@ -286,14 +286,14 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 				.getTargetObjects().get(0));
 	}
 
-	public final void testExecUniqStringObjectArray() {
-		assertEquals(this.aDate200006221300AsString, this.calendarOperator200006221300.execUniq(
+	public final void testExecStringObjectArray() {
+		assertEquals(this.aDate200006221300AsString, this.calendarOperator200006221300.exec(
 				ConverterUtils.unsafeGetOperationNameForResultType(Types.STRING), this.pattern).as(String.class)
 				.get());
 	}
 
-	public final void testExecUniqClassOfXStringObjectArray() {
-		assertEquals(this.aDate200006221300AsString, this.calendarOperator200006221300.execUniq(String.class,
+	public final void testExecClassOfXStringObjectArray() {
+		assertEquals(this.aDate200006221300AsString, this.calendarOperator200006221300.exec(String.class,
 				ConverterUtils.unsafeGetOperationNameForResultType(Types.STRING), this.pattern)
 				.get());
 	}

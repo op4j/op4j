@@ -60,17 +60,17 @@ public interface IterableListMapOperator<K,V>
     public IterableListMapOperator<K,V> eachFilterEntry(final String expression, final Object... optionalExpParams);
     public IterableListMapOperator<K,V> eachFilterEntry(final Filter<Map.Entry<K,V>> filter);
 
-    public IterableListMapOperator<K,?> eachEvalValue(
+    public IterableListMapOperator<K,?> eachValueEval(
             final String expression, final Object... optionalExpParams);
-    public <X> IterableListMapOperator<K,X> eachEvalValue(
+    public <X> IterableListMapOperator<K,X> eachValueEval(
             final Class<X> resultClass, final String expression, final Object... optionalExpParams);
-    public IterableListMapOperator<K,?> eachEvalValue(
+    public IterableListMapOperator<K,?> eachValueEval(
             final Evaluator<V,Object> evaluator);
-    public <X> IterableListMapOperator<K,X> eachEvalValue(
+    public <X> IterableListMapOperator<K,X> eachValueEval(
             final Class<X> resultClass, final Evaluator<V,X> evaluator);
     
-    public IterableListMapOperator<K,?> eachCallValue(final String methodName, final Object... parameters);
-    public <X> IterableListMapOperator<K,X> eachCallValue(final Class<X> returnClass, final String methodName, final Object... parameters);
+    public IterableListMapOperator<K,?> eachValueCall(final String methodName, final Object... parameters);
+    public <X> IterableListMapOperator<K,X> eachValueCall(final Class<X> returnClass, final String methodName, final Object... parameters);
 
     public IterableListMapOperator<K,V> distinct();
 
@@ -85,16 +85,16 @@ public interface IterableListMapOperator<K,V>
     public IterableMapOperator<K,?> mergeValues(final String expression, final Object... optionalExpParams);
     public <X> IterableMapOperator<K,X> mergeValues(Class<X> resultClass, final String expression, final Object... optionalExpParams);
 
-    public IterableListMapOperator<K,?> eachExecUniqValue(
+    public IterableListMapOperator<K,?> eachValueExec(
             final String operationName, final Object... parameters);
-    public <X> IterableListMapOperator<K,X> eachExecUniqValue(
+    public <X> IterableListMapOperator<K,X> eachValueExec(
             final Class<X> resultClass, final String operationName, final Object... parameters);
     
-    public IterableListMapOperator<K,?> eachToValue(
+    public IterableListMapOperator<K,?> eachValueTo(
             final Type resultType, final Object... parameters);
-    public IterableListMapOperator<K,?> eachToValue(
+    public IterableListMapOperator<K,?> eachValueTo(
             final String resultTypeName, final Object... parameters);
-    public <X> IterableListMapOperator<K,X> eachToValue(
+    public <X> IterableListMapOperator<K,X> eachValueTo(
             final Class<X> resultClass, final Object... parameters);
 
     

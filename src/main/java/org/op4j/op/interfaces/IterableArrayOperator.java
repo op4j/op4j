@@ -62,9 +62,9 @@ public interface IterableArrayOperator<T>
     public IterableArrayOperator<?> eachCall(final String methodName, final Object... parameters);
     public <X> IterableArrayOperator<X> eachCall(final Class<X> returnClass, final String methodName, final Object... parameters);
     
-    public IterableArrayOperator<?> eachExecUniq(
+    public IterableArrayOperator<?> eachExec(
             final String operationName, final Object... parameters);
-    public <X> IterableArrayOperator<X> eachExecUniq(
+    public <X> IterableArrayOperator<X> eachExec(
             final Class<X> resultClass, final String operationName, final Object... parameters);
     
     public IterableArrayOperator<?> eachTo(

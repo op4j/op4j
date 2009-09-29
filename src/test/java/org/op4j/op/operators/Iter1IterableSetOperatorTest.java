@@ -58,8 +58,8 @@ public class Iter1IterableSetOperatorTest extends TestCase {
 		super.tearDown();
 	}
 
-	public final void testEachExecUniqClassOfXStringObjectArray() {
-		Set<String> result = this.integerOperator.eachExecUniq(String.class, 
+	public final void testEachExecClassOfXStringObjectArray() {
+		Set<String> result = this.integerOperator.eachExec(String.class, 
 				ConverterUtils.unsafeGetOperationNameForResultType(Types.STRING))
 				.uneachList().get().get(0);
 		

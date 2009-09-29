@@ -53,8 +53,8 @@ public class Iter1IterableListMapOperatorTest extends TestCase {
 		super.tearDown();
 	}
 
-	public final void testExecUniqClassOfXStringObjectArray() {
-		Map<Integer, List<String>> result = this.integerCalendarOperator.eachExecUniqValue(String.class, ConverterUtils.unsafeGetOperationNameForResultType(Types.STRING))
+	public final void testExecClassOfXStringObjectArray() {
+		Map<Integer, List<String>> result = this.integerCalendarOperator.eachValueExec(String.class, ConverterUtils.unsafeGetOperationNameForResultType(Types.STRING))
 			.getTargets().get(0).get();
 		
 		for (Map.Entry<Integer, ArrayList<Calendar>> entry : this.integerListCalendarMap.entrySet()) {

@@ -61,9 +61,9 @@ public interface IterableSetOperator<T>
     public IterableSetOperator<?> eachCall(final String methodName, final Object... parameters);
     public <X> IterableSetOperator<X> eachCall(final Class<X> returnClass, final String methodName, final Object... parameters);
 
-    public IterableSetOperator<?> eachExecUniq(
+    public IterableSetOperator<?> eachExec(
             final String operationName, final Object... parameters);
-    public <X> IterableSetOperator<X> eachExecUniq(
+    public <X> IterableSetOperator<X> eachExec(
             final Class<X> resultClass, final String operationName, final Object... parameters);
     
     public IterableSetOperator<?> eachTo(

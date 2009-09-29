@@ -78,12 +78,9 @@ public interface GenericOperator<T>
     public <X> GenericUniqTargetOperator<X> eval(
             final Class<X> resultClass, final Evaluator<T,X> evaluator);
 
-    public GenericMultiTargetOperator<?> exec(
+    public GenericUniqTargetOperator<?> exec(
             final String operationName, final Object... parameters);
-    
-    public GenericUniqTargetOperator<?> execUniq(
-            final String operationName, final Object... parameters);
-    public <X> GenericUniqTargetOperator<X> execUniq(
+    public <X> GenericUniqTargetOperator<X> exec(
             final Class<X> resultClass, final String operationName, final Object... parameters);
     
     public <X> GenericOperator<X> as(final Class<X> newOperatorClass);

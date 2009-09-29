@@ -75,9 +75,9 @@ public interface MapEntryOperator<K,V>
             final Class<X> resultClass, final Evaluator<V,X> evaluator);
 
     
-    public MapEntryOperator<K,?> execUniqOnValue(
+    public MapEntryOperator<K,?> execOnValue(
             final String operationName, final Object... parameters);
-    public <X> MapEntryOperator<K,X> execUniqOnValue(
+    public <X> MapEntryOperator<K,X> execOnValue(
             final Class<X> resultClass, final String operationName, final Object... parameters);
 
     

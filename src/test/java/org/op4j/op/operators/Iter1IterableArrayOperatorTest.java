@@ -55,9 +55,9 @@ public class Iter1IterableArrayOperatorTest extends TestCase {
 		super.tearDown();
 	}
 
-	public final void testExecUniqStringObjectArray() {
+	public final void testExecStringObjectArray() {
 		assertEquals("Dummy operation result: 1",
-				this.calendarOperator.eachExecUniq(
+				this.calendarOperator.eachExec(
 						DummyOperationOnOneOrTwoTargets.OPERATION_NAME).getTargets().get(0).get()[1]);		
 	}
 

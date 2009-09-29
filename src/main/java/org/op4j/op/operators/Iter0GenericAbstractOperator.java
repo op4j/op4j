@@ -230,22 +230,9 @@ abstract class Iter0GenericAbstractOperator<T>
 
     
     abstract Iter0GenericAbstractOperator<?> unsafeRaw();
-
-    
-    final <X> Iter0GenericMultiTargetOperator<X> unsafeExec(
-            final Class<X> resultClass, final String operationName, final List<Object> parameters) {
-        return new Iter0GenericMultiTargetOperator<X>(
-                (resultClass != null?
-                        Types.getRawTypeForClass(resultClass) :
-                        null),
-                Operations.executeOperation(
-                        operationName, 
-                        getTargets(), 
-                        parameters));
-    }
     
     
-    final <X> Iter0GenericUniqTargetOperator<X> unsafeExecUniq(
+    final <X> Iter0GenericUniqTargetOperator<X> unsafeExec(
             final Class<X> resultClass, final String operationName, final List<Object> parameters) {
         // This operation has to return a unique result. If not, an exception will be thrown
         return new Iter0GenericUniqTargetOperator<X>(
@@ -257,25 +244,18 @@ abstract class Iter0GenericAbstractOperator<T>
     }
 
     
-    public final Iter0GenericMultiTargetOperator<?> exec(
+    public final Iter0GenericUniqTargetOperator<?> exec(
             final String operationName, final Object... parameters) {
         Validate.notNull(operationName, "Operation name cannot be null");
         return unsafeExec(null, operationName, OperatorUtils.safeOperationParameters(parameters));
     }
     
     
-    public final Iter0GenericUniqTargetOperator<?> execUniq(
-            final String operationName, final Object... parameters) {
-        Validate.notNull(operationName, "Operation name cannot be null");
-        return unsafeExecUniq(null, operationName, OperatorUtils.safeOperationParameters(parameters));
-    }
-    
-    
-    public final <X> Iter0GenericUniqTargetOperator<X> execUniq(
+    public final <X> Iter0GenericUniqTargetOperator<X> exec(
             final Class<X> resultClass, final String operationName, final Object... parameters) {
         Validate.notNull(resultClass, "Result class cannot be null");
         Validate.notNull(operationName, "Operation name cannot be null");
-        return unsafeExecUniq(resultClass, operationName, OperatorUtils.safeOperationParameters(parameters));
+        return unsafeExec(resultClass, operationName, OperatorUtils.safeOperationParameters(parameters));
     }
     
     
@@ -284,7 +264,7 @@ abstract class Iter0GenericAbstractOperator<T>
 
     final <X> Iter0GenericUniqTargetOperator<X> unsafeTo(
             final Class<X> resultClass, final Type resultType, final List<Object> parameters) {
-        return unsafeExecUniq(
+        return unsafeExec(
                 resultClass,
                 ConverterUtils.unsafeGetOperationNameForResultType(resultType),
                 parameters);

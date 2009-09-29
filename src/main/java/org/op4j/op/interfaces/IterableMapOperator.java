@@ -58,31 +58,31 @@ public interface IterableMapOperator<K,V>
     public IterableMapOperator<K,V> eachFilterEntry(final String expression, final Object... optionalExpParams);
     public IterableMapOperator<K,V> eachFilterEntry(final Filter<Map.Entry<K,V>> filter);
 
-    public IterableMapOperator<K,?> eachEvalValue(
+    public IterableMapOperator<K,?> eachValueEval(
             final String expression, final Object... optionalExpParams);
-    public <X> IterableMapOperator<K,X> eachEvalValue(
+    public <X> IterableMapOperator<K,X> eachValueEval(
             final Class<X> resultClass, final String expression, final Object... optionalExpParams);
-    public IterableMapOperator<K,?> eachEvalValue(
+    public IterableMapOperator<K,?> eachValueEval(
             final Evaluator<V,Object> evaluator);
-    public <X> IterableMapOperator<K,X> eachEvalValue(
+    public <X> IterableMapOperator<K,X> eachValueEval(
             final Class<X> resultClass, final Evaluator<V,X> evaluator);
     
-    public IterableMapOperator<K,?> eachCallValue(final String methodName, final Object... parameters);
-    public <X> IterableMapOperator<K,X> eachCallValue(final Class<X> returnClass, final String methodName, final Object... parameters);
+    public IterableMapOperator<K,?> eachValueCall(final String methodName, final Object... parameters);
+    public <X> IterableMapOperator<K,X> eachValueCall(final Class<X> returnClass, final String methodName, final Object... parameters);
 
     public IterableSetOperator<K> keySet();
     public IterableListOperator<V> values();
 
-    public IterableMapOperator<K,?> eachExecUniqValue(
+    public IterableMapOperator<K,?> eachValueExec(
             final String operationName, final Object... parameters);
-    public <X> IterableMapOperator<K,X> eachExecUniqValue(
+    public <X> IterableMapOperator<K,X> eachValueExec(
             final Class<X> resultClass, final String operationName, final Object... parameters);
     
-    public IterableMapOperator<K,?> eachToValue(
+    public IterableMapOperator<K,?> eachValueTo(
             final Type resultType, final Object... parameters);
-    public IterableMapOperator<K,?> eachToValue(
+    public IterableMapOperator<K,?> eachValueTo(
             final String resultTypeName, final Object... parameters);
-    public <X> IterableMapOperator<K,X> eachToValue(
+    public <X> IterableMapOperator<K,X> eachValueTo(
             final Class<X> resultClass, final Object... parameters);
     
 }

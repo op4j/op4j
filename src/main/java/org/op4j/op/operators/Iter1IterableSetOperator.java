@@ -90,29 +90,29 @@ public final class Iter1IterableSetOperator<T>
     }
     
 
-    final <X> Iter1IterableSetOperator<X> unsafeEachExecUniq(
+    final <X> Iter1IterableSetOperator<X> unsafeEachExec(
             final Class<X> resultClass, final String operationName, final List<Object> parameters) {
         final List<Iter0IterableSetOperator<X>> components = 
             new ArrayList<Iter0IterableSetOperator<X>>();
         for (Iter0IterableSetOperator<T> target : getTargets()) {
-            components.add(target.unsafeEachExecUniq(resultClass, operationName, parameters));
+            components.add(target.unsafeEachExec(resultClass, operationName, parameters));
         }
         return new Iter1IterableSetOperator<X>(resultClass, components);
     }
     
 
-    public final Iter1IterableSetOperator<?> eachExecUniq(
+    public final Iter1IterableSetOperator<?> eachExec(
             final String operationName, final Object... parameters) {
         Validate.notNull(operationName, "Operation name cannot be null");
-        return unsafeEachExecUniq(null, operationName, OperatorUtils.safeEvaluationParameters(parameters));
+        return unsafeEachExec(null, operationName, OperatorUtils.safeEvaluationParameters(parameters));
     }
     
 
-    public final <X> Iter1IterableSetOperator<X> eachExecUniq(
+    public final <X> Iter1IterableSetOperator<X> eachExec(
             final Class<X> resultClass, final String operationName, final Object... parameters) {
         Validate.notNull(resultClass, "Result class cannot be null");
         Validate.notNull(operationName, "Operation name cannot be null");
-        return unsafeEachExecUniq(resultClass, operationName, OperatorUtils.safeEvaluationParameters(parameters));
+        return unsafeEachExec(resultClass, operationName, OperatorUtils.safeEvaluationParameters(parameters));
     }
     
     

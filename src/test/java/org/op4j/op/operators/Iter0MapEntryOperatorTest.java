@@ -57,19 +57,19 @@ public class Iter0MapEntryOperatorTest extends TestCase {
 				this.integerCalendarOperator.generic().get());
 	}
 
-	public final void testExecUniqStringObjectArray() {				
+	public final void testExecStringObjectArray() {				
 		assertEquals(Integer.valueOf(333), this.integerIntegerAsStringOperator
-				.execUniqOnValue(ConverterUtils.unsafeGetOperationNameForResultType(Types.INTEGER))
+				.execOnValue(ConverterUtils.unsafeGetOperationNameForResultType(Types.INTEGER))
 				.getTargetObjects().get(0).getValue());
 	}
 
-	public final void testExecUniqClassOfXStringObjectArray() {
+	public final void testExecClassOfXStringObjectArray() {
 		assertEquals(Integer.valueOf(333), this.integerIntegerAsStringOperator
-				.execUniqOnValue(Integer.class, ConverterUtils.unsafeGetOperationNameForResultType(Types.INTEGER))
+				.execOnValue(Integer.class, ConverterUtils.unsafeGetOperationNameForResultType(Types.INTEGER))
 				.getTargetObjects().get(0).getValue());
 		assertTrue(Types.forName("Map$Entry<?, Integer>")
 				.isAssignableFrom(this.integerIntegerAsStringOperator
-				.execUniqOnValue(Integer.class, ConverterUtils.unsafeGetOperationNameForResultType(Types.INTEGER))
+				.execOnValue(Integer.class, ConverterUtils.unsafeGetOperationNameForResultType(Types.INTEGER))
 				.getTargets().get(0).getIntendedType()));
 	}
 

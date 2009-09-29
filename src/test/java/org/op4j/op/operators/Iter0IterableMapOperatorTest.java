@@ -80,26 +80,26 @@ public class Iter0IterableMapOperatorTest extends TestCase {
 		super.tearDown();
 	}
 
-	public final void testEachExecUniqValueStringObjectArray() {
+	public final void testEachValueExecStringObjectArray() {
 		assertEquals("Dummy operation result: 1",
-				this.integerCalendarOperator.eachExecUniqValue(DummyOperationOnOneOrTwoTargets.OPERATION_NAME)
+				this.integerCalendarOperator.eachValueExec(DummyOperationOnOneOrTwoTargets.OPERATION_NAME)
 				.get().get(this.keys.get(0)).toString());
 		
 		assertEquals(null,
-				this.integerCalendarOperator.eachExecUniqValue(DummyOperationOnOneOrTwoTargets.OPERATION_NAME).getOperatorValueType());		
+				this.integerCalendarOperator.eachValueExec(DummyOperationOnOneOrTwoTargets.OPERATION_NAME).getOperatorValueType());		
 	}
 
-	public final void testEachExecUniqValueClassOfXStringObjectArray() {
+	public final void testEachValueExecClassOfXStringObjectArray() {
 		assertEquals("Dummy operation result: 1",
-				this.integerCalendarOperator.eachExecUniqValue(String.class, DummyOperationOnOneOrTwoTargets.OPERATION_NAME).get().get(this.keys.get(1)).toString());
+				this.integerCalendarOperator.eachValueExec(String.class, DummyOperationOnOneOrTwoTargets.OPERATION_NAME).get().get(this.keys.get(1)).toString());
 		
 		assertEquals(Types.STRING,
-				this.integerCalendarOperator.eachExecUniqValue(String.class, DummyOperationOnOneOrTwoTargets.OPERATION_NAME).getOperatorValueType());
+				this.integerCalendarOperator.eachValueExec(String.class, DummyOperationOnOneOrTwoTargets.OPERATION_NAME).getOperatorValueType());
 		
 		try {
 			assertEquals("Dummy operation result: 1",
-					this.integerCalendarOperator.eachExecUniqValue(Long.class, DummyOperationOnOneOrTwoTargets.OPERATION_NAME));
-			fail("this.integerCalendarOperator.execUniq(Long.class, ToJson.OPERATION_NAME) should have failed as the result is not a Long but a String");
+					this.integerCalendarOperator.eachValueExec(Long.class, DummyOperationOnOneOrTwoTargets.OPERATION_NAME));
+			fail("this.integerCalendarOperator.exec(Long.class, ToJson.OPERATION_NAME) should have failed as the result is not a Long but a String");
 		} catch (InvalidOperatorCastException e) {
 			// do nothing
 		}
@@ -349,7 +349,7 @@ public class Iter0IterableMapOperatorTest extends TestCase {
 				Integer.valueOf(10), cal1, 
 				Integer.valueOf(20), cal2,
 				Integer.valueOf(30), cal3).buildMap(Integer.class, Calendar.class)
-				.eachCallValue("get", Calendar.MILLISECOND);
+				.eachValueCall("get", Calendar.MILLISECOND);
 		assertEquals(3, result.get().size());
 		assertEquals(Integer.valueOf(cal1.get(Calendar.MILLISECOND)), result.get().get(Integer.valueOf(10)));	
 		assertEquals(TypeSchemes.forName("Map<Integer, ?>"), result.getTargetTypeScheme());
@@ -363,7 +363,7 @@ public class Iter0IterableMapOperatorTest extends TestCase {
 				Integer.valueOf(10), cal1, 
 				Integer.valueOf(10), cal1,
 				Integer.valueOf(20), cal2).buildMap(Integer.class, Calendar.class)
-				.eachCallValue(Integer.class, "get", Calendar.MILLISECOND);
+				.eachValueCall(Integer.class, "get", Calendar.MILLISECOND);
 		assertEquals(2, result.get().size());
 		assertEquals(cal1.get(Calendar.MILLISECOND), result.get().get(Integer.valueOf(10)));
 		assertEquals(TypeSchemes.forName("Map<Integer, Integer>"), result.getTargetTypeScheme());

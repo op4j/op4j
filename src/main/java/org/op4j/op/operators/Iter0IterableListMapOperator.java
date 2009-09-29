@@ -169,24 +169,24 @@ public final class Iter0IterableListMapOperator<K,V>
     }
     
     
-    final <X> Iter0IterableListMapOperator<K,X> unsafeEachExecUniqValue(
+    final <X> Iter0IterableListMapOperator<K,X> unsafeEachValueExec(
             final Class<X> resultClass, final String operationName, final List<Object> parameters) {
-        return unsafeEachEntry().unsafeExecUniqOnValue(resultClass, operationName, parameters).unsafeUneachListMap();
+        return unsafeEachEntry().unsafeExecOnValue(resultClass, operationName, parameters).unsafeUneachListMap();
     }
     
     
-    public final Iter0IterableListMapOperator<K,?> eachExecUniqValue(
+    public final Iter0IterableListMapOperator<K,?> eachValueExec(
             final String operationName, final Object... parameters) {
         Validate.notNull(operationName, "Operation name cannot be null");
-        return unsafeEachExecUniqValue(null, operationName, OperatorUtils.safeOperationParameters(parameters));
+        return unsafeEachValueExec(null, operationName, OperatorUtils.safeOperationParameters(parameters));
     }
     
     
-    public final <X> Iter0IterableListMapOperator<K,X> eachExecUniqValue(
+    public final <X> Iter0IterableListMapOperator<K,X> eachValueExec(
             final Class<X> resultClass, final String operationName, final Object... parameters) {
         Validate.notNull(resultClass, "Result class cannot be null");
         Validate.notNull(operationName, "Operation name cannot be null");
-        return unsafeEachExecUniqValue(resultClass, operationName, OperatorUtils.safeOperationParameters(parameters));
+        return unsafeEachValueExec(resultClass, operationName, OperatorUtils.safeOperationParameters(parameters));
     }
 
 
@@ -596,49 +596,49 @@ public final class Iter0IterableListMapOperator<K,V>
     }
 
     
-    final <X> Iter0IterableListMapOperator<K,X> unsafeEachEvalValue(
+    final <X> Iter0IterableListMapOperator<K,X> unsafeEachValueEval(
             final Class<X> resultClass, final String expression, final List<Object> parameters) {
         return unsafeEachEntry().unsafeEvalOnValue(resultClass, expression, parameters).unsafeUneachListMap();
     }
 
     
-    final <X> Iter0IterableListMapOperator<K,X> unsafeEachEvalValue(
+    final <X> Iter0IterableListMapOperator<K,X> unsafeEachValueEval(
             final Class<X> resultClass, final Evaluator<V,X> evaluator) {
         return unsafeEachEntry().unsafeEvalOnValue(resultClass, evaluator).unsafeUneachListMap();
     }
 
     
-    public final Iter0IterableListMapOperator<K,?> eachEvalValue(
+    public final Iter0IterableListMapOperator<K,?> eachValueEval(
             final String expression, final Object... optionalExpParams) {
         Validate.notNull(expression, "Expression cannot be null nor empty");
-        return unsafeEachEvalValue(null, expression, OperatorUtils.safeEvaluationParameters(optionalExpParams));
+        return unsafeEachValueEval(null, expression, OperatorUtils.safeEvaluationParameters(optionalExpParams));
     }
 
     
-    public final <X> Iter0IterableListMapOperator<K,X> eachEvalValue(
+    public final <X> Iter0IterableListMapOperator<K,X> eachValueEval(
             final Class<X> resultClass, final String expression, final Object... optionalExpParams) {
         Validate.notNull(resultClass, "Return class cannot be null nor empty");
         Validate.notNull(expression, "Expression cannot be null nor empty");
-        return unsafeEachEvalValue(resultClass, expression, OperatorUtils.safeEvaluationParameters(optionalExpParams));
+        return unsafeEachValueEval(resultClass, expression, OperatorUtils.safeEvaluationParameters(optionalExpParams));
     }
 
     
-    public final <X> Iter0IterableListMapOperator<K,X> eachEvalValue(
+    public final <X> Iter0IterableListMapOperator<K,X> eachValueEval(
             final Class<X> resultClass, final Evaluator<V,X> evaluator) {
         Validate.notNull(resultClass, "Class cannot be null");
         Validate.notNull(evaluator, "Evaluator cannot be null");
-        return unsafeEachEvalValue(resultClass, evaluator);
+        return unsafeEachValueEval(resultClass, evaluator);
     }
 
     
-    public final Iter0IterableListMapOperator<K,?> eachEvalValue(
+    public final Iter0IterableListMapOperator<K,?> eachValueEval(
             final Evaluator<V,Object> evaluator) {
         Validate.notNull(evaluator, "Evaluator cannot be null");
-        return unsafeEachEvalValue(null, evaluator);
+        return unsafeEachValueEval(null, evaluator);
     }
     
 
-    final <X> Iter0IterableListMapOperator<K,X> unsafeEachCallValue(
+    final <X> Iter0IterableListMapOperator<K,X> unsafeEachValueCall(
             final Class<X> resultClass, final String methodName, final List<Object> arguments) {
         if (areAllTargetsNull()) {
             throw new NullTargetException("eachCall");
@@ -647,45 +647,45 @@ public final class Iter0IterableListMapOperator<K,V>
     }
     
 
-    public final Iter0IterableListMapOperator<K,?> eachCallValue(
+    public final Iter0IterableListMapOperator<K,?> eachValueCall(
             final String methodName, final Object... parameters) {
         Validate.notEmpty(methodName, "Method name cannot be null nor empty");
-        return unsafeEachCallValue(null, methodName, OperatorUtils.safeEvaluationParameters(parameters));
+        return unsafeEachValueCall(null, methodName, OperatorUtils.safeEvaluationParameters(parameters));
     }
     
 
-    public final <X> Iter0IterableListMapOperator<K,X> eachCallValue(
+    public final <X> Iter0IterableListMapOperator<K,X> eachValueCall(
             final Class<X> resultClass, final String methodName, final Object... parameters) {
         Validate.notNull(resultClass, "Return class cannot be null");
         Validate.notEmpty(methodName, "Method name cannot be null nor empty");
-        return unsafeEachCallValue(resultClass, methodName,OperatorUtils.safeEvaluationParameters(parameters));
+        return unsafeEachValueCall(resultClass, methodName,OperatorUtils.safeEvaluationParameters(parameters));
     }
     
 
-    final <X> Iter0IterableListMapOperator<K,X> unsafeEachToValue(
+    final <X> Iter0IterableListMapOperator<K,X> unsafeEachValueTo(
             final Class<X> resultClass, final Type resultType, final List<Object> parameters) {
         return unsafeEachEntry().unsafeToOnValue(resultClass, resultType, parameters).unsafeUneachListMap();
     }
     
 
-    public final Iter0IterableListMapOperator<K,?> eachToValue(
+    public final Iter0IterableListMapOperator<K,?> eachValueTo(
             final Type resultType, final Object... parameters) {
         Validate.notNull(resultType, "Result type cannot be null");
-        return unsafeEachToValue(null, resultType, OperatorUtils.safeEvaluationParameters(parameters));
+        return unsafeEachValueTo(null, resultType, OperatorUtils.safeEvaluationParameters(parameters));
     }
     
 
-    public final Iter0IterableListMapOperator<K,?> eachToValue(
+    public final Iter0IterableListMapOperator<K,?> eachValueTo(
             final String resultTypeName, final Object... parameters) {
         Validate.notNull(resultTypeName, "Result type name cannot be null");
-        return unsafeEachToValue(null, Types.forName(resultTypeName), OperatorUtils.safeEvaluationParameters(parameters));
+        return unsafeEachValueTo(null, Types.forName(resultTypeName), OperatorUtils.safeEvaluationParameters(parameters));
     }
     
 
-    public final <X> Iter0IterableListMapOperator<K,X> eachToValue(
+    public final <X> Iter0IterableListMapOperator<K,X> eachValueTo(
             final Class<X> resultClass, final Object... parameters) {
         Validate.notNull(resultClass, "Result class cannot be null");
-        return unsafeEachToValue(resultClass, Types.getRawTypeForClass(resultClass), OperatorUtils.safeEvaluationParameters(parameters));
+        return unsafeEachValueTo(resultClass, Types.getRawTypeForClass(resultClass), OperatorUtils.safeEvaluationParameters(parameters));
     }
 
     

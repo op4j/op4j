@@ -141,24 +141,24 @@ public final class Iter0IterableSetOperator<T>
     }
     
     
-    final <X> Iter0IterableSetOperator<X> unsafeEachExecUniq(
+    final <X> Iter0IterableSetOperator<X> unsafeEachExec(
             final Class<X> resultClass, final String operationName, final List<Object> parameters) {
-        return unsafeEach().unsafeExecUniq(resultClass, operationName, parameters).unsafeUneachSet();
+        return unsafeEach().unsafeExec(resultClass, operationName, parameters).unsafeUneachSet();
     }
     
     
-    public final Iter0IterableSetOperator<?> eachExecUniq(
+    public final Iter0IterableSetOperator<?> eachExec(
             final String operationName, final Object... parameters) {
         Validate.notNull(operationName, "Operation name cannot be null");
-        return unsafeEachExecUniq(null, operationName, OperatorUtils.safeOperationParameters(parameters));
+        return unsafeEachExec(null, operationName, OperatorUtils.safeOperationParameters(parameters));
     }
     
     
-    public final <X> Iter0IterableSetOperator<X> eachExecUniq(
+    public final <X> Iter0IterableSetOperator<X> eachExec(
             final Class<X> resultClass, final String operationName, final Object... parameters) {
         Validate.notNull(resultClass, "Result class cannot be null");
         Validate.notNull(operationName, "Operation name cannot be null");
-        return unsafeEachExecUniq(resultClass, operationName, OperatorUtils.safeOperationParameters(parameters));
+        return unsafeEachExec(resultClass, operationName, OperatorUtils.safeOperationParameters(parameters));
     }
     
     
