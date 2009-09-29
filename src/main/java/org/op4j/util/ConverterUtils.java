@@ -17,9 +17,9 @@
  * 
  * =============================================================================
  */
-package org.op4j.exceptions;
+package org.op4j.util;
 
-import org.op4j.typescheme.TypeScheme;
+import org.op4j.type.Type;
 
 /**
  * 
@@ -28,13 +28,20 @@ import org.op4j.typescheme.TypeScheme;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class NonUniqueResultException extends RuntimeException {
+public final class ConverterUtils {
 
-    private static final long serialVersionUID = 5714324289775376625L;
+    private final static String PREFIX_SEPARATOR = ":";
+    private static final String CONVERSION_NAME_PREFIX = "conversion";
 
-    public NonUniqueResultException(TypeScheme typeScheme) {
-        super("Result is not unique. Type scheme is " + typeScheme.getName());
+    
+    public static String unsafeGetOperationNameForResultType(final Type uniqResultType) {
+        final String converterName = "(" + uniqResultType.getName() + ")";
+        return  CONVERSION_NAME_PREFIX + PREFIX_SEPARATOR + converterName; 
     }
-        
-        
+
+    
+    private ConverterUtils() {
+        super();
+    }
+    
 }

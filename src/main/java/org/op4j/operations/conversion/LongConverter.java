@@ -41,7 +41,7 @@ public final class LongConverter extends NonDecimalNumberConverter {
 
     
     @Override
-    public Type getUniqResultType() {
+    public Type getResultType() {
         return Types.LONG;
     }
 

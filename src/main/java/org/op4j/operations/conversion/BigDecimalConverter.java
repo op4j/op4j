@@ -44,7 +44,7 @@ public final class BigDecimalConverter extends DecimalNumberConverter {
 
 
     @Override
-    public Type getUniqResultType() {
+    public Type getResultType() {
         return Types.BIG_DECIMAL;
     }
 

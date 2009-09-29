@@ -68,19 +68,6 @@ public class Iter2GenericUniqTargetOperatorTest extends TestCase {
 		assertEquals(null, this.calendarOperator.call("get", Calendar.MILLISECOND).uneachList().getOperatorComponentType());
 	}
 
-	public final void testAsMapClassOfKClassOfV() {
-		List<HashMap<Integer,Integer>> integerIntegerMapList = new ArrayList<HashMap<Integer,Integer>>();
-		Op.onList(integerIntegerMapList)
-			.each().buildList().each().as(Object.class).asMap(Integer.class, Integer.class);
-		
-		assertEquals(Types.INTEGER, Op.onList(integerIntegerMapList)
-				.each().buildList().each().as(Object.class).asMap(Integer.class, Integer.class)
-				.getOperatorKeyType());
-		assertEquals(Types.INTEGER, Op.onList(integerIntegerMapList)
-				.each().buildList().each().as(Object.class).asMap(Integer.class, Integer.class)
-				.getOperatorValueType());
-	}
-
 	public final void testUneachMapClassOfKClassOfVStringStringObjectArray() {
 		assertEquals(Types.INTEGER, this.calendarOperator.uneachMap(Integer.class, Calendar.class, "#target.get(#param[0])",
 				"#target", Calendar.MILLISECOND).getOperatorKeyType());

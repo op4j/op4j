@@ -14,7 +14,7 @@ import org.op4j.op.interfaces.Filter;
 import org.op4j.op.interfaces.FilterContext;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
-import org.op4j.util.UniqResultConverterUtils;
+import org.op4j.util.ConverterUtils;
 
 public class Iter1IterableSetOperatorTest extends TestCase {
 
@@ -60,7 +60,7 @@ public class Iter1IterableSetOperatorTest extends TestCase {
 
 	public final void testEachExecUniqClassOfXStringObjectArray() {
 		Set<String> result = this.integerOperator.eachExecUniq(String.class, 
-				UniqResultConverterUtils.unsafeGetOperationNameForResultType(Types.STRING))
+				ConverterUtils.unsafeGetOperationNameForResultType(Types.STRING))
 				.uneachList().get().get(0);
 		
 		Iterator<String> iterator = result.iterator();

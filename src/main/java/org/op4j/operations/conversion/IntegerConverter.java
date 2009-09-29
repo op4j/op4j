@@ -42,7 +42,7 @@ public final class IntegerConverter extends NonDecimalNumberConverter {
 
     
     @Override
-    public Type getUniqResultType() {
+    public Type getResultType() {
         return Types.INTEGER;
     }
 

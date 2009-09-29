@@ -25,7 +25,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.op4j.typescheme.TypeScheme;
+import org.op4j.type.Type;
 
 /**
  * 
@@ -37,14 +37,14 @@ import org.op4j.typescheme.TypeScheme;
 final class OperationRegistryInfo {
     
     private final String operationName;
-    private final TypeScheme resultTypeScheme;
+    private final Type resultType;
     private final Map<String, Set<ArgumentsTypeScheme>> matchedArgumentTypeSchemeSetsByOperationImplClassName;
     private final Set<Set<ArgumentsTypeScheme>> matchedArgumentTypeSchemeSets;
     
     
-    OperationRegistryInfo(final String operationName, final TypeScheme resultTypeScheme) {
+    OperationRegistryInfo(final String operationName, final Type resultType) {
         this.operationName = operationName;
-        this.resultTypeScheme = resultTypeScheme;
+        this.resultType = resultType;
         this.matchedArgumentTypeSchemeSetsByOperationImplClassName = 
             new HashMap<String,Set<ArgumentsTypeScheme>>();
         this.matchedArgumentTypeSchemeSets = new HashSet<Set<ArgumentsTypeScheme>>();
@@ -67,8 +67,8 @@ final class OperationRegistryInfo {
     }
     
     
-    TypeScheme getResultTypeScheme() {
-        return this.resultTypeScheme;
+    Type getResultType() {
+        return this.resultType;
     }
 
     
@@ -83,7 +83,7 @@ final class OperationRegistryInfo {
     
     @Override
     public String toString() {
-        return this.resultTypeScheme + " " + this.operationName + 
+        return this.resultType + " " + this.operationName + 
                 " " + this.matchedArgumentTypeSchemeSets;
         
     }

@@ -42,7 +42,7 @@ public final class DoubleConverter extends DecimalNumberConverter {
 
 
     @Override
-    public Type getUniqResultType() {
+    public Type getResultType() {
         return Types.DOUBLE;
     }
 

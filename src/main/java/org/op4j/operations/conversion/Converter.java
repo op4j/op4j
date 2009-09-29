@@ -17,9 +17,11 @@
  * 
  * =============================================================================
  */
-package org.op4j.util;
+package org.op4j.operations.conversion;
 
-import org.op4j.type.Type;
+import org.op4j.operation.OperationImpl;
+import org.op4j.util.ConverterUtils;
+
 
 /**
  * 
@@ -28,20 +30,21 @@ import org.op4j.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class UniqResultConverterUtils {
-
-    private final static String PREFIX_SEPARATOR = ":";
-    private static final String CONVERSION_NAME_PREFIX = "conversion";
-
+public abstract class Converter extends OperationImpl {
     
-    public static String unsafeGetOperationNameForResultType(final Type uniqResultType) {
-        final String converterName = "(" + uniqResultType.getName() + ")";
-        return  CONVERSION_NAME_PREFIX + PREFIX_SEPARATOR + converterName; 
-    }
-
     
-    private UniqResultConverterUtils() {
+	private static final long serialVersionUID = -9074374505688098385L;
+
+
+	public Converter() {
         super();
     }
+
     
+    @Override
+    public final String getOperationName() {
+        return ConverterUtils.unsafeGetOperationNameForResultType(getResultType());
+    }
+    
+
 }

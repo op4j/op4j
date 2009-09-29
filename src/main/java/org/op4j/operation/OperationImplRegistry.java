@@ -28,11 +28,11 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import org.op4j.exceptions.OperationNotFoundException;
 import org.op4j.exceptions.MultipleOperationImplementationsException;
 import org.op4j.exceptions.OperationImplementationNotFoundException;
 import org.op4j.exceptions.OperationImplementationRegistrationException;
-import org.op4j.typescheme.TypeScheme;
+import org.op4j.exceptions.OperationNotFoundException;
+import org.op4j.type.Type;
 
 /*
  * (non-javadoc)
@@ -111,7 +111,7 @@ final class OperationImplRegistry {
                 
                 operationRegistryInfo = 
                     new OperationRegistryInfo(operationName, 
-                        operationImpl.getResultTypeScheme()); 
+                        operationImpl.getResultType()); 
                 this.operationRegistryInfos.put(operationName, operationRegistryInfo);
                 
             }
@@ -119,13 +119,13 @@ final class OperationImplRegistry {
             if (operationImpls.size() > 0) {
                 // We check the first position to see if result typeschemes equal
                 final OperationImpl checkedImpl = operationImpls.iterator().next();
-                if (!checkedImpl.getResultTypeScheme().equals(
-                        operationImpl.getResultTypeScheme())) {
+                if (!checkedImpl.getResultType().equals(
+                        operationImpl.getResultType())) {
                     throw new OperationImplementationRegistrationException(
                             "Operation implementation returns " + 
-                            operationImpl.getResultTypeScheme() + ", " +
+                            operationImpl.getResultType() + ", " +
                             "but operation \"" + operationName + "\" is registered " +
-                            "to return " + checkedImpl.getResultTypeScheme());
+                            "to return " + checkedImpl.getResultType());
                 }
             }
             
@@ -202,7 +202,7 @@ final class OperationImplRegistry {
     
     
     
-    TypeScheme getResultTypeScheme(final String operationName) {
+    Type getResultType(final String operationName) {
         
         this.readLock.lock();
         
@@ -215,7 +215,7 @@ final class OperationImplRegistry {
                 throw new OperationNotFoundException(operationName);
             }
             
-            return operationRegistryInfo.getResultTypeScheme();
+            return operationRegistryInfo.getResultType();
             
         } finally {
             this.readLock.unlock();

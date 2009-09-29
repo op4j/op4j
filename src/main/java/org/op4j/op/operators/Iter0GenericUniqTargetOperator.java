@@ -28,7 +28,6 @@ import java.util.Set;
 import org.apache.commons.lang.Validate;
 import org.op4j.exceptions.InvalidOperatorCastException;
 import org.op4j.exceptions.MethodInvocationException;
-import org.op4j.exceptions.NonUniqueResultException;
 import org.op4j.exceptions.NullTargetException;
 import org.op4j.op.interfaces.GenericUniqTargetShapeableAsIterableOperator;
 import org.op4j.operation.Result;
@@ -54,9 +53,6 @@ public final class Iter0GenericUniqTargetOperator<T>
     
     Iter0GenericUniqTargetOperator(final Type operatorType, final Result result) {
         super(operatorType, result);
-        if (result.getResultCount() != 1) {
-            throw new NonUniqueResultException(result.getTypeScheme());
-        }
     }
 
     

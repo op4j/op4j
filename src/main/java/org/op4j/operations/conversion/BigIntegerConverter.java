@@ -43,7 +43,7 @@ public final class BigIntegerConverter extends NonDecimalNumberConverter {
 
     
     @Override
-    public Type getUniqResultType() {
+    public Type getResultType() {
         return Types.BIG_INTEGER;
     }
 

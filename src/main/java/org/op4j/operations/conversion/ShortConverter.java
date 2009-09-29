@@ -41,7 +41,7 @@ public final class ShortConverter extends NonDecimalNumberConverter {
 
     
     @Override
-    public Type getUniqResultType() {
+    public Type getResultType() {
         return Types.SHORT;
     }
 

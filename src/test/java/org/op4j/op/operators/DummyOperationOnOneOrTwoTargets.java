@@ -7,6 +7,8 @@ import org.op4j.operation.Arguments;
 import org.op4j.operation.ArgumentsTypeScheme;
 import org.op4j.operation.OperationImpl;
 import org.op4j.operation.Result;
+import org.op4j.type.Type;
+import org.op4j.type.Types;
 import org.op4j.typescheme.TypeScheme;
 import org.op4j.typescheme.TypeSchemes;
 
@@ -64,7 +66,7 @@ public class DummyOperationOnOneOrTwoTargets extends OperationImpl {
     }
 
     @Override
-    public TypeScheme registerResultTypeScheme() {
-        return TypeSchemes.STRING_TYPESCHEME;
+    public Type getResultType() {
+        return Types.STRING;
     }    	    
 }	

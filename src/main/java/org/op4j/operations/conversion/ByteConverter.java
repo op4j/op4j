@@ -41,7 +41,7 @@ public final class ByteConverter extends NonDecimalNumberConverter {
 
     
     @Override
-    public Type getUniqResultType() {
+    public Type getResultType() {
         return Types.BYTE;
     }
 

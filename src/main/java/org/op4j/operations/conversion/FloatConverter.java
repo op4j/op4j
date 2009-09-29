@@ -41,7 +41,7 @@ public final class FloatConverter extends DecimalNumberConverter {
 
 
     @Override
-    public Type getUniqResultType() {
+    public Type getResultType() {
         return Types.FLOAT;
     }
 

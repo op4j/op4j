@@ -19,7 +19,7 @@ import org.op4j.op.interfaces.Filter;
 import org.op4j.op.interfaces.FilterContext;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
-import org.op4j.util.UniqResultConverterUtils;
+import org.op4j.util.ConverterUtils;
 
 public class Iter1IterableListMapOperatorTest extends TestCase {
 
@@ -54,7 +54,7 @@ public class Iter1IterableListMapOperatorTest extends TestCase {
 	}
 
 	public final void testExecUniqClassOfXStringObjectArray() {
-		Map<Integer, List<String>> result = this.integerCalendarOperator.eachExecUniqValue(String.class, UniqResultConverterUtils.unsafeGetOperationNameForResultType(Types.STRING))
+		Map<Integer, List<String>> result = this.integerCalendarOperator.eachExecUniqValue(String.class, ConverterUtils.unsafeGetOperationNameForResultType(Types.STRING))
 			.getTargets().get(0).get();
 		
 		for (Map.Entry<Integer, ArrayList<Calendar>> entry : this.integerListCalendarMap.entrySet()) {

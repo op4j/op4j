@@ -24,7 +24,7 @@ import java.util.List;
 
 import org.apache.commons.lang.Validate;
 import org.op4j.op.interfaces.Filter;
-import org.op4j.op.interfaces.GenericUniqTargetIteratingShapeableAsIterableOperator;
+import org.op4j.op.interfaces.GenericUniqTargetIteratingOperator;
 import org.op4j.op.interfaces.MapBuilder;
 import org.op4j.type.Type;
 import org.op4j.type.Types;
@@ -42,7 +42,7 @@ import org.op4j.typescheme.TypeSchemes;
  */
 public final class Iter2GenericUniqTargetOperator<T> 
         extends Iter2GenericAbstractOperator<T>
-        implements GenericUniqTargetIteratingShapeableAsIterableOperator<T> {
+        implements GenericUniqTargetIteratingOperator<T> {
 
     
     Iter2GenericUniqTargetOperator(final Class<T> operatorClass, final List<? extends Iter1GenericUniqTargetOperator<T>> targetOps) {
@@ -147,141 +147,6 @@ public final class Iter2GenericUniqTargetOperator<T>
         return unsafeCall(resultClass, methodName,OperatorUtils.safeEvaluationParameters(parameters));
     }
 
-
-    final <X> Iter2IterableArrayOperator<X> unsafeAsArray(final Class<X> ofClass) {
-        final List<Iter1IterableArrayOperator<X>> components = 
-            new ArrayList<Iter1IterableArrayOperator<X>>();
-        for (Iter1GenericUniqTargetOperator<T> target : getTargets()) {
-            components.add(target.unsafeAsArray(ofClass));
-        }
-        return new Iter2IterableArrayOperator<X>(ofClass, components);
-    }
-
-
-    public final Iter2IterableArrayOperator<?> asArray() {
-        return unsafeAsArray(null);
-    }
-
-
-    public final <X> Iter2IterableArrayOperator<X> asArray(final Class<X> ofClass) {
-        Validate.notNull(ofClass, "Class cannot be null");
-        return unsafeAsArray(ofClass);
-    }
-
-
-    final <X> Iter2IterableListOperator<X> unsafeAsList(final Class<X> ofClass) {
-        final List<Iter1IterableListOperator<X>> components = 
-            new ArrayList<Iter1IterableListOperator<X>>();
-        for (Iter1GenericUniqTargetOperator<T> target : getTargets()) {
-            components.add(target.unsafeAsList(ofClass));
-        }
-        return new Iter2IterableListOperator<X>(ofClass, components);
-    }
-
-
-    public final Iter2IterableListOperator<?> asList() {
-        return unsafeAsList(null);
-    }
-
-
-    public final <X> Iter2IterableListOperator<X> asList(final Class<X> ofClass) {
-        Validate.notNull(ofClass, "Class cannot be null");
-        return unsafeAsList(ofClass);
-    }
-
-
-    final <X> Iter2IterableSetOperator<X> unsafeAsSet(final Class<X> ofClass) {
-        final List<Iter1IterableSetOperator<X>> components = 
-            new ArrayList<Iter1IterableSetOperator<X>>();
-        for (Iter1GenericUniqTargetOperator<T> target : getTargets()) {
-            components.add(target.unsafeAsSet(ofClass));
-        }
-        return new Iter2IterableSetOperator<X>(ofClass, components);
-    }
-
-
-    public final Iter2IterableSetOperator<?> asSet() {
-        return unsafeAsSet(null);
-    }
-
-
-    public final <X> Iter2IterableSetOperator<X> asSet(final Class<X> ofClass) {
-        Validate.notNull(ofClass, "Class cannot be null");
-        return unsafeAsSet(ofClass);
-    }
-
-
-    final <K,V> Iter2IterableMapOperator<K, V> unsafeAsMap(
-            final Class<K> keyClass, final Class<V> valueClass) {
-        final List<Iter1IterableMapOperator<K,V>> components = 
-            new ArrayList<Iter1IterableMapOperator<K,V>>();
-        for (Iter1GenericUniqTargetOperator<T> target : getTargets()) {
-            components.add(target.unsafeAsMap(keyClass, valueClass));
-        }
-        return new Iter2IterableMapOperator<K,V>(keyClass, valueClass, components);
-    }
-
-
-    public final Iter2IterableMapOperator<?,?> asMap() {
-        return unsafeAsMap(null, null);
-    }
-
-
-    public final <K,V> Iter2IterableMapOperator<K, V> asMap(
-            final Class<K> keyClass, final Class<V> valueClass) {
-        Validate.notNull(keyClass, "Key class cannot be null");
-        Validate.notNull(valueClass, "Value class cannot be null");
-        return unsafeAsMap(keyClass, valueClass);
-    }
-
-
-    final <K,V> Iter2IterableListMapOperator<K,V> unsafeAsListMap(
-            final Class<K> keyClass, final Class<V> valueClass) {
-        final List<Iter1IterableListMapOperator<K,V>> components = 
-            new ArrayList<Iter1IterableListMapOperator<K,V>>();
-        for (Iter1GenericUniqTargetOperator<T> target : getTargets()) {
-            components.add(target.unsafeAsListMap(keyClass, valueClass));
-        }
-        return new Iter2IterableListMapOperator<K,V>(keyClass, valueClass, components);
-    }
-
-
-    public final Iter2IterableListMapOperator<?,?> asListMap() {
-        return unsafeAsListMap(null, null);
-    }
-
-
-    public final <K, V> Iter2IterableListMapOperator<K,V> asListMap(
-            final Class<K> keyClass, final Class<V> valueClass) {
-        Validate.notNull(keyClass, "Key class cannot be null");
-        Validate.notNull(valueClass, "Value class cannot be null");
-        return unsafeAsListMap(keyClass, valueClass);
-    }
-
-
-    final <K,V> Iter2IterableSetMapOperator<K,V> unsafeAsSetMap(
-            final Class<K> keyClass, final Class<V> valueClass) {
-        final List<Iter1IterableSetMapOperator<K,V>> components = 
-            new ArrayList<Iter1IterableSetMapOperator<K,V>>();
-        for (Iter1GenericUniqTargetOperator<T> target : getTargets()) {
-            components.add(target.unsafeAsSetMap(keyClass, valueClass));
-        }
-        return new Iter2IterableSetMapOperator<K,V>(keyClass, valueClass, components);
-    }
-
-
-    public final Iter2IterableSetMapOperator<?,?> asSetMap() {
-        return unsafeAsSetMap(null, null);
-    }
-
-
-    public final <K, V> Iter2IterableSetMapOperator<K,V> asSetMap(
-            final Class<K> keyClass, final Class<V> valueClass) {
-        Validate.notNull(keyClass, "Key class cannot be null");
-        Validate.notNull(valueClass, "Value class cannot be null");
-        return unsafeAsSetMap(keyClass, valueClass);
-    }
-    
 
     final <K,V> Iter2MapEntryOperator<K,V> unsafeAsMapEntry(
             final Class<K> keyClass, final Class<V> valueClass) {
@@ -584,7 +449,7 @@ public final class Iter2GenericUniqTargetOperator<T>
         Validate.notNull(mapBuilder, "Map builder cannot be null");
         return unsafeUneachListMap(null, null, mapBuilder);
     }
-    
+
     
     final <K> Iter1IterableSetMapOperator<K,T> unsafeUneachSetMap(
             final Class<K> keyClass, final String keyExpression, final List<Object> expParams) {

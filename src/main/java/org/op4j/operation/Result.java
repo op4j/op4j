@@ -19,13 +19,8 @@
  */
 package org.op4j.operation;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import org.apache.commons.lang.Validate;
-import org.op4j.exceptions.NonUniqueResultException;
-import org.op4j.typescheme.TypeScheme;
+import org.op4j.type.Type;
 
 /**
  * 
@@ -38,42 +33,28 @@ public final class Result {
 
     private static final long serialVersionUID = -7047131254509263235L;
 
-    private final TypeScheme typeScheme;
-    private final List<Object> results;
+    private final Type type;
+    private final Object resultObject;
 
     
     
-    Result(final TypeScheme typeScheme, final Object[] resultObjects) {
+    Result(final Type type, final Object resultObject) {
         
         super();
-        Validate.isTrue(typeScheme.getComponentCount() == resultObjects.length, 
-                "Result objects do not correspond to Type Scheme: " + typeScheme.getName());
-        this.typeScheme = typeScheme;
-        this.results = Arrays.asList(resultObjects);
+        Validate.notNull(type, "Cannot create Result with null type");
+        this.type = type;
+        this.resultObject = resultObject;
         
     }
 
 
 
-    public TypeScheme getTypeScheme() {
-        return this.typeScheme;
+    public Type getType() {
+        return this.type;
     }
 
-    public List<?> getResults() {
-        return Collections.unmodifiableList(this.results);
+    public Object getResultObject() {
+        return this.resultObject;
     }
-
-    public Object getUniqueResult() {
-        if (getResultCount() > 1) {
-            throw new NonUniqueResultException(this.typeScheme);
-        }
-        return this.results.get(0);
-    }
-
-    
-    public int getResultCount() {
-        return this.results.size();
-    }
-
     
 }

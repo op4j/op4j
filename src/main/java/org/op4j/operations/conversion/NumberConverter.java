@@ -43,7 +43,7 @@ import org.op4j.typescheme.TypeSchemes;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public abstract class NumberConverter extends UniqResultConverter {
+public abstract class NumberConverter extends Converter {
 
     
 	private static final long serialVersionUID = -5697885898106100776L;

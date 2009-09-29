@@ -22,6 +22,7 @@ package org.op4j.op.operators;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
@@ -40,8 +41,8 @@ import org.op4j.operation.Result;
 import org.op4j.type.Type;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeScheme;
+import org.op4j.util.ConverterUtils;
 import org.op4j.util.OgnlUtils;
-import org.op4j.util.UniqResultConverterUtils;
 
 
 /**
@@ -145,7 +146,7 @@ abstract class Iter0GenericAbstractOperator<T>
     @SuppressWarnings("unchecked")
     Iter0GenericAbstractOperator(final Type operatorType, final Result result) {
         
-        super((List) prepareTargets(result.getTypeScheme(), result.getResults()));
+        super((List) prepareTargets(result.getType(), Arrays.asList(result.getResultObject())));
         this.operatorType = operatorType;
         
         /*
@@ -285,7 +286,7 @@ abstract class Iter0GenericAbstractOperator<T>
             final Class<X> resultClass, final Type resultType, final List<Object> parameters) {
         return unsafeExecUniq(
                 resultClass,
-                UniqResultConverterUtils.unsafeGetOperationNameForResultType(resultType),
+                ConverterUtils.unsafeGetOperationNameForResultType(resultType),
                 parameters);
     }
 

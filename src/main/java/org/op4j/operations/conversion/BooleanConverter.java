@@ -39,7 +39,7 @@ import org.op4j.typescheme.TypeSchemes;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class BooleanConverter extends UniqResultConverter {
+public final class BooleanConverter extends Converter {
 
     private static final long serialVersionUID = -6201905960716013742L;
 
@@ -80,7 +80,7 @@ public final class BooleanConverter extends UniqResultConverter {
 
     
     @Override
-    public Type getUniqResultType() {
+    public Type getResultType() {
         return Types.BOOLEAN;
     }
     

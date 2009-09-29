@@ -46,7 +46,7 @@ import org.op4j.typescheme.TypeSchemes;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class CalendarConverter extends UniqResultConverter {
+public final class CalendarConverter extends Converter {
 
 	private static final long serialVersionUID = 234124839280883047L;
 
@@ -199,7 +199,7 @@ public final class CalendarConverter extends UniqResultConverter {
     
     
     @Override
-    public Type getUniqResultType() {
+    public Type getResultType() {
         return Types.CALENDAR;
     }
     

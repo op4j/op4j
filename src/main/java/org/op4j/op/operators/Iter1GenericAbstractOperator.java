@@ -31,7 +31,7 @@ import org.op4j.op.interfaces.Evaluator;
 import org.op4j.op.interfaces.MapBuilder;
 import org.op4j.type.Type;
 import org.op4j.type.Types;
-import org.op4j.util.UniqResultConverterUtils;
+import org.op4j.util.ConverterUtils;
 
 
 /**
@@ -167,7 +167,7 @@ abstract class Iter1GenericAbstractOperator<T>
             final Class<X> resultClass, final Type resultType, final List<Object> parameters) {
         return unsafeExecUniq(
                 resultClass,
-                UniqResultConverterUtils.unsafeGetOperationNameForResultType(resultType), 
+                ConverterUtils.unsafeGetOperationNameForResultType(resultType), 
                 parameters);
     }
  

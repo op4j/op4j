@@ -18,7 +18,7 @@ import org.op4j.operation.SetMapTarget;
 import org.op4j.operations.conversion.exceptions.ConversionException;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
-import org.op4j.util.UniqResultConverterUtils;
+import org.op4j.util.ConverterUtils;
 
 public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 
@@ -96,20 +96,20 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 
 	public final void testExec() {
 		assertEquals(this.aCalendar200006221300, this.calendarOperator.exec(
-				UniqResultConverterUtils.unsafeGetOperationNameForResultType(Types.CALENDAR)).as(Calendar.class)
+				ConverterUtils.unsafeGetOperationNameForResultType(Types.CALENDAR)).as(Calendar.class)
 				.getTargetObjects().get(0));
 	}
 
 	public final void testExecUniqStringObjectArray() {
 		assertEquals(this.aCalendar200006221300, this.calendarOperator.execUniq(
-				UniqResultConverterUtils.unsafeGetOperationNameForResultType(Types.CALENDAR)).as(Calendar.class)
+				ConverterUtils.unsafeGetOperationNameForResultType(Types.CALENDAR)).as(Calendar.class)
 				.get());
 	}
 
 	public final void testExecUniqClassOfXStringObjectArray() {
 		assertEquals(this.aCalendar200006221300, this.calendarOperator.execUniq(
 				Calendar.class,
-				UniqResultConverterUtils.unsafeGetOperationNameForResultType(Types.CALENDAR))
+				ConverterUtils.unsafeGetOperationNameForResultType(Types.CALENDAR))
 				.get());
 	}
 

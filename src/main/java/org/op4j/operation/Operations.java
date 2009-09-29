@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.typescheme.TypeScheme;
+import org.op4j.type.Type;
 
 /**
  * 
@@ -58,10 +58,10 @@ public final class Operations {
     
     
     
-    public static TypeScheme getResultTypeScheme(final String operationName) {
+    public static Type getResultType(final String operationName) {
         Validate.notNull(operationName, "Operation name cannot be null");
         final OperationImplRegistry operationRegistry = OperationImplRegistry.getInstance();
-        return operationRegistry.getResultTypeScheme(operationName);
+        return operationRegistry.getResultType(operationName);
     }
 
     

@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.typescheme.TypeScheme;
+import org.op4j.type.Type;
 
 /**
  * 
@@ -37,7 +37,7 @@ import org.op4j.typescheme.TypeScheme;
 public final class OperationInfo {
     
     private final String operationName;
-    private final TypeScheme resultTypeScheme;
+    private final Type resultType;
     private final Map<String,Set<ArgumentsTypeScheme>> matchedArgumentTypeSchemeSetsByOperationImplClassName;
     private final Set<ArgumentsTypeScheme> matchedArgumentTypeSchemeAggregateSet;
     
@@ -45,7 +45,7 @@ public final class OperationInfo {
     OperationInfo(final OperationRegistryInfo operationRegistryInfo) {
         
         this.operationName = operationRegistryInfo.getOperationName();
-        this.resultTypeScheme = operationRegistryInfo.getResultTypeScheme();
+        this.resultType = operationRegistryInfo.getResultType();
         this.matchedArgumentTypeSchemeSetsByOperationImplClassName = 
             Collections.unmodifiableMap(
                     operationRegistryInfo.getMatchedArgumentTypeSchemeSetsByOperationImplClassName());
@@ -65,8 +65,8 @@ public final class OperationInfo {
     }
     
     
-    public TypeScheme getResultTypeScheme() {
-        return this.resultTypeScheme;
+    public Type getResultType() {
+        return this.resultType;
     }
 
     
@@ -88,7 +88,7 @@ public final class OperationInfo {
     
     @Override
     public String toString() {
-        return this.resultTypeScheme + " " + this.operationName + 
+        return this.resultType + " " + this.operationName + 
                 " " + this.matchedArgumentTypeSchemeAggregateSet;
         
     }

@@ -13,7 +13,7 @@ import org.op4j.op.interfaces.EvalContext;
 import org.op4j.op.interfaces.Evaluator;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
-import org.op4j.util.UniqResultConverterUtils;
+import org.op4j.util.ConverterUtils;
 
 public class Iter1IterableListOperatorTest extends TestCase {
 
@@ -65,7 +65,7 @@ public class Iter1IterableListOperatorTest extends TestCase {
 	public final void testEachExecUniqClassOfXStringObjectArray() {
 		
 		List<String> result = this.integerOperator.eachExecUniq(String.class, 
-				UniqResultConverterUtils.unsafeGetOperationNameForResultType(Types.STRING))
+				ConverterUtils.unsafeGetOperationNameForResultType(Types.STRING))
 				.uneachList().get().get(0);
 		
 		int index = 0;

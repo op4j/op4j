@@ -12,7 +12,7 @@ import org.op4j.op.interfaces.EvalContext;
 import org.op4j.op.interfaces.Evaluator;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
-import org.op4j.util.UniqResultConverterUtils;
+import org.op4j.util.ConverterUtils;
 
 public class Iter0MapEntryOperatorTest extends TestCase {
 
@@ -59,17 +59,17 @@ public class Iter0MapEntryOperatorTest extends TestCase {
 
 	public final void testExecUniqStringObjectArray() {				
 		assertEquals(Integer.valueOf(333), this.integerIntegerAsStringOperator
-				.execUniqOnValue(UniqResultConverterUtils.unsafeGetOperationNameForResultType(Types.INTEGER))
+				.execUniqOnValue(ConverterUtils.unsafeGetOperationNameForResultType(Types.INTEGER))
 				.getTargetObjects().get(0).getValue());
 	}
 
 	public final void testExecUniqClassOfXStringObjectArray() {
 		assertEquals(Integer.valueOf(333), this.integerIntegerAsStringOperator
-				.execUniqOnValue(Integer.class, UniqResultConverterUtils.unsafeGetOperationNameForResultType(Types.INTEGER))
+				.execUniqOnValue(Integer.class, ConverterUtils.unsafeGetOperationNameForResultType(Types.INTEGER))
 				.getTargetObjects().get(0).getValue());
 		assertTrue(Types.forName("Map$Entry<?, Integer>")
 				.isAssignableFrom(this.integerIntegerAsStringOperator
-				.execUniqOnValue(Integer.class, UniqResultConverterUtils.unsafeGetOperationNameForResultType(Types.INTEGER))
+				.execUniqOnValue(Integer.class, ConverterUtils.unsafeGetOperationNameForResultType(Types.INTEGER))
 				.getTargets().get(0).getIntendedType()));
 	}
 

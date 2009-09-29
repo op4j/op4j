@@ -76,15 +76,38 @@ final class TypeSchemeUtil {
                     
                 } else {
                     
-                    final String[] tokenParts = StringUtils.split(tokens[i], " ");
-                    switch (tokenParts.length) {
+                    /*
+                     * We look for "Type componentName" definitions, but as spaces can happen
+                     * inside type parameterizations (like "Map<Integer, String>"), we should
+                     * be sure we only use 'level 0' tokens.
+                     */
+                    final List<String> tokenParts = new ArrayList<String>();
+                    int currentTokenStart = 0;
+                    int typeParamLevel = 0;
+                    for (int j = 0; j < tokens[i].length(); j++) {
+                        if (tokens[i].charAt(j) == '<') {
+                            typeParamLevel++;
+                        } else if (tokens[i].charAt(j) == '>') {
+                            typeParamLevel--;
+                        } else if (tokens[i].charAt(j) == ' ') {
+                            if (typeParamLevel == 0 && currentTokenStart != j) {
+                                tokenParts.add(tokens[i].substring(currentTokenStart, j));
+                                currentTokenStart = j + 1;
+                            } else if (typeParamLevel == 0 && currentTokenStart == j) {
+                                currentTokenStart = j + 1;
+                            }
+                        }
+                    }
+                    tokenParts.add(tokens[i].substring(currentTokenStart));
+                    
+                    switch (tokenParts.size()) {
                         case 1:  
                             // no name specified for the component
-                            typeSchemeComponents[i] = new TypeSchemeComponent(Types.forName(tokenParts[0]));
+                            typeSchemeComponents[i] = new TypeSchemeComponent(Types.forName(tokenParts.get(0)));
                             break;
                         case 2:
                             // a name was specified for the component
-                            typeSchemeComponents[i] = new TypeSchemeComponent(Types.forName(tokenParts[0]), tokenParts[1]);
+                            typeSchemeComponents[i] = new TypeSchemeComponent(Types.forName(tokenParts.get(0)), tokenParts.get(1));
                             break;
                         default:
                             throw new TypeSchemeRecognitionException(typeSchemeName);
@@ -320,5 +343,6 @@ final class TypeSchemeUtil {
     private TypeSchemeUtil() {
         super();
     }
+    
     
 }

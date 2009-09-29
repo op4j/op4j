@@ -48,7 +48,7 @@ import org.op4j.typescheme.TypeSchemes;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class StringConverter extends UniqResultConverter {
+public final class StringConverter extends Converter {
 
     private static final long serialVersionUID = -6827019507219840066L;
     
@@ -237,7 +237,7 @@ public final class StringConverter extends UniqResultConverter {
     }
     
     @Override
-    public Type getUniqResultType() {
+    public Type getResultType() {
         return Types.STRING;
     }
         

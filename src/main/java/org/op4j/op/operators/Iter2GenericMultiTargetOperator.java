@@ -25,7 +25,7 @@ import java.util.List;
 import org.apache.commons.lang.Validate;
 import org.op4j.exceptions.NonUniqueTargetException;
 import org.op4j.op.interfaces.Filter;
-import org.op4j.op.interfaces.GenericMultiTargetIteratingShapeableAsIterableOperator;
+import org.op4j.op.interfaces.GenericMultiTargetIteratingOperator;
 import org.op4j.type.Type;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeScheme;
@@ -41,7 +41,7 @@ import org.op4j.typescheme.TypeSchemes;
  */
 public final class Iter2GenericMultiTargetOperator<T> 
         extends Iter2GenericAbstractOperator<T>
-        implements GenericMultiTargetIteratingShapeableAsIterableOperator<T> {
+        implements GenericMultiTargetIteratingOperator<T> {
     
 
     
@@ -177,108 +177,6 @@ public final class Iter2GenericMultiTargetOperator<T>
             throw new NonUniqueTargetException();
         }
         return unsafeChoose(0);
-    }
-
-    
-    final Iter2IterableMapOperator<T,T> unsafeBuildMap() {
-        final List<Iter1IterableMapOperator<T,T>> components = 
-            new ArrayList<Iter1IterableMapOperator<T,T>>();
-        for (Iter1GenericMultiTargetOperator<T> targetOp : this.getTargets()) {
-            components.add(targetOp.unsafeBuildMap());
-        }
-        return new Iter2IterableMapOperator<T,T>(getOperatorType(), getOperatorType(), components);
-    }
-
-    
-    public final Iter2IterableMapOperator<T,T> buildMap() {
-        return unsafeBuildMap();
-    }
-
-    
-    final <K,V> Iter2IterableMapOperator<K,V> unsafeBuildMap(
-            final Class<K> keyClass, final Class<V> valueClass) {
-        final List<Iter1IterableMapOperator<K,V>> components = 
-            new ArrayList<Iter1IterableMapOperator<K,V>>();
-        for (Iter1GenericMultiTargetOperator<T> targetOp : this.getTargets()) {
-            components.add(targetOp.unsafeBuildMap(keyClass,valueClass));
-        }
-        return new Iter2IterableMapOperator<K,V>(keyClass, valueClass, components);
-    }
-
-    
-    public final <K,V> Iter2IterableMapOperator<K,V> buildMap(
-            final Class<K> keyClass, final Class<V> valueClass) {
-        Validate.notNull(keyClass, "Key class cannot be null");
-        Validate.notNull(valueClass, "Value class cannot be null");
-        return unsafeBuildMap(keyClass, valueClass);
-    }
-
-    
-    final Iter2IterableListMapOperator<T,T> unsafeBuildListMap() {
-        final List<Iter1IterableListMapOperator<T,T>> components = 
-            new ArrayList<Iter1IterableListMapOperator<T,T>>();
-        for (Iter1GenericMultiTargetOperator<T> targetOp : this.getTargets()) {
-            components.add(targetOp.unsafeBuildListMap());
-        }
-        return new Iter2IterableListMapOperator<T,T>(getOperatorType(), getOperatorType(), components);
-    }
-
-    
-    public final Iter2IterableListMapOperator<T,T> buildListMap() {
-        return unsafeBuildListMap();
-    }
-
-    
-    final <K,V> Iter2IterableListMapOperator<K,V> unsafeBuildListMap(
-            final Class<K> keyClass, final Class<V> valueClass) {
-        final List<Iter1IterableListMapOperator<K,V>> components = 
-            new ArrayList<Iter1IterableListMapOperator<K,V>>();
-        for (Iter1GenericMultiTargetOperator<T> targetOp : this.getTargets()) {
-            components.add(targetOp.unsafeBuildListMap(keyClass,valueClass));
-        }
-        return new Iter2IterableListMapOperator<K,V>(keyClass, valueClass, components);
-    }
-
-    
-    public final <K,V> Iter2IterableListMapOperator<K,V> buildListMap(
-            final Class<K> keyClass, final Class<V> valueClass) {
-        Validate.notNull(keyClass, "Key class cannot be null");
-        Validate.notNull(valueClass, "Value class cannot be null");
-        return unsafeBuildListMap(keyClass, valueClass);
-    }
-
-    
-    final Iter2IterableSetMapOperator<T,T> unsafeBuildSetMap() {
-        final List<Iter1IterableSetMapOperator<T,T>> components = 
-            new ArrayList<Iter1IterableSetMapOperator<T,T>>();
-        for (Iter1GenericMultiTargetOperator<T> targetOp : this.getTargets()) {
-            components.add(targetOp.unsafeBuildSetMap());
-        }
-        return new Iter2IterableSetMapOperator<T,T>(getOperatorType(), getOperatorType(), components);
-    }
-
-    
-    public final Iter2IterableSetMapOperator<T,T> buildSetMap() {
-        return unsafeBuildSetMap();
-    }
-
-    
-    final <K,V> Iter2IterableSetMapOperator<K,V> unsafeBuildSetMap(
-            final Class<K> keyClass, final Class<V> valueClass) {
-        final List<Iter1IterableSetMapOperator<K,V>> components = 
-            new ArrayList<Iter1IterableSetMapOperator<K,V>>();
-        for (Iter1GenericMultiTargetOperator<T> targetOp : this.getTargets()) {
-            components.add(targetOp.unsafeBuildSetMap(keyClass,valueClass));
-        }
-        return new Iter2IterableSetMapOperator<K,V>(keyClass, valueClass, components);
-    }
-
-    
-    public final <K,V> Iter2IterableSetMapOperator<K,V> buildSetMap(
-            final Class<K> keyClass, final Class<V> valueClass) {
-        Validate.notNull(keyClass, "Key class cannot be null");
-        Validate.notNull(valueClass, "Value class cannot be null");
-        return unsafeBuildSetMap(keyClass, valueClass);
     }
 
 

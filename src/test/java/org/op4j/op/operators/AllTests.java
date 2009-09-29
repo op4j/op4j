@@ -10,26 +10,17 @@ public class AllTests {
 		//$JUnit-BEGIN$
 		suite.addTestSuite(Iter1IterableListOperatorTest.class);
 		suite.addTestSuite(Iter0IterableMapOperatorTest.class);
-		suite.addTestSuite(Iter2IterableMapOperatorTest.class);
 		suite.addTestSuite(Iter1MapEntryOperatorTest.class);
-		suite.addTestSuite(Iter2IterableListOperatorTest.class);
-		suite.addTestSuite(Iter2IterableSetOperatorTest.class);
 		suite.addTestSuite(Iter0IterableListOperatorTest.class);
-		suite.addTestSuite(Iter3GenericUniqTargetOperatorTest.class);
 		suite.addTestSuite(Iter0MapEntryOperatorTest.class);
-		suite.addTestSuite(Iter2IterableArrayOperatorTest.class);
 		suite.addTestSuite(Iter0IterableSetMapOperatorTest.class);
-		suite.addTestSuite(Iter2IterableSetMapOperatorTest.class);
 		suite.addTestSuite(Iter2GenericMultiTargetOperatorTest.class);
 		suite.addTestSuite(Iter1IterableListMapOperatorTest.class);
 		suite.addTestSuite(Iter0GenericUniqTargetOperatorTest.class);
-		suite.addTestSuite(Iter2IterableListMapOperatorTest.class);
-		suite.addTestSuite(Iter3MapEntryOperatorTest.class);
 		suite.addTestSuite(Iter1IterableArrayOperatorTest.class);
 		suite.addTestSuite(Iter0IterableListMapOperatorTest.class);
 		suite.addTestSuite(Iter1IterableMapOperatorTest.class);
 		suite.addTestSuite(Iter0IterableArrayOperatorTest.class);
-		suite.addTestSuite(Iter3GenericMultiTargetOperatorTest.class);
 		suite.addTestSuite(Iter2GenericUniqTargetOperatorTest.class);
 		suite.addTestSuite(Iter1IterableSetOperatorTest.class);
 		suite.addTestSuite(Iter1GenericUniqTargetOperatorTest.class);

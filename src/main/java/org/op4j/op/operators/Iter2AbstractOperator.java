@@ -65,7 +65,6 @@ abstract class Iter2AbstractOperator<T>
         // Iteration is empty, no elements.
         return 0;
     }
-
     
 
     

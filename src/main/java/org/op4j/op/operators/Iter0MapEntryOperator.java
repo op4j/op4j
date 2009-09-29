@@ -41,7 +41,7 @@ import org.op4j.typescheme.TypeSchemes;
 import org.op4j.util.MapEntry;
 import org.op4j.util.OgnlUtils;
 import org.op4j.util.TypeAggregationUtils;
-import org.op4j.util.UniqResultConverterUtils;
+import org.op4j.util.ConverterUtils;
 
 
 
@@ -261,7 +261,7 @@ public final class Iter0MapEntryOperator<K,V>
             final Class<X> resultClass, final Type resultType, final List<Object> parameters) {
         return unsafeExecUniqOnValue(
                 resultClass,
-                UniqResultConverterUtils.unsafeGetOperationNameForResultType(resultType),
+                ConverterUtils.unsafeGetOperationNameForResultType(resultType),
                 parameters);
     }
 

@@ -31,7 +31,7 @@ import org.op4j.operation.SetMapTarget;
 import org.op4j.operation.Target;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
-import org.op4j.util.UniqResultConverterUtils;
+import org.op4j.util.ConverterUtils;
 
 public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 
@@ -282,19 +282,19 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 
 	public final void testExec() {
 		assertEquals(this.aDate200006221300AsString, this.calendarOperator200006221300.exec(
-				UniqResultConverterUtils.unsafeGetOperationNameForResultType(Types.STRING), this.pattern).as(String.class)
+				ConverterUtils.unsafeGetOperationNameForResultType(Types.STRING), this.pattern).as(String.class)
 				.getTargetObjects().get(0));
 	}
 
 	public final void testExecUniqStringObjectArray() {
 		assertEquals(this.aDate200006221300AsString, this.calendarOperator200006221300.execUniq(
-				UniqResultConverterUtils.unsafeGetOperationNameForResultType(Types.STRING), this.pattern).as(String.class)
+				ConverterUtils.unsafeGetOperationNameForResultType(Types.STRING), this.pattern).as(String.class)
 				.get());
 	}
 
 	public final void testExecUniqClassOfXStringObjectArray() {
 		assertEquals(this.aDate200006221300AsString, this.calendarOperator200006221300.execUniq(String.class,
-				UniqResultConverterUtils.unsafeGetOperationNameForResultType(Types.STRING), this.pattern)
+				ConverterUtils.unsafeGetOperationNameForResultType(Types.STRING), this.pattern)
 				.get());
 	}
 
