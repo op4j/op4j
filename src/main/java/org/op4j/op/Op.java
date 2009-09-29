@@ -155,22 +155,22 @@ public final class Op {
     }
 
     
-    public static Iter0IterableListMapOperator<?,?> onListMap(final Map<?,List<?>> target) {
+    public static Iter0IterableListMapOperator<?,?> onListMap(final Map<?,? extends List<?>> target) {
         return OperatorUtils.createOnListMap(target);
     }
 
     
-    public static <K,V> Iter0IterableListMapOperator<K,V> onListMap(final Class<K> keyClass, final Class<V> valueClass, final Map<K,List<V>> target) {
+    public static <K,V> Iter0IterableListMapOperator<K,V> onListMap(final Class<K> keyClass, final Class<V> valueClass, final Map<K,? extends List<V>> target) {
         return OperatorUtils.createOnListMap(keyClass, valueClass, target);
     }
 
     
-    public static Iter0IterableSetMapOperator<?,?> onSetMap(final Map<?,Set<?>> target) {
+    public static Iter0IterableSetMapOperator<?,?> onSetMap(final Map<?,? extends Set<?>> target) {
         return OperatorUtils.createOnSetMap(target);
     }
 
     
-    public static <K,V> Iter0IterableSetMapOperator<K,V> onSetMap(final Class<K> keyClass, final Class<V> valueClass, final Map<K,Set<V>> target) {
+    public static <K,V> Iter0IterableSetMapOperator<K,V> onSetMap(final Class<K> keyClass, final Class<V> valueClass, final Map<K,? extends Set<V>> target) {
         return OperatorUtils.createOnSetMap(keyClass, valueClass, target);
     }
 

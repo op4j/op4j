@@ -97,23 +97,23 @@ public final class OperatorUtils {
 
     
     @SuppressWarnings("unchecked")
-    public static Iter0IterableListMapOperator<?,?> createOnListMap(final Map<?,List<?>> target) {
+    public static Iter0IterableListMapOperator<?,?> createOnListMap(final Map<?,? extends List<?>> target) {
         return new Iter0IterableListMapOperator((Type) null, (Type) null, target);
     }
 
     
-    public static <K,V> Iter0IterableListMapOperator<K,V> createOnListMap(final Class<K> keyClass, final Class<V> valueClass, final Map<K,List<V>> target) {
+    public static <K,V> Iter0IterableListMapOperator<K,V> createOnListMap(final Class<K> keyClass, final Class<V> valueClass, final Map<K,? extends List<V>> target) {
         return new Iter0IterableListMapOperator<K,V>(keyClass, valueClass, target);
     }
 
     
     @SuppressWarnings("unchecked")
-    public static Iter0IterableSetMapOperator<?,?> createOnSetMap(final Map<?,Set<?>> target) {
+    public static Iter0IterableSetMapOperator<?,?> createOnSetMap(final Map<?,? extends Set<?>> target) {
         return new Iter0IterableSetMapOperator((Type) null, (Type) null, target);
     }
 
     
-    public static <K,V> Iter0IterableSetMapOperator<K,V> createOnSetMap(final Class<K> keyClass, final Class<V> valueClass, final Map<K,Set<V>> target) {
+    public static <K,V> Iter0IterableSetMapOperator<K,V> createOnSetMap(final Class<K> keyClass, final Class<V> valueClass, final Map<K,? extends Set<V>> target) {
         return new Iter0IterableSetMapOperator<K,V>(keyClass, valueClass, target);
     }
 
