@@ -41,8 +41,8 @@ public interface IterableArrayMapOperator<K,V>
     public IterableArrayMapOperator<K,V> sortKeys();
     public IterableArrayMapOperator<K,V> sortKeys(final Comparator<? super K> comparator);
     
-    public IterableArrayMapOperator<K,V> sortValueLists();
-    public IterableArrayMapOperator<K,V> sortValueLists(final Comparator<? super V> comparator);
+    public IterableArrayMapOperator<K,V> sortValueArrays();
+    public IterableArrayMapOperator<K,V> sortValueArrays(final Comparator<? super V> comparator);
     
     public GenericUniqTargetIteratingOperator<V> eachValue();
     

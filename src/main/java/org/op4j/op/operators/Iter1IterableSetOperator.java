@@ -366,7 +366,57 @@ public final class Iter1IterableSetOperator<T>
         Validate.notNull(mapBuilder, "Map builder cannot be null");
         return unsafeGeneric().unsafeUneachSetMap(null, null, mapBuilder);
     }
+
     
+    public final Iter0IterableArrayMapOperator<?,Set<T>> uneachArrayMap(
+            final String keyExpression, final Object... optionalExpParams) {
+        Validate.notNull(keyExpression, "Key expression cannot be null");
+        return unsafeGeneric().unsafeUneachArrayMap(null, keyExpression, OperatorUtils.safeEvaluationParameters(optionalExpParams)); 
+    }
+    
+    
+    public final <K> Iter0IterableArrayMapOperator<K,Set<T>> uneachArrayMap(
+            final Class<K> keyClass, final String keyExpression, final Object... optionalExpParams) {
+        Validate.notNull(keyClass, "Key class cannot be null");
+        Validate.notNull(keyExpression, "Key expression cannot be null");
+        return unsafeGeneric().unsafeUneachArrayMap(keyClass, keyExpression, OperatorUtils.safeEvaluationParameters(optionalExpParams));
+    }
+    
+    
+    public final Iter0IterableArrayMapOperator<?,?> uneachArrayMap(
+            final String keyExpression, final String valueExpression, final Object... optionalExpParams) {
+        Validate.notNull(keyExpression, "Key expression cannot be null");
+        Validate.notNull(valueExpression, "Value expression cannot be null");
+        return unsafeGeneric().unsafeUneachArrayMap(null, null, keyExpression, valueExpression, OperatorUtils.safeEvaluationParameters(optionalExpParams)); 
+    }
+    
+    
+    public final <K,V> Iter0IterableArrayMapOperator<K,V> uneachArrayMap(
+            final Class<K> keyClass, final Class<V> valueClass, 
+            final String keyExpression, final String valueExpression, final Object... optionalExpParams) {
+        Validate.notNull(keyClass, "Key class cannot be null");
+        Validate.notNull(valueClass, "Value class cannot be null");
+        Validate.notNull(keyExpression, "Key expression cannot be null");
+        Validate.notNull(valueExpression, "Value expression cannot be null");
+        return unsafeGeneric().unsafeUneachArrayMap(keyClass, valueClass, keyExpression, valueExpression, OperatorUtils.safeEvaluationParameters(optionalExpParams));
+    }
+    
+    
+    public final <K,V> Iter0IterableArrayMapOperator<K,V> uneachArrayMap(
+            final Class<K> keyClass, final Class<V> valueClass, final MapBuilder<Set<T>,K,V> mapBuilder) {
+        Validate.notNull(keyClass, "Key class cannot be null");
+        Validate.notNull(valueClass, "Value expression cannot be null");
+        Validate.notNull(mapBuilder, "Map builder cannot be null");
+        return unsafeGeneric().unsafeUneachArrayMap(keyClass, valueClass, mapBuilder);
+    }
+    
+    
+    public final Iter0IterableArrayMapOperator<?,?> uneachArrayMap(
+            final MapBuilder<Set<T>,Object,Object> mapBuilder) {
+        Validate.notNull(mapBuilder, "Map builder cannot be null");
+        return unsafeGeneric().unsafeUneachArrayMap(null, null, mapBuilder);
+    }
+
 
     final Iter1IterableSetOperator<T> unsafeEachFilter(
             final String expression, final List<Object> parameters) {
@@ -585,6 +635,59 @@ public final class Iter1IterableSetOperator<T>
             final MapBuilder<T,Object,Object> mapBuilder) {
         Validate.notNull(mapBuilder, "Map builder cannot be null");
         return unsafeFlat().unsafeBuildSetMap(null, null, mapBuilder);
+    }
+
+    
+    public final Iter1IterableArrayMapOperator<?,T> toArrayMap(
+            final String keyExpression, final Object... optionalExpParams) {
+        Validate.notNull(keyExpression, "Key expression cannot be null");
+        return unsafeFlat().unsafeBuildArrayMap(null, keyExpression, OperatorUtils.safeEvaluationParameters(optionalExpParams));
+    }
+
+    
+    public final <K> Iter1IterableArrayMapOperator<K,T> toArrayMap(
+            final Class<K> keyClass, final String keyExpression, final Object... optionalExpParams) {
+        Validate.notNull(keyClass, "Key class cannot be null");
+        Validate.notNull(keyExpression, "Key expression cannot be null");
+        return unsafeFlat().unsafeBuildArrayMap(keyClass, keyExpression, OperatorUtils.safeEvaluationParameters(optionalExpParams));
+    }
+
+    
+    public final Iter1IterableArrayMapOperator<?,?> toArrayMap(
+            final String keyExpression, final String valueExpression, 
+            final Object... optionalExpParams) {
+        Validate.notNull(keyExpression, "Key expression cannot be null");
+        Validate.notNull(valueExpression, "Value expression cannot be null");
+        return unsafeFlat().unsafeBuildArrayMap(null, null, keyExpression, valueExpression, OperatorUtils.safeEvaluationParameters(optionalExpParams));
+    }
+
+    
+    public final <K,V> Iter1IterableArrayMapOperator<K,V> toArrayMap(
+            final Class<K> keyClass, final Class<V> valueClass, 
+            final String keyExpression, final String valueExpression, 
+            final Object... optionalExpParams) {
+        Validate.notNull(keyClass, "Key class cannot be null");
+        Validate.notNull(valueClass, "Value class cannot be null");
+        Validate.notNull(keyExpression, "Key expression cannot be null");
+        Validate.notNull(valueExpression, "Value expression cannot be null");
+        return unsafeFlat().unsafeBuildArrayMap(keyClass, valueClass, keyExpression, valueExpression, OperatorUtils.safeEvaluationParameters(optionalExpParams));
+    }
+
+    
+    public final <K,V> Iter1IterableArrayMapOperator<K,V> toArrayMap(
+            final Class<K> keyClass, final Class<V> valueClass,
+            final MapBuilder<T,K,V> mapBuilder) {
+        Validate.notNull(keyClass, "Key class cannot be null");
+        Validate.notNull(valueClass, "Value class cannot be null");
+        Validate.notNull(mapBuilder, "Map builder cannot be null");
+        return unsafeFlat().unsafeBuildArrayMap(keyClass, valueClass, mapBuilder);
+    }
+
+    
+    public final Iter1IterableArrayMapOperator<?,?> toArrayMap(
+            final MapBuilder<T,Object,Object> mapBuilder) {
+        Validate.notNull(mapBuilder, "Map builder cannot be null");
+        return unsafeFlat().unsafeBuildArrayMap(null, null, mapBuilder);
     }
 
     

@@ -532,6 +532,89 @@ public final class Iter2GenericUniqTargetOperator<T>
         Validate.notNull(mapBuilder, "Map builder cannot be null");
         return unsafeUneachSetMap(null, null, mapBuilder);
     }
+
+    
+    final <K> Iter1IterableArrayMapOperator<K,T> unsafeUneachArrayMap(
+            final Class<K> keyClass, final String keyExpression, final List<Object> expParams) {
+        final List<Iter0IterableArrayMapOperator<K,T>> components = 
+            new ArrayList<Iter0IterableArrayMapOperator<K,T>>();
+        for (Iter1GenericUniqTargetOperator<T> targetOp : this.getTargets()) {
+            components.add(targetOp.unsafeUneachArrayMap(keyClass,keyExpression,expParams));
+        }
+        return new Iter1IterableArrayMapOperator<K,T>(keyClass, getOperatorType(), components);
+    }
+    
+    
+    public final Iter1IterableArrayMapOperator<?,T> uneachArrayMap(
+            final String keyExpression, final Object... optionalExpParams) {
+        Validate.notNull(keyExpression, "Key expression cannot be null");
+        return unsafeUneachArrayMap(null, keyExpression, OperatorUtils.safeEvaluationParameters(optionalExpParams)); 
+    }
+    
+    
+    public final <K> Iter1IterableArrayMapOperator<K,T> uneachArrayMap(
+            final Class<K> keyClass, final String keyExpression, final Object... optionalExpParams) {
+        Validate.notNull(keyClass, "Key class cannot be null");
+        Validate.notNull(keyExpression, "Key expression cannot be null");
+        return unsafeUneachArrayMap(keyClass, keyExpression, OperatorUtils.safeEvaluationParameters(optionalExpParams));
+    }
+    
+    
+    final <K,V> Iter1IterableArrayMapOperator<K,V> unsafeUneachArrayMap(
+            final Class<K> keyClass, final Class<V> valueClass, 
+            final String keyExpression, final String valueExpression, 
+            final List<Object> expParams) {
+        final List<Iter0IterableArrayMapOperator<K,V>> components = 
+            new ArrayList<Iter0IterableArrayMapOperator<K,V>>();
+        for (Iter1GenericUniqTargetOperator<T> targetOp : this.getTargets()) {
+            components.add(targetOp.unsafeUneachArrayMap(keyClass,valueClass,keyExpression,valueExpression,expParams));
+        }
+        return new Iter1IterableArrayMapOperator<K,V>(keyClass, valueClass, components);
+    }
+    
+    
+    public final Iter1IterableArrayMapOperator<?,?> uneachArrayMap(
+            final String keyExpression, final String valueExpression, final Object... optionalExpParams) {
+        Validate.notNull(keyExpression, "Key expression cannot be null");
+        Validate.notNull(valueExpression, "Value expression cannot be null");
+        return unsafeUneachArrayMap(null, null, keyExpression, valueExpression, OperatorUtils.safeEvaluationParameters(optionalExpParams)); 
+    }
+    
+    
+    public final <K,V> Iter1IterableArrayMapOperator<K,V> uneachArrayMap(
+            final Class<K> keyClass, final Class<V> valueClass, 
+            final String keyExpression, final String valueExpression, final Object... optionalExpParams) {
+        Validate.notNull(keyClass, "Key class cannot be null");
+        Validate.notNull(valueClass, "Value class cannot be null");
+        Validate.notNull(keyExpression, "Key expression cannot be null");
+        Validate.notNull(valueExpression, "Value expression cannot be null");
+        return unsafeUneachArrayMap(keyClass, valueClass, keyExpression, valueExpression, OperatorUtils.safeEvaluationParameters(optionalExpParams));
+    }
+    
+    
+    final <K,V> Iter1IterableArrayMapOperator<K,V> unsafeUneachArrayMap(
+            final Class<K> keyClass, final Class<V> valueClass, final MapBuilder<T,K,V> mapBuilder) {
+        final List<Iter0IterableArrayMapOperator<K,V>> components = 
+            new ArrayList<Iter0IterableArrayMapOperator<K,V>>();
+        for (Iter1GenericUniqTargetOperator<T> targetOp : this.getTargets()) {
+            components.add(targetOp.unsafeUneachArrayMap(keyClass, valueClass, mapBuilder));
+        }
+        return new Iter1IterableArrayMapOperator<K,V>(keyClass, valueClass, components);
+    }
+    
+    
+    public final <K,V> Iter1IterableArrayMapOperator<K,V> uneachArrayMap(
+            final Class<K> keyClass, final Class<V> valueClass, final MapBuilder<T,K,V> mapBuilder) {
+        Validate.notNull(mapBuilder, "Map builder cannot be null");
+        return unsafeUneachArrayMap(keyClass, valueClass, mapBuilder);
+    }
+    
+    
+    public final Iter1IterableArrayMapOperator<?,?> uneachArrayMap(
+            final MapBuilder<T,Object,Object> mapBuilder) {
+        Validate.notNull(mapBuilder, "Map builder cannot be null");
+        return unsafeUneachArrayMap(null, null, mapBuilder);
+    }
     
     
 }

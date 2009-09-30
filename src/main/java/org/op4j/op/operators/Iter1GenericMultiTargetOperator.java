@@ -285,6 +285,41 @@ public class Iter1GenericMultiTargetOperator<T>
     }
 
 
+    final Iter1IterableArrayMapOperator<T,T> unsafeBuildArrayMap() {
+        final List<Iter0IterableArrayMapOperator<T,T>> components = 
+            new ArrayList<Iter0IterableArrayMapOperator<T,T>>();
+        for (Iter0GenericMultiTargetOperator<T> targetOp : this.getTargets()) {
+            components.add(targetOp.unsafeBuildArrayMap());
+        }
+        return new Iter1IterableArrayMapOperator<T,T>(getOperatorType(), getOperatorType(), components);
+    }
+
+    
+    public final Iter1IterableArrayMapOperator<T,T> buildArrayMap() {
+        return unsafeBuildArrayMap();
+    }
+
+    
+    final <K,V> Iter1IterableArrayMapOperator<K,V> unsafeBuildArrayMap(
+            final Class<K> keyClass, final Class<V> valueClass) {
+        final List<Iter0IterableArrayMapOperator<K,V>> components = 
+            new ArrayList<Iter0IterableArrayMapOperator<K,V>>();
+        for (Iter0GenericMultiTargetOperator<T> targetOp : this.getTargets()) {
+            components.add(targetOp.unsafeBuildArrayMap(keyClass,valueClass));
+        }
+        return new Iter1IterableArrayMapOperator<K,V>(keyClass, valueClass, components);
+    }
+
+    
+    public final <K,V> Iter1IterableArrayMapOperator<K,V> buildArrayMap(
+            final Class<K> keyClass, final Class<V> valueClass) {
+        Validate.notNull(keyClass, "Key class cannot be null");
+        Validate.notNull(valueClass, "Value class cannot be null");
+        return unsafeBuildArrayMap(keyClass, valueClass);
+    }
+    
+    
+
     final Iter1GenericMultiTargetOperator<T> unsafeFilter(
             final String expression, final List<Object> parameters) {
 

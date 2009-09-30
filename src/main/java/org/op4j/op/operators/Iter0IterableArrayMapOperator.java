@@ -237,17 +237,17 @@ public final class Iter0IterableArrayMapOperator<K,V>
     }
 
 
-    final Iter0IterableArrayMapOperator<K,V> unsafeSortValueLists() {
-        return unsafeSortValueLists(null);
+    final Iter0IterableArrayMapOperator<K,V> unsafeSortValueArrays() {
+        return unsafeSortValueArrays(null);
     }
 
 
-    public final Iter0IterableArrayMapOperator<K,V> sortValueLists() {
-        return unsafeSortValueLists();
+    public final Iter0IterableArrayMapOperator<K,V> sortValueArrays() {
+        return unsafeSortValueArrays();
     }
 
 
-    final Iter0IterableArrayMapOperator<K,V> unsafeSortValueLists(final Comparator<? super V> comparator) {
+    final Iter0IterableArrayMapOperator<K,V> unsafeSortValueArrays(final Comparator<? super V> comparator) {
         
         final ArrayMapTarget<K,V> target = getTargets().get(0);
         
@@ -282,9 +282,9 @@ public final class Iter0IterableArrayMapOperator<K,V>
     }
 
 
-    public final Iter0IterableArrayMapOperator<K,V> sortValueLists(final Comparator<? super V> comparator) {
+    public final Iter0IterableArrayMapOperator<K,V> sortValueArrays(final Comparator<? super V> comparator) {
         // Comparator can be null. This is to adhere to the Collections.sort(...) API.
-        return unsafeSortValueLists(comparator);
+        return unsafeSortValueArrays(comparator);
     }
     
     

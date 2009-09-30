@@ -435,6 +435,16 @@ public final class Iter2MapEntryOperator<K,V>
     }
 
 
+    final Iter1IterableArrayMapOperator<K,V> unsafeUneachArrayMap() {
+        final List<Iter0IterableArrayMapOperator<K,V>> components = 
+            new ArrayList<Iter0IterableArrayMapOperator<K,V>>();
+        for (Iter1MapEntryOperator<K,V> target : getTargets()) {
+            components.add(target.unsafeUneachArrayMap());
+        }
+        return new Iter1IterableArrayMapOperator<K,V>(getOperatorKeyType(), getOperatorValueType(), components);
+    }
+
+
     public final Iter1IterableMapOperator<K,V> uneachMap() {
         return unsafeUneachMap();
     }
@@ -447,6 +457,11 @@ public final class Iter2MapEntryOperator<K,V>
 
     public final Iter1IterableSetMapOperator<K,V> uneachSetMap() {
         return unsafeUneachSetMap();
+    }
+
+
+    public final Iter1IterableArrayMapOperator<K,V> uneachArrayMap() {
+        return unsafeUneachArrayMap();
     }
     
     
