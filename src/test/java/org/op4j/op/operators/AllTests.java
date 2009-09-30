@@ -14,11 +14,13 @@ public class AllTests {
 		suite.addTestSuite(Iter0IterableListOperatorTest.class);
 		suite.addTestSuite(Iter0MapEntryOperatorTest.class);
 		suite.addTestSuite(Iter0IterableSetMapOperatorTest.class);
+        suite.addTestSuite(Iter0IterableArrayMapOperatorTest.class);
 		suite.addTestSuite(Iter2GenericMultiTargetOperatorTest.class);
 		suite.addTestSuite(Iter1IterableListMapOperatorTest.class);
 		suite.addTestSuite(Iter0GenericUniqTargetOperatorTest.class);
 		suite.addTestSuite(Iter1IterableArrayOperatorTest.class);
 		suite.addTestSuite(Iter0IterableListMapOperatorTest.class);
+        suite.addTestSuite(Iter1IterableArrayMapOperatorTest.class);
 		suite.addTestSuite(Iter1IterableMapOperatorTest.class);
 		suite.addTestSuite(Iter0IterableArrayOperatorTest.class);
 		suite.addTestSuite(Iter2GenericUniqTargetOperatorTest.class);
