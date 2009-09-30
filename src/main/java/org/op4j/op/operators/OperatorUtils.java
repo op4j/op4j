@@ -119,6 +119,17 @@ public final class OperatorUtils {
 
     
     @SuppressWarnings("unchecked")
+    public static Iter0IterableArrayMapOperator<?,?> createOnArrayMap(final Map<?,? extends Object[]> target) {
+        return new Iter0IterableArrayMapOperator((Type) null, (Type) null, target);
+    }
+
+    
+    public static <K,V> Iter0IterableArrayMapOperator<K,V> createOnArrayMap(final Class<K> keyClass, final Class<V> valueClass, final Map<K,? extends Object[]> target) {
+        return new Iter0IterableArrayMapOperator<K,V>(keyClass, valueClass, target);
+    }
+
+    
+    @SuppressWarnings("unchecked")
     public static Iter0MapEntryOperator<?,?> createOnMapEntry(final Map.Entry<?,?> target) {
         return new Iter0MapEntryOperator((Type) null, (Type) null, target);
     }

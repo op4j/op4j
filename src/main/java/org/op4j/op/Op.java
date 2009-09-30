@@ -26,6 +26,7 @@ import java.util.Set;
 
 import org.op4j.op.operators.Iter0GenericMultiTargetOperator;
 import org.op4j.op.operators.Iter0GenericUniqTargetOperator;
+import org.op4j.op.operators.Iter0IterableArrayMapOperator;
 import org.op4j.op.operators.Iter0IterableArrayOperator;
 import org.op4j.op.operators.Iter0IterableListMapOperator;
 import org.op4j.op.operators.Iter0IterableListOperator;
@@ -172,6 +173,16 @@ public final class Op {
     
     public static <K,V> Iter0IterableSetMapOperator<K,V> onSetMap(final Class<K> keyClass, final Class<V> valueClass, final Map<K,? extends Set<V>> target) {
         return OperatorUtils.createOnSetMap(keyClass, valueClass, target);
+    }
+
+    
+    public static Iter0IterableArrayMapOperator<?,?> onArrayMap(final Map<?,? extends Object[]> target) {
+        return OperatorUtils.createOnArrayMap(target);
+    }
+
+    
+    public static <K,V> Iter0IterableArrayMapOperator<K,V> onArrayMap(final Class<K> keyClass, final Class<V> valueClass, final Map<K,? extends Object[]> target) {
+        return OperatorUtils.createOnArrayMap(keyClass, valueClass, target);
     }
 
     

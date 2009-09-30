@@ -31,7 +31,7 @@ public class ArrayMapTarget<K,V> extends Target<Map<K,V[]>> {
     
     
     public ArrayMapTarget(final Type keyType, final Type valueType, final Map<K,V[]> object) {
-        super(TypeAggregationUtils.createListMapOfType(keyType,valueType), object);
+        super(TypeAggregationUtils.createArrayMapOfType(keyType,valueType), object);
         this.keyType = keyType;
         this.valueType = valueType;
     }

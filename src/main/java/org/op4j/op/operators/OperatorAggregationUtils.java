@@ -453,7 +453,7 @@ final class OperatorAggregationUtils {
                 }
             }
             if (entry.getValue() != null) {
-                for (Object valueComponent : (Set<Object>) entry.getValue()) {
+                for (Object valueComponent : (Object[]) entry.getValue()) {
                     if (valueComponent != null && valueClass != null) {
                         if (!valueClass.isAssignableFrom(valueComponent.getClass())) {
                             throw new InvalidExpressionResultClassException(entry.getValue().getClass(), valueClass);
@@ -651,7 +651,7 @@ final class OperatorAggregationUtils {
                 }
             }
             if (entry.getValue() != null) {
-                for (Object valueComponent : (Set<Object>) entry.getValue()) {
+                for (Object valueComponent : (Object[]) entry.getValue()) {
                     if (valueComponent != null && valueClass != null) {
                         if (!valueClass.isAssignableFrom(valueComponent.getClass())) {
                             throw new InvalidOperatorCastException(entry.getValue().getClass(), valueClass);

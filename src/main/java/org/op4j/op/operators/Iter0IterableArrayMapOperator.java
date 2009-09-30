@@ -135,7 +135,7 @@ public final class Iter0IterableArrayMapOperator<K,V>
     
     private static void checkOperatorType(final Type operatorKeyType, final Type operatorValueType, final Type intendedType) {
         final Type operatorType = 
-            TypeAggregationUtils.createListMapOfType(operatorKeyType, operatorValueType);
+            TypeAggregationUtils.createArrayMapOfType(operatorKeyType, operatorValueType);
         if (!operatorType.isAssignableFrom(intendedType)) {
             throw new InvalidOperatorCastException(operatorType, intendedType);
         }
