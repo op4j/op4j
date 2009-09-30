@@ -54,6 +54,10 @@ public interface GenericUniqTargetShapeableAsIterableOperator<T>
     
     public IterableSetMapOperator<?,?> asSetMap();
     public <K,V> IterableSetMapOperator<K,V> asSetMap(final Class<K> keyClass, Class<V> valueClass);
+    
+    
+    public IterableArrayMapOperator<?,?> asArrayMap();
+    public <K,V> IterableArrayMapOperator<K,V> asArrayMap(final Class<K> keyClass, Class<V> valueClass);
 
     
 }

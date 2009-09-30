@@ -360,6 +360,40 @@ public final class Iter0GenericUniqTargetOperator<T>
         return unsafeAsSetMap(keyClass, valueClass);
     }
 
+    @SuppressWarnings("unchecked")
+    final <K,V> Iter0IterableArrayMapOperator<K,V> unsafeAsArrayMap(final Class<K> keyClass,
+            final Class<V> valueClass) {
+        
+        // Note that "as" operations make casts dissapear
+
+        final T targetObject = getTargetObjects().get(0);
+
+        if (targetObject != null) {
+            if (!Map.class.isAssignableFrom(targetObject.getClass())) {
+                throw new InvalidOperatorCastException(targetObject.getClass(),Map.class);
+            }
+        }
+
+        return new Iter0IterableArrayMapOperator<K,V>(
+                    keyClass,
+                    valueClass,
+                    (Map<?,Object[]>) getTargetObjects().get(0));
+        
+    }
+
+
+    public final Iter0IterableArrayMapOperator<?,?> asArrayMap() {
+        return unsafeAsArrayMap(null, null);
+    }
+
+
+    public final <K, V> Iter0IterableArrayMapOperator<K,V> asArrayMap(final Class<K> keyClass,
+            final Class<V> valueClass) {
+        Validate.notNull(keyClass, "Key class cannot be null");
+        Validate.notNull(valueClass, "Value class cannot be null");
+        return unsafeAsArrayMap(keyClass, valueClass);
+    }
+    
 
     final <K,V> Iter0MapEntryOperator<K,V> unsafeAsMapEntry(
             final Class<K> keyClass, final Class<V> valueClass) {

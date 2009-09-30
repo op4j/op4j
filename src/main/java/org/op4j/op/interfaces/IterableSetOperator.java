@@ -114,5 +114,18 @@ public interface IterableSetOperator<T>
             final String keyExpression, final String valueExpression, final Object... optionalExpParams);
     public IterableSetMapOperator<?,?> toSetMap(final MapBuilder<T,Object,Object> mapBuilder);
     public <K,V> IterableSetMapOperator<K,V> toSetMap(final Class<K> keyClass, final Class<V> valueClass, final MapBuilder<T,K,V> mapBuilder);
+    
+    
+    public IterableArrayMapOperator<?,T> toArrayMap(
+            final String keyExpression, final Object... optionalExpParams);
+    public <K> IterableArrayMapOperator<K,T> toArrayMap(
+            final Class<K> keyClass, final String keyExpression, final Object... optionalExpParams);
+    public IterableArrayMapOperator<?,?> toArrayMap(
+            final String keyExpression, final String valueExpression, final Object... optionalExpParams);
+    public <K,V> IterableArrayMapOperator<K,V> toArrayMap(
+            final Class<K> keyClass, final Class<V> valueClass, 
+            final String keyExpression, final String valueExpression, final Object... optionalExpParams);
+    public IterableArrayMapOperator<?,?> toArrayMap(final MapBuilder<T,Object,Object> mapBuilder);
+    public <K,V> IterableArrayMapOperator<K,V> toArrayMap(final Class<K> keyClass, final Class<V> valueClass, final MapBuilder<T,K,V> mapBuilder);
 
 }

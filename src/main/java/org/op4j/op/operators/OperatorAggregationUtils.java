@@ -20,6 +20,7 @@
 package org.op4j.op.operators;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -303,6 +304,41 @@ final class OperatorAggregationUtils {
 
     
     @SuppressWarnings("unchecked")
+    static <K,T> Map<K,T[]> buildArrayMapAggregatedTarget(
+    		final Type valueType,
+            final List<T> objects, final Class<K> keyClass, 
+            final String keyExpression, final List<Object> expParams) {
+
+        /*
+         * Create the new map
+         */
+        
+    	// intentionally raw
+        final Map newMap = new LinkedHashMap();
+        for (Object object : objects) {
+            final Object key = OgnlUtils.getValueByOgnlExpression(object, keyExpression, expParams);
+            final Object value = object; 
+            addNewArrayMapEntry(newMap,valueType,key,value);
+        }
+        
+        /*
+         * Check the keys are assignable from the specified class
+         */
+        
+        for (Object key : newMap.keySet()) {
+            if (key != null && keyClass != null) {
+                if (!keyClass.isAssignableFrom(key.getClass())) {
+                    throw new InvalidExpressionResultClassException(key.getClass(), keyClass);
+                }
+            }
+        }
+        
+        return newMap;
+        
+    }
+
+    
+    @SuppressWarnings("unchecked")
     static <K,V,T> Map<K,List<V>> buildListMapAggregatedTarget(
             final List<T> objects, final Class<K> keyClass, final Class<V> valueClass, 
             final String keyExpression, final String valueExpression, final List<Object> expParams) {
@@ -387,6 +423,51 @@ final class OperatorAggregationUtils {
     }
 
     
+    @SuppressWarnings("unchecked")
+    static <K,V,T> Map<K,V[]> buildArrayMapAggregatedTarget(
+            final List<T> objects, final Class<K> keyClass, final Class<V> valueClass, 
+            final String keyExpression, final String valueExpression, final List<Object> expParams) {
+
+    	final Type newValueType =
+    		(valueClass != null? Types.getRawTypeForClass(valueClass) : Types.OBJECT);
+    	
+        /*
+         * Create the new map
+         */
+        
+        final Map newMap = new LinkedHashMap();
+        for (Object object : objects) {
+            final Object key = OgnlUtils.getValueByOgnlExpression(object, keyExpression, expParams);
+            final Object value = OgnlUtils.getValueByOgnlExpression(object, valueExpression, expParams);
+            addNewArrayMapEntry(newMap,newValueType,key,value);
+        }
+        
+        /*
+         * Check the keys and values are assignable from the specified class
+         */
+        
+        for (Map.Entry<?,?> entry : ((Set<Map.Entry<?,?>>)newMap.entrySet())) {
+            if (entry.getKey() != null && keyClass != null) {
+                if (!keyClass.isAssignableFrom(entry.getKey().getClass())) {
+                    throw new InvalidExpressionResultClassException(entry.getKey().getClass(), keyClass);
+                }
+            }
+            if (entry.getValue() != null) {
+                for (Object valueComponent : (Set<Object>) entry.getValue()) {
+                    if (valueComponent != null && valueClass != null) {
+                        if (!valueClass.isAssignableFrom(valueComponent.getClass())) {
+                            throw new InvalidExpressionResultClassException(entry.getValue().getClass(), valueClass);
+                        }
+                    }
+                }
+            }
+        }
+        
+        return newMap;
+        
+    }
+
+    
     static <K,V,T> Map<K,List<V>> buildListMapAggregatedTarget(
             final List<T> objects, 
             final MapBuilder<T,K,V> mapBuilder) {
@@ -412,6 +493,25 @@ final class OperatorAggregationUtils {
             final K key = mapBuilder.getKey(object);
             final V value = mapBuilder.getValue(object); 
             addNewSetMapEntry(newMap,key,value);
+        }
+        
+        return newMap;
+        
+    }
+
+    
+    static <K,V,T> Map<K,V[]> buildArrayMapAggregatedTarget(
+            final Class<V> valueClass, final List<T> objects, 
+            final MapBuilder<T,K,V> mapBuilder) {
+
+    	final Type newValueType =
+    		(valueClass != null? Types.getRawTypeForClass(valueClass) : Types.OBJECT);
+        
+        final Map<K,V[]> newMap = new LinkedHashMap<K,V[]>();
+        for (T object : objects) {
+            final K key = mapBuilder.getKey(object);
+            final V value = mapBuilder.getValue(object);
+            addNewArrayMapEntry(newMap,newValueType, key, value);
         }
         
         return newMap;
@@ -515,6 +615,57 @@ final class OperatorAggregationUtils {
     }
 
     
+    @SuppressWarnings("unchecked")
+    static <T,K,V> Map<K,V[]> buildArrayMapAggregatedTarget(
+            final List<T> objects, final Class<K> keyClass, final Class<V> valueClass) {
+
+    	final Type newValueType =
+    		(valueClass != null? Types.getRawTypeForClass(valueClass) : Types.OBJECT);
+    	
+        /*
+         * Create the map. Will throw an exception if not possible (e.g. odd number of targets)
+         */
+        
+    	// intentionally raw
+        final Map newMap = new LinkedHashMap();
+        final Iterator<T> objectsIter = objects.iterator();
+        while (objectsIter.hasNext()) {
+            final Object key = objectsIter.next();
+            if (!objectsIter.hasNext()) {
+                throw new ConversionException(
+                        "Targets must be in a number divisible by two for a map to " +
+                        "be created from them");
+            }
+            final Object value = objectsIter.next();
+            addNewArrayMapEntry(newMap,newValueType,key,value);
+        }
+        
+        /*
+         * Check the keys and values are assignable from the specified class
+         */
+        
+        for (Map.Entry<?,?> entry : ((Set<Map.Entry<?,?>>)newMap.entrySet())) {
+            if (entry.getKey() != null && keyClass != null) {
+                if (!keyClass.isAssignableFrom(entry.getKey().getClass())) {
+                    throw new InvalidOperatorCastException(entry.getKey().getClass(), keyClass);
+                }
+            }
+            if (entry.getValue() != null) {
+                for (Object valueComponent : (Set<Object>) entry.getValue()) {
+                    if (valueComponent != null && valueClass != null) {
+                        if (!valueClass.isAssignableFrom(valueComponent.getClass())) {
+                            throw new InvalidOperatorCastException(entry.getValue().getClass(), valueClass);
+                        }
+                    }
+                }
+            }
+        }
+        
+        return newMap;
+        
+    }
+
+    
     static <K,V> Map<K,V> buildMapFromMapEntryTargets(
             final List<Map.Entry<K,V>> objects) {
         
@@ -558,6 +709,21 @@ final class OperatorAggregationUtils {
         return newMap;
         
     }
+
+    
+    static <K,V> Map<K,V[]> buildArrayMapFromMapEntryTargets(
+            final Type valueType, final List<Map.Entry<K,V>> objects) {
+        
+        final Map<K,V[]> newMap = new LinkedHashMap<K,V[]>();
+        for (Map.Entry<K,V> object : objects) {
+            if (object == null) {
+                throw new NullTargetException("uneachSetMap");
+            }
+            addNewArrayMapEntry(newMap, valueType, object.getKey(), object.getValue());
+        }
+        return newMap;
+        
+    }
     
     
     
@@ -595,6 +761,63 @@ final class OperatorAggregationUtils {
             ((Map) newMap).put(key, valuesForKey);
         }
         valuesForKey.add(value);
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    private static <K,V> void addNewArrayMapEntry(final Map<K,V[]> newMap, 
+            final Type valueType, final K key, final V value) {
+    	
+    	/*
+    	 * First, compute the list of new values for this key
+    	 */
+    	
+        V[] valuesForKey = newMap.get(key);
+        final List<V> newValuesForKeyList = new ArrayList<V>(); 
+        if (valuesForKey != null) {
+        	newValuesForKeyList.addAll(Arrays.asList(valuesForKey));
+        }
+        newValuesForKeyList.add(value);
+
+        /*
+         * Arrays are special because they are instantiated on a specific class,
+         * and as such, the type to be used must be computed BEFORE creating the
+         * array itself with the converter.
+         */
+        
+        Type arrayType = null;
+        if (valueType == null || valueType.equals(Types.OBJECT)) {
+            /*
+             * If operatorType is NULL or OBJECT it means that we are at a 
+             * either a <?> or an <Object> operator, and this means that 
+             * the array type which will be instanced will have to
+             * be computed from the types of the target objects
+             */
+        	arrayType = 
+                TypeAggregationUtils.computeMostSpecificCommonClassType(newValuesForKeyList).increaseArrayDimensions();
+        } else {
+            /*
+             * If operatorType is not OBJECT it means that we are at a <T> 
+             * operator, and this means that the array type which will be instanced 
+             * will be T[]. 
+             */
+        	arrayType = valueType.increaseArrayDimensions();
+        }
+        
+        V[] valueZeroArray = null;
+		try {
+			valueZeroArray = (V[]) arrayType.newInstance();
+		} catch (InstantiationException e) {
+			// this should never happen
+			throw new ArrayInstantiationException(arrayType, e);
+		} catch (IllegalAccessException e) {
+			// this should never happen
+			throw new ArrayInstantiationException(arrayType, e);
+		}
+        final V[] newValuesForKey = newValuesForKeyList.toArray(valueZeroArray); 
+        
+        newMap.put(key, newValuesForKey);
+        
     }
     
     

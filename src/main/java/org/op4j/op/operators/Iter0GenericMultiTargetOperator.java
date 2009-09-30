@@ -348,6 +348,47 @@ public final class Iter0GenericMultiTargetOperator<T>
         Validate.notNull(valueClass, "Value class cannot be null");
         return unsafeBuildSetMap(keyClass, valueClass);
     }
+
+    
+    @SuppressWarnings("unchecked")
+    final Iter0IterableArrayMapOperator<T,T> unsafeBuildArrayMap() {
+        final Map<T,T[]> newTargetObject = 
+            OperatorAggregationUtils.buildArrayMapAggregatedTarget(
+                    getTargetObjects(), 
+                    (getOperatorType() != null?
+                            (Class<T>)getOperatorType().getRawClass() : null),
+                    (getOperatorType() != null?
+                            (Class<T>)getOperatorType().getRawClass() : null));
+        return new Iter0IterableArrayMapOperator<T,T>(
+                    getOperatorType(),
+                    getOperatorType(),
+                    newTargetObject);
+    }
+
+    
+    public final Iter0IterableArrayMapOperator<T,T> buildArrayMap() {
+        return unsafeBuildArrayMap();
+    }
+
+    
+    final <K,V> Iter0IterableArrayMapOperator<K,V> unsafeBuildArrayMap(
+            final Class<K> keyClass, final Class<V> valueClass) {
+        final Map<K,V[]> newTargetObject = 
+            OperatorAggregationUtils.buildArrayMapAggregatedTarget(
+                    getTargetObjects(), keyClass, valueClass);
+        return new Iter0IterableArrayMapOperator<K,V>(
+                    Types.getRawTypeForClass(keyClass),
+                    Types.getRawTypeForClass(valueClass),
+                    newTargetObject);
+    }
+
+    
+    public final <K,V> Iter0IterableArrayMapOperator<K,V> buildArrayMap(
+            final Class<K> keyClass, final Class<V> valueClass) {
+        Validate.notNull(keyClass, "Key class cannot be null");
+        Validate.notNull(valueClass, "Value class cannot be null");
+        return unsafeBuildArrayMap(keyClass, valueClass);
+    }
     
     
 }

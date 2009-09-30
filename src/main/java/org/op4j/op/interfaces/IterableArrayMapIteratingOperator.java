@@ -19,7 +19,6 @@
  */
 package org.op4j.op.interfaces;
 
-import java.util.List;
 import java.util.Map;
 
 
@@ -30,18 +29,18 @@ import java.util.Map;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface IterableListMapIteratingOperator<K,V> 
-        extends IterableListMapOperator<K,V>, IteratingOperator<Map<K,List<V>>> {
+public interface IterableArrayMapIteratingOperator<K,V> 
+        extends IterableArrayMapOperator<K,V>, IteratingOperator<Map<K,V[]>> {
     
-    public IterableListOperator<Map<K,List<V>>> uneachList();
+    public IterableListOperator<Map<K,V[]>> uneachList();
     
-    public IterableSetOperator<Map<K,List<V>>> uneachSet();
+    public IterableSetOperator<Map<K,V[]>> uneachSet();
     
-    public IterableArrayOperator<Map<K,List<V>>> uneachArray();
+    public IterableArrayOperator<Map<K,V[]>> uneachArray();
     
-    public IterableMapOperator<?,Map<K,List<V>>> uneachMap(
+    public IterableMapOperator<?,Map<K,V[]>> uneachMap(
             final String keyExpression, final Object... optionalExpParams);
-    public <X> IterableMapOperator<X,Map<K,List<V>>> uneachMap(
+    public <X> IterableMapOperator<X,Map<K,V[]>> uneachMap(
             final Class<X> keyClass, final String keyExpression, final Object... optionalExpParams);
     public IterableMapOperator<?,?> uneachMap(
             final String keyExpression, final String valueExpression, final Object... optionalExpParams);
@@ -49,13 +48,13 @@ public interface IterableListMapIteratingOperator<K,V>
             final Class<X> keyClass, final Class<Y> valueClass, 
             final String keyExpression, final String valueExpression, final Object... optionalExpParams);
     public <X,Y> IterableMapOperator<X,Y> uneachMap(
-            final Class<X> keyClass, final Class<Y> valueClass, final MapBuilder<Map<K,List<V>>,X,Y> mapBuilder);
+            final Class<X> keyClass, final Class<Y> valueClass, final MapBuilder<Map<K,V[]>,X,Y> mapBuilder);
     public IterableMapOperator<?,?> uneachMap(
-            final MapBuilder<Map<K,List<V>>,Object,Object> mapBuilder);
+            final MapBuilder<Map<K,V[]>,Object,Object> mapBuilder);
     
-    public IterableListMapOperator<?,Map<K,List<V>>> uneachListMap(
+    public IterableListMapOperator<?,Map<K,V[]>> uneachListMap(
             final String keyExpression, final Object... optionalExpParams);
-    public <X> IterableListMapOperator<X,Map<K,List<V>>> uneachListMap(
+    public <X> IterableListMapOperator<X,Map<K,V[]>> uneachListMap(
             final Class<X> keyClass, final String keyExpression, final Object... optionalExpParams);
     public IterableListMapOperator<?,?> uneachListMap(
             final String keyExpression, final String valueExpression, final Object... optionalExpParams);
@@ -63,13 +62,13 @@ public interface IterableListMapIteratingOperator<K,V>
             final Class<X> keyClass, final Class<Y> valueClass, 
             final String keyExpression, final String valueExpression, final Object... optionalExpParams);
     public <X,Y> IterableListMapOperator<X,Y> uneachListMap(
-            final Class<X> keyClass, final Class<Y> valueClass, final MapBuilder<Map<K,List<V>>,X,Y> mapBuilder);
+            final Class<X> keyClass, final Class<Y> valueClass, final MapBuilder<Map<K,V[]>,X,Y> mapBuilder);
     public IterableListMapOperator<?,?> uneachListMap(
-            final MapBuilder<Map<K,List<V>>,Object,Object> mapBuilder);
+            final MapBuilder<Map<K,V[]>,Object,Object> mapBuilder);
     
-    public IterableSetMapOperator<?,Map<K,List<V>>> uneachSetMap(
+    public IterableSetMapOperator<?,Map<K,V[]>> uneachSetMap(
             final String keyExpression, final Object... optionalExpParams);
-    public <X> IterableSetMapOperator<X,Map<K,List<V>>> uneachSetMap(
+    public <X> IterableSetMapOperator<X,Map<K,V[]>> uneachSetMap(
             final Class<X> keyClass, final String keyExpression, final Object... optionalExpParams);
     public IterableSetMapOperator<?,?> uneachSetMap(
             final String keyExpression, final String valueExpression, final Object... optionalExpParams);
@@ -77,13 +76,13 @@ public interface IterableListMapIteratingOperator<K,V>
             final Class<X> keyClass, final Class<Y> valueClass, 
             final String keyExpression, final String valueExpression, final Object... optionalExpParams);
     public <X,Y> IterableSetMapOperator<X,Y> uneachSetMap(
-            final Class<X> keyClass, final Class<Y> valueClass, final MapBuilder<Map<K,List<V>>,X,Y> mapBuilder);
+            final Class<X> keyClass, final Class<Y> valueClass, final MapBuilder<Map<K,V[]>,X,Y> mapBuilder);
     public IterableSetMapOperator<?,?> uneachSetMap(
-            final MapBuilder<Map<K,List<V>>,Object,Object> mapBuilder);
+            final MapBuilder<Map<K,V[]>,Object,Object> mapBuilder);
     
-    public IterableArrayMapOperator<?,Map<K,List<V>>> uneachArrayMap(
+    public IterableArrayMapOperator<?,Map<K,V[]>> uneachArrayMap(
             final String keyExpression, final Object... optionalExpParams);
-    public <X> IterableArrayMapOperator<X,Map<K,List<V>>> uneachArrayMap(
+    public <X> IterableArrayMapOperator<X,Map<K,V[]>> uneachArrayMap(
             final Class<X> keyClass, final String keyExpression, final Object... optionalExpParams);
     public IterableArrayMapOperator<?,?> uneachArrayMap(
             final String keyExpression, final String valueExpression, final Object... optionalExpParams);
@@ -91,8 +90,8 @@ public interface IterableListMapIteratingOperator<K,V>
             final Class<X> keyClass, final Class<Y> valueClass, 
             final String keyExpression, final String valueExpression, final Object... optionalExpParams);
     public <X,Y> IterableArrayMapOperator<X,Y> uneachArrayMap(
-            final Class<X> keyClass, final Class<Y> valueClass, final MapBuilder<Map<K,List<V>>,X,Y> mapBuilder);
+            final Class<X> keyClass, final Class<Y> valueClass, final MapBuilder<Map<K,V[]>,X,Y> mapBuilder);
     public IterableArrayMapOperator<?,?> uneachArrayMap(
-            final MapBuilder<Map<K,List<V>>,Object,Object> mapBuilder);
+            final MapBuilder<Map<K,V[]>,Object,Object> mapBuilder);
     
 }

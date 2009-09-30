@@ -79,4 +79,18 @@ public interface IterableArrayIteratingOperator<T>
     public IterableSetMapOperator<?,?> uneachSetMap(
             final MapBuilder<T[],Object,Object> mapBuilder);
     
+    public IterableArrayMapOperator<?,T[]> uneachArrayMap(
+            final String keyExpression, final Object... optionalExpParams);
+    public <K> IterableArrayMapOperator<K,T[]> uneachArrayMap(
+            final Class<K> keyClass, final String keyExpression, final Object... optionalExpParams);
+    public IterableArrayMapOperator<?,?> uneachArrayMap(
+            final String keyExpression, final String valueExpression, final Object... optionalExpParams);
+    public <K,V> IterableArrayMapOperator<K,V> uneachArrayMap(
+            final Class<K> keyClass, final Class<V> valueClass, 
+            final String keyExpression, final String valueExpression, final Object... optionalExpParams);
+    public <K,V> IterableArrayMapOperator<K,V> uneachArrayMap(
+            final Class<K> keyClass, final Class<V> valueClass, final MapBuilder<T[],K,V> mapBuilder);
+    public IterableArrayMapOperator<?,?> uneachArrayMap(
+            final MapBuilder<T[],Object,Object> mapBuilder);
+    
 }

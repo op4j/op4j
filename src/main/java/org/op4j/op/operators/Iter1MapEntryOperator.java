@@ -454,6 +454,13 @@ public final class Iter1MapEntryOperator<K,V>
     }
 
 
+    final Iter0IterableArrayMapOperator<K,V> unsafeUneachArrayMap() {
+        return new Iter0IterableArrayMapOperator<K,V>(
+                getOperatorKeyType(), getOperatorValueType(),
+                OperatorAggregationUtils.buildArrayMapFromMapEntryTargets(getOperatorValueType(), getInnerUniqTargetObjects()));
+    }
+
+
     public final Iter0IterableMapOperator<K,V> uneachMap() {
         return unsafeUneachMap();
     }
@@ -466,6 +473,11 @@ public final class Iter1MapEntryOperator<K,V>
 
     public final Iter0IterableSetMapOperator<K,V> uneachSetMap() {
         return unsafeUneachSetMap();
+    }
+
+
+    public final Iter0IterableArrayMapOperator<K,V> uneachArrayMap() {
+        return unsafeUneachArrayMap();
     }
 
     

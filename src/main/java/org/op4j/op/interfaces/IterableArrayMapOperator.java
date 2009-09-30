@@ -32,58 +32,69 @@ import org.op4j.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface IterableMapOperator<K,V>
-        extends IterableOperator<Map<K,V>> {
+public interface IterableArrayMapOperator<K,V> 
+        extends IterableOperator<Map<K,V[]>> {
 
     
-    public IterableMapOperator<?,?> raw();
+    public IterableArrayMapOperator<?,?> raw();
     
-    public IterableMapOperator<K,V> sortKeys();
-    public IterableMapOperator<K,V> sortKeys(final Comparator<? super K> comparator);
+    public IterableArrayMapOperator<K,V> sortKeys();
+    public IterableArrayMapOperator<K,V> sortKeys(final Comparator<? super K> comparator);
     
-    public IterableMapOperator<K,V> sortValues();
-    public IterableMapOperator<K,V> sortValues(final Comparator<? super V> comparator);
+    public IterableArrayMapOperator<K,V> sortValueLists();
+    public IterableArrayMapOperator<K,V> sortValueLists(final Comparator<? super V> comparator);
     
     public GenericUniqTargetIteratingOperator<V> eachValue();
     
     public GenericUniqTargetIteratingOperator<K> eachKey();
     
     public MapEntryIteratingOperator<K,V> eachEntry();
+
+    public GenericUniqTargetIteratingOperator<V[]> eachArrayValue();
     
-    public <X,Y> IterableMapOperator<X,Y> asMap(final Class<X> keyClass, Class<Y> valueClass);
+    public MapEntryIteratingOperator<K,V[]> eachArrayEntry();
     
-    public <X,Y> IterableListMapOperator<X,Y> asListMap(final Class<X> keyClass, Class<Y> valueClass);
-    public <X,Y> IterableSetMapOperator<X,Y> asSetMap(final Class<X> keyClass, Class<Y> valueClass);
     public <X,Y> IterableArrayMapOperator<X,Y> asArrayMap(final Class<X> keyClass, Class<Y> valueClass);
 
-    public IterableMapOperator<K,V> eachFilterEntry(final String expression, final Object... optionalExpParams);
-    public IterableMapOperator<K,V> eachFilterEntry(final Filter<Map.Entry<K,V>> filter);
+    public IterableArrayMapOperator<K,V> eachFilterEntry(final String expression, final Object... optionalExpParams);
+    public IterableArrayMapOperator<K,V> eachFilterEntry(final Filter<Map.Entry<K,V>> filter);
 
-    public IterableMapOperator<K,?> eachValueEval(
+    public IterableArrayMapOperator<K,?> eachValueEval(
             final String expression, final Object... optionalExpParams);
-    public <X> IterableMapOperator<K,X> eachValueEval(
+    public <X> IterableArrayMapOperator<K,X> eachValueEval(
             final Class<X> resultClass, final String expression, final Object... optionalExpParams);
-    public IterableMapOperator<K,?> eachValueEval(
+    public IterableArrayMapOperator<K,?> eachValueEval(
             final Evaluator<V,Object> evaluator);
-    public <X> IterableMapOperator<K,X> eachValueEval(
+    public <X> IterableArrayMapOperator<K,X> eachValueEval(
             final Class<X> resultClass, final Evaluator<V,X> evaluator);
     
-    public IterableMapOperator<K,?> eachValueCall(final String methodName, final Object... parameters);
-    public <X> IterableMapOperator<K,X> eachValueCall(final Class<X> returnClass, final String methodName, final Object... parameters);
+    public IterableArrayMapOperator<K,?> eachValueCall(final String methodName, final Object... parameters);
+    public <X> IterableArrayMapOperator<K,X> eachValueCall(final Class<X> returnClass, final String methodName, final Object... parameters);
+
+    public IterableArrayMapOperator<K,V> distinct();
 
     public IterableSetOperator<K> keySet();
-    public IterableListOperator<V> values();
+    
+    public IterableListOperator<V[]> values();
+    
+    public IterableArrayOperator<V> valuesForKey(final K key);
+    
+    public IterableArrayOperator<V> valuesForAllKeys();
+    
+    public IterableMapOperator<K,?> mergeValues(final String expression, final Object... optionalExpParams);
+    public <X> IterableMapOperator<K,X> mergeValues(Class<X> resultClass, final String expression, final Object... optionalExpParams);
 
-    public IterableMapOperator<K,?> eachValueExec(
+    public IterableArrayMapOperator<K,?> eachValueExec(
             final String operationName, final Object... parameters);
-    public <X> IterableMapOperator<K,X> eachValueExec(
+    public <X> IterableArrayMapOperator<K,X> eachValueExec(
             final Class<X> resultClass, final String operationName, final Object... parameters);
     
-    public IterableMapOperator<K,?> eachValueTo(
+    public IterableArrayMapOperator<K,?> eachValueTo(
             final Type resultType, final Object... parameters);
-    public IterableMapOperator<K,?> eachValueTo(
+    public IterableArrayMapOperator<K,?> eachValueTo(
             final String resultTypeName, final Object... parameters);
-    public <X> IterableMapOperator<K,X> eachValueTo(
+    public <X> IterableArrayMapOperator<K,X> eachValueTo(
             final Class<X> resultClass, final Object... parameters);
+
     
 }

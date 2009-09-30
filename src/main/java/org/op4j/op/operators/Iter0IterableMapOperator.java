@@ -386,6 +386,21 @@ public final class Iter0IterableMapOperator<K,V>
     }
 
 
+    final <X,Y> Iter0IterableArrayMapOperator<X,Y> unsafeAsArrayMap(
+            final Class<X> keyClass, final Class<Y> valueClass) {
+        // Note that "as" operations make casts dissapear
+        return unsafeGeneric().asArrayMap(keyClass, valueClass);
+    }
+
+
+    public final <X,Y> Iter0IterableArrayMapOperator<X,Y> asArrayMap(
+            final Class<X> keyClass, final Class<Y> valueClass) {
+        Validate.notNull(keyClass, "Key class cannot be null");
+        Validate.notNull(valueClass, "Value class cannot be null");
+        return unsafeAsArrayMap(keyClass,valueClass);
+    }
+
+
     final <X,Y> Iter0IterableMapOperator<X,Y> unsafeAsMap(
             final Class<X> keyClass, final Class<Y> valueClass) {
         // Note that "as" operations make casts dissapear

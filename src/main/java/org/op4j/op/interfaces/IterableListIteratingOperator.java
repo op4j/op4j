@@ -80,4 +80,18 @@ public interface IterableListIteratingOperator<T>
     public IterableSetMapOperator<?,?> uneachSetMap(
             final MapBuilder<List<T>,Object,Object> mapBuilder);
     
+    public IterableArrayMapOperator<?,List<T>> uneachArrayMap(
+            final String keyExpression, final Object... optionalExpParams);
+    public <K> IterableArrayMapOperator<K,List<T>> uneachArrayMap(
+            final Class<K> keyClass, final String keyExpression, final Object... optionalExpParams);
+    public IterableArrayMapOperator<?,?> uneachArrayMap(
+            final String keyExpression, final String valueExpression, final Object... optionalExpParams);
+    public <K,V> IterableArrayMapOperator<K,V> uneachArrayMap(
+            final Class<K> keyClass, final Class<V> valueClass, 
+            final String keyExpression, final String valueExpression, final Object... optionalExpParams);
+    public <K,V> IterableArrayMapOperator<K,V> uneachArrayMap(
+            final Class<K> keyClass, final Class<V> valueClass, final MapBuilder<List<T>,K,V> mapBuilder);
+    public IterableArrayMapOperator<?,?> uneachArrayMap(
+            final MapBuilder<List<T>,Object,Object> mapBuilder);
+    
 }

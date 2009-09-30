@@ -81,4 +81,17 @@ public interface GenericShapeableAsIterableOperator<T>
     public IterableSetMapOperator<?,?> buildSetMap(final MapBuilder<T,Object,Object> mapBuilder);
     public <K,V> IterableSetMapOperator<K,V> buildSetMap(final Class<K> keyClass, final Class<V> valueClass, final MapBuilder<T,K,V> mapBuilder);
     
+    
+    public IterableArrayMapOperator<?,T> buildArrayMap(
+            final String keyExpression, final Object... optionalExpParams);
+    public <K> IterableArrayMapOperator<K,T> buildArrayMap(
+            final Class<K> keyClass, final String keyExpression, final Object... optionalExpParams);
+    public IterableArrayMapOperator<?,?> buildArrayMap(
+            final String keyExpression, final String valueExpression, final Object... optionalExpParams);
+    public <K,V> IterableArrayMapOperator<K,V> buildArrayMap(
+            final Class<K> keyClass, final Class<V> valueClass, 
+            final String keyExpression, final String valueExpression, final Object... optionalExpParams);
+    public IterableArrayMapOperator<?,?> buildArrayMap(final MapBuilder<T,Object,Object> mapBuilder);
+    public <K,V> IterableArrayMapOperator<K,V> buildArrayMap(final Class<K> keyClass, final Class<V> valueClass, final MapBuilder<T,K,V> mapBuilder);
+    
 }

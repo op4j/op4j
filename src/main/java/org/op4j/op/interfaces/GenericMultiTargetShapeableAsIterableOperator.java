@@ -43,4 +43,7 @@ public interface GenericMultiTargetShapeableAsIterableOperator<T>
     public IterableSetMapOperator<T,T> buildSetMap();
     public <K,V> IterableSetMapOperator<K,V> buildSetMap(final Class<K> keyClass, final Class<V> valueClass);
     
+    public IterableArrayMapOperator<T,T> buildArrayMap();
+    public <K,V> IterableArrayMapOperator<K,V> buildArrayMap(final Class<K> keyClass, final Class<V> valueClass);
+    
 }

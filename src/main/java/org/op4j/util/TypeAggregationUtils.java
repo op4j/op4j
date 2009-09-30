@@ -63,6 +63,16 @@ public final class TypeAggregationUtils {
     }
 
 
+    public static Type createArrayMapOfType(final Type originalKeyType, final Type originalValueType) {
+        return Types.forName(
+                "Map<" + 
+                ((originalKeyType != null)? originalKeyType.getName() : "?") + 
+                "," + 
+                ((originalValueType != null)? originalValueType.getName() : "Object") + 
+                "[]>");
+    }
+
+
     public static Type createMapEntryOfType(final Type originalKeyType, final Type originalValueType) {
         return Types.forName(
                 "java.util.Map$Entry<" + 

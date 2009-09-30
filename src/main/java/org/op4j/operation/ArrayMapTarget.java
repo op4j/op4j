@@ -17,32 +17,34 @@
  * 
  * =============================================================================
  */
-package org.op4j.op.interfaces;
+package org.op4j.operation;
 
 import java.util.Map;
 
+import org.op4j.type.Type;
+import org.op4j.util.TypeAggregationUtils;
 
+public class ArrayMapTarget<K,V> extends Target<Map<K,V[]>> {
 
-
-/**
- * 
- * @since 1.0
- * 
- * @author Daniel Fern&aacute;ndez
- *
- */
-public interface MapEntryIteratingOperator<K,V> 
-        extends MapEntryOperator<K,V> {
-
-    public MapEntryIteratingOperator<K,V> filter(final String expression, final Object... optionalExpParams);
-    public MapEntryIteratingOperator<K,V> filter(final Filter<Map.Entry<K,V>> filter);
+    private final Type keyType;
+    private final Type valueType;
     
-    public IterableMapOperator<K,V> uneachMap();
     
-    public IterableListMapOperator<K,V> uneachListMap();
-
-    public IterableSetMapOperator<K,V> uneachSetMap();
-
-    public IterableArrayMapOperator<K,V> uneachArrayMap();
+    public ArrayMapTarget(final Type keyType, final Type valueType, final Map<K,V[]> object) {
+        super(TypeAggregationUtils.createListMapOfType(keyType,valueType), object);
+        this.keyType = keyType;
+        this.valueType = valueType;
+    }
+    
+    
+    public Type getArrayMapKeyType() {
+        return this.keyType;
+    }
+    
+    
+    public Type getArrayMapValueType() {
+        return this.valueType;
+    }
+    
     
 }
