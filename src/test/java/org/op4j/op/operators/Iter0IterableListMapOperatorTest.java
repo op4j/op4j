@@ -12,9 +12,9 @@ import java.util.Set;
 
 import junit.framework.TestCase;
 
+import org.op4j.commands.IEval;
 import org.op4j.exceptions.InvalidOperatorCastException;
 import org.op4j.op.Op;
-import org.op4j.op.commands.IEval;
 import org.op4j.op.intf.parameters.ISelect;
 import org.op4j.operation.Operations;
 import org.op4j.type.Types;

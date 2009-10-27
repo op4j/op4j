@@ -13,11 +13,11 @@ import java.util.Set;
 import junit.framework.TestCase;
 
 import org.apache.commons.lang.math.RandomUtils;
+import org.op4j.commands.IEval;
 import org.op4j.exceptions.DuplicateMapKeyException;
 import org.op4j.exceptions.InvalidOperatorCastException;
 import org.op4j.exceptions.NullTargetException;
 import org.op4j.op.Op;
-import org.op4j.op.commands.IEval;
 import org.op4j.op.intf.parameters.IMapBuild;
 import org.op4j.op.intf.parameters.ISelect;
 import org.op4j.operation.Operations;
