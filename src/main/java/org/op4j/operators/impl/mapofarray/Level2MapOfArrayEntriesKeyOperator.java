@@ -17,16 +17,16 @@
  * 
  * =============================================================================
  */
-package org.op4j.op.impl.operators.mapofarray;
+package org.op4j.operators.impl.mapofarray;
 
 import java.util.Map;
 
-import org.op4j.op.impl.operators.Operator;
-import org.op4j.op.intf.operators.mapofarray.ILevel1MapOfArrayEntriesOperator;
-import org.op4j.op.intf.operators.mapofarray.ILevel2MapOfArrayEntriesKeyOperator;
 import org.op4j.op.intf.parameters.IOf;
 import org.op4j.op.target.Target;
 import org.op4j.op.target.Target.Structure;
+import org.op4j.operators.impl.Operator;
+import org.op4j.operators.intf.mapofarray.ILevel1MapOfArrayEntriesOperator;
+import org.op4j.operators.intf.mapofarray.ILevel2MapOfArrayEntriesKeyOperator;
 
 
 /**

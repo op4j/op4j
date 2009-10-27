@@ -17,24 +17,24 @@
  * 
  * =============================================================================
  */
-package org.op4j.op.impl.operators.array;
+package org.op4j.operators.impl.array;
 
 import java.util.Collection;
 import java.util.Comparator;
 
-import org.op4j.op.commands.IEval;
-import org.op4j.op.impl.operators.Operator;
-import org.op4j.op.intf.operators.array.ILevel0ArrayOperator;
-import org.op4j.op.intf.operators.array.ILevel1ArrayElementsOperator;
-import org.op4j.op.intf.operators.generic.ILevel0GenericMultiOperator;
-import org.op4j.op.intf.operators.generic.ILevel0GenericUniqOperator;
-import org.op4j.op.intf.operators.list.ILevel0ListOperator;
-import org.op4j.op.intf.operators.map.ILevel0MapOperator;
-import org.op4j.op.intf.operators.set.ILevel0SetOperator;
+import org.op4j.commands.IEval;
 import org.op4j.op.intf.parameters.IMapBuild;
 import org.op4j.op.intf.parameters.IOf;
 import org.op4j.op.intf.parameters.ISelect;
 import org.op4j.op.target.Target;
+import org.op4j.operators.impl.Operator;
+import org.op4j.operators.intf.array.ILevel0ArrayOperator;
+import org.op4j.operators.intf.array.ILevel1ArrayElementsOperator;
+import org.op4j.operators.intf.generic.ILevel0GenericMultiOperator;
+import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
+import org.op4j.operators.intf.list.ILevel0ListOperator;
+import org.op4j.operators.intf.map.ILevel0MapOperator;
+import org.op4j.operators.intf.set.ILevel0SetOperator;
 
 /**
  * 

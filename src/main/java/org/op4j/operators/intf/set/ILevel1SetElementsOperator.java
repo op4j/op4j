@@ -17,25 +17,25 @@
  * 
  * =============================================================================
  */
-package org.op4j.op.intf.operators.set;
+package org.op4j.operators.intf.set;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Set;
 
-import org.op4j.op.commands.ICall;
-import org.op4j.op.commands.IEval;
-import org.op4j.op.commands.IExec;
+import org.op4j.commands.ICall;
+import org.op4j.commands.IEval;
+import org.op4j.commands.IExec;
 import org.op4j.op.intf.parameters.IConv;
 import org.op4j.op.intf.parameters.IOf;
-import org.op4j.op.intf.qualities.ICallableOperator;
-import org.op4j.op.intf.qualities.IConvertibleOperator;
-import org.op4j.op.intf.qualities.IEvaluableOperator;
-import org.op4j.op.intf.qualities.IExecutableOperator;
-import org.op4j.op.intf.qualities.INavigatingCollectionOperator;
-import org.op4j.op.intf.qualities.ITypeParameterizableXOperator;
-import org.op4j.op.intf.qualities.IUniqOperator;
+import org.op4j.operators.qualities.ICallableOperator;
+import org.op4j.operators.qualities.IConvertibleOperator;
+import org.op4j.operators.qualities.IEvaluableOperator;
+import org.op4j.operators.qualities.IExecutableOperator;
+import org.op4j.operators.qualities.INavigatingCollectionOperator;
+import org.op4j.operators.qualities.ITypeParameterizableXOperator;
+import org.op4j.operators.qualities.IUniqOperator;
 
 
 /**

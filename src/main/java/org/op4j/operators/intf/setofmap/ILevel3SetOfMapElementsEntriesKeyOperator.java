@@ -17,15 +17,15 @@
  * 
  * =============================================================================
  */
-package org.op4j.op.intf.operators.setofmap;
+package org.op4j.operators.intf.setofmap;
 
 import java.util.Map;
 import java.util.Set;
 
 import org.op4j.op.intf.parameters.IOf;
-import org.op4j.op.intf.qualities.INavigatingMapEntryOperator;
-import org.op4j.op.intf.qualities.ITypeParameterizableXOperator;
-import org.op4j.op.intf.qualities.IUniqOperator;
+import org.op4j.operators.qualities.INavigatingMapEntryOperator;
+import org.op4j.operators.qualities.ITypeParameterizableXOperator;
+import org.op4j.operators.qualities.IUniqOperator;
 
 
 /**

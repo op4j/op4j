@@ -17,26 +17,26 @@
  * 
  * =============================================================================
  */
-package org.op4j.op.impl.operators.mapofset;
+package org.op4j.operators.impl.mapofset;
 
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.Set;
 
-import org.op4j.op.commands.IEval;
-import org.op4j.op.impl.operators.Operator;
-import org.op4j.op.intf.operators.mapofarray.ILevel2MapOfArrayEntriesValueOperator;
-import org.op4j.op.intf.operators.mapoflist.ILevel2MapOfListEntriesValueOperator;
-import org.op4j.op.intf.operators.mapofmap.ILevel2MapOfMapEntriesValueOperator;
-import org.op4j.op.intf.operators.mapofset.ILevel1MapOfSetEntriesOperator;
-import org.op4j.op.intf.operators.mapofset.ILevel2MapOfSetEntriesValueOperator;
-import org.op4j.op.intf.operators.mapofset.ILevel3MapOfSetEntriesValueElementsOperator;
+import org.op4j.commands.IEval;
 import org.op4j.op.intf.parameters.IMapBuild;
 import org.op4j.op.intf.parameters.IOf;
 import org.op4j.op.intf.parameters.ISelect;
 import org.op4j.op.target.Target;
 import org.op4j.op.target.Target.Structure;
+import org.op4j.operators.impl.Operator;
+import org.op4j.operators.intf.mapofarray.ILevel2MapOfArrayEntriesValueOperator;
+import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesValueOperator;
+import org.op4j.operators.intf.mapofmap.ILevel2MapOfMapEntriesValueOperator;
+import org.op4j.operators.intf.mapofset.ILevel1MapOfSetEntriesOperator;
+import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesValueOperator;
+import org.op4j.operators.intf.mapofset.ILevel3MapOfSetEntriesValueElementsOperator;
 
 
 /**

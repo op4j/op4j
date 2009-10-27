@@ -17,26 +17,26 @@
  * 
  * =============================================================================
  */
-package org.op4j.op.impl.operators.arrayofarray;
+package org.op4j.operators.impl.arrayofarray;
 
 import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Comparator;
 
-import org.op4j.op.commands.IEval;
-import org.op4j.op.impl.operators.Operator;
+import org.op4j.commands.IEval;
 import org.op4j.op.impl.parameters.Of;
-import org.op4j.op.intf.operators.arrayofarray.ILevel0ArrayOfArrayOperator;
-import org.op4j.op.intf.operators.arrayofarray.ILevel1ArrayOfArrayElementsOperator;
-import org.op4j.op.intf.operators.arrayofarray.ILevel2ArrayOfArrayElementsElementsOperator;
-import org.op4j.op.intf.operators.arrayoflist.ILevel1ArrayOfListElementsOperator;
-import org.op4j.op.intf.operators.arrayofmap.ILevel1ArrayOfMapElementsOperator;
-import org.op4j.op.intf.operators.arrayofset.ILevel1ArrayOfSetElementsOperator;
 import org.op4j.op.intf.parameters.IMapBuild;
 import org.op4j.op.intf.parameters.IOf;
 import org.op4j.op.intf.parameters.ISelect;
 import org.op4j.op.target.Target;
 import org.op4j.op.target.Target.Structure;
+import org.op4j.operators.impl.Operator;
+import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
+import org.op4j.operators.intf.arrayofarray.ILevel1ArrayOfArrayElementsOperator;
+import org.op4j.operators.intf.arrayofarray.ILevel2ArrayOfArrayElementsElementsOperator;
+import org.op4j.operators.intf.arrayoflist.ILevel1ArrayOfListElementsOperator;
+import org.op4j.operators.intf.arrayofmap.ILevel1ArrayOfMapElementsOperator;
+import org.op4j.operators.intf.arrayofset.ILevel1ArrayOfSetElementsOperator;
 
 
 

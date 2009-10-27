@@ -17,46 +17,46 @@
  * 
  * =============================================================================
  */
-package org.op4j.op.impl.operators.generic;
+package org.op4j.operators.impl.generic;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Collection;
 
-import org.op4j.op.commands.ICall;
-import org.op4j.op.commands.IEval;
-import org.op4j.op.commands.IExec;
-import org.op4j.op.commands.impl.Call;
-import org.op4j.op.commands.impl.Eval;
-import org.op4j.op.impl.operators.Operator;
-import org.op4j.op.intf.operators.array.ILevel0ArrayOperator;
-import org.op4j.op.intf.operators.arrayofarray.ILevel0ArrayOfArrayOperator;
-import org.op4j.op.intf.operators.arrayoflist.ILevel0ArrayOfListOperator;
-import org.op4j.op.intf.operators.arrayofmap.ILevel0ArrayOfMapOperator;
-import org.op4j.op.intf.operators.arrayofset.ILevel0ArrayOfSetOperator;
-import org.op4j.op.intf.operators.generic.ILevel0GenericMultiOperator;
-import org.op4j.op.intf.operators.generic.ILevel0GenericUniqOperator;
-import org.op4j.op.intf.operators.list.ILevel0ListOperator;
-import org.op4j.op.intf.operators.listofarray.ILevel0ListOfArrayOperator;
-import org.op4j.op.intf.operators.listoflist.ILevel0ListOfListOperator;
-import org.op4j.op.intf.operators.listofmap.ILevel0ListOfMapOperator;
-import org.op4j.op.intf.operators.listofset.ILevel0ListOfSetOperator;
-import org.op4j.op.intf.operators.map.ILevel0MapOperator;
-import org.op4j.op.intf.operators.mapofarray.ILevel0MapOfArrayOperator;
-import org.op4j.op.intf.operators.mapoflist.ILevel0MapOfListOperator;
-import org.op4j.op.intf.operators.mapofmap.ILevel0MapOfMapOperator;
-import org.op4j.op.intf.operators.mapofset.ILevel0MapOfSetOperator;
-import org.op4j.op.intf.operators.set.ILevel0SetOperator;
-import org.op4j.op.intf.operators.setofarray.ILevel0SetOfArrayOperator;
-import org.op4j.op.intf.operators.setoflist.ILevel0SetOfListOperator;
-import org.op4j.op.intf.operators.setofmap.ILevel0SetOfMapOperator;
-import org.op4j.op.intf.operators.setofset.ILevel0SetOfSetOperator;
+import org.op4j.commands.ICall;
+import org.op4j.commands.IEval;
+import org.op4j.commands.IExec;
+import org.op4j.commands.impl.Call;
+import org.op4j.commands.impl.Eval;
 import org.op4j.op.intf.parameters.IConv;
 import org.op4j.op.intf.parameters.IMapBuild;
 import org.op4j.op.intf.parameters.IOf;
 import org.op4j.op.intf.parameters.ISelect;
 import org.op4j.op.target.Target;
+import org.op4j.operators.impl.Operator;
+import org.op4j.operators.intf.array.ILevel0ArrayOperator;
+import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
+import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
+import org.op4j.operators.intf.arrayofmap.ILevel0ArrayOfMapOperator;
+import org.op4j.operators.intf.arrayofset.ILevel0ArrayOfSetOperator;
+import org.op4j.operators.intf.generic.ILevel0GenericMultiOperator;
+import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
+import org.op4j.operators.intf.list.ILevel0ListOperator;
+import org.op4j.operators.intf.listofarray.ILevel0ListOfArrayOperator;
+import org.op4j.operators.intf.listoflist.ILevel0ListOfListOperator;
+import org.op4j.operators.intf.listofmap.ILevel0ListOfMapOperator;
+import org.op4j.operators.intf.listofset.ILevel0ListOfSetOperator;
+import org.op4j.operators.intf.map.ILevel0MapOperator;
+import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
+import org.op4j.operators.intf.mapoflist.ILevel0MapOfListOperator;
+import org.op4j.operators.intf.mapofmap.ILevel0MapOfMapOperator;
+import org.op4j.operators.intf.mapofset.ILevel0MapOfSetOperator;
+import org.op4j.operators.intf.set.ILevel0SetOperator;
+import org.op4j.operators.intf.setofarray.ILevel0SetOfArrayOperator;
+import org.op4j.operators.intf.setoflist.ILevel0SetOfListOperator;
+import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
+import org.op4j.operators.intf.setofset.ILevel0SetOfSetOperator;
 
 
 

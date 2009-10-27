@@ -17,36 +17,36 @@
  * 
  * =============================================================================
  */
-package org.op4j.op.intf.operators.generic;
+package org.op4j.operators.intf.generic;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Collection;
 
-import org.op4j.op.commands.IEval;
-import org.op4j.op.commands.IExec;
-import org.op4j.op.intf.operators.array.ILevel0ArrayOperator;
-import org.op4j.op.intf.operators.list.ILevel0ListOperator;
-import org.op4j.op.intf.operators.map.ILevel0MapOperator;
-import org.op4j.op.intf.operators.mapofarray.ILevel0MapOfArrayOperator;
-import org.op4j.op.intf.operators.mapoflist.ILevel0MapOfListOperator;
-import org.op4j.op.intf.operators.mapofset.ILevel0MapOfSetOperator;
-import org.op4j.op.intf.operators.set.ILevel0SetOperator;
+import org.op4j.commands.IEval;
+import org.op4j.commands.IExec;
 import org.op4j.op.intf.parameters.IConv;
 import org.op4j.op.intf.parameters.IMapBuild;
 import org.op4j.op.intf.parameters.IOf;
 import org.op4j.op.intf.parameters.ISelect;
-import org.op4j.op.intf.qualities.IBuilderMultiOperator;
-import org.op4j.op.intf.qualities.IBuilderOperator;
-import org.op4j.op.intf.qualities.IConvertibleOperator;
-import org.op4j.op.intf.qualities.IEvaluableOperator;
-import org.op4j.op.intf.qualities.IExecutableOperator;
-import org.op4j.op.intf.qualities.IExtractableOperator;
-import org.op4j.op.intf.qualities.IModifiableOperator;
-import org.op4j.op.intf.qualities.IMultiOperator;
-import org.op4j.op.intf.qualities.ITypeParameterizableXOperator;
-import org.op4j.op.intf.qualities.IUniqableOperator;
+import org.op4j.operators.intf.array.ILevel0ArrayOperator;
+import org.op4j.operators.intf.list.ILevel0ListOperator;
+import org.op4j.operators.intf.map.ILevel0MapOperator;
+import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
+import org.op4j.operators.intf.mapoflist.ILevel0MapOfListOperator;
+import org.op4j.operators.intf.mapofset.ILevel0MapOfSetOperator;
+import org.op4j.operators.intf.set.ILevel0SetOperator;
+import org.op4j.operators.qualities.IBuilderMultiOperator;
+import org.op4j.operators.qualities.IBuilderOperator;
+import org.op4j.operators.qualities.IConvertibleOperator;
+import org.op4j.operators.qualities.IEvaluableOperator;
+import org.op4j.operators.qualities.IExecutableOperator;
+import org.op4j.operators.qualities.IExtractableOperator;
+import org.op4j.operators.qualities.IModifiableOperator;
+import org.op4j.operators.qualities.IMultiOperator;
+import org.op4j.operators.qualities.ITypeParameterizableXOperator;
+import org.op4j.operators.qualities.IUniqableOperator;
 
 
 /**

@@ -17,30 +17,30 @@
  * 
  * =============================================================================
  */
-package org.op4j.op.intf.operators.listoflist;
+package org.op4j.operators.intf.listoflist;
 
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
-import org.op4j.op.commands.IEval;
-import org.op4j.op.intf.operators.listofarray.ILevel1ListOfArrayElementsOperator;
-import org.op4j.op.intf.operators.listofmap.ILevel1ListOfMapElementsOperator;
-import org.op4j.op.intf.operators.listofset.ILevel1ListOfSetElementsOperator;
+import org.op4j.commands.IEval;
 import org.op4j.op.intf.parameters.IMapBuild;
 import org.op4j.op.intf.parameters.IOf;
 import org.op4j.op.intf.parameters.ISelect;
-import org.op4j.op.intf.qualities.IConvertibleToArrayOperator;
-import org.op4j.op.intf.qualities.IConvertibleToMapOperator;
-import org.op4j.op.intf.qualities.IConvertibleToSetOperator;
-import org.op4j.op.intf.qualities.IDistinguishableOperator;
-import org.op4j.op.intf.qualities.IExtractableCollectionOperator;
-import org.op4j.op.intf.qualities.IModifiableCollectionOperator;
-import org.op4j.op.intf.qualities.INavigableCollectionOperator;
-import org.op4j.op.intf.qualities.INavigatingCollectionOperator;
-import org.op4j.op.intf.qualities.ISortableOperator;
-import org.op4j.op.intf.qualities.ITypeParameterizableXOperator;
-import org.op4j.op.intf.qualities.IUniqOperator;
+import org.op4j.operators.intf.listofarray.ILevel1ListOfArrayElementsOperator;
+import org.op4j.operators.intf.listofmap.ILevel1ListOfMapElementsOperator;
+import org.op4j.operators.intf.listofset.ILevel1ListOfSetElementsOperator;
+import org.op4j.operators.qualities.IConvertibleToArrayOperator;
+import org.op4j.operators.qualities.IConvertibleToMapOperator;
+import org.op4j.operators.qualities.IConvertibleToSetOperator;
+import org.op4j.operators.qualities.IDistinguishableOperator;
+import org.op4j.operators.qualities.IExtractableCollectionOperator;
+import org.op4j.operators.qualities.IModifiableCollectionOperator;
+import org.op4j.operators.qualities.INavigableCollectionOperator;
+import org.op4j.operators.qualities.INavigatingCollectionOperator;
+import org.op4j.operators.qualities.ISortableOperator;
+import org.op4j.operators.qualities.ITypeParameterizableXOperator;
+import org.op4j.operators.qualities.IUniqOperator;
 
 
 /**

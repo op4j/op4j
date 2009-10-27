@@ -17,26 +17,26 @@
  * 
  * =============================================================================
  */
-package org.op4j.op.impl.operators.mapofarray;
+package org.op4j.operators.impl.mapofarray;
 
 import java.util.Comparator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.op4j.op.commands.IEval;
-import org.op4j.op.impl.operators.Operator;
-import org.op4j.op.intf.operators.generic.ILevel0GenericUniqOperator;
-import org.op4j.op.intf.operators.listofarray.ILevel0ListOfArrayOperator;
-import org.op4j.op.intf.operators.mapofarray.ILevel0MapOfArrayOperator;
-import org.op4j.op.intf.operators.mapofarray.ILevel1MapOfArrayEntriesOperator;
-import org.op4j.op.intf.operators.mapoflist.ILevel0MapOfListOperator;
-import org.op4j.op.intf.operators.mapofmap.ILevel0MapOfMapOperator;
-import org.op4j.op.intf.operators.mapofset.ILevel0MapOfSetOperator;
-import org.op4j.op.intf.operators.set.ILevel0SetOperator;
+import org.op4j.commands.IEval;
 import org.op4j.op.intf.parameters.IMapBuild;
 import org.op4j.op.intf.parameters.IOf;
 import org.op4j.op.intf.parameters.ISelect;
 import org.op4j.op.target.Target;
+import org.op4j.operators.impl.Operator;
+import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
+import org.op4j.operators.intf.listofarray.ILevel0ListOfArrayOperator;
+import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
+import org.op4j.operators.intf.mapofarray.ILevel1MapOfArrayEntriesOperator;
+import org.op4j.operators.intf.mapoflist.ILevel0MapOfListOperator;
+import org.op4j.operators.intf.mapofmap.ILevel0MapOfMapOperator;
+import org.op4j.operators.intf.mapofset.ILevel0MapOfSetOperator;
+import org.op4j.operators.intf.set.ILevel0SetOperator;
 
 
 /**

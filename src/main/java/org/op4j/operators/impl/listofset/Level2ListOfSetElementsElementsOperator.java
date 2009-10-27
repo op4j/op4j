@@ -17,7 +17,7 @@
  * 
  * =============================================================================
  */
-package org.op4j.op.impl.operators.listofset;
+package org.op4j.operators.impl.listofset;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -25,18 +25,18 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
 
-import org.op4j.op.commands.ICall;
-import org.op4j.op.commands.IEval;
-import org.op4j.op.commands.IExec;
-import org.op4j.op.commands.impl.Call;
-import org.op4j.op.commands.impl.Eval;
-import org.op4j.op.impl.operators.Operator;
-import org.op4j.op.intf.operators.listofset.ILevel1ListOfSetElementsOperator;
-import org.op4j.op.intf.operators.listofset.ILevel2ListOfSetElementsElementsOperator;
+import org.op4j.commands.ICall;
+import org.op4j.commands.IEval;
+import org.op4j.commands.IExec;
+import org.op4j.commands.impl.Call;
+import org.op4j.commands.impl.Eval;
 import org.op4j.op.intf.parameters.IConv;
 import org.op4j.op.intf.parameters.IOf;
 import org.op4j.op.target.Target;
 import org.op4j.op.target.Target.Structure;
+import org.op4j.operators.impl.Operator;
+import org.op4j.operators.intf.listofset.ILevel1ListOfSetElementsOperator;
+import org.op4j.operators.intf.listofset.ILevel2ListOfSetElementsElementsOperator;
 
 
 /**

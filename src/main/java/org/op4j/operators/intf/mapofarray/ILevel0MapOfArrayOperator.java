@@ -17,30 +17,30 @@
  * 
  * =============================================================================
  */
-package org.op4j.op.intf.operators.mapofarray;
+package org.op4j.operators.intf.mapofarray;
 
 import java.util.Comparator;
 import java.util.Map;
 
-import org.op4j.op.commands.IEval;
-import org.op4j.op.intf.operators.listofarray.ILevel0ListOfArrayOperator;
-import org.op4j.op.intf.operators.mapoflist.ILevel0MapOfListOperator;
-import org.op4j.op.intf.operators.mapofmap.ILevel0MapOfMapOperator;
-import org.op4j.op.intf.operators.mapofset.ILevel0MapOfSetOperator;
-import org.op4j.op.intf.operators.set.ILevel0SetOperator;
+import org.op4j.commands.IEval;
 import org.op4j.op.intf.parameters.IMapBuild;
 import org.op4j.op.intf.parameters.IOf;
 import org.op4j.op.intf.parameters.ISelect;
-import org.op4j.op.intf.qualities.IConvertibleToMapOfListOperator;
-import org.op4j.op.intf.qualities.IConvertibleToMapOfMapOperator;
-import org.op4j.op.intf.qualities.IConvertibleToMapOfSetOperator;
-import org.op4j.op.intf.qualities.IExtractableMapOperator;
-import org.op4j.op.intf.qualities.IGenerizableOperator;
-import org.op4j.op.intf.qualities.IModifiableMapOperator;
-import org.op4j.op.intf.qualities.INavigableMapOperator;
-import org.op4j.op.intf.qualities.ISortableOperator;
-import org.op4j.op.intf.qualities.ITypeParameterizableXYOperator;
-import org.op4j.op.intf.qualities.IUniqOperator;
+import org.op4j.operators.intf.listofarray.ILevel0ListOfArrayOperator;
+import org.op4j.operators.intf.mapoflist.ILevel0MapOfListOperator;
+import org.op4j.operators.intf.mapofmap.ILevel0MapOfMapOperator;
+import org.op4j.operators.intf.mapofset.ILevel0MapOfSetOperator;
+import org.op4j.operators.intf.set.ILevel0SetOperator;
+import org.op4j.operators.qualities.IConvertibleToMapOfListOperator;
+import org.op4j.operators.qualities.IConvertibleToMapOfMapOperator;
+import org.op4j.operators.qualities.IConvertibleToMapOfSetOperator;
+import org.op4j.operators.qualities.IExtractableMapOperator;
+import org.op4j.operators.qualities.IGenerizableOperator;
+import org.op4j.operators.qualities.IModifiableMapOperator;
+import org.op4j.operators.qualities.INavigableMapOperator;
+import org.op4j.operators.qualities.ISortableOperator;
+import org.op4j.operators.qualities.ITypeParameterizableXYOperator;
+import org.op4j.operators.qualities.IUniqOperator;
 
 
 /**

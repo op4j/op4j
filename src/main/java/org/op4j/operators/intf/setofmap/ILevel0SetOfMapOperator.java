@@ -17,7 +17,7 @@
  * 
  * =============================================================================
  */
-package org.op4j.op.intf.operators.setofmap;
+package org.op4j.operators.intf.setofmap;
 
 import java.util.Collection;
 import java.util.Comparator;
@@ -26,13 +26,13 @@ import java.util.Set;
 
 import org.op4j.op.intf.parameters.IOf;
 import org.op4j.op.intf.parameters.ISelect;
-import org.op4j.op.intf.qualities.IExtractableCollectionOperator;
-import org.op4j.op.intf.qualities.IGenerizableOperator;
-import org.op4j.op.intf.qualities.IModifiableCollectionOperator;
-import org.op4j.op.intf.qualities.INavigableCollectionOperator;
-import org.op4j.op.intf.qualities.ISortableOperator;
-import org.op4j.op.intf.qualities.ITypeParameterizableXYOperator;
-import org.op4j.op.intf.qualities.IUniqOperator;
+import org.op4j.operators.qualities.IExtractableCollectionOperator;
+import org.op4j.operators.qualities.IGenerizableOperator;
+import org.op4j.operators.qualities.IModifiableCollectionOperator;
+import org.op4j.operators.qualities.INavigableCollectionOperator;
+import org.op4j.operators.qualities.ISortableOperator;
+import org.op4j.operators.qualities.ITypeParameterizableXYOperator;
+import org.op4j.operators.qualities.IUniqOperator;
 
 
 /**

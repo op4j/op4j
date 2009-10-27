@@ -17,22 +17,22 @@
  * 
  * =============================================================================
  */
-package org.op4j.op.intf.operators.mapofmap;
+package org.op4j.operators.intf.mapofmap;
 
 import java.util.Comparator;
 import java.util.Map;
 
-import org.op4j.op.intf.operators.mapoflist.ILevel2MapOfListEntriesValueOperator;
-import org.op4j.op.intf.operators.mapofset.ILevel2MapOfSetEntriesValueOperator;
 import org.op4j.op.intf.parameters.IOf;
 import org.op4j.op.intf.parameters.ISelect;
-import org.op4j.op.intf.qualities.IExtractableMapOperator;
-import org.op4j.op.intf.qualities.IModifiableMapOperator;
-import org.op4j.op.intf.qualities.INavigableMapOperator;
-import org.op4j.op.intf.qualities.INavigatingMapEntryOperator;
-import org.op4j.op.intf.qualities.ISortableOperator;
-import org.op4j.op.intf.qualities.ITypeParameterizableXYOperator;
-import org.op4j.op.intf.qualities.IUniqOperator;
+import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesValueOperator;
+import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesValueOperator;
+import org.op4j.operators.qualities.IExtractableMapOperator;
+import org.op4j.operators.qualities.IModifiableMapOperator;
+import org.op4j.operators.qualities.INavigableMapOperator;
+import org.op4j.operators.qualities.INavigatingMapEntryOperator;
+import org.op4j.operators.qualities.ISortableOperator;
+import org.op4j.operators.qualities.ITypeParameterizableXYOperator;
+import org.op4j.operators.qualities.IUniqOperator;
 
 
 /**

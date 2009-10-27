@@ -17,17 +17,17 @@
  * 
  * =============================================================================
  */
-package org.op4j.op.impl.operators.setofmap;
+package org.op4j.operators.impl.setofmap;
 
 import java.util.Map;
 import java.util.Set;
 
-import org.op4j.op.impl.operators.Operator;
-import org.op4j.op.intf.operators.setofmap.ILevel2SetOfMapElementsEntriesOperator;
-import org.op4j.op.intf.operators.setofmap.ILevel3SetOfMapElementsEntriesKeyOperator;
 import org.op4j.op.intf.parameters.IOf;
 import org.op4j.op.target.Target;
 import org.op4j.op.target.Target.Structure;
+import org.op4j.operators.impl.Operator;
+import org.op4j.operators.intf.setofmap.ILevel2SetOfMapElementsEntriesOperator;
+import org.op4j.operators.intf.setofmap.ILevel3SetOfMapElementsEntriesKeyOperator;
 
 
 /**
