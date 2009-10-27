@@ -24,11 +24,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.op4j.IOf;
 import org.op4j.commands.IEval;
-import org.op4j.op.intf.parameters.IMapBuild;
-import org.op4j.op.intf.parameters.IOf;
-import org.op4j.op.intf.parameters.ISelect;
-import org.op4j.op.target.Target;
+import org.op4j.commands.IMapBuild;
+import org.op4j.commands.ISelect;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.listoflist.ILevel0ListOfListOperator;
@@ -38,6 +37,7 @@ import org.op4j.operators.intf.mapoflist.ILevel1MapOfListEntriesOperator;
 import org.op4j.operators.intf.mapofmap.ILevel0MapOfMapOperator;
 import org.op4j.operators.intf.mapofset.ILevel0MapOfSetOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
+import org.op4j.target.Target;
 
 
 /**

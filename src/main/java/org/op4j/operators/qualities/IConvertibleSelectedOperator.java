@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.op.intf.parameters.IConv;
+import org.op4j.commands.IConv;
 
 
 /**

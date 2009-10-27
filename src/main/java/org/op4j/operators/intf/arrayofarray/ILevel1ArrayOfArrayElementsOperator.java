@@ -22,10 +22,10 @@ package org.op4j.operators.intf.arrayofarray;
 import java.util.Collection;
 import java.util.Comparator;
 
+import org.op4j.IOf;
 import org.op4j.commands.IEval;
-import org.op4j.op.intf.parameters.IMapBuild;
-import org.op4j.op.intf.parameters.IOf;
-import org.op4j.op.intf.parameters.ISelect;
+import org.op4j.commands.IMapBuild;
+import org.op4j.commands.ISelect;
 import org.op4j.operators.intf.arrayoflist.ILevel1ArrayOfListElementsOperator;
 import org.op4j.operators.intf.arrayofmap.ILevel1ArrayOfMapElementsOperator;
 import org.op4j.operators.intf.arrayofset.ILevel1ArrayOfSetElementsOperator;

@@ -19,9 +19,9 @@
  */
 package org.op4j.operators.qualities;
 
+import org.op4j.IOf;
 import org.op4j.commands.IEval;
-import org.op4j.op.intf.parameters.IMapBuild;
-import org.op4j.op.intf.parameters.IOf;
+import org.op4j.commands.IMapBuild;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.map.ILevel0MapOperator;

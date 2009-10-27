@@ -23,8 +23,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
-import org.op4j.op.intf.parameters.IOf;
-import org.op4j.op.intf.parameters.ISelect;
+import org.op4j.IOf;
+import org.op4j.commands.ISelect;
 import org.op4j.operators.intf.listoflist.ILevel1ListOfListElementsOperator;
 import org.op4j.operators.intf.listofset.ILevel1ListOfSetElementsOperator;
 import org.op4j.operators.qualities.IExtractableMapOperator;

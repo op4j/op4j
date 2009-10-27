@@ -24,12 +24,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
+import org.op4j.IOf;
 import org.op4j.commands.IEval;
-import org.op4j.op.intf.parameters.IMapBuild;
-import org.op4j.op.intf.parameters.IOf;
-import org.op4j.op.intf.parameters.ISelect;
-import org.op4j.op.target.Target;
-import org.op4j.op.target.Target.Structure;
+import org.op4j.commands.IMapBuild;
+import org.op4j.commands.ISelect;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofarray.ILevel2MapOfArrayEntriesValueOperator;
 import org.op4j.operators.intf.mapoflist.ILevel1MapOfListEntriesOperator;
@@ -37,6 +35,8 @@ import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapoflist.ILevel3MapOfListEntriesValueElementsOperator;
 import org.op4j.operators.intf.mapofmap.ILevel2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesValueOperator;
+import org.op4j.target.Target;
+import org.op4j.target.Target.Structure;
 
 
 /**

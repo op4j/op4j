@@ -22,7 +22,7 @@ package org.op4j.operators.intf.setofmap;
 import java.util.Map;
 import java.util.Set;
 
-import org.op4j.op.intf.parameters.IOf;
+import org.op4j.IOf;
 import org.op4j.operators.qualities.INavigatingMapEntryOperator;
 import org.op4j.operators.qualities.ITypeParameterizableXOperator;
 import org.op4j.operators.qualities.IUniqOperator;

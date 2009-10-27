@@ -20,8 +20,8 @@
 
 package org.op4j.operators.impl;
 
-import org.op4j.op.target.Target;
 import org.op4j.operators.qualities.IOperator;
+import org.op4j.target.Target;
 
 /**
  * 

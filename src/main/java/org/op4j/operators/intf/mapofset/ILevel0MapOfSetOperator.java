@@ -23,10 +23,10 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Set;
 
+import org.op4j.IOf;
 import org.op4j.commands.IEval;
-import org.op4j.op.intf.parameters.IMapBuild;
-import org.op4j.op.intf.parameters.IOf;
-import org.op4j.op.intf.parameters.ISelect;
+import org.op4j.commands.IMapBuild;
+import org.op4j.commands.ISelect;
 import org.op4j.operators.intf.listofset.ILevel0ListOfSetOperator;
 import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
 import org.op4j.operators.intf.mapoflist.ILevel0MapOfListOperator;

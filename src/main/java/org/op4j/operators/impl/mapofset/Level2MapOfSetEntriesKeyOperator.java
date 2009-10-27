@@ -22,12 +22,12 @@ package org.op4j.operators.impl.mapofset;
 import java.util.Map;
 import java.util.Set;
 
-import org.op4j.op.intf.parameters.IOf;
-import org.op4j.op.target.Target;
-import org.op4j.op.target.Target.Structure;
+import org.op4j.IOf;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofset.ILevel1MapOfSetEntriesOperator;
 import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesKeyOperator;
+import org.op4j.target.Target;
+import org.op4j.target.Target.Structure;
 
 
 /**

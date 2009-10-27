@@ -17,20 +17,19 @@
  * 
  * =============================================================================
  */
+
 package org.op4j.util;
 
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import ognl.Ognl;
 import ognl.OgnlException;
 
 import org.apache.commons.collections.map.LRUMap;
-import org.apache.commons.lang.Validate;
+import org.op4j.IOf;
 import org.op4j.operations.conversion.exceptions.ConversionException;
-
 
 /**
  * 
@@ -39,47 +38,36 @@ import org.op4j.operations.conversion.exceptions.ConversionException;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class OgnlUtils {
+public class OgnlExpressionUtil {
+
     
     @SuppressWarnings("unchecked")
     private static final Map<String,Object> parsedExpressionsByExpression =
         Collections.synchronizedMap(new LRUMap(100));
     
+    
     public static final String TARGET_VARIABLE_NAME = "target";
     public static final String PARAM_VARIABLE_NAME = "param";
-    
 
-    public static <T> Object getValueByOgnlExpression(
-            final T targetObject, 
-            final String ognlExpression, final List<Object> params) {
-        
-        Validate.notNull(ognlExpression, "OGNL expression cannot be null");
-        
-        return unsafeGetValueByOgnlExpression(
-                ognlExpression, targetObject, targetObject, params);
-        
+
+    
+    
+    private OgnlExpressionUtil() {
+        super();
     }
+    
+    
+
 
     
-    public static <T> Object getValueByOgnlExpression(
-            final List<T> targetObjects, 
-            final String ognlExpression, final List<Object> params) {
-        
-        Validate.notNull(ognlExpression, "OGNL expression cannot be null");
-        Validate.notNull(targetObjects, "Target object list cannot be null");
-        Validate.isTrue(targetObjects.size() > 0, "Target object list cannot be empty");
-        
-        return unsafeGetValueByOgnlExpression(
-                ognlExpression, targetObjects, targetObjects, params);
-        
-    }
-
     
-    private static <T> Object unsafeGetValueByOgnlExpression(
-            final String ognlExpression,
-            final Object expressionRoot, Object targetObject, Object paramsObject) {
+    @SuppressWarnings("unchecked")
+    public static <X> X evalOgnlExpression(
+            final IOf<X> resultOf, final String ognlExpression, final Object targetObject, final Object parametersObject) {
         
         Object parsedExpression = parsedExpressionsByExpression.get(ognlExpression);
+        
+        Class<?> resultClass = resultOf.getComponentClass();
         
         if (parsedExpression == null) {
             try {
@@ -93,17 +81,22 @@ public final class OgnlUtils {
         try {
             final Map<String,Object> ctx = new HashMap<String,Object>();
             ctx.put(TARGET_VARIABLE_NAME, targetObject);
-            ctx.put(PARAM_VARIABLE_NAME, paramsObject);
-            return Ognl.getValue(parsedExpression, ctx, expressionRoot);
+            ctx.put(PARAM_VARIABLE_NAME, parametersObject);
+            final Object result = Ognl.getValue(parsedExpression, ctx, targetObject);
+            if (result != null && resultClass != null && !Object.class.equals(resultClass)) {
+                if (!(resultClass.isAssignableFrom(result.getClass()))) {
+                    throw new IllegalStateException("Result of expression \"" + ognlExpression + "\" is not " +
+                            "assignable from class " + resultClass.getName());
+                }
+            }
+            return (X) result;
         } catch (OgnlException e) {
             throw new ConversionException(e);
         }
         
     }
     
-
-    private OgnlUtils() {
-        super();
-    }
+    
+    
     
 }

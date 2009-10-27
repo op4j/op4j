@@ -24,18 +24,18 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.List;
 
+import org.op4j.IOf;
+import org.op4j.commands.Call;
+import org.op4j.commands.Eval;
 import org.op4j.commands.ICall;
+import org.op4j.commands.IConv;
 import org.op4j.commands.IEval;
 import org.op4j.commands.IExec;
-import org.op4j.commands.impl.Call;
-import org.op4j.commands.impl.Eval;
-import org.op4j.op.intf.parameters.IConv;
-import org.op4j.op.intf.parameters.IOf;
-import org.op4j.op.target.Target;
-import org.op4j.op.target.Target.Structure;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.arrayoflist.ILevel1ArrayOfListElementsOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel2ArrayOfListElementsElementsOperator;
+import org.op4j.target.Target;
+import org.op4j.target.Target.Structure;
 
 
 /**

@@ -19,7 +19,7 @@
  */
 package org.op4j.commands;
 
-import org.op4j.op.intf.parameters.IOf;
+import org.op4j.IOf;
 
 
 

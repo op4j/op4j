@@ -23,8 +23,8 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
 
-import org.op4j.op.intf.parameters.IOf;
-import org.op4j.op.intf.parameters.ISelect;
+import org.op4j.IOf;
+import org.op4j.commands.ISelect;
 import org.op4j.operators.qualities.IDistinguishableOperator;
 import org.op4j.operators.qualities.IExtractableCollectionOperator;
 import org.op4j.operators.qualities.IGenerizableOperator;

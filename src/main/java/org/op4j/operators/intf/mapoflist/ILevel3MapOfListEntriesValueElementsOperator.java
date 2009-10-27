@@ -25,11 +25,11 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
+import org.op4j.IOf;
 import org.op4j.commands.ICall;
+import org.op4j.commands.IConv;
 import org.op4j.commands.IEval;
 import org.op4j.commands.IExec;
-import org.op4j.op.intf.parameters.IConv;
-import org.op4j.op.intf.parameters.IOf;
 import org.op4j.operators.qualities.ICallableOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;

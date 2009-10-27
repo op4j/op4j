@@ -21,7 +21,7 @@ package org.op4j.operators.intf.map;
 
 import java.util.Map;
 
-import org.op4j.op.intf.parameters.IOf;
+import org.op4j.IOf;
 import org.op4j.operators.qualities.INavigableMapEntryOperator;
 import org.op4j.operators.qualities.INavigatingMapOperator;
 import org.op4j.operators.qualities.ITypeParameterizableXYOperator;

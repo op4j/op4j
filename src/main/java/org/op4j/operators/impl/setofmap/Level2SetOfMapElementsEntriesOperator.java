@@ -22,14 +22,14 @@ package org.op4j.operators.impl.setofmap;
 import java.util.Map;
 import java.util.Set;
 
-import org.op4j.op.intf.parameters.IOf;
-import org.op4j.op.target.Target;
-import org.op4j.op.target.Target.Structure;
+import org.op4j.IOf;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.setofmap.ILevel1SetOfMapElementsOperator;
 import org.op4j.operators.intf.setofmap.ILevel2SetOfMapElementsEntriesOperator;
 import org.op4j.operators.intf.setofmap.ILevel3SetOfMapElementsEntriesKeyOperator;
 import org.op4j.operators.intf.setofmap.ILevel3SetOfMapElementsEntriesValueOperator;
+import org.op4j.target.Target;
+import org.op4j.target.Target.Structure;
 
 
 /**

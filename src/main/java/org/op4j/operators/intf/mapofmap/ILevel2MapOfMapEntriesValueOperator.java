@@ -22,8 +22,8 @@ package org.op4j.operators.intf.mapofmap;
 import java.util.Comparator;
 import java.util.Map;
 
-import org.op4j.op.intf.parameters.IOf;
-import org.op4j.op.intf.parameters.ISelect;
+import org.op4j.IOf;
+import org.op4j.commands.ISelect;
 import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesValueOperator;
 import org.op4j.operators.qualities.IExtractableMapOperator;

@@ -21,12 +21,12 @@ package org.op4j.operators.impl.mapofmap;
 
 import java.util.Map;
 
-import org.op4j.op.intf.parameters.IOf;
-import org.op4j.op.target.Target;
-import org.op4j.op.target.Target.Structure;
+import org.op4j.IOf;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofmap.ILevel1MapOfMapEntriesOperator;
 import org.op4j.operators.intf.mapofmap.ILevel2MapOfMapEntriesKeyOperator;
+import org.op4j.target.Target;
+import org.op4j.target.Target.Structure;
 
 
 /**

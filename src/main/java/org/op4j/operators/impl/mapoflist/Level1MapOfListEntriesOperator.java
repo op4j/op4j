@@ -22,14 +22,14 @@ package org.op4j.operators.impl.mapoflist;
 import java.util.List;
 import java.util.Map;
 
-import org.op4j.op.intf.parameters.IOf;
-import org.op4j.op.target.Target;
-import org.op4j.op.target.Target.Structure;
+import org.op4j.IOf;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapoflist.ILevel0MapOfListOperator;
 import org.op4j.operators.intf.mapoflist.ILevel1MapOfListEntriesOperator;
 import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesKeyOperator;
 import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesValueOperator;
+import org.op4j.target.Target;
+import org.op4j.target.Target.Structure;
 
 
 /**

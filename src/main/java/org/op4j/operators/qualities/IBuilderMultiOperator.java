@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.op.intf.parameters.IOf;
+import org.op4j.IOf;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
 import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
 import org.op4j.operators.intf.mapoflist.ILevel0MapOfListOperator;

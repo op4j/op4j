@@ -24,16 +24,15 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Collection;
 
+import org.op4j.IOf;
+import org.op4j.commands.Call;
+import org.op4j.commands.Eval;
 import org.op4j.commands.ICall;
+import org.op4j.commands.IConv;
 import org.op4j.commands.IEval;
 import org.op4j.commands.IExec;
-import org.op4j.commands.impl.Call;
-import org.op4j.commands.impl.Eval;
-import org.op4j.op.intf.parameters.IConv;
-import org.op4j.op.intf.parameters.IMapBuild;
-import org.op4j.op.intf.parameters.IOf;
-import org.op4j.op.intf.parameters.ISelect;
-import org.op4j.op.target.Target;
+import org.op4j.commands.IMapBuild;
+import org.op4j.commands.ISelect;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
@@ -57,6 +56,7 @@ import org.op4j.operators.intf.setofarray.ILevel0SetOfArrayOperator;
 import org.op4j.operators.intf.setoflist.ILevel0SetOfListOperator;
 import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.ILevel0SetOfSetOperator;
+import org.op4j.target.Target;
 
 
 

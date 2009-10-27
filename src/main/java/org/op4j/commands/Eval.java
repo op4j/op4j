@@ -17,7 +17,7 @@
  * 
  * =============================================================================
  */
-package org.op4j.commands.impl;
+package org.op4j.commands;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -25,11 +25,10 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.commands.IEval;
-import org.op4j.op.impl.parameters.Of;
-import org.op4j.op.intf.parameters.IOf;
-import org.op4j.op.util.OgnlExpressionUtil;
-import org.op4j.op.util.VarArgsUtil;
+import org.op4j.IOf;
+import org.op4j.Of;
+import org.op4j.util.OgnlExpressionUtil;
+import org.op4j.util.VarArgsUtil;
 
 
 

@@ -21,7 +21,7 @@ package org.op4j.operators.qualities;
 
 import java.util.Collection;
 
-import org.op4j.op.intf.parameters.ISelect;
+import org.op4j.commands.ISelect;
 
 
 

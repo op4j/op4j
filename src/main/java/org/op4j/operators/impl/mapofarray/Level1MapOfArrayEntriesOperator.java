@@ -21,14 +21,14 @@ package org.op4j.operators.impl.mapofarray;
 
 import java.util.Map;
 
-import org.op4j.op.intf.parameters.IOf;
-import org.op4j.op.target.Target;
-import org.op4j.op.target.Target.Structure;
+import org.op4j.IOf;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
 import org.op4j.operators.intf.mapofarray.ILevel1MapOfArrayEntriesOperator;
 import org.op4j.operators.intf.mapofarray.ILevel2MapOfArrayEntriesKeyOperator;
 import org.op4j.operators.intf.mapofarray.ILevel2MapOfArrayEntriesValueOperator;
+import org.op4j.target.Target;
+import org.op4j.target.Target.Structure;
 
 
 /**
