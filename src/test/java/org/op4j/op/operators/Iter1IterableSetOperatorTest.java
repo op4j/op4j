@@ -9,8 +9,8 @@ import junit.framework.TestCase;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.time.DateUtils;
-import org.op4j.op.Op;
-import org.op4j.op.intf.parameters.ISelect;
+import org.op4j.Op;
+import org.op4j.commands.ISelect;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
 import org.op4j.util.ConverterUtils;

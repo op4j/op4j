@@ -16,9 +16,9 @@ import java.util.Map.Entry;
 import junit.framework.TestCase;
 
 import org.apache.commons.collections.SetUtils;
+import org.op4j.Op;
+import org.op4j.commands.ISelect;
 import org.op4j.exceptions.InvalidOperatorCastException;
-import org.op4j.op.Op;
-import org.op4j.op.intf.parameters.ISelect;
 import org.op4j.operation.Operations;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;

@@ -9,7 +9,7 @@ import java.util.List;
 import junit.framework.TestCase;
 
 import org.apache.commons.lang.time.DateUtils;
-import org.op4j.op.Op;
+import org.op4j.Op;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
 

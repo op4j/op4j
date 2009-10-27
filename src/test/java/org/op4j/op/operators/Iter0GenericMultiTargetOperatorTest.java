@@ -8,10 +8,10 @@ import java.util.List;
 import junit.framework.TestCase;
 
 import org.apache.commons.lang.time.DateUtils;
+import org.op4j.Op;
 import org.op4j.commands.IEval;
+import org.op4j.commands.IMapBuild;
 import org.op4j.exceptions.InvalidTypeSchemeException;
-import org.op4j.op.Op;
-import org.op4j.op.intf.parameters.IMapBuild;
 import org.op4j.operation.ListMapTarget;
 import org.op4j.operation.SetMapTarget;
 import org.op4j.operations.conversion.exceptions.ConversionException;

@@ -8,8 +8,8 @@ import java.util.Map;
 
 import junit.framework.TestCase;
 
-import org.op4j.op.Op;
-import org.op4j.op.intf.parameters.IMapBuild;
+import org.op4j.Op;
+import org.op4j.commands.IMapBuild;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
 
