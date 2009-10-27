@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.op4j.op.commands.ICommand;
+import org.op4j.commands.ICommand;
 import org.op4j.op.impl.parameters.Of;
 import org.op4j.op.intf.parameters.IOf;
 import org.op4j.op.intf.parameters.ISelect;
