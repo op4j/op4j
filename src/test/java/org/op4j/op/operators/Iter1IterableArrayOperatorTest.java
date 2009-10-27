@@ -9,7 +9,7 @@ import junit.framework.TestCase;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.op4j.op.Op;
-import org.op4j.op.interfaces.MapBuilder;
+import org.op4j.op.intf.parameters.IMapBuild;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
 
@@ -90,7 +90,7 @@ public class Iter1IterableArrayOperatorTest extends TestCase {
 
 	public final void testUneachMapMapBuilderOfKV() {
 		assertEquals(null, this.integerOperator
-				.uneachMap(new MapBuilder<Integer[], Object, Object>() {
+				.uneachMap(new IMapBuild<Integer[], Object, Object>() {
 					@SuppressWarnings("boxing")
 					public Integer getKey(Integer[] target) {
 						return target.length;
@@ -100,7 +100,7 @@ public class Iter1IterableArrayOperatorTest extends TestCase {
 					}					
 				}).getOperatorKeyType());
 		assertEquals(null, this.integerOperator
-				.uneachMap(new MapBuilder<Integer[], Object, Object>() {
+				.uneachMap(new IMapBuild<Integer[], Object, Object>() {
 					@SuppressWarnings("boxing")
 					public Integer getKey(Integer[] target) {
 						return target.length;
@@ -109,7 +109,7 @@ public class Iter1IterableArrayOperatorTest extends TestCase {
 						return Arrays.toString(target);
 					}					
 				}).getOperatorValueType());
-		assertEquals(TypeSchemes.forName("Map<?,?>"), this.integerOperator.uneachMap(new MapBuilder<Integer[], Object, Object>() {
+		assertEquals(TypeSchemes.forName("Map<?,?>"), this.integerOperator.uneachMap(new IMapBuild<Integer[], Object, Object>() {
 			@SuppressWarnings("boxing")
 			public Integer getKey(Integer[] target) {
 				return target.length;

@@ -19,6 +19,8 @@
  */
 package org.op4j.exceptions;
 
+import java.util.List;
+
 import org.apache.commons.lang.exception.NestableRuntimeException;
 
 /**
@@ -35,9 +37,26 @@ public class MethodInvocationException
 	private static final long serialVersionUID = -3061625112500997810L;
 
 	
-	public MethodInvocationException(String methodName, Class<?> objectClass, Exception e) {
+	public MethodInvocationException(final String methodName, final Class<?> objectClass, 
+			final List<Class<?>> parameterClasses, final Exception e) {
         super("Could not invoke method " + methodName +
-                " on object of class " + objectClass.getName(), e);
+                " on object of class " + objectClass.getName() +
+                " with parameters of classes: " + parameterClasses, e);
+    }
+	
+	public MethodInvocationException(final String methodName, final Class<?> objectClass, 
+			final List<Class<?>> parameterClasses) {
+        super("Could not invoke method " + methodName +
+                " on object of class " + objectClass.getName() +
+                " with parameters of classes: " + parameterClasses);
+    }
+	
+	public MethodInvocationException(final String methodName, final Class<?> objectClass, 
+			final List<Class<?>> parameterClasses, final Class<?> resultClass) {
+        super("Invocation of method " + methodName +
+                " on object of class " + objectClass.getName() +
+                " with parameters of classes: " + parameterClasses + 
+                " did not return a result compatible with " + resultClass);
     }
 
     

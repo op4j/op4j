@@ -17,9 +17,8 @@ import org.op4j.exceptions.DuplicateMapKeyException;
 import org.op4j.exceptions.InvalidOperatorCastException;
 import org.op4j.exceptions.NullTargetException;
 import org.op4j.op.Op;
-import org.op4j.op.interfaces.Filter;
-import org.op4j.op.interfaces.FilterContext;
-import org.op4j.op.interfaces.MapBuilder;
+import org.op4j.op.intf.parameters.IMapBuild;
+import org.op4j.op.intf.parameters.ISelect;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
 
@@ -81,7 +80,7 @@ public class Iter0IterableArrayOperatorTest extends TestCase {
 	}
 
 	public final void testEach() {
-		String[] result = this.aCalendarOperator.each().toStr(this.pattern).uneachArray().get();
+		String[] result = this.aCalendarOperator.each().convToString(this.pattern).uneachArray().get();
 		SimpleDateFormat sdf = new SimpleDateFormat(this.pattern);
 		for (int index = 0; index < this.aCalendarArray.length; index++) {
 			assertEquals(sdf.format(this.aCalendarArray[index].getTime()), result[index]);
@@ -164,16 +163,16 @@ public class Iter0IterableArrayOperatorTest extends TestCase {
 	}
 
 	public final void testFilterEachFilterOfT() {
-		assertEquals(0, this.anIntegerOperator.eachFilter(new Filter<Integer>() {
+		assertEquals(0, this.anIntegerOperator.eachFilter(new ISelect<Integer>() {
 
-			public boolean eval(FilterContext<Integer> ctx) {
+			public boolean eval(SelectorContext<Integer> ctx) {
 				// do not include the data
 				return true;
 			}
 		}).get().length);
 		
-		assertEquals(3, this.anIntegerOperator.eachFilter(new Filter<Integer>() {
-			public boolean eval(FilterContext<Integer> ctx) {
+		assertEquals(3, this.anIntegerOperator.eachFilter(new ISelect<Integer>() {
+			public boolean eval(SelectorContext<Integer> ctx) {
 				return ctx.getTarget(0).intValue() >= 40;
 			}
 		}).get().length);
@@ -397,7 +396,7 @@ public class Iter0IterableArrayOperatorTest extends TestCase {
 
 	public final void testToMapClassOfKClassOfVMapBuilderOfKVT() {
 		assertEquals(TypeSchemes.forName("Map<Calendar, Integer>"),
-				this.aCalendarOperator.toMap(Calendar.class, Integer.class, new MapBuilder<Calendar, Calendar, Integer>() {
+				this.aCalendarOperator.toMap(Calendar.class, Integer.class, new IMapBuild<Calendar, Calendar, Integer>() {
 					public Calendar getKey(Calendar target) {
 						return target;
 					}
@@ -408,7 +407,7 @@ public class Iter0IterableArrayOperatorTest extends TestCase {
 			
 		try {
 			final Calendar cal = Calendar.getInstance();
-			this.aCalendarOperator.toMap(Calendar.class, Integer.class, new MapBuilder<Calendar, Calendar, Integer>() {
+			this.aCalendarOperator.toMap(Calendar.class, Integer.class, new IMapBuild<Calendar, Calendar, Integer>() {
 				public Calendar getKey(Calendar target) {
 					return cal;
 				}
@@ -424,7 +423,7 @@ public class Iter0IterableArrayOperatorTest extends TestCase {
 
 	public final void testToMapMapBuilderOfObjectObjectT() {
 		assertEquals(TypeSchemes.forName("Map<?, ?>"),
-				this.aCalendarOperator.toMap(new MapBuilder<Calendar, Object, Object>() {
+				this.aCalendarOperator.toMap(new IMapBuild<Calendar, Object, Object>() {
 					public Calendar getKey(Calendar target) {
 						return target;
 					}
@@ -435,7 +434,7 @@ public class Iter0IterableArrayOperatorTest extends TestCase {
 			
 		try {
 			final Calendar cal = Calendar.getInstance();
-			this.aCalendarOperator.toMap(new MapBuilder<Calendar, Object, Object>() {
+			this.aCalendarOperator.toMap(new IMapBuild<Calendar, Object, Object>() {
 				public Calendar getKey(Calendar target) {
 					return cal;
 				}
@@ -501,7 +500,7 @@ public class Iter0IterableArrayOperatorTest extends TestCase {
 
 	public final void testToListMapClassOfKClassOfVMapBuilderOfKVT() {
 		assertEquals(TypeSchemes.forName("Map<Calendar, List<Integer>>"),
-				this.aCalendarOperator.toListMap(Calendar.class, Integer.class, new MapBuilder<Calendar, Calendar, Integer>() {
+				this.aCalendarOperator.toListMap(Calendar.class, Integer.class, new IMapBuild<Calendar, Calendar, Integer>() {
 					public Calendar getKey(Calendar target) {
 						return target;
 					}
@@ -513,7 +512,7 @@ public class Iter0IterableArrayOperatorTest extends TestCase {
 
 	public final void testToListMapMapBuilderOfObjectObjectT() {
 		assertEquals(TypeSchemes.forName("Map<?, List<?>>"),
-				this.aCalendarOperator.toListMap(new MapBuilder<Calendar, Object, Object>() {
+				this.aCalendarOperator.toListMap(new IMapBuild<Calendar, Object, Object>() {
 					public Calendar getKey(Calendar target) {
 						return target;
 					}
@@ -524,7 +523,7 @@ public class Iter0IterableArrayOperatorTest extends TestCase {
 			
 
 		final Calendar cal = Calendar.getInstance();
-		assertEquals(1, this.aCalendarOperator.toListMap(new MapBuilder<Calendar, Object, Object>() {
+		assertEquals(1, this.aCalendarOperator.toListMap(new IMapBuild<Calendar, Object, Object>() {
 			public Calendar getKey(Calendar target) {
 				return cal;
 			}
@@ -598,7 +597,7 @@ public class Iter0IterableArrayOperatorTest extends TestCase {
 
 	public final void testToSetMapClassOfKClassOfVMapBuilderOfTKV() {
 		assertEquals(TypeSchemes.forName("Map<Calendar, Set<Integer>>"),
-				this.aCalendarOperator.toSetMap(Calendar.class, Integer.class, new MapBuilder<Calendar, Calendar, Integer>() {
+				this.aCalendarOperator.toSetMap(Calendar.class, Integer.class, new IMapBuild<Calendar, Calendar, Integer>() {
 					public Calendar getKey(Calendar target) {
 						return target;
 					}
@@ -610,7 +609,7 @@ public class Iter0IterableArrayOperatorTest extends TestCase {
 
 	public final void testToSetMapMapBuilderOfTObjectObject() {
 		assertEquals(TypeSchemes.forName("Map<?, Set<?>>"),
-				this.aCalendarOperator.toSetMap(new MapBuilder<Calendar, Object, Object>() {
+				this.aCalendarOperator.toSetMap(new IMapBuild<Calendar, Object, Object>() {
 					public Calendar getKey(Calendar target) {
 						return target;
 					}
@@ -621,7 +620,7 @@ public class Iter0IterableArrayOperatorTest extends TestCase {
 			
 
 		final Calendar cal = Calendar.getInstance();
-		assertEquals(1, this.aCalendarOperator.toSetMap(new MapBuilder<Calendar, Object, Object>() {
+		assertEquals(1, this.aCalendarOperator.toSetMap(new IMapBuild<Calendar, Object, Object>() {
 			public Calendar getKey(Calendar target) {
 				return cal;
 			}

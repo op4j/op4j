@@ -9,8 +9,7 @@ import junit.framework.TestCase;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.op4j.op.Op;
-import org.op4j.op.interfaces.EvalContext;
-import org.op4j.op.interfaces.Evaluator;
+import org.op4j.op.commands.IEval;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
 import org.op4j.util.ConverterUtils;
@@ -115,7 +114,7 @@ public class Iter1IterableListOperatorTest extends TestCase {
 
 	public final void testEachEvalClassOfXEvaluatorOfTX() {
 		List<String> result = this.integerOperator.eachEval(String.class, 
-				new Evaluator<Integer, String>() {
+				new IEval<Integer, String>() {
 					public String evaluate(EvalContext<Integer> ctx) {
 						return ctx.getTarget(0).toString();
 					}			

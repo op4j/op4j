@@ -8,8 +8,7 @@ import java.util.Map;
 import junit.framework.TestCase;
 
 import org.op4j.op.Op;
-import org.op4j.op.interfaces.EvalContext;
-import org.op4j.op.interfaces.Evaluator;
+import org.op4j.op.commands.IEval;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
 import org.op4j.util.ConverterUtils;
@@ -188,7 +187,7 @@ public class Iter0MapEntryOperatorTest extends TestCase {
 	public final void testEvalEvaluatorOfVObject() {
 		
 		assertEquals(this.calendar200810101400Value.getTimeInMillis(),
-				this.integerCalendarOperator.evalOnValue(new Evaluator<Calendar, Object>() {
+				this.integerCalendarOperator.evalOnValue(new IEval<Calendar, Object>() {
 			public Long evaluate(EvalContext<Calendar> ctx) {
 				return Long.valueOf(ctx.getTarget(0).getTimeInMillis());
 			}			
@@ -324,21 +323,21 @@ public class Iter0MapEntryOperatorTest extends TestCase {
 
 	public final void testEvalOnValueClassOfXEvaluatorOfVX() {
 		assertEquals(Integer.valueOf(this.integerCalendarMapEntry.getValue().get(Calendar.MILLISECOND)), 
-				this.integerCalendarOperator.evalOnValue(Integer.class, new Evaluator<Calendar, Integer>() {
+				this.integerCalendarOperator.evalOnValue(Integer.class, new IEval<Calendar, Integer>() {
 					@SuppressWarnings("boxing")
 					public Integer evaluate(EvalContext<Calendar> ctx) {
 						return ctx.getTarget(0).get(Calendar.MILLISECOND);
 					}				
 				}).get().getValue());
 		assertEquals(Types.INTEGER,
-				this.integerCalendarOperator.evalOnValue(Integer.class, new Evaluator<Calendar, Integer>() {
+				this.integerCalendarOperator.evalOnValue(Integer.class, new IEval<Calendar, Integer>() {
 					@SuppressWarnings("boxing")
 					public Integer evaluate(EvalContext<Calendar> ctx) {
 						return ctx.getTarget(0).get(Calendar.MILLISECOND);
 					}
 				}).getOperatorValueType());
 		assertEquals(TypeSchemes.forName("Map$Entry<Integer,Integer>"),
-				this.integerCalendarOperator.evalOnValue(Integer.class, new Evaluator<Calendar, Integer>() {
+				this.integerCalendarOperator.evalOnValue(Integer.class, new IEval<Calendar, Integer>() {
 					@SuppressWarnings("boxing")
 					public Integer evaluate(EvalContext<Calendar> ctx) {
 						return ctx.getTarget(0).get(Calendar.MILLISECOND);
@@ -348,21 +347,21 @@ public class Iter0MapEntryOperatorTest extends TestCase {
 
 	public final void testEvalOnValueEvaluatorOfVObject() {
 		assertEquals(Integer.valueOf(this.integerCalendarMapEntry.getValue().get(Calendar.MILLISECOND)), 
-				this.integerCalendarOperator.evalOnValue(new Evaluator<Calendar, Object>() {
+				this.integerCalendarOperator.evalOnValue(new IEval<Calendar, Object>() {
 					@SuppressWarnings("boxing")
 					public Integer evaluate(EvalContext<Calendar> ctx) {
 						return ctx.getTarget(0).get(Calendar.MILLISECOND);
 					}				
 				}).get().getValue());
 		assertEquals(null,
-				this.integerCalendarOperator.evalOnValue(new Evaluator<Calendar, Object>() {
+				this.integerCalendarOperator.evalOnValue(new IEval<Calendar, Object>() {
 					@SuppressWarnings("boxing")
 					public Integer evaluate(EvalContext<Calendar> ctx) {
 						return ctx.getTarget(0).get(Calendar.MILLISECOND);
 					}
 				}).getOperatorValueType());
 		assertEquals(TypeSchemes.forName("Map$Entry<Integer,?>"),
-				this.integerCalendarOperator.evalOnValue(new Evaluator<Calendar, Object>() {
+				this.integerCalendarOperator.evalOnValue(new IEval<Calendar, Object>() {
 					@SuppressWarnings("boxing")
 					public Integer evaluate(EvalContext<Calendar> ctx) {
 						return ctx.getTarget(0).get(Calendar.MILLISECOND);

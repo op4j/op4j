@@ -15,10 +15,8 @@ import java.util.Set;
 import junit.framework.TestCase;
 
 import org.op4j.op.Op;
-import org.op4j.op.interfaces.EvalContext;
-import org.op4j.op.interfaces.Evaluator;
-import org.op4j.op.interfaces.Filter;
-import org.op4j.op.interfaces.FilterContext;
+import org.op4j.op.commands.IEval;
+import org.op4j.op.intf.parameters.ISelect;
 import org.op4j.operation.Operations;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
@@ -238,9 +236,9 @@ public class Iter0IterableSetMapOperatorTest extends TestCase {
 	public final void testEachFilterEntryFilterOfEntryOfKV() {
 		Map<Integer, List<String>> results = new HashMap<Integer, List<String>>();
 
-		Filter<Map.Entry<Integer, String>> theFilter = new Filter<Map.Entry<Integer, String>>() {
+		ISelect<Map.Entry<Integer, String>> theFilter = new ISelect<Map.Entry<Integer, String>>() {
 			public boolean eval(
-					FilterContext<Map.Entry<Integer, String>> ctx) {
+					SelectorContext<Map.Entry<Integer, String>> ctx) {
 				return true;
 			}			
 		};
@@ -325,7 +323,7 @@ public class Iter0IterableSetMapOperatorTest extends TestCase {
 	}
 
 	public final void testEachValueEvalClassOfXEvaluatorOfVX() {
-		Evaluator<Calendar, String> evaluator = new Evaluator<Calendar, String>() {
+		IEval<Calendar, String> evaluator = new IEval<Calendar, String>() {
 			public String evaluate(EvalContext<Calendar> ctx) {
 				return ctx.getTarget(0).toString();
 			}			
@@ -351,7 +349,7 @@ public class Iter0IterableSetMapOperatorTest extends TestCase {
 
 	@SuppressWarnings("unchecked")
 	public final void testEachValueEvalEvaluatorOfVObject() {
-		Evaluator<Calendar, Object> evaluator = new Evaluator<Calendar, Object>() {
+		IEval<Calendar, Object> evaluator = new IEval<Calendar, Object>() {
 			public Object evaluate(EvalContext<Calendar> ctx) {
 				return ctx.getTarget(0).toString();
 			}			

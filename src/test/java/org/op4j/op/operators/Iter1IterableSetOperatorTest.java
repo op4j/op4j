@@ -10,8 +10,7 @@ import junit.framework.TestCase;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.op4j.op.Op;
-import org.op4j.op.interfaces.Filter;
-import org.op4j.op.interfaces.FilterContext;
+import org.op4j.op.intf.parameters.ISelect;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
 import org.op4j.util.ConverterUtils;
@@ -87,13 +86,13 @@ public class Iter1IterableSetOperatorTest extends TestCase {
 	}
 
 	public final void testEachFilterFilterOfT() {
-		assertEquals(0, this.integerOperator.eachFilter(new Filter<Integer>() {
-			public boolean eval(FilterContext<Integer> ctx) {
+		assertEquals(0, this.integerOperator.eachFilter(new ISelect<Integer>() {
+			public boolean eval(SelectorContext<Integer> ctx) {
 				return true;
 			}			
 		}).getTargets().get(0).get().size());
-		assertEquals(this.integerSet.size(), this.integerOperator.eachFilter(new Filter<Integer>() {
-			public boolean eval(FilterContext<Integer> ctx) {
+		assertEquals(this.integerSet.size(), this.integerOperator.eachFilter(new ISelect<Integer>() {
+			public boolean eval(SelectorContext<Integer> ctx) {
 				return false;
 			}			
 		}).getTargets().get(0).get().size());

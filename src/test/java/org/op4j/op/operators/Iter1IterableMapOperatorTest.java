@@ -9,7 +9,7 @@ import java.util.Map;
 import junit.framework.TestCase;
 
 import org.op4j.op.Op;
-import org.op4j.op.interfaces.MapBuilder;
+import org.op4j.op.intf.parameters.IMapBuild;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
 
@@ -77,7 +77,7 @@ public class Iter1IterableMapOperatorTest extends TestCase {
 	public final void testUneachListMapMapBuilderOfObjectObjectMapOfKV() {
 		assertEquals(TypeSchemes.forName("Map<?,List<?>>"),
 				this.integerStringOperator.uneachListMap(
-						new MapBuilder<Map<Integer,String>, Object, Object>() {
+						new IMapBuild<Map<Integer,String>, Object, Object>() {
 							public Object getKey(Map<Integer, String> target) {
 								return target.size();
 							}
@@ -87,7 +87,7 @@ public class Iter1IterableMapOperatorTest extends TestCase {
 						}).getTargetTypeScheme());	
 		assertEquals(null,
 				this.integerStringOperator.uneachListMap(
-						new MapBuilder<Map<Integer,String>, Object, Object>() {
+						new IMapBuild<Map<Integer,String>, Object, Object>() {
 							public Object getKey(Map<Integer, String> target) {
 								return target.size();
 							}
@@ -97,7 +97,7 @@ public class Iter1IterableMapOperatorTest extends TestCase {
 						}).getOperatorKeyType());	
 		assertEquals(null,
 				this.integerStringOperator.uneachListMap(
-						new MapBuilder<Map<Integer,String>, Object, Object>() {
+						new IMapBuild<Map<Integer,String>, Object, Object>() {
 							public Object getKey(Map<Integer, String> target) {
 								return target.size();
 							}
@@ -106,7 +106,7 @@ public class Iter1IterableMapOperatorTest extends TestCase {
 							}							
 						}).getOperatorValueType());	
 		assertTrue(this.integerStringOperator.uneachListMap(
-						new MapBuilder<Map<Integer,String>, Object, Object>() {
+						new IMapBuild<Map<Integer,String>, Object, Object>() {
 							public Object getKey(Map<Integer, String> target) {
 								return target.size();
 							}

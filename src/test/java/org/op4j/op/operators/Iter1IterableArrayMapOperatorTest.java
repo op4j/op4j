@@ -15,8 +15,7 @@ import java.util.Map.Entry;
 import junit.framework.TestCase;
 
 import org.op4j.op.Op;
-import org.op4j.op.interfaces.Filter;
-import org.op4j.op.interfaces.FilterContext;
+import org.op4j.op.intf.parameters.ISelect;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
 import org.op4j.util.ConverterUtils;
@@ -110,8 +109,8 @@ public class Iter1IterableArrayMapOperatorTest extends TestCase {
 	}
 
 	public final void testEachFilterEntryFilterOfEntryOfKV() {
-		Iter1IterableArrayMapOperator<Integer, String> result = this.integerStringOperator.eachFilterEntry(new Filter<Map.Entry<Integer, String>>() {
-			public boolean eval(FilterContext<Entry<Integer, String>> ctx) {
+		Iter1IterableArrayMapOperator<Integer, String> result = this.integerStringOperator.eachFilterEntry(new ISelect<Map.Entry<Integer, String>>() {
+			public boolean eval(SelectorContext<Entry<Integer, String>> ctx) {
 				return true;
 			}			
 		});

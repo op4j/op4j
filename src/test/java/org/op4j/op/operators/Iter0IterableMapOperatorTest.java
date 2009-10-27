@@ -18,8 +18,7 @@ import junit.framework.TestCase;
 import org.apache.commons.collections.SetUtils;
 import org.op4j.exceptions.InvalidOperatorCastException;
 import org.op4j.op.Op;
-import org.op4j.op.interfaces.Filter;
-import org.op4j.op.interfaces.FilterContext;
+import org.op4j.op.intf.parameters.ISelect;
 import org.op4j.operation.Operations;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
@@ -266,9 +265,9 @@ public class Iter0IterableMapOperatorTest extends TestCase {
 
 	public final void testFilterEachEntryFilterOfEntryOfKV() {
 		
-		Filter<Map.Entry<Integer, Calendar>> theFilter = new Filter<Map.Entry<Integer, Calendar>>() {
+		ISelect<Map.Entry<Integer, Calendar>> theFilter = new ISelect<Map.Entry<Integer, Calendar>>() {
 			public boolean eval(
-					FilterContext<Entry<Integer, Calendar>> ctx) {
+					SelectorContext<Entry<Integer, Calendar>> ctx) {
 				return Arrays.asList(Iter0IterableMapOperatorTest.this.keys.get(0), Iter0IterableMapOperatorTest.this.keys.get(2)).contains(
 						ctx.getTarget(0).getKey());
 			}			

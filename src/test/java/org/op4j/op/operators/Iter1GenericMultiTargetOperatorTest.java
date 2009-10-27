@@ -13,7 +13,7 @@ import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.op4j.exceptions.InvalidOperatorCastException;
 import org.op4j.op.Op;
-import org.op4j.op.interfaces.MapBuilder;
+import org.op4j.op.intf.parameters.IMapBuild;
 import org.op4j.type.Types;
 
 public class Iter1GenericMultiTargetOperatorTest extends TestCase {
@@ -134,7 +134,7 @@ public class Iter1GenericMultiTargetOperatorTest extends TestCase {
 	public final void testBuildMapMapBuilderOfObjectObjectT() {
 		final Calendar aux = Calendar.getInstance();
 		
-		Iter1IterableMapOperator mapOperator = this.integerOperator.buildMap(new MapBuilder<Integer, Object, Object>() {
+		Iter1IterableMapOperator mapOperator = this.integerOperator.buildMap(new IMapBuild<Integer, Object, Object>() {
 			public Calendar getKey(Integer target) {
 				Calendar clone = (Calendar) aux.clone();
 				clone.add(Calendar.MILLISECOND, target.intValue());

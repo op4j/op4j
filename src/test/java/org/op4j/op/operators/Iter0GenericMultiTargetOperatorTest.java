@@ -10,9 +10,8 @@ import junit.framework.TestCase;
 import org.apache.commons.lang.time.DateUtils;
 import org.op4j.exceptions.InvalidTypeSchemeException;
 import org.op4j.op.Op;
-import org.op4j.op.interfaces.EvalContext;
-import org.op4j.op.interfaces.Evaluator;
-import org.op4j.op.interfaces.MapBuilder;
+import org.op4j.op.commands.IEval;
+import org.op4j.op.intf.parameters.IMapBuild;
 import org.op4j.operation.ListMapTarget;
 import org.op4j.operation.SetMapTarget;
 import org.op4j.operations.conversion.exceptions.ConversionException;
@@ -56,18 +55,18 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 	public final void testAs() {
 		assertTrue(Types.INTEGER.isAssignableFrom(
 				this.integerOperator.addObj(Integer.valueOf(34))
-				.as(Integer.class).getTargets().get(0).getIntendedType()));		
+				.of(Integer.class).getTargets().get(0).getIntendedType()));		
 		assertTrue(Types.INTEGER.isAssignableFrom(
 				this.integerOperator.addObj(Integer.valueOf(34))
-				.as(Integer.class).getTargets().get(3).getIntendedType()));		
+				.of(Integer.class).getTargets().get(3).getIntendedType()));		
 		
 		assertTrue(TypeSchemes.forSingleType(Types.INTEGER, this.integerOperator.size() + 1).isAssignableFrom(
 				this.integerOperator.addObj(Integer.valueOf(34))
-				.as(Integer.class).getTargetTypeScheme()));		
+				.of(Integer.class).getTargetTypeScheme()));		
 		assertFalse(TypeSchemes.forSingleType(Types.INTEGER, this.integerOperator.size()).isAssignableFrom(this.integerOperator.addObj(Integer.valueOf(34))
-				.as(Integer.class).getTargetTypeScheme()));		
+				.of(Integer.class).getTargetTypeScheme()));		
 		try {
-			this.calendarOperator.as(Date.class);
+			this.calendarOperator.of(Date.class);
 			fail("this.calendarOperator.as(Date.class) should have thrown an( exception");
 		} catch (IllegalArgumentException e) {
 			// do nothing
@@ -96,13 +95,13 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 
 	public final void testExec() {
 		assertEquals(this.aCalendar200006221300, this.calendarOperator.exec(
-				ConverterUtils.unsafeGetOperationNameForResultType(Types.CALENDAR)).as(Calendar.class)
+				ConverterUtils.unsafeGetOperationNameForResultType(Types.CALENDAR)).of(Calendar.class)
 				.getTargetObjects().get(0));
 	}
 
 	public final void testExecStringObjectArray() {
 		assertEquals(this.aCalendar200006221300, this.calendarOperator.exec(
-				ConverterUtils.unsafeGetOperationNameForResultType(Types.CALENDAR)).as(Calendar.class)
+				ConverterUtils.unsafeGetOperationNameForResultType(Types.CALENDAR)).of(Calendar.class)
 				.get());
 	}
 
@@ -171,7 +170,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 
 	public final void testToCalendar() {
 		assertEquals(this.aCalendar200006221300,
-				this.calendarOperator.toCalendar().get());	
+				this.calendarOperator.convToCalendar().get());	
 	}
 
 	public final void testToStr() {
@@ -196,7 +195,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 
 	public final void testEvalClassOfXEvaluatorOfTX() {
 		assertEquals(Integer.valueOf(60),
-			this.integerOperator.eval(Integer.class, new Evaluator<Integer, Integer>() {	
+			this.integerOperator.eval(Integer.class, new IEval<Integer, Integer>() {	
 				public Integer evaluate(EvalContext<Integer> ctx) {
 					int total = 0;
 					for (int index = 0; index < ctx.getTargetCount(); index++) {
@@ -206,7 +205,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 				}			
 			}).get());
 		assertEquals(Types.INTEGER.getName(),
-				this.integerOperator.eval(Integer.class, new Evaluator<Integer, Integer>() {	
+				this.integerOperator.eval(Integer.class, new IEval<Integer, Integer>() {	
 					public Integer evaluate(EvalContext<Integer> ctx) {
 						int total = 0;
 						for (int index = 0; index < ctx.getTargetCount(); index++) {
@@ -290,7 +289,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 
 	public final void testBuildMapClassOfKClassOfVMapBuilderOfKVT() {
 		assertTrue(Types.forName("Map<Integer, String>").isAssignableFrom(
-			this.integerOperator.buildMap(Integer.class, String.class, new MapBuilder<Integer, Integer, String>() {
+			this.integerOperator.buildMap(Integer.class, String.class, new IMapBuild<Integer, Integer, String>() {
 				public Integer getKey(Integer target) {
 					return Integer.valueOf((target).intValue() + 10);
 				}
@@ -299,7 +298,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 					return "The value is " + target.toString();
 				}			
 			}).getTargets().get(0).getIntendedType()));
-		assertTrue(this.integerOperator.buildMap(Integer.class, String.class, new MapBuilder<Integer, Integer, String>() {
+		assertTrue(this.integerOperator.buildMap(Integer.class, String.class, new IMapBuild<Integer, Integer, String>() {
 					public Integer getKey(Integer target) {
 						return Integer.valueOf((target).intValue() + 10);
 					}
@@ -387,7 +386,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 	}
 
 	public final void testBuildListMapMapBuilderOfTObjectObject() {
-		ListMapTarget<?, ?> theTarget = this.integerOperator.buildListMap(new MapBuilder<Integer, Object, Object>() {
+		ListMapTarget<?, ?> theTarget = this.integerOperator.buildListMap(new IMapBuild<Integer, Object, Object>() {
 			public Object getKey(Integer target) {
 				return Integer.valueOf((target).intValue() 
 						+ 100);
@@ -442,10 +441,10 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 		assertEquals(current, 
 				Op.onAll(Integer.valueOf(current.get(Calendar.YEAR)), Integer.valueOf(current.get(Calendar.MONTH) + 1), Integer.valueOf(current.get(Calendar.DAY_OF_MONTH)), 
 						Integer.valueOf(current.get(Calendar.HOUR_OF_DAY)), Integer.valueOf(current.get(Calendar.MINUTE)))
-						.as(Integer.class)
+						.of(Integer.class)
 						.add(Integer.valueOf(current.get(Calendar.SECOND)))
 						.add(Integer.valueOf(current.get(Calendar.MILLISECOND)))
-				.toCalendar().get());	
+				.convToCalendar().get());	
 	}
 
 	public final void testAddAll() {
@@ -453,9 +452,9 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 		assertEquals(current, 
 				Op.onAll(Integer.valueOf(current.get(Calendar.YEAR)), Integer.valueOf(current.get(Calendar.MONTH) + 1), Integer.valueOf(current.get(Calendar.DAY_OF_MONTH)), 
 						Integer.valueOf(current.get(Calendar.HOUR_OF_DAY)), Integer.valueOf(current.get(Calendar.MINUTE)))
-						.as(Integer.class)
+						.of(Integer.class)
 						.addAll(Integer.valueOf(current.get(Calendar.SECOND)), Integer.valueOf(current.get(Calendar.MILLISECOND)))
-				.toCalendar().get());	
+				.convToCalendar().get());	
 	}
 
 	public final void testAddObj() {
@@ -482,10 +481,10 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 		assertEquals(current, 
 				Op.onAll(Integer.valueOf(current.get(Calendar.YEAR)), Integer.valueOf(current.get(Calendar.MONTH) + 1), Integer.valueOf(current.get(Calendar.DAY_OF_MONTH)), 
 						Integer.valueOf(current.get(Calendar.HOUR_OF_DAY)), Integer.valueOf(current.get(Calendar.MINUTE)))
-						.as(Integer.class)
+						.of(Integer.class)
 						.ins(5, Integer.valueOf(current.get(Calendar.MILLISECOND)))
 						.ins(5, Integer.valueOf(current.get(Calendar.SECOND)))
-				.toCalendar().get());		
+				.convToCalendar().get());		
 	}
 
 	public final void testInsAll() {
@@ -494,7 +493,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 				Op.onAll(Integer.class, Integer.valueOf(current.get(Calendar.YEAR)), Integer.valueOf(current.get(Calendar.MONTH) + 1), Integer.valueOf(current.get(Calendar.DAY_OF_MONTH)), 
 						Integer.valueOf(current.get(Calendar.HOUR_OF_DAY)), Integer.valueOf(current.get(Calendar.MINUTE)))
 						.insAll(5, Integer.valueOf(current.get(Calendar.SECOND)), Integer.valueOf(current.get(Calendar.MILLISECOND)))
-				.toCalendar().get());		
+				.convToCalendar().get());		
 	}
 
 	public final void testInsObj() {
@@ -571,7 +570,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 
 	public final void testEvalEvaluatorOfTObject() {
 		
-		assertEquals("2041", this.calendarOperator.eval(new Evaluator<Integer, Object>() {
+		assertEquals("2041", this.calendarOperator.eval(new IEval<Integer, Object>() {
 			public String evaluate(EvalContext<Integer> ctx) {
 				int total = 0;
 				for (int index = 0; index < ctx.getTargetCount(); index++) {
@@ -583,7 +582,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 	}
 
 	public final void testBuildMapMapBuilderOfObjectObjectT() {
-		assertTrue(this.calendarOperator.buildMap(new MapBuilder<Integer, Object, Object>() {
+		assertTrue(this.calendarOperator.buildMap(new IMapBuild<Integer, Object, Object>() {
 			public Object getKey(Integer target) {
 				return target;
 			}
@@ -592,7 +591,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 			}			
 		}).get().get(Integer.valueOf(2000)).equals("2000"));	
 		
-		assertEquals(Types.forName("Map<?, ?>").getName(), this.calendarOperator.buildMap(new MapBuilder<Integer, Object, Object>() {
+		assertEquals(Types.forName("Map<?, ?>").getName(), this.calendarOperator.buildMap(new IMapBuild<Integer, Object, Object>() {
 			public Object getKey(Integer target) {
 				return target;
 			}
@@ -603,7 +602,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 	}
 
 	public final void testBuildListMapClassOfKClassOfVMapBuilderOfTKV() {
-		assertTrue(this.calendarOperator.buildListMap(Integer.class, String.class, new MapBuilder<Integer, Integer, String>() {
+		assertTrue(this.calendarOperator.buildListMap(Integer.class, String.class, new IMapBuild<Integer, Integer, String>() {
 			public Integer getKey(Integer target) {
 				return target;
 			}
@@ -612,7 +611,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 			}			
 		}).get().get(Integer.valueOf(22)).iterator().next().equals("22"));	
 		
-		assertEquals(Types.forName("Map<Integer, List<String>>").getName(), this.calendarOperator.buildListMap(Integer.class, String.class, new MapBuilder<Integer, Integer, String>() {
+		assertEquals(Types.forName("Map<Integer, List<String>>").getName(), this.calendarOperator.buildListMap(Integer.class, String.class, new IMapBuild<Integer, Integer, String>() {
 			public Integer getKey(Integer target) {
 				return target;
 			}
@@ -732,7 +731,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 	}
 
 	public final void testBuildSetMapClassOfKClassOfVMapBuilderOfTKV() {
-		assertTrue(this.calendarOperator.buildSetMap(Integer.class, String.class, new MapBuilder<Integer, Integer, String>() {
+		assertTrue(this.calendarOperator.buildSetMap(Integer.class, String.class, new IMapBuild<Integer, Integer, String>() {
 			public Integer getKey(Integer target) {
 				return target;
 			}
@@ -741,7 +740,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 			}			
 		}).get().get(Integer.valueOf(22)).iterator().next().equals("22"));	
 		
-		assertEquals(Types.forName("Map<Integer, Set<String>>").getName(), this.calendarOperator.buildSetMap(Integer.class, String.class, new MapBuilder<Integer, Integer, String>() {
+		assertEquals(Types.forName("Map<Integer, Set<String>>").getName(), this.calendarOperator.buildSetMap(Integer.class, String.class, new IMapBuild<Integer, Integer, String>() {
 			public Integer getKey(Integer target) {
 				return target;
 			}
@@ -752,7 +751,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 	}
 
 	public final void testBuildSetMapMapBuilderOfTObjectObject() {
-		SetMapTarget<?, ?> theTarget = this.integerOperator.buildSetMap(new MapBuilder<Integer, Object, Object>() {
+		SetMapTarget<?, ?> theTarget = this.integerOperator.buildSetMap(new IMapBuild<Integer, Object, Object>() {
 			public Object getKey(Integer target) {
 				return Integer.valueOf((target).intValue() 
 						+ 100);

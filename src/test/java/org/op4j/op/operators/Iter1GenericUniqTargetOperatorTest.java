@@ -8,10 +8,8 @@ import junit.framework.TestCase;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.op4j.op.Op;
-import org.op4j.op.interfaces.EvalContext;
-import org.op4j.op.interfaces.Evaluator;
-import org.op4j.op.interfaces.Filter;
-import org.op4j.op.interfaces.FilterContext;
+import org.op4j.op.commands.IEval;
+import org.op4j.op.intf.parameters.ISelect;
 import org.op4j.type.Types;
 
 public class Iter1GenericUniqTargetOperatorTest extends TestCase {
@@ -90,8 +88,8 @@ public class Iter1GenericUniqTargetOperatorTest extends TestCase {
 
 	public final void testFilterItersFilterOfQsuperT() {
 		assertEquals(4, this.calendarOperator.getTargets().size());
-		assertEquals(2, this.calendarOperator.filter(new Filter<Calendar>() {
-			public boolean eval(FilterContext<Calendar> ctx) {
+		assertEquals(2, this.calendarOperator.filter(new ISelect<Calendar>() {
+			public boolean eval(SelectorContext<Calendar> ctx) {
 				return Iter1GenericUniqTargetOperatorTest
 				.this.aCalendar200006221300.equals(ctx.getTarget(0));
 			}			
@@ -141,7 +139,7 @@ public class Iter1GenericUniqTargetOperatorTest extends TestCase {
 	}
 
 	public final void testEvalClassOfXEvaluatorOfTX() {
-		Iter1GenericUniqTargetOperator<Long> operator = this.calendarOperator.eval(Long.class, new Evaluator<Calendar, Long>() {
+		Iter1GenericUniqTargetOperator<Long> operator = this.calendarOperator.eval(Long.class, new IEval<Calendar, Long>() {
 			public Long evaluate(EvalContext<Calendar> ctx) {
 				return Long.valueOf(ctx.getTarget(0).getTimeInMillis());
 			}			

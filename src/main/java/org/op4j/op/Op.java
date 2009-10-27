@@ -20,21 +20,60 @@
 package org.op4j.op;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.op4j.op.operators.Iter0GenericMultiTargetOperator;
-import org.op4j.op.operators.Iter0GenericUniqTargetOperator;
-import org.op4j.op.operators.Iter0IterableArrayMapOperator;
-import org.op4j.op.operators.Iter0IterableArrayOperator;
-import org.op4j.op.operators.Iter0IterableListMapOperator;
-import org.op4j.op.operators.Iter0IterableListOperator;
-import org.op4j.op.operators.Iter0IterableMapOperator;
-import org.op4j.op.operators.Iter0IterableSetMapOperator;
-import org.op4j.op.operators.Iter0IterableSetOperator;
-import org.op4j.op.operators.Iter0MapEntryOperator;
-import org.op4j.op.operators.OperatorUtils;
+import org.apache.commons.lang.Validate;
+import org.op4j.op.commands.impl.Eval;
+import org.op4j.op.impl.operators.array.Level0ArrayOperator;
+import org.op4j.op.impl.operators.arrayofarray.Level0ArrayOfArrayOperator;
+import org.op4j.op.impl.operators.arrayoflist.Level0ArrayOfListOperator;
+import org.op4j.op.impl.operators.arrayofmap.Level0ArrayOfMapOperator;
+import org.op4j.op.impl.operators.arrayofset.Level0ArrayOfSetOperator;
+import org.op4j.op.impl.operators.generic.Level0GenericUniqOperator;
+import org.op4j.op.impl.operators.list.Level0ListOperator;
+import org.op4j.op.impl.operators.listofarray.Level0ListOfArrayOperator;
+import org.op4j.op.impl.operators.listoflist.Level0ListOfListOperator;
+import org.op4j.op.impl.operators.listofmap.Level0ListOfMapOperator;
+import org.op4j.op.impl.operators.listofset.Level0ListOfSetOperator;
+import org.op4j.op.impl.operators.map.Level0MapOperator;
+import org.op4j.op.impl.operators.mapofarray.Level0MapOfArrayOperator;
+import org.op4j.op.impl.operators.mapoflist.Level0MapOfListOperator;
+import org.op4j.op.impl.operators.mapofmap.Level0MapOfMapOperator;
+import org.op4j.op.impl.operators.mapofset.Level0MapOfSetOperator;
+import org.op4j.op.impl.operators.set.Level0SetOperator;
+import org.op4j.op.impl.operators.setofarray.Level0SetOfArrayOperator;
+import org.op4j.op.impl.operators.setoflist.Level0SetOfListOperator;
+import org.op4j.op.impl.operators.setofmap.Level0SetOfMapOperator;
+import org.op4j.op.impl.operators.setofset.Level0SetOfSetOperator;
+import org.op4j.op.impl.parameters.Of;
+import org.op4j.op.intf.operators.array.ILevel0ArrayOperator;
+import org.op4j.op.intf.operators.arrayofarray.ILevel0ArrayOfArrayOperator;
+import org.op4j.op.intf.operators.arrayoflist.ILevel0ArrayOfListOperator;
+import org.op4j.op.intf.operators.arrayofmap.ILevel0ArrayOfMapOperator;
+import org.op4j.op.intf.operators.arrayofset.ILevel0ArrayOfSetOperator;
+import org.op4j.op.intf.operators.generic.ILevel0GenericMultiOperator;
+import org.op4j.op.intf.operators.generic.ILevel0GenericUniqOperator;
+import org.op4j.op.intf.operators.list.ILevel0ListOperator;
+import org.op4j.op.intf.operators.listofarray.ILevel0ListOfArrayOperator;
+import org.op4j.op.intf.operators.listoflist.ILevel0ListOfListOperator;
+import org.op4j.op.intf.operators.listofmap.ILevel0ListOfMapOperator;
+import org.op4j.op.intf.operators.listofset.ILevel0ListOfSetOperator;
+import org.op4j.op.intf.operators.map.ILevel0MapOperator;
+import org.op4j.op.intf.operators.mapofarray.ILevel0MapOfArrayOperator;
+import org.op4j.op.intf.operators.mapoflist.ILevel0MapOfListOperator;
+import org.op4j.op.intf.operators.mapofmap.ILevel0MapOfMapOperator;
+import org.op4j.op.intf.operators.mapofset.ILevel0MapOfSetOperator;
+import org.op4j.op.intf.operators.set.ILevel0SetOperator;
+import org.op4j.op.intf.operators.setofarray.ILevel0SetOfArrayOperator;
+import org.op4j.op.intf.operators.setoflist.ILevel0SetOfListOperator;
+import org.op4j.op.intf.operators.setofmap.ILevel0SetOfMapOperator;
+import org.op4j.op.intf.operators.setofset.ILevel0SetOfSetOperator;
+import org.op4j.op.intf.parameters.IOf;
+import org.op4j.op.target.Target;
 
 
 /**
@@ -106,104 +145,177 @@ public final class Op {
     }
 
     
-    public static Iter0GenericUniqTargetOperator<?> on(final Object target) {
-        return OperatorUtils.createOn(target);
+    public static <T> ILevel0GenericUniqOperator<T> on(final T target) {
+        return new Level0GenericUniqOperator<T>(Target.forObject(target));
     }
 
     
-    public static <T> Iter0GenericUniqTargetOperator<T> on(final Class<T> ofClass, final T target) {
-        return OperatorUtils.createOn(ofClass, target);
+    public static <T> ILevel0GenericMultiOperator<T> onAll(final T... targets) {
+        return null;
     }
 
     
-    public static Iter0IterableListOperator<?> onList(final List<?> target) {
-        return OperatorUtils.createOnList(target);
+    public static ILevel0GenericMultiOperator<?> onAllObjs(final Object... targets) {
+        return null;
     }
 
     
-    public static <T> Iter0IterableListOperator<T> onList(final Class<T> ofClass, final List<T> target) {
-        return OperatorUtils.createOnList(ofClass, target);
+    public static <T> ILevel0GenericMultiOperator<T> onAll(final IOf<T> of, final T... targets) {
+        return null;
     }
 
     
-    public static Iter0IterableSetOperator<?> onSet(final Set<?> target) {
-        return OperatorUtils.createOnSet(target);
+    public static <T> ILevel0ArrayOperator<T> onArray(final IOf<T> of, final T[] target) {
+        Validate.notNull(of, "Array component cannot be null");
+        return new Level0ArrayOperator<T>(of, Target.forObject(target));
     }
 
     
-    public static <T> Iter0IterableSetOperator<T> onSet(final Class<T> ofClass, final Set<T> target) {
-        return OperatorUtils.createOnSet(ofClass, target);
+    public static <T> ILevel0ArrayOfArrayOperator<T> onArrayOfArray(final IOf<T> of, final T[][] target) {
+        Validate.notNull(of, "Array component cannot be null");
+        return new Level0ArrayOfArrayOperator<T>(of, Target.forObject(target));
     }
 
     
-    public static Iter0IterableArrayOperator<?> onArray(final Object[] target) {
-        return OperatorUtils.createOnArray(target);
+    public static <T> ILevel0ArrayOfListOperator<T> onArrayOfList(final List<T>[] target) {
+        return new Level0ArrayOfListOperator<T>(Target.forObject(target));
     }
 
     
-    public static <T> Iter0IterableArrayOperator<T> onArray(final Class<T> ofClass, final T[] target) {
-        return OperatorUtils.createOnArray(ofClass, target);
+    public static <K,V> ILevel0ArrayOfMapOperator<K,V> onArrayOfMap(final Map<K,V>[] target) {
+        return new Level0ArrayOfMapOperator<K,V>(Target.forObject(target));
     }
 
     
-    public static Iter0IterableMapOperator<?,?> onMap(final Map<?,?> target) {
-        return OperatorUtils.createOnMap(target);
+    public static <T> ILevel0ArrayOfSetOperator<T> onArrayOfSet(final Set<T>[] target) {
+        return new Level0ArrayOfSetOperator<T>(Target.forObject(target));
     }
 
     
-    public static <K,V> Iter0IterableMapOperator<K,V> onMap(final Class<K> keyClass, final Class<V> valueClass, final Map<K,V> target) {
-        return OperatorUtils.createOnMap(keyClass, valueClass, target);
+    public static <T> ILevel0ListOperator<T> onList(final List<T> target) {
+        return new Level0ListOperator<T>(Target.forObject(target));
     }
 
     
-    public static Iter0IterableListMapOperator<?,?> onListMap(final Map<?,? extends List<?>> target) {
-        return OperatorUtils.createOnListMap(target);
+    public static <T> ILevel0ListOfArrayOperator<T> onListOfArray(final IOf<T> of, final List<? extends T[]> target) {
+        Validate.notNull(of, "Array component cannot be null");
+        return new Level0ListOfArrayOperator<T>(of, Target.forObject(target));
     }
 
     
-    public static <K,V> Iter0IterableListMapOperator<K,V> onListMap(final Class<K> keyClass, final Class<V> valueClass, final Map<K,? extends List<V>> target) {
-        return OperatorUtils.createOnListMap(keyClass, valueClass, target);
+    public static <T> ILevel0ListOfListOperator<T> onListOfList(final List<? extends List<T>> target) {
+        return new Level0ListOfListOperator<T>(Target.forObject(target));
     }
 
     
-    public static Iter0IterableSetMapOperator<?,?> onSetMap(final Map<?,? extends Set<?>> target) {
-        return OperatorUtils.createOnSetMap(target);
+    public static <K,V> ILevel0ListOfMapOperator<K,V> onListOfMap(final List<? extends Map<K,V>> target) {
+        return new Level0ListOfMapOperator<K,V>(Target.forObject(target));
     }
 
     
-    public static <K,V> Iter0IterableSetMapOperator<K,V> onSetMap(final Class<K> keyClass, final Class<V> valueClass, final Map<K,? extends Set<V>> target) {
-        return OperatorUtils.createOnSetMap(keyClass, valueClass, target);
+    public static <T> ILevel0ListOfSetOperator<T> onListOfSet(final List<? extends Set<T>> target) {
+        return new Level0ListOfSetOperator<T>(Target.forObject(target));
     }
 
     
-    public static Iter0IterableArrayMapOperator<?,?> onArrayMap(final Map<?,? extends Object[]> target) {
-        return OperatorUtils.createOnArrayMap(target);
+    public static <K,V> ILevel0MapOperator<K,V> onMap(final Map<K,V> target) {
+        return new Level0MapOperator<K,V>(Target.forObject(target));
     }
 
     
-    public static <K,V> Iter0IterableArrayMapOperator<K,V> onArrayMap(final Class<K> keyClass, final Class<V> valueClass, final Map<K,? extends Object[]> target) {
-        return OperatorUtils.createOnArrayMap(keyClass, valueClass, target);
+    public static <K,V> ILevel0MapOfArrayOperator<K,V> onMapOfArray(final IOf<V> of, final Map<K,V[]> target) {
+        Validate.notNull(of, "Array component cannot be null");
+        return new Level0MapOfArrayOperator<K,V>(of, Target.forObject(target));
     }
 
     
-    public static Iter0MapEntryOperator<?,?> onMapEntry(final Map.Entry<?,?> target) {
-        return OperatorUtils.createOnMapEntry(target);
+    public static <K,V> ILevel0MapOfListOperator<K,V> onMapOfList(final Map<K,? extends List<V>> target) {
+        return new Level0MapOfListOperator<K,V>(Target.forObject(target));
     }
 
     
-    public static <K,V> Iter0MapEntryOperator<K,V> onMapEntry(final Class<K> keyClass, final Class<V> valueClass, final Map.Entry<K,V> target) {
-        return OperatorUtils.createOnMapEntry(keyClass, valueClass, target);
+    public static <K1,K2,V> ILevel0MapOfMapOperator<K1,K2,V> onMapOfMap(final Map<K1,? extends Map<K2,V>> target) {
+        return new Level0MapOfMapOperator<K1,K2,V>(Target.forObject(target));
     }
 
     
-    public static Iter0GenericMultiTargetOperator<?> onAll(final Object... targets) {
-        return OperatorUtils.createOnAll(targets);
+    public static <K,V> ILevel0MapOfSetOperator<K,V> onMapOfSet(final Map<K,? extends Set<V>> target) {
+        return new Level0MapOfSetOperator<K,V>(Target.forObject(target));
     }
 
     
-    public static <T> Iter0GenericMultiTargetOperator<T> onAll(final Class<T> ofClass, final T... targets) {
-        return OperatorUtils.createOnAll(ofClass, targets);
+    public static <T> ILevel0SetOperator<T> onSet(final Set<T> target) {
+        return new Level0SetOperator<T>(Target.forObject(target));
     }
+
     
+    public static <T> ILevel0SetOfArrayOperator<T> onSetOfArray(final IOf<T> of, final Set<? extends T[]> target) {
+        Validate.notNull(of, "Array component cannot be null");
+        return new Level0SetOfArrayOperator<T>(of, Target.forObject(target));
+    }
+
+    
+    public static <T> ILevel0SetOfListOperator<T> onSetOfList(final Set<? extends List<T>> target) {
+        return new Level0SetOfListOperator<T>(Target.forObject(target));
+    }
+
+    
+    public static <K,V> ILevel0SetOfMapOperator<K,V> onSetOfMap(final Set<? extends Map<K,V>> target) {
+        return new Level0SetOfMapOperator<K,V>(Target.forObject(target));
+    }
+
+    
+    public static <T> ILevel0SetOfSetOperator<T> onSetOfSet(final Set<? extends Set<T>> target) {
+        return new Level0SetOfSetOperator<T>(Target.forObject(target));
+    }
+
+
+    
+    
+    public static void main(String[] args) {
         
+
+
+        final String[] stringsArr1 = new String[] {"Hello", "Goodbye", null};
+        final List<String> stringsList1 = Arrays.asList(stringsArr1);
+        
+        final String[][] stringsStrings1 = new String[][] { new String[] {"Hello!","Goodbye!"}, new String[]{"¡Hola!","¡Adiós!"}};
+        final List<String>[] stringsListStrings1 = (List<String>[]) new List<?>[] { Arrays.asList(new String[] {"Hello!","Goodbye!"}), Arrays.asList(new String[]{"¡Hola!","¡Adiós!"})};
+        final List<List<String>> stringsListStringsList1 = Arrays.asList(stringsListStrings1);
+        
+        final Map<String,String> map1 = new LinkedHashMap<String,String>();
+        map1.put("es", "¡Hola!");
+        map1.put("en", "Hello!");
+        map1.put("gl", "Ola!");
+        map1.put("ca", "Hola!");
+        
+        final Map<String,String> map2 = new LinkedHashMap<String,String>();
+        map2.put("es", "¡Adiós!");
+        map2.put("en", "Goodbye!");
+        map2.put("gl", "Adéus!");
+        map2.put("ca", "Adéu!");
+        map2.put("fr", "Adieu!");
+        
+        final Map<String,String>[] maps1 = (Map<String, String>[]) new Map<?,?>[] { map1, map2 };
+
+        
+        System.out.println(Op.onList(stringsList1).get());
+        System.out.println(Op.onList(stringsList1).forEach().get());
+        System.out.println(Op.onList(stringsList1).forEachNotNull().eval(Eval.stringExp("toUpperCase()")).get());
+        
+        
+        System.out.println(Op.onArrayOfArray(Of.STRING, stringsStrings1).forEach().forEach().eval(Eval.integerExp("length()")).get());
+        
+        System.out.println(Arrays.asList(Op.onArrayOfList(stringsListStrings1).forEach().forEach().eval(Eval.stringExp("toUpperCase()")).get()));
+
+        System.out.println(Arrays.asList(Op.onArrayOfMap(maps1).forEach("size() > 6").forEachEntry().onValue().eval(Eval.stringExp("toUpperCase()"))));
+        
+        System.out.println(Arrays.asList(Op.onArrayOfArray(Of.STRING, stringsStrings1).forEach().forEach("length() > 6").eval(Eval.stringExp("toUpperCase()")).get()[0]));
+        
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().get());
+        
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().callInteger("length").get());
+        
+    }
+    
 }

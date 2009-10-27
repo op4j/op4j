@@ -23,9 +23,8 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.time.DateUtils;
 import org.op4j.exceptions.OperationExecutionException;
 import org.op4j.op.Op;
-import org.op4j.op.interfaces.EvalContext;
-import org.op4j.op.interfaces.Evaluator;
-import org.op4j.op.interfaces.MapBuilder;
+import org.op4j.op.commands.IEval;
+import org.op4j.op.intf.parameters.IMapBuild;
 import org.op4j.operation.ListMapTarget;
 import org.op4j.operation.SetMapTarget;
 import org.op4j.operation.Target;
@@ -129,48 +128,48 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 	
 	public final void testAs() {				
 		assertTrue(Integer.class.equals(
-				this.integerOperator.as(Integer.class).get().getClass()));
+				this.integerOperator.of(Integer.class).get().getClass()));
 		
 		assertTrue(Integer.class.equals(
-				this.integerOperator.as(Object.class).get().getClass()));
+				this.integerOperator.of(Object.class).get().getClass()));
 		
 		assertTrue(Integer.class.equals(
-				this.integerOperator.as(Object.class).as(Integer.class)
+				this.integerOperator.of(Object.class).of(Integer.class)
 				.get().getClass()));
 		
 		try {
-			this.integerOperator.as(String.class).get();
+			this.integerOperator.of(String.class).get();
 			fail("this.integerOperator.as(String.class).get() should have thrown an exception");
 		} catch (IllegalArgumentException e) {		
 			// do nothing			
 		}
 		
 		try {
-			this.calendarOperator.as(Date.class);
+			this.calendarOperator.of(Date.class);
 			fail("this.calendarOperator.as(Date.class) should have thrown an exception");
 		} catch (IllegalArgumentException e) {
 			// do nothing
 		}
 				
 		assertTrue(Calendar.class.isAssignableFrom(this.calendarOperator
-				.as(Object.class)
-				.as(Calendar.class)
+				.of(Object.class)
+				.of(Calendar.class)
 				.get().getClass()));
 		
 		assertTrue(Calendar.class.isAssignableFrom(this.calendarOperator
-				.as(Object.class)
+				.of(Object.class)
 				.get().getClass()));
 		
 		try {
 			this.calendarOperator
-					.as(String.class);
+					.of(String.class);
 			fail("this.calendarOperator.as(String.class) should have thrown an exception");
 		} catch (IllegalArgumentException e) {
 			// do nothing
 		}
 		
 		assertFalse(String.class.equals(this.calendarOperator
-				.as(Calendar.class).get().getClass()));	
+				.of(Calendar.class).get().getClass()));	
 	}
 	
 	public final void testCallStringObjectArray() {
@@ -282,13 +281,13 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 
 	public final void testExec() {
 		assertEquals(this.aDate200006221300AsString, this.calendarOperator200006221300.exec(
-				ConverterUtils.unsafeGetOperationNameForResultType(Types.STRING), this.pattern).as(String.class)
+				ConverterUtils.unsafeGetOperationNameForResultType(Types.STRING), this.pattern).of(String.class)
 				.getTargetObjects().get(0));
 	}
 
 	public final void testExecStringObjectArray() {
 		assertEquals(this.aDate200006221300AsString, this.calendarOperator200006221300.exec(
-				ConverterUtils.unsafeGetOperationNameForResultType(Types.STRING), this.pattern).as(String.class)
+				ConverterUtils.unsafeGetOperationNameForResultType(Types.STRING), this.pattern).of(String.class)
 				.get());
 	}
 
@@ -317,13 +316,13 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 	public final void testToByte() {
 		
 		assertEquals(Byte.valueOf((byte) 127),  
-				Op.on(String.class, "127").toByte().get());
+				Op.on(String.class, "127").convToByte().get());
 		
 		assertEquals(null,  
-				this.nullOperator.as(String.class).toByte().get());
+				this.nullOperator.of(String.class).convToByte().get());
 		
 		try {
-			Op.on(String.class, "327").toByte().get();
+			Op.on(String.class, "327").convToByte().get();
 			fail("Op.on(String.class, \"327\").toByte() should have thrown an exception");
 		} catch (OperationExecutionException e) {
 			// do nothing
@@ -338,18 +337,18 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 				Op.on(Double.class, Double.valueOf(4.2)).toShort().get());
 		
 		assertEquals(null,  
-				this.nullOperator.as(Double.class).toShort().get());
+				this.nullOperator.of(Double.class).convToShort().get());
 	}
 
 	public final void testToInteger() {
 		assertEquals(Integer.valueOf(3),  
-				Op.on(Double.class, Double.valueOf(3.7)).toInteger(RoundingMode.FLOOR).get());
+				Op.on(Double.class, Double.valueOf(3.7)).convToInteger(RoundingMode.FLOOR).get());
 		
 		assertEquals(Integer.valueOf(4),  
-				Op.on(Double.class, Double.valueOf(4.3)).toInteger().get());
+				Op.on(Double.class, Double.valueOf(4.3)).convToInteger().get());
 		
 		assertEquals(null,  
-				this.nullOperator.as(Double.class).toInteger().get());
+				this.nullOperator.of(Double.class).convToInteger().get());
 	}
 
 	public final void testToLong() {
@@ -419,35 +418,35 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 	public final void testToCalendar() {		
 		assertEquals(0, this.aCalendar200006221300.compareTo( 
 				Op.on(String.class, this.aDate200006221300AsString)
-						.toCalendar(this.pattern).get()));
+						.convToCalendar(this.pattern).get()));
 		
 		assertEquals(this.aCalendar200006221300,  
 				Op.on(Date.class, this.aDate200006221300)
-						.toCalendar().get());
+						.convToCalendar().get());
 		
 		assertEquals(null,  
 				this.nullOperator
-						.as(Date.class).toCalendar().get());	
+						.of(Date.class).convToCalendar().get());	
 	}
 
 	public final void testToStr() {		
 		assertEquals(this.aDate200006221300AsString, 
 				this.calendarOperator200006221300
-				.toStr(this.pattern).get());
+				.convToString(this.pattern).get());
 		
 		assertEquals(0, this.aCalendar200006221300.compareTo( 
 				Op.on(this.calendarOperator200006221300
-						.toStr(this.aDate200006221300AsString).get())
-						.toCalendar(this.pattern).get()));
+						.convToString(this.aDate200006221300AsString).get())
+						.convToCalendar(this.pattern).get()));
 		
 		try {
-			this.calendarOperator.toStr().get();
+			this.calendarOperator.convToString().get();
 		} catch (Exception e) {
 			fail("toStrthis.calendarOperator.toStr() has not been executed correctly");
 		}
 		
 		try {
-			assertEquals(null, this.nullOperator.toStr().get());
+			assertEquals(null, this.nullOperator.convToString().get());
 		} catch (Exception e) {
 			fail("toStrthis.nullOperator.toStr() has not been executed correctly");
 		}
@@ -458,7 +457,7 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 		aux.setTime(this.aCalendar200006221300.getTime());
 		aux.add(Calendar.MILLISECOND, 1);
 		assertTrue(this.dummyOperator.eval("#this.isAvailable(#param[0])", aux)
-				.as(Boolean.class).get().booleanValue());
+				.of(Boolean.class).get().booleanValue());
 	}
 
 	public final void testEvalClassOfXStringObjectArray() {
@@ -471,7 +470,7 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 
 	public final void testEvalClassOfXEvaluatorOfTX() {
 		assertEquals(String.valueOf(this.integerOperator.get().intValue() + 10), 
-			this.integerOperator.eval(String.class, new Evaluator<Integer, String>() {
+			this.integerOperator.eval(String.class, new IEval<Integer, String>() {
 				public String evaluate(EvalContext<Integer> ctx) {
 					return String.valueOf(ctx.getTarget(0).intValue() + 10);
 				}				
@@ -552,7 +551,7 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 	}
 
 	public final void testBuildMapClassOfKClassOfVMapBuilderOfKVT() {
-		Target<Map<Integer, String>> theTarget = this.integerOperator.buildMap(Integer.class, String.class, new MapBuilder<Integer, Integer, String>() {
+		Target<Map<Integer, String>> theTarget = this.integerOperator.buildMap(Integer.class, String.class, new IMapBuild<Integer, Integer, String>() {
 
 			public Integer getKey(Integer target) {
 				return Integer.valueOf(((Integer) target).intValue() 
@@ -596,7 +595,7 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 	}
 
 	public final void testBuildListMapMapBuilderOfTObjectObject() {
-		ListMapTarget<?, ?> theTarget = this.integerOperator.buildListMap(new MapBuilder<Integer, Object, Object>() {
+		ListMapTarget<?, ?> theTarget = this.integerOperator.buildListMap(new IMapBuild<Integer, Object, Object>() {
 
 			public Object getKey(Integer target) {
 				return Integer.valueOf(((Integer) target).intValue() 
@@ -721,13 +720,13 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 
 	public final void testEvalEvaluatorOfTObject() {
 		assertEquals(Long.valueOf(2000),
-				Op.on(Calendar.class, this.aCalendar200006221300).eval(new Evaluator<Calendar, Object>() {
+				Op.on(Calendar.class, this.aCalendar200006221300).eval(new IEval<Calendar, Object>() {
 				public Object evaluate(EvalContext<Calendar> ctx) {
 					return Long.valueOf(ctx.getTarget(0).get(Calendar.YEAR));
 				}			
 		}).get());		
 		assertEquals(null,
-				Op.on(Calendar.class, null).eval(new Evaluator<Calendar, Object>() {
+				Op.on(Calendar.class, null).eval(new IEval<Calendar, Object>() {
 				public Object evaluate(EvalContext<Calendar> ctx) {
 					return ctx.getTarget(0);
 				}			
@@ -736,7 +735,7 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 
 
 	public final void testBuildMapMapBuilderOfObjectObjectT() {
-		assertEquals(TypeSchemes.forClasses(Map.class), this.integerOperator.buildMap(new MapBuilder<Integer, Object, Object>() {
+		assertEquals(TypeSchemes.forClasses(Map.class), this.integerOperator.buildMap(new IMapBuild<Integer, Object, Object>() {
 			public Object getKey(Integer target) {
 				return target;
 			}
@@ -746,7 +745,7 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 			}			
 		}).getTargetTypeScheme());
 		
-		assertEquals(null, this.integerOperator.buildMap(new MapBuilder<Integer, Object, Object>() {
+		assertEquals(null, this.integerOperator.buildMap(new IMapBuild<Integer, Object, Object>() {
 			public Object getKey(Integer target) {
 				return target;
 			}
@@ -756,7 +755,7 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 			}			
 		}).getOperatorKeyType());
 		
-		assertEquals(null, this.integerOperator.buildMap(new MapBuilder<Integer, Object, Object>() {
+		assertEquals(null, this.integerOperator.buildMap(new IMapBuild<Integer, Object, Object>() {
 			public Object getKey(Integer target) {
 				return target;
 			}
@@ -769,7 +768,7 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 
 	public final void testBuildListMapClassOfKClassOfVMapBuilderOfTKV() {
 		assertEquals(Types.INTEGER, this.integerOperator.buildListMap(Integer.class, String.class,
-				new MapBuilder<Integer, Integer, String>() {
+				new IMapBuild<Integer, Integer, String>() {
 					public Integer getKey(Integer target) {
 						return target;
 					}
@@ -780,7 +779,7 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 				}).getOperatorKeyType());
 		
 		assertEquals(Types.STRING, this.integerOperator.buildListMap(Integer.class, String.class,
-				new MapBuilder<Integer, Integer, String>() {
+				new IMapBuild<Integer, Integer, String>() {
 					public Integer getKey(Integer target) {
 						return target;
 					}
@@ -851,7 +850,7 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 
 	public final void testBuildSetMapClassOfKClassOfVMapBuilderOfTKV() {
 		assertEquals(Types.INTEGER, this.integerOperator.buildSetMap(Integer.class, String.class,
-				new MapBuilder<Integer, Integer, String>() {
+				new IMapBuild<Integer, Integer, String>() {
 					public Integer getKey(Integer target) {
 						return target;
 					}
@@ -862,7 +861,7 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 				}).getOperatorKeyType());
 		
 		assertEquals(Types.STRING, this.integerOperator.buildSetMap(Integer.class, String.class,
-				new MapBuilder<Integer, Integer, String>() {
+				new IMapBuild<Integer, Integer, String>() {
 					public Integer getKey(Integer target) {
 						return target;
 					}
@@ -874,7 +873,7 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 	}
 
 	public final void testBuildSetMapMapBuilderOfTObjectObject() {
-		SetMapTarget<?, ?> theTarget = this.integerOperator.buildSetMap(new MapBuilder<Integer, Object, Object>() {
+		SetMapTarget<?, ?> theTarget = this.integerOperator.buildSetMap(new IMapBuild<Integer, Object, Object>() {
 
 			public Object getKey(Integer target) {
 				return Integer.valueOf(((Integer) target).intValue() 
