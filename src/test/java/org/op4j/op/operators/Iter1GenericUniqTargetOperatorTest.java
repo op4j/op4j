@@ -8,8 +8,8 @@ import junit.framework.TestCase;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.op4j.Op;
-import org.op4j.commands.IEval;
-import org.op4j.commands.ISelect;
+import org.op4j.executables.IEval;
+import org.op4j.executables.ISelect;
 import org.op4j.type.Types;
 
 public class Iter1GenericUniqTargetOperatorTest extends TestCase {

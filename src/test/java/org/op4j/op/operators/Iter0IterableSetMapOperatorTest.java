@@ -15,8 +15,8 @@ import java.util.Set;
 import junit.framework.TestCase;
 
 import org.op4j.Op;
-import org.op4j.commands.IEval;
-import org.op4j.commands.ISelect;
+import org.op4j.executables.IEval;
+import org.op4j.executables.ISelect;
 import org.op4j.operation.Operations;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;

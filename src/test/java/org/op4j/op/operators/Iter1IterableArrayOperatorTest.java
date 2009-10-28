@@ -9,7 +9,7 @@ import junit.framework.TestCase;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.op4j.Op;
-import org.op4j.commands.IMapBuild;
+import org.op4j.executables.IMapBuild;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeSchemes;
 

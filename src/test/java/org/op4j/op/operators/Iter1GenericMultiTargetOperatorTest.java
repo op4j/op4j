@@ -12,8 +12,8 @@ import junit.framework.TestCase;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.op4j.Op;
-import org.op4j.commands.IMapBuild;
 import org.op4j.exceptions.InvalidOperatorCastException;
+import org.op4j.executables.IMapBuild;
 import org.op4j.type.Types;
 
 public class Iter1GenericMultiTargetOperatorTest extends TestCase {
