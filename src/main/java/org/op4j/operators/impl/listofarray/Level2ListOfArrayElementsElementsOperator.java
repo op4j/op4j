@@ -26,12 +26,12 @@ import java.util.List;
 
 import org.op4j.IOf;
 import org.op4j.Of;
-import org.op4j.commands.Call;
-import org.op4j.commands.Eval;
-import org.op4j.commands.ICall;
-import org.op4j.commands.IConv;
-import org.op4j.commands.IEval;
-import org.op4j.commands.IExec;
+import org.op4j.executables.Call;
+import org.op4j.executables.Eval;
+import org.op4j.executables.ICall;
+import org.op4j.executables.IConv;
+import org.op4j.executables.IEval;
+import org.op4j.executables.IExec;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.listofarray.ILevel1ListOfArrayElementsOperator;
 import org.op4j.operators.intf.listofarray.ILevel2ListOfArrayElementsElementsOperator;

@@ -25,7 +25,7 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import org.op4j.IOf;
-import org.op4j.commands.ISelect;
+import org.op4j.executables.ISelect;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.setoflist.ILevel1SetOfListElementsOperator;
 import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;

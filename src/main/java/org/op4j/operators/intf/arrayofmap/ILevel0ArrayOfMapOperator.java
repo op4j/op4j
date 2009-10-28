@@ -24,7 +24,7 @@ import java.util.Comparator;
 import java.util.Map;
 
 import org.op4j.IOf;
-import org.op4j.commands.ISelect;
+import org.op4j.executables.ISelect;
 import org.op4j.operators.qualities.IDistinguishableOperator;
 import org.op4j.operators.qualities.IExtractableCollectionOperator;
 import org.op4j.operators.qualities.IGenerizableOperator;

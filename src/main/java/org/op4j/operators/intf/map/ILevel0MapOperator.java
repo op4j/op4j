@@ -23,7 +23,7 @@ import java.util.Comparator;
 import java.util.Map;
 
 import org.op4j.IOf;
-import org.op4j.commands.ISelect;
+import org.op4j.executables.ISelect;
 import org.op4j.operators.qualities.IExtractableMapOperator;
 import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableMapOperator;

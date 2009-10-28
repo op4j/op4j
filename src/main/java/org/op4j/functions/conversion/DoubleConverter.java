@@ -17,7 +17,7 @@
  * 
  * =============================================================================
  */
-package org.op4j.operations.conversion;
+package org.op4j.functions.conversion;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -35,44 +35,40 @@ import org.op4j.type.Types;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class ShortConverter extends NonDecimalNumberConverter {
+public final class DoubleConverter extends DecimalNumberConverter {
 
-    private static final long serialVersionUID = -5279805889263019640L;
 
-    
+    private static final long serialVersionUID = 1820810568585284513L;
+
+
     @Override
     public Type getResultType() {
-        return Types.SHORT;
+        return Types.DOUBLE;
     }
 
     
     @Override
-    protected Set<ArgumentsTypeScheme> registerNonDecimalNumberMatchedArgumentTypeSchemes() {
+    protected Set<ArgumentsTypeScheme> registerDecimalNumberMatchedArgumentTypeSchemes() {
         return new HashSet<ArgumentsTypeScheme>();
     }
 
     
     @Override
-    protected Result doExecuteNonDecimalNumber(final Arguments arguments) throws Exception {
+    protected Result doExecuteDecimalNumber(final Arguments arguments) throws Exception {
         return null;
     }
 
     
     @Override
     protected Number fromNumber(final Number number) throws Exception {
-        return Short.valueOf(number.shortValue());
+        return new Double(number.doubleValue());
     }
 
-
+    
     @Override
     protected Number fromString(final String string) throws Exception {
-        return Short.valueOf(string);
+        return Double.valueOf(string);
     }
 
-
-    @Override
-    protected Number fromString(final String string, final int radix) throws Exception {
-        return Short.valueOf(string, radix);
-    }
 
 }

@@ -26,10 +26,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.op4j.IOf;
-import org.op4j.commands.ICall;
-import org.op4j.commands.IConv;
-import org.op4j.commands.IEval;
-import org.op4j.commands.IExec;
+import org.op4j.executables.ICall;
+import org.op4j.executables.IConv;
+import org.op4j.executables.IEval;
+import org.op4j.executables.IExec;
 import org.op4j.operators.qualities.ICallableOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;

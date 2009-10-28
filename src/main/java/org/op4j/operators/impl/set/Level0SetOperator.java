@@ -24,9 +24,9 @@ import java.util.Comparator;
 import java.util.Set;
 
 import org.op4j.IOf;
-import org.op4j.commands.IEval;
-import org.op4j.commands.IMapBuild;
-import org.op4j.commands.ISelect;
+import org.op4j.executables.IEval;
+import org.op4j.executables.IMapBuild;
+import org.op4j.executables.ISelect;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericMultiOperator;

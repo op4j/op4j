@@ -21,7 +21,7 @@ package org.op4j.operators.qualities;
 
 import java.util.Map;
 
-import org.op4j.commands.ISelect;
+import org.op4j.executables.ISelect;
 
 
 

@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.commands.IExec;
+import org.op4j.executables.IExec;
 
 
 

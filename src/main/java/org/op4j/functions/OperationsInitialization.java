@@ -17,21 +17,21 @@
  * 
  * =============================================================================
  */
-package org.op4j.operations;
+package org.op4j.functions;
 
 import org.op4j.exceptions.OperationImplementationRegistrationException;
+import org.op4j.functions.conversion.BigDecimalConverter;
+import org.op4j.functions.conversion.BigIntegerConverter;
+import org.op4j.functions.conversion.BooleanConverter;
+import org.op4j.functions.conversion.ByteConverter;
+import org.op4j.functions.conversion.CalendarConverter;
+import org.op4j.functions.conversion.DoubleConverter;
+import org.op4j.functions.conversion.FloatConverter;
+import org.op4j.functions.conversion.IntegerConverter;
+import org.op4j.functions.conversion.LongConverter;
+import org.op4j.functions.conversion.ShortConverter;
+import org.op4j.functions.conversion.StringConverter;
 import org.op4j.operation.Operations;
-import org.op4j.operations.conversion.BigDecimalConverter;
-import org.op4j.operations.conversion.BigIntegerConverter;
-import org.op4j.operations.conversion.BooleanConverter;
-import org.op4j.operations.conversion.ByteConverter;
-import org.op4j.operations.conversion.CalendarConverter;
-import org.op4j.operations.conversion.DoubleConverter;
-import org.op4j.operations.conversion.FloatConverter;
-import org.op4j.operations.conversion.IntegerConverter;
-import org.op4j.operations.conversion.LongConverter;
-import org.op4j.operations.conversion.ShortConverter;
-import org.op4j.operations.conversion.StringConverter;
 
 /**
  * 

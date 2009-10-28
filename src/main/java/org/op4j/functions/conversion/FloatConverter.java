@@ -17,7 +17,7 @@
  * 
  * =============================================================================
  */
-package org.op4j.operations.conversion;
+package org.op4j.functions.conversion;
 
 import java.util.HashSet;
 import java.util.Set;

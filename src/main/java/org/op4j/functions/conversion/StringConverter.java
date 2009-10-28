@@ -17,7 +17,7 @@
  * 
  * =============================================================================
  */
-package org.op4j.operations.conversion;
+package org.op4j.functions.conversion;
 
 import java.nio.charset.Charset;
 import java.text.DateFormat;

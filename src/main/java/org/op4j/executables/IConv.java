@@ -17,10 +17,8 @@
  * 
  * =============================================================================
  */
-package org.op4j.operations.conversion;
+package org.op4j.executables;
 
-import org.op4j.operation.OperationImpl;
-import org.op4j.util.ConverterUtils;
 
 
 /**
@@ -30,21 +28,8 @@ import org.op4j.util.ConverterUtils;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public abstract class Converter extends OperationImpl {
-    
-    
-	private static final long serialVersionUID = -9074374505688098385L;
+public interface IConv<X,T> extends IExec<X,T> {
 
-
-	public Converter() {
-        super();
-    }
-
+    public X convert(final T input);
     
-    @Override
-    public final String getOperationName() {
-        return ConverterUtils.unsafeGetOperationNameForResultType(getResultType());
-    }
-    
-
 }

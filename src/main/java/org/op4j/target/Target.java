@@ -24,8 +24,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.op4j.IOf;
-import org.op4j.commands.ICommand;
-import org.op4j.commands.ISelect;
+import org.op4j.executables.IExecutable;
+import org.op4j.executables.ISelect;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -153,7 +153,7 @@ public abstract class Target {
     public abstract Target endIterate(final Structure structure, final IOf<?> of);
     
 
-    public abstract Target execute(final ICommand<?,?> command);
+    public abstract Target execute(final IExecutable<?,?> command);
     
     
     public Object get() {

@@ -24,9 +24,9 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.op4j.IOf;
-import org.op4j.commands.IEval;
-import org.op4j.commands.IMapBuild;
-import org.op4j.commands.ISelect;
+import org.op4j.executables.IEval;
+import org.op4j.executables.IMapBuild;
+import org.op4j.executables.ISelect;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
@@ -385,7 +385,7 @@ public class Level0ListOfArrayOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0SetOfArrayOperator<X> toSetOfArray(IOf<X> arrayOf) {
+    public <X> ILevel0SetOfArrayOperator<X> toSetOfArray(IOf<X> of) {
         // TODO Auto-generated method stub
         return null;
     }

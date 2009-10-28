@@ -17,7 +17,7 @@
  * 
  * =============================================================================
  */
-package org.op4j.operations.conversion;
+package org.op4j.functions.conversion;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -35,15 +35,14 @@ import org.op4j.type.Types;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class IntegerConverter extends NonDecimalNumberConverter {
+public final class LongConverter extends NonDecimalNumberConverter {
 
-
-    private static final long serialVersionUID = -4507296805634761144L;
+    private static final long serialVersionUID = -5279805889263019640L;
 
     
     @Override
     public Type getResultType() {
-        return Types.INTEGER;
+        return Types.LONG;
     }
 
     
@@ -54,26 +53,27 @@ public final class IntegerConverter extends NonDecimalNumberConverter {
 
     
     @Override
-    protected Result doExecuteNonDecimalNumber(final Arguments arguments) throws Exception {
+    protected Result doExecuteNonDecimalNumber(final Arguments arguments)
+            throws Exception {
         return null;
     }
 
     
     @Override
     protected Number fromNumber(final Number number) throws Exception {
-        return Integer.valueOf(number.intValue());
+        return Long.valueOf(number.longValue());
     }
 
 
     @Override
     protected Number fromString(final String string) throws Exception {
-        return Integer.valueOf(string);
+        return Long.valueOf(string);
     }
 
 
     @Override
     protected Number fromString(final String string, final int radix) throws Exception {
-        return Integer.valueOf(string, radix);
+        return Long.valueOf(string, radix);
     }
 
 }

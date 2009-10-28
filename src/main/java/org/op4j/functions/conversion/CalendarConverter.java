@@ -17,7 +17,7 @@
  * 
  * =============================================================================
  */
-package org.op4j.operations.conversion;
+package org.op4j.functions.conversion;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -30,10 +30,10 @@ import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.apache.commons.lang.time.DateUtils;
+import org.op4j.functions.conversion.exceptions.ConversionException;
 import org.op4j.operation.Arguments;
 import org.op4j.operation.ArgumentsTypeScheme;
 import org.op4j.operation.Result;
-import org.op4j.operations.conversion.exceptions.ConversionException;
 import org.op4j.type.Type;
 import org.op4j.type.Types;
 import org.op4j.typescheme.TypeScheme;

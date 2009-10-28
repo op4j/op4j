@@ -25,9 +25,9 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import org.op4j.IOf;
-import org.op4j.commands.IEval;
-import org.op4j.commands.IMapBuild;
-import org.op4j.commands.ISelect;
+import org.op4j.executables.IEval;
+import org.op4j.executables.IMapBuild;
+import org.op4j.executables.ISelect;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.listofset.ILevel0ListOfSetOperator;

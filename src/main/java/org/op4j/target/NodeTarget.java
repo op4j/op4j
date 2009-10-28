@@ -29,8 +29,8 @@ import java.util.Set;
 
 import org.op4j.IOf;
 import org.op4j.Of;
-import org.op4j.commands.ICommand;
-import org.op4j.commands.ISelect;
+import org.op4j.executables.IExecutable;
+import org.op4j.executables.ISelect;
 import org.op4j.util.OgnlExpressionUtil;
 
 /**
@@ -272,8 +272,8 @@ public abstract class NodeTarget extends Target{
     
 	@Override
     @SuppressWarnings("unchecked")
-    public Target execute(final ICommand<?,?> command) {
-    	final ICommand<Object,Object> objectCommand = (ICommand<Object,Object>) command;
+    public Target execute(final IExecutable<?,?> command) {
+    	final IExecutable<Object,Object> objectCommand = (IExecutable<Object,Object>) command;
         return NodeTarget.forObject(getId(), objectCommand.execute(getObject()));
     }
 

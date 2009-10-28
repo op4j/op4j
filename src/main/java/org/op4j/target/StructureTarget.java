@@ -30,8 +30,8 @@ import java.util.Set;
 
 import org.apache.commons.lang.Validate;
 import org.op4j.IOf;
-import org.op4j.commands.ICommand;
-import org.op4j.commands.ISelect;
+import org.op4j.executables.IExecutable;
+import org.op4j.executables.ISelect;
 import org.op4j.util.MapEntry;
 
 /**
@@ -305,7 +305,7 @@ public class StructureTarget extends Target {
 
 
     @Override
-    public Target execute(final ICommand<?,?> command) {
+    public Target execute(final IExecutable<?,?> command) {
         
         final List<Target> newElements = new ArrayList<Target>();
         for (final Target element : this.elements) {

@@ -17,8 +17,10 @@
  * 
  * =============================================================================
  */
-package org.op4j.operations.conversion;
+package org.op4j.functions.conversion;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,45 +37,48 @@ import org.op4j.type.Types;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class LongConverter extends NonDecimalNumberConverter {
+public final class BigDecimalConverter extends DecimalNumberConverter {
 
-    private static final long serialVersionUID = -5279805889263019640L;
 
-    
+    private static final long serialVersionUID = 3284349862985156720L;
+
+
     @Override
     public Type getResultType() {
-        return Types.LONG;
+        return Types.BIG_DECIMAL;
     }
 
     
     @Override
-    protected Set<ArgumentsTypeScheme> registerNonDecimalNumberMatchedArgumentTypeSchemes() {
+    protected Set<ArgumentsTypeScheme> registerDecimalNumberMatchedArgumentTypeSchemes() {
         return new HashSet<ArgumentsTypeScheme>();
     }
 
     
     @Override
-    protected Result doExecuteNonDecimalNumber(final Arguments arguments)
-            throws Exception {
+    protected Result doExecuteDecimalNumber(final Arguments arguments) throws Exception {
         return null;
     }
 
     
     @Override
     protected Number fromNumber(final Number number) throws Exception {
-        return Long.valueOf(number.longValue());
+        if (number instanceof BigDecimal) {
+            return new BigDecimal(
+                    ((BigDecimal)number).unscaledValue(),
+                    ((BigDecimal)number).scale());
+        } else if (number instanceof BigInteger) {
+            return new BigDecimal((BigInteger)number);
+        } else {
+            return BigDecimal.valueOf(number.doubleValue()); 
+        }
     }
 
-
+    
     @Override
     protected Number fromString(final String string) throws Exception {
-        return Long.valueOf(string);
+        return new BigDecimal(string);
     }
 
-
-    @Override
-    protected Number fromString(final String string, final int radix) throws Exception {
-        return Long.valueOf(string, radix);
-    }
 
 }
