@@ -17,7 +17,7 @@
  * 
  * =============================================================================
  */
-package org.op4j.operations.conversion.exceptions;
+package org.op4j.functions.conversion.exceptions;
 
 import org.op4j.exceptions.OperationExecutionException;
 
