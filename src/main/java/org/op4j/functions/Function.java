@@ -83,7 +83,7 @@ public abstract class Function {
     
     
     
-    public final Result execute(final Arguments arguments) {
+    public final Result execute(final FunctionArguments arguments) {
         
         Validate.notNull(arguments, "Operation arguments cannot be null");
         
@@ -117,7 +117,7 @@ public abstract class Function {
     }
     
     
-    protected abstract Result doExecute(final Arguments arguments) throws Exception;
+    protected abstract Result doExecute(final FunctionArguments arguments) throws Exception;
     
 
     

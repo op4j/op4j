@@ -53,10 +53,11 @@ public class VarArgsUtil {
     }
     
     
-    public static List<Object> asOptionalObjectList(final Object... parameters) {
-        final List<Object> result = new ArrayList<Object>();
+    @SuppressWarnings("unchecked")
+    public static <T> List<T> asOptionalObjectList(final T... parameters) {
+        final List<T> result = (List<T>) new ArrayList<Object>();
         if (parameters != null) {
-            for (Object parameter : parameters) {
+            for (T parameter : parameters) {
                 result.add(parameter);
             }
         } else {

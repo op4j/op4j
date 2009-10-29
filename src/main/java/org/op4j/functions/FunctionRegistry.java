@@ -152,7 +152,7 @@ final class FunctionRegistry {
 
     
     Function getOperationImpl(
-            final String operationName, final Arguments arguments) {
+            final String operationName, final FunctionArguments arguments) {
 
 
         this.readLock.lock();
