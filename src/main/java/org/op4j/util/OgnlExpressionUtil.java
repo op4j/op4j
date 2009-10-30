@@ -29,7 +29,7 @@ import ognl.OgnlException;
 
 import org.apache.commons.collections.map.LRUMap;
 import org.op4j.IOf;
-import org.op4j.executables.functions.conversion.exceptions.ConversionException;
+import org.op4j.executables.functions.conversion.ConversionException;
 
 /**
  * 

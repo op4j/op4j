@@ -26,11 +26,11 @@ import java.util.Collection;
 
 import org.op4j.IOf;
 import org.op4j.executables.Eval;
-import org.op4j.executables.IConv;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IFunc;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.IFunc;
+import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericMultiOperator;

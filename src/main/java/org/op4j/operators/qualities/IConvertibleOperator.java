@@ -23,7 +23,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
 
-import org.op4j.executables.IConv;
+import org.op4j.executables.functions.conversion.IConv;
 
 
 /**
