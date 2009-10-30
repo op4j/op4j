@@ -28,7 +28,7 @@ import org.op4j.IOf;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IConv;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IExec;
+import org.op4j.executables.IFunc;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
@@ -126,7 +126,7 @@ public interface ILevel0GenericUniqOperator<T>
     public ILevel0GenericUniqOperator<String> evalString(final String evalExpression, final Object... parameters);
 
 
-    public <X> ILevel0GenericUniqOperator<X> exec(final IExec<X,? super T> exec);
+    public <X> ILevel0GenericUniqOperator<X> exec(final IFunc<X,? super T> exec);
     
     public <X> ILevel0GenericUniqOperator<X> of(final IOf<X> of);
     public <X> ILevel0GenericUniqOperator<X> of(final Class<X> ofClass);

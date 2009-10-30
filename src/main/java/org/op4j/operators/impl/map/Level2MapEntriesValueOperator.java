@@ -30,7 +30,7 @@ import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IConv;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IExec;
+import org.op4j.executables.IFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.map.ILevel1MapEntriesOperator;
 import org.op4j.operators.intf.map.ILevel2MapEntriesValueOperator;
@@ -254,7 +254,7 @@ public class Level2MapEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel2MapEntriesValueOperator<K, X> exec(final IExec<X, ? super V> exec) {
+    public <X> ILevel2MapEntriesValueOperator<K, X> exec(final IFunc<X, ? super V> exec) {
         return new Level2MapEntriesValueOperator<K, X>(getTarget().execute(exec));
     }
 

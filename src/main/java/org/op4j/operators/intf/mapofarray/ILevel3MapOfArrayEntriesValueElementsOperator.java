@@ -28,7 +28,7 @@ import org.op4j.IOf;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IConv;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IExec;
+import org.op4j.executables.IFunc;
 import org.op4j.operators.qualities.ICallableOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
@@ -100,7 +100,7 @@ public interface ILevel3MapOfArrayEntriesValueElementsOperator<K,V>
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,String> evalString(final String evalExpression, final Object... parameters);
 
 
-    public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K,X> exec(final IExec<X,? super V> exec);
+    public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K,X> exec(final IFunc<X,? super V> exec);
     
     public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K,X> of(final IOf<X> of);
     

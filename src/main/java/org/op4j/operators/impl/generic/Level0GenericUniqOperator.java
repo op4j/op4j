@@ -30,7 +30,7 @@ import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IConv;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IExec;
+import org.op4j.executables.IFunc;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.operators.impl.Operator;
@@ -663,7 +663,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0GenericUniqOperator<X> exec(final IExec<X, ? super T> exec) {
+    public <X> ILevel0GenericUniqOperator<X> exec(final IFunc<X, ? super T> exec) {
         return new Level0GenericUniqOperator<X>(getTarget().execute(exec));
     }
 

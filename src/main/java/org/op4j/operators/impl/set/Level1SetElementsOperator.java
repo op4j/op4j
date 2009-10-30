@@ -30,7 +30,7 @@ import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IConv;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IExec;
+import org.op4j.executables.IFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
 import org.op4j.operators.intf.set.ILevel1SetElementsOperator;
@@ -247,7 +247,7 @@ public class Level1SetElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel1SetElementsOperator<X> exec(final IExec<X, ? super T> exec) {
+    public <X> ILevel1SetElementsOperator<X> exec(final IFunc<X, ? super T> exec) {
         return new Level1SetElementsOperator<X>(getTarget().execute(exec));
     }
 

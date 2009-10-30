@@ -28,7 +28,7 @@ import org.op4j.IOf;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IConv;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IExec;
+import org.op4j.executables.IFunc;
 import org.op4j.operators.qualities.ICallableOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
@@ -100,7 +100,7 @@ public interface ILevel2ArrayOfListElementsElementsOperator<T>
     public ILevel2ArrayOfListElementsElementsOperator<String> evalString(final String evalExpression, final Object... parameters);
 
 
-    public <X> ILevel2ArrayOfListElementsElementsOperator<X> exec(final IExec<X,? super T> exec);
+    public <X> ILevel2ArrayOfListElementsElementsOperator<X> exec(final IFunc<X,? super T> exec);
     
     public <X> ILevel2ArrayOfListElementsElementsOperator<X> of(final IOf<X> of);
     public <X> ILevel2ArrayOfListElementsElementsOperator<X> of(final Class<X> ofClass);
