@@ -32,8 +32,6 @@ import org.op4j.IOf;
  *
  */
 public interface ICall<X,T> extends IExecutable<X,T> {
-
-    public X call(final T input);
     
     public IOf<X> getResultOf();
     

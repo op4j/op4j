@@ -17,11 +17,10 @@
  * 
  * =============================================================================
  */
-package org.op4j.operators.qualities;
+package org.op4j.executables.functions.conversion;
 
-import org.op4j.executables.IFunc;
-
-
+import org.op4j.operation.OperationImpl;
+import org.op4j.util.ConverterUtils;
 
 
 /**
@@ -31,8 +30,21 @@ import org.op4j.executables.IFunc;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface IExecutableOperator<T> {
-
-    public <X> IExecutableOperator<X> exec(final IFunc<X,? super T> exec);
+public abstract class Converter extends OperationImpl {
     
+    
+	private static final long serialVersionUID = -9074374505688098385L;
+
+
+	public Converter() {
+        super();
+    }
+
+    
+    @Override
+    public final String getOperationName() {
+        return ConverterUtils.unsafeGetOperationNameForResultType(getResultType());
+    }
+    
+
 }

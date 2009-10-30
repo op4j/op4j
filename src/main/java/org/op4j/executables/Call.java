@@ -135,7 +135,7 @@ public class Call<X,T> implements ICall<X,T> {
 
 	
     @SuppressWarnings("unchecked")
-	public X call(final T input) {
+	public X execute(final T input) {
     	
     	if (input == null) {
     		throw new NullPointerException("Cannot call methods on null object");
@@ -166,11 +166,6 @@ public class Call<X,T> implements ICall<X,T> {
 		
         return (X) result;
     }
-    
-
-	public X execute(final T object) {
-		return call(object);
-	}
  
 	
 	private static Method resolveMethod(final Class<?> targetClass, final String methodName, final List<Class<?>> parameterClasses) {

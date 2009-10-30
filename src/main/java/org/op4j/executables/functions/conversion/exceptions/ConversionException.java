@@ -17,12 +17,9 @@
  * 
  * =============================================================================
  */
-package org.op4j.operators.qualities;
+package org.op4j.operations.conversion.exceptions;
 
-import org.op4j.executables.IFunc;
-
-
-
+import org.op4j.exceptions.OperationExecutionException;
 
 /**
  * 
@@ -31,8 +28,27 @@ import org.op4j.executables.IFunc;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface IExecutableOperator<T> {
+public class ConversionException extends OperationExecutionException {
 
-    public <X> IExecutableOperator<X> exec(final IFunc<X,? super T> exec);
+    
+    private static final long serialVersionUID = 4388193856989750246L;
+    
+
+    public ConversionException() {
+        super();
+    }
+
+    public ConversionException(String msg, Throwable cause) {
+        super(msg, cause);
+    }
+
+    public ConversionException(String msg) {
+        super(msg);
+    }
+
+    public ConversionException(Throwable cause) {
+        super(cause);
+    }
+    
     
 }

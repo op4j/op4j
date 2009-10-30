@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.executables.IExec;
+import org.op4j.executables.IFunc;
 
 
 
@@ -34,6 +34,6 @@ import org.op4j.executables.IExec;
  */
 public interface IExecutableSelectedOperator<T> {
 
-    public <X extends T> IExecutableSelectedOperator<T> exec(final IExec<X,? super T> exec);
+    public <X extends T> IExecutableSelectedOperator<T> exec(final IFunc<X,? super T> exec);
     
 }

@@ -17,12 +17,10 @@
  * 
  * =============================================================================
  */
+
 package org.op4j.executables;
 
 import org.op4j.IOf;
-
-
-
 
 /**
  * 
@@ -31,10 +29,9 @@ import org.op4j.IOf;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface IExec<X,T> extends IExecutable<X,T> {
-
-    public X function(final T input);
+public interface IFunc<X,T> extends IExecutable<X,T>{
     
     public IOf<X> getResultOf();
     
+
 }

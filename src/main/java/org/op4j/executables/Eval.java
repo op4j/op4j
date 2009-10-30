@@ -129,12 +129,8 @@ public class Eval<X,T> implements IEval<X,T> {
     }
     
     
-    public X evaluate(final T input) {
+	public X execute(final T input) {
         return OgnlExpressionUtil.evalOgnlExpression(this.resultOf, this.ognlExpression, input, this.parameters);
-    }
-
-	public X execute(final T object) {
-        return evaluate(object);
     }
     
     

@@ -28,8 +28,6 @@ package org.op4j.executables;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface IConv<X,T> extends IExec<X,T> {
-
-    public X convert(final T input);
+public interface IConv<X> extends IFunc<X,Object> {
     
 }
