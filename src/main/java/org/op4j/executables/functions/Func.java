@@ -41,7 +41,6 @@ package org.op4j.executables.functions;
 import java.util.List;
 
 import org.op4j.IOf;
-import org.op4j.executables.IFunc;
 import org.op4j.util.VarArgsUtil;
 
 /**

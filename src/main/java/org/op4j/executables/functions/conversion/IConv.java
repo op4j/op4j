@@ -17,7 +17,9 @@
  * 
  * =============================================================================
  */
-package org.op4j.executables;
+package org.op4j.executables.functions.conversion;
+
+import org.op4j.executables.functions.IFunc;
 
 
 

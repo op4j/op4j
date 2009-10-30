@@ -18,9 +18,10 @@
  * =============================================================================
  */
 
-package org.op4j.executables;
+package org.op4j.executables.functions;
 
 import org.op4j.IOf;
+import org.op4j.executables.IExecutable;
 
 /**
  * 
