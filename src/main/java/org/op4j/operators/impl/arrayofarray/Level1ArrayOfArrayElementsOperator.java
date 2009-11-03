@@ -92,7 +92,7 @@ public class Level1ArrayOfArrayElementsOperator<T> extends Operator
 
     @SuppressWarnings("unchecked")
 	public ILevel0ArrayOfArrayOperator<T> endFor() {
-    	final Class<?> ofComponentClass = this.arrayOf.getComponentClass();
+    	final Class<?> ofComponentClass = this.arrayOf.getRawClass();
     	final Class<?> ofOfComponentClass = Array.newInstance(ofComponentClass,0).getClass();
         return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().endIterate(Structure.ARRAY, Of.clazz((Class<? super T>) ofOfComponentClass)));
     }

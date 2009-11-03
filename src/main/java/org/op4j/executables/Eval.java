@@ -53,7 +53,7 @@ public class Eval<X,T> implements IEval<X,T> {
         return new Eval<Object,Object>(Of.OBJECT, ognlExpression, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static <X> Eval<X,Object> exp(final Of<X> of, final String ognlExpression, final Object... optionalParameters) {
+    public static <X> Eval<X,Object> exp(final IOf<X> of, final String ognlExpression, final Object... optionalParameters) {
         return new Eval<X,Object>(of, ognlExpression, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     

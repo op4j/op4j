@@ -81,7 +81,7 @@ public final class FunctionArgumentScheme<T> {
     	}
     	
     	final Class<?> argumentsTargetClass = functionArguments.getTargetClass();
-    	if (argumentsTargetClass != null && !this.targetOf.getComponentClass().isAssignableFrom(argumentsTargetClass)) {
+    	if (argumentsTargetClass != null && !this.targetOf.getRawClass().isAssignableFrom(argumentsTargetClass)) {
     	    return false;
     	}
     	

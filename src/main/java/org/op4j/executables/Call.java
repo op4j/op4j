@@ -56,7 +56,7 @@ public class Call<X,T> implements ICall<X,T> {
         return new Call<Object,Object>(Of.OBJECT, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static <X> Call<X,Object> method(final Of<X> of, final String methodName, final Object... optionalParameters) {
+    public static <X> Call<X,Object> method(final IOf<X> of, final String methodName, final Object... optionalParameters) {
         return new Call<X,Object>(of, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
@@ -160,8 +160,8 @@ public class Call<X,T> implements ICall<X,T> {
 			return (X) result;
 		}
 		
-		if (!(this.resultOf.getComponentClass().isAssignableFrom(result.getClass()))) {
-			throw new MethodInvocationException(this.methodName, input.getClass(), this.parameterClasses, this.resultOf.getComponentClass());
+		if (!(this.resultOf.getRawClass().isAssignableFrom(result.getClass()))) {
+			throw new MethodInvocationException(this.methodName, input.getClass(), this.parameterClasses, this.resultOf.getRawClass());
 		}
 		
         return (X) result;

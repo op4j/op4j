@@ -96,7 +96,7 @@ public abstract class Function<X,T>  {
     
     public final void addFunctionImplementation(final FunctionImplementation<X,T> functionImplementation) {
         Validate.isTrue(functionImplementation.getFunctionName().equals(this.functionName));
-        Validate.isTrue(functionImplementation.getResultOf().getComponentClass().equals(this.resultOf.getComponentClass()));        
+        Validate.isTrue(functionImplementation.getResultOf().getRawClass().equals(this.resultOf.getRawClass()));        
         for (final FunctionArgumentScheme<? extends T> argumentScheme : functionImplementation.getMatchedArgumentTypeSchemes()) {
             this.implementationsByArgumentSchemes.put(argumentScheme, functionImplementation);
         }

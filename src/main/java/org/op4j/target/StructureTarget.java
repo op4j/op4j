@@ -235,7 +235,7 @@ public class StructureTarget extends Target {
             
             switch (structure) {
                 case ARRAY:
-                    final Class<?> arrayComponentClass = of.getComponentClass();
+                    final Class<?> arrayComponentClass = of.getRawClass();
                     final List<Object> newObjectArrayList = new ArrayList<Object>();
                     for (final Target element : this.elements) {
                         final Object elementObject = element.getObject();

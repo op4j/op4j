@@ -29,6 +29,7 @@ package org.op4j;
  */
 public interface IOf<T> {
 
-    public Class<? super T> getComponentClass();
+    public Class<? super T> getRawClass();
+    public String getTypeName();
     
 }
