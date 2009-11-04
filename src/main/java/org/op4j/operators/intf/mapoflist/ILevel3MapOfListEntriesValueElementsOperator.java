@@ -71,6 +71,9 @@ public interface ILevel3MapOfListEntriesValueElementsOperator<K,V>
     public ILevel3MapOfListEntriesValueElementsOperator<K,Boolean> callBoolean(final String methodName, final Object... optionalParameters);
     public ILevel3MapOfListEntriesValueElementsOperator<K,Calendar> callCalendar(final String methodName, final Object... optionalParameters);
     public ILevel3MapOfListEntriesValueElementsOperator<K,String> callString(final String methodName, final Object... optionalParameters);
+    public ILevel3MapOfListEntriesValueElementsOperator<K,Character> callCharacter(final String evalExpression, final Object... optionalArguments);
+    public ILevel3MapOfListEntriesValueElementsOperator<K,Number> callNumber(final String evalExpression, final Object... optionalArguments);
+    public ILevel3MapOfListEntriesValueElementsOperator<K,Date> callDate(final String evalExpression, final Object... optionalArguments);
 
     
     public <X> ILevel3MapOfListEntriesValueElementsOperator<K,X> conv(final IConv<X,? super V> conv);

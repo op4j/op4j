@@ -70,6 +70,9 @@ public interface ILevel3MapOfArrayEntriesValueElementsOperator<K,V>
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,Boolean> callBoolean(final String methodName, final Object... optionalParameters);
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,Calendar> callCalendar(final String methodName, final Object... optionalParameters);
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,String> callString(final String methodName, final Object... optionalParameters);
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K,Character> callCharacter(final String evalExpression, final Object... optionalArguments);
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K,Number> callNumber(final String evalExpression, final Object... optionalArguments);
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K,Date> callDate(final String evalExpression, final Object... optionalArguments);
 
     
     public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K,X> conv(final IConv<X,? super V> conv);

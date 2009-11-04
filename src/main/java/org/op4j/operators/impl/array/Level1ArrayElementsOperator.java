@@ -64,47 +64,59 @@ public class Level1ArrayElementsOperator<T> extends Operator
     }
 
     public ILevel1ArrayElementsOperator<Byte> callByte(final String methodName, final Object... optionalParameters) {
-        return new Level1ArrayElementsOperator<Byte>(Of.BYTE, getTarget().execute(Call.aByteMethod(methodName, optionalParameters)));
+        return new Level1ArrayElementsOperator<Byte>(Of.BYTE, getTarget().execute(Call.byteMethod(methodName, optionalParameters)));
     }
 
     public ILevel1ArrayElementsOperator<Short> callShort(final String methodName, final Object... optionalParameters) {
-        return new Level1ArrayElementsOperator<Short>(Of.SHORT, getTarget().execute(Call.aShortMethod(methodName, optionalParameters)));
+        return new Level1ArrayElementsOperator<Short>(Of.SHORT, getTarget().execute(Call.shortMethod(methodName, optionalParameters)));
     }
 
     public ILevel1ArrayElementsOperator<Integer> callInteger(final String methodName, final Object... optionalParameters) {
-        return new Level1ArrayElementsOperator<Integer>(Of.INTEGER, getTarget().execute(Call.aIntegerMethod(methodName, optionalParameters)));
+        return new Level1ArrayElementsOperator<Integer>(Of.INTEGER, getTarget().execute(Call.integerMethod(methodName, optionalParameters)));
     }
 
     public ILevel1ArrayElementsOperator<Long> callLong(final String methodName, final Object... optionalParameters) {
-        return new Level1ArrayElementsOperator<Long>(Of.LONG, getTarget().execute(Call.aLongMethod(methodName, optionalParameters)));
+        return new Level1ArrayElementsOperator<Long>(Of.LONG, getTarget().execute(Call.longMethod(methodName, optionalParameters)));
     }
 
     public ILevel1ArrayElementsOperator<Float> callFloat(final String methodName, final Object... optionalParameters) {
-        return new Level1ArrayElementsOperator<Float>(Of.FLOAT, getTarget().execute(Call.aFloatMethod(methodName, optionalParameters)));
+        return new Level1ArrayElementsOperator<Float>(Of.FLOAT, getTarget().execute(Call.floatMethod(methodName, optionalParameters)));
     }
 
     public ILevel1ArrayElementsOperator<Double> callDouble(final String methodName, final Object... optionalParameters) {
-        return new Level1ArrayElementsOperator<Double>(Of.DOUBLE, getTarget().execute(Call.aDoubleMethod(methodName, optionalParameters)));
+        return new Level1ArrayElementsOperator<Double>(Of.DOUBLE, getTarget().execute(Call.doubleMethod(methodName, optionalParameters)));
     }
 
     public ILevel1ArrayElementsOperator<BigInteger> callBigInteger(final String methodName, final Object... optionalParameters) {
-        return new Level1ArrayElementsOperator<BigInteger>(Of.BIG_INTEGER, getTarget().execute(Call.aBigIntegerMethod(methodName, optionalParameters)));
+        return new Level1ArrayElementsOperator<BigInteger>(Of.BIG_INTEGER, getTarget().execute(Call.bigIntegerMethod(methodName, optionalParameters)));
     }
 
     public ILevel1ArrayElementsOperator<BigDecimal> callBigDecimal(final String methodName, final Object... optionalParameters) {
-        return new Level1ArrayElementsOperator<BigDecimal>(Of.BIG_DECIMAL, getTarget().execute(Call.aBigDecimalMethod(methodName, optionalParameters)));
+        return new Level1ArrayElementsOperator<BigDecimal>(Of.BIG_DECIMAL, getTarget().execute(Call.bigDecimalMethod(methodName, optionalParameters)));
     }
 
     public ILevel1ArrayElementsOperator<Boolean> callBoolean(final String methodName, final Object... optionalParameters) {
-        return new Level1ArrayElementsOperator<Boolean>(Of.BOOLEAN, getTarget().execute(Call.aBooleanMethod(methodName, optionalParameters)));
+        return new Level1ArrayElementsOperator<Boolean>(Of.BOOLEAN, getTarget().execute(Call.booleanMethod(methodName, optionalParameters)));
     }
 
     public ILevel1ArrayElementsOperator<Calendar> callCalendar(final String methodName, final Object... optionalParameters) {
-        return new Level1ArrayElementsOperator<Calendar>(Of.CALENDAR, getTarget().execute(Call.aCalendarMethod(methodName, optionalParameters)));
+        return new Level1ArrayElementsOperator<Calendar>(Of.CALENDAR, getTarget().execute(Call.calendarMethod(methodName, optionalParameters)));
     }
 
     public ILevel1ArrayElementsOperator<String> callString(final String methodName, final Object... optionalParameters) {
-        return new Level1ArrayElementsOperator<String>(Of.STRING, getTarget().execute(Call.aStringMethod(methodName, optionalParameters)));
+        return new Level1ArrayElementsOperator<String>(Of.STRING, getTarget().execute(Call.stringMethod(methodName, optionalParameters)));
+    }
+
+    public ILevel1ArrayElementsOperator<Character> callCharacter(final String methodName, final Object... optionalParameters) {
+        return new Level1ArrayElementsOperator<Character>(Of.CHARACTER, getTarget().execute(Call.characterMethod(methodName, optionalParameters)));
+    }
+
+    public ILevel1ArrayElementsOperator<Number> callNumber(final String methodName, final Object... optionalParameters) {
+        return new Level1ArrayElementsOperator<Number>(Of.NUMBER, getTarget().execute(Call.numberMethod(methodName, optionalParameters)));
+    }
+
+    public ILevel1ArrayElementsOperator<Date> callDate(final String methodName, final Object... optionalParameters) {
+        return new Level1ArrayElementsOperator<Date>(Of.DATE, getTarget().execute(Call.dateMethod(methodName, optionalParameters)));
     }
 
 

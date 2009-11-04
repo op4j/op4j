@@ -61,47 +61,59 @@ public class Level3SetOfMapElementsEntriesValueOperator<K,V> extends Operator
     }
 
     public ILevel3SetOfMapElementsEntriesValueOperator<K, Byte> callByte(final String methodName, final Object... optionalParameters) {
-        return new Level3SetOfMapElementsEntriesValueOperator<K, Byte>(getTarget().execute(Call.aByteMethod(methodName, optionalParameters)));
+        return new Level3SetOfMapElementsEntriesValueOperator<K, Byte>(getTarget().execute(Call.byteMethod(methodName, optionalParameters)));
     }
 
     public ILevel3SetOfMapElementsEntriesValueOperator<K, Short> callShort(final String methodName, final Object... optionalParameters) {
-        return new Level3SetOfMapElementsEntriesValueOperator<K, Short>(getTarget().execute(Call.aShortMethod(methodName, optionalParameters)));
+        return new Level3SetOfMapElementsEntriesValueOperator<K, Short>(getTarget().execute(Call.shortMethod(methodName, optionalParameters)));
     }
 
     public ILevel3SetOfMapElementsEntriesValueOperator<K, Integer> callInteger(final String methodName, final Object... optionalParameters) {
-        return new Level3SetOfMapElementsEntriesValueOperator<K, Integer>(getTarget().execute(Call.aIntegerMethod(methodName, optionalParameters)));
+        return new Level3SetOfMapElementsEntriesValueOperator<K, Integer>(getTarget().execute(Call.integerMethod(methodName, optionalParameters)));
     }
 
     public ILevel3SetOfMapElementsEntriesValueOperator<K, Long> callLong(final String methodName, final Object... optionalParameters) {
-        return new Level3SetOfMapElementsEntriesValueOperator<K, Long>(getTarget().execute(Call.aLongMethod(methodName, optionalParameters)));
+        return new Level3SetOfMapElementsEntriesValueOperator<K, Long>(getTarget().execute(Call.longMethod(methodName, optionalParameters)));
     }
 
     public ILevel3SetOfMapElementsEntriesValueOperator<K, Float> callFloat(final String methodName, final Object... optionalParameters) {
-        return new Level3SetOfMapElementsEntriesValueOperator<K, Float>(getTarget().execute(Call.aFloatMethod(methodName, optionalParameters)));
+        return new Level3SetOfMapElementsEntriesValueOperator<K, Float>(getTarget().execute(Call.floatMethod(methodName, optionalParameters)));
     }
 
     public ILevel3SetOfMapElementsEntriesValueOperator<K, Double> callDouble(final String methodName, final Object... optionalParameters) {
-        return new Level3SetOfMapElementsEntriesValueOperator<K, Double>(getTarget().execute(Call.aDoubleMethod(methodName, optionalParameters)));
+        return new Level3SetOfMapElementsEntriesValueOperator<K, Double>(getTarget().execute(Call.doubleMethod(methodName, optionalParameters)));
     }
 
     public ILevel3SetOfMapElementsEntriesValueOperator<K, BigInteger> callBigInteger(final String methodName, final Object... optionalParameters) {
-        return new Level3SetOfMapElementsEntriesValueOperator<K, BigInteger>(getTarget().execute(Call.aBigIntegerMethod(methodName, optionalParameters)));
+        return new Level3SetOfMapElementsEntriesValueOperator<K, BigInteger>(getTarget().execute(Call.bigIntegerMethod(methodName, optionalParameters)));
     }
 
     public ILevel3SetOfMapElementsEntriesValueOperator<K, BigDecimal> callBigDecimal(final String methodName, final Object... optionalParameters) {
-        return new Level3SetOfMapElementsEntriesValueOperator<K, BigDecimal>(getTarget().execute(Call.aBigDecimalMethod(methodName, optionalParameters)));
+        return new Level3SetOfMapElementsEntriesValueOperator<K, BigDecimal>(getTarget().execute(Call.bigDecimalMethod(methodName, optionalParameters)));
     }
 
     public ILevel3SetOfMapElementsEntriesValueOperator<K, Boolean> callBoolean(final String methodName, final Object... optionalParameters) {
-        return new Level3SetOfMapElementsEntriesValueOperator<K, Boolean>(getTarget().execute(Call.aBooleanMethod(methodName, optionalParameters)));
+        return new Level3SetOfMapElementsEntriesValueOperator<K, Boolean>(getTarget().execute(Call.booleanMethod(methodName, optionalParameters)));
     }
 
     public ILevel3SetOfMapElementsEntriesValueOperator<K, Calendar> callCalendar(final String methodName, final Object... optionalParameters) {
-        return new Level3SetOfMapElementsEntriesValueOperator<K, Calendar>(getTarget().execute(Call.aCalendarMethod(methodName, optionalParameters)));
+        return new Level3SetOfMapElementsEntriesValueOperator<K, Calendar>(getTarget().execute(Call.calendarMethod(methodName, optionalParameters)));
     }
 
     public ILevel3SetOfMapElementsEntriesValueOperator<K, String> callString(final String methodName, final Object... optionalParameters) {
-        return new Level3SetOfMapElementsEntriesValueOperator<K, String>(getTarget().execute(Call.aStringMethod(methodName, optionalParameters)));
+        return new Level3SetOfMapElementsEntriesValueOperator<K, String>(getTarget().execute(Call.stringMethod(methodName, optionalParameters)));
+    }
+
+    public ILevel3SetOfMapElementsEntriesValueOperator<K, Character> callCharacter(final String methodName, final Object... optionalParameters) {
+        return new Level3SetOfMapElementsEntriesValueOperator<K, Character>(getTarget().execute(Call.characterMethod(methodName, optionalParameters)));
+    }
+
+    public ILevel3SetOfMapElementsEntriesValueOperator<K, Number> callNumber(final String methodName, final Object... optionalParameters) {
+        return new Level3SetOfMapElementsEntriesValueOperator<K, Number>(getTarget().execute(Call.numberMethod(methodName, optionalParameters)));
+    }
+
+    public ILevel3SetOfMapElementsEntriesValueOperator<K, Date> callDate(final String methodName, final Object... optionalParameters) {
+        return new Level3SetOfMapElementsEntriesValueOperator<K, Date>(getTarget().execute(Call.dateMethod(methodName, optionalParameters)));
     }
 
 

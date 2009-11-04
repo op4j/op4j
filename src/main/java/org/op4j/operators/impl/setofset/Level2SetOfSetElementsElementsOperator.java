@@ -60,47 +60,59 @@ public class Level2SetOfSetElementsElementsOperator<T> extends Operator
     }
 
     public ILevel2SetOfSetElementsElementsOperator<Byte> callByte(final String methodName, final Object... optionalParameters) {
-        return new Level2SetOfSetElementsElementsOperator<Byte>(getTarget().execute(Call.aByteMethod(methodName, optionalParameters)));
+        return new Level2SetOfSetElementsElementsOperator<Byte>(getTarget().execute(Call.byteMethod(methodName, optionalParameters)));
     }
 
     public ILevel2SetOfSetElementsElementsOperator<Short> callShort(final String methodName, final Object... optionalParameters) {
-        return new Level2SetOfSetElementsElementsOperator<Short>(getTarget().execute(Call.aShortMethod(methodName, optionalParameters)));
+        return new Level2SetOfSetElementsElementsOperator<Short>(getTarget().execute(Call.shortMethod(methodName, optionalParameters)));
     }
 
     public ILevel2SetOfSetElementsElementsOperator<Integer> callInteger(final String methodName, final Object... optionalParameters) {
-        return new Level2SetOfSetElementsElementsOperator<Integer>(getTarget().execute(Call.aIntegerMethod(methodName, optionalParameters)));
+        return new Level2SetOfSetElementsElementsOperator<Integer>(getTarget().execute(Call.integerMethod(methodName, optionalParameters)));
     }
 
     public ILevel2SetOfSetElementsElementsOperator<Long> callLong(final String methodName, final Object... optionalParameters) {
-        return new Level2SetOfSetElementsElementsOperator<Long>(getTarget().execute(Call.aLongMethod(methodName, optionalParameters)));
+        return new Level2SetOfSetElementsElementsOperator<Long>(getTarget().execute(Call.longMethod(methodName, optionalParameters)));
     }
 
     public ILevel2SetOfSetElementsElementsOperator<Float> callFloat(final String methodName, final Object... optionalParameters) {
-        return new Level2SetOfSetElementsElementsOperator<Float>(getTarget().execute(Call.aFloatMethod(methodName, optionalParameters)));
+        return new Level2SetOfSetElementsElementsOperator<Float>(getTarget().execute(Call.floatMethod(methodName, optionalParameters)));
     }
 
     public ILevel2SetOfSetElementsElementsOperator<Double> callDouble(final String methodName, final Object... optionalParameters) {
-        return new Level2SetOfSetElementsElementsOperator<Double>(getTarget().execute(Call.aDoubleMethod(methodName, optionalParameters)));
+        return new Level2SetOfSetElementsElementsOperator<Double>(getTarget().execute(Call.doubleMethod(methodName, optionalParameters)));
     }
 
     public ILevel2SetOfSetElementsElementsOperator<BigInteger> callBigInteger(final String methodName, final Object... optionalParameters) {
-        return new Level2SetOfSetElementsElementsOperator<BigInteger>(getTarget().execute(Call.aBigIntegerMethod(methodName, optionalParameters)));
+        return new Level2SetOfSetElementsElementsOperator<BigInteger>(getTarget().execute(Call.bigIntegerMethod(methodName, optionalParameters)));
     }
 
     public ILevel2SetOfSetElementsElementsOperator<BigDecimal> callBigDecimal(final String methodName, final Object... optionalParameters) {
-        return new Level2SetOfSetElementsElementsOperator<BigDecimal>(getTarget().execute(Call.aBigDecimalMethod(methodName, optionalParameters)));
+        return new Level2SetOfSetElementsElementsOperator<BigDecimal>(getTarget().execute(Call.bigDecimalMethod(methodName, optionalParameters)));
     }
 
     public ILevel2SetOfSetElementsElementsOperator<Boolean> callBoolean(final String methodName, final Object... optionalParameters) {
-        return new Level2SetOfSetElementsElementsOperator<Boolean>(getTarget().execute(Call.aBooleanMethod(methodName, optionalParameters)));
+        return new Level2SetOfSetElementsElementsOperator<Boolean>(getTarget().execute(Call.booleanMethod(methodName, optionalParameters)));
     }
 
     public ILevel2SetOfSetElementsElementsOperator<Calendar> callCalendar(final String methodName, final Object... optionalParameters) {
-        return new Level2SetOfSetElementsElementsOperator<Calendar>(getTarget().execute(Call.aCalendarMethod(methodName, optionalParameters)));
+        return new Level2SetOfSetElementsElementsOperator<Calendar>(getTarget().execute(Call.calendarMethod(methodName, optionalParameters)));
     }
 
     public ILevel2SetOfSetElementsElementsOperator<String> callString(final String methodName, final Object... optionalParameters) {
-        return new Level2SetOfSetElementsElementsOperator<String>(getTarget().execute(Call.aStringMethod(methodName, optionalParameters)));
+        return new Level2SetOfSetElementsElementsOperator<String>(getTarget().execute(Call.stringMethod(methodName, optionalParameters)));
+    }
+
+    public ILevel2SetOfSetElementsElementsOperator<Character> callCharacter(final String methodName, final Object... optionalParameters) {
+        return new Level2SetOfSetElementsElementsOperator<Character>(getTarget().execute(Call.characterMethod(methodName, optionalParameters)));
+    }
+
+    public ILevel2SetOfSetElementsElementsOperator<Number> callNumber(final String methodName, final Object... optionalParameters) {
+        return new Level2SetOfSetElementsElementsOperator<Number>(getTarget().execute(Call.numberMethod(methodName, optionalParameters)));
+    }
+
+    public ILevel2SetOfSetElementsElementsOperator<Date> callDate(final String methodName, final Object... optionalParameters) {
+        return new Level2SetOfSetElementsElementsOperator<Date>(getTarget().execute(Call.dateMethod(methodName, optionalParameters)));
     }
 
 

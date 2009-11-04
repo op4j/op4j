@@ -71,6 +71,9 @@ public interface ILevel3SetOfMapElementsEntriesValueOperator<K,V>
     public ILevel3SetOfMapElementsEntriesValueOperator<K,Boolean> callBoolean(final String methodName, final Object... optionalParameters);
     public ILevel3SetOfMapElementsEntriesValueOperator<K,Calendar> callCalendar(final String methodName, final Object... optionalParameters);
     public ILevel3SetOfMapElementsEntriesValueOperator<K,String> callString(final String methodName, final Object... optionalParameters);
+    public ILevel3SetOfMapElementsEntriesValueOperator<K,Character> callCharacter(final String evalExpression, final Object... optionalArguments);
+    public ILevel3SetOfMapElementsEntriesValueOperator<K,Number> callNumber(final String evalExpression, final Object... optionalArguments);
+    public ILevel3SetOfMapElementsEntriesValueOperator<K,Date> callDate(final String evalExpression, final Object... optionalArguments);
 
     
     public <X> ILevel3SetOfMapElementsEntriesValueOperator<K,X> conv(final IConv<X,? super V> conv);

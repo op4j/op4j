@@ -31,7 +31,6 @@ import java.util.List;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.Of;
 import org.op4j.exceptions.MethodInvocationException;
 import org.op4j.util.VarArgsUtil;
 
@@ -58,8 +57,8 @@ public class Call<X,T> implements ICall<X,T> {
         return new Call<Object,Object>(Types.OBJECT, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static <X> Call<X,Object> method(final Of<X> of, final String methodName, final Object... optionalParameters) {
-        return new Call<X,Object>(of, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    public static <X> Call<X,Object> method(final Type<X> resultType, final String methodName, final Object... optionalParameters) {
+        return new Call<X,Object>(resultType, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
     public static <X> Call<X,Object> method(final Class<X> ofClass, final String methodName, final Object... optionalParameters) {
@@ -67,59 +66,59 @@ public class Call<X,T> implements ICall<X,T> {
     }
 
     
-    public static Call<BigInteger,Object> aBigIntegerMethod(final String methodName, final Object... optionalParameters) {
+    public static Call<BigInteger,Object> bigIntegerMethod(final String methodName, final Object... optionalParameters) {
         return new Call<BigInteger,Object>(Types.BIG_INTEGER, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<BigDecimal,Object> aBigDecimalMethod(final String methodName, final Object... optionalParameters) {
+    public static Call<BigDecimal,Object> bigDecimalMethod(final String methodName, final Object... optionalParameters) {
         return new Call<BigDecimal,Object>(Types.BIG_DECIMAL, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Boolean,Object> aBooleanMethod(final String methodName, final Object... optionalParameters) {
+    public static Call<Boolean,Object> booleanMethod(final String methodName, final Object... optionalParameters) {
         return new Call<Boolean,Object>(Types.BOOLEAN, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Byte,Object> aByteMethod(final String methodName, final Object... optionalParameters) {
+    public static Call<Byte,Object> byteMethod(final String methodName, final Object... optionalParameters) {
         return new Call<Byte,Object>(Types.BYTE, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Character,Object> aCharacterMethod(final String methodName, final Object... optionalParameters) {
+    public static Call<Character,Object> characterMethod(final String methodName, final Object... optionalParameters) {
         return new Call<Character,Object>(Types.CHARACTER, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Calendar,Object> aCalendarMethod(final String methodName, final Object... optionalParameters) {
+    public static Call<Calendar,Object> calendarMethod(final String methodName, final Object... optionalParameters) {
         return new Call<Calendar,Object>(Types.CALENDAR, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Date,Object> aDateMethod(final String methodName, final Object... optionalParameters) {
+    public static Call<Date,Object> dateMethod(final String methodName, final Object... optionalParameters) {
         return new Call<Date,Object>(Types.DATE, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Double,Object> aDoubleMethod(final String methodName, final Object... optionalParameters) {
+    public static Call<Double,Object> doubleMethod(final String methodName, final Object... optionalParameters) {
         return new Call<Double,Object>(Types.DOUBLE, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Float,Object> aFloatMethod(final String methodName, final Object... optionalParameters) {
+    public static Call<Float,Object> floatMethod(final String methodName, final Object... optionalParameters) {
         return new Call<Float,Object>(Types.FLOAT, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Integer,Object> aIntegerMethod(final String methodName, final Object... optionalParameters) {
+    public static Call<Integer,Object> integerMethod(final String methodName, final Object... optionalParameters) {
         return new Call<Integer,Object>(Types.INTEGER, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Long,Object> aLongMethod(final String methodName, final Object... optionalParameters) {
+    public static Call<Long,Object> longMethod(final String methodName, final Object... optionalParameters) {
         return new Call<Long,Object>(Types.LONG, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Number,Object> aNumberMethod(final String methodName, final Object... optionalParameters) {
+    public static Call<Number,Object> numberMethod(final String methodName, final Object... optionalParameters) {
         return new Call<Number,Object>(Types.NUMBER, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Short,Object> aShortMethod(final String methodName, final Object... optionalParameters) {
+    public static Call<Short,Object> shortMethod(final String methodName, final Object... optionalParameters) {
         return new Call<Short,Object>(Types.SHORT, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<String,Object> aStringMethod(final String methodName, final Object... optionalParameters) {
+    public static Call<String,Object> stringMethod(final String methodName, final Object... optionalParameters) {
         return new Call<String,Object>(Types.STRING, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     

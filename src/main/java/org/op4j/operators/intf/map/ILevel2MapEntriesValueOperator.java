@@ -70,6 +70,9 @@ public interface ILevel2MapEntriesValueOperator<K,V>
     public ILevel2MapEntriesValueOperator<K,Boolean> callBoolean(final String methodName, final Object... optionalParameters);
     public ILevel2MapEntriesValueOperator<K,Calendar> callCalendar(final String methodName, final Object... optionalParameters);
     public ILevel2MapEntriesValueOperator<K,String> callString(final String methodName, final Object... optionalParameters);
+    public ILevel2MapEntriesValueOperator<K,Character> callCharacter(final String evalExpression, final Object... optionalArguments);
+    public ILevel2MapEntriesValueOperator<K,Number> callNumber(final String evalExpression, final Object... optionalArguments);
+    public ILevel2MapEntriesValueOperator<K,Date> callDate(final String evalExpression, final Object... optionalArguments);
 
     
     public <X> ILevel2MapEntriesValueOperator<K,X> conv(final IConv<X,? super V> conv);

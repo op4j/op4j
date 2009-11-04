@@ -60,47 +60,59 @@ public class Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V> extends Ope
     }
 
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Byte> callByte(final String methodName, final Object... optionalParameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Byte>(getTarget().execute(Call.aByteMethod(methodName, optionalParameters)));
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Byte>(getTarget().execute(Call.byteMethod(methodName, optionalParameters)));
     }
 
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Short> callShort(final String methodName, final Object... optionalParameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Short>(getTarget().execute(Call.aShortMethod(methodName, optionalParameters)));
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Short>(getTarget().execute(Call.shortMethod(methodName, optionalParameters)));
     }
 
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Integer> callInteger(final String methodName, final Object... optionalParameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Integer>(getTarget().execute(Call.aIntegerMethod(methodName, optionalParameters)));
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Integer>(getTarget().execute(Call.integerMethod(methodName, optionalParameters)));
     }
 
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Long> callLong(final String methodName, final Object... optionalParameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Long>(getTarget().execute(Call.aLongMethod(methodName, optionalParameters)));
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Long>(getTarget().execute(Call.longMethod(methodName, optionalParameters)));
     }
 
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Float> callFloat(final String methodName, final Object... optionalParameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Float>(getTarget().execute(Call.aFloatMethod(methodName, optionalParameters)));
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Float>(getTarget().execute(Call.floatMethod(methodName, optionalParameters)));
     }
 
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Double> callDouble(final String methodName, final Object... optionalParameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Double>(getTarget().execute(Call.aDoubleMethod(methodName, optionalParameters)));
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Double>(getTarget().execute(Call.doubleMethod(methodName, optionalParameters)));
     }
 
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, BigInteger> callBigInteger(final String methodName, final Object... optionalParameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, BigInteger>(getTarget().execute(Call.aBigIntegerMethod(methodName, optionalParameters)));
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, BigInteger>(getTarget().execute(Call.bigIntegerMethod(methodName, optionalParameters)));
     }
 
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, BigDecimal> callBigDecimal(final String methodName, final Object... optionalParameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, BigDecimal>(getTarget().execute(Call.aBigDecimalMethod(methodName, optionalParameters)));
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, BigDecimal>(getTarget().execute(Call.bigDecimalMethod(methodName, optionalParameters)));
     }
 
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Boolean> callBoolean(final String methodName, final Object... optionalParameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Boolean>(getTarget().execute(Call.aBooleanMethod(methodName, optionalParameters)));
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Boolean>(getTarget().execute(Call.booleanMethod(methodName, optionalParameters)));
     }
 
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Calendar> callCalendar(final String methodName, final Object... optionalParameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Calendar>(getTarget().execute(Call.aCalendarMethod(methodName, optionalParameters)));
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Calendar>(getTarget().execute(Call.calendarMethod(methodName, optionalParameters)));
     }
 
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, String> callString(final String methodName, final Object... optionalParameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, String>(getTarget().execute(Call.aStringMethod(methodName, optionalParameters)));
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, String>(getTarget().execute(Call.stringMethod(methodName, optionalParameters)));
+    }
+
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Character> callCharacter(final String methodName, final Object... optionalParameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Character>(getTarget().execute(Call.characterMethod(methodName, optionalParameters)));
+    }
+
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Number> callNumber(final String methodName, final Object... optionalParameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Number>(getTarget().execute(Call.numberMethod(methodName, optionalParameters)));
+    }
+
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Date> callDate(final String methodName, final Object... optionalParameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Date>(getTarget().execute(Call.dateMethod(methodName, optionalParameters)));
     }
 
 

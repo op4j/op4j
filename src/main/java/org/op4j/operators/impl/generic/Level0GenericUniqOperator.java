@@ -200,47 +200,59 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
     public ILevel0GenericUniqOperator<Byte> callByte(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericUniqOperator<Byte>(getTarget().execute(Call.aByteMethod(methodName, optionalParameters)));
+        return new Level0GenericUniqOperator<Byte>(getTarget().execute(Call.byteMethod(methodName, optionalParameters)));
     }
 
     public ILevel0GenericUniqOperator<Short> callShort(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericUniqOperator<Short>(getTarget().execute(Call.aShortMethod(methodName, optionalParameters)));
+        return new Level0GenericUniqOperator<Short>(getTarget().execute(Call.shortMethod(methodName, optionalParameters)));
     }
 
     public ILevel0GenericUniqOperator<Integer> callInteger(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericUniqOperator<Integer>(getTarget().execute(Call.aIntegerMethod(methodName, optionalParameters)));
+        return new Level0GenericUniqOperator<Integer>(getTarget().execute(Call.integerMethod(methodName, optionalParameters)));
     }
 
     public ILevel0GenericUniqOperator<Long> callLong(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericUniqOperator<Long>(getTarget().execute(Call.aLongMethod(methodName, optionalParameters)));
+        return new Level0GenericUniqOperator<Long>(getTarget().execute(Call.longMethod(methodName, optionalParameters)));
     }
 
     public ILevel0GenericUniqOperator<Float> callFloat(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericUniqOperator<Float>(getTarget().execute(Call.aFloatMethod(methodName, optionalParameters)));
+        return new Level0GenericUniqOperator<Float>(getTarget().execute(Call.floatMethod(methodName, optionalParameters)));
     }
 
     public ILevel0GenericUniqOperator<Double> callDouble(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericUniqOperator<Double>(getTarget().execute(Call.aDoubleMethod(methodName, optionalParameters)));
+        return new Level0GenericUniqOperator<Double>(getTarget().execute(Call.doubleMethod(methodName, optionalParameters)));
     }
 
     public ILevel0GenericUniqOperator<BigInteger> callBigInteger(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericUniqOperator<BigInteger>(getTarget().execute(Call.aBigIntegerMethod(methodName, optionalParameters)));
+        return new Level0GenericUniqOperator<BigInteger>(getTarget().execute(Call.bigIntegerMethod(methodName, optionalParameters)));
     }
 
     public ILevel0GenericUniqOperator<BigDecimal> callBigDecimal(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericUniqOperator<BigDecimal>(getTarget().execute(Call.aBigDecimalMethod(methodName, optionalParameters)));
+        return new Level0GenericUniqOperator<BigDecimal>(getTarget().execute(Call.bigDecimalMethod(methodName, optionalParameters)));
     }
 
     public ILevel0GenericUniqOperator<Boolean> callBoolean(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericUniqOperator<Boolean>(getTarget().execute(Call.aBooleanMethod(methodName, optionalParameters)));
+        return new Level0GenericUniqOperator<Boolean>(getTarget().execute(Call.booleanMethod(methodName, optionalParameters)));
     }
 
     public ILevel0GenericUniqOperator<Calendar> callCalendar(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericUniqOperator<Calendar>(getTarget().execute(Call.aCalendarMethod(methodName, optionalParameters)));
+        return new Level0GenericUniqOperator<Calendar>(getTarget().execute(Call.calendarMethod(methodName, optionalParameters)));
     }
 
     public ILevel0GenericUniqOperator<String> callString(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericUniqOperator<String>(getTarget().execute(Call.aStringMethod(methodName, optionalParameters)));
+        return new Level0GenericUniqOperator<String>(getTarget().execute(Call.stringMethod(methodName, optionalParameters)));
+    }
+
+    public ILevel0GenericUniqOperator<Character> callCharacter(final String methodName, final Object... optionalParameters) {
+        return new Level0GenericUniqOperator<Character>(getTarget().execute(Call.characterMethod(methodName, optionalParameters)));
+    }
+
+    public ILevel0GenericUniqOperator<Number> callNumber(final String methodName, final Object... optionalParameters) {
+        return new Level0GenericUniqOperator<Number>(getTarget().execute(Call.numberMethod(methodName, optionalParameters)));
+    }
+
+    public ILevel0GenericUniqOperator<Date> callDate(final String methodName, final Object... optionalParameters) {
+        return new Level0GenericUniqOperator<Date>(getTarget().execute(Call.dateMethod(methodName, optionalParameters)));
     }
 
 

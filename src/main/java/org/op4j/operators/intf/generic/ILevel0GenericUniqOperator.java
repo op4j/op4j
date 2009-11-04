@@ -96,6 +96,9 @@ public interface ILevel0GenericUniqOperator<T>
     public ILevel0GenericUniqOperator<Boolean> callBoolean(final String methodName, final Object... optionalParameters);
     public ILevel0GenericUniqOperator<Calendar> callCalendar(final String methodName, final Object... optionalParameters);
     public ILevel0GenericUniqOperator<String> callString(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Character> callCharacter(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Number> callNumber(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Date> callDate(final String evalExpression, final Object... optionalArguments);
 
     
     public <X> ILevel0GenericUniqOperator<X> conv(final IConv<X,? super T> conv);

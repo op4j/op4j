@@ -71,6 +71,9 @@ public interface ILevel2SetOfListElementsElementsOperator<T>
     public ILevel2SetOfListElementsElementsOperator<Boolean> callBoolean(final String methodName, final Object... optionalParameters);
     public ILevel2SetOfListElementsElementsOperator<Calendar> callCalendar(final String methodName, final Object... optionalParameters);
     public ILevel2SetOfListElementsElementsOperator<String> callString(final String methodName, final Object... optionalParameters);
+    public ILevel2SetOfListElementsElementsOperator<Character> callCharacter(final String evalExpression, final Object... optionalArguments);
+    public ILevel2SetOfListElementsElementsOperator<Number> callNumber(final String evalExpression, final Object... optionalArguments);
+    public ILevel2SetOfListElementsElementsOperator<Date> callDate(final String evalExpression, final Object... optionalArguments);
 
     
     public <X> ILevel2SetOfListElementsElementsOperator<X> conv(final IConv<X,? super T> conv);
