@@ -22,9 +22,9 @@ package org.op4j.operators.impl.setofarray;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 
-import org.op4j.Of;
 import org.op4j.Of;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
@@ -59,7 +59,7 @@ public class Level2SetOfArrayElementsElementsOperator<T> extends Operator
 
 
     public <X> ILevel2SetOfArrayElementsElementsOperator<X> call(final ICall<X, ? super T> call) {
-        return new Level2SetOfArrayElementsElementsOperator<X>(call.getResultOf(), getTarget().execute(call));
+        return new Level2SetOfArrayElementsElementsOperator<X>(Of.type(call.getResultType()), getTarget().execute(call));
     }
 
     public ILevel2SetOfArrayElementsElementsOperator<Byte> callByte(final String methodName, final Object... optionalParameters) {
@@ -199,7 +199,7 @@ public class Level2SetOfArrayElementsElementsOperator<T> extends Operator
 
 
     public <X> ILevel2SetOfArrayElementsElementsOperator<X> eval(final IEval<X, ? super T> eval) {
-        return new Level2SetOfArrayElementsElementsOperator<X>(eval.getResultOf(), getTarget().execute(eval));
+        return new Level2SetOfArrayElementsElementsOperator<X>(Of.type(eval.getResultType()), getTarget().execute(eval));
     }
 
 
@@ -256,6 +256,20 @@ public class Level2SetOfArrayElementsElementsOperator<T> extends Operator
     public ILevel2SetOfArrayElementsElementsOperator<String> evalString(final String evalExpression, final Object... parameters) {
         return new Level2SetOfArrayElementsElementsOperator<String>(Of.STRING, getTarget().execute(Eval.stringExp(evalExpression, parameters)));
     }
+
+    public ILevel2SetOfArrayElementsElementsOperator<Character> evalCharacter(final String evalExpression, final Object... parameters) {
+        return new Level2SetOfArrayElementsElementsOperator<Character>(Of.CHARACTER, getTarget().execute(Eval.characterExp(evalExpression, parameters)));
+    }
+
+    public ILevel2SetOfArrayElementsElementsOperator<Number> evalNumber(final String evalExpression, final Object... parameters) {
+        return new Level2SetOfArrayElementsElementsOperator<Number>(Of.NUMBER, getTarget().execute(Eval.numberExp(evalExpression, parameters)));
+    }
+
+    public ILevel2SetOfArrayElementsElementsOperator<Date> evalDate(final String evalExpression, final Object... parameters) {
+        return new Level2SetOfArrayElementsElementsOperator<Date>(Of.DATE, getTarget().execute(Eval.dateExp(evalExpression, parameters)));
+    }
+
+
 
 
     public <X> ILevel2SetOfArrayElementsElementsOperator<X> exec(final IFunc<X, ? super T> exec) {

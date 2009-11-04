@@ -25,10 +25,12 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.Of;
+import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.Of;
 import org.op4j.exceptions.MethodInvocationException;
 import org.op4j.util.VarArgsUtil;
@@ -45,7 +47,7 @@ import org.op4j.util.VarArgsUtil;
 public class Call<X,T> implements ICall<X,T> {
     
     
-    private final Of<X> resultOf;
+    private final Type<X> resultType;
     private final String methodName;
     private final List<Object> parameters;
     private final List<Class<?>> parameterClasses;
@@ -53,7 +55,7 @@ public class Call<X,T> implements ICall<X,T> {
     
     
     public static Call<?,Object> method(final String methodName, final Object... optionalParameters) {
-        return new Call<Object,Object>(Of.OBJECT, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+        return new Call<Object,Object>(Types.OBJECT, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
     public static <X> Call<X,Object> method(final Of<X> of, final String methodName, final Object... optionalParameters) {
@@ -66,71 +68,83 @@ public class Call<X,T> implements ICall<X,T> {
 
     
     public static Call<BigInteger,Object> aBigIntegerMethod(final String methodName, final Object... optionalParameters) {
-        return new Call<BigInteger,Object>(Of.BIG_INTEGER, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+        return new Call<BigInteger,Object>(Types.BIG_INTEGER, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
     public static Call<BigDecimal,Object> aBigDecimalMethod(final String methodName, final Object... optionalParameters) {
-        return new Call<BigDecimal,Object>(Of.BIG_DECIMAL, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+        return new Call<BigDecimal,Object>(Types.BIG_DECIMAL, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
     public static Call<Boolean,Object> aBooleanMethod(final String methodName, final Object... optionalParameters) {
-        return new Call<Boolean,Object>(Of.BOOLEAN, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+        return new Call<Boolean,Object>(Types.BOOLEAN, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
     public static Call<Byte,Object> aByteMethod(final String methodName, final Object... optionalParameters) {
-        return new Call<Byte,Object>(Of.BYTE, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+        return new Call<Byte,Object>(Types.BYTE, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    }
+    
+    public static Call<Character,Object> aCharacterMethod(final String methodName, final Object... optionalParameters) {
+        return new Call<Character,Object>(Types.CHARACTER, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
     public static Call<Calendar,Object> aCalendarMethod(final String methodName, final Object... optionalParameters) {
-        return new Call<Calendar,Object>(Of.CALENDAR, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+        return new Call<Calendar,Object>(Types.CALENDAR, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    }
+    
+    public static Call<Date,Object> aDateMethod(final String methodName, final Object... optionalParameters) {
+        return new Call<Date,Object>(Types.DATE, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
     public static Call<Double,Object> aDoubleMethod(final String methodName, final Object... optionalParameters) {
-        return new Call<Double,Object>(Of.DOUBLE, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+        return new Call<Double,Object>(Types.DOUBLE, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
     public static Call<Float,Object> aFloatMethod(final String methodName, final Object... optionalParameters) {
-        return new Call<Float,Object>(Of.FLOAT, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+        return new Call<Float,Object>(Types.FLOAT, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
     public static Call<Integer,Object> aIntegerMethod(final String methodName, final Object... optionalParameters) {
-        return new Call<Integer,Object>(Of.INTEGER, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+        return new Call<Integer,Object>(Types.INTEGER, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
     public static Call<Long,Object> aLongMethod(final String methodName, final Object... optionalParameters) {
-        return new Call<Long,Object>(Of.LONG, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+        return new Call<Long,Object>(Types.LONG, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    }
+    
+    public static Call<Number,Object> aNumberMethod(final String methodName, final Object... optionalParameters) {
+        return new Call<Number,Object>(Types.NUMBER, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
     public static Call<Short,Object> aShortMethod(final String methodName, final Object... optionalParameters) {
-        return new Call<Short,Object>(Of.SHORT, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+        return new Call<Short,Object>(Types.SHORT, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
     public static Call<String,Object> aStringMethod(final String methodName, final Object... optionalParameters) {
-        return new Call<String,Object>(Of.STRING, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+        return new Call<String,Object>(Types.STRING, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
     
-    private Call(final Of<X> resultOf, final String methodName, final List<Object> parameters) {
-    	Validate.notNull(resultOf, "Result characterization cannot be null");
+    private Call(final Type<X> resultType, final String methodName, final List<Object> parameters) {
+    	Validate.notNull(resultType, "Result type cannot be null");
     	Validate.notNull(methodName, "Method name cannot be null");
-        this.resultOf = resultOf;
+        this.resultType = resultType;
         this.methodName = methodName;
         this.parameters = parameters;
         this.parameterClasses = extractParameterClasses(this.parameters);
     }
     
-    private Call(final Class<X> resultOfClass, final String methodName, final List<Object> parameters) {
-    	Validate.notNull(resultOfClass, "Result characterization cannot be null");
+    private Call(final Class<X> resultClass, final String methodName, final List<Object> parameters) {
+    	Validate.notNull(resultClass, "Result class cannot be null");
     	Validate.notNull(methodName, "Method name cannot be null");
-        this.resultOf = Of.clazz(resultOfClass);
+        this.resultType = Types.forClass(resultClass);
         this.methodName = methodName;
         this.parameters = parameters;
         this.parameterClasses = extractParameterClasses(this.parameters);
     }
     
     
-    public Of<X> getResultOf() {
-    	return this.resultOf;
+    public Type<X> getResultType() {
+    	return this.resultType;
     }
 
 	
@@ -160,8 +174,8 @@ public class Call<X,T> implements ICall<X,T> {
 			return (X) result;
 		}
 		
-		if (!(this.resultOf.getRawClass().isAssignableFrom(result.getClass()))) {
-			throw new MethodInvocationException(this.methodName, input.getClass(), this.parameterClasses, this.resultOf.getRawClass());
+		if (!(this.resultType.getRawClass().isAssignableFrom(result.getClass()))) {
+			throw new MethodInvocationException(this.methodName, input.getClass(), this.parameterClasses, this.resultType.getRawClass());
 		}
 		
         return (X) result;

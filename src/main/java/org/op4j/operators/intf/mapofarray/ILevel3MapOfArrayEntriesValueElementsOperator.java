@@ -22,6 +22,7 @@ package org.op4j.operators.intf.mapofarray;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 import org.op4j.Of;
@@ -98,6 +99,9 @@ public interface ILevel3MapOfArrayEntriesValueElementsOperator<K,V>
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,Boolean> evalBoolean(final String evalExpression, final Object... parameters);
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,Calendar> evalCalendar(final String evalExpression, final Object... parameters);
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,String> evalString(final String evalExpression, final Object... parameters);
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K,Character> evalCharacter(final String evalExpression, final Object... optionalArguments);
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K,Number> evalNumber(final String evalExpression, final Object... optionalArguments);
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K,Date> evalDate(final String evalExpression, final Object... optionalArguments);
 
 
     public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K,X> exec(final IFunc<X,? super V> exec);

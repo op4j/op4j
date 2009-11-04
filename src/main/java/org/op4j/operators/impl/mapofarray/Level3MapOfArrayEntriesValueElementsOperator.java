@@ -22,9 +22,9 @@ package org.op4j.operators.impl.mapofarray;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
-import org.op4j.Of;
 import org.op4j.Of;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
@@ -59,7 +59,7 @@ public class Level3MapOfArrayEntriesValueElementsOperator<K,V> extends Operator
 
 
     public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K, X> call(final ICall<X, ? super V> call) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, X>(call.getResultOf(), getTarget().execute(call));
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, X>(Of.type(call.getResultType()), getTarget().execute(call));
     }
 
     public ILevel3MapOfArrayEntriesValueElementsOperator<K, Byte> callByte(final String methodName, final Object... optionalParameters) {
@@ -199,7 +199,7 @@ public class Level3MapOfArrayEntriesValueElementsOperator<K,V> extends Operator
 
 
     public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K, X> eval(final IEval<X, ? super V> eval) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, X>(eval.getResultOf(), getTarget().execute(eval));
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, X>(Of.type(eval.getResultType()), getTarget().execute(eval));
     }
 
 
@@ -256,6 +256,20 @@ public class Level3MapOfArrayEntriesValueElementsOperator<K,V> extends Operator
     public ILevel3MapOfArrayEntriesValueElementsOperator<K, String> evalString(final String evalExpression, final Object... parameters) {
         return new Level3MapOfArrayEntriesValueElementsOperator<K, String>(Of.STRING, getTarget().execute(Eval.stringExp(evalExpression, parameters)));
     }
+
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Character> evalCharacter(final String evalExpression, final Object... parameters) {
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, Character>(Of.CHARACTER, getTarget().execute(Eval.characterExp(evalExpression, parameters)));
+    }
+
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Number> evalNumber(final String evalExpression, final Object... parameters) {
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, Number>(Of.NUMBER, getTarget().execute(Eval.numberExp(evalExpression, parameters)));
+    }
+
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Date> evalDate(final String evalExpression, final Object... parameters) {
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, Date>(Of.DATE, getTarget().execute(Eval.dateExp(evalExpression, parameters)));
+    }
+
+
 
 
     public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K, X> exec(final IFunc<X, ? super V> exec) {

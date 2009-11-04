@@ -22,6 +22,7 @@ package org.op4j.operators.impl.arrayoflist;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.op4j.Of;
@@ -252,6 +253,20 @@ public class Level2ArrayOfListElementsElementsOperator<T> extends Operator
     public ILevel2ArrayOfListElementsElementsOperator<String> evalString(final String evalExpression, final Object... parameters) {
         return new Level2ArrayOfListElementsElementsOperator<String>(getTarget().execute(Eval.stringExp(evalExpression, parameters)));
     }
+
+    public ILevel2ArrayOfListElementsElementsOperator<Character> evalCharacter(final String evalExpression, final Object... parameters) {
+        return new Level2ArrayOfListElementsElementsOperator<Character>(getTarget().execute(Eval.characterExp(evalExpression, parameters)));
+    }
+
+    public ILevel2ArrayOfListElementsElementsOperator<Number> evalNumber(final String evalExpression, final Object... parameters) {
+        return new Level2ArrayOfListElementsElementsOperator<Number>(getTarget().execute(Eval.numberExp(evalExpression, parameters)));
+    }
+
+    public ILevel2ArrayOfListElementsElementsOperator<Date> evalDate(final String evalExpression, final Object... parameters) {
+        return new Level2ArrayOfListElementsElementsOperator<Date>(getTarget().execute(Eval.dateExp(evalExpression, parameters)));
+    }
+
+
 
 
     public <X> ILevel2ArrayOfListElementsElementsOperator<X> exec(final IFunc<X, ? super T> exec) {

@@ -22,6 +22,7 @@ package org.op4j.operators.qualities;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Date;
 
 import org.op4j.executables.IEval;
 
@@ -39,14 +40,17 @@ public interface IEvaluableOperator<T> {
     public <X> IEvaluableOperator<X> eval(final IEval<X,? super T> eval);
     
     public IEvaluableOperator<Byte> evalByte(final String evalExpression, final Object... optionalArguments);
+    public IEvaluableOperator<Character> evalCharacter(final String evalExpression, final Object... optionalArguments);
     public IEvaluableOperator<Short> evalShort(final String evalExpression, final Object... optionalArguments);
     public IEvaluableOperator<Integer> evalInteger(final String evalExpression, final Object... optionalArguments);
+    public IEvaluableOperator<Number> evalNumber(final String evalExpression, final Object... optionalArguments);
     public IEvaluableOperator<Long> evalLong(final String evalExpression, final Object... optionalArguments);
     public IEvaluableOperator<Float> evalFloat(final String evalExpression, final Object... optionalArguments);
     public IEvaluableOperator<Double> evalDouble(final String evalExpression, final Object... optionalArguments);
     public IEvaluableOperator<BigInteger> evalBigInteger(final String evalExpression, final Object... optionalArguments);
     public IEvaluableOperator<BigDecimal> evalBigDecimal(final String evalExpression, final Object... optionalArguments);
     public IEvaluableOperator<Boolean> evalBoolean(final String evalExpression, final Object... optionalArguments);
+    public IEvaluableOperator<Date> evalDate(final String evalExpression, final Object... optionalArguments);
     public IEvaluableOperator<Calendar> evalCalendar(final String evalExpression, final Object... optionalArguments);
     public IEvaluableOperator<String> evalString(final String evalExpression, final Object... optionalArguments);
     

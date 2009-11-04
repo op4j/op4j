@@ -23,7 +23,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Set;
 
-import org.op4j.Of;
+import org.javaruntype.type.Types;
 import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
@@ -80,7 +80,7 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
 
 
     public ILevel0ArrayOfSetOperator<T> endFor() {
-        return new Level0ArrayOfSetOperator<T>(getTarget().endIterate(Structure.ARRAY, Of.SET));
+        return new Level0ArrayOfSetOperator<T>(getTarget().endIterate(Structure.ARRAY, Of.type(Types.SET_OF_UNKNOWN)));
     }
 
 

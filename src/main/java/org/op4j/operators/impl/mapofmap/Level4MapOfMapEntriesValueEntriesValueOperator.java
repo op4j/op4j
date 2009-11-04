@@ -22,6 +22,7 @@ package org.op4j.operators.impl.mapofmap;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 import org.op4j.Of;
@@ -252,6 +253,20 @@ public class Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V> extends Ope
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, String> evalString(final String evalExpression, final Object... parameters) {
         return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, String>(getTarget().execute(Eval.stringExp(evalExpression, parameters)));
     }
+
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Character> evalCharacter(final String evalExpression, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Character>(getTarget().execute(Eval.characterExp(evalExpression, parameters)));
+    }
+
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Number> evalNumber(final String evalExpression, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Number>(getTarget().execute(Eval.numberExp(evalExpression, parameters)));
+    }
+
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Date> evalDate(final String evalExpression, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Date>(getTarget().execute(Eval.dateExp(evalExpression, parameters)));
+    }
+
+
 
 
     public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> exec(final IFunc<X, ? super V> exec) {

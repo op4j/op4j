@@ -23,7 +23,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.op4j.Of;
+import org.javaruntype.type.Types;
 import org.op4j.Of;
 import org.op4j.executables.ISelect;
 import org.op4j.operators.impl.Operator;
@@ -53,7 +53,7 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
 
 
     public ILevel0ArrayOfMapOperator<K, V> endFor() {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().endIterate(Structure.ARRAY, Of.MAP));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().endIterate(Structure.ARRAY, Of.type(Types.MAP_OF_UNKNOWN_UNKNOWN)));
     }
 
 

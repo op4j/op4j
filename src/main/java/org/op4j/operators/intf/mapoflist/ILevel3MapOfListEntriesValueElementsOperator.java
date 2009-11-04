@@ -22,6 +22,7 @@ package org.op4j.operators.intf.mapoflist;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -99,6 +100,9 @@ public interface ILevel3MapOfListEntriesValueElementsOperator<K,V>
     public ILevel3MapOfListEntriesValueElementsOperator<K,Boolean> evalBoolean(final String evalExpression, final Object... parameters);
     public ILevel3MapOfListEntriesValueElementsOperator<K,Calendar> evalCalendar(final String evalExpression, final Object... parameters);
     public ILevel3MapOfListEntriesValueElementsOperator<K,String> evalString(final String evalExpression, final Object... parameters);
+    public ILevel3MapOfListEntriesValueElementsOperator<K,Character> evalCharacter(final String evalExpression, final Object... optionalArguments);
+    public ILevel3MapOfListEntriesValueElementsOperator<K,Number> evalNumber(final String evalExpression, final Object... optionalArguments);
+    public ILevel3MapOfListEntriesValueElementsOperator<K,Date> evalDate(final String evalExpression, final Object... optionalArguments);
 
 
     public <X> ILevel3MapOfListEntriesValueElementsOperator<K,X> exec(final IFunc<X,? super V> exec);

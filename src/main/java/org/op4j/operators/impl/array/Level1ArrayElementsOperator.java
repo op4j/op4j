@@ -22,8 +22,8 @@ package org.op4j.operators.impl.array;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Date;
 
-import org.op4j.Of;
 import org.op4j.Of;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
@@ -60,7 +60,7 @@ public class Level1ArrayElementsOperator<T> extends Operator
 
 
     public <X> ILevel1ArrayElementsOperator<X> call(final ICall<X, ? super T> call) {
-        return new Level1ArrayElementsOperator<X>(call.getResultOf(), getTarget().execute(call));
+        return new Level1ArrayElementsOperator<X>(Of.type(call.getResultType()), getTarget().execute(call));
     }
 
     public ILevel1ArrayElementsOperator<Byte> callByte(final String methodName, final Object... optionalParameters) {
@@ -195,7 +195,7 @@ public class Level1ArrayElementsOperator<T> extends Operator
 
 
     public <X> ILevel1ArrayElementsOperator<X> eval(final IEval<X, ? super T> eval) {
-        return new Level1ArrayElementsOperator<X>(eval.getResultOf(), getTarget().execute(eval));
+        return new Level1ArrayElementsOperator<X>(Of.type(eval.getResultType()), getTarget().execute(eval));
     }
 
 
@@ -252,6 +252,20 @@ public class Level1ArrayElementsOperator<T> extends Operator
     public ILevel1ArrayElementsOperator<String> evalString(final String evalExpression, final Object... parameters) {
         return new Level1ArrayElementsOperator<String>(Of.STRING, getTarget().execute(Eval.stringExp(evalExpression, parameters)));
     }
+
+    public ILevel1ArrayElementsOperator<Character> evalCharacter(final String evalExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<Character>(Of.CHARACTER, getTarget().execute(Eval.characterExp(evalExpression, parameters)));
+    }
+
+    public ILevel1ArrayElementsOperator<Number> evalNumber(final String evalExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<Number>(Of.NUMBER, getTarget().execute(Eval.numberExp(evalExpression, parameters)));
+    }
+
+    public ILevel1ArrayElementsOperator<Date> evalDate(final String evalExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<Date>(Of.DATE, getTarget().execute(Eval.dateExp(evalExpression, parameters)));
+    }
+
+
 
 
     public <X> ILevel1ArrayElementsOperator<X> exec(final IFunc<X, ? super T> exec) {

@@ -22,6 +22,7 @@ package org.op4j.operators.intf.set;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 
 import org.op4j.Of;
@@ -99,6 +100,9 @@ public interface ILevel1SetElementsOperator<T>
     public ILevel1SetElementsOperator<Boolean> evalBoolean(final String evalExpression, final Object... parameters);
     public ILevel1SetElementsOperator<Calendar> evalCalendar(final String evalExpression, final Object... parameters);
     public ILevel1SetElementsOperator<String> evalString(final String evalExpression, final Object... parameters);
+    public ILevel1SetElementsOperator<Character> evalCharacter(final String evalExpression, final Object... optionalArguments);
+    public ILevel1SetElementsOperator<Number> evalNumber(final String evalExpression, final Object... optionalArguments);
+    public ILevel1SetElementsOperator<Date> evalDate(final String evalExpression, final Object... optionalArguments);
 
 
     public <X> ILevel1SetElementsOperator<X> exec(final IFunc<X,? super T> exec);

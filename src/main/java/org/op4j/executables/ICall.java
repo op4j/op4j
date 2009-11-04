@@ -19,7 +19,7 @@
  */
 package org.op4j.executables;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 
 
 
@@ -33,6 +33,6 @@ import org.op4j.Of;
  */
 public interface ICall<X,T> extends IExecutable<X,T> {
     
-    public Of<X> getResultOf();
+    public Type<X> getResultType();
     
 }

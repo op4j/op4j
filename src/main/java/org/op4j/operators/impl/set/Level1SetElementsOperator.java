@@ -22,6 +22,7 @@ package org.op4j.operators.impl.set;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 
 import org.op4j.Of;
@@ -245,6 +246,20 @@ public class Level1SetElementsOperator<T> extends Operator
     public ILevel1SetElementsOperator<String> evalString(final String evalExpression, final Object... parameters) {
         return new Level1SetElementsOperator<String>(getTarget().execute(Eval.stringExp(evalExpression, parameters)));
     }
+
+    public ILevel1SetElementsOperator<Character> evalCharacter(final String evalExpression, final Object... parameters) {
+        return new Level1SetElementsOperator<Character>(getTarget().execute(Eval.characterExp(evalExpression, parameters)));
+    }
+
+    public ILevel1SetElementsOperator<Number> evalNumber(final String evalExpression, final Object... parameters) {
+        return new Level1SetElementsOperator<Number>(getTarget().execute(Eval.numberExp(evalExpression, parameters)));
+    }
+
+    public ILevel1SetElementsOperator<Date> evalDate(final String evalExpression, final Object... parameters) {
+        return new Level1SetElementsOperator<Date>(getTarget().execute(Eval.dateExp(evalExpression, parameters)));
+    }
+
+
 
 
     public <X> ILevel1SetElementsOperator<X> exec(final IFunc<X, ? super T> exec) {

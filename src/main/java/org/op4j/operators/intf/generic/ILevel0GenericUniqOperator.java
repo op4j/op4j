@@ -23,6 +23,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 
 import org.op4j.Of;
 import org.op4j.executables.ICall;
@@ -124,6 +125,9 @@ public interface ILevel0GenericUniqOperator<T>
     public ILevel0GenericUniqOperator<Boolean> evalBoolean(final String evalExpression, final Object... parameters);
     public ILevel0GenericUniqOperator<Calendar> evalCalendar(final String evalExpression, final Object... parameters);
     public ILevel0GenericUniqOperator<String> evalString(final String evalExpression, final Object... parameters);
+    public ILevel0GenericUniqOperator<Character> evalCharacter(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Number> evalNumber(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Date> evalDate(final String evalExpression, final Object... optionalArguments);
 
 
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunc<X,? super T> exec);

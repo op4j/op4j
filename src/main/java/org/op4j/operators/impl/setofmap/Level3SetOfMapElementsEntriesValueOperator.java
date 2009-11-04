@@ -22,6 +22,7 @@ package org.op4j.operators.impl.setofmap;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
@@ -253,6 +254,20 @@ public class Level3SetOfMapElementsEntriesValueOperator<K,V> extends Operator
     public ILevel3SetOfMapElementsEntriesValueOperator<K, String> evalString(final String evalExpression, final Object... parameters) {
         return new Level3SetOfMapElementsEntriesValueOperator<K, String>(getTarget().execute(Eval.stringExp(evalExpression, parameters)));
     }
+
+    public ILevel3SetOfMapElementsEntriesValueOperator<K, Character> evalCharacter(final String evalExpression, final Object... parameters) {
+        return new Level3SetOfMapElementsEntriesValueOperator<K, Character>(getTarget().execute(Eval.characterExp(evalExpression, parameters)));
+    }
+
+    public ILevel3SetOfMapElementsEntriesValueOperator<K, Number> evalNumber(final String evalExpression, final Object... parameters) {
+        return new Level3SetOfMapElementsEntriesValueOperator<K, Number>(getTarget().execute(Eval.numberExp(evalExpression, parameters)));
+    }
+
+    public ILevel3SetOfMapElementsEntriesValueOperator<K, Date> evalDate(final String evalExpression, final Object... parameters) {
+        return new Level3SetOfMapElementsEntriesValueOperator<K, Date>(getTarget().execute(Eval.dateExp(evalExpression, parameters)));
+    }
+
+
 
 
     public <X> ILevel3SetOfMapElementsEntriesValueOperator<K, X> exec(final IFunc<X, ? super V> exec) {

@@ -22,6 +22,7 @@ package org.op4j.operators.intf.array;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Date;
 
 import org.op4j.Of;
 import org.op4j.executables.ICall;
@@ -98,6 +99,9 @@ public interface ILevel1ArrayElementsOperator<T>
     public ILevel1ArrayElementsOperator<Boolean> evalBoolean(final String evalExpression, final Object... parameters);
     public ILevel1ArrayElementsOperator<Calendar> evalCalendar(final String evalExpression, final Object... parameters);
     public ILevel1ArrayElementsOperator<String> evalString(final String evalExpression, final Object... parameters);
+    public ILevel1ArrayElementsOperator<Character> evalCharacter(final String evalExpression, final Object... optionalArguments);
+    public ILevel1ArrayElementsOperator<Number> evalNumber(final String evalExpression, final Object... optionalArguments);
+    public ILevel1ArrayElementsOperator<Date> evalDate(final String evalExpression, final Object... optionalArguments);
 
 
     public <X> ILevel1ArrayElementsOperator<X> exec(final IFunc<X,? super T> exec);

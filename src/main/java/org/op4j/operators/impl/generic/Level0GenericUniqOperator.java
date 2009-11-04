@@ -23,6 +23,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 
 import org.op4j.Of;
 import org.op4j.executables.Call;
@@ -661,6 +662,20 @@ public class Level0GenericUniqOperator<T> extends Operator
     public ILevel0GenericUniqOperator<String> evalString(final String evalExpression, final Object... parameters) {
         return new Level0GenericUniqOperator<String>(getTarget().execute(Eval.stringExp(evalExpression, parameters)));
     }
+
+    public ILevel0GenericUniqOperator<Character> evalCharacter(final String evalExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<Character>(getTarget().execute(Eval.characterExp(evalExpression, parameters)));
+    }
+
+    public ILevel0GenericUniqOperator<Number> evalNumber(final String evalExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<Number>(getTarget().execute(Eval.numberExp(evalExpression, parameters)));
+    }
+
+    public ILevel0GenericUniqOperator<Date> evalDate(final String evalExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<Date>(getTarget().execute(Eval.dateExp(evalExpression, parameters)));
+    }
+
+
 
 
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunc<X, ? super T> exec) {

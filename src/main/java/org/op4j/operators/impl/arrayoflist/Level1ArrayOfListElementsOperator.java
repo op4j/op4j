@@ -23,7 +23,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
-import org.op4j.Of;
+import org.javaruntype.type.Types;
 import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
@@ -86,7 +86,7 @@ public class Level1ArrayOfListElementsOperator<T> extends Operator
 
 
     public ILevel0ArrayOfListOperator<T> endFor() {
-        return new Level0ArrayOfListOperator<T>(getTarget().endIterate(Structure.ARRAY, Of.LIST));
+        return new Level0ArrayOfListOperator<T>(getTarget().endIterate(Structure.ARRAY, Of.type(Types.LIST_OF_UNKNOWN)));
     }
 
 

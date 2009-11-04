@@ -22,6 +22,7 @@ package org.op4j.operators.intf.arrayofset;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 
 import org.op4j.Of;
@@ -98,6 +99,9 @@ public interface ILevel2ArrayOfSetElementsElementsOperator<T>
     public ILevel2ArrayOfSetElementsElementsOperator<Boolean> evalBoolean(final String evalExpression, final Object... parameters);
     public ILevel2ArrayOfSetElementsElementsOperator<Calendar> evalCalendar(final String evalExpression, final Object... parameters);
     public ILevel2ArrayOfSetElementsElementsOperator<String> evalString(final String evalExpression, final Object... parameters);
+    public ILevel2ArrayOfSetElementsElementsOperator<Character> evalCharacter(final String evalExpression, final Object... optionalArguments);
+    public ILevel2ArrayOfSetElementsElementsOperator<Number> evalNumber(final String evalExpression, final Object... optionalArguments);
+    public ILevel2ArrayOfSetElementsElementsOperator<Date> evalDate(final String evalExpression, final Object... optionalArguments);
 
 
     public <X> ILevel2ArrayOfSetElementsElementsOperator<X> exec(final IFunc<X,? super T> exec);

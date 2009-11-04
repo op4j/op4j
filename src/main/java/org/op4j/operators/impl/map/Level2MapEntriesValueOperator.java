@@ -22,6 +22,7 @@ package org.op4j.operators.impl.map;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 import org.op4j.Of;
@@ -252,6 +253,20 @@ public class Level2MapEntriesValueOperator<K,V> extends Operator
     public ILevel2MapEntriesValueOperator<K, String> evalString(final String evalExpression, final Object... parameters) {
         return new Level2MapEntriesValueOperator<K, String>(getTarget().execute(Eval.stringExp(evalExpression, parameters)));
     }
+
+    public ILevel2MapEntriesValueOperator<K, Character> evalCharacter(final String evalExpression, final Object... parameters) {
+        return new Level2MapEntriesValueOperator<K, Character>(getTarget().execute(Eval.characterExp(evalExpression, parameters)));
+    }
+
+    public ILevel2MapEntriesValueOperator<K, Number> evalNumber(final String evalExpression, final Object... parameters) {
+        return new Level2MapEntriesValueOperator<K, Number>(getTarget().execute(Eval.numberExp(evalExpression, parameters)));
+    }
+
+    public ILevel2MapEntriesValueOperator<K, Date> evalDate(final String evalExpression, final Object... parameters) {
+        return new Level2MapEntriesValueOperator<K, Date>(getTarget().execute(Eval.dateExp(evalExpression, parameters)));
+    }
+
+
 
 
     public <X> ILevel2MapEntriesValueOperator<K, X> exec(final IFunc<X, ? super V> exec) {

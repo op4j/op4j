@@ -22,6 +22,7 @@ package org.op4j.operators.impl.list;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.op4j.Of;
@@ -247,6 +248,20 @@ public class Level1ListElementsOperator<T> extends Operator
     public ILevel1ListElementsOperator<String> evalString(final String evalExpression, final Object... parameters) {
         return new Level1ListElementsOperator<String>(getTarget().execute(Eval.stringExp(evalExpression, parameters)));
     }
+
+    public ILevel1ListElementsOperator<Character> evalCharacter(final String evalExpression, final Object... parameters) {
+        return new Level1ListElementsOperator<Character>(getTarget().execute(Eval.characterExp(evalExpression, parameters)));
+    }
+
+    public ILevel1ListElementsOperator<Number> evalNumber(final String evalExpression, final Object... parameters) {
+        return new Level1ListElementsOperator<Number>(getTarget().execute(Eval.numberExp(evalExpression, parameters)));
+    }
+
+    public ILevel1ListElementsOperator<Date> evalDate(final String evalExpression, final Object... parameters) {
+        return new Level1ListElementsOperator<Date>(getTarget().execute(Eval.dateExp(evalExpression, parameters)));
+    }
+
+
 
 
     public <X> ILevel1ListElementsOperator<X> exec(final IFunc<X, ? super T> exec) {

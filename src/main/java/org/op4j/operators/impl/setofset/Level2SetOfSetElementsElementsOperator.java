@@ -22,6 +22,7 @@ package org.op4j.operators.impl.setofset;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 
 import org.op4j.Of;
@@ -252,6 +253,20 @@ public class Level2SetOfSetElementsElementsOperator<T> extends Operator
     public ILevel2SetOfSetElementsElementsOperator<String> evalString(final String evalExpression, final Object... parameters) {
         return new Level2SetOfSetElementsElementsOperator<String>(getTarget().execute(Eval.stringExp(evalExpression, parameters)));
     }
+
+    public ILevel2SetOfSetElementsElementsOperator<Character> evalCharacter(final String evalExpression, final Object... parameters) {
+        return new Level2SetOfSetElementsElementsOperator<Character>(getTarget().execute(Eval.characterExp(evalExpression, parameters)));
+    }
+
+    public ILevel2SetOfSetElementsElementsOperator<Number> evalNumber(final String evalExpression, final Object... parameters) {
+        return new Level2SetOfSetElementsElementsOperator<Number>(getTarget().execute(Eval.numberExp(evalExpression, parameters)));
+    }
+
+    public ILevel2SetOfSetElementsElementsOperator<Date> evalDate(final String evalExpression, final Object... parameters) {
+        return new Level2SetOfSetElementsElementsOperator<Date>(getTarget().execute(Eval.dateExp(evalExpression, parameters)));
+    }
+
+
 
 
     public <X> ILevel2SetOfSetElementsElementsOperator<X> exec(final IFunc<X, ? super T> exec) {

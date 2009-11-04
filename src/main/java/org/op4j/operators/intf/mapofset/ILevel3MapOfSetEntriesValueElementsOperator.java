@@ -22,6 +22,7 @@ package org.op4j.operators.intf.mapofset;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
@@ -99,6 +100,9 @@ public interface ILevel3MapOfSetEntriesValueElementsOperator<K,V>
     public ILevel3MapOfSetEntriesValueElementsOperator<K,Boolean> evalBoolean(final String evalExpression, final Object... parameters);
     public ILevel3MapOfSetEntriesValueElementsOperator<K,Calendar> evalCalendar(final String evalExpression, final Object... parameters);
     public ILevel3MapOfSetEntriesValueElementsOperator<K,String> evalString(final String evalExpression, final Object... parameters);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,Character> evalCharacter(final String evalExpression, final Object... optionalArguments);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,Number> evalNumber(final String evalExpression, final Object... optionalArguments);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,Date> evalDate(final String evalExpression, final Object... optionalArguments);
 
 
     public <X> ILevel3MapOfSetEntriesValueElementsOperator<K,X> exec(final IFunc<X,? super V> exec);
