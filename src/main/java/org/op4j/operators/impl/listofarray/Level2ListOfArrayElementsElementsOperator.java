@@ -107,15 +107,15 @@ public class Level2ListOfArrayElementsElementsOperator<T> extends Operator
     }
 
     public ILevel2ListOfArrayElementsElementsOperator<Character> callCharacter(final String methodName, final Object... optionalParameters) {
-        return new Level2ListOfArrayElementsElementsOperator<Character>(Of.STRING, getTarget().execute(Call.characterMethod(methodName, optionalParameters)));
+        return new Level2ListOfArrayElementsElementsOperator<Character>(Of.CHARACTER, getTarget().execute(Call.characterMethod(methodName, optionalParameters)));
     }
 
     public ILevel2ListOfArrayElementsElementsOperator<Number> callNumber(final String methodName, final Object... optionalParameters) {
-        return new Level2ListOfArrayElementsElementsOperator<Number>(Of.STRING, getTarget().execute(Call.numberMethod(methodName, optionalParameters)));
+        return new Level2ListOfArrayElementsElementsOperator<Number>(Of.NUMBER, getTarget().execute(Call.numberMethod(methodName, optionalParameters)));
     }
 
     public ILevel2ListOfArrayElementsElementsOperator<Date> callDate(final String methodName, final Object... optionalParameters) {
-        return new Level2ListOfArrayElementsElementsOperator<Date>(Of.STRING, getTarget().execute(Call.dateMethod(methodName, optionalParameters)));
+        return new Level2ListOfArrayElementsElementsOperator<Date>(Of.DATE, getTarget().execute(Call.dateMethod(methodName, optionalParameters)));
     }
 
 
@@ -199,6 +199,24 @@ public class Level2ListOfArrayElementsElementsOperator<T> extends Operator
 
 
     public ILevel2ListOfArrayElementsElementsOperator<String> convToString(
+            Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel2ListOfArrayElementsElementsOperator<Character> convToCharacter(
+            Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel2ListOfArrayElementsElementsOperator<Number> convToNumber(
+            Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel2ListOfArrayElementsElementsOperator<Date> convToDate(
             Object... parameters) {
         // TODO Auto-generated method stub
         return null;

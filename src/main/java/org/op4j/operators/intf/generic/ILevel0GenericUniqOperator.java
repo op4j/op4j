@@ -96,9 +96,9 @@ public interface ILevel0GenericUniqOperator<T>
     public ILevel0GenericUniqOperator<Boolean> callBoolean(final String methodName, final Object... optionalParameters);
     public ILevel0GenericUniqOperator<Calendar> callCalendar(final String methodName, final Object... optionalParameters);
     public ILevel0GenericUniqOperator<String> callString(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Character> callCharacter(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Number> callNumber(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Date> callDate(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Character> callCharacter(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Number> callNumber(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Date> callDate(final String methodName, final Object... optionalParameters);
 
     
     public <X> ILevel0GenericUniqOperator<X> conv(final IConv<X,? super T> conv);
@@ -117,17 +117,17 @@ public interface ILevel0GenericUniqOperator<T>
     
     public <X> ILevel0GenericUniqOperator<X> eval(final IEval<X,? super T> eval);
 
-    public ILevel0GenericUniqOperator<Byte> evalByte(final String evalExpression, final Object... parameters);
-    public ILevel0GenericUniqOperator<Short> evalShort(final String evalExpression, final Object... parameters);
-    public ILevel0GenericUniqOperator<Integer> evalInteger(final String evalExpression, final Object... parameters);
-    public ILevel0GenericUniqOperator<Long> evalLong(final String evalExpression, final Object... parameters);
-    public ILevel0GenericUniqOperator<Float> evalFloat(final String evalExpression, final Object... parameters);
-    public ILevel0GenericUniqOperator<Double> evalDouble(final String evalExpression, final Object... parameters);
-    public ILevel0GenericUniqOperator<BigInteger> evalBigInteger(final String evalExpression, final Object... parameters);
-    public ILevel0GenericUniqOperator<BigDecimal> evalBigDecimal(final String evalExpression, final Object... parameters);
-    public ILevel0GenericUniqOperator<Boolean> evalBoolean(final String evalExpression, final Object... parameters);
-    public ILevel0GenericUniqOperator<Calendar> evalCalendar(final String evalExpression, final Object... parameters);
-    public ILevel0GenericUniqOperator<String> evalString(final String evalExpression, final Object... parameters);
+    public ILevel0GenericUniqOperator<Byte> evalByte(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Short> evalShort(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Integer> evalInteger(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Long> evalLong(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Float> evalFloat(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Double> evalDouble(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<BigInteger> evalBigInteger(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<BigDecimal> evalBigDecimal(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Boolean> evalBoolean(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Calendar> evalCalendar(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<String> evalString(final String evalExpression, final Object... optionalArguments);
     public ILevel0GenericUniqOperator<Character> evalCharacter(final String evalExpression, final Object... optionalArguments);
     public ILevel0GenericUniqOperator<Number> evalNumber(final String evalExpression, final Object... optionalArguments);
     public ILevel0GenericUniqOperator<Date> evalDate(final String evalExpression, final Object... optionalArguments);

@@ -70,9 +70,9 @@ public interface ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Boolean> callBoolean(final String methodName, final Object... optionalParameters);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Calendar> callCalendar(final String methodName, final Object... optionalParameters);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,String> callString(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Character> callCharacter(final String evalExpression, final Object... optionalArguments);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Number> callNumber(final String evalExpression, final Object... optionalArguments);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Date> callDate(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Character> callCharacter(final String methodName, final Object... optionalParameters);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Number> callNumber(final String methodName, final Object... optionalParameters);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Date> callDate(final String methodName, final Object... optionalParameters);
 
     
     public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> conv(final IConv<X,? super V> conv);
@@ -91,17 +91,17 @@ public interface ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
     
     public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> eval(final IEval<X,? super V> eval);
 
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Byte> evalByte(final String evalExpression, final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Short> evalShort(final String evalExpression, final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Integer> evalInteger(final String evalExpression, final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Long> evalLong(final String evalExpression, final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Float> evalFloat(final String evalExpression, final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Double> evalDouble(final String evalExpression, final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,BigInteger> evalBigInteger(final String evalExpression, final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,BigDecimal> evalBigDecimal(final String evalExpression, final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Boolean> evalBoolean(final String evalExpression, final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Calendar> evalCalendar(final String evalExpression, final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,String> evalString(final String evalExpression, final Object... parameters);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Byte> evalByte(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Short> evalShort(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Integer> evalInteger(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Long> evalLong(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Float> evalFloat(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Double> evalDouble(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,BigInteger> evalBigInteger(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,BigDecimal> evalBigDecimal(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Boolean> evalBoolean(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Calendar> evalCalendar(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,String> evalString(final String evalExpression, final Object... optionalArguments);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Character> evalCharacter(final String evalExpression, final Object... optionalArguments);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Number> evalNumber(final String evalExpression, final Object... optionalArguments);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Date> evalDate(final String evalExpression, final Object... optionalArguments);

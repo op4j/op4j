@@ -70,9 +70,9 @@ public interface ILevel3ArrayOfMapElementsEntriesValueOperator<K,V>
     public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Boolean> callBoolean(final String methodName, final Object... optionalParameters);
     public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Calendar> callCalendar(final String methodName, final Object... optionalParameters);
     public ILevel3ArrayOfMapElementsEntriesValueOperator<K,String> callString(final String methodName, final Object... optionalParameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Character> callCharacter(final String evalExpression, final Object... optionalArguments);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Number> callNumber(final String evalExpression, final Object... optionalArguments);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Date> callDate(final String evalExpression, final Object... optionalArguments);
+    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Character> callCharacter(final String methodName, final Object... optionalParameters);
+    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Number> callNumber(final String methodName, final Object... optionalParameters);
+    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Date> callDate(final String methodName, final Object... optionalParameters);
 
     
     public <X> ILevel3ArrayOfMapElementsEntriesValueOperator<K,X> conv(final IConv<X,? super V> conv);
@@ -91,17 +91,17 @@ public interface ILevel3ArrayOfMapElementsEntriesValueOperator<K,V>
     
     public <X> ILevel3ArrayOfMapElementsEntriesValueOperator<K,X> eval(final IEval<X,? super V> eval);
 
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Byte> evalByte(final String evalExpression, final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Short> evalShort(final String evalExpression, final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Integer> evalInteger(final String evalExpression, final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Long> evalLong(final String evalExpression, final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Float> evalFloat(final String evalExpression, final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Double> evalDouble(final String evalExpression, final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,BigInteger> evalBigInteger(final String evalExpression, final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,BigDecimal> evalBigDecimal(final String evalExpression, final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Boolean> evalBoolean(final String evalExpression, final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Calendar> evalCalendar(final String evalExpression, final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,String> evalString(final String evalExpression, final Object... parameters);
+    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Byte> evalByte(final String evalExpression, final Object... optionalArguments);
+    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Short> evalShort(final String evalExpression, final Object... optionalArguments);
+    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Integer> evalInteger(final String evalExpression, final Object... optionalArguments);
+    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Long> evalLong(final String evalExpression, final Object... optionalArguments);
+    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Float> evalFloat(final String evalExpression, final Object... optionalArguments);
+    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Double> evalDouble(final String evalExpression, final Object... optionalArguments);
+    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,BigInteger> evalBigInteger(final String evalExpression, final Object... optionalArguments);
+    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,BigDecimal> evalBigDecimal(final String evalExpression, final Object... optionalArguments);
+    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Boolean> evalBoolean(final String evalExpression, final Object... optionalArguments);
+    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Calendar> evalCalendar(final String evalExpression, final Object... optionalArguments);
+    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,String> evalString(final String evalExpression, final Object... optionalArguments);
     public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Character> evalCharacter(final String evalExpression, final Object... optionalArguments);
     public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Number> evalNumber(final String evalExpression, final Object... optionalArguments);
     public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Date> evalDate(final String evalExpression, final Object... optionalArguments);

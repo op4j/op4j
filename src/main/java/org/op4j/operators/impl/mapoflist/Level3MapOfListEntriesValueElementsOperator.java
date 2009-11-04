@@ -202,6 +202,24 @@ public class Level3MapOfListEntriesValueElementsOperator<K,V> extends Operator
         return null;
     }
 
+    public ILevel3MapOfListEntriesValueElementsOperator<K, Character> convToCharacter(
+            Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel3MapOfListEntriesValueElementsOperator<K, Number> convToNumber(
+            Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel3MapOfListEntriesValueElementsOperator<K, Date> convToDate(
+            Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 
     public ILevel2MapOfListEntriesValueOperator<K, V> endFor() {
         return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().endIterate(Structure.LIST, null));

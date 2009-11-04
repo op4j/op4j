@@ -107,15 +107,15 @@ public class Level3MapOfArrayEntriesValueElementsOperator<K,V> extends Operator
     }
 
     public ILevel3MapOfArrayEntriesValueElementsOperator<K, Character> callCharacter(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Character>(Of.STRING, getTarget().execute(Call.characterMethod(methodName, optionalParameters)));
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, Character>(Of.CHARACTER, getTarget().execute(Call.characterMethod(methodName, optionalParameters)));
     }
 
     public ILevel3MapOfArrayEntriesValueElementsOperator<K, Number> callNumber(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Number>(Of.STRING, getTarget().execute(Call.numberMethod(methodName, optionalParameters)));
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, Number>(Of.NUMBER, getTarget().execute(Call.numberMethod(methodName, optionalParameters)));
     }
 
     public ILevel3MapOfArrayEntriesValueElementsOperator<K, Date> callDate(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Date>(Of.STRING, getTarget().execute(Call.dateMethod(methodName, optionalParameters)));
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, Date>(Of.DATE, getTarget().execute(Call.dateMethod(methodName, optionalParameters)));
     }
 
 
@@ -199,6 +199,24 @@ public class Level3MapOfArrayEntriesValueElementsOperator<K,V> extends Operator
 
 
     public ILevel3MapOfArrayEntriesValueElementsOperator<K, String> convToString(
+            Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Character> convToCharacter(
+            Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Number> convToNumber(
+            Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Date> convToDate(
             Object... parameters) {
         // TODO Auto-generated method stub
         return null;

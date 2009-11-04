@@ -194,6 +194,21 @@ public class Level1SetElementsOperator<T> extends Operator
         return null;
     }
 
+    public ILevel1SetElementsOperator<Character> convToCharacter(Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel1SetElementsOperator<Number> convToNumber(Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel1SetElementsOperator<Date> convToDate(Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 
     public ILevel0SetOperator<T> endFor() {
         return new Level0SetOperator<T>(getTarget().endIterate(Structure.SET, null));

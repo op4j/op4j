@@ -51,9 +51,9 @@ public interface ICallableOperator<T> {
     public ICallableOperator<Boolean> callBoolean(final String methodName, final Object... optionalParameters);
     public ICallableOperator<Calendar> callCalendar(final String methodName, final Object... optionalParameters);
     public ICallableOperator<String> callString(final String methodName, final Object... optionalParameters);
-    public ICallableOperator<Character> callCharacter(final String evalExpression, final Object... optionalArguments);
-    public ICallableOperator<Number> callNumber(final String evalExpression, final Object... optionalArguments);
-    public ICallableOperator<Date> callDate(final String evalExpression, final Object... optionalArguments);
+    public ICallableOperator<Character> callCharacter(final String methodName, final Object... optionalParameters);
+    public ICallableOperator<Number> callNumber(final String methodName, final Object... optionalParameters);
+    public ICallableOperator<Date> callDate(final String methodName, final Object... optionalParameters);
 
     
 }

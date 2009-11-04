@@ -22,6 +22,7 @@ package org.op4j.operators.qualities;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Date;
 
 import org.op4j.executables.functions.conversion.IConv;
 
@@ -48,5 +49,8 @@ public interface IConvertibleOperator<T> {
     public IConvertibleOperator<Boolean> convToBoolean(final Object... parameters);
     public IConvertibleOperator<Calendar> convToCalendar(final Object... parameters);
     public IConvertibleOperator<String> convToString(final Object... parameters);
+    public IConvertibleOperator<Character> convToCharacter(final Object... parameters);
+    public IConvertibleOperator<Number> convToNumber(final Object... parameters);
+    public IConvertibleOperator<Date> convToDate(final Object... parameters);
     
 }

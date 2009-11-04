@@ -70,9 +70,9 @@ public interface ILevel1ArrayElementsOperator<T>
     public ILevel1ArrayElementsOperator<Boolean> callBoolean(final String methodName, final Object... optionalParameters);
     public ILevel1ArrayElementsOperator<Calendar> callCalendar(final String methodName, final Object... optionalParameters);
     public ILevel1ArrayElementsOperator<String> callString(final String methodName, final Object... optionalParameters);
-    public ILevel1ArrayElementsOperator<Character> callCharacter(final String evalExpression, final Object... optionalArguments);
-    public ILevel1ArrayElementsOperator<Number> callNumber(final String evalExpression, final Object... optionalArguments);
-    public ILevel1ArrayElementsOperator<Date> callDate(final String evalExpression, final Object... optionalArguments);
+    public ILevel1ArrayElementsOperator<Character> callCharacter(final String methodName, final Object... optionalParameters);
+    public ILevel1ArrayElementsOperator<Number> callNumber(final String methodName, final Object... optionalParameters);
+    public ILevel1ArrayElementsOperator<Date> callDate(final String methodName, final Object... optionalParameters);
 
     
     public <X> IConvertibleOperator<X> conv(final IConv<X,? super T> conv);
@@ -91,17 +91,17 @@ public interface ILevel1ArrayElementsOperator<T>
     
     public <X> ILevel1ArrayElementsOperator<X> eval(final IEval<X,? super T> eval);
 
-    public ILevel1ArrayElementsOperator<Byte> evalByte(final String evalExpression, final Object... parameters);
-    public ILevel1ArrayElementsOperator<Short> evalShort(final String evalExpression, final Object... parameters);
-    public ILevel1ArrayElementsOperator<Integer> evalInteger(final String evalExpression, final Object... parameters);
-    public ILevel1ArrayElementsOperator<Long> evalLong(final String evalExpression, final Object... parameters);
-    public ILevel1ArrayElementsOperator<Float> evalFloat(final String evalExpression, final Object... parameters);
-    public ILevel1ArrayElementsOperator<Double> evalDouble(final String evalExpression, final Object... parameters);
-    public ILevel1ArrayElementsOperator<BigInteger> evalBigInteger(final String evalExpression, final Object... parameters);
-    public ILevel1ArrayElementsOperator<BigDecimal> evalBigDecimal(final String evalExpression, final Object... parameters);
-    public ILevel1ArrayElementsOperator<Boolean> evalBoolean(final String evalExpression, final Object... parameters);
-    public ILevel1ArrayElementsOperator<Calendar> evalCalendar(final String evalExpression, final Object... parameters);
-    public ILevel1ArrayElementsOperator<String> evalString(final String evalExpression, final Object... parameters);
+    public ILevel1ArrayElementsOperator<Byte> evalByte(final String evalExpression, final Object... optionalArguments);
+    public ILevel1ArrayElementsOperator<Short> evalShort(final String evalExpression, final Object... optionalArguments);
+    public ILevel1ArrayElementsOperator<Integer> evalInteger(final String evalExpression, final Object... optionalArguments);
+    public ILevel1ArrayElementsOperator<Long> evalLong(final String evalExpression, final Object... optionalArguments);
+    public ILevel1ArrayElementsOperator<Float> evalFloat(final String evalExpression, final Object... optionalArguments);
+    public ILevel1ArrayElementsOperator<Double> evalDouble(final String evalExpression, final Object... optionalArguments);
+    public ILevel1ArrayElementsOperator<BigInteger> evalBigInteger(final String evalExpression, final Object... optionalArguments);
+    public ILevel1ArrayElementsOperator<BigDecimal> evalBigDecimal(final String evalExpression, final Object... optionalArguments);
+    public ILevel1ArrayElementsOperator<Boolean> evalBoolean(final String evalExpression, final Object... optionalArguments);
+    public ILevel1ArrayElementsOperator<Calendar> evalCalendar(final String evalExpression, final Object... optionalArguments);
+    public ILevel1ArrayElementsOperator<String> evalString(final String evalExpression, final Object... optionalArguments);
     public ILevel1ArrayElementsOperator<Character> evalCharacter(final String evalExpression, final Object... optionalArguments);
     public ILevel1ArrayElementsOperator<Number> evalNumber(final String evalExpression, final Object... optionalArguments);
     public ILevel1ArrayElementsOperator<Date> evalDate(final String evalExpression, final Object... optionalArguments);

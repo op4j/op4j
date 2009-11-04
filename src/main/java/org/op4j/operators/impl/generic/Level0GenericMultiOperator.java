@@ -285,6 +285,21 @@ public class Level0GenericMultiOperator<T> extends Operator
         return null;
     }
 
+    public ILevel0GenericUniqOperator<Character> convToCharacter(Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0GenericUniqOperator<Number> convToNumber(Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0GenericUniqOperator<Date> convToDate(Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 
     public <X> ILevel0GenericUniqOperator<X> eval(final IEval<X, ? super T> eval) {
         return new Level0GenericUniqOperator<X>(getTarget().execute(eval));

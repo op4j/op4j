@@ -202,6 +202,24 @@ public class Level2ListOfSetElementsElementsOperator<T> extends Operator
         return null;
     }
 
+    public ILevel2ListOfSetElementsElementsOperator<Character> convToCharacter(
+            Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel2ListOfSetElementsElementsOperator<Number> convToNumber(
+            Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel2ListOfSetElementsElementsOperator<Date> convToDate(
+            Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 
     public ILevel1ListOfSetElementsOperator<T> endFor() {
         return new Level1ListOfSetElementsOperator<T>(getTarget().endIterate(Structure.SET, null));

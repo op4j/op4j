@@ -204,6 +204,24 @@ public class Level2ArrayOfArrayElementsElementsOperator<T> extends Operator
         return null;
     }
 
+    public ILevel2ArrayOfArrayElementsElementsOperator<Character> convToCharacter(
+            Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel2ArrayOfArrayElementsElementsOperator<Number> convToNumber(
+            Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel2ArrayOfArrayElementsElementsOperator<Date> convToDate(
+            Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 
     public ILevel1ArrayOfArrayElementsOperator<T> endFor() {
         return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().endIterate(Structure.ARRAY, this.arrayOf));

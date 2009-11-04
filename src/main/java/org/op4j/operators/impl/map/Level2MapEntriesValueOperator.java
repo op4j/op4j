@@ -201,6 +201,24 @@ public class Level2MapEntriesValueOperator<K,V> extends Operator
         return null;
     }
 
+    public ILevel2MapEntriesValueOperator<K, Character> convToCharacter(
+            Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel2MapEntriesValueOperator<K, Number> convToNumber(
+            Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel2MapEntriesValueOperator<K, Date> convToDate(
+            Object... parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 
     public ILevel1MapEntriesOperator<K, V> endOn() {
         return new Level1MapEntriesOperator<K, V>(getTarget().endIterate(Structure.MAP_ENTRY, null));
