@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 
 
 
@@ -32,7 +32,7 @@ import org.op4j.IOf;
  */
 public interface IConvertibleToArrayOperator {
     
-    public <X> IOperator toArray(final IOf<X> of);
+    public <X> IOperator toArray(final Of<X> of);
     public <X> IOperator toArray(final Class<X> ofClass);
     
 }

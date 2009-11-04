@@ -29,7 +29,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.IExecutable;
 import org.op4j.executables.ISelect;
 import org.op4j.util.MapEntry;
@@ -224,7 +224,7 @@ public class StructureTarget extends Target {
 
     
     @Override
-    public Target endIterate(final Structure structure, final IOf<?> of) {
+    public Target endIterate(final Structure structure, final Of<?> of) {
         
         Validate.notNull(structure, "Structure cannot be null");
         Validate.isTrue(!(structure.equals(Structure.ARRAY) && of == null), "Arrays must specify component type (of)");

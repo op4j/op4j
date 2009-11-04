@@ -23,7 +23,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
@@ -69,7 +69,7 @@ public interface ILevel0MapOfListOperator<K,V>
     public ILevel0MapOfListOperator<K,V> sort();
     public ILevel0MapOfListOperator<K,V> sort(final Comparator<? super Map.Entry<K,List<V>>> comparator);
     
-    public <X,Y> ILevel0MapOfListOperator<X,Y> of(final IOf<X> ofX, final IOf<Y> ofY);
+    public <X,Y> ILevel0MapOfListOperator<X,Y> of(final Of<X> ofX, final Of<Y> ofY);
     public <X,Y> ILevel0MapOfListOperator<X,Y> of(final Class<X> ofXClass, final Class<Y> ofYClass);
     
     public ILevel0MapOfListOperator<?,?> raw();
@@ -85,7 +85,7 @@ public interface ILevel0MapOfListOperator<K,V>
     public ILevel0MapOfListOperator<K,V> removeAllBut(final String expression, final Object... optionalExpParams);
     public ILevel0MapOfListOperator<K,V> removeAllBut(final ISelect<Map.Entry<K,List<V>>> selector);
     
-    public <X> ILevel0MapOfArrayOperator<K,X> toMapOfArray(final IOf<X> of);
+    public <X> ILevel0MapOfArrayOperator<K,X> toMapOfArray(final Of<X> of);
     public <X> ILevel0MapOfArrayOperator<K,X> toMapOfArray(final Class<X> ofClass);
     
     public ILevel0MapOfSetOperator<K,V> toMapOfSet();

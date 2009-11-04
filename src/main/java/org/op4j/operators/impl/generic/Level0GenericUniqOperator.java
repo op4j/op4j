@@ -24,7 +24,7 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Collection;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
@@ -101,7 +101,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ArrayOperator<X> buildArray(IOf<X> arrayOf) {
+    public <X> ILevel0ArrayOperator<X> buildArray(Of<X> arrayOf) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -133,14 +133,14 @@ public class Level0GenericUniqOperator<T> extends Operator
 
 
     public <K, X> ILevel0MapOfArrayOperator<K, X> buildMapOfArray(
-            IEval<K, ? super T> keyEval, IOf<X> valueArrayOf) {
+            IEval<K, ? super T> keyEval, Of<X> valueArrayOf) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
     public <K, V> ILevel0MapOfArrayOperator<K, V> buildMapOfArray(
-            IMapBuild<K, V, ? super T> mapBuild, IOf<V> valueArrayOf) {
+            IMapBuild<K, V, ? super T> mapBuild, Of<V> valueArrayOf) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -257,7 +257,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ArrayOfArrayOperator<X> castAsArrayOfArray(IOf<X> of) {
+    public <X> ILevel0ArrayOfArrayOperator<X> castAsArrayOfArray(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -275,7 +275,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ArrayOfListOperator<X> castAsArrayOfList(IOf<X> of) {
+    public <X> ILevel0ArrayOfListOperator<X> castAsArrayOfList(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -294,7 +294,7 @@ public class Level0GenericUniqOperator<T> extends Operator
 
 
     public <K, V> ILevel0ArrayOfMapOperator<K, V> castAsArrayOfMap(
-            IOf<K> keyOf, IOf<V> valueOf) {
+            Of<K> keyOf, Of<V> valueOf) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -306,7 +306,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ArrayOfSetOperator<X> castAsArrayOfSet(IOf<X> of) {
+    public <X> ILevel0ArrayOfSetOperator<X> castAsArrayOfSet(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -324,7 +324,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ListOfArrayOperator<X> castAsListOfArray(IOf<X> of) {
+    public <X> ILevel0ListOfArrayOperator<X> castAsListOfArray(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -342,7 +342,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ListOfListOperator<X> castAsListOfList(IOf<X> of) {
+    public <X> ILevel0ListOfListOperator<X> castAsListOfList(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -360,8 +360,8 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0ListOfMapOperator<K, V> castAsListOfMap(IOf<K> keyOf,
-            IOf<V> valueOf) {
+    public <K, V> ILevel0ListOfMapOperator<K, V> castAsListOfMap(Of<K> keyOf,
+            Of<V> valueOf) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -373,7 +373,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ListOfSetOperator<X> castAsListOfSet(IOf<X> of) {
+    public <X> ILevel0ListOfSetOperator<X> castAsListOfSet(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -392,7 +392,7 @@ public class Level0GenericUniqOperator<T> extends Operator
 
 
     public <K, V> ILevel0MapOfArrayOperator<K, V> castAsMapOfArray(
-            IOf<K> keyOf, IOf<V> valueOf) {
+            Of<K> keyOf, Of<V> valueOf) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -405,8 +405,8 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0MapOfListOperator<K, V> castAsMapOfList(IOf<K> keyOf,
-            IOf<V> valueOf) {
+    public <K, V> ILevel0MapOfListOperator<K, V> castAsMapOfList(Of<K> keyOf,
+            Of<V> valueOf) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -426,7 +426,7 @@ public class Level0GenericUniqOperator<T> extends Operator
 
 
     public <K1, K2, V> ILevel0MapOfMapOperator<K1, K2, V> castAsMapOfMap(
-            IOf<K1> key1Of, IOf<K2> key2Of, IOf<V> valueOf) {
+            Of<K1> key1Of, Of<K2> key2Of, Of<V> valueOf) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -445,8 +445,8 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0MapOfSetOperator<K, V> castAsMapOfSet(IOf<K> keyOf,
-            IOf<V> valueOf) {
+    public <K, V> ILevel0MapOfSetOperator<K, V> castAsMapOfSet(Of<K> keyOf,
+            Of<V> valueOf) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -465,7 +465,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0SetOfArrayOperator<X> castAsSetOfArray(IOf<X> of) {
+    public <X> ILevel0SetOfArrayOperator<X> castAsSetOfArray(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -483,7 +483,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0SetOfListOperator<X> castAsSetOfList(IOf<X> of) {
+    public <X> ILevel0SetOfListOperator<X> castAsSetOfList(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -501,8 +501,8 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0SetOfMapOperator<K, V> castAsSetOfMap(IOf<K> keyOf,
-            IOf<V> valueOf) {
+    public <K, V> ILevel0SetOfMapOperator<K, V> castAsSetOfMap(Of<K> keyOf,
+            Of<V> valueOf) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -514,7 +514,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0SetOfSetOperator<X> castAsSetOfSet(IOf<X> of) {
+    public <X> ILevel0SetOfSetOperator<X> castAsSetOfSet(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -668,7 +668,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0GenericUniqOperator<X> of(IOf<X> of) {
+    public <X> ILevel0GenericUniqOperator<X> of(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }

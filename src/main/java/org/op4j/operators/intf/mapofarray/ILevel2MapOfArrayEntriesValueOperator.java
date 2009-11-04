@@ -23,7 +23,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
@@ -72,7 +72,7 @@ public interface ILevel2MapOfArrayEntriesValueOperator<K,V>
     public ILevel2MapOfArrayEntriesValueOperator<K,V> sort();
     public ILevel2MapOfArrayEntriesValueOperator<K,V> sort(final Comparator<? super V> comparator);
     
-    public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> of(final IOf<X> of);
+    public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> of(final Of<X> of);
     
     public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> of(final Class<X> classOf);
     

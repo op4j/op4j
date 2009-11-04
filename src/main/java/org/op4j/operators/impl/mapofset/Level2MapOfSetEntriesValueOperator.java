@@ -24,7 +24,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Set;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
@@ -223,7 +223,7 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel2MapOfSetEntriesValueOperator<K, X> of(IOf<X> of) {
+    public <X> ILevel2MapOfSetEntriesValueOperator<K, X> of(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -319,7 +319,7 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel2MapOfArrayEntriesValueOperator<K, X> toArray(IOf<X> of) {
+    public <X> ILevel2MapOfArrayEntriesValueOperator<K, X> toArray(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }

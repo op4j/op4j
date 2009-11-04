@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
 import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
 import org.op4j.operators.intf.mapoflist.ILevel0MapOfListOperator;
@@ -42,7 +42,7 @@ public interface IBuilderMultiOperator<T> {
     
     public ILevel0MapOfSetOperator<T,T> buildMapOfSet();
     
-    public <X> ILevel0MapOfArrayOperator<X,X> buildMapOfArray(final IOf<X> of);
+    public <X> ILevel0MapOfArrayOperator<X,X> buildMapOfArray(final Of<X> of);
     public <X> ILevel0MapOfArrayOperator<X,X> buildMapOfArray(final Class<X> arrayOfClass);
     
 }

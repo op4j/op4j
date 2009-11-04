@@ -23,7 +23,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Set;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
@@ -218,7 +218,7 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel1ArrayOfSetElementsOperator<X> of(IOf<X> of) {
+    public <X> ILevel1ArrayOfSetElementsOperator<X> of(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -311,7 +311,7 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel1ArrayOfArrayElementsOperator<X> toArray(IOf<X> of) {
+    public <X> ILevel1ArrayOfArrayElementsOperator<X> toArray(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }

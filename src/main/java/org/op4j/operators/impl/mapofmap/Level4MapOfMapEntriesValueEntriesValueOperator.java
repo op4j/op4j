@@ -24,7 +24,7 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Map;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
@@ -260,7 +260,7 @@ public class Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V> extends Ope
 
 
     public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> of(
-            IOf<X> of) {
+            Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }

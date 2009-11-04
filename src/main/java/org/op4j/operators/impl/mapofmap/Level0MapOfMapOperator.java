@@ -23,7 +23,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.ISelect;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
@@ -143,8 +143,8 @@ public class Level0MapOfMapOperator<K1,K2,V> extends Operator
     }
 
 
-    public <X, Y, Z> ILevel0MapOfMapOperator<X, Y, Z> of(IOf<X> ofX,
-            IOf<Y> ofY, IOf<Z> ofZ) {
+    public <X, Y, Z> ILevel0MapOfMapOperator<X, Y, Z> of(Of<X> ofX,
+            Of<Y> ofY, Of<Z> ofZ) {
         // TODO Auto-generated method stub
         return null;
     }

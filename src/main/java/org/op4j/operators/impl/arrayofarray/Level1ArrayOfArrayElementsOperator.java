@@ -23,7 +23,7 @@ import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Comparator;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
@@ -50,10 +50,10 @@ import org.op4j.target.Target.Structure;
 public class Level1ArrayOfArrayElementsOperator<T> extends Operator
         implements ILevel1ArrayOfArrayElementsOperator<T> {
     
-    private final IOf<T> arrayOf; 
+    private final Of<T> arrayOf; 
 
     
-    public Level1ArrayOfArrayElementsOperator(final IOf<T> of, final Target target) {
+    public Level1ArrayOfArrayElementsOperator(final Of<T> of, final Target target) {
         super(target);
         this.arrayOf = of;
     }
@@ -227,7 +227,7 @@ public class Level1ArrayOfArrayElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel1ArrayOfArrayElementsOperator<X> of(IOf<X> of) {
+    public <X> ILevel1ArrayOfArrayElementsOperator<X> of(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }

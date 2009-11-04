@@ -28,7 +28,7 @@ import ognl.Ognl;
 import ognl.OgnlException;
 
 import org.apache.commons.collections.map.LRUMap;
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.functions.conversion.ConversionException;
 
 /**
@@ -63,7 +63,7 @@ public class OgnlExpressionUtil {
     
     @SuppressWarnings("unchecked")
     public static <X> X evalOgnlExpression(
-            final IOf<X> resultOf, final String ognlExpression, final Object targetObject, final Object parametersObject) {
+            final Of<X> resultOf, final String ognlExpression, final Object targetObject, final Object parametersObject) {
         
         Object parsedExpression = parsedExpressionsByExpression.get(ognlExpression);
         

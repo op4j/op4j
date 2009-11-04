@@ -22,7 +22,7 @@ package org.op4j.operators.intf.mapofmap;
 import java.util.Comparator;
 import java.util.Map;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.ISelect;
 import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesValueOperator;
@@ -58,7 +58,7 @@ public interface ILevel2MapOfMapEntriesValueOperator<K1,K2,V>
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> sort();
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> sort(final Comparator<? super Map.Entry<K2,V>> comparator);
     
-    public <X,Y> ILevel2MapOfMapEntriesValueOperator<K1,X,Y> of(final IOf<X> ofX, final IOf<Y> ofY);
+    public <X,Y> ILevel2MapOfMapEntriesValueOperator<K1,X,Y> of(final Of<X> ofX, final Of<Y> ofY);
     
     public <X,Y> ILevel2MapOfMapEntriesValueOperator<K1,X,Y> of(final Class<X> classOfX, final Class<Y> classOfY);
     

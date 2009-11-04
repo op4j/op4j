@@ -25,7 +25,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.Of;
 import org.op4j.util.OgnlExpressionUtil;
 import org.op4j.util.VarArgsUtil;
@@ -43,7 +43,7 @@ public class Eval<X,T> implements IEval<X,T> {
     
     
     
-    private final IOf<X> resultOf;
+    private final Of<X> resultOf;
     private final String ognlExpression;
     private final List<Object> parameters;
     
@@ -53,7 +53,7 @@ public class Eval<X,T> implements IEval<X,T> {
         return new Eval<Object,Object>(Of.OBJECT, ognlExpression, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static <X> Eval<X,Object> exp(final IOf<X> of, final String ognlExpression, final Object... optionalParameters) {
+    public static <X> Eval<X,Object> exp(final Of<X> of, final String ognlExpression, final Object... optionalParameters) {
         return new Eval<X,Object>(of, ognlExpression, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
@@ -107,7 +107,7 @@ public class Eval<X,T> implements IEval<X,T> {
     }
     
     
-    private Eval(final IOf<X> resultOf, final String ognlExpression, final List<Object> parameters) {
+    private Eval(final Of<X> resultOf, final String ognlExpression, final List<Object> parameters) {
     	Validate.notNull(resultOf, "Result characterization cannot be null");
     	Validate.notNull(ognlExpression, "Expression cannot be null");
         this.resultOf = resultOf;
@@ -124,7 +124,7 @@ public class Eval<X,T> implements IEval<X,T> {
     }
     
     
-    public IOf<X> getResultOf() {
+    public Of<X> getResultOf() {
     	return this.resultOf;
     }
     

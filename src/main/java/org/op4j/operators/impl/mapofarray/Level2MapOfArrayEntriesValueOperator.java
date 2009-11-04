@@ -23,7 +23,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
@@ -48,10 +48,10 @@ import org.op4j.target.Target.Structure;
 public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
         implements ILevel2MapOfArrayEntriesValueOperator<K,V> {
     
-    private final IOf<V> arrayOf; 
+    private final Of<V> arrayOf; 
 
     
-    public Level2MapOfArrayEntriesValueOperator(final IOf<V> of, final Target target) {
+    public Level2MapOfArrayEntriesValueOperator(final Of<V> of, final Target target) {
         super(target);
         this.arrayOf = of;
     }
@@ -226,7 +226,7 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel2MapOfArrayEntriesValueOperator<K, X> of(IOf<X> of) {
+    public <X> ILevel2MapOfArrayEntriesValueOperator<K, X> of(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }

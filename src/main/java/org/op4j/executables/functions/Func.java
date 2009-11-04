@@ -40,7 +40,7 @@ package org.op4j.executables.functions;
 
 import java.util.List;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -71,7 +71,7 @@ public class Func<X,T> implements IFunc<X,T>  {
 
 
 
-    public IOf<X> getResultOf() {
+    public Of<X> getResultOf() {
         return this.function.getResultOf();
     }
 

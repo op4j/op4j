@@ -24,7 +24,7 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Collection;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
@@ -84,7 +84,7 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ArrayOperator<X> buildArray(IOf<X> arrayOf) {
+    public <X> ILevel0ArrayOperator<X> buildArray(Of<X> arrayOf) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -122,14 +122,14 @@ public class Level0GenericMultiOperator<T> extends Operator
 
 
     public <K, X> ILevel0MapOfArrayOperator<K, X> buildMapOfArray(
-            IEval<K, ? super T> keyEval, IOf<X> valueArrayOf) {
+            IEval<K, ? super T> keyEval, Of<X> valueArrayOf) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
     public <K, V> ILevel0MapOfArrayOperator<K, V> buildMapOfArray(
-            IMapBuild<K, V, ? super T> mapBuild, IOf<V> valueArrayOf) {
+            IMapBuild<K, V, ? super T> mapBuild, Of<V> valueArrayOf) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -149,7 +149,7 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0MapOfArrayOperator<X, X> buildMapOfArray(IOf<X> arrayOf) {
+    public <X> ILevel0MapOfArrayOperator<X, X> buildMapOfArray(Of<X> arrayOf) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -412,7 +412,7 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0GenericMultiOperator<X> of(IOf<X> of) {
+    public <X> ILevel0GenericMultiOperator<X> of(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }

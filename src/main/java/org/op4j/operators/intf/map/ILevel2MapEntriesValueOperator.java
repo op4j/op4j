@@ -24,7 +24,7 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Map;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.functions.IFunc;
@@ -102,7 +102,7 @@ public interface ILevel2MapEntriesValueOperator<K,V>
 
     public <X> ILevel2MapEntriesValueOperator<K,X> exec(final IFunc<X,? super V> exec);
     
-    public <X> ILevel2MapEntriesValueOperator<K,X> of(final IOf<X> of);
+    public <X> ILevel2MapEntriesValueOperator<K,X> of(final Of<X> of);
     
     public <X> ILevel2MapEntriesValueOperator<K,X> of(final Class<X> classOf);
     

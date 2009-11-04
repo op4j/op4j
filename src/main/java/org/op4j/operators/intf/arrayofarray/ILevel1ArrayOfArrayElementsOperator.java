@@ -22,7 +22,7 @@ package org.op4j.operators.intf.arrayofarray;
 import java.util.Collection;
 import java.util.Comparator;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
@@ -72,7 +72,7 @@ public interface ILevel1ArrayOfArrayElementsOperator<T>
     public ILevel1ArrayOfArrayElementsOperator<T> sort();
     public ILevel1ArrayOfArrayElementsOperator<T> sort(final Comparator<? super T> comparator);
     
-    public <X> ILevel1ArrayOfArrayElementsOperator<X> of(final IOf<X> of);
+    public <X> ILevel1ArrayOfArrayElementsOperator<X> of(final Of<X> of);
     public <X> ILevel1ArrayOfArrayElementsOperator<X> of(final Class<X> ofClass);
     
     public ILevel1ArrayOfArrayElementsOperator<?> raw();

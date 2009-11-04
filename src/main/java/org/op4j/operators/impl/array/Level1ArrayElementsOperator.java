@@ -23,7 +23,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.Of;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
@@ -50,10 +50,10 @@ import org.op4j.target.Target.Structure;
 public class Level1ArrayElementsOperator<T> extends Operator
         implements ILevel1ArrayElementsOperator<T> {
     
-    private final IOf<T> arrayOf; 
+    private final Of<T> arrayOf; 
 
     
-    public Level1ArrayElementsOperator(final IOf<T> of, final Target target) {
+    public Level1ArrayElementsOperator(final Of<T> of, final Target target) {
         super(target);
         this.arrayOf = of;
     }
@@ -259,7 +259,7 @@ public class Level1ArrayElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel1ArrayElementsOperator<X> of(IOf<X> of) {
+    public <X> ILevel1ArrayElementsOperator<X> of(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }

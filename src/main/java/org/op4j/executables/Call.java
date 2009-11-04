@@ -28,7 +28,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.Of;
 import org.op4j.exceptions.MethodInvocationException;
 import org.op4j.util.VarArgsUtil;
@@ -45,7 +45,7 @@ import org.op4j.util.VarArgsUtil;
 public class Call<X,T> implements ICall<X,T> {
     
     
-    private final IOf<X> resultOf;
+    private final Of<X> resultOf;
     private final String methodName;
     private final List<Object> parameters;
     private final List<Class<?>> parameterClasses;
@@ -56,7 +56,7 @@ public class Call<X,T> implements ICall<X,T> {
         return new Call<Object,Object>(Of.OBJECT, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static <X> Call<X,Object> method(final IOf<X> of, final String methodName, final Object... optionalParameters) {
+    public static <X> Call<X,Object> method(final Of<X> of, final String methodName, final Object... optionalParameters) {
         return new Call<X,Object>(of, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
@@ -110,7 +110,7 @@ public class Call<X,T> implements ICall<X,T> {
     }
     
     
-    private Call(final IOf<X> resultOf, final String methodName, final List<Object> parameters) {
+    private Call(final Of<X> resultOf, final String methodName, final List<Object> parameters) {
     	Validate.notNull(resultOf, "Result characterization cannot be null");
     	Validate.notNull(methodName, "Method name cannot be null");
         this.resultOf = resultOf;
@@ -129,7 +129,7 @@ public class Call<X,T> implements ICall<X,T> {
     }
     
     
-    public IOf<X> getResultOf() {
+    public Of<X> getResultOf() {
     	return this.resultOf;
     }
 

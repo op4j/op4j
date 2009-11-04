@@ -23,7 +23,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Set;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
@@ -56,10 +56,10 @@ import org.op4j.target.Target;
 public class Level0SetOfArrayOperator<T> extends Operator
         implements ILevel0SetOfArrayOperator<T>  {
     
-    private final IOf<T> arrayOf; 
+    private final Of<T> arrayOf; 
 
     
-    public Level0SetOfArrayOperator(final IOf<T> of, final Target target) {
+    public Level0SetOfArrayOperator(final Of<T> of, final Target target) {
         super(target);
         this.arrayOf = of;
     }
@@ -222,7 +222,7 @@ public class Level0SetOfArrayOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0SetOfArrayOperator<X> of(IOf<X> of) {
+    public <X> ILevel0SetOfArrayOperator<X> of(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -314,7 +314,7 @@ public class Level0SetOfArrayOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ArrayOfArrayOperator<X> toArrayOfArray(IOf<X> of) {
+    public <X> ILevel0ArrayOfArrayOperator<X> toArrayOfArray(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -353,7 +353,7 @@ public class Level0SetOfArrayOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ListOfArrayOperator<X> toListOfArray(IOf<X> of) {
+    public <X> ILevel0ListOfArrayOperator<X> toListOfArray(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }

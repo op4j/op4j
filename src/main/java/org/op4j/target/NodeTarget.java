@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.Of;
 import org.op4j.executables.IExecutable;
 import org.op4j.executables.ISelect;
@@ -263,7 +263,7 @@ public abstract class NodeTarget extends Target{
     
     
     @Override
-    public Target endIterate(final Structure structure, final IOf<?> of) {
+    public Target endIterate(final Structure structure, final Of<?> of) {
         throw new IllegalStateException("Cannot end iteration on a node");
     }
 

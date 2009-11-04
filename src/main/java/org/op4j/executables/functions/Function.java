@@ -45,7 +45,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.exceptions.OperationExecutionException;
 
 /**
@@ -57,7 +57,7 @@ import org.op4j.exceptions.OperationExecutionException;
  */
 public abstract class Function<X,T>  {
 	
-    private final IOf<X> resultOf;
+    private final Of<X> resultOf;
     private final String functionName;
     private final Map<FunctionArgumentScheme<? extends T>, FunctionImplementation<X,T>> implementationsByArgumentSchemes;
     
@@ -74,7 +74,7 @@ public abstract class Function<X,T>  {
     }
     
     
-    public IOf<X> getResultOf() {
+    public Of<X> getResultOf() {
         return this.resultOf;
     }
     

@@ -24,7 +24,7 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Map;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.Of;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
@@ -49,10 +49,10 @@ import org.op4j.target.Target.Structure;
 public class Level3MapOfArrayEntriesValueElementsOperator<K,V> extends Operator
         implements ILevel3MapOfArrayEntriesValueElementsOperator<K,V> {
     
-    private final IOf<V> arrayOf; 
+    private final Of<V> arrayOf; 
 
     
-    public Level3MapOfArrayEntriesValueElementsOperator(final IOf<V> of, final Target target) {
+    public Level3MapOfArrayEntriesValueElementsOperator(final Of<V> of, final Target target) {
         super(target);
         this.arrayOf = of;
     }
@@ -263,7 +263,7 @@ public class Level3MapOfArrayEntriesValueElementsOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K, X> of(IOf<X> of) {
+    public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K, X> of(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }

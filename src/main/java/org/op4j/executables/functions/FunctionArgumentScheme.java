@@ -24,7 +24,7 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -36,18 +36,18 @@ import org.op4j.util.VarArgsUtil;
  */
 public final class FunctionArgumentScheme<T> {
     
-    private final IOf<T> targetOf;
+    private final Of<T> targetOf;
     private final List<Class<?>> parameterClasses;
     
     
     
-    public static <T> FunctionArgumentScheme<T> fromClasses(final IOf<T> targetOf, final Class<?>... parameterClasses) {
+    public static <T> FunctionArgumentScheme<T> fromClasses(final Of<T> targetOf, final Class<?>... parameterClasses) {
         return new FunctionArgumentScheme<T>(targetOf, VarArgsUtil.asOptionalObjectList(parameterClasses));
     }
     
     
     
-    private FunctionArgumentScheme(final IOf<T> targetOf, final List<Class<?>> parameterClasses) {
+    private FunctionArgumentScheme(final Of<T> targetOf, final List<Class<?>> parameterClasses) {
         
         super();
         
@@ -60,7 +60,7 @@ public final class FunctionArgumentScheme<T> {
     }
     
     
-    public IOf<T> getTargetOf() {
+    public Of<T> getTargetOf() {
         return this.targetOf;
     }
 

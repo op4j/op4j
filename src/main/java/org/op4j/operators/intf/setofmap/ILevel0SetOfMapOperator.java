@@ -24,7 +24,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Set;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.ISelect;
 import org.op4j.operators.qualities.IExtractableCollectionOperator;
 import org.op4j.operators.qualities.IGenerizableOperator;
@@ -57,7 +57,7 @@ public interface ILevel0SetOfMapOperator<K,V>
     public ILevel0SetOfMapOperator<K,V> sort();
     public ILevel0SetOfMapOperator<K,V> sort(final Comparator<? super Map<K,V>> comparator);
     
-    public <X,Y> ILevel0SetOfMapOperator<X,Y> of(final IOf<X> ofX, final IOf<Y> ofY);
+    public <X,Y> ILevel0SetOfMapOperator<X,Y> of(final Of<X> ofX, final Of<Y> ofY);
     public <X,Y> ILevel0SetOfMapOperator<X,Y> of(final Class<X> ofXClass, final Class<Y> ofYClass);
     
     public ILevel0SetOfMapOperator<?,?> raw();

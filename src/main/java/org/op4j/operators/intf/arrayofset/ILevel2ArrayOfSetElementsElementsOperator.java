@@ -24,7 +24,7 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Set;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.functions.IFunc;
@@ -102,7 +102,7 @@ public interface ILevel2ArrayOfSetElementsElementsOperator<T>
 
     public <X> ILevel2ArrayOfSetElementsElementsOperator<X> exec(final IFunc<X,? super T> exec);
     
-    public <X> ILevel2ArrayOfSetElementsElementsOperator<X> of(final IOf<X> of);
+    public <X> ILevel2ArrayOfSetElementsElementsOperator<X> of(final Of<X> of);
     public <X> ILevel2ArrayOfSetElementsElementsOperator<X> of(final Class<X> ofClass);
     
     public ILevel2ArrayOfSetElementsElementsOperator<?> raw();

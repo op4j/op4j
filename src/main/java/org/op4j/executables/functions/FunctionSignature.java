@@ -20,7 +20,7 @@
 
 package org.op4j.executables.functions;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 
 /**
  * 
@@ -31,13 +31,13 @@ import org.op4j.IOf;
  */
 public class FunctionSignature<X,T> {
 	
-	private final IOf<X> resultOf;
-	private final IOf<T> targetOf;
+	private final Of<X> resultOf;
+	private final Of<T> targetOf;
 	private final String functionName;
 	private final String stringRepresentation;
 
 
-	public FunctionSignature(final IOf<X> resultOf, final IOf<T> targetOf, final String functionName) {
+	public FunctionSignature(final Of<X> resultOf, final Of<T> targetOf, final String functionName) {
 		super();
 		this.resultOf = resultOf;
 		this.targetOf = targetOf;
@@ -46,12 +46,12 @@ public class FunctionSignature<X,T> {
 	}
 
 
-	public IOf<X> getResultOf() {
+	public Of<X> getResultOf() {
 		return this.resultOf;
 	}
 
 
-	public IOf<T> getTargetOf() {
+	public Of<T> getTargetOf() {
 		return this.targetOf;
 	}
 

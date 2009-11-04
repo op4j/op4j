@@ -19,7 +19,7 @@
  */
 package org.op4j.executables;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 
 
 
@@ -32,6 +32,6 @@ import org.op4j.IOf;
  */
 public interface IEval<X,T> extends IExecutable<X,T> {
  
-    public IOf<X> getResultOf();
+    public Of<X> getResultOf();
     
 }

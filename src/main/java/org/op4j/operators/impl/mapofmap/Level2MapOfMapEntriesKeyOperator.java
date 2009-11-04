@@ -21,7 +21,7 @@ package org.op4j.operators.impl.mapofmap;
 
 import java.util.Map;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofmap.ILevel1MapOfMapEntriesOperator;
 import org.op4j.operators.intf.mapofmap.ILevel2MapOfMapEntriesKeyOperator;
@@ -50,7 +50,7 @@ public class Level2MapOfMapEntriesKeyOperator<K1,K2,V> extends Operator
     }
 
 
-    public <X> ILevel2MapOfMapEntriesKeyOperator<X, K2, V> of(IOf<X> of) {
+    public <X> ILevel2MapOfMapEntriesKeyOperator<X, K2, V> of(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }

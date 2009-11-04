@@ -158,18 +158,18 @@ public final class Op {
     }
 
     
-    public static <T> ILevel0GenericMultiOperator<T> onAll(final IOf<T> of, final T... targets) {
+    public static <T> ILevel0GenericMultiOperator<T> onAll(final Of<T> of, final T... targets) {
         return null;
     }
 
     
-    public static <T> ILevel0ArrayOperator<T> onArray(final IOf<T> of, final T[] target) {
+    public static <T> ILevel0ArrayOperator<T> onArray(final Of<T> of, final T[] target) {
         Validate.notNull(of, "Array component cannot be null");
         return new Level0ArrayOperator<T>(of, Target.forObject(target));
     }
 
     
-    public static <T> ILevel0ArrayOfArrayOperator<T> onArrayOfArray(final IOf<T> of, final T[][] target) {
+    public static <T> ILevel0ArrayOfArrayOperator<T> onArrayOfArray(final Of<T> of, final T[][] target) {
         Validate.notNull(of, "Array component cannot be null");
         return new Level0ArrayOfArrayOperator<T>(of, Target.forObject(target));
     }
@@ -195,7 +195,7 @@ public final class Op {
     }
 
     
-    public static <T> ILevel0ListOfArrayOperator<T> onListOfArray(final IOf<T> of, final List<? extends T[]> target) {
+    public static <T> ILevel0ListOfArrayOperator<T> onListOfArray(final Of<T> of, final List<? extends T[]> target) {
         Validate.notNull(of, "Array component cannot be null");
         return new Level0ListOfArrayOperator<T>(of, Target.forObject(target));
     }
@@ -221,7 +221,7 @@ public final class Op {
     }
 
     
-    public static <K,V> ILevel0MapOfArrayOperator<K,V> onMapOfArray(final IOf<V> of, final Map<K,V[]> target) {
+    public static <K,V> ILevel0MapOfArrayOperator<K,V> onMapOfArray(final Of<V> of, final Map<K,V[]> target) {
         Validate.notNull(of, "Array component cannot be null");
         return new Level0MapOfArrayOperator<K,V>(of, Target.forObject(target));
     }
@@ -247,7 +247,7 @@ public final class Op {
     }
 
     
-    public static <T> ILevel0SetOfArrayOperator<T> onSetOfArray(final IOf<T> of, final Set<? extends T[]> target) {
+    public static <T> ILevel0SetOfArrayOperator<T> onSetOfArray(final Of<T> of, final Set<? extends T[]> target) {
         Validate.notNull(of, "Array component cannot be null");
         return new Level0SetOfArrayOperator<T>(of, Target.forObject(target));
     }

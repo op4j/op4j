@@ -22,7 +22,7 @@ package org.op4j.operators.intf.mapofmap;
 import java.util.Comparator;
 import java.util.Map;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.ISelect;
 import org.op4j.operators.intf.listofmap.ILevel0ListOfMapOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
@@ -57,7 +57,7 @@ public interface ILevel0MapOfMapOperator<K1,K2,V>
     public ILevel0MapOfMapOperator<K1,K2,V> sort();
     public ILevel0MapOfMapOperator<K1,K2,V> sort(final Comparator<? super Map.Entry<K1,Map<K2,V>>> comparator);
     
-    public <X,Y,Z> ILevel0MapOfMapOperator<X,Y,Z> of(final IOf<X> ofX, final IOf<Y> ofY, final IOf<Z> ofZ);
+    public <X,Y,Z> ILevel0MapOfMapOperator<X,Y,Z> of(final Of<X> ofX, final Of<Y> ofY, final Of<Z> ofZ);
     public <X,Y,Z> ILevel0MapOfMapOperator<X,Y,Z> of(final Class<X> ofXClass, final Class<Y> ofYClass, final Class<Z> ofZClass);
     
     public ILevel0MapOfMapOperator<?,?,?> raw();

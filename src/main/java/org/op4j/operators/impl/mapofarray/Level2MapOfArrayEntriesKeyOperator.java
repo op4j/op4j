@@ -21,7 +21,7 @@ package org.op4j.operators.impl.mapofarray;
 
 import java.util.Map;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofarray.ILevel1MapOfArrayEntriesOperator;
 import org.op4j.operators.intf.mapofarray.ILevel2MapOfArrayEntriesKeyOperator;
@@ -39,10 +39,10 @@ import org.op4j.target.Target.Structure;
 public class Level2MapOfArrayEntriesKeyOperator<K,V> extends Operator
         implements ILevel2MapOfArrayEntriesKeyOperator<K,V> {
     
-    private final IOf<V> arrayOf; 
+    private final Of<V> arrayOf; 
 
     
-    public Level2MapOfArrayEntriesKeyOperator(final IOf<V> of, final Target target) {
+    public Level2MapOfArrayEntriesKeyOperator(final Of<V> of, final Target target) {
         super(target);
         this.arrayOf = of;
     }
@@ -53,7 +53,7 @@ public class Level2MapOfArrayEntriesKeyOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel2MapOfArrayEntriesKeyOperator<X, V> of(IOf<X> of) {
+    public <X> ILevel2MapOfArrayEntriesKeyOperator<X, V> of(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }

@@ -24,7 +24,7 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.List;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
@@ -259,7 +259,7 @@ public class Level2ArrayOfListElementsElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel2ArrayOfListElementsElementsOperator<X> of(IOf<X> of) {
+    public <X> ILevel2ArrayOfListElementsElementsOperator<X> of(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }

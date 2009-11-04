@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 
 
 
@@ -33,7 +33,7 @@ import org.op4j.IOf;
 public interface ITypeParameterizableXYOperator<T1,T2> {
 
     
-    public <X,Y> ITypeParameterizableXYOperator<X,Y> of(final IOf<X> ofX, final IOf<Y> ofY);
+    public <X,Y> ITypeParameterizableXYOperator<X,Y> of(final Of<X> ofX, final Of<Y> ofY);
     public <X,Y> ITypeParameterizableXYOperator<X,Y> of(final Class<X> ofXClass, final Class<Y> ofYClass);
     
     public ITypeParameterizableXYOperator<?,?> raw();

@@ -22,7 +22,7 @@ package org.op4j.operators.impl.listofmap;
 import java.util.List;
 import java.util.Map;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.listofmap.ILevel2ListOfMapElementsEntriesOperator;
 import org.op4j.operators.intf.listofmap.ILevel3ListOfMapElementsEntriesKeyOperator;
@@ -51,7 +51,7 @@ public class Level3ListOfMapElementsEntriesKeyOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel3ListOfMapElementsEntriesKeyOperator<X, V> of(IOf<X> of) {
+    public <X> ILevel3ListOfMapElementsEntriesKeyOperator<X, V> of(Of<X> of) {
         // TODO Auto-generated method stub
         return null;
     }

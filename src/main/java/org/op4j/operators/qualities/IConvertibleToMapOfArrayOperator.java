@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
 
 
@@ -32,7 +32,7 @@ import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
  */
 public interface IConvertibleToMapOfArrayOperator<K,V> {
     
-    public <X> ILevel0MapOfArrayOperator<K,X> toMapOfArray(final IOf<X> of);
+    public <X> ILevel0MapOfArrayOperator<K,X> toMapOfArray(final Of<X> of);
     public <X> ILevel0MapOfArrayOperator<K,X> toMapOfArray(final Class<X> ofClass);
 
     

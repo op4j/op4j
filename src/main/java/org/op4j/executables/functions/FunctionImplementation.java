@@ -42,7 +42,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 
 /**
  * 
@@ -69,7 +69,7 @@ public abstract class FunctionImplementation<X,T>  {
     public abstract String getFunctionName();
     
     
-    public abstract IOf<X> getResultOf();    
+    public abstract Of<X> getResultOf();    
     
     
     public final Set<FunctionArgumentScheme<? extends T>> getMatchedArgumentTypeSchemes() {

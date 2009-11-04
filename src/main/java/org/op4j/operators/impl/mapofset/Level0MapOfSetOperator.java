@@ -24,7 +24,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
@@ -149,7 +149,7 @@ public class Level0MapOfSetOperator<K,V> extends Operator
     }
 
 
-    public <X, Y> ILevel0MapOfSetOperator<X, Y> of(IOf<X> ofX, IOf<Y> ofY) {
+    public <X, Y> ILevel0MapOfSetOperator<X, Y> of(Of<X> ofX, Of<Y> ofY) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -246,7 +246,7 @@ public class Level0MapOfSetOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel0MapOfArrayOperator<K, X> toMapOfArray(IOf<X> arrayOf) {
+    public <X> ILevel0MapOfArrayOperator<K, X> toMapOfArray(Of<X> arrayOf) {
         // TODO Auto-generated method stub
         return null;
     }

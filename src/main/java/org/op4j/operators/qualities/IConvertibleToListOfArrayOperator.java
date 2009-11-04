@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.operators.intf.listofarray.ILevel0ListOfArrayOperator;
 
 
@@ -32,7 +32,7 @@ import org.op4j.operators.intf.listofarray.ILevel0ListOfArrayOperator;
  */
 public interface IConvertibleToListOfArrayOperator<T> {
     
-    public <X> ILevel0ListOfArrayOperator<X> toListOfArray(final IOf<X> of);
+    public <X> ILevel0ListOfArrayOperator<X> toListOfArray(final Of<X> of);
     public <X> ILevel0ListOfArrayOperator<X> toListOfArray(final Class<X> ofClass);
 
     

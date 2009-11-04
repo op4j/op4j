@@ -21,7 +21,7 @@ package org.op4j.operators.impl.mapofarray;
 
 import java.util.Map;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
 import org.op4j.operators.intf.mapofarray.ILevel1MapOfArrayEntriesOperator;
@@ -41,10 +41,10 @@ import org.op4j.target.Target.Structure;
 public class Level1MapOfArrayEntriesOperator<K,V> extends Operator
         implements ILevel1MapOfArrayEntriesOperator<K,V> {
     
-    private final IOf<V> arrayOf; 
+    private final Of<V> arrayOf; 
 
     
-    public Level1MapOfArrayEntriesOperator(final IOf<V> of, final Target target) {
+    public Level1MapOfArrayEntriesOperator(final Of<V> of, final Target target) {
         super(target);
         this.arrayOf = of;
     }
@@ -55,8 +55,8 @@ public class Level1MapOfArrayEntriesOperator<K,V> extends Operator
     }
 
 
-    public <X, Y> ILevel1MapOfArrayEntriesOperator<X, Y> of(IOf<X> ofX,
-            IOf<Y> ofY) {
+    public <X, Y> ILevel1MapOfArrayEntriesOperator<X, Y> of(Of<X> ofX,
+            Of<Y> ofY) {
         // TODO Auto-generated method stub
         return null;
     }

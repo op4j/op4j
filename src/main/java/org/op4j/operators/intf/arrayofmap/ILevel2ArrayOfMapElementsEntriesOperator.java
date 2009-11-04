@@ -21,7 +21,7 @@ package org.op4j.operators.intf.arrayofmap;
 
 import java.util.Map;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.operators.qualities.INavigableMapEntryOperator;
 import org.op4j.operators.qualities.INavigatingMapOperator;
 import org.op4j.operators.qualities.ITypeParameterizableXYOperator;
@@ -47,7 +47,7 @@ public interface ILevel2ArrayOfMapElementsEntriesOperator<K,V>
     
     public ILevel1ArrayOfMapElementsOperator<K,V> endFor();
     
-    public <X,Y> ILevel2ArrayOfMapElementsEntriesOperator<X,Y> of(final IOf<X> ofX, final IOf<Y> ofY);
+    public <X,Y> ILevel2ArrayOfMapElementsEntriesOperator<X,Y> of(final Of<X> ofX, final Of<Y> ofY);
     public <X,Y> ILevel2ArrayOfMapElementsEntriesOperator<X,Y> of(final Class<X> ofXClass, final Class<Y> ofYClass);
     
     public ILevel2ArrayOfMapElementsEntriesOperator<?,?> raw();

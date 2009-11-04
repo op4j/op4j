@@ -24,7 +24,7 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Collection;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
@@ -105,7 +105,7 @@ public interface ILevel0GenericMultiOperator<T>
     public ILevel0GenericUniqOperator<String> convToString(final Object... parameters);
     
     
-    public <X> ILevel0GenericMultiOperator<X> of(final IOf<X> of);
+    public <X> ILevel0GenericMultiOperator<X> of(final Of<X> of);
     public <X> ILevel0GenericMultiOperator<X> of(final Class<X> ofClass);
     
     public ILevel0GenericMultiOperator<?> raw();
@@ -133,7 +133,7 @@ public interface ILevel0GenericMultiOperator<T>
     public ILevel0SetOperator<T> buildSet();
     
     
-    public <X> ILevel0ArrayOperator<X> buildArray(final IOf<X> of);
+    public <X> ILevel0ArrayOperator<X> buildArray(final Of<X> of);
     public <X> ILevel0ArrayOperator<X> buildArray(final Class<X> classOf);
     
     
@@ -149,8 +149,8 @@ public interface ILevel0GenericMultiOperator<T>
     public <K,V> ILevel0MapOfSetOperator<K,V> buildMapOfSet(final IMapBuild<K,V,? super T> mapBuild);
     
     
-    public <K,X> ILevel0MapOfArrayOperator<K,X> buildMapOfArray(final IEval<K,? super T> keyEval, final IOf<X> valueArrayOf);
-    public <K,V> ILevel0MapOfArrayOperator<K,V> buildMapOfArray(final IMapBuild<K,V,? super T> mapBuild, final IOf<V> valueArrayOf);
+    public <K,X> ILevel0MapOfArrayOperator<K,X> buildMapOfArray(final IEval<K,? super T> keyEval, final Of<X> valueArrayOf);
+    public <K,V> ILevel0MapOfArrayOperator<K,V> buildMapOfArray(final IMapBuild<K,V,? super T> mapBuild, final Of<V> valueArrayOf);
     public <K,X> ILevel0MapOfArrayOperator<K,X> buildMapOfArray(final IEval<K,? super T> keyEval, final Class<X> valueArrayOfClass);
     public <K,V> ILevel0MapOfArrayOperator<K,V> buildMapOfArray(final IMapBuild<K,V,? super T> mapBuild, final Class<V> valueArrayOfClass);
 
@@ -161,7 +161,7 @@ public interface ILevel0GenericMultiOperator<T>
     
     public ILevel0MapOfSetOperator<T,T> buildMapOfSet();
     
-    public <X> ILevel0MapOfArrayOperator<X,X> buildMapOfArray(final IOf<X> of);
+    public <X> ILevel0MapOfArrayOperator<X,X> buildMapOfArray(final Of<X> of);
     public <X> ILevel0MapOfArrayOperator<X,X> buildMapOfArray(final Class<X> arrayOfClass);
        
     

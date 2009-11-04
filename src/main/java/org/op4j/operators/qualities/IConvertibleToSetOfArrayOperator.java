@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.IOf;
+import org.op4j.Of;
 import org.op4j.operators.intf.setofarray.ILevel0SetOfArrayOperator;
 
 
@@ -32,7 +32,7 @@ import org.op4j.operators.intf.setofarray.ILevel0SetOfArrayOperator;
  */
 public interface IConvertibleToSetOfArrayOperator<T> {
     
-    public <X> ILevel0SetOfArrayOperator<X> toSetOfArray(final IOf<X> of);
+    public <X> ILevel0SetOfArrayOperator<X> toSetOfArray(final Of<X> of);
     public <X> ILevel0SetOfArrayOperator<X> toSetOfArray(final Class<X> ofClass);
 
     
