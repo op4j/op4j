@@ -65,6 +65,10 @@ public abstract class FunctionImplementation<X,T>  {
     }
     
     
+	public final FunctionSignature<X,T> getFunctionSignature() {
+	    return this.signature;
+	}
+	
     
     public final String getFunctionName() {
         return this.signature.getFunctionName();

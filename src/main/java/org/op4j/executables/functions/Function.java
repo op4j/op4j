@@ -39,13 +39,14 @@
 package org.op4j.executables.functions;
 
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.Of;
+import org.javaruntype.type.Type;
+import org.op4j.exceptions.FunctionImplementationRegistrationException;
 import org.op4j.exceptions.OperationExecutionException;
 
 /**
@@ -55,10 +56,11 @@ import org.op4j.exceptions.OperationExecutionException;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public abstract class Function<X,T>  {
-	
-    private final Of<X> resultOf;
-    private final String functionName;
+public final class Function<X,T>  {
+
+    private final FunctionSignature<X,T> signature;
+    private final Set<FunctionImplementation<X,T>> implementations;
+    private final Set<Class<?>> implementationClasses;
     private final Map<FunctionArgumentScheme<? extends T>, FunctionImplementation<X,T>> implementationsByArgumentSchemes;
     
     
@@ -66,21 +68,26 @@ public abstract class Function<X,T>  {
         
         super();
         
-        this.resultOf = functionImplementation.getResultOf();
-        this.functionName = functionImplementation.getFunctionName();
-        this.implementationsByArgumentSchemes = 
-            new HashMap<FunctionArgumentScheme<? extends T>,FunctionImplementation<X,T>>();
+        this.signature = functionImplementation.getFunctionSignature();
+        this.implementations = new LinkedHashSet<FunctionImplementation<X,T>>();
+        this.implementationClasses = new LinkedHashSet<Class<?>>();
+        this.implementationsByArgumentSchemes = new LinkedHashMap<FunctionArgumentScheme<? extends T>, FunctionImplementation<X,T>>();
+        
         addFunctionImplementation(functionImplementation);
     }
     
     
-    public Of<X> getResultOf() {
-        return this.resultOf;
+    public final String getFunctionName() {
+        return this.signature.getFunctionName();
     }
     
     
-    public String getFunctionName() {
-        return this.functionName;
+    public final Type<X> getResultType() {
+        return this.signature.getResultType();
+    }
+    
+    public final Type<T> getTargetType() {
+        return this.signature.getTargetType();
     }
     
     
@@ -90,15 +97,46 @@ public abstract class Function<X,T>  {
     }
     
     public final Set<FunctionImplementation<X,T>> getFunctionImplementations() {
-        return Collections.unmodifiableSet(new HashSet<FunctionImplementation<X,T>>(this.implementationsByArgumentSchemes.values()));
+        return Collections.unmodifiableSet(this.implementations);
+    }
+    
+    public final Set<Class<?>> getFunctionImplementationClasses() {
+        return Collections.unmodifiableSet(this.implementationClasses);
     }
     
     
     public final void addFunctionImplementation(final FunctionImplementation<X,T> functionImplementation) {
-        Validate.isTrue(functionImplementation.getFunctionName().equals(this.functionName));
-        Validate.isTrue(functionImplementation.getResultOf().getRawClass().equals(this.resultOf.getRawClass()));        
+        
+        Validate.notNull(functionImplementation, "Function implementation cannot be null");
+        
+        if (!functionImplementation.getFunctionSignature().equals(this.signature)) {
+            throw new FunctionImplementationRegistrationException(
+                    functionImplementation, "Signature " +  this.signature + " was expected, but implementation returned " +
+                    functionImplementation.getFunctionSignature());
+        }
+        
+        if (this.implementationClasses.contains(functionImplementation.getClass())) {
+            throw new FunctionImplementationRegistrationException(
+                    functionImplementation, "Class " +  functionImplementation.getClass() + " was already registered for " +
+                    "function " + this.signature);
+        }
+        
+        this.implementations.add(functionImplementation);
+        this.implementationClasses.add(functionImplementation.getClass());
+        
         for (final FunctionArgumentScheme<? extends T> argumentScheme : functionImplementation.getMatchedArgumentTypeSchemes()) {
+            
+            if (this.implementationsByArgumentSchemes.containsKey(argumentScheme)) {
+                if (this.implementationClasses.contains(functionImplementation.getClass())) {
+                    throw new FunctionImplementationRegistrationException(
+                            functionImplementation, "Class " +  functionImplementation.getClass() + " tried to register " +
+                            "argument scheme " + argumentScheme + ", but that was already registered for function " + 
+                            this.signature);
+                }
+            }
+            
             this.implementationsByArgumentSchemes.put(argumentScheme, functionImplementation);
+            
         }
     }
     
@@ -111,8 +149,13 @@ public abstract class Function<X,T>  {
         
         FunctionImplementation<X,T> functionImplementation = null;
         for (FunctionArgumentScheme<? extends T> matchingTypeScheme : this.implementationsByArgumentSchemes.keySet()) {
-            if ((functionImplementation != null) && (matchingTypeScheme.match(arguments))) {
-                functionImplementation = this.implementationsByArgumentSchemes.get(matchingTypeScheme);
+            if (matchingTypeScheme.match(arguments)) {
+                if (functionImplementation != null) {
+                    functionImplementation = this.implementationsByArgumentSchemes.get(matchingTypeScheme);
+                } else {
+                    throw new IllegalArgumentException(
+                            "Invalid arguments. More than one function implementation matches arguments " + arguments);
+                }
             }
         }
         if (functionImplementation == null) {

@@ -66,6 +66,29 @@ public class FunctionSignature<X,T> {
 	public String toString() {
 		return this.stringRepresentation; 
 	}
+
+
+	@Override
+    public int hashCode() {
+        return this.stringRepresentation.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final FunctionSignature<?,?> other = (FunctionSignature<?,?>) obj;
+        return this.stringRepresentation.equals(other.stringRepresentation);
+    }
+	
+	
 	
 
 }
