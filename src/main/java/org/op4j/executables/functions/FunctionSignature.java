@@ -20,7 +20,7 @@
 
 package org.op4j.executables.functions;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 
 /**
  * 
@@ -31,32 +31,29 @@ import org.op4j.Of;
  */
 public class FunctionSignature<X,T> {
 	
-	private final Of<X> resultOf;
-	private final Of<T> targetOf;
+	private final Type<X> resultType;
+	private final Type<T> targetType;
 	private final String functionName;
 	private final String stringRepresentation;
 
 
-	public FunctionSignature(final Of<X> resultOf, final Of<T> targetOf, final String functionName) {
+	public FunctionSignature(final Type<X> resultType, final Type<T> targetType, final String functionName) {
 		super();
-		this.resultOf = resultOf;
-		this.targetOf = targetOf;
+		this.resultType = resultType;
+		this.targetType = targetType;
 		this.functionName = functionName;
-		this.stringRepresentation = functionName + "(" + targetOf + " -> "
+		this.stringRepresentation = functionName + "(" + this.targetType + ") -> " + this.resultType;
 	}
 
+    public Type<X> getResultType() {
+        return this.resultType;
+    }
 
-	public Of<X> getResultOf() {
-		return this.resultOf;
-	}
+    public Type<T> getTargetType() {
+        return this.targetType;
+    }
 
-
-	public Of<T> getTargetOf() {
-		return this.targetOf;
-	}
-
-
-	public String getFunctionName() {
+    public String getFunctionName() {
 		return this.functionName;
 	}
 
@@ -70,4 +67,5 @@ public class FunctionSignature<X,T> {
 		return this.stringRepresentation; 
 	}
 	
+
 }

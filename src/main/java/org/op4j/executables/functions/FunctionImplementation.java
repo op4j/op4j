@@ -39,10 +39,9 @@
 package org.op4j.executables.functions;
 
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Set;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 
 /**
  * 
@@ -53,30 +52,37 @@ import org.op4j.Of;
  */
 public abstract class FunctionImplementation<X,T>  {
 	
+    private final FunctionSignature<X,T> signature;
+    
 	private final Set<FunctionArgumentScheme<? extends T>> matchedArgumentSchemes;
     
     
-    protected FunctionImplementation() {
-        
+    
+	protected FunctionImplementation(final FunctionSignature<X,T> signature, final Set<FunctionArgumentScheme<? extends T>> matchedSchemes) {
         super();
-        
-        this.matchedArgumentSchemes = 
-            Collections.unmodifiableSet(
-                    new HashSet<FunctionArgumentScheme<? extends T>>(registerMatchedArgumentSchemes()));
-        
+        this.signature = signature;
+        this.matchedArgumentSchemes = Collections.unmodifiableSet(matchedSchemes);
     }
     
-    public abstract String getFunctionName();
     
     
-    public abstract Of<X> getResultOf();    
+    public final String getFunctionName() {
+        return this.signature.getFunctionName();
+    }
+    
+    
+    public final Type<X> getResultType() {
+        return this.signature.getResultType();
+    }
+    
+    public final Type<T> getTargetType() {
+        return this.signature.getTargetType();
+    }
     
     
     public final Set<FunctionArgumentScheme<? extends T>> getMatchedArgumentTypeSchemes() {
         return this.matchedArgumentSchemes;
     }
-    
-    protected abstract Set<FunctionArgumentScheme<? extends T>> registerMatchedArgumentSchemes();
     
         
     

@@ -303,7 +303,7 @@ public class Level3MapOfArrayEntriesValueElementsOperator<K,V> extends Operator
 
 
     public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K, X> exec(final IFunc<X, ? super V> exec) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, X>(exec.getResultOf(), getTarget().execute(exec));
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, X>(Of.type(exec.getResultType()), getTarget().execute(exec));
     }
 
 

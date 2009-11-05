@@ -299,7 +299,7 @@ public class Level1ArrayElementsOperator<T> extends Operator
 
 
     public <X> ILevel1ArrayElementsOperator<X> exec(final IFunc<X, ? super T> exec) {
-        return new Level1ArrayElementsOperator<X>(exec.getResultOf(), getTarget().execute(exec));
+        return new Level1ArrayElementsOperator<X>(Of.type(exec.getResultType()), getTarget().execute(exec));
     }
 
 

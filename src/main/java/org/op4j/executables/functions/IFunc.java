@@ -20,7 +20,7 @@
 
 package org.op4j.executables.functions;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 import org.op4j.executables.IExecutable;
 
 /**
@@ -32,7 +32,7 @@ import org.op4j.executables.IExecutable;
  */
 public interface IFunc<X,T> extends IExecutable<X,T>{
     
-    public Of<X> getResultOf();
+    public Type<X> getResultType();
     
 
 }

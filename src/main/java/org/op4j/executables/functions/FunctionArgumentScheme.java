@@ -24,7 +24,7 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -36,32 +36,32 @@ import org.op4j.util.VarArgsUtil;
  */
 public final class FunctionArgumentScheme<T> {
     
-    private final Of<T> targetOf;
+    private final Type<T> targetType;
     private final List<Class<?>> parameterClasses;
     
     
     
-    public static <T> FunctionArgumentScheme<T> fromClasses(final Of<T> targetOf, final Class<?>... parameterClasses) {
-        return new FunctionArgumentScheme<T>(targetOf, VarArgsUtil.asOptionalObjectList(parameterClasses));
+    public static <T> FunctionArgumentScheme<T> fromClasses(final Type<T> targetType, final Class<?>... parameterClasses) {
+        return new FunctionArgumentScheme<T>(targetType, VarArgsUtil.asOptionalObjectList(parameterClasses));
     }
     
     
     
-    private FunctionArgumentScheme(final Of<T> targetOf, final List<Class<?>> parameterClasses) {
+    private FunctionArgumentScheme(final Type<T> targetType, final List<Class<?>> parameterClasses) {
         
         super();
         
-        Validate.notNull(targetOf, "Target characterization cannot be null");
+        Validate.notNull(targetType, "Target type cannot be null");
         Validate.noNullElements(parameterClasses, "Parameter classes list cannot contain null elements");
 
-        this.targetOf = targetOf;
+        this.targetType = targetType;
         this.parameterClasses = new ArrayList<Class<?>>(parameterClasses);
         
     }
     
     
-    public Of<T> getTargetOf() {
-        return this.targetOf;
+    public Type<T> getTargetType() {
+        return this.targetType;
     }
 
     
@@ -81,7 +81,7 @@ public final class FunctionArgumentScheme<T> {
     	}
     	
     	final Class<?> argumentsTargetClass = functionArguments.getTargetClass();
-    	if (argumentsTargetClass != null && !this.targetOf.getRawClass().isAssignableFrom(argumentsTargetClass)) {
+    	if (argumentsTargetClass != null && !this.targetType.getRawClass().isAssignableFrom(argumentsTargetClass)) {
     	    return false;
     	}
     	
@@ -102,7 +102,7 @@ public final class FunctionArgumentScheme<T> {
     public String getStringRepresentation() {
     	final List<String> classNames = new ArrayList<String>();
     	for (final Class<?> parameterClass : this.parameterClasses) {
-    		classNames.add(parameterClass.getCanonicalName());
+    		classNames.add(parameterClass.getSimpleName());
     	}
         return StringUtils.join(classNames, ","); 
     }

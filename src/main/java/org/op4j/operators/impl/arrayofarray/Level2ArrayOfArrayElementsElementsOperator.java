@@ -303,7 +303,7 @@ public class Level2ArrayOfArrayElementsElementsOperator<T> extends Operator
 
 
     public <X> ILevel2ArrayOfArrayElementsElementsOperator<X> exec(final IFunc<X, ? super T> exec) {
-        return new Level2ArrayOfArrayElementsElementsOperator<X>(exec.getResultOf(), getTarget().execute(exec));
+        return new Level2ArrayOfArrayElementsElementsOperator<X>(Of.type(exec.getResultType()), getTarget().execute(exec));
     }
 
 
