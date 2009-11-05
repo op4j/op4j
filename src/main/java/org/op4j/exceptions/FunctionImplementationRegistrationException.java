@@ -20,7 +20,6 @@
 
 package org.op4j.exceptions;
 
-import org.op4j.executables.functions.FunctionImplementation;
 
 /**
  * 
@@ -33,8 +32,16 @@ public class FunctionImplementationRegistrationException extends RuntimeExceptio
 
     private static final long serialVersionUID = 6583541193708001393L;
 
-    public FunctionImplementationRegistrationException(final FunctionImplementation<?,?> implementation, final String message) {
-        super("Error registering function implementation " + implementation.getClass().getSimpleName() + ": " + message);
+    public FunctionImplementationRegistrationException(final Class<?> implementationClass, final String message) {
+        super("Error registering function implementation " + implementationClass.getSimpleName() + ": " + message);
+    }
+
+    public FunctionImplementationRegistrationException(final Class<?> implementationClass, final Throwable t) {
+        super("Error registering function implementation " + implementationClass.getSimpleName(), t);
+    }
+
+    public FunctionImplementationRegistrationException(final Class<?> implementationClass, final String message, final Throwable t) {
+        super("Error registering function implementation " + implementationClass.getSimpleName() + ": " + message, t);
     }
 
     

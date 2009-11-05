@@ -105,19 +105,19 @@ public final class Function<X,T>  {
     }
     
     
-    public final void addFunctionImplementation(final FunctionImplementation<X,T> functionImplementation) {
+    public final synchronized void addFunctionImplementation(final FunctionImplementation<X,T> functionImplementation) {
         
         Validate.notNull(functionImplementation, "Function implementation cannot be null");
         
         if (!functionImplementation.getFunctionSignature().equals(this.signature)) {
             throw new FunctionImplementationRegistrationException(
-                    functionImplementation, "Signature " +  this.signature + " was expected, but implementation returned " +
+                    functionImplementation.getClass(), "Signature " +  this.signature + " was expected, but implementation returned " +
                     functionImplementation.getFunctionSignature());
         }
         
         if (this.implementationClasses.contains(functionImplementation.getClass())) {
             throw new FunctionImplementationRegistrationException(
-                    functionImplementation, "Class " +  functionImplementation.getClass() + " was already registered for " +
+                    functionImplementation.getClass(), "Class " +  functionImplementation.getClass() + " was already registered for " +
                     "function " + this.signature);
         }
         
@@ -129,7 +129,7 @@ public final class Function<X,T>  {
             if (this.implementationsByArgumentSchemes.containsKey(argumentScheme)) {
                 if (this.implementationClasses.contains(functionImplementation.getClass())) {
                     throw new FunctionImplementationRegistrationException(
-                            functionImplementation, "Class " +  functionImplementation.getClass() + " tried to register " +
+                            functionImplementation.getClass(), "Class " +  functionImplementation.getClass() + " tried to register " +
                             "argument scheme " + argumentScheme + ", but that was already registered for function " + 
                             this.signature);
                 }

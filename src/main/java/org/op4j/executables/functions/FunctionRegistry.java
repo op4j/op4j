@@ -28,6 +28,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+import org.op4j.exceptions.FunctionImplementationRegistrationException;
 import org.op4j.exceptions.MultipleOperationImplementationsException;
 import org.op4j.exceptions.OperationImplementationNotFoundException;
 import org.op4j.exceptions.OperationImplementationRegistrationException;
@@ -43,14 +44,8 @@ import org.op4j.type.Type;
  */
 final class FunctionRegistry {
     
-    private final Set<Class<? extends OperationImpl>> registeredOperationImplClasses =
-        new HashSet<Class<? extends OperationImpl>>();
-    
-    private final Map<String,Set<OperationImpl>> operationImplsByOperationName =
-        new HashMap<String,Set<OperationImpl>>();
-
-    private final Map<String,OperationRegistryInfo> operationRegistryInfos =
-        new HashMap<String,OperationRegistryInfo>();
+    private final Map<String,Function<?,?>> functionsByName = new HashMap<String,Function<?,?>>();
+    private final Set<Class<?>> functionImplementationClasses = new HashSet<Class<?>>();
     
     /*
      * Read/Write lock used for synchronization based on the fact that read
@@ -75,66 +70,35 @@ final class FunctionRegistry {
     }
     
     
-    void addOperationImpl(final Class<? extends OperationImpl> operationImplClass) {
+    <X,T> void addFunctionImplementation(final Class<? extends FunctionImplementation<X,T>> functionImplementationClass) {
         
         this.writeLock.lock();
         
         try {
             
-            // If the operation implementation class has already been registered, ignore the request
-            if (this.registeredOperationImplClasses.contains(operationImplClass)) {
+            // If the implementation class has already been registered, ignore the request
+            if (this.functionImplementationClasses.contains(functionImplementationClass)) {
                 return;
             }
             
             // Create the implementation instance
-            final OperationImpl operationImpl = operationImplClass.newInstance();
+            final FunctionImplementation<X,T> functionImpl = functionImplementationClass.newInstance();
             
-            final String operationName = operationImpl.getOperationName();
-            Set<OperationImpl> operationImpls = 
-                this.operationImplsByOperationName.get(operationName);
-            OperationRegistryInfo operationRegistryInfo = 
-                this.operationRegistryInfos.get(operationName);
+            final String functionName = functionImpl.getFunctionName();
+            final Function<?,?> function = this.functionsByName.get(functionName);
             
-            if (operationImpls == null) {
-                
-                operationImpls = new HashSet<OperationImpl>();
-                this.operationImplsByOperationName.put(operationName, operationImpls);
-                
-                operationRegistryInfo = 
-                    new OperationRegistryInfo(operationName, 
-                        operationImpl.getResultType()); 
-                this.operationRegistryInfos.put(operationName, operationRegistryInfo);
-                
+            if (function == null) {
+                this.functionsByName.put(functionName, new Function<X,T>(functionImpl));
             }
-            
-            if (operationImpls.size() > 0) {
-                // We check the first position to see if result typeschemes equal
-                final OperationImpl checkedImpl = operationImpls.iterator().next();
-                if (!checkedImpl.getResultType().equals(
-                        operationImpl.getResultType())) {
-                    throw new OperationImplementationRegistrationException(
-                            "Operation implementation returns " + 
-                            operationImpl.getResultType() + ", " +
-                            "but operation \"" + operationName + "\" is registered " +
-                            "to return " + checkedImpl.getResultType());
-                }
-            }
-            
-            // Add matched argument type schemes to operation info registry
-            operationRegistryInfo.addMatchedArgumentTypeSchemes(
-                    operationImpl.getClass().getName(),
-                    operationImpl.getMatchedArgumentTypeSchemes());
-            
-            // Add the implementation to the registry of operation implementations
-            operationImpls.add(operationImpl);
     
-            // Add the class to the registry of operation implementation classes
-            this.registeredOperationImplClasses.add(operationImplClass);
+            // Add the class to the registry of implementation classes
+            this.functionImplementationClasses.add(functionImplementationClass);
             
         } catch (InstantiationException e) {
-            throw new OperationImplementationRegistrationException(e);
+            throw new FunctionImplementationRegistrationException(functionImplementationClass, 
+                    "Class must be publicly instantiable and have a no-arg constructor", e);
         } catch (IllegalAccessException e) {
-            throw new OperationImplementationRegistrationException(e);
+            throw new FunctionImplementationRegistrationException(functionImplementationClass, e);
         } finally {
             this.writeLock.unlock();
         }
