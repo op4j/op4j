@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.op4j.Of;
+import org.javaruntype.type.Types;
 import org.op4j.Of;
 import org.op4j.executables.IExecutable;
 import org.op4j.executables.ISelect;
@@ -147,7 +147,7 @@ public abstract class NodeTarget extends Target{
             final TargetId elementId = new TargetId(getId(), i);
             newElements.add(NodeTarget.forObject(elementId, element));
             final Boolean evalResult = 
-                OgnlExpressionUtil.evalOgnlExpression(Of.BOOLEAN, expression, element, expParams);
+                OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, expParams);
             if ((evalResult != null && evalResult.booleanValue()) == desiredResult) {
                 newSelectedElementIds.add(elementId);
             }
@@ -222,7 +222,7 @@ public abstract class NodeTarget extends Target{
                 newSelectedElementIds.add(elementId);
             } else {
                 final Boolean evalResult = 
-                    OgnlExpressionUtil.evalOgnlExpression(Of.BOOLEAN, expression, element, expParams);
+                    OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, expParams);
                 if ((evalResult != null && evalResult.booleanValue()) == desiredResult) {
                     newSelectedElementIds.add(elementId);
                 }
@@ -248,7 +248,7 @@ public abstract class NodeTarget extends Target{
             newElements.add(NodeTarget.forObject(elementId, element));
             if (element != null) {
                 final Boolean evalResult = 
-                    OgnlExpressionUtil.evalOgnlExpression(Of.BOOLEAN, expression, element, expParams);
+                    OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, expParams);
                 if ((evalResult != null && evalResult.booleanValue()) == desiredResult) {
                     newSelectedElementIds.add(elementId);
                 }

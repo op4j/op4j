@@ -240,14 +240,14 @@ public abstract class NonDecimalNumberConverter extends NumberConverter {
 
         if (ATS_FLOAT_ROUNDINGMODE.matches(arguments)) {
             BigDecimal bigDecimal = 
-                new BigDecimal(arguments.getFloatTarget(0).doubleValue());
+                new BigDecimal(arguments.getTargetAsFloat(0).doubleValue());
             bigDecimal = bigDecimal.setScale(0, (RoundingMode) arguments.getParameter(0));
             return createUniqResult(fromNumber(bigDecimal));
         }
 
         if (ATS_DOUBLE_ROUNDINGMODE.matches(arguments)) {
             BigDecimal bigDecimal = 
-                new BigDecimal(arguments.getDoubleTarget(0).doubleValue());
+                new BigDecimal(arguments.getTargetAsDouble(0).doubleValue());
             bigDecimal = bigDecimal.setScale(0, (RoundingMode) arguments.getParameter(0));
             return createUniqResult(fromNumber(bigDecimal));
         }

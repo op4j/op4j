@@ -158,7 +158,7 @@ public abstract class NumberConverter extends Converter {
         }
         
         if (ATS_NUMBER_EMPTY.matches(arguments)) {
-            return createUniqResult(fromNumber(arguments.getNumberTarget(0)));
+            return createUniqResult(fromNumber(arguments.getTargetAsNumber(0)));
         }
         
         if (ATS_STRING_EMPTY.matches(arguments)) {
@@ -226,7 +226,7 @@ public abstract class NumberConverter extends Converter {
 
         if (ATS_BOOLEAN_EMPTY.matches(arguments)) {
             return createUniqResult(
-                    fromNumber(BooleanUtils.toIntegerObject(arguments.getBooleanTarget(0))));
+                    fromNumber(BooleanUtils.toIntegerObject(arguments.getTargetAsBoolean(0))));
         }
 
         

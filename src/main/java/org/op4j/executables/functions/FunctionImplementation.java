@@ -58,12 +58,19 @@ public abstract class FunctionImplementation<X,T>  {
     
     
     
-	protected FunctionImplementation(final FunctionSignature<X,T> signature, final Set<FunctionArgumentScheme<? extends T>> matchedSchemes) {
+	protected FunctionImplementation() {
         super();
-        this.signature = signature;
-        this.matchedArgumentSchemes = Collections.unmodifiableSet(matchedSchemes);
+        this.signature = new FunctionSignature<X, T>(registerResultType(), registerTargetType(), registerFunctionName());
+        this.matchedArgumentSchemes = Collections.unmodifiableSet(registerMatchedSchemes());
     }
     
+	
+	protected abstract String registerFunctionName();
+	protected abstract Type<X> registerResultType();
+	protected abstract Type<T> registerTargetType();
+	protected abstract Set<FunctionArgumentScheme<? extends T>> registerMatchedSchemes();
+	
+	
     
 	public final FunctionSignature<X,T> getFunctionSignature() {
 	    return this.signature;

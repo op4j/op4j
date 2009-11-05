@@ -20,6 +20,7 @@
 package org.op4j;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -28,6 +29,9 @@ import java.util.Set;
 
 import org.apache.commons.lang.Validate;
 import org.op4j.executables.Eval;
+import org.op4j.executables.functions.Func;
+import org.op4j.executables.functions.FunctionArguments;
+import org.op4j.executables.functions.Functions;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.impl.arrayoflist.Level0ArrayOfListOperator;
@@ -84,7 +88,7 @@ import org.op4j.target.Target;
 public final class Op {
 
     private static final String OP4J_INITIALIZATION_CLASS_NAME =
-        "org.op4j.operations.OperationsInitialization";
+        "org.op4j.executables.functions.FunctionsInitialization";
 
     private static final String OP4J_CONTRIB_INITIALIZATION_CLASS_NAME =
         "org.op4j.contrib.operations.OperationsInitialization";
@@ -315,6 +319,7 @@ public final class Op {
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().callInteger("length").get());
         
         
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().exec(Func.dummy()).get());
     }
     
 }

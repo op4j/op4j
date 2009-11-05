@@ -105,13 +105,15 @@ public final class Function<X,T>  {
     }
     
     
-    public final synchronized void addFunctionImplementation(final FunctionImplementation<X,T> functionImplementation) {
+    @SuppressWarnings("unchecked")
+    public final synchronized void addFunctionImplementation(final FunctionImplementation<?,?> functionImplementation) {
         
         Validate.notNull(functionImplementation, "Function implementation cannot be null");
         
         if (!functionImplementation.getFunctionSignature().equals(this.signature)) {
             throw new FunctionImplementationRegistrationException(
-                    functionImplementation.getClass(), "Signature " +  this.signature + " was expected, but implementation returned " +
+                    functionImplementation.getClass(), "Not compatible implementation: " +
+            		"Signature " +  this.signature + " was expected, but implementation returned " +
                     functionImplementation.getFunctionSignature());
         }
         
@@ -121,21 +123,24 @@ public final class Function<X,T>  {
                     "function " + this.signature);
         }
         
-        this.implementations.add(functionImplementation);
-        this.implementationClasses.add(functionImplementation.getClass());
+        final FunctionImplementation<X,T> newFunctionImplementation =
+            (FunctionImplementation<X,T>) functionImplementation;
         
-        for (final FunctionArgumentScheme<? extends T> argumentScheme : functionImplementation.getMatchedArgumentTypeSchemes()) {
+        this.implementations.add(newFunctionImplementation);
+        this.implementationClasses.add(newFunctionImplementation.getClass());
+        
+        for (final FunctionArgumentScheme<? extends T> argumentScheme : newFunctionImplementation.getMatchedArgumentTypeSchemes()) {
             
             if (this.implementationsByArgumentSchemes.containsKey(argumentScheme)) {
-                if (this.implementationClasses.contains(functionImplementation.getClass())) {
+                if (this.implementationClasses.contains(newFunctionImplementation.getClass())) {
                     throw new FunctionImplementationRegistrationException(
-                            functionImplementation.getClass(), "Class " +  functionImplementation.getClass() + " tried to register " +
+                            newFunctionImplementation.getClass(), "Class " +  newFunctionImplementation.getClass() + " tried to register " +
                             "argument scheme " + argumentScheme + ", but that was already registered for function " + 
                             this.signature);
                 }
             }
             
-            this.implementationsByArgumentSchemes.put(argumentScheme, functionImplementation);
+            this.implementationsByArgumentSchemes.put(argumentScheme, newFunctionImplementation);
             
         }
     }
@@ -150,7 +155,7 @@ public final class Function<X,T>  {
         FunctionImplementation<X,T> functionImplementation = null;
         for (FunctionArgumentScheme<? extends T> matchingTypeScheme : this.implementationsByArgumentSchemes.keySet()) {
             if (matchingTypeScheme.match(arguments)) {
-                if (functionImplementation != null) {
+                if (functionImplementation == null) {
                     functionImplementation = this.implementationsByArgumentSchemes.get(matchingTypeScheme);
                 } else {
                     throw new IllegalArgumentException(

@@ -104,7 +104,7 @@ public final class FunctionArguments {
     }
     
 
-    public Short getShortTarget(final int index) {
+    public Short getTargetAsShort(final int index) {
     	if (this.target == null || this.target instanceof Short) {
     		return (Short) this.target;
     	}
@@ -112,7 +112,7 @@ public final class FunctionArguments {
     }
 
     
-    public Integer getIntegerTarget(final int index) {
+    public Integer getTargetAsInteger(final int index) {
     	if (this.target == null || this.target instanceof Integer) {
     		return (Integer) this.target;
     	}
@@ -120,7 +120,7 @@ public final class FunctionArguments {
     }
     
 
-    public Long getLongTarget(final int index) {
+    public Long getTargetAsLong(final int index) {
     	if (this.target == null || this.target instanceof Long) {
     		return (Long) this.target;
     	}
@@ -128,7 +128,7 @@ public final class FunctionArguments {
     }
     
 
-    public Float getFloatTarget(final int index) {
+    public Float getTargetAsFloat(final int index) {
     	if (this.target == null || this.target instanceof Float) {
     		return (Float) this.target;
     	}
@@ -136,7 +136,7 @@ public final class FunctionArguments {
     }
     
 
-    public Double getDoubleTarget(final int index) {
+    public Double getTargetAsDouble(final int index) {
     	if (this.target == null || this.target instanceof Double) {
     		return (Double) this.target;
     	}
@@ -144,7 +144,7 @@ public final class FunctionArguments {
     }
     
 
-    public Number getNumberTarget(final int index) {
+    public Number getTargetAsNumber(final int index) {
     	if (this.target == null || this.target instanceof Number) {
     		return (Number) this.target;
     	}
@@ -152,7 +152,7 @@ public final class FunctionArguments {
     }
     
 
-    public Boolean getBooleanTarget(final int index) {
+    public Boolean getTargetAsBoolean(final int index) {
     	if (this.target == null || this.target instanceof Boolean) {
     		return (Boolean) this.target;
     	}
@@ -160,7 +160,7 @@ public final class FunctionArguments {
     }
     
 
-    public Locale getLocaleTarget(final int index) {
+    public Locale getTargetAsLocale(final int index) {
     	if (this.target == null || this.target instanceof Locale) {
     		return (Locale) this.target;
     	}
@@ -168,7 +168,7 @@ public final class FunctionArguments {
     }
     
 
-    public Character getCharacterTarget(final int index) {
+    public Character getTargetAsCharacter(final int index) {
     	if (this.target == null || this.target instanceof Character) {
     		return (Character) this.target;
     	}
@@ -176,7 +176,7 @@ public final class FunctionArguments {
     }
     
 
-    public Class<?> getClassTarget(final int index) {
+    public Class<?> getTargetAsClass(final int index) {
     	if (this.target == null || this.target instanceof Class<?>) {
     		return (Class<?>) this.target;
     	}

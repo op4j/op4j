@@ -41,7 +41,7 @@ public final class FunctionArgumentScheme<T> {
     
     
     
-    public static <T> FunctionArgumentScheme<T> fromClasses(final Type<T> targetType, final Class<?>... parameterClasses) {
+    public static <T> FunctionArgumentScheme<T> from(final Type<T> targetType, final Class<?>... parameterClasses) {
         return new FunctionArgumentScheme<T>(targetType, VarArgsUtil.asOptionalObjectList(parameterClasses));
     }
     

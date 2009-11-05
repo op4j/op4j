@@ -40,7 +40,7 @@ package org.op4j.executables.functions;
 
 import java.util.List;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -55,11 +55,18 @@ public class Func<X,T> implements IFunc<X,T>  {
     private final Function<X,T> function;
     private final List<Object> parameters;
     
-    
-    public static Func(final String functionName, final Object...parameters) {
-        
-        return new Func(REGISTRY.getFunction(functionName), VarArgsUtil.asOptionalObjectList(parameters); 
+
+    @SuppressWarnings("unchecked")
+    public static Func<String,Object> dummy() {
+        final FunctionRegistry functionRegistry = FunctionRegistry.getInstance();
+        return new Func<String,Object>((Function<String, Object>) functionRegistry.getFunction("dummy"), VarArgsUtil.asOptionalObjectList()); 
     }
+    
+//    public static Func<?,?> name(final String functionName, final Object...parameters) {
+//        
+//        
+//        return new Func(REGISTRY.getFunction(functionName), VarArgsUtil.asOptionalObjectList(parameters); 
+//    }
     
     
     
@@ -71,8 +78,8 @@ public class Func<X,T> implements IFunc<X,T>  {
 
 
 
-    public Of<X> getResultOf() {
-        return this.function.getResultOf();
+    public Type<X> getResultType() {
+        return this.function.getResultType();
     }
 
 

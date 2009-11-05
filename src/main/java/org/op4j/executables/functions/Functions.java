@@ -17,9 +17,8 @@
  * 
  * =============================================================================
  */
-package org.op4j.exceptions;
 
-import org.apache.commons.lang.exception.NestableRuntimeException;
+package org.op4j.executables.functions;
 
 /**
  * 
@@ -28,12 +27,24 @@ import org.apache.commons.lang.exception.NestableRuntimeException;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class OperationNotFoundException extends NestableRuntimeException {
+public class Functions {
 
-    private static final long serialVersionUID = 5638730894986246521L;
-
-    public OperationNotFoundException(String functionName) {
-        super("No operation with name \"" + functionName + "\" has been registered");
+    
+    
+    public static void registerFunctionImplementation(final Class<? extends FunctionImplementation<?,?>> functionImplementationClass) {
+        final FunctionRegistry functionRegistry = FunctionRegistry.getInstance();
+        functionRegistry.addFunctionImplementation(functionImplementationClass);
+    }
+    
+    
+    public static Function<?,?> getFunctionByName(final String functionName) {
+        final FunctionRegistry functionRegistry = FunctionRegistry.getInstance();
+        return functionRegistry.getFunction(functionName);
+    }
+    
+    
+    private Functions() {
+        super();
     }
     
 }

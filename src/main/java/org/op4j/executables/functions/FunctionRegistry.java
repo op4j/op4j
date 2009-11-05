@@ -29,11 +29,7 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import org.op4j.exceptions.FunctionImplementationRegistrationException;
-import org.op4j.exceptions.MultipleOperationImplementationsException;
-import org.op4j.exceptions.OperationImplementationNotFoundException;
-import org.op4j.exceptions.OperationImplementationRegistrationException;
-import org.op4j.exceptions.OperationNotFoundException;
-import org.op4j.type.Type;
+import org.op4j.exceptions.FunctionNotFoundException;
 
 /**
  * 
@@ -70,7 +66,8 @@ final class FunctionRegistry {
     }
     
     
-    <X,T> void addFunctionImplementation(final Class<? extends FunctionImplementation<X,T>> functionImplementationClass) {
+    @SuppressWarnings("unchecked")
+    void addFunctionImplementation(final Class<? extends FunctionImplementation<?,?>> functionImplementationClass) {
         
         this.writeLock.lock();
         
@@ -82,14 +79,19 @@ final class FunctionRegistry {
             }
             
             // Create the implementation instance
-            final FunctionImplementation<X,T> functionImpl = functionImplementationClass.newInstance();
+            final FunctionImplementation<?,?> functionImpl = functionImplementationClass.newInstance();
             
             final String functionName = functionImpl.getFunctionName();
             final Function<?,?> function = this.functionsByName.get(functionName);
             
             if (function == null) {
-                this.functionsByName.put(functionName, new Function<X,T>(functionImpl));
+                this.functionsByName.put(
+                        functionName, 
+                        new Function<Object,Object>((FunctionImplementation<Object, Object>) functionImpl));
+            } else {
+                function.addFunctionImplementation(functionImpl);
             }
+            
     
             // Add the class to the registry of implementation classes
             this.functionImplementationClasses.add(functionImplementationClass);
@@ -106,48 +108,20 @@ final class FunctionRegistry {
     }
 
     
-    OperationImpl getOperationImpl(
-            final String operationName, final Arguments arguments) {
+    Function<?,?> getFunction(final String functionName) {
 
 
         this.readLock.lock();
         
         try {
           
-            
-            final Set<OperationImpl> operationImpls = 
-                    this.operationImplsByOperationName.get(operationName);
-            if ((operationImpls == null) || (operationImpls.size() == 0)) {
-                throw new OperationNotFoundException(operationName);
+            final Function<?,?> function = 
+                this.functionsByName.get(functionName);
+            if (function == null) {
+                throw new FunctionNotFoundException(functionName);
             }
             
-            OperationImpl foundImpl = null;
-            for (OperationImpl operationImpl : operationImpls) {
-                final Set<ArgumentsTypeScheme> operationImplTypeSchemes = 
-                    operationImpl.getMatchedArgumentTypeSchemes();
-                for (ArgumentsTypeScheme operationImplTypeScheme : operationImplTypeSchemes) {
-                    if (operationImplTypeScheme.matches(arguments)) {
-                        if (foundImpl == null) {
-                            foundImpl = operationImpl;
-                        } else if (foundImpl != operationImpl) {
-                            final OperationRegistryInfo operationRegistryInfo = 
-                                this.operationRegistryInfos.get(operationName);
-                            final OperationInfo operationInfo = new OperationInfo(operationRegistryInfo);
-                            throw new MultipleOperationImplementationsException(operationInfo, arguments);
-                        }
-                    }
-                }
-            }
-
-            if (foundImpl == null) {
-                final OperationRegistryInfo operationRegistryInfo = 
-                    this.operationRegistryInfos.get(operationName);
-                final OperationInfo operationInfo = new OperationInfo(operationRegistryInfo);
-                throw new OperationImplementationNotFoundException(operationInfo, arguments);
-            }
-            
-            return foundImpl;
-
+            return function;
             
         } finally {
             this.readLock.unlock();
@@ -156,52 +130,10 @@ final class FunctionRegistry {
     }
     
     
-    
-    Type getResultType(final String operationName) {
-        
-        this.readLock.lock();
-        
-        try {
-            
-            final OperationRegistryInfo operationRegistryInfo = 
-                this.operationRegistryInfos.get(operationName);
-
-            if (operationRegistryInfo == null) {
-                throw new OperationNotFoundException(operationName);
-            }
-            
-            return operationRegistryInfo.getResultType();
-            
-        } finally {
-            this.readLock.unlock();
-        }
-        
-    }
-
-    
-    OperationInfo getOperationInfo(final String operationName) {
+    Set<Function<?,?>> getAllFunctions() {
         this.readLock.lock();
         try {
-            final OperationRegistryInfo operationRegistryInfo = 
-                this.operationRegistryInfos.get(operationName);
-            if (operationRegistryInfo == null) {
-                return null;
-            }
-            return new OperationInfo(operationRegistryInfo);
-        } finally {
-            this.readLock.unlock();
-        }
-    }
-    
-    
-    Set<OperationInfo> getAllOperationsInfo() {
-        this.readLock.lock();
-        try {
-            final Set<OperationInfo> operationsInfo = new HashSet<OperationInfo>();
-            for (OperationRegistryInfo operationRegistryInfo : this.operationRegistryInfos.values()) {
-                operationsInfo.add(new OperationInfo(operationRegistryInfo));
-            }
-            return Collections.unmodifiableSet(operationsInfo);
+            return Collections.unmodifiableSet(new HashSet<Function<?,?>>(this.functionsByName.values()));
         } finally {
             this.readLock.unlock();
         }

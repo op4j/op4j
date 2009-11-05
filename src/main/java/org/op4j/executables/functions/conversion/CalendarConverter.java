@@ -231,14 +231,14 @@ public final class CalendarConverter extends Converter {
         }
 		
 		if (ATS_LONGTIMESTAMP_EMPTY.matches(arguments)) {
-            return createUniqResult(fromLong(arguments.getLongTarget(0).longValue()));
+            return createUniqResult(fromLong(arguments.getTargetAsLong(0).longValue()));
         }
 		
 		if (ATS_INTEGERYEAR_INTEGERMONTH_INTEGERDAY_EMPTY.matches(arguments)) {
 			return createUniqResult(fromInts(
-					arguments.getIntegerTarget(0),
-					arguments.getIntegerTarget(1),
-					arguments.getIntegerTarget(2),
+					arguments.getTargetAsInteger(0),
+					arguments.getTargetAsInteger(1),
+					arguments.getTargetAsInteger(2),
 					Integer.valueOf(0), 
 					Integer.valueOf(0),
 					Integer.valueOf(0),
@@ -257,11 +257,11 @@ public final class CalendarConverter extends Converter {
 		
 		if (ATS_INTEGERYEAR_INTEGERMONTH_INTEGERDAY_INTEGERHOUR_INTEGERMINUTE_EMPTY.matches(arguments)) {
 			return createUniqResult(fromInts(
-					arguments.getIntegerTarget(0),
-					arguments.getIntegerTarget(1),
-					arguments.getIntegerTarget(2),
-					arguments.getIntegerTarget(3),
-					arguments.getIntegerTarget(4),
+					arguments.getTargetAsInteger(0),
+					arguments.getTargetAsInteger(1),
+					arguments.getTargetAsInteger(2),
+					arguments.getTargetAsInteger(3),
+					arguments.getTargetAsInteger(4),
 					Integer.valueOf(0),
 					Integer.valueOf(0)));
         }
@@ -278,12 +278,12 @@ public final class CalendarConverter extends Converter {
 		
 		if (ATS_INTEGERYEAR_INTEGERMONTH_INTEGERDAY_INTEGERHOUR_INTEGERMINUTE_INTEGERSECOND_EMPTY.matches(arguments)) {
 			return createUniqResult(fromInts(
-					arguments.getIntegerTarget(0),
-					arguments.getIntegerTarget(1),
-					arguments.getIntegerTarget(2),
-					arguments.getIntegerTarget(3),
-					arguments.getIntegerTarget(4),
-					arguments.getIntegerTarget(5),
+					arguments.getTargetAsInteger(0),
+					arguments.getTargetAsInteger(1),
+					arguments.getTargetAsInteger(2),
+					arguments.getTargetAsInteger(3),
+					arguments.getTargetAsInteger(4),
+					arguments.getTargetAsInteger(5),
 					Integer.valueOf(0)));
         }
 		if (ATS_STRINGYEAR_STRINGMONTH_STRINGDAY_STRINGHOUR_STRINGMINUTE_STRINGSECOND_EMPTY.matches(arguments)) {
@@ -299,13 +299,13 @@ public final class CalendarConverter extends Converter {
 		
 		if (ATS_INTEGERYEAR_INTEGERMONTH_INTEGERDAY_INTEGERHOUR_INTEGERMINUTE_INTEGERSECOND_INTEGERMILLISECOND_EMPTY.matches(arguments)) {
 			return createUniqResult(fromInts(
-					arguments.getIntegerTarget(0),
-					arguments.getIntegerTarget(1),
-					arguments.getIntegerTarget(2),
-					arguments.getIntegerTarget(3),
-					arguments.getIntegerTarget(4),
-					arguments.getIntegerTarget(5),
-					arguments.getIntegerTarget(6)));
+					arguments.getTargetAsInteger(0),
+					arguments.getTargetAsInteger(1),
+					arguments.getTargetAsInteger(2),
+					arguments.getTargetAsInteger(3),
+					arguments.getTargetAsInteger(4),
+					arguments.getTargetAsInteger(5),
+					arguments.getTargetAsInteger(6)));
         }
 		if (ATS_STRINGYEAR_STRINGMONTH_STRINGDAY_STRINGHOUR_STRINGMINUTE_STRINGSECOND_STRINGMILLISECOND_EMPTY.matches(arguments)) {
 			return createUniqResult(fromInts(

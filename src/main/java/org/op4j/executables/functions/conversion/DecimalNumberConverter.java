@@ -142,7 +142,7 @@ public abstract class DecimalNumberConverter extends NumberConverter {
         if (ATS_NUMBER_SCALE_ROUNDINGMODE.matches(arguments)) {
             return createUniqResult(
                     fromNumber(
-                            arguments.getNumberTarget(0), 
+                            arguments.getTargetAsNumber(0), 
                             arguments.getIntegerParameter(0).intValue(),
                             (RoundingMode) arguments.getParameter(1)));
         }

@@ -93,11 +93,11 @@ public final class BooleanConverter extends Converter {
         }
 
         if (ATS_BOOLEAN_EMPTY.matches(arguments)) {
-            return createUniqResult(Boolean.valueOf(arguments.getBooleanTarget(0).booleanValue()));
+            return createUniqResult(Boolean.valueOf(arguments.getTargetAsBoolean(0).booleanValue()));
         }
 
         if (ATS_NUMBER_EMPTY.matches(arguments)) {
-            final Number arg = arguments.getNumberTarget(0);
+            final Number arg = arguments.getTargetAsNumber(0);
             boolean result = false;
             if (arg instanceof BigDecimal) {
                 result = (((BigDecimal)arg).unscaledValue().compareTo(BigInteger.ZERO) != 0);
