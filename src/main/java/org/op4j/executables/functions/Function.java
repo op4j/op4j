@@ -154,7 +154,7 @@ public final class Function<X,T>  {
         
         FunctionImplementation<X,T> functionImplementation = null;
         for (FunctionArgumentScheme<? extends T> matchingTypeScheme : this.implementationsByArgumentSchemes.keySet()) {
-            if (matchingTypeScheme.match(arguments)) {
+            if (matchingTypeScheme.matches(arguments)) {
                 if (functionImplementation == null) {
                     functionImplementation = this.implementationsByArgumentSchemes.get(matchingTypeScheme);
                 } else {

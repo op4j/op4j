@@ -19,13 +19,16 @@
  */
 package org.op4j.executables.functions;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
-import org.op4j.util.VarArgsUtil;
+import org.javaruntype.type.Types;
+import org.op4j.exceptions.ParameterSpecRecognitionException;
 
 /**
  * 
@@ -34,49 +37,80 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class FunctionArgumentScheme<T> {
+public final class FunctionArgumentScheme<T> implements Serializable {
+    
+    private static final long serialVersionUID = -1994818419805211076L;
+
+    static final char PARAMETER_SPEC_TYPE_PARAMETRIZATION_START_SYMBOL = '<';
+    static final char PARAMETER_SPEC_TYPE_PARAMETRIZATION_END_SYMBOL = '>';
+    static final char PARAMETER_SPEC_SEPARATOR_SYMBOL = ',';
+    static final char PARAMETER_SPEC_LITERAL_DELIMITER = '\'';
+    
     
     private final Type<T> targetType;
-    private final List<Class<?>> parameterClasses;
+    private final List<FunctionParameterSpec> parameterSpecs;
+    private final String description;
     
     
     
-    public static <T> FunctionArgumentScheme<T> from(final Type<T> targetType, final Class<?>... parameterClasses) {
-        return new FunctionArgumentScheme<T>(targetType, VarArgsUtil.asOptionalObjectList(parameterClasses));
+    
+    public static <T> FunctionArgumentScheme<T> from(final Type<T> targetType) {
+        return new FunctionArgumentScheme<T>(null, targetType, null);
+    }
+    
+    public static <T> FunctionArgumentScheme<T> from(final String description, final Type<T> targetType) {
+        return new FunctionArgumentScheme<T>(description, targetType, null);
+    }
+    
+    public static <T> FunctionArgumentScheme<T> from(final String description, final Type<T> targetType, final String parameterSpec) {
+        return new FunctionArgumentScheme<T>(description, targetType, parameterSpec);
+    }
+    
+    public static <T> FunctionArgumentScheme<T> from(final Type<T> targetType, final String parameterSpec) {
+        return new FunctionArgumentScheme<T>(null, targetType, parameterSpec);
     }
     
     
-    
-    private FunctionArgumentScheme(final Type<T> targetType, final List<Class<?>> parameterClasses) {
+    private FunctionArgumentScheme(final String description, final Type<T> targetType, final String parameterSpec) {
         
         super();
         
         Validate.notNull(targetType, "Target type cannot be null");
-        Validate.noNullElements(parameterClasses, "Parameter classes list cannot contain null elements");
-
+    
+        this.description = description;
         this.targetType = targetType;
-        this.parameterClasses = new ArrayList<Class<?>>(parameterClasses);
+        this.parameterSpecs = parseParameterSpec(parameterSpec);
         
     }
     
     
+    public boolean hasDescription() {
+        return this.description != null;
+    }
+    
+    public String getDescription() {
+        return this.description;
+    }
+
+
+
     public Type<T> getTargetType() {
         return this.targetType;
     }
 
     
-    public List<Class<?>> getParameterClasses() {
-        return this.parameterClasses;
+    public List<FunctionParameterSpec> getParameterSpecs() {
+        return Collections.unmodifiableList(this.parameterSpecs);
     }
     
     
     
     
-    public boolean match(final FunctionArguments functionArguments) {
+    public boolean matches(final FunctionArguments functionArguments) {
     	
     	Validate.notNull(functionArguments);
     	
-    	if (functionArguments.getParameterCount() != this.parameterClasses.size()) {
+    	if (functionArguments.getParameterCount() != this.parameterSpecs.size()) {
     		return false;
     	}
     	
@@ -86,10 +120,22 @@ public final class FunctionArgumentScheme<T> {
     	}
     	
     	final List<Class<?>> argumentsParameterClasses = functionArguments.getParameterClasses();
-    	for (int i = 0; i < this.parameterClasses.size(); i++) {
-    	    final Class<?> argumentsParameterClass = argumentsParameterClasses.get(i);
-    	    if (argumentsParameterClass != null && !this.parameterClasses.get(i).isAssignableFrom(argumentsParameterClass)) {
-    	        return false;
+    	for (int i = 0, n = argumentsParameterClasses.size(); i < n; i++) {
+            final Class<?> argumentsParameterClass = argumentsParameterClasses.get(i);
+            final FunctionParameterSpec parameterSpec = this.parameterSpecs.get(i); 
+    	    if (parameterSpec.isLiteral()) {
+    	        if (argumentsParameterClass == null || !argumentsParameterClass.equals(String.class)) {
+    	            return false;
+    	        }
+    	        final String strParam = (String) functionArguments.getParameter(i);
+    	        if (!parameterSpec.getLiteral().equals(strParam)) {
+    	            return false;
+    	        }
+    	    } else {
+    	        // parameter spec is for a non-literal
+                if (argumentsParameterClass != null && !parameterSpec.getType().getRawClass().isAssignableFrom(argumentsParameterClass)) {
+                    return false;
+                }
     	    }
     	}
     	
@@ -100,11 +146,17 @@ public final class FunctionArgumentScheme<T> {
 
 
     public String getStringRepresentation() {
-    	final List<String> classNames = new ArrayList<String>();
-    	for (final Class<?> parameterClass : this.parameterClasses) {
-    		classNames.add(parameterClass.getSimpleName());
+        final StringBuilder strBuilder = new StringBuilder();
+        strBuilder.append("[" + this.targetType.getName() + "]");
+    	final List<String> parameterNames = new ArrayList<String>();
+    	for (final FunctionParameterSpec parameterSpec : this.parameterSpecs) {
+    		parameterNames.add(parameterSpec.getStringRepresentation());
     	}
-        return StringUtils.join(classNames, ","); 
+    	if (!parameterNames.isEmpty()) {
+    	    strBuilder.append(" ");
+    	    strBuilder.append(StringUtils.join(parameterNames, PARAMETER_SPEC_SEPARATOR_SYMBOL));
+    	}
+        return strBuilder.toString(); 
     }
 
 
@@ -112,6 +164,212 @@ public final class FunctionArgumentScheme<T> {
     public String toString() {
         return getStringRepresentation();
     }
+    
+
+    
+    
+    
+    private final static List<FunctionParameterSpec> parseParameterSpec(final String parameterSpec) {
+        
+        try {
+
+            if (StringUtils.isBlank(parameterSpec)) {
+                return new ArrayList<FunctionParameterSpec>();
+            }
+            
+            final String spec = parameterSpec.trim();
+
+            final ParameterSpecTokenizer tokenizer = new ParameterSpecTokenizer(spec);
+            final String[] tokens = tokenizer.getTokens();
+            
+            final List<FunctionParameterSpec> parameterSpecs = new ArrayList<FunctionParameterSpec>();
+            
+            for (int i = 0; i < tokens.length; i++) {
+
+                if (tokens[i].startsWith("" + PARAMETER_SPEC_LITERAL_DELIMITER) &&
+                            tokens[i].endsWith("" + PARAMETER_SPEC_LITERAL_DELIMITER)) {
+                    
+                    parameterSpecs.add(FunctionParameterSpec.forLiteral(
+                                tokens[i].substring(1, tokens[i].length() - 1)));
+                    
+                } else {
+                    
+                    /*
+                     * We look for "Type componentName" definitions, but as spaces can happen
+                     * inside type parameterizations (like "Map<Integer, String>"), we should
+                     * be sure we only use 'level 0' tokens.
+                     */
+                    final List<String> tokenParts = new ArrayList<String>();
+                    int currentTokenStart = 0;
+                    int typeParamLevel = 0;
+                    for (int j = 0; j < tokens[i].length(); j++) {
+                        if (tokens[i].charAt(j) == '<') {
+                            typeParamLevel++;
+                        } else if (tokens[i].charAt(j) == '>') {
+                            typeParamLevel--;
+                        } else if (tokens[i].charAt(j) == ' ') {
+                            if (typeParamLevel == 0 && currentTokenStart != j) {
+                                tokenParts.add(tokens[i].substring(currentTokenStart, j));
+                                currentTokenStart = j + 1;
+                            } else if (typeParamLevel == 0 && currentTokenStart == j) {
+                                currentTokenStart = j + 1;
+                            }
+                        }
+                    }
+                    tokenParts.add(tokens[i].substring(currentTokenStart));
+                    
+                    switch (tokenParts.size()) {
+                        case 1:  
+                            // no name specified for the component
+                            parameterSpecs.add(FunctionParameterSpec.forType(Types.forName(tokenParts.get(0))));
+                            break;
+                        case 2:
+                            // a name was specified for the component
+                            parameterSpecs.add(FunctionParameterSpec.forType(Types.forName(tokenParts.get(0)), tokenParts.get(1)));
+                            break;
+                        default:
+                            throw new ParameterSpecRecognitionException(parameterSpec);
+                    }
+                    
+                }
+                
+            }
+
+            return parameterSpecs;
+            
+        } catch (ParameterSpecRecognitionException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new ParameterSpecRecognitionException(parameterSpec, e);
+        }
+        
+    }
+    
+    
+    
+    public final static class FunctionParameterSpec implements Serializable {
+        
+        private static final long serialVersionUID = -6705771580131769035L;
+        
+        
+        private final Type<?> type;
+        private final String name;
+        private final String literal;
+
+        
+        static FunctionParameterSpec forType(final Type<?> type) {
+            return new FunctionParameterSpec(type, null, null);
+        }
+        
+        static FunctionParameterSpec forType(final Type<?> type, final String name) {
+            return new FunctionParameterSpec(type, name, null);
+        }
+        
+        static FunctionParameterSpec forLiteral(final String literal) {
+            return new FunctionParameterSpec(null, null, literal);
+        }
+        
+        
+        private FunctionParameterSpec(final Type<?> type, final String name, final String literal) {
+            super();
+            this.type = type;
+            this.name = name;
+            this.literal = literal;
+        }
+        
+        public boolean isLiteral() {
+            return this.literal != null;
+        }
+        
+        public boolean hasName() {
+            return this.name != null;
+        }
+
+        public Type<?> getType() {
+            return this.type;
+        }
+        
+        public String getName() {
+            return this.name;
+        }
+
+        public String getLiteral() {
+            return this.literal;
+        }
+        
+        public String getStringRepresentation() {
+            return (isLiteral()? 
+                    PARAMETER_SPEC_LITERAL_DELIMITER + this.literal + PARAMETER_SPEC_LITERAL_DELIMITER :
+                    (this.type.getName() + (hasName()? " " + this.name : "")));
+        }
+        
+        @Override
+        public String toString() {
+            return getStringRepresentation();
+        }
+        
+    }
+    
+    
+    private final static class ParameterSpecTokenizer {
+        
+        private final String[] tokens;
+        
+        ParameterSpecTokenizer(final String parameterSpec) {
+
+            final List<String> tokenList = new ArrayList<String>();
+            
+            int index = 0;
+            int lastStartIndex = 0;
+            boolean literalOpen = false;
+            int typeParametrizationDepth = 0;
+            while (index < parameterSpec.length()) {
+                
+                char c = parameterSpec.charAt(index);
+                if (c == PARAMETER_SPEC_SEPARATOR_SYMBOL) {
+                    if ((!literalOpen) && (typeParametrizationDepth == 0)) {
+                        tokenList.add(
+                                parameterSpec.substring(lastStartIndex, index).trim());
+                        lastStartIndex = index + 1;
+                    }
+                } else if (c == PARAMETER_SPEC_LITERAL_DELIMITER) {
+                    if (!literalOpen) {
+                        literalOpen = true;
+                    } else if ((index + 1) < parameterSpec.length()) { 
+                        final String remaining = parameterSpec.substring(index + 1).trim();
+                        if (remaining.startsWith(""+PARAMETER_SPEC_SEPARATOR_SYMBOL)) {
+                            literalOpen = false;
+                        }
+                    }
+                } else if (c == PARAMETER_SPEC_TYPE_PARAMETRIZATION_START_SYMBOL) {
+                    if (!literalOpen) {
+                        typeParametrizationDepth++;
+                    }
+                } else if (c == PARAMETER_SPEC_TYPE_PARAMETRIZATION_END_SYMBOL) {
+                    if (!literalOpen) {
+                        typeParametrizationDepth--;
+                    }
+                }
+                
+                index++;
+                
+            }
+            tokenList.add(
+                    parameterSpec.substring(lastStartIndex, index).trim());
+            
+            this.tokens = tokenList.toArray(new String[tokenList.size()]);
+            
+        }
+        
+        
+        String[] getTokens() {
+            return this.tokens;
+        }
+        
+    }
+    
+
+    
     
     
 }

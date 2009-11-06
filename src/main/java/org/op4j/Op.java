@@ -27,7 +27,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.Validate;
-import org.javaruntype.type.Types;
 import org.op4j.executables.Eval;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
@@ -316,7 +315,7 @@ public final class Op {
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().callInteger("length").get());
         
         
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().callInteger("length").convTo(Types.STRING).get());
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().callInteger("length").convToString().get());
     }
     
 }

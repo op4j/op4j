@@ -143,59 +143,59 @@ public class Level2SetOfArrayElementsElementsOperator<T> extends Operator
 
 
     public ILevel2SetOfArrayElementsElementsOperator<Boolean> convToBoolean(final Object... parameters) {
-        return new Level2SetOfArrayElementsElementsOperator<Boolean>(getTarget().execute(Conv.to(Types.BOOLEAN, parameters)));
+        return new Level2SetOfArrayElementsElementsOperator<Boolean>(Of.type(Types.BOOLEAN), getTarget().execute(Conv.to(Types.BOOLEAN, parameters)));
     }
 
 
     public ILevel2SetOfArrayElementsElementsOperator<Byte> convToByte(final Object... parameters) {
-        return new Level2SetOfArrayElementsElementsOperator<Byte>(getTarget().execute(Conv.to(Types.BYTE, parameters)));
+        return new Level2SetOfArrayElementsElementsOperator<Byte>(Of.type(Types.BYTE), getTarget().execute(Conv.to(Types.BYTE, parameters)));
     }
 
 
     public ILevel2SetOfArrayElementsElementsOperator<Calendar> convToCalendar(final Object... parameters) {
-        return new Level2SetOfArrayElementsElementsOperator<Calendar>(getTarget().execute(Conv.to(Types.CALENDAR, parameters)));
+        return new Level2SetOfArrayElementsElementsOperator<Calendar>(Of.type(Types.CALENDAR), getTarget().execute(Conv.to(Types.CALENDAR, parameters)));
     }
 
 
     public ILevel2SetOfArrayElementsElementsOperator<Double> convToDouble(final Object... parameters) {
-        return new Level2SetOfArrayElementsElementsOperator<Double>(getTarget().execute(Conv.to(Types.DOUBLE, parameters)));
+        return new Level2SetOfArrayElementsElementsOperator<Double>(Of.type(Types.DOUBLE), getTarget().execute(Conv.to(Types.DOUBLE, parameters)));
     }
 
 
     public ILevel2SetOfArrayElementsElementsOperator<Float> convToFloat(final Object... parameters) {
-        return new Level2SetOfArrayElementsElementsOperator<Float>(getTarget().execute(Conv.to(Types.FLOAT, parameters)));
+        return new Level2SetOfArrayElementsElementsOperator<Float>(Of.type(Types.FLOAT), getTarget().execute(Conv.to(Types.FLOAT, parameters)));
     }
 
 
     public ILevel2SetOfArrayElementsElementsOperator<Integer> convToInteger(final Object... parameters) {
-        return new Level2SetOfArrayElementsElementsOperator<Integer>(getTarget().execute(Conv.to(Types.INTEGER, parameters)));
+        return new Level2SetOfArrayElementsElementsOperator<Integer>(Of.type(Types.INTEGER), getTarget().execute(Conv.to(Types.INTEGER, parameters)));
     }
 
 
     public ILevel2SetOfArrayElementsElementsOperator<Long> convToLong(final Object... parameters) {
-        return new Level2SetOfArrayElementsElementsOperator<Long>(getTarget().execute(Conv.to(Types.LONG, parameters)));
+        return new Level2SetOfArrayElementsElementsOperator<Long>(Of.type(Types.LONG), getTarget().execute(Conv.to(Types.LONG, parameters)));
     }
 
 
     public ILevel2SetOfArrayElementsElementsOperator<Short> convToShort(final Object... parameters) {
-        return new Level2SetOfArrayElementsElementsOperator<Short>(getTarget().execute(Conv.to(Types.SHORT, parameters)));
+        return new Level2SetOfArrayElementsElementsOperator<Short>(Of.type(Types.SHORT), getTarget().execute(Conv.to(Types.SHORT, parameters)));
     }
 
 
     public ILevel2SetOfArrayElementsElementsOperator<String> convToString(final Object... parameters) {
-        return new Level2SetOfArrayElementsElementsOperator<String>(getTarget().execute(Conv.to(Types.STRING, parameters)));
+        return new Level2SetOfArrayElementsElementsOperator<String>(Of.type(Types.STRING), getTarget().execute(Conv.to(Types.STRING, parameters)));
     }
 
     public ILevel2SetOfArrayElementsElementsOperator<Character> convToCharacter(final Object... parameters) {
-        return new Level2SetOfArrayElementsElementsOperator<Character>(getTarget().execute(Conv.to(Types.CHARACTER, parameters)));
+        return new Level2SetOfArrayElementsElementsOperator<Character>(Of.type(Types.CHARACTER), getTarget().execute(Conv.to(Types.CHARACTER, parameters)));
     }
 
     public ILevel2SetOfArrayElementsElementsOperator<Number> convToNumber(final Object... parameters) {
-        return new Level2SetOfArrayElementsElementsOperator<Number>(getTarget().execute(Conv.to(Types.NUMBER, parameters)));
+        return new Level2SetOfArrayElementsElementsOperator<Number>(Of.type(Types.NUMBER), getTarget().execute(Conv.to(Types.NUMBER, parameters)));
     }
 
     public ILevel2SetOfArrayElementsElementsOperator<Date> convToDate(final Object... parameters) {
-        return new Level2SetOfArrayElementsElementsOperator<Date>(getTarget().execute(Conv.to(Types.DATE, parameters)));
+        return new Level2SetOfArrayElementsElementsOperator<Date>(Of.type(Types.DATE), getTarget().execute(Conv.to(Types.DATE, parameters)));
     }
 
 

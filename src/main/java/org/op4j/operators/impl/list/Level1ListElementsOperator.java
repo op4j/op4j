@@ -144,9 +144,8 @@ public class Level1ListElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ListElementsOperator<Byte> convToByte(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListElementsOperator<Byte> convToByte(final Object... parameters) {
+        return new Level1ListElementsOperator<Byte>(getTarget().execute(Conv.to(Types.BYTE, parameters)));
     }
 
 
@@ -160,9 +159,8 @@ public class Level1ListElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ListElementsOperator<Float> convToFloat(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListElementsOperator<Float> convToFloat(final Object... parameters) {
+        return new Level1ListElementsOperator<Float>(getTarget().execute(Conv.to(Types.FLOAT, parameters)));
     }
 
 
@@ -171,15 +169,13 @@ public class Level1ListElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ListElementsOperator<Long> convToLong(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListElementsOperator<Long> convToLong(final Object... parameters) {
+        return new Level1ListElementsOperator<Long>(getTarget().execute(Conv.to(Types.LONG, parameters)));
     }
 
 
-    public ILevel1ListElementsOperator<Short> convToShort(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListElementsOperator<Short> convToShort(final Object... parameters) {
+        return new Level1ListElementsOperator<Short>(getTarget().execute(Conv.to(Types.SHORT, parameters)));
     }
 
 

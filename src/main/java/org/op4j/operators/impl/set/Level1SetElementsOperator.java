@@ -144,9 +144,8 @@ public class Level1SetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1SetElementsOperator<Byte> convToByte(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetElementsOperator<Byte> convToByte(final Object... parameters) {
+        return new Level1SetElementsOperator<Byte>(getTarget().execute(Conv.to(Types.BYTE, parameters)));
     }
 
 
@@ -155,15 +154,13 @@ public class Level1SetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1SetElementsOperator<Double> convToDouble(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetElementsOperator<Double> convToDouble(final Object... parameters) {
+        return new Level1SetElementsOperator<Double>(getTarget().execute(Conv.to(Types.DOUBLE, parameters)));
     }
 
 
-    public ILevel1SetElementsOperator<Float> convToFloat(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetElementsOperator<Float> convToFloat(final Object... parameters) {
+        return new Level1SetElementsOperator<Float>(getTarget().execute(Conv.to(Types.FLOAT, parameters)));
     }
 
 
@@ -172,36 +169,30 @@ public class Level1SetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1SetElementsOperator<Long> convToLong(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetElementsOperator<Long> convToLong(final Object... parameters) {
+        return new Level1SetElementsOperator<Long>(getTarget().execute(Conv.to(Types.LONG, parameters)));
     }
 
 
-    public ILevel1SetElementsOperator<Short> convToShort(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetElementsOperator<Short> convToShort(final Object... parameters) {
+        return new Level1SetElementsOperator<Short>(getTarget().execute(Conv.to(Types.SHORT, parameters)));
     }
 
 
-    public ILevel1SetElementsOperator<String> convToString(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetElementsOperator<String> convToString(final Object... parameters) {
+        return new Level1SetElementsOperator<String>(getTarget().execute(Conv.to(Types.STRING, parameters)));
     }
 
-    public ILevel1SetElementsOperator<Character> convToCharacter(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetElementsOperator<Character> convToCharacter(final Object... parameters) {
+        return new Level1SetElementsOperator<Character>(getTarget().execute(Conv.to(Types.CHARACTER, parameters)));
     }
 
-    public ILevel1SetElementsOperator<Number> convToNumber(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetElementsOperator<Number> convToNumber(final Object... parameters) {
+        return new Level1SetElementsOperator<Number>(getTarget().execute(Conv.to(Types.NUMBER, parameters)));
     }
 
-    public ILevel1SetElementsOperator<Date> convToDate(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetElementsOperator<Date> convToDate(final Object... parameters) {
+        return new Level1SetElementsOperator<Date>(getTarget().execute(Conv.to(Types.DATE, parameters)));
     }
 
 

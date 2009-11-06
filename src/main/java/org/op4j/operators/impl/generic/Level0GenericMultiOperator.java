@@ -235,9 +235,8 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericUniqOperator<Byte> convToByte(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericUniqOperator<Byte> convToByte(final Object... parameters) {
+        return new Level0GenericUniqOperator<Byte>(getTarget().execute(Conv.to(Types.BYTE, parameters)));
     }
 
 
@@ -246,15 +245,13 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericUniqOperator<Double> convToDouble(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericUniqOperator<Double> convToDouble(final Object... parameters) {
+        return new Level0GenericUniqOperator<Double>(getTarget().execute(Conv.to(Types.DOUBLE, parameters)));
     }
 
 
-    public ILevel0GenericUniqOperator<Float> convToFloat(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericUniqOperator<Float> convToFloat(final Object... parameters) {
+        return new Level0GenericUniqOperator<Float>(getTarget().execute(Conv.to(Types.FLOAT, parameters)));
     }
 
 
@@ -263,36 +260,30 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericUniqOperator<Long> convToLong(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericUniqOperator<Long> convToLong(final Object... parameters) {
+        return new Level0GenericUniqOperator<Long>(getTarget().execute(Conv.to(Types.LONG, parameters)));
     }
 
 
-    public ILevel0GenericUniqOperator<Short> convToShort(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericUniqOperator<Short> convToShort(final Object... parameters) {
+        return new Level0GenericUniqOperator<Short>(getTarget().execute(Conv.to(Types.SHORT, parameters)));
     }
 
 
-    public ILevel0GenericUniqOperator<String> convToString(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericUniqOperator<String> convToString(final Object... parameters) {
+        return new Level0GenericUniqOperator<String>(getTarget().execute(Conv.to(Types.STRING, parameters)));
     }
 
-    public ILevel0GenericUniqOperator<Character> convToCharacter(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericUniqOperator<Character> convToCharacter(final Object... parameters) {
+        return new Level0GenericUniqOperator<Character>(getTarget().execute(Conv.to(Types.CHARACTER, parameters)));
     }
 
-    public ILevel0GenericUniqOperator<Number> convToNumber(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericUniqOperator<Number> convToNumber(final Object... parameters) {
+        return new Level0GenericUniqOperator<Number>(getTarget().execute(Conv.to(Types.NUMBER, parameters)));
     }
 
-    public ILevel0GenericUniqOperator<Date> convToDate(Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericUniqOperator<Date> convToDate(final Object... parameters) {
+        return new Level0GenericUniqOperator<Date>(getTarget().execute(Conv.to(Types.DATE, parameters)));
     }
 
 
