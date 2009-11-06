@@ -20,6 +20,7 @@
 package org.op4j.executables.functions;
 
 import org.op4j.exceptions.FunctionImplementationRegistrationException;
+import org.op4j.executables.functions.conversion.DummyConverter;
 import org.op4j.executables.functions.conversion.DummyFunction;
 
 /**
@@ -50,7 +51,8 @@ final class FunctionsInitialization {
         
         final Class<?>[] implementationClasses =
             new Class<?>[] {
-                DummyFunction.class
+                DummyFunction.class,
+                DummyConverter.class
             };
 
         for(int i = 0; i < implementationClasses.length; i++) {

@@ -25,12 +25,14 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 
+import org.javaruntype.type.Type;
 import org.op4j.Of;
 import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.IFunc;
+import org.op4j.executables.functions.conversion.Conv;
 import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
@@ -209,11 +211,13 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0GenericUniqOperator<X> conv(IConv<X, ? super T> conv) {
-        // TODO Auto-generated method stub
-        return null;
+    public <X> ILevel0GenericUniqOperator<X> conv(final IConv<X> conv) {
+        return new Level0GenericUniqOperator<X>(getTarget().execute(conv));
     }
 
+    public <X> ILevel0GenericUniqOperator<X> convTo(final Type<X> resultType, final Object... parameters) {
+        return new Level0GenericUniqOperator<X>(getTarget().execute(Conv.to(resultType, parameters)));
+    }
 
     public ILevel0GenericUniqOperator<BigDecimal> convToBigDecimal(
             Object... parameters) {

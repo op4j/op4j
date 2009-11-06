@@ -31,6 +31,6 @@ import org.op4j.executables.functions.conversion.IConv;
  */
 public interface IConvertibleSelectedOperator<T> {
     
-    public <X extends T> IConvertibleSelectedOperator<T> conv(final IConv<X,? super T> conv);
+    public <X extends T> IConvertibleSelectedOperator<T> conv(final IConv<X> conv);
     
 }

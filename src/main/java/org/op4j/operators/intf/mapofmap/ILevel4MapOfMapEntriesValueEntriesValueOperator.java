@@ -25,6 +25,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
+import org.javaruntype.type.Type;
 import org.op4j.Of;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
@@ -75,7 +76,8 @@ public interface ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Date> callDate(final String methodName, final Object... optionalParameters);
 
     
-    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> conv(final IConv<X,? super V> conv);
+    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> conv(final IConv<X> conv);
+    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> convTo(final Type<X> resultType, final Object... parameters);
     
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Byte> convToByte(final Object... parameters);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Short> convToShort(final Object... parameters);

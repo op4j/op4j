@@ -25,6 +25,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 
+import org.javaruntype.type.Type;
 import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
@@ -94,7 +95,8 @@ public interface ILevel0GenericMultiOperator<T>
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunc<X,? super T> exec);
 
     
-    public <X> ILevel0GenericUniqOperator<X> conv(final IConv<X,? super T> conv);
+    public <X> ILevel0GenericUniqOperator<X> conv(final IConv<X> conv);
+    public <X> ILevel0GenericUniqOperator<X> convTo(final Type<X> resultType, final Object... parameters);
     
     public ILevel0GenericUniqOperator<Byte> convToByte(final Object... parameters);
     public ILevel0GenericUniqOperator<Short> convToShort(final Object... parameters);

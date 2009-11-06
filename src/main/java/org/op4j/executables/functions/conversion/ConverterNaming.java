@@ -18,9 +18,9 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions;
+package org.op4j.executables.functions.conversion;
 
-import org.apache.commons.lang.Validate;
+import org.javaruntype.type.Type;
 
 /**
  * 
@@ -29,25 +29,18 @@ import org.apache.commons.lang.Validate;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Functions {
+final class ConverterNaming {
 
     
+    private final static String CONVERTER_FUNCTION_NAME_PREFIX = "op4j:convert:";
+
     
-    public static void registerFunctionImplementation(final Class<? extends FunctionImplementation<?,?>> functionImplementationClass) {
-        Validate.notNull(functionImplementationClass);
-        final FunctionRegistry functionRegistry = FunctionRegistry.getInstance();
-        functionRegistry.addFunctionImplementation(functionImplementationClass);
+    static String getConverterName(final Type<?> resultType) {
+        return CONVERTER_FUNCTION_NAME_PREFIX + resultType.getName();
     }
     
     
-    public static Function<?,?> getFunctionByName(final String functionName) {
-        Validate.notNull(functionName);
-        final FunctionRegistry functionRegistry = FunctionRegistry.getInstance();
-        return functionRegistry.getFunction(functionName);
-    }
-    
-    
-    private Functions() {
+    private ConverterNaming() {
         super();
     }
     

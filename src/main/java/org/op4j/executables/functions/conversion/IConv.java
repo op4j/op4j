@@ -30,6 +30,6 @@ import org.op4j.executables.functions.IFunc;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface IConv<X,T> extends IFunc<X,T> {
+public interface IConv<X> extends IFunc<X,Object> {
     
 }

@@ -26,12 +26,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.javaruntype.type.Type;
 import org.op4j.Of;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.functions.IFunc;
+import org.op4j.executables.functions.conversion.Conv;
 import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesValueOperator;
@@ -119,12 +121,13 @@ public class Level3MapOfListEntriesValueElementsOperator<K,V> extends Operator
 
 
 
-    public <X> ILevel3MapOfListEntriesValueElementsOperator<K, X> conv(
-            IConv<X, ? super V> conv) {
-        // TODO Auto-generated method stub
-        return null;
+    public <X> ILevel3MapOfListEntriesValueElementsOperator<K, X> conv(final IConv<X> conv) {
+        return new Level3MapOfListEntriesValueElementsOperator<K, X>(getTarget().execute(conv));
     }
 
+    public <X> ILevel3MapOfListEntriesValueElementsOperator<K, X> convTo(final Type<X> resultType, final Object... parameters) {
+        return new Level3MapOfListEntriesValueElementsOperator<K, X>(getTarget().execute(Conv.to(resultType, parameters)));
+    }
 
     public ILevel3MapOfListEntriesValueElementsOperator<K, BigDecimal> convToBigDecimal(
             Object... parameters) {

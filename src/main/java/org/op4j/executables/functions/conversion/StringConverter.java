@@ -48,7 +48,7 @@ import org.op4j.typescheme.TypeSchemes;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class StringConverter extends Converter {
+public final class StringConverter extends ConverterImplementation {
 
     private static final long serialVersionUID = -6827019507219840066L;
     

@@ -45,7 +45,7 @@ import org.op4j.typescheme.TypeSchemes;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class CalendarConverter extends Converter {
+public final class CalendarConverter extends ConverterImplementation {
 
 	private static final long serialVersionUID = 234124839280883047L;
 

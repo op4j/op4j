@@ -25,12 +25,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
+import org.javaruntype.type.Type;
 import org.op4j.Of;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.functions.IFunc;
+import org.op4j.executables.functions.conversion.Conv;
 import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofmap.ILevel3MapOfMapEntriesValueEntriesOperator;
@@ -118,12 +120,13 @@ public class Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V> extends Ope
 
 
 
-    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> conv(
-            IConv<X, ? super V> conv) {
-        // TODO Auto-generated method stub
-        return null;
+    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> conv(final IConv<X> conv) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X>(getTarget().execute(conv));
     }
 
+    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> convTo(final Type<X> resultType, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X>(getTarget().execute(Conv.to(resultType, parameters)));
+    }
 
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, BigDecimal> convToBigDecimal(
             Object... parameters) {

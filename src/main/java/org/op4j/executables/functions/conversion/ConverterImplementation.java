@@ -19,8 +19,9 @@
  */
 package org.op4j.executables.functions.conversion;
 
-import org.op4j.operation.OperationImpl;
-import org.op4j.util.ConverterUtils;
+import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
+import org.op4j.executables.functions.FunctionImplementation;
 
 
 /**
@@ -30,20 +31,24 @@ import org.op4j.util.ConverterUtils;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public abstract class Converter extends OperationImpl {
+public abstract class ConverterImplementation<X> extends FunctionImplementation<X,Object> {
     
     
-	private static final long serialVersionUID = -9074374505688098385L;
-
-
-	public Converter() {
+    protected ConverterImplementation() {
         super();
     }
-
     
+    
+
     @Override
-    public final String getOperationName() {
-        return ConverterUtils.unsafeGetOperationNameForResultType(getResultType());
+    protected final String registerFunctionName() {
+        return ConverterNaming.getConverterName(registerResultType());
+    }
+    
+
+    @Override
+    protected final Type<Object> registerTargetType() {
+        return Types.OBJECT;
     }
     
 

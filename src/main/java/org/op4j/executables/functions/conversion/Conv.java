@@ -36,11 +36,14 @@
  * 
  * =============================================================================
  */
-package org.op4j.executables.functions;
+package org.op4j.executables.functions.conversion;
 
 import java.util.List;
 
 import org.javaruntype.type.Type;
+import org.op4j.executables.functions.Function;
+import org.op4j.executables.functions.FunctionArguments;
+import org.op4j.executables.functions.Functions;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -50,42 +53,36 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Func<X,T> implements IFunc<X,T>  {
+public class Conv<X> implements IConv<X>  {
     
-    private final Function<X,T> function;
+    private final Function<X,Object> converter;
     private final List<Object> parameters;
 
     
     
     @SuppressWarnings("unchecked")
-    public static Func<?,Object> forName(final String functionName, final Object...parameters) {
-        return new Func<Object,Object>((Function<Object, Object>) Functions.getFunctionByName(functionName), VarArgsUtil.asOptionalObjectList(parameters)); 
-    }
-
-    
-    @SuppressWarnings("unchecked")
-    public static <X> Func<X,Object> forName(final Type<X> resultType, final String functionName, final Object...parameters) {
-        return new Func<X,Object>((Function<X, Object>) Functions.getFunctionByName(functionName), VarArgsUtil.asOptionalObjectList(parameters)); 
+    public static <X> Conv<X> to(final Type<X> resultType, final Object...parameters) {
+        return new Conv<X>((Function<X, Object>) Functions.getFunctionByName(ConverterNaming.getConverterName(resultType)), VarArgsUtil.asOptionalObjectList(parameters)); 
     }
     
     
     
-    private Func(final Function<X,T> function, final List<Object> parameters) {
+    private Conv(final Function<X,Object> converter, final List<Object> parameters) {
         super();
-        this.function = function;
+        this.converter = converter;
         this.parameters = parameters;
     }
 
 
 
     public Type<X> getResultType() {
-        return this.function.getResultType();
+        return this.converter.getResultType();
     }
 
 
 
-    public X execute(T object) {
-        return this.function.executeFunction(FunctionArguments.fromObjects(object, this.parameters));
+    public X execute(final Object object) {
+        return this.converter.executeFunction(FunctionArguments.fromObjects(object, this.parameters));
     }
      
         

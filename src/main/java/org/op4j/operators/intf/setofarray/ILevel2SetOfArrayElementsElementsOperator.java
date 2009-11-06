@@ -25,6 +25,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Set;
 
+import org.javaruntype.type.Type;
 import org.op4j.Of;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
@@ -75,7 +76,8 @@ public interface ILevel2SetOfArrayElementsElementsOperator<T>
     public ILevel2SetOfArrayElementsElementsOperator<Date> callDate(final String methodName, final Object... optionalParameters);
 
     
-    public <X> ILevel2SetOfArrayElementsElementsOperator<X> conv(final IConv<X,? super T> conv);
+    public <X> ILevel2SetOfArrayElementsElementsOperator<X> conv(final IConv<X> conv);
+    public <X> ILevel2SetOfArrayElementsElementsOperator<X> convTo(final Type<X> resultType, final Object... parameters);
     
     public ILevel2SetOfArrayElementsElementsOperator<Byte> convToByte(final Object... parameters);
     public ILevel2SetOfArrayElementsElementsOperator<Short> convToShort(final Object... parameters);

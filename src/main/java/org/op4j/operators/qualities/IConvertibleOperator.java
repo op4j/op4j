@@ -24,6 +24,7 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.javaruntype.type.Type;
 import org.op4j.executables.functions.conversion.IConv;
 
 
@@ -36,7 +37,8 @@ import org.op4j.executables.functions.conversion.IConv;
  */
 public interface IConvertibleOperator<T> {
 
-    public <X> IConvertibleOperator<X> conv(final IConv<X,? super T> conv);
+    public <X> IConvertibleOperator<X> conv(final IConv<X> conv);
+    public <X> IConvertibleOperator<X> convTo(final Type<X> resultType, final Object...parameters);
     
     public IConvertibleOperator<Byte> convToByte(final Object... parameters);
     public IConvertibleOperator<Short> convToShort(final Object... parameters);

@@ -24,17 +24,18 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.javaruntype.type.Type;
 import org.op4j.Of;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.functions.IFunc;
+import org.op4j.executables.functions.conversion.Conv;
 import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.array.ILevel1ArrayElementsOperator;
-import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
 
@@ -122,11 +123,13 @@ public class Level1ArrayElementsOperator<T> extends Operator
 
 
 
-    public <X> IConvertibleOperator<X> conv(IConv<X, ? super T> conv) {
-        // TODO Auto-generated method stub
-        return null;
+    public <X> ILevel1ArrayElementsOperator<X> conv(final IConv<X> conv) {
+        return new Level1ArrayElementsOperator<X>(Of.type(conv.getResultType()), getTarget().execute(conv));
     }
 
+    public <X> ILevel1ArrayElementsOperator<X> convTo(final Type<X> resultType, final Object... parameters) {
+        return new Level1ArrayElementsOperator<X>(Of.type(resultType), getTarget().execute(Conv.to(resultType, parameters)));
+    }
 
     public ILevel1ArrayElementsOperator<BigDecimal> convToBigDecimal(
             Object... parameters) {

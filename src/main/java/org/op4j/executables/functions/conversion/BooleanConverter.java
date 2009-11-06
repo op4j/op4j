@@ -39,7 +39,7 @@ import org.op4j.typescheme.TypeSchemes;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class BooleanConverter extends Converter {
+public final class BooleanConverter extends ConverterImplementation {
 
     private static final long serialVersionUID = -6201905960716013742L;
 

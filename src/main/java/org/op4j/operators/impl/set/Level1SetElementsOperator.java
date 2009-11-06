@@ -25,12 +25,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Set;
 
+import org.javaruntype.type.Type;
 import org.op4j.Of;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.functions.IFunc;
+import org.op4j.executables.functions.conversion.Conv;
 import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
@@ -118,11 +120,13 @@ public class Level1SetElementsOperator<T> extends Operator
 
 
 
-    public <X> ILevel1SetElementsOperator<X> conv(IConv<X, ? super T> conv) {
-        // TODO Auto-generated method stub
-        return null;
+    public <X> ILevel1SetElementsOperator<X> conv(final IConv<X> conv) {
+        return new Level1SetElementsOperator<X>(getTarget().execute(conv));
     }
 
+    public <X> ILevel1SetElementsOperator<X> convTo(final Type<X> resultType, final Object... parameters) {
+        return new Level1SetElementsOperator<X>(getTarget().execute(Conv.to(resultType, parameters)));
+    }
 
     public ILevel1SetElementsOperator<BigDecimal> convToBigDecimal(
             Object... parameters) {
