@@ -26,6 +26,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.Of;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
@@ -128,24 +129,18 @@ public class Level1ListElementsOperator<T> extends Operator
         return new Level1ListElementsOperator<X>(getTarget().execute(Conv.to(resultType, parameters)));
     }
 
-    public ILevel1ListElementsOperator<BigDecimal> convToBigDecimal(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListElementsOperator<BigDecimal> convToBigDecimal(final Object... parameters) {
+        return new Level1ListElementsOperator<BigDecimal>(getTarget().execute(Conv.to(Types.BIG_DECIMAL, parameters)));
     }
 
 
-    public ILevel1ListElementsOperator<BigInteger> convToBigInteger(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListElementsOperator<BigInteger> convToBigInteger(final Object... parameters) {
+        return new Level1ListElementsOperator<BigInteger>(getTarget().execute(Conv.to(Types.BIG_INTEGER, parameters)));
     }
 
 
-    public ILevel1ListElementsOperator<Boolean> convToBoolean(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListElementsOperator<Boolean> convToBoolean(final Object... parameters) {
+        return new Level1ListElementsOperator<Boolean>(getTarget().execute(Conv.to(Types.BOOLEAN, parameters)));
     }
 
 
@@ -155,17 +150,13 @@ public class Level1ListElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ListElementsOperator<Calendar> convToCalendar(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListElementsOperator<Calendar> convToCalendar(final Object... parameters) {
+        return new Level1ListElementsOperator<Calendar>(getTarget().execute(Conv.to(Types.CALENDAR, parameters)));
     }
 
 
-    public ILevel1ListElementsOperator<Double> convToDouble(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListElementsOperator<Double> convToDouble(final Object... parameters) {
+        return new Level1ListElementsOperator<Double>(getTarget().execute(Conv.to(Types.DOUBLE, parameters)));
     }
 
 
@@ -175,10 +166,8 @@ public class Level1ListElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ListElementsOperator<Integer> convToInteger(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListElementsOperator<Integer> convToInteger(final Object... parameters) {
+        return new Level1ListElementsOperator<Integer>(getTarget().execute(Conv.to(Types.INTEGER, parameters)));
     }
 
 
@@ -194,28 +183,20 @@ public class Level1ListElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ListElementsOperator<String> convToString(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListElementsOperator<String> convToString(final Object... parameters) {
+        return new Level1ListElementsOperator<String>(getTarget().execute(Conv.to(Types.STRING, parameters)));
     }
 
-    public ILevel1ListElementsOperator<Character> convToCharacter(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListElementsOperator<Character> convToCharacter(final Object... parameters) {
+        return new Level1ListElementsOperator<Character>(getTarget().execute(Conv.to(Types.CHARACTER, parameters)));
     }
 
-    public ILevel1ListElementsOperator<Number> convToNumber(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListElementsOperator<Number> convToNumber(final Object... parameters) {
+        return new Level1ListElementsOperator<Number>(getTarget().execute(Conv.to(Types.NUMBER, parameters)));
     }
 
-    public ILevel1ListElementsOperator<Date> convToDate(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListElementsOperator<Date> convToDate(final Object... parameters) {
+        return new Level1ListElementsOperator<Date>(getTarget().execute(Conv.to(Types.DATE, parameters)));
     }
 
 

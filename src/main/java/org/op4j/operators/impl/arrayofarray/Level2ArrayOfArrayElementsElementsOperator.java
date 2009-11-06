@@ -25,6 +25,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.Of;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
@@ -131,98 +132,70 @@ public class Level2ArrayOfArrayElementsElementsOperator<T> extends Operator
         return new Level2ArrayOfArrayElementsElementsOperator<X>(Of.type(resultType), getTarget().execute(Conv.to(resultType, parameters)));
     }
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<BigDecimal> convToBigDecimal(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2ArrayOfArrayElementsElementsOperator<BigDecimal> convToBigDecimal(final Object... parameters) {
+        return new Level2ArrayOfArrayElementsElementsOperator<BigDecimal>(Of.type(Types.BIG_DECIMAL), getTarget().execute(Conv.to(Types.BIG_DECIMAL, parameters)));
     }
 
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<BigInteger> convToBigInteger(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2ArrayOfArrayElementsElementsOperator<BigInteger> convToBigInteger(final Object... parameters) {
+        return new Level2ArrayOfArrayElementsElementsOperator<BigInteger>(Of.type(Types.BIG_INTEGER), getTarget().execute(Conv.to(Types.BIG_INTEGER, parameters)));
     }
 
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<Boolean> convToBoolean(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2ArrayOfArrayElementsElementsOperator<Boolean> convToBoolean(final Object... parameters) {
+        return new Level2ArrayOfArrayElementsElementsOperator<Boolean>(getTarget().execute(Conv.to(Types.BOOLEAN, parameters)));
     }
 
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<Byte> convToByte(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2ArrayOfArrayElementsElementsOperator<Byte> convToByte(final Object... parameters) {
+        return new Level2ArrayOfArrayElementsElementsOperator<Byte>(getTarget().execute(Conv.to(Types.BYTE, parameters)));
     }
 
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<Calendar> convToCalendar(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2ArrayOfArrayElementsElementsOperator<Calendar> convToCalendar(final Object... parameters) {
+        return new Level2ArrayOfArrayElementsElementsOperator<Calendar>(getTarget().execute(Conv.to(Types.CALENDAR, parameters)));
     }
 
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<Double> convToDouble(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2ArrayOfArrayElementsElementsOperator<Double> convToDouble(final Object... parameters) {
+        return new Level2ArrayOfArrayElementsElementsOperator<Double>(getTarget().execute(Conv.to(Types.DOUBLE, parameters)));
     }
 
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<Float> convToFloat(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2ArrayOfArrayElementsElementsOperator<Float> convToFloat(final Object... parameters) {
+        return new Level2ArrayOfArrayElementsElementsOperator<Float>(getTarget().execute(Conv.to(Types.FLOAT, parameters)));
     }
 
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<Integer> convToInteger(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2ArrayOfArrayElementsElementsOperator<Integer> convToInteger(final Object... parameters) {
+        return new Level2ArrayOfArrayElementsElementsOperator<Integer>(getTarget().execute(Conv.to(Types.INTEGER, parameters)));
     }
 
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<Long> convToLong(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2ArrayOfArrayElementsElementsOperator<Long> convToLong(final Object... parameters) {
+        return new Level2ArrayOfArrayElementsElementsOperator<Long>(getTarget().execute(Conv.to(Types.LONG, parameters)));
     }
 
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<Short> convToShort(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2ArrayOfArrayElementsElementsOperator<Short> convToShort(final Object... parameters) {
+        return new Level2ArrayOfArrayElementsElementsOperator<Short>(getTarget().execute(Conv.to(Types.SHORT, parameters)));
     }
 
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<String> convToString(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2ArrayOfArrayElementsElementsOperator<String> convToString(final Object... parameters) {
+        return new Level2ArrayOfArrayElementsElementsOperator<String>(getTarget().execute(Conv.to(Types.STRING, parameters)));
     }
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<Character> convToCharacter(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2ArrayOfArrayElementsElementsOperator<Character> convToCharacter(final Object... parameters) {
+        return new Level2ArrayOfArrayElementsElementsOperator<Character>(getTarget().execute(Conv.to(Types.CHARACTER, parameters)));
     }
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<Number> convToNumber(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2ArrayOfArrayElementsElementsOperator<Number> convToNumber(final Object... parameters) {
+        return new Level2ArrayOfArrayElementsElementsOperator<Number>(getTarget().execute(Conv.to(Types.NUMBER, parameters)));
     }
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<Date> convToDate(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2ArrayOfArrayElementsElementsOperator<Date> convToDate(final Object... parameters) {
+        return new Level2ArrayOfArrayElementsElementsOperator<Date>(getTarget().execute(Conv.to(Types.DATE, parameters)));
     }
 
 

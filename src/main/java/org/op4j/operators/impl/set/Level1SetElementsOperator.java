@@ -26,6 +26,7 @@ import java.util.Date;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.Of;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
@@ -128,24 +129,18 @@ public class Level1SetElementsOperator<T> extends Operator
         return new Level1SetElementsOperator<X>(getTarget().execute(Conv.to(resultType, parameters)));
     }
 
-    public ILevel1SetElementsOperator<BigDecimal> convToBigDecimal(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetElementsOperator<BigDecimal> convToBigDecimal(final Object... parameters) {
+        return new Level1SetElementsOperator<BigDecimal>(getTarget().execute(Conv.to(Types.BIG_DECIMAL, parameters)));
     }
 
 
-    public ILevel1SetElementsOperator<BigInteger> convToBigInteger(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetElementsOperator<BigInteger> convToBigInteger(final Object... parameters) {
+        return new Level1SetElementsOperator<BigInteger>(getTarget().execute(Conv.to(Types.BIG_INTEGER, parameters)));
     }
 
 
-    public ILevel1SetElementsOperator<Boolean> convToBoolean(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetElementsOperator<Boolean> convToBoolean(final Object... parameters) {
+        return new Level1SetElementsOperator<Boolean>(getTarget().execute(Conv.to(Types.BOOLEAN, parameters)));
     }
 
 
@@ -155,10 +150,8 @@ public class Level1SetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1SetElementsOperator<Calendar> convToCalendar(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetElementsOperator<Calendar> convToCalendar(final Object... parameters) {
+        return new Level1SetElementsOperator<Calendar>(getTarget().execute(Conv.to(Types.CALENDAR, parameters)));
     }
 
 
@@ -174,10 +167,8 @@ public class Level1SetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1SetElementsOperator<Integer> convToInteger(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetElementsOperator<Integer> convToInteger(final Object... parameters) {
+        return new Level1SetElementsOperator<Integer>(getTarget().execute(Conv.to(Types.INTEGER, parameters)));
     }
 
 

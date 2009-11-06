@@ -26,6 +26,7 @@ import java.util.Collection;
 import java.util.Date;
 
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.Of;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
@@ -549,24 +550,18 @@ public class Level0GenericUniqOperator<T> extends Operator
         return new Level0GenericUniqOperator<X>(getTarget().execute(Conv.to(resultType, parameters)));
     }
 
-    public ILevel0GenericUniqOperator<BigDecimal> convToBigDecimal(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericUniqOperator<BigDecimal> convToBigDecimal(final Object... parameters) {
+        return new Level0GenericUniqOperator<BigDecimal>(getTarget().execute(Conv.to(Types.BIG_DECIMAL, parameters)));
     }
 
 
-    public ILevel0GenericUniqOperator<BigInteger> convToBigInteger(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericUniqOperator<BigInteger> convToBigInteger(final Object... parameters) {
+        return new Level0GenericUniqOperator<BigInteger>(getTarget().execute(Conv.to(Types.BIG_INTEGER, parameters)));
     }
 
 
-    public ILevel0GenericUniqOperator<Boolean> convToBoolean(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericUniqOperator<Boolean> convToBoolean(final Object... parameters) {
+        return new Level0GenericUniqOperator<Boolean>(getTarget().execute(Conv.to(Types.BOOLEAN, parameters)));
     }
 
 
@@ -576,10 +571,8 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericUniqOperator<Calendar> convToCalendar(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericUniqOperator<Calendar> convToCalendar(final Object... parameters) {
+        return new Level0GenericUniqOperator<Calendar>(getTarget().execute(Conv.to(Types.CALENDAR, parameters)));
     }
 
 
@@ -595,10 +588,8 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericUniqOperator<Integer> convToInteger(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericUniqOperator<Integer> convToInteger(final Object... parameters) {
+        return new Level0GenericUniqOperator<Integer>(getTarget().execute(Conv.to(Types.INTEGER, parameters)));
     }
 
 
