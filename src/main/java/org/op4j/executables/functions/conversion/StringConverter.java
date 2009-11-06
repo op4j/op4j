@@ -43,7 +43,7 @@ import org.op4j.executables.functions.FunctionArgumentScheme;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class StringConverter extends ConverterImplementation {
+public final class StringConverter extends ConverterImplementation<String> {
     
     public static final String ESCAPE_CSV = "ESCAPE_CSV";
     public static final String UNESCAPE_CSV = "UNESCAPE_CSV";
@@ -75,150 +75,167 @@ public final class StringConverter extends ConverterImplementation {
         FunctionArgumentScheme.from(
             "The Calendar is converted based on the pattern given as parameter. Null is returned for null input",
             Types.CALENDAR,
-            String.class);
+            "String pattern");
     
     private static final FunctionArgumentScheme<Calendar> ATS_CALENDAR_LOCALE_STRING = 
         FunctionArgumentScheme.from(
             "The Calendar is converted based on the pattern given as parameter. Null is returned for null input",
             Types.CALENDAR, 
-            Locale.class, String.class);
+            "Locale locale, String pattern");
     
     private static final FunctionArgumentScheme<Calendar> ATS_CALENDAR_LOCALE = 
         FunctionArgumentScheme.from(
             "The Calendar is converted based on the locale given as parameter. Null is returned for null input",
             Types.CALENDAR,
-            Locale.class);
+            "Locale locale");
     
-    private static final FunctionArgumentScheme<Object> ATS_STRING_ESCAPECSVPARAM = 
+    private static final FunctionArgumentScheme<String> ATS_STRING_ESCAPECSVPARAM = 
         FunctionArgumentScheme.from(
             "The String is returned in a way it can be used to fill in a CSV column as StringEscapeUtils does",
             Types.STRING, 
-            TypeSchemes.forName("'" + ESCAPE_CSV + "'"), 
-            );
+            "'" + ESCAPE_CSV + "'");
     
-    private static final FunctionArgumentScheme<Object> ATS_STRING_UNESCAPECSVPARAM = 
+    private static final FunctionArgumentScheme<String> ATS_STRING_UNESCAPECSVPARAM = 
         FunctionArgumentScheme.from(
             "The String is returned without the escape characters used to " +
-            " include it in a CSV column (i.e. no quotes enclosing it, no escaped quotes) as StringEscapeUtils does"
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.forName("'" + UNESCAPE_CSV + "'"), 
-            );
+            " include it in a CSV column (i.e. no quotes enclosing it, no escaped quotes) as StringEscapeUtils does",
+            Types.STRING, 
+            "'" + UNESCAPE_CSV + "'");
     
-    private static final FunctionArgumentScheme<Object> ATS_STRING_ESCAPEXMLPARAM = 
+    private static final FunctionArgumentScheme<String> ATS_STRING_ESCAPEXMLPARAM = 
         FunctionArgumentScheme.from(
-            "The String is returned with the XML characters escaped as StringEscapeUtils does"
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.forName("'" + ESCAPE_XML + "'"), 
-            );
+            "The String is returned with the XML characters escaped as StringEscapeUtils does",
+            Types.STRING, 
+            "'" + ESCAPE_XML + "'");
     
-    private static final FunctionArgumentScheme<Object> ATS_STRING_UNESCAPEXMLPARAM = 
+    private static final FunctionArgumentScheme<String> ATS_STRING_UNESCAPEXMLPARAM = 
         FunctionArgumentScheme.from(
-            "The String is returned without the XML escape characters as StringEscapeUtils does"
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.forName("'" + UNESCAPE_XML + "'"), 
-            );
+            "The String is returned without the XML escape characters as StringEscapeUtils does",
+            Types.STRING, 
+            "'" + UNESCAPE_XML + "'");
     
-    private static final FunctionArgumentScheme<Object> ATS_STRING_ESCAPEHTMLPARAM = 
+    private static final FunctionArgumentScheme<String> ATS_STRING_ESCAPEHTMLPARAM = 
         FunctionArgumentScheme.from(
-            "It escapes the given String using HTML entities (as StringEscapeUtils does)"
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.forName("'" + ESCAPE_HTML + "'"), 
-            );
+            "It escapes the given String using HTML entities (as StringEscapeUtils does)",
+            Types.STRING, 
+            "'" + ESCAPE_HTML + "'");
     
-    private static final FunctionArgumentScheme<Object> ATS_STRING_UNESCAPEHTMLPARAM = 
+    private static final FunctionArgumentScheme<String> ATS_STRING_UNESCAPEHTMLPARAM = 
         FunctionArgumentScheme.from(
-            "It unescapes the given String and converts its HTML entity escapes into their unicode characters (as StringEscapeUtils does)"
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.forName("'" + UNESCAPE_HTML + "'"), 
-            );
+            "It unescapes the given String and converts its HTML entity escapes into their unicode characters (as StringEscapeUtils does)",
+            Types.STRING, 
+            "'" + UNESCAPE_HTML + "'");
     
-    private static final FunctionArgumentScheme<Object> ATS_STRING_ESCAPEJSPARAM = 
+    private static final FunctionArgumentScheme<String> ATS_STRING_ESCAPEJSPARAM = 
         FunctionArgumentScheme.from(
-            "It converts the given String into a JavaScript valid one (as StringEscapeUtils does)"
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.forName("'" + ESCAPE_JAVASCRIPT + "'"), 
-            );
+            "It converts the given String into a JavaScript valid one (as StringEscapeUtils does)",
+            Types.STRING, 
+            "'" + ESCAPE_JAVASCRIPT + "'");
     
-    private static final FunctionArgumentScheme<Object> ATS_STRING_UNESCAPEJSPARAM = 
+    private static final FunctionArgumentScheme<String> ATS_STRING_UNESCAPEJSPARAM = 
         FunctionArgumentScheme.from(
-            "It unescapes the given JavaScript valid String (as StringEscapeUtils does)"
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.forName("'" + UNESCAPE_JAVASCRIPT + "'"), 
-            );
+            "It unescapes the given JavaScript valid String (as StringEscapeUtils does)",
+            Types.STRING, 
+            "'" + UNESCAPE_JAVASCRIPT + "'");
     
-    private static final FunctionArgumentScheme<Object> ATS_STRING_CHARSETPARAM_TOBASE64PARAM = 
+    private static final FunctionArgumentScheme<String> ATS_STRING_CHARSETPARAM_TOBASE64PARAM = 
         FunctionArgumentScheme.from(
-            "It converts the given String into a base64 encoded one"
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.forName("java.nio.charset.Charset, '" + TO_BASE64 + "'"), 
-            );
+            "It converts the given String into a base64 encoded one",
+            Types.STRING, 
+            "java.nio.charset.Charset, '" + TO_BASE64 + "'");
     
-    private static final FunctionArgumentScheme<Object> ATS_STRING_CHARSETPARAM_FROMBASE64PARAM = 
+    private static final FunctionArgumentScheme<String> ATS_STRING_CHARSETPARAM_FROMBASE64PARAM = 
         FunctionArgumentScheme.from(
-            "It decodes the given base64 encoded String"
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.forName("java.nio.charset.Charset, '" + FROM_BASE64 + "'"), 
-            );
+            "It decodes the given base64 encoded String",
+            Types.STRING, 
+            "java.nio.charset.Charset, '" + FROM_BASE64 + "'");
     
-    private static final FunctionArgumentScheme<Object> ATS_STRING_CHARSETPARAM_TOHEXADECIMALPARAM = 
+    private static final FunctionArgumentScheme<String> ATS_STRING_CHARSETPARAM_TOHEXADECIMALPARAM = 
         FunctionArgumentScheme.from(
-            "It converts the given String into its Hexadecimal representation using the specified Charset"
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.forName("java.nio.charset.Charset, '" + TO_HEXADECIMAL + "'"), 
-            );
+            "It converts the given String into its Hexadecimal representation using the specified Charset",
+            Types.STRING, 
+            "java.nio.charset.Charset, '" + TO_HEXADECIMAL + "'");
     
-    private static final FunctionArgumentScheme<Object> ATS_STRING_CHARSETPARAM_FROMHEXADECIMALPARAM = 
+    private static final FunctionArgumentScheme<String> ATS_STRING_CHARSETPARAM_FROMHEXADECIMALPARAM = 
         FunctionArgumentScheme.from(
-            "The given String is converted from its Hexadecimal representation to a String using the specified Charset"
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.forName("java.nio.charset.Charset, '" + FROM_HEXADECIMAL + "'"), 
-            );
+            "The given String is converted from its Hexadecimal representation to a String using the specified Charset",
+            Types.STRING, 
+            "java.nio.charset.Charset, '" + FROM_HEXADECIMAL + "'");
         
-    private static final FunctionArgumentScheme<Object> ATS_STRING_TOUPPERCASEPARAM = 
+    private static final FunctionArgumentScheme<String> ATS_STRING_TOUPPERCASEPARAM = 
         FunctionArgumentScheme.from(
-            "It converts the given String to uppercase"
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.forName("'" + TO_UPPERCASE + "'"), 
-            );
+            "It converts the given String to uppercase",
+            Types.STRING, 
+            "'" + TO_UPPERCASE + "'");
     
-    private static final FunctionArgumentScheme<Object> ATS_STRING_TOLOWERCASEPARAM = 
+    private static final FunctionArgumentScheme<String> ATS_STRING_TOLOWERCASEPARAM = 
         FunctionArgumentScheme.from(
-            "It converts the given String to lowercase"
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.forName("'" + TO_LOWERCASE + "'"), 
-            );
+            "It converts the given String to lowercase",
+            Types.STRING, 
+            "'" + TO_LOWERCASE + "'");
     
-    private static final FunctionArgumentScheme<Object> ATS_STRING_UNCAPITALIZEPARAM = 
+    private static final FunctionArgumentScheme<String> ATS_STRING_UNCAPITALIZEPARAM = 
         FunctionArgumentScheme.from(
-            "It converts the first letter of the given String to lowercase"
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.forName("'" + UNCAPITALIZE + "'"), 
-            );
+            "It converts the first letter of the given String to lowercase",
+            Types.STRING, 
+            "'" + UNCAPITALIZE + "'");
     
-    private static final FunctionArgumentScheme<Object> ATS_STRING_CAPITALIZEPARAM = 
+    private static final FunctionArgumentScheme<String> ATS_STRING_CAPITALIZEPARAM = 
         FunctionArgumentScheme.from(
-            "It converts the first letter of the given String to uppercase"
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.forName("'" + CAPITALIZE + "'"), 
-            );
+            "It converts the first letter of the given String to uppercase",
+            Types.STRING, 
+            "'" + CAPITALIZE + "'");
     
-    private static final FunctionArgumentScheme<Object> ATS_STRING_TRIMPARAM = 
+    private static final FunctionArgumentScheme<String> ATS_STRING_TRIMPARAM = 
         FunctionArgumentScheme.from(
-            "Removes control characters (char <= 32) from both ends of the given String"
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.forName("'" + TRIM + "'"),
-            );
+            "Removes control characters (char <= 32) from both ends of the given String",
+            Types.STRING, 
+            "'" + TRIM + "'");
     
-    private static final FunctionArgumentScheme<Object> ATS_STRING_STRIPPARAM = 
+    private static final FunctionArgumentScheme<String> ATS_STRING_STRIPPARAM = 
         FunctionArgumentScheme.from(
-            "Strips whitespace from both sides of the given String"
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.forName("'" + STRIP + "'"),
-            );
+            "Strips whitespace from both sides of the given String",
+            Types.STRING, 
+            "'" + STRIP + "'");
+    
+    
     
     public StringConverter() {
         super();
     }
+
+
+    
+    
+    @Override
+    protected Set<FunctionArgumentScheme<? extends Object>> registerMatchedSchemes() {
+        Set<FunctionArgumentScheme<? extends Object>> matched = new LinkedHashSet<FunctionArgumentScheme<? extends Object>>();
+        matched.add(ATS_OBJECT_EMPTY);
+        matched.add(ATS_CALENDAR_STRING);
+        matched.add(ATS_CALENDAR_LOCALE);
+        matched.add(ATS_CALENDAR_LOCALE_STRING);
+        matched.add(ATS_STRING_ESCAPECSVPARAM);
+        matched.add(ATS_STRING_UNESCAPECSVPARAM);
+        matched.add(ATS_STRING_ESCAPEHTMLPARAM);
+        matched.add(ATS_STRING_UNESCAPEHTMLPARAM);
+        matched.add(ATS_STRING_ESCAPEJSPARAM);
+        matched.add(ATS_STRING_UNESCAPEJSPARAM);
+        matched.add(ATS_STRING_ESCAPEXMLPARAM);
+        matched.add(ATS_STRING_UNESCAPEXMLPARAM);
+        matched.add(ATS_STRING_CHARSETPARAM_TOBASE64PARAM);
+        matched.add(ATS_STRING_CHARSETPARAM_FROMBASE64PARAM);
+        matched.add(ATS_STRING_CHARSETPARAM_TOHEXADECIMALPARAM);
+        matched.add(ATS_STRING_CHARSETPARAM_FROMHEXADECIMALPARAM);
+        matched.add(ATS_STRING_TOUPPERCASEPARAM);
+        matched.add(ATS_STRING_TOLOWERCASEPARAM);
+        matched.add(ATS_STRING_UNCAPITALIZEPARAM);
+        matched.add(ATS_STRING_CAPITALIZEPARAM);
+        matched.add(ATS_STRING_TRIMPARAM);
+        matched.add(ATS_STRING_STRIPPARAM);
+        return matched;
+    }
+
+
 
 
     @Override
