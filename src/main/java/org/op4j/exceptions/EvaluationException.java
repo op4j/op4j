@@ -19,7 +19,6 @@
  */
 package org.op4j.exceptions;
 
-import org.apache.commons.lang.exception.NestableRuntimeException;
 
 /**
  * 
@@ -28,15 +27,28 @@ import org.apache.commons.lang.exception.NestableRuntimeException;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class NonIterableException 
-        extends NestableRuntimeException {
+public class EvaluationException extends RuntimeException {
 
-	private static final long serialVersionUID = 8893744706034654968L;
+    
+    private static final long serialVersionUID = 2429241709867768565L;
+    
+    
 
-	
-	public NonIterableException(String message) {
-        super(message);
+    public EvaluationException() {
+        super();
     }
 
+    public EvaluationException(String msg, Throwable cause) {
+        super(msg, cause);
+    }
+
+    public EvaluationException(String msg) {
+        super(msg);
+    }
+
+    public EvaluationException(Throwable cause) {
+        super(cause);
+    }
+    
     
 }

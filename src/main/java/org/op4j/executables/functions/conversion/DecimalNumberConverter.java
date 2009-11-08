@@ -237,12 +237,9 @@ public abstract class DecimalNumberConverter<T extends Number> extends NumberCon
         } else if (number instanceof BigInteger) {
             bigDecimal = new BigDecimal((BigInteger) number);
         } else {
-System.out.println("*** BEFORE: " + number);
             bigDecimal = new BigDecimal(number.doubleValue());
-System.out.println("*** AFTER: " + bigDecimal);
         }
         bigDecimal = bigDecimal.setScale(scale, roundingMode);
-System.out.println("*** AFTER SCALING: " + bigDecimal);
         return fromNumber(bigDecimal);
     }
 

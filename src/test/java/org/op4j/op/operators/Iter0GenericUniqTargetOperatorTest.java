@@ -22,7 +22,7 @@ import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.time.DateUtils;
 import org.op4j.Op;
-import org.op4j.exceptions.OperationExecutionException;
+import org.op4j.exceptions.FunctionExecutionException;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.operation.ListMapTarget;
@@ -324,7 +324,7 @@ public class Iter0GenericUniqTargetOperatorTest extends TestCase {
 		try {
 			Op.on(String.class, "327").convToByte().get();
 			fail("Op.on(String.class, \"327\").toByte() should have thrown an exception");
-		} catch (OperationExecutionException e) {
+		} catch (FunctionExecutionException e) {
 			// do nothing
 		}
 	}

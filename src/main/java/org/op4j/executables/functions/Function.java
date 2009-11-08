@@ -47,7 +47,7 @@ import java.util.Set;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.op4j.exceptions.FunctionImplementationRegistrationException;
-import org.op4j.exceptions.OperationExecutionException;
+import org.op4j.exceptions.FunctionExecutionException;
 
 /**
  * 
@@ -171,10 +171,10 @@ public final class Function<X,T>  {
 
         try {
             return functionImplementation.execute(arguments);
-        } catch (OperationExecutionException e) {
+        } catch (FunctionExecutionException e) {
             throw e;
         } catch (Exception e) {
-            throw new OperationExecutionException(
+            throw new FunctionExecutionException(
                 "Exception executing operation \"" + getFunctionName() +"\"", e);
         }
         

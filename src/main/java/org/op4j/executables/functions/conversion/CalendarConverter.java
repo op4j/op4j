@@ -27,16 +27,15 @@ import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Set;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.apache.commons.lang.time.DateUtils;
-import org.op4j.operation.Arguments;
-import org.op4j.operation.ArgumentsTypeScheme;
-import org.op4j.operation.Result;
-import org.op4j.type.Type;
-import org.op4j.type.Types;
-import org.op4j.typescheme.TypeScheme;
-import org.op4j.typescheme.TypeSchemes;
+import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
+import org.op4j.exceptions.FunctionExecutionException;
+import org.op4j.executables.functions.FunctionArgumentScheme;
+import org.op4j.executables.functions.FunctionArguments;
 
 /**
  * 
@@ -45,306 +44,242 @@ import org.op4j.typescheme.TypeSchemes;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class CalendarConverter extends ConverterImplementation {
+public final class CalendarConverter extends ConverterImplementation<Calendar> {
 
 	private static final long serialVersionUID = 234124839280883047L;
 
-	private static final TypeScheme INT_STRINGPARAM_TYPESCHEME =
-		TypeSchemes.forName("Integer,'TRUNCATE'");
-
-    private static final ArgumentsTypeScheme ATS_STRING_PATTERN = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.STRING_TYPESCHEME, 
-                "It converts the given String into a Calendar using the given pattern parameter. If" +
-                " the pattern includes either, the name of the month or day of week, a conversion" +
-                " accepting a Locale must be used instead");
-    
-    private static final ArgumentsTypeScheme ATS_STRING_PATTERN_LOCALE = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.forName("String, Locale"), 
-                "It converts the given String into a Calendar usign the given pattern and Locale parameters");
-        
-    private static final ArgumentsTypeScheme ATS_JAVAUTILDATE_LOCALE = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.JAVAUTILDATE_TYPESCHEME, 
-            TypeSchemes.EMPTY_TYPESCHEME, 
-                "The given java.util.Date is converted into a Calendar");
-    
-    private static final ArgumentsTypeScheme ATS_JAVASQLDATE_EMPTY = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.JAVASQLDATE_TYPESCHEME, 
-            TypeSchemes.EMPTY_TYPESCHEME, 
-                "The given java.sql.Date is converted into a Calendar");
-    
-    private static final ArgumentsTypeScheme ATS_TIMESTAMP_EMPTY = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.TIMESTAMP_TYPESCHEME, 
-            TypeSchemes.EMPTY_TYPESCHEME, 
-                "The given java.sql.Timestamp is converted into a Calendar");
-    
-    private static final ArgumentsTypeScheme ATS_LONGTIMESTAMP_EMPTY = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.LONG_TYPESCHEME, 
-            TypeSchemes.EMPTY_TYPESCHEME, 
-                "The given long representing the time in millis is converted into a Calendar");
-    
-    private static final ArgumentsTypeScheme ATS_INTEGERYEAR_INTEGERMONTH_INTEGERDAY_EMPTY = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.forName("Integer, Integer, Integer"), 
-            TypeSchemes.EMPTY_TYPESCHEME, 
-                "A Calendar is created from the given year, month and day. The hour, minute, second and millisecond will be set to 0");
-    
-    private static final ArgumentsTypeScheme ATS_STRINGYEAR_STRINGMONTH_STRINGDAY_EMPTY = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.forName("String, String, String"), 
-            TypeSchemes.EMPTY_TYPESCHEME, 
-                "A Calendar is created from the given year, month and day. The hour, minute, second and millisecond will be set to 0");
-    
-    private static final ArgumentsTypeScheme ATS_INTEGERYEAR_INTEGERMONTH_INTEGERDAY_INTEGERHOUR_INTEGERMINUTE_EMPTY = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.forName("Integer, Integer, Integer, Integer, Integer"), 
-            TypeSchemes.EMPTY_TYPESCHEME, 
-                "A Calendar is created from the given year, month, day, hour and minute. The second and millisecond will be set to 0");
-    
-    private static final ArgumentsTypeScheme ATS_STRINGYEAR_STRINGMONTH_STRINGDAY_STRINGHOUR_STRINGMINUTE_EMPTY = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.forName("String, String, String, String, String"), 
-            TypeSchemes.EMPTY_TYPESCHEME, 
-                "A Calendar is created from the given year, month, day, hour and minute. The second and millisecond will be set to 0");
-    
-    private static final ArgumentsTypeScheme ATS_INTEGERYEAR_INTEGERMONTH_INTEGERDAY_INTEGERHOUR_INTEGERMINUTE_INTEGERSECOND_EMPTY = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.forName("Integer, Integer, Integer, Integer, Integer, Integer"), 
-            TypeSchemes.EMPTY_TYPESCHEME, 
-                "A Calendar is created from the given year, month, day, hour, minute and second. The millisecond will be set to 0");
-    
-    private static final ArgumentsTypeScheme ATS_STRINGYEAR_STRINGMONTH_STRINGDAY_STRINGHOUR_STRINGMINUTE_STRINGSECOND_EMPTY = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.forName("String, String, String, String, String, String"), 
-            TypeSchemes.EMPTY_TYPESCHEME, 
-                "A Calendar is created from the given year, month, day, hour, minute and second. The millisecond will be set to 0");
-    
-    private static final ArgumentsTypeScheme ATS_INTEGERYEAR_INTEGERMONTH_INTEGERDAY_INTEGERHOUR_INTEGERMINUTE_INTEGERSECOND_INTEGERMILLISECOND_EMPTY = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.forName("Integer, Integer, Integer, Integer, Integer, Integer, Integer"), 
-            TypeSchemes.EMPTY_TYPESCHEME, 
-                "A Calendar is created from the given year, month, day, hour, minute, second and millisecond");
-    
-    private static final ArgumentsTypeScheme ATS_STRINGYEAR_STRINGMONTH_STRINGDAY_STRINGHOUR_STRINGMINUTE_STRINGSECOND_STRINGMILLISECOND_EMPTY = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.forName("String, String, String, String, String, String, String"), 
-            TypeSchemes.EMPTY_TYPESCHEME, 
-                "A Calendar is created from the given year, month, day, hour, minute, second and millisecond");
-
-    private static final ArgumentsTypeScheme ATS_JAVAUTILDATE_INT_STRINGPARAM = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.JAVAUTILDATE_TYPESCHEME, 
-            INT_STRINGPARAM_TYPESCHEME, 
-            "It truncates a Date in order to leave the given field as" +
-            " the most significant one");
-    
-    private static final ArgumentsTypeScheme ATS_CALENDAR_INT_STRINGPARAM = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.CALENDAR_TYPESCHEME, 
-            INT_STRINGPARAM_TYPESCHEME, 
-                "It truncates a Calendar in order to leave the given field as" +
-                " the most significant one");
-    
-    private static final ArgumentsTypeScheme ATS_JAVASQLDATE_INT_STRINGPARAM = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.JAVASQLDATE_TYPESCHEME, 
-            INT_STRINGPARAM_TYPESCHEME, 
-                "It truncates a Date in order to leave the given field as" +
-                " the most significant one");
 	
-    private static final ArgumentsTypeScheme ATS_TIMESTAMP_INT_STRINGPARAM = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.TIMESTAMP_TYPESCHEME, 
-            INT_STRINGPARAM_TYPESCHEME, 
-                "It truncates a Timestamp in order to leave the given field as" +
-                " the most significant one");
+	
+	
+	
+    private static final FunctionArgumentScheme<String> SCH_STRING_PATTERN = 
+        FunctionArgumentScheme.from(
+            "It converts the given String into a Calendar using the given pattern parameter. If" +
+            " the pattern includes either, the name of the month or day of week, a conversion" +
+            " accepting a Locale must be used instead",
+            Types.STRING, 
+            "String");
+    
+    private static final FunctionArgumentScheme<String> SCH_STRING_PATTERN_LOCALE = 
+        FunctionArgumentScheme.from(
+            "It converts the given String into a Calendar usign the given pattern and Locale parameters",
+            Types.STRING, 
+            "String, Locale");
+        
+    private static final FunctionArgumentScheme<Date> SCH_JAVAUTILDATE_LOCALE = 
+        FunctionArgumentScheme.from(
+            "The given java.util.Date is converted into a Calendar",
+            Types.DATE);
+    
+    private static final FunctionArgumentScheme<java.sql.Date> SCH_JAVASQLDATE = 
+        FunctionArgumentScheme.from(
+            "The given java.sql.Date is converted into a Calendar",
+            Types.forClass(java.sql.Date.class));
+    
+    private static final FunctionArgumentScheme<Timestamp> SCH_TIMESTAMP = 
+        FunctionArgumentScheme.from(
+            "The given java.sql.Timestamp is converted into a Calendar",
+            Types.forClass(java.sql.Timestamp.class));
+    
+    private static final FunctionArgumentScheme<Long> SCH_LONGTIMESTAMP = 
+        FunctionArgumentScheme.from(
+            "The given long representing the time in millis is converted into a Calendar",
+            Types.LONG);
+    
+    private static final FunctionArgumentScheme<Integer[]> SCH_INTEGERARRAY = 
+        FunctionArgumentScheme.from(
+            "A Calendar is created from the given integer array. This can contain: [year, month, day], " +
+            "[year, month, day, hour, minute], [year, month, day, hour, minute, second] or " +
+            "[year, month, day, hour, minute, second, millisecond]. The unspecified components will be set to 0",
+            Types.ARRAY_OF_INTEGER);
+    
+    private static final FunctionArgumentScheme<String[]> SCH_STRINGARRAY = 
+        FunctionArgumentScheme.from(
+            "A Calendar is created from the given integer array. This can contain: [year, month, day], " +
+            "[year, month, day, hour, minute], [year, month, day, hour, minute, second] or " +
+            "[year, month, day, hour, minute, second, millisecond]. The unspecified components will be set to 0",
+            Types.ARRAY_OF_STRING);
+
+    private static final FunctionArgumentScheme<Date> SCH_JAVAUTILDATE_INT_STRINGPARAM = 
+        FunctionArgumentScheme.from(
+            "It truncates a Date in order to leave the given field as" +
+            " the most significant one",
+            Types.DATE, 
+            "Integer,'TRUNCATE'");
+    
+    private static final FunctionArgumentScheme<Calendar> SCH_CALENDAR_INT_STRINGPARAM = 
+        FunctionArgumentScheme.from(
+            "It truncates a Calendar in order to leave the given field as" +
+            " the most significant one",
+            Types.CALENDAR, 
+            "Integer,'TRUNCATE'");
+    
+    private static final FunctionArgumentScheme<java.sql.Date> SCH_JAVASQLDATE_INT_STRINGPARAM = 
+        FunctionArgumentScheme.from(
+            "It truncates a Date in order to leave the given field as" +
+            " the most significant one",
+            Types.forClass(java.sql.Date.class), 
+            "Integer,'TRUNCATE'");
+	
+    private static final FunctionArgumentScheme<Timestamp> SCH_TIMESTAMP_INT_STRINGPARAM = 
+        FunctionArgumentScheme.from(
+            "It truncates a Timestamp in order to leave the given field as" +
+            " the most significant one",
+            Types.forClass(Timestamp.class),
+            "Integer,'TRUNCATE'");
+    
+    
+    
+    
     
     public CalendarConverter() {
         super();
     }
+    
 
     
+    
+    
     @Override
-    protected Set<ArgumentsTypeScheme> registerMatchedArgumentTypeSchemes() {
-        final Set<ArgumentsTypeScheme> matched = new LinkedHashSet<ArgumentsTypeScheme>();
-        matched.add(ATS_STRING_PATTERN);
-        matched.add(ATS_STRING_PATTERN_LOCALE);
-        matched.add(ATS_JAVAUTILDATE_LOCALE);
-        matched.add(ATS_JAVASQLDATE_EMPTY);
-        matched.add(ATS_TIMESTAMP_EMPTY);
-        matched.add(ATS_LONGTIMESTAMP_EMPTY);
-        matched.add(ATS_INTEGERYEAR_INTEGERMONTH_INTEGERDAY_EMPTY);
-        matched.add(ATS_STRINGYEAR_STRINGMONTH_STRINGDAY_EMPTY);
-        matched.add(ATS_INTEGERYEAR_INTEGERMONTH_INTEGERDAY_INTEGERHOUR_INTEGERMINUTE_EMPTY);
-        matched.add(ATS_STRINGYEAR_STRINGMONTH_STRINGDAY_STRINGHOUR_STRINGMINUTE_EMPTY);
-        matched.add(ATS_INTEGERYEAR_INTEGERMONTH_INTEGERDAY_INTEGERHOUR_INTEGERMINUTE_INTEGERSECOND_EMPTY);
-        matched.add(ATS_STRINGYEAR_STRINGMONTH_STRINGDAY_STRINGHOUR_STRINGMINUTE_STRINGSECOND_EMPTY);
-        matched.add(ATS_INTEGERYEAR_INTEGERMONTH_INTEGERDAY_INTEGERHOUR_INTEGERMINUTE_INTEGERSECOND_INTEGERMILLISECOND_EMPTY);
-        matched.add(ATS_STRINGYEAR_STRINGMONTH_STRINGDAY_STRINGHOUR_STRINGMINUTE_STRINGSECOND_STRINGMILLISECOND_EMPTY);
-        matched.add(ATS_JAVAUTILDATE_INT_STRINGPARAM);
-        matched.add(ATS_CALENDAR_INT_STRINGPARAM);
-        matched.add(ATS_JAVASQLDATE_INT_STRINGPARAM);
-        matched.add(ATS_TIMESTAMP_INT_STRINGPARAM);
+    protected Set<FunctionArgumentScheme<? extends Object>> registerMatchedSchemes() {
+        final Set<FunctionArgumentScheme<? extends Object>> matched = new LinkedHashSet<FunctionArgumentScheme<? extends Object>>();
+        matched.add(SCH_STRING_PATTERN);
+        matched.add(SCH_STRING_PATTERN_LOCALE);
+        matched.add(SCH_JAVAUTILDATE_LOCALE);
+        matched.add(SCH_JAVASQLDATE);
+        matched.add(SCH_TIMESTAMP);
+        matched.add(SCH_LONGTIMESTAMP);
+        matched.add(SCH_INTEGERARRAY);
+        matched.add(SCH_STRINGARRAY);
+        matched.add(SCH_JAVAUTILDATE_INT_STRINGPARAM);
+        matched.add(SCH_CALENDAR_INT_STRINGPARAM);
+        matched.add(SCH_JAVASQLDATE_INT_STRINGPARAM);
+        matched.add(SCH_TIMESTAMP_INT_STRINGPARAM);
         return matched;
     }
     
-    
-    
-    @Override
-    public Type getResultType() {
-        return Types.CALENDAR;
-    }
-    
+
+
+
+
 
     @Override
-	protected Result doExecute(final Arguments arguments) throws Exception {
+    protected Type<Calendar> registerResultType() {
+        return Types.CALENDAR;
+    }
+
+
+    
+    
+    @Override
+    public Calendar execute(final FunctionArguments arguments) throws Exception {
+        
 		    	    
-        if (arguments.areAllTargetsNull()) {
-            return createUniqResult((Object[])null);
+        if (arguments.isTargetNull()) {
+            return null;
         }
 		
-		if (ATS_STRING_PATTERN.matches(arguments)) {
-            return createUniqResult(fromString(arguments.getStringTarget(0), arguments.getStringParameter(0), null));
+		if (SCH_STRING_PATTERN.matches(arguments)) {
+            return fromString(arguments.getTargetAsString(), arguments.getStringParameter(0), null);
         }
 		
-		if (ATS_STRING_PATTERN_LOCALE.matches(arguments)) {
-            return createUniqResult(fromString(arguments.getStringTarget(0), arguments.getStringParameter(0), arguments.getLocaleParameter(1)));
+		if (SCH_STRING_PATTERN_LOCALE.matches(arguments)) {
+            return fromString(arguments.getTargetAsString(), arguments.getStringParameter(0), arguments.getLocaleParameter(1));
         }
         
-        if (ATS_JAVAUTILDATE_LOCALE.matches(arguments)) {
-            return createUniqResult(fromLong(((java.util.Date)arguments.getTarget(0)).getTime()));
+        if (SCH_JAVAUTILDATE_LOCALE.matches(arguments)) {
+            return fromLong(((java.util.Date)arguments.getTarget()).getTime());
         }
 		
-		if (ATS_JAVASQLDATE_EMPTY.matches(arguments)) {
-            return createUniqResult(fromLong(((java.sql.Date)arguments.getTarget(0)).getTime()));
+		if (SCH_JAVASQLDATE.matches(arguments)) {
+            return fromLong(((java.sql.Date)arguments.getTarget()).getTime());
         }
 		
-		if (ATS_TIMESTAMP_EMPTY.matches(arguments)) {
-            return createUniqResult(fromLong(((java.sql.Timestamp)arguments.getTarget(0)).getTime()));
+		if (SCH_TIMESTAMP.matches(arguments)) {
+            return fromLong(((java.sql.Timestamp)arguments.getTarget()).getTime());
         }
 		
-		if (ATS_LONGTIMESTAMP_EMPTY.matches(arguments)) {
-            return createUniqResult(fromLong(arguments.getTargetAsLong(0).longValue()));
+		if (SCH_LONGTIMESTAMP.matches(arguments)) {
+            return fromLong(arguments.getTargetAsLong().longValue());
+        }
+        
+        if (SCH_INTEGERARRAY.matches(arguments)) {
+            final Integer[] target = (Integer[]) arguments.getTarget();
+            if (target.length != 3 &&  // year, month, day
+                target.length != 5 &&  // year, month, day, hour, minute
+                target.length != 6 &&  // year, month, day, hour, minute, second
+                target.length != 7) {  // year month, day, hour, minute, second, millisecond
+                throw new FunctionExecutionException(
+                        "Integer arguments array for Calendar conversion should of sizes " +
+                        "3 (day,month,year), 5 (+hour,minute), 6 (+second) or 7 (+millisecond). " +
+                        "Size " + target.length + " is not valid.");
+            }
+            if (ArrayUtils.contains(target, null)) {
+                throw new FunctionExecutionException(
+                        "Integer arguments array for Calendar conversion should not contain nulls.");
+            }
+            return fromInts(
+                    target[0],
+                    target[1],
+                    target[2],
+                    (target.length >= 5? target[3] : Integer.valueOf(0)), 
+                    (target.length >= 5? target[4] : Integer.valueOf(0)),
+                    (target.length >= 6? target[5] : Integer.valueOf(0)),
+                    (target.length == 7? target[6] : Integer.valueOf(0)));
+        }
+        
+        if (SCH_STRINGARRAY.matches(arguments)) {
+            final String[] target = (String[]) arguments.getTarget();
+            if (target.length != 3 &&  // year, month, day
+                target.length != 5 &&  // year, month, day, hour, minute
+                target.length != 6 &&  // year, month, day, hour, minute, second
+                target.length != 7) {  // year month, day, hour, minute, second, millisecond
+                throw new FunctionExecutionException(
+                        "String arguments array for Calendar conversion should of sizes " +
+                        "3 (day,month,year), 5 (+hour,minute), 6 (+second) or 7 (+millisecond). " +
+                        "Size " + target.length + " is not valid.");
+            }
+            if (ArrayUtils.contains(target, null)) {
+                throw new FunctionExecutionException(
+                        "String arguments array for Calendar conversion should not contain nulls.");
+            }
+            return fromInts(
+                    Integer.valueOf(target[0]),
+                    Integer.valueOf(target[1]),
+                    Integer.valueOf(target[2]),
+                    (target.length >= 5? Integer.valueOf(target[3]) : Integer.valueOf(0)), 
+                    (target.length >= 5? Integer.valueOf(target[4]) : Integer.valueOf(0)),
+                    (target.length >= 6? Integer.valueOf(target[5]) : Integer.valueOf(0)),
+                    (target.length == 7? Integer.valueOf(target[6]) : Integer.valueOf(0)));
         }
 		
-		if (ATS_INTEGERYEAR_INTEGERMONTH_INTEGERDAY_EMPTY.matches(arguments)) {
-			return createUniqResult(fromInts(
-					arguments.getTargetAsInteger(0),
-					arguments.getTargetAsInteger(1),
-					arguments.getTargetAsInteger(2),
-					Integer.valueOf(0), 
-					Integer.valueOf(0),
-					Integer.valueOf(0),
-					Integer.valueOf(0)));
-        }
-		if (ATS_STRINGYEAR_STRINGMONTH_STRINGDAY_EMPTY.matches(arguments)) {
-			return createUniqResult(fromInts(
-					Integer.valueOf(arguments.getStringTarget(0)),
-					Integer.valueOf(arguments.getStringTarget(1)),
-					Integer.valueOf(arguments.getStringTarget(2)),
-					Integer.valueOf(0), 
-					Integer.valueOf(0),
-					Integer.valueOf(0),
-					Integer.valueOf(0)));
-        }
-		
-		if (ATS_INTEGERYEAR_INTEGERMONTH_INTEGERDAY_INTEGERHOUR_INTEGERMINUTE_EMPTY.matches(arguments)) {
-			return createUniqResult(fromInts(
-					arguments.getTargetAsInteger(0),
-					arguments.getTargetAsInteger(1),
-					arguments.getTargetAsInteger(2),
-					arguments.getTargetAsInteger(3),
-					arguments.getTargetAsInteger(4),
-					Integer.valueOf(0),
-					Integer.valueOf(0)));
-        }
-		if (ATS_STRINGYEAR_STRINGMONTH_STRINGDAY_STRINGHOUR_STRINGMINUTE_EMPTY.matches(arguments)) {
-			return createUniqResult(fromInts(
-					Integer.valueOf(arguments.getStringTarget(0)),
-					Integer.valueOf(arguments.getStringTarget(1)),
-					Integer.valueOf(arguments.getStringTarget(2)),
-					Integer.valueOf(arguments.getStringTarget(3)),
-					Integer.valueOf(arguments.getStringTarget(4)),
-					Integer.valueOf(0),
-					Integer.valueOf(0)));
-        }
-		
-		if (ATS_INTEGERYEAR_INTEGERMONTH_INTEGERDAY_INTEGERHOUR_INTEGERMINUTE_INTEGERSECOND_EMPTY.matches(arguments)) {
-			return createUniqResult(fromInts(
-					arguments.getTargetAsInteger(0),
-					arguments.getTargetAsInteger(1),
-					arguments.getTargetAsInteger(2),
-					arguments.getTargetAsInteger(3),
-					arguments.getTargetAsInteger(4),
-					arguments.getTargetAsInteger(5),
-					Integer.valueOf(0)));
-        }
-		if (ATS_STRINGYEAR_STRINGMONTH_STRINGDAY_STRINGHOUR_STRINGMINUTE_STRINGSECOND_EMPTY.matches(arguments)) {
-			return createUniqResult(fromInts(
-					Integer.valueOf(arguments.getStringTarget(0)),
-					Integer.valueOf(arguments.getStringTarget(1)),
-					Integer.valueOf(arguments.getStringTarget(2)),
-					Integer.valueOf(arguments.getStringTarget(3)),
-					Integer.valueOf(arguments.getStringTarget(4)),
-					Integer.valueOf(arguments.getStringTarget(5)),
-					Integer.valueOf(0)));
-        }
-		
-		if (ATS_INTEGERYEAR_INTEGERMONTH_INTEGERDAY_INTEGERHOUR_INTEGERMINUTE_INTEGERSECOND_INTEGERMILLISECOND_EMPTY.matches(arguments)) {
-			return createUniqResult(fromInts(
-					arguments.getTargetAsInteger(0),
-					arguments.getTargetAsInteger(1),
-					arguments.getTargetAsInteger(2),
-					arguments.getTargetAsInteger(3),
-					arguments.getTargetAsInteger(4),
-					arguments.getTargetAsInteger(5),
-					arguments.getTargetAsInteger(6)));
-        }
-		if (ATS_STRINGYEAR_STRINGMONTH_STRINGDAY_STRINGHOUR_STRINGMINUTE_STRINGSECOND_STRINGMILLISECOND_EMPTY.matches(arguments)) {
-			return createUniqResult(fromInts(
-			        Integer.valueOf(arguments.getStringTarget(0)),
-			        Integer.valueOf(arguments.getStringTarget(1)),
-			        Integer.valueOf(arguments.getStringTarget(2)),
-			        Integer.valueOf(arguments.getStringTarget(3)),
-			        Integer.valueOf(arguments.getStringTarget(4)),
-			        Integer.valueOf(arguments.getStringTarget(5)),
-			        Integer.valueOf(arguments.getStringTarget(6))));
-        }
-		
-		if (ATS_JAVAUTILDATE_INT_STRINGPARAM.matches(arguments)) {
-		    final Date javaUtilDate = (Date) arguments.getTarget(0);
+		if (SCH_JAVAUTILDATE_INT_STRINGPARAM.matches(arguments)) {
+		    final Date javaUtilDate = (Date) arguments.getTarget();
 		    final Calendar calendar = Calendar.getInstance();
 			calendar.setTime(javaUtilDate);
 			
-			return createUniqResult(truncateFromCalendar(calendar, 
-					arguments.getIntegerParameter(0).intValue()));
+			return truncateFromCalendar(calendar, 
+					arguments.getIntegerParameter(0).intValue());
 		}
-		if (ATS_CALENDAR_INT_STRINGPARAM.matches(arguments)) {
-			return createUniqResult(truncateFromCalendar((Calendar) arguments.getTarget(0), 
-					arguments.getIntegerParameter(0).intValue()));
+		if (SCH_CALENDAR_INT_STRINGPARAM.matches(arguments)) {
+			return truncateFromCalendar((Calendar) arguments.getTarget(), 
+					arguments.getIntegerParameter(0).intValue());
 		}
-		if (ATS_JAVASQLDATE_INT_STRINGPARAM.matches(arguments)) {
-		    final java.sql.Date javaSqlDate = (java.sql.Date) arguments.getTarget(0);
+		if (SCH_JAVASQLDATE_INT_STRINGPARAM.matches(arguments)) {
+		    final java.sql.Date javaSqlDate = (java.sql.Date) arguments.getTarget();
 		    final Calendar calendar = Calendar.getInstance();
 			calendar.setTime(javaSqlDate);
 			
-			return createUniqResult(truncateFromCalendar(calendar, 
-					arguments.getIntegerParameter(0).intValue()));
+			return truncateFromCalendar(calendar, 
+					arguments.getIntegerParameter(0).intValue());
 		}
-		if (ATS_TIMESTAMP_INT_STRINGPARAM.matches(arguments)) {
-		    final Timestamp timestamp = (Timestamp) arguments.getTarget(0);
+		if (SCH_TIMESTAMP_INT_STRINGPARAM.matches(arguments)) {
+		    final Timestamp timestamp = (Timestamp) arguments.getTarget();
 		    final Calendar calendar = Calendar.getInstance();
 			calendar.setTimeInMillis(timestamp.getTime());
 			
-			return createUniqResult(truncateFromCalendar(calendar, 
-					arguments.getIntegerParameter(0).intValue()));
+			return truncateFromCalendar(calendar, 
+					arguments.getIntegerParameter(0).intValue());
 		}
         
 		return null;
@@ -360,10 +295,10 @@ public final class CalendarConverter extends ConverterImplementation {
 	    SimpleDateFormat sdf = null;
 	    if (locale == null) {
 	        if (StringUtils.contains(pattern, "MMM")) {
-                throw new ConversionException("The use of MMM or MMMM as part of the date pattern requires a Locale");
+                throw new FunctionExecutionException("The use of MMM or MMMM as part of the date pattern requires a Locale");
             }
 	        if (StringUtils.contains(pattern, "EEE")) {
-	            throw new ConversionException("The use of EEE or EEEE as part of the date pattern requires a Locale");
+	            throw new FunctionExecutionException("The use of EEE or EEEE as part of the date pattern requires a Locale");
 	        }
 	        sdf = new SimpleDateFormat(pattern);            
 	    } else {    

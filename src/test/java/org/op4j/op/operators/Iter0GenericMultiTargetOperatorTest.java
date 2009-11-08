@@ -313,7 +313,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 		try {
 			this.integerOperator.buildMap();
 			fail("As this.integerOperator has an odd number of items, buildMap should have failed");
-		} catch (ConversionException e) {
+		} catch (EvaluationException e) {
 			// do nothing
 		}
 		assertTrue(Types.forName("Map<?, ?>").isAssignableFrom(
@@ -406,7 +406,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 		try {
 			this.integerOperator.buildListMap();
 			fail("buildListMap() should have failed as the number of targets is not even");
-		} catch (ConversionException e) {
+		} catch (EvaluationException e) {
 			// do nothing
 		}
 		assertTrue(Types.forName("Map<Integer, ? extends List<Integer>>").isAssignableFrom(
@@ -427,7 +427,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 		try {
 			operator.addObj(Integer.valueOf(60)).buildListMap(Integer.class, Calendar.class);
 			fail("buildListMap(Integer.class, Calendar.class) should have failed as the number of targets is not even");
-		} catch (ConversionException e) {
+		} catch (EvaluationException e) {
 			// do nothing
 		}
 	}
@@ -646,7 +646,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 		try {
 			this.integerOperator.buildSetMap();
 			fail("buildSetMap() should have failed as the number of targets is not even");
-		} catch (ConversionException e) {
+		} catch (EvaluationException e) {
 			// do nothing
 		}
 		assertTrue(Types.forName("Map<Integer, ? extends Set<Integer>>").isAssignableFrom(
@@ -667,7 +667,7 @@ public class Iter0GenericMultiTargetOperatorTest extends TestCase {
 		try {
 			operator.addObj(Integer.valueOf(60)).buildSetMap(Integer.class, Calendar.class);
 			fail("buildSetMap(Integer.class, Calendar.class) should have failed as the number of targets is not even");
-		} catch (ConversionException e) {
+		} catch (EvaluationException e) {
 			// do nothing
 		}
 	}

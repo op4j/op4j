@@ -25,12 +25,11 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.apache.commons.lang.BooleanUtils;
-import org.op4j.operation.Arguments;
-import org.op4j.operation.ArgumentsTypeScheme;
-import org.op4j.operation.Result;
-import org.op4j.type.Type;
-import org.op4j.type.Types;
-import org.op4j.typescheme.TypeSchemes;
+import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
+import org.op4j.executables.functions.FunctionArgumentScheme;
+import org.op4j.executables.functions.FunctionArguments;
+
 
 /**
  * 
@@ -39,65 +38,71 @@ import org.op4j.typescheme.TypeSchemes;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class BooleanConverter extends ConverterImplementation {
+public final class BooleanConverter extends ConverterImplementation<Boolean> {
 
+    
     private static final long serialVersionUID = -6201905960716013742L;
 
     
-    private static final ArgumentsTypeScheme ATS_BOOLEAN_EMPTY = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.BOOLEAN_TYPESCHEME, 
-            TypeSchemes.EMPTY_TYPESCHEME, 
-            "Boolean target is cloned");
     
-    private static final ArgumentsTypeScheme ATS_NUMBER_EMPTY = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.NUMBER_TYPESCHEME, 
-            TypeSchemes.EMPTY_TYPESCHEME, 
-            "A zero value returns false. Any other value returns true");
+    private static final FunctionArgumentScheme<Boolean> SCH_BOOLEAN = 
+        FunctionArgumentScheme.from(
+            "Boolean target is cloned",
+            Types.BOOLEAN);
     
-    private static final ArgumentsTypeScheme ATS_STRING_EMPTY = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.EMPTY_TYPESCHEME, 
+    private static final FunctionArgumentScheme<Number> SCH_NUMBER = 
+        FunctionArgumentScheme.from(
+            "A zero value returns false. Any other value returns true",
+            Types.NUMBER);
+    
+    private static final FunctionArgumentScheme<String> SCH_STRING = 
+        FunctionArgumentScheme.from(
             "Conversion is performed using org.apache.commons.lang.BooleanUtils.toBooleanObject(), " +
-            "which admits true/false, yes/no and on/off case insensitive input");
+            "which admits true/false, yes/no and on/off case insensitive input",
+            Types.STRING);
+    
     
     
     public BooleanConverter() {
         super();
     }
+    
 
-
+    
+    
     @Override
-    protected Set<ArgumentsTypeScheme> registerMatchedArgumentTypeSchemes() {
-        final Set<ArgumentsTypeScheme> matched = new LinkedHashSet<ArgumentsTypeScheme>();
-        matched.add(ATS_BOOLEAN_EMPTY);
-        matched.add(ATS_NUMBER_EMPTY);
-        matched.add(ATS_STRING_EMPTY);
+    protected Set<FunctionArgumentScheme<? extends Object>> registerMatchedSchemes() {
+        final Set<FunctionArgumentScheme<? extends Object>> matched = new LinkedHashSet<FunctionArgumentScheme<? extends Object>>();
+        matched.add(SCH_BOOLEAN);
+        matched.add(SCH_NUMBER);
+        matched.add(SCH_STRING);
         return matched;
     }
 
     
+    
+
     @Override
-    public Type getResultType() {
+    protected Type<Boolean> registerResultType() {
         return Types.BOOLEAN;
     }
-    
+
+
+
     
     @Override
-    protected Result doExecute(final Arguments arguments) throws Exception {
+    public Boolean execute(FunctionArguments arguments) throws Exception {
         
-        if (arguments.areAllTargetsNull()) {
-            return createUniqResult((Object[])null);
+        if (arguments.isTargetNull()) {
+            return null;
         }
 
-        if (ATS_BOOLEAN_EMPTY.matches(arguments)) {
-            return createUniqResult(Boolean.valueOf(arguments.getTargetAsBoolean(0).booleanValue()));
+        if (SCH_BOOLEAN.matches(arguments)) {
+            return Boolean.valueOf(arguments.getTargetAsBoolean().booleanValue());
         }
 
-        if (ATS_NUMBER_EMPTY.matches(arguments)) {
-            final Number arg = arguments.getTargetAsNumber(0);
+        if (SCH_NUMBER.matches(arguments)) {
+            final Number arg = arguments.getTargetAsNumber();
             boolean result = false;
             if (arg instanceof BigDecimal) {
                 result = (((BigDecimal)arg).unscaledValue().compareTo(BigInteger.ZERO) != 0);
@@ -106,11 +111,11 @@ public final class BooleanConverter extends ConverterImplementation {
             } else {
                 result = (arg.doubleValue() != 0.0);
             }
-            return createUniqResult(Boolean.valueOf(result));
+            return Boolean.valueOf(result);
         }
 
-        if (ATS_STRING_EMPTY.matches(arguments)) {
-            return createUniqResult(BooleanUtils.toBooleanObject(arguments.getStringTarget(0)));
+        if (SCH_STRING.matches(arguments)) {
+            return BooleanUtils.toBooleanObject(arguments.getTargetAsString());
         }
         
         return null;

@@ -19,9 +19,6 @@
  */
 package org.op4j.exceptions;
 
-import org.apache.commons.lang.exception.NestableRuntimeException;
-import org.op4j.operation.Arguments;
-import org.op4j.operation.OperationInfo;
 
 /**
  * 
@@ -30,15 +27,26 @@ import org.op4j.operation.OperationInfo;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class MultipleOperationImplementationsException extends NestableRuntimeException {
+public class FunctionExecutionException extends RuntimeException {
 
-    private static final long serialVersionUID = -468043020794138792L;
+    
+    private static final long serialVersionUID = 8999157910064758640L;
 
-    public MultipleOperationImplementationsException(OperationInfo functionInfo, Arguments arguments) {
-        super("More than one assignable converter in function \"" + functionInfo.getOperationName() + 
-                "\" for objects with types " + arguments + 
-                " (literals might be involved although not shown). Allowed argument type schemes " +
-                "are: " + functionInfo.getMatchedArgumentTypeSchemeAggregateSet());
+    public FunctionExecutionException() {
+        super();
     }
+
+    public FunctionExecutionException(String msg, Throwable cause) {
+        super(msg, cause);
+    }
+
+    public FunctionExecutionException(String msg) {
+        super(msg);
+    }
+
+    public FunctionExecutionException(Throwable cause) {
+        super(cause);
+    }
+    
     
 }

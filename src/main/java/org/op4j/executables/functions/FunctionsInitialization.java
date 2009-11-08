@@ -22,7 +22,9 @@ package org.op4j.executables.functions;
 import org.op4j.exceptions.FunctionImplementationRegistrationException;
 import org.op4j.executables.functions.conversion.BigDecimalConverter;
 import org.op4j.executables.functions.conversion.BigIntegerConverter;
+import org.op4j.executables.functions.conversion.BooleanConverter;
 import org.op4j.executables.functions.conversion.ByteConverter;
+import org.op4j.executables.functions.conversion.CalendarConverter;
 import org.op4j.executables.functions.conversion.DoubleConverter;
 import org.op4j.executables.functions.conversion.FloatConverter;
 import org.op4j.executables.functions.conversion.IntegerConverter;
@@ -44,9 +46,6 @@ final class FunctionsInitialization {
     static synchronized void declareAndInitializeOperations() {
         // Initialize all converters
 
-//      Operations.addOperationImplementation(BooleanConverter.class);
-//      Operations.addOperationImplementation(CalendarConverter.class);
-        
         final Class<?>[] implementationClasses =
             new Class<?>[] {
                 ByteConverter.class,
@@ -57,7 +56,9 @@ final class FunctionsInitialization {
                 FloatConverter.class,
                 DoubleConverter.class,
                 BigDecimalConverter.class,
-                StringConverter.class
+                StringConverter.class,
+                BooleanConverter.class,
+                CalendarConverter.class
             };
 
         for(int i = 0; i < implementationClasses.length; i++) {
