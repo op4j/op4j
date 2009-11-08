@@ -31,8 +31,10 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
+import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.executables.functions.FunctionArgumentScheme;
+import org.op4j.executables.functions.FunctionArguments;
 
 
 /**
@@ -45,158 +47,158 @@ import org.op4j.executables.functions.FunctionArgumentScheme;
  */
 public final class StringConverter extends ConverterImplementation<String> {
     
-    public static final String ESCAPE_CSV = "ESCAPE_CSV";
-    public static final String UNESCAPE_CSV = "UNESCAPE_CSV";
-    public static final String ESCAPE_XML = "ESCAPE_XML";
-    public static final String UNESCAPE_XML = "UNESCAPE_XML";
-    public static final String ESCAPE_JAVASCRIPT = "ESCAPE_JAVASCRIPT";
-    public static final String UNESCAPE_JAVASCRIPT = "UNESCAPE_JAVASCRIPT";
-    public static final String ESCAPE_HTML = "ESCAPE_HTML";
-    public static final String UNESCAPE_HTML = "UNESCAPE_HTML";
-    public static final String TO_BASE64 = "TO_BASE64";
-    public static final String FROM_BASE64 = "FROM_BASE64";
-    public static final String TO_HEXADECIMAL = "TO_HEXADECIMAL";
-    public static final String FROM_HEXADECIMAL = "FROM_HEXADECIMAL";
-    public static final String TO_JSON = "TO_JSON";
-    public static final String TO_UPPERCASE = "TO_UPPERCASE";  
-    public static final String TO_LOWERCASE = "TO_LOWERCASE";  
-    public static final String UNCAPITALIZE = "UNCAPITALIZE";  
-    public static final String CAPITALIZE = "CAPITALIZE";  
-    public static final String TRIM = "TRIM";  
-    public static final String STRIP = "STRIP";  
+    public static final String ESCAPE_CSV = "'ESCAPE_CSV'";
+    public static final String UNESCAPE_CSV = "'UNESCAPE_CSV'";
+    public static final String ESCAPE_XML = "'ESCAPE_XML'";
+    public static final String UNESCAPE_XML = "'UNESCAPE_XML'";
+    public static final String ESCAPE_JAVASCRIPT = "'ESCAPE_JAVASCRIPT'";
+    public static final String UNESCAPE_JAVASCRIPT = "'UNESCAPE_JAVASCRIPT'";
+    public static final String ESCAPE_HTML = "'ESCAPE_HTML'";
+    public static final String UNESCAPE_HTML = "'UNESCAPE_HTML'";
+    public static final String TO_BASE64 = "'TO_BASE64'";
+    public static final String FROM_BASE64 = "'FROM_BASE64'";
+    public static final String TO_HEXADECIMAL = "'TO_HEXADECIMAL'";
+    public static final String FROM_HEXADECIMAL = "'FROM_HEXADECIMAL'";
+    public static final String TO_JSON = "'TO_JSON'";
+    public static final String TO_UPPERCASE = "'TO_UPPERCASE'";  
+    public static final String TO_LOWERCASE = "'TO_LOWERCASE'";  
+    public static final String UNCAPITALIZE = "'UNCAPITALIZE'";  
+    public static final String CAPITALIZE = "'CAPITALIZE'";  
+    public static final String TRIM = "'TRIM'";  
+    public static final String STRIP = "'STRIP'";  
 
     
-    private static final FunctionArgumentScheme<Object> ATS_OBJECT_EMPTY = 
+    private static final FunctionArgumentScheme<Object> SCH_OBJECT = 
         FunctionArgumentScheme.from(
             "Conversion is performed by simply calling target.toString(). Null is returned for null input",
             Types.OBJECT);
     
-    private static final FunctionArgumentScheme<Calendar> ATS_CALENDAR_STRING = 
+    private static final FunctionArgumentScheme<Calendar> SCH_CALENDAR_STRING = 
         FunctionArgumentScheme.from(
             "The Calendar is converted based on the pattern given as parameter. Null is returned for null input",
             Types.CALENDAR,
             "String pattern");
     
-    private static final FunctionArgumentScheme<Calendar> ATS_CALENDAR_LOCALE_STRING = 
+    private static final FunctionArgumentScheme<Calendar> SCH_CALENDAR_LOCALE_STRING = 
         FunctionArgumentScheme.from(
             "The Calendar is converted based on the pattern given as parameter. Null is returned for null input",
             Types.CALENDAR, 
             "Locale locale, String pattern");
     
-    private static final FunctionArgumentScheme<Calendar> ATS_CALENDAR_LOCALE = 
+    private static final FunctionArgumentScheme<Calendar> SCH_CALENDAR_LOCALE = 
         FunctionArgumentScheme.from(
             "The Calendar is converted based on the locale given as parameter. Null is returned for null input",
             Types.CALENDAR,
             "Locale locale");
     
-    private static final FunctionArgumentScheme<String> ATS_STRING_ESCAPECSVPARAM = 
+    private static final FunctionArgumentScheme<String> SCH_STRING_ESCAPECSV = 
         FunctionArgumentScheme.from(
             "The String is returned in a way it can be used to fill in a CSV column as StringEscapeUtils does",
             Types.STRING, 
-            "'" + ESCAPE_CSV + "'");
+            ESCAPE_CSV);
     
-    private static final FunctionArgumentScheme<String> ATS_STRING_UNESCAPECSVPARAM = 
+    private static final FunctionArgumentScheme<String> SCH_STRING_UNESCAPECSV = 
         FunctionArgumentScheme.from(
             "The String is returned without the escape characters used to " +
             " include it in a CSV column (i.e. no quotes enclosing it, no escaped quotes) as StringEscapeUtils does",
             Types.STRING, 
-            "'" + UNESCAPE_CSV + "'");
+            UNESCAPE_CSV);
     
-    private static final FunctionArgumentScheme<String> ATS_STRING_ESCAPEXMLPARAM = 
+    private static final FunctionArgumentScheme<String> SCH_STRING_ESCAPEXML = 
         FunctionArgumentScheme.from(
             "The String is returned with the XML characters escaped as StringEscapeUtils does",
             Types.STRING, 
-            "'" + ESCAPE_XML + "'");
+            ESCAPE_XML);
     
-    private static final FunctionArgumentScheme<String> ATS_STRING_UNESCAPEXMLPARAM = 
+    private static final FunctionArgumentScheme<String> SCH_STRING_UNESCAPEXML = 
         FunctionArgumentScheme.from(
             "The String is returned without the XML escape characters as StringEscapeUtils does",
             Types.STRING, 
-            "'" + UNESCAPE_XML + "'");
+            UNESCAPE_XML);
     
-    private static final FunctionArgumentScheme<String> ATS_STRING_ESCAPEHTMLPARAM = 
+    private static final FunctionArgumentScheme<String> SCH_STRING_ESCAPEHTML = 
         FunctionArgumentScheme.from(
             "It escapes the given String using HTML entities (as StringEscapeUtils does)",
             Types.STRING, 
-            "'" + ESCAPE_HTML + "'");
+            ESCAPE_HTML);
     
-    private static final FunctionArgumentScheme<String> ATS_STRING_UNESCAPEHTMLPARAM = 
+    private static final FunctionArgumentScheme<String> SCH_STRING_UNESCAPEHTML = 
         FunctionArgumentScheme.from(
             "It unescapes the given String and converts its HTML entity escapes into their unicode characters (as StringEscapeUtils does)",
             Types.STRING, 
-            "'" + UNESCAPE_HTML + "'");
+            UNESCAPE_HTML);
     
-    private static final FunctionArgumentScheme<String> ATS_STRING_ESCAPEJSPARAM = 
+    private static final FunctionArgumentScheme<String> SCH_STRING_ESCAPEJS = 
         FunctionArgumentScheme.from(
             "It converts the given String into a JavaScript valid one (as StringEscapeUtils does)",
             Types.STRING, 
-            "'" + ESCAPE_JAVASCRIPT + "'");
+            ESCAPE_JAVASCRIPT);
     
-    private static final FunctionArgumentScheme<String> ATS_STRING_UNESCAPEJSPARAM = 
+    private static final FunctionArgumentScheme<String> SCH_STRING_UNESCAPEJS = 
         FunctionArgumentScheme.from(
             "It unescapes the given JavaScript valid String (as StringEscapeUtils does)",
             Types.STRING, 
-            "'" + UNESCAPE_JAVASCRIPT + "'");
+            UNESCAPE_JAVASCRIPT);
     
-    private static final FunctionArgumentScheme<String> ATS_STRING_CHARSETPARAM_TOBASE64PARAM = 
+    private static final FunctionArgumentScheme<String> SCH_STRING_CHARSET_TOBASE64 = 
         FunctionArgumentScheme.from(
             "It converts the given String into a base64 encoded one",
             Types.STRING, 
-            "java.nio.charset.Charset, '" + TO_BASE64 + "'");
+            "java.nio.charset.Charset," + TO_BASE64);
     
-    private static final FunctionArgumentScheme<String> ATS_STRING_CHARSETPARAM_FROMBASE64PARAM = 
+    private static final FunctionArgumentScheme<String> SCH_STRING_CHARSET_FROMBASE64 = 
         FunctionArgumentScheme.from(
             "It decodes the given base64 encoded String",
             Types.STRING, 
-            "java.nio.charset.Charset, '" + FROM_BASE64 + "'");
+            "java.nio.charset.Charset," + FROM_BASE64);
     
-    private static final FunctionArgumentScheme<String> ATS_STRING_CHARSETPARAM_TOHEXADECIMALPARAM = 
+    private static final FunctionArgumentScheme<String> SCH_STRING_CHARSET_TOHEXADECIMAL = 
         FunctionArgumentScheme.from(
             "It converts the given String into its Hexadecimal representation using the specified Charset",
             Types.STRING, 
-            "java.nio.charset.Charset, '" + TO_HEXADECIMAL + "'");
+            "java.nio.charset.Charset," + TO_HEXADECIMAL);
     
-    private static final FunctionArgumentScheme<String> ATS_STRING_CHARSETPARAM_FROMHEXADECIMALPARAM = 
+    private static final FunctionArgumentScheme<String> SCH_STRING_CHARSET_FROMHEXADECIMAL = 
         FunctionArgumentScheme.from(
             "The given String is converted from its Hexadecimal representation to a String using the specified Charset",
             Types.STRING, 
-            "java.nio.charset.Charset, '" + FROM_HEXADECIMAL + "'");
+            "java.nio.charset.Charset," + FROM_HEXADECIMAL);
         
-    private static final FunctionArgumentScheme<String> ATS_STRING_TOUPPERCASEPARAM = 
+    private static final FunctionArgumentScheme<String> SCH_STRING_TOUPPERCASE = 
         FunctionArgumentScheme.from(
             "It converts the given String to uppercase",
             Types.STRING, 
-            "'" + TO_UPPERCASE + "'");
+            TO_UPPERCASE);
     
-    private static final FunctionArgumentScheme<String> ATS_STRING_TOLOWERCASEPARAM = 
+    private static final FunctionArgumentScheme<String> SCH_STRING_TOLOWERCASE = 
         FunctionArgumentScheme.from(
             "It converts the given String to lowercase",
             Types.STRING, 
-            "'" + TO_LOWERCASE + "'");
+            TO_LOWERCASE);
     
-    private static final FunctionArgumentScheme<String> ATS_STRING_UNCAPITALIZEPARAM = 
+    private static final FunctionArgumentScheme<String> SCH_STRING_UNCAPITALIZE = 
         FunctionArgumentScheme.from(
             "It converts the first letter of the given String to lowercase",
             Types.STRING, 
-            "'" + UNCAPITALIZE + "'");
+            UNCAPITALIZE);
     
-    private static final FunctionArgumentScheme<String> ATS_STRING_CAPITALIZEPARAM = 
+    private static final FunctionArgumentScheme<String> SCH_STRING_CAPITALIZE = 
         FunctionArgumentScheme.from(
             "It converts the first letter of the given String to uppercase",
             Types.STRING, 
-            "'" + CAPITALIZE + "'");
+            CAPITALIZE);
     
-    private static final FunctionArgumentScheme<String> ATS_STRING_TRIMPARAM = 
+    private static final FunctionArgumentScheme<String> SCH_STRING_TRIM = 
         FunctionArgumentScheme.from(
             "Removes control characters (char <= 32) from both ends of the given String",
             Types.STRING, 
-            "'" + TRIM + "'");
+            TRIM);
     
-    private static final FunctionArgumentScheme<String> ATS_STRING_STRIPPARAM = 
+    private static final FunctionArgumentScheme<String> SCH_STRING_STRIP = 
         FunctionArgumentScheme.from(
             "Strips whitespace from both sides of the given String",
             Types.STRING, 
-            "'" + STRIP + "'");
+            STRIP);
     
     
     
@@ -210,198 +212,166 @@ public final class StringConverter extends ConverterImplementation<String> {
     @Override
     protected Set<FunctionArgumentScheme<? extends Object>> registerMatchedSchemes() {
         Set<FunctionArgumentScheme<? extends Object>> matched = new LinkedHashSet<FunctionArgumentScheme<? extends Object>>();
-        matched.add(ATS_OBJECT_EMPTY);
-        matched.add(ATS_CALENDAR_STRING);
-        matched.add(ATS_CALENDAR_LOCALE);
-        matched.add(ATS_CALENDAR_LOCALE_STRING);
-        matched.add(ATS_STRING_ESCAPECSVPARAM);
-        matched.add(ATS_STRING_UNESCAPECSVPARAM);
-        matched.add(ATS_STRING_ESCAPEHTMLPARAM);
-        matched.add(ATS_STRING_UNESCAPEHTMLPARAM);
-        matched.add(ATS_STRING_ESCAPEJSPARAM);
-        matched.add(ATS_STRING_UNESCAPEJSPARAM);
-        matched.add(ATS_STRING_ESCAPEXMLPARAM);
-        matched.add(ATS_STRING_UNESCAPEXMLPARAM);
-        matched.add(ATS_STRING_CHARSETPARAM_TOBASE64PARAM);
-        matched.add(ATS_STRING_CHARSETPARAM_FROMBASE64PARAM);
-        matched.add(ATS_STRING_CHARSETPARAM_TOHEXADECIMALPARAM);
-        matched.add(ATS_STRING_CHARSETPARAM_FROMHEXADECIMALPARAM);
-        matched.add(ATS_STRING_TOUPPERCASEPARAM);
-        matched.add(ATS_STRING_TOLOWERCASEPARAM);
-        matched.add(ATS_STRING_UNCAPITALIZEPARAM);
-        matched.add(ATS_STRING_CAPITALIZEPARAM);
-        matched.add(ATS_STRING_TRIMPARAM);
-        matched.add(ATS_STRING_STRIPPARAM);
+        matched.add(SCH_OBJECT);
+        matched.add(SCH_CALENDAR_STRING);
+        matched.add(SCH_CALENDAR_LOCALE);
+        matched.add(SCH_CALENDAR_LOCALE_STRING);
+        matched.add(SCH_STRING_ESCAPECSV);
+        matched.add(SCH_STRING_UNESCAPECSV);
+        matched.add(SCH_STRING_ESCAPEHTML);
+        matched.add(SCH_STRING_UNESCAPEHTML);
+        matched.add(SCH_STRING_ESCAPEJS);
+        matched.add(SCH_STRING_UNESCAPEJS);
+        matched.add(SCH_STRING_ESCAPEXML);
+        matched.add(SCH_STRING_UNESCAPEXML);
+        matched.add(SCH_STRING_CHARSET_TOBASE64);
+        matched.add(SCH_STRING_CHARSET_FROMBASE64);
+        matched.add(SCH_STRING_CHARSET_TOHEXADECIMAL);
+        matched.add(SCH_STRING_CHARSET_FROMHEXADECIMAL);
+        matched.add(SCH_STRING_TOUPPERCASE);
+        matched.add(SCH_STRING_TOLOWERCASE);
+        matched.add(SCH_STRING_UNCAPITALIZE);
+        matched.add(SCH_STRING_CAPITALIZE);
+        matched.add(SCH_STRING_TRIM);
+        matched.add(SCH_STRING_STRIP);
         return matched;
     }
 
 
-
-
     @Override
-    protected final Set<ArgumentsTypeScheme> registerMatchedArgumentTypeSchemes() {
-        Set<ArgumentsTypeScheme> matched = new LinkedHashSet<ArgumentsTypeScheme>();
-        matched.add(ATS_OBJECT_EMPTY);
-        matched.add(ATS_CALENDAR_STRING);
-        matched.add(ATS_CALENDAR_LOCALE);
-        matched.add(ATS_CALENDAR_LOCALE_STRING);
-        matched.add(ATS_STRING_ESCAPECSVPARAM);
-        matched.add(ATS_STRING_UNESCAPECSVPARAM);
-        matched.add(ATS_STRING_ESCAPEHTMLPARAM);
-        matched.add(ATS_STRING_UNESCAPEHTMLPARAM);
-        matched.add(ATS_STRING_ESCAPEJSPARAM);
-        matched.add(ATS_STRING_UNESCAPEJSPARAM);
-        matched.add(ATS_STRING_ESCAPEXMLPARAM);
-        matched.add(ATS_STRING_UNESCAPEXMLPARAM);
-        matched.add(ATS_STRING_CHARSETPARAM_TOBASE64PARAM);
-        matched.add(ATS_STRING_CHARSETPARAM_FROMBASE64PARAM);
-        matched.add(ATS_STRING_CHARSETPARAM_TOHEXADECIMALPARAM);
-        matched.add(ATS_STRING_CHARSETPARAM_FROMHEXADECIMALPARAM);
-        matched.add(ATS_STRING_TOUPPERCASEPARAM);
-        matched.add(ATS_STRING_TOLOWERCASEPARAM);
-        matched.add(ATS_STRING_UNCAPITALIZEPARAM);
-        matched.add(ATS_STRING_CAPITALIZEPARAM);
-        matched.add(ATS_STRING_TRIMPARAM);
-        matched.add(ATS_STRING_STRIPPARAM);
-        return matched;
-    }
-    
-    @Override
-    public Type getResultType() {
+    protected Type<String> registerResultType() {
         return Types.STRING;
     }
+
+    
+
+    
+    
+    @Override
+    public String execute(FunctionArguments arguments) throws Exception {
         
-	@Override
-    public Result doExecute(Arguments arguments) throws Exception {
-        
-        if (arguments.areAllTargetsNull()) {
-            return createUniqResult((Object[])null);
+        if (arguments.isTargetNull()) {
+            return null;
         }       
         
-        if (ATS_CALENDAR_STRING.matches(arguments)) {
-            return createUniqResult(fromCalendar((java.util.Calendar)arguments.getTarget(0),
-            		null, arguments.getStringParameter(0)));
+        if (SCH_CALENDAR_STRING.matches(arguments)) {
+            return fromCalendar(
+                    (java.util.Calendar)arguments.getTarget(),
+                    null, 
+                    arguments.getStringParameter(0));
         }
         
-        if (ATS_CALENDAR_LOCALE.matches(arguments)) {
-        	return createUniqResult(fromCalendar((java.util.Calendar)arguments.getTarget(0),
-            		arguments.getLocaleParameter(0), null));
+        if (SCH_CALENDAR_LOCALE.matches(arguments)) {
+            return fromCalendar((java.util.Calendar)arguments.getTarget(),
+                    arguments.getLocaleParameter(0), 
+                    null);
         }
         
-        if (ATS_CALENDAR_LOCALE_STRING.matches(arguments)) {        	
-            return createUniqResult(fromCalendar((java.util.Calendar)arguments.getTarget(0),
-            		arguments.getLocaleParameter(0), arguments.getStringParameter(1)));
+        if (SCH_CALENDAR_LOCALE_STRING.matches(arguments)) {            
+            return fromCalendar((java.util.Calendar)arguments.getTarget(),
+                    arguments.getLocaleParameter(0), 
+                    arguments.getStringParameter(1));
         }
         
-        if (ATS_STRING_ESCAPECSVPARAM.matches(arguments)) {
-        	return createUniqResult(StringEscapeUtils.escapeCsv(
-        			arguments.getStringTarget(0)));
+        if (SCH_STRING_ESCAPECSV.matches(arguments)) {
+            return StringEscapeUtils.escapeCsv(arguments.getTargetAsString());
         }
-        if (ATS_STRING_UNESCAPECSVPARAM.matches(arguments)) {
-        	return createUniqResult(StringEscapeUtils.unescapeCsv(
-        			arguments.getStringTarget(0)));
+        if (SCH_STRING_UNESCAPECSV.matches(arguments)) {
+            return StringEscapeUtils.unescapeCsv(arguments.getTargetAsString());
         }
-        if (ATS_STRING_ESCAPEHTMLPARAM.matches(arguments)) {
-        	return createUniqResult(StringEscapeUtils.escapeHtml(
-        			arguments.getStringTarget(0)));
+        if (SCH_STRING_ESCAPEHTML.matches(arguments)) {
+            return StringEscapeUtils.escapeHtml(arguments.getTargetAsString());
         }
-        if (ATS_STRING_UNESCAPEHTMLPARAM.matches(arguments)) {
-        	return createUniqResult(StringEscapeUtils.unescapeHtml(
-        			arguments.getStringTarget(0)));
+        if (SCH_STRING_UNESCAPEHTML.matches(arguments)) {
+            return StringEscapeUtils.unescapeHtml(arguments.getTargetAsString());
         }
-        if (ATS_STRING_ESCAPEJSPARAM.matches(arguments)) {
-        	return createUniqResult(StringEscapeUtils.escapeJavaScript(
-        			arguments.getStringTarget(0)));
+        if (SCH_STRING_ESCAPEJS.matches(arguments)) {
+            return StringEscapeUtils.escapeJavaScript(arguments.getTargetAsString());
         }
-        if (ATS_STRING_UNESCAPEJSPARAM.matches(arguments)) {
-        	return createUniqResult(StringEscapeUtils.unescapeJavaScript(
-        			arguments.getStringTarget(0)));
+        if (SCH_STRING_UNESCAPEJS.matches(arguments)) {
+            return StringEscapeUtils.unescapeJavaScript(arguments.getTargetAsString());
         }
-        if (ATS_STRING_ESCAPEXMLPARAM.matches(arguments)) {
-        	return createUniqResult(StringEscapeUtils.escapeXml(
-        			arguments.getStringTarget(0)));
+        if (SCH_STRING_ESCAPEXML.matches(arguments)) {
+            return StringEscapeUtils.escapeXml(arguments.getTargetAsString());
         }
-        if (ATS_STRING_UNESCAPEXMLPARAM.matches(arguments)) {
-        	return createUniqResult(StringEscapeUtils.unescapeXml(
-        			arguments.getStringTarget(0)));
+        if (SCH_STRING_UNESCAPEXML.matches(arguments)) {
+            return StringEscapeUtils.unescapeXml(arguments.getTargetAsString());
         }
         
-        if (ATS_STRING_CHARSETPARAM_TOBASE64PARAM.matches(arguments)) {
-        	return createUniqResult(new String(new Base64().encode(arguments.getStringTarget(0).getBytes(
-        			((Charset) arguments.getParameter(0)).name())), "US-ASCII"));        	
+        if (SCH_STRING_CHARSET_TOBASE64.matches(arguments)) {
+            return new String(new Base64().encode(arguments.getTargetAsString().getBytes(
+                    ((Charset) arguments.getParameter(0)).name())), "US-ASCII");           
         }
         
-        if (ATS_STRING_CHARSETPARAM_FROMBASE64PARAM.matches(arguments)) {
-        	return createUniqResult(new String(new Base64().decode(arguments.getStringTarget(0).getBytes("US-ASCII")), 
-        			((Charset) arguments.getParameter(0)).name())); 
+        if (SCH_STRING_CHARSET_FROMBASE64.matches(arguments)) {
+            return new String(new Base64().decode(arguments.getTargetAsString().getBytes("US-ASCII")), 
+                    ((Charset) arguments.getParameter(0)).name()); 
         }
         
-        if (ATS_STRING_CHARSETPARAM_TOHEXADECIMALPARAM.matches(arguments)) {
-        	final byte[] input = arguments.getStringTarget(0)
-        		.getBytes(((Charset) arguments.getParameter(0)).name());
-        	final StringBuffer output = new StringBuffer();
-        	
-        	for (byte i = 0; i < input.length; i++) {
-    			output.append(Integer.toHexString(input[i]));
-    		}
-        	
-        	return createUniqResult(output.toString());        
+        if (SCH_STRING_CHARSET_TOHEXADECIMAL.matches(arguments)) {
+            final byte[] input = arguments.getTargetAsString()
+                .getBytes(((Charset) arguments.getParameter(0)).name());
+            final StringBuffer output = new StringBuffer();
+            
+            for (byte i = 0; i < input.length; i++) {
+                output.append(Integer.toHexString(input[i]));
+            }
+            
+            return output.toString();        
         }
         
-        if (ATS_STRING_CHARSETPARAM_FROMHEXADECIMALPARAM.matches(arguments)) {
-        	final String input = arguments.getStringTarget(0);
-        	final StringBuffer output = new StringBuffer();
-        	
-        	for (int i = 0; i < input.length(); i = i + 2) {
-    			final byte current = 
-    			    (byte) Integer.parseInt(String.valueOf(input.charAt(i))
-    					+ String.valueOf(input.charAt(i + 1)), 16);
-    			
-    			output.append(new String(new byte[] {current},
-    					((Charset) arguments.getParameter(0)).name()));
-    		}
-        	
-        	return createUniqResult(output.toString());        
+        if (SCH_STRING_CHARSET_FROMHEXADECIMAL.matches(arguments)) {
+            final String input = arguments.getTargetAsString();
+            final StringBuffer output = new StringBuffer();
+            
+            for (int i = 0; i < input.length(); i = i + 2) {
+                final byte current = 
+                    (byte) Integer.parseInt(String.valueOf(input.charAt(i))
+                        + String.valueOf(input.charAt(i + 1)), 16);
+                
+                output.append(new String(new byte[] {current},
+                        ((Charset) arguments.getParameter(0)).name()));
+            }
+            
+            return output.toString();        
         }
         
-        if (ATS_STRING_TOUPPERCASEPARAM.matches(arguments)) {
-        	return createUniqResult(StringUtils.upperCase(
-        			arguments.getStringParameter(0)));
+        if (SCH_STRING_TOUPPERCASE.matches(arguments)) {
+            return StringUtils.upperCase(arguments.getTargetAsString());
         }
         
-        if (ATS_STRING_TOLOWERCASEPARAM.matches(arguments)) {
-        	return createUniqResult(StringUtils.lowerCase(
-        			arguments.getStringParameter(0)));
+        if (SCH_STRING_TOLOWERCASE.matches(arguments)) {
+            return StringUtils.lowerCase(arguments.getTargetAsString());
         }
         
-        if (ATS_STRING_UNCAPITALIZEPARAM.matches(arguments)) {
-        	return createUniqResult(StringUtils.uncapitalize(
-        			arguments.getStringParameter(0)));
+        if (SCH_STRING_UNCAPITALIZE.matches(arguments)) {
+            return StringUtils.uncapitalize(arguments.getTargetAsString());
         }
         
-        if (ATS_STRING_CAPITALIZEPARAM.matches(arguments)) {
-        	return createUniqResult(StringUtils.capitalize(
-        			arguments.getStringParameter(0)));
+        if (SCH_STRING_CAPITALIZE.matches(arguments)) {
+            return StringUtils.capitalize(arguments.getTargetAsString());
         }
         
-        if (ATS_STRING_TRIMPARAM.matches(arguments)) {
-        	return createUniqResult(StringUtils.trim(
-        			arguments.getStringParameter(0)));
+        if (SCH_STRING_TRIM.matches(arguments)) {
+            return StringUtils.trim(arguments.getTargetAsString());
         }
         
-        if (ATS_STRING_STRIPPARAM.matches(arguments)) {
-        	return createUniqResult(StringUtils.strip(
-        			arguments.getStringParameter(0)));
+        if (SCH_STRING_STRIP.matches(arguments)) {
+            return StringUtils.strip(arguments.getTargetAsString());
         }
         
-        return createUniqResult(arguments.getTarget(0).toString());
+        return arguments.getTarget().toString();
+        
     }
+
     
-    private String fromCalendar (Calendar calendar, Locale locale, String pattern) {
+    
+    
+    private String fromCalendar(final Calendar calendar, final Locale locale, final String pattern) {
     	
     	Validate.isTrue((locale != null) 
     			|| (StringUtils.isNotEmpty(pattern)),
-    			"Locale or pattern must be set...both are also valid");
+    			"Either locale or pattern must be set...both are also valid");
     	
     	DateFormat sdf = null;
     	if (locale == null) {

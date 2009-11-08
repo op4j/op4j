@@ -165,7 +165,7 @@ public final class Function<X,T>  {
         }
         if (functionImplementation == null) {
             throw new IllegalArgumentException(
-                    "Invalid arguments. Valid schemes are: " +
+                    "Invalid arguments (" + arguments.getStringRepresentation() +"). Valid schemes are: " +
                     this.implementationsByArgumentSchemes.keySet());
         }
 

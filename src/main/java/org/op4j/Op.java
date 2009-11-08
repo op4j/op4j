@@ -20,7 +20,9 @@
 package org.op4j;
 
 import java.lang.reflect.Method;
+import java.math.RoundingMode;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -315,7 +317,18 @@ public final class Op {
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().callInteger("length").get());
         
         
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().callInteger("length").convToString().get());
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().callInteger("length").convToString().convToString("TO_UPPERCASE").get());
+        
+        System.out.println(Op.on(Calendar.getInstance()).convToString("dd/MMM, yyyy").get());
+        
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().callInteger("length").convToString().convToInteger().get());
+        
+        System.out.println(Op.on(Float.valueOf(3455234.6325f)).convToInteger(RoundingMode.CEILING).get());
+        
+        System.out.println(Op.on(Float.valueOf(3455234.6325f)).convToBigInteger(RoundingMode.FLOOR).get());
+        
+        System.out.println(Op.on(Float.valueOf(3455234.6325f)).convToBigDecimal(3, RoundingMode.FLOOR).get());
+        
     }
     
 }

@@ -29,11 +29,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.LocaleUtils;
-import org.op4j.operation.Arguments;
-import org.op4j.operation.ArgumentsTypeScheme;
-import org.op4j.operation.Result;
-import org.op4j.typescheme.TypeScheme;
-import org.op4j.typescheme.TypeSchemes;
+import org.javaruntype.type.Types;
+import org.op4j.executables.functions.FunctionArgumentScheme;
+import org.op4j.executables.functions.FunctionArguments;
 
 
 /**
@@ -43,73 +41,65 @@ import org.op4j.typescheme.TypeSchemes;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public abstract class NumberConverter extends ConverterImplementation {
+public abstract class NumberConverter<T extends Number> extends ConverterImplementation<T> {
 
-    
-	private static final long serialVersionUID = -5697885898106100776L;
 
 
 	protected static enum DecimalSign { POINT, COMMA, POINT_OR_COMMA }
     
     
-    private static final TypeScheme PTS_DECIMAL_IS_COMMA = 
-        TypeSchemes.forName("'DECIMAL_IS_COMMA'");
-    private static final TypeScheme PTS_DECIMAL_IS_POINT = 
-        TypeSchemes.forName("'DECIMAL_IS_POINT'");
-    private static final TypeScheme PTS_DECIMAL_CAN_BE_POINT_OR_COMMA = 
-        TypeSchemes.forName("'DECIMAL_CAN_BE_POINT_OR_COMMA'");
+    private static final String DECIMAL_IS_COMMA = "'DECIMAL_IS_COMMA'";
+    private static final String DECIMAL_IS_POINT = "'DECIMAL_IS_POINT'";
+    private static final String DECIMAL_CAN_BE_POINT_OR_COMMA = "'DECIMAL_CAN_BE_POINT_OR_COMMA'";
     
     
-    private static final ArgumentsTypeScheme ATS_NUMBER_EMPTY = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.NUMBER_TYPESCHEME,
-            TypeSchemes.EMPTY_TYPESCHEME,
-                "Coversion is performed using the corresponding Number.xxxValue() methods. " +
-                "BigDecimal and BigInteger objects are handled in a specific manner");
+    private static final FunctionArgumentScheme<Number> SCH_NUMBER_EMPTY = 
+        FunctionArgumentScheme.from(
+            "Coversion is performed using the corresponding Number.xxxValue() methods. " +
+            "BigDecimal and BigInteger objects are handled in a specific manner",
+            Types.NUMBER);
     
-    private static final ArgumentsTypeScheme ATS_STRING_EMPTY = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.EMPTY_TYPESCHEME,
-                "Conversion is performed using the corresponding String-parameterized " +
-                "constructors or X.valueOf() methods");
+    private static final FunctionArgumentScheme<String> SCH_STRING_EMPTY = 
+        FunctionArgumentScheme.from(
+            "Conversion is performed using the corresponding String-parameterized " +
+            "constructors or X.valueOf() methods",
+            Types.STRING);
     
-    private static final ArgumentsTypeScheme ATS_STRING_LOCALE = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.LOCALE_TYPESCHEME,
-                "Conversion is performed using a java.text.NumberFormat instance for the specified locale");
+    private static final FunctionArgumentScheme<String> SCH_STRING_LOCALE = 
+        FunctionArgumentScheme.from(
+            "Conversion is performed using a java.text.NumberFormat instance for the specified locale",
+            Types.STRING, 
+            "Locale");
     
-    private static final ArgumentsTypeScheme ATS_STRING_STRINGLOCALE = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.STRING_TYPESCHEME, 
-            TypeSchemes.STRING_TYPESCHEME, 
-                "Conversion is performed using a java.text.NumberFormat instance for the specified locale");
+    private static final FunctionArgumentScheme<String> SCH_STRING_STRINGLOCALE = 
+        FunctionArgumentScheme.from(
+            "Conversion is performed using a java.text.NumberFormat instance for the specified locale",
+            Types.STRING, 
+            "String");
     
-    private static final ArgumentsTypeScheme ATS_STRING_DECIMALISCOMMA = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.STRING_TYPESCHEME, 
-            PTS_DECIMAL_IS_COMMA, 
-                "Conversion is performed using the comma (,) as a decimal symbol");
+    private static final FunctionArgumentScheme<String> SCH_STRING_DECIMALISCOMMA = 
+        FunctionArgumentScheme.from(
+            "Conversion is performed using the comma (,) as a decimal symbol",
+            Types.STRING, 
+            DECIMAL_IS_COMMA);
     
-    private static final ArgumentsTypeScheme ATS_STRING_DECIMALISPOINT = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.STRING_TYPESCHEME, 
-            PTS_DECIMAL_IS_POINT, 
-                "Conversion is performed using the point (.) as a decimal symbol");
+    private static final FunctionArgumentScheme<String> SCH_STRING_DECIMALISPOINT = 
+        FunctionArgumentScheme.from(
+            "Conversion is performed using the point (.) as a decimal symbol",
+            Types.STRING, 
+            DECIMAL_IS_POINT);
     
-    private static final ArgumentsTypeScheme ATS_STRING_DECIMALCANBEPOINTORCOMMA = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.STRING_TYPESCHEME, 
-            PTS_DECIMAL_CAN_BE_POINT_OR_COMMA, 
-                "Conversion is performed looking for the last appearance of a point (.) or a comma (,) in the " +
-                "target, and using it as the decimal symbol");
+    private static final FunctionArgumentScheme<String> SCH_STRING_DECIMALCANBEPOINTORCOMMA = 
+        FunctionArgumentScheme.from(
+            "Conversion is performed looking for the last appearance of a point (.) or a comma (,) in the " +
+            "target, and using it as the decimal symbol",
+            Types.STRING, 
+            DECIMAL_CAN_BE_POINT_OR_COMMA);
     
-    private static final ArgumentsTypeScheme ATS_BOOLEAN_EMPTY = 
-        new ArgumentsTypeScheme(
-                TypeSchemes.BOOLEAN_TYPESCHEME,
-                TypeSchemes.EMPTY_TYPESCHEME, 
-                    "Conversion of TRUE returns 1, conversion of FALSE returns 0");
+    private static final FunctionArgumentScheme<Boolean> SCH_BOOLEAN_EMPTY = 
+        FunctionArgumentScheme.from(
+            "Conversion of TRUE returns 1, conversion of FALSE returns 0",
+            Types.BOOLEAN);
 
     
     
@@ -125,80 +115,82 @@ public abstract class NumberConverter extends ConverterImplementation {
     }
 
 
+    
     @Override
-    protected final Set<ArgumentsTypeScheme> registerMatchedArgumentTypeSchemes() {
-        final Set<ArgumentsTypeScheme> matched = new LinkedHashSet<ArgumentsTypeScheme>();
-        matched.add(ATS_NUMBER_EMPTY);
-        matched.add(ATS_STRING_EMPTY);
-        matched.add(ATS_STRING_LOCALE);
-        matched.add(ATS_STRING_STRINGLOCALE);
-        matched.add(ATS_STRING_DECIMALISCOMMA);
-        matched.add(ATS_STRING_DECIMALISPOINT);
-        matched.add(ATS_STRING_DECIMALCANBEPOINTORCOMMA);
-        matched.add(ATS_BOOLEAN_EMPTY);
-        matched.addAll(registerNumberMatchedArgumentTypeSchemes());
+    protected Set<FunctionArgumentScheme<? extends Object>> registerMatchedSchemes() {
+        Set<FunctionArgumentScheme<? extends Object>> matched = new LinkedHashSet<FunctionArgumentScheme<? extends Object>>();
+        matched.add(SCH_NUMBER_EMPTY);
+        matched.add(SCH_STRING_EMPTY);
+        matched.add(SCH_STRING_LOCALE);
+        matched.add(SCH_STRING_STRINGLOCALE);
+        matched.add(SCH_STRING_DECIMALISCOMMA);
+        matched.add(SCH_STRING_DECIMALISPOINT);
+        matched.add(SCH_STRING_DECIMALCANBEPOINTORCOMMA);
+        matched.add(SCH_BOOLEAN_EMPTY);
+        matched.addAll(registerNumberMatchedSchemes());
         return matched;
     }
+    
 
     
-    protected abstract Set<ArgumentsTypeScheme> registerNumberMatchedArgumentTypeSchemes();
+    protected abstract Set<FunctionArgumentScheme<? extends Object>> registerNumberMatchedSchemes();
+    
+    
+
     
     
     
     @Override
-    public final Result doExecute(final Arguments arguments) throws Exception {
-
-        if (arguments.areAllTargetsNull()) {
-            return createUniqResult((Object[])null);
+    public final T execute(final FunctionArguments arguments) throws Exception {
+     
+        if (arguments.isTargetNull()) {
+            return null;
         }
         
-        final Result result = doExecuteNumber(arguments);
+        final T result = executeNumber(arguments);
         if (result != null) {
             return result;
         }
         
-        if (ATS_NUMBER_EMPTY.matches(arguments)) {
-            return createUniqResult(fromNumber(arguments.getTargetAsNumber(0)));
+        if (SCH_NUMBER_EMPTY.matches(arguments)) {
+            return fromNumber(arguments.getTargetAsNumber());
         }
         
-        if (ATS_STRING_EMPTY.matches(arguments)) {
-            return createUniqResult(fromString(arguments.getStringTarget(0)));
+        if (SCH_STRING_EMPTY.matches(arguments)) {
+            return fromString(arguments.getTargetAsString());
         }
         
-        if (ATS_STRING_DECIMALISPOINT.matches(arguments)) {
-            // Like with ATS_STRING_EMPTY, but preprocessing decimals
+        if (SCH_STRING_DECIMALISPOINT.matches(arguments)) {
+            // Like with SCH_STRING_EMPTY, but preprocessing decimals
             try {
-                return createUniqResult(
-                        fromString(rebuildNumberString(arguments.getStringTarget(0), DecimalSign.POINT)));
+                return fromString(rebuildNumberString(arguments.getTargetAsString(), DecimalSign.POINT));
             } catch (NumberFormatException e) {
                 // original input could have been modified, so raise the right exception
-                throw new NumberFormatException("For input string: \"" + arguments.getStringTarget(0) + "\"");
+                throw new NumberFormatException("For input string: \"" + arguments.getTargetAsString() + "\"");
             }
         }
         
-        if (ATS_STRING_DECIMALISCOMMA.matches(arguments)) {
-            // Like with ATS_STRING_EMPTY, but preprocessing decimals
+        if (SCH_STRING_DECIMALISCOMMA.matches(arguments)) {
+            // Like with SCH_STRING_EMPTY, but preprocessing decimals
             try {
-                return createUniqResult(
-                        fromString(rebuildNumberString(arguments.getStringTarget(0), DecimalSign.COMMA)));
+                return fromString(rebuildNumberString(arguments.getTargetAsString(), DecimalSign.COMMA));
             } catch (NumberFormatException e) {
                 // original input could have been modified, so raise the right exception
-                throw new NumberFormatException("For input string: \"" + arguments.getStringTarget(0) + "\"");
+                throw new NumberFormatException("For input string: \"" + arguments.getTargetAsString() + "\"");
             }
         }
         
-        if (ATS_STRING_DECIMALCANBEPOINTORCOMMA.matches(arguments)) {
-            // Like with ATS_STRING_EMPTY, but preprocessing decimals
+        if (SCH_STRING_DECIMALCANBEPOINTORCOMMA.matches(arguments)) {
+            // Like with SCH_STRING_EMPTY, but preprocessing decimals
             try {
-                return createUniqResult(
-                        fromString(rebuildNumberString(arguments.getStringTarget(0), DecimalSign.POINT_OR_COMMA)));
+                return fromString(rebuildNumberString(arguments.getTargetAsString(), DecimalSign.POINT_OR_COMMA));
             } catch (NumberFormatException e) {
                 // original input could have been modified, so raise the right exception
-                throw new NumberFormatException("For input string: \"" + arguments.getStringTarget(0) + "\"");
+                throw new NumberFormatException("For input string: \"" + arguments.getTargetAsString() + "\"");
             }
         }
         
-        if (ATS_STRING_LOCALE.matches(arguments)) {
+        if (SCH_STRING_LOCALE.matches(arguments)) {
             final Locale locale = arguments.getLocaleParameter(0);
             DecimalFormat decimalFormat = this.decimalFormatsByLocale.get(locale);
             if (decimalFormat == null) {
@@ -207,11 +199,10 @@ public abstract class NumberConverter extends ConverterImplementation {
                 decimalFormat.setParseBigDecimal(true);
                 this.decimalFormatsByLocale.put(locale, decimalFormat);
             }
-            return createUniqResult(
-                    fromNumber(decimalFormat.parse(arguments.getStringTarget(0))));
+            return fromNumber(decimalFormat.parse(arguments.getTargetAsString()));
         }
         
-        if (ATS_STRING_STRINGLOCALE.matches(arguments)) {
+        if (SCH_STRING_STRINGLOCALE.matches(arguments)) {
             final Locale locale = LocaleUtils.toLocale(arguments.getStringParameter(0));
             DecimalFormat decimalFormat = this.decimalFormatsByLocale.get(locale);
             if (decimalFormat == null) {
@@ -220,13 +211,11 @@ public abstract class NumberConverter extends ConverterImplementation {
                 decimalFormat.setParseBigDecimal(true);
                 this.decimalFormatsByLocale.put(locale, decimalFormat);
             }
-            return createUniqResult(
-                    fromNumber(decimalFormat.parse(arguments.getStringTarget(0))));
+            return fromNumber(decimalFormat.parse(arguments.getTargetAsString()));
         }
 
-        if (ATS_BOOLEAN_EMPTY.matches(arguments)) {
-            return createUniqResult(
-                    fromNumber(BooleanUtils.toIntegerObject(arguments.getTargetAsBoolean(0))));
+        if (SCH_BOOLEAN_EMPTY.matches(arguments)) {
+            return fromNumber(BooleanUtils.toIntegerObject(arguments.getTargetAsBoolean()));
         }
 
         
@@ -236,13 +225,13 @@ public abstract class NumberConverter extends ConverterImplementation {
 
     
     
-    protected abstract Result doExecuteNumber(final Arguments arguments) throws Exception;
+    protected abstract T executeNumber(final FunctionArguments arguments) throws Exception;
 
     
     
-    protected abstract Number fromNumber(final Number number) throws Exception;
+    protected abstract T fromNumber(final Number number) throws Exception;
     
-    protected abstract Number fromString(final String string) throws Exception;
+    protected abstract T fromString(final String string) throws Exception;
     
     
     

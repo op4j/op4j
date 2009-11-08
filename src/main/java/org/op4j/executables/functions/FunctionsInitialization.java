@@ -20,8 +20,15 @@
 package org.op4j.executables.functions;
 
 import org.op4j.exceptions.FunctionImplementationRegistrationException;
-import org.op4j.executables.functions.conversion.DummyConverter;
-import org.op4j.executables.functions.conversion.DummyFunction;
+import org.op4j.executables.functions.conversion.BigDecimalConverter;
+import org.op4j.executables.functions.conversion.BigIntegerConverter;
+import org.op4j.executables.functions.conversion.ByteConverter;
+import org.op4j.executables.functions.conversion.DoubleConverter;
+import org.op4j.executables.functions.conversion.FloatConverter;
+import org.op4j.executables.functions.conversion.IntegerConverter;
+import org.op4j.executables.functions.conversion.LongConverter;
+import org.op4j.executables.functions.conversion.ShortConverter;
+import org.op4j.executables.functions.conversion.StringConverter;
 
 /**
  * 
@@ -37,22 +44,20 @@ final class FunctionsInitialization {
     static synchronized void declareAndInitializeOperations() {
         // Initialize all converters
 
-//      Functions.registerFunctionImplementation(ByteConverter.class);
-//      Operations.addOperationImplementation(ShortConverter.class);
-//      Operations.addOperationImplementation(IntegerConverter.class);
-//      Operations.addOperationImplementation(LongConverter.class);
-//      Operations.addOperationImplementation(BigIntegerConverter.class);
-//      Operations.addOperationImplementation(BigDecimalConverter.class);
-//      Operations.addOperationImplementation(FloatConverter.class);
-//      Operations.addOperationImplementation(DoubleConverter.class);
-//      Operations.addOperationImplementation(StringConverter.class);
 //      Operations.addOperationImplementation(BooleanConverter.class);
 //      Operations.addOperationImplementation(CalendarConverter.class);
         
         final Class<?>[] implementationClasses =
             new Class<?>[] {
-                DummyFunction.class,
-                DummyConverter.class
+                ByteConverter.class,
+                ShortConverter.class,
+                IntegerConverter.class,
+                LongConverter.class,
+                BigIntegerConverter.class,
+                FloatConverter.class,
+                DoubleConverter.class,
+                BigDecimalConverter.class,
+                StringConverter.class
             };
 
         for(int i = 0; i < implementationClasses.length; i++) {

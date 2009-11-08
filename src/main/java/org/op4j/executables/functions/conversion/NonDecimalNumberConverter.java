@@ -28,11 +28,9 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.apache.commons.lang.LocaleUtils;
-import org.op4j.operation.Arguments;
-import org.op4j.operation.ArgumentsTypeScheme;
-import org.op4j.operation.Result;
-import org.op4j.typescheme.TypeScheme;
-import org.op4j.typescheme.TypeSchemes;
+import org.javaruntype.type.Types;
+import org.op4j.executables.functions.FunctionArgumentScheme;
+import org.op4j.executables.functions.FunctionArguments;
 
 /**
  * 
@@ -41,222 +39,219 @@ import org.op4j.typescheme.TypeSchemes;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public abstract class NonDecimalNumberConverter extends NumberConverter {
+public abstract class NonDecimalNumberConverter<T extends Number> extends NumberConverter<T> {
 
     
 	private static final long serialVersionUID = -1837141367740669785L;
 	
 
-	private static final TypeScheme PTS_ROUNDINGMODE = TypeSchemes.forName("java.math.RoundingMode");
-    private static final TypeScheme PTS_ROUNDINGMODE_LOCALE = TypeSchemes.forName("java.math.RoundingMode, Locale");
-    private static final TypeScheme PTS_ROUNDINGMODE_STRINGLOCALE = TypeSchemes.forName("java.math.RoundingMode, String");
-    private static final TypeScheme PTS_ROUNDINGMODE_DECIMALISCOMMA = TypeSchemes.forName("java.math.RoundingMode, 'DECIMAL_IS_COMMA'");
-    private static final TypeScheme PTS_ROUNDINGMODE_DECIMALISPOINT = TypeSchemes.forName("java.math.RoundingMode, 'DECIMAL_IS_POINT'");
-    private static final TypeScheme PTS_ROUNDINGMODE_DECIMALCANBEPOINTORCOMMA = TypeSchemes.forName("java.math.RoundingMode, 'DECIMAL_CAN_BE_POINT_OR_COMMA'");
-	
-	
     
     
-    private static final ArgumentsTypeScheme ATS_STRING_INTEGER = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.STRING_TYPESCHEME,
-            TypeSchemes.INTEGER_TYPESCHEME,
-                "Conversion is performed using the corresponding " +
-                "X.valueOf(string, radix) methods, so the String target is expected to be " +
-                "expressed in the specified radix");  
+    private static final FunctionArgumentScheme<String> SCH_STRING_INTEGER = 
+        FunctionArgumentScheme.from(
+            "Conversion is performed using the corresponding " +
+            "X.valueOf(string, radix) methods, so the String target is expected to be " +
+            "expressed in the specified radix",
+            Types.STRING,
+            "Integer");  
 
-    private static final ArgumentsTypeScheme ATS_STRING_ROUNDINGMODE = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.STRING_TYPESCHEME,
-            PTS_ROUNDINGMODE,
-                "Conversion is performed from the specified String target by rounding decimals " +
-                "in the way specified the java.math.RoundingMode parameter. " +
-                "A point (.) is interpreted as a decimal symbol, as this is the way XX.valueOf() methods work"); 
+    private static final FunctionArgumentScheme<String> SCH_STRING_ROUNDINGMODE = 
+        FunctionArgumentScheme.from(
+            "Conversion is performed from the specified String target by rounding decimals " +
+            "in the way specified the java.math.RoundingMode parameter. " +
+            "A point (.) is interpreted as a decimal symbol, as this is the way XX.valueOf() methods work",
+            Types.STRING,
+            "RoundingMode"); 
 
-    private static final ArgumentsTypeScheme ATS_STRING_ROUNDINGMODE_LOCALE = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.STRING_TYPESCHEME,
-            PTS_ROUNDINGMODE_LOCALE,
-                "Conversion is performed from the specified String target by rounding decimals " +
-                "in the way specified the java.math.RoundingMode parameter. " +
-                "Decimal and thousands symbols are interpreting according to the specified locale"); 
+    private static final FunctionArgumentScheme<String> SCH_STRING_ROUNDINGMODE_LOCALE = 
+        FunctionArgumentScheme.from(
+            "Conversion is performed from the specified String target by rounding decimals " +
+            "in the way specified the java.math.RoundingMode parameter. " +
+            "Decimal and thousands symbols are interpreting according to the specified locale",
+            Types.STRING,
+            "RoundingMode,Locale"); 
 
-    private static final ArgumentsTypeScheme ATS_STRING_ROUNDINGMODE_STRINGLOCALE = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.STRING_TYPESCHEME,
-            PTS_ROUNDINGMODE_STRINGLOCALE,
-                "Conversion is performed from the specified String target by rounding decimals " +
-                "in the way specified the java.math.RoundingMode parameter. " +
-                "Decimal and thousands symbols are interpreting according to the specified locale"); 
+    private static final FunctionArgumentScheme<String> SCH_STRING_ROUNDINGMODE_STRINGLOCALE = 
+        FunctionArgumentScheme.from(
+            "Conversion is performed from the specified String target by rounding decimals " +
+            "in the way specified the java.math.RoundingMode parameter. " +
+            "Decimal and thousands symbols are interpreting according to the specified locale",
+            Types.STRING,
+            "RoundingMode,String"); 
 
-    private static final ArgumentsTypeScheme ATS_STRING_ROUNDINGMODE_DECIMAL_IS_COMMA = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.STRING_TYPESCHEME,
-            PTS_ROUNDINGMODE_DECIMALISCOMMA,
-                "Conversion is performed from the specified String target by rounding decimals " +
-                "in the way specified the java.math.RoundingMode parameter. " +
-                "A comma (,) is interpreted as a decimal symbol"); 
+    private static final FunctionArgumentScheme<String> SCH_STRING_ROUNDINGMODE_DECIMAL_IS_COMMA = 
+        FunctionArgumentScheme.from(
+            "Conversion is performed from the specified String target by rounding decimals " +
+            "in the way specified the java.math.RoundingMode parameter. " +
+            "A comma (,) is interpreted as a decimal symbol",
+            Types.STRING,
+            "RoundingMode, 'DECIMAL_IS_COMMA'"); 
 
-    private static final ArgumentsTypeScheme ATS_STRING_ROUNDINGMODE_DECIMAL_IS_POINT = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.STRING_TYPESCHEME,
-            PTS_ROUNDINGMODE_DECIMALISPOINT,
-                "Conversion is performed from the specified String target by rounding decimals " +
-                "in the way specified the java.math.RoundingMode parameter. " +
-                "A point (.) is interpreted as a decimal symbol"); 
+    private static final FunctionArgumentScheme<String> SCH_STRING_ROUNDINGMODE_DECIMAL_IS_POINT = 
+        FunctionArgumentScheme.from(
+            "Conversion is performed from the specified String target by rounding decimals " +
+            "in the way specified the java.math.RoundingMode parameter. " +
+            "A point (.) is interpreted as a decimal symbol",
+            Types.STRING,
+            "RoundingMode, 'DECIMAL_IS_POINT'"); 
 
-    private static final ArgumentsTypeScheme ATS_STRING_ROUNDINGMODE_DECIMAL_CAN_BE_POINT_OR_COMMA = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.STRING_TYPESCHEME,
-            PTS_ROUNDINGMODE_DECIMALCANBEPOINTORCOMMA,
-                "Conversion is performed from the specified String target by rounding decimals " +
-                "in the way specified the java.math.RoundingMode parameter. " +
-                "Both a point (.) or a comma (,) can be interpreted as a decimal symbol, depending on " +
-                "which one appears last (the last one will)"); 
+    private static final FunctionArgumentScheme<String> SCH_STRING_ROUNDINGMODE_DECIMAL_CAN_BE_POINT_OR_COMMA = 
+        FunctionArgumentScheme.from(
+            "Conversion is performed from the specified String target by rounding decimals " +
+            "in the way specified the java.math.RoundingMode parameter. " +
+            "Both a point (.) or a comma (,) can be interpreted as a decimal symbol, depending on " +
+            "which one appears last (the last one will)",
+            Types.STRING,
+            "RoundingMode, 'DECIMAL_CAN_BE_POINT_OR_COMMA'"); 
 
-    private static final ArgumentsTypeScheme ATS_FLOAT_ROUNDINGMODE = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.FLOAT_TYPESCHEME,
-            PTS_ROUNDINGMODE,
-                "Conversion is performed from Float by rounding decimals in the way " +
-                "specified by the java.math.RoundingMode parameter"); 
+    private static final FunctionArgumentScheme<Float> SCH_FLOAT_ROUNDINGMODE = 
+        FunctionArgumentScheme.from(
+            "Conversion is performed from Float by rounding decimals in the way " +
+            "specified by the java.math.RoundingMode parameter",
+            Types.FLOAT,
+            "RoundingMode"); 
 
-    private static final ArgumentsTypeScheme ATS_DOUBLE_ROUNDINGMODE = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.DOUBLE_TYPESCHEME,
-            PTS_ROUNDINGMODE,
-                "Conversion is performed from Double by rounding decimals in the way " +
-                "specified by the java.math.RoundingMode parameter"); 
+    private static final FunctionArgumentScheme<Double> SCH_DOUBLE_ROUNDINGMODE = 
+        FunctionArgumentScheme.from(
+            "Conversion is performed from Double by rounding decimals in the way " +
+            "specified by the java.math.RoundingMode parameter",
+            Types.DOUBLE,
+            "RoundingMode"); 
 
-    private static final ArgumentsTypeScheme ATS_BIGDECIMAL_ROUNDINGMODE = 
-        new ArgumentsTypeScheme(
-            TypeSchemes.BIGDECIMAL_TYPESCHEME,
-            PTS_ROUNDINGMODE,
-                "Conversion is performed from Double by rounding decimals in the way " +
-                "specified by the java.math.RoundingMode parameter"); 
+    private static final FunctionArgumentScheme<BigDecimal> SCH_BIGDECIMAL_ROUNDINGMODE = 
+        FunctionArgumentScheme.from(
+            "Conversion is performed from Double by rounding decimals in the way " +
+            "specified by the java.math.RoundingMode parameter",
+            Types.BIG_DECIMAL,
+            "RoundingMode"); 
+    
+
+    
+    
+    
+    
+    public NonDecimalNumberConverter() {
+        super();
+    }
+    
     
     
     @Override
-    protected final Set<ArgumentsTypeScheme> registerNumberMatchedArgumentTypeSchemes() {
-        final Set<ArgumentsTypeScheme> matched = new LinkedHashSet<ArgumentsTypeScheme>();
-        matched.add(ATS_STRING_INTEGER);
-        matched.add(ATS_STRING_ROUNDINGMODE);
-        matched.add(ATS_STRING_ROUNDINGMODE_LOCALE);
-        matched.add(ATS_STRING_ROUNDINGMODE_STRINGLOCALE);
-        matched.add(ATS_STRING_ROUNDINGMODE_DECIMAL_IS_COMMA);
-        matched.add(ATS_STRING_ROUNDINGMODE_DECIMAL_IS_POINT);
-        matched.add(ATS_STRING_ROUNDINGMODE_DECIMAL_CAN_BE_POINT_OR_COMMA);
-        matched.add(ATS_FLOAT_ROUNDINGMODE);
-        matched.add(ATS_DOUBLE_ROUNDINGMODE);
-        matched.add(ATS_BIGDECIMAL_ROUNDINGMODE);
-        matched.addAll(registerNonDecimalNumberMatchedArgumentTypeSchemes());
+    protected Set<FunctionArgumentScheme<? extends Object>> registerNumberMatchedSchemes() {
+        final Set<FunctionArgumentScheme<? extends Object>> matched = new LinkedHashSet<FunctionArgumentScheme<? extends Object>>();
+        matched.add(SCH_STRING_INTEGER);
+        matched.add(SCH_STRING_ROUNDINGMODE);
+        matched.add(SCH_STRING_ROUNDINGMODE_LOCALE);
+        matched.add(SCH_STRING_ROUNDINGMODE_STRINGLOCALE);
+        matched.add(SCH_STRING_ROUNDINGMODE_DECIMAL_IS_COMMA);
+        matched.add(SCH_STRING_ROUNDINGMODE_DECIMAL_IS_POINT);
+        matched.add(SCH_STRING_ROUNDINGMODE_DECIMAL_CAN_BE_POINT_OR_COMMA);
+        matched.add(SCH_FLOAT_ROUNDINGMODE);
+        matched.add(SCH_DOUBLE_ROUNDINGMODE);
+        matched.add(SCH_BIGDECIMAL_ROUNDINGMODE);
+        matched.addAll(registerNonDecimalNumberMatchedSchemes());
         return matched;
     }
     
     
-    protected abstract Set<ArgumentsTypeScheme> registerNonDecimalNumberMatchedArgumentTypeSchemes();
+    protected abstract Set<FunctionArgumentScheme<? extends Object>> registerNonDecimalNumberMatchedSchemes();
 
     
-    @Override
-    protected final Result doExecuteNumber(final Arguments arguments) throws Exception {
 
-        final Result result = doExecuteNonDecimalNumber(arguments);
+
+    @Override
+    protected T executeNumber(final FunctionArguments arguments) throws Exception {
+
+        final T result = executeNonDecimalNumber(arguments);
         if (result != null) {
             return result;
         }
         
-        if (ATS_STRING_INTEGER.matches(arguments)) {
-            return createUniqResult(
-                    fromString(
-                            arguments.getStringTarget(0),
-                            arguments.getIntegerParameter(0).intValue()));
+        if (SCH_STRING_INTEGER.matches(arguments)) {
+            return fromString(
+                            arguments.getTargetAsString(),
+                            arguments.getIntegerParameter(0).intValue());
         }
         
-        if (ATS_STRING_ROUNDINGMODE.matches(arguments)) {
-            return createUniqResult(
-                    fromString(
-                            arguments.getStringTarget(0),
-                            (RoundingMode) arguments.getParameter(0)));
+        if (SCH_STRING_ROUNDINGMODE.matches(arguments)) {
+            return fromString(
+                            arguments.getTargetAsString(),
+                            (RoundingMode) arguments.getParameter(0));
         }
         
-        if (ATS_STRING_ROUNDINGMODE_DECIMAL_IS_POINT.matches(arguments)) {
-            // Like with ATS_STRING_ROUNDINGMODE, but preprocessing decimals
+        if (SCH_STRING_ROUNDINGMODE_DECIMAL_IS_POINT.matches(arguments)) {
+            // Like with SCH_STRING_ROUNDINGMODE, but preprocessing decimals
             try {
-                return createUniqResult(
-                        fromString(
-                                rebuildNumberString(arguments.getStringTarget(0), DecimalSign.POINT),
-                                (RoundingMode) arguments.getParameter(0)));
+                return fromString(
+                                rebuildNumberString(arguments.getTargetAsString(), DecimalSign.POINT),
+                                (RoundingMode) arguments.getParameter(0));
             } catch (NumberFormatException e) {
                 // original input could have been modified, so raise the right exception
-                throw new NumberFormatException("For input string: \"" + arguments.getStringTarget(0) + "\"");
+                throw new NumberFormatException("For input string: \"" + arguments.getTargetAsString() + "\"");
             }
         }
         
-        if (ATS_STRING_ROUNDINGMODE_DECIMAL_IS_COMMA.matches(arguments)) {
-            // Like with ATS_STRING_ROUNDINGMODE, but preprocessing decimals
+        if (SCH_STRING_ROUNDINGMODE_DECIMAL_IS_COMMA.matches(arguments)) {
+            // Like with SCH_STRING_ROUNDINGMODE, but preprocessing decimals
             try {
-                return createUniqResult(
-                        fromString(
-                                rebuildNumberString(arguments.getStringTarget(0), DecimalSign.COMMA),
-                                (RoundingMode) arguments.getParameter(0)));
+                return fromString(
+                                rebuildNumberString(arguments.getTargetAsString(), DecimalSign.COMMA),
+                                (RoundingMode) arguments.getParameter(0));
             } catch (NumberFormatException e) {
                 // original input could have been modified, so raise the right exception
-                throw new NumberFormatException("For input string: \"" + arguments.getStringTarget(0) + "\"");
+                throw new NumberFormatException("For input string: \"" + arguments.getTargetAsString() + "\"");
             }
         }
         
-        if (ATS_STRING_ROUNDINGMODE_DECIMAL_CAN_BE_POINT_OR_COMMA.matches(arguments)) {
-            // Like with ATS_STRING_ROUNDINGMODE, but preprocessing decimals
+        if (SCH_STRING_ROUNDINGMODE_DECIMAL_CAN_BE_POINT_OR_COMMA.matches(arguments)) {
+            // Like with SCH_STRING_ROUNDINGMODE, but preprocessing decimals
             try {
-                return createUniqResult(
-                        fromString(
-                                rebuildNumberString(arguments.getStringTarget(0), DecimalSign.POINT_OR_COMMA),
-                                (RoundingMode) arguments.getParameter(0)));
+                return fromString(
+                                rebuildNumberString(arguments.getTargetAsString(), DecimalSign.POINT_OR_COMMA),
+                                (RoundingMode) arguments.getParameter(0));
             } catch (NumberFormatException e) {
                 // original input could have been modified, so raise the right exception
-                throw new NumberFormatException("For input string: \"" + arguments.getStringTarget(0) + "\"");
+                throw new NumberFormatException("For input string: \"" + arguments.getTargetAsString() + "\"");
             }
         }
         
-        if (ATS_STRING_ROUNDINGMODE_LOCALE.matches(arguments)) {
+        if (SCH_STRING_ROUNDINGMODE_LOCALE.matches(arguments)) {
             final DecimalFormat decimalFormat = 
                 (DecimalFormat) NumberFormat.getNumberInstance(arguments.getLocaleParameter(2));
             decimalFormat.setParseBigDecimal(true);
-            return createUniqResult(
-                    fromNumber(
-                            decimalFormat.parse(arguments.getStringTarget(0)),
-                            (RoundingMode) arguments.getParameter(0)));
+            return fromNumber(
+                            decimalFormat.parse(arguments.getTargetAsString()),
+                            (RoundingMode) arguments.getParameter(0));
         }
         
-        if (ATS_STRING_ROUNDINGMODE_STRINGLOCALE.matches(arguments)) {
+        if (SCH_STRING_ROUNDINGMODE_STRINGLOCALE.matches(arguments)) {
             final DecimalFormat decimalFormat = 
                 (DecimalFormat) NumberFormat.getNumberInstance(LocaleUtils.toLocale(arguments.getStringParameter(2)));
             decimalFormat.setParseBigDecimal(true);
-            return createUniqResult(
-                    fromNumber(
-                            decimalFormat.parse(arguments.getStringTarget(0)),
-                            (RoundingMode) arguments.getParameter(0)));
+            return fromNumber(
+                            decimalFormat.parse(arguments.getTargetAsString()),
+                            (RoundingMode) arguments.getParameter(0));
         }
 
-        if (ATS_FLOAT_ROUNDINGMODE.matches(arguments)) {
+        if (SCH_FLOAT_ROUNDINGMODE.matches(arguments)) {
             BigDecimal bigDecimal = 
-                new BigDecimal(arguments.getTargetAsFloat(0).doubleValue());
+                new BigDecimal(arguments.getTargetAsFloat().doubleValue());
             bigDecimal = bigDecimal.setScale(0, (RoundingMode) arguments.getParameter(0));
-            return createUniqResult(fromNumber(bigDecimal));
+            return fromNumber(bigDecimal);
         }
 
-        if (ATS_DOUBLE_ROUNDINGMODE.matches(arguments)) {
+        if (SCH_DOUBLE_ROUNDINGMODE.matches(arguments)) {
             BigDecimal bigDecimal = 
-                new BigDecimal(arguments.getTargetAsDouble(0).doubleValue());
+                new BigDecimal(arguments.getTargetAsDouble().doubleValue());
             bigDecimal = bigDecimal.setScale(0, (RoundingMode) arguments.getParameter(0));
-            return createUniqResult(fromNumber(bigDecimal));
+            return fromNumber(bigDecimal);
         }
 
-        if (ATS_BIGDECIMAL_ROUNDINGMODE.matches(arguments)) {
+        if (SCH_BIGDECIMAL_ROUNDINGMODE.matches(arguments)) {
             BigDecimal bigDecimal = 
-                    ((BigDecimal)arguments.getTarget(0)).setScale(
+                    ((BigDecimal)arguments.getTarget()).setScale(
                             0, (RoundingMode) arguments.getParameter(0));
-            return createUniqResult(fromNumber(bigDecimal));
+            return fromNumber(bigDecimal);
         }
         
         return null;
@@ -264,16 +259,17 @@ public abstract class NonDecimalNumberConverter extends NumberConverter {
     }
 
     
-    protected abstract Result doExecuteNonDecimalNumber(final Arguments arguments)
+    protected abstract T executeNonDecimalNumber(final FunctionArguments arguments)
             throws Exception;
 
+
     
-    protected abstract Number fromString(final String string, final int radix) throws Exception;
+    protected abstract T fromString(final String string, final int radix) throws Exception;
 
 
     
     
-    protected final Number fromNumber(
+    protected final T fromNumber(
             final Number number, final RoundingMode roundingMode) throws Exception {
         BigDecimal bigDecimal = null;
         if (number instanceof BigDecimal) {
@@ -288,7 +284,7 @@ public abstract class NonDecimalNumberConverter extends NumberConverter {
     }
 
     
-    protected final Number fromString(
+    protected final T fromString(
             final String string, final RoundingMode roundingMode) throws Exception {
         return fromNumber(fromString(string), roundingMode);
     }

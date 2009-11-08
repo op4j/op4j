@@ -22,11 +22,10 @@ package org.op4j.executables.functions.conversion;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.op4j.operation.Arguments;
-import org.op4j.operation.ArgumentsTypeScheme;
-import org.op4j.operation.Result;
-import org.op4j.type.Type;
-import org.op4j.type.Types;
+import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
+import org.op4j.executables.functions.FunctionArgumentScheme;
+import org.op4j.executables.functions.FunctionArguments;
 
 /**
  * 
@@ -35,38 +34,50 @@ import org.op4j.type.Types;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class DoubleConverter extends DecimalNumberConverter {
+public final class DoubleConverter extends DecimalNumberConverter<Double> {
 
 
     private static final long serialVersionUID = 1820810568585284513L;
 
 
+    
+    
+    public DoubleConverter() {
+        super();
+    }
+    
+    
+
+
     @Override
-    public Type getResultType() {
+    protected Type<Double> registerResultType() {
         return Types.DOUBLE;
     }
-
     
+    
+
+
     @Override
-    protected Set<ArgumentsTypeScheme> registerDecimalNumberMatchedArgumentTypeSchemes() {
-        return new HashSet<ArgumentsTypeScheme>();
+    protected Set<FunctionArgumentScheme<? extends Object>> registerDecimalNumberMatchedSchemes() {
+        return new HashSet<FunctionArgumentScheme<? extends Object>>();
     }
+    
 
     
     @Override
-    protected Result doExecuteDecimalNumber(final Arguments arguments) throws Exception {
+    protected Double executeDecimalNumber(final FunctionArguments arguments) throws Exception {
         return null;
     }
 
     
     @Override
-    protected Number fromNumber(final Number number) throws Exception {
+    protected Double fromNumber(final Number number) throws Exception {
         return new Double(number.doubleValue());
     }
 
     
     @Override
-    protected Number fromString(final String string) throws Exception {
+    protected Double fromString(final String string) throws Exception {
         return Double.valueOf(string);
     }
 

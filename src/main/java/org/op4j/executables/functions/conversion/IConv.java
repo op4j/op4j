@@ -32,4 +32,8 @@ import org.op4j.executables.functions.IFunc;
  */
 public interface IConv<X> extends IFunc<X,Object> {
     
+    
+    // Marker interface
+    
+    
 }

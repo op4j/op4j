@@ -779,9 +779,9 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
+    @SuppressWarnings("unchecked")
     public T get() {
-        // TODO Auto-generated method stub
-        return null;
+        return (T) getTarget().get();
     }
 
 

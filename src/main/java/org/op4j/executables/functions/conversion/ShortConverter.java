@@ -22,11 +22,10 @@ package org.op4j.executables.functions.conversion;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.op4j.operation.Arguments;
-import org.op4j.operation.ArgumentsTypeScheme;
-import org.op4j.operation.Result;
-import org.op4j.type.Type;
-import org.op4j.type.Types;
+import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
+import org.op4j.executables.functions.FunctionArgumentScheme;
+import org.op4j.executables.functions.FunctionArguments;
 
 /**
  * 
@@ -35,43 +34,55 @@ import org.op4j.type.Types;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class ShortConverter extends NonDecimalNumberConverter {
+public final class ShortConverter extends NonDecimalNumberConverter<Short> {
 
     private static final long serialVersionUID = -5279805889263019640L;
 
     
+    
+    
+    public ShortConverter() {
+        super();
+    }
+    
+    
+
+
     @Override
-    public Type getResultType() {
+    protected Type<Short> registerResultType() {
         return Types.SHORT;
     }
-
     
+    
+
+
     @Override
-    protected Set<ArgumentsTypeScheme> registerNonDecimalNumberMatchedArgumentTypeSchemes() {
-        return new HashSet<ArgumentsTypeScheme>();
+    protected Set<FunctionArgumentScheme<? extends Object>> registerNonDecimalNumberMatchedSchemes() {
+        return new HashSet<FunctionArgumentScheme<? extends Object>>();
     }
+    
 
     
     @Override
-    protected Result doExecuteNonDecimalNumber(final Arguments arguments) throws Exception {
+    protected Short executeNonDecimalNumber(final FunctionArguments arguments) throws Exception {
         return null;
     }
 
     
     @Override
-    protected Number fromNumber(final Number number) throws Exception {
+    protected Short fromNumber(final Number number) throws Exception {
         return Short.valueOf(number.shortValue());
     }
 
 
     @Override
-    protected Number fromString(final String string) throws Exception {
+    protected Short fromString(final String string) throws Exception {
         return Short.valueOf(string);
     }
 
 
     @Override
-    protected Number fromString(final String string, final int radix) throws Exception {
+    protected Short fromString(final String string, final int radix) throws Exception {
         return Short.valueOf(string, radix);
     }
 

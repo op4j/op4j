@@ -23,8 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import org.apache.commons.lang.StringUtils;
-
 /**
  * 
  * @since 1.0
@@ -104,7 +102,7 @@ public final class FunctionArguments {
     }
     
 
-    public Short getTargetAsShort(final int index) {
+    public Short getTargetAsShort() {
     	if (this.target == null || this.target instanceof Short) {
     		return (Short) this.target;
     	}
@@ -112,7 +110,7 @@ public final class FunctionArguments {
     }
 
     
-    public Integer getTargetAsInteger(final int index) {
+    public Integer getTargetAsInteger() {
     	if (this.target == null || this.target instanceof Integer) {
     		return (Integer) this.target;
     	}
@@ -120,7 +118,7 @@ public final class FunctionArguments {
     }
     
 
-    public Long getTargetAsLong(final int index) {
+    public Long getTargetAsLong() {
     	if (this.target == null || this.target instanceof Long) {
     		return (Long) this.target;
     	}
@@ -128,7 +126,7 @@ public final class FunctionArguments {
     }
     
 
-    public Float getTargetAsFloat(final int index) {
+    public Float getTargetAsFloat() {
     	if (this.target == null || this.target instanceof Float) {
     		return (Float) this.target;
     	}
@@ -136,7 +134,7 @@ public final class FunctionArguments {
     }
     
 
-    public Double getTargetAsDouble(final int index) {
+    public Double getTargetAsDouble() {
     	if (this.target == null || this.target instanceof Double) {
     		return (Double) this.target;
     	}
@@ -144,7 +142,7 @@ public final class FunctionArguments {
     }
     
 
-    public Number getTargetAsNumber(final int index) {
+    public Number getTargetAsNumber() {
     	if (this.target == null || this.target instanceof Number) {
     		return (Number) this.target;
     	}
@@ -152,7 +150,7 @@ public final class FunctionArguments {
     }
     
 
-    public Boolean getTargetAsBoolean(final int index) {
+    public Boolean getTargetAsBoolean() {
     	if (this.target == null || this.target instanceof Boolean) {
     		return (Boolean) this.target;
     	}
@@ -160,7 +158,7 @@ public final class FunctionArguments {
     }
     
 
-    public Locale getTargetAsLocale(final int index) {
+    public Locale getTargetAsLocale() {
     	if (this.target == null || this.target instanceof Locale) {
     		return (Locale) this.target;
     	}
@@ -168,7 +166,7 @@ public final class FunctionArguments {
     }
     
 
-    public Character getTargetAsCharacter(final int index) {
+    public Character getTargetAsCharacter() {
     	if (this.target == null || this.target instanceof Character) {
     		return (Character) this.target;
     	}
@@ -176,7 +174,7 @@ public final class FunctionArguments {
     }
     
 
-    public Class<?> getTargetAsClass(final int index) {
+    public Class<?> getTargetAsClass() {
     	if (this.target == null || this.target instanceof Class<?>) {
     		return (Class<?>) this.target;
     	}
@@ -351,11 +349,18 @@ public final class FunctionArguments {
 
 
     public String getStringRepresentation() {
-    	final List<String> classNames = new ArrayList<String>();
-    	for (final Class<?> parameterClass : this.parameterClasses) {
-    		classNames.add(parameterClass.getCanonicalName());
-    	}
-        return StringUtils.join(classNames, ","); 
+        final StringBuilder strBuilder = new StringBuilder();
+        strBuilder.append("[" + this.targetClass + "]");
+        if (this.parameters.size() > 0) {
+            strBuilder.append(" ");
+            for (int i = 0, n = this.parameters.size(); i < n; i++) {
+                if (i > 0) {
+                    strBuilder.append(", ");
+                }
+                strBuilder.append(this.parameters.get(i) + " (" + this.parameterClasses.get(i).getSimpleName() + ")");
+            }
+        }
+        return strBuilder.toString(); 
     }
 
 

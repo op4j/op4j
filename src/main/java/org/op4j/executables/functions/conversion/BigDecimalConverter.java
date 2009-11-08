@@ -24,11 +24,10 @@ import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.op4j.operation.Arguments;
-import org.op4j.operation.ArgumentsTypeScheme;
-import org.op4j.operation.Result;
-import org.op4j.type.Type;
-import org.op4j.type.Types;
+import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
+import org.op4j.executables.functions.FunctionArgumentScheme;
+import org.op4j.executables.functions.FunctionArguments;
 
 /**
  * 
@@ -37,32 +36,44 @@ import org.op4j.type.Types;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class BigDecimalConverter extends DecimalNumberConverter {
+public final class BigDecimalConverter extends DecimalNumberConverter<BigDecimal> {
 
 
     private static final long serialVersionUID = 3284349862985156720L;
 
 
+    
+    
+    public BigDecimalConverter() {
+        super();
+    }
+    
+    
+
+
     @Override
-    public Type getResultType() {
+    protected Type<BigDecimal> registerResultType() {
         return Types.BIG_DECIMAL;
     }
-
     
+    
+
+
     @Override
-    protected Set<ArgumentsTypeScheme> registerDecimalNumberMatchedArgumentTypeSchemes() {
-        return new HashSet<ArgumentsTypeScheme>();
+    protected Set<FunctionArgumentScheme<? extends Object>> registerDecimalNumberMatchedSchemes() {
+        return new HashSet<FunctionArgumentScheme<? extends Object>>();
     }
+    
 
     
     @Override
-    protected Result doExecuteDecimalNumber(final Arguments arguments) throws Exception {
+    protected BigDecimal executeDecimalNumber(final FunctionArguments arguments) throws Exception {
         return null;
     }
 
     
     @Override
-    protected Number fromNumber(final Number number) throws Exception {
+    protected BigDecimal fromNumber(final Number number) throws Exception {
         if (number instanceof BigDecimal) {
             return new BigDecimal(
                     ((BigDecimal)number).unscaledValue(),
@@ -76,7 +87,7 @@ public final class BigDecimalConverter extends DecimalNumberConverter {
 
     
     @Override
-    protected Number fromString(final String string) throws Exception {
+    protected BigDecimal fromString(final String string) throws Exception {
         return new BigDecimal(string);
     }
 

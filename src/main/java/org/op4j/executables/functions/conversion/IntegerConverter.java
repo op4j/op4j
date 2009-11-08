@@ -22,11 +22,10 @@ package org.op4j.executables.functions.conversion;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.op4j.operation.Arguments;
-import org.op4j.operation.ArgumentsTypeScheme;
-import org.op4j.operation.Result;
-import org.op4j.type.Type;
-import org.op4j.type.Types;
+import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
+import org.op4j.executables.functions.FunctionArgumentScheme;
+import org.op4j.executables.functions.FunctionArguments;
 
 /**
  * 
@@ -35,44 +34,56 @@ import org.op4j.type.Types;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class IntegerConverter extends NonDecimalNumberConverter {
+public final class IntegerConverter extends NonDecimalNumberConverter<Integer> {
 
 
     private static final long serialVersionUID = -4507296805634761144L;
 
     
+    
+    
+    public IntegerConverter() {
+        super();
+    }
+    
+    
+
+
     @Override
-    public Type getResultType() {
+    protected Type<Integer> registerResultType() {
         return Types.INTEGER;
     }
-
     
+    
+
+
     @Override
-    protected Set<ArgumentsTypeScheme> registerNonDecimalNumberMatchedArgumentTypeSchemes() {
-        return new HashSet<ArgumentsTypeScheme>();
+    protected Set<FunctionArgumentScheme<? extends Object>> registerNonDecimalNumberMatchedSchemes() {
+        return new HashSet<FunctionArgumentScheme<? extends Object>>();
     }
+    
 
     
     @Override
-    protected Result doExecuteNonDecimalNumber(final Arguments arguments) throws Exception {
+    protected Integer executeNonDecimalNumber(final FunctionArguments arguments) throws Exception {
         return null;
     }
 
     
     @Override
-    protected Number fromNumber(final Number number) throws Exception {
+    protected Integer fromNumber(final Number number) throws Exception {
         return Integer.valueOf(number.intValue());
     }
 
 
     @Override
-    protected Number fromString(final String string) throws Exception {
+    protected Integer fromString(final String string) throws Exception {
         return Integer.valueOf(string);
     }
 
 
     @Override
-    protected Number fromString(final String string, final int radix) throws Exception {
+    protected Integer fromString(final String string, final int radix) throws Exception {
         return Integer.valueOf(string, radix);
     }
 
