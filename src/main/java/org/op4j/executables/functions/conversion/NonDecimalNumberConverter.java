@@ -47,7 +47,7 @@ public abstract class NonDecimalNumberConverter<T extends Number> extends Number
 
     
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_INTEGER = 
+    private static final FunctionArgumentScheme SCH_STRING_INTEGER = 
         FunctionArgumentScheme.from(
             "Conversion is performed using the corresponding " +
             "X.valueOf(string, radix) methods, so the String target is expected to be " +
@@ -55,7 +55,7 @@ public abstract class NonDecimalNumberConverter<T extends Number> extends Number
             Types.STRING,
             "Integer");  
 
-    private static final FunctionArgumentScheme<String> SCH_STRING_ROUNDINGMODE = 
+    private static final FunctionArgumentScheme SCH_STRING_ROUNDINGMODE = 
         FunctionArgumentScheme.from(
             "Conversion is performed from the specified String target by rounding decimals " +
             "in the way specified the java.math.RoundingMode parameter. " +
@@ -63,7 +63,7 @@ public abstract class NonDecimalNumberConverter<T extends Number> extends Number
             Types.STRING,
             "RoundingMode"); 
 
-    private static final FunctionArgumentScheme<String> SCH_STRING_ROUNDINGMODE_LOCALE = 
+    private static final FunctionArgumentScheme SCH_STRING_ROUNDINGMODE_LOCALE = 
         FunctionArgumentScheme.from(
             "Conversion is performed from the specified String target by rounding decimals " +
             "in the way specified the java.math.RoundingMode parameter. " +
@@ -71,7 +71,7 @@ public abstract class NonDecimalNumberConverter<T extends Number> extends Number
             Types.STRING,
             "RoundingMode,Locale"); 
 
-    private static final FunctionArgumentScheme<String> SCH_STRING_ROUNDINGMODE_STRINGLOCALE = 
+    private static final FunctionArgumentScheme SCH_STRING_ROUNDINGMODE_STRINGLOCALE = 
         FunctionArgumentScheme.from(
             "Conversion is performed from the specified String target by rounding decimals " +
             "in the way specified the java.math.RoundingMode parameter. " +
@@ -79,7 +79,7 @@ public abstract class NonDecimalNumberConverter<T extends Number> extends Number
             Types.STRING,
             "RoundingMode,String"); 
 
-    private static final FunctionArgumentScheme<String> SCH_STRING_ROUNDINGMODE_DECIMAL_IS_COMMA = 
+    private static final FunctionArgumentScheme SCH_STRING_ROUNDINGMODE_DECIMAL_IS_COMMA = 
         FunctionArgumentScheme.from(
             "Conversion is performed from the specified String target by rounding decimals " +
             "in the way specified the java.math.RoundingMode parameter. " +
@@ -87,7 +87,7 @@ public abstract class NonDecimalNumberConverter<T extends Number> extends Number
             Types.STRING,
             "RoundingMode, 'DECIMAL_IS_COMMA'"); 
 
-    private static final FunctionArgumentScheme<String> SCH_STRING_ROUNDINGMODE_DECIMAL_IS_POINT = 
+    private static final FunctionArgumentScheme SCH_STRING_ROUNDINGMODE_DECIMAL_IS_POINT = 
         FunctionArgumentScheme.from(
             "Conversion is performed from the specified String target by rounding decimals " +
             "in the way specified the java.math.RoundingMode parameter. " +
@@ -95,7 +95,7 @@ public abstract class NonDecimalNumberConverter<T extends Number> extends Number
             Types.STRING,
             "RoundingMode, 'DECIMAL_IS_POINT'"); 
 
-    private static final FunctionArgumentScheme<String> SCH_STRING_ROUNDINGMODE_DECIMAL_CAN_BE_POINT_OR_COMMA = 
+    private static final FunctionArgumentScheme SCH_STRING_ROUNDINGMODE_DECIMAL_CAN_BE_POINT_OR_COMMA = 
         FunctionArgumentScheme.from(
             "Conversion is performed from the specified String target by rounding decimals " +
             "in the way specified the java.math.RoundingMode parameter. " +
@@ -104,21 +104,21 @@ public abstract class NonDecimalNumberConverter<T extends Number> extends Number
             Types.STRING,
             "RoundingMode, 'DECIMAL_CAN_BE_POINT_OR_COMMA'"); 
 
-    private static final FunctionArgumentScheme<Float> SCH_FLOAT_ROUNDINGMODE = 
+    private static final FunctionArgumentScheme SCH_FLOAT_ROUNDINGMODE = 
         FunctionArgumentScheme.from(
             "Conversion is performed from Float by rounding decimals in the way " +
             "specified by the java.math.RoundingMode parameter",
             Types.FLOAT,
             "RoundingMode"); 
 
-    private static final FunctionArgumentScheme<Double> SCH_DOUBLE_ROUNDINGMODE = 
+    private static final FunctionArgumentScheme SCH_DOUBLE_ROUNDINGMODE = 
         FunctionArgumentScheme.from(
             "Conversion is performed from Double by rounding decimals in the way " +
             "specified by the java.math.RoundingMode parameter",
             Types.DOUBLE,
             "RoundingMode"); 
 
-    private static final FunctionArgumentScheme<BigDecimal> SCH_BIGDECIMAL_ROUNDINGMODE = 
+    private static final FunctionArgumentScheme SCH_BIGDECIMAL_ROUNDINGMODE = 
         FunctionArgumentScheme.from(
             "Conversion is performed from Double by rounding decimals in the way " +
             "specified by the java.math.RoundingMode parameter",
@@ -137,8 +137,8 @@ public abstract class NonDecimalNumberConverter<T extends Number> extends Number
     
     
     @Override
-    protected Set<FunctionArgumentScheme<? extends Object>> registerNumberMatchedSchemes() {
-        final Set<FunctionArgumentScheme<? extends Object>> matched = new LinkedHashSet<FunctionArgumentScheme<? extends Object>>();
+    protected Set<FunctionArgumentScheme> registerNumberMatchedSchemes() {
+        final Set<FunctionArgumentScheme> matched = new LinkedHashSet<FunctionArgumentScheme>();
         matched.add(SCH_STRING_INTEGER);
         matched.add(SCH_STRING_ROUNDINGMODE);
         matched.add(SCH_STRING_ROUNDINGMODE_LOCALE);
@@ -154,7 +154,7 @@ public abstract class NonDecimalNumberConverter<T extends Number> extends Number
     }
     
     
-    protected abstract Set<FunctionArgumentScheme<? extends Object>> registerNonDecimalNumberMatchedSchemes();
+    protected abstract Set<FunctionArgumentScheme> registerNonDecimalNumberMatchedSchemes();
 
     
 

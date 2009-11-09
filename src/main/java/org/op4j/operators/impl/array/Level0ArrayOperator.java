@@ -26,6 +26,7 @@ import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.util.ArrayFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.array.ILevel1ArrayElementsOperator;
@@ -77,8 +78,7 @@ public class Level0ArrayOperator<T> extends Operator implements
     }
 
     public ILevel0ArrayOperator<T> distinct() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.distinct(this.arrayOf.getType())));
     }
 
     public ILevel0ArrayOperator<T> extract(int position) {

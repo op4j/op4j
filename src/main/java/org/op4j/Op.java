@@ -21,8 +21,8 @@ package org.op4j;
 
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.LinkedHashMap;
@@ -32,7 +32,6 @@ import java.util.Set;
 
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
-import org.javaruntype.type.Type;
 import org.op4j.executables.Eval;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
@@ -343,6 +342,36 @@ public final class Op {
         
         System.out.println(Op.on(new Integer[] {2009, 11, 25, 13, 20, 50}).convToCalendar().convToString(LocaleUtils.toLocale("gl_ES")).get());
         
+        System.out.println(Op.onList(Arrays.asList(new Integer[] {2,3,4,1,2,2,4,5,2,3,5,6,87,45,2,3,34,1})).get());
+        System.out.println(Op.onList(Arrays.asList(new Integer[] {2,3,4,1,2,2,4,5,2,3,5,6,87,45,2,3,34,1})).distinct().get());
+        
+        final List<List<String>> listOfListOfString1 = 
+        	Arrays.asList((List<String>[]) new List<?>[] { Arrays.asList(new String[] {"a", "b", "a"}), Arrays.asList(new String[] {"a", "b", "a"})});
+        
+        final String[][] arrayOfArrayOfString1 = 
+        	new String[][] { new String[] {"a", "b", "a"}, new String[] {"a", "b", "a"}};
+        
+        System.out.println(Op.onListOfList(listOfListOfString1).get());
+        System.out.println(Op.onListOfList(listOfListOfString1).distinct().get());
+        System.out.println(Op.onListOfList(listOfListOfString1).forEach().distinct().get());
+        
+        System.out.println(printArray(Op.onArrayOfArray(Of.STRING,arrayOfArrayOfString1).get()));
+        System.out.println(printArray(Op.onArrayOfArray(Of.STRING,arrayOfArrayOfString1).distinct().get()));
+        System.out.println(printArray(Op.onArrayOfArray(Of.STRING,arrayOfArrayOfString1).forEach().distinct().get()));
+        
+    }
+    
+    
+    private static String printArray(Object[] array) {
+    	final List<Object> components = new ArrayList<Object>();
+    	for (final Object component : array) {
+    		if (component instanceof Object[]) {
+    			components.add(printArray((Object[])component));
+    		} else {
+    			components.add(component);
+    		}
+    	}
+    	return components.toString();
     }
     
 }

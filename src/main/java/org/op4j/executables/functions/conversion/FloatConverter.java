@@ -58,8 +58,8 @@ public final class FloatConverter extends DecimalNumberConverter<Float> {
 
 
     @Override
-    protected Set<FunctionArgumentScheme<? extends Object>> registerDecimalNumberMatchedSchemes() {
-        return new HashSet<FunctionArgumentScheme<? extends Object>>();
+    protected Set<FunctionArgumentScheme> registerDecimalNumberMatchedSchemes() {
+        return new HashSet<FunctionArgumentScheme>();
     }
     
 

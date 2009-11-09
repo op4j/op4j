@@ -68,133 +68,133 @@ public final class StringConverter extends ConverterImplementation<String> {
     public static final String STRIP = "'STRIP'";  
 
     
-    private static final FunctionArgumentScheme<Object> SCH_OBJECT = 
+    private static final FunctionArgumentScheme SCH_OBJECT = 
         FunctionArgumentScheme.from(
             "Conversion is performed by simply calling target.toString(). Null is returned for null input",
             Types.OBJECT);
     
-    private static final FunctionArgumentScheme<Calendar> SCH_CALENDAR_STRING = 
+    private static final FunctionArgumentScheme SCH_CALENDAR_STRING = 
         FunctionArgumentScheme.from(
             "The Calendar is converted based on the pattern given as parameter. Null is returned for null input",
             Types.CALENDAR,
             "String pattern");
     
-    private static final FunctionArgumentScheme<Calendar> SCH_CALENDAR_LOCALE_STRING = 
+    private static final FunctionArgumentScheme SCH_CALENDAR_LOCALE_STRING = 
         FunctionArgumentScheme.from(
             "The Calendar is converted based on the pattern given as parameter. Null is returned for null input",
             Types.CALENDAR, 
             "Locale locale, String pattern");
     
-    private static final FunctionArgumentScheme<Calendar> SCH_CALENDAR_LOCALE = 
+    private static final FunctionArgumentScheme SCH_CALENDAR_LOCALE = 
         FunctionArgumentScheme.from(
             "The Calendar is converted based on the locale given as parameter. Null is returned for null input",
             Types.CALENDAR,
             "Locale locale");
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_ESCAPECSV = 
+    private static final FunctionArgumentScheme SCH_STRING_ESCAPECSV = 
         FunctionArgumentScheme.from(
             "The String is returned in a way it can be used to fill in a CSV column as StringEscapeUtils does",
             Types.STRING, 
             ESCAPE_CSV);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_UNESCAPECSV = 
+    private static final FunctionArgumentScheme SCH_STRING_UNESCAPECSV = 
         FunctionArgumentScheme.from(
             "The String is returned without the escape characters used to " +
             " include it in a CSV column (i.e. no quotes enclosing it, no escaped quotes) as StringEscapeUtils does",
             Types.STRING, 
             UNESCAPE_CSV);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_ESCAPEXML = 
+    private static final FunctionArgumentScheme SCH_STRING_ESCAPEXML = 
         FunctionArgumentScheme.from(
             "The String is returned with the XML characters escaped as StringEscapeUtils does",
             Types.STRING, 
             ESCAPE_XML);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_UNESCAPEXML = 
+    private static final FunctionArgumentScheme SCH_STRING_UNESCAPEXML = 
         FunctionArgumentScheme.from(
             "The String is returned without the XML escape characters as StringEscapeUtils does",
             Types.STRING, 
             UNESCAPE_XML);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_ESCAPEHTML = 
+    private static final FunctionArgumentScheme SCH_STRING_ESCAPEHTML = 
         FunctionArgumentScheme.from(
             "It escapes the given String using HTML entities (as StringEscapeUtils does)",
             Types.STRING, 
             ESCAPE_HTML);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_UNESCAPEHTML = 
+    private static final FunctionArgumentScheme SCH_STRING_UNESCAPEHTML = 
         FunctionArgumentScheme.from(
             "It unescapes the given String and converts its HTML entity escapes into their unicode characters (as StringEscapeUtils does)",
             Types.STRING, 
             UNESCAPE_HTML);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_ESCAPEJS = 
+    private static final FunctionArgumentScheme SCH_STRING_ESCAPEJS = 
         FunctionArgumentScheme.from(
             "It converts the given String into a JavaScript valid one (as StringEscapeUtils does)",
             Types.STRING, 
             ESCAPE_JAVASCRIPT);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_UNESCAPEJS = 
+    private static final FunctionArgumentScheme SCH_STRING_UNESCAPEJS = 
         FunctionArgumentScheme.from(
             "It unescapes the given JavaScript valid String (as StringEscapeUtils does)",
             Types.STRING, 
             UNESCAPE_JAVASCRIPT);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_CHARSET_TOBASE64 = 
+    private static final FunctionArgumentScheme SCH_STRING_CHARSET_TOBASE64 = 
         FunctionArgumentScheme.from(
             "It converts the given String into a base64 encoded one",
             Types.STRING, 
             "java.nio.charset.Charset," + TO_BASE64);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_CHARSET_FROMBASE64 = 
+    private static final FunctionArgumentScheme SCH_STRING_CHARSET_FROMBASE64 = 
         FunctionArgumentScheme.from(
             "It decodes the given base64 encoded String",
             Types.STRING, 
             "java.nio.charset.Charset," + FROM_BASE64);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_CHARSET_TOHEXADECIMAL = 
+    private static final FunctionArgumentScheme SCH_STRING_CHARSET_TOHEXADECIMAL = 
         FunctionArgumentScheme.from(
             "It converts the given String into its Hexadecimal representation using the specified Charset",
             Types.STRING, 
             "java.nio.charset.Charset," + TO_HEXADECIMAL);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_CHARSET_FROMHEXADECIMAL = 
+    private static final FunctionArgumentScheme SCH_STRING_CHARSET_FROMHEXADECIMAL = 
         FunctionArgumentScheme.from(
             "The given String is converted from its Hexadecimal representation to a String using the specified Charset",
             Types.STRING, 
             "java.nio.charset.Charset," + FROM_HEXADECIMAL);
         
-    private static final FunctionArgumentScheme<String> SCH_STRING_TOUPPERCASE = 
+    private static final FunctionArgumentScheme SCH_STRING_TOUPPERCASE = 
         FunctionArgumentScheme.from(
             "It converts the given String to uppercase",
             Types.STRING, 
             TO_UPPERCASE);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_TOLOWERCASE = 
+    private static final FunctionArgumentScheme SCH_STRING_TOLOWERCASE = 
         FunctionArgumentScheme.from(
             "It converts the given String to lowercase",
             Types.STRING, 
             TO_LOWERCASE);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_UNCAPITALIZE = 
+    private static final FunctionArgumentScheme SCH_STRING_UNCAPITALIZE = 
         FunctionArgumentScheme.from(
             "It converts the first letter of the given String to lowercase",
             Types.STRING, 
             UNCAPITALIZE);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_CAPITALIZE = 
+    private static final FunctionArgumentScheme SCH_STRING_CAPITALIZE = 
         FunctionArgumentScheme.from(
             "It converts the first letter of the given String to uppercase",
             Types.STRING, 
             CAPITALIZE);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_TRIM = 
+    private static final FunctionArgumentScheme SCH_STRING_TRIM = 
         FunctionArgumentScheme.from(
             "Removes control characters (char <= 32) from both ends of the given String",
             Types.STRING, 
             TRIM);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_STRIP = 
+    private static final FunctionArgumentScheme SCH_STRING_STRIP = 
         FunctionArgumentScheme.from(
             "Strips whitespace from both sides of the given String",
             Types.STRING, 
@@ -210,8 +210,8 @@ public final class StringConverter extends ConverterImplementation<String> {
     
     
     @Override
-    protected Set<FunctionArgumentScheme<? extends Object>> registerMatchedSchemes() {
-        Set<FunctionArgumentScheme<? extends Object>> matched = new LinkedHashSet<FunctionArgumentScheme<? extends Object>>();
+    protected Set<FunctionArgumentScheme> registerMatchedSchemes() {
+        Set<FunctionArgumentScheme> matched = new LinkedHashSet<FunctionArgumentScheme>();
         matched.add(SCH_OBJECT);
         matched.add(SCH_CALENDAR_STRING);
         matched.add(SCH_CALENDAR_LOCALE);

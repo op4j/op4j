@@ -31,6 +31,8 @@ import org.op4j.executables.functions.conversion.IntegerConverter;
 import org.op4j.executables.functions.conversion.LongConverter;
 import org.op4j.executables.functions.conversion.ShortConverter;
 import org.op4j.executables.functions.conversion.StringConverter;
+import org.op4j.executables.functions.util.ArrayDistinctFunction;
+import org.op4j.executables.functions.util.ListDistinctFunction;
 
 /**
  * 
@@ -58,7 +60,9 @@ final class FunctionsInitialization {
                 BigDecimalConverter.class,
                 StringConverter.class,
                 BooleanConverter.class,
-                CalendarConverter.class
+                CalendarConverter.class,
+                ListDistinctFunction.class,
+                ArrayDistinctFunction.class
             };
 
         for(int i = 0; i < implementationClasses.length; i++) {

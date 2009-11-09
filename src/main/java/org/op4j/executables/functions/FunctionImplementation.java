@@ -52,15 +52,19 @@ import org.javaruntype.type.Type;
  */
 public abstract class FunctionImplementation<X,T>  {
 	
-    private final FunctionSignature<X,T> signature;
+    private final String functionName;
+    private final Type<X> resultType;
+    private final Type<T> targetType;
     
-	private final Set<FunctionArgumentScheme<? extends T>> matchedArgumentSchemes;
+	private final Set<FunctionArgumentScheme> matchedArgumentSchemes;
     
     
     
 	protected FunctionImplementation() {
         super();
-        this.signature = new FunctionSignature<X, T>(registerResultType(), registerTargetType(), registerFunctionName());
+        this.functionName = registerFunctionName();
+        this.resultType = registerResultType();
+        this.targetType = registerTargetType();
         this.matchedArgumentSchemes = Collections.unmodifiableSet(registerMatchedSchemes());
     }
     
@@ -68,30 +72,26 @@ public abstract class FunctionImplementation<X,T>  {
 	protected abstract String registerFunctionName();
 	protected abstract Type<X> registerResultType();
 	protected abstract Type<T> registerTargetType();
-	protected abstract Set<FunctionArgumentScheme<? extends T>> registerMatchedSchemes();
+	protected abstract Set<FunctionArgumentScheme> registerMatchedSchemes();
 	
 	
-    
-	public final FunctionSignature<X,T> getFunctionSignature() {
-	    return this.signature;
-	}
 	
     
     public final String getFunctionName() {
-        return this.signature.getFunctionName();
+        return this.functionName;
     }
     
     
     public final Type<X> getResultType() {
-        return this.signature.getResultType();
+        return this.resultType;
     }
     
     public final Type<T> getTargetType() {
-        return this.signature.getTargetType();
+        return this.targetType;
     }
     
     
-    public final Set<FunctionArgumentScheme<? extends T>> getMatchedArgumentTypeSchemes() {
+    public final Set<FunctionArgumentScheme> getMatchedArgumentTypeSchemes() {
         return this.matchedArgumentSchemes;
     }
     

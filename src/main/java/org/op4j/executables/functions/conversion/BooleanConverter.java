@@ -45,17 +45,17 @@ public final class BooleanConverter extends ConverterImplementation<Boolean> {
 
     
     
-    private static final FunctionArgumentScheme<Boolean> SCH_BOOLEAN = 
+    private static final FunctionArgumentScheme SCH_BOOLEAN = 
         FunctionArgumentScheme.from(
             "Boolean target is cloned",
             Types.BOOLEAN);
     
-    private static final FunctionArgumentScheme<Number> SCH_NUMBER = 
+    private static final FunctionArgumentScheme SCH_NUMBER = 
         FunctionArgumentScheme.from(
             "A zero value returns false. Any other value returns true",
             Types.NUMBER);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING = 
+    private static final FunctionArgumentScheme SCH_STRING = 
         FunctionArgumentScheme.from(
             "Conversion is performed using org.apache.commons.lang.BooleanUtils.toBooleanObject(), " +
             "which admits true/false, yes/no and on/off case insensitive input",
@@ -71,8 +71,8 @@ public final class BooleanConverter extends ConverterImplementation<Boolean> {
     
     
     @Override
-    protected Set<FunctionArgumentScheme<? extends Object>> registerMatchedSchemes() {
-        final Set<FunctionArgumentScheme<? extends Object>> matched = new LinkedHashSet<FunctionArgumentScheme<? extends Object>>();
+    protected Set<FunctionArgumentScheme> registerMatchedSchemes() {
+        final Set<FunctionArgumentScheme> matched = new LinkedHashSet<FunctionArgumentScheme>();
         matched.add(SCH_BOOLEAN);
         matched.add(SCH_NUMBER);
         matched.add(SCH_STRING);

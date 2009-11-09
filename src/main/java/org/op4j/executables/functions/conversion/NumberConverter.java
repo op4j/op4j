@@ -53,50 +53,50 @@ public abstract class NumberConverter<T extends Number> extends ConverterImpleme
     private static final String DECIMAL_CAN_BE_POINT_OR_COMMA = "'DECIMAL_CAN_BE_POINT_OR_COMMA'";
     
     
-    private static final FunctionArgumentScheme<Number> SCH_NUMBER_EMPTY = 
+    private static final FunctionArgumentScheme SCH_NUMBER_EMPTY = 
         FunctionArgumentScheme.from(
             "Coversion is performed using the corresponding Number.xxxValue() methods. " +
             "BigDecimal and BigInteger objects are handled in a specific manner",
             Types.NUMBER);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_EMPTY = 
+    private static final FunctionArgumentScheme SCH_STRING_EMPTY = 
         FunctionArgumentScheme.from(
             "Conversion is performed using the corresponding String-parameterized " +
             "constructors or X.valueOf() methods",
             Types.STRING);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_LOCALE = 
+    private static final FunctionArgumentScheme SCH_STRING_LOCALE = 
         FunctionArgumentScheme.from(
             "Conversion is performed using a java.text.NumberFormat instance for the specified locale",
             Types.STRING, 
             "Locale");
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_STRINGLOCALE = 
+    private static final FunctionArgumentScheme SCH_STRING_STRINGLOCALE = 
         FunctionArgumentScheme.from(
             "Conversion is performed using a java.text.NumberFormat instance for the specified locale",
             Types.STRING, 
             "String");
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_DECIMALISCOMMA = 
+    private static final FunctionArgumentScheme SCH_STRING_DECIMALISCOMMA = 
         FunctionArgumentScheme.from(
             "Conversion is performed using the comma (,) as a decimal symbol",
             Types.STRING, 
             DECIMAL_IS_COMMA);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_DECIMALISPOINT = 
+    private static final FunctionArgumentScheme SCH_STRING_DECIMALISPOINT = 
         FunctionArgumentScheme.from(
             "Conversion is performed using the point (.) as a decimal symbol",
             Types.STRING, 
             DECIMAL_IS_POINT);
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_DECIMALCANBEPOINTORCOMMA = 
+    private static final FunctionArgumentScheme SCH_STRING_DECIMALCANBEPOINTORCOMMA = 
         FunctionArgumentScheme.from(
             "Conversion is performed looking for the last appearance of a point (.) or a comma (,) in the " +
             "target, and using it as the decimal symbol",
             Types.STRING, 
             DECIMAL_CAN_BE_POINT_OR_COMMA);
     
-    private static final FunctionArgumentScheme<Boolean> SCH_BOOLEAN_EMPTY = 
+    private static final FunctionArgumentScheme SCH_BOOLEAN_EMPTY = 
         FunctionArgumentScheme.from(
             "Conversion of TRUE returns 1, conversion of FALSE returns 0",
             Types.BOOLEAN);
@@ -117,8 +117,8 @@ public abstract class NumberConverter<T extends Number> extends ConverterImpleme
 
     
     @Override
-    protected Set<FunctionArgumentScheme<? extends Object>> registerMatchedSchemes() {
-        Set<FunctionArgumentScheme<? extends Object>> matched = new LinkedHashSet<FunctionArgumentScheme<? extends Object>>();
+    protected Set<FunctionArgumentScheme> registerMatchedSchemes() {
+        Set<FunctionArgumentScheme> matched = new LinkedHashSet<FunctionArgumentScheme>();
         matched.add(SCH_NUMBER_EMPTY);
         matched.add(SCH_STRING_EMPTY);
         matched.add(SCH_STRING_LOCALE);
@@ -133,7 +133,7 @@ public abstract class NumberConverter<T extends Number> extends ConverterImpleme
     
 
     
-    protected abstract Set<FunctionArgumentScheme<? extends Object>> registerNumberMatchedSchemes();
+    protected abstract Set<FunctionArgumentScheme> registerNumberMatchedSchemes();
     
     
 

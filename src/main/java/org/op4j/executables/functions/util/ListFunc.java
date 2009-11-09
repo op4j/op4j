@@ -36,15 +36,16 @@
  * 
  * =============================================================================
  */
-package org.op4j.executables.functions.conversion;
+package org.op4j.executables.functions.util;
 
 import java.util.List;
 
+import org.apache.commons.collections.ListUtils;
 import org.javaruntype.type.Type;
 import org.op4j.executables.functions.Function;
 import org.op4j.executables.functions.FunctionArguments;
 import org.op4j.executables.functions.Functions;
-import org.op4j.util.VarArgsUtil;
+import org.op4j.executables.functions.IFunc;
 
 /**
  * 
@@ -53,37 +54,38 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Conv<X> implements IConv<X>  {
+public class ListFunc<X,T> implements IFunc<X,List<T>>  {
     
-    private final Function<X,Object> converter;
+    private final Function<X,List<T>> function;
     private final List<? extends Object> parameters;
 
     
     
-    @SuppressWarnings("unchecked")
-    public static <X> Conv<X> to(final Type<X> resultType, final Object...parameters) {
-        return new Conv<X>((Function<X, Object>) Functions.getFunctionByName(ConverterNaming.getConverterName(resultType)), VarArgsUtil.asOptionalObjectList(parameters)); 
+	@SuppressWarnings("unchecked")
+	public static ListFunc<List<?>,?> distinct() {
+        return new ListFunc<List<?>,Object>((Function<List<?>, List<Object>>) Functions.getFunctionByName(ListDistinctFunction.NAME), ListUtils.EMPTY_LIST); 
     }
     
     
     
-    private Conv(final Function<X,Object> converter, final List<? extends Object> parameters) {
+    private ListFunc(final Function<X,List<T>> function, final List<? extends Object> parameters) {
         super();
-        this.converter = converter;
+        this.function = function;
         this.parameters = parameters;
     }
 
 
 
     public Type<X> getResultType() {
-        return this.converter.getResultType();
+        return this.function.getResultType();
     }
 
 
 
-    public X execute(final Object object) {
-        return this.converter.executeFunction(FunctionArguments.fromObjects(object, this.parameters));
+    public X execute(final List<T> object) {
+        return this.function.executeFunction(FunctionArguments.fromObjects(object, this.parameters));
     }
+
      
         
 }

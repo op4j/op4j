@@ -37,7 +37,7 @@ import org.op4j.exceptions.ParameterSpecRecognitionException;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class FunctionArgumentScheme<T> implements Serializable {
+public final class FunctionArgumentScheme implements Serializable {
     
     private static final long serialVersionUID = -1994818419805211076L;
 
@@ -47,31 +47,31 @@ public final class FunctionArgumentScheme<T> implements Serializable {
     static final char PARAMETER_SPEC_LITERAL_DELIMITER = '\'';
     
     
-    private final Type<T> targetType;
+    private final Type<?> targetType;
     private final List<FunctionParameterSpec> parameterSpecs;
     private final String description;
     
     
     
     
-    public static <T> FunctionArgumentScheme<T> from(final Type<T> targetType) {
-        return new FunctionArgumentScheme<T>(null, targetType, null);
+    public static FunctionArgumentScheme from(final Type<?> targetType) {
+        return new FunctionArgumentScheme(null, targetType, null);
     }
     
-    public static <T> FunctionArgumentScheme<T> from(final String description, final Type<T> targetType) {
-        return new FunctionArgumentScheme<T>(description, targetType, null);
+    public static FunctionArgumentScheme from(final String description, final Type<?> targetType) {
+        return new FunctionArgumentScheme(description, targetType, null);
     }
     
-    public static <T> FunctionArgumentScheme<T> from(final String description, final Type<T> targetType, final String parameterSpec) {
-        return new FunctionArgumentScheme<T>(description, targetType, parameterSpec);
+    public static FunctionArgumentScheme from(final String description, final Type<?> targetType, final String parameterSpec) {
+        return new FunctionArgumentScheme(description, targetType, parameterSpec);
     }
     
-    public static <T> FunctionArgumentScheme<T> from(final Type<T> targetType, final String parameterSpec) {
-        return new FunctionArgumentScheme<T>(null, targetType, parameterSpec);
+    public static FunctionArgumentScheme from(final Type<?> targetType, final String parameterSpec) {
+        return new FunctionArgumentScheme(null, targetType, parameterSpec);
     }
     
     
-    private FunctionArgumentScheme(final String description, final Type<T> targetType, final String parameterSpec) {
+    private FunctionArgumentScheme(final String description, final Type<?> targetType, final String parameterSpec) {
         
         super();
         
@@ -94,7 +94,7 @@ public final class FunctionArgumentScheme<T> implements Serializable {
 
 
 
-    public Type<T> getTargetType() {
+    public Type<?> getTargetType() {
         return this.targetType;
     }
 

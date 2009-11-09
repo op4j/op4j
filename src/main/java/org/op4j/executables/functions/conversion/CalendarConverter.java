@@ -52,7 +52,7 @@ public final class CalendarConverter extends ConverterImplementation<Calendar> {
 	
 	
 	
-    private static final FunctionArgumentScheme<String> SCH_STRING_PATTERN = 
+    private static final FunctionArgumentScheme SCH_STRING_PATTERN = 
         FunctionArgumentScheme.from(
             "It converts the given String into a Calendar using the given pattern parameter. If" +
             " the pattern includes either, the name of the month or day of week, a conversion" +
@@ -60,68 +60,68 @@ public final class CalendarConverter extends ConverterImplementation<Calendar> {
             Types.STRING, 
             "String");
     
-    private static final FunctionArgumentScheme<String> SCH_STRING_PATTERN_LOCALE = 
+    private static final FunctionArgumentScheme SCH_STRING_PATTERN_LOCALE = 
         FunctionArgumentScheme.from(
             "It converts the given String into a Calendar usign the given pattern and Locale parameters",
             Types.STRING, 
             "String, Locale");
         
-    private static final FunctionArgumentScheme<Date> SCH_JAVAUTILDATE_LOCALE = 
+    private static final FunctionArgumentScheme SCH_JAVAUTILDATE_LOCALE = 
         FunctionArgumentScheme.from(
             "The given java.util.Date is converted into a Calendar",
             Types.DATE);
     
-    private static final FunctionArgumentScheme<java.sql.Date> SCH_JAVASQLDATE = 
+    private static final FunctionArgumentScheme SCH_JAVASQLDATE = 
         FunctionArgumentScheme.from(
             "The given java.sql.Date is converted into a Calendar",
             Types.forClass(java.sql.Date.class));
     
-    private static final FunctionArgumentScheme<Timestamp> SCH_TIMESTAMP = 
+    private static final FunctionArgumentScheme SCH_TIMESTAMP = 
         FunctionArgumentScheme.from(
             "The given java.sql.Timestamp is converted into a Calendar",
             Types.forClass(java.sql.Timestamp.class));
     
-    private static final FunctionArgumentScheme<Long> SCH_LONGTIMESTAMP = 
+    private static final FunctionArgumentScheme SCH_LONGTIMESTAMP = 
         FunctionArgumentScheme.from(
             "The given long representing the time in millis is converted into a Calendar",
             Types.LONG);
     
-    private static final FunctionArgumentScheme<Integer[]> SCH_INTEGERARRAY = 
+    private static final FunctionArgumentScheme SCH_INTEGERARRAY = 
         FunctionArgumentScheme.from(
             "A Calendar is created from the given integer array. This can contain: [year, month, day], " +
             "[year, month, day, hour, minute], [year, month, day, hour, minute, second] or " +
             "[year, month, day, hour, minute, second, millisecond]. The unspecified components will be set to 0",
             Types.ARRAY_OF_INTEGER);
     
-    private static final FunctionArgumentScheme<String[]> SCH_STRINGARRAY = 
+    private static final FunctionArgumentScheme SCH_STRINGARRAY = 
         FunctionArgumentScheme.from(
             "A Calendar is created from the given integer array. This can contain: [year, month, day], " +
             "[year, month, day, hour, minute], [year, month, day, hour, minute, second] or " +
             "[year, month, day, hour, minute, second, millisecond]. The unspecified components will be set to 0",
             Types.ARRAY_OF_STRING);
 
-    private static final FunctionArgumentScheme<Date> SCH_JAVAUTILDATE_INT_STRINGPARAM = 
+    private static final FunctionArgumentScheme SCH_JAVAUTILDATE_INT_STRINGPARAM = 
         FunctionArgumentScheme.from(
             "It truncates a Date in order to leave the given field as" +
             " the most significant one",
             Types.DATE, 
             "Integer,'TRUNCATE'");
     
-    private static final FunctionArgumentScheme<Calendar> SCH_CALENDAR_INT_STRINGPARAM = 
+    private static final FunctionArgumentScheme SCH_CALENDAR_INT_STRINGPARAM = 
         FunctionArgumentScheme.from(
             "It truncates a Calendar in order to leave the given field as" +
             " the most significant one",
             Types.CALENDAR, 
             "Integer,'TRUNCATE'");
     
-    private static final FunctionArgumentScheme<java.sql.Date> SCH_JAVASQLDATE_INT_STRINGPARAM = 
+    private static final FunctionArgumentScheme SCH_JAVASQLDATE_INT_STRINGPARAM = 
         FunctionArgumentScheme.from(
             "It truncates a Date in order to leave the given field as" +
             " the most significant one",
             Types.forClass(java.sql.Date.class), 
             "Integer,'TRUNCATE'");
 	
-    private static final FunctionArgumentScheme<Timestamp> SCH_TIMESTAMP_INT_STRINGPARAM = 
+    private static final FunctionArgumentScheme SCH_TIMESTAMP_INT_STRINGPARAM = 
         FunctionArgumentScheme.from(
             "It truncates a Timestamp in order to leave the given field as" +
             " the most significant one",
@@ -141,8 +141,8 @@ public final class CalendarConverter extends ConverterImplementation<Calendar> {
     
     
     @Override
-    protected Set<FunctionArgumentScheme<? extends Object>> registerMatchedSchemes() {
-        final Set<FunctionArgumentScheme<? extends Object>> matched = new LinkedHashSet<FunctionArgumentScheme<? extends Object>>();
+    protected Set<FunctionArgumentScheme> registerMatchedSchemes() {
+        final Set<FunctionArgumentScheme> matched = new LinkedHashSet<FunctionArgumentScheme>();
         matched.add(SCH_STRING_PATTERN);
         matched.add(SCH_STRING_PATTERN_LOCALE);
         matched.add(SCH_JAVAUTILDATE_LOCALE);

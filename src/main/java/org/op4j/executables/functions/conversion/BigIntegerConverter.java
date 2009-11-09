@@ -56,8 +56,8 @@ public final class BigIntegerConverter extends NonDecimalNumberConverter<BigInte
 
 
     @Override
-    protected Set<FunctionArgumentScheme<? extends Object>> registerNonDecimalNumberMatchedSchemes() {
-        return new HashSet<FunctionArgumentScheme<? extends Object>>();
+    protected Set<FunctionArgumentScheme> registerNonDecimalNumberMatchedSchemes() {
+        return new HashSet<FunctionArgumentScheme>();
     }
     
 

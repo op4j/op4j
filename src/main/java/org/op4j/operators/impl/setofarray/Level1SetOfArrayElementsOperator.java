@@ -27,6 +27,7 @@ import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.util.ArrayFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.setofarray.ILevel0SetOfArrayOperator;
 import org.op4j.operators.intf.setofarray.ILevel1SetOfArrayElementsOperator;
@@ -82,8 +83,7 @@ public class Level1SetOfArrayElementsOperator<T> extends Operator
 
 
     public ILevel1SetOfArrayElementsOperator<T> distinct() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1SetOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.distinct(this.arrayOf.getType())));
     }
 
 

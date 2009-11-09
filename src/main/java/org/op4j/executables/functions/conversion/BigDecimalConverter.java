@@ -60,8 +60,8 @@ public final class BigDecimalConverter extends DecimalNumberConverter<BigDecimal
 
 
     @Override
-    protected Set<FunctionArgumentScheme<? extends Object>> registerDecimalNumberMatchedSchemes() {
-        return new HashSet<FunctionArgumentScheme<? extends Object>>();
+    protected Set<FunctionArgumentScheme> registerDecimalNumberMatchedSchemes() {
+        return new HashSet<FunctionArgumentScheme>();
     }
     
 

@@ -39,13 +39,13 @@ public final class FunctionArguments {
     
     
     
-    public static FunctionArguments fromObjects(final Object target, final List<Object> parameters) {
+    public static FunctionArguments fromObjects(final Object target, final List<? extends Object> parameters) {
         return new FunctionArguments(target, parameters);
     }
     
     
     
-    private FunctionArguments(final Object target, final List<Object> parameters) {
+    private FunctionArguments(final Object target, final List<? extends Object> parameters) {
         
         super();
 

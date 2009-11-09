@@ -22,10 +22,12 @@ package org.op4j.operators.impl.arrayofarray;
 import java.util.Collection;
 import java.util.Comparator;
 
+import org.javaruntype.type.Types;
 import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.util.ArrayFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
@@ -91,8 +93,7 @@ public class Level0ArrayOfArrayOperator<T> extends Operator
 
 
     public ILevel0ArrayOfArrayOperator<T> distinct() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.distinct(Types.arrayOf(this.arrayOf.getType()))));
     }
 
 

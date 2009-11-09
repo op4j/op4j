@@ -47,14 +47,14 @@ public abstract class DecimalNumberConverter<T extends Number> extends NumberCon
 	
     
 
-    private static final FunctionArgumentScheme<Number> SCH_NUMBER_SCALE_ROUNDINGMODE = 
+    private static final FunctionArgumentScheme SCH_NUMBER_SCALE_ROUNDINGMODE = 
         FunctionArgumentScheme.from(
             "Conversion is performed from the specified Number target by rounding decimals less " +
             "significant than the scale in the way specified the java.math.RoundingMode parameter",
             Types.NUMBER,
             "Integer,RoundingMode"); 
 
-    private static final FunctionArgumentScheme<String> SCH_STRING_SCALE_ROUNDINGMODE = 
+    private static final FunctionArgumentScheme SCH_STRING_SCALE_ROUNDINGMODE = 
         FunctionArgumentScheme.from(
             "Conversion is performed from the specified String target by rounding decimals less " +
             "significant than the scale in the way specified the java.math.RoundingMode parameter. " +
@@ -62,7 +62,7 @@ public abstract class DecimalNumberConverter<T extends Number> extends NumberCon
             Types.STRING,
             "Integer,RoundingMode"); 
 
-    private static final FunctionArgumentScheme<String> SCH_STRING_SCALE_ROUNDINGMODE_LOCALE = 
+    private static final FunctionArgumentScheme SCH_STRING_SCALE_ROUNDINGMODE_LOCALE = 
         FunctionArgumentScheme.from(
             "Conversion is performed from the specified String target by rounding decimals less " +
             "significant than the scale in the way specified the java.math.RoundingMode parameter. " +
@@ -70,7 +70,7 @@ public abstract class DecimalNumberConverter<T extends Number> extends NumberCon
             Types.STRING,
             "Integer, RoundingMode, Locale"); 
 
-    private static final FunctionArgumentScheme<String> SCH_STRING_SCALE_ROUNDINGMODE_STRINGLOCALE = 
+    private static final FunctionArgumentScheme SCH_STRING_SCALE_ROUNDINGMODE_STRINGLOCALE = 
         FunctionArgumentScheme.from(
             "Conversion is performed from the specified String target by rounding decimals less " +
             "significant than the scale in the way specified the java.math.RoundingMode parameter. " +
@@ -78,7 +78,7 @@ public abstract class DecimalNumberConverter<T extends Number> extends NumberCon
             Types.STRING,
             "Integer, RoundingMode, String"); 
 
-    private static final FunctionArgumentScheme<String> SCH_STRING_SCALE_ROUNDINGMODE_DECIMAL_IS_COMMA = 
+    private static final FunctionArgumentScheme SCH_STRING_SCALE_ROUNDINGMODE_DECIMAL_IS_COMMA = 
         FunctionArgumentScheme.from(
             "Conversion is performed from the specified String target by rounding decimals less " +
             "significant than the scale in the way specified the java.math.RoundingMode parameter. " +
@@ -86,7 +86,7 @@ public abstract class DecimalNumberConverter<T extends Number> extends NumberCon
             Types.STRING,
             "Integer scale, RoundingMode roundingMode, 'DECIMAL_IS_COMMA'"); 
 
-    private static final FunctionArgumentScheme<String> SCH_STRING_SCALE_ROUNDINGMODE_DECIMAL_IS_POINT = 
+    private static final FunctionArgumentScheme SCH_STRING_SCALE_ROUNDINGMODE_DECIMAL_IS_POINT = 
         FunctionArgumentScheme.from(
             "Conversion is performed from the specified String target by rounding decimals less " +
             "significant than the scale in the way specified the java.math.RoundingMode parameter. " +
@@ -94,7 +94,7 @@ public abstract class DecimalNumberConverter<T extends Number> extends NumberCon
             Types.STRING,
             "Integer scale, RoundingMode roundingMode, 'DECIMAL_IS_POINT'"); 
 
-    private static final FunctionArgumentScheme<String> SCH_STRING_SCALE_ROUNDINGMODE_DECIMAL_CAN_BE_POINT_OR_COMMA = 
+    private static final FunctionArgumentScheme SCH_STRING_SCALE_ROUNDINGMODE_DECIMAL_CAN_BE_POINT_OR_COMMA = 
         FunctionArgumentScheme.from(
             "Conversion is performed from the specified String target by rounding decimals less " +
             "significant than the scale in the way specified the java.math.RoundingMode parameter. " +
@@ -114,8 +114,8 @@ public abstract class DecimalNumberConverter<T extends Number> extends NumberCon
     
     
     @Override
-    protected Set<FunctionArgumentScheme<? extends Object>> registerNumberMatchedSchemes() {
-        final Set<FunctionArgumentScheme<? extends Object>> matched = new LinkedHashSet<FunctionArgumentScheme<? extends Object>>();
+    protected Set<FunctionArgumentScheme> registerNumberMatchedSchemes() {
+        final Set<FunctionArgumentScheme> matched = new LinkedHashSet<FunctionArgumentScheme>();
         matched.add(SCH_NUMBER_SCALE_ROUNDINGMODE);
         matched.add(SCH_STRING_SCALE_ROUNDINGMODE);
         matched.add(SCH_STRING_SCALE_ROUNDINGMODE_LOCALE);
@@ -130,7 +130,7 @@ public abstract class DecimalNumberConverter<T extends Number> extends NumberCon
     
     
     
-    protected abstract Set<FunctionArgumentScheme<? extends Object>> registerDecimalNumberMatchedSchemes();
+    protected abstract Set<FunctionArgumentScheme> registerDecimalNumberMatchedSchemes();
 
     
     

@@ -58,8 +58,8 @@ public final class IntegerConverter extends NonDecimalNumberConverter<Integer> {
 
 
     @Override
-    protected Set<FunctionArgumentScheme<? extends Object>> registerNonDecimalNumberMatchedSchemes() {
-        return new HashSet<FunctionArgumentScheme<? extends Object>>();
+    protected Set<FunctionArgumentScheme> registerNonDecimalNumberMatchedSchemes() {
+        return new HashSet<FunctionArgumentScheme>();
     }
     
 

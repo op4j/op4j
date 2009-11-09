@@ -28,6 +28,7 @@ import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.util.ListFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.setofarray.ILevel1SetOfArrayElementsOperator;
 import org.op4j.operators.intf.setoflist.ILevel0SetOfListOperator;
@@ -80,8 +81,7 @@ public class Level1SetOfListElementsOperator<T> extends Operator
 
 
     public ILevel1SetOfListElementsOperator<T> distinct() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1SetOfListElementsOperator<T>(getTarget().execute(ListFunc.distinct()));
     }
 
 

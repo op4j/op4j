@@ -57,8 +57,8 @@ public final class LongConverter extends NonDecimalNumberConverter<Long> {
 
 
     @Override
-    protected Set<FunctionArgumentScheme<? extends Object>> registerNonDecimalNumberMatchedSchemes() {
-        return new HashSet<FunctionArgumentScheme<? extends Object>>();
+    protected Set<FunctionArgumentScheme> registerNonDecimalNumberMatchedSchemes() {
+        return new HashSet<FunctionArgumentScheme>();
     }
     
 
