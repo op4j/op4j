@@ -182,6 +182,11 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
         return null;
     }
 
+    public ILevel1ArrayOfMapElementsOperator<K, V> putAll(int position, Map<K, V> map) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 
     public ILevel1ArrayOfMapElementsOperator<?, ?> raw() {
         // TODO Auto-generated method stub
@@ -195,7 +200,7 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> removeAll(K... keys) {
+    public ILevel1ArrayOfMapElementsOperator<K, V> removeAllWithKeys(K... keys) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -215,20 +220,20 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> removeAllBut(K... keys) {
+    public ILevel1ArrayOfMapElementsOperator<K, V> removeAllWithKeysNot(K... keys) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> removeAllBut(
+    public ILevel1ArrayOfMapElementsOperator<K, V> removeAllNot(
             String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> removeAllBut(
+    public ILevel1ArrayOfMapElementsOperator<K, V> removeAllNot(
             ISelect<Entry<K, V>> selector) {
         // TODO Auto-generated method stub
         return null;

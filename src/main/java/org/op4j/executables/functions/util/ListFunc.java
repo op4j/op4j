@@ -46,10 +46,12 @@ import java.util.List;
 
 import org.apache.commons.collections.ListUtils;
 import org.javaruntype.type.Type;
+import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.Function;
 import org.op4j.executables.functions.FunctionArguments;
 import org.op4j.executables.functions.Functions;
 import org.op4j.executables.functions.IFunc;
+import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -84,8 +86,13 @@ public class ListFunc<X,T> implements IFunc<X,List<T>>  {
     }
     
     @SuppressWarnings("unchecked")
-    public static <T> ListFunc<List<T>,T> addAll(final T... newElements) {
+    public static <T> ListFunc<List<T>,T> addAllValues(final T... newElements) {
         return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(newElements), "ADD"})); 
+    }
+    
+    @SuppressWarnings("unchecked")
+    public static <T> ListFunc<List<T>,T> addAllValues(final int position, final T... newElements) {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(newElements), Integer.valueOf(position), "ADD"})); 
     }
     
     
@@ -94,6 +101,89 @@ public class ListFunc<X,T> implements IFunc<X,List<T>>  {
         return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {new ArrayList<Object>(collection), "ADD"})); 
     }
 
+
+    @SuppressWarnings("unchecked")
+    public static <T> ListFunc<List<T>,T> remove(final int position) {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {new Integer[] {Integer.valueOf(position)}, "REMOVE"})); 
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public static <T> ListFunc<List<T>,T> removeValue(final T value) {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {Collections.singletonList(value), "REMOVE"})); 
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public static <T> ListFunc<List<T>,T> removeAll(final int... positions) {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredIntegerArray(positions), "REMOVE"})); 
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public static <T> ListFunc<List<T>,T> removeAllValues(final T... values) {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(values), "REMOVE"})); 
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public static <T> ListFunc<List<T>,T> removeAll(final String expression, final Object... optionalExpParams) {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {expression, VarArgsUtil.asOptionalObjectList(optionalExpParams), "REMOVE"})); 
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public static <T> ListFunc<List<T>,T> removeAll(final ISelect<T> selector) {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {selector, "REMOVE"})); 
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public static <T> ListFunc<List<T>,T> removeAllNot(final int... positions) {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredIntegerArray(positions), "REMOVE_NOT"})); 
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public static <T> ListFunc<List<T>,T> removeAllValuesNot(final T... values) {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(values), "REMOVE_NOT"})); 
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public static <T> ListFunc<List<T>,T> removeAllNot(final String expression, final Object... optionalExpParams) {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {expression, VarArgsUtil.asOptionalObjectList(optionalExpParams), "REMOVE_NOT"})); 
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public static <T> ListFunc<List<T>,T> removeAllNot(final ISelect<T> selector) {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {selector, "REMOVE_NOT"})); 
+    }
+
+
+    public ILevel0ListOperator<T> removeAllNulls() {
+    }
+    
+    
+    public ILevel0ListOperator<T> removeAllNotNullsAnd(String expression, Object... optionalExpParams) {
+    }
+
+    
+    public ILevel0ListOperator<T> removeAllNotNullsAndNot(String expression, Object... optionalExpParams) {
+    }
+
+    
+    public ILevel0ListOperator<T> removeAllNullsOr(String expression, Object... optionalExpParams) {
+    }
+
+    
+    public ILevel0ListOperator<T> removeAllNullsOrNot(String expression, Object... optionalExpParams) {
+        
+    }
+    
+    
+    
     
     
     

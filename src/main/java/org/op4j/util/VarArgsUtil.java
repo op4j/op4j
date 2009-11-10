@@ -52,6 +52,12 @@ public class VarArgsUtil {
         return Arrays.asList(ArrayUtils.toObject(parameters));
     }
     
+    public static Integer[] asRequiredIntegerArray(final int... parameters) {
+        Validate.notNull(parameters, "Parameters cannot be null");
+        Validate.isTrue(parameters.length > 0, "Paramters cannot be empty");
+        return ArrayUtils.toObject(parameters);
+    }
+    
     
     @SuppressWarnings("unchecked")
     public static <T> List<T> asOptionalObjectList(final T... parameters) {

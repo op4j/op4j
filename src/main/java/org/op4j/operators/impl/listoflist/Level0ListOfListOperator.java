@@ -73,8 +73,13 @@ public class Level0ListOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfListOperator<T> addAll(final List<T>... newElements) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.addAll(newElements)));
+    public ILevel0ListOfListOperator<T> addAllValues(final List<T>... newElements) {
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.addAllValues(newElements)));
+    }
+
+
+    public ILevel0ListOfListOperator<T> addAllValues(final int position, final List<T>... newElements) {
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.addAllValues(position, newElements)));
     }
 
 
@@ -251,7 +256,7 @@ public class Level0ListOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfListOperator<T> remove(List<T> value) {
+    public ILevel0ListOfListOperator<T> removeValue(List<T> value) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -263,7 +268,7 @@ public class Level0ListOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfListOperator<T> removeAll(List<T>... values) {
+    public ILevel0ListOfListOperator<T> removeAllValues(List<T>... values) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -282,26 +287,51 @@ public class Level0ListOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfListOperator<T> removeAllBut(int... positions) {
+    public ILevel0ListOfListOperator<T> removeAllNot(int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfListOperator<T> removeAllBut(List<T>... values) {
+    public ILevel0ListOfListOperator<T> removeAllValuesNot(List<T>... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfListOperator<T> removeAllBut(String expression,
+    public ILevel0ListOfListOperator<T> removeAllNot(String expression,
             Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfListOperator<T> removeAllBut(ISelect<List<T>> selector) {
+    public ILevel0ListOfListOperator<T> removeAllNot(ISelect<List<T>> selector) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ListOfListOperator<T> removeAllNotNullsAnd(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ListOfListOperator<T> removeAllNotNullsAndNot(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ListOfListOperator<T> removeAllNulls() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ListOfListOperator<T> removeAllNullsOr(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ListOfListOperator<T> removeAllNullsOrNot(String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }

@@ -36,18 +36,19 @@ public interface IModifiableOperator<T> {
 
     public IModifiableOperator<T> add(final T newElement);
     public IModifiableOperator<T> add(final int position, final T newElement);
-    public IModifiableOperator<T> addAll(final T... newElements);
+    public IModifiableOperator<T> addAllValues(final T... newElements);
+    public IModifiableOperator<T> addAllValues(final int position, final T... newElements);
     public IModifiableOperator<T> addAll(final Collection<T> collection);
     public IModifiableOperator<T> remove(final int position);
-    public IModifiableOperator<T> remove(final T value);
+    public IModifiableOperator<T> removeValue(final T value);
     public IModifiableOperator<T> removeAll(final int... positions);
-    public IModifiableOperator<T> removeAll(final T... values);
+    public IModifiableOperator<T> removeAllValues(final T... values);
     public IModifiableOperator<T> removeAll(final String expression, final Object... optionalExpParams);
     public IModifiableOperator<T> removeAll(final ISelect<T> filter);
-    public IModifiableOperator<T> removeAllBut(final int... positions);
-    public IModifiableOperator<T> removeAllBut(final T... values);
-    public IModifiableOperator<T> removeAllBut(final String expression, final Object... optionalExpParams);
-    public IModifiableOperator<T> removeAllBut(final ISelect<T> filter);
+    public IModifiableOperator<T> removeAllNot(final int... positions);
+    public IModifiableOperator<T> removeAllValuesNot(final T... values);
+    public IModifiableOperator<T> removeAllNot(final String expression, final Object... optionalExpParams);
+    public IModifiableOperator<T> removeAllNot(final ISelect<T> filter);
     
     
 }

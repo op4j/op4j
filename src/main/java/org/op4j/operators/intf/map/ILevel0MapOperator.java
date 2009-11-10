@@ -64,13 +64,14 @@ public interface ILevel0MapOperator<K,V>
     public ILevel0MapOperator<K,V> put(final K newKey, final V newValue);
     public ILevel0MapOperator<K,V> put(final int position, final K newKey, final V newValue);
     public ILevel0MapOperator<K,V> putAll(final Map<K,V> map);
+    public ILevel0MapOperator<K,V> putAll(final int position, final Map<K,V> map);
     public ILevel0MapOperator<K,V> remove(final K key);
-    public ILevel0MapOperator<K,V> removeAll(final K... keys);
+    public ILevel0MapOperator<K,V> removeAllWithKeys(final K... keys);
     public ILevel0MapOperator<K,V> removeAll(final String expression, final Object... optionalExpParams);
     public ILevel0MapOperator<K,V> removeAll(final ISelect<Map.Entry<K,V>> selector);
-    public ILevel0MapOperator<K,V> removeAllBut(final K... keys);
-    public ILevel0MapOperator<K,V> removeAllBut(final String expression, final Object... optionalExpParams);
-    public ILevel0MapOperator<K,V> removeAllBut(final ISelect<Map.Entry<K,V>> selector);
+    public ILevel0MapOperator<K,V> removeAllWithKeysNot(final K... keys);
+    public ILevel0MapOperator<K,V> removeAllNot(final String expression, final Object... optionalExpParams);
+    public ILevel0MapOperator<K,V> removeAllNot(final ISelect<Map.Entry<K,V>> selector);
     
     
     public ILevel0MapOperator<K,V> extract(final K key);

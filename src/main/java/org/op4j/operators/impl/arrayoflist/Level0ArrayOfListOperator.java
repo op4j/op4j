@@ -75,8 +75,12 @@ public class Level0ArrayOfListOperator<T> extends Operator
         return null;
     }
 
+    public ILevel0ArrayOfListOperator<T> addAllValues(List<T>... newElements) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-    public ILevel0ArrayOfListOperator<T> addAll(List<T>... newElements) {
+    public ILevel0ArrayOfListOperator<T> addAllValues(int position, List<T>... newElements) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -250,7 +254,7 @@ public class Level0ArrayOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0ArrayOfListOperator<T> remove(List<T> value) {
+    public ILevel0ArrayOfListOperator<T> removeValue(List<T> value) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -262,7 +266,7 @@ public class Level0ArrayOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0ArrayOfListOperator<T> removeAll(List<T>... values) {
+    public ILevel0ArrayOfListOperator<T> removeAllValues(List<T>... values) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -281,26 +285,51 @@ public class Level0ArrayOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0ArrayOfListOperator<T> removeAllBut(int... positions) {
+    public ILevel0ArrayOfListOperator<T> removeAllNot(int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfListOperator<T> removeAllBut(List<T>... values) {
+    public ILevel0ArrayOfListOperator<T> removeAllValuesNot(List<T>... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfListOperator<T> removeAllBut(String expression,
+    public ILevel0ArrayOfListOperator<T> removeAllNot(String expression,
             Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfListOperator<T> removeAllBut(ISelect<List<T>> selector) {
+    public ILevel0ArrayOfListOperator<T> removeAllNot(ISelect<List<T>> selector) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ArrayOfListOperator<T> removeAllNotNullsAnd(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ArrayOfListOperator<T> removeAllNotNullsAndNot(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ArrayOfListOperator<T> removeAllNulls() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ArrayOfListOperator<T> removeAllNullsOr(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ArrayOfListOperator<T> removeAllNullsOrNot(String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }

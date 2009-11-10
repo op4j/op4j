@@ -71,7 +71,12 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> addAll(V... newElements) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> addAllValues(V... newElements) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> addAllValues(int position, V... newElements) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -250,7 +255,7 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> remove(V value) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeValue(V value) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -263,7 +268,7 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAll(V... values) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllValues(V... values) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -283,28 +288,52 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllBut(
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNot(
             int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllBut(V... values) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllValuesNot(V... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllBut(
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNot(
             String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllBut(
-            ISelect<V> selector) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNot(ISelect<V> selector) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNotNullsAnd(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNotNullsAndNot(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNulls() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNullsOr(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNullsOrNot(String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }

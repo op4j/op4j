@@ -162,11 +162,13 @@ public final class Function<X,T>  {
         FunctionImplementation<X,T> functionImplementation = null;
         for (FunctionArgumentScheme matchingTypeScheme : this.implementationsByArgumentSchemes.keySet()) {
             if (matchingTypeScheme.matches(arguments)) {
+            	final FunctionImplementation<X,T> currentFunctionImplementation = 
+            		this.implementationsByArgumentSchemes.get(matchingTypeScheme);
                 if (functionImplementation == null) {
-                    functionImplementation = this.implementationsByArgumentSchemes.get(matchingTypeScheme);
-                } else {
+                    functionImplementation = currentFunctionImplementation;
+                } else if (functionImplementation != currentFunctionImplementation){
                     throw new IllegalArgumentException(
-                            "Invalid arguments. More than one function implementation matches arguments " + arguments);
+                            "Invalid arguments. More than one function matching scheme matches arguments " + arguments);
                 }
             }
         }

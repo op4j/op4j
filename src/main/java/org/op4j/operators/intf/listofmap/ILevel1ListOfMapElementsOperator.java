@@ -68,13 +68,14 @@ public interface ILevel1ListOfMapElementsOperator<K,V>
     public ILevel1ListOfMapElementsOperator<K,V> put(final K newKey, final V newValue);
     public ILevel1ListOfMapElementsOperator<K,V> put(final int position, final K newKey, final V newValue);
     public ILevel1ListOfMapElementsOperator<K,V> putAll(final Map<K,V> map);
+    public ILevel1ListOfMapElementsOperator<K,V> putAll(final int position, final Map<K,V> map);
     public ILevel1ListOfMapElementsOperator<K,V> remove(final K key);
-    public ILevel1ListOfMapElementsOperator<K,V> removeAll(final K... keys);
+    public ILevel1ListOfMapElementsOperator<K,V> removeAllWithKeys(final K... keys);
     public ILevel1ListOfMapElementsOperator<K,V> removeAll(final String expression, final Object... optionalExpParams);
     public ILevel1ListOfMapElementsOperator<K,V> removeAll(final ISelect<Map.Entry<K,V>> selector);
-    public ILevel1ListOfMapElementsOperator<K,V> removeAllBut(final K... keys);
-    public ILevel1ListOfMapElementsOperator<K,V> removeAllBut(final String expression, final Object... optionalExpParams);
-    public ILevel1ListOfMapElementsOperator<K,V> removeAllBut(final ISelect<Map.Entry<K,V>> selector);
+    public ILevel1ListOfMapElementsOperator<K,V> removeAllWithKeysNot(final K... keys);
+    public ILevel1ListOfMapElementsOperator<K,V> removeAllNot(final String expression, final Object... optionalExpParams);
+    public ILevel1ListOfMapElementsOperator<K,V> removeAllNot(final ISelect<Map.Entry<K,V>> selector);
     
     
     public ILevel1ListOfMapElementsOperator<K,V> extract(final K key);

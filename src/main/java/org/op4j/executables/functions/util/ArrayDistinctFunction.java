@@ -48,7 +48,7 @@ public class ArrayDistinctFunction extends FunctionImplementation<Object[], Obje
         FunctionArgumentScheme.from(
             "It returns an array containing only the non-repeated elements.",
             Types.ARRAY_OF_OBJECT,
-            "org.javaruntype.type.Type arrayOf");
+            Type.class.getName() + " arrayOf");
 
     
     

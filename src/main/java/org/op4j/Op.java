@@ -34,6 +34,7 @@ import java.util.Set;
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
 import org.op4j.executables.Eval;
+import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.util.ListFunc;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
@@ -363,10 +364,31 @@ public final class Op {
      
         System.out.println(Op.onList(stringsList1).add("World!").get());
         System.out.println(Op.onList(stringsList1).add(1,"World!").get());
-        System.out.println(Op.onList(stringsList1).addAll("World!", "Mars!").get());
+        System.out.println(Op.onList(stringsList1).addAllValues("World!", "Mars!").get());
+        System.out.println(Op.onList(stringsList1).addAllValues(1, "World!", "Mars!").get());
         System.out.println(Op.onList(stringsList1).addAll(stringsList1).get());
         System.out.println(Op.onListOfList(listOfListOfString1).add(Collections.singletonList("Uhey!")).distinct().get());
-        
+        System.out.println("---");
+        System.out.println(Op.onList(stringsList1).get());
+        System.out.println(Op.onList(stringsList1).remove(1).get());
+        System.out.println(Op.onList(stringsList1).removeValue(null).get());
+        System.out.println(Op.onList(stringsList1).removeValue("Goodbye").get());
+        System.out.println(Op.onList(stringsList1).removeAll(0,2).get());
+        System.out.println(Op.onList(stringsList1).removeAllNot(0).get());
+        System.out.println(Op.onList(stringsList1).removeAllNot(0,2).get());
+        System.out.println(Op.onList(stringsList1).removeAllValuesNot("Hello").get());
+        System.out.println(Op.onList(stringsList1).removeAllValuesNot((String)null).get());
+        System.out.println(Op.onList(stringsList1).removeAll("#target eq 'Hello'").get());
+        System.out.println(Op.onList(stringsList1).removeAllNot("#target eq 'Hello'").get());
+        System.out.println(Op.onList(stringsList1).removeValue(null).removeAllNot("length() > #param[0]", 5).get());
+        System.out.println(Op.onList(stringsList1).removeAll(new ISelect<String>() {
+
+			public boolean eval(String target) {
+				return target == null;
+			}
+        	
+        }).get());
+            
     }
     
     

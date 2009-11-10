@@ -63,7 +63,12 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0ArrayOfMapOperator<K, V> addAll(Map<K, V>... newElements) {
+    public ILevel0ArrayOfMapOperator<K, V> addAllValues(Map<K, V>... newElements) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ArrayOfMapOperator<K, V> addAllValues(int position, Map<K, V>... newElements) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -238,7 +243,7 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0ArrayOfMapOperator<K, V> remove(Map<K, V> value) {
+    public ILevel0ArrayOfMapOperator<K, V> removeValue(Map<K, V> value) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -250,7 +255,7 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0ArrayOfMapOperator<K, V> removeAll(Map<K, V>... values) {
+    public ILevel0ArrayOfMapOperator<K, V> removeAllValues(Map<K, V>... values) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -269,27 +274,51 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0ArrayOfMapOperator<K, V> removeAllBut(int... positions) {
+    public ILevel0ArrayOfMapOperator<K, V> removeAllNot(int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfMapOperator<K, V> removeAllBut(Map<K, V>... values) {
+    public ILevel0ArrayOfMapOperator<K, V> removeAllValuesNot(Map<K, V>... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfMapOperator<K, V> removeAllBut(String expression,
+    public ILevel0ArrayOfMapOperator<K, V> removeAllNot(String expression,
             Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfMapOperator<K, V> removeAllBut(
-            ISelect<Map<K, V>> selector) {
+    public ILevel0ArrayOfMapOperator<K, V> removeAllNot(ISelect<Map<K, V>> selector) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ArrayOfMapOperator<K, V> removeAllNotNullsAnd(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ArrayOfMapOperator<K, V> removeAllNotNullsAndNot(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ArrayOfMapOperator<K, V> removeAllNulls() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ArrayOfMapOperator<K, V> removeAllNullsOr(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ArrayOfMapOperator<K, V> removeAllNullsOrNot(String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }

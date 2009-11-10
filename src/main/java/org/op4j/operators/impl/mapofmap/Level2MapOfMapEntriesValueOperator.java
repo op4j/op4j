@@ -183,6 +183,11 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
         return null;
     }
 
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> putAll(int position, Map<K2, V> map) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 
     public ILevel2MapOfMapEntriesValueOperator<K1, ?, ?> raw() {
         // TODO Auto-generated method stub
@@ -196,7 +201,7 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAll(K2... keys) {
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAllWithKeys(K2... keys) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -216,21 +221,21 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAllBut(
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAllWithKeysNot(
             K2... keys) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAllBut(
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAllNot(
             String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAllBut(
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAllNot(
             ISelect<Entry<K2, V>> selector) {
         // TODO Auto-generated method stub
         return null;

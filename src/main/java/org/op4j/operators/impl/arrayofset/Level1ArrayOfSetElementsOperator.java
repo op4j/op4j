@@ -66,8 +66,12 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
         return null;
     }
 
+    public ILevel1ArrayOfSetElementsOperator<T> addAllValues(T... newElements) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-    public ILevel1ArrayOfSetElementsOperator<T> addAll(T... newElements) {
+    public ILevel1ArrayOfSetElementsOperator<T> addAllValues(int position, T... newElements) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -242,7 +246,7 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> remove(T value) {
+    public ILevel1ArrayOfSetElementsOperator<T> removeValue(T value) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -254,7 +258,7 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> removeAll(T... values) {
+    public ILevel1ArrayOfSetElementsOperator<T> removeAllValues(T... values) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -273,26 +277,51 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> removeAllBut(int... positions) {
+    public ILevel1ArrayOfSetElementsOperator<T> removeAllNot(int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> removeAllBut(T... values) {
+    public ILevel1ArrayOfSetElementsOperator<T> removeAllValuesNot(T... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> removeAllBut(String expression,
+    public ILevel1ArrayOfSetElementsOperator<T> removeAllNot(String expression,
             Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> removeAllBut(ISelect<T> selector) {
+    public ILevel1ArrayOfSetElementsOperator<T> removeAllNot(ISelect<T> selector) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel1ArrayOfSetElementsOperator<T> removeAllNotNullsAnd(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel1ArrayOfSetElementsOperator<T> removeAllNotNullsAndNot(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel1ArrayOfSetElementsOperator<T> removeAllNulls() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel1ArrayOfSetElementsOperator<T> removeAllNullsOr(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel1ArrayOfSetElementsOperator<T> removeAllNullsOrNot(String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }

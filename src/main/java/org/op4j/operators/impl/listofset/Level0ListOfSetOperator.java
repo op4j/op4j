@@ -74,8 +74,13 @@ public class Level0ListOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfSetOperator<T> addAll(final Set<T>... newElements) {
-        return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.addAll(newElements)));
+    public ILevel0ListOfSetOperator<T> addAllValues(final Set<T>... newElements) {
+        return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.addAllValues(newElements)));
+    }
+
+
+    public ILevel0ListOfSetOperator<T> addAllValues(final int position, final Set<T>... newElements) {
+        return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.addAllValues(position, newElements)));
     }
 
 
@@ -252,7 +257,7 @@ public class Level0ListOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfSetOperator<T> remove(Set<T> value) {
+    public ILevel0ListOfSetOperator<T> removeValue(Set<T> value) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -264,7 +269,7 @@ public class Level0ListOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfSetOperator<T> removeAll(Set<T>... values) {
+    public ILevel0ListOfSetOperator<T> removeAllValues(Set<T>... values) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -283,26 +288,51 @@ public class Level0ListOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfSetOperator<T> removeAllBut(int... positions) {
+    public ILevel0ListOfSetOperator<T> removeAllNot(int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfSetOperator<T> removeAllBut(Set<T>... values) {
+    public ILevel0ListOfSetOperator<T> removeAllValuesNot(Set<T>... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfSetOperator<T> removeAllBut(String expression,
+    public ILevel0ListOfSetOperator<T> removeAllNot(String expression,
             Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfSetOperator<T> removeAllBut(ISelect<Set<T>> selector) {
+    public ILevel0ListOfSetOperator<T> removeAllNot(ISelect<Set<T>> selector) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ListOfSetOperator<T> removeAllNotNullsAnd(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ListOfSetOperator<T> removeAllNotNullsAndNot(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ListOfSetOperator<T> removeAllNulls() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ListOfSetOperator<T> removeAllNullsOr(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0ListOfSetOperator<T> removeAllNullsOrNot(String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }

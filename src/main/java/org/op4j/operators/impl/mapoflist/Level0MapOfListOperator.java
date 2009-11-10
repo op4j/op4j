@@ -180,6 +180,11 @@ public class Level0MapOfListOperator<K,V> extends Operator
         return null;
     }
 
+    public ILevel0MapOfListOperator<K, V> putAll(int position, Map<K, List<V>> map) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 
     public ILevel0MapOfListOperator<?, ?> raw() {
         // TODO Auto-generated method stub
@@ -193,7 +198,7 @@ public class Level0MapOfListOperator<K,V> extends Operator
     }
 
 
-    public ILevel0MapOfListOperator<K, V> removeAll(K... keys) {
+    public ILevel0MapOfListOperator<K, V> removeAllWithKeys(K... keys) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -213,20 +218,20 @@ public class Level0MapOfListOperator<K,V> extends Operator
     }
 
 
-    public ILevel0MapOfListOperator<K, V> removeAllBut(K... keys) {
+    public ILevel0MapOfListOperator<K, V> removeAllWithKeysNot(K... keys) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0MapOfListOperator<K, V> removeAllBut(String expression,
+    public ILevel0MapOfListOperator<K, V> removeAllNot(String expression,
             Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0MapOfListOperator<K, V> removeAllBut(
+    public ILevel0MapOfListOperator<K, V> removeAllNot(
             ISelect<Entry<K, List<V>>> selector) {
         // TODO Auto-generated method stub
         return null;

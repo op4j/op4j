@@ -119,18 +119,19 @@ public interface ILevel0GenericMultiOperator<T>
 
     public ILevel0GenericMultiOperator<T> add(final T newElement);
     public ILevel0GenericMultiOperator<T> add(final int position, final T newElement);
-    public ILevel0GenericMultiOperator<T> addAll(final T... newElements);
+    public ILevel0GenericMultiOperator<T> addAllValues(final T... newElements);
+    public ILevel0GenericMultiOperator<T> addAllValues(final int position, final T... newElements);
     public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection);
     public ILevel0GenericMultiOperator<T> remove(final int position);
-    public ILevel0GenericMultiOperator<T> remove(final T value);
+    public ILevel0GenericMultiOperator<T> removeValue(final T value);
     public ILevel0GenericMultiOperator<T> removeAll(final int... positions);
-    public ILevel0GenericMultiOperator<T> removeAll(final T... values);
+    public ILevel0GenericMultiOperator<T> removeAllValues(final T... values);
     public ILevel0GenericMultiOperator<T> removeAll(final String expression, final Object... optionalExpParams);
     public ILevel0GenericMultiOperator<T> removeAll(final ISelect<T> selector);
-    public ILevel0GenericMultiOperator<T> removeAllBut(final int... positions);
-    public ILevel0GenericMultiOperator<T> removeAllBut(final T... values);
-    public ILevel0GenericMultiOperator<T> removeAllBut(final String expression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<T> removeAllBut(final ISelect<T> selector);
+    public ILevel0GenericMultiOperator<T> removeAllNot(final int... positions);
+    public ILevel0GenericMultiOperator<T> removeAllValuesNot(final T... values);
+    public ILevel0GenericMultiOperator<T> removeAllNot(final String expression, final Object... optionalExpParams);
+    public ILevel0GenericMultiOperator<T> removeAllNot(final ISelect<T> selector);
     
     
     public ILevel0ListOperator<T> buildList();

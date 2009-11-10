@@ -36,17 +36,23 @@ public interface IModifiableCollectionOperator<T> {
     
     public IModifiableCollectionOperator<T> add(final T newElement);
     public IModifiableCollectionOperator<T> add(final int position, final T newElement);
-    public IModifiableCollectionOperator<T> addAll(final T... newElements);
+    public IModifiableCollectionOperator<T> addAllValues(final T... newElements);
+    public IModifiableCollectionOperator<T> addAllValues(final int position, final T... newElements);
     public IModifiableCollectionOperator<T> addAll(final Collection<T> collection);
     public IModifiableCollectionOperator<T> remove(final int position);
-    public IModifiableCollectionOperator<T> remove(final T value);
+    public IModifiableCollectionOperator<T> removeValue(final T value);
     public IModifiableCollectionOperator<T> removeAll(final int... positions);
-    public IModifiableCollectionOperator<T> removeAll(final T... values);
+    public IModifiableCollectionOperator<T> removeAllValues(final T... values);
     public IModifiableCollectionOperator<T> removeAll(final String expression, final Object... optionalExpParams);
     public IModifiableCollectionOperator<T> removeAll(final ISelect<T> selector);
-    public IModifiableCollectionOperator<T> removeAllBut(final int... positions);
-    public IModifiableCollectionOperator<T> removeAllBut(final T... values);
-    public IModifiableCollectionOperator<T> removeAllBut(final String expression, final Object... optionalExpParams);
-    public IModifiableCollectionOperator<T> removeAllBut(final ISelect<T> selector);
+    public IModifiableCollectionOperator<T> removeAllNot(final int... positions);
+    public IModifiableCollectionOperator<T> removeAllValuesNot(final T... values);
+    public IModifiableCollectionOperator<T> removeAllNot(final String expression, final Object... optionalExpParams);
+    public IModifiableCollectionOperator<T> removeAllNot(final ISelect<T> selector);
+    public IModifiableCollectionOperator<T> removeAllNulls();
+    public IModifiableCollectionOperator<T> removeAllNullsOr(final String expression, final Object... optionalExpParams);
+    public IModifiableCollectionOperator<T> removeAllNullsOrNot(final String expression, final Object... optionalExpParams);
+    public IModifiableCollectionOperator<T> removeAllNotNullsAnd(final String expression, final Object... optionalExpParams);
+    public IModifiableCollectionOperator<T> removeAllNotNullsAndNot(final String expression, final Object... optionalExpParams);
     
 }

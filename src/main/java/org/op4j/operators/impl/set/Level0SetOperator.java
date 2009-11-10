@@ -65,8 +65,12 @@ public class Level0SetOperator<T> extends Operator
         return null;
     }
 
+    public ILevel0SetOperator<T> addAllValues(T... newElements) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-    public ILevel0SetOperator<T> addAll(T... newElements) {
+    public ILevel0SetOperator<T> addAllValues(int position, T... newElements) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -241,7 +245,7 @@ public class Level0SetOperator<T> extends Operator
     }
 
 
-    public ILevel0SetOperator<T> remove(T value) {
+    public ILevel0SetOperator<T> removeValue(T value) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -253,7 +257,7 @@ public class Level0SetOperator<T> extends Operator
     }
 
 
-    public ILevel0SetOperator<T> removeAll(T... values) {
+    public ILevel0SetOperator<T> removeAllValues(T... values) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -272,26 +276,51 @@ public class Level0SetOperator<T> extends Operator
     }
 
 
-    public ILevel0SetOperator<T> removeAllBut(int... positions) {
+    public ILevel0SetOperator<T> removeAllNot(int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0SetOperator<T> removeAllBut(T... values) {
+    public ILevel0SetOperator<T> removeAllValuesNot(T... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0SetOperator<T> removeAllBut(String expression,
+    public ILevel0SetOperator<T> removeAllNot(String expression,
             Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0SetOperator<T> removeAllBut(ISelect<T> selector) {
+    public ILevel0SetOperator<T> removeAllNot(ISelect<T> selector) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0SetOperator<T> removeAllNotNullsAnd(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0SetOperator<T> removeAllNotNullsAndNot(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0SetOperator<T> removeAllNulls() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0SetOperator<T> removeAllNullsOr(String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0SetOperator<T> removeAllNullsOrNot(String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }

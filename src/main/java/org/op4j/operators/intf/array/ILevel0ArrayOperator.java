@@ -82,18 +82,24 @@ public interface ILevel0ArrayOperator<T>
     
     public ILevel0ArrayOperator<T> add(final T newElement);
     public ILevel0ArrayOperator<T> add(final int position, final T newElement);
-    public ILevel0ArrayOperator<T> addAll(final T... newElements);
+    public ILevel0ArrayOperator<T> addAllValues(final T... newElements);
+    public ILevel0ArrayOperator<T> addAllValues(final int position, final T... newElements);
     public ILevel0ArrayOperator<T> addAll(final Collection<T> collection);
     public ILevel0ArrayOperator<T> remove(final int position);
-    public ILevel0ArrayOperator<T> remove(final T value);
+    public ILevel0ArrayOperator<T> removeValue(final T value);
     public ILevel0ArrayOperator<T> removeAll(final int... positions);
-    public ILevel0ArrayOperator<T> removeAll(final T... values);
+    public ILevel0ArrayOperator<T> removeAllValues(final T... values);
     public ILevel0ArrayOperator<T> removeAll(final String expression, final Object... optionalExpParams);
     public ILevel0ArrayOperator<T> removeAll(final ISelect<T> selector);
-    public ILevel0ArrayOperator<T> removeAllBut(final int... positions);
-    public ILevel0ArrayOperator<T> removeAllBut(final T... values);
-    public ILevel0ArrayOperator<T> removeAllBut(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOperator<T> removeAllBut(final ISelect<T> selector);
+    public ILevel0ArrayOperator<T> removeAllNot(final int... positions);
+    public ILevel0ArrayOperator<T> removeAllValuesNot(final T... values);
+    public ILevel0ArrayOperator<T> removeAllNot(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOperator<T> removeAllNot(final ISelect<T> selector);
+    public ILevel0ArrayOperator<T> removeAllNulls();
+    public ILevel0ArrayOperator<T> removeAllNullsOr(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOperator<T> removeAllNullsOrNot(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOperator<T> removeAllNotNullsAnd(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOperator<T> removeAllNotNullsAndNot(final String expression, final Object... optionalExpParams);
     
     public ILevel0ListOperator<T> toList();
     
