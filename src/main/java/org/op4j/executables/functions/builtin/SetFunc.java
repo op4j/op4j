@@ -36,7 +36,7 @@
  * 
  * =============================================================================
  */
-package org.op4j.executables.functions.structuremanagement;
+package org.op4j.executables.functions.builtin;
 
 import java.util.ArrayList;
 import java.util.Arrays;

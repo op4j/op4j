@@ -18,11 +18,9 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions.structuremanagement;
+package org.op4j.executables.functions.builtin;
 
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
@@ -34,13 +32,13 @@ import org.javaruntype.type.Types;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class SetModifyFunction extends CollectionModifyFunction<Set<?>, Set<?>> {
+public final class ListModifyFunction extends CollectionModifyFunction<List<?>, List<?>> {
 
-	public static final String NAME = StructureManagementNaming.getStructureManagementName(Types.SET_OF_UNKNOWN, StructureManagementNaming.OPERATION_NAME_MODIFY); 
+	public static final String NAME = BuiltinNaming.getBuiltinFunctionName(Types.LIST_OF_UNKNOWN, BuiltinNaming.OPERATION_NAME_MODIFY); 
 
     
     
-    public SetModifyFunction() {
+    public ListModifyFunction() {
     	super();
     }
 	
@@ -53,20 +51,20 @@ public final class SetModifyFunction extends CollectionModifyFunction<Set<?>, Se
 	
 	
 	@Override
-	protected Type<Set<?>> registerResultType() {
-		return Types.SET_OF_UNKNOWN;
+	protected Type<List<?>> registerResultType() {
+		return Types.LIST_OF_UNKNOWN;
 	}
 
 	
 	@Override
-	protected Type<Set<?>> registerTargetType() {
-		return Types.SET_OF_UNKNOWN;
+	protected Type<List<?>> registerTargetType() {
+		return Types.LIST_OF_UNKNOWN;
 	}
 
 	
     @Override
-    protected Set<?> createResultObject(final List<?> newList) {
-        return new LinkedHashSet<Object>(newList);
+    protected List<?> createResultObject(final List<?> newList) {
+        return newList;
     }
 	
 }

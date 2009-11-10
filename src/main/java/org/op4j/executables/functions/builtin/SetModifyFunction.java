@@ -18,9 +18,14 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions.structuremanagement;
+package org.op4j.executables.functions.builtin;
+
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 
 /**
  * 
@@ -29,22 +34,39 @@ import org.javaruntype.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class StructureManagementNaming {
+public final class SetModifyFunction extends CollectionModifyFunction<Set<?>, Set<?>> {
+
+	public static final String NAME = BuiltinNaming.getBuiltinFunctionName(Types.SET_OF_UNKNOWN, BuiltinNaming.OPERATION_NAME_MODIFY); 
+
+    
+    
+    public SetModifyFunction() {
+    	super();
+    }
+	
+	
+    
+	@Override
+	protected String registerFunctionName() {
+		return NAME;
+	}
+	
+	
+	@Override
+	protected Type<Set<?>> registerResultType() {
+		return Types.SET_OF_UNKNOWN;
+	}
 
 	
-	static final String OPERATION_NAME_DISTINCT = "distinct"; 
-    static final String OPERATION_NAME_MODIFY = "modify"; 
-    
-    private static final String STRUCTURE_MANAGEMENT_FUNCTION_NAME_PREFIX = "op4j:structuremanagement:";
+	@Override
+	protected Type<Set<?>> registerTargetType() {
+		return Types.SET_OF_UNKNOWN;
+	}
 
-    
-    static String getStructureManagementName(final Type<?> targetType, final String operationName) {
-        return STRUCTURE_MANAGEMENT_FUNCTION_NAME_PREFIX + targetType.getName() + ":" + operationName;
+	
+    @Override
+    protected Set<?> createResultObject(final List<?> newList) {
+        return new LinkedHashSet<Object>(newList);
     }
-    
-    
-    private StructureManagementNaming() {
-        super();
-    }
-    
+	
 }

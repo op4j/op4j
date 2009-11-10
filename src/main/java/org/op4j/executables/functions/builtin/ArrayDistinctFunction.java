@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions.structuremanagement;
+package org.op4j.executables.functions.builtin;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -41,7 +41,7 @@ import org.op4j.executables.functions.FunctionImplementation;
  */
 public class ArrayDistinctFunction extends FunctionImplementation<Object[], Object[]> {
 
-	public static final String NAME = StructureManagementNaming.getStructureManagementName(Types.ARRAY_OF_OBJECT, StructureManagementNaming.OPERATION_NAME_DISTINCT); 
+	public static final String NAME = BuiltinNaming.getBuiltinFunctionName(Types.ARRAY_OF_OBJECT, BuiltinNaming.OPERATION_NAME_DISTINCT); 
 	
 	
     private static final FunctionArgumentScheme SCH_ARRAY = 

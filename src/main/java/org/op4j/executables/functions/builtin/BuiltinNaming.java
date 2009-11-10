@@ -18,12 +18,9 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions.structuremanagement;
-
-import java.util.List;
+package org.op4j.executables.functions.builtin;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 
 /**
  * 
@@ -32,39 +29,22 @@ import org.javaruntype.type.Types;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class ListModifyFunction extends CollectionModifyFunction<List<?>, List<?>> {
+final class BuiltinNaming {
 
-	public static final String NAME = StructureManagementNaming.getStructureManagementName(Types.LIST_OF_UNKNOWN, StructureManagementNaming.OPERATION_NAME_MODIFY); 
+	
+	static final String OPERATION_NAME_DISTINCT = "distinct"; 
+    static final String OPERATION_NAME_MODIFY = "modify"; 
+    
+    private static final String BUILTIN_FUNCTION_NAME_PREFIX = "op4j:builtin:";
 
     
-    
-    public ListModifyFunction() {
-    	super();
+    static String getBuiltinFunctionName(final Type<?> targetType, final String operationName) {
+        return BUILTIN_FUNCTION_NAME_PREFIX + targetType.getName() + ":" + operationName;
     }
-	
-	
     
-	@Override
-	protected String registerFunctionName() {
-		return NAME;
-	}
-	
-	
-	@Override
-	protected Type<List<?>> registerResultType() {
-		return Types.LIST_OF_UNKNOWN;
-	}
-
-	
-	@Override
-	protected Type<List<?>> registerTargetType() {
-		return Types.LIST_OF_UNKNOWN;
-	}
-
-	
-    @Override
-    protected List<?> createResultObject(final List<?> newList) {
-        return newList;
+    
+    private BuiltinNaming() {
+        super();
     }
-	
+    
 }

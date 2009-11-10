@@ -26,7 +26,7 @@ import java.util.Map;
 
 import org.op4j.Of;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.structuremanagement.ListFunc;
+import org.op4j.executables.functions.builtin.ListFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.listofmap.ILevel0ListOfMapOperator;

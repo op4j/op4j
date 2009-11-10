@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions.structuremanagement;
+package org.op4j.executables.functions.builtin;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -40,7 +40,7 @@ import org.op4j.executables.functions.FunctionImplementation;
  */
 public class ListDistinctFunction extends FunctionImplementation<List<?>, List<?>> {
 
-	public static final String NAME = StructureManagementNaming.getStructureManagementName(Types.LIST_OF_UNKNOWN, StructureManagementNaming.OPERATION_NAME_DISTINCT); 
+	public static final String NAME = BuiltinNaming.getBuiltinFunctionName(Types.LIST_OF_UNKNOWN, BuiltinNaming.OPERATION_NAME_DISTINCT); 
 	
 	
     private static final FunctionArgumentScheme SCH_LIST = 
