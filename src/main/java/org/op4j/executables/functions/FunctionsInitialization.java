@@ -31,9 +31,9 @@ import org.op4j.executables.functions.conversion.IntegerConverter;
 import org.op4j.executables.functions.conversion.LongConverter;
 import org.op4j.executables.functions.conversion.ShortConverter;
 import org.op4j.executables.functions.conversion.StringConverter;
-import org.op4j.executables.functions.util.ArrayDistinctFunction;
-import org.op4j.executables.functions.util.ListDistinctFunction;
-import org.op4j.executables.functions.util.ListModifyFunction;
+import org.op4j.executables.functions.structuremanagement.ArrayDistinctFunction;
+import org.op4j.executables.functions.structuremanagement.ListDistinctFunction;
+import org.op4j.executables.functions.structuremanagement.ListModifyFunction;
 
 /**
  * 

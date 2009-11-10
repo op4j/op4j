@@ -35,7 +35,7 @@ import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.util.ListFunc;
+import org.op4j.executables.functions.structuremanagement.ListFunc;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.impl.arrayoflist.Level0ArrayOfListOperator;
@@ -379,8 +379,6 @@ public final class Op {
         System.out.println(Op.onList(stringsList1).removeAllValuesNot("Hello").get());
         System.out.println(Op.onList(stringsList1).removeAllValuesNot((String)null).get());
         System.out.println(Op.onList(stringsList1).removeAll("#target eq 'Hello'").get());
-        System.out.println(Op.onList(stringsList1).removeAllNot("#target eq 'Hello'").get());
-        System.out.println(Op.onList(stringsList1).removeValue(null).removeAllNot("length() > #param[0]", 5).get());
         System.out.println(Op.onList(stringsList1).removeAll(new ISelect<String>() {
 
 			public boolean eval(String target) {
@@ -388,6 +386,9 @@ public final class Op {
 			}
         	
         }).get());
+        System.out.println(Op.onList(stringsList1).removeAllNull().get());
+        System.out.println(Op.onList(stringsList1).removeAllNotNullAnd("length() > 5").get());
+        System.out.println(Op.onList(stringsList1).removeAllNullOr("length() > 5").get());
             
     }
     
