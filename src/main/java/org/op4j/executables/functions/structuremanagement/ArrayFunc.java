@@ -36,7 +36,7 @@
  * 
  * =============================================================================
  */
-package org.op4j.executables.functions.util;
+package org.op4j.executables.functions.structuremanagement;
 
 import java.util.List;
 

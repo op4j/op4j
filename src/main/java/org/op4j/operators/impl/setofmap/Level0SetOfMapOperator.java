@@ -171,14 +171,10 @@ public class Level0SetOfMapOperator<K,V> extends Operator
     
 
 
-    public ILevel1SetOfMapElementsOperator<K, V> forEachNot(final String expression, final Object... optionalExpParams) {
-        return new Level1SetOfMapElementsOperator<K, V>(getTarget().iterateNot(expression, optionalExpParams));
-    }
 
 
-    public ILevel1SetOfMapElementsOperator<K, V> forEachNot(final ISelect<Map<K, V>> selector) {
-        return new Level1SetOfMapElementsOperator<K, V>(getTarget().iterateNot(selector));
-    }
+
+
 
 
     public ILevel1SetOfMapElementsOperator<K, V> forEachNotNull() {
@@ -191,9 +187,7 @@ public class Level0SetOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel1SetOfMapElementsOperator<K, V> forEachNotNullAndNot(final String expression, final Object... optionalExpParams) {
-        return new Level1SetOfMapElementsOperator<K, V>(getTarget().iterateNotNullAndNot(expression, optionalExpParams));
-    }
+
 
 
     public ILevel1SetOfMapElementsOperator<K, V> forEachNull() {
@@ -206,9 +200,7 @@ public class Level0SetOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel1SetOfMapElementsOperator<K, V> forEachNullOrNot(final String expression, final Object... optionalExpParams) {
-        return new Level1SetOfMapElementsOperator<K, V>(getTarget().iterateNullOrNot(expression, optionalExpParams));
-    }
+
 
 
     public <X, Y> ILevel0SetOfMapOperator<X, Y> of(Of<X> ofX, Of<Y> ofY) {
@@ -279,42 +271,29 @@ public class Level0SetOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> removeAllNot(String expression,
-            Object... optionalExpParams) {
+
+
+
+
+
+    public ILevel0SetOfMapOperator<K, V> removeAllNotNullAnd(String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> removeAllNot(ISelect<Map<K, V>> selector) {
+
+    public ILevel0SetOfMapOperator<K, V> removeAllNull() {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0SetOfMapOperator<K, V> removeAllNotNullsAnd(String expression, Object... optionalExpParams) {
+    public ILevel0SetOfMapOperator<K, V> removeAllNullOr(String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0SetOfMapOperator<K, V> removeAllNotNullsAndNot(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
-    public ILevel0SetOfMapOperator<K, V> removeAllNulls() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0SetOfMapOperator<K, V> removeAllNullsOr(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0SetOfMapOperator<K, V> removeAllNullsOrNot(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
 
     public ILevel0SetOfMapOperator<K, V> sort() {

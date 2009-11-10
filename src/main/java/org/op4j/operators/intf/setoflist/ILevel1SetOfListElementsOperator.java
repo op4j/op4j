@@ -92,13 +92,9 @@ public interface ILevel1SetOfListElementsOperator<T>
     public ILevel1SetOfListElementsOperator<T> removeAll(final ISelect<T> selector);
     public ILevel1SetOfListElementsOperator<T> removeAllNot(final int... positions);
     public ILevel1SetOfListElementsOperator<T> removeAllValuesNot(final T... values);
-    public ILevel1SetOfListElementsOperator<T> removeAllNot(final String expression, final Object... optionalExpParams);
-    public ILevel1SetOfListElementsOperator<T> removeAllNot(final ISelect<T> selector);
-    public ILevel1SetOfListElementsOperator<T> removeAllNulls();
-    public ILevel1SetOfListElementsOperator<T> removeAllNullsOr(final String expression, final Object... optionalExpParams);
-    public ILevel1SetOfListElementsOperator<T> removeAllNullsOrNot(final String expression, final Object... optionalExpParams);
-    public ILevel1SetOfListElementsOperator<T> removeAllNotNullsAnd(final String expression, final Object... optionalExpParams);
-    public ILevel1SetOfListElementsOperator<T> removeAllNotNullsAndNot(final String expression, final Object... optionalExpParams);
+    public ILevel1SetOfListElementsOperator<T> removeAllNull();
+    public ILevel1SetOfListElementsOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams);
+    public ILevel1SetOfListElementsOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams);
     
     public <X> ILevel1SetOfArrayElementsOperator<X> toArray(final Of<X> of);
     public <X> ILevel1SetOfArrayElementsOperator<X> toArray(final Class<X> of);
@@ -126,13 +122,9 @@ public interface ILevel1SetOfListElementsOperator<T>
     public ILevel2SetOfListElementsElementsOperator<T> forEach(final ISelect<T> selector);
     public ILevel2SetOfListElementsElementsOperator<T> forEachNull();
     public ILevel2SetOfListElementsElementsOperator<T> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel2SetOfListElementsElementsOperator<T> forEachNullOrNot(final String expression, final Object... optionalExpParams);
     public ILevel2SetOfListElementsElementsOperator<T> forEachNot(final int... positions);
-    public ILevel2SetOfListElementsElementsOperator<T> forEachNot(final String expression, final Object... optionalExpParams);
-    public ILevel2SetOfListElementsElementsOperator<T> forEachNot(final ISelect<T> selector);
     public ILevel2SetOfListElementsElementsOperator<T> forEachNotNull();
     public ILevel2SetOfListElementsElementsOperator<T> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
-    public ILevel2SetOfListElementsElementsOperator<T> forEachNotNullAndNot(final String expression, final Object... optionalExpParams);
     
 
     

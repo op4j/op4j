@@ -26,7 +26,7 @@ import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.util.ArrayFunc;
+import org.op4j.executables.functions.structuremanagement.ArrayFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.array.ILevel1ArrayElementsOperator;
@@ -163,13 +163,9 @@ public class Level0ArrayOperator<T> extends Operator implements
         return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNot(positions));
     }
 
-    public ILevel1ArrayElementsOperator<T> forEachNot(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNot(expression, optionalExpParams));
-    }
 
-    public ILevel1ArrayElementsOperator<T> forEachNot(final ISelect<T> selector) {
-        return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNot(selector));
-    }
+
+
 
     public ILevel1ArrayElementsOperator<T> forEachNotNull() {
         return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNotNull());
@@ -179,9 +175,7 @@ public class Level0ArrayOperator<T> extends Operator implements
         return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNotNullAnd(expression, optionalExpParams));
     }
 
-    public ILevel1ArrayElementsOperator<T> forEachNotNullAndNot(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNotNullAndNot(expression, optionalExpParams));
-    }
+
 
     public ILevel1ArrayElementsOperator<T> forEachNull() {
         return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNull());
@@ -191,9 +185,7 @@ public class Level0ArrayOperator<T> extends Operator implements
         return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNullOr(expression, optionalExpParams));
     }
 
-    public ILevel1ArrayElementsOperator<T> forEachNullOrNot(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNullOrNot(expression, optionalExpParams));
-    }
+
 
     public <X> ILevel0ArrayOperator<X> of(Of<X> of) {
         // TODO Auto-generated method stub
@@ -251,41 +243,28 @@ public class Level0ArrayOperator<T> extends Operator implements
         return null;
     }
 
-    public ILevel0ArrayOperator<T> removeAllNot(String expression,
-            Object... optionalExpParams) {
+
+
+
+
+    public ILevel0ArrayOperator<T> removeAllNotNullAnd(String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0ArrayOperator<T> removeAllNot(ISelect<T> selector) {
+
+
+    public ILevel0ArrayOperator<T> removeAllNull() {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0ArrayOperator<T> removeAllNotNullsAnd(String expression, Object... optionalExpParams) {
+    public ILevel0ArrayOperator<T> removeAllNullOr(String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0ArrayOperator<T> removeAllNotNullsAndNot(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
-    public ILevel0ArrayOperator<T> removeAllNulls() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOperator<T> removeAllNullsOr(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOperator<T> removeAllNullsOrNot(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
     public ILevel0ArrayOperator<T> sort() {
         // TODO Auto-generated method stub

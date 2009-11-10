@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions.util;
+package org.op4j.executables.functions.structuremanagement;
 
 import org.javaruntype.type.Type;
 
@@ -29,21 +29,21 @@ import org.javaruntype.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class UtilNaming {
+final class StructureManagementNaming {
 
 	
 	static final String OPERATION_NAME_DISTINCT = "distinct"; 
     static final String OPERATION_NAME_MODIFY = "modify"; 
     
-    private static final String UTIL_FUNCTION_NAME_PREFIX = "op4j:util:";
+    private static final String STRUCTURE_MANAGEMENT_FUNCTION_NAME_PREFIX = "op4j:structuremanagement:";
 
     
-    static String getUtilName(final Type<?> targetType, final String operationName) {
-        return UTIL_FUNCTION_NAME_PREFIX + targetType.getName() + ":" + operationName;
+    static String getStructureManagementName(final Type<?> targetType, final String operationName) {
+        return STRUCTURE_MANAGEMENT_FUNCTION_NAME_PREFIX + targetType.getName() + ":" + operationName;
     }
     
     
-    private UtilNaming() {
+    private StructureManagementNaming() {
         super();
     }
     

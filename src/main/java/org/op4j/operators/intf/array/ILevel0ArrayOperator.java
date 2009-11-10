@@ -93,13 +93,9 @@ public interface ILevel0ArrayOperator<T>
     public ILevel0ArrayOperator<T> removeAll(final ISelect<T> selector);
     public ILevel0ArrayOperator<T> removeAllNot(final int... positions);
     public ILevel0ArrayOperator<T> removeAllValuesNot(final T... values);
-    public ILevel0ArrayOperator<T> removeAllNot(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOperator<T> removeAllNot(final ISelect<T> selector);
-    public ILevel0ArrayOperator<T> removeAllNulls();
-    public ILevel0ArrayOperator<T> removeAllNullsOr(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOperator<T> removeAllNullsOrNot(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOperator<T> removeAllNotNullsAnd(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOperator<T> removeAllNotNullsAndNot(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOperator<T> removeAllNull();
+    public ILevel0ArrayOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams);
     
     public ILevel0ListOperator<T> toList();
     
@@ -126,13 +122,9 @@ public interface ILevel0ArrayOperator<T>
     public ILevel1ArrayElementsOperator<T> forEach(final ISelect<T> selector);
     public ILevel1ArrayElementsOperator<T> forEachNull();
     public ILevel1ArrayElementsOperator<T> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel1ArrayElementsOperator<T> forEachNullOrNot(final String expression, final Object... optionalExpParams);
     public ILevel1ArrayElementsOperator<T> forEachNot(final int... positions);
-    public ILevel1ArrayElementsOperator<T> forEachNot(final String expression, final Object... optionalExpParams);
-    public ILevel1ArrayElementsOperator<T> forEachNot(final ISelect<T> selector);
     public ILevel1ArrayElementsOperator<T> forEachNotNull();
     public ILevel1ArrayElementsOperator<T> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
-    public ILevel1ArrayElementsOperator<T> forEachNotNullAndNot(final String expression, final Object... optionalExpParams);
     
 
 

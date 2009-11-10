@@ -190,14 +190,10 @@ public class Level0SetOfListOperator<T> extends Operator
     
 
 
-    public ILevel1SetOfListElementsOperator<T> forEachNot(final String expression, final Object... optionalExpParams) {
-        return new Level1SetOfListElementsOperator<T>(getTarget().iterateNot(expression, optionalExpParams));
-    }
 
 
-    public ILevel1SetOfListElementsOperator<T> forEachNot(final ISelect<List<T>> selector) {
-        return new Level1SetOfListElementsOperator<T>(getTarget().iterateNot(selector));
-    }
+
+
 
 
     public ILevel1SetOfListElementsOperator<T> forEachNotNull() {
@@ -210,9 +206,7 @@ public class Level0SetOfListOperator<T> extends Operator
     }
 
 
-    public ILevel1SetOfListElementsOperator<T> forEachNotNullAndNot(final String expression, final Object... optionalExpParams) {
-        return new Level1SetOfListElementsOperator<T>(getTarget().iterateNotNullAndNot(expression, optionalExpParams));
-    }
+
 
 
     public ILevel1SetOfListElementsOperator<T> forEachNull() {
@@ -225,9 +219,7 @@ public class Level0SetOfListOperator<T> extends Operator
     }
 
 
-    public ILevel1SetOfListElementsOperator<T> forEachNullOrNot(final String expression, final Object... optionalExpParams) {
-        return new Level1SetOfListElementsOperator<T>(getTarget().iterateNullOrNot(expression, optionalExpParams));
-    }
+
 
 
     public <X> ILevel0SetOfListOperator<X> of(Of<X> of) {
@@ -297,42 +289,29 @@ public class Level0SetOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0SetOfListOperator<T> removeAllNot(String expression,
-            Object... optionalExpParams) {
+
+
+
+
+
+    public ILevel0SetOfListOperator<T> removeAllNotNullAnd(String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0SetOfListOperator<T> removeAllNot(ISelect<List<T>> selector) {
+
+    public ILevel0SetOfListOperator<T> removeAllNull() {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0SetOfListOperator<T> removeAllNotNullsAnd(String expression, Object... optionalExpParams) {
+    public ILevel0SetOfListOperator<T> removeAllNullOr(String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0SetOfListOperator<T> removeAllNotNullsAndNot(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
-    public ILevel0SetOfListOperator<T> removeAllNulls() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0SetOfListOperator<T> removeAllNullsOr(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0SetOfListOperator<T> removeAllNullsOrNot(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
 
     public ILevel0SetOfListOperator<T> sort() {

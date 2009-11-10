@@ -43,7 +43,5 @@ public interface INavigableMapOperator<K,V>  {
     public INavigatingMapOperator<K,V> forEachEntry(final String expression, final Object... optionalExpParams);
     public INavigatingMapOperator<K,V> forEachEntry(final ISelect<Map.Entry<K,V>> selector);
     public INavigatingMapOperator<K,V> forEachEntryWithKeysNot(final K... keys);
-    public INavigatingMapOperator<K,V> forEachEntryNot(final String expression, final Object... optionalExpParams);
-    public INavigatingMapOperator<K,V> forEachEntryNot(final ISelect<Map.Entry<K,V>> selector);
    
 }

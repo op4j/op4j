@@ -28,7 +28,7 @@ import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.util.ArrayFunc;
+import org.op4j.executables.functions.structuremanagement.ArrayFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
@@ -190,14 +190,10 @@ public class Level0ArrayOfListOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfListElementsOperator<T> forEachNot(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayOfListElementsOperator<T>(getTarget().iterateNot(expression, optionalExpParams));
-    }
 
 
-    public ILevel1ArrayOfListElementsOperator<T> forEachNot(final ISelect<List<T>> selector) {
-        return new Level1ArrayOfListElementsOperator<T>(getTarget().iterateNot(selector));
-    }
+
+
 
 
     public ILevel1ArrayOfListElementsOperator<T> forEachNotNull() {
@@ -210,9 +206,7 @@ public class Level0ArrayOfListOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfListElementsOperator<T> forEachNotNullAndNot(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayOfListElementsOperator<T>(getTarget().iterateNotNullAndNot(expression, optionalExpParams));
-    }
+
 
 
     public ILevel1ArrayOfListElementsOperator<T> forEachNull() {
@@ -225,9 +219,7 @@ public class Level0ArrayOfListOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfListElementsOperator<T> forEachNullOrNot(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayOfListElementsOperator<T>(getTarget().iterateNullOrNot(expression, optionalExpParams));
-    }
+
 
 
     public <X> ILevel0ArrayOfListOperator<X> of(Of<X> of) {
@@ -297,42 +289,29 @@ public class Level0ArrayOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0ArrayOfListOperator<T> removeAllNot(String expression,
-            Object... optionalExpParams) {
+
+
+
+
+
+    public ILevel0ArrayOfListOperator<T> removeAllNotNullAnd(String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfListOperator<T> removeAllNot(ISelect<List<T>> selector) {
+
+    public ILevel0ArrayOfListOperator<T> removeAllNull() {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0ArrayOfListOperator<T> removeAllNotNullsAnd(String expression, Object... optionalExpParams) {
+    public ILevel0ArrayOfListOperator<T> removeAllNullOr(String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0ArrayOfListOperator<T> removeAllNotNullsAndNot(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
-    public ILevel0ArrayOfListOperator<T> removeAllNulls() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOfListOperator<T> removeAllNullsOr(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOfListOperator<T> removeAllNullsOrNot(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
 
     public ILevel0ArrayOfListOperator<T> sort() {

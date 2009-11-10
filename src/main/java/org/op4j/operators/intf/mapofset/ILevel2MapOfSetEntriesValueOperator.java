@@ -88,13 +88,9 @@ public interface ILevel2MapOfSetEntriesValueOperator<K,V>
     public ILevel2MapOfSetEntriesValueOperator<K,V> removeAll(final ISelect<V> selector);
     public ILevel2MapOfSetEntriesValueOperator<K,V> removeAllNot(final int... positions);
     public ILevel2MapOfSetEntriesValueOperator<K,V> removeAllValuesNot(final V... values);
-    public ILevel2MapOfSetEntriesValueOperator<K,V> removeAllNot(final String expression, final Object... optionalExpParams);
-    public ILevel2MapOfSetEntriesValueOperator<K,V> removeAllNot(final ISelect<V> selector);
-    public ILevel2MapOfSetEntriesValueOperator<K,V> removeAllNulls();
-    public ILevel2MapOfSetEntriesValueOperator<K,V> removeAllNullsOr(final String expression, final Object... optionalExpParams);
-    public ILevel2MapOfSetEntriesValueOperator<K,V> removeAllNullsOrNot(final String expression, final Object... optionalExpParams);
-    public ILevel2MapOfSetEntriesValueOperator<K,V> removeAllNotNullsAnd(final String expression, final Object... optionalExpParams);
-    public ILevel2MapOfSetEntriesValueOperator<K,V> removeAllNotNullsAndNot(final String expression, final Object... optionalExpParams);
+    public ILevel2MapOfSetEntriesValueOperator<K,V> removeAllNull();
+    public ILevel2MapOfSetEntriesValueOperator<K,V> removeAllNullOr(final String expression, final Object... optionalExpParams);
+    public ILevel2MapOfSetEntriesValueOperator<K,V> removeAllNotNullAnd(final String expression, final Object... optionalExpParams);
     
     public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> toArray(final Of<X> of);
     public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> toArray(final Class<X> of);
@@ -122,13 +118,9 @@ public interface ILevel2MapOfSetEntriesValueOperator<K,V>
     public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEach(final ISelect<V> selector);
     public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNull();
     public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNullOrNot(final String expression, final Object... optionalExpParams);
     public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNot(final int... positions);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNot(final String expression, final Object... optionalExpParams);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNot(final ISelect<V> selector);
     public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNotNull();
     public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNotNullAndNot(final String expression, final Object... optionalExpParams);
     
     
 

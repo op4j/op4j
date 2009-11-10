@@ -130,8 +130,6 @@ public interface ILevel0GenericMultiOperator<T>
     public ILevel0GenericMultiOperator<T> removeAll(final ISelect<T> selector);
     public ILevel0GenericMultiOperator<T> removeAllNot(final int... positions);
     public ILevel0GenericMultiOperator<T> removeAllValuesNot(final T... values);
-    public ILevel0GenericMultiOperator<T> removeAllNot(final String expression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<T> removeAllNot(final ISelect<T> selector);
     
     
     public ILevel0ListOperator<T> buildList();

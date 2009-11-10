@@ -36,7 +36,7 @@
  * 
  * =============================================================================
  */
-package org.op4j.executables.functions.util;
+package org.op4j.executables.functions.structuremanagement;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,7 +51,6 @@ import org.op4j.executables.functions.Function;
 import org.op4j.executables.functions.FunctionArguments;
 import org.op4j.executables.functions.Functions;
 import org.op4j.executables.functions.IFunc;
-import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -151,35 +150,20 @@ public class ListFunc<X,T> implements IFunc<X,List<T>>  {
 
 
     @SuppressWarnings("unchecked")
-    public static <T> ListFunc<List<T>,T> removeAllNot(final String expression, final Object... optionalExpParams) {
-        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {expression, VarArgsUtil.asOptionalObjectList(optionalExpParams), "REMOVE_NOT"})); 
+    public static <T> ListFunc<List<T>,T> removeAllNull() {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {"REMOVE_NULL"})); 
     }
-
-
+    
+    
     @SuppressWarnings("unchecked")
-    public static <T> ListFunc<List<T>,T> removeAllNot(final ISelect<T> selector) {
-        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {selector, "REMOVE_NOT"})); 
-    }
-
-
-    public ILevel0ListOperator<T> removeAllNulls() {
-    }
-    
-    
-    public ILevel0ListOperator<T> removeAllNotNullsAnd(String expression, Object... optionalExpParams) {
+    public static <T> ListFunc<List<T>,T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {expression, VarArgsUtil.asOptionalObjectList(optionalExpParams), "REMOVE_NOT_NULL_AND"})); 
     }
 
     
-    public ILevel0ListOperator<T> removeAllNotNullsAndNot(String expression, Object... optionalExpParams) {
-    }
-
-    
-    public ILevel0ListOperator<T> removeAllNullsOr(String expression, Object... optionalExpParams) {
-    }
-
-    
-    public ILevel0ListOperator<T> removeAllNullsOrNot(String expression, Object... optionalExpParams) {
-        
+    @SuppressWarnings("unchecked")
+    public static <T> ListFunc<List<T>,T> removeAllNullOr(final String expression, final Object... optionalExpParams) {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {expression, VarArgsUtil.asOptionalObjectList(optionalExpParams), "REMOVE_NULL_OR"})); 
     }
     
     

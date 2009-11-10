@@ -47,8 +47,6 @@ public interface IModifiableOperator<T> {
     public IModifiableOperator<T> removeAll(final ISelect<T> filter);
     public IModifiableOperator<T> removeAllNot(final int... positions);
     public IModifiableOperator<T> removeAllValuesNot(final T... values);
-    public IModifiableOperator<T> removeAllNot(final String expression, final Object... optionalExpParams);
-    public IModifiableOperator<T> removeAllNot(final ISelect<T> filter);
     
     
 }

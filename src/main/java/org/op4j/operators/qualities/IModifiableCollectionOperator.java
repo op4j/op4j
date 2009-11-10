@@ -47,12 +47,8 @@ public interface IModifiableCollectionOperator<T> {
     public IModifiableCollectionOperator<T> removeAll(final ISelect<T> selector);
     public IModifiableCollectionOperator<T> removeAllNot(final int... positions);
     public IModifiableCollectionOperator<T> removeAllValuesNot(final T... values);
-    public IModifiableCollectionOperator<T> removeAllNot(final String expression, final Object... optionalExpParams);
-    public IModifiableCollectionOperator<T> removeAllNot(final ISelect<T> selector);
-    public IModifiableCollectionOperator<T> removeAllNulls();
-    public IModifiableCollectionOperator<T> removeAllNullsOr(final String expression, final Object... optionalExpParams);
-    public IModifiableCollectionOperator<T> removeAllNullsOrNot(final String expression, final Object... optionalExpParams);
-    public IModifiableCollectionOperator<T> removeAllNotNullsAnd(final String expression, final Object... optionalExpParams);
-    public IModifiableCollectionOperator<T> removeAllNotNullsAndNot(final String expression, final Object... optionalExpParams);
+    public IModifiableCollectionOperator<T> removeAllNull();
+    public IModifiableCollectionOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams);
+    public IModifiableCollectionOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams);
     
 }

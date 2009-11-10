@@ -28,7 +28,7 @@ import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.util.ListFunc;
+import org.op4j.executables.functions.structuremanagement.ListFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofarray.ILevel2MapOfArrayEntriesValueOperator;
 import org.op4j.operators.intf.mapoflist.ILevel1MapOfListEntriesOperator;
@@ -194,14 +194,10 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
     
 
 
-    public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachNot(final String expression, final Object... optionalExpParams) {
-        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNot(expression, optionalExpParams));
-    }
 
 
-    public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachNot(final ISelect<V> selector) {
-        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNot(selector));
-    }
+
+
 
 
     public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachNotNull() {
@@ -214,9 +210,7 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachNotNullAndNot(final String expression, final Object... optionalExpParams) {
-        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNotNullAndNot(expression, optionalExpParams));
-    }
+
 
 
     public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachNull() {
@@ -229,9 +223,7 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachNullOrNot(final String expression, final Object... optionalExpParams) {
-        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNullOrNot(expression, optionalExpParams));
-    }
+
 
 
     public <X> ILevel2MapOfListEntriesValueOperator<K, X> of(Of<X> of) {
@@ -304,42 +296,29 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNot(
-            String expression, Object... optionalExpParams) {
+
+
+
+
+
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNotNullAnd(String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNot(ISelect<V> selector) {
+
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNull() {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNotNullsAnd(String expression, Object... optionalExpParams) {
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNullOr(String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNotNullsAndNot(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNulls() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNullsOr(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNullsOrNot(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
 
     public ILevel2MapOfListEntriesValueOperator<K, V> sort() {

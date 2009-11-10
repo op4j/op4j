@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions.util;
+package org.op4j.executables.functions.structuremanagement;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,7 +43,7 @@ import org.op4j.util.OgnlExpressionUtil;
  */
 public class ListModifyFunction extends FunctionImplementation<List<?>, List<?>> {
 
-	public static final String NAME = UtilNaming.getUtilName(Types.LIST_OF_UNKNOWN, UtilNaming.OPERATION_NAME_MODIFY); 
+	public static final String NAME = StructureManagementNaming.getStructureManagementName(Types.LIST_OF_UNKNOWN, StructureManagementNaming.OPERATION_NAME_MODIFY); 
 	
 	
     private static final FunctionArgumentScheme SCH_LIST_ELEMENTS_ADD = 
@@ -82,47 +82,35 @@ public class ListModifyFunction extends FunctionImplementation<List<?>, List<?>>
             Types.LIST_OF_UNKNOWN,
             ISelect.class.getName() + " selector, 'REMOVE'");
     
-    private static final FunctionArgumentScheme SCH_LIST_ELEMENTS_REMOVE_BUT = 
+    private static final FunctionArgumentScheme SCH_LIST_ELEMENTS_REMOVE_NOT = 
         FunctionArgumentScheme.from(
             "It removes all but the passed elements from the target list.",
             Types.LIST_OF_UNKNOWN,
             "List<?> elements, 'REMOVE_NOT'");
     
-    private static final FunctionArgumentScheme SCH_LIST_POSITIONS_REMOVE_BUT = 
+    private static final FunctionArgumentScheme SCH_LIST_POSITIONS_REMOVE_NOT = 
         FunctionArgumentScheme.from(
             "It adds all but the passed elements to the target list in the specified position.",
             Types.LIST_OF_UNKNOWN,
             "Integer[] positions, 'REMOVE_NOT'");
     
-    private static final FunctionArgumentScheme SCH_LIST_EXPRESSION_REMOVE_BUT = 
-        FunctionArgumentScheme.from(
-            "It removes the elements not matching the specified expression from the target list.",
-            Types.LIST_OF_UNKNOWN,
-            "String expression, List<?> expParameters, 'REMOVE_NOT'");
-    
-    private static final FunctionArgumentScheme SCH_LIST_SELECTOR_REMOVE_BUT = 
-        FunctionArgumentScheme.from(
-            "It removes the elements not matching the specified selector from the target list.",
-            Types.LIST_OF_UNKNOWN,
-            ISelect.class.getName() + " selector, 'REMOVE_NOT'");
-    
     private static final FunctionArgumentScheme SCH_LIST_NULLS_REMOVE = 
         FunctionArgumentScheme.from(
             "It removes the elements not matching the specified selector from the target list.",
             Types.LIST_OF_UNKNOWN,
-            "'REMOVE_NULLS'");
+            "'REMOVE_NULL'");
     
     private static final FunctionArgumentScheme SCH_LIST_NULLS_OR_REMOVE = 
         FunctionArgumentScheme.from(
             "It removes the elements matching the specified expression from the target list.",
             Types.LIST_OF_UNKNOWN,
-            "String expression, List<?> expParameters, 'REMOVE_NULLS_OR'");
+            "String expression, List<?> expParameters, 'REMOVE_NULL_OR'");
     
-    private static final FunctionArgumentScheme SCH_LIST_NULLS_OR_NOT_REMOVE = 
+    private static final FunctionArgumentScheme SCH_LIST_NOT_NULLS_AND_REMOVE = 
         FunctionArgumentScheme.from(
             "It removes the elements matching the specified expression from the target list.",
             Types.LIST_OF_UNKNOWN,
-            "String expression, List<?> expParameters, 'REMOVE_NULLS_OR_NOT'");
+            "String expression, List<?> expParameters, 'REMOVE_NOT_NULL_AND'");
 
     
     
@@ -146,10 +134,11 @@ public class ListModifyFunction extends FunctionImplementation<List<?>, List<?>>
         matched.add(SCH_LIST_POSITIONS_REMOVE);
         matched.add(SCH_LIST_EXPRESSION_REMOVE);
         matched.add(SCH_LIST_SELECTOR_REMOVE);
-        matched.add(SCH_LIST_ELEMENTS_REMOVE_BUT);
-        matched.add(SCH_LIST_POSITIONS_REMOVE_BUT);
-        matched.add(SCH_LIST_EXPRESSION_REMOVE_BUT);
-        matched.add(SCH_LIST_SELECTOR_REMOVE_BUT);
+        matched.add(SCH_LIST_ELEMENTS_REMOVE_NOT);
+        matched.add(SCH_LIST_POSITIONS_REMOVE_NOT);
+        matched.add(SCH_LIST_NULLS_REMOVE);
+        matched.add(SCH_LIST_NULLS_OR_REMOVE);
+        matched.add(SCH_LIST_NOT_NULLS_AND_REMOVE);
         return matched;
 	}
 
@@ -160,12 +149,16 @@ public class ListModifyFunction extends FunctionImplementation<List<?>, List<?>>
 		return Types.LIST_OF_UNKNOWN;
 	}
 
+	
 	@Override
 	protected Type<List<?>> registerTargetType() {
 		return Types.LIST_OF_UNKNOWN;
 	}
 
-	@Override
+	
+	
+    @Override
+    @SuppressWarnings("unchecked")
 	public List<?> execute(FunctionArguments arguments) throws Exception {
 		
 		if (arguments.isTargetNull()) {
@@ -217,7 +210,7 @@ public class ListModifyFunction extends FunctionImplementation<List<?>, List<?>>
             final List<Object> newList = new ArrayList<Object>();
             for (int i = 0, n = list.size(); i < n; i++) {
             	final Object element = list.get(i);
-            	if (!OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, parameters)) {
+            	if (!OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, parameters).booleanValue()) {
             		newList.add(element);
             	}
             }
@@ -237,7 +230,7 @@ public class ListModifyFunction extends FunctionImplementation<List<?>, List<?>>
             return newList;
         }
         
-        if (SCH_LIST_ELEMENTS_REMOVE_BUT.matches(arguments)) {
+        if (SCH_LIST_ELEMENTS_REMOVE_NOT.matches(arguments)) {
             final List<?> list = (List<?>) arguments.getTarget();
             final List<?> elementsNotToBeRemoved = (List<?>) arguments.getParameter(0);
             final List<Object> newList = new ArrayList<Object>();
@@ -249,7 +242,7 @@ public class ListModifyFunction extends FunctionImplementation<List<?>, List<?>>
             return newList;
         }
         
-        if (SCH_LIST_POSITIONS_REMOVE_BUT.matches(arguments)) {
+        if (SCH_LIST_POSITIONS_REMOVE_NOT.matches(arguments)) {
             final List<?> list = (List<?>) arguments.getTarget();
             final List<Integer> positions = Arrays.asList((Integer[]) arguments.getParameter(0));
             final List<Object> newList = new ArrayList<Object>();
@@ -262,29 +255,48 @@ public class ListModifyFunction extends FunctionImplementation<List<?>, List<?>>
             return newList;
         }
         
-        if (SCH_LIST_EXPRESSION_REMOVE_BUT.matches(arguments)) {
+        if (SCH_LIST_NULLS_REMOVE.matches(arguments)) {
             final List<?> list = (List<?>) arguments.getTarget();
-            final String expression = arguments.getStringParameter(0);
-            final List<?> parameters = (List<?>) arguments.getParameter(1);
             final List<Object> newList = new ArrayList<Object>();
             for (int i = 0, n = list.size(); i < n; i++) {
             	final Object element = list.get(i);
-            	if (OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, parameters)) {
+            	if (element != null) {
             		newList.add(element);
             	}
             }
             return newList;
         }
         
-        if (SCH_LIST_SELECTOR_REMOVE_BUT.matches(arguments)) {
+        if (SCH_LIST_NULLS_OR_REMOVE.matches(arguments)) {
             final List<?> list = (List<?>) arguments.getTarget();
-            final ISelect<Object> selector = (ISelect<Object>) arguments.getParameter(0);
+            final String expression = arguments.getStringParameter(0);
+            final List<?> parameters = (List<?>) arguments.getParameter(1);
             final List<Object> newList = new ArrayList<Object>();
             for (int i = 0, n = list.size(); i < n; i++) {
-            	final Object element = list.get(i);
-            	if (selector.eval(element)) {
-            		newList.add(element);
-            	}
+                final Object element = list.get(i);
+                if (element != null) {
+                    if (!OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, parameters).booleanValue()) {
+                        newList.add(element);
+                    }
+                }
+            }
+            return newList;
+        }
+        
+        if (SCH_LIST_NOT_NULLS_AND_REMOVE.matches(arguments)) {
+            final List<?> list = (List<?>) arguments.getTarget();
+            final String expression = arguments.getStringParameter(0);
+            final List<?> parameters = (List<?>) arguments.getParameter(1);
+            final List<Object> newList = new ArrayList<Object>();
+            for (int i = 0, n = list.size(); i < n; i++) {
+                final Object element = list.get(i);
+                if (element != null) {
+                    if (!OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, parameters).booleanValue()) {
+                        newList.add(element);
+                    }
+                } else {
+                    newList.add(element);
+                }
             }
             return newList;
         }

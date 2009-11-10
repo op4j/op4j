@@ -83,8 +83,6 @@ public interface ILevel0MapOfSetOperator<K,V>
     public ILevel0MapOfSetOperator<K,V> removeAll(final String expression, final Object... optionalExpParams);
     public ILevel0MapOfSetOperator<K,V> removeAll(final ISelect<Map.Entry<K,Set<V>>> selector);
     public ILevel0MapOfSetOperator<K,V> removeAllWithKeysNot(final K... keys);
-    public ILevel0MapOfSetOperator<K,V> removeAllNot(final String expression, final Object... optionalExpParams);
-    public ILevel0MapOfSetOperator<K,V> removeAllNot(final ISelect<Map.Entry<K,Set<V>>> selector);
     
     public <X> ILevel0MapOfArrayOperator<K,X> toMapOfArray(final Of<X> of);
     public <X> ILevel0MapOfArrayOperator<K,X> toMapOfArray(final Class<X> ofClass);
@@ -111,8 +109,6 @@ public interface ILevel0MapOfSetOperator<K,V>
     public ILevel1MapOfSetEntriesOperator<K,V> forEachEntry(final String expression, final Object... optionalExpParams);
     public ILevel1MapOfSetEntriesOperator<K,V> forEachEntry(final ISelect<Map.Entry<K,Set<V>>> selector);
     public ILevel1MapOfSetEntriesOperator<K,V> forEachEntryWithKeysNot(final K... keys);
-    public ILevel1MapOfSetEntriesOperator<K,V> forEachEntryNot(final String expression, final Object... optionalExpParams);
-    public ILevel1MapOfSetEntriesOperator<K,V> forEachEntryNot(final ISelect<Map.Entry<K,Set<V>>> selector);
     
 
 

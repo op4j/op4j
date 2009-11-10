@@ -43,7 +43,5 @@ public interface IModifiableMapOperator<K,V> {
     public IModifiableMapOperator<K,V> removeAll(final String expression, final Object... optionalExpParams);
     public IModifiableMapOperator<K,V> removeAll(final ISelect<Map.Entry<K,V>> selector);
     public IModifiableMapOperator<K,V> removeAllWithKeysNot(final K... keys);
-    public IModifiableMapOperator<K,V> removeAllNot(final String expression, final Object... optionalExpParams);
-    public IModifiableMapOperator<K,V> removeAllNot(final ISelect<Map.Entry<K,V>> selector);
     
 }

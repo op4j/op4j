@@ -108,11 +108,6 @@ public abstract class Target {
     public Target iterateNullOr(final String expression, final Object... optionalExpParams) {
         return doIterateNullOr(true, expression, VarArgsUtil.asOptionalObjectList(optionalExpParams));
     }
-
-    
-    public Target iterateNullOrNot(final String expression, final Object... optionalExpParams) {
-        return doIterateNullOr(false, expression, VarArgsUtil.asOptionalObjectList(optionalExpParams));
-    }
     
     
     public Target iterateNot(final int[] positions) {
@@ -125,16 +120,6 @@ public abstract class Target {
     }
 
     
-    public Target iterateNot(final String expression, final Object... optionalExpParams) {
-        return doIterateExpression(false, expression, VarArgsUtil.asOptionalObjectList(optionalExpParams));
-    }
-
-    
-    public Target iterateNot(final ISelect<?> selector) {
-        return doIterateSelector(false, selector);
-    }
-
-    
     public Target iterateNotNull() {
         return doIterateNull(false);
     }
@@ -142,11 +127,6 @@ public abstract class Target {
     
     public Target iterateNotNullAnd(final String expression, final Object... optionalExpParams) {
         return doIterateNotNullAnd(true, expression, VarArgsUtil.asOptionalObjectList(optionalExpParams));
-    }
-
-    
-    public Target iterateNotNullAndNot(final String expression, final Object... optionalExpParams) {
-        return doIterateNotNullAnd(false, expression, VarArgsUtil.asOptionalObjectList(optionalExpParams));
     }
     
 

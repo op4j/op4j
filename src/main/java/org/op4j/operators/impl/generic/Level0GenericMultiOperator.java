@@ -499,17 +499,10 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeAllNot(String expression,
-            Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
 
-    public ILevel0GenericMultiOperator<T> removeAllNot(ISelect<T> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+
+
 
 
     public ILevel0GenericUniqOperator<T> uniq() {

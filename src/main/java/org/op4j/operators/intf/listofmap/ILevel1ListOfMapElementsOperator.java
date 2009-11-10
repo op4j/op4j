@@ -74,8 +74,6 @@ public interface ILevel1ListOfMapElementsOperator<K,V>
     public ILevel1ListOfMapElementsOperator<K,V> removeAll(final String expression, final Object... optionalExpParams);
     public ILevel1ListOfMapElementsOperator<K,V> removeAll(final ISelect<Map.Entry<K,V>> selector);
     public ILevel1ListOfMapElementsOperator<K,V> removeAllWithKeysNot(final K... keys);
-    public ILevel1ListOfMapElementsOperator<K,V> removeAllNot(final String expression, final Object... optionalExpParams);
-    public ILevel1ListOfMapElementsOperator<K,V> removeAllNot(final ISelect<Map.Entry<K,V>> selector);
     
     
     public ILevel1ListOfMapElementsOperator<K,V> extract(final K key);
@@ -94,8 +92,6 @@ public interface ILevel1ListOfMapElementsOperator<K,V>
     public ILevel2ListOfMapElementsEntriesOperator<K,V> forEachEntry(final String expression, final Object... optionalExpParams);
     public ILevel2ListOfMapElementsEntriesOperator<K,V> forEachEntry(final ISelect<Map.Entry<K,V>> selector);
     public ILevel2ListOfMapElementsEntriesOperator<K,V> forEachEntryWithKeysNot(final K... keys);
-    public ILevel2ListOfMapElementsEntriesOperator<K,V> forEachEntryNot(final String expression, final Object... optionalExpParams);
-    public ILevel2ListOfMapElementsEntriesOperator<K,V> forEachEntryNot(final ISelect<Map.Entry<K,V>> selector);
     
                                     
 }

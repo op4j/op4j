@@ -140,14 +140,10 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
     }
 
 
-    public ILevel3MapOfMapEntriesValueEntriesOperator<K1, K2, V> forEachEntryNot(final String expression, final Object... optionalExpParams) {
-        return new Level3MapOfMapEntriesValueEntriesOperator<K1, K2, V>(getTarget().iterateNot(expression, optionalExpParams));
-    }
 
 
-    public ILevel3MapOfMapEntriesValueEntriesOperator<K1, K2, V> forEachEntryNot(final ISelect<Entry<K2, V>> selector) {
-        return new Level3MapOfMapEntriesValueEntriesOperator<K1, K2, V>(getTarget().iterateNot(selector));
-    }
+
+
 
 
     public <X, Y> ILevel2MapOfMapEntriesValueOperator<K1, X, Y> of(Of<X> ofX,
@@ -228,18 +224,10 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAllNot(
-            String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAllNot(
-            ISelect<Entry<K2, V>> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+
+
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> sort() {

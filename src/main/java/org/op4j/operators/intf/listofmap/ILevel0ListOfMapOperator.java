@@ -79,13 +79,9 @@ public interface ILevel0ListOfMapOperator<K,V>
     public ILevel0ListOfMapOperator<K,V> removeAll(final ISelect<Map<K,V>> selector);
     public ILevel0ListOfMapOperator<K,V> removeAllNot(final int... positions);
     public ILevel0ListOfMapOperator<K,V> removeAllValuesNot(final Map<K,V>... values);
-    public ILevel0ListOfMapOperator<K,V> removeAllNot(final String expression, final Object... optionalExpParams);
-    public ILevel0ListOfMapOperator<K,V> removeAllNot(final ISelect<Map<K,V>> selector);
-    public ILevel0ListOfMapOperator<K,V> removeAllNulls();
-    public ILevel0ListOfMapOperator<K,V> removeAllNullsOr(final String expression, final Object... optionalExpParams);
-    public ILevel0ListOfMapOperator<K,V> removeAllNullsOrNot(final String expression, final Object... optionalExpParams);
-    public ILevel0ListOfMapOperator<K,V> removeAllNotNullsAnd(final String expression, final Object... optionalExpParams);
-    public ILevel0ListOfMapOperator<K,V> removeAllNotNullsAndNot(final String expression, final Object... optionalExpParams);
+    public ILevel0ListOfMapOperator<K,V> removeAllNull();
+    public ILevel0ListOfMapOperator<K,V> removeAllNullOr(final String expression, final Object... optionalExpParams);
+    public ILevel0ListOfMapOperator<K,V> removeAllNotNullAnd(final String expression, final Object... optionalExpParams);
     
     
     public ILevel0ListOfMapOperator<K,V> extract(final int position);
@@ -105,13 +101,9 @@ public interface ILevel0ListOfMapOperator<K,V>
     public ILevel1ListOfMapElementsOperator<K,V> forEach(final ISelect<Map<K,V>> selector);
     public ILevel1ListOfMapElementsOperator<K,V> forEachNull();
     public ILevel1ListOfMapElementsOperator<K,V> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel1ListOfMapElementsOperator<K,V> forEachNullOrNot(final String expression, final Object... optionalExpParams);
     public ILevel1ListOfMapElementsOperator<K,V> forEachNot(final int... positions);
-    public ILevel1ListOfMapElementsOperator<K,V> forEachNot(final String expression, final Object... optionalExpParams);
-    public ILevel1ListOfMapElementsOperator<K,V> forEachNot(final ISelect<Map<K,V>> selector);
     public ILevel1ListOfMapElementsOperator<K,V> forEachNotNull();
     public ILevel1ListOfMapElementsOperator<K,V> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
-    public ILevel1ListOfMapElementsOperator<K,V> forEachNotNullAndNot(final String expression, final Object... optionalExpParams);
     
     
 }

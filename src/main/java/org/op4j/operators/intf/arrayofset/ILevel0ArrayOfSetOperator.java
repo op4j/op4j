@@ -118,13 +118,9 @@ public interface ILevel0ArrayOfSetOperator<T>
     public ILevel0ArrayOfSetOperator<T> removeAll(final ISelect<Set<T>> selector);
     public ILevel0ArrayOfSetOperator<T> removeAllNot(final int... positions);
     public ILevel0ArrayOfSetOperator<T> removeAllValuesNot(final Set<T>... values);
-    public ILevel0ArrayOfSetOperator<T> removeAllNot(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOfSetOperator<T> removeAllNot(final ISelect<Set<T>> selector);
-    public ILevel0ArrayOfSetOperator<T> removeAllNulls();
-    public ILevel0ArrayOfSetOperator<T> removeAllNullsOr(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOfSetOperator<T> removeAllNullsOrNot(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOfSetOperator<T> removeAllNotNullsAnd(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOfSetOperator<T> removeAllNotNullsAndNot(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOfSetOperator<T> removeAllNull();
+    public ILevel0ArrayOfSetOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOfSetOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams);
     
     public <X> ILevel0ArrayOfArrayOperator<X> toArrayOfArray(final Of<X> of);
     public <X> ILevel0ArrayOfArrayOperator<X> toArrayOfArray(final Class<X> arrayOfClass);
@@ -172,13 +168,9 @@ public interface ILevel0ArrayOfSetOperator<T>
     public ILevel1ArrayOfSetElementsOperator<T> forEach(final ISelect<Set<T>> selector);
     public ILevel1ArrayOfSetElementsOperator<T> forEachNull();
     public ILevel1ArrayOfSetElementsOperator<T> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel1ArrayOfSetElementsOperator<T> forEachNullOrNot(final String expression, final Object... optionalExpParams);
     public ILevel1ArrayOfSetElementsOperator<T> forEachNot(final int... positions);
-    public ILevel1ArrayOfSetElementsOperator<T> forEachNot(final String expression, final Object... optionalExpParams);
-    public ILevel1ArrayOfSetElementsOperator<T> forEachNot(final ISelect<Set<T>> selector);
     public ILevel1ArrayOfSetElementsOperator<T> forEachNotNull();
     public ILevel1ArrayOfSetElementsOperator<T> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
-    public ILevel1ArrayOfSetElementsOperator<T> forEachNotNullAndNot(final String expression, final Object... optionalExpParams);
     
 
 

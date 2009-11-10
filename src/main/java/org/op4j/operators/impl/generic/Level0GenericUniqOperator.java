@@ -770,17 +770,10 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeAllNot(String expression,
-            Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
 
-    public ILevel0GenericMultiOperator<T> removeAllNot(ISelect<T> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+
+
 
 
     @SuppressWarnings("unchecked")
