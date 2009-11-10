@@ -55,27 +55,23 @@ public class Level0ListOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOperator<T> add(T newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOperator<T> add(final T newElement) {
+        return new Level0ListOperator<T>(getTarget().execute(ListFunc.add(newElement)));
     }
 
 
-    public ILevel0ListOperator<T> add(int position, T newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOperator<T> add(final int position, final T newElement) {
+        return new Level0ListOperator<T>(getTarget().execute(ListFunc.add(position, newElement)));
     }
 
 
-    public ILevel0ListOperator<T> addAll(T... newElements) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOperator<T> addAll(final T... newElements) {
+        return new Level0ListOperator<T>(getTarget().execute(ListFunc.addAll(newElements)));
     }
 
 
-    public ILevel0ListOperator<T> addAll(Collection<T> collection) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOperator<T> addAll(final Collection<T> collection) {
+        return new Level0ListOperator<T>(getTarget().execute(ListFunc.addAll(collection)));
     }
 
 

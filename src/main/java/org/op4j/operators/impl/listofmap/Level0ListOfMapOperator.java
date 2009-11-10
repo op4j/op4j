@@ -26,6 +26,7 @@ import java.util.Map;
 
 import org.op4j.Of;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.util.ListFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.listofmap.ILevel0ListOfMapOperator;
@@ -49,34 +50,28 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> add(Map<K, V> newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfMapOperator<K, V> add(final Map<K, V> newElement) {
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.add(newElement)));
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> add(int position, Map<K, V> newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfMapOperator<K, V> add(final int position, final Map<K, V> newElement) {
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.add(position, newElement)));
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> addAll(Map<K, V>... newElements) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfMapOperator<K, V> addAll(final Map<K, V>... newElements) {
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.addAll(newElements)));
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> addAll(
-            Collection<Map<K, V>> collection) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfMapOperator<K, V> addAll(final Collection<Map<K, V>> collection) {
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.addAll(collection)));
     }
 
 
     public ILevel0ListOfMapOperator<K, V> distinct() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.distinct()));
     }
 
 

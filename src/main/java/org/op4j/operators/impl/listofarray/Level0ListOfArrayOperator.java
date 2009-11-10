@@ -27,6 +27,7 @@ import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.util.ListFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
@@ -65,33 +66,28 @@ public class Level0ListOfArrayOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfArrayOperator<T> add(T[] newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfArrayOperator<T> add(final T[] newElement) {
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(ListFunc.addAll(newElement)));
     }
 
 
-    public ILevel0ListOfArrayOperator<T> add(int position, T[] newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfArrayOperator<T> add(final int position, final T[] newElement) {
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(ListFunc.add(position, newElement)));
     }
 
 
-    public ILevel0ListOfArrayOperator<T> addAll(T[]... newElements) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfArrayOperator<T> addAll(final T[]... newElements) {
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(ListFunc.addAll(newElements)));
     }
 
 
-    public ILevel0ListOfArrayOperator<T> addAll(Collection<T[]> collection) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfArrayOperator<T> addAll(final Collection<T[]> collection) {
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(ListFunc.addAll(collection)));
     }
 
 
     public ILevel0ListOfArrayOperator<T> distinct() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(ListFunc.distinct()));
     }
 
 

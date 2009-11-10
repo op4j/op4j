@@ -58,7 +58,7 @@ public class ListDistinctFunction extends FunctionImplementation<List<?>, List<?
     
 	@Override
 	protected String registerFunctionName() {
-		return UtilNaming.getUtilName(Types.LIST_OF_UNKNOWN, UtilNaming.OPERATION_NAME_DISTINCT);
+		return NAME;
 	}
 
 	@Override

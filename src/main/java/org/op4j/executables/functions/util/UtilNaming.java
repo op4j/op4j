@@ -33,6 +33,7 @@ final class UtilNaming {
 
 	
 	static final String OPERATION_NAME_DISTINCT = "distinct"; 
+    static final String OPERATION_NAME_MODIFY = "modify"; 
     
     private static final String UTIL_FUNCTION_NAME_PREFIX = "op4j:util:";
 

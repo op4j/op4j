@@ -28,6 +28,7 @@ import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.util.ListFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
@@ -63,33 +64,28 @@ public class Level0ListOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfSetOperator<T> add(Set<T> newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfSetOperator<T> add(final Set<T> newElement) {
+        return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.addAll(newElement)));
     }
 
 
-    public ILevel0ListOfSetOperator<T> add(int position, Set<T> newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfSetOperator<T> add(final int position, final Set<T> newElement) {
+        return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.add(position, newElement)));
     }
 
 
-    public ILevel0ListOfSetOperator<T> addAll(Set<T>... newElements) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfSetOperator<T> addAll(final Set<T>... newElements) {
+        return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.addAll(newElements)));
     }
 
 
-    public ILevel0ListOfSetOperator<T> addAll(Collection<Set<T>> collection) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfSetOperator<T> addAll(final Collection<Set<T>> collection) {
+        return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.addAll(collection)));
     }
 
 
     public ILevel0ListOfSetOperator<T> distinct() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.distinct()));
     }
 
 

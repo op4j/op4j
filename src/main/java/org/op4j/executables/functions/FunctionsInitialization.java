@@ -33,6 +33,7 @@ import org.op4j.executables.functions.conversion.ShortConverter;
 import org.op4j.executables.functions.conversion.StringConverter;
 import org.op4j.executables.functions.util.ArrayDistinctFunction;
 import org.op4j.executables.functions.util.ListDistinctFunction;
+import org.op4j.executables.functions.util.ListModifyFunction;
 
 /**
  * 
@@ -62,7 +63,8 @@ final class FunctionsInitialization {
                 BooleanConverter.class,
                 CalendarConverter.class,
                 ListDistinctFunction.class,
-                ArrayDistinctFunction.class
+                ArrayDistinctFunction.class,
+                ListModifyFunction.class
             };
 
         for(int i = 0; i < implementationClasses.length; i++) {

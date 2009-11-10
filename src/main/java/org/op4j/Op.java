@@ -25,6 +25,7 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +34,7 @@ import java.util.Set;
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
 import org.op4j.executables.Eval;
+import org.op4j.executables.functions.util.ListFunc;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.impl.arrayoflist.Level0ArrayOfListOperator;
@@ -358,6 +360,12 @@ public final class Op {
         System.out.println(printArray(Op.onArrayOfArray(Of.STRING,arrayOfArrayOfString1).get()));
         System.out.println(printArray(Op.onArrayOfArray(Of.STRING,arrayOfArrayOfString1).distinct().get()));
         System.out.println(printArray(Op.onArrayOfArray(Of.STRING,arrayOfArrayOfString1).forEach().distinct().get()));
+     
+        System.out.println(Op.onList(stringsList1).add("World!").get());
+        System.out.println(Op.onList(stringsList1).add(1,"World!").get());
+        System.out.println(Op.onList(stringsList1).addAll("World!", "Mars!").get());
+        System.out.println(Op.onList(stringsList1).addAll(stringsList1).get());
+        System.out.println(Op.onListOfList(listOfListOfString1).add(Collections.singletonList("Uhey!")).distinct().get());
         
     }
     

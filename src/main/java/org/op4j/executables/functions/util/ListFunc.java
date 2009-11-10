@@ -38,6 +38,10 @@
  */
 package org.op4j.executables.functions.util;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.collections.ListUtils;
@@ -46,6 +50,7 @@ import org.op4j.executables.functions.Function;
 import org.op4j.executables.functions.FunctionArguments;
 import org.op4j.executables.functions.Functions;
 import org.op4j.executables.functions.IFunc;
+import org.op4j.util.VarArgsUtil;
 
 /**
  * 
@@ -62,9 +67,33 @@ public class ListFunc<X,T> implements IFunc<X,List<T>>  {
     
     
 	@SuppressWarnings("unchecked")
-	public static ListFunc<List<?>,?> distinct() {
-        return new ListFunc<List<?>,Object>((Function<List<?>, List<Object>>) Functions.getFunctionByName(ListDistinctFunction.NAME), ListUtils.EMPTY_LIST); 
+    public static <T> ListFunc<List<T>,T> distinct() {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListDistinctFunction.NAME), ListUtils.EMPTY_LIST); 
     }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> ListFunc<List<T>,T> add(final T newElement) {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {Collections.singletonList(newElement), "ADD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> ListFunc<List<T>,T> add(final int position, final T newElement) {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {Collections.singletonList(newElement), Integer.valueOf(position), "ADD"})); 
+    }
+    
+    @SuppressWarnings("unchecked")
+    public static <T> ListFunc<List<T>,T> addAll(final T... newElements) {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(newElements), "ADD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> ListFunc<List<T>,T> addAll(final Collection<T> collection) {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListModifyFunction.NAME), Arrays.asList(new Object[] {new ArrayList<Object>(collection), "ADD"})); 
+    }
+
     
     
     
