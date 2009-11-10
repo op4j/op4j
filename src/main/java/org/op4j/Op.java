@@ -35,7 +35,7 @@ import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.structuremanagement.ListFunc;
+import org.op4j.executables.functions.builtin.ListFunc;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.impl.arrayoflist.Level0ArrayOfListOperator;

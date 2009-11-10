@@ -20,6 +20,9 @@
 package org.op4j.executables.functions;
 
 import org.op4j.exceptions.FunctionImplementationRegistrationException;
+import org.op4j.executables.functions.builtin.ArrayDistinctFunction;
+import org.op4j.executables.functions.builtin.ListDistinctFunction;
+import org.op4j.executables.functions.builtin.ListModifyFunction;
 import org.op4j.executables.functions.conversion.BigDecimalConverter;
 import org.op4j.executables.functions.conversion.BigIntegerConverter;
 import org.op4j.executables.functions.conversion.BooleanConverter;
@@ -31,9 +34,6 @@ import org.op4j.executables.functions.conversion.IntegerConverter;
 import org.op4j.executables.functions.conversion.LongConverter;
 import org.op4j.executables.functions.conversion.ShortConverter;
 import org.op4j.executables.functions.conversion.StringConverter;
-import org.op4j.executables.functions.structuremanagement.ArrayDistinctFunction;
-import org.op4j.executables.functions.structuremanagement.ListDistinctFunction;
-import org.op4j.executables.functions.structuremanagement.ListModifyFunction;
 
 /**
  * 
