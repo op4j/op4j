@@ -244,78 +244,59 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> remove(int position) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfListEntriesValueOperator<K, V> remove(final int position) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.remove(position)));
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeValue(V value) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeValue(final V value) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeValue(value)));
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAll(
-            int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeAll(final int... positions) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeAll(positions)));
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllValues(V... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllValues(final V... values) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeAllValues(values)));
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAll(
-            String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeAll(final String expression, final Object... optionalExpParams) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAll(
-            ISelect<V> selector) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeAll(final ISelect<V> selector) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeAll(selector)));
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNot(
-            int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNot(final int... positions) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeAllNot(positions)));
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllValuesNot(V... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllValuesNot(final V... values) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeAllValuesNot(values)));
     }
 
+    
 
-
-
-
-
-
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNotNullAnd(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeAllNotNullAnd(expression, optionalExpParams)));
     }
-
 
 
     public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNull() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeAllNull()));
     }
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNullOr(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNullOr(final String expression, final Object... optionalExpParams) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeAllNullOr(expression, optionalExpParams)));
     }
 
 

@@ -239,75 +239,59 @@ public class Level0ListOfArrayOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfArrayOperator<T> remove(int position) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfArrayOperator<T> remove(final int position) {
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(ListFunc.remove(position)));
     }
 
 
-    public ILevel0ListOfArrayOperator<T> removeValue(T[] value) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfArrayOperator<T> removeValue(final T[] value) {
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(ListFunc.removeValue(value)));
     }
 
 
-    public ILevel0ListOfArrayOperator<T> removeAll(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfArrayOperator<T> removeAll(final int... positions) {
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(ListFunc.removeAll(positions)));
     }
 
 
-    public ILevel0ListOfArrayOperator<T> removeAllValues(T[]... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfArrayOperator<T> removeAllValues(final T[]... values) {
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(ListFunc.removeAllValues(values)));
     }
 
 
-    public ILevel0ListOfArrayOperator<T> removeAll(String expression,
-            Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfArrayOperator<T> removeAll(final String expression, final Object... optionalExpParams) {
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(ListFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel0ListOfArrayOperator<T> removeAll(ISelect<T[]> selector) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfArrayOperator<T> removeAll(final ISelect<T[]> selector) {
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(ListFunc.removeAll(selector)));
     }
 
 
-    public ILevel0ListOfArrayOperator<T> removeAllNot(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfArrayOperator<T> removeAllNot(final int... positions) {
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(ListFunc.removeAllNot(positions)));
     }
 
 
-    public ILevel0ListOfArrayOperator<T> removeAllValuesNot(T[]... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfArrayOperator<T> removeAllValuesNot(final T[]... values) {
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(ListFunc.removeAllValuesNot(values)));
     }
 
+    
 
-
-
-
-
-
-    public ILevel0ListOfArrayOperator<T> removeAllNotNullAnd(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfArrayOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(ListFunc.removeAllNotNullAnd(expression, optionalExpParams)));
     }
-
 
 
     public ILevel0ListOfArrayOperator<T> removeAllNull() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(ListFunc.removeAllNull()));
     }
 
-    public ILevel0ListOfArrayOperator<T> removeAllNullOr(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    
+    public ILevel0ListOfArrayOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams) {
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(ListFunc.removeAllNullOr(expression, optionalExpParams)));
     }
 
 

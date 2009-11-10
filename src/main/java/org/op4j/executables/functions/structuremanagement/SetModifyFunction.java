@@ -20,7 +20,9 @@
 
 package org.op4j.executables.functions.structuremanagement;
 
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
@@ -32,13 +34,13 @@ import org.javaruntype.type.Types;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class ListModifyFunction extends CollectionModifyFunction<List<?>, List<?>> {
+public final class SetModifyFunction extends CollectionModifyFunction<Set<?>, Set<?>> {
 
-	public static final String NAME = StructureManagementNaming.getStructureManagementName(Types.LIST_OF_UNKNOWN, StructureManagementNaming.OPERATION_NAME_MODIFY); 
+	public static final String NAME = StructureManagementNaming.getStructureManagementName(Types.SET_OF_UNKNOWN, StructureManagementNaming.OPERATION_NAME_MODIFY); 
 
     
     
-    public ListModifyFunction() {
+    public SetModifyFunction() {
     	super();
     }
 	
@@ -51,20 +53,20 @@ public final class ListModifyFunction extends CollectionModifyFunction<List<?>, 
 	
 	
 	@Override
-	protected Type<List<?>> registerResultType() {
-		return Types.LIST_OF_UNKNOWN;
+	protected Type<Set<?>> registerResultType() {
+		return Types.SET_OF_UNKNOWN;
 	}
 
 	
 	@Override
-	protected Type<List<?>> registerTargetType() {
-		return Types.LIST_OF_UNKNOWN;
+	protected Type<Set<?>> registerTargetType() {
+		return Types.SET_OF_UNKNOWN;
 	}
 
 	
     @Override
-    protected List<?> createResultObject(final List<?> newList) {
-        return newList;
+    protected Set<?> createResultObject(final List<?> newList) {
+        return new LinkedHashSet<Object>(newList);
     }
 	
 }

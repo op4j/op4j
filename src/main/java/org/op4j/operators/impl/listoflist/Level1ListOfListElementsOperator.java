@@ -234,75 +234,59 @@ public class Level1ListOfListElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ListOfListElementsOperator<T> remove(int position) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListOfListElementsOperator<T> remove(final int position) {
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(ListFunc.remove(position)));
     }
 
 
-    public ILevel1ListOfListElementsOperator<T> removeValue(T value) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListOfListElementsOperator<T> removeValue(final T value) {
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(ListFunc.removeValue(value)));
     }
 
 
-    public ILevel1ListOfListElementsOperator<T> removeAll(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListOfListElementsOperator<T> removeAll(final int... positions) {
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(ListFunc.removeAll(positions)));
     }
 
 
-    public ILevel1ListOfListElementsOperator<T> removeAllValues(T... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListOfListElementsOperator<T> removeAllValues(final T... values) {
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(ListFunc.removeAllValues(values)));
     }
 
 
-    public ILevel1ListOfListElementsOperator<T> removeAll(String expression,
-            Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListOfListElementsOperator<T> removeAll(final String expression, final Object... optionalExpParams) {
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(ListFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel1ListOfListElementsOperator<T> removeAll(ISelect<T> selector) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListOfListElementsOperator<T> removeAll(final ISelect<T> selector) {
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(ListFunc.removeAll(selector)));
     }
 
 
-    public ILevel1ListOfListElementsOperator<T> removeAllNot(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListOfListElementsOperator<T> removeAllNot(final int... positions) {
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(ListFunc.removeAllNot(positions)));
     }
 
 
-    public ILevel1ListOfListElementsOperator<T> removeAllValuesNot(T... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListOfListElementsOperator<T> removeAllValuesNot(final T... values) {
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(ListFunc.removeAllValuesNot(values)));
     }
 
+    
 
-
-
-
-
-
-    public ILevel1ListOfListElementsOperator<T> removeAllNotNullAnd(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListOfListElementsOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(ListFunc.removeAllNotNullAnd(expression, optionalExpParams)));
     }
-
 
 
     public ILevel1ListOfListElementsOperator<T> removeAllNull() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(ListFunc.removeAllNull()));
     }
 
-    public ILevel1ListOfListElementsOperator<T> removeAllNullOr(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    
+    public ILevel1ListOfListElementsOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams) {
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(ListFunc.removeAllNullOr(expression, optionalExpParams)));
     }
 
 

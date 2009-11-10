@@ -390,6 +390,7 @@ public final class Op {
         System.out.println(Op.onList(stringsList1).removeAllNotNullAnd("length() > 5").get());
         System.out.println(Op.onList(stringsList1).removeAllNullOr("length() > 5").get());
             
+        System.out.println(Op.onListOfList(listOfListOfString1).forEach(1).add("c").get());
     }
     
     
