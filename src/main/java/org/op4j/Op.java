@@ -36,6 +36,7 @@ import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.builtin.ArrayFunc;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.impl.arrayoflist.Level0ArrayOfListOperator;
@@ -362,7 +363,9 @@ public final class Op {
         System.out.println(Op.onListOfList(listOfListOfString1).forEach().distinct().get());
         
         System.out.println(printArray(Op.onArrayOfArray(Of.STRING,arrayOfArrayOfString1).get()));
+        System.out.println("***");
         System.out.println(printArray(Op.onArrayOfArray(Of.STRING,arrayOfArrayOfString1).distinct().get()));
+        System.out.println("***");
         System.out.println(printArray(Op.onArrayOfArray(Of.STRING,arrayOfArrayOfString1).forEach().distinct().get()));
      
         System.out.println(Op.onList(stringsList1).add("World!").get());
@@ -428,6 +431,11 @@ public final class Op {
         System.out.println(Op.onSet(stringSet1).removeAllNullOr("length() > 5").get());
             
         System.out.println(Op.onSetOfSet(setOfsetOfString1).forEach(0).add("c").get());
+        
+        System.out.println(printArray(Op.onArray(Of.STRING,stringsArr1).add("lalero").get()));
+        System.out.println(printArray(Op.onArray(Of.STRING,stringsArr1).add(2,"lalero").get()));
+        System.out.println(printArray(Op.onArray(Of.STRING,stringsArr1).addAllValues(2,"lalero","lururu").get()));
+        System.out.println(printArray(Op.onArray(Of.STRING,stringsArr1).addAllValues(2,"lalero","lururu").removeAllNull().remove(1).get()));
         
     }
     

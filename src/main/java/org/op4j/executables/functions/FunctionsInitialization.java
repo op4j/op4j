@@ -21,6 +21,7 @@ package org.op4j.executables.functions;
 
 import org.op4j.exceptions.FunctionImplementationRegistrationException;
 import org.op4j.executables.functions.builtin.ArrayDistinctFunction;
+import org.op4j.executables.functions.builtin.ArrayModifyFunction;
 import org.op4j.executables.functions.builtin.ListDistinctFunction;
 import org.op4j.executables.functions.builtin.ListModifyFunction;
 import org.op4j.executables.functions.builtin.SetModifyFunction;
@@ -63,8 +64,9 @@ final class FunctionsInitialization {
                 StringConverter.class,
                 BooleanConverter.class,
                 CalendarConverter.class,
-                ListDistinctFunction.class,
                 ArrayDistinctFunction.class,
+                ListDistinctFunction.class,
+                ArrayModifyFunction.class,
                 ListModifyFunction.class,
                 SetModifyFunction.class
             };

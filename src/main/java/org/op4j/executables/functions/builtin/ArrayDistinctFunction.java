@@ -47,8 +47,7 @@ public class ArrayDistinctFunction extends FunctionImplementation<Object[], Obje
     private static final FunctionArgumentScheme SCH_ARRAY = 
         FunctionArgumentScheme.from(
             "It returns an array containing only the non-repeated elements.",
-            Types.ARRAY_OF_OBJECT,
-            Type.class.getName() + " arrayOf");
+            Types.ARRAY_OF_OBJECT);
 
     
     
@@ -92,11 +91,10 @@ public class ArrayDistinctFunction extends FunctionImplementation<Object[], Obje
 		if (SCH_ARRAY.matches(arguments)) {
 			
 			final Object[] array = (Object[]) arguments.getTarget();
-			final Type<?> arrayOf = (Type<?>) arguments.getParameter(0);
             final Class<?> arrayClass = array.getClass().getComponentType();
             
             Set<?> set = null;
-			if (!arrayOf.isArray()) {
+            if (!arrayClass.isArray()) {
 				set = new LinkedHashSet<Object>(Arrays.asList(array));
 			} else {
 			    set = new ArrayLinkedHashSet();

@@ -57,33 +57,32 @@ public class Level0ArrayOperator<T> extends Operator implements
     }
 
     
-    public ILevel0ArrayOperator<T> add(T newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ArrayOperator<T> add(final T newElement) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.add(newElement)));
     }
 
-    public ILevel0ArrayOperator<T> add(int position, T newElement) {
-        // TODO Auto-generated method stub
-        return null;
+
+    public ILevel0ArrayOperator<T> add(final int position, final T newElement) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.add(position, newElement)));
     }
 
-    public ILevel0ArrayOperator<T> addAllValues(T... newElements) {
-        // TODO Auto-generated method stub
-        return null;
+
+    public ILevel0ArrayOperator<T> addAllValues(final T... newElements) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.addAllValues(newElements)));
     }
 
-    public ILevel0ArrayOperator<T> addAllValues(int position, T... newElements) {
-        // TODO Auto-generated method stub
-        return null;
+
+    public ILevel0ArrayOperator<T> addAllValues(final int position, final T... newElements) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.addAllValues(position, newElements)));
     }
 
-    public ILevel0ArrayOperator<T> addAll(Collection<T> collection) {
-        // TODO Auto-generated method stub
-        return null;
+
+    public ILevel0ArrayOperator<T> addAll(final Collection<T> collection) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.addAll(collection)));
     }
 
     public ILevel0ArrayOperator<T> distinct() {
-        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.distinct(this.arrayOf.getType())));
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.distinct()));
     }
 
     public ILevel0ArrayOperator<T> extract(int position) {
@@ -202,66 +201,59 @@ public class Level0ArrayOperator<T> extends Operator implements
         return null;
     }
 
-    public ILevel0ArrayOperator<T> remove(int position) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOperator<T> removeValue(T value) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOperator<T> removeAll(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOperator<T> removeAllValues(T... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOperator<T> removeAll(String expression,
-            Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOperator<T> removeAll(ISelect<T> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOperator<T> removeAllNot(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOperator<T> removeAllValuesNot(T... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ArrayOperator<T> remove(final int position) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.remove(position)));
     }
 
 
-
-
-
-    public ILevel0ArrayOperator<T> removeAllNotNullAnd(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ArrayOperator<T> removeValue(final T value) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeValue(value)));
     }
 
+
+    public ILevel0ArrayOperator<T> removeAll(final int... positions) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeAll(positions)));
+    }
+
+
+    public ILevel0ArrayOperator<T> removeAllValues(final T... values) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllValues(values)));
+    }
+
+
+    public ILevel0ArrayOperator<T> removeAll(final String expression, final Object... optionalExpParams) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeAll(expression, optionalExpParams)));
+    }
+
+
+    public ILevel0ArrayOperator<T> removeAll(final ISelect<T> selector) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeAll(selector)));
+    }
+
+
+    public ILevel0ArrayOperator<T> removeAllNot(final int... positions) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllNot(positions)));
+    }
+
+
+    public ILevel0ArrayOperator<T> removeAllValuesNot(final T... values) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllValuesNot(values)));
+    }
+
+    
+
+    public ILevel0ArrayOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllNotNullAnd(expression, optionalExpParams)));
+    }
 
 
     public ILevel0ArrayOperator<T> removeAllNull() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllNull()));
     }
 
-    public ILevel0ArrayOperator<T> removeAllNullOr(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    
+    public ILevel0ArrayOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllNullOr(expression, optionalExpParams)));
     }
 
 

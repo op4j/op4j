@@ -90,7 +90,7 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> distinct() {
-        return new Level2MapOfArrayEntriesValueOperator<K,V>(this.arrayOf, getTarget().execute(ArrayFunc.distinct(this.arrayOf.getType())));
+        return new Level2MapOfArrayEntriesValueOperator<K,V>(this.arrayOf, getTarget().execute(ArrayFunc.distinct()));
     }
 
 

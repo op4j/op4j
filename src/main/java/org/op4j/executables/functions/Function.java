@@ -137,7 +137,7 @@ public final class Function<X,T>  {
         this.implementationClasses.add(newFunctionImplementation.getClass());
         
         for (final FunctionArgumentScheme argumentScheme : newFunctionImplementation.getMatchedArgumentTypeSchemes()) {
-            
+
             if (this.implementationsByArgumentSchemes.containsKey(argumentScheme)) {
                 if (this.implementationClasses.contains(newFunctionImplementation.getClass())) {
                     throw new FunctionImplementationRegistrationException(

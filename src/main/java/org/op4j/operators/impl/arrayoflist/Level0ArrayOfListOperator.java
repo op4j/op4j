@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
-import org.javaruntype.type.Types;
 import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
@@ -93,7 +92,7 @@ public class Level0ArrayOfListOperator<T> extends Operator
 
 
     public ILevel0ArrayOfListOperator<T> distinct() {
-        return new Level0ArrayOfListOperator<T>(getTarget().execute(ArrayFunc.distinct(Types.LIST_OF_UNKNOWN)));
+        return new Level0ArrayOfListOperator<T>(getTarget().execute(ArrayFunc.distinct()));
     }
 
 

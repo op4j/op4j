@@ -87,7 +87,7 @@ public class Level1SetOfArrayElementsOperator<T> extends Operator
 
 
     public ILevel1SetOfArrayElementsOperator<T> distinct() {
-        return new Level1SetOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.distinct(this.arrayOf.getType())));
+        return new Level1SetOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.distinct()));
     }
 
 

@@ -20,10 +20,9 @@
 
 package org.op4j.executables.functions.builtin;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
@@ -35,13 +34,13 @@ import org.javaruntype.type.Types;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class SetModifyFunction extends StructureModifyFunction<Set<?>, Set<?>> {
+public final class ArrayModifyFunction extends StructureModifyFunction<Object[], Object[]> {
 
-	public static final String NAME = BuiltinNaming.getBuiltinFunctionName(Types.SET_OF_UNKNOWN, BuiltinNaming.OPERATION_NAME_MODIFY); 
+	public static final String NAME = BuiltinNaming.getBuiltinFunctionName(Types.ARRAY_OF_OBJECT, BuiltinNaming.OPERATION_NAME_MODIFY); 
 
     
     
-    public SetModifyFunction() {
+    public ArrayModifyFunction() {
     	super();
     }
 	
@@ -54,25 +53,27 @@ public final class SetModifyFunction extends StructureModifyFunction<Set<?>, Set
 	
 	
 	@Override
-	protected Type<Set<?>> registerResultType() {
-		return Types.SET_OF_UNKNOWN;
+	protected Type<Object[]> registerResultType() {
+		return Types.ARRAY_OF_OBJECT;
 	}
 
 	
 	@Override
-	protected Type<Set<?>> registerTargetType() {
-		return Types.SET_OF_UNKNOWN;
+	protected Type<Object[]> registerTargetType() {
+		return Types.ARRAY_OF_OBJECT;
 	}
 
 
     @Override
     protected List<?> processTarget(final Object target) {
-        return new ArrayList<Object>((Set<?>) target);
+        return Arrays.asList((Object[]) target);
     }
 	
     @Override
-    protected Set<?> createResultObject(final List<?> newList, final Object target) {
-        return new LinkedHashSet<Object>(newList);
+    protected Object[] createResultObject(final List<?> newList, final Object target) {
+        final Class<?> componentClass = target.getClass().getComponentType();
+        final Object[] array = (Object[]) Array.newInstance(componentClass, newList.size());
+        return newList.toArray(array);
     }
 	
 }

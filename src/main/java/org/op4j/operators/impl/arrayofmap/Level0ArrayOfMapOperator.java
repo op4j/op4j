@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
 
-import org.javaruntype.type.Types;
 import org.op4j.Of;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ArrayFunc;
@@ -82,7 +81,7 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
 
 
     public ILevel0ArrayOfMapOperator<K, V> distinct() {
-        return new Level0ArrayOfMapOperator<K,V>(getTarget().execute(ArrayFunc.distinct(Types.MAP_OF_UNKNOWN_UNKNOWN)));
+        return new Level0ArrayOfMapOperator<K,V>(getTarget().execute(ArrayFunc.distinct()));
     }
 
 

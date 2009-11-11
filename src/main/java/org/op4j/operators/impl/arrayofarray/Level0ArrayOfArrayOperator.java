@@ -22,7 +22,6 @@ package org.op4j.operators.impl.arrayofarray;
 import java.util.Collection;
 import java.util.Comparator;
 
-import org.javaruntype.type.Types;
 import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
@@ -97,7 +96,7 @@ public class Level0ArrayOfArrayOperator<T> extends Operator
 
 
     public ILevel0ArrayOfArrayOperator<T> distinct() {
-        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.distinct(Types.arrayOf(this.arrayOf.getType()))));
+        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.distinct()));
     }
 
 

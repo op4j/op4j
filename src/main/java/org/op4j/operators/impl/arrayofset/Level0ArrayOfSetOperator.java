@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Set;
 
-import org.javaruntype.type.Types;
 import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
@@ -93,7 +92,7 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
 
     public ILevel0ArrayOfSetOperator<T> distinct() {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFunc.distinct(Types.SET_OF_UNKNOWN)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFunc.distinct()));
     }
 
 

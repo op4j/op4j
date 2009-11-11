@@ -70,7 +70,7 @@ public final class ListModifyFunction extends StructureModifyFunction<List<?>, L
 
     
     @Override
-    protected List<?> createResultObject(final List<?> newList) {
+    protected List<?> createResultObject(final List<?> newList, final Object target) {
         return newList;
     }
 
