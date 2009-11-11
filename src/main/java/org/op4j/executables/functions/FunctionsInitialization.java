@@ -23,6 +23,7 @@ import org.op4j.exceptions.FunctionImplementationRegistrationException;
 import org.op4j.executables.functions.builtin.ArrayDistinctFunction;
 import org.op4j.executables.functions.builtin.ListDistinctFunction;
 import org.op4j.executables.functions.builtin.ListModifyFunction;
+import org.op4j.executables.functions.builtin.SetModifyFunction;
 import org.op4j.executables.functions.conversion.BigDecimalConverter;
 import org.op4j.executables.functions.conversion.BigIntegerConverter;
 import org.op4j.executables.functions.conversion.BooleanConverter;
@@ -64,7 +65,8 @@ final class FunctionsInitialization {
                 CalendarConverter.class,
                 ListDistinctFunction.class,
                 ArrayDistinctFunction.class,
-                ListModifyFunction.class
+                ListModifyFunction.class,
+                SetModifyFunction.class
             };
 
         for(int i = 0; i < implementationClasses.length; i++) {

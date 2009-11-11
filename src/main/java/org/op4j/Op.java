@@ -27,6 +27,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -35,7 +36,6 @@ import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.ListFunc;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.impl.arrayoflist.Level0ArrayOfListOperator;
@@ -351,6 +351,9 @@ public final class Op {
         final List<List<String>> listOfListOfString1 = 
         	Arrays.asList((List<String>[]) new List<?>[] { Arrays.asList(new String[] {"a", "b", "a"}), Arrays.asList(new String[] {"a", "b", "a"})});
         
+        final Set<Set<String>> setOfsetOfString1 = 
+            new LinkedHashSet<Set<String>>(Arrays.asList((Set<String>[]) new Set<?>[] { new LinkedHashSet<String>(Arrays.asList(new String[] {"a", "b", "a"})), new LinkedHashSet<String>(Arrays.asList(new String[] {"a", "b", "a"}))}));
+        
         final String[][] arrayOfArrayOfString1 = 
         	new String[][] { new String[] {"a", "b", "a"}, new String[] {"a", "b", "a"}};
         
@@ -391,6 +394,41 @@ public final class Op {
         System.out.println(Op.onList(stringsList1).removeAllNullOr("length() > 5").get());
             
         System.out.println(Op.onListOfList(listOfListOfString1).forEach(1).add("c").get());
+
+        System.out.println("================");
+        
+        
+        final Set<String> stringSet1 = new LinkedHashSet<String>(stringsList1);
+        System.out.println(Op.onSet(stringSet1).add("World!").get());
+        System.out.println(Op.onSet(stringSet1).add(1,"World!").get());
+        System.out.println(Op.onSet(stringSet1).addAllValues("World!", "Mars!").get());
+        System.out.println(Op.onSet(stringSet1).addAllValues(1, "World!", "Mars!").get());
+        System.out.println(Op.onSet(stringSet1).addAll(stringsList1).get());
+        System.out.println(Op.onSetOfSet(setOfsetOfString1).add(new LinkedHashSet<String>(Collections.singletonList("Uhey!"))).get());
+        System.out.println("---");
+        System.out.println(Op.onSet(stringSet1).get());
+        System.out.println(Op.onSet(stringSet1).remove(1).get());
+        System.out.println(Op.onSet(stringSet1).removeValue(null).get());
+        System.out.println(Op.onSet(stringSet1).removeValue("Goodbye").get());
+        System.out.println(Op.onSet(stringSet1).removeAll(0,2).get());
+        System.out.println(Op.onSet(stringSet1).removeAllNot(0).get());
+        System.out.println(Op.onSet(stringSet1).removeAllNot(0,2).get());
+        System.out.println(Op.onSet(stringSet1).removeAllValuesNot("Hello").get());
+        System.out.println(Op.onSet(stringSet1).removeAllValuesNot((String)null).get());
+        System.out.println(Op.onSet(stringSet1).removeAll("#target eq 'Hello'").get());
+        System.out.println(Op.onSet(stringSet1).removeAll(new ISelect<String>() {
+
+            public boolean eval(String target) {
+                return target == null;
+            }
+            
+        }).get());
+        System.out.println(Op.onSet(stringSet1).removeAllNull().get());
+        System.out.println(Op.onSet(stringSet1).removeAllNotNullAnd("length() > 5").get());
+        System.out.println(Op.onSet(stringSet1).removeAllNullOr("length() > 5").get());
+            
+        System.out.println(Op.onSetOfSet(setOfsetOfString1).forEach(0).add("c").get());
+        
     }
     
     

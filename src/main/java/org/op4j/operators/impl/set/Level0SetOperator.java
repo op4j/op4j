@@ -27,6 +27,7 @@ import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.builtin.SetFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericMultiOperator;
@@ -54,31 +55,28 @@ public class Level0SetOperator<T> extends Operator
     }
 
 
-    public ILevel0SetOperator<T> add(T newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOperator<T> add(final T newElement) {
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.add(newElement)));
     }
 
 
-    public ILevel0SetOperator<T> add(int position, T newElement) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0SetOperator<T> addAllValues(T... newElements) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0SetOperator<T> addAllValues(int position, T... newElements) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOperator<T> add(final int position, final T newElement) {
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.add(position, newElement)));
     }
 
 
-    public ILevel0SetOperator<T> addAll(Collection<T> collection) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOperator<T> addAllValues(final T... newElements) {
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.addAllValues(newElements)));
+    }
+
+
+    public ILevel0SetOperator<T> addAllValues(final int position, final T... newElements) {
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.addAllValues(position, newElements)));
+    }
+
+
+    public ILevel0SetOperator<T> addAll(final Collection<T> collection) {
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.addAll(collection)));
     }
 
 
@@ -231,75 +229,59 @@ public class Level0SetOperator<T> extends Operator
     }
 
 
-    public ILevel0SetOperator<T> remove(int position) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOperator<T> remove(final int position) {
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.remove(position)));
     }
 
 
-    public ILevel0SetOperator<T> removeValue(T value) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOperator<T> removeValue(final T value) {
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeValue(value)));
     }
 
 
-    public ILevel0SetOperator<T> removeAll(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOperator<T> removeAll(final int... positions) {
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeAll(positions)));
     }
 
 
-    public ILevel0SetOperator<T> removeAllValues(T... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOperator<T> removeAllValues(final T... values) {
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeAllValues(values)));
     }
 
 
-    public ILevel0SetOperator<T> removeAll(String expression,
-            Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOperator<T> removeAll(final String expression, final Object... optionalExpParams) {
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel0SetOperator<T> removeAll(ISelect<T> selector) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOperator<T> removeAll(final ISelect<T> selector) {
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeAll(selector)));
     }
 
 
-    public ILevel0SetOperator<T> removeAllNot(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOperator<T> removeAllNot(final int... positions) {
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeAllNot(positions)));
     }
 
 
-    public ILevel0SetOperator<T> removeAllValuesNot(T... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOperator<T> removeAllValuesNot(final T... values) {
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeAllValuesNot(values)));
     }
 
+    
 
-
-
-
-
-
-    public ILevel0SetOperator<T> removeAllNotNullAnd(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeAllNotNullAnd(expression, optionalExpParams)));
     }
-
 
 
     public ILevel0SetOperator<T> removeAllNull() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeAllNull()));
     }
 
-    public ILevel0SetOperator<T> removeAllNullOr(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    
+    public ILevel0SetOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams) {
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeAllNullOr(expression, optionalExpParams)));
     }
 
 

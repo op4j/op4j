@@ -28,6 +28,7 @@ import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.builtin.SetFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
@@ -63,31 +64,28 @@ public class Level0SetOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0SetOfListOperator<T> add(List<T> newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfListOperator<T> add(final List<T> newElement) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.add(newElement)));
     }
 
 
-    public ILevel0SetOfListOperator<T> add(int position, List<T> newElement) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0SetOfListOperator<T> addAllValues(List<T>... newElements) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0SetOfListOperator<T> addAllValues(int position, List<T>... newElements) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfListOperator<T> add(final int position, final List<T> newElement) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.add(position, newElement)));
     }
 
 
-    public ILevel0SetOfListOperator<T> addAll(Collection<List<T>> collection) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfListOperator<T> addAllValues(final List<T>... newElements) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.addAllValues(newElements)));
+    }
+
+
+    public ILevel0SetOfListOperator<T> addAllValues(final int position, final List<T>... newElements) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.addAllValues(position, newElements)));
+    }
+
+
+    public ILevel0SetOfListOperator<T> addAll(final Collection<List<T>> collection) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.addAll(collection)));
     }
 
 
@@ -240,75 +238,59 @@ public class Level0SetOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0SetOfListOperator<T> remove(int position) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfListOperator<T> remove(final int position) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.remove(position)));
     }
 
 
-    public ILevel0SetOfListOperator<T> removeValue(List<T> value) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfListOperator<T> removeValue(final List<T> value) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.removeValue(value)));
     }
 
 
-    public ILevel0SetOfListOperator<T> removeAll(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfListOperator<T> removeAll(final int... positions) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.removeAll(positions)));
     }
 
 
-    public ILevel0SetOfListOperator<T> removeAllValues(List<T>... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfListOperator<T> removeAllValues(final List<T>... values) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.removeAllValues(values)));
     }
 
 
-    public ILevel0SetOfListOperator<T> removeAll(String expression,
-            Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfListOperator<T> removeAll(final String expression, final Object... optionalExpParams) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel0SetOfListOperator<T> removeAll(ISelect<List<T>> selector) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfListOperator<T> removeAll(final ISelect<List<T>> selector) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.removeAll(selector)));
     }
 
 
-    public ILevel0SetOfListOperator<T> removeAllNot(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfListOperator<T> removeAllNot(final int... positions) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.removeAllNot(positions)));
     }
 
 
-    public ILevel0SetOfListOperator<T> removeAllValuesNot(List<T>... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfListOperator<T> removeAllValuesNot(final List<T>... values) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.removeAllValuesNot(values)));
     }
 
+    
 
-
-
-
-
-
-    public ILevel0SetOfListOperator<T> removeAllNotNullAnd(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfListOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.removeAllNotNullAnd(expression, optionalExpParams)));
     }
-
 
 
     public ILevel0SetOfListOperator<T> removeAllNull() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.removeAllNull()));
     }
 
-    public ILevel0SetOfListOperator<T> removeAllNullOr(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    
+    public ILevel0SetOfListOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.removeAllNullOr(expression, optionalExpParams)));
     }
 
 

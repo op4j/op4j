@@ -26,6 +26,7 @@ import java.util.Set;
 
 import org.op4j.Of;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.builtin.SetFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
@@ -49,31 +50,28 @@ public class Level0SetOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> add(Map<K, V> newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfMapOperator<K, V> add(final Map<K, V> newElement) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFunc.add(newElement)));
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> add(int position, Map<K, V> newElement) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0SetOfMapOperator<K, V> addAllValues(Map<K, V>... newElements) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0SetOfMapOperator<K, V> addAllValues(int position, Map<K, V>... newElements) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfMapOperator<K, V> add(final int position, final Map<K, V> newElement) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFunc.add(position, newElement)));
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> addAll(Collection<Map<K, V>> collection) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfMapOperator<K, V> addAllValues(final Map<K, V>... newElements) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFunc.addAllValues(newElements)));
+    }
+
+
+    public ILevel0SetOfMapOperator<K, V> addAllValues(final int position, final Map<K, V>... newElements) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFunc.addAllValues(position, newElements)));
+    }
+
+
+    public ILevel0SetOfMapOperator<K, V> addAll(final Collection<Map<K, V>> collection) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFunc.addAll(collection)));
     }
 
 
@@ -222,75 +220,59 @@ public class Level0SetOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> remove(int position) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfMapOperator<K, V> remove(final int position) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFunc.remove(position)));
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> removeValue(Map<K, V> value) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfMapOperator<K, V> removeValue(final Map<K, V> value) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFunc.removeValue(value)));
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> removeAll(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfMapOperator<K, V> removeAll(final int... positions) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFunc.removeAll(positions)));
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> removeAllValues(Map<K, V>... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfMapOperator<K, V> removeAllValues(final Map<K, V>... values) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFunc.removeAllValues(values)));
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> removeAll(String expression,
-            Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfMapOperator<K, V> removeAll(final String expression, final Object... optionalExpParams) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> removeAll(ISelect<Map<K, V>> selector) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfMapOperator<K, V> removeAll(final ISelect<Map<K, V>> selector) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFunc.removeAll(selector)));
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> removeAllNot(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfMapOperator<K, V> removeAllNot(final int... positions) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFunc.removeAllNot(positions)));
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> removeAllValuesNot(Map<K, V>... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfMapOperator<K, V> removeAllValuesNot(final Map<K, V>... values) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFunc.removeAllValuesNot(values)));
     }
 
+    
 
-
-
-
-
-
-    public ILevel0SetOfMapOperator<K, V> removeAllNotNullAnd(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOfMapOperator<K, V> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFunc.removeAllNotNullAnd(expression, optionalExpParams)));
     }
-
 
 
     public ILevel0SetOfMapOperator<K, V> removeAllNull() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFunc.removeAllNull()));
     }
 
-    public ILevel0SetOfMapOperator<K, V> removeAllNullOr(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    
+    public ILevel0SetOfMapOperator<K, V> removeAllNullOr(final String expression, final Object... optionalExpParams) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFunc.removeAllNullOr(expression, optionalExpParams)));
     }
 
 

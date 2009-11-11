@@ -28,6 +28,7 @@ import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.builtin.SetFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofarray.ILevel2MapOfArrayEntriesValueOperator;
 import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesValueOperator;
@@ -55,34 +56,28 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> add(V newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfSetEntriesValueOperator<K, V> add(final V newElement) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.add(newElement)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> add(int position,
-            V newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfSetEntriesValueOperator<K, V> add(final int position, final V newElement) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.add(position, newElement)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> addAllValues(V... newElements) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel2MapOfSetEntriesValueOperator<K, V> addAllValues(int position, V... newElements) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfSetEntriesValueOperator<K, V> addAllValues(final V... newElements) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.addAllValues(newElements)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> addAll(
-            Collection<V> collection) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfSetEntriesValueOperator<K, V> addAllValues(final int position, final V... newElements) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.addAllValues(position, newElements)));
+    }
+
+
+    public ILevel2MapOfSetEntriesValueOperator<K, V> addAll(final Collection<V> collection) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.addAll(collection)));
     }
 
 
@@ -238,77 +233,59 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> remove(int position) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfSetEntriesValueOperator<K, V> remove(final int position) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.remove(position)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeValue(V value) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeValue(final V value) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeValue(value)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAll(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAll(final int... positions) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAll(positions)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllValues(V... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllValues(final V... values) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAllValues(values)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAll(
-            String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAll(final String expression, final Object... optionalExpParams) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAll(
-            ISelect<V> selector) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAll(final ISelect<V> selector) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAll(selector)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllNot(
-            int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllNot(final int... positions) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAllNot(positions)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllValuesNot(V... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllValuesNot(final V... values) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAllValuesNot(values)));
     }
 
+    
 
-
-
-
-
-
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllNotNullAnd(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAllNotNullAnd(expression, optionalExpParams)));
     }
-
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllNull() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAllNull()));
     }
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllNullOr(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllNullOr(final String expression, final Object... optionalExpParams) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAllNullOr(expression, optionalExpParams)));
     }
 
 

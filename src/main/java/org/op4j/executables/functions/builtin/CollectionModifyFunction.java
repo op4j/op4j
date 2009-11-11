@@ -47,67 +47,67 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
     private static final FunctionArgumentScheme SCH_LIST_ELEMENTS_ADD = 
         FunctionArgumentScheme.from(
             "It adds the specified elements to the target list.",
-            Types.LIST_OF_UNKNOWN,
+            Types.COLLECTION_OF_UNKNOWN,
             "List<?> newElements, 'ADD'");
     
     private static final FunctionArgumentScheme SCH_LIST_ELEMENTS_POSITION_ADD = 
         FunctionArgumentScheme.from(
             "It adds the specified elements to the target list in the specified position.",
-            Types.LIST_OF_UNKNOWN,
+            Types.COLLECTION_OF_UNKNOWN,
             "List<?> newElements, Integer position, 'ADD'");
     
     private static final FunctionArgumentScheme SCH_LIST_ELEMENTS_REMOVE = 
         FunctionArgumentScheme.from(
             "It removes the specified elements from the target list.",
-            Types.LIST_OF_UNKNOWN,
+            Types.COLLECTION_OF_UNKNOWN,
             "List<?> elements, 'REMOVE'");
     
     private static final FunctionArgumentScheme SCH_LIST_POSITIONS_REMOVE = 
         FunctionArgumentScheme.from(
             "It removes the elements at the specified positions from the target list.",
-            Types.LIST_OF_UNKNOWN,
+            Types.COLLECTION_OF_UNKNOWN,
             "Integer[] positions, 'REMOVE'");
     
     private static final FunctionArgumentScheme SCH_LIST_EXPRESSION_REMOVE = 
         FunctionArgumentScheme.from(
             "It removes the elements matching the specified expression from the target list.",
-            Types.LIST_OF_UNKNOWN,
+            Types.COLLECTION_OF_UNKNOWN,
             "String expression, List<?> expParameters, 'REMOVE'");
     
     private static final FunctionArgumentScheme SCH_LIST_SELECTOR_REMOVE = 
         FunctionArgumentScheme.from(
             "It removes the elements matching the specified selector from the target list.",
-            Types.LIST_OF_UNKNOWN,
+            Types.COLLECTION_OF_UNKNOWN,
             ISelect.class.getName() + " selector, 'REMOVE'");
     
     private static final FunctionArgumentScheme SCH_LIST_ELEMENTS_REMOVE_NOT = 
         FunctionArgumentScheme.from(
             "It removes all but the passed elements from the target list.",
-            Types.LIST_OF_UNKNOWN,
+            Types.COLLECTION_OF_UNKNOWN,
             "List<?> elements, 'REMOVE_NOT'");
     
     private static final FunctionArgumentScheme SCH_LIST_POSITIONS_REMOVE_NOT = 
         FunctionArgumentScheme.from(
             "It adds all but the passed elements to the target list in the specified position.",
-            Types.LIST_OF_UNKNOWN,
+            Types.COLLECTION_OF_UNKNOWN,
             "Integer[] positions, 'REMOVE_NOT'");
     
     private static final FunctionArgumentScheme SCH_LIST_NULLS_REMOVE = 
         FunctionArgumentScheme.from(
             "It removes the elements not matching the specified selector from the target list.",
-            Types.LIST_OF_UNKNOWN,
+            Types.COLLECTION_OF_UNKNOWN,
             "'REMOVE_NULL'");
     
     private static final FunctionArgumentScheme SCH_LIST_NULLS_OR_REMOVE = 
         FunctionArgumentScheme.from(
             "It removes the elements matching the specified expression from the target list.",
-            Types.LIST_OF_UNKNOWN,
+            Types.COLLECTION_OF_UNKNOWN,
             "String expression, List<?> expParameters, 'REMOVE_NULL_OR'");
     
     private static final FunctionArgumentScheme SCH_LIST_NOT_NULLS_AND_REMOVE = 
         FunctionArgumentScheme.from(
             "It removes the elements matching the specified expression from the target list.",
-            Types.LIST_OF_UNKNOWN,
+            Types.COLLECTION_OF_UNKNOWN,
             "String expression, List<?> expParameters, 'REMOVE_NOT_NULL_AND'");
 
     
@@ -147,36 +147,36 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
 		}
 		
 		if (SCH_LIST_ELEMENTS_ADD.matches(arguments)) {
-			final List<?> list = (List<?>) arguments.getTarget();
+			final Collection<?> target = (Collection<?>) arguments.getTarget();
 			final List<?> newElements = (List<?>) arguments.getParameter(0);
-			final List<Object> newList = new ArrayList<Object>(list);
+			final List<Object> newList = new ArrayList<Object>(target);
 			newList.addAll(newElements);
 			return createResultObject(newList);
 		}
         
         if (SCH_LIST_ELEMENTS_POSITION_ADD.matches(arguments)) {
-            final List<?> list = (List<?>) arguments.getTarget();
+            final Collection<?> target = (Collection<?>) arguments.getTarget();
             final List<?> newElements = (List<?>) arguments.getParameter(0);
             final Integer position = arguments.getIntegerParameter(1);
-            final List<Object> newList = new ArrayList<Object>(list);
+            final List<Object> newList = new ArrayList<Object>(target);
             newList.addAll(position.intValue(), newElements);
             return createResultObject(newList);
         }
         
         if (SCH_LIST_ELEMENTS_REMOVE.matches(arguments)) {
-            final List<?> list = (List<?>) arguments.getTarget();
+            final Collection<?> target = (Collection<?>) arguments.getTarget();
             final List<?> elementsToBeRemoved = (List<?>) arguments.getParameter(0);
-            final List<Object> newList = new ArrayList<Object>(list);
+            final List<Object> newList = new ArrayList<Object>(target);
             newList.removeAll(elementsToBeRemoved);
             return createResultObject(newList);
         }
         
         if (SCH_LIST_POSITIONS_REMOVE.matches(arguments)) {
-            final List<?> list = (List<?>) arguments.getTarget();
+            final List<?> target = new ArrayList<Object>((Collection<?>) arguments.getTarget());
             final List<Integer> positions = Arrays.asList((Integer[]) arguments.getParameter(0));
             final List<Object> newList = new ArrayList<Object>();
-            for (int i = 0, n = list.size(); i < n; i++) {
-            	final Object element = list.get(i);
+            for (int i = 0, n = target.size(); i < n; i++) {
+            	final Object element = target.get(i);
             	if (!positions.contains(Integer.valueOf(i))) {
             		newList.add(element);
             	}
@@ -185,12 +185,11 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
         }
         
         if (SCH_LIST_EXPRESSION_REMOVE.matches(arguments)) {
-            final List<?> list = (List<?>) arguments.getTarget();
+            final Collection<?> target = (Collection<?>) arguments.getTarget();
             final String expression = arguments.getStringParameter(0);
             final List<?> parameters = (List<?>) arguments.getParameter(1);
             final List<Object> newList = new ArrayList<Object>();
-            for (int i = 0, n = list.size(); i < n; i++) {
-            	final Object element = list.get(i);
+            for (final Object element : target) {
             	if (!OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, parameters).booleanValue()) {
             		newList.add(element);
             	}
@@ -199,11 +198,10 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
         }
         
         if (SCH_LIST_SELECTOR_REMOVE.matches(arguments)) {
-            final List<?> list = (List<?>) arguments.getTarget();
+            final Collection<?> target = (Collection<?>) arguments.getTarget();
             final ISelect<Object> selector = (ISelect<Object>) arguments.getParameter(0);
             final List<Object> newList = new ArrayList<Object>();
-            for (int i = 0, n = list.size(); i < n; i++) {
-            	final Object element = list.get(i);
+            for (final Object element : target) {
             	if (!selector.eval(element)) {
             		newList.add(element);
             	}
@@ -212,10 +210,10 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
         }
         
         if (SCH_LIST_ELEMENTS_REMOVE_NOT.matches(arguments)) {
-            final List<?> list = (List<?>) arguments.getTarget();
+            final Collection<?> target = (Collection<?>) arguments.getTarget();
             final List<?> elementsNotToBeRemoved = (List<?>) arguments.getParameter(0);
             final List<Object> newList = new ArrayList<Object>();
-            for (final Object element : list) {
+            for (final Object element : target) {
             	if (elementsNotToBeRemoved.contains(element)) {
             		newList.add(element);
             	}
@@ -224,11 +222,11 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
         }
         
         if (SCH_LIST_POSITIONS_REMOVE_NOT.matches(arguments)) {
-            final List<?> list = (List<?>) arguments.getTarget();
+            final List<?> target = new ArrayList<Object>((Collection<?>) arguments.getTarget());
             final List<Integer> positions = Arrays.asList((Integer[]) arguments.getParameter(0));
             final List<Object> newList = new ArrayList<Object>();
-            for (int i = 0, n = list.size(); i < n; i++) {
-            	final Object element = list.get(i);
+            for (int i = 0, n = target.size(); i < n; i++) {
+            	final Object element = target.get(i);
             	if (positions.contains(Integer.valueOf(i))) {
             		newList.add(element);
             	}
@@ -237,10 +235,9 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
         }
         
         if (SCH_LIST_NULLS_REMOVE.matches(arguments)) {
-            final List<?> list = (List<?>) arguments.getTarget();
+            final Collection<?> target = (Collection<?>) arguments.getTarget();
             final List<Object> newList = new ArrayList<Object>();
-            for (int i = 0, n = list.size(); i < n; i++) {
-            	final Object element = list.get(i);
+            for (final Object element : target) {
             	if (element != null) {
             		newList.add(element);
             	}
@@ -249,12 +246,11 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
         }
         
         if (SCH_LIST_NULLS_OR_REMOVE.matches(arguments)) {
-            final List<?> list = (List<?>) arguments.getTarget();
+            final Collection<?> target = (Collection<?>) arguments.getTarget();
             final String expression = arguments.getStringParameter(0);
             final List<?> parameters = (List<?>) arguments.getParameter(1);
             final List<Object> newList = new ArrayList<Object>();
-            for (int i = 0, n = list.size(); i < n; i++) {
-                final Object element = list.get(i);
+            for (final Object element : target) {
                 if (element != null) {
                     if (!OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, parameters).booleanValue()) {
                         newList.add(element);
@@ -265,12 +261,11 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
         }
         
         if (SCH_LIST_NOT_NULLS_AND_REMOVE.matches(arguments)) {
-            final List<?> list = (List<?>) arguments.getTarget();
+            final Collection<?> target = (Collection<?>) arguments.getTarget();
             final String expression = arguments.getStringParameter(0);
             final List<?> parameters = (List<?>) arguments.getParameter(1);
             final List<Object> newList = new ArrayList<Object>();
-            for (int i = 0, n = list.size(); i < n; i++) {
-                final Object element = list.get(i);
+            for (final Object element : target) {
                 if (element != null) {
                     if (!OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, parameters).booleanValue()) {
                         newList.add(element);

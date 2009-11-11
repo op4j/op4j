@@ -27,6 +27,7 @@ import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.builtin.SetFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.setofarray.ILevel1SetOfArrayElementsOperator;
 import org.op4j.operators.intf.setoflist.ILevel1SetOfListElementsOperator;
@@ -54,31 +55,28 @@ public class Level1SetOfSetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> add(T newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetOfSetElementsOperator<T> add(final T newElement) {
+        return new Level1SetOfSetElementsOperator<T>(getTarget().execute(SetFunc.add(newElement)));
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> add(int position, T newElement) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel1SetOfSetElementsOperator<T> addAllValues(T... newElements) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel1SetOfSetElementsOperator<T> addAllValues(int position, T... newElements) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetOfSetElementsOperator<T> add(final int position, final T newElement) {
+        return new Level1SetOfSetElementsOperator<T>(getTarget().execute(SetFunc.add(position, newElement)));
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> addAll(Collection<T> collection) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetOfSetElementsOperator<T> addAllValues(final T... newElements) {
+        return new Level1SetOfSetElementsOperator<T>(getTarget().execute(SetFunc.addAllValues(newElements)));
+    }
+
+
+    public ILevel1SetOfSetElementsOperator<T> addAllValues(final int position, final T... newElements) {
+        return new Level1SetOfSetElementsOperator<T>(getTarget().execute(SetFunc.addAllValues(position, newElements)));
+    }
+
+
+    public ILevel1SetOfSetElementsOperator<T> addAll(final Collection<T> collection) {
+        return new Level1SetOfSetElementsOperator<T>(getTarget().execute(SetFunc.addAll(collection)));
     }
 
 
@@ -230,75 +228,59 @@ public class Level1SetOfSetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> remove(int position) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetOfSetElementsOperator<T> remove(final int position) {
+        return new Level1SetOfSetElementsOperator<T>(getTarget().execute(SetFunc.remove(position)));
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> removeValue(T value) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetOfSetElementsOperator<T> removeValue(final T value) {
+        return new Level1SetOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeValue(value)));
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> removeAll(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetOfSetElementsOperator<T> removeAll(final int... positions) {
+        return new Level1SetOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeAll(positions)));
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> removeAllValues(T... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetOfSetElementsOperator<T> removeAllValues(final T... values) {
+        return new Level1SetOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeAllValues(values)));
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> removeAll(String expression,
-            Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetOfSetElementsOperator<T> removeAll(final String expression, final Object... optionalExpParams) {
+        return new Level1SetOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> removeAll(ISelect<T> selector) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetOfSetElementsOperator<T> removeAll(final ISelect<T> selector) {
+        return new Level1SetOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeAll(selector)));
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> removeAllNot(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetOfSetElementsOperator<T> removeAllNot(final int... positions) {
+        return new Level1SetOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeAllNot(positions)));
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> removeAllValuesNot(T... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetOfSetElementsOperator<T> removeAllValuesNot(final T... values) {
+        return new Level1SetOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeAllValuesNot(values)));
     }
 
+    
 
-
-
-
-
-
-    public ILevel1SetOfSetElementsOperator<T> removeAllNotNullAnd(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetOfSetElementsOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+        return new Level1SetOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeAllNotNullAnd(expression, optionalExpParams)));
     }
-
 
 
     public ILevel1SetOfSetElementsOperator<T> removeAllNull() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1SetOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeAllNull()));
     }
 
-    public ILevel1SetOfSetElementsOperator<T> removeAllNullOr(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    
+    public ILevel1SetOfSetElementsOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams) {
+        return new Level1SetOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeAllNullOr(expression, optionalExpParams)));
     }
 
 
