@@ -167,7 +167,7 @@ public class Level0ArrayOfListOperator<T> extends Operator
 
 
     public ILevel1ArrayOfListElementsOperator<T> forEach(int... positions) {
-        return null;
+        return new Level1ArrayOfListElementsOperator<T>(getTarget().iterate(positions));
     }
 
 
