@@ -58,34 +58,28 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> add(V newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> add(final V newElement) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.add(newElement)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> add(int position,
-            V newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> add(final int position, final V newElement) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.add(position, newElement)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> addAllValues(V... newElements) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> addAllValues(int position, V... newElements) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> addAllValues(final V... newElements) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.addAllValues(newElements)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> addAll(
-            Collection<V> collection) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> addAllValues(final int position, final V... newElements) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.addAllValues(position, newElements)));
+    }
+
+
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> addAll(final Collection<V> collection) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.addAll(collection)));
     }
 
 
@@ -241,78 +235,59 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> remove(int position) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> remove(final int position) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.remove(position)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeValue(V value) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeValue(final V value) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeValue(value)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAll(
-            int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAll(final int... positions) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAll(positions)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllValues(V... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllValues(final V... values) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllValues(values)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAll(
-            String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAll(final String expression, final Object... optionalExpParams) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAll(
-            ISelect<V> selector) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAll(final ISelect<V> selector) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAll(selector)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNot(
-            int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNot(final int... positions) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllNot(positions)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllValuesNot(V... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllValuesNot(final V... values) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllValuesNot(values)));
     }
 
+    
 
-
-
-
-
-
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNotNullAnd(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllNotNullAnd(expression, optionalExpParams)));
     }
-
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNull() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllNull()));
     }
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNullOr(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNullOr(final String expression, final Object... optionalExpParams) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllNullOr(expression, optionalExpParams)));
     }
 
 

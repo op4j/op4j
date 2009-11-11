@@ -59,32 +59,28 @@ public class Level1ArrayOfArrayElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfArrayElementsOperator<T> add(T newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfArrayElementsOperator<T> add(final T newElement) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.add(newElement)));
     }
 
 
-    public ILevel1ArrayOfArrayElementsOperator<T> add(int position, T newElement) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel1ArrayOfArrayElementsOperator<T> addAllValues(T... newElements) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel1ArrayOfArrayElementsOperator<T> addAllValues(int position, T... newElements) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfArrayElementsOperator<T> add(final int position, final T newElement) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.add(position, newElement)));
     }
 
 
-    public ILevel1ArrayOfArrayElementsOperator<T> addAll(
-            Collection<T> collection) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfArrayElementsOperator<T> addAllValues(final T... newElements) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.addAllValues(newElements)));
+    }
+
+
+    public ILevel1ArrayOfArrayElementsOperator<T> addAllValues(final int position, final T... newElements) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.addAllValues(position, newElements)));
+    }
+
+
+    public ILevel1ArrayOfArrayElementsOperator<T> addAll(final Collection<T> collection) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.addAll(collection)));
     }
 
 
@@ -240,75 +236,59 @@ public class Level1ArrayOfArrayElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfArrayElementsOperator<T> remove(int position) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfArrayElementsOperator<T> remove(final int position) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.remove(position)));
     }
 
 
-    public ILevel1ArrayOfArrayElementsOperator<T> removeValue(T value) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfArrayElementsOperator<T> removeValue(final T value) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeValue(value)));
     }
 
 
-    public ILevel1ArrayOfArrayElementsOperator<T> removeAll(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfArrayElementsOperator<T> removeAll(final int... positions) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeAll(positions)));
     }
 
 
-    public ILevel1ArrayOfArrayElementsOperator<T> removeAllValues(T... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfArrayElementsOperator<T> removeAllValues(final T... values) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllValues(values)));
     }
 
 
-    public ILevel1ArrayOfArrayElementsOperator<T> removeAll(String expression,
-            Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfArrayElementsOperator<T> removeAll(final String expression, final Object... optionalExpParams) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel1ArrayOfArrayElementsOperator<T> removeAll(ISelect<T> selector) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfArrayElementsOperator<T> removeAll(final ISelect<T> selector) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeAll(selector)));
     }
 
 
-    public ILevel1ArrayOfArrayElementsOperator<T> removeAllNot(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfArrayElementsOperator<T> removeAllNot(final int... positions) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllNot(positions)));
     }
 
 
-    public ILevel1ArrayOfArrayElementsOperator<T> removeAllValuesNot(T... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfArrayElementsOperator<T> removeAllValuesNot(final T... values) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllValuesNot(values)));
     }
 
+    
 
-
-
-
-
-
-    public ILevel1ArrayOfArrayElementsOperator<T> removeAllNotNullAnd(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfArrayElementsOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllNotNullAnd(expression, optionalExpParams)));
     }
-
 
 
     public ILevel1ArrayOfArrayElementsOperator<T> removeAllNull() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllNull()));
     }
 
-    public ILevel1ArrayOfArrayElementsOperator<T> removeAllNullOr(String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    
+    public ILevel1ArrayOfArrayElementsOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllNullOr(expression, optionalExpParams)));
     }
 
 
