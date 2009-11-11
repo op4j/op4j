@@ -20,6 +20,7 @@
 
 package org.op4j.executables.functions.builtin;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -34,7 +35,7 @@ import org.javaruntype.type.Types;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class SetModifyFunction extends CollectionModifyFunction<Set<?>, Set<?>> {
+public final class SetModifyFunction extends StructureModifyFunction<Set<?>, Set<?>> {
 
 	public static final String NAME = BuiltinNaming.getBuiltinFunctionName(Types.SET_OF_UNKNOWN, BuiltinNaming.OPERATION_NAME_MODIFY); 
 
@@ -63,6 +64,11 @@ public final class SetModifyFunction extends CollectionModifyFunction<Set<?>, Se
 		return Types.SET_OF_UNKNOWN;
 	}
 
+
+    @Override
+    protected List<?> processTarget(final Object target) {
+        return new ArrayList<Object>((Set<?>) target);
+    }
 	
     @Override
     protected Set<?> createResultObject(final List<?> newList) {

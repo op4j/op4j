@@ -32,7 +32,7 @@ import org.javaruntype.type.Types;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class ListModifyFunction extends CollectionModifyFunction<List<?>, List<?>> {
+public final class ListModifyFunction extends StructureModifyFunction<List<?>, List<?>> {
 
 	public static final String NAME = BuiltinNaming.getBuiltinFunctionName(Types.LIST_OF_UNKNOWN, BuiltinNaming.OPERATION_NAME_MODIFY); 
 
@@ -61,10 +61,18 @@ public final class ListModifyFunction extends CollectionModifyFunction<List<?>, 
 		return Types.LIST_OF_UNKNOWN;
 	}
 
-	
+
+
+    @Override
+    protected List<?> processTarget(final Object target) {
+        return (List<?>) target;
+    }
+
+    
     @Override
     protected List<?> createResultObject(final List<?> newList) {
         return newList;
     }
+
 	
 }

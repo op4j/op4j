@@ -41,7 +41,7 @@ import org.op4j.util.OgnlExpressionUtil;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public abstract class CollectionModifyFunction<X extends Collection<?>,T extends Collection<?>> extends FunctionImplementation<X,T> {
+public abstract class StructureModifyFunction<X extends Collection<?>,T extends Collection<?>> extends FunctionImplementation<X,T> {
 	
 	
     private static final FunctionArgumentScheme SCH_LIST_ELEMENTS_ADD = 
@@ -112,7 +112,7 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
 
     
     
-    public CollectionModifyFunction() {
+    public StructureModifyFunction() {
     	super();
     }
 	
@@ -147,7 +147,7 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
 		}
 		
 		if (SCH_LIST_ELEMENTS_ADD.matches(arguments)) {
-			final Collection<?> target = (Collection<?>) arguments.getTarget();
+			final List<?> target = processTarget(arguments.getTarget());
 			final List<?> newElements = (List<?>) arguments.getParameter(0);
 			final List<Object> newList = new ArrayList<Object>(target);
 			newList.addAll(newElements);
@@ -155,7 +155,7 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
 		}
         
         if (SCH_LIST_ELEMENTS_POSITION_ADD.matches(arguments)) {
-            final Collection<?> target = (Collection<?>) arguments.getTarget();
+            final List<?> target = processTarget(arguments.getTarget());
             final List<?> newElements = (List<?>) arguments.getParameter(0);
             final Integer position = arguments.getIntegerParameter(1);
             final List<Object> newList = new ArrayList<Object>(target);
@@ -164,7 +164,7 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
         }
         
         if (SCH_LIST_ELEMENTS_REMOVE.matches(arguments)) {
-            final Collection<?> target = (Collection<?>) arguments.getTarget();
+            final List<?> target = processTarget(arguments.getTarget());
             final List<?> elementsToBeRemoved = (List<?>) arguments.getParameter(0);
             final List<Object> newList = new ArrayList<Object>(target);
             newList.removeAll(elementsToBeRemoved);
@@ -172,7 +172,7 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
         }
         
         if (SCH_LIST_POSITIONS_REMOVE.matches(arguments)) {
-            final List<?> target = new ArrayList<Object>((Collection<?>) arguments.getTarget());
+            final List<?> target = processTarget(arguments.getTarget());
             final List<Integer> positions = Arrays.asList((Integer[]) arguments.getParameter(0));
             final List<Object> newList = new ArrayList<Object>();
             for (int i = 0, n = target.size(); i < n; i++) {
@@ -185,7 +185,7 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
         }
         
         if (SCH_LIST_EXPRESSION_REMOVE.matches(arguments)) {
-            final Collection<?> target = (Collection<?>) arguments.getTarget();
+            final List<?> target = processTarget(arguments.getTarget());
             final String expression = arguments.getStringParameter(0);
             final List<?> parameters = (List<?>) arguments.getParameter(1);
             final List<Object> newList = new ArrayList<Object>();
@@ -198,7 +198,7 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
         }
         
         if (SCH_LIST_SELECTOR_REMOVE.matches(arguments)) {
-            final Collection<?> target = (Collection<?>) arguments.getTarget();
+            final List<?> target = processTarget(arguments.getTarget());
             final ISelect<Object> selector = (ISelect<Object>) arguments.getParameter(0);
             final List<Object> newList = new ArrayList<Object>();
             for (final Object element : target) {
@@ -210,7 +210,7 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
         }
         
         if (SCH_LIST_ELEMENTS_REMOVE_NOT.matches(arguments)) {
-            final Collection<?> target = (Collection<?>) arguments.getTarget();
+            final List<?> target = processTarget(arguments.getTarget());
             final List<?> elementsNotToBeRemoved = (List<?>) arguments.getParameter(0);
             final List<Object> newList = new ArrayList<Object>();
             for (final Object element : target) {
@@ -222,7 +222,7 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
         }
         
         if (SCH_LIST_POSITIONS_REMOVE_NOT.matches(arguments)) {
-            final List<?> target = new ArrayList<Object>((Collection<?>) arguments.getTarget());
+            final List<?> target = processTarget(arguments.getTarget());
             final List<Integer> positions = Arrays.asList((Integer[]) arguments.getParameter(0));
             final List<Object> newList = new ArrayList<Object>();
             for (int i = 0, n = target.size(); i < n; i++) {
@@ -235,7 +235,7 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
         }
         
         if (SCH_LIST_NULLS_REMOVE.matches(arguments)) {
-            final Collection<?> target = (Collection<?>) arguments.getTarget();
+            final List<?> target = processTarget(arguments.getTarget());
             final List<Object> newList = new ArrayList<Object>();
             for (final Object element : target) {
             	if (element != null) {
@@ -246,7 +246,7 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
         }
         
         if (SCH_LIST_NULLS_OR_REMOVE.matches(arguments)) {
-            final Collection<?> target = (Collection<?>) arguments.getTarget();
+            final List<?> target = processTarget(arguments.getTarget());
             final String expression = arguments.getStringParameter(0);
             final List<?> parameters = (List<?>) arguments.getParameter(1);
             final List<Object> newList = new ArrayList<Object>();
@@ -261,7 +261,7 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
         }
         
         if (SCH_LIST_NOT_NULLS_AND_REMOVE.matches(arguments)) {
-            final Collection<?> target = (Collection<?>) arguments.getTarget();
+            final List<?> target = processTarget(arguments.getTarget());
             final String expression = arguments.getStringParameter(0);
             final List<?> parameters = (List<?>) arguments.getParameter(1);
             final List<Object> newList = new ArrayList<Object>();
@@ -283,6 +283,7 @@ public abstract class CollectionModifyFunction<X extends Collection<?>,T extends
 	}
     
     
+    protected abstract List<?> processTarget(final Object target);
     protected abstract X createResultObject(final List<?> newList);
     
 
