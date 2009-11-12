@@ -84,7 +84,7 @@ public class ListDistinctFunction extends FunctionImplementation<List<?>, List<?
 	public List<?> execute(FunctionArguments arguments) throws Exception {
 		
 		if (arguments.isTargetNull()) {
-			return null;
+            throw new NullPointerException("Cannot execute operation on null target");
 		}
 		
 		if (SCH_LIST.matches(arguments)) {

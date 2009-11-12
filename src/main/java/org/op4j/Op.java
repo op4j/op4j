@@ -437,7 +437,7 @@ public final class Op {
         System.out.println(printArray(Op.onArray(Of.STRING,stringsArr1).addAllValues(2,"lalero","lururu").get()));
         System.out.println(printArray(Op.onArray(Of.STRING,stringsArr1).addAllValues(2,"lalero","lururu").removeAllNull().remove(1).get()));
         
-        System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).addAllValues(1,Arrays.asList(new String[] {"z", "y"})).forEach().add("_").get()));
+        System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).add(1,Arrays.asList(new String[] {"z", "y"})).forEach(2).add("_").get()));
         
     }
     

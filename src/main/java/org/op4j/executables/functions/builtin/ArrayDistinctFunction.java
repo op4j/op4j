@@ -85,7 +85,7 @@ public class ArrayDistinctFunction extends FunctionImplementation<Object[], Obje
 	public Object[] execute(FunctionArguments arguments) throws Exception {
 		
 		if (arguments.isTargetNull()) {
-			return null;
+			throw new NullPointerException("Cannot execute operation on null target");
 		}
 		
 		if (SCH_ARRAY.matches(arguments)) {

@@ -71,67 +71,67 @@ public abstract class StructureModifyFunction<X,T> extends FunctionImplementatio
         
         matched.add(this.SCH_STRUCTURE_ELEMENTS_ADD = 
             FunctionArgumentScheme.from(
-                "It adds the specified elements to the target list.",
+                "It adds the specified elements to the target structure.",
                 registerTargetType(),
                 "List<?> newElements, 'ADD'"));
         
         matched.add(this.SCH_STRUCTURE_ELEMENTS_POSITION_ADD = 
             FunctionArgumentScheme.from(
-                "It adds the specified elements to the target list in the specified position.",
+                "It adds the specified elements to the target structure in the specified position.",
                 registerTargetType(),
                 "List<?> newElements, Integer position, 'ADD'"));
         
         matched.add(this.SCH_STRUCTURE_ELEMENTS_REMOVE = 
             FunctionArgumentScheme.from(
-                "It removes the specified elements from the target list.",
+                "It removes the specified elements from the target structure.",
                 registerTargetType(),
                 "List<?> elements, 'REMOVE'"));
         
         matched.add(this.SCH_STRUCTURE_POSITIONS_REMOVE = 
             FunctionArgumentScheme.from(
-                "It removes the elements at the specified positions from the target list.",
+                "It removes the elements at the specified positions from the target structure.",
                 registerTargetType(),
                 "Integer[] positions, 'REMOVE'"));
         
         matched.add(this.SCH_STRUCTURE_EXPRESSION_REMOVE = 
             FunctionArgumentScheme.from(
-                "It removes the elements matching the specified expression from the target list.",
+                "It removes the elements matching the specified expression from the target structure.",
                 registerTargetType(),
                 "String expression, List<?> expParameters, 'REMOVE'"));
         
         matched.add(this.SCH_STRUCTURE_SELECTOR_REMOVE = 
             FunctionArgumentScheme.from(
-                "It removes the elements matching the specified selector from the target list.",
+                "It removes the elements matching the specified selector from the target structure.",
                 registerTargetType(),
                 ISelect.class.getName() + " selector, 'REMOVE'"));
         
         matched.add(this.SCH_STRUCTURE_ELEMENTS_REMOVE_NOT = 
             FunctionArgumentScheme.from(
-                "It removes all but the passed elements from the target list.",
+                "It removes all but the specified elements from the target structure.",
                 registerTargetType(),
                 "List<?> elements, 'REMOVE_NOT'"));
         
         matched.add(this.SCH_STRUCTURE_POSITIONS_REMOVE_NOT = 
             FunctionArgumentScheme.from(
-                "It adds all but the passed elements to the target list in the specified position.",
+                "It adds all but the specified elements to the target structure in the specified position.",
                 registerTargetType(),
                 "Integer[] positions, 'REMOVE_NOT'"));
         
         matched.add(this.SCH_STRUCTURE_NULLS_REMOVE = 
             FunctionArgumentScheme.from(
-                "It removes the elements not matching the specified selector from the target list.",
+                "It removes the elements not matching the specified selector from the target structure.",
                 registerTargetType(),
                 "'REMOVE_NULL'"));
         
         matched.add(this.SCH_STRUCTURE_NULLS_OR_REMOVE = 
             FunctionArgumentScheme.from(
-                "It removes the elements matching the specified expression from the target list.",
+                "It removes the elements matching the specified expression from the target structure.",
                 registerTargetType(),
                 "String expression, List<?> expParameters, 'REMOVE_NULL_OR'"));
         
         matched.add(this.SCH_STRUCTURE_NOT_NULLS_AND_REMOVE = 
             FunctionArgumentScheme.from(
-                "It removes the elements matching the specified expression from the target list.",
+                "It removes the elements matching the specified expression from the target structure.",
                 registerTargetType(),
                 "String expression, List<?> expParameters, 'REMOVE_NOT_NULL_AND'"));
         
@@ -147,7 +147,7 @@ public abstract class StructureModifyFunction<X,T> extends FunctionImplementatio
 	public X execute(FunctionArguments arguments) throws Exception {
 		
 		if (arguments.isTargetNull()) {
-			return null;
+            throw new NullPointerException("Cannot execute operation on null target");
 		}
 		
 		if (this.SCH_STRUCTURE_ELEMENTS_ADD.matches(arguments)) {
