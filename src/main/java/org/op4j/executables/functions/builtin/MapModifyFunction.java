@@ -20,8 +20,7 @@
 
 package org.op4j.executables.functions.builtin;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -51,13 +50,13 @@ public class MapModifyFunction extends FunctionImplementation<Map<?,?>,Map<?,?>>
             FunctionArgumentScheme.from(
                 "It adds the specified entries to the target map.",
                 Types.MAP_OF_UNKNOWN_UNKNOWN,
-                "Set<Map.Entry<?,?>> newEntries, 'ADD'");
+                "Map<?,?> newEntries, 'PUT'");
         
     private static FunctionArgumentScheme SCH_MAP_ENTRIES_POSITION_ADD =
             FunctionArgumentScheme.from(
                 "It adds the specified entries to the target map in the specified position.",
                 Types.MAP_OF_UNKNOWN_UNKNOWN,
-                "Set<Map.Entry<?,?>> newEntries, Integer position, 'ADD'");
+                "Map<?,?> newEntries, Integer position, 'PUT'");
         
     private static FunctionArgumentScheme SCH_MAP_KEYS_REMOVE =
             FunctionArgumentScheme.from(
@@ -142,86 +141,83 @@ public class MapModifyFunction extends FunctionImplementation<Map<?,?>,Map<?,?>>
 		
 		if (SCH_MAP_ENTRIES_ADD.matches(arguments)) {
 			final Map<?,?> target = (Map<?,?>) arguments.getTarget();
-			final List<?> newElements = (List<?>) arguments.getParameter(0);
-			final List<Object> newList = new ArrayList<Object>(target);
-			newList.addAll(newElements);
-			return createResultObject(newList, arguments.getTarget());
+			final Map<Object,Object> newEntries = (Map<Object,Object>) arguments.getParameter(0);
+			final Map<Object,Object> newMap = new LinkedHashMap<Object,Object>(target);
+			newMap.putAll(newEntries);
+            return newMap;
 		}
         
         if (SCH_MAP_ENTRIES_POSITION_ADD.matches(arguments)) {
-            final Map<?,?> target = (Map<?,?>) arguments.getTarget();
-            final List<?> newElements = (List<?>) arguments.getParameter(0);
+            final Map<Object,Object> target = (Map<Object,Object>) arguments.getTarget();
+			final Map<Object,Object> newEntries = (Map<Object,Object>) arguments.getParameter(0);
             final Integer position = arguments.getIntegerParameter(1);
-            final List<Object> newList = new ArrayList<Object>(target);
-            newList.addAll(position.intValue(), newElements);
-            return createResultObject(newList, arguments.getTarget());
+			final Map<Object,Object> newMap = new LinkedHashMap<Object,Object>();
+			int index = 0;
+			for (final Map.Entry<Object,Object> targetEntry : target.entrySet()) {
+				if (index == position.intValue()) {
+					for (final Map.Entry<Object,Object> newEntry : newEntries.entrySet()) {
+						newMap.put(newEntry.getKey(), newEntry.getValue());
+					}
+				}
+				if (!newMap.containsKey(targetEntry.getKey())) {
+					newMap.put(targetEntry.getKey(), targetEntry.getValue());
+				}
+				index++;
+			}
+            return newMap;
         }
         
         if (SCH_MAP_KEYS_REMOVE.matches(arguments)) {
             final Map<?,?> target = (Map<?,?>) arguments.getTarget();
-            final List<?> elementsToBeRemoved = (List<?>) arguments.getParameter(0);
-            final List<Object> newList = new ArrayList<Object>(target);
-            newList.removeAll(elementsToBeRemoved);
-            return createResultObject(newList, arguments.getTarget());
-        }
-        
-        if (SCH_MAP_POSITIONS_REMOVE.matches(arguments)) {
-            final Map<?,?> target = (Map<?,?>) arguments.getTarget();
-            final List<Integer> positions = Arrays.asList((Integer[]) arguments.getParameter(0));
-            final List<Object> newList = new ArrayList<Object>();
-            for (int i = 0, n = target.size(); i < n; i++) {
-            	final Object element = target.get(i);
-            	if (!positions.contains(Integer.valueOf(i))) {
-            		newList.add(element);
-            	}
-            }
-            return createResultObject(newList, arguments.getTarget());
+            final List<?> keysToBeRemoved = (List<?>) arguments.getParameter(0);
+			final Map<?,?> newMap = new LinkedHashMap<Object,Object>(target);
+			for (final Object key : keysToBeRemoved) {
+				newMap.remove(key);
+			}
+            return newMap;
         }
         
         if (SCH_MAP_EXPRESSION_REMOVE.matches(arguments)) {
-            final Map<?,?> target = (Map<?,?>) arguments.getTarget();
+            final Map<Object,Object> target = (Map<Object,Object>) arguments.getTarget();
             final String expression = arguments.getStringParameter(0);
             final List<?> parameters = (List<?>) arguments.getParameter(1);
-            final List<Object> newList = new ArrayList<Object>();
-            for (final Object element : target) {
-            	if (!OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, parameters).booleanValue()) {
-            		newList.add(element);
+			final Map<Object,Object> newMap = new LinkedHashMap<Object,Object>();
+			for (final Map.Entry<Object,Object> targetEntry : target.entrySet()) {
+            	if (!OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, targetEntry, parameters).booleanValue()) {
+            		newMap.put(targetEntry.getKey(), targetEntry.getValue());
             	}
-            }
-            return createResultObject(newList, arguments.getTarget());
+			}
+            return newMap;
         }
         
         if (SCH_MAP_SELECTOR_REMOVE.matches(arguments)) {
-            final Map<?,?> target = (Map<?,?>) arguments.getTarget();
+            final Map<Object,Object> target = (Map<Object,Object>) arguments.getTarget();
             final ISelect<Object> selector = (ISelect<Object>) arguments.getParameter(0);
-            final List<Object> newList = new ArrayList<Object>();
-            for (final Object element : target) {
-            	if (!selector.eval(element)) {
-            		newList.add(element);
+			final Map<Object,Object> newMap = new LinkedHashMap<Object,Object>();
+			for (final Map.Entry<Object,Object> targetEntry : target.entrySet()) {
+            	if (!selector.eval(targetEntry)) {
+            		newMap.put(targetEntry.getKey(), targetEntry.getValue());
             	}
-            }
-            return createResultObject(newList, arguments.getTarget());
+			}
+            return newMap;
         }
         
         if (SCH_MAP_KEYS_REMOVE_NOT.matches(arguments)) {
-            final Map<?,?> target = (Map<?,?>) arguments.getTarget();
-            final List<?> elementsNotToBeRemoved = (List<?>) arguments.getParameter(0);
-            final List<Object> newList = new ArrayList<Object>();
-            for (final Object element : target) {
-            	if (elementsNotToBeRemoved.contains(element)) {
-            		newList.add(element);
+            final Map<Object,Object> target = (Map<Object,Object>) arguments.getTarget();
+            final List<Object> keysNotToBeRemoved = (List<Object>) arguments.getParameter(0);
+			final Map<Object,Object> newMap = new LinkedHashMap<Object,Object>();
+			for (final Map.Entry<Object,Object> targetEntry : target.entrySet()) {
+            	if (keysNotToBeRemoved.contains(targetEntry.getKey())) {
+            		newMap.put(targetEntry.getKey(), targetEntry.getValue());
             	}
-            }
-            return createResultObject(newList, arguments.getTarget());
+			}
+            return newMap;
         }
         
         
 		return null;
 		
 	}
-    
-    
-    protected abstract X createResultObject(final List<?> newList, final Object target);
     
 
 }

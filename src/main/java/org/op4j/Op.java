@@ -438,6 +438,18 @@ public final class Op {
         System.out.println(printArray(Op.onArray(Of.STRING,stringsArr1).addAllValues(2,"lalero","lururu").removeAllNull().remove(1).get()));
         
         System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).add(1,Arrays.asList(new String[] {"z", "y"})).forEach(2).add("_").get()));
+     
+        
+        System.out.println(Op.onMap(map1).put("fr", "Allô!").get());
+        System.out.println(Op.onMap(map1).put(0,"fr", "Allô!").get());
+        System.out.println(Op.onMap(map1).put(2,"fr", "Allô!").get());
+        System.out.println(Op.onMap(map2).get());
+        System.out.println(Op.onMap(map2).putAll(Op.onMap(map1).put(0,"gl", "Meuuuu!").get()).get());
+        System.out.println(Op.onMap(map2).putAll(Op.onMap(map1).put(0,"gl", "Meuuuu!").get()).remove("en").get());
+        System.out.println(Op.onMap(map2).putAll(Op.onMap(map1).put(0,"gl", "Meuuuu!").get()).removeAll("!#target.key.startsWith('e')").get());
+        
+        System.out.println(printArray(Op.onArrayOfMap(maps1).get()));
+        System.out.println(printArray(Op.onArrayOfMap(maps1).forEach(1).remove("ca").endFor().forEach(0).put("it", "Ciao!").get()));
         
     }
     

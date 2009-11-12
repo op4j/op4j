@@ -38,13 +38,19 @@
  */
 package org.op4j.executables.functions.builtin;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
+import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.Function;
 import org.op4j.executables.functions.FunctionArguments;
+import org.op4j.executables.functions.Functions;
 import org.op4j.executables.functions.IFunc;
+import org.op4j.util.VarArgsUtil;
 
 /**
  * 
@@ -61,6 +67,60 @@ public class MapFunc<X,K,V> implements IFunc<X,Map<K,V>>  {
     
     
     
+    @SuppressWarnings("unchecked")
+    public static <K,V> MapFunc<Map<K,V>,K,V> put(final K key, final V value) {
+    	final Map<K,V> newEntry = new LinkedHashMap<K,V>();
+    	newEntry.put(key, value);
+        return new MapFunc<Map<K,V>,K,V>((Function<Map<K,V>, Map<K,V>>) Functions.getFunctionByName(MapModifyFunction.NAME), Arrays.asList(new Object[] {newEntry, "PUT"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <K,V> MapFunc<Map<K,V>,K,V> put(final int position, final K key, final V value) {
+    	final Map<K,V> newEntry = new LinkedHashMap<K,V>();
+    	newEntry.put(key, value);
+        return new MapFunc<Map<K,V>,K,V>((Function<Map<K,V>, Map<K,V>>) Functions.getFunctionByName(MapModifyFunction.NAME), Arrays.asList(new Object[] {newEntry, Integer.valueOf(position), "PUT"})); 
+    }
+    
+    @SuppressWarnings("unchecked")
+    public static <K,V> MapFunc<Map<K,V>,K,V> putAll(final Map<K,V> map) {
+        return new MapFunc<Map<K,V>,K,V>((Function<Map<K,V>, Map<K,V>>) Functions.getFunctionByName(MapModifyFunction.NAME), Arrays.asList(new Object[] {map, "PUT"})); 
+    }
+    
+    @SuppressWarnings("unchecked")
+    public static <K,V> MapFunc<Map<K,V>,K,V> putAll(final int position, final Map<K,V> map) {
+        return new MapFunc<Map<K,V>,K,V>((Function<Map<K,V>, Map<K,V>>) Functions.getFunctionByName(MapModifyFunction.NAME), Arrays.asList(new Object[] {map, Integer.valueOf(position), "PUT"})); 
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public static <K,V> MapFunc<Map<K,V>,K,V> remove(final K key) {
+        return new MapFunc<Map<K,V>,K,V>((Function<Map<K,V>, Map<K,V>>) Functions.getFunctionByName(MapModifyFunction.NAME), Arrays.asList(new Object[] {Collections.singletonList(key), "REMOVE"})); 
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public static <K,V> MapFunc<Map<K,V>,K,V> removeAllWithKeys(final K... keys) {
+        return new MapFunc<Map<K,V>,K,V>((Function<Map<K,V>, Map<K,V>>) Functions.getFunctionByName(MapModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(keys), "REMOVE"})); 
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public static <K,V> MapFunc<Map<K,V>,K,V> removeAll(final String expression, final Object... optionalExpParams) {
+        return new MapFunc<Map<K,V>,K,V>((Function<Map<K,V>, Map<K,V>>) Functions.getFunctionByName(MapModifyFunction.NAME), Arrays.asList(new Object[] {expression, VarArgsUtil.asOptionalObjectList(optionalExpParams), "REMOVE"})); 
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public static <K,V> MapFunc<Map<K,V>,K,V> removeAll(final ISelect<Map.Entry<K,V>> selector) {
+        return new MapFunc<Map<K,V>,K,V>((Function<Map<K,V>, Map<K,V>>) Functions.getFunctionByName(MapModifyFunction.NAME), Arrays.asList(new Object[] {selector, "REMOVE"})); 
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public static <K,V> MapFunc<Map<K,V>,K,V> removeAllWithKeysNot(final K... keys) {
+        return new MapFunc<Map<K,V>,K,V>((Function<Map<K,V>, Map<K,V>>) Functions.getFunctionByName(MapModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(keys), "REMOVE_NOT"})); 
+    }
     
     
     

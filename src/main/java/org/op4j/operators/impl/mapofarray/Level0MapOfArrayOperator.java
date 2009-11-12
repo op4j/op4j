@@ -27,6 +27,7 @@ import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.builtin.MapFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.listofarray.ILevel0ListOfArrayOperator;
@@ -160,27 +161,22 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
     }
 
 
-    public ILevel0MapOfArrayOperator<K, V> put(K newKey, V[] newValue) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0MapOfArrayOperator<K, V> put(final K newKey, final V[] newValue) {
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.put(newKey, newValue)));
     }
 
 
-    public ILevel0MapOfArrayOperator<K, V> put(int position, K newKey,
-            V[] newValue) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0MapOfArrayOperator<K, V> put(final int position, final K newKey, final V[] newValue) {
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.put(position, newKey, newValue)));
     }
 
 
-    public ILevel0MapOfArrayOperator<K, V> putAll(Map<K, V[]> map) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0MapOfArrayOperator<K, V> putAll(final Map<K, V[]> map) {
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.putAll(map)));
     }
 
-    public ILevel0MapOfArrayOperator<K, V> putAll(int position, Map<K, V[]> map) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0MapOfArrayOperator<K, V> putAll(final int position, final Map<K, V[]> map) {
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.putAll(position, map)));
     }
 
 
@@ -190,38 +186,29 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
     }
 
 
-    public ILevel0MapOfArrayOperator<K, V> remove(K key) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0MapOfArrayOperator<K, V> remove(final K key) {
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.remove(key)));
     }
 
 
-    public ILevel0MapOfArrayOperator<K, V> removeAllWithKeys(K... keys) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0MapOfArrayOperator<K, V> removeAllWithKeys(final K... keys) {
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.removeAllWithKeys(keys)));
     }
 
 
-    public ILevel0MapOfArrayOperator<K, V> removeAll(String expression,
-            Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0MapOfArrayOperator<K, V> removeAll(final String expression, final Object... optionalExpParams) {
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel0MapOfArrayOperator<K, V> removeAll(
-            ISelect<Entry<K, V[]>> selector) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0MapOfArrayOperator<K, V> removeAll(final ISelect<Entry<K, V[]>> selector) {
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.removeAll(selector)));
     }
 
 
-    public ILevel0MapOfArrayOperator<K, V> removeAllWithKeysNot(K... keys) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0MapOfArrayOperator<K, V> removeAllWithKeysNot(final K... keys) {
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.removeAllWithKeysNot(keys)));
     }
-
-
 
 
 

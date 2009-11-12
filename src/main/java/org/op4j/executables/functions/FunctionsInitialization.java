@@ -24,6 +24,7 @@ import org.op4j.executables.functions.builtin.ArrayDistinctFunction;
 import org.op4j.executables.functions.builtin.ArrayModifyFunction;
 import org.op4j.executables.functions.builtin.ListDistinctFunction;
 import org.op4j.executables.functions.builtin.ListModifyFunction;
+import org.op4j.executables.functions.builtin.MapModifyFunction;
 import org.op4j.executables.functions.builtin.SetModifyFunction;
 import org.op4j.executables.functions.conversion.BigDecimalConverter;
 import org.op4j.executables.functions.conversion.BigIntegerConverter;
@@ -68,7 +69,8 @@ final class FunctionsInitialization {
                 ListDistinctFunction.class,
                 ArrayModifyFunction.class,
                 ListModifyFunction.class,
-                SetModifyFunction.class
+                SetModifyFunction.class,
+                MapModifyFunction.class
             };
 
         for(int i = 0; i < implementationClasses.length; i++) {

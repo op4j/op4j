@@ -26,6 +26,7 @@ import java.util.Map.Entry;
 import org.javaruntype.type.Types;
 import org.op4j.Of;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.builtin.MapFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.arrayoflist.ILevel1ArrayOfListElementsOperator;
 import org.op4j.operators.intf.arrayofmap.ILevel0ArrayOfMapOperator;
@@ -160,27 +161,22 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> put(K newKey, V newValue) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfMapElementsOperator<K, V> put(final K newKey, final V newValue) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.put(newKey, newValue)));
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> put(int position, K newKey,
-            V newValue) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfMapElementsOperator<K, V> put(final int position, final K newKey, final V newValue) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.put(position, newKey, newValue)));
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> putAll(Map<K, V> map) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfMapElementsOperator<K, V> putAll(final Map<K, V> map) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.putAll(map)));
     }
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> putAll(int position, Map<K, V> map) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfMapElementsOperator<K, V> putAll(final int position, final Map<K, V> map) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.putAll(position, map)));
     }
 
 
@@ -190,35 +186,28 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> remove(K key) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfMapElementsOperator<K, V> remove(final K key) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.remove(key)));
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> removeAllWithKeys(K... keys) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfMapElementsOperator<K, V> removeAllWithKeys(final K... keys) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.removeAllWithKeys(keys)));
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> removeAll(String expression,
-            Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfMapElementsOperator<K, V> removeAll(final String expression, final Object... optionalExpParams) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> removeAll(
-            ISelect<Entry<K, V>> selector) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfMapElementsOperator<K, V> removeAll(final ISelect<Entry<K, V>> selector) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.removeAll(selector)));
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> removeAllWithKeysNot(K... keys) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfMapElementsOperator<K, V> removeAllWithKeysNot(final K... keys) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.removeAllWithKeysNot(keys)));
     }
 
 

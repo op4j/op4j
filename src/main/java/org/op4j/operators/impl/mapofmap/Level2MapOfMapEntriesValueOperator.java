@@ -25,6 +25,7 @@ import java.util.Map.Entry;
 
 import org.op4j.Of;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.builtin.MapFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.ILevel1MapOfMapEntriesOperator;
@@ -160,28 +161,22 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> put(K2 newKey,
-            V newValue) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> put(final K2 newKey, final V newValue) {
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.put(newKey, newValue)));
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> put(int position,
-            K2 newKey, V newValue) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> put(final int position, final K2 newKey, final V newValue) {
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.put(position, newKey, newValue)));
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> putAll(Map<K2, V> map) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> putAll(final Map<K2,V> map) {
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.putAll(map)));
     }
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> putAll(int position, Map<K2, V> map) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> putAll(final int position, final Map<K2,V> map) {
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.putAll(position, map)));
     }
 
 
@@ -191,36 +186,28 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> remove(K2 key) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> remove(final K2 key) {
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.remove(key)));
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAllWithKeys(K2... keys) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAllWithKeys(final K2... keys) {
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.removeAllWithKeys(keys)));
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAll(
-            String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAll(final String expression, final Object... optionalExpParams) {
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAll(
-            ISelect<Entry<K2, V>> selector) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAll(final ISelect<Entry<K2,V>> selector) {
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.removeAll(selector)));
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAllWithKeysNot(
-            K2... keys) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAllWithKeysNot(final K2... keys) {
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.removeAllWithKeysNot(keys)));
     }
 
 
