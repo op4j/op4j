@@ -47,6 +47,9 @@ public interface IModifiableOperator<T> {
     public IModifiableOperator<T> removeAll(final ISelect<T> filter);
     public IModifiableOperator<T> removeAllNot(final int... positions);
     public IModifiableOperator<T> removeAllValuesNot(final T... values);
+    public IModifiableOperator<T> removeAllNull();
+    public IModifiableOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams);
+    public IModifiableOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams);
     
     
 }

@@ -499,6 +499,26 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
+    public ILevel0GenericMultiOperator<T> removeAllNotNullAnd(
+            String expression, Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+
+    public ILevel0GenericMultiOperator<T> removeAllNull() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+
+    public ILevel0GenericMultiOperator<T> removeAllNullOr(String expression,
+            Object... optionalExpParams) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+
 
 
 

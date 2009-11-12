@@ -156,6 +156,9 @@ public interface ILevel0GenericUniqOperator<T>
     public ILevel0GenericMultiOperator<T> removeAll(final ISelect<T> selector);
     public ILevel0GenericMultiOperator<T> removeAllNot(final int... positions);
     public ILevel0GenericMultiOperator<T> removeAllValuesNot(final T... values);
+    public ILevel0GenericMultiOperator<T> removeAllNull();
+    public ILevel0GenericMultiOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams);
+    public ILevel0GenericMultiOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams);
 
     
     public ILevel0ListOperator<T> buildList();
