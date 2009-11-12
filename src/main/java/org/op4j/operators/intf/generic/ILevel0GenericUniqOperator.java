@@ -30,7 +30,6 @@ import org.op4j.Of;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
-import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.IFunc;
 import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
@@ -59,7 +58,7 @@ import org.op4j.operators.qualities.ICastableOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
-import org.op4j.operators.qualities.IModifiableOperator;
+import org.op4j.operators.qualities.IModifiableGrowableOperator;
 import org.op4j.operators.qualities.ITypeParameterizableXOperator;
 import org.op4j.operators.qualities.IUniqOperator;
 
@@ -82,7 +81,7 @@ public interface ILevel0GenericUniqOperator<T>
         		IExecutableOperator<T>,
         		IConvertibleOperator<T>,
                 ITypeParameterizableXOperator<T>,
-                IModifiableOperator<T> {
+                IModifiableGrowableOperator<T> {
     
     public <X> ILevel0GenericUniqOperator<X> call(final ICall<X,? super T> call);
 
@@ -148,17 +147,6 @@ public interface ILevel0GenericUniqOperator<T>
     public ILevel0GenericMultiOperator<T> addAllValues(final T... newElements);
     public ILevel0GenericMultiOperator<T> addAllValues(final int position, final T... newElements);
     public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection);
-    public ILevel0GenericMultiOperator<T> remove(final int position);
-    public ILevel0GenericMultiOperator<T> removeValue(final T value);
-    public ILevel0GenericMultiOperator<T> removeAll(final int... positions);
-    public ILevel0GenericMultiOperator<T> removeAllValues(final T... values);
-    public ILevel0GenericMultiOperator<T> removeAll(final String expression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<T> removeAll(final ISelect<T> selector);
-    public ILevel0GenericMultiOperator<T> removeAllNot(final int... positions);
-    public ILevel0GenericMultiOperator<T> removeAllValuesNot(final T... values);
-    public ILevel0GenericMultiOperator<T> removeAllNull();
-    public ILevel0GenericMultiOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams);
 
     
     public ILevel0ListOperator<T> buildList();

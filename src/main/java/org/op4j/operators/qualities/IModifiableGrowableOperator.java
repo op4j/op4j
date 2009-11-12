@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.executables.ISelect;
+import java.util.Collection;
 
 
 
@@ -30,17 +30,13 @@ import org.op4j.executables.ISelect;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface IExtractableOperator<T> {
+public interface IModifiableGrowableOperator<T> {
+
+    public IModifiableShrinkableOperator<T> add(final T newElement);
+    public IModifiableShrinkableOperator<T> add(final int position, final T newElement);
+    public IModifiableShrinkableOperator<T> addAllValues(final T... newElements);
+    public IModifiableShrinkableOperator<T> addAllValues(final int position, final T... newElements);
+    public IModifiableShrinkableOperator<T> addAll(final Collection<T> collection);
     
-    public IOperator extract(final int position);
-    public IOperator extract(final T value);
-    public IOperator extractAll(final int... positions);
-    public IOperator extractAll(final T... values);
-    public IOperator extractAll(final String expression, final Object... optionalExpParams);
-    public IOperator extractAll(final ISelect<T> selector);
-    public IOperator extractAllBut(final int... positions);
-    public IOperator extractAllBut(final T... values);
-    public IOperator extractAllBut(final String expression, final Object... optionalExpParams);
-    public IOperator extractAllBut(final ISelect<T> selector);
     
 }

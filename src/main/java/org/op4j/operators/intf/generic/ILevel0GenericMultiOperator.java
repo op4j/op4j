@@ -19,19 +19,12 @@
  */
 package org.op4j.operators.intf.generic;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Calendar;
 import java.util.Collection;
-import java.util.Date;
 
-import org.javaruntype.type.Type;
 import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.IFunc;
-import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
@@ -41,11 +34,8 @@ import org.op4j.operators.intf.mapofset.ILevel0MapOfSetOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
 import org.op4j.operators.qualities.IBuilderMultiOperator;
 import org.op4j.operators.qualities.IBuilderOperator;
-import org.op4j.operators.qualities.IConvertibleOperator;
-import org.op4j.operators.qualities.IEvaluableOperator;
-import org.op4j.operators.qualities.IExecutableOperator;
-import org.op4j.operators.qualities.IExtractableOperator;
-import org.op4j.operators.qualities.IModifiableOperator;
+import org.op4j.operators.qualities.IModifiableGrowableOperator;
+import org.op4j.operators.qualities.IModifiableShrinkableOperator;
 import org.op4j.operators.qualities.IMultiOperator;
 import org.op4j.operators.qualities.ITypeParameterizableXOperator;
 import org.op4j.operators.qualities.IUniqableOperator;
@@ -63,52 +53,13 @@ public interface ILevel0GenericMultiOperator<T>
                 IUniqableOperator<T>,
         		IBuilderOperator<T>,
         		IBuilderMultiOperator<T>,
-        		IEvaluableOperator<T>,
-        		IExecutableOperator<T>,
-        		IConvertibleOperator<T>,
                 ITypeParameterizableXOperator<T>,
-                IModifiableOperator<T>,
-                IExtractableOperator<T> {
+                IModifiableGrowableOperator<T>,
+                IModifiableShrinkableOperator<T> {
 
     
     public ILevel0GenericUniqOperator<T> uniq();
 
-    
-    public <X> ILevel0GenericUniqOperator<X> eval(final IEval<X,? super T> eval);
-
-    public ILevel0GenericUniqOperator<Byte> evalByte(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Short> evalShort(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Integer> evalInteger(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Long> evalLong(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Float> evalFloat(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Double> evalDouble(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<BigInteger> evalBigInteger(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<BigDecimal> evalBigDecimal(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Boolean> evalBoolean(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Calendar> evalCalendar(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<String> evalString(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Character> evalCharacter(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Number> evalNumber(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Date> evalDate(final String evalExpression, final Object... optionalArguments);
-
-
-    public <X> ILevel0GenericUniqOperator<X> exec(final IFunc<X,? super T> exec);
-
-    
-    public <X> ILevel0GenericUniqOperator<X> conv(final IConv<X> conv);
-    public <X> ILevel0GenericUniqOperator<X> convTo(final Type<X> resultType, final Object... parameters);
-    
-    public ILevel0GenericUniqOperator<Byte> convToByte(final Object... parameters);
-    public ILevel0GenericUniqOperator<Short> convToShort(final Object... parameters);
-    public ILevel0GenericUniqOperator<Integer> convToInteger(final Object... parameters);
-    public ILevel0GenericUniqOperator<Long> convToLong(final Object... parameters);
-    public ILevel0GenericUniqOperator<Float> convToFloat(final Object... parameters);
-    public ILevel0GenericUniqOperator<Double> convToDouble(final Object... parameters);
-    public ILevel0GenericUniqOperator<BigInteger> convToBigInteger(final Object... parameters);
-    public ILevel0GenericUniqOperator<BigDecimal> convToBigDecimal(final Object... parameters);
-    public ILevel0GenericUniqOperator<Boolean> convToBoolean(final Object... parameters);
-    public ILevel0GenericUniqOperator<Calendar> convToCalendar(final Object... parameters);
-    public ILevel0GenericUniqOperator<String> convToString(final Object... parameters);
     
     
     public <X> ILevel0GenericMultiOperator<X> of(final Of<X> of);
@@ -171,19 +122,6 @@ public interface ILevel0GenericMultiOperator<T>
     
     public <X> ILevel0MapOfArrayOperator<X,X> buildMapOfArray(final Of<X> of);
     public <X> ILevel0MapOfArrayOperator<X,X> buildMapOfArray(final Class<X> arrayOfClass);
-       
-    
-    public ILevel0GenericUniqOperator<T> extract(final int position);
-    public ILevel0GenericUniqOperator<T> extract(final T value);
-    public ILevel0GenericMultiOperator<T> extractAll(final int... positions);
-    public ILevel0GenericMultiOperator<T> extractAll(final T... values);
-    public ILevel0GenericMultiOperator<T> extractAll(final String expression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<T> extractAll(final ISelect<T> selector);
-    public ILevel0GenericMultiOperator<T> extractAllBut(final int... positions);
-    public ILevel0GenericMultiOperator<T> extractAllBut(final T... values);
-    public ILevel0GenericMultiOperator<T> extractAllBut(final String expression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<T> extractAllBut(final ISelect<T> selector);
-    
     
 
 }

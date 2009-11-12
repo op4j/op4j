@@ -33,7 +33,6 @@ import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
-import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.IFunc;
 import org.op4j.executables.functions.conversion.Conv;
 import org.op4j.executables.functions.conversion.IConv;
@@ -719,76 +718,6 @@ public class Level0GenericUniqOperator<T> extends Operator
         // TODO Auto-generated method stub
         return null;
     }
-
-
-    public ILevel0GenericMultiOperator<T> remove(int position) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0GenericMultiOperator<T> removeValue(T value) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0GenericMultiOperator<T> removeAll(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0GenericMultiOperator<T> removeAllValues(T... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0GenericMultiOperator<T> removeAll(String expression,
-            Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0GenericMultiOperator<T> removeAll(ISelect<T> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0GenericMultiOperator<T> removeAllNot(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0GenericMultiOperator<T> removeAllValuesNot(T... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0GenericMultiOperator<T> removeAllNotNullAnd(
-            String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0GenericMultiOperator<T> removeAllNull() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0GenericMultiOperator<T> removeAllNullOr(String expression,
-            Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
 
 
 
