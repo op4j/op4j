@@ -25,6 +25,7 @@ import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.builtin.GenericFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericMultiOperator;
@@ -54,29 +55,27 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<T> add(T newElement) {
+    public ILevel0GenericMultiOperator<T> add(final T newElement) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiAdd(newElement)));
+    }
+
+
+    public ILevel0GenericMultiOperator<T> add(final int position, final T newElement) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0GenericMultiOperator<T> addAllValues(final T... newElements) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.uniqAddAllValues(newElements)));
+    }
+
+    public ILevel0GenericMultiOperator<T> addAllValues(final int position, final T... newElements) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0GenericMultiOperator<T> add(int position, T newElement) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0GenericMultiOperator<T> addAllValues(T... newElements) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0GenericMultiOperator<T> addAllValues(int position, T... newElements) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0GenericMultiOperator<T> addAll(Collection<T> collection) {
+    public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -310,4 +309,13 @@ public class Level0GenericMultiOperator<T> extends Operator
         return 0;
     }
 
+   
+    
+    
+    
+@Override
+public String toString() {
+    return getTarget().get().toString();
+}
+    
 }

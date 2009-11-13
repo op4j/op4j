@@ -34,6 +34,7 @@ import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.functions.IFunc;
+import org.op4j.executables.functions.builtin.GenericFunc;
 import org.op4j.executables.functions.conversion.Conv;
 import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.impl.Operator;
@@ -80,29 +81,27 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<T> add(T newElement) {
+    public ILevel0GenericMultiOperator<T> add(final T newElement) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.uniqAdd(newElement)));
+    }
+
+
+    public ILevel0GenericMultiOperator<T> add(final int position, final T newElement) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ILevel0GenericMultiOperator<T> addAllValues(final T... newElements) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.uniqAddAllValues(newElements)));
+    }
+
+    public ILevel0GenericMultiOperator<T> addAllValues(final int position, final T... newElements) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0GenericMultiOperator<T> add(int position, T newElement) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0GenericMultiOperator<T> addAllValues(T... newElements) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0GenericMultiOperator<T> addAllValues(int position, T... newElements) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0GenericMultiOperator<T> addAll(Collection<T> collection) {
+    public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection) {
         // TODO Auto-generated method stub
         return null;
     }

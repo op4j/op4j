@@ -36,12 +36,12 @@ import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.ArrayFunc;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.impl.arrayoflist.Level0ArrayOfListOperator;
 import org.op4j.operators.impl.arrayofmap.Level0ArrayOfMapOperator;
 import org.op4j.operators.impl.arrayofset.Level0ArrayOfSetOperator;
+import org.op4j.operators.impl.generic.Level0GenericMultiOperator;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.impl.list.Level0ListOperator;
 import org.op4j.operators.impl.listofarray.Level0ListOfArrayOperator;
@@ -81,6 +81,7 @@ import org.op4j.operators.intf.setoflist.ILevel0SetOfListOperator;
 import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.ILevel0SetOfSetOperator;
 import org.op4j.target.Target;
+import org.op4j.util.VarArgsUtil;
 
 
 /**
@@ -158,7 +159,7 @@ public final class Op {
 
     
     public static <T> ILevel0GenericMultiOperator<T> onAll(final T... targets) {
-        return null;
+        return new Level0GenericMultiOperator<T>(Target.forObject(VarArgsUtil.asRequiredObjectList(targets)));
     }
 
     
@@ -450,6 +451,11 @@ public final class Op {
         
         System.out.println(printArray(Op.onArrayOfMap(maps1).get()));
         System.out.println(printArray(Op.onArrayOfMap(maps1).forEach(1).remove("ca").endFor().forEach(0).put("it", "Ciao!").get()));
+        
+        System.out.println(Op.onAll(234,12,231));
+        System.out.println(Op.onAll(234,12,231).add(10));
+        System.out.println(Op.on(234).add(10));
+        System.out.println(Op.on(234).addAllValues(10,12,13));
         
     }
     
