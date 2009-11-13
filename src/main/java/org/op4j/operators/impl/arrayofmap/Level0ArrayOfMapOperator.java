@@ -50,12 +50,12 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
 
 
     public ILevel0ArrayOfMapOperator<K, V> add(final Map<K, V>... newElements) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.addAllValues(newElements)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.add(newElements)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> insert(final int position, final Map<K, V>... newElements) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.addAllValues(position, newElements)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.insert(position, newElements)));
     }
 
 
@@ -213,38 +213,38 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
 
 
     public ILevel0ArrayOfMapOperator<K, V> removePositions(final int... positions) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeAll(positions)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removePositions(positions)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeValues(final Map<K, V>... values) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeAllValues(values)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeValues(values)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeAll(expression, optionalExpParams)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeSelected(final ISelect<Map<K, V>> selector) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeAll(selector)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeSelected(selector)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeAllExceptPositions(final int... positions) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeAllNot(positions)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeAllExceptPositions(positions)));
     }
 
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeAllNotNullAnd(expression, optionalExpParams)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeNotNullsMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeNulls() {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeAllNull()));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeNulls()));
     }
 
     

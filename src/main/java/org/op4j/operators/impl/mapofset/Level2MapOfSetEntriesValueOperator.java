@@ -57,12 +57,12 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> add(final V... newElements) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.addAllValues(newElements)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.add(newElements)));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> insert(final int position, final V... newElements) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.addAllValues(position, newElements)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.insert(position, newElements)));
     }
 
 
@@ -224,38 +224,38 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removePositions(final int... positions) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAll(positions)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removePositions(positions)));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeValues(final V... values) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAllValues(values)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeValues(values)));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAll(expression, optionalExpParams)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeSelected(final ISelect<V> selector) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAll(selector)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeSelected(selector)));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllExceptPositions(final int... positions) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAllNot(positions)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAllExceptPositions(positions)));
     }
 
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAllNotNullAnd(expression, optionalExpParams)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeNotNullsMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeNulls() {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAllNull()));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeNulls()));
     }
 
     

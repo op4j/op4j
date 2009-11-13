@@ -165,7 +165,7 @@ public class Level0MapOfSetOperator<K,V> extends Operator
 
 
     public ILevel0MapOfSetOperator<K, V> insert(final int position, final K newKey, final Set<V> newValue) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.put(position, newKey, newValue)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.insert(position, newKey, newValue)));
     }
 
 
@@ -174,7 +174,7 @@ public class Level0MapOfSetOperator<K,V> extends Operator
     }
 
     public ILevel0MapOfSetOperator<K, V> insertAll(final int position, final Map<K, Set<V>> map) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.putAll(position, map)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.insertAll(position, map)));
     }
 
 
@@ -185,22 +185,22 @@ public class Level0MapOfSetOperator<K,V> extends Operator
 
 
     public ILevel0MapOfSetOperator<K, V> removeKeys(final K... keys) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.removeAllWithKeys(keys)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.removeKeys(keys)));
     }
 
 
     public ILevel0MapOfSetOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.removeAll(expression, optionalExpParams)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.removeMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0MapOfSetOperator<K, V> removeSelected(final ISelect<Entry<K, Set<V>>> selector) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.removeAll(selector)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.removeoSelected(selector)));
     }
 
 
     public ILevel0MapOfSetOperator<K, V> removeAllExceptKeys(final K... keys) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.removeAllWithKeysNot(keys)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.removeAllExceptKeys(keys)));
     }
 
 

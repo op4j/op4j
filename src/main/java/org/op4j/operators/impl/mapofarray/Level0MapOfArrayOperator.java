@@ -167,7 +167,7 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
 
 
     public ILevel0MapOfArrayOperator<K, V> insert(final int position, final K newKey, final V[] newValue) {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.put(position, newKey, newValue)));
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.insert(position, newKey, newValue)));
     }
 
 
@@ -176,7 +176,7 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
     }
 
     public ILevel0MapOfArrayOperator<K, V> insertAll(final int position, final Map<K, V[]> map) {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.putAll(position, map)));
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.insertAll(position, map)));
     }
 
 
@@ -187,22 +187,22 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
 
 
     public ILevel0MapOfArrayOperator<K, V> removeKeys(final K... keys) {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.removeAllWithKeys(keys)));
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.removeKeys(keys)));
     }
 
 
     public ILevel0MapOfArrayOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.removeAll(expression, optionalExpParams)));
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.removeMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0MapOfArrayOperator<K, V> removeSelected(final ISelect<Entry<K, V[]>> selector) {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.removeAll(selector)));
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.removeoSelected(selector)));
     }
 
 
     public ILevel0MapOfArrayOperator<K, V> removeAllExceptKeys(final K... keys) {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.removeAllWithKeysNot(keys)));
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.removeAllExceptKeys(keys)));
     }
 
 

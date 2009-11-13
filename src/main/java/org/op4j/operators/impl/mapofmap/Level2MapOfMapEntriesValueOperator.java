@@ -167,7 +167,7 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> insert(final int position, final K2 newKey, final V newValue) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.put(position, newKey, newValue)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.insert(position, newKey, newValue)));
     }
 
 
@@ -176,7 +176,7 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
     }
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> insertAll(final int position, final Map<K2,V> map) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.putAll(position, map)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.insertAll(position, map)));
     }
 
 
@@ -187,22 +187,22 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeKeys(final K2... keys) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.removeAllWithKeys(keys)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.removeKeys(keys)));
     }
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.removeAll(expression, optionalExpParams)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.removeMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeSelected(final ISelect<Entry<K2,V>> selector) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.removeAll(selector)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.removeoSelected(selector)));
     }
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAllExceptKeys(final K2... keys) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.removeAllWithKeysNot(keys)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.removeAllExceptKeys(keys)));
     }
 
 

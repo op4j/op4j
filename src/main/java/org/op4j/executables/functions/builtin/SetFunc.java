@@ -41,7 +41,6 @@ package org.op4j.executables.functions.builtin;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -69,23 +68,12 @@ public class SetFunc<X,T> implements IFunc<X,Set<T>>  {
     
     
     @SuppressWarnings("unchecked")
-    public static <T> SetFunc<Set<T>,T> add(final T newElement) {
-        return new SetFunc<Set<T>,T>((Function<Set<T>, Set<T>>) Functions.getFunctionByName(SetModifyFunction.NAME), Arrays.asList(new Object[] {Collections.singletonList(newElement), "ADD"})); 
-    }
-    
-    
-    @SuppressWarnings("unchecked")
-    public static <T> SetFunc<Set<T>,T> add(final int position, final T newElement) {
-        return new SetFunc<Set<T>,T>((Function<Set<T>, Set<T>>) Functions.getFunctionByName(SetModifyFunction.NAME), Arrays.asList(new Object[] {Collections.singletonList(newElement), Integer.valueOf(position), "ADD"})); 
-    }
-    
-    @SuppressWarnings("unchecked")
-    public static <T> SetFunc<Set<T>,T> addAllValues(final T... newElements) {
+    public static <T> SetFunc<Set<T>,T> add(final T... newElements) {
         return new SetFunc<Set<T>,T>((Function<Set<T>, Set<T>>) Functions.getFunctionByName(SetModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(newElements), "ADD"})); 
     }
     
     @SuppressWarnings("unchecked")
-    public static <T> SetFunc<Set<T>,T> addAllValues(final int position, final T... newElements) {
+    public static <T> SetFunc<Set<T>,T> insert(final int position, final T... newElements) {
         return new SetFunc<Set<T>,T>((Function<Set<T>, Set<T>>) Functions.getFunctionByName(SetModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(newElements), Integer.valueOf(position), "ADD"})); 
     }
     
@@ -97,68 +85,45 @@ public class SetFunc<X,T> implements IFunc<X,Set<T>>  {
 
 
     @SuppressWarnings("unchecked")
-    public static <T> SetFunc<Set<T>,T> remove(final int position) {
-        return new SetFunc<Set<T>,T>((Function<Set<T>, Set<T>>) Functions.getFunctionByName(SetModifyFunction.NAME), Arrays.asList(new Object[] {new Integer[] {Integer.valueOf(position)}, "REMOVE"})); 
-    }
-
-
-    @SuppressWarnings("unchecked")
-    public static <T> SetFunc<Set<T>,T> removeValue(final T value) {
-        return new SetFunc<Set<T>,T>((Function<Set<T>, Set<T>>) Functions.getFunctionByName(SetModifyFunction.NAME), Arrays.asList(new Object[] {Collections.singletonList(value), "REMOVE"})); 
-    }
-
-
-    @SuppressWarnings("unchecked")
-    public static <T> SetFunc<Set<T>,T> removeAll(final int... positions) {
+    public static <T> SetFunc<Set<T>,T> removePositions(final int... positions) {
         return new SetFunc<Set<T>,T>((Function<Set<T>, Set<T>>) Functions.getFunctionByName(SetModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredIntegerArray(positions), "REMOVE"})); 
     }
 
 
     @SuppressWarnings("unchecked")
-    public static <T> SetFunc<Set<T>,T> removeAllValues(final T... values) {
+    public static <T> SetFunc<Set<T>,T> removeValues(final T... values) {
         return new SetFunc<Set<T>,T>((Function<Set<T>, Set<T>>) Functions.getFunctionByName(SetModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(values), "REMOVE"})); 
     }
 
 
     @SuppressWarnings("unchecked")
-    public static <T> SetFunc<Set<T>,T> removeAll(final String expression, final Object... optionalExpParams) {
+    public static <T> SetFunc<Set<T>,T> removeMatching(final String expression, final Object... optionalExpParams) {
         return new SetFunc<Set<T>,T>((Function<Set<T>, Set<T>>) Functions.getFunctionByName(SetModifyFunction.NAME), Arrays.asList(new Object[] {expression, VarArgsUtil.asOptionalObjectList(optionalExpParams), "REMOVE"})); 
     }
 
 
     @SuppressWarnings("unchecked")
-    public static <T> SetFunc<Set<T>,T> removeAll(final ISelect<T> selector) {
+    public static <T> SetFunc<Set<T>,T> removeSelected(final ISelect<T> selector) {
         return new SetFunc<Set<T>,T>((Function<Set<T>, Set<T>>) Functions.getFunctionByName(SetModifyFunction.NAME), Arrays.asList(new Object[] {selector, "REMOVE"})); 
     }
 
 
     @SuppressWarnings("unchecked")
-    public static <T> SetFunc<Set<T>,T> removeAllNot(final int... positions) {
+    public static <T> SetFunc<Set<T>,T> removeAllExceptPositions(final int... positions) {
         return new SetFunc<Set<T>,T>((Function<Set<T>, Set<T>>) Functions.getFunctionByName(SetModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredIntegerArray(positions), "REMOVE_NOT"})); 
     }
 
 
-    @SuppressWarnings("unchecked")
-    public static <T> SetFunc<Set<T>,T> removeAllValuesNot(final T... values) {
-        return new SetFunc<Set<T>,T>((Function<Set<T>, Set<T>>) Functions.getFunctionByName(SetModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(values), "REMOVE_NOT"})); 
-    }
-
 
     @SuppressWarnings("unchecked")
-    public static <T> SetFunc<Set<T>,T> removeAllNull() {
+    public static <T> SetFunc<Set<T>,T> removeNulls() {
         return new SetFunc<Set<T>,T>((Function<Set<T>, Set<T>>) Functions.getFunctionByName(SetModifyFunction.NAME), Arrays.asList(new Object[] {"REMOVE_NULL"})); 
     }
     
     
     @SuppressWarnings("unchecked")
-    public static <T> SetFunc<Set<T>,T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+    public static <T> SetFunc<Set<T>,T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
         return new SetFunc<Set<T>,T>((Function<Set<T>, Set<T>>) Functions.getFunctionByName(SetModifyFunction.NAME), Arrays.asList(new Object[] {expression, VarArgsUtil.asOptionalObjectList(optionalExpParams), "REMOVE_NOT_NULL_AND"})); 
-    }
-
-    
-    @SuppressWarnings("unchecked")
-    public static <T> SetFunc<Set<T>,T> removeAllNullOr(final String expression, final Object... optionalExpParams) {
-        return new SetFunc<Set<T>,T>((Function<Set<T>, Set<T>>) Functions.getFunctionByName(SetModifyFunction.NAME), Arrays.asList(new Object[] {expression, VarArgsUtil.asOptionalObjectList(optionalExpParams), "REMOVE_NULL_OR"})); 
     }
     
     

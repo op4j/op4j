@@ -56,12 +56,12 @@ public class Level0SetOperator<T> extends Operator
 
 
     public ILevel0SetOperator<T> add(final T... newElements) {
-        return new Level0SetOperator<T>(getTarget().execute(SetFunc.addAllValues(newElements)));
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.add(newElements)));
     }
 
 
     public ILevel0SetOperator<T> insert(final int position, final T... newElements) {
-        return new Level0SetOperator<T>(getTarget().execute(SetFunc.addAllValues(position, newElements)));
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.insert(position, newElements)));
     }
 
 
@@ -220,38 +220,38 @@ public class Level0SetOperator<T> extends Operator
 
 
     public ILevel0SetOperator<T> removePositions(final int... positions) {
-        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeAll(positions)));
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removePositions(positions)));
     }
 
 
     public ILevel0SetOperator<T> removeValues(final T... values) {
-        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeAllValues(values)));
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeValues(values)));
     }
 
 
     public ILevel0SetOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeAll(expression, optionalExpParams)));
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0SetOperator<T> removeSelected(final ISelect<T> selector) {
-        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeAll(selector)));
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeSelected(selector)));
     }
 
 
     public ILevel0SetOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeAllNot(positions)));
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeAllExceptPositions(positions)));
     }
 
 
 
     public ILevel0SetOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeAllNotNullAnd(expression, optionalExpParams)));
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeNotNullsMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0SetOperator<T> removeNulls() {
-        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeAllNull()));
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.removeNulls()));
     }
 
     

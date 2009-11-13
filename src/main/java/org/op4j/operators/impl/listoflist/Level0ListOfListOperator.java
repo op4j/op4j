@@ -64,12 +64,12 @@ public class Level0ListOfListOperator<T> extends Operator
 
 
     public ILevel0ListOfListOperator<T> add(final List<T>... newElements) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.addAllValues(newElements)));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.add(newElements)));
     }
 
 
     public ILevel0ListOfListOperator<T> insert(final int position, final List<T>... newElements) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.addAllValues(position, newElements)));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.insert(position, newElements)));
     }
 
 
@@ -233,38 +233,38 @@ public class Level0ListOfListOperator<T> extends Operator
 
 
     public ILevel0ListOfListOperator<T> removePositions(final int... positions) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeAll(positions)));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removePositions(positions)));
     }
 
 
     public ILevel0ListOfListOperator<T> removeValues(final List<T>... values) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeAllValues(values)));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeValues(values)));
     }
 
 
     public ILevel0ListOfListOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeAll(expression, optionalExpParams)));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0ListOfListOperator<T> removeSelected(final ISelect<List<T>> selector) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeAll(selector)));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeSelected(selector)));
     }
 
 
     public ILevel0ListOfListOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeAllNot(positions)));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeAllExceptPositions(positions)));
     }
 
 
 
     public ILevel0ListOfListOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeAllNotNullAnd(expression, optionalExpParams)));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeNotNullsMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0ListOfListOperator<T> removeNulls() {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeAllNull()));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeNulls()));
     }
 
     

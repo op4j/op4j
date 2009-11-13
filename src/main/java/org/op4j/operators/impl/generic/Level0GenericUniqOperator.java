@@ -87,7 +87,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
     public ILevel0GenericMultiOperator<T> add(final T... newElements) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.uniqAddAllValues(newElements)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.uniqAdd(newElements)));
     }
 
     public ILevel0GenericMultiOperator<T> insert(final int position, final T... newElements) {

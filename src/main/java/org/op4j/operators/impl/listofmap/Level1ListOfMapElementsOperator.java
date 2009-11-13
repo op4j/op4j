@@ -167,7 +167,7 @@ public class Level1ListOfMapElementsOperator<K,V> extends Operator
 
 
     public ILevel1ListOfMapElementsOperator<K, V> insert(final int position, final K newKey, final V newValue) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.put(position, newKey, newValue)));
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.insert(position, newKey, newValue)));
     }
 
 
@@ -176,7 +176,7 @@ public class Level1ListOfMapElementsOperator<K,V> extends Operator
     }
 
     public ILevel1ListOfMapElementsOperator<K, V> insertAll(final int position, final Map<K, V> map) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.putAll(position, map)));
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.insertAll(position, map)));
     }
 
 
@@ -187,22 +187,22 @@ public class Level1ListOfMapElementsOperator<K,V> extends Operator
 
 
     public ILevel1ListOfMapElementsOperator<K, V> removeKeys(final K... keys) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.removeAllWithKeys(keys)));
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.removeKeys(keys)));
     }
 
 
     public ILevel1ListOfMapElementsOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.removeAll(expression, optionalExpParams)));
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.removeMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel1ListOfMapElementsOperator<K, V> removeSelected(final ISelect<Entry<K, V>> selector) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.removeAll(selector)));
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.removeoSelected(selector)));
     }
 
 
     public ILevel1ListOfMapElementsOperator<K, V> removeAllExceptKeys(final K... keys) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.removeAllWithKeysNot(keys)));
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.removeAllExceptKeys(keys)));
     }
 
 

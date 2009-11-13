@@ -39,7 +39,6 @@
 package org.op4j.executables.functions.builtin;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import org.javaruntype.type.Type;
@@ -65,23 +64,13 @@ public class GenericFunc<X,T> implements IFunc<X,T>  {
     
     
     @SuppressWarnings("unchecked")
-    public static <T> GenericFunc<T,T> uniqAdd(final T newElement) {
-        return new GenericFunc<T,T>((Function<T,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {Collections.singletonList(newElement), "UNIQ_ADD"})); 
-    }
-    
-    @SuppressWarnings("unchecked")
-    public static <T> GenericFunc<T,T> uniqAddAllValues(final T... newElements) {
+    public static <T> GenericFunc<T,T> uniqAdd(final T... newElements) {
         return new GenericFunc<T,T>((Function<T,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(newElements), "UNIQ_ADD"})); 
     }
     
     
     @SuppressWarnings("unchecked")
-    public static <T> GenericFunc<T,T> multiAdd(final T newElement) {
-        return new GenericFunc<T,T>((Function<T,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {Collections.singletonList(newElement), "MULTI_ADD"})); 
-    }
-    
-    @SuppressWarnings("unchecked")
-    public static <T> GenericFunc<T,T> multiAddAllValkues(final T... newElements) {
+    public static <T> GenericFunc<T,T> multiAdd(final T... newElements) {
         return new GenericFunc<T,T>((Function<T,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(newElements), "MULTI_ADD"})); 
     }
     
