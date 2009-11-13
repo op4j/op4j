@@ -49,22 +49,22 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0ArrayOfMapOperator<K, V> add(final Map<K, V> newElement) {
+    public ILevel0ArrayOfMapOperator<K, V> deleteAAA(final Map<K, V> newElement) {
         return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.add(newElement)));
     }
 
 
-    public ILevel0ArrayOfMapOperator<K, V> add(final int position, final Map<K, V> newElement) {
+    public ILevel0ArrayOfMapOperator<K, V> deleteAAB(final int position, final Map<K, V> newElement) {
         return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.add(position, newElement)));
     }
 
 
-    public ILevel0ArrayOfMapOperator<K, V> addAllValues(final Map<K, V>... newElements) {
+    public ILevel0ArrayOfMapOperator<K, V> add(final Map<K, V>... newElements) {
         return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.addAllValues(newElements)));
     }
 
 
-    public ILevel0ArrayOfMapOperator<K, V> addAllValues(final int position, final Map<K, V>... newElements) {
+    public ILevel0ArrayOfMapOperator<K, V> insert(final int position, final Map<K, V>... newElements) {
         return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.addAllValues(position, newElements)));
     }
 
@@ -222,12 +222,12 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0ArrayOfMapOperator<K, V> remove(final int position) {
+    public ILevel0ArrayOfMapOperator<K, V> deleteCCC(final int position) {
         return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.remove(position)));
     }
 
 
-    public ILevel0ArrayOfMapOperator<K, V> removeValue(final Map<K, V> value) {
+    public ILevel0ArrayOfMapOperator<K, V> deleteCCD(final Map<K, V> value) {
         return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeValue(value)));
     }
 

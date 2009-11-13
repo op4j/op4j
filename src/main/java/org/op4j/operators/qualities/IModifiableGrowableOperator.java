@@ -32,10 +32,10 @@ import java.util.Collection;
  */
 public interface IModifiableGrowableOperator<T> {
 
-    public IModifiableShrinkableOperator<T> add(final T newElement);
-    public IModifiableShrinkableOperator<T> add(final int position, final T newElement);
-    public IModifiableShrinkableOperator<T> addAllValues(final T... newElements);
-    public IModifiableShrinkableOperator<T> addAllValues(final int position, final T... newElements);
+    public IModifiableShrinkableOperator<T> deleteBBB(final T newElement);
+    public IModifiableShrinkableOperator<T> deleteBBC(final int position, final T newElement);
+    public IModifiableShrinkableOperator<T> add(final T... newElements);
+    public IModifiableShrinkableOperator<T> insert(final int position, final T... newElements);
     public IModifiableShrinkableOperator<T> addAll(final Collection<T> collection);
     
     

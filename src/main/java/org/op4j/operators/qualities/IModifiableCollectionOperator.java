@@ -34,13 +34,13 @@ import org.op4j.executables.ISelect;
  */
 public interface IModifiableCollectionOperator<T> {
     
-    public IModifiableCollectionOperator<T> add(final T newElement);
-    public IModifiableCollectionOperator<T> add(final int position, final T newElement);
-    public IModifiableCollectionOperator<T> addAllValues(final T... newElements);
-    public IModifiableCollectionOperator<T> addAllValues(final int position, final T... newElements);
+    public IModifiableCollectionOperator<T> deleteAAA(final T newElement);
+    public IModifiableCollectionOperator<T> deleteAAB(final int position, final T newElement);
+    public IModifiableCollectionOperator<T> add(final T... newElements);
+    public IModifiableCollectionOperator<T> insert(final int position, final T... newElements);
     public IModifiableCollectionOperator<T> addAll(final Collection<T> collection);
-    public IModifiableCollectionOperator<T> remove(final int position);
-    public IModifiableCollectionOperator<T> removeValue(final T value);
+    public IModifiableCollectionOperator<T> deleteCCC(final int position);
+    public IModifiableCollectionOperator<T> deleteCCD(final T value);
     public IModifiableCollectionOperator<T> removeAll(final int... positions);
     public IModifiableCollectionOperator<T> removeAllValues(final T... values);
     public IModifiableCollectionOperator<T> removeAll(final String expression, final Object... optionalExpParams);

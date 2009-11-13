@@ -62,13 +62,13 @@ public interface ILevel0SetOfMapOperator<K,V>
     
     public ILevel0SetOfMapOperator<?,?> raw();
     
-    public ILevel0SetOfMapOperator<K,V> add(final Map<K,V> newElement);
-    public ILevel0SetOfMapOperator<K,V> add(final int position, final Map<K,V> newElement);
-    public ILevel0SetOfMapOperator<K,V> addAllValues(final Map<K,V>... newElements);
-    public ILevel0SetOfMapOperator<K,V> addAllValues(final int position, final Map<K,V>... newElements);
+    public ILevel0SetOfMapOperator<K,V> deleteAAA(final Map<K,V> newElement);
+    public ILevel0SetOfMapOperator<K,V> deleteAAB(final int position, final Map<K,V> newElement);
+    public ILevel0SetOfMapOperator<K,V> add(final Map<K,V>... newElements);
+    public ILevel0SetOfMapOperator<K,V> insert(final int position, final Map<K,V>... newElements);
     public ILevel0SetOfMapOperator<K,V> addAll(final Collection<Map<K,V>> collection);
-    public ILevel0SetOfMapOperator<K,V> remove(final int position);
-    public ILevel0SetOfMapOperator<K,V> removeValue(final Map<K,V> value);
+    public ILevel0SetOfMapOperator<K,V> deleteCCC(final int position);
+    public ILevel0SetOfMapOperator<K,V> deleteCCD(final Map<K,V> value);
     public ILevel0SetOfMapOperator<K,V> removeAll(final int... positions);
     public ILevel0SetOfMapOperator<K,V> removeAllValues(final Map<K,V>... values);
     public ILevel0SetOfMapOperator<K,V> removeAll(final String expression, final Object... optionalExpParams);

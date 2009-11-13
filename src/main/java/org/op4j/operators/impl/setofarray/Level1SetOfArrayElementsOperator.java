@@ -58,22 +58,22 @@ public class Level1SetOfArrayElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1SetOfArrayElementsOperator<T> add(final T newElement) {
+    public ILevel1SetOfArrayElementsOperator<T> deleteAAA(final T newElement) {
         return new Level1SetOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.add(newElement)));
     }
 
 
-    public ILevel1SetOfArrayElementsOperator<T> add(final int position, final T newElement) {
+    public ILevel1SetOfArrayElementsOperator<T> deleteAAB(final int position, final T newElement) {
         return new Level1SetOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.add(position, newElement)));
     }
 
 
-    public ILevel1SetOfArrayElementsOperator<T> addAllValues(final T... newElements) {
+    public ILevel1SetOfArrayElementsOperator<T> add(final T... newElements) {
         return new Level1SetOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.addAllValues(newElements)));
     }
 
 
-    public ILevel1SetOfArrayElementsOperator<T> addAllValues(final int position, final T... newElements) {
+    public ILevel1SetOfArrayElementsOperator<T> insert(final int position, final T... newElements) {
         return new Level1SetOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.addAllValues(position, newElements)));
     }
 
@@ -231,12 +231,12 @@ public class Level1SetOfArrayElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1SetOfArrayElementsOperator<T> remove(final int position) {
+    public ILevel1SetOfArrayElementsOperator<T> deleteCCC(final int position) {
         return new Level1SetOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.remove(position)));
     }
 
 
-    public ILevel1SetOfArrayElementsOperator<T> removeValue(final T value) {
+    public ILevel1SetOfArrayElementsOperator<T> deleteCCD(final T value) {
         return new Level1SetOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.removeValue(value)));
     }
 

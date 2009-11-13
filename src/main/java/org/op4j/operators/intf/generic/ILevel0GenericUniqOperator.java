@@ -142,10 +142,10 @@ public interface ILevel0GenericUniqOperator<T>
     public ILevel0GenericUniqOperator<?> raw();
     
 
-    public ILevel0GenericMultiOperator<T> add(final T newElement);
-    public ILevel0GenericMultiOperator<T> add(final int position, final T newElement);
-    public ILevel0GenericMultiOperator<T> addAllValues(final T... newElements);
-    public ILevel0GenericMultiOperator<T> addAllValues(final int position, final T... newElements);
+    public ILevel0GenericMultiOperator<T> deleteBBB(final T newElement);
+    public ILevel0GenericMultiOperator<T> deleteBBC(final int position, final T newElement);
+    public ILevel0GenericMultiOperator<T> add(final T... newElements);
+    public ILevel0GenericMultiOperator<T> insert(final int position, final T... newElements);
     public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection);
 
     

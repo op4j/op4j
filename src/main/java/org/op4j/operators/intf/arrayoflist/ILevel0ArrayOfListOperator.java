@@ -105,13 +105,13 @@ public interface ILevel0ArrayOfListOperator<T>
     
     public ILevel0ArrayOperator<T> flatten();
     
-    public ILevel0ArrayOfListOperator<T> add(final List<T> newElement);
-    public ILevel0ArrayOfListOperator<T> add(final int position, final List<T> newElement);
-    public ILevel0ArrayOfListOperator<T> addAllValues(final List<T>... newElements);
-    public ILevel0ArrayOfListOperator<T> addAllValues(final int position, final List<T>... newElements);
+    public ILevel0ArrayOfListOperator<T> deleteAAA(final List<T> newElement);
+    public ILevel0ArrayOfListOperator<T> deleteAAB(final int position, final List<T> newElement);
+    public ILevel0ArrayOfListOperator<T> add(final List<T>... newElements);
+    public ILevel0ArrayOfListOperator<T> insert(final int position, final List<T>... newElements);
     public ILevel0ArrayOfListOperator<T> addAll(final Collection<List<T>> collection);
-    public ILevel0ArrayOfListOperator<T> remove(final int position);
-    public ILevel0ArrayOfListOperator<T> removeValue(final List<T> value);
+    public ILevel0ArrayOfListOperator<T> deleteCCC(final int position);
+    public ILevel0ArrayOfListOperator<T> deleteCCD(final List<T> value);
     public ILevel0ArrayOfListOperator<T> removeAll(final int... positions);
     public ILevel0ArrayOfListOperator<T> removeAllValues(final List<T>... values);
     public ILevel0ArrayOfListOperator<T> removeAll(final String expression, final Object... optionalExpParams);

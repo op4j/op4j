@@ -65,10 +65,10 @@ public interface ILevel2MapOfMapEntriesValueOperator<K1,K2,V>
     public ILevel2MapOfMapEntriesValueOperator<K1,?,?> raw();
     
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> put(final K2 newKey, final V newValue);
-    public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> put(final int position, final K2 newKey, final V newValue);
+    public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> insert(final int position, final K2 newKey, final V newValue);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> putAll(final Map<K2,V> map);
-    public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> putAll(final int position, final Map<K2,V> map);
-    public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> remove(final K2 key);
+    public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> insertAll(final int position, final Map<K2,V> map);
+    public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> deleteDDD(final K2 key);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeAllWithKeys(final K2... keys);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeAll(final String expression, final Object... optionalExpParams);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeAll(final ISelect<Map.Entry<K2,V>> selector);

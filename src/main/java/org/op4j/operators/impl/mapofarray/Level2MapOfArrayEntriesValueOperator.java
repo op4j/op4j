@@ -58,22 +58,22 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> add(final V newElement) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> deleteAAA(final V newElement) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.add(newElement)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> add(final int position, final V newElement) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> deleteAAB(final int position, final V newElement) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.add(position, newElement)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> addAllValues(final V... newElements) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> add(final V... newElements) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.addAllValues(newElements)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> addAllValues(final int position, final V... newElements) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> insert(final int position, final V... newElements) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.addAllValues(position, newElements)));
     }
 
@@ -235,12 +235,12 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> remove(final int position) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> deleteCCC(final int position) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.remove(position)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeValue(final V value) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> deleteCCD(final V value) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeValue(value)));
     }
 

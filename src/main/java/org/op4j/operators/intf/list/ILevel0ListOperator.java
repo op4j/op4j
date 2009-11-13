@@ -81,13 +81,13 @@ public interface ILevel0ListOperator<T>
     
     public ILevel0GenericMultiOperator<T> flatten();
     
-    public ILevel0ListOperator<T> add(final T newElement);
-    public ILevel0ListOperator<T> add(final int position, final T newElement);
-    public ILevel0ListOperator<T> addAllValues(final T... newElements);
-    public ILevel0ListOperator<T> addAllValues(final int position, final T... newElements);
+    public ILevel0ListOperator<T> deleteAAA(final T newElement);
+    public ILevel0ListOperator<T> deleteAAB(final int position, final T newElement);
+    public ILevel0ListOperator<T> add(final T... newElements);
+    public ILevel0ListOperator<T> insert(final int position, final T... newElements);
     public ILevel0ListOperator<T> addAll(final Collection<T> collection);
-    public ILevel0ListOperator<T> remove(final int position);
-    public ILevel0ListOperator<T> removeValue(final T value);
+    public ILevel0ListOperator<T> deleteCCC(final int position);
+    public ILevel0ListOperator<T> deleteCCD(final T value);
     public ILevel0ListOperator<T> removeAll(final int... positions);
     public ILevel0ListOperator<T> removeAllValues(final T... values);
     public ILevel0ListOperator<T> removeAll(final String expression, final Object... optionalExpParams);

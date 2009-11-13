@@ -164,7 +164,7 @@ public class Level0MapOfSetOperator<K,V> extends Operator
     }
 
 
-    public ILevel0MapOfSetOperator<K, V> put(final int position, final K newKey, final Set<V> newValue) {
+    public ILevel0MapOfSetOperator<K, V> insert(final int position, final K newKey, final Set<V> newValue) {
         return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.put(position, newKey, newValue)));
     }
 
@@ -173,7 +173,7 @@ public class Level0MapOfSetOperator<K,V> extends Operator
         return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.putAll(map)));
     }
 
-    public ILevel0MapOfSetOperator<K, V> putAll(final int position, final Map<K, Set<V>> map) {
+    public ILevel0MapOfSetOperator<K, V> insertAll(final int position, final Map<K, Set<V>> map) {
         return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.putAll(position, map)));
     }
 
@@ -184,7 +184,7 @@ public class Level0MapOfSetOperator<K,V> extends Operator
     }
 
 
-    public ILevel0MapOfSetOperator<K, V> remove(final K key) {
+    public ILevel0MapOfSetOperator<K, V> deleteDDD(final K key) {
         return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.remove(key)));
     }
 

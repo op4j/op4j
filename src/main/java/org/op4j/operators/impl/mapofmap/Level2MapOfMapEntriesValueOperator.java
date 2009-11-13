@@ -166,7 +166,7 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> put(final int position, final K2 newKey, final V newValue) {
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> insert(final int position, final K2 newKey, final V newValue) {
         return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.put(position, newKey, newValue)));
     }
 
@@ -175,7 +175,7 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
         return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.putAll(map)));
     }
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> putAll(final int position, final Map<K2,V> map) {
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> insertAll(final int position, final Map<K2,V> map) {
         return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.putAll(position, map)));
     }
 
@@ -186,7 +186,7 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> remove(final K2 key) {
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> deleteDDD(final K2 key) {
         return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFunc.remove(key)));
     }
 

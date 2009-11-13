@@ -78,13 +78,13 @@ public interface ILevel1ListOfArrayElementsOperator<T>
     
     public ILevel1ListOfArrayElementsOperator<?> raw();
     
-    public ILevel1ListOfArrayElementsOperator<T> add(final T newElement);
-    public ILevel1ListOfArrayElementsOperator<T> add(final int position, final T newElement);
-    public ILevel1ListOfArrayElementsOperator<T> addAllValues(final T... newElements);
-    public ILevel1ListOfArrayElementsOperator<T> addAllValues(final int position, final T... newElements);
+    public ILevel1ListOfArrayElementsOperator<T> deleteAAA(final T newElement);
+    public ILevel1ListOfArrayElementsOperator<T> deleteAAB(final int position, final T newElement);
+    public ILevel1ListOfArrayElementsOperator<T> add(final T... newElements);
+    public ILevel1ListOfArrayElementsOperator<T> insert(final int position, final T... newElements);
     public ILevel1ListOfArrayElementsOperator<T> addAll(final Collection<T> collection);
-    public ILevel1ListOfArrayElementsOperator<T> remove(final int position);
-    public ILevel1ListOfArrayElementsOperator<T> removeValue(final T value);
+    public ILevel1ListOfArrayElementsOperator<T> deleteCCC(final int position);
+    public ILevel1ListOfArrayElementsOperator<T> deleteCCD(final T value);
     public ILevel1ListOfArrayElementsOperator<T> removeAll(final int... positions);
     public ILevel1ListOfArrayElementsOperator<T> removeAllValues(final T... values);
     public ILevel1ListOfArrayElementsOperator<T> removeAll(final String expression, final Object... optionalExpParams);

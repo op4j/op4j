@@ -35,10 +35,10 @@ import org.op4j.executables.ISelect;
 public interface IModifiableMapOperator<K,V> {
     
     public IModifiableMapOperator<K,V> put(final K newKey, final V newValue);
-    public IModifiableMapOperator<K,V> put(final int position, final K newKey, final V newValue);
+    public IModifiableMapOperator<K,V> insert(final int position, final K newKey, final V newValue);
     public IModifiableMapOperator<K,V> putAll(final Map<K,V> map);
-    public IModifiableMapOperator<K,V> putAll(final int position, final Map<K,V> map);
-    public IModifiableMapOperator<K,V> remove(final K key);
+    public IModifiableMapOperator<K,V> insertAll(final int position, final Map<K,V> map);
+    public IModifiableMapOperator<K,V> deleteDDD(final K key);
     public IModifiableMapOperator<K,V> removeAllWithKeys(final K... keys);
     public IModifiableMapOperator<K,V> removeAll(final String expression, final Object... optionalExpParams);
     public IModifiableMapOperator<K,V> removeAll(final ISelect<Map.Entry<K,V>> selector);

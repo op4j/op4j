@@ -32,8 +32,8 @@ import org.op4j.executables.ISelect;
  */
 public interface IModifiableShrinkableOperator<T> {
 
-    public IModifiableGrowableOperator<T> remove(final int position);
-    public IModifiableGrowableOperator<T> removeValue(final T value);
+    public IModifiableGrowableOperator<T> deleteDFF(final int position);
+    public IModifiableGrowableOperator<T> deleteDGG(final T value);
     public IModifiableGrowableOperator<T> removeAll(final int... positions);
     public IModifiableGrowableOperator<T> removeAllValues(final T... values);
     public IModifiableGrowableOperator<T> removeAll(final String expression, final Object... optionalExpParams);

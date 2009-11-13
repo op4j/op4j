@@ -64,22 +64,22 @@ public class Level0SetOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0SetOfListOperator<T> add(final List<T> newElement) {
+    public ILevel0SetOfListOperator<T> deleteAAA(final List<T> newElement) {
         return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.add(newElement)));
     }
 
 
-    public ILevel0SetOfListOperator<T> add(final int position, final List<T> newElement) {
+    public ILevel0SetOfListOperator<T> deleteAAB(final int position, final List<T> newElement) {
         return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.add(position, newElement)));
     }
 
 
-    public ILevel0SetOfListOperator<T> addAllValues(final List<T>... newElements) {
+    public ILevel0SetOfListOperator<T> add(final List<T>... newElements) {
         return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.addAllValues(newElements)));
     }
 
 
-    public ILevel0SetOfListOperator<T> addAllValues(final int position, final List<T>... newElements) {
+    public ILevel0SetOfListOperator<T> insert(final int position, final List<T>... newElements) {
         return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.addAllValues(position, newElements)));
     }
 
@@ -238,12 +238,12 @@ public class Level0SetOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0SetOfListOperator<T> remove(final int position) {
+    public ILevel0SetOfListOperator<T> deleteCCC(final int position) {
         return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.remove(position)));
     }
 
 
-    public ILevel0SetOfListOperator<T> removeValue(final List<T> value) {
+    public ILevel0SetOfListOperator<T> deleteCCD(final List<T> value) {
         return new Level0SetOfListOperator<T>(getTarget().execute(SetFunc.removeValue(value)));
     }
 

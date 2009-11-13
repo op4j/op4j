@@ -68,13 +68,13 @@ public interface ILevel0GenericMultiOperator<T>
     public ILevel0GenericMultiOperator<?> raw();
     
 
-    public ILevel0GenericMultiOperator<T> add(final T newElement);
-    public ILevel0GenericMultiOperator<T> add(final int position, final T newElement);
-    public ILevel0GenericMultiOperator<T> addAllValues(final T... newElements);
-    public ILevel0GenericMultiOperator<T> addAllValues(final int position, final T... newElements);
+    public ILevel0GenericMultiOperator<T> deleteBBB(final T newElement);
+    public ILevel0GenericMultiOperator<T> deleteBBC(final int position, final T newElement);
+    public ILevel0GenericMultiOperator<T> add(final T... newElements);
+    public ILevel0GenericMultiOperator<T> insert(final int position, final T... newElements);
     public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection);
-    public ILevel0GenericMultiOperator<T> remove(final int position);
-    public ILevel0GenericMultiOperator<T> removeValue(final T value);
+    public ILevel0GenericMultiOperator<T> deleteDFF(final int position);
+    public ILevel0GenericMultiOperator<T> deleteDGG(final T value);
     public ILevel0GenericMultiOperator<T> removeAll(final int... positions);
     public ILevel0GenericMultiOperator<T> removeAllValues(final T... values);
     public ILevel0GenericMultiOperator<T> removeAll(final String expression, final Object... optionalExpParams);

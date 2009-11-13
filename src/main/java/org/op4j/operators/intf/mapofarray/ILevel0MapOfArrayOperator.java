@@ -74,10 +74,10 @@ public interface ILevel0MapOfArrayOperator<K,V>
     public ILevel0MapOfArrayOperator<?,?> raw();
     
     public ILevel0MapOfArrayOperator<K,V> put(final K newKey, final V[] newValue);
-    public ILevel0MapOfArrayOperator<K,V> put(final int position, final K newKey, final V[] newValue);
+    public ILevel0MapOfArrayOperator<K,V> insert(final int position, final K newKey, final V[] newValue);
     public ILevel0MapOfArrayOperator<K,V> putAll(final Map<K,V[]> map);
-    public ILevel0MapOfArrayOperator<K,V> putAll(final int position, final Map<K,V[]> map);
-    public ILevel0MapOfArrayOperator<K,V> remove(final K key);
+    public ILevel0MapOfArrayOperator<K,V> insertAll(final int position, final Map<K,V[]> map);
+    public ILevel0MapOfArrayOperator<K,V> deleteDDD(final K key);
     public ILevel0MapOfArrayOperator<K,V> removeAllWithKeys(final K... keys);
     public ILevel0MapOfArrayOperator<K,V> removeAll(final String expression, final Object... optionalExpParams);
     public ILevel0MapOfArrayOperator<K,V> removeAll(final ISelect<Map.Entry<K,V[]>> selector);

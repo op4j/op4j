@@ -78,13 +78,13 @@ public interface ILevel2MapOfArrayEntriesValueOperator<K,V>
     
     public ILevel2MapOfArrayEntriesValueOperator<K,?> raw();
     
-    public ILevel2MapOfArrayEntriesValueOperator<K,V> add(final V newElement);
-    public ILevel2MapOfArrayEntriesValueOperator<K,V> add(final int position, final V newElement);
-    public ILevel2MapOfArrayEntriesValueOperator<K,V> addAllValues(final V... newElements);
-    public ILevel2MapOfArrayEntriesValueOperator<K,V> addAllValues(final int position, final V... newElements);
+    public ILevel2MapOfArrayEntriesValueOperator<K,V> deleteAAA(final V newElement);
+    public ILevel2MapOfArrayEntriesValueOperator<K,V> deleteAAB(final int position, final V newElement);
+    public ILevel2MapOfArrayEntriesValueOperator<K,V> add(final V... newElements);
+    public ILevel2MapOfArrayEntriesValueOperator<K,V> insert(final int position, final V... newElements);
     public ILevel2MapOfArrayEntriesValueOperator<K,V> addAll(final Collection<V> collection);
-    public ILevel2MapOfArrayEntriesValueOperator<K,V> remove(final int position);
-    public ILevel2MapOfArrayEntriesValueOperator<K,V> removeValue(final V value);
+    public ILevel2MapOfArrayEntriesValueOperator<K,V> deleteCCC(final int position);
+    public ILevel2MapOfArrayEntriesValueOperator<K,V> deleteCCD(final V value);
     public ILevel2MapOfArrayEntriesValueOperator<K,V> removeAll(final int... positions);
     public ILevel2MapOfArrayEntriesValueOperator<K,V> removeAllValues(final V... values);
     public ILevel2MapOfArrayEntriesValueOperator<K,V> removeAll(final String expression, final Object... optionalExpParams);

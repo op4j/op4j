@@ -75,10 +75,10 @@ public interface ILevel0MapOfListOperator<K,V>
     public ILevel0MapOfListOperator<?,?> raw();
     
     public ILevel0MapOfListOperator<K,V> put(final K newKey, final List<V> newValue);
-    public ILevel0MapOfListOperator<K,V> put(final int position, final K newKey, final List<V> newValue);
+    public ILevel0MapOfListOperator<K,V> insert(final int position, final K newKey, final List<V> newValue);
     public ILevel0MapOfListOperator<K,V> putAll(final Map<K,List<V>> map);
-    public ILevel0MapOfListOperator<K,V> putAll(final int position, final Map<K,List<V>> map);
-    public ILevel0MapOfListOperator<K,V> remove(final K key);
+    public ILevel0MapOfListOperator<K,V> insertAll(final int position, final Map<K,List<V>> map);
+    public ILevel0MapOfListOperator<K,V> deleteDDD(final K key);
     public ILevel0MapOfListOperator<K,V> removeAllWithKeys(final K... keys);
     public ILevel0MapOfListOperator<K,V> removeAll(final String expression, final Object... optionalExpParams);
     public ILevel0MapOfListOperator<K,V> removeAll(final ISelect<Map.Entry<K,List<V>>> selector);

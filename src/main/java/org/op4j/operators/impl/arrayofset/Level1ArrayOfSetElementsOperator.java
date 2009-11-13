@@ -56,22 +56,22 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> add(final T newElement) {
+    public ILevel1ArrayOfSetElementsOperator<T> deleteAAA(final T newElement) {
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.add(newElement)));
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> add(final int position, final T newElement) {
+    public ILevel1ArrayOfSetElementsOperator<T> deleteAAB(final int position, final T newElement) {
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.add(position, newElement)));
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> addAllValues(final T... newElements) {
+    public ILevel1ArrayOfSetElementsOperator<T> add(final T... newElements) {
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.addAllValues(newElements)));
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> addAllValues(final int position, final T... newElements) {
+    public ILevel1ArrayOfSetElementsOperator<T> insert(final int position, final T... newElements) {
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.addAllValues(position, newElements)));
     }
 
@@ -230,12 +230,12 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> remove(final int position) {
+    public ILevel1ArrayOfSetElementsOperator<T> deleteCCC(final int position) {
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.remove(position)));
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> removeValue(final T value) {
+    public ILevel1ArrayOfSetElementsOperator<T> deleteCCD(final T value) {
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeValue(value)));
     }
 

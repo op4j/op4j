@@ -56,25 +56,25 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> add(V newElement) {
+    public ILevel2MapOfListEntriesValueOperator<K, V> deleteAAA(V newElement) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> add(int position,
+    public ILevel2MapOfListEntriesValueOperator<K, V> deleteAAB(int position,
             V newElement) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> addAllValues(V... newElements) {
+    public ILevel2MapOfListEntriesValueOperator<K, V> add(V... newElements) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> addAllValues(int position, V... newElements) {
+    public ILevel2MapOfListEntriesValueOperator<K, V> insert(int position, V... newElements) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -244,12 +244,12 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> remove(final int position) {
+    public ILevel2MapOfListEntriesValueOperator<K, V> deleteCCC(final int position) {
         return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.remove(position)));
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeValue(final V value) {
+    public ILevel2MapOfListEntriesValueOperator<K, V> deleteCCD(final V value) {
         return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeValue(value)));
     }
 

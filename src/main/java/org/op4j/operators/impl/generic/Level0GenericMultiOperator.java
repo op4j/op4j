@@ -55,21 +55,21 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<T> add(final T newElement) {
+    public ILevel0GenericMultiOperator<T> deleteBBB(final T newElement) {
         return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiAdd(newElement)));
     }
 
 
-    public ILevel0GenericMultiOperator<T> add(final int position, final T newElement) {
+    public ILevel0GenericMultiOperator<T> deleteBBC(final int position, final T newElement) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0GenericMultiOperator<T> addAllValues(final T... newElements) {
+    public ILevel0GenericMultiOperator<T> add(final T... newElements) {
         return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.uniqAddAllValues(newElements)));
     }
 
-    public ILevel0GenericMultiOperator<T> addAllValues(final int position, final T... newElements) {
+    public ILevel0GenericMultiOperator<T> insert(final int position, final T... newElements) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -223,13 +223,13 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<T> remove(int position) {
+    public ILevel0GenericMultiOperator<T> deleteDFF(int position) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeValue(T value) {
+    public ILevel0GenericMultiOperator<T> deleteDGG(T value) {
         // TODO Auto-generated method stub
         return null;
     }

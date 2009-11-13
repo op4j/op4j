@@ -166,7 +166,7 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> put(final int position, final K newKey, final V newValue) {
+    public ILevel1ArrayOfMapElementsOperator<K, V> insert(final int position, final K newKey, final V newValue) {
         return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.put(position, newKey, newValue)));
     }
 
@@ -175,7 +175,7 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
         return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.putAll(map)));
     }
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> putAll(final int position, final Map<K, V> map) {
+    public ILevel1ArrayOfMapElementsOperator<K, V> insertAll(final int position, final Map<K, V> map) {
         return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.putAll(position, map)));
     }
 
@@ -186,7 +186,7 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> remove(final K key) {
+    public ILevel1ArrayOfMapElementsOperator<K, V> deleteDDD(final K key) {
         return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(MapFunc.remove(key)));
     }
 

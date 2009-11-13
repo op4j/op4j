@@ -56,22 +56,22 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> add(final V newElement) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> deleteAAA(final V newElement) {
         return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.add(newElement)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> add(final int position, final V newElement) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> deleteAAB(final int position, final V newElement) {
         return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.add(position, newElement)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> addAllValues(final V... newElements) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> add(final V... newElements) {
         return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.addAllValues(newElements)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> addAllValues(final int position, final V... newElements) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> insert(final int position, final V... newElements) {
         return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.addAllValues(position, newElements)));
     }
 
@@ -233,12 +233,12 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> remove(final int position) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> deleteCCC(final int position) {
         return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.remove(position)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeValue(final V value) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> deleteCCD(final V value) {
         return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeValue(value)));
     }
 

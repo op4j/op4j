@@ -65,10 +65,10 @@ public interface ILevel1ArrayOfMapElementsOperator<K,V>
     public ILevel1ArrayOfMapElementsOperator<?,?> raw();
     
     public ILevel1ArrayOfMapElementsOperator<K,V> put(final K newKey, final V newValue);
-    public ILevel1ArrayOfMapElementsOperator<K,V> put(final int position, final K newKey, final V newValue);
+    public ILevel1ArrayOfMapElementsOperator<K,V> insert(final int position, final K newKey, final V newValue);
     public ILevel1ArrayOfMapElementsOperator<K,V> putAll(final Map<K,V> map);
-    public ILevel1ArrayOfMapElementsOperator<K,V> putAll(final int position, final Map<K,V> map);
-    public ILevel1ArrayOfMapElementsOperator<K,V> remove(final K key);
+    public ILevel1ArrayOfMapElementsOperator<K,V> insertAll(final int position, final Map<K,V> map);
+    public ILevel1ArrayOfMapElementsOperator<K,V> deleteDDD(final K key);
     public ILevel1ArrayOfMapElementsOperator<K,V> removeAllWithKeys(final K... keys);
     public ILevel1ArrayOfMapElementsOperator<K,V> removeAll(final String expression, final Object... optionalExpParams);
     public ILevel1ArrayOfMapElementsOperator<K,V> removeAll(final ISelect<Map.Entry<K,V>> selector);
