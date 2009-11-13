@@ -50,16 +50,6 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> deleteAAA(final Map<K, V> newElement) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.add(newElement)));
-    }
-
-
-    public ILevel0ListOfMapOperator<K, V> deleteAAB(final int position, final Map<K, V> newElement) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.add(position, newElement)));
-    }
-
-
     public ILevel0ListOfMapOperator<K, V> add(final Map<K, V>... newElements) {
         return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.addAllValues(newElements)));
     }
@@ -225,62 +215,42 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> deleteCCC(final int position) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.remove(position)));
-    }
-
-
-    public ILevel0ListOfMapOperator<K, V> deleteCCD(final Map<K, V> value) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.removeValue(value)));
-    }
-
-
-    public ILevel0ListOfMapOperator<K, V> removeAll(final int... positions) {
+    public ILevel0ListOfMapOperator<K, V> removePositions(final int... positions) {
         return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.removeAll(positions)));
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> removeAllValues(final Map<K, V>... values) {
+    public ILevel0ListOfMapOperator<K, V> removeValues(final Map<K, V>... values) {
         return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.removeAllValues(values)));
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> removeAll(final String expression, final Object... optionalExpParams) {
+    public ILevel0ListOfMapOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
         return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> removeAll(final ISelect<Map<K, V>> selector) {
+    public ILevel0ListOfMapOperator<K, V> removeSelected(final ISelect<Map<K, V>> selector) {
         return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.removeAll(selector)));
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> removeAllNot(final int... positions) {
+    public ILevel0ListOfMapOperator<K, V> removeAllExceptPositions(final int... positions) {
         return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.removeAllNot(positions)));
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> removeAllValuesNot(final Map<K, V>... values) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.removeAllValuesNot(values)));
-    }
 
-    
-
-    public ILevel0ListOfMapOperator<K, V> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+    public ILevel0ListOfMapOperator<K, V> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
         return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.removeAllNotNullAnd(expression, optionalExpParams)));
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> removeAllNull() {
+    public ILevel0ListOfMapOperator<K, V> removeNulls() {
         return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.removeAllNull()));
     }
 
     
-    public ILevel0ListOfMapOperator<K, V> removeAllNullOr(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.removeAllNullOr(expression, optionalExpParams)));
-    }
-
-
 
 
     public ILevel0ListOfMapOperator<K, V> sort() {

@@ -77,23 +77,16 @@ public interface ILevel1ListOfArrayElementsOperator<T>
     public <X> ILevel1ListOfArrayElementsOperator<X> of(final Class<X> ofClass);
     
     public ILevel1ListOfArrayElementsOperator<?> raw();
-    
-    public ILevel1ListOfArrayElementsOperator<T> deleteAAA(final T newElement);
-    public ILevel1ListOfArrayElementsOperator<T> deleteAAB(final int position, final T newElement);
     public ILevel1ListOfArrayElementsOperator<T> add(final T... newElements);
     public ILevel1ListOfArrayElementsOperator<T> insert(final int position, final T... newElements);
     public ILevel1ListOfArrayElementsOperator<T> addAll(final Collection<T> collection);
-    public ILevel1ListOfArrayElementsOperator<T> deleteCCC(final int position);
-    public ILevel1ListOfArrayElementsOperator<T> deleteCCD(final T value);
-    public ILevel1ListOfArrayElementsOperator<T> removeAll(final int... positions);
-    public ILevel1ListOfArrayElementsOperator<T> removeAllValues(final T... values);
-    public ILevel1ListOfArrayElementsOperator<T> removeAll(final String expression, final Object... optionalExpParams);
-    public ILevel1ListOfArrayElementsOperator<T> removeAll(final ISelect<T> selector);
-    public ILevel1ListOfArrayElementsOperator<T> removeAllNot(final int... positions);
-    public ILevel1ListOfArrayElementsOperator<T> removeAllValuesNot(final T... values);
-    public ILevel1ListOfArrayElementsOperator<T> removeAllNull();
-    public ILevel1ListOfArrayElementsOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel1ListOfArrayElementsOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams);
+    public ILevel1ListOfArrayElementsOperator<T> removePositions(final int... positions);
+    public ILevel1ListOfArrayElementsOperator<T> removeValues(final T... values);
+    public ILevel1ListOfArrayElementsOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1ListOfArrayElementsOperator<T> removeSelected(final ISelect<T> selector);
+    public ILevel1ListOfArrayElementsOperator<T> removeAllExceptPositions(final int... positions);
+    public ILevel1ListOfArrayElementsOperator<T> removeNulls();
+    public ILevel1ListOfArrayElementsOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
     public ILevel1ListOfListElementsOperator<T> toList();
     

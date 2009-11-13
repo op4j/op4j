@@ -179,27 +179,22 @@ public class Level0MapOfMapOperator<K1,K2,V> extends Operator
     }
 
 
-    public ILevel0MapOfMapOperator<K1, K2, V> deleteDDD(final K1 key) {
-        return new Level0MapOfMapOperator<K1, K2, V>(getTarget().execute(MapFunc.remove(key)));
-    }
-
-
-    public ILevel0MapOfMapOperator<K1, K2, V> removeAllWithKeys(final K1... keys) {
+    public ILevel0MapOfMapOperator<K1, K2, V> removeKeys(final K1... keys) {
         return new Level0MapOfMapOperator<K1, K2, V>(getTarget().execute(MapFunc.removeAllWithKeys(keys)));
     }
 
 
-    public ILevel0MapOfMapOperator<K1, K2, V> removeAll(final String expression, final Object... optionalExpParams) {
+    public ILevel0MapOfMapOperator<K1, K2, V> removeMatching(final String expression, final Object... optionalExpParams) {
         return new Level0MapOfMapOperator<K1, K2, V>(getTarget().execute(MapFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel0MapOfMapOperator<K1, K2, V> removeAll(final ISelect<Entry<K1, Map<K2,V>>> selector) {
+    public ILevel0MapOfMapOperator<K1, K2, V> removeSelected(final ISelect<Entry<K1, Map<K2,V>>> selector) {
         return new Level0MapOfMapOperator<K1, K2, V>(getTarget().execute(MapFunc.removeAll(selector)));
     }
 
 
-    public ILevel0MapOfMapOperator<K1, K2, V> removeAllWithKeysNot(final K1... keys) {
+    public ILevel0MapOfMapOperator<K1, K2, V> removeAllExceptKeys(final K1... keys) {
         return new Level0MapOfMapOperator<K1, K2, V>(getTarget().execute(MapFunc.removeAllWithKeysNot(keys)));
     }
 

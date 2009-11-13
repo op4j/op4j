@@ -56,16 +56,6 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> deleteAAA(final V newElement) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.add(newElement)));
-    }
-
-
-    public ILevel2MapOfSetEntriesValueOperator<K, V> deleteAAB(final int position, final V newElement) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.add(position, newElement)));
-    }
-
-
     public ILevel2MapOfSetEntriesValueOperator<K, V> add(final V... newElements) {
         return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.addAllValues(newElements)));
     }
@@ -233,62 +223,42 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> deleteCCC(final int position) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.remove(position)));
-    }
-
-
-    public ILevel2MapOfSetEntriesValueOperator<K, V> deleteCCD(final V value) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeValue(value)));
-    }
-
-
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAll(final int... positions) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removePositions(final int... positions) {
         return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAll(positions)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllValues(final V... values) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeValues(final V... values) {
         return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAllValues(values)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAll(final String expression, final Object... optionalExpParams) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
         return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAll(final ISelect<V> selector) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeSelected(final ISelect<V> selector) {
         return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAll(selector)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllNot(final int... positions) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllExceptPositions(final int... positions) {
         return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAllNot(positions)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllValuesNot(final V... values) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAllValuesNot(values)));
-    }
 
-    
-
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
         return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAllNotNullAnd(expression, optionalExpParams)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllNull() {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeNulls() {
         return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAllNull()));
     }
 
     
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllNullOr(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(SetFunc.removeAllNullOr(expression, optionalExpParams)));
-    }
-
-
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> sort() {

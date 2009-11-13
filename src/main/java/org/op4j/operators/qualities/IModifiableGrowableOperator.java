@@ -32,8 +32,6 @@ import java.util.Collection;
  */
 public interface IModifiableGrowableOperator<T> {
 
-    public IModifiableShrinkableOperator<T> deleteBBB(final T newElement);
-    public IModifiableShrinkableOperator<T> deleteBBC(final int position, final T newElement);
     public IModifiableShrinkableOperator<T> add(final T... newElements);
     public IModifiableShrinkableOperator<T> insert(final int position, final T... newElements);
     public IModifiableShrinkableOperator<T> addAll(final Collection<T> collection);

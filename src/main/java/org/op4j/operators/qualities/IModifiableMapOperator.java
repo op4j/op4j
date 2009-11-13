@@ -38,10 +38,9 @@ public interface IModifiableMapOperator<K,V> {
     public IModifiableMapOperator<K,V> insert(final int position, final K newKey, final V newValue);
     public IModifiableMapOperator<K,V> putAll(final Map<K,V> map);
     public IModifiableMapOperator<K,V> insertAll(final int position, final Map<K,V> map);
-    public IModifiableMapOperator<K,V> deleteDDD(final K key);
-    public IModifiableMapOperator<K,V> removeAllWithKeys(final K... keys);
-    public IModifiableMapOperator<K,V> removeAll(final String expression, final Object... optionalExpParams);
-    public IModifiableMapOperator<K,V> removeAll(final ISelect<Map.Entry<K,V>> selector);
-    public IModifiableMapOperator<K,V> removeAllWithKeysNot(final K... keys);
+    public IModifiableMapOperator<K,V> removeKeys(final K... keys);
+    public IModifiableMapOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
+    public IModifiableMapOperator<K,V> removeSelected(final ISelect<Map.Entry<K,V>> selector);
+    public IModifiableMapOperator<K,V> removeAllExceptKeys(final K... keys);
     
 }

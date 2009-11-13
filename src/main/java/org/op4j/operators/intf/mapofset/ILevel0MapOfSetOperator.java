@@ -78,11 +78,10 @@ public interface ILevel0MapOfSetOperator<K,V>
     public ILevel0MapOfSetOperator<K,V> insert(final int position, final K newKey, final Set<V> newValue);
     public ILevel0MapOfSetOperator<K,V> putAll(final Map<K,Set<V>> map);
     public ILevel0MapOfSetOperator<K,V> insertAll(final int position, final Map<K,Set<V>> map);
-    public ILevel0MapOfSetOperator<K,V> deleteDDD(final K key);
-    public ILevel0MapOfSetOperator<K,V> removeAllWithKeys(final K... keys);
-    public ILevel0MapOfSetOperator<K,V> removeAll(final String expression, final Object... optionalExpParams);
-    public ILevel0MapOfSetOperator<K,V> removeAll(final ISelect<Map.Entry<K,Set<V>>> selector);
-    public ILevel0MapOfSetOperator<K,V> removeAllWithKeysNot(final K... keys);
+    public ILevel0MapOfSetOperator<K,V> removeKeys(final K... keys);
+    public ILevel0MapOfSetOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0MapOfSetOperator<K,V> removeSelected(final ISelect<Map.Entry<K,Set<V>>> selector);
+    public ILevel0MapOfSetOperator<K,V> removeAllExceptKeys(final K... keys);
     
     public <X> ILevel0MapOfArrayOperator<K,X> toMapOfArray(final Of<X> of);
     public <X> ILevel0MapOfArrayOperator<K,X> toMapOfArray(final Class<X> ofClass);

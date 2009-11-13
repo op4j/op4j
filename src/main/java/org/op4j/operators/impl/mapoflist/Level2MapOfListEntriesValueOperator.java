@@ -244,62 +244,42 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> deleteCCC(final int position) {
-        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.remove(position)));
-    }
-
-
-    public ILevel2MapOfListEntriesValueOperator<K, V> deleteCCD(final V value) {
-        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeValue(value)));
-    }
-
-
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAll(final int... positions) {
+    public ILevel2MapOfListEntriesValueOperator<K, V> removePositions(final int... positions) {
         return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeAll(positions)));
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllValues(final V... values) {
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeValues(final V... values) {
         return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeAllValues(values)));
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAll(final String expression, final Object... optionalExpParams) {
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
         return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAll(final ISelect<V> selector) {
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeSelected(final ISelect<V> selector) {
         return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeAll(selector)));
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNot(final int... positions) {
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllExceptPositions(final int... positions) {
         return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeAllNot(positions)));
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllValuesNot(final V... values) {
-        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeAllValuesNot(values)));
-    }
 
-    
-
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
         return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeAllNotNullAnd(expression, optionalExpParams)));
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNull() {
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeNulls() {
         return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeAllNull()));
     }
 
     
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllNullOr(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.removeAllNullOr(expression, optionalExpParams)));
-    }
-
-
 
 
     public ILevel2MapOfListEntriesValueOperator<K, V> sort() {

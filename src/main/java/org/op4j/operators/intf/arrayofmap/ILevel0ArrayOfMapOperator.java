@@ -64,23 +64,16 @@ public interface ILevel0ArrayOfMapOperator<K,V>
     public <X,Y> ILevel0ArrayOfMapOperator<X,Y> of(final Class<X> ofXClass, final Class<Y> ofYClass);
     
     public ILevel0ArrayOfMapOperator<?,?> raw();
-    
-    public ILevel0ArrayOfMapOperator<K,V> deleteAAA(final Map<K,V> newElement);
-    public ILevel0ArrayOfMapOperator<K,V> deleteAAB(final int position, final Map<K,V> newElement);
     public ILevel0ArrayOfMapOperator<K,V> add(final Map<K,V>... newElements);
     public ILevel0ArrayOfMapOperator<K,V> insert(final int position, final Map<K,V>... newElements);
     public ILevel0ArrayOfMapOperator<K,V> addAll(final Collection<Map<K,V>> collection);
-    public ILevel0ArrayOfMapOperator<K,V> deleteCCC(final int position);
-    public ILevel0ArrayOfMapOperator<K,V> deleteCCD(final Map<K,V> value);
-    public ILevel0ArrayOfMapOperator<K,V> removeAll(final int... positions);
-    public ILevel0ArrayOfMapOperator<K,V> removeAllValues(final Map<K,V>... values);
-    public ILevel0ArrayOfMapOperator<K,V> removeAll(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOfMapOperator<K,V> removeAll(final ISelect<Map<K,V>> selector);
-    public ILevel0ArrayOfMapOperator<K,V> removeAllNot(final int... positions);
-    public ILevel0ArrayOfMapOperator<K,V> removeAllValuesNot(final Map<K,V>... values);
-    public ILevel0ArrayOfMapOperator<K,V> removeAllNull();
-    public ILevel0ArrayOfMapOperator<K,V> removeAllNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOfMapOperator<K,V> removeAllNotNullAnd(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOfMapOperator<K,V> removePositions(final int... positions);
+    public ILevel0ArrayOfMapOperator<K,V> removeValues(final Map<K,V>... values);
+    public ILevel0ArrayOfMapOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOfMapOperator<K,V> removeSelected(final ISelect<Map<K,V>> selector);
+    public ILevel0ArrayOfMapOperator<K,V> removeAllExceptPositions(final int... positions);
+    public ILevel0ArrayOfMapOperator<K,V> removeNulls();
+    public ILevel0ArrayOfMapOperator<K,V> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
     
     public ILevel0ArrayOfMapOperator<K,V> extract(final int position);

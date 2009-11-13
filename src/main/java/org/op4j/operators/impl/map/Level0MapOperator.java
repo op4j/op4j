@@ -175,27 +175,22 @@ public class Level0MapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0MapOperator<K, V> deleteDDD(final K key) {
-        return new Level0MapOperator<K, V>(getTarget().execute(MapFunc.remove(key)));
-    }
-
-
-    public ILevel0MapOperator<K, V> removeAllWithKeys(final K... keys) {
+    public ILevel0MapOperator<K, V> removeKeys(final K... keys) {
         return new Level0MapOperator<K, V>(getTarget().execute(MapFunc.removeAllWithKeys(keys)));
     }
 
 
-    public ILevel0MapOperator<K, V> removeAll(final String expression, final Object... optionalExpParams) {
+    public ILevel0MapOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
         return new Level0MapOperator<K, V>(getTarget().execute(MapFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel0MapOperator<K, V> removeAll(final ISelect<Entry<K, V>> selector) {
+    public ILevel0MapOperator<K, V> removeSelected(final ISelect<Entry<K, V>> selector) {
         return new Level0MapOperator<K, V>(getTarget().execute(MapFunc.removeAll(selector)));
     }
 
 
-    public ILevel0MapOperator<K, V> removeAllWithKeysNot(final K... keys) {
+    public ILevel0MapOperator<K, V> removeAllExceptKeys(final K... keys) {
         return new Level0MapOperator<K, V>(getTarget().execute(MapFunc.removeAllWithKeysNot(keys)));
     }
 

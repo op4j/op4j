@@ -32,17 +32,13 @@ import org.op4j.executables.ISelect;
  */
 public interface IModifiableShrinkableOperator<T> {
 
-    public IModifiableGrowableOperator<T> deleteDFF(final int position);
-    public IModifiableGrowableOperator<T> deleteDGG(final T value);
-    public IModifiableGrowableOperator<T> removeAll(final int... positions);
-    public IModifiableGrowableOperator<T> removeAllValues(final T... values);
-    public IModifiableGrowableOperator<T> removeAll(final String expression, final Object... optionalExpParams);
-    public IModifiableGrowableOperator<T> removeAll(final ISelect<T> filter);
-    public IModifiableGrowableOperator<T> removeAllNot(final int... positions);
-    public IModifiableGrowableOperator<T> removeAllValuesNot(final T... values);
-    public IModifiableGrowableOperator<T> removeAllNull();
-    public IModifiableGrowableOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams);
-    public IModifiableGrowableOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams);
+    public IModifiableGrowableOperator<T> removePositions(final int... positions);
+    public IModifiableGrowableOperator<T> removeValues(final T... values);
+    public IModifiableGrowableOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
+    public IModifiableGrowableOperator<T> removeSelected(final ISelect<T> filter);
+    public IModifiableGrowableOperator<T> removeAllExceptPositions(final int... positions);
+    public IModifiableGrowableOperator<T> removeNulls();
+    public IModifiableGrowableOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
     
 }

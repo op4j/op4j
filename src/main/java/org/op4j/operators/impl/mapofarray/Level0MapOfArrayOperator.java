@@ -186,27 +186,22 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
     }
 
 
-    public ILevel0MapOfArrayOperator<K, V> deleteDDD(final K key) {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.remove(key)));
-    }
-
-
-    public ILevel0MapOfArrayOperator<K, V> removeAllWithKeys(final K... keys) {
+    public ILevel0MapOfArrayOperator<K, V> removeKeys(final K... keys) {
         return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.removeAllWithKeys(keys)));
     }
 
 
-    public ILevel0MapOfArrayOperator<K, V> removeAll(final String expression, final Object... optionalExpParams) {
+    public ILevel0MapOfArrayOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
         return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel0MapOfArrayOperator<K, V> removeAll(final ISelect<Entry<K, V[]>> selector) {
+    public ILevel0MapOfArrayOperator<K, V> removeSelected(final ISelect<Entry<K, V[]>> selector) {
         return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.removeAll(selector)));
     }
 
 
-    public ILevel0MapOfArrayOperator<K, V> removeAllWithKeysNot(final K... keys) {
+    public ILevel0MapOfArrayOperator<K, V> removeAllExceptKeys(final K... keys) {
         return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(MapFunc.removeAllWithKeysNot(keys)));
     }
 

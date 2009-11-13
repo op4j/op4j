@@ -55,11 +55,6 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<T> deleteBBB(final T newElement) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiAdd(newElement)));
-    }
-
-
     public ILevel0GenericMultiOperator<T> deleteBBC(final int position, final T newElement) {
         // TODO Auto-generated method stub
         return null;
@@ -235,57 +230,57 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeAll(int... positions) {
+    public ILevel0GenericMultiOperator<T> removePositions(int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeAllValues(T... values) {
+    public ILevel0GenericMultiOperator<T> removeValues(T... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeAll(String expression,
+    public ILevel0GenericMultiOperator<T> removeMatching(String expression,
             Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeAll(ISelect<T> selector) {
+    public ILevel0GenericMultiOperator<T> removeSelected(ISelect<T> selector) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeAllNot(int... positions) {
+    public ILevel0GenericMultiOperator<T> removeAllExceptPositions(int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeAllValuesNot(T... values) {
+    public ILevel0GenericMultiOperator<T> deleteJKK(T... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeAllNotNullAnd(
+    public ILevel0GenericMultiOperator<T> removeNotNullsMatching(
             String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeAllNull() {
+    public ILevel0GenericMultiOperator<T> removeNulls() {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeAllNullOr(String expression,
+    public ILevel0GenericMultiOperator<T> deleteXXS(String expression,
             Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;

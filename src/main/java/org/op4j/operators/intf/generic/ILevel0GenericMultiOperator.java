@@ -66,24 +66,16 @@ public interface ILevel0GenericMultiOperator<T>
     public <X> ILevel0GenericMultiOperator<X> of(final Class<X> ofClass);
     
     public ILevel0GenericMultiOperator<?> raw();
-    
-
-    public ILevel0GenericMultiOperator<T> deleteBBB(final T newElement);
-    public ILevel0GenericMultiOperator<T> deleteBBC(final int position, final T newElement);
     public ILevel0GenericMultiOperator<T> add(final T... newElements);
     public ILevel0GenericMultiOperator<T> insert(final int position, final T... newElements);
     public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection);
-    public ILevel0GenericMultiOperator<T> deleteDFF(final int position);
-    public ILevel0GenericMultiOperator<T> deleteDGG(final T value);
-    public ILevel0GenericMultiOperator<T> removeAll(final int... positions);
-    public ILevel0GenericMultiOperator<T> removeAllValues(final T... values);
-    public ILevel0GenericMultiOperator<T> removeAll(final String expression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<T> removeAll(final ISelect<T> selector);
-    public ILevel0GenericMultiOperator<T> removeAllNot(final int... positions);
-    public ILevel0GenericMultiOperator<T> removeAllValuesNot(final T... values);
-    public ILevel0GenericMultiOperator<T> removeAllNull();
-    public ILevel0GenericMultiOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams);
+    public ILevel0GenericMultiOperator<T> removePositions(final int... positions);
+    public ILevel0GenericMultiOperator<T> removeValues(final T... values);
+    public ILevel0GenericMultiOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0GenericMultiOperator<T> removeSelected(final ISelect<T> selector);
+    public ILevel0GenericMultiOperator<T> removeAllExceptPositions(final int... positions);
+    public ILevel0GenericMultiOperator<T> removeNulls();
+    public ILevel0GenericMultiOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
     
     public ILevel0ListOperator<T> buildList();

@@ -64,16 +64,6 @@ public class Level0ListOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfSetOperator<T> deleteAAA(final Set<T> newElement) {
-        return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.addAll(newElement)));
-    }
-
-
-    public ILevel0ListOfSetOperator<T> deleteAAB(final int position, final Set<T> newElement) {
-        return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.add(position, newElement)));
-    }
-
-
     public ILevel0ListOfSetOperator<T> add(final Set<T>... newElements) {
         return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.addAllValues(newElements)));
     }
@@ -243,62 +233,42 @@ public class Level0ListOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfSetOperator<T> deleteCCC(final int position) {
-        return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.remove(position)));
-    }
-
-
-    public ILevel0ListOfSetOperator<T> deleteCCD(final Set<T> value) {
-        return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.removeValue(value)));
-    }
-
-
-    public ILevel0ListOfSetOperator<T> removeAll(final int... positions) {
+    public ILevel0ListOfSetOperator<T> removePositions(final int... positions) {
         return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.removeAll(positions)));
     }
 
 
-    public ILevel0ListOfSetOperator<T> removeAllValues(final Set<T>... values) {
+    public ILevel0ListOfSetOperator<T> removeValues(final Set<T>... values) {
         return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.removeAllValues(values)));
     }
 
 
-    public ILevel0ListOfSetOperator<T> removeAll(final String expression, final Object... optionalExpParams) {
+    public ILevel0ListOfSetOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
         return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel0ListOfSetOperator<T> removeAll(final ISelect<Set<T>> selector) {
+    public ILevel0ListOfSetOperator<T> removeSelected(final ISelect<Set<T>> selector) {
         return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.removeAll(selector)));
     }
 
 
-    public ILevel0ListOfSetOperator<T> removeAllNot(final int... positions) {
+    public ILevel0ListOfSetOperator<T> removeAllExceptPositions(final int... positions) {
         return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.removeAllNot(positions)));
     }
 
 
-    public ILevel0ListOfSetOperator<T> removeAllValuesNot(final Set<T>... values) {
-        return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.removeAllValuesNot(values)));
-    }
 
-    
-
-    public ILevel0ListOfSetOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+    public ILevel0ListOfSetOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
         return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.removeAllNotNullAnd(expression, optionalExpParams)));
     }
 
 
-    public ILevel0ListOfSetOperator<T> removeAllNull() {
+    public ILevel0ListOfSetOperator<T> removeNulls() {
         return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.removeAllNull()));
     }
 
     
-    public ILevel0ListOfSetOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfSetOperator<T>(getTarget().execute(ListFunc.removeAllNullOr(expression, optionalExpParams)));
-    }
-
-
 
 
     public ILevel0ListOfSetOperator<T> sort() {

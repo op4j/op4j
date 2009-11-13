@@ -79,23 +79,16 @@ public interface ILevel0ArrayOperator<T>
     public ILevel0ArrayOperator<?> raw();
     
     public ILevel0GenericMultiOperator<T> flatten();
-    
-    public ILevel0ArrayOperator<T> deleteAAA(final T newElement);
-    public ILevel0ArrayOperator<T> deleteAAB(final int position, final T newElement);
     public ILevel0ArrayOperator<T> add(final T... newElements);
     public ILevel0ArrayOperator<T> insert(final int position, final T... newElements);
     public ILevel0ArrayOperator<T> addAll(final Collection<T> collection);
-    public ILevel0ArrayOperator<T> deleteCCC(final int position);
-    public ILevel0ArrayOperator<T> deleteCCD(final T value);
-    public ILevel0ArrayOperator<T> removeAll(final int... positions);
-    public ILevel0ArrayOperator<T> removeAllValues(final T... values);
-    public ILevel0ArrayOperator<T> removeAll(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOperator<T> removeAll(final ISelect<T> selector);
-    public ILevel0ArrayOperator<T> removeAllNot(final int... positions);
-    public ILevel0ArrayOperator<T> removeAllValuesNot(final T... values);
-    public ILevel0ArrayOperator<T> removeAllNull();
-    public ILevel0ArrayOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOperator<T> removePositions(final int... positions);
+    public ILevel0ArrayOperator<T> removeValues(final T... values);
+    public ILevel0ArrayOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOperator<T> removeSelected(final ISelect<T> selector);
+    public ILevel0ArrayOperator<T> removeAllExceptPositions(final int... positions);
+    public ILevel0ArrayOperator<T> removeNulls();
+    public ILevel0ArrayOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
     public ILevel0ListOperator<T> toList();
     

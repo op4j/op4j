@@ -56,16 +56,6 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> deleteAAA(final T newElement) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.add(newElement)));
-    }
-
-
-    public ILevel1ArrayOfSetElementsOperator<T> deleteAAB(final int position, final T newElement) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.add(position, newElement)));
-    }
-
-
     public ILevel1ArrayOfSetElementsOperator<T> add(final T... newElements) {
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.addAllValues(newElements)));
     }
@@ -230,62 +220,42 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> deleteCCC(final int position) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.remove(position)));
-    }
-
-
-    public ILevel1ArrayOfSetElementsOperator<T> deleteCCD(final T value) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeValue(value)));
-    }
-
-
-    public ILevel1ArrayOfSetElementsOperator<T> removeAll(final int... positions) {
+    public ILevel1ArrayOfSetElementsOperator<T> removePositions(final int... positions) {
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeAll(positions)));
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> removeAllValues(final T... values) {
+    public ILevel1ArrayOfSetElementsOperator<T> removeValues(final T... values) {
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeAllValues(values)));
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> removeAll(final String expression, final Object... optionalExpParams) {
+    public ILevel1ArrayOfSetElementsOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> removeAll(final ISelect<T> selector) {
+    public ILevel1ArrayOfSetElementsOperator<T> removeSelected(final ISelect<T> selector) {
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeAll(selector)));
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> removeAllNot(final int... positions) {
+    public ILevel1ArrayOfSetElementsOperator<T> removeAllExceptPositions(final int... positions) {
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeAllNot(positions)));
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> removeAllValuesNot(final T... values) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeAllValuesNot(values)));
-    }
 
-    
-
-    public ILevel1ArrayOfSetElementsOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+    public ILevel1ArrayOfSetElementsOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeAllNotNullAnd(expression, optionalExpParams)));
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> removeAllNull() {
+    public ILevel1ArrayOfSetElementsOperator<T> removeNulls() {
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeAllNull()));
     }
 
     
-    public ILevel1ArrayOfSetElementsOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(SetFunc.removeAllNullOr(expression, optionalExpParams)));
-    }
-
-
 
 
     public ILevel1ArrayOfSetElementsOperator<T> sort() {

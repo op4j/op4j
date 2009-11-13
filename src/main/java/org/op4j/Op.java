@@ -25,7 +25,6 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -364,81 +363,51 @@ public final class Op {
         System.out.println(Op.onListOfList(listOfListOfString1).forEach().distinct().get());
         
         System.out.println(printArray(Op.onArrayOfArray(Of.STRING,arrayOfArrayOfString1).get()));
-        System.out.println("***");
         System.out.println(printArray(Op.onArrayOfArray(Of.STRING,arrayOfArrayOfString1).distinct().get()));
-        System.out.println("***");
         System.out.println(printArray(Op.onArrayOfArray(Of.STRING,arrayOfArrayOfString1).forEach().distinct().get()));
      
-        System.out.println(Op.onList(stringsList1).deleteAAA("World!").get());
-        System.out.println(Op.onList(stringsList1).deleteAAB(1,"World!").get());
         System.out.println(Op.onList(stringsList1).add("World!", "Mars!").get());
         System.out.println(Op.onList(stringsList1).insert(1, "World!", "Mars!").get());
         System.out.println(Op.onList(stringsList1).addAll(stringsList1).get());
-        System.out.println(Op.onListOfList(listOfListOfString1).deleteAAA(Collections.singletonList("Uhey!")).distinct().get());
-        System.out.println("---");
         System.out.println(Op.onList(stringsList1).get());
-        System.out.println(Op.onList(stringsList1).deleteCCC(1).get());
-        System.out.println(Op.onList(stringsList1).deleteCCD(null).get());
-        System.out.println(Op.onList(stringsList1).deleteCCD("Goodbye").get());
-        System.out.println(Op.onList(stringsList1).removeAll(0,2).get());
-        System.out.println(Op.onList(stringsList1).removeAllNot(0).get());
-        System.out.println(Op.onList(stringsList1).removeAllNot(0,2).get());
-        System.out.println(Op.onList(stringsList1).removeAllValuesNot("Hello").get());
-        System.out.println(Op.onList(stringsList1).removeAllValuesNot((String)null).get());
-        System.out.println(Op.onList(stringsList1).removeAll("#target eq 'Hello'").get());
-        System.out.println(Op.onList(stringsList1).removeAll(new ISelect<String>() {
+        System.out.println(Op.onList(stringsList1).removePositions(0,2).get());
+        System.out.println(Op.onList(stringsList1).removeAllExceptPositions(0).get());
+        System.out.println(Op.onList(stringsList1).removeAllExceptPositions(0,2).get());
+        System.out.println(Op.onList(stringsList1).removeMatching("#target eq 'Hello'").get());
+        System.out.println(Op.onList(stringsList1).removeSelected(new ISelect<String>() {
 
 			public boolean eval(String target) {
 				return target == null;
 			}
         	
         }).get());
-        System.out.println(Op.onList(stringsList1).removeAllNull().get());
-        System.out.println(Op.onList(stringsList1).removeAllNotNullAnd("length() > 5").get());
-        System.out.println(Op.onList(stringsList1).removeAllNullOr("length() > 5").get());
+        System.out.println(Op.onList(stringsList1).removeNulls().get());
+        System.out.println(Op.onList(stringsList1).removeNotNullsMatching("length() > 5").get());
             
-        System.out.println(Op.onListOfList(listOfListOfString1).forEach(1).deleteAAA("c").get());
-
         System.out.println("================");
         
         
         final Set<String> stringSet1 = new LinkedHashSet<String>(stringsList1);
-        System.out.println(Op.onSet(stringSet1).deleteAAA("World!").get());
-        System.out.println(Op.onSet(stringSet1).deleteAAB(1,"World!").get());
         System.out.println(Op.onSet(stringSet1).add("World!", "Mars!").get());
         System.out.println(Op.onSet(stringSet1).insert(1, "World!", "Mars!").get());
         System.out.println(Op.onSet(stringSet1).addAll(stringsList1).get());
-        System.out.println(Op.onSetOfSet(setOfsetOfString1).deleteAAA(new LinkedHashSet<String>(Collections.singletonList("Uhey!"))).get());
         System.out.println("---");
         System.out.println(Op.onSet(stringSet1).get());
-        System.out.println(Op.onSet(stringSet1).deleteCCC(1).get());
-        System.out.println(Op.onSet(stringSet1).deleteCCD(null).get());
-        System.out.println(Op.onSet(stringSet1).deleteCCD("Goodbye").get());
-        System.out.println(Op.onSet(stringSet1).removeAll(0,2).get());
-        System.out.println(Op.onSet(stringSet1).removeAllNot(0).get());
-        System.out.println(Op.onSet(stringSet1).removeAllNot(0,2).get());
-        System.out.println(Op.onSet(stringSet1).removeAllValuesNot("Hello").get());
-        System.out.println(Op.onSet(stringSet1).removeAllValuesNot((String)null).get());
-        System.out.println(Op.onSet(stringSet1).removeAll("#target eq 'Hello'").get());
-        System.out.println(Op.onSet(stringSet1).removeAll(new ISelect<String>() {
+        System.out.println(Op.onSet(stringSet1).removePositions(0,2).get());
+        System.out.println(Op.onSet(stringSet1).removeAllExceptPositions(0).get());
+        System.out.println(Op.onSet(stringSet1).removeAllExceptPositions(0,2).get());
+        System.out.println(Op.onSet(stringSet1).removeMatching("#target eq 'Hello'").get());
+        System.out.println(Op.onSet(stringSet1).removeSelected(new ISelect<String>() {
 
             public boolean eval(String target) {
                 return target == null;
             }
             
         }).get());
-        System.out.println(Op.onSet(stringSet1).removeAllNull().get());
-        System.out.println(Op.onSet(stringSet1).removeAllNotNullAnd("length() > 5").get());
-        System.out.println(Op.onSet(stringSet1).removeAllNullOr("length() > 5").get());
+        System.out.println(Op.onSet(stringSet1).removeNulls().get());
+        System.out.println(Op.onSet(stringSet1).removeNotNullsMatching("length() > 5").get());
             
-        System.out.println(Op.onSetOfSet(setOfsetOfString1).forEach(0).deleteAAA("c").get());
-        
-        System.out.println(printArray(Op.onArray(Of.STRING,stringsArr1).deleteAAA("lalero").get()));
-        System.out.println(printArray(Op.onArray(Of.STRING,stringsArr1).deleteAAB(2,"lalero").get()));
         System.out.println(printArray(Op.onArray(Of.STRING,stringsArr1).insert(2,"lalero","lururu").get()));
-        System.out.println(printArray(Op.onArray(Of.STRING,stringsArr1).insert(2,"lalero","lururu").removeAllNull().deleteCCC(1).get()));
-        
-        System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).deleteAAB(1,Arrays.asList(new String[] {"z", "y"})).forEach(2).deleteAAA("_").get()));
      
         
         System.out.println(Op.onMap(map1).put("fr", "Allô!").get());
@@ -446,15 +415,11 @@ public final class Op {
         System.out.println(Op.onMap(map1).insert(2,"fr", "Allô!").get());
         System.out.println(Op.onMap(map2).get());
         System.out.println(Op.onMap(map2).putAll(Op.onMap(map1).insert(0,"gl", "Meuuuu!").get()).get());
-        System.out.println(Op.onMap(map2).putAll(Op.onMap(map1).insert(0,"gl", "Meuuuu!").get()).deleteDDD("en").get());
-        System.out.println(Op.onMap(map2).putAll(Op.onMap(map1).insert(0,"gl", "Meuuuu!").get()).removeAll("!#target.key.startsWith('e')").get());
+        System.out.println(Op.onMap(map2).putAll(Op.onMap(map1).insert(0,"gl", "Meuuuu!").get()).removeMatching("!#target.key.startsWith('e')").get());
         
         System.out.println(printArray(Op.onArrayOfMap(maps1).get()));
-        System.out.println(printArray(Op.onArrayOfMap(maps1).forEach(1).deleteDDD("ca").endFor().forEach(0).put("it", "Ciao!").get()));
         
         System.out.println(Op.onAll(234,12,231));
-        System.out.println(Op.onAll(234,12,231).deleteBBB(10));
-        System.out.println(Op.on(234).deleteBBB(10));
         System.out.println(Op.on("234").add("10"));
         
     }

@@ -58,16 +58,6 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> deleteAAA(final V newElement) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.add(newElement)));
-    }
-
-
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> deleteAAB(final int position, final V newElement) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.add(position, newElement)));
-    }
-
-
     public ILevel2MapOfArrayEntriesValueOperator<K, V> add(final V... newElements) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.addAllValues(newElements)));
     }
@@ -235,62 +225,42 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> deleteCCC(final int position) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.remove(position)));
-    }
-
-
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> deleteCCD(final V value) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeValue(value)));
-    }
-
-
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAll(final int... positions) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removePositions(final int... positions) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAll(positions)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllValues(final V... values) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeValues(final V... values) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllValues(values)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAll(final String expression, final Object... optionalExpParams) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAll(final ISelect<V> selector) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeSelected(final ISelect<V> selector) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAll(selector)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNot(final int... positions) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllExceptPositions(final int... positions) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllNot(positions)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllValuesNot(final V... values) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllValuesNot(values)));
-    }
 
-    
-
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNotNullAnd(final String expression, final Object... optionalExpParams) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllNotNullAnd(expression, optionalExpParams)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNull() {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeNulls() {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllNull()));
     }
 
     
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllNullOr(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllNullOr(expression, optionalExpParams)));
-    }
-
-
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> sort() {

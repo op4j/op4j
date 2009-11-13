@@ -76,23 +76,16 @@ public interface ILevel0SetOperator<T>
     public ILevel0SetOperator<?> raw();
     
     public ILevel0GenericMultiOperator<T> flatten();
-    
-    public ILevel0SetOperator<T> deleteAAA(final T newElement);
-    public ILevel0SetOperator<T> deleteAAB(final int position, final T newElement);
     public ILevel0SetOperator<T> add(final T... newElements);
     public ILevel0SetOperator<T> insert(final int position, final T... newElements);
     public ILevel0SetOperator<T> addAll(final Collection<T> collection);
-    public ILevel0SetOperator<T> deleteCCC(final int position);
-    public ILevel0SetOperator<T> deleteCCD(final T value);
-    public ILevel0SetOperator<T> removeAll(final int... positions);
-    public ILevel0SetOperator<T> removeAllValues(final T... values);
-    public ILevel0SetOperator<T> removeAll(final String expression, final Object... optionalExpParams);
-    public ILevel0SetOperator<T> removeAll(final ISelect<T> selector);
-    public ILevel0SetOperator<T> removeAllNot(final int... positions);
-    public ILevel0SetOperator<T> removeAllValuesNot(final T... values);
-    public ILevel0SetOperator<T> removeAllNull();
-    public ILevel0SetOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel0SetOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams);
+    public ILevel0SetOperator<T> removePositions(final int... positions);
+    public ILevel0SetOperator<T> removeValues(final T... values);
+    public ILevel0SetOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0SetOperator<T> removeSelected(final ISelect<T> selector);
+    public ILevel0SetOperator<T> removeAllExceptPositions(final int... positions);
+    public ILevel0SetOperator<T> removeNulls();
+    public ILevel0SetOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
     public <X> ILevel0ArrayOperator<X> toArray(final Of<X> of);
     public <X> ILevel0ArrayOperator<X> toArray(final Class<X> of);

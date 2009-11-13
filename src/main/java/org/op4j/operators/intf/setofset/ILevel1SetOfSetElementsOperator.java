@@ -73,23 +73,16 @@ public interface ILevel1SetOfSetElementsOperator<T>
     public <X> ILevel1SetOfSetElementsOperator<X> of(final Class<X> ofClass);
     
     public ILevel1SetOfSetElementsOperator<?> raw();
-    
-    public ILevel1SetOfSetElementsOperator<T> deleteAAA(final T newElement);
-    public ILevel1SetOfSetElementsOperator<T> deleteAAB(final int position, final T newElement);
     public ILevel1SetOfSetElementsOperator<T> add(final T... newElements);
     public ILevel1SetOfSetElementsOperator<T> insert(final int position, final T... newElements);
     public ILevel1SetOfSetElementsOperator<T> addAll(final Collection<T> collection);
-    public ILevel1SetOfSetElementsOperator<T> deleteCCC(final int position);
-    public ILevel1SetOfSetElementsOperator<T> deleteCCD(final T value);
-    public ILevel1SetOfSetElementsOperator<T> removeAll(final int... positions);
-    public ILevel1SetOfSetElementsOperator<T> removeAllValues(final T... values);
-    public ILevel1SetOfSetElementsOperator<T> removeAll(final String expression, final Object... optionalExpParams);
-    public ILevel1SetOfSetElementsOperator<T> removeAll(final ISelect<T> selector);
-    public ILevel1SetOfSetElementsOperator<T> removeAllNot(final int... positions);
-    public ILevel1SetOfSetElementsOperator<T> removeAllValuesNot(final T... values);
-    public ILevel1SetOfSetElementsOperator<T> removeAllNull();
-    public ILevel1SetOfSetElementsOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel1SetOfSetElementsOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams);
+    public ILevel1SetOfSetElementsOperator<T> removePositions(final int... positions);
+    public ILevel1SetOfSetElementsOperator<T> removeValues(final T... values);
+    public ILevel1SetOfSetElementsOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1SetOfSetElementsOperator<T> removeSelected(final ISelect<T> selector);
+    public ILevel1SetOfSetElementsOperator<T> removeAllExceptPositions(final int... positions);
+    public ILevel1SetOfSetElementsOperator<T> removeNulls();
+    public ILevel1SetOfSetElementsOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
     public <X> ILevel1SetOfArrayElementsOperator<X> toArray(final Of<X> of);
     public <X> ILevel1SetOfArrayElementsOperator<X> toArray(final Class<X> of);

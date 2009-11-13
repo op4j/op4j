@@ -104,23 +104,16 @@ public interface ILevel0ListOfArrayOperator<T>
     public ILevel0ListOfArrayOperator<?> raw();
     
     public ILevel0ListOperator<T> flatten();
-    
-    public ILevel0ListOfArrayOperator<T> deleteAAA(final T[] newElement);
-    public ILevel0ListOfArrayOperator<T> deleteAAB(final int position, final T[] newElement);
     public ILevel0ListOfArrayOperator<T> add(final T[]... newElements);
     public ILevel0ListOfArrayOperator<T> insert(final int position, final T[]... newElements);
     public ILevel0ListOfArrayOperator<T> addAll(final Collection<T[]> collection);
-    public ILevel0ListOfArrayOperator<T> deleteCCC(final int position);
-    public ILevel0ListOfArrayOperator<T> deleteCCD(final T[] value);
-    public ILevel0ListOfArrayOperator<T> removeAll(final int... positions);
-    public ILevel0ListOfArrayOperator<T> removeAllValues(final T[]... values);
-    public ILevel0ListOfArrayOperator<T> removeAll(final String expression, final Object... optionalExpParams);
-    public ILevel0ListOfArrayOperator<T> removeAll(final ISelect<T[]> selector);
-    public ILevel0ListOfArrayOperator<T> removeAllNot(final int... positions);
-    public ILevel0ListOfArrayOperator<T> removeAllValuesNot(final T[]... values);
-    public ILevel0ListOfArrayOperator<T> removeAllNull();
-    public ILevel0ListOfArrayOperator<T> removeAllNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel0ListOfArrayOperator<T> removeAllNotNullAnd(final String expression, final Object... optionalExpParams);
+    public ILevel0ListOfArrayOperator<T> removePositions(final int... positions);
+    public ILevel0ListOfArrayOperator<T> removeValues(final T[]... values);
+    public ILevel0ListOfArrayOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0ListOfArrayOperator<T> removeSelected(final ISelect<T[]> selector);
+    public ILevel0ListOfArrayOperator<T> removeAllExceptPositions(final int... positions);
+    public ILevel0ListOfArrayOperator<T> removeNulls();
+    public ILevel0ListOfArrayOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
     public <X> ILevel0ArrayOfArrayOperator<X> toArrayOfArray(final Of<X> of);
     public <X> ILevel0ArrayOfArrayOperator<X> toArrayOfArray(final Class<X> arrayOfClass);

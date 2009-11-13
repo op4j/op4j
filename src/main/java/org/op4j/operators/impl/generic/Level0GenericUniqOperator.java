@@ -81,11 +81,6 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<T> deleteBBB(final T newElement) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.uniqAdd(newElement)));
-    }
-
-
     public ILevel0GenericMultiOperator<T> deleteBBC(final int position, final T newElement) {
         // TODO Auto-generated method stub
         return null;

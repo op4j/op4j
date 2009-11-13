@@ -184,27 +184,22 @@ public class Level0MapOfSetOperator<K,V> extends Operator
     }
 
 
-    public ILevel0MapOfSetOperator<K, V> deleteDDD(final K key) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.remove(key)));
-    }
-
-
-    public ILevel0MapOfSetOperator<K, V> removeAllWithKeys(final K... keys) {
+    public ILevel0MapOfSetOperator<K, V> removeKeys(final K... keys) {
         return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.removeAllWithKeys(keys)));
     }
 
 
-    public ILevel0MapOfSetOperator<K, V> removeAll(final String expression, final Object... optionalExpParams) {
+    public ILevel0MapOfSetOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
         return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.removeAll(expression, optionalExpParams)));
     }
 
 
-    public ILevel0MapOfSetOperator<K, V> removeAll(final ISelect<Entry<K, Set<V>>> selector) {
+    public ILevel0MapOfSetOperator<K, V> removeSelected(final ISelect<Entry<K, Set<V>>> selector) {
         return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.removeAll(selector)));
     }
 
 
-    public ILevel0MapOfSetOperator<K, V> removeAllWithKeysNot(final K... keys) {
+    public ILevel0MapOfSetOperator<K, V> removeAllExceptKeys(final K... keys) {
         return new Level0MapOfSetOperator<K, V>(getTarget().execute(MapFunc.removeAllWithKeysNot(keys)));
     }
 
