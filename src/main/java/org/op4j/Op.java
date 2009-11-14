@@ -420,7 +420,13 @@ public final class Op {
         System.out.println(printArray(Op.onArrayOfMap(maps1).get()));
         
         System.out.println(Op.onAll(234,12,231));
-        System.out.println(Op.on("234").add("10"));
+        System.out.println(Op.on(234).add(10));
+        System.out.println(Op.on(234).insert(0,10));
+        System.out.println(Op.on(234).add(10).insert(1,3));
+        System.out.println(Op.on(234).add(10).insert(1,3).add((Integer)null));
+        System.out.println(Op.on(234).add(10).insert(1,3).add((Integer)null).removeNulls());
+        System.out.println(Op.on(234).add(10).insert(1,3).removeAllExceptPositions(1));
+        System.out.println(Op.on(234).add(10).insert(1,3).removeMatching("#target > 100"));
         
     }
     

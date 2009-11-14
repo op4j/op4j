@@ -65,14 +65,12 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
     public ILevel0GenericMultiOperator<T> insert(final int position, final T... newElements) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiInsert(position, newElements)));
     }
 
 
     public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiAddAll(collection)));
     }
 
 
@@ -230,62 +228,39 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<T> removePositions(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericMultiOperator<T> removePositions(final int... positions) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiRemovePositions(positions)));
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeValues(T... values) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericMultiOperator<T> removeValues(final T... values) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiRemoveValues(values)));
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeMatching(String expression,
-            Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericMultiOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiRemoveMatching(expression, optionalExpParams)));
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeSelected(ISelect<T> selector) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericMultiOperator<T> removeSelected(final ISelect<T> selector) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiRemoveSelected(selector)));
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeAllExceptPositions(int... positions) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericMultiOperator<T> removeAllExceptPositions(final int... positions) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiRemoveAllExceptPositions(positions)));
     }
 
 
-    public ILevel0GenericMultiOperator<T> deleteJKK(T... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0GenericMultiOperator<T> removeNotNullsMatching(
-            String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0GenericMultiOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiRemoveNotNullsMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeNulls() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiRemoveNulls()));
     }
-
-
-    public ILevel0GenericMultiOperator<T> deleteXXS(String expression,
-            Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
 
 
 

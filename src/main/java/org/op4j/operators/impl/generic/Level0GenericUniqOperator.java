@@ -91,14 +91,12 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
     public ILevel0GenericMultiOperator<T> insert(final int position, final T... newElements) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.uniqInsert(position, newElements)));
     }
 
 
     public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.uniqAddAll(collection)));
     }
 
 

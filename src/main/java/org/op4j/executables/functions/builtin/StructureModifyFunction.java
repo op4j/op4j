@@ -105,7 +105,7 @@ public abstract class StructureModifyFunction<X,T> extends FunctionImplementatio
         
         matched.add(this.SCH_STRUCTURE_POSITIONS_REMOVE_NOT = 
             FunctionArgumentScheme.from(
-                "It adds all but the specified elements to the target structure in the specified position.",
+                "It removes all but the specified elements from the target structure in the specified position.",
                 registerTargetType(),
                 "Integer[] positions, 'REMOVE_NOT'"));
         
