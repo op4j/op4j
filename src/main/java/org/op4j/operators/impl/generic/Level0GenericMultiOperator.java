@@ -55,11 +55,6 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<T> deleteBBC(final int position, final T newElement) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
     public ILevel0GenericMultiOperator<T> add(final T... newElements) {
         return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiAdd(newElements)));
     }
@@ -211,18 +206,6 @@ public class Level0GenericMultiOperator<T> extends Operator
 
 
     public ILevel0GenericMultiOperator<?> raw() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0GenericMultiOperator<T> deleteDFF(int position) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0GenericMultiOperator<T> deleteDGG(T value) {
         // TODO Auto-generated method stub
         return null;
     }

@@ -56,34 +56,17 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> deleteAAA(V newElement) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfListEntriesValueOperator<K, V> add(final V... newElements) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.add(newElements)));
+    }
+
+    public ILevel2MapOfListEntriesValueOperator<K, V> insert(final int position, final V... newElements) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.insert(position, newElements)));
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> deleteAAB(int position,
-            V newElement) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfListEntriesValueOperator<K, V> add(V... newElements) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel2MapOfListEntriesValueOperator<K, V> insert(int position, V... newElements) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfListEntriesValueOperator<K, V> addAll(
-            Collection<V> collection) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfListEntriesValueOperator<K, V> addAll(final Collection<V> collection) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFunc.addAll(collection)));
     }
 
 
