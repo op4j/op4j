@@ -25,6 +25,7 @@ import org.op4j.executables.functions.builtin.ArrayModifyFunction;
 import org.op4j.executables.functions.builtin.GenericBuildArrayFunction;
 import org.op4j.executables.functions.builtin.GenericBuildListFunction;
 import org.op4j.executables.functions.builtin.GenericBuildMapFunction;
+import org.op4j.executables.functions.builtin.GenericBuildMapOfArrayFunction;
 import org.op4j.executables.functions.builtin.GenericBuildMapOfListFunction;
 import org.op4j.executables.functions.builtin.GenericBuildMapOfSetFunction;
 import org.op4j.executables.functions.builtin.GenericBuildSetFunction;
@@ -83,6 +84,7 @@ final class FunctionsInitialization {
                 GenericBuildSetFunction.class,
                 GenericBuildListFunction.class,
                 GenericBuildMapFunction.class,
+                GenericBuildMapOfArrayFunction.class,
                 GenericBuildMapOfSetFunction.class,
                 GenericBuildMapOfListFunction.class
             };

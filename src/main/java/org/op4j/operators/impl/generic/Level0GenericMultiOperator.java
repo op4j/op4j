@@ -30,6 +30,7 @@ import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.list.Level0ListOperator;
 import org.op4j.operators.impl.map.Level0MapOperator;
+import org.op4j.operators.impl.mapofarray.Level0MapOfArrayOperator;
 import org.op4j.operators.impl.mapoflist.Level0MapOfListOperator;
 import org.op4j.operators.impl.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.impl.set.Level0SetOperator;
@@ -100,21 +101,18 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public <K> ILevel0MapOfArrayOperator<K, T> buildMapOfArray(final IEval<K, ? super T> keyEval, final Of<T> valueArrayOf) {
-        // TODO Auto-generated method stub
-        return null;
+    public <K> ILevel0MapOfArrayOperator<K, T> buildMapOfArray(final Of<T> valueArrayOf, final IEval<K, ? super T> keyEval) {
+        return new Level0MapOfArrayOperator<K, T>(valueArrayOf, getTarget().execute(GenericFunc.multiBuildMapOfArray(valueArrayOf.getType(), keyEval)));
     }
 
 
-    public <K, V> ILevel0MapOfArrayOperator<K, V> buildMapOfArray(final IMapBuild<K, V, ? super T> mapBuild, final Of<V> valueArrayOf) {
-        // TODO Auto-generated method stub
-        return null;
+    public <K, V> ILevel0MapOfArrayOperator<K, V> buildMapOfArray(final Of<V> valueArrayOf, final IMapBuild<K, V, ? super T> mapBuild) {
+        return new Level0MapOfArrayOperator<K, V>(valueArrayOf, getTarget().execute(GenericFunc.multiBuildMapOfArray(valueArrayOf.getType(), mapBuild)));
     }
 
 
     public ILevel0MapOfArrayOperator<T, T> buildMapOfArray(final Of<T> arrayOf) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0MapOfArrayOperator<T, T>(arrayOf, getTarget().execute(GenericFunc.multiBuildMapOfArray(arrayOf.getType())));
     }
 
 

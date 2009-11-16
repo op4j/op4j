@@ -555,6 +555,8 @@ public final class Op {
         System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfSet(Eval.integerExp("length()")).get());
         System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfList(Eval.integerExp("length()")).get());
         
+        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfArray(Of.STRING, Eval.integerExp("length()")).get());
+        
     }
     
     

@@ -166,8 +166,8 @@ public interface ILevel0GenericUniqOperator<T>
     public <K,V> ILevel0MapOfSetOperator<K,V> buildMapOfSet(final IMapBuild<K,V,? super T> mapBuild);
     
     
-    public <K> ILevel0MapOfArrayOperator<K,T> buildMapOfArray(final IEval<K,? super T> keyEval, final Of<T> valueArrayOf);
-    public <K,V> ILevel0MapOfArrayOperator<K,V> buildMapOfArray(final IMapBuild<K,V,? super T> mapBuild, final Of<V> valueArrayOf);
+    public <K> ILevel0MapOfArrayOperator<K,T> buildMapOfArray(final Of<T> valueArrayOf, final IEval<K,? super T> keyEval);
+    public <K,V> ILevel0MapOfArrayOperator<K,V> buildMapOfArray(final Of<V> valueArrayOf, final IMapBuild<K,V,? super T> mapBuild);
 
     
     
