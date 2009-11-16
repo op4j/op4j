@@ -38,6 +38,9 @@ import org.op4j.executables.functions.builtin.GenericFunc;
 import org.op4j.executables.functions.conversion.Conv;
 import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.array.Level0ArrayOperator;
+import org.op4j.operators.impl.list.Level0ListOperator;
+import org.op4j.operators.impl.set.Level0SetOperator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
@@ -95,96 +98,66 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ArrayOperator<X> buildArray(Of<X> arrayOf) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <X> ILevel0ArrayOperator<X> buildArray(Class<X> classOf) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ArrayOperator<T> buildArray(final Of<T> arrayOf) {
+        return new Level0ArrayOperator<T>(arrayOf, getTarget().execute(GenericFunc.uniqBuildArray(arrayOf.getType())));
     }
 
 
     public ILevel0ListOperator<T> buildList() {
+        return new Level0ListOperator<T>(getTarget().execute(GenericFunc.uniqBuildList()));
+    }
+
+
+    public <K> ILevel0MapOperator<K, T> buildMap(final IEval<K, ? super T> keyEval) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <K> ILevel0MapOperator<K, T> buildMap(IEval<K, ? super T> keyEval) {
+    public <K, V> ILevel0MapOperator<K, V> buildMap(final IMapBuild<K, V, ? super T> mapBuild) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <K, V> ILevel0MapOperator<K, V> buildMap(
-            IMapBuild<K, V, ? super T> mapBuild) {
+    public <K> ILevel0MapOfArrayOperator<K, T> buildMapOfArray(final IEval<K, ? super T> keyEval, final Of<T> valueArrayOf) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <K, X> ILevel0MapOfArrayOperator<K, X> buildMapOfArray(
-            IEval<K, ? super T> keyEval, Of<X> valueArrayOf) {
+    public <K, V> ILevel0MapOfArrayOperator<K, V> buildMapOfArray(final IMapBuild<K, V, ? super T> mapBuild, final Of<V> valueArrayOf) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <K, V> ILevel0MapOfArrayOperator<K, V> buildMapOfArray(
-            IMapBuild<K, V, ? super T> mapBuild, Of<V> valueArrayOf) {
+    public <K> ILevel0MapOfListOperator<K, T> buildMapOfList(final IEval<K, ? super T> keyEval) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <K, X> ILevel0MapOfArrayOperator<K, X> buildMapOfArray(
-            IEval<K, ? super T> keyEval, Class<X> valueArrayOfClass) {
+    public <K, V> ILevel0MapOfListOperator<K, V> buildMapOfList(final IMapBuild<K, V, ? super T> mapBuild) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <K, V> ILevel0MapOfArrayOperator<K, V> buildMapOfArray(
-            IMapBuild<K, V, ? super T> mapBuild, Class<V> valueArrayOfClass) {
+    public <K> ILevel0MapOfSetOperator<K, T> buildMapOfSet(final IEval<K, ? super T> keyEval) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <K> ILevel0MapOfListOperator<K, T> buildMapOfList(
-            IEval<K, ? super T> keyEval) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <K, V> ILevel0MapOfListOperator<K, V> buildMapOfList(
-            IMapBuild<K, V, ? super T> mapBuild) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <K> ILevel0MapOfSetOperator<K, T> buildMapOfSet(
-            IEval<K, ? super T> keyEval) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <K, V> ILevel0MapOfSetOperator<K, V> buildMapOfSet(
-            IMapBuild<K, V, ? super T> mapBuild) {
+    public <K, V> ILevel0MapOfSetOperator<K, V> buildMapOfSet(final IMapBuild<K, V, ? super T> mapBuild) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
     public ILevel0SetOperator<T> buildSet() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0SetOperator<T>(getTarget().execute(GenericFunc.uniqBuildSet()));
     }
 
 

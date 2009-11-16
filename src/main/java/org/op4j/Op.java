@@ -427,6 +427,12 @@ public final class Op {
         System.out.println(Op.on(234).add(10).insert(1,3).add((Integer)null).removeNulls());
         System.out.println(Op.on(234).add(10).insert(1,3).removeAllExceptPositions(1));
         System.out.println(Op.on(234).add(10).insert(1,3).removeMatching("#target > 100"));
+        System.out.println(printArray(Op.on(234).add(10).insert(1,3).removeMatching("#target > 100").buildArray(Of.INTEGER).get()));
+        System.out.println(printArray(Op.on(234).buildArray(Of.INTEGER).add(8).get()));
+        System.out.println(Op.on(null).add(123));
+        System.out.println(Op.on(null).buildList().get());
+        System.out.println(Op.on(null).buildSet().get());
+        System.out.println(printArray(Op.on((String)null).buildArray(Of.STRING).add("a").removeNulls().removePositions(0).get()));
         
     }
     

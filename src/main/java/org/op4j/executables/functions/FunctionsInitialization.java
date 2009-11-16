@@ -22,6 +22,9 @@ package org.op4j.executables.functions;
 import org.op4j.exceptions.FunctionImplementationRegistrationException;
 import org.op4j.executables.functions.builtin.ArrayDistinctFunction;
 import org.op4j.executables.functions.builtin.ArrayModifyFunction;
+import org.op4j.executables.functions.builtin.GenericBuildArrayFunction;
+import org.op4j.executables.functions.builtin.GenericBuildListFunction;
+import org.op4j.executables.functions.builtin.GenericBuildSetFunction;
 import org.op4j.executables.functions.builtin.GenericModifyFunction;
 import org.op4j.executables.functions.builtin.ListDistinctFunction;
 import org.op4j.executables.functions.builtin.ListModifyFunction;
@@ -72,7 +75,10 @@ final class FunctionsInitialization {
                 ListModifyFunction.class,
                 SetModifyFunction.class,
                 MapModifyFunction.class,
-                GenericModifyFunction.class
+                GenericModifyFunction.class,
+                GenericBuildArrayFunction.class,
+                GenericBuildSetFunction.class,
+                GenericBuildListFunction.class
             };
 
         for(int i = 0; i < implementationClasses.length; i++) {

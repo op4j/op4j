@@ -42,6 +42,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.op4j.executables.ISelect;
@@ -67,80 +68,116 @@ public class GenericFunc<X,T> implements IFunc<X,T>  {
     
     
     @SuppressWarnings("unchecked")
-    public static <T> GenericFunc<T,T> uniqAdd(final T... newElements) {
-        return new GenericFunc<T,T>((Function<T,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(newElements), "UNIQ_ADD"})); 
+    public static <T> GenericFunc<List<T>,T> uniqAdd(final T... newElements) {
+        return new GenericFunc<List<T>,T>((Function<List<T>,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(newElements), "UNIQ_ADD"})); 
     }
     
     
     @SuppressWarnings("unchecked")
-    public static <T> GenericFunc<T,T> multiAdd(final T... newElements) {
-        return new GenericFunc<T,T>((Function<T,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(newElements), "MULTI_ADD"})); 
+    public static <T> GenericFunc<List<T>,List<T>> multiAdd(final T... newElements) {
+        return new GenericFunc<List<T>,List<T>>((Function<List<T>,List<T>>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(newElements), "MULTI_ADD"})); 
     }
     
     
     @SuppressWarnings("unchecked")
-    public static <T> GenericFunc<T,T> uniqInsert(final int position, final T... newElements) {
-        return new GenericFunc<T,T>((Function<T,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(newElements), Integer.valueOf(position), "UNIQ_ADD"})); 
+    public static <T> GenericFunc<List<T>,T> uniqInsert(final int position, final T... newElements) {
+        return new GenericFunc<List<T>,T>((Function<List<T>,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(newElements), Integer.valueOf(position), "UNIQ_ADD"})); 
     }
     
     
     @SuppressWarnings("unchecked")
-    public static <T> GenericFunc<T,T> multiInsert(final int position, final T... newElements) {
-        return new GenericFunc<T,T>((Function<T,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(newElements), Integer.valueOf(position), "MULTI_ADD"})); 
+    public static <T> GenericFunc<List<T>,List<T>> multiInsert(final int position, final T... newElements) {
+        return new GenericFunc<List<T>,List<T>>((Function<List<T>,List<T>>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(newElements), Integer.valueOf(position), "MULTI_ADD"})); 
     }
     
     
     @SuppressWarnings("unchecked")
-    public static <T> GenericFunc<T,T> uniqAddAll(final Collection<T> collection) {
-        return new GenericFunc<T,T>((Function<T,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {new ArrayList<Object>(collection), "UNIQ_ADD"})); 
+    public static <T> GenericFunc<List<T>,T> uniqAddAll(final Collection<T> collection) {
+        return new GenericFunc<List<T>,T>((Function<List<T>,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {new ArrayList<Object>(collection), "UNIQ_ADD"})); 
     }
     
     
     @SuppressWarnings("unchecked")
-    public static <T> GenericFunc<T,T> multiAddAll(final Collection<T> collection) {
-        return new GenericFunc<T,T>((Function<T,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {new ArrayList<Object>(collection), "MULTI_ADD"})); 
+    public static <T> GenericFunc<List<T>,List<T>> multiAddAll(final Collection<T> collection) {
+        return new GenericFunc<List<T>,List<T>>((Function<List<T>,List<T>>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {new ArrayList<Object>(collection), "MULTI_ADD"})); 
     }
 
 
     @SuppressWarnings("unchecked")
-    public static <T> GenericFunc<T,T> multiRemovePositions(final int... positions) {
-        return new GenericFunc<T,T>((Function<T,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredIntegerArray(positions), "MULTI_REMOVE"})); 
+    public static <T> GenericFunc<List<T>,List<T>> multiRemovePositions(final int... positions) {
+        return new GenericFunc<List<T>,List<T>>((Function<List<T>,List<T>>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredIntegerArray(positions), "MULTI_REMOVE"})); 
     }
 
 
     @SuppressWarnings("unchecked")
-    public static <T> GenericFunc<T,T> multiRemoveValues(final T... values) {
-        return new GenericFunc<T,T>((Function<T,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(values), "MULTI_REMOVE"})); 
+    public static <T> GenericFunc<List<T>,List<T>> multiRemoveValues(final T... values) {
+        return new GenericFunc<List<T>,List<T>>((Function<List<T>,List<T>>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredObjectList(values), "MULTI_REMOVE"})); 
     }
 
 
     @SuppressWarnings("unchecked")
-    public static <T> GenericFunc<T,T> multiRemoveMatching(final String expression, final Object... optionalExpParams) {
-        return new GenericFunc<T,T>((Function<T,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {expression, VarArgsUtil.asOptionalObjectList(optionalExpParams), "MULTI_REMOVE"})); 
+    public static <T> GenericFunc<List<T>,List<T>> multiRemoveMatching(final String expression, final Object... optionalExpParams) {
+        return new GenericFunc<List<T>,List<T>>((Function<List<T>,List<T>>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {expression, VarArgsUtil.asOptionalObjectList(optionalExpParams), "MULTI_REMOVE"})); 
     }
 
 
     @SuppressWarnings("unchecked")
-    public static <T> GenericFunc<T,T> multiRemoveSelected(final ISelect<T> selector) {
-        return new GenericFunc<T,T>((Function<T,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {selector, "MULTI_REMOVE"})); 
+    public static <T> GenericFunc<List<T>,List<T>> multiRemoveSelected(final ISelect<T> selector) {
+        return new GenericFunc<List<T>,List<T>>((Function<List<T>,List<T>>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {selector, "MULTI_REMOVE"})); 
     }
 
 
     @SuppressWarnings("unchecked")
-    public static <T> GenericFunc<T,T> multiRemoveAllExceptPositions(final int... positions) {
-        return new GenericFunc<T,T>((Function<T,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredIntegerArray(positions), "MULTI_REMOVE_NOT"})); 
+    public static <T> GenericFunc<List<T>,List<T>> multiRemoveAllExceptPositions(final int... positions) {
+        return new GenericFunc<List<T>,List<T>>((Function<List<T>,List<T>>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {VarArgsUtil.asRequiredIntegerArray(positions), "MULTI_REMOVE_NOT"})); 
     }
 
 
     @SuppressWarnings("unchecked")
-    public static <T> GenericFunc<T,T> multiRemoveNulls() {
-        return new GenericFunc<T,T>((Function<T,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {"MULTI_REMOVE_NULL"})); 
+    public static <T> GenericFunc<List<T>,List<T>> multiRemoveNulls() {
+        return new GenericFunc<List<T>,List<T>>((Function<List<T>,List<T>>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {"MULTI_REMOVE_NULL"})); 
     }
     
     
     @SuppressWarnings("unchecked")
-    public static <T> GenericFunc<T,T> multiRemoveNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new GenericFunc<T,T>((Function<T,T>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {expression, VarArgsUtil.asOptionalObjectList(optionalExpParams), "MULTI_REMOVE_NOT_NULL_AND"})); 
+    public static <T> GenericFunc<List<T>,List<T>> multiRemoveNotNullsMatching(final String expression, final Object... optionalExpParams) {
+        return new GenericFunc<List<T>,List<T>>((Function<List<T>,List<T>>) Functions.getFunctionByName(GenericModifyFunction.NAME), Arrays.asList(new Object[] {expression, VarArgsUtil.asOptionalObjectList(optionalExpParams), "MULTI_REMOVE_NOT_NULL_AND"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> GenericFunc<Set<T>,T> uniqBuildSet() {
+        return new GenericFunc<Set<T>,T>((Function<Set<T>,T>) Functions.getFunctionByName(GenericBuildSetFunction.NAME), Arrays.asList(new Object[] {"UNIQ_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> GenericFunc<Set<T>,List<T>> multiBuildSet() {
+        return new GenericFunc<Set<T>,List<T>>((Function<Set<T>,List<T>>) Functions.getFunctionByName(GenericBuildSetFunction.NAME), Arrays.asList(new Object[] {"MULTI_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> GenericFunc<List<T>,T> uniqBuildList() {
+        return new GenericFunc<List<T>,T>((Function<List<T>,T>) Functions.getFunctionByName(GenericBuildListFunction.NAME), Arrays.asList(new Object[] {"UNIQ_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> GenericFunc<List<T>,List<T>> multiBuildList() {
+        return new GenericFunc<List<T>,List<T>>((Function<List<T>,List<T>>) Functions.getFunctionByName(GenericBuildListFunction.NAME), Arrays.asList(new Object[] {"MULTI_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> GenericFunc<T[],T> uniqBuildArray(final Type<T> arrayOfType) {
+        return new GenericFunc<T[],T>((Function<T[],T>) Functions.getFunctionByName(GenericBuildArrayFunction.NAME), Arrays.asList(new Object[] {arrayOfType, "UNIQ_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> GenericFunc<T[],List<T>> multiBuildArray(final Type<T> arrayOfType) {
+        return new GenericFunc<T[],List<T>>((Function<T[],List<T>>) Functions.getFunctionByName(GenericBuildArrayFunction.NAME), Arrays.asList(new Object[] {arrayOfType, "MULTI_BUILD"})); 
     }
     
     

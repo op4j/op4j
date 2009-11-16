@@ -32,15 +32,15 @@ public class ParameterSpecRecognitionException extends RuntimeException {
     private static final long serialVersionUID = 2598744357464834457L;
 
     public ParameterSpecRecognitionException(final String parameterSpec) {
-        super("Could not recognize parameter spec " + parameterSpec);
+        super("Could not recognize parameter spec \"" + parameterSpec + "\"");
     }
 
     public ParameterSpecRecognitionException(final String parameterSpec, final String message) {
-        super("Could not recognize parameter spec " + parameterSpec + ": " + message);
+        super("Could not recognize parameter spec \"" + parameterSpec + "\": " + message);
     }
 
     public ParameterSpecRecognitionException(final String parameterSpec, final Throwable t) {
-        super("Could not recognize parameter spec " + parameterSpec, t);
+        super("Could not recognize parameter spec \"" + parameterSpec + "\"", t);
     }
     
 }

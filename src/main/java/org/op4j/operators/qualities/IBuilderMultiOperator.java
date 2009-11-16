@@ -42,7 +42,6 @@ public interface IBuilderMultiOperator<T> {
     
     public ILevel0MapOfSetOperator<T,T> buildMapOfSet();
     
-    public <X> ILevel0MapOfArrayOperator<X,X> buildMapOfArray(final Of<X> of);
-    public <X> ILevel0MapOfArrayOperator<X,X> buildMapOfArray(final Class<X> arrayOfClass);
+    public ILevel0MapOfArrayOperator<T,T> buildMapOfArray(final Of<T> of);
     
 }

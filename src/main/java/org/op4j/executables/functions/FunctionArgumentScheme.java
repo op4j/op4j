@@ -228,7 +228,7 @@ public final class FunctionArgumentScheme implements Serializable {
                             parameterSpecs.add(FunctionParameterSpec.forType(Types.forName(tokenParts.get(0)), tokenParts.get(1)));
                             break;
                         default:
-                            throw new ParameterSpecRecognitionException(parameterSpec);
+                            throw new ParameterSpecRecognitionException(tokens[i]);
                     }
                     
                 }
