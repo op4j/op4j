@@ -19,6 +19,7 @@
  */
 package org.op4j;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -33,6 +34,7 @@ import java.util.Set;
 
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
+import org.javaruntype.type.Types;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ISelect;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
@@ -275,7 +277,113 @@ public final class Op {
     public static <T> ILevel0SetOfSetOperator<T> onSetOfSet(final Set<? extends Set<T>> target) {
         return new Level0SetOfSetOperator<T>(Target.forObject(target));
     }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> ILevel0ArrayOperator<T> buildArray(final Of<T> of) {
+        return onArray(of, (T[]) Array.newInstance(of.getType().getRawClass(), 0));
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> ILevel0ArrayOfArrayOperator<T> buildArrayOfArray(final Of<T> of) {
+        return onArrayOfArray(of, (T[][]) Array.newInstance(Types.arrayOf(of.getType()).getRawClass(), 0));
+    }
+    
+    @SuppressWarnings("unchecked")
+    public static <T> ILevel0ArrayOfListOperator<T> buildArrayOfList(final Of<T> of) {
+        return onArrayOfList((List<T>[]) Array.newInstance(Types.listOf(of.getType()).getRawClass(), 0));
+    }
+    
+    @SuppressWarnings("unchecked")
+    public static <K,V> ILevel0ArrayOfMapOperator<K,V> buildArrayOfMap(final Of<K> keyOf, final Of<V> valueOf) {
+        return onArrayOfMap((Map<K,V>[]) Array.newInstance(Types.mapOf(keyOf.getType(),valueOf.getType()).getRawClass(), 0));
+    }
+    
+    @SuppressWarnings("unchecked")
+    public static <T> ILevel0ArrayOfSetOperator<T> buildArrayOfSet(final Of<T> of) {
+        return onArrayOfSet((Set<T>[]) Array.newInstance(Types.setOf(of.getType()).getRawClass(), 0));
+    }
 
+    
+    public static <T> ILevel0ListOperator<T> buildList(final Of<T> of) {
+        return onList(new ArrayList<T>());
+    }
+    
+    
+    public static <T> ILevel0ListOfArrayOperator<T> buildListOfArray(final Of<T> of) {
+        return onListOfArray(of, new ArrayList<T[]>());
+    }
+    
+    public static <T> ILevel0ListOfListOperator<T> buildListOfList(final Of<T> of) {
+        return onListOfList(new ArrayList<List<T>>());
+    }
+    
+    public static <K,V> ILevel0ListOfMapOperator<K,V> buildListOfMap(final Of<K> keyOf, final Of<V> valueOf) {
+        return onListOfMap(new ArrayList<Map<K,V>>());
+    }
+    
+    public static <T> ILevel0ListOfSetOperator<T> buildListOfSet(final Of<T> of) {
+        return onListOfSet(new ArrayList<Set<T>>());
+    }
+    
+    
+    public static <T> ILevel0SetOperator<T> buildSet(final Of<T> of) {
+        return onSet(new LinkedHashSet<T>());
+    }
+    
+    
+    public static <T> ILevel0SetOfArrayOperator<T> buildSetOfArray(final Of<T> of) {
+        return onSetOfArray(of, new LinkedHashSet<T[]>());
+    }
+    
+    public static <T> ILevel0SetOfListOperator<T> buildSetOfList(final Of<T> of) {
+        return onSetOfList(new LinkedHashSet<List<T>>());
+    }
+    
+    public static <K,V> ILevel0SetOfMapOperator<K,V> buildSetOfMap(final Of<K> keyOf, final Of<V> valueOf) {
+        return onSetOfMap(new LinkedHashSet<Map<K,V>>());
+    }
+    
+    public static <T> ILevel0SetOfSetOperator<T> buildSetOfSet(final Of<T> of) {
+        return onSetOfSet(new LinkedHashSet<Set<T>>());
+    }
+    
+    
+    public static <K,V> ILevel0MapOperator<K,V> buildMap(final Of<K> keyOf, final Of<V> valueOf) {
+        return onMap(new LinkedHashMap<K,V>());
+    }
+    
+    
+    public static <K,V> ILevel0MapOfArrayOperator<K,V> buildMapOfArray(final Of<K> keyOf, final Of<V> valueOf) {
+        return onMapOfArray(valueOf, new LinkedHashMap<K,V[]>());
+    }
+    
+    
+    public static <K,V> ILevel0MapOfListOperator<K,V> buildMapOfList(final Of<K> keyOf, final Of<V> valueOf) {
+        return onMapOfList(new LinkedHashMap<K,List<V>>());
+    }
+    
+    
+    public static <K,V> ILevel0MapOfSetOperator<K,V> buildMapOfSet(final Of<K> keyOf, final Of<V> valueOf) {
+        return onMapOfSet(new LinkedHashMap<K,Set<V>>());
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     
     
@@ -433,6 +541,8 @@ public final class Op {
         System.out.println(Op.on(null).buildList().get());
         System.out.println(Op.on(null).buildSet().get());
         System.out.println(printArray(Op.on((String)null).buildArray(Of.STRING).add("a").removeNulls().removePositions(0).get()));
+        
+        System.out.println(printArray(Op.buildArrayOfArray(Of.STRING).add(Op.buildArray(Of.STRING).add("a","b").get()).add(Op.buildArray(Of.STRING).add("1","2","3").get()).get()));
         
     }
     
