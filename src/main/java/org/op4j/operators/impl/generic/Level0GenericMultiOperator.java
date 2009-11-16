@@ -20,8 +20,11 @@
 package org.op4j.operators.impl.generic;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.op4j.Of;
+import org.op4j.exceptions.EmptyTargetException;
+import org.op4j.exceptions.NonUniqueTargetException;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
@@ -59,6 +62,9 @@ public class Level0GenericMultiOperator<T> extends Operator
     
     public Level0GenericMultiOperator(final Target target) {
         super(target);
+        if (((List<?>)target.get()).size() <= 0) {
+            throw new EmptyTargetException();
+        }
     }
 
 
@@ -210,14 +216,15 @@ public class Level0GenericMultiOperator<T> extends Operator
 
 
     public ILevel0GenericUniqOperator<T> uniq() {
-        // TODO Auto-generated method stub
-        return null;
+        if (size() > 1) {
+            throw new NonUniqueTargetException();
+        }
+        return new Level0GenericUniqOperator<T>(Target.forObject(((List<?>)getTarget()).get(0)));
     }
 
 
     public int size() {
-        // TODO Auto-generated method stub
-        return 0;
+        return ((List<?>) getTarget().get()).size();
     }
 
 

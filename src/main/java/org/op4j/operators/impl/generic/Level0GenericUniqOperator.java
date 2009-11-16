@@ -500,6 +500,32 @@ public class Level0GenericUniqOperator<T> extends Operator
         return null;
     }
 
+    
+    public <K, V> ILevel0ArrayOfMapOperator<K, V> castAsArrayOfMap(
+            Class<K> keyOf, Class<V> valueOf) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+
+    public <K, V> ILevel0ListOfMapOperator<K, V> castAsListOfMap(
+            Class<K> keyOf, Class<V> valueOf) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+
+    public <K, V> ILevel0SetOfMapOperator<K, V> castAsSetOfMap(Class<K> keyOf,
+            Class<V> valueOf) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    
+    
+    
+    
+    
+
 
     public <X> ILevel0GenericUniqOperator<X> conv(final IConv<X> conv) {
         return new Level0GenericUniqOperator<X>(getTarget().execute(conv));
@@ -684,27 +710,6 @@ public class Level0GenericUniqOperator<T> extends Operator
     @SuppressWarnings("unchecked")
     public T get() {
         return (T) getTarget().get();
-    }
-
-
-    public <K, V> ILevel0ArrayOfMapOperator<K, V> castAsArrayOfMap(
-            Class<K> keyOf, Class<V> valueOf) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <K, V> ILevel0ListOfMapOperator<K, V> castAsListOfMap(
-            Class<K> keyOf, Class<V> valueOf) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <K, V> ILevel0SetOfMapOperator<K, V> castAsSetOfMap(Class<K> keyOf,
-            Class<V> valueOf) {
-        // TODO Auto-generated method stub
-        return null;
     }
 
 }
