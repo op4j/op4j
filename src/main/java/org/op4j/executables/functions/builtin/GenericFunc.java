@@ -214,6 +214,66 @@ public class GenericFunc<X,T> implements IFunc<X,T>  {
     }
     
     
+    @SuppressWarnings("unchecked")
+    public static <K,V,T> GenericFunc<Map<K,Set<V>>,T> uniqBuildMapOfSet(final IEval<K,? super T> keyEval) {
+        return new GenericFunc<Map<K,Set<V>>,T>((Function<Map<K,Set<V>>,T>) Functions.getFunctionByName(GenericBuildMapOfSetFunction.NAME), Arrays.asList(new Object[] {keyEval, "UNIQ_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <K,V,T> GenericFunc<Map<K,Set<V>>,List<T>> multiBuildMapOfSet(final IEval<K,? super T> keyEval) {
+        return new GenericFunc<Map<K,Set<V>>,List<T>>((Function<Map<K,Set<V>>,List<T>>) Functions.getFunctionByName(GenericBuildMapOfSetFunction.NAME), Arrays.asList(new Object[] {keyEval, "MULTI_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <K,V,T> GenericFunc<Map<K,Set<V>>,T> uniqBuildMapOfSet(final IMapBuild<K,V,? super T> mapBuild) {
+        return new GenericFunc<Map<K,Set<V>>,T>((Function<Map<K,Set<V>>,T>) Functions.getFunctionByName(GenericBuildMapOfSetFunction.NAME), Arrays.asList(new Object[] {mapBuild, "UNIQ_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <K,V,T> GenericFunc<Map<K,Set<V>>,List<T>> multiBuildMapOfSet(final IMapBuild<K,V,? super T> mapBuild) {
+        return new GenericFunc<Map<K,Set<V>>,List<T>>((Function<Map<K,Set<V>>,List<T>>) Functions.getFunctionByName(GenericBuildMapOfSetFunction.NAME), Arrays.asList(new Object[] {mapBuild, "MULTI_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> GenericFunc<Map<T,Set<T>>,List<T>> multiBuildMapOfSet() {
+        return new GenericFunc<Map<T,Set<T>>,List<T>>((Function<Map<T,Set<T>>,List<T>>) Functions.getFunctionByName(GenericBuildMapOfSetFunction.NAME), Arrays.asList(new Object[] {"MULTI_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <K,V,T> GenericFunc<Map<K,List<V>>,T> uniqBuildMapOfList(final IEval<K,? super T> keyEval) {
+        return new GenericFunc<Map<K,List<V>>,T>((Function<Map<K,List<V>>,T>) Functions.getFunctionByName(GenericBuildMapOfListFunction.NAME), Arrays.asList(new Object[] {keyEval, "UNIQ_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <K,V,T> GenericFunc<Map<K,List<V>>,List<T>> multiBuildMapOfList(final IEval<K,? super T> keyEval) {
+        return new GenericFunc<Map<K,List<V>>,List<T>>((Function<Map<K,List<V>>,List<T>>) Functions.getFunctionByName(GenericBuildMapOfListFunction.NAME), Arrays.asList(new Object[] {keyEval, "MULTI_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <K,V,T> GenericFunc<Map<K,List<V>>,T> uniqBuildMapOfList(final IMapBuild<K,V,? super T> mapBuild) {
+        return new GenericFunc<Map<K,List<V>>,T>((Function<Map<K,List<V>>,T>) Functions.getFunctionByName(GenericBuildMapOfListFunction.NAME), Arrays.asList(new Object[] {mapBuild, "UNIQ_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <K,V,T> GenericFunc<Map<K,List<V>>,List<T>> multiBuildMapOfList(final IMapBuild<K,V,? super T> mapBuild) {
+        return new GenericFunc<Map<K,List<V>>,List<T>>((Function<Map<K,List<V>>,List<T>>) Functions.getFunctionByName(GenericBuildMapOfListFunction.NAME), Arrays.asList(new Object[] {mapBuild, "MULTI_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> GenericFunc<Map<T,List<T>>,List<T>> multiBuildMapOfList() {
+        return new GenericFunc<Map<T,List<T>>,List<T>>((Function<Map<T,List<T>>,List<T>>) Functions.getFunctionByName(GenericBuildMapOfListFunction.NAME), Arrays.asList(new Object[] {"MULTI_BUILD"})); 
+    }
+    
+    
     
     
     

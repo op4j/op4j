@@ -41,6 +41,8 @@ import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.list.Level0ListOperator;
 import org.op4j.operators.impl.map.Level0MapOperator;
+import org.op4j.operators.impl.mapoflist.Level0MapOfListOperator;
+import org.op4j.operators.impl.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.impl.set.Level0SetOperator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
@@ -132,26 +134,22 @@ public class Level0GenericUniqOperator<T> extends Operator
 
 
     public <K> ILevel0MapOfListOperator<K, T> buildMapOfList(final IEval<K, ? super T> keyEval) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0MapOfListOperator<K, T>(getTarget().execute(GenericFunc.uniqBuildMapOfList(keyEval)));
     }
 
 
     public <K, V> ILevel0MapOfListOperator<K, V> buildMapOfList(final IMapBuild<K, V, ? super T> mapBuild) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0MapOfListOperator<K, V>(getTarget().execute(GenericFunc.uniqBuildMapOfList(mapBuild)));
     }
 
 
     public <K> ILevel0MapOfSetOperator<K, T> buildMapOfSet(final IEval<K, ? super T> keyEval) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0MapOfSetOperator<K, T>(getTarget().execute(GenericFunc.uniqBuildMapOfSet(keyEval)));
     }
 
 
     public <K, V> ILevel0MapOfSetOperator<K, V> buildMapOfSet(final IMapBuild<K, V, ? super T> mapBuild) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(GenericFunc.uniqBuildMapOfSet(mapBuild)));
     }
 
 
