@@ -42,9 +42,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
+import org.op4j.executables.IEval;
+import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.Function;
 import org.op4j.executables.functions.FunctionArguments;
@@ -178,6 +181,36 @@ public class GenericFunc<X,T> implements IFunc<X,T>  {
     @SuppressWarnings("unchecked")
     public static <T> GenericFunc<T[],List<T>> multiBuildArray(final Type<T> arrayOfType) {
         return new GenericFunc<T[],List<T>>((Function<T[],List<T>>) Functions.getFunctionByName(GenericBuildArrayFunction.NAME), Arrays.asList(new Object[] {arrayOfType, "MULTI_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <K,T> GenericFunc<Map<K,T>,T> uniqBuildMap(final IEval<K,? super T> keyEval) {
+        return new GenericFunc<Map<K,T>,T>((Function<Map<K,T>,T>) Functions.getFunctionByName(GenericBuildMapFunction.NAME), Arrays.asList(new Object[] {keyEval, "UNIQ_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <K,T> GenericFunc<Map<K,T>,List<T>> multiBuildMap(final IEval<K,? super T> keyEval) {
+        return new GenericFunc<Map<K,T>,List<T>>((Function<Map<K,T>,List<T>>) Functions.getFunctionByName(GenericBuildMapFunction.NAME), Arrays.asList(new Object[] {keyEval, "MULTI_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <K,V,T> GenericFunc<Map<K,V>,T> uniqBuildMap(final IMapBuild<K,V,? super T> mapBuild) {
+        return new GenericFunc<Map<K,V>,T>((Function<Map<K,V>,T>) Functions.getFunctionByName(GenericBuildMapFunction.NAME), Arrays.asList(new Object[] {mapBuild, "UNIQ_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <K,V,T> GenericFunc<Map<K,V>,List<T>> multiBuildMap(final IMapBuild<K,V,? super T> mapBuild) {
+        return new GenericFunc<Map<K,V>,List<T>>((Function<Map<K,V>,List<T>>) Functions.getFunctionByName(GenericBuildMapFunction.NAME), Arrays.asList(new Object[] {mapBuild, "MULTI_BUILD"})); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> GenericFunc<Map<T,T>,List<T>> multiBuildMap() {
+        return new GenericFunc<Map<T,T>,List<T>>((Function<Map<T,T>,List<T>>) Functions.getFunctionByName(GenericBuildMapFunction.NAME), Arrays.asList(new Object[] {"MULTI_BUILD"})); 
     }
     
     

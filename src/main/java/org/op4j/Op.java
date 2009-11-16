@@ -549,6 +549,8 @@ public final class Op {
         
         System.out.println(printArray(Op.buildArrayOfArray(Of.STRING).add(Op.buildArray(Of.STRING).add("a","b").get()).add(Op.buildArray(Of.STRING).add("1","2","3").get()).get()));
         System.out.println(Op.buildMap(Of.INTEGER,Of.STRING).put(12,"hello!").get());
+        System.out.println(Op.onAll("a",1,"b",3).buildMap().get());
+        System.out.println(Op.onAll("hello", "goodbye").buildMap(Eval.integerExp("length()")).get());
         
     }
     

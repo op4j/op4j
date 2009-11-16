@@ -24,6 +24,7 @@ import org.op4j.executables.functions.builtin.ArrayDistinctFunction;
 import org.op4j.executables.functions.builtin.ArrayModifyFunction;
 import org.op4j.executables.functions.builtin.GenericBuildArrayFunction;
 import org.op4j.executables.functions.builtin.GenericBuildListFunction;
+import org.op4j.executables.functions.builtin.GenericBuildMapFunction;
 import org.op4j.executables.functions.builtin.GenericBuildSetFunction;
 import org.op4j.executables.functions.builtin.GenericModifyFunction;
 import org.op4j.executables.functions.builtin.ListDistinctFunction;
@@ -78,7 +79,8 @@ final class FunctionsInitialization {
                 GenericModifyFunction.class,
                 GenericBuildArrayFunction.class,
                 GenericBuildSetFunction.class,
-                GenericBuildListFunction.class
+                GenericBuildListFunction.class,
+                GenericBuildMapFunction.class
             };
 
         for(int i = 0; i < implementationClasses.length; i++) {
