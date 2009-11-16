@@ -29,7 +29,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.Of;
 import org.op4j.executables.IExecutable;
 import org.op4j.executables.ISelect;
 import org.op4j.util.MapEntry;
@@ -224,10 +223,10 @@ public class StructureTarget extends Target {
 
     
     @Override
-    public Target endIterate(final Structure structure, final Of<?> of) {
+    public Target endIterate(final Structure structure, final Class<?> componentClass) {
         
         Validate.notNull(structure, "Structure cannot be null");
-        Validate.isTrue(!(structure.equals(Structure.ARRAY) && of == null), "Arrays must specify component type (of)");
+        Validate.isTrue(!(structure.equals(Structure.ARRAY) && componentClass == null), "Arrays must specify component class");
 
         if (this.isCurrentActionLevel) {
 
@@ -235,17 +234,16 @@ public class StructureTarget extends Target {
             
             switch (structure) {
                 case ARRAY:
-                    final Class<?> arrayComponentClass = of.getRawClass();
                     final List<Object> newObjectArrayList = new ArrayList<Object>();
                     for (final Target element : this.elements) {
                         final Object elementObject = element.getObject();
-                        if (elementObject != null && !arrayComponentClass.isAssignableFrom(elementObject.getClass())) {
+                        if (elementObject != null && !componentClass.isAssignableFrom(elementObject.getClass())) {
                             throw new IllegalStateException("Cannot put an object of class " + elementObject.getClass().getName() +
-                                    " into an array of " + arrayComponentClass);
+                                    " into an array of " + componentClass);
                         }
                         newObjectArrayList.add(elementObject);
                     }
-                    final Object[] array = (Object[]) Array.newInstance(arrayComponentClass, newObjectArrayList.size());
+                    final Object[] array = (Object[]) Array.newInstance(componentClass, newObjectArrayList.size());
                     newObject = newObjectArrayList.toArray(array);
                     break;
                 case LIST:
@@ -292,7 +290,7 @@ public class StructureTarget extends Target {
         final List<Target> newElements = new ArrayList<Target>();
         for (final Target element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.endIterate(structure, of));
+                newElements.add(element.endIterate(structure, componentClass));
             } else {
                 newElements.add(element);
             }

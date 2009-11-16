@@ -28,7 +28,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Types;
-import org.op4j.Of;
 import org.op4j.executables.IExecutable;
 import org.op4j.executables.ISelect;
 import org.op4j.util.OgnlExpressionUtil;
@@ -263,7 +262,7 @@ public abstract class NodeTarget extends Target{
     
     
     @Override
-    public Target endIterate(final Structure structure, final Of<?> of) {
+    public Target endIterate(final Structure structure, final Class<?> componentClass) {
         throw new IllegalStateException("Cannot end iteration on a node");
     }
 

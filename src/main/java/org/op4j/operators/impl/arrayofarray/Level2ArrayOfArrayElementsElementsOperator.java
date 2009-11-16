@@ -200,7 +200,7 @@ public class Level2ArrayOfArrayElementsElementsOperator<T> extends Operator
 
 
     public ILevel1ArrayOfArrayElementsOperator<T> endFor() {
-        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().endIterate(Structure.ARRAY, this.arrayOf));
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().endIterate(Structure.ARRAY, this.arrayOf.getRawClass()));
     }
 
 

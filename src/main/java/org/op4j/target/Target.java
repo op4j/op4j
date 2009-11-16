@@ -23,7 +23,6 @@ package org.op4j.target;
 import java.util.Arrays;
 import java.util.List;
 
-import org.op4j.Of;
 import org.op4j.executables.IExecutable;
 import org.op4j.executables.ISelect;
 import org.op4j.util.VarArgsUtil;
@@ -130,7 +129,7 @@ public abstract class Target {
     }
     
 
-    public abstract Target endIterate(final Structure structure, final Of<?> of);
+    public abstract Target endIterate(final Structure structure, final Class<?> componentClass);
     
 
     public abstract Target execute(final IExecutable<?,?> command);

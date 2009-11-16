@@ -227,7 +227,7 @@ public class Level3MapOfArrayEntriesValueElementsOperator<K,V> extends Operator
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> endFor() {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().endIterate(Structure.ARRAY, this.arrayOf));
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().endIterate(Structure.ARRAY, this.arrayOf.getRawClass()));
     }
 
 
