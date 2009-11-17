@@ -30,8 +30,8 @@ import org.javaruntype.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface IEval<X,T> extends IExecutable<X,T> {
+public interface IEval<R,T> extends IExecutable<R,T> {
  
-    public Type<X> getResultType();
+    public Type<? super R> getResultType();
     
 }

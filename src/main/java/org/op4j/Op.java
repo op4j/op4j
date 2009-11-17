@@ -39,6 +39,12 @@ import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.conversion.DecimalPoint;
+import org.op4j.executables.functions.conversion.ToBigDecimal;
+import org.op4j.executables.functions.conversion.ToBigInteger;
+import org.op4j.executables.functions.conversion.ToDouble;
+import org.op4j.executables.functions.conversion.ToInteger;
+import org.op4j.executables.functions.conversion.ToLong;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.impl.arrayoflist.Level0ArrayOfListOperator;
@@ -591,6 +597,15 @@ public final class Op {
         	
         }).get()));
         
+        
+        System.out.println(Op.on("12314123.4123").exec(new ToInteger.FromString(RoundingMode.CEILING, DecimalPoint.IS_POINT)).get());
+        System.out.println(Op.on("12314123.4123").exec(ToInteger.fromString(RoundingMode.CEILING, DecimalPoint.IS_POINT)).get());
+        System.out.println(Op.on("12314123").exec(ToInteger.fromString()).get());
+        System.out.println(Op.on("12314123").exec(ToLong.fromString()).get());
+        System.out.println(Op.on("12314123").exec(ToBigInteger.fromString()).get());
+        System.out.println(Op.on("12314123.4123").exec(ToDouble.fromString()).get());
+        System.out.println(Op.on("12314123.4123").exec(ToDouble.fromString(3, RoundingMode.CEILING)).get());
+        System.out.println(Op.on("12314123.4123").exec(ToBigDecimal.fromString(3, RoundingMode.CEILING)).get());
         
     }
     

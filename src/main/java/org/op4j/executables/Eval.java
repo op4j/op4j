@@ -40,11 +40,11 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Eval<X,T> implements IEval<X,T> {
+public class Eval<R,T> implements IEval<R,T> {
     
     
     
-    private final Type<X> resultType;
+    private final Type<R> resultType;
     private final String ognlExpression;
     private final List<Object> parameters;
     
@@ -54,12 +54,12 @@ public class Eval<X,T> implements IEval<X,T> {
         return new Eval<Object,Object>(Types.OBJECT, ognlExpression, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static <X> Eval<X,Object> exp(final Type<X> resultType, final String ognlExpression, final Object... optionalParameters) {
-        return new Eval<X,Object>(resultType, ognlExpression, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    public static <R> Eval<R,Object> exp(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
+        return new Eval<R,Object>(resultType, ognlExpression, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static <X> Eval<X,Object> exp(final Class<X> ofClass, final String ognlExpression, final Object... optionalParameters) {
-        return new Eval<X,Object>(ofClass, ognlExpression, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    public static <R> Eval<R,Object> exp(final Class<R> ofClass, final String ognlExpression, final Object... optionalParameters) {
+        return new Eval<R,Object>(ofClass, ognlExpression, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
 
     
@@ -120,7 +120,7 @@ public class Eval<X,T> implements IEval<X,T> {
     }
     
     
-    private Eval(final Type<X> resultType, final String ognlExpression, final List<Object> parameters) {
+    private Eval(final Type<R> resultType, final String ognlExpression, final List<Object> parameters) {
     	Validate.notNull(resultType, "Result type cannot be null");
     	Validate.notNull(ognlExpression, "Expression cannot be null");
         this.resultType = resultType;
@@ -128,7 +128,7 @@ public class Eval<X,T> implements IEval<X,T> {
         this.parameters = parameters;
     }
     
-    private Eval(final Class<X> resultClass, final String ognlExpression, final List<Object> parameters) {
+    private Eval(final Class<R> resultClass, final String ognlExpression, final List<Object> parameters) {
     	Validate.notNull(resultClass, "Result class cannot be null");
     	Validate.notNull(ognlExpression, "Expression cannot be null");
         this.resultType = Types.forClass(resultClass);
@@ -137,12 +137,12 @@ public class Eval<X,T> implements IEval<X,T> {
     }
     
     
-    public Type<X> getResultType() {
+    public Type<? super R> getResultType() {
     	return this.resultType;
     }
     
     
-	public X execute(final T input) {
+	public R execute(final T input) throws Exception {
         return OgnlExpressionUtil.evalOgnlExpression(this.resultType, this.ognlExpression, input, this.parameters);
     }
     

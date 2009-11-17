@@ -17,8 +17,8 @@
  * 
  * =============================================================================
  */
+package org.op4j.exceptions;
 
-package org.op4j.executables;
 
 /**
  * 
@@ -27,8 +27,26 @@ package org.op4j.executables;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface IExecutable<R,T> {
-    
-    public R execute(final T object) throws Exception;
+public class ExecutionException extends RuntimeException {
 
+    
+    private static final long serialVersionUID = 8999157910064758640L;
+
+    public ExecutionException() {
+        super();
+    }
+
+    public ExecutionException(String msg, Throwable cause) {
+        super(msg, cause);
+    }
+
+    public ExecutionException(String msg) {
+        super(msg);
+    }
+
+    public ExecutionException(Throwable cause) {
+        super(cause);
+    }
+    
+    
 }

@@ -148,7 +148,7 @@ public class Call<X,T> implements ICall<X,T> {
 
 	
     @SuppressWarnings("unchecked")
-	public X execute(final T input) {
+	public X execute(final T input) throws Exception {
     	
     	if (input == null) {
     		throw new NullPointerException("Cannot call methods on null object");

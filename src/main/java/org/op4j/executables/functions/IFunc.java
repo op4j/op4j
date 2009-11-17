@@ -30,9 +30,9 @@ import org.op4j.executables.IExecutable;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface IFunc<X,T> extends IExecutable<X,T>{
+public interface IFunc<R,T> extends IExecutable<R,T>{
     
-    public Type<? super X> getResultType();
+    public Type<? super R> getResultType();
     
 
 }

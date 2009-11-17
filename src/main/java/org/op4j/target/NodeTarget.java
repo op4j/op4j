@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Types;
+import org.op4j.exceptions.ExecutionException;
 import org.op4j.executables.IExecutable;
 import org.op4j.executables.ISelect;
 import org.op4j.util.OgnlExpressionUtil;
@@ -273,7 +274,13 @@ public abstract class NodeTarget extends Target{
     @SuppressWarnings("unchecked")
     public Target execute(final IExecutable<?,?> command) {
     	final IExecutable<Object,Object> objectCommand = (IExecutable<Object,Object>) command;
-        return NodeTarget.forObject(getId(), objectCommand.execute(getObject()));
+    	try {
+            return NodeTarget.forObject(getId(), objectCommand.execute(getObject()));
+        } catch (ExecutionException e) {
+            throw e;
+    	} catch (Throwable t) {
+    	    throw new ExecutionException(t);
+    	}
     }
 
 

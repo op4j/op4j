@@ -286,7 +286,7 @@ public abstract class NonDecimalNumberConverter<T extends Number> extends Number
     
     protected final T fromString(
             final String string, final RoundingMode roundingMode) throws Exception {
-        return fromNumber(fromString(string), roundingMode);
+        return fromNumber(new BigDecimal(string), roundingMode);
     }
         
     

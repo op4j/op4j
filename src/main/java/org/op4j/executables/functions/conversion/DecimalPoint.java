@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.executables;
+package org.op4j.executables.functions.conversion;
 
 /**
  * 
@@ -27,8 +27,10 @@ package org.op4j.executables;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface IExecutable<R,T> {
+public enum DecimalPoint {
     
-    public R execute(final T object) throws Exception;
-
+    IS_COMMA, 
+    IS_POINT, 
+    CAN_BE_POINT_OR_COMMA
+    
 }
