@@ -21,7 +21,7 @@ package org.op4j.operators.impl.mapofarray;
 
 import java.util.Map;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
 import org.op4j.operators.intf.mapofarray.ILevel1MapOfArrayEntriesOperator;
@@ -41,10 +41,10 @@ import org.op4j.target.Target.Structure;
 public class Level1MapOfArrayEntriesOperator<K,V> extends Operator
         implements ILevel1MapOfArrayEntriesOperator<K,V> {
     
-    private final Of<V> arrayOf; 
+    private final Type<V> arrayOf; 
 
     
-    public Level1MapOfArrayEntriesOperator(final Of<V> of, final Target target) {
+    public Level1MapOfArrayEntriesOperator(final Type<V> of, final Target target) {
         super(target);
         this.arrayOf = of;
     }
@@ -55,15 +55,13 @@ public class Level1MapOfArrayEntriesOperator<K,V> extends Operator
     }
 
 
-    public <X, Y> ILevel1MapOfArrayEntriesOperator<X, Y> of(Of<X> ofX,
-            Of<Y> ofY) {
+    public <X, Y> ILevel1MapOfArrayEntriesOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <X, Y> ILevel1MapOfArrayEntriesOperator<X, Y> of(Class<X> ofXClass,
-            Class<Y> ofYClass) {
+    public <X, Y> ILevel1MapOfArrayEntriesOperator<X, Y> of(Class<X> ofXClass, Class<Y> ofYClass) {
         // TODO Auto-generated method stub
         return null;
     }

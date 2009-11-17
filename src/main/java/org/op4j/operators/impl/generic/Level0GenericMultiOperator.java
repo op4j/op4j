@@ -22,7 +22,7 @@ package org.op4j.operators.impl.generic;
 import java.util.Collection;
 import java.util.List;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 import org.op4j.exceptions.EmptyTargetException;
 import org.op4j.exceptions.NonUniqueTargetException;
 import org.op4j.executables.IEval;
@@ -82,8 +82,8 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0ArrayOperator<T> buildArray(final Of<T> arrayOf) {
-        return new Level0ArrayOperator<T>(arrayOf, getTarget().execute(GenericFunc.multiBuildArray(arrayOf.getType())));
+    public ILevel0ArrayOperator<T> buildArray(final Type<T> arrayOf) {
+        return new Level0ArrayOperator<T>(arrayOf, getTarget().execute(GenericFunc.multiBuildArray(arrayOf)));
     }
 
 
@@ -107,18 +107,18 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public <K> ILevel0MapOfArrayOperator<K, T> buildMapOfArray(final Of<T> valueArrayOf, final IEval<K, ? super T> keyEval) {
-        return new Level0MapOfArrayOperator<K, T>(valueArrayOf, getTarget().execute(GenericFunc.multiBuildMapOfArray(valueArrayOf.getType(), keyEval)));
+    public <K> ILevel0MapOfArrayOperator<K, T> buildMapOfArray(final Type<T> valueArrayOf, final IEval<K, ? super T> keyEval) {
+        return new Level0MapOfArrayOperator<K, T>(valueArrayOf, getTarget().execute(GenericFunc.multiBuildMapOfArray(valueArrayOf, keyEval)));
     }
 
 
-    public <K, V> ILevel0MapOfArrayOperator<K, V> buildMapOfArray(final Of<V> valueArrayOf, final IMapBuild<K, V, ? super T> mapBuild) {
-        return new Level0MapOfArrayOperator<K, V>(valueArrayOf, getTarget().execute(GenericFunc.multiBuildMapOfArray(valueArrayOf.getType(), mapBuild)));
+    public <K, V> ILevel0MapOfArrayOperator<K, V> buildMapOfArray(final Type<V> valueArrayOf, final IMapBuild<K, V, ? super T> mapBuild) {
+        return new Level0MapOfArrayOperator<K, V>(valueArrayOf, getTarget().execute(GenericFunc.multiBuildMapOfArray(valueArrayOf, mapBuild)));
     }
 
 
-    public ILevel0MapOfArrayOperator<T, T> buildMapOfArray(final Of<T> arrayOf) {
-        return new Level0MapOfArrayOperator<T, T>(arrayOf, getTarget().execute(GenericFunc.multiBuildMapOfArray(arrayOf.getType())));
+    public ILevel0MapOfArrayOperator<T, T> buildMapOfArray(final Type<T> arrayOf) {
+        return new Level0MapOfArrayOperator<T, T>(arrayOf, getTarget().execute(GenericFunc.multiBuildMapOfArray(arrayOf)));
     }
 
 
@@ -157,7 +157,7 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0GenericMultiOperator<X> of(Of<X> of) {
+    public <X> ILevel0GenericMultiOperator<X> of(final Type<X> of) {
         // TODO Auto-generated method stub
         return null;
     }

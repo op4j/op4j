@@ -21,7 +21,7 @@ package org.op4j.operators.intf.arrayofmap;
 
 import java.util.Map;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 import org.op4j.operators.qualities.INavigatingMapEntryOperator;
 import org.op4j.operators.qualities.ITypeParameterizableXOperator;
 import org.op4j.operators.qualities.IUniqOperator;
@@ -41,7 +41,7 @@ public interface ILevel3ArrayOfMapElementsEntriesKeyOperator<K,V>
 		    
     public ILevel2ArrayOfMapElementsEntriesOperator<K,V> endOn();
     
-    public <X> ILevel3ArrayOfMapElementsEntriesKeyOperator<X,V> of(final Of<X> of);
+    public <X> ILevel3ArrayOfMapElementsEntriesKeyOperator<X,V> of(final Type<X> of);
     
     public <X> ILevel3ArrayOfMapElementsEntriesKeyOperator<X,V> of(final Class<X> ofClass);
     

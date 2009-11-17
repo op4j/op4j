@@ -21,7 +21,7 @@ package org.op4j.operators.intf.generic;
 
 import java.util.Collection;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
@@ -62,7 +62,7 @@ public interface ILevel0GenericMultiOperator<T>
 
     
     
-    public <X> ILevel0GenericMultiOperator<X> of(final Of<X> of);
+    public <X> ILevel0GenericMultiOperator<X> of(final Type<X> of);
     public <X> ILevel0GenericMultiOperator<X> of(final Class<X> ofClass);
     
     public ILevel0GenericMultiOperator<?> raw();
@@ -84,7 +84,7 @@ public interface ILevel0GenericMultiOperator<T>
     public ILevel0SetOperator<T> buildSet();
     
     
-    public ILevel0ArrayOperator<T> buildArray(final Of<T> of);
+    public ILevel0ArrayOperator<T> buildArray(final Type<T> of);
     
     
     public <K> ILevel0MapOperator<K,T> buildMap(final IEval<K,? super T> keyEval);
@@ -99,8 +99,8 @@ public interface ILevel0GenericMultiOperator<T>
     public <K,V> ILevel0MapOfSetOperator<K,V> buildMapOfSet(final IMapBuild<K,V,? super T> mapBuild);
     
     
-    public <K> ILevel0MapOfArrayOperator<K,T> buildMapOfArray(final Of<T> valueArrayOf, final IEval<K,? super T> keyEval);
-    public <K,V> ILevel0MapOfArrayOperator<K,V> buildMapOfArray(final Of<V> valueArrayOf, final IMapBuild<K,V,? super T> mapBuild);
+    public <K> ILevel0MapOfArrayOperator<K,T> buildMapOfArray(final Type<T> valueArrayOf, final IEval<K,? super T> keyEval);
+    public <K,V> ILevel0MapOfArrayOperator<K,V> buildMapOfArray(final Type<V> valueArrayOf, final IMapBuild<K,V,? super T> mapBuild);
 
     
     public ILevel0MapOperator<T,T> buildMap();
@@ -109,7 +109,7 @@ public interface ILevel0GenericMultiOperator<T>
     
     public ILevel0MapOfSetOperator<T,T> buildMapOfSet();
     
-    public ILevel0MapOfArrayOperator<T,T> buildMapOfArray(final Of<T> of);
+    public ILevel0MapOfArrayOperator<T,T> buildMapOfArray(final Type<T> of);
     
 
 }

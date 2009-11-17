@@ -22,7 +22,7 @@ package org.op4j.operators.intf.listofmap;
 import java.util.List;
 import java.util.Map;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 import org.op4j.operators.qualities.INavigatingMapEntryOperator;
 import org.op4j.operators.qualities.ITypeParameterizableXOperator;
 import org.op4j.operators.qualities.IUniqOperator;
@@ -42,7 +42,7 @@ public interface ILevel3ListOfMapElementsEntriesKeyOperator<K,V>
     
     public ILevel2ListOfMapElementsEntriesOperator<K,V> endOn();
     
-    public <X> ILevel3ListOfMapElementsEntriesKeyOperator<X,V> of(final Of<X> of);
+    public <X> ILevel3ListOfMapElementsEntriesKeyOperator<X,V> of(final Type<X> of);
     
     public <X> ILevel3ListOfMapElementsEntriesKeyOperator<X,V> of(final Class<X> classOf);
     

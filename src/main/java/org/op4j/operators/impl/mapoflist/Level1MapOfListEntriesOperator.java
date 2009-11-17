@@ -22,7 +22,7 @@ package org.op4j.operators.impl.mapoflist;
 import java.util.List;
 import java.util.Map;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapoflist.ILevel0MapOfListOperator;
 import org.op4j.operators.intf.mapoflist.ILevel1MapOfListEntriesOperator;
@@ -53,15 +53,13 @@ public class Level1MapOfListEntriesOperator<K,V> extends Operator
     }
 
 
-    public <X, Y> ILevel1MapOfListEntriesOperator<X, Y> of(Of<X> ofX,
-            Of<Y> ofY) {
+    public <X, Y> ILevel1MapOfListEntriesOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <X, Y> ILevel1MapOfListEntriesOperator<X, Y> of(Class<X> ofXClass,
-            Class<Y> ofYClass) {
+    public <X, Y> ILevel1MapOfListEntriesOperator<X, Y> of(Class<X> ofXClass, Class<Y> ofYClass) {
         // TODO Auto-generated method stub
         return null;
     }

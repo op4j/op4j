@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
-import org.op4j.Of;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.functions.IFunc;
@@ -112,7 +111,7 @@ public interface ILevel3ListOfMapElementsEntriesValueOperator<K,V>
 
     public <X> ILevel3ListOfMapElementsEntriesValueOperator<K,X> exec(final IFunc<X,? super V> exec);
     
-    public <X> ILevel3ListOfMapElementsEntriesValueOperator<K,X> of(final Of<X> of);
+    public <X> ILevel3ListOfMapElementsEntriesValueOperator<K,X> of(final Type<X> of);
     
     public <X> ILevel3ListOfMapElementsEntriesValueOperator<K,X> of(final Class<X> classOf);
     

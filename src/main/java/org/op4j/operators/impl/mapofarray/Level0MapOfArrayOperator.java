@@ -23,7 +23,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
@@ -50,10 +50,10 @@ import org.op4j.target.Target;
 public class Level0MapOfArrayOperator<K,V> extends Operator
         implements ILevel0MapOfArrayOperator<K,V> {
     
-    private final Of<V> arrayOf; 
+    private final Type<V> arrayOf; 
 
     
-    public Level0MapOfArrayOperator(final Of<V> of, final Target target) {
+    public Level0MapOfArrayOperator(final Type<V> of, final Target target) {
         super(target);
         this.arrayOf = of;
     }
@@ -148,7 +148,7 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
 
 
 
-    public <X, Y> ILevel0MapOfArrayOperator<X, Y> of(Of<X> ofX, Of<Y> ofY) {
+    public <X, Y> ILevel0MapOfArrayOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
         // TODO Auto-generated method stub
         return null;
     }

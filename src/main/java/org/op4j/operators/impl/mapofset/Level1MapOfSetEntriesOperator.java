@@ -22,7 +22,7 @@ package org.op4j.operators.impl.mapofset;
 import java.util.Map;
 import java.util.Set;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofset.ILevel0MapOfSetOperator;
 import org.op4j.operators.intf.mapofset.ILevel1MapOfSetEntriesOperator;
@@ -53,14 +53,13 @@ public class Level1MapOfSetEntriesOperator<K,V> extends Operator
     }
 
 
-    public <X, Y> ILevel1MapOfSetEntriesOperator<X, Y> of(Of<X> ofX, Of<Y> ofY) {
+    public <X, Y> ILevel1MapOfSetEntriesOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <X, Y> ILevel1MapOfSetEntriesOperator<X, Y> of(Class<X> ofXClass,
-            Class<Y> ofYClass) {
+    public <X, Y> ILevel1MapOfSetEntriesOperator<X, Y> of(Class<X> ofXClass, Class<Y> ofYClass) {
         // TODO Auto-generated method stub
         return null;
     }

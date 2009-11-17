@@ -24,7 +24,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
@@ -99,7 +99,7 @@ public interface ILevel0ListOfSetOperator<T>
     public ILevel0ListOfSetOperator<T> sort();
     public ILevel0ListOfSetOperator<T> sort(final Comparator<? super Set<T>> comparator);
     
-    public <X> ILevel0ListOfSetOperator<X> of(final Of<X> of);
+    public <X> ILevel0ListOfSetOperator<X> of(final Type<X> of);
     public <X> ILevel0ListOfSetOperator<X> of(final Class<X> ofClass);
     
     public ILevel0ListOfSetOperator<?> raw();
@@ -116,19 +116,19 @@ public interface ILevel0ListOfSetOperator<T>
     public ILevel0ListOfSetOperator<T> removeNulls();
     public ILevel0ListOfSetOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
-    public <X> ILevel0ArrayOfArrayOperator<X> toArrayOfArray(final Of<X> of);
+    public <X> ILevel0ArrayOfArrayOperator<X> toArrayOfArray(final Type<X> of);
     public <X> ILevel0ArrayOfArrayOperator<X> toArrayOfArray(final Class<X> arrayOfClass);
     
     public ILevel0ArrayOfListOperator<T> toArrayOfList();
     
     public ILevel0ArrayOfSetOperator<T> toArrayOfSet();
     
-    public <X> ILevel0ListOfArrayOperator<X> toListOfArray(final Of<X> of);
+    public <X> ILevel0ListOfArrayOperator<X> toListOfArray(final Type<X> of);
     public <X> ILevel0ListOfArrayOperator<X> toListOfArray(final Class<X> ofClass);
     
     public ILevel0ListOfListOperator<T> toListOfList();
     
-    public <X> ILevel0SetOfArrayOperator<X> toSetOfArray(final Of<X> of);
+    public <X> ILevel0SetOfArrayOperator<X> toSetOfArray(final Type<X> of);
     public <X> ILevel0SetOfArrayOperator<X> toSetOfArray(final Class<X> ofClass);
     
     public ILevel0SetOfListOperator<T> toSetOfList();

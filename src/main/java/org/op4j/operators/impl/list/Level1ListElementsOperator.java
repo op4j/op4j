@@ -27,7 +27,6 @@ import java.util.List;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.Of;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
@@ -280,7 +279,7 @@ public class Level1ListElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel1ListElementsOperator<X> of(Of<X> of) {
+    public <X> ILevel1ListElementsOperator<X> of(final Type<X> of) {
         // TODO Auto-generated method stub
         return null;
     }

@@ -22,7 +22,7 @@ package org.op4j.operators.impl.array;
 import java.util.Collection;
 import java.util.Comparator;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
@@ -48,10 +48,10 @@ public class Level0ArrayOperator<T> extends Operator implements
         ILevel0ArrayOperator<T> {
 
     
-    private final Of<? super T> arrayOf; 
+    private final Type<? super T> arrayOf; 
     
     
-    public Level0ArrayOperator(final Of<? super T> of, final Target target) {
+    public Level0ArrayOperator(final Type<? super T> of, final Target target) {
         super(target);
         this.arrayOf = of;
     }
@@ -176,7 +176,7 @@ public class Level0ArrayOperator<T> extends Operator implements
 
 
 
-    public <X> ILevel0ArrayOperator<X> of(Of<X> of) {
+    public <X> ILevel0ArrayOperator<X> of(final Type<X> of) {
         // TODO Auto-generated method stub
         return null;
     }

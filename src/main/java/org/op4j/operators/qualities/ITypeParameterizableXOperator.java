@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 
 
 
@@ -33,7 +33,7 @@ import org.op4j.Of;
 public interface ITypeParameterizableXOperator<T> {
 
     
-    public <X> ITypeParameterizableXOperator<X> of(final Of<X> of);
+    public <X> ITypeParameterizableXOperator<X> of(final Type<X> of);
 
     public <X> ITypeParameterizableXOperator<X> of(final Class<X> ofClass);
     

@@ -23,7 +23,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.MapFunc;
 import org.op4j.operators.impl.Operator;
@@ -140,15 +140,13 @@ public class Level0MapOfMapOperator<K1,K2,V> extends Operator
 
 
 
-    public <X, Y, Z> ILevel0MapOfMapOperator<X, Y, Z> of(Of<X> ofX,
-            Of<Y> ofY, Of<Z> ofZ) {
+    public <X, Y, Z> ILevel0MapOfMapOperator<X, Y, Z> of(final Type<X> ofX, final Type<Y> ofY, final Type<Z> ofZ) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <X, Y, Z> ILevel0MapOfMapOperator<X, Y, Z> of(Class<X> ofXClass,
-            Class<Y> ofYClass, Class<Z> ofZClass) {
+    public <X, Y, Z> ILevel0MapOfMapOperator<X, Y, Z> of(Class<X> ofXClass, Class<Y> ofYClass, Class<Z> ofZClass) {
         // TODO Auto-generated method stub
         return null;
     }

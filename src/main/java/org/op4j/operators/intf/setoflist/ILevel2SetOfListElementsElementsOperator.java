@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
-import org.op4j.Of;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.functions.IFunc;
@@ -112,7 +111,7 @@ public interface ILevel2SetOfListElementsElementsOperator<T>
 
     public <X> ILevel2SetOfListElementsElementsOperator<X> exec(final IFunc<X,? super T> exec);
     
-    public <X> ILevel2SetOfListElementsElementsOperator<X> of(final Of<X> of);
+    public <X> ILevel2SetOfListElementsElementsOperator<X> of(final Type<X> of);
     public <X> ILevel2SetOfListElementsElementsOperator<X> of(final Class<X> ofClass);
     
     public ILevel2SetOfListElementsElementsOperator<?> raw();

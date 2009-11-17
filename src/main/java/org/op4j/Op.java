@@ -34,6 +34,7 @@ import java.util.Set;
 
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
+import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ISelect;
@@ -178,7 +179,7 @@ public final class Op {
     public static <T> ILevel0ArrayOperator<T> onArray(final T[] target) {
         final Class<?> componentClass = 
             (target == null)? Object.class : target.getClass().getComponentType();
-        return new Level0ArrayOperator<T>((Of<? super T>) Of.type(Types.forClass(componentClass)), Target.forObject(target));
+        return new Level0ArrayOperator<T>((Type<? super T>) Types.forClass(componentClass), Target.forObject(target));
     }
 
     
@@ -236,7 +237,7 @@ public final class Op {
     }
 
     
-    public static <K,V> ILevel0MapOfArrayOperator<K,V> onMapOfArray(final Of<V> of, final Map<K,V[]> target) {
+    public static <K,V> ILevel0MapOfArrayOperator<K,V> onMapOfArray(final Type<V> of, final Map<K,V[]> target) {
         Validate.notNull(of, "Array component cannot be null");
         return new Level0MapOfArrayOperator<K,V>(of, Target.forObject(target));
     }
@@ -284,8 +285,8 @@ public final class Op {
     
     
     @SuppressWarnings("unchecked")
-    public static <T> ILevel0ArrayOperator<T> buildArray(final Of<T> of) {
-        return onArray((T[]) Array.newInstance(of.getType().getRawClass(), 0));
+    public static <T> ILevel0ArrayOperator<T> buildArray(final Type<T> of) {
+        return onArray((T[]) Array.newInstance(of.getRawClass(), 0));
     }
     
     
@@ -359,7 +360,7 @@ public final class Op {
     }
     
     
-    public static <K,V> ILevel0MapOfArrayOperator<K,V> buildMapOfArray(final Of<K> keyOf, final Of<V> valueOf) {
+    public static <K,V> ILevel0MapOfArrayOperator<K,V> buildMapOfArray(final Type<K> keyOf, final Type<V> valueOf) {
         return onMapOfArray(valueOf, new LinkedHashMap<K,V[]>());
     }
     
@@ -544,14 +545,14 @@ public final class Op {
         System.out.println(Op.on(234).add(10).insert(1,3).add((Integer)null).removeNulls());
         System.out.println(Op.on(234).add(10).insert(1,3).removeAllExceptPositions(1));
         System.out.println(Op.on(234).add(10).insert(1,3).removeMatching("#target > 100"));
-        System.out.println(printArray(Op.on(234).add(10).insert(1,3).removeMatching("#target > 100").buildArray(Of.INTEGER).get()));
-        System.out.println(printArray(Op.on(234).buildArray(Of.INTEGER).add(8).get()));
+        System.out.println(printArray(Op.on(234).add(10).insert(1,3).removeMatching("#target > 100").buildArray(Types.INTEGER).get()));
+        System.out.println(printArray(Op.on(234).buildArray(Types.INTEGER).add(8).get()));
         System.out.println(Op.on(null).add(123));
         System.out.println(Op.on(null).buildList().get());
         System.out.println(Op.on(null).buildSet().get());
-        System.out.println(printArray(Op.on((String)null).buildArray(Of.STRING).add("a").removeNulls().removePositions(0).get()));
+        System.out.println(printArray(Op.on((String)null).buildArray(Types.STRING).add("a").removeNulls().removePositions(0).get()));
         
-        System.out.println(printArray(Op.buildArrayOfArray(Of.STRING).add(Op.buildArray(Of.STRING).add("a","b").get()).add(Op.buildArray(Of.STRING).add("1","2","3").get()).get()));
+        System.out.println(printArray(Op.buildArrayOfArray(Of.STRING).add(Op.buildArray(Types.STRING).add("a","b").get()).add(Op.buildArray(Types.STRING).add("1","2","3").get()).get()));
         System.out.println(Op.buildMap(Of.INTEGER,Of.STRING).put(12,"hello!").get());
         System.out.println(Op.onAll("a",1,"b",3).buildMap().get());
         System.out.println(Op.onAll("hello", "goodbye").buildMap(Eval.integerExp("length()")).get());
@@ -559,7 +560,7 @@ public final class Op {
         System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfSet(Eval.integerExp("length()")).get());
         System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfList(Eval.integerExp("length()")).get());
         
-        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfArray(Of.STRING, Eval.integerExp("length()")).get());
+        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfArray(Types.STRING, Eval.integerExp("length()")).get());
         
     }
     

@@ -21,7 +21,7 @@ package org.op4j.operators.impl.mapofmap;
 
 import java.util.Map;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofmap.ILevel2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.ILevel3MapOfMapEntriesValueEntriesOperator;
@@ -52,15 +52,13 @@ public class Level3MapOfMapEntriesValueEntriesOperator<K1,K2,V> extends Operator
     }
 
 
-    public <X, Y> ILevel3MapOfMapEntriesValueEntriesOperator<K1, X, Y> of(
-            Of<X> ofX, Of<Y> ofY) {
+    public <X, Y> ILevel3MapOfMapEntriesValueEntriesOperator<K1, X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <X, Y> ILevel3MapOfMapEntriesValueEntriesOperator<K1, X, Y> of(
-            Class<X> classOfX, Class<Y> classOfY) {
+    public <X, Y> ILevel3MapOfMapEntriesValueEntriesOperator<K1, X, Y> of(Class<X> classOfX, Class<Y> classOfY) {
         // TODO Auto-generated method stub
         return null;
     }

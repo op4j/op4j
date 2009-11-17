@@ -23,7 +23,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Set;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
@@ -73,7 +73,7 @@ public interface ILevel1SetOfArrayElementsOperator<T>
     public ILevel1SetOfArrayElementsOperator<T> sort();
     public ILevel1SetOfArrayElementsOperator<T> sort(final Comparator<? super T> comparator);
     
-    public <X> ILevel1SetOfArrayElementsOperator<X> of(final Of<X> of);
+    public <X> ILevel1SetOfArrayElementsOperator<X> of(final Type<X> of);
     public <X> ILevel1SetOfArrayElementsOperator<X> of(final Class<X> ofClass);
     
     public ILevel1SetOfArrayElementsOperator<?> raw();

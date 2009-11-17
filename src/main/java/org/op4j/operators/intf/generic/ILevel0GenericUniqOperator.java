@@ -26,7 +26,6 @@ import java.util.Collection;
 import java.util.Date;
 
 import org.javaruntype.type.Type;
-import org.op4j.Of;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
@@ -136,7 +135,7 @@ public interface ILevel0GenericUniqOperator<T>
 
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunc<X,? super T> exec);
     
-    public <X> ILevel0GenericUniqOperator<X> of(final Of<X> of);
+    public <X> ILevel0GenericUniqOperator<X> of(final Type<X> of);
     public <X> ILevel0GenericUniqOperator<X> of(final Class<X> ofClass);
     
     public ILevel0GenericUniqOperator<?> raw();
@@ -151,7 +150,7 @@ public interface ILevel0GenericUniqOperator<T>
     public ILevel0SetOperator<T> buildSet();
     
     
-    public ILevel0ArrayOperator<T> buildArray(final Of<T> of);
+    public ILevel0ArrayOperator<T> buildArray(final Type<T> of);
     
     
     public <K> ILevel0MapOperator<K,T> buildMap(final IEval<K,? super T> keyEval);
@@ -166,70 +165,70 @@ public interface ILevel0GenericUniqOperator<T>
     public <K,V> ILevel0MapOfSetOperator<K,V> buildMapOfSet(final IMapBuild<K,V,? super T> mapBuild);
     
     
-    public <K> ILevel0MapOfArrayOperator<K,T> buildMapOfArray(final Of<T> valueArrayOf, final IEval<K,? super T> keyEval);
-    public <K,V> ILevel0MapOfArrayOperator<K,V> buildMapOfArray(final Of<V> valueArrayOf, final IMapBuild<K,V,? super T> mapBuild);
+    public <K> ILevel0MapOfArrayOperator<K,T> buildMapOfArray(final Type<T> valueArrayOf, final IEval<K,? super T> keyEval);
+    public <K,V> ILevel0MapOfArrayOperator<K,V> buildMapOfArray(final Type<V> valueArrayOf, final IMapBuild<K,V,? super T> mapBuild);
 
     
     
     public ILevel0ArrayOfArrayOperator<?> castAsArrayOfArray();
-    public <X> ILevel0ArrayOfArrayOperator<X> castAsArrayOfArray(final Of<X> of);
+    public <X> ILevel0ArrayOfArrayOperator<X> castAsArrayOfArray(final Type<X> of);
     public <X> ILevel0ArrayOfArrayOperator<X> castAsArrayOfArray(final Class<X> of);
     
     public ILevel0ArrayOfListOperator<?> castAsArrayOfList();
-    public <X> ILevel0ArrayOfListOperator<X> castAsArrayOfList(final Of<X> of);
+    public <X> ILevel0ArrayOfListOperator<X> castAsArrayOfList(final Type<X> of);
     public <X> ILevel0ArrayOfListOperator<X> castAsArrayOfList(final Class<X> of);
     
     public ILevel0ArrayOfMapOperator<?,?> castAsArrayOfMap();
-    public <K,V> ILevel0ArrayOfMapOperator<K,V> castAsArrayOfMap(final Of<K> keyOf,final Of<V> valueOf);
+    public <K,V> ILevel0ArrayOfMapOperator<K,V> castAsArrayOfMap(final Type<K> keyOf,final Type<V> valueOf);
     
     public ILevel0ArrayOfSetOperator<?> castAsArrayOfSet();
-    public <X> ILevel0ArrayOfSetOperator<X> castAsArrayOfSet(final Of<X> of);
+    public <X> ILevel0ArrayOfSetOperator<X> castAsArrayOfSet(final Type<X> of);
     public <X> ILevel0ArrayOfSetOperator<X> castAsArrayOfSet(final Class<X> of);
     
     public ILevel0ListOfArrayOperator<?> castAsListOfArray();
-    public <X> ILevel0ListOfArrayOperator<X> castAsListOfArray(final Of<X> of);
+    public <X> ILevel0ListOfArrayOperator<X> castAsListOfArray(final Type<X> of);
     public <X> ILevel0ListOfArrayOperator<X> castAsListOfArray(final Class<X> of);
     
     public ILevel0ListOfListOperator<?> castAsListOfList();
-    public <X> ILevel0ListOfListOperator<X> castAsListOfList(final Of<X> of);
+    public <X> ILevel0ListOfListOperator<X> castAsListOfList(final Type<X> of);
     public <X> ILevel0ListOfListOperator<X> castAsListOfList(final Class<X> of);
     
     public ILevel0ListOfMapOperator<?,?> castAsListOfMap();
-    public <K,V> ILevel0ListOfMapOperator<K,V> castAsListOfMap(final Of<K> keyOf,final Of<V> valueOf);
+    public <K,V> ILevel0ListOfMapOperator<K,V> castAsListOfMap(final Type<K> keyOf,final Type<V> valueOf);
     
     public ILevel0ListOfSetOperator<?> castAsListOfSet();
-    public <X> ILevel0ListOfSetOperator<X> castAsListOfSet(final Of<X> of);
+    public <X> ILevel0ListOfSetOperator<X> castAsListOfSet(final Type<X> of);
     public <X> ILevel0ListOfSetOperator<X> castAsListOfSet(final Class<X> of);
     
     public ILevel0MapOfArrayOperator<?,?> castAsMapOfArray();
-    public <K,V> ILevel0MapOfArrayOperator<K,V> castAsMapOfArray(final Of<K> keyOf, final Of<V> valueOf);
+    public <K,V> ILevel0MapOfArrayOperator<K,V> castAsMapOfArray(final Type<K> keyOf, final Type<V> valueOf);
     public <K,V> ILevel0MapOfArrayOperator<K,V> castAsMapOfArray(final Class<K> keyOf, final Class<V> valueOf);
     
     public ILevel0MapOfListOperator<?,?> casstAsMapOfList();
-    public <K,V> ILevel0MapOfListOperator<K,V> castAsMapOfList(final Of<K> keyOf, final Of<V> valueOf);
+    public <K,V> ILevel0MapOfListOperator<K,V> castAsMapOfList(final Type<K> keyOf, final Type<V> valueOf);
     public <K,V> ILevel0MapOfListOperator<K,V> castAsMapOfList(final Class<K> keyOf, final Class<V> valueOf);
     
     public ILevel0MapOfMapOperator<?,?,?> castAsMapOfMap();
-    public <K1,K2,V> ILevel0MapOfMapOperator<K1,K2,V> castAsMapOfMap(final Of<K1> key1Of, final Of<K2> key2Of, final Of<V> valueOf);
+    public <K1,K2,V> ILevel0MapOfMapOperator<K1,K2,V> castAsMapOfMap(final Type<K1> key1Of, final Type<K2> key2Of, final Type<V> valueOf);
     public <K1,K2,V> ILevel0MapOfMapOperator<K1,K2,V> castAsMapOfMap(final Class<K1> key1Of, final Class<K2> key2Of, final Class<V> valueOf);
     
     public ILevel0MapOfSetOperator<?,?> castAsMapOfSet();
-    public <K,V> ILevel0MapOfSetOperator<K,V> castAsMapOfSet(final Of<K> keyOf, final Of<V> valueOf);
+    public <K,V> ILevel0MapOfSetOperator<K,V> castAsMapOfSet(final Type<K> keyOf, final Type<V> valueOf);
     public <K,V> ILevel0MapOfSetOperator<K,V> castAsMapOfSet(final Class<K> keyOf, final Class<V> valueOf);
     
     public ILevel0SetOfArrayOperator<?> castAsSetOfArray();
-    public <X> ILevel0SetOfArrayOperator<X> castAsSetOfArray(final Of<X> of);
+    public <X> ILevel0SetOfArrayOperator<X> castAsSetOfArray(final Type<X> of);
     public <X> ILevel0SetOfArrayOperator<X> castAsSetOfArray(final Class<X> of);
     
     public ILevel0SetOfListOperator<?> castAsSetOfList();
-    public <X> ILevel0SetOfListOperator<X> castAsSetOfList(final Of<X> of);
+    public <X> ILevel0SetOfListOperator<X> castAsSetOfList(final Type<X> of);
     public <X> ILevel0SetOfListOperator<X> castAsSetOfList(final Class<X> of);
     
     public ILevel0SetOfMapOperator<?,?> castAsSetOfMap();
-    public <K,V> ILevel0SetOfMapOperator<K,V> castAsSetOfMap(final Of<K> keyOf,final Of<V> valueOf);
+    public <K,V> ILevel0SetOfMapOperator<K,V> castAsSetOfMap(final Type<K> keyOf,final Type<V> valueOf);
     
     public ILevel0SetOfSetOperator<?> castAsSetOfSet();
-    public <X> ILevel0SetOfSetOperator<X> castAsSetOfSet(final Of<X> of);
+    public <X> ILevel0SetOfSetOperator<X> castAsSetOfSet(final Type<X> of);
     public <X> ILevel0SetOfSetOperator<X> castAsSetOfSet(final Class<X> of);
 
     

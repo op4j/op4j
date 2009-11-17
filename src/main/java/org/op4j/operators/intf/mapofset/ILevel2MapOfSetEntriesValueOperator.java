@@ -24,7 +24,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Set;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
@@ -69,7 +69,7 @@ public interface ILevel2MapOfSetEntriesValueOperator<K,V>
     public ILevel2MapOfSetEntriesValueOperator<K,V> sort();
     public ILevel2MapOfSetEntriesValueOperator<K,V> sort(final Comparator<? super V> comparator);
     
-    public <X> ILevel2MapOfSetEntriesValueOperator<K,X> of(final Of<X> of);
+    public <X> ILevel2MapOfSetEntriesValueOperator<K,X> of(final Type<X> of);
     
     public <X> ILevel2MapOfSetEntriesValueOperator<K,X> of(final Class<X> classOf);
     
@@ -85,7 +85,7 @@ public interface ILevel2MapOfSetEntriesValueOperator<K,V>
     public ILevel2MapOfSetEntriesValueOperator<K,V> removeNulls();
     public ILevel2MapOfSetEntriesValueOperator<K,V> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
-    public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> toArray(final Of<X> of);
+    public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> toArray(final Type<X> of);
     public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> toArray(final Class<X> of);
     
     public ILevel2MapOfListEntriesValueOperator<K,V> toList();

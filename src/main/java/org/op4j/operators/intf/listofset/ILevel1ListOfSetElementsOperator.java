@@ -24,7 +24,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
-import org.op4j.Of;
+import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
@@ -70,7 +70,7 @@ public interface ILevel1ListOfSetElementsOperator<T>
     public ILevel1ListOfSetElementsOperator<T> sort();
     public ILevel1ListOfSetElementsOperator<T> sort(final Comparator<? super T> comparator);
     
-    public <X> ILevel1ListOfSetElementsOperator<X> of(final Of<X> of);
+    public <X> ILevel1ListOfSetElementsOperator<X> of(final Type<X> of);
     public <X> ILevel1ListOfSetElementsOperator<X> of(final Class<X> ofClass);
     
     public ILevel1ListOfSetElementsOperator<?> raw();
@@ -85,7 +85,7 @@ public interface ILevel1ListOfSetElementsOperator<T>
     public ILevel1ListOfSetElementsOperator<T> removeNulls();
     public ILevel1ListOfSetElementsOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
-    public <X> ILevel1ListOfArrayElementsOperator<X> toArray(final Of<X> of);
+    public <X> ILevel1ListOfArrayElementsOperator<X> toArray(final Type<X> of);
     public <X> ILevel1ListOfArrayElementsOperator<X> toArray(final Class<X> of);
     
     public ILevel1ListOfListElementsOperator<T> toList();

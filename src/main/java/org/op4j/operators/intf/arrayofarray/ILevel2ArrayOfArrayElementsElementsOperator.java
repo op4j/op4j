@@ -25,7 +25,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 import org.javaruntype.type.Type;
-import org.op4j.Of;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.functions.IFunc;
@@ -110,7 +109,7 @@ public interface ILevel2ArrayOfArrayElementsElementsOperator<T>
 
     public <X> ILevel2ArrayOfArrayElementsElementsOperator<X> exec(final IFunc<X,? super T> exec);
     
-    public <X> ILevel2ArrayOfArrayElementsElementsOperator<X> of(final Of<X> of);
+    public <X> ILevel2ArrayOfArrayElementsElementsOperator<X> of(final Type<X> of);
     public <X> ILevel2ArrayOfArrayElementsElementsOperator<X> of(final Class<X> ofClass);
     
     public ILevel2ArrayOfArrayElementsElementsOperator<?> raw();
