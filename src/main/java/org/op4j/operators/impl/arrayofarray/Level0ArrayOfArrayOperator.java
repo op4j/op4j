@@ -57,11 +57,11 @@ import org.op4j.target.Target;
 public class Level0ArrayOfArrayOperator<T> extends Operator
         implements ILevel0ArrayOfArrayOperator<T> {
     
-    private final Of<T> arrayOf; 
+    private final Of<? super T> arrayOf; 
 
     
     
-    public Level0ArrayOfArrayOperator(final Of<T> of, final Target target) {
+    public Level0ArrayOfArrayOperator(final Of<? super T> of, final Target target) {
         super(target);
         this.arrayOf = of;
     }

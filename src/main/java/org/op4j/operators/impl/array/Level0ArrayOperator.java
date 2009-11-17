@@ -48,10 +48,10 @@ public class Level0ArrayOperator<T> extends Operator implements
         ILevel0ArrayOperator<T> {
 
     
-    private final Of<T> arrayOf; 
+    private final Of<? super T> arrayOf; 
     
     
-    public Level0ArrayOperator(final Of<T> of, final Target target) {
+    public Level0ArrayOperator(final Of<? super T> of, final Target target) {
         super(target);
         this.arrayOf = of;
     }

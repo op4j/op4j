@@ -174,15 +174,19 @@ public final class Op {
     }
 
     
-    public static <T> ILevel0ArrayOperator<T> onArray(final Of<T> of, final T[] target) {
-        Validate.notNull(of, "Array component cannot be null");
-        return new Level0ArrayOperator<T>(of, Target.forObject(target));
+    @SuppressWarnings("unchecked")
+    public static <T> ILevel0ArrayOperator<T> onArray(final T[] target) {
+        final Class<?> componentClass = 
+            (target == null)? Object.class : target.getClass().getComponentType();
+        return new Level0ArrayOperator<T>((Of<? super T>) Of.type(Types.forClass(componentClass)), Target.forObject(target));
     }
 
     
-    public static <T> ILevel0ArrayOfArrayOperator<T> onArrayOfArray(final Of<T> of, final T[][] target) {
-        Validate.notNull(of, "Array component cannot be null");
-        return new Level0ArrayOfArrayOperator<T>(of, Target.forObject(target));
+    @SuppressWarnings("unchecked")
+    public static <T> ILevel0ArrayOfArrayOperator<T> onArrayOfArray(final T[][] target) {
+        final Class<?> componentClass = 
+            (target == null)? Object.class : target.getClass().getComponentType().getComponentType();
+        return new Level0ArrayOfArrayOperator<T>((Of<? super T>) Of.type(Types.forClass(componentClass)), Target.forObject(target));
     }
 
     
@@ -281,13 +285,13 @@ public final class Op {
     
     @SuppressWarnings("unchecked")
     public static <T> ILevel0ArrayOperator<T> buildArray(final Of<T> of) {
-        return onArray(of, (T[]) Array.newInstance(of.getType().getRawClass(), 0));
+        return onArray((T[]) Array.newInstance(of.getType().getRawClass(), 0));
     }
     
     
     @SuppressWarnings("unchecked")
     public static <T> ILevel0ArrayOfArrayOperator<T> buildArrayOfArray(final Of<T> of) {
-        return onArrayOfArray(of, (T[][]) Array.newInstance(Types.arrayOf(of.getType()).getRawClass(), 0));
+        return onArrayOfArray((T[][]) Array.newInstance(Types.arrayOf(of.getType()).getRawClass(), 0));
     }
     
     @SuppressWarnings("unchecked")
@@ -424,13 +428,13 @@ public final class Op {
         System.out.println(Op.onList(stringsList1).forEachNotNull().eval(Eval.stringExp("toUpperCase()")).get());
         
         
-        System.out.println(Op.onArrayOfArray(Of.STRING, stringsStrings1).forEach().forEach().eval(Eval.integerExp("length()")).get());
+        System.out.println(Op.onArrayOfArray(stringsStrings1).forEach().forEach().eval(Eval.integerExp("length()")).get());
         
         System.out.println(Arrays.asList(Op.onArrayOfList(stringsListStrings1).forEach().forEach().eval(Eval.stringExp("toUpperCase()")).get()));
 
         System.out.println(Arrays.asList(Op.onArrayOfMap(maps1).forEach("size() > 6").forEachEntry().onValue().eval(Eval.stringExp("toUpperCase()"))));
         
-        System.out.println(Arrays.asList(Op.onArrayOfArray(Of.STRING, stringsStrings1).forEach().forEach("length() > 6").eval(Eval.stringExp("toUpperCase()")).get()[0]));
+        System.out.println(Arrays.asList(Op.onArrayOfArray(stringsStrings1).forEach().forEach("length() > 6").eval(Eval.stringExp("toUpperCase()")).get()[0]));
         
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().get());
         
@@ -475,9 +479,9 @@ public final class Op {
         System.out.println(Op.onListOfList(listOfListOfString1).distinct().get());
         System.out.println(Op.onListOfList(listOfListOfString1).forEach().distinct().get());
         
-        System.out.println(printArray(Op.onArrayOfArray(Of.STRING,arrayOfArrayOfString1).get()));
-        System.out.println(printArray(Op.onArrayOfArray(Of.STRING,arrayOfArrayOfString1).distinct().get()));
-        System.out.println(printArray(Op.onArrayOfArray(Of.STRING,arrayOfArrayOfString1).forEach().distinct().get()));
+        System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).get()));
+        System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).distinct().get()));
+        System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).forEach().distinct().get()));
      
         System.out.println(Op.onList(stringsList1).add("World!", "Mars!").get());
         System.out.println(Op.onList(stringsList1).insert(1, "World!", "Mars!").get());
@@ -520,7 +524,7 @@ public final class Op {
         System.out.println(Op.onSet(stringSet1).removeNulls().get());
         System.out.println(Op.onSet(stringSet1).removeNotNullsMatching("length() > 5").get());
             
-        System.out.println(printArray(Op.onArray(Of.STRING,stringsArr1).insert(2,"lalero","lururu").get()));
+        System.out.println(printArray(Op.onArray(stringsArr1).insert(2,"lalero","lururu").get()));
      
         
         System.out.println(Op.onMap(map1).put("fr", "Allô!").get());

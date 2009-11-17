@@ -52,10 +52,10 @@ import org.op4j.target.Target.Structure;
 public class Level2ArrayOfArrayElementsElementsOperator<T> extends Operator
         implements ILevel2ArrayOfArrayElementsElementsOperator<T> {
     
-    private final Of<T> arrayOf; 
+    private final Of<? super T> arrayOf; 
 
     
-    public Level2ArrayOfArrayElementsElementsOperator(final Of<T> of, final Target target) {
+    public Level2ArrayOfArrayElementsElementsOperator(final Of<? super T> of, final Target target) {
         super(target);
         this.arrayOf = of;
     }
