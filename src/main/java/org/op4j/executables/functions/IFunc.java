@@ -32,7 +32,7 @@ import org.op4j.executables.IExecutable;
  */
 public interface IFunc<X,T> extends IExecutable<X,T>{
     
-    public Type<X> getResultType();
+    public Type<? super X> getResultType();
     
 
 }

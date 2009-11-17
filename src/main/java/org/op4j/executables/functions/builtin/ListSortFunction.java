@@ -33,13 +33,13 @@ import org.javaruntype.type.Types;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class ListModifyFunction<T> extends StructureModifyFunction<T,List<T>> {
+public final class ListSortFunction<X extends Comparable<? super X>> extends StructureSortFunction<X, List<X>> {
 
-	public static final String NAME = BuiltinNaming.getBuiltinFunctionName(Types.LIST_OF_UNKNOWN, BuiltinNaming.OPERATION_NAME_MODIFY); 
+	public static final String NAME = BuiltinNaming.getBuiltinFunctionName(Types.LIST_OF_UNKNOWN, BuiltinNaming.OPERATION_NAME_SORT); 
 
     
     
-    public ListModifyFunction() {
+    public ListSortFunction() {
     	super();
     }
 	
@@ -52,28 +52,25 @@ public final class ListModifyFunction<T> extends StructureModifyFunction<T,List<
 	
 	
 	@Override
-	protected Type<List<?>> registerResultType() {
+	protected Type<? super List<X>> registerResultType() {
 		return Types.LIST_OF_UNKNOWN;
 	}
 
 	
 	@Override
-	protected Type<List<?>> registerTargetType() {
+	protected Type<? super List<X>> registerTargetType() {
 		return Types.LIST_OF_UNKNOWN;
 	}
 
 
-
     @Override
-    protected List<T> processTarget(final Collection<T> target) {
-        return (List<T>) target;
+    protected List<X> processTarget(final Collection<X> target) {
+        return (List<X>) target;
     }
-
-    
+	
     @Override
-    protected List<T> createResultObject(final List<T> newList) {
+    protected List<X> createResultObject(final List<X> newList) {
         return newList;
     }
-
 	
 }

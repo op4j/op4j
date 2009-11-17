@@ -229,13 +229,11 @@ public class Level0ArrayOperator<T> extends Operator implements
     
 
     public ILevel0ArrayOperator<T> sort() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.sort()));
     }
 
-    public ILevel0ArrayOperator<T> sort(Comparator<? super T> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ArrayOperator<T> sort(final Comparator<? super T> comparator) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFunc.sort(comparator)));
     }
 
     public ILevel0ListOperator<T> toList() {

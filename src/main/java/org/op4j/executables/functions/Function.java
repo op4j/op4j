@@ -59,8 +59,8 @@ import org.op4j.exceptions.FunctionImplementationRegistrationException;
 public final class Function<X,T>  {
 
     private final String functionName;
-    private final Type<X> resultType;
-    private final Type<T> targetType;
+    private final Type<? super X> resultType;
+    private final Type<? super T> targetType;
     private final Set<FunctionImplementation<? super X,? super T>> implementations;
     private final Set<Class<?>> implementationClasses;
     private final Map<FunctionArgumentScheme, FunctionImplementation<X,T>> implementationsByArgumentSchemes;
@@ -86,11 +86,11 @@ public final class Function<X,T>  {
     }
     
     
-    public final Type<X> getResultType() {
+    public final Type<? super X> getResultType() {
         return this.resultType;
     }
     
-    public final Type<T> getTargetType() {
+    public final Type<? super T> getTargetType() {
         return this.targetType;
     }
     

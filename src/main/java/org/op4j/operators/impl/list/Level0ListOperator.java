@@ -263,14 +263,12 @@ public class Level0ListOperator<T> extends Operator
 
 
     public ILevel0ListOperator<T> sort() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ListOperator<T>(getTarget().execute(ListFunc.sort()));
     }
 
 
-    public ILevel0ListOperator<T> sort(Comparator<? super T> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOperator<T> sort(final Comparator<? super T> comparator) {
+        return new Level0ListOperator<T>(getTarget().execute(ListFunc.sort(comparator)));
     }
 
 

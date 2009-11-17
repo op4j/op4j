@@ -53,8 +53,8 @@ import org.javaruntype.type.Type;
 public abstract class FunctionImplementation<X,T>  {
 	
     private final String functionName;
-    private final Type<X> resultType;
-    private final Type<T> targetType;
+    private final Type<? super X> resultType;
+    private final Type<? super T> targetType;
     
 	private final Set<FunctionArgumentScheme> matchedArgumentSchemes;
     
@@ -70,8 +70,8 @@ public abstract class FunctionImplementation<X,T>  {
     
 	
 	protected abstract String registerFunctionName();
-	protected abstract Type<X> registerResultType();
-	protected abstract Type<T> registerTargetType();
+	protected abstract Type<? super X> registerResultType();
+	protected abstract Type<? super T> registerTargetType();
 	protected abstract Set<FunctionArgumentScheme> registerMatchedSchemes();
 	
 	
@@ -82,11 +82,11 @@ public abstract class FunctionImplementation<X,T>  {
     }
     
     
-    public final Type<X> getResultType() {
+    public final Type<? super X> getResultType() {
         return this.resultType;
     }
     
-    public final Type<T> getTargetType() {
+    public final Type<? super T> getTargetType() {
         return this.targetType;
     }
     

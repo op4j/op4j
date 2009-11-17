@@ -41,9 +41,11 @@ package org.op4j.executables.functions.builtin;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.collections.ListUtils;
 import org.javaruntype.type.Type;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.Function;
@@ -127,6 +129,18 @@ public class SetFunc<X,T> implements IFunc<X,Set<T>>  {
     }
     
     
+    @SuppressWarnings("unchecked")
+    public static <T> SetFunc<Set<T>,T> sort() {
+        return new SetFunc<Set<T>,T>((Function<Set<T>, Set<T>>) Functions.getFunctionByName(SetSortFunction.NAME), ListUtils.EMPTY_LIST); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> SetFunc<Set<T>,T> sort(final Comparator<? super T> comparator) {
+        return new SetFunc<Set<T>,T>((Function<Set<T>, Set<T>>) Functions.getFunctionByName(SetSortFunction.NAME), Arrays.asList(new Object[] {comparator})); 
+    }
+    
+    
     
     
     
@@ -139,7 +153,7 @@ public class SetFunc<X,T> implements IFunc<X,Set<T>>  {
 
 
 
-    public Type<X> getResultType() {
+    public Type<? super X> getResultType() {
         return this.function.getResultType();
     }
 

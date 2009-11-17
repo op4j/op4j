@@ -41,6 +41,7 @@ package org.op4j.executables.functions.builtin;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 import org.apache.commons.collections.ListUtils;
@@ -129,6 +130,18 @@ public class ArrayFunc<X,T> implements IFunc<X,T[]>  {
     public static <T> ArrayFunc<T[],T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
         return new ArrayFunc<T[],T>((Function<T[], T[]>) Functions.getFunctionByName(ArrayModifyFunction.NAME), Arrays.asList(new Object[] {expression, VarArgsUtil.asOptionalObjectList(optionalExpParams), "REMOVE_NOT_NULL_AND"})); 
     }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> ArrayFunc<T[],T> sort() {
+        return new ArrayFunc<T[],T>((Function<T[], T[]>) Functions.getFunctionByName(ArraySortFunction.NAME), ListUtils.EMPTY_LIST); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> ArrayFunc<T[],T> sort(final Comparator<? super T> comparator) {
+        return new ArrayFunc<T[],T>((Function<T[], T[]>) Functions.getFunctionByName(ArraySortFunction.NAME), Arrays.asList(new Object[] {comparator})); 
+    }
 	
 	
 	
@@ -142,7 +155,7 @@ public class ArrayFunc<X,T> implements IFunc<X,T[]>  {
 
 
 
-    public Type<X> getResultType() {
+    public Type<? super X> getResultType() {
         return this.function.getResultType();
     }
 

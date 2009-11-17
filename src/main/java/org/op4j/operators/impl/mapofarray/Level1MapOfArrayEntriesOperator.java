@@ -41,10 +41,10 @@ import org.op4j.target.Target.Structure;
 public class Level1MapOfArrayEntriesOperator<K,V> extends Operator
         implements ILevel1MapOfArrayEntriesOperator<K,V> {
     
-    private final Type<V> arrayOf; 
+    private final Type<? super V> arrayOf; 
 
     
-    public Level1MapOfArrayEntriesOperator(final Type<V> of, final Target target) {
+    public Level1MapOfArrayEntriesOperator(final Type<? super V> of, final Target target) {
         super(target);
         this.arrayOf = of;
     }

@@ -75,7 +75,7 @@ public class Conv<X> implements IConv<X>  {
 
 
 
-    public Type<X> getResultType() {
+    public Type<? super X> getResultType() {
         return this.converter.getResultType();
     }
 

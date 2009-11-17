@@ -20,8 +20,11 @@
 
 package org.op4j.executables.functions.builtin;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
@@ -33,13 +36,13 @@ import org.javaruntype.type.Types;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class ListModifyFunction<T> extends StructureModifyFunction<T,List<T>> {
+public final class SetSortFunction<X extends Comparable<? super X>> extends StructureSortFunction<X, Set<X>> {
 
-	public static final String NAME = BuiltinNaming.getBuiltinFunctionName(Types.LIST_OF_UNKNOWN, BuiltinNaming.OPERATION_NAME_MODIFY); 
+	public static final String NAME = BuiltinNaming.getBuiltinFunctionName(Types.SET_OF_UNKNOWN, BuiltinNaming.OPERATION_NAME_SORT); 
 
     
     
-    public ListModifyFunction() {
+    public SetSortFunction() {
     	super();
     }
 	
@@ -52,28 +55,26 @@ public final class ListModifyFunction<T> extends StructureModifyFunction<T,List<
 	
 	
 	@Override
-	protected Type<List<?>> registerResultType() {
-		return Types.LIST_OF_UNKNOWN;
+	protected Type<? super Set<X>> registerResultType() {
+		return Types.SET_OF_UNKNOWN;
 	}
 
 	
 	@Override
-	protected Type<List<?>> registerTargetType() {
-		return Types.LIST_OF_UNKNOWN;
+	protected Type<? super Set<X>> registerTargetType() {
+		return Types.SET_OF_UNKNOWN;
 	}
 
 
-
     @Override
-    protected List<T> processTarget(final Collection<T> target) {
-        return (List<T>) target;
+    @SuppressWarnings("cast")
+    protected List<X> processTarget(final Collection<X> target) {
+        return new ArrayList<X>((Set<X>) target);
     }
-
-    
+	
     @Override
-    protected List<T> createResultObject(final List<T> newList) {
-        return newList;
+    protected Set<X> createResultObject(final List<X> newList) {
+        return new LinkedHashSet<X>(newList);
     }
-
 	
 }

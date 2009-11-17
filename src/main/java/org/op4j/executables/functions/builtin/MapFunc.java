@@ -126,7 +126,7 @@ public class MapFunc<X,K,V> implements IFunc<X,Map<K,V>>  {
 
 
 
-    public Type<X> getResultType() {
+    public Type<? super X> getResultType() {
         return this.function.getResultType();
     }
 

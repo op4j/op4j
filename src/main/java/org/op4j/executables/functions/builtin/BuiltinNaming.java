@@ -33,6 +33,7 @@ final class BuiltinNaming {
 
 	
 	static final String OPERATION_NAME_DISTINCT = "distinct"; 
+	static final String OPERATION_NAME_SORT = "sort"; 
     static final String OPERATION_NAME_MODIFY = "modify"; 
     static final String OPERATION_NAME_BUILD_ARRAY = "buildArray"; 
     static final String OPERATION_NAME_BUILD_LIST = "buildList"; 

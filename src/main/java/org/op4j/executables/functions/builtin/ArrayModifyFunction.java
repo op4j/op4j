@@ -21,11 +21,19 @@
 package org.op4j.executables.functions.builtin;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.FunctionArgumentScheme;
+import org.op4j.executables.functions.FunctionArguments;
+import org.op4j.executables.functions.FunctionImplementation;
+import org.op4j.util.OgnlExpressionUtil;
 
 /**
  * 
@@ -34,15 +42,91 @@ import org.javaruntype.type.Types;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class ArrayModifyFunction extends StructureModifyFunction<Object[], Object[]> {
+public final class ArrayModifyFunction<T> extends FunctionImplementation<T[], T[]> {
 
 	public static final String NAME = BuiltinNaming.getBuiltinFunctionName(Types.ARRAY_OF_OBJECT, BuiltinNaming.OPERATION_NAME_MODIFY); 
+	
+	
+    private FunctionArgumentScheme SCH_STRUCTURE_ELEMENTS_ADD;
+    private FunctionArgumentScheme SCH_STRUCTURE_ELEMENTS_POSITION_ADD;
+    private FunctionArgumentScheme SCH_STRUCTURE_ELEMENTS_REMOVE;
+    private FunctionArgumentScheme SCH_STRUCTURE_POSITIONS_REMOVE;
+    private FunctionArgumentScheme SCH_STRUCTURE_EXPRESSION_REMOVE;
+    private FunctionArgumentScheme SCH_STRUCTURE_SELECTOR_REMOVE;
+    private FunctionArgumentScheme SCH_STRUCTURE_POSITIONS_REMOVE_NOT;
+    private FunctionArgumentScheme SCH_STRUCTURE_NULLS_REMOVE;
+    private FunctionArgumentScheme SCH_STRUCTURE_NOT_NULLS_AND_REMOVE;
 
     
     
     public ArrayModifyFunction() {
     	super();
     }
+    
+
+    
+	@Override
+	protected Set<FunctionArgumentScheme> registerMatchedSchemes() {
+	    
+        final Set<FunctionArgumentScheme> matched = new LinkedHashSet<FunctionArgumentScheme>();
+        
+        matched.add(this.SCH_STRUCTURE_ELEMENTS_ADD = 
+            FunctionArgumentScheme.from(
+                "It adds the specified elements to the target structure.",
+                Types.ARRAY_OF_OBJECT,
+                "List<?> newElements, 'ADD'"));
+        
+        matched.add(this.SCH_STRUCTURE_ELEMENTS_POSITION_ADD = 
+            FunctionArgumentScheme.from(
+                "It adds the specified elements to the target structure in the specified position.",
+                Types.ARRAY_OF_OBJECT,
+                "List<?> newElements, Integer position, 'ADD'"));
+        
+        matched.add(this.SCH_STRUCTURE_ELEMENTS_REMOVE = 
+            FunctionArgumentScheme.from(
+                "It removes the specified elements from the target structure.",
+                Types.ARRAY_OF_OBJECT,
+                "List<?> elements, 'REMOVE'"));
+        
+        matched.add(this.SCH_STRUCTURE_POSITIONS_REMOVE = 
+            FunctionArgumentScheme.from(
+                "It removes the elements at the specified positions from the target structure.",
+                Types.ARRAY_OF_OBJECT,
+                "Integer[] positions, 'REMOVE'"));
+        
+        matched.add(this.SCH_STRUCTURE_EXPRESSION_REMOVE = 
+            FunctionArgumentScheme.from(
+                "It removes the elements matching the specified expression from the target structure.",
+                Types.ARRAY_OF_OBJECT,
+                "String expression, List<?> expParameters, 'REMOVE'"));
+        
+        matched.add(this.SCH_STRUCTURE_SELECTOR_REMOVE = 
+            FunctionArgumentScheme.from(
+                "It removes the elements matching the specified selector from the target structure.",
+                Types.ARRAY_OF_OBJECT,
+                ISelect.class.getName() + " selector, 'REMOVE'"));
+        
+        matched.add(this.SCH_STRUCTURE_POSITIONS_REMOVE_NOT = 
+            FunctionArgumentScheme.from(
+                "It removes all but the specified elements from the target structure in the specified position.",
+                Types.ARRAY_OF_OBJECT,
+                "Integer[] positions, 'REMOVE_NOT'"));
+        
+        matched.add(this.SCH_STRUCTURE_NULLS_REMOVE = 
+            FunctionArgumentScheme.from(
+                "It removes the elements not matching the specified selector from the target structure.",
+                Types.ARRAY_OF_OBJECT,
+                "'REMOVE_NULL'"));
+        
+        matched.add(this.SCH_STRUCTURE_NOT_NULLS_AND_REMOVE = 
+            FunctionArgumentScheme.from(
+                "It removes the elements matching the specified expression from the target structure.",
+                Types.ARRAY_OF_OBJECT,
+                "String expression, List<?> expParameters, 'REMOVE_NOT_NULL_AND'"));
+        
+        return matched;
+        
+	}
 	
 	
     
@@ -53,26 +137,149 @@ public final class ArrayModifyFunction extends StructureModifyFunction<Object[],
 	
 	
 	@Override
-	protected Type<Object[]> registerResultType() {
+	protected Type<? super T[]> registerResultType() {
 		return Types.ARRAY_OF_OBJECT;
 	}
 
 	
 	@Override
-	protected Type<Object[]> registerTargetType() {
+	protected Type<? super T[]> registerTargetType() {
 		return Types.ARRAY_OF_OBJECT;
 	}
 
 
-    @Override
-    protected List<?> processTarget(final Object target) {
-        return Arrays.asList((Object[]) target);
-    }
+	
+	
 	
     @Override
-    protected Object[] createResultObject(final List<?> newList, final Object target) {
+    @SuppressWarnings("unchecked")
+	public T[] execute(final FunctionArguments arguments) throws Exception {
+		
+		if (arguments.isTargetNull()) {
+            throw new NullPointerException("Cannot execute operation on null target");
+		}
+		
+		if (this.SCH_STRUCTURE_ELEMENTS_ADD.matches(arguments)) {
+			final List<T> target = processTarget((T[])arguments.getTarget());
+			final List<T> newElements = (List<T>) arguments.getParameter(0);
+			final List<T> newList = new ArrayList<T>(target);
+			newList.addAll(newElements);
+			return createResultObject(newList, arguments.getTarget());
+		}
+        
+        if (this.SCH_STRUCTURE_ELEMENTS_POSITION_ADD.matches(arguments)) {
+            final List<T> target = processTarget((T[])arguments.getTarget());
+            final List<T> newElements = (List<T>) arguments.getParameter(0);
+            final Integer position = arguments.getIntegerParameter(1);
+            final List<T> newList = new ArrayList<T>(target);
+            newList.addAll(position.intValue(), newElements);
+            return createResultObject(newList, arguments.getTarget());
+        }
+        
+        if (this.SCH_STRUCTURE_ELEMENTS_REMOVE.matches(arguments)) {
+            final List<T> target = processTarget((T[])arguments.getTarget());
+            final List<T> elementsToBeRemoved = (List<T>) arguments.getParameter(0);
+            final List<T> newList = new ArrayList<T>(target);
+            newList.removeAll(elementsToBeRemoved);
+            return createResultObject(newList, arguments.getTarget());
+        }
+        
+        if (this.SCH_STRUCTURE_POSITIONS_REMOVE.matches(arguments)) {
+            final List<T> target = processTarget((T[])arguments.getTarget());
+            final List<Integer> positions = Arrays.asList((Integer[]) arguments.getParameter(0));
+            final List<T> newList = new ArrayList<T>();
+            for (int i = 0, n = target.size(); i < n; i++) {
+            	final T element = target.get(i);
+            	if (!positions.contains(Integer.valueOf(i))) {
+            		newList.add(element);
+            	}
+            }
+            return createResultObject(newList, arguments.getTarget());
+        }
+        
+        if (this.SCH_STRUCTURE_EXPRESSION_REMOVE.matches(arguments)) {
+            final List<T> target = processTarget((T[])arguments.getTarget());
+            final String expression = arguments.getStringParameter(0);
+            final List<?> parameters = (List<?>) arguments.getParameter(1);
+            final List<T> newList = new ArrayList<T>();
+            for (final T element : target) {
+            	if (!OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, parameters).booleanValue()) {
+            		newList.add(element);
+            	}
+            }
+            return createResultObject(newList, arguments.getTarget());
+        }
+        
+        if (this.SCH_STRUCTURE_SELECTOR_REMOVE.matches(arguments)) {
+            final List<T> target = processTarget((T[])arguments.getTarget());
+            final ISelect<T> selector = (ISelect<T>) arguments.getParameter(0);
+            final List<T> newList = new ArrayList<T>();
+            for (final T element : target) {
+            	if (!selector.eval(element)) {
+            		newList.add(element);
+            	}
+            }
+            return createResultObject(newList, arguments.getTarget());
+        }
+        
+        if (this.SCH_STRUCTURE_POSITIONS_REMOVE_NOT.matches(arguments)) {
+            final List<T> target = processTarget((T[])arguments.getTarget());
+            final List<Integer> positions = Arrays.asList((Integer[]) arguments.getParameter(0));
+            final List<T> newList = new ArrayList<T>();
+            for (int i = 0, n = target.size(); i < n; i++) {
+            	final T element = target.get(i);
+            	if (positions.contains(Integer.valueOf(i))) {
+            		newList.add(element);
+            	}
+            }
+            return createResultObject(newList, arguments.getTarget());
+        }
+        
+        if (this.SCH_STRUCTURE_NULLS_REMOVE.matches(arguments)) {
+            final List<T> target = processTarget((T[])arguments.getTarget());
+            final List<T> newList = new ArrayList<T>();
+            for (final T element : target) {
+            	if (element != null) {
+            		newList.add(element);
+            	}
+            }
+            return createResultObject(newList, arguments.getTarget());
+        }
+        
+        if (this.SCH_STRUCTURE_NOT_NULLS_AND_REMOVE.matches(arguments)) {
+            final List<T> target = processTarget((T[])arguments.getTarget());
+            final String expression = arguments.getStringParameter(0);
+            final List<?> parameters = (List<?>) arguments.getParameter(1);
+            final List<T> newList = new ArrayList<T>();
+            for (final T element : target) {
+                if (element != null) {
+                    if (!OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, parameters).booleanValue()) {
+                        newList.add(element);
+                    }
+                } else {
+                    newList.add(element);
+                }
+            }
+            return createResultObject(newList, arguments.getTarget());
+        }
+        
+        
+		return null;
+		
+	}
+	
+	
+	
+	
+    protected List<T> processTarget(final T[] target) {
+        return Arrays.asList(target);
+    }
+    
+	
+    @SuppressWarnings("unchecked")
+	protected T[] createResultObject(final List<T> newList, final Object target) {
         final Class<?> componentClass = target.getClass().getComponentType();
-        final Object[] array = (Object[]) Array.newInstance(componentClass, newList.size());
+        final T[] array = (T[]) Array.newInstance(componentClass, newList.size());
         return newList.toArray(array);
     }
 	

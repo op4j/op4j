@@ -26,6 +26,7 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -170,7 +171,7 @@ public final class Op {
     }
 
     
-    public static <T> ILevel0GenericMultiOperator<T> onAll(final Of<T> of, final T... targets) {
+    public static <T> ILevel0GenericMultiOperator<T> onAll(final Type<T> of, final T... targets) {
         return null;
     }
 
@@ -187,7 +188,7 @@ public final class Op {
     public static <T> ILevel0ArrayOfArrayOperator<T> onArrayOfArray(final T[][] target) {
         final Class<?> componentClass = 
             (target == null)? Object.class : target.getClass().getComponentType().getComponentType();
-        return new Level0ArrayOfArrayOperator<T>((Of<? super T>) Of.type(Types.forClass(componentClass)), Target.forObject(target));
+        return new Level0ArrayOfArrayOperator<T>((Type<? super T>) Types.forClass(componentClass), Target.forObject(target));
     }
 
     
@@ -211,7 +212,7 @@ public final class Op {
     }
 
     
-    public static <T> ILevel0ListOfArrayOperator<T> onListOfArray(final Of<T> of, final List<? extends T[]> target) {
+    public static <T> ILevel0ListOfArrayOperator<T> onListOfArray(final Type<T> of, final List<? extends T[]> target) {
         Validate.notNull(of, "Array component cannot be null");
         return new Level0ListOfArrayOperator<T>(of, Target.forObject(target));
     }
@@ -263,7 +264,7 @@ public final class Op {
     }
 
     
-    public static <T> ILevel0SetOfArrayOperator<T> onSetOfArray(final Of<T> of, final Set<? extends T[]> target) {
+    public static <T> ILevel0SetOfArrayOperator<T> onSetOfArray(final Type<T> of, final Set<? extends T[]> target) {
         Validate.notNull(of, "Array component cannot be null");
         return new Level0SetOfArrayOperator<T>(of, Target.forObject(target));
     }
@@ -291,71 +292,71 @@ public final class Op {
     
     
     @SuppressWarnings("unchecked")
-    public static <T> ILevel0ArrayOfArrayOperator<T> buildArrayOfArray(final Of<T> of) {
-        return onArrayOfArray((T[][]) Array.newInstance(Types.arrayOf(of.getType()).getRawClass(), 0));
+    public static <T> ILevel0ArrayOfArrayOperator<T> buildArrayOfArray(final Type<T> of) {
+        return onArrayOfArray((T[][]) Array.newInstance(Types.arrayOf(of).getRawClass(), 0));
     }
     
     @SuppressWarnings("unchecked")
-    public static <T> ILevel0ArrayOfListOperator<T> buildArrayOfList(final Of<T> of) {
-        return onArrayOfList((List<T>[]) Array.newInstance(Types.listOf(of.getType()).getRawClass(), 0));
+    public static <T> ILevel0ArrayOfListOperator<T> buildArrayOfList(final Type<T> of) {
+        return onArrayOfList((List<T>[]) Array.newInstance(Types.listOf(of).getRawClass(), 0));
     }
     
     @SuppressWarnings("unchecked")
-    public static <K,V> ILevel0ArrayOfMapOperator<K,V> buildArrayOfMap(final Of<K> keyOf, final Of<V> valueOf) {
-        return onArrayOfMap((Map<K,V>[]) Array.newInstance(Types.mapOf(keyOf.getType(),valueOf.getType()).getRawClass(), 0));
+    public static <K,V> ILevel0ArrayOfMapOperator<K,V> buildArrayOfMap(final Type<K> keyOf, final Type<V> valueOf) {
+        return onArrayOfMap((Map<K,V>[]) Array.newInstance(Types.mapOf(keyOf,valueOf).getRawClass(), 0));
     }
     
     @SuppressWarnings("unchecked")
-    public static <T> ILevel0ArrayOfSetOperator<T> buildArrayOfSet(final Of<T> of) {
-        return onArrayOfSet((Set<T>[]) Array.newInstance(Types.setOf(of.getType()).getRawClass(), 0));
+    public static <T> ILevel0ArrayOfSetOperator<T> buildArrayOfSet(final Type<T> of) {
+        return onArrayOfSet((Set<T>[]) Array.newInstance(Types.setOf(of).getRawClass(), 0));
     }
 
     
-    public static <T> ILevel0ListOperator<T> buildList(final Of<T> of) {
+    public static <T> ILevel0ListOperator<T> buildList(final Type<T> of) {
         return onList(new ArrayList<T>());
     }
     
     
-    public static <T> ILevel0ListOfArrayOperator<T> buildListOfArray(final Of<T> of) {
+    public static <T> ILevel0ListOfArrayOperator<T> buildListOfArray(final Type<T> of) {
         return onListOfArray(of, new ArrayList<T[]>());
     }
     
-    public static <T> ILevel0ListOfListOperator<T> buildListOfList(final Of<T> of) {
+    public static <T> ILevel0ListOfListOperator<T> buildListOfList(final Type<T> of) {
         return onListOfList(new ArrayList<List<T>>());
     }
     
-    public static <K,V> ILevel0ListOfMapOperator<K,V> buildListOfMap(final Of<K> keyOf, final Of<V> valueOf) {
+    public static <K,V> ILevel0ListOfMapOperator<K,V> buildListOfMap(final Type<K> keyOf, final Type<V> valueOf) {
         return onListOfMap(new ArrayList<Map<K,V>>());
     }
     
-    public static <T> ILevel0ListOfSetOperator<T> buildListOfSet(final Of<T> of) {
+    public static <T> ILevel0ListOfSetOperator<T> buildListOfSet(final Type<T> of) {
         return onListOfSet(new ArrayList<Set<T>>());
     }
     
     
-    public static <T> ILevel0SetOperator<T> buildSet(final Of<T> of) {
+    public static <T> ILevel0SetOperator<T> buildSet(final Type<T> of) {
         return onSet(new LinkedHashSet<T>());
     }
     
     
-    public static <T> ILevel0SetOfArrayOperator<T> buildSetOfArray(final Of<T> of) {
+    public static <T> ILevel0SetOfArrayOperator<T> buildSetOfArray(final Type<T> of) {
         return onSetOfArray(of, new LinkedHashSet<T[]>());
     }
     
-    public static <T> ILevel0SetOfListOperator<T> buildSetOfList(final Of<T> of) {
+    public static <T> ILevel0SetOfListOperator<T> buildSetOfList(final Type<T> of) {
         return onSetOfList(new LinkedHashSet<List<T>>());
     }
     
-    public static <K,V> ILevel0SetOfMapOperator<K,V> buildSetOfMap(final Of<K> keyOf, final Of<V> valueOf) {
+    public static <K,V> ILevel0SetOfMapOperator<K,V> buildSetOfMap(final Type<K> keyOf, final Type<V> valueOf) {
         return onSetOfMap(new LinkedHashSet<Map<K,V>>());
     }
     
-    public static <T> ILevel0SetOfSetOperator<T> buildSetOfSet(final Of<T> of) {
+    public static <T> ILevel0SetOfSetOperator<T> buildSetOfSet(final Type<T> of) {
         return onSetOfSet(new LinkedHashSet<Set<T>>());
     }
     
     
-    public static <K,V> ILevel0MapOperator<K,V> buildMap(final Of<K> keyOf, final Of<V> valueOf) {
+    public static <K,V> ILevel0MapOperator<K,V> buildMap(final Type<K> keyOf, final Type<V> valueOf) {
         return onMap(new LinkedHashMap<K,V>());
     }
     
@@ -365,17 +366,17 @@ public final class Op {
     }
     
     
-    public static <K,V> ILevel0MapOfListOperator<K,V> buildMapOfList(final Of<K> keyOf, final Of<V> valueOf) {
+    public static <K,V> ILevel0MapOfListOperator<K,V> buildMapOfList(final Type<K> keyOf, final Type<V> valueOf) {
         return onMapOfList(new LinkedHashMap<K,List<V>>());
     }
     
     
-    public static <K1,K2,V> ILevel0MapOfMapOperator<K1,K2,V> buildMapOfMap(final Of<K1> key1Of, final Of<K2> key2Of, final Of<V> valueOf) {
+    public static <K1,K2,V> ILevel0MapOfMapOperator<K1,K2,V> buildMapOfMap(final Type<K1> key1Of, final Type<K2> key2Of, final Type<V> valueOf) {
         return onMapOfMap(new LinkedHashMap<K1,Map<K2,V>>());
     }
     
     
-    public static <K,V> ILevel0MapOfSetOperator<K,V> buildMapOfSet(final Of<K> keyOf, final Of<V> valueOf) {
+    public static <K,V> ILevel0MapOfSetOperator<K,V> buildMapOfSet(final Type<K> keyOf, final Type<V> valueOf) {
         return onMapOfSet(new LinkedHashMap<K,Set<V>>());
     }
     
@@ -552,8 +553,8 @@ public final class Op {
         System.out.println(Op.on(null).buildSet().get());
         System.out.println(printArray(Op.on((String)null).buildArray(Types.STRING).add("a").removeNulls().removePositions(0).get()));
         
-        System.out.println(printArray(Op.buildArrayOfArray(Of.STRING).add(Op.buildArray(Types.STRING).add("a","b").get()).add(Op.buildArray(Types.STRING).add("1","2","3").get()).get()));
-        System.out.println(Op.buildMap(Of.INTEGER,Of.STRING).put(12,"hello!").get());
+        System.out.println(printArray(Op.buildArrayOfArray(Types.STRING).add(Op.buildArray(Types.STRING).add("a","b").get()).add(Op.buildArray(Types.STRING).add("1","2","3").get()).get()));
+        System.out.println(Op.buildMap(Types.INTEGER,Types.STRING).put(12,"hello!").get());
         System.out.println(Op.onAll("a",1,"b",3).buildMap().get());
         System.out.println(Op.onAll("hello", "goodbye").buildMap(Eval.integerExp("length()")).get());
         
@@ -561,6 +562,35 @@ public final class Op {
         System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfList(Eval.integerExp("length()")).get());
         
         System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfArray(Types.STRING, Eval.integerExp("length()")).get());
+        
+        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildList().sort().get());
+        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildSet().sort(new Comparator<String>() {
+
+			public int compare(String o1, String o2) {
+				if (o1.length() < o2.length()) {
+					return -1;
+				} else if (o1.length() == o2.length()) {
+					return 0;
+				}
+				return 1;
+			}
+        	
+        }).get());
+        
+        System.out.println(printArray(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildArray(Types.STRING).sort().get()));
+        System.out.println(printArray(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildArray(Types.STRING).sort(new Comparator<String>() {
+
+			public int compare(String o1, String o2) {
+				if (o1.length() < o2.length()) {
+					return -1;
+				} else if (o1.length() == o2.length()) {
+					return 0;
+				}
+				return 1;
+			}
+        	
+        }).get()));
+        
         
     }
     

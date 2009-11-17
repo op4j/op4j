@@ -50,10 +50,10 @@ import org.op4j.target.Target;
 public class Level0MapOfArrayOperator<K,V> extends Operator
         implements ILevel0MapOfArrayOperator<K,V> {
     
-    private final Type<V> arrayOf; 
+    private final Type<? super V> arrayOf; 
 
     
-    public Level0MapOfArrayOperator(final Type<V> of, final Target target) {
+    public Level0MapOfArrayOperator(final Type<? super V> of, final Target target) {
         super(target);
         this.arrayOf = of;
     }

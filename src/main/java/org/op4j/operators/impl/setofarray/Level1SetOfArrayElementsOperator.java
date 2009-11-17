@@ -24,7 +24,6 @@ import java.util.Comparator;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
-import org.op4j.Of;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
@@ -50,10 +49,10 @@ import org.op4j.target.Target.Structure;
 public class Level1SetOfArrayElementsOperator<T> extends Operator
         implements ILevel1SetOfArrayElementsOperator<T>  {
     
-    private final Of<T> arrayOf; 
+    private final Type<? super T> arrayOf; 
 
     
-    public Level1SetOfArrayElementsOperator(final Of<T> of, final Target target) {
+    public Level1SetOfArrayElementsOperator(final Type<? super T> of, final Target target) {
         super(target);
         this.arrayOf = of;
     }

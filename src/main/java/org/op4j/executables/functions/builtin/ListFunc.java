@@ -41,6 +41,7 @@ package org.op4j.executables.functions.builtin;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 import org.apache.commons.collections.ListUtils;
@@ -131,6 +132,18 @@ public class ListFunc<X,T> implements IFunc<X,List<T>>  {
     }
     
     
+    @SuppressWarnings("unchecked")
+    public static <T> ListFunc<List<T>,T> sort() {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListSortFunction.NAME), ListUtils.EMPTY_LIST); 
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> ListFunc<List<T>,T> sort(final Comparator<? super T> comparator) {
+        return new ListFunc<List<T>,T>((Function<List<T>, List<T>>) Functions.getFunctionByName(ListSortFunction.NAME), Arrays.asList(new Object[] {comparator})); 
+    }
+    
+    
     
     
     
@@ -143,7 +156,7 @@ public class ListFunc<X,T> implements IFunc<X,List<T>>  {
 
 
 
-    public Type<X> getResultType() {
+    public Type<? super X> getResultType() {
         return this.function.getResultType();
     }
 

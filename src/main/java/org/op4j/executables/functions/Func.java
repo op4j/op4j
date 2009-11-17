@@ -78,7 +78,7 @@ public class Func<X,T> implements IFunc<X,T>  {
 
 
 
-    public Type<X> getResultType() {
+    public Type<? super X> getResultType() {
         return this.function.getResultType();
     }
 

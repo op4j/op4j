@@ -22,6 +22,7 @@ package org.op4j.executables.functions.builtin;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,7 +41,7 @@ import org.op4j.util.OgnlExpressionUtil;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public abstract class StructureModifyFunction<X,T> extends FunctionImplementation<X,T> {
+public abstract class StructureModifyFunction<X, T extends Collection<X>> extends FunctionImplementation<T,T> {
 	
 	
     private FunctionArgumentScheme SCH_STRUCTURE_ELEMENTS_ADD;
@@ -130,105 +131,105 @@ public abstract class StructureModifyFunction<X,T> extends FunctionImplementatio
 	
     @Override
     @SuppressWarnings("unchecked")
-	public X execute(FunctionArguments arguments) throws Exception {
+	public T execute(final FunctionArguments arguments) throws Exception {
 		
 		if (arguments.isTargetNull()) {
             throw new NullPointerException("Cannot execute operation on null target");
 		}
 		
 		if (this.SCH_STRUCTURE_ELEMENTS_ADD.matches(arguments)) {
-			final List<?> target = processTarget(arguments.getTarget());
-			final List<?> newElements = (List<?>) arguments.getParameter(0);
-			final List<Object> newList = new ArrayList<Object>(target);
+			final List<X> target = processTarget((Collection<X>) arguments.getTarget());
+			final List<X> newElements = (List<X>) arguments.getParameter(0);
+			final List<X> newList = new ArrayList<X>(target);
 			newList.addAll(newElements);
-			return createResultObject(newList, arguments.getTarget());
+			return createResultObject(newList);
 		}
         
         if (this.SCH_STRUCTURE_ELEMENTS_POSITION_ADD.matches(arguments)) {
-            final List<?> target = processTarget(arguments.getTarget());
-            final List<?> newElements = (List<?>) arguments.getParameter(0);
+			final List<X> target = processTarget((Collection<X>) arguments.getTarget());
+			final List<X> newElements = (List<X>) arguments.getParameter(0);
             final Integer position = arguments.getIntegerParameter(1);
-            final List<Object> newList = new ArrayList<Object>(target);
+            final List<X> newList = new ArrayList<X>(target);
             newList.addAll(position.intValue(), newElements);
-            return createResultObject(newList, arguments.getTarget());
+            return createResultObject(newList);
         }
         
         if (this.SCH_STRUCTURE_ELEMENTS_REMOVE.matches(arguments)) {
-            final List<?> target = processTarget(arguments.getTarget());
-            final List<?> elementsToBeRemoved = (List<?>) arguments.getParameter(0);
-            final List<Object> newList = new ArrayList<Object>(target);
+			final List<X> target = processTarget((Collection<X>) arguments.getTarget());
+            final List<X> elementsToBeRemoved = (List<X>) arguments.getParameter(0);
+            final List<X> newList = new ArrayList<X>(target);
             newList.removeAll(elementsToBeRemoved);
-            return createResultObject(newList, arguments.getTarget());
+            return createResultObject(newList);
         }
         
         if (this.SCH_STRUCTURE_POSITIONS_REMOVE.matches(arguments)) {
-            final List<?> target = processTarget(arguments.getTarget());
+			final List<X> target = processTarget((Collection<X>) arguments.getTarget());
             final List<Integer> positions = Arrays.asList((Integer[]) arguments.getParameter(0));
-            final List<Object> newList = new ArrayList<Object>();
+            final List<X> newList = new ArrayList<X>();
             for (int i = 0, n = target.size(); i < n; i++) {
-            	final Object element = target.get(i);
+            	final X element = target.get(i);
             	if (!positions.contains(Integer.valueOf(i))) {
             		newList.add(element);
             	}
             }
-            return createResultObject(newList, arguments.getTarget());
+            return createResultObject(newList);
         }
         
         if (this.SCH_STRUCTURE_EXPRESSION_REMOVE.matches(arguments)) {
-            final List<?> target = processTarget(arguments.getTarget());
+			final List<X> target = processTarget((Collection<X>) arguments.getTarget());
             final String expression = arguments.getStringParameter(0);
             final List<?> parameters = (List<?>) arguments.getParameter(1);
-            final List<Object> newList = new ArrayList<Object>();
-            for (final Object element : target) {
+            final List<X> newList = new ArrayList<X>();
+            for (final X element : target) {
             	if (!OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, parameters).booleanValue()) {
             		newList.add(element);
             	}
             }
-            return createResultObject(newList, arguments.getTarget());
+            return createResultObject(newList);
         }
         
         if (this.SCH_STRUCTURE_SELECTOR_REMOVE.matches(arguments)) {
-            final List<?> target = processTarget(arguments.getTarget());
-            final ISelect<Object> selector = (ISelect<Object>) arguments.getParameter(0);
-            final List<Object> newList = new ArrayList<Object>();
-            for (final Object element : target) {
+			final List<X> target = processTarget((Collection<X>) arguments.getTarget());
+            final ISelect<X> selector = (ISelect<X>) arguments.getParameter(0);
+            final List<X> newList = new ArrayList<X>();
+            for (final X element : target) {
             	if (!selector.eval(element)) {
             		newList.add(element);
             	}
             }
-            return createResultObject(newList, arguments.getTarget());
+            return createResultObject(newList);
         }
         
         if (this.SCH_STRUCTURE_POSITIONS_REMOVE_NOT.matches(arguments)) {
-            final List<?> target = processTarget(arguments.getTarget());
+			final List<X> target = processTarget((Collection<X>) arguments.getTarget());
             final List<Integer> positions = Arrays.asList((Integer[]) arguments.getParameter(0));
-            final List<Object> newList = new ArrayList<Object>();
+            final List<X> newList = new ArrayList<X>();
             for (int i = 0, n = target.size(); i < n; i++) {
-            	final Object element = target.get(i);
+            	final X element = target.get(i);
             	if (positions.contains(Integer.valueOf(i))) {
             		newList.add(element);
             	}
             }
-            return createResultObject(newList, arguments.getTarget());
+            return createResultObject(newList);
         }
         
         if (this.SCH_STRUCTURE_NULLS_REMOVE.matches(arguments)) {
-            final List<?> target = processTarget(arguments.getTarget());
-            final List<Object> newList = new ArrayList<Object>();
-            for (final Object element : target) {
+			final List<X> target = processTarget((Collection<X>) arguments.getTarget());
+            final List<X> newList = new ArrayList<X>();
+            for (final X element : target) {
             	if (element != null) {
             		newList.add(element);
             	}
             }
-            return createResultObject(newList, arguments.getTarget());
+            return createResultObject(newList);
         }
         
         if (this.SCH_STRUCTURE_NOT_NULLS_AND_REMOVE.matches(arguments)) {
-            final List<?> target = processTarget(arguments.getTarget());
+			final List<X> target = processTarget((Collection<X>) arguments.getTarget());
             final String expression = arguments.getStringParameter(0);
             final List<?> parameters = (List<?>) arguments.getParameter(1);
-            final List<Object> newList = new ArrayList<Object>();
-            for (final Object element : target) {
+            final List<X> newList = new ArrayList<X>();
+            for (final X element : target) {
                 if (element != null) {
                     if (!OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, parameters).booleanValue()) {
                         newList.add(element);
@@ -237,7 +238,7 @@ public abstract class StructureModifyFunction<X,T> extends FunctionImplementatio
                     newList.add(element);
                 }
             }
-            return createResultObject(newList, arguments.getTarget());
+            return createResultObject(newList);
         }
         
         
@@ -246,8 +247,8 @@ public abstract class StructureModifyFunction<X,T> extends FunctionImplementatio
 	}
     
     
-    protected abstract List<?> processTarget(final Object target);
-    protected abstract X createResultObject(final List<?> newList, final Object target);
+    protected abstract List<X> processTarget(final Collection<X> target);
+    protected abstract T createResultObject(final List<X> newList);
     
 
 }

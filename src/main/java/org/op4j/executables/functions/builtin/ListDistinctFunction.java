@@ -38,7 +38,7 @@ import org.op4j.executables.functions.FunctionImplementation;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class ListDistinctFunction extends FunctionImplementation<List<?>, List<?>> {
+public class ListDistinctFunction<T> extends FunctionImplementation<List<T>, List<T>> {
 
 	public static final String NAME = BuiltinNaming.getBuiltinFunctionName(Types.LIST_OF_UNKNOWN, BuiltinNaming.OPERATION_NAME_DISTINCT); 
 	
@@ -71,25 +71,27 @@ public class ListDistinctFunction extends FunctionImplementation<List<?>, List<?
 	
 	
 	@Override
-	protected Type<List<?>> registerResultType() {
+	protected Type<? super List<T>> registerResultType() {
 		return Types.LIST_OF_UNKNOWN;
 	}
 
 	@Override
-	protected Type<List<?>> registerTargetType() {
+	protected Type<? super List<T>> registerTargetType() {
 		return Types.LIST_OF_UNKNOWN;
 	}
 
+	
 	@Override
-	public List<?> execute(FunctionArguments arguments) throws Exception {
+	@SuppressWarnings("unchecked")
+	public List<T> execute(FunctionArguments arguments) throws Exception {
 		
 		if (arguments.isTargetNull()) {
             throw new NullPointerException("Cannot execute operation on null target");
 		}
 		
 		if (SCH_LIST.matches(arguments)) {
-			final List<?> list = (List<?>) arguments.getTarget();
-			return new ArrayList<Object>(new LinkedHashSet<Object>(list));
+			final List<T> list = (List<T>) arguments.getTarget();
+			return new ArrayList<T>(new LinkedHashSet<T>(list));
 		}
 		
 		

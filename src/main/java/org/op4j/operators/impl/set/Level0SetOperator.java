@@ -258,14 +258,12 @@ public class Level0SetOperator<T> extends Operator
 
 
     public ILevel0SetOperator<T> sort() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.sort()));
     }
 
 
-    public ILevel0SetOperator<T> sort(Comparator<? super T> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0SetOperator<T> sort(final Comparator<? super T> comparator) {
+        return new Level0SetOperator<T>(getTarget().execute(SetFunc.sort(comparator)));
     }
 
 
