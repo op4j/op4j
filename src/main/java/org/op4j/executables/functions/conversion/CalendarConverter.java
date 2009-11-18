@@ -348,26 +348,15 @@ public final class CalendarConverter extends ConverterImplementation<Calendar> {
 	    } 	   
             
 	    final Calendar result = Calendar.getInstance();
-		setIntoCalendar(result,Calendar.YEAR, safeYear);
-		setIntoCalendar(result,Calendar.MONTH, month);
-		setIntoCalendar(result,Calendar.DAY_OF_MONTH, day);
-		setIntoCalendar(result,Calendar.HOUR_OF_DAY, hour);
-		setIntoCalendar(result,Calendar.MINUTE, minute);
-		setIntoCalendar(result,Calendar.SECOND, second);
-		setIntoCalendar(result,Calendar.MILLISECOND, milli);
+		result.set(Calendar.YEAR, safeYear.intValue());
+		result.set(Calendar.MONTH, month.intValue() - 1);
+		result.set(Calendar.DAY_OF_MONTH, day.intValue());
+		result.set(Calendar.HOUR_OF_DAY, hour.intValue());
+		result.set(Calendar.MINUTE, minute.intValue());
+		result.set(Calendar.SECOND, second.intValue());
+		result.set(Calendar.MILLISECOND, milli.intValue());
 		
 		return result;		
-	}
-
-	
-	private void setIntoCalendar(final Calendar calendar, final int field, final Integer value) {
-	    if (value != null) {
-	        if (field == Calendar.MONTH) {
-                calendar.set(field, value.intValue() - 1);
-	        } else {
-	            calendar.set(field, value.intValue());
-	        }
-	    }
 	}
 	
 }

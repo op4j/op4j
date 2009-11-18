@@ -23,6 +23,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -42,6 +43,7 @@ import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.conversion.DecimalPoint;
 import org.op4j.executables.functions.conversion.ToBigDecimal;
 import org.op4j.executables.functions.conversion.ToBigInteger;
+import org.op4j.executables.functions.conversion.ToCalendar;
 import org.op4j.executables.functions.conversion.ToDouble;
 import org.op4j.executables.functions.conversion.ToInteger;
 import org.op4j.executables.functions.conversion.ToLong;
@@ -607,6 +609,14 @@ public final class Op {
         System.out.println(Op.on("12314123.4123").exec(ToDouble.fromString(3, RoundingMode.CEILING)).get());
         System.out.println(Op.on("12314123.4123").exec(ToBigDecimal.fromString(3, RoundingMode.CEILING)).get());
         
+        final SimpleDateFormat dateFormat = new SimpleDateFormat();
+        System.out.println(dateFormat.format(Op.on(Calendar.getInstance()).exec(new ToCalendar.FromCalendar(Calendar.DATE)).get().getTime()));
+        
+        System.out.println(dateFormat.format(Op.on("25/nov/1979").exec(ToCalendar.fromString("dd/MMM/yyyy", "es")).get().getTime()));
+        
+//        System.out.println(dateFormat.format(Op.onAll(1979, 11, 25, 12, 30).buildList().exec(ToCalendar.fromString("dd/MMM/yyyy", "es")).get().getTime()));
+        System.out.println(dateFormat.format(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildList().get()).exec(ToCalendar.fromIntegerFieldList()).get().getTime()));
+        System.out.println(dateFormat.format(Op.on(Op.onAll("1979", "11", "25", "12", "30").buildArray(Types.STRING).get()).exec(ToCalendar.fromStringFieldArray()).get().getTime()));
     }
     
     
