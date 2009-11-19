@@ -33,7 +33,7 @@ import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.functions.IFunc;
-import org.op4j.executables.functions.builtin.GenericFunc;
+import org.op4j.executables.functions.builtin.GenericFuncOLD;
 import org.op4j.executables.functions.conversion.Conv;
 import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.impl.Operator;
@@ -88,71 +88,71 @@ public class Level0GenericUniqOperator<T> extends Operator
 
 
     public ILevel0GenericMultiOperator<T> add(final T... newElements) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.uniqAdd(newElements)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.uniqAdd(newElements)));
     }
 
     public ILevel0GenericMultiOperator<T> insert(final int position, final T... newElements) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.uniqInsert(position, newElements)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.uniqInsert(position, newElements)));
     }
 
 
     public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.uniqAddAll(collection)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.uniqAddAll(collection)));
     }
 
 
     public ILevel0ArrayOperator<T> buildArray(final Type<T> arrayOf) {
-        return new Level0ArrayOperator<T>(arrayOf, getTarget().execute(GenericFunc.uniqBuildArray(arrayOf)));
+        return new Level0ArrayOperator<T>(arrayOf, getTarget().execute(GenericFuncOLD.uniqBuildArray(arrayOf)));
     }
 
 
     public ILevel0ListOperator<T> buildList() {
-        return new Level0ListOperator<T>(getTarget().execute(GenericFunc.uniqBuildList()));
+        return new Level0ListOperator<T>(getTarget().execute(GenericFuncOLD.uniqBuildList()));
     }
 
 
     public <K> ILevel0MapOperator<K, T> buildMap(final IEval<K, ? super T> keyEval) {
-        return new Level0MapOperator<K, T>(getTarget().execute(GenericFunc.uniqBuildMap(keyEval)));
+        return new Level0MapOperator<K, T>(getTarget().execute(GenericFuncOLD.uniqBuildMap(keyEval)));
     }
 
 
     public <K, V> ILevel0MapOperator<K, V> buildMap(final IMapBuild<K, V, ? super T> mapBuild) {
-        return new Level0MapOperator<K, V>(getTarget().execute(GenericFunc.uniqBuildMap(mapBuild)));
+        return new Level0MapOperator<K, V>(getTarget().execute(GenericFuncOLD.uniqBuildMap(mapBuild)));
     }
 
 
     public <K> ILevel0MapOfArrayOperator<K, T> buildMapOfArray(final Type<T> valueArrayOf, final IEval<K, ? super T> keyEval) {
-        return new Level0MapOfArrayOperator<K, T>(valueArrayOf, getTarget().execute(GenericFunc.uniqBuildMapOfArray(valueArrayOf, keyEval)));
+        return new Level0MapOfArrayOperator<K, T>(valueArrayOf, getTarget().execute(GenericFuncOLD.uniqBuildMapOfArray(valueArrayOf, keyEval)));
     }
 
 
     public <K, V> ILevel0MapOfArrayOperator<K, V> buildMapOfArray(final Type<V> valueArrayOf, final IMapBuild<K, V, ? super T> mapBuild) {
-        return new Level0MapOfArrayOperator<K, V>(valueArrayOf, getTarget().execute(GenericFunc.uniqBuildMapOfArray(valueArrayOf, mapBuild)));
+        return new Level0MapOfArrayOperator<K, V>(valueArrayOf, getTarget().execute(GenericFuncOLD.uniqBuildMapOfArray(valueArrayOf, mapBuild)));
     }
 
 
     public <K> ILevel0MapOfListOperator<K, T> buildMapOfList(final IEval<K, ? super T> keyEval) {
-        return new Level0MapOfListOperator<K, T>(getTarget().execute(GenericFunc.uniqBuildMapOfList(keyEval)));
+        return new Level0MapOfListOperator<K, T>(getTarget().execute(GenericFuncOLD.uniqBuildMapOfList(keyEval)));
     }
 
 
     public <K, V> ILevel0MapOfListOperator<K, V> buildMapOfList(final IMapBuild<K, V, ? super T> mapBuild) {
-        return new Level0MapOfListOperator<K, V>(getTarget().execute(GenericFunc.uniqBuildMapOfList(mapBuild)));
+        return new Level0MapOfListOperator<K, V>(getTarget().execute(GenericFuncOLD.uniqBuildMapOfList(mapBuild)));
     }
 
 
     public <K> ILevel0MapOfSetOperator<K, T> buildMapOfSet(final IEval<K, ? super T> keyEval) {
-        return new Level0MapOfSetOperator<K, T>(getTarget().execute(GenericFunc.uniqBuildMapOfSet(keyEval)));
+        return new Level0MapOfSetOperator<K, T>(getTarget().execute(GenericFuncOLD.uniqBuildMapOfSet(keyEval)));
     }
 
 
     public <K, V> ILevel0MapOfSetOperator<K, V> buildMapOfSet(final IMapBuild<K, V, ? super T> mapBuild) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(GenericFunc.uniqBuildMapOfSet(mapBuild)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(GenericFuncOLD.uniqBuildMapOfSet(mapBuild)));
     }
 
 
     public ILevel0SetOperator<T> buildSet() {
-        return new Level0SetOperator<T>(getTarget().execute(GenericFunc.uniqBuildSet()));
+        return new Level0SetOperator<T>(getTarget().execute(GenericFuncOLD.uniqBuildSet()));
     }
 
 

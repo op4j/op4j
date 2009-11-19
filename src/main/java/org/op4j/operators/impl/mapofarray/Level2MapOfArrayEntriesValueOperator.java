@@ -27,7 +27,7 @@ import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.ArrayFunc;
+import org.op4j.executables.functions.builtin.ArrayFuncOLD;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofarray.ILevel1MapOfArrayEntriesOperator;
 import org.op4j.operators.intf.mapofarray.ILevel2MapOfArrayEntriesValueOperator;
@@ -59,22 +59,22 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> add(final V... newElements) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.add(newElements)));
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFuncOLD.add(newElements)));
     }
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> insert(final int position, final V... newElements) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.insert(position, newElements)));
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFuncOLD.insert(position, newElements)));
     }
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> addAll(final Collection<V> collection) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.addAll(collection)));
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFuncOLD.addAll(collection)));
     }
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> distinct() {
-        return new Level2MapOfArrayEntriesValueOperator<K,V>(this.arrayOf, getTarget().execute(ArrayFunc.distinct()));
+        return new Level2MapOfArrayEntriesValueOperator<K,V>(this.arrayOf, getTarget().execute(ArrayFuncOLD.distinct()));
     }
 
 
@@ -226,38 +226,38 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> removePositions(final int... positions) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removePositions(positions)));
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFuncOLD.removePositions(positions)));
     }
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> removeValues(final V... values) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeValues(values)));
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFuncOLD.removeValues(values)));
     }
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeMatching(expression, optionalExpParams)));
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFuncOLD.removeMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> removeSelected(final ISelect<V> selector) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeSelected(selector)));
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFuncOLD.removeSelected(selector)));
     }
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllExceptPositions(final int... positions) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeAllExceptPositions(positions)));
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFuncOLD.removeAllExceptPositions(positions)));
     }
 
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeNotNullsMatching(expression, optionalExpParams)));
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFuncOLD.removeNotNullsMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> removeNulls() {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFunc.removeNulls()));
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(ArrayFuncOLD.removeNulls()));
     }
 
     

@@ -40,6 +40,9 @@ import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.builtin.ArrayFunc;
+import org.op4j.executables.functions.builtin.ListFunc;
+import org.op4j.executables.functions.builtin.SetFunc;
 import org.op4j.executables.functions.conversion.DecimalPoint;
 import org.op4j.executables.functions.conversion.ToBigDecimal;
 import org.op4j.executables.functions.conversion.ToBigInteger;
@@ -617,6 +620,24 @@ public final class Op {
 //        System.out.println(dateFormat.format(Op.onAll(1979, 11, 25, 12, 30).buildList().exec(ToCalendar.fromString("dd/MMM/yyyy", "es")).get().getTime()));
         System.out.println(dateFormat.format(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildList().get()).exec(ToCalendar.fromIntegerFieldList()).get().getTime()));
         System.out.println(dateFormat.format(Op.on(Op.onAll("1979", "11", "25", "12", "30").buildArray(Types.STRING).get()).exec(ToCalendar.fromStringFieldArray()).get().getTime()));
+        
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildList().get()).exec(new ListFunc.Sort<Integer>()).get());
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildSet().get()).exec(new SetFunc.Sort<Integer>()).get());
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFunc.Distinct<Integer>()).get());
+        
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildArray(Types.INTEGER).get()).exec(new ArrayFunc.Sort<Integer>()).get()));
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFunc.Distinct<Integer>()).get()));
+        
+        
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFunc.Insert<Integer>(2, 1492)).get());
+        
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFunc.Insert<Integer>(2, 1492)).exec(new ListFunc.RemoveMatching<Integer>("#target < 1000")).exec(new ListFunc.Sort<Integer>()).get());
+        
+        
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFunc.Insert<Integer>(2, 1492)).get()));
+        
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFunc.Insert<Integer>(2, 1492)).exec(new ArrayFunc.RemoveMatching<Integer>("#target < 1000")).exec(new ArrayFunc.Sort<Integer>()).get()));
+        
     }
     
     

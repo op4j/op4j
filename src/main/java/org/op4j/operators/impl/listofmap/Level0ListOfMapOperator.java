@@ -26,7 +26,7 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.ListFunc;
+import org.op4j.executables.functions.builtin.ListFuncOLD;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.listofmap.ILevel0ListOfMapOperator;
@@ -51,22 +51,22 @@ public class Level0ListOfMapOperator<K,V> extends Operator
 
 
     public ILevel0ListOfMapOperator<K, V> add(final Map<K, V>... newElements) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.add(newElements)));
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFuncOLD.add(newElements)));
     }
 
 
     public ILevel0ListOfMapOperator<K, V> insert(final int position, final Map<K, V>... newElements) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.insert(position, newElements)));
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFuncOLD.insert(position, newElements)));
     }
 
 
     public ILevel0ListOfMapOperator<K, V> addAll(final Collection<Map<K, V>> collection) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.addAll(collection)));
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFuncOLD.addAll(collection)));
     }
 
 
     public ILevel0ListOfMapOperator<K, V> distinct() {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.distinct()));
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFuncOLD.distinct()));
     }
 
 
@@ -216,38 +216,38 @@ public class Level0ListOfMapOperator<K,V> extends Operator
 
 
     public ILevel0ListOfMapOperator<K, V> removePositions(final int... positions) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.removePositions(positions)));
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFuncOLD.removePositions(positions)));
     }
 
 
     public ILevel0ListOfMapOperator<K, V> removeValues(final Map<K, V>... values) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.removeValues(values)));
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFuncOLD.removeValues(values)));
     }
 
 
     public ILevel0ListOfMapOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.removeMatching(expression, optionalExpParams)));
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFuncOLD.removeMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0ListOfMapOperator<K, V> removeSelected(final ISelect<Map<K, V>> selector) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.removeSelected(selector)));
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFuncOLD.removeSelected(selector)));
     }
 
 
     public ILevel0ListOfMapOperator<K, V> removeAllExceptPositions(final int... positions) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.removeAllExceptPositions(positions)));
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFuncOLD.removeAllExceptPositions(positions)));
     }
 
 
 
     public ILevel0ListOfMapOperator<K, V> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.removeNotNullsMatching(expression, optionalExpParams)));
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFuncOLD.removeNotNullsMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0ListOfMapOperator<K, V> removeNulls() {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFunc.removeNulls()));
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(ListFuncOLD.removeNulls()));
     }
 
     

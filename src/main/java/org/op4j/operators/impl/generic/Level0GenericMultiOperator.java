@@ -28,7 +28,7 @@ import org.op4j.exceptions.NonUniqueTargetException;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.GenericFunc;
+import org.op4j.executables.functions.builtin.GenericFuncOLD;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.list.Level0ListOperator;
@@ -69,91 +69,91 @@ public class Level0GenericMultiOperator<T> extends Operator
 
 
     public ILevel0GenericMultiOperator<T> add(final T... newElements) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiAdd(newElements)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiAdd(newElements)));
     }
 
     public ILevel0GenericMultiOperator<T> insert(final int position, final T... newElements) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiInsert(position, newElements)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiInsert(position, newElements)));
     }
 
 
     public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiAddAll(collection)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiAddAll(collection)));
     }
 
 
     public ILevel0ArrayOperator<T> buildArray(final Type<T> arrayOf) {
-        return new Level0ArrayOperator<T>(arrayOf, getTarget().execute(GenericFunc.multiBuildArray(arrayOf)));
+        return new Level0ArrayOperator<T>(arrayOf, getTarget().execute(GenericFuncOLD.multiBuildArray(arrayOf)));
     }
 
 
     public ILevel0ListOperator<T> buildList() {
-        return new Level0ListOperator<T>(getTarget().execute(GenericFunc.multiBuildList()));
+        return new Level0ListOperator<T>(getTarget().execute(GenericFuncOLD.multiBuildList()));
     }
 
 
     public <K> ILevel0MapOperator<K, T> buildMap(final IEval<K, ? super T> keyEval) {
-        return new Level0MapOperator<K, T>(getTarget().execute(GenericFunc.multiBuildMap(keyEval)));
+        return new Level0MapOperator<K, T>(getTarget().execute(GenericFuncOLD.multiBuildMap(keyEval)));
     }
 
 
     public <K, V> ILevel0MapOperator<K, V> buildMap(final IMapBuild<K, V, ? super T> mapBuild) {
-        return new Level0MapOperator<K, V>(getTarget().execute(GenericFunc.multiBuildMap(mapBuild)));
+        return new Level0MapOperator<K, V>(getTarget().execute(GenericFuncOLD.multiBuildMap(mapBuild)));
     }
 
 
     public ILevel0MapOperator<T, T> buildMap() {
-        return new Level0MapOperator<T, T>(getTarget().execute(GenericFunc.multiBuildMap()));
+        return new Level0MapOperator<T, T>(getTarget().execute(GenericFuncOLD.multiBuildMap()));
     }
 
 
     public <K> ILevel0MapOfArrayOperator<K, T> buildMapOfArray(final Type<T> valueArrayOf, final IEval<K, ? super T> keyEval) {
-        return new Level0MapOfArrayOperator<K, T>(valueArrayOf, getTarget().execute(GenericFunc.multiBuildMapOfArray(valueArrayOf, keyEval)));
+        return new Level0MapOfArrayOperator<K, T>(valueArrayOf, getTarget().execute(GenericFuncOLD.multiBuildMapOfArray(valueArrayOf, keyEval)));
     }
 
 
     public <K, V> ILevel0MapOfArrayOperator<K, V> buildMapOfArray(final Type<V> valueArrayOf, final IMapBuild<K, V, ? super T> mapBuild) {
-        return new Level0MapOfArrayOperator<K, V>(valueArrayOf, getTarget().execute(GenericFunc.multiBuildMapOfArray(valueArrayOf, mapBuild)));
+        return new Level0MapOfArrayOperator<K, V>(valueArrayOf, getTarget().execute(GenericFuncOLD.multiBuildMapOfArray(valueArrayOf, mapBuild)));
     }
 
 
     public ILevel0MapOfArrayOperator<T, T> buildMapOfArray(final Type<T> arrayOf) {
-        return new Level0MapOfArrayOperator<T, T>(arrayOf, getTarget().execute(GenericFunc.multiBuildMapOfArray(arrayOf)));
+        return new Level0MapOfArrayOperator<T, T>(arrayOf, getTarget().execute(GenericFuncOLD.multiBuildMapOfArray(arrayOf)));
     }
 
 
     public <K> ILevel0MapOfListOperator<K, T> buildMapOfList(final IEval<K, ? super T> keyEval) {
-        return new Level0MapOfListOperator<K, T>(getTarget().execute(GenericFunc.multiBuildMapOfList(keyEval)));
+        return new Level0MapOfListOperator<K, T>(getTarget().execute(GenericFuncOLD.multiBuildMapOfList(keyEval)));
     }
 
 
     public <K, V> ILevel0MapOfListOperator<K, V> buildMapOfList(final IMapBuild<K, V, ? super T> mapBuild) {
-        return new Level0MapOfListOperator<K, V>(getTarget().execute(GenericFunc.multiBuildMapOfList(mapBuild)));
+        return new Level0MapOfListOperator<K, V>(getTarget().execute(GenericFuncOLD.multiBuildMapOfList(mapBuild)));
     }
 
 
     public ILevel0MapOfListOperator<T, T> buildMapOfList() {
-        return new Level0MapOfListOperator<T, T>(getTarget().execute(GenericFunc.multiBuildMapOfList()));
+        return new Level0MapOfListOperator<T, T>(getTarget().execute(GenericFuncOLD.multiBuildMapOfList()));
     }
 
 
     public <K> ILevel0MapOfSetOperator<K, T> buildMapOfSet(final IEval<K, ? super T> keyEval) {
-        return new Level0MapOfSetOperator<K, T>(getTarget().execute(GenericFunc.multiBuildMapOfSet(keyEval)));
+        return new Level0MapOfSetOperator<K, T>(getTarget().execute(GenericFuncOLD.multiBuildMapOfSet(keyEval)));
     }
 
 
     public <K, V> ILevel0MapOfSetOperator<K, V> buildMapOfSet(final IMapBuild<K, V, ? super T> mapBuild) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(GenericFunc.multiBuildMapOfSet(mapBuild)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(GenericFuncOLD.multiBuildMapOfSet(mapBuild)));
     }
 
 
     public ILevel0MapOfSetOperator<T, T> buildMapOfSet() {
-        return new Level0MapOfSetOperator<T, T>(getTarget().execute(GenericFunc.multiBuildMapOfSet()));
+        return new Level0MapOfSetOperator<T, T>(getTarget().execute(GenericFuncOLD.multiBuildMapOfSet()));
     }
 
 
     public ILevel0SetOperator<T> buildSet() {
-        return new Level0SetOperator<T>(getTarget().execute(GenericFunc.multiBuildSet()));
+        return new Level0SetOperator<T>(getTarget().execute(GenericFuncOLD.multiBuildSet()));
     }
 
 
@@ -176,37 +176,37 @@ public class Level0GenericMultiOperator<T> extends Operator
 
 
     public ILevel0GenericMultiOperator<T> removePositions(final int... positions) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiRemovePositions(positions)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiRemovePositions(positions)));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeValues(final T... values) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiRemoveValues(values)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiRemoveValues(values)));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiRemoveMatching(expression, optionalExpParams)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiRemoveMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeSelected(final ISelect<T> selector) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiRemoveSelected(selector)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiRemoveSelected(selector)));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiRemoveAllExceptPositions(positions)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiRemoveAllExceptPositions(positions)));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiRemoveNotNullsMatching(expression, optionalExpParams)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiRemoveNotNullsMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeNulls() {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFunc.multiRemoveNulls()));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiRemoveNulls()));
     }
 
 

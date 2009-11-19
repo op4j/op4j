@@ -27,7 +27,7 @@ import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.ListFunc;
+import org.op4j.executables.functions.builtin.ListFuncOLD;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
@@ -64,22 +64,22 @@ public class Level0ListOfListOperator<T> extends Operator
 
 
     public ILevel0ListOfListOperator<T> add(final List<T>... newElements) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.add(newElements)));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFuncOLD.add(newElements)));
     }
 
 
     public ILevel0ListOfListOperator<T> insert(final int position, final List<T>... newElements) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.insert(position, newElements)));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFuncOLD.insert(position, newElements)));
     }
 
 
     public ILevel0ListOfListOperator<T> addAll(final Collection<List<T>> collection) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.addAll(collection)));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFuncOLD.addAll(collection)));
     }
 
 
     public ILevel0ListOfListOperator<T> distinct() {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.distinct()));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFuncOLD.distinct()));
     }
 
 
@@ -233,38 +233,38 @@ public class Level0ListOfListOperator<T> extends Operator
 
 
     public ILevel0ListOfListOperator<T> removePositions(final int... positions) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removePositions(positions)));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFuncOLD.removePositions(positions)));
     }
 
 
     public ILevel0ListOfListOperator<T> removeValues(final List<T>... values) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeValues(values)));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFuncOLD.removeValues(values)));
     }
 
 
     public ILevel0ListOfListOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeMatching(expression, optionalExpParams)));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFuncOLD.removeMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0ListOfListOperator<T> removeSelected(final ISelect<List<T>> selector) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeSelected(selector)));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFuncOLD.removeSelected(selector)));
     }
 
 
     public ILevel0ListOfListOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeAllExceptPositions(positions)));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFuncOLD.removeAllExceptPositions(positions)));
     }
 
 
 
     public ILevel0ListOfListOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeNotNullsMatching(expression, optionalExpParams)));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFuncOLD.removeNotNullsMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0ListOfListOperator<T> removeNulls() {
-        return new Level0ListOfListOperator<T>(getTarget().execute(ListFunc.removeNulls()));
+        return new Level0ListOfListOperator<T>(getTarget().execute(ListFuncOLD.removeNulls()));
     }
 
     

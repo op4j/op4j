@@ -27,7 +27,7 @@ import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.ArrayFunc;
+import org.op4j.executables.functions.builtin.ArrayFuncOLD;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
@@ -64,22 +64,22 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
 
     public ILevel0ArrayOfSetOperator<T> add(final Set<T>... newElements) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFunc.add(newElements)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.add(newElements)));
     }
 
 
     public ILevel0ArrayOfSetOperator<T> insert(final int position, final Set<T>... newElements) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFunc.insert(position, newElements)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.insert(position, newElements)));
     }
 
 
     public ILevel0ArrayOfSetOperator<T> addAll(final Collection<Set<T>> collection) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFunc.addAll(collection)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.addAll(collection)));
     }
 
 
     public ILevel0ArrayOfSetOperator<T> distinct() {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFunc.distinct()));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.distinct()));
     }
 
 
@@ -233,38 +233,38 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
 
     public ILevel0ArrayOfSetOperator<T> removePositions(final int... positions) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFunc.removePositions(positions)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.removePositions(positions)));
     }
 
 
     public ILevel0ArrayOfSetOperator<T> removeValues(final Set<T>... values) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFunc.removeValues(values)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.removeValues(values)));
     }
 
 
     public ILevel0ArrayOfSetOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFunc.removeMatching(expression, optionalExpParams)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.removeMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0ArrayOfSetOperator<T> removeSelected(final ISelect<Set<T>> selector) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFunc.removeSelected(selector)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.removeSelected(selector)));
     }
 
 
     public ILevel0ArrayOfSetOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFunc.removeAllExceptPositions(positions)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.removeAllExceptPositions(positions)));
     }
 
 
 
     public ILevel0ArrayOfSetOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFunc.removeNotNullsMatching(expression, optionalExpParams)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.removeNotNullsMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0ArrayOfSetOperator<T> removeNulls() {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFunc.removeNulls()));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.removeNulls()));
     }
 
     

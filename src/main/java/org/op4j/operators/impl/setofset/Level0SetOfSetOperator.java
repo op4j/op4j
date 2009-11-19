@@ -27,7 +27,7 @@ import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.SetFunc;
+import org.op4j.executables.functions.builtin.SetFuncOLD;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
@@ -64,17 +64,17 @@ public class Level0SetOfSetOperator<T> extends Operator
 
 
     public ILevel0SetOfSetOperator<T> add(final Set<T>... newElements) {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFunc.add(newElements)));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.add(newElements)));
     }
 
 
     public ILevel0SetOfSetOperator<T> insert(final int position, final Set<T>... newElements) {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFunc.insert(position, newElements)));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.insert(position, newElements)));
     }
 
 
     public ILevel0SetOfSetOperator<T> addAll(final Collection<Set<T>> collection) {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFunc.addAll(collection)));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.addAll(collection)));
     }
 
 
@@ -228,38 +228,38 @@ public class Level0SetOfSetOperator<T> extends Operator
 
 
     public ILevel0SetOfSetOperator<T> removePositions(final int... positions) {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFunc.removePositions(positions)));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.removePositions(positions)));
     }
 
 
     public ILevel0SetOfSetOperator<T> removeValues(final Set<T>... values) {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFunc.removeValues(values)));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.removeValues(values)));
     }
 
 
     public ILevel0SetOfSetOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFunc.removeMatching(expression, optionalExpParams)));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.removeMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0SetOfSetOperator<T> removeSelected(final ISelect<Set<T>> selector) {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFunc.removeSelected(selector)));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.removeSelected(selector)));
     }
 
 
     public ILevel0SetOfSetOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFunc.removeAllExceptPositions(positions)));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.removeAllExceptPositions(positions)));
     }
 
 
 
     public ILevel0SetOfSetOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFunc.removeNotNullsMatching(expression, optionalExpParams)));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.removeNotNullsMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0SetOfSetOperator<T> removeNulls() {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFunc.removeNulls()));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.removeNulls()));
     }
 
     

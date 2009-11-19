@@ -25,7 +25,7 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.ArrayFunc;
+import org.op4j.executables.functions.builtin.ArrayFuncOLD;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.arrayofmap.ILevel0ArrayOfMapOperator;
 import org.op4j.operators.intf.arrayofmap.ILevel1ArrayOfMapElementsOperator;
@@ -50,22 +50,22 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
 
 
     public ILevel0ArrayOfMapOperator<K, V> add(final Map<K, V>... newElements) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.add(newElements)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.add(newElements)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> insert(final int position, final Map<K, V>... newElements) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.insert(position, newElements)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.insert(position, newElements)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> addAll(final Collection<Map<K, V>> collection) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.addAll(collection)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.addAll(collection)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> distinct() {
-        return new Level0ArrayOfMapOperator<K,V>(getTarget().execute(ArrayFunc.distinct()));
+        return new Level0ArrayOfMapOperator<K,V>(getTarget().execute(ArrayFuncOLD.distinct()));
     }
 
 
@@ -213,38 +213,38 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
 
 
     public ILevel0ArrayOfMapOperator<K, V> removePositions(final int... positions) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removePositions(positions)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.removePositions(positions)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeValues(final Map<K, V>... values) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeValues(values)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.removeValues(values)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeMatching(expression, optionalExpParams)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.removeMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeSelected(final ISelect<Map<K, V>> selector) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeSelected(selector)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.removeSelected(selector)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeAllExceptPositions(final int... positions) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeAllExceptPositions(positions)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.removeAllExceptPositions(positions)));
     }
 
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeNotNullsMatching(expression, optionalExpParams)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.removeNotNullsMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeNulls() {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFunc.removeNulls()));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.removeNulls()));
     }
 
     

@@ -27,7 +27,7 @@ import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.ListFunc;
+import org.op4j.executables.functions.builtin.ListFuncOLD;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.arrayofarray.ILevel1ArrayOfArrayElementsOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
@@ -56,22 +56,22 @@ public class Level1ArrayOfListElementsOperator<T> extends Operator
 
 
     public ILevel1ArrayOfListElementsOperator<T> add(final T... newElements) {
-        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFunc.add(newElements)));
+        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFuncOLD.add(newElements)));
     }
 
 
     public ILevel1ArrayOfListElementsOperator<T> insert(final int position, final T... newElements) {
-        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFunc.insert(position, newElements)));
+        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFuncOLD.insert(position, newElements)));
     }
 
 
     public ILevel1ArrayOfListElementsOperator<T> addAll(final Collection<T> collection) {
-        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFunc.addAll(collection)));
+        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFuncOLD.addAll(collection)));
     }
 
 
     public ILevel1ArrayOfListElementsOperator<T> distinct() {
-        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFunc.distinct()));
+        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFuncOLD.distinct()));
     }
 
 
@@ -225,38 +225,38 @@ public class Level1ArrayOfListElementsOperator<T> extends Operator
 
 
     public ILevel1ArrayOfListElementsOperator<T> removePositions(final int... positions) {
-        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFunc.removePositions(positions)));
+        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFuncOLD.removePositions(positions)));
     }
 
 
     public ILevel1ArrayOfListElementsOperator<T> removeValues(final T... values) {
-        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFunc.removeValues(values)));
+        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFuncOLD.removeValues(values)));
     }
 
 
     public ILevel1ArrayOfListElementsOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFunc.removeMatching(expression, optionalExpParams)));
+        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFuncOLD.removeMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel1ArrayOfListElementsOperator<T> removeSelected(final ISelect<T> selector) {
-        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFunc.removeSelected(selector)));
+        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFuncOLD.removeSelected(selector)));
     }
 
 
     public ILevel1ArrayOfListElementsOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFunc.removeAllExceptPositions(positions)));
+        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFuncOLD.removeAllExceptPositions(positions)));
     }
 
 
 
     public ILevel1ArrayOfListElementsOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFunc.removeNotNullsMatching(expression, optionalExpParams)));
+        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFuncOLD.removeNotNullsMatching(expression, optionalExpParams)));
     }
 
 
     public ILevel1ArrayOfListElementsOperator<T> removeNulls() {
-        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFunc.removeNulls()));
+        return new Level1ArrayOfListElementsOperator<T>(getTarget().execute(ListFuncOLD.removeNulls()));
     }
 
     
