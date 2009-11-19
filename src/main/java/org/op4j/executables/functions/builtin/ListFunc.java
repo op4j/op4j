@@ -49,7 +49,7 @@ public class ListFunc {
     
     
     
-    public static final class Sort<T extends Comparable<? super T>> extends StructureFunc.Sort<T, List<T>> {
+    public static final class Sort<T extends Comparable<? super T>> extends CollectionFunc.Sort<T, List<T>> {
 
         public Sort() {
             super();
@@ -64,7 +64,7 @@ public class ListFunc {
         }
 
         @Override
-        public List<T> fromList(final List<T> object) {
+        List<T> fromList(final List<T> object) {
             return object;
         }
 
@@ -93,7 +93,7 @@ public class ListFunc {
     
     
     
-    public static final class Add<T> extends StructureFunc.Add<T, List<T>> {
+    public static final class Add<T> extends CollectionFunc.Add<T, List<T>> {
 
         public Add(final T... newElements) {
             super(newElements);
@@ -104,7 +104,7 @@ public class ListFunc {
         }
 
         @Override
-        public List<T> fromList(final List<T> object) {
+        List<T> fromList(final List<T> object) {
             return object;
         }
         
@@ -114,7 +114,7 @@ public class ListFunc {
     
     
     
-    public static final class Insert<T> extends StructureFunc.Insert<T, List<T>> {
+    public static final class Insert<T> extends CollectionFunc.Insert<T, List<T>> {
 
         public Insert(final int position, T... newElements) {
             super(position, newElements);
@@ -125,7 +125,7 @@ public class ListFunc {
         }
 
         @Override
-        public List<T> fromList(final List<T> object) {
+        List<T> fromList(final List<T> object) {
             return object;
         }
         
@@ -135,7 +135,7 @@ public class ListFunc {
     
     
     
-    public static final class AddAll<T> extends StructureFunc.AddAll<T, List<T>> {
+    public static final class AddAll<T> extends CollectionFunc.AddAll<T, List<T>> {
 
         public AddAll(final Collection<T> collection) {
             super(collection);
@@ -146,7 +146,7 @@ public class ListFunc {
         }
 
         @Override
-        public List<T> fromList(final List<T> object) {
+        List<T> fromList(final List<T> object) {
             return object;
         }
         
@@ -155,7 +155,7 @@ public class ListFunc {
 
     
     
-    public static final class RemovePositions<T> extends StructureFunc.RemovePositions<T, List<T>> {
+    public static final class RemovePositions<T> extends CollectionFunc.RemovePositions<T, List<T>> {
 
         
         public RemovePositions(final int... positions) {
@@ -167,7 +167,7 @@ public class ListFunc {
         }
 
         @Override
-        public List<T> fromList(final List<T> object) {
+        List<T> fromList(final List<T> object) {
             return object;
         }
         
@@ -176,7 +176,7 @@ public class ListFunc {
 
     
     
-    public static final class RemoveValues<T> extends StructureFunc.RemoveValues<T, List<T>> {
+    public static final class RemoveValues<T> extends CollectionFunc.RemoveValues<T, List<T>> {
 
         public RemoveValues(final T... values) {
             super(values);
@@ -187,7 +187,7 @@ public class ListFunc {
         }
 
         @Override
-        public List<T> fromList(final List<T> object) {
+        List<T> fromList(final List<T> object) {
             return object;
         }
         
@@ -196,7 +196,7 @@ public class ListFunc {
 
     
     
-    public static final class RemoveMatching<T> extends StructureFunc.RemoveMatching<T, List<T>> {
+    public static final class RemoveMatching<T> extends CollectionFunc.RemoveMatching<T, List<T>> {
 
         public RemoveMatching(final String expression, final Object... optionalExpParams) {
             super(expression, optionalExpParams);
@@ -207,7 +207,7 @@ public class ListFunc {
         }
 
         @Override
-        public List<T> fromList(final List<T> object) {
+        List<T> fromList(final List<T> object) {
             return object;
         }
         
@@ -216,7 +216,7 @@ public class ListFunc {
 
     
     
-    public static final class RemoveSelected<T> extends StructureFunc.RemoveSelected<T, List<T>> {
+    public static final class RemoveSelected<T> extends CollectionFunc.RemoveSelected<T, List<T>> {
 
         public RemoveSelected(final ISelect<T> selector) {
             super(selector);
@@ -227,7 +227,7 @@ public class ListFunc {
         }
 
         @Override
-        public List<T> fromList(final List<T> object) {
+        List<T> fromList(final List<T> object) {
             return object;
         }
         
@@ -236,7 +236,7 @@ public class ListFunc {
 
     
     
-    public static final class RemoveAllExceptPositions<T> extends StructureFunc.RemoveAllExceptPositions<T, List<T>> {
+    public static final class RemoveAllExceptPositions<T> extends CollectionFunc.RemoveAllExceptPositions<T, List<T>> {
 
         public RemoveAllExceptPositions(final int... positions) {
             super(positions);
@@ -247,7 +247,7 @@ public class ListFunc {
         }
 
         @Override
-        public List<T> fromList(final List<T> object) {
+        List<T> fromList(final List<T> object) {
             return object;
         }
         
@@ -256,7 +256,7 @@ public class ListFunc {
 
     
     
-    public static final class RemoveNulls<T> extends StructureFunc.RemoveNulls<T, List<T>> {
+    public static final class RemoveNulls<T> extends CollectionFunc.RemoveNulls<T, List<T>> {
 
         public RemoveNulls() {
             super();
@@ -267,7 +267,7 @@ public class ListFunc {
         }
 
         @Override
-        public List<T> fromList(final List<T> object) {
+        List<T> fromList(final List<T> object) {
             return object;
         }
         
@@ -276,7 +276,7 @@ public class ListFunc {
 
     
     
-    public static final class RemoveNotNullsMatching<T> extends StructureFunc.RemoveNotNullsMatching<T, List<T>> {
+    public static final class RemoveNotNullsMatching<T> extends CollectionFunc.RemoveNotNullsMatching<T, List<T>> {
 
         public RemoveNotNullsMatching(final String expression, final Object... optionalExpParams) {
             super(expression, optionalExpParams);
@@ -287,7 +287,7 @@ public class ListFunc {
         }
 
         @Override
-        public List<T> fromList(final List<T> object) {
+        List<T> fromList(final List<T> object) {
             return object;
         }
         

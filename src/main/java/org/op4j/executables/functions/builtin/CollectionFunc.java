@@ -38,12 +38,12 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-class StructureFunc {
+class CollectionFunc {
 
     
     
     
-    private StructureFunc() {
+    private CollectionFunc() {
         super();
     }
 
@@ -74,7 +74,7 @@ class StructureFunc {
             return fromList(result);
         }
 
-        public abstract X fromList(final List<T> object);
+        abstract X fromList(final List<T> object);
 
     }
 
@@ -96,7 +96,7 @@ class StructureFunc {
             return fromList(result);
         }
 
-        public abstract X fromList(final List<T> object);
+        abstract X fromList(final List<T> object);
         
     }
 
@@ -119,7 +119,7 @@ class StructureFunc {
             return fromList(result);
         }
 
-        public abstract X fromList(final List<T> object);
+        abstract X fromList(final List<T> object);
         
     }
 
@@ -142,7 +142,7 @@ class StructureFunc {
             return fromList(result);
         }
 
-        public abstract X fromList(final List<T> object);
+        abstract X fromList(final List<T> object);
         
     }
 
@@ -171,7 +171,7 @@ class StructureFunc {
             return fromList(result);
         }
 
-        public abstract X fromList(final List<T> object);
+        abstract X fromList(final List<T> object);
         
     }
 
@@ -194,7 +194,7 @@ class StructureFunc {
             return fromList(result);
         }
 
-        public abstract X fromList(final List<T> object);
+        abstract X fromList(final List<T> object);
         
     }
 
@@ -223,7 +223,7 @@ class StructureFunc {
             return fromList(result);
         }
 
-        public abstract X fromList(final List<T> object);
+        abstract X fromList(final List<T> object);
         
     }
 
@@ -250,7 +250,7 @@ class StructureFunc {
             return fromList(result);
         }
 
-        public abstract X fromList(final List<T> object);
+        abstract X fromList(final List<T> object);
         
     }
     
@@ -279,7 +279,7 @@ class StructureFunc {
             return fromList(result);
         }
 
-        public abstract X fromList(final List<T> object);
+        abstract X fromList(final List<T> object);
         
     }
 
@@ -303,7 +303,7 @@ class StructureFunc {
             return fromList(result);
         }
 
-        public abstract X fromList(final List<T> object);
+        abstract X fromList(final List<T> object);
         
     }
     
@@ -337,7 +337,7 @@ class StructureFunc {
             return fromList(result);
         }
 
-        public abstract X fromList(final List<T> object);
+        abstract X fromList(final List<T> object);
         
     }
     

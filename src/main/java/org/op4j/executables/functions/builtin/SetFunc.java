@@ -48,7 +48,7 @@ public class SetFunc {
     
     
     
-    public static final class Sort<T extends Comparable<? super T>> extends StructureFunc.Sort<T, Set<T>> {
+    public static final class Sort<T extends Comparable<? super T>> extends CollectionFunc.Sort<T, Set<T>> {
 
         public Sort() {
             super();
@@ -63,7 +63,7 @@ public class SetFunc {
         }
 
         @Override
-        public Set<T> fromList(final List<T> object) {
+        Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
         }
 
@@ -73,7 +73,7 @@ public class SetFunc {
     
     
     
-    public static final class Add<T> extends StructureFunc.Add<T, Set<T>> {
+    public static final class Add<T> extends CollectionFunc.Add<T, Set<T>> {
 
         public Add(final T... newElements) {
             super(newElements);
@@ -84,7 +84,7 @@ public class SetFunc {
         }
 
         @Override
-        public Set<T> fromList(final List<T> object) {
+        Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
         }
         
@@ -94,7 +94,7 @@ public class SetFunc {
     
     
     
-    public static final class Insert<T> extends StructureFunc.Insert<T, Set<T>> {
+    public static final class Insert<T> extends CollectionFunc.Insert<T, Set<T>> {
 
         public Insert(final int position, T... newElements) {
             super(position, newElements);
@@ -105,7 +105,7 @@ public class SetFunc {
         }
 
         @Override
-        public Set<T> fromList(final List<T> object) {
+        Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
         }
         
@@ -115,7 +115,7 @@ public class SetFunc {
     
     
     
-    public static final class AddAll<T> extends StructureFunc.AddAll<T, Set<T>> {
+    public static final class AddAll<T> extends CollectionFunc.AddAll<T, Set<T>> {
 
         public AddAll(final Collection<T> collection) {
             super(collection);
@@ -126,7 +126,7 @@ public class SetFunc {
         }
 
         @Override
-        public Set<T> fromList(final List<T> object) {
+        Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
         }
         
@@ -135,7 +135,7 @@ public class SetFunc {
 
     
     
-    public static final class RemovePositions<T> extends StructureFunc.RemovePositions<T, Set<T>> {
+    public static final class RemovePositions<T> extends CollectionFunc.RemovePositions<T, Set<T>> {
 
         
         public RemovePositions(final int... positions) {
@@ -147,7 +147,7 @@ public class SetFunc {
         }
 
         @Override
-        public Set<T> fromList(final List<T> object) {
+        Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
         }
         
@@ -156,7 +156,7 @@ public class SetFunc {
 
     
     
-    public static final class RemoveValues<T> extends StructureFunc.RemoveValues<T, Set<T>> {
+    public static final class RemoveValues<T> extends CollectionFunc.RemoveValues<T, Set<T>> {
 
         public RemoveValues(final T... values) {
             super(values);
@@ -167,7 +167,7 @@ public class SetFunc {
         }
 
         @Override
-        public Set<T> fromList(final List<T> object) {
+        Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
         }
         
@@ -176,7 +176,7 @@ public class SetFunc {
 
     
     
-    public static final class RemoveMatching<T> extends StructureFunc.RemoveMatching<T, Set<T>> {
+    public static final class RemoveMatching<T> extends CollectionFunc.RemoveMatching<T, Set<T>> {
 
         public RemoveMatching(final String expression, final Object... optionalExpParams) {
             super(expression, optionalExpParams);
@@ -187,7 +187,7 @@ public class SetFunc {
         }
 
         @Override
-        public Set<T> fromList(final List<T> object) {
+        Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
         }
         
@@ -196,7 +196,7 @@ public class SetFunc {
 
     
     
-    public static final class RemoveSelected<T> extends StructureFunc.RemoveSelected<T, Set<T>> {
+    public static final class RemoveSelected<T> extends CollectionFunc.RemoveSelected<T, Set<T>> {
 
         public RemoveSelected(final ISelect<T> selector) {
             super(selector);
@@ -207,7 +207,7 @@ public class SetFunc {
         }
 
         @Override
-        public Set<T> fromList(final List<T> object) {
+        Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
         }
         
@@ -216,7 +216,7 @@ public class SetFunc {
 
     
     
-    public static final class RemoveAllExceptPositions<T> extends StructureFunc.RemoveAllExceptPositions<T, Set<T>> {
+    public static final class RemoveAllExceptPositions<T> extends CollectionFunc.RemoveAllExceptPositions<T, Set<T>> {
 
         public RemoveAllExceptPositions(final int... positions) {
             super(positions);
@@ -227,7 +227,7 @@ public class SetFunc {
         }
 
         @Override
-        public Set<T> fromList(final List<T> object) {
+        Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
         }
         
@@ -236,7 +236,7 @@ public class SetFunc {
 
     
     
-    public static final class RemoveNulls<T> extends StructureFunc.RemoveNulls<T, Set<T>> {
+    public static final class RemoveNulls<T> extends CollectionFunc.RemoveNulls<T, Set<T>> {
 
         public RemoveNulls() {
             super();
@@ -247,7 +247,7 @@ public class SetFunc {
         }
 
         @Override
-        public Set<T> fromList(final List<T> object) {
+        Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
         }
         
@@ -256,7 +256,7 @@ public class SetFunc {
 
     
     
-    public static final class RemoveNotNullsMatching<T> extends StructureFunc.RemoveNotNullsMatching<T, Set<T>> {
+    public static final class RemoveNotNullsMatching<T> extends CollectionFunc.RemoveNotNullsMatching<T, Set<T>> {
 
         public RemoveNotNullsMatching(final String expression, final Object... optionalExpParams) {
             super(expression, optionalExpParams);
@@ -267,7 +267,7 @@ public class SetFunc {
         }
 
         @Override
-        public Set<T> fromList(final List<T> object) {
+        Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
         }
         
