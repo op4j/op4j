@@ -49,7 +49,6 @@ public final class ToCalendar {
 	
 	private static final FromCalendar FROM_CALENDAR = new FromCalendar();
 	private static final FromDate FROM_DATE = new FromDate();
-	private static final FromSQLDate FROM_SQLDATE = new FromSQLDate();
 	private static final FromTimestamp FROM_TIMESTAMP = new FromTimestamp();
 	private static final FromTimeInMillis FROM_TIMEINMILLIS = new FromTimeInMillis();
 	private static final FromIntegerFieldList FROM_INTEGER_FIELD_LIST = new FromIntegerFieldList();
@@ -80,16 +79,6 @@ public final class ToCalendar {
 	
 	public static final FromDate fromDate(final int truncateField) {
 		return new FromDate(truncateField);
-	}
-	
-	
-	
-	public static final FromSQLDate fromSQLDate() {
-		return FROM_SQLDATE;
-	}
-	
-	public static final FromSQLDate fromSQLDate(final int truncateField) {
-		return new FromSQLDate(truncateField);
 	}
 	
 	
@@ -242,39 +231,6 @@ public final class ToCalendar {
 		}
 
 		public Calendar execute(final Date object) throws Exception {
-			
-			final Calendar calendar = Calendar.getInstance();
-			calendar.setTimeInMillis(object.getTime());
-			
-			if (this.truncateField == null) {
-				return calendar;
-            }
-			return DateUtils.truncate(calendar, this.truncateField.intValue());
-			
-		}
-		
-	}
-	
-
-	
-	public static final class FromSQLDate implements IFunc<Calendar, java.sql.Date> {
-	
-		private Integer truncateField = null;
-		
-		public FromSQLDate() {
-			super();
-		}
-		
-		public FromSQLDate(final int truncateField) {
-			super();
-			this.truncateField = Integer.valueOf(truncateField);
-		}
-
-		public Type<? super Calendar> getResultType() {
-			return Types.CALENDAR;
-		}
-
-		public Calendar execute(final java.sql.Date object) throws Exception {
 			
 			final Calendar calendar = Calendar.getInstance();
 			calendar.setTimeInMillis(object.getTime());
