@@ -25,8 +25,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
+import org.op4j.executables.Eval;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.MapFuncOLD;
+import org.op4j.executables.functions.builtin.MapFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.listoflist.ILevel1ListOfListElementsOperator;
 import org.op4j.operators.intf.listofmap.ILevel0ListOfMapOperator;
@@ -160,48 +161,52 @@ public class Level1ListOfMapElementsOperator<K,V> extends Operator
 
 
     public ILevel1ListOfMapElementsOperator<K, V> put(final K newKey, final V newValue) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFuncOLD.put(newKey, newValue)));
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(new MapFunc.Put<K, V>(newKey, newValue)));
     }
 
 
     public ILevel1ListOfMapElementsOperator<K, V> insert(final int position, final K newKey, final V newValue) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFuncOLD.insert(position, newKey, newValue)));
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(new MapFunc.Insert<K, V>(position, newKey, newValue)));
     }
 
 
     public ILevel1ListOfMapElementsOperator<K, V> putAll(final Map<K, V> map) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFuncOLD.putAll(map)));
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(new MapFunc.PutAll<K, V>(map)));
     }
+
 
     public ILevel1ListOfMapElementsOperator<K, V> insertAll(final int position, final Map<K, V> map) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFuncOLD.insertAll(position, map)));
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(new MapFunc.InsertAll<K, V>(position, map)));
     }
 
 
-    public ILevel1ListOfMapElementsOperator<?, ?> raw() {
+    public Level1ListOfMapElementsOperator<?, ?> raw() {
         // TODO Auto-generated method stub
         return null;
     }
 
 
     public ILevel1ListOfMapElementsOperator<K, V> removeKeys(final K... keys) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFuncOLD.removeKeys(keys)));
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(new MapFunc.RemoveKeys<K, V>(keys)));
     }
 
 
     public ILevel1ListOfMapElementsOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFuncOLD.removeMatching(expression, optionalExpParams)));
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(new MapFunc.RemoveMatching<K, V>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel1ListOfMapElementsOperator<K, V> removeSelected(final ISelect<Entry<K, V>> selector) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFuncOLD.removeSelected(selector)));
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(new MapFunc.RemoveSelected<K, V>(selector)));
     }
 
 
     public ILevel1ListOfMapElementsOperator<K, V> removeAllExceptKeys(final K... keys) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(MapFuncOLD.removeAllExceptKeys(keys)));
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(new MapFunc.RemoveAllExceptKeys<K, V>(keys)));
     }
+
+
+
 
 
 

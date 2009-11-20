@@ -211,9 +211,9 @@ public class MapFunc {
     
     public static final class RemoveMatching<K, V> implements IFunc<Map<K, V>,Map<K, V>> {
 
-        private final IEval<Boolean,Map.Entry<K, V>> eval;
+        private final IEval<Boolean,? super Map.Entry<K, V>> eval;
         
-        public RemoveMatching(final IEval<Boolean,Map.Entry<K, V>> eval) {
+        public RemoveMatching(final IEval<Boolean,? super Map.Entry<K, V>> eval) {
             super();
             this.eval = eval;
         }

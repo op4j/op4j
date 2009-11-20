@@ -24,8 +24,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
+import org.op4j.executables.Eval;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.MapFuncOLD;
+import org.op4j.executables.functions.builtin.MapFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.ILevel1MapOfMapEntriesOperator;
@@ -160,48 +161,52 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> put(final K2 newKey, final V newValue) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFuncOLD.put(newKey, newValue)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.Put<K2, V>(newKey, newValue)));
     }
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> insert(final int position, final K2 newKey, final V newValue) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFuncOLD.insert(position, newKey, newValue)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.Insert<K2, V>(position, newKey, newValue)));
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> putAll(final Map<K2,V> map) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFuncOLD.putAll(map)));
-    }
-
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> insertAll(final int position, final Map<K2,V> map) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFuncOLD.insertAll(position, map)));
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> putAll(final Map<K2, V> map) {
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.PutAll<K2, V>(map)));
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, ?, ?> raw() {
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> insertAll(final int position, final Map<K2, V> map) {
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.InsertAll<K2, V>(position, map)));
+    }
+
+
+    public Level2MapOfMapEntriesValueOperator<K1, ?, ?> raw() {
         // TODO Auto-generated method stub
         return null;
     }
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeKeys(final K2... keys) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFuncOLD.removeKeys(keys)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.RemoveKeys<K2, V>(keys)));
     }
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFuncOLD.removeMatching(expression, optionalExpParams)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.RemoveMatching<K2, V>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeSelected(final ISelect<Entry<K2,V>> selector) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFuncOLD.removeSelected(selector)));
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeSelected(final ISelect<Entry<K2, V>> selector) {
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.RemoveSelected<K2, V>(selector)));
     }
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeAllExceptKeys(final K2... keys) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(MapFuncOLD.removeAllExceptKeys(keys)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.RemoveAllExceptKeys<K2, V>(keys)));
     }
+
+
+
 
 
 
