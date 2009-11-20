@@ -56,7 +56,7 @@ public class ListFunc {
             super();
         }
 
-        public Sort(final Comparator<T> comparator) {
+        public Sort(final Comparator<? super T> comparator) {
             super(comparator);
         }
 

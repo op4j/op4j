@@ -24,11 +24,11 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.javaruntype.type.Type;
+import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ArrayFunc;
-import org.op4j.executables.functions.builtin.ArrayFuncOLD;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
@@ -80,7 +80,7 @@ public class Level0ArrayOfListOperator<T> extends Operator
 
 
     public ILevel0ArrayOfListOperator<T> distinct() {
-        return new Level0ArrayOfListOperator<T>(getTarget().execute(ArrayFuncOLD.distinct()));
+        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.Distinct<List<T>>()));
     }
 
 
@@ -228,53 +228,50 @@ public class Level0ArrayOfListOperator<T> extends Operator
 
 
     public ILevel0ArrayOfListOperator<T> removePositions(final int... positions) {
-        return new Level0ArrayOfListOperator<T>(getTarget().execute(ArrayFuncOLD.removePositions(positions)));
+        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.RemovePositions<List<T>>(positions)));
     }
 
 
     public ILevel0ArrayOfListOperator<T> removeValues(final List<T>... values) {
-        return new Level0ArrayOfListOperator<T>(getTarget().execute(ArrayFuncOLD.removeValues(values)));
+        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.RemoveValues<List<T>>(values)));
     }
 
 
     public ILevel0ArrayOfListOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ArrayOfListOperator<T>(getTarget().execute(ArrayFuncOLD.removeMatching(expression, optionalExpParams)));
+        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.RemoveMatching<List<T>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0ArrayOfListOperator<T> removeSelected(final ISelect<List<T>> selector) {
-        return new Level0ArrayOfListOperator<T>(getTarget().execute(ArrayFuncOLD.removeSelected(selector)));
+        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.RemoveSelected<List<T>>(selector)));
     }
 
 
     public ILevel0ArrayOfListOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level0ArrayOfListOperator<T>(getTarget().execute(ArrayFuncOLD.removeAllExceptPositions(positions)));
+        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.RemoveAllExceptPositions<List<T>>(positions)));
     }
 
 
 
     public ILevel0ArrayOfListOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ArrayOfListOperator<T>(getTarget().execute(ArrayFuncOLD.removeNotNullsMatching(expression, optionalExpParams)));
+        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.RemoveNotNullsMatching<List<T>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0ArrayOfListOperator<T> removeNulls() {
-        return new Level0ArrayOfListOperator<T>(getTarget().execute(ArrayFuncOLD.removeNulls()));
+        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.RemoveNulls<List<T>>()));
     }
 
     
 
-
+    @SuppressWarnings("unchecked")
     public ILevel0ArrayOfListOperator<T> sort() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.Sort()));
     }
 
-
-    public ILevel0ArrayOfListOperator<T> sort(
-            Comparator<? super List<T>> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+    @SuppressWarnings("unchecked")
+    public ILevel0ArrayOfListOperator<T> sort(final Comparator<? super List<T>> comparator) {
+        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.Sort(comparator)));
     }
 
 

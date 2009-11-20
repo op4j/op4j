@@ -24,11 +24,11 @@ import java.util.Comparator;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
+import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ArrayFunc;
-import org.op4j.executables.functions.builtin.ArrayFuncOLD;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
@@ -80,7 +80,7 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
 
     public ILevel0ArrayOfSetOperator<T> distinct() {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.distinct()));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.Distinct<Set<T>>()));
     }
 
 
@@ -234,53 +234,49 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
 
     public ILevel0ArrayOfSetOperator<T> removePositions(final int... positions) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.removePositions(positions)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemovePositions<Set<T>>(positions)));
     }
 
 
     public ILevel0ArrayOfSetOperator<T> removeValues(final Set<T>... values) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.removeValues(values)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveValues<Set<T>>(values)));
     }
 
 
     public ILevel0ArrayOfSetOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.removeMatching(expression, optionalExpParams)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveMatching<Set<T>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0ArrayOfSetOperator<T> removeSelected(final ISelect<Set<T>> selector) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.removeSelected(selector)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveSelected<Set<T>>(selector)));
     }
 
 
     public ILevel0ArrayOfSetOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.removeAllExceptPositions(positions)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveAllExceptPositions<Set<T>>(positions)));
     }
 
 
 
     public ILevel0ArrayOfSetOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.removeNotNullsMatching(expression, optionalExpParams)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveNotNullsMatching<Set<T>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0ArrayOfSetOperator<T> removeNulls() {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.removeNulls()));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveNulls<Set<T>>()));
     }
 
     
-
-
+    @SuppressWarnings("unchecked")
     public ILevel0ArrayOfSetOperator<T> sort() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.Sort()));
     }
 
-
-    public ILevel0ArrayOfSetOperator<T> sort(
-            Comparator<? super Set<T>> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+    @SuppressWarnings("unchecked")
+    public ILevel0ArrayOfSetOperator<T> sort(final Comparator<? super Set<T>> comparator) {
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.Sort(comparator)));
     }
 
 

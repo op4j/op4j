@@ -52,13 +52,13 @@ class CollectionFunc {
     
     static abstract class Sort<T extends Comparable<? super T>, X extends Collection<T>> implements IFunc<X, X> {
 
-        private Comparator<T> comparator = null;
+        private Comparator<? super T> comparator = null;
 
         public Sort() {
             super();
         }
 
-        public Sort(final Comparator<T> comparator) {
+        public Sort(final Comparator<? super T> comparator) {
             super();
             this.comparator = comparator;
         }

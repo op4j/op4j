@@ -23,11 +23,11 @@ import java.util.Collection;
 import java.util.Comparator;
 
 import org.javaruntype.type.Type;
+import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ArrayFunc;
-import org.op4j.executables.functions.builtin.ArrayFuncOLD;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
@@ -84,7 +84,7 @@ public class Level0ArrayOfArrayOperator<T> extends Operator
 
 
     public ILevel0ArrayOfArrayOperator<T> distinct() {
-        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFuncOLD.distinct()));
+        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.Distinct<T[]>()));
     }
 
 
@@ -232,38 +232,38 @@ public class Level0ArrayOfArrayOperator<T> extends Operator
 
 
     public ILevel0ArrayOfArrayOperator<T> removePositions(final int... positions) {
-        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFuncOLD.removePositions(positions)));
+        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemovePositions<T[]>(positions)));
     }
 
 
     public ILevel0ArrayOfArrayOperator<T> removeValues(final T[]... values) {
-        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFuncOLD.removeValues(values)));
+        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveValues<T[]>(values)));
     }
 
 
     public ILevel0ArrayOfArrayOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFuncOLD.removeMatching(expression, optionalExpParams)));
+        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveMatching<T[]>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0ArrayOfArrayOperator<T> removeSelected(final ISelect<T[]> selector) {
-        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFuncOLD.removeSelected(selector)));
+        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveSelected<T[]>(selector)));
     }
 
 
     public ILevel0ArrayOfArrayOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFuncOLD.removeAllExceptPositions(positions)));
+        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveAllExceptPositions<T[]>(positions)));
     }
 
 
 
     public ILevel0ArrayOfArrayOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFuncOLD.removeNotNullsMatching(expression, optionalExpParams)));
+        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveNotNullsMatching<T[]>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0ArrayOfArrayOperator<T> removeNulls() {
-        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFuncOLD.removeNulls()));
+        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveNulls<T[]>()));
     }
 
     

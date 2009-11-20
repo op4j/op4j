@@ -24,9 +24,9 @@ import java.util.Comparator;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
+import org.op4j.executables.Eval;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ArrayFunc;
-import org.op4j.executables.functions.builtin.ArrayFuncOLD;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.arrayofmap.ILevel0ArrayOfMapOperator;
 import org.op4j.operators.intf.arrayofmap.ILevel1ArrayOfMapElementsOperator;
@@ -66,7 +66,7 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
 
 
     public ILevel0ArrayOfMapOperator<K, V> distinct() {
-        return new Level0ArrayOfMapOperator<K,V>(getTarget().execute(ArrayFuncOLD.distinct()));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.Distinct<Map<K, V>>()));
     }
 
 
@@ -214,53 +214,50 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
 
 
     public ILevel0ArrayOfMapOperator<K, V> removePositions(final int... positions) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.removePositions(positions)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.RemovePositions<Map<K, V>>(positions)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeValues(final Map<K, V>... values) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.removeValues(values)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.RemoveValues<Map<K, V>>(values)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.removeMatching(expression, optionalExpParams)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.RemoveMatching<Map<K, V>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeSelected(final ISelect<Map<K, V>> selector) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.removeSelected(selector)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.RemoveSelected<Map<K, V>>(selector)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeAllExceptPositions(final int... positions) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.removeAllExceptPositions(positions)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.RemoveAllExceptPositions<Map<K, V>>(positions)));
     }
 
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.removeNotNullsMatching(expression, optionalExpParams)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.RemoveNotNullsMatching<Map<K, V>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeNulls() {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.removeNulls()));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.RemoveNulls<Map<K, V>>()));
     }
 
     
 
-
+    @SuppressWarnings("unchecked")
     public ILevel0ArrayOfMapOperator<K, V> sort() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.Sort()));
     }
 
-
-    public ILevel0ArrayOfMapOperator<K, V> sort(
-            Comparator<? super Map<K, V>> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+    @SuppressWarnings("unchecked")
+    public ILevel0ArrayOfMapOperator<K, V> sort(final Comparator<? super Map<K, V>> comparator) {
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.Sort(comparator)));
     }
 
 
