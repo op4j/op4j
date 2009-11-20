@@ -36,7 +36,7 @@ import org.op4j.executables.functions.IFunc;
  * @author Daniel Fern&aacute;ndez
  *
  */
-class ToArray {
+public final class ToArray {
     
     
     private ToArray() {

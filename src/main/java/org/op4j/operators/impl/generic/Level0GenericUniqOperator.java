@@ -33,9 +33,16 @@ import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.functions.IFunc;
-import org.op4j.executables.functions.builtin.GenericFuncOLD;
+import org.op4j.executables.functions.builtin.ListFunc;
 import org.op4j.executables.functions.conversion.Conv;
 import org.op4j.executables.functions.conversion.IConv;
+import org.op4j.executables.functions.conversion.ToArray;
+import org.op4j.executables.functions.conversion.ToList;
+import org.op4j.executables.functions.conversion.ToMap;
+import org.op4j.executables.functions.conversion.ToMapOfArray;
+import org.op4j.executables.functions.conversion.ToMapOfList;
+import org.op4j.executables.functions.conversion.ToMapOfSet;
+import org.op4j.executables.functions.conversion.ToSet;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.list.Level0ListOperator;
@@ -88,71 +95,71 @@ public class Level0GenericUniqOperator<T> extends Operator
 
 
     public ILevel0GenericMultiOperator<T> add(final T... newElements) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.uniqAdd(newElements)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFunc.Add<T>(newElements)));
     }
 
     public ILevel0GenericMultiOperator<T> insert(final int position, final T... newElements) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.uniqInsert(position, newElements)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFunc.Insert<T>(position, newElements)));
     }
 
 
     public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.uniqAddAll(collection)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFunc.AddAll<T>(collection)));
     }
 
 
     public ILevel0ArrayOperator<T> buildArray(final Type<T> arrayOf) {
-        return new Level0ArrayOperator<T>(arrayOf, getTarget().execute(GenericFuncOLD.uniqBuildArray(arrayOf)));
+        return new Level0ArrayOperator<T>(arrayOf, getTarget().execute(new ToArray.FromObject<T>(arrayOf)));
     }
 
 
     public ILevel0ListOperator<T> buildList() {
-        return new Level0ListOperator<T>(getTarget().execute(GenericFuncOLD.uniqBuildList()));
+        return new Level0ListOperator<T>(getTarget().execute(new ToList.FromObject<T>()));
     }
 
 
     public <K> ILevel0MapOperator<K, T> buildMap(final IEval<K, ? super T> keyEval) {
-        return new Level0MapOperator<K, T>(getTarget().execute(GenericFuncOLD.uniqBuildMap(keyEval)));
+        return new Level0MapOperator<K, T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMap.FromListByKeyEval<K, T>(keyEval)));
     }
 
 
     public <K, V> ILevel0MapOperator<K, V> buildMap(final IMapBuild<K, V, ? super T> mapBuild) {
-        return new Level0MapOperator<K, V>(getTarget().execute(GenericFuncOLD.uniqBuildMap(mapBuild)));
+        return new Level0MapOperator<K, V>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMap.FromListByMapBuilder<K, V, T>(mapBuild)));
     }
 
 
     public <K> ILevel0MapOfArrayOperator<K, T> buildMapOfArray(final Type<T> valueArrayOf, final IEval<K, ? super T> keyEval) {
-        return new Level0MapOfArrayOperator<K, T>(valueArrayOf, getTarget().execute(GenericFuncOLD.uniqBuildMapOfArray(valueArrayOf, keyEval)));
+        return new Level0MapOfArrayOperator<K, T>(valueArrayOf, getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfArray.FromListByKeyEval<K, T>(valueArrayOf, keyEval)));
     }
 
 
     public <K, V> ILevel0MapOfArrayOperator<K, V> buildMapOfArray(final Type<V> valueArrayOf, final IMapBuild<K, V, ? super T> mapBuild) {
-        return new Level0MapOfArrayOperator<K, V>(valueArrayOf, getTarget().execute(GenericFuncOLD.uniqBuildMapOfArray(valueArrayOf, mapBuild)));
+        return new Level0MapOfArrayOperator<K, V>(valueArrayOf, getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfArray.FromListByMapBuilder<K, V, T>(valueArrayOf, mapBuild)));
     }
 
 
     public <K> ILevel0MapOfListOperator<K, T> buildMapOfList(final IEval<K, ? super T> keyEval) {
-        return new Level0MapOfListOperator<K, T>(getTarget().execute(GenericFuncOLD.uniqBuildMapOfList(keyEval)));
+        return new Level0MapOfListOperator<K, T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfList.FromListByKeyEval<K, T>(keyEval)));
     }
 
 
     public <K, V> ILevel0MapOfListOperator<K, V> buildMapOfList(final IMapBuild<K, V, ? super T> mapBuild) {
-        return new Level0MapOfListOperator<K, V>(getTarget().execute(GenericFuncOLD.uniqBuildMapOfList(mapBuild)));
+        return new Level0MapOfListOperator<K, V>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfList.FromListByMapBuilder<K, V, T>(mapBuild)));
     }
 
 
     public <K> ILevel0MapOfSetOperator<K, T> buildMapOfSet(final IEval<K, ? super T> keyEval) {
-        return new Level0MapOfSetOperator<K, T>(getTarget().execute(GenericFuncOLD.uniqBuildMapOfSet(keyEval)));
+        return new Level0MapOfSetOperator<K, T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfSet.FromListByKeyEval<K, T>(keyEval)));
     }
 
 
     public <K, V> ILevel0MapOfSetOperator<K, V> buildMapOfSet(final IMapBuild<K, V, ? super T> mapBuild) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(GenericFuncOLD.uniqBuildMapOfSet(mapBuild)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfSet.FromListByMapBuilder<K, V, T>(mapBuild)));
     }
 
 
     public ILevel0SetOperator<T> buildSet() {
-        return new Level0SetOperator<T>(getTarget().execute(GenericFuncOLD.uniqBuildSet()));
+        return new Level0SetOperator<T>(getTarget().execute(new ToSet.FromObject<T>()));
     }
 
 

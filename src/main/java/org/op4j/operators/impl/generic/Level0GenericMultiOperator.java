@@ -29,6 +29,14 @@ import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.GenericFuncOLD;
+import org.op4j.executables.functions.builtin.ListFunc;
+import org.op4j.executables.functions.conversion.ToArray;
+import org.op4j.executables.functions.conversion.ToList;
+import org.op4j.executables.functions.conversion.ToMap;
+import org.op4j.executables.functions.conversion.ToMapOfArray;
+import org.op4j.executables.functions.conversion.ToMapOfList;
+import org.op4j.executables.functions.conversion.ToMapOfSet;
+import org.op4j.executables.functions.conversion.ToSet;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.list.Level0ListOperator;
@@ -69,91 +77,91 @@ public class Level0GenericMultiOperator<T> extends Operator
 
 
     public ILevel0GenericMultiOperator<T> add(final T... newElements) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiAdd(newElements)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.Add<T>(newElements)));
     }
 
     public ILevel0GenericMultiOperator<T> insert(final int position, final T... newElements) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiInsert(position, newElements)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.Insert<T>(position, newElements)));
     }
 
 
     public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiAddAll(collection)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.AddAll<T>(collection)));
     }
 
 
     public ILevel0ArrayOperator<T> buildArray(final Type<T> arrayOf) {
-        return new Level0ArrayOperator<T>(arrayOf, getTarget().execute(GenericFuncOLD.multiBuildArray(arrayOf)));
+        return new Level0ArrayOperator<T>(arrayOf, getTarget().execute(new ToArray.FromCollection<T>(arrayOf)));
     }
 
 
     public ILevel0ListOperator<T> buildList() {
-        return new Level0ListOperator<T>(getTarget().execute(GenericFuncOLD.multiBuildList()));
+        return new Level0ListOperator<T>(getTarget().execute(new ToList.FromCollection<T>()));
     }
 
 
     public <K> ILevel0MapOperator<K, T> buildMap(final IEval<K, ? super T> keyEval) {
-        return new Level0MapOperator<K, T>(getTarget().execute(GenericFuncOLD.multiBuildMap(keyEval)));
+        return new Level0MapOperator<K, T>(getTarget().execute(new ToMap.FromListByKeyEval<K, T>(keyEval)));
     }
 
 
     public <K, V> ILevel0MapOperator<K, V> buildMap(final IMapBuild<K, V, ? super T> mapBuild) {
-        return new Level0MapOperator<K, V>(getTarget().execute(GenericFuncOLD.multiBuildMap(mapBuild)));
+        return new Level0MapOperator<K, V>(getTarget().execute(new ToMap.FromListByMapBuilder<K, V, T>(mapBuild)));
     }
 
 
     public ILevel0MapOperator<T, T> buildMap() {
-        return new Level0MapOperator<T, T>(getTarget().execute(GenericFuncOLD.multiBuildMap()));
+        return new Level0MapOperator<T, T>(getTarget().execute(new ToMap.FromListByAlternateElements<T>()));
     }
 
 
     public <K> ILevel0MapOfArrayOperator<K, T> buildMapOfArray(final Type<T> valueArrayOf, final IEval<K, ? super T> keyEval) {
-        return new Level0MapOfArrayOperator<K, T>(valueArrayOf, getTarget().execute(GenericFuncOLD.multiBuildMapOfArray(valueArrayOf, keyEval)));
+        return new Level0MapOfArrayOperator<K, T>(valueArrayOf, getTarget().execute(new ToMapOfArray.FromListByKeyEval<K, T>(valueArrayOf, keyEval)));
     }
 
 
     public <K, V> ILevel0MapOfArrayOperator<K, V> buildMapOfArray(final Type<V> valueArrayOf, final IMapBuild<K, V, ? super T> mapBuild) {
-        return new Level0MapOfArrayOperator<K, V>(valueArrayOf, getTarget().execute(GenericFuncOLD.multiBuildMapOfArray(valueArrayOf, mapBuild)));
+        return new Level0MapOfArrayOperator<K, V>(valueArrayOf, getTarget().execute(new ToMapOfArray.FromListByMapBuilder<K, V, T>(valueArrayOf, mapBuild)));
     }
 
 
-    public ILevel0MapOfArrayOperator<T, T> buildMapOfArray(final Type<T> arrayOf) {
-        return new Level0MapOfArrayOperator<T, T>(arrayOf, getTarget().execute(GenericFuncOLD.multiBuildMapOfArray(arrayOf)));
+    public ILevel0MapOfArrayOperator<T, T> buildMapOfArray(final Type<T> valueArrayOf) {
+        return new Level0MapOfArrayOperator<T, T>(valueArrayOf, getTarget().execute(new ToMapOfArray.FromListByAlternateElements<T>(valueArrayOf)));
     }
 
 
     public <K> ILevel0MapOfListOperator<K, T> buildMapOfList(final IEval<K, ? super T> keyEval) {
-        return new Level0MapOfListOperator<K, T>(getTarget().execute(GenericFuncOLD.multiBuildMapOfList(keyEval)));
+        return new Level0MapOfListOperator<K, T>(getTarget().execute(new ToMapOfList.FromListByKeyEval<K, T>(keyEval)));
     }
 
 
     public <K, V> ILevel0MapOfListOperator<K, V> buildMapOfList(final IMapBuild<K, V, ? super T> mapBuild) {
-        return new Level0MapOfListOperator<K, V>(getTarget().execute(GenericFuncOLD.multiBuildMapOfList(mapBuild)));
+        return new Level0MapOfListOperator<K, V>(getTarget().execute(new ToMapOfList.FromListByMapBuilder<K, V, T>(mapBuild)));
     }
 
 
     public ILevel0MapOfListOperator<T, T> buildMapOfList() {
-        return new Level0MapOfListOperator<T, T>(getTarget().execute(GenericFuncOLD.multiBuildMapOfList()));
+        return new Level0MapOfListOperator<T, T>(getTarget().execute(new ToMapOfList.FromListByAlternateElements<T>()));
     }
 
 
     public <K> ILevel0MapOfSetOperator<K, T> buildMapOfSet(final IEval<K, ? super T> keyEval) {
-        return new Level0MapOfSetOperator<K, T>(getTarget().execute(GenericFuncOLD.multiBuildMapOfSet(keyEval)));
+        return new Level0MapOfSetOperator<K, T>(getTarget().execute(new ToMapOfSet.FromListByKeyEval<K, T>(keyEval)));
     }
 
 
     public <K, V> ILevel0MapOfSetOperator<K, V> buildMapOfSet(final IMapBuild<K, V, ? super T> mapBuild) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(GenericFuncOLD.multiBuildMapOfSet(mapBuild)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new ToMapOfSet.FromListByMapBuilder<K, V, T>(mapBuild)));
     }
 
 
     public ILevel0MapOfSetOperator<T, T> buildMapOfSet() {
-        return new Level0MapOfSetOperator<T, T>(getTarget().execute(GenericFuncOLD.multiBuildMapOfSet()));
+        return new Level0MapOfSetOperator<T, T>(getTarget().execute(new ToMapOfSet.FromListByAlternateElements<T>()));
     }
 
 
     public ILevel0SetOperator<T> buildSet() {
-        return new Level0SetOperator<T>(getTarget().execute(GenericFuncOLD.multiBuildSet()));
+        return new Level0SetOperator<T>(getTarget().execute(new ToSet.FromCollection<T>()));
     }
 
 

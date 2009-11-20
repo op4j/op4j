@@ -88,9 +88,9 @@ public class ToMapOfSet {
     
     public static final class FromArrayByMapBuilder<K, V, T> implements IFunc<Map<K, Set<V>>, T[]> {
 
-        private final IMapBuild<K, V, T> mapBuilder;
+        private final IMapBuild<K, V, ? super T> mapBuilder;
         
-        public FromArrayByMapBuilder(final IMapBuild<K, V, T> mapBuilder) {
+        public FromArrayByMapBuilder(final IMapBuild<K, V, ? super T> mapBuilder) {
             super();
             this.mapBuilder = mapBuilder;
         }
@@ -190,9 +190,9 @@ public class ToMapOfSet {
     
     public static final class FromListByMapBuilder<K, V, T> implements IFunc<Map<K, Set<V>>, List<T>> {
 
-        private final IMapBuild<K, V, T> mapBuilder;
+        private final IMapBuild<K, V, ? super T> mapBuilder;
         
-        public FromListByMapBuilder(final IMapBuild<K, V, T> mapBuilder) {
+        public FromListByMapBuilder(final IMapBuild<K, V, ? super T> mapBuilder) {
             super();
             this.mapBuilder = mapBuilder;
         }
@@ -291,9 +291,9 @@ public class ToMapOfSet {
     
     public static final class FromSetByMapBuilder<K, V, T> implements IFunc<Map<K, Set<V>>, Set<T>> {
 
-        private final IMapBuild<K, V, T> mapBuilder;
+        private final IMapBuild<K, V, ? super T> mapBuilder;
         
-        public FromSetByMapBuilder(final IMapBuild<K, V, T> mapBuilder) {
+        public FromSetByMapBuilder(final IMapBuild<K, V, ? super T> mapBuilder) {
             super();
             this.mapBuilder = mapBuilder;
         }

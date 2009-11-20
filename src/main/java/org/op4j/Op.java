@@ -51,6 +51,7 @@ import org.op4j.executables.functions.conversion.ToDouble;
 import org.op4j.executables.functions.conversion.ToInteger;
 import org.op4j.executables.functions.conversion.ToLong;
 import org.op4j.executables.functions.conversion.ToMap;
+import org.op4j.executables.functions.conversion.ToMapOfArray;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.impl.arrayoflist.Level0ArrayOfListOperator;
@@ -640,6 +641,23 @@ public final class Op {
         System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFunc.Insert<Integer>(2, 1492)).exec(new ArrayFunc.RemoveMatching<Integer>(Eval.booleanExp("#target < 1000"))).exec(new ArrayFunc.Sort<Integer>()).get()));
         
         System.out.println(Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArray(Types.STRING).get()).exec(new ToMap.FromArrayByKeyEval<Integer,String>(Eval.integerExp("length()"))).get());
+
+        final Map<Integer,String[]> greetingsByLength = 
+        	Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArray(Types.STRING).get()).exec(new ToMapOfArray.FromArrayByKeyEval<Integer, String>(Types.STRING, Eval.integerExp("length()"))).get();
+        System.out.println("*** MAP: ");
+        for (Map.Entry<Integer,String[]> entry : greetingsByLength.entrySet()) {
+        	System.out.println(entry.getKey() + " : " + Arrays.asList(entry.getValue()));
+        }
+        System.out.println("***");
+
+
+        System.out.println(Op.on("hello").add("goodbye"));
+        System.out.println(Op.on("hello").buildList().get());
+        System.out.println(printArray(Op.on("hello").buildArray(Types.STRING).get()));
+        System.out.println(Op.on("hello").buildMap(Eval.integerExp("length()")).get());
+        System.out.println(Op.on("hello").buildMapOfList(Eval.integerExp("length()")).get());
+        System.out.println(Op.onAll(12, "hello", 14, "goodbye").buildMapOfList().get());
+        
     }
     
     

@@ -20,9 +20,9 @@
 
 package org.op4j.executables.functions.conversion;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -51,33 +51,51 @@ public class ToMapOfArray {
 
     
     
+    @SuppressWarnings("unchecked")
+	protected static final <K,V> Map<K, V[]> createFromMapOfList(final Type<V> type, final Map<K, List<V>> mapOfList) {
+        final Map<K, V[]> result = new LinkedHashMap<K, V[]>();
+        for (final Map.Entry<K, List<V>> listEntry : mapOfList.entrySet()) {
+        	final K key = listEntry.getKey();
+        	final List<V> listValue = listEntry.getValue();
+            final V[] arrayValue = (V[]) Array.newInstance(type.getRawClass(), listValue.size());
+            result.put(key, listValue.toArray(arrayValue));
+        }
+        return result;
+    }
     
     
-    public static final class FromArrayByKeyEval<K, T> implements IFunc<Map<K, Set<T>>, T[]> {
+    
+    
+    public static final class FromArrayByKeyEval<K, T> implements IFunc<Map<K, T[]>, T[]> {
 
         private final IEval<K,? super T> eval;
+        private final Type<T> type;
         
-        public FromArrayByKeyEval(final IEval<K,? super T> eval) {
+        public FromArrayByKeyEval(final Type<T> type, final IEval<K,? super T> eval) {
             super();
+            this.type = type;
             this.eval = eval;
         }
         
-        public Type<? super Map<K, Set<T>>> getResultType() {
+        public Type<? super Map<K, T[]>> getResultType() {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K, Set<T>> execute(final T[] object) throws Exception {
-            final Map<K, Set<T>> result = new LinkedHashMap<K, Set<T>>();
+		public Map<K, T[]> execute(final T[] object) throws Exception {
+        	
+            final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
             for (final T element: object) {
                 final K key = this.eval.execute(element);
-                Set<T> value = result.get(key);
+                List<T> value = result.get(key);
                 if (value == null) {
-                    value = new LinkedHashSet<T>();
+                    value = new ArrayList<T>();
                     result.put(key, value);
                 }
                 value.add(element);
             }
-            return result;
+            
+            return ToMapOfArray.createFromMapOfList(this.type, result);
+            
         }
         
     }
@@ -86,31 +104,36 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromArrayByMapBuilder<K, V, T> implements IFunc<Map<K, Set<V>>, T[]> {
+    public static final class FromArrayByMapBuilder<K, V, T> implements IFunc<Map<K, V[]>, T[]> {
 
-        private final IMapBuild<K, V, T> mapBuilder;
+        private final IMapBuild<K, V, ? super T> mapBuilder;
+        private final Type<V> type;
         
-        public FromArrayByMapBuilder(final IMapBuild<K, V, T> mapBuilder) {
+        public FromArrayByMapBuilder(final Type<V> type, final IMapBuild<K, V, ? super T> mapBuilder) {
             super();
+            this.type = type;
             this.mapBuilder = mapBuilder;
         }
         
-        public Type<? super Map<K, Set<V>>> getResultType() {
+        public Type<? super Map<K, V[]>> getResultType() {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K, Set<V>> execute(final T[] object) throws Exception {
-            final Map<K, Set<V>> result = new LinkedHashMap<K, Set<V>>();
+        public Map<K, V[]> execute(final T[] object) throws Exception {
+        	
+            final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
                 final K key = this.mapBuilder.getKey(element);
-                Set<V> value = result.get(key);
+                List<V> value = result.get(key);
                 if (value == null) {
-                    value = new LinkedHashSet<V>();
+                    value = new ArrayList<V>();
                     result.put(key, value);
                 }
                 value.add(this.mapBuilder.getValue(element));
             }
-            return result;
+            
+            return ToMapOfArray.createFromMapOfList(this.type, result);
+            
         }
         
     }
@@ -119,31 +142,38 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromArrayByAlternateElements<T> implements IFunc<Map<T, Set<T>>, T[]> {
+    public static final class FromArrayByAlternateElements<T> implements IFunc<Map<T, T[]>, T[]> {
 
-        public FromArrayByAlternateElements() {
+        private final Type<T> type;
+    	
+        public FromArrayByAlternateElements(final Type<T> type) {
             super();
+            this.type = type;
         }
         
-        public Type<? super Map<T, Set<T>>> getResultType() {
+        public Type<? super Map<T, T[]>> getResultType() {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<T, Set<T>> execute(final T[] object) throws Exception {
+        public Map<T, T[]> execute(final T[] object) throws Exception {
+        	
             if (object.length % 2 != 0) {
                 throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");
             }
-            final Map<T, Set<T>> result = new LinkedHashMap<T, Set<T>>();
+            
+            final Map<T, List<T>> result = new LinkedHashMap<T, List<T>>();
             for (int i = 0, n = object.length - 1; i < n; i += 2) {
                 final T key = object[i];
-                Set<T> value = result.get(key);
+                List<T> value = result.get(key);
                 if (value == null) {
-                    value = new LinkedHashSet<T>();
+                    value = new ArrayList<T>();
                     result.put(key, value);
                 }
                 value.add(object[i + 1]);
             }
-            return result;
+            
+            return ToMapOfArray.createFromMapOfList(this.type, result);
+            
         }
         
     }
@@ -155,31 +185,36 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromListByKeyEval<K, T> implements IFunc<Map<K, Set<T>>, List<T>> {
+    public static final class FromListByKeyEval<K, T> implements IFunc<Map<K, T[]>, List<T>> {
 
         private final IEval<K,? super T> eval;
+        private final Type<T> type;
         
-        public FromListByKeyEval(final IEval<K,? super T> eval) {
+        public FromListByKeyEval(final Type<T> type, final IEval<K,? super T> eval) {
             super();
+            this.type = type;
             this.eval = eval;
         }
         
-        public Type<? super Map<K, Set<T>>> getResultType() {
+        public Type<? super Map<K, T[]>> getResultType() {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K, Set<T>> execute(final List<T> object) throws Exception {
-            final Map<K, Set<T>> result = new LinkedHashMap<K, Set<T>>();
+        public Map<K, T[]> execute(final List<T> object) throws Exception {
+        	
+            final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
             for (final T element: object) {
                 final K key = this.eval.execute(element);
-                Set<T> value = result.get(key);
+                List<T> value = result.get(key);
                 if (value == null) {
-                    value = new LinkedHashSet<T>();
+                    value = new ArrayList<T>();
                     result.put(key, value);
                 }
                 value.add(element);
             }
-            return result;
+            
+            return ToMapOfArray.createFromMapOfList(this.type, result);
+            
         }
         
     }
@@ -188,31 +223,36 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromListByMapBuilder<K, V, T> implements IFunc<Map<K, Set<V>>, List<T>> {
+    public static final class FromListByMapBuilder<K, V, T> implements IFunc<Map<K, V[]>, List<T>> {
 
-        private final IMapBuild<K, V, T> mapBuilder;
+        private final IMapBuild<K, V, ? super T> mapBuilder;
+        private final Type<V> type;
         
-        public FromListByMapBuilder(final IMapBuild<K, V, T> mapBuilder) {
+        public FromListByMapBuilder(final Type<V> type, final IMapBuild<K, V, ? super T> mapBuilder) {
             super();
+            this.type = type;
             this.mapBuilder = mapBuilder;
         }
         
-        public Type<? super Map<K, Set<V>>> getResultType() {
+        public Type<? super Map<K, V[]>> getResultType() {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K, Set<V>> execute(final List<T> object) throws Exception {
-            final Map<K, Set<V>> result = new LinkedHashMap<K, Set<V>>();
+        public Map<K, V[]> execute(final List<T> object) throws Exception {
+        	
+            final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
                 final K key = this.mapBuilder.getKey(element);
-                Set<V> value = result.get(key);
+                List<V> value = result.get(key);
                 if (value == null) {
-                    value = new LinkedHashSet<V>();
+                    value = new ArrayList<V>();
                     result.put(key, value);
                 }
                 value.add(this.mapBuilder.getValue(element));
             }
-            return result;
+            
+            return ToMapOfArray.createFromMapOfList(this.type, result);
+            
         }
         
     }
@@ -221,31 +261,38 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromListByAlternateElements<T> implements IFunc<Map<T, Set<T>>, List<T>> {
+    public static final class FromListByAlternateElements<T> implements IFunc<Map<T, T[]>, List<T>> {
 
-        public FromListByAlternateElements() {
+        private final Type<T> type;
+    	
+        public FromListByAlternateElements(final Type<T> type) {
             super();
+            this.type = type;
         }
         
-        public Type<? super Map<T, Set<T>>> getResultType() {
+        public Type<? super Map<T, T[]>> getResultType() {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<T, Set<T>> execute(final List<T> object) throws Exception {
+        public Map<T, T[]> execute(final List<T> object) throws Exception {
+        	
             if (object.size() % 2 != 0) {
                 throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");
             }
-            final Map<T, Set<T>> result = new LinkedHashMap<T, Set<T>>();
+            
+            final Map<T, List<T>> result = new LinkedHashMap<T,List<T>>();
             for (int i = 0, n = object.size() - 1; i < n; i += 2) {
                 final T key = object.get(i);
-                Set<T> value = result.get(key);
+                List<T> value = result.get(key);
                 if (value == null) {
-                    value = new LinkedHashSet<T>();
+                    value = new ArrayList<T>();
                     result.put(key, value);
                 }
                 value.add(object.get(i + 1));
             }
-            return result;
+            
+            return ToMapOfArray.createFromMapOfList(this.type, result);
+            
         }
         
     }
@@ -256,31 +303,36 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromSetByKeyEval<K, T> implements IFunc<Map<K, Set<T>>, Set<T>> {
+    public static final class FromSetByKeyEval<K, T> implements IFunc<Map<K, T[]>, Set<T>> {
 
         private final IEval<K,? super T> eval;
+        private final Type<T> type;
         
-        public FromSetByKeyEval(final IEval<K,? super T> eval) {
+        public FromSetByKeyEval(final Type<T> type, final IEval<K,? super T> eval) {
             super();
+            this.type = type;
             this.eval = eval;
         }
         
-        public Type<? super Map<K, Set<T>>> getResultType() {
+        public Type<? super Map<K, T[]>> getResultType() {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K, Set<T>> execute(final Set<T> object) throws Exception {
-            final Map<K, Set<T>> result = new LinkedHashMap<K, Set<T>>();
+        public Map<K, T[]> execute(final Set<T> object) throws Exception {
+        	
+            final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
             for (final T element: object) {
                 final K key = this.eval.execute(element);
-                Set<T> value = result.get(key);
+                List<T> value = result.get(key);
                 if (value == null) {
-                    value = new LinkedHashSet<T>();
+                    value = new ArrayList<T>();
                     result.put(key, value);
                 }
                 value.add(element);
             }
-            return result;
+            
+            return ToMapOfArray.createFromMapOfList(this.type, result);
+
         }
         
     }
@@ -289,31 +341,36 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromSetByMapBuilder<K, V, T> implements IFunc<Map<K, Set<V>>, Set<T>> {
+    public static final class FromSetByMapBuilder<K, V, T> implements IFunc<Map<K, V[]>, Set<T>> {
 
-        private final IMapBuild<K, V, T> mapBuilder;
+        private final IMapBuild<K, V, ? super T> mapBuilder;
+        private final Type<V> type;
         
-        public FromSetByMapBuilder(final IMapBuild<K, V, T> mapBuilder) {
+        public FromSetByMapBuilder(final Type<V> type, final IMapBuild<K, V, ? super T> mapBuilder) {
             super();
+            this.type = type;
             this.mapBuilder = mapBuilder;
         }
         
-        public Type<? super Map<K, Set<V>>> getResultType() {
+        public Type<? super Map<K, V[]>> getResultType() {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K, Set<V>> execute(final Set<T> object) throws Exception {
-            final Map<K, Set<V>> result = new LinkedHashMap<K, Set<V>>();
+        public Map<K, V[]> execute(final Set<T> object) throws Exception {
+        	
+            final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
                 final K key = this.mapBuilder.getKey(element);
-                Set<V> value = result.get(key);
+                List<V> value = result.get(key);
                 if (value == null) {
-                    value = new LinkedHashSet<V>();
+                    value = new ArrayList<V>();
                     result.put(key, value);
                 }
                 value.add(this.mapBuilder.getValue(element));
             }
-            return result;
+            
+            return ToMapOfArray.createFromMapOfList(this.type, result);
+            
         }
         
     }
@@ -322,32 +379,39 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromSetByAlternateElements<T> implements IFunc<Map<T, Set<T>>, Set<T>> {
+    public static final class FromSetByAlternateElements<T> implements IFunc<Map<T, T[]>, Set<T>> {
 
-        public FromSetByAlternateElements() {
+        private final Type<T> type;
+    	
+        public FromSetByAlternateElements(final Type<T> type) {
             super();
+            this.type = type;
         }
         
-        public Type<? super Map<T, Set<T>>> getResultType() {
+        public Type<? super Map<T, T[]>> getResultType() {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<T, Set<T>> execute(final Set<T> object) throws Exception {
+        public Map<T, T[]> execute(final Set<T> object) throws Exception {
+        	
             if (object.size() % 2 != 0) {
                 throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");
             }
+            
             final List<T> objectAsList = new ArrayList<T>(object);
-            final Map<T, Set<T>> result = new LinkedHashMap<T, Set<T>>();
+            final Map<T, List<T>> result = new LinkedHashMap<T, List<T>>();
             for (int i = 0, n = objectAsList.size() - 1; i < n; i += 2) {
                 final T key = objectAsList.get(i);
-                Set<T> value = result.get(key);
+                List<T> value = result.get(key);
                 if (value == null) {
-                    value = new LinkedHashSet<T>();
+                    value = new ArrayList<T>();
                     result.put(key, value);
                 }
                 value.add(objectAsList.get(i + 1));
             }
-            return result;
+            
+            return ToMapOfArray.createFromMapOfList(this.type, result);
+            
         }
         
     }
