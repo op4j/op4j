@@ -26,6 +26,7 @@ import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.builtin.ArrayFunc;
 import org.op4j.executables.functions.builtin.ArrayFuncOLD;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
@@ -58,17 +59,17 @@ public class Level0ArrayOperator<T> extends Operator implements
 
     
     public ILevel0ArrayOperator<T> add(final T... newElements) {
-        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFuncOLD.add(newElements)));
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.Add<T>(newElements)));
     }
 
 
     public ILevel0ArrayOperator<T> insert(final int position, final T... newElements) {
-        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFuncOLD.insert(position, newElements)));
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.Insert<T>(position, newElements)));
     }
 
 
     public ILevel0ArrayOperator<T> addAll(final Collection<T> collection) {
-        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(ArrayFuncOLD.addAll(collection)));
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.AddAll<T>(collection)));
     }
 
     public ILevel0ArrayOperator<T> distinct() {

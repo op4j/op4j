@@ -25,6 +25,7 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.builtin.ArrayFunc;
 import org.op4j.executables.functions.builtin.ArrayFuncOLD;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.arrayofmap.ILevel0ArrayOfMapOperator;
@@ -50,17 +51,17 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
 
 
     public ILevel0ArrayOfMapOperator<K, V> add(final Map<K, V>... newElements) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.add(newElements)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.Add<Map<K, V>>(newElements)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> insert(final int position, final Map<K, V>... newElements) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.insert(position, newElements)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.Insert<Map<K, V>>(position, newElements)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> addAll(final Collection<Map<K, V>> collection) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(ArrayFuncOLD.addAll(collection)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.AddAll<Map<K, V>>(collection)));
     }
 
 

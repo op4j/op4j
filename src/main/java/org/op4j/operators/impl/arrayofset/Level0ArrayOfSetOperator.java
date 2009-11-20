@@ -27,6 +27,7 @@ import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.builtin.ArrayFunc;
 import org.op4j.executables.functions.builtin.ArrayFuncOLD;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
@@ -64,17 +65,17 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
 
     public ILevel0ArrayOfSetOperator<T> add(final Set<T>... newElements) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.add(newElements)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.Add<Set<T>>(newElements)));
     }
 
 
     public ILevel0ArrayOfSetOperator<T> insert(final int position, final Set<T>... newElements) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.insert(position, newElements)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.Insert<Set<T>>(position, newElements)));
     }
 
 
     public ILevel0ArrayOfSetOperator<T> addAll(final Collection<Set<T>> collection) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(ArrayFuncOLD.addAll(collection)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.AddAll<Set<T>>(collection)));
     }
 
 

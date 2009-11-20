@@ -27,6 +27,7 @@ import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.builtin.ArrayFunc;
 import org.op4j.executables.functions.builtin.ArrayFuncOLD;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
@@ -64,17 +65,17 @@ public class Level0ArrayOfListOperator<T> extends Operator
 
 
     public ILevel0ArrayOfListOperator<T> add(final List<T>... newElements) {
-        return new Level0ArrayOfListOperator<T>(getTarget().execute(ArrayFuncOLD.add(newElements)));
+        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.Add<List<T>>(newElements)));
     }
 
 
     public ILevel0ArrayOfListOperator<T> insert(final int position, final List<T>... newElements) {
-        return new Level0ArrayOfListOperator<T>(getTarget().execute(ArrayFuncOLD.insert(position, newElements)));
+        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.Insert<List<T>>(position, newElements)));
     }
 
 
     public ILevel0ArrayOfListOperator<T> addAll(final Collection<List<T>> collection) {
-        return new Level0ArrayOfListOperator<T>(getTarget().execute(ArrayFuncOLD.addAll(collection)));
+        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.AddAll<List<T>>(collection)));
     }
 
 

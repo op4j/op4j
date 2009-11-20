@@ -25,10 +25,10 @@ import java.util.List;
 import org.javaruntype.type.Type;
 import org.op4j.exceptions.EmptyTargetException;
 import org.op4j.exceptions.NonUniqueTargetException;
+import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.GenericFuncOLD;
 import org.op4j.executables.functions.builtin.ListFunc;
 import org.op4j.executables.functions.conversion.ToArray;
 import org.op4j.executables.functions.conversion.ToList;
@@ -184,37 +184,37 @@ public class Level0GenericMultiOperator<T> extends Operator
 
 
     public ILevel0GenericMultiOperator<T> removePositions(final int... positions) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiRemovePositions(positions)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemovePositions<T>(positions)));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeValues(final T... values) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiRemoveValues(values)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveValues<T>(values)));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiRemoveMatching(expression, optionalExpParams)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeSelected(final ISelect<T> selector) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiRemoveSelected(selector)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveSelected<T>(selector)));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiRemoveAllExceptPositions(positions)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveAllExceptPositions<T>(positions)));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiRemoveNotNullsMatching(expression, optionalExpParams)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveNotNullsMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeNulls() {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(GenericFuncOLD.multiRemoveNulls()));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveNulls<T>()));
     }
 
 
