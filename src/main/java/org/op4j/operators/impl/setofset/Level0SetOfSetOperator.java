@@ -24,10 +24,11 @@ import java.util.Comparator;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
+import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.SetFuncOLD;
+import org.op4j.executables.functions.builtin.SetFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
@@ -64,17 +65,17 @@ public class Level0SetOfSetOperator<T> extends Operator
 
 
     public ILevel0SetOfSetOperator<T> add(final Set<T>... newElements) {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.add(newElements)));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(new SetFunc.Add<Set<T>>(newElements)));
     }
 
 
     public ILevel0SetOfSetOperator<T> insert(final int position, final Set<T>... newElements) {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.insert(position, newElements)));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(new SetFunc.Insert<Set<T>>(position, newElements)));
     }
 
 
     public ILevel0SetOfSetOperator<T> addAll(final Collection<Set<T>> collection) {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.addAll(collection)));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(new SetFunc.AddAll<Set<T>>(collection)));
     }
 
 
@@ -228,52 +229,51 @@ public class Level0SetOfSetOperator<T> extends Operator
 
 
     public ILevel0SetOfSetOperator<T> removePositions(final int... positions) {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.removePositions(positions)));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(new SetFunc.RemovePositions<Set<T>>(positions)));
     }
 
 
     public ILevel0SetOfSetOperator<T> removeValues(final Set<T>... values) {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.removeValues(values)));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(new SetFunc.RemoveValues<Set<T>>(values)));
     }
 
 
     public ILevel0SetOfSetOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.removeMatching(expression, optionalExpParams)));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(new SetFunc.RemoveMatching<Set<T>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0SetOfSetOperator<T> removeSelected(final ISelect<Set<T>> selector) {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.removeSelected(selector)));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(new SetFunc.RemoveSelected<Set<T>>(selector)));
     }
 
 
     public ILevel0SetOfSetOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.removeAllExceptPositions(positions)));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(new SetFunc.RemoveAllExceptPositions<Set<T>>(positions)));
     }
 
 
-
     public ILevel0SetOfSetOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.removeNotNullsMatching(expression, optionalExpParams)));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(new SetFunc.RemoveNotNullsMatching<Set<T>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0SetOfSetOperator<T> removeNulls() {
-        return new Level0SetOfSetOperator<T>(getTarget().execute(SetFuncOLD.removeNulls()));
+        return new Level0SetOfSetOperator<T>(getTarget().execute(new SetFunc.RemoveNulls<Set<T>>()));
     }
 
     
 
 
+    @SuppressWarnings("unchecked")
     public ILevel0SetOfSetOperator<T> sort() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0SetOfSetOperator<T>(getTarget().execute(new SetFunc.Sort()));
     }
 
 
-    public ILevel0SetOfSetOperator<T> sort(Comparator<? super Set<T>> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+    @SuppressWarnings("unchecked")
+    public ILevel0SetOfSetOperator<T> sort(final Comparator<? super Set<T>> comparator) {
+        return new Level0SetOfSetOperator<T>(getTarget().execute(new SetFunc.Sort(comparator)));
     }
 
 

@@ -25,10 +25,11 @@ import java.util.List;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
+import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.SetFuncOLD;
+import org.op4j.executables.functions.builtin.SetFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
@@ -65,17 +66,17 @@ public class Level0SetOfListOperator<T> extends Operator
 
 
     public ILevel0SetOfListOperator<T> add(final List<T>... newElements) {
-        return new Level0SetOfListOperator<T>(getTarget().execute(SetFuncOLD.add(newElements)));
+        return new Level0SetOfListOperator<T>(getTarget().execute(new SetFunc.Add<List<T>>(newElements)));
     }
 
 
     public ILevel0SetOfListOperator<T> insert(final int position, final List<T>... newElements) {
-        return new Level0SetOfListOperator<T>(getTarget().execute(SetFuncOLD.insert(position, newElements)));
+        return new Level0SetOfListOperator<T>(getTarget().execute(new SetFunc.Insert<List<T>>(position, newElements)));
     }
 
 
     public ILevel0SetOfListOperator<T> addAll(final Collection<List<T>> collection) {
-        return new Level0SetOfListOperator<T>(getTarget().execute(SetFuncOLD.addAll(collection)));
+        return new Level0SetOfListOperator<T>(getTarget().execute(new SetFunc.AddAll<List<T>>(collection)));
     }
 
 
@@ -229,53 +230,51 @@ public class Level0SetOfListOperator<T> extends Operator
 
 
     public ILevel0SetOfListOperator<T> removePositions(final int... positions) {
-        return new Level0SetOfListOperator<T>(getTarget().execute(SetFuncOLD.removePositions(positions)));
+        return new Level0SetOfListOperator<T>(getTarget().execute(new SetFunc.RemovePositions<List<T>>(positions)));
     }
 
 
     public ILevel0SetOfListOperator<T> removeValues(final List<T>... values) {
-        return new Level0SetOfListOperator<T>(getTarget().execute(SetFuncOLD.removeValues(values)));
+        return new Level0SetOfListOperator<T>(getTarget().execute(new SetFunc.RemoveValues<List<T>>(values)));
     }
 
 
     public ILevel0SetOfListOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0SetOfListOperator<T>(getTarget().execute(SetFuncOLD.removeMatching(expression, optionalExpParams)));
+        return new Level0SetOfListOperator<T>(getTarget().execute(new SetFunc.RemoveMatching<List<T>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0SetOfListOperator<T> removeSelected(final ISelect<List<T>> selector) {
-        return new Level0SetOfListOperator<T>(getTarget().execute(SetFuncOLD.removeSelected(selector)));
+        return new Level0SetOfListOperator<T>(getTarget().execute(new SetFunc.RemoveSelected<List<T>>(selector)));
     }
 
 
     public ILevel0SetOfListOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level0SetOfListOperator<T>(getTarget().execute(SetFuncOLD.removeAllExceptPositions(positions)));
+        return new Level0SetOfListOperator<T>(getTarget().execute(new SetFunc.RemoveAllExceptPositions<List<T>>(positions)));
     }
 
 
-
     public ILevel0SetOfListOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0SetOfListOperator<T>(getTarget().execute(SetFuncOLD.removeNotNullsMatching(expression, optionalExpParams)));
+        return new Level0SetOfListOperator<T>(getTarget().execute(new SetFunc.RemoveNotNullsMatching<List<T>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0SetOfListOperator<T> removeNulls() {
-        return new Level0SetOfListOperator<T>(getTarget().execute(SetFuncOLD.removeNulls()));
+        return new Level0SetOfListOperator<T>(getTarget().execute(new SetFunc.RemoveNulls<List<T>>()));
     }
 
     
 
 
+    @SuppressWarnings("unchecked")
     public ILevel0SetOfListOperator<T> sort() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0SetOfListOperator<T>(getTarget().execute(new SetFunc.Sort()));
     }
 
 
-    public ILevel0SetOfListOperator<T> sort(
-            Comparator<? super List<T>> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+    @SuppressWarnings("unchecked")
+    public ILevel0SetOfListOperator<T> sort(final Comparator<? super List<T>> comparator) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(new SetFunc.Sort(comparator)));
     }
 
 

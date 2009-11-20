@@ -25,8 +25,9 @@ import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
+import org.op4j.executables.Eval;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.SetFuncOLD;
+import org.op4j.executables.functions.builtin.SetFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
@@ -51,17 +52,17 @@ public class Level0SetOfMapOperator<K,V> extends Operator
 
 
     public ILevel0SetOfMapOperator<K, V> add(final Map<K, V>... newElements) {
-        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFuncOLD.add(newElements)));
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.Add<Map<K, V>>(newElements)));
     }
 
 
     public ILevel0SetOfMapOperator<K, V> insert(final int position, final Map<K, V>... newElements) {
-        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFuncOLD.insert(position, newElements)));
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.Insert<Map<K, V>>(position, newElements)));
     }
 
 
     public ILevel0SetOfMapOperator<K, V> addAll(final Collection<Map<K, V>> collection) {
-        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFuncOLD.addAll(collection)));
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.AddAll<Map<K, V>>(collection)));
     }
 
 
@@ -211,53 +212,51 @@ public class Level0SetOfMapOperator<K,V> extends Operator
 
 
     public ILevel0SetOfMapOperator<K, V> removePositions(final int... positions) {
-        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFuncOLD.removePositions(positions)));
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.RemovePositions<Map<K, V>>(positions)));
     }
 
 
     public ILevel0SetOfMapOperator<K, V> removeValues(final Map<K, V>... values) {
-        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFuncOLD.removeValues(values)));
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.RemoveValues<Map<K, V>>(values)));
     }
 
 
     public ILevel0SetOfMapOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFuncOLD.removeMatching(expression, optionalExpParams)));
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.RemoveMatching<Map<K, V>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0SetOfMapOperator<K, V> removeSelected(final ISelect<Map<K, V>> selector) {
-        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFuncOLD.removeSelected(selector)));
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.RemoveSelected<Map<K, V>>(selector)));
     }
 
 
     public ILevel0SetOfMapOperator<K, V> removeAllExceptPositions(final int... positions) {
-        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFuncOLD.removeAllExceptPositions(positions)));
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.RemoveAllExceptPositions<Map<K, V>>(positions)));
     }
 
 
-
     public ILevel0SetOfMapOperator<K, V> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFuncOLD.removeNotNullsMatching(expression, optionalExpParams)));
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.RemoveNotNullsMatching<Map<K, V>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0SetOfMapOperator<K, V> removeNulls() {
-        return new Level0SetOfMapOperator<K, V>(getTarget().execute(SetFuncOLD.removeNulls()));
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.RemoveNulls<Map<K, V>>()));
     }
 
     
 
 
+    @SuppressWarnings("unchecked")
     public ILevel0SetOfMapOperator<K, V> sort() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.Sort()));
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> sort(
-            Comparator<? super Map<K, V>> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+    @SuppressWarnings("unchecked")
+    public ILevel0SetOfMapOperator<K, V> sort(final Comparator<? super Map<K, V>> comparator) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.Sort(comparator)));
     }
 
 

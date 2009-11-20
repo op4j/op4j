@@ -264,16 +264,15 @@ public class Level1ArrayOfArrayElementsOperator<T> extends Operator
     
 
 
+    @SuppressWarnings("unchecked")
     public ILevel1ArrayOfArrayElementsOperator<T> sort() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.Sort()));
     }
 
 
-    public ILevel1ArrayOfArrayElementsOperator<T> sort(
-            Comparator<? super T> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+    @SuppressWarnings("unchecked")
+    public ILevel1ArrayOfArrayElementsOperator<T> sort(final Comparator<? super T> comparator) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.Sort(comparator)));
     }
 
 

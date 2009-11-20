@@ -269,16 +269,15 @@ public class Level0ArrayOfArrayOperator<T> extends Operator
     
 
 
+    @SuppressWarnings("unchecked")
     public ILevel0ArrayOfArrayOperator<T> sort() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.Sort()));
     }
 
 
-    public ILevel0ArrayOfArrayOperator<T> sort(
-            Comparator<? super T[]> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+    @SuppressWarnings("unchecked")
+    public ILevel0ArrayOfArrayOperator<T> sort(final Comparator<? super T[]> comparator) {
+        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.Sort(comparator)));
     }
 
 

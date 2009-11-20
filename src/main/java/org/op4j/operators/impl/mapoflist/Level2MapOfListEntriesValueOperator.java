@@ -25,10 +25,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
+import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.ListFuncOLD;
+import org.op4j.executables.functions.builtin.ListFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofarray.ILevel2MapOfArrayEntriesValueOperator;
 import org.op4j.operators.intf.mapoflist.ILevel1MapOfListEntriesOperator;
@@ -57,21 +58,21 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel2MapOfListEntriesValueOperator<K, V> add(final V... newElements) {
-        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFuncOLD.add(newElements)));
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.Add<V>(newElements)));
     }
 
     public ILevel2MapOfListEntriesValueOperator<K, V> insert(final int position, final V... newElements) {
-        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFuncOLD.insert(position, newElements)));
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.Insert<V>(position, newElements)));
     }
 
 
     public ILevel2MapOfListEntriesValueOperator<K, V> addAll(final Collection<V> collection) {
-        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFuncOLD.addAll(collection)));
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.AddAll<V>(collection)));
     }
 
 
     public ILevel2MapOfListEntriesValueOperator<K, V> distinct() {
-        return new Level2MapOfListEntriesValueOperator<K,V>(getTarget().execute(ListFuncOLD.distinct()));
+        return new Level2MapOfListEntriesValueOperator<K,V>(getTarget().execute(new ListFunc.Distinct<V>()));
     }
 
 
@@ -228,38 +229,37 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel2MapOfListEntriesValueOperator<K, V> removePositions(final int... positions) {
-        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFuncOLD.removePositions(positions)));
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.RemovePositions<V>(positions)));
     }
 
 
     public ILevel2MapOfListEntriesValueOperator<K, V> removeValues(final V... values) {
-        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFuncOLD.removeValues(values)));
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.RemoveValues<V>(values)));
     }
 
 
     public ILevel2MapOfListEntriesValueOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFuncOLD.removeMatching(expression, optionalExpParams)));
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.RemoveMatching<V>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel2MapOfListEntriesValueOperator<K, V> removeSelected(final ISelect<V> selector) {
-        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFuncOLD.removeSelected(selector)));
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.RemoveSelected<V>(selector)));
     }
 
 
     public ILevel2MapOfListEntriesValueOperator<K, V> removeAllExceptPositions(final int... positions) {
-        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFuncOLD.removeAllExceptPositions(positions)));
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.RemoveAllExceptPositions<V>(positions)));
     }
 
 
-
     public ILevel2MapOfListEntriesValueOperator<K, V> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFuncOLD.removeNotNullsMatching(expression, optionalExpParams)));
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.RemoveNotNullsMatching<V>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel2MapOfListEntriesValueOperator<K, V> removeNulls() {
-        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(ListFuncOLD.removeNulls()));
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.RemoveNulls<V>()));
     }
 
     
