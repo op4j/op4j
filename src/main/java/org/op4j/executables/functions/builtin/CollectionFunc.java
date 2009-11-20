@@ -26,10 +26,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.javaruntype.type.Types;
+import org.op4j.executables.IEval;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.IFunc;
-import org.op4j.util.OgnlExpressionUtil;
 import org.op4j.util.VarArgsUtil;
 
 
@@ -204,19 +203,17 @@ class CollectionFunc {
     
     static abstract class RemoveMatching<T, X extends Collection<T>> implements IFunc<X,X> {
 
-        private final String expression;
-        private final List<Object> expParams;
+        private final IEval<Boolean,? super T> eval;
         
-        public RemoveMatching(final String expression, final Object... optionalExpParams) {
+        public RemoveMatching(final IEval<Boolean,? super T> eval) {
             super();
-            this.expression = expression;
-            this.expParams = VarArgsUtil.asOptionalObjectList(optionalExpParams);
+            this.eval = eval;
         }
 
         public X execute(final X object) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
-                if (!OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, this.expression, element, this.expParams).booleanValue()) {
+                if (!this.eval.execute(element).booleanValue()) {
                     result.add(element);
                 }
             }
@@ -314,20 +311,18 @@ class CollectionFunc {
     
     static abstract class RemoveNotNullsMatching<T, X extends Collection<T>> implements IFunc<X,X> {
 
-        private final String expression;
-        private final List<Object> expParams;
+        private final IEval<Boolean,? super T> eval;
         
-        public RemoveNotNullsMatching(final String expression, final Object... optionalExpParams) {
+        public RemoveNotNullsMatching(final IEval<Boolean,? super T> eval) {
             super();
-            this.expression = expression;
-            this.expParams = VarArgsUtil.asOptionalObjectList(optionalExpParams);
+            this.eval = eval;
         }
 
         public X execute(final X object) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
-                    if (!OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, this.expression, element, this.expParams).booleanValue()) {
+                    if (!this.eval.execute(element).booleanValue()) {
                         result.add(element);
                     }
                 } else {

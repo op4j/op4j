@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 import org.op4j.executables.functions.IFunc;
 
@@ -64,31 +63,13 @@ class ToCollection {
 
     
     
-    static abstract class FromList<T, X extends Collection<T>> implements IFunc<X, List<T>> {
+    static abstract class FromCollection<T, X extends Collection<T>> implements IFunc<X, Collection<T>> {
 
-        public FromList() {
+        public FromCollection() {
             super();
         }
 
-        public X execute(final List<T> object) throws Exception {
-            return fromList(new ArrayList<T>(object));
-        }
-        
-        abstract X fromList(final List<T> object);
-        
-    }
-    
-    
-
-    
-    
-    static abstract class FromSet<T, X extends Collection<T>> implements IFunc<X, Set<T>> {
-
-        public FromSet() {
-            super();
-        }
-
-        public X execute(final Set<T> object) throws Exception {
+        public X execute(final Collection<T> object) throws Exception {
             return fromList(new ArrayList<T>(object));
         }
         

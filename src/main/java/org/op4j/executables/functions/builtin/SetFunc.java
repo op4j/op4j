@@ -28,6 +28,7 @@ import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.executables.IEval;
 import org.op4j.executables.ISelect;
 
 /**
@@ -178,8 +179,8 @@ public class SetFunc {
     
     public static final class RemoveMatching<T> extends CollectionFunc.RemoveMatching<T, Set<T>> {
 
-        public RemoveMatching(final String expression, final Object... optionalExpParams) {
-            super(expression, optionalExpParams);
+        public RemoveMatching(final IEval<Boolean,? super T> eval) {
+            super(eval);
         }
 
         public Type<? super Set<T>> getResultType() {
@@ -258,8 +259,8 @@ public class SetFunc {
     
     public static final class RemoveNotNullsMatching<T> extends CollectionFunc.RemoveNotNullsMatching<T, Set<T>> {
 
-        public RemoveNotNullsMatching(final String expression, final Object... optionalExpParams) {
-            super(expression, optionalExpParams);
+        public RemoveNotNullsMatching(final IEval<Boolean,? super T> eval) {
+            super(eval);
         }
 
         public Type<? super Set<T>> getResultType() {

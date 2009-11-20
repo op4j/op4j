@@ -33,9 +33,9 @@ import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.executables.IEval;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.IFunc;
-import org.op4j.util.OgnlExpressionUtil;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -300,13 +300,11 @@ public class ArrayFunc {
     
     public static final class RemoveMatching<T> implements IFunc<T[],T[]> {
 
-        private final String expression;
-        private final List<Object> expParams;
+        private final IEval<Boolean,? super T> eval;
         
-        public RemoveMatching(final String expression, final Object... optionalExpParams) {
+        public RemoveMatching(final IEval<Boolean,? super T> eval) {
             super();
-            this.expression = expression;
-            this.expParams = VarArgsUtil.asOptionalObjectList(optionalExpParams);
+            this.eval = eval;
         }
 
         public Type<? super T[]> getResultType() {
@@ -316,7 +314,7 @@ public class ArrayFunc {
         public T[] execute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
-                if (!OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, this.expression, element, this.expParams).booleanValue()) {
+                if (!this.eval.execute(element).booleanValue()) {
                     result.add(element);
                 }
             }
@@ -418,13 +416,11 @@ public class ArrayFunc {
     
     public static final class RemoveNotNullsMatching<T> implements IFunc<T[],T[]> {
 
-        private final String expression;
-        private final List<Object> expParams;
+        private final IEval<Boolean,? super T> eval;
         
-        public RemoveNotNullsMatching(final String expression, final Object... optionalExpParams) {
+        public RemoveNotNullsMatching(final IEval<Boolean,? super T> eval) {
             super();
-            this.expression = expression;
-            this.expParams = VarArgsUtil.asOptionalObjectList(optionalExpParams);
+            this.eval = eval;
         }
 
         public Type<? super T[]> getResultType() {
@@ -435,7 +431,7 @@ public class ArrayFunc {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
-                    if (!OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, this.expression, element, this.expParams).booleanValue()) {
+                    if (!this.eval.execute(element).booleanValue()) {
                         result.add(element);
                     }
                 } else {

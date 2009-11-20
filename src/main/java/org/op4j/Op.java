@@ -40,6 +40,7 @@ import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.IFunc;
 import org.op4j.executables.functions.builtin.ArrayFunc;
 import org.op4j.executables.functions.builtin.ListFunc;
 import org.op4j.executables.functions.builtin.SetFunc;
@@ -50,6 +51,7 @@ import org.op4j.executables.functions.conversion.ToCalendar;
 import org.op4j.executables.functions.conversion.ToDouble;
 import org.op4j.executables.functions.conversion.ToInteger;
 import org.op4j.executables.functions.conversion.ToLong;
+import org.op4j.executables.functions.conversion.ToMap;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.impl.arrayoflist.Level0ArrayOfListOperator;
@@ -631,13 +633,17 @@ public final class Op {
         
         System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFunc.Insert<Integer>(2, 1492)).get());
         
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFunc.Insert<Integer>(2, 1492)).exec(new ListFunc.RemoveMatching<Integer>("#target < 1000")).exec(new ListFunc.Sort<Integer>()).get());
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFunc.Insert<Integer>(2, 1492)).exec(new ListFunc.RemoveMatching<Integer>(Eval.booleanExp("#target < 1000"))).exec(new ListFunc.Sort<Integer>()).get());
         
         
         System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFunc.Insert<Integer>(2, 1492)).get()));
         
-        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFunc.Insert<Integer>(2, 1492)).exec(new ArrayFunc.RemoveMatching<Integer>("#target < 1000")).exec(new ArrayFunc.Sort<Integer>()).get()));
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFunc.Insert<Integer>(2, 1492)).exec(new ArrayFunc.RemoveMatching<Integer>(Eval.booleanExp("#target < 1000"))).exec(new ArrayFunc.Sort<Integer>()).get()));
         
+        final IFunc<Map<Integer,String>,String[]> mapBuild = new ToMap.FromArrayByKeyEval(Eval.integerExp("length()"));
+        
+        System.out.println(Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArray(Types.STRING).get()).exec(new ToMap.FromArrayByKeyEval(Eval.integerExp("length()"))).get());
+        System.out.println(Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArray(Types.STRING).get()).exec(mapBuild).get());
     }
     
     

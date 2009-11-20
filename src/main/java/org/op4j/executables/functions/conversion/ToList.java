@@ -63,9 +63,9 @@ public class ToList {
     
     
     
-    public static final class FromSet<T> extends ToCollection.FromSet<T,List<T>> {
+    public static final class FromCollection<T> extends ToCollection.FromCollection<T,List<T>> {
 
-        public FromSet() {
+        public FromCollection() {
             super();
         }
         

@@ -26,9 +26,9 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.executables.IEval;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.IFunc;
-import org.op4j.util.OgnlExpressionUtil;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -211,13 +211,11 @@ public class MapFunc {
     
     public static final class RemoveMatching<K, V> implements IFunc<Map<K, V>,Map<K, V>> {
 
-        private final String expression;
-        private final List<Object> expParams;
+        private final IEval<Boolean,Map.Entry<K, V>> eval;
         
-        public RemoveMatching(final String expression, final Object... optionalExpParams) {
+        public RemoveMatching(final IEval<Boolean,Map.Entry<K, V>> eval) {
             super();
-            this.expression = expression;
-            this.expParams = VarArgsUtil.asOptionalObjectList(optionalExpParams);
+            this.eval = eval;
         }
 
         public Type<? super Map<K, V>> getResultType() {
@@ -227,7 +225,7 @@ public class MapFunc {
         public Map<K, V> execute(final Map<K, V> object) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>();
             for (final Map.Entry<K, V> entry : object.entrySet()) {
-                if (!OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, this.expression, entry, this.expParams).booleanValue()) {
+                if (!this.eval.execute(entry).booleanValue()) {
                     result.put(entry.getKey(), entry.getValue());
                 }
             }

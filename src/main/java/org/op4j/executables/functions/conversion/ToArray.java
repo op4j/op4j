@@ -22,8 +22,8 @@ package org.op4j.executables.functions.conversion;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
@@ -47,11 +47,11 @@ class ToArray {
     
     
     
-    public static final class FromList<T> implements IFunc<T[], List<T>> {
+    public static final class FromCollection<T> implements IFunc<T[], Collection<T>> {
 
         private final Type<T> type;
         
-        public FromList(final Type<T> type) {
+        public FromCollection(final Type<T> type) {
             super();
             this.type = type;
         }
@@ -61,33 +61,7 @@ class ToArray {
         }
 
         @SuppressWarnings("unchecked")
-        public T[] execute(final List<T> object) throws Exception {
-            final List<T> result = new ArrayList<T>(object);
-            final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
-            return result.toArray(array);
-        }
-        
-    }
-    
-    
-
-    
-    
-    public static final class FromSet<T> implements IFunc<T[], Set<T>> {
-
-        private final Type<T> type;
-        
-        public FromSet(final Type<T> type) {
-            super();
-            this.type = type;
-        }
-
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
-        }
-
-        @SuppressWarnings("unchecked")
-        public T[] execute(final Set<T> object) throws Exception {
+        public T[] execute(final Collection<T> object) throws Exception {
             final List<T> result = new ArrayList<T>(object);
             final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
             return result.toArray(array);
