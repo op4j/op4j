@@ -56,8 +56,8 @@ import org.op4j.executables.functions.conversion.ToLong;
 import org.op4j.executables.functions.conversion.ToMap;
 import org.op4j.executables.functions.conversion.ToMapOfArray;
 import org.op4j.executables.functions.conversion.ToString;
-import org.op4j.executables.functions.conversion.ToString.FromCalendar.DateStyle;
-import org.op4j.executables.functions.conversion.ToString.FromCalendar.TimeStyle;
+import org.op4j.executables.functions.conversion.ToString.DateStyle;
+import org.op4j.executables.functions.conversion.ToString.TimeStyle;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.impl.arrayoflist.Level0ArrayOfListOperator;
@@ -681,6 +681,11 @@ public final class Op {
             	.add(Calendar.getInstance(), Calendar.getInstance())
             	.forEach().exec(ToString.fromCalendar("dd-MMMM-yyyy")).get());
         
+        System.out.println(Op.buildList(Types.DATE)
+            	.add(new java.sql.Date(Calendar.getInstance().getTimeInMillis()))
+            	.forEach().exec(ToString.fromDate("dd-MMM-yyyy", Locale.UK)).get());
+        
+        
         System.out.println(Op.buildList(Types.STRING)
             	.add("  Company ", " day ")
             	.forEach().exec(StringFunc.trim()).get());
@@ -691,6 +696,15 @@ public final class Op {
         System.out.println(Op.on("Dublin")
             	.exec(StringFunc.toHexadecimal(Charset.forName("ISO-8859-1")))
             	.exec(StringFunc.fromHexadecimal(Charset.forName("ISO-8859-1"))).get());
+        
+        System.out.println(Op.buildList(Types.NUMBER)
+            	.add(45.9, new BigDecimal(34.456))
+            	.forEach().exec(ToString.fromCurrency(Locale.getDefault(), 
+            			1, Integer.MAX_VALUE, 2, 10)).get());
+        System.out.println(Op.buildList(Types.NUMBER)
+            	.add(45.9, 45, new BigDecimal(34.456))
+            	.forEach().exec(ToString.fromCurrency(Locale.getDefault(), 
+            			1, Integer.MAX_VALUE, 0, 0)).get());
         
     }
     
