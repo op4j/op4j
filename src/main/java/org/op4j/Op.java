@@ -31,6 +31,7 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -52,6 +53,9 @@ import org.op4j.executables.functions.conversion.ToInteger;
 import org.op4j.executables.functions.conversion.ToLong;
 import org.op4j.executables.functions.conversion.ToMap;
 import org.op4j.executables.functions.conversion.ToMapOfArray;
+import org.op4j.executables.functions.conversion.ToString;
+import org.op4j.executables.functions.conversion.ToString.FromCalendar.DateStyle;
+import org.op4j.executables.functions.conversion.ToString.FromCalendar.TimeStyle;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.impl.arrayoflist.Level0ArrayOfListOperator;
@@ -658,6 +662,19 @@ public final class Op {
         System.out.println(Op.on("hello").buildMapOfList(Eval.integerExp("length()")).get());
         System.out.println(Op.onAll(12, "hello", 14, "goodbye").buildMapOfList().get());
         
+        
+        System.out.println(Op.buildList(Types.CALENDAR)
+            	.add(Calendar.getInstance(), Calendar.getInstance())
+            	.forEach().exec(ToString.fromCalendar(DateStyle.FULL, TimeStyle.NONE, Locale.UK)).get());
+        
+        System.out.println(Op.buildList(Types.CALENDAR)
+            	.add(Calendar.getInstance(), Calendar.getInstance())
+            	.forEach().exec(ToString.fromCalendar(DateStyle.FULL, TimeStyle.SHORT, Locale.UK)).get());
+        
+        System.out.println(Op.buildList(Types.CALENDAR)
+            	.add(Calendar.getInstance(), Calendar.getInstance())
+            	.forEach().exec(ToString.fromCalendar("dd-MMM-yyyy", Locale.UK)).get());
+                
     }
     
     
