@@ -23,6 +23,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,6 +45,7 @@ import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ArrayFunc;
 import org.op4j.executables.functions.builtin.ListFunc;
 import org.op4j.executables.functions.builtin.SetFunc;
+import org.op4j.executables.functions.builtin.StringFunc;
 import org.op4j.executables.functions.conversion.DecimalPoint;
 import org.op4j.executables.functions.conversion.ToBigDecimal;
 import org.op4j.executables.functions.conversion.ToBigInteger;
@@ -674,7 +676,22 @@ public final class Op {
         System.out.println(Op.buildList(Types.CALENDAR)
             	.add(Calendar.getInstance(), Calendar.getInstance())
             	.forEach().exec(ToString.fromCalendar("dd-MMM-yyyy", Locale.UK)).get());
-                
+            
+        System.out.println(Op.buildList(Types.CALENDAR)
+            	.add(Calendar.getInstance(), Calendar.getInstance())
+            	.forEach().exec(ToString.fromCalendar("dd-MMMM-yyyy")).get());
+        
+        System.out.println(Op.buildList(Types.STRING)
+            	.add("  Company ", " day ")
+            	.forEach().exec(StringFunc.trim()).get());
+        System.out.println(Op.buildList(Types.STRING)
+            	.add("  Company ", " day ")
+            	.forEach().exec(StringFunc.trim()).exec(StringFunc.toUpperCase()).get());
+        
+        System.out.println(Op.on("Dublin")
+            	.exec(StringFunc.toHexadecimal(Charset.forName("ISO-8859-1")))
+            	.exec(StringFunc.fromHexadecimal(Charset.forName("ISO-8859-1"))).get());
+        
     }
     
     
