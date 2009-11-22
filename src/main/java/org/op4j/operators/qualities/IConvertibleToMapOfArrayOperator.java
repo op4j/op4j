@@ -32,8 +32,8 @@ import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
  */
 public interface IConvertibleToMapOfArrayOperator<K,V> {
     
-    public <X> ILevel0MapOfArrayOperator<K,X> toMapOfArray(final Type<X> of);
-    public <X> ILevel0MapOfArrayOperator<K,X> toMapOfArray(final Class<X> ofClass);
+    public ILevel0MapOfArrayOperator<K,V> toMapOfArray(final Type<V> of);
+    
 
     
 }

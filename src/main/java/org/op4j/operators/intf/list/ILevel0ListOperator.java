@@ -62,7 +62,7 @@ public interface ILevel0ListOperator<T>
 		        IModifiableCollectionOperator<T>,
 		        IExtractableCollectionOperator<T>,
 		        IGenerizableOperator<List<T>>,
-		        IConvertibleToArrayOperator,
+		        IConvertibleToArrayOperator<T>,
 		        IConvertibleToSetOperator,
                 IConvertibleToMapOperator<T> {
 
@@ -91,8 +91,8 @@ public interface ILevel0ListOperator<T>
     public ILevel0ListOperator<T> removeNulls();
     public ILevel0ListOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
-    public <X> ILevel0ArrayOperator<X> toArray(final Type<X> of);
-    public <X> ILevel0ArrayOperator<X> toArray(final Class<X> of);
+    public ILevel0ArrayOperator<T> toArray(final Type<T> of);
+    
     
     public ILevel0SetOperator<T> toSet();
     

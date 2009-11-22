@@ -277,7 +277,7 @@ public class Level0SetOfSetOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ArrayOfArrayOperator<X> toArrayOfArray(final Type<X> of) {
+    public ILevel0ArrayOfArrayOperator<T> toArrayOfArray(final Type<T> of) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -316,19 +316,13 @@ public class Level0SetOfSetOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ListOfArrayOperator<X> toListOfArray(final Type<X> of) {
+    public ILevel0ListOfArrayOperator<T> toListOfArray(final Type<T> of) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <X> ILevel0ListOfArrayOperator<X> toListOfArray(Class<X> ofClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ListOfListOperator<T> toListOfList() {
+        public ILevel0ListOfListOperator<T> toListOfList() {
         // TODO Auto-generated method stub
         return null;
     }
@@ -354,19 +348,13 @@ public class Level0SetOfSetOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0SetOfArrayOperator<X> toSetOfArray(final Type<X> of) {
+    public ILevel0SetOfArrayOperator<T> toSetOfArray(final Type<T> of) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <X> ILevel0SetOfArrayOperator<X> toSetOfArray(Class<X> ofClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0SetOfListOperator<T> toSetOfList() {
+        public ILevel0SetOfListOperator<T> toSetOfList() {
         // TODO Auto-generated method stub
         return null;
     }

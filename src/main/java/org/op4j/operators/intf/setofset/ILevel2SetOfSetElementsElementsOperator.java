@@ -29,9 +29,7 @@ import org.javaruntype.type.Type;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.functions.IFunc;
-import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.qualities.ICallableOperator;
-import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
 import org.op4j.operators.qualities.INavigatingCollectionOperator;
@@ -52,7 +50,6 @@ public interface ILevel2SetOfSetElementsElementsOperator<T>
                 ICallableOperator<T>,
         		IEvaluableOperator<T>,
         		IExecutableOperator<T>,
-        		IConvertibleOperator<T>,
                 ITypeParameterizableXOperator<T> {
     
     public ILevel1SetOfSetElementsOperator<T> endFor();
@@ -75,8 +72,6 @@ public interface ILevel2SetOfSetElementsElementsOperator<T>
     public ILevel2SetOfSetElementsElementsOperator<Date> callDate(final String methodName, final Object... optionalParameters);
 
     
-    public <X> ILevel2SetOfSetElementsElementsOperator<X> conv(final IConv<X> conv);
-
     
     public <X> ILevel2SetOfSetElementsElementsOperator<X> eval(final IEval<X,? super T> eval);
 

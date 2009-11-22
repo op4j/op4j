@@ -28,9 +28,7 @@ import org.javaruntype.type.Type;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.functions.IFunc;
-import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.qualities.ICallableOperator;
-import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
 import org.op4j.operators.qualities.INavigatingCollectionOperator;
@@ -51,7 +49,6 @@ public interface ILevel1ArrayElementsOperator<T>
                 ICallableOperator<T>,
         		IEvaluableOperator<T>,
         		IExecutableOperator<T>,
-        		IConvertibleOperator<T>,
                 ITypeParameterizableXOperator<T> {
 
 		    
@@ -75,8 +72,6 @@ public interface ILevel1ArrayElementsOperator<T>
     public ILevel1ArrayElementsOperator<Date> callDate(final String methodName, final Object... optionalParameters);
 
     
-    public <X> IConvertibleOperator<X> conv(final IConv<X> conv);
-
     
     public <X> ILevel1ArrayElementsOperator<X> eval(final IEval<X,? super T> eval);
 

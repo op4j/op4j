@@ -29,7 +29,11 @@ import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ArrayFunc;
+import org.op4j.executables.functions.conversion.ToList;
+import org.op4j.executables.functions.conversion.ToSet;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.listoflist.Level1ListOfListElementsOperator;
+import org.op4j.operators.impl.listofset.Level1ListOfSetElementsOperator;
 import org.op4j.operators.intf.listofarray.ILevel0ListOfArrayOperator;
 import org.op4j.operators.intf.listofarray.ILevel1ListOfArrayElementsOperator;
 import org.op4j.operators.intf.listofarray.ILevel2ListOfArrayElementsElementsOperator;
@@ -272,8 +276,7 @@ public class Level1ListOfArrayElementsOperator<T> extends Operator
 
 
     public ILevel1ListOfListElementsOperator<T> toList() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ToList.FromArray<T>()));
     }
 
 
@@ -292,8 +295,7 @@ public class Level1ListOfArrayElementsOperator<T> extends Operator
 
 
     public ILevel1ListOfSetElementsOperator<T> toSet() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1ListOfSetElementsOperator<T>(getTarget().execute(new ToSet.FromArray<T>()));
     }
 
 

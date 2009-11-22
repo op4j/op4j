@@ -32,7 +32,6 @@ import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.functions.IFunc;
-import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapoflist.ILevel3MapOfListEntriesValueElementsOperator;
@@ -118,10 +117,6 @@ public class Level3MapOfListEntriesValueElementsOperator<K,V> extends Operator
 
 
 
-
-    public <X> ILevel3MapOfListEntriesValueElementsOperator<K, X> conv(final IConv<X> conv) {
-        return new Level3MapOfListEntriesValueElementsOperator<K, X>(getTarget().execute(conv));
-    }
 
     public ILevel2MapOfListEntriesValueOperator<K, V> endFor() {
         return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().endIterate(Structure.LIST, null));

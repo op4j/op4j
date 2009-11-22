@@ -28,7 +28,11 @@ import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ArrayFunc;
+import org.op4j.executables.functions.conversion.ToList;
+import org.op4j.executables.functions.conversion.ToSet;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.list.Level0ListOperator;
+import org.op4j.operators.impl.set.Level0SetOperator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.array.ILevel1ArrayElementsOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericMultiOperator;
@@ -240,8 +244,7 @@ public class Level0ArrayOperator<T> extends Operator implements
     }
 
     public ILevel0ListOperator<T> toList() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ListOperator<T>(getTarget().execute(new ToList.FromArray<T>()));
     }
 
     public <K> ILevel0MapOperator<K, T> toMap(IEval<K, ? super T> keyEval) {
@@ -256,8 +259,7 @@ public class Level0ArrayOperator<T> extends Operator implements
     }
 
     public ILevel0SetOperator<T> toSet() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0SetOperator<T>(getTarget().execute(new ToSet.FromArray<T>()));
     }
 
     @SuppressWarnings("unchecked")

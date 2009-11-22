@@ -111,15 +111,14 @@ public interface ILevel0SetOfArrayOperator<T>
     public ILevel0SetOfArrayOperator<T> removeNulls();
     public ILevel0SetOfArrayOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
-    public <X> ILevel0ArrayOfArrayOperator<X> toArrayOfArray(final Type<X> of);
-    public <X> ILevel0ArrayOfArrayOperator<X> toArrayOfArray(final Class<X> arrayOfClass);
+    public ILevel0ArrayOfArrayOperator<T> toArrayOfArray(final Type<T> of);
     
     public ILevel0ArrayOfListOperator<T> toArrayOfList();
     
     public ILevel0ArrayOfSetOperator<T> toArrayOfSet();
     
-    public <X> ILevel0ListOfArrayOperator<X> toListOfArray(final Type<X> of);
-    public <X> ILevel0ListOfArrayOperator<X> toListOfArray(final Class<X> ofClass);
+    public ILevel0ListOfArrayOperator<T> toListOfArray(final Type<T> of);
+    
     
     public ILevel0ListOfListOperator<T> toListOfList();
     

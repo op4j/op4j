@@ -31,7 +31,6 @@ import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.functions.IFunc;
-import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.arrayofarray.ILevel1ArrayOfArrayElementsOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel2ArrayOfArrayElementsElementsOperator;
@@ -121,10 +120,6 @@ public class Level2ArrayOfArrayElementsElementsOperator<T> extends Operator
 
 
 
-
-    public <X> ILevel2ArrayOfArrayElementsElementsOperator<X> conv(final IConv<X> conv) {
-        return new Level2ArrayOfArrayElementsElementsOperator<X>(conv.getResultType(), getTarget().execute(conv));
-    }
 
     public ILevel1ArrayOfArrayElementsOperator<T> endFor() {
         return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().endIterate(Structure.ARRAY, this.arrayOf.getRawClass()));

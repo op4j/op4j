@@ -30,7 +30,9 @@ import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.SetFunc;
+import org.op4j.executables.functions.conversion.ToList;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.listoflist.Level1ListOfListElementsOperator;
 import org.op4j.operators.intf.listofarray.ILevel1ListOfArrayElementsOperator;
 import org.op4j.operators.intf.listoflist.ILevel1ListOfListElementsOperator;
 import org.op4j.operators.intf.listofmap.ILevel1ListOfMapElementsOperator;
@@ -269,21 +271,14 @@ public class Level1ListOfSetElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel1ListOfArrayElementsOperator<X> toArray(final Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <X> ILevel1ListOfArrayElementsOperator<X> toArray(Class<X> of) {
+    public ILevel1ListOfArrayElementsOperator<T> toArray(final Type<T> of) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
     public ILevel1ListOfListElementsOperator<T> toList() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ToList.FromCollection<T>()));
     }
 
 

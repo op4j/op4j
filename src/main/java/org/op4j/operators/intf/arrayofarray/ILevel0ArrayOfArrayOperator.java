@@ -119,15 +119,15 @@ public interface ILevel0ArrayOfArrayOperator<T>
     
     public ILevel0ArrayOfSetOperator<T> toArrayOfSet();
     
-    public <X> ILevel0ListOfArrayOperator<X> toListOfArray(final Type<X> of);
-    public <X> ILevel0ListOfArrayOperator<X> toListOfArray(final Class<X> ofClass);
+    public ILevel0ListOfArrayOperator<T> toListOfArray(final Type<T> of);
+    
     
     public ILevel0ListOfListOperator<T> toListOfList();
     
     public ILevel0ListOfSetOperator<T> toListOfSet();
     
-    public <X> ILevel0SetOfArrayOperator<X> toSetOfArray(final Type<X> of);
-    public <X> ILevel0SetOfArrayOperator<X> toSetOfArray(final Class<X> ofClass);
+    public ILevel0SetOfArrayOperator<T> toSetOfArray(final Type<T> of);
+    
     
     public ILevel0SetOfListOperator<T> toSetOfList();
     

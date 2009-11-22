@@ -30,7 +30,6 @@ import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.functions.IFunc;
-import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
@@ -54,7 +53,6 @@ import org.op4j.operators.intf.setofset.ILevel0SetOfSetOperator;
 import org.op4j.operators.qualities.IBuilderOperator;
 import org.op4j.operators.qualities.ICallableOperator;
 import org.op4j.operators.qualities.ICastableOperator;
-import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
 import org.op4j.operators.qualities.IModifiableGrowableOperator;
@@ -78,7 +76,6 @@ public interface ILevel0GenericUniqOperator<T>
         		ICallableOperator<T>,
         		IEvaluableOperator<T>,
         		IExecutableOperator<T>,
-        		IConvertibleOperator<T>,
                 ITypeParameterizableXOperator<T>,
                 IModifiableGrowableOperator<T> {
     
@@ -100,8 +97,6 @@ public interface ILevel0GenericUniqOperator<T>
     public ILevel0GenericUniqOperator<Date> callDate(final String methodName, final Object... optionalParameters);
 
     
-    public <X> ILevel0GenericUniqOperator<X> conv(final IConv<X> conv);
-
     
     public <X> ILevel0GenericUniqOperator<X> eval(final IEval<X,? super T> eval);
 

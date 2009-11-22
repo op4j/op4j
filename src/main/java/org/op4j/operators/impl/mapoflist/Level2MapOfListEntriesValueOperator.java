@@ -30,7 +30,9 @@ import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ListFunc;
+import org.op4j.executables.functions.conversion.ToSet;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.operators.intf.mapofarray.ILevel2MapOfArrayEntriesValueOperator;
 import org.op4j.operators.intf.mapoflist.ILevel1MapOfListEntriesOperator;
 import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesValueOperator;
@@ -278,13 +280,7 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel2MapOfArrayEntriesValueOperator<K, X> toArray(final Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <X> ILevel2MapOfArrayEntriesValueOperator<K, X> toArray(Class<X> of) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> toArray(final Type<V> of) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -305,8 +301,7 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> toSet() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new ToSet.FromCollection<V>()));
     }
 
 

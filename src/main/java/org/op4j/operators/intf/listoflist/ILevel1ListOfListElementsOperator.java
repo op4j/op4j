@@ -59,7 +59,7 @@ public interface ILevel1ListOfListElementsOperator<T>
                 ITypeParameterizableXOperator<T>,
                 IModifiableCollectionOperator<T>,
                 IExtractableCollectionOperator<T>,
-                IConvertibleToArrayOperator,
+                IConvertibleToArrayOperator<T>,
                 IConvertibleToSetOperator,
                 IConvertibleToMapOperator<T> {
 
@@ -88,8 +88,8 @@ public interface ILevel1ListOfListElementsOperator<T>
     public ILevel1ListOfListElementsOperator<T> removeNulls();
     public ILevel1ListOfListElementsOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
-    public <X> ILevel1ListOfArrayElementsOperator<X> toArray(final Type<X> of);
-    public <X> ILevel1ListOfArrayElementsOperator<X> toArray(final Class<X> of);
+    public ILevel1ListOfArrayElementsOperator<T> toArray(final Type<T> of);
+    
     
     public ILevel1ListOfSetElementsOperator<T> toSet();
     

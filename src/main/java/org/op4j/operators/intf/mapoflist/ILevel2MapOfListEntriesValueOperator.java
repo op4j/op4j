@@ -60,7 +60,7 @@ public interface ILevel2MapOfListEntriesValueOperator<K,V>
                 ITypeParameterizableXOperator<V>,
                 IModifiableCollectionOperator<V>,
                 IExtractableCollectionOperator<V>,
-                IConvertibleToArrayOperator,
+                IConvertibleToArrayOperator<V>,
                 IConvertibleToSetOperator,
                 IConvertibleToMapOperator<V> {
     
@@ -89,8 +89,8 @@ public interface ILevel2MapOfListEntriesValueOperator<K,V>
     public ILevel2MapOfListEntriesValueOperator<K,V> removeNulls();
     public ILevel2MapOfListEntriesValueOperator<K,V> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
-    public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> toArray(final Type<X> of);
-    public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> toArray(final Class<X> of);
+    public ILevel2MapOfArrayEntriesValueOperator<K,V> toArray(final Type<V> of);
+    
     
     public ILevel2MapOfSetEntriesValueOperator<K,V> toSet();
     

@@ -33,7 +33,6 @@ import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.functions.IFunc;
 import org.op4j.executables.functions.builtin.ListFunc;
-import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.executables.functions.conversion.ToArray;
 import org.op4j.executables.functions.conversion.ToList;
 import org.op4j.executables.functions.conversion.ToMap;
@@ -530,10 +529,6 @@ public class Level0GenericUniqOperator<T> extends Operator
     
     
 
-
-    public <X> ILevel0GenericUniqOperator<X> conv(final IConv<X> conv) {
-        return new Level0GenericUniqOperator<X>(getTarget().execute(conv));
-    }
 
     public <X> ILevel0GenericUniqOperator<X> eval(final IEval<X, ? super T> eval) {
         return new Level0GenericUniqOperator<X>(getTarget().execute(eval));

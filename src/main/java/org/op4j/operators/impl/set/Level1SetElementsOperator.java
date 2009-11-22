@@ -31,7 +31,6 @@ import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.functions.IFunc;
-import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
 import org.op4j.operators.intf.set.ILevel1SetElementsOperator;
@@ -117,10 +116,6 @@ public class Level1SetElementsOperator<T> extends Operator
 
 
 
-
-    public <X> ILevel1SetElementsOperator<X> conv(final IConv<X> conv) {
-        return new Level1SetElementsOperator<X>(getTarget().execute(conv));
-    }
 
     public ILevel0SetOperator<T> endFor() {
         return new Level0SetOperator<T>(getTarget().endIterate(Structure.SET, null));

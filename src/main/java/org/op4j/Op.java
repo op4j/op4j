@@ -631,18 +631,22 @@ public final class Op {
             	.exec(StringFunc.fromHexadecimal(Charset.forName("ISO-8859-1"))).get());
         
         System.out.println(Op.buildList(Types.NUMBER)
-            	.add(45.9, new BigDecimal(34.456))
-            	.forEach().exec(ToString.fromCurrency(Locale.getDefault(), 
-            			1, 2, 10, true)).get());
+                .add(45.9, new BigDecimal(34.456))
+                .forEach().exec(ToString.fromCurrency(Locale.getDefault(), 
+                        1, 2, 10, true)).get());
         System.out.println(Op.buildList(Types.NUMBER)
-            	.add(45.9, 45, new BigDecimal(34.456))
-            	.forEach().exec(ToString.fromCurrency(Locale.getDefault(), 
-            			1, 0, 0, true)).get());
+                .add(45.9, 45, new BigDecimal(34.456))
+                .forEach().exec(ToString.fromCurrency(Locale.getDefault(), 
+                        1, 0, 0, true)).get());
         
         System.out.println(Op.buildList(Types.NUMBER)
-            	.add(45.9, 45, new BigDecimal(34.456), 0, 0.5, 0.211)
-            	.forEach().exec(ToString.fromPercent(Locale.getDefault(), 
-            			1, 0, 10, true, ',', '\'', false)).get());
+                .add(45.9, 45, new BigDecimal(34.456), 0, 0.5, 0.211)
+                .forEach().exec(ToString.fromPercent(Locale.getDefault(), 
+                        1, 0, 10, true, ',', '\'', false)).get());
+     
+        
+        System.out.println(Op.onArray(stringsArr1).toSet().get());
+        System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).forEach().toSet().get()));
         
     }
     

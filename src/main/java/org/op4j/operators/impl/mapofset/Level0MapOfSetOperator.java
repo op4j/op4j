@@ -228,19 +228,13 @@ public class Level0MapOfSetOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel0MapOfArrayOperator<K, X> toMapOfArray(final Type<X> of) {
+    public ILevel0MapOfArrayOperator<K, V> toMapOfArray(final Type<V> of) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <X> ILevel0MapOfArrayOperator<K, X> toMapOfArray(Class<X> ofClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0MapOfListOperator<K, V> toMapOfList() {
+        public ILevel0MapOfListOperator<K, V> toMapOfList() {
         // TODO Auto-generated method stub
         return null;
     }

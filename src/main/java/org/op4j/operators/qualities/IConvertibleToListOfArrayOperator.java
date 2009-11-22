@@ -32,8 +32,8 @@ import org.op4j.operators.intf.listofarray.ILevel0ListOfArrayOperator;
  */
 public interface IConvertibleToListOfArrayOperator<T> {
     
-    public <X> ILevel0ListOfArrayOperator<X> toListOfArray(final Type<X> of);
-    public <X> ILevel0ListOfArrayOperator<X> toListOfArray(final Class<X> ofClass);
+    public ILevel0ListOfArrayOperator<T> toListOfArray(final Type<T> of);
+    
 
     
 }

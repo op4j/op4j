@@ -32,7 +32,7 @@ import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
  */
 public interface IConvertibleToArrayOfArrayOperator<T> {
     
-    public <X> ILevel0ArrayOfArrayOperator<X> toArrayOfArray(final Type<X> of);
-    public <X> ILevel0ArrayOfArrayOperator<X> toArrayOfArray(final Class<X> ofClass);
+    public ILevel0ArrayOfArrayOperator<T> toArrayOfArray(final Type<T> of);
+    
     
 }

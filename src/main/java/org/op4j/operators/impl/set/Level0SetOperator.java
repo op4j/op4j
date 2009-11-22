@@ -29,7 +29,9 @@ import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.SetFunc;
+import org.op4j.executables.functions.conversion.ToList;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.list.Level0ListOperator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericMultiOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
@@ -269,21 +271,14 @@ public class Level0SetOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ArrayOperator<X> toArray(final Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <X> ILevel0ArrayOperator<X> toArray(Class<X> of) {
+    public ILevel0ArrayOperator<T> toArray(final Type<T> of) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
     public ILevel0ListOperator<T> toList() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ListOperator<T>(getTarget().execute(new ToList.FromCollection<T>()));
     }
 
 

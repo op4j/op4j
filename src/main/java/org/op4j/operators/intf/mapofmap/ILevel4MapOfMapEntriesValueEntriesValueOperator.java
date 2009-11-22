@@ -29,9 +29,7 @@ import org.javaruntype.type.Type;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.functions.IFunc;
-import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.qualities.ICallableOperator;
-import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
 import org.op4j.operators.qualities.INavigatingMapEntryOperator;
@@ -52,7 +50,6 @@ public interface ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
                 ICallableOperator<V>,
         		IEvaluableOperator<V>,
         		IExecutableOperator<V>,
-        		IConvertibleOperator<V>,
                 ITypeParameterizableXOperator<V> {
     
     public ILevel3MapOfMapEntriesValueEntriesOperator<K1,K2,V> endOn();
@@ -75,8 +72,6 @@ public interface ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Date> callDate(final String methodName, final Object... optionalParameters);
 
     
-    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> conv(final IConv<X> conv);
-
     
     public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> eval(final IEval<X,? super V> eval);
 

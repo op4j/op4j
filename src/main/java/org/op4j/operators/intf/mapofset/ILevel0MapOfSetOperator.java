@@ -83,8 +83,8 @@ public interface ILevel0MapOfSetOperator<K,V>
     public ILevel0MapOfSetOperator<K,V> removeSelected(final ISelect<Map.Entry<K,Set<V>>> selector);
     public ILevel0MapOfSetOperator<K,V> removeAllExceptKeys(final K... keys);
     
-    public <X> ILevel0MapOfArrayOperator<K,X> toMapOfArray(final Type<X> of);
-    public <X> ILevel0MapOfArrayOperator<K,X> toMapOfArray(final Class<X> ofClass);
+    public ILevel0MapOfArrayOperator<K,V> toMapOfArray(final Type<V> of);
+    
     
     public ILevel0MapOfListOperator<K,V> toMapOfList();
     
