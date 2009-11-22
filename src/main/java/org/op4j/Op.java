@@ -20,7 +20,6 @@
 package org.op4j;
 
 import java.lang.reflect.Array;
-import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.nio.charset.Charset;
@@ -113,60 +112,9 @@ import org.op4j.util.VarArgsUtil;
  *
  */
 public final class Op {
-
-    private static final String OP4J_INITIALIZATION_CLASS_NAME =
-        "org.op4j.executables.functions.FunctionsInitialization";
-
-    private static final String OP4J_CONTRIB_INITIALIZATION_CLASS_NAME =
-        "org.op4j.contrib.operations.OperationsInitialization";
-
-    private static final String INITIALIZATION_METHOD_NAME = "declareAndInitializeOperations";
     
+
     
-    static {
-        
-        /*
-         * Initialize basic op4j operators. This is done this way instead of
-         * accessing the class directly to allow OperationsInitialization to
-         * be non-public (and non-visible) and still be in the correct package. 
-         */
-        try {
-            
-            Class<?> clazz =
-                Thread.currentThread().getContextClassLoader().loadClass(
-                    OP4J_INITIALIZATION_CLASS_NAME);
-            Method initializerMethod =
-                clazz.getDeclaredMethod(INITIALIZATION_METHOD_NAME);
-            initializerMethod.setAccessible(true);
-            initializerMethod.invoke(null);
-            initializerMethod.setAccessible(false);
-            
-        } catch (Exception impossible) {
-            throw new RuntimeException(
-                    "Broken library: could not initialize op4j", impossible);
-        }
-        
-        
-        /*
-         * Try to initialize the "contrib" package, if it is present
-         * in the classpath.
-         */
-        try {
-            
-            Class<?> clazz =
-                Thread.currentThread().getContextClassLoader().loadClass(
-                    OP4J_CONTRIB_INITIALIZATION_CLASS_NAME);
-            Method initializerMethod =
-                clazz.getDeclaredMethod(INITIALIZATION_METHOD_NAME);
-            initializerMethod.setAccessible(true);
-            initializerMethod.invoke(null);
-            initializerMethod.setAccessible(false);
-            
-        } catch (Exception ignored) {
-            // it wasn't
-        }
-        
-    }
     
     
     private Op() {
