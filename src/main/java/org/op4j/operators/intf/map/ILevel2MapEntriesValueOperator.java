@@ -76,19 +76,7 @@ public interface ILevel2MapEntriesValueOperator<K,V>
 
     
     public <X> ILevel2MapEntriesValueOperator<K,X> conv(final IConv<X> conv);
-    public <X> ILevel2MapEntriesValueOperator<K,X> convTo(final Type<X> resultType, final Object... parameters);
-    
-    public ILevel2MapEntriesValueOperator<K,Byte> convToByte(final Object... parameters);
-    public ILevel2MapEntriesValueOperator<K,Short> convToShort(final Object... parameters);
-    public ILevel2MapEntriesValueOperator<K,Integer> convToInteger(final Object... parameters);
-    public ILevel2MapEntriesValueOperator<K,Long> convToLong(final Object... parameters);
-    public ILevel2MapEntriesValueOperator<K,Float> convToFloat(final Object... parameters);
-    public ILevel2MapEntriesValueOperator<K,Double> convToDouble(final Object... parameters);
-    public ILevel2MapEntriesValueOperator<K,BigInteger> convToBigInteger(final Object... parameters);
-    public ILevel2MapEntriesValueOperator<K,BigDecimal> convToBigDecimal(final Object... parameters);
-    public ILevel2MapEntriesValueOperator<K,Boolean> convToBoolean(final Object... parameters);
-    public ILevel2MapEntriesValueOperator<K,Calendar> convToCalendar(final Object... parameters);
-    public ILevel2MapEntriesValueOperator<K,String> convToString(final Object... parameters);
+
     
     public <X> ILevel2MapEntriesValueOperator<K,X> eval(final IEval<X,? super V> eval);
 

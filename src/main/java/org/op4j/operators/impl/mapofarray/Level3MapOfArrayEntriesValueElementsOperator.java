@@ -32,7 +32,6 @@ import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.functions.IFunc;
-import org.op4j.executables.functions.conversion.Conv;
 import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofarray.ILevel2MapOfArrayEntriesValueOperator;
@@ -126,105 +125,6 @@ public class Level3MapOfArrayEntriesValueElementsOperator<K,V> extends Operator
     public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K, X> conv(final IConv<X> conv) {
         return new Level3MapOfArrayEntriesValueElementsOperator<K, X>(conv.getResultType(), getTarget().execute(conv));
     }
-
-    public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K, X> convTo(final Type<X> resultType, final Object... parameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, X>(resultType, getTarget().execute(Conv.to(resultType, parameters)));
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, BigDecimal> convToBigDecimal(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, BigInteger> convToBigInteger(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Boolean> convToBoolean(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Byte> convToByte(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Calendar> convToCalendar(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Double> convToDouble(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Float> convToFloat(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Integer> convToInteger(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Long> convToLong(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Short> convToShort(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, String> convToString(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Character> convToCharacter(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Number> convToNumber(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Date> convToDate(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> endFor() {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().endIterate(Structure.ARRAY, this.arrayOf.getRawClass()));

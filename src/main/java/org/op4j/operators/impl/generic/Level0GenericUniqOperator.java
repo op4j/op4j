@@ -26,7 +26,6 @@ import java.util.Collection;
 import java.util.Date;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
@@ -34,7 +33,6 @@ import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.functions.IFunc;
 import org.op4j.executables.functions.builtin.ListFunc;
-import org.op4j.executables.functions.conversion.Conv;
 import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.executables.functions.conversion.ToArray;
 import org.op4j.executables.functions.conversion.ToList;
@@ -536,80 +534,6 @@ public class Level0GenericUniqOperator<T> extends Operator
     public <X> ILevel0GenericUniqOperator<X> conv(final IConv<X> conv) {
         return new Level0GenericUniqOperator<X>(getTarget().execute(conv));
     }
-
-    public <X> ILevel0GenericUniqOperator<X> convTo(final Type<X> resultType, final Object... parameters) {
-        return new Level0GenericUniqOperator<X>(getTarget().execute(Conv.to(resultType, parameters)));
-    }
-
-    public ILevel0GenericUniqOperator<BigDecimal> convToBigDecimal(final Object... parameters) {
-        return new Level0GenericUniqOperator<BigDecimal>(getTarget().execute(Conv.to(Types.BIG_DECIMAL, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<BigInteger> convToBigInteger(final Object... parameters) {
-        return new Level0GenericUniqOperator<BigInteger>(getTarget().execute(Conv.to(Types.BIG_INTEGER, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<Boolean> convToBoolean(final Object... parameters) {
-        return new Level0GenericUniqOperator<Boolean>(getTarget().execute(Conv.to(Types.BOOLEAN, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<Byte> convToByte(final Object... parameters) {
-        return new Level0GenericUniqOperator<Byte>(getTarget().execute(Conv.to(Types.BYTE, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<Calendar> convToCalendar(final Object... parameters) {
-        return new Level0GenericUniqOperator<Calendar>(getTarget().execute(Conv.to(Types.CALENDAR, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<Double> convToDouble(final Object... parameters) {
-        return new Level0GenericUniqOperator<Double>(getTarget().execute(Conv.to(Types.DOUBLE, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<Float> convToFloat(final Object... parameters) {
-        return new Level0GenericUniqOperator<Float>(getTarget().execute(Conv.to(Types.FLOAT, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<Integer> convToInteger(final Object... parameters) {
-        return new Level0GenericUniqOperator<Integer>(getTarget().execute(Conv.to(Types.INTEGER, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<Long> convToLong(final Object... parameters) {
-        return new Level0GenericUniqOperator<Long>(getTarget().execute(Conv.to(Types.LONG, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<Short> convToShort(final Object... parameters) {
-        return new Level0GenericUniqOperator<Short>(getTarget().execute(Conv.to(Types.SHORT, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<String> convToString(final Object... parameters) {
-        return new Level0GenericUniqOperator<String>(getTarget().execute(Conv.to(Types.STRING, parameters)));
-    }
-
-    
-    public ILevel0GenericUniqOperator<Character> convToCharacter(final Object... parameters) {
-        return new Level0GenericUniqOperator<Character>(getTarget().execute(Conv.to(Types.CHARACTER, parameters)));
-    }
-
-    
-    public ILevel0GenericUniqOperator<Number> convToNumber(final Object... parameters) {
-        return new Level0GenericUniqOperator<Number>(getTarget().execute(Conv.to(Types.NUMBER, parameters)));
-    }
-
-    
-    public ILevel0GenericUniqOperator<Date> convToDate(final Object... parameters) {
-        return new Level0GenericUniqOperator<Date>(getTarget().execute(Conv.to(Types.DATE, parameters)));
-    }
-
 
     public <X> ILevel0GenericUniqOperator<X> eval(final IEval<X, ? super T> eval) {
         return new Level0GenericUniqOperator<X>(getTarget().execute(eval));

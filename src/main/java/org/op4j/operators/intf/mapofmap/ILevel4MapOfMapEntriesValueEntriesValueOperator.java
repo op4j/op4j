@@ -76,19 +76,7 @@ public interface ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
 
     
     public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> conv(final IConv<X> conv);
-    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> convTo(final Type<X> resultType, final Object... parameters);
-    
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Byte> convToByte(final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Short> convToShort(final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Integer> convToInteger(final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Long> convToLong(final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Float> convToFloat(final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Double> convToDouble(final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,BigInteger> convToBigInteger(final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,BigDecimal> convToBigDecimal(final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Boolean> convToBoolean(final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Calendar> convToCalendar(final Object... parameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,String> convToString(final Object... parameters);
+
     
     public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> eval(final IEval<X,? super V> eval);
 

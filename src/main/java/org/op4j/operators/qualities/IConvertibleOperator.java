@@ -19,12 +19,6 @@
  */
 package org.op4j.operators.qualities;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Calendar;
-import java.util.Date;
-
-import org.javaruntype.type.Type;
 import org.op4j.executables.functions.conversion.IConv;
 
 
@@ -38,21 +32,5 @@ import org.op4j.executables.functions.conversion.IConv;
 public interface IConvertibleOperator<T> {
 
     public <X> IConvertibleOperator<X> conv(final IConv<X> conv);
-    public <X> IConvertibleOperator<X> convTo(final Type<X> resultType, final Object...parameters);
-    
-    public IConvertibleOperator<Byte> convToByte(final Object... parameters);
-    public IConvertibleOperator<Short> convToShort(final Object... parameters);
-    public IConvertibleOperator<Integer> convToInteger(final Object... parameters);
-    public IConvertibleOperator<Long> convToLong(final Object... parameters);
-    public IConvertibleOperator<Float> convToFloat(final Object... parameters);
-    public IConvertibleOperator<Double> convToDouble(final Object... parameters);
-    public IConvertibleOperator<BigInteger> convToBigInteger(final Object... parameters);
-    public IConvertibleOperator<BigDecimal> convToBigDecimal(final Object... parameters);
-    public IConvertibleOperator<Boolean> convToBoolean(final Object... parameters);
-    public IConvertibleOperator<Calendar> convToCalendar(final Object... parameters);
-    public IConvertibleOperator<String> convToString(final Object... parameters);
-    public IConvertibleOperator<Character> convToCharacter(final Object... parameters);
-    public IConvertibleOperator<Number> convToNumber(final Object... parameters);
-    public IConvertibleOperator<Date> convToDate(final Object... parameters);
     
 }

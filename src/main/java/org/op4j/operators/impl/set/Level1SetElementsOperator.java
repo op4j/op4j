@@ -26,13 +26,11 @@ import java.util.Date;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.functions.IFunc;
-import org.op4j.executables.functions.conversion.Conv;
 import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
@@ -123,77 +121,6 @@ public class Level1SetElementsOperator<T> extends Operator
     public <X> ILevel1SetElementsOperator<X> conv(final IConv<X> conv) {
         return new Level1SetElementsOperator<X>(getTarget().execute(conv));
     }
-
-    public <X> ILevel1SetElementsOperator<X> convTo(final Type<X> resultType, final Object... parameters) {
-        return new Level1SetElementsOperator<X>(getTarget().execute(Conv.to(resultType, parameters)));
-    }
-
-    public ILevel1SetElementsOperator<BigDecimal> convToBigDecimal(final Object... parameters) {
-        return new Level1SetElementsOperator<BigDecimal>(getTarget().execute(Conv.to(Types.BIG_DECIMAL, parameters)));
-    }
-
-
-    public ILevel1SetElementsOperator<BigInteger> convToBigInteger(final Object... parameters) {
-        return new Level1SetElementsOperator<BigInteger>(getTarget().execute(Conv.to(Types.BIG_INTEGER, parameters)));
-    }
-
-
-    public ILevel1SetElementsOperator<Boolean> convToBoolean(final Object... parameters) {
-        return new Level1SetElementsOperator<Boolean>(getTarget().execute(Conv.to(Types.BOOLEAN, parameters)));
-    }
-
-
-    public ILevel1SetElementsOperator<Byte> convToByte(final Object... parameters) {
-        return new Level1SetElementsOperator<Byte>(getTarget().execute(Conv.to(Types.BYTE, parameters)));
-    }
-
-
-    public ILevel1SetElementsOperator<Calendar> convToCalendar(final Object... parameters) {
-        return new Level1SetElementsOperator<Calendar>(getTarget().execute(Conv.to(Types.CALENDAR, parameters)));
-    }
-
-
-    public ILevel1SetElementsOperator<Double> convToDouble(final Object... parameters) {
-        return new Level1SetElementsOperator<Double>(getTarget().execute(Conv.to(Types.DOUBLE, parameters)));
-    }
-
-
-    public ILevel1SetElementsOperator<Float> convToFloat(final Object... parameters) {
-        return new Level1SetElementsOperator<Float>(getTarget().execute(Conv.to(Types.FLOAT, parameters)));
-    }
-
-
-    public ILevel1SetElementsOperator<Integer> convToInteger(final Object... parameters) {
-        return new Level1SetElementsOperator<Integer>(getTarget().execute(Conv.to(Types.INTEGER, parameters)));
-    }
-
-
-    public ILevel1SetElementsOperator<Long> convToLong(final Object... parameters) {
-        return new Level1SetElementsOperator<Long>(getTarget().execute(Conv.to(Types.LONG, parameters)));
-    }
-
-
-    public ILevel1SetElementsOperator<Short> convToShort(final Object... parameters) {
-        return new Level1SetElementsOperator<Short>(getTarget().execute(Conv.to(Types.SHORT, parameters)));
-    }
-
-
-    public ILevel1SetElementsOperator<String> convToString(final Object... parameters) {
-        return new Level1SetElementsOperator<String>(getTarget().execute(Conv.to(Types.STRING, parameters)));
-    }
-
-    public ILevel1SetElementsOperator<Character> convToCharacter(final Object... parameters) {
-        return new Level1SetElementsOperator<Character>(getTarget().execute(Conv.to(Types.CHARACTER, parameters)));
-    }
-
-    public ILevel1SetElementsOperator<Number> convToNumber(final Object... parameters) {
-        return new Level1SetElementsOperator<Number>(getTarget().execute(Conv.to(Types.NUMBER, parameters)));
-    }
-
-    public ILevel1SetElementsOperator<Date> convToDate(final Object... parameters) {
-        return new Level1SetElementsOperator<Date>(getTarget().execute(Conv.to(Types.DATE, parameters)));
-    }
-
 
     public ILevel0SetOperator<T> endFor() {
         return new Level0SetOperator<T>(getTarget().endIterate(Structure.SET, null));

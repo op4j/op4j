@@ -76,19 +76,7 @@ public interface ILevel1ArrayElementsOperator<T>
 
     
     public <X> IConvertibleOperator<X> conv(final IConv<X> conv);
-    public <X> IConvertibleOperator<X> convTo(final Type<X> resultType, final Object... parameters);
-    
-    public ILevel1ArrayElementsOperator<Byte> convToByte(final Object... parameters);
-    public ILevel1ArrayElementsOperator<Short> convToShort(final Object... parameters);
-    public ILevel1ArrayElementsOperator<Integer> convToInteger(final Object... parameters);
-    public ILevel1ArrayElementsOperator<Long> convToLong(final Object... parameters);
-    public ILevel1ArrayElementsOperator<Float> convToFloat(final Object... parameters);
-    public ILevel1ArrayElementsOperator<Double> convToDouble(final Object... parameters);
-    public ILevel1ArrayElementsOperator<BigInteger> convToBigInteger(final Object... parameters);
-    public ILevel1ArrayElementsOperator<BigDecimal> convToBigDecimal(final Object... parameters);
-    public ILevel1ArrayElementsOperator<Boolean> convToBoolean(final Object... parameters);
-    public ILevel1ArrayElementsOperator<Calendar> convToCalendar(final Object... parameters);
-    public ILevel1ArrayElementsOperator<String> convToString(final Object... parameters);
+
     
     public <X> ILevel1ArrayElementsOperator<X> eval(final IEval<X,? super T> eval);
 

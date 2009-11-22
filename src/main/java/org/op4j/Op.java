@@ -36,7 +36,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
@@ -462,18 +461,6 @@ public final class Op {
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().callInteger("length").get());
         
         
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().callInteger("length").convToString().convToString("TO_UPPERCASE").get());
-        
-        System.out.println(Op.on(Calendar.getInstance()).convToString("dd/MMM, yyyy").get());
-        
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().callInteger("length").convToString().convToInteger().get());
-        
-        System.out.println(Op.on(Float.valueOf(3455234.6325f)).convToInteger(RoundingMode.CEILING).get());
-        
-        System.out.println(Op.on(Float.valueOf(3455234.6325f)).convToBigInteger(RoundingMode.FLOOR).get());
-        
-        System.out.println(Op.on(Double.valueOf(3455234.6325343252454353)).convToBigDecimal(8, RoundingMode.HALF_UP).get());
-        
         final BigDecimal bd = new BigDecimal("3455234.6325");
         final Float f = Float.valueOf(3455234.6325f);
         final Double d = Double.valueOf(3455234.6325);
@@ -481,8 +468,6 @@ public final class Op {
         System.out.println(bd.doubleValue());
         System.out.println(f);
         System.out.println(d);
-        
-        System.out.println(Op.on(new Integer[] {2009, 11, 25, 13, 20, 50}).convToCalendar().convToString(LocaleUtils.toLocale("gl_ES")).get());
         
         System.out.println(Op.onList(Arrays.asList(new Integer[] {2,3,4,1,2,2,4,5,2,3,5,6,87,45,2,3,34,1})).get());
         System.out.println(Op.onList(Arrays.asList(new Integer[] {2,3,4,1,2,2,4,5,2,3,5,6,87,45,2,3,34,1})).distinct().get());

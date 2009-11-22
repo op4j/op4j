@@ -101,19 +101,7 @@ public interface ILevel0GenericUniqOperator<T>
 
     
     public <X> ILevel0GenericUniqOperator<X> conv(final IConv<X> conv);
-    public <X> ILevel0GenericUniqOperator<X> convTo(final Type<X> resultType, final Object... parameters);
-    
-    public ILevel0GenericUniqOperator<Byte> convToByte(final Object... parameters);
-    public ILevel0GenericUniqOperator<Short> convToShort(final Object... parameters);
-    public ILevel0GenericUniqOperator<Integer> convToInteger(final Object... parameters);
-    public ILevel0GenericUniqOperator<Long> convToLong(final Object... parameters);
-    public ILevel0GenericUniqOperator<Float> convToFloat(final Object... parameters);
-    public ILevel0GenericUniqOperator<Double> convToDouble(final Object... parameters);
-    public ILevel0GenericUniqOperator<BigInteger> convToBigInteger(final Object... parameters);
-    public ILevel0GenericUniqOperator<BigDecimal> convToBigDecimal(final Object... parameters);
-    public ILevel0GenericUniqOperator<Boolean> convToBoolean(final Object... parameters);
-    public ILevel0GenericUniqOperator<Calendar> convToCalendar(final Object... parameters);
-    public ILevel0GenericUniqOperator<String> convToString(final Object... parameters);
+
     
     public <X> ILevel0GenericUniqOperator<X> eval(final IEval<X,? super T> eval);
 

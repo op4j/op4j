@@ -77,19 +77,7 @@ public interface ILevel2ListOfSetElementsElementsOperator<T>
 
     
     public <X> ILevel2ListOfSetElementsElementsOperator<X> conv(final IConv<X> conv);
-    public <X> ILevel2ListOfSetElementsElementsOperator<X> convTo(final Type<X> resultType, final Object... parameters);
-    
-    public ILevel2ListOfSetElementsElementsOperator<Byte> convToByte(final Object... parameters);
-    public ILevel2ListOfSetElementsElementsOperator<Short> convToShort(final Object... parameters);
-    public ILevel2ListOfSetElementsElementsOperator<Integer> convToInteger(final Object... parameters);
-    public ILevel2ListOfSetElementsElementsOperator<Long> convToLong(final Object... parameters);
-    public ILevel2ListOfSetElementsElementsOperator<Float> convToFloat(final Object... parameters);
-    public ILevel2ListOfSetElementsElementsOperator<Double> convToDouble(final Object... parameters);
-    public ILevel2ListOfSetElementsElementsOperator<BigInteger> convToBigInteger(final Object... parameters);
-    public ILevel2ListOfSetElementsElementsOperator<BigDecimal> convToBigDecimal(final Object... parameters);
-    public ILevel2ListOfSetElementsElementsOperator<Boolean> convToBoolean(final Object... parameters);
-    public ILevel2ListOfSetElementsElementsOperator<Calendar> convToCalendar(final Object... parameters);
-    public ILevel2ListOfSetElementsElementsOperator<String> convToString(final Object... parameters);
+
     
     public <X> ILevel2ListOfSetElementsElementsOperator<X> eval(final IEval<X,? super T> eval);
 

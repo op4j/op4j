@@ -76,19 +76,7 @@ public interface ILevel3ArrayOfMapElementsEntriesValueOperator<K,V>
 
     
     public <X> ILevel3ArrayOfMapElementsEntriesValueOperator<K,X> conv(final IConv<X> conv);
-    public <X> ILevel3ArrayOfMapElementsEntriesValueOperator<K,X> convTo(final Type<X> resultType, final Object... parameters);
-    
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Byte> convToByte(final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Short> convToShort(final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Integer> convToInteger(final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Long> convToLong(final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Float> convToFloat(final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Double> convToDouble(final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,BigInteger> convToBigInteger(final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,BigDecimal> convToBigDecimal(final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Boolean> convToBoolean(final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,Calendar> convToCalendar(final Object... parameters);
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,String> convToString(final Object... parameters);
+
     
     public <X> ILevel3ArrayOfMapElementsEntriesValueOperator<K,X> eval(final IEval<X,? super V> eval);
 

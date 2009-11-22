@@ -32,7 +32,6 @@ import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.functions.IFunc;
-import org.op4j.executables.functions.conversion.Conv;
 import org.op4j.executables.functions.conversion.IConv;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.setofmap.ILevel2SetOfMapElementsEntriesOperator;
@@ -123,105 +122,6 @@ public class Level3SetOfMapElementsEntriesValueOperator<K,V> extends Operator
     public <X> ILevel3SetOfMapElementsEntriesValueOperator<K, X> conv(final IConv<X> conv) {
         return new Level3SetOfMapElementsEntriesValueOperator<K, X>(getTarget().execute(conv));
     }
-
-    public <X> ILevel3SetOfMapElementsEntriesValueOperator<K, X> convTo(final Type<X> resultType, final Object... parameters) {
-        return new Level3SetOfMapElementsEntriesValueOperator<K, X>(getTarget().execute(Conv.to(resultType, parameters)));
-    }
-
-    public ILevel3SetOfMapElementsEntriesValueOperator<K, BigDecimal> convToBigDecimal(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3SetOfMapElementsEntriesValueOperator<K, BigInteger> convToBigInteger(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3SetOfMapElementsEntriesValueOperator<K, Boolean> convToBoolean(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3SetOfMapElementsEntriesValueOperator<K, Byte> convToByte(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3SetOfMapElementsEntriesValueOperator<K, Calendar> convToCalendar(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3SetOfMapElementsEntriesValueOperator<K, Double> convToDouble(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3SetOfMapElementsEntriesValueOperator<K, Float> convToFloat(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3SetOfMapElementsEntriesValueOperator<K, Integer> convToInteger(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3SetOfMapElementsEntriesValueOperator<K, Long> convToLong(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3SetOfMapElementsEntriesValueOperator<K, Short> convToShort(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel3SetOfMapElementsEntriesValueOperator<K, String> convToString(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel3SetOfMapElementsEntriesValueOperator<K, Character> convToCharacter(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel3SetOfMapElementsEntriesValueOperator<K, Number> convToNumber(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel3SetOfMapElementsEntriesValueOperator<K, Date> convToDate(
-            Object... parameters) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
 
     public ILevel2SetOfMapElementsEntriesOperator<K, V> endOn() {
         return new Level2SetOfMapElementsEntriesOperator<K, V>(getTarget().endIterate(Structure.MAP_ENTRY, null));
