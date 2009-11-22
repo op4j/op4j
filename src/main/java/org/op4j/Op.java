@@ -633,11 +633,16 @@ public final class Op {
         System.out.println(Op.buildList(Types.NUMBER)
             	.add(45.9, new BigDecimal(34.456))
             	.forEach().exec(ToString.fromCurrency(Locale.getDefault(), 
-            			1, Integer.MAX_VALUE, 2, 10)).get());
+            			1, 2, 10, true)).get());
         System.out.println(Op.buildList(Types.NUMBER)
             	.add(45.9, 45, new BigDecimal(34.456))
             	.forEach().exec(ToString.fromCurrency(Locale.getDefault(), 
-            			1, Integer.MAX_VALUE, 0, 0)).get());
+            			1, 0, 0, true)).get());
+        
+        System.out.println(Op.buildList(Types.NUMBER)
+            	.add(45.9, 45, new BigDecimal(34.456), 0, 0.5, 0.211)
+            	.forEach().exec(ToString.fromPercent(Locale.getDefault(), 
+            			1, 0, 10, true, ',', '\'', false)).get());
         
     }
     
