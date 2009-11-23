@@ -247,13 +247,12 @@ public class Level0ArrayOperator<T> extends Operator implements
         return new Level0ListOperator<T>(getTarget().execute(new ToList.FromArray<T>()));
     }
 
-    public <K> ILevel0MapOperator<K, T> toMap(IEval<K, ? super T> keyEval) {
+    public <K> ILevel0MapOperator<K, T> toMap(final IEval<K, ? super T> keyEval) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public <K, V> ILevel0MapOperator<K, V> toMap(
-            IMapBuild<K, V, ? super T> mapBuild) {
+    public <K, V> ILevel0MapOperator<K, V> toMap(final IMapBuild<K, V, ? super T> mapBuild) {
         // TODO Auto-generated method stub
         return null;
     }

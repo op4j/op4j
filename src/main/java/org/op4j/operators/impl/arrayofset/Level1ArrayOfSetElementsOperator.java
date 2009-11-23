@@ -283,15 +283,13 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
     }
 
 
-    public <K> ILevel1ArrayOfMapElementsOperator<K, T> toMap(
-            IEval<K, ? super T> keyEval) {
+    public <K> ILevel1ArrayOfMapElementsOperator<K, T> toMap(final IEval<K, ? super T> keyEval) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <K, V> ILevel1ArrayOfMapElementsOperator<K, V> toMap(
-            IMapBuild<K, V, ? super T> mapBuild) {
+    public <K, V> ILevel1ArrayOfMapElementsOperator<K, V> toMap(final IMapBuild<K, V, ? super T> mapBuild) {
         // TODO Auto-generated method stub
         return null;
     }

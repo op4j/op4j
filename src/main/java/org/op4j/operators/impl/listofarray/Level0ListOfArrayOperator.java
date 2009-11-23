@@ -293,15 +293,13 @@ public class Level0ListOfArrayOperator<T> extends Operator
     }
 
 
-    public <K> ILevel0ArrayOfMapOperator<K, T> toArrayOfMap(
-            IEval<K, ? super T> keyEval) {
+    public <K> ILevel0ArrayOfMapOperator<K, T> toArrayOfMap(final IEval<K, ? super T> keyEval) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <K, V> ILevel0ArrayOfMapOperator<K, V> toArrayOfMap(
-            IMapBuild<K, V, ? super T> mapBuild) {
+    public <K, V> ILevel0ArrayOfMapOperator<K, V> toArrayOfMap(final IMapBuild<K, V, ? super T> mapBuild) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -318,15 +316,13 @@ public class Level0ListOfArrayOperator<T> extends Operator
     }
 
 
-    public <K> ILevel0ListOfMapOperator<K, T> toListOfMap(
-            IEval<K, ? super T> keyEval) {
+    public <K> ILevel0ListOfMapOperator<K, T> toListOfMap(final IEval<K, ? super T> keyEval) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <K, V> ILevel0ListOfMapOperator<K, V> toListOfMap(
-            IMapBuild<K, V, ? super T> mapBuild) {
+    public <K, V> ILevel0ListOfMapOperator<K, V> toListOfMap(final IMapBuild<K, V, ? super T> mapBuild) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -347,15 +343,13 @@ public class Level0ListOfArrayOperator<T> extends Operator
     }
 
 
-    public <K> ILevel0SetOfMapOperator<K, T> toSetOfMap(
-            IEval<K, ? super T> keyEval) {
+    public <K> ILevel0SetOfMapOperator<K, T> toSetOfMap(final IEval<K, ? super T> keyEval) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <K, V> ILevel0SetOfMapOperator<K, V> toSetOfMap(
-            IMapBuild<K, V, ? super T> mapBuild) {
+    public <K, V> ILevel0SetOfMapOperator<K, V> toSetOfMap(final IMapBuild<K, V, ? super T> mapBuild) {
         // TODO Auto-generated method stub
         return null;
     }

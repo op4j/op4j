@@ -284,15 +284,13 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public <K2> ILevel2MapOfMapEntriesValueOperator<K, K2, V> toMap(
-            IEval<K2, ? super V> keyEval) {
+    public <K2> ILevel2MapOfMapEntriesValueOperator<K, K2, V> toMap(final IEval<K2, ? super V> keyEval) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public <K2, V2> ILevel2MapOfMapEntriesValueOperator<K, K2, V2> toMap(
-            IMapBuild<K2, V2, ? super V> mapBuild) {
+    public <K2, V2> ILevel2MapOfMapEntriesValueOperator<K, K2, V2> toMap(final IMapBuild<K2, V2, ? super V> mapBuild) {
         // TODO Auto-generated method stub
         return null;
     }
