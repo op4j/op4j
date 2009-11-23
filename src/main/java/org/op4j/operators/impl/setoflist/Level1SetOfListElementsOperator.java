@@ -31,9 +31,11 @@ import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ListFunc;
 import org.op4j.executables.functions.conversion.ToArray;
+import org.op4j.executables.functions.conversion.ToMap;
 import org.op4j.executables.functions.conversion.ToSet;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.setofarray.Level1SetOfArrayElementsOperator;
+import org.op4j.operators.impl.setofmap.Level1SetOfMapElementsOperator;
 import org.op4j.operators.impl.setofset.Level1SetOfSetElementsOperator;
 import org.op4j.operators.intf.setofarray.ILevel1SetOfArrayElementsOperator;
 import org.op4j.operators.intf.setoflist.ILevel0SetOfListOperator;
@@ -284,14 +286,12 @@ public class Level1SetOfListElementsOperator<T> extends Operator
 
 
     public <K> ILevel1SetOfMapElementsOperator<K, T> toMap(final IEval<K, ? super T> keyEval) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1SetOfMapElementsOperator<K, T>(getTarget().execute(new ToMap.FromListByKeyEval<K, T>(keyEval)));
     }
 
 
     public <K, V> ILevel1SetOfMapElementsOperator<K, V> toMap(final IMapBuild<K, V, ? super T> mapBuild) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1SetOfMapElementsOperator<K, V>(getTarget().execute(new ToMap.FromListByMapBuilder<K, V, T>(mapBuild)));
     }
 
 

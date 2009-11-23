@@ -30,9 +30,11 @@ import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ArrayFunc;
 import org.op4j.executables.functions.conversion.ToList;
+import org.op4j.executables.functions.conversion.ToMap;
 import org.op4j.executables.functions.conversion.ToSet;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.mapoflist.Level2MapOfListEntriesValueOperator;
+import org.op4j.operators.impl.mapofmap.Level2MapOfMapEntriesValueOperator;
 import org.op4j.operators.impl.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.operators.intf.mapofarray.ILevel1MapOfArrayEntriesOperator;
 import org.op4j.operators.intf.mapofarray.ILevel2MapOfArrayEntriesValueOperator;
@@ -285,14 +287,12 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
 
 
     public <K2> ILevel2MapOfMapEntriesValueOperator<K, K2, V> toMap(final IEval<K2, ? super V> keyEval) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level2MapOfMapEntriesValueOperator<K, K2, V>(getTarget().execute(new ToMap.FromArrayByKeyEval<K2, V>(keyEval)));
     }
 
 
     public <K2, V2> ILevel2MapOfMapEntriesValueOperator<K, K2, V2> toMap(final IMapBuild<K2, V2, ? super V> mapBuild) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level2MapOfMapEntriesValueOperator<K, K2, V2>(getTarget().execute(new ToMap.FromArrayByMapBuilder<K2, V2, V>(mapBuild)));
     }
 
 

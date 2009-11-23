@@ -682,6 +682,7 @@ public final class Op {
         System.out.println(printArray(Op.onListOfArray(Types.STRING, listOfStringArray1).toArrayOfList().get()));
         System.out.println(printArray(Op.onListOfList(listOfListOfString1).toArrayOfList().get()));
         
+        System.out.println(Op.onArray(stringsArr1).removeNulls().toMap(Eval.integerExp("length()")).get());
     }
     
     
