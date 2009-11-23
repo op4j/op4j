@@ -24,6 +24,7 @@ import java.util.Comparator;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
+import org.op4j.Op;
 import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
@@ -281,21 +282,12 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
 
     public ILevel0ArrayOfArrayOperator<T> toArrayOfArray(final Type<T> of) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <X> ILevel0ArrayOfArrayOperator<X> toArrayOfArray(
-            Class<X> arrayOfClass) {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onArrayOfArray(forEach().toArray(of).get());
     }
 
 
     public ILevel0ArrayOfListOperator<T> toArrayOfList() {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onArrayOfList(forEach().toList().get());
     }
 
 

@@ -647,6 +647,40 @@ public final class Op {
         
         System.out.println(Op.onArray(stringsArr1).toSet().get());
         System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).forEach().toSet().get()));
+        System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).toArrayOfArray(Types.STRING).get()));
+        
+        final List<String[]> listOfStringArray1 = new ArrayList<String[]>();
+        listOfStringArray1.add(Op.onAll("Hola", "Hello", "Ciao", "Ola").buildArray(Types.STRING).get());
+        listOfStringArray1.add(Op.onAll("Adios", "Goodbye", "Ciao", "Adéus").buildArray(Types.STRING).get());
+        
+        final List<Set<String>> listOfStringSet1 = new ArrayList<Set<String>>();
+        listOfStringSet1.add(Op.onAll("Hola", "Hello", "Ciao", "Ola").buildSet().get());
+        listOfStringSet1.add(Op.onAll("Adios", "Goodbye", "Ciao", "Adéus").buildSet().get());
+        
+        final Set<String[]> setOfStringArray1 = new LinkedHashSet<String[]>();
+        setOfStringArray1.add(Op.onAll("Hola", "Hello", "Ciao", "Ola").buildArray(Types.STRING).get());
+        setOfStringArray1.add(Op.onAll("Adios", "Goodbye", "Ciao", "Adéus").buildArray(Types.STRING).get());
+        
+        final Set<List<String>> setOfStringList1 = new LinkedHashSet<List<String>>();
+        setOfStringList1.add(Op.onAll("Hola", "Hello", "Ciao", "Ola").buildList().get());
+        setOfStringList1.add(Op.onAll("Adios", "Goodbye", "Ciao", "Adéus").buildList().get());
+        
+        final Set<Set<String>> setOfStringSet1 = new LinkedHashSet<Set<String>>();
+        setOfStringSet1.add(Op.onAll("Hola", "Hello", "Ciao", "Ola").buildSet().get());
+        setOfStringSet1.add(Op.onAll("Adios", "Goodbye", "Ciao", "Adéus").buildSet().get());
+        
+        System.out.println(printArray(Op.onListOfArray(Types.STRING, listOfStringArray1).toArrayOfArray(Types.STRING).get()));
+        System.out.println(printArray(Op.onListOfList(listOfListOfString1).toArrayOfArray(Types.STRING).get()));
+        System.out.println(printArray(Op.onListOfSet(listOfStringSet1).toArrayOfArray(Types.STRING).get()));
+        
+        System.out.println(printArray(Op.onSetOfArray(Types.STRING, setOfStringArray1).toArrayOfArray(Types.STRING).get()));
+        System.out.println(printArray(Op.onSetOfList(setOfStringList1).toArrayOfArray(Types.STRING).get()));
+        System.out.println(printArray(Op.onSetOfSet(setOfStringSet1).toArrayOfArray(Types.STRING).get()));
+
+        
+        System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).toArrayOfList().get()));
+        System.out.println(printArray(Op.onListOfArray(Types.STRING, listOfStringArray1).toArrayOfList().get()));
+        System.out.println(printArray(Op.onListOfList(listOfListOfString1).toArrayOfList().get()));
         
     }
     

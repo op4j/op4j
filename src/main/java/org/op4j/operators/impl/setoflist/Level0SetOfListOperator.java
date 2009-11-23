@@ -25,6 +25,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
+import org.op4j.Op;
 import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
@@ -279,21 +281,13 @@ public class Level0SetOfListOperator<T> extends Operator
 
 
     public ILevel0ArrayOfArrayOperator<T> toArrayOfArray(final Type<T> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onArrayOfArray(Op.onSet(forEach().toArray(of).get()).toArray(Types.arrayOf(of)).get());
     }
 
 
-    public <X> ILevel0ArrayOfArrayOperator<X> toArrayOfArray(
-            Class<X> arrayOfClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
+    @SuppressWarnings("unchecked")
     public ILevel0ArrayOfListOperator<T> toArrayOfList() {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onArrayOfList(Op.onSet(get()).toArray((Type<List<T>>)((Type<?>)Types.LIST_OF_UNKNOWN)).get());
     }
 
 
@@ -311,9 +305,9 @@ public class Level0SetOfListOperator<T> extends Operator
     }
 
 
+    @SuppressWarnings("unchecked")
     public ILevel0ArrayOfSetOperator<T> toArrayOfSet() {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onArrayOfSet(Op.onSet(forEach().toSet().get()).toArray((Type<Set<T>>)((Type<?>)Types.SET_OF_UNKNOWN)).get());
     }
 
 

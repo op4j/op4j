@@ -29,8 +29,10 @@ import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.SetFunc;
+import org.op4j.executables.functions.conversion.ToArray;
 import org.op4j.executables.functions.conversion.ToList;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.setofarray.Level1SetOfArrayElementsOperator;
 import org.op4j.operators.impl.setoflist.Level1SetOfListElementsOperator;
 import org.op4j.operators.intf.setofarray.ILevel1SetOfArrayElementsOperator;
 import org.op4j.operators.intf.setoflist.ILevel1SetOfListElementsOperator;
@@ -271,8 +273,7 @@ public class Level1SetOfSetElementsOperator<T> extends Operator
 
 
     public ILevel1SetOfArrayElementsOperator<T> toArray(final Type<T> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1SetOfArrayElementsOperator<T>(of, getTarget().execute(new ToArray.FromCollection<T>(of)));
     }
 
 

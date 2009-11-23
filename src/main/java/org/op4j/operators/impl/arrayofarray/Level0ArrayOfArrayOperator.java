@@ -23,6 +23,7 @@ import java.util.Collection;
 import java.util.Comparator;
 
 import org.javaruntype.type.Type;
+import org.op4j.Op;
 import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
@@ -282,8 +283,7 @@ public class Level0ArrayOfArrayOperator<T> extends Operator
 
 
     public ILevel0ArrayOfListOperator<T> toArrayOfList() {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onArrayOfList(forEach().toList().get());
     }
 
 
@@ -302,20 +302,18 @@ public class Level0ArrayOfArrayOperator<T> extends Operator
 
 
     public ILevel0ArrayOfSetOperator<T> toArrayOfSet() {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onArrayOfSet(forEach().toSet().get());
     }
 
 
     public ILevel0ListOfArrayOperator<T> toListOfArray(final Type<T> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onListOfArray(of, Op.onArray(get()).toList().get());
     }
 
 
-        public ILevel0ListOfListOperator<T> toListOfList() {
-        // TODO Auto-generated method stub
-        return null;
+    @SuppressWarnings("unchecked")
+    public ILevel0ListOfListOperator<T> toListOfList() {
+        return Op.onListOfArray((Type<T>)this.arrayOf, Op.onArray(get()).toList().get()).forEach().toList().endFor();
     }
 
 
@@ -333,9 +331,9 @@ public class Level0ArrayOfArrayOperator<T> extends Operator
     }
 
 
+    @SuppressWarnings("unchecked")
     public ILevel0ListOfSetOperator<T> toListOfSet() {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onListOfArray((Type<T>)this.arrayOf, Op.onArray(get()).toList().get()).forEach().toSet().endFor();
     }
 
 
