@@ -282,24 +282,22 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
 
     public ILevel0ArrayOfArrayOperator<T> toArrayOfArray(final Type<T> of) {
-        return Op.onArrayOfArray(forEach().toArray(of).get());
+        return forEach().toArray(of).endFor();
     }
 
 
     public ILevel0ArrayOfListOperator<T> toArrayOfList() {
-        return Op.onArrayOfList(forEach().toList().get());
+        return forEach().toList().endFor();
     }
 
 
     public <K> ILevel0ArrayOfMapOperator<K, T> toArrayOfMap(final IEval<K, ? super T> keyEval) {
-        // TODO Auto-generated method stub
-        return null;
+        return forEach().toMap(keyEval).endFor();
     }
 
 
     public <K, V> ILevel0ArrayOfMapOperator<K, V> toArrayOfMap(final IMapBuild<K, V, ? super T> mapBuild) {
-        // TODO Auto-generated method stub
-        return null;
+        return forEach().toMap(mapBuild).endFor();
     }
 
 
@@ -314,14 +312,12 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
 
     public <K> ILevel0ListOfMapOperator<K, T> toListOfMap(final IEval<K, ? super T> keyEval) {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onListOfMap(Op.onArray(forEach().toMap(keyEval).get()).toList().get());
     }
 
 
     public <K, V> ILevel0ListOfMapOperator<K, V> toListOfMap(final IMapBuild<K, V, ? super T> mapBuild) {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onListOfMap(Op.onArray(forEach().toMap(mapBuild).get()).toList().get());
     }
 
 
@@ -341,14 +337,12 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
 
     public <K> ILevel0SetOfMapOperator<K, T> toSetOfMap(final IEval<K, ? super T> keyEval) {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onSetOfMap(Op.onArray(forEach().toMap(keyEval).get()).toSet().get());
     }
 
 
     public <K, V> ILevel0SetOfMapOperator<K, V> toSetOfMap(final IMapBuild<K, V, ? super T> mapBuild) {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onSetOfMap(Op.onArray(forEach().toMap(mapBuild).get()).toSet().get());
     }
 
 

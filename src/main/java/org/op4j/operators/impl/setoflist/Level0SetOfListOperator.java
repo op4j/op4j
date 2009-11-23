@@ -22,6 +22,7 @@ package org.op4j.operators.impl.setoflist;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
@@ -291,15 +292,15 @@ public class Level0SetOfListOperator<T> extends Operator
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K> ILevel0ArrayOfMapOperator<K, T> toArrayOfMap(final IEval<K, ? super T> keyEval) {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onArrayOfMap(Op.onSet(forEach().toMap(keyEval).get()).toArray((Type<Map<K, T>>)((Type<?>)Types.MAP_OF_UNKNOWN_UNKNOWN)).get());
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K, V> ILevel0ArrayOfMapOperator<K, V> toArrayOfMap(final IMapBuild<K, V, ? super T> mapBuild) {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onArrayOfMap(Op.onSet(forEach().toMap(mapBuild).get()).toArray((Type<Map<K, V>>)((Type<?>)Types.MAP_OF_UNKNOWN_UNKNOWN)).get());
     }
 
 
@@ -320,14 +321,12 @@ public class Level0SetOfListOperator<T> extends Operator
 
 
     public <K> ILevel0ListOfMapOperator<K, T> toListOfMap(final IEval<K, ? super T> keyEval) {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onListOfMap(Op.onSet(forEach().toMap(keyEval).get()).toList().get());
     }
 
 
     public <K, V> ILevel0ListOfMapOperator<K, V> toListOfMap(final IMapBuild<K, V, ? super T> mapBuild) {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onListOfMap(Op.onSet(forEach().toMap(mapBuild).get()).toList().get());
     }
 
 
@@ -341,15 +340,13 @@ public class Level0SetOfListOperator<T> extends Operator
     }
 
 
-        public <K> ILevel0SetOfMapOperator<K, T> toSetOfMap(final IEval<K, ? super T> keyEval) {
-        // TODO Auto-generated method stub
-        return null;
+    public <K> ILevel0SetOfMapOperator<K, T> toSetOfMap(final IEval<K, ? super T> keyEval) {
+        return forEach().toMap(keyEval).endFor();
     }
 
 
     public <K, V> ILevel0SetOfMapOperator<K, V> toSetOfMap(final IMapBuild<K, V, ? super T> mapBuild) {
-        // TODO Auto-generated method stub
-        return null;
+        return forEach().toMap(mapBuild).endFor();
     }
 
 
