@@ -309,14 +309,12 @@ public class Level0SetOfArrayOperator<T> extends Operator
 
 
     public ILevel0ListOfArrayOperator<T> toListOfArray(final Type<T> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onListOfArray(of, Op.onSet(get()).toList().get());
     }
 
 
-        public ILevel0ListOfListOperator<T> toListOfList() {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0ListOfListOperator<T> toListOfList() {
+        return Op.onListOfList(Op.onSet(forEach().toList().get()).toList().get());
     }
 
 
@@ -335,14 +333,12 @@ public class Level0SetOfArrayOperator<T> extends Operator
 
 
     public ILevel0ListOfSetOperator<T> toListOfSet() {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onListOfSet(Op.onSet(forEach().toSet().get()).toList().get());
     }
 
 
     public ILevel0SetOfListOperator<T> toSetOfList() {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onSetOfList(forEach().toList().get());
     }
 
 
@@ -361,8 +357,7 @@ public class Level0SetOfArrayOperator<T> extends Operator
 
 
     public ILevel0SetOfSetOperator<T> toSetOfSet() {
-        // TODO Auto-generated method stub
-        return null;
+        return Op.onSetOfSet(forEach().toSet().get());
     }
 
 
