@@ -215,40 +215,34 @@ public class Level0MapOfSetOperator<K,V> extends Operator
 
 
 
+    @SuppressWarnings("unchecked")
     public ILevel0MapOfSetOperator<K, V> sort() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFunc.SortByKey()));
     }
 
 
-    public ILevel0MapOfSetOperator<K, V> sort(
-            Comparator<? super Entry<K, Set<V>>> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0MapOfSetOperator<K, V> sort(final Comparator<? super Entry<K, Set<V>>> comparator) {
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFunc.SortEntries<K, Set<V>>(comparator)));
     }
 
 
     public ILevel0MapOfArrayOperator<K, V> toMapOfArray(final Type<V> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return forEachEntry().onValue().toArray(of).endOn().endFor();
     }
 
 
-        public ILevel0MapOfListOperator<K, V> toMapOfList() {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0MapOfListOperator<K, V> toMapOfList() {
+        return forEachEntry().onValue().toList().endOn().endFor();
     }
 
 
     public <K2> ILevel0MapOfMapOperator<K, K2, V> toMapOfMap(final IEval<K2, ? super V> keyEval) {
-        // TODO Auto-generated method stub
-        return null;
+        return forEachEntry().onValue().toMap(keyEval).endOn().endFor();
     }
 
 
     public <K2, V2> ILevel0MapOfMapOperator<K, K2, V2> toMapOfMap(final IMapBuild<K2, V2, ? super V> mapBuild) {
-        // TODO Auto-generated method stub
-        return null;
+        return forEachEntry().onValue().toMap(mapBuild).endOn().endFor();
     }
 
 

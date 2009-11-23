@@ -215,40 +215,34 @@ public class Level0MapOfListOperator<K,V> extends Operator
 
 
 
+    @SuppressWarnings("unchecked")
     public ILevel0MapOfListOperator<K, V> sort() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0MapOfListOperator<K, V>(getTarget().execute(new MapFunc.SortByKey()));
     }
 
 
-    public ILevel0MapOfListOperator<K, V> sort(
-            Comparator<? super Entry<K, List<V>>> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0MapOfListOperator<K, V> sort(final Comparator<? super Entry<K, List<V>>> comparator) {
+        return new Level0MapOfListOperator<K, V>(getTarget().execute(new MapFunc.SortEntries<K, List<V>>(comparator)));
     }
 
 
     public ILevel0MapOfArrayOperator<K, V> toMapOfArray(final Type<V> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return forEachEntry().onValue().toArray(of).endOn().endFor();
     }
 
 
-        public <K2> ILevel0MapOfMapOperator<K, K2, V> toMapOfMap(final IEval<K2, ? super V> keyEval) {
-        // TODO Auto-generated method stub
-        return null;
+    public <K2> ILevel0MapOfMapOperator<K, K2, V> toMapOfMap(final IEval<K2, ? super V> keyEval) {
+        return forEachEntry().onValue().toMap(keyEval).endOn().endFor();
     }
 
 
     public <K2, V2> ILevel0MapOfMapOperator<K, K2, V2> toMapOfMap(final IMapBuild<K2, V2, ? super V> mapBuild) {
-        // TODO Auto-generated method stub
-        return null;
+        return forEachEntry().onValue().toMap(mapBuild).endOn().endFor();
     }
 
 
     public ILevel0MapOfSetOperator<K, V> toMapOfSet() {
-        // TODO Auto-generated method stub
-        return null;
+        return forEachEntry().onValue().toSet().endOn().endFor();
     }
 
 

@@ -87,7 +87,6 @@ public interface ILevel1SetOfMapElementsOperator<K,V>
     public ILevel1SetOfListElementsOperator<V> extractValues();
     
     
-    public ILevel2SetOfMapElementsEntriesOperator<K,V> select(final K key);
     public ILevel2SetOfMapElementsEntriesOperator<K,V> forEachEntryWithKeys(final K... keys);
     public ILevel2SetOfMapElementsEntriesOperator<K,V> forEachEntry(final String expression, final Object... optionalExpParams);
     public ILevel2SetOfMapElementsEntriesOperator<K,V> forEachEntry(final ISelect<Map.Entry<K,V>> selector);

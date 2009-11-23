@@ -215,16 +215,15 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
 
 
 
+    @SuppressWarnings("unchecked")
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> sort() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.SortByKey()));
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> sort(
-            Comparator<? super Entry<K2, V>> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+    @SuppressWarnings("unchecked")
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> sort(final Comparator<? super Entry<K2, V>> comparator) {
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.SortEntries(comparator)));
     }
 
 

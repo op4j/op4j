@@ -214,16 +214,14 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
 
 
 
+    @SuppressWarnings("unchecked")
     public ILevel1ArrayOfMapElementsOperator<K, V> sort() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(new MapFunc.SortByKey()));
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> sort(
-            Comparator<? super Entry<K, V>> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfMapElementsOperator<K, V> sort(final Comparator<? super Entry<K, V>> comparator) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(new MapFunc.SortEntries<K, V>(comparator)));
     }
 
 

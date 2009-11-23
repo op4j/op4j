@@ -206,16 +206,14 @@ public class Level0MapOperator<K,V> extends Operator
 
 
 
+    @SuppressWarnings("unchecked")
     public ILevel0MapOperator<K, V> sort() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0MapOperator<K, V>(getTarget().execute(new MapFunc.SortByKey()));
     }
 
 
-    public ILevel0MapOperator<K, V> sort(
-            Comparator<? super Entry<K, V>> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0MapOperator<K, V> sort(final Comparator<? super Entry<K, V>> comparator) {
+        return new Level0MapOperator<K, V>(getTarget().execute(new MapFunc.SortEntries<K, V>(comparator)));
     }
 
 

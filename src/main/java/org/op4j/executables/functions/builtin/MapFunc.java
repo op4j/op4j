@@ -20,9 +20,13 @@
 
 package org.op4j.executables.functions.builtin;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
@@ -51,6 +55,55 @@ public class MapFunc {
     
     
     
+    
+    public static class SortByKey<K extends Comparable<? super K>, V> implements IFunc<Map<K, V>, Map<K, V>> {
+
+        public SortByKey() {
+            super();
+        }
+
+        public Type<? super Map<K, V>> getResultType() {
+            return Types.MAP_OF_UNKNOWN_UNKNOWN;
+        }
+
+        public Map<K, V> execute(final Map<K, V> object) throws Exception {
+            final List<K> keys = new ArrayList<K>(object.keySet());
+            Collections.sort(keys);
+            final Map<K, V> result = new LinkedHashMap<K, V>();
+            for (final K key : keys) {
+                result.put(key, object.get(key));
+            }
+            return result;
+        }
+        
+    }
+
+    
+    
+    public static class SortEntries<K, V> implements IFunc<Map<K, V>, Map<K, V>> {
+
+        private final Comparator<? super Map.Entry<K, V>> comparator;
+
+        public SortEntries(final Comparator<? super Map.Entry<K, V>> comparator) {
+            super();
+            this.comparator = comparator;
+        }
+
+        public Type<? super Map<K, V>> getResultType() {
+            return Types.MAP_OF_UNKNOWN_UNKNOWN;
+        }
+
+        public Map<K, V> execute(final Map<K, V> object) throws Exception {
+            final List<Map.Entry<K, V>> entries = new ArrayList<Entry<K,V>>(object.entrySet());
+            Collections.sort(entries, this.comparator);
+            final Map<K, V> result = new LinkedHashMap<K, V>();
+            for (final Map.Entry<K, V> entry : entries) {
+                result.put(entry.getKey(), entry.getValue());
+            }
+            return result;
+        }
+        
+    }
     
 
     

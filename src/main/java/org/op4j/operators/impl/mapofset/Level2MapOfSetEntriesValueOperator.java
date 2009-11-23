@@ -30,9 +30,11 @@ import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.SetFunc;
+import org.op4j.executables.functions.conversion.ToArray;
 import org.op4j.executables.functions.conversion.ToList;
 import org.op4j.executables.functions.conversion.ToMap;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.mapofarray.Level2MapOfArrayEntriesValueOperator;
 import org.op4j.operators.impl.mapoflist.Level2MapOfListEntriesValueOperator;
 import org.op4j.operators.impl.mapofmap.Level2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofarray.ILevel2MapOfArrayEntriesValueOperator;
@@ -265,22 +267,20 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     
 
 
+    @SuppressWarnings("unchecked")
     public ILevel2MapOfSetEntriesValueOperator<K, V> sort() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.Sort()));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> sort(
-            Comparator<? super V> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+    @SuppressWarnings("unchecked")
+    public ILevel2MapOfSetEntriesValueOperator<K, V> sort(final Comparator<? super V> comparator) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.Sort(comparator)));
     }
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> toArray(final Type<V> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(of, getTarget().execute(new ToArray.FromCollection<V>(of)));
     }
 
 

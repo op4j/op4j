@@ -296,8 +296,7 @@ public class Level1ListOfSetElementsOperator<T> extends Operator
 
 
     public List<Set<T>> get() {
-        // TODO Auto-generated method stub
-        return null;
+        return endFor().get();
     }
 
 }

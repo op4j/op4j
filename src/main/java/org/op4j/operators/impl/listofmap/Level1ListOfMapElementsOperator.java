@@ -210,21 +210,14 @@ public class Level1ListOfMapElementsOperator<K,V> extends Operator
 
 
 
-
-
-
-
-
+    @SuppressWarnings("unchecked")
     public ILevel1ListOfMapElementsOperator<K, V> sort() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(new MapFunc.SortByKey()));
     }
 
 
-    public ILevel1ListOfMapElementsOperator<K, V> sort(
-            Comparator<? super Entry<K, V>> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ListOfMapElementsOperator<K, V> sort(final Comparator<? super Entry<K, V>> comparator) {
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(new MapFunc.SortEntries<K, V>(comparator)));
     }
 
 
