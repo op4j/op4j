@@ -274,6 +274,10 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
+    public ILevel2MapOfMapEntriesValueOperator<K, V, V> toMap() {
+        return new Level2MapOfMapEntriesValueOperator<K, V, V>(getTarget().execute(new ToMap.FromSetByAlternateElements<V>()));
+    }
+
     public <K2> ILevel2MapOfMapEntriesValueOperator<K, K2, V> toMap(final IEval<K2, ? super V> keyEval) {
         return new Level2MapOfMapEntriesValueOperator<K, K2, V>(getTarget().execute(new ToMap.FromSetByKeyEval<K2, V>(keyEval)));
     }
@@ -287,5 +291,6 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     public Map<K, Set<V>> get() {
         return endOn().endFor().get();
     }
+
 
 }

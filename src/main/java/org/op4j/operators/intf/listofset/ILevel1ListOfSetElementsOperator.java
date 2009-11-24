@@ -89,6 +89,7 @@ public interface ILevel1ListOfSetElementsOperator<T>
     
     public ILevel1ListOfListElementsOperator<T> toList();
     
+    public ILevel1ListOfMapElementsOperator<T,T> toMap();
     public <K> ILevel1ListOfMapElementsOperator<K,T> toMap(final IEval<K,? super T> keyEval);
     public <K,V> ILevel1ListOfMapElementsOperator<K,V> toMap(final IMapBuild<K,V,? super T> mapBuild);
 

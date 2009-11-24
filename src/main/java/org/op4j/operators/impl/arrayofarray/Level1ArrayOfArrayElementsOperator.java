@@ -274,6 +274,10 @@ public class Level1ArrayOfArrayElementsOperator<T> extends Operator
     }
 
 
+    public ILevel1ArrayOfMapElementsOperator<T, T> toMap() {
+        return new Level1ArrayOfMapElementsOperator<T, T>(getTarget().execute(new ToMap.FromArrayByAlternateElements<T>()));
+    }
+
     public <K> ILevel1ArrayOfMapElementsOperator<K, T> toMap(final IEval<K, ? super T> keyEval) {
         return new Level1ArrayOfMapElementsOperator<K, T>(getTarget().execute(new ToMap.FromArrayByKeyEval<K, T>(keyEval)));
     }

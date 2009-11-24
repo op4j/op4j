@@ -336,6 +336,21 @@ public class Level0ArrayOfListOperator<T> extends Operator
     }
 
 
+    public ILevel0ArrayOfMapOperator<T, T> toArrayOfMap() {
+        return forEach().toMap().endFor();
+    }
+
+
+    public ILevel0ListOfMapOperator<T, T> toListOfMap() {
+        return Op.onListOfMap(Op.onArray(forEach().toMap().get()).toList().get());
+    }
+
+
+    public ILevel0SetOfMapOperator<T, T> toSetOfMap() {
+        return Op.onSetOfMap(Op.onArray(forEach().toMap().get()).toSet().get());
+    }
+
+
     @SuppressWarnings("unchecked")
 	public List<T>[] get() {
         return (List<T>[]) getTarget().get();

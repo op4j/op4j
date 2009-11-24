@@ -33,6 +33,7 @@ import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
  */
 public interface IConvertibleToSetOfMapOperator<T> {
     
+    public ILevel0SetOfMapOperator<T,T> toSetOfMap();
     public <K> ILevel0SetOfMapOperator<K,T> toSetOfMap(final IEval<K,? super T> keyEval);
     public <K,V> ILevel0SetOfMapOperator<K,V> toSetOfMap(final IMapBuild<K,V,? super T> mapBuild);
 

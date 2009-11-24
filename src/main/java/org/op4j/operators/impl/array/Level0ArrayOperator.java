@@ -234,6 +234,11 @@ public class Level0ArrayOperator<T> extends Operator implements
         return new Level0ListOperator<T>(getTarget().execute(new ToList.FromArray<T>()));
     }
 
+
+    public ILevel0MapOperator<T, T> toMap() {
+        return new Level0MapOperator<T, T>(getTarget().execute(new ToMap.FromArrayByAlternateElements<T>()));
+    }
+
     public <K> ILevel0MapOperator<K, T> toMap(final IEval<K, ? super T> keyEval) {
         return new Level0MapOperator<K, T>(getTarget().execute(new ToMap.FromArrayByKeyEval<K, T>(keyEval)));
     }
@@ -254,5 +259,6 @@ public class Level0ArrayOperator<T> extends Operator implements
     public ILevel0GenericUniqOperator<T[]> generic() {
         return new Level0GenericUniqOperator<T[]>(getTarget());
     }
+
 
 }

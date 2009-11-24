@@ -351,6 +351,22 @@ public class Level0ListOfSetOperator<T> extends Operator
 
 
     @SuppressWarnings("unchecked")
+    public ILevel0ArrayOfMapOperator<T, T> toArrayOfMap() {
+        return Op.onArrayOfMap(Op.onList(forEach().toMap().get()).toArray((Type<Map<T, T>>)((Type<?>)Types.MAP_OF_UNKNOWN_UNKNOWN)).get());
+    }
+
+
+    public ILevel0ListOfMapOperator<T, T> toListOfMap() {
+        return forEach().toMap().endFor();
+    }
+
+
+    public ILevel0SetOfMapOperator<T, T> toSetOfMap() {
+        return Op.onSetOfMap(Op.onList(forEach().toMap().get()).toSet().get());
+    }
+
+
+    @SuppressWarnings("unchecked")
     public List<Set<T>> get() {
         return (List<Set<T>>) getTarget().get();
     }

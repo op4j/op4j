@@ -33,6 +33,7 @@ import org.op4j.operators.intf.listofmap.ILevel0ListOfMapOperator;
  */
 public interface IConvertibleToListOfMapOperator<T> {
     
+    public ILevel0ListOfMapOperator<T,T> toListOfMap();
     public <K> ILevel0ListOfMapOperator<K,T> toListOfMap(final IEval<K,? super T> keyEval);
     public <K,V> ILevel0ListOfMapOperator<K,V> toListOfMap(final IMapBuild<K,V,? super T> mapBuild);
 

@@ -91,6 +91,7 @@ public interface ILevel2MapOfArrayEntriesValueOperator<K,V>
     
     public ILevel2MapOfSetEntriesValueOperator<K,V> toSet();
     
+    public ILevel2MapOfMapEntriesValueOperator<K,V,V> toMap();
     public <K2> ILevel2MapOfMapEntriesValueOperator<K,K2,V> toMap(final IEval<K2,? super V> keyEval);
     public <K2,V2> ILevel2MapOfMapEntriesValueOperator<K,K2,V2> toMap(final IMapBuild<K2,V2,? super V> mapBuild);
 

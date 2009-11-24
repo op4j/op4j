@@ -274,6 +274,11 @@ public class Level1SetOfListElementsOperator<T> extends Operator
     }
 
 
+    public ILevel1SetOfMapElementsOperator<T, T> toMap() {
+        return new Level1SetOfMapElementsOperator<T, T>(getTarget().execute(new ToMap.FromListByAlternateElements<T>()));
+    }
+
+
     public <K> ILevel1SetOfMapElementsOperator<K, T> toMap(final IEval<K, ? super T> keyEval) {
         return new Level1SetOfMapElementsOperator<K, T>(getTarget().execute(new ToMap.FromListByKeyEval<K, T>(keyEval)));
     }

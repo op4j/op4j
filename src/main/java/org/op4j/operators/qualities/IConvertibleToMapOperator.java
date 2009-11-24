@@ -32,6 +32,7 @@ import org.op4j.executables.IMapBuild;
  */
 public interface IConvertibleToMapOperator<T> {
     
+    public IOperator toMap();
     public <K> IOperator toMap(final IEval<K,? super T> keyEval);
     public <K,V> IOperator toMap(final IMapBuild<K,V,? super T> mapBuild);
     

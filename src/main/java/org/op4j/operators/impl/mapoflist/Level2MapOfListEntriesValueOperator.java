@@ -273,6 +273,11 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
     }
 
 
+    public ILevel2MapOfMapEntriesValueOperator<K, V, V> toMap() {
+        return new Level2MapOfMapEntriesValueOperator<K, V, V>(getTarget().execute(new ToMap.FromListByAlternateElements<V>()));
+    }
+
+
     public <K2> ILevel2MapOfMapEntriesValueOperator<K, K2, V> toMap(final IEval<K2, ? super V> keyEval) {
         return new Level2MapOfMapEntriesValueOperator<K, K2, V>(getTarget().execute(new ToMap.FromListByKeyEval<K2, V>(keyEval)));
     }

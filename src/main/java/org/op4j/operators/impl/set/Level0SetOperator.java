@@ -269,6 +269,11 @@ public class Level0SetOperator<T> extends Operator
     }
 
 
+    public ILevel0MapOperator<T, T> toMap() {
+        return new Level0MapOperator<T, T>(getTarget().execute(new ToMap.FromSetByAlternateElements<T>()));
+    }
+
+
     public <K> ILevel0MapOperator<K, T> toMap(final IEval<K, ? super T> keyEval) {
         return new Level0MapOperator<K, T>(getTarget().execute(new ToMap.FromSetByKeyEval<K, T>(keyEval)));
     }
