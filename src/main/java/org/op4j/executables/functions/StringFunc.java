@@ -17,7 +17,7 @@
  * 
  * =============================================================================
  */
-package org.op4j.executables.functions.builtin;
+package org.op4j.executables.functions;
 
 import java.nio.charset.Charset;
 
@@ -38,36 +38,51 @@ import org.op4j.executables.functions.IFunc;
  */
 public class StringFunc {
 
+	private static EscapeCSVStringFunc ESCAPE_CSV_STRING_FUNC = new EscapeCSVStringFunc();
+	private static UnescapeCSVStringFunc UNESCAPE_CSV_STRING_FUNC = new UnescapeCSVStringFunc();
+	private static EscapeXMLStringFunc ESCAPE_XML_STRING_FUNC = new EscapeXMLStringFunc();
+	private static UnescapeXMLStringFunc UNESCAPE_XML_STRING_FUNC = new UnescapeXMLStringFunc();
+	private static EscapeHTMLStringFunc ESCAPE_HTML_STRING_FUNC = new EscapeHTMLStringFunc();
+	private static UnescapeHTMLStringFunc UNESCAPE_HTML_STRING_FUNC = new UnescapeHTMLStringFunc();
+	private static EscapeJavaScriptStringFunc ESCAPE_JAVASCRIPT_STRING_FUNC = new EscapeJavaScriptStringFunc();
+	private static UnescapeJavaScriptStringFunc UNESCAPE_JAVASCRIPT_STRING_FUNC = new UnescapeJavaScriptStringFunc();
+	private static ToUpperCaseStringFunc TO_UPPER_CASE_STRING_FUNC = new ToUpperCaseStringFunc();
+	private static ToLowerCaseStringFunc TO_LOWER_CASE_STRING_FUNC = new ToLowerCaseStringFunc();
+	private static UnCapitalizeStringFunc UN_CAPITALIZE_STRING_FUNC = new UnCapitalizeStringFunc();
+	private static CapitalizeStringFunc CAPITALIZE_STRING_FUNC = new CapitalizeStringFunc();
+	private static TrimStringFunc TRIM_STRING_FUNC = new TrimStringFunc();
+	private static StripStringFunc STRIP_STRING_FUNC = new StripStringFunc();
+	
 	private StringFunc() {
 		super();           
 	}
 
 	public static final EscapeCSVStringFunc escapeCSV() {
-        return new EscapeCSVStringFunc();
+        return ESCAPE_CSV_STRING_FUNC;
     }
 	public static final UnescapeCSVStringFunc unescapeCSV() {
-        return new UnescapeCSVStringFunc();
+        return UNESCAPE_CSV_STRING_FUNC;
     }	
 
 	public static final EscapeXMLStringFunc escapeXML() {
-        return new EscapeXMLStringFunc();
+        return ESCAPE_XML_STRING_FUNC;
     }
 	public static final UnescapeXMLStringFunc unescapeXML() {
-        return new UnescapeXMLStringFunc();
+        return UNESCAPE_XML_STRING_FUNC;
     }
 	
 	public static final EscapeHTMLStringFunc escapeHTML() {
-        return new EscapeHTMLStringFunc();
+        return ESCAPE_HTML_STRING_FUNC;
     }
 	public static final UnescapeHTMLStringFunc unescapeHTML() {
-        return new UnescapeHTMLStringFunc();
+        return UNESCAPE_HTML_STRING_FUNC;
     }
 	
 	public static final EscapeJavaScriptStringFunc escapeJavaScript() {
-        return new EscapeJavaScriptStringFunc();
+        return ESCAPE_JAVASCRIPT_STRING_FUNC;
     }
 	public static final UnescapeJavaScriptStringFunc unescapeJavaScript() {
-        return new UnescapeJavaScriptStringFunc();
+        return UNESCAPE_JAVASCRIPT_STRING_FUNC;
     }
 	
 	public static final ToBase64StringFunc toBase64(Charset charset) {
@@ -85,25 +100,25 @@ public class StringFunc {
     }
 	
 	public static final ToUpperCaseStringFunc toUpperCase() {
-        return new ToUpperCaseStringFunc();
+        return TO_UPPER_CASE_STRING_FUNC;
     }
 	public static final ToLowerCaseStringFunc toLowerCase() {
-        return new ToLowerCaseStringFunc();
+        return TO_LOWER_CASE_STRING_FUNC;
     }
 	
 	public static final UnCapitalizeStringFunc unCapitalize() {
-        return new UnCapitalizeStringFunc();
+        return UN_CAPITALIZE_STRING_FUNC;
     }
 	public static final CapitalizeStringFunc capitalize() {
-        return new CapitalizeStringFunc();
+        return CAPITALIZE_STRING_FUNC;
     }
 	
 	public static final TrimStringFunc trim() {
-        return new TrimStringFunc();
+        return TRIM_STRING_FUNC;
     }
 	
 	public static final StripStringFunc strip() {
-        return new StripStringFunc();
+        return STRIP_STRING_FUNC;
     }
 	
 	static abstract class BaseStringFunc<X> implements IFunc<String, X> {		
