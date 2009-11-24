@@ -40,10 +40,10 @@ import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ISelect;
+import org.op4j.executables.functions.StringFunc;
 import org.op4j.executables.functions.builtin.ArrayFunc;
 import org.op4j.executables.functions.builtin.ListFunc;
 import org.op4j.executables.functions.builtin.SetFunc;
-import org.op4j.executables.functions.builtin.StringFunc;
 import org.op4j.executables.functions.conversion.DecimalPoint;
 import org.op4j.executables.functions.conversion.ToBigDecimal;
 import org.op4j.executables.functions.conversion.ToBigInteger;
@@ -681,6 +681,11 @@ public final class Op {
         System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).toArrayOfList().get()));
         System.out.println(printArray(Op.onListOfArray(Types.STRING, listOfStringArray1).toArrayOfList().get()));
         System.out.println(printArray(Op.onListOfList(listOfListOfString1).toArrayOfList().get()));
+        
+        System.out.println(Op.on("http://www.google.es/search?q=op4j&unusedParam=unusedValue '' 2^2 ")
+            	.exec(StringFunc.escapeJavaScript()).get());
+        System.out.println(Op.on("Body tag is written like \"<body>content here</body>\"")
+            	.exec(StringFunc.escapeHTML()).get());
         
         System.out.println(Op.onArray(stringsArr1).removeNulls().toMap(Eval.integerExp("length()")).get());
     }
