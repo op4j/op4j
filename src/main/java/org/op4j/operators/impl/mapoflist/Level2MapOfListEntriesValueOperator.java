@@ -229,8 +229,7 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel2MapOfListEntriesValueOperator<K, ?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget());
     }
 
 

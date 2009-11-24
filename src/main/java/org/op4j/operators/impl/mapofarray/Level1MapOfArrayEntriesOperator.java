@@ -78,8 +78,7 @@ public class Level1MapOfArrayEntriesOperator<K,V> extends Operator
 
 
     public ILevel1MapOfArrayEntriesOperator<?, ?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1MapOfArrayEntriesOperator<K, V>(this.arrayOf, getTarget());
     }
 
 

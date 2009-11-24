@@ -226,8 +226,7 @@ public class Level1SetOfListElementsOperator<T> extends Operator
 
 
     public ILevel1SetOfListElementsOperator<?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1SetOfListElementsOperator<T>(getTarget());
     }
 
 

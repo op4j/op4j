@@ -208,8 +208,7 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
 
 
     public ILevel0ArrayOfMapOperator<?, ?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ArrayOfMapOperator<K, V>(getTarget());
     }
 
 

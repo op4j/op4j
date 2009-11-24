@@ -194,8 +194,7 @@ public class Level0ArrayOperator<T> extends Operator implements
     }
 
     public ILevel0ArrayOperator<?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget());
     }
 
     public ILevel0ArrayOperator<T> removePositions(final int... positions) {

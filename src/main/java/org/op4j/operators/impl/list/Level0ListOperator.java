@@ -226,8 +226,7 @@ public class Level0ListOperator<T> extends Operator
 
 
     public ILevel0ListOperator<?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ListOperator<T>(getTarget());
     }
 
 

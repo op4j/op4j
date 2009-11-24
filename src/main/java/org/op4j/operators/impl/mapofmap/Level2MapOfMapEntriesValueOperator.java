@@ -180,9 +180,8 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
     }
 
 
-    public Level2MapOfMapEntriesValueOperator<K1, ?, ?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel2MapOfMapEntriesValueOperator<K1, ?, ?> raw() {
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget());
     }
 
 

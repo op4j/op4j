@@ -180,9 +180,8 @@ public class Level0MapOfSetOperator<K,V> extends Operator
     }
 
 
-    public Level0MapOfSetOperator<?, ?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel0MapOfSetOperator<?, ?> raw() {
+        return new Level0MapOfSetOperator<K, V>(getTarget());
     }
 
 

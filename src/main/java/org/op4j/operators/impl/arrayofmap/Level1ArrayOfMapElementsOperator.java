@@ -179,9 +179,8 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
     }
 
 
-    public Level1ArrayOfMapElementsOperator<?, ?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1ArrayOfMapElementsOperator<?, ?> raw() {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget());
     }
 
 

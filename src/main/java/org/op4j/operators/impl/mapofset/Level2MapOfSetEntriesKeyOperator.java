@@ -64,8 +64,7 @@ public class Level2MapOfSetEntriesKeyOperator<K,V> extends Operator
 
 
     public ILevel2MapOfSetEntriesKeyOperator<?, V> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level2MapOfSetEntriesKeyOperator<K, V>(getTarget());
     }
 
 

@@ -180,9 +180,8 @@ public class Level1SetOfMapElementsOperator<K,V> extends Operator
     }
 
 
-    public Level1SetOfMapElementsOperator<?, ?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+    public ILevel1SetOfMapElementsOperator<?, ?> raw() {
+        return new Level1SetOfMapElementsOperator<K, V>(getTarget());
     }
 
 

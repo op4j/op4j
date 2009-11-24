@@ -216,8 +216,7 @@ public class Level3ListOfMapElementsEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel3ListOfMapElementsEntriesValueOperator<K, ?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level3ListOfMapElementsEntriesValueOperator<K, V>(getTarget());
     }
 
 

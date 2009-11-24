@@ -65,8 +65,7 @@ public class Level3SetOfMapElementsEntriesKeyOperator<K,V> extends Operator
 
 
     public ILevel3SetOfMapElementsEntriesKeyOperator<?, V> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level3SetOfMapElementsEntriesKeyOperator<K, V>(getTarget());
     }
 
 

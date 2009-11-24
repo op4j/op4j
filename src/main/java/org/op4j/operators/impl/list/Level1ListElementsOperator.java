@@ -214,8 +214,7 @@ public class Level1ListElementsOperator<T> extends Operator
 
 
     public ILevel1ListElementsOperator<?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1ListElementsOperator<T>(getTarget());
     }
 
 

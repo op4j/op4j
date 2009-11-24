@@ -75,8 +75,7 @@ public class Level2ArrayOfMapElementsEntriesOperator<K,V> extends Operator
 
 
     public ILevel2ArrayOfMapElementsEntriesOperator<?, ?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level2ArrayOfMapElementsEntriesOperator<K, V>(getTarget());
     }
 
 

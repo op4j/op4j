@@ -229,8 +229,7 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
 
     public ILevel0ArrayOfSetOperator<?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ArrayOfSetOperator<T>(getTarget());
     }
 
 

@@ -214,8 +214,7 @@ public class Level2SetOfSetElementsElementsOperator<T> extends Operator
 
 
     public ILevel2SetOfSetElementsElementsOperator<?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level2SetOfSetElementsElementsOperator<T>(getTarget());
     }
 
 

@@ -178,8 +178,7 @@ public class Level0GenericMultiOperator<T> extends Operator
 
 
     public ILevel0GenericMultiOperator<?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0GenericMultiOperator<T>(getTarget());
     }
 
 

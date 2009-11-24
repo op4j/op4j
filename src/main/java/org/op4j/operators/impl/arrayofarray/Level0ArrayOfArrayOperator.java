@@ -227,8 +227,7 @@ public class Level0ArrayOfArrayOperator<T> extends Operator
 
 
     public ILevel0ArrayOfArrayOperator<?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget());
     }
 
 

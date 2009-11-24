@@ -227,8 +227,7 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, ?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget());
     }
 
 

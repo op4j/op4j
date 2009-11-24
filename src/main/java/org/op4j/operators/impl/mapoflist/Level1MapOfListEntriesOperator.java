@@ -76,8 +76,7 @@ public class Level1MapOfListEntriesOperator<K,V> extends Operator
 
 
     public ILevel1MapOfListEntriesOperator<?, ?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1MapOfListEntriesOperator<K, V>(getTarget());
     }
 
 

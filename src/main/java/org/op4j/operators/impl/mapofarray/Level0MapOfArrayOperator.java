@@ -183,8 +183,7 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
 
 
     public ILevel0MapOfArrayOperator<?, ?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget());
     }
 
 

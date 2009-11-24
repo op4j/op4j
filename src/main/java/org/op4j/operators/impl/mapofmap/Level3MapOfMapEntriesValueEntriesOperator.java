@@ -75,8 +75,7 @@ public class Level3MapOfMapEntriesValueEntriesOperator<K1,K2,V> extends Operator
 
 
     public ILevel3MapOfMapEntriesValueEntriesOperator<K1, ?, ?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level3MapOfMapEntriesValueEntriesOperator<K1, K2, V>(getTarget());
     }
 
 

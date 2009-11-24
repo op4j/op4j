@@ -211,8 +211,7 @@ public class Level0ListOfMapOperator<K,V> extends Operator
 
 
     public ILevel0ListOfMapOperator<?, ?> raw() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ListOfMapOperator<K, V>(getTarget());
     }
 
 
