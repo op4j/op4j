@@ -19,6 +19,8 @@
  */
 package org.op4j.operators.qualities;
 
+import org.op4j.operators.intf.list.ILevel0ListOperator;
+
 
 
 
@@ -31,8 +33,8 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface IFlattenableOperator  {
+public interface IFlattenableAsListOperator<T> {
     
-    public IOperator flatten();
+    public ILevel0ListOperator<T> flatten();
 	
 }

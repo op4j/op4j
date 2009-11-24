@@ -52,7 +52,7 @@ import org.op4j.operators.qualities.IConvertibleToSetOfMapOperator;
 import org.op4j.operators.qualities.IConvertibleToSetOfSetOperator;
 import org.op4j.operators.qualities.IDistinguishableOperator;
 import org.op4j.operators.qualities.IExtractableCollectionOperator;
-import org.op4j.operators.qualities.IFlattenableOperator;
+import org.op4j.operators.qualities.IFlattenableAsArrayOperator;
 import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableCollectionOperator;
 import org.op4j.operators.qualities.INavigableCollectionOperator;
@@ -74,7 +74,7 @@ public interface ILevel0ArrayOfListOperator<T>
 		        IDistinguishableOperator,
 		        ISortableOperator<List<T>>,
                 ITypeParameterizableXOperator<T>,
-                IFlattenableOperator,
+                IFlattenableAsArrayOperator<T>,
 		        IModifiableCollectionOperator<List<T>>,
 		        IExtractableCollectionOperator<List<T>>,
 		        IGenerizableOperator<List<T>[]>,
@@ -102,7 +102,7 @@ public interface ILevel0ArrayOfListOperator<T>
         
     public ILevel0ArrayOfListOperator<?> raw();
     
-    public ILevel0ArrayOperator<T> flatten();
+    public ILevel0ArrayOperator<T> flatten(final Type<? super T> type);
     public ILevel0ArrayOfListOperator<T> add(final List<T>... newElements);
     public ILevel0ArrayOfListOperator<T> insert(final int position, final List<T>... newElements);
     public ILevel0ArrayOfListOperator<T> addAll(final Collection<List<T>> collection);

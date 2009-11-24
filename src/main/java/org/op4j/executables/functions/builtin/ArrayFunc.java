@@ -460,4 +460,97 @@ public class ArrayFunc {
     
     
     
+    
+
+    
+    
+    public static final class FlattenArrays<T> implements IFunc<T[], T[][]> {
+
+        private final Type<? super T> type; 
+        
+        public FlattenArrays(final Type<? super T> type) {
+            super();
+            this.type = type;
+        }
+
+        public Type<? super T[]> getResultType() {
+            return Types.ARRAY_OF_OBJECT;
+        }
+
+        @SuppressWarnings("unchecked")
+        public T[] execute(final T[][] object) throws Exception {
+            
+            final List<T> result = new ArrayList<T>();
+            for (final T[] element : object) {
+                result.addAll(Arrays.asList(element));
+            }
+            final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
+            return result.toArray(array);
+            
+        }
+
+    }
+    
+
+    
+    public static final class FlattenLists<T> implements IFunc<T[], List<T>[]> {
+
+        private final Type<? super T> type; 
+
+        public FlattenLists(final Type<? super T> type) {
+            super();
+            this.type = type;
+        }
+
+        public Type<? super T[]> getResultType() {
+            return Types.ARRAY_OF_OBJECT;
+        }
+
+        @SuppressWarnings("unchecked")
+        public T[] execute(final List<T>[] object) throws Exception {
+            
+            final List<T> result = new ArrayList<T>();
+            for (final List<T> element : object) {
+                result.addAll(element);
+            }
+            final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
+            return result.toArray(array);
+            
+        }
+
+    }
+
+    
+
+    
+    public static final class FlattenSets<T> implements IFunc<T[], Set<T>[]> {
+
+        private final Type<? super T> type; 
+
+        public FlattenSets(final Type<? super T> type) {
+            super();
+            this.type = type;
+        }
+
+        public Type<? super T[]> getResultType() {
+            return Types.ARRAY_OF_OBJECT;
+        }
+
+        @SuppressWarnings("unchecked")
+        public T[] execute(final Set<T>[] object) throws Exception {
+            
+            final List<T> result = new ArrayList<T>();
+            for (final Set<T> element : object) {
+                result.addAll(element);
+            }
+            final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
+            return result.toArray(array);
+            
+        }
+
+    }
+    
+    
+    
+    
 }

@@ -21,6 +21,7 @@
 package org.op4j.executables.functions.builtin;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -349,6 +350,56 @@ class CollectionFunc {
         abstract X fromList(final List<T> object);
         
     }
+    
+
+    
+
+    
+    
+    static abstract class FlattenArrays<T, X extends Collection<T>, Y extends Collection<T[]>> implements IFunc<X, Y> {
+
+        public FlattenArrays() {
+            super();
+        }
+
+        public X execute(final Y object) throws Exception {
+            
+            final List<T> result = new ArrayList<T>();
+            for (final T[] element : object) {
+                result.addAll(Arrays.asList(element));
+            }
+            return fromList(result);
+            
+        }
+
+        abstract X fromList(final List<T> object);
+
+    }
+    
+
+    
+    static abstract class FlattenCollections<T, X extends Collection<T>, Y extends Collection<? extends Collection<T>>> implements IFunc<X, Y> {
+
+        public FlattenCollections() {
+            super();
+        }
+
+        public X execute(final Y object) throws Exception {
+            
+            final List<T> result = new ArrayList<T>();
+            for (final Collection<T> element : object) {
+                result.addAll(element);
+            }
+            return fromList(result);
+            
+        }
+
+        abstract X fromList(final List<T> object);
+
+    }
+
+    
+    
     
     
 }

@@ -52,7 +52,7 @@ import org.op4j.operators.qualities.IConvertibleToSetOfArrayOperator;
 import org.op4j.operators.qualities.IConvertibleToSetOfMapOperator;
 import org.op4j.operators.qualities.IConvertibleToSetOfSetOperator;
 import org.op4j.operators.qualities.IExtractableCollectionOperator;
-import org.op4j.operators.qualities.IFlattenableOperator;
+import org.op4j.operators.qualities.IFlattenableAsSetOperator;
 import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableCollectionOperator;
 import org.op4j.operators.qualities.INavigableCollectionOperator;
@@ -73,7 +73,7 @@ public interface ILevel0SetOfListOperator<T>
 		        INavigableCollectionOperator<List<T>>,
 		        ISortableOperator<List<T>>,
                 ITypeParameterizableXOperator<T>,
-                IFlattenableOperator,
+                IFlattenableAsSetOperator<T>,
 		        IModifiableCollectionOperator<List<T>>,
 		        IExtractableCollectionOperator<List<T>>,
 		        IGenerizableOperator<Set<List<T>>>,

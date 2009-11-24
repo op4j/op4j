@@ -293,4 +293,69 @@ public class SetFunc {
 
     
     
+    
+    
+    public static final class FlattenArrays<T> extends CollectionFunc.FlattenArrays<T, Set<T>, Set<T[]>> {
+
+        
+        public FlattenArrays() {
+            super();
+        }
+        
+        public Type<? super Set<T>> getResultType() {
+            return Types.SET_OF_UNKNOWN;
+        }
+
+        @Override
+        Set<T> fromList(final List<T> object) {
+            return new LinkedHashSet<T>(object);
+        }
+        
+    }
+    
+
+    
+    
+    
+    public static final class FlattenLists<T> extends CollectionFunc.FlattenCollections<T, Set<T>, Set<List<T>>> {
+
+        
+        public FlattenLists() {
+            super();
+        }
+        
+        public Type<? super Set<T>> getResultType() {
+            return Types.SET_OF_UNKNOWN;
+        }
+
+        @Override
+        Set<T> fromList(final List<T> object) {
+            return new LinkedHashSet<T>(object);
+        }
+        
+    }
+    
+
+    
+    
+    public static final class FlattenSets<T> extends CollectionFunc.FlattenCollections<T, Set<T>, Set<Set<T>>> {
+
+        
+        public FlattenSets() {
+            super();
+        }
+        
+        public Type<? super Set<T>> getResultType() {
+            return Types.SET_OF_UNKNOWN;
+        }
+
+        @Override
+        Set<T> fromList(final List<T> object) {
+            return new LinkedHashSet<T>(object);
+        }
+        
+    }
+    
+    
+    
 }

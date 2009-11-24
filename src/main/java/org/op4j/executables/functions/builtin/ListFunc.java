@@ -25,6 +25,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
@@ -310,6 +311,69 @@ public class ListFunc {
         
     }
     
+    
+    
+    
+    
+    public static final class FlattenArrays<T> extends CollectionFunc.FlattenArrays<T, List<T>, List<T[]>> {
+
+        
+        public FlattenArrays() {
+            super();
+        }
+        
+        public Type<? super List<T>> getResultType() {
+            return Types.LIST_OF_UNKNOWN;
+        }
+
+        @Override
+        List<T> fromList(final List<T> object) {
+            return object;
+        }
+        
+    }
+    
+
+    
+    
+    public static final class FlattenLists<T> extends CollectionFunc.FlattenCollections<T, List<T>, List<List<T>>> {
+
+        
+        public FlattenLists() {
+            super();
+        }
+        
+        public Type<? super List<T>> getResultType() {
+            return Types.LIST_OF_UNKNOWN;
+        }
+
+        @Override
+        List<T> fromList(final List<T> object) {
+            return object;
+        }
+        
+    }
+    
+
+    
+    
+    public static final class FlattenSets<T> extends CollectionFunc.FlattenCollections<T, List<T>, List<Set<T>>> {
+
+        
+        public FlattenSets() {
+            super();
+        }
+        
+        public Type<? super List<T>> getResultType() {
+            return Types.LIST_OF_UNKNOWN;
+        }
+
+        @Override
+        List<T> fromList(final List<T> object) {
+            return object;
+        }
+        
+    }
     
     
 }

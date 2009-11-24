@@ -35,6 +35,7 @@ import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ListFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
+import org.op4j.operators.impl.list.Level0ListOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
 import org.op4j.operators.intf.arrayofmap.ILevel0ArrayOfMapOperator;
@@ -153,8 +154,7 @@ public class Level0ListOfArrayOperator<T> extends Operator
 
 
     public ILevel0ListOperator<T> flatten() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ListOperator<T>(getTarget().execute(new ListFunc.FlattenArrays<T>()));
     }
 
 
