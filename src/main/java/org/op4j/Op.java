@@ -642,7 +642,7 @@ public final class Op {
         System.out.println(Op.buildList(Types.NUMBER)
                 .add(45.9, 45, new BigDecimal(34.456), 0, 0.5, 0.211)
                 .forEach().exec(ToString.fromPercent(Locale.getDefault(), 
-                        1, 0, 10, true, ',', '\'', false)).get());
+                        1, 0, 10, ',', '\'', false)).get());
      
         
         System.out.println(Op.onArray(stringsArr1).toSet().get());

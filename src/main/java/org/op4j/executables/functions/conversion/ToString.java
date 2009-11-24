@@ -109,7 +109,7 @@ public final class ToString {
 		return new FromNumber();
 	}	
 	public static final FromNumber fromNumber(boolean groupingUsed) {
-		return new FromNumber(Boolean.valueOf(groupingUsed));
+		return new FromNumber(groupingUsed);
 	}
 	public static final FromNumber fromNumber(Locale locale) {
 		return new FromNumber(locale);
@@ -118,150 +118,202 @@ public final class ToString {
 		return new FromNumber(locale);
 	}
 	public static final FromNumber fromNumber(Locale locale, boolean groupingUsed) {
-		return new FromNumber(locale, Boolean.valueOf(groupingUsed));
-	}
-	
+		return new FromNumber(locale, groupingUsed);
+	}	
 	public static final FromNumber fromNumber(String locale, boolean groupingUsed) {
-		return new FromNumber(locale, Boolean.valueOf(groupingUsed));
+		return new FromNumber(locale, groupingUsed);
 	}
 	public static final FromNumber fromNumber(Locale locale, int minIntegerDigits,
 			int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
 		return new FromNumber(NumberFormatType.NUMBER, locale, 
-				Integer.valueOf(minIntegerDigits), Integer.valueOf(Integer.MAX_VALUE), 
-				Integer.valueOf(minFractionDigits), Integer.valueOf(maxFractionDigits),
-				Boolean.valueOf(groupingUsed));
+				minIntegerDigits, Integer.MAX_VALUE, 
+				minFractionDigits, maxFractionDigits,
+				groupingUsed);
 	}
 	public static final FromNumber fromNumber(String locale, int minIntegerDigits,
 			int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
 		return new FromNumber(NumberFormatType.NUMBER, locale, 
-				Integer.valueOf(minIntegerDigits), Integer.valueOf(Integer.MAX_VALUE), 
-				Integer.valueOf(minFractionDigits), Integer.valueOf(maxFractionDigits),
-				Boolean.valueOf(groupingUsed));
+				minIntegerDigits, Integer.MAX_VALUE, 
+				minFractionDigits, maxFractionDigits,
+				groupingUsed);
+	}
+	public static final FromNumber fromNumber(Locale locale, int minIntegerDigits,
+			int minFractionDigits, int maxFractionDigits, 
+			char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+		return new FromNumber(NumberFormatType.NUMBER, locale, 
+				minIntegerDigits, Integer.MAX_VALUE, 
+				minFractionDigits, maxFractionDigits,
+				true, groupingSeparator, decimalSeparator, 
+				decimalSeparatorAlwaysShown);
 	}
 	public static final FromNumber fromNumber(Locale locale, int minIntegerDigits,
 			int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+			char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+		return new FromNumber(NumberFormatType.NUMBER, locale, 
+				minIntegerDigits, Integer.MAX_VALUE, 
+				minFractionDigits, maxFractionDigits,
+				groupingUsed, decimalSeparator, 
+				decimalSeparatorAlwaysShown);
+	}
+	public static final FromNumber fromNumber(String locale, int minIntegerDigits, 
+			int minFractionDigits, int maxFractionDigits, 
 			char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
 		return new FromNumber(NumberFormatType.NUMBER, locale, 
-				Integer.valueOf(minIntegerDigits), Integer.valueOf(Integer.MAX_VALUE), 
-				Integer.valueOf(minFractionDigits), Integer.valueOf(maxFractionDigits),
-				Boolean.valueOf(groupingUsed), Character.valueOf(groupingSeparator), Character.valueOf(decimalSeparator), 
-				Boolean.valueOf(decimalSeparatorAlwaysShown));
+				minIntegerDigits, Integer.MAX_VALUE, 
+				minFractionDigits, maxFractionDigits, 
+				true, groupingSeparator, decimalSeparator, 
+				decimalSeparatorAlwaysShown);
 	}
 	public static final FromNumber fromNumber(String locale, int minIntegerDigits, 
 			int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
-			char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+			char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
 		return new FromNumber(NumberFormatType.NUMBER, locale, 
-				Integer.valueOf(minIntegerDigits), Integer.valueOf(Integer.MAX_VALUE), 
-				Integer.valueOf(minFractionDigits), Integer.valueOf(maxFractionDigits), 
-				Boolean.valueOf(groupingUsed), Character.valueOf(groupingSeparator), Character.valueOf(decimalSeparator), 
-				Boolean.valueOf(decimalSeparatorAlwaysShown));
+				minIntegerDigits, Integer.MAX_VALUE, 
+				minFractionDigits, maxFractionDigits, 
+				groupingUsed, decimalSeparator, 
+				decimalSeparatorAlwaysShown);
 	}
 	
 	
 	
 	public static final FromNumber fromCurrency() {
-		return new FromNumber(NumberFormatType.CURRENCY, null, null, null, null, null);
+		return new FromNumber(NumberFormatType.CURRENCY);
 	}
 	public static final FromNumber fromCurrency(boolean groupingUsed) {
-		return new FromNumber(NumberFormatType.CURRENCY, null, null, null, null, Boolean.valueOf(groupingUsed));
+		return new FromNumber(NumberFormatType.CURRENCY, groupingUsed);
 	}
 	public static final FromNumber fromCurrency(Locale locale) {
-		return new FromNumber(NumberFormatType.CURRENCY, locale, null, null, null, null, null);
+		return new FromNumber(NumberFormatType.CURRENCY, locale);
 	}
 	public static final FromNumber fromCurrency(String locale) {
-		return new FromNumber(NumberFormatType.CURRENCY, locale, null, null, null, null, null);
+		return new FromNumber(NumberFormatType.CURRENCY, locale);
 	}
 	public static final FromNumber fromCurrency(Locale locale, boolean groupingUsed) {
-		return new FromNumber(NumberFormatType.CURRENCY, locale, null, null, null, null, Boolean.valueOf(groupingUsed));
+		return new FromNumber(NumberFormatType.CURRENCY, locale, groupingUsed);
 	}
 	public static final FromNumber fromCurrency(String locale, boolean groupingUsed) {
-		return new FromNumber(NumberFormatType.CURRENCY, locale, null, null, null, null, Boolean.valueOf(groupingUsed));
+		return new FromNumber(NumberFormatType.CURRENCY, locale, groupingUsed);
 	}
 	public static final FromNumber fromCurrency(Locale locale, int minIntegerDigits,
 			int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
 		return new FromNumber(NumberFormatType.CURRENCY, locale, 
-				Integer.valueOf(minIntegerDigits), Integer.valueOf(Integer.MAX_VALUE), 
-				Integer.valueOf(minFractionDigits), Integer.valueOf(maxFractionDigits),
-				Boolean.valueOf(groupingUsed));
+				minIntegerDigits, Integer.MAX_VALUE, 
+				minFractionDigits, maxFractionDigits,
+				groupingUsed);
 	}
 	public static final FromNumber fromCurrency(String locale, int minIntegerDigits,
 			int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
 		return new FromNumber(NumberFormatType.CURRENCY, locale, 
-				Integer.valueOf(minIntegerDigits), Integer.valueOf(Integer.MAX_VALUE), 
-				Integer.valueOf(minFractionDigits), Integer.valueOf(maxFractionDigits),
-				Boolean.valueOf(groupingUsed));
+				minIntegerDigits, Integer.MAX_VALUE, 
+				minFractionDigits, maxFractionDigits,
+				groupingUsed);
+	}
+	public static final FromNumber fromCurrency(Locale locale, int minIntegerDigits,
+			int minFractionDigits, int maxFractionDigits, 
+			char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+		return new FromNumber(NumberFormatType.CURRENCY, locale, 
+				minIntegerDigits, Integer.MAX_VALUE, 
+				minFractionDigits, maxFractionDigits,
+				true, groupingSeparator, decimalSeparator, 
+				decimalSeparatorAlwaysShown);
 	}
 	public static final FromNumber fromCurrency(Locale locale, int minIntegerDigits,
 			int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+			char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+		return new FromNumber(NumberFormatType.CURRENCY, locale, 
+				minIntegerDigits, Integer.MAX_VALUE, 
+				minFractionDigits, maxFractionDigits,
+				groupingUsed, decimalSeparator, 
+				decimalSeparatorAlwaysShown);
+	}
+	public static final FromNumber fromCurrency(String locale, int minIntegerDigits, 
+			int minFractionDigits, int maxFractionDigits, 
 			char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
 		return new FromNumber(NumberFormatType.CURRENCY, locale, 
-				Integer.valueOf(minIntegerDigits), Integer.valueOf(Integer.MAX_VALUE), 
-				Integer.valueOf(minFractionDigits), Integer.valueOf(maxFractionDigits),
-				Boolean.valueOf(groupingUsed), Character.valueOf(groupingSeparator), Character.valueOf(decimalSeparator), 
-				Boolean.valueOf(decimalSeparatorAlwaysShown));
+				minIntegerDigits, Integer.MAX_VALUE, 
+				minFractionDigits, maxFractionDigits, 
+				true, groupingSeparator, decimalSeparator, 
+				decimalSeparatorAlwaysShown);
 	}
 	public static final FromNumber fromCurrency(String locale, int minIntegerDigits, 
 			int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
-			char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+			char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
 		return new FromNumber(NumberFormatType.CURRENCY, locale, 
-				Integer.valueOf(minIntegerDigits), Integer.valueOf(Integer.MAX_VALUE), 
-				Integer.valueOf(minFractionDigits), Integer.valueOf(maxFractionDigits), 
-				Boolean.valueOf(groupingUsed), Character.valueOf(groupingSeparator), Character.valueOf(decimalSeparator), 
-				Boolean.valueOf(decimalSeparatorAlwaysShown));
+				minIntegerDigits, Integer.MAX_VALUE, 
+				minFractionDigits, maxFractionDigits, 
+				groupingUsed, decimalSeparator, 
+				decimalSeparatorAlwaysShown);
 	}
 	
 	
 	
 	public static final FromNumber fromPercent() {
-		return new FromNumber(NumberFormatType.PERCENT, null, null, null, null, null);
+		return new FromNumber(NumberFormatType.PERCENT);
 	}
 	public static final FromNumber fromPercent(boolean groupingUsed) {
-		return new FromNumber(NumberFormatType.PERCENT, null, null, null, null, Boolean.valueOf(groupingUsed));
+		return new FromNumber(NumberFormatType.PERCENT, groupingUsed);
 	}
 	public static final FromNumber fromPercent(Locale locale) {
-		return new FromNumber(NumberFormatType.PERCENT, locale, null, null, null, null, null);
+		return new FromNumber(NumberFormatType.PERCENT, locale);
 	}
 	public static final FromNumber fromPercent(String locale) {
-		return new FromNumber(NumberFormatType.PERCENT, locale, null, null, null, null, null);
+		return new FromNumber(NumberFormatType.PERCENT, locale);
 	}
 	public static final FromNumber fromPercent(Locale locale, boolean groupingUsed) {
-		return new FromNumber(NumberFormatType.PERCENT, locale, null, null, null, null, Boolean.valueOf(groupingUsed));
-	}
-	
+		return new FromNumber(NumberFormatType.PERCENT, locale, groupingUsed);
+	}	
 	public static final FromNumber fromPercent(String locale, boolean groupingUsed) {
-		return new FromNumber(NumberFormatType.PERCENT, locale, null, null, null, null, Boolean.valueOf(groupingUsed));
+		return new FromNumber(NumberFormatType.PERCENT, locale, groupingUsed);
 	}
 	public static final FromNumber fromPercent(Locale locale, int minIntegerDigits,
 			int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
 		return new FromNumber(NumberFormatType.PERCENT, locale, 
-				Integer.valueOf(minIntegerDigits), Integer.valueOf(Integer.MAX_VALUE), 
-				Integer.valueOf(minFractionDigits), Integer.valueOf(maxFractionDigits),
-				Boolean.valueOf(groupingUsed));
+				minIntegerDigits, Integer.MAX_VALUE, 
+				minFractionDigits, maxFractionDigits,
+				groupingUsed);
 	}
 	public static final FromNumber fromPercent(String locale, int minIntegerDigits,
 			int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
 		return new FromNumber(NumberFormatType.PERCENT, locale, 
-				Integer.valueOf(minIntegerDigits), Integer.valueOf(Integer.MAX_VALUE), 
-				Integer.valueOf(minFractionDigits), Integer.valueOf(maxFractionDigits),
-				Boolean.valueOf(groupingUsed));
+				minIntegerDigits, Integer.MAX_VALUE, 
+				minFractionDigits, maxFractionDigits,
+				groupingUsed);
+	}
+	public static final FromNumber fromPercent(Locale locale, int minIntegerDigits,
+			int minFractionDigits, int maxFractionDigits, 
+			char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+		return new FromNumber(NumberFormatType.PERCENT, locale, 
+				minIntegerDigits, Integer.MAX_VALUE, 
+				minFractionDigits, maxFractionDigits,
+				true, groupingSeparator, decimalSeparator, 
+				decimalSeparatorAlwaysShown);
 	}
 	public static final FromNumber fromPercent(Locale locale, int minIntegerDigits,
 			int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+			char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+		return new FromNumber(NumberFormatType.PERCENT, locale, 
+				minIntegerDigits, Integer.MAX_VALUE, 
+				minFractionDigits, maxFractionDigits,
+				groupingUsed, decimalSeparator, 
+				decimalSeparatorAlwaysShown);
+	}
+	public static final FromNumber fromPercent(String locale, int minIntegerDigits, 
+			int minFractionDigits, int maxFractionDigits, 
 			char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
 		return new FromNumber(NumberFormatType.PERCENT, locale, 
-				Integer.valueOf(minIntegerDigits), Integer.valueOf(Integer.MAX_VALUE), 
-				Integer.valueOf(minFractionDigits), Integer.valueOf(maxFractionDigits),
-				Boolean.valueOf(groupingUsed), Character.valueOf(groupingSeparator), Character.valueOf(decimalSeparator), 
-				Boolean.valueOf(decimalSeparatorAlwaysShown));
+				minIntegerDigits, Integer.MAX_VALUE, 
+				minFractionDigits, maxFractionDigits, 
+				true, groupingSeparator, decimalSeparator, 
+				decimalSeparatorAlwaysShown);
 	}
 	public static final FromNumber fromPercent(String locale, int minIntegerDigits, 
 			int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
-			char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+			char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
 		return new FromNumber(NumberFormatType.PERCENT, locale, 
-				Integer.valueOf(minIntegerDigits), Integer.valueOf(Integer.MAX_VALUE), 
-				Integer.valueOf(minFractionDigits), Integer.valueOf(maxFractionDigits), 
-				Boolean.valueOf(groupingUsed), Character.valueOf(groupingSeparator), Character.valueOf(decimalSeparator), 
-				Boolean.valueOf(decimalSeparatorAlwaysShown));
+				minIntegerDigits, Integer.MAX_VALUE, 
+				minFractionDigits, maxFractionDigits, 
+				groupingUsed, decimalSeparator, 
+				decimalSeparatorAlwaysShown);
 	}
 	
 	
@@ -284,132 +336,148 @@ public final class ToString {
 	
 	public static final class FromNumber implements IFunc<String, Number> {
 
-		private Locale locale = null;
-		private NumberFormatType numberFormatType = NumberFormatType.NUMBER;
-		private Integer minIntegerDigits = null;
-		private Integer maxIntegerDigits = null;
-		private Integer minFractionDigits = null;
-		private Integer maxFractionDigits = null;
-		private Boolean groupingUsed = null;
-		private Character groupingSeparator = null;
-		private Character decimalSeparator = null;
-		private Boolean decimalSeparatorAlwaysShown = null;
+		private final NumberFormat numberFormat;
 		
 		public FromNumber() {
-			super();				
+			super();
+			this.numberFormat = getNumberFormat(NumberFormatType.NUMBER, null);
 		}
 		
-		public FromNumber(Boolean groupingUsed) {
+		public FromNumber(NumberFormatType numberFormatType, boolean groupingUsed) {
 			super();	
-			this.groupingUsed = groupingUsed;
+			this.numberFormat = getNumberFormat(numberFormatType, null);
+			setGroupingUsed(groupingUsed);			
+		}
+		
+		public FromNumber(boolean groupingUsed) {
+			super();	
+			this.numberFormat = getNumberFormat(NumberFormatType.NUMBER, null);
+			setGroupingUsed(groupingUsed);
 		}
 		
 		public FromNumber(Locale locale) {
 			super();
-			this.locale = locale;			
+			this.numberFormat = getNumberFormat(NumberFormatType.NUMBER, locale);
 		}
 		
-		public FromNumber(Locale locale, Boolean groupingUsed) {
+		public FromNumber(NumberFormatType numberFormatType, Locale locale) {
+			super();	
+			this.numberFormat = getNumberFormat(numberFormatType, locale);
+		}
+		
+		public FromNumber(NumberFormatType numberFormatType, String locale) {
+			super();	
+			this.numberFormat = getNumberFormat(numberFormatType, LocaleUtils.toLocale(locale));
+		}
+		
+		public FromNumber(NumberFormatType numberFormatType, Locale locale, boolean groupingUsed) {
+			super();	
+			this.numberFormat = getNumberFormat(numberFormatType, locale);
+			setGroupingUsed(groupingUsed);
+		}
+		
+		public FromNumber(NumberFormatType numberFormatType, String locale, boolean groupingUsed) {
+			super();	
+			this.numberFormat = getNumberFormat(numberFormatType, LocaleUtils.toLocale(locale));
+			setGroupingUsed(groupingUsed);
+		}
+		
+		public FromNumber(Locale locale, boolean groupingUsed) {
 			super();
-			this.locale = locale;	
-			this.groupingUsed = groupingUsed;
+			this.numberFormat = getNumberFormat(NumberFormatType.NUMBER, locale);
+			setGroupingUsed(groupingUsed);
 		}
 		
 		public FromNumber(String locale) {
 			super();
-			this.locale = LocaleUtils.toLocale(locale);			
+			this.numberFormat = getNumberFormat(NumberFormatType.NUMBER, LocaleUtils.toLocale(locale));
 		}
 		
-		public FromNumber(String locale, Boolean groupingUsed) {
+		public FromNumber(String locale, boolean groupingUsed) {
 			super();
-			this.locale = LocaleUtils.toLocale(locale);	
-			this.groupingUsed = groupingUsed;
+			this.numberFormat = getNumberFormat(NumberFormatType.NUMBER, LocaleUtils.toLocale(locale));
+			setGroupingUsed(groupingUsed);
+		}
+		public FromNumber(NumberFormatType numberFormatType) {
+			super();
+			this.numberFormat = getNumberFormat(numberFormatType, null);
+		}		
+		
+		public FromNumber(NumberFormatType numberFormatType, int minIntegerDigits, int maxIntegerDigits,
+				int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
+			super();
+			this.numberFormat = getNumberFormat(numberFormatType, null);
+			setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
+			setGroupingUsed(groupingUsed);
 		}
 		
-		public FromNumber(NumberFormatType numberFormatType, Integer minIntegerDigits, Integer maxIntegerDigits,
-				Integer minFractionDigits, Integer maxFractionDigits, Boolean groupingUsed) {
+		public FromNumber(NumberFormatType numberFormatType, int minIntegerDigits, int maxIntegerDigits,
+				int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+				char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
 			super();
-			this.numberFormatType = numberFormatType;	
-			this.minIntegerDigits = minIntegerDigits;
-			this.maxIntegerDigits = maxIntegerDigits;
-			this.minFractionDigits = minFractionDigits;
-			this.maxFractionDigits = maxFractionDigits;
-			this.groupingUsed = groupingUsed;
+			this.numberFormat = getNumberFormat(numberFormatType, null);
+			setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
+			setGroupingUsed(groupingUsed);
+			setGroupingSeparator(groupingSeparator);
+			setDecimalSeparator(decimalSeparator, decimalSeparatorAlwaysShown);
 		}
 		
-		public FromNumber(NumberFormatType numberFormatType, Integer minIntegerDigits, Integer maxIntegerDigits,
-				Integer minFractionDigits, Integer maxFractionDigits, Boolean groupingUsed,
-				Character groupingSeparator, Character decimalSeparator, Boolean decimalSeparatorAlwaysShown) {
+		public FromNumber(NumberFormatType numberFormatType, Locale locale, int minIntegerDigits, int maxIntegerDigits,
+				int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
 			super();
-			this.numberFormatType = numberFormatType;	
-			this.minIntegerDigits = minIntegerDigits;
-			this.maxIntegerDigits = maxIntegerDigits;
-			this.minFractionDigits = minFractionDigits;
-			this.maxFractionDigits = maxFractionDigits;
-			this.groupingUsed = groupingUsed;
-			this.groupingSeparator = groupingSeparator;
-			this.decimalSeparator = decimalSeparator;
-			this.decimalSeparatorAlwaysShown = decimalSeparatorAlwaysShown;
+			this.numberFormat = getNumberFormat(numberFormatType, locale);
+			setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
+			setGroupingUsed(groupingUsed);
 		}
 		
-		public FromNumber(NumberFormatType numberFormatType, Locale locale, Integer minIntegerDigits, Integer maxIntegerDigits,
-				Integer minFractionDigits, Integer maxFractionDigits, Boolean groupingUsed) {
+		public FromNumber(NumberFormatType numberFormatType, Locale locale, int minIntegerDigits, int maxIntegerDigits,
+				int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+				char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
 			super();
-			this.numberFormatType = numberFormatType;
-			this.locale = locale;
-			this.numberFormatType = numberFormatType;	
-			this.minIntegerDigits = minIntegerDigits;
-			this.maxIntegerDigits = maxIntegerDigits;
-			this.minFractionDigits = minFractionDigits;
-			this.maxFractionDigits = maxFractionDigits;
-			this.groupingUsed = groupingUsed;
+			this.numberFormat = getNumberFormat(numberFormatType, locale);
+			setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
+			setGroupingUsed(groupingUsed);
+			setDecimalSeparator(decimalSeparator, decimalSeparatorAlwaysShown);
 		}
 		
-		public FromNumber(NumberFormatType numberFormatType, Locale locale, Integer minIntegerDigits, Integer maxIntegerDigits,
-				Integer minFractionDigits, Integer maxFractionDigits, Boolean groupingUsed,
-				Character groupingSeparator, Character decimalSeparator, Boolean decimalSeparatorAlwaysShown) {
+		public FromNumber(NumberFormatType numberFormatType, Locale locale, int minIntegerDigits, int maxIntegerDigits,
+				int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+				char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
 			super();
-			this.numberFormatType = numberFormatType;
-			this.locale = locale;
-			this.numberFormatType = numberFormatType;	
-			this.minIntegerDigits = minIntegerDigits;
-			this.maxIntegerDigits = maxIntegerDigits;
-			this.minFractionDigits = minFractionDigits;
-			this.maxFractionDigits = maxFractionDigits;
-			this.groupingUsed = groupingUsed;
-			this.groupingSeparator = groupingSeparator;
-			this.decimalSeparator = decimalSeparator;
-			this.decimalSeparatorAlwaysShown = decimalSeparatorAlwaysShown;
+			this.numberFormat = getNumberFormat(numberFormatType, locale);
+			setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
+			setGroupingUsed(groupingUsed);
+			setGroupingSeparator(groupingSeparator);
+			setDecimalSeparator(decimalSeparator, decimalSeparatorAlwaysShown);
 		}
 		
-		public FromNumber(NumberFormatType numberFormatType, String locale, Integer minIntegerDigits, Integer maxIntegerDigits,
-				Integer minFractionDigits, Integer maxFractionDigits, Boolean groupingUsed) {
+		public FromNumber(NumberFormatType numberFormatType, String locale, int minIntegerDigits, int maxIntegerDigits,
+				int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
 			super();
-			this.numberFormatType = numberFormatType;
-			this.locale = LocaleUtils.toLocale(locale);
-			this.numberFormatType = numberFormatType;	
-			this.minIntegerDigits = minIntegerDigits;
-			this.maxIntegerDigits = maxIntegerDigits;
-			this.minFractionDigits = minFractionDigits;
-			this.maxFractionDigits = maxFractionDigits;
-			this.groupingUsed = groupingUsed;
+			this.numberFormat = getNumberFormat(numberFormatType, LocaleUtils.toLocale(locale));
+			setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
+			setGroupingUsed(groupingUsed);			
+		}
+		
+		public FromNumber(NumberFormatType numberFormatType, String locale, int minIntegerDigits, int maxIntegerDigits,
+				int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+				char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+			super();
+			this.numberFormat = getNumberFormat(numberFormatType, LocaleUtils.toLocale(locale));
+			setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
+			setGroupingUsed(groupingUsed);
+			setDecimalSeparator(decimalSeparator, decimalSeparatorAlwaysShown);
 		}
 			
-		public FromNumber(NumberFormatType numberFormatType, String locale, Integer minIntegerDigits, Integer maxIntegerDigits,
-				Integer minFractionDigits, Integer maxFractionDigits, Boolean groupingUsed,
-				Character groupingSeparator, Character decimalSeparator, Boolean decimalSeparatorAlwaysShown) {
+		public FromNumber(NumberFormatType numberFormatType, String locale, int minIntegerDigits, int maxIntegerDigits,
+				int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+				char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
 			super();
-			this.numberFormatType = numberFormatType;
-			this.locale = LocaleUtils.toLocale(locale);
-			this.numberFormatType = numberFormatType;	
-			this.minIntegerDigits = minIntegerDigits;
-			this.maxIntegerDigits = maxIntegerDigits;
-			this.minFractionDigits = minFractionDigits;
-			this.maxFractionDigits = maxFractionDigits;
-			this.groupingUsed = groupingUsed;
-			this.groupingSeparator = groupingSeparator;
-			this.decimalSeparator = decimalSeparator;
-			this.decimalSeparatorAlwaysShown = decimalSeparatorAlwaysShown;
+			this.numberFormat = getNumberFormat(numberFormatType, LocaleUtils.toLocale(locale));
+			setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
+			setGroupingUsed(groupingUsed);
+			setGroupingSeparator(groupingSeparator);
+			setDecimalSeparator(decimalSeparator, decimalSeparatorAlwaysShown);
 		}
 		
 		public Type<? super String> getResultType() {
@@ -420,54 +488,64 @@ public final class ToString {
 			return fromNumber(number);						
 		}
 		
-		private String fromNumber(final Number number) {
-	    	
+		private NumberFormat getNumberFormat(NumberFormatType numberFormatType, Locale locale) {
 			NumberFormat nf = null;
-			switch (this.numberFormatType) {
+			switch (numberFormatType) {
 				case CURRENCY :
-					nf = NumberFormat.getCurrencyInstance((this.locale != null) ? this.locale : Locale.getDefault());
+					nf = NumberFormat.getCurrencyInstance((locale != null) ? locale : Locale.getDefault());
 					break;
 				case PERCENT :
-					nf = NumberFormat.getPercentInstance((this.locale != null) ? this.locale : Locale.getDefault());
+					nf = NumberFormat.getPercentInstance((locale != null) ? locale : Locale.getDefault());
 					break;
 				case NUMBER :
-					nf = NumberFormat.getNumberInstance((this.locale != null) ? this.locale : Locale.getDefault());
+					nf = NumberFormat.getNumberInstance((locale != null) ? locale : Locale.getDefault());
 					break;
 				default :
-					nf = NumberFormat.getNumberInstance((this.locale != null) ? this.locale : Locale.getDefault());					
+					nf = NumberFormat.getNumberInstance((locale != null) ? locale : Locale.getDefault());					
 			}
-			if (nf instanceof DecimalFormat) {
-				DecimalFormat asDecimalFormat = (DecimalFormat) nf;
+			return nf;
+		}
+		
+		private void setMinAndMaxDigits(int minIntegerDigits, int maxIntegerDigits, 
+				int minFractionDigits, int maxFractionDigits) {
+			this.numberFormat.setMinimumIntegerDigits(minIntegerDigits);
+			this.numberFormat.setMaximumIntegerDigits(maxIntegerDigits);
+			this.numberFormat.setMinimumFractionDigits(minFractionDigits);
+			this.numberFormat.setMaximumFractionDigits(maxFractionDigits);
+		}
+		
+		private void setDecimalSeparator(char decimalSeparator, 
+				boolean decimalSeparatorAlwaysShown) {
+			if (this.numberFormat instanceof DecimalFormat) {
+				DecimalFormat asDecimalFormat = (DecimalFormat) this.numberFormat;
 				// It returns a clone of decimalFormatSymbols
 				DecimalFormatSymbols decimalFormatSymbols = asDecimalFormat.getDecimalFormatSymbols();
-				if (this.groupingSeparator != null) {
-					decimalFormatSymbols.setGroupingSeparator(this.groupingSeparator.charValue());	
-				}
-				if (this.decimalSeparator != null) {
-					decimalFormatSymbols.setDecimalSeparator(this.decimalSeparator.charValue());	
-				}
-				if (this.decimalSeparatorAlwaysShown != null) {
-					asDecimalFormat.setDecimalSeparatorAlwaysShown(this.decimalSeparatorAlwaysShown.booleanValue());
-				}
+				decimalFormatSymbols.setDecimalSeparator(decimalSeparator);	
+				asDecimalFormat.setDecimalSeparatorAlwaysShown(decimalSeparatorAlwaysShown);
 				// Update decimalFormatSymbols
 				asDecimalFormat.setDecimalFormatSymbols(decimalFormatSymbols);
 			}
-			if (this.minIntegerDigits != null) {
-				nf.setMinimumIntegerDigits(this.minIntegerDigits.intValue());
-			}
-			if (this.maxIntegerDigits != null) {
-				nf.setMaximumIntegerDigits(this.maxIntegerDigits.intValue());
-			}
-			if (this.minFractionDigits != null) {
-				nf.setMinimumFractionDigits(this.minFractionDigits.intValue());
-			}
-			if (this.maxFractionDigits != null) {
-				nf.setMaximumFractionDigits(this.maxFractionDigits.intValue());
-			}
-			if (this.groupingUsed != null) {
-				nf.setGroupingUsed(this.groupingUsed.booleanValue());
-			}
-	    	return nf.format(number);
+		}
+		
+		private boolean setGroupingSeparator(char groupingSeparator) {
+			if (this.numberFormat instanceof DecimalFormat) {
+				DecimalFormat asDecimalFormat = (DecimalFormat) this.numberFormat;
+				// It returns a clone of decimalFormatSymbols
+				DecimalFormatSymbols decimalFormatSymbols = asDecimalFormat.getDecimalFormatSymbols();
+				decimalFormatSymbols.setGroupingSeparator(groupingSeparator);	
+				// Update decimalFormatSymbols
+				asDecimalFormat.setDecimalFormatSymbols(decimalFormatSymbols);
+				return true;
+			}	
+			return false;
+		}
+		
+		private void setGroupingUsed(boolean groupingUsed) {
+			this.numberFormat.setGroupingUsed(groupingUsed);
+		}
+		
+		private String fromNumber(final Number number) {	
+	    	return this.numberFormat.format(number);
 	    }		
 		
 		public static enum NumberFormatType {
