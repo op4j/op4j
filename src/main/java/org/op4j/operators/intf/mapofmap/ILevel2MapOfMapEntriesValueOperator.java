@@ -60,8 +60,7 @@ public interface ILevel2MapOfMapEntriesValueOperator<K1,K2,V>
     
     public <X,Y> ILevel2MapOfMapEntriesValueOperator<K1,X,Y> of(final Type<X> ofX, final Type<Y> ofY);
     
-    public <X,Y> ILevel2MapOfMapEntriesValueOperator<K1,X,Y> of(final Class<X> classOfX, final Class<Y> classOfY);
-    
+        
     public ILevel2MapOfMapEntriesValueOperator<K1,?,?> raw();
     
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> put(final K2 newKey, final V newValue);

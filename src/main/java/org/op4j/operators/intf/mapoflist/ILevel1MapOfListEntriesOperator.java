@@ -49,8 +49,7 @@ public interface ILevel1MapOfListEntriesOperator<K,V>
     public ILevel0MapOfListOperator<K,V> endFor();
     
     public <X,Y> ILevel1MapOfListEntriesOperator<X,Y> of(final Type<X> ofX, final Type<Y> ofY);
-    public <X,Y> ILevel1MapOfListEntriesOperator<X,Y> of(final Class<X> ofXClass, final Class<Y> ofYClass);
-    
+        
     public ILevel1MapOfListEntriesOperator<?,?> raw();
     
                                     

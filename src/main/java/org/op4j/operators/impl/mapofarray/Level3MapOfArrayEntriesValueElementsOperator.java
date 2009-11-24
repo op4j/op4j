@@ -211,13 +211,6 @@ public class Level3MapOfArrayEntriesValueElementsOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K, X> of(
-            Class<X> classOf) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel3MapOfArrayEntriesValueElementsOperator<K, ?> raw() {
         return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget());
     }

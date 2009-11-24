@@ -63,8 +63,7 @@ public interface ILevel0GenericMultiOperator<T>
     
     
     public <X> ILevel0GenericMultiOperator<X> of(final Type<X> of);
-    public <X> ILevel0GenericMultiOperator<X> of(final Class<X> ofClass);
-    
+        
     public ILevel0GenericMultiOperator<?> raw();
     public ILevel0GenericMultiOperator<T> add(final T... newElements);
     public ILevel0GenericMultiOperator<T> insert(final int position, final T... newElements);

@@ -43,8 +43,7 @@ public interface ILevel3ArrayOfMapElementsEntriesKeyOperator<K,V>
     
     public <X> ILevel3ArrayOfMapElementsEntriesKeyOperator<X,V> of(final Type<X> of);
     
-    public <X> ILevel3ArrayOfMapElementsEntriesKeyOperator<X,V> of(final Class<X> ofClass);
-    
+        
     public ILevel3ArrayOfMapElementsEntriesKeyOperator<?,V> raw();
     
 		                                    

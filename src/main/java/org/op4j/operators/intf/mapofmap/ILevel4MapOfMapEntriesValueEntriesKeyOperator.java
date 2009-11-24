@@ -43,8 +43,7 @@ public interface ILevel4MapOfMapEntriesValueEntriesKeyOperator<K1,K2,V>
     
     public <X> ILevel4MapOfMapEntriesValueEntriesKeyOperator<K1,X,V> of(final Type<X> of);
     
-    public <X> ILevel4MapOfMapEntriesValueEntriesKeyOperator<K1,X,V> of(final Class<X> classOf);
-    
+        
     public ILevel4MapOfMapEntriesValueEntriesKeyOperator<K1,?,V> raw();
     
                                             

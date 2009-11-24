@@ -147,12 +147,6 @@ public class Level0MapOfMapOperator<K1,K2,V> extends Operator
     }
 
 
-    public <X, Y, Z> ILevel0MapOfMapOperator<X, Y, Z> of(Class<X> ofXClass, Class<Y> ofYClass, Class<Z> ofZClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel0MapOfMapOperator<K1, K2, V> put(final K1 newKey, final Map<K2,V> newValue) {
         return new Level0MapOfMapOperator<K1, K2, V>(getTarget().execute(new MapFunc.Put<K1, Map<K2,V>>(newKey, newValue)));
     }

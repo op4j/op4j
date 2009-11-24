@@ -99,8 +99,7 @@ public interface ILevel0ArrayOfArrayOperator<T>
 
     
     public <X> ILevel0ArrayOfArrayOperator<X> of(final Type<X> of);
-    public <X> ILevel0ArrayOfArrayOperator<X> of(final Class<X> ofClass);
-    
+        
     public ILevel0ArrayOfArrayOperator<?> raw();
     
     public ILevel0ArrayOperator<T> flatten();

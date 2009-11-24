@@ -222,12 +222,6 @@ public class Level0ArrayOfSetOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ArrayOfSetOperator<X> of(Class<X> ofClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel0ArrayOfSetOperator<?> raw() {
         return new Level0ArrayOfSetOperator<T>(getTarget());
     }

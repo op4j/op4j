@@ -95,8 +95,7 @@ public interface ILevel2MapEntriesValueOperator<K,V>
     
     public <X> ILevel2MapEntriesValueOperator<K,X> of(final Type<X> of);
     
-    public <X> ILevel2MapEntriesValueOperator<K,X> of(final Class<X> classOf);
-    
+        
     public ILevel2MapEntriesValueOperator<K,?> raw();
     
     

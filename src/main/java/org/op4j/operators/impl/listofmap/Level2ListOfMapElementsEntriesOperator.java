@@ -59,12 +59,6 @@ public class Level2ListOfMapElementsEntriesOperator<K,V> extends Operator
     }
 
 
-    public <X, Y> ILevel2ListOfMapElementsEntriesOperator<X, Y> of(Class<X> ofXClass, Class<Y> ofYClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel3ListOfMapElementsEntriesKeyOperator<K, V> onKey() {
         return new Level3ListOfMapElementsEntriesKeyOperator<K, V>(getTarget().iterate(0));
     }

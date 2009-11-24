@@ -34,7 +34,6 @@ public interface ITypeParameterizableXYOperator<T1,T2> {
 
     
     public <X,Y> ITypeParameterizableXYOperator<X,Y> of(final Type<X> ofX, final Type<Y> ofY);
-    public <X,Y> ITypeParameterizableXYOperator<X,Y> of(final Class<X> ofXClass, final Class<Y> ofYClass);
     
     public ITypeParameterizableXYOperator<?,?> raw();
     

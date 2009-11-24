@@ -153,12 +153,6 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
     }
 
 
-    public <X, Y> ILevel1ArrayOfMapElementsOperator<X, Y> of(Class<X> ofXClass, Class<Y> ofYClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel1ArrayOfMapElementsOperator<K, V> put(final K newKey, final V newValue) {
         return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(new MapFunc.Put<K, V>(newKey, newValue)));
     }

@@ -34,8 +34,6 @@ public interface ITypeParameterizableXOperator<T> {
 
     
     public <X> ITypeParameterizableXOperator<X> of(final Type<X> of);
-
-    public <X> ITypeParameterizableXOperator<X> of(final Class<X> ofClass);
     
     public ITypeParameterizableXOperator<?> raw();
     

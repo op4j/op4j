@@ -70,8 +70,7 @@ public interface ILevel0MapOfSetOperator<K,V>
     public ILevel0MapOfSetOperator<K,V> sort(final Comparator<? super Map.Entry<K,Set<V>>> comparator);
     
     public <X,Y> ILevel0MapOfSetOperator<X,Y> of(final Type<X> ofX, final Type<Y> ofY);
-    public <X,Y> ILevel0MapOfSetOperator<X,Y> of(final Class<X> ofXClass, final Class<Y> ofYClass);
-    
+        
     public ILevel0MapOfSetOperator<?,?> raw();
     
     public ILevel0MapOfSetOperator<K,V> put(final K newKey, final Set<V> newValue);

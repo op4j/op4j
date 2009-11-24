@@ -96,8 +96,7 @@ public interface ILevel3MapOfListEntriesValueElementsOperator<K,V>
     
     public <X> ILevel3MapOfListEntriesValueElementsOperator<K,X> of(final Type<X> of);
     
-    public <X> ILevel3MapOfListEntriesValueElementsOperator<K,X> of(final Class<X> classOf);
-    
+        
     public ILevel3MapOfListEntriesValueElementsOperator<K,?> raw();
     
                                             

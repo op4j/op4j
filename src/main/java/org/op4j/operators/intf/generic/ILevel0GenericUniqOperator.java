@@ -119,8 +119,7 @@ public interface ILevel0GenericUniqOperator<T>
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunc<X,? super T> exec);
     
     public <X> ILevel0GenericUniqOperator<X> of(final Type<X> of);
-    public <X> ILevel0GenericUniqOperator<X> of(final Class<X> ofClass);
-    
+        
     public ILevel0GenericUniqOperator<?> raw();
     public ILevel0GenericMultiOperator<T> add(final T... newElements);
     public ILevel0GenericMultiOperator<T> insert(final int position, final T... newElements);

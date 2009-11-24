@@ -74,8 +74,7 @@ public interface ILevel0ArrayOperator<T>
     public ILevel0ArrayOperator<T> sort(final Comparator<? super T> comparator);
     
     public <X> ILevel0ArrayOperator<X> of(final Type<X> of);
-    public <X> ILevel0ArrayOperator<X> of(final Class<X> ofClass);
-    
+        
     public ILevel0ArrayOperator<?> raw();
     
     public ILevel0GenericMultiOperator<T> flatten();

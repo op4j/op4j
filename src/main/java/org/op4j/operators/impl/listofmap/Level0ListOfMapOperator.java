@@ -203,13 +203,6 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     }
 
 
-    public <X, Y> ILevel0ListOfMapOperator<X, Y> of(Class<X> ofXClass,
-            Class<Y> ofYClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel0ListOfMapOperator<?, ?> raw() {
         return new Level0ListOfMapOperator<K, V>(getTarget());
     }

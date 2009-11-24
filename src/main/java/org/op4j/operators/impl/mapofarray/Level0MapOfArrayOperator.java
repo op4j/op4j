@@ -155,13 +155,6 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
     }
 
 
-    public <X, Y> ILevel0MapOfArrayOperator<X, Y> of(Class<X> ofXClass,
-            Class<Y> ofYClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel0MapOfArrayOperator<K, V> put(final K newKey, final V[] newValue) {
         return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFunc.Put<K,V[]>(newKey, newValue)));
     }

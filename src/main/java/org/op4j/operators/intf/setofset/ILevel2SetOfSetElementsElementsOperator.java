@@ -94,8 +94,7 @@ public interface ILevel2SetOfSetElementsElementsOperator<T>
     public <X> ILevel2SetOfSetElementsElementsOperator<X> exec(final IFunc<X,? super T> exec);
     
     public <X> ILevel2SetOfSetElementsElementsOperator<X> of(final Type<X> of);
-    public <X> ILevel2SetOfSetElementsElementsOperator<X> of(final Class<X> ofClass);
-    
+        
     public ILevel2SetOfSetElementsElementsOperator<?> raw();
     
                                     

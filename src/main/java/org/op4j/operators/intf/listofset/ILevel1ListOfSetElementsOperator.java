@@ -71,8 +71,7 @@ public interface ILevel1ListOfSetElementsOperator<T>
     public ILevel1ListOfSetElementsOperator<T> sort(final Comparator<? super T> comparator);
     
     public <X> ILevel1ListOfSetElementsOperator<X> of(final Type<X> of);
-    public <X> ILevel1ListOfSetElementsOperator<X> of(final Class<X> ofClass);
-    
+        
     public ILevel1ListOfSetElementsOperator<?> raw();
     public ILevel1ListOfSetElementsOperator<T> add(final T... newElements);
     public ILevel1ListOfSetElementsOperator<T> insert(final int position, final T... newElements);

@@ -200,13 +200,6 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
     }
 
 
-    public <X, Y> ILevel0ArrayOfMapOperator<X, Y> of(Class<X> ofXClass,
-            Class<Y> ofYClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel0ArrayOfMapOperator<?, ?> raw() {
         return new Level0ArrayOfMapOperator<K, V>(getTarget());
     }

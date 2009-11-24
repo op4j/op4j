@@ -615,12 +615,6 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0GenericUniqOperator<X> of(Class<X> ofClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel0GenericUniqOperator<?> raw() {
         return new Level0GenericUniqOperator<T>(getTarget());
     }

@@ -75,8 +75,7 @@ public interface ILevel2MapOfListEntriesValueOperator<K,V>
     
     public <X> ILevel2MapOfListEntriesValueOperator<K,X> of(final Type<X> of);
     
-    public <X> ILevel2MapOfListEntriesValueOperator<K,X> of(final Class<X> classOf);
-    
+        
     public ILevel2MapOfListEntriesValueOperator<K,?> raw();
     public ILevel2MapOfListEntriesValueOperator<K,V> add(final V... newElements);
     public ILevel2MapOfListEntriesValueOperator<K,V> insert(final int position, final V... newElements);

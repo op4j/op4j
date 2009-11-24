@@ -48,8 +48,7 @@ public interface ILevel3MapOfMapEntriesValueEntriesOperator<K1,K2,V>
     
     public <X,Y> ILevel3MapOfMapEntriesValueEntriesOperator<K1,X,Y> of(final Type<X> ofX, final Type<Y> ofY);
     
-    public <X,Y> ILevel3MapOfMapEntriesValueEntriesOperator<K1,X,Y> of(final Class<X> classOfX, final Class<Y> classOfY);
-    
+        
     public ILevel3MapOfMapEntriesValueEntriesOperator<K1,?,?> raw();
     
                                             

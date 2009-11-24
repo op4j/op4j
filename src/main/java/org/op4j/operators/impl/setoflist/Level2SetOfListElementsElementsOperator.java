@@ -208,12 +208,6 @@ public class Level2SetOfListElementsElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel2SetOfListElementsElementsOperator<X> of(Class<X> ofClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel2SetOfListElementsElementsOperator<?> raw() {
         return new Level2SetOfListElementsElementsOperator<T>(getTarget());
     }

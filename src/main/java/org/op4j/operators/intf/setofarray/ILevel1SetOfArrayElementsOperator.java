@@ -74,8 +74,7 @@ public interface ILevel1SetOfArrayElementsOperator<T>
     public ILevel1SetOfArrayElementsOperator<T> sort(final Comparator<? super T> comparator);
     
     public <X> ILevel1SetOfArrayElementsOperator<X> of(final Type<X> of);
-    public <X> ILevel1SetOfArrayElementsOperator<X> of(final Class<X> ofClass);
-    
+        
     public ILevel1SetOfArrayElementsOperator<?> raw();
     public ILevel1SetOfArrayElementsOperator<T> add(final T... newElements);
     public ILevel1SetOfArrayElementsOperator<T> insert(final int position, final T... newElements);

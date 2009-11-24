@@ -95,8 +95,7 @@ public interface ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
     
     public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> of(final Type<X> of);
     
-    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> of(final Class<X> classOf);
-    
+        
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,?> raw();
     
                                             

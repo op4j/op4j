@@ -217,12 +217,6 @@ public class Level0SetOfArrayOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0SetOfArrayOperator<X> of(Class<X> ofClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel0SetOfArrayOperator<?> raw() {
         return new Level0SetOfArrayOperator<T>(this.arrayOf, getTarget());
     }

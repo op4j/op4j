@@ -220,12 +220,6 @@ public class Level1ArrayOfArrayElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel1ArrayOfArrayElementsOperator<X> of(Class<X> ofClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel1ArrayOfArrayElementsOperator<?> raw() {
         return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget());
     }

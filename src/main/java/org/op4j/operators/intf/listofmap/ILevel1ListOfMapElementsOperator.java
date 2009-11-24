@@ -61,8 +61,7 @@ public interface ILevel1ListOfMapElementsOperator<K,V>
     public ILevel1ListOfMapElementsOperator<K,V> sort(final Comparator<? super Map.Entry<K,V>> comparator);
     
     public <X,Y> ILevel1ListOfMapElementsOperator<X,Y> of(final Type<X> ofX, final Type<Y> ofY);
-    public <X,Y> ILevel1ListOfMapElementsOperator<X,Y> of(final Class<X> ofXClass, final Class<Y> ofYClass);
-    
+        
     public ILevel1ListOfMapElementsOperator<?,?> raw();
     
     public ILevel1ListOfMapElementsOperator<K,V> put(final K newKey, final V newValue);

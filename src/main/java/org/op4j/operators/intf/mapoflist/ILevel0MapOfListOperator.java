@@ -70,8 +70,7 @@ public interface ILevel0MapOfListOperator<K,V>
     public ILevel0MapOfListOperator<K,V> sort(final Comparator<? super Map.Entry<K,List<V>>> comparator);
     
     public <X,Y> ILevel0MapOfListOperator<X,Y> of(final Type<X> ofX, final Type<Y> ofY);
-    public <X,Y> ILevel0MapOfListOperator<X,Y> of(final Class<X> ofXClass, final Class<Y> ofYClass);
-    
+        
     public ILevel0MapOfListOperator<?,?> raw();
     
     public ILevel0MapOfListOperator<K,V> put(final K newKey, final List<V> newValue);

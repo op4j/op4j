@@ -44,8 +44,7 @@ public interface ILevel2MapOfSetEntriesKeyOperator<K,V>
     
     public <X> ILevel2MapOfSetEntriesKeyOperator<X,V> of(final Type<X> of);
     
-    public <X> ILevel2MapOfSetEntriesKeyOperator<X,V> of(final Class<X> classOf);
-    
+        
     public ILevel2MapOfSetEntriesKeyOperator<?,V> raw();
     
                                     

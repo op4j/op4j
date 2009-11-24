@@ -220,12 +220,6 @@ public class Level0SetOfSetOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0SetOfSetOperator<X> of(Class<X> ofClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel0SetOfSetOperator<?> raw() {
         return new Level0SetOfSetOperator<T>(getTarget());
     }

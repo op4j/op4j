@@ -214,12 +214,6 @@ public class Level1ListOfSetElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel1ListOfSetElementsOperator<X> of(Class<X> ofClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel1ListOfSetElementsOperator<?> raw() {
         return new Level1ListOfSetElementsOperator<T>(getTarget());
     }

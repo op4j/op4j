@@ -58,8 +58,7 @@ public interface ILevel0SetOfMapOperator<K,V>
     public ILevel0SetOfMapOperator<K,V> sort(final Comparator<? super Map<K,V>> comparator);
     
     public <X,Y> ILevel0SetOfMapOperator<X,Y> of(final Type<X> ofX, final Type<Y> ofY);
-    public <X,Y> ILevel0SetOfMapOperator<X,Y> of(final Class<X> ofXClass, final Class<Y> ofYClass);
-    
+        
     public ILevel0SetOfMapOperator<?,?> raw();
     public ILevel0SetOfMapOperator<K,V> add(final Map<K,V>... newElements);
     public ILevel0SetOfMapOperator<K,V> insert(final int position, final Map<K,V>... newElements);

@@ -207,12 +207,6 @@ public class Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V> extends Ope
     }
 
 
-    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> of(final Class<X> classOf) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, ?> raw() {
         return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, V>(getTarget());
     }

@@ -211,12 +211,6 @@ public class Level2ListOfArrayElementsElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel2ListOfArrayElementsElementsOperator<X> of(Class<X> ofClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel2ListOfArrayElementsElementsOperator<?> raw() {
         return new Level2ListOfArrayElementsElementsOperator<T>(this.arrayOf, getTarget());
     }

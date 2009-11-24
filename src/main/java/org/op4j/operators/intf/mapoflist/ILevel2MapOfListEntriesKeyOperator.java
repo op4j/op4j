@@ -44,8 +44,7 @@ public interface ILevel2MapOfListEntriesKeyOperator<K,V>
     
     public <X> ILevel2MapOfListEntriesKeyOperator<X,V> of(final Type<X> of);
     
-    public <X> ILevel2MapOfListEntriesKeyOperator<X,V> of(final Class<X> classOf);
-    
+        
     public ILevel2MapOfListEntriesKeyOperator<?,V> raw();
     
                                     

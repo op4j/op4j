@@ -95,8 +95,7 @@ public interface ILevel1SetElementsOperator<T>
     public <X> ILevel1SetElementsOperator<X> exec(final IFunc<X,? super T> exec);
     
     public <X> ILevel1SetElementsOperator<X> of(final Type<X> of);
-    public <X> ILevel1SetElementsOperator<X> of(final Class<X> ofClass);
-    
+        
     public ILevel1SetElementsOperator<?> raw();
     
                                     

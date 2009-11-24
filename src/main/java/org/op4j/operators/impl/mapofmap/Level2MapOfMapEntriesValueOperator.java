@@ -154,12 +154,6 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
     }
 
 
-    public <X, Y> ILevel2MapOfMapEntriesValueOperator<K1, X, Y> of(Class<X> classOfX, Class<Y> classOfY) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> put(final K2 newKey, final V newValue) {
         return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.Put<K2, V>(newKey, newValue)));
     }

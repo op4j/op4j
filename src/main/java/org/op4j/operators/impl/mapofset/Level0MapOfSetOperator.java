@@ -153,13 +153,6 @@ public class Level0MapOfSetOperator<K,V> extends Operator
     }
 
 
-    public <X, Y> ILevel0MapOfSetOperator<X, Y> of(Class<X> ofXClass,
-            Class<Y> ofYClass) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel0MapOfSetOperator<K, V> put(final K newKey, final Set<V> newValue) {
         return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFunc.Put<K, Set<V>>(newKey, newValue)));
     }

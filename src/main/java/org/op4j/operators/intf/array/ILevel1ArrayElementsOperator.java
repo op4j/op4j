@@ -94,8 +94,7 @@ public interface ILevel1ArrayElementsOperator<T>
     public <X> ILevel1ArrayElementsOperator<X> exec(final IFunc<X,? super T> exec);
     
     public <X> ILevel1ArrayElementsOperator<X> of(final Type<X> of);
-    public <X> ILevel1ArrayElementsOperator<X> of(final Class<X> ofClass);
-    
+        
     public ILevel1ArrayElementsOperator<?> raw();
     
 		    
