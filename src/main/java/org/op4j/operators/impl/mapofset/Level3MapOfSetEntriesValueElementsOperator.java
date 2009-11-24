@@ -203,8 +203,7 @@ public class Level3MapOfSetEntriesValueElementsOperator<K,V> extends Operator
 
 
     public <X> ILevel3MapOfSetEntriesValueElementsOperator<K, X> of(final Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level3MapOfSetEntriesValueElementsOperator<K, X>(getTarget());
     }
 
 

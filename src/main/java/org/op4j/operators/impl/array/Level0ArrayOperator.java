@@ -32,12 +32,12 @@ import org.op4j.executables.functions.conversion.ToList;
 import org.op4j.executables.functions.conversion.ToMap;
 import org.op4j.executables.functions.conversion.ToSet;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.impl.list.Level0ListOperator;
 import org.op4j.operators.impl.map.Level0MapOperator;
 import org.op4j.operators.impl.set.Level0SetOperator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.array.ILevel1ArrayElementsOperator;
-import org.op4j.operators.intf.generic.ILevel0GenericMultiOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
@@ -82,59 +82,52 @@ public class Level0ArrayOperator<T> extends Operator implements
         return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.Distinct<T>()));
     }
 
-    public ILevel0ArrayOperator<T> extract(int position) {
+    public ILevel0ArrayOperator<T> extract(final int position) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0ArrayOperator<T> extract(T value) {
+    public ILevel0ArrayOperator<T> extract(final T value) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0ArrayOperator<T> extractAll(int... positions) {
+    public ILevel0ArrayOperator<T> extractAll(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0ArrayOperator<T> extractAll(T... values) {
+    public ILevel0ArrayOperator<T> extractAll(final T... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0ArrayOperator<T> extractAll(String expression,
-            Object... optionalExpParams) {
+    public ILevel0ArrayOperator<T> extractAll(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0ArrayOperator<T> extractAll(ISelect<T> selector) {
+    public ILevel0ArrayOperator<T> extractAll(final ISelect<T> selector) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0ArrayOperator<T> extractAllBut(int... positions) {
+    public ILevel0ArrayOperator<T> extractAllBut(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0ArrayOperator<T> extractAllBut(T... values) {
+    public ILevel0ArrayOperator<T> extractAllBut(final T... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0ArrayOperator<T> extractAllBut(String expression,
-            Object... optionalExpParams) {
+    public ILevel0ArrayOperator<T> extractAllBut(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public ILevel0ArrayOperator<T> extractAllBut(ISelect<T> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0GenericMultiOperator<T> flatten() {
+    public ILevel0ArrayOperator<T> extractAllBut(final ISelect<T> selector) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -184,8 +177,7 @@ public class Level0ArrayOperator<T> extends Operator implements
 
 
     public <X> ILevel0ArrayOperator<X> of(final Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ArrayOperator<X>(of, getTarget());
     }
 
     public ILevel0ArrayOperator<?> raw() {
@@ -234,9 +226,8 @@ public class Level0ArrayOperator<T> extends Operator implements
         return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.Sort()));
     }
 
-    @SuppressWarnings("unchecked")
     public ILevel0ArrayOperator<T> sort(final Comparator<? super T> comparator) {
-        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.Sort(comparator)));
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.SortByComparator<T>(comparator)));
     }
 
     public ILevel0ListOperator<T> toList() {
@@ -261,8 +252,7 @@ public class Level0ArrayOperator<T> extends Operator implements
     }
 
     public ILevel0GenericUniqOperator<T[]> generic() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0GenericUniqOperator<T[]>(getTarget());
     }
 
 }

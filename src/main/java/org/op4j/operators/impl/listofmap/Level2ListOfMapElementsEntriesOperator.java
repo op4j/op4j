@@ -54,8 +54,7 @@ public class Level2ListOfMapElementsEntriesOperator<K,V> extends Operator
 
 
     public <X, Y> ILevel2ListOfMapElementsEntriesOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level2ListOfMapElementsEntriesOperator<X, Y>(getTarget());
     }
 
 

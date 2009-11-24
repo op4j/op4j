@@ -54,8 +54,7 @@ public class Level1MapOfSetEntriesOperator<K,V> extends Operator
 
 
     public <X, Y> ILevel1MapOfSetEntriesOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1MapOfSetEntriesOperator<X, Y>(getTarget());
     }
 
 

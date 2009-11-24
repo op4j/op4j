@@ -90,64 +90,61 @@ public class Level1ListOfArrayElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> extract(int position) {
+    public ILevel1ListOfArrayElementsOperator<T> extract(final int position) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> extract(T value) {
+    public ILevel1ListOfArrayElementsOperator<T> extract(final T value) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> extractAll(int... positions) {
+    public ILevel1ListOfArrayElementsOperator<T> extractAll(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> extractAll(T... values) {
+    public ILevel1ListOfArrayElementsOperator<T> extractAll(final T... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> extractAll(String expression,
-            Object... optionalExpParams) {
+    public ILevel1ListOfArrayElementsOperator<T> extractAll(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> extractAll(ISelect<T> selector) {
+    public ILevel1ListOfArrayElementsOperator<T> extractAll(final ISelect<T> selector) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> extractAllBut(int... positions) {
+    public ILevel1ListOfArrayElementsOperator<T> extractAllBut(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> extractAllBut(T... values) {
+    public ILevel1ListOfArrayElementsOperator<T> extractAllBut(final T... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> extractAllBut(
-            String expression, Object... optionalExpParams) {
+    public ILevel1ListOfArrayElementsOperator<T> extractAllBut(final String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> extractAllBut(
-            ISelect<T> selector) {
+    public ILevel1ListOfArrayElementsOperator<T> extractAllBut(final ISelect<T> selector) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -212,8 +209,7 @@ public class Level1ListOfArrayElementsOperator<T> extends Operator
 
 
     public <X> ILevel1ListOfArrayElementsOperator<X> of(final Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1ListOfArrayElementsOperator<X>(of, getTarget());
     }
 
 
@@ -264,9 +260,8 @@ public class Level1ListOfArrayElementsOperator<T> extends Operator
         return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.Sort()));
     }
 
-    @SuppressWarnings("unchecked")
     public ILevel1ListOfArrayElementsOperator<T> sort(final Comparator<? super T> comparator) {
-        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.Sort(comparator)));
+        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.SortByComparator<T>(comparator)));
     }
 
 

@@ -34,10 +34,10 @@ import org.op4j.executables.functions.conversion.ToMap;
 import org.op4j.executables.functions.conversion.ToSet;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
+import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.impl.map.Level0MapOperator;
 import org.op4j.operators.impl.set.Level0SetOperator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
-import org.op4j.operators.intf.generic.ILevel0GenericMultiOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.list.ILevel1ListElementsOperator;
@@ -82,72 +82,66 @@ public class Level0ListOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOperator<T> extract(int position) {
+    public ILevel0ListOperator<T> extract(final int position) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOperator<T> extract(T value) {
+    public ILevel0ListOperator<T> extract(final T value) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOperator<T> extractAll(int... positions) {
+    public ILevel0ListOperator<T> extractAll(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOperator<T> extractAll(T... values) {
+    public ILevel0ListOperator<T> extractAll(final T... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOperator<T> extractAll(String expression,
-            Object... optionalExpParams) {
+    public ILevel0ListOperator<T> extractAll(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOperator<T> extractAll(ISelect<T> selector) {
+    public ILevel0ListOperator<T> extractAll(final ISelect<T> selector) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOperator<T> extractAllBut(int... positions) {
+    public ILevel0ListOperator<T> extractAllBut(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOperator<T> extractAllBut(T... values) {
+    public ILevel0ListOperator<T> extractAllBut(final T... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOperator<T> extractAllBut(String expression,
-            Object... optionalExpParams) {
+    public ILevel0ListOperator<T> extractAllBut(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOperator<T> extractAllBut(ISelect<T> selector) {
+    public ILevel0ListOperator<T> extractAllBut(final ISelect<T> selector) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0GenericMultiOperator<T> flatten() {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
 
     public ILevel1ListElementsOperator<T> forEach() {
@@ -214,8 +208,7 @@ public class Level0ListOperator<T> extends Operator
 
 
     public <X> ILevel0ListOperator<X> of(final Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ListOperator<X>(getTarget());
     }
 
 
@@ -267,9 +260,8 @@ public class Level0ListOperator<T> extends Operator
     }
 
 
-    @SuppressWarnings("unchecked")
     public ILevel0ListOperator<T> sort(final Comparator<? super T> comparator) {
-        return new Level0ListOperator<T>(getTarget().execute(new ListFunc.Sort(comparator)));
+        return new Level0ListOperator<T>(getTarget().execute(new ListFunc.SortByComparator<T>(comparator)));
     }
 
 
@@ -300,8 +292,7 @@ public class Level0ListOperator<T> extends Operator
 
 
     public ILevel0GenericUniqOperator<List<T>> generic() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0GenericUniqOperator<List<T>>(getTarget());
     }
 
 }

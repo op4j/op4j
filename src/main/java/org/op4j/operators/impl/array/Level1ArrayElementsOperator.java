@@ -206,8 +206,7 @@ public class Level1ArrayElementsOperator<T> extends Operator
 
 
     public <X> ILevel1ArrayElementsOperator<X> of(final Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1ArrayElementsOperator<X>(of, getTarget());
     }
 
 

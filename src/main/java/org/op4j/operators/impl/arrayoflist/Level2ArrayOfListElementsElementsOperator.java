@@ -202,8 +202,7 @@ public class Level2ArrayOfListElementsElementsOperator<T> extends Operator
 
 
     public <X> ILevel2ArrayOfListElementsElementsOperator<X> of(final Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level2ArrayOfListElementsElementsOperator<X>(getTarget());
     }
 
 

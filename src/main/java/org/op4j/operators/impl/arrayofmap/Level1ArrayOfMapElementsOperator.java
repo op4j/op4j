@@ -58,47 +58,43 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> extract(K key) {
+    public ILevel1ArrayOfMapElementsOperator<K, V> extract(final K key) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> extractAll(K... keys) {
+    public ILevel1ArrayOfMapElementsOperator<K, V> extractAll(final K... keys) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> extractAll(
-            String expression, Object... optionalExpParams) {
+    public ILevel1ArrayOfMapElementsOperator<K, V> extractAll(final String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> extractAll(
-            ISelect<Entry<K, V>> selector) {
+    public ILevel1ArrayOfMapElementsOperator<K, V> extractAll(final ISelect<Entry<K, V>> selector) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> extractAllBut(K... keys) {
+    public ILevel1ArrayOfMapElementsOperator<K, V> extractAllBut(final K... keys) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> extractAllBut(
-            String expression, Object... optionalExpParams) {
+    public ILevel1ArrayOfMapElementsOperator<K, V> extractAllBut(final String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> extractAllBut(
-            ISelect<Entry<K, V>> selector) {
+    public ILevel1ArrayOfMapElementsOperator<K, V> extractAllBut(final ISelect<Entry<K, V>> selector) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -148,8 +144,7 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
 
 
     public <X, Y> ILevel1ArrayOfMapElementsOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1ArrayOfMapElementsOperator<X, Y>(getTarget());
     }
 
 

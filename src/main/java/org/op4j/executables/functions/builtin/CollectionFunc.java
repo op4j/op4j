@@ -52,31 +52,45 @@ class CollectionFunc {
     
     static abstract class Sort<T extends Comparable<? super T>, X extends Collection<T>> implements IFunc<X, X> {
 
-        private Comparator<? super T> comparator = null;
-
         public Sort() {
             super();
         }
 
-        public Sort(final Comparator<? super T> comparator) {
-            super();
-            this.comparator = comparator;
-        }
-
         public X execute(final X object) throws Exception {
+        	
             final List<T> result = new ArrayList<T>(object);
-            if (this.comparator == null) {
-                Collections.sort(result);
-            } else {
-                Collections.sort(result, this.comparator);
-            }
+            Collections.sort(result);
             return fromList(result);
+            
         }
 
         abstract X fromList(final List<T> object);
 
     }
 
+    
+    
+    static abstract class SortByComparator<T, X extends Collection<T>> implements IFunc<X, X> {
+
+        private Comparator<? super T> comparator = null;
+
+        public SortByComparator(final Comparator<? super T> comparator) {
+            super();
+            this.comparator = comparator;
+        }
+
+        public X execute(final X object) throws Exception {
+        	
+            final List<T> result = new ArrayList<T>(object);
+            Collections.sort(result, this.comparator);
+            return fromList(result);
+            
+        }
+
+        abstract X fromList(final List<T> object);
+
+    }
+    
     
 
     

@@ -55,7 +55,24 @@ public class SetFunc {
             super();
         }
 
-        public Sort(final Comparator<? super T> comparator) {
+        public Type<? super Set<T>> getResultType() {
+            return Types.SET_OF_UNKNOWN;
+        }
+
+        @Override
+        Set<T> fromList(final List<T> object) {
+            return new LinkedHashSet<T>(object);
+        }
+
+    }
+
+
+    
+    
+    
+    public static final class SortByComparator<T> extends CollectionFunc.SortByComparator<T, Set<T>> {
+
+        public SortByComparator(final Comparator<? super T> comparator) {
             super(comparator);
         }
 
@@ -69,7 +86,6 @@ public class SetFunc {
         }
 
     }
-
     
     
     

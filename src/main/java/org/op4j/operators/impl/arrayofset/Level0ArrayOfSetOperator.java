@@ -31,6 +31,7 @@ import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ArrayFunc;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
@@ -85,63 +86,61 @@ public class Level0ArrayOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel0ArrayOfSetOperator<T> extract(int position) {
+    public ILevel0ArrayOfSetOperator<T> extract(final int position) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfSetOperator<T> extract(Set<T> value) {
+    public ILevel0ArrayOfSetOperator<T> extract(final Set<T> value) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfSetOperator<T> extractAll(int... positions) {
+    public ILevel0ArrayOfSetOperator<T> extractAll(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfSetOperator<T> extractAll(Set<T>... values) {
+    public ILevel0ArrayOfSetOperator<T> extractAll(final Set<T>... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfSetOperator<T> extractAll(String expression,
-            Object... optionalExpParams) {
+    public ILevel0ArrayOfSetOperator<T> extractAll(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfSetOperator<T> extractAll(ISelect<Set<T>> selector) {
+    public ILevel0ArrayOfSetOperator<T> extractAll(final ISelect<Set<T>> selector) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfSetOperator<T> extractAllBut(int... positions) {
+    public ILevel0ArrayOfSetOperator<T> extractAllBut(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfSetOperator<T> extractAllBut(Set<T>... values) {
+    public ILevel0ArrayOfSetOperator<T> extractAllBut(final Set<T>... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfSetOperator<T> extractAllBut(String expression,
-            Object... optionalExpParams) {
+    public ILevel0ArrayOfSetOperator<T> extractAllBut(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfSetOperator<T> extractAllBut(ISelect<Set<T>> selector) {
+    public ILevel0ArrayOfSetOperator<T> extractAllBut(final ISelect<Set<T>> selector) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -217,8 +216,7 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
 
     public <X> ILevel0ArrayOfSetOperator<X> of(final Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ArrayOfSetOperator<X>(getTarget());
     }
 
 
@@ -268,9 +266,8 @@ public class Level0ArrayOfSetOperator<T> extends Operator
         return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.Sort()));
     }
 
-    @SuppressWarnings("unchecked")
     public ILevel0ArrayOfSetOperator<T> sort(final Comparator<? super Set<T>> comparator) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.Sort(comparator)));
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.SortByComparator<Set<T>>(comparator)));
     }
 
 
@@ -351,8 +348,7 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
 
     public ILevel0GenericUniqOperator<Set<T>[]> generic() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0GenericUniqOperator<Set<T>[]>(getTarget());
     }
 
 }

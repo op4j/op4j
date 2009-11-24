@@ -51,8 +51,7 @@ public class Level4MapOfMapEntriesValueEntriesKeyOperator<K1,K2,V> extends Opera
 
 
     public <X> ILevel4MapOfMapEntriesValueEntriesKeyOperator<K1, X, V> of(final Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level4MapOfMapEntriesValueEntriesKeyOperator<K1, X, V>(getTarget());
     }
 
 

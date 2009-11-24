@@ -34,6 +34,7 @@ import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ListFunc;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
 import org.op4j.operators.intf.arrayofmap.ILevel0ArrayOfMapOperator;
@@ -88,63 +89,61 @@ public class Level0ListOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfSetOperator<T> extract(int position) {
+    public ILevel0ListOfSetOperator<T> extract(final int position) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfSetOperator<T> extract(Set<T> value) {
+    public ILevel0ListOfSetOperator<T> extract(final Set<T> value) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfSetOperator<T> extractAll(int... positions) {
+    public ILevel0ListOfSetOperator<T> extractAll(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfSetOperator<T> extractAll(Set<T>... values) {
+    public ILevel0ListOfSetOperator<T> extractAll(final Set<T>... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfSetOperator<T> extractAll(String expression,
-            Object... optionalExpParams) {
+    public ILevel0ListOfSetOperator<T> extractAll(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfSetOperator<T> extractAll(ISelect<Set<T>> selector) {
+    public ILevel0ListOfSetOperator<T> extractAll(final ISelect<Set<T>> selector) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfSetOperator<T> extractAllBut(int... positions) {
+    public ILevel0ListOfSetOperator<T> extractAllBut(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfSetOperator<T> extractAllBut(Set<T>... values) {
+    public ILevel0ListOfSetOperator<T> extractAllBut(final Set<T>... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfSetOperator<T> extractAllBut(String expression,
-            Object... optionalExpParams) {
+    public ILevel0ListOfSetOperator<T> extractAllBut(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfSetOperator<T> extractAllBut(ISelect<Set<T>> selector) {
+    public ILevel0ListOfSetOperator<T> extractAllBut(final ISelect<Set<T>> selector) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -220,8 +219,7 @@ public class Level0ListOfSetOperator<T> extends Operator
 
 
     public <X> ILevel0ListOfSetOperator<X> of(final Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ListOfSetOperator<X>(getTarget());
     }
 
 
@@ -273,9 +271,8 @@ public class Level0ListOfSetOperator<T> extends Operator
     }
 
 
-    @SuppressWarnings("unchecked")
     public ILevel0ListOfSetOperator<T> sort(final Comparator<? super Set<T>> comparator) {
-        return new Level0ListOfSetOperator<T>(getTarget().execute(new ListFunc.Sort(comparator)));
+        return new Level0ListOfSetOperator<T>(getTarget().execute(new ListFunc.SortByComparator<Set<T>>(comparator)));
     }
 
 
@@ -360,8 +357,7 @@ public class Level0ListOfSetOperator<T> extends Operator
 
 
     public ILevel0GenericUniqOperator<List<Set<T>>> generic() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0GenericUniqOperator<List<Set<T>>>(getTarget());
     }
 
 }

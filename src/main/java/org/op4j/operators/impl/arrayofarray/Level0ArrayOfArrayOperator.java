@@ -30,6 +30,7 @@ import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ArrayFunc;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel1ArrayOfArrayElementsOperator;
@@ -89,63 +90,61 @@ public class Level0ArrayOfArrayOperator<T> extends Operator
     }
 
 
-    public ILevel0ArrayOfArrayOperator<T> extract(int position) {
+    public ILevel0ArrayOfArrayOperator<T> extract(final int position) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfArrayOperator<T> extract(T[] value) {
+    public ILevel0ArrayOfArrayOperator<T> extract(final T[] value) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfArrayOperator<T> extractAll(int... positions) {
+    public ILevel0ArrayOfArrayOperator<T> extractAll(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfArrayOperator<T> extractAll(T[]... values) {
+    public ILevel0ArrayOfArrayOperator<T> extractAll(final T[]... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfArrayOperator<T> extractAll(String expression,
-            Object... optionalExpParams) {
+    public ILevel0ArrayOfArrayOperator<T> extractAll(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfArrayOperator<T> extractAll(ISelect<T[]> selector) {
+    public ILevel0ArrayOfArrayOperator<T> extractAll(final ISelect<T[]> selector) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfArrayOperator<T> extractAllBut(int... positions) {
+    public ILevel0ArrayOfArrayOperator<T> extractAllBut(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfArrayOperator<T> extractAllBut(T[]... values) {
+    public ILevel0ArrayOfArrayOperator<T> extractAllBut(final T[]... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfArrayOperator<T> extractAllBut(String expression,
-            Object... optionalExpParams) {
+    public ILevel0ArrayOfArrayOperator<T> extractAllBut(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfArrayOperator<T> extractAllBut(ISelect<T[]> selector) {
+    public ILevel0ArrayOfArrayOperator<T> extractAllBut(final ISelect<T[]> selector) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -215,8 +214,7 @@ public class Level0ArrayOfArrayOperator<T> extends Operator
 
 
     public <X> ILevel0ArrayOfArrayOperator<X> of(final Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ArrayOfArrayOperator<X>(of, getTarget());
     }
 
 
@@ -269,9 +267,8 @@ public class Level0ArrayOfArrayOperator<T> extends Operator
     }
 
 
-    @SuppressWarnings("unchecked")
     public ILevel0ArrayOfArrayOperator<T> sort(final Comparator<? super T[]> comparator) {
-        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.Sort(comparator)));
+        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.SortByComparator<T[]>(comparator)));
     }
 
 
@@ -352,8 +349,7 @@ public class Level0ArrayOfArrayOperator<T> extends Operator
 
 
     public ILevel0GenericUniqOperator<T[][]> generic() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0GenericUniqOperator<T[][]>(getTarget());
     }
 
 }

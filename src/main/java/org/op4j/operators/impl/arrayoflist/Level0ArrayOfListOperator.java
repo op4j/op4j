@@ -31,6 +31,7 @@ import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ArrayFunc;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
@@ -85,63 +86,61 @@ public class Level0ArrayOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0ArrayOfListOperator<T> extract(int position) {
+    public ILevel0ArrayOfListOperator<T> extract(final int position) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfListOperator<T> extract(List<T> value) {
+    public ILevel0ArrayOfListOperator<T> extract(final List<T> value) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfListOperator<T> extractAll(int... positions) {
+    public ILevel0ArrayOfListOperator<T> extractAll(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfListOperator<T> extractAll(List<T>... values) {
+    public ILevel0ArrayOfListOperator<T> extractAll(final List<T>... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfListOperator<T> extractAll(String expression,
-            Object... optionalExpParams) {
+    public ILevel0ArrayOfListOperator<T> extractAll(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfListOperator<T> extractAll(ISelect<List<T>> selector) {
+    public ILevel0ArrayOfListOperator<T> extractAll(final ISelect<List<T>> selector) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfListOperator<T> extractAllBut(int... positions) {
+    public ILevel0ArrayOfListOperator<T> extractAllBut(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfListOperator<T> extractAllBut(List<T>... values) {
+    public ILevel0ArrayOfListOperator<T> extractAllBut(final List<T>... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfListOperator<T> extractAllBut(String expression,
-            Object... optionalExpParams) {
+    public ILevel0ArrayOfListOperator<T> extractAllBut(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ArrayOfListOperator<T> extractAllBut(ISelect<List<T>> selector) {
+    public ILevel0ArrayOfListOperator<T> extractAllBut(final ISelect<List<T>> selector) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -211,8 +210,7 @@ public class Level0ArrayOfListOperator<T> extends Operator
 
 
     public <X> ILevel0ArrayOfListOperator<X> of(final Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ArrayOfListOperator<X>(getTarget());
     }
 
 
@@ -263,9 +261,8 @@ public class Level0ArrayOfListOperator<T> extends Operator
         return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.Sort()));
     }
 
-    @SuppressWarnings("unchecked")
     public ILevel0ArrayOfListOperator<T> sort(final Comparator<? super List<T>> comparator) {
-        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.Sort(comparator)));
+        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.SortByComparator<List<T>>(comparator)));
     }
 
 
@@ -346,8 +343,7 @@ public class Level0ArrayOfListOperator<T> extends Operator
 
 
     public ILevel0GenericUniqOperator<List<T>[]> generic() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0GenericUniqOperator<List<T>[]>(getTarget());
     }
 
 }

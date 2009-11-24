@@ -31,6 +31,7 @@ import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.MapFunc;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.listofset.ILevel0ListOfSetOperator;
 import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
@@ -58,47 +59,43 @@ public class Level0MapOfSetOperator<K,V> extends Operator
     }
 
 
-    public ILevel0MapOfSetOperator<K, V> extract(K key) {
+    public ILevel0MapOfSetOperator<K, V> extract(final K key) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0MapOfSetOperator<K, V> extractAll(K... keys) {
+    public ILevel0MapOfSetOperator<K, V> extractAll(final K... keys) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0MapOfSetOperator<K, V> extractAll(String expression,
-            Object... optionalExpParams) {
+    public ILevel0MapOfSetOperator<K, V> extractAll(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0MapOfSetOperator<K, V> extractAll(
-            ISelect<Entry<K, Set<V>>> selector) {
+    public ILevel0MapOfSetOperator<K, V> extractAll(final ISelect<Entry<K, Set<V>>> selector) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0MapOfSetOperator<K, V> extractAllBut(K... keys) {
+    public ILevel0MapOfSetOperator<K, V> extractAllBut(final K... keys) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0MapOfSetOperator<K, V> extractAllBut(String expression,
-            Object... optionalExpParams) {
+    public ILevel0MapOfSetOperator<K, V> extractAllBut(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0MapOfSetOperator<K, V> extractAllBut(
-            ISelect<Entry<K, Set<V>>> selector) {
+    public ILevel0MapOfSetOperator<K, V> extractAllBut(final ISelect<Entry<K, Set<V>>> selector) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -148,8 +145,7 @@ public class Level0MapOfSetOperator<K,V> extends Operator
 
 
     public <X, Y> ILevel0MapOfSetOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0MapOfSetOperator<X, Y>(getTarget());
     }
 
 
@@ -245,8 +241,7 @@ public class Level0MapOfSetOperator<K,V> extends Operator
 
 
     public ILevel0GenericUniqOperator<Map<K, Set<V>>> generic() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0GenericUniqOperator<Map<K, Set<V>>>(getTarget());
     }
 
 }

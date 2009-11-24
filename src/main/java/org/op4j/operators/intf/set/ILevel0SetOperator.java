@@ -28,14 +28,12 @@ import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
-import org.op4j.operators.intf.generic.ILevel0GenericMultiOperator;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
 import org.op4j.operators.qualities.IConvertibleToArrayOperator;
 import org.op4j.operators.qualities.IConvertibleToListOperator;
 import org.op4j.operators.qualities.IConvertibleToMapOperator;
 import org.op4j.operators.qualities.IExtractableCollectionOperator;
-import org.op4j.operators.qualities.IFlattenableOperator;
 import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableCollectionOperator;
 import org.op4j.operators.qualities.INavigableCollectionOperator;
@@ -56,7 +54,6 @@ public interface ILevel0SetOperator<T>
 		        INavigableCollectionOperator<T>,
 		        ISortableOperator<T>,
                 ITypeParameterizableXOperator<T>,
-                IFlattenableOperator,
 		        IModifiableCollectionOperator<T>,
 		        IExtractableCollectionOperator<T>,
 		        IGenerizableOperator<Set<T>>,
@@ -74,7 +71,6 @@ public interface ILevel0SetOperator<T>
         
     public ILevel0SetOperator<?> raw();
     
-    public ILevel0GenericMultiOperator<T> flatten();
     public ILevel0SetOperator<T> add(final T... newElements);
     public ILevel0SetOperator<T> insert(final int position, final T... newElements);
     public ILevel0SetOperator<T> addAll(final Collection<T> collection);

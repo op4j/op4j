@@ -83,67 +83,61 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extract(int position) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> extract(final int position) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extract(V value) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> extract(final V value) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAll(
-            int... positions) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAll(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAll(V... values) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAll(final V... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAll(
-            String expression, Object... optionalExpParams) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAll(final String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAll(
-            ISelect<V> selector) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAll(final ISelect<V> selector) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAllBut(
-            int... positions) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAllBut(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAllBut(V... values) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAllBut(final V... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAllBut(
-            String expression, Object... optionalExpParams) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAllBut(final String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAllBut(
-            ISelect<V> selector) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAllBut(final ISelect<V> selector) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -213,8 +207,7 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
 
 
     public <X> ILevel2MapOfSetEntriesValueOperator<K, X> of(final Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level2MapOfSetEntriesValueOperator<K, X>(getTarget());
     }
 
 
@@ -266,9 +259,8 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    @SuppressWarnings("unchecked")
     public ILevel2MapOfSetEntriesValueOperator<K, V> sort(final Comparator<? super V> comparator) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.Sort(comparator)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.SortByComparator<V>(comparator)));
     }
 
 

@@ -29,6 +29,7 @@ import org.op4j.executables.Eval;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.SetFunc;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
 import org.op4j.operators.intf.setofmap.ILevel1SetOfMapElementsOperator;
@@ -66,64 +67,61 @@ public class Level0SetOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> extract(int position) {
+    public ILevel0SetOfMapOperator<K, V> extract(final int position) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> extract(Map<K, V> value) {
+    public ILevel0SetOfMapOperator<K, V> extract(final Map<K, V> value) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> extractAll(int... positions) {
+    public ILevel0SetOfMapOperator<K, V> extractAll(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> extractAll(Map<K, V>... values) {
+    public ILevel0SetOfMapOperator<K, V> extractAll(final Map<K, V>... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> extractAll(String expression,
-            Object... optionalExpParams) {
+    public ILevel0SetOfMapOperator<K, V> extractAll(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> extractAll(ISelect<Map<K, V>> selector) {
+    public ILevel0SetOfMapOperator<K, V> extractAll(final ISelect<Map<K, V>> selector) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> extractAllBut(int... positions) {
+    public ILevel0SetOfMapOperator<K, V> extractAllBut(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> extractAllBut(Map<K, V>... values) {
+    public ILevel0SetOfMapOperator<K, V> extractAllBut(final Map<K, V>... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> extractAllBut(String expression,
-            Object... optionalExpParams) {
+    public ILevel0SetOfMapOperator<K, V> extractAllBut(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> extractAllBut(
-            ISelect<Map<K, V>> selector) {
+    public ILevel0SetOfMapOperator<K, V> extractAllBut(final ISelect<Map<K, V>> selector) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -193,8 +191,7 @@ public class Level0SetOfMapOperator<K,V> extends Operator
 
 
     public <X, Y> ILevel0SetOfMapOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0SetOfMapOperator<X, Y>(getTarget());
     }
 
 
@@ -246,9 +243,8 @@ public class Level0SetOfMapOperator<K,V> extends Operator
     }
 
 
-    @SuppressWarnings("unchecked")
     public ILevel0SetOfMapOperator<K, V> sort(final Comparator<? super Map<K, V>> comparator) {
-        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.Sort(comparator)));
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.SortByComparator<Map<K, V>>(comparator)));
     }
 
 
@@ -259,8 +255,7 @@ public class Level0SetOfMapOperator<K,V> extends Operator
 
 
     public ILevel0GenericUniqOperator<Set<Map<K, V>>> generic() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0GenericUniqOperator<Set<Map<K, V>>>(getTarget());
     }
 
 }

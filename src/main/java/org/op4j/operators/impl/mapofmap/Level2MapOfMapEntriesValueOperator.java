@@ -58,48 +58,43 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> extract(K2 key) {
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> extract(final K2 key) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> extractAll(K2... keys) {
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> extractAll(final K2... keys) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> extractAll(
-            String expression, Object... optionalExpParams) {
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> extractAll(final String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> extractAll(
-            ISelect<Entry<K2, V>> selector) {
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> extractAll(final ISelect<Entry<K2, V>> selector) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> extractAllBut(
-            K2... keys) {
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> extractAllBut(final K2... keys) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> extractAllBut(
-            String expression, Object... optionalExpParams) {
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> extractAllBut(final String expression, Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> extractAllBut(
-            ISelect<Entry<K2, V>> selector) {
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> extractAllBut(final ISelect<Entry<K2, V>> selector) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -149,8 +144,7 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
 
 
     public <X, Y> ILevel2MapOfMapEntriesValueOperator<K1, X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level2MapOfMapEntriesValueOperator<K1, X, Y>(getTarget());
     }
 
 

@@ -82,63 +82,61 @@ public class Level1SetOfSetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> extract(int position) {
+    public ILevel1SetOfSetElementsOperator<T> extract(final int position) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> extract(T value) {
+    public ILevel1SetOfSetElementsOperator<T> extract(final T value) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> extractAll(int... positions) {
+    public ILevel1SetOfSetElementsOperator<T> extractAll(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> extractAll(T... values) {
+    public ILevel1SetOfSetElementsOperator<T> extractAll(final T... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> extractAll(String expression,
-            Object... optionalExpParams) {
+    public ILevel1SetOfSetElementsOperator<T> extractAll(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> extractAll(ISelect<T> selector) {
+    public ILevel1SetOfSetElementsOperator<T> extractAll(final ISelect<T> selector) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> extractAllBut(int... positions) {
+    public ILevel1SetOfSetElementsOperator<T> extractAllBut(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> extractAllBut(T... values) {
+    public ILevel1SetOfSetElementsOperator<T> extractAllBut(final T... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> extractAllBut(String expression,
-            Object... optionalExpParams) {
+    public ILevel1SetOfSetElementsOperator<T> extractAllBut(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> extractAllBut(ISelect<T> selector) {
+    public ILevel1SetOfSetElementsOperator<T> extractAllBut(final ISelect<T> selector) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -208,8 +206,7 @@ public class Level1SetOfSetElementsOperator<T> extends Operator
 
 
     public <X> ILevel1SetOfSetElementsOperator<X> of(final Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level1SetOfSetElementsOperator<X>(getTarget());
     }
 
 
@@ -261,9 +258,8 @@ public class Level1SetOfSetElementsOperator<T> extends Operator
     }
 
 
-    @SuppressWarnings("unchecked")
     public ILevel1SetOfSetElementsOperator<T> sort(final Comparator<? super T> comparator) {
-        return new Level1SetOfSetElementsOperator<T>(getTarget().execute(new SetFunc.Sort(comparator)));
+        return new Level1SetOfSetElementsOperator<T>(getTarget().execute(new SetFunc.SortByComparator<T>(comparator)));
     }
 
 

@@ -56,7 +56,23 @@ public class ListFunc {
             super();
         }
 
-        public Sort(final Comparator<? super T> comparator) {
+        public Type<? super List<T>> getResultType() {
+            return Types.LIST_OF_UNKNOWN;
+        }
+
+        @Override
+        List<T> fromList(final List<T> object) {
+            return object;
+        }
+
+    }
+
+
+    
+    
+    public static final class SortByComparator<T> extends CollectionFunc.SortByComparator<T, List<T>> {
+
+        public SortByComparator(final Comparator<? super T> comparator) {
             super(comparator);
         }
 
@@ -70,7 +86,7 @@ public class ListFunc {
         }
 
     }
-
+    
     
     
     

@@ -69,13 +69,32 @@ public class ArrayFunc {
     
     public static final class Sort<T extends Comparable<? super T>> implements IFunc<T[], T[]> {
 
-        private Comparator<? super T> comparator = null;
-
         public Sort() {
             super();
         }
 
-        public Sort(final Comparator<? super T> comparator) {
+        public Type<? super T[]> getResultType() {
+            return Types.ARRAY_OF_OBJECT;
+        }
+
+        public T[] execute(final T[] object) throws Exception {
+
+            final List<T> list = new ArrayList<T>(Arrays.asList(object));
+            Collections.sort(list);
+            return ArrayFunc.fromList(object.getClass(), list);
+            
+        }
+
+    }
+
+
+    
+    
+    public static final class SortByComparator<T> implements IFunc<T[], T[]> {
+
+        private Comparator<? super T> comparator = null;
+
+        public SortByComparator(final Comparator<? super T> comparator) {
             super();
             this.comparator = comparator;
         }
@@ -87,17 +106,13 @@ public class ArrayFunc {
         public T[] execute(final T[] object) throws Exception {
 
             final List<T> list = new ArrayList<T>(Arrays.asList(object));
-            if (this.comparator == null) {
-                Collections.sort(list);
-            } else {
-                Collections.sort(list, this.comparator);
-            }
-
+            Collections.sort(list, this.comparator);
             return ArrayFunc.fromList(object.getClass(), list);
+            
         }
 
     }
-
+    
     
     
     

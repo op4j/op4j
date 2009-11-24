@@ -29,6 +29,7 @@ import org.op4j.executables.Eval;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ListFunc;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.listofmap.ILevel0ListOfMapOperator;
 import org.op4j.operators.intf.listofmap.ILevel1ListOfMapElementsOperator;
@@ -71,64 +72,61 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> extract(int position) {
+    public ILevel0ListOfMapOperator<K, V> extract(final int position) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> extract(Map<K, V> value) {
+    public ILevel0ListOfMapOperator<K, V> extract(final Map<K, V> value) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> extractAll(int... positions) {
+    public ILevel0ListOfMapOperator<K, V> extractAll(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> extractAll(Map<K, V>... values) {
+    public ILevel0ListOfMapOperator<K, V> extractAll(final Map<K, V>... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> extractAll(String expression,
-            Object... optionalExpParams) {
+    public ILevel0ListOfMapOperator<K, V> extractAll(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> extractAll(ISelect<Map<K, V>> selector) {
+    public ILevel0ListOfMapOperator<K, V> extractAll(final ISelect<Map<K, V>> selector) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> extractAllBut(int... positions) {
+    public ILevel0ListOfMapOperator<K, V> extractAllBut(final int... positions) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> extractAllBut(Map<K, V>... values) {
+    public ILevel0ListOfMapOperator<K, V> extractAllBut(final Map<K, V>... values) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> extractAllBut(String expression,
-            Object... optionalExpParams) {
+    public ILevel0ListOfMapOperator<K, V> extractAllBut(final String expression, final Object... optionalExpParams) {
         // TODO Auto-generated method stub
         return null;
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> extractAllBut(
-            ISelect<Map<K, V>> selector) {
+    public ILevel0ListOfMapOperator<K, V> extractAllBut(final ISelect<Map<K, V>> selector) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -198,8 +196,7 @@ public class Level0ListOfMapOperator<K,V> extends Operator
 
 
     public <X, Y> ILevel0ListOfMapOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ListOfMapOperator<X, Y>(getTarget());
     }
 
 
@@ -251,9 +248,8 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     }
 
 
-    @SuppressWarnings("unchecked")
     public ILevel0ListOfMapOperator<K, V> sort(final Comparator<? super Map<K, V>> comparator) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFunc.Sort(comparator)));
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFunc.SortByComparator<Map<K, V>>(comparator)));
     }
 
 
@@ -264,8 +260,7 @@ public class Level0ListOfMapOperator<K,V> extends Operator
 
 
     public ILevel0GenericUniqOperator<List<Map<K, V>>> generic() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0GenericUniqOperator<List<Map<K, V>>>(getTarget());
     }
 
 }
