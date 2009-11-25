@@ -51,7 +51,6 @@ import org.op4j.operators.qualities.IConvertibleToSetOfListOperator;
 import org.op4j.operators.qualities.IConvertibleToSetOfMapOperator;
 import org.op4j.operators.qualities.IConvertibleToSetOfSetOperator;
 import org.op4j.operators.qualities.IDistinguishableOperator;
-import org.op4j.operators.qualities.IExtractableCollectionOperator;
 import org.op4j.operators.qualities.IFlattenableAsListOperator;
 import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableCollectionOperator;
@@ -76,7 +75,6 @@ public interface ILevel0ListOfListOperator<T>
                 ITypeParameterizableXOperator<T>,
                 IFlattenableAsListOperator<T>,
 		        IModifiableCollectionOperator<List<T>>,
-		        IExtractableCollectionOperator<List<T>>,
 		        IGenerizableOperator<List<List<T>>>,
                 IConvertibleToArrayOfArrayOperator<T>,
                 IConvertibleToArrayOfListOperator<T>,
@@ -143,19 +141,6 @@ public interface ILevel0ListOfListOperator<T>
     public ILevel0SetOfMapOperator<T,T> toSetOfMap();
     public <K> ILevel0SetOfMapOperator<K,T> toSetOfMap(final IEval<K,? super T> keyEval);
     public <K,V> ILevel0SetOfMapOperator<K,V> toSetOfMap(final IMapBuild<K,V,? super T> mapBuild);
-
-    
-    public ILevel0ListOfListOperator<T> extract(final int position);
-    public ILevel0ListOfListOperator<T> extract(final List<T> value);
-    public ILevel0ListOfListOperator<T> extractAll(final int... positions);
-    public ILevel0ListOfListOperator<T> extractAll(final List<T>... values);
-    public ILevel0ListOfListOperator<T> extractAll(final String expression, final Object... optionalExpParams);
-    public ILevel0ListOfListOperator<T> extractAll(final ISelect<List<T>> selector);
-    public ILevel0ListOfListOperator<T> extractAllBut(final int... positions);
-    public ILevel0ListOfListOperator<T> extractAllBut(final List<T>... values);
-    public ILevel0ListOfListOperator<T> extractAllBut(final String expression, final Object... optionalExpParams);
-    public ILevel0ListOfListOperator<T> extractAllBut(final ISelect<List<T>> selector);
-    
 
     
     public ILevel1ListOfListElementsOperator<T> forEach(final int... positions);

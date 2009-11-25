@@ -74,14 +74,6 @@ public interface ILevel1ListOfMapElementsOperator<K,V>
     public ILevel1ListOfMapElementsOperator<K,V> removeAllExceptKeys(final K... keys);
     
     
-    public ILevel1ListOfMapElementsOperator<K,V> extract(final K key);
-    public ILevel1ListOfMapElementsOperator<K,V> extractAll(final K... keys);
-    public ILevel1ListOfMapElementsOperator<K,V> extractAll(final String expression, final Object... optionalExpParams);
-    public ILevel1ListOfMapElementsOperator<K,V> extractAll(final ISelect<Map.Entry<K,V>> selector);
-    public ILevel1ListOfMapElementsOperator<K,V> extractAllBut(final K... keys);
-    public ILevel1ListOfMapElementsOperator<K,V> extractAllBut(final String expression, final Object... optionalExpParams);
-    public ILevel1ListOfMapElementsOperator<K,V> extractAllBut(final ISelect<Map.Entry<K,V>> selector);
-    
     public ILevel1ListOfSetElementsOperator<K> extractKeys();
     public ILevel1ListOfListElementsOperator<V> extractValues();
     

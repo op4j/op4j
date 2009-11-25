@@ -77,67 +77,6 @@ public class Level0SetOperator<T> extends Operator
     }
 
 
-    public ILevel0SetOperator<T> extract(final int position) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0SetOperator<T> extract(final T value) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0SetOperator<T> extractAll(final int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0SetOperator<T> extractAll(final T... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0SetOperator<T> extractAll(final String expression, final Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0SetOperator<T> extractAll(final ISelect<T> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0SetOperator<T> extractAllBut(final int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0SetOperator<T> extractAllBut(final T... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0SetOperator<T> extractAllBut(final String expression, final Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0SetOperator<T> extractAllBut(final ISelect<T> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-
     public ILevel1SetElementsOperator<T> forEach() {
         return new Level1SetElementsOperator<T>(getTarget().iterate());
     }

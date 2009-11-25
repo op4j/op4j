@@ -83,66 +83,6 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extract(final int position) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extract(final V value) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAll(final int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAll(final V... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAll(final String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAll(final ISelect<V> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAllBut(final int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAllBut(final V... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAllBut(final String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfSetEntriesValueOperator<K, V> extractAllBut(final ISelect<V> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEach() {
         return new Level3MapOfSetEntriesValueElementsOperator<K, V>(getTarget().iterate());
     }

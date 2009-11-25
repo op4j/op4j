@@ -19,9 +19,6 @@
  */
 package org.op4j.operators.qualities;
 
-import java.util.Map;
-
-import org.op4j.executables.ISelect;
 
 
 
@@ -33,14 +30,6 @@ import org.op4j.executables.ISelect;
  *
  */
 public interface IExtractableMapOperator<K,V> {
-    
-    public IOperator extract(final K key);
-    public IOperator extractAll(final K... keys);
-    public IOperator extractAll(final String expression, final Object... optionalExpParams);
-    public IOperator extractAll(final ISelect<Map.Entry<K,V>> selector);
-    public IOperator extractAllBut(final K... keys);
-    public IOperator extractAllBut(final String expression, final Object... optionalExpParams);
-    public IOperator extractAllBut(final ISelect<Map.Entry<K,V>> selector);
     
     public IOperator extractKeys();
     public IOperator extractValues();

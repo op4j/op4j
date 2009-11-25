@@ -90,14 +90,6 @@ public interface ILevel0MapOfArrayOperator<K,V>
     
 
     
-    public ILevel0MapOfArrayOperator<K,V> extract(final K key);
-    public ILevel0MapOfArrayOperator<K,V> extractAll(final K... keys);
-    public ILevel0MapOfArrayOperator<K,V> extractAll(final String expression, final Object... optionalExpParams);
-    public ILevel0MapOfArrayOperator<K,V> extractAll(final ISelect<Map.Entry<K,V[]>> selector);
-    public ILevel0MapOfArrayOperator<K,V> extractAllBut(final K... keys);
-    public ILevel0MapOfArrayOperator<K,V> extractAllBut(final String expression, final Object... optionalExpParams);
-    public ILevel0MapOfArrayOperator<K,V> extractAllBut(final ISelect<Map.Entry<K,V[]>> selector);
-    
     public ILevel0SetOperator<K> extractKeys();
     public ILevel0ListOfArrayOperator<V> extractValues();
     

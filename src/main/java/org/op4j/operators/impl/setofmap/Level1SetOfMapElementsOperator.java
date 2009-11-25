@@ -59,48 +59,6 @@ public class Level1SetOfMapElementsOperator<K,V> extends Operator
     }
 
 
-    public ILevel1SetOfMapElementsOperator<K, V> extract(final K key) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel1SetOfMapElementsOperator<K, V> extractAll(final K... keys) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel1SetOfMapElementsOperator<K, V> extractAll(final String expression, final Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel1SetOfMapElementsOperator<K, V> extractAll(final ISelect<Entry<K, V>> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel1SetOfMapElementsOperator<K, V> extractAllBut(final K... keys) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel1SetOfMapElementsOperator<K, V> extractAllBut(final String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel1SetOfMapElementsOperator<K, V> extractAllBut(final ISelect<Entry<K, V>> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel1SetOfSetElementsOperator<K> extractKeys() {
         // TODO Auto-generated method stub
         return null;

@@ -71,66 +71,6 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0ArrayOfMapOperator<K, V> extract(final int position) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ArrayOfMapOperator<K, V> extract(final Map<K, V> value) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ArrayOfMapOperator<K, V> extractAll(final int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ArrayOfMapOperator<K, V> extractAll(final Map<K, V>... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ArrayOfMapOperator<K, V> extractAll(final String expression, final Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ArrayOfMapOperator<K, V> extractAll(final ISelect<Map<K, V>> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ArrayOfMapOperator<K, V> extractAllBut(final int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ArrayOfMapOperator<K, V> extractAllBut(final Map<K, V>... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ArrayOfMapOperator<K, V> extractAllBut(final String expression, final Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ArrayOfMapOperator<K, V> extractAllBut(final ISelect<Map<K, V>> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel1ArrayOfMapElementsOperator<K, V> forEach() {
         return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterate());
     }

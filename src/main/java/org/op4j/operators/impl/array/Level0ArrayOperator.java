@@ -82,56 +82,6 @@ public class Level0ArrayOperator<T> extends Operator implements
         return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.Distinct<T>()));
     }
 
-    public ILevel0ArrayOperator<T> extract(final int position) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOperator<T> extract(final T value) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOperator<T> extractAll(final int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOperator<T> extractAll(final T... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOperator<T> extractAll(final String expression, final Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOperator<T> extractAll(final ISelect<T> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOperator<T> extractAllBut(final int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOperator<T> extractAllBut(final T... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOperator<T> extractAllBut(final String expression, final Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public ILevel0ArrayOperator<T> extractAllBut(final ISelect<T> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
     public ILevel1ArrayElementsOperator<T> forEach() {
         return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterate());
     }

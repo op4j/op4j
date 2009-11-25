@@ -71,14 +71,6 @@ public interface ILevel0MapOfMapOperator<K1,K2,V>
     public ILevel0MapOfMapOperator<K1,K2,V> removeAllExceptKeys(final K1... keys);
     
     
-    public ILevel0MapOfMapOperator<K1,K2,V> extract(final K1 key);
-    public ILevel0MapOfMapOperator<K1,K2,V> extractAll(final K1... keys);
-    public ILevel0MapOfMapOperator<K1,K2,V> extractAll(final String expression, final Object... optionalExpParams);
-    public ILevel0MapOfMapOperator<K1,K2,V> extractAll(final ISelect<Map.Entry<K1,Map<K2,V>>> selector);
-    public ILevel0MapOfMapOperator<K1,K2,V> extractAllBut(final K1... keys);
-    public ILevel0MapOfMapOperator<K1,K2,V> extractAllBut(final String expression, final Object... optionalExpParams);
-    public ILevel0MapOfMapOperator<K1,K2,V> extractAllBut(final ISelect<Map.Entry<K1,Map<K2,V>>> selector);
-    
     public ILevel0SetOperator<K1> extractKeys();
     public ILevel0ListOfMapOperator<K2,V> extractValues();
     

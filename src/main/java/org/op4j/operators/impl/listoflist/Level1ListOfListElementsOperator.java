@@ -87,66 +87,6 @@ public class Level1ListOfListElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ListOfListElementsOperator<T> extract(final int position) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel1ListOfListElementsOperator<T> extract(final T value) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel1ListOfListElementsOperator<T> extractAll(final int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel1ListOfListElementsOperator<T> extractAll(final T... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel1ListOfListElementsOperator<T> extractAll(final String expression, final Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel1ListOfListElementsOperator<T> extractAll(final ISelect<T> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel1ListOfListElementsOperator<T> extractAllBut(final int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel1ListOfListElementsOperator<T> extractAllBut(final T... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel1ListOfListElementsOperator<T> extractAllBut(final String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel1ListOfListElementsOperator<T> extractAllBut(final ISelect<T> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel2ListOfListElementsElementsOperator<T> forEach() {
         return new Level2ListOfListElementsElementsOperator<T>(getTarget().iterate());
     }

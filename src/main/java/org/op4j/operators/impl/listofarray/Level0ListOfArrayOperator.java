@@ -93,66 +93,6 @@ public class Level0ListOfArrayOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfArrayOperator<T> extract(final int position) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ListOfArrayOperator<T> extract(final T[] value) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ListOfArrayOperator<T> extractAll(final int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ListOfArrayOperator<T> extractAll(final T[]... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ListOfArrayOperator<T> extractAll(final String expression, final Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ListOfArrayOperator<T> extractAll(final ISelect<T[]> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ListOfArrayOperator<T> extractAllBut(final int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ListOfArrayOperator<T> extractAllBut(final T[]... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ListOfArrayOperator<T> extractAllBut(final String expression, final Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ListOfArrayOperator<T> extractAllBut(final ISelect<T[]> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel0ListOperator<T> flatten() {
         return new Level0ListOperator<T>(getTarget().execute(new ListFunc.FlattenArrays<T>()));
     }

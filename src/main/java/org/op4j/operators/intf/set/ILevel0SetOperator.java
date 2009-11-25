@@ -33,7 +33,6 @@ import org.op4j.operators.intf.map.ILevel0MapOperator;
 import org.op4j.operators.qualities.IConvertibleToArrayOperator;
 import org.op4j.operators.qualities.IConvertibleToListOperator;
 import org.op4j.operators.qualities.IConvertibleToMapOperator;
-import org.op4j.operators.qualities.IExtractableCollectionOperator;
 import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableCollectionOperator;
 import org.op4j.operators.qualities.INavigableCollectionOperator;
@@ -55,7 +54,6 @@ public interface ILevel0SetOperator<T>
 		        ISortableOperator<T>,
                 ITypeParameterizableXOperator<T>,
 		        IModifiableCollectionOperator<T>,
-		        IExtractableCollectionOperator<T>,
 		        IGenerizableOperator<Set<T>>,
 		        IConvertibleToArrayOperator<T>,
 		        IConvertibleToListOperator,
@@ -91,19 +89,6 @@ public interface ILevel0SetOperator<T>
     public <K> ILevel0MapOperator<K,T> toMap(final IEval<K,? super T> keyEval);
     public <K,V> ILevel0MapOperator<K,V> toMap(final IMapBuild<K,V,? super T> mapBuild);
     
-    
-    public ILevel0SetOperator<T> extract(final int position);
-    public ILevel0SetOperator<T> extract(final T value);
-    public ILevel0SetOperator<T> extractAll(final int... positions);
-    public ILevel0SetOperator<T> extractAll(final T... values);
-    public ILevel0SetOperator<T> extractAll(final String expression, final Object... optionalExpParams);
-    public ILevel0SetOperator<T> extractAll(final ISelect<T> selector);
-    public ILevel0SetOperator<T> extractAllBut(final int... positions);
-    public ILevel0SetOperator<T> extractAllBut(final T... values);
-    public ILevel0SetOperator<T> extractAllBut(final String expression, final Object... optionalExpParams);
-    public ILevel0SetOperator<T> extractAllBut(final ISelect<T> selector);
-    
-
     
     public ILevel1SetElementsOperator<T> forEach(final int... positions);
     public ILevel1SetElementsOperator<T> forEach(final String expression, final Object... optionalExpParams);

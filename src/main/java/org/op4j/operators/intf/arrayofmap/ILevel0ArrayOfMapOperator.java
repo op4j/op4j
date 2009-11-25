@@ -26,7 +26,6 @@ import java.util.Map;
 import org.javaruntype.type.Type;
 import org.op4j.executables.ISelect;
 import org.op4j.operators.qualities.IDistinguishableOperator;
-import org.op4j.operators.qualities.IExtractableCollectionOperator;
 import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableCollectionOperator;
 import org.op4j.operators.qualities.INavigableCollectionOperator;
@@ -49,7 +48,6 @@ public interface ILevel0ArrayOfMapOperator<K,V>
 		        ISortableOperator<Map<K,V>>,
                 ITypeParameterizableXYOperator<K,V>,
 		        IModifiableCollectionOperator<Map<K,V>>,
-		        IExtractableCollectionOperator<Map<K,V>>,
 		        IGenerizableOperator<Map<K,V>[]> {
 
 
@@ -73,18 +71,6 @@ public interface ILevel0ArrayOfMapOperator<K,V>
     public ILevel0ArrayOfMapOperator<K,V> removeAllExceptPositions(final int... positions);
     public ILevel0ArrayOfMapOperator<K,V> removeNulls();
     public ILevel0ArrayOfMapOperator<K,V> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
-    
-    
-    public ILevel0ArrayOfMapOperator<K,V> extract(final int position);
-    public ILevel0ArrayOfMapOperator<K,V> extract(final Map<K,V> value);
-    public ILevel0ArrayOfMapOperator<K,V> extractAll(final int... positions);
-    public ILevel0ArrayOfMapOperator<K,V> extractAll(final Map<K,V>... values);
-    public ILevel0ArrayOfMapOperator<K,V> extractAll(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOfMapOperator<K,V> extractAll(final ISelect<Map<K,V>> selector);
-    public ILevel0ArrayOfMapOperator<K,V> extractAllBut(final int... positions);
-    public ILevel0ArrayOfMapOperator<K,V> extractAllBut(final Map<K,V>... values);
-    public ILevel0ArrayOfMapOperator<K,V> extractAllBut(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOfMapOperator<K,V> extractAllBut(final ISelect<Map<K,V>> selector);
     
     
     public ILevel1ArrayOfMapElementsOperator<K,V> forEach(final int... positions);

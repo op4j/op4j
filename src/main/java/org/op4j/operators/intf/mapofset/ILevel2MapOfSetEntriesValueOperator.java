@@ -34,7 +34,6 @@ import org.op4j.operators.intf.mapofmap.ILevel2MapOfMapEntriesValueOperator;
 import org.op4j.operators.qualities.IConvertibleToArrayOperator;
 import org.op4j.operators.qualities.IConvertibleToListOperator;
 import org.op4j.operators.qualities.IConvertibleToMapOperator;
-import org.op4j.operators.qualities.IExtractableCollectionOperator;
 import org.op4j.operators.qualities.IModifiableCollectionOperator;
 import org.op4j.operators.qualities.INavigableCollectionOperator;
 import org.op4j.operators.qualities.INavigatingMapEntryOperator;
@@ -57,7 +56,6 @@ public interface ILevel2MapOfSetEntriesValueOperator<K,V>
 		        ISortableOperator<V>,
                 ITypeParameterizableXOperator<V>,
                 IModifiableCollectionOperator<V>,
-                IExtractableCollectionOperator<V>,
                 IConvertibleToArrayOperator<V>,
                 IConvertibleToListOperator,
                 IConvertibleToMapOperator<V> {
@@ -93,18 +91,6 @@ public interface ILevel2MapOfSetEntriesValueOperator<K,V>
     public <K2> ILevel2MapOfMapEntriesValueOperator<K,K2,V> toMap(final IEval<K2,? super V> keyEval);
     public <K2,V2> ILevel2MapOfMapEntriesValueOperator<K,K2,V2> toMap(final IMapBuild<K2,V2,? super V> mapBuild);
 
-    
-    public ILevel2MapOfSetEntriesValueOperator<K,V> extract(final int position);
-    public ILevel2MapOfSetEntriesValueOperator<K,V> extract(final V value);
-    public ILevel2MapOfSetEntriesValueOperator<K,V> extractAll(final int... positions);
-    public ILevel2MapOfSetEntriesValueOperator<K,V> extractAll(final V... values);
-    public ILevel2MapOfSetEntriesValueOperator<K,V> extractAll(final String expression, final Object... optionalExpParams);
-    public ILevel2MapOfSetEntriesValueOperator<K,V> extractAll(final ISelect<V> selector);
-    public ILevel2MapOfSetEntriesValueOperator<K,V> extractAllBut(final int... positions);
-    public ILevel2MapOfSetEntriesValueOperator<K,V> extractAllBut(final V... values);
-    public ILevel2MapOfSetEntriesValueOperator<K,V> extractAllBut(final String expression, final Object... optionalExpParams);
-    public ILevel2MapOfSetEntriesValueOperator<K,V> extractAllBut(final ISelect<V> selector);
-    
     
     public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEach(final int... positions);
     public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEach(final String expression, final Object... optionalExpParams);

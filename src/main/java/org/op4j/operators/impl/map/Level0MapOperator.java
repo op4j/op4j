@@ -52,48 +52,6 @@ public class Level0MapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0MapOperator<K, V> extract(final K key) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0MapOperator<K, V> extractAll(final K... keys) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0MapOperator<K, V> extractAll(final String expression, final Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0MapOperator<K, V> extractAll(final ISelect<Entry<K, V>> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0MapOperator<K, V> extractAllBut(final K... keys) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0MapOperator<K, V> extractAllBut(final String expression, final Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0MapOperator<K, V> extractAllBut(final ISelect<Entry<K, V>> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public IOperator extractKeys() {
         // TODO Auto-generated method stub
         return null;

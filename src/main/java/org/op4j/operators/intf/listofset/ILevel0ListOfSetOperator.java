@@ -52,7 +52,6 @@ import org.op4j.operators.qualities.IConvertibleToSetOfListOperator;
 import org.op4j.operators.qualities.IConvertibleToSetOfMapOperator;
 import org.op4j.operators.qualities.IConvertibleToSetOfSetOperator;
 import org.op4j.operators.qualities.IDistinguishableOperator;
-import org.op4j.operators.qualities.IExtractableCollectionOperator;
 import org.op4j.operators.qualities.IFlattenableAsListOperator;
 import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableCollectionOperator;
@@ -77,7 +76,6 @@ public interface ILevel0ListOfSetOperator<T>
                 ITypeParameterizableXOperator<T>,
                 IFlattenableAsListOperator<T>,
 		        IModifiableCollectionOperator<Set<T>>,
-		        IExtractableCollectionOperator<Set<T>>,
 		        IGenerizableOperator<List<Set<T>>>,
                 IConvertibleToArrayOfArrayOperator<T>,
                 IConvertibleToArrayOfListOperator<T>,
@@ -145,19 +143,6 @@ public interface ILevel0ListOfSetOperator<T>
     public <K> ILevel0SetOfMapOperator<K,T> toSetOfMap(final IEval<K,? super T> keyEval);
     public <K,V> ILevel0SetOfMapOperator<K,V> toSetOfMap(final IMapBuild<K,V,? super T> mapBuild);
 
-
-    
-    public ILevel0ListOfSetOperator<T> extract(final int position);
-    public ILevel0ListOfSetOperator<T> extract(final Set<T> value);
-    public ILevel0ListOfSetOperator<T> extractAll(final int... positions);
-    public ILevel0ListOfSetOperator<T> extractAll(final Set<T>... values);
-    public ILevel0ListOfSetOperator<T> extractAll(final String expression, final Object... optionalExpParams);
-    public ILevel0ListOfSetOperator<T> extractAll(final ISelect<Set<T>> selector);
-    public ILevel0ListOfSetOperator<T> extractAllBut(final int... positions);
-    public ILevel0ListOfSetOperator<T> extractAllBut(final Set<T>... values);
-    public ILevel0ListOfSetOperator<T> extractAllBut(final String expression, final Object... optionalExpParams);
-    public ILevel0ListOfSetOperator<T> extractAllBut(final ISelect<Set<T>> selector);
-    
 
     
     public ILevel1ListOfSetElementsOperator<T> forEach(final int... positions);

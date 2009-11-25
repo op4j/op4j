@@ -50,7 +50,6 @@ import org.op4j.operators.qualities.IConvertibleToSetOfListOperator;
 import org.op4j.operators.qualities.IConvertibleToSetOfMapOperator;
 import org.op4j.operators.qualities.IConvertibleToSetOfSetOperator;
 import org.op4j.operators.qualities.IDistinguishableOperator;
-import org.op4j.operators.qualities.IExtractableCollectionOperator;
 import org.op4j.operators.qualities.IFlattenableAsArrayOperator;
 import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableCollectionOperator;
@@ -75,7 +74,6 @@ public interface ILevel0ArrayOfArrayOperator<T>
 		        ITypeParameterizableXOperator<T>,
 		        IFlattenableAsArrayOperator<T>,
 		        IModifiableCollectionOperator<T[]>,
-		        IExtractableCollectionOperator<T[]>,
 		        IGenerizableOperator<T[][]>,
 		        IConvertibleToArrayOfListOperator<T>,
                 IConvertibleToArrayOfSetOperator<T>,
@@ -144,18 +142,6 @@ public interface ILevel0ArrayOfArrayOperator<T>
     public <K> ILevel0SetOfMapOperator<K,T> toSetOfMap(final IEval<K,? super T> keyEval);
     public <K,V> ILevel0SetOfMapOperator<K,V> toSetOfMap(final IMapBuild<K,V,? super T> mapBuild);
 
-    
-    public ILevel0ArrayOfArrayOperator<T> extract(final int position);
-    public ILevel0ArrayOfArrayOperator<T> extract(final T[] value);
-    public ILevel0ArrayOfArrayOperator<T> extractAll(final int... positions);
-    public ILevel0ArrayOfArrayOperator<T> extractAll(final T[]... values);
-    public ILevel0ArrayOfArrayOperator<T> extractAll(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOfArrayOperator<T> extractAll(final ISelect<T[]> selector);
-    public ILevel0ArrayOfArrayOperator<T> extractAllBut(final int... positions);
-    public ILevel0ArrayOfArrayOperator<T> extractAllBut(final T[]... values);
-    public ILevel0ArrayOfArrayOperator<T> extractAllBut(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOfArrayOperator<T> extractAllBut(final ISelect<T[]> selector);
-    
     
     public ILevel1ArrayOfArrayElementsOperator<T> forEach(final int... positions);
     public ILevel1ArrayOfArrayElementsOperator<T> forEach(final String expression, final Object... optionalExpParams);

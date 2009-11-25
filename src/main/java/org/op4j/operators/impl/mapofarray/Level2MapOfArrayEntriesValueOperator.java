@@ -90,66 +90,6 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> extract(final int position) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> extract(final V value) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> extractAll(final int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> extractAll(final V... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> extractAll(final String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> extractAll(final ISelect<V> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> extractAllBut(final int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> extractAllBut(final V... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> extractAllBut(final String expression, Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> extractAllBut(final ISelect<V> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEach() {
         return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterate());
     }

@@ -91,14 +91,6 @@ public interface ILevel0MapOfSetOperator<K,V>
     public <K2,V2> ILevel0MapOfMapOperator<K,K2,V2> toMapOfMap(final IMapBuild<K2,V2,? super V> mapBuild);
     
     
-    public ILevel0MapOfSetOperator<K,V> extract(final K key);
-    public ILevel0MapOfSetOperator<K,V> extractAll(final K... keys);
-    public ILevel0MapOfSetOperator<K,V> extractAll(final String expression, final Object... optionalExpParams);
-    public ILevel0MapOfSetOperator<K,V> extractAll(final ISelect<Map.Entry<K,Set<V>>> selector);
-    public ILevel0MapOfSetOperator<K,V> extractAllBut(final K... keys);
-    public ILevel0MapOfSetOperator<K,V> extractAllBut(final String expression, final Object... optionalExpParams);
-    public ILevel0MapOfSetOperator<K,V> extractAllBut(final ISelect<Map.Entry<K,Set<V>>> selector);
-    
     public ILevel0SetOperator<K> extractKeys();
     public ILevel0ListOfSetOperator<V> extractValues();
     

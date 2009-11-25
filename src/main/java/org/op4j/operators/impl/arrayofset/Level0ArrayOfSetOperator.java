@@ -87,66 +87,6 @@ public class Level0ArrayOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel0ArrayOfSetOperator<T> extract(final int position) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ArrayOfSetOperator<T> extract(final Set<T> value) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ArrayOfSetOperator<T> extractAll(final int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ArrayOfSetOperator<T> extractAll(final Set<T>... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ArrayOfSetOperator<T> extractAll(final String expression, final Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ArrayOfSetOperator<T> extractAll(final ISelect<Set<T>> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ArrayOfSetOperator<T> extractAllBut(final int... positions) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ArrayOfSetOperator<T> extractAllBut(final Set<T>... values) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ArrayOfSetOperator<T> extractAllBut(final String expression, final Object... optionalExpParams) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0ArrayOfSetOperator<T> extractAllBut(final ISelect<Set<T>> selector) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     public ILevel0ArrayOperator<T> flatten(final Type<? super T> type) {
         return new Level0ArrayOperator<T>(type, getTarget().execute(new ArrayFunc.FlattenSets<T>(type)));
     }

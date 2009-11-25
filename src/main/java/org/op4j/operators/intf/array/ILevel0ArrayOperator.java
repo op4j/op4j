@@ -33,7 +33,6 @@ import org.op4j.operators.qualities.IConvertibleToListOperator;
 import org.op4j.operators.qualities.IConvertibleToMapOperator;
 import org.op4j.operators.qualities.IConvertibleToSetOperator;
 import org.op4j.operators.qualities.IDistinguishableOperator;
-import org.op4j.operators.qualities.IExtractableCollectionOperator;
 import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableCollectionOperator;
 import org.op4j.operators.qualities.INavigableCollectionOperator;
@@ -56,7 +55,6 @@ public interface ILevel0ArrayOperator<T>
 		        ISortableOperator<T>,
                 ITypeParameterizableXOperator<T>,
 		        IModifiableCollectionOperator<T>,
-		        IExtractableCollectionOperator<T>,
 		        IGenerizableOperator<T[]>,
 		        IConvertibleToListOperator,
 		        IConvertibleToSetOperator,
@@ -92,18 +90,6 @@ public interface ILevel0ArrayOperator<T>
     public ILevel0MapOperator<T,T> toMap();
     public <K> ILevel0MapOperator<K,T> toMap(final IEval<K,? super T> keyEval);
     public <K,V> ILevel0MapOperator<K,V> toMap(final IMapBuild<K,V,? super T> mapBuild);
-    
-    
-    public ILevel0ArrayOperator<T> extract(final int position);
-    public ILevel0ArrayOperator<T> extract(final T value);
-    public ILevel0ArrayOperator<T> extractAll(final int... positions);
-    public ILevel0ArrayOperator<T> extractAll(final T... values);
-    public ILevel0ArrayOperator<T> extractAll(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOperator<T> extractAll(final ISelect<T> selector);
-    public ILevel0ArrayOperator<T> extractAllBut(final int... positions);
-    public ILevel0ArrayOperator<T> extractAllBut(final T... values);
-    public ILevel0ArrayOperator<T> extractAllBut(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOperator<T> extractAllBut(final ISelect<T> selector);
     
     
     public ILevel1ArrayElementsOperator<T> forEach(final int... positions);
