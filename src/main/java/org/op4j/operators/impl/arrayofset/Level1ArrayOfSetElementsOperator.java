@@ -155,13 +155,13 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> removeIndex(final int... indices) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveIndex<T>(indices)));
+    public ILevel1ArrayOfSetElementsOperator<T> removeIndexes(final int... indices) {
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveIndexes<T>(indices)));
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> removeValue(final T... values) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveValues<T>(values)));
+    public ILevel1ArrayOfSetElementsOperator<T> removeEquals(final T... values) {
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveEquals<T>(values)));
     }
 
 
@@ -175,13 +175,18 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> removeAllExceptIndex(final int... indices) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveAllExceptIndex<T>(indices)));
+    public ILevel1ArrayOfSetElementsOperator<T> removeIndexesNot(final int... indices) {
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveIndexesNot<T>(indices)));
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveNotNullsMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+    public ILevel1ArrayOfSetElementsOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveNotNullMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+    }
+
+
+    public ILevel1ArrayOfSetElementsOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveNullOrMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 

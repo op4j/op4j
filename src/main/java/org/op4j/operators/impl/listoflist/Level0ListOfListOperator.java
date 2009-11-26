@@ -168,13 +168,13 @@ public class Level0ListOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfListOperator<T> removeIndex(final int... indices) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(new ListFunc.RemoveIndex<List<T>>(indices)));
+    public ILevel0ListOfListOperator<T> removeIndexes(final int... indices) {
+        return new Level0ListOfListOperator<T>(getTarget().execute(new ListFunc.RemoveIndexes<List<T>>(indices)));
     }
 
 
-    public ILevel0ListOfListOperator<T> removeValue(final List<T>... values) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(new ListFunc.RemoveValues<List<T>>(values)));
+    public ILevel0ListOfListOperator<T> removeEquals(final List<T>... values) {
+        return new Level0ListOfListOperator<T>(getTarget().execute(new ListFunc.RemoveEquals<List<T>>(values)));
     }
 
 
@@ -188,13 +188,18 @@ public class Level0ListOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfListOperator<T> removeAllExceptIndex(final int... indices) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(new ListFunc.RemoveAllExceptIndex<List<T>>(indices)));
+    public ILevel0ListOfListOperator<T> removeIndexesNot(final int... indices) {
+        return new Level0ListOfListOperator<T>(getTarget().execute(new ListFunc.RemoveIndexesNot<List<T>>(indices)));
     }
 
 
-    public ILevel0ListOfListOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(new ListFunc.RemoveNotNullsMatching<List<T>>(Eval.booleanExp(expression, optionalExpParams))));
+    public ILevel0ListOfListOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
+        return new Level0ListOfListOperator<T>(getTarget().execute(new ListFunc.RemoveNotNullMatching<List<T>>(Eval.booleanExp(expression, optionalExpParams))));
+    }
+
+
+    public ILevel0ListOfListOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
+        return new Level0ListOfListOperator<T>(getTarget().execute(new ListFunc.RemoveNullOrMatching<List<T>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 

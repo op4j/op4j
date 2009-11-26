@@ -104,13 +104,14 @@ public interface ILevel0ArrayOfArrayOperator<T>
     public ILevel0ArrayOfArrayOperator<T> add(final T[]... newElements);
     public ILevel0ArrayOfArrayOperator<T> insert(final int position, final T[]... newElements);
     public ILevel0ArrayOfArrayOperator<T> addAll(final Collection<T[]> collection);
-    public ILevel0ArrayOfArrayOperator<T> removeIndex(final int... indices);
-    public ILevel0ArrayOfArrayOperator<T> removeValue(final T[]... values);
+    public ILevel0ArrayOfArrayOperator<T> removeIndexes(final int... indices);
+    public ILevel0ArrayOfArrayOperator<T> removeEquals(final T[]... values);
     public ILevel0ArrayOfArrayOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
     public ILevel0ArrayOfArrayOperator<T> removeSelected(final ISelect<T[]> selector);
-    public ILevel0ArrayOfArrayOperator<T> removeAllExceptIndex(final int... indices);
+    public ILevel0ArrayOfArrayOperator<T> removeIndexesNot(final int... indices);
     public ILevel0ArrayOfArrayOperator<T> removeNulls();
-    public ILevel0ArrayOfArrayOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOfArrayOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOfArrayOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams);
     
     public ILevel0ArrayOfListOperator<T> toArrayOfList();
     

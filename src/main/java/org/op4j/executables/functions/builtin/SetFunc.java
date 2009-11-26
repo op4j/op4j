@@ -152,10 +152,10 @@ public class SetFunc {
 
     
     
-    public static final class RemoveIndex<T> extends CollectionFunc.RemoveIndex<T, Set<T>> {
+    public static final class RemoveIndexes<T> extends CollectionFunc.RemoveIndexes<T, Set<T>> {
 
         
-        public RemoveIndex(final int... indices) {
+        public RemoveIndexes(final int... indices) {
             super(indices);
         }
 
@@ -173,9 +173,9 @@ public class SetFunc {
 
     
     
-    public static final class RemoveValues<T> extends CollectionFunc.RemoveValues<T, Set<T>> {
+    public static final class RemoveEquals<T> extends CollectionFunc.RemoveEquals<T, Set<T>> {
 
-        public RemoveValues(final T... values) {
+        public RemoveEquals(final T... values) {
             super(values);
         }
 
@@ -233,9 +233,9 @@ public class SetFunc {
 
     
     
-    public static final class RemoveAllExceptIndex<T> extends CollectionFunc.RemoveAllExceptIndex<T, Set<T>> {
+    public static final class RemoveIndexesNot<T> extends CollectionFunc.RemoveIndexesNot<T, Set<T>> {
 
-        public RemoveAllExceptIndex(final int... indices) {
+        public RemoveIndexesNot(final int... indices) {
             super(indices);
         }
 
@@ -273,9 +273,9 @@ public class SetFunc {
 
     
     
-    public static final class RemoveNotNullsMatching<T> extends CollectionFunc.RemoveNotNullsMatching<T, Set<T>> {
+    public static final class RemoveNotNullMatching<T> extends CollectionFunc.RemoveNotNullMatching<T, Set<T>> {
 
-        public RemoveNotNullsMatching(final IEval<Boolean,? super T> eval) {
+        public RemoveNotNullMatching(final IEval<Boolean,? super T> eval) {
             super(eval);
         }
 
@@ -291,6 +291,24 @@ public class SetFunc {
     }
 
 
+    
+    
+    public static final class RemoveNullOrMatching<T> extends CollectionFunc.RemoveNullOrMatching<T, Set<T>> {
+
+        public RemoveNullOrMatching(final IEval<Boolean,? super T> eval) {
+            super(eval);
+        }
+
+        public Type<? super Set<T>> getResultType() {
+            return Types.SET_OF_UNKNOWN;
+        }
+
+        @Override
+        Set<T> fromList(final List<T> object) {
+            return new LinkedHashSet<T>(object);
+        }
+        
+    }
     
     
     

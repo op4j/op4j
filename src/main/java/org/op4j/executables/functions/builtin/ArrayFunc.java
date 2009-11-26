@@ -257,11 +257,11 @@ public class ArrayFunc {
     
 
     
-    public static final class RemoveIndex<T> implements IFunc<T[],T[]> {
+    public static final class RemoveIndexes<T> implements IFunc<T[],T[]> {
 
         private final List<Integer> indices;
         
-        public RemoveIndex(final int... indices) {
+        public RemoveIndexes(final int... indices) {
             super();
             this.indices = VarArgsUtil.asRequiredIntegerList(indices);
         }
@@ -288,11 +288,11 @@ public class ArrayFunc {
     
 
     
-    public static final class RemoveValues<T> implements IFunc<T[],T[]> {
+    public static final class RemoveEquals<T> implements IFunc<T[],T[]> {
 
         private final List<T> values;
         
-        public RemoveValues(final T... values) {
+        public RemoveEquals(final T... values) {
             super();
             this.values = VarArgsUtil.asRequiredObjectList(values);
         }
@@ -371,11 +371,11 @@ public class ArrayFunc {
 
     
     
-    public static final class RemoveAllExceptIndex<T> implements IFunc<T[],T[]> {
+    public static final class RemoveIndexesNot<T> implements IFunc<T[],T[]> {
 
         private final List<Integer> indices;
         
-        public RemoveAllExceptIndex(final int... indices) {
+        public RemoveIndexesNot(final int... indices) {
             super();
             this.indices = VarArgsUtil.asRequiredIntegerList(indices);
         }
@@ -429,11 +429,11 @@ public class ArrayFunc {
 
     
     
-    public static final class RemoveNotNullsMatching<T> implements IFunc<T[],T[]> {
+    public static final class RemoveNotNullMatching<T> implements IFunc<T[],T[]> {
 
         private final IEval<Boolean,? super T> eval;
         
-        public RemoveNotNullsMatching(final IEval<Boolean,? super T> eval) {
+        public RemoveNotNullMatching(final IEval<Boolean,? super T> eval) {
             super();
             this.eval = eval;
         }
@@ -458,6 +458,37 @@ public class ArrayFunc {
         
     }
     
+
+    
+
+    
+    
+    public static final class RemoveNullOrMatching<T> implements IFunc<T[],T[]> {
+
+        private final IEval<Boolean,? super T> eval;
+        
+        public RemoveNullOrMatching(final IEval<Boolean,? super T> eval) {
+            super();
+            this.eval = eval;
+        }
+
+        public Type<? super T[]> getResultType() {
+            return Types.ARRAY_OF_OBJECT;
+        }
+
+        public T[] execute(final T[] object) throws Exception {
+            final List<T> result = new ArrayList<T>();
+            for (final T element : object) {
+                if (element != null) {
+                    if (!this.eval.execute(element).booleanValue()) {
+                        result.add(element);
+                    }
+                }
+            }
+            return ArrayFunc.fromList(object.getClass(), result);
+        }
+        
+    }
     
     
     

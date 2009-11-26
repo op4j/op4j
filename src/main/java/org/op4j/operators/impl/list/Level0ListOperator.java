@@ -155,13 +155,13 @@ public class Level0ListOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOperator<T> removeIndex(final int... indices) {
-        return new Level0ListOperator<T>(getTarget().execute(new ListFunc.RemoveIndex<T>(indices)));
+    public ILevel0ListOperator<T> removeIndexes(final int... indices) {
+        return new Level0ListOperator<T>(getTarget().execute(new ListFunc.RemoveIndexes<T>(indices)));
     }
 
 
-    public ILevel0ListOperator<T> removeValue(final T... values) {
-        return new Level0ListOperator<T>(getTarget().execute(new ListFunc.RemoveValues<T>(values)));
+    public ILevel0ListOperator<T> removeEquals(final T... values) {
+        return new Level0ListOperator<T>(getTarget().execute(new ListFunc.RemoveEquals<T>(values)));
     }
 
 
@@ -175,13 +175,18 @@ public class Level0ListOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOperator<T> removeAllExceptIndex(final int... indices) {
-        return new Level0ListOperator<T>(getTarget().execute(new ListFunc.RemoveAllExceptIndex<T>(indices)));
+    public ILevel0ListOperator<T> removeIndexesNot(final int... indices) {
+        return new Level0ListOperator<T>(getTarget().execute(new ListFunc.RemoveIndexesNot<T>(indices)));
     }
 
 
-    public ILevel0ListOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOperator<T>(getTarget().execute(new ListFunc.RemoveNotNullsMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+    public ILevel0ListOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
+        return new Level0ListOperator<T>(getTarget().execute(new ListFunc.RemoveNotNullMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+    }
+
+
+    public ILevel0ListOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
+        return new Level0ListOperator<T>(getTarget().execute(new ListFunc.RemoveNullOrMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 

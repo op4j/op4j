@@ -168,13 +168,13 @@ public class Level0ListOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfSetOperator<T> removeIndex(final int... indices) {
-        return new Level0ListOfSetOperator<T>(getTarget().execute(new ListFunc.RemoveIndex<Set<T>>(indices)));
+    public ILevel0ListOfSetOperator<T> removeIndexes(final int... indices) {
+        return new Level0ListOfSetOperator<T>(getTarget().execute(new ListFunc.RemoveIndexes<Set<T>>(indices)));
     }
 
 
-    public ILevel0ListOfSetOperator<T> removeValue(final Set<T>... values) {
-        return new Level0ListOfSetOperator<T>(getTarget().execute(new ListFunc.RemoveValues<Set<T>>(values)));
+    public ILevel0ListOfSetOperator<T> removeEquals(final Set<T>... values) {
+        return new Level0ListOfSetOperator<T>(getTarget().execute(new ListFunc.RemoveEquals<Set<T>>(values)));
     }
 
 
@@ -188,13 +188,18 @@ public class Level0ListOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfSetOperator<T> removeAllExceptIndex(final int... indices) {
-        return new Level0ListOfSetOperator<T>(getTarget().execute(new ListFunc.RemoveAllExceptIndex<Set<T>>(indices)));
+    public ILevel0ListOfSetOperator<T> removeIndexesNot(final int... indices) {
+        return new Level0ListOfSetOperator<T>(getTarget().execute(new ListFunc.RemoveIndexesNot<Set<T>>(indices)));
     }
 
 
-    public ILevel0ListOfSetOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfSetOperator<T>(getTarget().execute(new ListFunc.RemoveNotNullsMatching<Set<T>>(Eval.booleanExp(expression, optionalExpParams))));
+    public ILevel0ListOfSetOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
+        return new Level0ListOfSetOperator<T>(getTarget().execute(new ListFunc.RemoveNotNullMatching<Set<T>>(Eval.booleanExp(expression, optionalExpParams))));
+    }
+
+
+    public ILevel0ListOfSetOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
+        return new Level0ListOfSetOperator<T>(getTarget().execute(new ListFunc.RemoveNullOrMatching<Set<T>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 

@@ -158,13 +158,13 @@ public class Level1ListOfArrayElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> removeIndex(final int... indices) {
-        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveIndex<T>(indices)));
+    public ILevel1ListOfArrayElementsOperator<T> removeIndexes(final int... indices) {
+        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveIndexes<T>(indices)));
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> removeValue(final T... values) {
-        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveValues<T>(values)));
+    public ILevel1ListOfArrayElementsOperator<T> removeEquals(final T... values) {
+        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveEquals<T>(values)));
     }
 
 
@@ -178,14 +178,18 @@ public class Level1ListOfArrayElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> removeAllExceptIndex(final int... indices) {
-        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveAllExceptIndex<T>(indices)));
+    public ILevel1ListOfArrayElementsOperator<T> removeIndexesNot(final int... indices) {
+        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveIndexesNot<T>(indices)));
     }
 
 
 
-    public ILevel1ListOfArrayElementsOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveNotNullsMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+    public ILevel1ListOfArrayElementsOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
+        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveNotNullMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+    }
+
+    public ILevel1ListOfArrayElementsOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
+        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveNullOrMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 

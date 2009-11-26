@@ -320,11 +320,11 @@ public class MapFunc {
 
     
     
-    public static final class RemoveAllExceptKeys<K, V> implements IFunc<Map<K, V>,Map<K, V>> {
+    public static final class RemoveKeysNot<K, V> implements IFunc<Map<K, V>,Map<K, V>> {
 
         private final List<K> keys;
         
-        public RemoveAllExceptKeys(final K... keys) {
+        public RemoveKeysNot(final K... keys) {
             super();
             this.keys = VarArgsUtil.asRequiredObjectList(keys);
         }

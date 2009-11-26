@@ -67,7 +67,7 @@ public interface ILevel0MapOperator<K,V>
     public ILevel0MapOperator<K,V> removeKeys(final K... keys);
     public ILevel0MapOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
     public ILevel0MapOperator<K,V> removeSelected(final ISelect<Map.Entry<K,V>> selector);
-    public ILevel0MapOperator<K,V> removeAllExceptKeys(final K... keys);
+    public ILevel0MapOperator<K,V> removeKeysNot(final K... keys);
     
     
     public IOperator extractKeys();

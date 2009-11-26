@@ -175,13 +175,13 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeIndex(final int... indices) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveIndex<T>(indices)));
+    public ILevel0GenericMultiOperator<T> removeIndexes(final int... indices) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveIndexes<T>(indices)));
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeValues(final T... values) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveValues<T>(values)));
+    public ILevel0GenericMultiOperator<T> removeEquals(final T... values) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveEquals<T>(values)));
     }
 
 
@@ -195,13 +195,18 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeAllExceptIndex(final int... indices) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveAllExceptIndex<T>(indices)));
+    public ILevel0GenericMultiOperator<T> removeIndexesNot(final int... indices) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveIndexesNot<T>(indices)));
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveNotNullsMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+    public ILevel0GenericMultiOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveNotNullMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+    }
+
+
+    public ILevel0GenericMultiOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveNullOrMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 

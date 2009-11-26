@@ -80,7 +80,7 @@ public interface ILevel0MapOfSetOperator<K,V>
     public ILevel0MapOfSetOperator<K,V> removeKeys(final K... keys);
     public ILevel0MapOfSetOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
     public ILevel0MapOfSetOperator<K,V> removeSelected(final ISelect<Map.Entry<K,Set<V>>> selector);
-    public ILevel0MapOfSetOperator<K,V> removeAllExceptKeys(final K... keys);
+    public ILevel0MapOfSetOperator<K,V> removeKeysNot(final K... keys);
     
     public ILevel0MapOfArrayOperator<K,V> toMapOfArray(final Type<V> of);
     

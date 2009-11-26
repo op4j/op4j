@@ -147,8 +147,8 @@ public class Level0MapOfListOperator<K,V> extends Operator
     }
 
 
-    public ILevel0MapOfListOperator<K, V> removeAllExceptKeys(final K... keys) {
-        return new Level0MapOfListOperator<K, V>(getTarget().execute(new MapFunc.RemoveAllExceptKeys<K, List<V>>(keys)));
+    public ILevel0MapOfListOperator<K, V> removeKeysNot(final K... keys) {
+        return new Level0MapOfListOperator<K, V>(getTarget().execute(new MapFunc.RemoveKeysNot<K, List<V>>(keys)));
     }
 
 

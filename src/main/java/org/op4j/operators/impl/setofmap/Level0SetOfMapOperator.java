@@ -140,13 +140,13 @@ public class Level0SetOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> removeIndex(final int... indices) {
-        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.RemoveIndex<Map<K, V>>(indices)));
+    public ILevel0SetOfMapOperator<K, V> removeIndexes(final int... indices) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.RemoveIndexes<Map<K, V>>(indices)));
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> removeValue(final Map<K, V>... values) {
-        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.RemoveValues<Map<K, V>>(values)));
+    public ILevel0SetOfMapOperator<K, V> removeEquals(final Map<K, V>... values) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.RemoveEquals<Map<K, V>>(values)));
     }
 
 
@@ -160,13 +160,18 @@ public class Level0SetOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> removeAllExceptIndex(final int... indices) {
-        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.RemoveAllExceptIndex<Map<K, V>>(indices)));
+    public ILevel0SetOfMapOperator<K, V> removeIndexesNot(final int... indices) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.RemoveIndexesNot<Map<K, V>>(indices)));
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.RemoveNotNullsMatching<Map<K, V>>(Eval.booleanExp(expression, optionalExpParams))));
+    public ILevel0SetOfMapOperator<K, V> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.RemoveNotNullMatching<Map<K, V>>(Eval.booleanExp(expression, optionalExpParams))));
+    }
+
+
+    public ILevel0SetOfMapOperator<K, V> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFunc.RemoveNullOrMatching<Map<K, V>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 

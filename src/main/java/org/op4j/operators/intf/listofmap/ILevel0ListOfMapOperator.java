@@ -65,13 +65,14 @@ public interface ILevel0ListOfMapOperator<K,V>
     public ILevel0ListOfMapOperator<K,V> add(final Map<K,V>... newElements);
     public ILevel0ListOfMapOperator<K,V> insert(final int position, final Map<K,V>... newElements);
     public ILevel0ListOfMapOperator<K,V> addAll(final Collection<Map<K,V>> collection);
-    public ILevel0ListOfMapOperator<K,V> removeIndex(final int... indices);
-    public ILevel0ListOfMapOperator<K,V> removeValue(final Map<K,V>... values);
+    public ILevel0ListOfMapOperator<K,V> removeIndexes(final int... indices);
+    public ILevel0ListOfMapOperator<K,V> removeEquals(final Map<K,V>... values);
     public ILevel0ListOfMapOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
     public ILevel0ListOfMapOperator<K,V> removeSelected(final ISelect<Map<K,V>> selector);
-    public ILevel0ListOfMapOperator<K,V> removeAllExceptIndex(final int... indices);
+    public ILevel0ListOfMapOperator<K,V> removeIndexesNot(final int... indices);
     public ILevel0ListOfMapOperator<K,V> removeNulls();
-    public ILevel0ListOfMapOperator<K,V> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0ListOfMapOperator<K,V> removeNotNullMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0ListOfMapOperator<K,V> removeNullOrMatching(final String expression, final Object... optionalExpParams);
     
     
     public ILevel1ListOfMapElementsOperator<K,V> forEach(final int... indices);

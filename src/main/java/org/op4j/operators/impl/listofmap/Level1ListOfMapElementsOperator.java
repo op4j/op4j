@@ -147,8 +147,8 @@ public class Level1ListOfMapElementsOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ListOfMapElementsOperator<K, V> removeAllExceptKeys(final K... keys) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(new MapFunc.RemoveAllExceptKeys<K, V>(keys)));
+    public ILevel1ListOfMapElementsOperator<K, V> removeKeysNot(final K... keys) {
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(new MapFunc.RemoveKeysNot<K, V>(keys)));
     }
 
 

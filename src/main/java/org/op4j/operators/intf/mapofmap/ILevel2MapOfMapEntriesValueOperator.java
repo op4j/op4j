@@ -70,7 +70,7 @@ public interface ILevel2MapOfMapEntriesValueOperator<K1,K2,V>
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeKeys(final K2... keys);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeMatching(final String expression, final Object... optionalExpParams);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeSelected(final ISelect<Map.Entry<K2,V>> selector);
-    public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeAllExceptKeys(final K2... keys);
+    public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeKeysNot(final K2... keys);
     
     
     public ILevel2MapOfSetEntriesValueOperator<K1,K2> extractKeys();

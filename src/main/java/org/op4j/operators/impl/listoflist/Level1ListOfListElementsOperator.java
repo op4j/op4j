@@ -160,13 +160,13 @@ public class Level1ListOfListElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ListOfListElementsOperator<T> removeIndex(final int... indices) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveIndex<T>(indices)));
+    public ILevel1ListOfListElementsOperator<T> removeIndexes(final int... indices) {
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveIndexes<T>(indices)));
     }
 
 
-    public ILevel1ListOfListElementsOperator<T> removeValue(final T... values) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveValues<T>(values)));
+    public ILevel1ListOfListElementsOperator<T> removeEquals(final T... values) {
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveEquals<T>(values)));
     }
 
 
@@ -180,13 +180,18 @@ public class Level1ListOfListElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ListOfListElementsOperator<T> removeAllExceptIndex(final int... indices) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveAllExceptIndex<T>(indices)));
+    public ILevel1ListOfListElementsOperator<T> removeIndexesNot(final int... indices) {
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveIndexesNot<T>(indices)));
     }
 
 
-    public ILevel1ListOfListElementsOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveNotNullsMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+    public ILevel1ListOfListElementsOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveNotNullMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+    }
+
+
+    public ILevel1ListOfListElementsOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveNullOrMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 

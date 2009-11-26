@@ -165,13 +165,13 @@ public class Level0ArrayOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel0ArrayOfSetOperator<T> removeIndex(final int... indices) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveIndex<Set<T>>(indices)));
+    public ILevel0ArrayOfSetOperator<T> removeIndexes(final int... indices) {
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveIndexes<Set<T>>(indices)));
     }
 
 
-    public ILevel0ArrayOfSetOperator<T> removeValue(final Set<T>... values) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveValues<Set<T>>(values)));
+    public ILevel0ArrayOfSetOperator<T> removeEquals(final Set<T>... values) {
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveEquals<Set<T>>(values)));
     }
 
 
@@ -185,14 +185,19 @@ public class Level0ArrayOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel0ArrayOfSetOperator<T> removeAllExceptIndex(final int... indices) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveAllExceptIndex<Set<T>>(indices)));
+    public ILevel0ArrayOfSetOperator<T> removeIndexesNot(final int... indices) {
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveIndexesNot<Set<T>>(indices)));
     }
 
 
 
-    public ILevel0ArrayOfSetOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveNotNullsMatching<Set<T>>(Eval.booleanExp(expression, optionalExpParams))));
+    public ILevel0ArrayOfSetOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveNotNullMatching<Set<T>>(Eval.booleanExp(expression, optionalExpParams))));
+    }
+
+
+    public ILevel0ArrayOfSetOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveNullOrMatching<Set<T>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 

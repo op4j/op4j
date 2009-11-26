@@ -41,6 +41,6 @@ public interface IModifiableMapOperator<K,V> {
     public IModifiableMapOperator<K,V> removeKeys(final K... keys);
     public IModifiableMapOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
     public IModifiableMapOperator<K,V> removeSelected(final ISelect<Map.Entry<K,V>> selector);
-    public IModifiableMapOperator<K,V> removeAllExceptKeys(final K... keys);
+    public IModifiableMapOperator<K,V> removeKeysNot(final K... keys);
     
 }

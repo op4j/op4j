@@ -164,11 +164,11 @@ class CollectionFunc {
     
 
     
-    static abstract class RemoveIndex<T, X extends Collection<T>> implements IFunc<X,X> {
+    static abstract class RemoveIndexes<T, X extends Collection<T>> implements IFunc<X,X> {
 
         private final List<Integer> indices;
         
-        public RemoveIndex(final int... indices) {
+        public RemoveIndexes(final int... indices) {
             super();
             this.indices = VarArgsUtil.asRequiredIntegerList(indices);
         }
@@ -193,11 +193,11 @@ class CollectionFunc {
     
 
     
-    static abstract class RemoveValues<T, X extends Collection<T>> implements IFunc<X,X> {
+    static abstract class RemoveEquals<T, X extends Collection<T>> implements IFunc<X,X> {
 
         private final List<T> values;
         
-        public RemoveValues(final T... values) {
+        public RemoveEquals(final T... values) {
             super();
             this.values = VarArgsUtil.asRequiredObjectList(values);
         }
@@ -270,11 +270,11 @@ class CollectionFunc {
 
     
     
-    static abstract class RemoveAllExceptIndex<T, X extends Collection<T>> implements IFunc<X,X> {
+    static abstract class RemoveIndexesNot<T, X extends Collection<T>> implements IFunc<X,X> {
 
         private final List<Integer> indices;
         
-        public RemoveAllExceptIndex(final int... indices) {
+        public RemoveIndexesNot(final int... indices) {
             super();
             this.indices = VarArgsUtil.asRequiredIntegerList(indices);
         }
@@ -324,11 +324,11 @@ class CollectionFunc {
 
     
     
-    static abstract class RemoveNotNullsMatching<T, X extends Collection<T>> implements IFunc<X,X> {
+    static abstract class RemoveNotNullMatching<T, X extends Collection<T>> implements IFunc<X,X> {
 
         private final IEval<Boolean,? super T> eval;
         
-        public RemoveNotNullsMatching(final IEval<Boolean,? super T> eval) {
+        public RemoveNotNullMatching(final IEval<Boolean,? super T> eval) {
             super();
             this.eval = eval;
         }
@@ -351,6 +351,34 @@ class CollectionFunc {
         
     }
     
+    
+
+    
+    
+    static abstract class RemoveNullOrMatching<T, X extends Collection<T>> implements IFunc<X,X> {
+
+        private final IEval<Boolean,? super T> eval;
+        
+        public RemoveNullOrMatching(final IEval<Boolean,? super T> eval) {
+            super();
+            this.eval = eval;
+        }
+
+        public X execute(final X object) throws Exception {
+            final List<T> result = new ArrayList<T>();
+            for (final T element : object) {
+                if (element != null) {
+                    if (!this.eval.execute(element).booleanValue()) {
+                        result.add(element);
+                    }
+                }
+            }
+            return fromList(result);
+        }
+
+        abstract X fromList(final List<T> object);
+        
+    }
 
     
 

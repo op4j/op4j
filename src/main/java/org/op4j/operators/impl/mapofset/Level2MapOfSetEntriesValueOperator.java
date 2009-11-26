@@ -156,13 +156,13 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeIndex(final int... indices) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveIndex<V>(indices)));
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeIndexes(final int... indices) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveIndexes<V>(indices)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeValue(final V... values) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveValues<V>(values)));
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeEquals(final V... values) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveEquals<V>(values)));
     }
 
 
@@ -176,13 +176,18 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllExceptIndex(final int... indices) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveAllExceptIndex<V>(indices)));
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeIndexesNot(final int... indices) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveIndexesNot<V>(indices)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveNotNullsMatching<V>(Eval.booleanExp(expression, optionalExpParams))));
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveNotNullMatching<V>(Eval.booleanExp(expression, optionalExpParams))));
+    }
+
+
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveNullOrMatching<V>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 

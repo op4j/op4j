@@ -104,13 +104,14 @@ public interface ILevel0ArrayOfSetOperator<T>
     public ILevel0ArrayOfSetOperator<T> add(final Set<T>... newElements);
     public ILevel0ArrayOfSetOperator<T> insert(final int position, final Set<T>... newElements);
     public ILevel0ArrayOfSetOperator<T> addAll(final Collection<Set<T>> collection);
-    public ILevel0ArrayOfSetOperator<T> removeIndex(final int... indices);
-    public ILevel0ArrayOfSetOperator<T> removeValue(final Set<T>... values);
+    public ILevel0ArrayOfSetOperator<T> removeIndexes(final int... indices);
+    public ILevel0ArrayOfSetOperator<T> removeEquals(final Set<T>... values);
     public ILevel0ArrayOfSetOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
     public ILevel0ArrayOfSetOperator<T> removeSelected(final ISelect<Set<T>> selector);
-    public ILevel0ArrayOfSetOperator<T> removeAllExceptIndex(final int... indices);
+    public ILevel0ArrayOfSetOperator<T> removeIndexesNot(final int... indices);
     public ILevel0ArrayOfSetOperator<T> removeNulls();
-    public ILevel0ArrayOfSetOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOfSetOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOfSetOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams);
     
     public ILevel0ArrayOfArrayOperator<T> toArrayOfArray(final Type<T> of);
     

@@ -74,13 +74,14 @@ public interface ILevel2MapOfSetEntriesValueOperator<K,V>
     public ILevel2MapOfSetEntriesValueOperator<K,V> add(final V... newElements);
     public ILevel2MapOfSetEntriesValueOperator<K,V> insert(final int position, final V... newElements);
     public ILevel2MapOfSetEntriesValueOperator<K,V> addAll(final Collection<V> collection);
-    public ILevel2MapOfSetEntriesValueOperator<K,V> removeIndex(final int... indices);
-    public ILevel2MapOfSetEntriesValueOperator<K,V> removeValue(final V... values);
+    public ILevel2MapOfSetEntriesValueOperator<K,V> removeIndexes(final int... indices);
+    public ILevel2MapOfSetEntriesValueOperator<K,V> removeEquals(final V... values);
     public ILevel2MapOfSetEntriesValueOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
     public ILevel2MapOfSetEntriesValueOperator<K,V> removeSelected(final ISelect<V> selector);
-    public ILevel2MapOfSetEntriesValueOperator<K,V> removeAllExceptIndex(final int... indices);
+    public ILevel2MapOfSetEntriesValueOperator<K,V> removeIndexesNot(final int... indices);
     public ILevel2MapOfSetEntriesValueOperator<K,V> removeNulls();
-    public ILevel2MapOfSetEntriesValueOperator<K,V> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
+    public ILevel2MapOfSetEntriesValueOperator<K,V> removeNotNullMatching(final String expression, final Object... optionalExpParams);
+    public ILevel2MapOfSetEntriesValueOperator<K,V> removeNullOrMatching(final String expression, final Object... optionalExpParams);
     
     public ILevel2MapOfArrayEntriesValueOperator<K,V> toArray(final Type<V> of);
     

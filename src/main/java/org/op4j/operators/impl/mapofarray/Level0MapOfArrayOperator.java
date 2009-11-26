@@ -149,8 +149,8 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
     }
 
 
-    public ILevel0MapOfArrayOperator<K, V> removeAllExceptKeys(final K... keys) {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFunc.RemoveAllExceptKeys<K,V[]>(keys)));
+    public ILevel0MapOfArrayOperator<K, V> removeKeysNot(final K... keys) {
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFunc.RemoveKeysNot<K,V[]>(keys)));
     }
 
 

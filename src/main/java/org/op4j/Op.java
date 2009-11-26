@@ -441,9 +441,9 @@ public final class Op {
         System.out.println(Op.onList(stringsList1).insert(1, "World!", "Mars!").get());
         System.out.println(Op.onList(stringsList1).addAll(stringsList1).get());
         System.out.println(Op.onList(stringsList1).get());
-        System.out.println(Op.onList(stringsList1).removeIndex(0,2).get());
-        System.out.println(Op.onList(stringsList1).removeAllExceptIndex(0).get());
-        System.out.println(Op.onList(stringsList1).removeAllExceptIndex(0,2).get());
+        System.out.println(Op.onList(stringsList1).removeIndexes(0,2).get());
+        System.out.println(Op.onList(stringsList1).removeIndexesNot(0).get());
+        System.out.println(Op.onList(stringsList1).removeIndexesNot(0,2).get());
         System.out.println(Op.onList(stringsList1).removeMatching("#target eq 'Hello'").get());
         System.out.println(Op.onList(stringsList1).removeSelected(new ISelect<String>() {
 
@@ -453,7 +453,7 @@ public final class Op {
         	
         }).get());
         System.out.println(Op.onList(stringsList1).removeNulls().get());
-        System.out.println(Op.onList(stringsList1).removeNotNullsMatching("length() > 5").get());
+        System.out.println(Op.onList(stringsList1).removeNotNullMatching("length() > 5").get());
             
         System.out.println("================");
         
@@ -464,9 +464,9 @@ public final class Op {
         System.out.println(Op.onSet(stringSet1).addAll(stringsList1).get());
         System.out.println("---");
         System.out.println(Op.onSet(stringSet1).get());
-        System.out.println(Op.onSet(stringSet1).removeIndex(0,2).get());
-        System.out.println(Op.onSet(stringSet1).removeAllExceptIndex(0).get());
-        System.out.println(Op.onSet(stringSet1).removeAllExceptIndex(0,2).get());
+        System.out.println(Op.onSet(stringSet1).removeIndexes(0,2).get());
+        System.out.println(Op.onSet(stringSet1).removeIndexesNot(0).get());
+        System.out.println(Op.onSet(stringSet1).removeIndexesNot(0,2).get());
         System.out.println(Op.onSet(stringSet1).removeMatching("#target eq 'Hello'").get());
         System.out.println(Op.onSet(stringSet1).removeSelected(new ISelect<String>() {
 
@@ -476,7 +476,7 @@ public final class Op {
             
         }).get());
         System.out.println(Op.onSet(stringSet1).removeNulls().get());
-        System.out.println(Op.onSet(stringSet1).removeNotNullsMatching("length() > 5").get());
+        System.out.println(Op.onSet(stringSet1).removeNotNullMatching("length() > 5").get());
             
         System.out.println(printArray(Op.onArray(stringsArr1).insert(2,"lalero","lururu").get()));
      
@@ -496,14 +496,14 @@ public final class Op {
         System.out.println(Op.on(234).add(10).insert(1,3));
         System.out.println(Op.on(234).add(10).insert(1,3).add((Integer)null));
         System.out.println(Op.on(234).add(10).insert(1,3).add((Integer)null).removeNulls());
-        System.out.println(Op.on(234).add(10).insert(1,3).removeAllExceptIndex(1));
+        System.out.println(Op.on(234).add(10).insert(1,3).removeIndexesNot(1));
         System.out.println(Op.on(234).add(10).insert(1,3).removeMatching("#target > 100"));
         System.out.println(printArray(Op.on(234).add(10).insert(1,3).removeMatching("#target > 100").buildArray(Types.INTEGER).get()));
         System.out.println(printArray(Op.on(234).buildArray(Types.INTEGER).add(8).get()));
         System.out.println(Op.on(null).add(123));
         System.out.println(Op.on(null).buildList().get());
         System.out.println(Op.on(null).buildSet().get());
-        System.out.println(printArray(Op.on((String)null).buildArray(Types.STRING).add("a").removeNulls().removeIndex(0).get()));
+        System.out.println(printArray(Op.on((String)null).buildArray(Types.STRING).add("a").removeNulls().removeIndexes(0).get()));
         
         System.out.println(printArray(Op.buildArrayOfArray(Types.STRING).add(Op.buildArray(Types.STRING).add("a","b").get()).add(Op.buildArray(Types.STRING).add("1","2","3").get()).get()));
         System.out.println(Op.buildMap(Types.INTEGER,Types.STRING).put(12,"hello!").get());
@@ -688,6 +688,8 @@ public final class Op {
             	.exec(StringFunc.escapeHTML()).get());
         
         System.out.println(Op.onArray(stringsArr1).removeNulls().toMap(Eval.integerExp("length()")).get());
+
+        System.out.println(Op.onList(stringsList1).removeNullOrMatching("length() < 6").get());
         
     }
     

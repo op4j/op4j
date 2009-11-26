@@ -150,13 +150,13 @@ public class Level0SetOperator<T> extends Operator
     }
 
 
-    public ILevel0SetOperator<T> removeIndex(final int... indices) {
-        return new Level0SetOperator<T>(getTarget().execute(new SetFunc.RemoveIndex<T>(indices)));
+    public ILevel0SetOperator<T> removeIndexes(final int... indices) {
+        return new Level0SetOperator<T>(getTarget().execute(new SetFunc.RemoveIndexes<T>(indices)));
     }
 
 
-    public ILevel0SetOperator<T> removeValue(final T... values) {
-        return new Level0SetOperator<T>(getTarget().execute(new SetFunc.RemoveValues<T>(values)));
+    public ILevel0SetOperator<T> removeEquals(final T... values) {
+        return new Level0SetOperator<T>(getTarget().execute(new SetFunc.RemoveEquals<T>(values)));
     }
 
 
@@ -170,13 +170,18 @@ public class Level0SetOperator<T> extends Operator
     }
 
 
-    public ILevel0SetOperator<T> removeAllExceptIndex(final int... indices) {
-        return new Level0SetOperator<T>(getTarget().execute(new SetFunc.RemoveAllExceptIndex<T>(indices)));
+    public ILevel0SetOperator<T> removeIndexesNot(final int... indices) {
+        return new Level0SetOperator<T>(getTarget().execute(new SetFunc.RemoveIndexesNot<T>(indices)));
     }
 
 
-    public ILevel0SetOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0SetOperator<T>(getTarget().execute(new SetFunc.RemoveNotNullsMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+    public ILevel0SetOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
+        return new Level0SetOperator<T>(getTarget().execute(new SetFunc.RemoveNotNullMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+    }
+
+
+    public ILevel0SetOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
+        return new Level0SetOperator<T>(getTarget().execute(new SetFunc.RemoveNullOrMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 

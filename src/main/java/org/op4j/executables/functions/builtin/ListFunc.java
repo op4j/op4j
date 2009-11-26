@@ -173,10 +173,10 @@ public class ListFunc {
 
     
     
-    public static final class RemoveIndex<T> extends CollectionFunc.RemoveIndex<T, List<T>> {
+    public static final class RemoveIndexes<T> extends CollectionFunc.RemoveIndexes<T, List<T>> {
 
         
-        public RemoveIndex(final int... indices) {
+        public RemoveIndexes(final int... indices) {
             super(indices);
         }
 
@@ -194,9 +194,9 @@ public class ListFunc {
 
     
     
-    public static final class RemoveValues<T> extends CollectionFunc.RemoveValues<T, List<T>> {
+    public static final class RemoveEquals<T> extends CollectionFunc.RemoveEquals<T, List<T>> {
 
-        public RemoveValues(final T... values) {
+        public RemoveEquals(final T... values) {
             super(values);
         }
 
@@ -254,9 +254,9 @@ public class ListFunc {
 
     
     
-    public static final class RemoveAllExceptIndex<T> extends CollectionFunc.RemoveAllExceptIndex<T, List<T>> {
+    public static final class RemoveIndexesNot<T> extends CollectionFunc.RemoveIndexesNot<T, List<T>> {
 
-        public RemoveAllExceptIndex(final int... indices) {
+        public RemoveIndexesNot(final int... indices) {
             super(indices);
         }
 
@@ -294,9 +294,9 @@ public class ListFunc {
 
     
     
-    public static final class RemoveNotNullsMatching<T> extends CollectionFunc.RemoveNotNullsMatching<T, List<T>> {
+    public static final class RemoveNotNullMatching<T> extends CollectionFunc.RemoveNotNullMatching<T, List<T>> {
 
-        public RemoveNotNullsMatching(final IEval<Boolean,? super T> eval) {
+        public RemoveNotNullMatching(final IEval<Boolean,? super T> eval) {
             super(eval);
         }
 
@@ -311,6 +311,24 @@ public class ListFunc {
         
     }
     
+    
+    
+    public static final class RemoveNullOrMatching<T> extends CollectionFunc.RemoveNullOrMatching<T, List<T>> {
+
+        public RemoveNullOrMatching(final IEval<Boolean,? super T> eval) {
+            super(eval);
+        }
+
+        public Type<? super List<T>> getResultType() {
+            return Types.LIST_OF_UNKNOWN;
+        }
+
+        @Override
+        List<T> fromList(final List<T> object) {
+            return object;
+        }
+        
+    }
     
     
     

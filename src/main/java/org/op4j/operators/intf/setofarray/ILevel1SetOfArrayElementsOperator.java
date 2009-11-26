@@ -77,13 +77,14 @@ public interface ILevel1SetOfArrayElementsOperator<T>
     public ILevel1SetOfArrayElementsOperator<T> add(final T... newElements);
     public ILevel1SetOfArrayElementsOperator<T> insert(final int position, final T... newElements);
     public ILevel1SetOfArrayElementsOperator<T> addAll(final Collection<T> collection);
-    public ILevel1SetOfArrayElementsOperator<T> removeIndex(final int... indices);
-    public ILevel1SetOfArrayElementsOperator<T> removeValue(final T... values);
+    public ILevel1SetOfArrayElementsOperator<T> removeIndexes(final int... indices);
+    public ILevel1SetOfArrayElementsOperator<T> removeEquals(final T... values);
     public ILevel1SetOfArrayElementsOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
     public ILevel1SetOfArrayElementsOperator<T> removeSelected(final ISelect<T> selector);
-    public ILevel1SetOfArrayElementsOperator<T> removeAllExceptIndex(final int... indices);
+    public ILevel1SetOfArrayElementsOperator<T> removeIndexesNot(final int... indices);
     public ILevel1SetOfArrayElementsOperator<T> removeNulls();
-    public ILevel1SetOfArrayElementsOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1SetOfArrayElementsOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1SetOfArrayElementsOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams);
     
     public ILevel1SetOfListElementsOperator<T> toList();
     
