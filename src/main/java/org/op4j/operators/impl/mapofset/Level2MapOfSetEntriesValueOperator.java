@@ -88,8 +88,8 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEach(final int... positions) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, V>(getTarget().iterate(positions));
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEach(final int... indices) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, V>(getTarget().iterate(indices));
     }
 
 
@@ -106,8 +106,8 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEachNot(final int... positions) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, V>(getTarget().iterateNot(positions));
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEachNot(final int... indices) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, V>(getTarget().iterateNot(indices));
     }
 
 
@@ -156,12 +156,12 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removePositions(final int... positions) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemovePositions<V>(positions)));
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeIndex(final int... indices) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveIndex<V>(indices)));
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeValues(final V... values) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeValue(final V... values) {
         return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveValues<V>(values)));
     }
 
@@ -176,8 +176,8 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllExceptPositions(final int... positions) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveAllExceptPositions<V>(positions)));
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeAllExceptIndex(final int... indices) {
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveAllExceptIndex<V>(indices)));
     }
 
 

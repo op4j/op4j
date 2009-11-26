@@ -75,11 +75,11 @@ public interface ILevel0ArrayOperator<T>
     public ILevel0ArrayOperator<T> add(final T... newElements);
     public ILevel0ArrayOperator<T> insert(final int position, final T... newElements);
     public ILevel0ArrayOperator<T> addAll(final Collection<T> collection);
-    public ILevel0ArrayOperator<T> removePositions(final int... positions);
-    public ILevel0ArrayOperator<T> removeValues(final T... values);
+    public ILevel0ArrayOperator<T> removeIndex(final int... indices);
+    public ILevel0ArrayOperator<T> removeValue(final T... values);
     public ILevel0ArrayOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
     public ILevel0ArrayOperator<T> removeSelected(final ISelect<T> selector);
-    public ILevel0ArrayOperator<T> removeAllExceptPositions(final int... positions);
+    public ILevel0ArrayOperator<T> removeAllExceptIndex(final int... indices);
     public ILevel0ArrayOperator<T> removeNulls();
     public ILevel0ArrayOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
@@ -92,12 +92,12 @@ public interface ILevel0ArrayOperator<T>
     public <K,V> ILevel0MapOperator<K,V> toMap(final IMapBuild<K,V,? super T> mapBuild);
     
     
-    public ILevel1ArrayElementsOperator<T> forEach(final int... positions);
+    public ILevel1ArrayElementsOperator<T> forEach(final int... indices);
     public ILevel1ArrayElementsOperator<T> forEach(final String expression, final Object... optionalExpParams);
     public ILevel1ArrayElementsOperator<T> forEach(final ISelect<T> selector);
     public ILevel1ArrayElementsOperator<T> forEachNull();
     public ILevel1ArrayElementsOperator<T> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel1ArrayElementsOperator<T> forEachNot(final int... positions);
+    public ILevel1ArrayElementsOperator<T> forEachNot(final int... indices);
     public ILevel1ArrayElementsOperator<T> forEachNotNull();
     public ILevel1ArrayElementsOperator<T> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
     

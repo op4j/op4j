@@ -257,13 +257,13 @@ public class ArrayFunc {
     
 
     
-    public static final class RemovePositions<T> implements IFunc<T[],T[]> {
+    public static final class RemoveIndex<T> implements IFunc<T[],T[]> {
 
-        private final List<Integer> positions;
+        private final List<Integer> indices;
         
-        public RemovePositions(final int... positions) {
+        public RemoveIndex(final int... indices) {
             super();
-            this.positions = VarArgsUtil.asRequiredIntegerList(positions);
+            this.indices = VarArgsUtil.asRequiredIntegerList(indices);
         }
 
         public Type<? super T[]> getResultType() {
@@ -274,7 +274,7 @@ public class ArrayFunc {
             final List<T> result = new ArrayList<T>();
             int i = 0;
             for (final T element : object) {
-                if (!this.positions.contains(Integer.valueOf(i))) {
+                if (!this.indices.contains(Integer.valueOf(i))) {
                     result.add(element);
                 }
                 i++;
@@ -371,13 +371,13 @@ public class ArrayFunc {
 
     
     
-    public static final class RemoveAllExceptPositions<T> implements IFunc<T[],T[]> {
+    public static final class RemoveAllExceptIndex<T> implements IFunc<T[],T[]> {
 
-        private final List<Integer> positions;
+        private final List<Integer> indices;
         
-        public RemoveAllExceptPositions(final int... positions) {
+        public RemoveAllExceptIndex(final int... indices) {
             super();
-            this.positions = VarArgsUtil.asRequiredIntegerList(positions);
+            this.indices = VarArgsUtil.asRequiredIntegerList(indices);
         }
 
         public Type<? super T[]> getResultType() {
@@ -388,7 +388,7 @@ public class ArrayFunc {
             final List<T> result = new ArrayList<T>();
             int i = 0;
             for (final T element : object) {
-                if (this.positions.contains(Integer.valueOf(i))) {
+                if (this.indices.contains(Integer.valueOf(i))) {
                     result.add(element);
                 }
                 i++;

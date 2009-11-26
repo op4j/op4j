@@ -77,8 +77,8 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ListOfMapElementsOperator<K, V> forEach(final int... positions) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterate(positions));
+    public ILevel1ListOfMapElementsOperator<K, V> forEach(final int... indices) {
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterate(indices));
     }
 
 
@@ -95,8 +95,8 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ListOfMapElementsOperator<K, V> forEachNot(final int... positions) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNot(positions));
+    public ILevel1ListOfMapElementsOperator<K, V> forEachNot(final int... indices) {
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNot(indices));
     }
 
 
@@ -145,12 +145,12 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> removePositions(final int... positions) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFunc.RemovePositions<Map<K, V>>(positions)));
+    public ILevel0ListOfMapOperator<K, V> removeIndex(final int... indices) {
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFunc.RemoveIndex<Map<K, V>>(indices)));
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> removeValues(final Map<K, V>... values) {
+    public ILevel0ListOfMapOperator<K, V> removeValue(final Map<K, V>... values) {
         return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFunc.RemoveValues<Map<K, V>>(values)));
     }
 
@@ -165,8 +165,8 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> removeAllExceptPositions(final int... positions) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFunc.RemoveAllExceptPositions<Map<K, V>>(positions)));
+    public ILevel0ListOfMapOperator<K, V> removeAllExceptIndex(final int... indices) {
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFunc.RemoveAllExceptIndex<Map<K, V>>(indices)));
     }
 
 

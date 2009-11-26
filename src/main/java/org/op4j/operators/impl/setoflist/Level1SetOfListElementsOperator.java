@@ -93,8 +93,8 @@ public class Level1SetOfListElementsOperator<T> extends Operator
     }
 
 
-    public ILevel2SetOfListElementsElementsOperator<T> forEach(final int... positions) {
-        return new Level2SetOfListElementsElementsOperator<T>(getTarget().iterate(positions));
+    public ILevel2SetOfListElementsElementsOperator<T> forEach(final int... indices) {
+        return new Level2SetOfListElementsElementsOperator<T>(getTarget().iterate(indices));
     }
 
 
@@ -111,8 +111,8 @@ public class Level1SetOfListElementsOperator<T> extends Operator
     }
 
 
-    public ILevel2SetOfListElementsElementsOperator<T> forEachNot(final int... positions) {
-        return new Level2SetOfListElementsElementsOperator<T>(getTarget().iterateNot(positions));
+    public ILevel2SetOfListElementsElementsOperator<T> forEachNot(final int... indices) {
+        return new Level2SetOfListElementsElementsOperator<T>(getTarget().iterateNot(indices));
     }
 
 
@@ -161,12 +161,12 @@ public class Level1SetOfListElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1SetOfListElementsOperator<T> removePositions(final int... positions) {
-        return new Level1SetOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemovePositions<T>(positions)));
+    public ILevel1SetOfListElementsOperator<T> removeIndex(final int... indices) {
+        return new Level1SetOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveIndex<T>(indices)));
     }
 
 
-    public ILevel1SetOfListElementsOperator<T> removeValues(final T... values) {
+    public ILevel1SetOfListElementsOperator<T> removeValue(final T... values) {
         return new Level1SetOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveValues<T>(values)));
     }
 
@@ -181,8 +181,8 @@ public class Level1SetOfListElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1SetOfListElementsOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level1SetOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveAllExceptPositions<T>(positions)));
+    public ILevel1SetOfListElementsOperator<T> removeAllExceptIndex(final int... indices) {
+        return new Level1SetOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveAllExceptIndex<T>(indices)));
     }
 
 

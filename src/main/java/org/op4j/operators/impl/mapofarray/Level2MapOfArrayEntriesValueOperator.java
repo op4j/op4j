@@ -95,8 +95,8 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEach(final int... positions) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterate(positions));
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEach(final int... indices) {
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterate(indices));
     }
 
 
@@ -110,8 +110,8 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNot(final int... positions) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNot(positions));
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNot(final int... indices) {
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNot(indices));
     }
 
 
@@ -157,12 +157,12 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removePositions(final int... positions) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFunc.RemovePositions<V>(positions)));
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeIndex(final int... indices) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveIndex<V>(indices)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeValues(final V... values) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeValue(final V... values) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveValues<V>(values)));
     }
 
@@ -177,8 +177,8 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllExceptPositions(final int... positions) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveAllExceptPositions<V>(positions)));
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeAllExceptIndex(final int... indices) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveAllExceptIndex<V>(indices)));
     }
 
 

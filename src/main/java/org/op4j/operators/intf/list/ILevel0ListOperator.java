@@ -76,11 +76,11 @@ public interface ILevel0ListOperator<T>
     public ILevel0ListOperator<T> add(final T... newElements);
     public ILevel0ListOperator<T> insert(final int position, final T... newElements);
     public ILevel0ListOperator<T> addAll(final Collection<T> collection);
-    public ILevel0ListOperator<T> removePositions(final int... positions);
-    public ILevel0ListOperator<T> removeValues(final T... values);
+    public ILevel0ListOperator<T> removeIndex(final int... indices);
+    public ILevel0ListOperator<T> removeValue(final T... values);
     public ILevel0ListOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
     public ILevel0ListOperator<T> removeSelected(final ISelect<T> selector);
-    public ILevel0ListOperator<T> removeAllExceptPositions(final int... positions);
+    public ILevel0ListOperator<T> removeAllExceptIndex(final int... indices);
     public ILevel0ListOperator<T> removeNulls();
     public ILevel0ListOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
@@ -94,12 +94,12 @@ public interface ILevel0ListOperator<T>
     public <K,V> ILevel0MapOperator<K,V> toMap(final IMapBuild<K,V,? super T> mapBuild);
 
     
-    public ILevel1ListElementsOperator<T> forEach(final int... positions);
+    public ILevel1ListElementsOperator<T> forEach(final int... indices);
     public ILevel1ListElementsOperator<T> forEach(final String expression, final Object... optionalExpParams);
     public ILevel1ListElementsOperator<T> forEach(final ISelect<T> selector);
     public ILevel1ListElementsOperator<T> forEachNull();
     public ILevel1ListElementsOperator<T> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<T> forEachNot(final int... positions);
+    public ILevel1ListElementsOperator<T> forEachNot(final int... indices);
     public ILevel1ListElementsOperator<T> forEachNotNull();
     public ILevel1ListElementsOperator<T> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
     

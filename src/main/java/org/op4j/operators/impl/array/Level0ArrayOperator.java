@@ -86,8 +86,8 @@ public class Level0ArrayOperator<T> extends Operator implements
         return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterate());
     }
 
-    public ILevel1ArrayElementsOperator<T> forEach(final int... positions) {
-        return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterate(positions));
+    public ILevel1ArrayElementsOperator<T> forEach(final int... indices) {
+        return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterate(indices));
     }
 
     public ILevel1ArrayElementsOperator<T> forEach(final String expression, final Object... optionalExpParams) {
@@ -98,8 +98,8 @@ public class Level0ArrayOperator<T> extends Operator implements
         return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterate(selector));
     }
 
-    public ILevel1ArrayElementsOperator<T> forEachNot(final int... positions) {
-        return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNot(positions));
+    public ILevel1ArrayElementsOperator<T> forEachNot(final int... indices) {
+        return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNot(indices));
     }
 
 
@@ -134,12 +134,12 @@ public class Level0ArrayOperator<T> extends Operator implements
         return new Level0ArrayOperator<T>(this.arrayOf, getTarget());
     }
 
-    public ILevel0ArrayOperator<T> removePositions(final int... positions) {
-        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemovePositions<T>(positions)));
+    public ILevel0ArrayOperator<T> removeIndex(final int... indices) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveIndex<T>(indices)));
     }
 
 
-    public ILevel0ArrayOperator<T> removeValues(final T... values) {
+    public ILevel0ArrayOperator<T> removeValue(final T... values) {
         return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveValues<T>(values)));
     }
 
@@ -154,8 +154,8 @@ public class Level0ArrayOperator<T> extends Operator implements
     }
 
 
-    public ILevel0ArrayOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveAllExceptPositions<T>(positions)));
+    public ILevel0ArrayOperator<T> removeAllExceptIndex(final int... indices) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveAllExceptIndex<T>(indices)));
     }
 
 

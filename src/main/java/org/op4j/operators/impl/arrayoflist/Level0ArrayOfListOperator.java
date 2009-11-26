@@ -97,8 +97,8 @@ public class Level0ArrayOfListOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfListElementsOperator<T> forEach(int... positions) {
-        return new Level1ArrayOfListElementsOperator<T>(getTarget().iterate(positions));
+    public ILevel1ArrayOfListElementsOperator<T> forEach(int... indices) {
+        return new Level1ArrayOfListElementsOperator<T>(getTarget().iterate(indices));
     }
 
 
@@ -112,8 +112,8 @@ public class Level0ArrayOfListOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfListElementsOperator<T> forEachNot(final int... positions) {
-        return new Level1ArrayOfListElementsOperator<T>(getTarget().iterateNot(positions));
+    public ILevel1ArrayOfListElementsOperator<T> forEachNot(final int... indices) {
+        return new Level1ArrayOfListElementsOperator<T>(getTarget().iterateNot(indices));
     }
 
 
@@ -159,12 +159,12 @@ public class Level0ArrayOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0ArrayOfListOperator<T> removePositions(final int... positions) {
-        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.RemovePositions<List<T>>(positions)));
+    public ILevel0ArrayOfListOperator<T> removeIndex(final int... indices) {
+        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.RemoveIndex<List<T>>(indices)));
     }
 
 
-    public ILevel0ArrayOfListOperator<T> removeValues(final List<T>... values) {
+    public ILevel0ArrayOfListOperator<T> removeValue(final List<T>... values) {
         return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.RemoveValues<List<T>>(values)));
     }
 
@@ -179,8 +179,8 @@ public class Level0ArrayOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0ArrayOfListOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.RemoveAllExceptPositions<List<T>>(positions)));
+    public ILevel0ArrayOfListOperator<T> removeAllExceptIndex(final int... indices) {
+        return new Level0ArrayOfListOperator<T>(getTarget().execute(new ArrayFunc.RemoveAllExceptIndex<List<T>>(indices)));
     }
 
 

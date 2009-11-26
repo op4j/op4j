@@ -37,11 +37,11 @@ public interface IModifiableCollectionOperator<T> {
     public IModifiableCollectionOperator<T> add(final T... newElements);
     public IModifiableCollectionOperator<T> insert(final int position, final T... newElements);
     public IModifiableCollectionOperator<T> addAll(final Collection<T> collection);
-    public IModifiableCollectionOperator<T> removePositions(final int... positions);
-    public IModifiableCollectionOperator<T> removeValues(final T... values);
+    public IModifiableCollectionOperator<T> removeIndex(final int... indices);
+    public IModifiableCollectionOperator<T> removeValue(final T... values);
     public IModifiableCollectionOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
     public IModifiableCollectionOperator<T> removeSelected(final ISelect<T> selector);
-    public IModifiableCollectionOperator<T> removeAllExceptPositions(final int... positions);
+    public IModifiableCollectionOperator<T> removeAllExceptIndex(final int... indices);
     public IModifiableCollectionOperator<T> removeNulls();
     public IModifiableCollectionOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     

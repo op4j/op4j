@@ -152,11 +152,11 @@ public class SetFunc {
 
     
     
-    public static final class RemovePositions<T> extends CollectionFunc.RemovePositions<T, Set<T>> {
+    public static final class RemoveIndex<T> extends CollectionFunc.RemoveIndex<T, Set<T>> {
 
         
-        public RemovePositions(final int... positions) {
-            super(positions);
+        public RemoveIndex(final int... indices) {
+            super(indices);
         }
 
         public Type<? super Set<T>> getResultType() {
@@ -233,10 +233,10 @@ public class SetFunc {
 
     
     
-    public static final class RemoveAllExceptPositions<T> extends CollectionFunc.RemoveAllExceptPositions<T, Set<T>> {
+    public static final class RemoveAllExceptIndex<T> extends CollectionFunc.RemoveAllExceptIndex<T, Set<T>> {
 
-        public RemoveAllExceptPositions(final int... positions) {
-            super(positions);
+        public RemoveAllExceptIndex(final int... indices) {
+            super(indices);
         }
 
         public Type<? super Set<T>> getResultType() {

@@ -173,11 +173,11 @@ public class ListFunc {
 
     
     
-    public static final class RemovePositions<T> extends CollectionFunc.RemovePositions<T, List<T>> {
+    public static final class RemoveIndex<T> extends CollectionFunc.RemoveIndex<T, List<T>> {
 
         
-        public RemovePositions(final int... positions) {
-            super(positions);
+        public RemoveIndex(final int... indices) {
+            super(indices);
         }
 
         public Type<? super List<T>> getResultType() {
@@ -254,10 +254,10 @@ public class ListFunc {
 
     
     
-    public static final class RemoveAllExceptPositions<T> extends CollectionFunc.RemoveAllExceptPositions<T, List<T>> {
+    public static final class RemoveAllExceptIndex<T> extends CollectionFunc.RemoveAllExceptIndex<T, List<T>> {
 
-        public RemoveAllExceptPositions(final int... positions) {
-            super(positions);
+        public RemoveAllExceptIndex(final int... indices) {
+            super(indices);
         }
 
         public Type<? super List<T>> getResultType() {

@@ -68,11 +68,11 @@ public interface ILevel0GenericMultiOperator<T>
     public ILevel0GenericMultiOperator<T> add(final T... newElements);
     public ILevel0GenericMultiOperator<T> insert(final int position, final T... newElements);
     public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection);
-    public ILevel0GenericMultiOperator<T> removePositions(final int... positions);
+    public ILevel0GenericMultiOperator<T> removeIndex(final int... indices);
     public ILevel0GenericMultiOperator<T> removeValues(final T... values);
     public ILevel0GenericMultiOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
     public ILevel0GenericMultiOperator<T> removeSelected(final ISelect<T> selector);
-    public ILevel0GenericMultiOperator<T> removeAllExceptPositions(final int... positions);
+    public ILevel0GenericMultiOperator<T> removeAllExceptIndex(final int... indices);
     public ILevel0GenericMultiOperator<T> removeNulls();
     public ILevel0GenericMultiOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     

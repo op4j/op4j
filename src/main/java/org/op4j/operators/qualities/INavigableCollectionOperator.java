@@ -37,12 +37,12 @@ public interface INavigableCollectionOperator<T>  {
 
     public INavigatingCollectionOperator<T> forEach();
     
-    public INavigatingCollectionOperator<T> forEach(final int... positions);
+    public INavigatingCollectionOperator<T> forEach(final int... indices);
     public INavigatingCollectionOperator<T> forEach(final String expression, final Object... optionalExpParams);
     public INavigatingCollectionOperator<T> forEach(final ISelect<T> selector);
     public INavigatingCollectionOperator<T> forEachNull();
     public INavigatingCollectionOperator<T> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public INavigatingCollectionOperator<T> forEachNot(final int... positions);
+    public INavigatingCollectionOperator<T> forEachNot(final int... indices);
     public INavigatingCollectionOperator<T> forEachNotNull();
     public INavigatingCollectionOperator<T> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
 	

@@ -175,8 +175,8 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<T> removePositions(final int... positions) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemovePositions<T>(positions)));
+    public ILevel0GenericMultiOperator<T> removeIndex(final int... indices) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveIndex<T>(indices)));
     }
 
 
@@ -195,8 +195,8 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveAllExceptPositions<T>(positions)));
+    public ILevel0GenericMultiOperator<T> removeAllExceptIndex(final int... indices) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveAllExceptIndex<T>(indices)));
     }
 
 

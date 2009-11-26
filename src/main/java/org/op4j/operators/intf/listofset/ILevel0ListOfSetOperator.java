@@ -105,11 +105,11 @@ public interface ILevel0ListOfSetOperator<T>
     public ILevel0ListOfSetOperator<T> add(final Set<T>... newElements);
     public ILevel0ListOfSetOperator<T> insert(final int position, final Set<T>... newElements);
     public ILevel0ListOfSetOperator<T> addAll(final Collection<Set<T>> collection);
-    public ILevel0ListOfSetOperator<T> removePositions(final int... positions);
-    public ILevel0ListOfSetOperator<T> removeValues(final Set<T>... values);
+    public ILevel0ListOfSetOperator<T> removeIndex(final int... indices);
+    public ILevel0ListOfSetOperator<T> removeValue(final Set<T>... values);
     public ILevel0ListOfSetOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
     public ILevel0ListOfSetOperator<T> removeSelected(final ISelect<Set<T>> selector);
-    public ILevel0ListOfSetOperator<T> removeAllExceptPositions(final int... positions);
+    public ILevel0ListOfSetOperator<T> removeAllExceptIndex(final int... indices);
     public ILevel0ListOfSetOperator<T> removeNulls();
     public ILevel0ListOfSetOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
@@ -145,12 +145,12 @@ public interface ILevel0ListOfSetOperator<T>
 
 
     
-    public ILevel1ListOfSetElementsOperator<T> forEach(final int... positions);
+    public ILevel1ListOfSetElementsOperator<T> forEach(final int... indices);
     public ILevel1ListOfSetElementsOperator<T> forEach(final String expression, final Object... optionalExpParams);
     public ILevel1ListOfSetElementsOperator<T> forEach(final ISelect<Set<T>> selector);
     public ILevel1ListOfSetElementsOperator<T> forEachNull();
     public ILevel1ListOfSetElementsOperator<T> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel1ListOfSetElementsOperator<T> forEachNot(final int... positions);
+    public ILevel1ListOfSetElementsOperator<T> forEachNot(final int... indices);
     public ILevel1ListOfSetElementsOperator<T> forEachNotNull();
     public ILevel1ListOfSetElementsOperator<T> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
     

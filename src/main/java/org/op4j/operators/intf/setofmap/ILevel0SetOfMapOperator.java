@@ -61,21 +61,21 @@ public interface ILevel0SetOfMapOperator<K,V>
     public ILevel0SetOfMapOperator<K,V> add(final Map<K,V>... newElements);
     public ILevel0SetOfMapOperator<K,V> insert(final int position, final Map<K,V>... newElements);
     public ILevel0SetOfMapOperator<K,V> addAll(final Collection<Map<K,V>> collection);
-    public ILevel0SetOfMapOperator<K,V> removePositions(final int... positions);
-    public ILevel0SetOfMapOperator<K,V> removeValues(final Map<K,V>... values);
+    public ILevel0SetOfMapOperator<K,V> removeIndex(final int... indices);
+    public ILevel0SetOfMapOperator<K,V> removeValue(final Map<K,V>... values);
     public ILevel0SetOfMapOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
     public ILevel0SetOfMapOperator<K,V> removeSelected(final ISelect<Map<K,V>> selector);
-    public ILevel0SetOfMapOperator<K,V> removeAllExceptPositions(final int... positions);
+    public ILevel0SetOfMapOperator<K,V> removeAllExceptIndex(final int... indices);
     public ILevel0SetOfMapOperator<K,V> removeNulls();
     public ILevel0SetOfMapOperator<K,V> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
     
-    public ILevel1SetOfMapElementsOperator<K,V> forEach(final int... positions);
+    public ILevel1SetOfMapElementsOperator<K,V> forEach(final int... indices);
     public ILevel1SetOfMapElementsOperator<K,V> forEach(final String expression, final Object... optionalExpParams);
     public ILevel1SetOfMapElementsOperator<K,V> forEach(final ISelect<Map<K,V>> selector);
     public ILevel1SetOfMapElementsOperator<K,V> forEachNull();
     public ILevel1SetOfMapElementsOperator<K,V> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel1SetOfMapElementsOperator<K,V> forEachNot(final int... positions);
+    public ILevel1SetOfMapElementsOperator<K,V> forEachNot(final int... indices);
     public ILevel1SetOfMapElementsOperator<K,V> forEachNotNull();
     public ILevel1SetOfMapElementsOperator<K,V> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
     

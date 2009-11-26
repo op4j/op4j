@@ -92,8 +92,8 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEach(final int... positions) {
-        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterate(positions));
+    public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEach(final int... indices) {
+        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterate(indices));
     }
 
 
@@ -110,8 +110,8 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachNot(final int... positions) {
-        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNot(positions));
+    public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachNot(final int... indices) {
+        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNot(indices));
     }
 
 
@@ -160,12 +160,12 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removePositions(final int... positions) {
-        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.RemovePositions<V>(positions)));
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeIndex(final int... indices) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.RemoveIndex<V>(indices)));
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeValues(final V... values) {
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeValue(final V... values) {
         return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.RemoveValues<V>(values)));
     }
 
@@ -180,8 +180,8 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllExceptPositions(final int... positions) {
-        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.RemoveAllExceptPositions<V>(positions)));
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeAllExceptIndex(final int... indices) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.RemoveAllExceptIndex<V>(indices)));
     }
 
 

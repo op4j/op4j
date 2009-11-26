@@ -87,8 +87,8 @@ public class Level0ListOperator<T> extends Operator
     }
 
 
-    public ILevel1ListElementsOperator<T> forEach(final int... positions) {
-        return new Level1ListElementsOperator<T>(getTarget().iterate(positions));
+    public ILevel1ListElementsOperator<T> forEach(final int... indices) {
+        return new Level1ListElementsOperator<T>(getTarget().iterate(indices));
     }
 
 
@@ -105,8 +105,8 @@ public class Level0ListOperator<T> extends Operator
     }
 
 
-    public ILevel1ListElementsOperator<T> forEachNot(final int... positions) {
-        return new Level1ListElementsOperator<T>(getTarget().iterateNot(positions));
+    public ILevel1ListElementsOperator<T> forEachNot(final int... indices) {
+        return new Level1ListElementsOperator<T>(getTarget().iterateNot(indices));
     }
 
 
@@ -155,12 +155,12 @@ public class Level0ListOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOperator<T> removePositions(final int... positions) {
-        return new Level0ListOperator<T>(getTarget().execute(new ListFunc.RemovePositions<T>(positions)));
+    public ILevel0ListOperator<T> removeIndex(final int... indices) {
+        return new Level0ListOperator<T>(getTarget().execute(new ListFunc.RemoveIndex<T>(indices)));
     }
 
 
-    public ILevel0ListOperator<T> removeValues(final T... values) {
+    public ILevel0ListOperator<T> removeValue(final T... values) {
         return new Level0ListOperator<T>(getTarget().execute(new ListFunc.RemoveValues<T>(values)));
     }
 
@@ -175,8 +175,8 @@ public class Level0ListOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level0ListOperator<T>(getTarget().execute(new ListFunc.RemoveAllExceptPositions<T>(positions)));
+    public ILevel0ListOperator<T> removeAllExceptIndex(final int... indices) {
+        return new Level0ListOperator<T>(getTarget().execute(new ListFunc.RemoveAllExceptIndex<T>(indices)));
     }
 
 

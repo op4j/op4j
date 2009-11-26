@@ -72,11 +72,11 @@ public interface ILevel0SetOperator<T>
     public ILevel0SetOperator<T> add(final T... newElements);
     public ILevel0SetOperator<T> insert(final int position, final T... newElements);
     public ILevel0SetOperator<T> addAll(final Collection<T> collection);
-    public ILevel0SetOperator<T> removePositions(final int... positions);
-    public ILevel0SetOperator<T> removeValues(final T... values);
+    public ILevel0SetOperator<T> removeIndex(final int... indices);
+    public ILevel0SetOperator<T> removeValue(final T... values);
     public ILevel0SetOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
     public ILevel0SetOperator<T> removeSelected(final ISelect<T> selector);
-    public ILevel0SetOperator<T> removeAllExceptPositions(final int... positions);
+    public ILevel0SetOperator<T> removeAllExceptIndex(final int... indices);
     public ILevel0SetOperator<T> removeNulls();
     public ILevel0SetOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     
@@ -90,12 +90,12 @@ public interface ILevel0SetOperator<T>
     public <K,V> ILevel0MapOperator<K,V> toMap(final IMapBuild<K,V,? super T> mapBuild);
     
     
-    public ILevel1SetElementsOperator<T> forEach(final int... positions);
+    public ILevel1SetElementsOperator<T> forEach(final int... indices);
     public ILevel1SetElementsOperator<T> forEach(final String expression, final Object... optionalExpParams);
     public ILevel1SetElementsOperator<T> forEach(final ISelect<T> selector);
     public ILevel1SetElementsOperator<T> forEachNull();
     public ILevel1SetElementsOperator<T> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel1SetElementsOperator<T> forEachNot(final int... positions);
+    public ILevel1SetElementsOperator<T> forEachNot(final int... indices);
     public ILevel1SetElementsOperator<T> forEachNotNull();
     public ILevel1SetElementsOperator<T> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
     

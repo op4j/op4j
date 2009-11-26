@@ -32,11 +32,11 @@ import org.op4j.executables.ISelect;
  */
 public interface IModifiableShrinkableOperator<T> {
 
-    public IModifiableGrowableOperator<T> removePositions(final int... positions);
+    public IModifiableGrowableOperator<T> removeIndex(final int... indices);
     public IModifiableGrowableOperator<T> removeValues(final T... values);
     public IModifiableGrowableOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
     public IModifiableGrowableOperator<T> removeSelected(final ISelect<T> filter);
-    public IModifiableGrowableOperator<T> removeAllExceptPositions(final int... positions);
+    public IModifiableGrowableOperator<T> removeAllExceptIndex(final int... indices);
     public IModifiableGrowableOperator<T> removeNulls();
     public IModifiableGrowableOperator<T> removeNotNullsMatching(final String expression, final Object... optionalExpParams);
     

@@ -82,8 +82,8 @@ public class Level0SetOperator<T> extends Operator
     }
 
 
-    public ILevel1SetElementsOperator<T> forEach(final int... positions) {
-        return new Level1SetElementsOperator<T>(getTarget().iterate(positions));
+    public ILevel1SetElementsOperator<T> forEach(final int... indices) {
+        return new Level1SetElementsOperator<T>(getTarget().iterate(indices));
     }
 
 
@@ -100,8 +100,8 @@ public class Level0SetOperator<T> extends Operator
     }
 
 
-    public ILevel1SetElementsOperator<T> forEachNot(final int... positions) {
-        return new Level1SetElementsOperator<T>(getTarget().iterateNot(positions));
+    public ILevel1SetElementsOperator<T> forEachNot(final int... indices) {
+        return new Level1SetElementsOperator<T>(getTarget().iterateNot(indices));
     }
 
 
@@ -150,12 +150,12 @@ public class Level0SetOperator<T> extends Operator
     }
 
 
-    public ILevel0SetOperator<T> removePositions(final int... positions) {
-        return new Level0SetOperator<T>(getTarget().execute(new SetFunc.RemovePositions<T>(positions)));
+    public ILevel0SetOperator<T> removeIndex(final int... indices) {
+        return new Level0SetOperator<T>(getTarget().execute(new SetFunc.RemoveIndex<T>(indices)));
     }
 
 
-    public ILevel0SetOperator<T> removeValues(final T... values) {
+    public ILevel0SetOperator<T> removeValue(final T... values) {
         return new Level0SetOperator<T>(getTarget().execute(new SetFunc.RemoveValues<T>(values)));
     }
 
@@ -170,8 +170,8 @@ public class Level0SetOperator<T> extends Operator
     }
 
 
-    public ILevel0SetOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level0SetOperator<T>(getTarget().execute(new SetFunc.RemoveAllExceptPositions<T>(positions)));
+    public ILevel0SetOperator<T> removeAllExceptIndex(final int... indices) {
+        return new Level0SetOperator<T>(getTarget().execute(new SetFunc.RemoveAllExceptIndex<T>(indices)));
     }
 
 

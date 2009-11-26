@@ -97,8 +97,8 @@ public class Level0ArrayOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> forEach(final int... positions) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterate(positions));
+    public ILevel1ArrayOfSetElementsOperator<T> forEach(final int... indices) {
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterate(indices));
     }
 
 
@@ -115,8 +115,8 @@ public class Level0ArrayOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> forEachNot(final int... positions) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNot(positions));
+    public ILevel1ArrayOfSetElementsOperator<T> forEachNot(final int... indices) {
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNot(indices));
     }
 
 
@@ -165,12 +165,12 @@ public class Level0ArrayOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel0ArrayOfSetOperator<T> removePositions(final int... positions) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemovePositions<Set<T>>(positions)));
+    public ILevel0ArrayOfSetOperator<T> removeIndex(final int... indices) {
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveIndex<Set<T>>(indices)));
     }
 
 
-    public ILevel0ArrayOfSetOperator<T> removeValues(final Set<T>... values) {
+    public ILevel0ArrayOfSetOperator<T> removeValue(final Set<T>... values) {
         return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveValues<Set<T>>(values)));
     }
 
@@ -185,8 +185,8 @@ public class Level0ArrayOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel0ArrayOfSetOperator<T> removeAllExceptPositions(final int... positions) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveAllExceptPositions<Set<T>>(positions)));
+    public ILevel0ArrayOfSetOperator<T> removeAllExceptIndex(final int... indices) {
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFunc.RemoveAllExceptIndex<Set<T>>(indices)));
     }
 
 
