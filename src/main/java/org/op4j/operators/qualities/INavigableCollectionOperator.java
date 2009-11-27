@@ -19,6 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
+import org.op4j.executables.IEval;
 import org.op4j.executables.ISelect;
 
 
@@ -37,13 +38,16 @@ public interface INavigableCollectionOperator<T>  {
 
     public INavigatingCollectionOperator<T> forEach();
     
-    public INavigatingCollectionOperator<T> forEach(final int... indices);
-    public INavigatingCollectionOperator<T> forEach(final String expression, final Object... optionalExpParams);
-    public INavigatingCollectionOperator<T> forEach(final ISelect<T> selector);
+    public INavigatingCollectionOperator<T> forEachIndex(final int... indices);
+    public INavigatingCollectionOperator<T> forEachMatching(final String expression, final Object... optionalExpParams);
+    public INavigatingCollectionOperator<T> forEachMatching(final IEval<Boolean, ? super T> eval);
+    public INavigatingCollectionOperator<T> forEachSelected(final ISelect<T> selector);
     public INavigatingCollectionOperator<T> forEachNull();
-    public INavigatingCollectionOperator<T> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public INavigatingCollectionOperator<T> forEachNot(final int... indices);
+    public INavigatingCollectionOperator<T> forEachNullOrMatching(final String expression, final Object... optionalExpParams);
+    public INavigatingCollectionOperator<T> forEachNullOrMatching(final IEval<Boolean, ? super T> eval);
+    public INavigatingCollectionOperator<T> forEachIndexNot(final int... indices);
     public INavigatingCollectionOperator<T> forEachNotNull();
-    public INavigatingCollectionOperator<T> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
+    public INavigatingCollectionOperator<T> forEachNotNullMatching(final String expression, final Object... optionalExpParams);
+    public INavigatingCollectionOperator<T> forEachNotNullMatching(final IEval<Boolean, ? super T> eval);
 	
 }

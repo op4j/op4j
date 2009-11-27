@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
+import org.op4j.executables.IEval;
 import org.op4j.executables.ISelect;
 import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableCollectionOperator;
@@ -71,14 +72,17 @@ public interface ILevel0SetOfMapOperator<K,V>
     public ILevel0SetOfMapOperator<K,V> removeNullOrMatching(final String expression, final Object... optionalExpParams);
     
     
-    public ILevel1SetOfMapElementsOperator<K,V> forEach(final int... indices);
-    public ILevel1SetOfMapElementsOperator<K,V> forEach(final String expression, final Object... optionalExpParams);
-    public ILevel1SetOfMapElementsOperator<K,V> forEach(final ISelect<Map<K,V>> selector);
+    public ILevel1SetOfMapElementsOperator<K,V> forEachIndex(final int... indices);
+    public ILevel1SetOfMapElementsOperator<K,V> forEachMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1SetOfMapElementsOperator<K,V> forEachMatching(final IEval<Boolean, ? super Map<K,V>> eval);
+    public ILevel1SetOfMapElementsOperator<K,V> forEachNullOrMatching(final IEval<Boolean, ? super Map<K,V>> eval);
+    public ILevel1SetOfMapElementsOperator<K,V> forEachNotNullMatching(final IEval<Boolean, ? super Map<K,V>> eval);
+    public ILevel1SetOfMapElementsOperator<K,V> forEachSelected(final ISelect<Map<K,V>> selector);
     public ILevel1SetOfMapElementsOperator<K,V> forEachNull();
-    public ILevel1SetOfMapElementsOperator<K,V> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel1SetOfMapElementsOperator<K,V> forEachNot(final int... indices);
+    public ILevel1SetOfMapElementsOperator<K,V> forEachNullOrMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1SetOfMapElementsOperator<K,V> forEachIndexNot(final int... indices);
     public ILevel1SetOfMapElementsOperator<K,V> forEachNotNull();
-    public ILevel1SetOfMapElementsOperator<K,V> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
+    public ILevel1SetOfMapElementsOperator<K,V> forEachNotNullMatching(final String expression, final Object... optionalExpParams);
     
     
 }

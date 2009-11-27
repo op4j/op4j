@@ -94,14 +94,17 @@ public interface ILevel1ArrayOfArrayElementsOperator<T>
     public <K,V> ILevel1ArrayOfMapElementsOperator<K,V> toMap(final IMapBuild<K,V,? super T> mapBuild);
     
     
-    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEach(final int... indices);
-    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEach(final String expression, final Object... optionalExpParams);
-    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEach(final ISelect<T> selector);
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachIndex(final int... indices);
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachMatching(final String expression, final Object... optionalExpParams);
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNullOrMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNotNullMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachSelected(final ISelect<T> selector);
     public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNull();
-    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNot(final int... indices);
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNullOrMatching(final String expression, final Object... optionalExpParams);
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachIndexNot(final int... indices);
     public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNotNull();
-    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNotNullMatching(final String expression, final Object... optionalExpParams);
     
 
     

@@ -26,6 +26,7 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.executables.Eval;
+import org.op4j.executables.IEval;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ListFunc;
 import org.op4j.operators.impl.Operator;
@@ -34,6 +35,7 @@ import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.listofmap.ILevel0ListOfMapOperator;
 import org.op4j.operators.intf.listofmap.ILevel1ListOfMapElementsOperator;
 import org.op4j.target.Target;
+import org.op4j.util.VarArgsUtil;
 
 
 /**
@@ -77,7 +79,7 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ListOfMapElementsOperator<K, V> forEach(final int... indices) {
+    public ILevel1ListOfMapElementsOperator<K, V> forEachIndex(final int... indices) {
         return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterate(indices));
     }
 
@@ -85,17 +87,32 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     
 
 
-    public ILevel1ListOfMapElementsOperator<K, V> forEach(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterate(expression, optionalExpParams));
+    public ILevel1ListOfMapElementsOperator<K, V> forEachMatching(final String expression, final Object... optionalExpParams) {
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterate(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
-    public ILevel1ListOfMapElementsOperator<K, V> forEach(final ISelect<Map<K, V>> selector) {
+    public ILevel1ListOfMapElementsOperator<K, V> forEachMatching(final IEval<Boolean, ? super Map<K, V>> eval) {
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterate(eval));
+    }
+
+
+    public ILevel1ListOfMapElementsOperator<K, V> forEachNotNullMatching(final IEval<Boolean, ? super Map<K, V>> eval) {
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNotNullAnd(eval));
+    }
+
+
+    public ILevel1ListOfMapElementsOperator<K, V> forEachNullOrMatching(final IEval<Boolean, ? super Map<K, V>> eval) {
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNullOr(eval));
+    }
+
+
+    public ILevel1ListOfMapElementsOperator<K, V> forEachSelected(final ISelect<Map<K, V>> selector) {
         return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterate(selector));
     }
 
 
-    public ILevel1ListOfMapElementsOperator<K, V> forEachNot(final int... indices) {
+    public ILevel1ListOfMapElementsOperator<K, V> forEachIndexNot(final int... indices) {
         return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNot(indices));
     }
 
@@ -114,8 +131,8 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ListOfMapElementsOperator<K, V> forEachNotNullAnd(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNotNullAnd(expression, optionalExpParams));
+    public ILevel1ListOfMapElementsOperator<K, V> forEachNotNullMatching(final String expression, final Object... optionalExpParams) {
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNotNullAnd(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -127,8 +144,8 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ListOfMapElementsOperator<K, V> forEachNullOr(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNullOr(expression, optionalExpParams));
+    public ILevel1ListOfMapElementsOperator<K, V> forEachNullOrMatching(final String expression, final Object... optionalExpParams) {
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNullOr(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 

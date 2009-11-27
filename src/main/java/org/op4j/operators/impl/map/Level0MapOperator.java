@@ -34,6 +34,7 @@ import org.op4j.operators.intf.map.ILevel0MapOperator;
 import org.op4j.operators.intf.map.ILevel1MapEntriesOperator;
 import org.op4j.operators.qualities.IOperator;
 import org.op4j.target.Target;
+import org.op4j.util.VarArgsUtil;
 
 
 /**
@@ -75,7 +76,7 @@ public class Level0MapOperator<K,V> extends Operator
 
 
     public ILevel1MapEntriesOperator<K, V> forEachEntry(final String expression, final Object... optionalExpParams) {
-        return new Level1MapEntriesOperator<K, V>(getTarget().iterate(expression, optionalExpParams));
+        return new Level1MapEntriesOperator<K, V>(getTarget().iterate(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 

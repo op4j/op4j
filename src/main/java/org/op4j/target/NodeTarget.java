@@ -27,11 +27,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.javaruntype.type.Types;
 import org.op4j.exceptions.ExecutionException;
+import org.op4j.executables.IEval;
 import org.op4j.executables.IExecutable;
 import org.op4j.executables.ISelect;
-import org.op4j.util.OgnlExpressionUtil;
 
 /**
  * 
@@ -136,7 +135,7 @@ public abstract class NodeTarget extends Target{
 
     
     @Override
-    Target doIterateExpression(final boolean desiredResult, final String expression, final List<Object> expParams) {
+    Target doIterateExpression(final boolean desiredResult, final IEval<Boolean,Object> eval) {
         
         final Collection<?> elements = getIterationElements();
         final List<Target> newElements = new ArrayList<Target>();
@@ -144,14 +143,20 @@ public abstract class NodeTarget extends Target{
         
         int i = 0;
         for (final Object element : elements) {
+            
             final TargetId elementId = new TargetId(getId(), i);
             newElements.add(NodeTarget.forObject(elementId, element));
-            final Boolean evalResult = 
-                OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, expParams);
+            Boolean evalResult = null;
+            try {
+                evalResult = eval.execute(element); 
+            } catch (Exception e) {
+                throw new ExecutionException(e);
+            }
             if ((evalResult != null && evalResult.booleanValue()) == desiredResult) {
                 newSelectedElementIds.add(elementId);
             }
             i++;
+            
         }
 
         return new StructureTarget(getId(),newSelectedElementIds,newElements, getId().getLevel());
@@ -171,6 +176,7 @@ public abstract class NodeTarget extends Target{
         
         int i = 0;
         for (final Object element : elements) {
+            
             final TargetId elementId = new TargetId(getId(), i);
             newElements.add(NodeTarget.forObject(elementId, element));
             final boolean evalResult = objectSelector.eval(element);
@@ -178,6 +184,7 @@ public abstract class NodeTarget extends Target{
                 newSelectedElementIds.add(elementId);
             }
             i++;
+            
         }
 
         return new StructureTarget(getId(),newSelectedElementIds,newElements, getId().getLevel());
@@ -194,12 +201,14 @@ public abstract class NodeTarget extends Target{
         
         int i = 0;
         for (final Object element : elements) {
+            
             final TargetId elementId = new TargetId(getId(), i);
             newElements.add(NodeTarget.forObject(elementId, element));
             if ((element == null) == desiredResult) {
                 newSelectedElementIds.add(elementId);
             }
             i++;
+            
         }
 
         return new StructureTarget(getId(),newSelectedElementIds,newElements, getId().getLevel());
@@ -208,7 +217,7 @@ public abstract class NodeTarget extends Target{
 
     
     @Override
-    Target doIterateNullOr(final boolean desiredResult, final String expression, final List<Object> expParams) {
+    Target doIterateNullOr(final boolean desiredResult, final IEval<Boolean,Object> eval) {
         
         final Collection<?> elements = getIterationElements();
         final List<Target> newElements = new ArrayList<Target>();
@@ -221,8 +230,12 @@ public abstract class NodeTarget extends Target{
             if (element == null) {
                 newSelectedElementIds.add(elementId);
             } else {
-                final Boolean evalResult = 
-                    OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, expParams);
+                Boolean evalResult = null;
+                try {
+                    evalResult = eval.execute(element); 
+                } catch (Exception e) {
+                    throw new ExecutionException(e);
+                }
                 if ((evalResult != null && evalResult.booleanValue()) == desiredResult) {
                     newSelectedElementIds.add(elementId);
                 }
@@ -236,7 +249,7 @@ public abstract class NodeTarget extends Target{
 
     
     @Override
-    Target doIterateNotNullAnd(final boolean desiredResult, final String expression, final List<Object> expParams) {
+    Target doIterateNotNullAnd(final boolean desiredResult, final IEval<Boolean,Object> eval) {
         
         final Collection<?> elements = getIterationElements();
         final List<Target> newElements = new ArrayList<Target>();
@@ -247,8 +260,12 @@ public abstract class NodeTarget extends Target{
             final TargetId elementId = new TargetId(getId(), i);
             newElements.add(NodeTarget.forObject(elementId, element));
             if (element != null) {
-                final Boolean evalResult = 
-                    OgnlExpressionUtil.evalOgnlExpression(Types.BOOLEAN, expression, element, expParams);
+                Boolean evalResult = null;
+                try {
+                    evalResult = eval.execute(element); 
+                } catch (Exception e) {
+                    throw new ExecutionException(e);
+                }
                 if ((evalResult != null && evalResult.booleanValue()) == desiredResult) {
                     newSelectedElementIds.add(elementId);
                 }

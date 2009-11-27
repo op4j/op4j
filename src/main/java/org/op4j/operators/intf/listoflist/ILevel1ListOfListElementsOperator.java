@@ -96,14 +96,17 @@ public interface ILevel1ListOfListElementsOperator<T>
     public <K,V> ILevel1ListOfMapElementsOperator<K,V> toMap(final IMapBuild<K,V,? super T> mapBuild);
 
     
-    public ILevel2ListOfListElementsElementsOperator<T> forEach(final int... indices);
-    public ILevel2ListOfListElementsElementsOperator<T> forEach(final String expression, final Object... optionalExpParams);
-    public ILevel2ListOfListElementsElementsOperator<T> forEach(final ISelect<T> selector);
+    public ILevel2ListOfListElementsElementsOperator<T> forEachIndex(final int... indices);
+    public ILevel2ListOfListElementsElementsOperator<T> forEachMatching(final String expression, final Object... optionalExpParams);
+    public ILevel2ListOfListElementsElementsOperator<T> forEachMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel2ListOfListElementsElementsOperator<T> forEachNullOrMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel2ListOfListElementsElementsOperator<T> forEachNotNullMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel2ListOfListElementsElementsOperator<T> forEachSelected(final ISelect<T> selector);
     public ILevel2ListOfListElementsElementsOperator<T> forEachNull();
-    public ILevel2ListOfListElementsElementsOperator<T> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel2ListOfListElementsElementsOperator<T> forEachNot(final int... indices);
+    public ILevel2ListOfListElementsElementsOperator<T> forEachNullOrMatching(final String expression, final Object... optionalExpParams);
+    public ILevel2ListOfListElementsElementsOperator<T> forEachIndexNot(final int... indices);
     public ILevel2ListOfListElementsElementsOperator<T> forEachNotNull();
-    public ILevel2ListOfListElementsElementsOperator<T> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
+    public ILevel2ListOfListElementsElementsOperator<T> forEachNotNullMatching(final String expression, final Object... optionalExpParams);
     
 
     

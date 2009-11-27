@@ -36,6 +36,7 @@ import org.op4j.operators.intf.listofmap.ILevel2ListOfMapElementsEntriesOperator
 import org.op4j.operators.intf.listofset.ILevel1ListOfSetElementsOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
+import org.op4j.util.VarArgsUtil;
 
 
 /**
@@ -82,7 +83,7 @@ public class Level1ListOfMapElementsOperator<K,V> extends Operator
 
 
     public ILevel2ListOfMapElementsEntriesOperator<K, V> forEachEntry(final String expression, final Object... optionalExpParams) {
-        return new Level2ListOfMapElementsEntriesOperator<K, V>(getTarget().iterate(expression, optionalExpParams));
+        return new Level2ListOfMapElementsEntriesOperator<K, V>(getTarget().iterate(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 

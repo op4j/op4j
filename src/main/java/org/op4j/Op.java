@@ -400,9 +400,9 @@ public final class Op {
         
         System.out.println(Arrays.asList(Op.onArrayOfList(stringsListStrings1).forEach().forEach().eval(Eval.stringExp("toUpperCase()")).get()));
 
-        System.out.println(Arrays.asList(Op.onArrayOfMap(maps1).forEach("size() > 6").forEachEntry().onValue().eval(Eval.stringExp("toUpperCase()"))));
+        System.out.println(Arrays.asList(Op.onArrayOfMap(maps1).forEachMatching("size() > 6").forEachEntry().onValue().eval(Eval.stringExp("toUpperCase()"))));
         
-        System.out.println(Arrays.asList(Op.onArrayOfArray(stringsStrings1).forEach().forEach("length() > 6").eval(Eval.stringExp("toUpperCase()")).get()[0]));
+        System.out.println(Arrays.asList(Op.onArrayOfArray(stringsStrings1).forEach().forEachMatching("length() > 6").eval(Eval.stringExp("toUpperCase()")).get()[0]));
         
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().get());
         

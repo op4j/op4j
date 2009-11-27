@@ -44,6 +44,7 @@ import org.op4j.operators.intf.arrayofmap.ILevel1ArrayOfMapElementsOperator;
 import org.op4j.operators.intf.arrayofset.ILevel1ArrayOfSetElementsOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
+import org.op4j.util.VarArgsUtil;
 
 
 
@@ -98,22 +99,37 @@ public class Level1ArrayOfArrayElementsOperator<T> extends Operator
     }
 
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEach(final int... indices) {
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachIndex(final int... indices) {
         return new Level2ArrayOfArrayElementsElementsOperator<T>(this.arrayOf, getTarget().iterate(indices));
     }
 
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEach(final String expression, final Object... optionalExpParams) {
-        return new Level2ArrayOfArrayElementsElementsOperator<T>(this.arrayOf, getTarget().iterate(expression, optionalExpParams));
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachMatching(final String expression, final Object... optionalExpParams) {
+        return new Level2ArrayOfArrayElementsElementsOperator<T>(this.arrayOf, getTarget().iterate(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEach(final ISelect<T> selector) {
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachMatching(final IEval<Boolean, ? super T> eval) {
+        return new Level2ArrayOfArrayElementsElementsOperator<T>(this.arrayOf, getTarget().iterate(eval));
+    }
+
+
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNotNullMatching(final IEval<Boolean, ? super T> eval) {
+        return new Level2ArrayOfArrayElementsElementsOperator<T>(this.arrayOf, getTarget().iterateNotNullAnd(eval));
+    }
+
+
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNullOrMatching(final IEval<Boolean, ? super T> eval) {
+        return new Level2ArrayOfArrayElementsElementsOperator<T>(this.arrayOf, getTarget().iterateNullOr(eval));
+    }
+
+
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachSelected(final ISelect<T> selector) {
         return new Level2ArrayOfArrayElementsElementsOperator<T>(this.arrayOf, getTarget().iterate(selector));
     }
 
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNot(final int... indices) {
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachIndexNot(final int... indices) {
         return new Level2ArrayOfArrayElementsElementsOperator<T>(this.arrayOf, getTarget().iterateNot(indices));
     }
 
@@ -129,8 +145,8 @@ public class Level1ArrayOfArrayElementsOperator<T> extends Operator
     }
 
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNotNullAnd(final String expression, final Object... optionalExpParams) {
-        return new Level2ArrayOfArrayElementsElementsOperator<T>(this.arrayOf, getTarget().iterateNotNullAnd(expression, optionalExpParams));
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNotNullMatching(final String expression, final Object... optionalExpParams) {
+        return new Level2ArrayOfArrayElementsElementsOperator<T>(this.arrayOf, getTarget().iterateNotNullAnd(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -142,8 +158,8 @@ public class Level1ArrayOfArrayElementsOperator<T> extends Operator
     }
 
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNullOr(final String expression, final Object... optionalExpParams) {
-        return new Level2ArrayOfArrayElementsElementsOperator<T>(this.arrayOf, getTarget().iterateNullOr(expression, optionalExpParams));
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNullOrMatching(final String expression, final Object... optionalExpParams) {
+        return new Level2ArrayOfArrayElementsElementsOperator<T>(this.arrayOf, getTarget().iterateNullOr(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 

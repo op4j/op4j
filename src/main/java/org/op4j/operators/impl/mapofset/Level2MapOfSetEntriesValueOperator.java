@@ -45,6 +45,7 @@ import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.ILevel3MapOfSetEntriesValueElementsOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
+import org.op4j.util.VarArgsUtil;
 
 
 /**
@@ -88,7 +89,7 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEach(final int... indices) {
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEachIndex(final int... indices) {
         return new Level3MapOfSetEntriesValueElementsOperator<K, V>(getTarget().iterate(indices));
     }
 
@@ -96,17 +97,32 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEach(final String expression, final Object... optionalExpParams) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, V>(getTarget().iterate(expression, optionalExpParams));
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEachMatching(final String expression, final Object... optionalExpParams) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, V>(getTarget().iterate(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEach(final ISelect<V> selector) {
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEachMatching(final IEval<Boolean, ? super V> eval) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, V>(getTarget().iterate(eval));
+    }
+
+
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEachNotNullMatching(final IEval<Boolean, ? super V> eval) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, V>(getTarget().iterateNotNullAnd(eval));
+    }
+
+
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEachNullOrMatching(final IEval<Boolean, ? super V> eval) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, V>(getTarget().iterateNullOr(eval));
+    }
+
+
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEachSelected(final ISelect<V> selector) {
         return new Level3MapOfSetEntriesValueElementsOperator<K, V>(getTarget().iterate(selector));
     }
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEachNot(final int... indices) {
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEachIndexNot(final int... indices) {
         return new Level3MapOfSetEntriesValueElementsOperator<K, V>(getTarget().iterateNot(indices));
     }
 
@@ -125,8 +141,8 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEachNotNullAnd(final String expression, final Object... optionalExpParams) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, V>(getTarget().iterateNotNullAnd(expression, optionalExpParams));
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEachNotNullMatching(final String expression, final Object... optionalExpParams) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, V>(getTarget().iterateNotNullAnd(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -138,8 +154,8 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEachNullOr(final String expression, final Object... optionalExpParams) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, V>(getTarget().iterateNullOr(expression, optionalExpParams));
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEachNullOrMatching(final String expression, final Object... optionalExpParams) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, V>(getTarget().iterateNullOr(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 

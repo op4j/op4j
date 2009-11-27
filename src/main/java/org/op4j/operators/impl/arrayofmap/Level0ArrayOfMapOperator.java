@@ -25,6 +25,7 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.executables.Eval;
+import org.op4j.executables.IEval;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.ArrayFunc;
 import org.op4j.operators.impl.Operator;
@@ -33,6 +34,7 @@ import org.op4j.operators.intf.arrayofmap.ILevel0ArrayOfMapOperator;
 import org.op4j.operators.intf.arrayofmap.ILevel1ArrayOfMapElementsOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.target.Target;
+import org.op4j.util.VarArgsUtil;
 
 
 /**
@@ -76,22 +78,37 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> forEach(final int... indices) {
+    public ILevel1ArrayOfMapElementsOperator<K, V> forEachIndex(final int... indices) {
         return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterate(indices));
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> forEach(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterate(expression, optionalExpParams));
+    public ILevel1ArrayOfMapElementsOperator<K, V> forEachMatching(final String expression, final Object... optionalExpParams) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterate(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> forEach(final ISelect<Map<K, V>> selector) {
+    public ILevel1ArrayOfMapElementsOperator<K, V> forEachMatching(final IEval<Boolean, ? super Map<K, V>> eval) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterate(eval));
+    }
+
+
+    public ILevel1ArrayOfMapElementsOperator<K, V> forEachNotNullMatching(final IEval<Boolean, ? super Map<K, V>> eval) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNotNullAnd(eval));
+    }
+
+
+    public ILevel1ArrayOfMapElementsOperator<K, V> forEachNullOrMatching(final IEval<Boolean, ? super Map<K, V>> eval) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNullOr(eval));
+    }
+
+
+    public ILevel1ArrayOfMapElementsOperator<K, V> forEachSelected(final ISelect<Map<K, V>> selector) {
         return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterate(selector));
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> forEachNot(final int... indices) {
+    public ILevel1ArrayOfMapElementsOperator<K, V> forEachIndexNot(final int... indices) {
         return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNot(indices));
     }
 
@@ -110,8 +127,8 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> forEachNotNullAnd(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNotNullAnd(expression, optionalExpParams));
+    public ILevel1ArrayOfMapElementsOperator<K, V> forEachNotNullMatching(final String expression, final Object... optionalExpParams) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNotNullAnd(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -123,8 +140,8 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> forEachNullOr(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNullOr(expression, optionalExpParams));
+    public ILevel1ArrayOfMapElementsOperator<K, V> forEachNullOrMatching(final String expression, final Object... optionalExpParams) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNullOr(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 

@@ -23,6 +23,7 @@ package org.op4j.target;
 import java.util.Arrays;
 import java.util.List;
 
+import org.op4j.executables.IEval;
 import org.op4j.executables.IExecutable;
 import org.op4j.executables.ISelect;
 import org.op4j.util.VarArgsUtil;
@@ -68,11 +69,11 @@ public abstract class Target {
     abstract Target doIterate();
     abstract Target doIteratePositions(final boolean desiredResult, final List<Integer> positions);
     abstract Target doIterateMapKeys(final boolean desiredResult, final List<Object> objects);
-    abstract Target doIterateExpression(final boolean desiredResult, final String expression, final List<Object> expParams);
+    abstract Target doIterateExpression(final boolean desiredResult, final IEval<Boolean,Object> eval);
     abstract Target doIterateSelector(final boolean desiredResult, final ISelect<?> selector);
     abstract Target doIterateNull(final boolean desiredResult);
-    abstract Target doIterateNullOr(final boolean desiredResult, final String expression, final List<Object> expParams);
-    abstract Target doIterateNotNullAnd(final boolean desiredResult, final String expression, final List<Object> expParams);
+    abstract Target doIterateNullOr(final boolean desiredResult, final IEval<Boolean,Object> eval);
+    abstract Target doIterateNotNullAnd(final boolean desiredResult, final IEval<Boolean,Object> eval);
     
     
     public Target iterate() {
@@ -89,8 +90,9 @@ public abstract class Target {
     }
 
     
-    public Target iterate(final String expression, final Object... optionalExpParams) {
-    	return doIterateExpression(true, expression, VarArgsUtil.asOptionalObjectList(optionalExpParams));
+    @SuppressWarnings("unchecked")
+    public Target iterate(final IEval<Boolean,? extends Object> eval) {
+    	return doIterateExpression(true, (IEval<Boolean,Object>) eval);
     }
 
     
@@ -104,8 +106,9 @@ public abstract class Target {
     }
 
     
-    public Target iterateNullOr(final String expression, final Object... optionalExpParams) {
-        return doIterateNullOr(true, expression, VarArgsUtil.asOptionalObjectList(optionalExpParams));
+    @SuppressWarnings("unchecked")
+    public Target iterateNullOr(final IEval<Boolean,? extends Object> eval) {
+        return doIterateNullOr(true, (IEval<Boolean,Object>) eval);
     }
     
     
@@ -124,8 +127,9 @@ public abstract class Target {
     }
 
     
-    public Target iterateNotNullAnd(final String expression, final Object... optionalExpParams) {
-        return doIterateNotNullAnd(true, expression, VarArgsUtil.asOptionalObjectList(optionalExpParams));
+    @SuppressWarnings("unchecked")
+    public Target iterateNotNullAnd(final IEval<Boolean,? extends Object> eval) {
+        return doIterateNotNullAnd(true, (IEval<Boolean,Object>) eval);
     }
     
 

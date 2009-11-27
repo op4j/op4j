@@ -144,14 +144,17 @@ public interface ILevel0ArrayOfArrayOperator<T>
     public <K,V> ILevel0SetOfMapOperator<K,V> toSetOfMap(final IMapBuild<K,V,? super T> mapBuild);
 
     
-    public ILevel1ArrayOfArrayElementsOperator<T> forEach(final int... indices);
-    public ILevel1ArrayOfArrayElementsOperator<T> forEach(final String expression, final Object... optionalExpParams);
-    public ILevel1ArrayOfArrayElementsOperator<T> forEach(final ISelect<T[]> selector);
+    public ILevel1ArrayOfArrayElementsOperator<T> forEachIndex(final int... indices);
+    public ILevel1ArrayOfArrayElementsOperator<T> forEachMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1ArrayOfArrayElementsOperator<T> forEachMatching(final IEval<Boolean, ? super T[]> eval);
+    public ILevel1ArrayOfArrayElementsOperator<T> forEachNullOrMatching(final IEval<Boolean, ? super T[]> eval);
+    public ILevel1ArrayOfArrayElementsOperator<T> forEachNotNullMatching(final IEval<Boolean, ? super T[]> eval);
+    public ILevel1ArrayOfArrayElementsOperator<T> forEachSelected(final ISelect<T[]> selector);
     public ILevel1ArrayOfArrayElementsOperator<T> forEachNull();
-    public ILevel1ArrayOfArrayElementsOperator<T> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel1ArrayOfArrayElementsOperator<T> forEachNot(final int... indices);
+    public ILevel1ArrayOfArrayElementsOperator<T> forEachNullOrMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1ArrayOfArrayElementsOperator<T> forEachIndexNot(final int... indices);
     public ILevel1ArrayOfArrayElementsOperator<T> forEachNotNull();
-    public ILevel1ArrayOfArrayElementsOperator<T> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
+    public ILevel1ArrayOfArrayElementsOperator<T> forEachNotNullMatching(final String expression, final Object... optionalExpParams);
     
 
 

@@ -93,14 +93,17 @@ public interface ILevel2MapOfSetEntriesValueOperator<K,V>
     public <K2,V2> ILevel2MapOfMapEntriesValueOperator<K,K2,V2> toMap(final IMapBuild<K2,V2,? super V> mapBuild);
 
     
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEach(final int... indices);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEach(final String expression, final Object... optionalExpParams);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEach(final ISelect<V> selector);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachIndex(final int... indices);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachMatching(final String expression, final Object... optionalExpParams);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachMatching(final IEval<Boolean, ? super V> eval);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNullOrMatching(final IEval<Boolean, ? super V> eval);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNotNullMatching(final IEval<Boolean, ? super V> eval);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachSelected(final ISelect<V> selector);
     public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNull();
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNot(final int... indices);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNullOrMatching(final String expression, final Object... optionalExpParams);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachIndexNot(final int... indices);
     public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNotNull();
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNotNullMatching(final String expression, final Object... optionalExpParams);
     
     
 

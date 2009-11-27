@@ -145,14 +145,17 @@ public interface ILevel0ArrayOfListOperator<T>
 
 
     
-    public ILevel1ArrayOfListElementsOperator<T> forEach(final int... indices);
-    public ILevel1ArrayOfListElementsOperator<T> forEach(final String expression, final Object... optionalExpParams);
-    public ILevel1ArrayOfListElementsOperator<T> forEach(final ISelect<List<T>> selector);
+    public ILevel1ArrayOfListElementsOperator<T> forEachIndex(final int... indices);
+    public ILevel1ArrayOfListElementsOperator<T> forEachMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1ArrayOfListElementsOperator<T> forEachMatching(final IEval<Boolean, ? super List<T>> eval);
+    public ILevel1ArrayOfListElementsOperator<T> forEachNullOrMatching(final IEval<Boolean, ? super List<T>> eval);
+    public ILevel1ArrayOfListElementsOperator<T> forEachNotNullMatching(final IEval<Boolean, ? super List<T>> eval);
+    public ILevel1ArrayOfListElementsOperator<T> forEachSelected(final ISelect<List<T>> selector);
     public ILevel1ArrayOfListElementsOperator<T> forEachNull();
-    public ILevel1ArrayOfListElementsOperator<T> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel1ArrayOfListElementsOperator<T> forEachNot(final int... indices);
+    public ILevel1ArrayOfListElementsOperator<T> forEachNullOrMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1ArrayOfListElementsOperator<T> forEachIndexNot(final int... indices);
     public ILevel1ArrayOfListElementsOperator<T> forEachNotNull();
-    public ILevel1ArrayOfListElementsOperator<T> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
+    public ILevel1ArrayOfListElementsOperator<T> forEachNotNullMatching(final String expression, final Object... optionalExpParams);
     
     
 

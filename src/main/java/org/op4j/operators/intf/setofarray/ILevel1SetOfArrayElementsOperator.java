@@ -95,14 +95,17 @@ public interface ILevel1SetOfArrayElementsOperator<T>
     public <K,V> ILevel1SetOfMapElementsOperator<K,V> toMap(final IMapBuild<K,V,? super T> mapBuild);
 
     
-    public ILevel2SetOfArrayElementsElementsOperator<T> forEach(final int... indices);
-    public ILevel2SetOfArrayElementsElementsOperator<T> forEach(final String expression, final Object... optionalExpParams);
-    public ILevel2SetOfArrayElementsElementsOperator<T> forEach(final ISelect<T> selector);
+    public ILevel2SetOfArrayElementsElementsOperator<T> forEachIndex(final int... indices);
+    public ILevel2SetOfArrayElementsElementsOperator<T> forEachMatching(final String expression, final Object... optionalExpParams);
+    public ILevel2SetOfArrayElementsElementsOperator<T> forEachMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel2SetOfArrayElementsElementsOperator<T> forEachNullOrMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel2SetOfArrayElementsElementsOperator<T> forEachNotNullMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel2SetOfArrayElementsElementsOperator<T> forEachSelected(final ISelect<T> selector);
     public ILevel2SetOfArrayElementsElementsOperator<T> forEachNull();
-    public ILevel2SetOfArrayElementsElementsOperator<T> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel2SetOfArrayElementsElementsOperator<T> forEachNot(final int... indices);
+    public ILevel2SetOfArrayElementsElementsOperator<T> forEachNullOrMatching(final String expression, final Object... optionalExpParams);
+    public ILevel2SetOfArrayElementsElementsOperator<T> forEachIndexNot(final int... indices);
     public ILevel2SetOfArrayElementsElementsOperator<T> forEachNotNull();
-    public ILevel2SetOfArrayElementsElementsOperator<T> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
+    public ILevel2SetOfArrayElementsElementsOperator<T> forEachNotNullMatching(final String expression, final Object... optionalExpParams);
     
 
 

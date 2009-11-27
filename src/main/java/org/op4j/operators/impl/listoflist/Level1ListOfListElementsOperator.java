@@ -44,6 +44,7 @@ import org.op4j.operators.intf.listofmap.ILevel1ListOfMapElementsOperator;
 import org.op4j.operators.intf.listofset.ILevel1ListOfSetElementsOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
+import org.op4j.util.VarArgsUtil;
 
 
 /**
@@ -92,7 +93,7 @@ public class Level1ListOfListElementsOperator<T> extends Operator
     }
 
 
-    public ILevel2ListOfListElementsElementsOperator<T> forEach(final int... indices) {
+    public ILevel2ListOfListElementsElementsOperator<T> forEachIndex(final int... indices) {
         return new Level2ListOfListElementsElementsOperator<T>(getTarget().iterate(indices));
     }
 
@@ -100,17 +101,32 @@ public class Level1ListOfListElementsOperator<T> extends Operator
     
 
 
-    public ILevel2ListOfListElementsElementsOperator<T> forEach(final String expression, final Object... optionalExpParams) {
-        return new Level2ListOfListElementsElementsOperator<T>(getTarget().iterate(expression, optionalExpParams));
+    public ILevel2ListOfListElementsElementsOperator<T> forEachMatching(final String expression, final Object... optionalExpParams) {
+        return new Level2ListOfListElementsElementsOperator<T>(getTarget().iterate(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
-    public ILevel2ListOfListElementsElementsOperator<T> forEach(final ISelect<T> selector) {
+    public ILevel2ListOfListElementsElementsOperator<T> forEachMatching(final IEval<Boolean, ? super T> eval) {
+        return new Level2ListOfListElementsElementsOperator<T>(getTarget().iterate(eval));
+    }
+
+
+    public ILevel2ListOfListElementsElementsOperator<T> forEachNotNullMatching(final IEval<Boolean, ? super T> eval) {
+        return new Level2ListOfListElementsElementsOperator<T>(getTarget().iterateNotNullAnd(eval));
+    }
+
+
+    public ILevel2ListOfListElementsElementsOperator<T> forEachNullOrMatching(final IEval<Boolean, ? super T> eval) {
+        return new Level2ListOfListElementsElementsOperator<T>(getTarget().iterateNullOr(eval));
+    }
+
+
+    public ILevel2ListOfListElementsElementsOperator<T> forEachSelected(final ISelect<T> selector) {
         return new Level2ListOfListElementsElementsOperator<T>(getTarget().iterate(selector));
     }
 
 
-    public ILevel2ListOfListElementsElementsOperator<T> forEachNot(final int... indices) {
+    public ILevel2ListOfListElementsElementsOperator<T> forEachIndexNot(final int... indices) {
         return new Level2ListOfListElementsElementsOperator<T>(getTarget().iterateNot(indices));
     }
 
@@ -129,8 +145,8 @@ public class Level1ListOfListElementsOperator<T> extends Operator
     }
 
 
-    public ILevel2ListOfListElementsElementsOperator<T> forEachNotNullAnd(final String expression, final Object... optionalExpParams) {
-        return new Level2ListOfListElementsElementsOperator<T>(getTarget().iterateNotNullAnd(expression, optionalExpParams));
+    public ILevel2ListOfListElementsElementsOperator<T> forEachNotNullMatching(final String expression, final Object... optionalExpParams) {
+        return new Level2ListOfListElementsElementsOperator<T>(getTarget().iterateNotNullAnd(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -142,8 +158,8 @@ public class Level1ListOfListElementsOperator<T> extends Operator
     }
 
 
-    public ILevel2ListOfListElementsElementsOperator<T> forEachNullOr(final String expression, final Object... optionalExpParams) {
-        return new Level2ListOfListElementsElementsOperator<T>(getTarget().iterateNullOr(expression, optionalExpParams));
+    public ILevel2ListOfListElementsElementsOperator<T> forEachNullOrMatching(final String expression, final Object... optionalExpParams) {
+        return new Level2ListOfListElementsElementsOperator<T>(getTarget().iterateNullOr(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 

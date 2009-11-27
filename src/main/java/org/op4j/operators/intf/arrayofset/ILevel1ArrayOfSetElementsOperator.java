@@ -92,14 +92,17 @@ public interface ILevel1ArrayOfSetElementsOperator<T>
     public <K,V> ILevel1ArrayOfMapElementsOperator<K,V> toMap(final IMapBuild<K,V,? super T> mapBuild);
 
     
-    public ILevel2ArrayOfSetElementsElementsOperator<T> forEach(final int... indices);
-    public ILevel2ArrayOfSetElementsElementsOperator<T> forEach(final String expression, final Object... optionalExpParams);
-    public ILevel2ArrayOfSetElementsElementsOperator<T> forEach(final ISelect<T> selector);
+    public ILevel2ArrayOfSetElementsElementsOperator<T> forEachIndex(final int... indices);
+    public ILevel2ArrayOfSetElementsElementsOperator<T> forEachMatching(final String expression, final Object... optionalExpParams);
+    public ILevel2ArrayOfSetElementsElementsOperator<T> forEachMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel2ArrayOfSetElementsElementsOperator<T> forEachNullOrMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel2ArrayOfSetElementsElementsOperator<T> forEachNotNullMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel2ArrayOfSetElementsElementsOperator<T> forEachSelected(final ISelect<T> selector);
     public ILevel2ArrayOfSetElementsElementsOperator<T> forEachNull();
-    public ILevel2ArrayOfSetElementsElementsOperator<T> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel2ArrayOfSetElementsElementsOperator<T> forEachNot(final int... indices);
+    public ILevel2ArrayOfSetElementsElementsOperator<T> forEachNullOrMatching(final String expression, final Object... optionalExpParams);
+    public ILevel2ArrayOfSetElementsElementsOperator<T> forEachIndexNot(final int... indices);
     public ILevel2ArrayOfSetElementsElementsOperator<T> forEachNotNull();
-    public ILevel2ArrayOfSetElementsElementsOperator<T> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
+    public ILevel2ArrayOfSetElementsElementsOperator<T> forEachNotNullMatching(final String expression, final Object... optionalExpParams);
     
 
     

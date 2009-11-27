@@ -96,14 +96,17 @@ public interface ILevel1ArrayOfListElementsOperator<T>
     public <K,V> ILevel1ArrayOfMapElementsOperator<K,V> toMap(final IMapBuild<K,V,? super T> mapBuild);
 
     
-    public ILevel2ArrayOfListElementsElementsOperator<T> forEach(final int... indices);
-    public ILevel2ArrayOfListElementsElementsOperator<T> forEach(final String expression, final Object... optionalExpParams);
-    public ILevel2ArrayOfListElementsElementsOperator<T> forEach(final ISelect<T> selector);
+    public ILevel2ArrayOfListElementsElementsOperator<T> forEachIndex(final int... indices);
+    public ILevel2ArrayOfListElementsElementsOperator<T> forEachMatching(final String expression, final Object... optionalExpParams);
+    public ILevel2ArrayOfListElementsElementsOperator<T> forEachMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel2ArrayOfListElementsElementsOperator<T> forEachNullOrMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel2ArrayOfListElementsElementsOperator<T> forEachNotNullMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel2ArrayOfListElementsElementsOperator<T> forEachSelected(final ISelect<T> selector);
     public ILevel2ArrayOfListElementsElementsOperator<T> forEachNull();
-    public ILevel2ArrayOfListElementsElementsOperator<T> forEachNullOr(final String expression, final Object... optionalExpParams);
-    public ILevel2ArrayOfListElementsElementsOperator<T> forEachNot(final int... indices);
+    public ILevel2ArrayOfListElementsElementsOperator<T> forEachNullOrMatching(final String expression, final Object... optionalExpParams);
+    public ILevel2ArrayOfListElementsElementsOperator<T> forEachIndexNot(final int... indices);
     public ILevel2ArrayOfListElementsElementsOperator<T> forEachNotNull();
-    public ILevel2ArrayOfListElementsElementsOperator<T> forEachNotNullAnd(final String expression, final Object... optionalExpParams);
+    public ILevel2ArrayOfListElementsElementsOperator<T> forEachNotNullMatching(final String expression, final Object... optionalExpParams);
     
 
     

@@ -44,6 +44,7 @@ import org.op4j.operators.intf.mapofmap.ILevel2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesValueOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
+import org.op4j.util.VarArgsUtil;
 
 
 /**
@@ -95,22 +96,37 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEach(final int... indices) {
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachIndex(final int... indices) {
         return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterate(indices));
     }
 
 
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEach(final String expression, final Object... optionalExpParams) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterate(expression, optionalExpParams));
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachMatching(final String expression, final Object... optionalExpParams) {
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterate(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEach(final ISelect<V> selector) {
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachMatching(final IEval<Boolean, ? super V> eval) {
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterate(eval));
+    }
+
+
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNotNullMatching(final IEval<Boolean, ? super V> eval) {
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNotNullAnd(eval));
+    }
+
+
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNullOrMatching(final IEval<Boolean, ? super V> eval) {
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNullOr(eval));
+    }
+
+
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachSelected(final ISelect<V> selector) {
         return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterate(selector));
     }
 
 
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNot(final int... indices) {
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachIndexNot(final int... indices) {
         return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNot(indices));
     }
 
@@ -126,8 +142,8 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNotNullAnd(final String expression, final Object... optionalExpParams) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNotNullAnd(expression, optionalExpParams));
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNotNullMatching(final String expression, final Object... optionalExpParams) {
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNotNullAnd(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -139,8 +155,8 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNullOr(final String expression, final Object... optionalExpParams) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNullOr(expression, optionalExpParams));
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNullOrMatching(final String expression, final Object... optionalExpParams) {
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNullOr(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 

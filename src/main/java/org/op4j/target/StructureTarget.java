@@ -29,6 +29,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.Validate;
+import org.op4j.executables.IEval;
 import org.op4j.executables.IExecutable;
 import org.op4j.executables.ISelect;
 import org.op4j.util.MapEntry;
@@ -143,12 +144,12 @@ public class StructureTarget extends Target {
 
 
     @Override
-    Target doIterateExpression(final boolean desiredResult, final String expression, final List<Object> expParams) {
+    Target doIterateExpression(final boolean desiredResult, final IEval<Boolean,Object> eval) {
         
         final List<Target> newElements = new ArrayList<Target>();
         for (final Target element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.doIterateExpression(desiredResult, expression, expParams));
+                newElements.add(element.doIterateExpression(desiredResult, eval));
             } else {
                 newElements.add(element);
             }
@@ -191,12 +192,12 @@ public class StructureTarget extends Target {
 
     
     @Override
-    Target doIterateNullOr(final boolean desiredResult, final String expression, final List<Object> expParams) {
+    Target doIterateNullOr(final boolean desiredResult, final IEval<Boolean,Object> eval) {
         
         final List<Target> newElements = new ArrayList<Target>();
         for (final Target element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.doIterateNullOr(desiredResult, expression, expParams));
+                newElements.add(element.doIterateNullOr(desiredResult, eval));
             } else {
                 newElements.add(element);
             }
@@ -207,12 +208,12 @@ public class StructureTarget extends Target {
 
     
     @Override
-    Target doIterateNotNullAnd(final boolean desiredResult, final String expression, final List<Object> expParams) {
+    Target doIterateNotNullAnd(final boolean desiredResult, final IEval<Boolean,Object> eval) {
         
         final List<Target> newElements = new ArrayList<Target>();
         for (final Target element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.doIterateNotNullAnd(desiredResult, expression, expParams));
+                newElements.add(element.doIterateNotNullAnd(desiredResult, eval));
             } else {
                 newElements.add(element);
             }
