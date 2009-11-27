@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
+import org.op4j.executables.IEval;
 import org.op4j.executables.ISelect;
 import org.op4j.operators.intf.setoflist.ILevel1SetOfListElementsOperator;
 import org.op4j.operators.intf.setofset.ILevel1SetOfSetElementsOperator;
@@ -79,8 +80,9 @@ public interface ILevel1SetOfMapElementsOperator<K,V>
     
     
     public ILevel2SetOfMapElementsEntriesOperator<K,V> forEachEntryWithKeys(final K... keys);
-    public ILevel2SetOfMapElementsEntriesOperator<K,V> forEachEntry(final String expression, final Object... optionalExpParams);
-    public ILevel2SetOfMapElementsEntriesOperator<K,V> forEachEntry(final ISelect<Map.Entry<K,V>> selector);
+    public ILevel2SetOfMapElementsEntriesOperator<K,V> forEachEntryMatching(final String expression, final Object... optionalExpParams);
+    public ILevel2SetOfMapElementsEntriesOperator<K,V> forEachEntryMatching(final IEval<Boolean, ? super Map.Entry<K,V>> eval);
+    public ILevel2SetOfMapElementsEntriesOperator<K,V> forEachEntrySelected(final ISelect<Map.Entry<K,V>> selector);
     public ILevel2SetOfMapElementsEntriesOperator<K,V> forEachEntryWithKeysNot(final K... keys);
     
                                     

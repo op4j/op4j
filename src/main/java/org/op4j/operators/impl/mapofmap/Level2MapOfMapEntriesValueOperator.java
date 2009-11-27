@@ -25,6 +25,7 @@ import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
 import org.op4j.executables.Eval;
+import org.op4j.executables.IEval;
 import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.MapFunc;
 import org.op4j.operators.impl.Operator;
@@ -81,12 +82,17 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
     }
 
 
-    public ILevel3MapOfMapEntriesValueEntriesOperator<K1, K2, V> forEachEntry(final String expression, final Object... optionalExpParams) {
+    public ILevel3MapOfMapEntriesValueEntriesOperator<K1, K2, V> forEachEntryMatching(final String expression, final Object... optionalExpParams) {
         return new Level3MapOfMapEntriesValueEntriesOperator<K1, K2, V>(getTarget().iterate(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
-    public ILevel3MapOfMapEntriesValueEntriesOperator<K1, K2, V> forEachEntry(final ISelect<Entry<K2, V>> selector) {
+    public ILevel3MapOfMapEntriesValueEntriesOperator<K1, K2, V> forEachEntryMatching(final IEval<Boolean, ? super Entry<K2, V>> eval) {
+        return new Level3MapOfMapEntriesValueEntriesOperator<K1, K2, V>(getTarget().iterate(eval));
+    }
+
+
+    public ILevel3MapOfMapEntriesValueEntriesOperator<K1, K2, V> forEachEntrySelected(final ISelect<Entry<K2, V>> selector) {
         return new Level3MapOfMapEntriesValueEntriesOperator<K1, K2, V>(getTarget().iterate(selector));
     }
 

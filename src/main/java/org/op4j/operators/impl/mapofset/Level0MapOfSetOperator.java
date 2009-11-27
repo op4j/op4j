@@ -82,12 +82,17 @@ public class Level0MapOfSetOperator<K,V> extends Operator
     }
 
 
-    public ILevel1MapOfSetEntriesOperator<K, V> forEachEntry(final String expression, final Object... optionalExpParams) {
+    public ILevel1MapOfSetEntriesOperator<K, V> forEachEntryMatching(final String expression, final Object... optionalExpParams) {
         return new Level1MapOfSetEntriesOperator<K, V>(getTarget().iterate(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
-    public ILevel1MapOfSetEntriesOperator<K, V> forEachEntry(final ISelect<Entry<K, Set<V>>> selector) {
+    public ILevel1MapOfSetEntriesOperator<K, V> forEachEntryMatching(final IEval<Boolean, ? super Entry<K, Set<V>>> eval) {
+        return new Level1MapOfSetEntriesOperator<K, V>(getTarget().iterate(eval));
+    }
+
+
+    public ILevel1MapOfSetEntriesOperator<K, V> forEachEntrySelected(final ISelect<Entry<K, Set<V>>> selector) {
         return new Level1MapOfSetEntriesOperator<K, V>(getTarget().iterate(selector));
     }
 

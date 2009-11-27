@@ -97,8 +97,9 @@ public interface ILevel0MapOfListOperator<K,V>
     
     
     public ILevel1MapOfListEntriesOperator<K,V> forEachEntryWithKeys(final K... keys);
-    public ILevel1MapOfListEntriesOperator<K,V> forEachEntry(final String expression, final Object... optionalExpParams);
-    public ILevel1MapOfListEntriesOperator<K,V> forEachEntry(final ISelect<Map.Entry<K,List<V>>> selector);
+    public ILevel1MapOfListEntriesOperator<K,V> forEachEntryMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1MapOfListEntriesOperator<K,V> forEachEntryMatching(final IEval<Boolean, ? super Map.Entry<K,List<V>>> eval);
+    public ILevel1MapOfListEntriesOperator<K,V> forEachEntrySelected(final ISelect<Map.Entry<K,List<V>>> selector);
     public ILevel1MapOfListEntriesOperator<K,V> forEachEntryWithKeysNot(final K... keys);
     
 

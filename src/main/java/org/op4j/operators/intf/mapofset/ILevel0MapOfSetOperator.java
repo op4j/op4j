@@ -96,8 +96,9 @@ public interface ILevel0MapOfSetOperator<K,V>
     
     
     public ILevel1MapOfSetEntriesOperator<K,V> forEachEntryWithKeys(final K... keys);
-    public ILevel1MapOfSetEntriesOperator<K,V> forEachEntry(final String expression, final Object... optionalExpParams);
-    public ILevel1MapOfSetEntriesOperator<K,V> forEachEntry(final ISelect<Map.Entry<K,Set<V>>> selector);
+    public ILevel1MapOfSetEntriesOperator<K,V> forEachEntryMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1MapOfSetEntriesOperator<K,V> forEachEntryMatching(final IEval<Boolean, ? super Map.Entry<K,Set<V>>> eval);
+    public ILevel1MapOfSetEntriesOperator<K,V> forEachEntrySelected(final ISelect<Map.Entry<K,Set<V>>> selector);
     public ILevel1MapOfSetEntriesOperator<K,V> forEachEntryWithKeysNot(final K... keys);
     
 

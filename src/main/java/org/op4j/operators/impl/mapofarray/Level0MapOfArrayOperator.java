@@ -84,12 +84,17 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
     }
 
 
-    public ILevel1MapOfArrayEntriesOperator<K, V> forEachEntry(final String expression, final Object... optionalExpParams) {
+    public ILevel1MapOfArrayEntriesOperator<K, V> forEachEntryMatching(final String expression, final Object... optionalExpParams) {
         return new Level1MapOfArrayEntriesOperator<K, V>(this.arrayOf, getTarget().iterate(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
-    public ILevel1MapOfArrayEntriesOperator<K, V> forEachEntry(final ISelect<Entry<K, V[]>> selector) {
+    public ILevel1MapOfArrayEntriesOperator<K, V> forEachEntryMatching(final IEval<Boolean, ? super Entry<K, V[]>> eval) {
+        return new Level1MapOfArrayEntriesOperator<K, V>(this.arrayOf, getTarget().iterate(eval));
+    }
+
+
+    public ILevel1MapOfArrayEntriesOperator<K, V> forEachEntrySelected(final ISelect<Entry<K, V[]>> selector) {
         return new Level1MapOfArrayEntriesOperator<K, V>(this.arrayOf, getTarget().iterate(selector));
     }
 

@@ -96,8 +96,9 @@ public interface ILevel0MapOfArrayOperator<K,V>
 
     
     public ILevel1MapOfArrayEntriesOperator<K,V> forEachEntryWithKeys(final K... keys);
-    public ILevel1MapOfArrayEntriesOperator<K,V> forEachEntry(final String expression, final Object... optionalExpParams);
-    public ILevel1MapOfArrayEntriesOperator<K,V> forEachEntry(final ISelect<Map.Entry<K,V[]>> selector);
+    public ILevel1MapOfArrayEntriesOperator<K,V> forEachEntryMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1MapOfArrayEntriesOperator<K,V> forEachEntryMatching(final IEval<Boolean, ? super Map.Entry<K,V[]>> eval);
+    public ILevel1MapOfArrayEntriesOperator<K,V> forEachEntrySelected(final ISelect<Map.Entry<K,V[]>> selector);
     public ILevel1MapOfArrayEntriesOperator<K,V> forEachEntryWithKeysNot(final K... keys);
     
     
