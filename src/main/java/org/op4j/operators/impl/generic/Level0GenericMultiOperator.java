@@ -190,6 +190,21 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
+    public ILevel0GenericMultiOperator<T> removeMatching(final IEval<Boolean, ? super T> eval) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveMatching<T>(eval)));
+    }
+
+
+    public ILevel0GenericMultiOperator<T> removeNullOrMatching(final IEval<Boolean, ? super T> eval) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveNullOrMatching<T>(eval)));
+    }
+
+
+    public ILevel0GenericMultiOperator<T> removeNotNullMatching(final IEval<Boolean, ? super T> eval) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveNotNullMatching<T>(eval)));
+    }
+
+
     public ILevel0GenericMultiOperator<T> removeSelected(final ISelect<T> selector) {
         return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveSelected<T>(selector)));
     }

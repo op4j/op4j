@@ -69,6 +69,9 @@ public interface ILevel0ListOfMapOperator<K,V>
     public ILevel0ListOfMapOperator<K,V> removeIndexes(final int... indices);
     public ILevel0ListOfMapOperator<K,V> removeEquals(final Map<K,V>... values);
     public ILevel0ListOfMapOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0ListOfMapOperator<K,V> removeMatching(final IEval<Boolean, ? super Map<K,V>> eval);
+    public ILevel0ListOfMapOperator<K,V> removeNotNullMatching(final IEval<Boolean, ? super Map<K,V>> eval);
+    public ILevel0ListOfMapOperator<K,V> removeNullOrMatching(final IEval<Boolean, ? super Map<K,V>> eval);
     public ILevel0ListOfMapOperator<K,V> removeSelected(final ISelect<Map<K,V>> selector);
     public ILevel0ListOfMapOperator<K,V> removeIndexesNot(final int... indices);
     public ILevel0ListOfMapOperator<K,V> removeNulls();

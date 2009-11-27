@@ -68,6 +68,7 @@ public interface ILevel0MapOfMapOperator<K1,K2,V>
     public ILevel0MapOfMapOperator<K1,K2,V> insertAll(final int position, final Map<K1,Map<K2,V>> map);
     public ILevel0MapOfMapOperator<K1,K2,V> removeKeys(final K1... keys);
     public ILevel0MapOfMapOperator<K1,K2,V> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0MapOfMapOperator<K1,K2,V> removeMatching(final IEval<Boolean, ? super Map.Entry<K1,Map<K2,V>>> eval);
     public ILevel0MapOfMapOperator<K1,K2,V> removeSelected(final ISelect<Map.Entry<K1,Map<K2,V>>> selector);
     public ILevel0MapOfMapOperator<K1,K2,V> removeKeysNot(final K1... keys);
     

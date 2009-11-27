@@ -107,6 +107,9 @@ public interface ILevel0ArrayOfArrayOperator<T>
     public ILevel0ArrayOfArrayOperator<T> removeIndexes(final int... indices);
     public ILevel0ArrayOfArrayOperator<T> removeEquals(final T[]... values);
     public ILevel0ArrayOfArrayOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOfArrayOperator<T> removeMatching(final IEval<Boolean, ? super T[]> eval);
+    public ILevel0ArrayOfArrayOperator<T> removeNotNullMatching(final IEval<Boolean, ? super T[]> eval);
+    public ILevel0ArrayOfArrayOperator<T> removeNullOrMatching(final IEval<Boolean, ? super T[]> eval);
     public ILevel0ArrayOfArrayOperator<T> removeSelected(final ISelect<T[]> selector);
     public ILevel0ArrayOfArrayOperator<T> removeIndexesNot(final int... indices);
     public ILevel0ArrayOfArrayOperator<T> removeNulls();

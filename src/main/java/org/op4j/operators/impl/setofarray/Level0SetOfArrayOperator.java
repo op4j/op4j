@@ -191,6 +191,21 @@ public class Level0SetOfArrayOperator<T> extends Operator
     }
 
 
+    public ILevel0SetOfArrayOperator<T> removeMatching(final IEval<Boolean, ? super T[]> eval) {
+        return new Level0SetOfArrayOperator<T>(this.arrayOf, getTarget().execute(new SetFunc.RemoveMatching<T[]>(eval)));
+    }
+
+
+    public ILevel0SetOfArrayOperator<T> removeNullOrMatching(final IEval<Boolean, ? super T[]> eval) {
+        return new Level0SetOfArrayOperator<T>(this.arrayOf, getTarget().execute(new SetFunc.RemoveNullOrMatching<T[]>(eval)));
+    }
+
+
+    public ILevel0SetOfArrayOperator<T> removeNotNullMatching(final IEval<Boolean, ? super T[]> eval) {
+        return new Level0SetOfArrayOperator<T>(this.arrayOf, getTarget().execute(new SetFunc.RemoveNotNullMatching<T[]>(eval)));
+    }
+
+
     public ILevel0SetOfArrayOperator<T> removeSelected(final ISelect<T[]> selector) {
         return new Level0SetOfArrayOperator<T>(this.arrayOf, getTarget().execute(new SetFunc.RemoveSelected<T[]>(selector)));
     }

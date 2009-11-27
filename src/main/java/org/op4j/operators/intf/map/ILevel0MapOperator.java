@@ -25,11 +25,12 @@ import java.util.Map;
 import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
 import org.op4j.executables.ISelect;
+import org.op4j.operators.intf.list.ILevel0ListOperator;
+import org.op4j.operators.intf.set.ILevel0SetOperator;
 import org.op4j.operators.qualities.IExtractableMapOperator;
 import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableMapOperator;
 import org.op4j.operators.qualities.INavigableMapOperator;
-import org.op4j.operators.qualities.IOperator;
 import org.op4j.operators.qualities.ISortableOperator;
 import org.op4j.operators.qualities.ITypeParameterizableXYOperator;
 import org.op4j.operators.qualities.IUniqOperator;
@@ -67,12 +68,13 @@ public interface ILevel0MapOperator<K,V>
     public ILevel0MapOperator<K,V> insertAll(final int position, final Map<K,V> map);
     public ILevel0MapOperator<K,V> removeKeys(final K... keys);
     public ILevel0MapOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0MapOperator<K,V> removeMatching(final IEval<Boolean, ? super Map.Entry<K,V>> eval);
     public ILevel0MapOperator<K,V> removeSelected(final ISelect<Map.Entry<K,V>> selector);
     public ILevel0MapOperator<K,V> removeKeysNot(final K... keys);
     
     
-    public IOperator extractKeys();
-    public IOperator extractValues();
+    public ILevel0SetOperator<K> extractKeys();
+    public ILevel0ListOperator<V> extractValues();
     
     public ILevel1MapEntriesOperator<K,V> forEachEntryWithKeys(final K... keys);
     public ILevel1MapEntriesOperator<K,V> forEachEntryMatching(final String expression, final Object... optionalExpParams);

@@ -188,6 +188,21 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeMatching(final IEval<Boolean, ? super V> eval) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveMatching<V>(eval)));
+    }
+
+
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeNullOrMatching(final IEval<Boolean, ? super V> eval) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveNullOrMatching<V>(eval)));
+    }
+
+
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeNotNullMatching(final IEval<Boolean, ? super V> eval) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveNotNullMatching<V>(eval)));
+    }
+
+
     public ILevel2MapOfArrayEntriesValueOperator<K, V> removeSelected(final ISelect<V> selector) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveSelected<V>(selector)));
     }

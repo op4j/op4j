@@ -690,6 +690,9 @@ public final class Op {
         System.out.println(Op.onArray(stringsArr1).removeNulls().toMap(Eval.integerExp("length()")).get());
 
         System.out.println(Op.onList(stringsList1).removeNullOrMatching("length() < 6").get());
+
+        System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().extractKeys().get()));
+        System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().extractValues().get()));
         
     }
     

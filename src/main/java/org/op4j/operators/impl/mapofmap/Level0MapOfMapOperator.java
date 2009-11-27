@@ -30,6 +30,8 @@ import org.op4j.executables.ISelect;
 import org.op4j.executables.functions.builtin.MapFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
+import org.op4j.operators.impl.listofmap.Level0ListOfMapOperator;
+import org.op4j.operators.impl.set.Level0SetOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.listofmap.ILevel0ListOfMapOperator;
 import org.op4j.operators.intf.mapofmap.ILevel0MapOfMapOperator;
@@ -56,14 +58,12 @@ public class Level0MapOfMapOperator<K1,K2,V> extends Operator
 
 
     public ILevel0SetOperator<K1> extractKeys() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0SetOperator<K1>(getTarget().execute(new MapFunc.ExtractKeys<K1, Map<K2, V>>()));
     }
 
 
     public ILevel0ListOfMapOperator<K2, V> extractValues() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Level0ListOfMapOperator<K2, V>(getTarget().execute(new MapFunc.ExtractValues<K1, Map<K2, V>>()));
     }
 
 
@@ -140,6 +140,11 @@ public class Level0MapOfMapOperator<K1,K2,V> extends Operator
 
     public ILevel0MapOfMapOperator<K1, K2, V> removeMatching(final String expression, final Object... optionalExpParams) {
         return new Level0MapOfMapOperator<K1, K2, V>(getTarget().execute(new MapFunc.RemoveMatching<K1, Map<K2,V>>(Eval.booleanExp(expression, optionalExpParams))));
+    }
+
+
+    public ILevel0MapOfMapOperator<K1, K2, V> removeMatching(final IEval<Boolean, ? super Entry<K1, Map<K2,V>>> eval) {
+        return new Level0MapOfMapOperator<K1, K2, V>(getTarget().execute(new MapFunc.RemoveMatching<K1, Map<K2,V>>(eval)));
     }
 
 

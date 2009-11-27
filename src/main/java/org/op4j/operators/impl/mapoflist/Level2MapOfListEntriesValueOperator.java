@@ -191,6 +191,21 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
     }
 
 
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeMatching(final IEval<Boolean, ? super V> eval) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.RemoveMatching<V>(eval)));
+    }
+
+
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeNullOrMatching(final IEval<Boolean, ? super V> eval) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.RemoveNullOrMatching<V>(eval)));
+    }
+
+
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeNotNullMatching(final IEval<Boolean, ? super V> eval) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.RemoveNotNullMatching<V>(eval)));
+    }
+
+
     public ILevel2MapOfListEntriesValueOperator<K, V> removeSelected(final ISelect<V> selector) {
         return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFunc.RemoveSelected<V>(selector)));
     }

@@ -81,6 +81,9 @@ public interface ILevel2MapOfListEntriesValueOperator<K,V>
     public ILevel2MapOfListEntriesValueOperator<K,V> removeIndexes(final int... indices);
     public ILevel2MapOfListEntriesValueOperator<K,V> removeEquals(final V... values);
     public ILevel2MapOfListEntriesValueOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel2MapOfListEntriesValueOperator<K,V> removeMatching(final IEval<Boolean, ? super V> eval);
+    public ILevel2MapOfListEntriesValueOperator<K,V> removeNotNullMatching(final IEval<Boolean, ? super V> eval);
+    public ILevel2MapOfListEntriesValueOperator<K,V> removeNullOrMatching(final IEval<Boolean, ? super V> eval);
     public ILevel2MapOfListEntriesValueOperator<K,V> removeSelected(final ISelect<V> selector);
     public ILevel2MapOfListEntriesValueOperator<K,V> removeIndexesNot(final int... indices);
     public ILevel2MapOfListEntriesValueOperator<K,V> removeNulls();

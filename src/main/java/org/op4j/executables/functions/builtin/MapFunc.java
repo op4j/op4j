@@ -24,8 +24,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
@@ -341,6 +343,43 @@ public class MapFunc {
                 }
             }
             return result;
+        }
+        
+    }
+
+    
+    
+    
+    public static class ExtractKeys<K, V> implements IFunc<Set<K>, Map<K, V>> {
+
+        public ExtractKeys() {
+            super();
+        }
+
+        public Type<? super Set<K>> getResultType() {
+            return Types.SET_OF_UNKNOWN;
+        }
+
+        public Set<K> execute(final Map<K, V> object) throws Exception {
+            return new LinkedHashSet<K>(object.keySet());
+        }
+        
+    }
+    
+    
+    
+    public static class ExtractValues<K, V> implements IFunc<List<V>, Map<K, V>> {
+
+        public ExtractValues() {
+            super();
+        }
+
+        public Type<? super List<V>> getResultType() {
+            return Types.LIST_OF_UNKNOWN;
+        }
+
+        public List<V> execute(final Map<K, V> object) throws Exception {
+            return new ArrayList<V>(object.values());
         }
         
     }

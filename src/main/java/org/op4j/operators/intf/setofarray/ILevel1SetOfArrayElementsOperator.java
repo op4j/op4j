@@ -80,6 +80,9 @@ public interface ILevel1SetOfArrayElementsOperator<T>
     public ILevel1SetOfArrayElementsOperator<T> removeIndexes(final int... indices);
     public ILevel1SetOfArrayElementsOperator<T> removeEquals(final T... values);
     public ILevel1SetOfArrayElementsOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1SetOfArrayElementsOperator<T> removeMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel1SetOfArrayElementsOperator<T> removeNotNullMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel1SetOfArrayElementsOperator<T> removeNullOrMatching(final IEval<Boolean, ? super T> eval);
     public ILevel1SetOfArrayElementsOperator<T> removeSelected(final ISelect<T> selector);
     public ILevel1SetOfArrayElementsOperator<T> removeIndexesNot(final int... indices);
     public ILevel1SetOfArrayElementsOperator<T> removeNulls();

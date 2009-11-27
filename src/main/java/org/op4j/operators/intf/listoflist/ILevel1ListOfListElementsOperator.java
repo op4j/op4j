@@ -80,6 +80,9 @@ public interface ILevel1ListOfListElementsOperator<T>
     public ILevel1ListOfListElementsOperator<T> removeIndexes(final int... indices);
     public ILevel1ListOfListElementsOperator<T> removeEquals(final T... values);
     public ILevel1ListOfListElementsOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1ListOfListElementsOperator<T> removeMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel1ListOfListElementsOperator<T> removeNotNullMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel1ListOfListElementsOperator<T> removeNullOrMatching(final IEval<Boolean, ? super T> eval);
     public ILevel1ListOfListElementsOperator<T> removeSelected(final ISelect<T> selector);
     public ILevel1ListOfListElementsOperator<T> removeIndexesNot(final int... indices);
     public ILevel1ListOfListElementsOperator<T> removeNulls();

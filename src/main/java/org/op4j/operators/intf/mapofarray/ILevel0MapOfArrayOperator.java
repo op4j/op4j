@@ -78,6 +78,7 @@ public interface ILevel0MapOfArrayOperator<K,V>
     public ILevel0MapOfArrayOperator<K,V> insertAll(final int position, final Map<K,V[]> map);
     public ILevel0MapOfArrayOperator<K,V> removeKeys(final K... keys);
     public ILevel0MapOfArrayOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0MapOfArrayOperator<K,V> removeMatching(final IEval<Boolean, ? super Map.Entry<K,V[]>> eval);
     public ILevel0MapOfArrayOperator<K,V> removeSelected(final ISelect<Map.Entry<K,V[]>> selector);
     public ILevel0MapOfArrayOperator<K,V> removeKeysNot(final K... keys);
     

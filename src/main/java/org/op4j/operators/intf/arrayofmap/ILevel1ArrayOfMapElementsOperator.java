@@ -70,6 +70,7 @@ public interface ILevel1ArrayOfMapElementsOperator<K,V>
     public ILevel1ArrayOfMapElementsOperator<K,V> insertAll(final int position, final Map<K,V> map);
     public ILevel1ArrayOfMapElementsOperator<K,V> removeKeys(final K... keys);
     public ILevel1ArrayOfMapElementsOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1ArrayOfMapElementsOperator<K,V> removeMatching(final IEval<Boolean, ? super Map.Entry<K,V>> eval);
     public ILevel1ArrayOfMapElementsOperator<K,V> removeSelected(final ISelect<Map.Entry<K,V>> selector);
     public ILevel1ArrayOfMapElementsOperator<K,V> removeKeysNot(final K... keys);
     

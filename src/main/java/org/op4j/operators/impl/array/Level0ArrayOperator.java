@@ -165,6 +165,21 @@ public class Level0ArrayOperator<T> extends Operator implements
     }
 
 
+    public ILevel0ArrayOperator<T> removeMatching(final IEval<Boolean, ? super T> eval) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveMatching<T>(eval)));
+    }
+
+
+    public ILevel0ArrayOperator<T> removeNullOrMatching(final IEval<Boolean, ? super T> eval) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveNullOrMatching<T>(eval)));
+    }
+
+
+    public ILevel0ArrayOperator<T> removeNotNullMatching(final IEval<Boolean, ? super T> eval) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveNotNullMatching<T>(eval)));
+    }
+
+
     public ILevel0ArrayOperator<T> removeSelected(final ISelect<T> selector) {
         return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveSelected<T>(selector)));
     }

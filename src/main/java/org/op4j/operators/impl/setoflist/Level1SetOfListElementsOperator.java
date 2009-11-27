@@ -192,6 +192,21 @@ public class Level1SetOfListElementsOperator<T> extends Operator
     }
 
 
+    public ILevel1SetOfListElementsOperator<T> removeMatching(final IEval<Boolean, ? super T> eval) {
+        return new Level1SetOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveMatching<T>(eval)));
+    }
+
+
+    public ILevel1SetOfListElementsOperator<T> removeNullOrMatching(final IEval<Boolean, ? super T> eval) {
+        return new Level1SetOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveNullOrMatching<T>(eval)));
+    }
+
+
+    public ILevel1SetOfListElementsOperator<T> removeNotNullMatching(final IEval<Boolean, ? super T> eval) {
+        return new Level1SetOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveNotNullMatching<T>(eval)));
+    }
+
+
     public ILevel1SetOfListElementsOperator<T> removeSelected(final ISelect<T> selector) {
         return new Level1SetOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveSelected<T>(selector)));
     }

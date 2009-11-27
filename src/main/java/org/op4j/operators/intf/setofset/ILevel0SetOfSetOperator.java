@@ -103,6 +103,9 @@ public interface ILevel0SetOfSetOperator<T>
     public ILevel0SetOfSetOperator<T> removeIndexes(final int... indices);
     public ILevel0SetOfSetOperator<T> removeEquals(final Set<T>... values);
     public ILevel0SetOfSetOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0SetOfSetOperator<T> removeMatching(final IEval<Boolean, ? super Set<T>> eval);
+    public ILevel0SetOfSetOperator<T> removeNotNullMatching(final IEval<Boolean, ? super Set<T>> eval);
+    public ILevel0SetOfSetOperator<T> removeNullOrMatching(final IEval<Boolean, ? super Set<T>> eval);
     public ILevel0SetOfSetOperator<T> removeSelected(final ISelect<Set<T>> selector);
     public ILevel0SetOfSetOperator<T> removeIndexesNot(final int... indices);
     public ILevel0SetOfSetOperator<T> removeNulls();

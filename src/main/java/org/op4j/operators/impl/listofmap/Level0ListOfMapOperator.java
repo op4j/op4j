@@ -177,6 +177,21 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     }
 
 
+    public ILevel0ListOfMapOperator<K, V> removeMatching(final IEval<Boolean, ? super Map<K, V>> eval) {
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFunc.RemoveMatching<Map<K, V>>(eval)));
+    }
+
+
+    public ILevel0ListOfMapOperator<K, V> removeNullOrMatching(final IEval<Boolean, ? super Map<K, V>> eval) {
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFunc.RemoveNullOrMatching<Map<K, V>>(eval)));
+    }
+
+
+    public ILevel0ListOfMapOperator<K, V> removeNotNullMatching(final IEval<Boolean, ? super Map<K, V>> eval) {
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFunc.RemoveNotNullMatching<Map<K, V>>(eval)));
+    }
+
+
     public ILevel0ListOfMapOperator<K, V> removeSelected(final ISelect<Map<K, V>> selector) {
         return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFunc.RemoveSelected<Map<K, V>>(selector)));
     }

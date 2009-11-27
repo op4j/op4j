@@ -81,6 +81,9 @@ public interface ILevel1SetOfListElementsOperator<T>
     public ILevel1SetOfListElementsOperator<T> removeIndexes(final int... indices);
     public ILevel1SetOfListElementsOperator<T> removeEquals(final T... values);
     public ILevel1SetOfListElementsOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1SetOfListElementsOperator<T> removeMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel1SetOfListElementsOperator<T> removeNotNullMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel1SetOfListElementsOperator<T> removeNullOrMatching(final IEval<Boolean, ? super T> eval);
     public ILevel1SetOfListElementsOperator<T> removeSelected(final ISelect<T> selector);
     public ILevel1SetOfListElementsOperator<T> removeIndexesNot(final int... indices);
     public ILevel1SetOfListElementsOperator<T> removeNulls();
