@@ -27,7 +27,7 @@ import org.javaruntype.type.Type;
 import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.MapFunc;
+import org.op4j.executables.functions.MapFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.mapoflist.Level2MapOfListEntriesValueOperator;
 import org.op4j.operators.impl.mapofset.Level2MapOfSetEntriesValueOperator;

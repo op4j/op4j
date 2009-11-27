@@ -28,7 +28,7 @@ import org.javaruntype.type.Type;
 import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.builtin.ListFunc;
+import org.op4j.executables.functions.ListFunc;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;

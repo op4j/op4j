@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions.builtin;
+package org.op4j.executables.functions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,7 +29,6 @@ import java.util.List;
 
 import org.op4j.executables.IEval;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.IFunc;
 import org.op4j.util.VarArgsUtil;
 
 

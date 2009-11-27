@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions.builtin;
+package org.op4j.executables.functions;
 
 import java.util.Collection;
 import java.util.Comparator;
