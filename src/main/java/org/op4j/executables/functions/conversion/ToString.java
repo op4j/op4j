@@ -34,7 +34,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.executables.functions.IFunc;
+import org.op4j.executables.functions.AbstractFunc;
 import org.op4j.executables.functions.conversion.ToString.FromNumber.NumberFormatType;
 
 /**
@@ -318,7 +318,7 @@ public final class ToString {
 	
 	
 	
-	public static final class FromObject implements IFunc<String,Object> {
+	public static final class FromObject extends AbstractFunc<String,Object> {
 
 		public FromObject() {
 			super();
@@ -328,13 +328,14 @@ public final class ToString {
 			return Types.STRING;
 		}
 
-		public String execute(final Object object) throws Exception {
+        @Override
+		public String doExecute(final Object object) throws Exception {
 			return object.toString();
 		}
 		
 	}
 	
-	public static final class FromNumber implements IFunc<String, Number> {
+	public static final class FromNumber extends AbstractFunc<String, Number> {
 
 		private final NumberFormat numberFormat;
 		
@@ -484,7 +485,8 @@ public final class ToString {
 			return Types.STRING;
 		}
 
-		public String execute(final Number number) throws Exception {
+        @Override
+		public String doExecute(final Number number) throws Exception {
 			return fromNumber(number);						
 		}
 		
@@ -611,7 +613,7 @@ public final class ToString {
 		NONE
 	}		
 	
-	public static final class FromCalendar implements IFunc<String, Calendar> {
+	public static final class FromCalendar extends AbstractFunc<String, Calendar> {
 
 		private DateStyle dateStyle = null;	
 		private TimeStyle timeStyle = null;	
@@ -659,7 +661,8 @@ public final class ToString {
 			return Types.STRING;
 		}
 
-		public String execute(final Calendar calendar) throws Exception {
+        @Override
+		public String doExecute(final Calendar calendar) throws Exception {
 			if (StringUtils.isNotEmpty(this.pattern)) {
 				return fromCalendar(calendar, this.pattern, this.locale);
 			} 
@@ -704,7 +707,7 @@ public final class ToString {
 	    }		
 	}
 	
-	public static final class FromDate implements IFunc<String, java.util.Date> {
+	public static final class FromDate extends AbstractFunc<String, java.util.Date> {
 
 		private DateStyle dateStyle = null;	
 		private TimeStyle timeStyle = null;	
@@ -752,7 +755,8 @@ public final class ToString {
 			return Types.STRING;
 		}
 
-		public String execute(final Date date) throws Exception {
+        @Override
+		public String doExecute(final Date date) throws Exception {
 			if (StringUtils.isNotEmpty(this.pattern)) {
 				return fromDate(date, this.pattern, this.locale);
 			} 

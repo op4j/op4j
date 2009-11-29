@@ -37,12 +37,12 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-class CollectionFunc {
+class CollectionFuncs {
 
     
     
     
-    private CollectionFunc() {
+    private CollectionFuncs() {
         super();
     }
 
@@ -50,13 +50,14 @@ class CollectionFunc {
     
     
     
-    static abstract class Sort<T extends Comparable<? super T>, X extends Collection<T>> implements IFunc<X, X> {
+    static abstract class Sort<T extends Comparable<? super T>, X extends Collection<T>> extends AbstractFunc<X, X> {
 
         public Sort() {
             super();
         }
 
-        public X execute(final X object) throws Exception {
+        @Override
+        public X doExecute(final X object) throws Exception {
         	
             final List<T> result = new ArrayList<T>(object);
             Collections.sort(result);
@@ -70,7 +71,7 @@ class CollectionFunc {
 
     
     
-    static abstract class SortByComparator<T, X extends Collection<T>> implements IFunc<X, X> {
+    static abstract class SortByComparator<T, X extends Collection<T>> extends AbstractFunc<X, X> {
 
         private Comparator<? super T> comparator = null;
 
@@ -79,7 +80,8 @@ class CollectionFunc {
             this.comparator = comparator;
         }
 
-        public X execute(final X object) throws Exception {
+        @Override
+        public X doExecute(final X object) throws Exception {
         	
             final List<T> result = new ArrayList<T>(object);
             Collections.sort(result, this.comparator);
@@ -94,7 +96,7 @@ class CollectionFunc {
     
 
     
-    static abstract class Add<T, X extends Collection<T>> implements IFunc<X,X> {
+    static abstract class Add<T, X extends Collection<T>> extends AbstractFunc<X,X> {
 
         private final List<T> newElements;
         
@@ -103,7 +105,8 @@ class CollectionFunc {
             this.newElements = VarArgsUtil.asRequiredObjectList(newElements);
         }
 
-        public X execute(final X object) throws Exception {
+        @Override
+        public X doExecute(final X object) throws Exception {
             final List<T> result = new ArrayList<T>(object);
             result.addAll(this.newElements);
             return fromList(result);
@@ -115,7 +118,7 @@ class CollectionFunc {
 
     
     
-    static abstract class Insert<T, X extends Collection<T>> implements IFunc<X,X> {
+    static abstract class Insert<T, X extends Collection<T>> extends AbstractFunc<X,X> {
 
         private final int position;
         private final List<T> newElements;
@@ -126,7 +129,8 @@ class CollectionFunc {
             this.newElements = VarArgsUtil.asRequiredObjectList(newElements);
         }
 
-        public X execute(final X object) throws Exception {
+        @Override
+        public X doExecute(final X object) throws Exception {
             final List<T> result = new ArrayList<T>(object);
             result.addAll(this.position, this.newElements);
             return fromList(result);
@@ -140,7 +144,7 @@ class CollectionFunc {
     
     
     
-    static abstract class AddAll<T, X extends Collection<T>> implements IFunc<X,X> {
+    static abstract class AddAll<T, X extends Collection<T>> extends AbstractFunc<X,X> {
 
         private final List<T> newElements;
         
@@ -149,7 +153,8 @@ class CollectionFunc {
             this.newElements = new ArrayList<T>(collection);
         }
 
-        public X execute(final X object) throws Exception {
+        @Override
+        public X doExecute(final X object) throws Exception {
             final List<T> result = new ArrayList<T>(object);
             result.addAll(this.newElements);
             return fromList(result);
@@ -163,7 +168,7 @@ class CollectionFunc {
     
 
     
-    static abstract class RemoveIndexes<T, X extends Collection<T>> implements IFunc<X,X> {
+    static abstract class RemoveIndexes<T, X extends Collection<T>> extends AbstractFunc<X,X> {
 
         private final List<Integer> indices;
         
@@ -172,7 +177,8 @@ class CollectionFunc {
             this.indices = VarArgsUtil.asRequiredIntegerList(indices);
         }
 
-        public X execute(final X object) throws Exception {
+        @Override
+        public X doExecute(final X object) throws Exception {
             final List<T> result = new ArrayList<T>();
             int i = 0;
             for (final T element : object) {
@@ -192,7 +198,7 @@ class CollectionFunc {
     
 
     
-    static abstract class RemoveEquals<T, X extends Collection<T>> implements IFunc<X,X> {
+    static abstract class RemoveEquals<T, X extends Collection<T>> extends AbstractFunc<X,X> {
 
         private final List<T> values;
         
@@ -201,7 +207,8 @@ class CollectionFunc {
             this.values = VarArgsUtil.asRequiredObjectList(values);
         }
 
-        public X execute(final X object) throws Exception {
+        @Override
+        public X doExecute(final X object) throws Exception {
             final List<T> result = new ArrayList<T>(object);
             result.removeAll(this.values);
             return fromList(result);
@@ -215,7 +222,7 @@ class CollectionFunc {
     
 
     
-    static abstract class RemoveMatching<T, X extends Collection<T>> implements IFunc<X,X> {
+    static abstract class RemoveMatching<T, X extends Collection<T>> extends AbstractFunc<X,X> {
 
         private final IEval<Boolean,? super T> eval;
         
@@ -224,7 +231,8 @@ class CollectionFunc {
             this.eval = eval;
         }
 
-        public X execute(final X object) throws Exception {
+        @Override
+        public X doExecute(final X object) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (!this.eval.execute(element).booleanValue()) {
@@ -242,7 +250,7 @@ class CollectionFunc {
     
 
     
-    static abstract class RemoveSelected<T, X extends Collection<T>> implements IFunc<X,X> {
+    static abstract class RemoveSelected<T, X extends Collection<T>> extends AbstractFunc<X,X> {
 
         private final ISelect<T> selector;
         
@@ -251,7 +259,8 @@ class CollectionFunc {
             this.selector = selector;
         }
 
-        public X execute(final X object) throws Exception {
+        @Override
+        public X doExecute(final X object) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (!this.selector.eval(element)) {
@@ -269,7 +278,7 @@ class CollectionFunc {
 
     
     
-    static abstract class RemoveIndexesNot<T, X extends Collection<T>> implements IFunc<X,X> {
+    static abstract class RemoveIndexesNot<T, X extends Collection<T>> extends AbstractFunc<X,X> {
 
         private final List<Integer> indices;
         
@@ -278,7 +287,8 @@ class CollectionFunc {
             this.indices = VarArgsUtil.asRequiredIntegerList(indices);
         }
 
-        public X execute(final X object) throws Exception {
+        @Override
+        public X doExecute(final X object) throws Exception {
             final List<T> result = new ArrayList<T>();
             int i = 0;
             for (final T element : object) {
@@ -298,13 +308,14 @@ class CollectionFunc {
 
     
     
-    static abstract class RemoveNulls<T, X extends Collection<T>> implements IFunc<X,X> {
+    static abstract class RemoveNulls<T, X extends Collection<T>> extends AbstractFunc<X,X> {
 
         public RemoveNulls() {
             super();
         }
 
-        public X execute(final X object) throws Exception {
+        @Override
+        public X doExecute(final X object) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
@@ -323,7 +334,7 @@ class CollectionFunc {
 
     
     
-    static abstract class RemoveNotNullMatching<T, X extends Collection<T>> implements IFunc<X,X> {
+    static abstract class RemoveNotNullMatching<T, X extends Collection<T>> extends AbstractFunc<X,X> {
 
         private final IEval<Boolean,? super T> eval;
         
@@ -332,7 +343,8 @@ class CollectionFunc {
             this.eval = eval;
         }
 
-        public X execute(final X object) throws Exception {
+        @Override
+        public X doExecute(final X object) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
@@ -354,7 +366,7 @@ class CollectionFunc {
 
     
     
-    static abstract class RemoveNullOrMatching<T, X extends Collection<T>> implements IFunc<X,X> {
+    static abstract class RemoveNullOrMatching<T, X extends Collection<T>> extends AbstractFunc<X,X> {
 
         private final IEval<Boolean,? super T> eval;
         
@@ -363,7 +375,8 @@ class CollectionFunc {
             this.eval = eval;
         }
 
-        public X execute(final X object) throws Exception {
+        @Override
+        public X doExecute(final X object) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
@@ -383,13 +396,14 @@ class CollectionFunc {
 
     
     
-    static abstract class FlattenArrays<T, X extends Collection<T>, Y extends Collection<T[]>> implements IFunc<X, Y> {
+    static abstract class FlattenArrays<T, X extends Collection<T>, Y extends Collection<T[]>> extends AbstractFunc<X, Y> {
 
         public FlattenArrays() {
             super();
         }
 
-        public X execute(final Y object) throws Exception {
+        @Override
+        public X doExecute(final Y object) throws Exception {
             
             final List<T> result = new ArrayList<T>();
             for (final T[] element : object) {
@@ -405,13 +419,14 @@ class CollectionFunc {
     
 
     
-    static abstract class FlattenCollections<T, X extends Collection<T>, Y extends Collection<? extends Collection<T>>> implements IFunc<X, Y> {
+    static abstract class FlattenCollections<T, X extends Collection<T>, Y extends Collection<? extends Collection<T>>> extends AbstractFunc<X, Y> {
 
         public FlattenCollections() {
             super();
         }
 
-        public X execute(final Y object) throws Exception {
+        @Override
+        public X doExecute(final Y object) throws Exception {
             
             final List<T> result = new ArrayList<T>();
             for (final Collection<T> element : object) {

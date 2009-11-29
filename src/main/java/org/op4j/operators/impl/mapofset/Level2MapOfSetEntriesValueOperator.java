@@ -29,7 +29,7 @@ import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.SetFunc;
+import org.op4j.executables.functions.SetFuncs;
 import org.op4j.executables.functions.conversion.ToArray;
 import org.op4j.executables.functions.conversion.ToList;
 import org.op4j.executables.functions.conversion.ToMap;
@@ -65,17 +65,17 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> add(final V... newElements) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.Add<V>(newElements)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFuncs.Add<V>(newElements)));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> insert(final int position, final V... newElements) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.Insert<V>(position, newElements)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFuncs.Insert<V>(position, newElements)));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> addAll(final Collection<V> collection) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.AddAll<V>(collection)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFuncs.AddAll<V>(collection)));
     }
 
 
@@ -173,57 +173,57 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeIndexes(final int... indices) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveIndexes<V>(indices)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFuncs.RemoveIndexes<V>(indices)));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeEquals(final V... values) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveEquals<V>(values)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFuncs.RemoveEquals<V>(values)));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveMatching<V>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFuncs.RemoveMatching<V>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeMatching(final IEval<Boolean, ? super V> eval) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveMatching<V>(eval)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFuncs.RemoveMatching<V>(eval)));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeNullOrMatching(final IEval<Boolean, ? super V> eval) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveNullOrMatching<V>(eval)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFuncs.RemoveNullOrMatching<V>(eval)));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeNotNullMatching(final IEval<Boolean, ? super V> eval) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveNotNullMatching<V>(eval)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFuncs.RemoveNotNullMatching<V>(eval)));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeSelected(final ISelect<V> selector) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveSelected<V>(selector)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFuncs.RemoveSelected<V>(selector)));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeIndexesNot(final int... indices) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveIndexesNot<V>(indices)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFuncs.RemoveIndexesNot<V>(indices)));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveNotNullMatching<V>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFuncs.RemoveNotNullMatching<V>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveNullOrMatching<V>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFuncs.RemoveNullOrMatching<V>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeNulls() {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.RemoveNulls<V>()));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFuncs.RemoveNulls<V>()));
     }
 
     
@@ -231,12 +231,12 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
 
     @SuppressWarnings("unchecked")
     public ILevel2MapOfSetEntriesValueOperator<K, V> sort() {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.Sort()));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFuncs.Sort()));
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, V> sort(final Comparator<? super V> comparator) {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFunc.SortByComparator<V>(comparator)));
+        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFuncs.SortByComparator<V>(comparator)));
     }
 
 

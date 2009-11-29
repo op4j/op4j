@@ -28,7 +28,7 @@ import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.ArrayFunc;
+import org.op4j.executables.functions.ArrayFuncs;
 import org.op4j.executables.functions.conversion.ToList;
 import org.op4j.executables.functions.conversion.ToMap;
 import org.op4j.executables.functions.conversion.ToSet;
@@ -68,22 +68,22 @@ public class Level1ArrayOfArrayElementsOperator<T> extends Operator
 
 
     public ILevel1ArrayOfArrayElementsOperator<T> add(final T... newElements) {
-        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.Add<T>(newElements)));
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.Add<T>(newElements)));
     }
 
 
     public ILevel1ArrayOfArrayElementsOperator<T> insert(final int position, final T... newElements) {
-        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.Insert<T>(position, newElements)));
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.Insert<T>(position, newElements)));
     }
 
 
     public ILevel1ArrayOfArrayElementsOperator<T> addAll(final Collection<T> collection) {
-        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.AddAll<T>(collection)));
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.AddAll<T>(collection)));
     }
 
 
     public ILevel1ArrayOfArrayElementsOperator<T> distinct() {
-        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.Distinct<T>()));
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.Distinct<T>()));
     }
 
 
@@ -177,57 +177,57 @@ public class Level1ArrayOfArrayElementsOperator<T> extends Operator
 
 
     public ILevel1ArrayOfArrayElementsOperator<T> removeIndexes(final int... indices) {
-        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveIndexes<T>(indices)));
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveIndexes<T>(indices)));
     }
 
 
     public ILevel1ArrayOfArrayElementsOperator<T> removeEquals(final T... values) {
-        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveEquals<T>(values)));
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveEquals<T>(values)));
     }
 
 
     public ILevel1ArrayOfArrayElementsOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel1ArrayOfArrayElementsOperator<T> removeMatching(final IEval<Boolean, ? super T> eval) {
-        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveMatching<T>(eval)));
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveMatching<T>(eval)));
     }
 
 
     public ILevel1ArrayOfArrayElementsOperator<T> removeNullOrMatching(final IEval<Boolean, ? super T> eval) {
-        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveNullOrMatching<T>(eval)));
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNullOrMatching<T>(eval)));
     }
 
 
     public ILevel1ArrayOfArrayElementsOperator<T> removeNotNullMatching(final IEval<Boolean, ? super T> eval) {
-        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveNotNullMatching<T>(eval)));
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNotNullMatching<T>(eval)));
     }
 
 
     public ILevel1ArrayOfArrayElementsOperator<T> removeSelected(final ISelect<T> selector) {
-        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveSelected<T>(selector)));
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveSelected<T>(selector)));
     }
 
 
     public ILevel1ArrayOfArrayElementsOperator<T> removeIndexesNot(final int... indices) {
-        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveIndexesNot<T>(indices)));
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveIndexesNot<T>(indices)));
     }
 
 
 
     public ILevel1ArrayOfArrayElementsOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveNotNullMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNotNullMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
     public ILevel1ArrayOfArrayElementsOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveNullOrMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNullOrMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel1ArrayOfArrayElementsOperator<T> removeNulls() {
-        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.RemoveNulls<T>()));
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNulls<T>()));
     }
 
     
@@ -235,12 +235,12 @@ public class Level1ArrayOfArrayElementsOperator<T> extends Operator
 
     @SuppressWarnings("unchecked")
     public ILevel1ArrayOfArrayElementsOperator<T> sort() {
-        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.Sort()));
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.Sort()));
     }
 
 
     public ILevel1ArrayOfArrayElementsOperator<T> sort(final Comparator<? super T> comparator) {
-        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFunc.SortByComparator<T>(comparator)));
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.SortByComparator<T>(comparator)));
     }
 
 

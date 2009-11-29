@@ -38,18 +38,18 @@ import org.op4j.executables.ISelect;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-public class SetFunc {
+public class SetFuncs {
 
     
     
-    private SetFunc() {
+    private SetFuncs() {
         super();
     }
 
     
     
     
-    public static final class Sort<T extends Comparable<? super T>> extends CollectionFunc.Sort<T, Set<T>> {
+    public static final class Sort<T extends Comparable<? super T>> extends CollectionFuncs.Sort<T, Set<T>> {
 
         public Sort() {
             super();
@@ -70,7 +70,7 @@ public class SetFunc {
     
     
     
-    public static final class SortByComparator<T> extends CollectionFunc.SortByComparator<T, Set<T>> {
+    public static final class SortByComparator<T> extends CollectionFuncs.SortByComparator<T, Set<T>> {
 
         public SortByComparator(final Comparator<? super T> comparator) {
             super(comparator);
@@ -90,7 +90,7 @@ public class SetFunc {
     
     
     
-    public static final class Add<T> extends CollectionFunc.Add<T, Set<T>> {
+    public static final class Add<T> extends CollectionFuncs.Add<T, Set<T>> {
 
         public Add(final T... newElements) {
             super(newElements);
@@ -111,7 +111,7 @@ public class SetFunc {
     
     
     
-    public static final class Insert<T> extends CollectionFunc.Insert<T, Set<T>> {
+    public static final class Insert<T> extends CollectionFuncs.Insert<T, Set<T>> {
 
         public Insert(final int position, T... newElements) {
             super(position, newElements);
@@ -132,7 +132,7 @@ public class SetFunc {
     
     
     
-    public static final class AddAll<T> extends CollectionFunc.AddAll<T, Set<T>> {
+    public static final class AddAll<T> extends CollectionFuncs.AddAll<T, Set<T>> {
 
         public AddAll(final Collection<T> collection) {
             super(collection);
@@ -152,7 +152,7 @@ public class SetFunc {
 
     
     
-    public static final class RemoveIndexes<T> extends CollectionFunc.RemoveIndexes<T, Set<T>> {
+    public static final class RemoveIndexes<T> extends CollectionFuncs.RemoveIndexes<T, Set<T>> {
 
         
         public RemoveIndexes(final int... indices) {
@@ -173,7 +173,7 @@ public class SetFunc {
 
     
     
-    public static final class RemoveEquals<T> extends CollectionFunc.RemoveEquals<T, Set<T>> {
+    public static final class RemoveEquals<T> extends CollectionFuncs.RemoveEquals<T, Set<T>> {
 
         public RemoveEquals(final T... values) {
             super(values);
@@ -193,7 +193,7 @@ public class SetFunc {
 
     
     
-    public static final class RemoveMatching<T> extends CollectionFunc.RemoveMatching<T, Set<T>> {
+    public static final class RemoveMatching<T> extends CollectionFuncs.RemoveMatching<T, Set<T>> {
 
         public RemoveMatching(final IEval<Boolean,? super T> eval) {
             super(eval);
@@ -213,7 +213,7 @@ public class SetFunc {
 
     
     
-    public static final class RemoveSelected<T> extends CollectionFunc.RemoveSelected<T, Set<T>> {
+    public static final class RemoveSelected<T> extends CollectionFuncs.RemoveSelected<T, Set<T>> {
 
         public RemoveSelected(final ISelect<T> selector) {
             super(selector);
@@ -233,7 +233,7 @@ public class SetFunc {
 
     
     
-    public static final class RemoveIndexesNot<T> extends CollectionFunc.RemoveIndexesNot<T, Set<T>> {
+    public static final class RemoveIndexesNot<T> extends CollectionFuncs.RemoveIndexesNot<T, Set<T>> {
 
         public RemoveIndexesNot(final int... indices) {
             super(indices);
@@ -253,7 +253,7 @@ public class SetFunc {
 
     
     
-    public static final class RemoveNulls<T> extends CollectionFunc.RemoveNulls<T, Set<T>> {
+    public static final class RemoveNulls<T> extends CollectionFuncs.RemoveNulls<T, Set<T>> {
 
         public RemoveNulls() {
             super();
@@ -273,7 +273,7 @@ public class SetFunc {
 
     
     
-    public static final class RemoveNotNullMatching<T> extends CollectionFunc.RemoveNotNullMatching<T, Set<T>> {
+    public static final class RemoveNotNullMatching<T> extends CollectionFuncs.RemoveNotNullMatching<T, Set<T>> {
 
         public RemoveNotNullMatching(final IEval<Boolean,? super T> eval) {
             super(eval);
@@ -293,7 +293,7 @@ public class SetFunc {
 
     
     
-    public static final class RemoveNullOrMatching<T> extends CollectionFunc.RemoveNullOrMatching<T, Set<T>> {
+    public static final class RemoveNullOrMatching<T> extends CollectionFuncs.RemoveNullOrMatching<T, Set<T>> {
 
         public RemoveNullOrMatching(final IEval<Boolean,? super T> eval) {
             super(eval);
@@ -313,7 +313,7 @@ public class SetFunc {
     
     
     
-    public static final class FlattenArrays<T> extends CollectionFunc.FlattenArrays<T, Set<T>, Set<T[]>> {
+    public static final class FlattenArrays<T> extends CollectionFuncs.FlattenArrays<T, Set<T>, Set<T[]>> {
 
         
         public FlattenArrays() {
@@ -335,7 +335,7 @@ public class SetFunc {
     
     
     
-    public static final class FlattenLists<T> extends CollectionFunc.FlattenCollections<T, Set<T>, Set<List<T>>> {
+    public static final class FlattenLists<T> extends CollectionFuncs.FlattenCollections<T, Set<T>, Set<List<T>>> {
 
         
         public FlattenLists() {
@@ -356,7 +356,7 @@ public class SetFunc {
 
     
     
-    public static final class FlattenSets<T> extends CollectionFunc.FlattenCollections<T, Set<T>, Set<Set<T>>> {
+    public static final class FlattenSets<T> extends CollectionFuncs.FlattenCollections<T, Set<T>, Set<Set<T>>> {
 
         
         public FlattenSets() {

@@ -27,7 +27,7 @@ import org.javaruntype.type.Type;
 import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.ArrayFunc;
+import org.op4j.executables.functions.ArrayFuncs;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.arrayofmap.ILevel0ArrayOfMapOperator;
@@ -54,22 +54,22 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
 
 
     public ILevel0ArrayOfMapOperator<K, V> add(final Map<K, V>... newElements) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.Add<Map<K, V>>(newElements)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.Add<Map<K, V>>(newElements)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> insert(final int position, final Map<K, V>... newElements) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.Insert<Map<K, V>>(position, newElements)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.Insert<Map<K, V>>(position, newElements)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> addAll(final Collection<Map<K, V>> collection) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.AddAll<Map<K, V>>(collection)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.AddAll<Map<K, V>>(collection)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> distinct() {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.Distinct<Map<K, V>>()));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.Distinct<Map<K, V>>()));
     }
 
 
@@ -159,69 +159,69 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeIndexes(final int... indices) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.RemoveIndexes<Map<K, V>>(indices)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.RemoveIndexes<Map<K, V>>(indices)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeEquals(final Map<K, V>... values) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.RemoveEquals<Map<K, V>>(values)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.RemoveEquals<Map<K, V>>(values)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.RemoveMatching<Map<K, V>>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.RemoveMatching<Map<K, V>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeMatching(final IEval<Boolean, ? super Map<K, V>> eval) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.RemoveMatching<Map<K, V>>(eval)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.RemoveMatching<Map<K, V>>(eval)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeNullOrMatching(final IEval<Boolean, ? super Map<K, V>> eval) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.RemoveNullOrMatching<Map<K, V>>(eval)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.RemoveNullOrMatching<Map<K, V>>(eval)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeNotNullMatching(final IEval<Boolean, ? super Map<K, V>> eval) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.RemoveNotNullMatching<Map<K, V>>(eval)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.RemoveNotNullMatching<Map<K, V>>(eval)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeSelected(final ISelect<Map<K, V>> selector) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.RemoveSelected<Map<K, V>>(selector)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.RemoveSelected<Map<K, V>>(selector)));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeIndexesNot(final int... indices) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.RemoveIndexesNot<Map<K, V>>(indices)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.RemoveIndexesNot<Map<K, V>>(indices)));
     }
 
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.RemoveNotNullMatching<Map<K, V>>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.RemoveNotNullMatching<Map<K, V>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.RemoveNullOrMatching<Map<K, V>>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.RemoveNullOrMatching<Map<K, V>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0ArrayOfMapOperator<K, V> removeNulls() {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.RemoveNulls<Map<K, V>>()));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.RemoveNulls<Map<K, V>>()));
     }
 
     
 
     @SuppressWarnings("unchecked")
     public ILevel0ArrayOfMapOperator<K, V> sort() {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.Sort()));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.Sort()));
     }
 
     public ILevel0ArrayOfMapOperator<K, V> sort(final Comparator<? super Map<K, V>> comparator) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFunc.SortByComparator<Map<K, V>>(comparator)));
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.SortByComparator<Map<K, V>>(comparator)));
     }
 
 

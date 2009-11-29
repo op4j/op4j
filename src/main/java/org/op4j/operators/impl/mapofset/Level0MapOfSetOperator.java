@@ -29,7 +29,7 @@ import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.MapFunc;
+import org.op4j.executables.functions.MapFuncs;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.impl.listofset.Level0ListOfSetOperator;
@@ -63,12 +63,12 @@ public class Level0MapOfSetOperator<K,V> extends Operator
 
 
     public ILevel0SetOperator<K> extractKeys() {
-        return new Level0SetOperator<K>(getTarget().execute(new MapFunc.ExtractKeys<K, V>()));
+        return new Level0SetOperator<K>(getTarget().execute(new MapFuncs.ExtractKeys<K, V>()));
     }
 
 
     public ILevel0ListOfSetOperator<V> extractValues() {
-        return new Level0ListOfSetOperator<V>(getTarget().execute(new MapFunc.ExtractValues<K, V>()));
+        return new Level0ListOfSetOperator<V>(getTarget().execute(new MapFuncs.ExtractValues<K, V>()));
     }
 
 
@@ -114,22 +114,22 @@ public class Level0MapOfSetOperator<K,V> extends Operator
 
 
     public ILevel0MapOfSetOperator<K, V> put(final K newKey, final Set<V> newValue) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFunc.Put<K, Set<V>>(newKey, newValue)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.Put<K, Set<V>>(newKey, newValue)));
     }
 
 
     public ILevel0MapOfSetOperator<K, V> insert(final int position, final K newKey, final Set<V> newValue) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFunc.Insert<K, Set<V>>(position, newKey, newValue)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.Insert<K, Set<V>>(position, newKey, newValue)));
     }
 
 
     public ILevel0MapOfSetOperator<K, V> putAll(final Map<K, Set<V>> map) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFunc.PutAll<K, Set<V>>(map)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.PutAll<K, Set<V>>(map)));
     }
 
 
     public ILevel0MapOfSetOperator<K, V> insertAll(final int position, final Map<K, Set<V>> map) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFunc.InsertAll<K, Set<V>>(position, map)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.InsertAll<K, Set<V>>(position, map)));
     }
 
 
@@ -139,27 +139,27 @@ public class Level0MapOfSetOperator<K,V> extends Operator
 
 
     public ILevel0MapOfSetOperator<K, V> removeKeys(final K... keys) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFunc.RemoveKeys<K, Set<V>>(keys)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.RemoveKeys<K, Set<V>>(keys)));
     }
 
 
     public ILevel0MapOfSetOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFunc.RemoveMatching<K, Set<V>>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.RemoveMatching<K, Set<V>>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0MapOfSetOperator<K, V> removeMatching(final IEval<Boolean, ? super Entry<K, Set<V>>> eval) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFunc.RemoveMatching<K, Set<V>>(eval)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.RemoveMatching<K, Set<V>>(eval)));
     }
 
 
     public ILevel0MapOfSetOperator<K, V> removeSelected(final ISelect<Entry<K, Set<V>>> selector) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFunc.RemoveSelected<K, Set<V>>(selector)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.RemoveSelected<K, Set<V>>(selector)));
     }
 
 
     public ILevel0MapOfSetOperator<K, V> removeKeysNot(final K... keys) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFunc.RemoveKeysNot<K, Set<V>>(keys)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.RemoveKeysNot<K, Set<V>>(keys)));
     }
 
 
@@ -174,12 +174,12 @@ public class Level0MapOfSetOperator<K,V> extends Operator
 
     @SuppressWarnings("unchecked")
     public ILevel0MapOfSetOperator<K, V> sort() {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFunc.SortByKey()));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.SortByKey()));
     }
 
 
     public ILevel0MapOfSetOperator<K, V> sort(final Comparator<? super Entry<K, Set<V>>> comparator) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFunc.SortEntries<K, Set<V>>(comparator)));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.SortEntries<K, Set<V>>(comparator)));
     }
 
 

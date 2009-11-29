@@ -28,7 +28,7 @@ import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.MapFunc;
+import org.op4j.executables.functions.MapFuncs;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.impl.listofarray.Level0ListOfArrayOperator;
@@ -65,12 +65,12 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
 
 
     public ILevel0SetOperator<K> extractKeys() {
-        return new Level0SetOperator<K>(getTarget().execute(new MapFunc.ExtractKeys<K, V>()));
+        return new Level0SetOperator<K>(getTarget().execute(new MapFuncs.ExtractKeys<K, V>()));
     }
 
 
     public ILevel0ListOfArrayOperator<V> extractValues() {
-        return new Level0ListOfArrayOperator<V>(this.arrayOf, getTarget().execute(new MapFunc.ExtractValues<K, V>()));
+        return new Level0ListOfArrayOperator<V>(this.arrayOf, getTarget().execute(new MapFuncs.ExtractValues<K, V>()));
     }
 
 
@@ -116,22 +116,22 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
 
 
     public ILevel0MapOfArrayOperator<K, V> put(final K newKey, final V[] newValue) {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFunc.Put<K,V[]>(newKey, newValue)));
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFuncs.Put<K,V[]>(newKey, newValue)));
     }
 
 
     public ILevel0MapOfArrayOperator<K, V> insert(final int position, final K newKey, final V[] newValue) {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFunc.Insert<K,V[]>(position, newKey, newValue)));
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFuncs.Insert<K,V[]>(position, newKey, newValue)));
     }
 
 
     public ILevel0MapOfArrayOperator<K, V> putAll(final Map<K, V[]> map) {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFunc.PutAll<K,V[]>(map)));
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFuncs.PutAll<K,V[]>(map)));
     }
 
     
     public ILevel0MapOfArrayOperator<K, V> insertAll(final int position, final Map<K, V[]> map) {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFunc.InsertAll<K,V[]>(position, map)));
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFuncs.InsertAll<K,V[]>(position, map)));
     }
 
 
@@ -141,27 +141,27 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
 
 
     public ILevel0MapOfArrayOperator<K, V> removeKeys(final K... keys) {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFunc.RemoveKeys<K,V[]>(keys)));
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFuncs.RemoveKeys<K,V[]>(keys)));
     }
 
 
     public ILevel0MapOfArrayOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFunc.RemoveMatching<K,V[]>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFuncs.RemoveMatching<K,V[]>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0MapOfArrayOperator<K, V> removeMatching(final IEval<Boolean, ? super Entry<K, V[]>> eval) {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFunc.RemoveMatching<K,V[]>(eval)));
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFuncs.RemoveMatching<K,V[]>(eval)));
     }
 
 
     public ILevel0MapOfArrayOperator<K, V> removeSelected(final ISelect<Entry<K, V[]>> selector) {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFunc.RemoveSelected<K,V[]>(selector)));
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFuncs.RemoveSelected<K,V[]>(selector)));
     }
 
 
     public ILevel0MapOfArrayOperator<K, V> removeKeysNot(final K... keys) {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFunc.RemoveKeysNot<K,V[]>(keys)));
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFuncs.RemoveKeysNot<K,V[]>(keys)));
     }
 
 
@@ -171,12 +171,12 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
 
     @SuppressWarnings("unchecked")
     public ILevel0MapOfArrayOperator<K, V> sort() {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFunc.SortByKey()));
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFuncs.SortByKey()));
     }
 
 
     public ILevel0MapOfArrayOperator<K, V> sort(final Comparator<? super Entry<K, V[]>> comparator) {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFunc.SortEntries<K, V[]>(comparator)));
+        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFuncs.SortEntries<K, V[]>(comparator)));
     }
 
 

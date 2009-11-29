@@ -29,7 +29,7 @@ import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.ListFunc;
+import org.op4j.executables.functions.ListFuncs;
 import org.op4j.executables.functions.conversion.ToArray;
 import org.op4j.executables.functions.conversion.ToList;
 import org.op4j.executables.functions.conversion.ToMap;
@@ -77,16 +77,16 @@ public class Level0GenericMultiOperator<T> extends Operator
 
 
     public ILevel0GenericMultiOperator<T> add(final T... newElements) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.Add<T>(newElements)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.Add<T>(newElements)));
     }
 
     public ILevel0GenericMultiOperator<T> insert(final int position, final T... newElements) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.Insert<T>(position, newElements)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.Insert<T>(position, newElements)));
     }
 
 
     public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.AddAll<T>(collection)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.AddAll<T>(collection)));
     }
 
 
@@ -176,57 +176,57 @@ public class Level0GenericMultiOperator<T> extends Operator
 
 
     public ILevel0GenericMultiOperator<T> removeIndexes(final int... indices) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveIndexes<T>(indices)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveIndexes<T>(indices)));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeEquals(final T... values) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveEquals<T>(values)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveEquals<T>(values)));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeMatching(final IEval<Boolean, ? super T> eval) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveMatching<T>(eval)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveMatching<T>(eval)));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeNullOrMatching(final IEval<Boolean, ? super T> eval) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveNullOrMatching<T>(eval)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<T>(eval)));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeNotNullMatching(final IEval<Boolean, ? super T> eval) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveNotNullMatching<T>(eval)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<T>(eval)));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeSelected(final ISelect<T> selector) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveSelected<T>(selector)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveSelected<T>(selector)));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeIndexesNot(final int... indices) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveIndexesNot<T>(indices)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveIndexesNot<T>(indices)));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveNotNullMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveNullOrMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeNulls() {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFunc.RemoveNulls<T>()));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNulls<T>()));
     }
 
 

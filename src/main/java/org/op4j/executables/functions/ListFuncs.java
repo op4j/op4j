@@ -39,18 +39,18 @@ import org.op4j.executables.ISelect;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-public class ListFunc {
+public class ListFuncs {
     
     
     
-    private ListFunc() {
+    private ListFuncs() {
         super();
     }
 
     
     
     
-    public static final class Sort<T extends Comparable<? super T>> extends CollectionFunc.Sort<T, List<T>> {
+    public static final class Sort<T extends Comparable<? super T>> extends CollectionFuncs.Sort<T, List<T>> {
 
         public Sort() {
             super();
@@ -70,7 +70,7 @@ public class ListFunc {
 
     
     
-    public static final class SortByComparator<T> extends CollectionFunc.SortByComparator<T, List<T>> {
+    public static final class SortByComparator<T> extends CollectionFuncs.SortByComparator<T, List<T>> {
 
         public SortByComparator(final Comparator<? super T> comparator) {
             super(comparator);
@@ -90,7 +90,7 @@ public class ListFunc {
     
     
     
-    public static final class Distinct<T> implements IFunc<List<T>, List<T>> {
+    public static final class Distinct<T> extends AbstractFunc<List<T>, List<T>> {
 
         public Distinct() {
             super();
@@ -100,7 +100,8 @@ public class ListFunc {
             return Types.LIST_OF_UNKNOWN;
         }
 
-        public List<T> execute(final List<T> object) throws Exception {
+        @Override
+        public List<T> doExecute(final List<T> object) throws Exception {
             return new ArrayList<T>(new LinkedHashSet<T>(object));
         }
 
@@ -110,7 +111,7 @@ public class ListFunc {
     
     
     
-    public static final class Add<T> extends CollectionFunc.Add<T, List<T>> {
+    public static final class Add<T> extends CollectionFuncs.Add<T, List<T>> {
 
         public Add(final T... newElements) {
             super(newElements);
@@ -131,7 +132,7 @@ public class ListFunc {
     
     
     
-    public static final class Insert<T> extends CollectionFunc.Insert<T, List<T>> {
+    public static final class Insert<T> extends CollectionFuncs.Insert<T, List<T>> {
 
         public Insert(final int position, T... newElements) {
             super(position, newElements);
@@ -152,7 +153,7 @@ public class ListFunc {
     
     
     
-    public static final class AddAll<T> extends CollectionFunc.AddAll<T, List<T>> {
+    public static final class AddAll<T> extends CollectionFuncs.AddAll<T, List<T>> {
 
         public AddAll(final Collection<T> collection) {
             super(collection);
@@ -172,7 +173,7 @@ public class ListFunc {
 
     
     
-    public static final class RemoveIndexes<T> extends CollectionFunc.RemoveIndexes<T, List<T>> {
+    public static final class RemoveIndexes<T> extends CollectionFuncs.RemoveIndexes<T, List<T>> {
 
         
         public RemoveIndexes(final int... indices) {
@@ -193,7 +194,7 @@ public class ListFunc {
 
     
     
-    public static final class RemoveEquals<T> extends CollectionFunc.RemoveEquals<T, List<T>> {
+    public static final class RemoveEquals<T> extends CollectionFuncs.RemoveEquals<T, List<T>> {
 
         public RemoveEquals(final T... values) {
             super(values);
@@ -213,7 +214,7 @@ public class ListFunc {
 
     
     
-    public static final class RemoveMatching<T> extends CollectionFunc.RemoveMatching<T, List<T>> {
+    public static final class RemoveMatching<T> extends CollectionFuncs.RemoveMatching<T, List<T>> {
 
         public RemoveMatching(final IEval<Boolean,? super T> eval) {
             super(eval);
@@ -233,7 +234,7 @@ public class ListFunc {
 
     
     
-    public static final class RemoveSelected<T> extends CollectionFunc.RemoveSelected<T, List<T>> {
+    public static final class RemoveSelected<T> extends CollectionFuncs.RemoveSelected<T, List<T>> {
 
         public RemoveSelected(final ISelect<T> selector) {
             super(selector);
@@ -253,7 +254,7 @@ public class ListFunc {
 
     
     
-    public static final class RemoveIndexesNot<T> extends CollectionFunc.RemoveIndexesNot<T, List<T>> {
+    public static final class RemoveIndexesNot<T> extends CollectionFuncs.RemoveIndexesNot<T, List<T>> {
 
         public RemoveIndexesNot(final int... indices) {
             super(indices);
@@ -273,7 +274,7 @@ public class ListFunc {
 
     
     
-    public static final class RemoveNulls<T> extends CollectionFunc.RemoveNulls<T, List<T>> {
+    public static final class RemoveNulls<T> extends CollectionFuncs.RemoveNulls<T, List<T>> {
 
         public RemoveNulls() {
             super();
@@ -293,7 +294,7 @@ public class ListFunc {
 
     
     
-    public static final class RemoveNotNullMatching<T> extends CollectionFunc.RemoveNotNullMatching<T, List<T>> {
+    public static final class RemoveNotNullMatching<T> extends CollectionFuncs.RemoveNotNullMatching<T, List<T>> {
 
         public RemoveNotNullMatching(final IEval<Boolean,? super T> eval) {
             super(eval);
@@ -312,7 +313,7 @@ public class ListFunc {
     
     
     
-    public static final class RemoveNullOrMatching<T> extends CollectionFunc.RemoveNullOrMatching<T, List<T>> {
+    public static final class RemoveNullOrMatching<T> extends CollectionFuncs.RemoveNullOrMatching<T, List<T>> {
 
         public RemoveNullOrMatching(final IEval<Boolean,? super T> eval) {
             super(eval);
@@ -332,7 +333,7 @@ public class ListFunc {
     
     
     
-    public static final class FlattenArrays<T> extends CollectionFunc.FlattenArrays<T, List<T>, List<T[]>> {
+    public static final class FlattenArrays<T> extends CollectionFuncs.FlattenArrays<T, List<T>, List<T[]>> {
 
         
         public FlattenArrays() {
@@ -353,7 +354,7 @@ public class ListFunc {
 
     
     
-    public static final class FlattenLists<T> extends CollectionFunc.FlattenCollections<T, List<T>, List<List<T>>> {
+    public static final class FlattenLists<T> extends CollectionFuncs.FlattenCollections<T, List<T>, List<List<T>>> {
 
         
         public FlattenLists() {
@@ -374,7 +375,7 @@ public class ListFunc {
 
     
     
-    public static final class FlattenSets<T> extends CollectionFunc.FlattenCollections<T, List<T>, List<Set<T>>> {
+    public static final class FlattenSets<T> extends CollectionFuncs.FlattenCollections<T, List<T>, List<Set<T>>> {
 
         
         public FlattenSets() {

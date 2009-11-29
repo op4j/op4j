@@ -196,7 +196,8 @@ final class ToNonDecimalNumber {
         }
 
         
-        public X execute(Float object) throws Exception {
+        @Override
+        public X doExecute(Float object) throws Exception {
             BigDecimal bigDecimal = 
                 new BigDecimal(object.doubleValue());
             bigDecimal = bigDecimal.setScale(0, this.roundingMode);
@@ -220,7 +221,8 @@ final class ToNonDecimalNumber {
         }
 
         
-        public X execute(Double object) throws Exception {
+        @Override
+        public X doExecute(Double object) throws Exception {
             BigDecimal bigDecimal = 
                 new BigDecimal(object.doubleValue());
             bigDecimal = bigDecimal.setScale(0, this.roundingMode);
@@ -244,7 +246,8 @@ final class ToNonDecimalNumber {
         }
 
 
-        public X execute(BigDecimal object) throws Exception {
+        @Override
+        public X doExecute(BigDecimal object) throws Exception {
             return fromNumber(object.setScale(0, this.roundingMode));
         }
         

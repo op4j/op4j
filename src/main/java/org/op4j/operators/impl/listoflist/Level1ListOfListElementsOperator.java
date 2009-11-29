@@ -28,7 +28,7 @@ import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.ListFunc;
+import org.op4j.executables.functions.ListFuncs;
 import org.op4j.executables.functions.conversion.ToArray;
 import org.op4j.executables.functions.conversion.ToMap;
 import org.op4j.executables.functions.conversion.ToSet;
@@ -64,22 +64,22 @@ public class Level1ListOfListElementsOperator<T> extends Operator
 
 
     public ILevel1ListOfListElementsOperator<T> add(final T... newElements) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.Add<T>(newElements)));
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFuncs.Add<T>(newElements)));
     }
 
 
     public ILevel1ListOfListElementsOperator<T> insert(final int position, final T... newElements) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.Insert<T>(position, newElements)));
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFuncs.Insert<T>(position, newElements)));
     }
 
 
     public ILevel1ListOfListElementsOperator<T> addAll(final Collection<T> collection) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.AddAll<T>(collection)));
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFuncs.AddAll<T>(collection)));
     }
 
 
     public ILevel1ListOfListElementsOperator<T> distinct() {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.Distinct<T>()));
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFuncs.Distinct<T>()));
     }
 
 
@@ -177,57 +177,57 @@ public class Level1ListOfListElementsOperator<T> extends Operator
 
 
     public ILevel1ListOfListElementsOperator<T> removeIndexes(final int... indices) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveIndexes<T>(indices)));
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFuncs.RemoveIndexes<T>(indices)));
     }
 
 
     public ILevel1ListOfListElementsOperator<T> removeEquals(final T... values) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveEquals<T>(values)));
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFuncs.RemoveEquals<T>(values)));
     }
 
 
     public ILevel1ListOfListElementsOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFuncs.RemoveMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel1ListOfListElementsOperator<T> removeMatching(final IEval<Boolean, ? super T> eval) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveMatching<T>(eval)));
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFuncs.RemoveMatching<T>(eval)));
     }
 
 
     public ILevel1ListOfListElementsOperator<T> removeNullOrMatching(final IEval<Boolean, ? super T> eval) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveNullOrMatching<T>(eval)));
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<T>(eval)));
     }
 
 
     public ILevel1ListOfListElementsOperator<T> removeNotNullMatching(final IEval<Boolean, ? super T> eval) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveNotNullMatching<T>(eval)));
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<T>(eval)));
     }
 
 
     public ILevel1ListOfListElementsOperator<T> removeSelected(final ISelect<T> selector) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveSelected<T>(selector)));
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFuncs.RemoveSelected<T>(selector)));
     }
 
 
     public ILevel1ListOfListElementsOperator<T> removeIndexesNot(final int... indices) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveIndexesNot<T>(indices)));
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFuncs.RemoveIndexesNot<T>(indices)));
     }
 
 
     public ILevel1ListOfListElementsOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveNotNullMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel1ListOfListElementsOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveNullOrMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel1ListOfListElementsOperator<T> removeNulls() {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.RemoveNulls<T>()));
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFuncs.RemoveNulls<T>()));
     }
 
     
@@ -235,12 +235,12 @@ public class Level1ListOfListElementsOperator<T> extends Operator
 
     @SuppressWarnings("unchecked")
     public ILevel1ListOfListElementsOperator<T> sort() {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.Sort()));
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFuncs.Sort()));
     }
 
 
     public ILevel1ListOfListElementsOperator<T> sort(final Comparator<? super T> comparator) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFunc.SortByComparator<T>(comparator)));
+        return new Level1ListOfListElementsOperator<T>(getTarget().execute(new ListFuncs.SortByComparator<T>(comparator)));
     }
 
 

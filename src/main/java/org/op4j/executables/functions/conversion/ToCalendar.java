@@ -35,7 +35,7 @@ import org.apache.commons.lang.time.DateUtils;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.exceptions.FunctionExecutionException;
-import org.op4j.executables.functions.IFunc;
+import org.op4j.executables.functions.AbstractFunc;
 
 /**
  * 
@@ -185,7 +185,7 @@ public final class ToCalendar {
 	
 	
 	
-	public static final class FromCalendar implements IFunc<Calendar, Calendar> {
+	public static final class FromCalendar extends AbstractFunc<Calendar, Calendar> {
 	
 		private Integer truncateField = null;
 		
@@ -202,7 +202,8 @@ public final class ToCalendar {
 			return Types.CALENDAR;
 		}
 
-		public Calendar execute(final Calendar object) throws Exception {
+		@Override
+        public Calendar doExecute(final Calendar object) throws Exception {
 			if (this.truncateField == null) {
 				return (Calendar) object.clone();
 			}
@@ -213,7 +214,7 @@ public final class ToCalendar {
 	
 
 	
-	public static final class FromDate implements IFunc<Calendar, Date> {
+	public static final class FromDate extends AbstractFunc<Calendar, Date> {
 	
 		private Integer truncateField = null;
 		
@@ -230,7 +231,8 @@ public final class ToCalendar {
 			return Types.CALENDAR;
 		}
 
-		public Calendar execute(final Date object) throws Exception {
+		@Override
+        public Calendar doExecute(final Date object) throws Exception {
 			
 			final Calendar calendar = Calendar.getInstance();
 			calendar.setTimeInMillis(object.getTime());
@@ -246,7 +248,7 @@ public final class ToCalendar {
 	
 
 	
-	public static final class FromTimestamp implements IFunc<Calendar, Timestamp> {
+	public static final class FromTimestamp extends AbstractFunc<Calendar, Timestamp> {
 	
 		private Integer truncateField = null;
 		
@@ -263,7 +265,8 @@ public final class ToCalendar {
 			return Types.CALENDAR;
 		}
 
-		public Calendar execute(final Timestamp object) throws Exception {
+		@Override
+        public Calendar doExecute(final Timestamp object) throws Exception {
 			
 			final Calendar calendar = Calendar.getInstance();
 			calendar.setTimeInMillis(object.getTime());
@@ -279,7 +282,7 @@ public final class ToCalendar {
 	
 
 	
-	public static final class FromTimeInMillis implements IFunc<Calendar, Long> {
+	public static final class FromTimeInMillis extends AbstractFunc<Calendar, Long> {
 	
 		private Integer truncateField = null;
 		
@@ -296,7 +299,8 @@ public final class ToCalendar {
 			return Types.CALENDAR;
 		}
 
-		public Calendar execute(final Long object) throws Exception {
+		@Override
+        public Calendar doExecute(final Long object) throws Exception {
 			
 			final Calendar calendar = Calendar.getInstance();
 			calendar.setTimeInMillis(object.longValue());
@@ -313,7 +317,7 @@ public final class ToCalendar {
 	
 	
 	
-	public static final class FromString implements IFunc<Calendar, String> {
+	public static final class FromString extends AbstractFunc<Calendar, String> {
 
 		private final SimpleDateFormat simpleDateFormat;
 
@@ -344,7 +348,8 @@ public final class ToCalendar {
 			return Types.CALENDAR;
 		}
 
-		public Calendar execute(final String object) throws Exception {
+		@Override
+        public Calendar doExecute(final String object) throws Exception {
 			// Calendar is truncated to YEAR to ensure all fields are set to zero before 
 			// parsing the string into the new calendar object
 			final Calendar calendar = 
@@ -357,7 +362,7 @@ public final class ToCalendar {
 
 	
 	
-	public static final class FromIntegerFieldList implements IFunc<Calendar, List<Integer>> {
+	public static final class FromIntegerFieldList extends AbstractFunc<Calendar, List<Integer>> {
 		
 		
 		public FromIntegerFieldList() {
@@ -368,7 +373,8 @@ public final class ToCalendar {
 			return Types.CALENDAR;
 		}
 
-		public Calendar execute(final List<Integer> object) throws Exception {
+		@Override
+        public Calendar doExecute(final List<Integer> object) throws Exception {
 			
             if (object.size() != 3 &&  // year, month, day
         		object.size() != 5 &&  // year, month, day, hour, minute
@@ -399,7 +405,7 @@ public final class ToCalendar {
 	
 	
 	
-	public static final class FromIntegerFieldArray implements IFunc<Calendar, Integer[]> {
+	public static final class FromIntegerFieldArray extends AbstractFunc<Calendar, Integer[]> {
 		
 		
 		public FromIntegerFieldArray() {
@@ -410,7 +416,8 @@ public final class ToCalendar {
 			return Types.CALENDAR;
 		}
 
-		public Calendar execute(final Integer[] object) throws Exception {
+		@Override
+        public Calendar doExecute(final Integer[] object) throws Exception {
 			
             if (object.length != 3 &&  // year, month, day
         		object.length != 5 &&  // year, month, day, hour, minute
@@ -440,7 +447,7 @@ public final class ToCalendar {
 
 	
 	
-	public static final class FromStringFieldList implements IFunc<Calendar, List<String>> {
+	public static final class FromStringFieldList extends AbstractFunc<Calendar, List<String>> {
 		
 		
 		public FromStringFieldList() {
@@ -451,7 +458,8 @@ public final class ToCalendar {
 			return Types.CALENDAR;
 		}
 
-		public Calendar execute(final List<String> object) throws Exception {
+		@Override
+        public Calendar doExecute(final List<String> object) throws Exception {
 			
             if (object.size() != 3 &&  // year, month, day
         		object.size() != 5 &&  // year, month, day, hour, minute
@@ -482,7 +490,7 @@ public final class ToCalendar {
 	
 	
 	
-	public static final class FromStringFieldArray implements IFunc<Calendar, String[]> {
+	public static final class FromStringFieldArray extends AbstractFunc<Calendar, String[]> {
 		
 		
 		public FromStringFieldArray() {
@@ -493,7 +501,8 @@ public final class ToCalendar {
 			return Types.CALENDAR;
 		}
 
-		public Calendar execute(final String[] object) throws Exception {
+		@Override
+        public Calendar doExecute(final String[] object) throws Exception {
 			
             if (object.length != 3 &&  // year, month, day
         		object.length != 5 &&  // year, month, day, hour, minute

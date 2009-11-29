@@ -32,7 +32,7 @@ import org.javaruntype.type.Types;
 import org.op4j.exceptions.FunctionExecutionException;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
-import org.op4j.executables.functions.IFunc;
+import org.op4j.executables.functions.AbstractFunc;
 
 /**
  * 
@@ -66,7 +66,7 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromArrayByKeyEval<K, T> implements IFunc<Map<K, T[]>, T[]> {
+    public static final class FromArrayByKeyEval<K, T> extends AbstractFunc<Map<K, T[]>, T[]> {
 
         private final IEval<K,? super T> eval;
         private final Type<T> type;
@@ -81,7 +81,8 @@ public class ToMapOfArray {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-		public Map<K, T[]> execute(final T[] object) throws Exception {
+		@Override
+        public Map<K, T[]> doExecute(final T[] object) throws Exception {
         	
             final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
             for (final T element: object) {
@@ -104,7 +105,7 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromArrayByMapBuilder<K, V, T> implements IFunc<Map<K, V[]>, T[]> {
+    public static final class FromArrayByMapBuilder<K, V, T> extends AbstractFunc<Map<K, V[]>, T[]> {
 
         private final IMapBuild<K, V, ? super T> mapBuilder;
         private final Type<V> type;
@@ -119,7 +120,8 @@ public class ToMapOfArray {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K, V[]> execute(final T[] object) throws Exception {
+        @Override
+        public Map<K, V[]> doExecute(final T[] object) throws Exception {
         	
             final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
@@ -142,7 +144,7 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromArrayByAlternateElements<T> implements IFunc<Map<T, T[]>, T[]> {
+    public static final class FromArrayByAlternateElements<T> extends AbstractFunc<Map<T, T[]>, T[]> {
 
         private final Type<T> type;
     	
@@ -155,7 +157,8 @@ public class ToMapOfArray {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<T, T[]> execute(final T[] object) throws Exception {
+        @Override
+        public Map<T, T[]> doExecute(final T[] object) throws Exception {
         	
             if (object.length % 2 != 0) {
                 throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");
@@ -185,7 +188,7 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromListByKeyEval<K, T> implements IFunc<Map<K, T[]>, List<T>> {
+    public static final class FromListByKeyEval<K, T> extends AbstractFunc<Map<K, T[]>, List<T>> {
 
         private final IEval<K,? super T> eval;
         private final Type<T> type;
@@ -200,7 +203,8 @@ public class ToMapOfArray {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K, T[]> execute(final List<T> object) throws Exception {
+        @Override
+        public Map<K, T[]> doExecute(final List<T> object) throws Exception {
         	
             final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
             for (final T element: object) {
@@ -223,7 +227,7 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromListByMapBuilder<K, V, T> implements IFunc<Map<K, V[]>, List<T>> {
+    public static final class FromListByMapBuilder<K, V, T> extends AbstractFunc<Map<K, V[]>, List<T>> {
 
         private final IMapBuild<K, V, ? super T> mapBuilder;
         private final Type<V> type;
@@ -238,7 +242,8 @@ public class ToMapOfArray {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K, V[]> execute(final List<T> object) throws Exception {
+        @Override
+        public Map<K, V[]> doExecute(final List<T> object) throws Exception {
         	
             final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
@@ -261,7 +266,7 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromListByAlternateElements<T> implements IFunc<Map<T, T[]>, List<T>> {
+    public static final class FromListByAlternateElements<T> extends AbstractFunc<Map<T, T[]>, List<T>> {
 
         private final Type<T> type;
     	
@@ -274,7 +279,8 @@ public class ToMapOfArray {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<T, T[]> execute(final List<T> object) throws Exception {
+        @Override
+        public Map<T, T[]> doExecute(final List<T> object) throws Exception {
         	
             if (object.size() % 2 != 0) {
                 throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");
@@ -303,7 +309,7 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromSetByKeyEval<K, T> implements IFunc<Map<K, T[]>, Set<T>> {
+    public static final class FromSetByKeyEval<K, T> extends AbstractFunc<Map<K, T[]>, Set<T>> {
 
         private final IEval<K,? super T> eval;
         private final Type<T> type;
@@ -318,7 +324,8 @@ public class ToMapOfArray {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K, T[]> execute(final Set<T> object) throws Exception {
+        @Override
+        public Map<K, T[]> doExecute(final Set<T> object) throws Exception {
         	
             final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
             for (final T element: object) {
@@ -341,7 +348,7 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromSetByMapBuilder<K, V, T> implements IFunc<Map<K, V[]>, Set<T>> {
+    public static final class FromSetByMapBuilder<K, V, T> extends AbstractFunc<Map<K, V[]>, Set<T>> {
 
         private final IMapBuild<K, V, ? super T> mapBuilder;
         private final Type<V> type;
@@ -356,7 +363,8 @@ public class ToMapOfArray {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K, V[]> execute(final Set<T> object) throws Exception {
+        @Override
+        public Map<K, V[]> doExecute(final Set<T> object) throws Exception {
         	
             final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
@@ -379,7 +387,7 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromSetByAlternateElements<T> implements IFunc<Map<T, T[]>, Set<T>> {
+    public static final class FromSetByAlternateElements<T> extends AbstractFunc<Map<T, T[]>, Set<T>> {
 
         private final Type<T> type;
     	
@@ -392,7 +400,8 @@ public class ToMapOfArray {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<T, T[]> execute(final Set<T> object) throws Exception {
+        @Override
+        public Map<T, T[]> doExecute(final Set<T> object) throws Exception {
         	
             if (object.size() % 2 != 0) {
                 throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");

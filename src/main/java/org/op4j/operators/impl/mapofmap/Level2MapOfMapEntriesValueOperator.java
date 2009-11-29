@@ -27,7 +27,7 @@ import org.javaruntype.type.Type;
 import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.MapFunc;
+import org.op4j.executables.functions.MapFuncs;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.mapoflist.Level2MapOfListEntriesValueOperator;
 import org.op4j.operators.impl.mapofset.Level2MapOfSetEntriesValueOperator;
@@ -63,12 +63,12 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
 
 
     public ILevel2MapOfSetEntriesValueOperator<K1, K2> extractKeys() {
-        return new Level2MapOfSetEntriesValueOperator<K1, K2>(getTarget().execute(new MapFunc.ExtractKeys<K2, V>()));
+        return new Level2MapOfSetEntriesValueOperator<K1, K2>(getTarget().execute(new MapFuncs.ExtractKeys<K2, V>()));
     }
 
 
     public ILevel2MapOfListEntriesValueOperator<K1, V> extractValues() {
-        return new Level2MapOfListEntriesValueOperator<K1, V>(getTarget().execute(new MapFunc.ExtractValues<K2, V>()));
+        return new Level2MapOfListEntriesValueOperator<K1, V>(getTarget().execute(new MapFuncs.ExtractValues<K2, V>()));
     }
 
 
@@ -114,22 +114,22 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> put(final K2 newKey, final V newValue) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.Put<K2, V>(newKey, newValue)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.Put<K2, V>(newKey, newValue)));
     }
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> insert(final int position, final K2 newKey, final V newValue) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.Insert<K2, V>(position, newKey, newValue)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.Insert<K2, V>(position, newKey, newValue)));
     }
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> putAll(final Map<K2, V> map) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.PutAll<K2, V>(map)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.PutAll<K2, V>(map)));
     }
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> insertAll(final int position, final Map<K2, V> map) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.InsertAll<K2, V>(position, map)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.InsertAll<K2, V>(position, map)));
     }
 
 
@@ -139,27 +139,27 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeKeys(final K2... keys) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.RemoveKeys<K2, V>(keys)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.RemoveKeys<K2, V>(keys)));
     }
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.RemoveMatching<K2, V>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.RemoveMatching<K2, V>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeMatching(final IEval<Boolean, ? super Entry<K2, V>> eval) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.RemoveMatching<K2, V>(eval)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.RemoveMatching<K2, V>(eval)));
     }
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeSelected(final ISelect<Entry<K2, V>> selector) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.RemoveSelected<K2, V>(selector)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.RemoveSelected<K2, V>(selector)));
     }
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeKeysNot(final K2... keys) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.RemoveKeysNot<K2, V>(keys)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.RemoveKeysNot<K2, V>(keys)));
     }
 
 
@@ -174,13 +174,13 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
 
     @SuppressWarnings("unchecked")
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> sort() {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.SortByKey()));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.SortByKey()));
     }
 
 
     @SuppressWarnings("unchecked")
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> sort(final Comparator<? super Entry<K2, V>> comparator) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFunc.SortEntries(comparator)));
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.SortEntries(comparator)));
     }
 
 

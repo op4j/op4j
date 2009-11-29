@@ -25,7 +25,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import org.op4j.executables.functions.IFunc;
+import org.op4j.executables.functions.AbstractFunc;
 
 /**
  * 
@@ -45,13 +45,14 @@ class ToCollection {
     
     
     
-    static abstract class FromArray<T, X extends Collection<T>> implements IFunc<X, T[]> {
+    static abstract class FromArray<T, X extends Collection<T>> extends AbstractFunc<X, T[]> {
 
         public FromArray() {
             super();
         }
 
-        public X execute(final T[] object) throws Exception {
+        @Override
+        public X doExecute(final T[] object) throws Exception {
             return fromList(new ArrayList<T>(Arrays.asList(object)));
         }
         
@@ -63,13 +64,14 @@ class ToCollection {
 
     
     
-    static abstract class FromCollection<T, X extends Collection<T>> implements IFunc<X, Collection<T>> {
+    static abstract class FromCollection<T, X extends Collection<T>> extends AbstractFunc<X, Collection<T>> {
 
         public FromCollection() {
             super();
         }
 
-        public X execute(final Collection<T> object) throws Exception {
+        @Override
+        public X doExecute(final Collection<T> object) throws Exception {
             return fromList(new ArrayList<T>(object));
         }
         
@@ -81,13 +83,14 @@ class ToCollection {
 
     
     
-    static abstract class FromObject<T, X extends Collection<T>> implements IFunc<X, T> {
+    static abstract class FromObject<T, X extends Collection<T>> extends AbstractFunc<X, T> {
 
         public FromObject() {
             super();
         }
 
-        public X execute(final T object) throws Exception {
+        @Override
+        public X doExecute(final T object) throws Exception {
             final List<T> result = new ArrayList<T>();
             result.add(object);
             return fromList(result);

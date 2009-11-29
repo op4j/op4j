@@ -27,7 +27,7 @@ import java.util.List;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.executables.functions.IFunc;
+import org.op4j.executables.functions.AbstractFunc;
 
 /**
  * 
@@ -47,7 +47,7 @@ public final class ToArray {
     
     
     
-    public static final class FromCollection<T> implements IFunc<T[], Collection<T>> {
+    public static final class FromCollection<T> extends AbstractFunc<T[], Collection<T>> {
 
         private final Type<T> type;
         
@@ -60,8 +60,9 @@ public final class ToArray {
             return Types.ARRAY_OF_OBJECT;
         }
 
+        @Override
         @SuppressWarnings("unchecked")
-        public T[] execute(final Collection<T> object) throws Exception {
+        public T[] doExecute(final Collection<T> object) throws Exception {
             final List<T> result = new ArrayList<T>(object);
             final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
             return result.toArray(array);
@@ -71,7 +72,7 @@ public final class ToArray {
 
     
     
-    public static final class FromObject<T> implements IFunc<T[], T> {
+    public static final class FromObject<T> extends AbstractFunc<T[], T> {
 
         private final Type<T> type;
         
@@ -84,8 +85,9 @@ public final class ToArray {
             return Types.ARRAY_OF_OBJECT;
         }
 
+        @Override
         @SuppressWarnings("unchecked")
-        public T[] execute(final T object) throws Exception {
+        public T[] doExecute(final T object) throws Exception {
             final List<T> result = new ArrayList<T>();
             result.add(object);
             final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());

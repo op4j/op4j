@@ -43,12 +43,12 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-public class MapFunc {
+public class MapFuncs {
 
     
     
     
-    private MapFunc() {
+    private MapFuncs() {
         super();
     }
 
@@ -57,7 +57,7 @@ public class MapFunc {
     
     
     
-    public static class SortByKey<K extends Comparable<? super K>, V> implements IFunc<Map<K, V>, Map<K, V>> {
+    public static class SortByKey<K extends Comparable<? super K>, V> extends AbstractFunc<Map<K, V>, Map<K, V>> {
 
         public SortByKey() {
             super();
@@ -67,7 +67,8 @@ public class MapFunc {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K, V> execute(final Map<K, V> object) throws Exception {
+        @Override
+        public Map<K, V> doExecute(final Map<K, V> object) throws Exception {
             final List<K> keys = new ArrayList<K>(object.keySet());
             Collections.sort(keys);
             final Map<K, V> result = new LinkedHashMap<K, V>();
@@ -81,7 +82,7 @@ public class MapFunc {
 
     
     
-    public static class SortEntries<K, V> implements IFunc<Map<K, V>, Map<K, V>> {
+    public static class SortEntries<K, V> extends AbstractFunc<Map<K, V>, Map<K, V>> {
 
         private final Comparator<? super Map.Entry<K, V>> comparator;
 
@@ -94,7 +95,8 @@ public class MapFunc {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K, V> execute(final Map<K, V> object) throws Exception {
+        @Override
+        public Map<K, V> doExecute(final Map<K, V> object) throws Exception {
             final List<Map.Entry<K, V>> entries = new ArrayList<Entry<K,V>>(object.entrySet());
             Collections.sort(entries, this.comparator);
             final Map<K, V> result = new LinkedHashMap<K, V>();
@@ -110,7 +112,7 @@ public class MapFunc {
     
 
     
-    public static final class Put<K, V> implements IFunc<Map<K, V>,Map<K, V>> {
+    public static final class Put<K, V> extends AbstractFunc<Map<K, V>,Map<K, V>> {
 
         private final K key;
         private final V value;
@@ -125,7 +127,8 @@ public class MapFunc {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K,V> execute(final Map<K, V> object) throws Exception {
+        @Override
+        public Map<K,V> doExecute(final Map<K, V> object) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>(object);
             result.put(this.key, this.value);
             return result;
@@ -135,7 +138,7 @@ public class MapFunc {
 
     
     
-    public static final class Insert<K, V> implements IFunc<Map<K, V>,Map<K, V>> {
+    public static final class Insert<K, V> extends AbstractFunc<Map<K, V>,Map<K, V>> {
 
         private final int position;
         private final K key;
@@ -152,7 +155,8 @@ public class MapFunc {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K,V> execute(final Map<K, V> object) throws Exception {
+        @Override
+        public Map<K,V> doExecute(final Map<K, V> object) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>(object);
             int index = 0;
             for (final Map.Entry<K, V> entry : object.entrySet()) {
@@ -173,7 +177,7 @@ public class MapFunc {
     
     
     
-    public static final class PutAll<K, V> implements IFunc<Map<K, V>,Map<K, V>> {
+    public static final class PutAll<K, V> extends AbstractFunc<Map<K, V>,Map<K, V>> {
 
         private final Map<K, V> map;
         
@@ -186,7 +190,8 @@ public class MapFunc {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K,V> execute(final Map<K, V> object) throws Exception {
+        @Override
+        public Map<K,V> doExecute(final Map<K, V> object) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>(object);
             result.putAll(this.map);
             return result;
@@ -198,7 +203,7 @@ public class MapFunc {
     
     
     
-    public static final class InsertAll<K, V> implements IFunc<Map<K, V>,Map<K, V>> {
+    public static final class InsertAll<K, V> extends AbstractFunc<Map<K, V>,Map<K, V>> {
 
         private final int position;
         private final Map<K, V> map;
@@ -213,7 +218,8 @@ public class MapFunc {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K,V> execute(final Map<K, V> object) throws Exception {
+        @Override
+        public Map<K,V> doExecute(final Map<K, V> object) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>(object);
             int index = 0;
             for (final Map.Entry<K, V> entry : object.entrySet()) {
@@ -236,7 +242,7 @@ public class MapFunc {
     
 
     
-    public static final class RemoveKeys<K,V> implements IFunc<Map<K, V>,Map<K, V>> {
+    public static final class RemoveKeys<K,V> extends AbstractFunc<Map<K, V>,Map<K, V>> {
 
         private final List<K> keys;
         
@@ -249,7 +255,8 @@ public class MapFunc {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K, V> execute(final Map<K, V> object) throws Exception {
+        @Override
+        public Map<K, V> doExecute(final Map<K, V> object) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>(object);
             for (final K key : this.keys) {
                 result.remove(key);
@@ -263,7 +270,7 @@ public class MapFunc {
     
 
     
-    public static final class RemoveMatching<K, V> implements IFunc<Map<K, V>,Map<K, V>> {
+    public static final class RemoveMatching<K, V> extends AbstractFunc<Map<K, V>,Map<K, V>> {
 
         private final IEval<Boolean,? super Map.Entry<K, V>> eval;
         
@@ -276,7 +283,8 @@ public class MapFunc {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K, V> execute(final Map<K, V> object) throws Exception {
+        @Override
+        public Map<K, V> doExecute(final Map<K, V> object) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>();
             for (final Map.Entry<K, V> entry : object.entrySet()) {
                 if (!this.eval.execute(entry).booleanValue()) {
@@ -292,7 +300,7 @@ public class MapFunc {
     
 
     
-    public static final class RemoveSelected<K, V> implements IFunc<Map<K, V>,Map<K, V>> {
+    public static final class RemoveSelected<K, V> extends AbstractFunc<Map<K, V>,Map<K, V>> {
 
         private final ISelect<Map.Entry<K,V>> selector;
         
@@ -305,7 +313,8 @@ public class MapFunc {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K, V> execute(final Map<K, V> object) throws Exception {
+        @Override
+        public Map<K, V> doExecute(final Map<K, V> object) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>();
             for (final Map.Entry<K, V> entry : object.entrySet()) {
                 if (!this.selector.eval(entry)) {
@@ -321,7 +330,7 @@ public class MapFunc {
 
     
     
-    public static final class RemoveKeysNot<K, V> implements IFunc<Map<K, V>,Map<K, V>> {
+    public static final class RemoveKeysNot<K, V> extends AbstractFunc<Map<K, V>,Map<K, V>> {
 
         private final List<K> keys;
         
@@ -334,7 +343,8 @@ public class MapFunc {
             return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
-        public Map<K, V> execute(final Map<K, V> object) throws Exception {
+        @Override
+        public Map<K, V> doExecute(final Map<K, V> object) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>();
             for (final Map.Entry<K, V> entry : object.entrySet()) {
                 if (this.keys.contains(entry.getKey())) {
@@ -349,7 +359,7 @@ public class MapFunc {
     
     
     
-    public static class ExtractKeys<K, V> implements IFunc<Set<K>, Map<K, V>> {
+    public static class ExtractKeys<K, V> extends AbstractFunc<Set<K>, Map<K, V>> {
 
         public ExtractKeys() {
             super();
@@ -359,7 +369,8 @@ public class MapFunc {
             return Types.SET_OF_UNKNOWN;
         }
 
-        public Set<K> execute(final Map<K, V> object) throws Exception {
+        @Override
+        public Set<K> doExecute(final Map<K, V> object) throws Exception {
             return new LinkedHashSet<K>(object.keySet());
         }
         
@@ -367,7 +378,7 @@ public class MapFunc {
     
     
     
-    public static class ExtractValues<K, V> implements IFunc<List<V>, Map<K, V>> {
+    public static class ExtractValues<K, V> extends AbstractFunc<List<V>, Map<K, V>> {
 
         public ExtractValues() {
             super();
@@ -377,7 +388,8 @@ public class MapFunc {
             return Types.LIST_OF_UNKNOWN;
         }
 
-        public List<V> execute(final Map<K, V> object) throws Exception {
+        @Override
+        public List<V> doExecute(final Map<K, V> object) throws Exception {
             return new ArrayList<V>(object.values());
         }
         

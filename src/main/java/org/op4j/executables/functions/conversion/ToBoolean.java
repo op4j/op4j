@@ -26,7 +26,7 @@ import java.math.BigInteger;
 import org.apache.commons.lang.BooleanUtils;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.executables.functions.IFunc;
+import org.op4j.executables.functions.AbstractFunc;
 
 /**
  * 
@@ -64,7 +64,7 @@ public class ToBoolean {
 	
 	
 	
-	public static class FromBoolean implements IFunc<Boolean, Boolean> {
+	public static class FromBoolean extends AbstractFunc<Boolean, Boolean> {
 		
 		public FromBoolean() {
 			super();
@@ -74,7 +74,8 @@ public class ToBoolean {
 			return Types.BOOLEAN;
 		}
 
-		public Boolean execute(final Boolean object) throws Exception {
+		@Override
+        public Boolean doExecute(final Boolean object) throws Exception {
 			return Boolean.valueOf(object.booleanValue());
 		}
 		
@@ -83,7 +84,7 @@ public class ToBoolean {
 	
 	
 
-	public static class FromString implements IFunc<Boolean, String> {
+	public static class FromString extends AbstractFunc<Boolean, String> {
 		
 		public FromString() {
 			super();
@@ -93,7 +94,8 @@ public class ToBoolean {
 			return Types.BOOLEAN;
 		}
 
-		public Boolean execute(final String object) throws Exception {
+		@Override
+        public Boolean doExecute(final String object) throws Exception {
 			return BooleanUtils.toBooleanObject(object);
 		}
 		
@@ -103,7 +105,7 @@ public class ToBoolean {
 	
 	
 	
-	public static class FromNumber implements IFunc<Boolean, Number> {
+	public static class FromNumber extends AbstractFunc<Boolean, Number> {
 
 		public FromNumber() {
 			super();
@@ -113,7 +115,8 @@ public class ToBoolean {
 			return Types.BOOLEAN;
 		}
 
-		public Boolean execute(final Number object) throws Exception {
+		@Override
+        public Boolean doExecute(final Number object) throws Exception {
             boolean result = false;
             if (object instanceof BigDecimal) {
                 result = (((BigDecimal)object).unscaledValue().compareTo(BigInteger.ZERO) != 0);

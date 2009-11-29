@@ -28,7 +28,7 @@ import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.SetFunc;
+import org.op4j.executables.functions.SetFuncs;
 import org.op4j.executables.functions.conversion.ToArray;
 import org.op4j.executables.functions.conversion.ToList;
 import org.op4j.executables.functions.conversion.ToMap;
@@ -64,17 +64,17 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
 
 
     public ILevel1ArrayOfSetElementsOperator<T> add(final T... newElements) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.Add<T>(newElements)));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.Add<T>(newElements)));
     }
 
 
     public ILevel1ArrayOfSetElementsOperator<T> insert(final int position, final T... newElements) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.Insert<T>(position, newElements)));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.Insert<T>(position, newElements)));
     }
 
 
     public ILevel1ArrayOfSetElementsOperator<T> addAll(final Collection<T> collection) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.AddAll<T>(collection)));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.AddAll<T>(collection)));
     }
 
 
@@ -172,57 +172,57 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
 
 
     public ILevel1ArrayOfSetElementsOperator<T> removeIndexes(final int... indices) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveIndexes<T>(indices)));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.RemoveIndexes<T>(indices)));
     }
 
 
     public ILevel1ArrayOfSetElementsOperator<T> removeEquals(final T... values) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveEquals<T>(values)));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.RemoveEquals<T>(values)));
     }
 
 
     public ILevel1ArrayOfSetElementsOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.RemoveMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel1ArrayOfSetElementsOperator<T> removeMatching(final IEval<Boolean, ? super T> eval) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveMatching<T>(eval)));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.RemoveMatching<T>(eval)));
     }
 
 
     public ILevel1ArrayOfSetElementsOperator<T> removeNullOrMatching(final IEval<Boolean, ? super T> eval) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveNullOrMatching<T>(eval)));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.RemoveNullOrMatching<T>(eval)));
     }
 
 
     public ILevel1ArrayOfSetElementsOperator<T> removeNotNullMatching(final IEval<Boolean, ? super T> eval) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveNotNullMatching<T>(eval)));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.RemoveNotNullMatching<T>(eval)));
     }
 
 
     public ILevel1ArrayOfSetElementsOperator<T> removeSelected(final ISelect<T> selector) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveSelected<T>(selector)));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.RemoveSelected<T>(selector)));
     }
 
 
     public ILevel1ArrayOfSetElementsOperator<T> removeIndexesNot(final int... indices) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveIndexesNot<T>(indices)));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.RemoveIndexesNot<T>(indices)));
     }
 
 
     public ILevel1ArrayOfSetElementsOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveNotNullMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.RemoveNotNullMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel1ArrayOfSetElementsOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveNullOrMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.RemoveNullOrMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
     }
 
 
     public ILevel1ArrayOfSetElementsOperator<T> removeNulls() {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.RemoveNulls<T>()));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.RemoveNulls<T>()));
     }
 
     
@@ -230,12 +230,12 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
 
     @SuppressWarnings("unchecked")
     public ILevel1ArrayOfSetElementsOperator<T> sort() {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.Sort()));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.Sort()));
     }
 
 
     public ILevel1ArrayOfSetElementsOperator<T> sort(final Comparator<? super T> comparator) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFunc.SortByComparator<T>(comparator)));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.SortByComparator<T>(comparator)));
     }
 
 

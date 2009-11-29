@@ -27,7 +27,6 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.executables.functions.IFunc;
 
 /**
  * 
@@ -36,7 +35,7 @@ import org.op4j.executables.functions.IFunc;
  * @author Soraya S&aacute;nchez
  *
  */
-public class StringFunc {
+public class StringFuncs {
 
 	private static EscapeCSVStringFunc ESCAPE_CSV_STRING_FUNC = new EscapeCSVStringFunc();
 	private static UnescapeCSVStringFunc UNESCAPE_CSV_STRING_FUNC = new UnescapeCSVStringFunc();
@@ -53,7 +52,7 @@ public class StringFunc {
 	private static TrimStringFunc TRIM_STRING_FUNC = new TrimStringFunc();
 	private static StripStringFunc STRIP_STRING_FUNC = new StripStringFunc();
 	
-	private StringFunc() {
+	private StringFuncs() {
 		super();           
 	}
 
@@ -121,7 +120,7 @@ public class StringFunc {
         return STRIP_STRING_FUNC;
     }
 	
-	static abstract class BaseStringFunc<X> implements IFunc<String, X> {		
+	static abstract class BaseStringFunc<X> extends AbstractFunc<String, X> {		
 		public BaseStringFunc() {
 			super();			
 		}
@@ -141,7 +140,8 @@ public class StringFunc {
 			super();
 		}
 
-		public String execute(final String input) throws Exception {
+        @Override
+		public String doExecute(final String input) throws Exception {
 			return StringEscapeUtils.escapeCsv(input);
 		}		
 	}
@@ -157,7 +157,8 @@ public class StringFunc {
 			super();
 		}
 
-		public String execute(final String input) throws Exception {
+        @Override
+		public String doExecute(final String input) throws Exception {
 			return StringEscapeUtils.unescapeCsv(input);
 		}		
 	}
@@ -171,7 +172,8 @@ public class StringFunc {
 			super();
 		}
 
-		public String execute(final String input) throws Exception {
+        @Override
+		public String doExecute(final String input) throws Exception {
 			return StringEscapeUtils.escapeXml(input);
 		}		
 	}
@@ -185,7 +187,8 @@ public class StringFunc {
 			super();
 		}
 
-		public String execute(final String input) throws Exception {
+        @Override
+		public String doExecute(final String input) throws Exception {
 			return StringEscapeUtils.unescapeXml(input);
 		}		
 	}
@@ -199,7 +202,8 @@ public class StringFunc {
 			super();
 		}
 
-		public String execute(final String input) throws Exception {
+        @Override
+		public String doExecute(final String input) throws Exception {
 			return StringEscapeUtils.escapeHtml(input);
 		}		
 	}
@@ -214,7 +218,8 @@ public class StringFunc {
 			super();
 		}
 
-		public String execute(final String input) throws Exception {
+        @Override
+		public String doExecute(final String input) throws Exception {
 			return StringEscapeUtils.unescapeHtml(input);
 		}		
 	}
@@ -228,7 +233,8 @@ public class StringFunc {
 			super();
 		}
 
-		public String execute(final String input) throws Exception {
+        @Override
+		public String doExecute(final String input) throws Exception {
 			return StringEscapeUtils.escapeJavaScript(input);
 		}		
 	}
@@ -242,7 +248,8 @@ public class StringFunc {
 			super();
 		}
 
-		public String execute(final String input) throws Exception {
+        @Override
+		public String doExecute(final String input) throws Exception {
 			return StringEscapeUtils.unescapeJavaScript(input);
 		}		
 	}
@@ -260,7 +267,8 @@ public class StringFunc {
 			this.charset = charset;
 		}
 
-		public String execute(final String input) throws Exception {
+        @Override
+		public String doExecute(final String input) throws Exception {
 			Validate.notNull(this.charset, "Charset can't be null");
 			return new String(new Base64().encode(input.getBytes(
 					this.charset.name())), "US-ASCII");
@@ -280,7 +288,8 @@ public class StringFunc {
 			this.charset = charset;
 		}
 
-		public String execute(final String input) throws Exception {
+        @Override
+		public String doExecute(final String input) throws Exception {
 			Validate.notNull(this.charset, "Charset can't be null");
 			return new String(new Base64().decode(input.getBytes("US-ASCII")), 
 					this.charset.name()); 
@@ -300,7 +309,8 @@ public class StringFunc {
 			this.charset = charset;
 		}
 
-		public String execute(final String input) throws Exception {
+        @Override
+		public String doExecute(final String input) throws Exception {
 			Validate.notNull(this.charset, "Charset can't be null");
 
 			final byte[] inputAsByteArray = input.getBytes(this.charset.name());
@@ -325,7 +335,8 @@ public class StringFunc {
 			this.charset = charset;
 		}
 
-		public String execute(final String input) throws Exception {
+        @Override
+		public String doExecute(final String input) throws Exception {
 			Validate.notNull(this.charset, "Charset can't be null");
 
 			final StringBuffer output = new StringBuffer();            
@@ -351,7 +362,8 @@ public class StringFunc {
 			super();			
 		}
 
-		public String execute(final String input) throws Exception {
+        @Override
+		public String doExecute(final String input) throws Exception {
 			return StringUtils.upperCase(input);
 		}		
 	}
@@ -366,7 +378,8 @@ public class StringFunc {
 			super();			
 		}
 
-		public String execute(final String input) throws Exception {
+        @Override
+		public String doExecute(final String input) throws Exception {
 			return StringUtils.lowerCase(input);
 		}		
 	}
@@ -381,7 +394,8 @@ public class StringFunc {
 			super();			
 		}
 
-		public String execute(final String input) throws Exception {
+        @Override
+		public String doExecute(final String input) throws Exception {
 			return StringUtils.uncapitalize(input);
 		}		
 	}
@@ -395,7 +409,8 @@ public class StringFunc {
 			super();			
 		}
 
-		public String execute(final String input) throws Exception {
+        @Override
+		public String doExecute(final String input) throws Exception {
 			return StringUtils.capitalize(input);
 		}		
 	}	
@@ -410,7 +425,8 @@ public class StringFunc {
 			super();			
 		}
 
-		public String execute(final String input) throws Exception {
+        @Override
+		public String doExecute(final String input) throws Exception {
 			return StringUtils.trim(input);
 		}		
 	}	
@@ -425,7 +441,8 @@ public class StringFunc {
 			super();			
 		}
 
-		public String execute(final String input) throws Exception {
+		@Override
+        public String doExecute(final String input) throws Exception {
 			return StringUtils.strip(input);
 		}		
 	}	

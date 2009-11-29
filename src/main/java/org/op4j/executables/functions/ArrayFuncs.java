@@ -44,12 +44,12 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-public class ArrayFunc {
+public class ArrayFuncs {
 
     
     
     
-    private ArrayFunc() {
+    private ArrayFuncs() {
         super();
     }
 
@@ -66,7 +66,7 @@ public class ArrayFunc {
     
     
     
-    public static final class Sort<T extends Comparable<? super T>> implements IFunc<T[], T[]> {
+    public static final class Sort<T extends Comparable<? super T>> extends AbstractFunc<T[], T[]> {
 
         public Sort() {
             super();
@@ -76,11 +76,12 @@ public class ArrayFunc {
             return Types.ARRAY_OF_OBJECT;
         }
 
-        public T[] execute(final T[] object) throws Exception {
+        @Override
+        public T[] doExecute(final T[] object) throws Exception {
 
             final List<T> list = new ArrayList<T>(Arrays.asList(object));
             Collections.sort(list);
-            return ArrayFunc.fromList(object.getClass(), list);
+            return ArrayFuncs.fromList(object.getClass(), list);
             
         }
 
@@ -89,7 +90,7 @@ public class ArrayFunc {
 
     
     
-    public static final class SortByComparator<T> implements IFunc<T[], T[]> {
+    public static final class SortByComparator<T> extends AbstractFunc<T[], T[]> {
 
         private Comparator<? super T> comparator = null;
 
@@ -102,11 +103,12 @@ public class ArrayFunc {
             return Types.ARRAY_OF_OBJECT;
         }
 
-        public T[] execute(final T[] object) throws Exception {
+        @Override
+        public T[] doExecute(final T[] object) throws Exception {
 
             final List<T> list = new ArrayList<T>(Arrays.asList(object));
             Collections.sort(list, this.comparator);
-            return ArrayFunc.fromList(object.getClass(), list);
+            return ArrayFuncs.fromList(object.getClass(), list);
             
         }
 
@@ -115,7 +117,7 @@ public class ArrayFunc {
     
     
     
-    public static final class Distinct<T> implements IFunc<T[], T[]> {
+    public static final class Distinct<T> extends AbstractFunc<T[], T[]> {
 
         public Distinct() {
             super();
@@ -125,8 +127,9 @@ public class ArrayFunc {
             return Types.ARRAY_OF_OBJECT;
         }
 
+        @Override
         @SuppressWarnings("unchecked")
-        public T[] execute(final T[] object) throws Exception {
+        public T[] doExecute(final T[] object) throws Exception {
 
             Set<?> set = null;
             if (!object.getClass().getComponentType().isArray()) {
@@ -137,7 +140,7 @@ public class ArrayFunc {
                         .asList((Object[][]) object));
             }
 
-            return ArrayFunc.fromList(object.getClass(), new ArrayList<T>((Set<T>)set));
+            return ArrayFuncs.fromList(object.getClass(), new ArrayList<T>((Set<T>)set));
 
         }
 
@@ -181,7 +184,7 @@ public class ArrayFunc {
     
 
     
-    public static final class Add<T> implements IFunc<T[],T[]> {
+    public static final class Add<T> extends AbstractFunc<T[],T[]> {
 
         private final List<T> newElements;
         
@@ -194,17 +197,18 @@ public class ArrayFunc {
             return Types.ARRAY_OF_OBJECT;
         }
 
-        public T[] execute(final T[] object) throws Exception {
+        @Override
+        public T[] doExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.addAll(this.newElements);
-            return ArrayFunc.fromList(object.getClass(), result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
         
     }
 
     
     
-    public static final class Insert<T> implements IFunc<T[],T[]> {
+    public static final class Insert<T> extends AbstractFunc<T[],T[]> {
 
         private final int position;
         private final List<T> newElements;
@@ -219,10 +223,11 @@ public class ArrayFunc {
             return Types.ARRAY_OF_OBJECT;
         }
 
-        public T[] execute(final T[] object) throws Exception {
+        @Override
+        public T[] doExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.addAll(this.position, this.newElements);
-            return ArrayFunc.fromList(object.getClass(), result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
         
     }
@@ -231,7 +236,7 @@ public class ArrayFunc {
     
     
     
-    public static final class AddAll<T> implements IFunc<T[],T[]> {
+    public static final class AddAll<T> extends AbstractFunc<T[],T[]> {
 
         private final List<T> newElements;
         
@@ -244,10 +249,11 @@ public class ArrayFunc {
             return Types.ARRAY_OF_OBJECT;
         }
 
-        public T[] execute(final T[] object) throws Exception {
+        @Override
+        public T[] doExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.addAll(this.newElements);
-            return ArrayFunc.fromList(object.getClass(), result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
         
     }
@@ -256,7 +262,7 @@ public class ArrayFunc {
     
 
     
-    public static final class RemoveIndexes<T> implements IFunc<T[],T[]> {
+    public static final class RemoveIndexes<T> extends AbstractFunc<T[],T[]> {
 
         private final List<Integer> indices;
         
@@ -269,7 +275,8 @@ public class ArrayFunc {
             return Types.ARRAY_OF_OBJECT;
         }
 
-        public T[] execute(final T[] object) throws Exception {
+        @Override
+        public T[] doExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>();
             int i = 0;
             for (final T element : object) {
@@ -278,7 +285,7 @@ public class ArrayFunc {
                 }
                 i++;
             }
-            return ArrayFunc.fromList(object.getClass(), result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
         
     }
@@ -287,7 +294,7 @@ public class ArrayFunc {
     
 
     
-    public static final class RemoveEquals<T> implements IFunc<T[],T[]> {
+    public static final class RemoveEquals<T> extends AbstractFunc<T[],T[]> {
 
         private final List<T> values;
         
@@ -300,10 +307,11 @@ public class ArrayFunc {
             return Types.ARRAY_OF_OBJECT;
         }
 
-        public T[] execute(final T[] object) throws Exception {
+        @Override
+        public T[] doExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.removeAll(this.values);
-            return ArrayFunc.fromList(object.getClass(), result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
         
     }
@@ -312,7 +320,7 @@ public class ArrayFunc {
     
 
     
-    public static final class RemoveMatching<T> implements IFunc<T[],T[]> {
+    public static final class RemoveMatching<T> extends AbstractFunc<T[],T[]> {
 
         private final IEval<Boolean,? super T> eval;
         
@@ -325,14 +333,15 @@ public class ArrayFunc {
             return Types.ARRAY_OF_OBJECT;
         }
 
-        public T[] execute(final T[] object) throws Exception {
+        @Override
+        public T[] doExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (!this.eval.execute(element).booleanValue()) {
                     result.add(element);
                 }
             }
-            return ArrayFunc.fromList(object.getClass(), result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
         
     }
@@ -341,7 +350,7 @@ public class ArrayFunc {
     
 
     
-    public static final class RemoveSelected<T> implements IFunc<T[],T[]> {
+    public static final class RemoveSelected<T> extends AbstractFunc<T[],T[]> {
 
         private final ISelect<T> selector;
         
@@ -354,14 +363,15 @@ public class ArrayFunc {
             return Types.ARRAY_OF_OBJECT;
         }
 
-        public T[] execute(final T[] object) throws Exception {
+        @Override
+        public T[] doExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (!this.selector.eval(element)) {
                     result.add(element);
                 }
             }
-            return ArrayFunc.fromList(object.getClass(), result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
         
     }
@@ -370,7 +380,7 @@ public class ArrayFunc {
 
     
     
-    public static final class RemoveIndexesNot<T> implements IFunc<T[],T[]> {
+    public static final class RemoveIndexesNot<T> extends AbstractFunc<T[],T[]> {
 
         private final List<Integer> indices;
         
@@ -383,7 +393,8 @@ public class ArrayFunc {
             return Types.ARRAY_OF_OBJECT;
         }
 
-        public T[] execute(final T[] object) throws Exception {
+        @Override
+        public T[] doExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>();
             int i = 0;
             for (final T element : object) {
@@ -392,7 +403,7 @@ public class ArrayFunc {
                 }
                 i++;
             }
-            return ArrayFunc.fromList(object.getClass(), result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
         
     }
@@ -401,7 +412,7 @@ public class ArrayFunc {
 
     
     
-    public static final class RemoveNulls<T> implements IFunc<T[],T[]> {
+    public static final class RemoveNulls<T> extends AbstractFunc<T[],T[]> {
 
         public RemoveNulls() {
             super();
@@ -411,14 +422,15 @@ public class ArrayFunc {
             return Types.ARRAY_OF_OBJECT;
         }
 
-        public T[] execute(final T[] object) throws Exception {
+        @Override
+        public T[] doExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
                     result.add(element);
                 }
             }
-            return ArrayFunc.fromList(object.getClass(), result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
         
     }
@@ -428,7 +440,7 @@ public class ArrayFunc {
 
     
     
-    public static final class RemoveNotNullMatching<T> implements IFunc<T[],T[]> {
+    public static final class RemoveNotNullMatching<T> extends AbstractFunc<T[],T[]> {
 
         private final IEval<Boolean,? super T> eval;
         
@@ -441,7 +453,8 @@ public class ArrayFunc {
             return Types.ARRAY_OF_OBJECT;
         }
 
-        public T[] execute(final T[] object) throws Exception {
+        @Override
+        public T[] doExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
@@ -452,7 +465,7 @@ public class ArrayFunc {
                     result.add(element);
                 }
             }
-            return ArrayFunc.fromList(object.getClass(), result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
         
     }
@@ -462,7 +475,7 @@ public class ArrayFunc {
 
     
     
-    public static final class RemoveNullOrMatching<T> implements IFunc<T[],T[]> {
+    public static final class RemoveNullOrMatching<T> extends AbstractFunc<T[],T[]> {
 
         private final IEval<Boolean,? super T> eval;
         
@@ -475,7 +488,8 @@ public class ArrayFunc {
             return Types.ARRAY_OF_OBJECT;
         }
 
-        public T[] execute(final T[] object) throws Exception {
+        @Override
+        public T[] doExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
@@ -484,7 +498,7 @@ public class ArrayFunc {
                     }
                 }
             }
-            return ArrayFunc.fromList(object.getClass(), result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
         
     }
@@ -494,7 +508,7 @@ public class ArrayFunc {
 
     
     
-    public static final class FlattenArrays<T> implements IFunc<T[], T[][]> {
+    public static final class FlattenArrays<T> extends AbstractFunc<T[], T[][]> {
 
         private final Type<? super T> type; 
         
@@ -507,8 +521,9 @@ public class ArrayFunc {
             return Types.ARRAY_OF_OBJECT;
         }
 
+        @Override
         @SuppressWarnings("unchecked")
-        public T[] execute(final T[][] object) throws Exception {
+        public T[] doExecute(final T[][] object) throws Exception {
             
             final List<T> result = new ArrayList<T>();
             for (final T[] element : object) {
@@ -523,7 +538,7 @@ public class ArrayFunc {
     
 
     
-    public static final class FlattenLists<T> implements IFunc<T[], List<T>[]> {
+    public static final class FlattenLists<T> extends AbstractFunc<T[], List<T>[]> {
 
         private final Type<? super T> type; 
 
@@ -536,8 +551,9 @@ public class ArrayFunc {
             return Types.ARRAY_OF_OBJECT;
         }
 
+        @Override
         @SuppressWarnings("unchecked")
-        public T[] execute(final List<T>[] object) throws Exception {
+        public T[] doExecute(final List<T>[] object) throws Exception {
             
             final List<T> result = new ArrayList<T>();
             for (final List<T> element : object) {
@@ -553,7 +569,7 @@ public class ArrayFunc {
     
 
     
-    public static final class FlattenSets<T> implements IFunc<T[], Set<T>[]> {
+    public static final class FlattenSets<T> extends AbstractFunc<T[], Set<T>[]> {
 
         private final Type<? super T> type; 
 
@@ -566,8 +582,9 @@ public class ArrayFunc {
             return Types.ARRAY_OF_OBJECT;
         }
 
+        @Override
         @SuppressWarnings("unchecked")
-        public T[] execute(final Set<T>[] object) throws Exception {
+        public T[] doExecute(final Set<T>[] object) throws Exception {
             
             final List<T> result = new ArrayList<T>();
             for (final Set<T> element : object) {

@@ -26,7 +26,7 @@ import java.util.Locale;
 
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.LocaleUtils;
-import org.op4j.executables.functions.IFunc;
+import org.op4j.executables.functions.AbstractFunc;
 
 /**
  * 
@@ -52,7 +52,7 @@ final class ToNumber {
     }
     
     
-    static abstract class ToNumberFunction<X extends Number, T> implements IFunc<X, T> {
+    static abstract class ToNumberFunction<X extends Number, T> extends AbstractFunc<X, T> {
         
         ToNumberFunction() {
             super();
@@ -87,7 +87,8 @@ final class ToNumber {
             this.execType = ExecType.DELEGATED;
         }
 
-        public X execute(final Number object) throws Exception {
+        @Override
+        public X doExecute(final Number object) throws Exception {
             switch (this.execType) {
                 case DELEGATED:
                     return numberExecute(object);
@@ -111,7 +112,8 @@ final class ToNumber {
             super();
         }
 
-        public X execute(Boolean object) throws Exception {
+        @Override
+        public X doExecute(Boolean object) throws Exception {
             return fromNumber(BooleanUtils.toIntegerObject(object));
         }
         
@@ -165,7 +167,8 @@ final class ToNumber {
         }
 
         
-        public final X execute(final String object) throws Exception {
+        @Override
+        public final X doExecute(final String object) throws Exception {
             switch (this.execType) {
                 case DELEGATED:
                     return numberExecute(object);

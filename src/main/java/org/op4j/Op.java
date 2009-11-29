@@ -40,10 +40,10 @@ import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ISelect;
-import org.op4j.executables.functions.ArrayFunc;
-import org.op4j.executables.functions.ListFunc;
-import org.op4j.executables.functions.SetFunc;
-import org.op4j.executables.functions.StringFunc;
+import org.op4j.executables.functions.ArrayFuncs;
+import org.op4j.executables.functions.ListFuncs;
+import org.op4j.executables.functions.SetFuncs;
+import org.op4j.executables.functions.StringFuncs;
 import org.op4j.executables.functions.conversion.DecimalPoint;
 import org.op4j.executables.functions.conversion.ToBigDecimal;
 import org.op4j.executables.functions.conversion.ToBigInteger;
@@ -562,22 +562,22 @@ public final class Op {
         System.out.println(dateFormat.format(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildList().get()).exec(ToCalendar.fromIntegerFieldList()).get().getTime()));
         System.out.println(dateFormat.format(Op.on(Op.onAll("1979", "11", "25", "12", "30").buildArray(Types.STRING).get()).exec(ToCalendar.fromStringFieldArray()).get().getTime()));
         
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildList().get()).exec(new ListFunc.Sort<Integer>()).get());
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildSet().get()).exec(new SetFunc.Sort<Integer>()).get());
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFunc.Distinct<Integer>()).get());
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildList().get()).exec(new ListFuncs.Sort<Integer>()).get());
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildSet().get()).exec(new SetFuncs.Sort<Integer>()).get());
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFuncs.Distinct<Integer>()).get());
         
-        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildArray(Types.INTEGER).get()).exec(new ArrayFunc.Sort<Integer>()).get()));
-        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFunc.Distinct<Integer>()).get()));
-        
-        
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFunc.Insert<Integer>(2, 1492)).get());
-        
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFunc.Insert<Integer>(2, 1492)).exec(new ListFunc.RemoveMatching<Integer>(Eval.booleanExp("#target < 1000"))).exec(new ListFunc.Sort<Integer>()).get());
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildArray(Types.INTEGER).get()).exec(new ArrayFuncs.Sort<Integer>()).get()));
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFuncs.Distinct<Integer>()).get()));
         
         
-        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFunc.Insert<Integer>(2, 1492)).get()));
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFuncs.Insert<Integer>(2, 1492)).get());
         
-        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFunc.Insert<Integer>(2, 1492)).exec(new ArrayFunc.RemoveMatching<Integer>(Eval.booleanExp("#target < 1000"))).exec(new ArrayFunc.Sort<Integer>()).get()));
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFuncs.Insert<Integer>(2, 1492)).exec(new ListFuncs.RemoveMatching<Integer>(Eval.booleanExp("#target < 1000"))).exec(new ListFuncs.Sort<Integer>()).get());
+        
+        
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFuncs.Insert<Integer>(2, 1492)).get()));
+        
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFuncs.Insert<Integer>(2, 1492)).exec(new ArrayFuncs.RemoveMatching<Integer>(Eval.booleanExp("#target < 1000"))).exec(new ArrayFuncs.Sort<Integer>()).get()));
         
         System.out.println(Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArray(Types.STRING).get()).exec(new ToMap.FromArrayByKeyEval<Integer,String>(Eval.integerExp("length()"))).get());
 
@@ -621,14 +621,14 @@ public final class Op {
         
         System.out.println(Op.buildList(Types.STRING)
             	.add("  Company ", " day ")
-            	.forEach().exec(StringFunc.trim()).get());
+            	.forEach().exec(StringFuncs.trim()).get());
         System.out.println(Op.buildList(Types.STRING)
             	.add("  Company ", " day ")
-            	.forEach().exec(StringFunc.trim()).exec(StringFunc.toUpperCase()).get());
+            	.forEach().exec(StringFuncs.trim()).exec(StringFuncs.toUpperCase()).get());
         
         System.out.println(Op.on("Dublin")
-            	.exec(StringFunc.toHexadecimal(Charset.forName("ISO-8859-1")))
-            	.exec(StringFunc.fromHexadecimal(Charset.forName("ISO-8859-1"))).get());
+            	.exec(StringFuncs.toHexadecimal(Charset.forName("ISO-8859-1")))
+            	.exec(StringFuncs.fromHexadecimal(Charset.forName("ISO-8859-1"))).get());
         
         System.out.println(Op.buildList(Types.NUMBER)
                 .add(45.9, new BigDecimal(34.456))
@@ -683,9 +683,9 @@ public final class Op {
         System.out.println(printArray(Op.onListOfList(listOfListOfString1).toArrayOfList().get()));
         
         System.out.println(Op.on("http://www.google.es/search?q=op4j&unusedParam=unusedValue '' 2^2 ")
-            	.exec(StringFunc.escapeJavaScript()).get());
+            	.exec(StringFuncs.escapeJavaScript()).get());
         System.out.println(Op.on("Body tag is written like \"<body>content here</body>\"")
-            	.exec(StringFunc.escapeHTML()).get());
+            	.exec(StringFuncs.escapeHTML()).get());
         
         System.out.println(Op.onArray(stringsArr1).removeNulls().toMap(Eval.integerExp("length()")).get());
 

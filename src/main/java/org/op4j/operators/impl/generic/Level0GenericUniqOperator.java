@@ -32,7 +32,7 @@ import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IMapBuild;
 import org.op4j.executables.functions.IFunc;
-import org.op4j.executables.functions.ListFunc;
+import org.op4j.executables.functions.ListFuncs;
 import org.op4j.executables.functions.conversion.ToArray;
 import org.op4j.executables.functions.conversion.ToList;
 import org.op4j.executables.functions.conversion.ToMap;
@@ -92,16 +92,16 @@ public class Level0GenericUniqOperator<T> extends Operator
 
 
     public ILevel0GenericMultiOperator<T> add(final T... newElements) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFunc.Add<T>(newElements)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFuncs.Add<T>(newElements)));
     }
 
     public ILevel0GenericMultiOperator<T> insert(final int position, final T... newElements) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFunc.Insert<T>(position, newElements)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFuncs.Insert<T>(position, newElements)));
     }
 
 
     public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFunc.AddAll<T>(collection)));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFuncs.AddAll<T>(collection)));
     }
 
 
