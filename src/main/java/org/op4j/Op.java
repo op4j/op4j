@@ -39,7 +39,7 @@ import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.executables.Eval;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.ISelector;
 import org.op4j.executables.functions.ArrayFuncs;
 import org.op4j.executables.functions.ListFuncs;
 import org.op4j.executables.functions.SetFuncs;
@@ -445,7 +445,7 @@ public final class Op {
         System.out.println(Op.onList(stringsList1).removeIndexesNot(0).get());
         System.out.println(Op.onList(stringsList1).removeIndexesNot(0,2).get());
         System.out.println(Op.onList(stringsList1).removeMatching("#target eq 'Hello'").get());
-        System.out.println(Op.onList(stringsList1).removeSelected(new ISelect<String>() {
+        System.out.println(Op.onList(stringsList1).removeSelected(new ISelector<String>() {
 
 			public boolean eval(String target) {
 				return target == null;
@@ -468,7 +468,7 @@ public final class Op {
         System.out.println(Op.onSet(stringSet1).removeIndexesNot(0).get());
         System.out.println(Op.onSet(stringSet1).removeIndexesNot(0,2).get());
         System.out.println(Op.onSet(stringSet1).removeMatching("#target eq 'Hello'").get());
-        System.out.println(Op.onSet(stringSet1).removeSelected(new ISelect<String>() {
+        System.out.println(Op.onSet(stringSet1).removeSelected(new ISelector<String>() {
 
             public boolean eval(String target) {
                 return target == null;
@@ -693,6 +693,7 @@ public final class Op {
 
         System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().extractKeys().get()));
         System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().extractValues().get()));
+        
         
     }
     

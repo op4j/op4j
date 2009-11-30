@@ -26,7 +26,8 @@ import java.util.Locale;
 
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.LocaleUtils;
-import org.op4j.executables.functions.AbstractFunc;
+import org.apache.commons.lang.Validate;
+import org.op4j.executables.functions.AbstractNullAsNullFunc;
 
 /**
  * 
@@ -52,7 +53,7 @@ final class ToNumber {
     }
     
     
-    static abstract class ToNumberFunction<X extends Number, T> extends AbstractFunc<X, T> {
+    static abstract class ToNumberFunction<X extends Number, T> extends AbstractNullAsNullFunc<X, T> {
         
         ToNumberFunction() {
             super();
@@ -82,13 +83,14 @@ final class ToNumber {
         }
         
         
-        protected FromNumber(Delegated delegated) {
+        protected FromNumber(final Delegated delegated) {
             super();
+            Validate.notNull(delegated, "Parameter \"delegated\" cannot be null");
             this.execType = ExecType.DELEGATED;
         }
 
         @Override
-        public X doExecute(final Number object) throws Exception {
+        public X nullAsNullExecute(final Number object) throws Exception {
             switch (this.execType) {
                 case DELEGATED:
                     return numberExecute(object);
@@ -113,7 +115,7 @@ final class ToNumber {
         }
 
         @Override
-        public X doExecute(Boolean object) throws Exception {
+        public X nullAsNullExecute(Boolean object) throws Exception {
             return fromNumber(BooleanUtils.toIntegerObject(object));
         }
         
@@ -146,6 +148,7 @@ final class ToNumber {
         
         protected FromString(final Locale locale) {
             super();
+            Validate.notNull(locale, "A locale must be specified");
             this.execType = ExecType.FROM_STRING_LOCALE;
             this.decimalFormat = (DecimalFormat) NumberFormat.getNumberInstance(locale);
             this.decimalFormat.setParseBigDecimal(true);
@@ -154,6 +157,7 @@ final class ToNumber {
         
         protected FromString(final String locale) {
             super();
+            Validate.notNull(locale, "A locale must be specified");
             this.execType = ExecType.FROM_STRING_LOCALE;
             this.decimalFormat = (DecimalFormat) NumberFormat.getNumberInstance(LocaleUtils.toLocale(locale));
             this.decimalFormat.setParseBigDecimal(true);
@@ -162,13 +166,14 @@ final class ToNumber {
         
         protected FromString(final DecimalPoint decimalPoint) {
             super();
+            Validate.notNull(decimalPoint, "A decimal point type must be specified");
             this.execType = ExecType.FROM_STRING_DECIMALPOINT;
             this.decimalPoint = decimalPoint;
         }
 
         
         @Override
-        public final X doExecute(final String object) throws Exception {
+        public final X nullAsNullExecute(final String object) throws Exception {
             switch (this.execType) {
                 case DELEGATED:
                     return numberExecute(object);

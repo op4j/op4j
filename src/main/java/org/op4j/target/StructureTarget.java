@@ -31,7 +31,7 @@ import java.util.Set;
 import org.apache.commons.lang.Validate;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IExecutable;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.ISelector;
 import org.op4j.util.MapEntry;
 
 /**
@@ -160,7 +160,7 @@ public class StructureTarget extends Target {
 
     
     @Override
-    Target doIterateSelector(final boolean desiredResult, final ISelect<?> selector) {
+    Target doIterateSelector(final boolean desiredResult, final ISelector<?> selector) {
         
         final List<Target> newElements = new ArrayList<Target>();
         for (final Target element : this.elements) {
@@ -304,12 +304,14 @@ public class StructureTarget extends Target {
 
 
     @Override
-    public Target execute(final IExecutable<?,?> command) {
+    public Target execute(final IExecutable<?,?> executable) {
         
+    	Validate.notNull(executable, "An executable must be specified");
+
         final List<Target> newElements = new ArrayList<Target>();
         for (final Target element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.execute(command));
+                newElements.add(element.execute(executable));
             } else {
                 newElements.add(element);
             }

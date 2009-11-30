@@ -25,8 +25,8 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuild;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.IMapBuilder;
+import org.op4j.executables.ISelector;
 import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.ILevel2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesValueOperator;
@@ -83,7 +83,7 @@ public interface ILevel2MapOfArrayEntriesValueOperator<K,V>
     public ILevel2MapOfArrayEntriesValueOperator<K,V> removeMatching(final IEval<Boolean, ? super V> eval);
     public ILevel2MapOfArrayEntriesValueOperator<K,V> removeNotNullMatching(final IEval<Boolean, ? super V> eval);
     public ILevel2MapOfArrayEntriesValueOperator<K,V> removeNullOrMatching(final IEval<Boolean, ? super V> eval);
-    public ILevel2MapOfArrayEntriesValueOperator<K,V> removeSelected(final ISelect<V> selector);
+    public ILevel2MapOfArrayEntriesValueOperator<K,V> removeSelected(final ISelector<V> selector);
     public ILevel2MapOfArrayEntriesValueOperator<K,V> removeIndexesNot(final int... indices);
     public ILevel2MapOfArrayEntriesValueOperator<K,V> removeNulls();
     public ILevel2MapOfArrayEntriesValueOperator<K,V> removeNotNullMatching(final String expression, final Object... optionalExpParams);
@@ -95,7 +95,7 @@ public interface ILevel2MapOfArrayEntriesValueOperator<K,V>
     
     public ILevel2MapOfMapEntriesValueOperator<K,V,V> toMap();
     public <K2> ILevel2MapOfMapEntriesValueOperator<K,K2,V> toMap(final IEval<K2,? super V> keyEval);
-    public <K2,V2> ILevel2MapOfMapEntriesValueOperator<K,K2,V2> toMap(final IMapBuild<K2,V2,? super V> mapBuild);
+    public <K2,V2> ILevel2MapOfMapEntriesValueOperator<K,K2,V2> toMap(final IMapBuilder<K2,V2,? super V> mapBuild);
 
     
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,V> forEachIndex(final int... indices);
@@ -103,7 +103,7 @@ public interface ILevel2MapOfArrayEntriesValueOperator<K,V>
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,V> forEachMatching(final IEval<Boolean, ? super V> eval);
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,V> forEachNullOrMatching(final IEval<Boolean, ? super V> eval);
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,V> forEachNotNullMatching(final IEval<Boolean, ? super V> eval);
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K,V> forEachSelected(final ISelect<V> selector);
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K,V> forEachSelected(final ISelector<V> selector);
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,V> forEachNull();
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,V> forEachNullOrMatching(final String expression, final Object... optionalExpParams);
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,V> forEachIndexNot(final int... indices);

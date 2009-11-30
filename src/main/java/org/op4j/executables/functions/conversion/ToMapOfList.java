@@ -26,12 +26,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.exceptions.FunctionExecutionException;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuild;
-import org.op4j.executables.functions.AbstractFunc;
+import org.op4j.executables.IMapBuilder;
+import org.op4j.executables.functions.AbstractNullAsNullFunc;
 
 /**
  * 
@@ -52,12 +53,13 @@ public class ToMapOfList {
     
     
     
-    public static final class FromArrayByKeyEval<K, T> extends AbstractFunc<Map<K, List<T>>, T[]> {
+    public static final class FromArrayByKeyEval<K, T> extends AbstractNullAsNullFunc<Map<K, List<T>>, T[]> {
 
         private final IEval<K,? super T> eval;
         
         public FromArrayByKeyEval(final IEval<K,? super T> eval) {
             super();
+			Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
         }
         
@@ -66,7 +68,7 @@ public class ToMapOfList {
         }
 
         @Override
-        public Map<K, List<T>> doExecute(final T[] object) throws Exception {
+        public Map<K, List<T>> nullAsNullExecute(final T[] object) throws Exception {
             final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
             for (final T element: object) {
                 final K key = this.eval.execute(element);
@@ -86,12 +88,13 @@ public class ToMapOfList {
     
     
     
-    public static final class FromArrayByMapBuilder<K, V, T> extends AbstractFunc<Map<K, List<V>>, T[]> {
+    public static final class FromArrayByMapBuilder<K, V, T> extends AbstractNullAsNullFunc<Map<K, List<V>>, T[]> {
 
-        private final IMapBuild<K, V, ? super T> mapBuilder;
+        private final IMapBuilder<K, V, ? super T> mapBuilder;
         
-        public FromArrayByMapBuilder(final IMapBuild<K, V, ? super T> mapBuilder) {
+        public FromArrayByMapBuilder(final IMapBuilder<K, V, ? super T> mapBuilder) {
             super();
+			Validate.notNull(mapBuilder, "A map builder must be specified");
             this.mapBuilder = mapBuilder;
         }
         
@@ -100,16 +103,16 @@ public class ToMapOfList {
         }
 
         @Override
-        public Map<K, List<V>> doExecute(final T[] object) throws Exception {
+        public Map<K, List<V>> nullAsNullExecute(final T[] object) throws Exception {
             final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
-                final K key = this.mapBuilder.getKey(element);
+                final K key = this.mapBuilder.buildKey(element);
                 List<V> value = result.get(key);
                 if (value == null) {
                     value = new ArrayList<V>();
                     result.put(key, value);
                 }
-                value.add(this.mapBuilder.getValue(element));
+                value.add(this.mapBuilder.buildValue(element));
             }
             return result;
         }
@@ -120,7 +123,7 @@ public class ToMapOfList {
     
     
     
-    public static final class FromArrayByAlternateElements<T> extends AbstractFunc<Map<T, List<T>>, T[]> {
+    public static final class FromArrayByAlternateElements<T> extends AbstractNullAsNullFunc<Map<T, List<T>>, T[]> {
 
         public FromArrayByAlternateElements() {
             super();
@@ -131,7 +134,7 @@ public class ToMapOfList {
         }
 
         @Override
-        public Map<T, List<T>> doExecute(final T[] object) throws Exception {
+        public Map<T, List<T>> nullAsNullExecute(final T[] object) throws Exception {
             if (object.length % 2 != 0) {
                 throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");
             }
@@ -157,12 +160,13 @@ public class ToMapOfList {
     
     
     
-    public static final class FromListByKeyEval<K, T> extends AbstractFunc<Map<K, List<T>>, List<T>> {
+    public static final class FromListByKeyEval<K, T> extends AbstractNullAsNullFunc<Map<K, List<T>>, List<T>> {
 
         private final IEval<K,? super T> eval;
         
         public FromListByKeyEval(final IEval<K,? super T> eval) {
             super();
+			Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
         }
         
@@ -171,7 +175,7 @@ public class ToMapOfList {
         }
 
         @Override
-        public Map<K, List<T>> doExecute(final List<T> object) throws Exception {
+        public Map<K, List<T>> nullAsNullExecute(final List<T> object) throws Exception {
             final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
             for (final T element: object) {
                 final K key = this.eval.execute(element);
@@ -191,12 +195,13 @@ public class ToMapOfList {
     
     
     
-    public static final class FromListByMapBuilder<K, V, T> extends AbstractFunc<Map<K, List<V>>, List<T>> {
+    public static final class FromListByMapBuilder<K, V, T> extends AbstractNullAsNullFunc<Map<K, List<V>>, List<T>> {
 
-        private final IMapBuild<K, V, ? super T> mapBuilder;
+        private final IMapBuilder<K, V, ? super T> mapBuilder;
         
-        public FromListByMapBuilder(final IMapBuild<K, V, ? super T> mapBuilder) {
+        public FromListByMapBuilder(final IMapBuilder<K, V, ? super T> mapBuilder) {
             super();
+			Validate.notNull(mapBuilder, "A map builder must be specified");
             this.mapBuilder = mapBuilder;
         }
         
@@ -205,16 +210,16 @@ public class ToMapOfList {
         }
 
         @Override
-        public Map<K, List<V>> doExecute(final List<T> object) throws Exception {
+        public Map<K, List<V>> nullAsNullExecute(final List<T> object) throws Exception {
             final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
-                final K key = this.mapBuilder.getKey(element);
+                final K key = this.mapBuilder.buildKey(element);
                 List<V> value = result.get(key);
                 if (value == null) {
                     value = new ArrayList<V>();
                     result.put(key, value);
                 }
-                value.add(this.mapBuilder.getValue(element));
+                value.add(this.mapBuilder.buildValue(element));
             }
             return result;
         }
@@ -225,7 +230,7 @@ public class ToMapOfList {
     
     
     
-    public static final class FromListByAlternateElements<T> extends AbstractFunc<Map<T, List<T>>, List<T>> {
+    public static final class FromListByAlternateElements<T> extends AbstractNullAsNullFunc<Map<T, List<T>>, List<T>> {
 
         public FromListByAlternateElements() {
             super();
@@ -236,7 +241,7 @@ public class ToMapOfList {
         }
 
         @Override
-        public Map<T, List<T>> doExecute(final List<T> object) throws Exception {
+        public Map<T, List<T>> nullAsNullExecute(final List<T> object) throws Exception {
             if (object.size() % 2 != 0) {
                 throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");
             }
@@ -261,12 +266,13 @@ public class ToMapOfList {
     
     
     
-    public static final class FromSetByKeyEval<K, T> extends AbstractFunc<Map<K, List<T>>, Set<T>> {
+    public static final class FromSetByKeyEval<K, T> extends AbstractNullAsNullFunc<Map<K, List<T>>, Set<T>> {
 
         private final IEval<K,? super T> eval;
         
         public FromSetByKeyEval(final IEval<K,? super T> eval) {
             super();
+			Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
         }
         
@@ -275,7 +281,7 @@ public class ToMapOfList {
         }
 
         @Override
-        public Map<K, List<T>> doExecute(final Set<T> object) throws Exception {
+        public Map<K, List<T>> nullAsNullExecute(final Set<T> object) throws Exception {
             final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
             for (final T element: object) {
                 final K key = this.eval.execute(element);
@@ -295,12 +301,13 @@ public class ToMapOfList {
     
     
     
-    public static final class FromSetByMapBuilder<K, V, T> extends AbstractFunc<Map<K, List<V>>, Set<T>> {
+    public static final class FromSetByMapBuilder<K, V, T> extends AbstractNullAsNullFunc<Map<K, List<V>>, Set<T>> {
 
-        private final IMapBuild<K, V, ? super T> mapBuilder;
+        private final IMapBuilder<K, V, ? super T> mapBuilder;
         
-        public FromSetByMapBuilder(final IMapBuild<K, V, ? super T> mapBuilder) {
+        public FromSetByMapBuilder(final IMapBuilder<K, V, ? super T> mapBuilder) {
             super();
+			Validate.notNull(mapBuilder, "A map builder must be specified");
             this.mapBuilder = mapBuilder;
         }
         
@@ -309,16 +316,16 @@ public class ToMapOfList {
         }
 
         @Override
-        public Map<K, List<V>> doExecute(final Set<T> object) throws Exception {
+        public Map<K, List<V>> nullAsNullExecute(final Set<T> object) throws Exception {
             final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
-                final K key = this.mapBuilder.getKey(element);
+                final K key = this.mapBuilder.buildKey(element);
                 List<V> value = result.get(key);
                 if (value == null) {
                     value = new ArrayList<V>();
                     result.put(key, value);
                 }
-                value.add(this.mapBuilder.getValue(element));
+                value.add(this.mapBuilder.buildValue(element));
             }
             return result;
         }
@@ -329,7 +336,7 @@ public class ToMapOfList {
     
     
     
-    public static final class FromSetByAlternateElements<T> extends AbstractFunc<Map<T, List<T>>, Set<T>> {
+    public static final class FromSetByAlternateElements<T> extends AbstractNullAsNullFunc<Map<T, List<T>>, Set<T>> {
 
         public FromSetByAlternateElements() {
             super();
@@ -340,7 +347,7 @@ public class ToMapOfList {
         }
 
         @Override
-        public Map<T, List<T>> doExecute(final Set<T> object) throws Exception {
+        public Map<T, List<T>> nullAsNullExecute(final Set<T> object) throws Exception {
             if (object.size() % 2 != 0) {
                 throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");
             }

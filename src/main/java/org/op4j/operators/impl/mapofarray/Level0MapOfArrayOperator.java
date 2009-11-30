@@ -26,8 +26,8 @@ import java.util.Map.Entry;
 import org.javaruntype.type.Type;
 import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuild;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.IMapBuilder;
+import org.op4j.executables.ISelector;
 import org.op4j.executables.functions.MapFuncs;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
@@ -94,7 +94,7 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
     }
 
 
-    public ILevel1MapOfArrayEntriesOperator<K, V> forEachEntrySelected(final ISelect<Entry<K, V[]>> selector) {
+    public ILevel1MapOfArrayEntriesOperator<K, V> forEachEntrySelected(final ISelector<Entry<K, V[]>> selector) {
         return new Level1MapOfArrayEntriesOperator<K, V>(this.arrayOf, getTarget().iterate(selector));
     }
 
@@ -155,7 +155,7 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
     }
 
 
-    public ILevel0MapOfArrayOperator<K, V> removeSelected(final ISelect<Entry<K, V[]>> selector) {
+    public ILevel0MapOfArrayOperator<K, V> removeSelected(final ISelector<Entry<K, V[]>> selector) {
         return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFuncs.RemoveSelected<K,V[]>(selector)));
     }
 
@@ -190,7 +190,7 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
     }
 
 
-    public <K2, V2> ILevel0MapOfMapOperator<K, K2, V2> toMapOfMap(final IMapBuild<K2, V2, ? super V> mapBuild) {
+    public <K2, V2> ILevel0MapOfMapOperator<K, K2, V2> toMapOfMap(final IMapBuilder<K2, V2, ? super V> mapBuild) {
         return forEachEntry().onValue().toMap(mapBuild).endOn().endFor();
     }
 

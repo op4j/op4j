@@ -23,9 +23,10 @@ package org.op4j.target;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.commons.lang.Validate;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IExecutable;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.ISelector;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -70,7 +71,7 @@ public abstract class Target {
     abstract Target doIteratePositions(final boolean desiredResult, final List<Integer> positions);
     abstract Target doIterateMapKeys(final boolean desiredResult, final List<Object> objects);
     abstract Target doIterateExpression(final boolean desiredResult, final IEval<Boolean,Object> eval);
-    abstract Target doIterateSelector(final boolean desiredResult, final ISelect<?> selector);
+    abstract Target doIterateSelector(final boolean desiredResult, final ISelector<?> selector);
     abstract Target doIterateNull(final boolean desiredResult);
     abstract Target doIterateNullOr(final boolean desiredResult, final IEval<Boolean,Object> eval);
     abstract Target doIterateNotNullAnd(final boolean desiredResult, final IEval<Boolean,Object> eval);
@@ -92,11 +93,13 @@ public abstract class Target {
     
     @SuppressWarnings("unchecked")
     public Target iterate(final IEval<Boolean,? extends Object> eval) {
+    	Validate.notNull(eval, "An evaluator must be specified");
     	return doIterateExpression(true, (IEval<Boolean,Object>) eval);
     }
 
     
-    public Target iterate(final ISelect<?> selector) {
+    public Target iterate(final ISelector<?> selector) {
+    	Validate.notNull(selector, "A selector must be specified");
         return doIterateSelector(true, selector);
     }
 
@@ -108,6 +111,7 @@ public abstract class Target {
     
     @SuppressWarnings("unchecked")
     public Target iterateNullOr(final IEval<Boolean,? extends Object> eval) {
+    	Validate.notNull(eval, "An evaluator must be specified");
         return doIterateNullOr(true, (IEval<Boolean,Object>) eval);
     }
     
@@ -129,6 +133,7 @@ public abstract class Target {
     
     @SuppressWarnings("unchecked")
     public Target iterateNotNullAnd(final IEval<Boolean,? extends Object> eval) {
+    	Validate.notNull(eval, "An evaluator must be specified");
         return doIterateNotNullAnd(true, (IEval<Boolean,Object>) eval);
     }
     
@@ -136,7 +141,7 @@ public abstract class Target {
     public abstract Target endIterate(final Structure structure, final Class<?> componentClass);
     
 
-    public abstract Target execute(final IExecutable<?,?> command);
+    public abstract Target execute(final IExecutable<?,?> executable);
     
     
     public Object get() {

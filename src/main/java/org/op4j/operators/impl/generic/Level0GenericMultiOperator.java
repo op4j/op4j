@@ -27,8 +27,8 @@ import org.op4j.exceptions.EmptyTargetException;
 import org.op4j.exceptions.NonUniqueTargetException;
 import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuild;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.IMapBuilder;
+import org.op4j.executables.ISelector;
 import org.op4j.executables.functions.ListFuncs;
 import org.op4j.executables.functions.conversion.ToArray;
 import org.op4j.executables.functions.conversion.ToList;
@@ -105,7 +105,7 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0MapOperator<K, V> buildMap(final IMapBuild<K, V, ? super T> mapBuild) {
+    public <K, V> ILevel0MapOperator<K, V> buildMap(final IMapBuilder<K, V, ? super T> mapBuild) {
         return new Level0MapOperator<K, V>(getTarget().execute(new ToMap.FromListByMapBuilder<K, V, T>(mapBuild)));
     }
 
@@ -120,7 +120,7 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0MapOfArrayOperator<K, V> buildMapOfArray(final Type<V> valueArrayOf, final IMapBuild<K, V, ? super T> mapBuild) {
+    public <K, V> ILevel0MapOfArrayOperator<K, V> buildMapOfArray(final Type<V> valueArrayOf, final IMapBuilder<K, V, ? super T> mapBuild) {
         return new Level0MapOfArrayOperator<K, V>(valueArrayOf, getTarget().execute(new ToMapOfArray.FromListByMapBuilder<K, V, T>(valueArrayOf, mapBuild)));
     }
 
@@ -135,7 +135,7 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0MapOfListOperator<K, V> buildMapOfList(final IMapBuild<K, V, ? super T> mapBuild) {
+    public <K, V> ILevel0MapOfListOperator<K, V> buildMapOfList(final IMapBuilder<K, V, ? super T> mapBuild) {
         return new Level0MapOfListOperator<K, V>(getTarget().execute(new ToMapOfList.FromListByMapBuilder<K, V, T>(mapBuild)));
     }
 
@@ -150,7 +150,7 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0MapOfSetOperator<K, V> buildMapOfSet(final IMapBuild<K, V, ? super T> mapBuild) {
+    public <K, V> ILevel0MapOfSetOperator<K, V> buildMapOfSet(final IMapBuilder<K, V, ? super T> mapBuild) {
         return new Level0MapOfSetOperator<K, V>(getTarget().execute(new ToMapOfSet.FromListByMapBuilder<K, V, T>(mapBuild)));
     }
 
@@ -205,7 +205,7 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeSelected(final ISelect<T> selector) {
+    public ILevel0GenericMultiOperator<T> removeSelected(final ISelector<T> selector) {
         return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveSelected<T>(selector)));
     }
 
@@ -246,12 +246,6 @@ public class Level0GenericMultiOperator<T> extends Operator
     public int size() {
         return ((List<?>) getTarget().get()).size();
     }
-
-
-@Override
-public String toString() {
-    return "MULTIOP: " + getTarget().get();
-}
     
     
 }

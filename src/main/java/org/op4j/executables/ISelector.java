@@ -17,7 +17,7 @@
  * 
  * =============================================================================
  */
-package org.op4j.exceptions;
+package org.op4j.executables;
 
 
 /**
@@ -27,13 +27,8 @@ package org.op4j.exceptions;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class NullTargetException extends RuntimeException {
+public interface ISelector<T> {
 
-	private static final long serialVersionUID = 1863690119605420123L;
-
-	public NullTargetException() {
-        super("Cannot operate on null target");
-    }
-
+    public boolean eval(final T target);
     
 }

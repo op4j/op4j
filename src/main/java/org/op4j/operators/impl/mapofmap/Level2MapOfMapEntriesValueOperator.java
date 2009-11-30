@@ -26,7 +26,7 @@ import java.util.Map.Entry;
 import org.javaruntype.type.Type;
 import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.ISelector;
 import org.op4j.executables.functions.MapFuncs;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.mapoflist.Level2MapOfListEntriesValueOperator;
@@ -92,7 +92,7 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
     }
 
 
-    public ILevel3MapOfMapEntriesValueEntriesOperator<K1, K2, V> forEachEntrySelected(final ISelect<Entry<K2, V>> selector) {
+    public ILevel3MapOfMapEntriesValueEntriesOperator<K1, K2, V> forEachEntrySelected(final ISelector<Entry<K2, V>> selector) {
         return new Level3MapOfMapEntriesValueEntriesOperator<K1, K2, V>(getTarget().iterate(selector));
     }
 
@@ -153,7 +153,7 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
     }
 
 
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeSelected(final ISelect<Entry<K2, V>> selector) {
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeSelected(final ISelector<Entry<K2, V>> selector) {
         return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.RemoveSelected<K2, V>(selector)));
     }
 

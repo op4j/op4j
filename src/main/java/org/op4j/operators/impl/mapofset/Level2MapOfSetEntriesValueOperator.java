@@ -27,8 +27,8 @@ import java.util.Set;
 import org.javaruntype.type.Type;
 import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuild;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.IMapBuilder;
+import org.op4j.executables.ISelector;
 import org.op4j.executables.functions.SetFuncs;
 import org.op4j.executables.functions.conversion.ToArray;
 import org.op4j.executables.functions.conversion.ToList;
@@ -117,7 +117,7 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEachSelected(final ISelect<V> selector) {
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, V> forEachSelected(final ISelector<V> selector) {
         return new Level3MapOfSetEntriesValueElementsOperator<K, V>(getTarget().iterate(selector));
     }
 
@@ -202,7 +202,7 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel2MapOfSetEntriesValueOperator<K, V> removeSelected(final ISelect<V> selector) {
+    public ILevel2MapOfSetEntriesValueOperator<K, V> removeSelected(final ISelector<V> selector) {
         return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFuncs.RemoveSelected<V>(selector)));
     }
 
@@ -259,7 +259,7 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public <K2, V2> ILevel2MapOfMapEntriesValueOperator<K, K2, V2> toMap(final IMapBuild<K2, V2, ? super V> mapBuild) {
+    public <K2, V2> ILevel2MapOfMapEntriesValueOperator<K, K2, V2> toMap(final IMapBuilder<K2, V2, ? super V> mapBuild) {
         return new Level2MapOfMapEntriesValueOperator<K, K2, V2>(getTarget().execute(new ToMap.FromSetByMapBuilder<K2, V2, V>(mapBuild)));
     }
 

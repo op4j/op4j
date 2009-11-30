@@ -27,10 +27,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang.Validate;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.executables.IEval;
 import org.op4j.executables.IExecutable;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.ISelector;
 
 /**
  * 
@@ -166,9 +167,9 @@ public abstract class NodeTarget extends Target{
     
     @Override
     @SuppressWarnings("unchecked")
-    Target doIterateSelector(final boolean desiredResult, final ISelect<?> selector) {
+    Target doIterateSelector(final boolean desiredResult, final ISelector<?> selector) {
         
-        final ISelect<Object> objectSelector = (ISelect<Object>) selector;
+        final ISelector<Object> objectSelector = (ISelector<Object>) selector;
         
         final Collection<?> elements = getIterationElements();
         final List<Target> newElements = new ArrayList<Target>();
@@ -289,8 +290,9 @@ public abstract class NodeTarget extends Target{
     
 	@Override
     @SuppressWarnings("unchecked")
-    public Target execute(final IExecutable<?,?> command) {
-    	final IExecutable<Object,Object> objectCommand = (IExecutable<Object,Object>) command;
+    public Target execute(final IExecutable<?,?> executable) {
+    	Validate.notNull(executable, "An executable must be specified");
+    	final IExecutable<Object,Object> objectCommand = (IExecutable<Object,Object>) executable;
     	try {
             return NodeTarget.forObject(getId(), objectCommand.execute(getObject()));
         } catch (ExecutionException e) {

@@ -31,10 +31,11 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.executables.IEval;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.ISelector;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -66,7 +67,7 @@ public class ArrayFuncs {
     
     
     
-    public static final class Sort<T extends Comparable<? super T>> extends AbstractFunc<T[], T[]> {
+    public static final class Sort<T extends Comparable<? super T>> extends AbstractNotNullFunc<T[], T[]> {
 
         public Sort() {
             super();
@@ -77,7 +78,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] doExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object) throws Exception {
 
             final List<T> list = new ArrayList<T>(Arrays.asList(object));
             Collections.sort(list);
@@ -90,12 +91,13 @@ public class ArrayFuncs {
 
     
     
-    public static final class SortByComparator<T> extends AbstractFunc<T[], T[]> {
+    public static final class SortByComparator<T> extends AbstractNotNullFunc<T[], T[]> {
 
         private Comparator<? super T> comparator = null;
 
         public SortByComparator(final Comparator<? super T> comparator) {
             super();
+            Validate.notNull(comparator, "A comparator must be specified");
             this.comparator = comparator;
         }
 
@@ -104,7 +106,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] doExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object) throws Exception {
 
             final List<T> list = new ArrayList<T>(Arrays.asList(object));
             Collections.sort(list, this.comparator);
@@ -117,7 +119,7 @@ public class ArrayFuncs {
     
     
     
-    public static final class Distinct<T> extends AbstractFunc<T[], T[]> {
+    public static final class Distinct<T> extends AbstractNotNullFunc<T[], T[]> {
 
         public Distinct() {
             super();
@@ -129,7 +131,7 @@ public class ArrayFuncs {
 
         @Override
         @SuppressWarnings("unchecked")
-        public T[] doExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object) throws Exception {
 
             Set<?> set = null;
             if (!object.getClass().getComponentType().isArray()) {
@@ -184,7 +186,7 @@ public class ArrayFuncs {
     
 
     
-    public static final class Add<T> extends AbstractFunc<T[],T[]> {
+    public static final class Add<T> extends AbstractNotNullFunc<T[],T[]> {
 
         private final List<T> newElements;
         
@@ -198,7 +200,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] doExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.addAll(this.newElements);
             return ArrayFuncs.fromList(object.getClass(), result);
@@ -208,7 +210,7 @@ public class ArrayFuncs {
 
     
     
-    public static final class Insert<T> extends AbstractFunc<T[],T[]> {
+    public static final class Insert<T> extends AbstractNotNullFunc<T[],T[]> {
 
         private final int position;
         private final List<T> newElements;
@@ -224,7 +226,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] doExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.addAll(this.position, this.newElements);
             return ArrayFuncs.fromList(object.getClass(), result);
@@ -236,12 +238,13 @@ public class ArrayFuncs {
     
     
     
-    public static final class AddAll<T> extends AbstractFunc<T[],T[]> {
+    public static final class AddAll<T> extends AbstractNotNullFunc<T[],T[]> {
 
         private final List<T> newElements;
         
         public AddAll(final Collection<T> collection) {
             super();
+            Validate.notNull(collection, "A collection must be specified");
             this.newElements = new ArrayList<T>(collection);
         }
 
@@ -250,7 +253,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] doExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.addAll(this.newElements);
             return ArrayFuncs.fromList(object.getClass(), result);
@@ -262,7 +265,7 @@ public class ArrayFuncs {
     
 
     
-    public static final class RemoveIndexes<T> extends AbstractFunc<T[],T[]> {
+    public static final class RemoveIndexes<T> extends AbstractNotNullFunc<T[],T[]> {
 
         private final List<Integer> indices;
         
@@ -276,7 +279,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] doExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>();
             int i = 0;
             for (final T element : object) {
@@ -294,7 +297,7 @@ public class ArrayFuncs {
     
 
     
-    public static final class RemoveEquals<T> extends AbstractFunc<T[],T[]> {
+    public static final class RemoveEquals<T> extends AbstractNotNullFunc<T[],T[]> {
 
         private final List<T> values;
         
@@ -308,7 +311,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] doExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.removeAll(this.values);
             return ArrayFuncs.fromList(object.getClass(), result);
@@ -320,12 +323,13 @@ public class ArrayFuncs {
     
 
     
-    public static final class RemoveMatching<T> extends AbstractFunc<T[],T[]> {
+    public static final class RemoveMatching<T> extends AbstractNotNullFunc<T[],T[]> {
 
         private final IEval<Boolean,? super T> eval;
         
         public RemoveMatching(final IEval<Boolean,? super T> eval) {
             super();
+            Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
         }
 
@@ -334,7 +338,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] doExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (!this.eval.execute(element).booleanValue()) {
@@ -350,12 +354,13 @@ public class ArrayFuncs {
     
 
     
-    public static final class RemoveSelected<T> extends AbstractFunc<T[],T[]> {
+    public static final class RemoveSelected<T> extends AbstractNotNullFunc<T[],T[]> {
 
-        private final ISelect<T> selector;
+        private final ISelector<T> selector;
         
-        public RemoveSelected(final ISelect<T> selector) {
+        public RemoveSelected(final ISelector<T> selector) {
             super();
+            Validate.notNull(selector, "A selector must be specified");
             this.selector = selector;
         }
 
@@ -364,7 +369,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] doExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (!this.selector.eval(element)) {
@@ -380,7 +385,7 @@ public class ArrayFuncs {
 
     
     
-    public static final class RemoveIndexesNot<T> extends AbstractFunc<T[],T[]> {
+    public static final class RemoveIndexesNot<T> extends AbstractNotNullFunc<T[],T[]> {
 
         private final List<Integer> indices;
         
@@ -394,7 +399,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] doExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>();
             int i = 0;
             for (final T element : object) {
@@ -412,7 +417,7 @@ public class ArrayFuncs {
 
     
     
-    public static final class RemoveNulls<T> extends AbstractFunc<T[],T[]> {
+    public static final class RemoveNulls<T> extends AbstractNotNullFunc<T[],T[]> {
 
         public RemoveNulls() {
             super();
@@ -423,7 +428,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] doExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
@@ -440,12 +445,13 @@ public class ArrayFuncs {
 
     
     
-    public static final class RemoveNotNullMatching<T> extends AbstractFunc<T[],T[]> {
+    public static final class RemoveNotNullMatching<T> extends AbstractNotNullFunc<T[],T[]> {
 
         private final IEval<Boolean,? super T> eval;
         
         public RemoveNotNullMatching(final IEval<Boolean,? super T> eval) {
             super();
+            Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
         }
 
@@ -454,7 +460,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] doExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
@@ -475,12 +481,13 @@ public class ArrayFuncs {
 
     
     
-    public static final class RemoveNullOrMatching<T> extends AbstractFunc<T[],T[]> {
+    public static final class RemoveNullOrMatching<T> extends AbstractNotNullFunc<T[],T[]> {
 
         private final IEval<Boolean,? super T> eval;
         
         public RemoveNullOrMatching(final IEval<Boolean,? super T> eval) {
             super();
+            Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
         }
 
@@ -489,7 +496,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] doExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
@@ -508,12 +515,13 @@ public class ArrayFuncs {
 
     
     
-    public static final class FlattenArrays<T> extends AbstractFunc<T[], T[][]> {
+    public static final class FlattenArrayOfArrays<T> extends AbstractNotNullFunc<T[], T[][]> {
 
         private final Type<? super T> type; 
         
-        public FlattenArrays(final Type<? super T> type) {
+        public FlattenArrayOfArrays(final Type<? super T> type) {
             super();
+            Validate.notNull(type, "A type representing the array elements must be specified");
             this.type = type;
         }
 
@@ -523,7 +531,7 @@ public class ArrayFuncs {
 
         @Override
         @SuppressWarnings("unchecked")
-        public T[] doExecute(final T[][] object) throws Exception {
+        public T[] notNullExecute(final T[][] object) throws Exception {
             
             final List<T> result = new ArrayList<T>();
             for (final T[] element : object) {
@@ -538,12 +546,13 @@ public class ArrayFuncs {
     
 
     
-    public static final class FlattenLists<T> extends AbstractFunc<T[], List<T>[]> {
+    public static final class FlattenArrayOfLists<T> extends AbstractNotNullFunc<T[], List<T>[]> {
 
         private final Type<? super T> type; 
 
-        public FlattenLists(final Type<? super T> type) {
+        public FlattenArrayOfLists(final Type<? super T> type) {
             super();
+            Validate.notNull(type, "A type representing the collection elements must be specified");
             this.type = type;
         }
 
@@ -553,7 +562,7 @@ public class ArrayFuncs {
 
         @Override
         @SuppressWarnings("unchecked")
-        public T[] doExecute(final List<T>[] object) throws Exception {
+        public T[] notNullExecute(final List<T>[] object) throws Exception {
             
             final List<T> result = new ArrayList<T>();
             for (final List<T> element : object) {
@@ -569,12 +578,13 @@ public class ArrayFuncs {
     
 
     
-    public static final class FlattenSets<T> extends AbstractFunc<T[], Set<T>[]> {
+    public static final class FlattenArrayOfSets<T> extends AbstractNotNullFunc<T[], Set<T>[]> {
 
         private final Type<? super T> type; 
 
-        public FlattenSets(final Type<? super T> type) {
+        public FlattenArrayOfSets(final Type<? super T> type) {
             super();
+            Validate.notNull(type, "A type representing the collection elements must be specified");
             this.type = type;
         }
 
@@ -584,7 +594,7 @@ public class ArrayFuncs {
 
         @Override
         @SuppressWarnings("unchecked")
-        public T[] doExecute(final Set<T>[] object) throws Exception {
+        public T[] notNullExecute(final Set<T>[] object) throws Exception {
             
             final List<T> result = new ArrayList<T>();
             for (final Set<T> element : object) {

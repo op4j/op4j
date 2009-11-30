@@ -27,12 +27,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.exceptions.FunctionExecutionException;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuild;
-import org.op4j.executables.functions.AbstractFunc;
+import org.op4j.executables.IMapBuilder;
+import org.op4j.executables.functions.AbstractNullAsNullFunc;
 
 /**
  * 
@@ -66,13 +67,15 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromArrayByKeyEval<K, T> extends AbstractFunc<Map<K, T[]>, T[]> {
+    public static final class FromArrayByKeyEval<K, T> extends AbstractNullAsNullFunc<Map<K, T[]>, T[]> {
 
         private final IEval<K,? super T> eval;
         private final Type<T> type;
         
         public FromArrayByKeyEval(final Type<T> type, final IEval<K,? super T> eval) {
             super();
+			Validate.notNull(type, "A type representing the array elements must be specified");
+			Validate.notNull(eval, "An evaluator must be specified");
             this.type = type;
             this.eval = eval;
         }
@@ -82,7 +85,7 @@ public class ToMapOfArray {
         }
 
 		@Override
-        public Map<K, T[]> doExecute(final T[] object) throws Exception {
+        public Map<K, T[]> nullAsNullExecute(final T[] object) throws Exception {
         	
             final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
             for (final T element: object) {
@@ -105,13 +108,15 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromArrayByMapBuilder<K, V, T> extends AbstractFunc<Map<K, V[]>, T[]> {
+    public static final class FromArrayByMapBuilder<K, V, T> extends AbstractNullAsNullFunc<Map<K, V[]>, T[]> {
 
-        private final IMapBuild<K, V, ? super T> mapBuilder;
+        private final IMapBuilder<K, V, ? super T> mapBuilder;
         private final Type<V> type;
         
-        public FromArrayByMapBuilder(final Type<V> type, final IMapBuild<K, V, ? super T> mapBuilder) {
+        public FromArrayByMapBuilder(final Type<V> type, final IMapBuilder<K, V, ? super T> mapBuilder) {
             super();
+			Validate.notNull(type, "A type representing the array elements must be specified");
+			Validate.notNull(mapBuilder, "A map builder must be specified");
             this.type = type;
             this.mapBuilder = mapBuilder;
         }
@@ -121,17 +126,17 @@ public class ToMapOfArray {
         }
 
         @Override
-        public Map<K, V[]> doExecute(final T[] object) throws Exception {
+        public Map<K, V[]> nullAsNullExecute(final T[] object) throws Exception {
         	
             final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
-                final K key = this.mapBuilder.getKey(element);
+                final K key = this.mapBuilder.buildKey(element);
                 List<V> value = result.get(key);
                 if (value == null) {
                     value = new ArrayList<V>();
                     result.put(key, value);
                 }
-                value.add(this.mapBuilder.getValue(element));
+                value.add(this.mapBuilder.buildValue(element));
             }
             
             return ToMapOfArray.createFromMapOfList(this.type, result);
@@ -144,12 +149,13 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromArrayByAlternateElements<T> extends AbstractFunc<Map<T, T[]>, T[]> {
+    public static final class FromArrayByAlternateElements<T> extends AbstractNullAsNullFunc<Map<T, T[]>, T[]> {
 
         private final Type<T> type;
     	
         public FromArrayByAlternateElements(final Type<T> type) {
             super();
+			Validate.notNull(type, "A type representing the array elements must be specified");
             this.type = type;
         }
         
@@ -158,7 +164,7 @@ public class ToMapOfArray {
         }
 
         @Override
-        public Map<T, T[]> doExecute(final T[] object) throws Exception {
+        public Map<T, T[]> nullAsNullExecute(final T[] object) throws Exception {
         	
             if (object.length % 2 != 0) {
                 throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");
@@ -188,13 +194,15 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromListByKeyEval<K, T> extends AbstractFunc<Map<K, T[]>, List<T>> {
+    public static final class FromListByKeyEval<K, T> extends AbstractNullAsNullFunc<Map<K, T[]>, List<T>> {
 
         private final IEval<K,? super T> eval;
         private final Type<T> type;
         
         public FromListByKeyEval(final Type<T> type, final IEval<K,? super T> eval) {
             super();
+			Validate.notNull(type, "A type representing the collection elements must be specified");
+			Validate.notNull(eval, "An evaluator must be specified");
             this.type = type;
             this.eval = eval;
         }
@@ -204,7 +212,7 @@ public class ToMapOfArray {
         }
 
         @Override
-        public Map<K, T[]> doExecute(final List<T> object) throws Exception {
+        public Map<K, T[]> nullAsNullExecute(final List<T> object) throws Exception {
         	
             final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
             for (final T element: object) {
@@ -227,13 +235,15 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromListByMapBuilder<K, V, T> extends AbstractFunc<Map<K, V[]>, List<T>> {
+    public static final class FromListByMapBuilder<K, V, T> extends AbstractNullAsNullFunc<Map<K, V[]>, List<T>> {
 
-        private final IMapBuild<K, V, ? super T> mapBuilder;
+        private final IMapBuilder<K, V, ? super T> mapBuilder;
         private final Type<V> type;
         
-        public FromListByMapBuilder(final Type<V> type, final IMapBuild<K, V, ? super T> mapBuilder) {
+        public FromListByMapBuilder(final Type<V> type, final IMapBuilder<K, V, ? super T> mapBuilder) {
             super();
+			Validate.notNull(type, "A type representing the collection elements must be specified");
+			Validate.notNull(mapBuilder, "A map builder must be specified");
             this.type = type;
             this.mapBuilder = mapBuilder;
         }
@@ -243,17 +253,17 @@ public class ToMapOfArray {
         }
 
         @Override
-        public Map<K, V[]> doExecute(final List<T> object) throws Exception {
+        public Map<K, V[]> nullAsNullExecute(final List<T> object) throws Exception {
         	
             final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
-                final K key = this.mapBuilder.getKey(element);
+                final K key = this.mapBuilder.buildKey(element);
                 List<V> value = result.get(key);
                 if (value == null) {
                     value = new ArrayList<V>();
                     result.put(key, value);
                 }
-                value.add(this.mapBuilder.getValue(element));
+                value.add(this.mapBuilder.buildValue(element));
             }
             
             return ToMapOfArray.createFromMapOfList(this.type, result);
@@ -266,12 +276,13 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromListByAlternateElements<T> extends AbstractFunc<Map<T, T[]>, List<T>> {
+    public static final class FromListByAlternateElements<T> extends AbstractNullAsNullFunc<Map<T, T[]>, List<T>> {
 
         private final Type<T> type;
     	
         public FromListByAlternateElements(final Type<T> type) {
             super();
+			Validate.notNull(type, "A type representing the collection elements must be specified");
             this.type = type;
         }
         
@@ -280,7 +291,7 @@ public class ToMapOfArray {
         }
 
         @Override
-        public Map<T, T[]> doExecute(final List<T> object) throws Exception {
+        public Map<T, T[]> nullAsNullExecute(final List<T> object) throws Exception {
         	
             if (object.size() % 2 != 0) {
                 throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");
@@ -309,13 +320,15 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromSetByKeyEval<K, T> extends AbstractFunc<Map<K, T[]>, Set<T>> {
+    public static final class FromSetByKeyEval<K, T> extends AbstractNullAsNullFunc<Map<K, T[]>, Set<T>> {
 
         private final IEval<K,? super T> eval;
         private final Type<T> type;
         
         public FromSetByKeyEval(final Type<T> type, final IEval<K,? super T> eval) {
             super();
+			Validate.notNull(type, "A type representing the collection elements must be specified");
+			Validate.notNull(eval, "An evaluator must be specified");
             this.type = type;
             this.eval = eval;
         }
@@ -325,7 +338,7 @@ public class ToMapOfArray {
         }
 
         @Override
-        public Map<K, T[]> doExecute(final Set<T> object) throws Exception {
+        public Map<K, T[]> nullAsNullExecute(final Set<T> object) throws Exception {
         	
             final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
             for (final T element: object) {
@@ -348,13 +361,15 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromSetByMapBuilder<K, V, T> extends AbstractFunc<Map<K, V[]>, Set<T>> {
+    public static final class FromSetByMapBuilder<K, V, T> extends AbstractNullAsNullFunc<Map<K, V[]>, Set<T>> {
 
-        private final IMapBuild<K, V, ? super T> mapBuilder;
+        private final IMapBuilder<K, V, ? super T> mapBuilder;
         private final Type<V> type;
         
-        public FromSetByMapBuilder(final Type<V> type, final IMapBuild<K, V, ? super T> mapBuilder) {
+        public FromSetByMapBuilder(final Type<V> type, final IMapBuilder<K, V, ? super T> mapBuilder) {
             super();
+			Validate.notNull(type, "A type representing the collection elements must be specified");
+			Validate.notNull(mapBuilder, "A map builder must be specified");
             this.type = type;
             this.mapBuilder = mapBuilder;
         }
@@ -364,17 +379,17 @@ public class ToMapOfArray {
         }
 
         @Override
-        public Map<K, V[]> doExecute(final Set<T> object) throws Exception {
+        public Map<K, V[]> nullAsNullExecute(final Set<T> object) throws Exception {
         	
             final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
-                final K key = this.mapBuilder.getKey(element);
+                final K key = this.mapBuilder.buildKey(element);
                 List<V> value = result.get(key);
                 if (value == null) {
                     value = new ArrayList<V>();
                     result.put(key, value);
                 }
-                value.add(this.mapBuilder.getValue(element));
+                value.add(this.mapBuilder.buildValue(element));
             }
             
             return ToMapOfArray.createFromMapOfList(this.type, result);
@@ -387,12 +402,13 @@ public class ToMapOfArray {
     
     
     
-    public static final class FromSetByAlternateElements<T> extends AbstractFunc<Map<T, T[]>, Set<T>> {
+    public static final class FromSetByAlternateElements<T> extends AbstractNullAsNullFunc<Map<T, T[]>, Set<T>> {
 
         private final Type<T> type;
     	
         public FromSetByAlternateElements(final Type<T> type) {
             super();
+			Validate.notNull(type, "A type representing the collection elements must be specified");
             this.type = type;
         }
         
@@ -401,7 +417,7 @@ public class ToMapOfArray {
         }
 
         @Override
-        public Map<T, T[]> doExecute(final Set<T> object) throws Exception {
+        public Map<T, T[]> nullAsNullExecute(final Set<T> object) throws Exception {
         	
             if (object.size() % 2 != 0) {
                 throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");

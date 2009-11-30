@@ -35,7 +35,7 @@ import org.apache.commons.lang.time.DateUtils;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.exceptions.FunctionExecutionException;
-import org.op4j.executables.functions.AbstractFunc;
+import org.op4j.executables.functions.AbstractNullAsNullFunc;
 
 /**
  * 
@@ -185,7 +185,7 @@ public final class ToCalendar {
 	
 	
 	
-	public static final class FromCalendar extends AbstractFunc<Calendar, Calendar> {
+	public static final class FromCalendar extends AbstractNullAsNullFunc<Calendar, Calendar> {
 	
 		private Integer truncateField = null;
 		
@@ -203,7 +203,7 @@ public final class ToCalendar {
 		}
 
 		@Override
-        public Calendar doExecute(final Calendar object) throws Exception {
+        public Calendar nullAsNullExecute(final Calendar object) throws Exception {
 			if (this.truncateField == null) {
 				return (Calendar) object.clone();
 			}
@@ -214,7 +214,7 @@ public final class ToCalendar {
 	
 
 	
-	public static final class FromDate extends AbstractFunc<Calendar, Date> {
+	public static final class FromDate extends AbstractNullAsNullFunc<Calendar, Date> {
 	
 		private Integer truncateField = null;
 		
@@ -232,7 +232,7 @@ public final class ToCalendar {
 		}
 
 		@Override
-        public Calendar doExecute(final Date object) throws Exception {
+        public Calendar nullAsNullExecute(final Date object) throws Exception {
 			
 			final Calendar calendar = Calendar.getInstance();
 			calendar.setTimeInMillis(object.getTime());
@@ -248,7 +248,7 @@ public final class ToCalendar {
 	
 
 	
-	public static final class FromTimestamp extends AbstractFunc<Calendar, Timestamp> {
+	public static final class FromTimestamp extends AbstractNullAsNullFunc<Calendar, Timestamp> {
 	
 		private Integer truncateField = null;
 		
@@ -266,7 +266,7 @@ public final class ToCalendar {
 		}
 
 		@Override
-        public Calendar doExecute(final Timestamp object) throws Exception {
+        public Calendar nullAsNullExecute(final Timestamp object) throws Exception {
 			
 			final Calendar calendar = Calendar.getInstance();
 			calendar.setTimeInMillis(object.getTime());
@@ -282,7 +282,7 @@ public final class ToCalendar {
 	
 
 	
-	public static final class FromTimeInMillis extends AbstractFunc<Calendar, Long> {
+	public static final class FromTimeInMillis extends AbstractNullAsNullFunc<Calendar, Long> {
 	
 		private Integer truncateField = null;
 		
@@ -300,7 +300,7 @@ public final class ToCalendar {
 		}
 
 		@Override
-        public Calendar doExecute(final Long object) throws Exception {
+        public Calendar nullAsNullExecute(final Long object) throws Exception {
 			
 			final Calendar calendar = Calendar.getInstance();
 			calendar.setTimeInMillis(object.longValue());
@@ -317,13 +317,14 @@ public final class ToCalendar {
 	
 	
 	
-	public static final class FromString extends AbstractFunc<Calendar, String> {
+	public static final class FromString extends AbstractNullAsNullFunc<Calendar, String> {
 
 		private final SimpleDateFormat simpleDateFormat;
 
 		
 		public FromString(final String pattern) {
 			super();
+			Validate.notNull(pattern, "A pattern must be specified");
 	        if (StringUtils.contains(pattern, "MMM")) {
                 throw new FunctionExecutionException("The use of MMM or MMMM as part of the date pattern requires a Locale");
             }
@@ -335,11 +336,15 @@ public final class ToCalendar {
 		
 		public FromString(final String pattern, final Locale locale) {
 			super();
+			Validate.notNull(pattern, "A pattern must be specified");
+			Validate.notNull(locale, "A locale must be specified");
 			this.simpleDateFormat = new SimpleDateFormat(pattern, locale);
 		}
 		
 		public FromString(final String pattern, final String locale) {
 			super();
+			Validate.notNull(pattern, "A pattern must be specified");
+			Validate.notNull(locale, "A locale must be specified");
 			this.simpleDateFormat = new SimpleDateFormat(pattern, LocaleUtils.toLocale(locale));
 		}
 
@@ -349,7 +354,7 @@ public final class ToCalendar {
 		}
 
 		@Override
-        public Calendar doExecute(final String object) throws Exception {
+        public Calendar nullAsNullExecute(final String object) throws Exception {
 			// Calendar is truncated to YEAR to ensure all fields are set to zero before 
 			// parsing the string into the new calendar object
 			final Calendar calendar = 
@@ -362,7 +367,7 @@ public final class ToCalendar {
 
 	
 	
-	public static final class FromIntegerFieldList extends AbstractFunc<Calendar, List<Integer>> {
+	public static final class FromIntegerFieldList extends AbstractNullAsNullFunc<Calendar, List<Integer>> {
 		
 		
 		public FromIntegerFieldList() {
@@ -374,7 +379,7 @@ public final class ToCalendar {
 		}
 
 		@Override
-        public Calendar doExecute(final List<Integer> object) throws Exception {
+        public Calendar nullAsNullExecute(final List<Integer> object) throws Exception {
 			
             if (object.size() != 3 &&  // year, month, day
         		object.size() != 5 &&  // year, month, day, hour, minute
@@ -405,7 +410,7 @@ public final class ToCalendar {
 	
 	
 	
-	public static final class FromIntegerFieldArray extends AbstractFunc<Calendar, Integer[]> {
+	public static final class FromIntegerFieldArray extends AbstractNullAsNullFunc<Calendar, Integer[]> {
 		
 		
 		public FromIntegerFieldArray() {
@@ -417,7 +422,7 @@ public final class ToCalendar {
 		}
 
 		@Override
-        public Calendar doExecute(final Integer[] object) throws Exception {
+        public Calendar nullAsNullExecute(final Integer[] object) throws Exception {
 			
             if (object.length != 3 &&  // year, month, day
         		object.length != 5 &&  // year, month, day, hour, minute
@@ -447,7 +452,7 @@ public final class ToCalendar {
 
 	
 	
-	public static final class FromStringFieldList extends AbstractFunc<Calendar, List<String>> {
+	public static final class FromStringFieldList extends AbstractNullAsNullFunc<Calendar, List<String>> {
 		
 		
 		public FromStringFieldList() {
@@ -459,7 +464,7 @@ public final class ToCalendar {
 		}
 
 		@Override
-        public Calendar doExecute(final List<String> object) throws Exception {
+        public Calendar nullAsNullExecute(final List<String> object) throws Exception {
 			
             if (object.size() != 3 &&  // year, month, day
         		object.size() != 5 &&  // year, month, day, hour, minute
@@ -490,7 +495,7 @@ public final class ToCalendar {
 	
 	
 	
-	public static final class FromStringFieldArray extends AbstractFunc<Calendar, String[]> {
+	public static final class FromStringFieldArray extends AbstractNullAsNullFunc<Calendar, String[]> {
 		
 		
 		public FromStringFieldArray() {
@@ -502,7 +507,7 @@ public final class ToCalendar {
 		}
 
 		@Override
-        public Calendar doExecute(final String[] object) throws Exception {
+        public Calendar nullAsNullExecute(final String[] object) throws Exception {
 			
             if (object.length != 3 &&  // year, month, day
         		object.length != 5 &&  // year, month, day, hour, minute

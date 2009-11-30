@@ -20,7 +20,7 @@
 package org.op4j.operators.qualities;
 
 import org.op4j.executables.IEval;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.ISelector;
 
 
 
@@ -41,7 +41,7 @@ public interface INavigableCollectionOperator<T>  {
     public INavigatingCollectionOperator<T> forEachIndex(final int... indices);
     public INavigatingCollectionOperator<T> forEachMatching(final String expression, final Object... optionalExpParams);
     public INavigatingCollectionOperator<T> forEachMatching(final IEval<Boolean, ? super T> eval);
-    public INavigatingCollectionOperator<T> forEachSelected(final ISelect<T> selector);
+    public INavigatingCollectionOperator<T> forEachSelected(final ISelector<T> selector);
     public INavigatingCollectionOperator<T> forEachNull();
     public INavigatingCollectionOperator<T> forEachNullOrMatching(final String expression, final Object... optionalExpParams);
     public INavigatingCollectionOperator<T> forEachNullOrMatching(final IEval<Boolean, ? super T> eval);

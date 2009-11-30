@@ -24,7 +24,7 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.ISelector;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
 import org.op4j.operators.qualities.IExtractableMapOperator;
@@ -69,7 +69,7 @@ public interface ILevel0MapOperator<K,V>
     public ILevel0MapOperator<K,V> removeKeys(final K... keys);
     public ILevel0MapOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
     public ILevel0MapOperator<K,V> removeMatching(final IEval<Boolean, ? super Map.Entry<K,V>> eval);
-    public ILevel0MapOperator<K,V> removeSelected(final ISelect<Map.Entry<K,V>> selector);
+    public ILevel0MapOperator<K,V> removeSelected(final ISelector<Map.Entry<K,V>> selector);
     public ILevel0MapOperator<K,V> removeKeysNot(final K... keys);
     
     
@@ -79,7 +79,7 @@ public interface ILevel0MapOperator<K,V>
     public ILevel1MapEntriesOperator<K,V> forEachEntryWithKeys(final K... keys);
     public ILevel1MapEntriesOperator<K,V> forEachEntryMatching(final String expression, final Object... optionalExpParams);
     public ILevel1MapEntriesOperator<K,V> forEachEntryMatching(final IEval<Boolean, ? super Map.Entry<K,V>> eval);
-    public ILevel1MapEntriesOperator<K,V> forEachEntrySelected(final ISelect<Map.Entry<K,V>> selector);
+    public ILevel1MapEntriesOperator<K,V> forEachEntrySelected(final ISelector<Map.Entry<K,V>> selector);
     public ILevel1MapEntriesOperator<K,V> forEachEntryWithKeysNot(final K... keys);
     
     

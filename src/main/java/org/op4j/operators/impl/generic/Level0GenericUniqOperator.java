@@ -24,13 +24,19 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
+import org.op4j.exceptions.TargetCastException;
 import org.op4j.executables.Call;
 import org.op4j.executables.Eval;
 import org.op4j.executables.ICall;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuild;
+import org.op4j.executables.IMapBuilder;
 import org.op4j.executables.functions.IFunc;
 import org.op4j.executables.functions.ListFuncs;
 import org.op4j.executables.functions.conversion.ToArray;
@@ -42,12 +48,25 @@ import org.op4j.executables.functions.conversion.ToMapOfSet;
 import org.op4j.executables.functions.conversion.ToSet;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
+import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
+import org.op4j.operators.impl.arrayoflist.Level0ArrayOfListOperator;
+import org.op4j.operators.impl.arrayofmap.Level0ArrayOfMapOperator;
+import org.op4j.operators.impl.arrayofset.Level0ArrayOfSetOperator;
 import org.op4j.operators.impl.list.Level0ListOperator;
+import org.op4j.operators.impl.listofarray.Level0ListOfArrayOperator;
+import org.op4j.operators.impl.listoflist.Level0ListOfListOperator;
+import org.op4j.operators.impl.listofmap.Level0ListOfMapOperator;
+import org.op4j.operators.impl.listofset.Level0ListOfSetOperator;
 import org.op4j.operators.impl.map.Level0MapOperator;
 import org.op4j.operators.impl.mapofarray.Level0MapOfArrayOperator;
 import org.op4j.operators.impl.mapoflist.Level0MapOfListOperator;
+import org.op4j.operators.impl.mapofmap.Level0MapOfMapOperator;
 import org.op4j.operators.impl.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.impl.set.Level0SetOperator;
+import org.op4j.operators.impl.setofarray.Level0SetOfArrayOperator;
+import org.op4j.operators.impl.setoflist.Level0SetOfListOperator;
+import org.op4j.operators.impl.setofmap.Level0SetOfMapOperator;
+import org.op4j.operators.impl.setofset.Level0SetOfSetOperator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
@@ -120,7 +139,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0MapOperator<K, V> buildMap(final IMapBuild<K, V, ? super T> mapBuild) {
+    public <K, V> ILevel0MapOperator<K, V> buildMap(final IMapBuilder<K, V, ? super T> mapBuild) {
         return new Level0MapOperator<K, V>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMap.FromListByMapBuilder<K, V, T>(mapBuild)));
     }
 
@@ -130,7 +149,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0MapOfArrayOperator<K, V> buildMapOfArray(final Type<V> valueArrayOf, final IMapBuild<K, V, ? super T> mapBuild) {
+    public <K, V> ILevel0MapOfArrayOperator<K, V> buildMapOfArray(final Type<V> valueArrayOf, final IMapBuilder<K, V, ? super T> mapBuild) {
         return new Level0MapOfArrayOperator<K, V>(valueArrayOf, getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfArray.FromListByMapBuilder<K, V, T>(valueArrayOf, mapBuild)));
     }
 
@@ -140,7 +159,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0MapOfListOperator<K, V> buildMapOfList(final IMapBuild<K, V, ? super T> mapBuild) {
+    public <K, V> ILevel0MapOfListOperator<K, V> buildMapOfList(final IMapBuilder<K, V, ? super T> mapBuild) {
         return new Level0MapOfListOperator<K, V>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfList.FromListByMapBuilder<K, V, T>(mapBuild)));
     }
 
@@ -150,7 +169,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0MapOfSetOperator<K, V> buildMapOfSet(final IMapBuild<K, V, ? super T> mapBuild) {
+    public <K, V> ILevel0MapOfSetOperator<K, V> buildMapOfSet(final IMapBuilder<K, V, ? super T> mapBuild) {
         return new Level0MapOfSetOperator<K, V>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfSet.FromListByMapBuilder<K, V, T>(mapBuild)));
     }
 
@@ -223,311 +242,273 @@ public class Level0GenericUniqOperator<T> extends Operator
 
 
 
-    public ILevel0MapOfListOperator<?, ?> casstAsMapOfList() {
-        // TODO Auto-generated method stub
-        return null;
+    public <X> ILevel0ArrayOperator<X> castAsArray(final Type<X> of) {
+    	Validate.notNull(of, "A type representing the elements must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = Types.arrayOf(of).getRawClass();
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "Array");
+    		}
+    	}
+        return new Level0ArrayOperator<X>(of, getTarget());
     }
 
 
-    public ILevel0ArrayOfArrayOperator<?> castAsArrayOfArray() {
-        // TODO Auto-generated method stub
-        return null;
+    public <X> ILevel0ListOperator<X> castAsList(final Type<X> of) {
+    	Validate.notNull(of, "A type representing the elements must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = List.class;
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "List");
+    		}
+    	}
+        return new Level0ListOperator<X>(getTarget());
     }
 
 
-    public <X> ILevel0ArrayOfArrayOperator<X> castAsArrayOfArray(Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+    public <K,V> ILevel0MapOperator<K,V> castAsMap(final Type<K> keyOf, final Type<V> valueOf) {
+    	Validate.notNull(keyOf, "A type representing the keys must be specified");
+    	Validate.notNull(valueOf, "A type representing the values must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = Map.class;
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "Map");
+    		}
+    	}
+        return new Level0MapOperator<K,V>(getTarget());
     }
 
 
-    public <X> ILevel0ArrayOfArrayOperator<X> castAsArrayOfArray(Class<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+    public <X> ILevel0SetOperator<X> castAsSet(final Type<X> of) {
+    	Validate.notNull(of, "A type representing the elements must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = Set.class;
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "Set");
+    		}
+    	}
+        return new Level0SetOperator<X>(getTarget());
     }
 
 
-    public ILevel0ArrayOfListOperator<?> castAsArrayOfList() {
-        // TODO Auto-generated method stub
-        return null;
+    public <X> ILevel0ArrayOfArrayOperator<X> castAsArrayOfArray(final Type<X> of) {
+    	Validate.notNull(of, "A type representing the elements must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = Types.arrayOf(Types.arrayOf(of)).getRawClass();
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "ArrayOfArray");
+    		}
+    	}
+        return new Level0ArrayOfArrayOperator<X>(of, getTarget());
     }
 
 
-    public <X> ILevel0ArrayOfListOperator<X> castAsArrayOfList(Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+    public <X> ILevel0ArrayOfListOperator<X> castAsArrayOfList(final Type<X> of) {
+    	Validate.notNull(of, "A type representing the elements must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = List[].class;
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "ArrayOfList");
+         }
+        }
+        return new Level0ArrayOfListOperator<X>(getTarget());
     }
 
 
-    public <X> ILevel0ArrayOfListOperator<X> castAsArrayOfList(Class<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+    public <K, V> ILevel0ArrayOfMapOperator<K, V> castAsArrayOfMap(final Type<K> keyOf, final Type<V> valueOf) {
+    	Validate.notNull(keyOf, "A type representing the keys must be specified");
+    	Validate.notNull(valueOf, "A type representing the values must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = Map[].class;
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "ArrayOfMap");
+    		}
+    	}
+        return new Level0ArrayOfMapOperator<K,V>(getTarget());
     }
 
 
-    public ILevel0ArrayOfMapOperator<?, ?> castAsArrayOfMap() {
-        // TODO Auto-generated method stub
-        return null;
+    public <X> ILevel0ArrayOfSetOperator<X> castAsArrayOfSet(final Type<X> of) {
+    	Validate.notNull(of, "A type representing the elements must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = Set[].class;
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "ArrayOfSet");
+         }
+        }
+        return new Level0ArrayOfSetOperator<X>(getTarget());
     }
 
 
-    public <K, V> ILevel0ArrayOfMapOperator<K, V> castAsArrayOfMap(
-            Type<K> keyOf, Type<V> valueOf) {
-        // TODO Auto-generated method stub
-        return null;
+    public <X> ILevel0ListOfArrayOperator<X> castAsListOfArray(final Type<X> of) {
+    	Validate.notNull(of, "A type representing the elements must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = List.class;
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "ListOfArray");
+         }
+        }
+        return new Level0ListOfArrayOperator<X>(of, getTarget());
     }
 
 
-    public ILevel0ArrayOfSetOperator<?> castAsArrayOfSet() {
-        // TODO Auto-generated method stub
-        return null;
+    public <X> ILevel0ListOfListOperator<X> castAsListOfList(final Type<X> of) {
+    	Validate.notNull(of, "A type representing the elements must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = List.class;
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "ListOfList");
+         }
+        }
+        return new Level0ListOfListOperator<X>(getTarget());
     }
 
 
-    public <X> ILevel0ArrayOfSetOperator<X> castAsArrayOfSet(Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+    public <K, V> ILevel0ListOfMapOperator<K, V> castAsListOfMap(final Type<K> keyOf, final Type<V> valueOf) {
+    	Validate.notNull(keyOf, "A type representing the keys must be specified");
+    	Validate.notNull(valueOf, "A type representing the values must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = List.class;
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "ListOfMap");
+    		}
+    	}
+        return new Level0ListOfMapOperator<K,V>(getTarget());
     }
 
 
-    public <X> ILevel0ArrayOfSetOperator<X> castAsArrayOfSet(Class<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+    public <X> ILevel0ListOfSetOperator<X> castAsListOfSet(final Type<X> of) {
+    	Validate.notNull(of, "A type representing the elements must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = List.class;
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "ListOfSet");
+         }
+        }
+        return new Level0ListOfSetOperator<X>(getTarget());
     }
 
 
-    public ILevel0ListOfArrayOperator<?> castAsListOfArray() {
-        // TODO Auto-generated method stub
-        return null;
+    public <K, V> ILevel0MapOfArrayOperator<K, V> castAsMapOfArray(final Type<K> keyOf, final Type<V> valueOf) {
+    	Validate.notNull(keyOf, "A type representing the keys must be specified");
+    	Validate.notNull(valueOf, "A type representing the values must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = Map.class;
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "MapOfArray");
+    		}
+    	}
+        return new Level0MapOfArrayOperator<K,V>(valueOf, getTarget());
     }
 
 
-    public <X> ILevel0ListOfArrayOperator<X> castAsListOfArray(Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+    public <K, V> ILevel0MapOfListOperator<K, V> castAsMapOfList(final Type<K> keyOf, final Type<V> valueOf) {
+    	Validate.notNull(keyOf, "A type representing the keys must be specified");
+    	Validate.notNull(valueOf, "A type representing the values must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = Map.class;
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "MapOfList");
+    		}
+    	}
+        return new Level0MapOfListOperator<K,V>(getTarget());
     }
 
 
-    public <X> ILevel0ListOfArrayOperator<X> castAsListOfArray(Class<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+    public <K1, K2, V> ILevel0MapOfMapOperator<K1, K2, V> castAsMapOfMap(final Type<K1> key1Of, final Type<K2> key2Of, final Type<V> valueOf) {
+    	Validate.notNull(key1Of, "A type representing the keys of the first-level map must be specified");
+    	Validate.notNull(key2Of, "A type representing the keys of the second-level maps must be specified");
+    	Validate.notNull(valueOf, "A type representing the values of the second-level maps must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = Map.class;
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "MapOfMap");
+    		}
+    	}
+        return new Level0MapOfMapOperator<K1,K2,V>(getTarget());
     }
 
 
-    public ILevel0ListOfListOperator<?> castAsListOfList() {
-        // TODO Auto-generated method stub
-        return null;
+    public <K, V> ILevel0MapOfSetOperator<K, V> castAsMapOfSet(final Type<K> keyOf, final Type<V> valueOf) {
+    	Validate.notNull(keyOf, "A type representing the keys must be specified");
+    	Validate.notNull(valueOf, "A type representing the values must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = Map.class;
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "MapOfSet");
+    		}
+    	}
+        return new Level0MapOfSetOperator<K,V>(getTarget());
     }
 
 
-    public <X> ILevel0ListOfListOperator<X> castAsListOfList(Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+    public <X> ILevel0SetOfArrayOperator<X> castAsSetOfArray(final Type<X> of) {
+    	Validate.notNull(of, "A type representing the elements must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = Set.class;
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "SetOfArray");
+         }
+        }
+        return new Level0SetOfArrayOperator<X>(of, getTarget());
     }
 
 
-    public <X> ILevel0ListOfListOperator<X> castAsListOfList(Class<X> of) {
-        // TODO Auto-generated method stub
-        return null;
+    public <X> ILevel0SetOfListOperator<X> castAsSetOfList(final Type<X> of) {
+    	Validate.notNull(of, "A type representing the elements must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = Set.class;
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "SetOfList");
+         }
+        }
+        return new Level0SetOfListOperator<X>(getTarget());
     }
 
 
-    public ILevel0ListOfMapOperator<?, ?> castAsListOfMap() {
-        // TODO Auto-generated method stub
-        return null;
+    public <K, V> ILevel0SetOfMapOperator<K, V> castAsSetOfMap(final Type<K> keyOf, final Type<V> valueOf) {
+    	Validate.notNull(keyOf, "A type representing the keys must be specified");
+    	Validate.notNull(valueOf, "A type representing the values must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = Set.class;
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "SetOfMap");
+    		}
+    	}
+        return new Level0SetOfMapOperator<K,V>(getTarget());
     }
 
 
-    public <K, V> ILevel0ListOfMapOperator<K, V> castAsListOfMap(Type<K> keyOf,
-            Type<V> valueOf) {
-        // TODO Auto-generated method stub
-        return null;
+    public <X> ILevel0SetOfSetOperator<X> castAsSetOfSet(final Type<X> of) {
+    	Validate.notNull(of, "A type representing the elements must be specified");
+    	final T targetObject = get();
+        if (targetObject != null) {
+        	final Class<?> newTargetClass = Set.class;
+        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+        		throw new TargetCastException(targetObject.getClass(), "SetOfSet");
+         }
+        }
+        return new Level0SetOfSetOperator<X>(getTarget());
     }
-
-
-    public ILevel0ListOfSetOperator<?> castAsListOfSet() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <X> ILevel0ListOfSetOperator<X> castAsListOfSet(Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <X> ILevel0ListOfSetOperator<X> castAsListOfSet(Class<X> of) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0MapOfArrayOperator<?, ?> castAsMapOfArray() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <K, V> ILevel0MapOfArrayOperator<K, V> castAsMapOfArray(
-            Type<K> keyOf, Type<V> valueOf) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <K, V> ILevel0MapOfArrayOperator<K, V> castAsMapOfArray(
-            Class<K> keyOf, Class<V> valueOf) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <K, V> ILevel0MapOfListOperator<K, V> castAsMapOfList(Type<K> keyOf,
-            Type<V> valueOf) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <K, V> ILevel0MapOfListOperator<K, V> castAsMapOfList(
-            Class<K> keyOf, Class<V> valueOf) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0MapOfMapOperator<?, ?, ?> castAsMapOfMap() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <K1, K2, V> ILevel0MapOfMapOperator<K1, K2, V> castAsMapOfMap(
-            Type<K1> key1Of, Type<K2> key2Of, Type<V> valueOf) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <K1, K2, V> ILevel0MapOfMapOperator<K1, K2, V> castAsMapOfMap(
-            Class<K1> key1Of, Class<K2> key2Of, Class<V> valueOf) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0MapOfSetOperator<?, ?> castAsMapOfSet() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <K, V> ILevel0MapOfSetOperator<K, V> castAsMapOfSet(Type<K> keyOf,
-            Type<V> valueOf) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <K, V> ILevel0MapOfSetOperator<K, V> castAsMapOfSet(Class<K> keyOf,
-            Class<V> valueOf) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0SetOfArrayOperator<?> castAsSetOfArray() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <X> ILevel0SetOfArrayOperator<X> castAsSetOfArray(Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <X> ILevel0SetOfArrayOperator<X> castAsSetOfArray(Class<X> of) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0SetOfListOperator<?> castAsSetOfList() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <X> ILevel0SetOfListOperator<X> castAsSetOfList(Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <X> ILevel0SetOfListOperator<X> castAsSetOfList(Class<X> of) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0SetOfMapOperator<?, ?> castAsSetOfMap() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <K, V> ILevel0SetOfMapOperator<K, V> castAsSetOfMap(Type<K> keyOf,
-            Type<V> valueOf) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public ILevel0SetOfSetOperator<?> castAsSetOfSet() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <X> ILevel0SetOfSetOperator<X> castAsSetOfSet(Type<X> of) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <X> ILevel0SetOfSetOperator<X> castAsSetOfSet(Class<X> of) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    
-    public <K, V> ILevel0ArrayOfMapOperator<K, V> castAsArrayOfMap(
-            Class<K> keyOf, Class<V> valueOf) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <K, V> ILevel0ListOfMapOperator<K, V> castAsListOfMap(
-            Class<K> keyOf, Class<V> valueOf) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-    public <K, V> ILevel0SetOfMapOperator<K, V> castAsSetOfMap(Class<K> keyOf,
-            Class<V> valueOf) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-    
-    
-    
-    
-    
 
 
     public <X> ILevel0GenericUniqOperator<X> eval(final IEval<X, ? super T> eval) {

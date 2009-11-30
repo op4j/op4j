@@ -25,7 +25,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import org.op4j.executables.functions.AbstractFunc;
+import org.op4j.executables.functions.AbstractNullAsNullFunc;
+import org.op4j.executables.functions.IFunc;
 
 /**
  * 
@@ -45,14 +46,14 @@ class ToCollection {
     
     
     
-    static abstract class FromArray<T, X extends Collection<T>> extends AbstractFunc<X, T[]> {
+    static abstract class FromArray<T, X extends Collection<T>> extends AbstractNullAsNullFunc<X, T[]> {
 
         public FromArray() {
             super();
         }
 
         @Override
-        public X doExecute(final T[] object) throws Exception {
+        public X nullAsNullExecute(final T[] object) throws Exception {
             return fromList(new ArrayList<T>(Arrays.asList(object)));
         }
         
@@ -64,14 +65,14 @@ class ToCollection {
 
     
     
-    static abstract class FromCollection<T, X extends Collection<T>> extends AbstractFunc<X, Collection<T>> {
+    static abstract class FromCollection<T, X extends Collection<T>> extends AbstractNullAsNullFunc<X, Collection<T>> {
 
         public FromCollection() {
             super();
         }
 
         @Override
-        public X doExecute(final Collection<T> object) throws Exception {
+        public X nullAsNullExecute(final Collection<T> object) throws Exception {
             return fromList(new ArrayList<T>(object));
         }
         
@@ -83,14 +84,13 @@ class ToCollection {
 
     
     
-    static abstract class FromObject<T, X extends Collection<T>> extends AbstractFunc<X, T> {
+    static abstract class FromObject<T, X extends Collection<T>> implements IFunc<X, T> {
 
         public FromObject() {
             super();
         }
 
-        @Override
-        public X doExecute(final T object) throws Exception {
+        public X execute(final T object) throws Exception {
             final List<T> result = new ArrayList<T>();
             result.add(object);
             return fromList(result);

@@ -29,7 +29,7 @@ import java.util.Set;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.executables.IEval;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.ISelector;
 
 /**
  * 
@@ -215,7 +215,7 @@ public class SetFuncs {
     
     public static final class RemoveSelected<T> extends CollectionFuncs.RemoveSelected<T, Set<T>> {
 
-        public RemoveSelected(final ISelect<T> selector) {
+        public RemoveSelected(final ISelector<T> selector) {
             super(selector);
         }
 
@@ -313,10 +313,10 @@ public class SetFuncs {
     
     
     
-    public static final class FlattenArrays<T> extends CollectionFuncs.FlattenArrays<T, Set<T>, Set<T[]>> {
+    public static final class FlattenSetOfArrays<T> extends CollectionFuncs.FlattenCollectionOfArrays<T, Set<T>, Set<T[]>> {
 
         
-        public FlattenArrays() {
+        public FlattenSetOfArrays() {
             super();
         }
         
@@ -335,10 +335,10 @@ public class SetFuncs {
     
     
     
-    public static final class FlattenLists<T> extends CollectionFuncs.FlattenCollections<T, Set<T>, Set<List<T>>> {
+    public static final class FlattenSetOfLists<T> extends CollectionFuncs.FlattenCollectionOfCollections<T, Set<T>, Set<List<T>>> {
 
         
-        public FlattenLists() {
+        public FlattenSetOfLists() {
             super();
         }
         
@@ -356,10 +356,10 @@ public class SetFuncs {
 
     
     
-    public static final class FlattenSets<T> extends CollectionFuncs.FlattenCollections<T, Set<T>, Set<Set<T>>> {
+    public static final class FlattenSetOfSets<T> extends CollectionFuncs.FlattenCollectionOfCollections<T, Set<T>, Set<Set<T>>> {
 
         
-        public FlattenSets() {
+        public FlattenSetOfSets() {
             super();
         }
         

@@ -30,7 +30,7 @@ import java.util.Set;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.executables.IEval;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.ISelector;
 
 /**
  * 
@@ -90,7 +90,7 @@ public class ListFuncs {
     
     
     
-    public static final class Distinct<T> extends AbstractFunc<List<T>, List<T>> {
+    public static final class Distinct<T> extends AbstractNotNullFunc<List<T>, List<T>> {
 
         public Distinct() {
             super();
@@ -101,7 +101,7 @@ public class ListFuncs {
         }
 
         @Override
-        public List<T> doExecute(final List<T> object) throws Exception {
+        public List<T> notNullExecute(final List<T> object) throws Exception {
             return new ArrayList<T>(new LinkedHashSet<T>(object));
         }
 
@@ -236,7 +236,7 @@ public class ListFuncs {
     
     public static final class RemoveSelected<T> extends CollectionFuncs.RemoveSelected<T, List<T>> {
 
-        public RemoveSelected(final ISelect<T> selector) {
+        public RemoveSelected(final ISelector<T> selector) {
             super(selector);
         }
 
@@ -333,10 +333,10 @@ public class ListFuncs {
     
     
     
-    public static final class FlattenArrays<T> extends CollectionFuncs.FlattenArrays<T, List<T>, List<T[]>> {
+    public static final class FlattenListOfArrays<T> extends CollectionFuncs.FlattenCollectionOfArrays<T, List<T>, List<T[]>> {
 
         
-        public FlattenArrays() {
+        public FlattenListOfArrays() {
             super();
         }
         
@@ -354,10 +354,10 @@ public class ListFuncs {
 
     
     
-    public static final class FlattenLists<T> extends CollectionFuncs.FlattenCollections<T, List<T>, List<List<T>>> {
+    public static final class FlattenListOfLists<T> extends CollectionFuncs.FlattenCollectionOfCollections<T, List<T>, List<List<T>>> {
 
         
-        public FlattenLists() {
+        public FlattenListOfLists() {
             super();
         }
         
@@ -375,10 +375,10 @@ public class ListFuncs {
 
     
     
-    public static final class FlattenSets<T> extends CollectionFuncs.FlattenCollections<T, List<T>, List<Set<T>>> {
+    public static final class FlattenListOfSets<T> extends CollectionFuncs.FlattenCollectionOfCollections<T, List<T>, List<Set<T>>> {
 
         
-        public FlattenSets() {
+        public FlattenListOfSets() {
             super();
         }
         

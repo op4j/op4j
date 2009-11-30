@@ -25,9 +25,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.executables.functions.AbstractFunc;
+import org.op4j.executables.functions.AbstractNullAsNullFunc;
+import org.op4j.executables.functions.IFunc;
 
 /**
  * 
@@ -47,12 +49,13 @@ public final class ToArray {
     
     
     
-    public static final class FromCollection<T> extends AbstractFunc<T[], Collection<T>> {
+    public static final class FromCollection<T> extends AbstractNullAsNullFunc<T[], Collection<T>> {
 
         private final Type<T> type;
         
         public FromCollection(final Type<T> type) {
             super();
+			Validate.notNull(type, "A type representing the collection elements must be specified");
             this.type = type;
         }
 
@@ -62,7 +65,7 @@ public final class ToArray {
 
         @Override
         @SuppressWarnings("unchecked")
-        public T[] doExecute(final Collection<T> object) throws Exception {
+        public T[] nullAsNullExecute(final Collection<T> object) throws Exception {
             final List<T> result = new ArrayList<T>(object);
             final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
             return result.toArray(array);
@@ -72,12 +75,13 @@ public final class ToArray {
 
     
     
-    public static final class FromObject<T> extends AbstractFunc<T[], T> {
+    public static final class FromObject<T> implements IFunc<T[], T> {
 
         private final Type<T> type;
         
         public FromObject(final Type<T> type) {
             super();
+			Validate.notNull(type, "A type representing the object must be specified");
             this.type = type;
         }
 
@@ -85,9 +89,8 @@ public final class ToArray {
             return Types.ARRAY_OF_OBJECT;
         }
 
-        @Override
         @SuppressWarnings("unchecked")
-        public T[] doExecute(final T object) throws Exception {
+        public T[] execute(final T object) throws Exception {
             final List<T> result = new ArrayList<T>();
             result.add(object);
             final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());

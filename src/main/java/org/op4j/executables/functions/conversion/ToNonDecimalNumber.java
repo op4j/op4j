@@ -28,6 +28,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 import org.apache.commons.lang.LocaleUtils;
+import org.apache.commons.lang.Validate;
 
 /**
  * 
@@ -92,6 +93,7 @@ final class ToNonDecimalNumber {
         
         public FromString(final Integer radix) {
             super(ToNumber.Delegated.DELEGATED);
+            Validate.notNull(radix, "A radix must be specified");
             this.execType = ExecType.FROM_STRING_RADIX;
             this.radix = radix;
         }
@@ -99,6 +101,7 @@ final class ToNonDecimalNumber {
         
         public FromString(final RoundingMode roundingMode) {
             super(ToNumber.Delegated.DELEGATED);
+            Validate.notNull(roundingMode, "A rounding mode must be specified");
             this.execType = ExecType.FROM_STRING_ROUNDINGMODE;
             this.roundingMode = roundingMode;
         }
@@ -106,6 +109,8 @@ final class ToNonDecimalNumber {
         
         public FromString(final RoundingMode roundingMode, final Locale locale) {
             super(ToNumber.Delegated.DELEGATED);
+            Validate.notNull(roundingMode, "A rounding mode must be specified");
+            Validate.notNull(locale, "A locale must be specified");
             this.execType = ExecType.FROM_STRING_ROUNDINGMODE_LOCALE;
             this.roundingMode = roundingMode;
             this.decimalFormat = (DecimalFormat) NumberFormat.getNumberInstance(locale);
@@ -115,6 +120,8 @@ final class ToNonDecimalNumber {
         
         public FromString(final RoundingMode roundingMode, final String locale) {
             super(ToNumber.Delegated.DELEGATED);
+            Validate.notNull(roundingMode, "A rounding mode must be specified");
+            Validate.notNull(locale, "A locale must be specified");
             this.execType = ExecType.FROM_STRING_ROUNDINGMODE_LOCALE;
             this.roundingMode = roundingMode;
             this.decimalFormat = (DecimalFormat) NumberFormat.getNumberInstance(LocaleUtils.toLocale(locale));
@@ -124,6 +131,8 @@ final class ToNonDecimalNumber {
         
         public FromString(final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
             super(ToNumber.Delegated.DELEGATED);
+            Validate.notNull(roundingMode, "A rounding mode must be specified");
+            Validate.notNull(decimalPoint, "A decimal point type must be specified");
             this.execType = ExecType.FROM_STRING_ROUNDINGMODE_DECIMALPOINT;
             this.roundingMode = roundingMode;
             this.decimalPoint = decimalPoint;
@@ -192,12 +201,13 @@ final class ToNonDecimalNumber {
         
         public FromFloat(final RoundingMode roundingMode) {
             super();
+            Validate.notNull(roundingMode, "A rounding mode must be specified");
             this.roundingMode = roundingMode;
         }
 
         
         @Override
-        public X doExecute(Float object) throws Exception {
+        public X nullAsNullExecute(Float object) throws Exception {
             BigDecimal bigDecimal = 
                 new BigDecimal(object.doubleValue());
             bigDecimal = bigDecimal.setScale(0, this.roundingMode);
@@ -217,12 +227,13 @@ final class ToNonDecimalNumber {
         
         public FromDouble(final RoundingMode roundingMode) {
             super();
+            Validate.notNull(roundingMode, "A rounding mode must be specified");
             this.roundingMode = roundingMode;
         }
 
         
         @Override
-        public X doExecute(Double object) throws Exception {
+        public X nullAsNullExecute(Double object) throws Exception {
             BigDecimal bigDecimal = 
                 new BigDecimal(object.doubleValue());
             bigDecimal = bigDecimal.setScale(0, this.roundingMode);
@@ -242,12 +253,13 @@ final class ToNonDecimalNumber {
         
         public FromBigDecimal(final RoundingMode roundingMode) {
             super();
+            Validate.notNull(roundingMode, "A rounding mode must be specified");
             this.roundingMode = roundingMode;
         }
 
 
         @Override
-        public X doExecute(BigDecimal object) throws Exception {
+        public X nullAsNullExecute(BigDecimal object) throws Exception {
             return fromNumber(object.setScale(0, this.roundingMode));
         }
         

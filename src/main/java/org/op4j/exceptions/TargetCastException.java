@@ -27,12 +27,12 @@ package org.op4j.exceptions;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class NullTargetException extends RuntimeException {
+public class TargetCastException extends RuntimeException {
 
-	private static final long serialVersionUID = 1863690119605420123L;
+	private static final long serialVersionUID = 7306992779858446095L;
 
-	public NullTargetException() {
-        super("Cannot operate on null target");
+	public TargetCastException(final Class<?> targetClass, final String cast) {
+        super("Target of class " + targetClass.getSimpleName() + " cannot be casted as: " + cast);
     }
 
     

@@ -26,8 +26,8 @@ import java.util.Set;
 import org.javaruntype.type.Type;
 import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuild;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.IMapBuilder;
+import org.op4j.executables.ISelector;
 import org.op4j.executables.functions.SetFuncs;
 import org.op4j.executables.functions.conversion.ToArray;
 import org.op4j.executables.functions.conversion.ToList;
@@ -116,7 +116,7 @@ public class Level1SetOfSetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel2SetOfSetElementsElementsOperator<T> forEachSelected(final ISelect<T> selector) {
+    public ILevel2SetOfSetElementsElementsOperator<T> forEachSelected(final ISelector<T> selector) {
         return new Level2SetOfSetElementsElementsOperator<T>(getTarget().iterate(selector));
     }
 
@@ -201,7 +201,7 @@ public class Level1SetOfSetElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1SetOfSetElementsOperator<T> removeSelected(final ISelect<T> selector) {
+    public ILevel1SetOfSetElementsOperator<T> removeSelected(final ISelector<T> selector) {
         return new Level1SetOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.RemoveSelected<T>(selector)));
     }
 
@@ -259,7 +259,7 @@ public class Level1SetOfSetElementsOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel1SetOfMapElementsOperator<K, V> toMap(final IMapBuild<K, V, ? super T> mapBuild) {
+    public <K, V> ILevel1SetOfMapElementsOperator<K, V> toMap(final IMapBuilder<K, V, ? super T> mapBuild) {
         return new Level1SetOfMapElementsOperator<K, V>(getTarget().execute(new ToMap.FromSetByMapBuilder<K, V, T>(mapBuild)));
     }
 

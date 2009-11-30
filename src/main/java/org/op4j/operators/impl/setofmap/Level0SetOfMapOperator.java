@@ -27,7 +27,7 @@ import java.util.Set;
 import org.javaruntype.type.Type;
 import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.ISelector;
 import org.op4j.executables.functions.SetFuncs;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
@@ -102,7 +102,7 @@ public class Level0SetOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel1SetOfMapElementsOperator<K, V> forEachSelected(final ISelect<Map<K, V>> selector) {
+    public ILevel1SetOfMapElementsOperator<K, V> forEachSelected(final ISelector<Map<K, V>> selector) {
         return new Level1SetOfMapElementsOperator<K, V>(getTarget().iterate(selector));
     }
 
@@ -187,7 +187,7 @@ public class Level0SetOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0SetOfMapOperator<K, V> removeSelected(final ISelect<Map<K, V>> selector) {
+    public ILevel0SetOfMapOperator<K, V> removeSelected(final ISelector<Map<K, V>> selector) {
         return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFuncs.RemoveSelected<Map<K, V>>(selector)));
     }
 

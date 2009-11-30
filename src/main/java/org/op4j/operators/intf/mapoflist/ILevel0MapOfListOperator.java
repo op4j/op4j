@@ -25,8 +25,8 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuild;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.IMapBuilder;
+import org.op4j.executables.ISelector;
 import org.op4j.operators.intf.listoflist.ILevel0ListOfListOperator;
 import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
 import org.op4j.operators.intf.mapofmap.ILevel0MapOfMapOperator;
@@ -80,7 +80,7 @@ public interface ILevel0MapOfListOperator<K,V>
     public ILevel0MapOfListOperator<K,V> removeKeys(final K... keys);
     public ILevel0MapOfListOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
     public ILevel0MapOfListOperator<K,V> removeMatching(final IEval<Boolean, ? super Map.Entry<K,List<V>>> eval);
-    public ILevel0MapOfListOperator<K,V> removeSelected(final ISelect<Map.Entry<K,List<V>>> selector);
+    public ILevel0MapOfListOperator<K,V> removeSelected(final ISelector<Map.Entry<K,List<V>>> selector);
     public ILevel0MapOfListOperator<K,V> removeKeysNot(final K... keys);
     
     public ILevel0MapOfArrayOperator<K,V> toMapOfArray(final Type<V> of);
@@ -89,7 +89,7 @@ public interface ILevel0MapOfListOperator<K,V>
     public ILevel0MapOfSetOperator<K,V> toMapOfSet();
     
     public <K2> ILevel0MapOfMapOperator<K,K2,V> toMapOfMap(final IEval<K2,? super V> keyEval);
-    public <K2,V2> ILevel0MapOfMapOperator<K,K2,V2> toMapOfMap(final IMapBuild<K2,V2,? super V> mapBuild);
+    public <K2,V2> ILevel0MapOfMapOperator<K,K2,V2> toMapOfMap(final IMapBuilder<K2,V2,? super V> mapBuild);
     
 
     
@@ -100,7 +100,7 @@ public interface ILevel0MapOfListOperator<K,V>
     public ILevel1MapOfListEntriesOperator<K,V> forEachEntryWithKeys(final K... keys);
     public ILevel1MapOfListEntriesOperator<K,V> forEachEntryMatching(final String expression, final Object... optionalExpParams);
     public ILevel1MapOfListEntriesOperator<K,V> forEachEntryMatching(final IEval<Boolean, ? super Map.Entry<K,List<V>>> eval);
-    public ILevel1MapOfListEntriesOperator<K,V> forEachEntrySelected(final ISelect<Map.Entry<K,List<V>>> selector);
+    public ILevel1MapOfListEntriesOperator<K,V> forEachEntrySelected(final ISelector<Map.Entry<K,List<V>>> selector);
     public ILevel1MapOfListEntriesOperator<K,V> forEachEntryWithKeysNot(final K... keys);
     
 

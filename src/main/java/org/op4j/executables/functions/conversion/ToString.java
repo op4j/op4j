@@ -34,7 +34,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.executables.functions.AbstractFunc;
+import org.op4j.executables.functions.AbstractNullAsNullFunc;
 import org.op4j.executables.functions.conversion.ToString.FromNumber.NumberFormatType;
 
 /**
@@ -318,7 +318,7 @@ public final class ToString {
 	
 	
 	
-	public static final class FromObject extends AbstractFunc<String,Object> {
+	public static final class FromObject extends AbstractNullAsNullFunc<String,Object> {
 
 		public FromObject() {
 			super();
@@ -329,13 +329,13 @@ public final class ToString {
 		}
 
         @Override
-		public String doExecute(final Object object) throws Exception {
+		public String nullAsNullExecute(final Object object) throws Exception {
 			return object.toString();
 		}
 		
 	}
 	
-	public static final class FromNumber extends AbstractFunc<String, Number> {
+	public static final class FromNumber extends AbstractNullAsNullFunc<String, Number> {
 
 		private final NumberFormat numberFormat;
 		
@@ -486,7 +486,7 @@ public final class ToString {
 		}
 
         @Override
-		public String doExecute(final Number number) throws Exception {
+		public String nullAsNullExecute(final Number number) throws Exception {
 			return fromNumber(number);						
 		}
 		
@@ -613,7 +613,7 @@ public final class ToString {
 		NONE
 	}		
 	
-	public static final class FromCalendar extends AbstractFunc<String, Calendar> {
+	public static final class FromCalendar extends AbstractNullAsNullFunc<String, Calendar> {
 
 		private DateStyle dateStyle = null;	
 		private TimeStyle timeStyle = null;	
@@ -662,7 +662,7 @@ public final class ToString {
 		}
 
         @Override
-		public String doExecute(final Calendar calendar) throws Exception {
+		public String nullAsNullExecute(final Calendar calendar) throws Exception {
 			if (StringUtils.isNotEmpty(this.pattern)) {
 				return fromCalendar(calendar, this.pattern, this.locale);
 			} 
@@ -681,7 +681,7 @@ public final class ToString {
 	    	return sdf.format(calendar.getTime());
 	    }		
 		
-		@SuppressWarnings("null")
+
 		private String fromCalendar(final Calendar calendar, final DateStyle theDateStyle,
 				final TimeStyle theTimeStyle, final Locale theLocale) {
 	    	
@@ -707,7 +707,7 @@ public final class ToString {
 	    }		
 	}
 	
-	public static final class FromDate extends AbstractFunc<String, java.util.Date> {
+	public static final class FromDate extends AbstractNullAsNullFunc<String, java.util.Date> {
 
 		private DateStyle dateStyle = null;	
 		private TimeStyle timeStyle = null;	
@@ -756,7 +756,7 @@ public final class ToString {
 		}
 
         @Override
-		public String doExecute(final Date date) throws Exception {
+		public String nullAsNullExecute(final Date date) throws Exception {
 			if (StringUtils.isNotEmpty(this.pattern)) {
 				return fromDate(date, this.pattern, this.locale);
 			} 
@@ -775,7 +775,7 @@ public final class ToString {
 	    	return sdf.format(date);
 	    }		
 		
-		@SuppressWarnings("null")
+
 		private String fromDate(final Date date, final DateStyle theDateStyle,
 				final TimeStyle theTimeStyle, final Locale theLocale) {
 	    	

@@ -23,8 +23,8 @@ import java.util.Collection;
 
 import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuild;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.IMapBuilder;
+import org.op4j.executables.ISelector;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
@@ -74,7 +74,7 @@ public interface ILevel0GenericMultiOperator<T>
     public ILevel0GenericMultiOperator<T> removeMatching(final IEval<Boolean, ? super T> eval);
     public ILevel0GenericMultiOperator<T> removeNotNullMatching(final IEval<Boolean, ? super T> eval);
     public ILevel0GenericMultiOperator<T> removeNullOrMatching(final IEval<Boolean, ? super T> eval);
-    public ILevel0GenericMultiOperator<T> removeSelected(final ISelect<T> selector);
+    public ILevel0GenericMultiOperator<T> removeSelected(final ISelector<T> selector);
     public ILevel0GenericMultiOperator<T> removeIndexesNot(final int... indices);
     public ILevel0GenericMultiOperator<T> removeNulls();
     public ILevel0GenericMultiOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams);
@@ -91,19 +91,19 @@ public interface ILevel0GenericMultiOperator<T>
     
     
     public <K> ILevel0MapOperator<K,T> buildMap(final IEval<K,? super T> keyEval);
-    public <K,V> ILevel0MapOperator<K,V> buildMap(final IMapBuild<K,V,? super T> mapBuild);
+    public <K,V> ILevel0MapOperator<K,V> buildMap(final IMapBuilder<K,V,? super T> mapBuild);
     
     
     public <K> ILevel0MapOfListOperator<K,T> buildMapOfList(final IEval<K,? super T> keyEval);
-    public <K,V> ILevel0MapOfListOperator<K,V> buildMapOfList(final IMapBuild<K,V,? super T> mapBuild);
+    public <K,V> ILevel0MapOfListOperator<K,V> buildMapOfList(final IMapBuilder<K,V,? super T> mapBuild);
     
     
     public <K> ILevel0MapOfSetOperator<K,T> buildMapOfSet(final IEval<K,? super T> keyEval);
-    public <K,V> ILevel0MapOfSetOperator<K,V> buildMapOfSet(final IMapBuild<K,V,? super T> mapBuild);
+    public <K,V> ILevel0MapOfSetOperator<K,V> buildMapOfSet(final IMapBuilder<K,V,? super T> mapBuild);
     
     
     public <K> ILevel0MapOfArrayOperator<K,T> buildMapOfArray(final Type<T> valueArrayOf, final IEval<K,? super T> keyEval);
-    public <K,V> ILevel0MapOfArrayOperator<K,V> buildMapOfArray(final Type<V> valueArrayOf, final IMapBuild<K,V,? super T> mapBuild);
+    public <K,V> ILevel0MapOfArrayOperator<K,V> buildMapOfArray(final Type<V> valueArrayOf, final IMapBuilder<K,V,? super T> mapBuild);
 
     
     public ILevel0MapOperator<T,T> buildMap();

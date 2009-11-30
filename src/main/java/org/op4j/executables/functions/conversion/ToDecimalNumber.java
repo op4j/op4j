@@ -28,6 +28,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 import org.apache.commons.lang.LocaleUtils;
+import org.apache.commons.lang.Validate;
 import org.op4j.executables.functions.conversion.ToNumber.Delegated;
 
 /**
@@ -62,6 +63,7 @@ final class ToDecimalNumber {
 
         public FromNumber(final int scale, final RoundingMode roundingMode) {
             super(Delegated.DELEGATED);
+            Validate.notNull(roundingMode, "A rounding mode must be specified");
             this.scale = scale;
             this.roundingMode = roundingMode;
         }
@@ -134,6 +136,7 @@ final class ToDecimalNumber {
         
         public FromString(final int scale, final RoundingMode roundingMode) {
             super(ToNumber.Delegated.DELEGATED);
+            Validate.notNull(roundingMode, "A rounding mode must be specified");
             this.execType = ExecType.FROM_STRING_SCALE_ROUNDINGMODE;
             this.scale = scale;
             this.roundingMode = roundingMode;
@@ -142,6 +145,8 @@ final class ToDecimalNumber {
         
         public FromString(final int scale, final RoundingMode roundingMode, final Locale locale) {
             super(ToNumber.Delegated.DELEGATED);
+            Validate.notNull(roundingMode, "A rounding mode must be specified");
+            Validate.notNull(locale, "A locale must be specified");
             this.execType = ExecType.FROM_STRING_SCALE_ROUNDINGMODE_LOCALE;
             this.scale = scale;
             this.roundingMode = roundingMode;
@@ -152,6 +157,8 @@ final class ToDecimalNumber {
         
         public FromString(final int scale, final RoundingMode roundingMode, final String locale) {
             super(ToNumber.Delegated.DELEGATED);
+            Validate.notNull(roundingMode, "A rounding mode must be specified");
+            Validate.notNull(locale, "A locale must be specified");
             this.execType = ExecType.FROM_STRING_SCALE_ROUNDINGMODE_LOCALE;
             this.scale = scale;
             this.roundingMode = roundingMode;
@@ -162,6 +169,8 @@ final class ToDecimalNumber {
         
         public FromString(final int scale, final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
             super(ToNumber.Delegated.DELEGATED);
+            Validate.notNull(roundingMode, "A rounding mode must be specified");
+            Validate.notNull(decimalPoint, "A decimal point type must be specified");
             this.execType = ExecType.FROM_STRING_SCALE_ROUNDINGMODE_DECIMALPOINT;
             this.scale = scale;
             this.roundingMode = roundingMode;

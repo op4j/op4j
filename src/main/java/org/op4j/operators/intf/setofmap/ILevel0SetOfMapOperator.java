@@ -26,7 +26,7 @@ import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.ISelector;
 import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableCollectionOperator;
 import org.op4j.operators.qualities.INavigableCollectionOperator;
@@ -68,7 +68,7 @@ public interface ILevel0SetOfMapOperator<K,V>
     public ILevel0SetOfMapOperator<K,V> removeMatching(final IEval<Boolean, ? super Map<K,V>> eval);
     public ILevel0SetOfMapOperator<K,V> removeNotNullMatching(final IEval<Boolean, ? super Map<K,V>> eval);
     public ILevel0SetOfMapOperator<K,V> removeNullOrMatching(final IEval<Boolean, ? super Map<K,V>> eval);
-    public ILevel0SetOfMapOperator<K,V> removeSelected(final ISelect<Map<K,V>> selector);
+    public ILevel0SetOfMapOperator<K,V> removeSelected(final ISelector<Map<K,V>> selector);
     public ILevel0SetOfMapOperator<K,V> removeIndexesNot(final int... indices);
     public ILevel0SetOfMapOperator<K,V> removeNulls();
     public ILevel0SetOfMapOperator<K,V> removeNotNullMatching(final String expression, final Object... optionalExpParams);
@@ -80,7 +80,7 @@ public interface ILevel0SetOfMapOperator<K,V>
     public ILevel1SetOfMapElementsOperator<K,V> forEachMatching(final IEval<Boolean, ? super Map<K,V>> eval);
     public ILevel1SetOfMapElementsOperator<K,V> forEachNullOrMatching(final IEval<Boolean, ? super Map<K,V>> eval);
     public ILevel1SetOfMapElementsOperator<K,V> forEachNotNullMatching(final IEval<Boolean, ? super Map<K,V>> eval);
-    public ILevel1SetOfMapElementsOperator<K,V> forEachSelected(final ISelect<Map<K,V>> selector);
+    public ILevel1SetOfMapElementsOperator<K,V> forEachSelected(final ISelector<Map<K,V>> selector);
     public ILevel1SetOfMapElementsOperator<K,V> forEachNull();
     public ILevel1SetOfMapElementsOperator<K,V> forEachNullOrMatching(final String expression, final Object... optionalExpParams);
     public ILevel1SetOfMapElementsOperator<K,V> forEachIndexNot(final int... indices);

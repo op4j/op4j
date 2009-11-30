@@ -30,8 +30,8 @@ import org.javaruntype.type.Types;
 import org.op4j.Op;
 import org.op4j.executables.Eval;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuild;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.IMapBuilder;
+import org.op4j.executables.ISelector;
 import org.op4j.executables.functions.SetFuncs;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
@@ -90,7 +90,7 @@ public class Level0SetOfArrayOperator<T> extends Operator
 
 
     public ILevel0SetOperator<T> flatten() {
-        return new Level0SetOperator<T>(getTarget().execute(new SetFuncs.FlattenArrays<T>()));
+        return new Level0SetOperator<T>(getTarget().execute(new SetFuncs.FlattenSetOfArrays<T>()));
     }
 
 
@@ -124,7 +124,7 @@ public class Level0SetOfArrayOperator<T> extends Operator
     }
 
 
-    public ILevel1SetOfArrayElementsOperator<T> forEachSelected(final ISelect<T[]> selector) {
+    public ILevel1SetOfArrayElementsOperator<T> forEachSelected(final ISelector<T[]> selector) {
         return new Level1SetOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterate(selector));
     }
 
@@ -206,7 +206,7 @@ public class Level0SetOfArrayOperator<T> extends Operator
     }
 
 
-    public ILevel0SetOfArrayOperator<T> removeSelected(final ISelect<T[]> selector) {
+    public ILevel0SetOfArrayOperator<T> removeSelected(final ISelector<T[]> selector) {
         return new Level0SetOfArrayOperator<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveSelected<T[]>(selector)));
     }
 
@@ -261,7 +261,7 @@ public class Level0SetOfArrayOperator<T> extends Operator
 
 
     @SuppressWarnings("unchecked")
-    public <K, V> ILevel0ArrayOfMapOperator<K, V> toArrayOfMap(final IMapBuild<K, V, ? super T> mapBuild) {
+    public <K, V> ILevel0ArrayOfMapOperator<K, V> toArrayOfMap(final IMapBuilder<K, V, ? super T> mapBuild) {
         return Op.onArrayOfMap(Op.onSet(forEach().toMap(mapBuild).get()).toArray((Type<Map<K, V>>)((Type<?>)Types.MAP_OF_UNKNOWN_UNKNOWN)).get());
     }
 
@@ -287,7 +287,7 @@ public class Level0SetOfArrayOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0ListOfMapOperator<K, V> toListOfMap(final IMapBuild<K, V, ? super T> mapBuild) {
+    public <K, V> ILevel0ListOfMapOperator<K, V> toListOfMap(final IMapBuilder<K, V, ? super T> mapBuild) {
         return Op.onListOfMap(Op.onSet(forEach().toMap(mapBuild).get()).toList().get());
     }
 
@@ -307,7 +307,7 @@ public class Level0SetOfArrayOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0SetOfMapOperator<K, V> toSetOfMap(final IMapBuild<K, V, ? super T> mapBuild) {
+    public <K, V> ILevel0SetOfMapOperator<K, V> toSetOfMap(final IMapBuilder<K, V, ? super T> mapBuild) {
         return forEach().toMap(mapBuild).endFor();
     }
 

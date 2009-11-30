@@ -25,8 +25,8 @@ import java.util.List;
 
 import org.javaruntype.type.Type;
 import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuild;
-import org.op4j.executables.ISelect;
+import org.op4j.executables.IMapBuilder;
+import org.op4j.executables.ISelector;
 import org.op4j.operators.intf.listofarray.ILevel1ListOfArrayElementsOperator;
 import org.op4j.operators.intf.listofmap.ILevel1ListOfMapElementsOperator;
 import org.op4j.operators.intf.listofset.ILevel1ListOfSetElementsOperator;
@@ -83,7 +83,7 @@ public interface ILevel1ListOfListElementsOperator<T>
     public ILevel1ListOfListElementsOperator<T> removeMatching(final IEval<Boolean, ? super T> eval);
     public ILevel1ListOfListElementsOperator<T> removeNotNullMatching(final IEval<Boolean, ? super T> eval);
     public ILevel1ListOfListElementsOperator<T> removeNullOrMatching(final IEval<Boolean, ? super T> eval);
-    public ILevel1ListOfListElementsOperator<T> removeSelected(final ISelect<T> selector);
+    public ILevel1ListOfListElementsOperator<T> removeSelected(final ISelector<T> selector);
     public ILevel1ListOfListElementsOperator<T> removeIndexesNot(final int... indices);
     public ILevel1ListOfListElementsOperator<T> removeNulls();
     public ILevel1ListOfListElementsOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams);
@@ -96,7 +96,7 @@ public interface ILevel1ListOfListElementsOperator<T>
     
     public ILevel1ListOfMapElementsOperator<T,T> toMap();
     public <K> ILevel1ListOfMapElementsOperator<K,T> toMap(final IEval<K,? super T> keyEval);
-    public <K,V> ILevel1ListOfMapElementsOperator<K,V> toMap(final IMapBuild<K,V,? super T> mapBuild);
+    public <K,V> ILevel1ListOfMapElementsOperator<K,V> toMap(final IMapBuilder<K,V,? super T> mapBuild);
 
     
     public ILevel2ListOfListElementsElementsOperator<T> forEachIndex(final int... indices);
@@ -104,7 +104,7 @@ public interface ILevel1ListOfListElementsOperator<T>
     public ILevel2ListOfListElementsElementsOperator<T> forEachMatching(final IEval<Boolean, ? super T> eval);
     public ILevel2ListOfListElementsElementsOperator<T> forEachNullOrMatching(final IEval<Boolean, ? super T> eval);
     public ILevel2ListOfListElementsElementsOperator<T> forEachNotNullMatching(final IEval<Boolean, ? super T> eval);
-    public ILevel2ListOfListElementsElementsOperator<T> forEachSelected(final ISelect<T> selector);
+    public ILevel2ListOfListElementsElementsOperator<T> forEachSelected(final ISelector<T> selector);
     public ILevel2ListOfListElementsElementsOperator<T> forEachNull();
     public ILevel2ListOfListElementsElementsOperator<T> forEachNullOrMatching(final String expression, final Object... optionalExpParams);
     public ILevel2ListOfListElementsElementsOperator<T> forEachIndexNot(final int... indices);

@@ -17,7 +17,8 @@
  * 
  * =============================================================================
  */
-package org.op4j.executables;
+
+package org.op4j.executables.functions;
 
 
 /**
@@ -27,10 +28,24 @@ package org.op4j.executables;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface IMapBuild<K,V,T> {
+public abstract class AbstractNullAsNullFunc<R, T> implements IFunc<R, T> {
+    
+    
+    protected AbstractNullAsNullFunc() {
+        super();
+    }
 
-    public K getKey(final T target);
 
-    public V getValue(final T target);
+    public final R execute(final T object) throws Exception {
+        if (object == null) {
+            return null;
+        }
+        return nullAsNullExecute(object);
+    }
+
+
+    public abstract R nullAsNullExecute(final T object) throws Exception;
+    
+    
     
 }

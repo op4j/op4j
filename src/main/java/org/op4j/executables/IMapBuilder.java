@@ -27,8 +27,10 @@ package org.op4j.executables;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ISelect<T> {
+public interface IMapBuilder<K,V,T> {
 
-    public boolean eval(final T target);
+    public K buildKey(final T target);
+
+    public V buildValue(final T target);
     
 }

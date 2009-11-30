@@ -20,7 +20,7 @@
 package org.op4j.operators.qualities;
 
 import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuild;
+import org.op4j.executables.IMapBuilder;
 import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
 
 
@@ -35,6 +35,6 @@ public interface IConvertibleToSetOfMapOperator<T> {
     
     public ILevel0SetOfMapOperator<T,T> toSetOfMap();
     public <K> ILevel0SetOfMapOperator<K,T> toSetOfMap(final IEval<K,? super T> keyEval);
-    public <K,V> ILevel0SetOfMapOperator<K,V> toSetOfMap(final IMapBuild<K,V,? super T> mapBuild);
+    public <K,V> ILevel0SetOfMapOperator<K,V> toSetOfMap(final IMapBuilder<K,V,? super T> mapBuild);
 
 }
