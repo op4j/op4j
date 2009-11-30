@@ -31,11 +31,13 @@ import org.op4j.exceptions.NullTargetException;
  */
 public abstract class AbstractFunc<R, T> implements IFunc<R, T> {
 
-    private boolean nullTargetAllowed= true;
+    private boolean nullTargetAllowed = true;
     
     
     public AbstractFunc() {
         super();
+        // this allows subclasses to set the parameter by overriding isNullTargetAllowed() 
+        this.nullTargetAllowed = isNullTargetAllowed();
     }
 
     
@@ -51,7 +53,7 @@ public abstract class AbstractFunc<R, T> implements IFunc<R, T> {
 
 
     public final R execute(final T object) throws Exception {
-        if (!this.nullTargetAllowed && object == null) {
+        if (!isNullTargetAllowed() && object == null) {
             throw new NullTargetException();
         }
         return doExecute(object);
