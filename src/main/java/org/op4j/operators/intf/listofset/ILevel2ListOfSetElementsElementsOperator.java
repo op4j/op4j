@@ -57,20 +57,20 @@ public interface ILevel2ListOfSetElementsElementsOperator<T>
     
     public <X> ILevel2ListOfSetElementsElementsOperator<X> call(final ICall<X,? super T> call);
 
-    public ILevel2ListOfSetElementsElementsOperator<Byte> callByte(final String methodName, final Object... optionalParameters);
-    public ILevel2ListOfSetElementsElementsOperator<Short> callShort(final String methodName, final Object... optionalParameters);
-    public ILevel2ListOfSetElementsElementsOperator<Integer> callInteger(final String methodName, final Object... optionalParameters);
-    public ILevel2ListOfSetElementsElementsOperator<Long> callLong(final String methodName, final Object... optionalParameters);
-    public ILevel2ListOfSetElementsElementsOperator<Float> callFloat(final String methodName, final Object... optionalParameters);
-    public ILevel2ListOfSetElementsElementsOperator<Double> callDouble(final String methodName, final Object... optionalParameters);
-    public ILevel2ListOfSetElementsElementsOperator<BigInteger> callBigInteger(final String methodName, final Object... optionalParameters);
-    public ILevel2ListOfSetElementsElementsOperator<BigDecimal> callBigDecimal(final String methodName, final Object... optionalParameters);
-    public ILevel2ListOfSetElementsElementsOperator<Boolean> callBoolean(final String methodName, final Object... optionalParameters);
-    public ILevel2ListOfSetElementsElementsOperator<Calendar> callCalendar(final String methodName, final Object... optionalParameters);
-    public ILevel2ListOfSetElementsElementsOperator<String> callString(final String methodName, final Object... optionalParameters);
-    public ILevel2ListOfSetElementsElementsOperator<Character> callCharacter(final String methodName, final Object... optionalParameters);
-    public ILevel2ListOfSetElementsElementsOperator<Number> callNumber(final String methodName, final Object... optionalParameters);
-    public ILevel2ListOfSetElementsElementsOperator<Date> callDate(final String methodName, final Object... optionalParameters);
+    public ILevel2ListOfSetElementsElementsOperator<Byte> callForByte(final String methodName, final Object... optionalParameters);
+    public ILevel2ListOfSetElementsElementsOperator<Short> callForShort(final String methodName, final Object... optionalParameters);
+    public ILevel2ListOfSetElementsElementsOperator<Integer> callForInteger(final String methodName, final Object... optionalParameters);
+    public ILevel2ListOfSetElementsElementsOperator<Long> callForLong(final String methodName, final Object... optionalParameters);
+    public ILevel2ListOfSetElementsElementsOperator<Float> callForFloat(final String methodName, final Object... optionalParameters);
+    public ILevel2ListOfSetElementsElementsOperator<Double> callForDouble(final String methodName, final Object... optionalParameters);
+    public ILevel2ListOfSetElementsElementsOperator<BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters);
+    public ILevel2ListOfSetElementsElementsOperator<BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters);
+    public ILevel2ListOfSetElementsElementsOperator<Boolean> callForBoolean(final String methodName, final Object... optionalParameters);
+    public ILevel2ListOfSetElementsElementsOperator<Calendar> callForCalendar(final String methodName, final Object... optionalParameters);
+    public ILevel2ListOfSetElementsElementsOperator<String> callForString(final String methodName, final Object... optionalParameters);
+    public ILevel2ListOfSetElementsElementsOperator<Character> callForCharacter(final String methodName, final Object... optionalParameters);
+    public ILevel2ListOfSetElementsElementsOperator<Number> callForNumber(final String methodName, final Object... optionalParameters);
+    public ILevel2ListOfSetElementsElementsOperator<Date> callForDate(final String methodName, final Object... optionalParameters);
 
     
     

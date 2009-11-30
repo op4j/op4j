@@ -58,59 +58,59 @@ public class Level2ArrayOfListElementsElementsOperator<T> extends Operator
         return new Level2ArrayOfListElementsElementsOperator<X>(getTarget().execute(call));
     }
 
-    public ILevel2ArrayOfListElementsElementsOperator<Byte> callByte(final String methodName, final Object... optionalParameters) {
+    public ILevel2ArrayOfListElementsElementsOperator<Byte> callForByte(final String methodName, final Object... optionalParameters) {
         return new Level2ArrayOfListElementsElementsOperator<Byte>(getTarget().execute(Call.byteMethod(methodName, optionalParameters)));
     }
 
-    public ILevel2ArrayOfListElementsElementsOperator<Short> callShort(final String methodName, final Object... optionalParameters) {
+    public ILevel2ArrayOfListElementsElementsOperator<Short> callForShort(final String methodName, final Object... optionalParameters) {
         return new Level2ArrayOfListElementsElementsOperator<Short>(getTarget().execute(Call.shortMethod(methodName, optionalParameters)));
     }
 
-    public ILevel2ArrayOfListElementsElementsOperator<Integer> callInteger(final String methodName, final Object... optionalParameters) {
+    public ILevel2ArrayOfListElementsElementsOperator<Integer> callForInteger(final String methodName, final Object... optionalParameters) {
         return new Level2ArrayOfListElementsElementsOperator<Integer>(getTarget().execute(Call.integerMethod(methodName, optionalParameters)));
     }
 
-    public ILevel2ArrayOfListElementsElementsOperator<Long> callLong(final String methodName, final Object... optionalParameters) {
+    public ILevel2ArrayOfListElementsElementsOperator<Long> callForLong(final String methodName, final Object... optionalParameters) {
         return new Level2ArrayOfListElementsElementsOperator<Long>(getTarget().execute(Call.longMethod(methodName, optionalParameters)));
     }
 
-    public ILevel2ArrayOfListElementsElementsOperator<Float> callFloat(final String methodName, final Object... optionalParameters) {
+    public ILevel2ArrayOfListElementsElementsOperator<Float> callForFloat(final String methodName, final Object... optionalParameters) {
         return new Level2ArrayOfListElementsElementsOperator<Float>(getTarget().execute(Call.floatMethod(methodName, optionalParameters)));
     }
 
-    public ILevel2ArrayOfListElementsElementsOperator<Double> callDouble(final String methodName, final Object... optionalParameters) {
+    public ILevel2ArrayOfListElementsElementsOperator<Double> callForDouble(final String methodName, final Object... optionalParameters) {
         return new Level2ArrayOfListElementsElementsOperator<Double>(getTarget().execute(Call.doubleMethod(methodName, optionalParameters)));
     }
 
-    public ILevel2ArrayOfListElementsElementsOperator<BigInteger> callBigInteger(final String methodName, final Object... optionalParameters) {
+    public ILevel2ArrayOfListElementsElementsOperator<BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters) {
         return new Level2ArrayOfListElementsElementsOperator<BigInteger>(getTarget().execute(Call.bigIntegerMethod(methodName, optionalParameters)));
     }
 
-    public ILevel2ArrayOfListElementsElementsOperator<BigDecimal> callBigDecimal(final String methodName, final Object... optionalParameters) {
+    public ILevel2ArrayOfListElementsElementsOperator<BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters) {
         return new Level2ArrayOfListElementsElementsOperator<BigDecimal>(getTarget().execute(Call.bigDecimalMethod(methodName, optionalParameters)));
     }
 
-    public ILevel2ArrayOfListElementsElementsOperator<Boolean> callBoolean(final String methodName, final Object... optionalParameters) {
+    public ILevel2ArrayOfListElementsElementsOperator<Boolean> callForBoolean(final String methodName, final Object... optionalParameters) {
         return new Level2ArrayOfListElementsElementsOperator<Boolean>(getTarget().execute(Call.booleanMethod(methodName, optionalParameters)));
     }
 
-    public ILevel2ArrayOfListElementsElementsOperator<Calendar> callCalendar(final String methodName, final Object... optionalParameters) {
+    public ILevel2ArrayOfListElementsElementsOperator<Calendar> callForCalendar(final String methodName, final Object... optionalParameters) {
         return new Level2ArrayOfListElementsElementsOperator<Calendar>(getTarget().execute(Call.calendarMethod(methodName, optionalParameters)));
     }
 
-    public ILevel2ArrayOfListElementsElementsOperator<String> callString(final String methodName, final Object... optionalParameters) {
+    public ILevel2ArrayOfListElementsElementsOperator<String> callForString(final String methodName, final Object... optionalParameters) {
         return new Level2ArrayOfListElementsElementsOperator<String>(getTarget().execute(Call.stringMethod(methodName, optionalParameters)));
     }
 
-    public ILevel2ArrayOfListElementsElementsOperator<Character> callCharacter(final String methodName, final Object... optionalParameters) {
+    public ILevel2ArrayOfListElementsElementsOperator<Character> callForCharacter(final String methodName, final Object... optionalParameters) {
         return new Level2ArrayOfListElementsElementsOperator<Character>(getTarget().execute(Call.characterMethod(methodName, optionalParameters)));
     }
 
-    public ILevel2ArrayOfListElementsElementsOperator<Number> callNumber(final String methodName, final Object... optionalParameters) {
+    public ILevel2ArrayOfListElementsElementsOperator<Number> callForNumber(final String methodName, final Object... optionalParameters) {
         return new Level2ArrayOfListElementsElementsOperator<Number>(getTarget().execute(Call.numberMethod(methodName, optionalParameters)));
     }
 
-    public ILevel2ArrayOfListElementsElementsOperator<Date> callDate(final String methodName, final Object... optionalParameters) {
+    public ILevel2ArrayOfListElementsElementsOperator<Date> callForDate(final String methodName, final Object... optionalParameters) {
         return new Level2ArrayOfListElementsElementsOperator<Date>(getTarget().execute(Call.dateMethod(methodName, optionalParameters)));
     }
 

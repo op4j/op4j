@@ -55,20 +55,20 @@ public interface ILevel2ArrayOfArrayElementsElementsOperator<T>
     
     public <X> ILevel2ArrayOfArrayElementsElementsOperator<X> call(final ICall<X,? super T> call);
 
-    public ILevel2ArrayOfArrayElementsElementsOperator<Byte> callByte(final String methodName, final Object... optionalParameters);
-    public ILevel2ArrayOfArrayElementsElementsOperator<Short> callShort(final String methodName, final Object... optionalParameters);
-    public ILevel2ArrayOfArrayElementsElementsOperator<Integer> callInteger(final String methodName, final Object... optionalParameters);
-    public ILevel2ArrayOfArrayElementsElementsOperator<Long> callLong(final String methodName, final Object... optionalParameters);
-    public ILevel2ArrayOfArrayElementsElementsOperator<Float> callFloat(final String methodName, final Object... optionalParameters);
-    public ILevel2ArrayOfArrayElementsElementsOperator<Double> callDouble(final String methodName, final Object... optionalParameters);
-    public ILevel2ArrayOfArrayElementsElementsOperator<BigInteger> callBigInteger(final String methodName, final Object... optionalParameters);
-    public ILevel2ArrayOfArrayElementsElementsOperator<BigDecimal> callBigDecimal(final String methodName, final Object... optionalParameters);
-    public ILevel2ArrayOfArrayElementsElementsOperator<Boolean> callBoolean(final String methodName, final Object... optionalParameters);
-    public ILevel2ArrayOfArrayElementsElementsOperator<Calendar> callCalendar(final String methodName, final Object... optionalParameters);
-    public ILevel2ArrayOfArrayElementsElementsOperator<String> callString(final String methodName, final Object... optionalParameters);
-    public ILevel2ArrayOfArrayElementsElementsOperator<Character> callCharacter(final String methodName, final Object... optionalParameters);
-    public ILevel2ArrayOfArrayElementsElementsOperator<Number> callNumber(final String methodName, final Object... optionalParameters);
-    public ILevel2ArrayOfArrayElementsElementsOperator<Date> callDate(final String methodName, final Object... optionalParameters);
+    public ILevel2ArrayOfArrayElementsElementsOperator<Byte> callForByte(final String methodName, final Object... optionalParameters);
+    public ILevel2ArrayOfArrayElementsElementsOperator<Short> callForShort(final String methodName, final Object... optionalParameters);
+    public ILevel2ArrayOfArrayElementsElementsOperator<Integer> callForInteger(final String methodName, final Object... optionalParameters);
+    public ILevel2ArrayOfArrayElementsElementsOperator<Long> callForLong(final String methodName, final Object... optionalParameters);
+    public ILevel2ArrayOfArrayElementsElementsOperator<Float> callForFloat(final String methodName, final Object... optionalParameters);
+    public ILevel2ArrayOfArrayElementsElementsOperator<Double> callForDouble(final String methodName, final Object... optionalParameters);
+    public ILevel2ArrayOfArrayElementsElementsOperator<BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters);
+    public ILevel2ArrayOfArrayElementsElementsOperator<BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters);
+    public ILevel2ArrayOfArrayElementsElementsOperator<Boolean> callForBoolean(final String methodName, final Object... optionalParameters);
+    public ILevel2ArrayOfArrayElementsElementsOperator<Calendar> callForCalendar(final String methodName, final Object... optionalParameters);
+    public ILevel2ArrayOfArrayElementsElementsOperator<String> callForString(final String methodName, final Object... optionalParameters);
+    public ILevel2ArrayOfArrayElementsElementsOperator<Character> callForCharacter(final String methodName, final Object... optionalParameters);
+    public ILevel2ArrayOfArrayElementsElementsOperator<Number> callForNumber(final String methodName, final Object... optionalParameters);
+    public ILevel2ArrayOfArrayElementsElementsOperator<Date> callForDate(final String methodName, final Object... optionalParameters);
 
     
     

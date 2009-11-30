@@ -40,20 +40,20 @@ public interface ICallableOperator<T> {
     
     public <X> ICallableOperator<X> call(final ICall<X,? super T> call);
 
-    public ICallableOperator<Byte> callByte(final String methodName, final Object... optionalParameters);
-    public ICallableOperator<Short> callShort(final String methodName, final Object... optionalParameters);
-    public ICallableOperator<Integer> callInteger(final String methodName, final Object... optionalParameters);
-    public ICallableOperator<Long> callLong(final String methodName, final Object... optionalParameters);
-    public ICallableOperator<Float> callFloat(final String methodName, final Object... optionalParameters);
-    public ICallableOperator<Double> callDouble(final String methodName, final Object... optionalParameters);
-    public ICallableOperator<BigInteger> callBigInteger(final String methodName, final Object... optionalParameters);
-    public ICallableOperator<BigDecimal> callBigDecimal(final String methodName, final Object... optionalParameters);
-    public ICallableOperator<Boolean> callBoolean(final String methodName, final Object... optionalParameters);
-    public ICallableOperator<Calendar> callCalendar(final String methodName, final Object... optionalParameters);
-    public ICallableOperator<String> callString(final String methodName, final Object... optionalParameters);
-    public ICallableOperator<Character> callCharacter(final String methodName, final Object... optionalParameters);
-    public ICallableOperator<Number> callNumber(final String methodName, final Object... optionalParameters);
-    public ICallableOperator<Date> callDate(final String methodName, final Object... optionalParameters);
+    public ICallableOperator<Byte> callForByte(final String methodName, final Object... optionalParameters);
+    public ICallableOperator<Short> callForShort(final String methodName, final Object... optionalParameters);
+    public ICallableOperator<Integer> callForInteger(final String methodName, final Object... optionalParameters);
+    public ICallableOperator<Long> callForLong(final String methodName, final Object... optionalParameters);
+    public ICallableOperator<Float> callForFloat(final String methodName, final Object... optionalParameters);
+    public ICallableOperator<Double> callForDouble(final String methodName, final Object... optionalParameters);
+    public ICallableOperator<BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters);
+    public ICallableOperator<BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters);
+    public ICallableOperator<Boolean> callForBoolean(final String methodName, final Object... optionalParameters);
+    public ICallableOperator<Calendar> callForCalendar(final String methodName, final Object... optionalParameters);
+    public ICallableOperator<String> callForString(final String methodName, final Object... optionalParameters);
+    public ICallableOperator<Character> callForCharacter(final String methodName, final Object... optionalParameters);
+    public ICallableOperator<Number> callForNumber(final String methodName, final Object... optionalParameters);
+    public ICallableOperator<Date> callForDate(final String methodName, final Object... optionalParameters);
 
     
 }

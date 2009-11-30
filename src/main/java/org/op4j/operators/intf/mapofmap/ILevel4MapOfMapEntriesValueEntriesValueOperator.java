@@ -56,20 +56,20 @@ public interface ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
     
     public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> call(final ICall<X,? super V> call);
 
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Byte> callByte(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Short> callShort(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Integer> callInteger(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Long> callLong(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Float> callFloat(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Double> callDouble(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,BigInteger> callBigInteger(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,BigDecimal> callBigDecimal(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Boolean> callBoolean(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Calendar> callCalendar(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,String> callString(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Character> callCharacter(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Number> callNumber(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Date> callDate(final String methodName, final Object... optionalParameters);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Byte> callForByte(final String methodName, final Object... optionalParameters);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Short> callForShort(final String methodName, final Object... optionalParameters);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Integer> callForInteger(final String methodName, final Object... optionalParameters);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Long> callForLong(final String methodName, final Object... optionalParameters);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Float> callForFloat(final String methodName, final Object... optionalParameters);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Double> callForDouble(final String methodName, final Object... optionalParameters);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Boolean> callForBoolean(final String methodName, final Object... optionalParameters);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Calendar> callForCalendar(final String methodName, final Object... optionalParameters);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,String> callForString(final String methodName, final Object... optionalParameters);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Character> callForCharacter(final String methodName, final Object... optionalParameters);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Number> callForNumber(final String methodName, final Object... optionalParameters);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Date> callForDate(final String methodName, final Object... optionalParameters);
 
     
     

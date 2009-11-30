@@ -57,20 +57,20 @@ public interface ILevel3SetOfMapElementsEntriesValueOperator<K,V>
     
     public <X> ILevel3SetOfMapElementsEntriesValueOperator<K,X> call(final ICall<X,? super V> call);
 
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Byte> callByte(final String methodName, final Object... optionalParameters);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Short> callShort(final String methodName, final Object... optionalParameters);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Integer> callInteger(final String methodName, final Object... optionalParameters);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Long> callLong(final String methodName, final Object... optionalParameters);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Float> callFloat(final String methodName, final Object... optionalParameters);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Double> callDouble(final String methodName, final Object... optionalParameters);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,BigInteger> callBigInteger(final String methodName, final Object... optionalParameters);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,BigDecimal> callBigDecimal(final String methodName, final Object... optionalParameters);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Boolean> callBoolean(final String methodName, final Object... optionalParameters);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Calendar> callCalendar(final String methodName, final Object... optionalParameters);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,String> callString(final String methodName, final Object... optionalParameters);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Character> callCharacter(final String methodName, final Object... optionalParameters);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Number> callNumber(final String methodName, final Object... optionalParameters);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Date> callDate(final String methodName, final Object... optionalParameters);
+    public ILevel3SetOfMapElementsEntriesValueOperator<K,Byte> callForByte(final String methodName, final Object... optionalParameters);
+    public ILevel3SetOfMapElementsEntriesValueOperator<K,Short> callForShort(final String methodName, final Object... optionalParameters);
+    public ILevel3SetOfMapElementsEntriesValueOperator<K,Integer> callForInteger(final String methodName, final Object... optionalParameters);
+    public ILevel3SetOfMapElementsEntriesValueOperator<K,Long> callForLong(final String methodName, final Object... optionalParameters);
+    public ILevel3SetOfMapElementsEntriesValueOperator<K,Float> callForFloat(final String methodName, final Object... optionalParameters);
+    public ILevel3SetOfMapElementsEntriesValueOperator<K,Double> callForDouble(final String methodName, final Object... optionalParameters);
+    public ILevel3SetOfMapElementsEntriesValueOperator<K,BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters);
+    public ILevel3SetOfMapElementsEntriesValueOperator<K,BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters);
+    public ILevel3SetOfMapElementsEntriesValueOperator<K,Boolean> callForBoolean(final String methodName, final Object... optionalParameters);
+    public ILevel3SetOfMapElementsEntriesValueOperator<K,Calendar> callForCalendar(final String methodName, final Object... optionalParameters);
+    public ILevel3SetOfMapElementsEntriesValueOperator<K,String> callForString(final String methodName, final Object... optionalParameters);
+    public ILevel3SetOfMapElementsEntriesValueOperator<K,Character> callForCharacter(final String methodName, final Object... optionalParameters);
+    public ILevel3SetOfMapElementsEntriesValueOperator<K,Number> callForNumber(final String methodName, final Object... optionalParameters);
+    public ILevel3SetOfMapElementsEntriesValueOperator<K,Date> callForDate(final String methodName, final Object... optionalParameters);
 
     
     

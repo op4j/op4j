@@ -81,20 +81,20 @@ public interface ILevel0GenericUniqOperator<T>
     
     public <X> ILevel0GenericUniqOperator<X> call(final ICall<X,? super T> call);
 
-    public ILevel0GenericUniqOperator<Byte> callByte(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Short> callShort(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Integer> callInteger(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Long> callLong(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Float> callFloat(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Double> callDouble(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<BigInteger> callBigInteger(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<BigDecimal> callBigDecimal(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Boolean> callBoolean(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Calendar> callCalendar(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<String> callString(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Character> callCharacter(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Number> callNumber(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Date> callDate(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Byte> callForByte(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Short> callForShort(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Integer> callForInteger(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Long> callForLong(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Float> callForFloat(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Double> callForDouble(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Boolean> callForBoolean(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Calendar> callForCalendar(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<String> callForString(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Character> callForCharacter(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Number> callForNumber(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Date> callForDate(final String methodName, final Object... optionalParameters);
 
     
     
