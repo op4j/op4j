@@ -24,7 +24,7 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.op4j.executables.IEval;
+import org.op4j.functions.evaluators.IEvaluator;
 
 
 
@@ -37,21 +37,21 @@ import org.op4j.executables.IEval;
  */
 public interface IEvaluableOperator<T> {
     
-    public <X> IEvaluableOperator<X> eval(final IEval<X,? super T> eval);
+    public <X> IEvaluableOperator<X> eval(final IEvaluator<X,? super T> eval);
     
-    public IEvaluableOperator<Byte> evalByte(final String evalExpression, final Object... optionalArguments);
-    public IEvaluableOperator<Character> evalCharacter(final String evalExpression, final Object... optionalArguments);
-    public IEvaluableOperator<Short> evalShort(final String evalExpression, final Object... optionalArguments);
-    public IEvaluableOperator<Integer> evalInteger(final String evalExpression, final Object... optionalArguments);
-    public IEvaluableOperator<Number> evalNumber(final String evalExpression, final Object... optionalArguments);
-    public IEvaluableOperator<Long> evalLong(final String evalExpression, final Object... optionalArguments);
-    public IEvaluableOperator<Float> evalFloat(final String evalExpression, final Object... optionalArguments);
-    public IEvaluableOperator<Double> evalDouble(final String evalExpression, final Object... optionalArguments);
-    public IEvaluableOperator<BigInteger> evalBigInteger(final String evalExpression, final Object... optionalArguments);
-    public IEvaluableOperator<BigDecimal> evalBigDecimal(final String evalExpression, final Object... optionalArguments);
-    public IEvaluableOperator<Boolean> evalBoolean(final String evalExpression, final Object... optionalArguments);
-    public IEvaluableOperator<Date> evalDate(final String evalExpression, final Object... optionalArguments);
-    public IEvaluableOperator<Calendar> evalCalendar(final String evalExpression, final Object... optionalArguments);
-    public IEvaluableOperator<String> evalString(final String evalExpression, final Object... optionalArguments);
+    public IEvaluableOperator<Byte> evalForByte(final String evalExpression, final Object... optionalArguments);
+    public IEvaluableOperator<Character> evalForCharacter(final String evalExpression, final Object... optionalArguments);
+    public IEvaluableOperator<Short> evalForShort(final String evalExpression, final Object... optionalArguments);
+    public IEvaluableOperator<Integer> evalForInteger(final String evalExpression, final Object... optionalArguments);
+    public IEvaluableOperator<Number> evalForNumber(final String evalExpression, final Object... optionalArguments);
+    public IEvaluableOperator<Long> evalForLong(final String evalExpression, final Object... optionalArguments);
+    public IEvaluableOperator<Float> evalForFloat(final String evalExpression, final Object... optionalArguments);
+    public IEvaluableOperator<Double> evalForDouble(final String evalExpression, final Object... optionalArguments);
+    public IEvaluableOperator<BigInteger> evalForBigInteger(final String evalExpression, final Object... optionalArguments);
+    public IEvaluableOperator<BigDecimal> evalForBigDecimal(final String evalExpression, final Object... optionalArguments);
+    public IEvaluableOperator<Boolean> evalForBoolean(final String evalExpression, final Object... optionalArguments);
+    public IEvaluableOperator<Date> evalForDate(final String evalExpression, final Object... optionalArguments);
+    public IEvaluableOperator<Calendar> evalForCalendar(final String evalExpression, final Object... optionalArguments);
+    public IEvaluableOperator<String> evalForString(final String evalExpression, final Object... optionalArguments);
     
 }

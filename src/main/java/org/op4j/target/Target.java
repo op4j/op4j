@@ -24,9 +24,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.executables.IEval;
-import org.op4j.executables.IExecutable;
-import org.op4j.executables.ISelector;
+import org.op4j.functions.IFunction;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.select.ISelector;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -70,11 +70,11 @@ public abstract class Target {
     abstract Target doIterate();
     abstract Target doIteratePositions(final boolean desiredResult, final List<Integer> positions);
     abstract Target doIterateMapKeys(final boolean desiredResult, final List<Object> objects);
-    abstract Target doIterateExpression(final boolean desiredResult, final IEval<Boolean,Object> eval);
+    abstract Target doIterateExpression(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
     abstract Target doIterateSelector(final boolean desiredResult, final ISelector<?> selector);
     abstract Target doIterateNull(final boolean desiredResult);
-    abstract Target doIterateNullOr(final boolean desiredResult, final IEval<Boolean,Object> eval);
-    abstract Target doIterateNotNullAnd(final boolean desiredResult, final IEval<Boolean,Object> eval);
+    abstract Target doIterateNullOr(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
+    abstract Target doIterateNotNullAnd(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
     
     
     public Target iterate() {
@@ -92,9 +92,9 @@ public abstract class Target {
 
     
     @SuppressWarnings("unchecked")
-    public Target iterate(final IEval<Boolean,? extends Object> eval) {
+    public Target iterate(final IEvaluator<Boolean,? extends Object> eval) {
     	Validate.notNull(eval, "An evaluator must be specified");
-    	return doIterateExpression(true, (IEval<Boolean,Object>) eval);
+    	return doIterateExpression(true, (IEvaluator<Boolean,Object>) eval);
     }
 
     
@@ -110,9 +110,9 @@ public abstract class Target {
 
     
     @SuppressWarnings("unchecked")
-    public Target iterateNullOr(final IEval<Boolean,? extends Object> eval) {
+    public Target iterateNullOr(final IEvaluator<Boolean,? extends Object> eval) {
     	Validate.notNull(eval, "An evaluator must be specified");
-        return doIterateNullOr(true, (IEval<Boolean,Object>) eval);
+        return doIterateNullOr(true, (IEvaluator<Boolean,Object>) eval);
     }
     
     
@@ -132,16 +132,16 @@ public abstract class Target {
 
     
     @SuppressWarnings("unchecked")
-    public Target iterateNotNullAnd(final IEval<Boolean,? extends Object> eval) {
+    public Target iterateNotNullAnd(final IEvaluator<Boolean,? extends Object> eval) {
     	Validate.notNull(eval, "An evaluator must be specified");
-        return doIterateNotNullAnd(true, (IEval<Boolean,Object>) eval);
+        return doIterateNotNullAnd(true, (IEvaluator<Boolean,Object>) eval);
     }
     
 
     public abstract Target endIterate(final Structure structure, final Class<?> componentClass);
     
 
-    public abstract Target execute(final IExecutable<?,?> executable);
+    public abstract Target execute(final IFunction<?,?> executable);
     
     
     public Object get() {

@@ -28,11 +28,10 @@ import java.util.Set;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.Op;
-import org.op4j.executables.Eval;
-import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuilder;
-import org.op4j.executables.ISelector;
-import org.op4j.executables.functions.ListFuncs;
+import org.op4j.functions.ListFuncs;
+import org.op4j.functions.evaluators.Eval;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.impl.list.Level0ListOperator;
@@ -51,6 +50,7 @@ import org.op4j.operators.intf.setofarray.ILevel0SetOfArrayOperator;
 import org.op4j.operators.intf.setoflist.ILevel0SetOfListOperator;
 import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.ILevel0SetOfSetOperator;
+import org.op4j.select.ISelector;
 import org.op4j.target.Target;
 import org.op4j.util.VarArgsUtil;
 
@@ -110,21 +110,21 @@ public class Level0ListOfArrayOperator<T> extends Operator
 
 
     public ILevel1ListOfArrayElementsOperator<T> forEachMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterate(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterate(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> forEachMatching(final IEval<Boolean, ? super T[]> eval) {
+    public ILevel1ListOfArrayElementsOperator<T> forEachMatching(final IEvaluator<Boolean, ? super T[]> eval) {
         return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterate(eval));
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> forEachNotNullMatching(final IEval<Boolean, ? super T[]> eval) {
+    public ILevel1ListOfArrayElementsOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super T[]> eval) {
         return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNotNullAnd(eval));
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> forEachNullOrMatching(final IEval<Boolean, ? super T[]> eval) {
+    public ILevel1ListOfArrayElementsOperator<T> forEachNullOrMatching(final IEvaluator<Boolean, ? super T[]> eval) {
         return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNullOr(eval));
     }
 
@@ -151,7 +151,7 @@ public class Level0ListOfArrayOperator<T> extends Operator
 
 
     public ILevel1ListOfArrayElementsOperator<T> forEachNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNotNullAnd(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNotNullAnd(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -164,7 +164,7 @@ public class Level0ListOfArrayOperator<T> extends Operator
 
 
     public ILevel1ListOfArrayElementsOperator<T> forEachNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNullOr(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNullOr(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -192,21 +192,21 @@ public class Level0ListOfArrayOperator<T> extends Operator
 
 
     public ILevel0ListOfArrayOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ListFuncs.RemoveMatching<T[]>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ListFuncs.RemoveMatching<T[]>(Eval.forBoolean(expression, optionalExpParams))));
     }
 
 
-    public ILevel0ListOfArrayOperator<T> removeMatching(final IEval<Boolean, ? super T[]> eval) {
+    public ILevel0ListOfArrayOperator<T> removeMatching(final IEvaluator<Boolean, ? super T[]> eval) {
         return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ListFuncs.RemoveMatching<T[]>(eval)));
     }
 
 
-    public ILevel0ListOfArrayOperator<T> removeNullOrMatching(final IEval<Boolean, ? super T[]> eval) {
+    public ILevel0ListOfArrayOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T[]> eval) {
         return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ListFuncs.RemoveNullOrMatching<T[]>(eval)));
     }
 
 
-    public ILevel0ListOfArrayOperator<T> removeNotNullMatching(final IEval<Boolean, ? super T[]> eval) {
+    public ILevel0ListOfArrayOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T[]> eval) {
         return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ListFuncs.RemoveNotNullMatching<T[]>(eval)));
     }
 
@@ -222,11 +222,11 @@ public class Level0ListOfArrayOperator<T> extends Operator
 
 
     public ILevel0ListOfArrayOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ListFuncs.RemoveNotNullMatching<T[]>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ListFuncs.RemoveNotNullMatching<T[]>(Eval.forBoolean(expression, optionalExpParams))));
     }
 
     public ILevel0ListOfArrayOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ListFuncs.RemoveNullOrMatching<T[]>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ListFuncs.RemoveNullOrMatching<T[]>(Eval.forBoolean(expression, optionalExpParams))));
     }
 
 
@@ -260,7 +260,7 @@ public class Level0ListOfArrayOperator<T> extends Operator
 
 
     @SuppressWarnings("unchecked")
-    public <K> ILevel0ArrayOfMapOperator<K, T> toArrayOfMap(final IEval<K, ? super T> keyEval) {
+    public <K> ILevel0ArrayOfMapOperator<K, T> toArrayOfMap(final IEvaluator<K, ? super T> keyEval) {
         return Op.onArrayOfMap(Op.onList(forEach().toMap(keyEval).get()).toArray((Type<Map<K, T>>)((Type<?>)Types.MAP_OF_UNKNOWN_UNKNOWN)).get());
     }
 
@@ -282,7 +282,7 @@ public class Level0ListOfArrayOperator<T> extends Operator
     }
 
 
-    public <K> ILevel0ListOfMapOperator<K, T> toListOfMap(final IEval<K, ? super T> keyEval) {
+    public <K> ILevel0ListOfMapOperator<K, T> toListOfMap(final IEvaluator<K, ? super T> keyEval) {
         return forEach().toMap(keyEval).endFor();
     }
 
@@ -307,7 +307,7 @@ public class Level0ListOfArrayOperator<T> extends Operator
     }
 
 
-    public <K> ILevel0SetOfMapOperator<K, T> toSetOfMap(final IEval<K, ? super T> keyEval) {
+    public <K> ILevel0SetOfMapOperator<K, T> toSetOfMap(final IEvaluator<K, ? super T> keyEval) {
         return Op.onSetOfMap(Op.onList(forEach().toMap(keyEval).get()).toSet().get());
     }
 

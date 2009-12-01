@@ -29,9 +29,9 @@ import java.util.Set;
 
 import org.apache.commons.lang.Validate;
 import org.op4j.exceptions.ExecutionException;
-import org.op4j.executables.IEval;
-import org.op4j.executables.IExecutable;
-import org.op4j.executables.ISelector;
+import org.op4j.functions.IFunction;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.select.ISelector;
 
 /**
  * 
@@ -136,7 +136,7 @@ public abstract class NodeTarget extends Target{
 
     
     @Override
-    Target doIterateExpression(final boolean desiredResult, final IEval<Boolean,Object> eval) {
+    Target doIterateExpression(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
         
         final Collection<?> elements = getIterationElements();
         final List<Target> newElements = new ArrayList<Target>();
@@ -218,7 +218,7 @@ public abstract class NodeTarget extends Target{
 
     
     @Override
-    Target doIterateNullOr(final boolean desiredResult, final IEval<Boolean,Object> eval) {
+    Target doIterateNullOr(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
         
         final Collection<?> elements = getIterationElements();
         final List<Target> newElements = new ArrayList<Target>();
@@ -250,7 +250,7 @@ public abstract class NodeTarget extends Target{
 
     
     @Override
-    Target doIterateNotNullAnd(final boolean desiredResult, final IEval<Boolean,Object> eval) {
+    Target doIterateNotNullAnd(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
         
         final Collection<?> elements = getIterationElements();
         final List<Target> newElements = new ArrayList<Target>();
@@ -290,9 +290,9 @@ public abstract class NodeTarget extends Target{
     
 	@Override
     @SuppressWarnings("unchecked")
-    public Target execute(final IExecutable<?,?> executable) {
+    public Target execute(final IFunction<?,?> executable) {
     	Validate.notNull(executable, "An executable must be specified");
-    	final IExecutable<Object,Object> objectCommand = (IExecutable<Object,Object>) executable;
+    	final IFunction<Object,Object> objectCommand = (IFunction<Object,Object>) executable;
     	try {
             return NodeTarget.forObject(getId(), objectCommand.execute(getObject()));
         } catch (ExecutionException e) {

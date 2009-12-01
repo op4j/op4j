@@ -25,18 +25,17 @@ import java.util.List;
 import org.javaruntype.type.Type;
 import org.op4j.exceptions.EmptyTargetException;
 import org.op4j.exceptions.NonUniqueTargetException;
-import org.op4j.executables.Eval;
-import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuilder;
-import org.op4j.executables.ISelector;
-import org.op4j.executables.functions.ListFuncs;
-import org.op4j.executables.functions.conversion.ToArray;
-import org.op4j.executables.functions.conversion.ToList;
-import org.op4j.executables.functions.conversion.ToMap;
-import org.op4j.executables.functions.conversion.ToMapOfArray;
-import org.op4j.executables.functions.conversion.ToMapOfList;
-import org.op4j.executables.functions.conversion.ToMapOfSet;
-import org.op4j.executables.functions.conversion.ToSet;
+import org.op4j.functions.ListFuncs;
+import org.op4j.functions.converters.ToArray;
+import org.op4j.functions.converters.ToList;
+import org.op4j.functions.converters.ToMap;
+import org.op4j.functions.converters.ToMapOfArray;
+import org.op4j.functions.converters.ToMapOfList;
+import org.op4j.functions.converters.ToMapOfSet;
+import org.op4j.functions.converters.ToSet;
+import org.op4j.functions.evaluators.Eval;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.list.Level0ListOperator;
@@ -54,6 +53,7 @@ import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
 import org.op4j.operators.intf.mapoflist.ILevel0MapOfListOperator;
 import org.op4j.operators.intf.mapofset.ILevel0MapOfSetOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
+import org.op4j.select.ISelector;
 import org.op4j.target.Target;
 
 
@@ -100,7 +100,7 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public <K> ILevel0MapOperator<K, T> buildMap(final IEval<K, ? super T> keyEval) {
+    public <K> ILevel0MapOperator<K, T> buildMap(final IEvaluator<K, ? super T> keyEval) {
         return new Level0MapOperator<K, T>(getTarget().execute(new ToMap.FromListByKeyEval<K, T>(keyEval)));
     }
 
@@ -115,7 +115,7 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public <K> ILevel0MapOfArrayOperator<K, T> buildMapOfArray(final Type<T> valueArrayOf, final IEval<K, ? super T> keyEval) {
+    public <K> ILevel0MapOfArrayOperator<K, T> buildMapOfArray(final Type<T> valueArrayOf, final IEvaluator<K, ? super T> keyEval) {
         return new Level0MapOfArrayOperator<K, T>(valueArrayOf, getTarget().execute(new ToMapOfArray.FromListByKeyEval<K, T>(valueArrayOf, keyEval)));
     }
 
@@ -130,7 +130,7 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public <K> ILevel0MapOfListOperator<K, T> buildMapOfList(final IEval<K, ? super T> keyEval) {
+    public <K> ILevel0MapOfListOperator<K, T> buildMapOfList(final IEvaluator<K, ? super T> keyEval) {
         return new Level0MapOfListOperator<K, T>(getTarget().execute(new ToMapOfList.FromListByKeyEval<K, T>(keyEval)));
     }
 
@@ -145,7 +145,7 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public <K> ILevel0MapOfSetOperator<K, T> buildMapOfSet(final IEval<K, ? super T> keyEval) {
+    public <K> ILevel0MapOfSetOperator<K, T> buildMapOfSet(final IEvaluator<K, ? super T> keyEval) {
         return new Level0MapOfSetOperator<K, T>(getTarget().execute(new ToMapOfSet.FromListByKeyEval<K, T>(keyEval)));
     }
 
@@ -186,21 +186,21 @@ public class Level0GenericMultiOperator<T> extends Operator
 
 
     public ILevel0GenericMultiOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveMatching<T>(Eval.forBoolean(expression, optionalExpParams))));
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeMatching(final IEval<Boolean, ? super T> eval) {
+    public ILevel0GenericMultiOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveMatching<T>(eval)));
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeNullOrMatching(final IEval<Boolean, ? super T> eval) {
+    public ILevel0GenericMultiOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<T>(eval)));
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeNotNullMatching(final IEval<Boolean, ? super T> eval) {
+    public ILevel0GenericMultiOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<T>(eval)));
     }
 
@@ -216,12 +216,12 @@ public class Level0GenericMultiOperator<T> extends Operator
 
 
     public ILevel0GenericMultiOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<T>(Eval.forBoolean(expression, optionalExpParams))));
     }
 
 
     public ILevel0GenericMultiOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<T>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<T>(Eval.forBoolean(expression, optionalExpParams))));
     }
 
 

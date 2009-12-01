@@ -24,9 +24,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
-import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuilder;
-import org.op4j.executables.ISelector;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.listofset.ILevel0ListOfSetOperator;
 import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
 import org.op4j.operators.intf.mapoflist.ILevel0MapOfListOperator;
@@ -42,6 +41,7 @@ import org.op4j.operators.qualities.INavigableMapOperator;
 import org.op4j.operators.qualities.ISortableOperator;
 import org.op4j.operators.qualities.ITypeParameterizableXYOperator;
 import org.op4j.operators.qualities.IUniqOperator;
+import org.op4j.select.ISelector;
 
 
 /**
@@ -79,7 +79,7 @@ public interface ILevel0MapOfSetOperator<K,V>
     public ILevel0MapOfSetOperator<K,V> insertAll(final int position, final Map<K,Set<V>> map);
     public ILevel0MapOfSetOperator<K,V> removeKeys(final K... keys);
     public ILevel0MapOfSetOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
-    public ILevel0MapOfSetOperator<K,V> removeMatching(final IEval<Boolean, ? super Map.Entry<K,Set<V>>> eval);
+    public ILevel0MapOfSetOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
     public ILevel0MapOfSetOperator<K,V> removeSelected(final ISelector<Map.Entry<K,Set<V>>> selector);
     public ILevel0MapOfSetOperator<K,V> removeKeysNot(final K... keys);
     
@@ -88,7 +88,7 @@ public interface ILevel0MapOfSetOperator<K,V>
     
     public ILevel0MapOfListOperator<K,V> toMapOfList();
     
-    public <K2> ILevel0MapOfMapOperator<K,K2,V> toMapOfMap(final IEval<K2,? super V> keyEval);
+    public <K2> ILevel0MapOfMapOperator<K,K2,V> toMapOfMap(final IEvaluator<K2,? super V> keyEval);
     public <K2,V2> ILevel0MapOfMapOperator<K,K2,V2> toMapOfMap(final IMapBuilder<K2,V2,? super V> mapBuild);
     
     
@@ -98,7 +98,7 @@ public interface ILevel0MapOfSetOperator<K,V>
     
     public ILevel1MapOfSetEntriesOperator<K,V> forEachEntryWithKeys(final K... keys);
     public ILevel1MapOfSetEntriesOperator<K,V> forEachEntryMatching(final String expression, final Object... optionalExpParams);
-    public ILevel1MapOfSetEntriesOperator<K,V> forEachEntryMatching(final IEval<Boolean, ? super Map.Entry<K,Set<V>>> eval);
+    public ILevel1MapOfSetEntriesOperator<K,V> forEachEntryMatching(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
     public ILevel1MapOfSetEntriesOperator<K,V> forEachEntrySelected(final ISelector<Map.Entry<K,Set<V>>> selector);
     public ILevel1MapOfSetEntriesOperator<K,V> forEachEntryWithKeysNot(final K... keys);
     

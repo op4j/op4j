@@ -26,9 +26,9 @@ import java.util.Date;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
-import org.op4j.executables.ICall;
-import org.op4j.executables.IEval;
-import org.op4j.executables.functions.IFunc;
+import org.op4j.functions.IFunction;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.functions.methodcallers.IMethodCaller;
 import org.op4j.operators.qualities.ICallableOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
@@ -54,7 +54,7 @@ public interface ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
     
     public ILevel3MapOfMapEntriesValueEntriesOperator<K1,K2,V> endOn();
     
-    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> call(final ICall<X,? super V> call);
+    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> call(final IMethodCaller<X,? super V> call);
 
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Byte> callForByte(final String methodName, final Object... optionalParameters);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Short> callForShort(final String methodName, final Object... optionalParameters);
@@ -73,25 +73,25 @@ public interface ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
 
     
     
-    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> eval(final IEval<X,? super V> eval);
+    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> eval(final IEvaluator<X,? super V> eval);
 
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Byte> evalByte(final String evalExpression, final Object... optionalArguments);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Short> evalShort(final String evalExpression, final Object... optionalArguments);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Integer> evalInteger(final String evalExpression, final Object... optionalArguments);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Long> evalLong(final String evalExpression, final Object... optionalArguments);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Float> evalFloat(final String evalExpression, final Object... optionalArguments);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Double> evalDouble(final String evalExpression, final Object... optionalArguments);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,BigInteger> evalBigInteger(final String evalExpression, final Object... optionalArguments);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,BigDecimal> evalBigDecimal(final String evalExpression, final Object... optionalArguments);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Boolean> evalBoolean(final String evalExpression, final Object... optionalArguments);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Calendar> evalCalendar(final String evalExpression, final Object... optionalArguments);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,String> evalString(final String evalExpression, final Object... optionalArguments);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Character> evalCharacter(final String evalExpression, final Object... optionalArguments);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Number> evalNumber(final String evalExpression, final Object... optionalArguments);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Date> evalDate(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Byte> evalForByte(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Short> evalForShort(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Integer> evalForInteger(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Long> evalForLong(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Float> evalForFloat(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Double> evalForDouble(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,BigInteger> evalForBigInteger(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,BigDecimal> evalForBigDecimal(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Boolean> evalForBoolean(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Calendar> evalForCalendar(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,String> evalForString(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Character> evalForCharacter(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Number> evalForNumber(final String evalExpression, final Object... optionalArguments);
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Date> evalForDate(final String evalExpression, final Object... optionalArguments);
 
 
-    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> exec(final IFunc<X,? super V> exec);
+    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> exec(final IFunction<X, ? super V> function);
     
     public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> of(final Type<X> of);
     

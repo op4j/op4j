@@ -24,10 +24,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
-import org.op4j.executables.Eval;
-import org.op4j.executables.IEval;
-import org.op4j.executables.ISelector;
-import org.op4j.executables.functions.MapFuncs;
+import org.op4j.functions.MapFuncs;
+import org.op4j.functions.evaluators.Eval;
+import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.arrayoflist.Level1ArrayOfListElementsOperator;
 import org.op4j.operators.impl.arrayofset.Level1ArrayOfSetElementsOperator;
@@ -36,6 +35,7 @@ import org.op4j.operators.intf.arrayofmap.ILevel0ArrayOfMapOperator;
 import org.op4j.operators.intf.arrayofmap.ILevel1ArrayOfMapElementsOperator;
 import org.op4j.operators.intf.arrayofmap.ILevel2ArrayOfMapElementsEntriesOperator;
 import org.op4j.operators.intf.arrayofset.ILevel1ArrayOfSetElementsOperator;
+import org.op4j.select.ISelector;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
 import org.op4j.util.VarArgsUtil;
@@ -83,11 +83,11 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
 
 
     public ILevel2ArrayOfMapElementsEntriesOperator<K, V> forEachEntryMatching(final String expression, final Object... optionalExpParams) {
-        return new Level2ArrayOfMapElementsEntriesOperator<K, V>(getTarget().iterate(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+        return new Level2ArrayOfMapElementsEntriesOperator<K, V>(getTarget().iterate(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
-    public ILevel2ArrayOfMapElementsEntriesOperator<K, V> forEachEntryMatching(final IEval<Boolean, ? super Entry<K, V>> eval) {
+    public ILevel2ArrayOfMapElementsEntriesOperator<K, V> forEachEntryMatching(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
         return new Level2ArrayOfMapElementsEntriesOperator<K, V>(getTarget().iterate(eval));
     }
 
@@ -144,11 +144,11 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
 
 
     public ILevel1ArrayOfMapElementsOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(new MapFuncs.RemoveMatching<K, V>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(new MapFuncs.RemoveMatching<K, V>(Eval.forBoolean(expression, optionalExpParams))));
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> removeMatching(final IEval<Boolean, ? super Entry<K, V>> eval) {
+    public ILevel1ArrayOfMapElementsOperator<K, V> removeMatching(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
         return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(new MapFuncs.RemoveMatching<K, V>(eval)));
     }
 

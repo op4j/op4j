@@ -25,15 +25,15 @@ import java.util.List;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
-import org.op4j.executables.Eval;
-import org.op4j.executables.IEval;
-import org.op4j.executables.ISelector;
-import org.op4j.executables.functions.ListFuncs;
+import org.op4j.functions.ListFuncs;
+import org.op4j.functions.evaluators.Eval;
+import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.listofmap.ILevel0ListOfMapOperator;
 import org.op4j.operators.intf.listofmap.ILevel1ListOfMapElementsOperator;
+import org.op4j.select.ISelector;
 import org.op4j.target.Target;
 import org.op4j.util.VarArgsUtil;
 
@@ -88,21 +88,21 @@ public class Level0ListOfMapOperator<K,V> extends Operator
 
 
     public ILevel1ListOfMapElementsOperator<K, V> forEachMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterate(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterate(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
-    public ILevel1ListOfMapElementsOperator<K, V> forEachMatching(final IEval<Boolean, ? super Map<K, V>> eval) {
+    public ILevel1ListOfMapElementsOperator<K, V> forEachMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
         return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterate(eval));
     }
 
 
-    public ILevel1ListOfMapElementsOperator<K, V> forEachNotNullMatching(final IEval<Boolean, ? super Map<K, V>> eval) {
+    public ILevel1ListOfMapElementsOperator<K, V> forEachNotNullMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
         return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNotNullAnd(eval));
     }
 
 
-    public ILevel1ListOfMapElementsOperator<K, V> forEachNullOrMatching(final IEval<Boolean, ? super Map<K, V>> eval) {
+    public ILevel1ListOfMapElementsOperator<K, V> forEachNullOrMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
         return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNullOr(eval));
     }
 
@@ -132,7 +132,7 @@ public class Level0ListOfMapOperator<K,V> extends Operator
 
 
     public ILevel1ListOfMapElementsOperator<K, V> forEachNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNotNullAnd(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNotNullAnd(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -145,7 +145,7 @@ public class Level0ListOfMapOperator<K,V> extends Operator
 
 
     public ILevel1ListOfMapElementsOperator<K, V> forEachNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNullOr(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNullOr(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -173,21 +173,21 @@ public class Level0ListOfMapOperator<K,V> extends Operator
 
 
     public ILevel0ListOfMapOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFuncs.RemoveMatching<Map<K, V>>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFuncs.RemoveMatching<Map<K, V>>(Eval.forBoolean(expression, optionalExpParams))));
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> removeMatching(final IEval<Boolean, ? super Map<K, V>> eval) {
+    public ILevel0ListOfMapOperator<K, V> removeMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
         return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFuncs.RemoveMatching<Map<K, V>>(eval)));
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> removeNullOrMatching(final IEval<Boolean, ? super Map<K, V>> eval) {
+    public ILevel0ListOfMapOperator<K, V> removeNullOrMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
         return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<Map<K, V>>(eval)));
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> removeNotNullMatching(final IEval<Boolean, ? super Map<K, V>> eval) {
+    public ILevel0ListOfMapOperator<K, V> removeNotNullMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
         return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<Map<K, V>>(eval)));
     }
 
@@ -203,12 +203,12 @@ public class Level0ListOfMapOperator<K,V> extends Operator
 
 
     public ILevel0ListOfMapOperator<K, V> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<Map<K, V>>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<Map<K, V>>(Eval.forBoolean(expression, optionalExpParams))));
     }
 
 
     public ILevel0ListOfMapOperator<K, V> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<Map<K, V>>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<Map<K, V>>(Eval.forBoolean(expression, optionalExpParams))));
     }
 
 

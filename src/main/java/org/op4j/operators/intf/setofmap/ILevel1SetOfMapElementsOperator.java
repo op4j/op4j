@@ -24,8 +24,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
-import org.op4j.executables.IEval;
-import org.op4j.executables.ISelector;
+import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.intf.setoflist.ILevel1SetOfListElementsOperator;
 import org.op4j.operators.intf.setofset.ILevel1SetOfSetElementsOperator;
 import org.op4j.operators.qualities.IExtractableMapOperator;
@@ -35,6 +34,7 @@ import org.op4j.operators.qualities.INavigatingCollectionOperator;
 import org.op4j.operators.qualities.ISortableOperator;
 import org.op4j.operators.qualities.ITypeParameterizableXYOperator;
 import org.op4j.operators.qualities.IUniqOperator;
+import org.op4j.select.ISelector;
 
 
 /**
@@ -71,7 +71,7 @@ public interface ILevel1SetOfMapElementsOperator<K,V>
     public ILevel1SetOfMapElementsOperator<K,V> insertAll(final int position, final Map<K,V> map);
     public ILevel1SetOfMapElementsOperator<K,V> removeKeys(final K... keys);
     public ILevel1SetOfMapElementsOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
-    public ILevel1SetOfMapElementsOperator<K,V> removeMatching(final IEval<Boolean, ? super Map.Entry<K,V>> eval);
+    public ILevel1SetOfMapElementsOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
     public ILevel1SetOfMapElementsOperator<K,V> removeSelected(final ISelector<Map.Entry<K,V>> selector);
     public ILevel1SetOfMapElementsOperator<K,V> removeKeysNot(final K... keys);
     
@@ -82,7 +82,7 @@ public interface ILevel1SetOfMapElementsOperator<K,V>
     
     public ILevel2SetOfMapElementsEntriesOperator<K,V> forEachEntryWithKeys(final K... keys);
     public ILevel2SetOfMapElementsEntriesOperator<K,V> forEachEntryMatching(final String expression, final Object... optionalExpParams);
-    public ILevel2SetOfMapElementsEntriesOperator<K,V> forEachEntryMatching(final IEval<Boolean, ? super Map.Entry<K,V>> eval);
+    public ILevel2SetOfMapElementsEntriesOperator<K,V> forEachEntryMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
     public ILevel2SetOfMapElementsEntriesOperator<K,V> forEachEntrySelected(final ISelector<Map.Entry<K,V>> selector);
     public ILevel2SetOfMapElementsEntriesOperator<K,V> forEachEntryWithKeysNot(final K... keys);
     

@@ -29,9 +29,9 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.executables.IEval;
-import org.op4j.executables.IExecutable;
-import org.op4j.executables.ISelector;
+import org.op4j.functions.IFunction;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.select.ISelector;
 import org.op4j.util.MapEntry;
 
 /**
@@ -144,7 +144,7 @@ public class StructureTarget extends Target {
 
 
     @Override
-    Target doIterateExpression(final boolean desiredResult, final IEval<Boolean,Object> eval) {
+    Target doIterateExpression(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
         
         final List<Target> newElements = new ArrayList<Target>();
         for (final Target element : this.elements) {
@@ -192,7 +192,7 @@ public class StructureTarget extends Target {
 
     
     @Override
-    Target doIterateNullOr(final boolean desiredResult, final IEval<Boolean,Object> eval) {
+    Target doIterateNullOr(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
         
         final List<Target> newElements = new ArrayList<Target>();
         for (final Target element : this.elements) {
@@ -208,7 +208,7 @@ public class StructureTarget extends Target {
 
     
     @Override
-    Target doIterateNotNullAnd(final boolean desiredResult, final IEval<Boolean,Object> eval) {
+    Target doIterateNotNullAnd(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
         
         final List<Target> newElements = new ArrayList<Target>();
         for (final Target element : this.elements) {
@@ -304,7 +304,7 @@ public class StructureTarget extends Target {
 
 
     @Override
-    public Target execute(final IExecutable<?,?> executable) {
+    public Target execute(final IFunction<?,?> executable) {
         
     	Validate.notNull(executable, "An executable must be specified");
 

@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.executables.ISelector;
+import org.op4j.select.ISelector;
 
 
 

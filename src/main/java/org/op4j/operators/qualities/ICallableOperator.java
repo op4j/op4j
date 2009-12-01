@@ -24,7 +24,7 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.op4j.executables.ICall;
+import org.op4j.functions.methodcallers.IMethodCaller;
 
 
 
@@ -38,7 +38,7 @@ import org.op4j.executables.ICall;
  */
 public interface ICallableOperator<T> {
     
-    public <X> ICallableOperator<X> call(final ICall<X,? super T> call);
+    public <X> ICallableOperator<X> call(final IMethodCaller<X,? super T> call);
 
     public ICallableOperator<Byte> callForByte(final String methodName, final Object... optionalParameters);
     public ICallableOperator<Short> callForShort(final String methodName, final Object... optionalParameters);

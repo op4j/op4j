@@ -26,11 +26,11 @@ import java.util.Date;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
-import org.op4j.executables.Call;
-import org.op4j.executables.Eval;
-import org.op4j.executables.ICall;
-import org.op4j.executables.IEval;
-import org.op4j.executables.functions.IFunc;
+import org.op4j.functions.IFunction;
+import org.op4j.functions.evaluators.Eval;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.functions.methodcallers.Call;
+import org.op4j.functions.methodcallers.IMethodCaller;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
 import org.op4j.operators.intf.set.ILevel1SetElementsOperator;
@@ -54,64 +54,64 @@ public class Level1SetElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel1SetElementsOperator<X> call(final ICall<X, ? super T> call) {
+    public <X> ILevel1SetElementsOperator<X> call(final IMethodCaller<X, ? super T> call) {
         return new Level1SetElementsOperator<X>(getTarget().execute(call));
     }
 
     public ILevel1SetElementsOperator<Byte> callForByte(final String methodName, final Object... optionalParameters) {
-        return new Level1SetElementsOperator<Byte>(getTarget().execute(Call.byteMethod(methodName, optionalParameters)));
+        return new Level1SetElementsOperator<Byte>(getTarget().execute(Call.forByte(methodName, optionalParameters)));
     }
 
     public ILevel1SetElementsOperator<Short> callForShort(final String methodName, final Object... optionalParameters) {
-        return new Level1SetElementsOperator<Short>(getTarget().execute(Call.shortMethod(methodName, optionalParameters)));
+        return new Level1SetElementsOperator<Short>(getTarget().execute(Call.forShort(methodName, optionalParameters)));
     }
 
     public ILevel1SetElementsOperator<Integer> callForInteger(final String methodName, final Object... optionalParameters) {
-        return new Level1SetElementsOperator<Integer>(getTarget().execute(Call.integerMethod(methodName, optionalParameters)));
+        return new Level1SetElementsOperator<Integer>(getTarget().execute(Call.forInteger(methodName, optionalParameters)));
     }
 
     public ILevel1SetElementsOperator<Long> callForLong(final String methodName, final Object... optionalParameters) {
-        return new Level1SetElementsOperator<Long>(getTarget().execute(Call.longMethod(methodName, optionalParameters)));
+        return new Level1SetElementsOperator<Long>(getTarget().execute(Call.forLong(methodName, optionalParameters)));
     }
 
     public ILevel1SetElementsOperator<Float> callForFloat(final String methodName, final Object... optionalParameters) {
-        return new Level1SetElementsOperator<Float>(getTarget().execute(Call.floatMethod(methodName, optionalParameters)));
+        return new Level1SetElementsOperator<Float>(getTarget().execute(Call.forFloat(methodName, optionalParameters)));
     }
 
     public ILevel1SetElementsOperator<Double> callForDouble(final String methodName, final Object... optionalParameters) {
-        return new Level1SetElementsOperator<Double>(getTarget().execute(Call.doubleMethod(methodName, optionalParameters)));
+        return new Level1SetElementsOperator<Double>(getTarget().execute(Call.forDouble(methodName, optionalParameters)));
     }
 
     public ILevel1SetElementsOperator<BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters) {
-        return new Level1SetElementsOperator<BigInteger>(getTarget().execute(Call.bigIntegerMethod(methodName, optionalParameters)));
+        return new Level1SetElementsOperator<BigInteger>(getTarget().execute(Call.forBigInteger(methodName, optionalParameters)));
     }
 
     public ILevel1SetElementsOperator<BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters) {
-        return new Level1SetElementsOperator<BigDecimal>(getTarget().execute(Call.bigDecimalMethod(methodName, optionalParameters)));
+        return new Level1SetElementsOperator<BigDecimal>(getTarget().execute(Call.forBigDecimal(methodName, optionalParameters)));
     }
 
     public ILevel1SetElementsOperator<Boolean> callForBoolean(final String methodName, final Object... optionalParameters) {
-        return new Level1SetElementsOperator<Boolean>(getTarget().execute(Call.booleanMethod(methodName, optionalParameters)));
+        return new Level1SetElementsOperator<Boolean>(getTarget().execute(Call.forBoolean(methodName, optionalParameters)));
     }
 
     public ILevel1SetElementsOperator<Calendar> callForCalendar(final String methodName, final Object... optionalParameters) {
-        return new Level1SetElementsOperator<Calendar>(getTarget().execute(Call.calendarMethod(methodName, optionalParameters)));
+        return new Level1SetElementsOperator<Calendar>(getTarget().execute(Call.forCalendar(methodName, optionalParameters)));
     }
 
     public ILevel1SetElementsOperator<String> callForString(final String methodName, final Object... optionalParameters) {
-        return new Level1SetElementsOperator<String>(getTarget().execute(Call.stringMethod(methodName, optionalParameters)));
+        return new Level1SetElementsOperator<String>(getTarget().execute(Call.forString(methodName, optionalParameters)));
     }
 
     public ILevel1SetElementsOperator<Character> callForCharacter(final String methodName, final Object... optionalParameters) {
-        return new Level1SetElementsOperator<Character>(getTarget().execute(Call.characterMethod(methodName, optionalParameters)));
+        return new Level1SetElementsOperator<Character>(getTarget().execute(Call.forCharacter(methodName, optionalParameters)));
     }
 
     public ILevel1SetElementsOperator<Number> callForNumber(final String methodName, final Object... optionalParameters) {
-        return new Level1SetElementsOperator<Number>(getTarget().execute(Call.numberMethod(methodName, optionalParameters)));
+        return new Level1SetElementsOperator<Number>(getTarget().execute(Call.forNumber(methodName, optionalParameters)));
     }
 
     public ILevel1SetElementsOperator<Date> callForDate(final String methodName, final Object... optionalParameters) {
-        return new Level1SetElementsOperator<Date>(getTarget().execute(Call.dateMethod(methodName, optionalParameters)));
+        return new Level1SetElementsOperator<Date>(getTarget().execute(Call.forDate(methodName, optionalParameters)));
     }
 
 
@@ -122,82 +122,82 @@ public class Level1SetElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel1SetElementsOperator<X> eval(final IEval<X, ? super T> eval) {
+    public <X> ILevel1SetElementsOperator<X> eval(final IEvaluator<X, ? super T> eval) {
         return new Level1SetElementsOperator<X>(getTarget().execute(eval));
     }
 
 
-    public ILevel1SetElementsOperator<BigDecimal> evalBigDecimal(final String evalExpression, final Object... parameters) {
-        return new Level1SetElementsOperator<BigDecimal>(getTarget().execute(Eval.bigDecimalExp(evalExpression, parameters)));
+    public ILevel1SetElementsOperator<BigDecimal> evalForBigDecimal(final String evalExpression, final Object... parameters) {
+        return new Level1SetElementsOperator<BigDecimal>(getTarget().execute(Eval.forBigDecimal(evalExpression, parameters)));
     }
 
 
-    public ILevel1SetElementsOperator<BigInteger> evalBigInteger(final String evalExpression, final Object... parameters) {
-        return new Level1SetElementsOperator<BigInteger>(getTarget().execute(Eval.bigIntegerExp(evalExpression, parameters)));
+    public ILevel1SetElementsOperator<BigInteger> evalForBigInteger(final String evalExpression, final Object... parameters) {
+        return new Level1SetElementsOperator<BigInteger>(getTarget().execute(Eval.forBigInteger(evalExpression, parameters)));
     }
 
 
-    public ILevel1SetElementsOperator<Boolean> evalBoolean(final String evalExpression, final Object... parameters) {
-        return new Level1SetElementsOperator<Boolean>(getTarget().execute(Eval.booleanExp(evalExpression, parameters)));
+    public ILevel1SetElementsOperator<Boolean> evalForBoolean(final String evalExpression, final Object... parameters) {
+        return new Level1SetElementsOperator<Boolean>(getTarget().execute(Eval.forBoolean(evalExpression, parameters)));
     }
 
 
-    public ILevel1SetElementsOperator<Byte> evalByte(final String evalExpression, final Object... parameters) {
-        return new Level1SetElementsOperator<Byte>(getTarget().execute(Eval.byteExp(evalExpression, parameters)));
+    public ILevel1SetElementsOperator<Byte> evalForByte(final String evalExpression, final Object... parameters) {
+        return new Level1SetElementsOperator<Byte>(getTarget().execute(Eval.forByte(evalExpression, parameters)));
     }
 
 
-    public ILevel1SetElementsOperator<Calendar> evalCalendar(final String evalExpression, final Object... parameters) {
-        return new Level1SetElementsOperator<Calendar>(getTarget().execute(Eval.calendarExp(evalExpression, parameters)));
+    public ILevel1SetElementsOperator<Calendar> evalForCalendar(final String evalExpression, final Object... parameters) {
+        return new Level1SetElementsOperator<Calendar>(getTarget().execute(Eval.forCalendar(evalExpression, parameters)));
     }
 
 
-    public ILevel1SetElementsOperator<Double> evalDouble(final String evalExpression, final Object... parameters) {
-        return new Level1SetElementsOperator<Double>(getTarget().execute(Eval.doubleExp(evalExpression, parameters)));
+    public ILevel1SetElementsOperator<Double> evalForDouble(final String evalExpression, final Object... parameters) {
+        return new Level1SetElementsOperator<Double>(getTarget().execute(Eval.forDouble(evalExpression, parameters)));
     }
 
 
-    public ILevel1SetElementsOperator<Float> evalFloat(final String evalExpression, final Object... parameters) {
-        return new Level1SetElementsOperator<Float>(getTarget().execute(Eval.floatExp(evalExpression, parameters)));
+    public ILevel1SetElementsOperator<Float> evalForFloat(final String evalExpression, final Object... parameters) {
+        return new Level1SetElementsOperator<Float>(getTarget().execute(Eval.forFloat(evalExpression, parameters)));
     }
 
 
-    public ILevel1SetElementsOperator<Integer> evalInteger(final String evalExpression, final Object... parameters) {
-        return new Level1SetElementsOperator<Integer>(getTarget().execute(Eval.integerExp(evalExpression, parameters)));
+    public ILevel1SetElementsOperator<Integer> evalForInteger(final String evalExpression, final Object... parameters) {
+        return new Level1SetElementsOperator<Integer>(getTarget().execute(Eval.forInteger(evalExpression, parameters)));
     }
 
 
-    public ILevel1SetElementsOperator<Long> evalLong(final String evalExpression, final Object... parameters) {
-        return new Level1SetElementsOperator<Long>(getTarget().execute(Eval.longExp(evalExpression, parameters)));
+    public ILevel1SetElementsOperator<Long> evalForLong(final String evalExpression, final Object... parameters) {
+        return new Level1SetElementsOperator<Long>(getTarget().execute(Eval.forLong(evalExpression, parameters)));
     }
 
 
-    public ILevel1SetElementsOperator<Short> evalShort(final String evalExpression, final Object... parameters) {
-        return new Level1SetElementsOperator<Short>(getTarget().execute(Eval.shortExp(evalExpression, parameters)));
+    public ILevel1SetElementsOperator<Short> evalForShort(final String evalExpression, final Object... parameters) {
+        return new Level1SetElementsOperator<Short>(getTarget().execute(Eval.forShort(evalExpression, parameters)));
     }
 
 
-    public ILevel1SetElementsOperator<String> evalString(final String evalExpression, final Object... parameters) {
-        return new Level1SetElementsOperator<String>(getTarget().execute(Eval.stringExp(evalExpression, parameters)));
+    public ILevel1SetElementsOperator<String> evalForString(final String evalExpression, final Object... parameters) {
+        return new Level1SetElementsOperator<String>(getTarget().execute(Eval.forString(evalExpression, parameters)));
     }
 
-    public ILevel1SetElementsOperator<Character> evalCharacter(final String evalExpression, final Object... parameters) {
-        return new Level1SetElementsOperator<Character>(getTarget().execute(Eval.characterExp(evalExpression, parameters)));
+    public ILevel1SetElementsOperator<Character> evalForCharacter(final String evalExpression, final Object... parameters) {
+        return new Level1SetElementsOperator<Character>(getTarget().execute(Eval.forCharacter(evalExpression, parameters)));
     }
 
-    public ILevel1SetElementsOperator<Number> evalNumber(final String evalExpression, final Object... parameters) {
-        return new Level1SetElementsOperator<Number>(getTarget().execute(Eval.numberExp(evalExpression, parameters)));
+    public ILevel1SetElementsOperator<Number> evalForNumber(final String evalExpression, final Object... parameters) {
+        return new Level1SetElementsOperator<Number>(getTarget().execute(Eval.forNumber(evalExpression, parameters)));
     }
 
-    public ILevel1SetElementsOperator<Date> evalDate(final String evalExpression, final Object... parameters) {
-        return new Level1SetElementsOperator<Date>(getTarget().execute(Eval.dateExp(evalExpression, parameters)));
+    public ILevel1SetElementsOperator<Date> evalForDate(final String evalExpression, final Object... parameters) {
+        return new Level1SetElementsOperator<Date>(getTarget().execute(Eval.forDate(evalExpression, parameters)));
     }
 
 
 
 
-    public <X> ILevel1SetElementsOperator<X> exec(final IFunc<X, ? super T> exec) {
-        return new Level1SetElementsOperator<X>(getTarget().execute(exec));
+    public <X> ILevel1SetElementsOperator<X> exec(final IFunction<X, ? super T> function) {
+        return new Level1SetElementsOperator<X>(getTarget().execute(function));
     }
 
 

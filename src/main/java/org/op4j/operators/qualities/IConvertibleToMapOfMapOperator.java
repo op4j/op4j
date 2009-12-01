@@ -19,8 +19,8 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuilder;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.mapofmap.ILevel0MapOfMapOperator;
 
 
@@ -33,7 +33,7 @@ import org.op4j.operators.intf.mapofmap.ILevel0MapOfMapOperator;
  */
 public interface IConvertibleToMapOfMapOperator<K,V> {
     
-    public <K2> ILevel0MapOfMapOperator<K,K2,V> toMapOfMap(final IEval<K2,? super V> keyEval);
+    public <K2> ILevel0MapOfMapOperator<K,K2,V> toMapOfMap(final IEvaluator<K2,? super V> keyEval);
     public <K2,V2> ILevel0MapOfMapOperator<K,K2,V2> toMapOfMap(final IMapBuilder<K2,V2,? super V> mapBuild);
     
 }

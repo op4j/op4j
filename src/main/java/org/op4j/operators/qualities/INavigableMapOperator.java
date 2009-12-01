@@ -21,8 +21,8 @@ package org.op4j.operators.qualities;
 
 import java.util.Map;
 
-import org.op4j.executables.IEval;
-import org.op4j.executables.ISelector;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.select.ISelector;
 
 
 
@@ -42,7 +42,7 @@ public interface INavigableMapOperator<K,V>  {
 
     public INavigatingMapOperator<K,V> forEachEntryWithKeys(final K... keys);
     public INavigatingMapOperator<K,V> forEachEntryMatching(final String expression, final Object... optionalExpParams);
-    public INavigatingMapOperator<K,V> forEachEntryMatching(final IEval<Boolean, ? super Map.Entry<K,V>> eval);
+    public INavigatingMapOperator<K,V> forEachEntryMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
     public INavigatingMapOperator<K,V> forEachEntrySelected(final ISelector<Map.Entry<K,V>> selector);
     public INavigatingMapOperator<K,V> forEachEntryWithKeysNot(final K... keys);
    

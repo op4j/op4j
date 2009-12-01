@@ -25,11 +25,10 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
-import org.op4j.executables.Eval;
-import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuilder;
-import org.op4j.executables.ISelector;
-import org.op4j.executables.functions.MapFuncs;
+import org.op4j.functions.MapFuncs;
+import org.op4j.functions.evaluators.Eval;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.impl.listofset.Level0ListOfSetOperator;
@@ -42,6 +41,7 @@ import org.op4j.operators.intf.mapofmap.ILevel0MapOfMapOperator;
 import org.op4j.operators.intf.mapofset.ILevel0MapOfSetOperator;
 import org.op4j.operators.intf.mapofset.ILevel1MapOfSetEntriesOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
+import org.op4j.select.ISelector;
 import org.op4j.target.Target;
 import org.op4j.util.VarArgsUtil;
 
@@ -83,11 +83,11 @@ public class Level0MapOfSetOperator<K,V> extends Operator
 
 
     public ILevel1MapOfSetEntriesOperator<K, V> forEachEntryMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1MapOfSetEntriesOperator<K, V>(getTarget().iterate(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+        return new Level1MapOfSetEntriesOperator<K, V>(getTarget().iterate(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
-    public ILevel1MapOfSetEntriesOperator<K, V> forEachEntryMatching(final IEval<Boolean, ? super Entry<K, Set<V>>> eval) {
+    public ILevel1MapOfSetEntriesOperator<K, V> forEachEntryMatching(final IEvaluator<Boolean, ? super Entry<K, Set<V>>> eval) {
         return new Level1MapOfSetEntriesOperator<K, V>(getTarget().iterate(eval));
     }
 
@@ -144,11 +144,11 @@ public class Level0MapOfSetOperator<K,V> extends Operator
 
 
     public ILevel0MapOfSetOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.RemoveMatching<K, Set<V>>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.RemoveMatching<K, Set<V>>(Eval.forBoolean(expression, optionalExpParams))));
     }
 
 
-    public ILevel0MapOfSetOperator<K, V> removeMatching(final IEval<Boolean, ? super Entry<K, Set<V>>> eval) {
+    public ILevel0MapOfSetOperator<K, V> removeMatching(final IEvaluator<Boolean, ? super Entry<K, Set<V>>> eval) {
         return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.RemoveMatching<K, Set<V>>(eval)));
     }
 
@@ -193,7 +193,7 @@ public class Level0MapOfSetOperator<K,V> extends Operator
     }
 
 
-    public <K2> ILevel0MapOfMapOperator<K, K2, V> toMapOfMap(final IEval<K2, ? super V> keyEval) {
+    public <K2> ILevel0MapOfMapOperator<K, K2, V> toMapOfMap(final IEvaluator<K2, ? super V> keyEval) {
         return forEachEntry().onValue().toMap(keyEval).endOn().endFor();
     }
 

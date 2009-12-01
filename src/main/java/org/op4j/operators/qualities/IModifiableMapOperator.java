@@ -21,8 +21,8 @@ package org.op4j.operators.qualities;
 
 import java.util.Map;
 
-import org.op4j.executables.IEval;
-import org.op4j.executables.ISelector;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.select.ISelector;
 
 
 
@@ -41,7 +41,7 @@ public interface IModifiableMapOperator<K,V> {
     public IModifiableMapOperator<K,V> insertAll(final int position, final Map<K,V> map);
     public IModifiableMapOperator<K,V> removeKeys(final K... keys);
     public IModifiableMapOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
-    public IModifiableMapOperator<K,V> removeMatching(final IEval<Boolean, ? super Map.Entry<K,V>> eval);
+    public IModifiableMapOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
     public IModifiableMapOperator<K,V> removeSelected(final ISelector<Map.Entry<K,V>> selector);
     public IModifiableMapOperator<K,V> removeKeysNot(final K... keys);
     

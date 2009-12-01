@@ -24,14 +24,13 @@ import java.util.Comparator;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
-import org.op4j.executables.Eval;
-import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuilder;
-import org.op4j.executables.ISelector;
-import org.op4j.executables.functions.ArrayFuncs;
-import org.op4j.executables.functions.conversion.ToList;
-import org.op4j.executables.functions.conversion.ToMap;
-import org.op4j.executables.functions.conversion.ToSet;
+import org.op4j.functions.ArrayFuncs;
+import org.op4j.functions.converters.ToList;
+import org.op4j.functions.converters.ToMap;
+import org.op4j.functions.converters.ToSet;
+import org.op4j.functions.evaluators.Eval;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.mapoflist.Level2MapOfListEntriesValueOperator;
 import org.op4j.operators.impl.mapofmap.Level2MapOfMapEntriesValueOperator;
@@ -42,6 +41,7 @@ import org.op4j.operators.intf.mapofarray.ILevel3MapOfArrayEntriesValueElementsO
 import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.ILevel2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesValueOperator;
+import org.op4j.select.ISelector;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
 import org.op4j.util.VarArgsUtil;
@@ -102,21 +102,21 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachMatching(final String expression, final Object... optionalExpParams) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterate(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterate(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachMatching(final IEval<Boolean, ? super V> eval) {
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachMatching(final IEvaluator<Boolean, ? super V> eval) {
         return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterate(eval));
     }
 
 
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNotNullMatching(final IEval<Boolean, ? super V> eval) {
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNotNullMatching(final IEvaluator<Boolean, ? super V> eval) {
         return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNotNullAnd(eval));
     }
 
 
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNullOrMatching(final IEval<Boolean, ? super V> eval) {
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNullOrMatching(final IEvaluator<Boolean, ? super V> eval) {
         return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNullOr(eval));
     }
 
@@ -143,7 +143,7 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNotNullAnd(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNotNullAnd(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -156,7 +156,7 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNullOr(Eval.booleanExp(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNullOr(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -184,21 +184,21 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveMatching<V>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveMatching<V>(Eval.forBoolean(expression, optionalExpParams))));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeMatching(final IEval<Boolean, ? super V> eval) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeMatching(final IEvaluator<Boolean, ? super V> eval) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveMatching<V>(eval)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeNullOrMatching(final IEval<Boolean, ? super V> eval) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeNullOrMatching(final IEvaluator<Boolean, ? super V> eval) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNullOrMatching<V>(eval)));
     }
 
 
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeNotNullMatching(final IEval<Boolean, ? super V> eval) {
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeNotNullMatching(final IEvaluator<Boolean, ? super V> eval) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNotNullMatching<V>(eval)));
     }
 
@@ -215,11 +215,11 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNotNullMatching<V>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNotNullMatching<V>(Eval.forBoolean(expression, optionalExpParams))));
     }
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNullOrMatching<V>(Eval.booleanExp(expression, optionalExpParams))));
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNullOrMatching<V>(Eval.forBoolean(expression, optionalExpParams))));
     }
 
 
@@ -250,7 +250,7 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public <K2> ILevel2MapOfMapEntriesValueOperator<K, K2, V> toMap(final IEval<K2, ? super V> keyEval) {
+    public <K2> ILevel2MapOfMapEntriesValueOperator<K, K2, V> toMap(final IEvaluator<K2, ? super V> keyEval) {
         return new Level2MapOfMapEntriesValueOperator<K, K2, V>(getTarget().execute(new ToMap.FromArrayByKeyEval<K2, V>(keyEval)));
     }
 

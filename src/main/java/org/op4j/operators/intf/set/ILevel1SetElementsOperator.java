@@ -26,9 +26,9 @@ import java.util.Date;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
-import org.op4j.executables.ICall;
-import org.op4j.executables.IEval;
-import org.op4j.executables.functions.IFunc;
+import org.op4j.functions.IFunction;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.functions.methodcallers.IMethodCaller;
 import org.op4j.operators.qualities.ICallableOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
@@ -55,7 +55,7 @@ public interface ILevel1SetElementsOperator<T>
     
     public ILevel0SetOperator<T> endFor();
     
-    public <X> ILevel1SetElementsOperator<X> call(final ICall<X,? super T> call);
+    public <X> ILevel1SetElementsOperator<X> call(final IMethodCaller<X,? super T> call);
 
     public ILevel1SetElementsOperator<Byte> callForByte(final String methodName, final Object... optionalParameters);
     public ILevel1SetElementsOperator<Short> callForShort(final String methodName, final Object... optionalParameters);
@@ -74,25 +74,25 @@ public interface ILevel1SetElementsOperator<T>
 
     
     
-    public <X> ILevel1SetElementsOperator<X> eval(final IEval<X,? super T> eval);
+    public <X> ILevel1SetElementsOperator<X> eval(final IEvaluator<X,? super T> eval);
 
-    public ILevel1SetElementsOperator<Byte> evalByte(final String evalExpression, final Object... optionalArguments);
-    public ILevel1SetElementsOperator<Short> evalShort(final String evalExpression, final Object... optionalArguments);
-    public ILevel1SetElementsOperator<Integer> evalInteger(final String evalExpression, final Object... optionalArguments);
-    public ILevel1SetElementsOperator<Long> evalLong(final String evalExpression, final Object... optionalArguments);
-    public ILevel1SetElementsOperator<Float> evalFloat(final String evalExpression, final Object... optionalArguments);
-    public ILevel1SetElementsOperator<Double> evalDouble(final String evalExpression, final Object... optionalArguments);
-    public ILevel1SetElementsOperator<BigInteger> evalBigInteger(final String evalExpression, final Object... optionalArguments);
-    public ILevel1SetElementsOperator<BigDecimal> evalBigDecimal(final String evalExpression, final Object... optionalArguments);
-    public ILevel1SetElementsOperator<Boolean> evalBoolean(final String evalExpression, final Object... optionalArguments);
-    public ILevel1SetElementsOperator<Calendar> evalCalendar(final String evalExpression, final Object... optionalArguments);
-    public ILevel1SetElementsOperator<String> evalString(final String evalExpression, final Object... optionalArguments);
-    public ILevel1SetElementsOperator<Character> evalCharacter(final String evalExpression, final Object... optionalArguments);
-    public ILevel1SetElementsOperator<Number> evalNumber(final String evalExpression, final Object... optionalArguments);
-    public ILevel1SetElementsOperator<Date> evalDate(final String evalExpression, final Object... optionalArguments);
+    public ILevel1SetElementsOperator<Byte> evalForByte(final String evalExpression, final Object... optionalArguments);
+    public ILevel1SetElementsOperator<Short> evalForShort(final String evalExpression, final Object... optionalArguments);
+    public ILevel1SetElementsOperator<Integer> evalForInteger(final String evalExpression, final Object... optionalArguments);
+    public ILevel1SetElementsOperator<Long> evalForLong(final String evalExpression, final Object... optionalArguments);
+    public ILevel1SetElementsOperator<Float> evalForFloat(final String evalExpression, final Object... optionalArguments);
+    public ILevel1SetElementsOperator<Double> evalForDouble(final String evalExpression, final Object... optionalArguments);
+    public ILevel1SetElementsOperator<BigInteger> evalForBigInteger(final String evalExpression, final Object... optionalArguments);
+    public ILevel1SetElementsOperator<BigDecimal> evalForBigDecimal(final String evalExpression, final Object... optionalArguments);
+    public ILevel1SetElementsOperator<Boolean> evalForBoolean(final String evalExpression, final Object... optionalArguments);
+    public ILevel1SetElementsOperator<Calendar> evalForCalendar(final String evalExpression, final Object... optionalArguments);
+    public ILevel1SetElementsOperator<String> evalForString(final String evalExpression, final Object... optionalArguments);
+    public ILevel1SetElementsOperator<Character> evalForCharacter(final String evalExpression, final Object... optionalArguments);
+    public ILevel1SetElementsOperator<Number> evalForNumber(final String evalExpression, final Object... optionalArguments);
+    public ILevel1SetElementsOperator<Date> evalForDate(final String evalExpression, final Object... optionalArguments);
 
 
-    public <X> ILevel1SetElementsOperator<X> exec(final IFunc<X,? super T> exec);
+    public <X> ILevel1SetElementsOperator<X> exec(final IFunction<X, ? super T> function);
     
     public <X> ILevel1SetElementsOperator<X> of(final Type<X> of);
         

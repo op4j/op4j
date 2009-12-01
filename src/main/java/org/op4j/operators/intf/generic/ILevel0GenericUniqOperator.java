@@ -26,10 +26,10 @@ import java.util.Collection;
 import java.util.Date;
 
 import org.javaruntype.type.Type;
-import org.op4j.executables.ICall;
-import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuilder;
-import org.op4j.executables.functions.IFunc;
+import org.op4j.functions.IFunction;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.functions.methodcallers.IMethodCaller;
+import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
@@ -79,7 +79,7 @@ public interface ILevel0GenericUniqOperator<T>
                 ITypeParameterizableXOperator<T>,
                 IModifiableGrowableOperator<T> {
     
-    public <X> ILevel0GenericUniqOperator<X> call(final ICall<X,? super T> call);
+    public <X> ILevel0GenericUniqOperator<X> call(final IMethodCaller<X,? super T> call);
 
     public ILevel0GenericUniqOperator<Byte> callForByte(final String methodName, final Object... optionalParameters);
     public ILevel0GenericUniqOperator<Short> callForShort(final String methodName, final Object... optionalParameters);
@@ -98,25 +98,25 @@ public interface ILevel0GenericUniqOperator<T>
 
     
     
-    public <X> ILevel0GenericUniqOperator<X> eval(final IEval<X,? super T> eval);
+    public <X> ILevel0GenericUniqOperator<X> eval(final IEvaluator<X,? super T> eval);
 
-    public ILevel0GenericUniqOperator<Byte> evalByte(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Short> evalShort(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Integer> evalInteger(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Long> evalLong(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Float> evalFloat(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Double> evalDouble(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<BigInteger> evalBigInteger(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<BigDecimal> evalBigDecimal(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Boolean> evalBoolean(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Calendar> evalCalendar(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<String> evalString(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Character> evalCharacter(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Number> evalNumber(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Date> evalDate(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Byte> evalForByte(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Short> evalForShort(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Integer> evalForInteger(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Long> evalForLong(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Float> evalForFloat(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Double> evalForDouble(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<BigInteger> evalForBigInteger(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<BigDecimal> evalForBigDecimal(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Boolean> evalForBoolean(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Calendar> evalForCalendar(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<String> evalForString(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Character> evalForCharacter(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Number> evalForNumber(final String evalExpression, final Object... optionalArguments);
+    public ILevel0GenericUniqOperator<Date> evalForDate(final String evalExpression, final Object... optionalArguments);
 
 
-    public <X> ILevel0GenericUniqOperator<X> exec(final IFunc<X,? super T> exec);
+    public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super T> function);
     
     public <X> ILevel0GenericUniqOperator<X> of(final Type<X> of);
         
@@ -135,19 +135,19 @@ public interface ILevel0GenericUniqOperator<T>
     public ILevel0ArrayOperator<T> buildArray(final Type<T> of);
     
     
-    public <K> ILevel0MapOperator<K,T> buildMap(final IEval<K,? super T> keyEval);
+    public <K> ILevel0MapOperator<K,T> buildMap(final IEvaluator<K,? super T> keyEval);
     public <K,V> ILevel0MapOperator<K,V> buildMap(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> ILevel0MapOfListOperator<K,T> buildMapOfList(final IEval<K,? super T> keyEval);
+    public <K> ILevel0MapOfListOperator<K,T> buildMapOfList(final IEvaluator<K,? super T> keyEval);
     public <K,V> ILevel0MapOfListOperator<K,V> buildMapOfList(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> ILevel0MapOfSetOperator<K,T> buildMapOfSet(final IEval<K,? super T> keyEval);
+    public <K> ILevel0MapOfSetOperator<K,T> buildMapOfSet(final IEvaluator<K,? super T> keyEval);
     public <K,V> ILevel0MapOfSetOperator<K,V> buildMapOfSet(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> ILevel0MapOfArrayOperator<K,T> buildMapOfArray(final Type<T> valueArrayOf, final IEval<K,? super T> keyEval);
+    public <K> ILevel0MapOfArrayOperator<K,T> buildMapOfArray(final Type<T> valueArrayOf, final IEvaluator<K,? super T> keyEval);
     public <K,V> ILevel0MapOfArrayOperator<K,V> buildMapOfArray(final Type<V> valueArrayOf, final IMapBuilder<K,V,? super T> mapBuild);
 
     

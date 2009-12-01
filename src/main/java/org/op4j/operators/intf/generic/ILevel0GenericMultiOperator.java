@@ -22,9 +22,8 @@ package org.op4j.operators.intf.generic;
 import java.util.Collection;
 
 import org.javaruntype.type.Type;
-import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuilder;
-import org.op4j.executables.ISelector;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
@@ -39,6 +38,7 @@ import org.op4j.operators.qualities.IModifiableShrinkableOperator;
 import org.op4j.operators.qualities.IMultiOperator;
 import org.op4j.operators.qualities.ITypeParameterizableXOperator;
 import org.op4j.operators.qualities.IUniqableOperator;
+import org.op4j.select.ISelector;
 
 
 /**
@@ -71,9 +71,9 @@ public interface ILevel0GenericMultiOperator<T>
     public ILevel0GenericMultiOperator<T> removeIndexes(final int... indices);
     public ILevel0GenericMultiOperator<T> removeEquals(final T... values);
     public ILevel0GenericMultiOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<T> removeMatching(final IEval<Boolean, ? super T> eval);
-    public ILevel0GenericMultiOperator<T> removeNotNullMatching(final IEval<Boolean, ? super T> eval);
-    public ILevel0GenericMultiOperator<T> removeNullOrMatching(final IEval<Boolean, ? super T> eval);
+    public ILevel0GenericMultiOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval);
+    public ILevel0GenericMultiOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
+    public ILevel0GenericMultiOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel0GenericMultiOperator<T> removeSelected(final ISelector<T> selector);
     public ILevel0GenericMultiOperator<T> removeIndexesNot(final int... indices);
     public ILevel0GenericMultiOperator<T> removeNulls();
@@ -90,19 +90,19 @@ public interface ILevel0GenericMultiOperator<T>
     public ILevel0ArrayOperator<T> buildArray(final Type<T> of);
     
     
-    public <K> ILevel0MapOperator<K,T> buildMap(final IEval<K,? super T> keyEval);
+    public <K> ILevel0MapOperator<K,T> buildMap(final IEvaluator<K,? super T> keyEval);
     public <K,V> ILevel0MapOperator<K,V> buildMap(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> ILevel0MapOfListOperator<K,T> buildMapOfList(final IEval<K,? super T> keyEval);
+    public <K> ILevel0MapOfListOperator<K,T> buildMapOfList(final IEvaluator<K,? super T> keyEval);
     public <K,V> ILevel0MapOfListOperator<K,V> buildMapOfList(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> ILevel0MapOfSetOperator<K,T> buildMapOfSet(final IEval<K,? super T> keyEval);
+    public <K> ILevel0MapOfSetOperator<K,T> buildMapOfSet(final IEvaluator<K,? super T> keyEval);
     public <K,V> ILevel0MapOfSetOperator<K,V> buildMapOfSet(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> ILevel0MapOfArrayOperator<K,T> buildMapOfArray(final Type<T> valueArrayOf, final IEval<K,? super T> keyEval);
+    public <K> ILevel0MapOfArrayOperator<K,T> buildMapOfArray(final Type<T> valueArrayOf, final IEvaluator<K,? super T> keyEval);
     public <K,V> ILevel0MapOfArrayOperator<K,V> buildMapOfArray(final Type<V> valueArrayOf, final IMapBuilder<K,V,? super T> mapBuild);
 
     

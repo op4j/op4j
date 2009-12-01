@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.executables.ICall;
+import org.op4j.functions.methodcallers.IMethodCaller;
 
 
 
@@ -33,7 +33,7 @@ import org.op4j.executables.ICall;
  */
 public interface ICallableSelectedOperator<T> {
     
-    public <X extends T> ICallableSelectedOperator<T> call(final ICall<X,? super T> call);
+    public <X extends T> ICallableSelectedOperator<T> call(final IMethodCaller<X,? super T> call);
 
     
 }

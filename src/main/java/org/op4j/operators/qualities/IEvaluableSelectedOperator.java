@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.executables.IEval;
+import org.op4j.functions.evaluators.IEvaluator;
 
 
 
@@ -32,6 +32,6 @@ import org.op4j.executables.IEval;
  */
 public interface IEvaluableSelectedOperator<T> {
     
-    public <X extends T> IEvaluableSelectedOperator<T> eval(final IEval<X,? super T> eval);
+    public <X extends T> IEvaluableSelectedOperator<T> eval(final IEvaluator<X,? super T> eval);
     
 }
