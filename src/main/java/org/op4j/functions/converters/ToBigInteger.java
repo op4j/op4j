@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions.conversion;
+package org.op4j.functions.converters;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

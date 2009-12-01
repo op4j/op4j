@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions.conversion;
+package org.op4j.functions.converters;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -34,8 +34,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.executables.functions.AbstractNullAsNullFunc;
-import org.op4j.executables.functions.conversion.ToString.FromNumber.NumberFormatType;
+import org.op4j.functions.converters.ToString.FromNumber.NumberFormatType;
 
 /**
  * 
@@ -318,7 +317,7 @@ public final class ToString {
 	
 	
 	
-	public static final class FromObject extends AbstractNullAsNullFunc<String,Object> {
+	public static final class FromObject extends AbstractNullAsNullConverter<String,Object> {
 
 		public FromObject() {
 			super();
@@ -335,7 +334,7 @@ public final class ToString {
 		
 	}
 	
-	public static final class FromNumber extends AbstractNullAsNullFunc<String, Number> {
+	public static final class FromNumber extends AbstractNullAsNullConverter<String, Number> {
 
 		private final NumberFormat numberFormat;
 		
@@ -613,7 +612,7 @@ public final class ToString {
 		NONE
 	}		
 	
-	public static final class FromCalendar extends AbstractNullAsNullFunc<String, Calendar> {
+	public static final class FromCalendar extends AbstractNullAsNullConverter<String, Calendar> {
 
 		private DateStyle dateStyle = null;	
 		private TimeStyle timeStyle = null;	
@@ -707,7 +706,7 @@ public final class ToString {
 	    }		
 	}
 	
-	public static final class FromDate extends AbstractNullAsNullFunc<String, java.util.Date> {
+	public static final class FromDate extends AbstractNullAsNullConverter<String, java.util.Date> {
 
 		private DateStyle dateStyle = null;	
 		private TimeStyle timeStyle = null;	

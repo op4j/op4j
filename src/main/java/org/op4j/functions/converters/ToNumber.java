@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions.conversion;
+package org.op4j.functions.converters;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -27,7 +27,6 @@ import java.util.Locale;
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
-import org.op4j.executables.functions.AbstractNullAsNullFunc;
 
 /**
  * 
@@ -53,7 +52,7 @@ final class ToNumber {
     }
     
     
-    static abstract class ToNumberFunction<X extends Number, T> extends AbstractNullAsNullFunc<X, T> {
+    static abstract class ToNumberFunction<X extends Number, T> extends AbstractNullAsNullConverter<X, T> {
         
         ToNumberFunction() {
             super();

@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions.conversion;
+package org.op4j.functions.converters;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -35,7 +35,6 @@ import org.apache.commons.lang.time.DateUtils;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.exceptions.FunctionExecutionException;
-import org.op4j.executables.functions.AbstractNullAsNullFunc;
 
 /**
  * 
@@ -185,7 +184,7 @@ public final class ToCalendar {
 	
 	
 	
-	public static final class FromCalendar extends AbstractNullAsNullFunc<Calendar, Calendar> {
+	public static final class FromCalendar extends AbstractNullAsNullConverter<Calendar, Calendar> {
 	
 		private Integer truncateField = null;
 		
@@ -214,7 +213,7 @@ public final class ToCalendar {
 	
 
 	
-	public static final class FromDate extends AbstractNullAsNullFunc<Calendar, Date> {
+	public static final class FromDate extends AbstractNullAsNullConverter<Calendar, Date> {
 	
 		private Integer truncateField = null;
 		
@@ -248,7 +247,7 @@ public final class ToCalendar {
 	
 
 	
-	public static final class FromTimestamp extends AbstractNullAsNullFunc<Calendar, Timestamp> {
+	public static final class FromTimestamp extends AbstractNullAsNullConverter<Calendar, Timestamp> {
 	
 		private Integer truncateField = null;
 		
@@ -282,7 +281,7 @@ public final class ToCalendar {
 	
 
 	
-	public static final class FromTimeInMillis extends AbstractNullAsNullFunc<Calendar, Long> {
+	public static final class FromTimeInMillis extends AbstractNullAsNullConverter<Calendar, Long> {
 	
 		private Integer truncateField = null;
 		
@@ -317,7 +316,7 @@ public final class ToCalendar {
 	
 	
 	
-	public static final class FromString extends AbstractNullAsNullFunc<Calendar, String> {
+	public static final class FromString extends AbstractNullAsNullConverter<Calendar, String> {
 
 		private final SimpleDateFormat simpleDateFormat;
 
@@ -367,7 +366,7 @@ public final class ToCalendar {
 
 	
 	
-	public static final class FromIntegerFieldList extends AbstractNullAsNullFunc<Calendar, List<Integer>> {
+	public static final class FromIntegerFieldList extends AbstractNullAsNullConverter<Calendar, List<Integer>> {
 		
 		
 		public FromIntegerFieldList() {
@@ -410,7 +409,7 @@ public final class ToCalendar {
 	
 	
 	
-	public static final class FromIntegerFieldArray extends AbstractNullAsNullFunc<Calendar, Integer[]> {
+	public static final class FromIntegerFieldArray extends AbstractNullAsNullConverter<Calendar, Integer[]> {
 		
 		
 		public FromIntegerFieldArray() {
@@ -452,7 +451,7 @@ public final class ToCalendar {
 
 	
 	
-	public static final class FromStringFieldList extends AbstractNullAsNullFunc<Calendar, List<String>> {
+	public static final class FromStringFieldList extends AbstractNullAsNullConverter<Calendar, List<String>> {
 		
 		
 		public FromStringFieldList() {
@@ -495,7 +494,7 @@ public final class ToCalendar {
 	
 	
 	
-	public static final class FromStringFieldArray extends AbstractNullAsNullFunc<Calendar, String[]> {
+	public static final class FromStringFieldArray extends AbstractNullAsNullConverter<Calendar, String[]> {
 		
 		
 		public FromStringFieldArray() {

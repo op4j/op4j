@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions.conversion;
+package org.op4j.functions.converters;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -29,7 +29,7 @@ import java.util.Locale;
 
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
-import org.op4j.executables.functions.conversion.ToNumber.Delegated;
+import org.op4j.functions.converters.ToNumber.Delegated;
 
 /**
  * 

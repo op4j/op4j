@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions.conversion;
+package org.op4j.functions.converters;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -30,9 +30,8 @@ import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.exceptions.FunctionExecutionException;
-import org.op4j.executables.IEval;
-import org.op4j.executables.IMapBuilder;
-import org.op4j.executables.functions.AbstractNullAsNullFunc;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.mapbuild.IMapBuilder;
 
 /**
  * 
@@ -53,11 +52,11 @@ public class ToMap {
     
     
     
-    public static final class FromArrayByKeyEval<K, T> extends AbstractNullAsNullFunc<Map<K, T>, T[]> {
+    public static final class FromArrayByKeyEval<K, T> extends AbstractNullAsNullConverter<Map<K, T>, T[]> {
 
-        private final IEval<K,? super T> eval;
+        private final IEvaluator<K,? super T> eval;
         
-        public FromArrayByKeyEval(final IEval<K,? super T> eval) {
+        public FromArrayByKeyEval(final IEvaluator<K,? super T> eval) {
             super();
 			Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
@@ -82,7 +81,7 @@ public class ToMap {
     
     
     
-    public static final class FromArrayByMapBuilder<K, V, T> extends AbstractNullAsNullFunc<Map<K, V>, T[]> {
+    public static final class FromArrayByMapBuilder<K, V, T> extends AbstractNullAsNullConverter<Map<K, V>, T[]> {
 
         private final IMapBuilder<K, V, ? super T> mapBuilder;
         
@@ -111,7 +110,7 @@ public class ToMap {
     
     
     
-    public static final class FromArrayByAlternateElements<T> extends AbstractNullAsNullFunc<Map<T, T>, T[]> {
+    public static final class FromArrayByAlternateElements<T> extends AbstractNullAsNullConverter<Map<T, T>, T[]> {
 
         public FromArrayByAlternateElements() {
             super();
@@ -142,11 +141,11 @@ public class ToMap {
     
     
     
-    public static final class FromListByKeyEval<K, T> extends AbstractNullAsNullFunc<Map<K, T>, List<T>> {
+    public static final class FromListByKeyEval<K, T> extends AbstractNullAsNullConverter<Map<K, T>, List<T>> {
 
-        private final IEval<K,? super T> eval;
+        private final IEvaluator<K,? super T> eval;
         
-        public FromListByKeyEval(final IEval<K,? super T> eval) {
+        public FromListByKeyEval(final IEvaluator<K,? super T> eval) {
             super();
 			Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
@@ -171,7 +170,7 @@ public class ToMap {
     
     
     
-    public static final class FromListByMapBuilder<K, V, T> extends AbstractNullAsNullFunc<Map<K, V>, List<T>> {
+    public static final class FromListByMapBuilder<K, V, T> extends AbstractNullAsNullConverter<Map<K, V>, List<T>> {
 
         private final IMapBuilder<K, V, ? super T> mapBuilder;
         
@@ -200,7 +199,7 @@ public class ToMap {
     
     
     
-    public static final class FromListByAlternateElements<T> extends AbstractNullAsNullFunc<Map<T, T>, List<T>> {
+    public static final class FromListByAlternateElements<T> extends AbstractNullAsNullConverter<Map<T, T>, List<T>> {
 
         public FromListByAlternateElements() {
             super();
@@ -230,11 +229,11 @@ public class ToMap {
     
     
     
-    public static final class FromSetByKeyEval<K, T> extends AbstractNullAsNullFunc<Map<K, T>, Set<T>> {
+    public static final class FromSetByKeyEval<K, T> extends AbstractNullAsNullConverter<Map<K, T>, Set<T>> {
 
-        private final IEval<K,? super T> eval;
+        private final IEvaluator<K,? super T> eval;
         
-        public FromSetByKeyEval(final IEval<K,? super T> eval) {
+        public FromSetByKeyEval(final IEvaluator<K,? super T> eval) {
             super();
 			Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
@@ -259,7 +258,7 @@ public class ToMap {
     
     
     
-    public static final class FromSetByMapBuilder<K, V, T> extends AbstractNullAsNullFunc<Map<K, V>, Set<T>> {
+    public static final class FromSetByMapBuilder<K, V, T> extends AbstractNullAsNullConverter<Map<K, V>, Set<T>> {
 
         private final IMapBuilder<K, V, ? super T> mapBuilder;
         
@@ -288,7 +287,7 @@ public class ToMap {
     
     
     
-    public static final class FromSetByAlternateElements<T> extends AbstractNullAsNullFunc<Map<T, T>, Set<T>> {
+    public static final class FromSetByAlternateElements<T> extends AbstractNullAsNullConverter<Map<T, T>, Set<T>> {
 
         public FromSetByAlternateElements() {
             super();

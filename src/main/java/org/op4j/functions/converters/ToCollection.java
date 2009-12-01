@@ -18,15 +18,12 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions.conversion;
+package org.op4j.functions.converters;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-
-import org.op4j.executables.functions.AbstractNullAsNullFunc;
-import org.op4j.executables.functions.IFunc;
 
 /**
  * 
@@ -46,7 +43,7 @@ class ToCollection {
     
     
     
-    static abstract class FromArray<T, X extends Collection<T>> extends AbstractNullAsNullFunc<X, T[]> {
+    static abstract class FromArray<T, X extends Collection<T>> extends AbstractNullAsNullConverter<X, T[]> {
 
         public FromArray() {
             super();
@@ -65,7 +62,7 @@ class ToCollection {
 
     
     
-    static abstract class FromCollection<T, X extends Collection<T>> extends AbstractNullAsNullFunc<X, Collection<T>> {
+    static abstract class FromCollection<T, X extends Collection<T>> extends AbstractNullAsNullConverter<X, Collection<T>> {
 
         public FromCollection() {
             super();
@@ -84,7 +81,7 @@ class ToCollection {
 
     
     
-    static abstract class FromObject<T, X extends Collection<T>> implements IFunc<X, T> {
+    static abstract class FromObject<T, X extends Collection<T>> implements IConverter<X, T> {
 
         public FromObject() {
             super();

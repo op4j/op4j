@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions.conversion;
+package org.op4j.functions.converters;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -28,8 +28,6 @@ import java.util.List;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.executables.functions.AbstractNullAsNullFunc;
-import org.op4j.executables.functions.IFunc;
 
 /**
  * 
@@ -49,7 +47,7 @@ public final class ToArray {
     
     
     
-    public static final class FromCollection<T> extends AbstractNullAsNullFunc<T[], Collection<T>> {
+    public static final class FromCollection<T> extends AbstractNullAsNullConverter<T[], Collection<T>> {
 
         private final Type<T> type;
         
@@ -75,7 +73,7 @@ public final class ToArray {
 
     
     
-    public static final class FromObject<T> implements IFunc<T[], T> {
+    public static final class FromObject<T> implements IConverter<T[], T> {
 
         private final Type<T> type;
         

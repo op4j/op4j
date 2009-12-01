@@ -20,6 +20,8 @@
 
 package org.op4j.functions.converters;
 
+import org.op4j.functions.IFunction;
+
 /**
  * 
  * @since 1.0
@@ -27,10 +29,8 @@ package org.op4j.functions.converters;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public enum DecimalPoint {
+public interface IConverter<R,T> extends IFunction<R,T>{
     
-    IS_COMMA, 
-    IS_POINT, 
-    CAN_BE_POINT_OR_COMMA
+    // Marker interface
     
 }

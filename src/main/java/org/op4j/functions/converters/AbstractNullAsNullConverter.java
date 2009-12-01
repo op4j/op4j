@@ -20,6 +20,9 @@
 
 package org.op4j.functions.converters;
 
+import org.op4j.functions.AbstractNullAsNullFunc;
+
+
 /**
  * 
  * @since 1.0
@@ -27,10 +30,14 @@ package org.op4j.functions.converters;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public enum DecimalPoint {
+abstract class AbstractNullAsNullConverter<R, T> 
+        extends AbstractNullAsNullFunc<R, T>
+        implements IConverter<R, T> {
     
-    IS_COMMA, 
-    IS_POINT, 
-    CAN_BE_POINT_OR_COMMA
+    
+    protected AbstractNullAsNullConverter() {
+        super();
+    }
+    
     
 }

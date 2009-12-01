@@ -38,24 +38,23 @@ import java.util.Set;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.executables.Eval;
-import org.op4j.executables.ISelector;
-import org.op4j.executables.functions.ArrayFuncs;
-import org.op4j.executables.functions.ListFuncs;
-import org.op4j.executables.functions.SetFuncs;
-import org.op4j.executables.functions.StringFuncs;
-import org.op4j.executables.functions.conversion.DecimalPoint;
-import org.op4j.executables.functions.conversion.ToBigDecimal;
-import org.op4j.executables.functions.conversion.ToBigInteger;
-import org.op4j.executables.functions.conversion.ToCalendar;
-import org.op4j.executables.functions.conversion.ToDouble;
-import org.op4j.executables.functions.conversion.ToInteger;
-import org.op4j.executables.functions.conversion.ToLong;
-import org.op4j.executables.functions.conversion.ToMap;
-import org.op4j.executables.functions.conversion.ToMapOfArray;
-import org.op4j.executables.functions.conversion.ToString;
-import org.op4j.executables.functions.conversion.ToString.DateStyle;
-import org.op4j.executables.functions.conversion.ToString.TimeStyle;
+import org.op4j.functions.ArrayFuncs;
+import org.op4j.functions.ListFuncs;
+import org.op4j.functions.SetFuncs;
+import org.op4j.functions.StringFuncs;
+import org.op4j.functions.converters.DecimalPoint;
+import org.op4j.functions.converters.ToBigDecimal;
+import org.op4j.functions.converters.ToBigInteger;
+import org.op4j.functions.converters.ToCalendar;
+import org.op4j.functions.converters.ToDouble;
+import org.op4j.functions.converters.ToInteger;
+import org.op4j.functions.converters.ToLong;
+import org.op4j.functions.converters.ToMap;
+import org.op4j.functions.converters.ToMapOfArray;
+import org.op4j.functions.converters.ToString;
+import org.op4j.functions.converters.ToString.DateStyle;
+import org.op4j.functions.converters.ToString.TimeStyle;
+import org.op4j.functions.evaluators.Eval;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.impl.arrayoflist.Level0ArrayOfListOperator;
@@ -100,6 +99,7 @@ import org.op4j.operators.intf.setofarray.ILevel0SetOfArrayOperator;
 import org.op4j.operators.intf.setoflist.ILevel0SetOfListOperator;
 import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.ILevel0SetOfSetOperator;
+import org.op4j.select.ISelector;
 import org.op4j.target.Target;
 import org.op4j.util.VarArgsUtil;
 
@@ -393,16 +393,16 @@ public final class Op {
         
         System.out.println(Op.onList(stringsList1).get());
         System.out.println(Op.onList(stringsList1).forEach().get());
-        System.out.println(Op.onList(stringsList1).forEachNotNull().eval(Eval.stringExp("toUpperCase()")).get());
+        System.out.println(Op.onList(stringsList1).forEachNotNull().eval(Eval.forString("toUpperCase()")).get());
         
         
-        System.out.println(Op.onArrayOfArray(stringsStrings1).forEach().forEach().eval(Eval.integerExp("length()")).get());
+        System.out.println(Op.onArrayOfArray(stringsStrings1).forEach().forEach().eval(Eval.forInteger("length()")).get());
         
-        System.out.println(Arrays.asList(Op.onArrayOfList(stringsListStrings1).forEach().forEach().eval(Eval.stringExp("toUpperCase()")).get()));
+        System.out.println(Arrays.asList(Op.onArrayOfList(stringsListStrings1).forEach().forEach().eval(Eval.forString("toUpperCase()")).get()));
 
-        System.out.println(Arrays.asList(Op.onArrayOfMap(maps1).forEachMatching("size() > 6").forEachEntry().onValue().eval(Eval.stringExp("toUpperCase()"))));
+        System.out.println(Arrays.asList(Op.onArrayOfMap(maps1).forEachMatching("size() > 6").forEachEntry().onValue().eval(Eval.forString("toUpperCase()"))));
         
-        System.out.println(Arrays.asList(Op.onArrayOfArray(stringsStrings1).forEach().forEachMatching("length() > 6").eval(Eval.stringExp("toUpperCase()")).get()[0]));
+        System.out.println(Arrays.asList(Op.onArrayOfArray(stringsStrings1).forEach().forEachMatching("length() > 6").eval(Eval.forString("toUpperCase()")).get()[0]));
         
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().get());
         
@@ -508,12 +508,12 @@ public final class Op {
         System.out.println(printArray(Op.buildArrayOfArray(Types.STRING).add(Op.buildArray(Types.STRING).add("a","b").get()).add(Op.buildArray(Types.STRING).add("1","2","3").get()).get()));
         System.out.println(Op.buildMap(Types.INTEGER,Types.STRING).put(12,"hello!").get());
         System.out.println(Op.onAll("a",1,"b",3).buildMap().get());
-        System.out.println(Op.onAll("hello", "goodbye").buildMap(Eval.integerExp("length()")).get());
+        System.out.println(Op.onAll("hello", "goodbye").buildMap(Eval.forInteger("length()")).get());
         
-        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfSet(Eval.integerExp("length()")).get());
-        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfList(Eval.integerExp("length()")).get());
+        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfSet(Eval.forInteger("length()")).get());
+        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfList(Eval.forInteger("length()")).get());
         
-        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfArray(Types.STRING, Eval.integerExp("length()")).get());
+        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfArray(Types.STRING, Eval.forInteger("length()")).get());
         
         System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildList().sort().get());
         System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildSet().sort(new Comparator<String>() {
@@ -572,17 +572,17 @@ public final class Op {
         
         System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFuncs.Insert<Integer>(2, 1492)).get());
         
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFuncs.Insert<Integer>(2, 1492)).exec(new ListFuncs.RemoveMatching<Integer>(Eval.booleanExp("#target < 1000"))).exec(new ListFuncs.Sort<Integer>()).get());
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFuncs.Insert<Integer>(2, 1492)).exec(new ListFuncs.RemoveMatching<Integer>(Eval.forBoolean("#target < 1000"))).exec(new ListFuncs.Sort<Integer>()).get());
         
         
         System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFuncs.Insert<Integer>(2, 1492)).get()));
         
-        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFuncs.Insert<Integer>(2, 1492)).exec(new ArrayFuncs.RemoveMatching<Integer>(Eval.booleanExp("#target < 1000"))).exec(new ArrayFuncs.Sort<Integer>()).get()));
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFuncs.Insert<Integer>(2, 1492)).exec(new ArrayFuncs.RemoveMatching<Integer>(Eval.forBoolean("#target < 1000"))).exec(new ArrayFuncs.Sort<Integer>()).get()));
         
-        System.out.println(Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArray(Types.STRING).get()).exec(new ToMap.FromArrayByKeyEval<Integer,String>(Eval.integerExp("length()"))).get());
+        System.out.println(Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArray(Types.STRING).get()).exec(new ToMap.FromArrayByKeyEval<Integer,String>(Eval.forInteger("length()"))).get());
 
         final Map<Integer,String[]> greetingsByLength = 
-        	Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArray(Types.STRING).get()).exec(new ToMapOfArray.FromArrayByKeyEval<Integer, String>(Types.STRING, Eval.integerExp("length()"))).get();
+        	Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArray(Types.STRING).get()).exec(new ToMapOfArray.FromArrayByKeyEval<Integer, String>(Types.STRING, Eval.forInteger("length()"))).get();
         System.out.println("*** MAP: ");
         for (Map.Entry<Integer,String[]> entry : greetingsByLength.entrySet()) {
         	System.out.println(entry.getKey() + " : " + Arrays.asList(entry.getValue()));
@@ -593,8 +593,8 @@ public final class Op {
         System.out.println(Op.on("hello").add("goodbye"));
         System.out.println(Op.on("hello").buildList().get());
         System.out.println(printArray(Op.on("hello").buildArray(Types.STRING).get()));
-        System.out.println(Op.on("hello").buildMap(Eval.integerExp("length()")).get());
-        System.out.println(Op.on("hello").buildMapOfList(Eval.integerExp("length()")).get());
+        System.out.println(Op.on("hello").buildMap(Eval.forInteger("length()")).get());
+        System.out.println(Op.on("hello").buildMapOfList(Eval.forInteger("length()")).get());
         System.out.println(Op.onAll(12, "hello", 14, "goodbye").buildMapOfList().get());
         
         
@@ -687,13 +687,14 @@ public final class Op {
         System.out.println(Op.on("Body tag is written like \"<body>content here</body>\"")
             	.exec(StringFuncs.escapeHTML()).get());
         
-        System.out.println(Op.onArray(stringsArr1).removeNulls().toMap(Eval.integerExp("length()")).get());
+        System.out.println(Op.onArray(stringsArr1).removeNulls().toMap(Eval.forInteger("length()")).get());
 
         System.out.println(Op.onList(stringsList1).removeNullOrMatching("length() < 6").get());
 
         System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().extractKeys().get()));
         System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().extractValues().get()));
         
+        System.out.println(Op.onList(stringsList1).forEachNotNull().exec(Eval.forInteger("length()")).get());
         
     }
     

@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.executables.functions.conversion;
+package org.op4j.functions.converters;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -26,7 +26,6 @@ import java.math.BigInteger;
 import org.apache.commons.lang.BooleanUtils;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.executables.functions.AbstractNullAsNullFunc;
 
 /**
  * 
@@ -64,7 +63,7 @@ public class ToBoolean {
 	
 	
 	
-	public static class FromBoolean extends AbstractNullAsNullFunc<Boolean, Boolean> {
+	public static class FromBoolean extends AbstractNullAsNullConverter<Boolean, Boolean> {
 		
 		public FromBoolean() {
 			super();
@@ -84,7 +83,7 @@ public class ToBoolean {
 	
 	
 
-	public static class FromString extends AbstractNullAsNullFunc<Boolean, String> {
+	public static class FromString extends AbstractNullAsNullConverter<Boolean, String> {
 		
 		public FromString() {
 			super();
@@ -105,7 +104,7 @@ public class ToBoolean {
 	
 	
 	
-	public static class FromNumber extends AbstractNullAsNullFunc<Boolean, Number> {
+	public static class FromNumber extends AbstractNullAsNullConverter<Boolean, Number> {
 
 		public FromNumber() {
 			super();
