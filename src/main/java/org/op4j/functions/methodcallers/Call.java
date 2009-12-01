@@ -107,10 +107,6 @@ public class Call<R,T> implements IMethodCaller<R,T> {
         return new Call<Long,Object>(Types.LONG, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Number,Object> forNumber(final String methodName, final Object... optionalParameters) {
-        return new Call<Number,Object>(Types.NUMBER, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
-    }
-    
     public static Call<Short,Object> forShort(final String methodName, final Object... optionalParameters) {
         return new Call<Short,Object>(Types.SHORT, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }

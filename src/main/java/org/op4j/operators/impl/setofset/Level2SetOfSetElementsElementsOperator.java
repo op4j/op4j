@@ -58,6 +58,14 @@ public class Level2SetOfSetElementsElementsOperator<T> extends Operator
         return new Level2SetOfSetElementsElementsOperator<X>(getTarget().execute(call));
     }
 
+    public ILevel2SetOfSetElementsElementsOperator<?> callForObject(final String methodName, final Object... optionalParameters) {
+        return new Level2SetOfSetElementsElementsOperator<Object>(getTarget().execute(Call.forObject(methodName, optionalParameters)));
+    }
+
+    public <X> ILevel2SetOfSetElementsElementsOperator<X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters) {
+        return new Level2SetOfSetElementsElementsOperator<X>(getTarget().execute(Call.forObjectOfType(resultType, methodName, optionalParameters)));
+    }
+
     public ILevel2SetOfSetElementsElementsOperator<Byte> callForByte(final String methodName, final Object... optionalParameters) {
         return new Level2SetOfSetElementsElementsOperator<Byte>(getTarget().execute(Call.forByte(methodName, optionalParameters)));
     }
@@ -106,10 +114,6 @@ public class Level2SetOfSetElementsElementsOperator<T> extends Operator
         return new Level2SetOfSetElementsElementsOperator<Character>(getTarget().execute(Call.forCharacter(methodName, optionalParameters)));
     }
 
-    public ILevel2SetOfSetElementsElementsOperator<Number> callForNumber(final String methodName, final Object... optionalParameters) {
-        return new Level2SetOfSetElementsElementsOperator<Number>(getTarget().execute(Call.forNumber(methodName, optionalParameters)));
-    }
-
     public ILevel2SetOfSetElementsElementsOperator<Date> callForDate(final String methodName, final Object... optionalParameters) {
         return new Level2SetOfSetElementsElementsOperator<Date>(getTarget().execute(Call.forDate(methodName, optionalParameters)));
     }
@@ -141,6 +145,14 @@ public class Level2SetOfSetElementsElementsOperator<T> extends Operator
         return new Level2SetOfSetElementsElementsOperator<Boolean>(getTarget().execute(Eval.forBoolean(evalExpression, parameters)));
     }
 
+
+    public ILevel2SetOfSetElementsElementsOperator<?> evalForObject(final String evalExpression, final Object... parameters) {
+        return new Level2SetOfSetElementsElementsOperator<Object>(getTarget().execute(Eval.forObject(evalExpression, parameters)));
+    }
+
+    public <X> ILevel2SetOfSetElementsElementsOperator<X> evalForObjectOfType(final Type<X> resultType, final String evalExpression, final Object... parameters) {
+        return new Level2SetOfSetElementsElementsOperator<X>(getTarget().execute(Eval.forObjectOfType(resultType, evalExpression, parameters)));
+    }
 
     public ILevel2SetOfSetElementsElementsOperator<Byte> evalForByte(final String evalExpression, final Object... parameters) {
         return new Level2SetOfSetElementsElementsOperator<Byte>(getTarget().execute(Eval.forByte(evalExpression, parameters)));
@@ -183,10 +195,6 @@ public class Level2SetOfSetElementsElementsOperator<T> extends Operator
 
     public ILevel2SetOfSetElementsElementsOperator<Character> evalForCharacter(final String evalExpression, final Object... parameters) {
         return new Level2SetOfSetElementsElementsOperator<Character>(getTarget().execute(Eval.forCharacter(evalExpression, parameters)));
-    }
-
-    public ILevel2SetOfSetElementsElementsOperator<Number> evalForNumber(final String evalExpression, final Object... parameters) {
-        return new Level2SetOfSetElementsElementsOperator<Number>(getTarget().execute(Eval.forNumber(evalExpression, parameters)));
     }
 
     public ILevel2SetOfSetElementsElementsOperator<Date> evalForDate(final String evalExpression, final Object... parameters) {

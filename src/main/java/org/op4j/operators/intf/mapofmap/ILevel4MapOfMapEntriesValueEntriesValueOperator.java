@@ -56,6 +56,8 @@ public interface ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
     
     public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> call(final IMethodCaller<X,? super V> call);
 
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,?> callForObject(final String methodName, final Object... optionalParameters);
+    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Byte> callForByte(final String methodName, final Object... optionalParameters);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Short> callForShort(final String methodName, final Object... optionalParameters);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Integer> callForInteger(final String methodName, final Object... optionalParameters);
@@ -68,13 +70,14 @@ public interface ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Calendar> callForCalendar(final String methodName, final Object... optionalParameters);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,String> callForString(final String methodName, final Object... optionalParameters);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Character> callForCharacter(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Number> callForNumber(final String methodName, final Object... optionalParameters);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Date> callForDate(final String methodName, final Object... optionalParameters);
 
     
     
     public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> eval(final IEvaluator<X,? super V> eval);
 
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,?> evalForObject(final String evalExpression, final Object... optionalArguments);
+    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> evalForObjectOfType(final Type<X> resultType, final String evalExpression, final Object... optionalArguments);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Byte> evalForByte(final String evalExpression, final Object... optionalArguments);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Short> evalForShort(final String evalExpression, final Object... optionalArguments);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Integer> evalForInteger(final String evalExpression, final Object... optionalArguments);
@@ -87,7 +90,6 @@ public interface ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Calendar> evalForCalendar(final String evalExpression, final Object... optionalArguments);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,String> evalForString(final String evalExpression, final Object... optionalArguments);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Character> evalForCharacter(final String evalExpression, final Object... optionalArguments);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Number> evalForNumber(final String evalExpression, final Object... optionalArguments);
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Date> evalForDate(final String evalExpression, final Object... optionalArguments);
 
 

@@ -101,10 +101,6 @@ public class Eval<R,T> implements IEvaluator<R,T> {
         return new Eval<Integer,Object>(Types.INTEGER, ognlExpression, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Eval<Number,Object> forNumber(final String ognlExpression, final Object... optionalParameters) {
-        return new Eval<Number,Object>(Types.NUMBER, ognlExpression, VarArgsUtil.asOptionalObjectList(optionalParameters));
-    }
-    
     public static Eval<Long,Object> forLong(final String ognlExpression, final Object... optionalParameters) {
         return new Eval<Long,Object>(Types.LONG, ognlExpression, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }

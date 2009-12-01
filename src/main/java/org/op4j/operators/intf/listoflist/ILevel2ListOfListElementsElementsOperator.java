@@ -56,6 +56,8 @@ public interface ILevel2ListOfListElementsElementsOperator<T>
     
     public <X> ILevel2ListOfListElementsElementsOperator<X> call(final IMethodCaller<X,? super T> call);
 
+    public ILevel2ListOfListElementsElementsOperator<?> callForObject(final String methodName, final Object... optionalParameters);
+    public <X> ILevel2ListOfListElementsElementsOperator<X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters);
     public ILevel2ListOfListElementsElementsOperator<Byte> callForByte(final String methodName, final Object... optionalParameters);
     public ILevel2ListOfListElementsElementsOperator<Short> callForShort(final String methodName, final Object... optionalParameters);
     public ILevel2ListOfListElementsElementsOperator<Integer> callForInteger(final String methodName, final Object... optionalParameters);
@@ -68,13 +70,14 @@ public interface ILevel2ListOfListElementsElementsOperator<T>
     public ILevel2ListOfListElementsElementsOperator<Calendar> callForCalendar(final String methodName, final Object... optionalParameters);
     public ILevel2ListOfListElementsElementsOperator<String> callForString(final String methodName, final Object... optionalParameters);
     public ILevel2ListOfListElementsElementsOperator<Character> callForCharacter(final String methodName, final Object... optionalParameters);
-    public ILevel2ListOfListElementsElementsOperator<Number> callForNumber(final String methodName, final Object... optionalParameters);
     public ILevel2ListOfListElementsElementsOperator<Date> callForDate(final String methodName, final Object... optionalParameters);
 
     
     
     public <X> ILevel2ListOfListElementsElementsOperator<X> eval(final IEvaluator<X,? super T> eval);
 
+    public ILevel2ListOfListElementsElementsOperator<?> evalForObject(final String evalExpression, final Object... optionalArguments);
+    public <X> ILevel2ListOfListElementsElementsOperator<X> evalForObjectOfType(final Type<X> resultType, final String evalExpression, final Object... optionalArguments);
     public ILevel2ListOfListElementsElementsOperator<Byte> evalForByte(final String evalExpression, final Object... optionalArguments);
     public ILevel2ListOfListElementsElementsOperator<Short> evalForShort(final String evalExpression, final Object... optionalArguments);
     public ILevel2ListOfListElementsElementsOperator<Integer> evalForInteger(final String evalExpression, final Object... optionalArguments);
@@ -87,7 +90,6 @@ public interface ILevel2ListOfListElementsElementsOperator<T>
     public ILevel2ListOfListElementsElementsOperator<Calendar> evalForCalendar(final String evalExpression, final Object... optionalArguments);
     public ILevel2ListOfListElementsElementsOperator<String> evalForString(final String evalExpression, final Object... optionalArguments);
     public ILevel2ListOfListElementsElementsOperator<Character> evalForCharacter(final String evalExpression, final Object... optionalArguments);
-    public ILevel2ListOfListElementsElementsOperator<Number> evalForNumber(final String evalExpression, final Object... optionalArguments);
     public ILevel2ListOfListElementsElementsOperator<Date> evalForDate(final String evalExpression, final Object... optionalArguments);
 
 

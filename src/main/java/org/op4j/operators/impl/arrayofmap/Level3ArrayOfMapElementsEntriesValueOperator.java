@@ -58,6 +58,14 @@ public class Level3ArrayOfMapElementsEntriesValueOperator<K,V> extends Operator
         return new Level3ArrayOfMapElementsEntriesValueOperator<K, X>(getTarget().execute(call));
     }
 
+    public ILevel3ArrayOfMapElementsEntriesValueOperator<K, ?> callForObject(final String methodName, final Object... optionalParameters) {
+        return new Level3ArrayOfMapElementsEntriesValueOperator<K, Object>(getTarget().execute(Call.forObject(methodName, optionalParameters)));
+    }
+
+    public <X> ILevel3ArrayOfMapElementsEntriesValueOperator<K, X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters) {
+        return new Level3ArrayOfMapElementsEntriesValueOperator<K, X>(getTarget().execute(Call.forObjectOfType(resultType, methodName, optionalParameters)));
+    }
+
     public ILevel3ArrayOfMapElementsEntriesValueOperator<K, Byte> callForByte(final String methodName, final Object... optionalParameters) {
         return new Level3ArrayOfMapElementsEntriesValueOperator<K, Byte>(getTarget().execute(Call.forByte(methodName, optionalParameters)));
     }
@@ -106,10 +114,6 @@ public class Level3ArrayOfMapElementsEntriesValueOperator<K,V> extends Operator
         return new Level3ArrayOfMapElementsEntriesValueOperator<K, Character>(getTarget().execute(Call.forCharacter(methodName, optionalParameters)));
     }
 
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K, Number> callForNumber(final String methodName, final Object... optionalParameters) {
-        return new Level3ArrayOfMapElementsEntriesValueOperator<K, Number>(getTarget().execute(Call.forNumber(methodName, optionalParameters)));
-    }
-
     public ILevel3ArrayOfMapElementsEntriesValueOperator<K, Date> callForDate(final String methodName, final Object... optionalParameters) {
         return new Level3ArrayOfMapElementsEntriesValueOperator<K, Date>(getTarget().execute(Call.forDate(methodName, optionalParameters)));
     }
@@ -141,6 +145,14 @@ public class Level3ArrayOfMapElementsEntriesValueOperator<K,V> extends Operator
         return new Level3ArrayOfMapElementsEntriesValueOperator<K, Boolean>(getTarget().execute(Eval.forBoolean(evalExpression, parameters)));
     }
 
+
+    public ILevel3ArrayOfMapElementsEntriesValueOperator<K, ?> evalForObject(final String evalExpression, final Object... parameters) {
+        return new Level3ArrayOfMapElementsEntriesValueOperator<K, Object>(getTarget().execute(Eval.forObject(evalExpression, parameters)));
+    }
+
+    public <X> ILevel3ArrayOfMapElementsEntriesValueOperator<K, X> evalForObjectOfType(final Type<X> resultType, final String evalExpression, final Object... parameters) {
+        return new Level3ArrayOfMapElementsEntriesValueOperator<K, X>(getTarget().execute(Eval.forObjectOfType(resultType, evalExpression, parameters)));
+    }
 
     public ILevel3ArrayOfMapElementsEntriesValueOperator<K, Byte> evalForByte(final String evalExpression, final Object... parameters) {
         return new Level3ArrayOfMapElementsEntriesValueOperator<K, Byte>(getTarget().execute(Eval.forByte(evalExpression, parameters)));
@@ -183,10 +195,6 @@ public class Level3ArrayOfMapElementsEntriesValueOperator<K,V> extends Operator
 
     public ILevel3ArrayOfMapElementsEntriesValueOperator<K, Character> evalForCharacter(final String evalExpression, final Object... parameters) {
         return new Level3ArrayOfMapElementsEntriesValueOperator<K, Character>(getTarget().execute(Eval.forCharacter(evalExpression, parameters)));
-    }
-
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K, Number> evalForNumber(final String evalExpression, final Object... parameters) {
-        return new Level3ArrayOfMapElementsEntriesValueOperator<K, Number>(getTarget().execute(Eval.forNumber(evalExpression, parameters)));
     }
 
     public ILevel3ArrayOfMapElementsEntriesValueOperator<K, Date> evalForDate(final String evalExpression, final Object... parameters) {

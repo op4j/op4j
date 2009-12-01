@@ -24,6 +24,7 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.javaruntype.type.Type;
 import org.op4j.functions.evaluators.IEvaluator;
 
 
@@ -39,11 +40,12 @@ public interface IEvaluableOperator<T> {
     
     public <X> IEvaluableOperator<X> eval(final IEvaluator<X,? super T> eval);
     
+    public IEvaluableOperator<?> evalForObject(final String evalExpression, final Object... optionalArguments);
+    public <X> IEvaluableOperator<X> evalForObjectOfType(final Type<X> resultType, final String evalExpression, final Object... optionalArguments);
     public IEvaluableOperator<Byte> evalForByte(final String evalExpression, final Object... optionalArguments);
     public IEvaluableOperator<Character> evalForCharacter(final String evalExpression, final Object... optionalArguments);
     public IEvaluableOperator<Short> evalForShort(final String evalExpression, final Object... optionalArguments);
     public IEvaluableOperator<Integer> evalForInteger(final String evalExpression, final Object... optionalArguments);
-    public IEvaluableOperator<Number> evalForNumber(final String evalExpression, final Object... optionalArguments);
     public IEvaluableOperator<Long> evalForLong(final String evalExpression, final Object... optionalArguments);
     public IEvaluableOperator<Float> evalForFloat(final String evalExpression, final Object... optionalArguments);
     public IEvaluableOperator<Double> evalForDouble(final String evalExpression, final Object... optionalArguments);

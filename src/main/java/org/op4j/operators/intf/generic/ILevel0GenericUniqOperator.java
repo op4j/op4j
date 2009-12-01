@@ -81,6 +81,8 @@ public interface ILevel0GenericUniqOperator<T>
     
     public <X> ILevel0GenericUniqOperator<X> call(final IMethodCaller<X,? super T> call);
 
+    public ILevel0GenericUniqOperator<?> callForObject(final String methodName, final Object... optionalParameters);
+    public <X> ILevel0GenericUniqOperator<X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters);
     public ILevel0GenericUniqOperator<Byte> callForByte(final String methodName, final Object... optionalParameters);
     public ILevel0GenericUniqOperator<Short> callForShort(final String methodName, final Object... optionalParameters);
     public ILevel0GenericUniqOperator<Integer> callForInteger(final String methodName, final Object... optionalParameters);
@@ -93,13 +95,14 @@ public interface ILevel0GenericUniqOperator<T>
     public ILevel0GenericUniqOperator<Calendar> callForCalendar(final String methodName, final Object... optionalParameters);
     public ILevel0GenericUniqOperator<String> callForString(final String methodName, final Object... optionalParameters);
     public ILevel0GenericUniqOperator<Character> callForCharacter(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Number> callForNumber(final String methodName, final Object... optionalParameters);
     public ILevel0GenericUniqOperator<Date> callForDate(final String methodName, final Object... optionalParameters);
 
     
     
     public <X> ILevel0GenericUniqOperator<X> eval(final IEvaluator<X,? super T> eval);
 
+    public ILevel0GenericUniqOperator<?> evalForObject(final String evalExpression, final Object... optionalArguments);
+    public <X> ILevel0GenericUniqOperator<X> evalForObjectOfType(final Type<X> resultType, final String evalExpression, final Object... optionalArguments);
     public ILevel0GenericUniqOperator<Byte> evalForByte(final String evalExpression, final Object... optionalArguments);
     public ILevel0GenericUniqOperator<Short> evalForShort(final String evalExpression, final Object... optionalArguments);
     public ILevel0GenericUniqOperator<Integer> evalForInteger(final String evalExpression, final Object... optionalArguments);
@@ -112,7 +115,6 @@ public interface ILevel0GenericUniqOperator<T>
     public ILevel0GenericUniqOperator<Calendar> evalForCalendar(final String evalExpression, final Object... optionalArguments);
     public ILevel0GenericUniqOperator<String> evalForString(final String evalExpression, final Object... optionalArguments);
     public ILevel0GenericUniqOperator<Character> evalForCharacter(final String evalExpression, final Object... optionalArguments);
-    public ILevel0GenericUniqOperator<Number> evalForNumber(final String evalExpression, final Object... optionalArguments);
     public ILevel0GenericUniqOperator<Date> evalForDate(final String evalExpression, final Object... optionalArguments);
 
 

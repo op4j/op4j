@@ -62,6 +62,14 @@ public class Level1ArrayElementsOperator<T> extends Operator
         return new Level1ArrayElementsOperator<X>(call.getResultType(), getTarget().execute(call));
     }
 
+    public ILevel1ArrayElementsOperator<?> callForObject(final String methodName, final Object... optionalParameters) {
+        return new Level1ArrayElementsOperator<Object>(Types.OBJECT, getTarget().execute(Call.forObject(methodName, optionalParameters)));
+    }
+
+    public <X> ILevel1ArrayElementsOperator<X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters) {
+        return new Level1ArrayElementsOperator<X>(resultType, getTarget().execute(Call.forObjectOfType(resultType, methodName, optionalParameters)));
+    }
+
     public ILevel1ArrayElementsOperator<Byte> callForByte(final String methodName, final Object... optionalParameters) {
         return new Level1ArrayElementsOperator<Byte>(Types.BYTE, getTarget().execute(Call.forByte(methodName, optionalParameters)));
     }
@@ -110,10 +118,6 @@ public class Level1ArrayElementsOperator<T> extends Operator
         return new Level1ArrayElementsOperator<Character>(Types.CHARACTER, getTarget().execute(Call.forCharacter(methodName, optionalParameters)));
     }
 
-    public ILevel1ArrayElementsOperator<Number> callForNumber(final String methodName, final Object... optionalParameters) {
-        return new Level1ArrayElementsOperator<Number>(Types.NUMBER, getTarget().execute(Call.forNumber(methodName, optionalParameters)));
-    }
-
     public ILevel1ArrayElementsOperator<Date> callForDate(final String methodName, final Object... optionalParameters) {
         return new Level1ArrayElementsOperator<Date>(Types.DATE, getTarget().execute(Call.forDate(methodName, optionalParameters)));
     }
@@ -145,6 +149,14 @@ public class Level1ArrayElementsOperator<T> extends Operator
         return new Level1ArrayElementsOperator<Boolean>(Types.BOOLEAN, getTarget().execute(Eval.forBoolean(evalExpression, parameters)));
     }
 
+
+    public ILevel1ArrayElementsOperator<?> evalForObject(final String evalExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<Object>(Types.OBJECT, getTarget().execute(Eval.forObject(evalExpression, parameters)));
+    }
+
+    public <X> ILevel1ArrayElementsOperator<X> evalForObjectOfType(final Type<X> resultType, final String evalExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<X>(resultType, getTarget().execute(Eval.forObjectOfType(resultType, evalExpression, parameters)));
+    }
 
     public ILevel1ArrayElementsOperator<Byte> evalForByte(final String evalExpression, final Object... parameters) {
         return new Level1ArrayElementsOperator<Byte>(Types.BYTE, getTarget().execute(Eval.forByte(evalExpression, parameters)));
@@ -187,10 +199,6 @@ public class Level1ArrayElementsOperator<T> extends Operator
 
     public ILevel1ArrayElementsOperator<Character> evalForCharacter(final String evalExpression, final Object... parameters) {
         return new Level1ArrayElementsOperator<Character>(Types.CHARACTER, getTarget().execute(Eval.forCharacter(evalExpression, parameters)));
-    }
-
-    public ILevel1ArrayElementsOperator<Number> evalForNumber(final String evalExpression, final Object... parameters) {
-        return new Level1ArrayElementsOperator<Number>(Types.NUMBER, getTarget().execute(Eval.forNumber(evalExpression, parameters)));
     }
 
     public ILevel1ArrayElementsOperator<Date> evalForDate(final String evalExpression, final Object... parameters) {

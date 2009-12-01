@@ -56,6 +56,8 @@ public interface ILevel2MapEntriesValueOperator<K,V>
     
     public <X> ILevel2MapEntriesValueOperator<K,X> call(final IMethodCaller<X,? super V> call);
 
+    public ILevel2MapEntriesValueOperator<K,?> callForObject(final String methodName, final Object... optionalParameters);
+    public <X> ILevel2MapEntriesValueOperator<K,X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters);
     public ILevel2MapEntriesValueOperator<K,Byte> callForByte(final String methodName, final Object... optionalParameters);
     public ILevel2MapEntriesValueOperator<K,Short> callForShort(final String methodName, final Object... optionalParameters);
     public ILevel2MapEntriesValueOperator<K,Integer> callForInteger(final String methodName, final Object... optionalParameters);
@@ -68,13 +70,14 @@ public interface ILevel2MapEntriesValueOperator<K,V>
     public ILevel2MapEntriesValueOperator<K,Calendar> callForCalendar(final String methodName, final Object... optionalParameters);
     public ILevel2MapEntriesValueOperator<K,String> callForString(final String methodName, final Object... optionalParameters);
     public ILevel2MapEntriesValueOperator<K,Character> callForCharacter(final String methodName, final Object... optionalParameters);
-    public ILevel2MapEntriesValueOperator<K,Number> callForNumber(final String methodName, final Object... optionalParameters);
     public ILevel2MapEntriesValueOperator<K,Date> callForDate(final String methodName, final Object... optionalParameters);
 
     
     
     public <X> ILevel2MapEntriesValueOperator<K,X> eval(final IEvaluator<X,? super V> eval);
 
+    public ILevel2MapEntriesValueOperator<K,?> evalForObject(final String evalExpression, final Object... optionalArguments);
+    public <X> ILevel2MapEntriesValueOperator<K,X> evalForObjectOfType(final Type<X> resultType, final String evalExpression, final Object... optionalArguments);
     public ILevel2MapEntriesValueOperator<K,Byte> evalForByte(final String evalExpression, final Object... optionalArguments);
     public ILevel2MapEntriesValueOperator<K,Short> evalForShort(final String evalExpression, final Object... optionalArguments);
     public ILevel2MapEntriesValueOperator<K,Integer> evalForInteger(final String evalExpression, final Object... optionalArguments);
@@ -87,7 +90,6 @@ public interface ILevel2MapEntriesValueOperator<K,V>
     public ILevel2MapEntriesValueOperator<K,Calendar> evalForCalendar(final String evalExpression, final Object... optionalArguments);
     public ILevel2MapEntriesValueOperator<K,String> evalForString(final String evalExpression, final Object... optionalArguments);
     public ILevel2MapEntriesValueOperator<K,Character> evalForCharacter(final String evalExpression, final Object... optionalArguments);
-    public ILevel2MapEntriesValueOperator<K,Number> evalForNumber(final String evalExpression, final Object... optionalArguments);
     public ILevel2MapEntriesValueOperator<K,Date> evalForDate(final String evalExpression, final Object... optionalArguments);
 
 

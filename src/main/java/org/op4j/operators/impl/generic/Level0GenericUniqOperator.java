@@ -183,6 +183,14 @@ public class Level0GenericUniqOperator<T> extends Operator
         return new Level0GenericUniqOperator<X>(getTarget().execute(call));
     }
 
+    public ILevel0GenericUniqOperator<?> callForObject(final String methodName, final Object... optionalParameters) {
+        return new Level0GenericUniqOperator<Object>(getTarget().execute(Call.forObject(methodName, optionalParameters)));
+    }
+
+    public <X> ILevel0GenericUniqOperator<X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters) {
+        return new Level0GenericUniqOperator<X>(getTarget().execute(Call.forObjectOfType(resultType, methodName, optionalParameters)));
+    }
+
     public ILevel0GenericUniqOperator<Byte> callForByte(final String methodName, final Object... optionalParameters) {
         return new Level0GenericUniqOperator<Byte>(getTarget().execute(Call.forByte(methodName, optionalParameters)));
     }
@@ -229,10 +237,6 @@ public class Level0GenericUniqOperator<T> extends Operator
 
     public ILevel0GenericUniqOperator<Character> callForCharacter(final String methodName, final Object... optionalParameters) {
         return new Level0GenericUniqOperator<Character>(getTarget().execute(Call.forCharacter(methodName, optionalParameters)));
-    }
-
-    public ILevel0GenericUniqOperator<Number> callForNumber(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericUniqOperator<Number>(getTarget().execute(Call.forNumber(methodName, optionalParameters)));
     }
 
     public ILevel0GenericUniqOperator<Date> callForDate(final String methodName, final Object... optionalParameters) {
@@ -531,6 +535,14 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
+    public ILevel0GenericUniqOperator<?> evalForObject(final String evalExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<Object>(getTarget().execute(Eval.forObject(evalExpression, parameters)));
+    }
+
+    public <X> ILevel0GenericUniqOperator<X> evalForObjectOfType(final Type<X> resultType, final String evalExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<X>(getTarget().execute(Eval.forObjectOfType(resultType, evalExpression, parameters)));
+    }
+
     public ILevel0GenericUniqOperator<Byte> evalForByte(final String evalExpression, final Object... parameters) {
         return new Level0GenericUniqOperator<Byte>(getTarget().execute(Eval.forByte(evalExpression, parameters)));
     }
@@ -572,10 +584,6 @@ public class Level0GenericUniqOperator<T> extends Operator
 
     public ILevel0GenericUniqOperator<Character> evalForCharacter(final String evalExpression, final Object... parameters) {
         return new Level0GenericUniqOperator<Character>(getTarget().execute(Eval.forCharacter(evalExpression, parameters)));
-    }
-
-    public ILevel0GenericUniqOperator<Number> evalForNumber(final String evalExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Number>(getTarget().execute(Eval.forNumber(evalExpression, parameters)));
     }
 
     public ILevel0GenericUniqOperator<Date> evalForDate(final String evalExpression, final Object... parameters) {
