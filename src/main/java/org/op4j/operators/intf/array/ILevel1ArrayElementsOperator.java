@@ -29,7 +29,12 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.functions.methodcallers.IMethodCaller;
+import org.op4j.operators.intf.arrayofarray.ILevel1ArrayOfArrayElementsOperator;
+import org.op4j.operators.intf.arrayoflist.ILevel1ArrayOfListElementsOperator;
+import org.op4j.operators.intf.arrayofmap.ILevel1ArrayOfMapElementsOperator;
+import org.op4j.operators.intf.arrayofset.ILevel1ArrayOfSetElementsOperator;
 import org.op4j.operators.qualities.ICallableOperator;
+import org.op4j.operators.qualities.ICastableToFirstLevelStructuresOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
@@ -47,6 +52,7 @@ import org.op4j.operators.qualities.IUniqOperator;
  */
 public interface ILevel1ArrayElementsOperator<T> 
 		extends IUniqOperator<T[]>,
+		        ICastableToFirstLevelStructuresOperator,
                 INavigatingCollectionOperator<T>,
                 ICallableOperator<T>,
                 IConvertibleOperator<T>,
@@ -104,5 +110,12 @@ public interface ILevel1ArrayElementsOperator<T>
         
     public ILevel1ArrayElementsOperator<?> raw();
     
-		    
+    
+    
+    public <X> ILevel1ArrayOfArrayElementsOperator<X> asArray(final Type<X> of);
+    public <X> ILevel1ArrayOfListElementsOperator<X> asList(final Type<X> of);
+    public <K,V> ILevel1ArrayOfMapElementsOperator<K,V> asMap(final Type<K> keyOf, final Type<V> valueOf);
+    public <X> ILevel1ArrayOfSetElementsOperator<X> asSet(final Type<X> of);
+	
+    
 }

@@ -24,8 +24,13 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
+import org.op4j.exceptions.TargetCastException;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.Eval;
@@ -33,8 +38,16 @@ import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.functions.methodcallers.Call;
 import org.op4j.functions.methodcallers.IMethodCaller;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.listofarray.Level1ListOfArrayElementsOperator;
+import org.op4j.operators.impl.listoflist.Level1ListOfListElementsOperator;
+import org.op4j.operators.impl.listofmap.Level1ListOfMapElementsOperator;
+import org.op4j.operators.impl.listofset.Level1ListOfSetElementsOperator;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.list.ILevel1ListElementsOperator;
+import org.op4j.operators.intf.listofarray.ILevel1ListOfArrayElementsOperator;
+import org.op4j.operators.intf.listoflist.ILevel1ListOfListElementsOperator;
+import org.op4j.operators.intf.listofmap.ILevel1ListOfMapElementsOperator;
+import org.op4j.operators.intf.listofset.ILevel1ListOfSetElementsOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
 
@@ -226,6 +239,80 @@ public class Level1ListElementsOperator<T> extends Operator
     }
 
 
+    
+    
+    
+    
+    
+    
+
+
+    public <X> ILevel1ListOfArrayElementsOperator<X> asArray(final Type<X> of) {
+        Validate.notNull(of, "A type representing the elements must be specified");
+        final List<T> targetObject = get();
+        for (final T targetElement : targetObject) {
+            if (targetElement != null) {
+                final Class<?> newTargetClass = Types.arrayOf(of).getRawClass();
+                if (!newTargetClass.isAssignableFrom(targetElement.getClass())) {
+                    throw new TargetCastException(targetElement.getClass(), "Array");
+                }
+            }
+        }
+        return new Level1ListOfArrayElementsOperator<X>(of, getTarget());
+    }
+
+
+    public <X> ILevel1ListOfListElementsOperator<X> asList(final Type<X> of) {
+        Validate.notNull(of, "A type representing the elements must be specified");
+        final List<T> targetObject = get();
+        for (final T targetElement : targetObject) {
+            if (targetElement != null) {
+                final Class<?> newTargetClass = List.class;
+                if (!newTargetClass.isAssignableFrom(targetElement.getClass())) {
+                    throw new TargetCastException(targetElement.getClass(), "List");
+                }
+            }
+        }
+        return new Level1ListOfListElementsOperator<X>(getTarget());
+    }
+
+
+    public <K,V> ILevel1ListOfMapElementsOperator<K,V> asMap(final Type<K> keyOf, final Type<V> valueOf) {
+        Validate.notNull(keyOf, "A type representing the keys must be specified");
+        Validate.notNull(valueOf, "A type representing the values must be specified");
+        final List<T> targetObject = get();
+        for (final T targetElement : targetObject) {
+            if (targetElement != null) {
+                final Class<?> newTargetClass = Map.class;
+                if (!newTargetClass.isAssignableFrom(targetElement.getClass())) {
+                    throw new TargetCastException(targetElement.getClass(), "Map");
+                }
+            }
+        }
+        return new Level1ListOfMapElementsOperator<K,V>(getTarget());
+    }
+
+
+    public <X> ILevel1ListOfSetElementsOperator<X> asSet(final Type<X> of) {
+        Validate.notNull(of, "A type representing the elements must be specified");
+        final List<T> targetObject = get();
+        for (final T targetElement : targetObject) {
+            if (targetElement != null) {
+                final Class<?> newTargetClass = Set.class;
+                if (!newTargetClass.isAssignableFrom(targetElement.getClass())) {
+                    throw new TargetCastException(targetElement.getClass(), "Set");
+                }
+            }
+        }
+        return new Level1ListOfSetElementsOperator<X>(getTarget());
+    }
+    
+    
+    
+    
+    
+    
+    
     public List<T> get() {
         return endFor().get();
     }

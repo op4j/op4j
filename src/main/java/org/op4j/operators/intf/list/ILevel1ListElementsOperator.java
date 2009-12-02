@@ -30,6 +30,10 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.functions.methodcallers.IMethodCaller;
+import org.op4j.operators.intf.listofarray.ILevel1ListOfArrayElementsOperator;
+import org.op4j.operators.intf.listoflist.ILevel1ListOfListElementsOperator;
+import org.op4j.operators.intf.listofmap.ILevel1ListOfMapElementsOperator;
+import org.op4j.operators.intf.listofset.ILevel1ListOfSetElementsOperator;
 import org.op4j.operators.qualities.ICallableOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
@@ -104,6 +108,13 @@ public interface ILevel1ListElementsOperator<T>
     public <X> ILevel1ListElementsOperator<X> of(final Type<X> of);
         
     public ILevel1ListElementsOperator<?> raw();
+    
+    
+    
+    public <X> ILevel1ListOfArrayElementsOperator<X> asArray(final Type<X> of);
+    public <X> ILevel1ListOfListElementsOperator<X> asList(final Type<X> of);
+    public <K,V> ILevel1ListOfMapElementsOperator<K,V> asMap(final Type<K> keyOf, final Type<V> valueOf);
+    public <X> ILevel1ListOfSetElementsOperator<X> asSet(final Type<X> of);
     
                                     
 }

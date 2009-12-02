@@ -253,7 +253,7 @@ public class Level0GenericUniqOperator<T> extends Operator
 
 
 
-    public <X> ILevel0ArrayOperator<X> castAsArray(final Type<X> of) {
+    public <X> ILevel0ArrayOperator<X> asArray(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
     	final T targetObject = get();
         if (targetObject != null) {
@@ -266,7 +266,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ListOperator<X> castAsList(final Type<X> of) {
+    public <X> ILevel0ListOperator<X> asList(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
     	final T targetObject = get();
         if (targetObject != null) {
@@ -279,7 +279,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <K,V> ILevel0MapOperator<K,V> castAsMap(final Type<K> keyOf, final Type<V> valueOf) {
+    public <K,V> ILevel0MapOperator<K,V> asMap(final Type<K> keyOf, final Type<V> valueOf) {
     	Validate.notNull(keyOf, "A type representing the keys must be specified");
     	Validate.notNull(valueOf, "A type representing the values must be specified");
     	final T targetObject = get();
@@ -293,7 +293,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0SetOperator<X> castAsSet(final Type<X> of) {
+    public <X> ILevel0SetOperator<X> asSet(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
     	final T targetObject = get();
         if (targetObject != null) {
@@ -306,7 +306,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ArrayOfArrayOperator<X> castAsArrayOfArray(final Type<X> of) {
+    public <X> ILevel0ArrayOfArrayOperator<X> asArrayOfArray(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
     	final T targetObject = get();
         if (targetObject != null) {
@@ -319,7 +319,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ArrayOfListOperator<X> castAsArrayOfList(final Type<X> of) {
+    public <X> ILevel0ArrayOfListOperator<X> asArrayOfList(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
     	final T targetObject = get();
         if (targetObject != null) {
@@ -332,7 +332,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0ArrayOfMapOperator<K, V> castAsArrayOfMap(final Type<K> keyOf, final Type<V> valueOf) {
+    public <K, V> ILevel0ArrayOfMapOperator<K, V> asArrayOfMap(final Type<K> keyOf, final Type<V> valueOf) {
     	Validate.notNull(keyOf, "A type representing the keys must be specified");
     	Validate.notNull(valueOf, "A type representing the values must be specified");
     	final T targetObject = get();
@@ -346,7 +346,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ArrayOfSetOperator<X> castAsArrayOfSet(final Type<X> of) {
+    public <X> ILevel0ArrayOfSetOperator<X> asArrayOfSet(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
     	final T targetObject = get();
         if (targetObject != null) {
@@ -359,7 +359,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ListOfArrayOperator<X> castAsListOfArray(final Type<X> of) {
+    public <X> ILevel0ListOfArrayOperator<X> asListOfArray(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
     	final T targetObject = get();
         if (targetObject != null) {
@@ -372,7 +372,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ListOfListOperator<X> castAsListOfList(final Type<X> of) {
+    public <X> ILevel0ListOfListOperator<X> asListOfList(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
     	final T targetObject = get();
         if (targetObject != null) {
@@ -385,7 +385,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0ListOfMapOperator<K, V> castAsListOfMap(final Type<K> keyOf, final Type<V> valueOf) {
+    public <K, V> ILevel0ListOfMapOperator<K, V> asListOfMap(final Type<K> keyOf, final Type<V> valueOf) {
     	Validate.notNull(keyOf, "A type representing the keys must be specified");
     	Validate.notNull(valueOf, "A type representing the values must be specified");
     	final T targetObject = get();
@@ -399,7 +399,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ListOfSetOperator<X> castAsListOfSet(final Type<X> of) {
+    public <X> ILevel0ListOfSetOperator<X> asListOfSet(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
     	final T targetObject = get();
         if (targetObject != null) {
@@ -412,7 +412,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0MapOfArrayOperator<K, V> castAsMapOfArray(final Type<K> keyOf, final Type<V> valueOf) {
+    public <K, V> ILevel0MapOfArrayOperator<K, V> asMapOfArray(final Type<K> keyOf, final Type<V> valueOf) {
     	Validate.notNull(keyOf, "A type representing the keys must be specified");
     	Validate.notNull(valueOf, "A type representing the values must be specified");
     	final T targetObject = get();
@@ -426,7 +426,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0MapOfListOperator<K, V> castAsMapOfList(final Type<K> keyOf, final Type<V> valueOf) {
+    public <K, V> ILevel0MapOfListOperator<K, V> asMapOfList(final Type<K> keyOf, final Type<V> valueOf) {
     	Validate.notNull(keyOf, "A type representing the keys must be specified");
     	Validate.notNull(valueOf, "A type representing the values must be specified");
     	final T targetObject = get();
@@ -440,7 +440,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <K1, K2, V> ILevel0MapOfMapOperator<K1, K2, V> castAsMapOfMap(final Type<K1> key1Of, final Type<K2> key2Of, final Type<V> valueOf) {
+    public <K1, K2, V> ILevel0MapOfMapOperator<K1, K2, V> asMapOfMap(final Type<K1> key1Of, final Type<K2> key2Of, final Type<V> valueOf) {
     	Validate.notNull(key1Of, "A type representing the keys of the first-level map must be specified");
     	Validate.notNull(key2Of, "A type representing the keys of the second-level maps must be specified");
     	Validate.notNull(valueOf, "A type representing the values of the second-level maps must be specified");
@@ -455,7 +455,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0MapOfSetOperator<K, V> castAsMapOfSet(final Type<K> keyOf, final Type<V> valueOf) {
+    public <K, V> ILevel0MapOfSetOperator<K, V> asMapOfSet(final Type<K> keyOf, final Type<V> valueOf) {
     	Validate.notNull(keyOf, "A type representing the keys must be specified");
     	Validate.notNull(valueOf, "A type representing the values must be specified");
     	final T targetObject = get();
@@ -469,7 +469,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0SetOfArrayOperator<X> castAsSetOfArray(final Type<X> of) {
+    public <X> ILevel0SetOfArrayOperator<X> asSetOfArray(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
     	final T targetObject = get();
         if (targetObject != null) {
@@ -482,7 +482,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0SetOfListOperator<X> castAsSetOfList(final Type<X> of) {
+    public <X> ILevel0SetOfListOperator<X> asSetOfList(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
     	final T targetObject = get();
         if (targetObject != null) {
@@ -495,7 +495,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <K, V> ILevel0SetOfMapOperator<K, V> castAsSetOfMap(final Type<K> keyOf, final Type<V> valueOf) {
+    public <K, V> ILevel0SetOfMapOperator<K, V> asSetOfMap(final Type<K> keyOf, final Type<V> valueOf) {
     	Validate.notNull(keyOf, "A type representing the keys must be specified");
     	Validate.notNull(valueOf, "A type representing the values must be specified");
     	final T targetObject = get();
@@ -509,7 +509,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0SetOfSetOperator<X> castAsSetOfSet(final Type<X> of) {
+    public <X> ILevel0SetOfSetOperator<X> asSetOfSet(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
     	final T targetObject = get();
         if (targetObject != null) {
