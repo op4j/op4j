@@ -26,9 +26,11 @@ import java.util.Date;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.functions.methodcallers.IMethodCaller;
 import org.op4j.operators.qualities.ICallableOperator;
+import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
 import org.op4j.operators.qualities.INavigatingCollectionOperator;
@@ -47,11 +49,14 @@ public interface ILevel2ArrayOfArrayElementsElementsOperator<T>
 		extends IUniqOperator<T[][]>,
                 INavigatingCollectionOperator<T>,
                 ICallableOperator<T>,
+                IConvertibleOperator<T>,
         		IEvaluableOperator<T>,
         		IExecutableOperator<T>,
                 ITypeParameterizableXOperator<T> {
     
     public ILevel1ArrayOfArrayElementsOperator<T> endFor();
+    
+    public <X> ILevel2ArrayOfArrayElementsElementsOperator<X> convert(final IConverter<X,? super T> converter);
     
     public <X> ILevel2ArrayOfArrayElementsElementsOperator<X> call(final IMethodCaller<X,? super T> call);
 

@@ -27,6 +27,7 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.Eval;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.functions.methodcallers.Call;
@@ -52,6 +53,12 @@ public class Level2MapEntriesValueOperator<K,V> extends Operator
     public Level2MapEntriesValueOperator(final Target target) {
         super(target);
     }
+
+
+    public <X> ILevel2MapEntriesValueOperator<K, X> convert(final IConverter<X, ? super V> converter) {
+        return new Level2MapEntriesValueOperator<K, X>(getTarget().execute(converter));
+    }
+
 
 
     public <X> ILevel2MapEntriesValueOperator<K, X> call(final IMethodCaller<X, ? super V> call) {

@@ -27,6 +27,7 @@ import java.util.Date;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.functions.methodcallers.IMethodCaller;
 import org.op4j.mapbuild.IMapBuilder;
@@ -53,6 +54,7 @@ import org.op4j.operators.intf.setofset.ILevel0SetOfSetOperator;
 import org.op4j.operators.qualities.IBuilderOperator;
 import org.op4j.operators.qualities.ICallableOperator;
 import org.op4j.operators.qualities.ICastableOperator;
+import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
 import org.op4j.operators.qualities.IModifiableGrowableOperator;
@@ -74,10 +76,13 @@ public interface ILevel0GenericUniqOperator<T>
                 ICastableOperator,
         		IBuilderOperator<T>,
         		ICallableOperator<T>,
+                IConvertibleOperator<T>,
         		IEvaluableOperator<T>,
         		IExecutableOperator<T>,
                 ITypeParameterizableXOperator<T>,
                 IModifiableGrowableOperator<T> {
+    
+    public <X> ILevel0GenericUniqOperator<X> convert(final IConverter<X,? super T> converter);
     
     public <X> ILevel0GenericUniqOperator<X> call(final IMethodCaller<X,? super T> call);
 

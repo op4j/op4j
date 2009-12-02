@@ -27,6 +27,7 @@ import java.util.List;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.Eval;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.functions.methodcallers.Call;
@@ -52,6 +53,12 @@ public class Level2ArrayOfListElementsElementsOperator<T> extends Operator
     public Level2ArrayOfListElementsElementsOperator(final Target target) {
         super(target);
     }
+
+
+    public <X> ILevel2ArrayOfListElementsElementsOperator<X> convert(final IConverter<X, ? super T> converter) {
+        return new Level2ArrayOfListElementsElementsOperator<X>(getTarget().execute(converter));
+    }
+
 
 
     public <X> ILevel2ArrayOfListElementsElementsOperator<X> call(final IMethodCaller<X, ? super T> call) {

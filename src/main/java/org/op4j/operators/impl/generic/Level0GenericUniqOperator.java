@@ -34,6 +34,7 @@ import org.javaruntype.type.Types;
 import org.op4j.exceptions.TargetCastException;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.ListFuncs;
+import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.converters.ToArray;
 import org.op4j.functions.converters.ToList;
 import org.op4j.functions.converters.ToMap;
@@ -177,6 +178,12 @@ public class Level0GenericUniqOperator<T> extends Operator
     public ILevel0SetOperator<T> buildSet() {
         return new Level0SetOperator<T>(getTarget().execute(new ToSet.FromObject<T>()));
     }
+
+
+    public <X> ILevel0GenericUniqOperator<X> convert(final IConverter<X, ? super T> converter) {
+        return new Level0GenericUniqOperator<X>(getTarget().execute(converter));
+    }
+
 
 
     public <X> ILevel0GenericUniqOperator<X> call(final IMethodCaller<X, ? super T> call) {

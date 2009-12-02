@@ -28,6 +28,7 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.Eval;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.functions.methodcallers.Call;
@@ -53,6 +54,12 @@ public class Level3MapOfListEntriesValueElementsOperator<K,V> extends Operator
     public Level3MapOfListEntriesValueElementsOperator(final Target target) {
         super(target);
     }
+
+
+    public <X> ILevel3MapOfListEntriesValueElementsOperator<K, X> convert(final IConverter<X, ? super V> converter) {
+        return new Level3MapOfListEntriesValueElementsOperator<K, X>(getTarget().execute(converter));
+    }
+
 
 
     public <X> ILevel3MapOfListEntriesValueElementsOperator<K, X> call(final IMethodCaller<X, ? super V> call) {

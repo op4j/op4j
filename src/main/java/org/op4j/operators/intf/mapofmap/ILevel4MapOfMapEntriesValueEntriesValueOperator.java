@@ -27,9 +27,11 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.functions.methodcallers.IMethodCaller;
 import org.op4j.operators.qualities.ICallableOperator;
+import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
 import org.op4j.operators.qualities.INavigatingMapEntryOperator;
@@ -48,11 +50,14 @@ public interface ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
 		extends IUniqOperator<Map<K1,Map<K2,V>>>,
 				INavigatingMapEntryOperator,
                 ICallableOperator<V>,
+                IConvertibleOperator<V>,
         		IEvaluableOperator<V>,
         		IExecutableOperator<V>,
                 ITypeParameterizableXOperator<V> {
     
     public ILevel3MapOfMapEntriesValueEntriesOperator<K1,K2,V> endOn();
+    
+    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> convert(final IConverter<X,? super V> converter);
     
     public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> call(final IMethodCaller<X,? super V> call);
 

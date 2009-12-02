@@ -27,9 +27,11 @@ import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.functions.methodcallers.IMethodCaller;
 import org.op4j.operators.qualities.ICallableOperator;
+import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
 import org.op4j.operators.qualities.INavigatingCollectionOperator;
@@ -48,12 +50,15 @@ public interface ILevel1SetElementsOperator<T>
 		extends IUniqOperator<Set<T>>,
         		INavigatingCollectionOperator<T>,
         		ICallableOperator<T>,
+                IConvertibleOperator<T>,
         		IEvaluableOperator<T>,
         		IExecutableOperator<T>,
                 ITypeParameterizableXOperator<T> {
 
     
     public ILevel0SetOperator<T> endFor();
+    
+    public <X> ILevel1SetElementsOperator<X> convert(final IConverter<X,? super T> converter);
     
     public <X> ILevel1SetElementsOperator<X> call(final IMethodCaller<X,? super T> call);
 

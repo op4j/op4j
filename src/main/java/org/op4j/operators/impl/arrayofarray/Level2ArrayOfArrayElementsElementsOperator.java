@@ -27,6 +27,7 @@ import java.util.Date;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.Eval;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.functions.methodcallers.Call;
@@ -56,6 +57,12 @@ public class Level2ArrayOfArrayElementsElementsOperator<T> extends Operator
         super(target);
         this.arrayOf = of;
     }
+
+
+    public <X> ILevel2ArrayOfArrayElementsElementsOperator<X> convert(final IConverter<X, ? super T> converter) {
+        return new Level2ArrayOfArrayElementsElementsOperator<X>(converter.getResultType(), getTarget().execute(converter));
+    }
+
 
 
     public <X> ILevel2ArrayOfArrayElementsElementsOperator<X> call(final IMethodCaller<X, ? super T> call) {

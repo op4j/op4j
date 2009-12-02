@@ -696,6 +696,8 @@ public final class Op {
         
         System.out.println(Op.onList(stringsList1).forEachNotNull().exec(Eval.forInteger("length()")).get());
         
+        System.out.println(Op.onList(stringsList1).forEachNotNull().convert(ToString.fromObject()).get());
+        
     }
     
     
