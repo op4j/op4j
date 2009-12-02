@@ -24,6 +24,7 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.listofmap.ILevel0ListOfMapOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
 import org.op4j.operators.qualities.IExtractableMapOperator;
@@ -82,6 +83,11 @@ public interface ILevel0MapOfMapOperator<K1,K2,V>
     public ILevel1MapOfMapEntriesOperator<K1,K2,V> forEachEntryMatching(final IEvaluator<Boolean, ? super Map.Entry<K1,Map<K2,V>>> eval);
     public ILevel1MapOfMapEntriesOperator<K1,K2,V> forEachEntrySelected(final ISelector<Map.Entry<K1,Map<K2,V>>> selector);
     public ILevel1MapOfMapEntriesOperator<K1,K2,V> forEachEntryWithKeysNot(final K1... keys);
+    
+
+    
+    
+    public ILevel0GenericUniqOperator<Map<K1,Map<K2,V>>> generic();
     
     
 }

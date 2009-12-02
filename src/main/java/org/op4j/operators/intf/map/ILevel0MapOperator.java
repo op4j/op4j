@@ -24,6 +24,7 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
 import org.op4j.operators.qualities.IExtractableMapOperator;
@@ -83,5 +84,7 @@ public interface ILevel0MapOperator<K,V>
     public ILevel1MapEntriesOperator<K,V> forEachEntryWithKeysNot(final K... keys);
     
     
+    
+    public ILevel0GenericUniqOperator<Map<K,V>> generic();
     
 }

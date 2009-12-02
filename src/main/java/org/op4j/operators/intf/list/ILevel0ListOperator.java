@@ -27,6 +27,7 @@ import org.javaruntype.type.Type;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
+import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
 import org.op4j.operators.qualities.IConvertibleToArrayOperator;
@@ -111,6 +112,8 @@ public interface ILevel0ListOperator<T>
     public ILevel1ListElementsOperator<T> forEachNotNullMatching(final String expression, final Object... optionalExpParams);
     
 
+    
+    public ILevel0GenericUniqOperator<List<T>> generic();
     
     
     

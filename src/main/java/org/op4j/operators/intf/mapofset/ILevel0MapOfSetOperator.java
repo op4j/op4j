@@ -26,6 +26,7 @@ import java.util.Set;
 import org.javaruntype.type.Type;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
+import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.listofset.ILevel0ListOfSetOperator;
 import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
 import org.op4j.operators.intf.mapoflist.ILevel0MapOfListOperator;
@@ -103,6 +104,9 @@ public interface ILevel0MapOfSetOperator<K,V>
     public ILevel1MapOfSetEntriesOperator<K,V> forEachEntryWithKeysNot(final K... keys);
     
 
+
+    
+    public ILevel0GenericUniqOperator<Map<K,Set<V>>> generic();
 
     
     

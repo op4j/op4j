@@ -19,6 +19,10 @@
  */
 package org.op4j.operators.qualities;
 
+import java.util.List;
+
+import org.javaruntype.type.Type;
+
 
 
 
@@ -33,5 +37,8 @@ package org.op4j.operators.qualities;
 public interface IMultiOperator<T> extends IOperator {
     
     public int size();
+    
+    public T[] getAsArray(final Type<T> type); 
+    public List<T> getAsList(); 
     
 }

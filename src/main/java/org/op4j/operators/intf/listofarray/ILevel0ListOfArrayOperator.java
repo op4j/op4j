@@ -30,6 +30,7 @@ import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
 import org.op4j.operators.intf.arrayofmap.ILevel0ArrayOfMapOperator;
 import org.op4j.operators.intf.arrayofset.ILevel0ArrayOfSetOperator;
+import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.listoflist.ILevel0ListOfListOperator;
 import org.op4j.operators.intf.listofmap.ILevel0ListOfMapOperator;
@@ -163,10 +164,8 @@ public interface ILevel0ListOfArrayOperator<T>
 
 
 
-
-
-
     
+    public ILevel0GenericUniqOperator<List<T[]>> generic();
     
     
 }

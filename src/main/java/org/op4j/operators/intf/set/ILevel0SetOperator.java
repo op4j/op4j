@@ -27,6 +27,7 @@ import org.javaruntype.type.Type;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
+import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
 import org.op4j.operators.qualities.IConvertibleToArrayOperator;
@@ -108,6 +109,8 @@ public interface ILevel0SetOperator<T>
     
     
     
+    
+    public ILevel0GenericUniqOperator<Set<T>> generic();
     
     
 }

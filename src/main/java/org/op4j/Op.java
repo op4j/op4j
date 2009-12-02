@@ -698,6 +698,7 @@ public final class Op {
         
         System.out.println(Op.onList(stringsList1).forEachNotNull().convert(ToString.fromObject()).get());
         
+        System.out.println(Op.onAll("hello", "goodbye").evalForString("#target + ' world!'").getAsList());        
     }
     
     

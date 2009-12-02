@@ -25,6 +25,7 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.qualities.IDistinguishableOperator;
 import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableCollectionOperator;
@@ -90,5 +91,7 @@ public interface ILevel0ArrayOfMapOperator<K,V>
     public ILevel1ArrayOfMapElementsOperator<K,V> forEachNotNull();
     public ILevel1ArrayOfMapElementsOperator<K,V> forEachNotNullMatching(final String expression, final Object... optionalExpParams);
     
+    
+    public ILevel0GenericUniqOperator<Map<K,V>[]> generic();
 
 }

@@ -26,6 +26,7 @@ import java.util.Map;
 import org.javaruntype.type.Type;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
+import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.listoflist.ILevel0ListOfListOperator;
 import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
 import org.op4j.operators.intf.mapofmap.ILevel0MapOfMapOperator;
@@ -104,6 +105,8 @@ public interface ILevel0MapOfListOperator<K,V>
     public ILevel1MapOfListEntriesOperator<K,V> forEachEntryWithKeysNot(final K... keys);
     
 
+    
+    public ILevel0GenericUniqOperator<Map<K,List<V>>> generic();
     
     
 }
