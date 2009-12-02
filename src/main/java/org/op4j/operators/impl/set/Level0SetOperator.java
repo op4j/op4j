@@ -91,8 +91,8 @@ public class Level0SetOperator<T> extends Operator
     
 
 
-    public ILevel1SetElementsOperator<T> forEachMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1SetElementsOperator<T>(getTarget().iterate(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+    public ILevel1SetElementsOperator<T> forEachMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level1SetElementsOperator<T>(getTarget().iterate(Eval.forBoolean(ognlExpression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -135,8 +135,8 @@ public class Level0SetOperator<T> extends Operator
     }
 
 
-    public ILevel1SetElementsOperator<T> forEachNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1SetElementsOperator<T>(getTarget().iterateNotNullAnd(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+    public ILevel1SetElementsOperator<T> forEachNotNullMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level1SetElementsOperator<T>(getTarget().iterateNotNullAnd(Eval.forBoolean(ognlExpression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -148,8 +148,8 @@ public class Level0SetOperator<T> extends Operator
     }
 
 
-    public ILevel1SetElementsOperator<T> forEachNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1SetElementsOperator<T>(getTarget().iterateNullOr(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+    public ILevel1SetElementsOperator<T> forEachNullOrMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level1SetElementsOperator<T>(getTarget().iterateNullOr(Eval.forBoolean(ognlExpression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -176,8 +176,8 @@ public class Level0SetOperator<T> extends Operator
     }
 
 
-    public ILevel0SetOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0SetOperator<T>(getTarget().execute(new SetFuncs.RemoveMatching<T>(Eval.forBoolean(expression, optionalExpParams))));
+    public ILevel0SetOperator<T> removeMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level0SetOperator<T>(getTarget().execute(new SetFuncs.RemoveMatching<T>(Eval.forBoolean(ognlExpression, optionalExpParams))));
     }
 
 
@@ -206,13 +206,13 @@ public class Level0SetOperator<T> extends Operator
     }
 
 
-    public ILevel0SetOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0SetOperator<T>(getTarget().execute(new SetFuncs.RemoveNotNullMatching<T>(Eval.forBoolean(expression, optionalExpParams))));
+    public ILevel0SetOperator<T> removeNotNullMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level0SetOperator<T>(getTarget().execute(new SetFuncs.RemoveNotNullMatching<T>(Eval.forBoolean(ognlExpression, optionalExpParams))));
     }
 
 
-    public ILevel0SetOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0SetOperator<T>(getTarget().execute(new SetFuncs.RemoveNullOrMatching<T>(Eval.forBoolean(expression, optionalExpParams))));
+    public ILevel0SetOperator<T> removeNullOrMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level0SetOperator<T>(getTarget().execute(new SetFuncs.RemoveNullOrMatching<T>(Eval.forBoolean(ognlExpression, optionalExpParams))));
     }
 
 

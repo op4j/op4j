@@ -82,8 +82,8 @@ public class Level0MapOfListOperator<K,V> extends Operator
     }
 
 
-    public ILevel1MapOfListEntriesOperator<K, V> forEachEntryMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1MapOfListEntriesOperator<K, V>(getTarget().iterate(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+    public ILevel1MapOfListEntriesOperator<K, V> forEachEntryMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level1MapOfListEntriesOperator<K, V>(getTarget().iterate(Eval.forBoolean(ognlExpression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -143,8 +143,8 @@ public class Level0MapOfListOperator<K,V> extends Operator
     }
 
 
-    public ILevel0MapOfListOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0MapOfListOperator<K, V>(getTarget().execute(new MapFuncs.RemoveMatching<K, List<V>>(Eval.forBoolean(expression, optionalExpParams))));
+    public ILevel0MapOfListOperator<K, V> removeMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level0MapOfListOperator<K, V>(getTarget().execute(new MapFuncs.RemoveMatching<K, List<V>>(Eval.forBoolean(ognlExpression, optionalExpParams))));
     }
 
 

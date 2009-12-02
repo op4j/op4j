@@ -527,74 +527,74 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericUniqOperator<BigDecimal> evalForBigDecimal(final String evalExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<BigDecimal>(getTarget().execute(Eval.forBigDecimal(evalExpression, parameters)));
+    public ILevel0GenericUniqOperator<BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<BigDecimal>(getTarget().execute(Eval.forBigDecimal(ognlExpression, parameters)));
     }
 
 
-    public ILevel0GenericUniqOperator<BigInteger> evalForBigInteger(final String evalExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<BigInteger>(getTarget().execute(Eval.forBigInteger(evalExpression, parameters)));
+    public ILevel0GenericUniqOperator<BigInteger> evalForBigInteger(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<BigInteger>(getTarget().execute(Eval.forBigInteger(ognlExpression, parameters)));
     }
 
 
-    public ILevel0GenericUniqOperator<Boolean> evalForBoolean(final String evalExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Boolean>(getTarget().execute(Eval.forBoolean(evalExpression, parameters)));
+    public ILevel0GenericUniqOperator<Boolean> evalForBoolean(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<Boolean>(getTarget().execute(Eval.forBoolean(ognlExpression, parameters)));
     }
 
 
-    public ILevel0GenericUniqOperator<?> evalForObject(final String evalExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Object>(getTarget().execute(Eval.forObject(evalExpression, parameters)));
+    public ILevel0GenericUniqOperator<?> evalForObject(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<Object>(getTarget().execute(Eval.forObject(ognlExpression, parameters)));
     }
 
-    public <X> ILevel0GenericUniqOperator<X> evalForObjectOfType(final Type<X> resultType, final String evalExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<X>(getTarget().execute(Eval.forObjectOfType(resultType, evalExpression, parameters)));
+    public <X> ILevel0GenericUniqOperator<X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<X>(getTarget().execute(Eval.forObjectOfType(resultType, ognlExpression, parameters)));
     }
 
-    public ILevel0GenericUniqOperator<Byte> evalForByte(final String evalExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Byte>(getTarget().execute(Eval.forByte(evalExpression, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<Calendar> evalForCalendar(final String evalExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Calendar>(getTarget().execute(Eval.forCalendar(evalExpression, parameters)));
+    public ILevel0GenericUniqOperator<Byte> evalForByte(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<Byte>(getTarget().execute(Eval.forByte(ognlExpression, parameters)));
     }
 
 
-    public ILevel0GenericUniqOperator<Double> evalForDouble(final String evalExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Double>(getTarget().execute(Eval.forDouble(evalExpression, parameters)));
+    public ILevel0GenericUniqOperator<Calendar> evalForCalendar(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<Calendar>(getTarget().execute(Eval.forCalendar(ognlExpression, parameters)));
     }
 
 
-    public ILevel0GenericUniqOperator<Float> evalForFloat(final String evalExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Float>(getTarget().execute(Eval.forFloat(evalExpression, parameters)));
+    public ILevel0GenericUniqOperator<Double> evalForDouble(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<Double>(getTarget().execute(Eval.forDouble(ognlExpression, parameters)));
     }
 
 
-    public ILevel0GenericUniqOperator<Integer> evalForInteger(final String evalExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Integer>(getTarget().execute(Eval.forInteger(evalExpression, parameters)));
+    public ILevel0GenericUniqOperator<Float> evalForFloat(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<Float>(getTarget().execute(Eval.forFloat(ognlExpression, parameters)));
     }
 
 
-    public ILevel0GenericUniqOperator<Long> evalForLong(final String evalExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Long>(getTarget().execute(Eval.forLong(evalExpression, parameters)));
+    public ILevel0GenericUniqOperator<Integer> evalForInteger(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<Integer>(getTarget().execute(Eval.forInteger(ognlExpression, parameters)));
     }
 
 
-    public ILevel0GenericUniqOperator<Short> evalForShort(final String evalExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Short>(getTarget().execute(Eval.forShort(evalExpression, parameters)));
+    public ILevel0GenericUniqOperator<Long> evalForLong(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<Long>(getTarget().execute(Eval.forLong(ognlExpression, parameters)));
     }
 
 
-    public ILevel0GenericUniqOperator<String> evalForString(final String evalExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<String>(getTarget().execute(Eval.forString(evalExpression, parameters)));
+    public ILevel0GenericUniqOperator<Short> evalForShort(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<Short>(getTarget().execute(Eval.forShort(ognlExpression, parameters)));
     }
 
-    public ILevel0GenericUniqOperator<Character> evalForCharacter(final String evalExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Character>(getTarget().execute(Eval.forCharacter(evalExpression, parameters)));
+
+    public ILevel0GenericUniqOperator<String> evalForString(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<String>(getTarget().execute(Eval.forString(ognlExpression, parameters)));
     }
 
-    public ILevel0GenericUniqOperator<Date> evalForDate(final String evalExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Date>(getTarget().execute(Eval.forDate(evalExpression, parameters)));
+    public ILevel0GenericUniqOperator<Character> evalForCharacter(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<Character>(getTarget().execute(Eval.forCharacter(ognlExpression, parameters)));
+    }
+
+    public ILevel0GenericUniqOperator<Date> evalForDate(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericUniqOperator<Date>(getTarget().execute(Eval.forDate(ognlExpression, parameters)));
     }
 
 

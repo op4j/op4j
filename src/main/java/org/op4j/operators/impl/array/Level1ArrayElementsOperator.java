@@ -142,74 +142,74 @@ public class Level1ArrayElementsOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayElementsOperator<BigDecimal> evalForBigDecimal(final String evalExpression, final Object... parameters) {
-        return new Level1ArrayElementsOperator<BigDecimal>(Types.BIG_DECIMAL, getTarget().execute(Eval.forBigDecimal(evalExpression, parameters)));
+    public ILevel1ArrayElementsOperator<BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<BigDecimal>(Types.BIG_DECIMAL, getTarget().execute(Eval.forBigDecimal(ognlExpression, parameters)));
     }
 
 
-    public ILevel1ArrayElementsOperator<BigInteger> evalForBigInteger(final String evalExpression, final Object... parameters) {
-        return new Level1ArrayElementsOperator<BigInteger>(Types.BIG_INTEGER, getTarget().execute(Eval.forBigInteger(evalExpression, parameters)));
+    public ILevel1ArrayElementsOperator<BigInteger> evalForBigInteger(final String ognlExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<BigInteger>(Types.BIG_INTEGER, getTarget().execute(Eval.forBigInteger(ognlExpression, parameters)));
     }
 
 
-    public ILevel1ArrayElementsOperator<Boolean> evalForBoolean(final String evalExpression, final Object... parameters) {
-        return new Level1ArrayElementsOperator<Boolean>(Types.BOOLEAN, getTarget().execute(Eval.forBoolean(evalExpression, parameters)));
+    public ILevel1ArrayElementsOperator<Boolean> evalForBoolean(final String ognlExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<Boolean>(Types.BOOLEAN, getTarget().execute(Eval.forBoolean(ognlExpression, parameters)));
     }
 
 
-    public ILevel1ArrayElementsOperator<?> evalForObject(final String evalExpression, final Object... parameters) {
-        return new Level1ArrayElementsOperator<Object>(Types.OBJECT, getTarget().execute(Eval.forObject(evalExpression, parameters)));
+    public ILevel1ArrayElementsOperator<?> evalForObject(final String ognlExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<Object>(Types.OBJECT, getTarget().execute(Eval.forObject(ognlExpression, parameters)));
     }
 
-    public <X> ILevel1ArrayElementsOperator<X> evalForObjectOfType(final Type<X> resultType, final String evalExpression, final Object... parameters) {
-        return new Level1ArrayElementsOperator<X>(resultType, getTarget().execute(Eval.forObjectOfType(resultType, evalExpression, parameters)));
+    public <X> ILevel1ArrayElementsOperator<X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<X>(resultType, getTarget().execute(Eval.forObjectOfType(resultType, ognlExpression, parameters)));
     }
 
-    public ILevel1ArrayElementsOperator<Byte> evalForByte(final String evalExpression, final Object... parameters) {
-        return new Level1ArrayElementsOperator<Byte>(Types.BYTE, getTarget().execute(Eval.forByte(evalExpression, parameters)));
-    }
-
-
-    public ILevel1ArrayElementsOperator<Calendar> evalForCalendar(final String evalExpression, final Object... parameters) {
-        return new Level1ArrayElementsOperator<Calendar>(Types.CALENDAR, getTarget().execute(Eval.forCalendar(evalExpression, parameters)));
+    public ILevel1ArrayElementsOperator<Byte> evalForByte(final String ognlExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<Byte>(Types.BYTE, getTarget().execute(Eval.forByte(ognlExpression, parameters)));
     }
 
 
-    public ILevel1ArrayElementsOperator<Double> evalForDouble(final String evalExpression, final Object... parameters) {
-        return new Level1ArrayElementsOperator<Double>(Types.DOUBLE, getTarget().execute(Eval.forDouble(evalExpression, parameters)));
+    public ILevel1ArrayElementsOperator<Calendar> evalForCalendar(final String ognlExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<Calendar>(Types.CALENDAR, getTarget().execute(Eval.forCalendar(ognlExpression, parameters)));
     }
 
 
-    public ILevel1ArrayElementsOperator<Float> evalForFloat(final String evalExpression, final Object... parameters) {
-        return new Level1ArrayElementsOperator<Float>(Types.FLOAT, getTarget().execute(Eval.forFloat(evalExpression, parameters)));
+    public ILevel1ArrayElementsOperator<Double> evalForDouble(final String ognlExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<Double>(Types.DOUBLE, getTarget().execute(Eval.forDouble(ognlExpression, parameters)));
     }
 
 
-    public ILevel1ArrayElementsOperator<Integer> evalForInteger(final String evalExpression, final Object... parameters) {
-        return new Level1ArrayElementsOperator<Integer>(Types.INTEGER, getTarget().execute(Eval.forInteger(evalExpression, parameters)));
+    public ILevel1ArrayElementsOperator<Float> evalForFloat(final String ognlExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<Float>(Types.FLOAT, getTarget().execute(Eval.forFloat(ognlExpression, parameters)));
     }
 
 
-    public ILevel1ArrayElementsOperator<Long> evalForLong(final String evalExpression, final Object... parameters) {
-        return new Level1ArrayElementsOperator<Long>(Types.LONG, getTarget().execute(Eval.forLong(evalExpression, parameters)));
+    public ILevel1ArrayElementsOperator<Integer> evalForInteger(final String ognlExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<Integer>(Types.INTEGER, getTarget().execute(Eval.forInteger(ognlExpression, parameters)));
     }
 
 
-    public ILevel1ArrayElementsOperator<Short> evalForShort(final String evalExpression, final Object... parameters) {
-        return new Level1ArrayElementsOperator<Short>(Types.SHORT, getTarget().execute(Eval.forShort(evalExpression, parameters)));
+    public ILevel1ArrayElementsOperator<Long> evalForLong(final String ognlExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<Long>(Types.LONG, getTarget().execute(Eval.forLong(ognlExpression, parameters)));
     }
 
 
-    public ILevel1ArrayElementsOperator<String> evalForString(final String evalExpression, final Object... parameters) {
-        return new Level1ArrayElementsOperator<String>(Types.STRING, getTarget().execute(Eval.forString(evalExpression, parameters)));
+    public ILevel1ArrayElementsOperator<Short> evalForShort(final String ognlExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<Short>(Types.SHORT, getTarget().execute(Eval.forShort(ognlExpression, parameters)));
     }
 
-    public ILevel1ArrayElementsOperator<Character> evalForCharacter(final String evalExpression, final Object... parameters) {
-        return new Level1ArrayElementsOperator<Character>(Types.CHARACTER, getTarget().execute(Eval.forCharacter(evalExpression, parameters)));
+
+    public ILevel1ArrayElementsOperator<String> evalForString(final String ognlExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<String>(Types.STRING, getTarget().execute(Eval.forString(ognlExpression, parameters)));
     }
 
-    public ILevel1ArrayElementsOperator<Date> evalForDate(final String evalExpression, final Object... parameters) {
-        return new Level1ArrayElementsOperator<Date>(Types.DATE, getTarget().execute(Eval.forDate(evalExpression, parameters)));
+    public ILevel1ArrayElementsOperator<Character> evalForCharacter(final String ognlExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<Character>(Types.CHARACTER, getTarget().execute(Eval.forCharacter(ognlExpression, parameters)));
+    }
+
+    public ILevel1ArrayElementsOperator<Date> evalForDate(final String ognlExpression, final Object... parameters) {
+        return new Level1ArrayElementsOperator<Date>(Types.DATE, getTarget().execute(Eval.forDate(ognlExpression, parameters)));
     }
 
 

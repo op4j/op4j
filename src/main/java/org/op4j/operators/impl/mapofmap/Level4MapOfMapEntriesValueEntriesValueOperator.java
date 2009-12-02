@@ -139,74 +139,74 @@ public class Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V> extends Ope
     }
 
 
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, BigDecimal> evalForBigDecimal(final String evalExpression, final Object... parameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, BigDecimal>(getTarget().execute(Eval.forBigDecimal(evalExpression, parameters)));
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, BigDecimal>(getTarget().execute(Eval.forBigDecimal(ognlExpression, parameters)));
     }
 
 
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, BigInteger> evalForBigInteger(final String evalExpression, final Object... parameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, BigInteger>(getTarget().execute(Eval.forBigInteger(evalExpression, parameters)));
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, BigInteger> evalForBigInteger(final String ognlExpression, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, BigInteger>(getTarget().execute(Eval.forBigInteger(ognlExpression, parameters)));
     }
 
 
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Boolean> evalForBoolean(final String evalExpression, final Object... parameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Boolean>(getTarget().execute(Eval.forBoolean(evalExpression, parameters)));
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Boolean> evalForBoolean(final String ognlExpression, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Boolean>(getTarget().execute(Eval.forBoolean(ognlExpression, parameters)));
     }
 
 
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, ?> evalForObject(final String evalExpression, final Object... parameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Object>(getTarget().execute(Eval.forObject(evalExpression, parameters)));
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, ?> evalForObject(final String ognlExpression, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Object>(getTarget().execute(Eval.forObject(ognlExpression, parameters)));
     }
 
-    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> evalForObjectOfType(final Type<X> resultType, final String evalExpression, final Object... parameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X>(getTarget().execute(Eval.forObjectOfType(resultType, evalExpression, parameters)));
+    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X>(getTarget().execute(Eval.forObjectOfType(resultType, ognlExpression, parameters)));
     }
 
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Byte> evalForByte(final String evalExpression, final Object... parameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Byte>(getTarget().execute(Eval.forByte(evalExpression, parameters)));
-    }
-
-
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Calendar> evalForCalendar(final String evalExpression, final Object... parameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Calendar>(getTarget().execute(Eval.forCalendar(evalExpression, parameters)));
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Byte> evalForByte(final String ognlExpression, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Byte>(getTarget().execute(Eval.forByte(ognlExpression, parameters)));
     }
 
 
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Double> evalForDouble(final String evalExpression, final Object... parameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Double>(getTarget().execute(Eval.forDouble(evalExpression, parameters)));
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Calendar> evalForCalendar(final String ognlExpression, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Calendar>(getTarget().execute(Eval.forCalendar(ognlExpression, parameters)));
     }
 
 
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Float> evalForFloat(final String evalExpression, final Object... parameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Float>(getTarget().execute(Eval.forFloat(evalExpression, parameters)));
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Double> evalForDouble(final String ognlExpression, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Double>(getTarget().execute(Eval.forDouble(ognlExpression, parameters)));
     }
 
 
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Integer> evalForInteger(final String evalExpression, final Object... parameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Integer>(getTarget().execute(Eval.forInteger(evalExpression, parameters)));
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Float> evalForFloat(final String ognlExpression, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Float>(getTarget().execute(Eval.forFloat(ognlExpression, parameters)));
     }
 
 
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Long> evalForLong(final String evalExpression, final Object... parameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Long>(getTarget().execute(Eval.forLong(evalExpression, parameters)));
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Integer> evalForInteger(final String ognlExpression, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Integer>(getTarget().execute(Eval.forInteger(ognlExpression, parameters)));
     }
 
 
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Short> evalForShort(final String evalExpression, final Object... parameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Short>(getTarget().execute(Eval.forShort(evalExpression, parameters)));
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Long> evalForLong(final String ognlExpression, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Long>(getTarget().execute(Eval.forLong(ognlExpression, parameters)));
     }
 
 
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, String> evalForString(final String evalExpression, final Object... parameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, String>(getTarget().execute(Eval.forString(evalExpression, parameters)));
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Short> evalForShort(final String ognlExpression, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Short>(getTarget().execute(Eval.forShort(ognlExpression, parameters)));
     }
 
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Character> evalForCharacter(final String evalExpression, final Object... parameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Character>(getTarget().execute(Eval.forCharacter(evalExpression, parameters)));
+
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, String> evalForString(final String ognlExpression, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, String>(getTarget().execute(Eval.forString(ognlExpression, parameters)));
     }
 
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Date> evalForDate(final String evalExpression, final Object... parameters) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Date>(getTarget().execute(Eval.forDate(evalExpression, parameters)));
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Character> evalForCharacter(final String ognlExpression, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Character>(getTarget().execute(Eval.forCharacter(ognlExpression, parameters)));
+    }
+
+    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Date> evalForDate(final String ognlExpression, final Object... parameters) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, Date>(getTarget().execute(Eval.forDate(ognlExpression, parameters)));
     }
 
 

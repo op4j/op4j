@@ -82,21 +82,21 @@ public interface ILevel3MapOfSetEntriesValueElementsOperator<K,V>
     
     public <X> ILevel3MapOfSetEntriesValueElementsOperator<K,X> eval(final IEvaluator<X,? super V> eval);
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,?> evalForObject(final String evalExpression, final Object... optionalArguments);
-    public <X> ILevel3MapOfSetEntriesValueElementsOperator<K,X> evalForObjectOfType(final Type<X> resultType, final String evalExpression, final Object... optionalArguments);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,Byte> evalForByte(final String evalExpression, final Object... optionalArguments);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,Short> evalForShort(final String evalExpression, final Object... optionalArguments);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,Integer> evalForInteger(final String evalExpression, final Object... optionalArguments);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,Long> evalForLong(final String evalExpression, final Object... optionalArguments);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,Float> evalForFloat(final String evalExpression, final Object... optionalArguments);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,Double> evalForDouble(final String evalExpression, final Object... optionalArguments);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,BigInteger> evalForBigInteger(final String evalExpression, final Object... optionalArguments);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,BigDecimal> evalForBigDecimal(final String evalExpression, final Object... optionalArguments);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,Boolean> evalForBoolean(final String evalExpression, final Object... optionalArguments);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,Calendar> evalForCalendar(final String evalExpression, final Object... optionalArguments);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,String> evalForString(final String evalExpression, final Object... optionalArguments);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,Character> evalForCharacter(final String evalExpression, final Object... optionalArguments);
-    public ILevel3MapOfSetEntriesValueElementsOperator<K,Date> evalForDate(final String evalExpression, final Object... optionalArguments);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,?> evalForObject(final String ognlExpression, final Object... optionalExpParams);
+    public <X> ILevel3MapOfSetEntriesValueElementsOperator<K,X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... optionalExpParams);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,Byte> evalForByte(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,Short> evalForShort(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,Integer> evalForInteger(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,Long> evalForLong(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,Float> evalForFloat(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,Double> evalForDouble(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,BigInteger> evalForBigInteger(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,Boolean> evalForBoolean(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,Calendar> evalForCalendar(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,String> evalForString(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,Character> evalForCharacter(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,Date> evalForDate(final String ognlExpression, final Object... optionalExpParams);
 
 
     public <X> ILevel3MapOfSetEntriesValueElementsOperator<K,X> exec(final IFunction<X, ? super V> function);

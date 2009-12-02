@@ -87,8 +87,8 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     
 
 
-    public ILevel1ListOfMapElementsOperator<K, V> forEachMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterate(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+    public ILevel1ListOfMapElementsOperator<K, V> forEachMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterate(Eval.forBoolean(ognlExpression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -131,8 +131,8 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ListOfMapElementsOperator<K, V> forEachNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNotNullAnd(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+    public ILevel1ListOfMapElementsOperator<K, V> forEachNotNullMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNotNullAnd(Eval.forBoolean(ognlExpression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -144,8 +144,8 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ListOfMapElementsOperator<K, V> forEachNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNullOr(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+    public ILevel1ListOfMapElementsOperator<K, V> forEachNullOrMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level1ListOfMapElementsOperator<K, V>(getTarget().iterateNullOr(Eval.forBoolean(ognlExpression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -172,8 +172,8 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFuncs.RemoveMatching<Map<K, V>>(Eval.forBoolean(expression, optionalExpParams))));
+    public ILevel0ListOfMapOperator<K, V> removeMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFuncs.RemoveMatching<Map<K, V>>(Eval.forBoolean(ognlExpression, optionalExpParams))));
     }
 
 
@@ -202,13 +202,13 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<Map<K, V>>(Eval.forBoolean(expression, optionalExpParams))));
+    public ILevel0ListOfMapOperator<K, V> removeNotNullMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<Map<K, V>>(Eval.forBoolean(ognlExpression, optionalExpParams))));
     }
 
 
-    public ILevel0ListOfMapOperator<K, V> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<Map<K, V>>(Eval.forBoolean(expression, optionalExpParams))));
+    public ILevel0ListOfMapOperator<K, V> removeNullOrMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level0ListOfMapOperator<K, V>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<Map<K, V>>(Eval.forBoolean(ognlExpression, optionalExpParams))));
     }
 
 

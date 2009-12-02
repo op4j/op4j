@@ -109,8 +109,8 @@ public class Level0ListOfArrayOperator<T> extends Operator
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> forEachMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterate(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+    public ILevel1ListOfArrayElementsOperator<T> forEachMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterate(Eval.forBoolean(ognlExpression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -150,8 +150,8 @@ public class Level0ListOfArrayOperator<T> extends Operator
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> forEachNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNotNullAnd(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+    public ILevel1ListOfArrayElementsOperator<T> forEachNotNullMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNotNullAnd(Eval.forBoolean(ognlExpression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -163,8 +163,8 @@ public class Level0ListOfArrayOperator<T> extends Operator
     }
 
 
-    public ILevel1ListOfArrayElementsOperator<T> forEachNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNullOr(Eval.forBoolean(expression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
+    public ILevel1ListOfArrayElementsOperator<T> forEachNullOrMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level1ListOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNullOr(Eval.forBoolean(ognlExpression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
     }
 
 
@@ -191,8 +191,8 @@ public class Level0ListOfArrayOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfArrayOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ListFuncs.RemoveMatching<T[]>(Eval.forBoolean(expression, optionalExpParams))));
+    public ILevel0ListOfArrayOperator<T> removeMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ListFuncs.RemoveMatching<T[]>(Eval.forBoolean(ognlExpression, optionalExpParams))));
     }
 
 
@@ -221,12 +221,12 @@ public class Level0ListOfArrayOperator<T> extends Operator
     }
 
 
-    public ILevel0ListOfArrayOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ListFuncs.RemoveNotNullMatching<T[]>(Eval.forBoolean(expression, optionalExpParams))));
+    public ILevel0ListOfArrayOperator<T> removeNotNullMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ListFuncs.RemoveNotNullMatching<T[]>(Eval.forBoolean(ognlExpression, optionalExpParams))));
     }
 
-    public ILevel0ListOfArrayOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ListFuncs.RemoveNullOrMatching<T[]>(Eval.forBoolean(expression, optionalExpParams))));
+    public ILevel0ListOfArrayOperator<T> removeNullOrMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level0ListOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ListFuncs.RemoveNullOrMatching<T[]>(Eval.forBoolean(ognlExpression, optionalExpParams))));
     }
 
 

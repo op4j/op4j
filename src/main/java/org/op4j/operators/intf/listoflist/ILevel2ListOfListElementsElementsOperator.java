@@ -81,21 +81,21 @@ public interface ILevel2ListOfListElementsElementsOperator<T>
     
     public <X> ILevel2ListOfListElementsElementsOperator<X> eval(final IEvaluator<X,? super T> eval);
 
-    public ILevel2ListOfListElementsElementsOperator<?> evalForObject(final String evalExpression, final Object... optionalArguments);
-    public <X> ILevel2ListOfListElementsElementsOperator<X> evalForObjectOfType(final Type<X> resultType, final String evalExpression, final Object... optionalArguments);
-    public ILevel2ListOfListElementsElementsOperator<Byte> evalForByte(final String evalExpression, final Object... optionalArguments);
-    public ILevel2ListOfListElementsElementsOperator<Short> evalForShort(final String evalExpression, final Object... optionalArguments);
-    public ILevel2ListOfListElementsElementsOperator<Integer> evalForInteger(final String evalExpression, final Object... optionalArguments);
-    public ILevel2ListOfListElementsElementsOperator<Long> evalForLong(final String evalExpression, final Object... optionalArguments);
-    public ILevel2ListOfListElementsElementsOperator<Float> evalForFloat(final String evalExpression, final Object... optionalArguments);
-    public ILevel2ListOfListElementsElementsOperator<Double> evalForDouble(final String evalExpression, final Object... optionalArguments);
-    public ILevel2ListOfListElementsElementsOperator<BigInteger> evalForBigInteger(final String evalExpression, final Object... optionalArguments);
-    public ILevel2ListOfListElementsElementsOperator<BigDecimal> evalForBigDecimal(final String evalExpression, final Object... optionalArguments);
-    public ILevel2ListOfListElementsElementsOperator<Boolean> evalForBoolean(final String evalExpression, final Object... optionalArguments);
-    public ILevel2ListOfListElementsElementsOperator<Calendar> evalForCalendar(final String evalExpression, final Object... optionalArguments);
-    public ILevel2ListOfListElementsElementsOperator<String> evalForString(final String evalExpression, final Object... optionalArguments);
-    public ILevel2ListOfListElementsElementsOperator<Character> evalForCharacter(final String evalExpression, final Object... optionalArguments);
-    public ILevel2ListOfListElementsElementsOperator<Date> evalForDate(final String evalExpression, final Object... optionalArguments);
+    public ILevel2ListOfListElementsElementsOperator<?> evalForObject(final String ognlExpression, final Object... optionalExpParams);
+    public <X> ILevel2ListOfListElementsElementsOperator<X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... optionalExpParams);
+    public ILevel2ListOfListElementsElementsOperator<Byte> evalForByte(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel2ListOfListElementsElementsOperator<Short> evalForShort(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel2ListOfListElementsElementsOperator<Integer> evalForInteger(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel2ListOfListElementsElementsOperator<Long> evalForLong(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel2ListOfListElementsElementsOperator<Float> evalForFloat(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel2ListOfListElementsElementsOperator<Double> evalForDouble(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel2ListOfListElementsElementsOperator<BigInteger> evalForBigInteger(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel2ListOfListElementsElementsOperator<BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel2ListOfListElementsElementsOperator<Boolean> evalForBoolean(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel2ListOfListElementsElementsOperator<Calendar> evalForCalendar(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel2ListOfListElementsElementsOperator<String> evalForString(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel2ListOfListElementsElementsOperator<Character> evalForCharacter(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel2ListOfListElementsElementsOperator<Date> evalForDate(final String ognlExpression, final Object... optionalExpParams);
 
 
     public <X> ILevel2ListOfListElementsElementsOperator<X> exec(final IFunction<X, ? super T> function);

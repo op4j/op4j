@@ -194,8 +194,8 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveMatching<T>(Eval.forBoolean(expression, optionalExpParams))));
+    public ILevel0GenericMultiOperator<T> removeMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveMatching<T>(Eval.forBoolean(ognlExpression, optionalExpParams))));
     }
 
 
@@ -224,13 +224,13 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<T>(Eval.forBoolean(expression, optionalExpParams))));
+    public ILevel0GenericMultiOperator<T> removeNotNullMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<T>(Eval.forBoolean(ognlExpression, optionalExpParams))));
     }
 
 
-    public ILevel0GenericMultiOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<T>(Eval.forBoolean(expression, optionalExpParams))));
+    public ILevel0GenericMultiOperator<T> removeNullOrMatching(final String ognlExpression, final Object... optionalExpParams) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<T>(Eval.forBoolean(ognlExpression, optionalExpParams))));
     }
 
 
@@ -317,74 +317,74 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericMultiOperator<BigDecimal> evalForBigDecimal(final String evalExpression, final Object... parameters) {
-        return new Level0GenericMultiOperator<BigDecimal>(getTarget().iterate().execute(Eval.forBigDecimal(evalExpression, parameters)).endIterate(Structure.LIST, null));
+    public ILevel0GenericMultiOperator<BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericMultiOperator<BigDecimal>(getTarget().iterate().execute(Eval.forBigDecimal(ognlExpression, parameters)).endIterate(Structure.LIST, null));
     }
 
 
-    public ILevel0GenericMultiOperator<BigInteger> evalForBigInteger(final String evalExpression, final Object... parameters) {
-        return new Level0GenericMultiOperator<BigInteger>(getTarget().iterate().execute(Eval.forBigInteger(evalExpression, parameters)).endIterate(Structure.LIST, null));
+    public ILevel0GenericMultiOperator<BigInteger> evalForBigInteger(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericMultiOperator<BigInteger>(getTarget().iterate().execute(Eval.forBigInteger(ognlExpression, parameters)).endIterate(Structure.LIST, null));
     }
 
 
-    public ILevel0GenericMultiOperator<Boolean> evalForBoolean(final String evalExpression, final Object... parameters) {
-        return new Level0GenericMultiOperator<Boolean>(getTarget().iterate().execute(Eval.forBoolean(evalExpression, parameters)).endIterate(Structure.LIST, null));
+    public ILevel0GenericMultiOperator<Boolean> evalForBoolean(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericMultiOperator<Boolean>(getTarget().iterate().execute(Eval.forBoolean(ognlExpression, parameters)).endIterate(Structure.LIST, null));
     }
 
 
-    public ILevel0GenericMultiOperator<?> evalForObject(final String evalExpression, final Object... parameters) {
-        return new Level0GenericMultiOperator<Object>(getTarget().iterate().execute(Eval.forObject(evalExpression, parameters)).endIterate(Structure.LIST, null));
+    public ILevel0GenericMultiOperator<?> evalForObject(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericMultiOperator<Object>(getTarget().iterate().execute(Eval.forObject(ognlExpression, parameters)).endIterate(Structure.LIST, null));
     }
 
-    public <X> ILevel0GenericMultiOperator<X> evalForObjectOfType(final Type<X> resultType, final String evalExpression, final Object... parameters) {
-        return new Level0GenericMultiOperator<X>(getTarget().iterate().execute(Eval.forObjectOfType(resultType, evalExpression, parameters)).endIterate(Structure.LIST, null));
+    public <X> ILevel0GenericMultiOperator<X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... parameters) {
+        return new Level0GenericMultiOperator<X>(getTarget().iterate().execute(Eval.forObjectOfType(resultType, ognlExpression, parameters)).endIterate(Structure.LIST, null));
     }
 
-    public ILevel0GenericMultiOperator<Byte> evalForByte(final String evalExpression, final Object... parameters) {
-        return new Level0GenericMultiOperator<Byte>(getTarget().iterate().execute(Eval.forByte(evalExpression, parameters)).endIterate(Structure.LIST, null));
-    }
-
-
-    public ILevel0GenericMultiOperator<Calendar> evalForCalendar(final String evalExpression, final Object... parameters) {
-        return new Level0GenericMultiOperator<Calendar>(getTarget().iterate().execute(Eval.forCalendar(evalExpression, parameters)).endIterate(Structure.LIST, null));
+    public ILevel0GenericMultiOperator<Byte> evalForByte(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericMultiOperator<Byte>(getTarget().iterate().execute(Eval.forByte(ognlExpression, parameters)).endIterate(Structure.LIST, null));
     }
 
 
-    public ILevel0GenericMultiOperator<Double> evalForDouble(final String evalExpression, final Object... parameters) {
-        return new Level0GenericMultiOperator<Double>(getTarget().iterate().execute(Eval.forDouble(evalExpression, parameters)).endIterate(Structure.LIST, null));
+    public ILevel0GenericMultiOperator<Calendar> evalForCalendar(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericMultiOperator<Calendar>(getTarget().iterate().execute(Eval.forCalendar(ognlExpression, parameters)).endIterate(Structure.LIST, null));
     }
 
 
-    public ILevel0GenericMultiOperator<Float> evalForFloat(final String evalExpression, final Object... parameters) {
-        return new Level0GenericMultiOperator<Float>(getTarget().iterate().execute(Eval.forFloat(evalExpression, parameters)).endIterate(Structure.LIST, null));
+    public ILevel0GenericMultiOperator<Double> evalForDouble(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericMultiOperator<Double>(getTarget().iterate().execute(Eval.forDouble(ognlExpression, parameters)).endIterate(Structure.LIST, null));
     }
 
 
-    public ILevel0GenericMultiOperator<Integer> evalForInteger(final String evalExpression, final Object... parameters) {
-        return new Level0GenericMultiOperator<Integer>(getTarget().iterate().execute(Eval.forInteger(evalExpression, parameters)).endIterate(Structure.LIST, null));
+    public ILevel0GenericMultiOperator<Float> evalForFloat(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericMultiOperator<Float>(getTarget().iterate().execute(Eval.forFloat(ognlExpression, parameters)).endIterate(Structure.LIST, null));
     }
 
 
-    public ILevel0GenericMultiOperator<Long> evalForLong(final String evalExpression, final Object... parameters) {
-        return new Level0GenericMultiOperator<Long>(getTarget().iterate().execute(Eval.forLong(evalExpression, parameters)).endIterate(Structure.LIST, null));
+    public ILevel0GenericMultiOperator<Integer> evalForInteger(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericMultiOperator<Integer>(getTarget().iterate().execute(Eval.forInteger(ognlExpression, parameters)).endIterate(Structure.LIST, null));
     }
 
 
-    public ILevel0GenericMultiOperator<Short> evalForShort(final String evalExpression, final Object... parameters) {
-        return new Level0GenericMultiOperator<Short>(getTarget().iterate().execute(Eval.forShort(evalExpression, parameters)).endIterate(Structure.LIST, null));
+    public ILevel0GenericMultiOperator<Long> evalForLong(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericMultiOperator<Long>(getTarget().iterate().execute(Eval.forLong(ognlExpression, parameters)).endIterate(Structure.LIST, null));
     }
 
 
-    public ILevel0GenericMultiOperator<String> evalForString(final String evalExpression, final Object... parameters) {
-        return new Level0GenericMultiOperator<String>(getTarget().iterate().execute(Eval.forString(evalExpression, parameters)).endIterate(Structure.LIST, null));
+    public ILevel0GenericMultiOperator<Short> evalForShort(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericMultiOperator<Short>(getTarget().iterate().execute(Eval.forShort(ognlExpression, parameters)).endIterate(Structure.LIST, null));
     }
 
-    public ILevel0GenericMultiOperator<Character> evalForCharacter(final String evalExpression, final Object... parameters) {
-        return new Level0GenericMultiOperator<Character>(getTarget().iterate().execute(Eval.forCharacter(evalExpression, parameters)).endIterate(Structure.LIST, null));
+
+    public ILevel0GenericMultiOperator<String> evalForString(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericMultiOperator<String>(getTarget().iterate().execute(Eval.forString(ognlExpression, parameters)).endIterate(Structure.LIST, null));
     }
 
-    public ILevel0GenericMultiOperator<Date> evalForDate(final String evalExpression, final Object... parameters) {
-        return new Level0GenericMultiOperator<Date>(getTarget().iterate().execute(Eval.forDate(evalExpression, parameters)).endIterate(Structure.LIST, null));
+    public ILevel0GenericMultiOperator<Character> evalForCharacter(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericMultiOperator<Character>(getTarget().iterate().execute(Eval.forCharacter(ognlExpression, parameters)).endIterate(Structure.LIST, null));
+    }
+
+    public ILevel0GenericMultiOperator<Date> evalForDate(final String ognlExpression, final Object... parameters) {
+        return new Level0GenericMultiOperator<Date>(getTarget().iterate().execute(Eval.forDate(ognlExpression, parameters)).endIterate(Structure.LIST, null));
     }
 
 

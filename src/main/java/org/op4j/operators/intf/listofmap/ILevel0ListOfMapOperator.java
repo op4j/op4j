@@ -69,28 +69,28 @@ public interface ILevel0ListOfMapOperator<K,V>
     public ILevel0ListOfMapOperator<K,V> addAll(final Collection<Map<K,V>> collection);
     public ILevel0ListOfMapOperator<K,V> removeIndexes(final int... indices);
     public ILevel0ListOfMapOperator<K,V> removeEquals(final Map<K,V>... values);
-    public ILevel0ListOfMapOperator<K,V> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0ListOfMapOperator<K,V> removeMatching(final String ognlExpression, final Object... optionalExpParams);
     public ILevel0ListOfMapOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel0ListOfMapOperator<K,V> removeNotNullMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel0ListOfMapOperator<K,V> removeNullOrMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel0ListOfMapOperator<K,V> removeSelected(final ISelector<Map<K,V>> selector);
     public ILevel0ListOfMapOperator<K,V> removeIndexesNot(final int... indices);
     public ILevel0ListOfMapOperator<K,V> removeNulls();
-    public ILevel0ListOfMapOperator<K,V> removeNotNullMatching(final String expression, final Object... optionalExpParams);
-    public ILevel0ListOfMapOperator<K,V> removeNullOrMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0ListOfMapOperator<K,V> removeNotNullMatching(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel0ListOfMapOperator<K,V> removeNullOrMatching(final String ognlExpression, final Object... optionalExpParams);
     
     
     public ILevel1ListOfMapElementsOperator<K,V> forEachIndex(final int... indices);
-    public ILevel1ListOfMapElementsOperator<K,V> forEachMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1ListOfMapElementsOperator<K,V> forEachMatching(final String ognlExpression, final Object... optionalExpParams);
     public ILevel1ListOfMapElementsOperator<K,V> forEachMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel1ListOfMapElementsOperator<K,V> forEachNullOrMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel1ListOfMapElementsOperator<K,V> forEachNotNullMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel1ListOfMapElementsOperator<K,V> forEachSelected(final ISelector<Map<K,V>> selector);
     public ILevel1ListOfMapElementsOperator<K,V> forEachNull();
-    public ILevel1ListOfMapElementsOperator<K,V> forEachNullOrMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1ListOfMapElementsOperator<K,V> forEachNullOrMatching(final String ognlExpression, final Object... optionalExpParams);
     public ILevel1ListOfMapElementsOperator<K,V> forEachIndexNot(final int... indices);
     public ILevel1ListOfMapElementsOperator<K,V> forEachNotNull();
-    public ILevel1ListOfMapElementsOperator<K,V> forEachNotNullMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1ListOfMapElementsOperator<K,V> forEachNotNullMatching(final String ognlExpression, final Object... optionalExpParams);
     
     
     public ILevel0GenericUniqOperator<List<Map<K,V>>> generic();

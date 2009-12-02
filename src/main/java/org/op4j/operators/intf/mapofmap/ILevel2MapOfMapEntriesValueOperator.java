@@ -69,7 +69,7 @@ public interface ILevel2MapOfMapEntriesValueOperator<K1,K2,V>
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> putAll(final Map<K2,V> map);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> insertAll(final int position, final Map<K2,V> map);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeKeys(final K2... keys);
-    public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeMatching(final String ognlExpression, final Object... optionalExpParams);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K2,V>> eval);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeSelected(final ISelector<Map.Entry<K2,V>> selector);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeKeysNot(final K2... keys);
@@ -80,7 +80,7 @@ public interface ILevel2MapOfMapEntriesValueOperator<K1,K2,V>
     
     
     public ILevel3MapOfMapEntriesValueEntriesOperator<K1,K2,V> forEachEntryWithKeys(final K2... keys);
-    public ILevel3MapOfMapEntriesValueEntriesOperator<K1,K2,V> forEachEntryMatching(final String expression, final Object... optionalExpParams);
+    public ILevel3MapOfMapEntriesValueEntriesOperator<K1,K2,V> forEachEntryMatching(final String ognlExpression, final Object... optionalExpParams);
     public ILevel3MapOfMapEntriesValueEntriesOperator<K1,K2,V> forEachEntryMatching(final IEvaluator<Boolean, ? super Map.Entry<K2,V>> eval);
     public ILevel3MapOfMapEntriesValueEntriesOperator<K1,K2,V> forEachEntrySelected(final ISelector<Map.Entry<K2,V>> selector);
     public ILevel3MapOfMapEntriesValueEntriesOperator<K1,K2,V> forEachEntryWithKeysNot(final K2... keys);

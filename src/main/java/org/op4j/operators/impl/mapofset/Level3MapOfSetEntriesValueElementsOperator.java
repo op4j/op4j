@@ -139,74 +139,74 @@ public class Level3MapOfSetEntriesValueElementsOperator<K,V> extends Operator
     }
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, BigDecimal> evalForBigDecimal(final String evalExpression, final Object... parameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, BigDecimal>(getTarget().execute(Eval.forBigDecimal(evalExpression, parameters)));
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... parameters) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, BigDecimal>(getTarget().execute(Eval.forBigDecimal(ognlExpression, parameters)));
     }
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, BigInteger> evalForBigInteger(final String evalExpression, final Object... parameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, BigInteger>(getTarget().execute(Eval.forBigInteger(evalExpression, parameters)));
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, BigInteger> evalForBigInteger(final String ognlExpression, final Object... parameters) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, BigInteger>(getTarget().execute(Eval.forBigInteger(ognlExpression, parameters)));
     }
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Boolean> evalForBoolean(final String evalExpression, final Object... parameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Boolean>(getTarget().execute(Eval.forBoolean(evalExpression, parameters)));
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, Boolean> evalForBoolean(final String ognlExpression, final Object... parameters) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, Boolean>(getTarget().execute(Eval.forBoolean(ognlExpression, parameters)));
     }
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, ?> evalForObject(final String evalExpression, final Object... parameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Object>(getTarget().execute(Eval.forObject(evalExpression, parameters)));
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, ?> evalForObject(final String ognlExpression, final Object... parameters) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, Object>(getTarget().execute(Eval.forObject(ognlExpression, parameters)));
     }
 
-    public <X> ILevel3MapOfSetEntriesValueElementsOperator<K, X> evalForObjectOfType(final Type<X> resultType, final String evalExpression, final Object... parameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, X>(getTarget().execute(Eval.forObjectOfType(resultType, evalExpression, parameters)));
+    public <X> ILevel3MapOfSetEntriesValueElementsOperator<K, X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... parameters) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, X>(getTarget().execute(Eval.forObjectOfType(resultType, ognlExpression, parameters)));
     }
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Byte> evalForByte(final String evalExpression, final Object... parameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Byte>(getTarget().execute(Eval.forByte(evalExpression, parameters)));
-    }
-
-
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Calendar> evalForCalendar(final String evalExpression, final Object... parameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Calendar>(getTarget().execute(Eval.forCalendar(evalExpression, parameters)));
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, Byte> evalForByte(final String ognlExpression, final Object... parameters) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, Byte>(getTarget().execute(Eval.forByte(ognlExpression, parameters)));
     }
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Double> evalForDouble(final String evalExpression, final Object... parameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Double>(getTarget().execute(Eval.forDouble(evalExpression, parameters)));
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, Calendar> evalForCalendar(final String ognlExpression, final Object... parameters) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, Calendar>(getTarget().execute(Eval.forCalendar(ognlExpression, parameters)));
     }
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Float> evalForFloat(final String evalExpression, final Object... parameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Float>(getTarget().execute(Eval.forFloat(evalExpression, parameters)));
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, Double> evalForDouble(final String ognlExpression, final Object... parameters) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, Double>(getTarget().execute(Eval.forDouble(ognlExpression, parameters)));
     }
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Integer> evalForInteger(final String evalExpression, final Object... parameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Integer>(getTarget().execute(Eval.forInteger(evalExpression, parameters)));
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, Float> evalForFloat(final String ognlExpression, final Object... parameters) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, Float>(getTarget().execute(Eval.forFloat(ognlExpression, parameters)));
     }
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Long> evalForLong(final String evalExpression, final Object... parameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Long>(getTarget().execute(Eval.forLong(evalExpression, parameters)));
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, Integer> evalForInteger(final String ognlExpression, final Object... parameters) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, Integer>(getTarget().execute(Eval.forInteger(ognlExpression, parameters)));
     }
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Short> evalForShort(final String evalExpression, final Object... parameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Short>(getTarget().execute(Eval.forShort(evalExpression, parameters)));
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, Long> evalForLong(final String ognlExpression, final Object... parameters) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, Long>(getTarget().execute(Eval.forLong(ognlExpression, parameters)));
     }
 
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, String> evalForString(final String evalExpression, final Object... parameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, String>(getTarget().execute(Eval.forString(evalExpression, parameters)));
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, Short> evalForShort(final String ognlExpression, final Object... parameters) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, Short>(getTarget().execute(Eval.forShort(ognlExpression, parameters)));
     }
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Character> evalForCharacter(final String evalExpression, final Object... parameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Character>(getTarget().execute(Eval.forCharacter(evalExpression, parameters)));
+
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, String> evalForString(final String ognlExpression, final Object... parameters) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, String>(getTarget().execute(Eval.forString(ognlExpression, parameters)));
     }
 
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Date> evalForDate(final String evalExpression, final Object... parameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Date>(getTarget().execute(Eval.forDate(evalExpression, parameters)));
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, Character> evalForCharacter(final String ognlExpression, final Object... parameters) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, Character>(getTarget().execute(Eval.forCharacter(ognlExpression, parameters)));
+    }
+
+    public ILevel3MapOfSetEntriesValueElementsOperator<K, Date> evalForDate(final String ognlExpression, final Object... parameters) {
+        return new Level3MapOfSetEntriesValueElementsOperator<K, Date>(getTarget().execute(Eval.forDate(ognlExpression, parameters)));
     }
 
 

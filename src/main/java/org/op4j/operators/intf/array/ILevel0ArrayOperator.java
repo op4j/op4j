@@ -78,15 +78,15 @@ public interface ILevel0ArrayOperator<T>
     public ILevel0ArrayOperator<T> addAll(final Collection<T> collection);
     public ILevel0ArrayOperator<T> removeIndexes(final int... indices);
     public ILevel0ArrayOperator<T> removeEquals(final T... values);
-    public ILevel0ArrayOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOperator<T> removeMatching(final String ognlExpression, final Object... optionalExpParams);
     public ILevel0ArrayOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel0ArrayOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel0ArrayOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel0ArrayOperator<T> removeSelected(final ISelector<T> selector);
     public ILevel0ArrayOperator<T> removeIndexesNot(final int... indices);
     public ILevel0ArrayOperator<T> removeNulls();
-    public ILevel0ArrayOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams);
-    public ILevel0ArrayOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams);
+    public ILevel0ArrayOperator<T> removeNotNullMatching(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel0ArrayOperator<T> removeNullOrMatching(final String ognlExpression, final Object... optionalExpParams);
     
     public ILevel0ListOperator<T> toList();
     
@@ -98,16 +98,16 @@ public interface ILevel0ArrayOperator<T>
     
     
     public ILevel1ArrayElementsOperator<T> forEachIndex(final int... indices);
-    public ILevel1ArrayElementsOperator<T> forEachMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1ArrayElementsOperator<T> forEachMatching(final String ognlExpression, final Object... optionalExpParams);
     public ILevel1ArrayElementsOperator<T> forEachMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel1ArrayElementsOperator<T> forEachNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel1ArrayElementsOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel1ArrayElementsOperator<T> forEachSelected(final ISelector<T> selector);
     public ILevel1ArrayElementsOperator<T> forEachNull();
-    public ILevel1ArrayElementsOperator<T> forEachNullOrMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1ArrayElementsOperator<T> forEachNullOrMatching(final String ognlExpression, final Object... optionalExpParams);
     public ILevel1ArrayElementsOperator<T> forEachIndexNot(final int... indices);
     public ILevel1ArrayElementsOperator<T> forEachNotNull();
-    public ILevel1ArrayElementsOperator<T> forEachNotNullMatching(final String expression, final Object... optionalExpParams);
+    public ILevel1ArrayElementsOperator<T> forEachNotNullMatching(final String ognlExpression, final Object... optionalExpParams);
     
 
 

@@ -34,11 +34,11 @@ public interface IModifiableShrinkableOperator<T> {
 
     public IModifiableGrowableOperator<T> removeIndexes(final int... indices);
     public IModifiableGrowableOperator<T> removeEquals(final T... values);
-    public IModifiableGrowableOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
+    public IModifiableGrowableOperator<T> removeMatching(final String ognlExpression, final Object... optionalExpParams);
     public IModifiableGrowableOperator<T> removeSelected(final ISelector<T> filter);
     public IModifiableGrowableOperator<T> removeIndexesNot(final int... indices);
     public IModifiableGrowableOperator<T> removeNulls();
-    public IModifiableGrowableOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams);
+    public IModifiableGrowableOperator<T> removeNotNullMatching(final String ognlExpression, final Object... optionalExpParams);
     
     
 }

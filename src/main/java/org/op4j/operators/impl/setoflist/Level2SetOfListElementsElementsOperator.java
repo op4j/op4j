@@ -139,74 +139,74 @@ public class Level2SetOfListElementsElementsOperator<T> extends Operator
     }
 
 
-    public ILevel2SetOfListElementsElementsOperator<BigDecimal> evalForBigDecimal(final String evalExpression, final Object... parameters) {
-        return new Level2SetOfListElementsElementsOperator<BigDecimal>(getTarget().execute(Eval.forBigDecimal(evalExpression, parameters)));
+    public ILevel2SetOfListElementsElementsOperator<BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... parameters) {
+        return new Level2SetOfListElementsElementsOperator<BigDecimal>(getTarget().execute(Eval.forBigDecimal(ognlExpression, parameters)));
     }
 
 
-    public ILevel2SetOfListElementsElementsOperator<BigInteger> evalForBigInteger(final String evalExpression, final Object... parameters) {
-        return new Level2SetOfListElementsElementsOperator<BigInteger>(getTarget().execute(Eval.forBigInteger(evalExpression, parameters)));
+    public ILevel2SetOfListElementsElementsOperator<BigInteger> evalForBigInteger(final String ognlExpression, final Object... parameters) {
+        return new Level2SetOfListElementsElementsOperator<BigInteger>(getTarget().execute(Eval.forBigInteger(ognlExpression, parameters)));
     }
 
 
-    public ILevel2SetOfListElementsElementsOperator<Boolean> evalForBoolean(final String evalExpression, final Object... parameters) {
-        return new Level2SetOfListElementsElementsOperator<Boolean>(getTarget().execute(Eval.forBoolean(evalExpression, parameters)));
+    public ILevel2SetOfListElementsElementsOperator<Boolean> evalForBoolean(final String ognlExpression, final Object... parameters) {
+        return new Level2SetOfListElementsElementsOperator<Boolean>(getTarget().execute(Eval.forBoolean(ognlExpression, parameters)));
     }
 
 
-    public ILevel2SetOfListElementsElementsOperator<?> evalForObject(final String evalExpression, final Object... parameters) {
-        return new Level2SetOfListElementsElementsOperator<Object>(getTarget().execute(Eval.forObject(evalExpression, parameters)));
+    public ILevel2SetOfListElementsElementsOperator<?> evalForObject(final String ognlExpression, final Object... parameters) {
+        return new Level2SetOfListElementsElementsOperator<Object>(getTarget().execute(Eval.forObject(ognlExpression, parameters)));
     }
 
-    public <X> ILevel2SetOfListElementsElementsOperator<X> evalForObjectOfType(final Type<X> resultType, final String evalExpression, final Object... parameters) {
-        return new Level2SetOfListElementsElementsOperator<X>(getTarget().execute(Eval.forObjectOfType(resultType, evalExpression, parameters)));
+    public <X> ILevel2SetOfListElementsElementsOperator<X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... parameters) {
+        return new Level2SetOfListElementsElementsOperator<X>(getTarget().execute(Eval.forObjectOfType(resultType, ognlExpression, parameters)));
     }
 
-    public ILevel2SetOfListElementsElementsOperator<Byte> evalForByte(final String evalExpression, final Object... parameters) {
-        return new Level2SetOfListElementsElementsOperator<Byte>(getTarget().execute(Eval.forByte(evalExpression, parameters)));
-    }
-
-
-    public ILevel2SetOfListElementsElementsOperator<Calendar> evalForCalendar(final String evalExpression, final Object... parameters) {
-        return new Level2SetOfListElementsElementsOperator<Calendar>(getTarget().execute(Eval.forCalendar(evalExpression, parameters)));
+    public ILevel2SetOfListElementsElementsOperator<Byte> evalForByte(final String ognlExpression, final Object... parameters) {
+        return new Level2SetOfListElementsElementsOperator<Byte>(getTarget().execute(Eval.forByte(ognlExpression, parameters)));
     }
 
 
-    public ILevel2SetOfListElementsElementsOperator<Double> evalForDouble(final String evalExpression, final Object... parameters) {
-        return new Level2SetOfListElementsElementsOperator<Double>(getTarget().execute(Eval.forDouble(evalExpression, parameters)));
+    public ILevel2SetOfListElementsElementsOperator<Calendar> evalForCalendar(final String ognlExpression, final Object... parameters) {
+        return new Level2SetOfListElementsElementsOperator<Calendar>(getTarget().execute(Eval.forCalendar(ognlExpression, parameters)));
     }
 
 
-    public ILevel2SetOfListElementsElementsOperator<Float> evalForFloat(final String evalExpression, final Object... parameters) {
-        return new Level2SetOfListElementsElementsOperator<Float>(getTarget().execute(Eval.forFloat(evalExpression, parameters)));
+    public ILevel2SetOfListElementsElementsOperator<Double> evalForDouble(final String ognlExpression, final Object... parameters) {
+        return new Level2SetOfListElementsElementsOperator<Double>(getTarget().execute(Eval.forDouble(ognlExpression, parameters)));
     }
 
 
-    public ILevel2SetOfListElementsElementsOperator<Integer> evalForInteger(final String evalExpression, final Object... parameters) {
-        return new Level2SetOfListElementsElementsOperator<Integer>(getTarget().execute(Eval.forInteger(evalExpression, parameters)));
+    public ILevel2SetOfListElementsElementsOperator<Float> evalForFloat(final String ognlExpression, final Object... parameters) {
+        return new Level2SetOfListElementsElementsOperator<Float>(getTarget().execute(Eval.forFloat(ognlExpression, parameters)));
     }
 
 
-    public ILevel2SetOfListElementsElementsOperator<Long> evalForLong(final String evalExpression, final Object... parameters) {
-        return new Level2SetOfListElementsElementsOperator<Long>(getTarget().execute(Eval.forLong(evalExpression, parameters)));
+    public ILevel2SetOfListElementsElementsOperator<Integer> evalForInteger(final String ognlExpression, final Object... parameters) {
+        return new Level2SetOfListElementsElementsOperator<Integer>(getTarget().execute(Eval.forInteger(ognlExpression, parameters)));
     }
 
 
-    public ILevel2SetOfListElementsElementsOperator<Short> evalForShort(final String evalExpression, final Object... parameters) {
-        return new Level2SetOfListElementsElementsOperator<Short>(getTarget().execute(Eval.forShort(evalExpression, parameters)));
+    public ILevel2SetOfListElementsElementsOperator<Long> evalForLong(final String ognlExpression, final Object... parameters) {
+        return new Level2SetOfListElementsElementsOperator<Long>(getTarget().execute(Eval.forLong(ognlExpression, parameters)));
     }
 
 
-    public ILevel2SetOfListElementsElementsOperator<String> evalForString(final String evalExpression, final Object... parameters) {
-        return new Level2SetOfListElementsElementsOperator<String>(getTarget().execute(Eval.forString(evalExpression, parameters)));
+    public ILevel2SetOfListElementsElementsOperator<Short> evalForShort(final String ognlExpression, final Object... parameters) {
+        return new Level2SetOfListElementsElementsOperator<Short>(getTarget().execute(Eval.forShort(ognlExpression, parameters)));
     }
 
-    public ILevel2SetOfListElementsElementsOperator<Character> evalForCharacter(final String evalExpression, final Object... parameters) {
-        return new Level2SetOfListElementsElementsOperator<Character>(getTarget().execute(Eval.forCharacter(evalExpression, parameters)));
+
+    public ILevel2SetOfListElementsElementsOperator<String> evalForString(final String ognlExpression, final Object... parameters) {
+        return new Level2SetOfListElementsElementsOperator<String>(getTarget().execute(Eval.forString(ognlExpression, parameters)));
     }
 
-    public ILevel2SetOfListElementsElementsOperator<Date> evalForDate(final String evalExpression, final Object... parameters) {
-        return new Level2SetOfListElementsElementsOperator<Date>(getTarget().execute(Eval.forDate(evalExpression, parameters)));
+    public ILevel2SetOfListElementsElementsOperator<Character> evalForCharacter(final String ognlExpression, final Object... parameters) {
+        return new Level2SetOfListElementsElementsOperator<Character>(getTarget().execute(Eval.forCharacter(ognlExpression, parameters)));
+    }
+
+    public ILevel2SetOfListElementsElementsOperator<Date> evalForDate(final String ognlExpression, final Object... parameters) {
+        return new Level2SetOfListElementsElementsOperator<Date>(getTarget().execute(Eval.forDate(ognlExpression, parameters)));
     }
 
 

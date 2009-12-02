@@ -40,14 +40,14 @@ public interface IModifiableCollectionOperator<T> {
     public IModifiableCollectionOperator<T> addAll(final Collection<T> collection);
     public IModifiableCollectionOperator<T> removeIndexes(final int... indices);
     public IModifiableCollectionOperator<T> removeEquals(final T... values);
-    public IModifiableCollectionOperator<T> removeMatching(final String expression, final Object... optionalExpParams);
+    public IModifiableCollectionOperator<T> removeMatching(final String ognlExpression, final Object... optionalExpParams);
     public IModifiableCollectionOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval);
     public IModifiableCollectionOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
     public IModifiableCollectionOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
     public IModifiableCollectionOperator<T> removeSelected(final ISelector<T> selector);
     public IModifiableCollectionOperator<T> removeIndexesNot(final int... indices);
     public IModifiableCollectionOperator<T> removeNulls();
-    public IModifiableCollectionOperator<T> removeNotNullMatching(final String expression, final Object... optionalExpParams);
-    public IModifiableCollectionOperator<T> removeNullOrMatching(final String expression, final Object... optionalExpParams);
+    public IModifiableCollectionOperator<T> removeNotNullMatching(final String ognlExpression, final Object... optionalExpParams);
+    public IModifiableCollectionOperator<T> removeNullOrMatching(final String ognlExpression, final Object... optionalExpParams);
     
 }
