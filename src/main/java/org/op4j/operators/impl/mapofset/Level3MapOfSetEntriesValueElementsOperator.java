@@ -31,8 +31,6 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.Eval;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.functions.methodcallers.Call;
-import org.op4j.functions.methodcallers.IMethodCaller;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.ILevel3MapOfSetEntriesValueElementsOperator;
@@ -59,73 +57,6 @@ public class Level3MapOfSetEntriesValueElementsOperator<K,V> extends Operator
     public <X> ILevel3MapOfSetEntriesValueElementsOperator<K, X> convert(final IConverter<X, ? super V> converter) {
         return new Level3MapOfSetEntriesValueElementsOperator<K, X>(getTarget().execute(converter));
     }
-
-
-
-    public <X> ILevel3MapOfSetEntriesValueElementsOperator<K, X> call(final IMethodCaller<X, ? super V> call) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, X>(getTarget().execute(call));
-    }
-
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, ?> callForObject(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Object>(getTarget().execute(Call.forObject(methodName, optionalParameters)));
-    }
-
-    public <X> ILevel3MapOfSetEntriesValueElementsOperator<K, X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, X>(getTarget().execute(Call.forObjectOfType(resultType, methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Byte> callForByte(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Byte>(getTarget().execute(Call.forByte(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Short> callForShort(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Short>(getTarget().execute(Call.forShort(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Integer> callForInteger(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Integer>(getTarget().execute(Call.forInteger(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Long> callForLong(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Long>(getTarget().execute(Call.forLong(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Float> callForFloat(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Float>(getTarget().execute(Call.forFloat(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Double> callForDouble(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Double>(getTarget().execute(Call.forDouble(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, BigInteger>(getTarget().execute(Call.forBigInteger(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, BigDecimal>(getTarget().execute(Call.forBigDecimal(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Boolean> callForBoolean(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Boolean>(getTarget().execute(Call.forBoolean(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Calendar> callForCalendar(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Calendar>(getTarget().execute(Call.forCalendar(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, String> callForString(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, String>(getTarget().execute(Call.forString(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Character> callForCharacter(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Character>(getTarget().execute(Call.forCharacter(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfSetEntriesValueElementsOperator<K, Date> callForDate(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfSetEntriesValueElementsOperator<K, Date>(getTarget().execute(Call.forDate(methodName, optionalParameters)));
-    }
-
 
 
 

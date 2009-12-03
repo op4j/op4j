@@ -30,7 +30,6 @@ import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.functions.methodcallers.IMethodCaller;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
@@ -41,7 +40,6 @@ import org.op4j.operators.intf.mapofset.ILevel0MapOfSetOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
 import org.op4j.operators.qualities.IBuilderMultiOperator;
 import org.op4j.operators.qualities.IBuilderOperator;
-import org.op4j.operators.qualities.ICallableOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
@@ -65,8 +63,7 @@ public interface ILevel0GenericMultiOperator<T>
                 IUniqableOperator<T>,
         		IBuilderOperator<T>,
         		IBuilderMultiOperator<T>,
-        		ICallableOperator<T>,
-                IConvertibleOperator<T>,
+        		IConvertibleOperator<T>,
         		IEvaluableOperator<T>,
         		IExecutableOperator<T>,
                 ITypeParameterizableXOperator<T>,
@@ -79,26 +76,6 @@ public interface ILevel0GenericMultiOperator<T>
     
     
     public <X> ILevel0GenericMultiOperator<X> convert(final IConverter<X,? super T> converter);
-    
-    public <X> ILevel0GenericMultiOperator<X> call(final IMethodCaller<X,? super T> call);
-
-    public ILevel0GenericMultiOperator<?> callForObject(final String methodName, final Object... optionalParameters);
-    public <X> ILevel0GenericMultiOperator<X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters);
-    public ILevel0GenericMultiOperator<Byte> callForByte(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericMultiOperator<Short> callForShort(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericMultiOperator<Integer> callForInteger(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericMultiOperator<Long> callForLong(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericMultiOperator<Float> callForFloat(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericMultiOperator<Double> callForDouble(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericMultiOperator<BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericMultiOperator<BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericMultiOperator<Boolean> callForBoolean(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericMultiOperator<Calendar> callForCalendar(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericMultiOperator<String> callForString(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericMultiOperator<Character> callForCharacter(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericMultiOperator<Date> callForDate(final String methodName, final Object... optionalParameters);
-
-    
     
     public <X> ILevel0GenericMultiOperator<X> eval(final IEvaluator<X,? super T> eval);
 

@@ -30,11 +30,9 @@ import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.functions.methodcallers.IMethodCaller;
 import org.op4j.operators.intf.array.ILevel1ArrayElementsOperator;
 import org.op4j.operators.intf.arrayoflist.ILevel1ArrayOfListElementsOperator;
 import org.op4j.operators.intf.arrayofset.ILevel1ArrayOfSetElementsOperator;
-import org.op4j.operators.qualities.ICallableOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
@@ -63,7 +61,6 @@ public interface ILevel1ArrayOfMapElementsOperator<K,V>
                 ITypeParameterizableXYOperator<K,V>,
                 IExecutableOperator<Map<K,V>>,
                 IConvertibleOperator<Map<K,V>>,
-                ICallableOperator<Map<K,V>>,
                 IEvaluableOperator<Map<K,V>>,
                 IModifiableMapOperator<K,V>,
                 IExtractableMapOperator<K,V> {
@@ -106,26 +103,6 @@ public interface ILevel1ArrayOfMapElementsOperator<K,V>
     
     
     public <X> ILevel1ArrayElementsOperator<X> convert(final IConverter<X,? super Map<K,V>> converter);
-    
-    public <X> ILevel1ArrayElementsOperator<X> call(final IMethodCaller<X,? super Map<K,V>> call);
-
-    public ILevel1ArrayElementsOperator<?> callForObject(final String methodName, final Object... optionalParameters);
-    public <X> ILevel1ArrayElementsOperator<X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters);
-    public ILevel1ArrayElementsOperator<Byte> callForByte(final String methodName, final Object... optionalParameters);
-    public ILevel1ArrayElementsOperator<Short> callForShort(final String methodName, final Object... optionalParameters);
-    public ILevel1ArrayElementsOperator<Integer> callForInteger(final String methodName, final Object... optionalParameters);
-    public ILevel1ArrayElementsOperator<Long> callForLong(final String methodName, final Object... optionalParameters);
-    public ILevel1ArrayElementsOperator<Float> callForFloat(final String methodName, final Object... optionalParameters);
-    public ILevel1ArrayElementsOperator<Double> callForDouble(final String methodName, final Object... optionalParameters);
-    public ILevel1ArrayElementsOperator<BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters);
-    public ILevel1ArrayElementsOperator<BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters);
-    public ILevel1ArrayElementsOperator<Boolean> callForBoolean(final String methodName, final Object... optionalParameters);
-    public ILevel1ArrayElementsOperator<Calendar> callForCalendar(final String methodName, final Object... optionalParameters);
-    public ILevel1ArrayElementsOperator<String> callForString(final String methodName, final Object... optionalParameters);
-    public ILevel1ArrayElementsOperator<Character> callForCharacter(final String methodName, final Object... optionalParameters);
-    public ILevel1ArrayElementsOperator<Date> callForDate(final String methodName, final Object... optionalParameters);
-
-    
     
     public <X> ILevel1ArrayElementsOperator<X> eval(final IEvaluator<X,? super Map<K,V>> eval);
 

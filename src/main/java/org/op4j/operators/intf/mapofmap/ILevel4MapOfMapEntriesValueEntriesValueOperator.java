@@ -29,8 +29,6 @@ import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.functions.methodcallers.IMethodCaller;
-import org.op4j.operators.qualities.ICallableOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
@@ -49,7 +47,6 @@ import org.op4j.operators.qualities.IUniqOperator;
 public interface ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
 		extends IUniqOperator<Map<K1,Map<K2,V>>>,
 				INavigatingMapEntryOperator,
-                ICallableOperator<V>,
                 IConvertibleOperator<V>,
         		IEvaluableOperator<V>,
         		IExecutableOperator<V>,
@@ -58,26 +55,6 @@ public interface ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
     public ILevel3MapOfMapEntriesValueEntriesOperator<K1,K2,V> endOn();
     
     public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> convert(final IConverter<X,? super V> converter);
-    
-    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> call(final IMethodCaller<X,? super V> call);
-
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,?> callForObject(final String methodName, final Object... optionalParameters);
-    public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Byte> callForByte(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Short> callForShort(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Integer> callForInteger(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Long> callForLong(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Float> callForFloat(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Double> callForDouble(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Boolean> callForBoolean(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Calendar> callForCalendar(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,String> callForString(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Character> callForCharacter(final String methodName, final Object... optionalParameters);
-    public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,Date> callForDate(final String methodName, final Object... optionalParameters);
-
-    
     
     public <X> ILevel4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> eval(final IEvaluator<X,? super V> eval);
 

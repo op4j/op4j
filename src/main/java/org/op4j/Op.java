@@ -55,6 +55,7 @@ import org.op4j.functions.converters.ToString;
 import org.op4j.functions.converters.ToString.DateStyle;
 import org.op4j.functions.converters.ToString.TimeStyle;
 import org.op4j.functions.evaluators.Eval;
+import org.op4j.functions.evaluators.MethodCall;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.impl.arrayoflist.Level0ArrayOfListOperator;
@@ -406,7 +407,7 @@ public final class Op {
         
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().get());
         
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().callForInteger("length").get());
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().eval(MethodCall.forInteger("length")).get());
         
         
         final BigDecimal bd = new BigDecimal("3455234.6325");
@@ -703,6 +704,10 @@ public final class Op {
         System.out.println(Op.onList(listOfListOfString1).get());
         System.out.println(Op.onList(listOfListOfString1).forEach().asList(Types.STRING).forEach().get());
         
+        
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().eval(MethodCall.forInteger("length")).get());
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEachIndex(0).add("").removeMatching(MethodCall.forBoolean("isEmpty")).get());
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().removeMatching(MethodCall.forBoolean("isEmpty")).get());
         
     }
     

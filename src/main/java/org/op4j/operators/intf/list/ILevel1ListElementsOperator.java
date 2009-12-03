@@ -29,12 +29,10 @@ import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.functions.methodcallers.IMethodCaller;
 import org.op4j.operators.intf.listofarray.ILevel1ListOfArrayElementsOperator;
 import org.op4j.operators.intf.listoflist.ILevel1ListOfListElementsOperator;
 import org.op4j.operators.intf.listofmap.ILevel1ListOfMapElementsOperator;
 import org.op4j.operators.intf.listofset.ILevel1ListOfSetElementsOperator;
-import org.op4j.operators.qualities.ICallableOperator;
 import org.op4j.operators.qualities.ICastableToOneLevelStructuresOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
@@ -55,7 +53,6 @@ public interface ILevel1ListElementsOperator<T>
 		extends IUniqOperator<List<T>>,
                 ICastableToOneLevelStructuresOperator,
                 INavigatingCollectionOperator<T>,
-                ICallableOperator<T>,
                 IConvertibleOperator<T>,
         		IEvaluableOperator<T>,
         		IExecutableOperator<T>,
@@ -65,26 +62,6 @@ public interface ILevel1ListElementsOperator<T>
     public ILevel0ListOperator<T> endFor();
     
     public <X> ILevel1ListElementsOperator<X> convert(final IConverter<X,? super T> converter);
-    
-    public <X> ILevel1ListElementsOperator<X> call(final IMethodCaller<X,? super T> call);
-
-    public ILevel1ListElementsOperator<?> callForObject(final String methodName, final Object... optionalParameters);
-    public <X> ILevel1ListElementsOperator<X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters);
-    public ILevel1ListElementsOperator<Byte> callForByte(final String methodName, final Object... optionalParameters);
-    public ILevel1ListElementsOperator<Short> callForShort(final String methodName, final Object... optionalParameters);
-    public ILevel1ListElementsOperator<Integer> callForInteger(final String methodName, final Object... optionalParameters);
-    public ILevel1ListElementsOperator<Long> callForLong(final String methodName, final Object... optionalParameters);
-    public ILevel1ListElementsOperator<Float> callForFloat(final String methodName, final Object... optionalParameters);
-    public ILevel1ListElementsOperator<Double> callForDouble(final String methodName, final Object... optionalParameters);
-    public ILevel1ListElementsOperator<BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters);
-    public ILevel1ListElementsOperator<BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters);
-    public ILevel1ListElementsOperator<Boolean> callForBoolean(final String methodName, final Object... optionalParameters);
-    public ILevel1ListElementsOperator<Calendar> callForCalendar(final String methodName, final Object... optionalParameters);
-    public ILevel1ListElementsOperator<String> callForString(final String methodName, final Object... optionalParameters);
-    public ILevel1ListElementsOperator<Character> callForCharacter(final String methodName, final Object... optionalParameters);
-    public ILevel1ListElementsOperator<Date> callForDate(final String methodName, final Object... optionalParameters);
-
-    
     
     public <X> ILevel1ListElementsOperator<X> eval(final IEvaluator<X,? super T> eval);
 

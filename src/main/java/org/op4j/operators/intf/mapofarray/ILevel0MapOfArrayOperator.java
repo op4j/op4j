@@ -30,7 +30,6 @@ import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.functions.methodcallers.IMethodCaller;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.listofarray.ILevel0ListOfArrayOperator;
@@ -38,7 +37,6 @@ import org.op4j.operators.intf.mapoflist.ILevel0MapOfListOperator;
 import org.op4j.operators.intf.mapofmap.ILevel0MapOfMapOperator;
 import org.op4j.operators.intf.mapofset.ILevel0MapOfSetOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
-import org.op4j.operators.qualities.ICallableOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IConvertibleToMapOfListOperator;
 import org.op4j.operators.qualities.IConvertibleToMapOfMapOperator;
@@ -72,7 +70,6 @@ public interface ILevel0MapOfArrayOperator<K,V>
 		        IGenerizableOperator<Map<K,V[]>>,
                 IExecutableOperator<Map<K,V[]>>,
                 IConvertibleOperator<Map<K,V[]>>,
-                ICallableOperator<Map<K,V[]>>,
                 IEvaluableOperator<Map<K,V[]>>,
 		        IConvertibleToMapOfListOperator<K,V>,
 		        IConvertibleToMapOfSetOperator<K,V>,
@@ -125,26 +122,6 @@ public interface ILevel0MapOfArrayOperator<K,V>
     
     
     public <X> ILevel0GenericUniqOperator<X> convert(final IConverter<X,? super Map<K,V[]>> converter);
-    
-    public <X> ILevel0GenericUniqOperator<X> call(final IMethodCaller<X,? super Map<K,V[]>> call);
-
-    public ILevel0GenericUniqOperator<?> callForObject(final String methodName, final Object... optionalParameters);
-    public <X> ILevel0GenericUniqOperator<X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Byte> callForByte(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Short> callForShort(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Integer> callForInteger(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Long> callForLong(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Float> callForFloat(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Double> callForDouble(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Boolean> callForBoolean(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Calendar> callForCalendar(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<String> callForString(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Character> callForCharacter(final String methodName, final Object... optionalParameters);
-    public ILevel0GenericUniqOperator<Date> callForDate(final String methodName, final Object... optionalParameters);
-
-    
     
     public <X> ILevel0GenericUniqOperator<X> eval(final IEvaluator<X,? super Map<K,V[]>> eval);
 

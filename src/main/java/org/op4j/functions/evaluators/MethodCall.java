@@ -17,7 +17,7 @@
  * 
  * =============================================================================
  */
-package org.op4j.functions.methodcallers;
+package org.op4j.functions.evaluators;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -43,7 +43,7 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Call<R,T> implements IMethodCaller<R,T> {
+public class MethodCall<R,T> implements IEvaluator<R,T> {
     
     
     private final Type<R> resultType;
@@ -53,66 +53,66 @@ public class Call<R,T> implements IMethodCaller<R,T> {
     
     
     
-    public static Call<?,Object> forObject(final String methodName, final Object... optionalParameters) {
-        return new Call<Object,Object>(Types.OBJECT, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    public static MethodCall<?,Object> forObject(final String methodName, final Object... optionalParameters) {
+        return new MethodCall<Object,Object>(Types.OBJECT, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static <R> Call<R,Object> forObjectOfType(final Type<R> resultType, final String methodName, final Object... optionalParameters) {
-        return new Call<R,Object>(resultType, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    public static <R> MethodCall<R,Object> forObjectOfType(final Type<R> resultType, final String methodName, final Object... optionalParameters) {
+        return new MethodCall<R,Object>(resultType, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
 
 
     
-    public static Call<BigInteger,Object> forBigInteger(final String methodName, final Object... optionalParameters) {
-        return new Call<BigInteger,Object>(Types.BIG_INTEGER, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    public static MethodCall<BigInteger,Object> forBigInteger(final String methodName, final Object... optionalParameters) {
+        return new MethodCall<BigInteger,Object>(Types.BIG_INTEGER, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<BigDecimal,Object> forBigDecimal(final String methodName, final Object... optionalParameters) {
-        return new Call<BigDecimal,Object>(Types.BIG_DECIMAL, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    public static MethodCall<BigDecimal,Object> forBigDecimal(final String methodName, final Object... optionalParameters) {
+        return new MethodCall<BigDecimal,Object>(Types.BIG_DECIMAL, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Boolean,Object> forBoolean(final String methodName, final Object... optionalParameters) {
-        return new Call<Boolean,Object>(Types.BOOLEAN, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    public static MethodCall<Boolean,Object> forBoolean(final String methodName, final Object... optionalParameters) {
+        return new MethodCall<Boolean,Object>(Types.BOOLEAN, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Byte,Object> forByte(final String methodName, final Object... optionalParameters) {
-        return new Call<Byte,Object>(Types.BYTE, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    public static MethodCall<Byte,Object> forByte(final String methodName, final Object... optionalParameters) {
+        return new MethodCall<Byte,Object>(Types.BYTE, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Character,Object> forCharacter(final String methodName, final Object... optionalParameters) {
-        return new Call<Character,Object>(Types.CHARACTER, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    public static MethodCall<Character,Object> forCharacter(final String methodName, final Object... optionalParameters) {
+        return new MethodCall<Character,Object>(Types.CHARACTER, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Calendar,Object> forCalendar(final String methodName, final Object... optionalParameters) {
-        return new Call<Calendar,Object>(Types.CALENDAR, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    public static MethodCall<Calendar,Object> forCalendar(final String methodName, final Object... optionalParameters) {
+        return new MethodCall<Calendar,Object>(Types.CALENDAR, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Date,Object> forDate(final String methodName, final Object... optionalParameters) {
-        return new Call<Date,Object>(Types.DATE, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    public static MethodCall<Date,Object> forDate(final String methodName, final Object... optionalParameters) {
+        return new MethodCall<Date,Object>(Types.DATE, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Double,Object> forDouble(final String methodName, final Object... optionalParameters) {
-        return new Call<Double,Object>(Types.DOUBLE, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    public static MethodCall<Double,Object> forDouble(final String methodName, final Object... optionalParameters) {
+        return new MethodCall<Double,Object>(Types.DOUBLE, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Float,Object> forFloat(final String methodName, final Object... optionalParameters) {
-        return new Call<Float,Object>(Types.FLOAT, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    public static MethodCall<Float,Object> forFloat(final String methodName, final Object... optionalParameters) {
+        return new MethodCall<Float,Object>(Types.FLOAT, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Integer,Object> forInteger(final String methodName, final Object... optionalParameters) {
-        return new Call<Integer,Object>(Types.INTEGER, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    public static MethodCall<Integer,Object> forInteger(final String methodName, final Object... optionalParameters) {
+        return new MethodCall<Integer,Object>(Types.INTEGER, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Long,Object> forLong(final String methodName, final Object... optionalParameters) {
-        return new Call<Long,Object>(Types.LONG, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    public static MethodCall<Long,Object> forLong(final String methodName, final Object... optionalParameters) {
+        return new MethodCall<Long,Object>(Types.LONG, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<Short,Object> forShort(final String methodName, final Object... optionalParameters) {
-        return new Call<Short,Object>(Types.SHORT, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    public static MethodCall<Short,Object> forShort(final String methodName, final Object... optionalParameters) {
+        return new MethodCall<Short,Object>(Types.SHORT, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
-    public static Call<String,Object> forString(final String methodName, final Object... optionalParameters) {
-        return new Call<String,Object>(Types.STRING, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
+    public static MethodCall<String,Object> forString(final String methodName, final Object... optionalParameters) {
+        return new MethodCall<String,Object>(Types.STRING, methodName, VarArgsUtil.asOptionalObjectList(optionalParameters));
     }
     
     
@@ -122,7 +122,7 @@ public class Call<R,T> implements IMethodCaller<R,T> {
     
     
     
-    private Call(final Type<R> resultType, final String methodName, final List<Object> parameters) {
+    private MethodCall(final Type<R> resultType, final String methodName, final List<Object> parameters) {
     	Validate.notNull(resultType, "Result type cannot be null");
     	Validate.notNull(methodName, "Method name cannot be null");
         this.resultType = resultType;
@@ -131,7 +131,7 @@ public class Call<R,T> implements IMethodCaller<R,T> {
         this.parameterClasses = extractParameterClasses(this.parameters);
     }
     
-    private Call(final Class<R> resultClass, final String methodName, final List<Object> parameters) {
+    private MethodCall(final Class<R> resultClass, final String methodName, final List<Object> parameters) {
     	Validate.notNull(resultClass, "Result class cannot be null");
     	Validate.notNull(methodName, "Method name cannot be null");
         this.resultType = Types.forClass(resultClass);

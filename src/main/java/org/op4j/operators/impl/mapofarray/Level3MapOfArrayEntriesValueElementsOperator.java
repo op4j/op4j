@@ -31,8 +31,6 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.Eval;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.functions.methodcallers.Call;
-import org.op4j.functions.methodcallers.IMethodCaller;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofarray.ILevel2MapOfArrayEntriesValueOperator;
 import org.op4j.operators.intf.mapofarray.ILevel3MapOfArrayEntriesValueElementsOperator;
@@ -62,73 +60,6 @@ public class Level3MapOfArrayEntriesValueElementsOperator<K,V> extends Operator
     public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K, X> convert(final IConverter<X, ? super V> converter) {
         return new Level3MapOfArrayEntriesValueElementsOperator<K, X>(converter.getResultType(), getTarget().execute(converter));
     }
-
-
-
-    public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K, X> call(final IMethodCaller<X, ? super V> call) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, X>(call.getResultType(), getTarget().execute(call));
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, ?> callForObject(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Object>(Types.OBJECT, getTarget().execute(Call.forObject(methodName, optionalParameters)));
-    }
-
-    public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K, X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, X>(resultType, getTarget().execute(Call.forObjectOfType(resultType, methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Byte> callForByte(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Byte>(Types.BYTE, getTarget().execute(Call.forByte(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Short> callForShort(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Short>(Types.SHORT, getTarget().execute(Call.forShort(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Integer> callForInteger(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Integer>(Types.INTEGER, getTarget().execute(Call.forInteger(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Long> callForLong(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Long>(Types.LONG, getTarget().execute(Call.forLong(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Float> callForFloat(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Float>(Types.FLOAT, getTarget().execute(Call.forFloat(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Double> callForDouble(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Double>(Types.DOUBLE, getTarget().execute(Call.forDouble(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, BigInteger>(Types.BIG_INTEGER, getTarget().execute(Call.forBigInteger(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, BigDecimal>(Types.BIG_DECIMAL, getTarget().execute(Call.forBigDecimal(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Boolean> callForBoolean(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Boolean>(Types.BOOLEAN, getTarget().execute(Call.forBoolean(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Calendar> callForCalendar(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Calendar>(Types.CALENDAR, getTarget().execute(Call.forCalendar(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, String> callForString(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, String>(Types.STRING, getTarget().execute(Call.forString(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Character> callForCharacter(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Character>(Types.CHARACTER, getTarget().execute(Call.forCharacter(methodName, optionalParameters)));
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Date> callForDate(final String methodName, final Object... optionalParameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Date>(Types.DATE, getTarget().execute(Call.forDate(methodName, optionalParameters)));
-    }
-
 
 
 

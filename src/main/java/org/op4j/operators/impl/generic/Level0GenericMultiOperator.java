@@ -41,8 +41,6 @@ import org.op4j.functions.converters.ToMapOfSet;
 import org.op4j.functions.converters.ToSet;
 import org.op4j.functions.evaluators.Eval;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.functions.methodcallers.Call;
-import org.op4j.functions.methodcallers.IMethodCaller;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
@@ -245,71 +243,6 @@ public class Level0GenericMultiOperator<T> extends Operator
         return new Level0GenericMultiOperator<X>(getTarget().iterate().execute(converter).endIterate(Structure.LIST, null));
     }
 
-
-
-    public <X> ILevel0GenericMultiOperator<X> call(final IMethodCaller<X, ? super T> call) {
-        return new Level0GenericMultiOperator<X>(getTarget().iterate().execute(call).endIterate(Structure.LIST, null));
-    }
-
-    public ILevel0GenericMultiOperator<?> callForObject(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericMultiOperator<Object>(getTarget().iterate().execute(Call.forObject(methodName, optionalParameters)).endIterate(Structure.LIST, null));
-    }
-
-    public <X> ILevel0GenericMultiOperator<X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters) {
-        return new Level0GenericMultiOperator<X>(getTarget().iterate().execute(Call.forObjectOfType(resultType, methodName, optionalParameters)).endIterate(Structure.LIST, null));
-    }
-
-    public ILevel0GenericMultiOperator<Byte> callForByte(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericMultiOperator<Byte>(getTarget().iterate().execute(Call.forByte(methodName, optionalParameters)).endIterate(Structure.LIST, null));
-    }
-
-    public ILevel0GenericMultiOperator<Short> callForShort(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericMultiOperator<Short>(getTarget().iterate().execute(Call.forShort(methodName, optionalParameters)).endIterate(Structure.LIST, null));
-    }
-
-    public ILevel0GenericMultiOperator<Integer> callForInteger(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericMultiOperator<Integer>(getTarget().iterate().execute(Call.forInteger(methodName, optionalParameters)).endIterate(Structure.LIST, null));
-    }
-
-    public ILevel0GenericMultiOperator<Long> callForLong(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericMultiOperator<Long>(getTarget().iterate().execute(Call.forLong(methodName, optionalParameters)).endIterate(Structure.LIST, null));
-    }
-
-    public ILevel0GenericMultiOperator<Float> callForFloat(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericMultiOperator<Float>(getTarget().iterate().execute(Call.forFloat(methodName, optionalParameters)).endIterate(Structure.LIST, null));
-    }
-
-    public ILevel0GenericMultiOperator<Double> callForDouble(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericMultiOperator<Double>(getTarget().iterate().execute(Call.forDouble(methodName, optionalParameters)).endIterate(Structure.LIST, null));
-    }
-
-    public ILevel0GenericMultiOperator<BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericMultiOperator<BigInteger>(getTarget().iterate().execute(Call.forBigInteger(methodName, optionalParameters)).endIterate(Structure.LIST, null));
-    }
-
-    public ILevel0GenericMultiOperator<BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericMultiOperator<BigDecimal>(getTarget().iterate().execute(Call.forBigDecimal(methodName, optionalParameters)).endIterate(Structure.LIST, null));
-    }
-
-    public ILevel0GenericMultiOperator<Boolean> callForBoolean(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericMultiOperator<Boolean>(getTarget().iterate().execute(Call.forBoolean(methodName, optionalParameters)).endIterate(Structure.LIST, null));
-    }
-
-    public ILevel0GenericMultiOperator<Calendar> callForCalendar(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericMultiOperator<Calendar>(getTarget().iterate().execute(Call.forCalendar(methodName, optionalParameters)).endIterate(Structure.LIST, null));
-    }
-
-    public ILevel0GenericMultiOperator<String> callForString(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericMultiOperator<String>(getTarget().iterate().execute(Call.forString(methodName, optionalParameters)).endIterate(Structure.LIST, null));
-    }
-
-    public ILevel0GenericMultiOperator<Character> callForCharacter(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericMultiOperator<Character>(getTarget().iterate().execute(Call.forCharacter(methodName, optionalParameters)).endIterate(Structure.LIST, null));
-    }
-
-    public ILevel0GenericMultiOperator<Date> callForDate(final String methodName, final Object... optionalParameters) {
-        return new Level0GenericMultiOperator<Date>(getTarget().iterate().execute(Call.forDate(methodName, optionalParameters)).endIterate(Structure.LIST, null));
-    }
 
 
     public <X> ILevel0GenericMultiOperator<X> eval(final IEvaluator<X, ? super T> eval) {

@@ -37,8 +37,6 @@ import org.op4j.functions.converters.ToList;
 import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.evaluators.Eval;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.functions.methodcallers.Call;
-import org.op4j.functions.methodcallers.IMethodCaller;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.map.Level2MapEntriesValueOperator;
@@ -286,73 +284,6 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     
     
     
-	public <X> ILevel2MapEntriesValueOperator<K,X> call(final IMethodCaller<X, ? super Set<V>> call) {
-        return new Level2MapEntriesValueOperator<K,X>(getTarget().execute(call));
-	}
-
-
-    public ILevel2MapEntriesValueOperator<K,?> callForObject(final String methodName, final Object... optionalParameters) {
-        return new Level2MapEntriesValueOperator<K,Object>(getTarget().execute(Call.forObject(methodName, optionalParameters)));
-    }
-
-    public <X> ILevel2MapEntriesValueOperator<K,X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters) {
-        return new Level2MapEntriesValueOperator<K,X>(getTarget().execute(Call.forObjectOfType(resultType, methodName, optionalParameters)));
-    }
-
-    public ILevel2MapEntriesValueOperator<K,Byte> callForByte(final String methodName, final Object... optionalParameters) {
-        return new Level2MapEntriesValueOperator<K,Byte>(getTarget().execute(Call.forByte(methodName, optionalParameters)));
-    }
-
-    public ILevel2MapEntriesValueOperator<K,Short> callForShort(final String methodName, final Object... optionalParameters) {
-        return new Level2MapEntriesValueOperator<K,Short>(getTarget().execute(Call.forShort(methodName, optionalParameters)));
-    }
-
-    public ILevel2MapEntriesValueOperator<K,Integer> callForInteger(final String methodName, final Object... optionalParameters) {
-        return new Level2MapEntriesValueOperator<K,Integer>(getTarget().execute(Call.forInteger(methodName, optionalParameters)));
-    }
-
-    public ILevel2MapEntriesValueOperator<K,Long> callForLong(final String methodName, final Object... optionalParameters) {
-        return new Level2MapEntriesValueOperator<K,Long>(getTarget().execute(Call.forLong(methodName, optionalParameters)));
-    }
-
-    public ILevel2MapEntriesValueOperator<K,Float> callForFloat(final String methodName, final Object... optionalParameters) {
-        return new Level2MapEntriesValueOperator<K,Float>(getTarget().execute(Call.forFloat(methodName, optionalParameters)));
-    }
-
-    public ILevel2MapEntriesValueOperator<K,Double> callForDouble(final String methodName, final Object... optionalParameters) {
-        return new Level2MapEntriesValueOperator<K,Double>(getTarget().execute(Call.forDouble(methodName, optionalParameters)));
-    }
-
-    public ILevel2MapEntriesValueOperator<K,BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters) {
-        return new Level2MapEntriesValueOperator<K,BigInteger>(getTarget().execute(Call.forBigInteger(methodName, optionalParameters)));
-    }
-
-    public ILevel2MapEntriesValueOperator<K,BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters) {
-        return new Level2MapEntriesValueOperator<K,BigDecimal>(getTarget().execute(Call.forBigDecimal(methodName, optionalParameters)));
-    }
-
-    public ILevel2MapEntriesValueOperator<K,Boolean> callForBoolean(final String methodName, final Object... optionalParameters) {
-        return new Level2MapEntriesValueOperator<K,Boolean>(getTarget().execute(Call.forBoolean(methodName, optionalParameters)));
-    }
-
-    public ILevel2MapEntriesValueOperator<K,Calendar> callForCalendar(final String methodName, final Object... optionalParameters) {
-        return new Level2MapEntriesValueOperator<K,Calendar>(getTarget().execute(Call.forCalendar(methodName, optionalParameters)));
-    }
-
-    public ILevel2MapEntriesValueOperator<K,String> callForString(final String methodName, final Object... optionalParameters) {
-        return new Level2MapEntriesValueOperator<K,String>(getTarget().execute(Call.forString(methodName, optionalParameters)));
-    }
-
-    public ILevel2MapEntriesValueOperator<K,Character> callForCharacter(final String methodName, final Object... optionalParameters) {
-        return new Level2MapEntriesValueOperator<K,Character>(getTarget().execute(Call.forCharacter(methodName, optionalParameters)));
-    }
-
-    public ILevel2MapEntriesValueOperator<K,Date> callForDate(final String methodName, final Object... optionalParameters) {
-        return new Level2MapEntriesValueOperator<K,Date>(getTarget().execute(Call.forDate(methodName, optionalParameters)));
-    }
-
-    
-
 	public <X> ILevel2MapEntriesValueOperator<K,X> convert(final IConverter<X, ? super Set<V>> converter) {
         return new Level2MapEntriesValueOperator<K,X>(getTarget().execute(converter));
 	}
