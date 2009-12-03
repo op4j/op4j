@@ -19,14 +19,26 @@
  */
 package org.op4j.operators.intf.setofmap;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Calendar;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
+import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.functions.methodcallers.IMethodCaller;
+import org.op4j.operators.intf.set.ILevel1SetElementsOperator;
 import org.op4j.operators.intf.setoflist.ILevel1SetOfListElementsOperator;
 import org.op4j.operators.intf.setofset.ILevel1SetOfSetElementsOperator;
+import org.op4j.operators.qualities.ICallableOperator;
+import org.op4j.operators.qualities.IConvertibleOperator;
+import org.op4j.operators.qualities.IEvaluableOperator;
+import org.op4j.operators.qualities.IExecutableOperator;
 import org.op4j.operators.qualities.IExtractableMapOperator;
 import org.op4j.operators.qualities.IModifiableMapOperator;
 import org.op4j.operators.qualities.INavigableMapOperator;
@@ -50,6 +62,10 @@ public interface ILevel1SetOfMapElementsOperator<K,V>
                 INavigatingCollectionOperator<Map<K,V>>,
 		        ISortableOperator<Map.Entry<K,V>>,
                 ITypeParameterizableXYOperator<K,V>,
+                IExecutableOperator<Map<K,V>>,
+                IConvertibleOperator<Map<K,V>>,
+                ICallableOperator<Map<K,V>>,
+                IEvaluableOperator<Map<K,V>>,
                 IModifiableMapOperator<K,V>,
                 IExtractableMapOperator<K,V> {
 
@@ -86,5 +102,52 @@ public interface ILevel1SetOfMapElementsOperator<K,V>
     public ILevel2SetOfMapElementsEntriesOperator<K,V> forEachEntrySelected(final ISelector<Map.Entry<K,V>> selector);
     public ILevel2SetOfMapElementsEntriesOperator<K,V> forEachEntryWithKeysNot(final K... keys);
     
-                                    
+
+    
+    
+    
+    public <X> ILevel1SetElementsOperator<X> convert(final IConverter<X,? super Map<K,V>> converter);
+    
+    public <X> ILevel1SetElementsOperator<X> call(final IMethodCaller<X,? super Map<K,V>> call);
+
+    public ILevel1SetElementsOperator<?> callForObject(final String methodName, final Object... optionalParameters);
+    public <X> ILevel1SetElementsOperator<X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters);
+    public ILevel1SetElementsOperator<Byte> callForByte(final String methodName, final Object... optionalParameters);
+    public ILevel1SetElementsOperator<Short> callForShort(final String methodName, final Object... optionalParameters);
+    public ILevel1SetElementsOperator<Integer> callForInteger(final String methodName, final Object... optionalParameters);
+    public ILevel1SetElementsOperator<Long> callForLong(final String methodName, final Object... optionalParameters);
+    public ILevel1SetElementsOperator<Float> callForFloat(final String methodName, final Object... optionalParameters);
+    public ILevel1SetElementsOperator<Double> callForDouble(final String methodName, final Object... optionalParameters);
+    public ILevel1SetElementsOperator<BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters);
+    public ILevel1SetElementsOperator<BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters);
+    public ILevel1SetElementsOperator<Boolean> callForBoolean(final String methodName, final Object... optionalParameters);
+    public ILevel1SetElementsOperator<Calendar> callForCalendar(final String methodName, final Object... optionalParameters);
+    public ILevel1SetElementsOperator<String> callForString(final String methodName, final Object... optionalParameters);
+    public ILevel1SetElementsOperator<Character> callForCharacter(final String methodName, final Object... optionalParameters);
+    public ILevel1SetElementsOperator<Date> callForDate(final String methodName, final Object... optionalParameters);
+
+    
+    
+    public <X> ILevel1SetElementsOperator<X> eval(final IEvaluator<X,? super Map<K,V>> eval);
+
+    public ILevel1SetElementsOperator<?> evalForObject(final String ognlExpression, final Object... optionalExpParams);
+    public <X> ILevel1SetElementsOperator<X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1SetElementsOperator<Byte> evalForByte(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1SetElementsOperator<Short> evalForShort(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1SetElementsOperator<Integer> evalForInteger(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1SetElementsOperator<Long> evalForLong(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1SetElementsOperator<Float> evalForFloat(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1SetElementsOperator<Double> evalForDouble(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1SetElementsOperator<BigInteger> evalForBigInteger(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1SetElementsOperator<BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1SetElementsOperator<Boolean> evalForBoolean(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1SetElementsOperator<Calendar> evalForCalendar(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1SetElementsOperator<String> evalForString(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1SetElementsOperator<Character> evalForCharacter(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1SetElementsOperator<Date> evalForDate(final String ognlExpression, final Object... optionalExpParams);
+
+
+    public <X> ILevel1SetElementsOperator<X> exec(final IFunction<X, ? super Map<K,V>> function);
+    
+    
 }

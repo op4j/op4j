@@ -1,4 +1,5 @@
- - Document thread-safety
- - Search "TODO" entries in code
- - op4j: bending the Java spoon
+
+- Conversion from Map to other things (e.g. List<Map.Entry>)
+- ¿Execution on MapEntries operators?
+- If I execute a function on a set... is it normal that it still is a set? (I could lose structure size)
  

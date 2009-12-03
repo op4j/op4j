@@ -25,6 +25,7 @@ import java.util.Comparator;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.ArrayFuncs;
+import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToList;
 import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.converters.ToSet;
@@ -35,6 +36,7 @@ import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.arrayoflist.Level1ArrayOfListElementsOperator;
 import org.op4j.operators.impl.arrayofmap.Level1ArrayOfMapElementsOperator;
 import org.op4j.operators.impl.arrayofset.Level1ArrayOfSetElementsOperator;
+import org.op4j.operators.intf.array.ILevel1ArrayElementsOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel1ArrayOfArrayElementsOperator;
 import org.op4j.operators.intf.arrayofarray.ILevel2ArrayOfArrayElementsElementsOperator;

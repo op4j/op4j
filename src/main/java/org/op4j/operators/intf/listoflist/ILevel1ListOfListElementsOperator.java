@@ -19,20 +19,32 @@
  */
 package org.op4j.operators.intf.listoflist;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import org.javaruntype.type.Type;
+import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.functions.methodcallers.IMethodCaller;
 import org.op4j.mapbuild.IMapBuilder;
+import org.op4j.operators.intf.list.ILevel1ListElementsOperator;
 import org.op4j.operators.intf.listofarray.ILevel1ListOfArrayElementsOperator;
 import org.op4j.operators.intf.listofmap.ILevel1ListOfMapElementsOperator;
 import org.op4j.operators.intf.listofset.ILevel1ListOfSetElementsOperator;
+import org.op4j.operators.qualities.ICallableOperator;
+import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IConvertibleToArrayOperator;
 import org.op4j.operators.qualities.IConvertibleToMapOperator;
 import org.op4j.operators.qualities.IConvertibleToSetOperator;
 import org.op4j.operators.qualities.IDistinguishableOperator;
+import org.op4j.operators.qualities.IEvaluableOperator;
+import org.op4j.operators.qualities.IExecutableOperator;
 import org.op4j.operators.qualities.IModifiableCollectionOperator;
 import org.op4j.operators.qualities.INavigableCollectionOperator;
 import org.op4j.operators.qualities.INavigatingCollectionOperator;
@@ -55,6 +67,10 @@ public interface ILevel1ListOfListElementsOperator<T>
                 INavigatingCollectionOperator<List<T>>,
 		        IDistinguishableOperator,
 		        ISortableOperator<T>,
+                IExecutableOperator<List<T>>,
+                IConvertibleOperator<List<T>>,
+                ICallableOperator<List<T>>,
+                IEvaluableOperator<List<T>>,
                 ITypeParameterizableXOperator<T>,
                 IModifiableCollectionOperator<T>,
                 IConvertibleToArrayOperator<T>,
@@ -112,6 +128,50 @@ public interface ILevel1ListOfListElementsOperator<T>
     public ILevel2ListOfListElementsElementsOperator<T> forEachNotNullMatching(final String ognlExpression, final Object... optionalExpParams);
     
 
+    
+    
+    public <X> ILevel1ListElementsOperator<X> convert(final IConverter<X,? super List<T>> converter);
+    
+    public <X> ILevel1ListElementsOperator<X> call(final IMethodCaller<X,? super List<T>> call);
+
+    public ILevel1ListElementsOperator<?> callForObject(final String methodName, final Object... optionalParameters);
+    public <X> ILevel1ListElementsOperator<X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters);
+    public ILevel1ListElementsOperator<Byte> callForByte(final String methodName, final Object... optionalParameters);
+    public ILevel1ListElementsOperator<Short> callForShort(final String methodName, final Object... optionalParameters);
+    public ILevel1ListElementsOperator<Integer> callForInteger(final String methodName, final Object... optionalParameters);
+    public ILevel1ListElementsOperator<Long> callForLong(final String methodName, final Object... optionalParameters);
+    public ILevel1ListElementsOperator<Float> callForFloat(final String methodName, final Object... optionalParameters);
+    public ILevel1ListElementsOperator<Double> callForDouble(final String methodName, final Object... optionalParameters);
+    public ILevel1ListElementsOperator<BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters);
+    public ILevel1ListElementsOperator<BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters);
+    public ILevel1ListElementsOperator<Boolean> callForBoolean(final String methodName, final Object... optionalParameters);
+    public ILevel1ListElementsOperator<Calendar> callForCalendar(final String methodName, final Object... optionalParameters);
+    public ILevel1ListElementsOperator<String> callForString(final String methodName, final Object... optionalParameters);
+    public ILevel1ListElementsOperator<Character> callForCharacter(final String methodName, final Object... optionalParameters);
+    public ILevel1ListElementsOperator<Date> callForDate(final String methodName, final Object... optionalParameters);
+
+    
+    
+    public <X> ILevel1ListElementsOperator<X> eval(final IEvaluator<X,? super List<T>> eval);
+
+    public ILevel1ListElementsOperator<?> evalForObject(final String ognlExpression, final Object... optionalExpParams);
+    public <X> ILevel1ListElementsOperator<X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1ListElementsOperator<Byte> evalForByte(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1ListElementsOperator<Short> evalForShort(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1ListElementsOperator<Integer> evalForInteger(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1ListElementsOperator<Long> evalForLong(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1ListElementsOperator<Float> evalForFloat(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1ListElementsOperator<Double> evalForDouble(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1ListElementsOperator<BigInteger> evalForBigInteger(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1ListElementsOperator<BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1ListElementsOperator<Boolean> evalForBoolean(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1ListElementsOperator<Calendar> evalForCalendar(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1ListElementsOperator<String> evalForString(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1ListElementsOperator<Character> evalForCharacter(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel1ListElementsOperator<Date> evalForDate(final String ognlExpression, final Object... optionalExpParams);
+
+
+    public <X> ILevel1ListElementsOperator<X> exec(final IFunction<X, ? super List<T>> function);
     
     
                                     

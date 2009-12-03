@@ -19,15 +19,26 @@
  */
 package org.op4j.operators.intf.listofmap;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
+import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.functions.methodcallers.IMethodCaller;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
+import org.op4j.operators.qualities.ICallableOperator;
+import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IDistinguishableOperator;
+import org.op4j.operators.qualities.IEvaluableOperator;
+import org.op4j.operators.qualities.IExecutableOperator;
 import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableCollectionOperator;
 import org.op4j.operators.qualities.INavigableCollectionOperator;
@@ -49,6 +60,10 @@ public interface ILevel0ListOfMapOperator<K,V>
 		        INavigableCollectionOperator<Map<K,V>>,
 		        IDistinguishableOperator,
 		        ISortableOperator<Map<K,V>>,
+                IExecutableOperator<List<Map<K,V>>>,
+                IConvertibleOperator<List<Map<K,V>>>,
+                ICallableOperator<List<Map<K,V>>>,
+                IEvaluableOperator<List<Map<K,V>>>,
                 ITypeParameterizableXYOperator<K,V>,
 		        IModifiableCollectionOperator<Map<K,V>>,
 		        IGenerizableOperator<List<Map<K,V>>> {
@@ -95,6 +110,50 @@ public interface ILevel0ListOfMapOperator<K,V>
     
     public ILevel0GenericUniqOperator<List<Map<K,V>>> generic();
 
+    
+    
+    public <X> ILevel0GenericUniqOperator<X> convert(final IConverter<X,? super List<Map<K,V>>> converter);
+    
+    public <X> ILevel0GenericUniqOperator<X> call(final IMethodCaller<X,? super List<Map<K,V>>> call);
+
+    public ILevel0GenericUniqOperator<?> callForObject(final String methodName, final Object... optionalParameters);
+    public <X> ILevel0GenericUniqOperator<X> callForObjectOfType(final Type<X> resultType, final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Byte> callForByte(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Short> callForShort(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Integer> callForInteger(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Long> callForLong(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Float> callForFloat(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Double> callForDouble(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<BigInteger> callForBigInteger(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<BigDecimal> callForBigDecimal(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Boolean> callForBoolean(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Calendar> callForCalendar(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<String> callForString(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Character> callForCharacter(final String methodName, final Object... optionalParameters);
+    public ILevel0GenericUniqOperator<Date> callForDate(final String methodName, final Object... optionalParameters);
+
+    
+    
+    public <X> ILevel0GenericUniqOperator<X> eval(final IEvaluator<X,? super List<Map<K,V>>> eval);
+
+    public ILevel0GenericUniqOperator<?> evalForObject(final String ognlExpression, final Object... optionalExpParams);
+    public <X> ILevel0GenericUniqOperator<X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... optionalExpParams);
+    public ILevel0GenericUniqOperator<Byte> evalForByte(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel0GenericUniqOperator<Short> evalForShort(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel0GenericUniqOperator<Integer> evalForInteger(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel0GenericUniqOperator<Long> evalForLong(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel0GenericUniqOperator<Float> evalForFloat(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel0GenericUniqOperator<Double> evalForDouble(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel0GenericUniqOperator<BigInteger> evalForBigInteger(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel0GenericUniqOperator<BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel0GenericUniqOperator<Boolean> evalForBoolean(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel0GenericUniqOperator<Calendar> evalForCalendar(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel0GenericUniqOperator<String> evalForString(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel0GenericUniqOperator<Character> evalForCharacter(final String ognlExpression, final Object... optionalExpParams);
+    public ILevel0GenericUniqOperator<Date> evalForDate(final String ognlExpression, final Object... optionalExpParams);
+
+
+    public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super List<Map<K,V>>> function);
     
     
 }
