@@ -19,10 +19,6 @@
  */
 package org.op4j.operators.intf.list;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.javaruntype.type.Type;
@@ -64,23 +60,6 @@ public interface ILevel1ListElementsOperator<T>
     public <X> ILevel1ListElementsOperator<X> convert(final IConverter<X,? super T> converter);
     
     public <X> ILevel1ListElementsOperator<X> eval(final IEvaluator<X,? super T> eval);
-
-    public ILevel1ListElementsOperator<?> evalForObject(final String ognlExpression, final Object... optionalExpParams);
-    public <X> ILevel1ListElementsOperator<X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Byte> evalForByte(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Short> evalForShort(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Integer> evalForInteger(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Long> evalForLong(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Float> evalForFloat(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Double> evalForDouble(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<BigInteger> evalForBigInteger(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Boolean> evalForBoolean(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Calendar> evalForCalendar(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<String> evalForString(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Character> evalForCharacter(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Date> evalForDate(final String ognlExpression, final Object... optionalExpParams);
-
 
     public <X> ILevel1ListElementsOperator<X> exec(final IFunction<X, ? super T> function);
     

@@ -19,10 +19,6 @@
  */
 package org.op4j.operators.impl.list;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -33,7 +29,6 @@ import org.javaruntype.type.Types;
 import org.op4j.exceptions.TargetCastException;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.Eval;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.listofarray.Level1ListOfArrayElementsOperator;
@@ -80,79 +75,6 @@ public class Level1ListElementsOperator<T> extends Operator
     public <X> ILevel1ListElementsOperator<X> eval(final IEvaluator<X, ? super T> eval) {
         return new Level1ListElementsOperator<X>(getTarget().execute(eval));
     }
-
-
-    public ILevel1ListElementsOperator<BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... parameters) {
-        return new Level1ListElementsOperator<BigDecimal>(getTarget().execute(Eval.forBigDecimal(ognlExpression, parameters)));
-    }
-
-
-    public ILevel1ListElementsOperator<BigInteger> evalForBigInteger(final String ognlExpression, final Object... parameters) {
-        return new Level1ListElementsOperator<BigInteger>(getTarget().execute(Eval.forBigInteger(ognlExpression, parameters)));
-    }
-
-
-    public ILevel1ListElementsOperator<Boolean> evalForBoolean(final String ognlExpression, final Object... parameters) {
-        return new Level1ListElementsOperator<Boolean>(getTarget().execute(Eval.forBoolean(ognlExpression, parameters)));
-    }
-
-
-    public ILevel1ListElementsOperator<?> evalForObject(final String ognlExpression, final Object... parameters) {
-        return new Level1ListElementsOperator<Object>(getTarget().execute(Eval.forObject(ognlExpression, parameters)));
-    }
-
-    public <X> ILevel1ListElementsOperator<X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... parameters) {
-        return new Level1ListElementsOperator<X>(getTarget().execute(Eval.forObjectOfType(resultType, ognlExpression, parameters)));
-    }
-
-    public ILevel1ListElementsOperator<Byte> evalForByte(final String ognlExpression, final Object... parameters) {
-        return new Level1ListElementsOperator<Byte>(getTarget().execute(Eval.forByte(ognlExpression, parameters)));
-    }
-
-
-    public ILevel1ListElementsOperator<Calendar> evalForCalendar(final String ognlExpression, final Object... parameters) {
-        return new Level1ListElementsOperator<Calendar>(getTarget().execute(Eval.forCalendar(ognlExpression, parameters)));
-    }
-
-
-    public ILevel1ListElementsOperator<Double> evalForDouble(final String ognlExpression, final Object... parameters) {
-        return new Level1ListElementsOperator<Double>(getTarget().execute(Eval.forDouble(ognlExpression, parameters)));
-    }
-
-
-    public ILevel1ListElementsOperator<Float> evalForFloat(final String ognlExpression, final Object... parameters) {
-        return new Level1ListElementsOperator<Float>(getTarget().execute(Eval.forFloat(ognlExpression, parameters)));
-    }
-
-
-    public ILevel1ListElementsOperator<Integer> evalForInteger(final String ognlExpression, final Object... parameters) {
-        return new Level1ListElementsOperator<Integer>(getTarget().execute(Eval.forInteger(ognlExpression, parameters)));
-    }
-
-
-    public ILevel1ListElementsOperator<Long> evalForLong(final String ognlExpression, final Object... parameters) {
-        return new Level1ListElementsOperator<Long>(getTarget().execute(Eval.forLong(ognlExpression, parameters)));
-    }
-
-
-    public ILevel1ListElementsOperator<Short> evalForShort(final String ognlExpression, final Object... parameters) {
-        return new Level1ListElementsOperator<Short>(getTarget().execute(Eval.forShort(ognlExpression, parameters)));
-    }
-
-
-    public ILevel1ListElementsOperator<String> evalForString(final String ognlExpression, final Object... parameters) {
-        return new Level1ListElementsOperator<String>(getTarget().execute(Eval.forString(ognlExpression, parameters)));
-    }
-
-    public ILevel1ListElementsOperator<Character> evalForCharacter(final String ognlExpression, final Object... parameters) {
-        return new Level1ListElementsOperator<Character>(getTarget().execute(Eval.forCharacter(ognlExpression, parameters)));
-    }
-
-    public ILevel1ListElementsOperator<Date> evalForDate(final String ognlExpression, final Object... parameters) {
-        return new Level1ListElementsOperator<Date>(getTarget().execute(Eval.forDate(ognlExpression, parameters)));
-    }
-
-
 
 
     public <X> ILevel1ListElementsOperator<X> exec(final IFunction<X, ? super T> function) {

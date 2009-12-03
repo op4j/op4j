@@ -39,15 +39,12 @@ public interface INavigableCollectionOperator<T>  {
     public INavigatingCollectionOperator<T> forEach();
     
     public INavigatingCollectionOperator<T> forEachIndex(final int... indices);
-    public INavigatingCollectionOperator<T> forEachMatching(final String ognlExpression, final Object... optionalExpParams);
     public INavigatingCollectionOperator<T> forEachMatching(final IEvaluator<Boolean, ? super T> eval);
     public INavigatingCollectionOperator<T> forEachSelected(final ISelector<T> selector);
     public INavigatingCollectionOperator<T> forEachNull();
-    public INavigatingCollectionOperator<T> forEachNullOrMatching(final String ognlExpression, final Object... optionalExpParams);
     public INavigatingCollectionOperator<T> forEachNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
     public INavigatingCollectionOperator<T> forEachIndexNot(final int... indices);
     public INavigatingCollectionOperator<T> forEachNotNull();
-    public INavigatingCollectionOperator<T> forEachNotNullMatching(final String ognlExpression, final Object... optionalExpParams);
     public INavigatingCollectionOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
 	
 }

@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.util;
+package org.op4j.functions.evaluators;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -38,7 +38,7 @@ import org.op4j.exceptions.EvaluationException;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class OgnlExpressionUtil {
+class OgnlExpressionUtil {
 
     
     @SuppressWarnings("unchecked")

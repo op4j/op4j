@@ -19,12 +19,8 @@
  */
 package org.op4j.operators.intf.listofset;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -89,16 +85,12 @@ public interface ILevel1ListOfSetElementsOperator<T>
     public ILevel1ListOfSetElementsOperator<T> addAll(final Collection<T> collection);
     public ILevel1ListOfSetElementsOperator<T> removeIndexes(final int... indices);
     public ILevel1ListOfSetElementsOperator<T> removeEquals(final T... values);
-    public ILevel1ListOfSetElementsOperator<T> removeMatching(final String ognlExpression, final Object... optionalExpParams);
     public ILevel1ListOfSetElementsOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel1ListOfSetElementsOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel1ListOfSetElementsOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel1ListOfSetElementsOperator<T> removeSelected(final ISelector<T> selector);
     public ILevel1ListOfSetElementsOperator<T> removeIndexesNot(final int... indices);
     public ILevel1ListOfSetElementsOperator<T> removeNulls();
-    public ILevel1ListOfSetElementsOperator<T> removeNotNullMatching(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListOfSetElementsOperator<T> removeNullOrMatching(final String ognlExpression, final Object... optionalExpParams);
-    
     public ILevel1ListOfArrayElementsOperator<T> toArray(final Type<T> of);
     
     
@@ -110,42 +102,16 @@ public interface ILevel1ListOfSetElementsOperator<T>
 
     
     public ILevel2ListOfSetElementsElementsOperator<T> forEachIndex(final int... indices);
-    public ILevel2ListOfSetElementsElementsOperator<T> forEachMatching(final String ognlExpression, final Object... optionalExpParams);
     public ILevel2ListOfSetElementsElementsOperator<T> forEachMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel2ListOfSetElementsElementsOperator<T> forEachNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel2ListOfSetElementsElementsOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel2ListOfSetElementsElementsOperator<T> forEachSelected(final ISelector<T> selector);
     public ILevel2ListOfSetElementsElementsOperator<T> forEachNull();
-    public ILevel2ListOfSetElementsElementsOperator<T> forEachNullOrMatching(final String ognlExpression, final Object... optionalExpParams);
     public ILevel2ListOfSetElementsElementsOperator<T> forEachIndexNot(final int... indices);
     public ILevel2ListOfSetElementsElementsOperator<T> forEachNotNull();
-    public ILevel2ListOfSetElementsElementsOperator<T> forEachNotNullMatching(final String ognlExpression, final Object... optionalExpParams);
-    
-
-    
-
-    
-    
     public <X> ILevel1ListElementsOperator<X> convert(final IConverter<X,? super Set<T>> converter);
     
     public <X> ILevel1ListElementsOperator<X> eval(final IEvaluator<X,? super Set<T>> eval);
-
-    public ILevel1ListElementsOperator<?> evalForObject(final String ognlExpression, final Object... optionalExpParams);
-    public <X> ILevel1ListElementsOperator<X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Byte> evalForByte(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Short> evalForShort(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Integer> evalForInteger(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Long> evalForLong(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Float> evalForFloat(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Double> evalForDouble(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<BigInteger> evalForBigInteger(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Boolean> evalForBoolean(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Calendar> evalForCalendar(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<String> evalForString(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Character> evalForCharacter(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel1ListElementsOperator<Date> evalForDate(final String ognlExpression, final Object... optionalExpParams);
-
 
     public <X> ILevel1ListElementsOperator<X> exec(final IFunction<X, ? super Set<T>> function);
     

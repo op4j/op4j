@@ -19,12 +19,8 @@
  */
 package org.op4j.operators.impl.listoflist;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -35,7 +31,6 @@ import org.op4j.Op;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.ListFuncs;
 import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.Eval;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.Operator;
@@ -58,7 +53,6 @@ import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.ILevel0SetOfSetOperator;
 import org.op4j.select.ISelector;
 import org.op4j.target.Target;
-import org.op4j.util.VarArgsUtil;
 
 
 /**
@@ -115,11 +109,6 @@ public class Level0ListOfListOperator<T> extends Operator
     
 
 
-    public ILevel1ListOfListElementsOperator<T> forEachMatching(final String ognlExpression, final Object... optionalExpParams) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().iterate(Eval.forBoolean(ognlExpression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
-    }
-
-
     public ILevel1ListOfListElementsOperator<T> forEachMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
         return new Level1ListOfListElementsOperator<T>(getTarget().iterate(eval));
     }
@@ -159,25 +148,9 @@ public class Level0ListOfListOperator<T> extends Operator
     }
 
 
-    public ILevel1ListOfListElementsOperator<T> forEachNotNullMatching(final String ognlExpression, final Object... optionalExpParams) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().iterateNotNullAnd(Eval.forBoolean(ognlExpression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
-    }
-
-
-
-
-
     public ILevel1ListOfListElementsOperator<T> forEachNull() {
         return new Level1ListOfListElementsOperator<T>(getTarget().iterateNull());
     }
-
-
-    public ILevel1ListOfListElementsOperator<T> forEachNullOrMatching(final String ognlExpression, final Object... optionalExpParams) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().iterateNullOr(Eval.forBoolean(ognlExpression, VarArgsUtil.asOptionalObjectList(optionalExpParams))));
-    }
-
-
-
 
 
     public <X> ILevel0ListOfListOperator<X> of(final Type<X> of) {
@@ -197,11 +170,6 @@ public class Level0ListOfListOperator<T> extends Operator
 
     public ILevel0ListOfListOperator<T> removeEquals(final List<T>... values) {
         return new Level0ListOfListOperator<T>(getTarget().execute(new ListFuncs.RemoveEquals<List<T>>(values)));
-    }
-
-
-    public ILevel0ListOfListOperator<T> removeMatching(final String ognlExpression, final Object... optionalExpParams) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(new ListFuncs.RemoveMatching<List<T>>(Eval.forBoolean(ognlExpression, optionalExpParams))));
     }
 
 
@@ -227,16 +195,6 @@ public class Level0ListOfListOperator<T> extends Operator
 
     public ILevel0ListOfListOperator<T> removeIndexesNot(final int... indices) {
         return new Level0ListOfListOperator<T>(getTarget().execute(new ListFuncs.RemoveIndexesNot<List<T>>(indices)));
-    }
-
-
-    public ILevel0ListOfListOperator<T> removeNotNullMatching(final String ognlExpression, final Object... optionalExpParams) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<List<T>>(Eval.forBoolean(ognlExpression, optionalExpParams))));
-    }
-
-
-    public ILevel0ListOfListOperator<T> removeNullOrMatching(final String ognlExpression, final Object... optionalExpParams) {
-        return new Level0ListOfListOperator<T>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<List<T>>(Eval.forBoolean(ognlExpression, optionalExpParams))));
     }
 
 
@@ -377,78 +335,7 @@ public class Level0ListOfListOperator<T> extends Operator
     }
 
 
-    public ILevel0GenericUniqOperator<BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<BigDecimal>(getTarget().execute(Eval.forBigDecimal(ognlExpression, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<BigInteger> evalForBigInteger(final String ognlExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<BigInteger>(getTarget().execute(Eval.forBigInteger(ognlExpression, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<Boolean> evalForBoolean(final String ognlExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Boolean>(getTarget().execute(Eval.forBoolean(ognlExpression, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<?> evalForObject(final String ognlExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Object>(getTarget().execute(Eval.forObject(ognlExpression, parameters)));
-    }
-
-    public <X> ILevel0GenericUniqOperator<X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<X>(getTarget().execute(Eval.forObjectOfType(resultType, ognlExpression, parameters)));
-    }
-
-    public ILevel0GenericUniqOperator<Byte> evalForByte(final String ognlExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Byte>(getTarget().execute(Eval.forByte(ognlExpression, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<Calendar> evalForCalendar(final String ognlExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Calendar>(getTarget().execute(Eval.forCalendar(ognlExpression, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<Double> evalForDouble(final String ognlExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Double>(getTarget().execute(Eval.forDouble(ognlExpression, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<Float> evalForFloat(final String ognlExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Float>(getTarget().execute(Eval.forFloat(ognlExpression, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<Integer> evalForInteger(final String ognlExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Integer>(getTarget().execute(Eval.forInteger(ognlExpression, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<Long> evalForLong(final String ognlExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Long>(getTarget().execute(Eval.forLong(ognlExpression, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<Short> evalForShort(final String ognlExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Short>(getTarget().execute(Eval.forShort(ognlExpression, parameters)));
-    }
-
-
-    public ILevel0GenericUniqOperator<String> evalForString(final String ognlExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<String>(getTarget().execute(Eval.forString(ognlExpression, parameters)));
-    }
-
-    public ILevel0GenericUniqOperator<Character> evalForCharacter(final String ognlExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Character>(getTarget().execute(Eval.forCharacter(ognlExpression, parameters)));
-    }
-
-    public ILevel0GenericUniqOperator<Date> evalForDate(final String ognlExpression, final Object... parameters) {
-        return new Level0GenericUniqOperator<Date>(getTarget().execute(Eval.forDate(ognlExpression, parameters)));
-    }
-
-
-	public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super List<List<T>>> function) {
+    public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super List<List<T>>> function) {
         return new Level0GenericUniqOperator<X>(getTarget().execute(function));
 	}
 

@@ -19,12 +19,6 @@
  */
 package org.op4j.operators.qualities;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Calendar;
-import java.util.Date;
-
-import org.javaruntype.type.Type;
 import org.op4j.functions.evaluators.IEvaluator;
 
 
@@ -39,21 +33,5 @@ import org.op4j.functions.evaluators.IEvaluator;
 public interface IEvaluableOperator<T> {
     
     public <X> IEvaluableOperator<X> eval(final IEvaluator<X,? super T> eval);
-    
-    public IEvaluableOperator<?> evalForObject(final String ognlExpression, final Object... optionalExpParams);
-    public <X> IEvaluableOperator<X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... optionalExpParams);
-    public IEvaluableOperator<Byte> evalForByte(final String ognlExpression, final Object... optionalExpParams);
-    public IEvaluableOperator<Character> evalForCharacter(final String ognlExpression, final Object... optionalExpParams);
-    public IEvaluableOperator<Short> evalForShort(final String ognlExpression, final Object... optionalExpParams);
-    public IEvaluableOperator<Integer> evalForInteger(final String ognlExpression, final Object... optionalExpParams);
-    public IEvaluableOperator<Long> evalForLong(final String ognlExpression, final Object... optionalExpParams);
-    public IEvaluableOperator<Float> evalForFloat(final String ognlExpression, final Object... optionalExpParams);
-    public IEvaluableOperator<Double> evalForDouble(final String ognlExpression, final Object... optionalExpParams);
-    public IEvaluableOperator<BigInteger> evalForBigInteger(final String ognlExpression, final Object... optionalExpParams);
-    public IEvaluableOperator<BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... optionalExpParams);
-    public IEvaluableOperator<Boolean> evalForBoolean(final String ognlExpression, final Object... optionalExpParams);
-    public IEvaluableOperator<Date> evalForDate(final String ognlExpression, final Object... optionalExpParams);
-    public IEvaluableOperator<Calendar> evalForCalendar(final String ognlExpression, final Object... optionalExpParams);
-    public IEvaluableOperator<String> evalForString(final String ognlExpression, final Object... optionalExpParams);
     
 }

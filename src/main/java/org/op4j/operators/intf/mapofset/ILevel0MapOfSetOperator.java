@@ -19,11 +19,7 @@
  */
 package org.op4j.operators.intf.mapofset;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Calendar;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
@@ -91,7 +87,6 @@ public interface ILevel0MapOfSetOperator<K,V>
     public ILevel0MapOfSetOperator<K,V> putAll(final Map<K,Set<V>> map);
     public ILevel0MapOfSetOperator<K,V> insertAll(final int position, final Map<K,Set<V>> map);
     public ILevel0MapOfSetOperator<K,V> removeKeys(final K... keys);
-    public ILevel0MapOfSetOperator<K,V> removeMatching(final String ognlExpression, final Object... optionalExpParams);
     public ILevel0MapOfSetOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
     public ILevel0MapOfSetOperator<K,V> removeSelected(final ISelector<Map.Entry<K,Set<V>>> selector);
     public ILevel0MapOfSetOperator<K,V> removeKeysNot(final K... keys);
@@ -110,7 +105,6 @@ public interface ILevel0MapOfSetOperator<K,V>
     
     
     public ILevel1MapOfSetEntriesOperator<K,V> forEachEntryWithKeys(final K... keys);
-    public ILevel1MapOfSetEntriesOperator<K,V> forEachEntryMatching(final String ognlExpression, final Object... optionalExpParams);
     public ILevel1MapOfSetEntriesOperator<K,V> forEachEntryMatching(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
     public ILevel1MapOfSetEntriesOperator<K,V> forEachEntrySelected(final ISelector<Map.Entry<K,Set<V>>> selector);
     public ILevel1MapOfSetEntriesOperator<K,V> forEachEntryWithKeysNot(final K... keys);
@@ -125,23 +119,6 @@ public interface ILevel0MapOfSetOperator<K,V>
     public <X> ILevel0GenericUniqOperator<X> convert(final IConverter<X,? super Map<K,Set<V>>> converter);
     
     public <X> ILevel0GenericUniqOperator<X> eval(final IEvaluator<X,? super Map<K,Set<V>>> eval);
-
-    public ILevel0GenericUniqOperator<?> evalForObject(final String ognlExpression, final Object... optionalExpParams);
-    public <X> ILevel0GenericUniqOperator<X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericUniqOperator<Byte> evalForByte(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericUniqOperator<Short> evalForShort(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericUniqOperator<Integer> evalForInteger(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericUniqOperator<Long> evalForLong(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericUniqOperator<Float> evalForFloat(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericUniqOperator<Double> evalForDouble(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericUniqOperator<BigInteger> evalForBigInteger(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericUniqOperator<BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericUniqOperator<Boolean> evalForBoolean(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericUniqOperator<Calendar> evalForCalendar(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericUniqOperator<String> evalForString(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericUniqOperator<Character> evalForCharacter(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericUniqOperator<Date> evalForDate(final String ognlExpression, final Object... optionalExpParams);
-
 
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,Set<V>>> function);
     

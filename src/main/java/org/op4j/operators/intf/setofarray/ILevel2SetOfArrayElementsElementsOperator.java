@@ -19,10 +19,6 @@
  */
 package org.op4j.operators.intf.setofarray;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
@@ -57,23 +53,6 @@ public interface ILevel2SetOfArrayElementsElementsOperator<T>
     public <X> ILevel2SetOfArrayElementsElementsOperator<X> convert(final IConverter<X,? super T> converter);
     
     public <X> ILevel2SetOfArrayElementsElementsOperator<X> eval(final IEvaluator<X,? super T> eval);
-
-    public ILevel2SetOfArrayElementsElementsOperator<?> evalForObject(final String ognlExpression, final Object... optionalExpParams);
-    public <X> ILevel2SetOfArrayElementsElementsOperator<X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2SetOfArrayElementsElementsOperator<Byte> evalForByte(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2SetOfArrayElementsElementsOperator<Short> evalForShort(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2SetOfArrayElementsElementsOperator<Integer> evalForInteger(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2SetOfArrayElementsElementsOperator<Long> evalForLong(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2SetOfArrayElementsElementsOperator<Float> evalForFloat(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2SetOfArrayElementsElementsOperator<Double> evalForDouble(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2SetOfArrayElementsElementsOperator<BigInteger> evalForBigInteger(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2SetOfArrayElementsElementsOperator<BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2SetOfArrayElementsElementsOperator<Boolean> evalForBoolean(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2SetOfArrayElementsElementsOperator<Calendar> evalForCalendar(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2SetOfArrayElementsElementsOperator<String> evalForString(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2SetOfArrayElementsElementsOperator<Character> evalForCharacter(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2SetOfArrayElementsElementsOperator<Date> evalForDate(final String ognlExpression, final Object... optionalExpParams);
-
 
     public <X> ILevel2SetOfArrayElementsElementsOperator<X> exec(final IFunction<X, ? super T> function);
     

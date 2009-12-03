@@ -54,7 +54,7 @@ import org.op4j.functions.converters.ToMapOfArray;
 import org.op4j.functions.converters.ToString;
 import org.op4j.functions.converters.ToString.DateStyle;
 import org.op4j.functions.converters.ToString.TimeStyle;
-import org.op4j.functions.evaluators.Eval;
+import org.op4j.functions.evaluators.Ognl;
 import org.op4j.functions.evaluators.MethodCall;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
@@ -394,16 +394,16 @@ public final class Op {
         
         System.out.println(Op.onList(stringsList1).get());
         System.out.println(Op.onList(stringsList1).forEach().get());
-        System.out.println(Op.onList(stringsList1).forEachNotNull().eval(Eval.forString("toUpperCase()")).get());
+        System.out.println(Op.onList(stringsList1).forEachNotNull().eval(Ognl.forString("toUpperCase()")).get());
         
         
-        System.out.println(Op.onArrayOfArray(stringsStrings1).forEach().forEach().eval(Eval.forInteger("length()")).get());
+        System.out.println(Op.onArrayOfArray(stringsStrings1).forEach().forEach().eval(Ognl.forInteger("length()")).get());
         
-        System.out.println(Arrays.asList(Op.onArrayOfList(stringsListStrings1).forEach().forEach().eval(Eval.forString("toUpperCase()")).get()));
+        System.out.println(Arrays.asList(Op.onArrayOfList(stringsListStrings1).forEach().forEach().eval(Ognl.forString("toUpperCase()")).get()));
 
-        System.out.println(Arrays.asList(Op.onArrayOfMap(maps1).forEachMatching("size() > 6").forEachEntry().onValue().eval(Eval.forString("toUpperCase()"))));
+        System.out.println(Arrays.asList(Op.onArrayOfMap(maps1).forEachMatching(Ognl.forBoolean("size() > 6")).forEachEntry().onValue().eval(Ognl.forString("toUpperCase()"))));
         
-        System.out.println(Arrays.asList(Op.onArrayOfArray(stringsStrings1).forEach().forEachMatching("length() > 6").eval(Eval.forString("toUpperCase()")).get()[0]));
+        System.out.println(Arrays.asList(Op.onArrayOfArray(stringsStrings1).forEach().forEachMatching(Ognl.forBoolean("length() > 6")).eval(Ognl.forString("toUpperCase()")).get()[0]));
         
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().get());
         
@@ -445,7 +445,7 @@ public final class Op {
         System.out.println(Op.onList(stringsList1).removeIndexes(0,2).get());
         System.out.println(Op.onList(stringsList1).removeIndexesNot(0).get());
         System.out.println(Op.onList(stringsList1).removeIndexesNot(0,2).get());
-        System.out.println(Op.onList(stringsList1).removeMatching("#target eq 'Hello'").get());
+        System.out.println(Op.onList(stringsList1).removeMatching(Ognl.forBoolean("#target eq 'Hello'")).get());
         System.out.println(Op.onList(stringsList1).removeSelected(new ISelector<String>() {
 
 			public boolean eval(String target) {
@@ -454,7 +454,7 @@ public final class Op {
         	
         }).get());
         System.out.println(Op.onList(stringsList1).removeNulls().get());
-        System.out.println(Op.onList(stringsList1).removeNotNullMatching("length() > 5").get());
+        System.out.println(Op.onList(stringsList1).removeNotNullMatching(Ognl.forBoolean("length() > 5")).get());
             
         System.out.println("================");
         
@@ -468,7 +468,7 @@ public final class Op {
         System.out.println(Op.onSet(stringSet1).removeIndexes(0,2).get());
         System.out.println(Op.onSet(stringSet1).removeIndexesNot(0).get());
         System.out.println(Op.onSet(stringSet1).removeIndexesNot(0,2).get());
-        System.out.println(Op.onSet(stringSet1).removeMatching("#target eq 'Hello'").get());
+        System.out.println(Op.onSet(stringSet1).removeMatching(Ognl.forBoolean("#target eq 'Hello'")).get());
         System.out.println(Op.onSet(stringSet1).removeSelected(new ISelector<String>() {
 
             public boolean eval(String target) {
@@ -477,7 +477,7 @@ public final class Op {
             
         }).get());
         System.out.println(Op.onSet(stringSet1).removeNulls().get());
-        System.out.println(Op.onSet(stringSet1).removeNotNullMatching("length() > 5").get());
+        System.out.println(Op.onSet(stringSet1).removeNotNullMatching(Ognl.forBoolean("length() > 5")).get());
             
         System.out.println(printArray(Op.onArray(stringsArr1).insert(2,"lalero","lururu").get()));
      
@@ -487,7 +487,7 @@ public final class Op {
         System.out.println(Op.onMap(map1).insert(2,"fr", "Allô!").get());
         System.out.println(Op.onMap(map2).get());
         System.out.println(Op.onMap(map2).putAll(Op.onMap(map1).insert(0,"gl", "Meuuuu!").get()).get());
-        System.out.println(Op.onMap(map2).putAll(Op.onMap(map1).insert(0,"gl", "Meuuuu!").get()).removeMatching("!#target.key.startsWith('e')").get());
+        System.out.println(Op.onMap(map2).putAll(Op.onMap(map1).insert(0,"gl", "Meuuuu!").get()).removeMatching(Ognl.forBoolean("!#target.key.startsWith('e')")).get());
         
         System.out.println(printArray(Op.onArrayOfMap(maps1).get()));
         
@@ -498,8 +498,8 @@ public final class Op {
         System.out.println(Op.on(234).add(10).insert(1,3).add((Integer)null));
         System.out.println(Op.on(234).add(10).insert(1,3).add((Integer)null).removeNulls());
         System.out.println(Op.on(234).add(10).insert(1,3).removeIndexesNot(1));
-        System.out.println(Op.on(234).add(10).insert(1,3).removeMatching("#target > 100"));
-        System.out.println(printArray(Op.on(234).add(10).insert(1,3).removeMatching("#target > 100").buildArray(Types.INTEGER).get()));
+        System.out.println(Op.on(234).add(10).insert(1,3).removeMatching(Ognl.forBoolean("#target > 100")));
+        System.out.println(printArray(Op.on(234).add(10).insert(1,3).removeMatching(Ognl.forBoolean("#target > 100")).buildArray(Types.INTEGER).get()));
         System.out.println(printArray(Op.on(234).buildArray(Types.INTEGER).add(8).get()));
         System.out.println(Op.on(null).add(123));
         System.out.println(Op.on(null).buildList().get());
@@ -509,12 +509,12 @@ public final class Op {
         System.out.println(printArray(Op.buildArrayOfArray(Types.STRING).add(Op.buildArray(Types.STRING).add("a","b").get()).add(Op.buildArray(Types.STRING).add("1","2","3").get()).get()));
         System.out.println(Op.buildMap(Types.INTEGER,Types.STRING).put(12,"hello!").get());
         System.out.println(Op.onAll("a",1,"b",3).buildMap().get());
-        System.out.println(Op.onAll("hello", "goodbye").buildMap(Eval.forInteger("length()")).get());
+        System.out.println(Op.onAll("hello", "goodbye").buildMap(Ognl.forInteger("length()")).get());
         
-        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfSet(Eval.forInteger("length()")).get());
-        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfList(Eval.forInteger("length()")).get());
+        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfSet(Ognl.forInteger("length()")).get());
+        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfList(Ognl.forInteger("length()")).get());
         
-        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfArray(Types.STRING, Eval.forInteger("length()")).get());
+        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfArray(Types.STRING, Ognl.forInteger("length()")).get());
         
         System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildList().sort().get());
         System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildSet().sort(new Comparator<String>() {
@@ -573,17 +573,17 @@ public final class Op {
         
         System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFuncs.Insert<Integer>(2, 1492)).get());
         
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFuncs.Insert<Integer>(2, 1492)).exec(new ListFuncs.RemoveMatching<Integer>(Eval.forBoolean("#target < 1000"))).exec(new ListFuncs.Sort<Integer>()).get());
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFuncs.Insert<Integer>(2, 1492)).exec(new ListFuncs.RemoveMatching<Integer>(Ognl.forBoolean("#target < 1000"))).exec(new ListFuncs.Sort<Integer>()).get());
         
         
         System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFuncs.Insert<Integer>(2, 1492)).get()));
         
-        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFuncs.Insert<Integer>(2, 1492)).exec(new ArrayFuncs.RemoveMatching<Integer>(Eval.forBoolean("#target < 1000"))).exec(new ArrayFuncs.Sort<Integer>()).get()));
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFuncs.Insert<Integer>(2, 1492)).exec(new ArrayFuncs.RemoveMatching<Integer>(Ognl.forBoolean("#target < 1000"))).exec(new ArrayFuncs.Sort<Integer>()).get()));
         
-        System.out.println(Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArray(Types.STRING).get()).exec(new ToMap.FromArrayByKeyEval<Integer,String>(Eval.forInteger("length()"))).get());
+        System.out.println(Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArray(Types.STRING).get()).exec(new ToMap.FromArrayByKeyEval<Integer,String>(Ognl.forInteger("length()"))).get());
 
         final Map<Integer,String[]> greetingsByLength = 
-        	Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArray(Types.STRING).get()).exec(new ToMapOfArray.FromArrayByKeyEval<Integer, String>(Types.STRING, Eval.forInteger("length()"))).get();
+        	Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArray(Types.STRING).get()).exec(new ToMapOfArray.FromArrayByKeyEval<Integer, String>(Types.STRING, Ognl.forInteger("length()"))).get();
         System.out.println("*** MAP: ");
         for (Map.Entry<Integer,String[]> entry : greetingsByLength.entrySet()) {
         	System.out.println(entry.getKey() + " : " + Arrays.asList(entry.getValue()));
@@ -594,8 +594,8 @@ public final class Op {
         System.out.println(Op.on("hello").add("goodbye"));
         System.out.println(Op.on("hello").buildList().get());
         System.out.println(printArray(Op.on("hello").buildArray(Types.STRING).get()));
-        System.out.println(Op.on("hello").buildMap(Eval.forInteger("length()")).get());
-        System.out.println(Op.on("hello").buildMapOfList(Eval.forInteger("length()")).get());
+        System.out.println(Op.on("hello").buildMap(Ognl.forInteger("length()")).get());
+        System.out.println(Op.on("hello").buildMapOfList(Ognl.forInteger("length()")).get());
         System.out.println(Op.onAll(12, "hello", 14, "goodbye").buildMapOfList().get());
         
         
@@ -688,18 +688,18 @@ public final class Op {
         System.out.println(Op.on("Body tag is written like \"<body>content here</body>\"")
             	.exec(StringFuncs.escapeHTML()).get());
         
-        System.out.println(Op.onArray(stringsArr1).removeNulls().toMap(Eval.forInteger("length()")).get());
+        System.out.println(Op.onArray(stringsArr1).removeNulls().toMap(Ognl.forInteger("length()")).get());
 
-        System.out.println(Op.onList(stringsList1).removeNullOrMatching("length() < 6").get());
+        System.out.println(Op.onList(stringsList1).removeNullOrMatching(Ognl.forBoolean("length() < 6")).get());
 
         System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().extractKeys().get()));
         System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().extractValues().get()));
         
-        System.out.println(Op.onList(stringsList1).forEachNotNull().exec(Eval.forInteger("length()")).get());
+        System.out.println(Op.onList(stringsList1).forEachNotNull().exec(Ognl.forInteger("length()")).get());
         
         System.out.println(Op.onList(stringsList1).forEachNotNull().convert(ToString.fromObject()).get());
         
-        System.out.println(Op.onAll("hello", "goodbye").evalForString("#target + ' world!'").getAsList());
+        System.out.println(Op.onAll("hello", "goodbye").eval(Ognl.forString("#target + ' world!'")).getAsList());
         
         System.out.println(Op.onList(listOfListOfString1).get());
         System.out.println(Op.onList(listOfListOfString1).forEach().asList(Types.STRING).forEach().get());

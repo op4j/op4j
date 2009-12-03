@@ -19,17 +19,11 @@
  */
 package org.op4j.operators.impl.mapofarray;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.Eval;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofarray.ILevel2MapOfArrayEntriesValueOperator;
@@ -71,79 +65,6 @@ public class Level3MapOfArrayEntriesValueElementsOperator<K,V> extends Operator
     public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K, X> eval(final IEvaluator<X, ? super V> eval) {
         return new Level3MapOfArrayEntriesValueElementsOperator<K, X>(eval.getResultType(), getTarget().execute(eval));
     }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... parameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, BigDecimal>(Types.BIG_DECIMAL, getTarget().execute(Eval.forBigDecimal(ognlExpression, parameters)));
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, BigInteger> evalForBigInteger(final String ognlExpression, final Object... parameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, BigInteger>(Types.BIG_INTEGER, getTarget().execute(Eval.forBigInteger(ognlExpression, parameters)));
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Boolean> evalForBoolean(final String ognlExpression, final Object... parameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Boolean>(Types.BOOLEAN, getTarget().execute(Eval.forBoolean(ognlExpression, parameters)));
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, ?> evalForObject(final String ognlExpression, final Object... parameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Object>(Types.OBJECT, getTarget().execute(Eval.forObject(ognlExpression, parameters)));
-    }
-
-    public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K, X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... parameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, X>(resultType, getTarget().execute(Eval.forObjectOfType(resultType, ognlExpression, parameters)));
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Byte> evalForByte(final String ognlExpression, final Object... parameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Byte>(Types.BYTE, getTarget().execute(Eval.forByte(ognlExpression, parameters)));
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Calendar> evalForCalendar(final String ognlExpression, final Object... parameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Calendar>(Types.CALENDAR, getTarget().execute(Eval.forCalendar(ognlExpression, parameters)));
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Double> evalForDouble(final String ognlExpression, final Object... parameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Double>(Types.DOUBLE, getTarget().execute(Eval.forDouble(ognlExpression, parameters)));
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Float> evalForFloat(final String ognlExpression, final Object... parameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Float>(Types.FLOAT, getTarget().execute(Eval.forFloat(ognlExpression, parameters)));
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Integer> evalForInteger(final String ognlExpression, final Object... parameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Integer>(Types.INTEGER, getTarget().execute(Eval.forInteger(ognlExpression, parameters)));
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Long> evalForLong(final String ognlExpression, final Object... parameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Long>(Types.LONG, getTarget().execute(Eval.forLong(ognlExpression, parameters)));
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Short> evalForShort(final String ognlExpression, final Object... parameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Short>(Types.SHORT, getTarget().execute(Eval.forShort(ognlExpression, parameters)));
-    }
-
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, String> evalForString(final String ognlExpression, final Object... parameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, String>(Types.STRING, getTarget().execute(Eval.forString(ognlExpression, parameters)));
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Character> evalForCharacter(final String ognlExpression, final Object... parameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Character>(Types.CHARACTER, getTarget().execute(Eval.forCharacter(ognlExpression, parameters)));
-    }
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, Date> evalForDate(final String ognlExpression, final Object... parameters) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, Date>(Types.DATE, getTarget().execute(Eval.forDate(ognlExpression, parameters)));
-    }
-
-
 
 
     public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K, X> exec(final IFunction<X, ? super V> function) {

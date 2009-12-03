@@ -19,11 +19,7 @@
  */
 package org.op4j.operators.intf.generic;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Calendar;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 import org.javaruntype.type.Type;
@@ -79,23 +75,6 @@ public interface ILevel0GenericMultiOperator<T>
     
     public <X> ILevel0GenericMultiOperator<X> eval(final IEvaluator<X,? super T> eval);
 
-    public ILevel0GenericMultiOperator<?> evalForObject(final String ognlExpression, final Object... optionalExpParams);
-    public <X> ILevel0GenericMultiOperator<X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<Byte> evalForByte(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<Short> evalForShort(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<Integer> evalForInteger(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<Long> evalForLong(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<Float> evalForFloat(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<Double> evalForDouble(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<BigInteger> evalForBigInteger(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<Boolean> evalForBoolean(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<Calendar> evalForCalendar(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<String> evalForString(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<Character> evalForCharacter(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<Date> evalForDate(final String ognlExpression, final Object... optionalExpParams);
-
-
     public <X> ILevel0GenericMultiOperator<X> exec(final IFunction<X, ? super T> function);
     
     
@@ -108,17 +87,12 @@ public interface ILevel0GenericMultiOperator<T>
     public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection);
     public ILevel0GenericMultiOperator<T> removeIndexes(final int... indices);
     public ILevel0GenericMultiOperator<T> removeEquals(final T... values);
-    public ILevel0GenericMultiOperator<T> removeMatching(final String ognlExpression, final Object... optionalExpParams);
     public ILevel0GenericMultiOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel0GenericMultiOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel0GenericMultiOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel0GenericMultiOperator<T> removeSelected(final ISelector<T> selector);
     public ILevel0GenericMultiOperator<T> removeIndexesNot(final int... indices);
     public ILevel0GenericMultiOperator<T> removeNulls();
-    public ILevel0GenericMultiOperator<T> removeNotNullMatching(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel0GenericMultiOperator<T> removeNullOrMatching(final String ognlExpression, final Object... optionalExpParams);
-    
-    
     public ILevel0ListOperator<T> buildList();
     
     

@@ -19,11 +19,7 @@
  */
 package org.op4j.operators.intf.mapofmap;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Calendar;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
@@ -82,7 +78,6 @@ public interface ILevel2MapOfMapEntriesValueOperator<K1,K2,V>
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> putAll(final Map<K2,V> map);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> insertAll(final int position, final Map<K2,V> map);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeKeys(final K2... keys);
-    public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeMatching(final String ognlExpression, final Object... optionalExpParams);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K2,V>> eval);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeSelected(final ISelector<Map.Entry<K2,V>> selector);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeKeysNot(final K2... keys);
@@ -93,7 +88,6 @@ public interface ILevel2MapOfMapEntriesValueOperator<K1,K2,V>
     
     
     public ILevel3MapOfMapEntriesValueEntriesOperator<K1,K2,V> forEachEntryWithKeys(final K2... keys);
-    public ILevel3MapOfMapEntriesValueEntriesOperator<K1,K2,V> forEachEntryMatching(final String ognlExpression, final Object... optionalExpParams);
     public ILevel3MapOfMapEntriesValueEntriesOperator<K1,K2,V> forEachEntryMatching(final IEvaluator<Boolean, ? super Map.Entry<K2,V>> eval);
     public ILevel3MapOfMapEntriesValueEntriesOperator<K1,K2,V> forEachEntrySelected(final ISelector<Map.Entry<K2,V>> selector);
     public ILevel3MapOfMapEntriesValueEntriesOperator<K1,K2,V> forEachEntryWithKeysNot(final K2... keys);
@@ -105,23 +99,6 @@ public interface ILevel2MapOfMapEntriesValueOperator<K1,K2,V>
     public <X> ILevel2MapEntriesValueOperator<K1,X> convert(final IConverter<X,? super Map<K2,V>> converter);
     
     public <X> ILevel2MapEntriesValueOperator<K1,X> eval(final IEvaluator<X,? super Map<K2,V>> eval);
-
-    public ILevel2MapEntriesValueOperator<K1,?> evalForObject(final String ognlExpression, final Object... optionalExpParams);
-    public <X> ILevel2MapEntriesValueOperator<K1,X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2MapEntriesValueOperator<K1,Byte> evalForByte(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2MapEntriesValueOperator<K1,Short> evalForShort(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2MapEntriesValueOperator<K1,Integer> evalForInteger(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2MapEntriesValueOperator<K1,Long> evalForLong(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2MapEntriesValueOperator<K1,Float> evalForFloat(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2MapEntriesValueOperator<K1,Double> evalForDouble(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2MapEntriesValueOperator<K1,BigInteger> evalForBigInteger(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2MapEntriesValueOperator<K1,BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2MapEntriesValueOperator<K1,Boolean> evalForBoolean(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2MapEntriesValueOperator<K1,Calendar> evalForCalendar(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2MapEntriesValueOperator<K1,String> evalForString(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2MapEntriesValueOperator<K1,Character> evalForCharacter(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel2MapEntriesValueOperator<K1,Date> evalForDate(final String ognlExpression, final Object... optionalExpParams);
-
 
     public <X> ILevel2MapEntriesValueOperator<K1,X> exec(final IFunction<X, ? super Map<K2,V>> function);
     

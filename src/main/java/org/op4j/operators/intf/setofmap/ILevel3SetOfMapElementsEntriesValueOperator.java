@@ -19,10 +19,6 @@
  */
 package org.op4j.operators.intf.setofmap;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
@@ -58,23 +54,6 @@ public interface ILevel3SetOfMapElementsEntriesValueOperator<K,V>
     public <X> ILevel3SetOfMapElementsEntriesValueOperator<K,X> convert(final IConverter<X,? super V> converter);
     
     public <X> ILevel3SetOfMapElementsEntriesValueOperator<K,X> eval(final IEvaluator<X,? super V> eval);
-
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,?> evalForObject(final String ognlExpression, final Object... optionalExpParams);
-    public <X> ILevel3SetOfMapElementsEntriesValueOperator<K,X> evalForObjectOfType(final Type<X> resultType, final String ognlExpression, final Object... optionalExpParams);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Byte> evalForByte(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Short> evalForShort(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Integer> evalForInteger(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Long> evalForLong(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Float> evalForFloat(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Double> evalForDouble(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,BigInteger> evalForBigInteger(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Boolean> evalForBoolean(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Calendar> evalForCalendar(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,String> evalForString(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Character> evalForCharacter(final String ognlExpression, final Object... optionalExpParams);
-    public ILevel3SetOfMapElementsEntriesValueOperator<K,Date> evalForDate(final String ognlExpression, final Object... optionalExpParams);
-
 
     public <X> ILevel3SetOfMapElementsEntriesValueOperator<K,X> exec(final IFunction<X, ? super V> function);
     
