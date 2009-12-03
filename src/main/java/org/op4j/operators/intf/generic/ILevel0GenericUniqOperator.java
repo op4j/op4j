@@ -53,8 +53,8 @@ import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.ILevel0SetOfSetOperator;
 import org.op4j.operators.qualities.IBuilderOperator;
 import org.op4j.operators.qualities.ICallableOperator;
-import org.op4j.operators.qualities.ICastableToFirstLevelStructuresOperator;
-import org.op4j.operators.qualities.ICastableToSecondLevelStructuresOperator;
+import org.op4j.operators.qualities.ICastableToOneLevelStructuresOperator;
+import org.op4j.operators.qualities.ICastableToTwoLevelStructuresOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
@@ -74,8 +74,8 @@ import org.op4j.operators.qualities.IUniqOperator;
  */
 public interface ILevel0GenericUniqOperator<T> 
         extends IUniqOperator<T>,
-                ICastableToFirstLevelStructuresOperator,
-                ICastableToSecondLevelStructuresOperator,
+                ICastableToOneLevelStructuresOperator,
+                ICastableToTwoLevelStructuresOperator,
         		IBuilderOperator<T>,
         		ICallableOperator<T>,
                 IConvertibleOperator<T>,

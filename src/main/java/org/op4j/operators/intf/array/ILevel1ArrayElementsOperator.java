@@ -34,7 +34,7 @@ import org.op4j.operators.intf.arrayoflist.ILevel1ArrayOfListElementsOperator;
 import org.op4j.operators.intf.arrayofmap.ILevel1ArrayOfMapElementsOperator;
 import org.op4j.operators.intf.arrayofset.ILevel1ArrayOfSetElementsOperator;
 import org.op4j.operators.qualities.ICallableOperator;
-import org.op4j.operators.qualities.ICastableToFirstLevelStructuresOperator;
+import org.op4j.operators.qualities.ICastableToOneLevelStructuresOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
@@ -52,7 +52,7 @@ import org.op4j.operators.qualities.IUniqOperator;
  */
 public interface ILevel1ArrayElementsOperator<T> 
 		extends IUniqOperator<T[]>,
-		        ICastableToFirstLevelStructuresOperator,
+		        ICastableToOneLevelStructuresOperator,
                 INavigatingCollectionOperator<T>,
                 ICallableOperator<T>,
                 IConvertibleOperator<T>,

@@ -35,6 +35,7 @@ import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.ILevel2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesValueOperator;
 import org.op4j.operators.qualities.ICallableOperator;
+import org.op4j.operators.qualities.ICastableToOneLevelStructuresOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
@@ -52,6 +53,7 @@ import org.op4j.operators.qualities.IUniqOperator;
  */
 public interface ILevel2MapEntriesValueOperator<K,V>
 		extends IUniqOperator<Map<K,V>>,
+                ICastableToOneLevelStructuresOperator,
 				INavigatingMapEntryOperator,
                 ICallableOperator<V>,
                 IConvertibleOperator<V>,

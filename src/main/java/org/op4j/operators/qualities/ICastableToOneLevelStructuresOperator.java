@@ -29,7 +29,7 @@ import org.javaruntype.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ICastableToFirstLevelStructuresOperator {
+public interface ICastableToOneLevelStructuresOperator {
     
     public <X> IOperator asArray(final Type<X> of);
     public <X> IOperator asList(final Type<X> of);

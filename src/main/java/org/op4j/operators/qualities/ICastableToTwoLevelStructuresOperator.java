@@ -45,7 +45,7 @@ import org.op4j.operators.intf.setofset.ILevel0SetOfSetOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ICastableToSecondLevelStructuresOperator {
+public interface ICastableToTwoLevelStructuresOperator {
     
     public <X> ILevel0ArrayOfArrayOperator<X> asArrayOfArray(final Type<X> of);
     public <X> ILevel0ArrayOfListOperator<X> asArrayOfList(final Type<X> of);
