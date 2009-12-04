@@ -17,8 +17,11 @@
  * 
  * =============================================================================
  */
-package org.op4j.select;
 
+package org.op4j.functions.evaluators;
+
+import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 
 /**
  * 
@@ -27,8 +30,16 @@ package org.op4j.select;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ISelector<T> {
+public abstract class AbstractBooleanEvaluator<T> implements IEvaluator<Boolean, T> {
 
-    public boolean eval(final T target);
-    
+	
+	public AbstractBooleanEvaluator() {
+		super();
+	}
+	
+	
+	public Type<? super Boolean> getResultType() {
+		return Types.BOOLEAN;
+	}
+
 }

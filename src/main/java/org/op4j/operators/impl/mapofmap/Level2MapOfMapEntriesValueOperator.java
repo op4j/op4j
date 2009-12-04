@@ -38,7 +38,6 @@ import org.op4j.operators.intf.mapofmap.ILevel1MapOfMapEntriesOperator;
 import org.op4j.operators.intf.mapofmap.ILevel2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.ILevel3MapOfMapEntriesValueEntriesOperator;
 import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesValueOperator;
-import org.op4j.select.ISelector;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
 
@@ -86,11 +85,6 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
 
     public ILevel3MapOfMapEntriesValueEntriesOperator<K1, K2, V> forEachEntryMatching(final IEvaluator<Boolean, ? super Entry<K2, V>> eval) {
         return new Level3MapOfMapEntriesValueEntriesOperator<K1, K2, V>(getTarget().iterate(eval));
-    }
-
-
-    public ILevel3MapOfMapEntriesValueEntriesOperator<K1, K2, V> forEachEntrySelected(final ISelector<Entry<K2, V>> selector) {
-        return new Level3MapOfMapEntriesValueEntriesOperator<K1, K2, V>(getTarget().iterate(selector));
     }
 
 
@@ -146,11 +140,6 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeNotMatching(final IEvaluator<Boolean, ? super Entry<K2, V>> eval) {
         return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.RemoveNotMatching<K2, V>(eval)));
-    }
-
-
-    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeSelected(final ISelector<Entry<K2, V>> selector) {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.RemoveSelected<K2, V>(selector)));
     }
 
 

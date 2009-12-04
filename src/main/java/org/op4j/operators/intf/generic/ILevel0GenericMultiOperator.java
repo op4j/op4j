@@ -44,9 +44,6 @@ import org.op4j.operators.qualities.IModifiableShrinkableOperator;
 import org.op4j.operators.qualities.IMultiOperator;
 import org.op4j.operators.qualities.ITypeParameterizableXOperator;
 import org.op4j.operators.qualities.IUniqableOperator;
-import org.op4j.select.ISelector;
-
-
 /**
  * 
  * @since 1.0
@@ -93,7 +90,6 @@ public interface ILevel0GenericMultiOperator<T>
     public ILevel0GenericMultiOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel0GenericMultiOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel0GenericMultiOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
-    public ILevel0GenericMultiOperator<T> removeSelected(final ISelector<T> selector);
     public ILevel0GenericMultiOperator<T> removeIndexesNot(final int... indices);
     public ILevel0GenericMultiOperator<T> removeNulls();
     public ILevel0ListOperator<T> buildList();

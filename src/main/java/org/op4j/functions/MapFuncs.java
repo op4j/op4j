@@ -33,7 +33,6 @@ import java.util.Map.Entry;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.select.ISelector;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -318,36 +317,6 @@ public class MapFuncs {
             final Map<K, V> result = new LinkedHashMap<K, V>();
             for (final Map.Entry<K, V> entry : object.entrySet()) {
                 if (this.eval.execute(entry).booleanValue()) {
-                    result.put(entry.getKey(), entry.getValue());
-                }
-            }
-            return result;
-        }
-        
-    }
-
-    
-    
-
-    
-    public static final class RemoveSelected<K, V> extends AbstractNotNullFunc<Map<K, V>,Map<K, V>> {
-
-        private final ISelector<Map.Entry<K,V>> selector;
-        
-        public RemoveSelected(final ISelector<Map.Entry<K,V>> selector) {
-            super();
-            this.selector = selector;
-        }
-
-        public Type<? super Map<K, V>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
-
-        @Override
-        public Map<K, V> notNullExecute(final Map<K, V> object) throws Exception {
-            final Map<K, V> result = new LinkedHashMap<K, V>();
-            for (final Map.Entry<K, V> entry : object.entrySet()) {
-                if (!this.selector.eval(entry)) {
                     result.put(entry.getKey(), entry.getValue());
                 }
             }

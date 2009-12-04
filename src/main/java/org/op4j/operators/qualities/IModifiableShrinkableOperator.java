@@ -19,10 +19,6 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.select.ISelector;
-
-
-
 /**
  * 
  * @since 1.0
@@ -34,7 +30,7 @@ public interface IModifiableShrinkableOperator<T> {
 
     public IModifiableGrowableOperator<T> removeIndexes(final int... indices);
     public IModifiableGrowableOperator<T> removeEquals(final T... values);
-    public IModifiableGrowableOperator<T> removeSelected(final ISelector<T> filter);
     public IModifiableGrowableOperator<T> removeIndexesNot(final int... indices);
     public IModifiableGrowableOperator<T> removeNulls();
-    }
+    
+}

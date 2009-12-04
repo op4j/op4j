@@ -46,9 +46,6 @@ import org.op4j.operators.qualities.INavigableMapOperator;
 import org.op4j.operators.qualities.ISortableOperator;
 import org.op4j.operators.qualities.ITypeParameterizableXYOperator;
 import org.op4j.operators.qualities.IUniqOperator;
-import org.op4j.select.ISelector;
-
-
 /**
  * 
  * @since 1.0
@@ -88,7 +85,6 @@ public interface ILevel0MapOfArrayOperator<K,V>
     public ILevel0MapOfArrayOperator<K,V> removeKeys(final K... keys);
     public ILevel0MapOfArrayOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V[]>> eval);
     public ILevel0MapOfArrayOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V[]>> eval);
-    public ILevel0MapOfArrayOperator<K,V> removeSelected(final ISelector<Map.Entry<K,V[]>> selector);
     public ILevel0MapOfArrayOperator<K,V> removeKeysNot(final K... keys);
     
     public ILevel0MapOfListOperator<K,V> toMapOfList();
@@ -107,7 +103,6 @@ public interface ILevel0MapOfArrayOperator<K,V>
     
     public ILevel1MapOfArrayEntriesOperator<K,V> forEachEntryWithKeys(final K... keys);
     public ILevel1MapOfArrayEntriesOperator<K,V> forEachEntryMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V[]>> eval);
-    public ILevel1MapOfArrayEntriesOperator<K,V> forEachEntrySelected(final ISelector<Map.Entry<K,V[]>> selector);
     public ILevel1MapOfArrayEntriesOperator<K,V> forEachEntryWithKeysNot(final K... keys);
     
     

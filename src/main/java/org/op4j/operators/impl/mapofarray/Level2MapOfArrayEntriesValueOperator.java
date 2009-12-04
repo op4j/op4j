@@ -44,7 +44,6 @@ import org.op4j.operators.intf.mapofarray.ILevel3MapOfArrayEntriesValueElementsO
 import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.ILevel2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesValueOperator;
-import org.op4j.select.ISelector;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
 
@@ -130,11 +129,6 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachSelected(final ISelector<V> selector) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterate(selector));
-    }
-
-
     public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachIndexNot(final int... indices) {
         return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNot(indices));
     }
@@ -200,11 +194,6 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> removeNotNullMatching(final IEvaluator<Boolean, ? super V> eval) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNotNullMatching<V>(eval)));
-    }
-
-
-    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeSelected(final ISelector<V> selector) {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveSelected<V>(selector)));
     }
 
 

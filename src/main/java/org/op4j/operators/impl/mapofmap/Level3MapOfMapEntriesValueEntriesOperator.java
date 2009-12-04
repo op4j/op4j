@@ -20,9 +20,15 @@
 package org.op4j.operators.impl.mapofmap;
 
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
+import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
+import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.mapoflist.Level3MapOfListEntriesValueElementsOperator;
+import org.op4j.operators.intf.mapoflist.ILevel3MapOfListEntriesValueElementsOperator;
 import org.op4j.operators.intf.mapofmap.ILevel2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.ILevel3MapOfMapEntriesValueEntriesOperator;
 import org.op4j.operators.intf.mapofmap.ILevel4MapOfMapEntriesValueEntriesKeyOperator;
@@ -76,4 +82,23 @@ public class Level3MapOfMapEntriesValueEntriesOperator<K1,K2,V> extends Operator
         return endFor().endOn().endFor().get();
     }
 
+    
+    
+    
+    public <X> ILevel3MapOfListEntriesValueElementsOperator<K1,X> convert(final IConverter<X, ? super Entry<K2, V>> converter) {
+        return new Level3MapOfListEntriesValueElementsOperator<K1,X>(getTarget().execute(converter));
+	}
+
+
+	public <X> ILevel3MapOfListEntriesValueElementsOperator<K1,X> eval(final IEvaluator<X, ? super Entry<K2, V>> eval) {
+        return new Level3MapOfListEntriesValueElementsOperator<K1,X>(getTarget().execute(eval));
+	}
+
+
+	public <X> ILevel3MapOfListEntriesValueElementsOperator<K1,X> exec(final IFunction<X, ? super Entry<K2, V>> function) {
+        return new Level3MapOfListEntriesValueElementsOperator<K1,X>(getTarget().execute(function));
+	}
+    
+    
+    
 }

@@ -35,7 +35,6 @@ import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.select.ISelector;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -373,37 +372,6 @@ public class ArrayFuncs {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (this.eval.execute(element).booleanValue()) {
-                    result.add(element);
-                }
-            }
-            return ArrayFuncs.fromList(object.getClass(), result);
-        }
-        
-    }
-
-    
-    
-
-    
-    public static final class RemoveSelected<T> extends AbstractNotNullFunc<T[],T[]> {
-
-        private final ISelector<T> selector;
-        
-        public RemoveSelected(final ISelector<T> selector) {
-            super();
-            Validate.notNull(selector, "A selector must be specified");
-            this.selector = selector;
-        }
-
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
-        }
-
-        @Override
-        public T[] notNullExecute(final T[] object) throws Exception {
-            final List<T> result = new ArrayList<T>();
-            for (final T element : object) {
-                if (!this.selector.eval(element)) {
                     result.add(element);
                 }
             }

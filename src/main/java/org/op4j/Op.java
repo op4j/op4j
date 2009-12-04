@@ -54,8 +54,9 @@ import org.op4j.functions.converters.ToMapOfArray;
 import org.op4j.functions.converters.ToString;
 import org.op4j.functions.converters.ToString.DateStyle;
 import org.op4j.functions.converters.ToString.TimeStyle;
-import org.op4j.functions.evaluators.Ognl;
+import org.op4j.functions.evaluators.AbstractBooleanEvaluator;
 import org.op4j.functions.evaluators.MethodCall;
+import org.op4j.functions.evaluators.Ognl;
 import org.op4j.operators.impl.array.Level0ArrayOperator;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.impl.arrayoflist.Level0ArrayOfListOperator;
@@ -100,7 +101,6 @@ import org.op4j.operators.intf.setofarray.ILevel0SetOfArrayOperator;
 import org.op4j.operators.intf.setoflist.ILevel0SetOfListOperator;
 import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.ILevel0SetOfSetOperator;
-import org.op4j.select.ISelector;
 import org.op4j.target.Target;
 import org.op4j.util.VarArgsUtil;
 
@@ -446,10 +446,10 @@ public final class Op {
         System.out.println(Op.onList(stringsList1).removeIndexesNot(0).get());
         System.out.println(Op.onList(stringsList1).removeIndexesNot(0,2).get());
         System.out.println(Op.onList(stringsList1).removeMatching(Ognl.forBoolean("#target eq 'Hello'")).get());
-        System.out.println(Op.onList(stringsList1).removeSelected(new ISelector<String>() {
+        System.out.println(Op.onList(stringsList1).removeMatching(new AbstractBooleanEvaluator<String>() {
 
-			public boolean eval(String target) {
-				return target == null;
+			public Boolean execute(String target) {
+				return Boolean.valueOf(target == null);
 			}
         	
         }).get());
@@ -469,13 +469,6 @@ public final class Op {
         System.out.println(Op.onSet(stringSet1).removeIndexesNot(0).get());
         System.out.println(Op.onSet(stringSet1).removeIndexesNot(0,2).get());
         System.out.println(Op.onSet(stringSet1).removeMatching(Ognl.forBoolean("#target eq 'Hello'")).get());
-        System.out.println(Op.onSet(stringSet1).removeSelected(new ISelector<String>() {
-
-            public boolean eval(String target) {
-                return target == null;
-            }
-            
-        }).get());
         System.out.println(Op.onSet(stringSet1).removeNulls().get());
         System.out.println(Op.onSet(stringSet1).removeNotNullMatching(Ognl.forBoolean("length() > 5")).get());
             
@@ -708,6 +701,8 @@ public final class Op {
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().eval(MethodCall.forInteger("length")).get());
         System.out.println(Op.onListOfList(stringsListStringsList1).forEachIndex(0).add("").removeMatching(MethodCall.forBoolean("isEmpty")).get());
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().removeMatching(MethodCall.forBoolean("isEmpty")).get());
+        
+        System.out.println(Op.onMap(map1).forEachEntry().eval(Ognl.forString("'in ' + #target.key + ' you say ' + #target.value")).get());
         
     }
     

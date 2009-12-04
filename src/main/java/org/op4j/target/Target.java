@@ -26,7 +26,6 @@ import java.util.List;
 import org.apache.commons.lang.Validate;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.select.ISelector;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -71,7 +70,6 @@ public abstract class Target {
     abstract Target doIteratePositions(final boolean desiredResult, final List<Integer> positions);
     abstract Target doIterateMapKeys(final boolean desiredResult, final List<Object> objects);
     abstract Target doIterateExpression(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
-    abstract Target doIterateSelector(final boolean desiredResult, final ISelector<?> selector);
     abstract Target doIterateNull(final boolean desiredResult);
     abstract Target doIterateNullOr(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
     abstract Target doIterateNotNullAnd(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
@@ -102,12 +100,6 @@ public abstract class Target {
     public Target iterateNot(final IEvaluator<Boolean,? extends Object> eval) {
         Validate.notNull(eval, "An evaluator must be specified");
         return doIterateExpression(false, (IEvaluator<Boolean,Object>) eval);
-    }
-
-    
-    public Target iterate(final ISelector<?> selector) {
-    	Validate.notNull(selector, "A selector must be specified");
-        return doIterateSelector(true, selector);
     }
 
     

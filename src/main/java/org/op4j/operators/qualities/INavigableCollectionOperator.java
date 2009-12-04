@@ -20,13 +20,6 @@
 package org.op4j.operators.qualities;
 
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.select.ISelector;
-
-
-
-
-
-
 /**
  * 
  * @since 1.0
@@ -43,7 +36,6 @@ public interface INavigableCollectionOperator<T>  {
     public INavigatingCollectionOperator<T> forEachNotMatching(final IEvaluator<Boolean, ? super T> eval);
     public INavigatingCollectionOperator<T> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval);
     public INavigatingCollectionOperator<T> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public INavigatingCollectionOperator<T> forEachSelected(final ISelector<T> selector);
     public INavigatingCollectionOperator<T> forEachNull();
     public INavigatingCollectionOperator<T> forEachNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
     public INavigatingCollectionOperator<T> forEachIndexNot(final int... indices);

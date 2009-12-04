@@ -21,9 +21,15 @@ package org.op4j.operators.impl.listofmap;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
+import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
+import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.Operator;
+import org.op4j.operators.impl.listoflist.Level2ListOfListElementsElementsOperator;
+import org.op4j.operators.intf.listoflist.ILevel2ListOfListElementsElementsOperator;
 import org.op4j.operators.intf.listofmap.ILevel1ListOfMapElementsOperator;
 import org.op4j.operators.intf.listofmap.ILevel2ListOfMapElementsEntriesOperator;
 import org.op4j.operators.intf.listofmap.ILevel3ListOfMapElementsEntriesKeyOperator;
@@ -77,4 +83,22 @@ public class Level2ListOfMapElementsEntriesOperator<K,V> extends Operator
         return endFor().endFor().get();
     }
 
+    
+    
+
+    
+    public <X> ILevel2ListOfListElementsElementsOperator<X> convert(final IConverter<X, ? super Entry<K, V>> converter) {
+        return new Level2ListOfListElementsElementsOperator<X>(getTarget().execute(converter));
+	}
+
+
+	public <X> ILevel2ListOfListElementsElementsOperator<X> eval(final IEvaluator<X, ? super Entry<K, V>> eval) {
+        return new Level2ListOfListElementsElementsOperator<X>(getTarget().execute(eval));
+	}
+
+
+	public <X> ILevel2ListOfListElementsElementsOperator<X> exec(final IFunction<X, ? super Entry<K, V>> function) {
+        return new Level2ListOfListElementsElementsOperator<X>(getTarget().execute(function));
+	}
+    
 }

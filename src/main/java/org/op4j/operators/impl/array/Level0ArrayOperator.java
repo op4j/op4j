@@ -42,7 +42,6 @@ import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
-import org.op4j.select.ISelector;
 import org.op4j.target.Target;
 
 /**
@@ -118,10 +117,6 @@ public class Level0ArrayOperator<T> extends Operator implements
     }
 
 
-    public ILevel1ArrayElementsOperator<T> forEachSelected(final ISelector<T> selector) {
-        return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterate(selector));
-    }
-
     public ILevel1ArrayElementsOperator<T> forEachIndexNot(final int... indices) {
         return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNot(indices));
     }
@@ -180,11 +175,6 @@ public class Level0ArrayOperator<T> extends Operator implements
 
     public ILevel0ArrayOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNotNullMatching<T>(eval)));
-    }
-
-
-    public ILevel0ArrayOperator<T> removeSelected(final ISelector<T> selector) {
-        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveSelected<T>(selector)));
     }
 
 

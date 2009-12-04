@@ -17,11 +17,12 @@
  * 
  * =============================================================================
  */
-package org.op4j.operators.qualities;
 
-import java.util.Map;
+package org.op4j.functions.evaluators;
 
-import org.op4j.functions.evaluators.IEvaluator;
+import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
+
 /**
  * 
  * @since 1.0
@@ -29,15 +30,16 @@ import org.op4j.functions.evaluators.IEvaluator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface IModifiableMapOperator<K,V> {
-    
-    public IModifiableMapOperator<K,V> put(final K newKey, final V newValue);
-    public IModifiableMapOperator<K,V> insert(final int position, final K newKey, final V newValue);
-    public IModifiableMapOperator<K,V> putAll(final Map<K,V> map);
-    public IModifiableMapOperator<K,V> insertAll(final int position, final Map<K,V> map);
-    public IModifiableMapOperator<K,V> removeKeys(final K... keys);
-    public IModifiableMapOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
-    public IModifiableMapOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
-    public IModifiableMapOperator<K,V> removeKeysNot(final K... keys);
-    
+public abstract class AbstractStringEvaluator<T> implements IEvaluator<String, T> {
+
+	
+	public AbstractStringEvaluator() {
+		super();
+	}
+	
+	
+	public Type<? super String> getResultType() {
+		return Types.STRING;
+	}
+
 }

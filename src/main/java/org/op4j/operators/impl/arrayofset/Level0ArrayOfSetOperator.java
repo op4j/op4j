@@ -48,7 +48,6 @@ import org.op4j.operators.intf.setofarray.ILevel0SetOfArrayOperator;
 import org.op4j.operators.intf.setoflist.ILevel0SetOfListOperator;
 import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.ILevel0SetOfSetOperator;
-import org.op4j.select.ISelector;
 import org.op4j.target.Target;
 
 
@@ -133,11 +132,6 @@ public class Level0ArrayOfSetOperator<T> extends Operator
     }
 
 
-    public ILevel1ArrayOfSetElementsOperator<T> forEachSelected(final ISelector<Set<T>> selector) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterate(selector));
-    }
-
-
     public ILevel1ArrayOfSetElementsOperator<T> forEachIndexNot(final int... indices) {
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNot(indices));
     }
@@ -206,11 +200,6 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
     public ILevel0ArrayOfSetOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
         return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFuncs.RemoveNotNullMatching<Set<T>>(eval)));
-    }
-
-
-    public ILevel0ArrayOfSetOperator<T> removeSelected(final ISelector<Set<T>> selector) {
-        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFuncs.RemoveSelected<Set<T>>(selector)));
     }
 
 

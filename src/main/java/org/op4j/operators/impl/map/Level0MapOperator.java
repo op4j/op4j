@@ -37,7 +37,6 @@ import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
 import org.op4j.operators.intf.map.ILevel1MapEntriesOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
-import org.op4j.select.ISelector;
 import org.op4j.target.Target;
 
 
@@ -79,11 +78,6 @@ public class Level0MapOperator<K,V> extends Operator
 
     public ILevel1MapEntriesOperator<K, V> forEachEntryMatching(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
         return new Level1MapEntriesOperator<K, V>(getTarget().iterate(eval));
-    }
-
-
-    public ILevel1MapEntriesOperator<K, V> forEachEntrySelected(final ISelector<Entry<K, V>> selector) {
-        return new Level1MapEntriesOperator<K, V>(getTarget().iterate(selector));
     }
 
 
@@ -139,11 +133,6 @@ public class Level0MapOperator<K,V> extends Operator
 
     public ILevel0MapOperator<K, V> removeNotMatching(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
         return new Level0MapOperator<K, V>(getTarget().execute(new MapFuncs.RemoveNotMatching<K, V>(eval)));
-    }
-
-
-    public ILevel0MapOperator<K, V> removeSelected(final ISelector<Entry<K, V>> selector) {
-        return new Level0MapOperator<K, V>(getTarget().execute(new MapFuncs.RemoveSelected<K, V>(selector)));
     }
 
 

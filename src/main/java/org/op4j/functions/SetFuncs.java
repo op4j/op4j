@@ -29,7 +29,6 @@ import java.util.Set;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.select.ISelector;
 
 /**
  * 
@@ -217,26 +216,6 @@ public class SetFuncs {
 
         public RemoveNotMatching(final IEvaluator<Boolean,? super T> eval) {
             super(eval);
-        }
-
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
-        }
-
-        @Override
-        Set<T> fromList(final List<T> object) {
-            return new LinkedHashSet<T>(object);
-        }
-        
-    }
-    
-
-    
-    
-    public static final class RemoveSelected<T> extends CollectionFuncs.RemoveSelected<T, Set<T>> {
-
-        public RemoveSelected(final ISelector<T> selector) {
-            super(selector);
         }
 
         public Type<? super Set<T>> getResultType() {

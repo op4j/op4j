@@ -23,6 +23,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
+import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.operators.intf.list.ILevel1ListElementsOperator;
+import org.op4j.operators.qualities.IConvertibleOperator;
+import org.op4j.operators.qualities.IEvaluableOperator;
+import org.op4j.operators.qualities.IExecutableOperator;
 import org.op4j.operators.qualities.INavigableMapEntryOperator;
 import org.op4j.operators.qualities.INavigatingMapOperator;
 import org.op4j.operators.qualities.ITypeParameterizableXYOperator;
@@ -39,6 +46,9 @@ import org.op4j.operators.qualities.IUniqOperator;
 public interface ILevel1MapOfListEntriesOperator<K,V>
 		extends IUniqOperator<Map<K,List<V>>>,
 		        INavigableMapEntryOperator,
+                IExecutableOperator<Map.Entry<K,List<V>>>,
+                IEvaluableOperator<Map.Entry<K,List<V>>>,
+                IConvertibleOperator<Map.Entry<K,List<V>>>,
 		        INavigatingMapOperator<K,List<V>>,
                 ITypeParameterizableXYOperator<K,V> {
 
@@ -52,5 +62,11 @@ public interface ILevel1MapOfListEntriesOperator<K,V>
         
     public ILevel1MapOfListEntriesOperator<?,?> raw();
     
+
+    public <X> ILevel1ListElementsOperator<X> exec(final IFunction<X, ? super Map.Entry<K,List<V>>> function);
+    
+    public <X> ILevel1ListElementsOperator<X> eval(final IEvaluator<X,? super Map.Entry<K,List<V>>> eval);
+    
+    public <X> ILevel1ListElementsOperator<X> convert(final IConverter<X,? super Map.Entry<K,List<V>>> converter);
                                     
 }

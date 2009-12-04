@@ -31,7 +31,6 @@ import java.util.Set;
 import org.apache.commons.lang.Validate;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.select.ISelector;
 import org.op4j.util.MapEntry;
 
 /**
@@ -150,22 +149,6 @@ public class StructureTarget extends Target {
         for (final Target element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
                 newElements.add(element.doIterateExpression(desiredResult, eval));
-            } else {
-                newElements.add(element);
-            }
-        }
-        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel + 1);
-        
-    }
-
-    
-    @Override
-    Target doIterateSelector(final boolean desiredResult, final ISelector<?> selector) {
-        
-        final List<Target> newElements = new ArrayList<Target>();
-        for (final Target element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.doIterateSelector(desiredResult, selector));
             } else {
                 newElements.add(element);
             }

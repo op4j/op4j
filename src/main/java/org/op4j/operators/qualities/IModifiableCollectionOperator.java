@@ -22,10 +22,6 @@ package org.op4j.operators.qualities;
 import java.util.Collection;
 
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.select.ISelector;
-
-
-
 /**
  * 
  * @since 1.0
@@ -46,7 +42,6 @@ public interface IModifiableCollectionOperator<T> {
     public IModifiableCollectionOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
     public IModifiableCollectionOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
     public IModifiableCollectionOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
-    public IModifiableCollectionOperator<T> removeSelected(final ISelector<T> selector);
     public IModifiableCollectionOperator<T> removeIndexesNot(final int... indices);
     public IModifiableCollectionOperator<T> removeNulls();
     }

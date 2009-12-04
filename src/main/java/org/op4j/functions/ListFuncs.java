@@ -30,7 +30,6 @@ import java.util.Set;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.select.ISelector;
 
 /**
  * 
@@ -238,26 +237,6 @@ public class ListFuncs {
 
         public RemoveNotMatching(final IEvaluator<Boolean,? super T> eval) {
             super(eval);
-        }
-
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
-        }
-
-        @Override
-        List<T> fromList(final List<T> object) {
-            return object;
-        }
-        
-    }
-    
-
-    
-    
-    public static final class RemoveSelected<T> extends CollectionFuncs.RemoveSelected<T, List<T>> {
-
-        public RemoveSelected(final ISelector<T> selector) {
-            super(selector);
         }
 
         public Type<? super List<T>> getResultType() {

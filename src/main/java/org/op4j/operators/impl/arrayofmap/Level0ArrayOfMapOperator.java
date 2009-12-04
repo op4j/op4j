@@ -33,7 +33,6 @@ import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.arrayofmap.ILevel0ArrayOfMapOperator;
 import org.op4j.operators.intf.arrayofmap.ILevel1ArrayOfMapElementsOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
-import org.op4j.select.ISelector;
 import org.op4j.target.Target;
 
 
@@ -110,11 +109,6 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
     }
 
 
-    public ILevel1ArrayOfMapElementsOperator<K, V> forEachSelected(final ISelector<Map<K, V>> selector) {
-        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterate(selector));
-    }
-
-
     public ILevel1ArrayOfMapElementsOperator<K, V> forEachIndexNot(final int... indices) {
         return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNot(indices));
     }
@@ -183,11 +177,6 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
 
     public ILevel0ArrayOfMapOperator<K, V> removeNotNullMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
         return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.RemoveNotNullMatching<Map<K, V>>(eval)));
-    }
-
-
-    public ILevel0ArrayOfMapOperator<K, V> removeSelected(final ISelector<Map<K, V>> selector) {
-        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.RemoveSelected<Map<K, V>>(selector)));
     }
 
 

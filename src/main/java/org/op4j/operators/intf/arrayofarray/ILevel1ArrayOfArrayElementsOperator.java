@@ -44,9 +44,6 @@ import org.op4j.operators.qualities.INavigatingCollectionOperator;
 import org.op4j.operators.qualities.ISortableOperator;
 import org.op4j.operators.qualities.ITypeParameterizableXOperator;
 import org.op4j.operators.qualities.IUniqOperator;
-import org.op4j.select.ISelector;
-
-
 /**
  * 
  * @since 1.0
@@ -93,7 +90,6 @@ public interface ILevel1ArrayOfArrayElementsOperator<T>
     public ILevel1ArrayOfArrayElementsOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel1ArrayOfArrayElementsOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel1ArrayOfArrayElementsOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
-    public ILevel1ArrayOfArrayElementsOperator<T> removeSelected(final ISelector<T> selector);
     public ILevel1ArrayOfArrayElementsOperator<T> removeIndexesNot(final int... indices);
     public ILevel1ArrayOfArrayElementsOperator<T> removeNulls();
     public ILevel1ArrayOfListElementsOperator<T> toList();
@@ -112,7 +108,6 @@ public interface ILevel1ArrayOfArrayElementsOperator<T>
     public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
-    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachSelected(final ISelector<T> selector);
     public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNull();
     public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachIndexNot(final int... indices);
     public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNotNull();

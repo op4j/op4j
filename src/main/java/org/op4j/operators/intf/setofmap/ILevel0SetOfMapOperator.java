@@ -38,9 +38,6 @@ import org.op4j.operators.qualities.INavigableCollectionOperator;
 import org.op4j.operators.qualities.ISortableOperator;
 import org.op4j.operators.qualities.ITypeParameterizableXYOperator;
 import org.op4j.operators.qualities.IUniqOperator;
-import org.op4j.select.ISelector;
-
-
 /**
  * 
  * @since 1.0
@@ -79,7 +76,6 @@ public interface ILevel0SetOfMapOperator<K,V>
     public ILevel0SetOfMapOperator<K,V> removeNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel0SetOfMapOperator<K,V> removeNotNullMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel0SetOfMapOperator<K,V> removeNullOrMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public ILevel0SetOfMapOperator<K,V> removeSelected(final ISelector<Map<K,V>> selector);
     public ILevel0SetOfMapOperator<K,V> removeIndexesNot(final int... indices);
     public ILevel0SetOfMapOperator<K,V> removeNulls();
     public ILevel1SetOfMapElementsOperator<K,V> forEachIndex(final int... indices);
@@ -89,7 +85,6 @@ public interface ILevel0SetOfMapOperator<K,V>
     public ILevel1SetOfMapElementsOperator<K,V> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel1SetOfMapElementsOperator<K,V> forEachNullOrMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel1SetOfMapElementsOperator<K,V> forEachNotNullMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public ILevel1SetOfMapElementsOperator<K,V> forEachSelected(final ISelector<Map<K,V>> selector);
     public ILevel1SetOfMapElementsOperator<K,V> forEachNull();
     public ILevel1SetOfMapElementsOperator<K,V> forEachIndexNot(final int... indices);
     public ILevel1SetOfMapElementsOperator<K,V> forEachNotNull();

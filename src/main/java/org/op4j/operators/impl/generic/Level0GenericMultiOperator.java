@@ -54,7 +54,6 @@ import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
 import org.op4j.operators.intf.mapoflist.ILevel0MapOfListOperator;
 import org.op4j.operators.intf.mapofset.ILevel0MapOfSetOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
-import org.op4j.select.ISelector;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
 
@@ -211,11 +210,6 @@ public class Level0GenericMultiOperator<T> extends Operator
 
     public ILevel0GenericMultiOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<T>(eval)));
-    }
-
-
-    public ILevel0GenericMultiOperator<T> removeSelected(final ISelector<T> selector) {
-        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveSelected<T>(selector)));
     }
 
 

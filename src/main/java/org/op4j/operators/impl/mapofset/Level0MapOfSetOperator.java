@@ -42,7 +42,6 @@ import org.op4j.operators.intf.mapofmap.ILevel0MapOfMapOperator;
 import org.op4j.operators.intf.mapofset.ILevel0MapOfSetOperator;
 import org.op4j.operators.intf.mapofset.ILevel1MapOfSetEntriesOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
-import org.op4j.select.ISelector;
 import org.op4j.target.Target;
 
 
@@ -84,11 +83,6 @@ public class Level0MapOfSetOperator<K,V> extends Operator
 
     public ILevel1MapOfSetEntriesOperator<K, V> forEachEntryMatching(final IEvaluator<Boolean, ? super Entry<K, Set<V>>> eval) {
         return new Level1MapOfSetEntriesOperator<K, V>(getTarget().iterate(eval));
-    }
-
-
-    public ILevel1MapOfSetEntriesOperator<K, V> forEachEntrySelected(final ISelector<Entry<K, Set<V>>> selector) {
-        return new Level1MapOfSetEntriesOperator<K, V>(getTarget().iterate(selector));
     }
 
 
@@ -144,11 +138,6 @@ public class Level0MapOfSetOperator<K,V> extends Operator
 
     public ILevel0MapOfSetOperator<K, V> removeNotMatching(final IEvaluator<Boolean, ? super Entry<K, Set<V>>> eval) {
         return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.RemoveNotMatching<K, Set<V>>(eval)));
-    }
-
-
-    public ILevel0MapOfSetOperator<K, V> removeSelected(final ISelector<Entry<K, Set<V>>> selector) {
-        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.RemoveSelected<K, Set<V>>(selector)));
     }
 
 

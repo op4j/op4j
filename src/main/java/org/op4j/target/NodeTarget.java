@@ -31,7 +31,6 @@ import org.apache.commons.lang.Validate;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.select.ISelector;
 
 /**
  * 
@@ -154,34 +153,6 @@ public abstract class NodeTarget extends Target{
                 throw new ExecutionException(e);
             }
             if ((evalResult != null && evalResult.booleanValue()) == desiredResult) {
-                newSelectedElementIds.add(elementId);
-            }
-            i++;
-            
-        }
-
-        return new StructureTarget(getId(),newSelectedElementIds,newElements, getId().getLevel());
-        
-    }
-
-    
-    @Override
-    @SuppressWarnings("unchecked")
-    Target doIterateSelector(final boolean desiredResult, final ISelector<?> selector) {
-        
-        final ISelector<Object> objectSelector = (ISelector<Object>) selector;
-        
-        final Collection<?> elements = getIterationElements();
-        final List<Target> newElements = new ArrayList<Target>();
-        final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
-        
-        int i = 0;
-        for (final Object element : elements) {
-            
-            final TargetId elementId = new TargetId(getId(), i);
-            newElements.add(NodeTarget.forObject(elementId, element));
-            final boolean evalResult = objectSelector.eval(element);
-            if (evalResult == desiredResult) {
                 newSelectedElementIds.add(elementId);
             }
             i++;

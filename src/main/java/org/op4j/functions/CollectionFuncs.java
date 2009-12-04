@@ -29,7 +29,6 @@ import java.util.List;
 
 import org.apache.commons.lang.Validate;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.select.ISelector;
 import org.op4j.util.VarArgsUtil;
 
 
@@ -270,36 +269,6 @@ class CollectionFuncs {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (this.eval.execute(element).booleanValue()) {
-                    result.add(element);
-                }
-            }
-            return fromList(result);
-        }
-
-        abstract X fromList(final List<T> object);
-        
-    }
-
-    
-
-    
-    
-    
-    static abstract class RemoveSelected<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
-
-        private final ISelector<T> selector;
-        
-        public RemoveSelected(final ISelector<T> selector) {
-            super();
-            Validate.notNull(selector, "A selector must be specified");
-            this.selector = selector;
-        }
-
-        @Override
-        public X notNullExecute(final X object) throws Exception {
-            final List<T> result = new ArrayList<T>();
-            for (final T element : object) {
-                if (!this.selector.eval(element)) {
                     result.add(element);
                 }
             }
