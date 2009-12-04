@@ -191,6 +191,18 @@ public class Level0GenericMultiOperator<T> extends Operator
         return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveMatching<T>(eval)));
     }
 
+    public ILevel0GenericMultiOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNotMatching<T>(eval)));
+    }
+
+    public ILevel0GenericMultiOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNullOrNotMatching<T>(eval)));
+    }
+
+    public ILevel0GenericMultiOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNotNullNotMatching<T>(eval)));
+    }
+
 
     public ILevel0GenericMultiOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0GenericMultiOperator<T>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<T>(eval)));

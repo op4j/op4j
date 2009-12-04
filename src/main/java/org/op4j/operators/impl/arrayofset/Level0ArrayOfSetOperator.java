@@ -110,6 +110,18 @@ public class Level0ArrayOfSetOperator<T> extends Operator
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterate(eval));
     }
 
+    public ILevel1ArrayOfSetElementsOperator<T> forEachNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNot(eval));
+    }
+
+    public ILevel1ArrayOfSetElementsOperator<T> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNullOrNot(eval));
+    }
+
+    public ILevel1ArrayOfSetElementsOperator<T> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNotNullAndNot(eval));
+    }
+
 
     public ILevel1ArrayOfSetElementsOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNotNullAnd(eval));
@@ -172,6 +184,18 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
     public ILevel0ArrayOfSetOperator<T> removeMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
         return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFuncs.RemoveMatching<Set<T>>(eval)));
+    }
+
+    public ILevel0ArrayOfSetOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFuncs.RemoveNotMatching<Set<T>>(eval)));
+    }
+
+    public ILevel0ArrayOfSetOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFuncs.RemoveNullOrNotMatching<Set<T>>(eval)));
+    }
+
+    public ILevel0ArrayOfSetOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0ArrayOfSetOperator<T>(getTarget().execute(new ArrayFuncs.RemoveNotNullNotMatching<Set<T>>(eval)));
     }
 
 

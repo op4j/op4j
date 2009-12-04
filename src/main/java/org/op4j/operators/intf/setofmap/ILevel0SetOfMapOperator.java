@@ -74,6 +74,9 @@ public interface ILevel0SetOfMapOperator<K,V>
     public ILevel0SetOfMapOperator<K,V> removeIndexes(final int... indices);
     public ILevel0SetOfMapOperator<K,V> removeEquals(final Map<K,V>... values);
     public ILevel0SetOfMapOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public ILevel0SetOfMapOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public ILevel0SetOfMapOperator<K,V> removeNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public ILevel0SetOfMapOperator<K,V> removeNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel0SetOfMapOperator<K,V> removeNotNullMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel0SetOfMapOperator<K,V> removeNullOrMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel0SetOfMapOperator<K,V> removeSelected(final ISelector<Map<K,V>> selector);
@@ -81,6 +84,9 @@ public interface ILevel0SetOfMapOperator<K,V>
     public ILevel0SetOfMapOperator<K,V> removeNulls();
     public ILevel1SetOfMapElementsOperator<K,V> forEachIndex(final int... indices);
     public ILevel1SetOfMapElementsOperator<K,V> forEachMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public ILevel1SetOfMapElementsOperator<K,V> forEachNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public ILevel1SetOfMapElementsOperator<K,V> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public ILevel1SetOfMapElementsOperator<K,V> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel1SetOfMapElementsOperator<K,V> forEachNullOrMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel1SetOfMapElementsOperator<K,V> forEachNotNullMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel1SetOfMapElementsOperator<K,V> forEachSelected(final ISelector<Map<K,V>> selector);

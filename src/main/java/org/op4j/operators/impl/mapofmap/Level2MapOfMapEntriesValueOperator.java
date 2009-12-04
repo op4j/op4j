@@ -144,6 +144,10 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
         return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.RemoveMatching<K2, V>(eval)));
     }
 
+    public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeNotMatching(final IEvaluator<Boolean, ? super Entry<K2, V>> eval) {
+        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.RemoveNotMatching<K2, V>(eval)));
+    }
+
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> removeSelected(final ISelector<Entry<K2, V>> selector) {
         return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.RemoveSelected<K2, V>(selector)));

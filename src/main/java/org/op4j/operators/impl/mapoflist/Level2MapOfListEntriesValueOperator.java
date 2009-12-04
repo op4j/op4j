@@ -107,6 +107,18 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
         return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterate(eval));
     }
 
+    public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachNotMatching(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNot(eval));
+    }
+
+    public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNullOrNot(eval));
+    }
+
+    public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNotNullAndNot(eval));
+    }
+
 
     public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachNotNullMatching(final IEvaluator<Boolean, ? super V> eval) {
         return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNotNullAnd(eval));
@@ -169,6 +181,18 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
 
     public ILevel2MapOfListEntriesValueOperator<K, V> removeMatching(final IEvaluator<Boolean, ? super V> eval) {
         return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFuncs.RemoveMatching<V>(eval)));
+    }
+
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeNotMatching(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFuncs.RemoveNotMatching<V>(eval)));
+    }
+
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeNullOrNotMatching(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFuncs.RemoveNullOrNotMatching<V>(eval)));
+    }
+
+    public ILevel2MapOfListEntriesValueOperator<K, V> removeNotNullNotMatching(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().execute(new ListFuncs.RemoveNotNullNotMatching<V>(eval)));
     }
 
 

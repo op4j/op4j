@@ -90,6 +90,9 @@ public interface ILevel2MapOfListEntriesValueOperator<K,V>
     public ILevel2MapOfListEntriesValueOperator<K,V> removeIndexes(final int... indices);
     public ILevel2MapOfListEntriesValueOperator<K,V> removeEquals(final V... values);
     public ILevel2MapOfListEntriesValueOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super V> eval);
+    public ILevel2MapOfListEntriesValueOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super V> eval);
+    public ILevel2MapOfListEntriesValueOperator<K,V> removeNullOrNotMatching(final IEvaluator<Boolean, ? super V> eval);
+    public ILevel2MapOfListEntriesValueOperator<K,V> removeNotNullNotMatching(final IEvaluator<Boolean, ? super V> eval);
     public ILevel2MapOfListEntriesValueOperator<K,V> removeNotNullMatching(final IEvaluator<Boolean, ? super V> eval);
     public ILevel2MapOfListEntriesValueOperator<K,V> removeNullOrMatching(final IEvaluator<Boolean, ? super V> eval);
     public ILevel2MapOfListEntriesValueOperator<K,V> removeSelected(final ISelector<V> selector);
@@ -107,6 +110,9 @@ public interface ILevel2MapOfListEntriesValueOperator<K,V>
     
     public ILevel3MapOfListEntriesValueElementsOperator<K,V> forEachIndex(final int... indices);
     public ILevel3MapOfListEntriesValueElementsOperator<K,V> forEachMatching(final IEvaluator<Boolean, ? super V> eval);
+    public ILevel3MapOfListEntriesValueElementsOperator<K,V> forEachNotMatching(final IEvaluator<Boolean, ? super V> eval);
+    public ILevel3MapOfListEntriesValueElementsOperator<K,V> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super V> eval);
+    public ILevel3MapOfListEntriesValueElementsOperator<K,V> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super V> eval);
     public ILevel3MapOfListEntriesValueElementsOperator<K,V> forEachNullOrMatching(final IEvaluator<Boolean, ? super V> eval);
     public ILevel3MapOfListEntriesValueElementsOperator<K,V> forEachNotNullMatching(final IEvaluator<Boolean, ? super V> eval);
     public ILevel3MapOfListEntriesValueElementsOperator<K,V> forEachSelected(final ISelector<V> selector);

@@ -87,6 +87,18 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
         return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterate(eval));
     }
 
+    public ILevel1ArrayOfMapElementsOperator<K, V> forEachNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNot(eval));
+    }
+
+    public ILevel1ArrayOfMapElementsOperator<K, V> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNullOrNot(eval));
+    }
+
+    public ILevel1ArrayOfMapElementsOperator<K, V> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNotNullAndNot(eval));
+    }
+
 
     public ILevel1ArrayOfMapElementsOperator<K, V> forEachNotNullMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
         return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNotNullAnd(eval));
@@ -149,6 +161,18 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
 
     public ILevel0ArrayOfMapOperator<K, V> removeMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
         return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.RemoveMatching<Map<K, V>>(eval)));
+    }
+
+    public ILevel0ArrayOfMapOperator<K, V> removeNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.RemoveNotMatching<Map<K, V>>(eval)));
+    }
+
+    public ILevel0ArrayOfMapOperator<K, V> removeNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.RemoveNullOrNotMatching<Map<K, V>>(eval)));
+    }
+
+    public ILevel0ArrayOfMapOperator<K, V> removeNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+        return new Level0ArrayOfMapOperator<K, V>(getTarget().execute(new ArrayFuncs.RemoveNotNullNotMatching<Map<K, V>>(eval)));
     }
 
 

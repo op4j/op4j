@@ -98,6 +98,13 @@ public abstract class Target {
     }
 
     
+    @SuppressWarnings("unchecked")
+    public Target iterateNot(final IEvaluator<Boolean,? extends Object> eval) {
+        Validate.notNull(eval, "An evaluator must be specified");
+        return doIterateExpression(false, (IEvaluator<Boolean,Object>) eval);
+    }
+
+    
     public Target iterate(final ISelector<?> selector) {
     	Validate.notNull(selector, "A selector must be specified");
         return doIterateSelector(true, selector);
@@ -113,6 +120,13 @@ public abstract class Target {
     public Target iterateNullOr(final IEvaluator<Boolean,? extends Object> eval) {
     	Validate.notNull(eval, "An evaluator must be specified");
         return doIterateNullOr(true, (IEvaluator<Boolean,Object>) eval);
+    }
+
+    
+    @SuppressWarnings("unchecked")
+    public Target iterateNullOrNot(final IEvaluator<Boolean,? extends Object> eval) {
+        Validate.notNull(eval, "An evaluator must be specified");
+        return doIterateNullOr(false, (IEvaluator<Boolean,Object>) eval);
     }
     
     
@@ -135,6 +149,13 @@ public abstract class Target {
     public Target iterateNotNullAnd(final IEvaluator<Boolean,? extends Object> eval) {
     	Validate.notNull(eval, "An evaluator must be specified");
         return doIterateNotNullAnd(true, (IEvaluator<Boolean,Object>) eval);
+    }
+
+    
+    @SuppressWarnings("unchecked")
+    public Target iterateNotNullAndNot(final IEvaluator<Boolean,? extends Object> eval) {
+        Validate.notNull(eval, "An evaluator must be specified");
+        return doIterateNotNullAnd(false, (IEvaluator<Boolean,Object>) eval);
     }
     
 

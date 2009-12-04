@@ -108,6 +108,18 @@ public class Level0SetOfArrayOperator<T> extends Operator
         return new Level1SetOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterate(eval));
     }
 
+    public ILevel1SetOfArrayElementsOperator<T> forEachNotMatching(final IEvaluator<Boolean, ? super T[]> eval) {
+        return new Level1SetOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNot(eval));
+    }
+
+    public ILevel1SetOfArrayElementsOperator<T> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super T[]> eval) {
+        return new Level1SetOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNullOrNot(eval));
+    }
+
+    public ILevel1SetOfArrayElementsOperator<T> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super T[]> eval) {
+        return new Level1SetOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNotNullAndNot(eval));
+    }
+
 
     public ILevel1SetOfArrayElementsOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super T[]> eval) {
         return new Level1SetOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNotNullAnd(eval));
@@ -167,6 +179,18 @@ public class Level0SetOfArrayOperator<T> extends Operator
 
     public ILevel0SetOfArrayOperator<T> removeMatching(final IEvaluator<Boolean, ? super T[]> eval) {
         return new Level0SetOfArrayOperator<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveMatching<T[]>(eval)));
+    }
+
+    public ILevel0SetOfArrayOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T[]> eval) {
+        return new Level0SetOfArrayOperator<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveNotMatching<T[]>(eval)));
+    }
+
+    public ILevel0SetOfArrayOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T[]> eval) {
+        return new Level0SetOfArrayOperator<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveNullOrNotMatching<T[]>(eval)));
+    }
+
+    public ILevel0SetOfArrayOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T[]> eval) {
+        return new Level0SetOfArrayOperator<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveNotNullNotMatching<T[]>(eval)));
     }
 
 

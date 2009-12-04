@@ -213,6 +213,26 @@ public class SetFuncs {
 
     
     
+    public static final class RemoveNotMatching<T> extends CollectionFuncs.RemoveMatching<T, Set<T>> {
+
+        public RemoveNotMatching(final IEvaluator<Boolean,? super T> eval) {
+            super(eval);
+        }
+
+        public Type<? super Set<T>> getResultType() {
+            return Types.SET_OF_UNKNOWN;
+        }
+
+        @Override
+        Set<T> fromList(final List<T> object) {
+            return new LinkedHashSet<T>(object);
+        }
+        
+    }
+    
+
+    
+    
     public static final class RemoveSelected<T> extends CollectionFuncs.RemoveSelected<T, Set<T>> {
 
         public RemoveSelected(final ISelector<T> selector) {
@@ -289,6 +309,26 @@ public class SetFuncs {
         }
         
     }
+    
+
+    
+    
+    public static final class RemoveNotNullNotMatching<T> extends CollectionFuncs.RemoveNotNullMatching<T, Set<T>> {
+
+        public RemoveNotNullNotMatching(final IEvaluator<Boolean,? super T> eval) {
+            super(eval);
+        }
+
+        public Type<? super Set<T>> getResultType() {
+            return Types.SET_OF_UNKNOWN;
+        }
+
+        @Override
+        Set<T> fromList(final List<T> object) {
+            return new LinkedHashSet<T>(object);
+        }
+        
+    }
 
 
     
@@ -296,6 +336,26 @@ public class SetFuncs {
     public static final class RemoveNullOrMatching<T> extends CollectionFuncs.RemoveNullOrMatching<T, Set<T>> {
 
         public RemoveNullOrMatching(final IEvaluator<Boolean,? super T> eval) {
+            super(eval);
+        }
+
+        public Type<? super Set<T>> getResultType() {
+            return Types.SET_OF_UNKNOWN;
+        }
+
+        @Override
+        Set<T> fromList(final List<T> object) {
+            return new LinkedHashSet<T>(object);
+        }
+        
+    }
+
+
+    
+    
+    public static final class RemoveNullOrNotMatching<T> extends CollectionFuncs.RemoveNullOrMatching<T, Set<T>> {
+
+        public RemoveNullOrNotMatching(final IEvaluator<Boolean,? super T> eval) {
             super(eval);
         }
 

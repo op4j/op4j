@@ -103,6 +103,18 @@ public class Level1ListOfSetElementsOperator<T> extends Operator
         return new Level2ListOfSetElementsElementsOperator<T>(getTarget().iterate(eval));
     }
 
+    public ILevel2ListOfSetElementsElementsOperator<T> forEachNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2ListOfSetElementsElementsOperator<T>(getTarget().iterateNot(eval));
+    }
+
+    public ILevel2ListOfSetElementsElementsOperator<T> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2ListOfSetElementsElementsOperator<T>(getTarget().iterateNullOrNot(eval));
+    }
+
+    public ILevel2ListOfSetElementsElementsOperator<T> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2ListOfSetElementsElementsOperator<T>(getTarget().iterateNotNullAndNot(eval));
+    }
+
 
     public ILevel2ListOfSetElementsElementsOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super T> eval) {
         return new Level2ListOfSetElementsElementsOperator<T>(getTarget().iterateNotNullAnd(eval));
@@ -165,6 +177,18 @@ public class Level1ListOfSetElementsOperator<T> extends Operator
 
     public ILevel1ListOfSetElementsOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval) {
         return new Level1ListOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.RemoveMatching<T>(eval)));
+    }
+
+    public ILevel1ListOfSetElementsOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1ListOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.RemoveNotMatching<T>(eval)));
+    }
+
+    public ILevel1ListOfSetElementsOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1ListOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.RemoveNullOrNotMatching<T>(eval)));
+    }
+
+    public ILevel1ListOfSetElementsOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1ListOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.RemoveNotNullNotMatching<T>(eval)));
     }
 
 

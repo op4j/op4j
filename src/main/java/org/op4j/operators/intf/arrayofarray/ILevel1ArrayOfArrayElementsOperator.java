@@ -88,6 +88,9 @@ public interface ILevel1ArrayOfArrayElementsOperator<T>
     public ILevel1ArrayOfArrayElementsOperator<T> removeIndexes(final int... indices);
     public ILevel1ArrayOfArrayElementsOperator<T> removeEquals(final T... values);
     public ILevel1ArrayOfArrayElementsOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval);
+    public ILevel1ArrayOfArrayElementsOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T> eval);
+    public ILevel1ArrayOfArrayElementsOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval);
+    public ILevel1ArrayOfArrayElementsOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel1ArrayOfArrayElementsOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel1ArrayOfArrayElementsOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel1ArrayOfArrayElementsOperator<T> removeSelected(final ISelector<T> selector);
@@ -104,6 +107,9 @@ public interface ILevel1ArrayOfArrayElementsOperator<T>
     
     public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachIndex(final int... indices);
     public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachMatching(final IEvaluator<Boolean, ? super T> eval);
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNotMatching(final IEvaluator<Boolean, ? super T> eval);
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval);
+    public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel2ArrayOfArrayElementsElementsOperator<T> forEachSelected(final ISelector<T> selector);

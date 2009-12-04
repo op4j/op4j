@@ -95,6 +95,18 @@ public class Level0SetOperator<T> extends Operator
         return new Level1SetElementsOperator<T>(getTarget().iterate(eval));
     }
 
+    public ILevel1SetElementsOperator<T> forEachNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1SetElementsOperator<T>(getTarget().iterateNot(eval));
+    }
+
+    public ILevel1SetElementsOperator<T> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1SetElementsOperator<T>(getTarget().iterateNullOrNot(eval));
+    }
+
+    public ILevel1SetElementsOperator<T> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1SetElementsOperator<T>(getTarget().iterateNotNullAndNot(eval));
+    }
+
 
     public ILevel1SetElementsOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super T> eval) {
         return new Level1SetElementsOperator<T>(getTarget().iterateNotNullAnd(eval));
@@ -157,6 +169,18 @@ public class Level0SetOperator<T> extends Operator
 
     public ILevel0SetOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0SetOperator<T>(getTarget().execute(new SetFuncs.RemoveMatching<T>(eval)));
+    }
+
+    public ILevel0SetOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0SetOperator<T>(getTarget().execute(new SetFuncs.RemoveNotMatching<T>(eval)));
+    }
+
+    public ILevel0SetOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0SetOperator<T>(getTarget().execute(new SetFuncs.RemoveNullOrNotMatching<T>(eval)));
+    }
+
+    public ILevel0SetOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0SetOperator<T>(getTarget().execute(new SetFuncs.RemoveNotNullNotMatching<T>(eval)));
     }
 
 

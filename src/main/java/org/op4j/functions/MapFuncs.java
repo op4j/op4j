@@ -300,6 +300,36 @@ public class MapFuncs {
     
 
     
+    public static final class RemoveNotMatching<K, V> extends AbstractNotNullFunc<Map<K, V>,Map<K, V>> {
+
+        private final IEvaluator<Boolean,? super Map.Entry<K, V>> eval;
+        
+        public RemoveNotMatching(final IEvaluator<Boolean,? super Map.Entry<K, V>> eval) {
+            super();
+            this.eval = eval;
+        }
+
+        public Type<? super Map<K, V>> getResultType() {
+            return Types.MAP_OF_UNKNOWN_UNKNOWN;
+        }
+
+        @Override
+        public Map<K, V> notNullExecute(final Map<K, V> object) throws Exception {
+            final Map<K, V> result = new LinkedHashMap<K, V>();
+            for (final Map.Entry<K, V> entry : object.entrySet()) {
+                if (this.eval.execute(entry).booleanValue()) {
+                    result.put(entry.getKey(), entry.getValue());
+                }
+            }
+            return result;
+        }
+        
+    }
+
+    
+    
+
+    
     public static final class RemoveSelected<K, V> extends AbstractNotNullFunc<Map<K, V>,Map<K, V>> {
 
         private final ISelector<Map.Entry<K,V>> selector;

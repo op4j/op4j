@@ -113,6 +113,18 @@ public class Level0ListOfListOperator<T> extends Operator
         return new Level1ListOfListElementsOperator<T>(getTarget().iterate(eval));
     }
 
+    public ILevel1ListOfListElementsOperator<T> forEachNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
+        return new Level1ListOfListElementsOperator<T>(getTarget().iterateNot(eval));
+    }
+
+    public ILevel1ListOfListElementsOperator<T> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
+        return new Level1ListOfListElementsOperator<T>(getTarget().iterateNullOrNot(eval));
+    }
+
+    public ILevel1ListOfListElementsOperator<T> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
+        return new Level1ListOfListElementsOperator<T>(getTarget().iterateNotNullAndNot(eval));
+    }
+
 
     public ILevel1ListOfListElementsOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
         return new Level1ListOfListElementsOperator<T>(getTarget().iterateNotNullAnd(eval));
@@ -175,6 +187,18 @@ public class Level0ListOfListOperator<T> extends Operator
 
     public ILevel0ListOfListOperator<T> removeMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
         return new Level0ListOfListOperator<T>(getTarget().execute(new ListFuncs.RemoveMatching<List<T>>(eval)));
+    }
+
+    public ILevel0ListOfListOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
+        return new Level0ListOfListOperator<T>(getTarget().execute(new ListFuncs.RemoveNotMatching<List<T>>(eval)));
+    }
+
+    public ILevel0ListOfListOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
+        return new Level0ListOfListOperator<T>(getTarget().execute(new ListFuncs.RemoveNullOrNotMatching<List<T>>(eval)));
+    }
+
+    public ILevel0ListOfListOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
+        return new Level0ListOfListOperator<T>(getTarget().execute(new ListFuncs.RemoveNotNullNotMatching<List<T>>(eval)));
     }
 
 

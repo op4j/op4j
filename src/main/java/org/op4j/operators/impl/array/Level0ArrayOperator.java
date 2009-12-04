@@ -95,6 +95,18 @@ public class Level0ArrayOperator<T> extends Operator implements
         return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterate(eval));
     }
 
+    public ILevel1ArrayElementsOperator<T> forEachNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNot(eval));
+    }
+
+    public ILevel1ArrayElementsOperator<T> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNullOrNot(eval));
+    }
+
+    public ILevel1ArrayElementsOperator<T> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNotNullAndNot(eval));
+    }
+
 
     public ILevel1ArrayElementsOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super T> eval) {
         return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNotNullAnd(eval));
@@ -146,6 +158,18 @@ public class Level0ArrayOperator<T> extends Operator implements
 
     public ILevel0ArrayOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveMatching<T>(eval)));
+    }
+
+    public ILevel0ArrayOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNotMatching<T>(eval)));
+    }
+
+    public ILevel0ArrayOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNullOrNotMatching<T>(eval)));
+    }
+
+    public ILevel0ArrayOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNotNullNotMatching<T>(eval)));
     }
 
 

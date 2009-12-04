@@ -144,6 +144,10 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
         return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(new MapFuncs.RemoveMatching<K, V>(eval)));
     }
 
+    public ILevel1ArrayOfMapElementsOperator<K, V> removeNotMatching(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(new MapFuncs.RemoveNotMatching<K, V>(eval)));
+    }
+
 
     public ILevel1ArrayOfMapElementsOperator<K, V> removeSelected(final ISelector<Entry<K, V>> selector) {
         return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(new MapFuncs.RemoveSelected<K, V>(selector)));

@@ -41,6 +41,9 @@ public interface IModifiableCollectionOperator<T> {
     public IModifiableCollectionOperator<T> removeIndexes(final int... indices);
     public IModifiableCollectionOperator<T> removeEquals(final T... values);
     public IModifiableCollectionOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval);
+    public IModifiableCollectionOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T> eval);
+    public IModifiableCollectionOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval);
+    public IModifiableCollectionOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
     public IModifiableCollectionOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
     public IModifiableCollectionOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
     public IModifiableCollectionOperator<T> removeSelected(final ISelector<T> selector);

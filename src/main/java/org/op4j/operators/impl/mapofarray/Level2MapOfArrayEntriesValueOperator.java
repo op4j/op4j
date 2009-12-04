@@ -107,6 +107,18 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
         return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterate(eval));
     }
 
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNotMatching(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNot(eval));
+    }
+
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNullOrNot(eval));
+    }
+
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNotNullAndNot(eval));
+    }
+
 
     public ILevel3MapOfArrayEntriesValueElementsOperator<K, V> forEachNotNullMatching(final IEvaluator<Boolean, ? super V> eval) {
         return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget().iterateNotNullAnd(eval));
@@ -166,6 +178,18 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> removeMatching(final IEvaluator<Boolean, ? super V> eval) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveMatching<V>(eval)));
+    }
+
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeNotMatching(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNotMatching<V>(eval)));
+    }
+
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeNullOrNotMatching(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNullOrNotMatching<V>(eval)));
+    }
+
+    public ILevel2MapOfArrayEntriesValueOperator<K, V> removeNotNullNotMatching(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNotNullNotMatching<V>(eval)));
     }
 
 

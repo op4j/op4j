@@ -108,6 +108,18 @@ public class Level0SetOfSetOperator<T> extends Operator
         return new Level1SetOfSetElementsOperator<T>(getTarget().iterate(eval));
     }
 
+    public ILevel1SetOfSetElementsOperator<T> forEachNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level1SetOfSetElementsOperator<T>(getTarget().iterateNot(eval));
+    }
+
+    public ILevel1SetOfSetElementsOperator<T> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level1SetOfSetElementsOperator<T>(getTarget().iterateNullOrNot(eval));
+    }
+
+    public ILevel1SetOfSetElementsOperator<T> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level1SetOfSetElementsOperator<T>(getTarget().iterateNotNullAndNot(eval));
+    }
+
 
     public ILevel1SetOfSetElementsOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
         return new Level1SetOfSetElementsOperator<T>(getTarget().iterateNotNullAnd(eval));
@@ -170,6 +182,18 @@ public class Level0SetOfSetOperator<T> extends Operator
 
     public ILevel0SetOfSetOperator<T> removeMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
         return new Level0SetOfSetOperator<T>(getTarget().execute(new SetFuncs.RemoveMatching<Set<T>>(eval)));
+    }
+
+    public ILevel0SetOfSetOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0SetOfSetOperator<T>(getTarget().execute(new SetFuncs.RemoveNotMatching<Set<T>>(eval)));
+    }
+
+    public ILevel0SetOfSetOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0SetOfSetOperator<T>(getTarget().execute(new SetFuncs.RemoveNullOrNotMatching<Set<T>>(eval)));
+    }
+
+    public ILevel0SetOfSetOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0SetOfSetOperator<T>(getTarget().execute(new SetFuncs.RemoveNotNullNotMatching<Set<T>>(eval)));
     }
 
 

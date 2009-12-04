@@ -142,6 +142,10 @@ public class Level0MapOfListOperator<K,V> extends Operator
         return new Level0MapOfListOperator<K, V>(getTarget().execute(new MapFuncs.RemoveMatching<K, List<V>>(eval)));
     }
 
+    public ILevel0MapOfListOperator<K, V> removeNotMatching(final IEvaluator<Boolean, ? super Entry<K, List<V>>> eval) {
+        return new Level0MapOfListOperator<K, V>(getTarget().execute(new MapFuncs.RemoveNotMatching<K, List<V>>(eval)));
+    }
+
 
     public ILevel0MapOfListOperator<K, V> removeSelected(final ISelector<Entry<K, List<V>>> selector) {
         return new Level0MapOfListOperator<K, V>(getTarget().execute(new MapFuncs.RemoveSelected<K, List<V>>(selector)));

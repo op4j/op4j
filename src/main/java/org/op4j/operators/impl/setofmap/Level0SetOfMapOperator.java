@@ -86,6 +86,18 @@ public class Level0SetOfMapOperator<K,V> extends Operator
         return new Level1SetOfMapElementsOperator<K, V>(getTarget().iterate(eval));
     }
 
+    public ILevel1SetOfMapElementsOperator<K, V> forEachNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+        return new Level1SetOfMapElementsOperator<K, V>(getTarget().iterateNot(eval));
+    }
+
+    public ILevel1SetOfMapElementsOperator<K, V> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+        return new Level1SetOfMapElementsOperator<K, V>(getTarget().iterateNullOrNot(eval));
+    }
+
+    public ILevel1SetOfMapElementsOperator<K, V> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+        return new Level1SetOfMapElementsOperator<K, V>(getTarget().iterateNotNullAndNot(eval));
+    }
+
 
     public ILevel1SetOfMapElementsOperator<K, V> forEachNotNullMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
         return new Level1SetOfMapElementsOperator<K, V>(getTarget().iterateNotNullAnd(eval));
@@ -148,6 +160,18 @@ public class Level0SetOfMapOperator<K,V> extends Operator
 
     public ILevel0SetOfMapOperator<K, V> removeMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
         return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFuncs.RemoveMatching<Map<K, V>>(eval)));
+    }
+
+    public ILevel0SetOfMapOperator<K, V> removeNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFuncs.RemoveNotMatching<Map<K, V>>(eval)));
+    }
+
+    public ILevel0SetOfMapOperator<K, V> removeNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFuncs.RemoveNullOrNotMatching<Map<K, V>>(eval)));
+    }
+
+    public ILevel0SetOfMapOperator<K, V> removeNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+        return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFuncs.RemoveNotNullNotMatching<Map<K, V>>(eval)));
     }
 
 

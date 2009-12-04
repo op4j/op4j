@@ -89,6 +89,9 @@ public interface ILevel2MapOfArrayEntriesValueOperator<K,V>
     public ILevel2MapOfArrayEntriesValueOperator<K,V> removeIndexes(final int... indices);
     public ILevel2MapOfArrayEntriesValueOperator<K,V> removeEquals(final V... values);
     public ILevel2MapOfArrayEntriesValueOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super V> eval);
+    public ILevel2MapOfArrayEntriesValueOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super V> eval);
+    public ILevel2MapOfArrayEntriesValueOperator<K,V> removeNullOrNotMatching(final IEvaluator<Boolean, ? super V> eval);
+    public ILevel2MapOfArrayEntriesValueOperator<K,V> removeNotNullNotMatching(final IEvaluator<Boolean, ? super V> eval);
     public ILevel2MapOfArrayEntriesValueOperator<K,V> removeNotNullMatching(final IEvaluator<Boolean, ? super V> eval);
     public ILevel2MapOfArrayEntriesValueOperator<K,V> removeNullOrMatching(final IEvaluator<Boolean, ? super V> eval);
     public ILevel2MapOfArrayEntriesValueOperator<K,V> removeSelected(final ISelector<V> selector);
@@ -105,6 +108,9 @@ public interface ILevel2MapOfArrayEntriesValueOperator<K,V>
     
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,V> forEachIndex(final int... indices);
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,V> forEachMatching(final IEvaluator<Boolean, ? super V> eval);
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K,V> forEachNotMatching(final IEvaluator<Boolean, ? super V> eval);
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K,V> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super V> eval);
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K,V> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super V> eval);
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,V> forEachNullOrMatching(final IEvaluator<Boolean, ? super V> eval);
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,V> forEachNotNullMatching(final IEvaluator<Boolean, ? super V> eval);
     public ILevel3MapOfArrayEntriesValueElementsOperator<K,V> forEachSelected(final ISelector<V> selector);

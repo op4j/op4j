@@ -254,6 +254,37 @@ class CollectionFuncs {
     
 
     
+    
+    static abstract class RemoveNotMatching<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
+
+        private final IEvaluator<Boolean,? super T> eval;
+        
+        public RemoveNotMatching(final IEvaluator<Boolean,? super T> eval) {
+            super();
+            Validate.notNull(eval, "An evaluator must be specified");
+            this.eval = eval;
+        }
+
+        @Override
+        public X notNullExecute(final X object) throws Exception {
+            final List<T> result = new ArrayList<T>();
+            for (final T element : object) {
+                if (this.eval.execute(element).booleanValue()) {
+                    result.add(element);
+                }
+            }
+            return fromList(result);
+        }
+
+        abstract X fromList(final List<T> object);
+        
+    }
+
+    
+
+    
+    
+    
     static abstract class RemoveSelected<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
 
         private final ISelector<T> selector;
@@ -372,6 +403,43 @@ class CollectionFuncs {
 
     
     
+
+    
+    
+    static abstract class RemoveNotNullNotMatching<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
+
+        private final IEvaluator<Boolean,? super T> eval;
+        
+        public RemoveNotNullNotMatching(final IEvaluator<Boolean,? super T> eval) {
+            super();
+            Validate.notNull(eval, "An evaluator must be specified");
+            this.eval = eval;
+        }
+
+        @Override
+        public X notNullExecute(final X object) throws Exception {
+            final List<T> result = new ArrayList<T>();
+            for (final T element : object) {
+                if (element != null) {
+                    if (this.eval.execute(element).booleanValue()) {
+                        result.add(element);
+                    }
+                } else {
+                    result.add(element);
+                }
+            }
+            return fromList(result);
+        }
+
+        abstract X fromList(final List<T> object);
+        
+    }
+    
+
+    
+    
+
+    
     static abstract class RemoveNullOrMatching<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
 
         private final IEvaluator<Boolean,? super T> eval;
@@ -401,6 +469,39 @@ class CollectionFuncs {
 
     
 
+
+    
+
+    
+    static abstract class RemoveNullOrNotMatching<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
+
+        private final IEvaluator<Boolean,? super T> eval;
+        
+        public RemoveNullOrNotMatching(final IEvaluator<Boolean,? super T> eval) {
+            super();
+            Validate.notNull(eval, "An evaluator must be specified");
+            this.eval = eval;
+        }
+
+        @Override
+        public X notNullExecute(final X object) throws Exception {
+            final List<T> result = new ArrayList<T>();
+            for (final T element : object) {
+                if (element != null) {
+                    if (this.eval.execute(element).booleanValue()) {
+                        result.add(element);
+                    }
+                }
+            }
+            return fromList(result);
+        }
+
+        abstract X fromList(final List<T> object);
+        
+    }
+
+    
+    
     
     
     static abstract class FlattenCollectionOfArrays<T, X extends Collection<T>, Y extends Collection<T[]>> extends AbstractNotNullFunc<X, Y> {

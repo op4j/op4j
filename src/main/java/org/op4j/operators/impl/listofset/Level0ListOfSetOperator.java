@@ -113,6 +113,18 @@ public class Level0ListOfSetOperator<T> extends Operator
         return new Level1ListOfSetElementsOperator<T>(getTarget().iterate(eval));
     }
 
+    public ILevel1ListOfSetElementsOperator<T> forEachNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level1ListOfSetElementsOperator<T>(getTarget().iterateNot(eval));
+    }
+
+    public ILevel1ListOfSetElementsOperator<T> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level1ListOfSetElementsOperator<T>(getTarget().iterateNullOrNot(eval));
+    }
+
+    public ILevel1ListOfSetElementsOperator<T> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level1ListOfSetElementsOperator<T>(getTarget().iterateNotNullAndNot(eval));
+    }
+
 
     public ILevel1ListOfSetElementsOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
         return new Level1ListOfSetElementsOperator<T>(getTarget().iterateNotNullAnd(eval));
@@ -175,6 +187,18 @@ public class Level0ListOfSetOperator<T> extends Operator
 
     public ILevel0ListOfSetOperator<T> removeMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
         return new Level0ListOfSetOperator<T>(getTarget().execute(new ListFuncs.RemoveMatching<Set<T>>(eval)));
+    }
+
+    public ILevel0ListOfSetOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0ListOfSetOperator<T>(getTarget().execute(new ListFuncs.RemoveNotMatching<Set<T>>(eval)));
+    }
+
+    public ILevel0ListOfSetOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0ListOfSetOperator<T>(getTarget().execute(new ListFuncs.RemoveNullOrNotMatching<Set<T>>(eval)));
+    }
+
+    public ILevel0ListOfSetOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0ListOfSetOperator<T>(getTarget().execute(new ListFuncs.RemoveNotNullNotMatching<Set<T>>(eval)));
     }
 
 

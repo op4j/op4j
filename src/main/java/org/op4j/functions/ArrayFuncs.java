@@ -354,6 +354,37 @@ public class ArrayFuncs {
     
 
     
+    public static final class RemoveNotMatching<T> extends AbstractNotNullFunc<T[],T[]> {
+
+        private final IEvaluator<Boolean,? super T> eval;
+        
+        public RemoveNotMatching(final IEvaluator<Boolean,? super T> eval) {
+            super();
+            Validate.notNull(eval, "An evaluator must be specified");
+            this.eval = eval;
+        }
+
+        public Type<? super T[]> getResultType() {
+            return Types.ARRAY_OF_OBJECT;
+        }
+
+        @Override
+        public T[] notNullExecute(final T[] object) throws Exception {
+            final List<T> result = new ArrayList<T>();
+            for (final T element : object) {
+                if (this.eval.execute(element).booleanValue()) {
+                    result.add(element);
+                }
+            }
+            return ArrayFuncs.fromList(object.getClass(), result);
+        }
+        
+    }
+
+    
+    
+
+    
     public static final class RemoveSelected<T> extends AbstractNotNullFunc<T[],T[]> {
 
         private final ISelector<T> selector;
@@ -477,6 +508,43 @@ public class ArrayFuncs {
     }
     
 
+
+    
+    
+
+    
+    
+    public static final class RemoveNotNullNotMatching<T> extends AbstractNotNullFunc<T[],T[]> {
+
+        private final IEvaluator<Boolean,? super T> eval;
+        
+        public RemoveNotNullNotMatching(final IEvaluator<Boolean,? super T> eval) {
+            super();
+            Validate.notNull(eval, "An evaluator must be specified");
+            this.eval = eval;
+        }
+
+        public Type<? super T[]> getResultType() {
+            return Types.ARRAY_OF_OBJECT;
+        }
+
+        @Override
+        public T[] notNullExecute(final T[] object) throws Exception {
+            final List<T> result = new ArrayList<T>();
+            for (final T element : object) {
+                if (element != null) {
+                    if (this.eval.execute(element).booleanValue()) {
+                        result.add(element);
+                    }
+                } else {
+                    result.add(element);
+                }
+            }
+            return ArrayFuncs.fromList(object.getClass(), result);
+        }
+        
+    }
+    
     
 
     
@@ -513,6 +581,41 @@ public class ArrayFuncs {
     
     
 
+
+    
+    
+    public static final class RemoveNullOrNotMatching<T> extends AbstractNotNullFunc<T[],T[]> {
+
+        private final IEvaluator<Boolean,? super T> eval;
+        
+        public RemoveNullOrNotMatching(final IEvaluator<Boolean,? super T> eval) {
+            super();
+            Validate.notNull(eval, "An evaluator must be specified");
+            this.eval = eval;
+        }
+
+        public Type<? super T[]> getResultType() {
+            return Types.ARRAY_OF_OBJECT;
+        }
+
+        @Override
+        public T[] notNullExecute(final T[] object) throws Exception {
+            final List<T> result = new ArrayList<T>();
+            for (final T element : object) {
+                if (element != null) {
+                    if (this.eval.execute(element).booleanValue()) {
+                        result.add(element);
+                    }
+                }
+            }
+            return ArrayFuncs.fromList(object.getClass(), result);
+        }
+        
+    }
+    
+    
+    
+    
     
     
     public static final class FlattenArrayOfArrays<T> extends AbstractNotNullFunc<T[], T[][]> {

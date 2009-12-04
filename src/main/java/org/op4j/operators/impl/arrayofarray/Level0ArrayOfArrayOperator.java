@@ -111,6 +111,18 @@ public class Level0ArrayOfArrayOperator<T> extends Operator
         return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterate(eval));
     }
 
+    public ILevel1ArrayOfArrayElementsOperator<T> forEachNotMatching(final IEvaluator<Boolean, ? super T[]> eval) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNot(eval));
+    }
+
+    public ILevel1ArrayOfArrayElementsOperator<T> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super T[]> eval) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNullOrNot(eval));
+    }
+
+    public ILevel1ArrayOfArrayElementsOperator<T> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super T[]> eval) {
+        return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNotNullAndNot(eval));
+    }
+
 
     public ILevel1ArrayOfArrayElementsOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super T[]> eval) {
         return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNotNullAnd(eval));
@@ -170,6 +182,18 @@ public class Level0ArrayOfArrayOperator<T> extends Operator
 
     public ILevel0ArrayOfArrayOperator<T> removeMatching(final IEvaluator<Boolean, ? super T[]> eval) {
         return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveMatching<T[]>(eval)));
+    }
+
+    public ILevel0ArrayOfArrayOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T[]> eval) {
+        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNotMatching<T[]>(eval)));
+    }
+
+    public ILevel0ArrayOfArrayOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T[]> eval) {
+        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNullOrNotMatching<T[]>(eval)));
+    }
+
+    public ILevel0ArrayOfArrayOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T[]> eval) {
+        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNotNullNotMatching<T[]>(eval)));
     }
 
 

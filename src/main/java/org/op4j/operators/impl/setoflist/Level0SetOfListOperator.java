@@ -108,6 +108,18 @@ public class Level0SetOfListOperator<T> extends Operator
         return new Level1SetOfListElementsOperator<T>(getTarget().iterate(eval));
     }
 
+    public ILevel1SetOfListElementsOperator<T> forEachNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
+        return new Level1SetOfListElementsOperator<T>(getTarget().iterateNot(eval));
+    }
+
+    public ILevel1SetOfListElementsOperator<T> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
+        return new Level1SetOfListElementsOperator<T>(getTarget().iterateNullOrNot(eval));
+    }
+
+    public ILevel1SetOfListElementsOperator<T> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
+        return new Level1SetOfListElementsOperator<T>(getTarget().iterateNotNullAndNot(eval));
+    }
+
 
     public ILevel1SetOfListElementsOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
         return new Level1SetOfListElementsOperator<T>(getTarget().iterateNotNullAnd(eval));
@@ -170,6 +182,18 @@ public class Level0SetOfListOperator<T> extends Operator
 
     public ILevel0SetOfListOperator<T> removeMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
         return new Level0SetOfListOperator<T>(getTarget().execute(new SetFuncs.RemoveMatching<List<T>>(eval)));
+    }
+
+    public ILevel0SetOfListOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(new SetFuncs.RemoveNotMatching<List<T>>(eval)));
+    }
+
+    public ILevel0SetOfListOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(new SetFuncs.RemoveNullOrNotMatching<List<T>>(eval)));
+    }
+
+    public ILevel0SetOfListOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
+        return new Level0SetOfListOperator<T>(getTarget().execute(new SetFuncs.RemoveNotNullNotMatching<List<T>>(eval)));
     }
 
 

@@ -40,6 +40,9 @@ public interface INavigableCollectionOperator<T>  {
     
     public INavigatingCollectionOperator<T> forEachIndex(final int... indices);
     public INavigatingCollectionOperator<T> forEachMatching(final IEvaluator<Boolean, ? super T> eval);
+    public INavigatingCollectionOperator<T> forEachNotMatching(final IEvaluator<Boolean, ? super T> eval);
+    public INavigatingCollectionOperator<T> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval);
+    public INavigatingCollectionOperator<T> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
     public INavigatingCollectionOperator<T> forEachSelected(final ISelector<T> selector);
     public INavigatingCollectionOperator<T> forEachNull();
     public INavigatingCollectionOperator<T> forEachNullOrMatching(final IEvaluator<Boolean, ? super T> eval);

@@ -80,6 +80,7 @@ public interface ILevel1ListOfMapElementsOperator<K,V>
     public ILevel1ListOfMapElementsOperator<K,V> insertAll(final int position, final Map<K,V> map);
     public ILevel1ListOfMapElementsOperator<K,V> removeKeys(final K... keys);
     public ILevel1ListOfMapElementsOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
+    public ILevel1ListOfMapElementsOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
     public ILevel1ListOfMapElementsOperator<K,V> removeSelected(final ISelector<Map.Entry<K,V>> selector);
     public ILevel1ListOfMapElementsOperator<K,V> removeKeysNot(final K... keys);
     

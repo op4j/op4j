@@ -142,6 +142,10 @@ public class Level0MapOfSetOperator<K,V> extends Operator
         return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.RemoveMatching<K, Set<V>>(eval)));
     }
 
+    public ILevel0MapOfSetOperator<K, V> removeNotMatching(final IEvaluator<Boolean, ? super Entry<K, Set<V>>> eval) {
+        return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.RemoveNotMatching<K, Set<V>>(eval)));
+    }
+
 
     public ILevel0MapOfSetOperator<K, V> removeSelected(final ISelector<Entry<K, Set<V>>> selector) {
         return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.RemoveSelected<K, Set<V>>(selector)));

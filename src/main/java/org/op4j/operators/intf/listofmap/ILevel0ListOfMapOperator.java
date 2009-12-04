@@ -78,6 +78,9 @@ public interface ILevel0ListOfMapOperator<K,V>
     public ILevel0ListOfMapOperator<K,V> removeIndexes(final int... indices);
     public ILevel0ListOfMapOperator<K,V> removeEquals(final Map<K,V>... values);
     public ILevel0ListOfMapOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public ILevel0ListOfMapOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public ILevel0ListOfMapOperator<K,V> removeNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public ILevel0ListOfMapOperator<K,V> removeNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel0ListOfMapOperator<K,V> removeNotNullMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel0ListOfMapOperator<K,V> removeNullOrMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel0ListOfMapOperator<K,V> removeSelected(final ISelector<Map<K,V>> selector);
@@ -85,6 +88,9 @@ public interface ILevel0ListOfMapOperator<K,V>
     public ILevel0ListOfMapOperator<K,V> removeNulls();
     public ILevel1ListOfMapElementsOperator<K,V> forEachIndex(final int... indices);
     public ILevel1ListOfMapElementsOperator<K,V> forEachMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public ILevel1ListOfMapElementsOperator<K,V> forEachNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public ILevel1ListOfMapElementsOperator<K,V> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public ILevel1ListOfMapElementsOperator<K,V> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel1ListOfMapElementsOperator<K,V> forEachNullOrMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel1ListOfMapElementsOperator<K,V> forEachNotNullMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public ILevel1ListOfMapElementsOperator<K,V> forEachSelected(final ISelector<Map<K,V>> selector);

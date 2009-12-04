@@ -234,6 +234,26 @@ public class ListFuncs {
 
     
     
+    public static final class RemoveNotMatching<T> extends CollectionFuncs.RemoveMatching<T, List<T>> {
+
+        public RemoveNotMatching(final IEvaluator<Boolean,? super T> eval) {
+            super(eval);
+        }
+
+        public Type<? super List<T>> getResultType() {
+            return Types.LIST_OF_UNKNOWN;
+        }
+
+        @Override
+        List<T> fromList(final List<T> object) {
+            return object;
+        }
+        
+    }
+    
+
+    
+    
     public static final class RemoveSelected<T> extends CollectionFuncs.RemoveSelected<T, List<T>> {
 
         public RemoveSelected(final ISelector<T> selector) {
@@ -311,11 +331,50 @@ public class ListFuncs {
         
     }
     
+
+    
+    
+    public static final class RemoveNotNullNotMatching<T> extends CollectionFuncs.RemoveNotNullMatching<T, List<T>> {
+
+        public RemoveNotNullNotMatching(final IEvaluator<Boolean,? super T> eval) {
+            super(eval);
+        }
+
+        public Type<? super List<T>> getResultType() {
+            return Types.LIST_OF_UNKNOWN;
+        }
+
+        @Override
+        List<T> fromList(final List<T> object) {
+            return object;
+        }
+        
+    }
+    
     
     
     public static final class RemoveNullOrMatching<T> extends CollectionFuncs.RemoveNullOrMatching<T, List<T>> {
 
         public RemoveNullOrMatching(final IEvaluator<Boolean,? super T> eval) {
+            super(eval);
+        }
+
+        public Type<? super List<T>> getResultType() {
+            return Types.LIST_OF_UNKNOWN;
+        }
+
+        @Override
+        List<T> fromList(final List<T> object) {
+            return object;
+        }
+        
+    }
+    
+    
+    
+    public static final class RemoveNullOrNotMatching<T> extends CollectionFuncs.RemoveNullOrMatching<T, List<T>> {
+
+        public RemoveNullOrNotMatching(final IEvaluator<Boolean,? super T> eval) {
             super(eval);
         }
 

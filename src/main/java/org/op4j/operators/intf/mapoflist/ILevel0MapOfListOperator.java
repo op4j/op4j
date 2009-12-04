@@ -88,6 +88,7 @@ public interface ILevel0MapOfListOperator<K,V>
     public ILevel0MapOfListOperator<K,V> insertAll(final int position, final Map<K,List<V>> map);
     public ILevel0MapOfListOperator<K,V> removeKeys(final K... keys);
     public ILevel0MapOfListOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K,List<V>>> eval);
+    public ILevel0MapOfListOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super Map.Entry<K,List<V>>> eval);
     public ILevel0MapOfListOperator<K,V> removeSelected(final ISelector<Map.Entry<K,List<V>>> selector);
     public ILevel0MapOfListOperator<K,V> removeKeysNot(final K... keys);
     

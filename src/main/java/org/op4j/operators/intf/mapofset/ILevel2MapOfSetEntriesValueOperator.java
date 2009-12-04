@@ -86,6 +86,9 @@ public interface ILevel2MapOfSetEntriesValueOperator<K,V>
     public ILevel2MapOfSetEntriesValueOperator<K,V> removeIndexes(final int... indices);
     public ILevel2MapOfSetEntriesValueOperator<K,V> removeEquals(final V... values);
     public ILevel2MapOfSetEntriesValueOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super V> eval);
+    public ILevel2MapOfSetEntriesValueOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super V> eval);
+    public ILevel2MapOfSetEntriesValueOperator<K,V> removeNullOrNotMatching(final IEvaluator<Boolean, ? super V> eval);
+    public ILevel2MapOfSetEntriesValueOperator<K,V> removeNotNullNotMatching(final IEvaluator<Boolean, ? super V> eval);
     public ILevel2MapOfSetEntriesValueOperator<K,V> removeNotNullMatching(final IEvaluator<Boolean, ? super V> eval);
     public ILevel2MapOfSetEntriesValueOperator<K,V> removeNullOrMatching(final IEvaluator<Boolean, ? super V> eval);
     public ILevel2MapOfSetEntriesValueOperator<K,V> removeSelected(final ISelector<V> selector);
@@ -103,6 +106,9 @@ public interface ILevel2MapOfSetEntriesValueOperator<K,V>
     
     public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachIndex(final int... indices);
     public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachMatching(final IEvaluator<Boolean, ? super V> eval);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNotMatching(final IEvaluator<Boolean, ? super V> eval);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super V> eval);
+    public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super V> eval);
     public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNullOrMatching(final IEvaluator<Boolean, ? super V> eval);
     public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachNotNullMatching(final IEvaluator<Boolean, ? super V> eval);
     public ILevel3MapOfSetEntriesValueElementsOperator<K,V> forEachSelected(final ISelector<V> selector);

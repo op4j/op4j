@@ -79,6 +79,7 @@ public interface ILevel2MapOfMapEntriesValueOperator<K1,K2,V>
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> insertAll(final int position, final Map<K2,V> map);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeKeys(final K2... keys);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K2,V>> eval);
+    public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeNotMatching(final IEvaluator<Boolean, ? super Map.Entry<K2,V>> eval);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeSelected(final ISelector<Map.Entry<K2,V>> selector);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> removeKeysNot(final K2... keys);
     

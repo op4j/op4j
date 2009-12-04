@@ -116,6 +116,9 @@ public interface ILevel0ArrayOfListOperator<T>
     public ILevel0ArrayOfListOperator<T> removeIndexes(final int... indices);
     public ILevel0ArrayOfListOperator<T> removeEquals(final List<T>... values);
     public ILevel0ArrayOfListOperator<T> removeMatching(final IEvaluator<Boolean, ? super List<T>> eval);
+    public ILevel0ArrayOfListOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super List<T>> eval);
+    public ILevel0ArrayOfListOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super List<T>> eval);
+    public ILevel0ArrayOfListOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super List<T>> eval);
     public ILevel0ArrayOfListOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super List<T>> eval);
     public ILevel0ArrayOfListOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super List<T>> eval);
     public ILevel0ArrayOfListOperator<T> removeSelected(final ISelector<List<T>> selector);
@@ -155,6 +158,9 @@ public interface ILevel0ArrayOfListOperator<T>
     
     public ILevel1ArrayOfListElementsOperator<T> forEachIndex(final int... indices);
     public ILevel1ArrayOfListElementsOperator<T> forEachMatching(final IEvaluator<Boolean, ? super List<T>> eval);
+    public ILevel1ArrayOfListElementsOperator<T> forEachNotMatching(final IEvaluator<Boolean, ? super List<T>> eval);
+    public ILevel1ArrayOfListElementsOperator<T> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super List<T>> eval);
+    public ILevel1ArrayOfListElementsOperator<T> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super List<T>> eval);
     public ILevel1ArrayOfListElementsOperator<T> forEachNullOrMatching(final IEvaluator<Boolean, ? super List<T>> eval);
     public ILevel1ArrayOfListElementsOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super List<T>> eval);
     public ILevel1ArrayOfListElementsOperator<T> forEachSelected(final ISelector<List<T>> selector);

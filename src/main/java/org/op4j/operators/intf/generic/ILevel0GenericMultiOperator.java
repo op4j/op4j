@@ -88,6 +88,9 @@ public interface ILevel0GenericMultiOperator<T>
     public ILevel0GenericMultiOperator<T> removeIndexes(final int... indices);
     public ILevel0GenericMultiOperator<T> removeEquals(final T... values);
     public ILevel0GenericMultiOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval);
+    public ILevel0GenericMultiOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T> eval);
+    public ILevel0GenericMultiOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval);
+    public ILevel0GenericMultiOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel0GenericMultiOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel0GenericMultiOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
     public ILevel0GenericMultiOperator<T> removeSelected(final ISelector<T> selector);
