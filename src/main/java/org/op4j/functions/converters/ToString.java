@@ -345,6 +345,7 @@ public final class ToString {
 		
 		public FromNumber(NumberFormatType numberFormatType, boolean groupingUsed) {
 			super();	
+			
 			this.numberFormat = getNumberFormat(numberFormatType, null);
 			setGroupingUsed(groupingUsed);			
 		}
@@ -357,55 +358,81 @@ public final class ToString {
 		
 		public FromNumber(Locale locale) {
 			super();
+			
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.numberFormat = getNumberFormat(NumberFormatType.NUMBER, locale);
 		}
 		
 		public FromNumber(NumberFormatType numberFormatType, Locale locale) {
 			super();	
+			
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.numberFormat = getNumberFormat(numberFormatType, locale);
 		}
 		
 		public FromNumber(NumberFormatType numberFormatType, String locale) {
 			super();	
+			
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.numberFormat = getNumberFormat(numberFormatType, LocaleUtils.toLocale(locale));
 		}
 		
 		public FromNumber(NumberFormatType numberFormatType, Locale locale, boolean groupingUsed) {
 			super();	
+			
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.numberFormat = getNumberFormat(numberFormatType, locale);
 			setGroupingUsed(groupingUsed);
 		}
 		
 		public FromNumber(NumberFormatType numberFormatType, String locale, boolean groupingUsed) {
 			super();	
+			
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.numberFormat = getNumberFormat(numberFormatType, LocaleUtils.toLocale(locale));
 			setGroupingUsed(groupingUsed);
 		}
 		
 		public FromNumber(Locale locale, boolean groupingUsed) {
 			super();
+			
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.numberFormat = getNumberFormat(NumberFormatType.NUMBER, locale);
 			setGroupingUsed(groupingUsed);
 		}
 		
 		public FromNumber(String locale) {
 			super();
+			
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.numberFormat = getNumberFormat(NumberFormatType.NUMBER, LocaleUtils.toLocale(locale));
 		}
 		
 		public FromNumber(String locale, boolean groupingUsed) {
 			super();
+			
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.numberFormat = getNumberFormat(NumberFormatType.NUMBER, LocaleUtils.toLocale(locale));
 			setGroupingUsed(groupingUsed);
 		}
 		public FromNumber(NumberFormatType numberFormatType) {
 			super();
+			
 			this.numberFormat = getNumberFormat(numberFormatType, null);
 		}		
 		
 		public FromNumber(NumberFormatType numberFormatType, int minIntegerDigits, int maxIntegerDigits,
 				int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
 			super();
+			
 			this.numberFormat = getNumberFormat(numberFormatType, null);
 			setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
 			setGroupingUsed(groupingUsed);
@@ -415,6 +442,7 @@ public final class ToString {
 				int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
 				char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
 			super();
+			
 			this.numberFormat = getNumberFormat(numberFormatType, null);
 			setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
 			setGroupingUsed(groupingUsed);
@@ -425,6 +453,9 @@ public final class ToString {
 		public FromNumber(NumberFormatType numberFormatType, Locale locale, int minIntegerDigits, int maxIntegerDigits,
 				int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
 			super();
+			
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.numberFormat = getNumberFormat(numberFormatType, locale);
 			setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
 			setGroupingUsed(groupingUsed);
@@ -434,6 +465,9 @@ public final class ToString {
 				int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
 				char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
 			super();
+			
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.numberFormat = getNumberFormat(numberFormatType, locale);
 			setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
 			setGroupingUsed(groupingUsed);
@@ -444,6 +478,9 @@ public final class ToString {
 				int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
 				char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
 			super();
+			
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.numberFormat = getNumberFormat(numberFormatType, locale);
 			setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
 			setGroupingUsed(groupingUsed);
@@ -454,6 +491,9 @@ public final class ToString {
 		public FromNumber(NumberFormatType numberFormatType, String locale, int minIntegerDigits, int maxIntegerDigits,
 				int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
 			super();
+			
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.numberFormat = getNumberFormat(numberFormatType, LocaleUtils.toLocale(locale));
 			setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
 			setGroupingUsed(groupingUsed);			
@@ -463,6 +503,9 @@ public final class ToString {
 				int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
 				char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
 			super();
+			
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.numberFormat = getNumberFormat(numberFormatType, LocaleUtils.toLocale(locale));
 			setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
 			setGroupingUsed(groupingUsed);
@@ -473,6 +516,9 @@ public final class ToString {
 				int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
 				char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
 			super();
+			
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.numberFormat = getNumberFormat(numberFormatType, LocaleUtils.toLocale(locale));
 			setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
 			setGroupingUsed(groupingUsed);
@@ -490,6 +536,8 @@ public final class ToString {
 		}
 		
 		private NumberFormat getNumberFormat(NumberFormatType numberFormatType, Locale locale) {
+			Validate.notNull(numberFormatType, "numberFormatType can't be null");
+			
 			NumberFormat nf = null;
 			switch (numberFormatType) {
 				case CURRENCY :
@@ -621,29 +669,49 @@ public final class ToString {
 		
 		public FromCalendar(String pattern) {
 			super();
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			
 			this.pattern = pattern;
 		}
 		
 		public FromCalendar(String pattern, Locale locale) {
 			super();
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.pattern = pattern;
 			this.locale = locale;			
 		}
 		
 		public FromCalendar(String pattern, String locale) {
 			super();
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.pattern = pattern;
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 				
 		public FromCalendar(DateStyle dateStyle, TimeStyle timeStyle) {
 			super();
+			
+			Validate.notNull(dateStyle, "dateStyle can't be null");
+			Validate.notNull(timeStyle, "timeStyle can't be null");
+			
 			this.dateStyle = dateStyle;
 			this.timeStyle = timeStyle;
 		}
 		
 		public FromCalendar(DateStyle dateStyle, TimeStyle timeStyle, Locale locale) {
 			super();
+			
+			Validate.notNull(dateStyle, "dateStyle can't be null");
+			Validate.notNull(timeStyle, "timeStyle can't be null");
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.dateStyle = dateStyle;
 			this.timeStyle = timeStyle;
 			this.locale = locale;
@@ -651,6 +719,11 @@ public final class ToString {
 		
 		public FromCalendar(DateStyle dateStyle, TimeStyle timeStyle, String locale) {
 			super();
+			
+			Validate.notNull(dateStyle, "dateStyle can't be null");
+			Validate.notNull(timeStyle, "timeStyle can't be null");
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.dateStyle = dateStyle;
 			this.timeStyle = timeStyle;
 			this.locale = LocaleUtils.toLocale(locale);
@@ -665,7 +738,10 @@ public final class ToString {
 			if (StringUtils.isNotEmpty(this.pattern)) {
 				return fromCalendar(calendar, this.pattern, this.locale);
 			} 
-			return fromCalendar(calendar, this.dateStyle, this.timeStyle, this.locale);						
+			if (this.dateStyle != null) {
+				return fromCalendar(calendar, this.dateStyle, this.timeStyle, this.locale);	
+			}
+			return null;
 		}
 		
 		private String fromCalendar(final Calendar calendar, final String thePattern, final Locale theLocale) {
@@ -681,6 +757,7 @@ public final class ToString {
 	    }		
 		
 
+		@SuppressWarnings("null")
 		private String fromCalendar(final Calendar calendar, final DateStyle theDateStyle,
 				final TimeStyle theTimeStyle, final Locale theLocale) {
 	    	
@@ -715,29 +792,49 @@ public final class ToString {
 		
 		public FromDate(String pattern) {
 			super();
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			
 			this.pattern = pattern;
 		}
 		
 		public FromDate(String pattern, Locale locale) {
 			super();
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.pattern = pattern;
 			this.locale = locale;			
 		}
 		
 		public FromDate(String pattern, String locale) {
 			super();
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.pattern = pattern;
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 				
 		public FromDate(DateStyle dateStyle, TimeStyle timeStyle) {
 			super();
+			
+			Validate.notNull(dateStyle, "dateStyle can't be null");
+			Validate.notNull(timeStyle, "timeStyle can't be null");
+			
 			this.dateStyle = dateStyle;
 			this.timeStyle = timeStyle;
 		}
 		
 		public FromDate(DateStyle dateStyle, TimeStyle timeStyle, Locale locale) {
 			super();
+			
+			Validate.notNull(dateStyle, "dateStyle can't be null");
+			Validate.notNull(timeStyle, "timeStyle can't be null");
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.dateStyle = dateStyle;
 			this.timeStyle = timeStyle;
 			this.locale = locale;
@@ -745,6 +842,11 @@ public final class ToString {
 		
 		public FromDate(DateStyle dateStyle, TimeStyle timeStyle, String locale) {
 			super();
+			
+			Validate.notNull(dateStyle, "dateStyle can't be null");
+			Validate.notNull(timeStyle, "timeStyle can't be null");
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.dateStyle = dateStyle;
 			this.timeStyle = timeStyle;
 			this.locale = LocaleUtils.toLocale(locale);
@@ -759,7 +861,10 @@ public final class ToString {
 			if (StringUtils.isNotEmpty(this.pattern)) {
 				return fromDate(date, this.pattern, this.locale);
 			} 
-			return fromDate(date, this.dateStyle, this.timeStyle, this.locale);						
+			if (this.dateStyle != null) {
+				return fromDate(date, this.dateStyle, this.timeStyle, this.locale);
+			}
+			return null;
 		}
 		
 		private String fromDate(final Date date, final String thePattern, final Locale theLocale) {
@@ -775,6 +880,7 @@ public final class ToString {
 	    }		
 		
 
+		@SuppressWarnings("null")
 		private String fromDate(final Date date, final DateStyle theDateStyle,
 				final TimeStyle theTimeStyle, final Locale theLocale) {
 	    	
