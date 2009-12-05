@@ -30,7 +30,7 @@ import org.op4j.functions.AbstractNullAsNullFunc;
  * @author Daniel Fern&aacute;ndez
  *
  */
-abstract class AbstractNullAsNullConverter<R, T> 
+public abstract class AbstractNullAsNullConverter<R, T> 
         extends AbstractNullAsNullFunc<R, T>
         implements IConverter<R, T> {
     
