@@ -467,6 +467,114 @@ public class Level0GenericUniqOperator<T> extends Operator
         return new Level0GenericUniqOperator<T>(getTarget());
     }
 
+    
+    
+    
+    
+ 
+
+    public ILevel0ArrayOfArrayOperator<?> asArrayOfArrayOfUnknown() {
+        return asArrayOfArray(Types.OBJECT);
+    }
+
+
+    public ILevel0ArrayOfListOperator<?> asArrayOfListOfUnknown() {
+        return asArrayOfList(Types.OBJECT);
+    }
+
+
+    public ILevel0ArrayOfMapOperator<?, ?> asArrayOfMapOfUnknown() {
+        return asArrayOfMap(Types.OBJECT, Types.OBJECT);
+    }
+
+
+    public ILevel0ArrayOfSetOperator<?> asArrayOfSetOfUnknown() {
+        return asArrayOfSet(Types.OBJECT);
+    }
+
+
+    public ILevel0ArrayOperator<?> asArrayOfUnknown() {
+        return asArray(Types.OBJECT);
+    }
+
+
+    public ILevel0ListOfArrayOperator<?> asListOfArrayOfUnknown() {
+        return asListOfArray(Types.OBJECT);
+    }
+
+
+    public ILevel0ListOfListOperator<?> asListOfListOfUnknown() {
+        return asListOfList(Types.OBJECT);
+    }
+
+
+    public ILevel0ListOfMapOperator<?, ?> asListOfMapOfUnknown() {
+        return asListOfMap(Types.OBJECT, Types.OBJECT);
+    }
+
+
+    public ILevel0ListOfSetOperator<?> asListOfSetOfUnknown() {
+        return asListOfSet(Types.OBJECT);
+    }
+
+
+    public ILevel0ListOperator<?> asListOfUnknown() {
+        return asList(Types.OBJECT);
+    }
+
+
+    public ILevel0MapOfArrayOperator<?, ?> asMapOfArrayOfUnknown() {
+        return asMapOfArray(Types.OBJECT, Types.OBJECT);
+    }
+
+
+    public ILevel0MapOfListOperator<?, ?> asMapOfListOfUnknown() {
+        return asMapOfList(Types.OBJECT, Types.OBJECT);
+    }
+
+
+    public ILevel0MapOfMapOperator<?, ?, ?> asMapOfMapOfUnknown() {
+        return asMapOfMap(Types.OBJECT, Types.OBJECT, Types.OBJECT);
+    }
+
+
+    public ILevel0MapOfSetOperator<?, ?> asMapOfSetOfUnknown() {
+        return asMapOfSet(Types.OBJECT, Types.OBJECT);
+    }
+
+
+    public ILevel0MapOperator<?, ?> asMapOfUnknown() {
+        return asMap(Types.OBJECT, Types.OBJECT);
+    }
+
+
+    public ILevel0SetOfArrayOperator<?> asSetOfArrayOfUnknown() {
+        return asSetOfArray(Types.OBJECT);
+    }
+
+
+    public ILevel0SetOfListOperator<?> asSetOfListOfUnknown() {
+        return asSetOfList(Types.OBJECT);
+    }
+
+
+    public ILevel0SetOfMapOperator<?, ?> asSetOfMapOfUnknown() {
+        return asSetOfMap(Types.OBJECT, Types.OBJECT);
+    }
+
+
+    public ILevel0SetOfSetOperator<?> asSetOfSetOfUnknown() {
+        return asSetOfSet(Types.OBJECT);
+    }
+
+
+    public ILevel0SetOperator<?> asSetOfUnknown() {
+        return asSet(Types.OBJECT);
+    }
+
+    
+    
+
 
 
 
@@ -477,5 +585,5 @@ public class Level0GenericUniqOperator<T> extends Operator
     public T get() {
         return (T) getTarget().get();
     }
-
+    
 }

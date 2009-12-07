@@ -23,7 +23,9 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
@@ -281,6 +283,19 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     public <X> ILevel2MapEntriesValueOperator<K,X> exec(final IFunction<X, ? super V[]> function) {
         return new Level2MapEntriesValueOperator<K,X>(getTarget().execute(function));
 	}
+
+
+    
+    
+    public <X> ILevel2MapOfArrayEntriesValueOperator<K, X> asArray(final Type<X> of) {
+        Validate.notNull(of, "A type representing the elements must be specified");
+        return new Level2MapOfArrayEntriesValueOperator<K,X>(of, getTarget());
+    }
+
+
+    public ILevel2MapOfArrayEntriesValueOperator<K, ?> asArrayOfUnknown() {
+        return asArray(Types.OBJECT);
+    }
 
     
     

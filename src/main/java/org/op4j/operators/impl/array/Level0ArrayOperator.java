@@ -22,7 +22,9 @@ package org.op4j.operators.impl.array;
 import java.util.Collection;
 import java.util.Comparator;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
@@ -38,6 +40,10 @@ import org.op4j.operators.impl.map.Level0MapOperator;
 import org.op4j.operators.impl.set.Level0SetOperator;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.array.ILevel1ArrayElementsOperator;
+import org.op4j.operators.intf.arrayofarray.ILevel0ArrayOfArrayOperator;
+import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
+import org.op4j.operators.intf.arrayofmap.ILevel0ArrayOfMapOperator;
+import org.op4j.operators.intf.arrayofset.ILevel0ArrayOfSetOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
@@ -246,6 +252,59 @@ public class Level0ArrayOperator<T> extends Operator implements
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super T[]> function) {
         return new Level0GenericUniqOperator<X>(getTarget().execute(function));
 	}
+
+    
+    
+
+    public <X> ILevel0ArrayOperator<X> asArray(final Type<X> of) {
+        Validate.notNull(of, "A type representing the elements must be specified");
+        return new Level0ArrayOperator<X>(of, getTarget());
+    }
+
+
+    public <X> ILevel0ArrayOfArrayOperator<X> asArrayOfArray(final Type<X> of) {
+        return forEach().asArray(of).endFor();
+    }
+
+
+    public ILevel0ArrayOfArrayOperator<?> asArrayOfArrayOfUnknown() {
+        return asArrayOfArray(Types.OBJECT);
+    }
+
+
+    public <X> ILevel0ArrayOfListOperator<X> asArrayOfList(final Type<X> of) {
+        return forEach().asList(of).endFor();
+    }
+
+
+    public ILevel0ArrayOfListOperator<?> asArrayOfListOfUnknown() {
+        return asArrayOfList(Types.OBJECT);
+    }
+
+
+    public <K, V> ILevel0ArrayOfMapOperator<K, V> asArrayOfMap(final Type<K> keyOf, final Type<V> valueOf) {
+        return forEach().asMap(keyOf, valueOf).endFor();
+    }
+
+
+    public ILevel0ArrayOfMapOperator<?, ?> asArrayOfMapOfUnknown() {
+        return asArrayOfMap(Types.OBJECT, Types.OBJECT);
+    }
+
+
+    public <X> ILevel0ArrayOfSetOperator<X> asArrayOfSet(final Type<X> of) {
+        return forEach().asSet(of).endFor();
+    }
+
+
+    public ILevel0ArrayOfSetOperator<?> asArrayOfSetOfUnknown() {
+        return asArrayOfSet(Types.OBJECT);
+    }
+
+
+    public ILevel0ArrayOperator<?> asArrayOfUnknown() {
+        return asArray(Types.OBJECT);
+    }
 
 
 }

@@ -159,6 +159,28 @@ public class Level2MapEntriesValueOperator<K,V> extends Operator
         }
         return new Level2MapOfSetEntriesValueOperator<K,X>(getTarget());
     }
+
+    
+    
+
+    public ILevel2MapOfArrayEntriesValueOperator<K, ?> asArrayOfUnknown() {
+        return asArray(Types.OBJECT);
+    }
+
+
+    public ILevel2MapOfListEntriesValueOperator<K, ?> asListOfUnknown() {
+        return asList(Types.OBJECT);
+    }
+
+
+    public ILevel2MapOfMapEntriesValueOperator<K, ?, ?> asMapOfUnknown() {
+        return asMap(Types.OBJECT, Types.OBJECT);
+    }
+
+
+    public ILevel2MapOfSetEntriesValueOperator<K, ?> asSetOfUnknown() {
+        return asSet(Types.OBJECT);
+    }
     
     
     

@@ -29,6 +29,7 @@ import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.intf.map.ILevel2MapEntriesValueOperator;
 import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesValueOperator;
+import org.op4j.operators.qualities.ICastableToMapOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
@@ -50,6 +51,7 @@ public interface ILevel2MapOfMapEntriesValueOperator<K1,K2,V>
 		extends IUniqOperator<Map<K1,Map<K2,V>>>,
 		        INavigableMapOperator<K2,V>,
 		        INavigatingMapEntryOperator,
+		        ICastableToMapOperator,
 		        ISortableOperator<Map.Entry<K2,V>>,
                 ITypeParameterizableXYOperator<K2,V>,
                 IExecutableOperator<Map<K2,V>>,
@@ -97,6 +99,10 @@ public interface ILevel2MapOfMapEntriesValueOperator<K1,K2,V>
     public <X> ILevel2MapEntriesValueOperator<K1,X> eval(final IEvaluator<X,? super Map<K2,V>> eval);
 
     public <X> ILevel2MapEntriesValueOperator<K1,X> exec(final IFunction<X, ? super Map<K2,V>> function);
+    
+    
+    public <X,Y> ILevel2MapOfMapEntriesValueOperator<K1,X,Y> asMap(final Type<X> keyOf, final Type<Y> valueOf);
+    public ILevel2MapOfMapEntriesValueOperator<K1,?,?> asMapOfUnknown();
     
     
 }

@@ -23,7 +23,9 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.MapFuncs;
 import org.op4j.functions.converters.IConverter;
@@ -36,6 +38,10 @@ import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
 import org.op4j.operators.intf.map.ILevel1MapEntriesOperator;
+import org.op4j.operators.intf.mapofarray.ILevel0MapOfArrayOperator;
+import org.op4j.operators.intf.mapoflist.ILevel0MapOfListOperator;
+import org.op4j.operators.intf.mapofmap.ILevel0MapOfMapOperator;
+import org.op4j.operators.intf.mapofset.ILevel0MapOfSetOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
 import org.op4j.target.Target;
 
@@ -197,6 +203,59 @@ public class Level0MapOperator<K,V> extends Operator
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,V>> function) {
         return new Level0GenericUniqOperator<X>(getTarget().execute(function));
 	}
+
+    
+
+    public <X, Y> ILevel0MapOfArrayOperator<X, Y> asMapOfArray(final Type<X> keyOf, final Type<Y> valueOf) {
+        return forEachEntry().onKey().of(keyOf).endOn().onValue().asArray(valueOf).endOn().endFor();
+    }
+
+
+    public ILevel0MapOfArrayOperator<?, ?> asMapOfArrayOfUnknown() {
+        return asMapOfArray(Types.OBJECT, Types.OBJECT);
+    }
+
+
+    public <X, Y> ILevel0MapOfListOperator<X, Y> asMapOfList(final Type<X> keyOf, final Type<Y> valueOf) {
+        return forEachEntry().onKey().of(keyOf).endOn().onValue().asList(valueOf).endOn().endFor();
+    }
+
+
+    public ILevel0MapOfListOperator<?, ?> asMapOfListOfUnknown() {
+        return asMapOfList(Types.OBJECT, Types.OBJECT);
+    }
+
+
+    public <X1, X2, Y> ILevel0MapOfMapOperator<X1, X2, Y> asMapOfMap(final Type<X1> key1Of, final Type<X2> key2Of, final Type<Y> valueOf) {
+        return forEachEntry().onKey().of(key1Of).endOn().onValue().asMap(key2Of,valueOf).endOn().endFor();
+    }
+
+
+    public ILevel0MapOfMapOperator<?, ?, ?> asMapOfMapOfUnknown() {
+        return asMapOfMap(Types.OBJECT, Types.OBJECT, Types.OBJECT);
+    }
+
+
+    public <X, Y> ILevel0MapOfSetOperator<X, Y> asMapOfSet(final Type<X> keyOf, final Type<Y> valueOf) {
+        return forEachEntry().onKey().of(keyOf).endOn().onValue().asSet(valueOf).endOn().endFor();
+    }
+
+
+    public ILevel0MapOfSetOperator<?, ?> asMapOfSetOfUnknown() {
+        return asMapOfSet(Types.OBJECT, Types.OBJECT);
+    }
+
+
+    public <X, Y> ILevel0MapOperator<X, Y> asMap(final Type<X> keyOf, final Type<Y> valueOf) {
+        Validate.notNull(keyOf, "A type representing the keys must be specified");
+        Validate.notNull(valueOf, "A type representing the values must be specified");
+        return new Level0MapOperator<X,Y>(getTarget());
+    }
+
+
+    public ILevel0MapOperator<?, ?> asMapOfUnknown() {
+        return asMap(Types.OBJECT, Types.OBJECT);
+    }
 
     
     

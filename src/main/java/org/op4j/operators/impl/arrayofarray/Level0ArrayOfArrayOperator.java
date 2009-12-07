@@ -22,7 +22,9 @@ package org.op4j.operators.impl.arrayofarray;
 import java.util.Collection;
 import java.util.Comparator;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.Op;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
@@ -343,6 +345,17 @@ public class Level0ArrayOfArrayOperator<T> extends Operator
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super T[][]> function) {
         return new Level0GenericUniqOperator<X>(getTarget().execute(function));
 	}
+
+
+    public <X> ILevel0ArrayOfArrayOperator<X> asArrayOfArray(final Type<X> of) {
+        Validate.notNull(of, "A type representing the elements must be specified");
+        return new Level0ArrayOfArrayOperator<X>(of, getTarget());
+    }
+
+
+    public ILevel0ArrayOfArrayOperator<?> asArrayOfArrayOfUnknown() {
+        return asArrayOfArray(Types.OBJECT);
+    }
 
     
     

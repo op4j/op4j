@@ -23,7 +23,9 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.ListFuncs;
 import org.op4j.functions.converters.IConverter;
@@ -273,6 +275,18 @@ public class Level1ArrayOfListElementsOperator<T> extends Operator
         return new Level1ArrayElementsOperator<X>(function.getResultType(), getTarget().execute(function));
 	}
 
+    
+    
+
+    public <X> ILevel1ArrayOfListElementsOperator<X> asList(final Type<X> of) {
+        Validate.notNull(of, "A type representing the elements must be specified");
+        return new Level1ArrayOfListElementsOperator<X>(getTarget());
+    }
+
+
+    public ILevel1ArrayOfListElementsOperator<?> asListOfUnknown() {
+        return asList(Types.OBJECT);
+    }
     
     
     

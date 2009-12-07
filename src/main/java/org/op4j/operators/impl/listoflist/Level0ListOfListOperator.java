@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.Op;
@@ -353,6 +354,18 @@ public class Level0ListOfListOperator<T> extends Operator
 	}
 
     
+    
+
+
+    public <X> ILevel0ListOfListOperator<X> asListOfList(final Type<X> of) {
+        Validate.notNull(of, "A type representing the elements must be specified");
+        return new Level0ListOfListOperator<X>(getTarget());
+    }
+
+
+    public ILevel0ListOfListOperator<?> asListOfListOfUnknown() {
+        return asListOfList(Types.OBJECT);
+    }
     
     
     

@@ -33,6 +33,7 @@ import org.op4j.operators.intf.mapoflist.ILevel0MapOfListOperator;
 import org.op4j.operators.intf.mapofmap.ILevel0MapOfMapOperator;
 import org.op4j.operators.intf.mapofset.ILevel0MapOfSetOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
+import org.op4j.operators.qualities.ICastableToMapOfArrayOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IConvertibleToMapOfListOperator;
 import org.op4j.operators.qualities.IConvertibleToMapOfMapOperator;
@@ -58,6 +59,7 @@ public interface ILevel0MapOfArrayOperator<K,V>
 		        INavigableMapOperator<K,V[]>,
 		        ISortableOperator<Map.Entry<K,V[]>>,
                 ITypeParameterizableXYOperator<K,V>,
+                ICastableToMapOfArrayOperator,
 		        IModifiableMapOperator<K,V[]>,
 		        IExtractableMapOperator<K,V[]>,
 		        IGenerizableOperator<Map<K,V[]>>,
@@ -118,5 +120,9 @@ public interface ILevel0MapOfArrayOperator<K,V>
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,V[]>> function);
     
     
+    
+    public <X,Y> ILevel0MapOfArrayOperator<X,Y> asMapOfArray(final Type<X> keyOf, final Type<Y> valueOf);
+    public ILevel0MapOfArrayOperator<?,?> asMapOfArrayOfUnknown();
+
     
 }

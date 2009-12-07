@@ -23,7 +23,9 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Set;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.SetFuncs;
 import org.op4j.functions.converters.IConverter;
@@ -43,6 +45,10 @@ import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
 import org.op4j.operators.intf.set.ILevel1SetElementsOperator;
+import org.op4j.operators.intf.setofarray.ILevel0SetOfArrayOperator;
+import org.op4j.operators.intf.setoflist.ILevel0SetOfListOperator;
+import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
+import org.op4j.operators.intf.setofset.ILevel0SetOfSetOperator;
 import org.op4j.target.Target;
 
 
@@ -266,6 +272,59 @@ public class Level0SetOperator<T> extends Operator
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super Set<T>> function) {
         return new Level0GenericUniqOperator<X>(getTarget().execute(function));
 	}
+
+
+    
+    
+    public <X> ILevel0SetOfArrayOperator<X> asSetOfArray(final Type<X> of) {
+        return forEach().asArray(of).endFor();
+    }
+
+
+    public ILevel0SetOfArrayOperator<?> asSetOfArrayOfUnknown() {
+        return asSetOfArray(Types.OBJECT);
+    }
+
+
+    public <X> ILevel0SetOfListOperator<X> asSetOfList(final Type<X> of) {
+        return forEach().asList(of).endFor();
+    }
+
+
+    public ILevel0SetOfListOperator<?> asSetOfListOfUnknown() {
+        return asSetOfList(Types.OBJECT);
+    }
+
+
+    public <K, V> ILevel0SetOfMapOperator<K, V> asSetOfMap(final Type<K> keyOf, final Type<V> valueOf) {
+        return forEach().asMap(keyOf, valueOf).endFor();
+    }
+
+
+    public ILevel0SetOfMapOperator<?, ?> asSetOfMapOfUnknown() {
+        return asSetOfMap(Types.OBJECT, Types.OBJECT);
+    }
+
+
+    public <X> ILevel0SetOfSetOperator<X> asSetOfSet(final Type<X> of) {
+        return forEach().asSet(of).endFor();
+    }
+
+
+    public ILevel0SetOfSetOperator<?> asSetOfSetOfUnknown() {
+        return asSetOfSet(Types.OBJECT);
+    }
+
+
+    public <X> ILevel0SetOperator<X> asSet(final Type<X> of) {
+        Validate.notNull(of, "A type representing the elements must be specified");
+        return new Level0SetOperator<X>(getTarget());
+    }
+
+
+    public ILevel0SetOperator<?> asSetOfUnknown() {
+        return asSet(Types.OBJECT);
+    }
 
     
     

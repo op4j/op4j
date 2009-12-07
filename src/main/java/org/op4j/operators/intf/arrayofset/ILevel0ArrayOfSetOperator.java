@@ -41,6 +41,7 @@ import org.op4j.operators.intf.setofarray.ILevel0SetOfArrayOperator;
 import org.op4j.operators.intf.setoflist.ILevel0SetOfListOperator;
 import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.ILevel0SetOfSetOperator;
+import org.op4j.operators.qualities.ICastableToArrayOfSetOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IConvertibleToArrayOfArrayOperator;
 import org.op4j.operators.qualities.IConvertibleToArrayOfListOperator;
@@ -74,6 +75,7 @@ public interface ILevel0ArrayOfSetOperator<T>
 		extends IUniqOperator<Set<T>[]>,
 		        INavigableCollectionOperator<Set<T>>,
 		        IDistinguishableOperator,
+		        ICastableToArrayOfSetOperator,
 		        ISortableOperator<Set<T>>,
                 ITypeParameterizableXOperator<T>,
                 IFlattenableAsArrayOperator<T>,
@@ -173,6 +175,10 @@ public interface ILevel0ArrayOfSetOperator<T>
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super Set<T>[]> function);
     
     
+    
+    public <X> ILevel0ArrayOfSetOperator<X> asArrayOfSet(final Type<X> of);
+    public ILevel0ArrayOfSetOperator<?> asArrayOfSetOfUnknown();
+
     
         
 }

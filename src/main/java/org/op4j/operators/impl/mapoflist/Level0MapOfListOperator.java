@@ -24,7 +24,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.MapFuncs;
 import org.op4j.functions.converters.IConverter;
@@ -222,6 +224,20 @@ public class Level0MapOfListOperator<K,V> extends Operator
         return new Level0GenericUniqOperator<X>(getTarget().execute(function));
 	}
     
+    
+
+
+    public <X,Y> ILevel0MapOfListOperator<X,Y> asMapOfList(final Type<X> keyOf, final Type<Y> valueOf) {
+        Validate.notNull(keyOf, "A type representing the keys must be specified");
+        Validate.notNull(valueOf, "A type representing the values must be specified");
+        return new Level0MapOfListOperator<X,Y>(getTarget());
+    }
+
+
+    public ILevel0MapOfListOperator<?,?> asMapOfListOfUnknown() {
+        return asMapOfList(Types.OBJECT, Types.OBJECT);
+    }
+
     
     
 }

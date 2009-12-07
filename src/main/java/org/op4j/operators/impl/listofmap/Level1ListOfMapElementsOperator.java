@@ -24,7 +24,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.MapFuncs;
 import org.op4j.functions.converters.IConverter;
@@ -190,6 +192,19 @@ public class Level1ListOfMapElementsOperator<K,V> extends Operator
     public <X> ILevel1ListElementsOperator<X> exec(final IFunction<X, ? super Map<K,V>> function) {
         return new Level1ListElementsOperator<X>(getTarget().execute(function));
 	}
+    
+    
+
+    public <X,Y> ILevel1ListOfMapElementsOperator<X,Y> asMap(final Type<X> keyOf, final Type<Y> valueOf) {
+        Validate.notNull(keyOf, "A type representing the keys must be specified");
+        Validate.notNull(valueOf, "A type representing the values must be specified");
+        return new Level1ListOfMapElementsOperator<X,Y>(getTarget());
+    }
+
+
+    public ILevel1ListOfMapElementsOperator<?,?> asMapOfUnknown() {
+        return asMap(Types.OBJECT, Types.OBJECT);
+    }
     
     
     

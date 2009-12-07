@@ -23,7 +23,9 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.Op;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
@@ -335,6 +337,17 @@ public class Level0ArrayOfListOperator<T> extends Operator
 
     
     
+
+
+    public <X> ILevel0ArrayOfListOperator<X> asArrayOfList(final Type<X> of) {
+        Validate.notNull(of, "A type representing the elements must be specified");
+        return new Level0ArrayOfListOperator<X>(getTarget());
+    }
+
+
+    public ILevel0ArrayOfListOperator<?> asArrayOfListOfUnknown() {
+        return asArrayOfList(Types.OBJECT);
+    }
     
     
     

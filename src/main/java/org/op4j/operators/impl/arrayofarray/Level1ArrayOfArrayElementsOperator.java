@@ -23,7 +23,9 @@ import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Comparator;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
@@ -281,6 +283,17 @@ public class Level1ArrayOfArrayElementsOperator<T> extends Operator
 	}
 
     
+
+
+    public <X> ILevel1ArrayOfArrayElementsOperator<X> asArray(final Type<X> of) {
+        Validate.notNull(of, "A type representing the elements must be specified");
+        return new Level1ArrayOfArrayElementsOperator<X>(of, getTarget());
+    }
+
+
+    public ILevel1ArrayOfArrayElementsOperator<?> asArrayOfUnknown() {
+        return asArray(Types.OBJECT);
+    }
     
     
     

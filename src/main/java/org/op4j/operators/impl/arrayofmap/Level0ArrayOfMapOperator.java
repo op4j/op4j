@@ -23,7 +23,9 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
@@ -238,6 +240,18 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
 	}
 
     
+
+
+    public <X,Y> ILevel0ArrayOfMapOperator<X,Y> asArrayOfMap(final Type<X> keyOf, final Type<Y> valueOf) {
+        Validate.notNull(keyOf, "A type representing the keys must be specified");
+        Validate.notNull(valueOf, "A type representing the values must be specified");
+        return new Level0ArrayOfMapOperator<X,Y>(getTarget());
+    }
+
+
+    public ILevel0ArrayOfMapOperator<?,?> asArrayOfMapOfUnknown() {
+        return asArrayOfMap(Types.OBJECT, Types.OBJECT);
+    }
     
     
 }

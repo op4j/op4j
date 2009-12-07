@@ -23,7 +23,9 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Set;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.SetFuncs;
 import org.op4j.functions.converters.IConverter;
@@ -269,6 +271,18 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
         return new Level1ArrayElementsOperator<X>(function.getResultType(), getTarget().execute(function));
 	}
 
+    
+    
+
+    public <X> ILevel1ArrayOfSetElementsOperator<X> asSet(final Type<X> of) {
+        Validate.notNull(of, "A type representing the elements must be specified");
+        return new Level1ArrayOfSetElementsOperator<X>(getTarget());
+    }
+
+
+    public ILevel1ArrayOfSetElementsOperator<?> asSetOfUnknown() {
+        return asSet(Types.OBJECT);
+    }
     
     
     

@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.Op;
@@ -349,6 +350,19 @@ public class Level0ListOfSetOperator<T> extends Operator
         return new Level0GenericUniqOperator<X>(getTarget().execute(function));
 	}
 
+    
+
+
+    public <X> ILevel0ListOfSetOperator<X> asListOfSet(final Type<X> of) {
+        Validate.notNull(of, "A type representing the elements must be specified");
+        return new Level0ListOfSetOperator<X>(getTarget());
+    }
+
+
+    public ILevel0ListOfSetOperator<?> asListOfSetOfUnknown() {
+        return asListOfSet(Types.OBJECT);
+    }
+    
     
     
 }

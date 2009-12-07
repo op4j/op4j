@@ -28,6 +28,7 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
+import org.op4j.operators.qualities.ICastableToArrayOfMapOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IDistinguishableOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
@@ -48,6 +49,7 @@ import org.op4j.operators.qualities.IUniqOperator;
 public interface ILevel0ArrayOfMapOperator<K,V> 
 		extends IUniqOperator<Map<K,V>[]>,
 		        INavigableCollectionOperator<Map<K,V>>,
+		        ICastableToArrayOfMapOperator,
 		        IDistinguishableOperator,
 		        ISortableOperator<Map<K,V>>,
                 IExecutableOperator<Map<K,V>[]>,
@@ -102,5 +104,9 @@ public interface ILevel0ArrayOfMapOperator<K,V>
 
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,V>[]> function);
     
+    
+    public <X,Y> ILevel0ArrayOfMapOperator<X,Y> asArrayOfMap(final Type<X> keyOf, final Type<Y> valueOf);
+    public ILevel0ArrayOfMapOperator<?,?> asArrayOfMapOfUnknown();
+
     
 }

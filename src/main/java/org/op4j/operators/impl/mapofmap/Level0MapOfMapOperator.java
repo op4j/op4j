@@ -23,7 +23,9 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.MapFuncs;
 import org.op4j.functions.converters.IConverter;
@@ -201,5 +203,24 @@ public class Level0MapOfMapOperator<K1,K2,V> extends Operator
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K1,Map<K2,V>>> function) {
         return new Level0GenericUniqOperator<X>(getTarget().execute(function));
 	}
+    
+    
+    
+
+
+    public <X1,X2,Y> ILevel0MapOfMapOperator<X1,X2,Y> asMapOfMap(final Type<X1> key1Of, final Type<X2> key2Of, final Type<Y> valueOf) {
+        Validate.notNull(key1Of, "A type representing the keys for the first-level map must be specified");
+        Validate.notNull(key2Of, "A type representing the keys for the second-level map must be specified");
+        Validate.notNull(valueOf, "A type representing the values for the second-level map must be specified");
+        return new Level0MapOfMapOperator<X1,X2,Y>(getTarget());
+    }
+
+
+    public ILevel0MapOfMapOperator<?,?,?> asMapOfMapOfUnknown() {
+        return asMapOfMap(Types.OBJECT, Types.OBJECT, Types.OBJECT);
+    }
+
+    
+
     
 }

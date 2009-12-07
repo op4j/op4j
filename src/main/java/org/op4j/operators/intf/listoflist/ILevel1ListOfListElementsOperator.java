@@ -32,6 +32,7 @@ import org.op4j.operators.intf.list.ILevel1ListElementsOperator;
 import org.op4j.operators.intf.listofarray.ILevel1ListOfArrayElementsOperator;
 import org.op4j.operators.intf.listofmap.ILevel1ListOfMapElementsOperator;
 import org.op4j.operators.intf.listofset.ILevel1ListOfSetElementsOperator;
+import org.op4j.operators.qualities.ICastableToListOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IConvertibleToArrayOperator;
 import org.op4j.operators.qualities.IConvertibleToMapOperator;
@@ -57,6 +58,7 @@ public interface ILevel1ListOfListElementsOperator<T>
 		        INavigableCollectionOperator<T>,
                 INavigatingCollectionOperator<List<T>>,
 		        IDistinguishableOperator,
+		        ICastableToListOperator,
 		        ISortableOperator<T>,
                 IExecutableOperator<List<T>>,
                 IConvertibleOperator<List<T>>,
@@ -119,6 +121,10 @@ public interface ILevel1ListOfListElementsOperator<T>
 
     public <X> ILevel1ListElementsOperator<X> exec(final IFunction<X, ? super List<T>> function);
     
+    
+    
+    public <X> ILevel1ListOfListElementsOperator<X> asList(final Type<X> of);
+    public ILevel1ListOfListElementsOperator<?> asListOfUnknown();
     
                                     
 }

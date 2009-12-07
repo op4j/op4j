@@ -29,6 +29,7 @@ import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.listofmap.ILevel0ListOfMapOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
+import org.op4j.operators.qualities.ICastableToMapOfMapOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
@@ -51,6 +52,7 @@ public interface ILevel0MapOfMapOperator<K1,K2,V>
 		        INavigableMapOperator<K1,Map<K2,V>>,
 		        ISortableOperator<Map.Entry<K1,Map<K2,V>>>,
                 ITypeParameterizableXYZOperator<K1,K2,V>,
+                ICastableToMapOfMapOperator,
                 IExecutableOperator<Map<K1,Map<K2,V>>>,
                 IConvertibleOperator<Map<K1,Map<K2,V>>>,
                 IEvaluableOperator<Map<K1,Map<K2,V>>>,
@@ -100,5 +102,9 @@ public interface ILevel0MapOfMapOperator<K1,K2,V>
 
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K1,Map<K2,V>>> function);
     
+    
+    public <X1,X2,Y> ILevel0MapOfMapOperator<X1,X2,Y> asMapOfMap(final Type<X1> key1Of, final Type<X2> key2Of, final Type<Y> valueOf);
+    public ILevel0MapOfMapOperator<?,?,?> asMapOfMapOfUnknown();
+
     
 }

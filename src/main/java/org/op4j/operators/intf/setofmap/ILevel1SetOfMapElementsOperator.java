@@ -30,6 +30,7 @@ import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.intf.set.ILevel1SetElementsOperator;
 import org.op4j.operators.intf.setoflist.ILevel1SetOfListElementsOperator;
 import org.op4j.operators.intf.setofset.ILevel1SetOfSetElementsOperator;
+import org.op4j.operators.qualities.ICastableToMapOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
@@ -52,6 +53,7 @@ public interface ILevel1SetOfMapElementsOperator<K,V>
 		        INavigableMapOperator<K,V>,
                 INavigatingCollectionOperator<Map<K,V>>,
 		        ISortableOperator<Map.Entry<K,V>>,
+		        ICastableToMapOperator,
                 ITypeParameterizableXYOperator<K,V>,
                 IExecutableOperator<Map<K,V>>,
                 IConvertibleOperator<Map<K,V>>,
@@ -98,6 +100,10 @@ public interface ILevel1SetOfMapElementsOperator<K,V>
     public <X> ILevel1SetElementsOperator<X> eval(final IEvaluator<X,? super Map<K,V>> eval);
 
     public <X> ILevel1SetElementsOperator<X> exec(final IFunction<X, ? super Map<K,V>> function);
+    
+    
+    public <X,Y> ILevel1SetOfMapElementsOperator<X,Y> asMap(final Type<X> keyOf, final Type<Y> valueOf);
+    public ILevel1SetOfMapElementsOperator<?,?> asMapOfUnknown();
     
     
 }

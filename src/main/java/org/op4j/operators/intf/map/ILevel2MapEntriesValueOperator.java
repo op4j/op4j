@@ -29,7 +29,10 @@ import org.op4j.operators.intf.mapofarray.ILevel2MapOfArrayEntriesValueOperator;
 import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.ILevel2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesValueOperator;
-import org.op4j.operators.qualities.ICastableToOneLevelStructuresOperator;
+import org.op4j.operators.qualities.ICastableToArrayOperator;
+import org.op4j.operators.qualities.ICastableToListOperator;
+import org.op4j.operators.qualities.ICastableToMapOperator;
+import org.op4j.operators.qualities.ICastableToSetOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
@@ -47,7 +50,10 @@ import org.op4j.operators.qualities.IUniqOperator;
  */
 public interface ILevel2MapEntriesValueOperator<K,V>
 		extends IUniqOperator<Map<K,V>>,
-                ICastableToOneLevelStructuresOperator,
+                ICastableToArrayOperator,
+                ICastableToListOperator,
+                ICastableToMapOperator,
+                ICastableToSetOperator,
 				INavigatingMapEntryOperator,
                 IConvertibleOperator<V>,
         		IEvaluableOperator<V>,
@@ -74,6 +80,10 @@ public interface ILevel2MapEntriesValueOperator<K,V>
     public <X> ILevel2MapOfListEntriesValueOperator<K,X> asList(final Type<X> of);
     public <K2,V2> ILevel2MapOfMapEntriesValueOperator<K,K2,V2> asMap(final Type<K2> keyOf, final Type<V2> valueOf);
     public <X> ILevel2MapOfSetEntriesValueOperator<K,X> asSet(final Type<X> of);
+    public ILevel2MapOfArrayEntriesValueOperator<K,?> asArrayOfUnknown();
+    public ILevel2MapOfListEntriesValueOperator<K,?> asListOfUnknown();
+    public ILevel2MapOfMapEntriesValueOperator<K,?,?> asMapOfUnknown();
+    public ILevel2MapOfSetEntriesValueOperator<K,?> asSetOfUnknown();
     
 
     

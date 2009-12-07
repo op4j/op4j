@@ -29,7 +29,10 @@ import org.op4j.operators.intf.setofarray.ILevel1SetOfArrayElementsOperator;
 import org.op4j.operators.intf.setoflist.ILevel1SetOfListElementsOperator;
 import org.op4j.operators.intf.setofmap.ILevel1SetOfMapElementsOperator;
 import org.op4j.operators.intf.setofset.ILevel1SetOfSetElementsOperator;
-import org.op4j.operators.qualities.ICastableToOneLevelStructuresOperator;
+import org.op4j.operators.qualities.ICastableToArrayOperator;
+import org.op4j.operators.qualities.ICastableToListOperator;
+import org.op4j.operators.qualities.ICastableToMapOperator;
+import org.op4j.operators.qualities.ICastableToSetOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
@@ -47,7 +50,10 @@ import org.op4j.operators.qualities.IUniqOperator;
  */
 public interface ILevel1SetElementsOperator<T> 
 		extends IUniqOperator<Set<T>>,
-                ICastableToOneLevelStructuresOperator,
+                ICastableToArrayOperator,
+                ICastableToListOperator,
+                ICastableToMapOperator,
+                ICastableToSetOperator,
         		INavigatingCollectionOperator<T>,
         		IConvertibleOperator<T>,
         		IEvaluableOperator<T>,
@@ -73,6 +79,10 @@ public interface ILevel1SetElementsOperator<T>
     public <X> ILevel1SetOfListElementsOperator<X> asList(final Type<X> of);
     public <K,V> ILevel1SetOfMapElementsOperator<K,V> asMap(final Type<K> keyOf, final Type<V> valueOf);
     public <X> ILevel1SetOfSetElementsOperator<X> asSet(final Type<X> of);
+    public ILevel1SetOfArrayElementsOperator<?> asArrayOfUnknown();
+    public ILevel1SetOfListElementsOperator<?> asListOfUnknown();
+    public ILevel1SetOfMapElementsOperator<?,?> asMapOfUnknown();
+    public ILevel1SetOfSetElementsOperator<?> asSetOfUnknown();
     
                                     
 }

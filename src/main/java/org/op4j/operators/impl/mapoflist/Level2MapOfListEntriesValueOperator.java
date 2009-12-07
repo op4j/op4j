@@ -24,7 +24,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.ListFuncs;
 import org.op4j.functions.converters.IConverter;
@@ -277,6 +279,18 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
 	}
 
     
+
     
+    public <X> ILevel2MapOfListEntriesValueOperator<K, X> asList(final Type<X> of) {
+        Validate.notNull(of, "A type representing the elements must be specified");
+        return new Level2MapOfListEntriesValueOperator<K,X>(getTarget());
+    }
+
+
+    public ILevel2MapOfListEntriesValueOperator<K, ?> asListOfUnknown() {
+        return asList(Types.OBJECT);
+    }
+
+
     
 }

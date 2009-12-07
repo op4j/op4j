@@ -1,2 +1,5 @@
 
+- Create "asType" (or similar name) methods and substitute old "of" with this.
+- Remove TypeParameterizable* interfaces (the "of" calls in "as" in maps will be changed by asType)
+- Do defensive copies of structures as they come through the "on" method.
  

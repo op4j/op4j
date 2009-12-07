@@ -30,8 +30,17 @@ import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
+import org.op4j.operators.intf.listofarray.ILevel0ListOfArrayOperator;
+import org.op4j.operators.intf.listoflist.ILevel0ListOfListOperator;
+import org.op4j.operators.intf.listofmap.ILevel0ListOfMapOperator;
+import org.op4j.operators.intf.listofset.ILevel0ListOfSetOperator;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
+import org.op4j.operators.qualities.ICastableToListOfArrayOperator;
+import org.op4j.operators.qualities.ICastableToListOfListOperator;
+import org.op4j.operators.qualities.ICastableToListOfMapOperator;
+import org.op4j.operators.qualities.ICastableToListOfSetOperator;
+import org.op4j.operators.qualities.ICastableToListOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IConvertibleToArrayOperator;
 import org.op4j.operators.qualities.IConvertibleToMapOperator;
@@ -57,6 +66,11 @@ public interface ILevel0ListOperator<T>
 		        INavigableCollectionOperator<T>,
 		        IDistinguishableOperator,
 		        ISortableOperator<T>,
+                ICastableToListOperator,
+                ICastableToListOfArrayOperator,
+                ICastableToListOfListOperator,
+                ICastableToListOfMapOperator,
+                ICastableToListOfSetOperator,
                 ITypeParameterizableXOperator<T>,
 		        IModifiableCollectionOperator<T>,
 		        IGenerizableOperator<List<T>>,
@@ -123,5 +137,25 @@ public interface ILevel0ListOperator<T>
 
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super List<T>> function);
     
+    
+    public <X> ILevel0ListOfArrayOperator<X> asListOfArray(final Type<X> of);
+    public ILevel0ListOfArrayOperator<?> asListOfArrayOfUnknown();
+    
+    public <X> ILevel0ListOfListOperator<X> asListOfList(final Type<X> of);
+    public ILevel0ListOfListOperator<?> asListOfListOfUnknown();
+    
+    public <K,V> ILevel0ListOfMapOperator<K,V> asListOfMap(final Type<K> keyOf, final Type<V> valueOf);
+    public ILevel0ListOfMapOperator<?,?> asListOfMapOfUnknown();
+    
+    public <X> ILevel0ListOfSetOperator<X> asListOfSet(final Type<X> of);
+    public ILevel0ListOfSetOperator<?> asListOfSetOfUnknown();
+
+    
+    public <X> ILevel0ListOperator<X> asList(final Type<X> of);
+    public ILevel0ListOperator<?> asListOfUnknown();
+    
+
+
+
     
 }

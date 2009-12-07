@@ -33,6 +33,7 @@ import org.op4j.operators.intf.map.ILevel2MapEntriesValueOperator;
 import org.op4j.operators.intf.mapofarray.ILevel2MapOfArrayEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.ILevel2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesValueOperator;
+import org.op4j.operators.qualities.ICastableToListOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IConvertibleToArrayOperator;
 import org.op4j.operators.qualities.IConvertibleToMapOperator;
@@ -59,6 +60,7 @@ public interface ILevel2MapOfListEntriesValueOperator<K,V>
 		        INavigatingMapEntryOperator,
 		        IDistinguishableOperator,
 		        ISortableOperator<V>,
+		        ICastableToListOperator,
                 IExecutableOperator<List<V>>,
                 IConvertibleOperator<List<V>>,
                 IEvaluableOperator<List<V>>,
@@ -119,6 +121,10 @@ public interface ILevel2MapOfListEntriesValueOperator<K,V>
     public <X> ILevel2MapEntriesValueOperator<K,X> eval(final IEvaluator<X,? super List<V>> eval);
 
     public <X> ILevel2MapEntriesValueOperator<K,X> exec(final IFunction<X, ? super List<V>> function);
+    
+    
+    public <X> ILevel2MapOfListEntriesValueOperator<K,X> asList(final Type<X> of);
+    public ILevel2MapOfListEntriesValueOperator<K,?> asListOfUnknown();
     
     
                                     

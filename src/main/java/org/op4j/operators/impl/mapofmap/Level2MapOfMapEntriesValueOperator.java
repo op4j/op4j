@@ -23,7 +23,9 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.MapFuncs;
 import org.op4j.functions.converters.IConverter;
@@ -198,6 +200,18 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
 	}
 
     
+    
+    public <X,Y> ILevel2MapOfMapEntriesValueOperator<K1, X, Y> asMap(final Type<X> keyOf, final Type<Y> valueOf) {
+        Validate.notNull(keyOf, "A type representing the keys must be specified");
+        Validate.notNull(valueOf, "A type representing the values must be specified");
+        return new Level2MapOfMapEntriesValueOperator<K1,X,Y>(getTarget());
+    }
+
+
+    public ILevel2MapOfMapEntriesValueOperator<K1, ?, ?> asMapOfUnknown() {
+        return asMap(Types.OBJECT, Types.OBJECT);
+    }
+
     
     
 }

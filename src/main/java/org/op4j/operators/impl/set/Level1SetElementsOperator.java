@@ -158,6 +158,28 @@ public class Level1SetElementsOperator<T> extends Operator
         return new Level1SetOfSetElementsOperator<X>(getTarget());
     }
     
+
+    
+    
+    public ILevel1SetOfArrayElementsOperator<?> asArrayOfUnknown() {
+        return asArray(Types.OBJECT);
+    }
+
+
+    public ILevel1SetOfListElementsOperator<?> asListOfUnknown() {
+        return asList(Types.OBJECT);
+    }
+
+
+    public ILevel1SetOfMapElementsOperator<?, ?> asMapOfUnknown() {
+        return asMap(Types.OBJECT, Types.OBJECT);
+    }
+
+
+    public ILevel1SetOfSetElementsOperator<?> asSetOfUnknown() {
+        return asSet(Types.OBJECT);
+    }
+
     
     
     
@@ -170,4 +192,6 @@ public class Level1SetElementsOperator<T> extends Operator
         return endFor().get();
     }
 
+    
+    
 }

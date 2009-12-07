@@ -24,7 +24,9 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.SetFuncs;
 import org.op4j.functions.converters.IConverter;
@@ -271,6 +273,17 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
 
     
     
+    
+    public <X> ILevel2MapOfSetEntriesValueOperator<K, X> asSet(final Type<X> of) {
+        Validate.notNull(of, "A type representing the elements must be specified");
+        return new Level2MapOfSetEntriesValueOperator<K,X>(getTarget());
+    }
+
+
+    public ILevel2MapOfSetEntriesValueOperator<K, ?> asSetOfUnknown() {
+        return asSet(Types.OBJECT);
+    }
+
     
     
 }

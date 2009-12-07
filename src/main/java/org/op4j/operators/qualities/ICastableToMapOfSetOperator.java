@@ -20,6 +20,7 @@
 package org.op4j.operators.qualities;
 
 import org.javaruntype.type.Type;
+import org.op4j.operators.intf.mapofset.ILevel0MapOfSetOperator;
 
 
 /**
@@ -29,11 +30,10 @@ import org.javaruntype.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ICastableToOneLevelStructuresOperator {
+public interface ICastableToMapOfSetOperator {
     
-    public <X> IOperator asArray(final Type<X> of);
-    public <X> IOperator asList(final Type<X> of);
-    public <K,V> IOperator asMap(final Type<K> keyOf, final Type<V> valueOf);
-    public <X> IOperator asSet(final Type<X> of);
+    public <K,V> ILevel0MapOfSetOperator<K,V> asMapOfSet(final Type<K> keyOf, final Type<V> valueOf);
+    public ILevel0MapOfSetOperator<?,?> asMapOfSetOfUnknown();
+
     
 }
