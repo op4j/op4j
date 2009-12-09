@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Set;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
@@ -264,8 +263,7 @@ public class Level1SetOfSetElementsOperator<T> extends Operator
     
 
     public <X> ILevel1SetOfSetElementsOperator<X> asSet(final Type<X> of) {
-        Validate.notNull(of, "A type representing the elements must be specified");
-        return new Level1SetOfSetElementsOperator<X>(getTarget());
+    	return endFor().generic().asSetOfSet(of).forEach();
     }
 
 

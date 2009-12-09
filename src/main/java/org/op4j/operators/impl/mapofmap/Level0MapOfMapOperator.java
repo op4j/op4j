@@ -23,7 +23,6 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
@@ -199,10 +198,7 @@ public class Level0MapOfMapOperator<K1,K2,V> extends Operator
 
 
     public <X1,X2,Y> ILevel0MapOfMapOperator<X1,X2,Y> asMapOfMap(final Type<X1> key1Of, final Type<X2> key2Of, final Type<Y> valueOf) {
-        Validate.notNull(key1Of, "A type representing the keys for the first-level map must be specified");
-        Validate.notNull(key2Of, "A type representing the keys for the second-level map must be specified");
-        Validate.notNull(valueOf, "A type representing the values for the second-level map must be specified");
-        return new Level0MapOfMapOperator<X1,X2,Y>(getTarget());
+        return generic().asMapOfMap(key1Of, key2Of, valueOf);
     }
 
 

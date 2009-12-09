@@ -21,6 +21,7 @@ package org.op4j.operators.impl.mapofmap;
 
 import java.util.Map;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.operators.impl.Operator;
@@ -28,6 +29,7 @@ import org.op4j.operators.intf.mapofmap.ILevel1MapOfMapEntriesOperator;
 import org.op4j.operators.intf.mapofmap.ILevel2MapOfMapEntriesKeyOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
+import org.op4j.util.TargetUtils;
 
 
 /**
@@ -52,6 +54,8 @@ public class Level2MapOfMapEntriesKeyOperator<K1,K2,V> extends Operator
 
 
     public <X> ILevel2MapOfMapEntriesKeyOperator<X, K2, V> asType(final Type<X> type) {
+        Validate.notNull(type, "A type representing the elements must be specified");
+        TargetUtils.checkIsMapOfKey(type, get());
         return new Level2MapOfMapEntriesKeyOperator<X, K2, V>(getTarget());
     }
 

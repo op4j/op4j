@@ -24,7 +24,6 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
@@ -229,9 +228,7 @@ public class Level0SetOfMapOperator<K,V> extends Operator
     
 
     public <X,Y> ILevel0SetOfMapOperator<X,Y> asSetOfMap(final Type<X> keyOf, final Type<Y> valueOf) {
-        Validate.notNull(keyOf, "A type representing the keys must be specified");
-        Validate.notNull(valueOf, "A type representing the values must be specified");
-        return new Level0SetOfMapOperator<X,Y>(getTarget());
+    	return generic().asSetOfMap(keyOf, valueOf);
     }
 
 

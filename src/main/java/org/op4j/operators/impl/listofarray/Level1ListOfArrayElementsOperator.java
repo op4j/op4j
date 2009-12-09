@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.ArrayFuncs;
@@ -267,8 +266,7 @@ public class Level1ListOfArrayElementsOperator<T> extends Operator
     
 
     public <X> ILevel1ListOfArrayElementsOperator<X> asArray(final Type<X> of) {
-        Validate.notNull(of, "A type representing the elements must be specified");
-        return new Level1ListOfArrayElementsOperator<X>(of, getTarget());
+    	return endFor().generic().asListOfArray(of).forEach();
     }
 
 

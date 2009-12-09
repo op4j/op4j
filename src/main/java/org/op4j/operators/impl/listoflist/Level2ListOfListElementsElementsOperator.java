@@ -71,7 +71,7 @@ public class Level2ListOfListElementsElementsOperator<T> extends Operator
 
 
     public <X> ILevel2ListOfListElementsElementsOperator<X> asType(final Type<X> type) {
-        return new Level2ListOfListElementsElementsOperator<X>(getTarget());
+    	return endFor().endFor().generic().asListOfList(type).forEach().forEach();
     }
 
     public ILevel2ListOfListElementsElementsOperator<?> asUnknown() {

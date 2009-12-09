@@ -22,6 +22,7 @@ package org.op4j.operators.impl.mapofset;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
@@ -32,6 +33,7 @@ import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.ILevel3MapOfSetEntriesValueElementsOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
+import org.op4j.util.TargetUtils;
 
 
 /**
@@ -72,6 +74,8 @@ public class Level3MapOfSetEntriesValueElementsOperator<K,V> extends Operator
 
 
     public <X> ILevel3MapOfSetEntriesValueElementsOperator<K, X> asType(final Type<X> type) {
+        Validate.notNull(type, "A type representing the elements must be specified");
+        TargetUtils.checkIsMapOfSetOfValue(type, get());
         return new Level3MapOfSetEntriesValueElementsOperator<K, X>(getTarget());
     }
 

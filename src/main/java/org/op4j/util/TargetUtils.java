@@ -267,6 +267,24 @@ public class TargetUtils {
         }
     }
     
+    public static void checkIsMapOfMapOfValueOfKey(final Type<?> key2Of, final Object targetObject) {
+        checkIsMapOfValue(Types.mapOf(key2Of, Types.OBJECT), targetObject);
+        if (targetObject != null) {
+            for (final Map.Entry<?,?> element : ((Map<?,?>)targetObject).entrySet()) {
+                checkIsMapOfKey(key2Of, element.getValue());
+            }
+        }
+    }
+    
+    public static void checkIsMapOfMapOfValueOfValue(final Type<?> valueOf, final Object targetObject) {
+        checkIsMapOfValue(Types.mapOf(Types.OBJECT, valueOf), targetObject);
+        if (targetObject != null) {
+            for (final Map.Entry<?,?> element : ((Map<?,?>)targetObject).entrySet()) {
+                checkIsMapOfValue(valueOf, element.getValue());
+            }
+        }
+    }
+    
     public static void checkIsMapOfSet(final Type<?> keyOf, final Type<?> valueOf, final Object targetObject) {
         checkIsMap(keyOf, Types.setOf(valueOf), targetObject);
         if (targetObject != null) {

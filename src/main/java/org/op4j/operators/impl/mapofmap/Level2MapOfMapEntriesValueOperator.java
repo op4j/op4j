@@ -42,6 +42,7 @@ import org.op4j.operators.intf.mapofmap.ILevel3MapOfMapEntriesValueEntriesOperat
 import org.op4j.operators.intf.mapofset.ILevel2MapOfSetEntriesValueOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
+import org.op4j.util.TargetUtils;
 
 
 /**
@@ -194,6 +195,7 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
     public <X,Y> ILevel2MapOfMapEntriesValueOperator<K1, X, Y> asMap(final Type<X> keyOf, final Type<Y> valueOf) {
         Validate.notNull(keyOf, "A type representing the keys must be specified");
         Validate.notNull(valueOf, "A type representing the values must be specified");
+        TargetUtils.checkIsMapOfMapOfValue(keyOf, valueOf, get());
         return new Level2MapOfMapEntriesValueOperator<K1,X,Y>(getTarget());
     }
 

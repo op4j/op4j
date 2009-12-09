@@ -1,5 +1,5 @@
 
-- as. From ListOperator, review all as
+- Review map* "as" methods (array, list and set are already done)
 - Generic -> it should not be used for anything but buildX
 - Do defensive copies of structures as they come through the "on" method.
  

@@ -23,7 +23,6 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
@@ -197,7 +196,7 @@ public class Level0MapOperator<K,V> extends Operator
     
 
     public <X, Y> ILevel0MapOfArrayOperator<X, Y> asMapOfArray(final Type<X> keyOf, final Type<Y> valueOf) {
-        return forEachEntry().onKey().asType(keyOf).endOn().onValue().asArray(valueOf).endOn().endFor();
+        return generic().asMapOfArray(keyOf, valueOf);
     }
 
 
@@ -207,7 +206,7 @@ public class Level0MapOperator<K,V> extends Operator
 
 
     public <X, Y> ILevel0MapOfListOperator<X, Y> asMapOfList(final Type<X> keyOf, final Type<Y> valueOf) {
-        return forEachEntry().onKey().asType(keyOf).endOn().onValue().asList(valueOf).endOn().endFor();
+        return generic().asMapOfList(keyOf, valueOf);
     }
 
 
@@ -217,7 +216,7 @@ public class Level0MapOperator<K,V> extends Operator
 
 
     public <X1, X2, Y> ILevel0MapOfMapOperator<X1, X2, Y> asMapOfMap(final Type<X1> key1Of, final Type<X2> key2Of, final Type<Y> valueOf) {
-        return forEachEntry().onKey().asType(key1Of).endOn().onValue().asMap(key2Of,valueOf).endOn().endFor();
+        return generic().asMapOfMap(key1Of, key2Of, valueOf);
     }
 
 
@@ -227,7 +226,7 @@ public class Level0MapOperator<K,V> extends Operator
 
 
     public <X, Y> ILevel0MapOfSetOperator<X, Y> asMapOfSet(final Type<X> keyOf, final Type<Y> valueOf) {
-        return forEachEntry().onKey().asType(keyOf).endOn().onValue().asSet(valueOf).endOn().endFor();
+        return generic().asMapOfSet(keyOf, valueOf);
     }
 
 
@@ -237,9 +236,7 @@ public class Level0MapOperator<K,V> extends Operator
 
 
     public <X, Y> ILevel0MapOperator<X, Y> asMap(final Type<X> keyOf, final Type<Y> valueOf) {
-        Validate.notNull(keyOf, "A type representing the keys must be specified");
-        Validate.notNull(valueOf, "A type representing the values must be specified");
-        return new Level0MapOperator<X,Y>(getTarget());
+        return generic().asMap(keyOf, valueOf);
     }
 
 

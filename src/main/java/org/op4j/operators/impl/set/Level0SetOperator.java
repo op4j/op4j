@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Set;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
@@ -287,7 +286,7 @@ public class Level0SetOperator<T> extends Operator
 
 
     public <K, V> ILevel0SetOfMapOperator<K, V> asSetOfMap(final Type<K> keyOf, final Type<V> valueOf) {
-        return forEach().asMap(keyOf, valueOf).endFor();
+    	return generic().asSetOfMap(keyOf, valueOf);
     }
 
 
