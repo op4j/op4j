@@ -22,7 +22,6 @@ package org.op4j.operators.impl.arrayofmap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -58,11 +57,6 @@ public class Level2ArrayOfMapElementsEntriesOperator<K,V> extends Operator
     }
 
 
-    public <X, Y> ILevel2ArrayOfMapElementsEntriesOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
-        return new Level2ArrayOfMapElementsEntriesOperator<X, Y>(getTarget());
-    }
-
-
     public ILevel3ArrayOfMapElementsEntriesKeyOperator<K, V> onKey() {
         return new Level3ArrayOfMapElementsEntriesKeyOperator<K, V>(getTarget().iterate(0));
     }
@@ -70,11 +64,6 @@ public class Level2ArrayOfMapElementsEntriesOperator<K,V> extends Operator
 
     public ILevel3ArrayOfMapElementsEntriesValueOperator<K, V> onValue() {
         return new Level3ArrayOfMapElementsEntriesValueOperator<K, V>(getTarget().iterate(1));
-    }
-
-
-    public ILevel2ArrayOfMapElementsEntriesOperator<?, ?> raw() {
-        return new Level2ArrayOfMapElementsEntriesOperator<K, V>(getTarget());
     }
 
 

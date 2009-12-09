@@ -30,11 +30,11 @@ import org.javaruntype.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ITypeParameterizableXYZOperator<T1,T2,T3> {
+public interface ICastableToTypeOperator<T> {
 
     
-    public <X,Y,Z> ITypeParameterizableXYZOperator<X,Y,Z> of(final Type<X> ofX, final Type<Y> ofY, final Type<Z> ofZ);
-    
-    public ITypeParameterizableXYZOperator<?,?,?> raw();
+    public <X> ICastableToTypeOperator<X> asType(final Type<X> type);
+    public ICastableToTypeOperator<?> asUnknown();
+
     
 }

@@ -155,16 +155,6 @@ public class Level0SetOfSetOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0SetOfSetOperator<X> of(final Type<X> of) {
-        return new Level0SetOfSetOperator<X>(getTarget());
-    }
-
-
-    public ILevel0SetOfSetOperator<?> raw() {
-        return new Level0SetOfSetOperator<T>(getTarget());
-    }
-
-
     public ILevel0SetOfSetOperator<T> removeIndexes(final int... indices) {
         return new Level0SetOfSetOperator<T>(getTarget().execute(new SetFuncs.RemoveIndexes<Set<T>>(indices)));
     }
@@ -351,8 +341,7 @@ public class Level0SetOfSetOperator<T> extends Operator
 
 
     public <X> ILevel0SetOfSetOperator<X> asSetOfSet(final Type<X> of) {
-        Validate.notNull(of, "A type representing the elements must be specified");
-        return new Level0SetOfSetOperator<X>(getTarget());
+        return generic().asSetOfSet(of);
     }
 
 

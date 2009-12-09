@@ -38,7 +38,6 @@ import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableMapOperator;
 import org.op4j.operators.qualities.INavigableMapOperator;
 import org.op4j.operators.qualities.ISortableOperator;
-import org.op4j.operators.qualities.ITypeParameterizableXYZOperator;
 import org.op4j.operators.qualities.IUniqOperator;
 /**
  * 
@@ -51,7 +50,6 @@ public interface ILevel0MapOfMapOperator<K1,K2,V>
 		extends IUniqOperator<Map<K1,Map<K2,V>>>,
 		        INavigableMapOperator<K1,Map<K2,V>>,
 		        ISortableOperator<Map.Entry<K1,Map<K2,V>>>,
-                ITypeParameterizableXYZOperator<K1,K2,V>,
                 ICastableToMapOfMapOperator,
                 IExecutableOperator<Map<K1,Map<K2,V>>>,
                 IConvertibleOperator<Map<K1,Map<K2,V>>>,
@@ -65,11 +63,7 @@ public interface ILevel0MapOfMapOperator<K1,K2,V>
     
     public ILevel0MapOfMapOperator<K1,K2,V> sort();
     public ILevel0MapOfMapOperator<K1,K2,V> sort(final Comparator<? super Map.Entry<K1,Map<K2,V>>> comparator);
-    
-    public <X,Y,Z> ILevel0MapOfMapOperator<X,Y,Z> of(final Type<X> ofX, final Type<Y> ofY, final Type<Z> ofZ);
         
-    public ILevel0MapOfMapOperator<?,?,?> raw();
-    
     public ILevel0MapOfMapOperator<K1,K2,V> put(final K1 newKey, final Map<K2,V> newValue);
     public ILevel0MapOfMapOperator<K1,K2,V> insert(final int position, final K1 newKey, final Map<K2,V> newValue);
     public ILevel0MapOfMapOperator<K1,K2,V> putAll(final Map<K1,Map<K2,V>> map);

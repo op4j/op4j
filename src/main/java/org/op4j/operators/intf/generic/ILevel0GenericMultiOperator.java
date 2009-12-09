@@ -42,7 +42,7 @@ import org.op4j.operators.qualities.IExecutableOperator;
 import org.op4j.operators.qualities.IModifiableGrowableOperator;
 import org.op4j.operators.qualities.IModifiableShrinkableOperator;
 import org.op4j.operators.qualities.IMultiOperator;
-import org.op4j.operators.qualities.ITypeParameterizableXOperator;
+import org.op4j.operators.qualities.ICastableToTypeOperator;
 import org.op4j.operators.qualities.IUniqableOperator;
 /**
  * 
@@ -59,7 +59,7 @@ public interface ILevel0GenericMultiOperator<T>
         		IConvertibleOperator<T>,
         		IEvaluableOperator<T>,
         		IExecutableOperator<T>,
-                ITypeParameterizableXOperator<T>,
+                ICastableToTypeOperator<T>,
                 IModifiableGrowableOperator<T>,
                 IModifiableShrinkableOperator<T> {
 
@@ -76,9 +76,9 @@ public interface ILevel0GenericMultiOperator<T>
     
     
     
-    public <X> ILevel0GenericMultiOperator<X> of(final Type<X> of);
+    public <X> ILevel0GenericMultiOperator<X> asType(final Type<X> type);
+    public ILevel0GenericMultiOperator<?> asUnknown();
         
-    public ILevel0GenericMultiOperator<?> raw();
     public ILevel0GenericMultiOperator<T> add(final T... newElements);
     public ILevel0GenericMultiOperator<T> insert(final int position, final T... newElements);
     public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection);

@@ -152,16 +152,6 @@ public class Level0SetOfArrayOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0SetOfArrayOperator<X> of(final Type<X> of) {
-        return new Level0SetOfArrayOperator<X>(of, getTarget());
-    }
-
-
-    public ILevel0SetOfArrayOperator<?> raw() {
-        return new Level0SetOfArrayOperator<T>(this.arrayOf, getTarget());
-    }
-
-
     public ILevel0SetOfArrayOperator<T> removeIndexes(final int... indices) {
         return new Level0SetOfArrayOperator<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveIndexes<T[]>(indices)));
     }
@@ -356,8 +346,7 @@ public class Level0SetOfArrayOperator<T> extends Operator
 
 
     public <X> ILevel0SetOfArrayOperator<X> asSetOfArray(final Type<X> of) {
-        Validate.notNull(of, "A type representing the elements must be specified");
-        return new Level0SetOfArrayOperator<X>(of, getTarget());
+        return generic().asSetOfArray(of);
     }
 
 

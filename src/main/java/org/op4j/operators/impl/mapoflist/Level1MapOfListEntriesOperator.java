@@ -23,7 +23,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -59,11 +58,6 @@ public class Level1MapOfListEntriesOperator<K,V> extends Operator
     }
 
 
-    public <X, Y> ILevel1MapOfListEntriesOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
-        return new Level1MapOfListEntriesOperator<X, Y>(getTarget());
-    }
-
-
     public ILevel2MapOfListEntriesKeyOperator<K, V> onKey() {
         return new Level2MapOfListEntriesKeyOperator<K, V>(getTarget().iterate(0));
     }
@@ -71,11 +65,6 @@ public class Level1MapOfListEntriesOperator<K,V> extends Operator
 
     public ILevel2MapOfListEntriesValueOperator<K, V> onValue() {
         return new Level2MapOfListEntriesValueOperator<K, V>(getTarget().iterate(1));
-    }
-
-
-    public ILevel1MapOfListEntriesOperator<?, ?> raw() {
-        return new Level1MapOfListEntriesOperator<K, V>(getTarget());
     }
 
 

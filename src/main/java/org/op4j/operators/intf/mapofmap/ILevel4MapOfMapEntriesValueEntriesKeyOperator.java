@@ -23,7 +23,7 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.operators.qualities.INavigatingMapEntryOperator;
-import org.op4j.operators.qualities.ITypeParameterizableXOperator;
+import org.op4j.operators.qualities.ICastableToTypeOperator;
 import org.op4j.operators.qualities.IUniqOperator;
 
 
@@ -37,14 +37,12 @@ import org.op4j.operators.qualities.IUniqOperator;
 public interface ILevel4MapOfMapEntriesValueEntriesKeyOperator<K1,K2,V>
 		extends IUniqOperator<Map<K1,Map<K2,V>>>,
 				INavigatingMapEntryOperator,
-                ITypeParameterizableXOperator<K2> {
+                ICastableToTypeOperator<K2> {
     
     public ILevel3MapOfMapEntriesValueEntriesOperator<K1,K2,V> endOn();
     
-    public <X> ILevel4MapOfMapEntriesValueEntriesKeyOperator<K1,X,V> of(final Type<X> of);
+    public <X> ILevel4MapOfMapEntriesValueEntriesKeyOperator<K1,X,V> asType(final Type<X> type);
+    public ILevel4MapOfMapEntriesValueEntriesKeyOperator<K1,?,V> asUnknown();
     
         
-    public ILevel4MapOfMapEntriesValueEntriesKeyOperator<K1,?,V> raw();
-    
-                                            
-}
+    }

@@ -22,12 +22,15 @@ package org.op4j.operators.impl.setofmap;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.setofmap.ILevel2SetOfMapElementsEntriesOperator;
 import org.op4j.operators.intf.setofmap.ILevel3SetOfMapElementsEntriesKeyOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
+import org.op4j.util.TargetUtils;
 
 
 /**
@@ -51,13 +54,14 @@ public class Level3SetOfMapElementsEntriesKeyOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel3SetOfMapElementsEntriesKeyOperator<X, V> of(final Type<X> of) {
+    public <X> ILevel3SetOfMapElementsEntriesKeyOperator<X, V> asType(final Type<X> type) {
+        Validate.notNull(type, "A type representing the elements must be specified");
+        TargetUtils.checkIsSetOfMapOfKey(type, get());
         return new Level3SetOfMapElementsEntriesKeyOperator<X, V>(getTarget());
     }
 
-
-    public ILevel3SetOfMapElementsEntriesKeyOperator<?, V> raw() {
-        return new Level3SetOfMapElementsEntriesKeyOperator<K, V>(getTarget());
+    public ILevel3SetOfMapElementsEntriesKeyOperator<?,V> asUnknown() {
+        return asType(Types.OBJECT);
     }
 
 

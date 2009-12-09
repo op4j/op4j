@@ -46,7 +46,6 @@ import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableMapOperator;
 import org.op4j.operators.qualities.INavigableMapOperator;
 import org.op4j.operators.qualities.ISortableOperator;
-import org.op4j.operators.qualities.ITypeParameterizableXYOperator;
 import org.op4j.operators.qualities.IUniqOperator;
 /**
  * 
@@ -59,7 +58,6 @@ public interface ILevel0MapOfListOperator<K,V>
 		extends IUniqOperator<Map<K,List<V>>>,
 		        INavigableMapOperator<K,List<V>>,
 		        ISortableOperator<Map.Entry<K,List<V>>>,
-                ITypeParameterizableXYOperator<K,V>,
                 ICastableToMapOfListOperator,
 		        IModifiableMapOperator<K,List<V>>,
                 IExtractableMapOperator<K,List<V>>,
@@ -76,10 +74,6 @@ public interface ILevel0MapOfListOperator<K,V>
     
     public ILevel0MapOfListOperator<K,V> sort();
     public ILevel0MapOfListOperator<K,V> sort(final Comparator<? super Map.Entry<K,List<V>>> comparator);
-    
-    public <X,Y> ILevel0MapOfListOperator<X,Y> of(final Type<X> ofX, final Type<Y> ofY);
-        
-    public ILevel0MapOfListOperator<?,?> raw();
     
     public ILevel0MapOfListOperator<K,V> put(final K newKey, final List<V> newValue);
     public ILevel0MapOfListOperator<K,V> insert(final int position, final K newKey, final List<V> newValue);

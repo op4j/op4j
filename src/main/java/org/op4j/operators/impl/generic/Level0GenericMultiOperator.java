@@ -23,6 +23,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.exceptions.EmptyTargetException;
 import org.op4j.exceptions.NonUniqueTargetException;
 import org.op4j.functions.IFunction;
@@ -166,13 +167,12 @@ public class Level0GenericMultiOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0GenericMultiOperator<X> of(final Type<X> of) {
+    public <X> ILevel0GenericMultiOperator<X> asType(final Type<X> type) {
         return new Level0GenericMultiOperator<X>(getTarget());
     }
 
-
-    public ILevel0GenericMultiOperator<?> raw() {
-        return new Level0GenericMultiOperator<T>(getTarget());
+    public ILevel0GenericMultiOperator<?> asUnknown() {
+        return asType(Types.OBJECT);
     }
 
 

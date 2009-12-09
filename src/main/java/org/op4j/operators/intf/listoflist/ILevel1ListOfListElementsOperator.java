@@ -44,7 +44,6 @@ import org.op4j.operators.qualities.IModifiableCollectionOperator;
 import org.op4j.operators.qualities.INavigableCollectionOperator;
 import org.op4j.operators.qualities.INavigatingCollectionOperator;
 import org.op4j.operators.qualities.ISortableOperator;
-import org.op4j.operators.qualities.ITypeParameterizableXOperator;
 import org.op4j.operators.qualities.IUniqOperator;
 /**
  * 
@@ -63,7 +62,6 @@ public interface ILevel1ListOfListElementsOperator<T>
                 IExecutableOperator<List<T>>,
                 IConvertibleOperator<List<T>>,
                 IEvaluableOperator<List<T>>,
-                ITypeParameterizableXOperator<T>,
                 IModifiableCollectionOperator<T>,
                 IConvertibleToArrayOperator<T>,
                 IConvertibleToSetOperator,
@@ -78,10 +76,7 @@ public interface ILevel1ListOfListElementsOperator<T>
     
     public ILevel1ListOfListElementsOperator<T> sort();
     public ILevel1ListOfListElementsOperator<T> sort(final Comparator<? super T> comparator);
-    
-    public <X> ILevel1ListOfListElementsOperator<X> of(final Type<X> of);
         
-    public ILevel1ListOfListElementsOperator<?> raw();
     public ILevel1ListOfListElementsOperator<T> add(final T... newElements);
     public ILevel1ListOfListElementsOperator<T> insert(final int position, final T... newElements);
     public ILevel1ListOfListElementsOperator<T> addAll(final Collection<T> collection);

@@ -99,11 +99,6 @@ public class Level0MapOfSetOperator<K,V> extends Operator
 
 
 
-    public <X, Y> ILevel0MapOfSetOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
-        return new Level0MapOfSetOperator<X, Y>(getTarget());
-    }
-
-
     public ILevel0MapOfSetOperator<K, V> put(final K newKey, final Set<V> newValue) {
         return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.Put<K, Set<V>>(newKey, newValue)));
     }
@@ -121,11 +116,6 @@ public class Level0MapOfSetOperator<K,V> extends Operator
 
     public ILevel0MapOfSetOperator<K, V> insertAll(final int position, final Map<K, Set<V>> map) {
         return new Level0MapOfSetOperator<K, V>(getTarget().execute(new MapFuncs.InsertAll<K, Set<V>>(position, map)));
-    }
-
-
-    public ILevel0MapOfSetOperator<?, ?> raw() {
-        return new Level0MapOfSetOperator<K, V>(getTarget());
     }
 
 

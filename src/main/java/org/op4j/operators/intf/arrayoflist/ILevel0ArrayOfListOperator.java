@@ -62,7 +62,6 @@ import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableCollectionOperator;
 import org.op4j.operators.qualities.INavigableCollectionOperator;
 import org.op4j.operators.qualities.ISortableOperator;
-import org.op4j.operators.qualities.ITypeParameterizableXOperator;
 import org.op4j.operators.qualities.IUniqOperator;
 /**
  * 
@@ -77,7 +76,6 @@ public interface ILevel0ArrayOfListOperator<T>
 		        IDistinguishableOperator,
 		        ISortableOperator<List<T>>,
                 ICastableToArrayOfListOperator,
-                ITypeParameterizableXOperator<T>,
                 IFlattenableAsArrayOperator<T>,
 		        IModifiableCollectionOperator<List<T>>,
                 IExecutableOperator<List<T>[]>,
@@ -103,11 +101,7 @@ public interface ILevel0ArrayOfListOperator<T>
     
     public ILevel0ArrayOfListOperator<T> sort();
     public ILevel0ArrayOfListOperator<T> sort(final Comparator<? super List<T>> comparator);
-    
-    public <X> ILevel0ArrayOfListOperator<X> of(final Type<X> of);
         
-    public ILevel0ArrayOfListOperator<?> raw();
-    
     public ILevel0ArrayOperator<T> flatten(final Type<? super T> type);
     public ILevel0ArrayOfListOperator<T> add(final List<T>... newElements);
     public ILevel0ArrayOfListOperator<T> insert(final int position, final List<T>... newElements);

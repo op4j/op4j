@@ -152,16 +152,6 @@ public class Level1SetOfArrayElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel1SetOfArrayElementsOperator<X> of(final Type<X> of) {
-        return new Level1SetOfArrayElementsOperator<X>(of, getTarget());
-    }
-
-
-    public ILevel1SetOfArrayElementsOperator<?> raw() {
-        return new Level1SetOfArrayElementsOperator<T>(this.arrayOf, getTarget());
-    }
-
-
     public ILevel1SetOfArrayElementsOperator<T> removeIndexes(final int... indices) {
         return new Level1SetOfArrayElementsOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveIndexes<T>(indices)));
     }

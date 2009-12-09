@@ -22,6 +22,7 @@ package org.op4j.operators.impl.map;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.map.ILevel1MapEntriesOperator;
 import org.op4j.operators.intf.map.ILevel2MapEntriesKeyOperator;
@@ -50,18 +51,18 @@ public class Level2MapEntriesKeyOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel2MapEntriesKeyOperator<X, V> of(final Type<X> of) {
+    public <X> ILevel2MapEntriesKeyOperator<X, V> asType(final Type<X> type) {
         return new Level2MapEntriesKeyOperator<X, V>(getTarget());
     }
 
-
-    public ILevel2MapEntriesKeyOperator<?, V> raw() {
-        return new Level2MapEntriesKeyOperator<K, V>(getTarget());
+    public ILevel2MapEntriesKeyOperator<?, V> asUnknown() {
+        return asType(Types.OBJECT);
     }
 
 
     public Map<K, V> get() {
         return endOn().endFor().get();
     }
+
 
 }

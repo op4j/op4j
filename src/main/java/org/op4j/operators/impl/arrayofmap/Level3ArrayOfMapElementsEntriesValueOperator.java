@@ -21,7 +21,9 @@ package org.op4j.operators.impl.arrayofmap;
 
 import java.util.Map;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -30,6 +32,7 @@ import org.op4j.operators.intf.arrayofmap.ILevel2ArrayOfMapElementsEntriesOperat
 import org.op4j.operators.intf.arrayofmap.ILevel3ArrayOfMapElementsEntriesValueOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
+import org.op4j.util.TargetUtils;
 
 
 /**
@@ -69,13 +72,14 @@ public class Level3ArrayOfMapElementsEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel3ArrayOfMapElementsEntriesValueOperator<K, X> of(final Type<X> of) {
+    public <X> ILevel3ArrayOfMapElementsEntriesValueOperator<K, X> asType(final Type<X> type) {
+        Validate.notNull(type, "A type representing the elements must be specified");
+        TargetUtils.checkIsArrayOfMapOfValue(type, get());
         return new Level3ArrayOfMapElementsEntriesValueOperator<K, X>(getTarget());
     }
 
-
-    public ILevel3ArrayOfMapElementsEntriesValueOperator<K, ?> raw() {
-        return new Level3ArrayOfMapElementsEntriesValueOperator<K, V>(getTarget());
+    public ILevel3ArrayOfMapElementsEntriesValueOperator<K,?> asUnknown() {
+        return asType(Types.OBJECT);
     }
 
 

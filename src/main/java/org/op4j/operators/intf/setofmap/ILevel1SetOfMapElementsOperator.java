@@ -39,7 +39,6 @@ import org.op4j.operators.qualities.IModifiableMapOperator;
 import org.op4j.operators.qualities.INavigableMapOperator;
 import org.op4j.operators.qualities.INavigatingCollectionOperator;
 import org.op4j.operators.qualities.ISortableOperator;
-import org.op4j.operators.qualities.ITypeParameterizableXYOperator;
 import org.op4j.operators.qualities.IUniqOperator;
 /**
  * 
@@ -54,7 +53,6 @@ public interface ILevel1SetOfMapElementsOperator<K,V>
                 INavigatingCollectionOperator<Map<K,V>>,
 		        ISortableOperator<Map.Entry<K,V>>,
 		        ICastableToMapOperator,
-                ITypeParameterizableXYOperator<K,V>,
                 IExecutableOperator<Map<K,V>>,
                 IConvertibleOperator<Map<K,V>>,
                 IEvaluableOperator<Map<K,V>>,
@@ -68,10 +66,6 @@ public interface ILevel1SetOfMapElementsOperator<K,V>
     
     public ILevel1SetOfMapElementsOperator<K,V> sort();
     public ILevel1SetOfMapElementsOperator<K,V> sort(final Comparator<? super Map.Entry<K,V>> comparator);
-    
-    public <X,Y> ILevel1SetOfMapElementsOperator<X,Y> of(final Type<X> ofX, final Type<Y> ofY);
-        
-    public ILevel1SetOfMapElementsOperator<?,?> raw();
     
     public ILevel1SetOfMapElementsOperator<K,V> put(final K newKey, final V newValue);
     public ILevel1SetOfMapElementsOperator<K,V> insert(final int position, final K newKey, final V newValue);

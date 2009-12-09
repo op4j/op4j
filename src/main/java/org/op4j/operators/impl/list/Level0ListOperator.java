@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
@@ -152,16 +151,6 @@ public class Level0ListOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0ListOperator<X> of(final Type<X> of) {
-        return new Level0ListOperator<X>(getTarget());
-    }
-
-
-    public ILevel0ListOperator<?> raw() {
-        return new Level0ListOperator<T>(getTarget());
-    }
-
-
     public ILevel0ListOperator<T> removeIndexes(final int... indices) {
         return new Level0ListOperator<T>(getTarget().execute(new ListFuncs.RemoveIndexes<T>(indices)));
     }
@@ -285,13 +274,12 @@ public class Level0ListOperator<T> extends Operator
     
 
     public <X> ILevel0ListOperator<X> asList(final Type<X> of) {
-        Validate.notNull(of, "A type representing the elements must be specified");
-        return new Level0ListOperator<X>(getTarget());
+        return generic().asList(of);
     }
 
 
     public <X> ILevel0ListOfArrayOperator<X> asListOfArray(final Type<X> of) {
-        return forEach().asArray(of).endFor();
+        return generic().asListOfArray(of);
     }
 
 
@@ -301,7 +289,7 @@ public class Level0ListOperator<T> extends Operator
 
 
     public <X> ILevel0ListOfListOperator<X> asListOfList(final Type<X> of) {
-        return forEach().asList(of).endFor();
+        return generic().asListOfList(of);
     }
 
 
@@ -311,7 +299,7 @@ public class Level0ListOperator<T> extends Operator
 
 
     public <K, V> ILevel0ListOfMapOperator<K, V> asListOfMap(final Type<K> keyOf, final Type<V> valueOf) {
-        return forEach().asMap(keyOf, valueOf).endFor();
+        return generic().asListOfMap(keyOf, valueOf);
     }
 
 
@@ -321,7 +309,7 @@ public class Level0ListOperator<T> extends Operator
 
 
     public <X> ILevel0ListOfSetOperator<X> asListOfSet(final Type<X> of) {
-        return forEach().asSet(of).endFor();
+        return generic().asListOfSet(of);
     }
 
 

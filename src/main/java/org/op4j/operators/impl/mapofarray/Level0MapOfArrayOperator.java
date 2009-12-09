@@ -101,11 +101,6 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
 
 
 
-    public <X, Y> ILevel0MapOfArrayOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
-        return new Level0MapOfArrayOperator<X, Y>(ofY, getTarget());
-    }
-
-
     public ILevel0MapOfArrayOperator<K, V> put(final K newKey, final V[] newValue) {
         return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFuncs.Put<K,V[]>(newKey, newValue)));
     }
@@ -123,11 +118,6 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
     
     public ILevel0MapOfArrayOperator<K, V> insertAll(final int position, final Map<K, V[]> map) {
         return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget().execute(new MapFuncs.InsertAll<K,V[]>(position, map)));
-    }
-
-
-    public ILevel0MapOfArrayOperator<?, ?> raw() {
-        return new Level0MapOfArrayOperator<K, V>(this.arrayOf, getTarget());
     }
 
 

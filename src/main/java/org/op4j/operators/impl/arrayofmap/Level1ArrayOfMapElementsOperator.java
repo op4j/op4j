@@ -23,7 +23,6 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
@@ -101,11 +100,6 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
 
 
 
-    public <X, Y> ILevel1ArrayOfMapElementsOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
-        return new Level1ArrayOfMapElementsOperator<X, Y>(getTarget());
-    }
-
-
     public ILevel1ArrayOfMapElementsOperator<K, V> put(final K newKey, final V newValue) {
         return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(new MapFuncs.Put<K, V>(newKey, newValue)));
     }
@@ -123,11 +117,6 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
 
     public ILevel1ArrayOfMapElementsOperator<K, V> insertAll(final int position, final Map<K, V> map) {
         return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().execute(new MapFuncs.InsertAll<K, V>(position, map)));
-    }
-
-
-    public ILevel1ArrayOfMapElementsOperator<?, ?> raw() {
-        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget());
     }
 
 
@@ -207,9 +196,7 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
     
 
     public <X,Y> ILevel1ArrayOfMapElementsOperator<X,Y> asMap(final Type<X> keyOf, final Type<Y> valueOf) {
-        Validate.notNull(keyOf, "A type representing the keys must be specified");
-        Validate.notNull(valueOf, "A type representing the values must be specified");
-        return new Level1ArrayOfMapElementsOperator<X,Y>(getTarget());
+        return endFor().asArrayOfMap(keyOf, valueOf).forEach();
     }
 
 

@@ -150,16 +150,6 @@ public class Level1SetOfSetElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel1SetOfSetElementsOperator<X> of(final Type<X> of) {
-        return new Level1SetOfSetElementsOperator<X>(getTarget());
-    }
-
-
-    public ILevel1SetOfSetElementsOperator<?> raw() {
-        return new Level1SetOfSetElementsOperator<T>(getTarget());
-    }
-
-
     public ILevel1SetOfSetElementsOperator<T> removeIndexes(final int... indices) {
         return new Level1SetOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.RemoveIndexes<T>(indices)));
     }

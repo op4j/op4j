@@ -151,16 +151,6 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel2MapOfSetEntriesValueOperator<K, X> of(final Type<X> of) {
-        return new Level2MapOfSetEntriesValueOperator<K, X>(getTarget());
-    }
-
-
-    public ILevel2MapOfSetEntriesValueOperator<K, ?> raw() {
-        return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget());
-    }
-
-
     public ILevel2MapOfSetEntriesValueOperator<K, V> removeIndexes(final int... indices) {
         return new Level2MapOfSetEntriesValueOperator<K, V>(getTarget().execute(new SetFuncs.RemoveIndexes<V>(indices)));
     }

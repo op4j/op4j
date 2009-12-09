@@ -101,11 +101,6 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
 
 
 
-    public <X, Y> ILevel2MapOfMapEntriesValueOperator<K1, X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
-        return new Level2MapOfMapEntriesValueOperator<K1, X, Y>(getTarget());
-    }
-
-
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> put(final K2 newKey, final V newValue) {
         return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.Put<K2, V>(newKey, newValue)));
     }
@@ -123,11 +118,6 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
 
     public ILevel2MapOfMapEntriesValueOperator<K1, K2, V> insertAll(final int position, final Map<K2, V> map) {
         return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget().execute(new MapFuncs.InsertAll<K2, V>(position, map)));
-    }
-
-
-    public ILevel2MapOfMapEntriesValueOperator<K1, ?, ?> raw() {
-        return new Level2MapOfMapEntriesValueOperator<K1, K2, V>(getTarget());
     }
 
 

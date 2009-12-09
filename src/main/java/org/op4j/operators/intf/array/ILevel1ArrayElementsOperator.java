@@ -35,7 +35,7 @@ import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
 import org.op4j.operators.qualities.INavigatingCollectionOperator;
-import org.op4j.operators.qualities.ITypeParameterizableXOperator;
+import org.op4j.operators.qualities.ICastableToTypeOperator;
 import org.op4j.operators.qualities.IUniqOperator;
 
 
@@ -56,7 +56,7 @@ public interface ILevel1ArrayElementsOperator<T>
                 IConvertibleOperator<T>,
         		IEvaluableOperator<T>,
         		IExecutableOperator<T>,
-                ITypeParameterizableXOperator<T> {
+                ICastableToTypeOperator<T> {
 
 		    
     public ILevel0ArrayOperator<T> endFor();
@@ -67,12 +67,9 @@ public interface ILevel1ArrayElementsOperator<T>
 
     public <X> ILevel1ArrayElementsOperator<X> exec(final IFunction<X, ? super T> function);
     
-    public <X> ILevel1ArrayElementsOperator<X> of(final Type<X> of);
+    public <X> ILevel1ArrayElementsOperator<X> asType(final Type<X> type);
+    public ILevel1ArrayElementsOperator<?> asUnknown();
         
-    public ILevel1ArrayElementsOperator<?> raw();
-    
-    
-    
     public <X> ILevel1ArrayOfArrayElementsOperator<X> asArray(final Type<X> of);
     public <X> ILevel1ArrayOfListElementsOperator<X> asList(final Type<X> of);
     public <K,V> ILevel1ArrayOfMapElementsOperator<K,V> asMap(final Type<K> keyOf, final Type<V> valueOf);

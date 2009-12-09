@@ -37,7 +37,6 @@ import org.op4j.operators.qualities.IGenerizableOperator;
 import org.op4j.operators.qualities.IModifiableCollectionOperator;
 import org.op4j.operators.qualities.INavigableCollectionOperator;
 import org.op4j.operators.qualities.ISortableOperator;
-import org.op4j.operators.qualities.ITypeParameterizableXYOperator;
 import org.op4j.operators.qualities.IUniqOperator;
 /**
  * 
@@ -55,8 +54,7 @@ public interface ILevel0ArrayOfMapOperator<K,V>
                 IExecutableOperator<Map<K,V>[]>,
                 IConvertibleOperator<Map<K,V>[]>,
                 IEvaluableOperator<Map<K,V>[]>,
-                ITypeParameterizableXYOperator<K,V>,
-		        IModifiableCollectionOperator<Map<K,V>>,
+                IModifiableCollectionOperator<Map<K,V>>,
 		        IGenerizableOperator<Map<K,V>[]> {
 
 
@@ -67,9 +65,6 @@ public interface ILevel0ArrayOfMapOperator<K,V>
     public ILevel0ArrayOfMapOperator<K,V> sort();
     public ILevel0ArrayOfMapOperator<K,V> sort(final Comparator<? super Map<K,V>> comparator);
     
-    public <X,Y> ILevel0ArrayOfMapOperator<X,Y> of(final Type<X> ofX, final Type<Y> ofY);
-        
-    public ILevel0ArrayOfMapOperator<?,?> raw();
     public ILevel0ArrayOfMapOperator<K,V> add(final Map<K,V>... newElements);
     public ILevel0ArrayOfMapOperator<K,V> insert(final int position, final Map<K,V>... newElements);
     public ILevel0ArrayOfMapOperator<K,V> addAll(final Collection<Map<K,V>> collection);

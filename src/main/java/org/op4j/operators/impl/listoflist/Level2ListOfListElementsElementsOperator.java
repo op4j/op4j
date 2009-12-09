@@ -22,6 +22,7 @@ package org.op4j.operators.impl.listoflist;
 import java.util.List;
 
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -69,13 +70,12 @@ public class Level2ListOfListElementsElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel2ListOfListElementsElementsOperator<X> of(final Type<X> of) {
+    public <X> ILevel2ListOfListElementsElementsOperator<X> asType(final Type<X> type) {
         return new Level2ListOfListElementsElementsOperator<X>(getTarget());
     }
 
-
-    public ILevel2ListOfListElementsElementsOperator<?> raw() {
-        return new Level2ListOfListElementsElementsOperator<T>(getTarget());
+    public ILevel2ListOfListElementsElementsOperator<?> asUnknown() {
+        return asType(Types.OBJECT);
     }
 
 

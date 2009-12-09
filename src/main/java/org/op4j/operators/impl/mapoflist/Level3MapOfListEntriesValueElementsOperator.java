@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -70,13 +71,12 @@ public class Level3MapOfListEntriesValueElementsOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel3MapOfListEntriesValueElementsOperator<K, X> of(final Type<X> of) {
+    public <X> ILevel3MapOfListEntriesValueElementsOperator<K, X> asType(final Type<X> type) {
         return new Level3MapOfListEntriesValueElementsOperator<K, X>(getTarget());
     }
 
-
-    public ILevel3MapOfListEntriesValueElementsOperator<K, ?> raw() {
-        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget());
+    public ILevel3MapOfListEntriesValueElementsOperator<K, ?> asUnknown() {
+        return asType(Types.OBJECT);
     }
 
 

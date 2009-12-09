@@ -22,7 +22,6 @@ package org.op4j.operators.intf.mapofset;
 import java.util.Map;
 import java.util.Set;
 
-import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -32,7 +31,6 @@ import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
 import org.op4j.operators.qualities.INavigableMapEntryOperator;
 import org.op4j.operators.qualities.INavigatingMapOperator;
-import org.op4j.operators.qualities.ITypeParameterizableXYOperator;
 import org.op4j.operators.qualities.IUniqOperator;
 
 
@@ -49,8 +47,7 @@ public interface ILevel1MapOfSetEntriesOperator<K,V>
                 IExecutableOperator<Map.Entry<K,Set<V>>>,
                 IEvaluableOperator<Map.Entry<K,Set<V>>>,
                 IConvertibleOperator<Map.Entry<K,Set<V>>>,
-		        INavigatingMapOperator<K,Set<V>>,
-                ITypeParameterizableXYOperator<K,V> {
+		        INavigatingMapOperator<K,Set<V>> {
 
     
     public ILevel2MapOfSetEntriesKeyOperator<K,V> onKey();
@@ -58,11 +55,6 @@ public interface ILevel1MapOfSetEntriesOperator<K,V>
     
     public ILevel0MapOfSetOperator<K,V> endFor();
     
-    public <X,Y> ILevel1MapOfSetEntriesOperator<X,Y> of(final Type<X> ofX, final Type<Y> ofY);
-        
-    public ILevel1MapOfSetEntriesOperator<?,?> raw();
-    
-
     public <X> ILevel1ListElementsOperator<X> exec(final IFunction<X, ? super Map.Entry<K,Set<V>>> function);
     
     public <X> ILevel1ListElementsOperator<X> eval(final IEvaluator<X,? super Map.Entry<K,Set<V>>> eval);

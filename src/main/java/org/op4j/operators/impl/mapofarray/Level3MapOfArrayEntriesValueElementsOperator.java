@@ -22,6 +22,7 @@ package org.op4j.operators.impl.mapofarray;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -72,13 +73,12 @@ public class Level3MapOfArrayEntriesValueElementsOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K, X> of(final Type<X> of) {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, X>(of, getTarget());
+    public <X> ILevel3MapOfArrayEntriesValueElementsOperator<K, X> asType(final Type<X> type) {
+        return new Level3MapOfArrayEntriesValueElementsOperator<K, X>(type, getTarget());
     }
 
-
-    public ILevel3MapOfArrayEntriesValueElementsOperator<K, ?> raw() {
-        return new Level3MapOfArrayEntriesValueElementsOperator<K, V>(this.arrayOf, getTarget());
+    public ILevel3MapOfArrayEntriesValueElementsOperator<K, ?> asUnknown() {
+        return asType(Types.OBJECT);
     }
 
 

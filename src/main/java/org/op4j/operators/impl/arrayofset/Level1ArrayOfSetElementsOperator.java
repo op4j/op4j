@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Set;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
@@ -150,16 +149,6 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel1ArrayOfSetElementsOperator<X> of(final Type<X> of) {
-        return new Level1ArrayOfSetElementsOperator<X>(getTarget());
-    }
-
-
-    public ILevel1ArrayOfSetElementsOperator<?> raw() {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget());
-    }
-
-
     public ILevel1ArrayOfSetElementsOperator<T> removeIndexes(final int... indices) {
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().execute(new SetFuncs.RemoveIndexes<T>(indices)));
     }
@@ -275,8 +264,7 @@ public class Level1ArrayOfSetElementsOperator<T> extends Operator
     
 
     public <X> ILevel1ArrayOfSetElementsOperator<X> asSet(final Type<X> of) {
-        Validate.notNull(of, "A type representing the elements must be specified");
-        return new Level1ArrayOfSetElementsOperator<X>(getTarget());
+        return endFor().generic().asArrayOfSet(of).forEach();
     }
 
 

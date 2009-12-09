@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapoflist.ILevel1MapOfListEntriesOperator;
 import org.op4j.operators.intf.mapoflist.ILevel2MapOfListEntriesKeyOperator;
@@ -51,13 +52,12 @@ public class Level2MapOfListEntriesKeyOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel2MapOfListEntriesKeyOperator<X, V> of(final Type<X> of) {
+    public <X> ILevel2MapOfListEntriesKeyOperator<X, V> asType(final Type<X> type) {
         return new Level2MapOfListEntriesKeyOperator<X, V>(getTarget());
     }
 
-
-    public ILevel2MapOfListEntriesKeyOperator<?, V> raw() {
-        return new Level2MapOfListEntriesKeyOperator<K, V>(getTarget());
+    public ILevel2MapOfListEntriesKeyOperator<?, V> asUnknown() {
+        return asType(Types.OBJECT);
     }
 
 

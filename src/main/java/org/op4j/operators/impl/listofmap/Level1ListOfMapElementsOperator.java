@@ -102,11 +102,6 @@ public class Level1ListOfMapElementsOperator<K,V> extends Operator
 
 
 
-    public <X, Y> ILevel1ListOfMapElementsOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
-        return new Level1ListOfMapElementsOperator<X, Y>(getTarget());
-    }
-
-
     public ILevel1ListOfMapElementsOperator<K, V> put(final K newKey, final V newValue) {
         return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(new MapFuncs.Put<K, V>(newKey, newValue)));
     }
@@ -124,11 +119,6 @@ public class Level1ListOfMapElementsOperator<K,V> extends Operator
 
     public ILevel1ListOfMapElementsOperator<K, V> insertAll(final int position, final Map<K, V> map) {
         return new Level1ListOfMapElementsOperator<K, V>(getTarget().execute(new MapFuncs.InsertAll<K, V>(position, map)));
-    }
-
-
-    public ILevel1ListOfMapElementsOperator<?, ?> raw() {
-        return new Level1ListOfMapElementsOperator<K, V>(getTarget());
     }
 
 

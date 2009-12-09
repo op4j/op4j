@@ -20,14 +20,10 @@
 package org.op4j.operators.impl.generic;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.exceptions.TargetCastException;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.ListFuncs;
 import org.op4j.functions.converters.IConverter;
@@ -84,6 +80,7 @@ import org.op4j.operators.intf.setoflist.ILevel0SetOfListOperator;
 import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.ILevel0SetOfSetOperator;
 import org.op4j.target.Target;
+import org.op4j.util.TargetUtils;
 
 
 
@@ -181,26 +178,14 @@ public class Level0GenericUniqOperator<T> extends Operator
 
     public <X> ILevel0ArrayOperator<X> asArray(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = Types.arrayOf(of).getRawClass();
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "Array");
-    		}
-    	}
+    	TargetUtils.checkIsArray(of, get());
         return new Level0ArrayOperator<X>(of, getTarget());
     }
 
 
     public <X> ILevel0ListOperator<X> asList(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = List.class;
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "List");
-    		}
-    	}
+    	TargetUtils.checkIsList(of, get());
         return new Level0ListOperator<X>(getTarget());
     }
 
@@ -208,52 +193,28 @@ public class Level0GenericUniqOperator<T> extends Operator
     public <K,V> ILevel0MapOperator<K,V> asMap(final Type<K> keyOf, final Type<V> valueOf) {
     	Validate.notNull(keyOf, "A type representing the keys must be specified");
     	Validate.notNull(valueOf, "A type representing the values must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = Map.class;
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "Map");
-    		}
-    	}
+    	TargetUtils.checkIsMap(keyOf, valueOf, get());
         return new Level0MapOperator<K,V>(getTarget());
     }
 
 
     public <X> ILevel0SetOperator<X> asSet(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = Set.class;
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "Set");
-    		}
-    	}
+    	TargetUtils.checkIsSet(of, get());
         return new Level0SetOperator<X>(getTarget());
     }
 
 
     public <X> ILevel0ArrayOfArrayOperator<X> asArrayOfArray(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = Types.arrayOf(Types.arrayOf(of)).getRawClass();
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "ArrayOfArray");
-    		}
-    	}
+    	TargetUtils.checkIsArrayOfArray(of, get());
         return new Level0ArrayOfArrayOperator<X>(of, getTarget());
     }
 
 
     public <X> ILevel0ArrayOfListOperator<X> asArrayOfList(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = List[].class;
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "ArrayOfList");
-         }
-        }
+    	TargetUtils.checkIsArrayOfList(of, get());
         return new Level0ArrayOfListOperator<X>(getTarget());
     }
 
@@ -261,52 +222,28 @@ public class Level0GenericUniqOperator<T> extends Operator
     public <K, V> ILevel0ArrayOfMapOperator<K, V> asArrayOfMap(final Type<K> keyOf, final Type<V> valueOf) {
     	Validate.notNull(keyOf, "A type representing the keys must be specified");
     	Validate.notNull(valueOf, "A type representing the values must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = Map[].class;
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "ArrayOfMap");
-    		}
-    	}
+    	TargetUtils.checkIsArrayOfMap(keyOf, valueOf, get());
         return new Level0ArrayOfMapOperator<K,V>(getTarget());
     }
 
 
     public <X> ILevel0ArrayOfSetOperator<X> asArrayOfSet(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = Set[].class;
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "ArrayOfSet");
-         }
-        }
+    	TargetUtils.checkIsArrayOfSet(of, get());
         return new Level0ArrayOfSetOperator<X>(getTarget());
     }
 
 
     public <X> ILevel0ListOfArrayOperator<X> asListOfArray(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = List.class;
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "ListOfArray");
-         }
-        }
+    	TargetUtils.checkIsListOfArray(of, get());
         return new Level0ListOfArrayOperator<X>(of, getTarget());
     }
 
 
     public <X> ILevel0ListOfListOperator<X> asListOfList(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = List.class;
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "ListOfList");
-         }
-        }
+    	TargetUtils.checkIsListOfList(of, get());
         return new Level0ListOfListOperator<X>(getTarget());
     }
 
@@ -314,26 +251,14 @@ public class Level0GenericUniqOperator<T> extends Operator
     public <K, V> ILevel0ListOfMapOperator<K, V> asListOfMap(final Type<K> keyOf, final Type<V> valueOf) {
     	Validate.notNull(keyOf, "A type representing the keys must be specified");
     	Validate.notNull(valueOf, "A type representing the values must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = List.class;
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "ListOfMap");
-    		}
-    	}
+    	TargetUtils.checkIsListOfMap(keyOf, valueOf, get());
         return new Level0ListOfMapOperator<K,V>(getTarget());
     }
 
 
     public <X> ILevel0ListOfSetOperator<X> asListOfSet(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = List.class;
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "ListOfSet");
-         }
-        }
+        TargetUtils.checkIsListOfSet(of, get());
         return new Level0ListOfSetOperator<X>(getTarget());
     }
 
@@ -341,13 +266,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     public <K, V> ILevel0MapOfArrayOperator<K, V> asMapOfArray(final Type<K> keyOf, final Type<V> valueOf) {
     	Validate.notNull(keyOf, "A type representing the keys must be specified");
     	Validate.notNull(valueOf, "A type representing the values must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = Map.class;
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "MapOfArray");
-    		}
-    	}
+    	TargetUtils.checkIsMapOfArray(keyOf, valueOf, get());
         return new Level0MapOfArrayOperator<K,V>(valueOf, getTarget());
     }
 
@@ -355,13 +274,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     public <K, V> ILevel0MapOfListOperator<K, V> asMapOfList(final Type<K> keyOf, final Type<V> valueOf) {
     	Validate.notNull(keyOf, "A type representing the keys must be specified");
     	Validate.notNull(valueOf, "A type representing the values must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = Map.class;
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "MapOfList");
-    		}
-    	}
+    	TargetUtils.checkIsMapOfList(keyOf, valueOf, get());
         return new Level0MapOfListOperator<K,V>(getTarget());
     }
 
@@ -370,13 +283,7 @@ public class Level0GenericUniqOperator<T> extends Operator
     	Validate.notNull(key1Of, "A type representing the keys of the first-level map must be specified");
     	Validate.notNull(key2Of, "A type representing the keys of the second-level maps must be specified");
     	Validate.notNull(valueOf, "A type representing the values of the second-level maps must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = Map.class;
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "MapOfMap");
-    		}
-    	}
+    	TargetUtils.checkIsMapOfMap(key1Of, key2Of, valueOf, get());
         return new Level0MapOfMapOperator<K1,K2,V>(getTarget());
     }
 
@@ -384,39 +291,21 @@ public class Level0GenericUniqOperator<T> extends Operator
     public <K, V> ILevel0MapOfSetOperator<K, V> asMapOfSet(final Type<K> keyOf, final Type<V> valueOf) {
     	Validate.notNull(keyOf, "A type representing the keys must be specified");
     	Validate.notNull(valueOf, "A type representing the values must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = Map.class;
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "MapOfSet");
-    		}
-    	}
+    	TargetUtils.checkIsMapOfSet(keyOf, valueOf, get());
         return new Level0MapOfSetOperator<K,V>(getTarget());
     }
 
 
     public <X> ILevel0SetOfArrayOperator<X> asSetOfArray(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = Set.class;
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "SetOfArray");
-         }
-        }
+    	TargetUtils.checkIsSetOfArray(of,get());
         return new Level0SetOfArrayOperator<X>(of, getTarget());
     }
 
 
     public <X> ILevel0SetOfListOperator<X> asSetOfList(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = Set.class;
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "SetOfList");
-         }
-        }
+    	TargetUtils.checkIsSetOfList(of,get());
         return new Level0SetOfListOperator<X>(getTarget());
     }
 
@@ -424,26 +313,14 @@ public class Level0GenericUniqOperator<T> extends Operator
     public <K, V> ILevel0SetOfMapOperator<K, V> asSetOfMap(final Type<K> keyOf, final Type<V> valueOf) {
     	Validate.notNull(keyOf, "A type representing the keys must be specified");
     	Validate.notNull(valueOf, "A type representing the values must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = Set.class;
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "SetOfMap");
-    		}
-    	}
+    	TargetUtils.checkIsSetOfMap(keyOf, valueOf, get());
         return new Level0SetOfMapOperator<K,V>(getTarget());
     }
 
 
     public <X> ILevel0SetOfSetOperator<X> asSetOfSet(final Type<X> of) {
     	Validate.notNull(of, "A type representing the elements must be specified");
-    	final T targetObject = get();
-        if (targetObject != null) {
-        	final Class<?> newTargetClass = Set.class;
-        	if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-        		throw new TargetCastException(targetObject.getClass(), "SetOfSet");
-         }
-        }
+    	TargetUtils.checkIsSetOfSet(of,get());
         return new Level0SetOfSetOperator<X>(getTarget());
     }
 
@@ -458,20 +335,16 @@ public class Level0GenericUniqOperator<T> extends Operator
     }
 
 
-    public <X> ILevel0GenericUniqOperator<X> of(final Type<X> of) {
+    public <X> ILevel0GenericUniqOperator<X> asType(final Type<X> type) {
+        Validate.notNull(type, "A type representing the target object must be specified");
+        TargetUtils.checkIs(type, get());
         return new Level0GenericUniqOperator<X>(getTarget());
     }
 
-
-    public ILevel0GenericUniqOperator<?> raw() {
-        return new Level0GenericUniqOperator<T>(getTarget());
+    public ILevel0GenericUniqOperator<?> asUnknown() {
+        return asType(Types.OBJECT);
     }
 
-    
-    
-    
-    
- 
 
     public ILevel0ArrayOfArrayOperator<?> asArrayOfArrayOfUnknown() {
         return asArrayOfArray(Types.OBJECT);
@@ -585,5 +458,9 @@ public class Level0GenericUniqOperator<T> extends Operator
     public T get() {
         return (T) getTarget().get();
     }
+    
+    
+    
+    
     
 }

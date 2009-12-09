@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -70,13 +71,12 @@ public class Level2ListOfSetElementsElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel2ListOfSetElementsElementsOperator<X> of(final Type<X> of) {
+    public <X> ILevel2ListOfSetElementsElementsOperator<X> asType(final Type<X> type) {
         return new Level2ListOfSetElementsElementsOperator<X>(getTarget());
     }
 
-
-    public ILevel2ListOfSetElementsElementsOperator<?> raw() {
-        return new Level2ListOfSetElementsElementsOperator<T>(getTarget());
+    public ILevel2ListOfSetElementsElementsOperator<?> asUnknown() {
+        return asType(Types.OBJECT);
     }
 
 

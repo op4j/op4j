@@ -71,7 +71,7 @@ import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
 import org.op4j.operators.qualities.IModifiableGrowableOperator;
-import org.op4j.operators.qualities.ITypeParameterizableXOperator;
+import org.op4j.operators.qualities.ICastableToTypeOperator;
 import org.op4j.operators.qualities.IUniqOperator;
 
 
@@ -110,7 +110,7 @@ public interface ILevel0GenericUniqOperator<T>
         		IConvertibleOperator<T>,
         		IEvaluableOperator<T>,
         		IExecutableOperator<T>,
-                ITypeParameterizableXOperator<T>,
+                ICastableToTypeOperator<T>,
                 IModifiableGrowableOperator<T> {
     
     public <X> ILevel0GenericUniqOperator<X> convert(final IConverter<X,? super T> converter);
@@ -119,9 +119,9 @@ public interface ILevel0GenericUniqOperator<T>
 
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super T> function);
     
-    public <X> ILevel0GenericUniqOperator<X> of(final Type<X> of);
+    public <X> ILevel0GenericUniqOperator<X> asType(final Type<X> type);
+    public ILevel0GenericUniqOperator<?> asUnknown();
         
-    public ILevel0GenericUniqOperator<?> raw();
     public ILevel0GenericMultiOperator<T> add(final T... newElements);
     public ILevel0GenericMultiOperator<T> insert(final int position, final T... newElements);
     public ILevel0GenericMultiOperator<T> addAll(final Collection<T> collection);

@@ -22,7 +22,6 @@ package org.op4j.operators.impl.arrayofarray;
 import java.util.Collection;
 import java.util.Comparator;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.Op;
@@ -153,16 +152,6 @@ public class Level0ArrayOfArrayOperator<T> extends Operator
 
     public ILevel1ArrayOfArrayElementsOperator<T> forEachNull() {
         return new Level1ArrayOfArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNull());
-    }
-
-
-    public <X> ILevel0ArrayOfArrayOperator<X> of(final Type<X> of) {
-        return new Level0ArrayOfArrayOperator<X>(of, getTarget());
-    }
-
-
-    public ILevel0ArrayOfArrayOperator<?> raw() {
-        return new Level0ArrayOfArrayOperator<T>(this.arrayOf, getTarget());
     }
 
 
@@ -348,8 +337,7 @@ public class Level0ArrayOfArrayOperator<T> extends Operator
 
 
     public <X> ILevel0ArrayOfArrayOperator<X> asArrayOfArray(final Type<X> of) {
-        Validate.notNull(of, "A type representing the elements must be specified");
-        return new Level0ArrayOfArrayOperator<X>(of, getTarget());
+        return generic().asArrayOfArray(of);
     }
 
 

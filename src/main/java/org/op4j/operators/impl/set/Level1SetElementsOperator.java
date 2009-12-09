@@ -82,20 +82,13 @@ public class Level1SetElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel1SetElementsOperator<X> of(final Type<X> of) {
+    public <X> ILevel1SetElementsOperator<X> asType(final Type<X> type) {
         return new Level1SetElementsOperator<X>(getTarget());
     }
 
-
-    public ILevel1SetElementsOperator<?> raw() {
-        return new Level1SetElementsOperator<T>(getTarget());
+    public ILevel1SetElementsOperator<?> asUnknown() {
+        return asType(Types.OBJECT);
     }
-
-    
-    
-    
-    
-    
 
 
     public <X> ILevel1SetOfArrayElementsOperator<X> asArray(final Type<X> of) {

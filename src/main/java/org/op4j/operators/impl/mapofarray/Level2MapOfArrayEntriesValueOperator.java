@@ -152,16 +152,6 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel2MapOfArrayEntriesValueOperator<K, X> of(final Type<X> of) {
-        return new Level2MapOfArrayEntriesValueOperator<K, X>(of, getTarget());
-    }
-
-
-    public ILevel2MapOfArrayEntriesValueOperator<K, ?> raw() {
-        return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget());
-    }
-
-
     public ILevel2MapOfArrayEntriesValueOperator<K, V> removeIndexes(final int... indices) {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveIndexes<V>(indices)));
     }

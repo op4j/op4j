@@ -61,11 +61,6 @@ public class Level1MapOfArrayEntriesOperator<K,V> extends Operator
     }
 
 
-    public <X, Y> ILevel1MapOfArrayEntriesOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
-        return new Level1MapOfArrayEntriesOperator<X, Y>(ofY, getTarget());
-    }
-
-
     public ILevel2MapOfArrayEntriesKeyOperator<K, V> onKey() {
         return new Level2MapOfArrayEntriesKeyOperator<K, V>(this.arrayOf, getTarget().iterate(0));
     }
@@ -73,11 +68,6 @@ public class Level1MapOfArrayEntriesOperator<K,V> extends Operator
 
     public ILevel2MapOfArrayEntriesValueOperator<K, V> onValue() {
         return new Level2MapOfArrayEntriesValueOperator<K, V>(this.arrayOf, getTarget().iterate(1));
-    }
-
-
-    public ILevel1MapOfArrayEntriesOperator<?, ?> raw() {
-        return new Level1MapOfArrayEntriesOperator<K, V>(this.arrayOf, getTarget());
     }
 
 

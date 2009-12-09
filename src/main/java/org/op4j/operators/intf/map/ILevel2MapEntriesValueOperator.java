@@ -37,7 +37,7 @@ import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
 import org.op4j.operators.qualities.INavigatingMapEntryOperator;
-import org.op4j.operators.qualities.ITypeParameterizableXOperator;
+import org.op4j.operators.qualities.ICastableToTypeOperator;
 import org.op4j.operators.qualities.IUniqOperator;
 
 
@@ -58,7 +58,7 @@ public interface ILevel2MapEntriesValueOperator<K,V>
                 IConvertibleOperator<V>,
         		IEvaluableOperator<V>,
         		IExecutableOperator<V>,
-                ITypeParameterizableXOperator<V> {
+                ICastableToTypeOperator<V> {
     
     public ILevel1MapEntriesOperator<K,V> endOn();
     
@@ -68,14 +68,10 @@ public interface ILevel2MapEntriesValueOperator<K,V>
 
     public <X> ILevel2MapEntriesValueOperator<K,X> exec(final IFunction<X, ? super V> function);
     
-    public <X> ILevel2MapEntriesValueOperator<K,X> of(final Type<X> of);
+    public <X> ILevel2MapEntriesValueOperator<K,X> asType(final Type<X> type);
+    public ILevel2MapEntriesValueOperator<K,?> asUnknown();
     
         
-    public ILevel2MapEntriesValueOperator<K,?> raw();
-    
-
-    
-    
     public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> asArray(final Type<X> of);
     public <X> ILevel2MapOfListEntriesValueOperator<K,X> asList(final Type<X> of);
     public <K2,V2> ILevel2MapOfMapEntriesValueOperator<K,K2,V2> asMap(final Type<K2> keyOf, final Type<V2> valueOf);

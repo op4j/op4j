@@ -38,7 +38,6 @@ import org.op4j.operators.qualities.IModifiableMapOperator;
 import org.op4j.operators.qualities.INavigableMapOperator;
 import org.op4j.operators.qualities.INavigatingMapEntryOperator;
 import org.op4j.operators.qualities.ISortableOperator;
-import org.op4j.operators.qualities.ITypeParameterizableXYOperator;
 import org.op4j.operators.qualities.IUniqOperator;
 /**
  * 
@@ -53,7 +52,6 @@ public interface ILevel2MapOfMapEntriesValueOperator<K1,K2,V>
 		        INavigatingMapEntryOperator,
 		        ICastableToMapOperator,
 		        ISortableOperator<Map.Entry<K2,V>>,
-                ITypeParameterizableXYOperator<K2,V>,
                 IExecutableOperator<Map<K2,V>>,
                 IConvertibleOperator<Map<K2,V>>,
                 IEvaluableOperator<Map<K2,V>>,
@@ -66,11 +64,6 @@ public interface ILevel2MapOfMapEntriesValueOperator<K1,K2,V>
     
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> sort();
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> sort(final Comparator<? super Map.Entry<K2,V>> comparator);
-    
-    public <X,Y> ILevel2MapOfMapEntriesValueOperator<K1,X,Y> of(final Type<X> ofX, final Type<Y> ofY);
-    
-        
-    public ILevel2MapOfMapEntriesValueOperator<K1,?,?> raw();
     
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> put(final K2 newKey, final V newValue);
     public ILevel2MapOfMapEntriesValueOperator<K1,K2,V> insert(final int position, final K2 newKey, final V newValue);

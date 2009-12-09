@@ -22,6 +22,7 @@ package org.op4j.operators.impl.arrayofset;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -69,13 +70,12 @@ public class Level2ArrayOfSetElementsElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel2ArrayOfSetElementsElementsOperator<X> of(final Type<X> of) {
-        return new Level2ArrayOfSetElementsElementsOperator<X>(getTarget());
+    public <X> ILevel2ArrayOfSetElementsElementsOperator<X> asType(final Type<X> type) {
+        return endFor().endFor().generic().asArrayOfSet(type).forEach().forEach();
     }
 
-
-    public ILevel2ArrayOfSetElementsElementsOperator<?> raw() {
-        return new Level2ArrayOfSetElementsElementsOperator<T>(getTarget());
+    public ILevel2ArrayOfSetElementsElementsOperator<?> asUnknown() {
+        return asType(Types.OBJECT);
     }
 
 

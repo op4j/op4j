@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Set;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.Op;
@@ -155,16 +154,6 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
     public ILevel1ArrayOfSetElementsOperator<T> forEachNull() {
         return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNull());
-    }
-
-
-    public <X> ILevel0ArrayOfSetOperator<X> of(final Type<X> of) {
-        return new Level0ArrayOfSetOperator<X>(getTarget());
-    }
-
-
-    public ILevel0ArrayOfSetOperator<?> raw() {
-        return new Level0ArrayOfSetOperator<T>(getTarget());
     }
 
 
@@ -353,8 +342,7 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
 
     public <X> ILevel0ArrayOfSetOperator<X> asArrayOfSet(final Type<X> of) {
-        Validate.notNull(of, "A type representing the elements must be specified");
-        return new Level0ArrayOfSetOperator<X>(getTarget());
+        return generic().asArrayOfSet(of);
     }
 
 

@@ -30,7 +30,7 @@ import org.op4j.operators.qualities.IConvertibleOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
 import org.op4j.operators.qualities.INavigatingCollectionOperator;
-import org.op4j.operators.qualities.ITypeParameterizableXOperator;
+import org.op4j.operators.qualities.ICastableToTypeOperator;
 import org.op4j.operators.qualities.IUniqOperator;
 
 
@@ -47,7 +47,7 @@ public interface ILevel3MapOfListEntriesValueElementsOperator<K,V>
                 IConvertibleOperator<V>,
         		IEvaluableOperator<V>,
         		IExecutableOperator<V>,
-                ITypeParameterizableXOperator<V> {
+                ICastableToTypeOperator<V> {
     
     public ILevel2MapOfListEntriesValueOperator<K,V> endFor();
     
@@ -57,10 +57,8 @@ public interface ILevel3MapOfListEntriesValueElementsOperator<K,V>
 
     public <X> ILevel3MapOfListEntriesValueElementsOperator<K,X> exec(final IFunction<X, ? super V> function);
     
-    public <X> ILevel3MapOfListEntriesValueElementsOperator<K,X> of(final Type<X> of);
+    public <X> ILevel3MapOfListEntriesValueElementsOperator<K,X> asType(final Type<X> type);
+    public ILevel3MapOfListEntriesValueElementsOperator<K,?> asUnknown();
     
         
-    public ILevel3MapOfListEntriesValueElementsOperator<K,?> raw();
-    
-                                            
-}
+    }

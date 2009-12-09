@@ -22,6 +22,7 @@ package org.op4j.operators.impl.listofarray;
 import java.util.List;
 
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -72,13 +73,12 @@ public class Level2ListOfArrayElementsElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel2ListOfArrayElementsElementsOperator<X> of(final Type<X> of) {
-        return new Level2ListOfArrayElementsElementsOperator<X>(of, getTarget());
+    public <X> ILevel2ListOfArrayElementsElementsOperator<X> asType(final Type<X> type) {
+        return new Level2ListOfArrayElementsElementsOperator<X>(type, getTarget());
     }
 
-
-    public ILevel2ListOfArrayElementsElementsOperator<?> raw() {
-        return new Level2ListOfArrayElementsElementsOperator<T>(this.arrayOf, getTarget());
+    public ILevel2ListOfArrayElementsElementsOperator<?> asUnknown() {
+        return asType(Types.OBJECT);
     }
 
 

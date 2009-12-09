@@ -19,6 +19,7 @@
  */
 package org.op4j;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -704,8 +705,8 @@ public final class Op {
         
         System.out.println(Op.onMap(map1).forEachEntry().eval(Ognl.forString("'in ' + #target.key + ' you say ' + #target.value")).get());
         
-
         
+        System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).forEach().toMap(Ognl.forInteger("length()")).forEachEntry().onKey().asType(Types.forClass(Serializable.class)).endOn().onValue().asType(Types.SERIALIZABLE).get()));
     }
     
     

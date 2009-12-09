@@ -134,16 +134,6 @@ public class Level0SetOfMapOperator<K,V> extends Operator
     }
 
 
-    public <X, Y> ILevel0SetOfMapOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
-        return new Level0SetOfMapOperator<X, Y>(getTarget());
-    }
-
-
-    public ILevel0SetOfMapOperator<?, ?> raw() {
-        return new Level0SetOfMapOperator<K, V>(getTarget());
-    }
-
-
     public ILevel0SetOfMapOperator<K, V> removeIndexes(final int... indices) {
         return new Level0SetOfMapOperator<K, V>(getTarget().execute(new SetFuncs.RemoveIndexes<Map<K, V>>(indices)));
     }

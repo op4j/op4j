@@ -22,7 +22,6 @@ package org.op4j.operators.impl.array;
 import java.util.Collection;
 import java.util.Comparator;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.ArrayFuncs;
@@ -139,14 +138,7 @@ public class Level0ArrayOperator<T> extends Operator implements
         return new Level1ArrayElementsOperator<T>(this.arrayOf, getTarget().iterateNull());
     }
 
-    public <X> ILevel0ArrayOperator<X> of(final Type<X> of) {
-        return new Level0ArrayOperator<X>(of, getTarget());
-    }
-
-    public ILevel0ArrayOperator<?> raw() {
-        return new Level0ArrayOperator<T>(this.arrayOf, getTarget());
-    }
-
+    
     public ILevel0ArrayOperator<T> removeIndexes(final int... indices) {
         return new Level0ArrayOperator<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveIndexes<T>(indices)));
     }
@@ -257,13 +249,12 @@ public class Level0ArrayOperator<T> extends Operator implements
     
 
     public <X> ILevel0ArrayOperator<X> asArray(final Type<X> of) {
-        Validate.notNull(of, "A type representing the elements must be specified");
-        return new Level0ArrayOperator<X>(of, getTarget());
+        return generic().asArray(of);
     }
 
 
     public <X> ILevel0ArrayOfArrayOperator<X> asArrayOfArray(final Type<X> of) {
-        return forEach().asArray(of).endFor();
+        return generic().asArrayOfArray(of);
     }
 
 
@@ -273,7 +264,7 @@ public class Level0ArrayOperator<T> extends Operator implements
 
 
     public <X> ILevel0ArrayOfListOperator<X> asArrayOfList(final Type<X> of) {
-        return forEach().asList(of).endFor();
+        return generic().asArrayOfList(of);
     }
 
 
@@ -283,7 +274,7 @@ public class Level0ArrayOperator<T> extends Operator implements
 
 
     public <K, V> ILevel0ArrayOfMapOperator<K, V> asArrayOfMap(final Type<K> keyOf, final Type<V> valueOf) {
-        return forEach().asMap(keyOf, valueOf).endFor();
+        return generic().asArrayOfMap(keyOf, valueOf);
     }
 
 
@@ -293,7 +284,7 @@ public class Level0ArrayOperator<T> extends Operator implements
 
 
     public <X> ILevel0ArrayOfSetOperator<X> asArrayOfSet(final Type<X> of) {
-        return forEach().asSet(of).endFor();
+        return generic().asArrayOfSet(of);
     }
 
 

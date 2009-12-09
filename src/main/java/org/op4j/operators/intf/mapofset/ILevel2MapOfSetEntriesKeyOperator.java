@@ -24,7 +24,7 @@ import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.op4j.operators.qualities.INavigatingMapEntryOperator;
-import org.op4j.operators.qualities.ITypeParameterizableXOperator;
+import org.op4j.operators.qualities.ICastableToTypeOperator;
 import org.op4j.operators.qualities.IUniqOperator;
 
 
@@ -38,14 +38,12 @@ import org.op4j.operators.qualities.IUniqOperator;
 public interface ILevel2MapOfSetEntriesKeyOperator<K,V>
 		extends IUniqOperator<Map<K,Set<V>>>,
 				INavigatingMapEntryOperator,
-                ITypeParameterizableXOperator<K> {
+                ICastableToTypeOperator<K> {
     
     public ILevel1MapOfSetEntriesOperator<K,V> endOn();
     
-    public <X> ILevel2MapOfSetEntriesKeyOperator<X,V> of(final Type<X> of);
+    public <X> ILevel2MapOfSetEntriesKeyOperator<X,V> asType(final Type<X> type);
+    public ILevel2MapOfSetEntriesKeyOperator<?,V> asUnknown();
     
         
-    public ILevel2MapOfSetEntriesKeyOperator<?,V> raw();
-    
-                                    
-}
+    }

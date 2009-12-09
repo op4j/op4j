@@ -94,11 +94,6 @@ public class Level0MapOfMapOperator<K1,K2,V> extends Operator
 
 
 
-    public <X, Y, Z> ILevel0MapOfMapOperator<X, Y, Z> of(final Type<X> ofX, final Type<Y> ofY, final Type<Z> ofZ) {
-        return new Level0MapOfMapOperator<X, Y, Z>(getTarget());
-    }
-
-
     public ILevel0MapOfMapOperator<K1, K2, V> put(final K1 newKey, final Map<K2,V> newValue) {
         return new Level0MapOfMapOperator<K1, K2, V>(getTarget().execute(new MapFuncs.Put<K1, Map<K2,V>>(newKey, newValue)));
     }
@@ -116,11 +111,6 @@ public class Level0MapOfMapOperator<K1,K2,V> extends Operator
 
     public ILevel0MapOfMapOperator<K1, K2, V> insertAll(final int position, final Map<K1, Map<K2,V>> map) {
         return new Level0MapOfMapOperator<K1, K2, V>(getTarget().execute(new MapFuncs.InsertAll<K1, Map<K2,V>>(position, map)));
-    }
-
-
-    public ILevel0MapOfMapOperator<?, ?, ?> raw() {
-        return new Level0MapOfMapOperator<K1, K2, V>(getTarget());
     }
 
 

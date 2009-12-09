@@ -82,22 +82,13 @@ public class Level2MapEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel2MapEntriesValueOperator<K, X> of(final Type<X> of) {
+    public <X> ILevel2MapEntriesValueOperator<K, X> asType(final Type<X> type) {
         return new Level2MapEntriesValueOperator<K, X>(getTarget());
     }
 
-
-    public ILevel2MapEntriesValueOperator<K, ?> raw() {
-        return new Level2MapEntriesValueOperator<K, V>(getTarget());
+    public ILevel2MapEntriesValueOperator<K, ?> asUnknown() {
+        return asType(Types.OBJECT);
     }
-
-    
-    
-    
-    
-    
-    
-    
 
 
     public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> asArray(final Type<X> of) {

@@ -98,11 +98,6 @@ public class Level0MapOperator<K,V> extends Operator
 
 
 
-    public <X, Y> ILevel0MapOperator<X, Y> of(final Type<X> ofX, final Type<Y> ofY) {
-        return new Level0MapOperator<X, Y>(getTarget());
-    }
-
-
     public ILevel0MapOperator<K, V> put(final K newKey, final V newValue) {
         return new Level0MapOperator<K, V>(getTarget().execute(new MapFuncs.Put<K, V>(newKey, newValue)));
     }
@@ -120,11 +115,6 @@ public class Level0MapOperator<K,V> extends Operator
 
     public ILevel0MapOperator<K, V> insertAll(final int position, final Map<K, V> map) {
         return new Level0MapOperator<K, V>(getTarget().execute(new MapFuncs.InsertAll<K, V>(position, map)));
-    }
-
-
-    public ILevel0MapOperator<?, ?> raw() {
-        return new Level0MapOperator<K, V>(getTarget());
     }
 
 
@@ -207,7 +197,7 @@ public class Level0MapOperator<K,V> extends Operator
     
 
     public <X, Y> ILevel0MapOfArrayOperator<X, Y> asMapOfArray(final Type<X> keyOf, final Type<Y> valueOf) {
-        return forEachEntry().onKey().of(keyOf).endOn().onValue().asArray(valueOf).endOn().endFor();
+        return forEachEntry().onKey().asType(keyOf).endOn().onValue().asArray(valueOf).endOn().endFor();
     }
 
 
@@ -217,7 +207,7 @@ public class Level0MapOperator<K,V> extends Operator
 
 
     public <X, Y> ILevel0MapOfListOperator<X, Y> asMapOfList(final Type<X> keyOf, final Type<Y> valueOf) {
-        return forEachEntry().onKey().of(keyOf).endOn().onValue().asList(valueOf).endOn().endFor();
+        return forEachEntry().onKey().asType(keyOf).endOn().onValue().asList(valueOf).endOn().endFor();
     }
 
 
@@ -227,7 +217,7 @@ public class Level0MapOperator<K,V> extends Operator
 
 
     public <X1, X2, Y> ILevel0MapOfMapOperator<X1, X2, Y> asMapOfMap(final Type<X1> key1Of, final Type<X2> key2Of, final Type<Y> valueOf) {
-        return forEachEntry().onKey().of(key1Of).endOn().onValue().asMap(key2Of,valueOf).endOn().endFor();
+        return forEachEntry().onKey().asType(key1Of).endOn().onValue().asMap(key2Of,valueOf).endOn().endFor();
     }
 
 
@@ -237,7 +227,7 @@ public class Level0MapOperator<K,V> extends Operator
 
 
     public <X, Y> ILevel0MapOfSetOperator<X, Y> asMapOfSet(final Type<X> keyOf, final Type<Y> valueOf) {
-        return forEachEntry().onKey().of(keyOf).endOn().onValue().asSet(valueOf).endOn().endFor();
+        return forEachEntry().onKey().asType(keyOf).endOn().onValue().asSet(valueOf).endOn().endFor();
     }
 
 

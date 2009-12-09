@@ -44,7 +44,6 @@ import org.op4j.operators.qualities.IModifiableCollectionOperator;
 import org.op4j.operators.qualities.INavigableCollectionOperator;
 import org.op4j.operators.qualities.INavigatingMapEntryOperator;
 import org.op4j.operators.qualities.ISortableOperator;
-import org.op4j.operators.qualities.ITypeParameterizableXOperator;
 import org.op4j.operators.qualities.IUniqOperator;
 /**
  * 
@@ -63,7 +62,6 @@ public interface ILevel2MapOfArrayEntriesValueOperator<K,V>
                 IExecutableOperator<V[]>,
                 IConvertibleOperator<V[]>,
                 IEvaluableOperator<V[]>,
-                ITypeParameterizableXOperator<V>,
                 IModifiableCollectionOperator<V>,
                 IConvertibleToListOperator,
                 IConvertibleToSetOperator,
@@ -78,10 +76,7 @@ public interface ILevel2MapOfArrayEntriesValueOperator<K,V>
     public ILevel2MapOfArrayEntriesValueOperator<K,V> sort();
     public ILevel2MapOfArrayEntriesValueOperator<K,V> sort(final Comparator<? super V> comparator);
     
-    public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> of(final Type<X> of);
-    
         
-    public ILevel2MapOfArrayEntriesValueOperator<K,?> raw();
     public ILevel2MapOfArrayEntriesValueOperator<K,V> add(final V... newElements);
     public ILevel2MapOfArrayEntriesValueOperator<K,V> insert(final int position, final V... newElements);
     public ILevel2MapOfArrayEntriesValueOperator<K,V> addAll(final Collection<V> collection);
