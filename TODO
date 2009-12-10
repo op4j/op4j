@@ -1,3 +1,4 @@
 
  - When iterating, add a #variable available for every eval to know the iteration index.
- 
+ - Some "to" methods are missing. For example, arrayOfMap -> toListOfMap
+ - Execute things on map keys

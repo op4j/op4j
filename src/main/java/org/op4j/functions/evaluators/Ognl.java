@@ -140,7 +140,7 @@ public class Ognl<R,T> implements IEvaluator<R,T> {
     
     
 	public R execute(final T input, final ExecCtx ctx) throws Exception {
-        return OgnlExpressionUtil.evalOgnlExpression(this.resultType, this.ognlExpression, input, this.parameters);
+        return OgnlExpressionUtil.evalOgnlExpression(this.resultType, this.ognlExpression, input, this.parameters, ctx);
     }
     
     

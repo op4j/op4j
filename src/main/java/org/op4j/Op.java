@@ -39,6 +39,7 @@ import java.util.Set;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.functions.AbstractNotNullFunc;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.ListFuncs;
@@ -699,6 +700,21 @@ public final class Op {
         
         
         System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).forEach().toMap(Ognl.forInteger("length()")).forEachEntry().onKey().asType(Types.forClass(Serializable.class)).endOn().onValue().asType(Types.SERIALIZABLE).get()));
+        
+        
+        System.out.println(Op.onList(stringsList1).removeNulls().sort().get());
+        System.out.println(Op.onList(stringsList1).removeNulls().forEach().eval(Ognl.forInteger("length()")).get());
+        
+        System.out.println(Op.onArrayOfMap(maps1).eval(Ognl.forInteger("length")).get());
+        System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().eval(Ognl.forInteger("size()")).get()));
+        System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().forEachEntry().eval(Ognl.forObject("key")).get()));
+        System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().forEachEntry().onValue().eval(Ognl.forObject("length()")).endOn().endFor().extractValues().get()));
+        
+        final Map<Integer,Map<String,String>> mapOfMapOfIntegerStringString = Op.onArray(maps1).toMap(Ognl.forInteger("size()")).asMapOfMapOf(Types.INTEGER, Types.STRING, Types.STRING).get();
+        
+        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onValue().forEachEntry().onValue().eval(Ognl.forObject("length()")).get());
+        
+        System.out.println(Op.onListOfList(listOfListOfString1).forEach().forEach().eval(Ognl.forString("#target + '' + #index + '-' + #indexes[1] + '/' + #iterationLevel")).get());
     }
     
     

@@ -30,6 +30,7 @@ import ognl.OgnlException;
 import org.apache.commons.collections.map.LRUMap;
 import org.javaruntype.type.Type;
 import org.op4j.exceptions.EvaluationException;
+import org.op4j.functions.ExecCtx;
 
 /**
  * 
@@ -48,6 +49,9 @@ class OgnlExpressionUtil {
     
     public static final String TARGET_VARIABLE_NAME = "target";
     public static final String PARAM_VARIABLE_NAME = "param";
+    public static final String CURRENT_INDEX_VARIABLE_NAME = "index";
+    public static final String INDEXES_VARIABLE_NAME = "indexes";
+    public static final String ITERATION_LEVEL_VARIABLE_NAME = "iterationLevel";
 
 
     
@@ -63,7 +67,8 @@ class OgnlExpressionUtil {
     
     @SuppressWarnings("unchecked")
     public static <X> X evalOgnlExpression(
-            final Type<X> resultType, final String ognlExpression, final Object targetObject, final Object parametersObject) {
+            final Type<X> resultType, final String ognlExpression, final Object targetObject, final Object parametersObject, 
+            final ExecCtx execCtx) {
         
         Object parsedExpression = parsedExpressionsByExpression.get(ognlExpression);
         
@@ -82,6 +87,9 @@ class OgnlExpressionUtil {
             final Map<String,Object> ctx = new HashMap<String,Object>();
             ctx.put(TARGET_VARIABLE_NAME, targetObject);
             ctx.put(PARAM_VARIABLE_NAME, parametersObject);
+            ctx.put(CURRENT_INDEX_VARIABLE_NAME, execCtx.getCurrentIndex());
+            ctx.put(INDEXES_VARIABLE_NAME, new Integer[] {execCtx.getLevel0Index(), execCtx.getLevel1Index(), execCtx.getLevel2Index(), execCtx.getLevel3Index(), execCtx.getLevel4Index()});
+            ctx.put(ITERATION_LEVEL_VARIABLE_NAME, execCtx.getIterationLevel());
             final Object result = Ognl.getValue(parsedExpression, ctx, targetObject);
             if (result != null && resultClass != null && !Object.class.equals(resultClass)) {
                 if (!(resultClass.isAssignableFrom(result.getClass()))) {

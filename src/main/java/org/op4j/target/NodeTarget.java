@@ -149,7 +149,7 @@ public abstract class NodeTarget extends Target{
             newElements.add(NodeTarget.forObject(elementId, element));
             Boolean evalResult = null;
             try {
-                evalResult = eval.execute(element, new ExecCtx()); 
+                evalResult = eval.execute(element, new ExecCtx(elementId)); 
             } catch (Exception e) {
                 throw new ExecutionException(e);
             }
@@ -205,7 +205,7 @@ public abstract class NodeTarget extends Target{
             } else {
                 Boolean evalResult = null;
                 try {
-                    evalResult = eval.execute(element, new ExecCtx()); 
+                    evalResult = eval.execute(element, new ExecCtx(elementId)); 
                 } catch (Exception e) {
                     throw new ExecutionException(e);
                 }
@@ -235,7 +235,7 @@ public abstract class NodeTarget extends Target{
             if (element != null) {
                 Boolean evalResult = null;
                 try {
-                    evalResult = eval.execute(element, new ExecCtx()); 
+                    evalResult = eval.execute(element, new ExecCtx(elementId)); 
                 } catch (Exception e) {
                     throw new ExecutionException(e);
                 }
@@ -266,7 +266,7 @@ public abstract class NodeTarget extends Target{
     	Validate.notNull(executable, "An executable must be specified");
     	final IFunction<Object,Object> objectCommand = (IFunction<Object,Object>) executable;
     	try {
-            return NodeTarget.forObject(getId(), objectCommand.execute(getObject(), new ExecCtx()));
+            return NodeTarget.forObject(getId(), objectCommand.execute(getObject(), new ExecCtx(getId())));
         } catch (ExecutionException e) {
             throw e;
     	} catch (Throwable t) {
