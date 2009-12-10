@@ -31,7 +31,7 @@ import org.javaruntype.type.Type;
  */
 public interface ICastableToSetOperator {
     
-    public <X> IOperator asSet(final Type<X> of);
+    public <X> IOperator asSetOf(final Type<X> type);
     public IOperator asSetOfUnknown();
     
 }

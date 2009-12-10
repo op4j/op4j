@@ -197,13 +197,13 @@ public class Level0MapOfMapOperator<K1,K2,V> extends Operator
     
 
 
-    public <X1,X2,Y> ILevel0MapOfMapOperator<X1,X2,Y> asMapOfMap(final Type<X1> key1Of, final Type<X2> key2Of, final Type<Y> valueOf) {
-        return generic().asMapOfMap(key1Of, key2Of, valueOf);
+    public <X1,X2,Y> ILevel0MapOfMapOperator<X1,X2,Y> asMapOfMapOf(final Type<X1> key1Type, final Type<X2> key2Type, final Type<Y> valueType) {
+        return generic().asMapOfMapOf(key1Type, key2Type, valueType);
     }
 
 
     public ILevel0MapOfMapOperator<?,?,?> asMapOfMapOfUnknown() {
-        return asMapOfMap(Types.OBJECT, Types.OBJECT, Types.OBJECT);
+        return asMapOfMapOf(Types.OBJECT, Types.OBJECT, Types.OBJECT);
     }
 
     

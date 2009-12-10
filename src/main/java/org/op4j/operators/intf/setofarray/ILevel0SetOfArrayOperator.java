@@ -164,7 +164,7 @@ public interface ILevel0SetOfArrayOperator<T>
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super Set<T[]>> function);
     
     
-    public <X> ILevel0SetOfArrayOperator<X> asSetOfArray(final Type<X> of);
+    public <X> ILevel0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type);
     public ILevel0SetOfArrayOperator<?> asSetOfArrayOfUnknown();
 
     

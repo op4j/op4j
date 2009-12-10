@@ -132,20 +132,20 @@ public interface ILevel0ListOperator<T>
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super List<T>> function);
     
     
-    public <X> ILevel0ListOfArrayOperator<X> asListOfArray(final Type<X> of);
+    public <X> ILevel0ListOfArrayOperator<X> asListOfArrayOf(final Type<X> type);
     public ILevel0ListOfArrayOperator<?> asListOfArrayOfUnknown();
     
-    public <X> ILevel0ListOfListOperator<X> asListOfList(final Type<X> of);
+    public <X> ILevel0ListOfListOperator<X> asListOfListOf(final Type<X> type);
     public ILevel0ListOfListOperator<?> asListOfListOfUnknown();
     
-    public <K,V> ILevel0ListOfMapOperator<K,V> asListOfMap(final Type<K> keyOf, final Type<V> valueOf);
+    public <K,V> ILevel0ListOfMapOperator<K,V> asListOfMapOf(final Type<K> keyType, final Type<V> valueType);
     public ILevel0ListOfMapOperator<?,?> asListOfMapOfUnknown();
     
-    public <X> ILevel0ListOfSetOperator<X> asListOfSet(final Type<X> of);
+    public <X> ILevel0ListOfSetOperator<X> asListOfSetOf(final Type<X> type);
     public ILevel0ListOfSetOperator<?> asListOfSetOfUnknown();
 
     
-    public <X> ILevel0ListOperator<X> asList(final Type<X> of);
+    public <X> ILevel0ListOperator<X> asListOf(final Type<X> type);
     public ILevel0ListOperator<?> asListOfUnknown();
     
 

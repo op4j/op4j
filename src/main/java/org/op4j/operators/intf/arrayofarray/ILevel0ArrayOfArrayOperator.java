@@ -171,7 +171,7 @@ public interface ILevel0ArrayOfArrayOperator<T>
     
     
     
-    public <X> ILevel0ArrayOfArrayOperator<X> asArrayOfArray(final Type<X> of);
+    public <X> ILevel0ArrayOfArrayOperator<X> asArrayOfArrayOf(final Type<X> type);
     public ILevel0ArrayOfArrayOperator<?> asArrayOfArrayOfUnknown();
 
     

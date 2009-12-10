@@ -32,7 +32,7 @@ import org.op4j.operators.intf.listofset.ILevel0ListOfSetOperator;
  */
 public interface ICastableToListOfSetOperator {
     
-    public <X> ILevel0ListOfSetOperator<X> asListOfSet(final Type<X> of);
+    public <X> ILevel0ListOfSetOperator<X> asListOfSetOf(final Type<X> type);
     public ILevel0ListOfSetOperator<?> asListOfSetOfUnknown();
 
     

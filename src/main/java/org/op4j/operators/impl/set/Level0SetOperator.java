@@ -265,53 +265,53 @@ public class Level0SetOperator<T> extends Operator
 
     
     
-    public <X> ILevel0SetOfArrayOperator<X> asSetOfArray(final Type<X> of) {
-        return generic().asSetOfArray(of);
+    public <X> ILevel0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type) {
+        return generic().asSetOfArrayOf(type);
     }
 
 
     public ILevel0SetOfArrayOperator<?> asSetOfArrayOfUnknown() {
-        return asSetOfArray(Types.OBJECT);
+        return asSetOfArrayOf(Types.OBJECT);
     }
 
 
-    public <X> ILevel0SetOfListOperator<X> asSetOfList(final Type<X> of) {
-        return generic().asSetOfList(of);
+    public <X> ILevel0SetOfListOperator<X> asSetOfListOf(final Type<X> type) {
+        return generic().asSetOfListOf(type);
     }
 
 
     public ILevel0SetOfListOperator<?> asSetOfListOfUnknown() {
-        return asSetOfList(Types.OBJECT);
+        return asSetOfListOf(Types.OBJECT);
     }
 
 
-    public <K, V> ILevel0SetOfMapOperator<K, V> asSetOfMap(final Type<K> keyOf, final Type<V> valueOf) {
-    	return generic().asSetOfMap(keyOf, valueOf);
+    public <K, V> ILevel0SetOfMapOperator<K, V> asSetOfMapOf(final Type<K> keyType, final Type<V> valueType) {
+    	return generic().asSetOfMapOf(keyType, valueType);
     }
 
 
     public ILevel0SetOfMapOperator<?, ?> asSetOfMapOfUnknown() {
-        return asSetOfMap(Types.OBJECT, Types.OBJECT);
+        return asSetOfMapOf(Types.OBJECT, Types.OBJECT);
     }
 
 
-    public <X> ILevel0SetOfSetOperator<X> asSetOfSet(final Type<X> of) {
-        return generic().asSetOfSet(of);
+    public <X> ILevel0SetOfSetOperator<X> asSetOfSetOf(final Type<X> type) {
+        return generic().asSetOfSetOf(type);
     }
 
 
     public ILevel0SetOfSetOperator<?> asSetOfSetOfUnknown() {
-        return asSetOfSet(Types.OBJECT);
+        return asSetOfSetOf(Types.OBJECT);
     }
 
 
-    public <X> ILevel0SetOperator<X> asSet(final Type<X> of) {
-        return generic().asSet(of);
+    public <X> ILevel0SetOperator<X> asSetOf(final Type<X> type) {
+        return generic().asSetOf(type);
     }
 
 
     public ILevel0SetOperator<?> asSetOfUnknown() {
-        return asSet(Types.OBJECT);
+        return asSetOf(Types.OBJECT);
     }
 
     

@@ -95,7 +95,7 @@ public interface ILevel1ArrayOfMapElementsOperator<K,V>
     public <X> ILevel1ArrayElementsOperator<X> exec(final IFunction<X, ? super Map<K,V>> function);
     
     
-    public <X,Y> ILevel1ArrayOfMapElementsOperator<X,Y> asMap(final Type<X> keyOf, final Type<Y> valueOf);
+    public <X,Y> ILevel1ArrayOfMapElementsOperator<X,Y> asMapOf(final Type<X> keyType, final Type<Y> valueType);
     public ILevel1ArrayOfMapElementsOperator<?,?> asMapOfUnknown();
     
     

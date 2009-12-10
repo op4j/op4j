@@ -32,7 +32,7 @@ import org.op4j.operators.intf.mapoflist.ILevel0MapOfListOperator;
  */
 public interface ICastableToMapOfListOperator {
     
-    public <K,V> ILevel0MapOfListOperator<K,V> asMapOfList(final Type<K> keyOf, final Type<V> valueOf);
+    public <K,V> ILevel0MapOfListOperator<K,V> asMapOfListOf(final Type<K> keyType, final Type<V> valueType);
     public ILevel0MapOfListOperator<?,?> asMapOfListOfUnknown();
     
     

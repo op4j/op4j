@@ -153,10 +153,10 @@ public interface ILevel0GenericUniqOperator<T>
 
     
     
-    public <X> ILevel0ArrayOperator<X> asArray(final Type<X> of);
-    public <X> ILevel0ListOperator<X> asList(final Type<X> of);
-    public <K,V> ILevel0MapOperator<K,V> asMap(final Type<K> keyOf, final Type<V> valueOf);
-    public <X> ILevel0SetOperator<X> asSet(final Type<X> of);
+    public <X> ILevel0ArrayOperator<X> asArrayOf(final Type<X> type);
+    public <X> ILevel0ListOperator<X> asListOf(final Type<X> type);
+    public <K,V> ILevel0MapOperator<K,V> asMapOf(final Type<K> keyType, final Type<V> valueType);
+    public <X> ILevel0SetOperator<X> asSetOf(final Type<X> type);
     public ILevel0ArrayOperator<?> asArrayOfUnknown();
     public ILevel0ListOperator<?> asListOfUnknown();
     public ILevel0MapOperator<?,?> asMapOfUnknown();
@@ -164,22 +164,22 @@ public interface ILevel0GenericUniqOperator<T>
     
     
     
-    public <X> ILevel0ArrayOfArrayOperator<X> asArrayOfArray(final Type<X> of);
-    public <X> ILevel0ArrayOfListOperator<X> asArrayOfList(final Type<X> of);
-    public <K,V> ILevel0ArrayOfMapOperator<K,V> asArrayOfMap(final Type<K> keyOf,final Type<V> valueOf);
-    public <X> ILevel0ArrayOfSetOperator<X> asArrayOfSet(final Type<X> of);
-    public <X> ILevel0ListOfArrayOperator<X> asListOfArray(final Type<X> of);
-    public <X> ILevel0ListOfListOperator<X> asListOfList(final Type<X> of);
-    public <K,V> ILevel0ListOfMapOperator<K,V> asListOfMap(final Type<K> keyOf,final Type<V> valueOf);
-    public <X> ILevel0ListOfSetOperator<X> asListOfSet(final Type<X> of);
-    public <K,V> ILevel0MapOfArrayOperator<K,V> asMapOfArray(final Type<K> keyOf, final Type<V> valueOf);
-    public <K,V> ILevel0MapOfListOperator<K,V> asMapOfList(final Type<K> keyOf, final Type<V> valueOf);
-    public <K1,K2,V> ILevel0MapOfMapOperator<K1,K2,V> asMapOfMap(final Type<K1> key1Of, final Type<K2> key2Of, final Type<V> valueOf);
-    public <K,V> ILevel0MapOfSetOperator<K,V> asMapOfSet(final Type<K> keyOf, final Type<V> valueOf);
-    public <X> ILevel0SetOfArrayOperator<X> asSetOfArray(final Type<X> of);
-    public <X> ILevel0SetOfListOperator<X> asSetOfList(final Type<X> of);
-    public <K,V> ILevel0SetOfMapOperator<K,V> asSetOfMap(final Type<K> keyOf,final Type<V> valueOf);
-    public <X> ILevel0SetOfSetOperator<X> asSetOfSet(final Type<X> of);
+    public <X> ILevel0ArrayOfArrayOperator<X> asArrayOfArrayOf(final Type<X> type);
+    public <X> ILevel0ArrayOfListOperator<X> asArrayOfListOf(final Type<X> type);
+    public <K,V> ILevel0ArrayOfMapOperator<K,V> asArrayOfMapOf(final Type<K> keyType,final Type<V> valueType);
+    public <X> ILevel0ArrayOfSetOperator<X> asArrayOfSetOf(final Type<X> type);
+    public <X> ILevel0ListOfArrayOperator<X> asListOfArrayOf(final Type<X> type);
+    public <X> ILevel0ListOfListOperator<X> asListOfListOf(final Type<X> type);
+    public <K,V> ILevel0ListOfMapOperator<K,V> asListOfMapOf(final Type<K> keyType,final Type<V> valueType);
+    public <X> ILevel0ListOfSetOperator<X> asListOfSetOf(final Type<X> type);
+    public <K,V> ILevel0MapOfArrayOperator<K,V> asMapOfArrayOf(final Type<K> keyType, final Type<V> valueType);
+    public <K,V> ILevel0MapOfListOperator<K,V> asMapOfListOf(final Type<K> keyType, final Type<V> valueType);
+    public <K1,K2,V> ILevel0MapOfMapOperator<K1,K2,V> asMapOfMapOf(final Type<K1> key1Type, final Type<K2> key2Type, final Type<V> valueType);
+    public <K,V> ILevel0MapOfSetOperator<K,V> asMapOfSetOf(final Type<K> keyType, final Type<V> valueType);
+    public <X> ILevel0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type);
+    public <X> ILevel0SetOfListOperator<X> asSetOfListOf(final Type<X> type);
+    public <K,V> ILevel0SetOfMapOperator<K,V> asSetOfMapOf(final Type<K> keyType,final Type<V> valueType);
+    public <X> ILevel0SetOfSetOperator<X> asSetOfSetOf(final Type<X> type);
     public ILevel0ArrayOfArrayOperator<?> asArrayOfArrayOfUnknown();
     public ILevel0ArrayOfListOperator<?> asArrayOfListOfUnknown();
     public ILevel0ArrayOfMapOperator<?,?> asArrayOfMapOfUnknown();

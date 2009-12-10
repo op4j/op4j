@@ -267,13 +267,13 @@ public class Level1ArrayOfListElementsOperator<T> extends Operator
     
     
 
-    public <X> ILevel1ArrayOfListElementsOperator<X> asList(final Type<X> of) {
-        return endFor().asArrayOfList(of).forEach();
+    public <X> ILevel1ArrayOfListElementsOperator<X> asListOf(final Type<X> type) {
+        return endFor().asArrayOfListOf(type).forEach();
     }
 
 
     public ILevel1ArrayOfListElementsOperator<?> asListOfUnknown() {
-        return asList(Types.OBJECT);
+        return asListOf(Types.OBJECT);
     }
     
     

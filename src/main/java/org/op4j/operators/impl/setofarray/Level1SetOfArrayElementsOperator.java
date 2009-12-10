@@ -261,13 +261,13 @@ public class Level1SetOfArrayElementsOperator<T> extends Operator
     
 
 
-    public <X> ILevel1SetOfArrayElementsOperator<X> asArray(final Type<X> of) {
-    	return endFor().generic().asSetOfArray(of).forEach();
+    public <X> ILevel1SetOfArrayElementsOperator<X> asArrayOf(final Type<X> type) {
+    	return endFor().generic().asSetOfArrayOf(type).forEach();
     }
 
 
     public ILevel1SetOfArrayElementsOperator<?> asArrayOfUnknown() {
-        return asArray(Types.OBJECT);
+        return asArrayOf(Types.OBJECT);
     }
     
     

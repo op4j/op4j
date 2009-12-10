@@ -116,7 +116,7 @@ public interface ILevel1SetOfArrayElementsOperator<T>
     public <X> ILevel1SetElementsOperator<X> exec(final IFunction<X, ? super T[]> function);
     
     
-    public <X> ILevel1SetOfArrayElementsOperator<X> asArray(final Type<X> of);
+    public <X> ILevel1SetOfArrayElementsOperator<X> asArrayOf(final Type<X> type);
     public ILevel1SetOfArrayElementsOperator<?> asArrayOfUnknown();
     
                                     

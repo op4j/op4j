@@ -91,31 +91,31 @@ public class Level2MapEntriesValueOperator<K,V> extends Operator
     }
 
 
-    public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> asArray(final Type<X> of) {
-        Validate.notNull(of, "A type representing the elements must be specified");
-        TargetUtils.checkIsMapOfArrayOfValue(of, get());
-        return new Level2MapOfArrayEntriesValueOperator<K,X>(of, getTarget());
+    public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> asArrayOf(final Type<X> type) {
+        Validate.notNull(type, "A type representing the elements must be specified");
+        TargetUtils.checkIsMapOfArrayOfValue(type, get());
+        return new Level2MapOfArrayEntriesValueOperator<K,X>(type, getTarget());
     }
 
 
-    public <X> ILevel2MapOfListEntriesValueOperator<K,X> asList(final Type<X> of) {
-        Validate.notNull(of, "A type representing the elements must be specified");
-        TargetUtils.checkIsMapOfListOfValue(of, get());
+    public <X> ILevel2MapOfListEntriesValueOperator<K,X> asListOf(final Type<X> type) {
+        Validate.notNull(type, "A type representing the elements must be specified");
+        TargetUtils.checkIsMapOfListOfValue(type, get());
         return new Level2MapOfListEntriesValueOperator<K,X>(getTarget());
     }
 
 
-    public <K2,V2> ILevel2MapOfMapEntriesValueOperator<K,K2,V2> asMap(final Type<K2> keyOf, final Type<V2> valueOf) {
-        Validate.notNull(keyOf, "A type representing the keys must be specified");
-        Validate.notNull(valueOf, "A type representing the values must be specified");
-        TargetUtils.checkIsMapOfMapOfValue(keyOf, valueOf, get());
+    public <K2,V2> ILevel2MapOfMapEntriesValueOperator<K,K2,V2> asMapOf(final Type<K2> keyType, final Type<V2> valueType) {
+        Validate.notNull(keyType, "A type representing the keys must be specified");
+        Validate.notNull(valueType, "A type representing the values must be specified");
+        TargetUtils.checkIsMapOfMapOfValue(keyType, valueType, get());
         return new Level2MapOfMapEntriesValueOperator<K,K2,V2>(getTarget());
     }
 
 
-    public <X> ILevel2MapOfSetEntriesValueOperator<K,X> asSet(final Type<X> of) {
-        Validate.notNull(of, "A type representing the elements must be specified");
-        TargetUtils.checkIsMapOfSetOfValue(of, get());
+    public <X> ILevel2MapOfSetEntriesValueOperator<K,X> asSetOf(final Type<X> type) {
+        Validate.notNull(type, "A type representing the elements must be specified");
+        TargetUtils.checkIsMapOfSetOfValue(type, get());
         return new Level2MapOfSetEntriesValueOperator<K,X>(getTarget());
     }
 
@@ -123,22 +123,22 @@ public class Level2MapEntriesValueOperator<K,V> extends Operator
     
 
     public ILevel2MapOfArrayEntriesValueOperator<K, ?> asArrayOfUnknown() {
-        return asArray(Types.OBJECT);
+        return asArrayOf(Types.OBJECT);
     }
 
 
     public ILevel2MapOfListEntriesValueOperator<K, ?> asListOfUnknown() {
-        return asList(Types.OBJECT);
+        return asListOf(Types.OBJECT);
     }
 
 
     public ILevel2MapOfMapEntriesValueOperator<K, ?, ?> asMapOfUnknown() {
-        return asMap(Types.OBJECT, Types.OBJECT);
+        return asMapOf(Types.OBJECT, Types.OBJECT);
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, ?> asSetOfUnknown() {
-        return asSet(Types.OBJECT);
+        return asSetOf(Types.OBJECT);
     }
     
     

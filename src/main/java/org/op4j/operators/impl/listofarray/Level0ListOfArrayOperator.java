@@ -346,13 +346,13 @@ public class Level0ListOfArrayOperator<T> extends Operator
     
 
 
-    public <X> ILevel0ListOfArrayOperator<X> asListOfArray(final Type<X> of) {
-        return generic().asListOfArray(of);
+    public <X> ILevel0ListOfArrayOperator<X> asListOfArrayOf(final Type<X> type) {
+        return generic().asListOfArrayOf(type);
     }
 
 
     public ILevel0ListOfArrayOperator<?> asListOfArrayOfUnknown() {
-        return asListOfArray(Types.OBJECT);
+        return asListOfArrayOf(Types.OBJECT);
     }
     
     

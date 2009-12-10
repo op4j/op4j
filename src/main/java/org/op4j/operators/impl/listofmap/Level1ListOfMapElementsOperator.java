@@ -184,13 +184,13 @@ public class Level1ListOfMapElementsOperator<K,V> extends Operator
     
     
 
-    public <X,Y> ILevel1ListOfMapElementsOperator<X,Y> asMap(final Type<X> keyOf, final Type<Y> valueOf) {
-    	return endFor().generic().asListOfMap(keyOf, valueOf).forEach();
+    public <X,Y> ILevel1ListOfMapElementsOperator<X,Y> asMapOf(final Type<X> keyType, final Type<Y> valueType) {
+    	return endFor().generic().asListOfMapOf(keyType, valueType).forEach();
     }
 
 
     public ILevel1ListOfMapElementsOperator<?,?> asMapOfUnknown() {
-        return asMap(Types.OBJECT, Types.OBJECT);
+        return asMapOf(Types.OBJECT, Types.OBJECT);
     }
     
     

@@ -118,7 +118,7 @@ public interface ILevel2MapOfListEntriesValueOperator<K,V>
     public <X> ILevel2MapEntriesValueOperator<K,X> exec(final IFunction<X, ? super List<V>> function);
     
     
-    public <X> ILevel2MapOfListEntriesValueOperator<K,X> asList(final Type<X> of);
+    public <X> ILevel2MapOfListEntriesValueOperator<K,X> asListOf(final Type<X> type);
     public ILevel2MapOfListEntriesValueOperator<K,?> asListOfUnknown();
     
     

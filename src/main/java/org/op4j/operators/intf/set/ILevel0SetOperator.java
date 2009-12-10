@@ -126,23 +126,23 @@ public interface ILevel0SetOperator<T>
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super Set<T>> function);
     
     
-    public <X> ILevel0SetOfArrayOperator<X> asSetOfArray(final Type<X> of);
+    public <X> ILevel0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type);
     public ILevel0SetOfArrayOperator<?> asSetOfArrayOfUnknown();
 
     
-    public <X> ILevel0SetOfListOperator<X> asSetOfList(final Type<X> of);
+    public <X> ILevel0SetOfListOperator<X> asSetOfListOf(final Type<X> type);
     public ILevel0SetOfListOperator<?> asSetOfListOfUnknown();
 
     
-    public <K,V> ILevel0SetOfMapOperator<K,V> asSetOfMap(final Type<K> keyOf, final Type<V> valueOf);
+    public <K,V> ILevel0SetOfMapOperator<K,V> asSetOfMapOf(final Type<K> keyType, final Type<V> valueType);
     public ILevel0SetOfMapOperator<?,?> asSetOfMapOfUnknown();
 
     
-    public <X> ILevel0SetOfSetOperator<X> asSetOfSet(final Type<X> of);
+    public <X> ILevel0SetOfSetOperator<X> asSetOfSetOf(final Type<X> type);
     public ILevel0SetOfSetOperator<?> asSetOfSetOfUnknown();
 
     
-    public <X> ILevel0SetOperator<X> asSet(final Type<X> of);
+    public <X> ILevel0SetOperator<X> asSetOf(final Type<X> type);
     public ILevel0SetOperator<?> asSetOfUnknown();
     
     

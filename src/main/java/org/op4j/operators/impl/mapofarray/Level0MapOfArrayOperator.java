@@ -210,13 +210,13 @@ public class Level0MapOfArrayOperator<K,V> extends Operator
     
 
 
-    public <X,Y> ILevel0MapOfArrayOperator<X,Y> asMapOfArray(final Type<X> keyOf, final Type<Y> valueOf) {
-        return generic().asMapOfArray(keyOf, valueOf);
+    public <X,Y> ILevel0MapOfArrayOperator<X,Y> asMapOfArrayOf(final Type<X> keyType, final Type<Y> valueType) {
+        return generic().asMapOfArrayOf(keyType, valueType);
     }
 
 
     public ILevel0MapOfArrayOperator<?,?> asMapOfArrayOfUnknown() {
-        return asMapOfArray(Types.OBJECT, Types.OBJECT);
+        return asMapOfArrayOf(Types.OBJECT, Types.OBJECT);
     }
 
     

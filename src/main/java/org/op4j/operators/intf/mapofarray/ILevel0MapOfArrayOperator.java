@@ -115,7 +115,7 @@ public interface ILevel0MapOfArrayOperator<K,V>
     
     
     
-    public <X,Y> ILevel0MapOfArrayOperator<X,Y> asMapOfArray(final Type<X> keyOf, final Type<Y> valueOf);
+    public <X,Y> ILevel0MapOfArrayOperator<X,Y> asMapOfArrayOf(final Type<X> keyType, final Type<Y> valueType);
     public ILevel0MapOfArrayOperator<?,?> asMapOfArrayOfUnknown();
 
     

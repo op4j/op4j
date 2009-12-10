@@ -32,7 +32,7 @@ import org.op4j.operators.intf.setofarray.ILevel0SetOfArrayOperator;
  */
 public interface ICastableToSetOfArrayOperator {
     
-    public <X> ILevel0SetOfArrayOperator<X> asSetOfArray(final Type<X> of);
+    public <X> ILevel0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type);
     public ILevel0SetOfArrayOperator<?> asSetOfArrayOfUnknown();
 
     

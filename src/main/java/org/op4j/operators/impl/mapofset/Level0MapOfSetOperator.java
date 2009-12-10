@@ -214,13 +214,13 @@ public class Level0MapOfSetOperator<K,V> extends Operator
     
 
 
-    public <X,Y> ILevel0MapOfSetOperator<X,Y> asMapOfSet(final Type<X> keyOf, final Type<Y> valueOf) {
-        return generic().asMapOfSet(keyOf, valueOf);
+    public <X,Y> ILevel0MapOfSetOperator<X,Y> asMapOfSetOf(final Type<X> keyType, final Type<Y> valueType) {
+        return generic().asMapOfSetOf(keyType, valueType);
     }
 
 
     public ILevel0MapOfSetOperator<?,?> asMapOfSetOfUnknown() {
-        return asMapOfSet(Types.OBJECT, Types.OBJECT);
+        return asMapOfSetOf(Types.OBJECT, Types.OBJECT);
     }
 
     

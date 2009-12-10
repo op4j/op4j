@@ -114,7 +114,7 @@ public interface ILevel1SetOfSetElementsOperator<T>
     
 
     
-    public <X> ILevel1SetOfSetElementsOperator<X> asSet(final Type<X> of);
+    public <X> ILevel1SetOfSetElementsOperator<X> asSetOf(final Type<X> type);
     public ILevel1SetOfSetElementsOperator<?> asSetOfUnknown();
     
     

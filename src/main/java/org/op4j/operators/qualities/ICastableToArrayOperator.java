@@ -31,7 +31,7 @@ import org.javaruntype.type.Type;
  */
 public interface ICastableToArrayOperator {
     
-    public <X> IOperator asArray(final Type<X> of);
+    public <X> IOperator asArrayOf(final Type<X> type);
     public IOperator asArrayOfUnknown();
     
 }

@@ -169,7 +169,7 @@ public interface ILevel0ListOfListOperator<T>
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super List<List<T>>> function);
     
     
-    public <X> ILevel0ListOfListOperator<X> asListOfList(final Type<X> of);
+    public <X> ILevel0ListOfListOperator<X> asListOfListOf(final Type<X> type);
     public ILevel0ListOfListOperator<?> asListOfListOfUnknown();
 
     

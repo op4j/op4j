@@ -248,53 +248,53 @@ public class Level0ArrayOperator<T> extends Operator implements
     
     
 
-    public <X> ILevel0ArrayOperator<X> asArray(final Type<X> of) {
-        return generic().asArray(of);
+    public <X> ILevel0ArrayOperator<X> asArrayOf(final Type<X> type) {
+        return generic().asArrayOf(type);
     }
 
 
-    public <X> ILevel0ArrayOfArrayOperator<X> asArrayOfArray(final Type<X> of) {
-        return generic().asArrayOfArray(of);
+    public <X> ILevel0ArrayOfArrayOperator<X> asArrayOfArrayOf(final Type<X> type) {
+        return generic().asArrayOfArrayOf(type);
     }
 
 
     public ILevel0ArrayOfArrayOperator<?> asArrayOfArrayOfUnknown() {
-        return asArrayOfArray(Types.OBJECT);
+        return asArrayOfArrayOf(Types.OBJECT);
     }
 
 
-    public <X> ILevel0ArrayOfListOperator<X> asArrayOfList(final Type<X> of) {
-        return generic().asArrayOfList(of);
+    public <X> ILevel0ArrayOfListOperator<X> asArrayOfListOf(final Type<X> type) {
+        return generic().asArrayOfListOf(type);
     }
 
 
     public ILevel0ArrayOfListOperator<?> asArrayOfListOfUnknown() {
-        return asArrayOfList(Types.OBJECT);
+        return asArrayOfListOf(Types.OBJECT);
     }
 
 
-    public <K, V> ILevel0ArrayOfMapOperator<K, V> asArrayOfMap(final Type<K> keyOf, final Type<V> valueOf) {
-        return generic().asArrayOfMap(keyOf, valueOf);
+    public <K, V> ILevel0ArrayOfMapOperator<K, V> asArrayOfMapOf(final Type<K> keyType, final Type<V> valueType) {
+        return generic().asArrayOfMapOf(keyType, valueType);
     }
 
 
     public ILevel0ArrayOfMapOperator<?, ?> asArrayOfMapOfUnknown() {
-        return asArrayOfMap(Types.OBJECT, Types.OBJECT);
+        return asArrayOfMapOf(Types.OBJECT, Types.OBJECT);
     }
 
 
-    public <X> ILevel0ArrayOfSetOperator<X> asArrayOfSet(final Type<X> of) {
-        return generic().asArrayOfSet(of);
+    public <X> ILevel0ArrayOfSetOperator<X> asArrayOfSetOf(final Type<X> type) {
+        return generic().asArrayOfSetOf(type);
     }
 
 
     public ILevel0ArrayOfSetOperator<?> asArrayOfSetOfUnknown() {
-        return asArrayOfSet(Types.OBJECT);
+        return asArrayOfSetOf(Types.OBJECT);
     }
 
 
     public ILevel0ArrayOperator<?> asArrayOfUnknown() {
-        return asArray(Types.OBJECT);
+        return asArrayOf(Types.OBJECT);
     }
 
 

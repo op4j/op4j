@@ -265,13 +265,13 @@ public class Level1SetOfListElementsOperator<T> extends Operator
 
     
 
-    public <X> ILevel1SetOfListElementsOperator<X> asList(final Type<X> of) {
-    	return endFor().generic().asSetOfList(of).forEach();
+    public <X> ILevel1SetOfListElementsOperator<X> asListOf(final Type<X> type) {
+    	return endFor().generic().asSetOfListOf(type).forEach();
     }
 
 
     public ILevel1SetOfListElementsOperator<?> asListOfUnknown() {
-        return asList(Types.OBJECT);
+        return asListOf(Types.OBJECT);
     }
     
     

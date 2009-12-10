@@ -278,15 +278,15 @@ public class Level2MapOfArrayEntriesValueOperator<K,V> extends Operator
 
     
     
-    public <X> ILevel2MapOfArrayEntriesValueOperator<K, X> asArray(final Type<X> of) {
-        Validate.notNull(of, "A type representing the elements must be specified");
-        TargetUtils.checkIsMapOfArrayOfValue(of, get());
-        return new Level2MapOfArrayEntriesValueOperator<K,X>(of, getTarget());
+    public <X> ILevel2MapOfArrayEntriesValueOperator<K, X> asArrayOf(final Type<X> type) {
+        Validate.notNull(type, "A type representing the elements must be specified");
+        TargetUtils.checkIsMapOfArrayOfValue(type, get());
+        return new Level2MapOfArrayEntriesValueOperator<K,X>(type, getTarget());
     }
 
 
     public ILevel2MapOfArrayEntriesValueOperator<K, ?> asArrayOfUnknown() {
-        return asArray(Types.OBJECT);
+        return asArrayOf(Types.OBJECT);
     }
 
     

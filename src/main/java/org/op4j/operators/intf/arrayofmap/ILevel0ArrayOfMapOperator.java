@@ -100,7 +100,7 @@ public interface ILevel0ArrayOfMapOperator<K,V>
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,V>[]> function);
     
     
-    public <X,Y> ILevel0ArrayOfMapOperator<X,Y> asArrayOfMap(final Type<X> keyOf, final Type<Y> valueOf);
+    public <X,Y> ILevel0ArrayOfMapOperator<X,Y> asArrayOfMapOf(final Type<X> keyType, final Type<Y> valueType);
     public ILevel0ArrayOfMapOperator<?,?> asArrayOfMapOfUnknown();
 
     

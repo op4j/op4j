@@ -107,23 +107,23 @@ public interface ILevel0MapOperator<K,V>
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,V>> function);
     
     
-    public <X,Y> ILevel0MapOfArrayOperator<X,Y> asMapOfArray(final Type<X> keyOf, final Type<Y> valueOf);
+    public <X,Y> ILevel0MapOfArrayOperator<X,Y> asMapOfArrayOf(final Type<X> keyType, final Type<Y> valueType);
     public ILevel0MapOfArrayOperator<?,?> asMapOfArrayOfUnknown();
 
     
-    public <X,Y> ILevel0MapOfListOperator<X,Y> asMapOfList(final Type<X> keyOf, final Type<Y> valueOf);
+    public <X,Y> ILevel0MapOfListOperator<X,Y> asMapOfListOf(final Type<X> keyType, final Type<Y> valueType);
     public ILevel0MapOfListOperator<?,?> asMapOfListOfUnknown();
     
     
-    public <X1,X2,Y> ILevel0MapOfMapOperator<X1,X2,Y> asMapOfMap(final Type<X1> key1Of, final Type<X2> key2Of, final Type<Y> valueOf);
+    public <X1,X2,Y> ILevel0MapOfMapOperator<X1,X2,Y> asMapOfMapOf(final Type<X1> key1Type, final Type<X2> key2Type, final Type<Y> valueType);
     public ILevel0MapOfMapOperator<?,?,?> asMapOfMapOfUnknown();
 
     
-    public <X,Y> ILevel0MapOfSetOperator<X,Y> asMapOfSet(final Type<X> keyOf, final Type<Y> valueOf);
+    public <X,Y> ILevel0MapOfSetOperator<X,Y> asMapOfSetOf(final Type<X> keyType, final Type<Y> valueType);
     public ILevel0MapOfSetOperator<?,?> asMapOfSetOfUnknown();
 
     
-    public <X,Y> ILevel0MapOperator<X,Y> asMap(final Type<X> keyOf, final Type<Y> valueOf);
+    public <X,Y> ILevel0MapOperator<X,Y> asMapOf(final Type<X> keyType, final Type<Y> valueType);
     public ILevel0MapOperator<?,?> asMapOfUnknown();
     
     

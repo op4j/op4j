@@ -170,7 +170,7 @@ public interface ILevel0ArrayOfSetOperator<T>
     
     
     
-    public <X> ILevel0ArrayOfSetOperator<X> asArrayOfSet(final Type<X> of);
+    public <X> ILevel0ArrayOfSetOperator<X> asArrayOfSetOf(final Type<X> type);
     public ILevel0ArrayOfSetOperator<?> asArrayOfSetOfUnknown();
 
     

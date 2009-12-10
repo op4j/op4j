@@ -195,13 +195,13 @@ public class Level1ArrayOfMapElementsOperator<K,V> extends Operator
     
     
 
-    public <X,Y> ILevel1ArrayOfMapElementsOperator<X,Y> asMap(final Type<X> keyOf, final Type<Y> valueOf) {
-        return endFor().asArrayOfMap(keyOf, valueOf).forEach();
+    public <X,Y> ILevel1ArrayOfMapElementsOperator<X,Y> asMapOf(final Type<X> keyType, final Type<Y> valueType) {
+        return endFor().asArrayOfMapOf(keyType, valueType).forEach();
     }
 
 
     public ILevel1ArrayOfMapElementsOperator<?,?> asMapOfUnknown() {
-        return asMap(Types.OBJECT, Types.OBJECT);
+        return asMapOf(Types.OBJECT, Types.OBJECT);
     }
     
     

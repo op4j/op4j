@@ -94,7 +94,7 @@ public interface ILevel2MapOfMapEntriesValueOperator<K1,K2,V>
     public <X> ILevel2MapEntriesValueOperator<K1,X> exec(final IFunction<X, ? super Map<K2,V>> function);
     
     
-    public <X,Y> ILevel2MapOfMapEntriesValueOperator<K1,X,Y> asMap(final Type<X> keyOf, final Type<Y> valueOf);
+    public <X,Y> ILevel2MapOfMapEntriesValueOperator<K1,X,Y> asMapOf(final Type<X> keyType, final Type<Y> valueType);
     public ILevel2MapOfMapEntriesValueOperator<K1,?,?> asMapOfUnknown();
     
     

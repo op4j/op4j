@@ -72,10 +72,10 @@ public interface ILevel1SetElementsOperator<T>
     public <X> ILevel1SetElementsOperator<X> asType(final Type<X> type);
     public ILevel1SetElementsOperator<?> asUnknown();
         
-    public <X> ILevel1SetOfArrayElementsOperator<X> asArray(final Type<X> of);
-    public <X> ILevel1SetOfListElementsOperator<X> asList(final Type<X> of);
-    public <K,V> ILevel1SetOfMapElementsOperator<K,V> asMap(final Type<K> keyOf, final Type<V> valueOf);
-    public <X> ILevel1SetOfSetElementsOperator<X> asSet(final Type<X> of);
+    public <X> ILevel1SetOfArrayElementsOperator<X> asArrayOf(final Type<X> type);
+    public <X> ILevel1SetOfListElementsOperator<X> asListOf(final Type<X> type);
+    public <K,V> ILevel1SetOfMapElementsOperator<K,V> asMapOf(final Type<K> keyType, final Type<V> valueType);
+    public <X> ILevel1SetOfSetElementsOperator<X> asSetOf(final Type<X> type);
     public ILevel1SetOfArrayElementsOperator<?> asArrayOfUnknown();
     public ILevel1SetOfListElementsOperator<?> asListOfUnknown();
     public ILevel1SetOfMapElementsOperator<?,?> asMapOfUnknown();

@@ -687,7 +687,7 @@ public final class Op {
         System.out.println(Op.onAll("hello", "goodbye").eval(Ognl.forString("#target + ' world!'")).getAsList());
         
         System.out.println(Op.onList(listOfListOfString1).get());
-        System.out.println(Op.onList(listOfListOfString1).forEach().asList(Types.STRING).forEach().get());
+        System.out.println(Op.onList(listOfListOfString1).forEach().asListOf(Types.STRING).forEach().get());
         
         
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().eval(MethodCall.forInteger("length")).get());

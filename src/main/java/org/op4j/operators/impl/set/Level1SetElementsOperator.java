@@ -75,7 +75,7 @@ public class Level1SetElementsOperator<T> extends Operator
 
 
     public <X> ILevel1SetElementsOperator<X> asType(final Type<X> type) {
-    	return endFor().generic().asSet(type).forEach();
+    	return endFor().generic().asSetOf(type).forEach();
     }
 
     public ILevel1SetElementsOperator<?> asUnknown() {
@@ -83,45 +83,45 @@ public class Level1SetElementsOperator<T> extends Operator
     }
 
 
-    public <X> ILevel1SetOfArrayElementsOperator<X> asArray(final Type<X> of) {
-    	return endFor().generic().asSetOfArray(of).forEach();
+    public <X> ILevel1SetOfArrayElementsOperator<X> asArrayOf(final Type<X> type) {
+    	return endFor().generic().asSetOfArrayOf(type).forEach();
     }
 
 
-    public <X> ILevel1SetOfListElementsOperator<X> asList(final Type<X> of) {
-    	return endFor().generic().asSetOfList(of).forEach();
+    public <X> ILevel1SetOfListElementsOperator<X> asListOf(final Type<X> type) {
+    	return endFor().generic().asSetOfListOf(type).forEach();
     }
 
 
-    public <K,V> ILevel1SetOfMapElementsOperator<K,V> asMap(final Type<K> keyOf, final Type<V> valueOf) {
-    	return endFor().generic().asSetOfMap(keyOf, valueOf).forEach();
+    public <K,V> ILevel1SetOfMapElementsOperator<K,V> asMapOf(final Type<K> keyType, final Type<V> valueType) {
+    	return endFor().generic().asSetOfMapOf(keyType, valueType).forEach();
     }
 
 
-    public <X> ILevel1SetOfSetElementsOperator<X> asSet(final Type<X> of) {
-    	return endFor().generic().asSetOfSet(of).forEach();
+    public <X> ILevel1SetOfSetElementsOperator<X> asSetOf(final Type<X> type) {
+    	return endFor().generic().asSetOfSetOf(type).forEach();
     }
     
 
     
     
     public ILevel1SetOfArrayElementsOperator<?> asArrayOfUnknown() {
-        return asArray(Types.OBJECT);
+        return asArrayOf(Types.OBJECT);
     }
 
 
     public ILevel1SetOfListElementsOperator<?> asListOfUnknown() {
-        return asList(Types.OBJECT);
+        return asListOf(Types.OBJECT);
     }
 
 
     public ILevel1SetOfMapElementsOperator<?, ?> asMapOfUnknown() {
-        return asMap(Types.OBJECT, Types.OBJECT);
+        return asMapOf(Types.OBJECT, Types.OBJECT);
     }
 
 
     public ILevel1SetOfSetElementsOperator<?> asSetOfUnknown() {
-        return asSet(Types.OBJECT);
+        return asSetOf(Types.OBJECT);
     }
 
     

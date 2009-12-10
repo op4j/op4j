@@ -97,7 +97,7 @@ public interface ILevel0SetOfMapOperator<K,V>
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super Set<Map<K,V>>> function);
     
     
-    public <X,Y> ILevel0SetOfMapOperator<X,Y> asSetOfMap(final Type<X> keyOf, final Type<Y> valueOf);
+    public <X,Y> ILevel0SetOfMapOperator<X,Y> asSetOfMapOf(final Type<X> keyType, final Type<Y> valueType);
     public ILevel0SetOfMapOperator<?,?> asSetOfMapOfUnknown();
 
     

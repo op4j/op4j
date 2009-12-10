@@ -32,7 +32,7 @@ import org.op4j.operators.intf.arrayofmap.ILevel0ArrayOfMapOperator;
  */
 public interface ICastableToArrayOfMapOperator {
     
-    public <K,V> ILevel0ArrayOfMapOperator<K,V> asArrayOfMap(final Type<K> keyOf, final Type<V> valueOf);
+    public <K,V> ILevel0ArrayOfMapOperator<K,V> asArrayOfMapOf(final Type<K> keyType, final Type<V> valueType);
     public ILevel0ArrayOfMapOperator<?,?> asArrayOfMapOfUnknown();
 
     

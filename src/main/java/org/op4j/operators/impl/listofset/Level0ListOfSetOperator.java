@@ -342,13 +342,13 @@ public class Level0ListOfSetOperator<T> extends Operator
     
 
 
-    public <X> ILevel0ListOfSetOperator<X> asListOfSet(final Type<X> of) {
-        return generic().asListOfSet(of);
+    public <X> ILevel0ListOfSetOperator<X> asListOfSetOf(final Type<X> type) {
+        return generic().asListOfSetOf(type);
     }
 
 
     public ILevel0ListOfSetOperator<?> asListOfSetOfUnknown() {
-        return asListOfSet(Types.OBJECT);
+        return asListOfSetOf(Types.OBJECT);
     }
     
     

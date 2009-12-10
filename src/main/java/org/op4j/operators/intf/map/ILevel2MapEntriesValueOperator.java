@@ -72,10 +72,10 @@ public interface ILevel2MapEntriesValueOperator<K,V>
     public ILevel2MapEntriesValueOperator<K,?> asUnknown();
     
         
-    public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> asArray(final Type<X> of);
-    public <X> ILevel2MapOfListEntriesValueOperator<K,X> asList(final Type<X> of);
-    public <K2,V2> ILevel2MapOfMapEntriesValueOperator<K,K2,V2> asMap(final Type<K2> keyOf, final Type<V2> valueOf);
-    public <X> ILevel2MapOfSetEntriesValueOperator<K,X> asSet(final Type<X> of);
+    public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> asArrayOf(final Type<X> type);
+    public <X> ILevel2MapOfListEntriesValueOperator<K,X> asListOf(final Type<X> type);
+    public <K2,V2> ILevel2MapOfMapEntriesValueOperator<K,K2,V2> asMapOf(final Type<K2> keyType, final Type<V2> valueType);
+    public <X> ILevel2MapOfSetEntriesValueOperator<K,X> asSetOf(final Type<X> type);
     public ILevel2MapOfArrayEntriesValueOperator<K,?> asArrayOfUnknown();
     public ILevel2MapOfListEntriesValueOperator<K,?> asListOfUnknown();
     public ILevel2MapOfMapEntriesValueOperator<K,?,?> asMapOfUnknown();

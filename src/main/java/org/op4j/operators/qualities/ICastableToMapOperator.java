@@ -31,7 +31,7 @@ import org.javaruntype.type.Type;
  */
 public interface ICastableToMapOperator {
     
-    public <K,V> IOperator asMap(final Type<K> keyOf, final Type<V> valueOf);
+    public <K,V> IOperator asMapOf(final Type<K> keyType, final Type<V> valueType);
     public IOperator asMapOfUnknown();
     
 }

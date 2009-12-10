@@ -273,53 +273,53 @@ public class Level0ListOperator<T> extends Operator
 
     
 
-    public <X> ILevel0ListOperator<X> asList(final Type<X> of) {
-        return generic().asList(of);
+    public <X> ILevel0ListOperator<X> asListOf(final Type<X> type) {
+        return generic().asListOf(type);
     }
 
 
-    public <X> ILevel0ListOfArrayOperator<X> asListOfArray(final Type<X> of) {
-        return generic().asListOfArray(of);
+    public <X> ILevel0ListOfArrayOperator<X> asListOfArrayOf(final Type<X> type) {
+        return generic().asListOfArrayOf(type);
     }
 
 
     public ILevel0ListOfArrayOperator<?> asListOfArrayOfUnknown() {
-        return asListOfArray(Types.OBJECT);
+        return asListOfArrayOf(Types.OBJECT);
     }
 
 
-    public <X> ILevel0ListOfListOperator<X> asListOfList(final Type<X> of) {
-        return generic().asListOfList(of);
+    public <X> ILevel0ListOfListOperator<X> asListOfListOf(final Type<X> type) {
+        return generic().asListOfListOf(type);
     }
 
 
     public ILevel0ListOfListOperator<?> asListOfListOfUnknown() {
-        return asListOfList(Types.OBJECT);
+        return asListOfListOf(Types.OBJECT);
     }
 
 
-    public <K, V> ILevel0ListOfMapOperator<K, V> asListOfMap(final Type<K> keyOf, final Type<V> valueOf) {
-        return generic().asListOfMap(keyOf, valueOf);
+    public <K, V> ILevel0ListOfMapOperator<K, V> asListOfMapOf(final Type<K> keyType, final Type<V> valueType) {
+        return generic().asListOfMapOf(keyType, valueType);
     }
 
 
     public ILevel0ListOfMapOperator<?, ?> asListOfMapOfUnknown() {
-        return asListOfMap(Types.OBJECT, Types.OBJECT);
+        return asListOfMapOf(Types.OBJECT, Types.OBJECT);
     }
 
 
-    public <X> ILevel0ListOfSetOperator<X> asListOfSet(final Type<X> of) {
-        return generic().asListOfSet(of);
+    public <X> ILevel0ListOfSetOperator<X> asListOfSetOf(final Type<X> type) {
+        return generic().asListOfSetOf(type);
     }
 
 
     public ILevel0ListOfSetOperator<?> asListOfSetOfUnknown() {
-        return asListOfSet(Types.OBJECT);
+        return asListOfSetOf(Types.OBJECT);
     }
 
 
     public ILevel0ListOperator<?> asListOfUnknown() {
-        return asList(Types.OBJECT);
+        return asListOf(Types.OBJECT);
     }
 
     

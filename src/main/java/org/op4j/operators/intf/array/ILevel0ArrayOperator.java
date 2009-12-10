@@ -130,23 +130,23 @@ public interface ILevel0ArrayOperator<T>
     
     
     
-    public <X> ILevel0ArrayOfArrayOperator<X> asArrayOfArray(final Type<X> of);
+    public <X> ILevel0ArrayOfArrayOperator<X> asArrayOfArrayOf(final Type<X> type);
     public ILevel0ArrayOfArrayOperator<?> asArrayOfArrayOfUnknown();
 
     
-    public <X> ILevel0ArrayOfListOperator<X> asArrayOfList(final Type<X> of);
+    public <X> ILevel0ArrayOfListOperator<X> asArrayOfListOf(final Type<X> type);
     public ILevel0ArrayOfListOperator<?> asArrayOfListOfUnknown();
 
     
-    public <K,V> ILevel0ArrayOfMapOperator<K,V> asArrayOfMap(final Type<K> keyOf, final Type<V> valueOf);
+    public <K,V> ILevel0ArrayOfMapOperator<K,V> asArrayOfMapOf(final Type<K> keyType, final Type<V> valueType);
     public ILevel0ArrayOfMapOperator<?,?> asArrayOfMapOfUnknown();
 
     
-    public <X> ILevel0ArrayOfSetOperator<X> asArrayOfSet(final Type<X> of);
+    public <X> ILevel0ArrayOfSetOperator<X> asArrayOfSetOf(final Type<X> type);
     public ILevel0ArrayOfSetOperator<?> asArrayOfSetOfUnknown();
 
     
-    public <X> ILevel0ArrayOperator<X> asArray(final Type<X> of);
+    public <X> ILevel0ArrayOperator<X> asArrayOf(final Type<X> type);
     public ILevel0ArrayOperator<?> asArrayOfUnknown();
     
         

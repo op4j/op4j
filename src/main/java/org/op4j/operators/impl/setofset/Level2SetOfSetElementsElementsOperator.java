@@ -71,7 +71,7 @@ public class Level2SetOfSetElementsElementsOperator<T> extends Operator
 
 
     public <X> ILevel2SetOfSetElementsElementsOperator<X> asType(final Type<X> type) {
-    	return endFor().endFor().generic().asSetOfSet(type).forEach().forEach();
+    	return endFor().endFor().generic().asSetOfSetOf(type).forEach().forEach();
     }
 
     public ILevel2SetOfSetElementsElementsOperator<?> asUnknown() {

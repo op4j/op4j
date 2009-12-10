@@ -114,7 +114,7 @@ public interface ILevel0MapOfListOperator<K,V>
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,List<V>>> function);
     
     
-    public <X,Y> ILevel0MapOfListOperator<X,Y> asMapOfList(final Type<X> keyOf, final Type<Y> valueOf);
+    public <X,Y> ILevel0MapOfListOperator<X,Y> asMapOfListOf(final Type<X> keyType, final Type<Y> valueType);
     public ILevel0MapOfListOperator<?,?> asMapOfListOfUnknown();
     
     

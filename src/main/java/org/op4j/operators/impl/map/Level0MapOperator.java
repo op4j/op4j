@@ -195,53 +195,53 @@ public class Level0MapOperator<K,V> extends Operator
 
     
 
-    public <X, Y> ILevel0MapOfArrayOperator<X, Y> asMapOfArray(final Type<X> keyOf, final Type<Y> valueOf) {
-        return generic().asMapOfArray(keyOf, valueOf);
+    public <X, Y> ILevel0MapOfArrayOperator<X, Y> asMapOfArrayOf(final Type<X> keyType, final Type<Y> valueType) {
+        return generic().asMapOfArrayOf(keyType, valueType);
     }
 
 
     public ILevel0MapOfArrayOperator<?, ?> asMapOfArrayOfUnknown() {
-        return asMapOfArray(Types.OBJECT, Types.OBJECT);
+        return asMapOfArrayOf(Types.OBJECT, Types.OBJECT);
     }
 
 
-    public <X, Y> ILevel0MapOfListOperator<X, Y> asMapOfList(final Type<X> keyOf, final Type<Y> valueOf) {
-        return generic().asMapOfList(keyOf, valueOf);
+    public <X, Y> ILevel0MapOfListOperator<X, Y> asMapOfListOf(final Type<X> keyType, final Type<Y> valueType) {
+        return generic().asMapOfListOf(keyType, valueType);
     }
 
 
     public ILevel0MapOfListOperator<?, ?> asMapOfListOfUnknown() {
-        return asMapOfList(Types.OBJECT, Types.OBJECT);
+        return asMapOfListOf(Types.OBJECT, Types.OBJECT);
     }
 
 
-    public <X1, X2, Y> ILevel0MapOfMapOperator<X1, X2, Y> asMapOfMap(final Type<X1> key1Of, final Type<X2> key2Of, final Type<Y> valueOf) {
-        return generic().asMapOfMap(key1Of, key2Of, valueOf);
+    public <X1, X2, Y> ILevel0MapOfMapOperator<X1, X2, Y> asMapOfMapOf(final Type<X1> key1Type, final Type<X2> key2Type, final Type<Y> valueType) {
+        return generic().asMapOfMapOf(key1Type, key2Type, valueType);
     }
 
 
     public ILevel0MapOfMapOperator<?, ?, ?> asMapOfMapOfUnknown() {
-        return asMapOfMap(Types.OBJECT, Types.OBJECT, Types.OBJECT);
+        return asMapOfMapOf(Types.OBJECT, Types.OBJECT, Types.OBJECT);
     }
 
 
-    public <X, Y> ILevel0MapOfSetOperator<X, Y> asMapOfSet(final Type<X> keyOf, final Type<Y> valueOf) {
-        return generic().asMapOfSet(keyOf, valueOf);
+    public <X, Y> ILevel0MapOfSetOperator<X, Y> asMapOfSetOf(final Type<X> keyType, final Type<Y> valueType) {
+        return generic().asMapOfSetOf(keyType, valueType);
     }
 
 
     public ILevel0MapOfSetOperator<?, ?> asMapOfSetOfUnknown() {
-        return asMapOfSet(Types.OBJECT, Types.OBJECT);
+        return asMapOfSetOf(Types.OBJECT, Types.OBJECT);
     }
 
 
-    public <X, Y> ILevel0MapOperator<X, Y> asMap(final Type<X> keyOf, final Type<Y> valueOf) {
-        return generic().asMap(keyOf, valueOf);
+    public <X, Y> ILevel0MapOperator<X, Y> asMapOf(final Type<X> keyType, final Type<Y> valueType) {
+        return generic().asMapOf(keyType, valueType);
     }
 
 
     public ILevel0MapOperator<?, ?> asMapOfUnknown() {
-        return asMap(Types.OBJECT, Types.OBJECT);
+        return asMapOf(Types.OBJECT, Types.OBJECT);
     }
 
     

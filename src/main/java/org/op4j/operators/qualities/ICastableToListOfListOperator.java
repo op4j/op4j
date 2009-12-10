@@ -32,7 +32,7 @@ import org.op4j.operators.intf.listoflist.ILevel0ListOfListOperator;
  */
 public interface ICastableToListOfListOperator {
     
-    public <X> ILevel0ListOfListOperator<X> asListOfList(final Type<X> of);
+    public <X> ILevel0ListOfListOperator<X> asListOfListOf(final Type<X> type);
     public ILevel0ListOfListOperator<?> asListOfListOfUnknown();
 
     

@@ -32,7 +32,7 @@ import org.op4j.operators.intf.arrayoflist.ILevel0ArrayOfListOperator;
  */
 public interface ICastableToArrayOfListOperator {
     
-    public <X> ILevel0ArrayOfListOperator<X> asArrayOfList(final Type<X> of);
+    public <X> ILevel0ArrayOfListOperator<X> asArrayOfListOf(final Type<X> type);
     public ILevel0ArrayOfListOperator<?> asArrayOfListOfUnknown();
 
     

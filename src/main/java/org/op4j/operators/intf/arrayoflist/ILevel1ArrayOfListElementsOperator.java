@@ -118,7 +118,7 @@ public interface ILevel1ArrayOfListElementsOperator<T>
     
     
     
-    public <X> ILevel1ArrayOfListElementsOperator<X> asList(final Type<X> of);
+    public <X> ILevel1ArrayOfListElementsOperator<X> asListOf(final Type<X> type);
     public ILevel1ArrayOfListElementsOperator<?> asListOfUnknown();
     
 		                    

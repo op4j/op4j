@@ -170,7 +170,7 @@ public interface ILevel0ListOfArrayOperator<T>
     
     
     
-    public <X> ILevel0ListOfArrayOperator<X> asListOfArray(final Type<X> of);
+    public <X> ILevel0ListOfArrayOperator<X> asListOfArrayOf(final Type<X> type);
     public ILevel0ListOfArrayOperator<?> asListOfArrayOfUnknown();
 
     

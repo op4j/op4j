@@ -168,7 +168,7 @@ public interface ILevel0SetOfListOperator<T>
     
     
     
-    public <X> ILevel0SetOfListOperator<X> asSetOfList(final Type<X> of);
+    public <X> ILevel0SetOfListOperator<X> asSetOfListOf(final Type<X> type);
     public ILevel0SetOfListOperator<?> asSetOfListOfUnknown();
 
     

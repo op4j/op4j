@@ -115,7 +115,7 @@ public interface ILevel2MapOfSetEntriesValueOperator<K,V>
     
     
     
-    public <X> ILevel2MapOfSetEntriesValueOperator<K,X> asSet(final Type<X> of);
+    public <X> ILevel2MapOfSetEntriesValueOperator<K,X> asSetOf(final Type<X> type);
     public ILevel2MapOfSetEntriesValueOperator<K,?> asSetOfUnknown();
     
                                     

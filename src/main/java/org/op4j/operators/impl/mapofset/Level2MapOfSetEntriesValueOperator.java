@@ -265,15 +265,15 @@ public class Level2MapOfSetEntriesValueOperator<K,V> extends Operator
     
     
     
-    public <X> ILevel2MapOfSetEntriesValueOperator<K, X> asSet(final Type<X> of) {
-        Validate.notNull(of, "A type representing the elements must be specified");
-        TargetUtils.checkIsMapOfSetOfValue(of, get());
+    public <X> ILevel2MapOfSetEntriesValueOperator<K, X> asSetOf(final Type<X> type) {
+        Validate.notNull(type, "A type representing the elements must be specified");
+        TargetUtils.checkIsMapOfSetOfValue(type, get());
         return new Level2MapOfSetEntriesValueOperator<K,X>(getTarget());
     }
 
 
     public ILevel2MapOfSetEntriesValueOperator<K, ?> asSetOfUnknown() {
-        return asSet(Types.OBJECT);
+        return asSetOf(Types.OBJECT);
     }
 
     

@@ -31,7 +31,7 @@ import org.javaruntype.type.Type;
  */
 public interface ICastableToListOperator {
     
-    public <X> IOperator asList(final Type<X> of);
+    public <X> IOperator asListOf(final Type<X> type);
     public IOperator asListOfUnknown();
     
 }

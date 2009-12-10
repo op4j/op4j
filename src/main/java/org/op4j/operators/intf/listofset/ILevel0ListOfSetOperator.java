@@ -171,7 +171,7 @@ public interface ILevel0ListOfSetOperator<T>
     public <X> ILevel0GenericUniqOperator<X> exec(final IFunction<X, ? super List<Set<T>>> function);
     
     
-    public <X> ILevel0ListOfSetOperator<X> asListOfSet(final Type<X> of);
+    public <X> ILevel0ListOfSetOperator<X> asListOfSetOf(final Type<X> type);
     public ILevel0ListOfSetOperator<?> asListOfSetOfUnknown();
 
     

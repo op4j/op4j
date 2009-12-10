@@ -192,16 +192,16 @@ public class Level2MapOfMapEntriesValueOperator<K1,K2,V> extends Operator
 
     
     
-    public <X,Y> ILevel2MapOfMapEntriesValueOperator<K1, X, Y> asMap(final Type<X> keyOf, final Type<Y> valueOf) {
-        Validate.notNull(keyOf, "A type representing the keys must be specified");
-        Validate.notNull(valueOf, "A type representing the values must be specified");
-        TargetUtils.checkIsMapOfMapOfValue(keyOf, valueOf, get());
+    public <X,Y> ILevel2MapOfMapEntriesValueOperator<K1, X, Y> asMapOf(final Type<X> keyType, final Type<Y> valueType) {
+        Validate.notNull(keyType, "A type representing the keys must be specified");
+        Validate.notNull(valueType, "A type representing the values must be specified");
+        TargetUtils.checkIsMapOfMapOfValue(keyType, valueType, get());
         return new Level2MapOfMapEntriesValueOperator<K1,X,Y>(getTarget());
     }
 
 
     public ILevel2MapOfMapEntriesValueOperator<K1, ?, ?> asMapOfUnknown() {
-        return asMap(Types.OBJECT, Types.OBJECT);
+        return asMapOf(Types.OBJECT, Types.OBJECT);
     }
 
     

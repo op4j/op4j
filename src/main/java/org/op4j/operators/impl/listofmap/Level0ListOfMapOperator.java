@@ -235,13 +235,13 @@ public class Level0ListOfMapOperator<K,V> extends Operator
     
     
 
-    public <X,Y> ILevel0ListOfMapOperator<X,Y> asListOfMap(final Type<X> keyOf, final Type<Y> valueOf) {
-    	return generic().asListOfMap(keyOf, valueOf);
+    public <X,Y> ILevel0ListOfMapOperator<X,Y> asListOfMapOf(final Type<X> keyType, final Type<Y> valueType) {
+    	return generic().asListOfMapOf(keyType, valueType);
     }
 
 
     public ILevel0ListOfMapOperator<?,?> asListOfMapOfUnknown() {
-        return asListOfMap(Types.OBJECT, Types.OBJECT);
+        return asListOfMapOf(Types.OBJECT, Types.OBJECT);
     }
     
     

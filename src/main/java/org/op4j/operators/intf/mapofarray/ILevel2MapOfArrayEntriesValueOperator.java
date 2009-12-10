@@ -117,7 +117,7 @@ public interface ILevel2MapOfArrayEntriesValueOperator<K,V>
     
     
     
-    public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> asArray(final Type<X> of);
+    public <X> ILevel2MapOfArrayEntriesValueOperator<K,X> asArrayOf(final Type<X> type);
     public ILevel2MapOfArrayEntriesValueOperator<K,?> asArrayOfUnknown();
     
     

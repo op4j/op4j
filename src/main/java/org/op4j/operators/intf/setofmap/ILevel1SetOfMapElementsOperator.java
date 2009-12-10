@@ -96,7 +96,7 @@ public interface ILevel1SetOfMapElementsOperator<K,V>
     public <X> ILevel1SetElementsOperator<X> exec(final IFunction<X, ? super Map<K,V>> function);
     
     
-    public <X,Y> ILevel1SetOfMapElementsOperator<X,Y> asMap(final Type<X> keyOf, final Type<Y> valueOf);
+    public <X,Y> ILevel1SetOfMapElementsOperator<X,Y> asMapOf(final Type<X> keyType, final Type<Y> valueType);
     public ILevel1SetOfMapElementsOperator<?,?> asMapOfUnknown();
     
     

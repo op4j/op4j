@@ -176,151 +176,151 @@ public class Level0GenericUniqOperator<T> extends Operator
 
 
 
-    public <X> ILevel0ArrayOperator<X> asArray(final Type<X> of) {
-    	Validate.notNull(of, "A type representing the elements must be specified");
-    	TargetUtils.checkIsArray(of, get());
-        return new Level0ArrayOperator<X>(of, getTarget());
+    public <X> ILevel0ArrayOperator<X> asArrayOf(final Type<X> type) {
+    	Validate.notNull(type, "A type representing the elements must be specified");
+    	TargetUtils.checkIsArray(type, get());
+        return new Level0ArrayOperator<X>(type, getTarget());
     }
 
 
-    public <X> ILevel0ListOperator<X> asList(final Type<X> of) {
-    	Validate.notNull(of, "A type representing the elements must be specified");
-    	TargetUtils.checkIsList(of, get());
+    public <X> ILevel0ListOperator<X> asListOf(final Type<X> type) {
+    	Validate.notNull(type, "A type representing the elements must be specified");
+    	TargetUtils.checkIsList(type, get());
         return new Level0ListOperator<X>(getTarget());
     }
 
 
-    public <K,V> ILevel0MapOperator<K,V> asMap(final Type<K> keyOf, final Type<V> valueOf) {
-    	Validate.notNull(keyOf, "A type representing the keys must be specified");
-    	Validate.notNull(valueOf, "A type representing the values must be specified");
-    	TargetUtils.checkIsMap(keyOf, valueOf, get());
+    public <K,V> ILevel0MapOperator<K,V> asMapOf(final Type<K> keyType, final Type<V> valueType) {
+    	Validate.notNull(keyType, "A type representing the keys must be specified");
+    	Validate.notNull(valueType, "A type representing the values must be specified");
+    	TargetUtils.checkIsMap(keyType, valueType, get());
         return new Level0MapOperator<K,V>(getTarget());
     }
 
 
-    public <X> ILevel0SetOperator<X> asSet(final Type<X> of) {
-    	Validate.notNull(of, "A type representing the elements must be specified");
-    	TargetUtils.checkIsSet(of, get());
+    public <X> ILevel0SetOperator<X> asSetOf(final Type<X> type) {
+    	Validate.notNull(type, "A type representing the elements must be specified");
+    	TargetUtils.checkIsSet(type, get());
         return new Level0SetOperator<X>(getTarget());
     }
 
 
-    public <X> ILevel0ArrayOfArrayOperator<X> asArrayOfArray(final Type<X> of) {
-    	Validate.notNull(of, "A type representing the elements must be specified");
-    	TargetUtils.checkIsArrayOfArray(of, get());
-        return new Level0ArrayOfArrayOperator<X>(of, getTarget());
+    public <X> ILevel0ArrayOfArrayOperator<X> asArrayOfArrayOf(final Type<X> type) {
+    	Validate.notNull(type, "A type representing the elements must be specified");
+    	TargetUtils.checkIsArrayOfArray(type, get());
+        return new Level0ArrayOfArrayOperator<X>(type, getTarget());
     }
 
 
-    public <X> ILevel0ArrayOfListOperator<X> asArrayOfList(final Type<X> of) {
-    	Validate.notNull(of, "A type representing the elements must be specified");
-    	TargetUtils.checkIsArrayOfList(of, get());
+    public <X> ILevel0ArrayOfListOperator<X> asArrayOfListOf(final Type<X> type) {
+    	Validate.notNull(type, "A type representing the elements must be specified");
+    	TargetUtils.checkIsArrayOfList(type, get());
         return new Level0ArrayOfListOperator<X>(getTarget());
     }
 
 
-    public <K, V> ILevel0ArrayOfMapOperator<K, V> asArrayOfMap(final Type<K> keyOf, final Type<V> valueOf) {
-    	Validate.notNull(keyOf, "A type representing the keys must be specified");
-    	Validate.notNull(valueOf, "A type representing the values must be specified");
-    	TargetUtils.checkIsArrayOfMap(keyOf, valueOf, get());
+    public <K, V> ILevel0ArrayOfMapOperator<K, V> asArrayOfMapOf(final Type<K> keyType, final Type<V> valueType) {
+    	Validate.notNull(keyType, "A type representing the keys must be specified");
+    	Validate.notNull(valueType, "A type representing the values must be specified");
+    	TargetUtils.checkIsArrayOfMap(keyType, valueType, get());
         return new Level0ArrayOfMapOperator<K,V>(getTarget());
     }
 
 
-    public <X> ILevel0ArrayOfSetOperator<X> asArrayOfSet(final Type<X> of) {
-    	Validate.notNull(of, "A type representing the elements must be specified");
-    	TargetUtils.checkIsArrayOfSet(of, get());
+    public <X> ILevel0ArrayOfSetOperator<X> asArrayOfSetOf(final Type<X> type) {
+    	Validate.notNull(type, "A type representing the elements must be specified");
+    	TargetUtils.checkIsArrayOfSet(type, get());
         return new Level0ArrayOfSetOperator<X>(getTarget());
     }
 
 
-    public <X> ILevel0ListOfArrayOperator<X> asListOfArray(final Type<X> of) {
-    	Validate.notNull(of, "A type representing the elements must be specified");
-    	TargetUtils.checkIsListOfArray(of, get());
-        return new Level0ListOfArrayOperator<X>(of, getTarget());
+    public <X> ILevel0ListOfArrayOperator<X> asListOfArrayOf(final Type<X> type) {
+    	Validate.notNull(type, "A type representing the elements must be specified");
+    	TargetUtils.checkIsListOfArray(type, get());
+        return new Level0ListOfArrayOperator<X>(type, getTarget());
     }
 
 
-    public <X> ILevel0ListOfListOperator<X> asListOfList(final Type<X> of) {
-    	Validate.notNull(of, "A type representing the elements must be specified");
-    	TargetUtils.checkIsListOfList(of, get());
+    public <X> ILevel0ListOfListOperator<X> asListOfListOf(final Type<X> type) {
+    	Validate.notNull(type, "A type representing the elements must be specified");
+    	TargetUtils.checkIsListOfList(type, get());
         return new Level0ListOfListOperator<X>(getTarget());
     }
 
 
-    public <K, V> ILevel0ListOfMapOperator<K, V> asListOfMap(final Type<K> keyOf, final Type<V> valueOf) {
-    	Validate.notNull(keyOf, "A type representing the keys must be specified");
-    	Validate.notNull(valueOf, "A type representing the values must be specified");
-    	TargetUtils.checkIsListOfMap(keyOf, valueOf, get());
+    public <K, V> ILevel0ListOfMapOperator<K, V> asListOfMapOf(final Type<K> keyType, final Type<V> valueType) {
+    	Validate.notNull(keyType, "A type representing the keys must be specified");
+    	Validate.notNull(valueType, "A type representing the values must be specified");
+    	TargetUtils.checkIsListOfMap(keyType, valueType, get());
         return new Level0ListOfMapOperator<K,V>(getTarget());
     }
 
 
-    public <X> ILevel0ListOfSetOperator<X> asListOfSet(final Type<X> of) {
-    	Validate.notNull(of, "A type representing the elements must be specified");
-        TargetUtils.checkIsListOfSet(of, get());
+    public <X> ILevel0ListOfSetOperator<X> asListOfSetOf(final Type<X> type) {
+    	Validate.notNull(type, "A type representing the elements must be specified");
+        TargetUtils.checkIsListOfSet(type, get());
         return new Level0ListOfSetOperator<X>(getTarget());
     }
 
 
-    public <K, V> ILevel0MapOfArrayOperator<K, V> asMapOfArray(final Type<K> keyOf, final Type<V> valueOf) {
-    	Validate.notNull(keyOf, "A type representing the keys must be specified");
-    	Validate.notNull(valueOf, "A type representing the values must be specified");
-    	TargetUtils.checkIsMapOfArray(keyOf, valueOf, get());
-        return new Level0MapOfArrayOperator<K,V>(valueOf, getTarget());
+    public <K, V> ILevel0MapOfArrayOperator<K, V> asMapOfArrayOf(final Type<K> keyType, final Type<V> valueType) {
+    	Validate.notNull(keyType, "A type representing the keys must be specified");
+    	Validate.notNull(valueType, "A type representing the values must be specified");
+    	TargetUtils.checkIsMapOfArray(keyType, valueType, get());
+        return new Level0MapOfArrayOperator<K,V>(valueType, getTarget());
     }
 
 
-    public <K, V> ILevel0MapOfListOperator<K, V> asMapOfList(final Type<K> keyOf, final Type<V> valueOf) {
-    	Validate.notNull(keyOf, "A type representing the keys must be specified");
-    	Validate.notNull(valueOf, "A type representing the values must be specified");
-    	TargetUtils.checkIsMapOfList(keyOf, valueOf, get());
+    public <K, V> ILevel0MapOfListOperator<K, V> asMapOfListOf(final Type<K> keyType, final Type<V> valueType) {
+    	Validate.notNull(keyType, "A type representing the keys must be specified");
+    	Validate.notNull(valueType, "A type representing the values must be specified");
+    	TargetUtils.checkIsMapOfList(keyType, valueType, get());
         return new Level0MapOfListOperator<K,V>(getTarget());
     }
 
 
-    public <K1, K2, V> ILevel0MapOfMapOperator<K1, K2, V> asMapOfMap(final Type<K1> key1Of, final Type<K2> key2Of, final Type<V> valueOf) {
-    	Validate.notNull(key1Of, "A type representing the keys of the first-level map must be specified");
-    	Validate.notNull(key2Of, "A type representing the keys of the second-level maps must be specified");
-    	Validate.notNull(valueOf, "A type representing the values of the second-level maps must be specified");
-    	TargetUtils.checkIsMapOfMap(key1Of, key2Of, valueOf, get());
+    public <K1, K2, V> ILevel0MapOfMapOperator<K1, K2, V> asMapOfMapOf(final Type<K1> key1Type, final Type<K2> key2Type, final Type<V> valueType) {
+    	Validate.notNull(key1Type, "A type representing the keys of the first-level map must be specified");
+    	Validate.notNull(key2Type, "A type representing the keys of the second-level maps must be specified");
+    	Validate.notNull(valueType, "A type representing the values of the second-level maps must be specified");
+    	TargetUtils.checkIsMapOfMap(key1Type, key2Type, valueType, get());
         return new Level0MapOfMapOperator<K1,K2,V>(getTarget());
     }
 
 
-    public <K, V> ILevel0MapOfSetOperator<K, V> asMapOfSet(final Type<K> keyOf, final Type<V> valueOf) {
-    	Validate.notNull(keyOf, "A type representing the keys must be specified");
-    	Validate.notNull(valueOf, "A type representing the values must be specified");
-    	TargetUtils.checkIsMapOfSet(keyOf, valueOf, get());
+    public <K, V> ILevel0MapOfSetOperator<K, V> asMapOfSetOf(final Type<K> keyType, final Type<V> valueType) {
+    	Validate.notNull(keyType, "A type representing the keys must be specified");
+    	Validate.notNull(valueType, "A type representing the values must be specified");
+    	TargetUtils.checkIsMapOfSet(keyType, valueType, get());
         return new Level0MapOfSetOperator<K,V>(getTarget());
     }
 
 
-    public <X> ILevel0SetOfArrayOperator<X> asSetOfArray(final Type<X> of) {
-    	Validate.notNull(of, "A type representing the elements must be specified");
-    	TargetUtils.checkIsSetOfArray(of,get());
-        return new Level0SetOfArrayOperator<X>(of, getTarget());
+    public <X> ILevel0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type) {
+    	Validate.notNull(type, "A type representing the elements must be specified");
+    	TargetUtils.checkIsSetOfArray(type,get());
+        return new Level0SetOfArrayOperator<X>(type, getTarget());
     }
 
 
-    public <X> ILevel0SetOfListOperator<X> asSetOfList(final Type<X> of) {
-    	Validate.notNull(of, "A type representing the elements must be specified");
-    	TargetUtils.checkIsSetOfList(of,get());
+    public <X> ILevel0SetOfListOperator<X> asSetOfListOf(final Type<X> type) {
+    	Validate.notNull(type, "A type representing the elements must be specified");
+    	TargetUtils.checkIsSetOfList(type,get());
         return new Level0SetOfListOperator<X>(getTarget());
     }
 
 
-    public <K, V> ILevel0SetOfMapOperator<K, V> asSetOfMap(final Type<K> keyOf, final Type<V> valueOf) {
-    	Validate.notNull(keyOf, "A type representing the keys must be specified");
-    	Validate.notNull(valueOf, "A type representing the values must be specified");
-    	TargetUtils.checkIsSetOfMap(keyOf, valueOf, get());
+    public <K, V> ILevel0SetOfMapOperator<K, V> asSetOfMapOf(final Type<K> keyType, final Type<V> valueType) {
+    	Validate.notNull(keyType, "A type representing the keys must be specified");
+    	Validate.notNull(valueType, "A type representing the values must be specified");
+    	TargetUtils.checkIsSetOfMap(keyType, valueType, get());
         return new Level0SetOfMapOperator<K,V>(getTarget());
     }
 
 
-    public <X> ILevel0SetOfSetOperator<X> asSetOfSet(final Type<X> of) {
-    	Validate.notNull(of, "A type representing the elements must be specified");
-    	TargetUtils.checkIsSetOfSet(of,get());
+    public <X> ILevel0SetOfSetOperator<X> asSetOfSetOf(final Type<X> type) {
+    	Validate.notNull(type, "A type representing the elements must be specified");
+    	TargetUtils.checkIsSetOfSet(type,get());
         return new Level0SetOfSetOperator<X>(getTarget());
     }
 
@@ -347,102 +347,102 @@ public class Level0GenericUniqOperator<T> extends Operator
 
 
     public ILevel0ArrayOfArrayOperator<?> asArrayOfArrayOfUnknown() {
-        return asArrayOfArray(Types.OBJECT);
+        return asArrayOfArrayOf(Types.OBJECT);
     }
 
 
     public ILevel0ArrayOfListOperator<?> asArrayOfListOfUnknown() {
-        return asArrayOfList(Types.OBJECT);
+        return asArrayOfListOf(Types.OBJECT);
     }
 
 
     public ILevel0ArrayOfMapOperator<?, ?> asArrayOfMapOfUnknown() {
-        return asArrayOfMap(Types.OBJECT, Types.OBJECT);
+        return asArrayOfMapOf(Types.OBJECT, Types.OBJECT);
     }
 
 
     public ILevel0ArrayOfSetOperator<?> asArrayOfSetOfUnknown() {
-        return asArrayOfSet(Types.OBJECT);
+        return asArrayOfSetOf(Types.OBJECT);
     }
 
 
     public ILevel0ArrayOperator<?> asArrayOfUnknown() {
-        return asArray(Types.OBJECT);
+        return asArrayOf(Types.OBJECT);
     }
 
 
     public ILevel0ListOfArrayOperator<?> asListOfArrayOfUnknown() {
-        return asListOfArray(Types.OBJECT);
+        return asListOfArrayOf(Types.OBJECT);
     }
 
 
     public ILevel0ListOfListOperator<?> asListOfListOfUnknown() {
-        return asListOfList(Types.OBJECT);
+        return asListOfListOf(Types.OBJECT);
     }
 
 
     public ILevel0ListOfMapOperator<?, ?> asListOfMapOfUnknown() {
-        return asListOfMap(Types.OBJECT, Types.OBJECT);
+        return asListOfMapOf(Types.OBJECT, Types.OBJECT);
     }
 
 
     public ILevel0ListOfSetOperator<?> asListOfSetOfUnknown() {
-        return asListOfSet(Types.OBJECT);
+        return asListOfSetOf(Types.OBJECT);
     }
 
 
     public ILevel0ListOperator<?> asListOfUnknown() {
-        return asList(Types.OBJECT);
+        return asListOf(Types.OBJECT);
     }
 
 
     public ILevel0MapOfArrayOperator<?, ?> asMapOfArrayOfUnknown() {
-        return asMapOfArray(Types.OBJECT, Types.OBJECT);
+        return asMapOfArrayOf(Types.OBJECT, Types.OBJECT);
     }
 
 
     public ILevel0MapOfListOperator<?, ?> asMapOfListOfUnknown() {
-        return asMapOfList(Types.OBJECT, Types.OBJECT);
+        return asMapOfListOf(Types.OBJECT, Types.OBJECT);
     }
 
 
     public ILevel0MapOfMapOperator<?, ?, ?> asMapOfMapOfUnknown() {
-        return asMapOfMap(Types.OBJECT, Types.OBJECT, Types.OBJECT);
+        return asMapOfMapOf(Types.OBJECT, Types.OBJECT, Types.OBJECT);
     }
 
 
     public ILevel0MapOfSetOperator<?, ?> asMapOfSetOfUnknown() {
-        return asMapOfSet(Types.OBJECT, Types.OBJECT);
+        return asMapOfSetOf(Types.OBJECT, Types.OBJECT);
     }
 
 
     public ILevel0MapOperator<?, ?> asMapOfUnknown() {
-        return asMap(Types.OBJECT, Types.OBJECT);
+        return asMapOf(Types.OBJECT, Types.OBJECT);
     }
 
 
     public ILevel0SetOfArrayOperator<?> asSetOfArrayOfUnknown() {
-        return asSetOfArray(Types.OBJECT);
+        return asSetOfArrayOf(Types.OBJECT);
     }
 
 
     public ILevel0SetOfListOperator<?> asSetOfListOfUnknown() {
-        return asSetOfList(Types.OBJECT);
+        return asSetOfListOf(Types.OBJECT);
     }
 
 
     public ILevel0SetOfMapOperator<?, ?> asSetOfMapOfUnknown() {
-        return asSetOfMap(Types.OBJECT, Types.OBJECT);
+        return asSetOfMapOf(Types.OBJECT, Types.OBJECT);
     }
 
 
     public ILevel0SetOfSetOperator<?> asSetOfSetOfUnknown() {
-        return asSetOfSet(Types.OBJECT);
+        return asSetOfSetOf(Types.OBJECT);
     }
 
 
     public ILevel0SetOperator<?> asSetOfUnknown() {
-        return asSet(Types.OBJECT);
+        return asSetOf(Types.OBJECT);
     }
 
     
