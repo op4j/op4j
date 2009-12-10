@@ -103,6 +103,7 @@ import org.op4j.operators.intf.setoflist.ILevel0SetOfListOperator;
 import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.ILevel0SetOfSetOperator;
 import org.op4j.target.Target;
+import org.op4j.util.TargetUtils;
 import org.op4j.util.VarArgsUtil;
 
 
@@ -134,21 +135,11 @@ public final class Op {
     }
 
     
-    public static ILevel0GenericMultiOperator<?> onAllObjs(final Object... targets) {
-        return null;
-    }
-
-    
-    public static <T> ILevel0GenericMultiOperator<T> onAll(final Type<T> of, final T... targets) {
-        return null;
-    }
-
-    
     @SuppressWarnings("unchecked")
     public static <T> ILevel0ArrayOperator<T> onArray(final T[] target) {
         final Class<?> componentClass = 
             (target == null)? Object.class : target.getClass().getComponentType();
-        return new Level0ArrayOperator<T>((Type<? super T>) Types.forClass(componentClass), Target.forObject(target));
+        return new Level0ArrayOperator<T>((Type<? super T>) Types.forClass(componentClass), Target.forObject(TargetUtils.copyArray(target)));
     }
 
     
@@ -156,100 +147,100 @@ public final class Op {
     public static <T> ILevel0ArrayOfArrayOperator<T> onArrayOfArray(final T[][] target) {
         final Class<?> componentClass = 
             (target == null)? Object.class : target.getClass().getComponentType().getComponentType();
-        return new Level0ArrayOfArrayOperator<T>((Type<? super T>) Types.forClass(componentClass), Target.forObject(target));
+        return new Level0ArrayOfArrayOperator<T>((Type<? super T>) Types.forClass(componentClass), Target.forObject(TargetUtils.copyArrayOfArray(target)));
     }
 
     
     public static <T> ILevel0ArrayOfListOperator<T> onArrayOfList(final List<T>[] target) {
-        return new Level0ArrayOfListOperator<T>(Target.forObject(target));
+        return new Level0ArrayOfListOperator<T>(Target.forObject(TargetUtils.copyArrayOfList(target)));
     }
 
     
     public static <K,V> ILevel0ArrayOfMapOperator<K,V> onArrayOfMap(final Map<K,V>[] target) {
-        return new Level0ArrayOfMapOperator<K,V>(Target.forObject(target));
+        return new Level0ArrayOfMapOperator<K,V>(Target.forObject(TargetUtils.copyArrayOfMap(target)));
     }
 
     
     public static <T> ILevel0ArrayOfSetOperator<T> onArrayOfSet(final Set<T>[] target) {
-        return new Level0ArrayOfSetOperator<T>(Target.forObject(target));
+        return new Level0ArrayOfSetOperator<T>(Target.forObject(TargetUtils.copyArrayOfSet(target)));
     }
 
     
     public static <T> ILevel0ListOperator<T> onList(final List<T> target) {
-        return new Level0ListOperator<T>(Target.forObject(target));
+        return new Level0ListOperator<T>(Target.forObject(TargetUtils.copyList(target)));
     }
 
     
     public static <T> ILevel0ListOfArrayOperator<T> onListOfArray(final Type<T> of, final List<? extends T[]> target) {
         Validate.notNull(of, "Array component cannot be null");
-        return new Level0ListOfArrayOperator<T>(of, Target.forObject(target));
+        return new Level0ListOfArrayOperator<T>(of, Target.forObject(TargetUtils.copyListOfArray(target)));
     }
 
     
     public static <T> ILevel0ListOfListOperator<T> onListOfList(final List<? extends List<T>> target) {
-        return new Level0ListOfListOperator<T>(Target.forObject(target));
+        return new Level0ListOfListOperator<T>(Target.forObject(TargetUtils.copyListOfList(target)));
     }
 
     
     public static <K,V> ILevel0ListOfMapOperator<K,V> onListOfMap(final List<? extends Map<K,V>> target) {
-        return new Level0ListOfMapOperator<K,V>(Target.forObject(target));
+        return new Level0ListOfMapOperator<K,V>(Target.forObject(TargetUtils.copyListOfMap(target)));
     }
 
     
     public static <T> ILevel0ListOfSetOperator<T> onListOfSet(final List<? extends Set<T>> target) {
-        return new Level0ListOfSetOperator<T>(Target.forObject(target));
+        return new Level0ListOfSetOperator<T>(Target.forObject(TargetUtils.copyListOfSet(target)));
     }
 
     
     public static <K,V> ILevel0MapOperator<K,V> onMap(final Map<K,V> target) {
-        return new Level0MapOperator<K,V>(Target.forObject(target));
+        return new Level0MapOperator<K,V>(Target.forObject(TargetUtils.copyMap(target)));
     }
 
     
     public static <K,V> ILevel0MapOfArrayOperator<K,V> onMapOfArray(final Type<V> of, final Map<K,V[]> target) {
         Validate.notNull(of, "Array component cannot be null");
-        return new Level0MapOfArrayOperator<K,V>(of, Target.forObject(target));
+        return new Level0MapOfArrayOperator<K,V>(of, Target.forObject(TargetUtils.copyMapOfArray(target)));
     }
 
     
     public static <K,V> ILevel0MapOfListOperator<K,V> onMapOfList(final Map<K,? extends List<V>> target) {
-        return new Level0MapOfListOperator<K,V>(Target.forObject(target));
+        return new Level0MapOfListOperator<K,V>(Target.forObject(TargetUtils.copyMapOfList(target)));
     }
 
     
     public static <K1,K2,V> ILevel0MapOfMapOperator<K1,K2,V> onMapOfMap(final Map<K1,? extends Map<K2,V>> target) {
-        return new Level0MapOfMapOperator<K1,K2,V>(Target.forObject(target));
+        return new Level0MapOfMapOperator<K1,K2,V>(Target.forObject(TargetUtils.copyMapOfMap(target)));
     }
 
     
     public static <K,V> ILevel0MapOfSetOperator<K,V> onMapOfSet(final Map<K,? extends Set<V>> target) {
-        return new Level0MapOfSetOperator<K,V>(Target.forObject(target));
+        return new Level0MapOfSetOperator<K,V>(Target.forObject(TargetUtils.copyMapOfSet(target)));
     }
 
     
     public static <T> ILevel0SetOperator<T> onSet(final Set<T> target) {
-        return new Level0SetOperator<T>(Target.forObject(target));
+        return new Level0SetOperator<T>(Target.forObject(TargetUtils.copySet(target)));
     }
 
     
     public static <T> ILevel0SetOfArrayOperator<T> onSetOfArray(final Type<T> of, final Set<? extends T[]> target) {
         Validate.notNull(of, "Array component cannot be null");
-        return new Level0SetOfArrayOperator<T>(of, Target.forObject(target));
+        return new Level0SetOfArrayOperator<T>(of, Target.forObject(TargetUtils.copySetOfArray(target)));
     }
 
     
     public static <T> ILevel0SetOfListOperator<T> onSetOfList(final Set<? extends List<T>> target) {
-        return new Level0SetOfListOperator<T>(Target.forObject(target));
+        return new Level0SetOfListOperator<T>(Target.forObject(TargetUtils.copySetOfList(target)));
     }
 
     
     public static <K,V> ILevel0SetOfMapOperator<K,V> onSetOfMap(final Set<? extends Map<K,V>> target) {
-        return new Level0SetOfMapOperator<K,V>(Target.forObject(target));
+        return new Level0SetOfMapOperator<K,V>(Target.forObject(TargetUtils.copySetOfMap(target)));
     }
 
     
     public static <T> ILevel0SetOfSetOperator<T> onSetOfSet(final Set<? extends Set<T>> target) {
-        return new Level0SetOfSetOperator<T>(Target.forObject(target));
+        return new Level0SetOfSetOperator<T>(Target.forObject(TargetUtils.copySetOfSet(target)));
     }
     
     
