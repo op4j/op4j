@@ -100,7 +100,7 @@ public class ListFuncs {
         }
 
         @Override
-        public List<T> notNullExecute(final List<T> object) throws Exception {
+        public List<T> notNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
             return new ArrayList<T>(new LinkedHashSet<T>(object));
         }
 

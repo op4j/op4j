@@ -141,7 +141,7 @@ public class StringFuncs {
 		}
 
         @Override
-		public String notNullExecute(final String input) throws Exception {
+		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			return StringEscapeUtils.escapeCsv(input);
 		}		
 	}
@@ -158,7 +158,7 @@ public class StringFuncs {
 		}
 
         @Override
-		public String notNullExecute(final String input) throws Exception {
+		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			return StringEscapeUtils.unescapeCsv(input);
 		}		
 	}
@@ -173,7 +173,7 @@ public class StringFuncs {
 		}
 
         @Override
-		public String notNullExecute(final String input) throws Exception {
+		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			return StringEscapeUtils.escapeXml(input);
 		}		
 	}
@@ -188,7 +188,7 @@ public class StringFuncs {
 		}
 
         @Override
-		public String notNullExecute(final String input) throws Exception {
+		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			return StringEscapeUtils.unescapeXml(input);
 		}		
 	}
@@ -203,7 +203,7 @@ public class StringFuncs {
 		}
 
         @Override
-		public String notNullExecute(final String input) throws Exception {
+		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			return StringEscapeUtils.escapeHtml(input);
 		}		
 	}
@@ -219,7 +219,7 @@ public class StringFuncs {
 		}
 
         @Override
-		public String notNullExecute(final String input) throws Exception {
+		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			return StringEscapeUtils.unescapeHtml(input);
 		}		
 	}
@@ -234,7 +234,7 @@ public class StringFuncs {
 		}
 
         @Override
-		public String notNullExecute(final String input) throws Exception {
+		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			return StringEscapeUtils.escapeJavaScript(input);
 		}		
 	}
@@ -249,7 +249,7 @@ public class StringFuncs {
 		}
 
         @Override
-		public String notNullExecute(final String input) throws Exception {
+		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			return StringEscapeUtils.unescapeJavaScript(input);
 		}		
 	}
@@ -268,7 +268,7 @@ public class StringFuncs {
 		}
 
         @Override
-		public String notNullExecute(final String input) throws Exception {
+		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			Validate.notNull(this.charset, "Charset can't be null");
 			return new String(new Base64().encode(input.getBytes(
 					this.charset.name())), "US-ASCII");
@@ -289,7 +289,7 @@ public class StringFuncs {
 		}
 
         @Override
-		public String notNullExecute(final String input) throws Exception {
+		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			Validate.notNull(this.charset, "Charset can't be null");
 			return new String(new Base64().decode(input.getBytes("US-ASCII")), 
 					this.charset.name()); 
@@ -310,7 +310,7 @@ public class StringFuncs {
 		}
 
         @Override
-		public String notNullExecute(final String input) throws Exception {
+		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			Validate.notNull(this.charset, "Charset can't be null");
 
 			final byte[] inputAsByteArray = input.getBytes(this.charset.name());
@@ -336,7 +336,7 @@ public class StringFuncs {
 		}
 
         @Override
-		public String notNullExecute(final String input) throws Exception {
+		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			Validate.notNull(this.charset, "Charset can't be null");
 
 			final StringBuffer output = new StringBuffer();            
@@ -363,7 +363,7 @@ public class StringFuncs {
 		}
 
         @Override
-		public String notNullExecute(final String input) throws Exception {
+		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			return StringUtils.upperCase(input);
 		}		
 	}
@@ -379,7 +379,7 @@ public class StringFuncs {
 		}
 
         @Override
-		public String notNullExecute(final String input) throws Exception {
+		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			return StringUtils.lowerCase(input);
 		}		
 	}
@@ -395,7 +395,7 @@ public class StringFuncs {
 		}
 
         @Override
-		public String notNullExecute(final String input) throws Exception {
+		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			return StringUtils.uncapitalize(input);
 		}		
 	}
@@ -410,7 +410,7 @@ public class StringFuncs {
 		}
 
         @Override
-		public String notNullExecute(final String input) throws Exception {
+		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			return StringUtils.capitalize(input);
 		}		
 	}	
@@ -426,7 +426,7 @@ public class StringFuncs {
 		}
 
         @Override
-		public String notNullExecute(final String input) throws Exception {
+		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			return StringUtils.trim(input);
 		}		
 	}	
@@ -442,7 +442,7 @@ public class StringFuncs {
 		}
 
 		@Override
-        public String notNullExecute(final String input) throws Exception {
+        public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			return StringUtils.strip(input);
 		}		
 	}	

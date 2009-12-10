@@ -29,6 +29,7 @@ import java.util.Set;
 
 import org.apache.commons.lang.Validate;
 import org.op4j.exceptions.ExecutionException;
+import org.op4j.functions.ExecCtx;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.evaluators.IEvaluator;
 
@@ -148,7 +149,7 @@ public abstract class NodeTarget extends Target{
             newElements.add(NodeTarget.forObject(elementId, element));
             Boolean evalResult = null;
             try {
-                evalResult = eval.execute(element); 
+                evalResult = eval.execute(element, new ExecCtx()); 
             } catch (Exception e) {
                 throw new ExecutionException(e);
             }
@@ -204,7 +205,7 @@ public abstract class NodeTarget extends Target{
             } else {
                 Boolean evalResult = null;
                 try {
-                    evalResult = eval.execute(element); 
+                    evalResult = eval.execute(element, new ExecCtx()); 
                 } catch (Exception e) {
                     throw new ExecutionException(e);
                 }
@@ -234,7 +235,7 @@ public abstract class NodeTarget extends Target{
             if (element != null) {
                 Boolean evalResult = null;
                 try {
-                    evalResult = eval.execute(element); 
+                    evalResult = eval.execute(element, new ExecCtx()); 
                 } catch (Exception e) {
                     throw new ExecutionException(e);
                 }
@@ -265,7 +266,7 @@ public abstract class NodeTarget extends Target{
     	Validate.notNull(executable, "An executable must be specified");
     	final IFunction<Object,Object> objectCommand = (IFunction<Object,Object>) executable;
     	try {
-            return NodeTarget.forObject(getId(), objectCommand.execute(getObject()));
+            return NodeTarget.forObject(getId(), objectCommand.execute(getObject(), new ExecCtx()));
         } catch (ExecutionException e) {
             throw e;
     	} catch (Throwable t) {

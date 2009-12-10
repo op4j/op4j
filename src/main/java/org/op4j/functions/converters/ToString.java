@@ -34,6 +34,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.functions.ExecCtx;
 import org.op4j.functions.converters.ToString.FromNumber.NumberFormatType;
 
 /**
@@ -328,7 +329,7 @@ public final class ToString {
 		}
 
         @Override
-		public String nullAsNullExecute(final Object object) throws Exception {
+		public String nullAsNullExecute(final Object object, final ExecCtx ctx) throws Exception {
 			return object.toString();
 		}
 		
@@ -531,7 +532,7 @@ public final class ToString {
 		}
 
         @Override
-		public String nullAsNullExecute(final Number number) throws Exception {
+		public String nullAsNullExecute(final Number number, final ExecCtx ctx) throws Exception {
 			return fromNumber(number);						
 		}
 		
@@ -734,7 +735,7 @@ public final class ToString {
 		}
 
         @Override
-		public String nullAsNullExecute(final Calendar calendar) throws Exception {
+		public String nullAsNullExecute(final Calendar calendar, final ExecCtx ctx) throws Exception {
 			if (StringUtils.isNotEmpty(this.pattern)) {
 				return fromCalendar(calendar, this.pattern, this.locale);
 			} 
@@ -857,7 +858,7 @@ public final class ToString {
 		}
 
         @Override
-		public String nullAsNullExecute(final Date date) throws Exception {
+		public String nullAsNullExecute(final Date date, final ExecCtx ctx) throws Exception {
 			if (StringUtils.isNotEmpty(this.pattern)) {
 				return fromDate(date, this.pattern, this.locale);
 			} 

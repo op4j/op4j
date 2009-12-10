@@ -37,15 +37,15 @@ public abstract class AbstractNotNullFunc<R, T> implements IFunction<R, T> {
     }
 
 
-    public final R execute(final T object) throws Exception {
+    public final R execute(final T object, final ExecCtx ctx) throws Exception {
         if (object == null) {
             throw new NullTargetException();
         }
-        return notNullExecute(object);
+        return notNullExecute(object, ctx);
     }
 
 
-    public abstract R notNullExecute(final T object) throws Exception;
+    public abstract R notNullExecute(final T object, final ExecCtx ctx) throws Exception;
     
     
     

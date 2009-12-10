@@ -77,7 +77,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] notNullExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
 
             final List<T> list = new ArrayList<T>(Arrays.asList(object));
             Collections.sort(list);
@@ -105,7 +105,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] notNullExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
 
             final List<T> list = new ArrayList<T>(Arrays.asList(object));
             Collections.sort(list, this.comparator);
@@ -130,7 +130,7 @@ public class ArrayFuncs {
 
         @Override
         @SuppressWarnings("unchecked")
-        public T[] notNullExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
 
             Set<?> set = null;
             if (!object.getClass().getComponentType().isArray()) {
@@ -199,7 +199,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] notNullExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.addAll(this.newElements);
             return ArrayFuncs.fromList(object.getClass(), result);
@@ -225,7 +225,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] notNullExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.addAll(this.position, this.newElements);
             return ArrayFuncs.fromList(object.getClass(), result);
@@ -252,7 +252,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] notNullExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.addAll(this.newElements);
             return ArrayFuncs.fromList(object.getClass(), result);
@@ -278,7 +278,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] notNullExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             int i = 0;
             for (final T element : object) {
@@ -310,7 +310,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] notNullExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.removeAll(this.values);
             return ArrayFuncs.fromList(object.getClass(), result);
@@ -337,10 +337,10 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] notNullExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
-                if (!this.eval.execute(element).booleanValue()) {
+                if (!this.eval.execute(element, ctx).booleanValue()) {
                     result.add(element);
                 }
             }
@@ -368,10 +368,10 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] notNullExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
-                if (this.eval.execute(element).booleanValue()) {
+                if (this.eval.execute(element, ctx).booleanValue()) {
                     result.add(element);
                 }
             }
@@ -398,7 +398,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] notNullExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             int i = 0;
             for (final T element : object) {
@@ -427,7 +427,7 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] notNullExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
@@ -459,11 +459,11 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] notNullExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
-                    if (!this.eval.execute(element).booleanValue()) {
+                    if (!this.eval.execute(element, ctx).booleanValue()) {
                         result.add(element);
                     }
                 } else {
@@ -497,11 +497,11 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] notNullExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
-                    if (this.eval.execute(element).booleanValue()) {
+                    if (this.eval.execute(element, ctx).booleanValue()) {
                         result.add(element);
                     }
                 } else {
@@ -532,11 +532,11 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] notNullExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
-                    if (!this.eval.execute(element).booleanValue()) {
+                    if (!this.eval.execute(element, ctx).booleanValue()) {
                         result.add(element);
                     }
                 }
@@ -567,11 +567,11 @@ public class ArrayFuncs {
         }
 
         @Override
-        public T[] notNullExecute(final T[] object) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
-                    if (this.eval.execute(element).booleanValue()) {
+                    if (this.eval.execute(element, ctx).booleanValue()) {
                         result.add(element);
                     }
                 }
@@ -602,7 +602,7 @@ public class ArrayFuncs {
 
         @Override
         @SuppressWarnings("unchecked")
-        public T[] notNullExecute(final T[][] object) throws Exception {
+        public T[] notNullExecute(final T[][] object, final ExecCtx ctx) throws Exception {
             
             final List<T> result = new ArrayList<T>();
             for (final T[] element : object) {
@@ -633,7 +633,7 @@ public class ArrayFuncs {
 
         @Override
         @SuppressWarnings("unchecked")
-        public T[] notNullExecute(final List<T>[] object) throws Exception {
+        public T[] notNullExecute(final List<T>[] object, final ExecCtx ctx) throws Exception {
             
             final List<T> result = new ArrayList<T>();
             for (final List<T> element : object) {
@@ -665,7 +665,7 @@ public class ArrayFuncs {
 
         @Override
         @SuppressWarnings("unchecked")
-        public T[] notNullExecute(final Set<T>[] object) throws Exception {
+        public T[] notNullExecute(final Set<T>[] object, final ExecCtx ctx) throws Exception {
             
             final List<T> result = new ArrayList<T>();
             for (final Set<T> element : object) {

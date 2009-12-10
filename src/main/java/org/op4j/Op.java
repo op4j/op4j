@@ -40,6 +40,7 @@ import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.ArrayFuncs;
+import org.op4j.functions.ExecCtx;
 import org.op4j.functions.ListFuncs;
 import org.op4j.functions.SetFuncs;
 import org.op4j.functions.StringFuncs;
@@ -440,7 +441,7 @@ public final class Op {
         System.out.println(Op.onList(stringsList1).removeMatching(Ognl.forBoolean("#target eq 'Hello'")).get());
         System.out.println(Op.onList(stringsList1).removeMatching(new AbstractBooleanEvaluator<String>() {
 
-			public Boolean execute(String target) {
+			public Boolean execute(String target, final ExecCtx ctx) {
 				return Boolean.valueOf(target == null);
 			}
         	

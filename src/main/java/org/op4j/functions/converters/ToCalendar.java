@@ -35,6 +35,7 @@ import org.apache.commons.lang.time.DateUtils;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.exceptions.FunctionExecutionException;
+import org.op4j.functions.ExecCtx;
 
 /**
  * 
@@ -202,7 +203,7 @@ public final class ToCalendar {
 		}
 
 		@Override
-        public Calendar nullAsNullExecute(final Calendar object) throws Exception {
+        public Calendar nullAsNullExecute(final Calendar object, final ExecCtx ctx) throws Exception {
 			if (this.truncateField == null) {
 				return (Calendar) object.clone();
 			}
@@ -231,7 +232,7 @@ public final class ToCalendar {
 		}
 
 		@Override
-        public Calendar nullAsNullExecute(final Date object) throws Exception {
+        public Calendar nullAsNullExecute(final Date object, final ExecCtx ctx) throws Exception {
 			
 			final Calendar calendar = Calendar.getInstance();
 			calendar.setTimeInMillis(object.getTime());
@@ -265,7 +266,7 @@ public final class ToCalendar {
 		}
 
 		@Override
-        public Calendar nullAsNullExecute(final Timestamp object) throws Exception {
+        public Calendar nullAsNullExecute(final Timestamp object, final ExecCtx ctx) throws Exception {
 			
 			final Calendar calendar = Calendar.getInstance();
 			calendar.setTimeInMillis(object.getTime());
@@ -299,7 +300,7 @@ public final class ToCalendar {
 		}
 
 		@Override
-        public Calendar nullAsNullExecute(final Long object) throws Exception {
+        public Calendar nullAsNullExecute(final Long object, final ExecCtx ctx) throws Exception {
 			
 			final Calendar calendar = Calendar.getInstance();
 			calendar.setTimeInMillis(object.longValue());
@@ -353,7 +354,7 @@ public final class ToCalendar {
 		}
 
 		@Override
-        public Calendar nullAsNullExecute(final String object) throws Exception {
+        public Calendar nullAsNullExecute(final String object, final ExecCtx ctx) throws Exception {
 			// Calendar is truncated to YEAR to ensure all fields are set to zero before 
 			// parsing the string into the new calendar object
 			final Calendar calendar = 
@@ -378,7 +379,7 @@ public final class ToCalendar {
 		}
 
 		@Override
-        public Calendar nullAsNullExecute(final List<Integer> object) throws Exception {
+        public Calendar nullAsNullExecute(final List<Integer> object, final ExecCtx ctx) throws Exception {
 			
             if (object.size() != 3 &&  // year, month, day
         		object.size() != 5 &&  // year, month, day, hour, minute
@@ -421,7 +422,7 @@ public final class ToCalendar {
 		}
 
 		@Override
-        public Calendar nullAsNullExecute(final Integer[] object) throws Exception {
+        public Calendar nullAsNullExecute(final Integer[] object, final ExecCtx ctx) throws Exception {
 			
             if (object.length != 3 &&  // year, month, day
         		object.length != 5 &&  // year, month, day, hour, minute
@@ -463,7 +464,7 @@ public final class ToCalendar {
 		}
 
 		@Override
-        public Calendar nullAsNullExecute(final List<String> object) throws Exception {
+        public Calendar nullAsNullExecute(final List<String> object, final ExecCtx ctx) throws Exception {
 			
             if (object.size() != 3 &&  // year, month, day
         		object.size() != 5 &&  // year, month, day, hour, minute
@@ -506,7 +507,7 @@ public final class ToCalendar {
 		}
 
 		@Override
-        public Calendar nullAsNullExecute(final String[] object) throws Exception {
+        public Calendar nullAsNullExecute(final String[] object, final ExecCtx ctx) throws Exception {
 			
             if (object.length != 3 &&  // year, month, day
         		object.length != 5 &&  // year, month, day, hour, minute

@@ -26,6 +26,7 @@ import java.math.BigInteger;
 import org.apache.commons.lang.BooleanUtils;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.functions.ExecCtx;
 
 /**
  * 
@@ -74,7 +75,7 @@ public class ToBoolean {
 		}
 
 		@Override
-        public Boolean nullAsNullExecute(final Boolean object) throws Exception {
+        public Boolean nullAsNullExecute(final Boolean object, final ExecCtx ctx) throws Exception {
 			return Boolean.valueOf(object.booleanValue());
 		}
 		
@@ -94,7 +95,7 @@ public class ToBoolean {
 		}
 
 		@Override
-        public Boolean nullAsNullExecute(final String object) throws Exception {
+        public Boolean nullAsNullExecute(final String object, final ExecCtx ctx) throws Exception {
 			return BooleanUtils.toBooleanObject(object);
 		}
 		
@@ -115,7 +116,7 @@ public class ToBoolean {
 		}
 
 		@Override
-        public Boolean nullAsNullExecute(final Number object) throws Exception {
+        public Boolean nullAsNullExecute(final Number object, final ExecCtx ctx) throws Exception {
             boolean result = false;
             if (object instanceof BigDecimal) {
                 result = (((BigDecimal)object).unscaledValue().compareTo(BigInteger.ZERO) != 0);

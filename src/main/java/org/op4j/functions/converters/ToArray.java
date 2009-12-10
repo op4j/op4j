@@ -28,6 +28,7 @@ import java.util.List;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.functions.ExecCtx;
 
 /**
  * 
@@ -63,7 +64,7 @@ public final class ToArray {
 
         @Override
         @SuppressWarnings("unchecked")
-        public T[] nullAsNullExecute(final Collection<T> object) throws Exception {
+        public T[] nullAsNullExecute(final Collection<T> object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>(object);
             final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
             return result.toArray(array);
@@ -88,7 +89,7 @@ public final class ToArray {
         }
 
         @SuppressWarnings("unchecked")
-        public T[] execute(final T object) throws Exception {
+        public T[] execute(final T object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             result.add(object);
             final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());

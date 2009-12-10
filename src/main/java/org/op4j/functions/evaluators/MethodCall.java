@@ -32,6 +32,7 @@ import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.exceptions.MethodInvocationException;
+import org.op4j.functions.ExecCtx;
 import org.op4j.util.VarArgsUtil;
 
 
@@ -149,7 +150,7 @@ public class MethodCall<R,T> implements IEvaluator<R,T> {
     
 	
     @SuppressWarnings("unchecked")
-	public R execute(final T input) throws Exception {
+	public R execute(final T input, final ExecCtx ctx) throws Exception {
     	
     	if (input == null) {
     		throw new NullPointerException("Cannot call methods on null object");

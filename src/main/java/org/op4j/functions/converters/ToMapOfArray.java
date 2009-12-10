@@ -31,6 +31,7 @@ import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.exceptions.FunctionExecutionException;
+import org.op4j.functions.ExecCtx;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 
@@ -84,11 +85,11 @@ public class ToMapOfArray {
         }
 
 		@Override
-        public Map<K, T[]> nullAsNullExecute(final T[] object) throws Exception {
+        public Map<K, T[]> nullAsNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
         	
             final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
             for (final T element: object) {
-                final K key = this.eval.execute(element);
+                final K key = this.eval.execute(element, ctx);
                 List<T> value = result.get(key);
                 if (value == null) {
                     value = new ArrayList<T>();
@@ -125,7 +126,7 @@ public class ToMapOfArray {
         }
 
         @Override
-        public Map<K, V[]> nullAsNullExecute(final T[] object) throws Exception {
+        public Map<K, V[]> nullAsNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
         	
             final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
@@ -163,7 +164,7 @@ public class ToMapOfArray {
         }
 
         @Override
-        public Map<T, T[]> nullAsNullExecute(final T[] object) throws Exception {
+        public Map<T, T[]> nullAsNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
         	
             if (object.length % 2 != 0) {
                 throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");
@@ -211,11 +212,11 @@ public class ToMapOfArray {
         }
 
         @Override
-        public Map<K, T[]> nullAsNullExecute(final List<T> object) throws Exception {
+        public Map<K, T[]> nullAsNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
         	
             final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
             for (final T element: object) {
-                final K key = this.eval.execute(element);
+                final K key = this.eval.execute(element, ctx);
                 List<T> value = result.get(key);
                 if (value == null) {
                     value = new ArrayList<T>();
@@ -252,7 +253,7 @@ public class ToMapOfArray {
         }
 
         @Override
-        public Map<K, V[]> nullAsNullExecute(final List<T> object) throws Exception {
+        public Map<K, V[]> nullAsNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
         	
             final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
@@ -290,7 +291,7 @@ public class ToMapOfArray {
         }
 
         @Override
-        public Map<T, T[]> nullAsNullExecute(final List<T> object) throws Exception {
+        public Map<T, T[]> nullAsNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
         	
             if (object.size() % 2 != 0) {
                 throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");
@@ -337,11 +338,11 @@ public class ToMapOfArray {
         }
 
         @Override
-        public Map<K, T[]> nullAsNullExecute(final Set<T> object) throws Exception {
+        public Map<K, T[]> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
         	
             final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
             for (final T element: object) {
-                final K key = this.eval.execute(element);
+                final K key = this.eval.execute(element, ctx);
                 List<T> value = result.get(key);
                 if (value == null) {
                     value = new ArrayList<T>();
@@ -378,7 +379,7 @@ public class ToMapOfArray {
         }
 
         @Override
-        public Map<K, V[]> nullAsNullExecute(final Set<T> object) throws Exception {
+        public Map<K, V[]> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
         	
             final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
@@ -416,7 +417,7 @@ public class ToMapOfArray {
         }
 
         @Override
-        public Map<T, T[]> nullAsNullExecute(final Set<T> object) throws Exception {
+        public Map<T, T[]> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
         	
             if (object.size() % 2 != 0) {
                 throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");

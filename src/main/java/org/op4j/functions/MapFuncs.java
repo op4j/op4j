@@ -67,7 +67,7 @@ public class MapFuncs {
         }
 
         @Override
-        public Map<K, V> notNullExecute(final Map<K, V> object) throws Exception {
+        public Map<K, V> notNullExecute(final Map<K, V> object, final ExecCtx ctx) throws Exception {
             final List<K> keys = new ArrayList<K>(object.keySet());
             Collections.sort(keys);
             final Map<K, V> result = new LinkedHashMap<K, V>();
@@ -95,7 +95,7 @@ public class MapFuncs {
         }
 
         @Override
-        public Map<K, V> notNullExecute(final Map<K, V> object) throws Exception {
+        public Map<K, V> notNullExecute(final Map<K, V> object, final ExecCtx ctx) throws Exception {
             final List<Map.Entry<K, V>> entries = new ArrayList<Entry<K,V>>(object.entrySet());
             Collections.sort(entries, this.comparator);
             final Map<K, V> result = new LinkedHashMap<K, V>();
@@ -127,7 +127,7 @@ public class MapFuncs {
         }
 
         @Override
-        public Map<K,V> notNullExecute(final Map<K, V> object) throws Exception {
+        public Map<K,V> notNullExecute(final Map<K, V> object, final ExecCtx ctx) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>(object);
             result.put(this.key, this.value);
             return result;
@@ -155,7 +155,7 @@ public class MapFuncs {
         }
 
         @Override
-        public Map<K,V> notNullExecute(final Map<K, V> object) throws Exception {
+        public Map<K,V> notNullExecute(final Map<K, V> object, final ExecCtx ctx) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>(object);
             int index = 0;
             for (final Map.Entry<K, V> entry : object.entrySet()) {
@@ -190,7 +190,7 @@ public class MapFuncs {
         }
 
         @Override
-        public Map<K,V> notNullExecute(final Map<K, V> object) throws Exception {
+        public Map<K,V> notNullExecute(final Map<K, V> object, final ExecCtx ctx) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>(object);
             result.putAll(this.map);
             return result;
@@ -218,7 +218,7 @@ public class MapFuncs {
         }
 
         @Override
-        public Map<K,V> notNullExecute(final Map<K, V> object) throws Exception {
+        public Map<K,V> notNullExecute(final Map<K, V> object, final ExecCtx ctx) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>(object);
             int index = 0;
             for (final Map.Entry<K, V> entry : object.entrySet()) {
@@ -255,7 +255,7 @@ public class MapFuncs {
         }
 
         @Override
-        public Map<K, V> notNullExecute(final Map<K, V> object) throws Exception {
+        public Map<K, V> notNullExecute(final Map<K, V> object, final ExecCtx ctx) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>(object);
             for (final K key : this.keys) {
                 result.remove(key);
@@ -283,10 +283,10 @@ public class MapFuncs {
         }
 
         @Override
-        public Map<K, V> notNullExecute(final Map<K, V> object) throws Exception {
+        public Map<K, V> notNullExecute(final Map<K, V> object, final ExecCtx ctx) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>();
             for (final Map.Entry<K, V> entry : object.entrySet()) {
-                if (!this.eval.execute(entry).booleanValue()) {
+                if (!this.eval.execute(entry, ctx).booleanValue()) {
                     result.put(entry.getKey(), entry.getValue());
                 }
             }
@@ -313,10 +313,10 @@ public class MapFuncs {
         }
 
         @Override
-        public Map<K, V> notNullExecute(final Map<K, V> object) throws Exception {
+        public Map<K, V> notNullExecute(final Map<K, V> object, final ExecCtx ctx) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>();
             for (final Map.Entry<K, V> entry : object.entrySet()) {
-                if (this.eval.execute(entry).booleanValue()) {
+                if (this.eval.execute(entry, ctx).booleanValue()) {
                     result.put(entry.getKey(), entry.getValue());
                 }
             }
@@ -343,7 +343,7 @@ public class MapFuncs {
         }
 
         @Override
-        public Map<K, V> notNullExecute(final Map<K, V> object) throws Exception {
+        public Map<K, V> notNullExecute(final Map<K, V> object, final ExecCtx ctx) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>();
             for (final Map.Entry<K, V> entry : object.entrySet()) {
                 if (this.keys.contains(entry.getKey())) {
@@ -369,7 +369,7 @@ public class MapFuncs {
         }
 
         @Override
-        public Set<K> notNullExecute(final Map<K, V> object) throws Exception {
+        public Set<K> notNullExecute(final Map<K, V> object, final ExecCtx ctx) throws Exception {
             return new LinkedHashSet<K>(object.keySet());
         }
         
@@ -388,7 +388,7 @@ public class MapFuncs {
         }
 
         @Override
-        public List<V> notNullExecute(final Map<K, V> object) throws Exception {
+        public List<V> notNullExecute(final Map<K, V> object, final ExecCtx ctx) throws Exception {
             return new ArrayList<V>(object.values());
         }
         

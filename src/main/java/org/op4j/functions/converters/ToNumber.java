@@ -27,6 +27,7 @@ import java.util.Locale;
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
+import org.op4j.functions.ExecCtx;
 
 /**
  * 
@@ -89,7 +90,7 @@ final class ToNumber {
         }
 
         @Override
-        public X nullAsNullExecute(final Number object) throws Exception {
+        public X nullAsNullExecute(final Number object, final ExecCtx ctx) throws Exception {
             switch (this.execType) {
                 case DELEGATED:
                     return numberExecute(object);
@@ -114,7 +115,7 @@ final class ToNumber {
         }
 
         @Override
-        public X nullAsNullExecute(Boolean object) throws Exception {
+        public X nullAsNullExecute(Boolean object, final ExecCtx ctx) throws Exception {
             return fromNumber(BooleanUtils.toIntegerObject(object));
         }
         
@@ -172,7 +173,7 @@ final class ToNumber {
 
         
         @Override
-        public final X nullAsNullExecute(final String object) throws Exception {
+        public final X nullAsNullExecute(final String object, final ExecCtx ctx) throws Exception {
             switch (this.execType) {
                 case DELEGATED:
                     return numberExecute(object);

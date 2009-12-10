@@ -57,7 +57,7 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object) throws Exception {
+        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
         	
             final List<T> result = new ArrayList<T>(object);
             Collections.sort(result);
@@ -82,7 +82,7 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object) throws Exception {
+        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
         	
             final List<T> result = new ArrayList<T>(object);
             Collections.sort(result, this.comparator);
@@ -107,7 +107,7 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object) throws Exception {
+        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>(object);
             result.addAll(this.newElements);
             return fromList(result);
@@ -131,7 +131,7 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object) throws Exception {
+        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>(object);
             result.addAll(this.position, this.newElements);
             return fromList(result);
@@ -156,7 +156,7 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object) throws Exception {
+        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>(object);
             result.addAll(this.newElements);
             return fromList(result);
@@ -180,7 +180,7 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object) throws Exception {
+        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             int i = 0;
             for (final T element : object) {
@@ -210,7 +210,7 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object) throws Exception {
+        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>(object);
             result.removeAll(this.values);
             return fromList(result);
@@ -235,10 +235,10 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object) throws Exception {
+        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
-                if (!this.eval.execute(element).booleanValue()) {
+                if (!this.eval.execute(element, ctx).booleanValue()) {
                     result.add(element);
                 }
             }
@@ -265,10 +265,10 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object) throws Exception {
+        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
-                if (this.eval.execute(element).booleanValue()) {
+                if (this.eval.execute(element, ctx).booleanValue()) {
                     result.add(element);
                 }
             }
@@ -293,7 +293,7 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object) throws Exception {
+        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             int i = 0;
             for (final T element : object) {
@@ -320,7 +320,7 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object) throws Exception {
+        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
@@ -350,11 +350,11 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object) throws Exception {
+        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
-                    if (!this.eval.execute(element).booleanValue()) {
+                    if (!this.eval.execute(element, ctx).booleanValue()) {
                         result.add(element);
                     }
                 } else {
@@ -386,11 +386,11 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object) throws Exception {
+        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
-                    if (this.eval.execute(element).booleanValue()) {
+                    if (this.eval.execute(element, ctx).booleanValue()) {
                         result.add(element);
                     }
                 } else {
@@ -420,11 +420,11 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object) throws Exception {
+        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
-                    if (!this.eval.execute(element).booleanValue()) {
+                    if (!this.eval.execute(element, ctx).booleanValue()) {
                         result.add(element);
                     }
                 }
@@ -453,11 +453,11 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object) throws Exception {
+        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
-                    if (this.eval.execute(element).booleanValue()) {
+                    if (this.eval.execute(element, ctx).booleanValue()) {
                         result.add(element);
                     }
                 }
@@ -480,7 +480,7 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final Y object) throws Exception {
+        public X notNullExecute(final Y object, final ExecCtx ctx) throws Exception {
             
             final List<T> result = new ArrayList<T>();
             for (final T[] element : object) {
@@ -503,7 +503,7 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final Y object) throws Exception {
+        public X notNullExecute(final Y object, final ExecCtx ctx) throws Exception {
             
             final List<T> result = new ArrayList<T>();
             for (final Collection<T> element : object) {

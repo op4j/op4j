@@ -25,6 +25,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import org.op4j.functions.ExecCtx;
+
 /**
  * 
  * @since 1.0
@@ -50,7 +52,7 @@ class ToCollection {
         }
 
         @Override
-        public X nullAsNullExecute(final T[] object) throws Exception {
+        public X nullAsNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             return fromList(new ArrayList<T>(Arrays.asList(object)));
         }
         
@@ -69,7 +71,7 @@ class ToCollection {
         }
 
         @Override
-        public X nullAsNullExecute(final Collection<T> object) throws Exception {
+        public X nullAsNullExecute(final Collection<T> object, final ExecCtx ctx) throws Exception {
             return fromList(new ArrayList<T>(object));
         }
         
@@ -87,7 +89,7 @@ class ToCollection {
             super();
         }
 
-        public X execute(final T object) throws Exception {
+        public X execute(final T object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             result.add(object);
             return fromList(result);

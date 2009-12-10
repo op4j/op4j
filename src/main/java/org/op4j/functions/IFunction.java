@@ -33,6 +33,6 @@ public interface IFunction<R,T> {
     
     public Type<? super R> getResultType();
     
-    public R execute(final T object) throws Exception;
+    public R execute(final T object, final ExecCtx ctx) throws Exception;
 
 }

@@ -29,6 +29,7 @@ import java.util.Locale;
 
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
+import org.op4j.functions.ExecCtx;
 
 /**
  * 
@@ -207,7 +208,7 @@ final class ToNonDecimalNumber {
 
         
         @Override
-        public X nullAsNullExecute(Float object) throws Exception {
+        public X nullAsNullExecute(Float object, final ExecCtx ctx) throws Exception {
             BigDecimal bigDecimal = 
                 new BigDecimal(object.doubleValue());
             bigDecimal = bigDecimal.setScale(0, this.roundingMode);
@@ -233,7 +234,7 @@ final class ToNonDecimalNumber {
 
         
         @Override
-        public X nullAsNullExecute(Double object) throws Exception {
+        public X nullAsNullExecute(Double object, final ExecCtx ctx) throws Exception {
             BigDecimal bigDecimal = 
                 new BigDecimal(object.doubleValue());
             bigDecimal = bigDecimal.setScale(0, this.roundingMode);
@@ -259,7 +260,7 @@ final class ToNonDecimalNumber {
 
 
         @Override
-        public X nullAsNullExecute(BigDecimal object) throws Exception {
+        public X nullAsNullExecute(BigDecimal object, final ExecCtx ctx) throws Exception {
             return fromNumber(object.setScale(0, this.roundingMode));
         }
         

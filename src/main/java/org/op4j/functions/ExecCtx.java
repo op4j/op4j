@@ -20,8 +20,6 @@
 
 package org.op4j.functions;
 
-
-
 /**
  * 
  * @since 1.0
@@ -29,24 +27,6 @@ package org.op4j.functions;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public abstract class AbstractNullAsNullFunc<R, T> implements IFunction<R, T> {
-    
-    
-    protected AbstractNullAsNullFunc() {
-        super();
-    }
+public class ExecCtx {
 
-
-    public final R execute(final T object, final ExecCtx ctx) throws Exception {
-        if (object == null) {
-            return null;
-        }
-        return nullAsNullExecute(object, ctx);
-    }
-
-
-    public abstract R nullAsNullExecute(final T object, final ExecCtx ctx) throws Exception;
-    
-    
-    
 }

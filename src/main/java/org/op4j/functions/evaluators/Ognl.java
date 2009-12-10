@@ -28,6 +28,7 @@ import java.util.List;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.functions.ExecCtx;
 import org.op4j.util.VarArgsUtil;
 
 
@@ -138,7 +139,7 @@ public class Ognl<R,T> implements IEvaluator<R,T> {
     }
     
     
-	public R execute(final T input) throws Exception {
+	public R execute(final T input, final ExecCtx ctx) throws Exception {
         return OgnlExpressionUtil.evalOgnlExpression(this.resultType, this.ognlExpression, input, this.parameters);
     }
     
