@@ -306,20 +306,18 @@ public class StructureTarget extends Target {
             }
             return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
             
-    	} else {
-        	
-            final List<Target> newElements = new ArrayList<Target>();
-            for (final Target element : this.elements) {
-                if (this.selectedElementIds.contains(element.getId())) {
-                    newElements.add(element.doSelectIndex(desiredResult, positions));
-                } else {
-                    newElements.add(element);
-                }
-            }
-            return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
-            
     	}
-    	
+        	
+        final List<Target> newElements = new ArrayList<Target>();
+        for (final Target element : this.elements) {
+            if (this.selectedElementIds.contains(element.getId())) {
+                newElements.add(element.doSelectIndex(desiredResult, positions));
+            } else {
+                newElements.add(element);
+            }
+        }
+        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+            
 	}
 
 
@@ -348,19 +346,17 @@ public class StructureTarget extends Target {
             }
             return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
             
-    	} else {
-        	
-            final List<Target> newElements = new ArrayList<Target>();
-            for (final Target element : this.elements) {
-                if (this.selectedElementIds.contains(element.getId())) {
-                    newElements.add(element.doSelectMapKeys(desiredResult, objects));
-                } else {
-                    newElements.add(element);
-                }
-            }
-            return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
-            
     	}
+        	
+        final List<Target> newElements = new ArrayList<Target>();
+        for (final Target element : this.elements) {
+            if (this.selectedElementIds.contains(element.getId())) {
+                newElements.add(element.doSelectMapKeys(desiredResult, objects));
+            } else {
+                newElements.add(element);
+            }
+        }
+        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
     	
 	}
 
@@ -389,20 +385,18 @@ public class StructureTarget extends Target {
             }
             return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
             
-    	} else {
-        	
-            final List<Target> newElements = new ArrayList<Target>();
-            for (final Target element : this.elements) {
-                if (this.selectedElementIds.contains(element.getId())) {
-                    newElements.add(element.doSelectMatching(desiredResult, eval));
-                } else {
-                    newElements.add(element);
-                }
-            }
-            return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
-            
     	}
-    	
+        	
+        final List<Target> newElements = new ArrayList<Target>();
+        for (final Target element : this.elements) {
+            if (this.selectedElementIds.contains(element.getId())) {
+                newElements.add(element.doSelectMatching(desiredResult, eval));
+            } else {
+                newElements.add(element);
+            }
+        }
+        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+            
     }
     
 
@@ -432,19 +426,17 @@ public class StructureTarget extends Target {
             }
             return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
             
-    	} else {
-        	
-            final List<Target> newElements = new ArrayList<Target>();
-            for (final Target element : this.elements) {
-                if (this.selectedElementIds.contains(element.getId())) {
-                    newElements.add(element.doSelectNotNullAndMatching(desiredResult, eval));
-                } else {
-                    newElements.add(element);
-                }
-            }
-            return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
-            
     	}
+        	
+        final List<Target> newElements = new ArrayList<Target>();
+        for (final Target element : this.elements) {
+            if (this.selectedElementIds.contains(element.getId())) {
+                newElements.add(element.doSelectNotNullAndMatching(desiredResult, eval));
+            } else {
+                newElements.add(element);
+            }
+        }
+        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
     	
 	}
 
@@ -466,20 +458,18 @@ public class StructureTarget extends Target {
             }
             return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
             
-    	} else {
-        	
-            final List<Target> newElements = new ArrayList<Target>();
-            for (final Target element : this.elements) {
-                if (this.selectedElementIds.contains(element.getId())) {
-                    newElements.add(element.doSelectNull(desiredResult));
-                } else {
-                    newElements.add(element);
-                }
-            }
-            return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
-            
     	}
-    	
+        	
+        final List<Target> newElements = new ArrayList<Target>();
+        for (final Target element : this.elements) {
+            if (this.selectedElementIds.contains(element.getId())) {
+                newElements.add(element.doSelectNull(desiredResult));
+            } else {
+                newElements.add(element);
+            }
+        }
+        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+            
 	}
 
 
@@ -510,19 +500,17 @@ public class StructureTarget extends Target {
             }
             return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
             
-    	} else {
-        	
-            final List<Target> newElements = new ArrayList<Target>();
-            for (final Target element : this.elements) {
-                if (this.selectedElementIds.contains(element.getId())) {
-                    newElements.add(element.doSelectNullOrMatching(desiredResult, eval));
-                } else {
-                    newElements.add(element);
-                }
-            }
-            return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
-            
     	}
+        	
+        final List<Target> newElements = new ArrayList<Target>();
+        for (final Target element : this.elements) {
+            if (this.selectedElementIds.contains(element.getId())) {
+                newElements.add(element.doSelectNullOrMatching(desiredResult, eval));
+            } else {
+                newElements.add(element);
+            }
+        }
+        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
     	
 	}
 
