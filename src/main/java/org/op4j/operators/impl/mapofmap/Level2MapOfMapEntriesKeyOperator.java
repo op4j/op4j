@@ -24,6 +24,9 @@ import java.util.Map;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
+import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.intf.mapofmap.ILevel1MapOfMapEntriesOperator;
 import org.op4j.operators.intf.mapofmap.ILevel2MapOfMapEntriesKeyOperator;
@@ -64,6 +67,26 @@ public class Level2MapOfMapEntriesKeyOperator<K1,K2,V> extends Operator
     }
 
 
+
+
+
+    public <X> ILevel2MapOfMapEntriesKeyOperator<X, K2, V> convert(final IConverter<X, ? super K1> converter) {
+        return new Level2MapOfMapEntriesKeyOperator<X, K2, V>(getTarget().execute(converter));
+    }
+
+
+    public <X> ILevel2MapOfMapEntriesKeyOperator<X, K2, V> eval(final IEvaluator<X, ? super K1> eval) {
+        return new Level2MapOfMapEntriesKeyOperator<X, K2, V>(getTarget().execute(eval));
+    }
+
+
+    public <X> ILevel2MapOfMapEntriesKeyOperator<X, K2, V> exec(final IFunction<X, ? super K1> function) {
+        return new Level2MapOfMapEntriesKeyOperator<X, K2, V>(getTarget().execute(function));
+    }
+    
+    
+    
+    
     public Map<K1, Map<K2, V>> get() {
         return endOn().endFor().get();
     }

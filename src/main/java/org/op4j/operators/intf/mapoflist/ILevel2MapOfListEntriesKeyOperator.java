@@ -23,8 +23,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
-import org.op4j.operators.qualities.INavigatingMapEntryOperator;
+import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
+import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ICastableToTypeOperator;
+import org.op4j.operators.qualities.IConvertibleOperator;
+import org.op4j.operators.qualities.IEvaluableOperator;
+import org.op4j.operators.qualities.IExecutableOperator;
+import org.op4j.operators.qualities.INavigatingMapEntryOperator;
 import org.op4j.operators.qualities.IUniqOperator;
 
 
@@ -38,12 +44,21 @@ import org.op4j.operators.qualities.IUniqOperator;
 public interface ILevel2MapOfListEntriesKeyOperator<K,V>
 		extends IUniqOperator<Map<K,List<V>>>,
 				INavigatingMapEntryOperator,
-                ICastableToTypeOperator<K> {
+                ICastableToTypeOperator<K>,
+                IExecutableOperator<K>, 
+                IEvaluableOperator<K>, 
+                IConvertibleOperator<K> {
     
     public ILevel1MapOfListEntriesOperator<K,V> endOn();
     
     public <X> ILevel2MapOfListEntriesKeyOperator<X,V> asType(final Type<X> type);
     public ILevel2MapOfListEntriesKeyOperator<?,V> asUnknown();
+
+    public <X> ILevel2MapOfListEntriesKeyOperator<X,V> exec(final IFunction<X, ? super K> function);
+    
+    public <X> ILevel2MapOfListEntriesKeyOperator<X,V> eval(final IEvaluator<X,? super K> eval);
+    
+    public <X> ILevel2MapOfListEntriesKeyOperator<X,V> convert(final IConverter<X,? super K> converter);
     
         
-    }
+}
