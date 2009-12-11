@@ -67,39 +67,47 @@ public abstract class Target {
     public abstract Object getObject();
 
     abstract Target doIterate();
-    abstract Target doIteratePositions(final boolean desiredResult, final List<Integer> positions);
+    abstract Target doIterateIndex(final boolean desiredResult, final List<Integer> positions);
     abstract Target doIterateMapKeys(final boolean desiredResult, final List<Object> objects);
-    abstract Target doIterateExpression(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
+    abstract Target doIterateMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
     abstract Target doIterateNull(final boolean desiredResult);
-    abstract Target doIterateNullOr(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
-    abstract Target doIterateNotNullAnd(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
+    abstract Target doIterateNullOrMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
+    abstract Target doIterateNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
+    
+    
+    abstract Target doSelectIndex(final boolean desiredResult, final List<Integer> positions);
+    abstract Target doSelectMapKeys(final boolean desiredResult, final List<Object> objects);
+    abstract Target doSelectMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
+    abstract Target doSelectNull(final boolean desiredResult);
+    abstract Target doSelectNullOrMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
+    abstract Target doSelectNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
     
     
     public Target iterate() {
         return doIterate();
     }
     
-    public Target iterate(final int... positions) {
-    	return doIteratePositions(true, VarArgsUtil.asRequiredIntegerList(positions));
+    public Target iterateIndex(final int... positions) {
+    	return doIterateIndex(true, VarArgsUtil.asRequiredIntegerList(positions));
     }
 
     
-    public Target iterateForMapKeys(final Object... keys) {
+    public Target iterateMapKeys(final Object... keys) {
     	return doIterateMapKeys(true, VarArgsUtil.asRequiredObjectList(keys));
     }
 
     
     @SuppressWarnings("unchecked")
-    public Target iterate(final IEvaluator<Boolean,? extends Object> eval) {
+    public Target iterateMatching(final IEvaluator<Boolean,? extends Object> eval) {
     	Validate.notNull(eval, "An evaluator must be specified");
-    	return doIterateExpression(true, (IEvaluator<Boolean,Object>) eval);
+    	return doIterateMatching(true, (IEvaluator<Boolean,Object>) eval);
     }
 
     
     @SuppressWarnings("unchecked")
-    public Target iterateNot(final IEvaluator<Boolean,? extends Object> eval) {
+    public Target iterateNotMatching(final IEvaluator<Boolean,? extends Object> eval) {
         Validate.notNull(eval, "An evaluator must be specified");
-        return doIterateExpression(false, (IEvaluator<Boolean,Object>) eval);
+        return doIterateMatching(false, (IEvaluator<Boolean,Object>) eval);
     }
 
     
@@ -109,25 +117,25 @@ public abstract class Target {
 
     
     @SuppressWarnings("unchecked")
-    public Target iterateNullOr(final IEvaluator<Boolean,? extends Object> eval) {
+    public Target iterateNullOrMatching(final IEvaluator<Boolean,? extends Object> eval) {
     	Validate.notNull(eval, "An evaluator must be specified");
-        return doIterateNullOr(true, (IEvaluator<Boolean,Object>) eval);
+        return doIterateNullOrMatching(true, (IEvaluator<Boolean,Object>) eval);
     }
 
     
     @SuppressWarnings("unchecked")
-    public Target iterateNullOrNot(final IEvaluator<Boolean,? extends Object> eval) {
+    public Target iterateNullOrNotMatching(final IEvaluator<Boolean,? extends Object> eval) {
         Validate.notNull(eval, "An evaluator must be specified");
-        return doIterateNullOr(false, (IEvaluator<Boolean,Object>) eval);
+        return doIterateNullOrMatching(false, (IEvaluator<Boolean,Object>) eval);
     }
     
     
-    public Target iterateNot(final int[] positions) {
-        return doIteratePositions(false, VarArgsUtil.asRequiredIntegerList(positions));
+    public Target iterateIndexNot(final int[] positions) {
+        return doIterateIndex(false, VarArgsUtil.asRequiredIntegerList(positions));
     }
 
     
-    public Target iterateNot(final Object[] objects) {
+    public Target iterateMapKeysNot(final Object[] objects) {
         return doIterateMapKeys(false, VarArgsUtil.asRequiredObjectList(objects));
     }
 
@@ -138,20 +146,98 @@ public abstract class Target {
 
     
     @SuppressWarnings("unchecked")
-    public Target iterateNotNullAnd(final IEvaluator<Boolean,? extends Object> eval) {
+    public Target iterateNotNullAndMatching(final IEvaluator<Boolean,? extends Object> eval) {
     	Validate.notNull(eval, "An evaluator must be specified");
-        return doIterateNotNullAnd(true, (IEvaluator<Boolean,Object>) eval);
+        return doIterateNotNullAndMatching(true, (IEvaluator<Boolean,Object>) eval);
     }
 
     
     @SuppressWarnings("unchecked")
-    public Target iterateNotNullAndNot(final IEvaluator<Boolean,? extends Object> eval) {
+    public Target iterateNotNullAndNotMatching(final IEvaluator<Boolean,? extends Object> eval) {
         Validate.notNull(eval, "An evaluator must be specified");
-        return doIterateNotNullAnd(false, (IEvaluator<Boolean,Object>) eval);
+        return doIterateNotNullAndMatching(false, (IEvaluator<Boolean,Object>) eval);
     }
     
 
     public abstract Target endIterate(final Structure structure, final Class<?> componentClass);
+    
+
+    
+    
+    public Target selectIndex(final int... positions) {
+    	return doSelectIndex(true, VarArgsUtil.asRequiredIntegerList(positions));
+    }
+    
+    
+    public Target selectIndexNot(final int[] positions) {
+        return doSelectIndex(false, VarArgsUtil.asRequiredIntegerList(positions));
+    }
+
+    
+    public Target selectMapKeys(final Object... keys) {
+    	return doSelectMapKeys(true, VarArgsUtil.asRequiredObjectList(keys));
+    }
+
+    
+    public Target selectMapKeysNot(final Object[] objects) {
+        return doSelectMapKeys(false, VarArgsUtil.asRequiredObjectList(objects));
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public Target selectMatching(final IEvaluator<Boolean,? extends Object> eval) {
+    	Validate.notNull(eval, "An evaluator must be specified");
+    	return doSelectMatching(true, (IEvaluator<Boolean,Object>) eval);
+    }
+
+    
+    @SuppressWarnings("unchecked")
+    public Target selectNotMatching(final IEvaluator<Boolean,? extends Object> eval) {
+    	Validate.notNull(eval, "An evaluator must be specified");
+    	return doSelectMatching(false, (IEvaluator<Boolean,Object>) eval);
+    }
+
+    
+    public Target selectNull() {
+        return doSelectNull(true);
+    }
+
+    
+    public Target selectNotNull() {
+        return doSelectNull(false);
+    }
+
+    
+    @SuppressWarnings("unchecked")
+    public Target selectNullOrMatching(final IEvaluator<Boolean,? extends Object> eval) {
+    	Validate.notNull(eval, "An evaluator must be specified");
+        return doSelectNullOrMatching(true, (IEvaluator<Boolean,Object>) eval);
+    }
+
+    
+    @SuppressWarnings("unchecked")
+    public Target selectNullOrNotMatching(final IEvaluator<Boolean,? extends Object> eval) {
+        Validate.notNull(eval, "An evaluator must be specified");
+        return doSelectNullOrMatching(false, (IEvaluator<Boolean,Object>) eval);
+    }
+
+    
+    @SuppressWarnings("unchecked")
+    public Target selectNotNullAndMatching(final IEvaluator<Boolean,? extends Object> eval) {
+    	Validate.notNull(eval, "An evaluator must be specified");
+        return doSelectNotNullAndMatching(true, (IEvaluator<Boolean,Object>) eval);
+    }
+
+    
+    @SuppressWarnings("unchecked")
+    public Target selectNotNullAndNotMatching(final IEvaluator<Boolean,? extends Object> eval) {
+        Validate.notNull(eval, "An evaluator must be specified");
+        return doSelectNotNullAndMatching(false, (IEvaluator<Boolean,Object>) eval);
+    }
+    
+    
+    
+    
     
 
     public abstract Target execute(final IFunction<?,?> executable);
@@ -163,6 +249,7 @@ public abstract class Target {
         }
         return getExecutionNodes().get(0).getObject();
     }
+    
     
     
 }

@@ -29,6 +29,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.Validate;
+import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.util.MapEntry;
@@ -111,12 +112,12 @@ public class StructureTarget extends Target {
 
     
     @Override
-    Target doIteratePositions(final boolean desiredResult, final List<Integer> positions) {
+    Target doIterateIndex(final boolean desiredResult, final List<Integer> positions) {
         
         final List<Target> newElements = new ArrayList<Target>();
         for (final Target element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.doIteratePositions(desiredResult, positions));
+                newElements.add(element.doIterateIndex(desiredResult, positions));
             } else {
                 newElements.add(element);
             }
@@ -143,12 +144,12 @@ public class StructureTarget extends Target {
 
 
     @Override
-    Target doIterateExpression(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
+    Target doIterateMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
         
         final List<Target> newElements = new ArrayList<Target>();
         for (final Target element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.doIterateExpression(desiredResult, eval));
+                newElements.add(element.doIterateMatching(desiredResult, eval));
             } else {
                 newElements.add(element);
             }
@@ -175,12 +176,12 @@ public class StructureTarget extends Target {
 
     
     @Override
-    Target doIterateNullOr(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
+    Target doIterateNullOrMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
         
         final List<Target> newElements = new ArrayList<Target>();
         for (final Target element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.doIterateNullOr(desiredResult, eval));
+                newElements.add(element.doIterateNullOrMatching(desiredResult, eval));
             } else {
                 newElements.add(element);
             }
@@ -191,12 +192,12 @@ public class StructureTarget extends Target {
 
     
     @Override
-    Target doIterateNotNullAnd(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
+    Target doIterateNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
         
         final List<Target> newElements = new ArrayList<Target>();
         for (final Target element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.doIterateNotNullAnd(desiredResult, eval));
+                newElements.add(element.doIterateNotNullAndMatching(desiredResult, eval));
             } else {
                 newElements.add(element);
             }
@@ -283,9 +284,252 @@ public class StructureTarget extends Target {
        
     }
 
+    
+
+    
+    
+	@Override
+	Target doSelectIndex(final boolean desiredResult, final List<Integer> positions) {
+        
+    	if (this.isCurrentActionLevel) {
+        	
+            final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
+
+            int i = 0;
+            for (final Target element : this.elements) {
+            	
+                if (positions.contains(Integer.valueOf(i)) == desiredResult) {
+                    newSelectedElementIds.add(element.getId());
+                }
+                i++;
+                
+            }
+            return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            
+    	} else {
+        	
+            final List<Target> newElements = new ArrayList<Target>();
+            for (final Target element : this.elements) {
+                if (this.selectedElementIds.contains(element.getId())) {
+                    newElements.add(element.doSelectIndex(desiredResult, positions));
+                } else {
+                    newElements.add(element);
+                }
+            }
+            return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+            
+    	}
+    	
+	}
+
+
+	
+
+	@Override
+	Target doSelectMapKeys(final boolean desiredResult, final List<Object> objects) {
+        
+    	if (this.isCurrentActionLevel) {
+        	
+            final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
+            
+            for (final Target element : this.elements) {
+            	
+            	final Object elementObject = element.getObject();
+            	if (!(elementObject instanceof Map.Entry<?,?>)) {
+            		throw new IllegalStateException("Selecting map keys can only be called on a Map");
+            	}
+            	final Map.Entry<?,?> elementMapEntryObject = 
+            		(Map.Entry<?,?>) elementObject;
+            	
+                if (objects.contains(elementMapEntryObject.getKey()) == desiredResult) {
+                    newSelectedElementIds.add(element.getId());
+                }
+                
+            }
+            return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            
+    	} else {
+        	
+            final List<Target> newElements = new ArrayList<Target>();
+            for (final Target element : this.elements) {
+                if (this.selectedElementIds.contains(element.getId())) {
+                    newElements.add(element.doSelectMapKeys(desiredResult, objects));
+                } else {
+                    newElements.add(element);
+                }
+            }
+            return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+            
+    	}
+    	
+	}
+
+	
+
+
+    @Override
+    Target doSelectMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
+        
+    	if (this.isCurrentActionLevel) {
+        	
+            final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
+            
+            for (final Target element : this.elements) {
+            	
+                Boolean evalResult = null;
+                try {
+                    evalResult = eval.execute(element.getObject(), new ExecCtxImpl(element.getId())); 
+                } catch (Exception e) {
+                    throw new ExecutionException(e);
+                }
+                if ((evalResult != null && evalResult.booleanValue()) == desiredResult) {
+                    newSelectedElementIds.add(element.getId());
+                }
+                
+            }
+            return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            
+    	} else {
+        	
+            final List<Target> newElements = new ArrayList<Target>();
+            for (final Target element : this.elements) {
+                if (this.selectedElementIds.contains(element.getId())) {
+                    newElements.add(element.doSelectMatching(desiredResult, eval));
+                } else {
+                    newElements.add(element);
+                }
+            }
+            return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+            
+    	}
+    	
+    }
+    
 
 
 
+	@Override
+	Target doSelectNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
+        
+    	if (this.isCurrentActionLevel) {
+        	
+            final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
+            
+            for (final Target element : this.elements) {
+            	
+                if (element.getObject() != null) {
+                    Boolean evalResult = null;
+                    try {
+                        evalResult = eval.execute(element.getObject(), new ExecCtxImpl(element.getId())); 
+                    } catch (Exception e) {
+                        throw new ExecutionException(e);
+                    }
+                    if ((evalResult != null && evalResult.booleanValue()) == desiredResult) {
+                        newSelectedElementIds.add(element.getId());
+                    }
+                }
+                
+            }
+            return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            
+    	} else {
+        	
+            final List<Target> newElements = new ArrayList<Target>();
+            for (final Target element : this.elements) {
+                if (this.selectedElementIds.contains(element.getId())) {
+                    newElements.add(element.doSelectNotNullAndMatching(desiredResult, eval));
+                } else {
+                    newElements.add(element);
+                }
+            }
+            return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+            
+    	}
+    	
+	}
+
+
+
+	@Override
+	Target doSelectNull(final boolean desiredResult) {
+        
+    	if (this.isCurrentActionLevel) {
+        	
+            final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
+            
+            for (final Target element : this.elements) {
+            	
+                if ((element.getObject() == null) == desiredResult) {
+                    newSelectedElementIds.add(element.getId());
+                }
+                
+            }
+            return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            
+    	} else {
+        	
+            final List<Target> newElements = new ArrayList<Target>();
+            for (final Target element : this.elements) {
+                if (this.selectedElementIds.contains(element.getId())) {
+                    newElements.add(element.doSelectNull(desiredResult));
+                } else {
+                    newElements.add(element);
+                }
+            }
+            return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+            
+    	}
+    	
+	}
+
+
+
+	@Override
+	Target doSelectNullOrMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
+        
+    	if (this.isCurrentActionLevel) {
+        	
+            final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
+            
+            for (final Target element : this.elements) {
+            	
+                if (element.getObject() == null) {
+                    newSelectedElementIds.add(element.getId());
+                } else {
+                    Boolean evalResult = null;
+                    try {
+                        evalResult = eval.execute(element.getObject(), new ExecCtxImpl(element.getId())); 
+                    } catch (Exception e) {
+                        throw new ExecutionException(e);
+                    }
+                    if ((evalResult != null && evalResult.booleanValue()) == desiredResult) {
+                        newSelectedElementIds.add(element.getId());
+                    }
+                }
+                
+            }
+            return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            
+    	} else {
+        	
+            final List<Target> newElements = new ArrayList<Target>();
+            for (final Target element : this.elements) {
+                if (this.selectedElementIds.contains(element.getId())) {
+                    newElements.add(element.doSelectNullOrMatching(desiredResult, eval));
+                } else {
+                    newElements.add(element);
+                }
+            }
+            return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+            
+    	}
+    	
+	}
+
+
+    
+
+	
     @Override
     public Target execute(final IFunction<?,?> executable) {
         
@@ -303,6 +547,7 @@ public class StructureTarget extends Target {
         
         
     }
+
 
     
 }

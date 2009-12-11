@@ -28,9 +28,16 @@ import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.mapbuild.IMapBuilder;
+import org.op4j.operators.intf.arrayofmap.ILevel0ArrayOfMapOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
+import org.op4j.operators.intf.mapofmap.ILevel0MapOfMapOperator;
+import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
 import org.op4j.operators.qualities.ICastableToListOfMapOperator;
 import org.op4j.operators.qualities.IConvertibleOperator;
+import org.op4j.operators.qualities.IConvertibleToArrayOfMapFromStructureOfMapOperator;
+import org.op4j.operators.qualities.IConvertibleToMapOfMapFromStructureOfMapOperator;
+import org.op4j.operators.qualities.IConvertibleToSetOfMapFromStructureOfMapOperator;
 import org.op4j.operators.qualities.IDistinguishableOperator;
 import org.op4j.operators.qualities.IEvaluableOperator;
 import org.op4j.operators.qualities.IExecutableOperator;
@@ -53,6 +60,9 @@ public interface ILevel0ListOfMapOperator<K,V>
 		        ICastableToListOfMapOperator,
 		        ISortableOperator<Map<K,V>>,
                 IExecutableOperator<List<Map<K,V>>>,
+                IConvertibleToArrayOfMapFromStructureOfMapOperator<K, V>,
+                IConvertibleToMapOfMapFromStructureOfMapOperator<K, V>,
+                IConvertibleToSetOfMapFromStructureOfMapOperator<K, V>,
                 IConvertibleOperator<List<Map<K,V>>>,
                 IEvaluableOperator<List<Map<K,V>>>,
                 IModifiableCollectionOperator<Map<K,V>>,
@@ -103,5 +113,12 @@ public interface ILevel0ListOfMapOperator<K,V>
     public ILevel0ListOfMapOperator<?,?> asListOfMapOfUnknown();
 
     
+    
+    public ILevel0ArrayOfMapOperator<K,V> toArrayOfMap();
+    
+    public <K1> ILevel0MapOfMapOperator<K1,K,V> toMapOfMap(final IEvaluator<K1,? super Map<K, V>> keyEval);
+    public <K1,K2,V2> ILevel0MapOfMapOperator<K1,K2,V2> toMapOfMap(final IMapBuilder<K1, Map<K2,V2>, ? super Map<K,V>> mapBuild);
+    
+    public ILevel0SetOfMapOperator<K,V> toSetOfMap();
     
 }

@@ -98,7 +98,7 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachIndex(final int... indices) {
-        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterate(indices));
+        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateIndex(indices));
     }
 
 
@@ -106,34 +106,34 @@ public class Level2MapOfListEntriesValueOperator<K,V> extends Operator
 
 
     public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachMatching(final IEvaluator<Boolean, ? super V> eval) {
-        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterate(eval));
+        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateMatching(eval));
     }
 
     public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachNotMatching(final IEvaluator<Boolean, ? super V> eval) {
-        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNot(eval));
+        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNotMatching(eval));
     }
 
     public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super V> eval) {
-        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNullOrNot(eval));
+        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNullOrNotMatching(eval));
     }
 
     public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super V> eval) {
-        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNotNullAndNot(eval));
+        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNotNullAndNotMatching(eval));
     }
 
 
     public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachNotNullMatching(final IEvaluator<Boolean, ? super V> eval) {
-        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNotNullAnd(eval));
+        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNotNullAndMatching(eval));
     }
 
 
     public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachNullOrMatching(final IEvaluator<Boolean, ? super V> eval) {
-        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNullOr(eval));
+        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNullOrMatching(eval));
     }
 
 
     public ILevel3MapOfListEntriesValueElementsOperator<K, V> forEachIndexNot(final int... indices) {
-        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateNot(indices));
+        return new Level3MapOfListEntriesValueElementsOperator<K, V>(getTarget().iterateIndexNot(indices));
     }
 
 

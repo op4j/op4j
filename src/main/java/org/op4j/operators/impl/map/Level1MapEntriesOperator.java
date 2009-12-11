@@ -58,12 +58,12 @@ public class Level1MapEntriesOperator<K,V> extends Operator
 
 
     public ILevel2MapEntriesKeyOperator<K, V> onKey() {
-        return new Level2MapEntriesKeyOperator<K, V>(getTarget().iterate(0));
+        return new Level2MapEntriesKeyOperator<K, V>(getTarget().iterateIndex(0));
     }
 
 
     public ILevel2MapEntriesValueOperator<K, V> onValue() {
-        return new Level2MapEntriesValueOperator<K, V>(getTarget().iterate(1));
+        return new Level2MapEntriesValueOperator<K, V>(getTarget().iterateIndex(1));
     }
 
 

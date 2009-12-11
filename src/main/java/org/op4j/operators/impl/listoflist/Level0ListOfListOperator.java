@@ -101,7 +101,7 @@ public class Level0ListOfListOperator<T> extends Operator
 
 
     public ILevel1ListOfListElementsOperator<T> forEachIndex(final int... indices) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().iterate(indices));
+        return new Level1ListOfListElementsOperator<T>(getTarget().iterateIndex(indices));
     }
 
 
@@ -109,34 +109,34 @@ public class Level0ListOfListOperator<T> extends Operator
 
 
     public ILevel1ListOfListElementsOperator<T> forEachMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().iterate(eval));
+        return new Level1ListOfListElementsOperator<T>(getTarget().iterateMatching(eval));
     }
 
     public ILevel1ListOfListElementsOperator<T> forEachNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().iterateNot(eval));
+        return new Level1ListOfListElementsOperator<T>(getTarget().iterateNotMatching(eval));
     }
 
     public ILevel1ListOfListElementsOperator<T> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().iterateNullOrNot(eval));
+        return new Level1ListOfListElementsOperator<T>(getTarget().iterateNullOrNotMatching(eval));
     }
 
     public ILevel1ListOfListElementsOperator<T> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().iterateNotNullAndNot(eval));
+        return new Level1ListOfListElementsOperator<T>(getTarget().iterateNotNullAndNotMatching(eval));
     }
 
 
     public ILevel1ListOfListElementsOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().iterateNotNullAnd(eval));
+        return new Level1ListOfListElementsOperator<T>(getTarget().iterateNotNullAndMatching(eval));
     }
 
 
     public ILevel1ListOfListElementsOperator<T> forEachNullOrMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().iterateNullOr(eval));
+        return new Level1ListOfListElementsOperator<T>(getTarget().iterateNullOrMatching(eval));
     }
 
 
     public ILevel1ListOfListElementsOperator<T> forEachIndexNot(final int... indices) {
-        return new Level1ListOfListElementsOperator<T>(getTarget().iterateNot(indices));
+        return new Level1ListOfListElementsOperator<T>(getTarget().iterateIndexNot(indices));
     }
 
 

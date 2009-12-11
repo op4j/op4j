@@ -1,2 +1,3 @@
 
- - Some "to" methods are missing. For example, arrayOfMap -> toListOfMap
+ - Create some sort of  "replace" method
+ - WARNING: Op.buildListOfList(Types.STRING).add(listOfString1).add(listOfString2).get()

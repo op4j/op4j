@@ -718,6 +718,13 @@ public final class Op {
         
         
         System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onKey().convert(ToString.fromNumber()).eval(Ognl.forString("#target + '...'")).get());
+        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onKey().convert(ToString.fromNumber()).eval(Ognl.forString("'onekey'")).get());
+
+        final List<Map<String,String>> listOfMapOfStringString1 = 
+        	Op.buildList(Types.MAP_OF_STRING_STRING).add(map1).add(map2).get();
+        
+        System.out.println(printArray(Op.onListOfMap(listOfMapOfStringString1).toArrayOfMap().get()));
+    
     }
     
     

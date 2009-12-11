@@ -99,7 +99,7 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
 
     public ILevel1ArrayOfSetElementsOperator<T> forEachIndex(final int... indices) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterate(indices));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateIndex(indices));
     }
 
 
@@ -107,34 +107,34 @@ public class Level0ArrayOfSetOperator<T> extends Operator
 
 
     public ILevel1ArrayOfSetElementsOperator<T> forEachMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterate(eval));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateMatching(eval));
     }
 
     public ILevel1ArrayOfSetElementsOperator<T> forEachNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNot(eval));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNotMatching(eval));
     }
 
     public ILevel1ArrayOfSetElementsOperator<T> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNullOrNot(eval));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNullOrNotMatching(eval));
     }
 
     public ILevel1ArrayOfSetElementsOperator<T> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNotNullAndNot(eval));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNotNullAndNotMatching(eval));
     }
 
 
     public ILevel1ArrayOfSetElementsOperator<T> forEachNotNullMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNotNullAnd(eval));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNotNullAndMatching(eval));
     }
 
 
     public ILevel1ArrayOfSetElementsOperator<T> forEachNullOrMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNullOr(eval));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNullOrMatching(eval));
     }
 
 
     public ILevel1ArrayOfSetElementsOperator<T> forEachIndexNot(final int... indices) {
-        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateNot(indices));
+        return new Level1ArrayOfSetElementsOperator<T>(getTarget().iterateIndexNot(indices));
     }
 
 

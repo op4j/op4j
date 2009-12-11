@@ -58,12 +58,12 @@ public class Level3MapOfMapEntriesValueEntriesOperator<K1,K2,V> extends Operator
 
 
     public ILevel4MapOfMapEntriesValueEntriesKeyOperator<K1, K2, V> onKey() {
-        return new Level4MapOfMapEntriesValueEntriesKeyOperator<K1, K2, V>(getTarget().iterate(0));
+        return new Level4MapOfMapEntriesValueEntriesKeyOperator<K1, K2, V>(getTarget().iterateIndex(0));
     }
 
 
     public ILevel4MapOfMapEntriesValueEntriesValueOperator<K1, K2, V> onValue() {
-        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, V>(getTarget().iterate(1));
+        return new Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, V>(getTarget().iterateIndex(1));
     }
 
 

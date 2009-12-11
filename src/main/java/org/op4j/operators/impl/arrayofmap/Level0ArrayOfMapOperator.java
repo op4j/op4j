@@ -25,15 +25,20 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.Op;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.Operator;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.arrayofmap.ILevel0ArrayOfMapOperator;
 import org.op4j.operators.intf.arrayofmap.ILevel1ArrayOfMapElementsOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
+import org.op4j.operators.intf.listofmap.ILevel0ListOfMapOperator;
+import org.op4j.operators.intf.mapofmap.ILevel0MapOfMapOperator;
+import org.op4j.operators.intf.setofmap.ILevel0SetOfMapOperator;
 import org.op4j.target.Target;
 
 
@@ -79,39 +84,39 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
 
 
     public ILevel1ArrayOfMapElementsOperator<K, V> forEachIndex(final int... indices) {
-        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterate(indices));
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateIndex(indices));
     }
 
 
     public ILevel1ArrayOfMapElementsOperator<K, V> forEachMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
-        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterate(eval));
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateMatching(eval));
     }
 
     public ILevel1ArrayOfMapElementsOperator<K, V> forEachNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
-        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNot(eval));
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNotMatching(eval));
     }
 
     public ILevel1ArrayOfMapElementsOperator<K, V> forEachNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
-        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNullOrNot(eval));
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNullOrNotMatching(eval));
     }
 
     public ILevel1ArrayOfMapElementsOperator<K, V> forEachNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
-        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNotNullAndNot(eval));
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNotNullAndNotMatching(eval));
     }
 
 
     public ILevel1ArrayOfMapElementsOperator<K, V> forEachNotNullMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
-        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNotNullAnd(eval));
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNotNullAndMatching(eval));
     }
 
 
     public ILevel1ArrayOfMapElementsOperator<K, V> forEachNullOrMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
-        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNullOr(eval));
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNullOrMatching(eval));
     }
 
 
     public ILevel1ArrayOfMapElementsOperator<K, V> forEachIndexNot(final int... indices) {
-        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateNot(indices));
+        return new Level1ArrayOfMapElementsOperator<K, V>(getTarget().iterateIndexNot(indices));
     }
 
 
@@ -239,6 +244,26 @@ public class Level0ArrayOfMapOperator<K,V> extends Operator
     public ILevel0ArrayOfMapOperator<?,?> asArrayOfMapOfUnknown() {
         return asArrayOfMapOf(Types.OBJECT, Types.OBJECT);
     }
+
+
+	public ILevel0ListOfMapOperator<K, V> toListOfMap() {
+		return Op.onListOfMap(Op.onArray(get()).toList().get());
+	}
+
+
+	public <K1> ILevel0MapOfMapOperator<K1, K, V> toMapOfMap(final IEvaluator<K1, ? super Map<K, V>> keyEval) {
+		return Op.onMapOfMap(Op.onArray(get()).toMap(keyEval).get());
+	}
+
+
+	public <K1, K2, V2> ILevel0MapOfMapOperator<K1, K2, V2> toMapOfMap(final IMapBuilder<K1, Map<K2, V2>, ? super Map<K, V>> mapBuild) {
+		return Op.onMapOfMap(Op.onArray(get()).toMap(mapBuild).get());
+	}
+
+
+	public ILevel0SetOfMapOperator<K, V> toSetOfMap() {
+		return Op.onSetOfMap(Op.onArray(get()).toSet().get());
+	}
     
     
 }

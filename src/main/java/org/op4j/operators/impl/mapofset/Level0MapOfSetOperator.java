@@ -78,17 +78,17 @@ public class Level0MapOfSetOperator<K,V> extends Operator
 
 
     public ILevel1MapOfSetEntriesOperator<K, V> forEachEntryWithKeys(final K... keys) {
-        return new Level1MapOfSetEntriesOperator<K, V>(getTarget().iterateForMapKeys(keys));
+        return new Level1MapOfSetEntriesOperator<K, V>(getTarget().iterateMapKeys(keys));
     }
 
 
     public ILevel1MapOfSetEntriesOperator<K, V> forEachEntryMatching(final IEvaluator<Boolean, ? super Entry<K, Set<V>>> eval) {
-        return new Level1MapOfSetEntriesOperator<K, V>(getTarget().iterate(eval));
+        return new Level1MapOfSetEntriesOperator<K, V>(getTarget().iterateMatching(eval));
     }
 
 
     public ILevel1MapOfSetEntriesOperator<K, V> forEachEntryWithKeysNot(final K... keys) {
-        return new Level1MapOfSetEntriesOperator<K, V>(getTarget().iterateNot(keys));
+        return new Level1MapOfSetEntriesOperator<K, V>(getTarget().iterateMapKeysNot(keys));
     }
 
 

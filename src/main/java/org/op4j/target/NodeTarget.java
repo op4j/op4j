@@ -107,7 +107,7 @@ public abstract class NodeTarget extends Target{
 
     
     @Override
-    Target doIteratePositions(final boolean desiredResult, final List<Integer> positions) {
+    Target doIterateIndex(final boolean desiredResult, final List<Integer> positions) {
         
         final Collection<?> elements = getIterationElements();
         final List<Target> newElements = new ArrayList<Target>();
@@ -135,7 +135,7 @@ public abstract class NodeTarget extends Target{
 
     
     @Override
-    Target doIterateExpression(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
+    Target doIterateMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
         
         final Collection<?> elements = getIterationElements();
         final List<Target> newElements = new ArrayList<Target>();
@@ -189,7 +189,7 @@ public abstract class NodeTarget extends Target{
 
     
     @Override
-    Target doIterateNullOr(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
+    Target doIterateNullOrMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
         
         final Collection<?> elements = getIterationElements();
         final List<Target> newElements = new ArrayList<Target>();
@@ -221,7 +221,7 @@ public abstract class NodeTarget extends Target{
 
     
     @Override
-    Target doIterateNotNullAnd(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
+    Target doIterateNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
         
         final Collection<?> elements = getIterationElements();
         final List<Target> newElements = new ArrayList<Target>();
@@ -273,6 +273,43 @@ public abstract class NodeTarget extends Target{
     	}
     }
 
+
+
+	
+	@Override
+	Target doSelectIndex(final boolean desiredResult, final List<Integer> positions) {
+        throw new IllegalStateException("Cannot select on a node");
+	}
+
+
+	@Override
+	Target doSelectMapKeys(final boolean desiredResult, final List<Object> objects) {
+        throw new IllegalStateException("Cannot select on a node");
+	}
+
+	
+    @Override
+    Target doSelectMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
+        throw new IllegalStateException("Cannot select on a node");
+    }
+
+
+	@Override
+	Target doSelectNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
+        throw new IllegalStateException("Cannot select on a node");
+	}
+
+
+	@Override
+	Target doSelectNull(final boolean desiredResult) {
+        throw new IllegalStateException("Cannot select on a node");
+	}
+
+
+	@Override
+	Target doSelectNullOrMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
+        throw new IllegalStateException("Cannot select on a node");
+	}
 
     
 }

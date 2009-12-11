@@ -59,12 +59,12 @@ public class Level2SetOfMapElementsEntriesOperator<K,V> extends Operator
 
 
     public ILevel3SetOfMapElementsEntriesKeyOperator<K, V> onKey() {
-        return new Level3SetOfMapElementsEntriesKeyOperator<K, V>(getTarget().iterate(0));
+        return new Level3SetOfMapElementsEntriesKeyOperator<K, V>(getTarget().iterateIndex(0));
     }
 
 
     public ILevel3SetOfMapElementsEntriesValueOperator<K, V> onValue() {
-        return new Level3SetOfMapElementsEntriesValueOperator<K, V>(getTarget().iterate(1));
+        return new Level3SetOfMapElementsEntriesValueOperator<K, V>(getTarget().iterateIndex(1));
     }
 
 
