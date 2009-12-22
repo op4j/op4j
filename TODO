@@ -1,3 +1,9 @@
 
+ - Remove distinct from generated Set operators.
+ 
  - Create some sort of  "replace" method
+ - Should the "add" of arrays have the same name as the "add" of generic operators? (they work on different dimensions!)
  - WARNING: Op.buildListOfList(Types.STRING).add(listOfString1).add(listOfString2).get()
+
+ - Maybe exec in an array or arrayofarray, instead of returning generic or array, could retur array or arrayofarray
+   unless you call them with exec(Type, IFunction)... this is, create a different method for changing type.

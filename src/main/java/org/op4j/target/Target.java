@@ -169,7 +169,7 @@ public abstract class Target {
     }
     
     
-    public Target selectIndexNot(final int[] positions) {
+    public Target selectIndexNot(final int... positions) {
         return doSelectIndex(false, VarArgsUtil.asRequiredIntegerList(positions));
     }
 
@@ -179,7 +179,7 @@ public abstract class Target {
     }
 
     
-    public Target selectMapKeysNot(final Object[] objects) {
+    public Target selectMapKeysNot(final Object... objects) {
         return doSelectMapKeys(false, VarArgsUtil.asRequiredObjectList(objects));
     }
     
