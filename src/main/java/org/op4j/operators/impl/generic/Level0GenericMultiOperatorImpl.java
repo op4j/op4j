@@ -48,6 +48,7 @@ import org.op4j.operators.impl.mapofset.Level0MapOfSetOperatorImpl;
 import org.op4j.operators.impl.set.Level0SetOperatorImpl;
 import org.op4j.operators.intf.array.Level0ArrayOperator;
 import org.op4j.operators.intf.generic.Level0GenericMultiOperator;
+import org.op4j.operators.intf.generic.Level0GenericMultiSelectedOperator;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.list.Level0ListOperator;
 import org.op4j.operators.intf.map.Level0MapOperator;
@@ -266,6 +267,56 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
 
     public List<T> getAsList() {
         return buildList().get();
+    }
+
+
+    public Level0GenericMultiSelectedOperator<T> ifIndex(final int... indices) {
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectIndex(indices));
+    }
+
+
+    public Level0GenericMultiSelectedOperator<T> ifIndexNot(final int... indices) {
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectIndexNot(indices));
+    }
+
+
+    public Level0GenericMultiSelectedOperator<T> ifMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectMatching(eval));
+    }
+
+
+    public Level0GenericMultiSelectedOperator<T> ifNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectNotMatching(eval));
+    }
+
+
+    public Level0GenericMultiSelectedOperator<T> ifNotNull() {
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectNotNull());
+    }
+
+
+    public Level0GenericMultiSelectedOperator<T> ifNotNullMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectNotNullAndMatching(eval));
+    }
+
+
+    public Level0GenericMultiSelectedOperator<T> ifNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectNotNullAndNotMatching(eval));
+    }
+
+
+    public Level0GenericMultiSelectedOperator<T> ifNull() {
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectNull());
+    }
+
+
+    public Level0GenericMultiSelectedOperator<T> ifNullOrMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectNullOrMatching(eval));
+    }
+
+
+    public Level0GenericMultiSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
     }
     
 }

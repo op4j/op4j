@@ -39,7 +39,6 @@ import java.util.Set;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.functions.AbstractNotNullFunc;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.ListFuncs;
@@ -388,16 +387,16 @@ public final class Op {
         
         System.out.println(Op.onList(stringsList1).get());
         System.out.println(Op.onList(stringsList1).forEach().get());
-        System.out.println(Op.onList(stringsList1).forEachNotNull().eval(Ognl.forString("toUpperCase()")).get());
+        System.out.println(Op.onList(stringsList1).forEach().ifNotNull().eval(Ognl.forString("toUpperCase()")).get());
         
         
         System.out.println(Op.onArrayOfArray(stringsStrings1).forEach().forEach().eval(Ognl.forInteger("length()")).get());
         
         System.out.println(Arrays.asList(Op.onArrayOfList(stringsListStrings1).forEach().forEach().eval(Ognl.forString("toUpperCase()")).get()));
 
-        System.out.println(Arrays.asList(Op.onArrayOfMap(maps1).forEachMatching(Ognl.forBoolean("size() > 6")).forEachEntry().onValue().eval(Ognl.forString("toUpperCase()"))));
+        System.out.println(Arrays.asList(Op.onArrayOfMap(maps1).forEach().ifMatching(Ognl.forBoolean("size() > 6")).forEachEntry().onValue().eval(Ognl.forString("toUpperCase()"))));
         
-        System.out.println(Arrays.asList(Op.onArrayOfArray(stringsStrings1).forEach().forEachMatching(Ognl.forBoolean("length() > 6")).eval(Ognl.forString("toUpperCase()")).get()[0]));
+        System.out.println(Arrays.asList(Op.onArrayOfArray(stringsStrings1).forEach().forEach().ifMatching(Ognl.forBoolean("length() > 6")).eval(Ognl.forString("toUpperCase()")).get()[0]));
         
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().get());
         
@@ -682,9 +681,7 @@ public final class Op {
         System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().extractKeys().get()));
         System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().extractValues().get()));
         
-        System.out.println(Op.onList(stringsList1).forEachNotNull().exec(Ognl.forInteger("length()")).get());
-        
-        System.out.println(Op.onList(stringsList1).forEachNotNull().convert(ToString.fromObject()).get());
+        System.out.println(Op.onList(stringsList1).forEach().ifNotNull().convert(ToString.fromObject()).get());
         
         System.out.println(Op.onAll("hello", "goodbye").eval(Ognl.forString("#target + ' world!'")).getAsList());
         
@@ -693,7 +690,7 @@ public final class Op {
         
         
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().eval(MethodCall.forInteger("length")).get());
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEachIndex(0).add("").removeMatching(MethodCall.forBoolean("isEmpty")).get());
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().ifIndex(0).add("").removeMatching(MethodCall.forBoolean("isEmpty")).get());
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().removeMatching(MethodCall.forBoolean("isEmpty")).get());
         
         System.out.println(Op.onMap(map1).forEachEntry().eval(Ognl.forString("'in ' + #target.key + ' you say ' + #target.value")).get());

@@ -1,4 +1,5 @@
-
+ - Add "getSimpleName" to javaruntype types so that package can be omitted
+ 
  - Remove distinct from generated Set operators.
  
  - Create some sort of  "replace" method

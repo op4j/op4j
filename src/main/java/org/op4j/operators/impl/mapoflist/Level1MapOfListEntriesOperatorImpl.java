@@ -31,6 +31,7 @@ import org.op4j.operators.impl.list.Level1ListElementsOperatorImpl;
 import org.op4j.operators.intf.list.Level1ListElementsOperator;
 import org.op4j.operators.intf.mapoflist.Level0MapOfListOperator;
 import org.op4j.operators.intf.mapoflist.Level1MapOfListEntriesOperator;
+import org.op4j.operators.intf.mapoflist.Level1MapOfListEntriesSelectedOperator;
 import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesKeyOperator;
 import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesValueOperator;
 import org.op4j.target.Target;
@@ -88,6 +89,36 @@ public class Level1MapOfListEntriesOperatorImpl<K,V> extends AbstractOperatorImp
 	public <X> Level1ListElementsOperator<X> exec(final IFunction<X, ? super Entry<K, List<V>>> function) {
         return new Level1ListElementsOperatorImpl<X>(getTarget().execute(function));
 	}
+
+
+    public Level1MapOfListEntriesSelectedOperator<K, V> ifIndex(final int... indices) {
+        return new Level1MapOfListEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
+    }
+
+
+    public Level1MapOfListEntriesSelectedOperator<K, V> ifIndexNot(final int... indices) {
+        return new Level1MapOfListEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
+    }
+
+
+    public Level1MapOfListEntriesSelectedOperator<K, V> ifKeyEquals(final K... keys) {
+        return new Level1MapOfListEntriesSelectedOperatorImpl<K, V>(getTarget().selectMapKeys(keys));
+    }
+
+
+    public Level1MapOfListEntriesSelectedOperator<K, V> ifKeyNotEquals(final K... keys) {
+        return new Level1MapOfListEntriesSelectedOperatorImpl<K, V>(getTarget().selectMapKeysNot(keys));
+    }
+
+
+    public Level1MapOfListEntriesSelectedOperator<K, V> ifMatching(final IEvaluator<Boolean, ? super Entry<K, List<V>>> eval) {
+        return new Level1MapOfListEntriesSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
+    }
+
+
+    public Level1MapOfListEntriesSelectedOperator<K, V> ifNotMatching(final IEvaluator<Boolean, ? super Entry<K, List<V>>> eval) {
+        return new Level1MapOfListEntriesSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
+    }
     
     
     

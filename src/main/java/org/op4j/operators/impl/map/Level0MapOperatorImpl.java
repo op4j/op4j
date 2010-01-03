@@ -36,6 +36,7 @@ import org.op4j.operators.impl.set.Level0SetOperatorImpl;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.list.Level0ListOperator;
 import org.op4j.operators.intf.map.Level0MapOperator;
+import org.op4j.operators.intf.map.Level0MapSelectedOperator;
 import org.op4j.operators.intf.map.Level1MapEntriesOperator;
 import org.op4j.operators.intf.mapofarray.Level0MapOfArrayOperator;
 import org.op4j.operators.intf.mapoflist.Level0MapOfListOperator;
@@ -225,6 +226,56 @@ public class Level0MapOperatorImpl<K,V> extends AbstractOperatorImpl
 
     public Level0MapOperator<?, ?> asMapOfUnknown() {
         return asMapOf(Types.OBJECT, Types.OBJECT);
+    }
+
+
+    public Level0MapSelectedOperator<K, V> ifIndex(final int... indices) {
+        return new Level0MapSelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
+    }
+
+
+    public Level0MapSelectedOperator<K, V> ifIndexNot(final int... indices) {
+        return new Level0MapSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
+    }
+
+
+    public Level0MapSelectedOperator<K, V> ifMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+        return new Level0MapSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
+    }
+
+
+    public Level0MapSelectedOperator<K, V> ifNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+        return new Level0MapSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
+    }
+
+
+    public Level0MapSelectedOperator<K, V> ifNotNull() {
+        return new Level0MapSelectedOperatorImpl<K, V>(getTarget().selectNotNull());
+    }
+
+
+    public Level0MapSelectedOperator<K, V> ifNotNullMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+        return new Level0MapSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndMatching(eval));
+    }
+
+
+    public Level0MapSelectedOperator<K, V> ifNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+        return new Level0MapSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndNotMatching(eval));
+    }
+
+
+    public Level0MapSelectedOperator<K, V> ifNull() {
+        return new Level0MapSelectedOperatorImpl<K, V>(getTarget().selectNull());
+    }
+
+
+    public Level0MapSelectedOperator<K, V> ifNullOrMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+        return new Level0MapSelectedOperatorImpl<K, V>(getTarget().selectNullOrMatching(eval));
+    }
+
+
+    public Level0MapSelectedOperator<K, V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+        return new Level0MapSelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
     }
 
     

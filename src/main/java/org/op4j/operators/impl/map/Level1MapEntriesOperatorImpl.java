@@ -30,6 +30,7 @@ import org.op4j.operators.impl.list.Level1ListElementsOperatorImpl;
 import org.op4j.operators.intf.list.Level1ListElementsOperator;
 import org.op4j.operators.intf.map.Level0MapOperator;
 import org.op4j.operators.intf.map.Level1MapEntriesOperator;
+import org.op4j.operators.intf.map.Level1MapEntriesSelectedOperator;
 import org.op4j.operators.intf.map.Level2MapEntriesKeyOperator;
 import org.op4j.operators.intf.map.Level2MapEntriesValueOperator;
 import org.op4j.target.Target;
@@ -87,5 +88,35 @@ public class Level1MapEntriesOperatorImpl<K,V> extends AbstractOperatorImpl
 	public <X> Level1ListElementsOperator<X> exec(final IFunction<X, ? super Entry<K, V>> function) {
         return new Level1ListElementsOperatorImpl<X>(getTarget().execute(function));
 	}
+
+
+    public Level1MapEntriesSelectedOperator<K, V> ifIndex(final int... indices) {
+        return new Level1MapEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
+    }
+
+
+    public Level1MapEntriesSelectedOperator<K, V> ifIndexNot(final int... indices) {
+        return new Level1MapEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
+    }
+
+
+    public Level1MapEntriesSelectedOperator<K, V> ifKeyEquals(final K... keys) {
+        return new Level1MapEntriesSelectedOperatorImpl<K, V>(getTarget().selectMapKeys(keys));
+    }
+
+
+    public Level1MapEntriesSelectedOperator<K, V> ifKeyNotEquals(final K... keys) {
+        return new Level1MapEntriesSelectedOperatorImpl<K, V>(getTarget().selectMapKeysNot(keys));
+    }
+
+
+    public Level1MapEntriesSelectedOperator<K, V> ifMatching(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
+        return new Level1MapEntriesSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
+    }
+
+
+    public Level1MapEntriesSelectedOperator<K, V> ifNotMatching(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
+        return new Level1MapEntriesSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
+    }
 
 }

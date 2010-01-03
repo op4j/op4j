@@ -31,6 +31,7 @@ import org.op4j.operators.impl.listoflist.Level2ListOfListElementsElementsOperat
 import org.op4j.operators.intf.listoflist.Level2ListOfListElementsElementsOperator;
 import org.op4j.operators.intf.listofmap.Level1ListOfMapElementsOperator;
 import org.op4j.operators.intf.listofmap.Level2ListOfMapElementsEntriesOperator;
+import org.op4j.operators.intf.listofmap.Level2ListOfMapElementsEntriesSelectedOperator;
 import org.op4j.operators.intf.listofmap.Level3ListOfMapElementsEntriesKeyOperator;
 import org.op4j.operators.intf.listofmap.Level3ListOfMapElementsEntriesValueOperator;
 import org.op4j.target.Target;
@@ -89,5 +90,35 @@ public class Level2ListOfMapElementsEntriesOperatorImpl<K,V> extends AbstractOpe
 	public <X> Level2ListOfListElementsElementsOperator<X> exec(final IFunction<X, ? super Entry<K, V>> function) {
         return new Level2ListOfListElementsElementsOperatorImpl<X>(getTarget().execute(function));
 	}
+
+
+    public Level2ListOfMapElementsEntriesSelectedOperator<K, V> ifIndex(final int... indices) {
+        return new Level2ListOfMapElementsEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
+    }
+
+
+    public Level2ListOfMapElementsEntriesSelectedOperator<K, V> ifIndexNot(final int... indices) {
+        return new Level2ListOfMapElementsEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
+    }
+
+
+    public Level2ListOfMapElementsEntriesSelectedOperator<K, V> ifKeyEquals(final K... keys) {
+        return new Level2ListOfMapElementsEntriesSelectedOperatorImpl<K, V>(getTarget().selectMapKeys(keys));
+    }
+
+
+    public Level2ListOfMapElementsEntriesSelectedOperator<K, V> ifKeyNotEquals(final K... keys) {
+        return new Level2ListOfMapElementsEntriesSelectedOperatorImpl<K, V>(getTarget().selectMapKeysNot(keys));
+    }
+
+
+    public Level2ListOfMapElementsEntriesSelectedOperator<K, V> ifMatching(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
+        return new Level2ListOfMapElementsEntriesSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
+    }
+
+
+    public Level2ListOfMapElementsEntriesSelectedOperator<K, V> ifNotMatching(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
+        return new Level2ListOfMapElementsEntriesSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
+    }
     
 }

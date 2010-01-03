@@ -30,6 +30,7 @@ import org.op4j.operators.impl.mapoflist.Level3MapOfListEntriesValueElementsOper
 import org.op4j.operators.intf.mapoflist.Level3MapOfListEntriesValueElementsOperator;
 import org.op4j.operators.intf.mapofmap.Level2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.Level3MapOfMapEntriesValueEntriesOperator;
+import org.op4j.operators.intf.mapofmap.Level3MapOfMapEntriesValueEntriesSelectedOperator;
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueEntriesKeyOperator;
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueEntriesValueOperator;
 import org.op4j.target.Target;
@@ -87,6 +88,36 @@ public class Level3MapOfMapEntriesValueEntriesOperatorImpl<K1,K2,V> extends Abst
 	public <X> Level3MapOfListEntriesValueElementsOperator<K1,X> exec(final IFunction<X, ? super Entry<K2, V>> function) {
         return new Level3MapOfListEntriesValueElementsOperatorImpl<K1,X>(getTarget().execute(function));
 	}
+
+
+    public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1, K2, V> ifIndex(final int... indices) {
+        return new Level3MapOfMapEntriesValueEntriesSelectedOperatorImpl<K1, K2, V>(getTarget().selectIndex(indices));
+    }
+
+
+    public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1, K2, V> ifIndexNot(final int... indices) {
+        return new Level3MapOfMapEntriesValueEntriesSelectedOperatorImpl<K1, K2, V>(getTarget().selectIndexNot(indices));
+    }
+
+
+    public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1, K2, V> ifKeyEquals(final K2... keys) {
+        return new Level3MapOfMapEntriesValueEntriesSelectedOperatorImpl<K1, K2, V>(getTarget().selectMapKeys(keys));
+    }
+
+
+    public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1, K2, V> ifKeyNotEquals(final K2... keys) {
+        return new Level3MapOfMapEntriesValueEntriesSelectedOperatorImpl<K1, K2, V>(getTarget().selectMapKeysNot(keys));
+    }
+
+
+    public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1, K2, V> ifMatching(final IEvaluator<Boolean, ? super Entry<K2, V>> eval) {
+        return new Level3MapOfMapEntriesValueEntriesSelectedOperatorImpl<K1, K2, V>(getTarget().selectMatching(eval));
+    }
+
+
+    public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1, K2, V> ifNotMatching(final IEvaluator<Boolean, ? super Entry<K2, V>> eval) {
+        return new Level3MapOfMapEntriesValueEntriesSelectedOperatorImpl<K1, K2, V>(getTarget().selectNotMatching(eval));
+    }
     
     
     

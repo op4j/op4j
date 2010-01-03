@@ -1,0 +1,98 @@
+package org.op4j.operators.impl.map;
+
+import java.util.Map;
+import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
+import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.operators.impl.AbstractOperatorImpl;
+import org.op4j.operators.intf.map.Level1MapSelectedEntriesOperator;
+import org.op4j.operators.intf.map.Level2MapSelectedEntriesKeyOperator;
+import org.op4j.operators.intf.map.Level2MapSelectedEntriesKeySelectedOperator;
+import org.op4j.target.Target;
+
+
+public class Level2MapSelectedEntriesKeyOperatorImpl<K,V> extends AbstractOperatorImpl implements Level2MapSelectedEntriesKeyOperator<K,V> {
+
+
+    public Level2MapSelectedEntriesKeyOperatorImpl(final Target target) {
+        super(target);
+    }
+
+
+    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifIndex(final int... indices) {
+        return null;
+    }
+
+
+    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifMatching(final IEvaluator<Boolean,? super K> eval) {
+        return null;
+    }
+
+
+    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifNotMatching(final IEvaluator<Boolean,? super K> eval) {
+        return null;
+    }
+
+
+    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifNullOrNotMatching(final IEvaluator<Boolean,? super K> eval) {
+        return null;
+    }
+
+
+    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifNotNullNotMatching(final IEvaluator<Boolean,? super K> eval) {
+        return null;
+    }
+
+
+    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifNull() {
+        return null;
+    }
+
+
+    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifNullOrMatching(final IEvaluator<Boolean,? super K> eval) {
+        return null;
+    }
+
+
+    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifIndexNot(final int... indices) {
+        return null;
+    }
+
+
+    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifNotNull() {
+        return null;
+    }
+
+
+    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifNotNullMatching(final IEvaluator<Boolean,? super K> eval) {
+        return null;
+    }
+
+
+    public Level2MapSelectedEntriesKeyOperator<K,V> eval(final IEvaluator<? extends K,? super K> eval) {
+        return null;
+    }
+
+
+    public Level1MapSelectedEntriesOperator<K,V> endOn() {
+        return null;
+    }
+
+
+    public Level2MapSelectedEntriesKeyOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
+        return null;
+    }
+
+
+    public Level2MapSelectedEntriesKeyOperator<K,V> convert(final IConverter<? extends K,? super K> converter) {
+        return null;
+    }
+
+
+    public Map<K,V> get() {
+        return null;
+    }
+
+
+
+}

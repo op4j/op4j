@@ -43,6 +43,7 @@ import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.list.Level0ListOperator;
 import org.op4j.operators.intf.map.Level0MapOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
+import org.op4j.operators.intf.set.Level0SetSelectedOperator;
 import org.op4j.operators.intf.set.Level1SetElementsOperator;
 import org.op4j.operators.intf.setofarray.Level0SetOfArrayOperator;
 import org.op4j.operators.intf.setoflist.Level0SetOfListOperator;
@@ -253,6 +254,56 @@ public class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
 
     public Level0SetOperator<?> asSetOfUnknown() {
         return asSetOf(Types.OBJECT);
+    }
+
+
+    public Level0SetSelectedOperator<T> ifIndex(final int... indices) {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().selectIndex(indices));
+    }
+
+
+    public Level0SetSelectedOperator<T> ifIndexNot(final int... indices) {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().selectIndexNot(indices));
+    }
+
+
+    public Level0SetSelectedOperator<T> ifMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().selectMatching(eval));
+    }
+
+
+    public Level0SetSelectedOperator<T> ifNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().selectNotMatching(eval));
+    }
+
+
+    public Level0SetSelectedOperator<T> ifNotNull() {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().selectNotNull());
+    }
+
+
+    public Level0SetSelectedOperator<T> ifNotNullMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().selectNotNullAndMatching(eval));
+    }
+
+
+    public Level0SetSelectedOperator<T> ifNotNullNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().selectNotNullAndNotMatching(eval));
+    }
+
+
+    public Level0SetSelectedOperator<T> ifNull() {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().selectNull());
+    }
+
+
+    public Level0SetSelectedOperator<T> ifNullOrMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().selectNullOrMatching(eval));
+    }
+
+
+    public Level0SetSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
     }
 
     

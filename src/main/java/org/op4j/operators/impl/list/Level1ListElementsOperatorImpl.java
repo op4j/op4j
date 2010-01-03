@@ -29,6 +29,7 @@ import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.list.Level0ListOperator;
 import org.op4j.operators.intf.list.Level1ListElementsOperator;
+import org.op4j.operators.intf.list.Level1ListElementsSelectedOperator;
 import org.op4j.operators.intf.listofarray.Level1ListOfArrayElementsOperator;
 import org.op4j.operators.intf.listoflist.Level1ListOfListElementsOperator;
 import org.op4j.operators.intf.listofmap.Level1ListOfMapElementsOperator;
@@ -132,6 +133,56 @@ public class Level1ListElementsOperatorImpl<T> extends AbstractOperatorImpl
     
     public List<T> get() {
         return endFor().get();
+    }
+
+
+    public Level1ListElementsSelectedOperator<T> ifIndex(final int... indices) {
+        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().selectIndex(indices));
+    }
+
+
+    public Level1ListElementsSelectedOperator<T> ifIndexNot(final int... indices) {
+        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().selectIndexNot(indices));
+    }
+
+
+    public Level1ListElementsSelectedOperator<T> ifMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().selectMatching(eval));
+    }
+
+
+    public Level1ListElementsSelectedOperator<T> ifNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().selectNotMatching(eval));
+    }
+
+
+    public Level1ListElementsSelectedOperator<T> ifNotNull() {
+        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().selectNotNull());
+    }
+
+
+    public Level1ListElementsSelectedOperator<T> ifNotNullMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().selectNotNullAndMatching(eval));
+    }
+
+
+    public Level1ListElementsSelectedOperator<T> ifNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().selectNotNullAndNotMatching(eval));
+    }
+
+
+    public Level1ListElementsSelectedOperator<T> ifNull() {
+        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().selectNull());
+    }
+
+
+    public Level1ListElementsSelectedOperator<T> ifNullOrMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().selectNullOrMatching(eval));
+    }
+
+
+    public Level1ListElementsSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
     }
     
 }
