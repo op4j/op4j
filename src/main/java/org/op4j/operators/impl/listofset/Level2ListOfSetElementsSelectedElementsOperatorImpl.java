@@ -71,7 +71,7 @@ public class Level2ListOfSetElementsSelectedElementsOperatorImpl<T> extends Abst
 
 
     public Level2ListOfSetElementsSelectedElementsOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return null;
+        return new Level2ListOfSetElementsSelectedElementsOperatorImpl<T>(getTarget().execute(eval));
     }
 
 
@@ -81,12 +81,12 @@ public class Level2ListOfSetElementsSelectedElementsOperatorImpl<T> extends Abst
 
 
     public Level2ListOfSetElementsSelectedElementsOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return null;
+        return new Level2ListOfSetElementsSelectedElementsOperatorImpl<T>(getTarget().execute(function));
     }
 
 
     public Level2ListOfSetElementsSelectedElementsOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return null;
+        return new Level2ListOfSetElementsSelectedElementsOperatorImpl<T>(getTarget().execute(converter));
     }
 
 

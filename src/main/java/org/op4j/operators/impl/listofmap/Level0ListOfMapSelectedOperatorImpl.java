@@ -83,12 +83,12 @@ public class Level0ListOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorIm
 
 
     public Level0ListOfMapSelectedOperator<K,V> eval(final IEvaluator<? extends List<Map<K,V>>,? super List<Map<K,V>>> eval) {
-        return null;
+        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
 
     public Level0ListOfMapOperator<K,V> endIf() {
-        return null;
+        return new Level0ListOfMapOperatorImpl<K,V>(getTarget().endSelect());
     }
 
 
@@ -108,7 +108,7 @@ public class Level0ListOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorIm
 
 
     public Level0ListOfMapSelectedOperator<K,V> exec(final IFunction<? extends List<Map<K,V>>,? super List<Map<K,V>>> function) {
-        return null;
+        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
@@ -123,7 +123,7 @@ public class Level0ListOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorIm
 
 
     public Level0ListOfMapSelectedOperator<K,V> convert(final IConverter<? extends List<Map<K,V>>,? super List<Map<K,V>>> converter) {
-        return null;
+        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(converter));
     }
 
 

@@ -19,22 +19,22 @@ public class Level1ListElementsSelectedOperatorImpl<T> extends AbstractOperatorI
 
 
     public Level1ListElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return null;
+        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().execute(eval));
     }
 
 
     public Level1ListElementsOperator<T> endIf() {
-        return null;
+        return new Level1ListElementsOperatorImpl<T>(getTarget().endSelect());
     }
 
 
     public Level1ListElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return null;
+        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().execute(function));
     }
 
 
     public Level1ListElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return null;
+        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().execute(converter));
     }
 
 

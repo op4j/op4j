@@ -22,12 +22,12 @@ public class Level1MapSelectedEntriesSelectedOperatorImpl<K,V> extends AbstractO
 
 
     public Level1MapSelectedEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Entry<K,V>,? super Entry<K,V>> eval) {
-        return null;
+        return new Level1MapSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
 
     public Level1MapSelectedEntriesOperator<K,V> endIf() {
-        return null;
+        return new Level1MapSelectedEntriesOperatorImpl<K,V>(getTarget().endSelect());
     }
 
 
@@ -42,12 +42,12 @@ public class Level1MapSelectedEntriesSelectedOperatorImpl<K,V> extends AbstractO
 
 
     public Level1MapSelectedEntriesSelectedOperator<K,V> exec(final IFunction<? extends Entry<K,V>,? super Entry<K,V>> function) {
-        return null;
+        return new Level1MapSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
     public Level1MapSelectedEntriesSelectedOperator<K,V> convert(final IConverter<? extends Entry<K,V>,? super Entry<K,V>> converter) {
-        return null;
+        return new Level1MapSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter));
     }
 
 

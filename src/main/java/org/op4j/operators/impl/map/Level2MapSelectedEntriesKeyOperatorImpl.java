@@ -70,7 +70,7 @@ public class Level2MapSelectedEntriesKeyOperatorImpl<K,V> extends AbstractOperat
 
 
     public Level2MapSelectedEntriesKeyOperator<K,V> eval(final IEvaluator<? extends K,? super K> eval) {
-        return null;
+        return new Level2MapSelectedEntriesKeyOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
 
@@ -80,12 +80,12 @@ public class Level2MapSelectedEntriesKeyOperatorImpl<K,V> extends AbstractOperat
 
 
     public Level2MapSelectedEntriesKeyOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
-        return null;
+        return new Level2MapSelectedEntriesKeyOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
     public Level2MapSelectedEntriesKeyOperator<K,V> convert(final IConverter<? extends K,? super K> converter) {
-        return null;
+        return new Level2MapSelectedEntriesKeyOperatorImpl<K,V>(getTarget().execute(converter));
     }
 
 

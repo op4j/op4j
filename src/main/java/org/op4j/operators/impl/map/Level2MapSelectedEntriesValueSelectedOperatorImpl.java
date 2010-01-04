@@ -19,22 +19,22 @@ public class Level2MapSelectedEntriesValueSelectedOperatorImpl<K,V> extends Abst
 
 
     public Level2MapSelectedEntriesValueSelectedOperator<K,V> eval(final IEvaluator<? extends V,? super V> eval) {
-        return null;
+        return new Level2MapSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
 
     public Level2MapSelectedEntriesValueOperator<K,V> endIf() {
-        return null;
+        return new Level2MapSelectedEntriesValueOperatorImpl<K,V>(getTarget().endSelect());
     }
 
 
     public Level2MapSelectedEntriesValueSelectedOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
-        return null;
+        return new Level2MapSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
     public Level2MapSelectedEntriesValueSelectedOperator<K,V> convert(final IConverter<? extends V,? super V> converter) {
-        return null;
+        return new Level2MapSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(converter));
     }
 
 

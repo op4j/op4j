@@ -23,22 +23,22 @@ public class Level1ArrayElementsSelectedOperatorImpl<T> extends AbstractOperator
 
 
     public Level1ArrayElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return null;
+        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(eval));
     }
 
 
     public Level1ArrayElementsOperator<T> endIf() {
-        return null;
+        return new Level1ArrayElementsOperatorImpl<T>(this.arrayOf, getTarget().endSelect());
     }
 
 
     public Level1ArrayElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return null;
+        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(function));
     }
 
 
     public Level1ArrayElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return null;
+        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(converter));
     }
 
 

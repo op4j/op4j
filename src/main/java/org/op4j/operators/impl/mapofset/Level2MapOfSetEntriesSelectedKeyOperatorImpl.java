@@ -71,7 +71,7 @@ public class Level2MapOfSetEntriesSelectedKeyOperatorImpl<K,V> extends AbstractO
 
 
     public Level2MapOfSetEntriesSelectedKeyOperator<K,V> eval(final IEvaluator<? extends K,? super K> eval) {
-        return null;
+        return new Level2MapOfSetEntriesSelectedKeyOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
 
@@ -81,12 +81,12 @@ public class Level2MapOfSetEntriesSelectedKeyOperatorImpl<K,V> extends AbstractO
 
 
     public Level2MapOfSetEntriesSelectedKeyOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
-        return null;
+        return new Level2MapOfSetEntriesSelectedKeyOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
     public Level2MapOfSetEntriesSelectedKeyOperator<K,V> convert(final IConverter<? extends K,? super K> converter) {
-        return null;
+        return new Level2MapOfSetEntriesSelectedKeyOperatorImpl<K,V>(getTarget().execute(converter));
     }
 
 

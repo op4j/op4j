@@ -23,12 +23,12 @@ public class Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V> extends Abst
 
 
     public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Entry<K,Set<V>>,? super Entry<K,Set<V>>> eval) {
-        return null;
+        return new Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
 
     public Level1MapOfSetSelectedEntriesOperator<K,V> endIf() {
-        return null;
+        return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().endSelect());
     }
 
 
@@ -43,12 +43,12 @@ public class Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V> extends Abst
 
 
     public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> exec(final IFunction<? extends Entry<K,Set<V>>,? super Entry<K,Set<V>>> function) {
-        return null;
+        return new Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
     public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> convert(final IConverter<? extends Entry<K,Set<V>>,? super Entry<K,Set<V>>> converter) {
-        return null;
+        return new Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter));
     }
 
 

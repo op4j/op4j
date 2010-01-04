@@ -71,7 +71,7 @@ public class Level3ListOfMapSelectedElementsEntriesSelectedValueOperatorImpl<K,V
 
 
     public Level3ListOfMapSelectedElementsEntriesSelectedValueOperator<K,V> eval(final IEvaluator<? extends V,? super V> eval) {
-        return null;
+        return new Level3ListOfMapSelectedElementsEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
 
@@ -81,12 +81,12 @@ public class Level3ListOfMapSelectedElementsEntriesSelectedValueOperatorImpl<K,V
 
 
     public Level3ListOfMapSelectedElementsEntriesSelectedValueOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
-        return null;
+        return new Level3ListOfMapSelectedElementsEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
     public Level3ListOfMapSelectedElementsEntriesSelectedValueOperator<K,V> convert(final IConverter<? extends V,? super V> converter) {
-        return null;
+        return new Level3ListOfMapSelectedElementsEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(converter));
     }
 
 

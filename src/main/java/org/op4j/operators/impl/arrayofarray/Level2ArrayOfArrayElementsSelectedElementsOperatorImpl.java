@@ -74,7 +74,7 @@ public class Level2ArrayOfArrayElementsSelectedElementsOperatorImpl<T> extends A
 
 
     public Level2ArrayOfArrayElementsSelectedElementsOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return null;
+        return new Level2ArrayOfArrayElementsSelectedElementsOperatorImpl<T>(this.arrayOf, getTarget().execute(eval));
     }
 
 
@@ -84,12 +84,12 @@ public class Level2ArrayOfArrayElementsSelectedElementsOperatorImpl<T> extends A
 
 
     public Level2ArrayOfArrayElementsSelectedElementsOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return null;
+        return new Level2ArrayOfArrayElementsSelectedElementsOperatorImpl<T>(this.arrayOf, getTarget().execute(function));
     }
 
 
     public Level2ArrayOfArrayElementsSelectedElementsOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return null;
+        return new Level2ArrayOfArrayElementsSelectedElementsOperatorImpl<T>(this.arrayOf, getTarget().execute(converter));
     }
 
 

@@ -70,7 +70,7 @@ public class Level4MapOfMapEntriesValueSelectedEntriesKeyOperatorImpl<K1,K2,V> e
 
 
     public Level4MapOfMapEntriesValueSelectedEntriesKeyOperator<K1,K2,V> eval(final IEvaluator<? extends K2,? super K2> eval) {
-        return null;
+        return new Level4MapOfMapEntriesValueSelectedEntriesKeyOperatorImpl<K1,K2,V>(getTarget().execute(eval));
     }
 
 
@@ -80,12 +80,12 @@ public class Level4MapOfMapEntriesValueSelectedEntriesKeyOperatorImpl<K1,K2,V> e
 
 
     public Level4MapOfMapEntriesValueSelectedEntriesKeyOperator<K1,K2,V> exec(final IFunction<? extends K2,? super K2> function) {
-        return null;
+        return new Level4MapOfMapEntriesValueSelectedEntriesKeyOperatorImpl<K1,K2,V>(getTarget().execute(function));
     }
 
 
     public Level4MapOfMapEntriesValueSelectedEntriesKeyOperator<K1,K2,V> convert(final IConverter<? extends K2,? super K2> converter) {
-        return null;
+        return new Level4MapOfMapEntriesValueSelectedEntriesKeyOperatorImpl<K1,K2,V>(getTarget().execute(converter));
     }
 
 

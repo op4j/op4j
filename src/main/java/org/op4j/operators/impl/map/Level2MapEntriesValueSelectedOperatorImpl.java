@@ -19,22 +19,22 @@ public class Level2MapEntriesValueSelectedOperatorImpl<K,V> extends AbstractOper
 
 
     public Level2MapEntriesValueSelectedOperator<K,V> eval(final IEvaluator<? extends V,? super V> eval) {
-        return null;
+        return new Level2MapEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
 
     public Level2MapEntriesValueOperator<K,V> endIf() {
-        return null;
+        return new Level2MapEntriesValueOperatorImpl<K,V>(getTarget().endSelect());
     }
 
 
     public Level2MapEntriesValueSelectedOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
-        return null;
+        return new Level2MapEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
     public Level2MapEntriesValueSelectedOperator<K,V> convert(final IConverter<? extends V,? super V> converter) {
-        return null;
+        return new Level2MapEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(converter));
     }
 
 

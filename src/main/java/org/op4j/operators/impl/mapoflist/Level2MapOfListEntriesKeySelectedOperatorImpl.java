@@ -20,22 +20,22 @@ public class Level2MapOfListEntriesKeySelectedOperatorImpl<K,V> extends Abstract
 
 
     public Level2MapOfListEntriesKeySelectedOperator<K,V> eval(final IEvaluator<? extends K,? super K> eval) {
-        return null;
+        return new Level2MapOfListEntriesKeySelectedOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
 
     public Level2MapOfListEntriesKeyOperator<K,V> endIf() {
-        return null;
+        return new Level2MapOfListEntriesKeyOperatorImpl<K,V>(getTarget().endSelect());
     }
 
 
     public Level2MapOfListEntriesKeySelectedOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
-        return null;
+        return new Level2MapOfListEntriesKeySelectedOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
     public Level2MapOfListEntriesKeySelectedOperator<K,V> convert(final IConverter<? extends K,? super K> converter) {
-        return null;
+        return new Level2MapOfListEntriesKeySelectedOperatorImpl<K,V>(getTarget().execute(converter));
     }
 
 

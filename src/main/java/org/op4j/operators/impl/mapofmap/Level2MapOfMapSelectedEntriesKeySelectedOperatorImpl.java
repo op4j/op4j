@@ -19,22 +19,22 @@ public class Level2MapOfMapSelectedEntriesKeySelectedOperatorImpl<K1,K2,V> exten
 
 
     public Level2MapOfMapSelectedEntriesKeySelectedOperator<K1,K2,V> eval(final IEvaluator<? extends K1,? super K1> eval) {
-        return null;
+        return new Level2MapOfMapSelectedEntriesKeySelectedOperatorImpl<K1,K2,V>(getTarget().execute(eval));
     }
 
 
     public Level2MapOfMapSelectedEntriesKeyOperator<K1,K2,V> endIf() {
-        return null;
+        return new Level2MapOfMapSelectedEntriesKeyOperatorImpl<K1,K2,V>(getTarget().endSelect());
     }
 
 
     public Level2MapOfMapSelectedEntriesKeySelectedOperator<K1,K2,V> exec(final IFunction<? extends K1,? super K1> function) {
-        return null;
+        return new Level2MapOfMapSelectedEntriesKeySelectedOperatorImpl<K1,K2,V>(getTarget().execute(function));
     }
 
 
     public Level2MapOfMapSelectedEntriesKeySelectedOperator<K1,K2,V> convert(final IConverter<? extends K1,? super K1> converter) {
-        return null;
+        return new Level2MapOfMapSelectedEntriesKeySelectedOperatorImpl<K1,K2,V>(getTarget().execute(converter));
     }
 
 

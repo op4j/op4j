@@ -19,22 +19,22 @@ public class Level2SetOfSetSelectedElementsElementsSelectedOperatorImpl<T> exten
 
 
     public Level2SetOfSetSelectedElementsElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return null;
+        return new Level2SetOfSetSelectedElementsElementsSelectedOperatorImpl<T>(getTarget().execute(eval));
     }
 
 
     public Level2SetOfSetSelectedElementsElementsOperator<T> endIf() {
-        return null;
+        return new Level2SetOfSetSelectedElementsElementsOperatorImpl<T>(getTarget().endSelect());
     }
 
 
     public Level2SetOfSetSelectedElementsElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return null;
+        return new Level2SetOfSetSelectedElementsElementsSelectedOperatorImpl<T>(getTarget().execute(function));
     }
 
 
     public Level2SetOfSetSelectedElementsElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return null;
+        return new Level2SetOfSetSelectedElementsElementsSelectedOperatorImpl<T>(getTarget().execute(converter));
     }
 
 

@@ -134,7 +134,7 @@ public class Level2MapOfListSelectedEntriesValueOperatorImpl<K,V> extends Abstra
 
 
     public Level2MapOfListSelectedEntriesValueOperator<K,V> eval(final IEvaluator<? extends List<V>,? super List<V>> eval) {
-        return null;
+        return new Level2MapOfListSelectedEntriesValueOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
 
@@ -159,7 +159,7 @@ public class Level2MapOfListSelectedEntriesValueOperatorImpl<K,V> extends Abstra
 
 
     public Level2MapOfListSelectedEntriesValueOperator<K,V> exec(final IFunction<? extends List<V>,? super List<V>> function) {
-        return null;
+        return new Level2MapOfListSelectedEntriesValueOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
@@ -174,7 +174,7 @@ public class Level2MapOfListSelectedEntriesValueOperatorImpl<K,V> extends Abstra
 
 
     public Level2MapOfListSelectedEntriesValueOperator<K,V> convert(final IConverter<? extends List<V>,? super List<V>> converter) {
-        return null;
+        return new Level2MapOfListSelectedEntriesValueOperatorImpl<K,V>(getTarget().execute(converter));
     }
 
 

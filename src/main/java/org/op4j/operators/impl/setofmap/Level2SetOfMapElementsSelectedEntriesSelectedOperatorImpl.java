@@ -23,12 +23,12 @@ public class Level2SetOfMapElementsSelectedEntriesSelectedOperatorImpl<K,V> exte
 
 
     public Level2SetOfMapElementsSelectedEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Entry<K,V>,? super Entry<K,V>> eval) {
-        return null;
+        return new Level2SetOfMapElementsSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
 
     public Level2SetOfMapElementsSelectedEntriesOperator<K,V> endIf() {
-        return null;
+        return new Level2SetOfMapElementsSelectedEntriesOperatorImpl<K,V>(getTarget().endSelect());
     }
 
 
@@ -43,12 +43,12 @@ public class Level2SetOfMapElementsSelectedEntriesSelectedOperatorImpl<K,V> exte
 
 
     public Level2SetOfMapElementsSelectedEntriesSelectedOperator<K,V> exec(final IFunction<? extends Entry<K,V>,? super Entry<K,V>> function) {
-        return null;
+        return new Level2SetOfMapElementsSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
     public Level2SetOfMapElementsSelectedEntriesSelectedOperator<K,V> convert(final IConverter<? extends Entry<K,V>,? super Entry<K,V>> converter) {
-        return null;
+        return new Level2SetOfMapElementsSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter));
     }
 
 

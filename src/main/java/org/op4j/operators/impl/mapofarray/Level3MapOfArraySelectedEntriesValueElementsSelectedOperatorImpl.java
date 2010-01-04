@@ -24,22 +24,22 @@ public class Level3MapOfArraySelectedEntriesValueElementsSelectedOperatorImpl<K,
 
 
     public Level3MapOfArraySelectedEntriesValueElementsSelectedOperator<K,V> eval(final IEvaluator<? extends V,? super V> eval) {
-        return null;
+        return new Level3MapOfArraySelectedEntriesValueElementsSelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(eval));
     }
 
 
     public Level3MapOfArraySelectedEntriesValueElementsOperator<K,V> endIf() {
-        return null;
+        return new Level3MapOfArraySelectedEntriesValueElementsOperatorImpl<K,V>(this.arrayOf, getTarget().endSelect());
     }
 
 
     public Level3MapOfArraySelectedEntriesValueElementsSelectedOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
-        return null;
+        return new Level3MapOfArraySelectedEntriesValueElementsSelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(function));
     }
 
 
     public Level3MapOfArraySelectedEntriesValueElementsSelectedOperator<K,V> convert(final IConverter<? extends V,? super V> converter) {
-        return null;
+        return new Level3MapOfArraySelectedEntriesValueElementsSelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(converter));
     }
 
 

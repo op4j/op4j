@@ -138,7 +138,7 @@ public class Level1ListOfArraySelectedElementsOperatorImpl<T> extends AbstractOp
 
 
     public Level1ListOfArraySelectedElementsOperator<T> eval(final IEvaluator<? extends T[],? super T[]> eval) {
-        return null;
+        return new Level1ListOfArraySelectedElementsOperatorImpl<T>(this.arrayOf, getTarget().execute(eval));
     }
 
 
@@ -163,7 +163,7 @@ public class Level1ListOfArraySelectedElementsOperatorImpl<T> extends AbstractOp
 
 
     public Level1ListOfArraySelectedElementsOperator<T> exec(final IFunction<? extends T[],? super T[]> function) {
-        return null;
+        return new Level1ListOfArraySelectedElementsOperatorImpl<T>(this.arrayOf, getTarget().execute(function));
     }
 
 
@@ -178,7 +178,7 @@ public class Level1ListOfArraySelectedElementsOperatorImpl<T> extends AbstractOp
 
 
     public Level1ListOfArraySelectedElementsOperator<T> convert(final IConverter<? extends T[],? super T[]> converter) {
-        return null;
+        return new Level1ListOfArraySelectedElementsOperatorImpl<T>(this.arrayOf, getTarget().execute(converter));
     }
 
 

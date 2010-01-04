@@ -83,12 +83,12 @@ public class Level0ListOfSetSelectedOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0ListOfSetSelectedOperator<T> eval(final IEvaluator<? extends List<Set<T>>,? super List<Set<T>>> eval) {
-        return null;
+        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().execute(eval));
     }
 
 
     public Level0ListOfSetOperator<T> endIf() {
-        return null;
+        return new Level0ListOfSetOperatorImpl<T>(getTarget().endSelect());
     }
 
 
@@ -108,7 +108,7 @@ public class Level0ListOfSetSelectedOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0ListOfSetSelectedOperator<T> exec(final IFunction<? extends List<Set<T>>,? super List<Set<T>>> function) {
-        return null;
+        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().execute(function));
     }
 
 
@@ -123,7 +123,7 @@ public class Level0ListOfSetSelectedOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0ListOfSetSelectedOperator<T> convert(final IConverter<? extends List<Set<T>>,? super List<Set<T>>> converter) {
-        return null;
+        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().execute(converter));
     }
 
 

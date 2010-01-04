@@ -48,7 +48,7 @@ public class Level1MapOfArraySelectedEntriesOperatorImpl<K,V> extends AbstractOp
 
 
     public Level1MapOfArraySelectedEntriesOperator<K,V> eval(final IEvaluator<? extends Entry<K,V[]>,? super Entry<K,V[]>> eval) {
-        return null;
+        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(this.arrayOf, getTarget().execute(eval));
     }
 
 
@@ -78,12 +78,12 @@ public class Level1MapOfArraySelectedEntriesOperatorImpl<K,V> extends AbstractOp
 
 
     public Level1MapOfArraySelectedEntriesOperator<K,V> exec(final IFunction<? extends Entry<K,V[]>,? super Entry<K,V[]>> function) {
-        return null;
+        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(this.arrayOf, getTarget().execute(function));
     }
 
 
     public Level1MapOfArraySelectedEntriesOperator<K,V> convert(final IConverter<? extends Entry<K,V[]>,? super Entry<K,V[]>> converter) {
-        return null;
+        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(this.arrayOf, getTarget().execute(converter));
     }
 
 

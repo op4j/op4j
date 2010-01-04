@@ -385,6 +385,10 @@ public final class Op {
         final Map<String,String>[] maps1 = (Map<String, String>[]) new Map<?,?>[] { map1, map2 };
 
         
+        System.out.println(printArray(Op.onArrayOfArray(stringsStrings1).forEach().forEach().ifIndex(0).eval(Ognl.forString("#target + ' Mundo'")).endIf().eval(Ognl.forString("#target + ' for everyone'")).get()));
+        
+/*        
+        
         System.out.println(Op.onList(stringsList1).get());
         System.out.println(Op.onList(stringsList1).forEach().get());
         System.out.println(Op.onList(stringsList1).forEach().ifNotNull().eval(Ognl.forString("toUpperCase()")).get());
@@ -721,7 +725,7 @@ public final class Op {
         	Op.buildList(Types.MAP_OF_STRING_STRING).add(map1).add(map2).get();
         
         System.out.println(printArray(Op.onListOfMap(listOfMapOfStringString1).toArrayOfMap().get()));
-    
+*/    
     }
     
     

@@ -138,7 +138,7 @@ public class Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V> extends Abstr
 
 
     public Level2MapOfArraySelectedEntriesValueOperator<K,V> eval(final IEvaluator<? extends V[],? super V[]> eval) {
-        return null;
+        return new Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V>(this.arrayOf, getTarget().execute(eval));
     }
 
 
@@ -163,7 +163,7 @@ public class Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V> extends Abstr
 
 
     public Level2MapOfArraySelectedEntriesValueOperator<K,V> exec(final IFunction<? extends V[],? super V[]> function) {
-        return null;
+        return new Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V>(this.arrayOf, getTarget().execute(function));
     }
 
 
@@ -178,7 +178,7 @@ public class Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V> extends Abstr
 
 
     public Level2MapOfArraySelectedEntriesValueOperator<K,V> convert(final IConverter<? extends V[],? super V[]> converter) {
-        return null;
+        return new Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V>(this.arrayOf, getTarget().execute(converter));
     }
 
 

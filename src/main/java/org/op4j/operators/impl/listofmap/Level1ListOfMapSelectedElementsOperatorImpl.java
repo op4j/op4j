@@ -84,7 +84,7 @@ public class Level1ListOfMapSelectedElementsOperatorImpl<K,V> extends AbstractOp
 
 
     public Level1ListOfMapSelectedElementsOperator<K,V> eval(final IEvaluator<? extends Map<K,V>,? super Map<K,V>> eval) {
-        return null;
+        return new Level1ListOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
 
@@ -129,7 +129,7 @@ public class Level1ListOfMapSelectedElementsOperatorImpl<K,V> extends AbstractOp
 
 
     public Level1ListOfMapSelectedElementsOperator<K,V> exec(final IFunction<? extends Map<K,V>,? super Map<K,V>> function) {
-        return null;
+        return new Level1ListOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
@@ -144,7 +144,7 @@ public class Level1ListOfMapSelectedElementsOperatorImpl<K,V> extends AbstractOp
 
 
     public Level1ListOfMapSelectedElementsOperator<K,V> convert(final IConverter<? extends Map<K,V>,? super Map<K,V>> converter) {
-        return null;
+        return new Level1ListOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(converter));
     }
 
 

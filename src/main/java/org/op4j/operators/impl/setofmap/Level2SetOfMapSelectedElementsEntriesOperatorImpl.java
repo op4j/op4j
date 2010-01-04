@@ -44,7 +44,7 @@ public class Level2SetOfMapSelectedElementsEntriesOperatorImpl<K,V> extends Abst
 
 
     public Level2SetOfMapSelectedElementsEntriesOperator<K,V> eval(final IEvaluator<? extends Entry<K,V>,? super Entry<K,V>> eval) {
-        return null;
+        return new Level2SetOfMapSelectedElementsEntriesOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
 
@@ -74,12 +74,12 @@ public class Level2SetOfMapSelectedElementsEntriesOperatorImpl<K,V> extends Abst
 
 
     public Level2SetOfMapSelectedElementsEntriesOperator<K,V> exec(final IFunction<? extends Entry<K,V>,? super Entry<K,V>> function) {
-        return null;
+        return new Level2SetOfMapSelectedElementsEntriesOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
     public Level2SetOfMapSelectedElementsEntriesOperator<K,V> convert(final IConverter<? extends Entry<K,V>,? super Entry<K,V>> converter) {
-        return null;
+        return new Level2SetOfMapSelectedElementsEntriesOperatorImpl<K,V>(getTarget().execute(converter));
     }
 
 

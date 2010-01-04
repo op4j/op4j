@@ -23,22 +23,22 @@ public class Level2ArrayOfArraySelectedElementsSelectedElementsSelectedOperatorI
 
 
     public Level2ArrayOfArraySelectedElementsSelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return null;
+        return new Level2ArrayOfArraySelectedElementsSelectedElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(eval));
     }
 
 
     public Level2ArrayOfArraySelectedElementsSelectedElementsOperator<T> endIf() {
-        return null;
+        return new Level2ArrayOfArraySelectedElementsSelectedElementsOperatorImpl<T>(this.arrayOf, getTarget().endSelect());
     }
 
 
     public Level2ArrayOfArraySelectedElementsSelectedElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return null;
+        return new Level2ArrayOfArraySelectedElementsSelectedElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(function));
     }
 
 
     public Level2ArrayOfArraySelectedElementsSelectedElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return null;
+        return new Level2ArrayOfArraySelectedElementsSelectedElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(converter));
     }
 
 

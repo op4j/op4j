@@ -288,6 +288,35 @@ public class StructureTarget extends Target {
 
     
     
+    @Override
+    public Target endSelect() {
+        
+        if (this.isCurrentActionLevel) {
+            
+            final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
+
+            for (final Target element : this.elements) {
+                newSelectedElementIds.add(element.getId());
+            }
+            return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            
+        }
+            
+        final List<Target> newElements = new ArrayList<Target>();
+        for (final Target element : this.elements) {
+            if (this.selectedElementIds.contains(element.getId())) {
+                newElements.add(element.endSelect());
+            } else {
+                newElements.add(element);
+            }
+        }
+        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+            
+    }
+
+    
+    
+    
 	@Override
 	Target doSelectIndex(final boolean desiredResult, final List<Integer> positions) {
         

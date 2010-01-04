@@ -18,22 +18,22 @@ public class Level0GenericUniqSelectedOperatorImpl<T> extends AbstractOperatorIm
 
 
     public Level0GenericUniqSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return null;
+        return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().execute(eval));
     }
 
 
     public Level0GenericUniqOperator<T> endIf() {
-        return null;
+        return new Level0GenericUniqOperatorImpl<T>(getTarget().endSelect());
     }
 
 
     public Level0GenericUniqSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return null;
+        return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().execute(function));
     }
 
 
     public Level0GenericUniqSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return null;
+        return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().execute(converter));
     }
 
 

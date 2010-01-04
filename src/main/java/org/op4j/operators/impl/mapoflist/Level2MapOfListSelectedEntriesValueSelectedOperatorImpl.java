@@ -83,12 +83,12 @@ public class Level2MapOfListSelectedEntriesValueSelectedOperatorImpl<K,V> extend
 
 
     public Level2MapOfListSelectedEntriesValueSelectedOperator<K,V> eval(final IEvaluator<? extends List<V>,? super List<V>> eval) {
-        return null;
+        return new Level2MapOfListSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
 
     public Level2MapOfListSelectedEntriesValueOperator<K,V> endIf() {
-        return null;
+        return new Level2MapOfListSelectedEntriesValueOperatorImpl<K,V>(getTarget().endSelect());
     }
 
 
@@ -108,7 +108,7 @@ public class Level2MapOfListSelectedEntriesValueSelectedOperatorImpl<K,V> extend
 
 
     public Level2MapOfListSelectedEntriesValueSelectedOperator<K,V> exec(final IFunction<? extends List<V>,? super List<V>> function) {
-        return null;
+        return new Level2MapOfListSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
@@ -123,7 +123,7 @@ public class Level2MapOfListSelectedEntriesValueSelectedOperatorImpl<K,V> extend
 
 
     public Level2MapOfListSelectedEntriesValueSelectedOperator<K,V> convert(final IConverter<? extends List<V>,? super List<V>> converter) {
-        return null;
+        return new Level2MapOfListSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(converter));
     }
 
 

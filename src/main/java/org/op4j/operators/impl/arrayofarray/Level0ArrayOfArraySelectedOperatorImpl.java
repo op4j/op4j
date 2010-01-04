@@ -86,12 +86,12 @@ public class Level0ArrayOfArraySelectedOperatorImpl<T> extends AbstractOperatorI
 
 
     public Level0ArrayOfArraySelectedOperator<T> eval(final IEvaluator<? extends T[][],? super T[][]> eval) {
-        return null;
+        return new Level0ArrayOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(eval));
     }
 
 
     public Level0ArrayOfArrayOperator<T> endIf() {
-        return null;
+        return new Level0ArrayOfArrayOperatorImpl<T>(this.arrayOf, getTarget().endSelect());
     }
 
 
@@ -111,7 +111,7 @@ public class Level0ArrayOfArraySelectedOperatorImpl<T> extends AbstractOperatorI
 
 
     public Level0ArrayOfArraySelectedOperator<T> exec(final IFunction<? extends T[][],? super T[][]> function) {
-        return null;
+        return new Level0ArrayOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(function));
     }
 
 
@@ -126,7 +126,7 @@ public class Level0ArrayOfArraySelectedOperatorImpl<T> extends AbstractOperatorI
 
 
     public Level0ArrayOfArraySelectedOperator<T> convert(final IConverter<? extends T[][],? super T[][]> converter) {
-        return null;
+        return new Level0ArrayOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(converter));
     }
 
 

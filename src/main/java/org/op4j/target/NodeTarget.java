@@ -275,6 +275,12 @@ public abstract class NodeTarget extends Target{
 
 
 
+    
+    @Override
+    public Target endSelect() {
+        throw new IllegalStateException("Cannot select on a node");
+    }
+
 	
 	@Override
 	Target doSelectIndex(final boolean desiredResult, final List<Integer> positions) {

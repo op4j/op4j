@@ -20,22 +20,22 @@ public class Level3ListOfMapElementsEntriesKeySelectedOperatorImpl<K,V> extends 
 
 
     public Level3ListOfMapElementsEntriesKeySelectedOperator<K,V> eval(final IEvaluator<? extends K,? super K> eval) {
-        return null;
+        return new Level3ListOfMapElementsEntriesKeySelectedOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
 
     public Level3ListOfMapElementsEntriesKeyOperator<K,V> endIf() {
-        return null;
+        return new Level3ListOfMapElementsEntriesKeyOperatorImpl<K,V>(getTarget().endSelect());
     }
 
 
     public Level3ListOfMapElementsEntriesKeySelectedOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
-        return null;
+        return new Level3ListOfMapElementsEntriesKeySelectedOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
     public Level3ListOfMapElementsEntriesKeySelectedOperator<K,V> convert(final IConverter<? extends K,? super K> converter) {
-        return null;
+        return new Level3ListOfMapElementsEntriesKeySelectedOperatorImpl<K,V>(getTarget().execute(converter));
     }
 
 

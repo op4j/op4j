@@ -74,7 +74,7 @@ public abstract class Target {
     abstract Target doIterateNullOrMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
     abstract Target doIterateNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
     
-    
+
     abstract Target doSelectIndex(final boolean desiredResult, final List<Integer> positions);
     abstract Target doSelectMapKeys(final boolean desiredResult, final List<Object> objects);
     abstract Target doSelectMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
@@ -161,6 +161,7 @@ public abstract class Target {
 
     public abstract Target endIterate(final Structure structure, final Class<?> componentClass);
     
+    public abstract Target endSelect();
 
     
     

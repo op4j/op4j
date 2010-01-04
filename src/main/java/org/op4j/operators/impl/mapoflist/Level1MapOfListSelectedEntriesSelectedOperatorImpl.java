@@ -23,12 +23,12 @@ public class Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V> extends Abs
 
 
     public Level1MapOfListSelectedEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Entry<K,List<V>>,? super Entry<K,List<V>>> eval) {
-        return null;
+        return new Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
 
     public Level1MapOfListSelectedEntriesOperator<K,V> endIf() {
-        return null;
+        return new Level1MapOfListSelectedEntriesOperatorImpl<K,V>(getTarget().endSelect());
     }
 
 
@@ -43,12 +43,12 @@ public class Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V> extends Abs
 
 
     public Level1MapOfListSelectedEntriesSelectedOperator<K,V> exec(final IFunction<? extends Entry<K,List<V>>,? super Entry<K,List<V>>> function) {
-        return null;
+        return new Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
     public Level1MapOfListSelectedEntriesSelectedOperator<K,V> convert(final IConverter<? extends Entry<K,List<V>>,? super Entry<K,List<V>>> converter) {
-        return null;
+        return new Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter));
     }
 
 

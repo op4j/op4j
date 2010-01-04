@@ -19,22 +19,22 @@ public class Level2ListOfListElementsElementsSelectedOperatorImpl<T> extends Abs
 
 
     public Level2ListOfListElementsElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return null;
+        return new Level2ListOfListElementsElementsSelectedOperatorImpl<T>(getTarget().execute(eval));
     }
 
 
     public Level2ListOfListElementsElementsOperator<T> endIf() {
-        return null;
+        return new Level2ListOfListElementsElementsOperatorImpl<T>(getTarget().endSelect());
     }
 
 
     public Level2ListOfListElementsElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return null;
+        return new Level2ListOfListElementsElementsSelectedOperatorImpl<T>(getTarget().execute(function));
     }
 
 
     public Level2ListOfListElementsElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return null;
+        return new Level2ListOfListElementsElementsSelectedOperatorImpl<T>(getTarget().execute(converter));
     }
 
 

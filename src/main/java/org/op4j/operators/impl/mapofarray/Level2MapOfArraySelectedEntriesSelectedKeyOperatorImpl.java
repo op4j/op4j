@@ -75,7 +75,7 @@ public class Level2MapOfArraySelectedEntriesSelectedKeyOperatorImpl<K,V> extends
 
 
     public Level2MapOfArraySelectedEntriesSelectedKeyOperator<K,V> eval(final IEvaluator<? extends K,? super K> eval) {
-        return null;
+        return new Level2MapOfArraySelectedEntriesSelectedKeyOperatorImpl<K,V>(this.arrayOf, getTarget().execute(eval));
     }
 
 
@@ -85,12 +85,12 @@ public class Level2MapOfArraySelectedEntriesSelectedKeyOperatorImpl<K,V> extends
 
 
     public Level2MapOfArraySelectedEntriesSelectedKeyOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
-        return null;
+        return new Level2MapOfArraySelectedEntriesSelectedKeyOperatorImpl<K,V>(this.arrayOf, getTarget().execute(function));
     }
 
 
     public Level2MapOfArraySelectedEntriesSelectedKeyOperator<K,V> convert(final IConverter<? extends K,? super K> converter) {
-        return null;
+        return new Level2MapOfArraySelectedEntriesSelectedKeyOperatorImpl<K,V>(this.arrayOf, getTarget().execute(converter));
     }
 
 
