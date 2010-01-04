@@ -24,61 +24,56 @@ public class Level2MapOfSetSelectedEntriesValueOperatorImpl<K,V> extends Abstrac
 
 
     public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> ifIndex(final int... indices) {
-        return null;
+        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().selectIndex(indices));
     }
 
 
-    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> ifMatching(final IEvaluator<Boolean,? super Set<V>> eval) {
-        return null;
+    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> ifMatching(final IEvaluator<Boolean, ? super Set<V>> eval) {
+        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> ifNotMatching(final IEvaluator<Boolean,? super Set<V>> eval) {
-        return null;
+    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> ifNotMatching(final IEvaluator<Boolean, ? super Set<V>> eval) {
+        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().selectNotMatching(eval));
     }
 
 
-    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> ifNullOrNotMatching(final IEvaluator<Boolean,? super Set<V>> eval) {
-        return null;
+    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Set<V>> eval) {
+        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> ifNotNullNotMatching(final IEvaluator<Boolean,? super Set<V>> eval) {
-        return null;
+    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> ifNotNullNotMatching(final IEvaluator<Boolean, ? super Set<V>> eval) {
+        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
 
     public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> ifNull() {
-        return null;
+        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().selectNull());
     }
 
 
-    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> ifNullOrMatching(final IEvaluator<Boolean,? super Set<V>> eval) {
-        return null;
+    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> ifNullOrMatching(final IEvaluator<Boolean, ? super Set<V>> eval) {
+        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().selectNullOrMatching(eval));
     }
 
 
     public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> ifIndexNot(final int... indices) {
-        return null;
+        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().selectIndexNot(indices));
     }
 
 
     public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> ifNotNull() {
-        return null;
+        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().selectNotNull());
     }
 
 
-    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> ifNotNullMatching(final IEvaluator<Boolean,? super Set<V>> eval) {
-        return null;
+    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> ifNotNullMatching(final IEvaluator<Boolean, ? super Set<V>> eval) {
+        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
     public Level3MapOfSetSelectedEntriesValueElementsOperator<K,V> forEach() {
-        return null;
-    }
-
-
-    public Level2MapOfSetSelectedEntriesValueOperator<K,V> distinct() {
         return null;
     }
 

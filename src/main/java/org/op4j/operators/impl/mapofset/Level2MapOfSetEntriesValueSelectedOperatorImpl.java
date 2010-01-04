@@ -27,11 +27,6 @@ public class Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public Level2MapOfSetEntriesValueSelectedOperator<K,V> distinct() {
-        return null;
-    }
-
-
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> removeIndexes(final int... indices) {
         return null;
     }

@@ -24,22 +24,22 @@ public class Level1MapOfListSelectedEntriesOperatorImpl<K,V> extends AbstractOpe
 
 
     public Level1MapOfListSelectedEntriesSelectedOperator<K,V> ifIndex(final int... indices) {
-        return null;
+        return new Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().selectIndex(indices));
     }
 
 
-    public Level1MapOfListSelectedEntriesSelectedOperator<K,V> ifMatching(final IEvaluator<Boolean,? super Entry<K,List<V>>> eval) {
-        return null;
+    public Level1MapOfListSelectedEntriesSelectedOperator<K,V> ifMatching(final IEvaluator<Boolean, ? super Entry<K,List<V>>> eval) {
+        return new Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1MapOfListSelectedEntriesSelectedOperator<K,V> ifNotMatching(final IEvaluator<Boolean,? super Entry<K,List<V>>> eval) {
-        return null;
+    public Level1MapOfListSelectedEntriesSelectedOperator<K,V> ifNotMatching(final IEvaluator<Boolean, ? super Entry<K,List<V>>> eval) {
+        return new Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().selectNotMatching(eval));
     }
 
 
     public Level1MapOfListSelectedEntriesSelectedOperator<K,V> ifIndexNot(final int... indices) {
-        return null;
+        return new Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().selectIndexNot(indices));
     }
 
 
@@ -54,12 +54,12 @@ public class Level1MapOfListSelectedEntriesOperatorImpl<K,V> extends AbstractOpe
 
 
     public Level1MapOfListSelectedEntriesSelectedOperator<K,V> ifKeyEquals(final K... keys) {
-        return null;
+        return new Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().selectMapKeys(keys));
     }
 
 
     public Level1MapOfListSelectedEntriesSelectedOperator<K,V> ifKeyNotEquals(final K... keys) {
-        return null;
+        return new Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().selectMapKeysNot(keys));
     }
 
 

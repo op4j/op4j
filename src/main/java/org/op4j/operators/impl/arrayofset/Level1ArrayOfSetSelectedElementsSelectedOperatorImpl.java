@@ -26,11 +26,6 @@ public class Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T> extends Abs
     }
 
 
-    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> distinct() {
-        return null;
-    }
-
-
     public Level1ArrayOfSetSelectedElementsSelectedOperator<T> removeIndexes(final int... indices) {
         return null;
     }

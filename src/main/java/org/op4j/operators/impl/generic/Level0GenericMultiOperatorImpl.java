@@ -244,32 +244,6 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
 
 
 
-
-
-
-    public Level0GenericUniqOperator<T> uniq() {
-        if (size() > 1) {
-            throw new NonUniqueTargetException();
-        }
-        return new Level0GenericUniqOperatorImpl<T>(Target.forObject(((List<?>)getTarget()).get(0)));
-    }
-
-
-    public int size() {
-        return ((List<?>) getTarget().get()).size();
-    }
-
-
-    public T[] getAsArray(final Type<T> type) {
-        return buildArray(type).get();
-    }
-
-
-    public List<T> getAsList() {
-        return buildList().get();
-    }
-
-
     public Level0GenericMultiSelectedOperator<T> ifIndex(final int... indices) {
         return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectIndex(indices));
     }
@@ -317,6 +291,32 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
 
     public Level0GenericMultiSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+
+
+
+    public Level0GenericUniqOperator<T> uniq() {
+        if (size() > 1) {
+            throw new NonUniqueTargetException();
+        }
+        return new Level0GenericUniqOperatorImpl<T>(Target.forObject(((List<?>)getTarget()).get(0)));
+    }
+
+
+    public int size() {
+        return ((List<?>) getTarget().get()).size();
+    }
+
+
+    public T[] getAsArray(final Type<T> type) {
+        return buildArray(type).get();
+    }
+
+
+    public List<T> getAsList() {
+        return buildList().get();
     }
     
 }

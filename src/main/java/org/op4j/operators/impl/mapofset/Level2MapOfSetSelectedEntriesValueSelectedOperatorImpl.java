@@ -27,11 +27,6 @@ public class Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V> extends
     }
 
 
-    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> distinct() {
-        return null;
-    }
-
-
     public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> removeIndexes(final int... indices) {
         return null;
     }

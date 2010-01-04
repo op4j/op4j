@@ -24,52 +24,52 @@ public class Level2ArrayOfArraySelectedElementsElementsOperatorImpl<T> extends A
 
 
     public Level2ArrayOfArraySelectedElementsElementsSelectedOperator<T> ifIndex(final int... indices) {
-        return null;
+        return new Level2ArrayOfArraySelectedElementsElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().selectIndex(indices));
     }
 
 
-    public Level2ArrayOfArraySelectedElementsElementsSelectedOperator<T> ifMatching(final IEvaluator<Boolean,? super T> eval) {
-        return null;
+    public Level2ArrayOfArraySelectedElementsElementsSelectedOperator<T> ifMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2ArrayOfArraySelectedElementsElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().selectMatching(eval));
     }
 
 
-    public Level2ArrayOfArraySelectedElementsElementsSelectedOperator<T> ifNotMatching(final IEvaluator<Boolean,? super T> eval) {
-        return null;
+    public Level2ArrayOfArraySelectedElementsElementsSelectedOperator<T> ifNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2ArrayOfArraySelectedElementsElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().selectNotMatching(eval));
     }
 
 
-    public Level2ArrayOfArraySelectedElementsElementsSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean,? super T> eval) {
-        return null;
+    public Level2ArrayOfArraySelectedElementsElementsSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2ArrayOfArraySelectedElementsElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public Level2ArrayOfArraySelectedElementsElementsSelectedOperator<T> ifNotNullNotMatching(final IEvaluator<Boolean,? super T> eval) {
-        return null;
+    public Level2ArrayOfArraySelectedElementsElementsSelectedOperator<T> ifNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2ArrayOfArraySelectedElementsElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().selectNotNullAndNotMatching(eval));
     }
 
 
     public Level2ArrayOfArraySelectedElementsElementsSelectedOperator<T> ifNull() {
-        return null;
+        return new Level2ArrayOfArraySelectedElementsElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().selectNull());
     }
 
 
-    public Level2ArrayOfArraySelectedElementsElementsSelectedOperator<T> ifNullOrMatching(final IEvaluator<Boolean,? super T> eval) {
-        return null;
+    public Level2ArrayOfArraySelectedElementsElementsSelectedOperator<T> ifNullOrMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2ArrayOfArraySelectedElementsElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().selectNullOrMatching(eval));
     }
 
 
     public Level2ArrayOfArraySelectedElementsElementsSelectedOperator<T> ifIndexNot(final int... indices) {
-        return null;
+        return new Level2ArrayOfArraySelectedElementsElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().selectIndexNot(indices));
     }
 
 
     public Level2ArrayOfArraySelectedElementsElementsSelectedOperator<T> ifNotNull() {
-        return null;
+        return new Level2ArrayOfArraySelectedElementsElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().selectNotNull());
     }
 
 
-    public Level2ArrayOfArraySelectedElementsElementsSelectedOperator<T> ifNotNullMatching(final IEvaluator<Boolean,? super T> eval) {
-        return null;
+    public Level2ArrayOfArraySelectedElementsElementsSelectedOperator<T> ifNotNullMatching(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2ArrayOfArraySelectedElementsElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().selectNotNullAndMatching(eval));
     }
 
 

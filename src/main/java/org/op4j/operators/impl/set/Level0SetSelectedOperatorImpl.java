@@ -26,11 +26,6 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
     }
 
 
-    public Level0SetSelectedOperator<T> distinct() {
-        return null;
-    }
-
-
     public Level0SetSelectedOperator<T> removeIndexes(final int... indices) {
         return null;
     }

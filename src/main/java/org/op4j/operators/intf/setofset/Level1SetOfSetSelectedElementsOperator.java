@@ -27,7 +27,6 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.DistinguishableOperator;
 import org.op4j.operators.qualities.EvaluableSelectedOperator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
@@ -46,8 +45,7 @@ import org.op4j.operators.qualities.UniqOperator;
 public interface Level1SetOfSetSelectedElementsOperator<T>
         extends UniqOperator<Set<Set<T>>>,
                 NavigableCollectionOperator<T>,
-    	        DistinguishableOperator,
-		        SortableOperator<T>,
+    	        SortableOperator<T>,
                 ExecutableSelectedOperator<Set<T>>,
                 ConvertibleSelectedOperator<Set<T>>,
                 EvaluableSelectedOperator<Set<T>>,
@@ -75,8 +73,6 @@ public interface Level1SetOfSetSelectedElementsOperator<T>
             
     public Level2SetOfSetSelectedElementsElementsOperator<T> forEach();
 
-    public Level1SetOfSetSelectedElementsOperator<T> distinct();
-    
     public Level1SetOfSetSelectedElementsOperator<T> sort();
     public Level1SetOfSetSelectedElementsOperator<T> sort(final Comparator<? super T> comparator);
     

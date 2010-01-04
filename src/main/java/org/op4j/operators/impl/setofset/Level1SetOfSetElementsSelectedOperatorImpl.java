@@ -26,11 +26,6 @@ public class Level1SetOfSetElementsSelectedOperatorImpl<T> extends AbstractOpera
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> distinct() {
-        return null;
-    }
-
-
     public Level1SetOfSetElementsSelectedOperator<T> removeIndexes(final int... indices) {
         return null;
     }

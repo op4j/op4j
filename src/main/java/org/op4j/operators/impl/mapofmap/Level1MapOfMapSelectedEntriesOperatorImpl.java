@@ -23,22 +23,22 @@ public class Level1MapOfMapSelectedEntriesOperatorImpl<K1,K2,V> extends Abstract
 
 
     public Level1MapOfMapSelectedEntriesSelectedOperator<K1,K2,V> ifIndex(final int... indices) {
-        return null;
+        return new Level1MapOfMapSelectedEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().selectIndex(indices));
     }
 
 
-    public Level1MapOfMapSelectedEntriesSelectedOperator<K1,K2,V> ifMatching(final IEvaluator<Boolean,? super Entry<K1,Map<K2,V>>> eval) {
-        return null;
+    public Level1MapOfMapSelectedEntriesSelectedOperator<K1,K2,V> ifMatching(final IEvaluator<Boolean, ? super Entry<K1,Map<K2,V>>> eval) {
+        return new Level1MapOfMapSelectedEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1MapOfMapSelectedEntriesSelectedOperator<K1,K2,V> ifNotMatching(final IEvaluator<Boolean,? super Entry<K1,Map<K2,V>>> eval) {
-        return null;
+    public Level1MapOfMapSelectedEntriesSelectedOperator<K1,K2,V> ifNotMatching(final IEvaluator<Boolean, ? super Entry<K1,Map<K2,V>>> eval) {
+        return new Level1MapOfMapSelectedEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().selectNotMatching(eval));
     }
 
 
     public Level1MapOfMapSelectedEntriesSelectedOperator<K1,K2,V> ifIndexNot(final int... indices) {
-        return null;
+        return new Level1MapOfMapSelectedEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().selectIndexNot(indices));
     }
 
 
@@ -53,12 +53,12 @@ public class Level1MapOfMapSelectedEntriesOperatorImpl<K1,K2,V> extends Abstract
 
 
     public Level1MapOfMapSelectedEntriesSelectedOperator<K1,K2,V> ifKeyEquals(final K1... keys) {
-        return null;
+        return new Level1MapOfMapSelectedEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().selectMapKeys(keys));
     }
 
 
     public Level1MapOfMapSelectedEntriesSelectedOperator<K1,K2,V> ifKeyNotEquals(final K1... keys) {
-        return null;
+        return new Level1MapOfMapSelectedEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().selectMapKeysNot(keys));
     }
 
 

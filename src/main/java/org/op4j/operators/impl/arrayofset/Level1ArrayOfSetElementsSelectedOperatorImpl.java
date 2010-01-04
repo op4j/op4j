@@ -26,11 +26,6 @@ public class Level1ArrayOfSetElementsSelectedOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1ArrayOfSetElementsSelectedOperator<T> distinct() {
-        return null;
-    }
-
-
     public Level1ArrayOfSetElementsSelectedOperator<T> removeIndexes(final int... indices) {
         return null;
     }

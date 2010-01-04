@@ -31,11 +31,6 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public Level0SetOfArraySelectedOperator<T> distinct() {
-        return null;
-    }
-
-
     public Level0SetOfArraySelectedOperator<T> removeIndexes(final int... indices) {
         return null;
     }

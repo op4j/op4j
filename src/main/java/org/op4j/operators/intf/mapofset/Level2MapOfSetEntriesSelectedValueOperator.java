@@ -28,7 +28,6 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.DistinguishableOperator;
 import org.op4j.operators.qualities.EvaluableSelectedOperator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
@@ -48,7 +47,6 @@ public interface Level2MapOfSetEntriesSelectedValueOperator<K,V>
         extends UniqOperator<Map<K,Set<V>>>,
                 NavigableCollectionOperator<V>,
 	        	NavigatingMapEntryOperator,
-		        DistinguishableOperator,
 		        SortableOperator<V>,
                 ExecutableSelectedOperator<Set<V>>,
                 ConvertibleSelectedOperator<Set<V>>,
@@ -74,8 +72,6 @@ public interface Level2MapOfSetEntriesSelectedValueOperator<K,V>
     
     public Level1MapOfSetEntriesSelectedOperator<K,V> endOn();
 
-    public Level2MapOfSetEntriesSelectedValueOperator<K,V> distinct();
-    
     public Level2MapOfSetEntriesSelectedValueOperator<K,V> sort();
     public Level2MapOfSetEntriesSelectedValueOperator<K,V> sort(final Comparator<? super V> comparator);
     

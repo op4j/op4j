@@ -26,11 +26,6 @@ public class Level1SetOfSetSelectedElementsSelectedOperatorImpl<T> extends Abstr
     }
 
 
-    public Level1SetOfSetSelectedElementsSelectedOperator<T> distinct() {
-        return null;
-    }
-
-
     public Level1SetOfSetSelectedElementsSelectedOperator<T> removeIndexes(final int... indices) {
         return null;
     }

@@ -27,11 +27,6 @@ public class Level0SetOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
-    public Level0SetOfMapSelectedOperator<K,V> distinct() {
-        return null;
-    }
-
-
     public Level0SetOfMapSelectedOperator<K,V> removeIndexes(final int... indices) {
         return null;
     }

@@ -23,52 +23,52 @@ public class Level1ArrayOfMapSelectedElementsOperatorImpl<K,V> extends AbstractO
 
 
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifIndex(final int... indices) {
-        return null;
+        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().selectIndex(indices));
     }
 
 
-    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifMatching(final IEvaluator<Boolean,? super Map<K,V>> eval) {
-        return null;
+    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval) {
+        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNotMatching(final IEvaluator<Boolean,? super Map<K,V>> eval) {
-        return null;
+    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval) {
+        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().selectNotMatching(eval));
     }
 
 
-    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNullOrNotMatching(final IEvaluator<Boolean,? super Map<K,V>> eval) {
-        return null;
+    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval) {
+        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNotNullNotMatching(final IEvaluator<Boolean,? super Map<K,V>> eval) {
-        return null;
+    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval) {
+        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
 
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNull() {
-        return null;
+        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().selectNull());
     }
 
 
-    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNullOrMatching(final IEvaluator<Boolean,? super Map<K,V>> eval) {
-        return null;
+    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNullOrMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval) {
+        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().selectNullOrMatching(eval));
     }
 
 
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifIndexNot(final int... indices) {
-        return null;
+        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().selectIndexNot(indices));
     }
 
 
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNotNull() {
-        return null;
+        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().selectNotNull());
     }
 
 
-    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNotNullMatching(final IEvaluator<Boolean,? super Map<K,V>> eval) {
-        return null;
+    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNotNullMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval) {
+        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
