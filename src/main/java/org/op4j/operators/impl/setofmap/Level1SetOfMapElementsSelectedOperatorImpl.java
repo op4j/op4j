@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.MapFuncs;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
@@ -82,13 +83,14 @@ public class Level1SetOfMapElementsSelectedOperatorImpl<K,V> extends AbstractOpe
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level1SetOfMapElementsSelectedOperator<K,V> sort() {
-        return null;
+        return new Level1SetOfMapElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortByKey()));
     }
 
 
     public Level1SetOfMapElementsSelectedOperator<K,V> sort(final Comparator<? super Entry<K,V>> comparator) {
-        return null;
+        return new Level1SetOfMapElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,V>(comparator)));
     }
 
 

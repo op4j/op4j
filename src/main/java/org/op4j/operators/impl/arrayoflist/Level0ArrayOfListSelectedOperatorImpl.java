@@ -3,6 +3,7 @@ package org.op4j.operators.impl.arrayoflist;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
+import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -111,13 +112,14 @@ public class Level0ArrayOfListSelectedOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0ArrayOfListSelectedOperator<T> sort() {
-        return null;
+        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Sort()));
     }
 
 
     public Level0ArrayOfListSelectedOperator<T> sort(final Comparator<? super List<T>> comparator) {
-        return null;
+        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.SortByComparator<List<T>>(comparator)));
     }
 
 

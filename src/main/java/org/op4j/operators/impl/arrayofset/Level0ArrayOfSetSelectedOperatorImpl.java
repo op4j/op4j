@@ -3,6 +3,7 @@ package org.op4j.operators.impl.arrayofset;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Set;
+import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -111,13 +112,14 @@ public class Level0ArrayOfSetSelectedOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0ArrayOfSetSelectedOperator<T> sort() {
-        return null;
+        return new Level0ArrayOfSetSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Sort()));
     }
 
 
     public Level0ArrayOfSetSelectedOperator<T> sort(final Comparator<? super Set<T>> comparator) {
-        return null;
+        return new Level0ArrayOfSetSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.SortByComparator<Set<T>>(comparator)));
     }
 
 

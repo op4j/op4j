@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.MapFuncs;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
@@ -86,13 +87,14 @@ public class Level0MapOfArraySelectedOperatorImpl<K,V> extends AbstractOperatorI
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0MapOfArraySelectedOperator<K,V> sort() {
-        return null;
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(new MapFuncs.SortByKey()));
     }
 
 
     public Level0MapOfArraySelectedOperator<K,V> sort(final Comparator<? super Entry<K,V[]>> comparator) {
-        return null;
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(new MapFuncs.SortEntries<K,V[]>(comparator)));
     }
 
 

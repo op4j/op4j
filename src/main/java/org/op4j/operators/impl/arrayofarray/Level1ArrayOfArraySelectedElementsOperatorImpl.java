@@ -3,6 +3,7 @@ package org.op4j.operators.impl.arrayofarray;
 import java.util.Collection;
 import java.util.Comparator;
 import org.javaruntype.type.Type;
+import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -166,13 +167,14 @@ public class Level1ArrayOfArraySelectedElementsOperatorImpl<T> extends AbstractO
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level1ArrayOfArraySelectedElementsOperator<T> sort() {
-        return null;
+        return new Level1ArrayOfArraySelectedElementsOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.Sort()));
     }
 
 
     public Level1ArrayOfArraySelectedElementsOperator<T> sort(final Comparator<? super T> comparator) {
-        return null;
+        return new Level1ArrayOfArraySelectedElementsOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.SortByComparator<T>(comparator)));
     }
 
 

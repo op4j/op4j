@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.ListFuncs;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
@@ -112,13 +113,14 @@ public class Level2MapOfListEntriesValueSelectedOperatorImpl<K,V> extends Abstra
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level2MapOfListEntriesValueSelectedOperator<K,V> sort() {
-        return null;
+        return new Level2MapOfListEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Sort()));
     }
 
 
     public Level2MapOfListEntriesValueSelectedOperator<K,V> sort(final Comparator<? super V> comparator) {
-        return null;
+        return new Level2MapOfListEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.SortByComparator<V>(comparator)));
     }
 
 

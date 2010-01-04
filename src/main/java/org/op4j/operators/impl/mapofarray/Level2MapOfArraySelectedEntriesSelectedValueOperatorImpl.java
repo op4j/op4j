@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
 import org.javaruntype.type.Type;
+import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -167,13 +168,14 @@ public class Level2MapOfArraySelectedEntriesSelectedValueOperatorImpl<K,V> exten
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level2MapOfArraySelectedEntriesSelectedValueOperator<K,V> sort() {
-        return null;
+        return new Level2MapOfArraySelectedEntriesSelectedValueOperatorImpl<K,V>(this.arrayOf, getTarget().execute(new ArrayFuncs.Sort()));
     }
 
 
     public Level2MapOfArraySelectedEntriesSelectedValueOperator<K,V> sort(final Comparator<? super V> comparator) {
-        return null;
+        return new Level2MapOfArraySelectedEntriesSelectedValueOperatorImpl<K,V>(this.arrayOf, getTarget().execute(new ArrayFuncs.SortByComparator<V>(comparator)));
     }
 
 

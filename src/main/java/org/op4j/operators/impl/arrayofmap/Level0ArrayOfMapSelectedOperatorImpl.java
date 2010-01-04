@@ -3,6 +3,7 @@ package org.op4j.operators.impl.arrayofmap;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
+import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -111,13 +112,14 @@ public class Level0ArrayOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorI
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0ArrayOfMapSelectedOperator<K,V> sort() {
-        return null;
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.Sort()));
     }
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> sort(final Comparator<? super Map<K,V>> comparator) {
-        return null;
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.SortByComparator<Map<K,V>>(comparator)));
     }
 
 

@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.ListFuncs;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
@@ -162,13 +163,14 @@ public class Level1ArrayOfListSelectedElementsOperatorImpl<T> extends AbstractOp
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level1ArrayOfListSelectedElementsOperator<T> sort() {
-        return null;
+        return new Level1ArrayOfListSelectedElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.Sort()));
     }
 
 
     public Level1ArrayOfListSelectedElementsOperator<T> sort(final Comparator<? super T> comparator) {
-        return null;
+        return new Level1ArrayOfListSelectedElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.SortByComparator<T>(comparator)));
     }
 
 

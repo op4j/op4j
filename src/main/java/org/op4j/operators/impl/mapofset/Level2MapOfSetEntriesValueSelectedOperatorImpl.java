@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Set;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.SetFuncs;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
@@ -107,13 +108,14 @@ public class Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V> extends Abstrac
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> sort() {
-        return null;
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Sort()));
     }
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> sort(final Comparator<? super V> comparator) {
-        return null;
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.SortByComparator<V>(comparator)));
     }
 
 

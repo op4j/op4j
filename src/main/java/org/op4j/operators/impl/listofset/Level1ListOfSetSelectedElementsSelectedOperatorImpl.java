@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.SetFuncs;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
@@ -107,13 +108,14 @@ public class Level1ListOfSetSelectedElementsSelectedOperatorImpl<T> extends Abst
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level1ListOfSetSelectedElementsSelectedOperator<T> sort() {
-        return null;
+        return new Level1ListOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Sort()));
     }
 
 
     public Level1ListOfSetSelectedElementsSelectedOperator<T> sort(final Comparator<? super T> comparator) {
-        return null;
+        return new Level1ListOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.SortByComparator<T>(comparator)));
     }
 
 

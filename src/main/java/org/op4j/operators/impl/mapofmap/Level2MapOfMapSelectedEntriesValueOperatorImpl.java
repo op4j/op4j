@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Map.Entry;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.MapFuncs;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
@@ -133,12 +134,13 @@ public class Level2MapOfMapSelectedEntriesValueOperatorImpl<K1,K2,V> extends Abs
 
 
     public Level2MapOfMapSelectedEntriesValueOperator<K1,K2,V> sort(final Comparator<? super Entry<K2,V>> comparator) {
-        return null;
+        return new Level2MapOfMapSelectedEntriesValueOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.SortEntries<K2,V>(comparator)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level2MapOfMapSelectedEntriesValueOperator<K1,K2,V> sort() {
-        return null;
+        return new Level2MapOfMapSelectedEntriesValueOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.SortByKey()));
     }
 
 
