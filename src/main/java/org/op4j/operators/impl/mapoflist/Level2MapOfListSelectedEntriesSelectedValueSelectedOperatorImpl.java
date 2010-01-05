@@ -24,12 +24,12 @@ public class Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V
 
 
     public Level3MapOfListSelectedEntriesSelectedValueSelectedElementsOperator<K,V> forEach() {
-        return null;
+        return new Level3MapOfListSelectedEntriesSelectedValueSelectedElementsOperatorImpl<K,V>(getTarget().iterate());
     }
 
 
     public Level2MapOfListSelectedEntriesSelectedValueSelectedOperator<K,V> distinct() {
-        return null;
+        return new Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Distinct<V>()));
     }
 
 

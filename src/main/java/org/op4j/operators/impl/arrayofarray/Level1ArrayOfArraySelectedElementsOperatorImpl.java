@@ -1,5 +1,6 @@
 package org.op4j.operators.impl.arrayofarray;
 
+import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Comparator;
 import org.javaruntype.type.Type;
@@ -13,6 +14,7 @@ import org.op4j.operators.intf.arrayofarray.Level1ArrayOfArraySelectedElementsOp
 import org.op4j.operators.intf.arrayofarray.Level1ArrayOfArraySelectedElementsSelectedOperator;
 import org.op4j.operators.intf.arrayofarray.Level2ArrayOfArraySelectedElementsElementsOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Structure;
 
 
 public class Level1ArrayOfArraySelectedElementsOperatorImpl<T> extends AbstractOperatorImpl implements Level1ArrayOfArraySelectedElementsOperator<T> {
@@ -78,12 +80,12 @@ public class Level1ArrayOfArraySelectedElementsOperatorImpl<T> extends AbstractO
 
 
     public Level2ArrayOfArraySelectedElementsElementsOperator<T> forEach() {
-        return null;
+        return new Level2ArrayOfArraySelectedElementsElementsOperatorImpl<T>(this.arrayOf, getTarget().iterate());
     }
 
 
     public Level1ArrayOfArraySelectedElementsOperator<T> distinct() {
-        return null;
+        return new Level1ArrayOfArraySelectedElementsOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.Distinct<T>()));
     }
 
 
@@ -143,7 +145,7 @@ public class Level1ArrayOfArraySelectedElementsOperatorImpl<T> extends AbstractO
 
 
     public Level0ArrayOfArraySelectedOperator<T> endFor() {
-        return null;
+        return new Level0ArrayOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().endIterate(Structure.ARRAY,  Array.newInstance(this.arrayOf.getRawClass(),0).getClass()));
     }
 
 

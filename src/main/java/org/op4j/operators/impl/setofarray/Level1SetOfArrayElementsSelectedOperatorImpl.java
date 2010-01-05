@@ -28,12 +28,12 @@ public class Level1SetOfArrayElementsSelectedOperatorImpl<T> extends AbstractOpe
 
 
     public Level2SetOfArrayElementsSelectedElementsOperator<T> forEach() {
-        return null;
+        return new Level2SetOfArrayElementsSelectedElementsOperatorImpl<T>(this.arrayOf, getTarget().iterate());
     }
 
 
     public Level1SetOfArrayElementsSelectedOperator<T> distinct() {
-        return null;
+        return new Level1SetOfArrayElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.Distinct<T>()));
     }
 
 

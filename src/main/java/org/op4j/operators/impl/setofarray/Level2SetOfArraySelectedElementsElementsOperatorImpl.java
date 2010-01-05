@@ -10,6 +10,7 @@ import org.op4j.operators.intf.setofarray.Level1SetOfArraySelectedElementsOperat
 import org.op4j.operators.intf.setofarray.Level2SetOfArraySelectedElementsElementsOperator;
 import org.op4j.operators.intf.setofarray.Level2SetOfArraySelectedElementsElementsSelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Structure;
 
 
 public class Level2SetOfArraySelectedElementsElementsOperatorImpl<T> extends AbstractOperatorImpl implements Level2SetOfArraySelectedElementsElementsOperator<T> {
@@ -80,7 +81,7 @@ public class Level2SetOfArraySelectedElementsElementsOperatorImpl<T> extends Abs
 
 
     public Level1SetOfArraySelectedElementsOperator<T> endFor() {
-        return null;
+        return new Level1SetOfArraySelectedElementsOperatorImpl<T>(this.arrayOf, getTarget().endIterate(Structure.ARRAY,  this.arrayOf.getRawClass()));
     }
 
 

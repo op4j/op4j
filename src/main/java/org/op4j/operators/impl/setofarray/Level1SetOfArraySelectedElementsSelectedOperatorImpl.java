@@ -28,12 +28,12 @@ public class Level1SetOfArraySelectedElementsSelectedOperatorImpl<T> extends Abs
 
 
     public Level2SetOfArraySelectedElementsSelectedElementsOperator<T> forEach() {
-        return null;
+        return new Level2SetOfArraySelectedElementsSelectedElementsOperatorImpl<T>(this.arrayOf, getTarget().iterate());
     }
 
 
     public Level1SetOfArraySelectedElementsSelectedOperator<T> distinct() {
-        return null;
+        return new Level1SetOfArraySelectedElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.Distinct<T>()));
     }
 
 

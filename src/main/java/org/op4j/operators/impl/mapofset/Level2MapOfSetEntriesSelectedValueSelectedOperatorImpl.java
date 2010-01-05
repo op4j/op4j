@@ -24,7 +24,7 @@ public class Level2MapOfSetEntriesSelectedValueSelectedOperatorImpl<K,V> extends
 
 
     public Level3MapOfSetEntriesSelectedValueSelectedElementsOperator<K,V> forEach() {
-        return null;
+        return new Level3MapOfSetEntriesSelectedValueSelectedElementsOperatorImpl<K,V>(getTarget().iterate());
     }
 
 

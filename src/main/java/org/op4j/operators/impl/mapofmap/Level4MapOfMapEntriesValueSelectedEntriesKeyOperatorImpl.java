@@ -9,6 +9,7 @@ import org.op4j.operators.intf.mapofmap.Level3MapOfMapEntriesValueSelectedEntrie
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueSelectedEntriesKeyOperator;
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueSelectedEntriesKeySelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Structure;
 
 
 public class Level4MapOfMapEntriesValueSelectedEntriesKeyOperatorImpl<K1,K2,V> extends AbstractOperatorImpl implements Level4MapOfMapEntriesValueSelectedEntriesKeyOperator<K1,K2,V> {
@@ -75,7 +76,7 @@ public class Level4MapOfMapEntriesValueSelectedEntriesKeyOperatorImpl<K1,K2,V> e
 
 
     public Level3MapOfMapEntriesValueSelectedEntriesOperator<K1,K2,V> endOn() {
-        return null;
+        return new Level3MapOfMapEntriesValueSelectedEntriesOperatorImpl<K1,K2,V>(getTarget().endIterate(Structure.MAP_ENTRY, null));
     }
 
 

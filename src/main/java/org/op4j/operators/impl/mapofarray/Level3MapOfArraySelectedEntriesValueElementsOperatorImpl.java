@@ -10,6 +10,7 @@ import org.op4j.operators.intf.mapofarray.Level2MapOfArraySelectedEntriesValueOp
 import org.op4j.operators.intf.mapofarray.Level3MapOfArraySelectedEntriesValueElementsOperator;
 import org.op4j.operators.intf.mapofarray.Level3MapOfArraySelectedEntriesValueElementsSelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Structure;
 
 
 public class Level3MapOfArraySelectedEntriesValueElementsOperatorImpl<K,V> extends AbstractOperatorImpl implements Level3MapOfArraySelectedEntriesValueElementsOperator<K,V> {
@@ -80,7 +81,7 @@ public class Level3MapOfArraySelectedEntriesValueElementsOperatorImpl<K,V> exten
 
 
     public Level2MapOfArraySelectedEntriesValueOperator<K,V> endFor() {
-        return null;
+        return new Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V>(this.arrayOf, getTarget().endIterate(Structure.ARRAY,  this.arrayOf.getRawClass()));
     }
 
 

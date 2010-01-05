@@ -28,12 +28,12 @@ public class Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V> exten
 
 
     public Level3MapOfArrayEntriesSelectedValueSelectedElementsOperator<K,V> forEach() {
-        return null;
+        return new Level3MapOfArrayEntriesSelectedValueSelectedElementsOperatorImpl<K,V>(this.arrayOf, getTarget().iterate());
     }
 
 
     public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> distinct() {
-        return null;
+        return new Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(new ArrayFuncs.Distinct<V>()));
     }
 
 

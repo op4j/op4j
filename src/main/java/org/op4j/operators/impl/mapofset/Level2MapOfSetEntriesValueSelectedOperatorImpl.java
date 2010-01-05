@@ -24,7 +24,7 @@ public class Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V> extends Abstrac
 
 
     public Level3MapOfSetEntriesValueElementsOperator<K,V> forEach() {
-        return null;
+        return new Level3MapOfSetEntriesValueElementsOperatorImpl<K,V>(getTarget().iterate());
     }
 
 

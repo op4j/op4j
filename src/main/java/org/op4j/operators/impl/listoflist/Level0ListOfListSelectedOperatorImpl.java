@@ -23,12 +23,12 @@ public class Level0ListOfListSelectedOperatorImpl<T> extends AbstractOperatorImp
 
 
     public Level1ListOfListSelectedElementsOperator<T> forEach() {
-        return null;
+        return new Level1ListOfListSelectedElementsOperatorImpl<T>(getTarget().iterate());
     }
 
 
     public Level0ListOfListSelectedOperator<T> distinct() {
-        return null;
+        return new Level0ListOfListSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.Distinct<List<T>>()));
     }
 
 

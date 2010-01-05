@@ -23,7 +23,7 @@ public class Level1SetOfSetSelectedElementsSelectedOperatorImpl<T> extends Abstr
 
 
     public Level2SetOfSetSelectedElementsSelectedElementsOperator<T> forEach() {
-        return null;
+        return new Level2SetOfSetSelectedElementsSelectedElementsOperatorImpl<T>(getTarget().iterate());
     }
 
 

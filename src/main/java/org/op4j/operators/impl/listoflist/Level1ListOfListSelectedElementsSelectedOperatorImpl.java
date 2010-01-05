@@ -23,12 +23,12 @@ public class Level1ListOfListSelectedElementsSelectedOperatorImpl<T> extends Abs
 
 
     public Level2ListOfListSelectedElementsSelectedElementsOperator<T> forEach() {
-        return null;
+        return new Level2ListOfListSelectedElementsSelectedElementsOperatorImpl<T>(getTarget().iterate());
     }
 
 
     public Level1ListOfListSelectedElementsSelectedOperator<T> distinct() {
-        return null;
+        return new Level1ListOfListSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.Distinct<T>()));
     }
 
 

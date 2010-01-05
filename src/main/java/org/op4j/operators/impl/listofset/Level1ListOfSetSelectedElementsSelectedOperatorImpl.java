@@ -24,7 +24,7 @@ public class Level1ListOfSetSelectedElementsSelectedOperatorImpl<T> extends Abst
 
 
     public Level2ListOfSetSelectedElementsSelectedElementsOperator<T> forEach() {
-        return null;
+        return new Level2ListOfSetSelectedElementsSelectedElementsOperatorImpl<T>(getTarget().iterate());
     }
 
 

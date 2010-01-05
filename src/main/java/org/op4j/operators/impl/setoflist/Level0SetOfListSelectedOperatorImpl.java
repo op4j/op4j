@@ -24,7 +24,7 @@ public class Level0SetOfListSelectedOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level1SetOfListSelectedElementsOperator<T> forEach() {
-        return null;
+        return new Level1SetOfListSelectedElementsOperatorImpl<T>(getTarget().iterate());
     }
 
 

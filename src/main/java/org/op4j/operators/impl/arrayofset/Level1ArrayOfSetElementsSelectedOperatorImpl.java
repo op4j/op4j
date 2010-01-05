@@ -23,7 +23,7 @@ public class Level1ArrayOfSetElementsSelectedOperatorImpl<T> extends AbstractOpe
 
 
     public Level2ArrayOfSetElementsSelectedElementsOperator<T> forEach() {
-        return null;
+        return new Level2ArrayOfSetElementsSelectedElementsOperatorImpl<T>(getTarget().iterate());
     }
 
 

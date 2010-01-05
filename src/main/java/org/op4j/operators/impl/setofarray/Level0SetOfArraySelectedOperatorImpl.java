@@ -28,7 +28,7 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
 
 
     public Level1SetOfArraySelectedElementsOperator<T> forEach() {
-        return null;
+        return new Level1SetOfArraySelectedElementsOperatorImpl<T>(this.arrayOf, getTarget().iterate());
     }
 
 

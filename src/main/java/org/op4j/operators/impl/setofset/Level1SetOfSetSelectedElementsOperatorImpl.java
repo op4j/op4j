@@ -13,6 +13,7 @@ import org.op4j.operators.intf.setofset.Level1SetOfSetSelectedElementsOperator;
 import org.op4j.operators.intf.setofset.Level1SetOfSetSelectedElementsSelectedOperator;
 import org.op4j.operators.intf.setofset.Level2SetOfSetSelectedElementsElementsOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Structure;
 
 
 public class Level1SetOfSetSelectedElementsOperatorImpl<T> extends AbstractOperatorImpl implements Level1SetOfSetSelectedElementsOperator<T> {
@@ -74,7 +75,7 @@ public class Level1SetOfSetSelectedElementsOperatorImpl<T> extends AbstractOpera
 
 
     public Level2SetOfSetSelectedElementsElementsOperator<T> forEach() {
-        return null;
+        return new Level2SetOfSetSelectedElementsElementsOperatorImpl<T>(getTarget().iterate());
     }
 
 
@@ -134,7 +135,7 @@ public class Level1SetOfSetSelectedElementsOperatorImpl<T> extends AbstractOpera
 
 
     public Level0SetOfSetSelectedOperator<T> endFor() {
-        return null;
+        return new Level0SetOfSetSelectedOperatorImpl<T>(getTarget().endIterate(Structure.SET, null));
     }
 
 

@@ -23,12 +23,12 @@ public class Level0ArrayOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Level1ArrayOfMapSelectedElementsOperator<K,V> forEach() {
-        return null;
+        return new Level1ArrayOfMapSelectedElementsOperatorImpl<K,V>(getTarget().iterate());
     }
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> distinct() {
-        return null;
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.Distinct<Map<K,V>>()));
     }
 
 

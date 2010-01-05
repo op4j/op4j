@@ -27,12 +27,12 @@ public class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorImpl imp
 
 
     public Level1ArraySelectedElementsOperator<T> forEach() {
-        return null;
+        return new Level1ArraySelectedElementsOperatorImpl<T>(this.arrayOf, getTarget().iterate());
     }
 
 
     public Level0ArraySelectedOperator<T> distinct() {
-        return null;
+        return new Level0ArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.Distinct<T>()));
     }
 
 

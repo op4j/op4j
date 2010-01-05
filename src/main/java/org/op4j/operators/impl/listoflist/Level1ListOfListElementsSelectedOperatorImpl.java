@@ -23,12 +23,12 @@ public class Level1ListOfListElementsSelectedOperatorImpl<T> extends AbstractOpe
 
 
     public Level2ListOfListElementsSelectedElementsOperator<T> forEach() {
-        return null;
+        return new Level2ListOfListElementsSelectedElementsOperatorImpl<T>(getTarget().iterate());
     }
 
 
     public Level1ListOfListElementsSelectedOperator<T> distinct() {
-        return null;
+        return new Level1ListOfListElementsSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.Distinct<T>()));
     }
 
 

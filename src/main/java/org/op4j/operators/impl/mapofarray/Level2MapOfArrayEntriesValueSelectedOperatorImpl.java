@@ -28,12 +28,12 @@ public class Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V> extends Abstr
 
 
     public Level3MapOfArrayEntriesValueElementsOperator<K,V> forEach() {
-        return null;
+        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K,V>(this.arrayOf, getTarget().iterate());
     }
 
 
     public Level2MapOfArrayEntriesValueSelectedOperator<K,V> distinct() {
-        return null;
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(new ArrayFuncs.Distinct<V>()));
     }
 
 

@@ -23,7 +23,7 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
 
 
     public Level1SetSelectedElementsOperator<T> forEach() {
-        return null;
+        return new Level1SetSelectedElementsOperatorImpl<T>(getTarget().iterate());
     }
 
 

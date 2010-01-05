@@ -14,6 +14,7 @@ import org.op4j.operators.intf.listofarray.Level1ListOfArraySelectedElementsOper
 import org.op4j.operators.intf.listofarray.Level1ListOfArraySelectedElementsSelectedOperator;
 import org.op4j.operators.intf.listofarray.Level2ListOfArraySelectedElementsElementsOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Structure;
 
 
 public class Level1ListOfArraySelectedElementsOperatorImpl<T> extends AbstractOperatorImpl implements Level1ListOfArraySelectedElementsOperator<T> {
@@ -79,12 +80,12 @@ public class Level1ListOfArraySelectedElementsOperatorImpl<T> extends AbstractOp
 
 
     public Level2ListOfArraySelectedElementsElementsOperator<T> forEach() {
-        return null;
+        return new Level2ListOfArraySelectedElementsElementsOperatorImpl<T>(this.arrayOf, getTarget().iterate());
     }
 
 
     public Level1ListOfArraySelectedElementsOperator<T> distinct() {
-        return null;
+        return new Level1ListOfArraySelectedElementsOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.Distinct<T>()));
     }
 
 
@@ -144,7 +145,7 @@ public class Level1ListOfArraySelectedElementsOperatorImpl<T> extends AbstractOp
 
 
     public Level0ListOfArraySelectedOperator<T> endFor() {
-        return null;
+        return new Level0ListOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().endIterate(Structure.LIST, null));
     }
 
 

@@ -24,12 +24,12 @@ public class Level2MapOfListEntriesValueSelectedOperatorImpl<K,V> extends Abstra
 
 
     public Level3MapOfListEntriesValueElementsOperator<K,V> forEach() {
-        return null;
+        return new Level3MapOfListEntriesValueElementsOperatorImpl<K,V>(getTarget().iterate());
     }
 
 
     public Level2MapOfListEntriesValueSelectedOperator<K,V> distinct() {
-        return null;
+        return new Level2MapOfListEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Distinct<V>()));
     }
 
 

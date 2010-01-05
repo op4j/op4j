@@ -24,7 +24,7 @@ public class Level0SetOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorImp
 
 
     public Level1SetOfMapSelectedElementsOperator<K,V> forEach() {
-        return null;
+        return new Level1SetOfMapSelectedElementsOperatorImpl<K,V>(getTarget().iterate());
     }
 
 
