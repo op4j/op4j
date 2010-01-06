@@ -24,12 +24,12 @@ public class Level1ListOfMapElementsSelectedOperatorImpl<K,V> extends AbstractOp
 
 
     public Level1ListOfMapElementsSelectedOperator<K,V> removeMatching(final IEvaluator<Boolean,? super Entry<K,V>> eval) {
-        return null;
+        return new Level1ListOfMapElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveMatching<K,V>(eval)));
     }
 
 
     public Level1ListOfMapElementsSelectedOperator<K,V> removeNotMatching(final IEvaluator<Boolean,? super Entry<K,V>> eval) {
-        return null;
+        return new Level1ListOfMapElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveNotMatching<K,V>(eval)));
     }
 
 
@@ -100,7 +100,7 @@ public class Level1ListOfMapElementsSelectedOperatorImpl<K,V> extends AbstractOp
 
 
     public List<Map<K,V>> get() {
-        return null;
+        return endIf().get();
     }
 
 

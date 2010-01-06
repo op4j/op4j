@@ -91,7 +91,7 @@ public class Level3ArrayOfMapElementsSelectedEntriesKeyOperatorImpl<K,V> extends
 
 
     public Map<K,V>[] get() {
-        return null;
+        return endOn().get();
     }
 
 

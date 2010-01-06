@@ -40,7 +40,7 @@ public class Level2MapOfSetEntriesKeySelectedOperatorImpl<K,V> extends AbstractO
 
 
     public Map<K,Set<V>> get() {
-        return null;
+        return endIf().get();
     }
 
 

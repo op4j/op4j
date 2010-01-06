@@ -91,7 +91,7 @@ public class Level4MapOfMapSelectedEntriesValueEntriesKeyOperatorImpl<K1,K2,V> e
 
 
     public Map<K1,Map<K2,V>> get() {
-        return null;
+        return endOn().get();
     }
 
 

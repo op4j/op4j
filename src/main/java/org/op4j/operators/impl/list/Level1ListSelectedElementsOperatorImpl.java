@@ -91,7 +91,7 @@ public class Level1ListSelectedElementsOperatorImpl<T> extends AbstractOperatorI
 
 
     public List<T> get() {
-        return null;
+        return endFor().get();
     }
 
 

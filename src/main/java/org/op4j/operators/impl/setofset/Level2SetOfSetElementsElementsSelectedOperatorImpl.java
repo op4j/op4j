@@ -39,7 +39,7 @@ public class Level2SetOfSetElementsElementsSelectedOperatorImpl<T> extends Abstr
 
 
     public Set<Set<T>> get() {
-        return null;
+        return endIf().get();
     }
 
 

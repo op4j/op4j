@@ -91,7 +91,7 @@ public class Level2MapSelectedEntriesSelectedKeyOperatorImpl<K,V> extends Abstra
 
 
     public Map<K,V> get() {
-        return null;
+        return endOn().get();
     }
 
 

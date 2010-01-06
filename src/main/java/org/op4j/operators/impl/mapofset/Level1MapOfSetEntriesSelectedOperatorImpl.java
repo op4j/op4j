@@ -53,7 +53,7 @@ public class Level1MapOfSetEntriesSelectedOperatorImpl<K,V> extends AbstractOper
 
 
     public Map<K,Set<V>> get() {
-        return null;
+        return endIf().get();
     }
 
 

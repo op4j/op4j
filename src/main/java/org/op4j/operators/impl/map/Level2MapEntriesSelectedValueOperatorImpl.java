@@ -91,7 +91,7 @@ public class Level2MapEntriesSelectedValueOperatorImpl<K,V> extends AbstractOper
 
 
     public Map<K,V> get() {
-        return null;
+        return endOn().get();
     }
 
 

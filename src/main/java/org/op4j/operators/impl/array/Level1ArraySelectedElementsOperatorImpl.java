@@ -95,7 +95,7 @@ public class Level1ArraySelectedElementsOperatorImpl<T> extends AbstractOperator
 
 
     public T[] get() {
-        return null;
+        return endFor().get();
     }
 
 

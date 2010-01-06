@@ -92,7 +92,7 @@ public class Level2MapOfListSelectedEntriesSelectedKeyOperatorImpl<K,V> extends 
 
 
     public Map<K,List<V>> get() {
-        return null;
+        return endOn().get();
     }
 
 

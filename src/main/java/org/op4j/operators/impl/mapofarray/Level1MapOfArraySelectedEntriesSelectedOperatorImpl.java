@@ -57,7 +57,7 @@ public class Level1MapOfArraySelectedEntriesSelectedOperatorImpl<K,V> extends Ab
 
 
     public Map<K,V[]> get() {
-        return null;
+        return endIf().get();
     }
 
 

@@ -43,7 +43,7 @@ public class Level2ArrayOfArraySelectedElementsSelectedElementsSelectedOperatorI
 
 
     public T[][] get() {
-        return null;
+        return endIf().get();
     }
 
 

@@ -91,7 +91,7 @@ public class Level1SetSelectedElementsOperatorImpl<T> extends AbstractOperatorIm
 
 
     public Set<T> get() {
-        return null;
+        return endFor().get();
     }
 
 

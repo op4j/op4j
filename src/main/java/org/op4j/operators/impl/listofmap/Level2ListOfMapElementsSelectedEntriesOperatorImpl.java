@@ -85,7 +85,7 @@ public class Level2ListOfMapElementsSelectedEntriesOperatorImpl<K,V> extends Abs
 
 
     public List<Map<K,V>> get() {
-        return null;
+        return endFor().get();
     }
 
 

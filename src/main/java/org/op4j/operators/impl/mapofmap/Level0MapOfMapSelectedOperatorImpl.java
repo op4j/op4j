@@ -23,12 +23,12 @@ public class Level0MapOfMapSelectedOperatorImpl<K1,K2,V> extends AbstractOperato
 
 
     public Level0MapOfMapSelectedOperator<K1,K2,V> removeMatching(final IEvaluator<Boolean,? super Entry<K1,Map<K2,V>>> eval) {
-        return null;
+        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.RemoveMatching<K1,Map<K2,V>>(eval)));
     }
 
 
     public Level0MapOfMapSelectedOperator<K1,K2,V> removeNotMatching(final IEvaluator<Boolean,? super Entry<K1,Map<K2,V>>> eval) {
-        return null;
+        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.RemoveNotMatching<K1,Map<K2,V>>(eval)));
     }
 
 
@@ -99,7 +99,7 @@ public class Level0MapOfMapSelectedOperatorImpl<K1,K2,V> extends AbstractOperato
 
 
     public Map<K1,Map<K2,V>> get() {
-        return null;
+        return endIf().get();
     }
 
 

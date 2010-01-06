@@ -53,7 +53,7 @@ public class Level2ListOfMapElementsSelectedEntriesSelectedOperatorImpl<K,V> ext
 
 
     public List<Map<K,V>> get() {
-        return null;
+        return endIf().get();
     }
 
 

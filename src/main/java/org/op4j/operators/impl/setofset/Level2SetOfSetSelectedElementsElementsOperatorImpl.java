@@ -91,7 +91,7 @@ public class Level2SetOfSetSelectedElementsElementsOperatorImpl<T> extends Abstr
 
 
     public Set<Set<T>> get() {
-        return null;
+        return endFor().get();
     }
 
 

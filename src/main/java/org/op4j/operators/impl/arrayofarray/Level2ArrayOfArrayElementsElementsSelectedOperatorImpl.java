@@ -43,7 +43,7 @@ public class Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T> extends A
 
 
     public T[][] get() {
-        return null;
+        return endIf().get();
     }
 
 

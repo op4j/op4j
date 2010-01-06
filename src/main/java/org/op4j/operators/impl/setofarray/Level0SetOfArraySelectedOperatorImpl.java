@@ -33,52 +33,52 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
 
 
     public Level0SetOfArraySelectedOperator<T> removeIndexes(final int... indices) {
-        return null;
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveIndexes<T[]>(indices)));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> removeEquals(final T[]... values) {
-        return null;
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveEquals<T[]>(values)));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> removeMatching(final IEvaluator<Boolean,? super T[]> eval) {
-        return null;
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveMatching<T[]>(eval)));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> removeNotMatching(final IEvaluator<Boolean,? super T[]> eval) {
-        return null;
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveNotMatching<T[]>(eval)));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean,? super T[]> eval) {
-        return null;
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveNullOrNotMatching<T[]>(eval)));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean,? super T[]> eval) {
-        return null;
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveNotNullNotMatching<T[]>(eval)));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> removeNotNullMatching(final IEvaluator<Boolean,? super T[]> eval) {
-        return null;
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveNotNullMatching<T[]>(eval)));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> removeNullOrMatching(final IEvaluator<Boolean,? super T[]> eval) {
-        return null;
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveNullOrMatching<T[]>(eval)));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> removeIndexesNot(final int... indices) {
-        return null;
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveIndexesNot<T[]>(indices)));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> removeNulls() {
-        return null;
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveNulls<T[]>()));
     }
 
 
@@ -93,17 +93,17 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
 
 
     public Level0SetOfArraySelectedOperator<T> add(final T[]... newElements) {
-        return null;
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.Add<T[]>(newElements)));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> addAll(final Collection<T[]> collection) {
-        return null;
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.AddAll<T[]>(collection)));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> insert(final int position, final T[]... newElements) {
-        return null;
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.Insert<T[]>(position, newElements)));
     }
 
 
@@ -129,7 +129,7 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
 
 
     public Set<T[]> get() {
-        return null;
+        return endIf().get();
     }
 
 

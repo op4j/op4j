@@ -57,7 +57,7 @@ public class Level1MapOfArrayEntriesSelectedOperatorImpl<K,V> extends AbstractOp
 
 
     public Map<K,V[]> get() {
-        return null;
+        return endIf().get();
     }
 
 

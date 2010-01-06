@@ -52,7 +52,7 @@ public class Level1MapOfMapEntriesSelectedOperatorImpl<K1,K2,V> extends Abstract
 
 
     public Map<K1,Map<K2,V>> get() {
-        return null;
+        return endIf().get();
     }
 
 

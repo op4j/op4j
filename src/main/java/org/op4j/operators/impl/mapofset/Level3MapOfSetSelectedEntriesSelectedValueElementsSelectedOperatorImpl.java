@@ -40,7 +40,7 @@ public class Level3MapOfSetSelectedEntriesSelectedValueElementsSelectedOperatorI
 
 
     public Map<K,Set<V>> get() {
-        return null;
+        return endIf().get();
     }
 
 

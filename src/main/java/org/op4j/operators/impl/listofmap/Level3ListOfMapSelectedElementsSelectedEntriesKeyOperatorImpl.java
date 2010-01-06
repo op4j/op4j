@@ -92,7 +92,7 @@ public class Level3ListOfMapSelectedElementsSelectedEntriesKeyOperatorImpl<K,V> 
 
 
     public List<Map<K,V>> get() {
-        return null;
+        return endOn().get();
     }
 
 

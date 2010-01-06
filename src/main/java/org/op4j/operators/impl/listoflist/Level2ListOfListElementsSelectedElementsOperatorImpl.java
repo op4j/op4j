@@ -91,7 +91,7 @@ public class Level2ListOfListElementsSelectedElementsOperatorImpl<T> extends Abs
 
 
     public List<List<T>> get() {
-        return null;
+        return endFor().get();
     }
 
 

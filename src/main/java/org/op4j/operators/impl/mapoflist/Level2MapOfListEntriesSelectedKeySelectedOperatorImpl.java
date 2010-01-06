@@ -40,7 +40,7 @@ public class Level2MapOfListEntriesSelectedKeySelectedOperatorImpl<K,V> extends 
 
 
     public Map<K,List<V>> get() {
-        return null;
+        return endIf().get();
     }
 
 

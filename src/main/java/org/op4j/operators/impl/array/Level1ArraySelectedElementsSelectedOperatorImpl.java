@@ -43,7 +43,7 @@ public class Level1ArraySelectedElementsSelectedOperatorImpl<T> extends Abstract
 
 
     public T[] get() {
-        return null;
+        return endIf().get();
     }
 
 

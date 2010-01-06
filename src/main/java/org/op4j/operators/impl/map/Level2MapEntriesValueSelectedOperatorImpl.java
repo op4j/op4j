@@ -39,7 +39,7 @@ public class Level2MapEntriesValueSelectedOperatorImpl<K,V> extends AbstractOper
 
 
     public Map<K,V> get() {
-        return null;
+        return endIf().get();
     }
 
 

@@ -53,7 +53,7 @@ public class Level2SetOfMapSelectedElementsEntriesSelectedOperatorImpl<K,V> exte
 
 
     public Set<Map<K,V>> get() {
-        return null;
+        return endIf().get();
     }
 
 

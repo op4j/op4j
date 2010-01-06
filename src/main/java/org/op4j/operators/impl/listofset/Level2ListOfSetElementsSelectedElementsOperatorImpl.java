@@ -92,7 +92,7 @@ public class Level2ListOfSetElementsSelectedElementsOperatorImpl<T> extends Abst
 
 
     public List<Set<T>> get() {
-        return null;
+        return endFor().get();
     }
 
 

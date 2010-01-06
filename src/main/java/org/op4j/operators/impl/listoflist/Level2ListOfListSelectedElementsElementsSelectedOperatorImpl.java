@@ -39,7 +39,7 @@ public class Level2ListOfListSelectedElementsElementsSelectedOperatorImpl<T> ext
 
 
     public List<List<T>> get() {
-        return null;
+        return endIf().get();
     }
 
 

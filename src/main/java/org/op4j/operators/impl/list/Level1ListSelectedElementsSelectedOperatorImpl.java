@@ -39,7 +39,7 @@ public class Level1ListSelectedElementsSelectedOperatorImpl<T> extends AbstractO
 
 
     public List<T> get() {
-        return null;
+        return endIf().get();
     }
 
 

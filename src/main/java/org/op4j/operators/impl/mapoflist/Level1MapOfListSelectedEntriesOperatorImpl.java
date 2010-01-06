@@ -85,7 +85,7 @@ public class Level1MapOfListSelectedEntriesOperatorImpl<K,V> extends AbstractOpe
 
 
     public Map<K,List<V>> get() {
-        return null;
+        return endFor().get();
     }
 
 

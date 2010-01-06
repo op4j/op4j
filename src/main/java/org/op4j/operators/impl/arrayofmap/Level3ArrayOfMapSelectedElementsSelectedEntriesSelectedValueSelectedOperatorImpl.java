@@ -39,7 +39,7 @@ public class Level3ArrayOfMapSelectedElementsSelectedEntriesSelectedValueSelecte
 
 
     public Map<K,V>[] get() {
-        return null;
+        return endIf().get();
     }
 
 

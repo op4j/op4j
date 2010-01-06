@@ -28,52 +28,52 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
 
 
     public Level0SetSelectedOperator<T> removeIndexes(final int... indices) {
-        return null;
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveIndexes<T>(indices)));
     }
 
 
     public Level0SetSelectedOperator<T> removeEquals(final T... values) {
-        return null;
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveEquals<T>(values)));
     }
 
 
     public Level0SetSelectedOperator<T> removeMatching(final IEvaluator<Boolean,? super T> eval) {
-        return null;
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveMatching<T>(eval)));
     }
 
 
     public Level0SetSelectedOperator<T> removeNotMatching(final IEvaluator<Boolean,? super T> eval) {
-        return null;
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveNotMatching<T>(eval)));
     }
 
 
     public Level0SetSelectedOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean,? super T> eval) {
-        return null;
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveNullOrNotMatching<T>(eval)));
     }
 
 
     public Level0SetSelectedOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean,? super T> eval) {
-        return null;
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveNotNullNotMatching<T>(eval)));
     }
 
 
     public Level0SetSelectedOperator<T> removeNotNullMatching(final IEvaluator<Boolean,? super T> eval) {
-        return null;
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveNotNullMatching<T>(eval)));
     }
 
 
     public Level0SetSelectedOperator<T> removeNullOrMatching(final IEvaluator<Boolean,? super T> eval) {
-        return null;
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveNullOrMatching<T>(eval)));
     }
 
 
     public Level0SetSelectedOperator<T> removeIndexesNot(final int... indices) {
-        return null;
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveIndexesNot<T>(indices)));
     }
 
 
     public Level0SetSelectedOperator<T> removeNulls() {
-        return null;
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveNulls<T>()));
     }
 
 
@@ -88,17 +88,17 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
 
 
     public Level0SetSelectedOperator<T> add(final T... newElements) {
-        return null;
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElements)));
     }
 
 
     public Level0SetSelectedOperator<T> addAll(final Collection<T> collection) {
-        return null;
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<T>(collection)));
     }
 
 
     public Level0SetSelectedOperator<T> insert(final int position, final T... newElements) {
-        return null;
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T>(position, newElements)));
     }
 
 
@@ -124,7 +124,7 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
 
 
     public Set<T> get() {
-        return null;
+        return endIf().get();
     }
 
 

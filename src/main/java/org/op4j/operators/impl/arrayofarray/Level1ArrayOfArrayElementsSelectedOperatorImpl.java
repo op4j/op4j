@@ -37,52 +37,52 @@ public class Level1ArrayOfArrayElementsSelectedOperatorImpl<T> extends AbstractO
 
 
     public Level1ArrayOfArrayElementsSelectedOperator<T> removeIndexes(final int... indices) {
-        return null;
+        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveIndexes<T>(indices)));
     }
 
 
     public Level1ArrayOfArrayElementsSelectedOperator<T> removeEquals(final T... values) {
-        return null;
+        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveEquals<T>(values)));
     }
 
 
     public Level1ArrayOfArrayElementsSelectedOperator<T> removeMatching(final IEvaluator<Boolean,? super T> eval) {
-        return null;
+        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveMatching<T>(eval)));
     }
 
 
     public Level1ArrayOfArrayElementsSelectedOperator<T> removeNotMatching(final IEvaluator<Boolean,? super T> eval) {
-        return null;
+        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNotMatching<T>(eval)));
     }
 
 
     public Level1ArrayOfArrayElementsSelectedOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean,? super T> eval) {
-        return null;
+        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNullOrNotMatching<T>(eval)));
     }
 
 
     public Level1ArrayOfArrayElementsSelectedOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean,? super T> eval) {
-        return null;
+        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNotNullNotMatching<T>(eval)));
     }
 
 
     public Level1ArrayOfArrayElementsSelectedOperator<T> removeNotNullMatching(final IEvaluator<Boolean,? super T> eval) {
-        return null;
+        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNotNullMatching<T>(eval)));
     }
 
 
     public Level1ArrayOfArrayElementsSelectedOperator<T> removeNullOrMatching(final IEvaluator<Boolean,? super T> eval) {
-        return null;
+        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNullOrMatching<T>(eval)));
     }
 
 
     public Level1ArrayOfArrayElementsSelectedOperator<T> removeIndexesNot(final int... indices) {
-        return null;
+        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveIndexesNot<T>(indices)));
     }
 
 
     public Level1ArrayOfArrayElementsSelectedOperator<T> removeNulls() {
-        return null;
+        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.RemoveNulls<T>()));
     }
 
 
@@ -97,17 +97,17 @@ public class Level1ArrayOfArrayElementsSelectedOperatorImpl<T> extends AbstractO
 
 
     public Level1ArrayOfArrayElementsSelectedOperator<T> add(final T... newElements) {
-        return null;
+        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.Add<T>(newElements)));
     }
 
 
     public Level1ArrayOfArrayElementsSelectedOperator<T> addAll(final Collection<T> collection) {
-        return null;
+        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.AddAll<T>(collection)));
     }
 
 
     public Level1ArrayOfArrayElementsSelectedOperator<T> insert(final int position, final T... newElements) {
-        return null;
+        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(new ArrayFuncs.Insert<T>(position, newElements)));
     }
 
 
@@ -133,7 +133,7 @@ public class Level1ArrayOfArrayElementsSelectedOperatorImpl<T> extends AbstractO
 
 
     public T[][] get() {
-        return null;
+        return endIf().get();
     }
 
 

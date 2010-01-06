@@ -91,7 +91,7 @@ public class Level3ArrayOfMapSelectedElementsSelectedEntriesValueOperatorImpl<K,
 
 
     public Map<K,V>[] get() {
-        return null;
+        return endOn().get();
     }
 
 

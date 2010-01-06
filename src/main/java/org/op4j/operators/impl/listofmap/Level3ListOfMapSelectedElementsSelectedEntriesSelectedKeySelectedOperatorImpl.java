@@ -40,7 +40,7 @@ public class Level3ListOfMapSelectedElementsSelectedEntriesSelectedKeySelectedOp
 
 
     public List<Map<K,V>> get() {
-        return null;
+        return endIf().get();
     }
 
 

@@ -40,7 +40,7 @@ public class Level2ListOfSetElementsElementsSelectedOperatorImpl<T> extends Abst
 
 
     public List<Set<T>> get() {
-        return null;
+        return endIf().get();
     }
 
 

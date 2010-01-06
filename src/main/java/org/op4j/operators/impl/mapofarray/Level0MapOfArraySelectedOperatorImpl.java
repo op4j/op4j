@@ -28,12 +28,12 @@ public class Level0MapOfArraySelectedOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Level0MapOfArraySelectedOperator<K,V> removeMatching(final IEvaluator<Boolean,? super Entry<K,V[]>> eval) {
-        return null;
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(new MapFuncs.RemoveMatching<K,V[]>(eval)));
     }
 
 
     public Level0MapOfArraySelectedOperator<K,V> removeNotMatching(final IEvaluator<Boolean,? super Entry<K,V[]>> eval) {
-        return null;
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(new MapFuncs.RemoveNotMatching<K,V[]>(eval)));
     }
 
 
@@ -104,7 +104,7 @@ public class Level0MapOfArraySelectedOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Map<K,V[]> get() {
-        return null;
+        return endIf().get();
     }
 
 

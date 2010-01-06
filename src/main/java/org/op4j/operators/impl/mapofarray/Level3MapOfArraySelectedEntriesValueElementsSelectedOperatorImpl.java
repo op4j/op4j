@@ -44,7 +44,7 @@ public class Level3MapOfArraySelectedEntriesValueElementsSelectedOperatorImpl<K,
 
 
     public Map<K,V[]> get() {
-        return null;
+        return endIf().get();
     }
 
 

@@ -39,7 +39,7 @@ public class Level1SetSelectedElementsSelectedOperatorImpl<T> extends AbstractOp
 
 
     public Set<T> get() {
-        return null;
+        return endIf().get();
     }
 
 

@@ -52,7 +52,7 @@ public class Level2ArrayOfMapSelectedElementsSelectedEntriesSelectedOperatorImpl
 
 
     public Map<K,V>[] get() {
-        return null;
+        return endIf().get();
     }
 
 

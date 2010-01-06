@@ -39,7 +39,7 @@ public class Level2MapEntriesKeySelectedOperatorImpl<K,V> extends AbstractOperat
 
 
     public Map<K,V> get() {
-        return null;
+        return endIf().get();
     }
 
 

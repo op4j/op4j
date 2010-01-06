@@ -39,7 +39,7 @@ public class Level4MapOfMapEntriesValueEntriesValueSelectedOperatorImpl<K1,K2,V>
 
 
     public Map<K1,Map<K2,V>> get() {
-        return null;
+        return endIf().get();
     }
 
 

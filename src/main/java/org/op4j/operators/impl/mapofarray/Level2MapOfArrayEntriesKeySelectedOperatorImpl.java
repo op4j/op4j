@@ -44,7 +44,7 @@ public class Level2MapOfArrayEntriesKeySelectedOperatorImpl<K,V> extends Abstrac
 
 
     public Map<K,V[]> get() {
-        return null;
+        return endIf().get();
     }
 
 

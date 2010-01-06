@@ -39,7 +39,7 @@ public class Level2ArrayOfSetSelectedElementsSelectedElementsSelectedOperatorImp
 
 
     public Set<T>[] get() {
-        return null;
+        return endIf().get();
     }
 
 

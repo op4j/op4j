@@ -44,7 +44,7 @@ public class Level2ListOfArrayElementsElementsSelectedOperatorImpl<T> extends Ab
 
 
     public List<T[]> get() {
-        return null;
+        return endIf().get();
     }
 
 

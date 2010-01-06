@@ -52,7 +52,7 @@ public class Level1MapOfMapSelectedEntriesSelectedOperatorImpl<K1,K2,V> extends 
 
 
     public Map<K1,Map<K2,V>> get() {
-        return null;
+        return endIf().get();
     }
 
 

@@ -24,12 +24,12 @@ public class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOperatorImp
 
 
     public Level0MapOfSetSelectedOperator<K,V> removeMatching(final IEvaluator<Boolean,? super Entry<K,Set<V>>> eval) {
-        return null;
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveMatching<K,Set<V>>(eval)));
     }
 
 
     public Level0MapOfSetSelectedOperator<K,V> removeNotMatching(final IEvaluator<Boolean,? super Entry<K,Set<V>>> eval) {
-        return null;
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveNotMatching<K,Set<V>>(eval)));
     }
 
 
@@ -100,7 +100,7 @@ public class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOperatorImp
 
 
     public Map<K,Set<V>> get() {
-        return null;
+        return endIf().get();
     }
 
 

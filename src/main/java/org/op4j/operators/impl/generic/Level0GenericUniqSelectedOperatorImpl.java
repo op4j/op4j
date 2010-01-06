@@ -38,7 +38,7 @@ public class Level0GenericUniqSelectedOperatorImpl<T> extends AbstractOperatorIm
 
 
     public T get() {
-        return null;
+        return endIf().get();
     }
 
 

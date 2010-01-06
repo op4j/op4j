@@ -96,7 +96,7 @@ public class Level2SetOfArraySelectedElementsElementsOperatorImpl<T> extends Abs
 
 
     public Set<T[]> get() {
-        return null;
+        return endFor().get();
     }
 
 

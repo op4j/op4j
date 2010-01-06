@@ -39,7 +39,7 @@ public class Level2ArrayOfSetElementsElementsSelectedOperatorImpl<T> extends Abs
 
 
     public Set<T>[] get() {
-        return null;
+        return endIf().get();
     }
 
 

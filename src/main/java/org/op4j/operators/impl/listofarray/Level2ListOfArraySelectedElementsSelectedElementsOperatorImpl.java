@@ -96,7 +96,7 @@ public class Level2ListOfArraySelectedElementsSelectedElementsOperatorImpl<T> ex
 
 
     public List<T[]> get() {
-        return null;
+        return endFor().get();
     }
 
 

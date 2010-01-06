@@ -39,7 +39,7 @@ public class Level2MapOfMapEntriesKeySelectedOperatorImpl<K1,K2,V> extends Abstr
 
 
     public Map<K1,Map<K2,V>> get() {
-        return null;
+        return endIf().get();
     }
 
 

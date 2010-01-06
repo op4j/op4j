@@ -33,52 +33,52 @@ public class Level0ArrayOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> removeIndexes(final int... indices) {
-        return null;
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.RemoveIndexes<Map<K,V>>(indices)));
     }
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> removeEquals(final Map<K,V>... values) {
-        return null;
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.RemoveEquals<Map<K,V>>(values)));
     }
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> removeMatching(final IEvaluator<Boolean,? super Map<K,V>> eval) {
-        return null;
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.RemoveMatching<Map<K,V>>(eval)));
     }
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> removeNotMatching(final IEvaluator<Boolean,? super Map<K,V>> eval) {
-        return null;
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.RemoveNotMatching<Map<K,V>>(eval)));
     }
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> removeNullOrNotMatching(final IEvaluator<Boolean,? super Map<K,V>> eval) {
-        return null;
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.RemoveNullOrNotMatching<Map<K,V>>(eval)));
     }
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> removeNotNullNotMatching(final IEvaluator<Boolean,? super Map<K,V>> eval) {
-        return null;
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.RemoveNotNullNotMatching<Map<K,V>>(eval)));
     }
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> removeNotNullMatching(final IEvaluator<Boolean,? super Map<K,V>> eval) {
-        return null;
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.RemoveNotNullMatching<Map<K,V>>(eval)));
     }
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> removeNullOrMatching(final IEvaluator<Boolean,? super Map<K,V>> eval) {
-        return null;
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.RemoveNullOrMatching<Map<K,V>>(eval)));
     }
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> removeIndexesNot(final int... indices) {
-        return null;
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.RemoveIndexesNot<Map<K,V>>(indices)));
     }
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> removeNulls() {
-        return null;
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.RemoveNulls<Map<K,V>>()));
     }
 
 
@@ -93,17 +93,17 @@ public class Level0ArrayOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> add(final Map<K,V>... newElements) {
-        return null;
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.Add<Map<K,V>>(newElements)));
     }
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> addAll(final Collection<Map<K,V>> collection) {
-        return null;
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.AddAll<Map<K,V>>(collection)));
     }
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> insert(final int position, final Map<K,V>... newElements) {
-        return null;
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.Insert<Map<K,V>>(position, newElements)));
     }
 
 
@@ -129,7 +129,7 @@ public class Level0ArrayOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Map<K,V>[] get() {
-        return null;
+        return endIf().get();
     }
 
 

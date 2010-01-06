@@ -91,7 +91,7 @@ public class Level2ArrayOfSetSelectedElementsSelectedElementsOperatorImpl<T> ext
 
 
     public Set<T>[] get() {
-        return null;
+        return endFor().get();
     }
 
 

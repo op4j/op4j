@@ -75,12 +75,12 @@ public class Level2MapOfMapEntriesSelectedValueOperatorImpl<K1,K2,V> extends Abs
 
 
     public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> removeMatching(final IEvaluator<Boolean,? super Entry<K2,V>> eval) {
-        return null;
+        return new Level2MapOfMapEntriesSelectedValueOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.RemoveMatching<K2,V>(eval)));
     }
 
 
     public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> removeNotMatching(final IEvaluator<Boolean,? super Entry<K2,V>> eval) {
-        return null;
+        return new Level2MapOfMapEntriesSelectedValueOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.RemoveNotMatching<K2,V>(eval)));
     }
 
 
@@ -151,7 +151,7 @@ public class Level2MapOfMapEntriesSelectedValueOperatorImpl<K1,K2,V> extends Abs
 
 
     public Map<K1,Map<K2,V>> get() {
-        return null;
+        return endOn().get();
     }
 
 

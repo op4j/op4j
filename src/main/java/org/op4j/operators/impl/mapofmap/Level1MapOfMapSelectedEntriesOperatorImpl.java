@@ -84,7 +84,7 @@ public class Level1MapOfMapSelectedEntriesOperatorImpl<K1,K2,V> extends Abstract
 
 
     public Map<K1,Map<K2,V>> get() {
-        return null;
+        return endFor().get();
     }
 
 

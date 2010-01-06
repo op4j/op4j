@@ -52,7 +52,7 @@ public class Level3MapOfMapEntriesValueSelectedEntriesSelectedOperatorImpl<K1,K2
 
 
     public Map<K1,Map<K2,V>> get() {
-        return null;
+        return endIf().get();
     }
 
 

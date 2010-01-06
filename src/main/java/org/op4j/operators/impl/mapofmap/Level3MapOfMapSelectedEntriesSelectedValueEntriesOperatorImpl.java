@@ -84,7 +84,7 @@ public class Level3MapOfMapSelectedEntriesSelectedValueEntriesOperatorImpl<K1,K2
 
 
     public Map<K1,Map<K2,V>> get() {
-        return null;
+        return endFor().get();
     }
 
 

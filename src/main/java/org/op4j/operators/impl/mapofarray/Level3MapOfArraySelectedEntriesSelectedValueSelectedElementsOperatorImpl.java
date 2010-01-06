@@ -96,7 +96,7 @@ public class Level3MapOfArraySelectedEntriesSelectedValueSelectedElementsOperato
 
 
     public Map<K,V[]> get() {
-        return null;
+        return endFor().get();
     }
 
 

@@ -44,7 +44,7 @@ public class Level2SetOfArraySelectedElementsSelectedElementsSelectedOperatorImp
 
 
     public Set<T[]> get() {
-        return null;
+        return endIf().get();
     }
 
 

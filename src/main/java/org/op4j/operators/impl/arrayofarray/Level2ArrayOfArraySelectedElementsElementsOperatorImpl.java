@@ -95,7 +95,7 @@ public class Level2ArrayOfArraySelectedElementsElementsOperatorImpl<T> extends A
 
 
     public T[][] get() {
-        return null;
+        return endFor().get();
     }
 
 
