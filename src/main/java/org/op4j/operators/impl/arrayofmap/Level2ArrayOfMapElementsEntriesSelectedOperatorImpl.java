@@ -32,12 +32,12 @@ public class Level2ArrayOfMapElementsEntriesSelectedOperatorImpl<K,V> extends Ab
 
 
     public Level3ArrayOfMapElementsEntriesSelectedKeyOperator<K,V> onKey() {
-        return null;
+        return new Level3ArrayOfMapElementsEntriesSelectedKeyOperatorImpl<K,V>(getTarget().iterateIndex(0));
     }
 
 
     public Level3ArrayOfMapElementsEntriesSelectedValueOperator<K,V> onValue() {
-        return null;
+        return new Level3ArrayOfMapElementsEntriesSelectedValueOperatorImpl<K,V>(getTarget().iterateIndex(1));
     }
 
 

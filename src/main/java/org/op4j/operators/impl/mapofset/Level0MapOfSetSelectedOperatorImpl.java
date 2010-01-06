@@ -44,37 +44,37 @@ public class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOperatorImp
 
 
     public Level1MapOfSetSelectedEntriesOperator<K,V> forEachEntry() {
-        return null;
+        return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().iterate());
     }
 
 
     public Level0MapOfSetSelectedOperator<K,V> insertAll(final int position, final Map<K,Set<V>> map) {
-        return null;
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.InsertAll<K,Set<V>>(position, map)));
     }
 
 
     public Level0MapOfSetSelectedOperator<K,V> removeKeys(final K... keys) {
-        return null;
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveKeys<K,Set<V>>(keys)));
     }
 
 
     public Level0MapOfSetSelectedOperator<K,V> removeKeysNot(final K... keys) {
-        return null;
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveKeysNot<K,Set<V>>(keys)));
     }
 
 
     public Level0MapOfSetSelectedOperator<K,V> put(final K newKey, final Set<V> newValue) {
-        return null;
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.Put<K,Set<V>>(newKey, newValue)));
     }
 
 
     public Level0MapOfSetSelectedOperator<K,V> putAll(final Map<K,Set<V>> map) {
-        return null;
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.PutAll<K,Set<V>>(map)));
     }
 
 
     public Level0MapOfSetSelectedOperator<K,V> insert(final int position, final K newKey, final Set<V> newValue) {
-        return null;
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.Insert<K,Set<V>>(position, newKey, newValue)));
     }
 
 

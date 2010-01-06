@@ -65,12 +65,12 @@ public class Level2ListOfMapSelectedElementsSelectedEntriesOperatorImpl<K,V> ext
 
 
     public Level3ListOfMapSelectedElementsSelectedEntriesKeyOperator<K,V> onKey() {
-        return null;
+        return new Level3ListOfMapSelectedElementsSelectedEntriesKeyOperatorImpl<K,V>(getTarget().iterateIndex(0));
     }
 
 
     public Level3ListOfMapSelectedElementsSelectedEntriesValueOperator<K,V> onValue() {
-        return null;
+        return new Level3ListOfMapSelectedElementsSelectedEntriesValueOperatorImpl<K,V>(getTarget().iterateIndex(1));
     }
 
 

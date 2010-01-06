@@ -48,37 +48,37 @@ public class Level0MapOfArraySelectedOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Level1MapOfArraySelectedEntriesOperator<K,V> forEachEntry() {
-        return null;
+        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(this.arrayOf, getTarget().iterate());
     }
 
 
     public Level0MapOfArraySelectedOperator<K,V> insertAll(final int position, final Map<K,V[]> map) {
-        return null;
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(new MapFuncs.InsertAll<K,V[]>(position, map)));
     }
 
 
     public Level0MapOfArraySelectedOperator<K,V> removeKeys(final K... keys) {
-        return null;
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(new MapFuncs.RemoveKeys<K,V[]>(keys)));
     }
 
 
     public Level0MapOfArraySelectedOperator<K,V> removeKeysNot(final K... keys) {
-        return null;
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(new MapFuncs.RemoveKeysNot<K,V[]>(keys)));
     }
 
 
     public Level0MapOfArraySelectedOperator<K,V> put(final K newKey, final V[] newValue) {
-        return null;
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(new MapFuncs.Put<K,V[]>(newKey, newValue)));
     }
 
 
     public Level0MapOfArraySelectedOperator<K,V> putAll(final Map<K,V[]> map) {
-        return null;
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(new MapFuncs.PutAll<K,V[]>(map)));
     }
 
 
     public Level0MapOfArraySelectedOperator<K,V> insert(final int position, final K newKey, final V[] newValue) {
-        return null;
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(new MapFuncs.Insert<K,V[]>(position, newKey, newValue)));
     }
 
 

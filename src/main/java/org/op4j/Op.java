@@ -387,7 +387,7 @@ public final class Op {
         
         System.out.println(printArray(Op.onArrayOfArray(stringsStrings1).forEach().forEach().ifIndex(0).eval(Ognl.forString("#target + ' Mundo'")).get()));
         
-/*        
+        
         
         System.out.println(Op.onList(stringsList1).get());
         System.out.println(Op.onList(stringsList1).forEach().get());
@@ -684,8 +684,10 @@ public final class Op {
 
         System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().extractKeys().get()));
         System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().extractValues().get()));
-        
-        System.out.println(Op.onList(stringsList1).forEach().ifNotNull().convert(ToString.fromObject()).get());
+
+        System.out.println("***___****___****");
+        System.out.println(Op.onList(stringsList1).forEach().ifNotNull().exec(StringFuncs.toUpperCase()).get());
+        System.out.println("***___****___****");
         
         System.out.println(Op.onAll("hello", "goodbye").eval(Ognl.forString("#target + ' world!'")).getAsList());
         
@@ -725,7 +727,7 @@ public final class Op {
         	Op.buildList(Types.MAP_OF_STRING_STRING).add(map1).add(map2).get();
         
         System.out.println(printArray(Op.onListOfMap(listOfMapOfStringString1).toArrayOfMap().get()));
-*/    
+    
     }
     
     

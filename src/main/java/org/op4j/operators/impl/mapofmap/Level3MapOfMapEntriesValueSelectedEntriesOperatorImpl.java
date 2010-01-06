@@ -64,12 +64,12 @@ public class Level3MapOfMapEntriesValueSelectedEntriesOperatorImpl<K1,K2,V> exte
 
 
     public Level4MapOfMapEntriesValueSelectedEntriesKeyOperator<K1,K2,V> onKey() {
-        return null;
+        return new Level4MapOfMapEntriesValueSelectedEntriesKeyOperatorImpl<K1,K2,V>(getTarget().iterateIndex(0));
     }
 
 
     public Level4MapOfMapEntriesValueSelectedEntriesValueOperator<K1,K2,V> onValue() {
-        return null;
+        return new Level4MapOfMapEntriesValueSelectedEntriesValueOperatorImpl<K1,K2,V>(getTarget().iterateIndex(1));
     }
 
 

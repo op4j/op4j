@@ -32,12 +32,12 @@ public class Level1MapEntriesSelectedOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Level2MapEntriesSelectedKeyOperator<K,V> onKey() {
-        return null;
+        return new Level2MapEntriesSelectedKeyOperatorImpl<K,V>(getTarget().iterateIndex(0));
     }
 
 
     public Level2MapEntriesSelectedValueOperator<K,V> onValue() {
-        return null;
+        return new Level2MapEntriesSelectedValueOperatorImpl<K,V>(getTarget().iterateIndex(1));
     }
 
 

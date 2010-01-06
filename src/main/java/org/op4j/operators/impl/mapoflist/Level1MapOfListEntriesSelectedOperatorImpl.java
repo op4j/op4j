@@ -33,12 +33,12 @@ public class Level1MapOfListEntriesSelectedOperatorImpl<K,V> extends AbstractOpe
 
 
     public Level2MapOfListEntriesSelectedKeyOperator<K,V> onKey() {
-        return null;
+        return new Level2MapOfListEntriesSelectedKeyOperatorImpl<K,V>(getTarget().iterateIndex(0));
     }
 
 
     public Level2MapOfListEntriesSelectedValueOperator<K,V> onValue() {
-        return null;
+        return new Level2MapOfListEntriesSelectedValueOperatorImpl<K,V>(getTarget().iterateIndex(1));
     }
 
 

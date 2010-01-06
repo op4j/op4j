@@ -33,12 +33,12 @@ public class Level2SetOfMapElementsSelectedEntriesSelectedOperatorImpl<K,V> exte
 
 
     public Level3SetOfMapElementsSelectedEntriesSelectedKeyOperator<K,V> onKey() {
-        return null;
+        return new Level3SetOfMapElementsSelectedEntriesSelectedKeyOperatorImpl<K,V>(getTarget().iterateIndex(0));
     }
 
 
     public Level3SetOfMapElementsSelectedEntriesSelectedValueOperator<K,V> onValue() {
-        return null;
+        return new Level3SetOfMapElementsSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().iterateIndex(1));
     }
 
 

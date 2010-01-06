@@ -90,22 +90,22 @@ public class Level2MapOfMapSelectedEntriesSelectedValueOperatorImpl<K1,K2,V> ext
 
 
     public Level3MapOfMapSelectedEntriesSelectedValueEntriesOperator<K1,K2,V> forEachEntry() {
-        return null;
+        return new Level3MapOfMapSelectedEntriesSelectedValueEntriesOperatorImpl<K1,K2,V>(getTarget().iterate());
     }
 
 
     public Level2MapOfMapSelectedEntriesSelectedValueOperator<K1,K2,V> insertAll(final int position, final Map<K2,V> map) {
-        return null;
+        return new Level2MapOfMapSelectedEntriesSelectedValueOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.InsertAll<K2,V>(position, map)));
     }
 
 
     public Level2MapOfMapSelectedEntriesSelectedValueOperator<K1,K2,V> removeKeys(final K2... keys) {
-        return null;
+        return new Level2MapOfMapSelectedEntriesSelectedValueOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.RemoveKeys<K2,V>(keys)));
     }
 
 
     public Level2MapOfMapSelectedEntriesSelectedValueOperator<K1,K2,V> removeKeysNot(final K2... keys) {
-        return null;
+        return new Level2MapOfMapSelectedEntriesSelectedValueOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.RemoveKeysNot<K2,V>(keys)));
     }
 
 
@@ -115,17 +115,17 @@ public class Level2MapOfMapSelectedEntriesSelectedValueOperatorImpl<K1,K2,V> ext
 
 
     public Level2MapOfMapSelectedEntriesSelectedValueOperator<K1,K2,V> put(final K2 newKey, final V newValue) {
-        return null;
+        return new Level2MapOfMapSelectedEntriesSelectedValueOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.Put<K2,V>(newKey, newValue)));
     }
 
 
     public Level2MapOfMapSelectedEntriesSelectedValueOperator<K1,K2,V> putAll(final Map<K2,V> map) {
-        return null;
+        return new Level2MapOfMapSelectedEntriesSelectedValueOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.PutAll<K2,V>(map)));
     }
 
 
     public Level2MapOfMapSelectedEntriesSelectedValueOperator<K1,K2,V> insert(final int position, final K2 newKey, final V newValue) {
-        return null;
+        return new Level2MapOfMapSelectedEntriesSelectedValueOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.Insert<K2,V>(position, newKey, newValue)));
     }
 
 

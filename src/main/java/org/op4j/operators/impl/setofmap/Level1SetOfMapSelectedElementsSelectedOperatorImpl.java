@@ -44,37 +44,37 @@ public class Level1SetOfMapSelectedElementsSelectedOperatorImpl<K,V> extends Abs
 
 
     public Level2SetOfMapSelectedElementsSelectedEntriesOperator<K,V> forEachEntry() {
-        return null;
+        return new Level2SetOfMapSelectedElementsSelectedEntriesOperatorImpl<K,V>(getTarget().iterate());
     }
 
 
     public Level1SetOfMapSelectedElementsSelectedOperator<K,V> insertAll(final int position, final Map<K,V> map) {
-        return null;
+        return new Level1SetOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.InsertAll<K,V>(position, map)));
     }
 
 
     public Level1SetOfMapSelectedElementsSelectedOperator<K,V> removeKeys(final K... keys) {
-        return null;
+        return new Level1SetOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveKeys<K,V>(keys)));
     }
 
 
     public Level1SetOfMapSelectedElementsSelectedOperator<K,V> removeKeysNot(final K... keys) {
-        return null;
+        return new Level1SetOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveKeysNot<K,V>(keys)));
     }
 
 
     public Level1SetOfMapSelectedElementsSelectedOperator<K,V> put(final K newKey, final V newValue) {
-        return null;
+        return new Level1SetOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.Put<K,V>(newKey, newValue)));
     }
 
 
     public Level1SetOfMapSelectedElementsSelectedOperator<K,V> putAll(final Map<K,V> map) {
-        return null;
+        return new Level1SetOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.PutAll<K,V>(map)));
     }
 
 
     public Level1SetOfMapSelectedElementsSelectedOperator<K,V> insert(final int position, final K newKey, final V newValue) {
-        return null;
+        return new Level1SetOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.Insert<K,V>(position, newKey, newValue)));
     }
 
 
