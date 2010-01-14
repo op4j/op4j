@@ -14,32 +14,32 @@ import org.op4j.target.Target;
 public class Level2SetOfArrayElementsSelectedElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level2SetOfArrayElementsSelectedElementsSelectedOperator<T> {
 
 
-    private final Type<? super T> arrayOf;
+    private final Type<T> type;
 
 
-    public Level2SetOfArrayElementsSelectedElementsSelectedOperatorImpl(final Type<? super T> arrayOf, final Target target) {
+    public Level2SetOfArrayElementsSelectedElementsSelectedOperatorImpl(final Type<T> type, final Target target) {
         super(target);
-        this.arrayOf = arrayOf;
+        this.type = type;
     }
 
 
     public Level2SetOfArrayElementsSelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return new Level2SetOfArrayElementsSelectedElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(eval));
+        return new Level2SetOfArrayElementsSelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(eval));
     }
 
 
     public Level2SetOfArrayElementsSelectedElementsOperator<T> endIf() {
-        return new Level2SetOfArrayElementsSelectedElementsOperatorImpl<T>(this.arrayOf, getTarget().endSelect());
+        return new Level2SetOfArrayElementsSelectedElementsOperatorImpl<T>(this.type, getTarget().endSelect());
     }
 
 
     public Level2SetOfArrayElementsSelectedElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level2SetOfArrayElementsSelectedElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(function));
+        return new Level2SetOfArrayElementsSelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(function));
     }
 
 
     public Level2SetOfArrayElementsSelectedElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return new Level2SetOfArrayElementsSelectedElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(converter));
+        return new Level2SetOfArrayElementsSelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(converter));
     }
 
 

@@ -184,24 +184,7 @@ public class Level0MapOfListOperatorImpl<K,V> extends AbstractOperatorImpl
     
     
     
-	public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super Map<K,List<V>>> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter));
-	}
-
-
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super Map<K,List<V>>> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval));
-    }
-
-
-    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,List<V>>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function));
-	}
-    
-    
-
-
-    public <X,Y> Level0MapOfListOperator<X,Y> asMapOfListOf(final Type<X> keyType, final Type<Y> valueType) {
+	public <X,Y> Level0MapOfListOperator<X,Y> asMapOfListOf(final Type<X> keyType, final Type<Y> valueType) {
         return generic().asMapOfListOf(keyType, valueType);
     }
 
@@ -258,6 +241,21 @@ public class Level0MapOfListOperatorImpl<K,V> extends AbstractOperatorImpl
 
     public Level0MapOfListSelectedOperator<K, V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K, List<V>>> eval) {
         return new Level0MapOfListSelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X, Y> Level0MapOfListOperator<X, Y> convert(final IConverter<? extends Map<X, ? extends List<Y>>, ? super Map<K, List<V>>> converter) {
+        return new Level0MapOfListOperatorImpl<X, Y>(getTarget().execute(converter));
+    }
+
+
+    public <X, Y> Level0MapOfListOperator<X, Y> eval(final IEvaluator<? extends Map<X, ? extends List<Y>>, ? super Map<K, List<V>>> eval) {
+        return new Level0MapOfListOperatorImpl<X, Y>(getTarget().execute(eval));
+    }
+
+
+    public <X, Y> Level0MapOfListOperator<X, Y> exec(final IFunction<? extends Map<X, ? extends List<Y>>, ? super Map<K, List<V>>> function) {
+        return new Level0MapOfListOperatorImpl<X, Y>(getTarget().execute(function));
     }
 
     

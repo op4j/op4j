@@ -129,7 +129,7 @@ public class Level1SetOfSetSelectedElementsOperatorImpl<T> extends AbstractOpera
     }
 
 
-    public Level1SetOfSetSelectedElementsOperator<T> eval(final IEvaluator<? extends Set<T>,? super Set<T>> eval) {
+    public Level1SetOfSetSelectedElementsOperator<T> eval(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval) {
         return new Level1SetOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(eval));
     }
 
@@ -154,7 +154,7 @@ public class Level1SetOfSetSelectedElementsOperatorImpl<T> extends AbstractOpera
     }
 
 
-    public Level1SetOfSetSelectedElementsOperator<T> exec(final IFunction<? extends Set<T>,? super Set<T>> function) {
+    public Level1SetOfSetSelectedElementsOperator<T> exec(final IFunction<? extends Set<? extends T>,? super Set<T>> function) {
         return new Level1SetOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(function));
     }
 
@@ -170,7 +170,7 @@ public class Level1SetOfSetSelectedElementsOperatorImpl<T> extends AbstractOpera
     }
 
 
-    public Level1SetOfSetSelectedElementsOperator<T> convert(final IConverter<? extends Set<T>,? super Set<T>> converter) {
+    public Level1SetOfSetSelectedElementsOperator<T> convert(final IConverter<? extends Set<? extends T>,? super Set<T>> converter) {
         return new Level1SetOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(converter));
     }
 

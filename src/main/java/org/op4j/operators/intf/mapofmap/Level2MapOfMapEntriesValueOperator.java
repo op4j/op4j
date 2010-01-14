@@ -26,13 +26,10 @@ import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.intf.map.Level2MapEntriesValueOperator;
 import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.operators.qualities.CastableToMapOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
+import org.op4j.operators.qualities.ExecutableMapOperator;
 import org.op4j.operators.qualities.ExtractableMapOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
@@ -53,9 +50,7 @@ public interface Level2MapOfMapEntriesValueOperator<K1,K2,V>
 		        NavigatingMapEntryOperator,
 		        CastableToMapOperator,
 		        SortableOperator<Map.Entry<K2,V>>,
-                ExecutableOperator<Map<K2,V>>,
-                ConvertibleOperator<Map<K2,V>>,
-                EvaluableOperator<Map<K2,V>>,
+                ExecutableMapOperator<K2,V>,
                 ModifiableMapOperator<K2,V>,
                 SelectableOperator<Map<K2,V>>,
                 ExtractableMapOperator<K2,V> {
@@ -98,11 +93,11 @@ public interface Level2MapOfMapEntriesValueOperator<K1,K2,V>
     
     
     
-    public <X> Level2MapEntriesValueOperator<K1,X> convert(final IConverter<X,? super Map<K2,V>> converter);
+    public <X2,Y> Level2MapOfMapEntriesValueOperator<K1,X2,Y> convert(final IConverter<? extends Map<X2,Y>,? super Map<K2,V>> converter);
     
-    public <X> Level2MapEntriesValueOperator<K1,X> eval(final IEvaluator<X,? super Map<K2,V>> eval);
+    public <X2,Y> Level2MapOfMapEntriesValueOperator<K1,X2,Y> eval(final IEvaluator<? extends Map<X2,Y>,? super Map<K2,V>> eval);
 
-    public <X> Level2MapEntriesValueOperator<K1,X> exec(final IFunction<X, ? super Map<K2,V>> function);
+    public <X2,Y> Level2MapOfMapEntriesValueOperator<K1,X2,Y> exec(final IFunction<? extends Map<X2,Y>, ? super Map<K2,V>> function);
     
     
     public <X,Y> Level2MapOfMapEntriesValueOperator<K1,X,Y> asMapOf(final Type<X> keyType, final Type<Y> valueType);

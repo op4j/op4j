@@ -34,11 +34,9 @@ import org.op4j.functions.converters.ToSet;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
-import org.op4j.operators.impl.array.Level1ArrayElementsOperatorImpl;
 import org.op4j.operators.impl.arrayofarray.Level1ArrayOfArrayElementsOperatorImpl;
 import org.op4j.operators.impl.arrayofmap.Level1ArrayOfMapElementsOperatorImpl;
 import org.op4j.operators.impl.arrayofset.Level1ArrayOfSetElementsOperatorImpl;
-import org.op4j.operators.intf.array.Level1ArrayElementsOperator;
 import org.op4j.operators.intf.arrayofarray.Level1ArrayOfArrayElementsOperator;
 import org.op4j.operators.intf.arrayoflist.Level0ArrayOfListOperator;
 import org.op4j.operators.intf.arrayoflist.Level1ArrayOfListElementsOperator;
@@ -157,7 +155,7 @@ public class Level1ArrayOfListElementsOperatorImpl<T> extends AbstractOperatorIm
 
 
     public Level1ArrayOfArrayElementsOperator<T> toArray(final Type<T> of) {
-        return new Level1ArrayOfArrayElementsOperatorImpl<T>(of, getTarget().execute(new ToArray.FromCollection<T>(of)));
+        return new Level1ArrayOfArrayElementsOperatorImpl<T>(Types.arrayOf(of), getTarget().execute(new ToArray.FromCollection<T>(of)));
     }
 
 
@@ -192,24 +190,7 @@ public class Level1ArrayOfListElementsOperatorImpl<T> extends AbstractOperatorIm
     
     
     
-	public <X> Level1ArrayElementsOperator<X> convert(final IConverter<X, ? super List<T>> converter) {
-        return new Level1ArrayElementsOperatorImpl<X>(converter.getResultType(), getTarget().execute(converter));
-	}
-
-
-    public <X> Level1ArrayElementsOperator<X> eval(final IEvaluator<X, ? super List<T>> eval) {
-        return new Level1ArrayElementsOperatorImpl<X>(eval.getResultType(), getTarget().execute(eval));
-    }
-
-
-    public <X> Level1ArrayElementsOperator<X> exec(final IFunction<X, ? super List<T>> function) {
-        return new Level1ArrayElementsOperatorImpl<X>(function.getResultType(), getTarget().execute(function));
-	}
-
-    
-    
-
-    public <X> Level1ArrayOfListElementsOperator<X> asListOf(final Type<X> type) {
+	public <X> Level1ArrayOfListElementsOperator<X> asListOf(final Type<X> type) {
         return endFor().asArrayOfListOf(type).forEach();
     }
 
@@ -266,6 +247,21 @@ public class Level1ArrayOfListElementsOperatorImpl<T> extends AbstractOperatorIm
 
     public Level1ArrayOfListElementsSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
         return new Level1ArrayOfListElementsSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X> Level1ArrayOfListElementsOperator<X> convert(final IConverter<? extends List<X>, ? super List<T>> converter) {
+        return new Level1ArrayOfListElementsOperatorImpl<X>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level1ArrayOfListElementsOperator<X> eval(final IEvaluator<? extends List<X>, ? super List<T>> eval) {
+        return new Level1ArrayOfListElementsOperatorImpl<X>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level1ArrayOfListElementsOperator<X> exec(final IFunction<? extends List<X>, ? super List<T>> function) {
+        return new Level1ArrayOfListElementsOperatorImpl<X>(getTarget().execute(function));
     }
     
     

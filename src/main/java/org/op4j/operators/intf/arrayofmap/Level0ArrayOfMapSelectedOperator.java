@@ -27,10 +27,8 @@ import java.util.Map;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableArrayOfMapSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -48,10 +46,8 @@ public interface Level0ArrayOfMapSelectedOperator<K,V>
                 NavigableCollectionOperator<Map<K,V>>,
 		        DistinguishableOperator,
 		        SortableOperator<Map<K,V>>,
-                ExecutableSelectedOperator<Map<K,V>[]>,
-                ConvertibleSelectedOperator<Map<K,V>[]>,
+                ExecutableArrayOfMapSelectedOperator<K,V>,
                 SelectedOperator<Map<K,V>[]>,
-                EvaluableSelectedOperator<Map<K,V>[]>,
                 ModifiableCollectionOperator<Map<K,V>> {
 
 
@@ -84,10 +80,10 @@ public interface Level0ArrayOfMapSelectedOperator<K,V>
     
     
     
-    public Level0ArrayOfMapSelectedOperator<K,V> convert(final IConverter<? extends Map<K,V>[], ? super Map<K,V>[]> converter);
+    public Level0ArrayOfMapSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends V>[], ? super Map<K,V>[]> converter);
     
-    public Level0ArrayOfMapSelectedOperator<K,V> eval(final IEvaluator<? extends Map<K,V>[], ? super Map<K,V>[]> eval);
+    public Level0ArrayOfMapSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V>[], ? super Map<K,V>[]> eval);
 
-    public Level0ArrayOfMapSelectedOperator<K,V> exec(final IFunction<? extends Map<K,V>[], ? super Map<K,V>[]> function);
+    public Level0ArrayOfMapSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V>[], ? super Map<K,V>[]> function);
     
 }

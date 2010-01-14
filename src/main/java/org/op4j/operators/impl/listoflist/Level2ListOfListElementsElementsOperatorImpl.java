@@ -50,24 +50,8 @@ public class Level2ListOfListElementsElementsOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public <X> Level2ListOfListElementsElementsOperator<X> convert(final IConverter<X, ? super T> converter) {
-        return new Level2ListOfListElementsElementsOperatorImpl<X>(getTarget().execute(converter));
-    }
-
-
-
     public Level1ListOfListElementsOperator<T> endFor() {
         return new Level1ListOfListElementsOperatorImpl<T>(getTarget().endIterate(Structure.LIST, null));
-    }
-
-
-    public <X> Level2ListOfListElementsElementsOperator<X> eval(final IEvaluator<X, ? super T> eval) {
-        return new Level2ListOfListElementsElementsOperatorImpl<X>(getTarget().execute(eval));
-    }
-
-
-    public <X> Level2ListOfListElementsElementsOperator<X> exec(final IFunction<X, ? super T> function) {
-        return new Level2ListOfListElementsElementsOperatorImpl<X>(getTarget().execute(function));
     }
 
 
@@ -132,6 +116,21 @@ public class Level2ListOfListElementsElementsOperatorImpl<T> extends AbstractOpe
 
     public Level2ListOfListElementsElementsSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval) {
         return new Level2ListOfListElementsElementsSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X> Level2ListOfListElementsElementsOperator<X> convert(final IConverter<X, ? super T> converter) {
+        return new Level2ListOfListElementsElementsOperatorImpl<X>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level2ListOfListElementsElementsOperator<X> eval(final IEvaluator<X, ? super T> eval) {
+        return new Level2ListOfListElementsElementsOperatorImpl<X>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level2ListOfListElementsElementsOperator<X> exec(final IFunction<X, ? super T> function) {
+        return new Level2ListOfListElementsElementsOperatorImpl<X>(getTarget().execute(function));
     }
 
 }

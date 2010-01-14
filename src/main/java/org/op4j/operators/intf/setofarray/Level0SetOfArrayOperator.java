@@ -42,7 +42,6 @@ import org.op4j.operators.intf.setoflist.Level0SetOfListOperator;
 import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
 import org.op4j.operators.qualities.CastableToSetOfArrayOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
 import org.op4j.operators.qualities.ConvertibleToArrayOfArrayOperator;
 import org.op4j.operators.qualities.ConvertibleToArrayOfListOperator;
 import org.op4j.operators.qualities.ConvertibleToArrayOfMapOperator;
@@ -54,8 +53,7 @@ import org.op4j.operators.qualities.ConvertibleToListOfSetOperator;
 import org.op4j.operators.qualities.ConvertibleToSetOfListOperator;
 import org.op4j.operators.qualities.ConvertibleToSetOfMapOperator;
 import org.op4j.operators.qualities.ConvertibleToSetOfSetOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
+import org.op4j.operators.qualities.ExecutableSetOfArrayOperator;
 import org.op4j.operators.qualities.FlattenableAsSetOperator;
 import org.op4j.operators.qualities.GenerizableOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
@@ -78,9 +76,7 @@ public interface Level0SetOfArrayOperator<T>
                 FlattenableAsSetOperator<T>,
 		        ModifiableCollectionOperator<T[]>,
 		        GenerizableOperator<Set<T[]>>,
-                ExecutableOperator<Set<T[]>>,
-                ConvertibleOperator<Set<T[]>>,
-                EvaluableOperator<Set<T[]>>,
+                ExecutableSetOfArrayOperator<T>,
                 SelectableOperator<Set<T[]>>,
                 ConvertibleToArrayOfArrayOperator<T>,
                 ConvertibleToArrayOfListOperator<T>,
@@ -163,11 +159,11 @@ public interface Level0SetOfArrayOperator<T>
 
 
     
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Set<T[]>> converter);
+    public <X> Level0SetOfArrayOperator<X> convert(final IConverter<? extends Set<X[]>,? super Set<T[]>> converter);
     
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Set<T[]>> eval);
+    public <X> Level0SetOfArrayOperator<X> eval(final IEvaluator<? extends Set<X[]>,? super Set<T[]>> eval);
 
-    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Set<T[]>> function);
+    public <X> Level0SetOfArrayOperator<X> exec(final IFunction<? extends Set<X[]>,? super Set<T[]>> function);
     
     
     public <X> Level0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type);

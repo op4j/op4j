@@ -26,8 +26,6 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
-import org.op4j.operators.impl.arrayoflist.Level2ArrayOfListElementsElementsOperatorImpl;
-import org.op4j.operators.intf.arrayoflist.Level2ArrayOfListElementsElementsOperator;
 import org.op4j.operators.intf.arrayofmap.Level1ArrayOfMapElementsOperator;
 import org.op4j.operators.intf.arrayofmap.Level2ArrayOfMapElementsEntriesOperator;
 import org.op4j.operators.intf.arrayofmap.Level2ArrayOfMapElementsEntriesSelectedOperator;
@@ -75,21 +73,6 @@ public class Level2ArrayOfMapElementsEntriesOperatorImpl<K,V> extends AbstractOp
     
 
     
-    public <X> Level2ArrayOfListElementsElementsOperator<X> convert(final IConverter<X, ? super Entry<K, V>> converter) {
-        return new Level2ArrayOfListElementsElementsOperatorImpl<X>(getTarget().execute(converter));
-	}
-
-
-	public <X> Level2ArrayOfListElementsElementsOperator<X> eval(final IEvaluator<X, ? super Entry<K, V>> eval) {
-        return new Level2ArrayOfListElementsElementsOperatorImpl<X>(getTarget().execute(eval));
-	}
-
-
-	public <X> Level2ArrayOfListElementsElementsOperator<X> exec(final IFunction<X, ? super Entry<K, V>> function) {
-        return new Level2ArrayOfListElementsElementsOperatorImpl<X>(getTarget().execute(function));
-	}
-
-
     public Level2ArrayOfMapElementsEntriesSelectedOperator<K, V> ifIndex(final int... indices) {
         return new Level2ArrayOfMapElementsEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
     }
@@ -118,6 +101,22 @@ public class Level2ArrayOfMapElementsEntriesOperatorImpl<K,V> extends AbstractOp
     public Level2ArrayOfMapElementsEntriesSelectedOperator<K, V> ifNotMatching(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
         return new Level2ArrayOfMapElementsEntriesSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
+
+
+    public <X, Y> Level2ArrayOfMapElementsEntriesOperator<X, Y> convert(final IConverter<? extends Entry<X, Y>, ? super Entry<K, V>> converter) {
+        return new Level2ArrayOfMapElementsEntriesOperatorImpl<X, Y>(getTarget().execute(converter));
+    }
+
+
+    public <X, Y> Level2ArrayOfMapElementsEntriesOperator<X, Y> eval(final IEvaluator<? extends Entry<X, Y>, ? super Entry<K, V>> eval) {
+        return new Level2ArrayOfMapElementsEntriesOperatorImpl<X, Y>(getTarget().execute(eval));
+    }
+
+
+    public <X, Y> Level2ArrayOfMapElementsEntriesOperator<X, Y> exec(final IFunction<? extends Entry<X, Y>, ? super Entry<K, V>> function) {
+        return new Level2ArrayOfMapElementsEntriesOperatorImpl<X, Y>(getTarget().execute(function));
+    }
+
     
     
 }

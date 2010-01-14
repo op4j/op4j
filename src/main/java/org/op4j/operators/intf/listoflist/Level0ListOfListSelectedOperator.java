@@ -26,10 +26,8 @@ import java.util.List;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableListOfListSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -48,10 +46,8 @@ public interface Level0ListOfListSelectedOperator<T>
                 DistinguishableOperator,
                 SortableOperator<List<T>>,
                 ModifiableCollectionOperator<List<T>>,
-                ExecutableSelectedOperator<List<List<T>>>,
-                ConvertibleSelectedOperator<List<List<T>>>,
-                SelectedOperator<List<List<T>>>,
-                EvaluableSelectedOperator<List<List<T>>> {
+                ExecutableListOfListSelectedOperator<T>,
+                SelectedOperator<List<List<T>>> {
 
 
 
@@ -84,11 +80,11 @@ public interface Level0ListOfListSelectedOperator<T>
 
 
     
-    public Level0ListOfListSelectedOperator<T> convert(final IConverter<? extends List<List<T>>,? super List<List<T>>> converter);
+    public Level0ListOfListSelectedOperator<T> convert(final IConverter<? extends List<? extends List<? extends T>>,? super List<List<T>>> converter);
     
-    public Level0ListOfListSelectedOperator<T> eval(final IEvaluator<? extends List<List<T>>,? super List<List<T>>> eval);
+    public Level0ListOfListSelectedOperator<T> eval(final IEvaluator<? extends List<? extends List<? extends T>>,? super List<List<T>>> eval);
 
-    public Level0ListOfListSelectedOperator<T> exec(final IFunction<? extends List<List<T>>, ? super List<List<T>>> function);
+    public Level0ListOfListSelectedOperator<T> exec(final IFunction<? extends List<? extends List<? extends T>>, ? super List<List<T>>> function);
 
     
 }

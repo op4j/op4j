@@ -44,7 +44,7 @@ public class Level1MapOfSetSelectedEntriesOperatorImpl<K,V> extends AbstractOper
     }
 
 
-    public Level1MapOfSetSelectedEntriesOperator<K,V> eval(final IEvaluator<? extends Entry<K,Set<V>>,? super Entry<K,Set<V>>> eval) {
+    public Level1MapOfSetSelectedEntriesOperator<K,V> eval(final IEvaluator<? extends Entry<? extends K,? extends Set<? extends V>>,? super Entry<K,Set<V>>> eval) {
         return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
@@ -74,12 +74,12 @@ public class Level1MapOfSetSelectedEntriesOperatorImpl<K,V> extends AbstractOper
     }
 
 
-    public Level1MapOfSetSelectedEntriesOperator<K,V> exec(final IFunction<? extends Entry<K,Set<V>>,? super Entry<K,Set<V>>> function) {
+    public Level1MapOfSetSelectedEntriesOperator<K,V> exec(final IFunction<? extends Entry<? extends K,? extends Set<? extends V>>,? super Entry<K,Set<V>>> function) {
         return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
-    public Level1MapOfSetSelectedEntriesOperator<K,V> convert(final IConverter<? extends Entry<K,Set<V>>,? super Entry<K,Set<V>>> converter) {
+    public Level1MapOfSetSelectedEntriesOperator<K,V> convert(final IConverter<? extends Entry<? extends K,? extends Set<? extends V>>,? super Entry<K,Set<V>>> converter) {
         return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().execute(converter));
     }
 

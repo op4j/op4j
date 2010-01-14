@@ -14,32 +14,32 @@ import org.op4j.target.Target;
 public class Level3MapOfArraySelectedEntriesValueElementsSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level3MapOfArraySelectedEntriesValueElementsSelectedOperator<K,V> {
 
 
-    private final Type<? super V> arrayOf;
+    private final Type<V> type;
 
 
-    public Level3MapOfArraySelectedEntriesValueElementsSelectedOperatorImpl(final Type<? super V> arrayOf, final Target target) {
+    public Level3MapOfArraySelectedEntriesValueElementsSelectedOperatorImpl(final Type<V> type, final Target target) {
         super(target);
-        this.arrayOf = arrayOf;
+        this.type = type;
     }
 
 
     public Level3MapOfArraySelectedEntriesValueElementsSelectedOperator<K,V> eval(final IEvaluator<? extends V,? super V> eval) {
-        return new Level3MapOfArraySelectedEntriesValueElementsSelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(eval));
+        return new Level3MapOfArraySelectedEntriesValueElementsSelectedOperatorImpl<K,V>(this.type, getTarget().execute(eval));
     }
 
 
     public Level3MapOfArraySelectedEntriesValueElementsOperator<K,V> endIf() {
-        return new Level3MapOfArraySelectedEntriesValueElementsOperatorImpl<K,V>(this.arrayOf, getTarget().endSelect());
+        return new Level3MapOfArraySelectedEntriesValueElementsOperatorImpl<K,V>(this.type, getTarget().endSelect());
     }
 
 
     public Level3MapOfArraySelectedEntriesValueElementsSelectedOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
-        return new Level3MapOfArraySelectedEntriesValueElementsSelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(function));
+        return new Level3MapOfArraySelectedEntriesValueElementsSelectedOperatorImpl<K,V>(this.type, getTarget().execute(function));
     }
 
 
     public Level3MapOfArraySelectedEntriesValueElementsSelectedOperator<K,V> convert(final IConverter<? extends V,? super V> converter) {
-        return new Level3MapOfArraySelectedEntriesValueElementsSelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(converter));
+        return new Level3MapOfArraySelectedEntriesValueElementsSelectedOperatorImpl<K,V>(this.type, getTarget().execute(converter));
     }
 
 

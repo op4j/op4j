@@ -27,9 +27,7 @@ import java.util.Set;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableSetSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -46,9 +44,7 @@ public interface Level2MapOfSetSelectedEntriesSelectedValueSelectedOperator<K,V>
         extends UniqOperator<Map<K,Set<V>>>,
                 NavigableCollectionOperator<V>,
 		        SortableOperator<V>,
-                ExecutableSelectedOperator<Set<V>>,
-                ConvertibleSelectedOperator<Set<V>>,
-                EvaluableSelectedOperator<Set<V>>,
+                ExecutableSetSelectedOperator<V>,
                 ModifiableCollectionOperator<V>,
                 SelectedOperator<Set<V>> {
 
@@ -78,11 +74,11 @@ public interface Level2MapOfSetSelectedEntriesSelectedValueSelectedOperator<K,V>
     public Level2MapOfSetSelectedEntriesSelectedValueSelectedOperator<K,V> removeNulls();
 
     
-    public Level2MapOfSetSelectedEntriesSelectedValueSelectedOperator<K,V> convert(final IConverter<? extends Set<V>, ? super Set<V>> converter);
+    public Level2MapOfSetSelectedEntriesSelectedValueSelectedOperator<K,V> convert(final IConverter<? extends Set<? extends V>, ? super Set<V>> converter);
     
-    public Level2MapOfSetSelectedEntriesSelectedValueSelectedOperator<K,V> eval(final IEvaluator<? extends Set<V>, ? super Set<V>> eval);
+    public Level2MapOfSetSelectedEntriesSelectedValueSelectedOperator<K,V> eval(final IEvaluator<? extends Set<? extends V>, ? super Set<V>> eval);
 
-    public Level2MapOfSetSelectedEntriesSelectedValueSelectedOperator<K,V> exec(final IFunction<? extends Set<V>, ? super Set<V>> function);
+    public Level2MapOfSetSelectedEntriesSelectedValueSelectedOperator<K,V> exec(final IFunction<? extends Set<? extends V>, ? super Set<V>> function);
     
     
     

@@ -35,12 +35,10 @@ import org.op4j.operators.intf.mapofmap.Level0MapOfMapOperator;
 import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.operators.qualities.CastableToMapOfListOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
 import org.op4j.operators.qualities.ConvertibleToMapOfArrayOperator;
 import org.op4j.operators.qualities.ConvertibleToMapOfMapOperator;
 import org.op4j.operators.qualities.ConvertibleToMapOfSetOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
+import org.op4j.operators.qualities.ExecutableMapOfListOperator;
 import org.op4j.operators.qualities.ExtractableMapOperator;
 import org.op4j.operators.qualities.GenerizableOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
@@ -63,9 +61,7 @@ public interface Level0MapOfListOperator<K,V>
 		        ModifiableMapOperator<K,List<V>>,
                 ExtractableMapOperator<K,List<V>>,
 		        GenerizableOperator<Map<K,List<V>>>,
-                ExecutableOperator<Map<K,List<V>>>,
-                ConvertibleOperator<Map<K,List<V>>>,
-                EvaluableOperator<Map<K,List<V>>>,
+                ExecutableMapOfListOperator<K,V>,
                 SelectableOperator<Map<K,List<V>>>,
                 ConvertibleToMapOfArrayOperator<K,V>,
                 ConvertibleToMapOfSetOperator<K,V>,
@@ -118,11 +114,11 @@ public interface Level0MapOfListOperator<K,V>
     public Level0GenericUniqOperator<Map<K,List<V>>> generic();
     
     
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Map<K,List<V>>> converter);
+    public <X,Y> Level0MapOfListOperator<X,Y> convert(final IConverter<? extends Map<X,? extends List<Y>>,? super Map<K,List<V>>> converter);
     
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Map<K,List<V>>> eval);
+    public <X,Y> Level0MapOfListOperator<X,Y> eval(final IEvaluator<? extends Map<X,? extends List<Y>>,? super Map<K,List<V>>> eval);
 
-    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,List<V>>> function);
+    public <X,Y> Level0MapOfListOperator<X,Y> exec(final IFunction<? extends Map<X,? extends List<Y>>, ? super Map<K,List<V>>> function);
     
     
     public <X,Y> Level0MapOfListOperator<X,Y> asMapOfListOf(final Type<X> keyType, final Type<Y> valueType);

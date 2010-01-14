@@ -27,8 +27,6 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
 import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
 import org.op4j.operators.qualities.SelectableOperator;
@@ -45,8 +43,6 @@ import org.op4j.operators.qualities.UniqOperator;
 public interface Level3MapOfListEntriesValueElementsOperator<K,V>
         extends UniqOperator<Map<K,List<V>>>,
                 NavigatingCollectionOperator<V>,
-                ConvertibleOperator<V>,
-        		EvaluableOperator<V>,
         		ExecutableOperator<V>,
                 SelectableOperator<V>,
                 CastableToTypeOperator<V> {

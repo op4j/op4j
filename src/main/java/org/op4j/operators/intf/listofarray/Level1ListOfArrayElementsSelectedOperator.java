@@ -21,17 +21,16 @@ package org.op4j.operators.intf.listofarray;
 
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.List;
+import java.util.List;import org.javaruntype.type.Type;
+
 
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableArraySelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
-import org.op4j.operators.qualities.NavigableCollectionOperator;
+import org.op4j.operators.qualities.NavigableArrayOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -44,12 +43,10 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level1ListOfArrayElementsSelectedOperator<T>
         extends UniqOperator<List<T[]>>,
-                NavigableCollectionOperator<T>,
+                NavigableArrayOperator<T>,
     	        DistinguishableOperator,
 		        SortableOperator<T>,
-                ExecutableSelectedOperator<T[]>,
-                ConvertibleSelectedOperator<T[]>,
-                EvaluableSelectedOperator<T[]>,
+                ExecutableArraySelectedOperator<T>,
                 SelectedOperator<T[]>,
                 ModifiableCollectionOperator<T> {
 
@@ -59,7 +56,7 @@ public interface Level1ListOfArrayElementsSelectedOperator<T>
 
 
             
-    public Level2ListOfArrayElementsSelectedElementsOperator<T> forEach();
+    public Level2ListOfArrayElementsSelectedElementsOperator<T> forEach(final Type<T> elementType);
 
     public Level1ListOfArrayElementsSelectedOperator<T> distinct();
     

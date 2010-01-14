@@ -27,10 +27,8 @@ import java.util.Set;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableListOfSetSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -49,10 +47,8 @@ public interface Level0ListOfSetSelectedOperator<T>
                 DistinguishableOperator,
                 SortableOperator<Set<T>>,
                 ModifiableCollectionOperator<Set<T>>,
-                ExecutableSelectedOperator<List<Set<T>>>,
-                ConvertibleSelectedOperator<List<Set<T>>>,
-                SelectedOperator<List<Set<T>>>,
-                EvaluableSelectedOperator<List<Set<T>>> {
+                ExecutableListOfSetSelectedOperator<T>,
+                SelectedOperator<List<Set<T>>> {
 
 
 
@@ -85,11 +81,11 @@ public interface Level0ListOfSetSelectedOperator<T>
 
 
     
-    public Level0ListOfSetSelectedOperator<T> convert(final IConverter<? extends List<Set<T>>,? super List<Set<T>>> converter);
+    public Level0ListOfSetSelectedOperator<T> convert(final IConverter<? extends List<? extends Set<? extends T>>,? super List<Set<T>>> converter);
     
-    public Level0ListOfSetSelectedOperator<T> eval(final IEvaluator<? extends List<Set<T>>,? super List<Set<T>>> eval);
+    public Level0ListOfSetSelectedOperator<T> eval(final IEvaluator<? extends List<? extends Set<? extends T>>,? super List<Set<T>>> eval);
 
-    public Level0ListOfSetSelectedOperator<T> exec(final IFunction<? extends List<Set<T>>, ? super List<Set<T>>> function);
+    public Level0ListOfSetSelectedOperator<T> exec(final IFunction<? extends List<? extends Set<? extends T>>, ? super List<Set<T>>> function);
 
     
 }

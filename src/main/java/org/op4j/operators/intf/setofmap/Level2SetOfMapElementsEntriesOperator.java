@@ -25,10 +25,7 @@ import java.util.Set;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.intf.setoflist.Level2SetOfListElementsElementsOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
+import org.op4j.operators.qualities.ExecutableMapEntryOperator;
 import org.op4j.operators.qualities.NavigableMapEntryOperator;
 import org.op4j.operators.qualities.NavigatingMapOperator;
 import org.op4j.operators.qualities.SelectableMapEntryOperator;
@@ -45,9 +42,7 @@ import org.op4j.operators.qualities.UniqOperator;
 public interface Level2SetOfMapElementsEntriesOperator<K,V> 
 		extends UniqOperator<Set<Map<K,V>>>,
 		        NavigableMapEntryOperator,
-                ExecutableOperator<Map.Entry<K,V>>,
-                EvaluableOperator<Map.Entry<K,V>>,
-                ConvertibleOperator<Map.Entry<K,V>>,
+                ExecutableMapEntryOperator<K,V>,
                 SelectableMapEntryOperator<K, V>,
                 NavigatingMapOperator<K,V> {
 
@@ -65,10 +60,10 @@ public interface Level2SetOfMapElementsEntriesOperator<K,V>
     
     public Level1SetOfMapElementsOperator<K,V> endFor();
     
-    public <X> Level2SetOfListElementsElementsOperator<X> exec(final IFunction<X, ? super Map.Entry<K,V>> function);
+    public <X,Y> Level2SetOfMapElementsEntriesOperator<X,Y> exec(final IFunction<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> function);
     
-    public <X> Level2SetOfListElementsElementsOperator<X> eval(final IEvaluator<X,? super Map.Entry<K,V>> eval);
+    public <X,Y> Level2SetOfMapElementsEntriesOperator<X,Y> eval(final IEvaluator<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> eval);
     
-    public <X> Level2SetOfListElementsElementsOperator<X> convert(final IConverter<X,? super Map.Entry<K,V>> converter);
+    public <X,Y> Level2SetOfMapElementsEntriesOperator<X,Y> convert(final IConverter<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> converter);
                                     
 }

@@ -28,20 +28,17 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
-import org.op4j.operators.intf.set.Level1SetElementsOperator;
 import org.op4j.operators.intf.setoflist.Level1SetOfListElementsOperator;
 import org.op4j.operators.intf.setofmap.Level1SetOfMapElementsOperator;
 import org.op4j.operators.intf.setofset.Level1SetOfSetElementsOperator;
 import org.op4j.operators.qualities.CastableToArrayOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
 import org.op4j.operators.qualities.ConvertibleToListOperator;
 import org.op4j.operators.qualities.ConvertibleToMapOperator;
 import org.op4j.operators.qualities.ConvertibleToSetOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
+import org.op4j.operators.qualities.ExecutableArrayOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
-import org.op4j.operators.qualities.NavigableCollectionOperator;
+import org.op4j.operators.qualities.NavigableArrayOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.SortableOperator;
@@ -55,14 +52,12 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level1SetOfArrayElementsOperator<T>
         extends UniqOperator<Set<T[]>>,
-                NavigableCollectionOperator<T>,
+                NavigableArrayOperator<T>,
                 NavigatingCollectionOperator<T[]>,
 		        DistinguishableOperator,
 		        SortableOperator<T>,
 		        CastableToArrayOperator,
-                ExecutableOperator<T[]>,
-                ConvertibleOperator<T[]>,
-                EvaluableOperator<T[]>,
+                ExecutableArrayOperator<T>,
                 SelectableOperator<T[]>,
                 ModifiableCollectionOperator<T>,
                 ConvertibleToListOperator,
@@ -84,7 +79,7 @@ public interface Level1SetOfArrayElementsOperator<T>
 
 
     
-    public Level2SetOfArrayElementsElementsOperator<T> forEach();
+    public Level2SetOfArrayElementsElementsOperator<T> forEach(final Type<T> elementType);
     
     public Level0SetOfArrayOperator<T> endFor();
 
@@ -115,11 +110,11 @@ public interface Level1SetOfArrayElementsOperator<T>
     public <K,V> Level1SetOfMapElementsOperator<K,V> toMap(final IMapBuilder<K,V,? super T> mapBuild);
 
     
-    public <X> Level1SetElementsOperator<X> convert(final IConverter<X,? super T[]> converter);
+    public <X> Level1SetOfArrayElementsOperator<X> convert(final IConverter<X[],? super T[]> converter);
     
-    public <X> Level1SetElementsOperator<X> eval(final IEvaluator<X,? super T[]> eval);
+    public <X> Level1SetOfArrayElementsOperator<X> eval(final IEvaluator<X[],? super T[]> eval);
 
-    public <X> Level1SetElementsOperator<X> exec(final IFunction<X, ? super T[]> function);
+    public <X> Level1SetOfArrayElementsOperator<X> exec(final IFunction<X[], ? super T[]> function);
     
     
     public <X> Level1SetOfArrayElementsOperator<X> asArrayOf(final Type<X> type);

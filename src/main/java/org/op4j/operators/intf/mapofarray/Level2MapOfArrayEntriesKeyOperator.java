@@ -26,8 +26,6 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
 import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
 import org.op4j.operators.qualities.SelectableOperator;
@@ -46,9 +44,7 @@ public interface Level2MapOfArrayEntriesKeyOperator<K,V>
                 NavigatingMapEntryOperator,
                 CastableToTypeOperator<K>,
                 ExecutableOperator<K>, 
-                EvaluableOperator<K>, 
-                SelectableOperator<K>,
-                ConvertibleOperator<K> {
+                SelectableOperator<K> {
 
 
 

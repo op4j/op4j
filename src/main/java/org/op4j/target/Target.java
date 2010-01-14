@@ -66,6 +66,17 @@ public abstract class Target {
     
     public abstract Object getObject();
 
+    public boolean isAnyTargetNull() {
+        final List<NodeTarget> executionNodes = getExecutionNodes();
+        for (final NodeTarget executionNode : executionNodes) {
+            if (executionNode instanceof NullNodeTarget) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
     abstract Target doIterate();
     abstract Target doIterateIndex(final boolean desiredResult, final List<Integer> positions);
     abstract Target doIterateMapKeys(final boolean desiredResult, final List<Object> objects);

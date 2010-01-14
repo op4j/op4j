@@ -26,10 +26,8 @@ import java.util.List;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableArrayOfListSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -48,10 +46,8 @@ public interface Level0ArrayOfListSelectedOperator<T>
                 DistinguishableOperator,
                 SortableOperator<List<T>>,
                 ModifiableCollectionOperator<List<T>>,
-                ExecutableSelectedOperator<List<T>[]>,
-                ConvertibleSelectedOperator<List<T>[]>,
-                SelectedOperator<List<T>[]>,
-                EvaluableSelectedOperator<List<T>[]> {
+                ExecutableArrayOfListSelectedOperator<T>,
+                SelectedOperator<List<T>[]> {
 
 
 
@@ -84,11 +80,11 @@ public interface Level0ArrayOfListSelectedOperator<T>
 
 
     
-    public Level0ArrayOfListSelectedOperator<T> convert(final IConverter<? extends List<T>[],? super List<T>[]> converter);
+    public Level0ArrayOfListSelectedOperator<T> convert(final IConverter<? extends List<? extends T>[],? super List<T>[]> converter);
     
-    public Level0ArrayOfListSelectedOperator<T> eval(final IEvaluator<? extends List<T>[],? super List<T>[]> eval);
+    public Level0ArrayOfListSelectedOperator<T> eval(final IEvaluator<? extends List<? extends T>[],? super List<T>[]> eval);
 
-    public Level0ArrayOfListSelectedOperator<T> exec(final IFunction<? extends List<T>[], ? super List<T>[]> function);
+    public Level0ArrayOfListSelectedOperator<T> exec(final IFunction<? extends List<? extends T>[], ? super List<T>[]> function);
 
     
 }

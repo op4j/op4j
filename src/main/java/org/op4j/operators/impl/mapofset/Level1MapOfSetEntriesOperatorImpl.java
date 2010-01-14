@@ -27,8 +27,6 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
-import org.op4j.operators.impl.list.Level1ListElementsOperatorImpl;
-import org.op4j.operators.intf.list.Level1ListElementsOperator;
 import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.intf.mapofset.Level1MapOfSetEntriesOperator;
 import org.op4j.operators.intf.mapofset.Level1MapOfSetEntriesSelectedOperator;
@@ -75,21 +73,6 @@ public class Level1MapOfSetEntriesOperatorImpl<K,V> extends AbstractOperatorImpl
 
     
     
-    public <X> Level1ListElementsOperator<X> convert(final IConverter<X, ? super Entry<K, Set<V>>> converter) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(converter));
-	}
-
-
-	public <X> Level1ListElementsOperator<X> eval(final IEvaluator<X, ? super Entry<K, Set<V>>> eval) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(eval));
-	}
-
-
-	public <X> Level1ListElementsOperator<X> exec(final IFunction<X, ? super Entry<K, Set<V>>> function) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(function));
-	}
-
-
     public Level1MapOfSetEntriesSelectedOperator<K, V> ifIndex(final int... indices) {
         return new Level1MapOfSetEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
     }
@@ -117,6 +100,21 @@ public class Level1MapOfSetEntriesOperatorImpl<K,V> extends AbstractOperatorImpl
 
     public Level1MapOfSetEntriesSelectedOperator<K, V> ifNotMatching(final IEvaluator<Boolean, ? super Entry<K, Set<V>>> eval) {
         return new Level1MapOfSetEntriesSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
+    }
+
+
+    public <X, Y> Level1MapOfSetEntriesOperator<X, Y> convert(final IConverter<? extends Entry<X, ? extends Set<Y>>, ? super Entry<K, Set<V>>> converter) {
+        return new Level1MapOfSetEntriesOperatorImpl<X, Y>(getTarget().execute(converter));
+    }
+
+
+    public <X, Y> Level1MapOfSetEntriesOperator<X, Y> eval(final IEvaluator<? extends Entry<X, ? extends Set<Y>>, ? super Entry<K, Set<V>>> eval) {
+        return new Level1MapOfSetEntriesOperatorImpl<X, Y>(getTarget().execute(eval));
+    }
+
+
+    public <X, Y> Level1MapOfSetEntriesOperator<X, Y> exec(final IFunction<? extends Entry<X, ? extends Set<Y>>, ? super Entry<K, Set<V>>> function) {
+        return new Level1MapOfSetEntriesOperatorImpl<X, Y>(getTarget().execute(function));
     }
     
 }

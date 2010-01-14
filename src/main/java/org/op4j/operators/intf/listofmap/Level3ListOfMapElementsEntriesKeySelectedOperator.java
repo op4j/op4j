@@ -25,8 +25,6 @@ import java.util.List;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -42,9 +40,7 @@ import org.op4j.operators.qualities.UniqOperator;
 public interface Level3ListOfMapElementsEntriesKeySelectedOperator<K,V>
         extends UniqOperator<List<Map<K,V>>>,
                 ExecutableSelectedOperator<K>, 
-                EvaluableSelectedOperator<K>, 
-                SelectedOperator<K>,
-                ConvertibleSelectedOperator<K> {
+                SelectedOperator<K> {
 
 
 

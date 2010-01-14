@@ -33,13 +33,11 @@ import org.op4j.operators.intf.listofmap.Level0ListOfMapOperator;
 import org.op4j.operators.intf.mapofmap.Level0MapOfMapOperator;
 import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
 import org.op4j.operators.qualities.CastableToArrayOfMapOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
 import org.op4j.operators.qualities.ConvertibleToListOfMapFromStructureOfMapOperator;
 import org.op4j.operators.qualities.ConvertibleToMapOfMapFromStructureOfMapOperator;
 import org.op4j.operators.qualities.ConvertibleToSetOfMapFromStructureOfMapOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
+import org.op4j.operators.qualities.ExecutableArrayOfMapOperator;
 import org.op4j.operators.qualities.GenerizableOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
@@ -59,13 +57,11 @@ public interface Level0ArrayOfMapOperator<K,V>
 		        CastableToArrayOfMapOperator,
 		        DistinguishableOperator,
 		        SortableOperator<Map<K,V>>,
-                ExecutableOperator<Map<K,V>[]>,
-                ConvertibleOperator<Map<K,V>[]>,
+                ExecutableArrayOfMapOperator<K,V>,
                 SelectableOperator<Map<K,V>[]>,
                 ConvertibleToListOfMapFromStructureOfMapOperator<K, V>,
                 ConvertibleToMapOfMapFromStructureOfMapOperator<K, V>,
                 ConvertibleToSetOfMapFromStructureOfMapOperator<K, V>,
-                EvaluableOperator<Map<K,V>[]>,
                 ModifiableCollectionOperator<Map<K,V>>,
 		        GenerizableOperator<Map<K,V>[]> {
 
@@ -110,11 +106,11 @@ public interface Level0ArrayOfMapOperator<K,V>
     
     
     
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Map<K,V>[]> converter);
+    public <X,Y> Level0ArrayOfMapOperator<X,Y> convert(final IConverter<? extends Map<X,Y>[],? super Map<K,V>[]> converter);
     
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Map<K,V>[]> eval);
+    public <X,Y> Level0ArrayOfMapOperator<X,Y> eval(final IEvaluator<? extends Map<X,Y>[],? super Map<K,V>[]> eval);
 
-    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,V>[]> function);
+    public <X,Y> Level0ArrayOfMapOperator<X,Y> exec(final IFunction<? extends Map<X,Y>[], ? super Map<K,V>[]> function);
     
     
     public <X,Y> Level0ArrayOfMapOperator<X,Y> asArrayOfMapOf(final Type<X> keyType, final Type<Y> valueType);

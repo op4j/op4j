@@ -34,7 +34,7 @@ import org.op4j.operators.intf.mapoflist.Level3MapOfListEntriesValueElementsOper
 import org.op4j.operators.intf.mapoflist.Level3MapOfListEntriesValueElementsSelectedOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
-import org.op4j.util.TargetUtils;
+import org.op4j.util.NormalizationUtils;
 
 
 /**
@@ -53,30 +53,14 @@ public class Level3MapOfListEntriesValueElementsOperatorImpl<K,V> extends Abstra
     }
 
 
-    public <X> Level3MapOfListEntriesValueElementsOperator<K, X> convert(final IConverter<X, ? super V> converter) {
-        return new Level3MapOfListEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(converter));
-    }
-
-
-
     public Level2MapOfListEntriesValueOperator<K, V> endFor() {
         return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().endIterate(Structure.LIST, null));
     }
 
 
-    public <X> Level3MapOfListEntriesValueElementsOperator<K, X> eval(final IEvaluator<X, ? super V> eval) {
-        return new Level3MapOfListEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(eval));
-    }
-
-
-    public <X> Level3MapOfListEntriesValueElementsOperator<K, X> exec(final IFunction<X, ? super V> function) {
-        return new Level3MapOfListEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(function));
-    }
-
-
     public <X> Level3MapOfListEntriesValueElementsOperator<K, X> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        TargetUtils.checkIsMapOfListOfValue(type, get());
+        NormalizationUtils.checkIsMapOfListOfValue(type, get());
         return new Level3MapOfListEntriesValueElementsOperatorImpl<K, X>(getTarget());
     }
 
@@ -137,6 +121,21 @@ public class Level3MapOfListEntriesValueElementsOperatorImpl<K,V> extends Abstra
 
     public Level3MapOfListEntriesValueElementsSelectedOperator<K, V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super V> eval) {
         return new Level3MapOfListEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X> Level3MapOfListEntriesValueElementsOperator<K, X> convert(final IConverter<X, ? super V> converter) {
+        return new Level3MapOfListEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level3MapOfListEntriesValueElementsOperator<K, X> eval(final IEvaluator<X, ? super V> eval) {
+        return new Level3MapOfListEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level3MapOfListEntriesValueElementsOperator<K, X> exec(final IFunction<X, ? super V> function) {
+        return new Level3MapOfListEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(function));
     }
 
 }

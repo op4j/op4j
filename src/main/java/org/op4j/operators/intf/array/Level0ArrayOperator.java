@@ -40,16 +40,14 @@ import org.op4j.operators.qualities.CastableToArrayOfListOperator;
 import org.op4j.operators.qualities.CastableToArrayOfMapOperator;
 import org.op4j.operators.qualities.CastableToArrayOfSetOperator;
 import org.op4j.operators.qualities.CastableToArrayOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
 import org.op4j.operators.qualities.ConvertibleToListOperator;
 import org.op4j.operators.qualities.ConvertibleToMapOperator;
 import org.op4j.operators.qualities.ConvertibleToSetOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
+import org.op4j.operators.qualities.ExecutableArrayOperator;
 import org.op4j.operators.qualities.GenerizableOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
-import org.op4j.operators.qualities.NavigableCollectionOperator;
+import org.op4j.operators.qualities.NavigableArrayOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -62,7 +60,7 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level0ArrayOperator<T>
         extends UniqOperator<T[]>,
-                NavigableCollectionOperator<T>,
+                NavigableArrayOperator<T>,
 		        DistinguishableOperator,
 		        SortableOperator<T>,
 		        CastableToArrayOperator,
@@ -73,9 +71,7 @@ public interface Level0ArrayOperator<T>
 		        ModifiableCollectionOperator<T>,
 		        SelectableOperator<T[]>,
                 GenerizableOperator<T[]>,
-		        ExecutableOperator<T[]>,
-		        ConvertibleOperator<T[]>,
-		        EvaluableOperator<T[]>,
+		        ExecutableArrayOperator<T>,
 		        ConvertibleToListOperator,
 		        ConvertibleToSetOperator,
 		        ConvertibleToMapOperator<T> {
@@ -95,7 +91,7 @@ public interface Level0ArrayOperator<T>
 
 
 
-    public Level1ArrayElementsOperator<T> forEach();
+    public Level1ArrayElementsOperator<T> forEach(final Type<T> elementType);
 
     public Level0ArrayOperator<T> distinct();
     
@@ -128,11 +124,11 @@ public interface Level0ArrayOperator<T>
 
     
     
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super T[]> converter);
+    public <X> Level0ArrayOperator<X> convert(final IConverter<X[],? super T[]> converter);
     
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super T[]> eval);
+    public <X> Level0ArrayOperator<X> eval(final IEvaluator<X[],? super T[]> eval);
 
-    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super T[]> function);
+    public <X> Level0ArrayOperator<X> exec(final IFunction<X[], ? super T[]> function);
     
     
     

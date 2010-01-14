@@ -29,17 +29,14 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
-import org.op4j.operators.intf.map.Level2MapEntriesValueOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesValueOperator;
 import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.Level2MapOfMapEntriesValueOperator;
 import org.op4j.operators.qualities.CastableToSetOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
 import org.op4j.operators.qualities.ConvertibleToArrayOperator;
 import org.op4j.operators.qualities.ConvertibleToListOperator;
 import org.op4j.operators.qualities.ConvertibleToMapOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
+import org.op4j.operators.qualities.ExecutableSetOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
@@ -60,9 +57,7 @@ public interface Level2MapOfSetEntriesValueOperator<K,V>
 		        SortableOperator<V>,
 		        CastableToSetOperator,
                 ModifiableCollectionOperator<V>,
-                ExecutableOperator<Set<V>>,
-                ConvertibleOperator<Set<V>>,
-                EvaluableOperator<Set<V>>,
+                ExecutableSetOperator<V>,
                 SelectableOperator<Set<V>>,
                 ConvertibleToArrayOperator<V>,
                 ConvertibleToListOperator,
@@ -113,11 +108,11 @@ public interface Level2MapOfSetEntriesValueOperator<K,V>
     public <K2,V2> Level2MapOfMapEntriesValueOperator<K,K2,V2> toMap(final IMapBuilder<K2,V2,? super V> mapBuild);
 
     
-    public <X> Level2MapEntriesValueOperator<K,X> convert(final IConverter<X,? super Set<V>> converter);
+    public <X> Level2MapOfSetEntriesValueOperator<K,X> convert(final IConverter<? extends Set<X>,? super Set<V>> converter);
     
-    public <X> Level2MapEntriesValueOperator<K,X> eval(final IEvaluator<X,? super Set<V>> eval);
+    public <X> Level2MapOfSetEntriesValueOperator<K,X> eval(final IEvaluator<? extends Set<X>,? super Set<V>> eval);
 
-    public <X> Level2MapEntriesValueOperator<K,X> exec(final IFunction<X, ? super Set<V>> function);
+    public <X> Level2MapOfSetEntriesValueOperator<K,X> exec(final IFunction<? extends Set<X>, ? super Set<V>> function);
     
     
     

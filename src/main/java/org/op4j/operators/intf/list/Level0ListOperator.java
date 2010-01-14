@@ -41,13 +41,11 @@ import org.op4j.operators.qualities.CastableToListOfListOperator;
 import org.op4j.operators.qualities.CastableToListOfMapOperator;
 import org.op4j.operators.qualities.CastableToListOfSetOperator;
 import org.op4j.operators.qualities.CastableToListOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
 import org.op4j.operators.qualities.ConvertibleToArrayOperator;
 import org.op4j.operators.qualities.ConvertibleToMapOperator;
 import org.op4j.operators.qualities.ConvertibleToSetOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
+import org.op4j.operators.qualities.ExecutableListOperator;
 import org.op4j.operators.qualities.GenerizableOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
@@ -73,9 +71,7 @@ public interface Level0ListOperator<T>
                 CastableToListOfSetOperator,
 		        ModifiableCollectionOperator<T>,
 		        GenerizableOperator<List<T>>,
-                ExecutableOperator<List<T>>,
-                ConvertibleOperator<List<T>>,
-                EvaluableOperator<List<T>>,
+                ExecutableListOperator<T>,
                 SelectableOperator<List<T>>,
                 ConvertibleToArrayOperator<T>,
 		        ConvertibleToSetOperator,
@@ -131,11 +127,11 @@ public interface Level0ListOperator<T>
     
     
     
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super List<T>> converter);
+    public <X> Level0ListOperator<X> convert(final IConverter<? extends List<X>,? super List<T>> converter);
     
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super List<T>> eval);
+    public <X> Level0ListOperator<X> eval(final IEvaluator<? extends List<X>,? super List<T>> eval);
 
-    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super List<T>> function);
+    public <X> Level0ListOperator<X> exec(final IFunction<? extends List<X>, ? super List<T>> function);
     
     
     public <X> Level0ListOfArrayOperator<X> asListOfArrayOf(final Type<X> type);

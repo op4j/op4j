@@ -34,8 +34,6 @@ import org.op4j.operators.qualities.CastableToListOperator;
 import org.op4j.operators.qualities.CastableToMapOperator;
 import org.op4j.operators.qualities.CastableToSetOperator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
 import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
 import org.op4j.operators.qualities.SelectableOperator;
@@ -56,8 +54,6 @@ public interface Level1SetElementsOperator<T>
                 CastableToMapOperator,
                 CastableToSetOperator,
         		NavigatingCollectionOperator<T>,
-        		ConvertibleOperator<T>,
-        		EvaluableOperator<T>,
         		ExecutableOperator<T>,
                 SelectableOperator<T>,
                 CastableToTypeOperator<T> {

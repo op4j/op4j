@@ -21,14 +21,11 @@ package org.op4j.operators.intf.mapofarray;
 
 import java.util.Map;
 
-
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
-import org.op4j.operators.qualities.NavigatingCollectionOperator;
+import org.op4j.operators.qualities.NavigatingArrayOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
@@ -42,9 +39,7 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level3MapOfArrayEntriesSelectedValueElementsOperator<K,V>
         extends UniqOperator<Map<K,V[]>>,
-                NavigatingCollectionOperator<V>,
-                ConvertibleSelectedOperator<V>,
-        		EvaluableSelectedOperator<V>,
+                NavigatingArrayOperator<V>,
         		ExecutableSelectedOperator<V>,
                 SelectableOperator<V> {
 

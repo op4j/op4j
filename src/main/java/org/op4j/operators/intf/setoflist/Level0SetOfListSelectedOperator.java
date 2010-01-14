@@ -27,9 +27,7 @@ import java.util.Set;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableSetOfListSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -47,10 +45,8 @@ public interface Level0SetOfListSelectedOperator<T>
                 NavigableCollectionOperator<List<T>>,
                 SortableOperator<List<T>>,
                 ModifiableCollectionOperator<List<T>>,
-                ExecutableSelectedOperator<Set<List<T>>>,
-                ConvertibleSelectedOperator<Set<List<T>>>,
-                SelectedOperator<Set<List<T>>>,
-                EvaluableSelectedOperator<Set<List<T>>> {
+                ExecutableSetOfListSelectedOperator<T>,
+                SelectedOperator<Set<List<T>>> {
 
 
 
@@ -81,11 +77,11 @@ public interface Level0SetOfListSelectedOperator<T>
 
 
     
-    public Level0SetOfListSelectedOperator<T> convert(final IConverter<? extends Set<List<T>>,? super Set<List<T>>> converter);
+    public Level0SetOfListSelectedOperator<T> convert(final IConverter<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> converter);
     
-    public Level0SetOfListSelectedOperator<T> eval(final IEvaluator<? extends Set<List<T>>,? super Set<List<T>>> eval);
+    public Level0SetOfListSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> eval);
 
-    public Level0SetOfListSelectedOperator<T> exec(final IFunction<? extends Set<List<T>>, ? super Set<List<T>>> function);
+    public Level0SetOfListSelectedOperator<T> exec(final IFunction<? extends Set<? extends List<? extends T>>, ? super Set<List<T>>> function);
 
     
 }

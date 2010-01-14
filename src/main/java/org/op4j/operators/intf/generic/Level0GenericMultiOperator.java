@@ -37,8 +37,6 @@ import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.operators.qualities.BuilderMultiOperator;
 import org.op4j.operators.qualities.BuilderOperator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
 import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.ModifiableGrowableOperator;
 import org.op4j.operators.qualities.ModifiableShrinkableOperator;
@@ -57,8 +55,6 @@ public interface Level0GenericMultiOperator<T>
                 UniqableOperator<T>,
         		BuilderOperator<T>,
         		BuilderMultiOperator<T>,
-        		ConvertibleOperator<T>,
-        		EvaluableOperator<T>,
         		ExecutableOperator<T>,
                 CastableToTypeOperator<T>,
                 SelectableOperator<T>,

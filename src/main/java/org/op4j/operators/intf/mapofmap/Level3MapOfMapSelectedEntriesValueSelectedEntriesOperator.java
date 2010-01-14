@@ -24,9 +24,7 @@ import java.util.Map;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableMapEntrySelectedOperator;
 import org.op4j.operators.qualities.NavigableMapEntryOperator;
 import org.op4j.operators.qualities.NavigatingMapOperator;
 import org.op4j.operators.qualities.SelectableMapEntryOperator;
@@ -43,9 +41,7 @@ import org.op4j.operators.qualities.UniqOperator;
 public interface Level3MapOfMapSelectedEntriesValueSelectedEntriesOperator<K1,K2,V>
 		extends UniqOperator<Map<K1,Map<K2,V>>>,
 		        NavigableMapEntryOperator,
-                ExecutableSelectedOperator<Map.Entry<K2,V>>,
-                EvaluableSelectedOperator<Map.Entry<K2,V>>,
-                ConvertibleSelectedOperator<Map.Entry<K2,V>>,
+                ExecutableMapEntrySelectedOperator<K2,V>,
                 SelectableMapEntryOperator<K2, V>,
 		        NavigatingMapOperator<K2,V> {
 
@@ -63,10 +59,10 @@ public interface Level3MapOfMapSelectedEntriesValueSelectedEntriesOperator<K1,K2
     
     public Level2MapOfMapSelectedEntriesValueSelectedOperator<K1,K2,V> endFor();
     
-    public Level3MapOfMapSelectedEntriesValueSelectedEntriesOperator<K1,K2,V> exec(final IFunction<? extends Map.Entry<K2,V>, ? super Map.Entry<K2,V>> function);
+    public Level3MapOfMapSelectedEntriesValueSelectedEntriesOperator<K1,K2,V> exec(final IFunction<? extends Map.Entry<? extends K2,? extends V>, ? super Map.Entry<K2,V>> function);
     
-    public Level3MapOfMapSelectedEntriesValueSelectedEntriesOperator<K1,K2,V> eval(final IEvaluator<? extends Map.Entry<K2,V>,? super Map.Entry<K2,V>> eval);
+    public Level3MapOfMapSelectedEntriesValueSelectedEntriesOperator<K1,K2,V> eval(final IEvaluator<? extends Map.Entry<? extends K2,? extends V>,? super Map.Entry<K2,V>> eval);
     
-    public Level3MapOfMapSelectedEntriesValueSelectedEntriesOperator<K1,K2,V> convert(final IConverter<? extends Map.Entry<K2,V>,? super Map.Entry<K2,V>> converter);
+    public Level3MapOfMapSelectedEntriesValueSelectedEntriesOperator<K1,K2,V> convert(final IConverter<? extends Map.Entry<? extends K2,? extends V>,? super Map.Entry<K2,V>> converter);
                                             
 }

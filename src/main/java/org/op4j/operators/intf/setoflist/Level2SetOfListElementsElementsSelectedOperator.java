@@ -25,8 +25,6 @@ import java.util.Set;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -41,8 +39,6 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level2SetOfListElementsElementsSelectedOperator<T>
         extends UniqOperator<Set<List<T>>>,
-                ConvertibleSelectedOperator<T>,
-        		EvaluableSelectedOperator<T>,
         		ExecutableSelectedOperator<T>,
                 SelectedOperator<T> {
 

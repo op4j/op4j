@@ -183,24 +183,7 @@ public class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
     
     
     
-	public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super Map<K,Set<V>>> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter));
-	}
-
-
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super Map<K,Set<V>>> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval));
-    }
-
-
-    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,Set<V>>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function));
-	}
-    
-    
-
-
-    public <X,Y> Level0MapOfSetOperator<X,Y> asMapOfSetOf(final Type<X> keyType, final Type<Y> valueType) {
+	public <X,Y> Level0MapOfSetOperator<X,Y> asMapOfSetOf(final Type<X> keyType, final Type<Y> valueType) {
         return generic().asMapOfSetOf(keyType, valueType);
     }
 
@@ -257,6 +240,21 @@ public class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
 
     public Level0MapOfSetSelectedOperator<K, V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
         return new Level0MapOfSetSelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X, Y> Level0MapOfSetOperator<X, Y> convert(final IConverter<? extends Map<X, ? extends Set<Y>>, ? super Map<K, Set<V>>> converter) {
+        return new Level0MapOfSetOperatorImpl<X, Y>(getTarget().execute(converter));
+    }
+
+
+    public <X, Y> Level0MapOfSetOperator<X, Y> eval(final IEvaluator<? extends Map<X, ? extends Set<Y>>, ? super Map<K, Set<V>>> eval) {
+        return new Level0MapOfSetOperatorImpl<X, Y>(getTarget().execute(eval));
+    }
+
+
+    public <X, Y> Level0MapOfSetOperator<X, Y> exec(final IFunction<? extends Map<X, ? extends Set<Y>>, ? super Map<K, Set<V>>> function) {
+        return new Level0MapOfSetOperatorImpl<X, Y>(getTarget().execute(function));
     }
 
     

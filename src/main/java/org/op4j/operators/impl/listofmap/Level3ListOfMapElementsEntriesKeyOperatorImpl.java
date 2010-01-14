@@ -34,7 +34,7 @@ import org.op4j.operators.intf.listofmap.Level3ListOfMapElementsEntriesKeyOperat
 import org.op4j.operators.intf.listofmap.Level3ListOfMapElementsEntriesKeySelectedOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
-import org.op4j.util.TargetUtils;
+import org.op4j.util.NormalizationUtils;
 
 
 /**
@@ -60,27 +60,12 @@ public class Level3ListOfMapElementsEntriesKeyOperatorImpl<K,V> extends Abstract
 
     public <X> Level3ListOfMapElementsEntriesKeyOperator<X, V> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        TargetUtils.checkIsListOfMapOfKey(type, get());
+        NormalizationUtils.checkIsListOfMapOfKey(type, get());
         return new Level3ListOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget());
     }
 
     public Level3ListOfMapElementsEntriesKeyOperator<?,V> asUnknown() {
         return asType(Types.OBJECT);
-    }
-
-
-    public <X> Level3ListOfMapElementsEntriesKeyOperator<X, V> convert(final IConverter<X, ? super K> converter) {
-        return new Level3ListOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().execute(converter));
-    }
-
-
-    public <X> Level3ListOfMapElementsEntriesKeyOperator<X, V> eval(final IEvaluator<X, ? super K> eval) {
-        return new Level3ListOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().execute(eval));
-    }
-
-
-    public <X> Level3ListOfMapElementsEntriesKeyOperator<X, V> exec(final IFunction<X, ? super K> function) {
-        return new Level3ListOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().execute(function));
     }
 
 
@@ -136,6 +121,21 @@ public class Level3ListOfMapElementsEntriesKeyOperatorImpl<K,V> extends Abstract
 
     public Level3ListOfMapElementsEntriesKeySelectedOperator<K, V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super K> eval) {
         return new Level3ListOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X> Level3ListOfMapElementsEntriesKeyOperator<X, V> convert(final IConverter<X, ? super K> converter) {
+        return new Level3ListOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level3ListOfMapElementsEntriesKeyOperator<X, V> eval(final IEvaluator<X, ? super K> eval) {
+        return new Level3ListOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level3ListOfMapElementsEntriesKeyOperator<X, V> exec(final IFunction<X, ? super K> function) {
+        return new Level3ListOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().execute(function));
     }
 
 }

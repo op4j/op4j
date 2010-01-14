@@ -21,18 +21,17 @@ package org.op4j.operators.intf.arrayofarray;
 
 import java.util.Collection;
 import java.util.Comparator;
+import org.javaruntype.type.Type;
 
 
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableArraySelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
-import org.op4j.operators.qualities.NavigableCollectionOperator;
-import org.op4j.operators.qualities.NavigatingCollectionOperator;
+import org.op4j.operators.qualities.NavigableArrayOperator;
+import org.op4j.operators.qualities.NavigatingArrayOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -45,13 +44,11 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level1ArrayOfArraySelectedElementsOperator<T>
         extends UniqOperator<T[][]>,
-                NavigableCollectionOperator<T>,
+                NavigableArrayOperator<T>,
     	        DistinguishableOperator,
 		        SortableOperator<T>,
-                ExecutableSelectedOperator<T[]>,
-                ConvertibleSelectedOperator<T[]>,
-                EvaluableSelectedOperator<T[]>,
-                NavigatingCollectionOperator<T[]>,
+                ExecutableArraySelectedOperator<T>,
+                NavigatingArrayOperator<T[]>,
                 ModifiableCollectionOperator<T>,
                 SelectableOperator<T[]> {
 
@@ -73,7 +70,7 @@ public interface Level1ArrayOfArraySelectedElementsOperator<T>
 
 
             
-    public Level2ArrayOfArraySelectedElementsElementsOperator<T> forEach();
+    public Level2ArrayOfArraySelectedElementsElementsOperator<T> forEach(final Type<T> elementType);
 
     public Level1ArrayOfArraySelectedElementsOperator<T> distinct();
     

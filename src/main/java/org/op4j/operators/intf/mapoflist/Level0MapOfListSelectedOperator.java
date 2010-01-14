@@ -26,9 +26,7 @@ import java.util.List;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableMapOfListSelectedOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -46,9 +44,7 @@ public interface Level0MapOfListSelectedOperator<K,V>
                 NavigableMapOperator<K,List<V>>,
 		        SortableOperator<Map.Entry<K,List<V>>>,
 		        ModifiableMapOperator<K,List<V>>,
-                ExecutableSelectedOperator<Map<K,List<V>>>,
-                ConvertibleSelectedOperator<Map<K,List<V>>>,
-                EvaluableSelectedOperator<Map<K,List<V>>>,
+                ExecutableMapOfListSelectedOperator<K,V>,
                 SelectedOperator<Map<K,List<V>>> {
 
 
@@ -72,11 +68,11 @@ public interface Level0MapOfListSelectedOperator<K,V>
     public Level0MapOfListSelectedOperator<K,V> removeKeysNot(final K... keys);
     
     
-    public Level0MapOfListSelectedOperator<K,V> convert(final IConverter<? extends Map<K,List<V>>, ? super Map<K,List<V>>> converter);
+    public Level0MapOfListSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends List<? extends V>>, ? super Map<K,List<V>>> converter);
     
-    public Level0MapOfListSelectedOperator<K,V> eval(final IEvaluator<? extends Map<K,List<V>>, ? super Map<K,List<V>>> eval);
+    public Level0MapOfListSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends List<? extends V>>, ? super Map<K,List<V>>> eval);
 
-    public Level0MapOfListSelectedOperator<K,V> exec(final IFunction<? extends Map<K,List<V>>, ? super Map<K,List<V>>> function);
+    public Level0MapOfListSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends List<? extends V>>, ? super Map<K,List<V>>> function);
     
     
     

@@ -89,8 +89,8 @@ public class Level0ArrayOfListOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ArrayOperator<T> flatten(final Type<? super T> type) {
-        return new Level0ArrayOperatorImpl<T>(type, getTarget().execute(new ArrayFuncs.FlattenArrayOfLists<T>(type)));
+    public Level0ArrayOperator<T> flatten(final Type<T> type) {
+        return new Level0ArrayOperatorImpl<T>(getTarget().execute(new ArrayFuncs.FlattenArrayOfLists<T>(type)));
     }
 
 
@@ -258,25 +258,7 @@ public class Level0ArrayOfListOperatorImpl<T> extends AbstractOperatorImpl
     
     
     
-	public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super List<T>[]> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter));
-	}
-
-
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super List<T>[]> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval));
-    }
-
-
-    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super List<T>[]> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function));
-	}
-
-    
-    
-
-
-    public <X> Level0ArrayOfListOperator<X> asArrayOfListOf(final Type<X> type) {
+	public <X> Level0ArrayOfListOperator<X> asArrayOfListOf(final Type<X> type) {
         return generic().asArrayOfListOf(type);
     }
 
@@ -333,6 +315,21 @@ public class Level0ArrayOfListOperatorImpl<T> extends AbstractOperatorImpl
 
     public Level0ArrayOfListSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super List<T>[]> eval) {
         return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X> Level0ArrayOfListOperator<X> convert(final IConverter<? extends List<X>[], ? super List<T>[]> converter) {
+        return new Level0ArrayOfListOperatorImpl<X>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level0ArrayOfListOperator<X> eval(final IEvaluator<? extends List<X>[], ? super List<T>[]> eval) {
+        return new Level0ArrayOfListOperatorImpl<X>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level0ArrayOfListOperator<X> exec(final IFunction<? extends List<X>[], ? super List<T>[]> function) {
+        return new Level0ArrayOfListOperatorImpl<X>(getTarget().execute(function));
     }
     
     

@@ -34,13 +34,11 @@ import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.mapofmap.Level0MapOfMapOperator;
 import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
 import org.op4j.operators.qualities.CastableToListOfMapOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
 import org.op4j.operators.qualities.ConvertibleToArrayOfMapFromStructureOfMapOperator;
 import org.op4j.operators.qualities.ConvertibleToMapOfMapFromStructureOfMapOperator;
 import org.op4j.operators.qualities.ConvertibleToSetOfMapFromStructureOfMapOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
+import org.op4j.operators.qualities.ExecutableListOfMapOperator;
 import org.op4j.operators.qualities.GenerizableOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
@@ -60,12 +58,10 @@ public interface Level0ListOfMapOperator<K,V>
 		        DistinguishableOperator,
 		        CastableToListOfMapOperator,
 		        SortableOperator<Map<K,V>>,
-                ExecutableOperator<List<Map<K,V>>>,
+                ExecutableListOfMapOperator<K,V>,
                 ConvertibleToArrayOfMapFromStructureOfMapOperator<K, V>,
                 ConvertibleToMapOfMapFromStructureOfMapOperator<K, V>,
                 ConvertibleToSetOfMapFromStructureOfMapOperator<K, V>,
-                ConvertibleOperator<List<Map<K,V>>>,
-                EvaluableOperator<List<Map<K,V>>>,
                 SelectableOperator<List<Map<K,V>>>,
                 ModifiableCollectionOperator<Map<K,V>>,
 		        GenerizableOperator<List<Map<K,V>>> {
@@ -111,11 +107,11 @@ public interface Level0ListOfMapOperator<K,V>
 
     
     
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super List<Map<K,V>>> converter);
+    public <X,Y> Level0ListOfMapOperator<X,Y> convert(final IConverter<? extends List<? extends Map<X,Y>>,? super List<Map<K,V>>> converter);
     
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super List<Map<K,V>>> eval);
+    public <X,Y> Level0ListOfMapOperator<X,Y> eval(final IEvaluator<? extends List<? extends Map<X,Y>>,? super List<Map<K,V>>> eval);
 
-    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super List<Map<K,V>>> function);
+    public <X,Y> Level0ListOfMapOperator<X,Y> exec(final IFunction<? extends List<? extends Map<X,Y>>,? super List<Map<K,V>>> function);
     
     public <X,Y> Level0ListOfMapOperator<X,Y> asListOfMapOf(final Type<X> keyType, final Type<Y> valueType);
     public Level0ListOfMapOperator<?,?> asListOfMapOfUnknown();

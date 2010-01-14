@@ -27,10 +27,8 @@ import java.util.List;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableListSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -48,9 +46,7 @@ public interface Level2MapOfListSelectedEntriesValueSelectedOperator<K,V>
                 NavigableCollectionOperator<V>,
 		        DistinguishableOperator,
 		        SortableOperator<V>,
-                ExecutableSelectedOperator<List<V>>,
-                ConvertibleSelectedOperator<List<V>>,
-                EvaluableSelectedOperator<List<V>>,
+                ExecutableListSelectedOperator<V>,
                 ModifiableCollectionOperator<V>,
                 SelectedOperator<List<V>> {
 
@@ -82,11 +78,11 @@ public interface Level2MapOfListSelectedEntriesValueSelectedOperator<K,V>
     public Level2MapOfListSelectedEntriesValueSelectedOperator<K,V> removeNulls();
 
     
-    public Level2MapOfListSelectedEntriesValueSelectedOperator<K,V> convert(final IConverter<? extends List<V>, ? super List<V>> converter);
+    public Level2MapOfListSelectedEntriesValueSelectedOperator<K,V> convert(final IConverter<? extends List<? extends V>, ? super List<V>> converter);
     
-    public Level2MapOfListSelectedEntriesValueSelectedOperator<K,V> eval(final IEvaluator<? extends List<V>, ? super List<V>> eval);
+    public Level2MapOfListSelectedEntriesValueSelectedOperator<K,V> eval(final IEvaluator<? extends List<? extends V>, ? super List<V>> eval);
 
-    public Level2MapOfListSelectedEntriesValueSelectedOperator<K,V> exec(final IFunction<? extends List<V>, ? super List<V>> function);
+    public Level2MapOfListSelectedEntriesValueSelectedOperator<K,V> exec(final IFunction<? extends List<? extends V>, ? super List<V>> function);
     
     
     

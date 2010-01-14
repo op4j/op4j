@@ -34,7 +34,7 @@ import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesKeyOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesKeySelectedOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
-import org.op4j.util.TargetUtils;
+import org.op4j.util.NormalizationUtils;
 
 
 /**
@@ -60,7 +60,7 @@ public class Level2MapOfSetEntriesKeyOperatorImpl<K,V> extends AbstractOperatorI
 
     public <X> Level2MapOfSetEntriesKeyOperator<X, V> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        TargetUtils.checkIsMapOfKey(type, get());
+        NormalizationUtils.checkIsMapOfKey(type, get());
         return new Level2MapOfSetEntriesKeyOperatorImpl<X, V>(getTarget());
     }
 
@@ -69,22 +69,6 @@ public class Level2MapOfSetEntriesKeyOperatorImpl<K,V> extends AbstractOperatorI
     }
 
 
-
-    public <X> Level2MapOfSetEntriesKeyOperator<X, V> convert(final IConverter<X, ? super K> converter) {
-        return new Level2MapOfSetEntriesKeyOperatorImpl<X, V>(getTarget().execute(converter));
-    }
-
-
-    public <X> Level2MapOfSetEntriesKeyOperator<X, V> eval(final IEvaluator<X, ? super K> eval) {
-        return new Level2MapOfSetEntriesKeyOperatorImpl<X, V>(getTarget().execute(eval));
-    }
-
-
-    public <X> Level2MapOfSetEntriesKeyOperator<X, V> exec(final IFunction<X, ? super K> function) {
-        return new Level2MapOfSetEntriesKeyOperatorImpl<X, V>(getTarget().execute(function));
-    }
-    
-    
 
     public Map<K, Set<V>> get() {
         return endOn().endFor().get();
@@ -138,6 +122,21 @@ public class Level2MapOfSetEntriesKeyOperatorImpl<K,V> extends AbstractOperatorI
 
     public Level2MapOfSetEntriesKeySelectedOperator<K, V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super K> eval) {
         return new Level2MapOfSetEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X> Level2MapOfSetEntriesKeyOperator<X, V> convert(final IConverter<X, ? super K> converter) {
+        return new Level2MapOfSetEntriesKeyOperatorImpl<X, V>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level2MapOfSetEntriesKeyOperator<X, V> eval(final IEvaluator<X, ? super K> eval) {
+        return new Level2MapOfSetEntriesKeyOperatorImpl<X, V>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level2MapOfSetEntriesKeyOperator<X, V> exec(final IFunction<X, ? super K> function) {
+        return new Level2MapOfSetEntriesKeyOperatorImpl<X, V>(getTarget().execute(function));
     }
 
 }

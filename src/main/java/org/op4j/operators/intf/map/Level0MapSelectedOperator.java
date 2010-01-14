@@ -25,9 +25,7 @@ import java.util.Map;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableMapSelectedOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -44,9 +42,7 @@ public interface Level0MapSelectedOperator<K,V>
         extends UniqOperator<Map<K,V>>,
                 NavigableMapOperator<K,V>,
 		        SortableOperator<Map.Entry<K,V>>,
-                ExecutableSelectedOperator<Map<K,V>>,
-                ConvertibleSelectedOperator<Map<K,V>>,
-                EvaluableSelectedOperator<Map<K,V>>,
+                ExecutableMapSelectedOperator<K,V>,
                 ModifiableMapOperator<K,V>,
                 SelectedOperator<Map<K,V>> {
 
@@ -72,11 +68,11 @@ public interface Level0MapSelectedOperator<K,V>
     
     
     
-    public Level0MapSelectedOperator<K,V> convert(final IConverter<? extends Map<K,V>, ? super Map<K,V>> converter);
+    public Level0MapSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends V>, ? super Map<K,V>> converter);
     
-    public Level0MapSelectedOperator<K,V> eval(final IEvaluator<? extends Map<K,V>, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V>, ? super Map<K,V>> eval);
 
-    public Level0MapSelectedOperator<K,V> exec(final IFunction<? extends Map<K,V>, ? super Map<K,V>> function);
+    public Level0MapSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V>, ? super Map<K,V>> function);
     
     
 }

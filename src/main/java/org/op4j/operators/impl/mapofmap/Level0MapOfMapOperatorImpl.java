@@ -163,25 +163,7 @@ public class Level0MapOfMapOperatorImpl<K1,K2,V> extends AbstractOperatorImpl
     
     
     
-	public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super Map<K1,Map<K2,V>>> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter));
-	}
-
-
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super Map<K1,Map<K2,V>>> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval));
-    }
-
-
-    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K1,Map<K2,V>>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function));
-	}
-    
-    
-    
-
-
-    public <X1,X2,Y> Level0MapOfMapOperator<X1,X2,Y> asMapOfMapOf(final Type<X1> key1Type, final Type<X2> key2Type, final Type<Y> valueType) {
+	public <X1,X2,Y> Level0MapOfMapOperator<X1,X2,Y> asMapOfMapOf(final Type<X1> key1Type, final Type<X2> key2Type, final Type<Y> valueType) {
         return generic().asMapOfMapOf(key1Type, key2Type, valueType);
     }
 
@@ -238,6 +220,21 @@ public class Level0MapOfMapOperatorImpl<K1,K2,V> extends AbstractOperatorImpl
 
     public Level0MapOfMapSelectedOperator<K1, K2, V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K1, Map<K2, V>>> eval) {
         return new Level0MapOfMapSelectedOperatorImpl<K1, K2, V>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X1, X2, Y> Level0MapOfMapOperator<X1, X2, Y> convert(final IConverter<? extends Map<X1, ? extends Map<X2, Y>>, ? super Map<K1, Map<K2, V>>> converter) {
+        return new Level0MapOfMapOperatorImpl<X1, X2, Y>(getTarget().execute(converter));
+    }
+
+
+    public <X1, X2, Y> Level0MapOfMapOperator<X1, X2, Y> eval(final IEvaluator<? extends Map<X1, ? extends Map<X2, Y>>, ? super Map<K1, Map<K2, V>>> eval) {
+        return new Level0MapOfMapOperatorImpl<X1, X2, Y>(getTarget().execute(eval));
+    }
+
+
+    public <X1, X2, Y> Level0MapOfMapOperator<X1, X2, Y> exec(final IFunction<? extends Map<X1, ? extends Map<X2, Y>>, ? super Map<K1, Map<K2, V>>> function) {
+        return new Level0MapOfMapOperatorImpl<X1, X2, Y>(getTarget().execute(function));
     }
 
     

@@ -149,7 +149,7 @@ public class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0ArrayOperator<T> toArray(final Type<T> of) {
-        return new Level0ArrayOperatorImpl<T>(of, getTarget().execute(new ToArray.FromCollection<T>(of)));
+        return new Level0ArrayOperatorImpl<T>(getTarget().execute(new ToArray.FromCollection<T>(of)));
     }
 
 
@@ -190,24 +190,7 @@ public class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
     
     
     
-	public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super Set<T>> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter));
-	}
-
-
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super Set<T>> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval));
-    }
-
-
-    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Set<T>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function));
-	}
-
-
-    
-    
-    public <X> Level0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type) {
+	public <X> Level0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type) {
         return generic().asSetOfArrayOf(type);
     }
 
@@ -304,6 +287,21 @@ public class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
 
     public Level0SetSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
         return new Level0SetSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X> Level0SetOperator<X> convert(final IConverter<? extends Set<X>, ? super Set<T>> converter) {
+        return new Level0SetOperatorImpl<X>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level0SetOperator<X> eval(final IEvaluator<? extends Set<X>, ? super Set<T>> eval) {
+        return new Level0SetOperatorImpl<X>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level0SetOperator<X> exec(final IFunction<? extends Set<X>, ? super Set<T>> function) {
+        return new Level0SetOperatorImpl<X>(getTarget().execute(function));
     }
 
     

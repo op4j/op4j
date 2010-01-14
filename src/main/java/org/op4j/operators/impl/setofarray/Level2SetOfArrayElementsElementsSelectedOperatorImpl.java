@@ -14,32 +14,32 @@ import org.op4j.target.Target;
 public class Level2SetOfArrayElementsElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level2SetOfArrayElementsElementsSelectedOperator<T> {
 
 
-    private final Type<? super T> arrayOf;
+    private final Type<T> type;
 
 
-    public Level2SetOfArrayElementsElementsSelectedOperatorImpl(final Type<? super T> arrayOf, final Target target) {
+    public Level2SetOfArrayElementsElementsSelectedOperatorImpl(final Type<T> type, final Target target) {
         super(target);
-        this.arrayOf = arrayOf;
+        this.type = type;
     }
 
 
     public Level2SetOfArrayElementsElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return new Level2SetOfArrayElementsElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(eval));
+        return new Level2SetOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(eval));
     }
 
 
     public Level2SetOfArrayElementsElementsOperator<T> endIf() {
-        return new Level2SetOfArrayElementsElementsOperatorImpl<T>(this.arrayOf, getTarget().endSelect());
+        return new Level2SetOfArrayElementsElementsOperatorImpl<T>(this.type, getTarget().endSelect());
     }
 
 
     public Level2SetOfArrayElementsElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level2SetOfArrayElementsElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(function));
+        return new Level2SetOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(function));
     }
 
 
     public Level2SetOfArrayElementsElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return new Level2SetOfArrayElementsElementsSelectedOperatorImpl<T>(this.arrayOf, getTarget().execute(converter));
+        return new Level2SetOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(converter));
     }
 
 

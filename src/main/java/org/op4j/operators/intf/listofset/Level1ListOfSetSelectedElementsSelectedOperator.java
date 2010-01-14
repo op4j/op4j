@@ -27,9 +27,7 @@ import java.util.Set;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableSetSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -46,9 +44,7 @@ public interface Level1ListOfSetSelectedElementsSelectedOperator<T>
         extends UniqOperator<List<Set<T>>>,
                 NavigableCollectionOperator<T>,
     	        SortableOperator<T>,
-                ExecutableSelectedOperator<Set<T>>,
-                ConvertibleSelectedOperator<Set<T>>,
-                EvaluableSelectedOperator<Set<T>>,
+                ExecutableSetSelectedOperator<T>,
                 SelectedOperator<Set<T>>,
                 ModifiableCollectionOperator<T> {
 
@@ -78,11 +74,11 @@ public interface Level1ListOfSetSelectedElementsSelectedOperator<T>
     public Level1ListOfSetSelectedElementsSelectedOperator<T> removeNulls();
     
     
-    public Level1ListOfSetSelectedElementsSelectedOperator<T> convert(final IConverter<? extends Set<T>,? super Set<T>> converter);
+    public Level1ListOfSetSelectedElementsSelectedOperator<T> convert(final IConverter<? extends Set<? extends T>,? super Set<T>> converter);
     
-    public Level1ListOfSetSelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends Set<T>,? super Set<T>> eval);
+    public Level1ListOfSetSelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval);
 
-    public Level1ListOfSetSelectedElementsSelectedOperator<T> exec(final IFunction<? extends Set<T>, ? super Set<T>> function);
+    public Level1ListOfSetSelectedElementsSelectedOperator<T> exec(final IFunction<? extends Set<? extends T>, ? super Set<T>> function);
     
 		            
 }

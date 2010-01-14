@@ -68,8 +68,6 @@ import org.op4j.operators.qualities.CastableToSetOfMapOperator;
 import org.op4j.operators.qualities.CastableToSetOfSetOperator;
 import org.op4j.operators.qualities.CastableToSetOperator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
 import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.ModifiableGrowableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
@@ -108,8 +106,6 @@ public interface Level0GenericUniqOperator<T>
                 CastableToSetOfMapOperator,
                 CastableToSetOfSetOperator,
         		BuilderOperator<T>,
-        		ConvertibleOperator<T>,
-        		EvaluableOperator<T>,
         		ExecutableOperator<T>,
                 CastableToTypeOperator<T>,
                 SelectableOperator<T>,

@@ -33,7 +33,7 @@ import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueEntriesKeyOper
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueEntriesKeySelectedOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
-import org.op4j.util.TargetUtils;
+import org.op4j.util.NormalizationUtils;
 
 
 /**
@@ -59,7 +59,7 @@ public class Level4MapOfMapEntriesValueEntriesKeyOperatorImpl<K1,K2,V> extends A
 
     public <X> Level4MapOfMapEntriesValueEntriesKeyOperator<K1, X, V> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        TargetUtils.checkIsMapOfMapOfValueOfKey(type, get());
+        NormalizationUtils.checkIsMapOfMapOfValueOfKey(type, get());
         return new Level4MapOfMapEntriesValueEntriesKeyOperatorImpl<K1, X, V>(getTarget());
     }
 
@@ -71,23 +71,6 @@ public class Level4MapOfMapEntriesValueEntriesKeyOperatorImpl<K1,K2,V> extends A
 
 
 
-
-    public <X> Level4MapOfMapEntriesValueEntriesKeyOperator<K1, X, V> convert(final IConverter<X, ? super K2> converter) {
-        return new Level4MapOfMapEntriesValueEntriesKeyOperatorImpl<K1, X, V>(getTarget().execute(converter));
-    }
-
-
-    public <X> Level4MapOfMapEntriesValueEntriesKeyOperator<K1, X, V> eval(final IEvaluator<X, ? super K2> eval) {
-        return new Level4MapOfMapEntriesValueEntriesKeyOperatorImpl<K1, X, V>(getTarget().execute(eval));
-    }
-
-
-    public <X> Level4MapOfMapEntriesValueEntriesKeyOperator<K1, X, V> exec(final IFunction<X, ? super K2> function) {
-        return new Level4MapOfMapEntriesValueEntriesKeyOperatorImpl<K1, X, V>(getTarget().execute(function));
-    }
-    
-    
-    
 
     public Map<K1, Map<K2, V>> get() {
         return endOn().endFor().endOn().endFor().get();
@@ -141,6 +124,21 @@ public class Level4MapOfMapEntriesValueEntriesKeyOperatorImpl<K1,K2,V> extends A
 
     public Level4MapOfMapEntriesValueEntriesKeySelectedOperator<K1, K2, V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super K2> eval) {
         return new Level4MapOfMapEntriesValueEntriesKeySelectedOperatorImpl<K1, K2, V>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X> Level4MapOfMapEntriesValueEntriesKeyOperator<K1, X, V> convert(final IConverter<X, ? super K2> converter) {
+        return new Level4MapOfMapEntriesValueEntriesKeyOperatorImpl<K1, X, V>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level4MapOfMapEntriesValueEntriesKeyOperator<K1, X, V> eval(final IEvaluator<X, ? super K2> eval) {
+        return new Level4MapOfMapEntriesValueEntriesKeyOperatorImpl<K1, X, V>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level4MapOfMapEntriesValueEntriesKeyOperator<K1, X, V> exec(final IFunction<X, ? super K2> function) {
+        return new Level4MapOfMapEntriesValueEntriesKeyOperatorImpl<K1, X, V>(getTarget().execute(function));
     }
 
 

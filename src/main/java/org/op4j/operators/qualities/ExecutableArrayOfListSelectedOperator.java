@@ -19,7 +19,12 @@
  */
 package org.op4j.operators.qualities;
 
+import java.util.List;
+
+import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
+
 
 
 
@@ -30,8 +35,12 @@ import org.op4j.functions.evaluators.IEvaluator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface EvaluableOperator<T> {
+public interface ExecutableArrayOfListSelectedOperator<T> {
+
+    public ExecutableArrayOfListSelectedOperator<T> exec(final IFunction<? extends List<? extends T>[], ? super List<T>[]> function);
     
-    public <X> EvaluableOperator<X> eval(final IEvaluator<X,? super T> eval);
+    public ExecutableArrayOfListSelectedOperator<T> eval(final IEvaluator<? extends List<? extends T>[],? super List<T>[]> eval);
+    
+    public ExecutableArrayOfListSelectedOperator<T> convert(final IConverter<? extends List<? extends T>[],? super List<T>[]> converter);
     
 }

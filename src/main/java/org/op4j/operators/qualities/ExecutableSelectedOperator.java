@@ -20,6 +20,8 @@
 package org.op4j.operators.qualities;
 
 import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
+import org.op4j.functions.evaluators.IEvaluator;
 
 
 
@@ -35,5 +37,9 @@ import org.op4j.functions.IFunction;
 public interface ExecutableSelectedOperator<T> {
 
     public ExecutableSelectedOperator<T> exec(final IFunction<? extends T,? super T> function);
+    
+    public ExecutableSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
+    
+    public ExecutableSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter);
     
 }

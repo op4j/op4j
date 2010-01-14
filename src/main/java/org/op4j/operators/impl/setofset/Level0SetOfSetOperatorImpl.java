@@ -264,24 +264,7 @@ public class Level0SetOfSetOperatorImpl<T> extends AbstractOperatorImpl
     
     
     
-	public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super Set<Set<T>>> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter));
-	}
-
-
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super Set<Set<T>>> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval));
-    }
-
-
-    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Set<Set<T>>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function));
-	}
-
-    
-
-
-    public <X> Level0SetOfSetOperator<X> asSetOfSetOf(final Type<X> type) {
+	public <X> Level0SetOfSetOperator<X> asSetOfSetOf(final Type<X> type) {
         return generic().asSetOfSetOf(type);
     }
 
@@ -338,6 +321,21 @@ public class Level0SetOfSetOperatorImpl<T> extends AbstractOperatorImpl
 
     public Level0SetOfSetSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Set<Set<T>>> eval) {
         return new Level0SetOfSetSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X> Level0SetOfSetOperator<X> convert(final IConverter<? extends Set<? extends Set<X>>, ? super Set<Set<T>>> converter) {
+        return new Level0SetOfSetOperatorImpl<X>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level0SetOfSetOperator<X> eval(final IEvaluator<? extends Set<? extends Set<X>>, ? super Set<Set<T>>> eval) {
+        return new Level0SetOfSetOperatorImpl<X>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level0SetOfSetOperator<X> exec(final IFunction<? extends Set<? extends Set<X>>, ? super Set<Set<T>>> function) {
+        return new Level0SetOfSetOperatorImpl<X>(getTarget().execute(function));
     }
     
     

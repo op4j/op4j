@@ -19,7 +19,12 @@
  */
 package org.op4j.operators.qualities;
 
+import java.util.Map;
+
+import org.op4j.functions.IFunction;
+import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
+
 
 
 
@@ -30,8 +35,12 @@ import org.op4j.functions.evaluators.IEvaluator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface EvaluableSelectedOperator<T> {
+public interface ExecutableMapOfArrayEntryOperator<K,V> {
+
+    public <X,Y> ExecutableMapOfArrayEntryOperator<X,Y> exec(final IFunction<? extends Map.Entry<X,Y[]>, ? super Map.Entry<K,V[]>> function);
     
-    public EvaluableSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
+    public <X,Y> ExecutableMapOfArrayEntryOperator<X,Y> eval(final IEvaluator<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> eval);
+    
+    public <X,Y> ExecutableMapOfArrayEntryOperator<X,Y> convert(final IConverter<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> converter);
     
 }

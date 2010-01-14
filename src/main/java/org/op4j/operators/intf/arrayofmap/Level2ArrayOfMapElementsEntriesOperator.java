@@ -24,10 +24,7 @@ import java.util.Map;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.intf.arrayoflist.Level2ArrayOfListElementsElementsOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
+import org.op4j.operators.qualities.ExecutableMapEntryOperator;
 import org.op4j.operators.qualities.NavigableMapEntryOperator;
 import org.op4j.operators.qualities.NavigatingMapOperator;
 import org.op4j.operators.qualities.SelectableMapEntryOperator;
@@ -44,9 +41,7 @@ import org.op4j.operators.qualities.UniqOperator;
 public interface Level2ArrayOfMapElementsEntriesOperator<K,V> 
 		extends UniqOperator<Map<K,V>[]>,
 		        NavigableMapEntryOperator,
-                ExecutableOperator<Map.Entry<K,V>>,
-                EvaluableOperator<Map.Entry<K,V>>,
-                ConvertibleOperator<Map.Entry<K,V>>,
+                ExecutableMapEntryOperator<K,V>,
                 SelectableMapEntryOperator<K, V>,
                 NavigatingMapOperator<K,V> {
 
@@ -64,10 +59,10 @@ public interface Level2ArrayOfMapElementsEntriesOperator<K,V>
     
     public Level1ArrayOfMapElementsOperator<K,V> endFor();
     
-    public <X> Level2ArrayOfListElementsElementsOperator<X> exec(final IFunction<X, ? super Map.Entry<K,V>> function);
+    public <X,Y> Level2ArrayOfMapElementsEntriesOperator<X,Y> exec(final IFunction<? extends Map.Entry<X,Y>, ? super Map.Entry<K,V>> function);
     
-    public <X> Level2ArrayOfListElementsElementsOperator<X> eval(final IEvaluator<X,? super Map.Entry<K,V>> eval);
+    public <X,Y> Level2ArrayOfMapElementsEntriesOperator<X,Y> eval(final IEvaluator<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> eval);
     
-    public <X> Level2ArrayOfListElementsElementsOperator<X> convert(final IConverter<X,? super Map.Entry<K,V>> converter);
+    public <X,Y> Level2ArrayOfMapElementsEntriesOperator<X,Y> convert(final IConverter<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> converter);
                                     
 }

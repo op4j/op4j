@@ -30,9 +30,7 @@ import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.listofmap.Level0ListOfMapOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.operators.qualities.CastableToMapOfMapOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
+import org.op4j.operators.qualities.ExecutableMapOfMapOperator;
 import org.op4j.operators.qualities.ExtractableMapOperator;
 import org.op4j.operators.qualities.GenerizableOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
@@ -52,9 +50,7 @@ public interface Level0MapOfMapOperator<K1,K2,V>
                 NavigableMapOperator<K1,Map<K2,V>>,
 		        SortableOperator<Map.Entry<K1,Map<K2,V>>>,
                 CastableToMapOfMapOperator,
-                ExecutableOperator<Map<K1,Map<K2,V>>>,
-                ConvertibleOperator<Map<K1,Map<K2,V>>>,
-                EvaluableOperator<Map<K1,Map<K2,V>>>,
+                ExecutableMapOfMapOperator<K1,K2,V>,
 		        ModifiableMapOperator<K1,Map<K2,V>>,
                 ExtractableMapOperator<K1,Map<K2,V>>,
                 SelectableOperator<Map<K1,Map<K2,V>>>,
@@ -101,11 +97,11 @@ public interface Level0MapOfMapOperator<K1,K2,V>
 
     
     
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Map<K1,Map<K2,V>>> converter);
+    public <X1,X2,Y> Level0MapOfMapOperator<X1,X2,Y> convert(final IConverter<? extends Map<X1,? extends Map<X2,Y>>,? super Map<K1,Map<K2,V>>> converter);
     
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Map<K1,Map<K2,V>>> eval);
+    public <X1,X2,Y> Level0MapOfMapOperator<X1,X2,Y> eval(final IEvaluator<? extends Map<X1,? extends Map<X2,Y>>,? super Map<K1,Map<K2,V>>> eval);
 
-    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K1,Map<K2,V>>> function);
+    public <X1,X2,Y> Level0MapOfMapOperator<X1,X2,Y> exec(final IFunction<? extends Map<X1,? extends Map<X2,Y>>, ? super Map<K1,Map<K2,V>>> function);
     
     
     public <X1,X2,Y> Level0MapOfMapOperator<X1,X2,Y> asMapOfMapOf(final Type<X1> key1Type, final Type<X2> key2Type, final Type<Y> valueType);

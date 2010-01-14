@@ -23,16 +23,14 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
 
-
+import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableArraySelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
-import org.op4j.operators.qualities.NavigableCollectionOperator;
+import org.op4j.operators.qualities.NavigableArrayOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -45,12 +43,10 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level2MapOfArraySelectedEntriesValueSelectedOperator<K,V>
         extends UniqOperator<Map<K,V[]>>,
-                NavigableCollectionOperator<V>,
+                NavigableArrayOperator<V>,
 		        DistinguishableOperator,
 		        SortableOperator<V>,
-                ExecutableSelectedOperator<V[]>,
-                ConvertibleSelectedOperator<V[]>,
-                EvaluableSelectedOperator<V[]>,
+                ExecutableArraySelectedOperator<V>,
                 ModifiableCollectionOperator<V>,
                 SelectedOperator<V[]> {
 
@@ -59,7 +55,7 @@ public interface Level2MapOfArraySelectedEntriesValueSelectedOperator<K,V>
     public Level2MapOfArraySelectedEntriesValueOperator<K,V> endIf();
 
     
-    public Level3MapOfArraySelectedEntriesValueSelectedElementsOperator<K,V> forEach();
+    public Level3MapOfArraySelectedEntriesValueSelectedElementsOperator<K,V> forEach(final Type<V> elementType);
 
     public Level2MapOfArraySelectedEntriesValueSelectedOperator<K,V> distinct();
     

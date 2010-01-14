@@ -565,6 +565,5 @@ public class StructureTarget extends Target {
         
     }
 
-
     
 }

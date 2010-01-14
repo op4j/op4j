@@ -25,8 +25,6 @@ import java.util.Set;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
 import org.op4j.operators.qualities.SelectableOperator;
@@ -43,8 +41,6 @@ import org.op4j.operators.qualities.UniqOperator;
 public interface Level3SetOfMapSelectedElementsEntriesSelectedValueOperator<K,V>
         extends UniqOperator<Set<Map<K,V>>>,
                 NavigatingMapEntryOperator,
-                ConvertibleSelectedOperator<V>,
-        		EvaluableSelectedOperator<V>,
         		ExecutableSelectedOperator<V>,
                 SelectableOperator<V> {
 

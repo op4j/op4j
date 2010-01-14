@@ -19,7 +19,12 @@
  */
 package org.op4j.operators.qualities;
 
+import java.util.List;
+import java.util.Map;
+
+import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
+import org.op4j.functions.evaluators.IEvaluator;
 
 
 
@@ -31,8 +36,12 @@ import org.op4j.functions.converters.IConverter;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ConvertibleOperator<T> {
+public interface ExecutableMapOfListEntrySelectedOperator<K,V> {
+
+    public ExecutableMapOfListEntrySelectedOperator<K,V> exec(final IFunction<? extends Map.Entry<? extends K,? extends List<? extends V>>, ? super Map.Entry<K,List<V>>> function);
     
-    public <X> ConvertibleOperator<X> convert(final IConverter<X,? super T> converter);
+    public ExecutableMapOfListEntrySelectedOperator<K,V> eval(final IEvaluator<? extends Map.Entry<? extends K,? extends List<? extends V>>,? super Map.Entry<K,List<V>>> eval);
+    
+    public ExecutableMapOfListEntrySelectedOperator<K,V> convert(final IConverter<? extends Map.Entry<? extends K,? extends List<? extends V>>,? super Map.Entry<K,List<V>>> converter);
     
 }

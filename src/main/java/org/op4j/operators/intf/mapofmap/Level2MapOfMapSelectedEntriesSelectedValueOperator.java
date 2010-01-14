@@ -25,9 +25,7 @@ import java.util.Map;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableMapSelectedOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
@@ -46,9 +44,7 @@ public interface Level2MapOfMapSelectedEntriesSelectedValueOperator<K1,K2,V>
                 NavigableMapOperator<K2,V>,
 		        NavigatingMapEntryOperator,
 		        SortableOperator<Map.Entry<K2,V>>,
-                ExecutableSelectedOperator<Map<K2,V>>,
-                ConvertibleSelectedOperator<Map<K2,V>>,
-                EvaluableSelectedOperator<Map<K2,V>>,
+                ExecutableMapSelectedOperator<K2,V>,
                 ModifiableMapOperator<K2,V>,
                 SelectableOperator<Map<K2,V>> {
 
@@ -84,11 +80,11 @@ public interface Level2MapOfMapSelectedEntriesSelectedValueOperator<K1,K2,V>
     
     
     
-    public Level2MapOfMapSelectedEntriesSelectedValueOperator<K1,K2,V> convert(final IConverter<? extends Map<K2,V>,? super Map<K2,V>> converter);
+    public Level2MapOfMapSelectedEntriesSelectedValueOperator<K1,K2,V> convert(final IConverter<? extends Map<? extends K2,? extends V>,? super Map<K2,V>> converter);
     
-    public Level2MapOfMapSelectedEntriesSelectedValueOperator<K1,K2,V> eval(final IEvaluator<? extends Map<K2,V>,? super Map<K2,V>> eval);
+    public Level2MapOfMapSelectedEntriesSelectedValueOperator<K1,K2,V> eval(final IEvaluator<? extends Map<? extends K2,? extends V>,? super Map<K2,V>> eval);
 
-    public Level2MapOfMapSelectedEntriesSelectedValueOperator<K1,K2,V> exec(final IFunction<? extends Map<K2,V>, ? super Map<K2,V>> function);
+    public Level2MapOfMapSelectedEntriesSelectedValueOperator<K1,K2,V> exec(final IFunction<? extends Map<? extends K2,? extends V>, ? super Map<K2,V>> function);
     
     
     

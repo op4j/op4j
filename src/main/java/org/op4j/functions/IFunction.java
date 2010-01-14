@@ -31,7 +31,7 @@ import org.javaruntype.type.Type;
  */
 public interface IFunction<R,T> {
     
-    public Type<? super R> getResultType();
+    public Type<? extends R> getResultType(final Type<? extends T> targetType);
     
     public R execute(final T object, final ExecCtx ctx) throws Exception;
 

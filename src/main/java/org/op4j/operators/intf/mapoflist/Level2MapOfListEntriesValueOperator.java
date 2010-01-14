@@ -29,18 +29,15 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
-import org.op4j.operators.intf.map.Level2MapEntriesValueOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.Level2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.operators.qualities.CastableToListOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
 import org.op4j.operators.qualities.ConvertibleToArrayOperator;
 import org.op4j.operators.qualities.ConvertibleToMapOperator;
 import org.op4j.operators.qualities.ConvertibleToSetOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
+import org.op4j.operators.qualities.ExecutableListOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
@@ -61,9 +58,7 @@ public interface Level2MapOfListEntriesValueOperator<K,V>
 		        DistinguishableOperator,
 		        SortableOperator<V>,
 		        CastableToListOperator,
-                ExecutableOperator<List<V>>,
-                ConvertibleOperator<List<V>>,
-                EvaluableOperator<List<V>>,
+                ExecutableListOperator<V>,
                 ModifiableCollectionOperator<V>,
                 SelectableOperator<List<V>>,
                 ConvertibleToArrayOperator<V>,
@@ -117,11 +112,11 @@ public interface Level2MapOfListEntriesValueOperator<K,V>
     public <K2,V2> Level2MapOfMapEntriesValueOperator<K,K2,V2> toMap(final IMapBuilder<K2,V2,? super V> mapBuild);
 
     
-    public <X> Level2MapEntriesValueOperator<K,X> convert(final IConverter<X,? super List<V>> converter);
+    public <X> Level2MapOfListEntriesValueOperator<K,X> convert(final IConverter<? extends List<X>,? super List<V>> converter);
     
-    public <X> Level2MapEntriesValueOperator<K,X> eval(final IEvaluator<X,? super List<V>> eval);
+    public <X> Level2MapOfListEntriesValueOperator<K,X> eval(final IEvaluator<? extends List<X>,? super List<V>> eval);
 
-    public <X> Level2MapEntriesValueOperator<K,X> exec(final IFunction<X, ? super List<V>> function);
+    public <X> Level2MapOfListEntriesValueOperator<K,X> exec(final IFunction<? extends List<X>, ? super List<V>> function);
     
     
     public <X> Level2MapOfListEntriesValueOperator<K,X> asListOf(final Type<X> type);

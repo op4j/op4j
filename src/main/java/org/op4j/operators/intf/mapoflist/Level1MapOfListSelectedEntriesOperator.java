@@ -25,9 +25,7 @@ import java.util.List;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableMapOfListEntrySelectedOperator;
 import org.op4j.operators.qualities.NavigableMapEntryOperator;
 import org.op4j.operators.qualities.NavigatingMapOperator;
 import org.op4j.operators.qualities.SelectableMapEntryOperator;
@@ -45,10 +43,8 @@ public interface Level1MapOfListSelectedEntriesOperator<K,V>
 		extends UniqOperator<Map<K,List<V>>>,
 		        NavigableMapEntryOperator,
 		        NavigatingMapOperator<K,List<V>>,
-                ExecutableSelectedOperator<Map.Entry<K,List<V>>>,
-                EvaluableSelectedOperator<Map.Entry<K,List<V>>>,
-                SelectableMapEntryOperator<K, List<V>>,
-                ConvertibleSelectedOperator<Map.Entry<K,List<V>>> {
+                ExecutableMapOfListEntrySelectedOperator<K,V>,
+                SelectableMapEntryOperator<K, List<V>> {
 
 
     public Level1MapOfListSelectedEntriesSelectedOperator<K,V> ifIndex(final int... indices);
@@ -64,10 +60,10 @@ public interface Level1MapOfListSelectedEntriesOperator<K,V>
     
     public Level0MapOfListSelectedOperator<K,V> endFor();
     
-    public Level1MapOfListSelectedEntriesOperator<K,V> exec(final IFunction<? extends Map.Entry<K,List<V>>, ? super Map.Entry<K,List<V>>> function);
+    public Level1MapOfListSelectedEntriesOperator<K,V> exec(final IFunction<? extends Map.Entry<? extends K,? extends List<? extends V>>, ? super Map.Entry<K,List<V>>> function);
     
-    public Level1MapOfListSelectedEntriesOperator<K,V> eval(final IEvaluator<? extends Map.Entry<K,List<V>>, ? super Map.Entry<K,List<V>>> eval);
+    public Level1MapOfListSelectedEntriesOperator<K,V> eval(final IEvaluator<? extends Map.Entry<? extends K,? extends List<? extends V>>, ? super Map.Entry<K,List<V>>> eval);
     
-    public Level1MapOfListSelectedEntriesOperator<K,V> convert(final IConverter<? extends Map.Entry<K,List<V>>, ? super Map.Entry<K,List<V>>> converter);
+    public Level1MapOfListSelectedEntriesOperator<K,V> convert(final IConverter<? extends Map.Entry<? extends K,? extends List<? extends V>>, ? super Map.Entry<K,List<V>>> converter);
                                     
 }

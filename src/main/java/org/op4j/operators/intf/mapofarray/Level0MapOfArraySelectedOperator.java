@@ -22,13 +22,10 @@ package org.op4j.operators.intf.mapofarray;
 import java.util.Comparator;
 import java.util.Map;
 
-
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableMapOfArraySelectedOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -46,9 +43,7 @@ public interface Level0MapOfArraySelectedOperator<K,V>
                 NavigableMapOperator<K,V[]>,
 		        SortableOperator<Map.Entry<K,V[]>>,
 		        ModifiableMapOperator<K,V[]>,
-                ExecutableSelectedOperator<Map<K,V[]>>,
-                ConvertibleSelectedOperator<Map<K,V[]>>,
-                EvaluableSelectedOperator<Map<K,V[]>>,
+                ExecutableMapOfArraySelectedOperator<K,V>,
                 SelectedOperator<Map<K,V[]>> {
 
 
@@ -72,11 +67,11 @@ public interface Level0MapOfArraySelectedOperator<K,V>
     public Level0MapOfArraySelectedOperator<K,V> removeKeysNot(final K... keys);
     
     
-    public Level0MapOfArraySelectedOperator<K,V> convert(final IConverter<? extends Map<K,V[]>, ? super Map<K,V[]>> converter);
+    public Level0MapOfArraySelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends V[]>, ? super Map<K,V[]>> converter);
     
-    public Level0MapOfArraySelectedOperator<K,V> eval(final IEvaluator<? extends Map<K,V[]>, ? super Map<K,V[]>> eval);
+    public Level0MapOfArraySelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V[]>, ? super Map<K,V[]>> eval);
 
-    public Level0MapOfArraySelectedOperator<K,V> exec(final IFunction<? extends Map<K,V[]>, ? super Map<K,V[]>> function);
+    public Level0MapOfArraySelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V[]>, ? super Map<K,V[]>> function);
     
     
     

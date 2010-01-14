@@ -28,17 +28,14 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
-import org.op4j.operators.intf.array.Level1ArrayElementsOperator;
 import org.op4j.operators.intf.arrayofarray.Level1ArrayOfArrayElementsOperator;
 import org.op4j.operators.intf.arrayoflist.Level1ArrayOfListElementsOperator;
 import org.op4j.operators.intf.arrayofmap.Level1ArrayOfMapElementsOperator;
 import org.op4j.operators.qualities.CastableToSetOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
 import org.op4j.operators.qualities.ConvertibleToArrayOperator;
 import org.op4j.operators.qualities.ConvertibleToListOperator;
 import org.op4j.operators.qualities.ConvertibleToMapOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
+import org.op4j.operators.qualities.ExecutableSetOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
@@ -59,10 +56,8 @@ public interface Level1ArrayOfSetElementsOperator<T>
 		        SortableOperator<T>,
 		        CastableToSetOperator,
                 ModifiableCollectionOperator<T>,
-                ExecutableOperator<Set<T>>,
-                ConvertibleOperator<Set<T>>,
+                ExecutableSetOperator<T>,
                 SelectableOperator<Set<T>>,
-                EvaluableOperator<Set<T>>,
                 ConvertibleToArrayOperator<T>,
                 ConvertibleToListOperator,
                 ConvertibleToMapOperator<T> {
@@ -112,11 +107,11 @@ public interface Level1ArrayOfSetElementsOperator<T>
     public <K,V> Level1ArrayOfMapElementsOperator<K,V> toMap(final IMapBuilder<K,V,? super T> mapBuild);
 
     
-    public <X> Level1ArrayElementsOperator<X> convert(final IConverter<X,? super Set<T>> converter);
+    public <X> Level1ArrayOfSetElementsOperator<X> convert(final IConverter<? extends Set<X>,? super Set<T>> converter);
     
-    public <X> Level1ArrayElementsOperator<X> eval(final IEvaluator<X,? super Set<T>> eval);
+    public <X> Level1ArrayOfSetElementsOperator<X> eval(final IEvaluator<? extends Set<X>,? super Set<T>> eval);
 
-    public <X> Level1ArrayElementsOperator<X> exec(final IFunction<X, ? super Set<T>> function);
+    public <X> Level1ArrayOfSetElementsOperator<X> exec(final IFunction<? extends Set<X>, ? super Set<T>> function);
     
     
     

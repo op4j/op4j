@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.exceptions.TargetCastException;
@@ -39,7 +40,7 @@ import org.op4j.exceptions.TargetCastException;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class TargetUtils {
+public class NormalizationUtils {
 
 
     
@@ -387,7 +388,7 @@ public class TargetUtils {
 
     
     @SuppressWarnings("unchecked")
-    public static <T> T[] copyArray(final T[] array) {
+    public static <T> T[] normalizeArray(final T[] array) {
         if (array == null) {
             return null;
         }
@@ -396,58 +397,58 @@ public class TargetUtils {
 
     
     @SuppressWarnings("unchecked")
-    public static <T> T[][] copyArrayOfArray(final T[][] arrayOfArray) {
+    public static <T> T[][] normalizeArrayOfArray(final T[][] arrayOfArray) {
         if (arrayOfArray == null) {
             return null;
         }
         final T[][] result = (T[][]) ArrayUtils.clone(arrayOfArray);
         for (int i = 0; i < result.length; i++) {
-            result[i] = copyArray(result[i]);
+            result[i] = normalizeArray(result[i]);
         }
         return result;
     }
 
     
     @SuppressWarnings("unchecked")
-    public static <T> List<T>[] copyArrayOfList(final List<T>[] arrayOfList) {
+    public static <T> List<T>[] normalizeArrayOfList(final List<T>[] arrayOfList) {
         if (arrayOfList == null) {
             return null;
         }
         final List<T>[] result = (List<T>[]) ArrayUtils.clone(arrayOfList);
         for (int i = 0; i < result.length; i++) {
-            result[i] = copyList(result[i]);
+            result[i] = normalizeList(result[i]);
         }
         return result;
     }
 
     
     @SuppressWarnings("unchecked")
-    public static <K,V> Map<K,V>[] copyArrayOfMap(final Map<K,V>[] arrayOfMap) {
+    public static <K,V> Map<K,V>[] normalizeArrayOfMap(final Map<K,V>[] arrayOfMap) {
         if (arrayOfMap == null) {
             return null;
         }
         final Map<K,V>[] result = (Map<K,V>[]) ArrayUtils.clone(arrayOfMap);
         for (int i = 0; i < result.length; i++) {
-            result[i] = copyMap(result[i]);
+            result[i] = normalizeMap(result[i]);
         }
         return result;
     }
 
     
     @SuppressWarnings("unchecked")
-    public static <T> Set<T>[] copyArrayOfSet(final Set<T>[] arrayOfSet) {
+    public static <T> Set<T>[] normalizeArrayOfSet(final Set<T>[] arrayOfSet) {
         if (arrayOfSet == null) {
             return null;
         }
         final Set<T>[] result = (Set<T>[]) ArrayUtils.clone(arrayOfSet);
         for (int i = 0; i < result.length; i++) {
-            result[i] = copySet(result[i]);
+            result[i] = normalizeSet(result[i]);
         }
         return result;
     }
     
     
-    public static <T> List<T> copyList(final List<T> list) {
+    public static <T> List<T> normalizeList(final List<T> list) {
         if (list == null) {
             return null;
         }
@@ -455,55 +456,55 @@ public class TargetUtils {
     }
 
     
-    public static <T> List<T[]> copyListOfArray(final List<? extends T[]> listOfArray) {
+    public static <T> List<T[]> normalizeListOfArray(final List<? extends T[]> listOfArray) {
         if (listOfArray == null) {
             return null;
         }
         final List<T[]> result = new ArrayList<T[]>();
         for (final T[] element : listOfArray) {
-            result.add(copyArray(element));
+            result.add(normalizeArray(element));
         }
         return result;
     }
 
     
-    public static <T> List<List<T>> copyListOfList(final List<? extends List<T>> listOfList) {
+    public static <T> List<List<T>> normalizeListOfList(final List<? extends List<T>> listOfList) {
         if (listOfList == null) {
             return null;
         }
         final List<List<T>> result = new ArrayList<List<T>>();
         for (final List<T> element : listOfList) {
-            result.add(copyList(element));
+            result.add(normalizeList(element));
         }
         return result;
     }
 
     
-    public static <K, V> List<Map<K, V>> copyListOfMap(final List<? extends Map<K, V>> listOfMap) {
+    public static <K, V> List<Map<K, V>> normalizeListOfMap(final List<? extends Map<K, V>> listOfMap) {
         if (listOfMap == null) {
             return null;
         }
         final List<Map<K, V>> result = new ArrayList<Map<K, V>>();
         for (final Map<K, V> element : listOfMap) {
-            result.add(copyMap(element));
+            result.add(normalizeMap(element));
         }
         return result;
     }
 
     
-    public static <T> List<Set<T>> copyListOfSet(final List<? extends Set<T>> listOfSet) {
+    public static <T> List<Set<T>> normalizeListOfSet(final List<? extends Set<T>> listOfSet) {
         if (listOfSet == null) {
             return null;
         }
         final List<Set<T>> result = new ArrayList<Set<T>>();
         for (final Set<T> element : listOfSet) {
-            result.add(copySet(element));
+            result.add(normalizeSet(element));
         }
         return result;
     }
     
     
-    public static <K, V> Map<K, V> copyMap(final Map<K,V> map) {
+    public static <K, V> Map<K, V> normalizeMap(final Map<K,V> map) {
         if (map == null) {
             return null;
         }
@@ -511,55 +512,55 @@ public class TargetUtils {
     }
 
     
-    public static <K, V> Map<K, V[]> copyMapOfArray(final Map<K, V[]> mapOfArray) {
+    public static <K, V> Map<K, V[]> normalizeMapOfArray(final Map<K, V[]> mapOfArray) {
         if (mapOfArray == null) {
             return null;
         }
         final Map<K, V[]> result = new LinkedHashMap<K, V[]>();
         for (final Map.Entry<K, V[]> element : mapOfArray.entrySet()) {
-            result.put(element.getKey(), copyArray(element.getValue()));
+            result.put(element.getKey(), normalizeArray(element.getValue()));
         }
         return result;
     }
 
     
-    public static <K, V> Map<K, List<V>> copyMapOfList(final Map<K, ? extends List<V>> mapOfList) {
+    public static <K, V> Map<K, List<V>> normalizeMapOfList(final Map<K, ? extends List<V>> mapOfList) {
         if (mapOfList == null) {
             return null;
         }
         final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
         for (final Map.Entry<K, ? extends List<V>> element : mapOfList.entrySet()) {
-            result.put(element.getKey(), copyList(element.getValue()));
+            result.put(element.getKey(), normalizeList(element.getValue()));
         }
         return result;
     }
 
     
-    public static <K1, K2, V> Map<K1, Map<K2, V>> copyMapOfMap(final Map<K1, ? extends Map<K2, V>> mapOfMap) {
+    public static <K1, K2, V> Map<K1, Map<K2, V>> normalizeMapOfMap(final Map<K1, ? extends Map<K2, V>> mapOfMap) {
         if (mapOfMap == null) {
             return null;
         }
         final Map<K1, Map<K2, V>> result = new LinkedHashMap<K1, Map<K2, V>>();
         for (final Map.Entry<K1, ? extends Map<K2, V>> element : mapOfMap.entrySet()) {
-            result.put(element.getKey(), copyMap(element.getValue()));
+            result.put(element.getKey(), normalizeMap(element.getValue()));
         }
         return result;
     }
 
     
-    public static <K, V> Map<K, Set<V>> copyMapOfSet(final Map<K, ? extends Set<V>> mapOfSet) {
+    public static <K, V> Map<K, Set<V>> normalizeMapOfSet(final Map<K, ? extends Set<V>> mapOfSet) {
         if (mapOfSet == null) {
             return null;
         }
         final Map<K, Set<V>> result = new LinkedHashMap<K, Set<V>>();
         for (final Map.Entry<K, ? extends Set<V>> element : mapOfSet.entrySet()) {
-            result.put(element.getKey(), copySet(element.getValue()));
+            result.put(element.getKey(), normalizeSet(element.getValue()));
         }
         return result;
     }
     
     
-    public static <T> Set<T> copySet(final Set<T> set) {
+    public static <T> Set<T> normalizeSet(final Set<T> set) {
         if (set == null) {
             return null;
         }
@@ -567,55 +568,114 @@ public class TargetUtils {
     }
 
     
-    public static <T> Set<T[]> copySetOfArray(final Set<? extends T[]> setOfArray) {
+    public static <T> Set<T[]> normalizeSetOfArray(final Set<? extends T[]> setOfArray) {
         if (setOfArray == null) {
             return null;
         }
         final Set<T[]> result = new LinkedHashSet<T[]>();
         for (final T[] element : setOfArray) {
-            result.add(copyArray(element));
+            result.add(normalizeArray(element));
         }
         return result;
     }
 
     
-    public static <T> Set<List<T>> copySetOfList(final Set<? extends List<T>> setOfList) {
+    public static <T> Set<List<T>> normalizeSetOfList(final Set<? extends List<T>> setOfList) {
         if (setOfList == null) {
             return null;
         }
         final Set<List<T>> result = new LinkedHashSet<List<T>>();
         for (final List<T> element : setOfList) {
-            result.add(copyList(element));
+            result.add(normalizeList(element));
         }
         return result;
     }
 
     
-    public static <K, V> Set<Map<K, V>> copySetOfMap(final Set<? extends Map<K, V>> setOfMap) {
+    public static <K, V> Set<Map<K, V>> normalizeSetOfMap(final Set<? extends Map<K, V>> setOfMap) {
         if (setOfMap == null) {
             return null;
         }
         final Set<Map<K, V>> result = new LinkedHashSet<Map<K, V>>();
         for (final Map<K, V> element : setOfMap) {
-            result.add(copyMap(element));
+            result.add(normalizeMap(element));
         }
         return result;
     }
 
     
-    public static <T> Set<Set<T>> copySetOfSet(final Set<? extends Set<T>> setOfSet) {
+    public static <T> Set<Set<T>> normalizeSetOfSet(final Set<? extends Set<T>> setOfSet) {
         if (setOfSet == null) {
             return null;
         }
         final Set<Set<T>> result = new LinkedHashSet<Set<T>>();
         for (final Set<T> element : setOfSet) {
-            result.add(copySet(element));
+            result.add(normalizeSet(element));
         }
         return result;
     }
     
+
     
-    private TargetUtils() {
+    
+    
+
+    public static <T> Type<T[]> buildArrayExecutionTargetType(final Type<T> arrayOf) {
+        return null;
+    }
+
+    public static <T> Type<T[][]> buildArrayOfArrayExecutionTargetType(final Type<T> arrayOf) {
+        return null;
+    }
+
+    public static <T> Type<List<T[]>> buildListOfArrayExecutionTargetType(final Type<T> arrayOf) {
+        return null;
+    }
+
+    public static <T> Type<Set<T[]>> buildSetOfArrayExecutionTargetType(final Type<T> arrayOf) {
+        return null;
+    }
+
+    public static <T> Type<Map<?,T[]>> buildMapOfArrayExecutionTargetType(final Type<T> arrayOf) {
+        return null;
+    }
+
+
+
+    public static <T> Type<T> extractArrayOfFromElementExecutionTargetType(final Type<? extends T> type) {
+        return null;
+    }
+
+    public static <T> Type<T[]> extractArrayFromArrayExecutionTargetType(final Type<? extends T[]> type) {
+        return null;
+    }
+
+    public static <T> Type<T> extractArrayOfFromArrayExecutionTargetType(final Type<? extends T[]> type) {
+        return null;
+    }
+
+    public static <T> Type<T> extractArrayOfFromArrayOfArrayExecutionTargetType(final Type<? extends T[][]> type) {
+        return null;
+    }
+
+    public static <T> Type<T> extractArrayOfFromListOfArrayExecutionTargetType(final Type<? extends List<T[]>> type) {
+        return null;
+    }
+
+    public static <T> Type<T> extractArrayOfFromMapOfArrayExecutionTargetType(final Type<? extends Map<?, T[]>> type) {
+        return null;
+    }
+
+    public static <T> Type<T> extractArrayOfFromSetOfArrayExecutionTargetType(final Type<? extends Set<T[]>> type) {
+        return null;
+    }
+    
+    
+    
+    
+    
+    
+    private NormalizationUtils() {
         super();
     }
     

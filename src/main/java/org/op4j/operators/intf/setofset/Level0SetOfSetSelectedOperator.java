@@ -26,9 +26,7 @@ import java.util.Set;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableSetOfSetSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -46,10 +44,8 @@ public interface Level0SetOfSetSelectedOperator<T>
                 NavigableCollectionOperator<Set<T>>,
                 SortableOperator<Set<T>>,
                 ModifiableCollectionOperator<Set<T>>,
-                ExecutableSelectedOperator<Set<Set<T>>>,
-                ConvertibleSelectedOperator<Set<Set<T>>>,
-                SelectedOperator<Set<Set<T>>>,
-                EvaluableSelectedOperator<Set<Set<T>>> {
+                ExecutableSetOfSetSelectedOperator<T>,
+                SelectedOperator<Set<Set<T>>> {
 
 
 
@@ -80,11 +76,11 @@ public interface Level0SetOfSetSelectedOperator<T>
 
 
     
-    public Level0SetOfSetSelectedOperator<T> convert(final IConverter<? extends Set<Set<T>>,? super Set<Set<T>>> converter);
+    public Level0SetOfSetSelectedOperator<T> convert(final IConverter<? extends Set<? extends Set<? extends T>>,? super Set<Set<T>>> converter);
     
-    public Level0SetOfSetSelectedOperator<T> eval(final IEvaluator<? extends Set<Set<T>>,? super Set<Set<T>>> eval);
+    public Level0SetOfSetSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends Set<? extends T>>,? super Set<Set<T>>> eval);
 
-    public Level0SetOfSetSelectedOperator<T> exec(final IFunction<? extends Set<Set<T>>, ? super Set<Set<T>>> function);
+    public Level0SetOfSetSelectedOperator<T> exec(final IFunction<? extends Set<? extends Set<? extends T>>, ? super Set<Set<T>>> function);
 
     
 }

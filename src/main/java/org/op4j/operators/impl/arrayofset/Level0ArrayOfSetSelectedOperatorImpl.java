@@ -82,7 +82,7 @@ public class Level0ArrayOfSetSelectedOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public Level0ArrayOfSetSelectedOperator<T> eval(final IEvaluator<? extends Set<T>[],? super Set<T>[]> eval) {
+    public Level0ArrayOfSetSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T>[],? super Set<T>[]> eval) {
         return new Level0ArrayOfSetSelectedOperatorImpl<T>(getTarget().execute(eval));
     }
 
@@ -107,7 +107,7 @@ public class Level0ArrayOfSetSelectedOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public Level0ArrayOfSetSelectedOperator<T> exec(final IFunction<? extends Set<T>[],? super Set<T>[]> function) {
+    public Level0ArrayOfSetSelectedOperator<T> exec(final IFunction<? extends Set<? extends T>[],? super Set<T>[]> function) {
         return new Level0ArrayOfSetSelectedOperatorImpl<T>(getTarget().execute(function));
     }
 
@@ -123,7 +123,7 @@ public class Level0ArrayOfSetSelectedOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public Level0ArrayOfSetSelectedOperator<T> convert(final IConverter<? extends Set<T>[],? super Set<T>[]> converter) {
+    public Level0ArrayOfSetSelectedOperator<T> convert(final IConverter<? extends Set<? extends T>[],? super Set<T>[]> converter) {
         return new Level0ArrayOfSetSelectedOperatorImpl<T>(getTarget().execute(converter));
     }
 

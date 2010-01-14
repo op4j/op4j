@@ -26,8 +26,6 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
-import org.op4j.operators.impl.mapoflist.Level3MapOfListEntriesValueElementsOperatorImpl;
-import org.op4j.operators.intf.mapoflist.Level3MapOfListEntriesValueElementsOperator;
 import org.op4j.operators.intf.mapofmap.Level2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.Level3MapOfMapEntriesValueEntriesOperator;
 import org.op4j.operators.intf.mapofmap.Level3MapOfMapEntriesValueEntriesSelectedOperator;
@@ -75,21 +73,6 @@ public class Level3MapOfMapEntriesValueEntriesOperatorImpl<K1,K2,V> extends Abst
     
     
     
-    public <X> Level3MapOfListEntriesValueElementsOperator<K1,X> convert(final IConverter<X, ? super Entry<K2, V>> converter) {
-        return new Level3MapOfListEntriesValueElementsOperatorImpl<K1,X>(getTarget().execute(converter));
-	}
-
-
-	public <X> Level3MapOfListEntriesValueElementsOperator<K1,X> eval(final IEvaluator<X, ? super Entry<K2, V>> eval) {
-        return new Level3MapOfListEntriesValueElementsOperatorImpl<K1,X>(getTarget().execute(eval));
-	}
-
-
-	public <X> Level3MapOfListEntriesValueElementsOperator<K1,X> exec(final IFunction<X, ? super Entry<K2, V>> function) {
-        return new Level3MapOfListEntriesValueElementsOperatorImpl<K1,X>(getTarget().execute(function));
-	}
-
-
     public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1, K2, V> ifIndex(final int... indices) {
         return new Level3MapOfMapEntriesValueEntriesSelectedOperatorImpl<K1, K2, V>(getTarget().selectIndex(indices));
     }
@@ -117,6 +100,21 @@ public class Level3MapOfMapEntriesValueEntriesOperatorImpl<K1,K2,V> extends Abst
 
     public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1, K2, V> ifNotMatching(final IEvaluator<Boolean, ? super Entry<K2, V>> eval) {
         return new Level3MapOfMapEntriesValueEntriesSelectedOperatorImpl<K1, K2, V>(getTarget().selectNotMatching(eval));
+    }
+
+
+    public <X2, Y> Level3MapOfMapEntriesValueEntriesOperator<K1, X2, Y> convert(final IConverter<? extends Entry<X2, Y>, ? super Entry<K2, V>> converter) {
+        return new Level3MapOfMapEntriesValueEntriesOperatorImpl<K1, X2, Y>(getTarget().execute(converter));
+    }
+
+
+    public <X2, Y> Level3MapOfMapEntriesValueEntriesOperator<K1, X2, Y> eval(final IEvaluator<? extends Entry<X2, Y>, ? super Entry<K2, V>> eval) {
+        return new Level3MapOfMapEntriesValueEntriesOperatorImpl<K1, X2, Y>(getTarget().execute(eval));
+    }
+
+
+    public <X2, Y> Level3MapOfMapEntriesValueEntriesOperator<K1, X2, Y> exec(final IFunction<? extends Entry<X2, Y>, ? super Entry<K2, V>> function) {
+        return new Level3MapOfMapEntriesValueEntriesOperatorImpl<K1, X2, Y>(getTarget().execute(function));
     }
     
     

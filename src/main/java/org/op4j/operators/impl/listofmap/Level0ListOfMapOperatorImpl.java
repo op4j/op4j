@@ -163,26 +163,7 @@ public class Level0ListOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
     
     
     
-	public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super List<Map<K,V>>> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter));
-	}
-
-
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super List<Map<K,V>>> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval));
-    }
-
-
-    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super List<Map<K,V>>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function));
-	}
-
-    
-    
-    
-    
-
-    public <X,Y> Level0ListOfMapOperator<X,Y> asListOfMapOf(final Type<X> keyType, final Type<Y> valueType) {
+	public <X,Y> Level0ListOfMapOperator<X,Y> asListOfMapOf(final Type<X> keyType, final Type<Y> valueType) {
     	return generic().asListOfMapOf(keyType, valueType);
     }
 
@@ -264,6 +245,21 @@ public class Level0ListOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
 
     public Level0ListOfMapSelectedOperator<K, V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super List<Map<K, V>>> eval) {
         return new Level0ListOfMapSelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X, Y> Level0ListOfMapOperator<X, Y> convert(final IConverter<? extends List<? extends Map<X, Y>>, ? super List<Map<K, V>>> converter) {
+        return new Level0ListOfMapOperatorImpl<X, Y>(getTarget().execute(converter));
+    }
+
+
+    public <X, Y> Level0ListOfMapOperator<X, Y> eval(final IEvaluator<? extends List<? extends Map<X, Y>>, ? super List<Map<K, V>>> eval) {
+        return new Level0ListOfMapOperatorImpl<X, Y>(getTarget().execute(eval));
+    }
+
+
+    public <X, Y> Level0ListOfMapOperator<X, Y> exec(final IFunction<? extends List<? extends Map<X, Y>>, ? super List<Map<K, V>>> function) {
+        return new Level0ListOfMapOperatorImpl<X, Y>(getTarget().execute(function));
     }
     
     

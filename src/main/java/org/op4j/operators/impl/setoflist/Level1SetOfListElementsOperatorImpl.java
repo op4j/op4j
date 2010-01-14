@@ -35,11 +35,9 @@ import org.op4j.functions.converters.ToSet;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
-import org.op4j.operators.impl.set.Level1SetElementsOperatorImpl;
 import org.op4j.operators.impl.setofarray.Level1SetOfArrayElementsOperatorImpl;
 import org.op4j.operators.impl.setofmap.Level1SetOfMapElementsOperatorImpl;
 import org.op4j.operators.impl.setofset.Level1SetOfSetElementsOperatorImpl;
-import org.op4j.operators.intf.set.Level1SetElementsOperator;
 import org.op4j.operators.intf.setofarray.Level1SetOfArrayElementsOperator;
 import org.op4j.operators.intf.setoflist.Level0SetOfListOperator;
 import org.op4j.operators.intf.setoflist.Level1SetOfListElementsOperator;
@@ -158,7 +156,7 @@ public class Level1SetOfListElementsOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level1SetOfArrayElementsOperator<T> toArray(final Type<T> of) {
-        return new Level1SetOfArrayElementsOperatorImpl<T>(of, getTarget().execute(new ToArray.FromCollection<T>(of)));
+        return new Level1SetOfArrayElementsOperatorImpl<T>(getTarget().execute(new ToArray.FromCollection<T>(of)));
     }
 
 
@@ -191,23 +189,7 @@ public class Level1SetOfListElementsOperatorImpl<T> extends AbstractOperatorImpl
     
     
     
-	public <X> Level1SetElementsOperator<X> convert(final IConverter<X, ? super List<T>> converter) {
-        return new Level1SetElementsOperatorImpl<X>(getTarget().execute(converter));
-	}
-
-
-    public <X> Level1SetElementsOperator<X> eval(final IEvaluator<X, ? super List<T>> eval) {
-        return new Level1SetElementsOperatorImpl<X>(getTarget().execute(eval));
-    }
-
-
-    public <X> Level1SetElementsOperator<X> exec(final IFunction<X, ? super List<T>> function) {
-        return new Level1SetElementsOperatorImpl<X>(getTarget().execute(function));
-	}
-
-    
-
-    public <X> Level1SetOfListElementsOperator<X> asListOf(final Type<X> type) {
+	public <X> Level1SetOfListElementsOperator<X> asListOf(final Type<X> type) {
     	return endFor().generic().asSetOfListOf(type).forEach();
     }
 
@@ -264,6 +246,21 @@ public class Level1SetOfListElementsOperatorImpl<T> extends AbstractOperatorImpl
 
     public Level1SetOfListElementsSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
         return new Level1SetOfListElementsSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X> Level1SetOfListElementsOperator<X> convert(final IConverter<? extends List<X>, ? super List<T>> converter) {
+        return new Level1SetOfListElementsOperatorImpl<X>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level1SetOfListElementsOperator<X> eval(final IEvaluator<? extends List<X>, ? super List<T>> eval) {
+        return new Level1SetOfListElementsOperatorImpl<X>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level1SetOfListElementsOperator<X> exec(final IFunction<? extends List<X>, ? super List<T>> function) {
+        return new Level1SetOfListElementsOperatorImpl<X>(getTarget().execute(function));
     }
     
     

@@ -134,7 +134,7 @@ public class Ognl<R,T> implements IEvaluator<R,T> {
     }
     
     
-    public Type<? super R> getResultType() {
+    public Type<R> getResultType(final Type<T> targetType) {
     	return this.resultType;
     }
     

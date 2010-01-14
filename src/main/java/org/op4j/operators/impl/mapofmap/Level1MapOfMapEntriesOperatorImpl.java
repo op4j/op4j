@@ -26,8 +26,6 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
-import org.op4j.operators.impl.list.Level1ListElementsOperatorImpl;
-import org.op4j.operators.intf.list.Level1ListElementsOperator;
 import org.op4j.operators.intf.mapofmap.Level0MapOfMapOperator;
 import org.op4j.operators.intf.mapofmap.Level1MapOfMapEntriesOperator;
 import org.op4j.operators.intf.mapofmap.Level1MapOfMapEntriesSelectedOperator;
@@ -76,21 +74,6 @@ public class Level1MapOfMapEntriesOperatorImpl<K1,K2,V> extends AbstractOperator
     
     
     
-    public <X> Level1ListElementsOperator<X> convert(final IConverter<X, ? super Entry<K1, Map<K2,V>>> converter) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(converter));
-	}
-
-
-	public <X> Level1ListElementsOperator<X> eval(final IEvaluator<X, ? super Entry<K1, Map<K2,V>>> eval) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(eval));
-	}
-
-
-	public <X> Level1ListElementsOperator<X> exec(final IFunction<X, ? super Entry<K1, Map<K2,V>>> function) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(function));
-	}
-
-
     public Level1MapOfMapEntriesSelectedOperator<K1, K2, V> ifIndex(final int... indices) {
         return new Level1MapOfMapEntriesSelectedOperatorImpl<K1, K2, V>(getTarget().selectIndex(indices));
     }
@@ -118,6 +101,21 @@ public class Level1MapOfMapEntriesOperatorImpl<K1,K2,V> extends AbstractOperator
 
     public Level1MapOfMapEntriesSelectedOperator<K1, K2, V> ifNotMatching(final IEvaluator<Boolean, ? super Entry<K1, Map<K2, V>>> eval) {
         return new Level1MapOfMapEntriesSelectedOperatorImpl<K1, K2, V>(getTarget().selectNotMatching(eval));
+    }
+
+
+    public <X1, X2, Y> Level1MapOfMapEntriesOperator<X1, X2, Y> convert(final IConverter<? extends Entry<X1, ? extends Map<X2, Y>>, ? super Entry<K1, Map<K2, V>>> converter) {
+        return new Level1MapOfMapEntriesOperatorImpl<X1, X2, Y>(getTarget().execute(converter));
+    }
+
+
+    public <X1, X2, Y> Level1MapOfMapEntriesOperator<X1, X2, Y> eval(final IEvaluator<? extends Entry<X1, ? extends Map<X2, Y>>, ? super Entry<K1, Map<K2, V>>> eval) {
+        return new Level1MapOfMapEntriesOperatorImpl<X1, X2, Y>(getTarget().execute(eval));
+    }
+
+
+    public <X1, X2, Y> Level1MapOfMapEntriesOperator<X1, X2, Y> exec(final IFunction<? extends Entry<X1, ? extends Map<X2, Y>>, ? super Entry<K1, Map<K2, V>>> function) {
+        return new Level1MapOfMapEntriesOperatorImpl<X1, X2, Y>(getTarget().execute(function));
     }
     
     

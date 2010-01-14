@@ -30,10 +30,8 @@ import org.op4j.functions.MapFuncs;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
-import org.op4j.operators.impl.array.Level1ArrayElementsOperatorImpl;
 import org.op4j.operators.impl.arrayoflist.Level1ArrayOfListElementsOperatorImpl;
 import org.op4j.operators.impl.arrayofset.Level1ArrayOfSetElementsOperatorImpl;
-import org.op4j.operators.intf.array.Level1ArrayElementsOperator;
 import org.op4j.operators.intf.arrayoflist.Level1ArrayOfListElementsOperator;
 import org.op4j.operators.intf.arrayofmap.Level0ArrayOfMapOperator;
 import org.op4j.operators.intf.arrayofmap.Level1ArrayOfMapElementsOperator;
@@ -164,24 +162,7 @@ public class Level1ArrayOfMapElementsOperatorImpl<K,V> extends AbstractOperatorI
     
     
     
-	public <X> Level1ArrayElementsOperator<X> convert(final IConverter<X, ? super Map<K,V>> converter) {
-        return new Level1ArrayElementsOperatorImpl<X>(converter.getResultType(), getTarget().execute(converter));
-	}
-
-
-    public <X> Level1ArrayElementsOperator<X> eval(final IEvaluator<X, ? super Map<K,V>> eval) {
-        return new Level1ArrayElementsOperatorImpl<X>(eval.getResultType(), getTarget().execute(eval));
-    }
-
-
-    public <X> Level1ArrayElementsOperator<X> exec(final IFunction<X, ? super Map<K,V>> function) {
-        return new Level1ArrayElementsOperatorImpl<X>(function.getResultType(), getTarget().execute(function));
-	}
-
-    
-    
-
-    public <X,Y> Level1ArrayOfMapElementsOperator<X,Y> asMapOf(final Type<X> keyType, final Type<Y> valueType) {
+	public <X,Y> Level1ArrayOfMapElementsOperator<X,Y> asMapOf(final Type<X> keyType, final Type<Y> valueType) {
         return endFor().asArrayOfMapOf(keyType, valueType).forEach();
     }
 
@@ -238,6 +219,21 @@ public class Level1ArrayOfMapElementsOperatorImpl<K,V> extends AbstractOperatorI
 
     public Level1ArrayOfMapElementsSelectedOperator<K, V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
         return new Level1ArrayOfMapElementsSelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X, Y> Level1ArrayOfMapElementsOperator<X, Y> convert(final IConverter<? extends Map<X, Y>, ? super Map<K, V>> converter) {
+        return new Level1ArrayOfMapElementsOperatorImpl<X, Y>(getTarget().execute(converter));
+    }
+
+
+    public <X, Y> Level1ArrayOfMapElementsOperator<X, Y> eval(final IEvaluator<? extends Map<X, Y>, ? super Map<K, V>> eval) {
+        return new Level1ArrayOfMapElementsOperatorImpl<X, Y>(getTarget().execute(eval));
+    }
+
+
+    public <X, Y> Level1ArrayOfMapElementsOperator<X, Y> exec(final IFunction<? extends Map<X, Y>, ? super Map<K, V>> function) {
+        return new Level1ArrayOfMapElementsOperatorImpl<X, Y>(getTarget().execute(function));
     }
     
     

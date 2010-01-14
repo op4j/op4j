@@ -36,6 +36,6 @@ import org.op4j.operators.intf.array.Level0ArrayOperator;
  */
 public interface FlattenableAsArrayOperator<T> {
     
-    public Level0ArrayOperator<T> flatten(final Type<? super T> type);
+    public Level0ArrayOperator<T> flatten(final Type<T> type);
 	
 }

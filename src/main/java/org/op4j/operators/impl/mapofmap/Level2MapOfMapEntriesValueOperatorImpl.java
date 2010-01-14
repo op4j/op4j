@@ -31,10 +31,8 @@ import org.op4j.functions.MapFuncs;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
-import org.op4j.operators.impl.map.Level2MapEntriesValueOperatorImpl;
 import org.op4j.operators.impl.mapoflist.Level2MapOfListEntriesValueOperatorImpl;
 import org.op4j.operators.impl.mapofset.Level2MapOfSetEntriesValueOperatorImpl;
-import org.op4j.operators.intf.map.Level2MapEntriesValueOperator;
 import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.Level1MapOfMapEntriesOperator;
 import org.op4j.operators.intf.mapofmap.Level2MapOfMapEntriesValueOperator;
@@ -43,7 +41,7 @@ import org.op4j.operators.intf.mapofmap.Level3MapOfMapEntriesValueEntriesOperato
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
-import org.op4j.util.TargetUtils;
+import org.op4j.util.NormalizationUtils;
 
 
 /**
@@ -159,26 +157,10 @@ public class Level2MapOfMapEntriesValueOperatorImpl<K1,K2,V> extends AbstractOpe
     
     
     
-	public <X> Level2MapEntriesValueOperator<K1,X> convert(final IConverter<X, ? super Map<K2,V>> converter) {
-        return new Level2MapEntriesValueOperatorImpl<K1,X>(getTarget().execute(converter));
-	}
-
-
-    public <X> Level2MapEntriesValueOperator<K1,X> eval(final IEvaluator<X, ? super Map<K2,V>> eval) {
-        return new Level2MapEntriesValueOperatorImpl<K1,X>(getTarget().execute(eval));
-    }
-
-
-    public <X> Level2MapEntriesValueOperator<K1,X> exec(final IFunction<X, ? super Map<K2,V>> function) {
-        return new Level2MapEntriesValueOperatorImpl<K1,X>(getTarget().execute(function));
-	}
-
-    
-    
-    public <X,Y> Level2MapOfMapEntriesValueOperator<K1, X, Y> asMapOf(final Type<X> keyType, final Type<Y> valueType) {
+	public <X,Y> Level2MapOfMapEntriesValueOperator<K1, X, Y> asMapOf(final Type<X> keyType, final Type<Y> valueType) {
         Validate.notNull(keyType, "A type representing the keys must be specified");
         Validate.notNull(valueType, "A type representing the values must be specified");
-        TargetUtils.checkIsMapOfMapOfValue(keyType, valueType, get());
+        NormalizationUtils.checkIsMapOfMapOfValue(keyType, valueType, get());
         return new Level2MapOfMapEntriesValueOperatorImpl<K1,X,Y>(getTarget());
     }
 
@@ -235,6 +217,21 @@ public class Level2MapOfMapEntriesValueOperatorImpl<K1,K2,V> extends AbstractOpe
 
     public Level2MapOfMapEntriesValueSelectedOperator<K1, K2, V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K2, V>> eval) {
         return new Level2MapOfMapEntriesValueSelectedOperatorImpl<K1, K2, V>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X2, Y> Level2MapOfMapEntriesValueOperator<K1, X2, Y> convert(final IConverter<? extends Map<X2, Y>, ? super Map<K2, V>> converter) {
+        return new Level2MapOfMapEntriesValueOperatorImpl<K1, X2, Y>(getTarget().execute(converter));
+    }
+
+
+    public <X2, Y> Level2MapOfMapEntriesValueOperator<K1, X2, Y> eval(final IEvaluator<? extends Map<X2, Y>, ? super Map<K2, V>> eval) {
+        return new Level2MapOfMapEntriesValueOperatorImpl<K1, X2, Y>(getTarget().execute(eval));
+    }
+
+
+    public <X2, Y> Level2MapOfMapEntriesValueOperator<K1, X2, Y> exec(final IFunction<? extends Map<X2, Y>, ? super Map<K2, V>> function) {
+        return new Level2MapOfMapEntriesValueOperatorImpl<K1, X2, Y>(getTarget().execute(function));
     }
 
     

@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.functions.converters.IConverter;
+
 
 
 
@@ -31,8 +31,8 @@ import org.op4j.functions.converters.IConverter;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ConvertibleSelectedOperator<T> {
-    
-    public ConvertibleSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter);
-    
+public interface NavigatingArrayOperator<T> {
+
+    public NavigableArrayOperator<T> endFor();
+	
 }

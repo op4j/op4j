@@ -22,7 +22,7 @@ public class Level1MapOfListEntriesSelectedOperatorImpl<K,V> extends AbstractOpe
     }
 
 
-    public Level1MapOfListEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Entry<K,List<V>>,? super Entry<K,List<V>>> eval) {
+    public Level1MapOfListEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Entry<? extends K,? extends List<? extends V>>,? super Entry<K,List<V>>> eval) {
         return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
@@ -42,12 +42,12 @@ public class Level1MapOfListEntriesSelectedOperatorImpl<K,V> extends AbstractOpe
     }
 
 
-    public Level1MapOfListEntriesSelectedOperator<K,V> exec(final IFunction<? extends Entry<K,List<V>>,? super Entry<K,List<V>>> function) {
+    public Level1MapOfListEntriesSelectedOperator<K,V> exec(final IFunction<? extends Entry<? extends K,? extends List<? extends V>>,? super Entry<K,List<V>>> function) {
         return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
-    public Level1MapOfListEntriesSelectedOperator<K,V> convert(final IConverter<? extends Entry<K,List<V>>,? super Entry<K,List<V>>> converter) {
+    public Level1MapOfListEntriesSelectedOperator<K,V> convert(final IConverter<? extends Entry<? extends K,? extends List<? extends V>>,? super Entry<K,List<V>>> converter) {
         return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter));
     }
 

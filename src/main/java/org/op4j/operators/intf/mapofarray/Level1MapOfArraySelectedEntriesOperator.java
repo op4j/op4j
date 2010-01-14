@@ -21,13 +21,10 @@ package org.op4j.operators.intf.mapofarray;
 
 import java.util.Map;
 
-
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableMapOfArrayEntrySelectedOperator;
 import org.op4j.operators.qualities.NavigableMapEntryOperator;
 import org.op4j.operators.qualities.NavigatingMapOperator;
 import org.op4j.operators.qualities.SelectableMapEntryOperator;
@@ -45,10 +42,8 @@ public interface Level1MapOfArraySelectedEntriesOperator<K,V>
 		extends UniqOperator<Map<K,V[]>>,
 		        NavigableMapEntryOperator,
 		        NavigatingMapOperator<K,V[]>,
-                ExecutableSelectedOperator<Map.Entry<K,V[]>>,
-                EvaluableSelectedOperator<Map.Entry<K,V[]>>,
-                SelectableMapEntryOperator<K, V[]>,
-                ConvertibleSelectedOperator<Map.Entry<K,V[]>> {
+                ExecutableMapOfArrayEntrySelectedOperator<K,V>,
+                SelectableMapEntryOperator<K, V[]> {
 
 
     public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> ifIndex(final int... indices);
@@ -64,10 +59,10 @@ public interface Level1MapOfArraySelectedEntriesOperator<K,V>
     
     public Level0MapOfArraySelectedOperator<K,V> endFor();
     
-    public Level1MapOfArraySelectedEntriesOperator<K,V> exec(final IFunction<? extends Map.Entry<K,V[]>, ? super Map.Entry<K,V[]>> function);
+    public Level1MapOfArraySelectedEntriesOperator<K,V> exec(final IFunction<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> function);
     
-    public Level1MapOfArraySelectedEntriesOperator<K,V> eval(final IEvaluator<? extends Map.Entry<K,V[]>, ? super Map.Entry<K,V[]>> eval);
+    public Level1MapOfArraySelectedEntriesOperator<K,V> eval(final IEvaluator<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> eval);
     
-    public Level1MapOfArraySelectedEntriesOperator<K,V> convert(final IConverter<? extends Map.Entry<K,V[]>, ? super Map.Entry<K,V[]>> converter);
+    public Level1MapOfArraySelectedEntriesOperator<K,V> convert(final IConverter<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> converter);
                                     
 }

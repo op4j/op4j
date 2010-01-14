@@ -34,8 +34,6 @@ import org.op4j.operators.qualities.CastableToListOperator;
 import org.op4j.operators.qualities.CastableToMapOperator;
 import org.op4j.operators.qualities.CastableToSetOperator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
 import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
 import org.op4j.operators.qualities.SelectableOperator;
@@ -56,8 +54,6 @@ public interface Level2MapEntriesValueOperator<K,V>
                 CastableToMapOperator,
                 CastableToSetOperator,
 				NavigatingMapEntryOperator,
-                ConvertibleOperator<V>,
-        		EvaluableOperator<V>,
         		ExecutableOperator<V>,
                 SelectableOperator<V>,
                 CastableToTypeOperator<V> {

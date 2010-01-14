@@ -24,10 +24,8 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
 import org.op4j.operators.qualities.ExecutableOperator;
-import org.op4j.operators.qualities.NavigatingCollectionOperator;
+import org.op4j.operators.qualities.NavigatingArrayOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
@@ -41,9 +39,7 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level2ArrayOfArrayElementsElementsOperator<T>
         extends UniqOperator<T[][]>,
-                NavigatingCollectionOperator<T>,
-                ConvertibleOperator<T>,
-        		EvaluableOperator<T>,
+                NavigatingArrayOperator<T>,
         		ExecutableOperator<T>,
                 SelectableOperator<T>,
                 CastableToTypeOperator<T> {
@@ -65,10 +61,8 @@ public interface Level2ArrayOfArrayElementsElementsOperator<T>
     public Level1ArrayOfArrayElementsOperator<T> endFor();
     
     public <X> Level2ArrayOfArrayElementsElementsOperator<X> convert(final IConverter<X,? super T> converter);
-    
     public <X> Level2ArrayOfArrayElementsElementsOperator<X> eval(final IEvaluator<X,? super T> eval);
-
-    public <X> Level2ArrayOfArrayElementsElementsOperator<X> exec(final IFunction<X, ? super T> function);
+    public <X> Level2ArrayOfArrayElementsElementsOperator<X> exec(final IFunction<X,? super T> function);
     
     public <X> Level2ArrayOfArrayElementsElementsOperator<X> asType(final Type<X> type);
     public Level2ArrayOfArrayElementsElementsOperator<?> asUnknown();

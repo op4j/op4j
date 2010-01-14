@@ -43,7 +43,6 @@ import org.op4j.operators.intf.setoflist.Level0SetOfListOperator;
 import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
 import org.op4j.operators.qualities.CastableToListOfSetOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
 import org.op4j.operators.qualities.ConvertibleToArrayOfArrayOperator;
 import org.op4j.operators.qualities.ConvertibleToArrayOfListOperator;
 import org.op4j.operators.qualities.ConvertibleToArrayOfMapOperator;
@@ -56,8 +55,7 @@ import org.op4j.operators.qualities.ConvertibleToSetOfListOperator;
 import org.op4j.operators.qualities.ConvertibleToSetOfMapOperator;
 import org.op4j.operators.qualities.ConvertibleToSetOfSetOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
+import org.op4j.operators.qualities.ExecutableListOfSetOperator;
 import org.op4j.operators.qualities.FlattenableAsListOperator;
 import org.op4j.operators.qualities.GenerizableOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
@@ -81,9 +79,7 @@ public interface Level0ListOfSetOperator<T>
                 FlattenableAsListOperator<T>,
 		        ModifiableCollectionOperator<Set<T>>,
 		        GenerizableOperator<List<Set<T>>>,
-                ExecutableOperator<List<Set<T>>>,
-                ConvertibleOperator<List<Set<T>>>,
-                EvaluableOperator<List<Set<T>>>,
+                ExecutableListOfSetOperator<T>,
                 SelectableOperator<List<Set<T>>>,
                 ConvertibleToArrayOfArrayOperator<T>,
                 ConvertibleToArrayOfListOperator<T>,
@@ -170,11 +166,11 @@ public interface Level0ListOfSetOperator<T>
     
     
     
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super List<Set<T>>> converter);
+    public <X> Level0ListOfSetOperator<X> convert(final IConverter<? extends List<? extends Set<X>>,? super List<Set<T>>> converter);
     
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super List<Set<T>>> eval);
+    public <X> Level0ListOfSetOperator<X> eval(final IEvaluator<? extends List<? extends Set<X>>,? super List<Set<T>>> eval);
 
-    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super List<Set<T>>> function);
+    public <X> Level0ListOfSetOperator<X> exec(final IFunction<? extends List<? extends Set<X>>,? super List<Set<T>>> function);
     
     
     public <X> Level0ListOfSetOperator<X> asListOfSetOf(final Type<X> type);

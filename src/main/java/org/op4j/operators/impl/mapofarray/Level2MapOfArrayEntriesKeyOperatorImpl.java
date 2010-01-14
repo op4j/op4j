@@ -33,7 +33,7 @@ import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesKeyOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesKeySelectedOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
-import org.op4j.util.TargetUtils;
+import org.op4j.util.NormalizationUtils;
 
 
 /**
@@ -45,25 +45,22 @@ import org.op4j.util.TargetUtils;
  */
 public class Level2MapOfArrayEntriesKeyOperatorImpl<K,V> extends AbstractOperatorImpl
         implements Level2MapOfArrayEntriesKeyOperator<K,V> {
-    
-    private final Type<? super V> arrayOf; 
 
     
-    public Level2MapOfArrayEntriesKeyOperatorImpl(final Type<? super V> of, final Target target) {
+    public Level2MapOfArrayEntriesKeyOperatorImpl(final Target target) {
         super(target);
-        this.arrayOf = of;
     }
 
 
     public Level1MapOfArrayEntriesOperator<K, V> endOn() {
-        return new Level1MapOfArrayEntriesOperatorImpl<K, V>(this.arrayOf, getTarget().endIterate(Structure.MAP_ENTRY, null));
+        return new Level1MapOfArrayEntriesOperatorImpl<K, V>(getTarget().endIterate(Structure.MAP_ENTRY, null));
     }
 
 
     public <X> Level2MapOfArrayEntriesKeyOperator<X, V> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        TargetUtils.checkIsMapOfKey(type, get());
-        return new Level2MapOfArrayEntriesKeyOperatorImpl<X, V>(this.arrayOf, getTarget());
+        NormalizationUtils.checkIsMapOfKey(type, get());
+        return new Level2MapOfArrayEntriesKeyOperatorImpl<X, V>(getTarget());
     }
 
     public Level2MapOfArrayEntriesKeyOperator<?, V> asUnknown() {
@@ -71,74 +68,73 @@ public class Level2MapOfArrayEntriesKeyOperatorImpl<K,V> extends AbstractOperato
     }
 
 
-    public <X> Level2MapOfArrayEntriesKeyOperator<X, V> convert(final IConverter<X, ? super K> converter) {
-        return new Level2MapOfArrayEntriesKeyOperatorImpl<X, V>(this.arrayOf, getTarget().execute(converter));
-    }
-
-
-    public <X> Level2MapOfArrayEntriesKeyOperator<X, V> eval(final IEvaluator<X, ? super K> eval) {
-        return new Level2MapOfArrayEntriesKeyOperatorImpl<X, V>(this.arrayOf, getTarget().execute(eval));
-    }
-
-
-    public <X> Level2MapOfArrayEntriesKeyOperator<X, V> exec(final IFunction<X, ? super K> function) {
-        return new Level2MapOfArrayEntriesKeyOperatorImpl<X, V>(this.arrayOf, getTarget().execute(function));
-    }
-
-    
-
     public Map<K, V[]> get() {
         return endOn().endFor().get();
     }
 
 
     public Level2MapOfArrayEntriesKeySelectedOperator<K, V> ifIndex(final int... indices) {
-        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(this.arrayOf, getTarget().selectIndex(indices));
+        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
     }
 
 
     public Level2MapOfArrayEntriesKeySelectedOperator<K, V> ifIndexNot(final int... indices) {
-        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(this.arrayOf, getTarget().selectIndexNot(indices));
+        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
     }
 
 
     public Level2MapOfArrayEntriesKeySelectedOperator<K, V> ifMatching(final IEvaluator<Boolean, ? super K> eval) {
-        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(this.arrayOf, getTarget().selectMatching(eval));
+        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
     }
 
 
     public Level2MapOfArrayEntriesKeySelectedOperator<K, V> ifNotMatching(final IEvaluator<Boolean, ? super K> eval) {
-        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(this.arrayOf, getTarget().selectNotMatching(eval));
+        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
 
 
     public Level2MapOfArrayEntriesKeySelectedOperator<K, V> ifNotNull() {
-        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(this.arrayOf, getTarget().selectNotNull());
+        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNotNull());
     }
 
 
     public Level2MapOfArrayEntriesKeySelectedOperator<K, V> ifNotNullMatching(final IEvaluator<Boolean, ? super K> eval) {
-        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(this.arrayOf, getTarget().selectNotNullAndMatching(eval));
+        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
     public Level2MapOfArrayEntriesKeySelectedOperator<K, V> ifNotNullNotMatching(final IEvaluator<Boolean, ? super K> eval) {
-        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(this.arrayOf, getTarget().selectNotNullAndNotMatching(eval));
+        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
 
     public Level2MapOfArrayEntriesKeySelectedOperator<K, V> ifNull() {
-        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(this.arrayOf, getTarget().selectNull());
+        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNull());
     }
 
 
     public Level2MapOfArrayEntriesKeySelectedOperator<K, V> ifNullOrMatching(final IEvaluator<Boolean, ? super K> eval) {
-        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(this.arrayOf, getTarget().selectNullOrMatching(eval));
+        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNullOrMatching(eval));
     }
 
 
     public Level2MapOfArrayEntriesKeySelectedOperator<K, V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super K> eval) {
-        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(this.arrayOf, getTarget().selectNullOrNotMatching(eval));
+        return new Level2MapOfArrayEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X> Level2MapOfArrayEntriesKeyOperator<X, V> convert(final IConverter<X, ? super K> converter) {
+        return new Level2MapOfArrayEntriesKeyOperatorImpl<X, V>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level2MapOfArrayEntriesKeyOperator<X, V> eval(final IEvaluator<X, ? super K> eval) {
+        return new Level2MapOfArrayEntriesKeyOperatorImpl<X, V>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level2MapOfArrayEntriesKeyOperator<X, V> exec(final IFunction<X, ? super K> function) {
+        return new Level2MapOfArrayEntriesKeyOperatorImpl<X, V>(getTarget().execute(function));
     }
 
 }

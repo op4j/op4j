@@ -154,7 +154,7 @@ public class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0ArrayOperator<T> toArray(final Type<T> of) {
-        return new Level0ArrayOperatorImpl<T>(of, getTarget().execute(new ToArray.FromCollection<T>(of)));
+        return new Level0ArrayOperatorImpl<T>(getTarget().execute(new ToArray.FromCollection<T>(of)));
     }
 
 
@@ -199,23 +199,7 @@ public class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
     
     
     
-	public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super List<T>> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter));
-	}
-
-
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super List<T>> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval));
-    }
-
-
-    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super List<T>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function));
-	}
-
-    
-
-    public <X> Level0ListOperator<X> asListOf(final Type<X> type) {
+	public <X> Level0ListOperator<X> asListOf(final Type<X> type) {
         return generic().asListOf(type);
     }
 
@@ -312,6 +296,21 @@ public class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
 
     public Level0ListSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
         return new Level0ListSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X> Level0ListOperator<X> convert(final IConverter<? extends List<X>, ? super List<T>> converter) {
+        return new Level0ListOperatorImpl<X>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level0ListOperator<X> eval(final IEvaluator<? extends List<X>, ? super List<T>> eval) {
+        return new Level0ListOperatorImpl<X>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level0ListOperator<X> exec(final IFunction<? extends List<X>, ? super List<T>> function) {
+        return new Level0ListOperatorImpl<X>(getTarget().execute(function));
     }
 
     

@@ -26,9 +26,7 @@ import java.util.Set;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableSetSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -47,9 +45,7 @@ public interface Level0SetSelectedOperator<T>
                 SortableOperator<T>,
                 ModifiableCollectionOperator<T>,
                 SelectedOperator<Set<T>>,
-                ExecutableSelectedOperator<Set<T>>,
-                ConvertibleSelectedOperator<Set<T>>,
-                EvaluableSelectedOperator<Set<T>> {
+                ExecutableSetSelectedOperator<T> {
 
 
 
@@ -77,11 +73,11 @@ public interface Level0SetSelectedOperator<T>
     public Level0SetSelectedOperator<T> removeNulls();
     
     
-    public Level0SetSelectedOperator<T> convert(final IConverter<? extends Set<T>,? super Set<T>> converter);
+    public Level0SetSelectedOperator<T> convert(final IConverter<? extends Set<? extends T>,? super Set<T>> converter);
     
-    public Level0SetSelectedOperator<T> eval(final IEvaluator<? extends Set<T>,? super Set<T>> eval);
+    public Level0SetSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval);
 
-    public Level0SetSelectedOperator<T> exec(final IFunction<? extends Set<T>, ? super Set<T>> function);
+    public Level0SetSelectedOperator<T> exec(final IFunction<? extends Set<? extends T>, ? super Set<T>> function);
 
     
 }

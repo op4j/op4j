@@ -64,28 +64,25 @@ import org.op4j.target.Target;
  */
 public class Level0SetOfArrayOperatorImpl<T> extends AbstractOperatorImpl
         implements Level0SetOfArrayOperator<T>  {
-    
-    private final Type<? super T> arrayOf; 
 
     
-    public Level0SetOfArrayOperatorImpl(final Type<? super T> of, final Target target) {
+    public Level0SetOfArrayOperatorImpl(final Target target) {
         super(target);
-        this.arrayOf = of;
     }
 
 
     public Level0SetOfArrayOperator<T> add(final T[]... newElements) {
-        return new Level0SetOfArrayOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.Add<T[]>(newElements)));
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T[]>(newElements)));
     }
 
 
     public Level0SetOfArrayOperator<T> insert(final int position, final T[]... newElements) {
-        return new Level0SetOfArrayOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.Insert<T[]>(position, newElements)));
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T[]>(position, newElements)));
     }
 
 
     public Level0SetOfArrayOperator<T> addAll(final Collection<T[]> collection) {
-        return new Level0SetOfArrayOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.AddAll<T[]>(collection)));
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<T[]>(collection)));
     }
 
 
@@ -95,54 +92,54 @@ public class Level0SetOfArrayOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level1SetOfArrayElementsOperator<T> forEach() {
-        return new Level1SetOfArrayElementsOperatorImpl<T>(this.arrayOf, getTarget().iterate());
+        return new Level1SetOfArrayElementsOperatorImpl<T>(getTarget().iterate());
     }
 
 
     public Level0SetOfArrayOperator<T> removeIndexes(final int... indices) {
-        return new Level0SetOfArrayOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveIndexes<T[]>(indices)));
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveIndexes<T[]>(indices)));
     }
 
 
     public Level0SetOfArrayOperator<T> removeEquals(final T[]... values) {
-        return new Level0SetOfArrayOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveEquals<T[]>(values)));
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveEquals<T[]>(values)));
     }
 
 
     public Level0SetOfArrayOperator<T> removeMatching(final IEvaluator<Boolean, ? super T[]> eval) {
-        return new Level0SetOfArrayOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveMatching<T[]>(eval)));
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveMatching<T[]>(eval)));
     }
 
     public Level0SetOfArrayOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T[]> eval) {
-        return new Level0SetOfArrayOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveNotMatching<T[]>(eval)));
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveNotMatching<T[]>(eval)));
     }
 
     public Level0SetOfArrayOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T[]> eval) {
-        return new Level0SetOfArrayOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveNullOrNotMatching<T[]>(eval)));
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveNullOrNotMatching<T[]>(eval)));
     }
 
     public Level0SetOfArrayOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T[]> eval) {
-        return new Level0SetOfArrayOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveNotNullNotMatching<T[]>(eval)));
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveNotNullNotMatching<T[]>(eval)));
     }
 
 
     public Level0SetOfArrayOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T[]> eval) {
-        return new Level0SetOfArrayOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveNullOrMatching<T[]>(eval)));
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveNullOrMatching<T[]>(eval)));
     }
 
 
     public Level0SetOfArrayOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T[]> eval) {
-        return new Level0SetOfArrayOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveNotNullMatching<T[]>(eval)));
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveNotNullMatching<T[]>(eval)));
     }
 
 
     public Level0SetOfArrayOperator<T> removeIndexesNot(final int... indices) {
-        return new Level0SetOfArrayOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveIndexesNot<T[]>(indices)));
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveIndexesNot<T[]>(indices)));
     }
 
 
     public Level0SetOfArrayOperator<T> removeNulls() {
-        return new Level0SetOfArrayOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.RemoveNulls<T[]>()));
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveNulls<T[]>()));
     }
 
     
@@ -150,12 +147,12 @@ public class Level0SetOfArrayOperatorImpl<T> extends AbstractOperatorImpl
 
     @SuppressWarnings("unchecked")
     public Level0SetOfArrayOperator<T> sort() {
-        return new Level0SetOfArrayOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.Sort()));
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.Sort()));
     }
 
 
     public Level0SetOfArrayOperator<T> sort(final Comparator<? super T[]> comparator) {
-        return new Level0SetOfArrayOperatorImpl<T>(this.arrayOf, getTarget().execute(new SetFuncs.SortByComparator<T[]>(comparator)));
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.SortByComparator<T[]>(comparator)));
     }
 
 
@@ -273,26 +270,7 @@ public class Level0SetOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     
     
     
-	public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super Set<T[]>> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter));
-	}
-
-
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super Set<T[]>> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval));
-    }
-
-
-    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Set<T[]>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function));
-	}
-
-    
-    
-    
-
-
-    public <X> Level0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type) {
+	public <X> Level0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type) {
         return generic().asSetOfArrayOf(type);
     }
 
@@ -303,52 +281,67 @@ public class Level0SetOfArrayOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0SetOfArraySelectedOperator<T> ifIndex(final int... indices) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().selectIndex(indices));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().selectIndex(indices));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> ifIndexNot(final int... indices) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().selectIndexNot(indices));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().selectIndexNot(indices));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> ifMatching(final IEvaluator<Boolean, ? super Set<T[]>> eval) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().selectMatching(eval));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().selectMatching(eval));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> ifNotMatching(final IEvaluator<Boolean, ? super Set<T[]>> eval) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().selectNotMatching(eval));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().selectNotMatching(eval));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> ifNotNull() {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().selectNotNull());
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().selectNotNull());
     }
 
 
     public Level0SetOfArraySelectedOperator<T> ifNotNullMatching(final IEvaluator<Boolean, ? super Set<T[]>> eval) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().selectNotNullAndMatching(eval));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> ifNotNullNotMatching(final IEvaluator<Boolean, ? super Set<T[]>> eval) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().selectNotNullAndNotMatching(eval));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> ifNull() {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().selectNull());
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().selectNull());
     }
 
 
     public Level0SetOfArraySelectedOperator<T> ifNullOrMatching(final IEvaluator<Boolean, ? super Set<T[]>> eval) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().selectNullOrMatching(eval));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().selectNullOrMatching(eval));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Set<T[]>> eval) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.arrayOf, getTarget().selectNullOrNotMatching(eval));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
+    }
+
+
+    public <X> Level0SetOfArrayOperator<X> convert(final IConverter<? extends Set<X[]>, ? super Set<T[]>> converter) {
+        return new Level0SetOfArrayOperatorImpl<X>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level0SetOfArrayOperator<X> eval(final IEvaluator<? extends Set<X[]>, ? super Set<T[]>> eval) {
+        return new Level0SetOfArrayOperatorImpl<X>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level0SetOfArrayOperator<X> exec(final IFunction<? extends Set<X[]>, ? super Set<T[]>> function) {
+        return new Level0SetOfArrayOperatorImpl<X>(getTarget().execute(function));
     }
     
     

@@ -77,7 +77,7 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
     }
 
 
-    public Level0SetSelectedOperator<T> eval(final IEvaluator<? extends Set<T>,? super Set<T>> eval) {
+    public Level0SetSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval) {
         return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(eval));
     }
 
@@ -102,7 +102,7 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
     }
 
 
-    public Level0SetSelectedOperator<T> exec(final IFunction<? extends Set<T>,? super Set<T>> function) {
+    public Level0SetSelectedOperator<T> exec(final IFunction<? extends Set<? extends T>,? super Set<T>> function) {
         return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(function));
     }
 
@@ -118,7 +118,7 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
     }
 
 
-    public Level0SetSelectedOperator<T> convert(final IConverter<? extends Set<T>,? super Set<T>> converter) {
+    public Level0SetSelectedOperator<T> convert(final IConverter<? extends Set<? extends T>,? super Set<T>> converter) {
         return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(converter));
     }
 

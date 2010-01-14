@@ -57,7 +57,6 @@ import org.op4j.operators.intf.mapoflist.Level0MapOfListOperator;
 import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Structure;
 
 
 /**
@@ -94,7 +93,7 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0ArrayOperator<T> buildArray(final Type<T> arrayOf) {
-        return new Level0ArrayOperatorImpl<T>(arrayOf, getTarget().execute(new ToArray.FromCollection<T>(arrayOf)));
+        return new Level0ArrayOperatorImpl<T>(getTarget().execute(new ToArray.FromCollection<T>(arrayOf)));
     }
 
 
@@ -119,17 +118,17 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public <K> Level0MapOfArrayOperator<K, T> buildMapOfArray(final Type<T> valueArrayOf, final IEvaluator<K, ? super T> keyEval) {
-        return new Level0MapOfArrayOperatorImpl<K, T>(valueArrayOf, getTarget().execute(new ToMapOfArray.FromListByKeyEval<K, T>(valueArrayOf, keyEval)));
+        return new Level0MapOfArrayOperatorImpl<K, T>(getTarget().execute(new ToMapOfArray.FromListByKeyEval<K, T>(valueArrayOf, keyEval)));
     }
 
 
     public <K, V> Level0MapOfArrayOperator<K, V> buildMapOfArray(final Type<V> valueArrayOf, final IMapBuilder<K, V, ? super T> mapBuild) {
-        return new Level0MapOfArrayOperatorImpl<K, V>(valueArrayOf, getTarget().execute(new ToMapOfArray.FromListByMapBuilder<K, V, T>(valueArrayOf, mapBuild)));
+        return new Level0MapOfArrayOperatorImpl<K, V>(getTarget().execute(new ToMapOfArray.FromListByMapBuilder<K, V, T>(valueArrayOf, mapBuild)));
     }
 
 
     public Level0MapOfArrayOperator<T, T> buildMapOfArray(final Type<T> valueArrayOf) {
-        return new Level0MapOfArrayOperatorImpl<T, T>(valueArrayOf, getTarget().execute(new ToMapOfArray.FromListByAlternateElements<T>(valueArrayOf)));
+        return new Level0MapOfArrayOperatorImpl<T, T>(getTarget().execute(new ToMapOfArray.FromListByAlternateElements<T>(valueArrayOf)));
     }
 
 
@@ -226,24 +225,6 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
     
 
 
-    public <X> Level0GenericMultiOperator<X> convert(final IConverter<X, ? super T> converter) {
-        return new Level0GenericMultiOperatorImpl<X>(getTarget().iterate().execute(converter).endIterate(Structure.LIST, null));
-    }
-
-
-
-    public <X> Level0GenericMultiOperator<X> eval(final IEvaluator<X, ? super T> eval) {
-        return new Level0GenericMultiOperatorImpl<X>(getTarget().iterate().execute(eval).endIterate(Structure.LIST, null));
-    }
-
-
-    public <X> Level0GenericMultiOperator<X> exec(final IFunction<X, ? super T> function) {
-        return new Level0GenericMultiOperatorImpl<X>(getTarget().iterate().execute(function).endIterate(Structure.LIST, null));
-    }
-
-
-
-
     public Level0GenericMultiSelectedOperator<T> ifIndex(final int... indices) {
         return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectIndex(indices));
     }
@@ -317,6 +298,21 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
 
     public List<T> getAsList() {
         return buildList().get();
+    }
+
+
+    public <X> Level0GenericMultiOperator<X> convert(final IConverter<X, ? super T> converter) {
+        return new Level0GenericMultiOperatorImpl<X>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level0GenericMultiOperator<X> eval(final IEvaluator<X, ? super T> eval) {
+        return new Level0GenericMultiOperatorImpl<X>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level0GenericMultiOperator<X> exec(final IFunction<X, ? super T> function) {
+        return new Level0GenericMultiOperatorImpl<X>(getTarget().execute(function));
     }
     
 }

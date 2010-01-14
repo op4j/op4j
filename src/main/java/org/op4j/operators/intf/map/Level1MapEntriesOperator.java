@@ -24,10 +24,7 @@ import java.util.Map;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.intf.list.Level1ListElementsOperator;
-import org.op4j.operators.qualities.ConvertibleOperator;
-import org.op4j.operators.qualities.EvaluableOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
+import org.op4j.operators.qualities.ExecutableMapEntryOperator;
 import org.op4j.operators.qualities.NavigableMapEntryOperator;
 import org.op4j.operators.qualities.NavigatingMapOperator;
 import org.op4j.operators.qualities.SelectableMapEntryOperator;
@@ -45,10 +42,8 @@ public interface Level1MapEntriesOperator<K,V>
 		extends UniqOperator<Map<K,V>>,
 		        NavigableMapEntryOperator,
                 NavigatingMapOperator<K,V>,
-                ExecutableOperator<Map.Entry<K,V>>,
-                EvaluableOperator<Map.Entry<K,V>>,
-                SelectableMapEntryOperator<K, V>,
-                ConvertibleOperator<Map.Entry<K,V>> {
+                ExecutableMapEntryOperator<K,V>,
+                SelectableMapEntryOperator<K, V> {
 
 
     public Level1MapEntriesSelectedOperator<K,V> ifIndex(final int... indices);
@@ -64,11 +59,11 @@ public interface Level1MapEntriesOperator<K,V>
     
     public Level0MapOperator<K,V> endFor();
     
-    public <X> Level1ListElementsOperator<X> exec(final IFunction<X, ? super Map.Entry<K,V>> function);
+    public <X,Y> Level1MapEntriesOperator<X,Y> exec(final IFunction<? extends Map.Entry<X,Y>, ? super Map.Entry<K,V>> function);
     
-    public <X> Level1ListElementsOperator<X> eval(final IEvaluator<X,? super Map.Entry<K,V>> eval);
+    public <X,Y> Level1MapEntriesOperator<X,Y> eval(final IEvaluator<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> eval);
     
-    public <X> Level1ListElementsOperator<X> convert(final IConverter<X,? super Map.Entry<K,V>> converter);
+    public <X,Y> Level1MapEntriesOperator<X,Y> convert(final IConverter<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> converter);
 
     
 }

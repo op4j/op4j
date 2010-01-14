@@ -26,9 +26,7 @@ import java.util.Set;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ExecutableMapOfSetSelectedOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -46,9 +44,7 @@ public interface Level0MapOfSetSelectedOperator<K,V>
                 NavigableMapOperator<K,Set<V>>,
 		        SortableOperator<Map.Entry<K,Set<V>>>,
 		        ModifiableMapOperator<K,Set<V>>,
-                ExecutableSelectedOperator<Map<K,Set<V>>>,
-                ConvertibleSelectedOperator<Map<K,Set<V>>>,
-                EvaluableSelectedOperator<Map<K,Set<V>>>,
+                ExecutableMapOfSetSelectedOperator<K,V>,
                 SelectedOperator<Map<K,Set<V>>> {
 
 
@@ -72,11 +68,11 @@ public interface Level0MapOfSetSelectedOperator<K,V>
     public Level0MapOfSetSelectedOperator<K,V> removeKeysNot(final K... keys);
     
     
-    public Level0MapOfSetSelectedOperator<K,V> convert(final IConverter<? extends Map<K,Set<V>>, ? super Map<K,Set<V>>> converter);
+    public Level0MapOfSetSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> converter);
     
-    public Level0MapOfSetSelectedOperator<K,V> eval(final IEvaluator<? extends Map<K,Set<V>>, ? super Map<K,Set<V>>> eval);
+    public Level0MapOfSetSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> eval);
 
-    public Level0MapOfSetSelectedOperator<K,V> exec(final IFunction<? extends Map<K,Set<V>>, ? super Map<K,Set<V>>> function);
+    public Level0MapOfSetSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> function);
     
     
     

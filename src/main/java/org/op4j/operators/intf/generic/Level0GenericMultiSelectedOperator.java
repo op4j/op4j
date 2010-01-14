@@ -25,8 +25,6 @@ import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operators.qualities.ConvertibleSelectedOperator;
-import org.op4j.operators.qualities.EvaluableSelectedOperator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.MultiOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -39,9 +37,7 @@ import org.op4j.operators.qualities.SelectedOperator;
  */
 public interface Level0GenericMultiSelectedOperator<T>
         extends MultiOperator<T>,
-        		ConvertibleSelectedOperator<T>,
-        		EvaluableSelectedOperator<T>,
-        		ExecutableSelectedOperator<T>,
+         		ExecutableSelectedOperator<T>,
                 SelectedOperator<T> {
 
 

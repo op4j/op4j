@@ -2,7 +2,6 @@ package org.op4j.operators.impl.mapofarray;
 
 import java.util.Map;
 import java.util.Map.Entry;
-import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -17,42 +16,38 @@ import org.op4j.target.Target;
 public class Level1MapOfArrayEntriesSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level1MapOfArrayEntriesSelectedOperator<K,V> {
 
 
-    private final Type<? super V> arrayOf;
-
-
-    public Level1MapOfArrayEntriesSelectedOperatorImpl(final Type<? super V> arrayOf, final Target target) {
+    public Level1MapOfArrayEntriesSelectedOperatorImpl(final Target target) {
         super(target);
-        this.arrayOf = arrayOf;
     }
 
 
-    public Level1MapOfArrayEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Entry<K,V[]>,? super Entry<K,V[]>> eval) {
-        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(eval));
+    public Level1MapOfArrayEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> eval) {
+        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval));
     }
 
 
     public Level1MapOfArrayEntriesOperator<K,V> endIf() {
-        return new Level1MapOfArrayEntriesOperatorImpl<K,V>(this.arrayOf, getTarget().endSelect());
+        return new Level1MapOfArrayEntriesOperatorImpl<K,V>(getTarget().endSelect());
     }
 
 
     public Level2MapOfArrayEntriesSelectedKeyOperator<K,V> onKey() {
-        return new Level2MapOfArrayEntriesSelectedKeyOperatorImpl<K,V>(this.arrayOf, getTarget().iterateIndex(0));
+        return new Level2MapOfArrayEntriesSelectedKeyOperatorImpl<K,V>(getTarget().iterateIndex(0));
     }
 
 
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> onValue() {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.arrayOf, getTarget().iterateIndex(1));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(getTarget().iterateIndex(1));
     }
 
 
-    public Level1MapOfArrayEntriesSelectedOperator<K,V> exec(final IFunction<? extends Entry<K,V[]>,? super Entry<K,V[]>> function) {
-        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(function));
+    public Level1MapOfArrayEntriesSelectedOperator<K,V> exec(final IFunction<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> function) {
+        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
-    public Level1MapOfArrayEntriesSelectedOperator<K,V> convert(final IConverter<? extends Entry<K,V[]>,? super Entry<K,V[]>> converter) {
-        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K,V>(this.arrayOf, getTarget().execute(converter));
+    public Level1MapOfArrayEntriesSelectedOperator<K,V> convert(final IConverter<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> converter) {
+        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter));
     }
 
 
