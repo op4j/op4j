@@ -144,7 +144,8 @@ public class ToByte {
             super();
         }
 
-        public Type<? super Byte> getResultType() {
+        @Override
+        protected Type<Byte> getResultType() {
             return Types.BYTE;
         }
 
@@ -169,7 +170,8 @@ public class ToByte {
             super();
         }
 
-        public Type<? super Byte> getResultType() {
+        @Override
+        protected Type<Byte> getResultType() {
             return Types.BYTE;
         }
 
@@ -226,7 +228,8 @@ public class ToByte {
             super(locale);
         }
 
-        public Type<? super Byte> getResultType() {
+        @Override
+        protected Type<Byte> getResultType() {
             return Types.BYTE;
         }
 
@@ -256,7 +259,8 @@ public class ToByte {
             super(roundingMode);
         }
 
-        public Type<? super Byte> getResultType() {
+        @Override
+        protected Type<Byte> getResultType() {
             return Types.BYTE;
         }
 
@@ -281,7 +285,8 @@ public class ToByte {
             super(roundingMode);
         }
 
-        public Type<? super Byte> getResultType() {
+        @Override
+        protected Type<Byte> getResultType() {
             return Types.BYTE;
         }
 
@@ -306,7 +311,8 @@ public class ToByte {
             super(roundingMode);
         }
 
-        public Type<? super Byte> getResultType() {
+        @Override
+        protected Type<Byte> getResultType() {
             return Types.BYTE;
         }
 

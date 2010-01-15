@@ -144,7 +144,8 @@ public class ToLong {
             super();
         }
 
-        public Type<? super Long> getResultType() {
+        @Override
+        protected Type<Long> getResultType() {
             return Types.LONG;
         }
 
@@ -169,7 +170,8 @@ public class ToLong {
             super();
         }
 
-        public Type<? super Long> getResultType() {
+        @Override
+        protected Type<Long> getResultType() {
             return Types.LONG;
         }
 
@@ -226,7 +228,8 @@ public class ToLong {
             super(locale);
         }
 
-        public Type<? super Long> getResultType() {
+        @Override
+        protected Type<Long> getResultType() {
             return Types.LONG;
         }
 
@@ -256,7 +259,8 @@ public class ToLong {
             super(roundingMode);
         }
 
-        public Type<? super Long> getResultType() {
+        @Override
+        protected Type<Long> getResultType() {
             return Types.LONG;
         }
 
@@ -281,7 +285,8 @@ public class ToLong {
             super(roundingMode);
         }
 
-        public Type<? super Long> getResultType() {
+        @Override
+        protected Type<Long> getResultType() {
             return Types.LONG;
         }
 
@@ -306,7 +311,8 @@ public class ToLong {
             super(roundingMode);
         }
 
-        public Type<? super Long> getResultType() {
+        @Override
+        protected Type<Long> getResultType() {
             return Types.LONG;
         }
 

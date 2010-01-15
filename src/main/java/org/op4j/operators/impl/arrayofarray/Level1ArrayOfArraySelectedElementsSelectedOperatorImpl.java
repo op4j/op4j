@@ -2,7 +2,6 @@ package org.op4j.operators.impl.arrayofarray;
 
 import java.util.Collection;
 import java.util.Comparator;
-
 import org.javaruntype.type.Type;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
@@ -18,10 +17,10 @@ import org.op4j.target.Target;
 public class Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level1ArrayOfArraySelectedElementsSelectedOperator<T> {
 
 
-    private final Type<T[]> type;
+    private final Type<? extends T[]> type;
 
 
-    public Level1ArrayOfArraySelectedElementsSelectedOperatorImpl(final Type<T[]> type, final Target target) {
+    public Level1ArrayOfArraySelectedElementsSelectedOperatorImpl(final Type<? extends T[]> type, final Target target) {
         super(target);
         this.type = type;
     }

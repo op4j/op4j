@@ -58,8 +58,9 @@ public final class ToArray {
             this.type = type;
         }
 
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
+        @SuppressWarnings("unchecked")
+        public Type<? extends T[]> getResultType(final Type<? extends Collection<T>> targetType) {
+            return Types.arrayOf(Types.collectionComponentOf((Type<Collection<T>>)targetType));
         }
 
         @Override
@@ -84,8 +85,9 @@ public final class ToArray {
             this.type = type;
         }
 
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
+        @SuppressWarnings("unchecked")
+        public Type<? extends T[]> getResultType(final Type<? extends T> targetType) {
+            return Types.arrayOf((Type<T>)targetType);
         }
 
         @SuppressWarnings("unchecked")

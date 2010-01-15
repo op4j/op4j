@@ -120,14 +120,16 @@ public class StringFuncs {
         return STRIP_STRING_FUNC;
     }
 	
-	static abstract class BaseStringFunc<X> extends AbstractNotNullFunc<String, X> {		
+	static abstract class BaseStringFunc<X> extends AbstractNotNullFunc<String, X> {
+	    
 		public BaseStringFunc() {
 			super();			
 		}
 
-		public Type<? super String> getResultType() {
-			return Types.STRING;
-		}
+        public Type<? extends String> getResultType(final Type<? extends X> targetType) {
+            return Types.STRING;
+        }
+		
 	}
 	
 	/**

@@ -16,10 +16,10 @@ import org.op4j.target.Target.Structure;
 public class Level3MapOfArraySelectedEntriesSelectedValueElementsOperatorImpl<K,V> extends AbstractOperatorImpl implements Level3MapOfArraySelectedEntriesSelectedValueElementsOperator<K,V> {
 
 
-    private final Type<V> type;
+    private final Type<? extends V> type;
 
 
-    public Level3MapOfArraySelectedEntriesSelectedValueElementsOperatorImpl(final Type<V> type, final Target target) {
+    public Level3MapOfArraySelectedEntriesSelectedValueElementsOperatorImpl(final Type<? extends V> type, final Target target) {
         super(target);
         this.type = type;
     }

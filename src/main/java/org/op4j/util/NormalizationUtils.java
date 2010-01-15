@@ -28,7 +28,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.exceptions.TargetCastException;
@@ -617,58 +616,6 @@ public class NormalizationUtils {
     
 
     
-    
-    
-
-    public static <T> Type<T[]> buildArrayExecutionTargetType(final Type<T> arrayOf) {
-        return null;
-    }
-
-    public static <T> Type<T[][]> buildArrayOfArrayExecutionTargetType(final Type<T> arrayOf) {
-        return null;
-    }
-
-    public static <T> Type<List<T[]>> buildListOfArrayExecutionTargetType(final Type<T> arrayOf) {
-        return null;
-    }
-
-    public static <T> Type<Set<T[]>> buildSetOfArrayExecutionTargetType(final Type<T> arrayOf) {
-        return null;
-    }
-
-    public static <T> Type<Map<?,T[]>> buildMapOfArrayExecutionTargetType(final Type<T> arrayOf) {
-        return null;
-    }
-
-
-
-    public static <T> Type<T> extractArrayOfFromElementExecutionTargetType(final Type<? extends T> type) {
-        return null;
-    }
-
-    public static <T> Type<T[]> extractArrayFromArrayExecutionTargetType(final Type<? extends T[]> type) {
-        return null;
-    }
-
-    public static <T> Type<T> extractArrayOfFromArrayExecutionTargetType(final Type<? extends T[]> type) {
-        return null;
-    }
-
-    public static <T> Type<T> extractArrayOfFromArrayOfArrayExecutionTargetType(final Type<? extends T[][]> type) {
-        return null;
-    }
-
-    public static <T> Type<T> extractArrayOfFromListOfArrayExecutionTargetType(final Type<? extends List<T[]>> type) {
-        return null;
-    }
-
-    public static <T> Type<T> extractArrayOfFromMapOfArrayExecutionTargetType(final Type<? extends Map<?, T[]>> type) {
-        return null;
-    }
-
-    public static <T> Type<T> extractArrayOfFromSetOfArrayExecutionTargetType(final Type<? extends Set<T[]>> type) {
-        return null;
-    }
     
     
     

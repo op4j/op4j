@@ -55,10 +55,6 @@ public class ListFuncs {
             super();
         }
 
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
-        }
-
         @Override
         List<T> fromList(final List<T> object) {
             return object;
@@ -75,10 +71,6 @@ public class ListFuncs {
             super(comparator);
         }
 
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
-        }
-
         @Override
         List<T> fromList(final List<T> object) {
             return object;
@@ -89,14 +81,10 @@ public class ListFuncs {
     
     
     
-    public static final class Distinct<T> extends AbstractNotNullFunc<List<T>, List<T>> {
+    public static final class Distinct<T> extends AbstractNotNullNonConvertingFunc<List<T>> {
 
         public Distinct() {
             super();
-        }
-
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
         }
 
         @Override
@@ -116,10 +104,6 @@ public class ListFuncs {
             super(newElements);
         }
 
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
-        }
-
         @Override
         List<T> fromList(final List<T> object) {
             return object;
@@ -135,10 +119,6 @@ public class ListFuncs {
 
         public Insert(final int position, T... newElements) {
             super(position, newElements);
-        }
-
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
         }
 
         @Override
@@ -158,10 +138,6 @@ public class ListFuncs {
             super(collection);
         }
 
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
-        }
-
         @Override
         List<T> fromList(final List<T> object) {
             return object;
@@ -177,10 +153,6 @@ public class ListFuncs {
         
         public RemoveIndexes(final int... indices) {
             super(indices);
-        }
-
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
         }
 
         @Override
@@ -199,10 +171,6 @@ public class ListFuncs {
             super(values);
         }
 
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
-        }
-
         @Override
         List<T> fromList(final List<T> object) {
             return object;
@@ -217,10 +185,6 @@ public class ListFuncs {
 
         public RemoveMatching(final IEvaluator<Boolean,? super T> eval) {
             super(eval);
-        }
-
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
         }
 
         @Override
@@ -239,10 +203,6 @@ public class ListFuncs {
             super(eval);
         }
 
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
-        }
-
         @Override
         List<T> fromList(final List<T> object) {
             return object;
@@ -257,10 +217,6 @@ public class ListFuncs {
 
         public RemoveIndexesNot(final int... indices) {
             super(indices);
-        }
-
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
         }
 
         @Override
@@ -279,10 +235,6 @@ public class ListFuncs {
             super();
         }
 
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
-        }
-
         @Override
         List<T> fromList(final List<T> object) {
             return object;
@@ -297,10 +249,6 @@ public class ListFuncs {
 
         public RemoveNotNullMatching(final IEvaluator<Boolean,? super T> eval) {
             super(eval);
-        }
-
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
         }
 
         @Override
@@ -319,10 +267,6 @@ public class ListFuncs {
             super(eval);
         }
 
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
-        }
-
         @Override
         List<T> fromList(final List<T> object) {
             return object;
@@ -338,10 +282,6 @@ public class ListFuncs {
             super(eval);
         }
 
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
-        }
-
         @Override
         List<T> fromList(final List<T> object) {
             return object;
@@ -355,10 +295,6 @@ public class ListFuncs {
 
         public RemoveNullOrNotMatching(final IEvaluator<Boolean,? super T> eval) {
             super(eval);
-        }
-
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
         }
 
         @Override
@@ -377,9 +313,10 @@ public class ListFuncs {
         public FlattenListOfArrays() {
             super();
         }
-        
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
+
+        @SuppressWarnings("unchecked")
+        public Type<? extends List<T>> getResultType(final Type<? extends List<T[]>> targetType) {
+            return Types.listOf(Types.arrayComponentOf(Types.listComponentOf((Type<List<T[]>>)targetType)));
         }
 
         @Override
@@ -398,9 +335,10 @@ public class ListFuncs {
         public FlattenListOfLists() {
             super();
         }
-        
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
+
+        @SuppressWarnings("unchecked")
+        public Type<? extends List<T>> getResultType(final Type<? extends List<List<T>>> targetType) {
+            return Types.listOf(Types.listComponentOf(Types.listComponentOf((Type<List<List<T>>>)targetType)));
         }
 
         @Override
@@ -419,9 +357,10 @@ public class ListFuncs {
         public FlattenListOfSets() {
             super();
         }
-        
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
+
+        @SuppressWarnings("unchecked")
+        public Type<? extends List<T>> getResultType(final Type<? extends List<Set<T>>> targetType) {
+            return Types.listOf(Types.setComponentOf(Types.listComponentOf((Type<List<Set<T>>>)targetType)));
         }
 
         @Override

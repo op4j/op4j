@@ -27,6 +27,7 @@ import java.util.Locale;
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
+import org.javaruntype.type.Type;
 import org.op4j.functions.ExecCtx;
 
 /**
@@ -59,6 +60,12 @@ final class ToNumber {
             super();
         }
         
+        public Type<? extends X> getResultType(Type<? extends T> targetType) {
+            return getResultType();
+        }
+        
+        protected abstract Type<X> getResultType();
+
         protected abstract X fromNumber(final Number number);
         protected abstract X fromString(final String string);
         

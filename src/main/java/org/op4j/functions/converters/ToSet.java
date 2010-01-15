@@ -20,6 +20,7 @@
 
 package org.op4j.functions.converters;
 
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -50,9 +51,10 @@ public class ToSet {
         public FromArray() {
             super();
         }
-        
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
+
+        @SuppressWarnings("unchecked")
+        public Type<? extends Set<T>> getResultType(final Type<? extends T[]> targetType) {
+            return Types.setOf(Types.arrayComponentOf((Type<T[]>)targetType));
         }
 
         @Override
@@ -72,9 +74,10 @@ public class ToSet {
         public FromCollection() {
             super();
         }
-        
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
+
+        @SuppressWarnings("unchecked")
+        public Type<? extends Set<T>> getResultType(final Type<? extends Collection<T>> targetType) {
+            return Types.setOf(Types.collectionComponentOf((Type<Collection<T>>)targetType));
         }
 
         @Override
@@ -94,9 +97,10 @@ public class ToSet {
         public FromObject() {
             super();
         }
-        
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
+
+        @SuppressWarnings("unchecked")
+        public Type<? extends Set<T>> getResultType(Type<? extends T> targetType) {
+            return Types.setOf((Type<T>)targetType);
         }
 
         @Override

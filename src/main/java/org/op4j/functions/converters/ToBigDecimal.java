@@ -135,7 +135,8 @@ public class ToBigDecimal {
             super(scale, roundingMode);
         }
 
-        public Type<? super BigDecimal> getResultType() {
+        @Override
+        protected Type<BigDecimal> getResultType() {
             return Types.BIG_DECIMAL;
         }
 
@@ -160,7 +161,8 @@ public class ToBigDecimal {
             super();
         }
 
-        public Type<? super BigDecimal> getResultType() {
+        @Override
+        protected Type<BigDecimal> getResultType() {
             return Types.BIG_DECIMAL;
         }
 
@@ -213,7 +215,8 @@ public class ToBigDecimal {
             super(locale);
         }
 
-        public Type<? super BigDecimal> getResultType() {
+        @Override
+        protected Type<BigDecimal> getResultType() {
             return Types.BIG_DECIMAL;
         }
 

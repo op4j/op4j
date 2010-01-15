@@ -144,7 +144,8 @@ public class ToShort {
             super();
         }
 
-        public Type<? super Short> getResultType() {
+        @Override
+        protected Type<Short> getResultType() {
             return Types.SHORT;
         }
 
@@ -169,7 +170,8 @@ public class ToShort {
             super();
         }
 
-        public Type<? super Short> getResultType() {
+        @Override
+        protected Type<Short> getResultType() {
             return Types.SHORT;
         }
 
@@ -226,7 +228,8 @@ public class ToShort {
             super(locale);
         }
 
-        public Type<? super Short> getResultType() {
+        @Override
+        protected Type<Short> getResultType() {
             return Types.SHORT;
         }
 
@@ -256,7 +259,8 @@ public class ToShort {
             super(roundingMode);
         }
 
-        public Type<? super Short> getResultType() {
+        @Override
+        protected Type<Short> getResultType() {
             return Types.SHORT;
         }
 
@@ -281,7 +285,8 @@ public class ToShort {
             super(roundingMode);
         }
 
-        public Type<? super Short> getResultType() {
+        @Override
+        protected Type<Short> getResultType() {
             return Types.SHORT;
         }
 
@@ -306,7 +311,8 @@ public class ToShort {
             super(roundingMode);
         }
 
-        public Type<? super Short> getResultType() {
+        @Override
+        protected Type<Short> getResultType() {
             return Types.SHORT;
         }
 

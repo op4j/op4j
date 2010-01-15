@@ -69,10 +69,10 @@ public class ToBoolean {
 		public FromBoolean() {
 			super();
 		}
-		
-		public Type<? super Boolean> getResultType() {
-			return Types.BOOLEAN;
-		}
+
+        public Type<? extends Boolean> getResultType(final Type<? extends Boolean> targetType) {
+            return Types.BOOLEAN;
+        }
 
 		@Override
         public Boolean nullAsNullExecute(final Boolean object, final ExecCtx ctx) throws Exception {
@@ -90,9 +90,9 @@ public class ToBoolean {
 			super();
 		}
 
-		public Type<? super Boolean> getResultType() {
-			return Types.BOOLEAN;
-		}
+        public Type<? extends Boolean> getResultType(final Type<? extends String> targetType) {
+            return Types.BOOLEAN;
+        }
 
 		@Override
         public Boolean nullAsNullExecute(final String object, final ExecCtx ctx) throws Exception {
@@ -110,10 +110,10 @@ public class ToBoolean {
 		public FromNumber() {
 			super();
 		}
-		
-		public Type<? super Boolean> getResultType() {
-			return Types.BOOLEAN;
-		}
+
+        public Type<? extends Boolean> getResultType(final Type<? extends Number> targetType) {
+            return Types.BOOLEAN;
+        }
 
 		@Override
         public Boolean nullAsNullExecute(final Number object, final ExecCtx ctx) throws Exception {

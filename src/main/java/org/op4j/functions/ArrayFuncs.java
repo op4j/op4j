@@ -66,14 +66,10 @@ public class ArrayFuncs {
     
     
     
-    public static final class Sort<T extends Comparable<? super T>> extends AbstractNotNullFunc<T[], T[]> {
+    public static final class Sort<T extends Comparable<? super T>> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         public Sort() {
             super();
-        }
-
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
         }
 
         @Override
@@ -90,7 +86,7 @@ public class ArrayFuncs {
 
     
     
-    public static final class SortByComparator<T> extends AbstractNotNullFunc<T[], T[]> {
+    public static final class SortByComparator<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private Comparator<? super T> comparator = null;
 
@@ -98,10 +94,6 @@ public class ArrayFuncs {
             super();
             Validate.notNull(comparator, "A comparator must be specified");
             this.comparator = comparator;
-        }
-
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
         }
 
         @Override
@@ -118,14 +110,10 @@ public class ArrayFuncs {
     
     
     
-    public static final class Distinct<T> extends AbstractNotNullFunc<T[], T[]> {
+    public static final class Distinct<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         public Distinct() {
             super();
-        }
-
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
         }
 
         @Override
@@ -185,17 +173,13 @@ public class ArrayFuncs {
     
 
     
-    public static final class Add<T> extends AbstractNotNullFunc<T[],T[]> {
+    public static final class Add<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final List<T> newElements;
         
         public Add(final T... newElements) {
             super();
             this.newElements = VarArgsUtil.asRequiredObjectList(newElements);
-        }
-
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
         }
 
         @Override
@@ -209,7 +193,7 @@ public class ArrayFuncs {
 
     
     
-    public static final class Insert<T> extends AbstractNotNullFunc<T[],T[]> {
+    public static final class Insert<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final int position;
         private final List<T> newElements;
@@ -218,10 +202,6 @@ public class ArrayFuncs {
             super();
             this.position = position;
             this.newElements = VarArgsUtil.asRequiredObjectList(newElements);
-        }
-
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
         }
 
         @Override
@@ -237,7 +217,7 @@ public class ArrayFuncs {
     
     
     
-    public static final class AddAll<T> extends AbstractNotNullFunc<T[],T[]> {
+    public static final class AddAll<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final List<T> newElements;
         
@@ -245,10 +225,6 @@ public class ArrayFuncs {
             super();
             Validate.notNull(collection, "A collection must be specified");
             this.newElements = new ArrayList<T>(collection);
-        }
-
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
         }
 
         @Override
@@ -264,17 +240,13 @@ public class ArrayFuncs {
     
 
     
-    public static final class RemoveIndexes<T> extends AbstractNotNullFunc<T[],T[]> {
+    public static final class RemoveIndexes<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final List<Integer> indices;
         
         public RemoveIndexes(final int... indices) {
             super();
             this.indices = VarArgsUtil.asRequiredIntegerList(indices);
-        }
-
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
         }
 
         @Override
@@ -296,17 +268,13 @@ public class ArrayFuncs {
     
 
     
-    public static final class RemoveEquals<T> extends AbstractNotNullFunc<T[],T[]> {
+    public static final class RemoveEquals<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final List<T> values;
         
         public RemoveEquals(final T... values) {
             super();
             this.values = VarArgsUtil.asRequiredObjectList(values);
-        }
-
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
         }
 
         @Override
@@ -322,7 +290,7 @@ public class ArrayFuncs {
     
 
     
-    public static final class RemoveMatching<T> extends AbstractNotNullFunc<T[],T[]> {
+    public static final class RemoveMatching<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final IEvaluator<Boolean,? super T> eval;
         
@@ -330,10 +298,6 @@ public class ArrayFuncs {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
-        }
-
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
         }
 
         @Override
@@ -353,7 +317,7 @@ public class ArrayFuncs {
     
 
     
-    public static final class RemoveNotMatching<T> extends AbstractNotNullFunc<T[],T[]> {
+    public static final class RemoveNotMatching<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final IEvaluator<Boolean,? super T> eval;
         
@@ -361,10 +325,6 @@ public class ArrayFuncs {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
-        }
-
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
         }
 
         @Override
@@ -384,17 +344,13 @@ public class ArrayFuncs {
 
     
     
-    public static final class RemoveIndexesNot<T> extends AbstractNotNullFunc<T[],T[]> {
+    public static final class RemoveIndexesNot<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final List<Integer> indices;
         
         public RemoveIndexesNot(final int... indices) {
             super();
             this.indices = VarArgsUtil.asRequiredIntegerList(indices);
-        }
-
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
         }
 
         @Override
@@ -416,14 +372,10 @@ public class ArrayFuncs {
 
     
     
-    public static final class RemoveNulls<T> extends AbstractNotNullFunc<T[],T[]> {
+    public static final class RemoveNulls<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         public RemoveNulls() {
             super();
-        }
-
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
         }
 
         @Override
@@ -444,7 +396,7 @@ public class ArrayFuncs {
 
     
     
-    public static final class RemoveNotNullMatching<T> extends AbstractNotNullFunc<T[],T[]> {
+    public static final class RemoveNotNullMatching<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final IEvaluator<Boolean,? super T> eval;
         
@@ -452,10 +404,6 @@ public class ArrayFuncs {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
-        }
-
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
         }
 
         @Override
@@ -482,7 +430,7 @@ public class ArrayFuncs {
 
     
     
-    public static final class RemoveNotNullNotMatching<T> extends AbstractNotNullFunc<T[],T[]> {
+    public static final class RemoveNotNullNotMatching<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final IEvaluator<Boolean,? super T> eval;
         
@@ -490,10 +438,6 @@ public class ArrayFuncs {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
-        }
-
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
         }
 
         @Override
@@ -517,7 +461,7 @@ public class ArrayFuncs {
 
     
     
-    public static final class RemoveNullOrMatching<T> extends AbstractNotNullFunc<T[],T[]> {
+    public static final class RemoveNullOrMatching<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final IEvaluator<Boolean,? super T> eval;
         
@@ -525,10 +469,6 @@ public class ArrayFuncs {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
-        }
-
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
         }
 
         @Override
@@ -552,7 +492,7 @@ public class ArrayFuncs {
 
     
     
-    public static final class RemoveNullOrNotMatching<T> extends AbstractNotNullFunc<T[],T[]> {
+    public static final class RemoveNullOrNotMatching<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final IEvaluator<Boolean,? super T> eval;
         
@@ -560,10 +500,6 @@ public class ArrayFuncs {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
-        }
-
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
         }
 
         @Override
@@ -596,8 +532,9 @@ public class ArrayFuncs {
             this.type = type;
         }
 
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
+        @SuppressWarnings("unchecked")
+        public Type<? extends T[]> getResultType(final Type<? extends T[][]> targetType) {
+            return Types.arrayComponentOf((Type<T[][]>)targetType);
         }
 
         @Override
@@ -627,8 +564,9 @@ public class ArrayFuncs {
             this.type = type;
         }
 
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
+        @SuppressWarnings("unchecked")
+        public Type<? extends T[]> getResultType(final Type<? extends List<T>[]> targetType) {
+            return Types.arrayOf(Types.listComponentOf(Types.arrayComponentOf((Type<List<T>[]>)targetType)));
         }
 
         @Override
@@ -659,8 +597,9 @@ public class ArrayFuncs {
             this.type = type;
         }
 
-        public Type<? super T[]> getResultType() {
-            return Types.ARRAY_OF_OBJECT;
+        @SuppressWarnings("unchecked")
+        public Type<? extends T[]> getResultType(final Type<? extends Set<T>[]> targetType) {
+            return Types.arrayOf(Types.setComponentOf(Types.arrayComponentOf((Type<Set<T>[]>)targetType)));
         }
 
         @Override

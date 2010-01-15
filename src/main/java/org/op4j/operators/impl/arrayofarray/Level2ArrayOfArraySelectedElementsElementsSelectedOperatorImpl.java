@@ -13,10 +13,10 @@ import org.op4j.target.Target;
 public class Level2ArrayOfArraySelectedElementsElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level2ArrayOfArraySelectedElementsElementsSelectedOperator<T> {
 
 
-    private final Type<T> type;
+    private final Type<? extends T> type;
 
 
-    public Level2ArrayOfArraySelectedElementsElementsSelectedOperatorImpl(final Type<T> type, final Target target) {
+    public Level2ArrayOfArraySelectedElementsElementsSelectedOperatorImpl(final Type<? extends T> type, final Target target) {
         super(target);
         this.type = type;
     }

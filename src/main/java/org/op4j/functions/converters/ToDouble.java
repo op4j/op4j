@@ -125,7 +125,8 @@ public class ToDouble {
             super(scale, roundingMode);
         }
 
-        public Type<? super Double> getResultType() {
+        @Override
+        protected Type<Double> getResultType() {
             return Types.DOUBLE;
         }
 
@@ -150,7 +151,8 @@ public class ToDouble {
             super();
         }
 
-        public Type<? super Double> getResultType() {
+        @Override
+        protected Type<Double> getResultType() {
             return Types.DOUBLE;
         }
 
@@ -203,7 +205,8 @@ public class ToDouble {
             super(locale);
         }
 
-        public Type<? super Double> getResultType() {
+        @Override
+        protected Type<Double> getResultType() {
             return Types.DOUBLE;
         }
 

@@ -125,7 +125,8 @@ public class ToFloat {
             super(scale, roundingMode);
         }
 
-        public Type<? super Float> getResultType() {
+        @Override
+        protected Type<Float> getResultType() {
             return Types.FLOAT;
         }
 
@@ -150,7 +151,8 @@ public class ToFloat {
             super();
         }
 
-        public Type<? super Float> getResultType() {
+        @Override
+        protected Type<Float> getResultType() {
             return Types.FLOAT;
         }
 
@@ -203,7 +205,8 @@ public class ToFloat {
             super(locale);
         }
 
-        public Type<? super Float> getResultType() {
+        @Override
+        protected Type<Float> getResultType() {
             return Types.FLOAT;
         }
 

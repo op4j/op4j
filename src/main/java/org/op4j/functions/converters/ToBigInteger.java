@@ -155,7 +155,8 @@ public class ToBigInteger {
             super();
         }
 
-        public Type<? super BigInteger> getResultType() {
+        @Override
+        protected Type<BigInteger> getResultType() {
             return Types.BIG_INTEGER;
         }
 
@@ -180,7 +181,8 @@ public class ToBigInteger {
             super();
         }
 
-        public Type<? super BigInteger> getResultType() {
+        @Override
+        protected Type<BigInteger> getResultType() {
             return Types.BIG_INTEGER;
         }
 
@@ -237,7 +239,8 @@ public class ToBigInteger {
             super(locale);
         }
 
-        public Type<? super BigInteger> getResultType() {
+        @Override
+        protected Type<BigInteger> getResultType() {
             return Types.BIG_INTEGER;
         }
 
@@ -267,7 +270,8 @@ public class ToBigInteger {
             super(roundingMode);
         }
 
-        public Type<? super BigInteger> getResultType() {
+        @Override
+        protected Type<BigInteger> getResultType() {
             return Types.BIG_INTEGER;
         }
 
@@ -292,7 +296,8 @@ public class ToBigInteger {
             super(roundingMode);
         }
 
-        public Type<? super BigInteger> getResultType() {
+        @Override
+        protected Type<BigInteger> getResultType() {
             return Types.BIG_INTEGER;
         }
 
@@ -317,7 +322,8 @@ public class ToBigInteger {
             super(roundingMode);
         }
 
-        public Type<? super BigInteger> getResultType() {
+        @Override
+        protected Type<BigInteger> getResultType() {
             return Types.BIG_INTEGER;
         }
 

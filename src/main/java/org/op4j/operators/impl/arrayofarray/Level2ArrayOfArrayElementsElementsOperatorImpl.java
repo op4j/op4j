@@ -30,7 +30,6 @@ import org.op4j.operators.intf.arrayofarray.Level2ArrayOfArrayElementsElementsOp
 import org.op4j.operators.intf.arrayofarray.Level2ArrayOfArrayElementsElementsSelectedOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Structure;
-import org.op4j.util.NormalizationUtils;
 
 
 
@@ -44,10 +43,10 @@ import org.op4j.util.NormalizationUtils;
 public class Level2ArrayOfArrayElementsElementsOperatorImpl<T> extends AbstractOperatorImpl
         implements Level2ArrayOfArrayElementsElementsOperator<T> {
     
-    private final Type<T> type; 
+    private final Type<? extends T> type; 
 
     
-    public Level2ArrayOfArrayElementsElementsOperatorImpl(final Type<T> type, final Target target) {
+    public Level2ArrayOfArrayElementsElementsOperatorImpl(final Type<? extends T> type, final Target target) {
         super(target);
         this.type = type;
     }
@@ -123,26 +122,17 @@ public class Level2ArrayOfArrayElementsElementsOperatorImpl<T> extends AbstractO
 
 
     public <X> Level2ArrayOfArrayElementsElementsOperator<X> convert(final IConverter<X, ? super T> converter) {
-        final Type<X> newType =
-            NormalizationUtils.extractArrayOfFromElementExecutionTargetType(
-                    converter.getResultType(this.type));
-        return new Level2ArrayOfArrayElementsElementsOperatorImpl<X>(newType, getTarget().execute(converter));
+        return new Level2ArrayOfArrayElementsElementsOperatorImpl<X>(converter.getResultType(this.type), getTarget().execute(converter));
     }
 
 
     public <X> Level2ArrayOfArrayElementsElementsOperator<X> eval(final IEvaluator<X, ? super T> eval) {
-        final Type<X> newType =
-            NormalizationUtils.extractArrayOfFromElementExecutionTargetType(
-                    eval.getResultType(this.type));
-        return new Level2ArrayOfArrayElementsElementsOperatorImpl<X>(newType, getTarget().execute(eval));
+        return new Level2ArrayOfArrayElementsElementsOperatorImpl<X>(eval.getResultType(this.type), getTarget().execute(eval));
     }
 
 
     public <X> Level2ArrayOfArrayElementsElementsOperator<X> exec(final IFunction<X, ? super T> function) {
-        final Type<X> newType =
-            NormalizationUtils.extractArrayOfFromElementExecutionTargetType(
-                    function.getResultType(this.type));
-        return new Level2ArrayOfArrayElementsElementsOperatorImpl<X>(newType, getTarget().execute(function));
+        return new Level2ArrayOfArrayElementsElementsOperatorImpl<X>(function.getResultType(this.type), getTarget().execute(function));
     }
 
 }

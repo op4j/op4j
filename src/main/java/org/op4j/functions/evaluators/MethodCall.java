@@ -143,7 +143,7 @@ public class MethodCall<R,T> implements IEvaluator<R,T> {
     
     
     
-    public Type<R> getResultType(final Type<T> targetType) {
+    public Type<? extends R> getResultType(final Type<? extends T> targetType) {
     	return this.resultType;
     }
 

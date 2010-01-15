@@ -323,10 +323,10 @@ public final class ToString {
 		public FromObject() {
 			super();
 		}
-		
-		public Type<? super String> getResultType() {
-			return Types.STRING;
-		}
+
+        public Type<? extends String> getResultType(final Type<? extends Object> targetType) {
+            return Types.STRING;
+        }
 
         @Override
 		public String nullAsNullExecute(final Object object, final ExecCtx ctx) throws Exception {
@@ -526,10 +526,10 @@ public final class ToString {
 			setGroupingSeparator(groupingSeparator);
 			setDecimalSeparator(decimalSeparator, decimalSeparatorAlwaysShown);
 		}
-		
-		public Type<? super String> getResultType() {
-			return Types.STRING;
-		}
+
+        public Type<? extends String> getResultType(final Type<? extends Number> targetType) {
+            return Types.STRING;
+        }
 
         @Override
 		public String nullAsNullExecute(final Number number, final ExecCtx ctx) throws Exception {
@@ -729,10 +729,10 @@ public final class ToString {
 			this.timeStyle = timeStyle;
 			this.locale = LocaleUtils.toLocale(locale);
 		}
-						
-		public Type<? super String> getResultType() {
-			return Types.STRING;
-		}
+
+        public Type<? extends String> getResultType(final Type<? extends Calendar> targetType) {
+            return Types.STRING;
+        }
 
         @Override
 		public String nullAsNullExecute(final Calendar calendar, final ExecCtx ctx) throws Exception {
@@ -852,10 +852,10 @@ public final class ToString {
 			this.timeStyle = timeStyle;
 			this.locale = LocaleUtils.toLocale(locale);
 		}
-						
-		public Type<? super String> getResultType() {
-			return Types.STRING;
-		}
+
+        public Type<? extends String> getResultType(final Type<? extends Date> targetType) {
+            return Types.STRING;
+        }
 
         @Override
 		public String nullAsNullExecute(final Date date, final ExecCtx ctx) throws Exception {

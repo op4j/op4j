@@ -20,6 +20,7 @@
 
 package org.op4j.functions.converters;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.javaruntype.type.Type;
@@ -48,9 +49,10 @@ public class ToList {
         public FromArray() {
             super();
         }
-        
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
+
+        @SuppressWarnings("unchecked")
+        public Type<? extends List<T>> getResultType(final Type<? extends T[]> targetType) {
+            return Types.listOf(Types.arrayComponentOf((Type<T[]>)targetType));
         }
 
         @Override
@@ -68,9 +70,10 @@ public class ToList {
         public FromCollection() {
             super();
         }
-        
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
+
+        @SuppressWarnings("unchecked")
+        public Type<? extends List<T>> getResultType(final Type<? extends Collection<T>> targetType) {
+            return Types.listOf(Types.collectionComponentOf((Type<Collection<T>>)targetType));
         }
 
         @Override
@@ -88,9 +91,10 @@ public class ToList {
         public FromObject() {
             super();
         }
-        
-        public Type<? super List<T>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
+
+        @SuppressWarnings("unchecked")
+        public Type<? extends List<T>> getResultType(final Type<? extends T> targetType) {
+            return Types.listOf((Type<T>)targetType);
         }
 
         @Override

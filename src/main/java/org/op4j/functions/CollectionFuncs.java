@@ -50,7 +50,7 @@ class CollectionFuncs {
     
     
     
-    static abstract class Sort<T extends Comparable<? super T>, X extends Collection<T>> extends AbstractNotNullFunc<X, X> {
+    static abstract class Sort<T extends Comparable<? super T>, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
 
         public Sort() {
             super();
@@ -71,7 +71,7 @@ class CollectionFuncs {
 
     
     
-    static abstract class SortByComparator<T, X extends Collection<T>> extends AbstractNotNullFunc<X, X> {
+    static abstract class SortByComparator<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
 
         private Comparator<? super T> comparator = null;
 
@@ -97,7 +97,7 @@ class CollectionFuncs {
     
 
     
-    static abstract class Add<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
+    static abstract class Add<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
 
         private final List<T> newElements;
         
@@ -119,7 +119,7 @@ class CollectionFuncs {
 
     
     
-    static abstract class Insert<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
+    static abstract class Insert<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
 
         private final int position;
         private final List<T> newElements;
@@ -145,7 +145,7 @@ class CollectionFuncs {
     
     
     
-    static abstract class AddAll<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
+    static abstract class AddAll<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
 
         private final List<T> newElements;
         
@@ -170,7 +170,7 @@ class CollectionFuncs {
     
 
     
-    static abstract class RemoveIndexes<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
+    static abstract class RemoveIndexes<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
 
         private final List<Integer> indices;
         
@@ -200,7 +200,7 @@ class CollectionFuncs {
     
 
     
-    static abstract class RemoveEquals<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
+    static abstract class RemoveEquals<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
 
         private final List<T> values;
         
@@ -224,7 +224,7 @@ class CollectionFuncs {
     
 
     
-    static abstract class RemoveMatching<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
+    static abstract class RemoveMatching<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
 
         private final IEvaluator<Boolean,? super T> eval;
         
@@ -254,7 +254,7 @@ class CollectionFuncs {
 
     
     
-    static abstract class RemoveNotMatching<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
+    static abstract class RemoveNotMatching<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
 
         private final IEvaluator<Boolean,? super T> eval;
         
@@ -283,7 +283,7 @@ class CollectionFuncs {
 
     
     
-    static abstract class RemoveIndexesNot<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
+    static abstract class RemoveIndexesNot<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
 
         private final List<Integer> indices;
         
@@ -313,7 +313,7 @@ class CollectionFuncs {
 
     
     
-    static abstract class RemoveNulls<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
+    static abstract class RemoveNulls<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
 
         public RemoveNulls() {
             super();
@@ -339,7 +339,7 @@ class CollectionFuncs {
 
     
     
-    static abstract class RemoveNotNullMatching<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
+    static abstract class RemoveNotNullMatching<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
 
         private final IEvaluator<Boolean,? super T> eval;
         
@@ -375,7 +375,7 @@ class CollectionFuncs {
 
     
     
-    static abstract class RemoveNotNullNotMatching<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
+    static abstract class RemoveNotNullNotMatching<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
 
         private final IEvaluator<Boolean,? super T> eval;
         
@@ -409,7 +409,7 @@ class CollectionFuncs {
     
 
     
-    static abstract class RemoveNullOrMatching<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
+    static abstract class RemoveNullOrMatching<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
 
         private final IEvaluator<Boolean,? super T> eval;
         
@@ -442,7 +442,7 @@ class CollectionFuncs {
     
 
     
-    static abstract class RemoveNullOrNotMatching<T, X extends Collection<T>> extends AbstractNotNullFunc<X,X> {
+    static abstract class RemoveNullOrNotMatching<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
 
         private final IEvaluator<Boolean,? super T> eval;
         

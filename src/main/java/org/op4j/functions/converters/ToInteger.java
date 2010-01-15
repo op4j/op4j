@@ -145,7 +145,8 @@ public class ToInteger {
             super();
         }
 
-        public Type<? super Integer> getResultType() {
+        @Override
+        protected Type<Integer> getResultType() {
             return Types.INTEGER;
         }
 
@@ -170,7 +171,8 @@ public class ToInteger {
             super();
         }
 
-        public Type<? super Integer> getResultType() {
+        @Override
+        protected Type<Integer> getResultType() {
             return Types.INTEGER;
         }
 
@@ -227,7 +229,8 @@ public class ToInteger {
             super(locale);
         }
 
-        public Type<? super Integer> getResultType() {
+        @Override
+        protected Type<Integer> getResultType() {
             return Types.INTEGER;
         }
 
@@ -257,7 +260,8 @@ public class ToInteger {
             super(roundingMode);
         }
 
-        public Type<? super Integer> getResultType() {
+        @Override
+        protected Type<Integer> getResultType() {
             return Types.INTEGER;
         }
 
@@ -282,7 +286,8 @@ public class ToInteger {
             super(roundingMode);
         }
 
-        public Type<? super Integer> getResultType() {
+        @Override
+        protected Type<Integer> getResultType() {
             return Types.INTEGER;
         }
 
@@ -307,7 +312,8 @@ public class ToInteger {
             super(roundingMode);
         }
 
-        public Type<? super Integer> getResultType() {
+        @Override
+        protected Type<Integer> getResultType() {
             return Types.INTEGER;
         }
 

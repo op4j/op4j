@@ -46,10 +46,10 @@ import org.op4j.util.NormalizationUtils;
 public class Level3MapOfArrayEntriesValueElementsOperatorImpl<K,V> extends AbstractOperatorImpl
         implements Level3MapOfArrayEntriesValueElementsOperator<K,V> {
     
-    private final Type<V> type; 
+    private final Type<? extends V> type; 
 
     
-    public Level3MapOfArrayEntriesValueElementsOperatorImpl(final Type<V> type, final Target target) {
+    public Level3MapOfArrayEntriesValueElementsOperatorImpl(final Type<? extends V> type, final Target target) {
         super(target);
         this.type = type;
     }
@@ -127,26 +127,17 @@ public class Level3MapOfArrayEntriesValueElementsOperatorImpl<K,V> extends Abstr
 
 
     public <X> Level3MapOfArrayEntriesValueElementsOperator<K, X> convert(final IConverter<X, ? super V> converter) {
-        final Type<X> newType =
-            NormalizationUtils.extractArrayOfFromElementExecutionTargetType(
-                    converter.getResultType(this.type));
-        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(newType, getTarget().execute(converter));
+        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(converter.getResultType(this.type), getTarget().execute(converter));
     }
 
 
     public <X> Level3MapOfArrayEntriesValueElementsOperator<K, X> eval(final IEvaluator<X, ? super V> eval) {
-        final Type<X> newType =
-            NormalizationUtils.extractArrayOfFromElementExecutionTargetType(
-                    eval.getResultType(this.type));
-        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(newType, getTarget().execute(eval));
+        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(eval.getResultType(this.type), getTarget().execute(eval));
     }
 
 
     public <X> Level3MapOfArrayEntriesValueElementsOperator<K, X> exec(final IFunction<X, ? super V> function) {
-        final Type<X> newType =
-            NormalizationUtils.extractArrayOfFromElementExecutionTargetType(
-                    function.getResultType(this.type));
-        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(newType, getTarget().execute(function));
+        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(function.getResultType(this.type), getTarget().execute(function));
     }
 
 }

@@ -54,10 +54,6 @@ public class SetFuncs {
             super();
         }
 
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
-        }
-
         @Override
         Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
@@ -75,10 +71,6 @@ public class SetFuncs {
             super(comparator);
         }
 
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
-        }
-
         @Override
         Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
@@ -93,10 +85,6 @@ public class SetFuncs {
 
         public Add(final T... newElements) {
             super(newElements);
-        }
-
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
         }
 
         @Override
@@ -116,10 +104,6 @@ public class SetFuncs {
             super(position, newElements);
         }
 
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
-        }
-
         @Override
         Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
@@ -135,10 +119,6 @@ public class SetFuncs {
 
         public AddAll(final Collection<T> collection) {
             super(collection);
-        }
-
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
         }
 
         @Override
@@ -158,10 +138,6 @@ public class SetFuncs {
             super(indices);
         }
 
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
-        }
-
         @Override
         Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
@@ -176,10 +152,6 @@ public class SetFuncs {
 
         public RemoveEquals(final T... values) {
             super(values);
-        }
-
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
         }
 
         @Override
@@ -198,10 +170,6 @@ public class SetFuncs {
             super(eval);
         }
 
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
-        }
-
         @Override
         Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
@@ -216,10 +184,6 @@ public class SetFuncs {
 
         public RemoveNotMatching(final IEvaluator<Boolean,? super T> eval) {
             super(eval);
-        }
-
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
         }
 
         @Override
@@ -238,10 +202,6 @@ public class SetFuncs {
             super(indices);
         }
 
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
-        }
-
         @Override
         Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
@@ -256,10 +216,6 @@ public class SetFuncs {
 
         public RemoveNulls() {
             super();
-        }
-
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
         }
 
         @Override
@@ -278,10 +234,6 @@ public class SetFuncs {
             super(eval);
         }
 
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
-        }
-
         @Override
         Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
@@ -296,10 +248,6 @@ public class SetFuncs {
 
         public RemoveNotNullNotMatching(final IEvaluator<Boolean,? super T> eval) {
             super(eval);
-        }
-
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
         }
 
         @Override
@@ -318,10 +266,6 @@ public class SetFuncs {
             super(eval);
         }
 
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
-        }
-
         @Override
         Set<T> fromList(final List<T> object) {
             return new LinkedHashSet<T>(object);
@@ -336,10 +280,6 @@ public class SetFuncs {
 
         public RemoveNullOrNotMatching(final IEvaluator<Boolean,? super T> eval) {
             super(eval);
-        }
-
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
         }
 
         @Override
@@ -358,9 +298,10 @@ public class SetFuncs {
         public FlattenSetOfArrays() {
             super();
         }
-        
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
+
+        @SuppressWarnings("unchecked")
+        public Type<? extends Set<T>> getResultType(final Type<? extends Set<T[]>> targetType) {
+            return Types.setOf(Types.arrayComponentOf(Types.setComponentOf((Type<Set<T[]>>)targetType)));
         }
 
         @Override
@@ -380,9 +321,10 @@ public class SetFuncs {
         public FlattenSetOfLists() {
             super();
         }
-        
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
+
+        @SuppressWarnings("unchecked")
+        public Type<? extends Set<T>> getResultType(final Type<? extends Set<List<T>>> targetType) {
+            return Types.setOf(Types.listComponentOf(Types.setComponentOf((Type<Set<List<T>>>)targetType)));
         }
 
         @Override
@@ -401,9 +343,10 @@ public class SetFuncs {
         public FlattenSetOfSets() {
             super();
         }
-        
-        public Type<? super Set<T>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
+
+        @SuppressWarnings("unchecked")
+        public Type<? extends Set<T>> getResultType(final Type<? extends Set<Set<T>>> targetType) {
+            return Types.setOf(Types.setComponentOf(Types.setComponentOf((Type<Set<Set<T>>>)targetType)));
         }
 
         @Override

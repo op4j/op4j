@@ -56,14 +56,10 @@ public class MapFuncs {
     
     
     
-    public static class SortByKey<K extends Comparable<? super K>, V> extends AbstractNotNullFunc<Map<K, V>, Map<K, V>> {
+    public static class SortByKey<K extends Comparable<? super K>, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 
         public SortByKey() {
             super();
-        }
-
-        public Type<? super Map<K, V>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
         @Override
@@ -81,17 +77,13 @@ public class MapFuncs {
 
     
     
-    public static class SortEntries<K, V> extends AbstractNotNullFunc<Map<K, V>, Map<K, V>> {
+    public static class SortEntries<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 
         private final Comparator<? super Map.Entry<K, V>> comparator;
 
         public SortEntries(final Comparator<? super Map.Entry<K, V>> comparator) {
             super();
             this.comparator = comparator;
-        }
-
-        public Type<? super Map<K, V>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
         @Override
@@ -111,7 +103,7 @@ public class MapFuncs {
     
 
     
-    public static final class Put<K, V> extends AbstractNotNullFunc<Map<K, V>,Map<K, V>> {
+    public static final class Put<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 
         private final K key;
         private final V value;
@@ -120,10 +112,6 @@ public class MapFuncs {
             super();
             this.key = key;
             this.value = value;
-        }
-
-        public Type<? super Map<K, V>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
         @Override
@@ -137,7 +125,7 @@ public class MapFuncs {
 
     
     
-    public static final class Insert<K, V> extends AbstractNotNullFunc<Map<K, V>,Map<K, V>> {
+    public static final class Insert<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 
         private final int position;
         private final K key;
@@ -148,10 +136,6 @@ public class MapFuncs {
             this.position = position;
             this.key = key;
             this.value = value;
-        }
-
-        public Type<? super Map<K, V>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
         @Override
@@ -176,17 +160,13 @@ public class MapFuncs {
     
     
     
-    public static final class PutAll<K, V> extends AbstractNotNullFunc<Map<K, V>,Map<K, V>> {
+    public static final class PutAll<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 
         private final Map<K, V> map;
         
         public PutAll(final Map<K, V> map) {
             super();
             this.map = new LinkedHashMap<K, V>(map);
-        }
-
-        public Type<? super Map<K, V>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
         @Override
@@ -202,7 +182,7 @@ public class MapFuncs {
     
     
     
-    public static final class InsertAll<K, V> extends AbstractNotNullFunc<Map<K, V>,Map<K, V>> {
+    public static final class InsertAll<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 
         private final int position;
         private final Map<K, V> map;
@@ -211,10 +191,6 @@ public class MapFuncs {
             super();
             this.position = position;
             this.map = new LinkedHashMap<K, V>(map);
-        }
-
-        public Type<? super Map<K, V>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
         @Override
@@ -241,17 +217,13 @@ public class MapFuncs {
     
 
     
-    public static final class RemoveKeys<K,V> extends AbstractNotNullFunc<Map<K, V>,Map<K, V>> {
+    public static final class RemoveKeys<K,V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 
         private final List<K> keys;
         
         public RemoveKeys(final K... keys) {
             super();
             this.keys = VarArgsUtil.asRequiredObjectList(keys);
-        }
-
-        public Type<? super Map<K, V>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
         @Override
@@ -269,17 +241,13 @@ public class MapFuncs {
     
 
     
-    public static final class RemoveMatching<K, V> extends AbstractNotNullFunc<Map<K, V>,Map<K, V>> {
+    public static final class RemoveMatching<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 
         private final IEvaluator<Boolean,? super Map.Entry<K, V>> eval;
         
         public RemoveMatching(final IEvaluator<Boolean,? super Map.Entry<K, V>> eval) {
             super();
             this.eval = eval;
-        }
-
-        public Type<? super Map<K, V>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
         @Override
@@ -299,17 +267,13 @@ public class MapFuncs {
     
 
     
-    public static final class RemoveNotMatching<K, V> extends AbstractNotNullFunc<Map<K, V>,Map<K, V>> {
+    public static final class RemoveNotMatching<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 
         private final IEvaluator<Boolean,? super Map.Entry<K, V>> eval;
         
         public RemoveNotMatching(final IEvaluator<Boolean,? super Map.Entry<K, V>> eval) {
             super();
             this.eval = eval;
-        }
-
-        public Type<? super Map<K, V>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
         @Override
@@ -329,17 +293,13 @@ public class MapFuncs {
 
     
     
-    public static final class RemoveKeysNot<K, V> extends AbstractNotNullFunc<Map<K, V>,Map<K, V>> {
+    public static final class RemoveKeysNot<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 
         private final List<K> keys;
         
         public RemoveKeysNot(final K... keys) {
             super();
             this.keys = VarArgsUtil.asRequiredObjectList(keys);
-        }
-
-        public Type<? super Map<K, V>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
         }
 
         @Override
@@ -364,8 +324,9 @@ public class MapFuncs {
             super();
         }
 
-        public Type<? super Set<K>> getResultType() {
-            return Types.SET_OF_UNKNOWN;
+        @SuppressWarnings("unchecked")
+        public Type<? extends Set<K>> getResultType(final Type<? extends Map<K, V>> targetType) {
+            return Types.setOf(Types.mapKeyComponentOf((Type<Map<K,V>>)targetType));
         }
 
         @Override
@@ -383,8 +344,9 @@ public class MapFuncs {
             super();
         }
 
-        public Type<? super List<V>> getResultType() {
-            return Types.LIST_OF_UNKNOWN;
+        @SuppressWarnings("unchecked")
+        public Type<? extends List<V>> getResultType(final Type<? extends Map<K, V>> targetType) {
+            return Types.listOf(Types.mapValueComponentOf((Type<Map<K,V>>)targetType));
         }
 
         @Override

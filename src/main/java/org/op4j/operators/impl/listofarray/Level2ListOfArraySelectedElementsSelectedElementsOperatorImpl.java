@@ -16,10 +16,10 @@ import org.op4j.target.Target.Structure;
 public class Level2ListOfArraySelectedElementsSelectedElementsOperatorImpl<T> extends AbstractOperatorImpl implements Level2ListOfArraySelectedElementsSelectedElementsOperator<T> {
 
 
-    private final Type<T> type;
+    private final Type<? extends T> type;
 
 
-    public Level2ListOfArraySelectedElementsSelectedElementsOperatorImpl(final Type<T> type, final Target target) {
+    public Level2ListOfArraySelectedElementsSelectedElementsOperatorImpl(final Type<? extends T> type, final Target target) {
         super(target);
         this.type = type;
     }
