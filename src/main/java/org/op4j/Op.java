@@ -135,13 +135,11 @@ public final class Op {
     }
 
     
-    @SuppressWarnings("unchecked")
     public static <T> Level0ArrayOperator<T> onArray(final T[] target) {
         return new Level0ArrayOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeArray(target)));
     }
 
     
-    @SuppressWarnings("unchecked")
     public static <T> Level0ArrayOfArrayOperator<T> onArrayOfArray(final T[][] target) {
         return new Level0ArrayOfArrayOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeArrayOfArray(target)));
     }
@@ -218,7 +216,6 @@ public final class Op {
 
     
     public static <T> Level0SetOfArrayOperator<T> onSetOfArray(final Set<T[]> target) {
-    	final Class<List<String>> clas = null;
         return new Level0SetOfArrayOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeSetOfArray(target)));
     }
 
