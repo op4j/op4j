@@ -103,11 +103,6 @@ public class Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public Level2MapOfSetEntriesValueSelectedOperator<K,V> exec(final IFunction<? extends Set<? extends V>,? super Set<V>> function) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> sort() {
         return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Sort()));
@@ -116,6 +111,11 @@ public class Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V> extends Abstrac
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> sort(final Comparator<? super V> comparator) {
         return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.SortByComparator<V>(comparator)));
+    }
+
+
+    public Level2MapOfSetEntriesValueSelectedOperator<K,V> exec(final IFunction<? extends Set<? extends V>,? super Set<V>> function) {
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 

@@ -78,8 +78,8 @@ public class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOperatorIm
     }
 
 
-    public Level0MapOfListSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends List<? extends V>>,? super Map<K,List<V>>> function) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(function));
+    public Level0MapOfListSelectedOperator<K,V> sort(final Comparator<? super Entry<K,List<V>>> comparator) {
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,List<V>>(comparator)));
     }
 
 
@@ -89,8 +89,8 @@ public class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOperatorIm
     }
 
 
-    public Level0MapOfListSelectedOperator<K,V> sort(final Comparator<? super Entry<K,List<V>>> comparator) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,List<V>>(comparator)));
+    public Level0MapOfListSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends List<? extends V>>,? super Map<K,List<V>>> function) {
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 

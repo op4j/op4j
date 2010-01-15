@@ -77,8 +77,8 @@ public class Level1ArrayOfMapElementsSelectedOperatorImpl<K,V> extends AbstractO
     }
 
 
-    public Level1ArrayOfMapElementsSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V>,? super Map<K,V>> function) {
-        return new Level1ArrayOfMapElementsSelectedOperatorImpl<K,V>(getTarget().execute(function));
+    public Level1ArrayOfMapElementsSelectedOperator<K,V> sort(final Comparator<? super Entry<K,V>> comparator) {
+        return new Level1ArrayOfMapElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,V>(comparator)));
     }
 
 
@@ -88,8 +88,8 @@ public class Level1ArrayOfMapElementsSelectedOperatorImpl<K,V> extends AbstractO
     }
 
 
-    public Level1ArrayOfMapElementsSelectedOperator<K,V> sort(final Comparator<? super Entry<K,V>> comparator) {
-        return new Level1ArrayOfMapElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,V>(comparator)));
+    public Level1ArrayOfMapElementsSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V>,? super Map<K,V>> function) {
+        return new Level1ArrayOfMapElementsSelectedOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 

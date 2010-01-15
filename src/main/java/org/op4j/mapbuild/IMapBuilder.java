@@ -19,6 +19,8 @@
  */
 package org.op4j.mapbuild;
 
+import org.javaruntype.type.Type;
+
 
 /**
  * 
@@ -29,8 +31,10 @@ package org.op4j.mapbuild;
  */
 public interface IMapBuilder<K,V,T> {
 
+	public Type<? extends K> getKeyType(final Type<? extends T> targetType);
+	public Type<? extends V> getValueType(final Type<? extends T> targetType);
+	
     public K buildKey(final T target);
-
     public V buildValue(final T target);
     
 }

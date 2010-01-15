@@ -37,8 +37,8 @@ public abstract class AbstractStringEvaluator<T> implements IEvaluator<String, T
 		super();
 	}
 	
-	
-	public Type<? super String> getResultType() {
+
+	public final Type<? extends String> getResultType(Type<? extends T> targetType) {
 		return Types.STRING;
 	}
 

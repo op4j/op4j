@@ -77,8 +77,8 @@ public class Level2MapOfMapSelectedEntriesValueSelectedOperatorImpl<K1,K2,V> ext
     }
 
 
-    public Level2MapOfMapSelectedEntriesValueSelectedOperator<K1,K2,V> exec(final IFunction<? extends Map<? extends K2,? extends V>,? super Map<K2,V>> function) {
-        return new Level2MapOfMapSelectedEntriesValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(function));
+    public Level2MapOfMapSelectedEntriesValueSelectedOperator<K1,K2,V> sort(final Comparator<? super Entry<K2,V>> comparator) {
+        return new Level2MapOfMapSelectedEntriesValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.SortEntries<K2,V>(comparator)));
     }
 
 
@@ -88,8 +88,8 @@ public class Level2MapOfMapSelectedEntriesValueSelectedOperatorImpl<K1,K2,V> ext
     }
 
 
-    public Level2MapOfMapSelectedEntriesValueSelectedOperator<K1,K2,V> sort(final Comparator<? super Entry<K2,V>> comparator) {
-        return new Level2MapOfMapSelectedEntriesValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.SortEntries<K2,V>(comparator)));
+    public Level2MapOfMapSelectedEntriesValueSelectedOperator<K1,K2,V> exec(final IFunction<? extends Map<? extends K2,? extends V>,? super Map<K2,V>> function) {
+        return new Level2MapOfMapSelectedEntriesValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(function));
     }
 
 

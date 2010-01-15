@@ -62,10 +62,12 @@ public class ToMapOfList {
 			Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
         }
-        
-        public Type<? super Map<K, List<T>>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
+
+		@SuppressWarnings("unchecked")
+		public Type<? extends Map<K, List<T>>> getResultType(final Type<? extends T[]> targetType) {
+			final Type<T> typeT = Types.arrayComponentOf((Type<T[]>)targetType);
+			return Types.mapOf((Type<K>)this.eval.getResultType(typeT), Types.listOf(typeT));
+		}
 
         @Override
         public Map<K, List<T>> nullAsNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
@@ -97,10 +99,12 @@ public class ToMapOfList {
 			Validate.notNull(mapBuilder, "A map builder must be specified");
             this.mapBuilder = mapBuilder;
         }
-        
-        public Type<? super Map<K, List<V>>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
+
+		@SuppressWarnings("unchecked")
+		public Type<? extends Map<K, List<V>>> getResultType(final Type<? extends T[]> targetType) {
+			final Type<T> typeT = Types.arrayComponentOf((Type<T[]>)targetType);
+			return Types.mapOf((Type<K>)this.mapBuilder.getKeyType(typeT), Types.listOf((Type<V>)this.mapBuilder.getValueType(typeT)));
+		}
 
         @Override
         public Map<K, List<V>> nullAsNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
@@ -128,10 +132,12 @@ public class ToMapOfList {
         public FromArrayByAlternateElements() {
             super();
         }
-        
-        public Type<? super Map<T, List<T>>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
+
+		@SuppressWarnings("unchecked")
+		public Type<? extends Map<T, List<T>>> getResultType(final Type<? extends T[]> targetType) {
+			final Type<T> typeT = Types.arrayComponentOf((Type<T[]>)targetType);
+			return Types.mapOf(typeT, Types.listOf(typeT));
+		}
 
         @Override
         public Map<T, List<T>> nullAsNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
@@ -169,10 +175,12 @@ public class ToMapOfList {
 			Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
         }
-        
-        public Type<? super Map<K, List<T>>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
+
+		@SuppressWarnings("unchecked")
+		public Type<? extends Map<K, List<T>>> getResultType(final Type<? extends List<T>> targetType) {
+			final Type<T> typeT = Types.listComponentOf((Type<List<T>>)targetType);
+			return Types.mapOf((Type<K>)this.eval.getResultType(typeT), Types.listOf(typeT));
+		}
 
         @Override
         public Map<K, List<T>> nullAsNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
@@ -204,10 +212,12 @@ public class ToMapOfList {
 			Validate.notNull(mapBuilder, "A map builder must be specified");
             this.mapBuilder = mapBuilder;
         }
-        
-        public Type<? super Map<K, List<V>>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
+
+		@SuppressWarnings("unchecked")
+		public Type<? extends Map<K, List<V>>> getResultType(final Type<? extends List<T>> targetType) {
+			final Type<T> typeT = Types.listComponentOf((Type<List<T>>)targetType);
+			return Types.mapOf((Type<K>)this.mapBuilder.getKeyType(typeT), Types.listOf((Type<V>)this.mapBuilder.getValueType(typeT)));
+		}
 
         @Override
         public Map<K, List<V>> nullAsNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
@@ -235,10 +245,12 @@ public class ToMapOfList {
         public FromListByAlternateElements() {
             super();
         }
-        
-        public Type<? super Map<T, List<T>>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
+
+		@SuppressWarnings("unchecked")
+		public Type<? extends Map<T, List<T>>> getResultType(final Type<? extends List<T>> targetType) {
+			final Type<T> typeT = Types.listComponentOf((Type<List<T>>)targetType);
+			return Types.mapOf(typeT, Types.listOf(typeT));
+		}
 
         @Override
         public Map<T, List<T>> nullAsNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
@@ -275,10 +287,12 @@ public class ToMapOfList {
 			Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
         }
-        
-        public Type<? super Map<K, List<T>>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
+
+		@SuppressWarnings("unchecked")
+		public Type<? extends Map<K, List<T>>> getResultType(final Type<? extends Set<T>> targetType) {
+			final Type<T> typeT = Types.setComponentOf((Type<Set<T>>)targetType);
+			return Types.mapOf((Type<K>)this.eval.getResultType(typeT), Types.listOf(typeT));
+		}
 
         @Override
         public Map<K, List<T>> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
@@ -310,10 +324,12 @@ public class ToMapOfList {
 			Validate.notNull(mapBuilder, "A map builder must be specified");
             this.mapBuilder = mapBuilder;
         }
-        
-        public Type<? super Map<K, List<V>>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
+
+		@SuppressWarnings("unchecked")
+		public Type<? extends Map<K, List<V>>> getResultType(final Type<? extends Set<T>> targetType) {
+			final Type<T> typeT = Types.setComponentOf((Type<Set<T>>)targetType);
+			return Types.mapOf((Type<K>)this.mapBuilder.getKeyType(typeT), Types.listOf((Type<V>)this.mapBuilder.getValueType(typeT)));
+		}
 
         @Override
         public Map<K, List<V>> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
@@ -341,10 +357,12 @@ public class ToMapOfList {
         public FromSetByAlternateElements() {
             super();
         }
-        
-        public Type<? super Map<T, List<T>>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
+
+		@SuppressWarnings("unchecked")
+		public Type<? extends Map<T, List<T>>> getResultType(final Type<? extends Set<T>> targetType) {
+			final Type<T> typeT = Types.setComponentOf((Type<Set<T>>)targetType);
+			return Types.mapOf(typeT, Types.listOf(typeT));
+		}
 
         @Override
         public Map<T, List<T>> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {

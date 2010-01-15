@@ -1,12 +1,10 @@
+
  - Add "getSimpleName" to javaruntype types so that package can be omitted
  - Add "getUpperBounds/getUniqueUpperBound" + Lower to javaruntype "Types"
 
- - Implement NormalizationUtils methods for types!!
- - Create "arrayfromtype" method somewhere so that we do not try to create arrays
-   from types like Type<? extends Serializable> instead of Type<Serializable>
+ - Modify -devutils so that execution methods in GeneralMulti do iterate()
 
- - Maybe exec in an array or arrayofarray, instead of returning generic or array, it should return array or arrayofarray
-   unless you call them with exec(Type, IFunction)... this is, create a different method for changing type.
+ - Create execFor(type,...) -style methods
  ^- Maybe generic and asType would work as one and the same for these modified interfaces?
     
  - Check the usage of all Type parameters. Would they be flattered with something like Type<List<? extends Object>>?

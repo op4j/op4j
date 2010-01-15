@@ -108,11 +108,6 @@ public class Level2MapOfArraySelectedEntriesSelectedValueSelectedOperatorImpl<K,
     }
 
 
-    public Level2MapOfArraySelectedEntriesSelectedValueSelectedOperator<K,V> exec(final IFunction<? extends V[],? super V[]> function) {
-        return new Level2MapOfArraySelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(function));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level2MapOfArraySelectedEntriesSelectedValueSelectedOperator<K,V> sort() {
         return new Level2MapOfArraySelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.Sort()));
@@ -121,6 +116,11 @@ public class Level2MapOfArraySelectedEntriesSelectedValueSelectedOperatorImpl<K,
 
     public Level2MapOfArraySelectedEntriesSelectedValueSelectedOperator<K,V> sort(final Comparator<? super V> comparator) {
         return new Level2MapOfArraySelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.SortByComparator<V>(comparator)));
+    }
+
+
+    public Level2MapOfArraySelectedEntriesSelectedValueSelectedOperator<K,V> exec(final IFunction<? extends V[],? super V[]> function) {
+        return new Level2MapOfArraySelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 

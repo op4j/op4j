@@ -108,11 +108,6 @@ public class Level1SetOfArraySelectedElementsSelectedOperatorImpl<T> extends Abs
     }
 
 
-    public Level1SetOfArraySelectedElementsSelectedOperator<T> exec(final IFunction<? extends T[],? super T[]> function) {
-        return new Level1SetOfArraySelectedElementsSelectedOperatorImpl<T>(getTarget().execute(function));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level1SetOfArraySelectedElementsSelectedOperator<T> sort() {
         return new Level1SetOfArraySelectedElementsSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Sort()));
@@ -121,6 +116,11 @@ public class Level1SetOfArraySelectedElementsSelectedOperatorImpl<T> extends Abs
 
     public Level1SetOfArraySelectedElementsSelectedOperator<T> sort(final Comparator<? super T> comparator) {
         return new Level1SetOfArraySelectedElementsSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.SortByComparator<T>(comparator)));
+    }
+
+
+    public Level1SetOfArraySelectedElementsSelectedOperator<T> exec(final IFunction<? extends T[],? super T[]> function) {
+        return new Level1SetOfArraySelectedElementsSelectedOperatorImpl<T>(getTarget().execute(function));
     }
 
 

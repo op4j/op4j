@@ -159,11 +159,6 @@ public class Level1ListOfListSelectedElementsOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1ListOfListSelectedElementsOperator<T> exec(final IFunction<? extends List<? extends T>,? super List<T>> function) {
-        return new Level1ListOfListSelectedElementsOperatorImpl<T>(getTarget().execute(function));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level1ListOfListSelectedElementsOperator<T> sort() {
         return new Level1ListOfListSelectedElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.Sort()));
@@ -172,6 +167,11 @@ public class Level1ListOfListSelectedElementsOperatorImpl<T> extends AbstractOpe
 
     public Level1ListOfListSelectedElementsOperator<T> sort(final Comparator<? super T> comparator) {
         return new Level1ListOfListSelectedElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.SortByComparator<T>(comparator)));
+    }
+
+
+    public Level1ListOfListSelectedElementsOperator<T> exec(final IFunction<? extends List<? extends T>,? super List<T>> function) {
+        return new Level1ListOfListSelectedElementsOperatorImpl<T>(getTarget().execute(function));
     }
 
 

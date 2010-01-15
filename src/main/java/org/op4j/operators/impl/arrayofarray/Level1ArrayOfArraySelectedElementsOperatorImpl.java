@@ -1,8 +1,8 @@
 package org.op4j.operators.impl.arrayofarray;
 
+import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Comparator;
-
 import org.javaruntype.type.Type;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
@@ -164,11 +164,6 @@ public class Level1ArrayOfArraySelectedElementsOperatorImpl<T> extends AbstractO
     }
 
 
-    public Level1ArrayOfArraySelectedElementsOperator<T> exec(final IFunction<? extends T[],? super T[]> function) {
-        return new Level1ArrayOfArraySelectedElementsOperatorImpl<T>(this.type, getTarget().execute(function));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level1ArrayOfArraySelectedElementsOperator<T> sort() {
         return new Level1ArrayOfArraySelectedElementsOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Sort()));
@@ -177,6 +172,11 @@ public class Level1ArrayOfArraySelectedElementsOperatorImpl<T> extends AbstractO
 
     public Level1ArrayOfArraySelectedElementsOperator<T> sort(final Comparator<? super T> comparator) {
         return new Level1ArrayOfArraySelectedElementsOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.SortByComparator<T>(comparator)));
+    }
+
+
+    public Level1ArrayOfArraySelectedElementsOperator<T> exec(final IFunction<? extends T[],? super T[]> function) {
+        return new Level1ArrayOfArraySelectedElementsOperatorImpl<T>(this.type, getTarget().execute(function));
     }
 
 

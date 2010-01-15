@@ -57,6 +57,7 @@ import org.op4j.operators.intf.mapoflist.Level0MapOfListOperator;
 import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Structure;
 
 
 /**
@@ -302,17 +303,17 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public <X> Level0GenericMultiOperator<X> convert(final IConverter<X, ? super T> converter) {
-        return new Level0GenericMultiOperatorImpl<X>(getTarget().execute(converter));
+        return new Level0GenericMultiOperatorImpl<X>(getTarget().iterate().execute(converter).endIterate(Structure.LIST, null));
     }
 
 
     public <X> Level0GenericMultiOperator<X> eval(final IEvaluator<X, ? super T> eval) {
-        return new Level0GenericMultiOperatorImpl<X>(getTarget().execute(eval));
+        return new Level0GenericMultiOperatorImpl<X>(getTarget().iterate().execute(eval).endIterate(Structure.LIST, null));
     }
 
 
     public <X> Level0GenericMultiOperator<X> exec(final IFunction<X, ? super T> function) {
-        return new Level0GenericMultiOperatorImpl<X>(getTarget().execute(function));
+        return new Level0GenericMultiOperatorImpl<X>(getTarget().iterate().execute(function).endIterate(Structure.LIST, null));
     }
     
 }

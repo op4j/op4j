@@ -36,7 +36,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.ArrayFuncs;
@@ -138,17 +137,13 @@ public final class Op {
     
     @SuppressWarnings("unchecked")
     public static <T> Level0ArrayOperator<T> onArray(final T[] target) {
-        final Class<?> componentClass = 
-            (target == null)? Object.class : target.getClass().getComponentType();
-        return new Level0ArrayOperatorImpl<T>((Type<? super T>) Types.forClass(componentClass), Target.forObject(NormalizationUtils.normalizeArray(target)));
+        return new Level0ArrayOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeArray(target)));
     }
 
     
     @SuppressWarnings("unchecked")
     public static <T> Level0ArrayOfArrayOperator<T> onArrayOfArray(final T[][] target) {
-        final Class<?> componentClass = 
-            (target == null)? Object.class : target.getClass().getComponentType().getComponentType();
-        return new Level0ArrayOfArrayOperatorImpl<T>((Type<? super T>) Types.forClass(componentClass), Target.forObject(NormalizationUtils.normalizeArrayOfArray(target)));
+        return new Level0ArrayOfArrayOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeArrayOfArray(target)));
     }
 
     
@@ -172,9 +167,8 @@ public final class Op {
     }
 
     
-    public static <T> Level0ListOfArrayOperator<T> onListOfArray(final Type<T> of, final List<T[]> target) {
-        Validate.notNull(of, "Array component cannot be null");
-        return new Level0ListOfArrayOperatorImpl<T>(of, Target.forObject(NormalizationUtils.normalizeListOfArray(target)));
+    public static <T> Level0ListOfArrayOperator<T> onListOfArray(final List<T[]> target) {
+        return new Level0ListOfArrayOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeListOfArray(target)));
     }
 
     
@@ -198,9 +192,8 @@ public final class Op {
     }
 
     
-    public static <K,V> Level0MapOfArrayOperator<K,V> onMapOfArray(final Type<V> of, final Map<K,V[]> target) {
-        Validate.notNull(of, "Array component cannot be null");
-        return new Level0MapOfArrayOperatorImpl<K,V>(of, Target.forObject(NormalizationUtils.normalizeMapOfArray(target)));
+    public static <K,V> Level0MapOfArrayOperator<K,V> onMapOfArray(final Map<K,V[]> target) {
+        return new Level0MapOfArrayOperatorImpl<K,V>(Target.forObject(NormalizationUtils.normalizeMapOfArray(target)));
     }
 
     
@@ -224,9 +217,9 @@ public final class Op {
     }
 
     
-    public static <T> Level0SetOfArrayOperator<T> onSetOfArray(final Type<T> of, final Set<T[]> target) {
-        Validate.notNull(of, "Array component cannot be null");
-        return new Level0SetOfArrayOperatorImpl<T>(of, Target.forObject(NormalizationUtils.normalizeSetOfArray(target)));
+    public static <T> Level0SetOfArrayOperator<T> onSetOfArray(final Set<T[]> target) {
+    	final Class<List<String>> clas = null;
+        return new Level0SetOfArrayOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeSetOfArray(target)));
     }
 
     
@@ -278,7 +271,7 @@ public final class Op {
     
     
     public static <T> Level0ListOfArrayOperator<T> buildListOfArray(final Type<T> of) {
-        return onListOfArray(of, new ArrayList<T[]>());
+        return onListOfArray(new ArrayList<T[]>());
     }
     
     public static <T> Level0ListOfListOperator<T> buildListOfList(final Type<T> of) {
@@ -300,7 +293,7 @@ public final class Op {
     
     
     public static <T> Level0SetOfArrayOperator<T> buildSetOfArray(final Type<T> of) {
-        return onSetOfArray(of, new LinkedHashSet<T[]>());
+        return onSetOfArray(new LinkedHashSet<T[]>());
     }
     
     public static <T> Level0SetOfListOperator<T> buildSetOfList(final Type<T> of) {
@@ -322,7 +315,7 @@ public final class Op {
     
     
     public static <K,V> Level0MapOfArrayOperator<K,V> buildMapOfArray(final Type<K> keyOf, final Type<V> valueOf) {
-        return onMapOfArray(valueOf, new LinkedHashMap<K,V[]>());
+        return onMapOfArray(new LinkedHashMap<K,V[]>());
     }
     
     
@@ -385,7 +378,7 @@ public final class Op {
         final Map<String,String>[] maps1 = (Map<String, String>[]) new Map<?,?>[] { map1, map2 };
 
         
-        System.out.println(printArray(Op.onArrayOfArray(stringsStrings1).forEach().forEach().ifIndex(0).eval(Ognl.forString("#target + ' Mundo'")).get()));
+        System.out.println(printArray(Op.onArrayOfArray(stringsStrings1).forEach(Types.ARRAY_OF_STRING).forEach(Types.STRING).ifIndex(0).eval(Ognl.forString("#target + ' Mundo'")).get()));
         
         
         
@@ -394,13 +387,13 @@ public final class Op {
         System.out.println(Op.onList(stringsList1).forEach().ifNotNull().eval(Ognl.forString("toUpperCase()")).get());
         
         
-        System.out.println(Op.onArrayOfArray(stringsStrings1).forEach().forEach().eval(Ognl.forInteger("length()")).get());
+        System.out.println(Op.onArrayOfArray(stringsStrings1).forEach(Types.ARRAY_OF_STRING).forEach(Types.STRING).eval(Ognl.forInteger("length()")).get());
         
         System.out.println(Arrays.asList(Op.onArrayOfList(stringsListStrings1).forEach().forEach().eval(Ognl.forString("toUpperCase()")).get()));
 
         System.out.println(Arrays.asList(Op.onArrayOfMap(maps1).forEach().ifMatching(Ognl.forBoolean("size() > 6")).forEachEntry().onValue().eval(Ognl.forString("toUpperCase()"))));
         
-        System.out.println(Arrays.asList(Op.onArrayOfArray(stringsStrings1).forEach().forEach().ifMatching(Ognl.forBoolean("length() > 6")).eval(Ognl.forString("toUpperCase()")).get()[0]));
+        System.out.println(Arrays.asList(Op.onArrayOfArray(stringsStrings1).forEach(Types.ARRAY_OF_STRING).forEach(Types.STRING).ifMatching(Ognl.forBoolean("length() > 6")).eval(Ognl.forString("toUpperCase()")).get()[0]));
         
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().get());
         
@@ -433,7 +426,7 @@ public final class Op {
         
         System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).get()));
         System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).distinct().get()));
-        System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).forEach().distinct().get()));
+        System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).forEach(Types.ARRAY_OF_STRING).distinct().get()));
      
         System.out.println(Op.onList(stringsList1).add("World!", "Mars!").get());
         System.out.println(Op.onList(stringsList1).insert(1, "World!", "Mars!").get());
@@ -660,17 +653,17 @@ public final class Op {
         setOfStringSet1.add(Op.onAll("Hola", "Hello", "Ciao", "Ola").buildSet().get());
         setOfStringSet1.add(Op.onAll("Adios", "Goodbye", "Ciao", "Adéus").buildSet().get());
         
-        System.out.println(printArray(Op.onListOfArray(Types.STRING, listOfStringArray1).toArrayOfArray(Types.STRING).get()));
+        System.out.println(printArray(Op.onListOfArray(listOfStringArray1).toArrayOfArray(Types.STRING).get()));
         System.out.println(printArray(Op.onListOfList(listOfListOfString1).toArrayOfArray(Types.STRING).get()));
         System.out.println(printArray(Op.onListOfSet(listOfStringSet1).toArrayOfArray(Types.STRING).get()));
         
-        System.out.println(printArray(Op.onSetOfArray(Types.STRING, setOfStringArray1).toArrayOfArray(Types.STRING).get()));
+        System.out.println(printArray(Op.onSetOfArray(setOfStringArray1).toArrayOfArray(Types.STRING).get()));
         System.out.println(printArray(Op.onSetOfList(setOfStringList1).toArrayOfArray(Types.STRING).get()));
         System.out.println(printArray(Op.onSetOfSet(setOfStringSet1).toArrayOfArray(Types.STRING).get()));
 
         
         System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).toArrayOfList().get()));
-        System.out.println(printArray(Op.onListOfArray(Types.STRING, listOfStringArray1).toArrayOfList().get()));
+        System.out.println(printArray(Op.onListOfArray(listOfStringArray1).toArrayOfList().get()));
         System.out.println(printArray(Op.onListOfList(listOfListOfString1).toArrayOfList().get()));
         
         System.out.println(Op.on("http://www.google.es/search?q=op4j&unusedParam=unusedValue '' 2^2 ")
@@ -699,18 +692,17 @@ public final class Op {
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().ifIndex(0).add("").removeMatching(MethodCall.forBoolean("isEmpty")).get());
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().removeMatching(MethodCall.forBoolean("isEmpty")).get());
         
-        System.out.println(Op.onMap(map1).forEachEntry().eval(Ognl.forString("'in ' + #target.key + ' you say ' + #target.value")).get());
+//        System.out.println(Op.onMap(map1).forEachEntry().eval(Ognl.forString("'in ' + #target.key + ' you say ' + #target.value")).get());
         
         
-        System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).forEach().toMap(Ognl.forInteger("length()")).forEachEntry().onKey().asType(Types.forClass(Serializable.class)).endOn().onValue().asType(Types.SERIALIZABLE).get()));
+        System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).forEach(Types.ARRAY_OF_STRING).toMap(Ognl.forInteger("length()")).forEachEntry().onKey().asType(Types.forClass(Serializable.class)).endOn().onValue().asType(Types.SERIALIZABLE).get()));
         
         
         System.out.println(Op.onList(stringsList1).removeNulls().sort().get());
         System.out.println(Op.onList(stringsList1).removeNulls().forEach().eval(Ognl.forInteger("length()")).get());
         
-        System.out.println(Op.onArrayOfMap(maps1).eval(Ognl.forInteger("length")).get());
-        System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().eval(Ognl.forInteger("size()")).get()));
-        System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().forEachEntry().eval(Ognl.forObject("key")).get()));
+        System.out.println(Op.on(maps1).eval(Ognl.forInteger("length")).get());
+        System.out.println(printArray(Op.onArray(maps1).forEach(Types.MAP_OF_STRING_STRING).eval(Ognl.forInteger("size()")).get()));
         System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().forEachEntry().onValue().eval(Ognl.forObject("length()")).endOn().endFor().extractValues().get()));
         
         final Map<Integer,Map<String,String>> mapOfMapOfIntegerStringString = Op.onArray(maps1).toMap(Ognl.forInteger("size()")).asMapOfMapOf(Types.INTEGER, Types.STRING, Types.STRING).get();

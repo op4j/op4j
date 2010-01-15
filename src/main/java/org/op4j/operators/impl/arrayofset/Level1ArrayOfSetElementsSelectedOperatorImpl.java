@@ -102,11 +102,6 @@ public class Level1ArrayOfSetElementsSelectedOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1ArrayOfSetElementsSelectedOperator<T> exec(final IFunction<? extends Set<? extends T>,? super Set<T>> function) {
-        return new Level1ArrayOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(function));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level1ArrayOfSetElementsSelectedOperator<T> sort() {
         return new Level1ArrayOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Sort()));
@@ -115,6 +110,11 @@ public class Level1ArrayOfSetElementsSelectedOperatorImpl<T> extends AbstractOpe
 
     public Level1ArrayOfSetElementsSelectedOperator<T> sort(final Comparator<? super T> comparator) {
         return new Level1ArrayOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.SortByComparator<T>(comparator)));
+    }
+
+
+    public Level1ArrayOfSetElementsSelectedOperator<T> exec(final IFunction<? extends Set<? extends T>,? super Set<T>> function) {
+        return new Level1ArrayOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(function));
     }
 
 

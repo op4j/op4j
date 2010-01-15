@@ -79,10 +79,12 @@ public class ToMapOfArray {
             this.type = type;
             this.eval = eval;
         }
-        
-        public Type<? super Map<K, T[]>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
+
+		@SuppressWarnings("unchecked")
+		public Type<? extends Map<K, T[]>> getResultType(final Type<? extends T[]> targetType) {
+			final Type<T> typeT = Types.arrayComponentOf((Type<T[]>)targetType);
+			return Types.mapOf((Type<K>)this.eval.getResultType(typeT), Types.arrayOf(typeT));
+		}
 
 		@Override
         public Map<K, T[]> nullAsNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
@@ -120,10 +122,12 @@ public class ToMapOfArray {
             this.type = type;
             this.mapBuilder = mapBuilder;
         }
-        
-        public Type<? super Map<K, V[]>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
+
+		@SuppressWarnings("unchecked")
+		public Type<? extends Map<K, V[]>> getResultType(final Type<? extends T[]> targetType) {
+			final Type<T> typeT = Types.arrayComponentOf((Type<T[]>)targetType);
+			return Types.mapOf((Type<K>)this.mapBuilder.getKeyType(typeT), Types.arrayOf((Type<V>)this.mapBuilder.getValueType(typeT)));
+		}
 
         @Override
         public Map<K, V[]> nullAsNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
@@ -158,10 +162,12 @@ public class ToMapOfArray {
 			Validate.notNull(type, "A type representing the array elements must be specified");
             this.type = type;
         }
-        
-        public Type<? super Map<T, T[]>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
+
+		@SuppressWarnings("unchecked")
+		public Type<? extends Map<T, T[]>> getResultType(final Type<? extends T[]> targetType) {
+			final Type<T> typeT = Types.arrayComponentOf((Type<T[]>)targetType);
+			return Types.mapOf(typeT, Types.arrayOf(typeT));
+		}
 
         @Override
         public Map<T, T[]> nullAsNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
@@ -206,10 +212,12 @@ public class ToMapOfArray {
             this.type = type;
             this.eval = eval;
         }
-        
-        public Type<? super Map<K, T[]>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
+
+		@SuppressWarnings("unchecked")
+		public Type<? extends Map<K, T[]>> getResultType(final Type<? extends List<T>> targetType) {
+			final Type<T> typeT = Types.listComponentOf((Type<List<T>>)targetType);
+			return Types.mapOf((Type<K>)this.eval.getResultType(typeT), Types.arrayOf(typeT));
+		}
 
         @Override
         public Map<K, T[]> nullAsNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
@@ -247,10 +255,12 @@ public class ToMapOfArray {
             this.type = type;
             this.mapBuilder = mapBuilder;
         }
-        
-        public Type<? super Map<K, V[]>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
+
+		@SuppressWarnings("unchecked")
+		public Type<? extends Map<K, V[]>> getResultType(final Type<? extends List<T>> targetType) {
+			final Type<T> typeT = Types.listComponentOf((Type<List<T>>)targetType);
+			return Types.mapOf((Type<K>)this.mapBuilder.getKeyType(typeT), Types.arrayOf((Type<V>)this.mapBuilder.getValueType(typeT)));
+		}
 
         @Override
         public Map<K, V[]> nullAsNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
@@ -285,10 +295,12 @@ public class ToMapOfArray {
 			Validate.notNull(type, "A type representing the collection elements must be specified");
             this.type = type;
         }
-        
-        public Type<? super Map<T, T[]>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
+
+		@SuppressWarnings("unchecked")
+		public Type<? extends Map<T, T[]>> getResultType(final Type<? extends List<T>> targetType) {
+			final Type<T> typeT = Types.listComponentOf((Type<List<T>>)targetType);
+			return Types.mapOf(typeT, Types.arrayOf(typeT));
+		}
 
         @Override
         public Map<T, T[]> nullAsNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
@@ -332,10 +344,12 @@ public class ToMapOfArray {
             this.type = type;
             this.eval = eval;
         }
-        
-        public Type<? super Map<K, T[]>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
+
+		@SuppressWarnings("unchecked")
+		public Type<? extends Map<K, T[]>> getResultType(final Type<? extends Set<T>> targetType) {
+			final Type<T> typeT = Types.setComponentOf((Type<Set<T>>)targetType);
+			return Types.mapOf((Type<K>)this.eval.getResultType(typeT), Types.arrayOf(typeT));
+		}
 
         @Override
         public Map<K, T[]> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
@@ -373,10 +387,12 @@ public class ToMapOfArray {
             this.type = type;
             this.mapBuilder = mapBuilder;
         }
-        
-        public Type<? super Map<K, V[]>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
+
+		@SuppressWarnings("unchecked")
+		public Type<? extends Map<K, V[]>> getResultType(final Type<? extends Set<T>> targetType) {
+			final Type<T> typeT = Types.setComponentOf((Type<Set<T>>)targetType);
+			return Types.mapOf((Type<K>)this.mapBuilder.getKeyType(typeT), Types.arrayOf((Type<V>)this.mapBuilder.getValueType(typeT)));
+		}
 
         @Override
         public Map<K, V[]> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
@@ -411,10 +427,12 @@ public class ToMapOfArray {
 			Validate.notNull(type, "A type representing the collection elements must be specified");
             this.type = type;
         }
-        
-        public Type<? super Map<T, T[]>> getResultType() {
-            return Types.MAP_OF_UNKNOWN_UNKNOWN;
-        }
+
+		@SuppressWarnings("unchecked")
+		public Type<? extends Map<T, T[]>> getResultType(final Type<? extends Set<T>> targetType) {
+			final Type<T> typeT = Types.setComponentOf((Type<Set<T>>)targetType);
+			return Types.mapOf(typeT, Types.arrayOf(typeT));
+		}
 
         @Override
         public Map<T, T[]> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {

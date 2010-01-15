@@ -130,11 +130,6 @@ public class Level1ListOfMapSelectedElementsOperatorImpl<K,V> extends AbstractOp
     }
 
 
-    public Level1ListOfMapSelectedElementsOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V>,? super Map<K,V>> function) {
-        return new Level1ListOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(function));
-    }
-
-
     public Level1ListOfMapSelectedElementsOperator<K,V> sort(final Comparator<? super Entry<K,V>> comparator) {
         return new Level1ListOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,V>(comparator)));
     }
@@ -143,6 +138,11 @@ public class Level1ListOfMapSelectedElementsOperatorImpl<K,V> extends AbstractOp
     @SuppressWarnings("unchecked")
     public Level1ListOfMapSelectedElementsOperator<K,V> sort() {
         return new Level1ListOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortByKey()));
+    }
+
+
+    public Level1ListOfMapSelectedElementsOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V>,? super Map<K,V>> function) {
+        return new Level1ListOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 

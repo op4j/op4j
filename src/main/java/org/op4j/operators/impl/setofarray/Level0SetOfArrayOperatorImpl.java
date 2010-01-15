@@ -186,7 +186,7 @@ public class Level0SetOfArrayOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0ListOfArrayOperator<T> toListOfArray(final Type<T> of) {
-        return Op.onListOfArray(of, Op.onSet(get()).toList().get());
+        return Op.onListOfArray(Op.onSet(get()).toList().get());
     }
 
 

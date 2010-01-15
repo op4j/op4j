@@ -36,10 +36,10 @@ public abstract class AbstractBooleanEvaluator<T> implements IEvaluator<Boolean,
 	public AbstractBooleanEvaluator() {
 		super();
 	}
-	
-	
-	public Type<? super Boolean> getResultType() {
+
+	public final Type<? extends Boolean> getResultType(Type<? extends T> targetType) {
 		return Types.BOOLEAN;
 	}
+	
 
 }

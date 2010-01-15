@@ -129,11 +129,6 @@ public class Level2MapOfMapEntriesSelectedValueOperatorImpl<K1,K2,V> extends Abs
     }
 
 
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> exec(final IFunction<? extends Map<? extends K2,? extends V>,? super Map<K2,V>> function) {
-        return new Level2MapOfMapEntriesSelectedValueOperatorImpl<K1,K2,V>(getTarget().execute(function));
-    }
-
-
     public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> sort(final Comparator<? super Entry<K2,V>> comparator) {
         return new Level2MapOfMapEntriesSelectedValueOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.SortEntries<K2,V>(comparator)));
     }
@@ -142,6 +137,11 @@ public class Level2MapOfMapEntriesSelectedValueOperatorImpl<K1,K2,V> extends Abs
     @SuppressWarnings("unchecked")
     public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> sort() {
         return new Level2MapOfMapEntriesSelectedValueOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.SortByKey()));
+    }
+
+
+    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> exec(final IFunction<? extends Map<? extends K2,? extends V>,? super Map<K2,V>> function) {
+        return new Level2MapOfMapEntriesSelectedValueOperatorImpl<K1,K2,V>(getTarget().execute(function));
     }
 
 

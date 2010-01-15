@@ -102,11 +102,6 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
     }
 
 
-    public Level0SetSelectedOperator<T> exec(final IFunction<? extends Set<? extends T>,? super Set<T>> function) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(function));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level0SetSelectedOperator<T> sort() {
         return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Sort()));
@@ -115,6 +110,11 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
 
     public Level0SetSelectedOperator<T> sort(final Comparator<? super T> comparator) {
         return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.SortByComparator<T>(comparator)));
+    }
+
+
+    public Level0SetSelectedOperator<T> exec(final IFunction<? extends Set<? extends T>,? super Set<T>> function) {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(function));
     }
 
 

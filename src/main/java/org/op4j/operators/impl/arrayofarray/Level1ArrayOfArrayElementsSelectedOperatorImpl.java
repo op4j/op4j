@@ -111,11 +111,6 @@ public class Level1ArrayOfArrayElementsSelectedOperatorImpl<T> extends AbstractO
     }
 
 
-    public Level1ArrayOfArrayElementsSelectedOperator<T> exec(final IFunction<? extends T[],? super T[]> function) {
-        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(function));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level1ArrayOfArrayElementsSelectedOperator<T> sort() {
         return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Sort()));
@@ -124,6 +119,11 @@ public class Level1ArrayOfArrayElementsSelectedOperatorImpl<T> extends AbstractO
 
     public Level1ArrayOfArrayElementsSelectedOperator<T> sort(final Comparator<? super T> comparator) {
         return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.SortByComparator<T>(comparator)));
+    }
+
+
+    public Level1ArrayOfArrayElementsSelectedOperator<T> exec(final IFunction<? extends T[],? super T[]> function) {
+        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(function));
     }
 
 

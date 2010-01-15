@@ -160,11 +160,6 @@ public class Level2MapOfListSelectedEntriesValueOperatorImpl<K,V> extends Abstra
     }
 
 
-    public Level2MapOfListSelectedEntriesValueOperator<K,V> exec(final IFunction<? extends List<? extends V>,? super List<V>> function) {
-        return new Level2MapOfListSelectedEntriesValueOperatorImpl<K,V>(getTarget().execute(function));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level2MapOfListSelectedEntriesValueOperator<K,V> sort() {
         return new Level2MapOfListSelectedEntriesValueOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Sort()));
@@ -173,6 +168,11 @@ public class Level2MapOfListSelectedEntriesValueOperatorImpl<K,V> extends Abstra
 
     public Level2MapOfListSelectedEntriesValueOperator<K,V> sort(final Comparator<? super V> comparator) {
         return new Level2MapOfListSelectedEntriesValueOperatorImpl<K,V>(getTarget().execute(new ListFuncs.SortByComparator<V>(comparator)));
+    }
+
+
+    public Level2MapOfListSelectedEntriesValueOperator<K,V> exec(final IFunction<? extends List<? extends V>,? super List<V>> function) {
+        return new Level2MapOfListSelectedEntriesValueOperatorImpl<K,V>(getTarget().execute(function));
     }
 
 
