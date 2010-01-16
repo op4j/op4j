@@ -19,9 +19,11 @@
  */
 package org.op4j.operators.qualities;
 
+import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 
 
 
@@ -40,5 +42,11 @@ public interface ExecutableArrayOfArrayOperator<T> {
     public <X> ExecutableArrayOfArrayOperator<X> eval(final IEvaluator<X[][],? super T[][]> eval);
     
     public <X> ExecutableArrayOfArrayOperator<X> convert(final IConverter<X[][],? super T[][]> converter);
+
+    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super T[][]> function);
+    
+    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super T[][]> eval);
+    
+    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super T[][]> converter);    
     
 }

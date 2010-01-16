@@ -31,8 +31,10 @@ import org.op4j.functions.MapFuncs;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
+import org.op4j.operators.impl.list.Level1ListElementsOperatorImpl;
 import org.op4j.operators.impl.listoflist.Level1ListOfListElementsOperatorImpl;
 import org.op4j.operators.impl.listofset.Level1ListOfSetElementsOperatorImpl;
+import org.op4j.operators.intf.list.Level1ListElementsOperator;
 import org.op4j.operators.intf.listoflist.Level1ListOfListElementsOperator;
 import org.op4j.operators.intf.listofmap.Level0ListOfMapOperator;
 import org.op4j.operators.intf.listofmap.Level1ListOfMapElementsOperator;
@@ -224,6 +226,21 @@ public class Level1ListOfMapElementsOperatorImpl<K,V> extends AbstractOperatorIm
 
     public <X, Y> Level1ListOfMapElementsOperator<X, Y> exec(final IFunction<? extends Map<X, Y>, ? super Map<K, V>> function) {
         return new Level1ListOfMapElementsOperatorImpl<X, Y>(getTarget().execute(function));
+    }
+
+
+    public <X> Level1ListElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super Map<K, V>> converter) {
+        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level1ListElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super Map<K, V>> eval) {
+        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level1ListElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K, V>> function) {
+        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(function));
     }
     
     

@@ -2,6 +2,7 @@ package org.op4j.operators.impl.mapoflist;
 
 import java.util.List;
 import java.util.Map;
+
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;

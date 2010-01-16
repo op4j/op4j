@@ -1,6 +1,7 @@
 package org.op4j.operators.impl.arrayofset;
 
 import java.util.Set;
+
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;

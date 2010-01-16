@@ -19,6 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
+import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -40,5 +41,11 @@ public interface ExecutableArrayOperator<T> {
     public <X> ExecutableArrayOperator<X> eval(final IEvaluator<X[],? super T[]> eval);
     
     public <X> ExecutableArrayOperator<X> convert(final IConverter<X[],? super T[]> converter);
+
+    public <X> Operator exec(final Type<X> resultType, final IFunction<? extends X, ? super T[]> function);
+    
+    public <X> Operator eval(final Type<X> resultType, final IEvaluator<? extends X,? super T[]> eval);
+    
+    public <X> Operator convert(final Type<X> resultType, final IConverter<? extends X,? super T[]> converter);    
     
 }

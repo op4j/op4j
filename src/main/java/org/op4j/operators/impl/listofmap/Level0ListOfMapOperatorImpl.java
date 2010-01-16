@@ -261,6 +261,21 @@ public class Level0ListOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
     public <X, Y> Level0ListOfMapOperator<X, Y> exec(final IFunction<? extends List<? extends Map<X, Y>>, ? super List<Map<K, V>>> function) {
         return new Level0ListOfMapOperatorImpl<X, Y>(getTarget().execute(function));
     }
+
+
+    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super List<Map<K, V>>> converter) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super List<Map<K, V>>> eval) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<Map<K, V>>> function) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function));
+    }
     
     
     

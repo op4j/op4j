@@ -28,6 +28,7 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
+import org.op4j.operators.intf.set.Level1SetElementsOperator;
 import org.op4j.operators.intf.setoflist.Level1SetOfListElementsOperator;
 import org.op4j.operators.intf.setofmap.Level1SetOfMapElementsOperator;
 import org.op4j.operators.intf.setofset.Level1SetOfSetElementsOperator;
@@ -115,6 +116,12 @@ public interface Level1SetOfArrayElementsOperator<T>
     public <X> Level1SetOfArrayElementsOperator<X> eval(final IEvaluator<X[],? super T[]> eval);
 
     public <X> Level1SetOfArrayElementsOperator<X> exec(final IFunction<X[], ? super T[]> function);
+
+    public <X> Level1SetElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super T[]> function);
+    
+    public <X> Level1SetElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super T[]> eval);
+    
+    public <X> Level1SetElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super T[]> converter);    
     
     
     public <X> Level1SetOfArrayElementsOperator<X> asArrayOf(final Type<X> type);

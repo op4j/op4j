@@ -21,9 +21,11 @@ package org.op4j.operators.qualities;
 
 import java.util.Set;
 
+import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 
 
 
@@ -42,5 +44,11 @@ public interface ExecutableSetOfSetOperator<T> {
     public <X> ExecutableSetOfSetOperator<X> eval(final IEvaluator<? extends Set<? extends Set<X>>,? super Set<Set<T>>> eval);
     
     public <X> ExecutableSetOfSetOperator<X> convert(final IConverter<? extends Set<? extends Set<X>>,? super Set<Set<T>>> converter);
+
+    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<Set<T>>> function);
+    
+    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Set<Set<T>>> eval);
+    
+    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Set<Set<T>>> converter);    
     
 }

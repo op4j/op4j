@@ -112,6 +112,14 @@ public interface Level0ListOfMapOperator<K,V>
     public <X,Y> Level0ListOfMapOperator<X,Y> eval(final IEvaluator<? extends List<? extends Map<X,Y>>,? super List<Map<K,V>>> eval);
 
     public <X,Y> Level0ListOfMapOperator<X,Y> exec(final IFunction<? extends List<? extends Map<X,Y>>,? super List<Map<K,V>>> function);
+
+    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<Map<K,V>>> function);
+    
+    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super List<Map<K,V>>> eval);
+    
+    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super List<Map<K,V>>> converter);    
+
+    
     
     public <X,Y> Level0ListOfMapOperator<X,Y> asListOfMapOf(final Type<X> keyType, final Type<Y> valueType);
     public Level0ListOfMapOperator<?,?> asListOfMapOfUnknown();

@@ -3,6 +3,7 @@ package org.op4j.operators.impl.listofarray;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
+
 import org.javaruntype.type.Type;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;

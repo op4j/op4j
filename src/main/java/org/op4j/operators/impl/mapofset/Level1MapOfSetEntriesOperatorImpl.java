@@ -23,10 +23,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
+import org.op4j.operators.impl.generic.Level0GenericUniqOperatorImpl;
+import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.intf.mapofset.Level1MapOfSetEntriesOperator;
 import org.op4j.operators.intf.mapofset.Level1MapOfSetEntriesSelectedOperator;
@@ -115,6 +118,21 @@ public class Level1MapOfSetEntriesOperatorImpl<K,V> extends AbstractOperatorImpl
 
     public <X, Y> Level1MapOfSetEntriesOperator<X, Y> exec(final IFunction<? extends Entry<X, ? extends Set<Y>>, ? super Entry<K, Set<V>>> function) {
         return new Level1MapOfSetEntriesOperatorImpl<X, Y>(getTarget().execute(function));
+    }
+
+
+    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super Entry<K, Set<V>>> converter) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super Entry<K, Set<V>>> eval) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Entry<K, Set<V>>> function) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function));
     }
     
 }

@@ -26,6 +26,7 @@ import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.operators.intf.map.Level2MapEntriesValueOperator;
 import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.operators.qualities.CastableToMapOperator;
@@ -98,6 +99,13 @@ public interface Level2MapOfMapEntriesValueOperator<K1,K2,V>
     public <X2,Y> Level2MapOfMapEntriesValueOperator<K1,X2,Y> eval(final IEvaluator<? extends Map<X2,Y>,? super Map<K2,V>> eval);
 
     public <X2,Y> Level2MapOfMapEntriesValueOperator<K1,X2,Y> exec(final IFunction<? extends Map<X2,Y>, ? super Map<K2,V>> function);
+
+    public <X> Level2MapEntriesValueOperator<K1,X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K2,V>> function);
+    
+    public <X> Level2MapEntriesValueOperator<K1,X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map<K2,V>> eval);
+    
+    public <X> Level2MapEntriesValueOperator<K1,X> convert(final Type<X> resultType, final IConverter<? extends X,? super Map<K2,V>> converter);    
+
     
     
     public <X,Y> Level2MapOfMapEntriesValueOperator<K1,X,Y> asMapOf(final Type<X> keyType, final Type<Y> valueType);

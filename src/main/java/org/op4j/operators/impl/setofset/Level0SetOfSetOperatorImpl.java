@@ -337,6 +337,21 @@ public class Level0SetOfSetOperatorImpl<T> extends AbstractOperatorImpl
     public <X> Level0SetOfSetOperator<X> exec(final IFunction<? extends Set<? extends Set<X>>, ? super Set<Set<T>>> function) {
         return new Level0SetOfSetOperatorImpl<X>(getTarget().execute(function));
     }
+
+
+    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super Set<Set<T>>> converter) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super Set<Set<T>>> eval) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<Set<T>>> function) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function));
+    }
     
     
     

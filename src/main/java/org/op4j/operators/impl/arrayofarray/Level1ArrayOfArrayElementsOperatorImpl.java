@@ -33,9 +33,11 @@ import org.op4j.functions.converters.ToSet;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
+import org.op4j.operators.impl.array.Level1ArrayElementsOperatorImpl;
 import org.op4j.operators.impl.arrayoflist.Level1ArrayOfListElementsOperatorImpl;
 import org.op4j.operators.impl.arrayofmap.Level1ArrayOfMapElementsOperatorImpl;
 import org.op4j.operators.impl.arrayofset.Level1ArrayOfSetElementsOperatorImpl;
+import org.op4j.operators.intf.array.Level1ArrayElementsOperator;
 import org.op4j.operators.intf.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayofarray.Level1ArrayOfArrayElementsOperator;
 import org.op4j.operators.intf.arrayofarray.Level1ArrayOfArrayElementsSelectedOperator;
@@ -272,6 +274,21 @@ public class Level1ArrayOfArrayElementsOperatorImpl<T> extends AbstractOperatorI
 
 	public <X> Level1ArrayOfArrayElementsOperator<X> exec(final IFunction<X[], ? super T[]> function) {
         return new Level1ArrayOfArrayElementsOperatorImpl<X>(function.getResultType(this.type), getTarget().execute(function));
+    }
+
+
+    public <X> Level1ArrayElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super T[]> converter) {
+        return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(converter));
+    }
+
+
+    public <X> Level1ArrayElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super T[]> eval) {
+        return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(eval));
+    }
+
+
+    public <X> Level1ArrayElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super T[]> function) {
+        return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(function));
     }
 
 

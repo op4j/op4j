@@ -28,6 +28,7 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
+import org.op4j.operators.intf.map.Level2MapEntriesValueOperator;
 import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.Level2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
@@ -115,6 +116,12 @@ public interface Level2MapOfArrayEntriesValueOperator<K,V>
     public <X> Level2MapOfArrayEntriesValueOperator<K,X> eval(final IEvaluator<X[],? super V[]> eval);
 
     public <X> Level2MapOfArrayEntriesValueOperator<K,X> exec(final IFunction<X[], ? super V[]> function);
+
+    public <X> Level2MapEntriesValueOperator<K,X> exec(final Type<X> resultType, final IFunction<? extends X, ? super V[]> function);
+    
+    public <X> Level2MapEntriesValueOperator<K,X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super V[]> eval);
+    
+    public <X> Level2MapEntriesValueOperator<K,X> convert(final Type<X> resultType, final IConverter<? extends X,? super V[]> converter);    
     
     
     

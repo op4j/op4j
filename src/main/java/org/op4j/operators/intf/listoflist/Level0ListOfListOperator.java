@@ -169,6 +169,12 @@ public interface Level0ListOfListOperator<T>
     public <X> Level0ListOfListOperator<X> eval(final IEvaluator<? extends List<? extends List<X>>,? super List<List<T>>> eval);
 
     public <X> Level0ListOfListOperator<X> exec(final IFunction<? extends List<? extends List<X>>, ? super List<List<T>>> function);
+
+    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<List<T>>> function);
+    
+    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super List<List<T>>> eval);
+    
+    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super List<List<T>>> converter);    
     
     
     public <X> Level0ListOfListOperator<X> asListOfListOf(final Type<X> type);

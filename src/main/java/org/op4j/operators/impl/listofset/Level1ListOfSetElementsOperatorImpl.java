@@ -35,9 +35,11 @@ import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
+import org.op4j.operators.impl.list.Level1ListElementsOperatorImpl;
 import org.op4j.operators.impl.listofarray.Level1ListOfArrayElementsOperatorImpl;
 import org.op4j.operators.impl.listoflist.Level1ListOfListElementsOperatorImpl;
 import org.op4j.operators.impl.listofmap.Level1ListOfMapElementsOperatorImpl;
+import org.op4j.operators.intf.list.Level1ListElementsOperator;
 import org.op4j.operators.intf.listofarray.Level1ListOfArrayElementsOperator;
 import org.op4j.operators.intf.listoflist.Level1ListOfListElementsOperator;
 import org.op4j.operators.intf.listofmap.Level1ListOfMapElementsOperator;
@@ -257,6 +259,21 @@ public class Level1ListOfSetElementsOperatorImpl<T> extends AbstractOperatorImpl
 
     public <X> Level1ListOfSetElementsOperator<X> exec(final IFunction<? extends Set<X>, ? super Set<T>> function) {
         return new Level1ListOfSetElementsOperatorImpl<X>(getTarget().execute(function));
+    }
+
+
+    public <X> Level1ListElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super Set<T>> converter) {
+        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level1ListElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super Set<T>> eval) {
+        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level1ListElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<T>> function) {
+        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(function));
     }
     
     

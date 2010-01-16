@@ -21,6 +21,7 @@ package org.op4j.operators.qualities;
 
 import java.util.Map;
 
+import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -42,5 +43,11 @@ public interface ExecutableMapOperator<K,V> {
     public <X,Y> ExecutableMapOperator<X,Y> eval(final IEvaluator<? extends Map<X,Y>,? super Map<K,V>> eval);
     
     public <X,Y> ExecutableMapOperator<X,Y> convert(final IConverter<? extends Map<X,Y>,? super Map<K,V>> converter);
+
+    public <X> Operator exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K,V>> function);
+    
+    public <X> Operator eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map<K,V>> eval);
+    
+    public <X> Operator convert(final Type<X> resultType, final IConverter<? extends X,? super Map<K,V>> converter);    
     
 }

@@ -2,6 +2,7 @@ package org.op4j.operators.impl.arrayofarray;
 
 import java.util.Collection;
 import java.util.Comparator;
+
 import org.javaruntype.type.Type;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;

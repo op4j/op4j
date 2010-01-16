@@ -343,6 +343,21 @@ public class Level0SetOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     public <X> Level0SetOfArrayOperator<X> exec(final IFunction<? extends Set<X[]>, ? super Set<T[]>> function) {
         return new Level0SetOfArrayOperatorImpl<X>(getTarget().execute(function));
     }
+
+
+    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super Set<T[]>> converter) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super Set<T[]>> eval) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<T[]>> function) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function));
+    }
     
     
     

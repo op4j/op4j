@@ -2,12 +2,9 @@
  - Add "getSimpleName" to javaruntype types so that package can be omitted
  - Add "getUpperBounds/getUniqueUpperBound" + Lower to javaruntype "Types"
 
- - Modify -devutils so that execution methods in GeneralMulti do iterate()
-
- - Create execFor(type,...) -style methods
- ^- Maybe generic and asType would work as one and the same for these modified interfaces?
+ - Maybe generic and asType would work as one and the same for these modified interfaces?
     
- - Check the usage of all Type parameters. Would they be flattered with something like Type<List<? extends Object>>?
+ - Check the usage of all Type parameters. Would they be fooled with something like Type<List<? extends Object>>?
  - When not in leaf nodes, things coming from a function (exec) should be copied to 
    ensure Lists and Arrays and such are the right implementation (TargetUtils.copy*)
  - Add, insert and put methods should normalize incoming objects to ensure they are the right List,

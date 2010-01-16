@@ -21,9 +21,11 @@ package org.op4j.operators.qualities;
 
 import java.util.List;
 
+import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 
 
 
@@ -42,5 +44,11 @@ public interface ExecutableListOfListOperator<T> {
     public <X> ExecutableListOfListOperator<X> eval(final IEvaluator<? extends List<? extends List<X>>,? super List<List<T>>> eval);
     
     public <X> ExecutableListOfListOperator<X> convert(final IConverter<? extends List<? extends List<X>>,? super List<List<T>>> converter);
+
+    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<List<T>>> function);
+    
+    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super List<List<T>>> eval);
+    
+    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super List<List<T>>> converter);    
     
 }

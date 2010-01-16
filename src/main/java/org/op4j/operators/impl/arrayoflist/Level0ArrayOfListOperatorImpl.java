@@ -331,6 +331,21 @@ public class Level0ArrayOfListOperatorImpl<T> extends AbstractOperatorImpl
     public <X> Level0ArrayOfListOperator<X> exec(final IFunction<? extends List<X>[], ? super List<T>[]> function) {
         return new Level0ArrayOfListOperatorImpl<X>(getTarget().execute(function));
     }
+
+
+    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super List<T>[]> converter) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super List<T>[]> eval) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T>[]> function) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function));
+    }
     
     
     

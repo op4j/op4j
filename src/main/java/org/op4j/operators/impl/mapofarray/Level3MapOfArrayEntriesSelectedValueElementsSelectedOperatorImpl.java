@@ -1,6 +1,7 @@
 package org.op4j.operators.impl.mapofarray;
 
 import java.util.Map;
+
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;

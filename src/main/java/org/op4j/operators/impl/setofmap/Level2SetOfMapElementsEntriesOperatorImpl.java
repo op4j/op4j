@@ -23,10 +23,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
+import org.op4j.operators.impl.setoflist.Level2SetOfListElementsElementsOperatorImpl;
+import org.op4j.operators.intf.setoflist.Level2SetOfListElementsElementsOperator;
 import org.op4j.operators.intf.setofmap.Level1SetOfMapElementsOperator;
 import org.op4j.operators.intf.setofmap.Level2SetOfMapElementsEntriesOperator;
 import org.op4j.operators.intf.setofmap.Level2SetOfMapElementsEntriesSelectedOperator;
@@ -117,6 +120,21 @@ public class Level2SetOfMapElementsEntriesOperatorImpl<K,V> extends AbstractOper
 
     public <X, Y> Level2SetOfMapElementsEntriesOperator<X, Y> exec(final IFunction<? extends Entry<X, Y>, ? super Entry<K, V>> function) {
         return new Level2SetOfMapElementsEntriesOperatorImpl<X, Y>(getTarget().execute(function));
+    }
+
+
+    public <X> Level2SetOfListElementsElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super Entry<K, V>> converter) {
+        return new Level2SetOfListElementsElementsOperatorImpl<X>(getTarget().execute(converter));
+    }
+
+
+    public <X> Level2SetOfListElementsElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super Entry<K, V>> eval) {
+        return new Level2SetOfListElementsElementsOperatorImpl<X>(getTarget().execute(eval));
+    }
+
+
+    public <X> Level2SetOfListElementsElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Entry<K, V>> function) {
+        return new Level2SetOfListElementsElementsOperatorImpl<X>(getTarget().execute(function));
     }
 
 }
