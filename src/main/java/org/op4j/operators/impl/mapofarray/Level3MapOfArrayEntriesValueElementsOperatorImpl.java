@@ -32,6 +32,7 @@ import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesValueOperator;
 import org.op4j.operators.intf.mapofarray.Level3MapOfArrayEntriesValueElementsOperator;
 import org.op4j.operators.intf.mapofarray.Level3MapOfArrayEntriesValueElementsSelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalizationUtils;
 
@@ -127,17 +128,17 @@ public class Level3MapOfArrayEntriesValueElementsOperatorImpl<K,V> extends Abstr
 
 
     public <X> Level3MapOfArrayEntriesValueElementsOperator<K, X> convert(final IConverter<X, ? super V> converter) {
-        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(converter.getResultType(this.type), getTarget().execute(converter));
+        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(converter.getResultType(this.type), getTarget().execute(converter, Normalization.NONE));
     }
 
 
     public <X> Level3MapOfArrayEntriesValueElementsOperator<K, X> eval(final IEvaluator<X, ? super V> eval) {
-        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(eval.getResultType(this.type), getTarget().execute(eval));
+        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(eval.getResultType(this.type), getTarget().execute(eval, Normalization.NONE));
     }
 
 
     public <X> Level3MapOfArrayEntriesValueElementsOperator<K, X> exec(final IFunction<X, ? super V> function) {
-        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(function.getResultType(this.type), getTarget().execute(function));
+        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(function.getResultType(this.type), getTarget().execute(function, Normalization.NONE));
     }
 
 }

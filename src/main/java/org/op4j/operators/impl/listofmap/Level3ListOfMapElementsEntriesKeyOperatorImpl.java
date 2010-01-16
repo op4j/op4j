@@ -33,6 +33,7 @@ import org.op4j.operators.intf.listofmap.Level2ListOfMapElementsEntriesOperator;
 import org.op4j.operators.intf.listofmap.Level3ListOfMapElementsEntriesKeyOperator;
 import org.op4j.operators.intf.listofmap.Level3ListOfMapElementsEntriesKeySelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalizationUtils;
 
@@ -125,17 +126,17 @@ public class Level3ListOfMapElementsEntriesKeyOperatorImpl<K,V> extends Abstract
 
 
     public <X> Level3ListOfMapElementsEntriesKeyOperator<X, V> convert(final IConverter<X, ? super K> converter) {
-        return new Level3ListOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().execute(converter));
+        return new Level3ListOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
     public <X> Level3ListOfMapElementsEntriesKeyOperator<X, V> eval(final IEvaluator<X, ? super K> eval) {
-        return new Level3ListOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().execute(eval));
+        return new Level3ListOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
     public <X> Level3ListOfMapElementsEntriesKeyOperator<X, V> exec(final IFunction<X, ? super K> function) {
-        return new Level3ListOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().execute(function));
+        return new Level3ListOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().execute(function, Normalization.NONE));
     }
 
 }

@@ -33,6 +33,7 @@ import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.Level3MapOfSetEntriesValueElementsOperator;
 import org.op4j.operators.intf.mapofset.Level3MapOfSetEntriesValueElementsSelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalizationUtils;
 
@@ -125,17 +126,17 @@ public class Level3MapOfSetEntriesValueElementsOperatorImpl<K,V> extends Abstrac
 
 
     public <X> Level3MapOfSetEntriesValueElementsOperator<K, X> convert(final IConverter<X, ? super V> converter) {
-        return new Level3MapOfSetEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(converter));
+        return new Level3MapOfSetEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
     public <X> Level3MapOfSetEntriesValueElementsOperator<K, X> eval(final IEvaluator<X, ? super V> eval) {
-        return new Level3MapOfSetEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(eval));
+        return new Level3MapOfSetEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
     public <X> Level3MapOfSetEntriesValueElementsOperator<K, X> exec(final IFunction<X, ? super V> function) {
-        return new Level3MapOfSetEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(function));
+        return new Level3MapOfSetEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(function, Normalization.NONE));
     }
 
 

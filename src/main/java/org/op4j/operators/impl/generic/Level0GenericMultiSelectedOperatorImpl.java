@@ -10,6 +10,7 @@ import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.generic.Level0GenericMultiOperator;
 import org.op4j.operators.intf.generic.Level0GenericMultiSelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 
 
 public class Level0GenericMultiSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level0GenericMultiSelectedOperator<T> {
@@ -21,7 +22,7 @@ public class Level0GenericMultiSelectedOperatorImpl<T> extends AbstractOperatorI
 
 
     public Level0GenericMultiSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().iterate().execute(eval).endIterate(org.op4j.target.Target.Structure.LIST, null));
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().iterate().execute(eval, Normalization.NONE).endIterate(org.op4j.target.Target.Structure.LIST, null));
     }
 
 
@@ -41,18 +42,18 @@ public class Level0GenericMultiSelectedOperatorImpl<T> extends AbstractOperatorI
 
 
     public Level0GenericMultiSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().iterate().execute(function).endIterate(org.op4j.target.Target.Structure.LIST, null));
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().iterate().execute(function, Normalization.NONE).endIterate(org.op4j.target.Target.Structure.LIST, null));
     }
 
 
     public Level0GenericMultiSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().iterate().execute(converter).endIterate(org.op4j.target.Target.Structure.LIST, null));
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().iterate().execute(converter, Normalization.NONE).endIterate(org.op4j.target.Target.Structure.LIST, null));
     }
 
 
-	public int size() {
-		return endIf().size();
-	}
+    public int size() {
+        return endIf().size();
+    }
 
 
 

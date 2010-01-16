@@ -13,6 +13,7 @@ import org.op4j.operators.intf.listoflist.Level1ListOfListElementsOperator;
 import org.op4j.operators.intf.listoflist.Level1ListOfListElementsSelectedOperator;
 import org.op4j.operators.intf.listoflist.Level2ListOfListElementsSelectedElementsOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 
 
 public class Level1ListOfListElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level1ListOfListElementsSelectedOperator<T> {
@@ -84,7 +85,7 @@ public class Level1ListOfListElementsSelectedOperatorImpl<T> extends AbstractOpe
 
 
     public Level1ListOfListElementsSelectedOperator<T> eval(final IEvaluator<? extends List<? extends T>,? super List<T>> eval) {
-        return new Level1ListOfListElementsSelectedOperatorImpl<T>(getTarget().execute(eval));
+        return new Level1ListOfListElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.LIST));
     }
 
 
@@ -108,6 +109,11 @@ public class Level1ListOfListElementsSelectedOperatorImpl<T> extends AbstractOpe
     }
 
 
+    public Level1ListOfListElementsSelectedOperator<T> exec(final IFunction<? extends List<? extends T>,? super List<T>> function) {
+        return new Level1ListOfListElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalization.LIST));
+    }
+
+
     @SuppressWarnings("unchecked")
     public Level1ListOfListElementsSelectedOperator<T> sort() {
         return new Level1ListOfListElementsSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.Sort()));
@@ -119,13 +125,8 @@ public class Level1ListOfListElementsSelectedOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1ListOfListElementsSelectedOperator<T> exec(final IFunction<? extends List<? extends T>,? super List<T>> function) {
-        return new Level1ListOfListElementsSelectedOperatorImpl<T>(getTarget().execute(function));
-    }
-
-
     public Level1ListOfListElementsSelectedOperator<T> convert(final IConverter<? extends List<? extends T>,? super List<T>> converter) {
-        return new Level1ListOfListElementsSelectedOperatorImpl<T>(getTarget().execute(converter));
+        return new Level1ListOfListElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalization.LIST));
     }
 
 

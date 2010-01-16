@@ -32,6 +32,7 @@ import org.op4j.operators.intf.mapofmap.Level3MapOfMapEntriesValueEntriesOperato
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueEntriesValueSelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalizationUtils;
 
@@ -126,19 +127,19 @@ public class Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1,K2,V> extends
 
 
     public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> convert(final IConverter<X, ? super V> converter) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().execute(converter));
+        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
 
     public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> eval(final IEvaluator<X, ? super V> eval) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().execute(eval));
+        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
 
     public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> exec(final IFunction<X, ? super V> function) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().execute(function));
+        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().execute(function, Normalization.NONE));
     }
 
 

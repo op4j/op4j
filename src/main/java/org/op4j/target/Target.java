@@ -38,6 +38,14 @@ import org.op4j.util.VarArgsUtil;
 public abstract class Target {
 
     public static enum Structure { ARRAY, LIST, SET, MAP, MAP_ENTRY }
+    public static enum Normalization { 
+        NONE, 
+        ARRAY, LIST, SET, MAP, MAPENTRY, 
+        ARRAY_OF_ARRAY, ARRAY_OF_LIST, ARRAY_OF_MAP, ARRAY_OF_SET,
+        LIST_OF_ARRAY, LIST_OF_LIST, LIST_OF_MAP, LIST_OF_SET,
+        MAP_OF_ARRAY, MAP_OF_LIST, MAP_OF_MAP, MAP_OF_SET,
+        MAPENTRY_OF_ARRAY, MAPENTRY_OF_LIST, MAPENTRY_OF_MAP, MAPENTRY_OF_SET,
+        SET_OF_ARRAY, SET_OF_LIST, SET_OF_MAP, SET_OF_SET }
     
     private final TargetId id;
 
@@ -251,8 +259,11 @@ public abstract class Target {
     
     
     
+    public final Target execute(final IFunction<?,?> executable) {
+        return execute(executable, Normalization.NONE);
+    }
 
-    public abstract Target execute(final IFunction<?,?> executable);
+    public abstract Target execute(final IFunction<?,?> executable, final Normalization normalization);
     
     
     public Object get() {

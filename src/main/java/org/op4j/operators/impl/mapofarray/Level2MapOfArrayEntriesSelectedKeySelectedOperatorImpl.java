@@ -9,6 +9,7 @@ import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesSelectedKeyOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesSelectedKeySelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 
 
 public class Level2MapOfArrayEntriesSelectedKeySelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level2MapOfArrayEntriesSelectedKeySelectedOperator<K,V> {
@@ -20,7 +21,7 @@ public class Level2MapOfArrayEntriesSelectedKeySelectedOperatorImpl<K,V> extends
 
 
     public Level2MapOfArrayEntriesSelectedKeySelectedOperator<K,V> eval(final IEvaluator<? extends K,? super K> eval) {
-        return new Level2MapOfArrayEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().execute(eval));
+        return new Level2MapOfArrayEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
@@ -30,12 +31,12 @@ public class Level2MapOfArrayEntriesSelectedKeySelectedOperatorImpl<K,V> extends
 
 
     public Level2MapOfArrayEntriesSelectedKeySelectedOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
-        return new Level2MapOfArrayEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().execute(function));
+        return new Level2MapOfArrayEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.NONE));
     }
 
 
     public Level2MapOfArrayEntriesSelectedKeySelectedOperator<K,V> convert(final IConverter<? extends K,? super K> converter) {
-        return new Level2MapOfArrayEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().execute(converter));
+        return new Level2MapOfArrayEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.NONE));
     }
 
 

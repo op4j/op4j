@@ -14,6 +14,7 @@ import org.op4j.operators.intf.listofmap.Level0ListOfMapOperator;
 import org.op4j.operators.intf.listofmap.Level0ListOfMapSelectedOperator;
 import org.op4j.operators.intf.listofmap.Level1ListOfMapSelectedElementsOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 
 
 public class Level0ListOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level0ListOfMapSelectedOperator<K,V> {
@@ -85,7 +86,7 @@ public class Level0ListOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorIm
 
 
     public Level0ListOfMapSelectedOperator<K,V> eval(final IEvaluator<? extends List<? extends Map<? extends K,? extends V>>,? super List<Map<K,V>>> eval) {
-        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(eval));
+        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.LIST_OF_MAP));
     }
 
 
@@ -109,6 +110,11 @@ public class Level0ListOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorIm
     }
 
 
+    public Level0ListOfMapSelectedOperator<K,V> exec(final IFunction<? extends List<? extends Map<? extends K,? extends V>>,? super List<Map<K,V>>> function) {
+        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.LIST_OF_MAP));
+    }
+
+
     @SuppressWarnings("unchecked")
     public Level0ListOfMapSelectedOperator<K,V> sort() {
         return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Sort()));
@@ -120,13 +126,8 @@ public class Level0ListOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorIm
     }
 
 
-    public Level0ListOfMapSelectedOperator<K,V> exec(final IFunction<? extends List<? extends Map<? extends K,? extends V>>,? super List<Map<K,V>>> function) {
-        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(function));
-    }
-
-
     public Level0ListOfMapSelectedOperator<K,V> convert(final IConverter<? extends List<? extends Map<? extends K,? extends V>>,? super List<Map<K,V>>> converter) {
-        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(converter));
+        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.LIST_OF_MAP));
     }
 
 

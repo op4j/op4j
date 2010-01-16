@@ -10,6 +10,7 @@ import org.op4j.operators.intf.mapofmap.Level3MapOfMapEntriesValueEntriesSelecte
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueEntriesSelectedKeyOperator;
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueEntriesSelectedKeySelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 
 
@@ -72,7 +73,7 @@ public class Level4MapOfMapEntriesValueEntriesSelectedKeyOperatorImpl<K1,K2,V> e
 
 
     public Level4MapOfMapEntriesValueEntriesSelectedKeyOperator<K1,K2,V> eval(final IEvaluator<? extends K2,? super K2> eval) {
-        return new Level4MapOfMapEntriesValueEntriesSelectedKeyOperatorImpl<K1,K2,V>(getTarget().execute(eval));
+        return new Level4MapOfMapEntriesValueEntriesSelectedKeyOperatorImpl<K1,K2,V>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
@@ -82,12 +83,12 @@ public class Level4MapOfMapEntriesValueEntriesSelectedKeyOperatorImpl<K1,K2,V> e
 
 
     public Level4MapOfMapEntriesValueEntriesSelectedKeyOperator<K1,K2,V> exec(final IFunction<? extends K2,? super K2> function) {
-        return new Level4MapOfMapEntriesValueEntriesSelectedKeyOperatorImpl<K1,K2,V>(getTarget().execute(function));
+        return new Level4MapOfMapEntriesValueEntriesSelectedKeyOperatorImpl<K1,K2,V>(getTarget().execute(function, Normalization.NONE));
     }
 
 
     public Level4MapOfMapEntriesValueEntriesSelectedKeyOperator<K1,K2,V> convert(final IConverter<? extends K2,? super K2> converter) {
-        return new Level4MapOfMapEntriesValueEntriesSelectedKeyOperatorImpl<K1,K2,V>(getTarget().execute(converter));
+        return new Level4MapOfMapEntriesValueEntriesSelectedKeyOperatorImpl<K1,K2,V>(getTarget().execute(converter, Normalization.NONE));
     }
 
 

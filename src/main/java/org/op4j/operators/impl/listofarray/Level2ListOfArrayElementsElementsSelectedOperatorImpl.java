@@ -10,6 +10,7 @@ import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.listofarray.Level2ListOfArrayElementsElementsOperator;
 import org.op4j.operators.intf.listofarray.Level2ListOfArrayElementsElementsSelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 
 
 public class Level2ListOfArrayElementsElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level2ListOfArrayElementsElementsSelectedOperator<T> {
@@ -25,7 +26,7 @@ public class Level2ListOfArrayElementsElementsSelectedOperatorImpl<T> extends Ab
 
 
     public Level2ListOfArrayElementsElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return new Level2ListOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(eval));
+        return new Level2ListOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(eval, Normalization.NONE));
     }
 
 
@@ -35,12 +36,12 @@ public class Level2ListOfArrayElementsElementsSelectedOperatorImpl<T> extends Ab
 
 
     public Level2ListOfArrayElementsElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level2ListOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(function));
+        return new Level2ListOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(function, Normalization.NONE));
     }
 
 
     public Level2ListOfArrayElementsElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return new Level2ListOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(converter));
+        return new Level2ListOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(converter, Normalization.NONE));
     }
 
 

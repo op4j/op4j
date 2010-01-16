@@ -13,6 +13,7 @@ import org.op4j.operators.intf.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayofarray.Level0ArrayOfArraySelectedOperator;
 import org.op4j.operators.intf.arrayofarray.Level1ArrayOfArraySelectedElementsOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 
 
 public class Level0ArrayOfArraySelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level0ArrayOfArraySelectedOperator<T> {
@@ -84,7 +85,7 @@ public class Level0ArrayOfArraySelectedOperatorImpl<T> extends AbstractOperatorI
 
 
     public Level0ArrayOfArraySelectedOperator<T> eval(final IEvaluator<? extends T[][],? super T[][]> eval) {
-        return new Level0ArrayOfArraySelectedOperatorImpl<T>(getTarget().execute(eval));
+        return new Level0ArrayOfArraySelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.ARRAY_OF_ARRAY));
     }
 
 
@@ -108,6 +109,11 @@ public class Level0ArrayOfArraySelectedOperatorImpl<T> extends AbstractOperatorI
     }
 
 
+    public Level0ArrayOfArraySelectedOperator<T> exec(final IFunction<? extends T[][],? super T[][]> function) {
+        return new Level0ArrayOfArraySelectedOperatorImpl<T>(getTarget().execute(function, Normalization.ARRAY_OF_ARRAY));
+    }
+
+
     @SuppressWarnings("unchecked")
     public Level0ArrayOfArraySelectedOperator<T> sort() {
         return new Level0ArrayOfArraySelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Sort()));
@@ -119,13 +125,8 @@ public class Level0ArrayOfArraySelectedOperatorImpl<T> extends AbstractOperatorI
     }
 
 
-    public Level0ArrayOfArraySelectedOperator<T> exec(final IFunction<? extends T[][],? super T[][]> function) {
-        return new Level0ArrayOfArraySelectedOperatorImpl<T>(getTarget().execute(function));
-    }
-
-
     public Level0ArrayOfArraySelectedOperator<T> convert(final IConverter<? extends T[][],? super T[][]> converter) {
-        return new Level0ArrayOfArraySelectedOperatorImpl<T>(getTarget().execute(converter));
+        return new Level0ArrayOfArraySelectedOperatorImpl<T>(getTarget().execute(converter, Normalization.ARRAY_OF_ARRAY));
     }
 
 

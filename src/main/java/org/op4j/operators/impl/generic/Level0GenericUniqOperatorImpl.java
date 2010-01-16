@@ -81,6 +81,7 @@ import org.op4j.operators.intf.setoflist.Level0SetOfListOperator;
 import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.util.NormalizationUtils;
 
 
@@ -496,17 +497,17 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super T> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
     public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super T> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super T> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
     
     

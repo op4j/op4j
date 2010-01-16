@@ -14,6 +14,7 @@ import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesValueSelectedOperator;
 import org.op4j.operators.intf.mapoflist.Level3MapOfListEntriesValueSelectedElementsOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 
 
 public class Level2MapOfListEntriesValueSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level2MapOfListEntriesValueSelectedOperator<K,V> {
@@ -85,7 +86,7 @@ public class Level2MapOfListEntriesValueSelectedOperatorImpl<K,V> extends Abstra
 
 
     public Level2MapOfListEntriesValueSelectedOperator<K,V> eval(final IEvaluator<? extends List<? extends V>,? super List<V>> eval) {
-        return new Level2MapOfListEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(eval));
+        return new Level2MapOfListEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.LIST));
     }
 
 
@@ -109,6 +110,11 @@ public class Level2MapOfListEntriesValueSelectedOperatorImpl<K,V> extends Abstra
     }
 
 
+    public Level2MapOfListEntriesValueSelectedOperator<K,V> exec(final IFunction<? extends List<? extends V>,? super List<V>> function) {
+        return new Level2MapOfListEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.LIST));
+    }
+
+
     @SuppressWarnings("unchecked")
     public Level2MapOfListEntriesValueSelectedOperator<K,V> sort() {
         return new Level2MapOfListEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Sort()));
@@ -120,13 +126,8 @@ public class Level2MapOfListEntriesValueSelectedOperatorImpl<K,V> extends Abstra
     }
 
 
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> exec(final IFunction<? extends List<? extends V>,? super List<V>> function) {
-        return new Level2MapOfListEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function));
-    }
-
-
     public Level2MapOfListEntriesValueSelectedOperator<K,V> convert(final IConverter<? extends List<? extends V>,? super List<V>> converter) {
-        return new Level2MapOfListEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(converter));
+        return new Level2MapOfListEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.LIST));
     }
 
 

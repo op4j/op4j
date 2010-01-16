@@ -32,6 +32,7 @@ import org.op4j.operators.intf.setoflist.Level1SetOfListElementsOperator;
 import org.op4j.operators.intf.setoflist.Level2SetOfListElementsElementsOperator;
 import org.op4j.operators.intf.setoflist.Level2SetOfListElementsElementsSelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 
 
@@ -121,17 +122,17 @@ public class Level2SetOfListElementsElementsOperatorImpl<T> extends AbstractOper
 
 
     public <X> Level2SetOfListElementsElementsOperator<X> convert(final IConverter<X, ? super T> converter) {
-        return new Level2SetOfListElementsElementsOperatorImpl<X>(getTarget().execute(converter));
+        return new Level2SetOfListElementsElementsOperatorImpl<X>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
     public <X> Level2SetOfListElementsElementsOperator<X> eval(final IEvaluator<X, ? super T> eval) {
-        return new Level2SetOfListElementsElementsOperatorImpl<X>(getTarget().execute(eval));
+        return new Level2SetOfListElementsElementsOperatorImpl<X>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
     public <X> Level2SetOfListElementsElementsOperator<X> exec(final IFunction<X, ? super T> function) {
-        return new Level2SetOfListElementsElementsOperatorImpl<X>(getTarget().execute(function));
+        return new Level2SetOfListElementsElementsOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
 
 }

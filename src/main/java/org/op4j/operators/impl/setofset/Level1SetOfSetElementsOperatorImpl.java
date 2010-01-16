@@ -47,6 +47,7 @@ import org.op4j.operators.intf.setofset.Level1SetOfSetElementsOperator;
 import org.op4j.operators.intf.setofset.Level1SetOfSetElementsSelectedOperator;
 import org.op4j.operators.intf.setofset.Level2SetOfSetElementsElementsOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 
 
@@ -248,32 +249,32 @@ public class Level1SetOfSetElementsOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public <X> Level1SetOfSetElementsOperator<X> convert(final IConverter<? extends Set<X>, ? super Set<T>> converter) {
-        return new Level1SetOfSetElementsOperatorImpl<X>(getTarget().execute(converter));
+        return new Level1SetOfSetElementsOperatorImpl<X>(getTarget().execute(converter, Normalization.SET));
     }
 
 
     public <X> Level1SetOfSetElementsOperator<X> eval(final IEvaluator<? extends Set<X>, ? super Set<T>> eval) {
-        return new Level1SetOfSetElementsOperatorImpl<X>(getTarget().execute(eval));
+        return new Level1SetOfSetElementsOperatorImpl<X>(getTarget().execute(eval, Normalization.SET));
     }
 
 
     public <X> Level1SetOfSetElementsOperator<X> exec(final IFunction<? extends Set<X>, ? super Set<T>> function) {
-        return new Level1SetOfSetElementsOperatorImpl<X>(getTarget().execute(function));
+        return new Level1SetOfSetElementsOperatorImpl<X>(getTarget().execute(function, Normalization.SET));
     }
 
 
     public <X> Level1SetElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super Set<T>> converter) {
-        return new Level1SetElementsOperatorImpl<X>(getTarget().execute(converter));
+        return new Level1SetElementsOperatorImpl<X>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
     public <X> Level1SetElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super Set<T>> eval) {
-        return new Level1SetElementsOperatorImpl<X>(getTarget().execute(eval));
+        return new Level1SetElementsOperatorImpl<X>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
     public <X> Level1SetElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<T>> function) {
-        return new Level1SetElementsOperatorImpl<X>(getTarget().execute(function));
+        return new Level1SetElementsOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
     
     

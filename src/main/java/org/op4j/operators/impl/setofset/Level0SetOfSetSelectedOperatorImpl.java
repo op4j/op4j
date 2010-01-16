@@ -13,6 +13,7 @@ import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
 import org.op4j.operators.intf.setofset.Level0SetOfSetSelectedOperator;
 import org.op4j.operators.intf.setofset.Level1SetOfSetSelectedElementsOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 
 
 public class Level0SetOfSetSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level0SetOfSetSelectedOperator<T> {
@@ -79,7 +80,7 @@ public class Level0SetOfSetSelectedOperatorImpl<T> extends AbstractOperatorImpl 
 
 
     public Level0SetOfSetSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends Set<? extends T>>,? super Set<Set<T>>> eval) {
-        return new Level0SetOfSetSelectedOperatorImpl<T>(getTarget().execute(eval));
+        return new Level0SetOfSetSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.SET_OF_SET));
     }
 
 
@@ -103,6 +104,11 @@ public class Level0SetOfSetSelectedOperatorImpl<T> extends AbstractOperatorImpl 
     }
 
 
+    public Level0SetOfSetSelectedOperator<T> exec(final IFunction<? extends Set<? extends Set<? extends T>>,? super Set<Set<T>>> function) {
+        return new Level0SetOfSetSelectedOperatorImpl<T>(getTarget().execute(function, Normalization.SET_OF_SET));
+    }
+
+
     @SuppressWarnings("unchecked")
     public Level0SetOfSetSelectedOperator<T> sort() {
         return new Level0SetOfSetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Sort()));
@@ -114,13 +120,8 @@ public class Level0SetOfSetSelectedOperatorImpl<T> extends AbstractOperatorImpl 
     }
 
 
-    public Level0SetOfSetSelectedOperator<T> exec(final IFunction<? extends Set<? extends Set<? extends T>>,? super Set<Set<T>>> function) {
-        return new Level0SetOfSetSelectedOperatorImpl<T>(getTarget().execute(function));
-    }
-
-
     public Level0SetOfSetSelectedOperator<T> convert(final IConverter<? extends Set<? extends Set<? extends T>>,? super Set<Set<T>>> converter) {
-        return new Level0SetOfSetSelectedOperatorImpl<T>(getTarget().execute(converter));
+        return new Level0SetOfSetSelectedOperatorImpl<T>(getTarget().execute(converter, Normalization.SET_OF_SET));
     }
 
 

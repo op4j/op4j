@@ -33,6 +33,7 @@ import org.op4j.operators.intf.mapoflist.Level1MapOfListEntriesOperator;
 import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesKeyOperator;
 import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesKeySelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalizationUtils;
 
@@ -125,17 +126,17 @@ public class Level2MapOfListEntriesKeyOperatorImpl<K,V> extends AbstractOperator
 
 
     public <X> Level2MapOfListEntriesKeyOperator<X, V> convert(final IConverter<X, ? super K> converter) {
-        return new Level2MapOfListEntriesKeyOperatorImpl<X, V>(getTarget().execute(converter));
+        return new Level2MapOfListEntriesKeyOperatorImpl<X, V>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
     public <X> Level2MapOfListEntriesKeyOperator<X, V> eval(final IEvaluator<X, ? super K> eval) {
-        return new Level2MapOfListEntriesKeyOperatorImpl<X, V>(getTarget().execute(eval));
+        return new Level2MapOfListEntriesKeyOperatorImpl<X, V>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
     public <X> Level2MapOfListEntriesKeyOperator<X, V> exec(final IFunction<X, ? super K> function) {
-        return new Level2MapOfListEntriesKeyOperatorImpl<X, V>(getTarget().execute(function));
+        return new Level2MapOfListEntriesKeyOperatorImpl<X, V>(getTarget().execute(function, Normalization.NONE));
     }
 
 }

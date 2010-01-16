@@ -41,6 +41,7 @@ import org.op4j.operators.intf.arrayofmap.Level1ArrayOfMapElementsSelectedOperat
 import org.op4j.operators.intf.arrayofmap.Level2ArrayOfMapElementsEntriesOperator;
 import org.op4j.operators.intf.arrayofset.Level1ArrayOfSetElementsOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 
 
@@ -225,32 +226,32 @@ public class Level1ArrayOfMapElementsOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public <X, Y> Level1ArrayOfMapElementsOperator<X, Y> convert(final IConverter<? extends Map<X, Y>, ? super Map<K, V>> converter) {
-        return new Level1ArrayOfMapElementsOperatorImpl<X, Y>(getTarget().execute(converter));
+        return new Level1ArrayOfMapElementsOperatorImpl<X, Y>(getTarget().execute(converter, Normalization.MAP));
     }
 
 
     public <X, Y> Level1ArrayOfMapElementsOperator<X, Y> eval(final IEvaluator<? extends Map<X, Y>, ? super Map<K, V>> eval) {
-        return new Level1ArrayOfMapElementsOperatorImpl<X, Y>(getTarget().execute(eval));
+        return new Level1ArrayOfMapElementsOperatorImpl<X, Y>(getTarget().execute(eval, Normalization.MAP));
     }
 
 
     public <X, Y> Level1ArrayOfMapElementsOperator<X, Y> exec(final IFunction<? extends Map<X, Y>, ? super Map<K, V>> function) {
-        return new Level1ArrayOfMapElementsOperatorImpl<X, Y>(getTarget().execute(function));
+        return new Level1ArrayOfMapElementsOperatorImpl<X, Y>(getTarget().execute(function, Normalization.MAP));
     }
 
 
     public <X> Level1ArrayElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super Map<K, V>> converter) {
-        return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(converter));
+        return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(converter, Normalization.NONE));
     }
 
 
     public <X> Level1ArrayElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super Map<K, V>> eval) {
-        return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(eval));
+        return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(eval, Normalization.NONE));
     }
 
 
     public <X> Level1ArrayElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K, V>> function) {
-        return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(function));
+        return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(function, Normalization.NONE));
     }
     
     

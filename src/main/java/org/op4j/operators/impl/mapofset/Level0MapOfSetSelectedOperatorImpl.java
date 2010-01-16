@@ -14,6 +14,7 @@ import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.intf.mapofset.Level0MapOfSetSelectedOperator;
 import org.op4j.operators.intf.mapofset.Level1MapOfSetSelectedEntriesOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 
 
 public class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level0MapOfSetSelectedOperator<K,V> {
@@ -35,7 +36,7 @@ public class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOperatorImp
 
 
     public Level0MapOfSetSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends Set<? extends V>>,? super Map<K,Set<V>>> eval) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(eval));
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAP_OF_SET));
     }
 
 
@@ -79,8 +80,8 @@ public class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
-    public Level0MapOfSetSelectedOperator<K,V> sort(final Comparator<? super Entry<K,Set<V>>> comparator) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,Set<V>>(comparator)));
+    public Level0MapOfSetSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends Set<? extends V>>,? super Map<K,Set<V>>> function) {
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.MAP_OF_SET));
     }
 
 
@@ -90,13 +91,13 @@ public class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
-    public Level0MapOfSetSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends Set<? extends V>>,? super Map<K,Set<V>>> function) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(function));
+    public Level0MapOfSetSelectedOperator<K,V> sort(final Comparator<? super Entry<K,Set<V>>> comparator) {
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,Set<V>>(comparator)));
     }
 
 
     public Level0MapOfSetSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends Set<? extends V>>,? super Map<K,Set<V>>> converter) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(converter));
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.MAP_OF_SET));
     }
 
 

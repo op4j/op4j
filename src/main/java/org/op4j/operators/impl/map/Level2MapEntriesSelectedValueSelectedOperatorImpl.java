@@ -9,6 +9,7 @@ import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.map.Level2MapEntriesSelectedValueOperator;
 import org.op4j.operators.intf.map.Level2MapEntriesSelectedValueSelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 
 
 public class Level2MapEntriesSelectedValueSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level2MapEntriesSelectedValueSelectedOperator<K,V> {
@@ -20,7 +21,7 @@ public class Level2MapEntriesSelectedValueSelectedOperatorImpl<K,V> extends Abst
 
 
     public Level2MapEntriesSelectedValueSelectedOperator<K,V> eval(final IEvaluator<? extends V,? super V> eval) {
-        return new Level2MapEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(eval));
+        return new Level2MapEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
@@ -30,12 +31,12 @@ public class Level2MapEntriesSelectedValueSelectedOperatorImpl<K,V> extends Abst
 
 
     public Level2MapEntriesSelectedValueSelectedOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
-        return new Level2MapEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(function));
+        return new Level2MapEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.NONE));
     }
 
 
     public Level2MapEntriesSelectedValueSelectedOperator<K,V> convert(final IConverter<? extends V,? super V> converter) {
-        return new Level2MapEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(converter));
+        return new Level2MapEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.NONE));
     }
 
 

@@ -15,6 +15,7 @@ import org.op4j.operators.intf.setofmap.Level1SetOfMapSelectedElementsOperator;
 import org.op4j.operators.intf.setofmap.Level1SetOfMapSelectedElementsSelectedOperator;
 import org.op4j.operators.intf.setofmap.Level2SetOfMapSelectedElementsEntriesOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 
 
@@ -87,7 +88,7 @@ public class Level1SetOfMapSelectedElementsOperatorImpl<K,V> extends AbstractOpe
 
 
     public Level1SetOfMapSelectedElementsOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V>,? super Map<K,V>> eval) {
-        return new Level1SetOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(eval));
+        return new Level1SetOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAP));
     }
 
 
@@ -131,6 +132,11 @@ public class Level1SetOfMapSelectedElementsOperatorImpl<K,V> extends AbstractOpe
     }
 
 
+    public Level1SetOfMapSelectedElementsOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V>,? super Map<K,V>> function) {
+        return new Level1SetOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(function, Normalization.MAP));
+    }
+
+
     public Level1SetOfMapSelectedElementsOperator<K,V> sort(final Comparator<? super Entry<K,V>> comparator) {
         return new Level1SetOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,V>(comparator)));
     }
@@ -142,13 +148,8 @@ public class Level1SetOfMapSelectedElementsOperatorImpl<K,V> extends AbstractOpe
     }
 
 
-    public Level1SetOfMapSelectedElementsOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V>,? super Map<K,V>> function) {
-        return new Level1SetOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(function));
-    }
-
-
     public Level1SetOfMapSelectedElementsOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends V>,? super Map<K,V>> converter) {
-        return new Level1SetOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(converter));
+        return new Level1SetOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(converter, Normalization.MAP));
     }
 
 

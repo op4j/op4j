@@ -47,6 +47,7 @@ import org.op4j.operators.intf.listoflist.Level1ListOfListElementsOperator;
 import org.op4j.operators.intf.listofmap.Level1ListOfMapElementsOperator;
 import org.op4j.operators.intf.listofset.Level1ListOfSetElementsOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 
 
@@ -255,32 +256,32 @@ public class Level1ListOfArrayElementsOperatorImpl<T> extends AbstractOperatorIm
 
 
 	public <X> Level1ListOfArrayElementsOperator<X> convert(final IConverter<X[], ? super T[]> converter) {
-        return new Level1ListOfArrayElementsOperatorImpl<X>(getTarget().execute(converter));
+        return new Level1ListOfArrayElementsOperatorImpl<X>(getTarget().execute(converter, Normalization.ARRAY));
     }
 
 
 	public <X> Level1ListOfArrayElementsOperator<X> eval(final IEvaluator<X[], ? super T[]> eval) {
-        return new Level1ListOfArrayElementsOperatorImpl<X>(getTarget().execute(eval));
+        return new Level1ListOfArrayElementsOperatorImpl<X>(getTarget().execute(eval, Normalization.ARRAY));
     }
 
 
 	public <X> Level1ListOfArrayElementsOperator<X> exec(final IFunction<X[], ? super T[]> function) {
-        return new Level1ListOfArrayElementsOperatorImpl<X>(getTarget().execute(function));
+        return new Level1ListOfArrayElementsOperatorImpl<X>(getTarget().execute(function, Normalization.ARRAY));
     }
 
 
     public <X> Level1ListElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super T[]> converter) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(converter));
+        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
     public <X> Level1ListElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super T[]> eval) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(eval));
+        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
     public <X> Level1ListElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super T[]> function) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(function));
+        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
 
 

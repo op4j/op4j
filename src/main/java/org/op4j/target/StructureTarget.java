@@ -548,14 +548,14 @@ public class StructureTarget extends Target {
 
 	
     @Override
-    public Target execute(final IFunction<?,?> executable) {
+    public Target execute(final IFunction<?,?> executable, final Normalization normalization) {
         
     	Validate.notNull(executable, "An executable must be specified");
 
         final List<Target> newElements = new ArrayList<Target>();
         for (final Target element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.execute(executable));
+                newElements.add(element.execute(executable, normalization));
             } else {
                 newElements.add(element);
             }

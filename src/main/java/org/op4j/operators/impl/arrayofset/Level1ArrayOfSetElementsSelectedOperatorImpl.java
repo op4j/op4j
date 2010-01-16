@@ -13,6 +13,7 @@ import org.op4j.operators.intf.arrayofset.Level1ArrayOfSetElementsOperator;
 import org.op4j.operators.intf.arrayofset.Level1ArrayOfSetElementsSelectedOperator;
 import org.op4j.operators.intf.arrayofset.Level2ArrayOfSetElementsSelectedElementsOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 
 
 public class Level1ArrayOfSetElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level1ArrayOfSetElementsSelectedOperator<T> {
@@ -79,7 +80,7 @@ public class Level1ArrayOfSetElementsSelectedOperatorImpl<T> extends AbstractOpe
 
 
     public Level1ArrayOfSetElementsSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval) {
-        return new Level1ArrayOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(eval));
+        return new Level1ArrayOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.SET));
     }
 
 
@@ -103,6 +104,11 @@ public class Level1ArrayOfSetElementsSelectedOperatorImpl<T> extends AbstractOpe
     }
 
 
+    public Level1ArrayOfSetElementsSelectedOperator<T> exec(final IFunction<? extends Set<? extends T>,? super Set<T>> function) {
+        return new Level1ArrayOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalization.SET));
+    }
+
+
     @SuppressWarnings("unchecked")
     public Level1ArrayOfSetElementsSelectedOperator<T> sort() {
         return new Level1ArrayOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Sort()));
@@ -114,13 +120,8 @@ public class Level1ArrayOfSetElementsSelectedOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1ArrayOfSetElementsSelectedOperator<T> exec(final IFunction<? extends Set<? extends T>,? super Set<T>> function) {
-        return new Level1ArrayOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(function));
-    }
-
-
     public Level1ArrayOfSetElementsSelectedOperator<T> convert(final IConverter<? extends Set<? extends T>,? super Set<T>> converter) {
-        return new Level1ArrayOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(converter));
+        return new Level1ArrayOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalization.SET));
     }
 
 

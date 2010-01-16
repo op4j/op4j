@@ -13,6 +13,7 @@ import org.op4j.operators.intf.arrayofmap.Level1ArrayOfMapSelectedElementsOperat
 import org.op4j.operators.intf.arrayofmap.Level1ArrayOfMapSelectedElementsSelectedOperator;
 import org.op4j.operators.intf.arrayofmap.Level2ArrayOfMapSelectedElementsSelectedEntriesOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 
 
 public class Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> {
@@ -34,7 +35,7 @@ public class Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V> extends A
 
 
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V>,? super Map<K,V>> eval) {
-        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(eval));
+        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAP));
     }
 
 
@@ -78,8 +79,8 @@ public class Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V> extends A
     }
 
 
-    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> sort(final Comparator<? super Entry<K,V>> comparator) {
-        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,V>(comparator)));
+    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V>,? super Map<K,V>> function) {
+        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.MAP));
     }
 
 
@@ -89,13 +90,13 @@ public class Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V> extends A
     }
 
 
-    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V>,? super Map<K,V>> function) {
-        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(function));
+    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> sort(final Comparator<? super Entry<K,V>> comparator) {
+        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,V>(comparator)));
     }
 
 
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends V>,? super Map<K,V>> converter) {
-        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(converter));
+        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.MAP));
     }
 
 

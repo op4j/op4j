@@ -13,6 +13,7 @@ import org.op4j.operators.intf.mapoflist.Level1MapOfListEntriesSelectedOperator;
 import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesSelectedKeyOperator;
 import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesSelectedValueOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 
 
 public class Level1MapOfListEntriesSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level1MapOfListEntriesSelectedOperator<K,V> {
@@ -24,7 +25,7 @@ public class Level1MapOfListEntriesSelectedOperatorImpl<K,V> extends AbstractOpe
 
 
     public Level1MapOfListEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Entry<? extends K,? extends List<? extends V>>,? super Entry<K,List<V>>> eval) {
-        return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval));
+        return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAPENTRY_OF_LIST));
     }
 
 
@@ -44,12 +45,12 @@ public class Level1MapOfListEntriesSelectedOperatorImpl<K,V> extends AbstractOpe
 
 
     public Level1MapOfListEntriesSelectedOperator<K,V> exec(final IFunction<? extends Entry<? extends K,? extends List<? extends V>>,? super Entry<K,List<V>>> function) {
-        return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function));
+        return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.MAPENTRY_OF_LIST));
     }
 
 
     public Level1MapOfListEntriesSelectedOperator<K,V> convert(final IConverter<? extends Entry<? extends K,? extends List<? extends V>>,? super Entry<K,List<V>>> converter) {
-        return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter));
+        return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.MAPENTRY_OF_LIST));
     }
 
 

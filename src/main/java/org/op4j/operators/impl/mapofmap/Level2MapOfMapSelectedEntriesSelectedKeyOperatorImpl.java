@@ -10,6 +10,7 @@ import org.op4j.operators.intf.mapofmap.Level1MapOfMapSelectedEntriesSelectedOpe
 import org.op4j.operators.intf.mapofmap.Level2MapOfMapSelectedEntriesSelectedKeyOperator;
 import org.op4j.operators.intf.mapofmap.Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 
 
@@ -72,7 +73,7 @@ public class Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V> exten
 
 
     public Level2MapOfMapSelectedEntriesSelectedKeyOperator<K1,K2,V> eval(final IEvaluator<? extends K1,? super K1> eval) {
-        return new Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V>(getTarget().execute(eval));
+        return new Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
@@ -82,12 +83,12 @@ public class Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V> exten
 
 
     public Level2MapOfMapSelectedEntriesSelectedKeyOperator<K1,K2,V> exec(final IFunction<? extends K1,? super K1> function) {
-        return new Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V>(getTarget().execute(function));
+        return new Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V>(getTarget().execute(function, Normalization.NONE));
     }
 
 
     public Level2MapOfMapSelectedEntriesSelectedKeyOperator<K1,K2,V> convert(final IConverter<? extends K1,? super K1> converter) {
-        return new Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V>(getTarget().execute(converter));
+        return new Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V>(getTarget().execute(converter, Normalization.NONE));
     }
 
 

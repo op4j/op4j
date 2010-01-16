@@ -42,6 +42,7 @@ import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
 import org.op4j.operators.intf.setofmap.Level0SetOfMapSelectedOperator;
 import org.op4j.operators.intf.setofmap.Level1SetOfMapElementsOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 
 
 /**
@@ -240,32 +241,32 @@ public class Level0SetOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public <X, Y> Level0SetOfMapOperator<X, Y> convert(final IConverter<? extends Set<? extends Map<X, Y>>, ? super Set<Map<K, V>>> converter) {
-        return new Level0SetOfMapOperatorImpl<X, Y>(getTarget().execute(converter));
+        return new Level0SetOfMapOperatorImpl<X, Y>(getTarget().execute(converter, Normalization.SET_OF_MAP));
     }
 
 
     public <X, Y> Level0SetOfMapOperator<X, Y> eval(final IEvaluator<? extends Set<? extends Map<X, Y>>, ? super Set<Map<K, V>>> eval) {
-        return new Level0SetOfMapOperatorImpl<X, Y>(getTarget().execute(eval));
+        return new Level0SetOfMapOperatorImpl<X, Y>(getTarget().execute(eval, Normalization.SET_OF_MAP));
     }
 
 
     public <X, Y> Level0SetOfMapOperator<X, Y> exec(final IFunction<? extends Set<? extends Map<X, Y>>, ? super Set<Map<K, V>>> function) {
-        return new Level0SetOfMapOperatorImpl<X, Y>(getTarget().execute(function));
+        return new Level0SetOfMapOperatorImpl<X, Y>(getTarget().execute(function, Normalization.SET_OF_MAP));
     }
 
 
     public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super Set<Map<K, V>>> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
     public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super Set<Map<K, V>>> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<Map<K, V>>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
     
     

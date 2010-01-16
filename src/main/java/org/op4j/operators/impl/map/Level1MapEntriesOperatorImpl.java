@@ -35,6 +35,7 @@ import org.op4j.operators.intf.map.Level1MapEntriesSelectedOperator;
 import org.op4j.operators.intf.map.Level2MapEntriesKeyOperator;
 import org.op4j.operators.intf.map.Level2MapEntriesValueOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 
 
@@ -107,32 +108,32 @@ public class Level1MapEntriesOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public <X, Y> Level1MapEntriesOperator<X, Y> convert(final IConverter<? extends Entry<X, Y>, ? super Entry<K, V>> converter) {
-        return new Level1MapEntriesOperatorImpl<X, Y>(getTarget().execute(converter));
+        return new Level1MapEntriesOperatorImpl<X, Y>(getTarget().execute(converter, Normalization.MAPENTRY));
     }
 
 
     public <X, Y> Level1MapEntriesOperator<X, Y> eval(final IEvaluator<? extends Entry<X, Y>, ? super Entry<K, V>> eval) {
-        return new Level1MapEntriesOperatorImpl<X, Y>(getTarget().execute(eval));
+        return new Level1MapEntriesOperatorImpl<X, Y>(getTarget().execute(eval, Normalization.MAPENTRY));
     }
 
 
     public <X, Y> Level1MapEntriesOperator<X, Y> exec(final IFunction<? extends Entry<X, Y>, ? super Entry<K, V>> function) {
-        return new Level1MapEntriesOperatorImpl<X, Y>(getTarget().execute(function));
+        return new Level1MapEntriesOperatorImpl<X, Y>(getTarget().execute(function, Normalization.MAPENTRY));
     }
 
 
     public <X> Level1ListElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super Entry<K, V>> converter) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(converter));
+        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
     public <X> Level1ListElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super Entry<K, V>> eval) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(eval));
+        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
     public <X> Level1ListElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Entry<K, V>> function) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(function));
+        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
 
 }

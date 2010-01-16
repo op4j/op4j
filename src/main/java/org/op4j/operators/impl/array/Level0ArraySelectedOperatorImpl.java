@@ -2,6 +2,7 @@ package org.op4j.operators.impl.array;
 
 import java.util.Collection;
 import java.util.Comparator;
+
 import org.javaruntype.type.Type;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
@@ -12,6 +13,7 @@ import org.op4j.operators.intf.array.Level0ArrayOperator;
 import org.op4j.operators.intf.array.Level0ArraySelectedOperator;
 import org.op4j.operators.intf.array.Level1ArraySelectedElementsOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 
 
 public class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level0ArraySelectedOperator<T> {
@@ -83,7 +85,7 @@ public class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorImpl imp
 
 
     public Level0ArraySelectedOperator<T> eval(final IEvaluator<? extends T[],? super T[]> eval) {
-        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(eval));
+        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.ARRAY));
     }
 
 
@@ -107,6 +109,11 @@ public class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorImpl imp
     }
 
 
+    public Level0ArraySelectedOperator<T> exec(final IFunction<? extends T[],? super T[]> function) {
+        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(function, Normalization.ARRAY));
+    }
+
+
     @SuppressWarnings("unchecked")
     public Level0ArraySelectedOperator<T> sort() {
         return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Sort()));
@@ -118,13 +125,8 @@ public class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorImpl imp
     }
 
 
-    public Level0ArraySelectedOperator<T> exec(final IFunction<? extends T[],? super T[]> function) {
-        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(function));
-    }
-
-
     public Level0ArraySelectedOperator<T> convert(final IConverter<? extends T[],? super T[]> converter) {
-        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(converter));
+        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(converter, Normalization.ARRAY));
     }
 
 

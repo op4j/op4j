@@ -10,6 +10,7 @@ import org.op4j.operators.intf.mapofmap.Level3MapOfMapSelectedEntriesSelectedVal
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapSelectedEntriesSelectedValueSelectedEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapSelectedEntriesSelectedValueSelectedEntriesValueSelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 
 
@@ -72,7 +73,7 @@ public class Level4MapOfMapSelectedEntriesSelectedValueSelectedEntriesValueOpera
 
 
     public Level4MapOfMapSelectedEntriesSelectedValueSelectedEntriesValueOperator<K1,K2,V> eval(final IEvaluator<? extends V,? super V> eval) {
-        return new Level4MapOfMapSelectedEntriesSelectedValueSelectedEntriesValueOperatorImpl<K1,K2,V>(getTarget().execute(eval));
+        return new Level4MapOfMapSelectedEntriesSelectedValueSelectedEntriesValueOperatorImpl<K1,K2,V>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
@@ -82,12 +83,12 @@ public class Level4MapOfMapSelectedEntriesSelectedValueSelectedEntriesValueOpera
 
 
     public Level4MapOfMapSelectedEntriesSelectedValueSelectedEntriesValueOperator<K1,K2,V> exec(final IFunction<? extends V,? super V> function) {
-        return new Level4MapOfMapSelectedEntriesSelectedValueSelectedEntriesValueOperatorImpl<K1,K2,V>(getTarget().execute(function));
+        return new Level4MapOfMapSelectedEntriesSelectedValueSelectedEntriesValueOperatorImpl<K1,K2,V>(getTarget().execute(function, Normalization.NONE));
     }
 
 
     public Level4MapOfMapSelectedEntriesSelectedValueSelectedEntriesValueOperator<K1,K2,V> convert(final IConverter<? extends V,? super V> converter) {
-        return new Level4MapOfMapSelectedEntriesSelectedValueSelectedEntriesValueOperatorImpl<K1,K2,V>(getTarget().execute(converter));
+        return new Level4MapOfMapSelectedEntriesSelectedValueSelectedEntriesValueOperatorImpl<K1,K2,V>(getTarget().execute(converter, Normalization.NONE));
     }
 
 

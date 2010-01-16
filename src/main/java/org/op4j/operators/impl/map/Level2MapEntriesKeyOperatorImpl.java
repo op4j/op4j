@@ -32,6 +32,7 @@ import org.op4j.operators.intf.map.Level1MapEntriesOperator;
 import org.op4j.operators.intf.map.Level2MapEntriesKeyOperator;
 import org.op4j.operators.intf.map.Level2MapEntriesKeySelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalizationUtils;
 
@@ -124,17 +125,17 @@ public class Level2MapEntriesKeyOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public <X> Level2MapEntriesKeyOperator<X, V> convert(final IConverter<X, ? super K> converter) {
-        return new Level2MapEntriesKeyOperatorImpl<X, V>(getTarget().execute(converter));
+        return new Level2MapEntriesKeyOperatorImpl<X, V>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
     public <X> Level2MapEntriesKeyOperator<X, V> eval(final IEvaluator<X, ? super K> eval) {
-        return new Level2MapEntriesKeyOperatorImpl<X, V>(getTarget().execute(eval));
+        return new Level2MapEntriesKeyOperatorImpl<X, V>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
     public <X> Level2MapEntriesKeyOperator<X, V> exec(final IFunction<X, ? super K> function) {
-        return new Level2MapEntriesKeyOperatorImpl<X, V>(getTarget().execute(function));
+        return new Level2MapEntriesKeyOperatorImpl<X, V>(getTarget().execute(function, Normalization.NONE));
     }
 
 

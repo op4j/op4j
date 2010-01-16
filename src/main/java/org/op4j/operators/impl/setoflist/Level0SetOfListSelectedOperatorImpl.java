@@ -14,6 +14,7 @@ import org.op4j.operators.intf.setoflist.Level0SetOfListOperator;
 import org.op4j.operators.intf.setoflist.Level0SetOfListSelectedOperator;
 import org.op4j.operators.intf.setoflist.Level1SetOfListSelectedElementsOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 
 
 public class Level0SetOfListSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level0SetOfListSelectedOperator<T> {
@@ -80,7 +81,7 @@ public class Level0SetOfListSelectedOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0SetOfListSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> eval) {
-        return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(eval));
+        return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.SET_OF_LIST));
     }
 
 
@@ -104,6 +105,11 @@ public class Level0SetOfListSelectedOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
+    public Level0SetOfListSelectedOperator<T> exec(final IFunction<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> function) {
+        return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(function, Normalization.SET_OF_LIST));
+    }
+
+
     @SuppressWarnings("unchecked")
     public Level0SetOfListSelectedOperator<T> sort() {
         return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Sort()));
@@ -115,13 +121,8 @@ public class Level0SetOfListSelectedOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0SetOfListSelectedOperator<T> exec(final IFunction<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> function) {
-        return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(function));
-    }
-
-
     public Level0SetOfListSelectedOperator<T> convert(final IConverter<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> converter) {
-        return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(converter));
+        return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(converter, Normalization.SET_OF_LIST));
     }
 
 

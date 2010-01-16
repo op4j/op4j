@@ -33,6 +33,7 @@ import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapoflist.Level3MapOfListEntriesValueElementsOperator;
 import org.op4j.operators.intf.mapoflist.Level3MapOfListEntriesValueElementsSelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalizationUtils;
 
@@ -125,17 +126,17 @@ public class Level3MapOfListEntriesValueElementsOperatorImpl<K,V> extends Abstra
 
 
     public <X> Level3MapOfListEntriesValueElementsOperator<K, X> convert(final IConverter<X, ? super V> converter) {
-        return new Level3MapOfListEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(converter));
+        return new Level3MapOfListEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
     public <X> Level3MapOfListEntriesValueElementsOperator<K, X> eval(final IEvaluator<X, ? super V> eval) {
-        return new Level3MapOfListEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(eval));
+        return new Level3MapOfListEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
     public <X> Level3MapOfListEntriesValueElementsOperator<K, X> exec(final IFunction<X, ? super V> function) {
-        return new Level3MapOfListEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(function));
+        return new Level3MapOfListEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(function, Normalization.NONE));
     }
 
 }

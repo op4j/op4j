@@ -261,7 +261,7 @@ public abstract class NodeTarget extends Target{
     
 	@Override
     @SuppressWarnings("unchecked")
-    public Target execute(final IFunction<?,?> executable) {
+    public Target execute(final IFunction<?,?> executable, final Normalization normalization) {
     	Validate.notNull(executable, "An executable must be specified");
     	final IFunction<Object,Object> objectCommand = (IFunction<Object,Object>) executable;
     	try {

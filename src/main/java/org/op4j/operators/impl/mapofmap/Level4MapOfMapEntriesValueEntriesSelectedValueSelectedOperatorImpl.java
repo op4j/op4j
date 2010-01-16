@@ -9,6 +9,7 @@ import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueEntriesSelectedValueOperator;
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueEntriesSelectedValueSelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 
 
 public class Level4MapOfMapEntriesValueEntriesSelectedValueSelectedOperatorImpl<K1,K2,V> extends AbstractOperatorImpl implements Level4MapOfMapEntriesValueEntriesSelectedValueSelectedOperator<K1,K2,V> {
@@ -20,7 +21,7 @@ public class Level4MapOfMapEntriesValueEntriesSelectedValueSelectedOperatorImpl<
 
 
     public Level4MapOfMapEntriesValueEntriesSelectedValueSelectedOperator<K1,K2,V> eval(final IEvaluator<? extends V,? super V> eval) {
-        return new Level4MapOfMapEntriesValueEntriesSelectedValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(eval));
+        return new Level4MapOfMapEntriesValueEntriesSelectedValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
@@ -30,12 +31,12 @@ public class Level4MapOfMapEntriesValueEntriesSelectedValueSelectedOperatorImpl<
 
 
     public Level4MapOfMapEntriesValueEntriesSelectedValueSelectedOperator<K1,K2,V> exec(final IFunction<? extends V,? super V> function) {
-        return new Level4MapOfMapEntriesValueEntriesSelectedValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(function));
+        return new Level4MapOfMapEntriesValueEntriesSelectedValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(function, Normalization.NONE));
     }
 
 
     public Level4MapOfMapEntriesValueEntriesSelectedValueSelectedOperator<K1,K2,V> convert(final IConverter<? extends V,? super V> converter) {
-        return new Level4MapOfMapEntriesValueEntriesSelectedValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(converter));
+        return new Level4MapOfMapEntriesValueEntriesSelectedValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(converter, Normalization.NONE));
     }
 
 

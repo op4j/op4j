@@ -14,6 +14,7 @@ import org.op4j.operators.intf.arrayofarray.Level1ArrayOfArraySelectedElementsOp
 import org.op4j.operators.intf.arrayofarray.Level1ArrayOfArraySelectedElementsSelectedOperator;
 import org.op4j.operators.intf.arrayofarray.Level2ArrayOfArraySelectedElementsElementsOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 
 
@@ -140,7 +141,7 @@ public class Level1ArrayOfArraySelectedElementsOperatorImpl<T> extends AbstractO
 
 
     public Level1ArrayOfArraySelectedElementsOperator<T> eval(final IEvaluator<? extends T[],? super T[]> eval) {
-        return new Level1ArrayOfArraySelectedElementsOperatorImpl<T>(this.type, getTarget().execute(eval));
+        return new Level1ArrayOfArraySelectedElementsOperatorImpl<T>(this.type, getTarget().execute(eval, Normalization.ARRAY));
     }
 
 
@@ -164,6 +165,11 @@ public class Level1ArrayOfArraySelectedElementsOperatorImpl<T> extends AbstractO
     }
 
 
+    public Level1ArrayOfArraySelectedElementsOperator<T> exec(final IFunction<? extends T[],? super T[]> function) {
+        return new Level1ArrayOfArraySelectedElementsOperatorImpl<T>(this.type, getTarget().execute(function, Normalization.ARRAY));
+    }
+
+
     @SuppressWarnings("unchecked")
     public Level1ArrayOfArraySelectedElementsOperator<T> sort() {
         return new Level1ArrayOfArraySelectedElementsOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Sort()));
@@ -175,13 +181,8 @@ public class Level1ArrayOfArraySelectedElementsOperatorImpl<T> extends AbstractO
     }
 
 
-    public Level1ArrayOfArraySelectedElementsOperator<T> exec(final IFunction<? extends T[],? super T[]> function) {
-        return new Level1ArrayOfArraySelectedElementsOperatorImpl<T>(this.type, getTarget().execute(function));
-    }
-
-
     public Level1ArrayOfArraySelectedElementsOperator<T> convert(final IConverter<? extends T[],? super T[]> converter) {
-        return new Level1ArrayOfArraySelectedElementsOperatorImpl<T>(this.type, getTarget().execute(converter));
+        return new Level1ArrayOfArraySelectedElementsOperatorImpl<T>(this.type, getTarget().execute(converter, Normalization.ARRAY));
     }
 
 

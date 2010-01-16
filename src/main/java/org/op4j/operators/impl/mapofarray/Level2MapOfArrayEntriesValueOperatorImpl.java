@@ -48,6 +48,7 @@ import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.Level2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalizationUtils;
 
@@ -269,32 +270,32 @@ public class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends AbstractOpera
 
 
 	public <X> Level2MapOfArrayEntriesValueOperator<K, X> convert(final IConverter<X[], ? super V[]> converter) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(getTarget().execute(converter));
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(getTarget().execute(converter, Normalization.ARRAY));
     }
 
 
 	public <X> Level2MapOfArrayEntriesValueOperator<K, X> eval(final IEvaluator<X[], ? super V[]> eval) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(getTarget().execute(eval));
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(getTarget().execute(eval, Normalization.ARRAY));
     }
 
 
 	public <X> Level2MapOfArrayEntriesValueOperator<K, X> exec(final IFunction<X[], ? super V[]> function) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(getTarget().execute(function));
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalization.ARRAY));
     }
 
 
     public <X> Level2MapEntriesValueOperator<K, X> convert(final Type<X> resultType, final IConverter<? extends X, ? super V[]> converter) {
-        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(converter));
+        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
     public <X> Level2MapEntriesValueOperator<K, X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super V[]> eval) {
-        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(eval));
+        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
     public <X> Level2MapEntriesValueOperator<K, X> exec(final Type<X> resultType, final IFunction<? extends X, ? super V[]> function) {
-        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(function));
+        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalization.NONE));
     }
 
     

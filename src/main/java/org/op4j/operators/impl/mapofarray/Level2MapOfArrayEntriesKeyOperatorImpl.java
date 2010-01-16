@@ -32,6 +32,7 @@ import org.op4j.operators.intf.mapofarray.Level1MapOfArrayEntriesOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesKeyOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesKeySelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.Normalization;
 import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalizationUtils;
 
@@ -124,17 +125,17 @@ public class Level2MapOfArrayEntriesKeyOperatorImpl<K,V> extends AbstractOperato
 
 
     public <X> Level2MapOfArrayEntriesKeyOperator<X, V> convert(final IConverter<X, ? super K> converter) {
-        return new Level2MapOfArrayEntriesKeyOperatorImpl<X, V>(getTarget().execute(converter));
+        return new Level2MapOfArrayEntriesKeyOperatorImpl<X, V>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
     public <X> Level2MapOfArrayEntriesKeyOperator<X, V> eval(final IEvaluator<X, ? super K> eval) {
-        return new Level2MapOfArrayEntriesKeyOperatorImpl<X, V>(getTarget().execute(eval));
+        return new Level2MapOfArrayEntriesKeyOperatorImpl<X, V>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
     public <X> Level2MapOfArrayEntriesKeyOperator<X, V> exec(final IFunction<X, ? super K> function) {
-        return new Level2MapOfArrayEntriesKeyOperatorImpl<X, V>(getTarget().execute(function));
+        return new Level2MapOfArrayEntriesKeyOperatorImpl<X, V>(getTarget().execute(function, Normalization.NONE));
     }
 
 }
