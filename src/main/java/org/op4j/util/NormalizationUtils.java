@@ -214,6 +214,40 @@ public class NormalizationUtils {
         }
     }
     
+    public static void checkIsMapEntry(final Type<?> keyOf, final Type<?> valueOf, final Object targetObject) {
+        if (targetObject != null) {
+            final Class<?> newTargetClass = Map.Entry.class;
+            if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+                throw new TargetCastException(targetObject.getClass(), newTargetClass.getSimpleName());
+            }
+            final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
+            checkIs(keyOf, element.getKey());
+            checkIs(valueOf, element.getValue());
+        }
+    }
+    
+    public static void checkIsMapEntryOfKey(final Type<?> keyOf, final Object targetObject) {
+        if (targetObject != null) {
+            final Class<?> newTargetClass = Map.Entry.class;
+            if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+                throw new TargetCastException(targetObject.getClass(), newTargetClass.getSimpleName());
+            }
+            final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
+            checkIs(keyOf, element.getKey());
+        }
+    }
+    
+    public static void checkIsMapEntryOfValue(final Type<?> valueOf, final Object targetObject) {
+        if (targetObject != null) {
+            final Class<?> newTargetClass = Map.Entry.class;
+            if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
+                throw new TargetCastException(targetObject.getClass(), newTargetClass.getSimpleName());
+            }
+            final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
+            checkIs(valueOf, element.getValue());
+        }
+    }
+    
     public static void checkIsMapOfArray(final Type<?> keyOf, final Type<?> valueOf, final Object targetObject) {
         checkIsMap(keyOf, Types.arrayOf(valueOf), targetObject);
         if (targetObject != null) {
@@ -233,6 +267,23 @@ public class NormalizationUtils {
         }
     }
     
+    public static void checkIsMapEntryOfArray(final Type<?> keyOf, final Type<?> valueOf, final Object targetObject) {
+        checkIsMapEntry(keyOf, Types.arrayOf(valueOf), targetObject);
+        if (targetObject != null) {
+            final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
+            checkIs(keyOf, element.getKey());
+            checkIsArray(valueOf, element.getValue());
+        }
+    }
+    
+    public static void checkIsMapEntryOfArrayOfValue(final Type<?> valueOf, final Object targetObject) {
+        checkIsMapEntryOfValue(Types.arrayOf(valueOf), targetObject);
+        if (targetObject != null) {
+            final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
+            checkIsArray(valueOf, element.getValue());
+        }
+    }
+    
     public static void checkIsMapOfList(final Type<?> keyOf, final Type<?> valueOf, final Object targetObject) {
         checkIsMap(keyOf, Types.listOf(valueOf), targetObject);
         if (targetObject != null) {
@@ -249,6 +300,23 @@ public class NormalizationUtils {
             for (final Map.Entry<?,?> element : ((Map<?,?>)targetObject).entrySet()) {
                 checkIsList(valueOf, element.getValue());
             }
+        }
+    }
+    
+    public static void checkIsMapEntryOfList(final Type<?> keyOf, final Type<?> valueOf, final Object targetObject) {
+        checkIsMapEntry(keyOf, Types.listOf(valueOf), targetObject);
+        if (targetObject != null) {
+            final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
+            checkIs(keyOf, element.getKey());
+            checkIsList(valueOf, element.getValue());
+        }
+    }
+    
+    public static void checkIsMapEntryOfListOfValue(final Type<?> valueOf, final Object targetObject) {
+        checkIsMapEntryOfValue(Types.listOf(valueOf), targetObject);
+        if (targetObject != null) {
+            final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
+            checkIsList(valueOf, element.getValue());
         }
     }
     
@@ -289,6 +357,15 @@ public class NormalizationUtils {
         }
     }
     
+    public static void checkIsMapEntryOfMap(final Type<?> key1Of, final Type<?> key2Of, final Type<?> valueOf, final Object targetObject) {
+        checkIsMapEntry(key1Of, Types.mapOf(key2Of, valueOf), targetObject);
+        if (targetObject != null) {
+            final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
+            checkIs(key1Of, element.getKey());
+            checkIsMap(key2Of, valueOf, element.getValue());
+        }
+    }
+    
     public static void checkIsMapOfSet(final Type<?> keyOf, final Type<?> valueOf, final Object targetObject) {
         checkIsMap(keyOf, Types.setOf(valueOf), targetObject);
         if (targetObject != null) {
@@ -305,6 +382,23 @@ public class NormalizationUtils {
             for (final Map.Entry<?,?> element : ((Map<?,?>)targetObject).entrySet()) {
                 checkIsSet(valueOf, element.getValue());
             }
+        }
+    }
+    
+    public static void checkIsMapEntryOfSet(final Type<?> keyOf, final Type<?> valueOf, final Object targetObject) {
+        checkIsMapEntry(keyOf, Types.setOf(valueOf), targetObject);
+        if (targetObject != null) {
+            final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
+            checkIs(keyOf, element.getKey());
+            checkIsSet(valueOf, element.getValue());
+        }
+    }
+    
+    public static void checkIsMapEntryOfSetOfValue(final Type<?> valueOf, final Object targetObject) {
+        checkIsMapEntryOfValue(Types.setOf(valueOf), targetObject);
+        if (targetObject != null) {
+            final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
+            checkIsSet(valueOf, element.getValue());
         }
     }
     
@@ -511,6 +605,14 @@ public class NormalizationUtils {
     }
 
     
+    public static <K, V> Map.Entry<K, V> normalizeMapEntry(final Map.Entry<K,V> mapEntry) {
+        if (mapEntry == null) {
+            return null;
+        }
+        return new MapEntry<K,V>(mapEntry.getKey(), mapEntry.getValue());
+    }
+
+    
     public static <K, V> Map<K, V[]> normalizeMapOfArray(final Map<K, V[]> mapOfArray) {
         if (mapOfArray == null) {
             return null;
@@ -520,6 +622,14 @@ public class NormalizationUtils {
             result.put(element.getKey(), normalizeArray(element.getValue()));
         }
         return result;
+    }
+
+    
+    public static <K, V> Map.Entry<K, V[]> normalizeMapEntryOfArray(final Map.Entry<K, V[]> mapEntryOfArray) {
+        if (mapEntryOfArray == null) {
+            return null;
+        }
+        return new MapEntry<K, V[]>(mapEntryOfArray.getKey(), normalizeArray(mapEntryOfArray.getValue()));
     }
 
     
@@ -535,6 +645,14 @@ public class NormalizationUtils {
     }
 
     
+    public static <K, V> Map.Entry<K, List<V>> normalizeMapEntryOfList(final Map.Entry<K, ? extends List<V>> mapEntryOfList) {
+        if (mapEntryOfList == null) {
+            return null;
+        }
+        return new MapEntry<K, List<V>>(mapEntryOfList.getKey(), normalizeList(mapEntryOfList.getValue()));
+    }
+
+    
     public static <K1, K2, V> Map<K1, Map<K2, V>> normalizeMapOfMap(final Map<K1, ? extends Map<K2, V>> mapOfMap) {
         if (mapOfMap == null) {
             return null;
@@ -547,6 +665,14 @@ public class NormalizationUtils {
     }
 
     
+    public static <K1, K2, V> Map.Entry<K1, Map<K2, V>> normalizeMapEntryOfMap(final Map.Entry<K1, ? extends Map<K2, V>> mapEntryOfMap) {
+        if (mapEntryOfMap == null) {
+            return null;
+        }
+        return new MapEntry<K1, Map<K2, V>>(mapEntryOfMap.getKey(), normalizeMap(mapEntryOfMap.getValue()));
+    }
+
+    
     public static <K, V> Map<K, Set<V>> normalizeMapOfSet(final Map<K, ? extends Set<V>> mapOfSet) {
         if (mapOfSet == null) {
             return null;
@@ -556,6 +682,14 @@ public class NormalizationUtils {
             result.put(element.getKey(), normalizeSet(element.getValue()));
         }
         return result;
+    }
+
+    
+    public static <K, V> Map.Entry<K, Set<V>> normalizeMapEntryOfSet(final Map.Entry<K, ? extends Set<V>> mapEntryOfSet) {
+        if (mapEntryOfSet == null) {
+            return null;
+        }
+        return new MapEntry<K, Set<V>>(mapEntryOfSet.getKey(), normalizeSet(mapEntryOfSet.getValue()));
     }
     
     
