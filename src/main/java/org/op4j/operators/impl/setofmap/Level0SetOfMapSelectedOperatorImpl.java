@@ -15,6 +15,7 @@ import org.op4j.operators.intf.setofmap.Level0SetOfMapSelectedOperator;
 import org.op4j.operators.intf.setofmap.Level1SetOfMapSelectedElementsOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalization;
+import org.op4j.util.NormalizationUtils;
 
 
 public class Level0SetOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level0SetOfMapSelectedOperator<K,V> {
@@ -91,17 +92,17 @@ public class Level0SetOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorImp
 
 
     public Level0SetOfMapSelectedOperator<K,V> add(final Map<K,V>... newElements) {
-        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Add<Map<K,V>>(newElements)));
+        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Add<Map<K,V>>(NormalizationUtils.normalizeMaps(newElements))));
     }
 
 
     public Level0SetOfMapSelectedOperator<K,V> addAll(final Collection<Map<K,V>> collection) {
-        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.AddAll<Map<K,V>>(collection)));
+        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.AddAll<Map<K,V>>(NormalizationUtils.normalizeMaps(collection))));
     }
 
 
     public Level0SetOfMapSelectedOperator<K,V> insert(final int position, final Map<K,V>... newElements) {
-        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Insert<Map<K,V>>(position, newElements)));
+        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Insert<Map<K,V>>(position, NormalizationUtils.normalizeMaps(newElements))));
     }
 
 

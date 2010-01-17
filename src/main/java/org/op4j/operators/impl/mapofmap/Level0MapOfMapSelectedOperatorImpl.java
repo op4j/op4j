@@ -14,6 +14,7 @@ import org.op4j.operators.intf.mapofmap.Level0MapOfMapSelectedOperator;
 import org.op4j.operators.intf.mapofmap.Level1MapOfMapEntriesOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalization;
+import org.op4j.util.NormalizationUtils;
 
 
 public class Level0MapOfMapSelectedOperatorImpl<K1,K2,V> extends AbstractOperatorImpl implements Level0MapOfMapSelectedOperator<K1,K2,V> {
@@ -50,7 +51,7 @@ public class Level0MapOfMapSelectedOperatorImpl<K1,K2,V> extends AbstractOperato
 
 
     public Level0MapOfMapSelectedOperator<K1,K2,V> insertAll(final int position, final Map<K1,Map<K2,V>> map) {
-        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.InsertAll<K1,Map<K2,V>>(position, map)));
+        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.InsertAll<K1,Map<K2,V>>(position, NormalizationUtils.normalizeMapOfMap(map))));
     }
 
 
@@ -65,17 +66,17 @@ public class Level0MapOfMapSelectedOperatorImpl<K1,K2,V> extends AbstractOperato
 
 
     public Level0MapOfMapSelectedOperator<K1,K2,V> put(final K1 newKey, final Map<K2,V> newValue) {
-        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.Put<K1,Map<K2,V>>(newKey, newValue)));
+        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.Put<K1,Map<K2,V>>(newKey, NormalizationUtils.normalizeMap(newValue))));
     }
 
 
     public Level0MapOfMapSelectedOperator<K1,K2,V> putAll(final Map<K1,Map<K2,V>> map) {
-        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.PutAll<K1,Map<K2,V>>(map)));
+        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.PutAll<K1,Map<K2,V>>(NormalizationUtils.normalizeMapOfMap(map))));
     }
 
 
     public Level0MapOfMapSelectedOperator<K1,K2,V> insert(final int position, final K1 newKey, final Map<K2,V> newValue) {
-        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.Insert<K1,Map<K2,V>>(position, newKey, newValue)));
+        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.Insert<K1,Map<K2,V>>(position, newKey, NormalizationUtils.normalizeMap(newValue))));
     }
 
 

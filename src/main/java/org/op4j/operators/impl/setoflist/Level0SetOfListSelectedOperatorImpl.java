@@ -15,6 +15,7 @@ import org.op4j.operators.intf.setoflist.Level0SetOfListSelectedOperator;
 import org.op4j.operators.intf.setoflist.Level1SetOfListSelectedElementsOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalization;
+import org.op4j.util.NormalizationUtils;
 
 
 public class Level0SetOfListSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level0SetOfListSelectedOperator<T> {
@@ -91,17 +92,17 @@ public class Level0SetOfListSelectedOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0SetOfListSelectedOperator<T> add(final List<T>... newElements) {
-        return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<List<T>>(newElements)));
+        return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<List<T>>(NormalizationUtils.normalizeLists(newElements))));
     }
 
 
     public Level0SetOfListSelectedOperator<T> addAll(final Collection<List<T>> collection) {
-        return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<List<T>>(collection)));
+        return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<List<T>>(NormalizationUtils.normalizeLists(collection))));
     }
 
 
     public Level0SetOfListSelectedOperator<T> insert(final int position, final List<T>... newElements) {
-        return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<List<T>>(position, newElements)));
+        return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<List<T>>(position, NormalizationUtils.normalizeLists(newElements))));
     }
 
 

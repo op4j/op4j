@@ -2,11 +2,8 @@
  - Add "getSimpleName" to javaruntype types so that package can be omitted
  - Add "getUpperBounds/getUniqueUpperBound" + Lower to javaruntype "Types"
 
- - Check the usage of all Type parameters. Would they be fooled with something like Type<List<? extends Object>>?
- - When not in leaf nodes, things coming from a function (exec) should be copied to 
-   ensure Lists and Arrays and such are the right implementation (TargetUtils.copy*)
- - Add, insert and put methods should normalize incoming objects to ensure they are the right List,
-   Set or Map class.   
+ - Check the usage of all Type parameters. Would they be fooled with something like 
+   Type<List<? extends Object>>?
     
  - Create some sort of  "replace" method
  - Should the "add" of arrays have the same name as the "add" of generic operators? (they work on different dimensions!)

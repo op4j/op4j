@@ -46,6 +46,7 @@ import org.op4j.operators.intf.mapofset.Level1MapOfSetEntriesOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalization;
+import org.op4j.util.NormalizationUtils;
 
 
 /**
@@ -86,22 +87,22 @@ public class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public Level0MapOfSetOperator<K, V> put(final K newKey, final Set<V> newValue) {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.Put<K, Set<V>>(newKey, newValue)));
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.Put<K, Set<V>>(newKey, NormalizationUtils.normalizeSet(newValue))));
     }
 
 
     public Level0MapOfSetOperator<K, V> insert(final int position, final K newKey, final Set<V> newValue) {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.Insert<K, Set<V>>(position, newKey, newValue)));
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.Insert<K, Set<V>>(position, newKey, NormalizationUtils.normalizeSet(newValue))));
     }
 
 
     public Level0MapOfSetOperator<K, V> putAll(final Map<K, Set<V>> map) {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.PutAll<K, Set<V>>(map)));
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.PutAll<K, Set<V>>(NormalizationUtils.normalizeMapOfSet(map))));
     }
 
 
     public Level0MapOfSetOperator<K, V> insertAll(final int position, final Map<K, Set<V>> map) {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.InsertAll<K, Set<V>>(position, map)));
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.InsertAll<K, Set<V>>(position, NormalizationUtils.normalizeMapOfSet(map))));
     }
 
 

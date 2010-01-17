@@ -14,6 +14,7 @@ import org.op4j.operators.intf.setofarray.Level0SetOfArraySelectedOperator;
 import org.op4j.operators.intf.setofarray.Level1SetOfArraySelectedElementsOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalization;
+import org.op4j.util.NormalizationUtils;
 
 
 public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level0SetOfArraySelectedOperator<T> {
@@ -90,17 +91,17 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
 
 
     public Level0SetOfArraySelectedOperator<T> add(final T[]... newElements) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T[]>(newElements)));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T[]>(NormalizationUtils.normalizeArrays(newElements))));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> addAll(final Collection<T[]> collection) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<T[]>(collection)));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<T[]>(NormalizationUtils.normalizeArrays(collection))));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> insert(final int position, final T[]... newElements) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T[]>(position, newElements)));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T[]>(position, NormalizationUtils.normalizeArrays(newElements))));
     }
 
 

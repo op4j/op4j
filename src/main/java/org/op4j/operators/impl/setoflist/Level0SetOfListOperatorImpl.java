@@ -54,6 +54,7 @@ import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalization;
+import org.op4j.util.NormalizationUtils;
 
 
 /**
@@ -73,17 +74,17 @@ public class Level0SetOfListOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0SetOfListOperator<T> add(final List<T>... newElements) {
-        return new Level0SetOfListOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<List<T>>(newElements)));
+        return new Level0SetOfListOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<List<T>>(NormalizationUtils.normalizeLists(newElements))));
     }
 
 
     public Level0SetOfListOperator<T> insert(final int position, final List<T>... newElements) {
-        return new Level0SetOfListOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<List<T>>(position, newElements)));
+        return new Level0SetOfListOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<List<T>>(position, NormalizationUtils.normalizeLists(newElements))));
     }
 
 
     public Level0SetOfListOperator<T> addAll(final Collection<List<T>> collection) {
-        return new Level0SetOfListOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<List<T>>(collection)));
+        return new Level0SetOfListOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<List<T>>(NormalizationUtils.normalizeLists(collection))));
     }
 
 

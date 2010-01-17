@@ -14,6 +14,7 @@ import org.op4j.operators.intf.mapofarray.Level0MapOfArraySelectedOperator;
 import org.op4j.operators.intf.mapofarray.Level1MapOfArraySelectedEntriesOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalization;
+import org.op4j.util.NormalizationUtils;
 
 
 public class Level0MapOfArraySelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level0MapOfArraySelectedOperator<K,V> {
@@ -50,7 +51,7 @@ public class Level0MapOfArraySelectedOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Level0MapOfArraySelectedOperator<K,V> insertAll(final int position, final Map<K,V[]> map) {
-        return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.InsertAll<K,V[]>(position, map)));
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.InsertAll<K,V[]>(position, NormalizationUtils.normalizeMapOfArray(map))));
     }
 
 
@@ -65,17 +66,17 @@ public class Level0MapOfArraySelectedOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Level0MapOfArraySelectedOperator<K,V> put(final K newKey, final V[] newValue) {
-        return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.Put<K,V[]>(newKey, newValue)));
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.Put<K,V[]>(newKey, NormalizationUtils.normalizeArray(newValue))));
     }
 
 
     public Level0MapOfArraySelectedOperator<K,V> putAll(final Map<K,V[]> map) {
-        return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.PutAll<K,V[]>(map)));
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.PutAll<K,V[]>(NormalizationUtils.normalizeMapOfArray(map))));
     }
 
 
     public Level0MapOfArraySelectedOperator<K,V> insert(final int position, final K newKey, final V[] newValue) {
-        return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.Insert<K,V[]>(position, newKey, newValue)));
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.Insert<K,V[]>(position, newKey, NormalizationUtils.normalizeArray(newValue))));
     }
 
 

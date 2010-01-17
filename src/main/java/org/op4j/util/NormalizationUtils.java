@@ -21,6 +21,7 @@
 package org.op4j.util;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -750,7 +751,107 @@ public class NormalizationUtils {
     
 
     
+    @SuppressWarnings("unchecked")
+    public static <T> T[][] normalizeArrays(final T[][] input) {
+        if (input == null) {
+            return null;
+        }
+        final T[][] result = (T[][]) ArrayUtils.clone(input);
+        for (int i = 0; i < result.length; i++) {
+            result[i] = normalizeArray(result[i]);
+        }
+        return result;
+    }
+
     
+    @SuppressWarnings("unchecked")
+    public static <T> List<T>[] normalizeLists(final List<T>[] input) {
+        if (input == null) {
+            return null;
+        }
+        final List<T>[] result = (List<T>[]) ArrayUtils.clone(input);
+        for (int i = 0; i < result.length; i++) {
+            result[i] = normalizeList(result[i]);
+        }
+        return result;
+    }
+
+    
+    @SuppressWarnings("unchecked")
+    public static <K,V> Map<K,V>[] normalizeMaps(final Map<K,V>[] input) {
+        if (input == null) {
+            return null;
+        }
+        final Map<K,V>[] result = (Map<K,V>[]) ArrayUtils.clone(input);
+        for (int i = 0; i < result.length; i++) {
+            result[i] = normalizeMap(result[i]);
+        }
+        return result;
+    }
+
+    
+    @SuppressWarnings("unchecked")
+    public static <T> Set<T>[] normalizeSets(final Set<T>[] input) {
+        if (input == null) {
+            return null;
+        }
+        final Set<T>[] result = (Set<T>[]) ArrayUtils.clone(input);
+        for (int i = 0; i < result.length; i++) {
+            result[i] = normalizeSet(result[i]);
+        }
+        return result;
+    }
+    
+    
+    
+
+    
+    public static <T> Collection<T[]> normalizeArrays(final Collection<T[]> input) {
+        if (input == null) {
+            return null;
+        }
+        final Collection<T[]> result = new ArrayList<T[]>();
+        for (final T[] inputElement : input) {
+            result.add(normalizeArray(inputElement));
+        }
+        return result;
+    }
+
+    
+    public static <T> Collection<List<T>> normalizeLists(final Collection<List<T>> input) {
+        if (input == null) {
+            return null;
+        }
+        final Collection<List<T>> result = new ArrayList<List<T>>();
+        for (final List<T> inputElement : input) {
+            result.add(normalizeList(inputElement));
+        }
+        return result;
+    }
+
+    
+    public static <K,V> Collection<Map<K,V>> normalizeMaps(final Collection<Map<K,V>> input) {
+        if (input == null) {
+            return null;
+        }
+        final Collection<Map<K,V>> result = new ArrayList<Map<K,V>>();
+        for (final Map<K,V> inputElement : input) {
+            result.add(normalizeMap(inputElement));
+        }
+        return result;
+    }
+
+    
+    public static <T> Collection<Set<T>> normalizeSets(final Collection<Set<T>> input) {
+        if (input == null) {
+            return null;
+        }
+        final Collection<Set<T>> result = new ArrayList<Set<T>>();
+        for (final Set<T> inputElement : input) {
+            result.add(normalizeSet(inputElement));
+        }
+        return result;
+    }
     
     
     

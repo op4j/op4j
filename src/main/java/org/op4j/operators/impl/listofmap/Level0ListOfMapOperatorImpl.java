@@ -43,6 +43,7 @@ import org.op4j.operators.intf.mapofmap.Level0MapOfMapOperator;
 import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalization;
+import org.op4j.util.NormalizationUtils;
 
 
 /**
@@ -62,17 +63,17 @@ public class Level0ListOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public Level0ListOfMapOperator<K, V> add(final Map<K, V>... newElements) {
-        return new Level0ListOfMapOperatorImpl<K, V>(getTarget().execute(new ListFuncs.Add<Map<K, V>>(newElements)));
+        return new Level0ListOfMapOperatorImpl<K, V>(getTarget().execute(new ListFuncs.Add<Map<K, V>>(NormalizationUtils.normalizeMaps(newElements))));
     }
 
 
     public Level0ListOfMapOperator<K, V> insert(final int position, final Map<K, V>... newElements) {
-        return new Level0ListOfMapOperatorImpl<K, V>(getTarget().execute(new ListFuncs.Insert<Map<K, V>>(position, newElements)));
+        return new Level0ListOfMapOperatorImpl<K, V>(getTarget().execute(new ListFuncs.Insert<Map<K, V>>(position, NormalizationUtils.normalizeMaps(newElements))));
     }
 
 
     public Level0ListOfMapOperator<K, V> addAll(final Collection<Map<K, V>> collection) {
-        return new Level0ListOfMapOperatorImpl<K, V>(getTarget().execute(new ListFuncs.AddAll<Map<K, V>>(collection)));
+        return new Level0ListOfMapOperatorImpl<K, V>(getTarget().execute(new ListFuncs.AddAll<Map<K, V>>(NormalizationUtils.normalizeMaps(collection))));
     }
 
 
