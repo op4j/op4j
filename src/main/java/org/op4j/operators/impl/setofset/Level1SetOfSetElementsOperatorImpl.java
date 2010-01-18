@@ -92,50 +92,50 @@ public class Level1SetOfSetElementsOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level1SetOfSetElementsOperator<T> removeIndexes(final int... indices) {
-        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveIndexes<T>(indices)));
+    public Level1SetOfSetElementsOperator<T> removeAllIndexes(final int... indices) {
+        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexes<T>(indices)));
     }
 
 
-    public Level1SetOfSetElementsOperator<T> removeEquals(final T... values) {
-        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveEquals<T>(values)));
+    public Level1SetOfSetElementsOperator<T> removeAllEqual(final T... values) {
+        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllEqual<T>(values)));
     }
 
 
-    public Level1SetOfSetElementsOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveMatching<T>(eval)));
+    public Level1SetOfSetElementsOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllTrue<T>(eval)));
     }
 
-    public Level1SetOfSetElementsOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveNotMatching<T>(eval)));
+    public Level1SetOfSetElementsOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllFalse<T>(eval)));
     }
 
-    public Level1SetOfSetElementsOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveNullOrNotMatching<T>(eval)));
+    public Level1SetOfSetElementsOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNullOrFalse<T>(eval)));
     }
 
-    public Level1SetOfSetElementsOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveNotNullNotMatching<T>(eval)));
-    }
-
-
-    public Level1SetOfSetElementsOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveNullOrMatching<T>(eval)));
+    public Level1SetOfSetElementsOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNotNullAndFalse<T>(eval)));
     }
 
 
-    public Level1SetOfSetElementsOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveNotNullMatching<T>(eval)));
+    public Level1SetOfSetElementsOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNullOrTrue<T>(eval)));
     }
 
 
-    public Level1SetOfSetElementsOperator<T> removeIndexesNot(final int... indices) {
-        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveIndexesNot<T>(indices)));
+    public Level1SetOfSetElementsOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNotNullAndTrue<T>(eval)));
     }
 
 
-    public Level1SetOfSetElementsOperator<T> removeNulls() {
-        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveNulls<T>()));
+    public Level1SetOfSetElementsOperator<T> removeAllIndexesNot(final int... indices) {
+        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<T>(indices)));
+    }
+
+
+    public Level1SetOfSetElementsOperator<T> removeAllNull() {
+        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNull<T>()));
     }
 
     
@@ -208,12 +208,12 @@ public class Level1SetOfSetElementsOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> ifMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+    public Level1SetOfSetElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super Set<T>> eval) {
         return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> ifNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+    public Level1SetOfSetElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super Set<T>> eval) {
         return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().selectNotMatching(eval));
     }
 
@@ -223,12 +223,12 @@ public class Level1SetOfSetElementsOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> ifNotNullMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+    public Level1SetOfSetElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Set<T>> eval) {
         return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> ifNotNullNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+    public Level1SetOfSetElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Set<T>> eval) {
         return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -238,12 +238,12 @@ public class Level1SetOfSetElementsOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> ifNullOrMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+    public Level1SetOfSetElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super Set<T>> eval) {
         return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval) {
+    public Level1SetOfSetElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super Set<T>> eval) {
         return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
     }
 

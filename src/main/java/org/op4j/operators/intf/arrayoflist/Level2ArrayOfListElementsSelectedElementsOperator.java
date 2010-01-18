@@ -49,15 +49,15 @@ public interface Level2ArrayOfListElementsSelectedElementsOperator<T>
 
 
     public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> ifIndex(final int... indices);
-    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> ifMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> ifNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> ifNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
+    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
     public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> ifNull();
-    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> ifNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
+    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
     public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> ifIndexNot(final int... indices);
     public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> ifNotNull();
-    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> ifNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
+    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
 
     
     public Level2ArrayOfListElementsSelectedElementsOperator<T> convert(final IConverter<? extends T,? super T> converter);

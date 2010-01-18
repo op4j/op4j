@@ -46,15 +46,15 @@ public interface Level3MapOfArrayEntriesValueSelectedElementsOperator<K,V>
 
 
     public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifIndex(final int... indices);
-    public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifMatching(final IEvaluator<Boolean, ? super V> eval);
-    public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifNotMatching(final IEvaluator<Boolean, ? super V> eval);
-    public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super V> eval);
-    public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifNotNullNotMatching(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval);
     public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifNull();
-    public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifNullOrMatching(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
     public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifIndexNot(final int... indices);
     public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifNotNull();
-    public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifNotNullMatching(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval);
 
     
     public Level2MapOfArrayEntriesValueSelectedOperator<K,V> endFor();

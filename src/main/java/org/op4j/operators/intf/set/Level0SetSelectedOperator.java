@@ -61,16 +61,16 @@ public interface Level0SetSelectedOperator<T>
     public Level0SetSelectedOperator<T> add(final T... newElements);
     public Level0SetSelectedOperator<T> insert(final int position, final T... newElements);
     public Level0SetSelectedOperator<T> addAll(final Collection<T> collection);
-    public Level0SetSelectedOperator<T> removeIndexes(final int... indices);
-    public Level0SetSelectedOperator<T> removeEquals(final T... values);
-    public Level0SetSelectedOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0SetSelectedOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0SetSelectedOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0SetSelectedOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0SetSelectedOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0SetSelectedOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0SetSelectedOperator<T> removeIndexesNot(final int... indices);
-    public Level0SetSelectedOperator<T> removeNulls();
+    public Level0SetSelectedOperator<T> removeAllIndexes(final int... indices);
+    public Level0SetSelectedOperator<T> removeAllEqual(final T... values);
+    public Level0SetSelectedOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0SetSelectedOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0SetSelectedOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0SetSelectedOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0SetSelectedOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0SetSelectedOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0SetSelectedOperator<T> removeAllIndexesNot(final int... indices);
+    public Level0SetSelectedOperator<T> removeAllNull();
     
     
     public Level0SetSelectedOperator<T> convert(final IConverter<? extends Set<? extends T>,? super Set<T>> converter);

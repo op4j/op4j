@@ -32,8 +32,8 @@ import org.op4j.functions.evaluators.IEvaluator;
 public interface SelectableMapEntryOperator<K,V>  {
 
     public SelectedMapEntryOperator<K,V> ifIndex(final int... indices);
-    public SelectedMapEntryOperator<K,V> ifMatching(final IEvaluator<Boolean, ? super Map.Entry<K, V>> eval);
-    public SelectedMapEntryOperator<K,V> ifNotMatching(final IEvaluator<Boolean, ? super Map.Entry<K, V>> eval);
+    public SelectedMapEntryOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K, V>> eval);
+    public SelectedMapEntryOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K, V>> eval);
     public SelectedMapEntryOperator<K,V> ifIndexNot(final int... indices);
     public SelectedMapEntryOperator<K,V> ifKeyEquals(final K... keys);
     public SelectedMapEntryOperator<K,V> ifKeyNotEquals(final K... keys);

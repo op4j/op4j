@@ -178,50 +178,50 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0GenericMultiOperator<T> removeIndexes(final int... indices) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveIndexes<T>(indices)));
+    public Level0GenericMultiOperator<T> removeAllIndexes(final int... indices) {
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllIndexes<T>(indices)));
     }
 
 
-    public Level0GenericMultiOperator<T> removeEquals(final T... values) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveEquals<T>(values)));
+    public Level0GenericMultiOperator<T> removeAllEqual(final T... values) {
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllEqual<T>(values)));
     }
 
 
-    public Level0GenericMultiOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveMatching<T>(eval)));
+    public Level0GenericMultiOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllTrue<T>(eval)));
     }
 
-    public Level0GenericMultiOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveNotMatching<T>(eval)));
+    public Level0GenericMultiOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllFalse<T>(eval)));
     }
 
-    public Level0GenericMultiOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveNullOrNotMatching<T>(eval)));
+    public Level0GenericMultiOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNullOrFalse<T>(eval)));
     }
 
-    public Level0GenericMultiOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveNotNullNotMatching<T>(eval)));
-    }
-
-
-    public Level0GenericMultiOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<T>(eval)));
+    public Level0GenericMultiOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNotNullAndFalse<T>(eval)));
     }
 
 
-    public Level0GenericMultiOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<T>(eval)));
+    public Level0GenericMultiOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNullOrTrue<T>(eval)));
     }
 
 
-    public Level0GenericMultiOperator<T> removeIndexesNot(final int... indices) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveIndexesNot<T>(indices)));
+    public Level0GenericMultiOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNotNullAndTrue<T>(eval)));
     }
 
 
-    public Level0GenericMultiOperator<T> removeNulls() {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveNulls<T>()));
+    public Level0GenericMultiOperator<T> removeAllIndexesNot(final int... indices) {
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllIndexesNot<T>(indices)));
+    }
+
+
+    public Level0GenericMultiOperator<T> removeAllNull() {
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNull<T>()));
     }
 
     
@@ -237,12 +237,12 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0GenericMultiSelectedOperator<T> ifMatching(final IEvaluator<Boolean, ? super T> eval) {
+    public Level0GenericMultiSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectMatching(eval));
     }
 
 
-    public Level0GenericMultiSelectedOperator<T> ifNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+    public Level0GenericMultiSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectNotMatching(eval));
     }
 
@@ -252,12 +252,12 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0GenericMultiSelectedOperator<T> ifNotNullMatching(final IEvaluator<Boolean, ? super T> eval) {
+    public Level0GenericMultiSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level0GenericMultiSelectedOperator<T> ifNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+    public Level0GenericMultiSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -267,12 +267,12 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0GenericMultiSelectedOperator<T> ifNullOrMatching(final IEvaluator<Boolean, ? super T> eval) {
+    public Level0GenericMultiSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level0GenericMultiSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+    public Level0GenericMultiSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
     }
 

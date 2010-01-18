@@ -35,9 +35,9 @@ public interface ModifiableMapOperator<K,V> {
     public ModifiableMapOperator<K,V> insert(final int position, final K newKey, final V newValue);
     public ModifiableMapOperator<K,V> putAll(final Map<K,V> map);
     public ModifiableMapOperator<K,V> insertAll(final int position, final Map<K,V> map);
-    public ModifiableMapOperator<K,V> removeKeys(final K... keys);
-    public ModifiableMapOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
-    public ModifiableMapOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
-    public ModifiableMapOperator<K,V> removeKeysNot(final K... keys);
+    public ModifiableMapOperator<K,V> removeAllKeys(final K... keys);
+    public ModifiableMapOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
+    public ModifiableMapOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
+    public ModifiableMapOperator<K,V> removeAllKeysNot(final K... keys);
     
 }

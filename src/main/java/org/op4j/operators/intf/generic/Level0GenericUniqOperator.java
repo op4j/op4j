@@ -114,15 +114,15 @@ public interface Level0GenericUniqOperator<T>
 
 
     public Level0GenericUniqSelectedOperator<T> ifIndex(final int... indices);
-    public Level0GenericUniqSelectedOperator<T> ifMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0GenericUniqSelectedOperator<T> ifNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0GenericUniqSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0GenericUniqSelectedOperator<T> ifNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericUniqSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericUniqSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericUniqSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericUniqSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
     public Level0GenericUniqSelectedOperator<T> ifNull();
-    public Level0GenericUniqSelectedOperator<T> ifNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericUniqSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
     public Level0GenericUniqSelectedOperator<T> ifIndexNot(final int... indices);
     public Level0GenericUniqSelectedOperator<T> ifNotNull();
-    public Level0GenericUniqSelectedOperator<T> ifNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericUniqSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
 
     
     public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super T> converter);

@@ -95,15 +95,15 @@ public interface Level0ListOfListOperator<T>
 
 
     public Level0ListOfListSelectedOperator<T> ifIndex(final int... indices);
-    public Level0ListOfListSelectedOperator<T> ifMatching(final IEvaluator<Boolean, ? super List<List<T>>> eval);
-    public Level0ListOfListSelectedOperator<T> ifNotMatching(final IEvaluator<Boolean, ? super List<List<T>>> eval);
-    public Level0ListOfListSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super List<List<T>>> eval);
-    public Level0ListOfListSelectedOperator<T> ifNotNullNotMatching(final IEvaluator<Boolean, ? super List<List<T>>> eval);
+    public Level0ListOfListSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super List<List<T>>> eval);
+    public Level0ListOfListSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super List<List<T>>> eval);
+    public Level0ListOfListSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super List<List<T>>> eval);
+    public Level0ListOfListSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super List<List<T>>> eval);
     public Level0ListOfListSelectedOperator<T> ifNull();
-    public Level0ListOfListSelectedOperator<T> ifNullOrMatching(final IEvaluator<Boolean, ? super List<List<T>>> eval);
+    public Level0ListOfListSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super List<List<T>>> eval);
     public Level0ListOfListSelectedOperator<T> ifIndexNot(final int... indices);
     public Level0ListOfListSelectedOperator<T> ifNotNull();
-    public Level0ListOfListSelectedOperator<T> ifNotNullMatching(final IEvaluator<Boolean, ? super List<List<T>>> eval);
+    public Level0ListOfListSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super List<List<T>>> eval);
 
 
 
@@ -118,16 +118,16 @@ public interface Level0ListOfListOperator<T>
     public Level0ListOfListOperator<T> add(final List<T>... newElements);
     public Level0ListOfListOperator<T> insert(final int position, final List<T>... newElements);
     public Level0ListOfListOperator<T> addAll(final Collection<List<T>> collection);
-    public Level0ListOfListOperator<T> removeIndexes(final int... indices);
-    public Level0ListOfListOperator<T> removeEquals(final List<T>... values);
-    public Level0ListOfListOperator<T> removeMatching(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListOfListOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListOfListOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListOfListOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListOfListOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListOfListOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListOfListOperator<T> removeIndexesNot(final int... indices);
-    public Level0ListOfListOperator<T> removeNulls();
+    public Level0ListOfListOperator<T> removeAllIndexes(final int... indices);
+    public Level0ListOfListOperator<T> removeAllEqual(final List<T>... values);
+    public Level0ListOfListOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListOfListOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListOfListOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListOfListOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListOfListOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListOfListOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListOfListOperator<T> removeAllIndexesNot(final int... indices);
+    public Level0ListOfListOperator<T> removeAllNull();
     public Level0ArrayOfArrayOperator<T> toArrayOfArray(final Type<T> of);
     
     public Level0ArrayOfListOperator<T> toArrayOfList();

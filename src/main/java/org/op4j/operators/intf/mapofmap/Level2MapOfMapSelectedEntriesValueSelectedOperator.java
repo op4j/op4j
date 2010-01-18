@@ -60,10 +60,10 @@ public interface Level2MapOfMapSelectedEntriesValueSelectedOperator<K1,K2,V>
     public Level2MapOfMapSelectedEntriesValueSelectedOperator<K1,K2,V> insert(final int position, final K2 newKey, final V newValue);
     public Level2MapOfMapSelectedEntriesValueSelectedOperator<K1,K2,V> putAll(final Map<K2,V> map);
     public Level2MapOfMapSelectedEntriesValueSelectedOperator<K1,K2,V> insertAll(final int position, final Map<K2,V> map);
-    public Level2MapOfMapSelectedEntriesValueSelectedOperator<K1,K2,V> removeKeys(final K2... keys);
-    public Level2MapOfMapSelectedEntriesValueSelectedOperator<K1,K2,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K2,V>> eval);
-    public Level2MapOfMapSelectedEntriesValueSelectedOperator<K1,K2,V> removeNotMatching(final IEvaluator<Boolean, ? super Map.Entry<K2,V>> eval);
-    public Level2MapOfMapSelectedEntriesValueSelectedOperator<K1,K2,V> removeKeysNot(final K2... keys);
+    public Level2MapOfMapSelectedEntriesValueSelectedOperator<K1,K2,V> removeAllKeys(final K2... keys);
+    public Level2MapOfMapSelectedEntriesValueSelectedOperator<K1,K2,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K2,V>> eval);
+    public Level2MapOfMapSelectedEntriesValueSelectedOperator<K1,K2,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K2,V>> eval);
+    public Level2MapOfMapSelectedEntriesValueSelectedOperator<K1,K2,V> removeAllKeysNot(final K2... keys);
     
     
     

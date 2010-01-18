@@ -46,15 +46,15 @@ public interface Level2MapSelectedEntriesKeyOperator<K,V>
 
 
     public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifIndex(final int... indices);
-    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifMatching(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifNotMatching(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifNotNullNotMatching(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval);
     public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifNull();
-    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifNullOrMatching(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval);
     public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifIndexNot(final int... indices);
     public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifNotNull();
-    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifNotNullMatching(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapSelectedEntriesKeySelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval);
 
     
     public Level1MapSelectedEntriesOperator<K,V> endOn();

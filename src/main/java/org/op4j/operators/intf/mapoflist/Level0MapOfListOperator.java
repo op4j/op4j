@@ -70,15 +70,15 @@ public interface Level0MapOfListOperator<K,V>
 
 
     public Level0MapOfListSelectedOperator<K,V> ifIndex(final int... indices);
-    public Level0MapOfListSelectedOperator<K,V> ifMatching(final IEvaluator<Boolean, ? super Map<K,List<V>>> eval);
-    public Level0MapOfListSelectedOperator<K,V> ifNotMatching(final IEvaluator<Boolean, ? super Map<K,List<V>>> eval);
-    public Level0MapOfListSelectedOperator<K,V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K,List<V>>> eval);
-    public Level0MapOfListSelectedOperator<K,V> ifNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K,List<V>>> eval);
+    public Level0MapOfListSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map<K,List<V>>> eval);
+    public Level0MapOfListSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map<K,List<V>>> eval);
+    public Level0MapOfListSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super Map<K,List<V>>> eval);
+    public Level0MapOfListSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K,List<V>>> eval);
     public Level0MapOfListSelectedOperator<K,V> ifNull();
-    public Level0MapOfListSelectedOperator<K,V> ifNullOrMatching(final IEvaluator<Boolean, ? super Map<K,List<V>>> eval);
+    public Level0MapOfListSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super Map<K,List<V>>> eval);
     public Level0MapOfListSelectedOperator<K,V> ifIndexNot(final int... indices);
     public Level0MapOfListSelectedOperator<K,V> ifNotNull();
-    public Level0MapOfListSelectedOperator<K,V> ifNotNullMatching(final IEvaluator<Boolean, ? super Map<K,List<V>>> eval);
+    public Level0MapOfListSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K,List<V>>> eval);
 
 
     
@@ -91,10 +91,10 @@ public interface Level0MapOfListOperator<K,V>
     public Level0MapOfListOperator<K,V> insert(final int position, final K newKey, final List<V> newValue);
     public Level0MapOfListOperator<K,V> putAll(final Map<K,List<V>> map);
     public Level0MapOfListOperator<K,V> insertAll(final int position, final Map<K,List<V>> map);
-    public Level0MapOfListOperator<K,V> removeKeys(final K... keys);
-    public Level0MapOfListOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K,List<V>>> eval);
-    public Level0MapOfListOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super Map.Entry<K,List<V>>> eval);
-    public Level0MapOfListOperator<K,V> removeKeysNot(final K... keys);
+    public Level0MapOfListOperator<K,V> removeAllKeys(final K... keys);
+    public Level0MapOfListOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,List<V>>> eval);
+    public Level0MapOfListOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,List<V>>> eval);
+    public Level0MapOfListOperator<K,V> removeAllKeysNot(final K... keys);
     
     public Level0MapOfArrayOperator<K,V> toMapOfArray(final Type<V> of);
     

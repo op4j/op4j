@@ -85,12 +85,12 @@ public class Level3MapOfListEntriesValueElementsOperatorImpl<K,V> extends Abstra
     }
 
 
-    public Level3MapOfListEntriesValueElementsSelectedOperator<K, V> ifMatching(final IEvaluator<Boolean, ? super V> eval) {
+    public Level3MapOfListEntriesValueElementsSelectedOperator<K, V> ifTrue(final IEvaluator<Boolean, ? super V> eval) {
         return new Level3MapOfListEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level3MapOfListEntriesValueElementsSelectedOperator<K, V> ifNotMatching(final IEvaluator<Boolean, ? super V> eval) {
+    public Level3MapOfListEntriesValueElementsSelectedOperator<K, V> ifFalse(final IEvaluator<Boolean, ? super V> eval) {
         return new Level3MapOfListEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
 
@@ -100,12 +100,12 @@ public class Level3MapOfListEntriesValueElementsOperatorImpl<K,V> extends Abstra
     }
 
 
-    public Level3MapOfListEntriesValueElementsSelectedOperator<K, V> ifNotNullMatching(final IEvaluator<Boolean, ? super V> eval) {
+    public Level3MapOfListEntriesValueElementsSelectedOperator<K, V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval) {
         return new Level3MapOfListEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level3MapOfListEntriesValueElementsSelectedOperator<K, V> ifNotNullNotMatching(final IEvaluator<Boolean, ? super V> eval) {
+    public Level3MapOfListEntriesValueElementsSelectedOperator<K, V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval) {
         return new Level3MapOfListEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -115,12 +115,12 @@ public class Level3MapOfListEntriesValueElementsOperatorImpl<K,V> extends Abstra
     }
 
 
-    public Level3MapOfListEntriesValueElementsSelectedOperator<K, V> ifNullOrMatching(final IEvaluator<Boolean, ? super V> eval) {
+    public Level3MapOfListEntriesValueElementsSelectedOperator<K, V> ifNullOrTrue(final IEvaluator<Boolean, ? super V> eval) {
         return new Level3MapOfListEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level3MapOfListEntriesValueElementsSelectedOperator<K, V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super V> eval) {
+    public Level3MapOfListEntriesValueElementsSelectedOperator<K, V> ifNullOrFalse(final IEvaluator<Boolean, ? super V> eval) {
         return new Level3MapOfListEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
     }
 

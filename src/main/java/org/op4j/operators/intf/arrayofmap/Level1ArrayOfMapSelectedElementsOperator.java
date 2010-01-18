@@ -52,15 +52,15 @@ public interface Level1ArrayOfMapSelectedElementsOperator<K,V>
 
 
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifIndex(final int... indices);
-    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNull();
-    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNullOrMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifIndexNot(final int... indices);
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNotNull();
-    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNotNullMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
 
 
     
@@ -75,10 +75,10 @@ public interface Level1ArrayOfMapSelectedElementsOperator<K,V>
     public Level1ArrayOfMapSelectedElementsOperator<K,V> insert(final int position, final K newKey, final V newValue);
     public Level1ArrayOfMapSelectedElementsOperator<K,V> putAll(final Map<K,V> map);
     public Level1ArrayOfMapSelectedElementsOperator<K,V> insertAll(final int position, final Map<K,V> map);
-    public Level1ArrayOfMapSelectedElementsOperator<K,V> removeKeys(final K... keys);
-    public Level1ArrayOfMapSelectedElementsOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
-    public Level1ArrayOfMapSelectedElementsOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
-    public Level1ArrayOfMapSelectedElementsOperator<K,V> removeKeysNot(final K... keys);
+    public Level1ArrayOfMapSelectedElementsOperator<K,V> removeAllKeys(final K... keys);
+    public Level1ArrayOfMapSelectedElementsOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level1ArrayOfMapSelectedElementsOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level1ArrayOfMapSelectedElementsOperator<K,V> removeAllKeysNot(final K... keys);
     
     
     

@@ -47,15 +47,15 @@ public interface Level3MapOfSetSelectedEntriesSelectedValueElementsOperator<K,V>
 
 
     public Level3MapOfSetSelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifIndex(final int... indices);
-    public Level3MapOfSetSelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifMatching(final IEvaluator<Boolean, ? super V> eval);
-    public Level3MapOfSetSelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifNotMatching(final IEvaluator<Boolean, ? super V> eval);
-    public Level3MapOfSetSelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super V> eval);
-    public Level3MapOfSetSelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifNotNullNotMatching(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfSetSelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfSetSelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfSetSelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfSetSelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval);
     public Level3MapOfSetSelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifNull();
-    public Level3MapOfSetSelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifNullOrMatching(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfSetSelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
     public Level3MapOfSetSelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifIndexNot(final int... indices);
     public Level3MapOfSetSelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifNotNull();
-    public Level3MapOfSetSelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifNotNullMatching(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfSetSelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval);
 
     
     public Level2MapOfSetSelectedEntriesSelectedValueOperator<K,V> endFor();

@@ -97,12 +97,12 @@ public class Level3MapOfMapEntriesValueEntriesOperatorImpl<K1,K2,V> extends Abst
     }
 
 
-    public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1, K2, V> ifMatching(final IEvaluator<Boolean, ? super Entry<K2, V>> eval) {
+    public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1, K2, V> ifTrue(final IEvaluator<Boolean, ? super Entry<K2, V>> eval) {
         return new Level3MapOfMapEntriesValueEntriesSelectedOperatorImpl<K1, K2, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1, K2, V> ifNotMatching(final IEvaluator<Boolean, ? super Entry<K2, V>> eval) {
+    public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1, K2, V> ifFalse(final IEvaluator<Boolean, ? super Entry<K2, V>> eval) {
         return new Level3MapOfMapEntriesValueEntriesSelectedOperatorImpl<K1, K2, V>(getTarget().selectNotMatching(eval));
     }
 

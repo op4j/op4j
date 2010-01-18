@@ -97,12 +97,12 @@ public class Level1MapEntriesOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level1MapEntriesSelectedOperator<K, V> ifMatching(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
+    public Level1MapEntriesSelectedOperator<K, V> ifTrue(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
         return new Level1MapEntriesSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1MapEntriesSelectedOperator<K, V> ifNotMatching(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
+    public Level1MapEntriesSelectedOperator<K, V> ifFalse(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
         return new Level1MapEntriesSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
 

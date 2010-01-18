@@ -71,15 +71,15 @@ public interface Level0MapOperator<K,V>
 
 
     public Level0MapSelectedOperator<K,V> ifIndex(final int... indices);
-    public Level0MapSelectedOperator<K,V> ifMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0MapSelectedOperator<K,V> ifNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0MapSelectedOperator<K,V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0MapSelectedOperator<K,V> ifNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public Level0MapSelectedOperator<K,V> ifNull();
-    public Level0MapSelectedOperator<K,V> ifNullOrMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public Level0MapSelectedOperator<K,V> ifIndexNot(final int... indices);
     public Level0MapSelectedOperator<K,V> ifNotNull();
-    public Level0MapSelectedOperator<K,V> ifNotNullMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
 
 
     
@@ -92,10 +92,10 @@ public interface Level0MapOperator<K,V>
     public Level0MapOperator<K,V> insert(final int position, final K newKey, final V newValue);
     public Level0MapOperator<K,V> putAll(final Map<K,V> map);
     public Level0MapOperator<K,V> insertAll(final int position, final Map<K,V> map);
-    public Level0MapOperator<K,V> removeKeys(final K... keys);
-    public Level0MapOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
-    public Level0MapOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
-    public Level0MapOperator<K,V> removeKeysNot(final K... keys);
+    public Level0MapOperator<K,V> removeAllKeys(final K... keys);
+    public Level0MapOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level0MapOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level0MapOperator<K,V> removeAllKeysNot(final K... keys);
     
     
     public Level0SetOperator<K> extractKeys();

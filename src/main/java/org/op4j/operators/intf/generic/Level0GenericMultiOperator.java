@@ -64,15 +64,15 @@ public interface Level0GenericMultiOperator<T>
 
 
     public Level0GenericMultiSelectedOperator<T> ifIndex(final int... indices);
-    public Level0GenericMultiSelectedOperator<T> ifMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0GenericMultiSelectedOperator<T> ifNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0GenericMultiSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0GenericMultiSelectedOperator<T> ifNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericMultiSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericMultiSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericMultiSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericMultiSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
     public Level0GenericMultiSelectedOperator<T> ifNull();
-    public Level0GenericMultiSelectedOperator<T> ifNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericMultiSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
     public Level0GenericMultiSelectedOperator<T> ifIndexNot(final int... indices);
     public Level0GenericMultiSelectedOperator<T> ifNotNull();
-    public Level0GenericMultiSelectedOperator<T> ifNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericMultiSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
 
 
     
@@ -94,16 +94,16 @@ public interface Level0GenericMultiOperator<T>
     public Level0GenericMultiOperator<T> add(final T... newElements);
     public Level0GenericMultiOperator<T> insert(final int position, final T... newElements);
     public Level0GenericMultiOperator<T> addAll(final Collection<T> collection);
-    public Level0GenericMultiOperator<T> removeIndexes(final int... indices);
-    public Level0GenericMultiOperator<T> removeEquals(final T... values);
-    public Level0GenericMultiOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0GenericMultiOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0GenericMultiOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0GenericMultiOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0GenericMultiOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0GenericMultiOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0GenericMultiOperator<T> removeIndexesNot(final int... indices);
-    public Level0GenericMultiOperator<T> removeNulls();
+    public Level0GenericMultiOperator<T> removeAllIndexes(final int... indices);
+    public Level0GenericMultiOperator<T> removeAllEqual(final T... values);
+    public Level0GenericMultiOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericMultiOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericMultiOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericMultiOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericMultiOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericMultiOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericMultiOperator<T> removeAllIndexesNot(final int... indices);
+    public Level0GenericMultiOperator<T> removeAllNull();
     public Level0ListOperator<T> buildList();
     
     

@@ -61,10 +61,10 @@ public interface Level0MapSelectedOperator<K,V>
     public Level0MapSelectedOperator<K,V> insert(final int position, final K newKey, final V newValue);
     public Level0MapSelectedOperator<K,V> putAll(final Map<K,V> map);
     public Level0MapSelectedOperator<K,V> insertAll(final int position, final Map<K,V> map);
-    public Level0MapSelectedOperator<K,V> removeKeys(final K... keys);
-    public Level0MapSelectedOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
-    public Level0MapSelectedOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
-    public Level0MapSelectedOperator<K,V> removeKeysNot(final K... keys);
+    public Level0MapSelectedOperator<K,V> removeAllKeys(final K... keys);
+    public Level0MapSelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level0MapSelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level0MapSelectedOperator<K,V> removeAllKeysNot(final K... keys);
     
     
     

@@ -99,50 +99,50 @@ public class Level2MapOfListEntriesValueOperatorImpl<K,V> extends AbstractOperat
     }
 
 
-    public Level2MapOfListEntriesValueOperator<K, V> removeIndexes(final int... indices) {
-        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveIndexes<V>(indices)));
+    public Level2MapOfListEntriesValueOperator<K, V> removeAllIndexes(final int... indices) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveAllIndexes<V>(indices)));
     }
 
 
-    public Level2MapOfListEntriesValueOperator<K, V> removeEquals(final V... values) {
-        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveEquals<V>(values)));
+    public Level2MapOfListEntriesValueOperator<K, V> removeAllEqual(final V... values) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveAllEqual<V>(values)));
     }
 
 
-    public Level2MapOfListEntriesValueOperator<K, V> removeMatching(final IEvaluator<Boolean, ? super V> eval) {
-        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveMatching<V>(eval)));
+    public Level2MapOfListEntriesValueOperator<K, V> removeAllTrue(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveAllTrue<V>(eval)));
     }
 
-    public Level2MapOfListEntriesValueOperator<K, V> removeNotMatching(final IEvaluator<Boolean, ? super V> eval) {
-        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveNotMatching<V>(eval)));
+    public Level2MapOfListEntriesValueOperator<K, V> removeAllFalse(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveAllFalse<V>(eval)));
     }
 
-    public Level2MapOfListEntriesValueOperator<K, V> removeNullOrNotMatching(final IEvaluator<Boolean, ? super V> eval) {
-        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveNullOrNotMatching<V>(eval)));
+    public Level2MapOfListEntriesValueOperator<K, V> removeAllNullOrFalse(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveAllNullOrFalse<V>(eval)));
     }
 
-    public Level2MapOfListEntriesValueOperator<K, V> removeNotNullNotMatching(final IEvaluator<Boolean, ? super V> eval) {
-        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveNotNullNotMatching<V>(eval)));
-    }
-
-
-    public Level2MapOfListEntriesValueOperator<K, V> removeNullOrMatching(final IEvaluator<Boolean, ? super V> eval) {
-        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<V>(eval)));
+    public Level2MapOfListEntriesValueOperator<K, V> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveAllNotNullAndFalse<V>(eval)));
     }
 
 
-    public Level2MapOfListEntriesValueOperator<K, V> removeNotNullMatching(final IEvaluator<Boolean, ? super V> eval) {
-        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<V>(eval)));
+    public Level2MapOfListEntriesValueOperator<K, V> removeAllNullOrTrue(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveAllNullOrTrue<V>(eval)));
     }
 
 
-    public Level2MapOfListEntriesValueOperator<K, V> removeIndexesNot(final int... indices) {
-        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveIndexesNot<V>(indices)));
+    public Level2MapOfListEntriesValueOperator<K, V> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveAllNotNullAndTrue<V>(eval)));
     }
 
 
-    public Level2MapOfListEntriesValueOperator<K, V> removeNulls() {
-        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveNulls<V>()));
+    public Level2MapOfListEntriesValueOperator<K, V> removeAllIndexesNot(final int... indices) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveAllIndexesNot<V>(indices)));
+    }
+
+
+    public Level2MapOfListEntriesValueOperator<K, V> removeAllNull() {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveAllNull<V>()));
     }
 
     
@@ -220,12 +220,12 @@ public class Level2MapOfListEntriesValueOperatorImpl<K,V> extends AbstractOperat
     }
 
 
-    public Level2MapOfListEntriesValueSelectedOperator<K, V> ifMatching(final IEvaluator<Boolean, ? super List<V>> eval) {
+    public Level2MapOfListEntriesValueSelectedOperator<K, V> ifTrue(final IEvaluator<Boolean, ? super List<V>> eval) {
         return new Level2MapOfListEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level2MapOfListEntriesValueSelectedOperator<K, V> ifNotMatching(final IEvaluator<Boolean, ? super List<V>> eval) {
+    public Level2MapOfListEntriesValueSelectedOperator<K, V> ifFalse(final IEvaluator<Boolean, ? super List<V>> eval) {
         return new Level2MapOfListEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
 
@@ -235,12 +235,12 @@ public class Level2MapOfListEntriesValueOperatorImpl<K,V> extends AbstractOperat
     }
 
 
-    public Level2MapOfListEntriesValueSelectedOperator<K, V> ifNotNullMatching(final IEvaluator<Boolean, ? super List<V>> eval) {
+    public Level2MapOfListEntriesValueSelectedOperator<K, V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super List<V>> eval) {
         return new Level2MapOfListEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level2MapOfListEntriesValueSelectedOperator<K, V> ifNotNullNotMatching(final IEvaluator<Boolean, ? super List<V>> eval) {
+    public Level2MapOfListEntriesValueSelectedOperator<K, V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super List<V>> eval) {
         return new Level2MapOfListEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -250,12 +250,12 @@ public class Level2MapOfListEntriesValueOperatorImpl<K,V> extends AbstractOperat
     }
 
 
-    public Level2MapOfListEntriesValueSelectedOperator<K, V> ifNullOrMatching(final IEvaluator<Boolean, ? super List<V>> eval) {
+    public Level2MapOfListEntriesValueSelectedOperator<K, V> ifNullOrTrue(final IEvaluator<Boolean, ? super List<V>> eval) {
         return new Level2MapOfListEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level2MapOfListEntriesValueSelectedOperator<K, V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super List<V>> eval) {
+    public Level2MapOfListEntriesValueSelectedOperator<K, V> ifNullOrFalse(final IEvaluator<Boolean, ? super List<V>> eval) {
         return new Level2MapOfListEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
     }
 

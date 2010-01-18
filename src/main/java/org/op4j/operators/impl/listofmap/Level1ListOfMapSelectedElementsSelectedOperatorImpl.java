@@ -25,13 +25,13 @@ public class Level1ListOfMapSelectedElementsSelectedOperatorImpl<K,V> extends Ab
     }
 
 
-    public Level1ListOfMapSelectedElementsSelectedOperator<K,V> removeMatching(final IEvaluator<Boolean,? super Entry<K,V>> eval) {
-        return new Level1ListOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveMatching<K,V>(eval)));
+    public Level1ListOfMapSelectedElementsSelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean,? super Entry<K,V>> eval) {
+        return new Level1ListOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K,V>(eval)));
     }
 
 
-    public Level1ListOfMapSelectedElementsSelectedOperator<K,V> removeNotMatching(final IEvaluator<Boolean,? super Entry<K,V>> eval) {
-        return new Level1ListOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveNotMatching<K,V>(eval)));
+    public Level1ListOfMapSelectedElementsSelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean,? super Entry<K,V>> eval) {
+        return new Level1ListOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K,V>(eval)));
     }
 
 
@@ -55,13 +55,13 @@ public class Level1ListOfMapSelectedElementsSelectedOperatorImpl<K,V> extends Ab
     }
 
 
-    public Level1ListOfMapSelectedElementsSelectedOperator<K,V> removeKeys(final K... keys) {
-        return new Level1ListOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveKeys<K,V>(keys)));
+    public Level1ListOfMapSelectedElementsSelectedOperator<K,V> removeAllKeys(final K... keys) {
+        return new Level1ListOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllKeys<K,V>(keys)));
     }
 
 
-    public Level1ListOfMapSelectedElementsSelectedOperator<K,V> removeKeysNot(final K... keys) {
-        return new Level1ListOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveKeysNot<K,V>(keys)));
+    public Level1ListOfMapSelectedElementsSelectedOperator<K,V> removeAllKeysNot(final K... keys) {
+        return new Level1ListOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllKeysNot<K,V>(keys)));
     }
 
 

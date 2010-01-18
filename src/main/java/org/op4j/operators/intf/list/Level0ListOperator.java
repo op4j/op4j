@@ -80,15 +80,15 @@ public interface Level0ListOperator<T>
 
 
     public Level0ListSelectedOperator<T> ifIndex(final int... indices);
-    public Level0ListSelectedOperator<T> ifMatching(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListSelectedOperator<T> ifNotMatching(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListSelectedOperator<T> ifNotNullNotMatching(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super List<T>> eval);
     public Level0ListSelectedOperator<T> ifNull();
-    public Level0ListSelectedOperator<T> ifNullOrMatching(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super List<T>> eval);
     public Level0ListSelectedOperator<T> ifIndexNot(final int... indices);
     public Level0ListSelectedOperator<T> ifNotNull();
-    public Level0ListSelectedOperator<T> ifNotNullMatching(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super List<T>> eval);
 
 
 
@@ -102,16 +102,16 @@ public interface Level0ListOperator<T>
     public Level0ListOperator<T> add(final T... newElements);
     public Level0ListOperator<T> insert(final int position, final T... newElements);
     public Level0ListOperator<T> addAll(final Collection<T> collection);
-    public Level0ListOperator<T> removeIndexes(final int... indices);
-    public Level0ListOperator<T> removeEquals(final T... values);
-    public Level0ListOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0ListOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0ListOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0ListOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0ListOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0ListOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0ListOperator<T> removeIndexesNot(final int... indices);
-    public Level0ListOperator<T> removeNulls();
+    public Level0ListOperator<T> removeAllIndexes(final int... indices);
+    public Level0ListOperator<T> removeAllEqual(final T... values);
+    public Level0ListOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0ListOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0ListOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0ListOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0ListOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0ListOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0ListOperator<T> removeAllIndexesNot(final int... indices);
+    public Level0ListOperator<T> removeAllNull();
     public Level0ArrayOperator<T> toArray(final Type<T> of);
     
     

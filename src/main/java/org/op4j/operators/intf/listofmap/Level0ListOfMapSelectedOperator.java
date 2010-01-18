@@ -66,16 +66,16 @@ public interface Level0ListOfMapSelectedOperator<K,V>
     public Level0ListOfMapSelectedOperator<K,V> add(final Map<K,V>... newElements);
     public Level0ListOfMapSelectedOperator<K,V> insert(final int position, final Map<K,V>... newElements);
     public Level0ListOfMapSelectedOperator<K,V> addAll(final Collection<Map<K,V>> collection);
-    public Level0ListOfMapSelectedOperator<K,V> removeIndexes(final int... indices);
-    public Level0ListOfMapSelectedOperator<K,V> removeEquals(final Map<K,V>... values);
-    public Level0ListOfMapSelectedOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0ListOfMapSelectedOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0ListOfMapSelectedOperator<K,V> removeNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0ListOfMapSelectedOperator<K,V> removeNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0ListOfMapSelectedOperator<K,V> removeNotNullMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0ListOfMapSelectedOperator<K,V> removeNullOrMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0ListOfMapSelectedOperator<K,V> removeIndexesNot(final int... indices);
-    public Level0ListOfMapSelectedOperator<K,V> removeNulls();
+    public Level0ListOfMapSelectedOperator<K,V> removeAllIndexes(final int... indices);
+    public Level0ListOfMapSelectedOperator<K,V> removeAllEqual(final Map<K,V>... values);
+    public Level0ListOfMapSelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0ListOfMapSelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0ListOfMapSelectedOperator<K,V> removeAllNullOrFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0ListOfMapSelectedOperator<K,V> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0ListOfMapSelectedOperator<K,V> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0ListOfMapSelectedOperator<K,V> removeAllNullOrTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0ListOfMapSelectedOperator<K,V> removeAllIndexesNot(final int... indices);
+    public Level0ListOfMapSelectedOperator<K,V> removeAllNull();
 
     
     

@@ -456,12 +456,12 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0GenericUniqSelectedOperator<T> ifMatching(final IEvaluator<Boolean, ? super T> eval) {
+    public Level0GenericUniqSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().selectMatching(eval));
     }
 
 
-    public Level0GenericUniqSelectedOperator<T> ifNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+    public Level0GenericUniqSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().selectNotMatching(eval));
     }
 
@@ -471,12 +471,12 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0GenericUniqSelectedOperator<T> ifNotNullMatching(final IEvaluator<Boolean, ? super T> eval) {
+    public Level0GenericUniqSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level0GenericUniqSelectedOperator<T> ifNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+    public Level0GenericUniqSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -486,12 +486,12 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0GenericUniqSelectedOperator<T> ifNullOrMatching(final IEvaluator<Boolean, ? super T> eval) {
+    public Level0GenericUniqSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level0GenericUniqSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval) {
+    public Level0GenericUniqSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval) {
         return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
     }
 

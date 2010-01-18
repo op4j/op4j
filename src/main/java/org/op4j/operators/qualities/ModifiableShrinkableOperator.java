@@ -19,6 +19,8 @@
  */
 package org.op4j.operators.qualities;
 
+import org.op4j.functions.evaluators.IEvaluator;
+
 /**
  * 
  * @since 1.0
@@ -28,9 +30,15 @@ package org.op4j.operators.qualities;
  */
 public interface ModifiableShrinkableOperator<T> {
 
-    public ModifiableGrowableOperator<T> removeIndexes(final int... indices);
-    public ModifiableGrowableOperator<T> removeEquals(final T... values);
-    public ModifiableGrowableOperator<T> removeIndexesNot(final int... indices);
-    public ModifiableGrowableOperator<T> removeNulls();
+    public ModifiableGrowableOperator<T> removeAllIndexes(final int... indices);
+    public ModifiableGrowableOperator<T> removeAllEqual(final T... values);
+    public ModifiableGrowableOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableGrowableOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableGrowableOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableGrowableOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableGrowableOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableGrowableOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableGrowableOperator<T> removeAllIndexesNot(final int... indices);
+    public ModifiableGrowableOperator<T> removeAllNull();
     
 }

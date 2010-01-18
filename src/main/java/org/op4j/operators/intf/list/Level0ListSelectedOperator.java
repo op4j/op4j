@@ -65,16 +65,16 @@ public interface Level0ListSelectedOperator<T>
     public Level0ListSelectedOperator<T> add(final T... newElements);
     public Level0ListSelectedOperator<T> insert(final int position, final T... newElements);
     public Level0ListSelectedOperator<T> addAll(final Collection<T> collection);
-    public Level0ListSelectedOperator<T> removeIndexes(final int... indices);
-    public Level0ListSelectedOperator<T> removeEquals(final T... values);
-    public Level0ListSelectedOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0ListSelectedOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0ListSelectedOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0ListSelectedOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0ListSelectedOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0ListSelectedOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level0ListSelectedOperator<T> removeIndexesNot(final int... indices);
-    public Level0ListSelectedOperator<T> removeNulls();
+    public Level0ListSelectedOperator<T> removeAllIndexes(final int... indices);
+    public Level0ListSelectedOperator<T> removeAllEqual(final T... values);
+    public Level0ListSelectedOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0ListSelectedOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0ListSelectedOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0ListSelectedOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0ListSelectedOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0ListSelectedOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0ListSelectedOperator<T> removeAllIndexesNot(final int... indices);
+    public Level0ListSelectedOperator<T> removeAllNull();
     
     
     public Level0ListSelectedOperator<T> convert(final IConverter<? extends List<? extends T>,? super List<T>> converter);

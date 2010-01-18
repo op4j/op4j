@@ -30,12 +30,12 @@ public class Level1MapOfArraySelectedEntriesOperatorImpl<K,V> extends AbstractOp
     }
 
 
-    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> ifMatching(final IEvaluator<Boolean, ? super Entry<K,V[]>> eval) {
+    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Entry<K,V[]>> eval) {
         return new Level1MapOfArraySelectedEntriesSelectedOperatorImpl<K,V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> ifNotMatching(final IEvaluator<Boolean, ? super Entry<K,V[]>> eval) {
+    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Entry<K,V[]>> eval) {
         return new Level1MapOfArraySelectedEntriesSelectedOperatorImpl<K,V>(getTarget().selectNotMatching(eval));
     }
 

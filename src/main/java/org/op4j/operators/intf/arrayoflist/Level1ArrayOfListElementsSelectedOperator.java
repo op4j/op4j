@@ -65,16 +65,16 @@ public interface Level1ArrayOfListElementsSelectedOperator<T>
     public Level1ArrayOfListElementsSelectedOperator<T> add(final T... newElements);
     public Level1ArrayOfListElementsSelectedOperator<T> insert(final int position, final T... newElements);
     public Level1ArrayOfListElementsSelectedOperator<T> addAll(final Collection<T> collection);
-    public Level1ArrayOfListElementsSelectedOperator<T> removeIndexes(final int... indices);
-    public Level1ArrayOfListElementsSelectedOperator<T> removeEquals(final T... values);
-    public Level1ArrayOfListElementsSelectedOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArrayOfListElementsSelectedOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArrayOfListElementsSelectedOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArrayOfListElementsSelectedOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArrayOfListElementsSelectedOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArrayOfListElementsSelectedOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArrayOfListElementsSelectedOperator<T> removeIndexesNot(final int... indices);
-    public Level1ArrayOfListElementsSelectedOperator<T> removeNulls();
+    public Level1ArrayOfListElementsSelectedOperator<T> removeAllIndexes(final int... indices);
+    public Level1ArrayOfListElementsSelectedOperator<T> removeAllEqual(final T... values);
+    public Level1ArrayOfListElementsSelectedOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArrayOfListElementsSelectedOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArrayOfListElementsSelectedOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArrayOfListElementsSelectedOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArrayOfListElementsSelectedOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArrayOfListElementsSelectedOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArrayOfListElementsSelectedOperator<T> removeAllIndexesNot(final int... indices);
+    public Level1ArrayOfListElementsSelectedOperator<T> removeAllNull();
     
     
     public Level1ArrayOfListElementsSelectedOperator<T> convert(final IConverter<? extends List<? extends T>,? super List<T>> converter);

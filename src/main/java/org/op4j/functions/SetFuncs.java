@@ -131,10 +131,10 @@ public class SetFuncs {
 
     
     
-    public static final class RemoveIndexes<T> extends CollectionFuncs.RemoveIndexes<T, Set<T>> {
+    public static final class RemoveAllIndexes<T> extends CollectionFuncs.RemoveAllIndexes<T, Set<T>> {
 
         
-        public RemoveIndexes(final int... indices) {
+        public RemoveAllIndexes(final int... indices) {
             super(indices);
         }
 
@@ -148,9 +148,9 @@ public class SetFuncs {
 
     
     
-    public static final class RemoveEquals<T> extends CollectionFuncs.RemoveEquals<T, Set<T>> {
+    public static final class RemoveAllEqual<T> extends CollectionFuncs.RemoveAllEqual<T, Set<T>> {
 
-        public RemoveEquals(final T... values) {
+        public RemoveAllEqual(final T... values) {
             super(values);
         }
 
@@ -164,9 +164,9 @@ public class SetFuncs {
 
     
     
-    public static final class RemoveMatching<T> extends CollectionFuncs.RemoveMatching<T, Set<T>> {
+    public static final class RemoveAllTrue<T> extends CollectionFuncs.RemoveAllTrue<T, Set<T>> {
 
-        public RemoveMatching(final IEvaluator<Boolean,? super T> eval) {
+        public RemoveAllTrue(final IEvaluator<Boolean,? super T> eval) {
             super(eval);
         }
 
@@ -180,9 +180,9 @@ public class SetFuncs {
 
     
     
-    public static final class RemoveNotMatching<T> extends CollectionFuncs.RemoveMatching<T, Set<T>> {
+    public static final class RemoveAllFalse<T> extends CollectionFuncs.RemoveAllTrue<T, Set<T>> {
 
-        public RemoveNotMatching(final IEvaluator<Boolean,? super T> eval) {
+        public RemoveAllFalse(final IEvaluator<Boolean,? super T> eval) {
             super(eval);
         }
 
@@ -196,9 +196,9 @@ public class SetFuncs {
 
     
     
-    public static final class RemoveIndexesNot<T> extends CollectionFuncs.RemoveIndexesNot<T, Set<T>> {
+    public static final class RemoveAllIndexesNot<T> extends CollectionFuncs.RemoveAllIndexesNot<T, Set<T>> {
 
-        public RemoveIndexesNot(final int... indices) {
+        public RemoveAllIndexesNot(final int... indices) {
             super(indices);
         }
 
@@ -212,9 +212,9 @@ public class SetFuncs {
 
     
     
-    public static final class RemoveNulls<T> extends CollectionFuncs.RemoveNulls<T, Set<T>> {
+    public static final class RemoveAllNull<T> extends CollectionFuncs.RemoveAllNull<T, Set<T>> {
 
-        public RemoveNulls() {
+        public RemoveAllNull() {
             super();
         }
 
@@ -228,9 +228,9 @@ public class SetFuncs {
 
     
     
-    public static final class RemoveNotNullMatching<T> extends CollectionFuncs.RemoveNotNullMatching<T, Set<T>> {
+    public static final class RemoveAllNotNullAndTrue<T> extends CollectionFuncs.RemoveAllNotNullAndTrue<T, Set<T>> {
 
-        public RemoveNotNullMatching(final IEvaluator<Boolean,? super T> eval) {
+        public RemoveAllNotNullAndTrue(final IEvaluator<Boolean,? super T> eval) {
             super(eval);
         }
 
@@ -244,9 +244,9 @@ public class SetFuncs {
 
     
     
-    public static final class RemoveNotNullNotMatching<T> extends CollectionFuncs.RemoveNotNullMatching<T, Set<T>> {
+    public static final class RemoveAllNotNullAndFalse<T> extends CollectionFuncs.RemoveAllNotNullAndTrue<T, Set<T>> {
 
-        public RemoveNotNullNotMatching(final IEvaluator<Boolean,? super T> eval) {
+        public RemoveAllNotNullAndFalse(final IEvaluator<Boolean,? super T> eval) {
             super(eval);
         }
 
@@ -260,9 +260,9 @@ public class SetFuncs {
 
     
     
-    public static final class RemoveNullOrMatching<T> extends CollectionFuncs.RemoveNullOrMatching<T, Set<T>> {
+    public static final class RemoveAllNullOrTrue<T> extends CollectionFuncs.RemoveAllNullOrTrue<T, Set<T>> {
 
-        public RemoveNullOrMatching(final IEvaluator<Boolean,? super T> eval) {
+        public RemoveAllNullOrTrue(final IEvaluator<Boolean,? super T> eval) {
             super(eval);
         }
 
@@ -276,9 +276,9 @@ public class SetFuncs {
 
     
     
-    public static final class RemoveNullOrNotMatching<T> extends CollectionFuncs.RemoveNullOrMatching<T, Set<T>> {
+    public static final class RemoveAllNullOrFalse<T> extends CollectionFuncs.RemoveAllNullOrTrue<T, Set<T>> {
 
-        public RemoveNullOrNotMatching(final IEvaluator<Boolean,? super T> eval) {
+        public RemoveAllNullOrFalse(final IEvaluator<Boolean,? super T> eval) {
             super(eval);
         }
 

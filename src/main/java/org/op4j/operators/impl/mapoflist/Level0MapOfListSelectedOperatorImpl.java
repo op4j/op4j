@@ -26,13 +26,13 @@ public class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOperatorIm
     }
 
 
-    public Level0MapOfListSelectedOperator<K,V> removeMatching(final IEvaluator<Boolean,? super Entry<K,List<V>>> eval) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveMatching<K,List<V>>(eval)));
+    public Level0MapOfListSelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean,? super Entry<K,List<V>>> eval) {
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K,List<V>>(eval)));
     }
 
 
-    public Level0MapOfListSelectedOperator<K,V> removeNotMatching(final IEvaluator<Boolean,? super Entry<K,List<V>>> eval) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveNotMatching<K,List<V>>(eval)));
+    public Level0MapOfListSelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean,? super Entry<K,List<V>>> eval) {
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K,List<V>>(eval)));
     }
 
 
@@ -56,13 +56,13 @@ public class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOperatorIm
     }
 
 
-    public Level0MapOfListSelectedOperator<K,V> removeKeys(final K... keys) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveKeys<K,List<V>>(keys)));
+    public Level0MapOfListSelectedOperator<K,V> removeAllKeys(final K... keys) {
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllKeys<K,List<V>>(keys)));
     }
 
 
-    public Level0MapOfListSelectedOperator<K,V> removeKeysNot(final K... keys) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveKeysNot<K,List<V>>(keys)));
+    public Level0MapOfListSelectedOperator<K,V> removeAllKeysNot(final K... keys) {
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllKeysNot<K,List<V>>(keys)));
     }
 
 

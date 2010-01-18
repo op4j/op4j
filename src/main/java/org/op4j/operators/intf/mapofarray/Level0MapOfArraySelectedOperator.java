@@ -61,10 +61,10 @@ public interface Level0MapOfArraySelectedOperator<K,V>
     public Level0MapOfArraySelectedOperator<K,V> insert(final int position, final K newKey, final V[] newValue);
     public Level0MapOfArraySelectedOperator<K,V> putAll(final Map<K,V[]> map);
     public Level0MapOfArraySelectedOperator<K,V> insertAll(final int position, final Map<K,V[]> map);
-    public Level0MapOfArraySelectedOperator<K,V> removeKeys(final K... keys);
-    public Level0MapOfArraySelectedOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V[]>> eval);
-    public Level0MapOfArraySelectedOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super Map.Entry<K,V[]>> eval);
-    public Level0MapOfArraySelectedOperator<K,V> removeKeysNot(final K... keys);
+    public Level0MapOfArraySelectedOperator<K,V> removeAllKeys(final K... keys);
+    public Level0MapOfArraySelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,V[]>> eval);
+    public Level0MapOfArraySelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,V[]>> eval);
+    public Level0MapOfArraySelectedOperator<K,V> removeAllKeysNot(final K... keys);
     
     
     public Level0MapOfArraySelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends V[]>, ? super Map<K,V[]>> converter);

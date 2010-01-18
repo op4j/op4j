@@ -106,22 +106,22 @@ public class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapOfSetOperator<K, V> removeKeys(final K... keys) {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveKeys<K, Set<V>>(keys)));
+    public Level0MapOfSetOperator<K, V> removeAllKeys(final K... keys) {
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllKeys<K, Set<V>>(keys)));
     }
 
 
-    public Level0MapOfSetOperator<K, V> removeMatching(final IEvaluator<Boolean, ? super Entry<K, Set<V>>> eval) {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveMatching<K, Set<V>>(eval)));
+    public Level0MapOfSetOperator<K, V> removeAllTrue(final IEvaluator<Boolean, ? super Entry<K, Set<V>>> eval) {
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K, Set<V>>(eval)));
     }
 
-    public Level0MapOfSetOperator<K, V> removeNotMatching(final IEvaluator<Boolean, ? super Entry<K, Set<V>>> eval) {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveNotMatching<K, Set<V>>(eval)));
+    public Level0MapOfSetOperator<K, V> removeAllFalse(final IEvaluator<Boolean, ? super Entry<K, Set<V>>> eval) {
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K, Set<V>>(eval)));
     }
 
 
-    public Level0MapOfSetOperator<K, V> removeKeysNot(final K... keys) {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveKeysNot<K, Set<V>>(keys)));
+    public Level0MapOfSetOperator<K, V> removeAllKeysNot(final K... keys) {
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllKeysNot<K, Set<V>>(keys)));
     }
 
 
@@ -205,12 +205,12 @@ public class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapOfSetSelectedOperator<K, V> ifMatching(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
+    public Level0MapOfSetSelectedOperator<K, V> ifTrue(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
         return new Level0MapOfSetSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level0MapOfSetSelectedOperator<K, V> ifNotMatching(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
+    public Level0MapOfSetSelectedOperator<K, V> ifFalse(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
         return new Level0MapOfSetSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
 
@@ -220,12 +220,12 @@ public class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapOfSetSelectedOperator<K, V> ifNotNullMatching(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
+    public Level0MapOfSetSelectedOperator<K, V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
         return new Level0MapOfSetSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level0MapOfSetSelectedOperator<K, V> ifNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
+    public Level0MapOfSetSelectedOperator<K, V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
         return new Level0MapOfSetSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -235,12 +235,12 @@ public class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapOfSetSelectedOperator<K, V> ifNullOrMatching(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
+    public Level0MapOfSetSelectedOperator<K, V> ifNullOrTrue(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
         return new Level0MapOfSetSelectedOperatorImpl<K, V>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level0MapOfSetSelectedOperator<K, V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
+    public Level0MapOfSetSelectedOperator<K, V> ifNullOrFalse(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
         return new Level0MapOfSetSelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
     }
 

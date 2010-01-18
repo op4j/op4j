@@ -1,10 +1,4 @@
 
- - Add "getSimpleName" to javaruntype types so that package can be omitted
- - Add "getUpperBounds/getUniqueUpperBound" + Lower to javaruntype "Types"
-
- - Check the usage of all Type parameters. Would they be fooled with something like 
-   Type<List<? extends Object>>?
-    
  - Create some sort of  "replace" method
  - Should the "add" of arrays have the same name as the "add" of generic operators? (they work on different dimensions!)
  - WARNING: Op.buildListOfList(Types.STRING).add(listOfString1).add(listOfString2).get()

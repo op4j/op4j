@@ -102,22 +102,22 @@ public class Level0MapOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapOperator<K, V> removeKeys(final K... keys) {
-        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveKeys<K, V>(keys)));
+    public Level0MapOperator<K, V> removeAllKeys(final K... keys) {
+        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllKeys<K, V>(keys)));
     }
 
 
-    public Level0MapOperator<K, V> removeMatching(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
-        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveMatching<K, V>(eval)));
+    public Level0MapOperator<K, V> removeAllTrue(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
+        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K, V>(eval)));
     }
 
-    public Level0MapOperator<K, V> removeNotMatching(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
-        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveNotMatching<K, V>(eval)));
+    public Level0MapOperator<K, V> removeAllFalse(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
+        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K, V>(eval)));
     }
 
 
-    public Level0MapOperator<K, V> removeKeysNot(final K... keys) {
-        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveKeysNot<K, V>(keys)));
+    public Level0MapOperator<K, V> removeAllKeysNot(final K... keys) {
+        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllKeysNot<K, V>(keys)));
     }
 
 
@@ -224,12 +224,12 @@ public class Level0MapOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapSelectedOperator<K, V> ifMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+    public Level0MapSelectedOperator<K, V> ifTrue(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
         return new Level0MapSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level0MapSelectedOperator<K, V> ifNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+    public Level0MapSelectedOperator<K, V> ifFalse(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
         return new Level0MapSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
 
@@ -239,12 +239,12 @@ public class Level0MapOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapSelectedOperator<K, V> ifNotNullMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+    public Level0MapSelectedOperator<K, V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
         return new Level0MapSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level0MapSelectedOperator<K, V> ifNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+    public Level0MapSelectedOperator<K, V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
         return new Level0MapSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -254,12 +254,12 @@ public class Level0MapOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapSelectedOperator<K, V> ifNullOrMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+    public Level0MapSelectedOperator<K, V> ifNullOrTrue(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
         return new Level0MapSelectedOperatorImpl<K, V>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level0MapSelectedOperator<K, V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+    public Level0MapSelectedOperator<K, V> ifNullOrFalse(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
         return new Level0MapSelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
     }
 

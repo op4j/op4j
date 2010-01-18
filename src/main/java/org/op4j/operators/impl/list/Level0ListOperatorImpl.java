@@ -94,50 +94,50 @@ public class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListOperator<T> removeIndexes(final int... indices) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveIndexes<T>(indices)));
+    public Level0ListOperator<T> removeAllIndexes(final int... indices) {
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllIndexes<T>(indices)));
     }
 
 
-    public Level0ListOperator<T> removeEquals(final T... values) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveEquals<T>(values)));
+    public Level0ListOperator<T> removeAllEqual(final T... values) {
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllEqual<T>(values)));
     }
 
 
-    public Level0ListOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveMatching<T>(eval)));
+    public Level0ListOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllTrue<T>(eval)));
     }
 
-    public Level0ListOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveNotMatching<T>(eval)));
+    public Level0ListOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllFalse<T>(eval)));
     }
 
-    public Level0ListOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveNullOrNotMatching<T>(eval)));
+    public Level0ListOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNullOrFalse<T>(eval)));
     }
 
-    public Level0ListOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveNotNullNotMatching<T>(eval)));
-    }
-
-
-    public Level0ListOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveNullOrMatching<T>(eval)));
+    public Level0ListOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNotNullAndFalse<T>(eval)));
     }
 
 
-    public Level0ListOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveNotNullMatching<T>(eval)));
+    public Level0ListOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNullOrTrue<T>(eval)));
     }
 
 
-    public Level0ListOperator<T> removeIndexesNot(final int... indices) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveIndexesNot<T>(indices)));
+    public Level0ListOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNotNullAndTrue<T>(eval)));
     }
 
 
-    public Level0ListOperator<T> removeNulls() {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveNulls<T>()));
+    public Level0ListOperator<T> removeAllIndexesNot(final int... indices) {
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllIndexesNot<T>(indices)));
+    }
+
+
+    public Level0ListOperator<T> removeAllNull() {
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNull<T>()));
     }
 
     
@@ -260,12 +260,12 @@ public class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListSelectedOperator<T> ifMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
+    public Level0ListSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super List<T>> eval) {
         return new Level0ListSelectedOperatorImpl<T>(getTarget().selectMatching(eval));
     }
 
 
-    public Level0ListSelectedOperator<T> ifNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
+    public Level0ListSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super List<T>> eval) {
         return new Level0ListSelectedOperatorImpl<T>(getTarget().selectNotMatching(eval));
     }
 
@@ -275,12 +275,12 @@ public class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListSelectedOperator<T> ifNotNullMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
+    public Level0ListSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super List<T>> eval) {
         return new Level0ListSelectedOperatorImpl<T>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level0ListSelectedOperator<T> ifNotNullNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
+    public Level0ListSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super List<T>> eval) {
         return new Level0ListSelectedOperatorImpl<T>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -290,12 +290,12 @@ public class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListSelectedOperator<T> ifNullOrMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
+    public Level0ListSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super List<T>> eval) {
         return new Level0ListSelectedOperatorImpl<T>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level0ListSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super List<T>> eval) {
+    public Level0ListSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super List<T>> eval) {
         return new Level0ListSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
     }
 

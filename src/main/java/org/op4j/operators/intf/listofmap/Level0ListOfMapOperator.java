@@ -69,15 +69,15 @@ public interface Level0ListOfMapOperator<K,V>
 
 
     public Level0ListOfMapSelectedOperator<K,V> ifIndex(final int... indices);
-    public Level0ListOfMapSelectedOperator<K,V> ifMatching(final IEvaluator<Boolean, ? super List<Map<K,V>>> eval);
-    public Level0ListOfMapSelectedOperator<K,V> ifNotMatching(final IEvaluator<Boolean, ? super List<Map<K,V>>> eval);
-    public Level0ListOfMapSelectedOperator<K,V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super List<Map<K,V>>> eval);
-    public Level0ListOfMapSelectedOperator<K,V> ifNotNullNotMatching(final IEvaluator<Boolean, ? super List<Map<K,V>>> eval);
+    public Level0ListOfMapSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super List<Map<K,V>>> eval);
+    public Level0ListOfMapSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super List<Map<K,V>>> eval);
+    public Level0ListOfMapSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super List<Map<K,V>>> eval);
+    public Level0ListOfMapSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super List<Map<K,V>>> eval);
     public Level0ListOfMapSelectedOperator<K,V> ifNull();
-    public Level0ListOfMapSelectedOperator<K,V> ifNullOrMatching(final IEvaluator<Boolean, ? super List<Map<K,V>>> eval);
+    public Level0ListOfMapSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super List<Map<K,V>>> eval);
     public Level0ListOfMapSelectedOperator<K,V> ifIndexNot(final int... indices);
     public Level0ListOfMapSelectedOperator<K,V> ifNotNull();
-    public Level0ListOfMapSelectedOperator<K,V> ifNotNullMatching(final IEvaluator<Boolean, ? super List<Map<K,V>>> eval);
+    public Level0ListOfMapSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super List<Map<K,V>>> eval);
 
 
 
@@ -91,16 +91,16 @@ public interface Level0ListOfMapOperator<K,V>
     public Level0ListOfMapOperator<K,V> add(final Map<K,V>... newElements);
     public Level0ListOfMapOperator<K,V> insert(final int position, final Map<K,V>... newElements);
     public Level0ListOfMapOperator<K,V> addAll(final Collection<Map<K,V>> collection);
-    public Level0ListOfMapOperator<K,V> removeIndexes(final int... indices);
-    public Level0ListOfMapOperator<K,V> removeEquals(final Map<K,V>... values);
-    public Level0ListOfMapOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0ListOfMapOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0ListOfMapOperator<K,V> removeNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0ListOfMapOperator<K,V> removeNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0ListOfMapOperator<K,V> removeNotNullMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0ListOfMapOperator<K,V> removeNullOrMatching(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0ListOfMapOperator<K,V> removeIndexesNot(final int... indices);
-    public Level0ListOfMapOperator<K,V> removeNulls();
+    public Level0ListOfMapOperator<K,V> removeAllIndexes(final int... indices);
+    public Level0ListOfMapOperator<K,V> removeAllEqual(final Map<K,V>... values);
+    public Level0ListOfMapOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0ListOfMapOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0ListOfMapOperator<K,V> removeAllNullOrFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0ListOfMapOperator<K,V> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0ListOfMapOperator<K,V> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0ListOfMapOperator<K,V> removeAllNullOrTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0ListOfMapOperator<K,V> removeAllIndexesNot(final int... indices);
+    public Level0ListOfMapOperator<K,V> removeAllNull();
 
 
     public Level0GenericUniqOperator<List<Map<K,V>>> generic();

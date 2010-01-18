@@ -217,11 +217,11 @@ public class MapFuncs {
     
 
     
-    public static final class RemoveKeys<K,V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
+    public static final class RemoveAllKeys<K,V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 
         private final List<K> keys;
         
-        public RemoveKeys(final K... keys) {
+        public RemoveAllKeys(final K... keys) {
             super();
             this.keys = VarArgsUtil.asRequiredObjectList(keys);
         }
@@ -241,11 +241,11 @@ public class MapFuncs {
     
 
     
-    public static final class RemoveMatching<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
+    public static final class RemoveAllTrue<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 
         private final IEvaluator<Boolean,? super Map.Entry<K, V>> eval;
         
-        public RemoveMatching(final IEvaluator<Boolean,? super Map.Entry<K, V>> eval) {
+        public RemoveAllTrue(final IEvaluator<Boolean,? super Map.Entry<K, V>> eval) {
             super();
             this.eval = eval;
         }
@@ -267,11 +267,11 @@ public class MapFuncs {
     
 
     
-    public static final class RemoveNotMatching<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
+    public static final class RemoveAllFalse<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 
         private final IEvaluator<Boolean,? super Map.Entry<K, V>> eval;
         
-        public RemoveNotMatching(final IEvaluator<Boolean,? super Map.Entry<K, V>> eval) {
+        public RemoveAllFalse(final IEvaluator<Boolean,? super Map.Entry<K, V>> eval) {
             super();
             this.eval = eval;
         }
@@ -293,11 +293,11 @@ public class MapFuncs {
 
     
     
-    public static final class RemoveKeysNot<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
+    public static final class RemoveAllKeysNot<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 
         private final List<K> keys;
         
-        public RemoveKeysNot(final K... keys) {
+        public RemoveAllKeysNot(final K... keys) {
             super();
             this.keys = VarArgsUtil.asRequiredObjectList(keys);
         }

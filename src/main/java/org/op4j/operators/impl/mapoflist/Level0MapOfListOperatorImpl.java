@@ -105,22 +105,22 @@ public class Level0MapOfListOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapOfListOperator<K, V> removeKeys(final K... keys) {
-        return new Level0MapOfListOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveKeys<K, List<V>>(keys)));
+    public Level0MapOfListOperator<K, V> removeAllKeys(final K... keys) {
+        return new Level0MapOfListOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllKeys<K, List<V>>(keys)));
     }
 
 
-    public Level0MapOfListOperator<K, V> removeMatching(final IEvaluator<Boolean, ? super Entry<K, List<V>>> eval) {
-        return new Level0MapOfListOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveMatching<K, List<V>>(eval)));
+    public Level0MapOfListOperator<K, V> removeAllTrue(final IEvaluator<Boolean, ? super Entry<K, List<V>>> eval) {
+        return new Level0MapOfListOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K, List<V>>(eval)));
     }
 
-    public Level0MapOfListOperator<K, V> removeNotMatching(final IEvaluator<Boolean, ? super Entry<K, List<V>>> eval) {
-        return new Level0MapOfListOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveNotMatching<K, List<V>>(eval)));
+    public Level0MapOfListOperator<K, V> removeAllFalse(final IEvaluator<Boolean, ? super Entry<K, List<V>>> eval) {
+        return new Level0MapOfListOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K, List<V>>(eval)));
     }
 
 
-    public Level0MapOfListOperator<K, V> removeKeysNot(final K... keys) {
-        return new Level0MapOfListOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveKeysNot<K, List<V>>(keys)));
+    public Level0MapOfListOperator<K, V> removeAllKeysNot(final K... keys) {
+        return new Level0MapOfListOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllKeysNot<K, List<V>>(keys)));
     }
 
 
@@ -206,12 +206,12 @@ public class Level0MapOfListOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapOfListSelectedOperator<K, V> ifMatching(final IEvaluator<Boolean, ? super Map<K, List<V>>> eval) {
+    public Level0MapOfListSelectedOperator<K, V> ifTrue(final IEvaluator<Boolean, ? super Map<K, List<V>>> eval) {
         return new Level0MapOfListSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level0MapOfListSelectedOperator<K, V> ifNotMatching(final IEvaluator<Boolean, ? super Map<K, List<V>>> eval) {
+    public Level0MapOfListSelectedOperator<K, V> ifFalse(final IEvaluator<Boolean, ? super Map<K, List<V>>> eval) {
         return new Level0MapOfListSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
 
@@ -221,12 +221,12 @@ public class Level0MapOfListOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapOfListSelectedOperator<K, V> ifNotNullMatching(final IEvaluator<Boolean, ? super Map<K, List<V>>> eval) {
+    public Level0MapOfListSelectedOperator<K, V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K, List<V>>> eval) {
         return new Level0MapOfListSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level0MapOfListSelectedOperator<K, V> ifNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K, List<V>>> eval) {
+    public Level0MapOfListSelectedOperator<K, V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K, List<V>>> eval) {
         return new Level0MapOfListSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -236,12 +236,12 @@ public class Level0MapOfListOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapOfListSelectedOperator<K, V> ifNullOrMatching(final IEvaluator<Boolean, ? super Map<K, List<V>>> eval) {
+    public Level0MapOfListSelectedOperator<K, V> ifNullOrTrue(final IEvaluator<Boolean, ? super Map<K, List<V>>> eval) {
         return new Level0MapOfListSelectedOperatorImpl<K, V>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level0MapOfListSelectedOperator<K, V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K, List<V>>> eval) {
+    public Level0MapOfListSelectedOperator<K, V> ifNullOrFalse(final IEvaluator<Boolean, ? super Map<K, List<V>>> eval) {
         return new Level0MapOfListSelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
     }
 

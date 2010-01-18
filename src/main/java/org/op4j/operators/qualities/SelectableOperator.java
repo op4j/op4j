@@ -30,14 +30,14 @@ import org.op4j.functions.evaluators.IEvaluator;
 public interface SelectableOperator<T>  {
     
     public SelectedOperator<T> ifIndex(final int... indices);
-    public SelectedOperator<T> ifMatching(final IEvaluator<Boolean, ? super T> eval);
-    public SelectedOperator<T> ifNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public SelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public SelectedOperator<T> ifNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
+    public SelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
+    public SelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
+    public SelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public SelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
     public SelectedOperator<T> ifNull();
-    public SelectedOperator<T> ifNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
+    public SelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
     public SelectedOperator<T> ifIndexNot(final int... indices);
     public SelectedOperator<T> ifNotNull();
-    public SelectedOperator<T> ifNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
+    public SelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
     
 }

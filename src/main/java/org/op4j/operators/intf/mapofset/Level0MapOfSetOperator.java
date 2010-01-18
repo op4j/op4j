@@ -70,15 +70,15 @@ public interface Level0MapOfSetOperator<K,V>
 
 
     public Level0MapOfSetSelectedOperator<K,V> ifIndex(final int... indices);
-    public Level0MapOfSetSelectedOperator<K,V> ifMatching(final IEvaluator<Boolean, ? super Map<K,Set<V>>> eval);
-    public Level0MapOfSetSelectedOperator<K,V> ifNotMatching(final IEvaluator<Boolean, ? super Map<K,Set<V>>> eval);
-    public Level0MapOfSetSelectedOperator<K,V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Map<K,Set<V>>> eval);
-    public Level0MapOfSetSelectedOperator<K,V> ifNotNullNotMatching(final IEvaluator<Boolean, ? super Map<K,Set<V>>> eval);
+    public Level0MapOfSetSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map<K,Set<V>>> eval);
+    public Level0MapOfSetSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map<K,Set<V>>> eval);
+    public Level0MapOfSetSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super Map<K,Set<V>>> eval);
+    public Level0MapOfSetSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K,Set<V>>> eval);
     public Level0MapOfSetSelectedOperator<K,V> ifNull();
-    public Level0MapOfSetSelectedOperator<K,V> ifNullOrMatching(final IEvaluator<Boolean, ? super Map<K,Set<V>>> eval);
+    public Level0MapOfSetSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super Map<K,Set<V>>> eval);
     public Level0MapOfSetSelectedOperator<K,V> ifIndexNot(final int... indices);
     public Level0MapOfSetSelectedOperator<K,V> ifNotNull();
-    public Level0MapOfSetSelectedOperator<K,V> ifNotNullMatching(final IEvaluator<Boolean, ? super Map<K,Set<V>>> eval);
+    public Level0MapOfSetSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K,Set<V>>> eval);
 
 
     
@@ -91,10 +91,10 @@ public interface Level0MapOfSetOperator<K,V>
     public Level0MapOfSetOperator<K,V> insert(final int position, final K newKey, final Set<V> newValue);
     public Level0MapOfSetOperator<K,V> putAll(final Map<K,Set<V>> map);
     public Level0MapOfSetOperator<K,V> insertAll(final int position, final Map<K,Set<V>> map);
-    public Level0MapOfSetOperator<K,V> removeKeys(final K... keys);
-    public Level0MapOfSetOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
-    public Level0MapOfSetOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
-    public Level0MapOfSetOperator<K,V> removeKeysNot(final K... keys);
+    public Level0MapOfSetOperator<K,V> removeAllKeys(final K... keys);
+    public Level0MapOfSetOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
+    public Level0MapOfSetOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
+    public Level0MapOfSetOperator<K,V> removeAllKeysNot(final K... keys);
     
     public Level0MapOfArrayOperator<K,V> toMapOfArray(final Type<V> of);
     

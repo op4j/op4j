@@ -66,15 +66,15 @@ public interface Level1SetOfSetElementsOperator<T>
 
 
     public Level1SetOfSetElementsSelectedOperator<T> ifIndex(final int... indices);
-    public Level1SetOfSetElementsSelectedOperator<T> ifMatching(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level1SetOfSetElementsSelectedOperator<T> ifNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level1SetOfSetElementsSelectedOperator<T> ifNullOrNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level1SetOfSetElementsSelectedOperator<T> ifNotNullNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level1SetOfSetElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level1SetOfSetElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level1SetOfSetElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level1SetOfSetElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
     public Level1SetOfSetElementsSelectedOperator<T> ifNull();
-    public Level1SetOfSetElementsSelectedOperator<T> ifNullOrMatching(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level1SetOfSetElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
     public Level1SetOfSetElementsSelectedOperator<T> ifIndexNot(final int... indices);
     public Level1SetOfSetElementsSelectedOperator<T> ifNotNull();
-    public Level1SetOfSetElementsSelectedOperator<T> ifNotNullMatching(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level1SetOfSetElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
 
 
     
@@ -88,16 +88,16 @@ public interface Level1SetOfSetElementsOperator<T>
     public Level1SetOfSetElementsOperator<T> add(final T... newElements);
     public Level1SetOfSetElementsOperator<T> insert(final int position, final T... newElements);
     public Level1SetOfSetElementsOperator<T> addAll(final Collection<T> collection);
-    public Level1SetOfSetElementsOperator<T> removeIndexes(final int... indices);
-    public Level1SetOfSetElementsOperator<T> removeEquals(final T... values);
-    public Level1SetOfSetElementsOperator<T> removeMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetOfSetElementsOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetOfSetElementsOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetOfSetElementsOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetOfSetElementsOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetOfSetElementsOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetOfSetElementsOperator<T> removeIndexesNot(final int... indices);
-    public Level1SetOfSetElementsOperator<T> removeNulls();
+    public Level1SetOfSetElementsOperator<T> removeAllIndexes(final int... indices);
+    public Level1SetOfSetElementsOperator<T> removeAllEqual(final T... values);
+    public Level1SetOfSetElementsOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetOfSetElementsOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetOfSetElementsOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetOfSetElementsOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetOfSetElementsOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetOfSetElementsOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetOfSetElementsOperator<T> removeAllIndexesNot(final int... indices);
+    public Level1SetOfSetElementsOperator<T> removeAllNull();
     public Level1SetOfArrayElementsOperator<T> toArray(final Type<T> of);
     
     

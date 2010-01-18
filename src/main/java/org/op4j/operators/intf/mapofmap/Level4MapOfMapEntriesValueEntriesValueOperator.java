@@ -49,15 +49,15 @@ public interface Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
 
 
     public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifIndex(final int... indices);
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifMatching(final IEvaluator<Boolean, ? super V> eval);
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifNotMatching(final IEvaluator<Boolean, ? super V> eval);
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifNullOrNotMatching(final IEvaluator<Boolean, ? super V> eval);
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifNotNullNotMatching(final IEvaluator<Boolean, ? super V> eval);
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifNullOrFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval);
     public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifNull();
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifNullOrMatching(final IEvaluator<Boolean, ? super V> eval);
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
     public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifIndexNot(final int... indices);
     public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifNotNull();
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifNotNullMatching(final IEvaluator<Boolean, ? super V> eval);
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval);
 
     
     public Level3MapOfMapEntriesValueEntriesOperator<K1,K2,V> endOn();

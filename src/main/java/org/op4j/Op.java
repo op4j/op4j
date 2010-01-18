@@ -388,9 +388,9 @@ public final class Op {
         
         System.out.println(Arrays.asList(Op.onArrayOfList(stringsListStrings1).forEach().forEach().eval(Ognl.forString("toUpperCase()")).get()));
 
-        System.out.println(Arrays.asList(Op.onArrayOfMap(maps1).forEach().ifMatching(Ognl.forBoolean("size() > 6")).forEachEntry().onValue().eval(Ognl.forString("toUpperCase()"))));
+        System.out.println(Arrays.asList(Op.onArrayOfMap(maps1).forEach().ifTrue(Ognl.forBoolean("size() > 6")).forEachEntry().onValue().eval(Ognl.forString("toUpperCase()"))));
         
-        System.out.println(Arrays.asList(Op.onArrayOfArray(stringsStrings1).forEach(Types.ARRAY_OF_STRING).forEach(Types.STRING).ifMatching(Ognl.forBoolean("length() > 6")).eval(Ognl.forString("toUpperCase()")).get()[0]));
+        System.out.println(Arrays.asList(Op.onArrayOfArray(stringsStrings1).forEach(Types.ARRAY_OF_STRING).forEach(Types.STRING).ifTrue(Ognl.forBoolean("length() > 6")).eval(Ognl.forString("toUpperCase()")).get()[0]));
         
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().get());
         
@@ -429,19 +429,19 @@ public final class Op {
         System.out.println(Op.onList(stringsList1).insert(1, "World!", "Mars!").get());
         System.out.println(Op.onList(stringsList1).addAll(stringsList1).get());
         System.out.println(Op.onList(stringsList1).get());
-        System.out.println(Op.onList(stringsList1).removeIndexes(0,2).get());
-        System.out.println(Op.onList(stringsList1).removeIndexesNot(0).get());
-        System.out.println(Op.onList(stringsList1).removeIndexesNot(0,2).get());
-        System.out.println(Op.onList(stringsList1).removeMatching(Ognl.forBoolean("#target eq 'Hello'")).get());
-        System.out.println(Op.onList(stringsList1).removeMatching(new AbstractBooleanEvaluator<String>() {
+        System.out.println(Op.onList(stringsList1).removeAllIndexes(0,2).get());
+        System.out.println(Op.onList(stringsList1).removeAllIndexesNot(0).get());
+        System.out.println(Op.onList(stringsList1).removeAllIndexesNot(0,2).get());
+        System.out.println(Op.onList(stringsList1).removeAllTrue(Ognl.forBoolean("#target eq 'Hello'")).get());
+        System.out.println(Op.onList(stringsList1).removeAllTrue(new AbstractBooleanEvaluator<String>() {
 
 			public Boolean execute(String target, final ExecCtx ctx) {
 				return Boolean.valueOf(target == null);
 			}
         	
         }).get());
-        System.out.println(Op.onList(stringsList1).removeNulls().get());
-        System.out.println(Op.onList(stringsList1).removeNotNullMatching(Ognl.forBoolean("length() > 5")).get());
+        System.out.println(Op.onList(stringsList1).removeAllNull().get());
+        System.out.println(Op.onList(stringsList1).removeAllNotNullAndTrue(Ognl.forBoolean("length() > 5")).get());
             
         System.out.println("================");
         
@@ -452,12 +452,12 @@ public final class Op {
         System.out.println(Op.onSet(stringSet1).addAll(stringsList1).get());
         System.out.println("---");
         System.out.println(Op.onSet(stringSet1).get());
-        System.out.println(Op.onSet(stringSet1).removeIndexes(0,2).get());
-        System.out.println(Op.onSet(stringSet1).removeIndexesNot(0).get());
-        System.out.println(Op.onSet(stringSet1).removeIndexesNot(0,2).get());
-        System.out.println(Op.onSet(stringSet1).removeMatching(Ognl.forBoolean("#target eq 'Hello'")).get());
-        System.out.println(Op.onSet(stringSet1).removeNulls().get());
-        System.out.println(Op.onSet(stringSet1).removeNotNullMatching(Ognl.forBoolean("length() > 5")).get());
+        System.out.println(Op.onSet(stringSet1).removeAllIndexes(0,2).get());
+        System.out.println(Op.onSet(stringSet1).removeAllIndexesNot(0).get());
+        System.out.println(Op.onSet(stringSet1).removeAllIndexesNot(0,2).get());
+        System.out.println(Op.onSet(stringSet1).removeAllTrue(Ognl.forBoolean("#target eq 'Hello'")).get());
+        System.out.println(Op.onSet(stringSet1).removeAllNull().get());
+        System.out.println(Op.onSet(stringSet1).removeAllNotNullAndTrue(Ognl.forBoolean("length() > 5")).get());
             
         System.out.println(printArray(Op.onArray(stringsArr1).insert(2,"lalero","lururu").get()));
      
@@ -467,7 +467,7 @@ public final class Op {
         System.out.println(Op.onMap(map1).insert(2,"fr", "Allô!").get());
         System.out.println(Op.onMap(map2).get());
         System.out.println(Op.onMap(map2).putAll(Op.onMap(map1).insert(0,"gl", "Meuuuu!").get()).get());
-        System.out.println(Op.onMap(map2).putAll(Op.onMap(map1).insert(0,"gl", "Meuuuu!").get()).removeMatching(Ognl.forBoolean("!#target.key.startsWith('e')")).get());
+        System.out.println(Op.onMap(map2).putAll(Op.onMap(map1).insert(0,"gl", "Meuuuu!").get()).removeAllTrue(Ognl.forBoolean("!#target.key.startsWith('e')")).get());
         
         System.out.println(printArray(Op.onArrayOfMap(maps1).get()));
         
@@ -476,15 +476,15 @@ public final class Op {
         System.out.println(Op.on(234).insert(0,10));
         System.out.println(Op.on(234).add(10).insert(1,3));
         System.out.println(Op.on(234).add(10).insert(1,3).add((Integer)null));
-        System.out.println(Op.on(234).add(10).insert(1,3).add((Integer)null).removeNulls());
-        System.out.println(Op.on(234).add(10).insert(1,3).removeIndexesNot(1));
-        System.out.println(Op.on(234).add(10).insert(1,3).removeMatching(Ognl.forBoolean("#target > 100")));
-        System.out.println(printArray(Op.on(234).add(10).insert(1,3).removeMatching(Ognl.forBoolean("#target > 100")).buildArray(Types.INTEGER).get()));
+        System.out.println(Op.on(234).add(10).insert(1,3).add((Integer)null).removeAllNull());
+        System.out.println(Op.on(234).add(10).insert(1,3).removeAllIndexesNot(1));
+        System.out.println(Op.on(234).add(10).insert(1,3).removeAllTrue(Ognl.forBoolean("#target > 100")));
+        System.out.println(printArray(Op.on(234).add(10).insert(1,3).removeAllTrue(Ognl.forBoolean("#target > 100")).buildArray(Types.INTEGER).get()));
         System.out.println(printArray(Op.on(234).buildArray(Types.INTEGER).add(8).get()));
         System.out.println(Op.on(null).add(123));
         System.out.println(Op.on(null).buildList().get());
         System.out.println(Op.on(null).buildSet().get());
-        System.out.println(printArray(Op.on((String)null).buildArray(Types.STRING).add("a").removeNulls().removeIndexes(0).get()));
+        System.out.println(printArray(Op.on((String)null).buildArray(Types.STRING).add("a").removeAllNull().removeAllIndexes(0).get()));
         
         System.out.println(printArray(Op.buildArrayOfArray(Types.STRING).add(Op.buildArray(Types.STRING).add("a","b").get()).add(Op.buildArray(Types.STRING).add("1","2","3").get()).get()));
         System.out.println(Op.buildMap(Types.INTEGER,Types.STRING).put(12,"hello!").get());
@@ -553,12 +553,12 @@ public final class Op {
         
         System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFuncs.Insert<Integer>(2, 1492)).get());
         
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFuncs.Insert<Integer>(2, 1492)).exec(new ListFuncs.RemoveMatching<Integer>(Ognl.forBoolean("#target < 1000"))).exec(new ListFuncs.Sort<Integer>()).get());
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFuncs.Insert<Integer>(2, 1492)).exec(new ListFuncs.RemoveAllTrue<Integer>(Ognl.forBoolean("#target < 1000"))).exec(new ListFuncs.Sort<Integer>()).get());
         
         
         System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFuncs.Insert<Integer>(2, 1492)).get()));
         
-        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFuncs.Insert<Integer>(2, 1492)).exec(new ArrayFuncs.RemoveMatching<Integer>(Ognl.forBoolean("#target < 1000"))).exec(new ArrayFuncs.Sort<Integer>()).get()));
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArray(Types.INTEGER).get()).exec(new ArrayFuncs.Insert<Integer>(2, 1492)).exec(new ArrayFuncs.RemoveAllTrue<Integer>(Ognl.forBoolean("#target < 1000"))).exec(new ArrayFuncs.Sort<Integer>()).get()));
         
         System.out.println(Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArray(Types.STRING).get()).exec(new ToMap.FromArrayByKeyEval<Integer,String>(Ognl.forInteger("length()"))).get());
 
@@ -668,9 +668,9 @@ public final class Op {
         System.out.println(Op.on("Body tag is written like \"<body>content here</body>\"")
             	.exec(StringFuncs.escapeHTML()).get());
         
-        System.out.println(Op.onArray(stringsArr1).removeNulls().toMap(Ognl.forInteger("length()")).get());
+        System.out.println(Op.onArray(stringsArr1).removeAllNull().toMap(Ognl.forInteger("length()")).get());
 
-        System.out.println(Op.onList(stringsList1).removeNullOrMatching(Ognl.forBoolean("length() < 6")).get());
+        System.out.println(Op.onList(stringsList1).removeAllNullOrTrue(Ognl.forBoolean("length() < 6")).get());
 
         System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().extractKeys().get()));
         System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().extractValues().get()));
@@ -686,8 +686,8 @@ public final class Op {
         
         
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().eval(MethodCall.forInteger("length")).get());
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().ifIndex(0).add("").removeMatching(MethodCall.forBoolean("isEmpty")).get());
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().removeMatching(MethodCall.forBoolean("isEmpty")).get());
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().ifIndex(0).add("").removeAllTrue(MethodCall.forBoolean("isEmpty")).get());
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().removeAllTrue(MethodCall.forBoolean("isEmpty")).get());
         
 //        System.out.println(Op.onMap(map1).forEachEntry().eval(Ognl.forString("'in ' + #target.key + ' you say ' + #target.value")).get());
         
@@ -695,8 +695,8 @@ public final class Op {
         System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).forEach(Types.ARRAY_OF_STRING).toMap(Ognl.forInteger("length()")).forEachEntry().onKey().asType(Types.forClass(Serializable.class)).endOn().onValue().asType(Types.SERIALIZABLE).get()));
         
         
-        System.out.println(Op.onList(stringsList1).removeNulls().sort().get());
-        System.out.println(Op.onList(stringsList1).removeNulls().forEach().eval(Ognl.forInteger("length()")).get());
+        System.out.println(Op.onList(stringsList1).removeAllNull().sort().get());
+        System.out.println(Op.onList(stringsList1).removeAllNull().forEach().eval(Ognl.forInteger("length()")).get());
         
         System.out.println(Op.on(maps1).eval(Ognl.forInteger("length")).get());
         System.out.println(printArray(Op.onArray(maps1).forEach(Types.MAP_OF_STRING_STRING).eval(Ognl.forInteger("size()")).get()));
@@ -721,6 +721,9 @@ public final class Op {
         
         System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().eval(Types.STRING, Ognl.forString("'<<KEY: ' + #target.key + ' | VALUE: ' + #target.value + '>>'")).get());
         System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onValue().forEachEntry().eval(Types.STRING, Ognl.forString("'<<KEY: ' + #target.key + ' | VALUE: ' + #target.value + '>>'")).get());
+        
+        System.out.println(Types.LIST_ITERATOR_OF_BOOLEAN.getSimpleName());
+        
     }
     
     

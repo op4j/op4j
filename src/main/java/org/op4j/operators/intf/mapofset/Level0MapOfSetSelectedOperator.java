@@ -62,10 +62,10 @@ public interface Level0MapOfSetSelectedOperator<K,V>
     public Level0MapOfSetSelectedOperator<K,V> insert(final int position, final K newKey, final Set<V> newValue);
     public Level0MapOfSetSelectedOperator<K,V> putAll(final Map<K,Set<V>> map);
     public Level0MapOfSetSelectedOperator<K,V> insertAll(final int position, final Map<K,Set<V>> map);
-    public Level0MapOfSetSelectedOperator<K,V> removeKeys(final K... keys);
-    public Level0MapOfSetSelectedOperator<K,V> removeMatching(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
-    public Level0MapOfSetSelectedOperator<K,V> removeNotMatching(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
-    public Level0MapOfSetSelectedOperator<K,V> removeKeysNot(final K... keys);
+    public Level0MapOfSetSelectedOperator<K,V> removeAllKeys(final K... keys);
+    public Level0MapOfSetSelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
+    public Level0MapOfSetSelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
+    public Level0MapOfSetSelectedOperator<K,V> removeAllKeysNot(final K... keys);
     
     
     public Level0MapOfSetSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> converter);

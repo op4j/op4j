@@ -62,16 +62,16 @@ public interface Level0SetOfSetSelectedOperator<T>
     public Level0SetOfSetSelectedOperator<T> add(final Set<T>... newElements);
     public Level0SetOfSetSelectedOperator<T> insert(final int position, final Set<T>... newElements);
     public Level0SetOfSetSelectedOperator<T> addAll(final Collection<Set<T>> collection);
-    public Level0SetOfSetSelectedOperator<T> removeIndexes(final int... indices);
-    public Level0SetOfSetSelectedOperator<T> removeEquals(final Set<T>... values);
-    public Level0SetOfSetSelectedOperator<T> removeMatching(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0SetOfSetSelectedOperator<T> removeNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0SetOfSetSelectedOperator<T> removeNullOrNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0SetOfSetSelectedOperator<T> removeNotNullNotMatching(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0SetOfSetSelectedOperator<T> removeNotNullMatching(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0SetOfSetSelectedOperator<T> removeNullOrMatching(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0SetOfSetSelectedOperator<T> removeIndexesNot(final int... indices);
-    public Level0SetOfSetSelectedOperator<T> removeNulls();
+    public Level0SetOfSetSelectedOperator<T> removeAllIndexes(final int... indices);
+    public Level0SetOfSetSelectedOperator<T> removeAllEqual(final Set<T>... values);
+    public Level0SetOfSetSelectedOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level0SetOfSetSelectedOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level0SetOfSetSelectedOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level0SetOfSetSelectedOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level0SetOfSetSelectedOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level0SetOfSetSelectedOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level0SetOfSetSelectedOperator<T> removeAllIndexesNot(final int... indices);
+    public Level0SetOfSetSelectedOperator<T> removeAllNull();
 
 
 

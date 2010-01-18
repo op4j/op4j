@@ -31,12 +31,12 @@ public class Level1MapOfSetSelectedEntriesOperatorImpl<K,V> extends AbstractOper
     }
 
 
-    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifMatching(final IEvaluator<Boolean, ? super Entry<K,Set<V>>> eval) {
+    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Entry<K,Set<V>>> eval) {
         return new Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifNotMatching(final IEvaluator<Boolean, ? super Entry<K,Set<V>>> eval) {
+    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Entry<K,Set<V>>> eval) {
         return new Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().selectNotMatching(eval));
     }
 
