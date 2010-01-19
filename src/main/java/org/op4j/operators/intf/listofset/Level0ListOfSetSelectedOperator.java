@@ -31,6 +31,7 @@ import org.op4j.operators.qualities.DistinguishableOperator;
 import org.op4j.operators.qualities.ExecutableListOfSetSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -48,6 +49,7 @@ public interface Level0ListOfSetSelectedOperator<T>
                 SortableOperator<Set<T>>,
                 ModifiableCollectionOperator<Set<T>>,
                 ExecutableListOfSetSelectedOperator<T>,
+                ReplaceableOperator<List<Set<T>>>,
                 SelectedOperator<List<Set<T>>> {
 
 
@@ -84,6 +86,8 @@ public interface Level0ListOfSetSelectedOperator<T>
     public Level0ListOfSetSelectedOperator<T> convert(final IConverter<? extends List<? extends Set<? extends T>>,? super List<Set<T>>> converter);
     
     public Level0ListOfSetSelectedOperator<T> eval(final IEvaluator<? extends List<? extends Set<? extends T>>,? super List<Set<T>>> eval);
+
+    public Level0ListOfSetSelectedOperator<T> replaceBy(final List<Set<T>> replacement);
 
     public Level0ListOfSetSelectedOperator<T> exec(final IFunction<? extends List<? extends Set<? extends T>>, ? super List<Set<T>>> function);
 

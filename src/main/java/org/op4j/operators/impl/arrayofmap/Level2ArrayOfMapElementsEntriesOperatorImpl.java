@@ -136,6 +136,11 @@ public class Level2ArrayOfMapElementsEntriesOperatorImpl<K,V> extends AbstractOp
         return new Level2ArrayOfListElementsElementsOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
 
+
+    public Level2ArrayOfMapElementsEntriesOperator<K, V> replaceBy(final Entry<K, V> replacement) {
+        return new Level2ArrayOfMapElementsEntriesOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    }
+
     
     
 }

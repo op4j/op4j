@@ -41,6 +41,8 @@ import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.ModifiableGrowableOperator;
 import org.op4j.operators.qualities.ModifiableShrinkableOperator;
 import org.op4j.operators.qualities.MultiOperator;
+import org.op4j.operators.qualities.ReplaceableIfNullOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqableOperator;
 /**
@@ -58,6 +60,8 @@ public interface Level0GenericMultiOperator<T>
         		ExecutableOperator<T>,
                 CastableToTypeOperator<T>,
                 SelectableOperator<T>,
+                ReplaceableOperator<T>,
+                ReplaceableIfNullOperator<T>,
                 ModifiableGrowableOperator<T>,
                 ModifiableShrinkableOperator<T> {
 
@@ -80,6 +84,10 @@ public interface Level0GenericMultiOperator<T>
 
     
     
+    public Level0GenericMultiOperator<T> replaceBy(final T replacement);
+    public Level0GenericMultiOperator<T> replaceIfNullBy(final T replacement);
+
+
     public <X> Level0GenericMultiOperator<X> convert(final IConverter<X,? super T> converter);
     
     public <X> Level0GenericMultiOperator<X> eval(final IEvaluator<X,? super T> eval);

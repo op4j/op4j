@@ -21,6 +21,11 @@ public class Level3ListOfMapElementsEntriesSelectedKeySelectedOperatorImpl<K,V> 
     }
 
 
+    public Level3ListOfMapElementsEntriesSelectedKeySelectedOperator<K,V> replaceBy(final K replacement) {
+        return new Level3ListOfMapElementsEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level3ListOfMapElementsEntriesSelectedKeySelectedOperator<K,V> eval(final IEvaluator<? extends K,? super K> eval) {
         return new Level3ListOfMapElementsEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.NONE));
     }

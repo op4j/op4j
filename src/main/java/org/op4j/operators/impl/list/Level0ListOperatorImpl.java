@@ -329,6 +329,16 @@ public class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
 
+
+    public Level0ListOperator<T> replaceBy(final List<T> replacement) {
+        return new Level0ListOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level0ListOperator<T> replaceIfNullBy(final List<T> replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
+
     
     
     

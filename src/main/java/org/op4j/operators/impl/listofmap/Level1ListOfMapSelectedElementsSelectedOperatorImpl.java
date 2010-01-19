@@ -35,6 +35,11 @@ public class Level1ListOfMapSelectedElementsSelectedOperatorImpl<K,V> extends Ab
     }
 
 
+    public Level1ListOfMapSelectedElementsSelectedOperator<K,V> replaceBy(final Map<K,V> replacement) {
+        return new Level1ListOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level1ListOfMapSelectedElementsSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V>,? super Map<K,V>> eval) {
         return new Level1ListOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAP));
     }

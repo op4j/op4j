@@ -40,6 +40,8 @@ import org.op4j.operators.qualities.ExecutableArrayOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableArrayOperator;
 import org.op4j.operators.qualities.NavigatingArrayOperator;
+import org.op4j.operators.qualities.ReplaceableIfNullOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -59,6 +61,8 @@ public interface Level1ArrayOfArrayElementsOperator<T>
                 CastableToArrayOperator,
                 ExecutableArrayOperator<T>,
                 SelectableOperator<T[]>,
+                ReplaceableOperator<T[]>,
+                ReplaceableIfNullOperator<T[]>,
                 ModifiableCollectionOperator<T>,
                 ConvertibleToListOperator,
                 ConvertibleToSetOperator,
@@ -110,6 +114,10 @@ public interface Level1ArrayOfArrayElementsOperator<T>
     public <K,V> Level1ArrayOfMapElementsOperator<K,V> toMap(final IMapBuilder<K,V,? super T> mapBuild);
     
     
+    public Level1ArrayOfArrayElementsOperator<T> replaceBy(final T[] replacement);
+    public Level1ArrayOfArrayElementsOperator<T> replaceIfNullBy(final T[] replacement);
+
+
     public <X> Level1ArrayOfArrayElementsOperator<X> convert(final IConverter<X[],? super T[]> converter);
     
     public <X> Level1ArrayOfArrayElementsOperator<X> eval(final IEvaluator<X[],? super T[]> eval);

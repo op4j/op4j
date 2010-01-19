@@ -42,6 +42,8 @@ import org.op4j.operators.qualities.ExecutableListOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
+import org.op4j.operators.qualities.ReplaceableIfNullOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -62,6 +64,8 @@ public interface Level1SetOfListElementsOperator<T>
                 ExecutableListOperator<T>,
                 ModifiableCollectionOperator<T>,
                 SelectableOperator<List<T>>,
+                ReplaceableOperator<List<T>>,
+                ReplaceableIfNullOperator<List<T>>,
                 ConvertibleToArrayOperator<T>,
                 ConvertibleToSetOperator,
                 ConvertibleToMapOperator<T> {
@@ -113,6 +117,10 @@ public interface Level1SetOfListElementsOperator<T>
     public <K,V> Level1SetOfMapElementsOperator<K,V> toMap(final IMapBuilder<K,V,? super T> mapBuild);
 
     
+    public Level1SetOfListElementsOperator<T> replaceBy(final List<T> replacement);
+    public Level1SetOfListElementsOperator<T> replaceIfNullBy(final List<T> replacement);
+
+
     public <X> Level1SetOfListElementsOperator<X> convert(final IConverter<? extends List<X>,? super List<T>> converter);
     
     public <X> Level1SetOfListElementsOperator<X> eval(final IEvaluator<? extends List<X>,? super List<T>> eval);

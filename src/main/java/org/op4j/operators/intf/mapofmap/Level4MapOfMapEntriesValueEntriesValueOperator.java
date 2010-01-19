@@ -28,6 +28,8 @@ import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
 import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
+import org.op4j.operators.qualities.ReplaceableIfNullOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
@@ -44,6 +46,8 @@ public interface Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
                 NavigatingMapEntryOperator,
         		ExecutableOperator<V>,
                 SelectableOperator<V>,
+                ReplaceableOperator<V>,
+                ReplaceableIfNullOperator<V>,
                 CastableToTypeOperator<V> {
 
 
@@ -62,9 +66,14 @@ public interface Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
     
     public Level3MapOfMapEntriesValueEntriesOperator<K1,K2,V> endOn();
     
+    public Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V> replaceBy(final V replacement);
+    public Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V> replaceIfNullBy(final V replacement);
+
+
     public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> convert(final IConverter<X,? super V> converter);
     
     public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> eval(final IEvaluator<X,? super V> eval);
+
 
     public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> exec(final IFunction<X, ? super V> function);
     

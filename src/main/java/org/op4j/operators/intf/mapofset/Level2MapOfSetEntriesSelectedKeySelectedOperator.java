@@ -26,6 +26,7 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
@@ -39,13 +40,16 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level2MapOfSetEntriesSelectedKeySelectedOperator<K,V>
         extends UniqOperator<Map<K,Set<V>>>,
-                ExecutableSelectedOperator<K>, 
+                ExecutableSelectedOperator<K>,
+                ReplaceableOperator<K>,
                 SelectedOperator<K> {
 
 
 
     public Level2MapOfSetEntriesSelectedKeyOperator<K,V> endIf();
 
+
+    public Level2MapOfSetEntriesSelectedKeySelectedOperator<K,V> replaceBy(final K replacement);
 
     public Level2MapOfSetEntriesSelectedKeySelectedOperator<K,V> exec(final IFunction<? extends K, ? super K> function);
     

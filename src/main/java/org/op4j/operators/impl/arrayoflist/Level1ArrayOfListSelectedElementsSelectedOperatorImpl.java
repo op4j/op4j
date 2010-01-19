@@ -84,6 +84,11 @@ public class Level1ArrayOfListSelectedElementsSelectedOperatorImpl<T> extends Ab
     }
 
 
+    public Level1ArrayOfListSelectedElementsSelectedOperator<T> replaceBy(final List<T> replacement) {
+        return new Level1ArrayOfListSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level1ArrayOfListSelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends List<? extends T>,? super List<T>> eval) {
         return new Level1ArrayOfListSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.LIST));
     }

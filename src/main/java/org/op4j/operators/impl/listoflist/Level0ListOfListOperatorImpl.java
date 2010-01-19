@@ -360,6 +360,16 @@ public class Level0ListOfListOperatorImpl<T> extends AbstractOperatorImpl
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<List<T>>> function) {
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
+
+
+    public Level0ListOfListOperator<T> replaceBy(final List<List<T>> replacement) {
+        return new Level0ListOfListOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level0ListOfListOperator<T> replaceIfNullBy(final List<List<T>> replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
     
     
     

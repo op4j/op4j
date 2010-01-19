@@ -72,6 +72,11 @@ public class Level2MapOfArraySelectedEntriesKeyOperatorImpl<K,V> extends Abstrac
     }
 
 
+    public Level2MapOfArraySelectedEntriesKeyOperator<K,V> replaceBy(final K replacement) {
+        return new Level2MapOfArraySelectedEntriesKeyOperatorImpl<K,V>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level2MapOfArraySelectedEntriesKeyOperator<K,V> eval(final IEvaluator<? extends K,? super K> eval) {
         return new Level2MapOfArraySelectedEntriesKeyOperatorImpl<K,V>(getTarget().execute(eval, Normalization.NONE));
     }

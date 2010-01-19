@@ -80,6 +80,11 @@ public class Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V> extends Abstrac
     }
 
 
+    public Level2MapOfSetEntriesValueSelectedOperator<K,V> replaceBy(final Set<V> replacement) {
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> eval(final IEvaluator<? extends Set<? extends V>,? super Set<V>> eval) {
         return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.SET));
     }

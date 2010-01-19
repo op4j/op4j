@@ -277,6 +277,16 @@ public class Level1ArrayOfSetElementsOperatorImpl<T> extends AbstractOperatorImp
     public <X> Level1ArrayElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<T>> function) {
         return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(function, Normalization.NONE));
     }
+
+
+    public Level1ArrayOfSetElementsOperator<T> replaceBy(final Set<T> replacement) {
+        return new Level1ArrayOfSetElementsOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level1ArrayOfSetElementsOperator<T> replaceIfNullBy(final Set<T> replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
     
     
     

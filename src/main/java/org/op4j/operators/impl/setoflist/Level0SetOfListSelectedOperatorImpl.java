@@ -81,6 +81,11 @@ public class Level0SetOfListSelectedOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
+    public Level0SetOfListSelectedOperator<T> replaceBy(final Set<List<T>> replacement) {
+        return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level0SetOfListSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> eval) {
         return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.SET_OF_LIST));
     }

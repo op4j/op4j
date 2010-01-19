@@ -138,4 +138,14 @@ public class Level3ArrayOfMapElementsEntriesValueOperatorImpl<K,V> extends Abstr
         return new Level3ArrayOfMapElementsEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalization.NONE));
     }
 
+
+    public Level3ArrayOfMapElementsEntriesValueOperator<K, V> replaceBy(final V replacement) {
+        return new Level3ArrayOfMapElementsEntriesValueOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level3ArrayOfMapElementsEntriesValueOperator<K, V> replaceIfNullBy(final V replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
+
 }

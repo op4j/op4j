@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
 
-
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -31,6 +30,7 @@ import org.op4j.operators.qualities.DistinguishableOperator;
 import org.op4j.operators.qualities.ExecutableArrayOfMapSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -47,6 +47,7 @@ public interface Level0ArrayOfMapSelectedOperator<K,V>
 		        DistinguishableOperator,
 		        SortableOperator<Map<K,V>>,
                 ExecutableArrayOfMapSelectedOperator<K,V>,
+                ReplaceableOperator<Map<K,V>[]>,
                 SelectedOperator<Map<K,V>[]>,
                 ModifiableCollectionOperator<Map<K,V>> {
 
@@ -83,6 +84,8 @@ public interface Level0ArrayOfMapSelectedOperator<K,V>
     public Level0ArrayOfMapSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends V>[], ? super Map<K,V>[]> converter);
     
     public Level0ArrayOfMapSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V>[], ? super Map<K,V>[]> eval);
+
+    public Level0ArrayOfMapSelectedOperator<K,V> replaceBy(final Map<K,V>[] replacement);
 
     public Level0ArrayOfMapSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V>[], ? super Map<K,V>[]> function);
     

@@ -320,6 +320,16 @@ public class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
 
+
+    public Level0SetOperator<T> replaceBy(final Set<T> replacement) {
+        return new Level0SetOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level0SetOperator<T> replaceIfNullBy(final Set<T> replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
+
     
     
     

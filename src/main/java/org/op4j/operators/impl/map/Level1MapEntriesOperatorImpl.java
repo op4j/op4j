@@ -136,4 +136,9 @@ public class Level1MapEntriesOperatorImpl<K,V> extends AbstractOperatorImpl
         return new Level1ListElementsOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
 
+
+    public Level1MapEntriesOperator<K, V> replaceBy(final Entry<K, V> replacement) {
+        return new Level1MapEntriesOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    }
+
 }

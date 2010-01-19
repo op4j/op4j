@@ -134,4 +134,14 @@ public class Level2ArrayOfListElementsElementsOperatorImpl<T> extends AbstractOp
         return new Level2ArrayOfListElementsElementsOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
 
+
+    public Level2ArrayOfListElementsElementsOperator<T> replaceBy(final T replacement) {
+        return new Level2ArrayOfListElementsElementsOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level2ArrayOfListElementsElementsOperator<T> replaceIfNullBy(final T replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
+
 }

@@ -30,6 +30,7 @@ import org.op4j.operators.qualities.DistinguishableOperator;
 import org.op4j.operators.qualities.ExecutableArrayOfListSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -47,6 +48,7 @@ public interface Level0ArrayOfListSelectedOperator<T>
                 SortableOperator<List<T>>,
                 ModifiableCollectionOperator<List<T>>,
                 ExecutableArrayOfListSelectedOperator<T>,
+                ReplaceableOperator<List<T>[]>,
                 SelectedOperator<List<T>[]> {
 
 
@@ -83,6 +85,8 @@ public interface Level0ArrayOfListSelectedOperator<T>
     public Level0ArrayOfListSelectedOperator<T> convert(final IConverter<? extends List<? extends T>[],? super List<T>[]> converter);
     
     public Level0ArrayOfListSelectedOperator<T> eval(final IEvaluator<? extends List<? extends T>[],? super List<T>[]> eval);
+
+    public Level0ArrayOfListSelectedOperator<T> replaceBy(final List<T>[] replacement);
 
     public Level0ArrayOfListSelectedOperator<T> exec(final IFunction<? extends List<? extends T>[], ? super List<T>[]> function);
 

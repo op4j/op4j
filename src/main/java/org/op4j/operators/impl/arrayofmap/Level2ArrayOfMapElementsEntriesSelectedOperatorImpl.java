@@ -23,6 +23,11 @@ public class Level2ArrayOfMapElementsEntriesSelectedOperatorImpl<K,V> extends Ab
     }
 
 
+    public Level2ArrayOfMapElementsEntriesSelectedOperator<K,V> replaceBy(final Entry<K,V> replacement) {
+        return new Level2ArrayOfMapElementsEntriesSelectedOperatorImpl<K,V>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level2ArrayOfMapElementsEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> eval) {
         return new Level2ArrayOfMapElementsEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAPENTRY));
     }

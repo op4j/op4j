@@ -20,6 +20,11 @@ public class Level1ListSelectedElementsSelectedOperatorImpl<T> extends AbstractO
     }
 
 
+    public Level1ListSelectedElementsSelectedOperator<T> replaceBy(final T replacement) {
+        return new Level1ListSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level1ListSelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
         return new Level1ListSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.NONE));
     }

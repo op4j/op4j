@@ -20,6 +20,11 @@ public class Level3ArrayOfMapElementsSelectedEntriesSelectedValueSelectedOperato
     }
 
 
+    public Level3ArrayOfMapElementsSelectedEntriesSelectedValueSelectedOperator<K,V> replaceBy(final V replacement) {
+        return new Level3ArrayOfMapElementsSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level3ArrayOfMapElementsSelectedEntriesSelectedValueSelectedOperator<K,V> eval(final IEvaluator<? extends V,? super V> eval) {
         return new Level3ArrayOfMapElementsSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.NONE));
     }

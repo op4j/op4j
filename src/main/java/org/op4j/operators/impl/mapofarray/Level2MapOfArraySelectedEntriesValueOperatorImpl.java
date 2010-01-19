@@ -137,6 +137,11 @@ public class Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V> extends Abstr
     }
 
 
+    public Level2MapOfArraySelectedEntriesValueOperator<K,V> replaceBy(final V[] replacement) {
+        return new Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level2MapOfArraySelectedEntriesValueOperator<K,V> eval(final IEvaluator<? extends V[],? super V[]> eval) {
         return new Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V>(getTarget().execute(eval, Normalization.ARRAY));
     }

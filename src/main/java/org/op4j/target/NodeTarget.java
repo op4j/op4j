@@ -423,5 +423,14 @@ public abstract class NodeTarget extends Target{
         throw new IllegalStateException("Cannot select on a node");
 	}
 
+
+
+
+
+    @Override
+    public Target replaceBy(Object replacement) {
+        return NodeTarget.forObject(getId(), replacement);
+    }
+
     
 }

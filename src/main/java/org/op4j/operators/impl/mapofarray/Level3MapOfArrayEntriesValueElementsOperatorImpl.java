@@ -141,4 +141,14 @@ public class Level3MapOfArrayEntriesValueElementsOperatorImpl<K,V> extends Abstr
         return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(function.getResultType(this.type), getTarget().execute(function, Normalization.NONE));
     }
 
+
+    public Level3MapOfArrayEntriesValueElementsOperator<K, V> replaceBy(final V replacement) {
+        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, V>(this.type, getTarget().replaceBy(replacement));
+    }
+
+
+    public Level3MapOfArrayEntriesValueElementsOperator<K, V> replaceIfNullBy(final V replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
+
 }

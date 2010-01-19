@@ -354,6 +354,16 @@ public class Level0SetOfSetOperatorImpl<T> extends AbstractOperatorImpl
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<Set<T>>> function) {
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
+
+
+    public Level0SetOfSetOperator<T> replaceBy(final Set<Set<T>> replacement) {
+        return new Level0SetOfSetOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level0SetOfSetOperator<T> replaceIfNullBy(final Set<Set<T>> replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
     
     
     

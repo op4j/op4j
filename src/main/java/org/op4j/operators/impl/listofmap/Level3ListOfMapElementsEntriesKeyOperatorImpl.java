@@ -139,4 +139,14 @@ public class Level3ListOfMapElementsEntriesKeyOperatorImpl<K,V> extends Abstract
         return new Level3ListOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().execute(function, Normalization.NONE));
     }
 
+
+    public Level3ListOfMapElementsEntriesKeyOperator<K, V> replaceBy(final K replacement) {
+        return new Level3ListOfMapElementsEntriesKeyOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level3ListOfMapElementsEntriesKeyOperator<K, V> replaceIfNullBy(final K replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
+
 }

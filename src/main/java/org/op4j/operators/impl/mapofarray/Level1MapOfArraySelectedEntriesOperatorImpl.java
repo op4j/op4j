@@ -45,6 +45,11 @@ public class Level1MapOfArraySelectedEntriesOperatorImpl<K,V> extends AbstractOp
     }
 
 
+    public Level1MapOfArraySelectedEntriesOperator<K,V> replaceBy(final Entry<K,V[]> replacement) {
+        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level1MapOfArraySelectedEntriesOperator<K,V> eval(final IEvaluator<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> eval) {
         return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAPENTRY_OF_ARRAY));
     }

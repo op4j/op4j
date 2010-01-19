@@ -136,6 +136,11 @@ public class Level1MapOfMapEntriesOperatorImpl<K1,K2,V> extends AbstractOperator
     public <X> Level1ListElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Entry<K1, Map<K2, V>>> function) {
         return new Level1ListElementsOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
+
+
+    public Level1MapOfMapEntriesOperator<K1, K2, V> replaceBy(final Entry<K1, Map<K2, V>> replacement) {
+        return new Level1MapOfMapEntriesOperatorImpl<K1, K2, V>(getTarget().replaceBy(replacement));
+    }
     
     
 }

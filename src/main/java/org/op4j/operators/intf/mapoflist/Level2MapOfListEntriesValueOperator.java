@@ -42,6 +42,8 @@ import org.op4j.operators.qualities.ExecutableListOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
+import org.op4j.operators.qualities.ReplaceableIfNullOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -62,6 +64,8 @@ public interface Level2MapOfListEntriesValueOperator<K,V>
                 ExecutableListOperator<V>,
                 ModifiableCollectionOperator<V>,
                 SelectableOperator<List<V>>,
+                ReplaceableOperator<List<V>>,
+                ReplaceableIfNullOperator<List<V>>,
                 ConvertibleToArrayOperator<V>,
                 ConvertibleToSetOperator,
                 ConvertibleToMapOperator<V> {
@@ -113,6 +117,10 @@ public interface Level2MapOfListEntriesValueOperator<K,V>
     public <K2,V2> Level2MapOfMapEntriesValueOperator<K,K2,V2> toMap(final IMapBuilder<K2,V2,? super V> mapBuild);
 
     
+    public Level2MapOfListEntriesValueOperator<K,V> replaceBy(final List<V> replacement);
+    public Level2MapOfListEntriesValueOperator<K,V> replaceIfNullBy(final List<V> replacement);
+
+
     public <X> Level2MapOfListEntriesValueOperator<K,X> convert(final IConverter<? extends List<X>,? super List<V>> converter);
     
     public <X> Level2MapOfListEntriesValueOperator<K,X> eval(final IEvaluator<? extends List<X>,? super List<V>> eval);

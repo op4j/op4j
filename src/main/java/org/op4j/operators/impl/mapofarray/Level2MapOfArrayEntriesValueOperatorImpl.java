@@ -298,6 +298,16 @@ public class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends AbstractOpera
         return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalization.NONE));
     }
 
+
+    public Level2MapOfArrayEntriesValueOperator<K, V> replaceBy(final V[] replacement) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level2MapOfArrayEntriesValueOperator<K, V> replaceIfNullBy(final V[] replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
+
     
     
     

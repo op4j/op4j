@@ -73,6 +73,11 @@ public class Level3MapOfListEntriesSelectedValueElementsOperatorImpl<K,V> extend
     }
 
 
+    public Level3MapOfListEntriesSelectedValueElementsOperator<K,V> replaceBy(final V replacement) {
+        return new Level3MapOfListEntriesSelectedValueElementsOperatorImpl<K,V>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level3MapOfListEntriesSelectedValueElementsOperator<K,V> eval(final IEvaluator<? extends V,? super V> eval) {
         return new Level3MapOfListEntriesSelectedValueElementsOperatorImpl<K,V>(getTarget().execute(eval, Normalization.NONE));
     }

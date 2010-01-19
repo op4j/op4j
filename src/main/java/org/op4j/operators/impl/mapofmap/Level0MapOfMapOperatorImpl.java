@@ -254,6 +254,16 @@ public class Level0MapOfMapOperatorImpl<K1,K2,V> extends AbstractOperatorImpl
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
 
+
+    public Level0MapOfMapOperator<K1, K2, V> replaceBy(final Map<K1, Map<K2, V>> replacement) {
+        return new Level0MapOfMapOperatorImpl<K1, K2, V>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level0MapOfMapOperator<K1, K2, V> replaceIfNullBy(final Map<K1, Map<K2, V>> replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
+
     
 
     

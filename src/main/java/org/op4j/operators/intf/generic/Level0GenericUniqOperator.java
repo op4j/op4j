@@ -70,6 +70,8 @@ import org.op4j.operators.qualities.CastableToSetOperator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
 import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.ModifiableGrowableOperator;
+import org.op4j.operators.qualities.ReplaceableIfNullOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
@@ -109,6 +111,8 @@ public interface Level0GenericUniqOperator<T>
         		ExecutableOperator<T>,
                 CastableToTypeOperator<T>,
                 SelectableOperator<T>,
+                ReplaceableOperator<T>,
+                ReplaceableIfNullOperator<T>,
                 ModifiableGrowableOperator<T> {
 
 
@@ -125,6 +129,10 @@ public interface Level0GenericUniqOperator<T>
     public Level0GenericUniqSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
 
     
+    public Level0GenericUniqOperator<T> replaceBy(final T replacement);
+    public Level0GenericUniqOperator<T> replaceIfNullBy(final T replacement);
+
+
     public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super T> converter);
     
     public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super T> eval);

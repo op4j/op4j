@@ -316,5 +316,15 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
     public <X> Level0GenericMultiOperator<X> exec(final IFunction<X, ? super T> function) {
         return new Level0GenericMultiOperatorImpl<X>(getTarget().iterate().execute(function, Normalization.NONE).endIterate(Structure.LIST, null));
     }
+
+
+    public Level0GenericMultiOperator<T> replaceBy(final T replacement) {
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level0GenericMultiOperator<T> replaceIfNullBy(final T replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
     
 }

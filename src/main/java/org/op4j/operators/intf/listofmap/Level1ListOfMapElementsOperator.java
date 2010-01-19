@@ -37,6 +37,8 @@ import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
 import org.op4j.operators.qualities.Operator;
+import org.op4j.operators.qualities.ReplaceableIfNullOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -56,6 +58,8 @@ public interface Level1ListOfMapElementsOperator<K,V>
                 ExecutableMapOperator<K,V>,
                 ModifiableMapOperator<K,V>,
                 SelectableOperator<Map<K,V>>,
+                ReplaceableOperator<Map<K,V>>,
+                ReplaceableIfNullOperator<Map<K,V>>,
                 ExtractableMapOperator<K,V> {
 
 
@@ -97,6 +101,10 @@ public interface Level1ListOfMapElementsOperator<K,V>
     
     
     
+    public Level1ListOfMapElementsOperator<K,V> replaceBy(final Map<K,V> replacement);
+    public Level1ListOfMapElementsOperator<K,V> replaceIfNullBy(final Map<K,V> replacement);
+
+
     public <X,Y> Level1ListOfMapElementsOperator<X,Y> convert(final IConverter<? extends Map<X,Y>,? super Map<K,V>> converter);
     
     public <X,Y> Level1ListOfMapElementsOperator<X,Y> eval(final IEvaluator<? extends Map<X,Y>,? super Map<K,V>> eval);

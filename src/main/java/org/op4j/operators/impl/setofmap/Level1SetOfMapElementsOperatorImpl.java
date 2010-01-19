@@ -241,6 +241,16 @@ public class Level1SetOfMapElementsOperatorImpl<K,V> extends AbstractOperatorImp
     public <X> Level1SetElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K, V>> function) {
         return new Level1SetElementsOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
+
+
+    public Level1SetOfMapElementsOperator<K, V> replaceBy(final Map<K, V> replacement) {
+        return new Level1SetOfMapElementsOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level1SetOfMapElementsOperator<K, V> replaceIfNullBy(final Map<K, V> replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
     
     
     

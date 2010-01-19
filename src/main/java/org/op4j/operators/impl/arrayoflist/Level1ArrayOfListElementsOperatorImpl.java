@@ -281,6 +281,16 @@ public class Level1ArrayOfListElementsOperatorImpl<T> extends AbstractOperatorIm
     public <X> Level1ArrayElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T>> function) {
         return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(function, Normalization.NONE));
     }
+
+
+    public Level1ArrayOfListElementsOperator<T> replaceBy(final List<T> replacement) {
+        return new Level1ArrayOfListElementsOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level1ArrayOfListElementsOperator<T> replaceIfNullBy(final List<T> replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
     
     
     

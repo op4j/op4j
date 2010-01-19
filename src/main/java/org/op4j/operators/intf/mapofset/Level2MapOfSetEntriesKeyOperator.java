@@ -70,6 +70,10 @@ public interface Level2MapOfSetEntriesKeyOperator<K,V>
     
     public <X> Level2MapOfSetEntriesKeyOperator<X,V> eval(final IEvaluator<X,? super K> eval);
     
+    public Level2MapOfSetEntriesKeyOperator<K,V> replaceBy(final K replacement);
+    public Level2MapOfSetEntriesKeyOperator<K,V> replaceIfNullBy(final K replacement);
+
+
     public <X> Level2MapOfSetEntriesKeyOperator<X,V> convert(final IConverter<X,? super K> converter);
     
         

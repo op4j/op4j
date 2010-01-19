@@ -85,6 +85,11 @@ public class Level1SetOfListElementsSelectedOperatorImpl<T> extends AbstractOper
     }
 
 
+    public Level1SetOfListElementsSelectedOperator<T> replaceBy(final List<T> replacement) {
+        return new Level1SetOfListElementsSelectedOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level1SetOfListElementsSelectedOperator<T> eval(final IEvaluator<? extends List<? extends T>,? super List<T>> eval) {
         return new Level1SetOfListElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.LIST));
     }

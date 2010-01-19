@@ -24,6 +24,11 @@ public class Level2SetOfMapElementsEntriesSelectedOperatorImpl<K,V> extends Abst
     }
 
 
+    public Level2SetOfMapElementsEntriesSelectedOperator<K,V> replaceBy(final Entry<K,V> replacement) {
+        return new Level2SetOfMapElementsEntriesSelectedOperatorImpl<K,V>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level2SetOfMapElementsEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> eval) {
         return new Level2SetOfMapElementsEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAPENTRY));
     }

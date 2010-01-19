@@ -275,6 +275,16 @@ public class Level0MapOfListOperatorImpl<K,V> extends AbstractOperatorImpl
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
 
+
+    public Level0MapOfListOperator<K, V> replaceBy(final Map<K, List<V>> replacement) {
+        return new Level0MapOfListOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level0MapOfListOperator<K, V> replaceIfNullBy(final Map<K, List<V>> replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
+
     
     
 }

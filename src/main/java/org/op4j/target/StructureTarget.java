@@ -546,6 +546,24 @@ public class StructureTarget extends Target {
 
     
 
+    
+    @Override
+    public Target replaceBy(final Object replacement) {
+        
+        final List<Target> newElements = new ArrayList<Target>();
+        for (final Target element : this.elements) {
+            if (this.selectedElementIds.contains(element.getId())) {
+                newElements.add(element.replaceBy(replacement));
+            } else {
+                newElements.add(element);
+            }
+        }
+        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        
+        
+    }
+
+    
 	
     @Override
     public Target execute(final IFunction<?,?> executable, final Normalization normalization) {

@@ -25,6 +25,7 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
@@ -39,6 +40,7 @@ import org.op4j.operators.qualities.UniqOperator;
 public interface Level2ListOfArrayElementsElementsSelectedOperator<T>
         extends UniqOperator<List<T[]>>,
         		ExecutableSelectedOperator<T>,
+                ReplaceableOperator<T>,
                 SelectedOperator<T> {
 
 
@@ -49,6 +51,8 @@ public interface Level2ListOfArrayElementsElementsSelectedOperator<T>
     public Level2ListOfArrayElementsElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter);
     
     public Level2ListOfArrayElementsElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
+
+    public Level2ListOfArrayElementsElementsSelectedOperator<T> replaceBy(final T replacement);
 
     public Level2ListOfArrayElementsElementsSelectedOperator<T> exec(final IFunction<? extends T, ? super T> function);
 

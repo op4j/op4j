@@ -243,6 +243,16 @@ public class Level1ListOfMapElementsOperatorImpl<K,V> extends AbstractOperatorIm
     public <X> Level1ListElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K, V>> function) {
         return new Level1ListElementsOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
+
+
+    public Level1ListOfMapElementsOperator<K, V> replaceBy(final Map<K, V> replacement) {
+        return new Level1ListOfMapElementsOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level1ListOfMapElementsOperator<K, V> replaceIfNullBy(final Map<K, V> replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
     
     
     

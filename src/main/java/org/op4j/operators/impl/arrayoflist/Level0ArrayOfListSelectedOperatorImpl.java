@@ -85,6 +85,11 @@ public class Level0ArrayOfListSelectedOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
+    public Level0ArrayOfListSelectedOperator<T> replaceBy(final List<T>[] replacement) {
+        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level0ArrayOfListSelectedOperator<T> eval(final IEvaluator<? extends List<? extends T>[],? super List<T>[]> eval) {
         return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.ARRAY_OF_LIST));
     }

@@ -72,6 +72,11 @@ public class Level2ArrayOfSetElementsSelectedElementsOperatorImpl<T> extends Abs
     }
 
 
+    public Level2ArrayOfSetElementsSelectedElementsOperator<T> replaceBy(final T replacement) {
+        return new Level2ArrayOfSetElementsSelectedElementsOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level2ArrayOfSetElementsSelectedElementsOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
         return new Level2ArrayOfSetElementsSelectedElementsOperatorImpl<T>(getTarget().execute(eval, Normalization.NONE));
     }

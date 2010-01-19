@@ -31,6 +31,7 @@ import org.op4j.operators.qualities.DistinguishableOperator;
 import org.op4j.operators.qualities.ExecutableArraySelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableArrayOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -47,6 +48,7 @@ public interface Level2MapOfArraySelectedEntriesSelectedValueSelectedOperator<K,
 		        DistinguishableOperator,
 		        SortableOperator<V>,
                 ExecutableArraySelectedOperator<V>,
+                ReplaceableOperator<V[]>,
                 ModifiableCollectionOperator<V>,
                 SelectedOperator<V[]> {
 
@@ -81,6 +83,8 @@ public interface Level2MapOfArraySelectedEntriesSelectedValueSelectedOperator<K,
     public Level2MapOfArraySelectedEntriesSelectedValueSelectedOperator<K,V> convert(final IConverter<? extends V[], ? super V[]> converter);
     
     public Level2MapOfArraySelectedEntriesSelectedValueSelectedOperator<K,V> eval(final IEvaluator<? extends V[], ? super V[]> eval);
+
+    public Level2MapOfArraySelectedEntriesSelectedValueSelectedOperator<K,V> replaceBy(final V[] replacement);
 
     public Level2MapOfArraySelectedEntriesSelectedValueSelectedOperator<K,V> exec(final IFunction<? extends V[], ? super V[]> function);
     

@@ -137,5 +137,10 @@ public class Level2ListOfMapElementsEntriesOperatorImpl<K,V> extends AbstractOpe
     public <X> Level2ListOfListElementsElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Entry<K, V>> function) {
         return new Level2ListOfListElementsElementsOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
+
+
+    public Level2ListOfMapElementsEntriesOperator<K, V> replaceBy(final Entry<K, V> replacement) {
+        return new Level2ListOfMapElementsEntriesOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    }
     
 }

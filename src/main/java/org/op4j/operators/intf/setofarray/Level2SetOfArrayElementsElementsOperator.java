@@ -28,6 +28,8 @@ import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
 import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.NavigatingArrayOperator;
+import org.op4j.operators.qualities.ReplaceableIfNullOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
@@ -44,6 +46,8 @@ public interface Level2SetOfArrayElementsElementsOperator<T>
                 NavigatingArrayOperator<T>,
         		ExecutableOperator<T>,
                 SelectableOperator<T>,
+                ReplaceableOperator<T>,
+                ReplaceableIfNullOperator<T>,
                 CastableToTypeOperator<T> {
 
 
@@ -62,6 +66,10 @@ public interface Level2SetOfArrayElementsElementsOperator<T>
     
     public Level1SetOfArrayElementsOperator<T> endFor();
     
+    public Level2SetOfArrayElementsElementsOperator<T> replaceBy(final T replacement);
+    public Level2SetOfArrayElementsElementsOperator<T> replaceIfNullBy(final T replacement);
+
+
     public <X> Level2SetOfArrayElementsElementsOperator<X> convert(final IConverter<X,? super T> converter);
     public <X> Level2SetOfArrayElementsElementsOperator<X> eval(final IEvaluator<X,? super T> eval);
     public <X> Level2SetOfArrayElementsElementsOperator<X> exec(final IFunction<X,? super T> function);

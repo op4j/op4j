@@ -85,6 +85,11 @@ public class Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V
     }
 
 
+    public Level2MapOfListSelectedEntriesSelectedValueSelectedOperator<K,V> replaceBy(final List<V> replacement) {
+        return new Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level2MapOfListSelectedEntriesSelectedValueSelectedOperator<K,V> eval(final IEvaluator<? extends List<? extends V>,? super List<V>> eval) {
         return new Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.LIST));
     }

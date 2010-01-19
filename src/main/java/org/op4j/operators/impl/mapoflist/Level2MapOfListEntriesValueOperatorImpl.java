@@ -290,5 +290,15 @@ public class Level2MapOfListEntriesValueOperatorImpl<K,V> extends AbstractOperat
     }
 
 
+    public Level2MapOfListEntriesValueOperator<K, V> replaceBy(final List<V> replacement) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level2MapOfListEntriesValueOperator<K, V> replaceIfNullBy(final List<V> replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
+
+
     
 }

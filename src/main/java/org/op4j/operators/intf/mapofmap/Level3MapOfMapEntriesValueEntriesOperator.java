@@ -29,6 +29,7 @@ import org.op4j.operators.intf.mapoflist.Level3MapOfListEntriesValueElementsOper
 import org.op4j.operators.qualities.ExecutableMapEntryOperator;
 import org.op4j.operators.qualities.NavigableMapEntryOperator;
 import org.op4j.operators.qualities.NavigatingMapOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableMapEntryOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
@@ -45,6 +46,7 @@ public interface Level3MapOfMapEntriesValueEntriesOperator<K1,K2,V>
 		        NavigableMapEntryOperator,
                 ExecutableMapEntryOperator<K2,V>,
                 SelectableMapEntryOperator<K2, V>,
+                ReplaceableOperator<Map.Entry<K2,V>>,
 		        NavigatingMapOperator<K2,V> {
 
 
@@ -65,6 +67,9 @@ public interface Level3MapOfMapEntriesValueEntriesOperator<K1,K2,V>
     
     public <X2,Y> Level3MapOfMapEntriesValueEntriesOperator<K1,X2,Y> eval(final IEvaluator<? extends Map.Entry<X2,Y>,? super Map.Entry<K2,V>> eval);
     
+    public Level3MapOfMapEntriesValueEntriesOperator<K1,K2,V> replaceBy(final Map.Entry<K2,V> replacement);
+
+
     public <X2,Y> Level3MapOfMapEntriesValueEntriesOperator<K1,X2,Y> convert(final IConverter<? extends Map.Entry<X2,Y>,? super Map.Entry<K2,V>> converter);
 
     public <X> Level3MapOfListEntriesValueElementsOperator<K1,X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K2,V>> function);

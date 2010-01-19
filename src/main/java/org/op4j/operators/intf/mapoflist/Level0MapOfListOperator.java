@@ -43,6 +43,8 @@ import org.op4j.operators.qualities.ExtractableMapOperator;
 import org.op4j.operators.qualities.GenerizableOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
+import org.op4j.operators.qualities.ReplaceableIfNullOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -63,6 +65,8 @@ public interface Level0MapOfListOperator<K,V>
 		        GenerizableOperator<Map<K,List<V>>>,
                 ExecutableMapOfListOperator<K,V>,
                 SelectableOperator<Map<K,List<V>>>,
+                ReplaceableOperator<Map<K,List<V>>>,
+                ReplaceableIfNullOperator<Map<K,List<V>>>,
                 ConvertibleToMapOfArrayOperator<K,V>,
                 ConvertibleToMapOfSetOperator<K,V>,
                 ConvertibleToMapOfMapOperator<K,V> {
@@ -114,6 +118,10 @@ public interface Level0MapOfListOperator<K,V>
     public Level0GenericUniqOperator<Map<K,List<V>>> generic();
     
     
+    public Level0MapOfListOperator<K,V> replaceBy(final Map<K,List<V>> replacement);
+    public Level0MapOfListOperator<K,V> replaceIfNullBy(final Map<K,List<V>> replacement);
+
+
     public <X,Y> Level0MapOfListOperator<X,Y> convert(final IConverter<? extends Map<X,? extends List<Y>>,? super Map<K,List<V>>> converter);
     
     public <X,Y> Level0MapOfListOperator<X,Y> eval(final IEvaluator<? extends Map<X,? extends List<Y>>,? super Map<K,List<V>>> eval);

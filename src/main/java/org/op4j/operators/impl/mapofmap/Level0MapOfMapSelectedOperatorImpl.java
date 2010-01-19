@@ -35,6 +35,11 @@ public class Level0MapOfMapSelectedOperatorImpl<K1,K2,V> extends AbstractOperato
     }
 
 
+    public Level0MapOfMapSelectedOperator<K1,K2,V> replaceBy(final Map<K1,Map<K2,V>> replacement) {
+        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level0MapOfMapSelectedOperator<K1,K2,V> eval(final IEvaluator<? extends Map<? extends K1,? extends Map<? extends K2,? extends V>>,? super Map<K1,Map<K2,V>>> eval) {
         return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(eval, Normalization.MAP_OF_MAP));
     }

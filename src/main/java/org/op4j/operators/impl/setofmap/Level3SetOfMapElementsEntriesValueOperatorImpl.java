@@ -139,4 +139,14 @@ public class Level3SetOfMapElementsEntriesValueOperatorImpl<K,V> extends Abstrac
         return new Level3SetOfMapElementsEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalization.NONE));
     }
 
+
+    public Level3SetOfMapElementsEntriesValueOperator<K, V> replaceBy(final V replacement) {
+        return new Level3SetOfMapElementsEntriesValueOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level3SetOfMapElementsEntriesValueOperator<K, V> replaceIfNullBy(final V replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
+
 }

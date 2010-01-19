@@ -30,6 +30,7 @@ import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 import org.op4j.operators.qualities.ExecutableMapOfSetEntryOperator;
 import org.op4j.operators.qualities.NavigableMapEntryOperator;
 import org.op4j.operators.qualities.NavigatingMapOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableMapEntryOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
@@ -46,6 +47,7 @@ public interface Level1MapOfSetEntriesOperator<K,V>
 		        NavigableMapEntryOperator,
                 ExecutableMapOfSetEntryOperator<K,V>,
                 SelectableMapEntryOperator<K, Set<V>>,
+                ReplaceableOperator<Map.Entry<K,Set<V>>>,
 		        NavigatingMapOperator<K,Set<V>> {
 
 
@@ -66,6 +68,9 @@ public interface Level1MapOfSetEntriesOperator<K,V>
     
     public <X,Y> Level1MapOfSetEntriesOperator<X,Y> eval(final IEvaluator<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> eval);
     
+    public Level1MapOfSetEntriesOperator<K,V> replaceBy(final Map.Entry<K,Set<V>> replacement);
+
+
     public <X,Y> Level1MapOfSetEntriesOperator<X,Y> convert(final IConverter<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> converter);
 
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K,Set<V>>> function);

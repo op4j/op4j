@@ -20,6 +20,11 @@ public class Level2SetOfSetElementsSelectedElementsSelectedOperatorImpl<T> exten
     }
 
 
+    public Level2SetOfSetElementsSelectedElementsSelectedOperator<T> replaceBy(final T replacement) {
+        return new Level2SetOfSetElementsSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level2SetOfSetElementsSelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
         return new Level2SetOfSetElementsSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.NONE));
     }

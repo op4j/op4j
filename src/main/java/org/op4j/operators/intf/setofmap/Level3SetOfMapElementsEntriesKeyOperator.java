@@ -70,6 +70,10 @@ public interface Level3SetOfMapElementsEntriesKeyOperator<K,V>
     
     public <X> Level3SetOfMapElementsEntriesKeyOperator<X,V> eval(final IEvaluator<X,? super K> eval);
     
+    public Level3SetOfMapElementsEntriesKeyOperator<K,V> replaceBy(final K replacement);
+    public Level3SetOfMapElementsEntriesKeyOperator<K,V> replaceIfNullBy(final K replacement);
+
+
     public <X> Level3SetOfMapElementsEntriesKeyOperator<X,V> convert(final IConverter<X,? super K> converter);
     
         

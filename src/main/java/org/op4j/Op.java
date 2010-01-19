@@ -724,6 +724,13 @@ public final class Op {
         
         System.out.println(Types.LIST_ITERATOR_OF_BOOLEAN.getSimpleName());
         
+        
+        System.out.println(Op.onList(stringsList1).get());
+        System.out.println(Op.onList(stringsList1).forEach().replaceBy("op4j is great!").get());
+        System.out.println(Op.onList(stringsList1).forEach().replaceIfNullBy("op4j is great!").get());
+        System.out.println(printArray(Op.onArray(stringsArr1).forEach(Types.STRING).replaceIfNullBy("op4j is great!").get()));
+        System.out.println(printArray(Op.onArray(stringsArr1).replaceBy(new String[] {"alpha", "beta"}).forEach(Types.STRING).exec(StringFuncs.toUpperCase()).get()));
+        
     }
     
     

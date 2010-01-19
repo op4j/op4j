@@ -40,6 +40,8 @@ import org.op4j.operators.qualities.ExecutableSetOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
+import org.op4j.operators.qualities.ReplaceableIfNullOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -59,6 +61,8 @@ public interface Level1SetOfSetElementsOperator<T>
                 ModifiableCollectionOperator<T>,
                 ExecutableSetOperator<T>,
                 SelectableOperator<Set<T>>,
+                ReplaceableOperator<Set<T>>,
+                ReplaceableIfNullOperator<Set<T>>,
                 ConvertibleToArrayOperator<T>,
                 ConvertibleToListOperator,
                 ConvertibleToMapOperator<T> {
@@ -108,6 +112,10 @@ public interface Level1SetOfSetElementsOperator<T>
     public <K,V> Level1SetOfMapElementsOperator<K,V> toMap(final IMapBuilder<K,V,? super T> mapBuild);
 
     
+    public Level1SetOfSetElementsOperator<T> replaceBy(final Set<T> replacement);
+    public Level1SetOfSetElementsOperator<T> replaceIfNullBy(final Set<T> replacement);
+
+
     public <X> Level1SetOfSetElementsOperator<X> convert(final IConverter<? extends Set<X>,? super Set<T>> converter);
     
     public <X> Level1SetOfSetElementsOperator<X> eval(final IEvaluator<? extends Set<X>,? super Set<T>> eval);

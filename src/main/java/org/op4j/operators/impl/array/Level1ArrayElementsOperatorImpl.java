@@ -188,4 +188,16 @@ public class Level1ArrayElementsOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
+
+    public Level1ArrayElementsOperator<T> replaceBy(final T replacement) {
+        return new Level1ArrayElementsOperatorImpl<T>(this.type, getTarget().replaceBy(replacement));
+    }
+
+
+
+    public Level1ArrayElementsOperator<T> replaceIfNullBy(final T replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
+
+
 }

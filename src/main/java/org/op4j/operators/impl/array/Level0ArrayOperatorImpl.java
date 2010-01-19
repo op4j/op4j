@@ -314,4 +314,14 @@ public class Level0ArrayOperatorImpl<T>
     }
 
 
+    public Level0ArrayOperator<T> replaceBy(final T[] replacement) {
+        return new Level0ArrayOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level0ArrayOperator<T> replaceIfNullBy(final T[] replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
+
+
 }

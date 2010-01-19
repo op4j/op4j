@@ -280,6 +280,16 @@ public class Level1SetOfListElementsOperatorImpl<T> extends AbstractOperatorImpl
     public <X> Level1SetElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T>> function) {
         return new Level1SetElementsOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
+
+
+    public Level1SetOfListElementsOperator<T> replaceBy(final List<T> replacement) {
+        return new Level1SetOfListElementsOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level1SetOfListElementsOperator<T> replaceIfNullBy(final List<T> replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
     
     
     

@@ -20,8 +20,8 @@
 package org.op4j.operators.intf.mapoflist;
 
 import java.util.Comparator;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
@@ -29,6 +29,7 @@ import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableMapOfListSelectedOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -45,6 +46,7 @@ public interface Level0MapOfListSelectedOperator<K,V>
 		        SortableOperator<Map.Entry<K,List<V>>>,
 		        ModifiableMapOperator<K,List<V>>,
                 ExecutableMapOfListSelectedOperator<K,V>,
+                ReplaceableOperator<Map<K,List<V>>>,
                 SelectedOperator<Map<K,List<V>>> {
 
 
@@ -71,6 +73,8 @@ public interface Level0MapOfListSelectedOperator<K,V>
     public Level0MapOfListSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends List<? extends V>>, ? super Map<K,List<V>>> converter);
     
     public Level0MapOfListSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends List<? extends V>>, ? super Map<K,List<V>>> eval);
+
+    public Level0MapOfListSelectedOperator<K,V> replaceBy(final Map<K,List<V>> replacement);
 
     public Level0MapOfListSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends List<? extends V>>, ? super Map<K,List<V>>> function);
     

@@ -30,6 +30,7 @@ import org.op4j.operators.intf.setoflist.Level2SetOfListElementsElementsOperator
 import org.op4j.operators.qualities.ExecutableMapEntryOperator;
 import org.op4j.operators.qualities.NavigableMapEntryOperator;
 import org.op4j.operators.qualities.NavigatingMapOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableMapEntryOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
@@ -46,6 +47,7 @@ public interface Level2SetOfMapElementsEntriesOperator<K,V>
 		        NavigableMapEntryOperator,
                 ExecutableMapEntryOperator<K,V>,
                 SelectableMapEntryOperator<K, V>,
+                ReplaceableOperator<Map.Entry<K,V>>,
                 NavigatingMapOperator<K,V> {
 
 
@@ -66,6 +68,9 @@ public interface Level2SetOfMapElementsEntriesOperator<K,V>
     
     public <X,Y> Level2SetOfMapElementsEntriesOperator<X,Y> eval(final IEvaluator<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> eval);
     
+    public Level2SetOfMapElementsEntriesOperator<K,V> replaceBy(final Map.Entry<K,V> replacement);
+
+
     public <X,Y> Level2SetOfMapElementsEntriesOperator<X,Y> convert(final IConverter<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> converter);
 
     public <X> Level2SetOfListElementsElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K,V>> function);

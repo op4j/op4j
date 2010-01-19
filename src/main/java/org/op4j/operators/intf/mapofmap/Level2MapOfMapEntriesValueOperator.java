@@ -35,6 +35,8 @@ import org.op4j.operators.qualities.ExtractableMapOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
+import org.op4j.operators.qualities.ReplaceableIfNullOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -54,6 +56,8 @@ public interface Level2MapOfMapEntriesValueOperator<K1,K2,V>
                 ExecutableMapOperator<K2,V>,
                 ModifiableMapOperator<K2,V>,
                 SelectableOperator<Map<K2,V>>,
+                ReplaceableOperator<Map<K2,V>>,
+                ReplaceableIfNullOperator<Map<K2,V>>,
                 ExtractableMapOperator<K2,V> {
 
 
@@ -94,9 +98,14 @@ public interface Level2MapOfMapEntriesValueOperator<K1,K2,V>
     
     
     
+    public Level2MapOfMapEntriesValueOperator<K1,K2,V> replaceBy(final Map<K2,V> replacement);
+    public Level2MapOfMapEntriesValueOperator<K1,K2,V> replaceIfNullBy(final Map<K2,V> replacement);
+
+
     public <X2,Y> Level2MapOfMapEntriesValueOperator<K1,X2,Y> convert(final IConverter<? extends Map<X2,Y>,? super Map<K2,V>> converter);
     
     public <X2,Y> Level2MapOfMapEntriesValueOperator<K1,X2,Y> eval(final IEvaluator<? extends Map<X2,Y>,? super Map<K2,V>> eval);
+
 
     public <X2,Y> Level2MapOfMapEntriesValueOperator<K1,X2,Y> exec(final IFunction<? extends Map<X2,Y>, ? super Map<K2,V>> function);
 

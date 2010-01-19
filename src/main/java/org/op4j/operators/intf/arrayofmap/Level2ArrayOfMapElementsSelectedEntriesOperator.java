@@ -21,13 +21,13 @@ package org.op4j.operators.intf.arrayofmap;
 
 import java.util.Map;
 
-
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableMapEntrySelectedOperator;
 import org.op4j.operators.qualities.NavigableMapEntryOperator;
 import org.op4j.operators.qualities.NavigatingMapOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableMapEntryOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
@@ -43,6 +43,7 @@ public interface Level2ArrayOfMapElementsSelectedEntriesOperator<K,V>
 		extends UniqOperator<Map<K,V>[]>,
 		        NavigableMapEntryOperator,
                 ExecutableMapEntrySelectedOperator<K,V>,
+                ReplaceableOperator<Map.Entry<K,V>>,
                 SelectableMapEntryOperator<K, V>,
                 NavigatingMapOperator<K,V> {
 
@@ -60,6 +61,8 @@ public interface Level2ArrayOfMapElementsSelectedEntriesOperator<K,V>
     
     public Level1ArrayOfMapElementsSelectedOperator<K,V> endFor();
     
+    public Level2ArrayOfMapElementsSelectedEntriesOperator<K,V> replaceBy(final Map.Entry<K,V> replacement);
+
     public Level2ArrayOfMapElementsSelectedEntriesOperator<K,V> exec(final IFunction<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> function);
     
     public Level2ArrayOfMapElementsSelectedEntriesOperator<K,V> eval(final IEvaluator<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> eval);

@@ -80,6 +80,11 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
+    public Level0SetOfArraySelectedOperator<T> replaceBy(final Set<T[]> replacement) {
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level0SetOfArraySelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T[]>,? super Set<T[]>> eval) {
         return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.SET_OF_ARRAY));
     }

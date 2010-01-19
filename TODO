@@ -1,4 +1,3 @@
 
- - Create some sort of  "replace" method
  - Should the "add" of arrays have the same name as the "add" of generic operators? (they work on different dimensions!)
  - WARNING: Op.buildListOfList(Types.STRING).add(listOfString1).add(listOfString2).get()

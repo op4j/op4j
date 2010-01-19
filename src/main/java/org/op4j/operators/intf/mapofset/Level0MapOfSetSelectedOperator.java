@@ -29,6 +29,7 @@ import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableMapOfSetSelectedOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -45,6 +46,7 @@ public interface Level0MapOfSetSelectedOperator<K,V>
 		        SortableOperator<Map.Entry<K,Set<V>>>,
 		        ModifiableMapOperator<K,Set<V>>,
                 ExecutableMapOfSetSelectedOperator<K,V>,
+                ReplaceableOperator<Map<K,Set<V>>>,
                 SelectedOperator<Map<K,Set<V>>> {
 
 
@@ -71,6 +73,8 @@ public interface Level0MapOfSetSelectedOperator<K,V>
     public Level0MapOfSetSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> converter);
     
     public Level0MapOfSetSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> eval);
+
+    public Level0MapOfSetSelectedOperator<K,V> replaceBy(final Map<K,Set<V>> replacement);
 
     public Level0MapOfSetSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> function);
     

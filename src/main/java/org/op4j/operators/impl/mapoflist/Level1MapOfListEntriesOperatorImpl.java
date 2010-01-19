@@ -136,6 +136,11 @@ public class Level1MapOfListEntriesOperatorImpl<K,V> extends AbstractOperatorImp
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Entry<K, List<V>>> function) {
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
+
+
+    public Level1MapOfListEntriesOperator<K, V> replaceBy(final Entry<K, List<V>> replacement) {
+        return new Level1MapOfListEntriesOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    }
     
     
     

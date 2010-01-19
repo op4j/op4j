@@ -282,6 +282,16 @@ public class Level2MapOfSetEntriesValueOperatorImpl<K,V> extends AbstractOperato
         return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalization.NONE));
     }
 
+
+    public Level2MapOfSetEntriesValueOperator<K, V> replaceBy(final Set<V> replacement) {
+        return new Level2MapOfSetEntriesValueOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level2MapOfSetEntriesValueOperator<K, V> replaceIfNullBy(final Set<V> replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
+
     
     
 }

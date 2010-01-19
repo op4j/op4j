@@ -73,6 +73,11 @@ public class Level2MapOfListSelectedEntriesKeyOperatorImpl<K,V> extends Abstract
     }
 
 
+    public Level2MapOfListSelectedEntriesKeyOperator<K,V> replaceBy(final K replacement) {
+        return new Level2MapOfListSelectedEntriesKeyOperatorImpl<K,V>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level2MapOfListSelectedEntriesKeyOperator<K,V> eval(final IEvaluator<? extends K,? super K> eval) {
         return new Level2MapOfListSelectedEntriesKeyOperatorImpl<K,V>(getTarget().execute(eval, Normalization.NONE));
     }

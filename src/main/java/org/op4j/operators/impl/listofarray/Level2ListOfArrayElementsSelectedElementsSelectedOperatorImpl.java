@@ -25,6 +25,11 @@ public class Level2ListOfArrayElementsSelectedElementsSelectedOperatorImpl<T> ex
     }
 
 
+    public Level2ListOfArrayElementsSelectedElementsSelectedOperator<T> replaceBy(final T replacement) {
+        return new Level2ListOfArrayElementsSelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().replaceBy(replacement));
+    }
+
+
     public Level2ListOfArrayElementsSelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
         return new Level2ListOfArrayElementsSelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(eval, Normalization.NONE));
     }

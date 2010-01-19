@@ -23,6 +23,11 @@ public class Level1MapEntriesSelectedOperatorImpl<K,V> extends AbstractOperatorI
     }
 
 
+    public Level1MapEntriesSelectedOperator<K,V> replaceBy(final Entry<K,V> replacement) {
+        return new Level1MapEntriesSelectedOperatorImpl<K,V>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level1MapEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> eval) {
         return new Level1MapEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAPENTRY));
     }

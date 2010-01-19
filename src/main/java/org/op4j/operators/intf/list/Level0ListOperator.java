@@ -49,6 +49,8 @@ import org.op4j.operators.qualities.ExecutableListOperator;
 import org.op4j.operators.qualities.GenerizableOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
+import org.op4j.operators.qualities.ReplaceableIfNullOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -73,6 +75,8 @@ public interface Level0ListOperator<T>
 		        GenerizableOperator<List<T>>,
                 ExecutableListOperator<T>,
                 SelectableOperator<List<T>>,
+                ReplaceableOperator<List<T>>,
+                ReplaceableIfNullOperator<List<T>>,
                 ConvertibleToArrayOperator<T>,
 		        ConvertibleToSetOperator,
                 ConvertibleToMapOperator<T> {
@@ -127,6 +131,10 @@ public interface Level0ListOperator<T>
     
     
     
+    public Level0ListOperator<T> replaceBy(final List<T> replacement);
+    public Level0ListOperator<T> replaceIfNullBy(final List<T> replacement);
+
+
     public <X> Level0ListOperator<X> convert(final IConverter<? extends List<X>,? super List<T>> converter);
     
     public <X> Level0ListOperator<X> eval(final IEvaluator<? extends List<X>,? super List<T>> eval);

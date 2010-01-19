@@ -135,6 +135,11 @@ public class Level3MapOfMapEntriesValueEntriesOperatorImpl<K1,K2,V> extends Abst
     public <X> Level3MapOfListEntriesValueElementsOperator<K1, X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Entry<K2, V>> function) {
         return new Level3MapOfListEntriesValueElementsOperatorImpl<K1, X>(getTarget().execute(function, Normalization.NONE));
     }
+
+
+    public Level3MapOfMapEntriesValueEntriesOperator<K1, K2, V> replaceBy(final Entry<K2, V> replacement) {
+        return new Level3MapOfMapEntriesValueEntriesOperatorImpl<K1, K2, V>(getTarget().replaceBy(replacement));
+    }
     
     
     

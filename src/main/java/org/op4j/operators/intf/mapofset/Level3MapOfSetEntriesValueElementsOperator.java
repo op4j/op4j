@@ -29,6 +29,8 @@ import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
 import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
+import org.op4j.operators.qualities.ReplaceableIfNullOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
@@ -45,6 +47,8 @@ public interface Level3MapOfSetEntriesValueElementsOperator<K,V>
                 NavigatingCollectionOperator<V>,
         		ExecutableOperator<V>,
                 SelectableOperator<V>,
+                ReplaceableOperator<V>,
+                ReplaceableIfNullOperator<V>,
                 CastableToTypeOperator<V> {
 
 
@@ -63,6 +67,10 @@ public interface Level3MapOfSetEntriesValueElementsOperator<K,V>
     
     public Level2MapOfSetEntriesValueOperator<K,V> endFor();
     
+    public Level3MapOfSetEntriesValueElementsOperator<K,V> replaceBy(final V replacement);
+    public Level3MapOfSetEntriesValueElementsOperator<K,V> replaceIfNullBy(final V replacement);
+
+
     public <X> Level3MapOfSetEntriesValueElementsOperator<K,X> convert(final IConverter<X,? super V> converter);
     
     public <X> Level3MapOfSetEntriesValueElementsOperator<K,X> eval(final IEvaluator<X,? super V> eval);

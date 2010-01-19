@@ -36,6 +36,11 @@ public class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOperatorIm
     }
 
 
+    public Level0MapOfListSelectedOperator<K,V> replaceBy(final Map<K,List<V>> replacement) {
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level0MapOfListSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends List<? extends V>>,? super Map<K,List<V>>> eval) {
         return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAP_OF_LIST));
     }

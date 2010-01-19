@@ -41,6 +41,8 @@ import org.op4j.operators.qualities.ExecutableArrayOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableArrayOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
+import org.op4j.operators.qualities.ReplaceableIfNullOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -61,6 +63,8 @@ public interface Level2MapOfArrayEntriesValueOperator<K,V>
                 ExecutableArrayOperator<V>,
                 ModifiableCollectionOperator<V>,
                 SelectableOperator<V[]>,
+                ReplaceableOperator<V[]>,
+                ReplaceableIfNullOperator<V[]>,
                 ConvertibleToListOperator,
                 ConvertibleToSetOperator,
                 ConvertibleToMapOperator<V> {
@@ -111,6 +115,10 @@ public interface Level2MapOfArrayEntriesValueOperator<K,V>
     public <K2,V2> Level2MapOfMapEntriesValueOperator<K,K2,V2> toMap(final IMapBuilder<K2,V2,? super V> mapBuild);
 
     
+    public Level2MapOfArrayEntriesValueOperator<K,V> replaceBy(final V[] replacement);
+    public Level2MapOfArrayEntriesValueOperator<K,V> replaceIfNullBy(final V[] replacement);
+
+
     public <X> Level2MapOfArrayEntriesValueOperator<K,X> convert(final IConverter<X[],? super V[]> converter);
     
     public <X> Level2MapOfArrayEntriesValueOperator<K,X> eval(final IEvaluator<X[],? super V[]> eval);

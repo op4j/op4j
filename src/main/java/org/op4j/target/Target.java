@@ -257,6 +257,8 @@ public abstract class Target {
     
     
     
+    public abstract Target replaceBy(final Object replacement);
+
     
     
     public final Target execute(final IFunction<?,?> executable) {

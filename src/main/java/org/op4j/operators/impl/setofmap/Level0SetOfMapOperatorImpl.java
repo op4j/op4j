@@ -269,6 +269,16 @@ public class Level0SetOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<Map<K, V>>> function) {
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
+
+
+    public Level0SetOfMapOperator<K, V> replaceBy(final Set<Map<K, V>> replacement) {
+        return new Level0SetOfMapOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level0SetOfMapOperator<K, V> replaceIfNullBy(final Set<Map<K, V>> replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
     
     
 }

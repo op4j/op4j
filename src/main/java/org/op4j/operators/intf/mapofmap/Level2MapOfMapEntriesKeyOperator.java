@@ -28,6 +28,8 @@ import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
 import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
+import org.op4j.operators.qualities.ReplaceableIfNullOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
@@ -44,6 +46,8 @@ public interface Level2MapOfMapEntriesKeyOperator<K1,K2,V>
                 NavigatingMapEntryOperator,
                 CastableToTypeOperator<K1>,
                 ExecutableOperator<K1>, 
+                ReplaceableOperator<K1>,
+                ReplaceableIfNullOperator<K1>,
                 SelectableOperator<K1> {
 
 
@@ -65,10 +69,15 @@ public interface Level2MapOfMapEntriesKeyOperator<K1,K2,V>
     public <X> Level2MapOfMapEntriesKeyOperator<X,K2,V> asType(final Type<X> type);
     public Level2MapOfMapEntriesKeyOperator<?,K2,V> asUnknown();
 
+
     public <X> Level2MapOfMapEntriesKeyOperator<X,K2,V> exec(final IFunction<X, ? super K1> function);
     
     public <X> Level2MapOfMapEntriesKeyOperator<X,K2,V> eval(final IEvaluator<X,? super K1> eval);
     
+    public Level2MapOfMapEntriesKeyOperator<K1,K2,V> replaceBy(final K1 replacement);
+    public Level2MapOfMapEntriesKeyOperator<K1,K2,V> replaceIfNullBy(final K1 replacement);
+
+
     public <X> Level2MapOfMapEntriesKeyOperator<X,K2,V> convert(final IConverter<X,? super K1> converter);
     
         

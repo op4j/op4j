@@ -274,6 +274,16 @@ public class Level0ArrayOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K, V>[]> function) {
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
+
+
+    public Level0ArrayOfMapOperator<K, V> replaceBy(final Map<K, V>[] replacement) {
+        return new Level0ArrayOfMapOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level0ArrayOfMapOperator<K, V> replaceIfNullBy(final Map<K, V>[] replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
     
     
 }

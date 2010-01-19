@@ -208,4 +208,14 @@ public class Level2MapEntriesValueOperatorImpl<K,V> extends AbstractOperatorImpl
         return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalization.NONE));
     }
 
+
+    public Level2MapEntriesValueOperator<K, V> replaceBy(final V replacement) {
+        return new Level2MapEntriesValueOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level2MapEntriesValueOperator<K, V> replaceIfNullBy(final V replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
+
 }

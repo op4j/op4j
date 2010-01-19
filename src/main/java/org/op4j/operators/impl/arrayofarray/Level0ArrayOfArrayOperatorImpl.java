@@ -368,6 +368,16 @@ public class Level0ArrayOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
+    public Level0ArrayOfArrayOperator<T> replaceBy(final T[][] replacement) {
+        return new Level0ArrayOfArrayOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
+    public Level0ArrayOfArrayOperator<T> replaceIfNullBy(final T[][] replacement) {
+        return ifNull().replaceBy(replacement).endIf();
+    }
+
+
     
     
     

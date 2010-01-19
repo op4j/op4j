@@ -21,6 +21,11 @@ public class Level0GenericMultiSelectedOperatorImpl<T> extends AbstractOperatorI
     }
 
 
+    public Level0GenericMultiSelectedOperator<T> replaceBy(final T replacement) {
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level0GenericMultiSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
         return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().iterate().execute(eval, Normalization.NONE).endIterate(org.op4j.target.Target.Structure.LIST, null));
     }

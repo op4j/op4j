@@ -135,5 +135,10 @@ public class Level1MapOfSetEntriesOperatorImpl<K,V> extends AbstractOperatorImpl
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Entry<K, Set<V>>> function) {
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
+
+
+    public Level1MapOfSetEntriesOperator<K, V> replaceBy(final Entry<K, Set<V>> replacement) {
+        return new Level1MapOfSetEntriesOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    }
     
 }

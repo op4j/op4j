@@ -86,6 +86,11 @@ public class Level1ArrayOfMapSelectedElementsOperatorImpl<K,V> extends AbstractO
     }
 
 
+    public Level1ArrayOfMapSelectedElementsOperator<K,V> replaceBy(final Map<K,V> replacement) {
+        return new Level1ArrayOfMapSelectedElementsOperatorImpl<K,V>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level1ArrayOfMapSelectedElementsOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V>,? super Map<K,V>> eval) {
         return new Level1ArrayOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAP));
     }
@@ -136,14 +141,14 @@ public class Level1ArrayOfMapSelectedElementsOperatorImpl<K,V> extends AbstractO
     }
 
 
-    public Level1ArrayOfMapSelectedElementsOperator<K,V> sort(final Comparator<? super Entry<K,V>> comparator) {
-        return new Level1ArrayOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,V>(comparator)));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level1ArrayOfMapSelectedElementsOperator<K,V> sort() {
         return new Level1ArrayOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortByKey()));
+    }
+
+
+    public Level1ArrayOfMapSelectedElementsOperator<K,V> sort(final Comparator<? super Entry<K,V>> comparator) {
+        return new Level1ArrayOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,V>(comparator)));
     }
 
 

@@ -41,6 +41,8 @@ import org.op4j.operators.qualities.ExecutableSetOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
+import org.op4j.operators.qualities.ReplaceableIfNullOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -60,6 +62,8 @@ public interface Level2MapOfSetEntriesValueOperator<K,V>
                 ModifiableCollectionOperator<V>,
                 ExecutableSetOperator<V>,
                 SelectableOperator<Set<V>>,
+                ReplaceableOperator<Set<V>>,
+                ReplaceableIfNullOperator<Set<V>>,
                 ConvertibleToArrayOperator<V>,
                 ConvertibleToListOperator,
                 ConvertibleToMapOperator<V> {
@@ -109,6 +113,10 @@ public interface Level2MapOfSetEntriesValueOperator<K,V>
     public <K2,V2> Level2MapOfMapEntriesValueOperator<K,K2,V2> toMap(final IMapBuilder<K2,V2,? super V> mapBuild);
 
     
+    public Level2MapOfSetEntriesValueOperator<K,V> replaceBy(final Set<V> replacement);
+    public Level2MapOfSetEntriesValueOperator<K,V> replaceIfNullBy(final Set<V> replacement);
+
+
     public <X> Level2MapOfSetEntriesValueOperator<K,X> convert(final IConverter<? extends Set<X>,? super Set<V>> converter);
     
     public <X> Level2MapOfSetEntriesValueOperator<K,X> eval(final IEvaluator<? extends Set<X>,? super Set<V>> eval);

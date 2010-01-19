@@ -18,6 +18,11 @@ public class Level0GenericUniqSelectedOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
+    public Level0GenericUniqSelectedOperator<T> replaceBy(final T replacement) {
+        return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().replaceBy(replacement));
+    }
+
+
     public Level0GenericUniqSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
         return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.NONE));
     }
