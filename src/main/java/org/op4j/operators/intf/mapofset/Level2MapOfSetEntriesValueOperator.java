@@ -90,8 +90,10 @@ public interface Level2MapOfSetEntriesValueOperator<K,V>
     public Level2MapOfSetEntriesValueOperator<K,V> sort(final Comparator<? super V> comparator);
     
         
-    public Level2MapOfSetEntriesValueOperator<K,V> add(final V... newElements);
-    public Level2MapOfSetEntriesValueOperator<K,V> insert(final int position, final V... newElements);
+    public Level2MapOfSetEntriesValueOperator<K,V> add(final V newElement);
+    public Level2MapOfSetEntriesValueOperator<K,V> addAll(final V... newElements);
+    public Level2MapOfSetEntriesValueOperator<K,V> insert(final int position, final V newElement);
+    public Level2MapOfSetEntriesValueOperator<K,V> insertAll(final int position, final V... newElements);
     public Level2MapOfSetEntriesValueOperator<K,V> addAll(final Collection<V> collection);
     public Level2MapOfSetEntriesValueOperator<K,V> removeAllIndexes(final int... indices);
     public Level2MapOfSetEntriesValueOperator<K,V> removeAllEqual(final V... values);
@@ -113,8 +115,8 @@ public interface Level2MapOfSetEntriesValueOperator<K,V>
     public <K2,V2> Level2MapOfMapEntriesValueOperator<K,K2,V2> toMap(final IMapBuilder<K2,V2,? super V> mapBuild);
 
     
-    public Level2MapOfSetEntriesValueOperator<K,V> replaceBy(final Set<V> replacement);
-    public Level2MapOfSetEntriesValueOperator<K,V> replaceIfNullBy(final Set<V> replacement);
+    public Level2MapOfSetEntriesValueOperator<K,V> replaceWith(final Set<V> replacement);
+    public Level2MapOfSetEntriesValueOperator<K,V> replaceIfNullWith(final Set<V> replacement);
 
 
     public <X> Level2MapOfSetEntriesValueOperator<K,X> convert(final IConverter<? extends Set<X>,? super Set<V>> converter);

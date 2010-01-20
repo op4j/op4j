@@ -135,13 +135,13 @@ public class Level2SetOfSetElementsElementsOperatorImpl<T> extends AbstractOpera
     }
 
 
-    public Level2SetOfSetElementsElementsOperator<T> replaceBy(final T replacement) {
-        return new Level2SetOfSetElementsElementsOperatorImpl<T>(getTarget().replaceBy(replacement));
+    public Level2SetOfSetElementsElementsOperator<T> replaceWith(final T replacement) {
+        return new Level2SetOfSetElementsElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level2SetOfSetElementsElementsOperator<T> replaceIfNullBy(final T replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level2SetOfSetElementsElementsOperator<T> replaceIfNullWith(final T replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
 
 }

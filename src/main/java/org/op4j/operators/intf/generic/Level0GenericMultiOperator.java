@@ -84,8 +84,8 @@ public interface Level0GenericMultiOperator<T>
 
     
     
-    public Level0GenericMultiOperator<T> replaceBy(final T replacement);
-    public Level0GenericMultiOperator<T> replaceIfNullBy(final T replacement);
+    public Level0GenericMultiOperator<T> replaceWith(final T replacement);
+    public Level0GenericMultiOperator<T> replaceIfNullWith(final T replacement);
 
 
     public <X> Level0GenericMultiOperator<X> convert(final IConverter<X,? super T> converter);
@@ -99,8 +99,10 @@ public interface Level0GenericMultiOperator<T>
     public <X> Level0GenericMultiOperator<X> asType(final Type<X> type);
     public Level0GenericMultiOperator<?> asUnknown();
         
-    public Level0GenericMultiOperator<T> add(final T... newElements);
-    public Level0GenericMultiOperator<T> insert(final int position, final T... newElements);
+    public Level0GenericMultiOperator<T> add(final T newElement);
+    public Level0GenericMultiOperator<T> addAll(final T... newElements);
+    public Level0GenericMultiOperator<T> insert(final int position, final T newElement);
+    public Level0GenericMultiOperator<T> insertAll(final int position, final T... newElements);
     public Level0GenericMultiOperator<T> addAll(final Collection<T> collection);
     public Level0GenericMultiOperator<T> removeAllIndexes(final int... indices);
     public Level0GenericMultiOperator<T> removeAllEqual(final T... values);

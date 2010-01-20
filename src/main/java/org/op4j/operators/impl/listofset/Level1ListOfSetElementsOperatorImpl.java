@@ -68,12 +68,22 @@ public class Level1ListOfSetElementsOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level1ListOfSetElementsOperator<T> add(final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level1ListOfSetElementsOperator<T> add(final T newElement) {
+        return new Level1ListOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElement)));
+    }
+
+    public Level1ListOfSetElementsOperator<T> addAll(final T... newElements) {
         return new Level1ListOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElements)));
     }
 
 
-    public Level1ListOfSetElementsOperator<T> insert(final int position, final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level1ListOfSetElementsOperator<T> insert(final int position, final T newElement) {
+        return new Level1ListOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T>(position, newElement)));
+    }
+
+    public Level1ListOfSetElementsOperator<T> insertAll(final int position, final T... newElements) {
         return new Level1ListOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T>(position, newElements)));
     }
 
@@ -278,13 +288,13 @@ public class Level1ListOfSetElementsOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level1ListOfSetElementsOperator<T> replaceBy(final Set<T> replacement) {
-        return new Level1ListOfSetElementsOperatorImpl<T>(getTarget().replaceBy(replacement));
+    public Level1ListOfSetElementsOperator<T> replaceWith(final Set<T> replacement) {
+        return new Level1ListOfSetElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level1ListOfSetElementsOperator<T> replaceIfNullBy(final Set<T> replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level1ListOfSetElementsOperator<T> replaceIfNullWith(final Set<T> replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
     
     

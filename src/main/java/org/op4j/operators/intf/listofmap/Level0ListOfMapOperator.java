@@ -92,8 +92,10 @@ public interface Level0ListOfMapOperator<K,V>
     public Level0ListOfMapOperator<K,V> sort();
     public Level0ListOfMapOperator<K,V> sort(final Comparator<? super Map<K,V>> comparator);
     
-    public Level0ListOfMapOperator<K,V> add(final Map<K,V>... newElements);
-    public Level0ListOfMapOperator<K,V> insert(final int position, final Map<K,V>... newElements);
+    public Level0ListOfMapOperator<K,V> add(final Map<K,V> newElement);
+    public Level0ListOfMapOperator<K,V> addAll(final Map<K,V>... newElements);
+    public Level0ListOfMapOperator<K,V> insert(final int position, final Map<K,V> newElement);
+    public Level0ListOfMapOperator<K,V> insertAll(final int position, final Map<K,V>... newElements);
     public Level0ListOfMapOperator<K,V> addAll(final Collection<Map<K,V>> collection);
     public Level0ListOfMapOperator<K,V> removeAllIndexes(final int... indices);
     public Level0ListOfMapOperator<K,V> removeAllEqual(final Map<K,V>... values);
@@ -111,8 +113,8 @@ public interface Level0ListOfMapOperator<K,V>
 
     
     
-    public Level0ListOfMapOperator<K,V> replaceBy(final List<Map<K,V>> replacement);
-    public Level0ListOfMapOperator<K,V> replaceIfNullBy(final List<Map<K,V>> replacement);
+    public Level0ListOfMapOperator<K,V> replaceWith(final List<Map<K,V>> replacement);
+    public Level0ListOfMapOperator<K,V> replaceIfNullWith(final List<Map<K,V>> replacement);
 
 
     public <X,Y> Level0ListOfMapOperator<X,Y> convert(final IConverter<? extends List<? extends Map<X,Y>>,? super List<Map<K,V>>> converter);

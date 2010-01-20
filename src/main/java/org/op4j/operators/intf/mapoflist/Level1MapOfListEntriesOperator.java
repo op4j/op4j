@@ -68,7 +68,7 @@ public interface Level1MapOfListEntriesOperator<K,V>
     
     public <X,Y> Level1MapOfListEntriesOperator<X,Y> eval(final IEvaluator<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> eval);
     
-    public Level1MapOfListEntriesOperator<K,V> replaceBy(final Map.Entry<K,List<V>> replacement);
+    public Level1MapOfListEntriesOperator<K,V> replaceWith(final Map.Entry<K,List<V>> replacement);
 
 
     public <X,Y> Level1MapOfListEntriesOperator<X,Y> convert(final IConverter<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> converter);

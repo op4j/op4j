@@ -73,11 +73,6 @@ public class Level2MapOfSetSelectedEntriesSelectedKeyOperatorImpl<K,V> extends A
     }
 
 
-    public Level2MapOfSetSelectedEntriesSelectedKeyOperator<K,V> replaceBy(final K replacement) {
-        return new Level2MapOfSetSelectedEntriesSelectedKeyOperatorImpl<K,V>(getTarget().replaceBy(replacement));
-    }
-
-
     public Level2MapOfSetSelectedEntriesSelectedKeyOperator<K,V> eval(final IEvaluator<? extends K,? super K> eval) {
         return new Level2MapOfSetSelectedEntriesSelectedKeyOperatorImpl<K,V>(getTarget().execute(eval, Normalization.NONE));
     }
@@ -90,6 +85,11 @@ public class Level2MapOfSetSelectedEntriesSelectedKeyOperatorImpl<K,V> extends A
 
     public Level2MapOfSetSelectedEntriesSelectedKeyOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
         return new Level2MapOfSetSelectedEntriesSelectedKeyOperatorImpl<K,V>(getTarget().execute(function, Normalization.NONE));
+    }
+
+
+    public Level2MapOfSetSelectedEntriesSelectedKeyOperator<K,V> replaceWith(final K replacement) {
+        return new Level2MapOfSetSelectedEntriesSelectedKeyOperatorImpl<K,V>(getTarget().replaceWith(replacement));
     }
 
 

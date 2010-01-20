@@ -137,13 +137,13 @@ public class Level2ArrayOfArrayElementsElementsOperatorImpl<T> extends AbstractO
     }
 
 
-    public Level2ArrayOfArrayElementsElementsOperator<T> replaceBy(final T replacement) {
-        return new Level2ArrayOfArrayElementsElementsOperatorImpl<T>(this.type, getTarget().replaceBy(replacement));
+    public Level2ArrayOfArrayElementsElementsOperator<T> replaceWith(final T replacement) {
+        return new Level2ArrayOfArrayElementsElementsOperatorImpl<T>(this.type, getTarget().replaceWith(replacement));
     }
 
 
-    public Level2ArrayOfArrayElementsElementsOperator<T> replaceIfNullBy(final T replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level2ArrayOfArrayElementsElementsOperator<T> replaceIfNullWith(final T replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
 
 }

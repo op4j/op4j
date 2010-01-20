@@ -69,8 +69,8 @@ public interface Level2MapOfArrayEntriesKeyOperator<K,V>
     
     public <X> Level2MapOfArrayEntriesKeyOperator<X,V> eval(final IEvaluator<X,? super K> eval);
     
-    public Level2MapOfArrayEntriesKeyOperator<K,V> replaceBy(final K replacement);
-    public Level2MapOfArrayEntriesKeyOperator<K,V> replaceIfNullBy(final K replacement);
+    public Level2MapOfArrayEntriesKeyOperator<K,V> replaceWith(final K replacement);
+    public Level2MapOfArrayEntriesKeyOperator<K,V> replaceIfNullWith(final K replacement);
 
 
     public <X> Level2MapOfArrayEntriesKeyOperator<X,V> convert(final IConverter<X,? super K> converter);

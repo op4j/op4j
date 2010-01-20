@@ -20,11 +20,6 @@ public class Level4MapOfMapEntriesSelectedValueEntriesSelectedValueSelectedOpera
     }
 
 
-    public Level4MapOfMapEntriesSelectedValueEntriesSelectedValueSelectedOperator<K1,K2,V> replaceBy(final V replacement) {
-        return new Level4MapOfMapEntriesSelectedValueEntriesSelectedValueSelectedOperatorImpl<K1,K2,V>(getTarget().replaceBy(replacement));
-    }
-
-
     public Level4MapOfMapEntriesSelectedValueEntriesSelectedValueSelectedOperator<K1,K2,V> eval(final IEvaluator<? extends V,? super V> eval) {
         return new Level4MapOfMapEntriesSelectedValueEntriesSelectedValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(eval, Normalization.NONE));
     }
@@ -37,6 +32,11 @@ public class Level4MapOfMapEntriesSelectedValueEntriesSelectedValueSelectedOpera
 
     public Level4MapOfMapEntriesSelectedValueEntriesSelectedValueSelectedOperator<K1,K2,V> exec(final IFunction<? extends V,? super V> function) {
         return new Level4MapOfMapEntriesSelectedValueEntriesSelectedValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(function, Normalization.NONE));
+    }
+
+
+    public Level4MapOfMapEntriesSelectedValueEntriesSelectedValueSelectedOperator<K1,K2,V> replaceWith(final V replacement) {
+        return new Level4MapOfMapEntriesSelectedValueEntriesSelectedValueSelectedOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement));
     }
 
 

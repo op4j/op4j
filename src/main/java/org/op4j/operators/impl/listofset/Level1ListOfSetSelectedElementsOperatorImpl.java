@@ -82,6 +82,11 @@ public class Level1ListOfSetSelectedElementsOperatorImpl<T> extends AbstractOper
     }
 
 
+    public Level1ListOfSetSelectedElementsOperator<T> insertAll(final int position, final T... newElements) {
+        return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T>(position, newElements)));
+    }
+
+
     public Level1ListOfSetSelectedElementsOperator<T> removeAllIndexes(final int... indices) {
         return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexes<T>(indices)));
     }
@@ -132,11 +137,6 @@ public class Level1ListOfSetSelectedElementsOperatorImpl<T> extends AbstractOper
     }
 
 
-    public Level1ListOfSetSelectedElementsOperator<T> replaceBy(final Set<T> replacement) {
-        return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().replaceBy(replacement));
-    }
-
-
     public Level1ListOfSetSelectedElementsOperator<T> eval(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval) {
         return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(eval, Normalization.SET));
     }
@@ -147,7 +147,13 @@ public class Level1ListOfSetSelectedElementsOperatorImpl<T> extends AbstractOper
     }
 
 
-    public Level1ListOfSetSelectedElementsOperator<T> add(final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level1ListOfSetSelectedElementsOperator<T> add(final T newElement) {
+        return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElement)));
+    }
+
+
+    public Level1ListOfSetSelectedElementsOperator<T> addAll(final T... newElements) {
         return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElements)));
     }
 
@@ -157,8 +163,9 @@ public class Level1ListOfSetSelectedElementsOperatorImpl<T> extends AbstractOper
     }
 
 
-    public Level1ListOfSetSelectedElementsOperator<T> insert(final int position, final T... newElements) {
-        return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T>(position, newElements)));
+    @SuppressWarnings("unchecked")
+    public Level1ListOfSetSelectedElementsOperator<T> insert(final int position, final T newElement) {
+        return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T>(position, newElement)));
     }
 
 
@@ -175,6 +182,11 @@ public class Level1ListOfSetSelectedElementsOperatorImpl<T> extends AbstractOper
 
     public Level1ListOfSetSelectedElementsOperator<T> sort(final Comparator<? super T> comparator) {
         return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.SortByComparator<T>(comparator)));
+    }
+
+
+    public Level1ListOfSetSelectedElementsOperator<T> replaceWith(final Set<T> replacement) {
+        return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 

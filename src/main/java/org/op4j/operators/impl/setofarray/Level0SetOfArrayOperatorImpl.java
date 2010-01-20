@@ -73,12 +73,22 @@ public class Level0SetOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0SetOfArrayOperator<T> add(final T[]... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0SetOfArrayOperator<T> add(final T[] newElement) {
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T[]>(NormalizationUtils.normalizeArray(newElement))));
+    }
+
+    public Level0SetOfArrayOperator<T> addAll(final T[]... newElements) {
         return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T[]>(NormalizationUtils.normalizeArrays(newElements))));
     }
 
 
-    public Level0SetOfArrayOperator<T> insert(final int position, final T[]... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0SetOfArrayOperator<T> insert(final int position, final T[] newElement) {
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T[]>(position, NormalizationUtils.normalizeArray(newElement))));
+    }
+
+    public Level0SetOfArrayOperator<T> insertAll(final int position, final T[]... newElements) {
         return new Level0SetOfArrayOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T[]>(position, NormalizationUtils.normalizeArrays(newElements))));
     }
 
@@ -362,13 +372,13 @@ public class Level0SetOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0SetOfArrayOperator<T> replaceBy(final Set<T[]> replacement) {
-        return new Level0SetOfArrayOperatorImpl<T>(getTarget().replaceBy(replacement));
+    public Level0SetOfArrayOperator<T> replaceWith(final Set<T[]> replacement) {
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level0SetOfArrayOperator<T> replaceIfNullBy(final Set<T[]> replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level0SetOfArrayOperator<T> replaceIfNullWith(final Set<T[]> replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
     
     

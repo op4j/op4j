@@ -77,6 +77,11 @@ public class Level1SetOfMapSelectedElementsOperatorImpl<K,V> extends AbstractOpe
     }
 
 
+    public Level1SetOfMapSelectedElementsOperator<K,V> insertAll(final int position, final Map<K,V> map) {
+        return new Level1SetOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(new MapFuncs.InsertAll<K,V>(position, map)));
+    }
+
+
     public Level1SetOfMapSelectedElementsOperator<K,V> removeAllTrue(final IEvaluator<Boolean,? super Entry<K,V>> eval) {
         return new Level1SetOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K,V>(eval)));
     }
@@ -84,11 +89,6 @@ public class Level1SetOfMapSelectedElementsOperatorImpl<K,V> extends AbstractOpe
 
     public Level1SetOfMapSelectedElementsOperator<K,V> removeAllFalse(final IEvaluator<Boolean,? super Entry<K,V>> eval) {
         return new Level1SetOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K,V>(eval)));
-    }
-
-
-    public Level1SetOfMapSelectedElementsOperator<K,V> replaceBy(final Map<K,V> replacement) {
-        return new Level1SetOfMapSelectedElementsOperatorImpl<K,V>(getTarget().replaceBy(replacement));
     }
 
 
@@ -104,11 +104,6 @@ public class Level1SetOfMapSelectedElementsOperatorImpl<K,V> extends AbstractOpe
 
     public Level2SetOfMapSelectedElementsEntriesOperator<K,V> forEachEntry() {
         return new Level2SetOfMapSelectedElementsEntriesOperatorImpl<K,V>(getTarget().iterate());
-    }
-
-
-    public Level1SetOfMapSelectedElementsOperator<K,V> insertAll(final int position, final Map<K,V> map) {
-        return new Level1SetOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(new MapFuncs.InsertAll<K,V>(position, map)));
     }
 
 
@@ -150,6 +145,11 @@ public class Level1SetOfMapSelectedElementsOperatorImpl<K,V> extends AbstractOpe
 
     public Level1SetOfMapSelectedElementsOperator<K,V> sort(final Comparator<? super Entry<K,V>> comparator) {
         return new Level1SetOfMapSelectedElementsOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,V>(comparator)));
+    }
+
+
+    public Level1SetOfMapSelectedElementsOperator<K,V> replaceWith(final Map<K,V> replacement) {
+        return new Level1SetOfMapSelectedElementsOperatorImpl<K,V>(getTarget().replaceWith(replacement));
     }
 
 

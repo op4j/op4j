@@ -255,13 +255,13 @@ public class Level1ArrayOfMapElementsOperatorImpl<K,V> extends AbstractOperatorI
     }
 
 
-    public Level1ArrayOfMapElementsOperator<K, V> replaceBy(final Map<K, V> replacement) {
-        return new Level1ArrayOfMapElementsOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    public Level1ArrayOfMapElementsOperator<K, V> replaceWith(final Map<K, V> replacement) {
+        return new Level1ArrayOfMapElementsOperatorImpl<K, V>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level1ArrayOfMapElementsOperator<K, V> replaceIfNullBy(final Map<K, V> replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level1ArrayOfMapElementsOperator<K, V> replaceIfNullWith(final Map<K, V> replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
     
     

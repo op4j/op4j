@@ -52,7 +52,7 @@ public interface Level2SetOfSetElementsElementsSelectedOperator<T>
     
     public Level2SetOfSetElementsElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
 
-    public Level2SetOfSetElementsElementsSelectedOperator<T> replaceBy(final T replacement);
+    public Level2SetOfSetElementsElementsSelectedOperator<T> replaceWith(final T replacement);
 
     public Level2SetOfSetElementsElementsSelectedOperator<T> exec(final IFunction<? extends T, ? super T> function);
 

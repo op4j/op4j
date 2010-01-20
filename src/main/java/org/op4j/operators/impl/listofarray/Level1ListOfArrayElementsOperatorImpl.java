@@ -67,12 +67,22 @@ public class Level1ListOfArrayElementsOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
-    public Level1ListOfArrayElementsOperator<T> add(final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level1ListOfArrayElementsOperator<T> add(final T newElement) {
+        return new Level1ListOfArrayElementsOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Add<T>(newElement)));
+    }
+
+    public Level1ListOfArrayElementsOperator<T> addAll(final T... newElements) {
         return new Level1ListOfArrayElementsOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Add<T>(newElements)));
     }
 
 
-    public Level1ListOfArrayElementsOperator<T> insert(final int position, final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level1ListOfArrayElementsOperator<T> insert(final int position, final T newElement) {
+        return new Level1ListOfArrayElementsOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Insert<T>(position, newElement)));
+    }
+
+    public Level1ListOfArrayElementsOperator<T> insertAll(final int position, final T... newElements) {
         return new Level1ListOfArrayElementsOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Insert<T>(position, newElements)));
     }
 
@@ -285,13 +295,13 @@ public class Level1ListOfArrayElementsOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
-    public Level1ListOfArrayElementsOperator<T> replaceBy(final T[] replacement) {
-        return new Level1ListOfArrayElementsOperatorImpl<T>(getTarget().replaceBy(replacement));
+    public Level1ListOfArrayElementsOperator<T> replaceWith(final T[] replacement) {
+        return new Level1ListOfArrayElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level1ListOfArrayElementsOperator<T> replaceIfNullBy(final T[] replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level1ListOfArrayElementsOperator<T> replaceIfNullWith(final T[] replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
 
 

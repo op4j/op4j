@@ -67,12 +67,22 @@ public class Level1ArrayOfListElementsOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
-    public Level1ArrayOfListElementsOperator<T> add(final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level1ArrayOfListElementsOperator<T> add(final T newElement) {
+        return new Level1ArrayOfListElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T>(newElement)));
+    }
+
+    public Level1ArrayOfListElementsOperator<T> addAll(final T... newElements) {
         return new Level1ArrayOfListElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T>(newElements)));
     }
 
 
-    public Level1ArrayOfListElementsOperator<T> insert(final int position, final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level1ArrayOfListElementsOperator<T> insert(final int position, final T newElement) {
+        return new Level1ArrayOfListElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<T>(position, newElement)));
+    }
+
+    public Level1ArrayOfListElementsOperator<T> insertAll(final int position, final T... newElements) {
         return new Level1ArrayOfListElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<T>(position, newElements)));
     }
 
@@ -283,13 +293,13 @@ public class Level1ArrayOfListElementsOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
-    public Level1ArrayOfListElementsOperator<T> replaceBy(final List<T> replacement) {
-        return new Level1ArrayOfListElementsOperatorImpl<T>(getTarget().replaceBy(replacement));
+    public Level1ArrayOfListElementsOperator<T> replaceWith(final List<T> replacement) {
+        return new Level1ArrayOfListElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level1ArrayOfListElementsOperator<T> replaceIfNullBy(final List<T> replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level1ArrayOfListElementsOperator<T> replaceIfNullWith(final List<T> replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
     
     

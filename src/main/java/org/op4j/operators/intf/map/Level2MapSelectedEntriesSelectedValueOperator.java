@@ -65,7 +65,7 @@ public interface Level2MapSelectedEntriesSelectedValueOperator<K,V>
     
     public Level2MapSelectedEntriesSelectedValueOperator<K,V> eval(final IEvaluator<? extends V, ? super V> eval);
 
-    public Level2MapSelectedEntriesSelectedValueOperator<K,V> replaceBy(final V replacement);
+    public Level2MapSelectedEntriesSelectedValueOperator<K,V> replaceWith(final V replacement);
 
     public Level2MapSelectedEntriesSelectedValueOperator<K,V> exec(final IFunction<? extends V, ? super V> function);
 

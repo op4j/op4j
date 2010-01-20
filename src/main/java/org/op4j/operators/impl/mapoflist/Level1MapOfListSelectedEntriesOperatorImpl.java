@@ -46,11 +46,6 @@ public class Level1MapOfListSelectedEntriesOperatorImpl<K,V> extends AbstractOpe
     }
 
 
-    public Level1MapOfListSelectedEntriesOperator<K,V> replaceBy(final Entry<K,List<V>> replacement) {
-        return new Level1MapOfListSelectedEntriesOperatorImpl<K,V>(getTarget().replaceBy(replacement));
-    }
-
-
     public Level1MapOfListSelectedEntriesOperator<K,V> eval(final IEvaluator<? extends Entry<? extends K,? extends List<? extends V>>,? super Entry<K,List<V>>> eval) {
         return new Level1MapOfListSelectedEntriesOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAPENTRY_OF_LIST));
     }
@@ -83,6 +78,11 @@ public class Level1MapOfListSelectedEntriesOperatorImpl<K,V> extends AbstractOpe
 
     public Level1MapOfListSelectedEntriesOperator<K,V> exec(final IFunction<? extends Entry<? extends K,? extends List<? extends V>>,? super Entry<K,List<V>>> function) {
         return new Level1MapOfListSelectedEntriesOperatorImpl<K,V>(getTarget().execute(function, Normalization.MAPENTRY_OF_LIST));
+    }
+
+
+    public Level1MapOfListSelectedEntriesOperator<K,V> replaceWith(final Entry<K,List<V>> replacement) {
+        return new Level1MapOfListSelectedEntriesOperatorImpl<K,V>(getTarget().replaceWith(replacement));
     }
 
 

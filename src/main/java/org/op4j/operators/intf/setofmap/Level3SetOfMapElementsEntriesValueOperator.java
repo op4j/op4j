@@ -67,8 +67,8 @@ public interface Level3SetOfMapElementsEntriesValueOperator<K,V>
     
     public Level2SetOfMapElementsEntriesOperator<K,V> endOn();
     
-    public Level3SetOfMapElementsEntriesValueOperator<K,V> replaceBy(final V replacement);
-    public Level3SetOfMapElementsEntriesValueOperator<K,V> replaceIfNullBy(final V replacement);
+    public Level3SetOfMapElementsEntriesValueOperator<K,V> replaceWith(final V replacement);
+    public Level3SetOfMapElementsEntriesValueOperator<K,V> replaceIfNullWith(final V replacement);
 
 
     public <X> Level3SetOfMapElementsEntriesValueOperator<K,X> convert(final IConverter<X,? super V> converter);

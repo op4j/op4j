@@ -26,6 +26,11 @@ public class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOperatorIm
     }
 
 
+    public Level0MapOfListSelectedOperator<K,V> insertAll(final int position, final Map<K,List<V>> map) {
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.InsertAll<K,List<V>>(position, NormalizationUtils.normalizeMapOfList(map))));
+    }
+
+
     public Level0MapOfListSelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean,? super Entry<K,List<V>>> eval) {
         return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K,List<V>>(eval)));
     }
@@ -33,11 +38,6 @@ public class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOperatorIm
 
     public Level0MapOfListSelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean,? super Entry<K,List<V>>> eval) {
         return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K,List<V>>(eval)));
-    }
-
-
-    public Level0MapOfListSelectedOperator<K,V> replaceBy(final Map<K,List<V>> replacement) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().replaceBy(replacement));
     }
 
 
@@ -53,11 +53,6 @@ public class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOperatorIm
 
     public Level1MapOfListSelectedEntriesOperator<K,V> forEachEntry() {
         return new Level1MapOfListSelectedEntriesOperatorImpl<K,V>(getTarget().iterate());
-    }
-
-
-    public Level0MapOfListSelectedOperator<K,V> insertAll(final int position, final Map<K,List<V>> map) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.InsertAll<K,List<V>>(position, NormalizationUtils.normalizeMapOfList(map))));
     }
 
 
@@ -99,6 +94,11 @@ public class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOperatorIm
 
     public Level0MapOfListSelectedOperator<K,V> sort(final Comparator<? super Entry<K,List<V>>> comparator) {
         return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,List<V>>(comparator)));
+    }
+
+
+    public Level0MapOfListSelectedOperator<K,V> replaceWith(final Map<K,List<V>> replacement) {
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
     }
 
 

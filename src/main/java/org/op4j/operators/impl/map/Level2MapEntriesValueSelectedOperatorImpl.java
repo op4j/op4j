@@ -20,11 +20,6 @@ public class Level2MapEntriesValueSelectedOperatorImpl<K,V> extends AbstractOper
     }
 
 
-    public Level2MapEntriesValueSelectedOperator<K,V> replaceBy(final V replacement) {
-        return new Level2MapEntriesValueSelectedOperatorImpl<K,V>(getTarget().replaceBy(replacement));
-    }
-
-
     public Level2MapEntriesValueSelectedOperator<K,V> eval(final IEvaluator<? extends V,? super V> eval) {
         return new Level2MapEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.NONE));
     }
@@ -37,6 +32,11 @@ public class Level2MapEntriesValueSelectedOperatorImpl<K,V> extends AbstractOper
 
     public Level2MapEntriesValueSelectedOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
         return new Level2MapEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.NONE));
+    }
+
+
+    public Level2MapEntriesValueSelectedOperator<K,V> replaceWith(final V replacement) {
+        return new Level2MapEntriesValueSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
     }
 
 

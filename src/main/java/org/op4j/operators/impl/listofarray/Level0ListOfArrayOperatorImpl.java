@@ -73,12 +73,22 @@ public class Level0ListOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListOfArrayOperator<T> add(final T[]... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0ListOfArrayOperator<T> add(final T[] newElement) {
+        return new Level0ListOfArrayOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T[]>(NormalizationUtils.normalizeArray(newElement))));
+    }
+
+    public Level0ListOfArrayOperator<T> addAll(final T[]... newElements) {
         return new Level0ListOfArrayOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T[]>(NormalizationUtils.normalizeArrays(newElements))));
     }
 
 
-    public Level0ListOfArrayOperator<T> insert(final int position, final T[]... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0ListOfArrayOperator<T> insert(final int position, final T[] newElement) {
+        return new Level0ListOfArrayOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<T[]>(position, NormalizationUtils.normalizeArray(newElement))));
+    }
+
+    public Level0ListOfArrayOperator<T> insertAll(final int position, final T[]... newElements) {
         return new Level0ListOfArrayOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<T[]>(position, NormalizationUtils.normalizeArrays(newElements))));
     }
 
@@ -365,13 +375,13 @@ public class Level0ListOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListOfArrayOperator<T> replaceBy(final List<T[]> replacement) {
-        return new Level0ListOfArrayOperatorImpl<T>(getTarget().replaceBy(replacement));
+    public Level0ListOfArrayOperator<T> replaceWith(final List<T[]> replacement) {
+        return new Level0ListOfArrayOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level0ListOfArrayOperator<T> replaceIfNullBy(final List<T[]> replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level0ListOfArrayOperator<T> replaceIfNullWith(final List<T[]> replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
     
     

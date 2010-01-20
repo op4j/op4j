@@ -119,8 +119,10 @@ public interface Level0ArrayOfArrayOperator<T>
 
 
     public Level0ArrayOperator<T> flatten(final Type<T> type);
-    public Level0ArrayOfArrayOperator<T> add(final T[]... newElements);
-    public Level0ArrayOfArrayOperator<T> insert(final int position, final T[]... newElements);
+    public Level0ArrayOfArrayOperator<T> add(final T[] newElement);
+    public Level0ArrayOfArrayOperator<T> addAll(final T[]... newElements);
+    public Level0ArrayOfArrayOperator<T> insert(final int position, final T[] newElement);
+    public Level0ArrayOfArrayOperator<T> insertAll(final int position, final T[]... newElements);
     public Level0ArrayOfArrayOperator<T> addAll(final Collection<T[]> collection);
     public Level0ArrayOfArrayOperator<T> removeAllIndexes(final int... indices);
     public Level0ArrayOfArrayOperator<T> removeAllEqual(final T[]... values);
@@ -169,8 +171,8 @@ public interface Level0ArrayOfArrayOperator<T>
 
 
     
-    public Level0ArrayOfArrayOperator<T> replaceBy(final T[][] replacement);
-    public Level0ArrayOfArrayOperator<T> replaceIfNullBy(final T[][] replacement);
+    public Level0ArrayOfArrayOperator<T> replaceWith(final T[][] replacement);
+    public Level0ArrayOfArrayOperator<T> replaceIfNullWith(final T[][] replacement);
 
 
     public <X> Level0ArrayOfArrayOperator<X> convert(final IConverter<X[][],? super T[][]> converter);

@@ -48,7 +48,7 @@ public interface Level4MapOfMapSelectedEntriesValueEntriesKeySelectedOperator<K1
     public Level4MapOfMapSelectedEntriesValueEntriesKeyOperator<K1,K2,V> endIf();
 
 
-    public Level4MapOfMapSelectedEntriesValueEntriesKeySelectedOperator<K1,K2,V> replaceBy(final K2 replacement);
+    public Level4MapOfMapSelectedEntriesValueEntriesKeySelectedOperator<K1,K2,V> replaceWith(final K2 replacement);
 
 
     public Level4MapOfMapSelectedEntriesValueEntriesKeySelectedOperator<K1,K2,V> exec(final IFunction<? extends K2, ? super K2> function);

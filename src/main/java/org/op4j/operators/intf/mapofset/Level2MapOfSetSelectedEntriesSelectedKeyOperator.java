@@ -63,7 +63,7 @@ public interface Level2MapOfSetSelectedEntriesSelectedKeyOperator<K,V>
     public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> endOn();
     
     
-    public Level2MapOfSetSelectedEntriesSelectedKeyOperator<K,V> replaceBy(final K replacement);
+    public Level2MapOfSetSelectedEntriesSelectedKeyOperator<K,V> replaceWith(final K replacement);
 
     public Level2MapOfSetSelectedEntriesSelectedKeyOperator<K,V> exec(final IFunction<? extends K, ? super K> function);
     

@@ -69,12 +69,22 @@ public class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListOperator<T> add(final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0ListOperator<T> add(final T newElement) {
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T>(newElement)));
+    }
+
+    public Level0ListOperator<T> addAll(final T... newElements) {
         return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T>(newElements)));
     }
 
 
-    public Level0ListOperator<T> insert(final int position, final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0ListOperator<T> insert(final int position, final T newElement) {
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<T>(position, newElement)));
+    }
+
+    public Level0ListOperator<T> insertAll(final int position, final T... newElements) {
         return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<T>(position, newElements)));
     }
 
@@ -330,13 +340,13 @@ public class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListOperator<T> replaceBy(final List<T> replacement) {
-        return new Level0ListOperatorImpl<T>(getTarget().replaceBy(replacement));
+    public Level0ListOperator<T> replaceWith(final List<T> replacement) {
+        return new Level0ListOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level0ListOperator<T> replaceIfNullBy(final List<T> replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level0ListOperator<T> replaceIfNullWith(final List<T> replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
 
     

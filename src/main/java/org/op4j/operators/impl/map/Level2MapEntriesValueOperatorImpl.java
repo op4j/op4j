@@ -209,13 +209,13 @@ public class Level2MapEntriesValueOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level2MapEntriesValueOperator<K, V> replaceBy(final V replacement) {
-        return new Level2MapEntriesValueOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    public Level2MapEntriesValueOperator<K, V> replaceWith(final V replacement) {
+        return new Level2MapEntriesValueOperatorImpl<K, V>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level2MapEntriesValueOperator<K, V> replaceIfNullBy(final V replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level2MapEntriesValueOperator<K, V> replaceIfNullWith(final V replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
 
 }

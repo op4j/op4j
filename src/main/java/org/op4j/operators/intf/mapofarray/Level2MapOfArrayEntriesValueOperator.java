@@ -93,8 +93,10 @@ public interface Level2MapOfArrayEntriesValueOperator<K,V>
     public Level2MapOfArrayEntriesValueOperator<K,V> sort(final Comparator<? super V> comparator);
     
         
-    public Level2MapOfArrayEntriesValueOperator<K,V> add(final V... newElements);
-    public Level2MapOfArrayEntriesValueOperator<K,V> insert(final int position, final V... newElements);
+    public Level2MapOfArrayEntriesValueOperator<K,V> add(final V newElement);
+    public Level2MapOfArrayEntriesValueOperator<K,V> addAll(final V... newElements);
+    public Level2MapOfArrayEntriesValueOperator<K,V> insert(final int position, final V newElement);
+    public Level2MapOfArrayEntriesValueOperator<K,V> insertAll(final int position, final V... newElements);
     public Level2MapOfArrayEntriesValueOperator<K,V> addAll(final Collection<V> collection);
     public Level2MapOfArrayEntriesValueOperator<K,V> removeAllIndexes(final int... indices);
     public Level2MapOfArrayEntriesValueOperator<K,V> removeAllEqual(final V... values);
@@ -115,8 +117,8 @@ public interface Level2MapOfArrayEntriesValueOperator<K,V>
     public <K2,V2> Level2MapOfMapEntriesValueOperator<K,K2,V2> toMap(final IMapBuilder<K2,V2,? super V> mapBuild);
 
     
-    public Level2MapOfArrayEntriesValueOperator<K,V> replaceBy(final V[] replacement);
-    public Level2MapOfArrayEntriesValueOperator<K,V> replaceIfNullBy(final V[] replacement);
+    public Level2MapOfArrayEntriesValueOperator<K,V> replaceWith(final V[] replacement);
+    public Level2MapOfArrayEntriesValueOperator<K,V> replaceIfNullWith(final V[] replacement);
 
 
     public <X> Level2MapOfArrayEntriesValueOperator<K,X> convert(final IConverter<X[],? super V[]> converter);

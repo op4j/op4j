@@ -64,8 +64,8 @@ public interface Level2ArrayOfArrayElementsElementsOperator<T>
     
     public Level1ArrayOfArrayElementsOperator<T> endFor();
     
-    public Level2ArrayOfArrayElementsElementsOperator<T> replaceBy(final T replacement);
-    public Level2ArrayOfArrayElementsElementsOperator<T> replaceIfNullBy(final T replacement);
+    public Level2ArrayOfArrayElementsElementsOperator<T> replaceWith(final T replacement);
+    public Level2ArrayOfArrayElementsElementsOperator<T> replaceIfNullWith(final T replacement);
 
 
     public <X> Level2ArrayOfArrayElementsElementsOperator<X> convert(final IConverter<X,? super T> converter);

@@ -69,12 +69,22 @@ public class Level0ArrayOperatorImpl<T>
     }
 
     
-    public Level0ArrayOperator<T> add(final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0ArrayOperator<T> add(final T newElement) {
+        return new Level0ArrayOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Add<T>(newElement)));
+    }
+
+    public Level0ArrayOperator<T> addAll(final T... newElements) {
         return new Level0ArrayOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Add<T>(newElements)));
     }
 
 
-    public Level0ArrayOperator<T> insert(final int position, final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0ArrayOperator<T> insert(final int position, final T newElement) {
+        return new Level0ArrayOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Insert<T>(position, newElement)));
+    }
+
+    public Level0ArrayOperator<T> insertAll(final int position, final T... newElements) {
         return new Level0ArrayOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Insert<T>(position, newElements)));
     }
 
@@ -314,13 +324,13 @@ public class Level0ArrayOperatorImpl<T>
     }
 
 
-    public Level0ArrayOperator<T> replaceBy(final T[] replacement) {
-        return new Level0ArrayOperatorImpl<T>(getTarget().replaceBy(replacement));
+    public Level0ArrayOperator<T> replaceWith(final T[] replacement) {
+        return new Level0ArrayOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level0ArrayOperator<T> replaceIfNullBy(final T[] replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level0ArrayOperator<T> replaceIfNullWith(final T[] replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
 
 

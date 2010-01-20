@@ -28,6 +28,6 @@ package org.op4j.operators.qualities;
  */
 public interface ReplaceableOperator<T>  {
     
-    public ReplaceableOperator<T> replaceBy(final T replacement);
+    public ReplaceableOperator<T> replaceWith(final T replacement);
     
 }

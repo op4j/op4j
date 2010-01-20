@@ -73,12 +73,22 @@ public class Level0SetOfSetOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0SetOfSetOperator<T> add(final Set<T>... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0SetOfSetOperator<T> add(final Set<T> newElement) {
+        return new Level0SetOfSetOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<Set<T>>(NormalizationUtils.normalizeSet(newElement))));
+    }
+
+    public Level0SetOfSetOperator<T> addAll(final Set<T>... newElements) {
         return new Level0SetOfSetOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<Set<T>>(NormalizationUtils.normalizeSets(newElements))));
     }
 
 
-    public Level0SetOfSetOperator<T> insert(final int position, final Set<T>... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0SetOfSetOperator<T> insert(final int position, final Set<T> newElement) {
+        return new Level0SetOfSetOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<Set<T>>(position, NormalizationUtils.normalizeSet(newElement))));
+    }
+
+    public Level0SetOfSetOperator<T> insertAll(final int position, final Set<T>... newElements) {
         return new Level0SetOfSetOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<Set<T>>(position, NormalizationUtils.normalizeSets(newElements))));
     }
 
@@ -356,13 +366,13 @@ public class Level0SetOfSetOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0SetOfSetOperator<T> replaceBy(final Set<Set<T>> replacement) {
-        return new Level0SetOfSetOperatorImpl<T>(getTarget().replaceBy(replacement));
+    public Level0SetOfSetOperator<T> replaceWith(final Set<Set<T>> replacement) {
+        return new Level0SetOfSetOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level0SetOfSetOperator<T> replaceIfNullBy(final Set<Set<T>> replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level0SetOfSetOperator<T> replaceIfNullWith(final Set<Set<T>> replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
     
     

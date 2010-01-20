@@ -62,7 +62,7 @@ public interface Level1MapOfSetSelectedEntriesOperator<K,V>
     
     public Level0MapOfSetSelectedOperator<K,V> endFor();
     
-    public Level1MapOfSetSelectedEntriesOperator<K,V> replaceBy(final Map.Entry<K,Set<V>> replacement);
+    public Level1MapOfSetSelectedEntriesOperator<K,V> replaceWith(final Map.Entry<K,Set<V>> replacement);
 
     public Level1MapOfSetSelectedEntriesOperator<K,V> exec(final IFunction<? extends Map.Entry<? extends K,? extends Set<? extends V>>, ? super Map.Entry<K,Set<V>>> function);
     

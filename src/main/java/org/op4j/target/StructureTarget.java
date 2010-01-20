@@ -548,12 +548,12 @@ public class StructureTarget extends Target {
 
     
     @Override
-    public Target replaceBy(final Object replacement) {
+    public Target replaceWith(final Object replacement) {
         
         final List<Target> newElements = new ArrayList<Target>();
         for (final Target element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.replaceBy(replacement));
+                newElements.add(element.replaceWith(replacement));
             } else {
                 newElements.add(element);
             }

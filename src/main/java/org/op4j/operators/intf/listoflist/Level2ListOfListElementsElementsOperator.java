@@ -66,8 +66,8 @@ public interface Level2ListOfListElementsElementsOperator<T>
     
     public Level1ListOfListElementsOperator<T> endFor();
     
-    public Level2ListOfListElementsElementsOperator<T> replaceBy(final T replacement);
-    public Level2ListOfListElementsElementsOperator<T> replaceIfNullBy(final T replacement);
+    public Level2ListOfListElementsElementsOperator<T> replaceWith(final T replacement);
+    public Level2ListOfListElementsElementsOperator<T> replaceIfNullWith(final T replacement);
 
 
     public <X> Level2ListOfListElementsElementsOperator<X> convert(final IConverter<X,? super T> converter);

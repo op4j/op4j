@@ -62,12 +62,22 @@ public class Level0SetOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0SetOfMapOperator<K, V> add(final Map<K, V>... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0SetOfMapOperator<K, V> add(final Map<K, V> newElement) {
+        return new Level0SetOfMapOperatorImpl<K, V>(getTarget().execute(new SetFuncs.Add<Map<K, V>>(NormalizationUtils.normalizeMap(newElement))));
+    }
+
+    public Level0SetOfMapOperator<K, V> addAll(final Map<K, V>... newElements) {
         return new Level0SetOfMapOperatorImpl<K, V>(getTarget().execute(new SetFuncs.Add<Map<K, V>>(NormalizationUtils.normalizeMaps(newElements))));
     }
 
 
-    public Level0SetOfMapOperator<K, V> insert(final int position, final Map<K, V>... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0SetOfMapOperator<K, V> insert(final int position, final Map<K, V> newElement) {
+        return new Level0SetOfMapOperatorImpl<K, V>(getTarget().execute(new SetFuncs.Insert<Map<K, V>>(position, NormalizationUtils.normalizeMap(newElement))));
+    }
+
+    public Level0SetOfMapOperator<K, V> insertAll(final int position, final Map<K, V>... newElements) {
         return new Level0SetOfMapOperatorImpl<K, V>(getTarget().execute(new SetFuncs.Insert<Map<K, V>>(position, NormalizationUtils.normalizeMaps(newElements))));
     }
 
@@ -271,13 +281,13 @@ public class Level0SetOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0SetOfMapOperator<K, V> replaceBy(final Set<Map<K, V>> replacement) {
-        return new Level0SetOfMapOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    public Level0SetOfMapOperator<K, V> replaceWith(final Set<Map<K, V>> replacement) {
+        return new Level0SetOfMapOperatorImpl<K, V>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level0SetOfMapOperator<K, V> replaceIfNullBy(final Set<Map<K, V>> replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level0SetOfMapOperator<K, V> replaceIfNullWith(final Set<Map<K, V>> replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
     
     

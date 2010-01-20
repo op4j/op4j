@@ -53,7 +53,7 @@ public interface Level2SetOfMapSelectedElementsSelectedEntriesSelectedOperator<K
     public Level3SetOfMapSelectedElementsSelectedEntriesSelectedKeyOperator<K,V> onKey();
     public Level3SetOfMapSelectedElementsSelectedEntriesSelectedValueOperator<K,V> onValue();
     
-    public Level2SetOfMapSelectedElementsSelectedEntriesSelectedOperator<K,V> replaceBy(final Map.Entry<K,V> replacement);
+    public Level2SetOfMapSelectedElementsSelectedEntriesSelectedOperator<K,V> replaceWith(final Map.Entry<K,V> replacement);
 
     public Level2SetOfMapSelectedElementsSelectedEntriesSelectedOperator<K,V> exec(final IFunction<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> function);
     

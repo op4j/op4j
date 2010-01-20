@@ -74,7 +74,7 @@ public interface Level2MapOfMapEntriesValueSelectedOperator<K1,K2,V>
     
     public Level2MapOfMapEntriesValueSelectedOperator<K1,K2,V> eval(final IEvaluator<? extends Map<? extends K2,? extends V>,? super Map<K2,V>> eval);
 
-    public Level2MapOfMapEntriesValueSelectedOperator<K1,K2,V> replaceBy(final Map<K2,V> replacement);
+    public Level2MapOfMapEntriesValueSelectedOperator<K1,K2,V> replaceWith(final Map<K2,V> replacement);
 
 
     public Level2MapOfMapEntriesValueSelectedOperator<K1,K2,V> exec(final IFunction<? extends Map<? extends K2,? extends V>, ? super Map<K2,V>> function);

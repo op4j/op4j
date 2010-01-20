@@ -78,8 +78,10 @@ public interface Level2MapOfArraySelectedEntriesValueOperator<K,V>
     public Level2MapOfArraySelectedEntriesValueOperator<K,V> sort(final Comparator<? super V> comparator);
     
         
-    public Level2MapOfArraySelectedEntriesValueOperator<K,V> add(final V... newElements);
-    public Level2MapOfArraySelectedEntriesValueOperator<K,V> insert(final int position, final V... newElements);
+    public Level2MapOfArraySelectedEntriesValueOperator<K,V> add(final V newElement);
+    public Level2MapOfArraySelectedEntriesValueOperator<K,V> addAll(final V... newElements);
+    public Level2MapOfArraySelectedEntriesValueOperator<K,V> insert(final int position, final V newElement);
+    public Level2MapOfArraySelectedEntriesValueOperator<K,V> insertAll(final int position, final V... newElements);
     public Level2MapOfArraySelectedEntriesValueOperator<K,V> addAll(final Collection<V> collection);
     public Level2MapOfArraySelectedEntriesValueOperator<K,V> removeAllIndexes(final int... indices);
     public Level2MapOfArraySelectedEntriesValueOperator<K,V> removeAllEqual(final V... values);
@@ -97,7 +99,7 @@ public interface Level2MapOfArraySelectedEntriesValueOperator<K,V>
     
     public Level2MapOfArraySelectedEntriesValueOperator<K,V> eval(final IEvaluator<? extends V[], ? super V[]> eval);
 
-    public Level2MapOfArraySelectedEntriesValueOperator<K,V> replaceBy(final V[] replacement);
+    public Level2MapOfArraySelectedEntriesValueOperator<K,V> replaceWith(final V[] replacement);
 
     public Level2MapOfArraySelectedEntriesValueOperator<K,V> exec(final IFunction<? extends V[], ? super V[]> function);
     

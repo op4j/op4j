@@ -143,13 +143,13 @@ public class Level4MapOfMapEntriesValueEntriesKeyOperatorImpl<K1,K2,V> extends A
     }
 
 
-    public Level4MapOfMapEntriesValueEntriesKeyOperator<K1, K2, V> replaceBy(final K2 replacement) {
-        return new Level4MapOfMapEntriesValueEntriesKeyOperatorImpl<K1, K2, V>(getTarget().replaceBy(replacement));
+    public Level4MapOfMapEntriesValueEntriesKeyOperator<K1, K2, V> replaceWith(final K2 replacement) {
+        return new Level4MapOfMapEntriesValueEntriesKeyOperatorImpl<K1, K2, V>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level4MapOfMapEntriesValueEntriesKeyOperator<K1, K2, V> replaceIfNullBy(final K2 replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level4MapOfMapEntriesValueEntriesKeyOperator<K1, K2, V> replaceIfNullWith(final K2 replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
 
 

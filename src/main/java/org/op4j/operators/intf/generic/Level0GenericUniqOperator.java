@@ -129,8 +129,8 @@ public interface Level0GenericUniqOperator<T>
     public Level0GenericUniqSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
 
     
-    public Level0GenericUniqOperator<T> replaceBy(final T replacement);
-    public Level0GenericUniqOperator<T> replaceIfNullBy(final T replacement);
+    public Level0GenericUniqOperator<T> replaceWith(final T replacement);
+    public Level0GenericUniqOperator<T> replaceIfNullWith(final T replacement);
 
 
     public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super T> converter);
@@ -142,8 +142,10 @@ public interface Level0GenericUniqOperator<T>
     public <X> Level0GenericUniqOperator<X> asType(final Type<X> type);
     public Level0GenericUniqOperator<?> asUnknown();
         
-    public Level0GenericMultiOperator<T> add(final T... newElements);
-    public Level0GenericMultiOperator<T> insert(final int position, final T... newElements);
+    public Level0GenericMultiOperator<T> add(final T newElement);
+    public Level0GenericMultiOperator<T> addAll(final T... newElements);
+    public Level0GenericMultiOperator<T> insert(final int position, final T newElement);
+    public Level0GenericMultiOperator<T> insertAll(final int position, final T... newElements);
     public Level0GenericMultiOperator<T> addAll(final Collection<T> collection);
 
     

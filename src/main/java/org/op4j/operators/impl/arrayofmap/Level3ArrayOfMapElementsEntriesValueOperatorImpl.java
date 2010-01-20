@@ -139,13 +139,13 @@ public class Level3ArrayOfMapElementsEntriesValueOperatorImpl<K,V> extends Abstr
     }
 
 
-    public Level3ArrayOfMapElementsEntriesValueOperator<K, V> replaceBy(final V replacement) {
-        return new Level3ArrayOfMapElementsEntriesValueOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    public Level3ArrayOfMapElementsEntriesValueOperator<K, V> replaceWith(final V replacement) {
+        return new Level3ArrayOfMapElementsEntriesValueOperatorImpl<K, V>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level3ArrayOfMapElementsEntriesValueOperator<K, V> replaceIfNullBy(final V replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level3ArrayOfMapElementsEntriesValueOperator<K, V> replaceIfNullWith(final V replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
 
 }

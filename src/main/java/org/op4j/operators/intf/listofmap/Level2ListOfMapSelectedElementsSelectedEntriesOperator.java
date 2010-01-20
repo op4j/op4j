@@ -62,7 +62,7 @@ public interface Level2ListOfMapSelectedElementsSelectedEntriesOperator<K,V>
     
     public Level1ListOfMapSelectedElementsSelectedOperator<K,V> endFor();
     
-    public Level2ListOfMapSelectedElementsSelectedEntriesOperator<K,V> replaceBy(final Map.Entry<K,V> replacement);
+    public Level2ListOfMapSelectedElementsSelectedEntriesOperator<K,V> replaceWith(final Map.Entry<K,V> replacement);
 
     public Level2ListOfMapSelectedElementsSelectedEntriesOperator<K,V> exec(final IFunction<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> function);
     

@@ -25,6 +25,11 @@ public class Level0MapOfMapSelectedOperatorImpl<K1,K2,V> extends AbstractOperato
     }
 
 
+    public Level0MapOfMapSelectedOperator<K1,K2,V> insertAll(final int position, final Map<K1,Map<K2,V>> map) {
+        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.InsertAll<K1,Map<K2,V>>(position, NormalizationUtils.normalizeMapOfMap(map))));
+    }
+
+
     public Level0MapOfMapSelectedOperator<K1,K2,V> removeAllTrue(final IEvaluator<Boolean,? super Entry<K1,Map<K2,V>>> eval) {
         return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K1,Map<K2,V>>(eval)));
     }
@@ -32,11 +37,6 @@ public class Level0MapOfMapSelectedOperatorImpl<K1,K2,V> extends AbstractOperato
 
     public Level0MapOfMapSelectedOperator<K1,K2,V> removeAllFalse(final IEvaluator<Boolean,? super Entry<K1,Map<K2,V>>> eval) {
         return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K1,Map<K2,V>>(eval)));
-    }
-
-
-    public Level0MapOfMapSelectedOperator<K1,K2,V> replaceBy(final Map<K1,Map<K2,V>> replacement) {
-        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().replaceBy(replacement));
     }
 
 
@@ -52,11 +52,6 @@ public class Level0MapOfMapSelectedOperatorImpl<K1,K2,V> extends AbstractOperato
 
     public Level1MapOfMapEntriesOperator<K1,K2,V> forEachEntry() {
         return new Level1MapOfMapEntriesOperatorImpl<K1,K2,V>(getTarget().iterate());
-    }
-
-
-    public Level0MapOfMapSelectedOperator<K1,K2,V> insertAll(final int position, final Map<K1,Map<K2,V>> map) {
-        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.InsertAll<K1,Map<K2,V>>(position, NormalizationUtils.normalizeMapOfMap(map))));
     }
 
 
@@ -98,6 +93,11 @@ public class Level0MapOfMapSelectedOperatorImpl<K1,K2,V> extends AbstractOperato
 
     public Level0MapOfMapSelectedOperator<K1,K2,V> sort(final Comparator<? super Entry<K1,Map<K2,V>>> comparator) {
         return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.SortEntries<K1,Map<K2,V>>(comparator)));
+    }
+
+
+    public Level0MapOfMapSelectedOperator<K1,K2,V> replaceWith(final Map<K1,Map<K2,V>> replacement) {
+        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement));
     }
 
 

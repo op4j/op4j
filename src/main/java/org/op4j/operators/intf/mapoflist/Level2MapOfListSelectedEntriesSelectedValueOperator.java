@@ -78,8 +78,10 @@ public interface Level2MapOfListSelectedEntriesSelectedValueOperator<K,V>
     public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> sort(final Comparator<? super V> comparator);
     
         
-    public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> add(final V... newElements);
-    public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> insert(final int position, final V... newElements);
+    public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> add(final V newElement);
+    public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> addAll(final V... newElements);
+    public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> insert(final int position, final V newElement);
+    public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> insertAll(final int position, final V... newElements);
     public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> addAll(final Collection<V> collection);
     public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> removeAllIndexes(final int... indices);
     public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> removeAllEqual(final V... values);
@@ -97,7 +99,7 @@ public interface Level2MapOfListSelectedEntriesSelectedValueOperator<K,V>
     
     public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> eval(final IEvaluator<? extends List<? extends V>, ? super List<V>> eval);
 
-    public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> replaceBy(final List<V> replacement);
+    public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> replaceWith(final List<V> replacement);
 
     public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> exec(final IFunction<? extends List<? extends V>, ? super List<V>> function);
     

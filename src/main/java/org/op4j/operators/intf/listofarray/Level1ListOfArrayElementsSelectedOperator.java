@@ -65,8 +65,10 @@ public interface Level1ListOfArrayElementsSelectedOperator<T>
     public Level1ListOfArrayElementsSelectedOperator<T> sort();
     public Level1ListOfArrayElementsSelectedOperator<T> sort(final Comparator<? super T> comparator);
     
-    public Level1ListOfArrayElementsSelectedOperator<T> add(final T... newElements);
-    public Level1ListOfArrayElementsSelectedOperator<T> insert(final int position, final T... newElements);
+    public Level1ListOfArrayElementsSelectedOperator<T> add(final T newElement);
+    public Level1ListOfArrayElementsSelectedOperator<T> addAll(final T... newElements);
+    public Level1ListOfArrayElementsSelectedOperator<T> insert(final int position, final T newElement);
+    public Level1ListOfArrayElementsSelectedOperator<T> insertAll(final int position, final T... newElements);
     public Level1ListOfArrayElementsSelectedOperator<T> addAll(final Collection<T> collection);
     public Level1ListOfArrayElementsSelectedOperator<T> removeAllIndexes(final int... indices);
     public Level1ListOfArrayElementsSelectedOperator<T> removeAllEqual(final T... values);
@@ -84,7 +86,7 @@ public interface Level1ListOfArrayElementsSelectedOperator<T>
     
     public Level1ListOfArrayElementsSelectedOperator<T> eval(final IEvaluator<? extends T[],? super T[]> eval);
 
-    public Level1ListOfArrayElementsSelectedOperator<T> replaceBy(final T[] replacement);
+    public Level1ListOfArrayElementsSelectedOperator<T> replaceWith(final T[] replacement);
 
     public Level1ListOfArrayElementsSelectedOperator<T> exec(final IFunction<? extends T[], ? super T[]> function);
     

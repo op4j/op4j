@@ -38,6 +38,11 @@ public class Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T> extends A
     }
 
 
+    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> insertAll(final int position, final T... newElements) {
+        return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Insert<T>(position, newElements)));
+    }
+
+
     public Level1ArrayOfArraySelectedElementsSelectedOperator<T> removeAllIndexes(final int... indices) {
         return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllIndexes<T>(indices)));
     }
@@ -88,11 +93,6 @@ public class Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T> extends A
     }
 
 
-    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> replaceBy(final T[] replacement) {
-        return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().replaceBy(replacement));
-    }
-
-
     public Level1ArrayOfArraySelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends T[],? super T[]> eval) {
         return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(eval, Normalization.ARRAY));
     }
@@ -103,7 +103,13 @@ public class Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T> extends A
     }
 
 
-    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> add(final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> add(final T newElement) {
+        return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Add<T>(newElement)));
+    }
+
+
+    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> addAll(final T... newElements) {
         return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Add<T>(newElements)));
     }
 
@@ -113,8 +119,9 @@ public class Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T> extends A
     }
 
 
-    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> insert(final int position, final T... newElements) {
-        return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Insert<T>(position, newElements)));
+    @SuppressWarnings("unchecked")
+    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> insert(final int position, final T newElement) {
+        return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Insert<T>(position, newElement)));
     }
 
 
@@ -131,6 +138,11 @@ public class Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T> extends A
 
     public Level1ArrayOfArraySelectedElementsSelectedOperator<T> sort(final Comparator<? super T> comparator) {
         return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.SortByComparator<T>(comparator)));
+    }
+
+
+    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> replaceWith(final T[] replacement) {
+        return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().replaceWith(replacement));
     }
 
 

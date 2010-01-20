@@ -52,7 +52,7 @@ public interface Level4MapOfMapSelectedEntriesValueSelectedEntriesValueSelectedO
     
     public Level4MapOfMapSelectedEntriesValueSelectedEntriesValueSelectedOperator<K1,K2,V> eval(final IEvaluator<? extends V,? super V> eval);
 
-    public Level4MapOfMapSelectedEntriesValueSelectedEntriesValueSelectedOperator<K1,K2,V> replaceBy(final V replacement);
+    public Level4MapOfMapSelectedEntriesValueSelectedEntriesValueSelectedOperator<K1,K2,V> replaceWith(final V replacement);
 
 
     public Level4MapOfMapSelectedEntriesValueSelectedEntriesValueSelectedOperator<K1,K2,V> exec(final IFunction<? extends V, ? super V> function);

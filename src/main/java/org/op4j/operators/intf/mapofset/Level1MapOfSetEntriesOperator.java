@@ -68,7 +68,7 @@ public interface Level1MapOfSetEntriesOperator<K,V>
     
     public <X,Y> Level1MapOfSetEntriesOperator<X,Y> eval(final IEvaluator<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> eval);
     
-    public Level1MapOfSetEntriesOperator<K,V> replaceBy(final Map.Entry<K,Set<V>> replacement);
+    public Level1MapOfSetEntriesOperator<K,V> replaceWith(final Map.Entry<K,Set<V>> replacement);
 
 
     public <X,Y> Level1MapOfSetEntriesOperator<X,Y> convert(final IConverter<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> converter);

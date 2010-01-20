@@ -257,7 +257,7 @@ public abstract class Target {
     
     
     
-    public abstract Target replaceBy(final Object replacement);
+    public abstract Target replaceWith(final Object replacement);
 
     
     

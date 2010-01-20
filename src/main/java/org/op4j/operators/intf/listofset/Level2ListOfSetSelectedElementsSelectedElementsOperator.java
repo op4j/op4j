@@ -67,7 +67,7 @@ public interface Level2ListOfSetSelectedElementsSelectedElementsOperator<T>
     
     public Level2ListOfSetSelectedElementsSelectedElementsOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
 
-    public Level2ListOfSetSelectedElementsSelectedElementsOperator<T> replaceBy(final T replacement);
+    public Level2ListOfSetSelectedElementsSelectedElementsOperator<T> replaceWith(final T replacement);
 
     public Level2ListOfSetSelectedElementsSelectedElementsOperator<T> exec(final IFunction<? extends T, ? super T> function);
 

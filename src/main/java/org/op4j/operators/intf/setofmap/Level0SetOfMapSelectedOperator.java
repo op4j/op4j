@@ -61,8 +61,10 @@ public interface Level0SetOfMapSelectedOperator<K,V>
     public Level0SetOfMapSelectedOperator<K,V> sort();
     public Level0SetOfMapSelectedOperator<K,V> sort(final Comparator<? super Map<K,V>> comparator);
     
-    public Level0SetOfMapSelectedOperator<K,V> add(final Map<K,V>... newElements);
-    public Level0SetOfMapSelectedOperator<K,V> insert(final int position, final Map<K,V>... newElements);
+    public Level0SetOfMapSelectedOperator<K,V> add(final Map<K,V> newElement);
+    public Level0SetOfMapSelectedOperator<K,V> addAll(final Map<K,V>... newElements);
+    public Level0SetOfMapSelectedOperator<K,V> insert(final int position, final Map<K,V> newElement);
+    public Level0SetOfMapSelectedOperator<K,V> insertAll(final int position, final Map<K,V>... newElements);
     public Level0SetOfMapSelectedOperator<K,V> addAll(final Collection<Map<K,V>> collection);
     public Level0SetOfMapSelectedOperator<K,V> removeAllIndexes(final int... indices);
     public Level0SetOfMapSelectedOperator<K,V> removeAllEqual(final Map<K,V>... values);
@@ -82,7 +84,7 @@ public interface Level0SetOfMapSelectedOperator<K,V>
     
     public Level0SetOfMapSelectedOperator<K,V> eval(final IEvaluator<? extends Set<? extends Map<? extends K,? extends V>>, ? super Set<Map<K,V>>> eval);
 
-    public Level0SetOfMapSelectedOperator<K,V> replaceBy(final Set<Map<K,V>> replacement);
+    public Level0SetOfMapSelectedOperator<K,V> replaceWith(final Set<Map<K,V>> replacement);
 
     public Level0SetOfMapSelectedOperator<K,V> exec(final IFunction<? extends Set<? extends Map<? extends K,? extends V>>, ? super Set<Map<K,V>>> function);
     

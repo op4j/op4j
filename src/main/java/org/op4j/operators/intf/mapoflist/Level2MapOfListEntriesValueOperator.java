@@ -94,8 +94,10 @@ public interface Level2MapOfListEntriesValueOperator<K,V>
     public Level2MapOfListEntriesValueOperator<K,V> sort(final Comparator<? super V> comparator);
     
         
-    public Level2MapOfListEntriesValueOperator<K,V> add(final V... newElements);
-    public Level2MapOfListEntriesValueOperator<K,V> insert(final int position, final V... newElements);
+    public Level2MapOfListEntriesValueOperator<K,V> add(final V newElement);
+    public Level2MapOfListEntriesValueOperator<K,V> addAll(final V... newElements);
+    public Level2MapOfListEntriesValueOperator<K,V> insert(final int position, final V newElement);
+    public Level2MapOfListEntriesValueOperator<K,V> insertAll(final int position, final V... newElements);
     public Level2MapOfListEntriesValueOperator<K,V> addAll(final Collection<V> collection);
     public Level2MapOfListEntriesValueOperator<K,V> removeAllIndexes(final int... indices);
     public Level2MapOfListEntriesValueOperator<K,V> removeAllEqual(final V... values);
@@ -117,8 +119,8 @@ public interface Level2MapOfListEntriesValueOperator<K,V>
     public <K2,V2> Level2MapOfMapEntriesValueOperator<K,K2,V2> toMap(final IMapBuilder<K2,V2,? super V> mapBuild);
 
     
-    public Level2MapOfListEntriesValueOperator<K,V> replaceBy(final List<V> replacement);
-    public Level2MapOfListEntriesValueOperator<K,V> replaceIfNullBy(final List<V> replacement);
+    public Level2MapOfListEntriesValueOperator<K,V> replaceWith(final List<V> replacement);
+    public Level2MapOfListEntriesValueOperator<K,V> replaceIfNullWith(final List<V> replacement);
 
 
     public <X> Level2MapOfListEntriesValueOperator<K,X> convert(final IConverter<? extends List<X>,? super List<V>> converter);

@@ -69,12 +69,22 @@ public class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends AbstractOpera
     }
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, V> add(final V... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level2MapOfArrayEntriesValueOperator<K, V> add(final V newElement) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.Add<V>(newElement)));
+    }
+
+    public Level2MapOfArrayEntriesValueOperator<K, V> addAll(final V... newElements) {
         return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.Add<V>(newElements)));
     }
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, V> insert(final int position, final V... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level2MapOfArrayEntriesValueOperator<K, V> insert(final int position, final V newElement) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.Insert<V>(position, newElement)));
+    }
+
+    public Level2MapOfArrayEntriesValueOperator<K, V> insertAll(final int position, final V... newElements) {
         return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.Insert<V>(position, newElements)));
     }
 
@@ -299,13 +309,13 @@ public class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends AbstractOpera
     }
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, V> replaceBy(final V[] replacement) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    public Level2MapOfArrayEntriesValueOperator<K, V> replaceWith(final V[] replacement) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, V> replaceIfNullBy(final V[] replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level2MapOfArrayEntriesValueOperator<K, V> replaceIfNullWith(final V[] replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
 
     

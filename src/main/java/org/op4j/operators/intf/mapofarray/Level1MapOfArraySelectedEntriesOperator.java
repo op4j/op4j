@@ -61,7 +61,7 @@ public interface Level1MapOfArraySelectedEntriesOperator<K,V>
     
     public Level0MapOfArraySelectedOperator<K,V> endFor();
     
-    public Level1MapOfArraySelectedEntriesOperator<K,V> replaceBy(final Map.Entry<K,V[]> replacement);
+    public Level1MapOfArraySelectedEntriesOperator<K,V> replaceWith(final Map.Entry<K,V[]> replacement);
 
     public Level1MapOfArraySelectedEntriesOperator<K,V> exec(final IFunction<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> function);
     

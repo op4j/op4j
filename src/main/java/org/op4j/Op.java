@@ -425,8 +425,8 @@ public final class Op {
         System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).distinct().get()));
         System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).forEach(Types.ARRAY_OF_STRING).distinct().get()));
      
-        System.out.println(Op.onList(stringsList1).add("World!", "Mars!").get());
-        System.out.println(Op.onList(stringsList1).insert(1, "World!", "Mars!").get());
+        System.out.println(Op.onList(stringsList1).addAll("World!", "Mars!").get());
+        System.out.println(Op.onList(stringsList1).insertAll(1, "World!", "Mars!").get());
         System.out.println(Op.onList(stringsList1).addAll(stringsList1).get());
         System.out.println(Op.onList(stringsList1).get());
         System.out.println(Op.onList(stringsList1).removeAllIndexes(0,2).get());
@@ -447,8 +447,8 @@ public final class Op {
         
         
         final Set<String> stringSet1 = new LinkedHashSet<String>(stringsList1);
-        System.out.println(Op.onSet(stringSet1).add("World!", "Mars!").get());
-        System.out.println(Op.onSet(stringSet1).insert(1, "World!", "Mars!").get());
+        System.out.println(Op.onSet(stringSet1).addAll("World!", "Mars!").get());
+        System.out.println(Op.onSet(stringSet1).insertAll(1, "World!", "Mars!").get());
         System.out.println(Op.onSet(stringSet1).addAll(stringsList1).get());
         System.out.println("---");
         System.out.println(Op.onSet(stringSet1).get());
@@ -459,7 +459,7 @@ public final class Op {
         System.out.println(Op.onSet(stringSet1).removeAllNull().get());
         System.out.println(Op.onSet(stringSet1).removeAllNotNullAndTrue(Ognl.forBoolean("length() > 5")).get());
             
-        System.out.println(printArray(Op.onArray(stringsArr1).insert(2,"lalero","lururu").get()));
+        System.out.println(printArray(Op.onArray(stringsArr1).insertAll(2,"lalero","lururu").get()));
      
         
         System.out.println(Op.onMap(map1).put("fr", "Allô!").get());
@@ -472,21 +472,21 @@ public final class Op {
         System.out.println(printArray(Op.onArrayOfMap(maps1).get()));
         
         System.out.println(Op.onAll(234,12,231));
-        System.out.println(Op.on(234).add(10));
+        System.out.println(Op.on(234).addAll(10));
         System.out.println(Op.on(234).insert(0,10));
-        System.out.println(Op.on(234).add(10).insert(1,3));
-        System.out.println(Op.on(234).add(10).insert(1,3).add((Integer)null));
-        System.out.println(Op.on(234).add(10).insert(1,3).add((Integer)null).removeAllNull());
-        System.out.println(Op.on(234).add(10).insert(1,3).removeAllIndexesNot(1));
-        System.out.println(Op.on(234).add(10).insert(1,3).removeAllTrue(Ognl.forBoolean("#target > 100")));
-        System.out.println(printArray(Op.on(234).add(10).insert(1,3).removeAllTrue(Ognl.forBoolean("#target > 100")).buildArray(Types.INTEGER).get()));
-        System.out.println(printArray(Op.on(234).buildArray(Types.INTEGER).add(8).get()));
-        System.out.println(Op.on(null).add(123));
+        System.out.println(Op.on(234).addAll(10).insert(1,3));
+        System.out.println(Op.on(234).addAll(10).insert(1,3).addAll((Integer)null));
+        System.out.println(Op.on(234).addAll(10).insert(1,3).addAll((Integer)null).removeAllNull());
+        System.out.println(Op.on(234).addAll(10).insert(1,3).removeAllIndexesNot(1));
+        System.out.println(Op.on(234).addAll(10).insert(1,3).removeAllTrue(Ognl.forBoolean("#target > 100")));
+        System.out.println(printArray(Op.on(234).addAll(10).insert(1,3).removeAllTrue(Ognl.forBoolean("#target > 100")).buildArray(Types.INTEGER).get()));
+        System.out.println(printArray(Op.on(234).buildArray(Types.INTEGER).addAll(8).get()));
+        System.out.println(Op.on(null).addAll(123));
         System.out.println(Op.on(null).buildList().get());
         System.out.println(Op.on(null).buildSet().get());
-        System.out.println(printArray(Op.on((String)null).buildArray(Types.STRING).add("a").removeAllNull().removeAllIndexes(0).get()));
+        System.out.println(printArray(Op.on((String)null).buildArray(Types.STRING).addAll("a").removeAllNull().removeAllIndexes(0).get()));
         
-        System.out.println(printArray(Op.buildArrayOfArray(Types.STRING).add(Op.buildArray(Types.STRING).add("a","b").get()).add(Op.buildArray(Types.STRING).add("1","2","3").get()).get()));
+        System.out.println(printArray(Op.buildArrayOfArray(Types.STRING).addAll(Op.buildArray(Types.STRING).addAll("a","b").get()).addAll(Op.buildArray(Types.STRING).addAll("1","2","3").get()).get()));
         System.out.println(Op.buildMap(Types.INTEGER,Types.STRING).put(12,"hello!").get());
         System.out.println(Op.onAll("a",1,"b",3).buildMap().get());
         System.out.println(Op.onAll("hello", "goodbye").buildMap(Ognl.forInteger("length()")).get());
@@ -571,7 +571,7 @@ public final class Op {
         System.out.println("***");
 
 
-        System.out.println(Op.on("hello").add("goodbye"));
+        System.out.println(Op.on("hello").addAll("goodbye"));
         System.out.println(Op.on("hello").buildList().get());
         System.out.println(printArray(Op.on("hello").buildArray(Types.STRING).get()));
         System.out.println(Op.on("hello").buildMap(Ognl.forInteger("length()")).get());
@@ -580,31 +580,31 @@ public final class Op {
         
         
         System.out.println(Op.buildList(Types.CALENDAR)
-            	.add(Calendar.getInstance(), Calendar.getInstance())
+            	.addAll(Calendar.getInstance(), Calendar.getInstance())
             	.forEach().exec(ToString.fromCalendar(DateStyle.FULL, TimeStyle.NONE, Locale.UK)).get());
         
         System.out.println(Op.buildList(Types.CALENDAR)
-            	.add(Calendar.getInstance(), Calendar.getInstance())
+            	.addAll(Calendar.getInstance(), Calendar.getInstance())
             	.forEach().exec(ToString.fromCalendar(DateStyle.FULL, TimeStyle.SHORT, Locale.UK)).get());
         
         System.out.println(Op.buildList(Types.CALENDAR)
-            	.add(Calendar.getInstance(), Calendar.getInstance())
+            	.addAll(Calendar.getInstance(), Calendar.getInstance())
             	.forEach().exec(ToString.fromCalendar("dd-MMM-yyyy", Locale.UK)).get());
             
         System.out.println(Op.buildList(Types.CALENDAR)
-            	.add(Calendar.getInstance(), Calendar.getInstance())
+            	.addAll(Calendar.getInstance(), Calendar.getInstance())
             	.forEach().exec(ToString.fromCalendar("dd-MMMM-yyyy")).get());
         
         System.out.println(Op.buildList(Types.DATE)
-            	.add(new java.sql.Date(Calendar.getInstance().getTimeInMillis()))
+            	.addAll(new java.sql.Date(Calendar.getInstance().getTimeInMillis()))
             	.forEach().exec(ToString.fromDate("dd-MMM-yyyy", Locale.UK)).get());
         
         
         System.out.println(Op.buildList(Types.STRING)
-            	.add("  Company ", " day ")
+            	.addAll("  Company ", " day ")
             	.forEach().exec(StringFuncs.trim()).get());
         System.out.println(Op.buildList(Types.STRING)
-            	.add("  Company ", " day ")
+            	.addAll("  Company ", " day ")
             	.forEach().exec(StringFuncs.trim()).exec(StringFuncs.toUpperCase()).get());
         
         System.out.println(Op.on("Dublin")
@@ -612,16 +612,16 @@ public final class Op {
             	.exec(StringFuncs.fromHexadecimal(Charset.forName("ISO-8859-1"))).get());
         
         System.out.println(Op.buildList(Types.NUMBER)
-                .add(45.9, new BigDecimal(34.456))
+                .addAll(45.9, new BigDecimal(34.456))
                 .forEach().exec(ToString.fromCurrency(Locale.getDefault(), 
                         1, 2, 10, true)).get());
         System.out.println(Op.buildList(Types.NUMBER)
-                .add(45.9, 45, new BigDecimal(34.456))
+                .addAll(45.9, 45, new BigDecimal(34.456))
                 .forEach().exec(ToString.fromCurrency(Locale.getDefault(), 
                         1, 0, 0, true)).get());
         
         System.out.println(Op.buildList(Types.NUMBER)
-                .add(45.9, 45, new BigDecimal(34.456), 0, 0.5, 0.211)
+                .addAll(45.9, 45, new BigDecimal(34.456), 0, 0.5, 0.211)
                 .forEach().exec(ToString.fromPercent(Locale.getDefault(), 
                         1, 0, 10, ',', '\'', false)).get());
      
@@ -726,10 +726,14 @@ public final class Op {
         
         
         System.out.println(Op.onList(stringsList1).get());
-        System.out.println(Op.onList(stringsList1).forEach().replaceBy("op4j is great!").get());
-        System.out.println(Op.onList(stringsList1).forEach().replaceIfNullBy("op4j is great!").get());
-        System.out.println(printArray(Op.onArray(stringsArr1).forEach(Types.STRING).replaceIfNullBy("op4j is great!").get()));
-        System.out.println(printArray(Op.onArray(stringsArr1).replaceBy(new String[] {"alpha", "beta"}).forEach(Types.STRING).exec(StringFuncs.toUpperCase()).get()));
+        System.out.println(Op.onList(stringsList1).forEach().replaceWith("op4j is great!").get());
+        System.out.println(Op.onList(stringsList1).forEach().replaceIfNullWith("op4j is great!").get());
+        System.out.println(printArray(Op.onArray(stringsArr1).forEach(Types.STRING).replaceIfNullWith("op4j is great!").get()));
+        System.out.println(printArray(Op.onArray(stringsArr1).replaceWith(new String[] {"alpha", "beta"}).forEach(Types.STRING).exec(StringFuncs.toUpperCase()).get()));
+        
+        
+        System.out.println(Op.buildListOfList(Types.STRING).add(stringsList1).add(stringsList1).get());
+        System.out.println(Op.buildListOfList(Types.STRING).addAll(stringsList1, stringsList1).get());
         
     }
     

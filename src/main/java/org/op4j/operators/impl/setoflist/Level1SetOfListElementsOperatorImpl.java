@@ -68,12 +68,22 @@ public class Level1SetOfListElementsOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level1SetOfListElementsOperator<T> add(final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level1SetOfListElementsOperator<T> add(final T newElement) {
+        return new Level1SetOfListElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T>(newElement)));
+    }
+
+    public Level1SetOfListElementsOperator<T> addAll(final T... newElements) {
         return new Level1SetOfListElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T>(newElements)));
     }
 
 
-    public Level1SetOfListElementsOperator<T> insert(final int position, final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level1SetOfListElementsOperator<T> insert(final int position, final T newElement) {
+        return new Level1SetOfListElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<T>(position, newElement)));
+    }
+
+    public Level1SetOfListElementsOperator<T> insertAll(final int position, final T... newElements) {
         return new Level1SetOfListElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<T>(position, newElements)));
     }
 
@@ -282,13 +292,13 @@ public class Level1SetOfListElementsOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level1SetOfListElementsOperator<T> replaceBy(final List<T> replacement) {
-        return new Level1SetOfListElementsOperatorImpl<T>(getTarget().replaceBy(replacement));
+    public Level1SetOfListElementsOperator<T> replaceWith(final List<T> replacement) {
+        return new Level1SetOfListElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level1SetOfListElementsOperator<T> replaceIfNullBy(final List<T> replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level1SetOfListElementsOperator<T> replaceIfNullWith(final List<T> replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
     
     

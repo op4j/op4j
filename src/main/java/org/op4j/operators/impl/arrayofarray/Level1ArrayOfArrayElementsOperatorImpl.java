@@ -70,12 +70,22 @@ public class Level1ArrayOfArrayElementsOperatorImpl<T> extends AbstractOperatorI
     }
 
 
-    public Level1ArrayOfArrayElementsOperator<T> add(final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level1ArrayOfArrayElementsOperator<T> add(final T newElement) {
+        return new Level1ArrayOfArrayElementsOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Add<T>(newElement)));
+    }
+
+    public Level1ArrayOfArrayElementsOperator<T> addAll(final T... newElements) {
         return new Level1ArrayOfArrayElementsOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Add<T>(newElements)));
     }
 
 
-    public Level1ArrayOfArrayElementsOperator<T> insert(final int position, final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level1ArrayOfArrayElementsOperator<T> insert(final int position, final T newElement) {
+        return new Level1ArrayOfArrayElementsOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Insert<T>(position, newElement)));
+    }
+
+    public Level1ArrayOfArrayElementsOperator<T> insertAll(final int position, final T... newElements) {
         return new Level1ArrayOfArrayElementsOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Insert<T>(position, newElements)));
     }
 
@@ -293,13 +303,13 @@ public class Level1ArrayOfArrayElementsOperatorImpl<T> extends AbstractOperatorI
     }
 
 
-    public Level1ArrayOfArrayElementsOperator<T> replaceBy(final T[] replacement) {
-        return new Level1ArrayOfArrayElementsOperatorImpl<T>(this.type, getTarget().replaceBy(replacement));
+    public Level1ArrayOfArrayElementsOperator<T> replaceWith(final T[] replacement) {
+        return new Level1ArrayOfArrayElementsOperatorImpl<T>(this.type, getTarget().replaceWith(replacement));
     }
 
 
-    public Level1ArrayOfArrayElementsOperator<T> replaceIfNullBy(final T[] replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level1ArrayOfArrayElementsOperator<T> replaceIfNullWith(final T[] replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
 
 

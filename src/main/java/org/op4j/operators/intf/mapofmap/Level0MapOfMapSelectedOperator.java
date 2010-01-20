@@ -70,7 +70,7 @@ public interface Level0MapOfMapSelectedOperator<K1,K2,V>
     
     
     
-    public Level0MapOfMapSelectedOperator<K1,K2,V> replaceBy(final Map<K1,Map<K2,V>> replacement);
+    public Level0MapOfMapSelectedOperator<K1,K2,V> replaceWith(final Map<K1,Map<K2,V>> replacement);
     
     
     public Level0MapOfMapSelectedOperator<K1,K2,V> convert(final IConverter<? extends Map<? extends K1,? extends Map<? extends K2,? extends V>>,? super Map<K1,Map<K2,V>>> converter);

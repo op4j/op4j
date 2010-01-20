@@ -48,7 +48,7 @@ public interface Level0GenericUniqSelectedOperator<T>
     public Level0GenericUniqOperator<T> endIf();
 
     
-    public Level0GenericUniqSelectedOperator<T> replaceBy(final T replacement);
+    public Level0GenericUniqSelectedOperator<T> replaceWith(final T replacement);
     
     public Level0GenericUniqSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter);
     

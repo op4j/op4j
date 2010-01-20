@@ -53,7 +53,7 @@ public interface Level3ListOfMapElementsSelectedEntriesSelectedValueSelectedOper
     
     public Level3ListOfMapElementsSelectedEntriesSelectedValueSelectedOperator<K,V> eval(final IEvaluator<? extends V, ? super V> eval);
 
-    public Level3ListOfMapElementsSelectedEntriesSelectedValueSelectedOperator<K,V> replaceBy(final V replacement);
+    public Level3ListOfMapElementsSelectedEntriesSelectedValueSelectedOperator<K,V> replaceWith(final V replacement);
 
     public Level3ListOfMapElementsSelectedEntriesSelectedValueSelectedOperator<K,V> exec(final IFunction<? extends V, ? super V> function);
     

@@ -98,8 +98,8 @@ public interface Level2MapOfMapEntriesValueOperator<K1,K2,V>
     
     
     
-    public Level2MapOfMapEntriesValueOperator<K1,K2,V> replaceBy(final Map<K2,V> replacement);
-    public Level2MapOfMapEntriesValueOperator<K1,K2,V> replaceIfNullBy(final Map<K2,V> replacement);
+    public Level2MapOfMapEntriesValueOperator<K1,K2,V> replaceWith(final Map<K2,V> replacement);
+    public Level2MapOfMapEntriesValueOperator<K1,K2,V> replaceIfNullWith(final Map<K2,V> replacement);
 
 
     public <X2,Y> Level2MapOfMapEntriesValueOperator<K1,X2,Y> convert(final IConverter<? extends Map<X2,Y>,? super Map<K2,V>> converter);

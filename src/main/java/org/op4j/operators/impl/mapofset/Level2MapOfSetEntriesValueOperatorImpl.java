@@ -70,12 +70,22 @@ public class Level2MapOfSetEntriesValueOperatorImpl<K,V> extends AbstractOperato
     }
 
 
-    public Level2MapOfSetEntriesValueOperator<K, V> add(final V... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level2MapOfSetEntriesValueOperator<K, V> add(final V newElement) {
+        return new Level2MapOfSetEntriesValueOperatorImpl<K, V>(getTarget().execute(new SetFuncs.Add<V>(newElement)));
+    }
+
+    public Level2MapOfSetEntriesValueOperator<K, V> addAll(final V... newElements) {
         return new Level2MapOfSetEntriesValueOperatorImpl<K, V>(getTarget().execute(new SetFuncs.Add<V>(newElements)));
     }
 
 
-    public Level2MapOfSetEntriesValueOperator<K, V> insert(final int position, final V... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level2MapOfSetEntriesValueOperator<K, V> insert(final int position, final V newElement) {
+        return new Level2MapOfSetEntriesValueOperatorImpl<K, V>(getTarget().execute(new SetFuncs.Insert<V>(position, newElement)));
+    }
+
+    public Level2MapOfSetEntriesValueOperator<K, V> insertAll(final int position, final V... newElements) {
         return new Level2MapOfSetEntriesValueOperatorImpl<K, V>(getTarget().execute(new SetFuncs.Insert<V>(position, newElements)));
     }
 
@@ -283,13 +293,13 @@ public class Level2MapOfSetEntriesValueOperatorImpl<K,V> extends AbstractOperato
     }
 
 
-    public Level2MapOfSetEntriesValueOperator<K, V> replaceBy(final Set<V> replacement) {
-        return new Level2MapOfSetEntriesValueOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    public Level2MapOfSetEntriesValueOperator<K, V> replaceWith(final Set<V> replacement) {
+        return new Level2MapOfSetEntriesValueOperatorImpl<K, V>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level2MapOfSetEntriesValueOperator<K, V> replaceIfNullBy(final Set<V> replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level2MapOfSetEntriesValueOperator<K, V> replaceIfNullWith(final Set<V> replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
 
     

@@ -115,8 +115,10 @@ public interface Level0SetOfArrayOperator<T>
     public Level0SetOfArrayOperator<T> sort(final Comparator<? super T[]> comparator);
         
     public Level0SetOperator<T> flatten();
-    public Level0SetOfArrayOperator<T> add(final T[]... newElements);
-    public Level0SetOfArrayOperator<T> insert(final int position, final T[]... newElements);
+    public Level0SetOfArrayOperator<T> add(final T[] newElement);
+    public Level0SetOfArrayOperator<T> addAll(final T[]... newElements);
+    public Level0SetOfArrayOperator<T> insert(final int position, final T[] newElement);
+    public Level0SetOfArrayOperator<T> insertAll(final int position, final T[]... newElements);
     public Level0SetOfArrayOperator<T> addAll(final Collection<T[]> collection);
     public Level0SetOfArrayOperator<T> removeAllIndexes(final int... indices);
     public Level0SetOfArrayOperator<T> removeAllEqual(final T[]... values);
@@ -163,8 +165,8 @@ public interface Level0SetOfArrayOperator<T>
 
 
     
-    public Level0SetOfArrayOperator<T> replaceBy(final Set<T[]> replacement);
-    public Level0SetOfArrayOperator<T> replaceIfNullBy(final Set<T[]> replacement);
+    public Level0SetOfArrayOperator<T> replaceWith(final Set<T[]> replacement);
+    public Level0SetOfArrayOperator<T> replaceIfNullWith(final Set<T[]> replacement);
 
 
     public <X> Level0SetOfArrayOperator<X> convert(final IConverter<? extends Set<X[]>,? super Set<T[]>> converter);

@@ -24,6 +24,11 @@ public class Level0MapSelectedOperatorImpl<K,V> extends AbstractOperatorImpl imp
     }
 
 
+    public Level0MapSelectedOperator<K,V> insertAll(final int position, final Map<K,V> map) {
+        return new Level0MapSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.InsertAll<K,V>(position, map)));
+    }
+
+
     public Level0MapSelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean,? super Entry<K,V>> eval) {
         return new Level0MapSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K,V>(eval)));
     }
@@ -31,11 +36,6 @@ public class Level0MapSelectedOperatorImpl<K,V> extends AbstractOperatorImpl imp
 
     public Level0MapSelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean,? super Entry<K,V>> eval) {
         return new Level0MapSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K,V>(eval)));
-    }
-
-
-    public Level0MapSelectedOperator<K,V> replaceBy(final Map<K,V> replacement) {
-        return new Level0MapSelectedOperatorImpl<K,V>(getTarget().replaceBy(replacement));
     }
 
 
@@ -51,11 +51,6 @@ public class Level0MapSelectedOperatorImpl<K,V> extends AbstractOperatorImpl imp
 
     public Level1MapSelectedEntriesOperator<K,V> forEachEntry() {
         return new Level1MapSelectedEntriesOperatorImpl<K,V>(getTarget().iterate());
-    }
-
-
-    public Level0MapSelectedOperator<K,V> insertAll(final int position, final Map<K,V> map) {
-        return new Level0MapSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.InsertAll<K,V>(position, map)));
     }
 
 
@@ -97,6 +92,11 @@ public class Level0MapSelectedOperatorImpl<K,V> extends AbstractOperatorImpl imp
 
     public Level0MapSelectedOperator<K,V> sort(final Comparator<? super Entry<K,V>> comparator) {
         return new Level0MapSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,V>(comparator)));
+    }
+
+
+    public Level0MapSelectedOperator<K,V> replaceWith(final Map<K,V> replacement) {
+        return new Level0MapSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
     }
 
 

@@ -28,6 +28,6 @@ package org.op4j.operators.qualities;
  */
 public interface ReplaceableIfNullOperator<T>  {
 
-    public ReplaceableIfNullOperator<T> replaceIfNullBy(final T replacement);
+    public ReplaceableIfNullOperator<T> replaceIfNullWith(final T replacement);
     
 }

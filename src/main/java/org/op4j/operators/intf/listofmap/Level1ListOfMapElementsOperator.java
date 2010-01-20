@@ -101,8 +101,8 @@ public interface Level1ListOfMapElementsOperator<K,V>
     
     
     
-    public Level1ListOfMapElementsOperator<K,V> replaceBy(final Map<K,V> replacement);
-    public Level1ListOfMapElementsOperator<K,V> replaceIfNullBy(final Map<K,V> replacement);
+    public Level1ListOfMapElementsOperator<K,V> replaceWith(final Map<K,V> replacement);
+    public Level1ListOfMapElementsOperator<K,V> replaceIfNullWith(final Map<K,V> replacement);
 
 
     public <X,Y> Level1ListOfMapElementsOperator<X,Y> convert(final IConverter<? extends Map<X,Y>,? super Map<K,V>> converter);

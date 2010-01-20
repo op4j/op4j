@@ -72,11 +72,6 @@ public class Level2ListOfListElementsSelectedElementsOperatorImpl<T> extends Abs
     }
 
 
-    public Level2ListOfListElementsSelectedElementsOperator<T> replaceBy(final T replacement) {
-        return new Level2ListOfListElementsSelectedElementsOperatorImpl<T>(getTarget().replaceBy(replacement));
-    }
-
-
     public Level2ListOfListElementsSelectedElementsOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
         return new Level2ListOfListElementsSelectedElementsOperatorImpl<T>(getTarget().execute(eval, Normalization.NONE));
     }
@@ -89,6 +84,11 @@ public class Level2ListOfListElementsSelectedElementsOperatorImpl<T> extends Abs
 
     public Level2ListOfListElementsSelectedElementsOperator<T> exec(final IFunction<? extends T,? super T> function) {
         return new Level2ListOfListElementsSelectedElementsOperatorImpl<T>(getTarget().execute(function, Normalization.NONE));
+    }
+
+
+    public Level2ListOfListElementsSelectedElementsOperator<T> replaceWith(final T replacement) {
+        return new Level2ListOfListElementsSelectedElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 

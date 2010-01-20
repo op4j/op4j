@@ -94,8 +94,10 @@ public interface Level1SetOfListElementsOperator<T>
     public Level1SetOfListElementsOperator<T> sort();
     public Level1SetOfListElementsOperator<T> sort(final Comparator<? super T> comparator);
         
-    public Level1SetOfListElementsOperator<T> add(final T... newElements);
-    public Level1SetOfListElementsOperator<T> insert(final int position, final T... newElements);
+    public Level1SetOfListElementsOperator<T> add(final T newElement);
+    public Level1SetOfListElementsOperator<T> addAll(final T... newElements);
+    public Level1SetOfListElementsOperator<T> insert(final int position, final T newElement);
+    public Level1SetOfListElementsOperator<T> insertAll(final int position, final T... newElements);
     public Level1SetOfListElementsOperator<T> addAll(final Collection<T> collection);
     public Level1SetOfListElementsOperator<T> removeAllIndexes(final int... indices);
     public Level1SetOfListElementsOperator<T> removeAllEqual(final T... values);
@@ -117,8 +119,8 @@ public interface Level1SetOfListElementsOperator<T>
     public <K,V> Level1SetOfMapElementsOperator<K,V> toMap(final IMapBuilder<K,V,? super T> mapBuild);
 
     
-    public Level1SetOfListElementsOperator<T> replaceBy(final List<T> replacement);
-    public Level1SetOfListElementsOperator<T> replaceIfNullBy(final List<T> replacement);
+    public Level1SetOfListElementsOperator<T> replaceWith(final List<T> replacement);
+    public Level1SetOfListElementsOperator<T> replaceIfNullWith(final List<T> replacement);
 
 
     public <X> Level1SetOfListElementsOperator<X> convert(final IConverter<? extends List<X>,? super List<T>> converter);

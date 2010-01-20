@@ -35,6 +35,11 @@ public class Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V
     }
 
 
+    public Level2MapOfListSelectedEntriesSelectedValueSelectedOperator<K,V> insertAll(final int position, final V... newElements) {
+        return new Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Insert<V>(position, newElements)));
+    }
+
+
     public Level2MapOfListSelectedEntriesSelectedValueSelectedOperator<K,V> removeAllIndexes(final int... indices) {
         return new Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.RemoveAllIndexes<V>(indices)));
     }
@@ -85,11 +90,6 @@ public class Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V
     }
 
 
-    public Level2MapOfListSelectedEntriesSelectedValueSelectedOperator<K,V> replaceBy(final List<V> replacement) {
-        return new Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().replaceBy(replacement));
-    }
-
-
     public Level2MapOfListSelectedEntriesSelectedValueSelectedOperator<K,V> eval(final IEvaluator<? extends List<? extends V>,? super List<V>> eval) {
         return new Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.LIST));
     }
@@ -100,7 +100,13 @@ public class Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V
     }
 
 
-    public Level2MapOfListSelectedEntriesSelectedValueSelectedOperator<K,V> add(final V... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level2MapOfListSelectedEntriesSelectedValueSelectedOperator<K,V> add(final V newElement) {
+        return new Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Add<V>(newElement)));
+    }
+
+
+    public Level2MapOfListSelectedEntriesSelectedValueSelectedOperator<K,V> addAll(final V... newElements) {
         return new Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Add<V>(newElements)));
     }
 
@@ -110,8 +116,9 @@ public class Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V
     }
 
 
-    public Level2MapOfListSelectedEntriesSelectedValueSelectedOperator<K,V> insert(final int position, final V... newElements) {
-        return new Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Insert<V>(position, newElements)));
+    @SuppressWarnings("unchecked")
+    public Level2MapOfListSelectedEntriesSelectedValueSelectedOperator<K,V> insert(final int position, final V newElement) {
+        return new Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Insert<V>(position, newElement)));
     }
 
 
@@ -128,6 +135,11 @@ public class Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V
 
     public Level2MapOfListSelectedEntriesSelectedValueSelectedOperator<K,V> sort(final Comparator<? super V> comparator) {
         return new Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.SortByComparator<V>(comparator)));
+    }
+
+
+    public Level2MapOfListSelectedEntriesSelectedValueSelectedOperator<K,V> replaceWith(final List<V> replacement) {
+        return new Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
     }
 
 

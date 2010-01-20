@@ -66,7 +66,7 @@ public interface Level3MapOfSetSelectedEntriesValueElementsOperator<K,V>
     
     public Level3MapOfSetSelectedEntriesValueElementsOperator<K,V> eval(final IEvaluator<? extends V, ? super V> eval);
 
-    public Level3MapOfSetSelectedEntriesValueElementsOperator<K,V> replaceBy(final V replacement);
+    public Level3MapOfSetSelectedEntriesValueElementsOperator<K,V> replaceWith(final V replacement);
 
     public Level3MapOfSetSelectedEntriesValueElementsOperator<K,V> exec(final IFunction<? extends V, ? super V> function);
     

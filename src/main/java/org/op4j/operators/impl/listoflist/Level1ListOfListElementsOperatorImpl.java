@@ -67,12 +67,22 @@ public class Level1ListOfListElementsOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public Level1ListOfListElementsOperator<T> add(final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level1ListOfListElementsOperator<T> add(final T newElement) {
+        return new Level1ListOfListElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T>(newElement)));
+    }
+
+    public Level1ListOfListElementsOperator<T> addAll(final T... newElements) {
         return new Level1ListOfListElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T>(newElements)));
     }
 
 
-    public Level1ListOfListElementsOperator<T> insert(final int position, final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level1ListOfListElementsOperator<T> insert(final int position, final T newElement) {
+        return new Level1ListOfListElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<T>(position, newElement)));
+    }
+
+    public Level1ListOfListElementsOperator<T> insertAll(final int position, final T... newElements) {
         return new Level1ListOfListElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<T>(position, newElements)));
     }
 
@@ -284,13 +294,13 @@ public class Level1ListOfListElementsOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public Level1ListOfListElementsOperator<T> replaceBy(final List<T> replacement) {
-        return new Level1ListOfListElementsOperatorImpl<T>(getTarget().replaceBy(replacement));
+    public Level1ListOfListElementsOperator<T> replaceWith(final List<T> replacement) {
+        return new Level1ListOfListElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level1ListOfListElementsOperator<T> replaceIfNullBy(final List<T> replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level1ListOfListElementsOperator<T> replaceIfNullWith(final List<T> replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
     
     

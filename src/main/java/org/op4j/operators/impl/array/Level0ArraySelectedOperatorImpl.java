@@ -34,6 +34,11 @@ public class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorImpl imp
     }
 
 
+    public Level0ArraySelectedOperator<T> insertAll(final int position, final T... newElements) {
+        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Insert<T>(position, newElements)));
+    }
+
+
     public Level0ArraySelectedOperator<T> removeAllIndexes(final int... indices) {
         return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllIndexes<T>(indices)));
     }
@@ -84,11 +89,6 @@ public class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorImpl imp
     }
 
 
-    public Level0ArraySelectedOperator<T> replaceBy(final T[] replacement) {
-        return new Level0ArraySelectedOperatorImpl<T>(getTarget().replaceBy(replacement));
-    }
-
-
     public Level0ArraySelectedOperator<T> eval(final IEvaluator<? extends T[],? super T[]> eval) {
         return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.ARRAY));
     }
@@ -99,7 +99,13 @@ public class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorImpl imp
     }
 
 
-    public Level0ArraySelectedOperator<T> add(final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0ArraySelectedOperator<T> add(final T newElement) {
+        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Add<T>(newElement)));
+    }
+
+
+    public Level0ArraySelectedOperator<T> addAll(final T... newElements) {
         return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Add<T>(newElements)));
     }
 
@@ -109,8 +115,9 @@ public class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorImpl imp
     }
 
 
-    public Level0ArraySelectedOperator<T> insert(final int position, final T... newElements) {
-        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Insert<T>(position, newElements)));
+    @SuppressWarnings("unchecked")
+    public Level0ArraySelectedOperator<T> insert(final int position, final T newElement) {
+        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Insert<T>(position, newElement)));
     }
 
 
@@ -127,6 +134,11 @@ public class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorImpl imp
 
     public Level0ArraySelectedOperator<T> sort(final Comparator<? super T> comparator) {
         return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.SortByComparator<T>(comparator)));
+    }
+
+
+    public Level0ArraySelectedOperator<T> replaceWith(final T[] replacement) {
+        return new Level0ArraySelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 

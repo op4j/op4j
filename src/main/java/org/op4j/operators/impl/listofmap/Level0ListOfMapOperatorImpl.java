@@ -62,12 +62,22 @@ public class Level0ListOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListOfMapOperator<K, V> add(final Map<K, V>... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0ListOfMapOperator<K, V> add(final Map<K, V> newElement) {
+        return new Level0ListOfMapOperatorImpl<K, V>(getTarget().execute(new ListFuncs.Add<Map<K, V>>(NormalizationUtils.normalizeMap(newElement))));
+    }
+
+    public Level0ListOfMapOperator<K, V> addAll(final Map<K, V>... newElements) {
         return new Level0ListOfMapOperatorImpl<K, V>(getTarget().execute(new ListFuncs.Add<Map<K, V>>(NormalizationUtils.normalizeMaps(newElements))));
     }
 
 
-    public Level0ListOfMapOperator<K, V> insert(final int position, final Map<K, V>... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0ListOfMapOperator<K, V> insert(final int position, final Map<K, V> newElement) {
+        return new Level0ListOfMapOperatorImpl<K, V>(getTarget().execute(new ListFuncs.Insert<Map<K, V>>(position, NormalizationUtils.normalizeMap(newElement))));
+    }
+
+    public Level0ListOfMapOperator<K, V> insertAll(final int position, final Map<K, V>... newElements) {
         return new Level0ListOfMapOperatorImpl<K, V>(getTarget().execute(new ListFuncs.Insert<Map<K, V>>(position, NormalizationUtils.normalizeMaps(newElements))));
     }
 
@@ -280,13 +290,13 @@ public class Level0ListOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListOfMapOperator<K, V> replaceBy(final List<Map<K, V>> replacement) {
-        return new Level0ListOfMapOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    public Level0ListOfMapOperator<K, V> replaceWith(final List<Map<K, V>> replacement) {
+        return new Level0ListOfMapOperatorImpl<K, V>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level0ListOfMapOperator<K, V> replaceIfNullBy(final List<Map<K, V>> replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level0ListOfMapOperator<K, V> replaceIfNullWith(final List<Map<K, V>> replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
     
     

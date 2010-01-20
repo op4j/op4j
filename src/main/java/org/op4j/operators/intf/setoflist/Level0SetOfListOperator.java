@@ -116,8 +116,10 @@ public interface Level0SetOfListOperator<T>
     public Level0SetOfListOperator<T> sort(final Comparator<? super List<T>> comparator);
         
     public Level0SetOperator<T> flatten();
-    public Level0SetOfListOperator<T> add(final List<T>... newElements);
-    public Level0SetOfListOperator<T> insert(final int position, final List<T>... newElements);
+    public Level0SetOfListOperator<T> add(final List<T> newElement);
+    public Level0SetOfListOperator<T> addAll(final List<T>... newElements);
+    public Level0SetOfListOperator<T> insert(final int position, final List<T> newElement);
+    public Level0SetOfListOperator<T> insertAll(final int position, final List<T>... newElements);
     public Level0SetOfListOperator<T> addAll(final Collection<List<T>> collection);
     public Level0SetOfListOperator<T> removeAllIndexes(final int... indices);
     public Level0SetOfListOperator<T> removeAllEqual(final List<T>... values);
@@ -166,8 +168,8 @@ public interface Level0SetOfListOperator<T>
 
 
     
-    public Level0SetOfListOperator<T> replaceBy(final Set<List<T>> replacement);
-    public Level0SetOfListOperator<T> replaceIfNullBy(final Set<List<T>> replacement);
+    public Level0SetOfListOperator<T> replaceWith(final Set<List<T>> replacement);
+    public Level0SetOfListOperator<T> replaceIfNullWith(final Set<List<T>> replacement);
 
 
     public <X> Level0SetOfListOperator<X> convert(final IConverter<? extends Set<? extends List<X>>,? super Set<List<T>>> converter);

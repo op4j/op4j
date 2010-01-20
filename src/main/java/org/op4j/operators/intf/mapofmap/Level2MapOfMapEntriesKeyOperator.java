@@ -74,8 +74,8 @@ public interface Level2MapOfMapEntriesKeyOperator<K1,K2,V>
     
     public <X> Level2MapOfMapEntriesKeyOperator<X,K2,V> eval(final IEvaluator<X,? super K1> eval);
     
-    public Level2MapOfMapEntriesKeyOperator<K1,K2,V> replaceBy(final K1 replacement);
-    public Level2MapOfMapEntriesKeyOperator<K1,K2,V> replaceIfNullBy(final K1 replacement);
+    public Level2MapOfMapEntriesKeyOperator<K1,K2,V> replaceWith(final K1 replacement);
+    public Level2MapOfMapEntriesKeyOperator<K1,K2,V> replaceIfNullWith(final K1 replacement);
 
 
     public <X> Level2MapOfMapEntriesKeyOperator<X,K2,V> convert(final IConverter<X,? super K1> converter);

@@ -137,8 +137,8 @@ public class Level3MapOfMapEntriesValueEntriesOperatorImpl<K1,K2,V> extends Abst
     }
 
 
-    public Level3MapOfMapEntriesValueEntriesOperator<K1, K2, V> replaceBy(final Entry<K2, V> replacement) {
-        return new Level3MapOfMapEntriesValueEntriesOperatorImpl<K1, K2, V>(getTarget().replaceBy(replacement));
+    public Level3MapOfMapEntriesValueEntriesOperator<K1, K2, V> replaceWith(final Entry<K2, V> replacement) {
+        return new Level3MapOfMapEntriesValueEntriesOperatorImpl<K1, K2, V>(getTarget().replaceWith(replacement));
     }
     
     

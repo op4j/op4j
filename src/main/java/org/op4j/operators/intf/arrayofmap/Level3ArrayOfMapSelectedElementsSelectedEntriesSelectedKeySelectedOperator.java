@@ -48,7 +48,7 @@ public interface Level3ArrayOfMapSelectedElementsSelectedEntriesSelectedKeySelec
     public Level3ArrayOfMapSelectedElementsSelectedEntriesSelectedKeyOperator<K,V> endIf();
 
     
-    public Level3ArrayOfMapSelectedElementsSelectedEntriesSelectedKeySelectedOperator<K,V> replaceBy(final K replacement);
+    public Level3ArrayOfMapSelectedElementsSelectedEntriesSelectedKeySelectedOperator<K,V> replaceWith(final K replacement);
 
     public Level3ArrayOfMapSelectedElementsSelectedEntriesSelectedKeySelectedOperator<K,V> exec(final IFunction<? extends K, ? super K> function);
     

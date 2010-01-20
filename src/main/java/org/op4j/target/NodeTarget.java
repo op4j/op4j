@@ -428,7 +428,7 @@ public abstract class NodeTarget extends Target{
 
 
     @Override
-    public Target replaceBy(Object replacement) {
+    public Target replaceWith(Object replacement) {
         return NodeTarget.forObject(getId(), replacement);
     }
 

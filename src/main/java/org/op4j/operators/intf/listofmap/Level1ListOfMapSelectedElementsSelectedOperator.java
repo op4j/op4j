@@ -78,7 +78,7 @@ public interface Level1ListOfMapSelectedElementsSelectedOperator<K,V>
     
     public Level1ListOfMapSelectedElementsSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V>, ? super Map<K,V>> eval);
 
-    public Level1ListOfMapSelectedElementsSelectedOperator<K,V> replaceBy(final Map<K,V> replacement);
+    public Level1ListOfMapSelectedElementsSelectedOperator<K,V> replaceWith(final Map<K,V> replacement);
 
     public Level1ListOfMapSelectedElementsSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V>, ? super Map<K,V>> function);
     

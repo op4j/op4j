@@ -30,6 +30,11 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
+    public Level0SetOfArraySelectedOperator<T> insertAll(final int position, final T[]... newElements) {
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T[]>(position, NormalizationUtils.normalizeArrays(newElements))));
+    }
+
+
     public Level0SetOfArraySelectedOperator<T> removeAllIndexes(final int... indices) {
         return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexes<T[]>(indices)));
     }
@@ -80,11 +85,6 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public Level0SetOfArraySelectedOperator<T> replaceBy(final Set<T[]> replacement) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().replaceBy(replacement));
-    }
-
-
     public Level0SetOfArraySelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T[]>,? super Set<T[]>> eval) {
         return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.SET_OF_ARRAY));
     }
@@ -95,7 +95,13 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public Level0SetOfArraySelectedOperator<T> add(final T[]... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0SetOfArraySelectedOperator<T> add(final T[] newElement) {
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T[]>(NormalizationUtils.normalizeArray(newElement))));
+    }
+
+
+    public Level0SetOfArraySelectedOperator<T> addAll(final T[]... newElements) {
         return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T[]>(NormalizationUtils.normalizeArrays(newElements))));
     }
 
@@ -105,8 +111,9 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public Level0SetOfArraySelectedOperator<T> insert(final int position, final T[]... newElements) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T[]>(position, NormalizationUtils.normalizeArrays(newElements))));
+    @SuppressWarnings("unchecked")
+    public Level0SetOfArraySelectedOperator<T> insert(final int position, final T[] newElement) {
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T[]>(position, NormalizationUtils.normalizeArray(newElement))));
     }
 
 
@@ -123,6 +130,11 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
 
     public Level0SetOfArraySelectedOperator<T> sort(final Comparator<? super T[]> comparator) {
         return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.SortByComparator<T[]>(comparator)));
+    }
+
+
+    public Level0SetOfArraySelectedOperator<T> replaceWith(final Set<T[]> replacement) {
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 

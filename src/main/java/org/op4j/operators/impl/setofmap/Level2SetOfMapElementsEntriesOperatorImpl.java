@@ -139,8 +139,8 @@ public class Level2SetOfMapElementsEntriesOperatorImpl<K,V> extends AbstractOper
     }
 
 
-    public Level2SetOfMapElementsEntriesOperator<K, V> replaceBy(final Entry<K, V> replacement) {
-        return new Level2SetOfMapElementsEntriesOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    public Level2SetOfMapElementsEntriesOperator<K, V> replaceWith(final Entry<K, V> replacement) {
+        return new Level2SetOfMapElementsEntriesOperatorImpl<K, V>(getTarget().replaceWith(replacement));
     }
 
 }

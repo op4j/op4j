@@ -47,7 +47,7 @@ public interface Level0GenericMultiSelectedOperator<T>
     public Level0GenericMultiOperator<T> endIf();
 
 
-    public Level0GenericMultiSelectedOperator<T> replaceBy(final T replacement);
+    public Level0GenericMultiSelectedOperator<T> replaceWith(final T replacement);
     
     public Level0GenericMultiSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter);
     

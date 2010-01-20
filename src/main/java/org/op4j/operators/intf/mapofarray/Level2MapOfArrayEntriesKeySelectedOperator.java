@@ -48,7 +48,7 @@ public interface Level2MapOfArrayEntriesKeySelectedOperator<K,V>
     public Level2MapOfArrayEntriesKeyOperator<K,V> endIf();
 
 
-    public Level2MapOfArrayEntriesKeySelectedOperator<K,V> replaceBy(final K replacement);
+    public Level2MapOfArrayEntriesKeySelectedOperator<K,V> replaceWith(final K replacement);
 
     public Level2MapOfArrayEntriesKeySelectedOperator<K,V> exec(final IFunction<? extends K, ? super K> function);
     

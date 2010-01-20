@@ -69,8 +69,8 @@ public interface Level3ArrayOfMapElementsEntriesKeyOperator<K,V>
     
     public <X> Level3ArrayOfMapElementsEntriesKeyOperator<X,V> eval(final IEvaluator<X,? super K> eval);
     
-    public Level3ArrayOfMapElementsEntriesKeyOperator<K,V> replaceBy(final K replacement);
-    public Level3ArrayOfMapElementsEntriesKeyOperator<K,V> replaceIfNullBy(final K replacement);
+    public Level3ArrayOfMapElementsEntriesKeyOperator<K,V> replaceWith(final K replacement);
+    public Level3ArrayOfMapElementsEntriesKeyOperator<K,V> replaceIfNullWith(final K replacement);
 
 
     public <X> Level3ArrayOfMapElementsEntriesKeyOperator<X,V> convert(final IConverter<X,? super K> converter);

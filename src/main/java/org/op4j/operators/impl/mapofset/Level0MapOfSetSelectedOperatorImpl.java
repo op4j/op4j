@@ -26,6 +26,11 @@ public class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
+    public Level0MapOfSetSelectedOperator<K,V> insertAll(final int position, final Map<K,Set<V>> map) {
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.InsertAll<K,Set<V>>(position, NormalizationUtils.normalizeMapOfSet(map))));
+    }
+
+
     public Level0MapOfSetSelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean,? super Entry<K,Set<V>>> eval) {
         return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K,Set<V>>(eval)));
     }
@@ -33,11 +38,6 @@ public class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOperatorImp
 
     public Level0MapOfSetSelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean,? super Entry<K,Set<V>>> eval) {
         return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K,Set<V>>(eval)));
-    }
-
-
-    public Level0MapOfSetSelectedOperator<K,V> replaceBy(final Map<K,Set<V>> replacement) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().replaceBy(replacement));
     }
 
 
@@ -53,11 +53,6 @@ public class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOperatorImp
 
     public Level1MapOfSetSelectedEntriesOperator<K,V> forEachEntry() {
         return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().iterate());
-    }
-
-
-    public Level0MapOfSetSelectedOperator<K,V> insertAll(final int position, final Map<K,Set<V>> map) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.InsertAll<K,Set<V>>(position, NormalizationUtils.normalizeMapOfSet(map))));
     }
 
 
@@ -99,6 +94,11 @@ public class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOperatorImp
 
     public Level0MapOfSetSelectedOperator<K,V> sort(final Comparator<? super Entry<K,Set<V>>> comparator) {
         return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,Set<V>>(comparator)));
+    }
+
+
+    public Level0MapOfSetSelectedOperator<K,V> replaceWith(final Map<K,Set<V>> replacement) {
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
     }
 
 

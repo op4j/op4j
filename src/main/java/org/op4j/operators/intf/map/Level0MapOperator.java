@@ -112,8 +112,8 @@ public interface Level0MapOperator<K,V>
     
     
     
-    public Level0MapOperator<K,V> replaceBy(final Map<K,V> replacement);
-    public Level0MapOperator<K,V> replaceIfNullBy(final Map<K,V> replacement);
+    public Level0MapOperator<K,V> replaceWith(final Map<K,V> replacement);
+    public Level0MapOperator<K,V> replaceIfNullWith(final Map<K,V> replacement);
 
 
     public <X,Y> Level0MapOperator<X,Y> convert(final IConverter<? extends Map<X,Y>,? super Map<K,V>> converter);

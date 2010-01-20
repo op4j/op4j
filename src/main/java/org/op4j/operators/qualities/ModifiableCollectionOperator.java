@@ -31,8 +31,10 @@ import org.op4j.functions.evaluators.IEvaluator;
  */
 public interface ModifiableCollectionOperator<T> {
     
-    public ModifiableCollectionOperator<T> add(final T... newElements);
-    public ModifiableCollectionOperator<T> insert(final int position, final T... newElements);
+    public ModifiableCollectionOperator<T> add(final T newElement);
+    public ModifiableCollectionOperator<T> addAll(final T... newElements);
+    public ModifiableCollectionOperator<T> insert(final int position, final T newElement);
+    public ModifiableCollectionOperator<T> insertAll(final int position, final T... newElements);
     public ModifiableCollectionOperator<T> addAll(final Collection<T> collection);
     public ModifiableCollectionOperator<T> removeAllIndexes(final int... indices);
     public ModifiableCollectionOperator<T> removeAllEqual(final T... values);

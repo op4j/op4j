@@ -71,12 +71,22 @@ public class Level0ArrayOfListOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ArrayOfListOperator<T> add(final List<T>... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0ArrayOfListOperator<T> add(final List<T> newElement) {
+        return new Level0ArrayOfListOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Add<List<T>>(NormalizationUtils.normalizeList(newElement))));
+    }
+
+    public Level0ArrayOfListOperator<T> addAll(final List<T>... newElements) {
         return new Level0ArrayOfListOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Add<List<T>>(NormalizationUtils.normalizeLists(newElements))));
     }
 
 
-    public Level0ArrayOfListOperator<T> insert(final int position, final List<T>... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0ArrayOfListOperator<T> insert(final int position, final List<T> newElement) {
+        return new Level0ArrayOfListOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Insert<List<T>>(position, NormalizationUtils.normalizeList(newElement))));
+    }
+
+    public Level0ArrayOfListOperator<T> insertAll(final int position, final List<T>... newElements) {
         return new Level0ArrayOfListOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Insert<List<T>>(position, NormalizationUtils.normalizeLists(newElements))));
     }
 
@@ -350,13 +360,13 @@ public class Level0ArrayOfListOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ArrayOfListOperator<T> replaceBy(final List<T>[] replacement) {
-        return new Level0ArrayOfListOperatorImpl<T>(getTarget().replaceBy(replacement));
+    public Level0ArrayOfListOperator<T> replaceWith(final List<T>[] replacement) {
+        return new Level0ArrayOfListOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level0ArrayOfListOperator<T> replaceIfNullBy(final List<T>[] replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level0ArrayOfListOperator<T> replaceIfNullWith(final List<T>[] replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
     
     

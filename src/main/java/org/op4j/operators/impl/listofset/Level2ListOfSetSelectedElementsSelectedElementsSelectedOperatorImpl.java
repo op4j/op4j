@@ -21,11 +21,6 @@ public class Level2ListOfSetSelectedElementsSelectedElementsSelectedOperatorImpl
     }
 
 
-    public Level2ListOfSetSelectedElementsSelectedElementsSelectedOperator<T> replaceBy(final T replacement) {
-        return new Level2ListOfSetSelectedElementsSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceBy(replacement));
-    }
-
-
     public Level2ListOfSetSelectedElementsSelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
         return new Level2ListOfSetSelectedElementsSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.NONE));
     }
@@ -38,6 +33,11 @@ public class Level2ListOfSetSelectedElementsSelectedElementsSelectedOperatorImpl
 
     public Level2ListOfSetSelectedElementsSelectedElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
         return new Level2ListOfSetSelectedElementsSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalization.NONE));
+    }
+
+
+    public Level2ListOfSetSelectedElementsSelectedElementsSelectedOperator<T> replaceWith(final T replacement) {
+        return new Level2ListOfSetSelectedElementsSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 

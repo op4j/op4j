@@ -74,8 +74,10 @@ public interface Level1ArrayOfSetSelectedElementsOperator<T>
     public Level1ArrayOfSetSelectedElementsOperator<T> sort();
     public Level1ArrayOfSetSelectedElementsOperator<T> sort(final Comparator<? super T> comparator);
     
-    public Level1ArrayOfSetSelectedElementsOperator<T> add(final T... newElements);
-    public Level1ArrayOfSetSelectedElementsOperator<T> insert(final int position, final T... newElements);
+    public Level1ArrayOfSetSelectedElementsOperator<T> add(final T newElement);
+    public Level1ArrayOfSetSelectedElementsOperator<T> addAll(final T... newElements);
+    public Level1ArrayOfSetSelectedElementsOperator<T> insert(final int position, final T newElement);
+    public Level1ArrayOfSetSelectedElementsOperator<T> insertAll(final int position, final T... newElements);
     public Level1ArrayOfSetSelectedElementsOperator<T> addAll(final Collection<T> collection);
     public Level1ArrayOfSetSelectedElementsOperator<T> removeAllIndexes(final int... indices);
     public Level1ArrayOfSetSelectedElementsOperator<T> removeAllEqual(final T... values);
@@ -93,7 +95,7 @@ public interface Level1ArrayOfSetSelectedElementsOperator<T>
     
     public Level1ArrayOfSetSelectedElementsOperator<T> eval(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval);
 
-    public Level1ArrayOfSetSelectedElementsOperator<T> replaceBy(final Set<T> replacement);
+    public Level1ArrayOfSetSelectedElementsOperator<T> replaceWith(final Set<T> replacement);
 
     public Level1ArrayOfSetSelectedElementsOperator<T> exec(final IFunction<? extends Set<? extends T>, ? super Set<T>> function);
     

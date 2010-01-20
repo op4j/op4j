@@ -29,6 +29,11 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
     }
 
 
+    public Level0SetSelectedOperator<T> insertAll(final int position, final T... newElements) {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T>(position, newElements)));
+    }
+
+
     public Level0SetSelectedOperator<T> removeAllIndexes(final int... indices) {
         return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexes<T>(indices)));
     }
@@ -79,11 +84,6 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
     }
 
 
-    public Level0SetSelectedOperator<T> replaceBy(final Set<T> replacement) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().replaceBy(replacement));
-    }
-
-
     public Level0SetSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval) {
         return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.SET));
     }
@@ -94,7 +94,13 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
     }
 
 
-    public Level0SetSelectedOperator<T> add(final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0SetSelectedOperator<T> add(final T newElement) {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElement)));
+    }
+
+
+    public Level0SetSelectedOperator<T> addAll(final T... newElements) {
         return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElements)));
     }
 
@@ -104,8 +110,9 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
     }
 
 
-    public Level0SetSelectedOperator<T> insert(final int position, final T... newElements) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T>(position, newElements)));
+    @SuppressWarnings("unchecked")
+    public Level0SetSelectedOperator<T> insert(final int position, final T newElement) {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T>(position, newElement)));
     }
 
 
@@ -122,6 +129,11 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
 
     public Level0SetSelectedOperator<T> sort(final Comparator<? super T> comparator) {
         return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.SortByComparator<T>(comparator)));
+    }
+
+
+    public Level0SetSelectedOperator<T> replaceWith(final Set<T> replacement) {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 

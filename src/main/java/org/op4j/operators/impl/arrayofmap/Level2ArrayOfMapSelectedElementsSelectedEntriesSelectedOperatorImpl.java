@@ -23,11 +23,6 @@ public class Level2ArrayOfMapSelectedElementsSelectedEntriesSelectedOperatorImpl
     }
 
 
-    public Level2ArrayOfMapSelectedElementsSelectedEntriesSelectedOperator<K,V> replaceBy(final Entry<K,V> replacement) {
-        return new Level2ArrayOfMapSelectedElementsSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().replaceBy(replacement));
-    }
-
-
     public Level2ArrayOfMapSelectedElementsSelectedEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> eval) {
         return new Level2ArrayOfMapSelectedElementsSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAPENTRY));
     }
@@ -50,6 +45,11 @@ public class Level2ArrayOfMapSelectedElementsSelectedEntriesSelectedOperatorImpl
 
     public Level2ArrayOfMapSelectedElementsSelectedEntriesSelectedOperator<K,V> exec(final IFunction<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> function) {
         return new Level2ArrayOfMapSelectedElementsSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.MAPENTRY));
+    }
+
+
+    public Level2ArrayOfMapSelectedElementsSelectedEntriesSelectedOperator<K,V> replaceWith(final Entry<K,V> replacement) {
+        return new Level2ArrayOfMapSelectedElementsSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
     }
 
 

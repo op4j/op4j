@@ -36,6 +36,11 @@ public class Level0ListOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorIm
     }
 
 
+    public Level0ListOfMapSelectedOperator<K,V> insertAll(final int position, final Map<K,V>... map) {
+        return null;
+    }
+
+
     public Level0ListOfMapSelectedOperator<K,V> removeAllIndexes(final int... indices) {
         return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.RemoveAllIndexes<Map<K,V>>(indices)));
     }
@@ -86,11 +91,6 @@ public class Level0ListOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorIm
     }
 
 
-    public Level0ListOfMapSelectedOperator<K,V> replaceBy(final List<Map<K,V>> replacement) {
-        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().replaceBy(replacement));
-    }
-
-
     public Level0ListOfMapSelectedOperator<K,V> eval(final IEvaluator<? extends List<? extends Map<? extends K,? extends V>>,? super List<Map<K,V>>> eval) {
         return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.LIST_OF_MAP));
     }
@@ -101,7 +101,13 @@ public class Level0ListOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorIm
     }
 
 
-    public Level0ListOfMapSelectedOperator<K,V> add(final Map<K,V>... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0ListOfMapSelectedOperator<K,V> add(final Map<K,V> newElement) {
+        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Add<Map<K,V>>(NormalizationUtils.normalizeMap(newElement))));
+    }
+
+
+    public Level0ListOfMapSelectedOperator<K,V> addAll(final Map<K,V>... newElements) {
         return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Add<Map<K,V>>(NormalizationUtils.normalizeMaps(newElements))));
     }
 
@@ -111,8 +117,9 @@ public class Level0ListOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorIm
     }
 
 
-    public Level0ListOfMapSelectedOperator<K,V> insert(final int position, final Map<K,V>... newElements) {
-        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Insert<Map<K,V>>(position, NormalizationUtils.normalizeMaps(newElements))));
+    @SuppressWarnings("unchecked")
+    public Level0ListOfMapSelectedOperator<K,V> insert(final int position, final Map<K,V> newElement) {
+        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Insert<Map<K,V>>(position, NormalizationUtils.normalizeMap(newElement))));
     }
 
 
@@ -129,6 +136,11 @@ public class Level0ListOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorIm
 
     public Level0ListOfMapSelectedOperator<K,V> sort(final Comparator<? super Map<K,V>> comparator) {
         return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.SortByComparator<Map<K,V>>(comparator)));
+    }
+
+
+    public Level0ListOfMapSelectedOperator<K,V> replaceWith(final List<Map<K,V>> replacement) {
+        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
     }
 
 

@@ -137,8 +137,8 @@ public class Level1MapOfSetEntriesOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level1MapOfSetEntriesOperator<K, V> replaceBy(final Entry<K, Set<V>> replacement) {
-        return new Level1MapOfSetEntriesOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    public Level1MapOfSetEntriesOperator<K, V> replaceWith(final Entry<K, Set<V>> replacement) {
+        return new Level1MapOfSetEntriesOperatorImpl<K, V>(getTarget().replaceWith(replacement));
     }
     
 }

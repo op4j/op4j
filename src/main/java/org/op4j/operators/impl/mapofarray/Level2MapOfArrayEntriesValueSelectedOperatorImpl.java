@@ -35,6 +35,11 @@ public class Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V> extends Abstr
     }
 
 
+    public Level2MapOfArrayEntriesValueSelectedOperator<K,V> insertAll(final int position, final V... newElements) {
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.Insert<V>(position, newElements)));
+    }
+
+
     public Level2MapOfArrayEntriesValueSelectedOperator<K,V> removeAllIndexes(final int... indices) {
         return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.RemoveAllIndexes<V>(indices)));
     }
@@ -85,11 +90,6 @@ public class Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V> extends Abstr
     }
 
 
-    public Level2MapOfArrayEntriesValueSelectedOperator<K,V> replaceBy(final V[] replacement) {
-        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V>(getTarget().replaceBy(replacement));
-    }
-
-
     public Level2MapOfArrayEntriesValueSelectedOperator<K,V> eval(final IEvaluator<? extends V[],? super V[]> eval) {
         return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.ARRAY));
     }
@@ -100,7 +100,13 @@ public class Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V> extends Abstr
     }
 
 
-    public Level2MapOfArrayEntriesValueSelectedOperator<K,V> add(final V... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level2MapOfArrayEntriesValueSelectedOperator<K,V> add(final V newElement) {
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.Add<V>(newElement)));
+    }
+
+
+    public Level2MapOfArrayEntriesValueSelectedOperator<K,V> addAll(final V... newElements) {
         return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.Add<V>(newElements)));
     }
 
@@ -110,8 +116,9 @@ public class Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V> extends Abstr
     }
 
 
-    public Level2MapOfArrayEntriesValueSelectedOperator<K,V> insert(final int position, final V... newElements) {
-        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.Insert<V>(position, newElements)));
+    @SuppressWarnings("unchecked")
+    public Level2MapOfArrayEntriesValueSelectedOperator<K,V> insert(final int position, final V newElement) {
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.Insert<V>(position, newElement)));
     }
 
 
@@ -128,6 +135,11 @@ public class Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V> extends Abstr
 
     public Level2MapOfArrayEntriesValueSelectedOperator<K,V> sort(final Comparator<? super V> comparator) {
         return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.SortByComparator<V>(comparator)));
+    }
+
+
+    public Level2MapOfArrayEntriesValueSelectedOperator<K,V> replaceWith(final V[] replacement) {
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
     }
 
 

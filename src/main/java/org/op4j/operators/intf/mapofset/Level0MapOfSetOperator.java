@@ -119,8 +119,8 @@ public interface Level0MapOfSetOperator<K,V>
 
     
     
-    public Level0MapOfSetOperator<K,V> replaceBy(final Map<K,Set<V>> replacement);
-    public Level0MapOfSetOperator<K,V> replaceIfNullBy(final Map<K,Set<V>> replacement);
+    public Level0MapOfSetOperator<K,V> replaceWith(final Map<K,Set<V>> replacement);
+    public Level0MapOfSetOperator<K,V> replaceIfNullWith(final Map<K,Set<V>> replacement);
 
 
     public <X,Y> Level0MapOfSetOperator<X,Y> convert(final IConverter<? extends Map<X,? extends Set<Y>>,? super Map<K,Set<V>>> converter);

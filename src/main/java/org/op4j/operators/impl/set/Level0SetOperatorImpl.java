@@ -69,12 +69,22 @@ public class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0SetOperator<T> add(final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0SetOperator<T> add(final T newElement) {
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElement)));
+    }
+
+    public Level0SetOperator<T> addAll(final T... newElements) {
         return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElements)));
     }
 
 
-    public Level0SetOperator<T> insert(final int position, final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0SetOperator<T> insert(final int position, final T newElement) {
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T>(position, newElement)));
+    }
+
+    public Level0SetOperator<T> insertAll(final int position, final T... newElements) {
         return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T>(position, newElements)));
     }
 
@@ -321,13 +331,13 @@ public class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0SetOperator<T> replaceBy(final Set<T> replacement) {
-        return new Level0SetOperatorImpl<T>(getTarget().replaceBy(replacement));
+    public Level0SetOperator<T> replaceWith(final Set<T> replacement) {
+        return new Level0SetOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level0SetOperator<T> replaceIfNullBy(final Set<T> replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level0SetOperator<T> replaceIfNullWith(final Set<T> replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
 
     

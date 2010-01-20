@@ -74,8 +74,10 @@ public interface Level2MapOfSetEntriesSelectedValueOperator<K,V>
     public Level2MapOfSetEntriesSelectedValueOperator<K,V> sort(final Comparator<? super V> comparator);
     
         
-    public Level2MapOfSetEntriesSelectedValueOperator<K,V> add(final V... newElements);
-    public Level2MapOfSetEntriesSelectedValueOperator<K,V> insert(final int position, final V... newElements);
+    public Level2MapOfSetEntriesSelectedValueOperator<K,V> add(final V newElement);
+    public Level2MapOfSetEntriesSelectedValueOperator<K,V> addAll(final V... newElements);
+    public Level2MapOfSetEntriesSelectedValueOperator<K,V> insert(final int position, final V newElement);
+    public Level2MapOfSetEntriesSelectedValueOperator<K,V> insertAll(final int position, final V... newElements);
     public Level2MapOfSetEntriesSelectedValueOperator<K,V> addAll(final Collection<V> collection);
     public Level2MapOfSetEntriesSelectedValueOperator<K,V> removeAllIndexes(final int... indices);
     public Level2MapOfSetEntriesSelectedValueOperator<K,V> removeAllEqual(final V... values);
@@ -93,7 +95,7 @@ public interface Level2MapOfSetEntriesSelectedValueOperator<K,V>
     
     public Level2MapOfSetEntriesSelectedValueOperator<K,V> eval(final IEvaluator<? extends Set<? extends V>, ? super Set<V>> eval);
 
-    public Level2MapOfSetEntriesSelectedValueOperator<K,V> replaceBy(final Set<V> replacement);
+    public Level2MapOfSetEntriesSelectedValueOperator<K,V> replaceWith(final Set<V> replacement);
 
     public Level2MapOfSetEntriesSelectedValueOperator<K,V> exec(final IFunction<? extends Set<? extends V>, ? super Set<V>> function);
     

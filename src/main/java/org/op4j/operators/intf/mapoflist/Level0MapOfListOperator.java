@@ -118,8 +118,8 @@ public interface Level0MapOfListOperator<K,V>
     public Level0GenericUniqOperator<Map<K,List<V>>> generic();
     
     
-    public Level0MapOfListOperator<K,V> replaceBy(final Map<K,List<V>> replacement);
-    public Level0MapOfListOperator<K,V> replaceIfNullBy(final Map<K,List<V>> replacement);
+    public Level0MapOfListOperator<K,V> replaceWith(final Map<K,List<V>> replacement);
+    public Level0MapOfListOperator<K,V> replaceIfNullWith(final Map<K,List<V>> replacement);
 
 
     public <X,Y> Level0MapOfListOperator<X,Y> convert(final IConverter<? extends Map<X,? extends List<Y>>,? super Map<K,List<V>>> converter);

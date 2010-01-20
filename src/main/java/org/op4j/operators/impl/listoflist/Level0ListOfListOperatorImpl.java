@@ -73,12 +73,22 @@ public class Level0ListOfListOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListOfListOperator<T> add(final List<T>... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0ListOfListOperator<T> add(final List<T> newElement) {
+        return new Level0ListOfListOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<List<T>>(NormalizationUtils.normalizeList(newElement))));
+    }
+
+    public Level0ListOfListOperator<T> addAll(final List<T>... newElements) {
         return new Level0ListOfListOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<List<T>>(NormalizationUtils.normalizeLists(newElements))));
     }
 
 
-    public Level0ListOfListOperator<T> insert(final int position, final List<T>... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0ListOfListOperator<T> insert(final int position, final List<T> newElement) {
+        return new Level0ListOfListOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<List<T>>(position, NormalizationUtils.normalizeList(newElement))));
+    }
+
+    public Level0ListOfListOperator<T> insertAll(final int position, final List<T>... newElements) {
         return new Level0ListOfListOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<List<T>>(position, NormalizationUtils.normalizeLists(newElements))));
     }
 
@@ -362,13 +372,13 @@ public class Level0ListOfListOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListOfListOperator<T> replaceBy(final List<List<T>> replacement) {
-        return new Level0ListOfListOperatorImpl<T>(getTarget().replaceBy(replacement));
+    public Level0ListOfListOperator<T> replaceWith(final List<List<T>> replacement) {
+        return new Level0ListOfListOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level0ListOfListOperator<T> replaceIfNullBy(final List<List<T>> replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level0ListOfListOperator<T> replaceIfNullWith(final List<List<T>> replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
     
     

@@ -80,11 +80,21 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0GenericMultiOperator<T> add(final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0GenericMultiOperator<T> add(final T newElement) {
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T>(newElement)));
+    }
+
+    public Level0GenericMultiOperator<T> addAll(final T... newElements) {
         return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T>(newElements)));
     }
 
-    public Level0GenericMultiOperator<T> insert(final int position, final T... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0GenericMultiOperator<T> insert(final int position, final T newElement) {
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<T>(position, newElement)));
+    }
+
+    public Level0GenericMultiOperator<T> insertAll(final int position, final T... newElements) {
         return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<T>(position, newElements)));
     }
 
@@ -318,13 +328,13 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0GenericMultiOperator<T> replaceBy(final T replacement) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().replaceBy(replacement));
+    public Level0GenericMultiOperator<T> replaceWith(final T replacement) {
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level0GenericMultiOperator<T> replaceIfNullBy(final T replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level0GenericMultiOperator<T> replaceIfNullWith(final T replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
     
 }

@@ -70,11 +70,21 @@ public class Level2MapOfListEntriesValueOperatorImpl<K,V> extends AbstractOperat
     }
 
 
-    public Level2MapOfListEntriesValueOperator<K, V> add(final V... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level2MapOfListEntriesValueOperator<K, V> add(final V newElement) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.Add<V>(newElement)));
+    }
+
+    public Level2MapOfListEntriesValueOperator<K, V> addAll(final V... newElements) {
         return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.Add<V>(newElements)));
     }
 
-    public Level2MapOfListEntriesValueOperator<K, V> insert(final int position, final V... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level2MapOfListEntriesValueOperator<K, V> insert(final int position, final V newElement) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.Insert<V>(position, newElement)));
+    }
+
+    public Level2MapOfListEntriesValueOperator<K, V> insertAll(final int position, final V... newElements) {
         return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.Insert<V>(position, newElements)));
     }
 
@@ -290,13 +300,13 @@ public class Level2MapOfListEntriesValueOperatorImpl<K,V> extends AbstractOperat
     }
 
 
-    public Level2MapOfListEntriesValueOperator<K, V> replaceBy(final List<V> replacement) {
-        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    public Level2MapOfListEntriesValueOperator<K, V> replaceWith(final List<V> replacement) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level2MapOfListEntriesValueOperator<K, V> replaceIfNullBy(final List<V> replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level2MapOfListEntriesValueOperator<K, V> replaceIfNullWith(final List<V> replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
 
 

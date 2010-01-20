@@ -61,12 +61,22 @@ public class Level0ArrayOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0ArrayOfMapOperator<K, V> add(final Map<K, V>... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0ArrayOfMapOperator<K, V> add(final Map<K, V> newElement) {
+        return new Level0ArrayOfMapOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.Add<Map<K, V>>(NormalizationUtils.normalizeMap(newElement))));
+    }
+
+    public Level0ArrayOfMapOperator<K, V> addAll(final Map<K, V>... newElements) {
         return new Level0ArrayOfMapOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.Add<Map<K, V>>(NormalizationUtils.normalizeMaps(newElements))));
     }
 
 
-    public Level0ArrayOfMapOperator<K, V> insert(final int position, final Map<K, V>... newElements) {
+    @SuppressWarnings("unchecked")
+    public Level0ArrayOfMapOperator<K, V> insert(final int position, final Map<K, V> newElement) {
+        return new Level0ArrayOfMapOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.Insert<Map<K, V>>(position, NormalizationUtils.normalizeMap(newElement))));
+    }
+
+    public Level0ArrayOfMapOperator<K, V> insertAll(final int position, final Map<K, V>... newElements) {
         return new Level0ArrayOfMapOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.Insert<Map<K, V>>(position, NormalizationUtils.normalizeMaps(newElements))));
     }
 
@@ -276,13 +286,13 @@ public class Level0ArrayOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0ArrayOfMapOperator<K, V> replaceBy(final Map<K, V>[] replacement) {
-        return new Level0ArrayOfMapOperatorImpl<K, V>(getTarget().replaceBy(replacement));
+    public Level0ArrayOfMapOperator<K, V> replaceWith(final Map<K, V>[] replacement) {
+        return new Level0ArrayOfMapOperatorImpl<K, V>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level0ArrayOfMapOperator<K, V> replaceIfNullBy(final Map<K, V>[] replacement) {
-        return ifNull().replaceBy(replacement).endIf();
+    public Level0ArrayOfMapOperator<K, V> replaceIfNullWith(final Map<K, V>[] replacement) {
+        return ifNull().replaceWith(replacement).endIf();
     }
     
     
