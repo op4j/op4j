@@ -19,17 +19,17 @@
  */
 package org.op4j.operators.intf.listofmap;
 
-import java.util.List;
 import java.util.Map;
+import java.util.List;
 
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableMapEntrySelectedOperator;
 import org.op4j.operators.qualities.NavigableMapEntryOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedMapEntryOperator;
 import org.op4j.operators.qualities.UniqOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 
 
 /**
@@ -39,26 +39,26 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level2ListOfMapElementsEntriesSelectedOperator<K,V> 
-		extends UniqOperator<List<Map<K,V>>>,
-		        NavigableMapEntryOperator,
-                ExecutableMapEntrySelectedOperator<K,V>,
-                ReplaceableOperator<Map.Entry<K,V>>,
-                SelectedMapEntryOperator<K, V> {
+public interface Level2ListOfMapElementsEntriesSelectedOperator<K,V,I> 
+		extends UniqOperator<List<Map<K,V>>,I>,
+		        NavigableMapEntryOperator<I>,
+                ExecutableMapEntrySelectedOperator<K,V,I>,
+                ReplaceableOperator<Map.Entry<K,V>,I>,
+                SelectedMapEntryOperator<K, V,I> {
 
 
-    public Level2ListOfMapElementsEntriesOperator<K,V> endIf();
+    public Level2ListOfMapElementsEntriesOperator<K,V,I> endIf();
 		    
     
-    public Level3ListOfMapElementsEntriesSelectedKeyOperator<K,V> onKey();
-    public Level3ListOfMapElementsEntriesSelectedValueOperator<K,V> onValue();
+    public Level3ListOfMapElementsEntriesSelectedKeyOperator<K,V,I> onKey();
+    public Level3ListOfMapElementsEntriesSelectedValueOperator<K,V,I> onValue();
     
-    public Level2ListOfMapElementsEntriesSelectedOperator<K,V> replaceWith(final Map.Entry<K,V> replacement);
+    public Level2ListOfMapElementsEntriesSelectedOperator<K,V,I> replaceWith(final Map.Entry<K,V> replacement);
 
-    public Level2ListOfMapElementsEntriesSelectedOperator<K,V> exec(final IFunction<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> function);
+    public Level2ListOfMapElementsEntriesSelectedOperator<K,V,I> exec(final IFunction<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> function);
     
-    public Level2ListOfMapElementsEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> eval);
+    public Level2ListOfMapElementsEntriesSelectedOperator<K,V,I> eval(final IEvaluator<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> eval);
     
-    public Level2ListOfMapElementsEntriesSelectedOperator<K,V> convert(final IConverter<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> converter);
+    public Level2ListOfMapElementsEntriesSelectedOperator<K,V,I> convert(final IConverter<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> converter);
                                     
 }

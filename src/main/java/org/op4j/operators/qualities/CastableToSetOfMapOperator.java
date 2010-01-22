@@ -30,10 +30,10 @@ import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface CastableToSetOfMapOperator {
+public interface CastableToSetOfMapOperator<I> {
     
-    public <K,V> Level0SetOfMapOperator<K,V> asSetOfMapOf(final Type<K> keyType, final Type<V> valueType);
-    public Level0SetOfMapOperator<?,?> asSetOfMapOfUnknown();
+    public <K,V> Level0SetOfMapOperator<K,V,I> asSetOfMapOf(final Type<K> keyType, final Type<V> valueType);
+    public Level0SetOfMapOperator<?,?,I> asSetOfMapOfUnknown();
 
     
 }

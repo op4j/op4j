@@ -30,10 +30,10 @@ import org.op4j.operators.intf.mapofarray.Level0MapOfArrayOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface CastableToMapOfArrayOperator {
+public interface CastableToMapOfArrayOperator<I> {
     
-    public <K,V> Level0MapOfArrayOperator<K,V> asMapOfArrayOf(final Type<K> keyType, final Type<V> valueType);
-    public Level0MapOfArrayOperator<?,?> asMapOfArrayOfUnknown();
+    public <K,V> Level0MapOfArrayOperator<K,V,I> asMapOfArrayOf(final Type<K> keyType, final Type<V> valueType);
+    public Level0MapOfArrayOperator<?,?,I> asMapOfArrayOfUnknown();
 
     
 }

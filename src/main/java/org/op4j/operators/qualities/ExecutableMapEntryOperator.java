@@ -36,13 +36,13 @@ import org.op4j.functions.evaluators.IEvaluator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ExecutableMapEntryOperator<K,V> {
+public interface ExecutableMapEntryOperator<K,V,I> {
 
-    public <X,Y> ExecutableMapEntryOperator<X,Y> exec(final IFunction<? extends Map.Entry<X,Y>, ? super Map.Entry<K,V>> function);
+    public <X,Y> ExecutableMapEntryOperator<X,Y,I> exec(final IFunction<? extends Map.Entry<X,Y>, ? super Map.Entry<K,V>> function);
     
-    public <X,Y> ExecutableMapEntryOperator<X,Y> eval(final IEvaluator<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> eval);
+    public <X,Y> ExecutableMapEntryOperator<X,Y,I> eval(final IEvaluator<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> eval);
     
-    public <X,Y> ExecutableMapEntryOperator<X,Y> convert(final IConverter<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> converter);
+    public <X,Y> ExecutableMapEntryOperator<X,Y,I> convert(final IConverter<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> converter);
 
     public <X> Operator exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K,V>> function);
     

@@ -40,41 +40,41 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level2MapOfListEntriesKeyOperator<K,V>
-        extends UniqOperator<Map<K,List<V>>>,
-                NavigatingMapEntryOperator,
-                CastableToTypeOperator<K>,
-                ExecutableOperator<K>, 
-                SelectableOperator<K> {
+public interface Level2MapOfListEntriesKeyOperator<K,V,I>
+        extends UniqOperator<Map<K,List<V>>,I>,
+                NavigatingMapEntryOperator<I>,
+                CastableToTypeOperator<K,I>,
+                ExecutableOperator<K,I>, 
+                SelectableOperator<K,I> {
 
 
 
-    public Level2MapOfListEntriesKeySelectedOperator<K,V> ifIndex(final int... indices);
-    public Level2MapOfListEntriesKeySelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfListEntriesKeySelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfListEntriesKeySelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfListEntriesKeySelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfListEntriesKeySelectedOperator<K,V> ifNull();
-    public Level2MapOfListEntriesKeySelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfListEntriesKeySelectedOperator<K,V> ifIndexNot(final int... indices);
-    public Level2MapOfListEntriesKeySelectedOperator<K,V> ifNotNull();
-    public Level2MapOfListEntriesKeySelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfListEntriesKeySelectedOperator<K,V,I> ifIndex(final int... indices);
+    public Level2MapOfListEntriesKeySelectedOperator<K,V,I> ifTrue(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfListEntriesKeySelectedOperator<K,V,I> ifFalse(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfListEntriesKeySelectedOperator<K,V,I> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfListEntriesKeySelectedOperator<K,V,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfListEntriesKeySelectedOperator<K,V,I> ifNull();
+    public Level2MapOfListEntriesKeySelectedOperator<K,V,I> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfListEntriesKeySelectedOperator<K,V,I> ifIndexNot(final int... indices);
+    public Level2MapOfListEntriesKeySelectedOperator<K,V,I> ifNotNull();
+    public Level2MapOfListEntriesKeySelectedOperator<K,V,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval);
 
     
-    public Level1MapOfListEntriesOperator<K,V> endOn();
+    public Level1MapOfListEntriesOperator<K,V,I> endOn();
     
-    public <X> Level2MapOfListEntriesKeyOperator<X,V> asType(final Type<X> type);
-    public Level2MapOfListEntriesKeyOperator<?,V> asUnknown();
+    public <X> Level2MapOfListEntriesKeyOperator<X,V,I> asType(final Type<X> type);
+    public Level2MapOfListEntriesKeyOperator<?,V,I> asUnknown();
 
-    public <X> Level2MapOfListEntriesKeyOperator<X,V> exec(final IFunction<X, ? super K> function);
+    public <X> Level2MapOfListEntriesKeyOperator<X,V,I> exec(final IFunction<X, ? super K> function);
     
-    public <X> Level2MapOfListEntriesKeyOperator<X,V> eval(final IEvaluator<X,? super K> eval);
+    public <X> Level2MapOfListEntriesKeyOperator<X,V,I> eval(final IEvaluator<X,? super K> eval);
     
-    public Level2MapOfListEntriesKeyOperator<K,V> replaceWith(final K replacement);
-    public Level2MapOfListEntriesKeyOperator<K,V> replaceIfNullWith(final K replacement);
+    public Level2MapOfListEntriesKeyOperator<K,V,I> replaceWith(final K replacement);
+    public Level2MapOfListEntriesKeyOperator<K,V,I> replaceIfNullWith(final K replacement);
 
 
-    public <X> Level2MapOfListEntriesKeyOperator<X,V> convert(final IConverter<X,? super K> converter);
+    public <X> Level2MapOfListEntriesKeyOperator<X,V,I> convert(final IConverter<X,? super K> converter);
     
         
 }

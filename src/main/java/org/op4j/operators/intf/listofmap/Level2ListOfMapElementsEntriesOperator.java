@@ -42,42 +42,42 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level2ListOfMapElementsEntriesOperator<K,V> 
-		extends UniqOperator<List<Map<K,V>>>,
-		        NavigableMapEntryOperator,
-                NavigatingMapOperator<K,V>,
-                ExecutableMapEntryOperator<K,V>,
-                ReplaceableOperator<Map.Entry<K, V>>,
-                SelectableMapEntryOperator<K, V> {
+public interface Level2ListOfMapElementsEntriesOperator<K,V,I> 
+		extends UniqOperator<List<Map<K,V>>,I>,
+		        NavigableMapEntryOperator<I>,
+                NavigatingMapOperator<K,V,I>,
+                ExecutableMapEntryOperator<K,V,I>,
+                ReplaceableOperator<Map.Entry<K, V>,I>,
+                SelectableMapEntryOperator<K, V,I> {
 
 
-    public Level2ListOfMapElementsEntriesSelectedOperator<K,V> ifIndex(final int... indices);
-    public Level2ListOfMapElementsEntriesSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K, V>> eval);
-    public Level2ListOfMapElementsEntriesSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K, V>> eval);
-    public Level2ListOfMapElementsEntriesSelectedOperator<K,V> ifIndexNot(final int... indices);
-    public Level2ListOfMapElementsEntriesSelectedOperator<K,V> ifKeyEquals(final K... keys);
-    public Level2ListOfMapElementsEntriesSelectedOperator<K,V> ifKeyNotEquals(final K... keys);
+    public Level2ListOfMapElementsEntriesSelectedOperator<K,V,I> ifIndex(final int... indices);
+    public Level2ListOfMapElementsEntriesSelectedOperator<K,V,I> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K, V>> eval);
+    public Level2ListOfMapElementsEntriesSelectedOperator<K,V,I> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K, V>> eval);
+    public Level2ListOfMapElementsEntriesSelectedOperator<K,V,I> ifIndexNot(final int... indices);
+    public Level2ListOfMapElementsEntriesSelectedOperator<K,V,I> ifKeyEquals(final K... keys);
+    public Level2ListOfMapElementsEntriesSelectedOperator<K,V,I> ifKeyNotEquals(final K... keys);
     
     
-    public Level3ListOfMapElementsEntriesKeyOperator<K,V> onKey();
-    public Level3ListOfMapElementsEntriesValueOperator<K,V> onValue();
+    public Level3ListOfMapElementsEntriesKeyOperator<K,V,I> onKey();
+    public Level3ListOfMapElementsEntriesValueOperator<K,V,I> onValue();
     
-    public Level1ListOfMapElementsOperator<K,V> endFor();
+    public Level1ListOfMapElementsOperator<K,V,I> endFor();
     
-    public <X,Y> Level2ListOfMapElementsEntriesOperator<X,Y> exec(final IFunction<? extends Map.Entry<X,Y>, ? super Map.Entry<K,V>> function);
+    public <X,Y> Level2ListOfMapElementsEntriesOperator<X,Y,I> exec(final IFunction<? extends Map.Entry<X,Y>, ? super Map.Entry<K,V>> function);
     
-    public <X,Y> Level2ListOfMapElementsEntriesOperator<X,Y> eval(final IEvaluator<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> eval);
+    public <X,Y> Level2ListOfMapElementsEntriesOperator<X,Y,I> eval(final IEvaluator<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> eval);
     
-    public Level2ListOfMapElementsEntriesOperator<K,V> replaceWith(final Map.Entry<K,V> replacement);
+    public Level2ListOfMapElementsEntriesOperator<K,V,I> replaceWith(final Map.Entry<K,V> replacement);
 
 
-    public <X,Y> Level2ListOfMapElementsEntriesOperator<X,Y> convert(final IConverter<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> converter);
+    public <X,Y> Level2ListOfMapElementsEntriesOperator<X,Y,I> convert(final IConverter<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> converter);
 
-    public <X> Level2ListOfListElementsElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K,V>> function);
+    public <X> Level2ListOfListElementsElementsOperator<X,I> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K,V>> function);
     
-    public <X> Level2ListOfListElementsElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map.Entry<K,V>> eval);
+    public <X> Level2ListOfListElementsElementsOperator<X,I> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map.Entry<K,V>> eval);
     
-    public <X> Level2ListOfListElementsElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Map.Entry<K,V>> converter);    
+    public <X> Level2ListOfListElementsElementsOperator<X,I> convert(final Type<X> resultType, final IConverter<? extends X,? super Map.Entry<K,V>> converter);    
 
     
 }

@@ -6,6 +6,7 @@ import java.util.Set;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.operations.Operation;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.setofmap.Level3SetOfMapSelectedElementsEntriesSelectedKeyOperator;
 import org.op4j.operators.intf.setofmap.Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperator;
@@ -13,7 +14,7 @@ import org.op4j.target.Target;
 import org.op4j.target.Target.Normalization;
 
 
-public class Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V> {
+public class Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperatorImpl<K,V,I> extends AbstractOperatorImpl implements Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V,I> {
 
 
     public Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperatorImpl(final Target target) {
@@ -21,33 +22,38 @@ public class Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperatorImp
     }
 
 
-    public Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V> eval(final IEvaluator<? extends K,? super K> eval) {
-        return new Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.NONE));
+    public Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V,I> eval(final IEvaluator<? extends K,? super K> eval) {
+        return new Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperatorImpl<K,V,I>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
-    public Level3SetOfMapSelectedElementsEntriesSelectedKeyOperator<K,V> endIf() {
-        return new Level3SetOfMapSelectedElementsEntriesSelectedKeyOperatorImpl<K,V>(getTarget().endSelect());
+    public Level3SetOfMapSelectedElementsEntriesSelectedKeyOperator<K,V,I> endIf() {
+        return new Level3SetOfMapSelectedElementsEntriesSelectedKeyOperatorImpl<K,V,I>(getTarget().endSelect());
     }
 
 
-    public Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
-        return new Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.NONE));
+    public Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V,I> exec(final IFunction<? extends K,? super K> function) {
+        return new Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperatorImpl<K,V,I>(getTarget().execute(function, Normalization.NONE));
     }
 
 
-    public Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V> replaceWith(final K replacement) {
-        return new Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+    public Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V,I> replaceWith(final K replacement) {
+        return new Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperatorImpl<K,V,I>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V> convert(final IConverter<? extends K,? super K> converter) {
-        return new Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.NONE));
+    public Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V,I> convert(final IConverter<? extends K,? super K> converter) {
+        return new Level3SetOfMapSelectedElementsEntriesSelectedKeySelectedOperatorImpl<K,V,I>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
     public Set<Map<K,V>> get() {
         return endIf().get();
+    }
+
+
+    public Operation<Set<Map<K,V>>,I> createOperation() {
+        return endIf().createOperation();
     }
 
 

@@ -29,11 +29,12 @@ package org.op4j.exceptions;
  */
 public class EmptyTargetException extends RuntimeException {
 
-	private static final long serialVersionUID = 2917055239442829002L;
+    private static final long serialVersionUID = 1478547461623850572L;
 
-	
-	public EmptyTargetException() {
-        super("Cannot operate on empty target");
+    public EmptyTargetException() {
+        super("No results can be retrieved from an operation expression with an empty target. " +
+    		"You should either specify a target at the \"Op.on\" expression or obtain an " +
+    		"operation with getOperation() and then executing it.");
     }
 
     

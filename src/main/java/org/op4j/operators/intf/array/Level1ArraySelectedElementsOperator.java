@@ -26,9 +26,9 @@ import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.NavigatingArrayOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 
 
 /**
@@ -38,37 +38,37 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level1ArraySelectedElementsOperator<T>
-        extends UniqOperator<T[]>,
-                NavigatingArrayOperator<T>,
-                SelectableOperator<T>,
-                ExecutableSelectedOperator<T>,
-                ReplaceableOperator<T> {
+public interface Level1ArraySelectedElementsOperator<T,I>
+        extends UniqOperator<T[],I>,
+                NavigatingArrayOperator<T,I>,
+                SelectableOperator<T,I>,
+                ExecutableSelectedOperator<T,I>,
+                ReplaceableOperator<T,I> {
 
 
 
-    public Level1ArraySelectedElementsSelectedOperator<T> ifIndex(final int... indices);
-    public Level1ArraySelectedElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArraySelectedElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArraySelectedElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArraySelectedElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArraySelectedElementsSelectedOperator<T> ifNull();
-    public Level1ArraySelectedElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArraySelectedElementsSelectedOperator<T> ifIndexNot(final int... indices);
-    public Level1ArraySelectedElementsSelectedOperator<T> ifNotNull();
-    public Level1ArraySelectedElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArraySelectedElementsSelectedOperator<T,I> ifIndex(final int... indices);
+    public Level1ArraySelectedElementsSelectedOperator<T,I> ifTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArraySelectedElementsSelectedOperator<T,I> ifFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArraySelectedElementsSelectedOperator<T,I> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArraySelectedElementsSelectedOperator<T,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArraySelectedElementsSelectedOperator<T,I> ifNull();
+    public Level1ArraySelectedElementsSelectedOperator<T,I> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArraySelectedElementsSelectedOperator<T,I> ifIndexNot(final int... indices);
+    public Level1ArraySelectedElementsSelectedOperator<T,I> ifNotNull();
+    public Level1ArraySelectedElementsSelectedOperator<T,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
 
 
 		    
-    public Level0ArraySelectedOperator<T> endFor();
+    public Level0ArraySelectedOperator<T,I> endFor();
     
-    public Level1ArraySelectedElementsOperator<T> convert(final IConverter<? extends T,? super T> converter);
+    public Level1ArraySelectedElementsOperator<T,I> convert(final IConverter<? extends T,? super T> converter);
     
-    public Level1ArraySelectedElementsOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
+    public Level1ArraySelectedElementsOperator<T,I> eval(final IEvaluator<? extends T,? super T> eval);
 
-    public Level1ArraySelectedElementsOperator<T> replaceWith(final T replacement);
+    public Level1ArraySelectedElementsOperator<T,I> replaceWith(final T replacement);
 
-    public Level1ArraySelectedElementsOperator<T> exec(final IFunction<? extends T, ? super T> function);
+    public Level1ArraySelectedElementsOperator<T,I> exec(final IFunction<? extends T, ? super T> function);
 	
     
 }

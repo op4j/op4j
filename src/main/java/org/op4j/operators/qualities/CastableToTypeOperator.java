@@ -30,11 +30,11 @@ import org.javaruntype.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface CastableToTypeOperator<T> {
+public interface CastableToTypeOperator<T,I> {
 
     
-    public <X> CastableToTypeOperator<X> asType(final Type<X> type);
-    public CastableToTypeOperator<?> asUnknown();
+    public <X> CastableToTypeOperator<X,I> asType(final Type<X> type);
+    public CastableToTypeOperator<?,I> asUnknown();
 
     
 }

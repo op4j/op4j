@@ -34,8 +34,8 @@ import org.op4j.operators.intf.array.Level0ArrayOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface FlattenableAsArrayOperator<T> {
+public interface FlattenableAsArrayOperator<T,I> {
     
-    public Level0ArrayOperator<T> flatten(final Type<T> type);
+    public Level0ArrayOperator<T,I> flatten(final Type<T> type);
 	
 }

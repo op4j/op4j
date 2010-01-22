@@ -41,44 +41,44 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V>
-        extends UniqOperator<Map<K1,Map<K2,V>>>,
-                NavigatingMapEntryOperator,
-        		ExecutableOperator<V>,
-                SelectableOperator<V>,
-                ReplaceableOperator<V>,
-                ReplaceableIfNullOperator<V>,
-                CastableToTypeOperator<V> {
+public interface Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V,I>
+        extends UniqOperator<Map<K1,Map<K2,V>>,I>,
+                NavigatingMapEntryOperator<I>,
+        		ExecutableOperator<V,I>,
+                SelectableOperator<V,I>,
+                ReplaceableOperator<V,I>,
+                ReplaceableIfNullOperator<V,I>,
+                CastableToTypeOperator<V,I> {
 
 
 
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifIndex(final int... indices);
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifNullOrFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifNull();
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifIndexNot(final int... indices);
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifNotNull();
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V,I> ifIndex(final int... indices);
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V,I> ifTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V,I> ifFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V,I> ifNullOrFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V,I> ifNull();
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V,I> ifNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V,I> ifIndexNot(final int... indices);
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V,I> ifNotNull();
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval);
 
     
-    public Level3MapOfMapEntriesValueEntriesOperator<K1,K2,V> endOn();
+    public Level3MapOfMapEntriesValueEntriesOperator<K1,K2,V,I> endOn();
     
-    public Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V> replaceWith(final V replacement);
-    public Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V> replaceIfNullWith(final V replacement);
+    public Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V,I> replaceWith(final V replacement);
+    public Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,V,I> replaceIfNullWith(final V replacement);
 
 
-    public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> convert(final IConverter<X,? super V> converter);
+    public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X,I> convert(final IConverter<X,? super V> converter);
     
-    public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> eval(final IEvaluator<X,? super V> eval);
+    public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X,I> eval(final IEvaluator<X,? super V> eval);
 
 
-    public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> exec(final IFunction<X, ? super V> function);
+    public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X,I> exec(final IFunction<X, ? super V> function);
     
-    public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X> asType(final Type<X> type);
-    public Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,?> asUnknown();
+    public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,X,I> asType(final Type<X> type);
+    public Level4MapOfMapEntriesValueEntriesValueOperator<K1,K2,?,I> asUnknown();
     
         
     }

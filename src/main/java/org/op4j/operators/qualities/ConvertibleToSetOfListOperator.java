@@ -29,9 +29,9 @@ import org.op4j.operators.intf.setoflist.Level0SetOfListOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ConvertibleToSetOfListOperator<T> {
+public interface ConvertibleToSetOfListOperator<T,I> {
     
-    public Level0SetOfListOperator<T> toSetOfList();
+    public Level0SetOfListOperator<T,I> toSetOfList();
 
     
 }

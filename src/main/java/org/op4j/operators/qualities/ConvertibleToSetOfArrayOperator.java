@@ -30,9 +30,9 @@ import org.op4j.operators.intf.setofarray.Level0SetOfArrayOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ConvertibleToSetOfArrayOperator<T> {
+public interface ConvertibleToSetOfArrayOperator<T,I> {
     
-    public Level0SetOfArrayOperator<T> toSetOfArray(final Type<T> of);
+    public Level0SetOfArrayOperator<T,I> toSetOfArray(final Type<T> of);
     
 
     

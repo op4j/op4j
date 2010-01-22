@@ -61,110 +61,110 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level0ListOperator<T>
-        extends UniqOperator<List<T>>,
-                NavigableCollectionOperator<T>,
-		        DistinguishableOperator,
-		        SortableOperator<T>,
-                CastableToListOperator,
-                CastableToListOfArrayOperator,
-                CastableToListOfListOperator,
-                CastableToListOfMapOperator,
-                CastableToListOfSetOperator,
-		        ModifiableCollectionOperator<T>,
-		        GenerizableOperator<List<T>>,
-                ExecutableListOperator<T>,
-                SelectableOperator<List<T>>,
-                ReplaceableOperator<List<T>>,
-                ReplaceableIfNullOperator<List<T>>,
-                ConvertibleToArrayOperator<T>,
-		        ConvertibleToSetOperator,
-                ConvertibleToMapOperator<T> {
+public interface Level0ListOperator<T,I>
+        extends UniqOperator<List<T>,I>,
+                NavigableCollectionOperator<T,I>,
+		        DistinguishableOperator<I>,
+		        SortableOperator<T,I>,
+                CastableToListOperator<I>,
+                CastableToListOfArrayOperator<I>,
+                CastableToListOfListOperator<I>,
+                CastableToListOfMapOperator<I>,
+                CastableToListOfSetOperator<I>,
+		        ModifiableCollectionOperator<T,I>,
+		        GenerizableOperator<List<T>,I>,
+                ExecutableListOperator<T,I>,
+                SelectableOperator<List<T>,I>,
+                ReplaceableOperator<List<T>,I>,
+                ReplaceableIfNullOperator<List<T>,I>,
+                ConvertibleToArrayOperator<T,I>,
+		        ConvertibleToSetOperator<I>,
+                ConvertibleToMapOperator<T,I> {
 
 
 
-    public Level0ListSelectedOperator<T> ifIndex(final int... indices);
-    public Level0ListSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListSelectedOperator<T> ifNull();
-    public Level0ListSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListSelectedOperator<T> ifIndexNot(final int... indices);
-    public Level0ListSelectedOperator<T> ifNotNull();
-    public Level0ListSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListSelectedOperator<T,I> ifIndex(final int... indices);
+    public Level0ListSelectedOperator<T,I> ifTrue(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListSelectedOperator<T,I> ifFalse(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListSelectedOperator<T,I> ifNullOrFalse(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListSelectedOperator<T,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListSelectedOperator<T,I> ifNull();
+    public Level0ListSelectedOperator<T,I> ifNullOrTrue(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListSelectedOperator<T,I> ifIndexNot(final int... indices);
+    public Level0ListSelectedOperator<T,I> ifNotNull();
+    public Level0ListSelectedOperator<T,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super List<T>> eval);
 
 
 
-    public Level1ListElementsOperator<T> forEach();
+    public Level1ListElementsOperator<T,I> forEach();
 
-    public Level0ListOperator<T> distinct();
+    public Level0ListOperator<T,I> distinct();
     
-    public Level0ListOperator<T> sort();
-    public Level0ListOperator<T> sort(final Comparator<? super T> comparator);
+    public Level0ListOperator<T,I> sort();
+    public Level0ListOperator<T,I> sort(final Comparator<? super T> comparator);
         
-    public Level0ListOperator<T> add(final T newElement);
-    public Level0ListOperator<T> addAll(final T... newElements);
-    public Level0ListOperator<T> insert(final int position, final T newElement);
-    public Level0ListOperator<T> insertAll(final int position, final T... newElements);
-    public Level0ListOperator<T> addAll(final Collection<T> collection);
-    public Level0ListOperator<T> removeAllIndexes(final int... indices);
-    public Level0ListOperator<T> removeAllEqual(final T... values);
-    public Level0ListOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level0ListOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level0ListOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level0ListOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level0ListOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level0ListOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level0ListOperator<T> removeAllIndexesNot(final int... indices);
-    public Level0ListOperator<T> removeAllNull();
-    public Level0ArrayOperator<T> toArray(final Type<T> of);
+    public Level0ListOperator<T,I> add(final T newElement);
+    public Level0ListOperator<T,I> addAll(final T... newElements);
+    public Level0ListOperator<T,I> insert(final int position, final T newElement);
+    public Level0ListOperator<T,I> insertAll(final int position, final T... newElements);
+    public Level0ListOperator<T,I> addAll(final Collection<T> collection);
+    public Level0ListOperator<T,I> removeAllIndexes(final int... indices);
+    public Level0ListOperator<T,I> removeAllEqual(final T... values);
+    public Level0ListOperator<T,I> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0ListOperator<T,I> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0ListOperator<T,I> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0ListOperator<T,I> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0ListOperator<T,I> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0ListOperator<T,I> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0ListOperator<T,I> removeAllIndexesNot(final int... indices);
+    public Level0ListOperator<T,I> removeAllNull();
+    public Level0ArrayOperator<T,I> toArray(final Type<T> of);
     
     
-    public Level0SetOperator<T> toSet();
+    public Level0SetOperator<T,I> toSet();
     
-    public Level0MapOperator<T,T> toMap();
-    public <K> Level0MapOperator<K,T> toMap(final IEvaluator<K,? super T> keyEval);
-    public <K,V> Level0MapOperator<K,V> toMap(final IMapBuilder<K,V,? super T> mapBuild);
+    public Level0MapOperator<T,T,I> toMap();
+    public <K> Level0MapOperator<K,T,I> toMap(final IEvaluator<K,? super T> keyEval);
+    public <K,V> Level0MapOperator<K,V,I> toMap(final IMapBuilder<K,V,? super T> mapBuild);
 
     
-    public Level0GenericUniqOperator<List<T>> generic();
+    public Level0GenericUniqOperator<List<T>,I> generic();
     
     
     
     
-    public Level0ListOperator<T> replaceWith(final List<T> replacement);
-    public Level0ListOperator<T> replaceIfNullWith(final List<T> replacement);
+    public Level0ListOperator<T,I> replaceWith(final List<T> replacement);
+    public Level0ListOperator<T,I> replaceIfNullWith(final List<T> replacement);
 
 
-    public <X> Level0ListOperator<X> convert(final IConverter<? extends List<X>,? super List<T>> converter);
+    public <X> Level0ListOperator<X,I> convert(final IConverter<? extends List<X>,? super List<T>> converter);
     
-    public <X> Level0ListOperator<X> eval(final IEvaluator<? extends List<X>,? super List<T>> eval);
+    public <X> Level0ListOperator<X,I> eval(final IEvaluator<? extends List<X>,? super List<T>> eval);
 
-    public <X> Level0ListOperator<X> exec(final IFunction<? extends List<X>, ? super List<T>> function);
+    public <X> Level0ListOperator<X,I> exec(final IFunction<? extends List<X>, ? super List<T>> function);
 
-    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T>> function);
+    public <X> Level0GenericUniqOperator<X,I> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T>> function);
     
-    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super List<T>> eval);
+    public <X> Level0GenericUniqOperator<X,I> eval(final Type<X> resultType, final IEvaluator<? extends X,? super List<T>> eval);
     
-    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super List<T>> converter);    
+    public <X> Level0GenericUniqOperator<X,I> convert(final Type<X> resultType, final IConverter<? extends X,? super List<T>> converter);    
     
     
-    public <X> Level0ListOfArrayOperator<X> asListOfArrayOf(final Type<X> type);
-    public Level0ListOfArrayOperator<?> asListOfArrayOfUnknown();
+    public <X> Level0ListOfArrayOperator<X,I> asListOfArrayOf(final Type<X> type);
+    public Level0ListOfArrayOperator<?,I> asListOfArrayOfUnknown();
     
-    public <X> Level0ListOfListOperator<X> asListOfListOf(final Type<X> type);
-    public Level0ListOfListOperator<?> asListOfListOfUnknown();
+    public <X> Level0ListOfListOperator<X,I> asListOfListOf(final Type<X> type);
+    public Level0ListOfListOperator<?,I> asListOfListOfUnknown();
     
-    public <K,V> Level0ListOfMapOperator<K,V> asListOfMapOf(final Type<K> keyType, final Type<V> valueType);
-    public Level0ListOfMapOperator<?,?> asListOfMapOfUnknown();
+    public <K,V> Level0ListOfMapOperator<K,V,I> asListOfMapOf(final Type<K> keyType, final Type<V> valueType);
+    public Level0ListOfMapOperator<?,?,I> asListOfMapOfUnknown();
     
-    public <X> Level0ListOfSetOperator<X> asListOfSetOf(final Type<X> type);
-    public Level0ListOfSetOperator<?> asListOfSetOfUnknown();
+    public <X> Level0ListOfSetOperator<X,I> asListOfSetOf(final Type<X> type);
+    public Level0ListOfSetOperator<?,I> asListOfSetOfUnknown();
 
     
-    public <X> Level0ListOperator<X> asListOf(final Type<X> type);
-    public Level0ListOperator<?> asListOfUnknown();
+    public <X> Level0ListOperator<X,I> asListOf(final Type<X> type);
+    public Level0ListOperator<?,I> asListOfUnknown();
     
 
 

@@ -35,12 +35,12 @@ import org.op4j.functions.evaluators.IEvaluator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ExecutableSetOfArraySelectedOperator<T> {
+public interface ExecutableSetOfArraySelectedOperator<T,I> {
 
-    public ExecutableSetOfArraySelectedOperator<T> exec(final IFunction<? extends Set<? extends T[]>, ? super Set<T[]>> function);
+    public ExecutableSetOfArraySelectedOperator<T,I> exec(final IFunction<? extends Set<? extends T[]>, ? super Set<T[]>> function);
     
-    public ExecutableSetOfArraySelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T[]>,? super Set<T[]>> eval);
+    public ExecutableSetOfArraySelectedOperator<T,I> eval(final IEvaluator<? extends Set<? extends T[]>,? super Set<T[]>> eval);
     
-    public ExecutableSetOfArraySelectedOperator<T> convert(final IConverter<? extends Set<? extends T[]>,? super Set<T[]>> converter);
+    public ExecutableSetOfArraySelectedOperator<T,I> convert(final IConverter<? extends Set<? extends T[]>,? super Set<T[]>> converter);
     
 }

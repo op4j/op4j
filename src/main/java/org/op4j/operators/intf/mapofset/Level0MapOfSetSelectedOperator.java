@@ -29,10 +29,10 @@ import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableMapOfSetSelectedOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 /**
  * 
  * @since 1.0
@@ -40,43 +40,43 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level0MapOfSetSelectedOperator<K,V>
-        extends UniqOperator<Map<K,Set<V>>>,
-                NavigableMapOperator<K,Set<V>>,
-		        SortableOperator<Map.Entry<K,Set<V>>>,
-		        ModifiableMapOperator<K,Set<V>>,
-                ExecutableMapOfSetSelectedOperator<K,V>,
-                ReplaceableOperator<Map<K,Set<V>>>,
-                SelectedOperator<Map<K,Set<V>>> {
+public interface Level0MapOfSetSelectedOperator<K,V,I>
+        extends UniqOperator<Map<K,Set<V>>,I>,
+                NavigableMapOperator<K,Set<V>,I>,
+		        SortableOperator<Map.Entry<K,Set<V>>,I>,
+		        ModifiableMapOperator<K,Set<V>,I>,
+                ExecutableMapOfSetSelectedOperator<K,V,I>,
+                ReplaceableOperator<Map<K,Set<V>>,I>,
+                SelectedOperator<Map<K,Set<V>>,I> {
 
 
 
-    public Level0MapOfSetOperator<K,V> endIf();
+    public Level0MapOfSetOperator<K,V,I> endIf();
 
 
     
-    public Level1MapOfSetSelectedEntriesOperator<K,V> forEachEntry();
+    public Level1MapOfSetSelectedEntriesOperator<K,V,I> forEachEntry();
     
-    public Level0MapOfSetSelectedOperator<K,V> sort();
-    public Level0MapOfSetSelectedOperator<K,V> sort(final Comparator<? super Map.Entry<K,Set<V>>> comparator);
+    public Level0MapOfSetSelectedOperator<K,V,I> sort();
+    public Level0MapOfSetSelectedOperator<K,V,I> sort(final Comparator<? super Map.Entry<K,Set<V>>> comparator);
     
-    public Level0MapOfSetSelectedOperator<K,V> put(final K newKey, final Set<V> newValue);
-    public Level0MapOfSetSelectedOperator<K,V> insert(final int position, final K newKey, final Set<V> newValue);
-    public Level0MapOfSetSelectedOperator<K,V> putAll(final Map<K,Set<V>> map);
-    public Level0MapOfSetSelectedOperator<K,V> insertAll(final int position, final Map<K,Set<V>> map);
-    public Level0MapOfSetSelectedOperator<K,V> removeAllKeys(final K... keys);
-    public Level0MapOfSetSelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
-    public Level0MapOfSetSelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
-    public Level0MapOfSetSelectedOperator<K,V> removeAllKeysNot(final K... keys);
+    public Level0MapOfSetSelectedOperator<K,V,I> put(final K newKey, final Set<V> newValue);
+    public Level0MapOfSetSelectedOperator<K,V,I> insert(final int position, final K newKey, final Set<V> newValue);
+    public Level0MapOfSetSelectedOperator<K,V,I> putAll(final Map<K,Set<V>> map);
+    public Level0MapOfSetSelectedOperator<K,V,I> insertAll(final int position, final Map<K,Set<V>> map);
+    public Level0MapOfSetSelectedOperator<K,V,I> removeAllKeys(final K... keys);
+    public Level0MapOfSetSelectedOperator<K,V,I> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
+    public Level0MapOfSetSelectedOperator<K,V,I> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
+    public Level0MapOfSetSelectedOperator<K,V,I> removeAllKeysNot(final K... keys);
     
     
-    public Level0MapOfSetSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> converter);
+    public Level0MapOfSetSelectedOperator<K,V,I> convert(final IConverter<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> converter);
     
-    public Level0MapOfSetSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> eval);
+    public Level0MapOfSetSelectedOperator<K,V,I> eval(final IEvaluator<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> eval);
 
-    public Level0MapOfSetSelectedOperator<K,V> replaceWith(final Map<K,Set<V>> replacement);
+    public Level0MapOfSetSelectedOperator<K,V,I> replaceWith(final Map<K,Set<V>> replacement);
 
-    public Level0MapOfSetSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> function);
+    public Level0MapOfSetSelectedOperator<K,V,I> exec(final IFunction<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> function);
     
     
     

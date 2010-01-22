@@ -30,13 +30,13 @@ import java.util.Collection;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ModifiableGrowableOperator<T> {
+public interface ModifiableGrowableOperator<T,I> {
 
-    public ModifiableShrinkableOperator<T> add(final T newElement);
-    public ModifiableShrinkableOperator<T> addAll(final T... newElements);
-    public ModifiableShrinkableOperator<T> insert(final int position, final T newElement);
-    public ModifiableShrinkableOperator<T> insertAll(final int position, final T... newElements);
-    public ModifiableShrinkableOperator<T> addAll(final Collection<T> collection);
+    public ModifiableShrinkableOperator<T,I> add(final T newElement);
+    public ModifiableShrinkableOperator<T,I> addAll(final T... newElements);
+    public ModifiableShrinkableOperator<T,I> insert(final int position, final T newElement);
+    public ModifiableShrinkableOperator<T,I> insertAll(final int position, final T... newElements);
+    public ModifiableShrinkableOperator<T,I> addAll(final Collection<T> collection);
     
     
 }

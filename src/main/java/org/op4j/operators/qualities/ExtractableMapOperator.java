@@ -29,7 +29,7 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ExtractableMapOperator<K,V> {
+public interface ExtractableMapOperator<K,V,I> {
     
     public Operator extractKeys();
     public Operator extractValues();

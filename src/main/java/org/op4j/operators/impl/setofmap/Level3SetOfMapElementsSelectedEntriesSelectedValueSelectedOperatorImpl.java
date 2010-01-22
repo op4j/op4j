@@ -6,6 +6,7 @@ import java.util.Set;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.operations.Operation;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.setofmap.Level3SetOfMapElementsSelectedEntriesSelectedValueOperator;
 import org.op4j.operators.intf.setofmap.Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperator;
@@ -13,7 +14,7 @@ import org.op4j.target.Target;
 import org.op4j.target.Target.Normalization;
 
 
-public class Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperator<K,V> {
+public class Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperatorImpl<K,V,I> extends AbstractOperatorImpl implements Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperator<K,V,I> {
 
 
     public Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperatorImpl(final Target target) {
@@ -21,33 +22,38 @@ public class Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperatorI
     }
 
 
-    public Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperator<K,V> eval(final IEvaluator<? extends V,? super V> eval) {
-        return new Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.NONE));
+    public Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperator<K,V,I> eval(final IEvaluator<? extends V,? super V> eval) {
+        return new Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperatorImpl<K,V,I>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
-    public Level3SetOfMapElementsSelectedEntriesSelectedValueOperator<K,V> endIf() {
-        return new Level3SetOfMapElementsSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().endSelect());
+    public Level3SetOfMapElementsSelectedEntriesSelectedValueOperator<K,V,I> endIf() {
+        return new Level3SetOfMapElementsSelectedEntriesSelectedValueOperatorImpl<K,V,I>(getTarget().endSelect());
     }
 
 
-    public Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
-        return new Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.NONE));
+    public Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperator<K,V,I> exec(final IFunction<? extends V,? super V> function) {
+        return new Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperatorImpl<K,V,I>(getTarget().execute(function, Normalization.NONE));
     }
 
 
-    public Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperator<K,V> replaceWith(final V replacement) {
-        return new Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+    public Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperator<K,V,I> replaceWith(final V replacement) {
+        return new Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperatorImpl<K,V,I>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperator<K,V> convert(final IConverter<? extends V,? super V> converter) {
-        return new Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.NONE));
+    public Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperator<K,V,I> convert(final IConverter<? extends V,? super V> converter) {
+        return new Level3SetOfMapElementsSelectedEntriesSelectedValueSelectedOperatorImpl<K,V,I>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
     public Set<Map<K,V>> get() {
         return endIf().get();
+    }
+
+
+    public Operation<Set<Map<K,V>>,I> createOperation() {
+        return endIf().createOperation();
     }
 
 

@@ -27,9 +27,9 @@ import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 
 
 /**
@@ -39,35 +39,35 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level3SetOfMapSelectedElementsSelectedEntriesValueOperator<K,V>
-        extends UniqOperator<Set<Map<K,V>>>,
-                NavigatingMapEntryOperator,
-        		ExecutableSelectedOperator<V>,
-                ReplaceableOperator<V>,
-                SelectableOperator<V> {
+public interface Level3SetOfMapSelectedElementsSelectedEntriesValueOperator<K,V,I>
+        extends UniqOperator<Set<Map<K,V>>,I>,
+                NavigatingMapEntryOperator<I>,
+        		ExecutableSelectedOperator<V,I>,
+                ReplaceableOperator<V,I>,
+                SelectableOperator<V,I> {
 
 
 
-    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V> ifIndex(final int... indices);
-    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V> ifNull();
-    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V> ifIndexNot(final int... indices);
-    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V> ifNotNull();
-    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V,I> ifIndex(final int... indices);
+    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V,I> ifTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V,I> ifFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V,I> ifNullOrFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V,I> ifNull();
+    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V,I> ifNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V,I> ifIndexNot(final int... indices);
+    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V,I> ifNotNull();
+    public Level3SetOfMapSelectedElementsSelectedEntriesValueSelectedOperator<K,V,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval);
 
             
-    public Level2SetOfMapSelectedElementsSelectedEntriesOperator<K,V> endOn();
+    public Level2SetOfMapSelectedElementsSelectedEntriesOperator<K,V,I> endOn();
     
-    public Level3SetOfMapSelectedElementsSelectedEntriesValueOperator<K,V> convert(final IConverter<? extends V, ? super V> converter);
+    public Level3SetOfMapSelectedElementsSelectedEntriesValueOperator<K,V,I> convert(final IConverter<? extends V, ? super V> converter);
     
-    public Level3SetOfMapSelectedElementsSelectedEntriesValueOperator<K,V> eval(final IEvaluator<? extends V, ? super V> eval);
+    public Level3SetOfMapSelectedElementsSelectedEntriesValueOperator<K,V,I> eval(final IEvaluator<? extends V, ? super V> eval);
 
-    public Level3SetOfMapSelectedElementsSelectedEntriesValueOperator<K,V> replaceWith(final V replacement);
+    public Level3SetOfMapSelectedElementsSelectedEntriesValueOperator<K,V,I> replaceWith(final V replacement);
 
-    public Level3SetOfMapSelectedElementsSelectedEntriesValueOperator<K,V> exec(final IFunction<? extends V, ? super V> function);
+    public Level3SetOfMapSelectedElementsSelectedEntriesValueOperator<K,V,I> exec(final IFunction<? extends V, ? super V> function);
         
 }

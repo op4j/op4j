@@ -30,10 +30,10 @@ import java.util.Comparator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface SortableOperator<T> {
+public interface SortableOperator<T,I> {
     
-    public SortableOperator<T> sort();
-    public SortableOperator<T> sort(final Comparator<? super T> comparator);
+    public SortableOperator<T,I> sort();
+    public SortableOperator<T,I> sort(final Comparator<? super T> comparator);
 
     
 }

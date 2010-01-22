@@ -30,10 +30,10 @@ import org.op4j.operators.intf.listofarray.Level0ListOfArrayOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface CastableToListOfArrayOperator {
+public interface CastableToListOfArrayOperator<I> {
     
-    public <X> Level0ListOfArrayOperator<X> asListOfArrayOf(final Type<X> type);
-    public Level0ListOfArrayOperator<?> asListOfArrayOfUnknown();
+    public <X> Level0ListOfArrayOperator<X,I> asListOfArrayOf(final Type<X> type);
+    public Level0ListOfArrayOperator<?,I> asListOfArrayOfUnknown();
 
     
 }

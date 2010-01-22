@@ -38,37 +38,37 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level2MapOfMapEntriesSelectedKeyOperator<K1,K2,V>
-        extends UniqOperator<Map<K1,Map<K2,V>>>,
-                NavigatingMapEntryOperator,
-                ExecutableSelectedOperator<K1>, 
-                ReplaceableOperator<K1>,
-                SelectableOperator<K1> {
+public interface Level2MapOfMapEntriesSelectedKeyOperator<K1,K2,V,I>
+        extends UniqOperator<Map<K1,Map<K2,V>>,I>,
+                NavigatingMapEntryOperator<I>,
+                ExecutableSelectedOperator<K1,I>, 
+                ReplaceableOperator<K1,I>,
+                SelectableOperator<K1,I> {
 
 
 
-    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V> ifIndex(final int... indices);
-    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V> ifTrue(final IEvaluator<Boolean, ? super K1> eval);
-    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V> ifFalse(final IEvaluator<Boolean, ? super K1> eval);
-    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V> ifNullOrFalse(final IEvaluator<Boolean, ? super K1> eval);
-    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K1> eval);
-    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V> ifNull();
-    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V> ifNullOrTrue(final IEvaluator<Boolean, ? super K1> eval);
-    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V> ifIndexNot(final int... indices);
-    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V> ifNotNull();
-    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K1> eval);
+    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V,I> ifIndex(final int... indices);
+    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V,I> ifTrue(final IEvaluator<Boolean, ? super K1> eval);
+    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V,I> ifFalse(final IEvaluator<Boolean, ? super K1> eval);
+    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V,I> ifNullOrFalse(final IEvaluator<Boolean, ? super K1> eval);
+    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K1> eval);
+    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V,I> ifNull();
+    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V,I> ifNullOrTrue(final IEvaluator<Boolean, ? super K1> eval);
+    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V,I> ifIndexNot(final int... indices);
+    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V,I> ifNotNull();
+    public Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K1> eval);
 
     
-    public Level1MapOfMapEntriesSelectedOperator<K1,K2,V> endOn();
+    public Level1MapOfMapEntriesSelectedOperator<K1,K2,V,I> endOn();
 
-    public Level2MapOfMapEntriesSelectedKeyOperator<K1,K2,V> replaceWith(final K1 replacement);
+    public Level2MapOfMapEntriesSelectedKeyOperator<K1,K2,V,I> replaceWith(final K1 replacement);
 
 
-    public Level2MapOfMapEntriesSelectedKeyOperator<K1,K2,V> exec(final IFunction<? extends K1, ? super K1> function);
+    public Level2MapOfMapEntriesSelectedKeyOperator<K1,K2,V,I> exec(final IFunction<? extends K1, ? super K1> function);
     
-    public Level2MapOfMapEntriesSelectedKeyOperator<K1,K2,V> eval(final IEvaluator<? extends K1,? super K1> eval);
+    public Level2MapOfMapEntriesSelectedKeyOperator<K1,K2,V,I> eval(final IEvaluator<? extends K1,? super K1> eval);
     
-    public Level2MapOfMapEntriesSelectedKeyOperator<K1,K2,V> convert(final IConverter<? extends K1,? super K1> converter);
+    public Level2MapOfMapEntriesSelectedKeyOperator<K1,K2,V,I> convert(final IConverter<? extends K1,? super K1> converter);
     
         
 }

@@ -27,9 +27,9 @@ import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 
 
 /**
@@ -39,37 +39,37 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level2SetOfListSelectedElementsElementsOperator<T>
-        extends UniqOperator<Set<List<T>>>,
-        		ExecutableSelectedOperator<T>,
-                ReplaceableOperator<T>,
-                NavigatingCollectionOperator<T>,
-                SelectableOperator<T> {
+public interface Level2SetOfListSelectedElementsElementsOperator<T,I>
+        extends UniqOperator<Set<List<T>>,I>,
+        		ExecutableSelectedOperator<T,I>,
+                ReplaceableOperator<T,I>,
+                NavigatingCollectionOperator<T,I>,
+                SelectableOperator<T,I> {
 
 
 
-    public Level1SetOfListSelectedElementsOperator<T> endFor();
+    public Level1SetOfListSelectedElementsOperator<T,I> endFor();
 
 
-    public Level2SetOfListSelectedElementsElementsSelectedOperator<T> ifIndex(final int... indices);
-    public Level2SetOfListSelectedElementsElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level2SetOfListSelectedElementsElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level2SetOfListSelectedElementsElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level2SetOfListSelectedElementsElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level2SetOfListSelectedElementsElementsSelectedOperator<T> ifNull();
-    public Level2SetOfListSelectedElementsElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level2SetOfListSelectedElementsElementsSelectedOperator<T> ifIndexNot(final int... indices);
-    public Level2SetOfListSelectedElementsElementsSelectedOperator<T> ifNotNull();
-    public Level2SetOfListSelectedElementsElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level2SetOfListSelectedElementsElementsSelectedOperator<T,I> ifIndex(final int... indices);
+    public Level2SetOfListSelectedElementsElementsSelectedOperator<T,I> ifTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level2SetOfListSelectedElementsElementsSelectedOperator<T,I> ifFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level2SetOfListSelectedElementsElementsSelectedOperator<T,I> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level2SetOfListSelectedElementsElementsSelectedOperator<T,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level2SetOfListSelectedElementsElementsSelectedOperator<T,I> ifNull();
+    public Level2SetOfListSelectedElementsElementsSelectedOperator<T,I> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level2SetOfListSelectedElementsElementsSelectedOperator<T,I> ifIndexNot(final int... indices);
+    public Level2SetOfListSelectedElementsElementsSelectedOperator<T,I> ifNotNull();
+    public Level2SetOfListSelectedElementsElementsSelectedOperator<T,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
 
     
-    public Level2SetOfListSelectedElementsElementsOperator<T> convert(final IConverter<? extends T,? super T> converter);
+    public Level2SetOfListSelectedElementsElementsOperator<T,I> convert(final IConverter<? extends T,? super T> converter);
     
-    public Level2SetOfListSelectedElementsElementsOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
+    public Level2SetOfListSelectedElementsElementsOperator<T,I> eval(final IEvaluator<? extends T,? super T> eval);
 
-    public Level2SetOfListSelectedElementsElementsOperator<T> replaceWith(final T replacement);
+    public Level2SetOfListSelectedElementsElementsOperator<T,I> replaceWith(final T replacement);
 
-    public Level2SetOfListSelectedElementsElementsOperator<T> exec(final IFunction<? extends T, ? super T> function);
+    public Level2SetOfListSelectedElementsElementsOperator<T,I> exec(final IFunction<? extends T, ? super T> function);
 
     
 }

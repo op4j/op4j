@@ -29,8 +29,8 @@ package org.op4j.operators.qualities;
  *
  */
 
-public interface UniqableOperator<T> {
+public interface UniqableOperator<T,I> {
     
-    public UniqOperator<T> uniq();
+    public UniqOperator<T,I> uniq();
 
 }

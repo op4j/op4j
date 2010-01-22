@@ -30,10 +30,10 @@ import org.op4j.operators.qualities.DistinguishableOperator;
 import org.op4j.operators.qualities.ExecutableArrayOfSetSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 /**
  * 
  * @since 1.0
@@ -41,56 +41,56 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level0ArrayOfSetSelectedOperator<T>
-        extends UniqOperator<Set<T>[]>,
-                NavigableCollectionOperator<Set<T>>,
-                DistinguishableOperator,
-                SortableOperator<Set<T>>,
-                ModifiableCollectionOperator<Set<T>>,
-                ExecutableArrayOfSetSelectedOperator<T>,
-                ReplaceableOperator<Set<T>[]>,
-                SelectedOperator<Set<T>[]> {
+public interface Level0ArrayOfSetSelectedOperator<T,I>
+        extends UniqOperator<Set<T>[],I>,
+                NavigableCollectionOperator<Set<T>,I>,
+                DistinguishableOperator<I>,
+                SortableOperator<Set<T>,I>,
+                ModifiableCollectionOperator<Set<T>,I>,
+                ExecutableArrayOfSetSelectedOperator<T,I>,
+                ReplaceableOperator<Set<T>[],I>,
+                SelectedOperator<Set<T>[],I> {
 
 
 
-    public Level0ArrayOfSetOperator<T> endIf();
+    public Level0ArrayOfSetOperator<T,I> endIf();
 
 
 
-    public Level1ArrayOfSetSelectedElementsOperator<T> forEach();
+    public Level1ArrayOfSetSelectedElementsOperator<T,I> forEach();
 
-    public Level0ArrayOfSetSelectedOperator<T> distinct();
+    public Level0ArrayOfSetSelectedOperator<T,I> distinct();
     
-    public Level0ArrayOfSetSelectedOperator<T> sort();
-    public Level0ArrayOfSetSelectedOperator<T> sort(final Comparator<? super Set<T>> comparator);
+    public Level0ArrayOfSetSelectedOperator<T,I> sort();
+    public Level0ArrayOfSetSelectedOperator<T,I> sort(final Comparator<? super Set<T>> comparator);
 
 
-    public Level0ArrayOfSetSelectedOperator<T> add(final Set<T> newElement);
-    public Level0ArrayOfSetSelectedOperator<T> addAll(final Set<T>... newElements);
-    public Level0ArrayOfSetSelectedOperator<T> insert(final int position, final Set<T> newElement);
-    public Level0ArrayOfSetSelectedOperator<T> insertAll(final int position, final Set<T>... newElements);
-    public Level0ArrayOfSetSelectedOperator<T> addAll(final Collection<Set<T>> collection);
-    public Level0ArrayOfSetSelectedOperator<T> removeAllIndexes(final int... indices);
-    public Level0ArrayOfSetSelectedOperator<T> removeAllEqual(final Set<T>... values);
-    public Level0ArrayOfSetSelectedOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0ArrayOfSetSelectedOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0ArrayOfSetSelectedOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0ArrayOfSetSelectedOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0ArrayOfSetSelectedOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0ArrayOfSetSelectedOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0ArrayOfSetSelectedOperator<T> removeAllIndexesNot(final int... indices);
-    public Level0ArrayOfSetSelectedOperator<T> removeAllNull();
+    public Level0ArrayOfSetSelectedOperator<T,I> add(final Set<T> newElement);
+    public Level0ArrayOfSetSelectedOperator<T,I> addAll(final Set<T>... newElements);
+    public Level0ArrayOfSetSelectedOperator<T,I> insert(final int position, final Set<T> newElement);
+    public Level0ArrayOfSetSelectedOperator<T,I> insertAll(final int position, final Set<T>... newElements);
+    public Level0ArrayOfSetSelectedOperator<T,I> addAll(final Collection<Set<T>> collection);
+    public Level0ArrayOfSetSelectedOperator<T,I> removeAllIndexes(final int... indices);
+    public Level0ArrayOfSetSelectedOperator<T,I> removeAllEqual(final Set<T>... values);
+    public Level0ArrayOfSetSelectedOperator<T,I> removeAllTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level0ArrayOfSetSelectedOperator<T,I> removeAllFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level0ArrayOfSetSelectedOperator<T,I> removeAllNullOrFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level0ArrayOfSetSelectedOperator<T,I> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level0ArrayOfSetSelectedOperator<T,I> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level0ArrayOfSetSelectedOperator<T,I> removeAllNullOrTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level0ArrayOfSetSelectedOperator<T,I> removeAllIndexesNot(final int... indices);
+    public Level0ArrayOfSetSelectedOperator<T,I> removeAllNull();
 
 
 
     
-    public Level0ArrayOfSetSelectedOperator<T> convert(final IConverter<? extends Set<? extends T>[],? super Set<T>[]> converter);
+    public Level0ArrayOfSetSelectedOperator<T,I> convert(final IConverter<? extends Set<? extends T>[],? super Set<T>[]> converter);
     
-    public Level0ArrayOfSetSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T>[],? super Set<T>[]> eval);
+    public Level0ArrayOfSetSelectedOperator<T,I> eval(final IEvaluator<? extends Set<? extends T>[],? super Set<T>[]> eval);
 
-    public Level0ArrayOfSetSelectedOperator<T> replaceWith(final Set<T>[] replacement);
+    public Level0ArrayOfSetSelectedOperator<T,I> replaceWith(final Set<T>[] replacement);
 
-    public Level0ArrayOfSetSelectedOperator<T> exec(final IFunction<? extends Set<? extends T>[], ? super Set<T>[]> function);
+    public Level0ArrayOfSetSelectedOperator<T,I> exec(final IFunction<? extends Set<? extends T>[], ? super Set<T>[]> function);
 
     
 }

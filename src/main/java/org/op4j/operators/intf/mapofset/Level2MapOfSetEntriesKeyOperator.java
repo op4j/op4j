@@ -40,41 +40,41 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level2MapOfSetEntriesKeyOperator<K,V>
-        extends UniqOperator<Map<K,Set<V>>>,
-                NavigatingMapEntryOperator,
-                CastableToTypeOperator<K>,
-                ExecutableOperator<K>, 
-                SelectableOperator<K> {
+public interface Level2MapOfSetEntriesKeyOperator<K,V,I>
+        extends UniqOperator<Map<K,Set<V>>,I>,
+                NavigatingMapEntryOperator<I>,
+                CastableToTypeOperator<K,I>,
+                ExecutableOperator<K,I>, 
+                SelectableOperator<K,I> {
 
 
 
-    public Level2MapOfSetEntriesKeySelectedOperator<K,V> ifIndex(final int... indices);
-    public Level2MapOfSetEntriesKeySelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfSetEntriesKeySelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfSetEntriesKeySelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfSetEntriesKeySelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfSetEntriesKeySelectedOperator<K,V> ifNull();
-    public Level2MapOfSetEntriesKeySelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfSetEntriesKeySelectedOperator<K,V> ifIndexNot(final int... indices);
-    public Level2MapOfSetEntriesKeySelectedOperator<K,V> ifNotNull();
-    public Level2MapOfSetEntriesKeySelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfSetEntriesKeySelectedOperator<K,V,I> ifIndex(final int... indices);
+    public Level2MapOfSetEntriesKeySelectedOperator<K,V,I> ifTrue(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfSetEntriesKeySelectedOperator<K,V,I> ifFalse(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfSetEntriesKeySelectedOperator<K,V,I> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfSetEntriesKeySelectedOperator<K,V,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfSetEntriesKeySelectedOperator<K,V,I> ifNull();
+    public Level2MapOfSetEntriesKeySelectedOperator<K,V,I> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfSetEntriesKeySelectedOperator<K,V,I> ifIndexNot(final int... indices);
+    public Level2MapOfSetEntriesKeySelectedOperator<K,V,I> ifNotNull();
+    public Level2MapOfSetEntriesKeySelectedOperator<K,V,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval);
 
     
-    public Level1MapOfSetEntriesOperator<K,V> endOn();
+    public Level1MapOfSetEntriesOperator<K,V,I> endOn();
     
-    public <X> Level2MapOfSetEntriesKeyOperator<X,V> asType(final Type<X> type);
-    public Level2MapOfSetEntriesKeyOperator<?,V> asUnknown();
+    public <X> Level2MapOfSetEntriesKeyOperator<X,V,I> asType(final Type<X> type);
+    public Level2MapOfSetEntriesKeyOperator<?,V,I> asUnknown();
 
-    public <X> Level2MapOfSetEntriesKeyOperator<X,V> exec(final IFunction<X, ? super K> function);
+    public <X> Level2MapOfSetEntriesKeyOperator<X,V,I> exec(final IFunction<X, ? super K> function);
     
-    public <X> Level2MapOfSetEntriesKeyOperator<X,V> eval(final IEvaluator<X,? super K> eval);
+    public <X> Level2MapOfSetEntriesKeyOperator<X,V,I> eval(final IEvaluator<X,? super K> eval);
     
-    public Level2MapOfSetEntriesKeyOperator<K,V> replaceWith(final K replacement);
-    public Level2MapOfSetEntriesKeyOperator<K,V> replaceIfNullWith(final K replacement);
+    public Level2MapOfSetEntriesKeyOperator<K,V,I> replaceWith(final K replacement);
+    public Level2MapOfSetEntriesKeyOperator<K,V,I> replaceIfNullWith(final K replacement);
 
 
-    public <X> Level2MapOfSetEntriesKeyOperator<X,V> convert(final IConverter<X,? super K> converter);
+    public <X> Level2MapOfSetEntriesKeyOperator<X,V,I> convert(final IConverter<X,? super K> converter);
     
         
 }

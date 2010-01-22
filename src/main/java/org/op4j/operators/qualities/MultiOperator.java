@@ -22,6 +22,7 @@ package org.op4j.operators.qualities;
 import java.util.List;
 
 import org.javaruntype.type.Type;
+import org.op4j.operations.Operation;
 
 
 
@@ -34,11 +35,14 @@ import org.javaruntype.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface MultiOperator<T> extends Operator {
+public interface MultiOperator<T,I> extends Operator {
     
     public int size();
     
     public T[] getAsArray(final Type<T> type); 
     public List<T> getAsList(); 
+
+    public Operation<T[],I> createArrayOperation(final Type<T> type);
+    public Operation<List<T>,I> createListOperation();
     
 }

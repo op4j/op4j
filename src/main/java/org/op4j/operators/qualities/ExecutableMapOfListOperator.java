@@ -38,18 +38,18 @@ import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ExecutableMapOfListOperator<K,V> {
+public interface ExecutableMapOfListOperator<K,V,I> {
 
-    public <X,Y> ExecutableMapOfListOperator<X,Y> exec(final IFunction<? extends Map<X,? extends List<Y>>, ? super Map<K,List<V>>> function);
+    public <X,Y> ExecutableMapOfListOperator<X,Y,I> exec(final IFunction<? extends Map<X,? extends List<Y>>, ? super Map<K,List<V>>> function);
     
-    public <X,Y> ExecutableMapOfListOperator<X,Y> eval(final IEvaluator<? extends Map<X,? extends List<Y>>,? super Map<K,List<V>>> eval);
+    public <X,Y> ExecutableMapOfListOperator<X,Y,I> eval(final IEvaluator<? extends Map<X,? extends List<Y>>,? super Map<K,List<V>>> eval);
     
-    public <X,Y> ExecutableMapOfListOperator<X,Y> convert(final IConverter<? extends Map<X,? extends List<Y>>,? super Map<K,List<V>>> converter);
+    public <X,Y> ExecutableMapOfListOperator<X,Y,I> convert(final IConverter<? extends Map<X,? extends List<Y>>,? super Map<K,List<V>>> converter);
 
-    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K,List<V>>> function);
+    public <X> Level0GenericUniqOperator<X,I> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K,List<V>>> function);
     
-    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map<K,List<V>>> eval);
+    public <X> Level0GenericUniqOperator<X,I> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map<K,List<V>>> eval);
     
-    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Map<K,List<V>>> converter);    
+    public <X> Level0GenericUniqOperator<X,I> convert(final Type<X> resultType, final IConverter<? extends X,? super Map<K,List<V>>> converter);    
     
 }

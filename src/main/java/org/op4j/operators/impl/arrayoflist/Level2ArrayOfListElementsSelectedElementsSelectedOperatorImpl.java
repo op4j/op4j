@@ -5,6 +5,7 @@ import java.util.List;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.operations.Operation;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.arrayoflist.Level2ArrayOfListElementsSelectedElementsOperator;
 import org.op4j.operators.intf.arrayoflist.Level2ArrayOfListElementsSelectedElementsSelectedOperator;
@@ -12,7 +13,7 @@ import org.op4j.target.Target;
 import org.op4j.target.Target.Normalization;
 
 
-public class Level2ArrayOfListElementsSelectedElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> {
+public class Level2ArrayOfListElementsSelectedElementsSelectedOperatorImpl<T,I> extends AbstractOperatorImpl implements Level2ArrayOfListElementsSelectedElementsSelectedOperator<T,I> {
 
 
     public Level2ArrayOfListElementsSelectedElementsSelectedOperatorImpl(final Target target) {
@@ -20,33 +21,38 @@ public class Level2ArrayOfListElementsSelectedElementsSelectedOperatorImpl<T> ex
     }
 
 
-    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return new Level2ArrayOfListElementsSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.NONE));
+    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T,I> eval(final IEvaluator<? extends T,? super T> eval) {
+        return new Level2ArrayOfListElementsSelectedElementsSelectedOperatorImpl<T,I>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
-    public Level2ArrayOfListElementsSelectedElementsOperator<T> endIf() {
-        return new Level2ArrayOfListElementsSelectedElementsOperatorImpl<T>(getTarget().endSelect());
+    public Level2ArrayOfListElementsSelectedElementsOperator<T,I> endIf() {
+        return new Level2ArrayOfListElementsSelectedElementsOperatorImpl<T,I>(getTarget().endSelect());
     }
 
 
-    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level2ArrayOfListElementsSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalization.NONE));
+    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T,I> exec(final IFunction<? extends T,? super T> function) {
+        return new Level2ArrayOfListElementsSelectedElementsSelectedOperatorImpl<T,I>(getTarget().execute(function, Normalization.NONE));
     }
 
 
-    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> replaceWith(final T replacement) {
-        return new Level2ArrayOfListElementsSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T,I> replaceWith(final T replacement) {
+        return new Level2ArrayOfListElementsSelectedElementsSelectedOperatorImpl<T,I>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return new Level2ArrayOfListElementsSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalization.NONE));
+    public Level2ArrayOfListElementsSelectedElementsSelectedOperator<T,I> convert(final IConverter<? extends T,? super T> converter) {
+        return new Level2ArrayOfListElementsSelectedElementsSelectedOperatorImpl<T,I>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
     public List<T>[] get() {
         return endIf().get();
+    }
+
+
+    public Operation<List<T>[],I> createOperation() {
+        return endIf().createOperation();
     }
 
 

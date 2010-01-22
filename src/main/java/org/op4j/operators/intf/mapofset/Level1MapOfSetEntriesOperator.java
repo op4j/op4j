@@ -42,42 +42,42 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level1MapOfSetEntriesOperator<K,V>
-		extends UniqOperator<Map<K,Set<V>>>,
-		        NavigableMapEntryOperator,
-                ExecutableMapOfSetEntryOperator<K,V>,
-                SelectableMapEntryOperator<K, Set<V>>,
-                ReplaceableOperator<Map.Entry<K,Set<V>>>,
-		        NavigatingMapOperator<K,Set<V>> {
+public interface Level1MapOfSetEntriesOperator<K,V,I>
+		extends UniqOperator<Map<K,Set<V>>,I>,
+		        NavigableMapEntryOperator<I>,
+                ExecutableMapOfSetEntryOperator<K,V,I>,
+                SelectableMapEntryOperator<K, Set<V>,I>,
+                ReplaceableOperator<Map.Entry<K,Set<V>>,I>,
+		        NavigatingMapOperator<K,Set<V>,I> {
 
 
-    public Level1MapOfSetEntriesSelectedOperator<K,V> ifIndex(final int... indices);
-    public Level1MapOfSetEntriesSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K, Set<V>>> eval);
-    public Level1MapOfSetEntriesSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K, Set<V>>> eval);
-    public Level1MapOfSetEntriesSelectedOperator<K,V> ifIndexNot(final int... indices);
-    public Level1MapOfSetEntriesSelectedOperator<K,V> ifKeyEquals(final K... keys);
-    public Level1MapOfSetEntriesSelectedOperator<K,V> ifKeyNotEquals(final K... keys);
+    public Level1MapOfSetEntriesSelectedOperator<K,V,I> ifIndex(final int... indices);
+    public Level1MapOfSetEntriesSelectedOperator<K,V,I> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K, Set<V>>> eval);
+    public Level1MapOfSetEntriesSelectedOperator<K,V,I> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K, Set<V>>> eval);
+    public Level1MapOfSetEntriesSelectedOperator<K,V,I> ifIndexNot(final int... indices);
+    public Level1MapOfSetEntriesSelectedOperator<K,V,I> ifKeyEquals(final K... keys);
+    public Level1MapOfSetEntriesSelectedOperator<K,V,I> ifKeyNotEquals(final K... keys);
     
     
-    public Level2MapOfSetEntriesKeyOperator<K,V> onKey();
-    public Level2MapOfSetEntriesValueOperator<K,V> onValue();
+    public Level2MapOfSetEntriesKeyOperator<K,V,I> onKey();
+    public Level2MapOfSetEntriesValueOperator<K,V,I> onValue();
     
-    public Level0MapOfSetOperator<K,V> endFor();
+    public Level0MapOfSetOperator<K,V,I> endFor();
     
-    public <X,Y> Level1MapOfSetEntriesOperator<X,Y> exec(final IFunction<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> function);
+    public <X,Y> Level1MapOfSetEntriesOperator<X,Y,I> exec(final IFunction<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> function);
     
-    public <X,Y> Level1MapOfSetEntriesOperator<X,Y> eval(final IEvaluator<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> eval);
+    public <X,Y> Level1MapOfSetEntriesOperator<X,Y,I> eval(final IEvaluator<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> eval);
     
-    public Level1MapOfSetEntriesOperator<K,V> replaceWith(final Map.Entry<K,Set<V>> replacement);
+    public Level1MapOfSetEntriesOperator<K,V,I> replaceWith(final Map.Entry<K,Set<V>> replacement);
 
 
-    public <X,Y> Level1MapOfSetEntriesOperator<X,Y> convert(final IConverter<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> converter);
+    public <X,Y> Level1MapOfSetEntriesOperator<X,Y,I> convert(final IConverter<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> converter);
 
-    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K,Set<V>>> function);
+    public <X> Level0GenericUniqOperator<X,I> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K,Set<V>>> function);
     
-    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map.Entry<K,Set<V>>> eval);
+    public <X> Level0GenericUniqOperator<X,I> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map.Entry<K,Set<V>>> eval);
     
-    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Map.Entry<K,Set<V>>> converter);    
+    public <X> Level0GenericUniqOperator<X,I> convert(final Type<X> resultType, final IConverter<? extends X,? super Map.Entry<K,Set<V>>> converter);    
 
     
 }

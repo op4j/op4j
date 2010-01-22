@@ -29,7 +29,7 @@ import org.javaruntype.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface CastableToMapOperator {
+public interface CastableToMapOperator<I> {
     
     public <K,V> Operator asMapOf(final Type<K> keyType, final Type<V> valueType);
     public Operator asMapOfUnknown();

@@ -28,8 +28,8 @@ import org.javaruntype.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface NavigableArrayOperator<T>  {
+public interface NavigableArrayOperator<T,I>  {
 
-    public NavigatingArrayOperator<T> forEach(final Type<T> elementType);
+    public NavigatingArrayOperator<T,I> forEach(final Type<T> elementType);
 	
 }

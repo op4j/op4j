@@ -39,41 +39,41 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level3ArrayOfMapElementsEntriesKeyOperator<K,V>
-        extends UniqOperator<Map<K,V>[]>,
-                NavigatingMapEntryOperator,
-                CastableToTypeOperator<K>,
-                ExecutableOperator<K>, 
-                SelectableOperator<K> {
+public interface Level3ArrayOfMapElementsEntriesKeyOperator<K,V,I>
+        extends UniqOperator<Map<K,V>[],I>,
+                NavigatingMapEntryOperator<I>,
+                CastableToTypeOperator<K,I>,
+                ExecutableOperator<K,I>, 
+                SelectableOperator<K,I> {
 
 
 
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V> ifIndex(final int... indices);
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super K> eval);
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super K> eval);
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval);
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval);
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V> ifNull();
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval);
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V> ifIndexNot(final int... indices);
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V> ifNotNull();
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval);
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V,I> ifIndex(final int... indices);
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V,I> ifTrue(final IEvaluator<Boolean, ? super K> eval);
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V,I> ifFalse(final IEvaluator<Boolean, ? super K> eval);
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V,I> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval);
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval);
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V,I> ifNull();
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V,I> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval);
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V,I> ifIndexNot(final int... indices);
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V,I> ifNotNull();
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K,V,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval);
 
 		    
-    public Level2ArrayOfMapElementsEntriesOperator<K,V> endOn();
+    public Level2ArrayOfMapElementsEntriesOperator<K,V,I> endOn();
     
-    public <X> Level3ArrayOfMapElementsEntriesKeyOperator<X,V> asType(final Type<X> type);
-    public Level3ArrayOfMapElementsEntriesKeyOperator<?,V> asUnknown();
+    public <X> Level3ArrayOfMapElementsEntriesKeyOperator<X,V,I> asType(final Type<X> type);
+    public Level3ArrayOfMapElementsEntriesKeyOperator<?,V,I> asUnknown();
 
-    public <X> Level3ArrayOfMapElementsEntriesKeyOperator<X,V> exec(final IFunction<X, ? super K> function);
+    public <X> Level3ArrayOfMapElementsEntriesKeyOperator<X,V,I> exec(final IFunction<X, ? super K> function);
     
-    public <X> Level3ArrayOfMapElementsEntriesKeyOperator<X,V> eval(final IEvaluator<X,? super K> eval);
+    public <X> Level3ArrayOfMapElementsEntriesKeyOperator<X,V,I> eval(final IEvaluator<X,? super K> eval);
     
-    public Level3ArrayOfMapElementsEntriesKeyOperator<K,V> replaceWith(final K replacement);
-    public Level3ArrayOfMapElementsEntriesKeyOperator<K,V> replaceIfNullWith(final K replacement);
+    public Level3ArrayOfMapElementsEntriesKeyOperator<K,V,I> replaceWith(final K replacement);
+    public Level3ArrayOfMapElementsEntriesKeyOperator<K,V,I> replaceIfNullWith(final K replacement);
 
 
-    public <X> Level3ArrayOfMapElementsEntriesKeyOperator<X,V> convert(final IConverter<X,? super K> converter);
+    public <X> Level3ArrayOfMapElementsEntriesKeyOperator<X,V,I> convert(final IConverter<X,? super K> converter);
     
         
 }

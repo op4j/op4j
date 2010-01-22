@@ -54,90 +54,90 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level2MapOfListEntriesValueOperator<K,V>
-        extends UniqOperator<Map<K,List<V>>>,
-                NavigableCollectionOperator<V>,
-		        NavigatingMapEntryOperator,
-		        DistinguishableOperator,
-		        SortableOperator<V>,
-		        CastableToListOperator,
-                ExecutableListOperator<V>,
-                ModifiableCollectionOperator<V>,
-                SelectableOperator<List<V>>,
-                ReplaceableOperator<List<V>>,
-                ReplaceableIfNullOperator<List<V>>,
-                ConvertibleToArrayOperator<V>,
-                ConvertibleToSetOperator,
-                ConvertibleToMapOperator<V> {
+public interface Level2MapOfListEntriesValueOperator<K,V,I>
+        extends UniqOperator<Map<K,List<V>>,I>,
+                NavigableCollectionOperator<V,I>,
+		        NavigatingMapEntryOperator<I>,
+		        DistinguishableOperator<I>,
+		        SortableOperator<V,I>,
+		        CastableToListOperator<I>,
+                ExecutableListOperator<V,I>,
+                ModifiableCollectionOperator<V,I>,
+                SelectableOperator<List<V>,I>,
+                ReplaceableOperator<List<V>,I>,
+                ReplaceableIfNullOperator<List<V>,I>,
+                ConvertibleToArrayOperator<V,I>,
+                ConvertibleToSetOperator<I>,
+                ConvertibleToMapOperator<V,I> {
 
 
 
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifIndex(final int... indices);
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super List<V>> eval);
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super List<V>> eval);
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super List<V>> eval);
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super List<V>> eval);
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifNull();
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super List<V>> eval);
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifIndexNot(final int... indices);
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifNotNull();
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super List<V>> eval);
+    public Level2MapOfListEntriesValueSelectedOperator<K,V,I> ifIndex(final int... indices);
+    public Level2MapOfListEntriesValueSelectedOperator<K,V,I> ifTrue(final IEvaluator<Boolean, ? super List<V>> eval);
+    public Level2MapOfListEntriesValueSelectedOperator<K,V,I> ifFalse(final IEvaluator<Boolean, ? super List<V>> eval);
+    public Level2MapOfListEntriesValueSelectedOperator<K,V,I> ifNullOrFalse(final IEvaluator<Boolean, ? super List<V>> eval);
+    public Level2MapOfListEntriesValueSelectedOperator<K,V,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super List<V>> eval);
+    public Level2MapOfListEntriesValueSelectedOperator<K,V,I> ifNull();
+    public Level2MapOfListEntriesValueSelectedOperator<K,V,I> ifNullOrTrue(final IEvaluator<Boolean, ? super List<V>> eval);
+    public Level2MapOfListEntriesValueSelectedOperator<K,V,I> ifIndexNot(final int... indices);
+    public Level2MapOfListEntriesValueSelectedOperator<K,V,I> ifNotNull();
+    public Level2MapOfListEntriesValueSelectedOperator<K,V,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super List<V>> eval);
 
     
-    public Level3MapOfListEntriesValueElementsOperator<K,V> forEach();
+    public Level3MapOfListEntriesValueElementsOperator<K,V,I> forEach();
     
-    public Level1MapOfListEntriesOperator<K,V> endOn();
+    public Level1MapOfListEntriesOperator<K,V,I> endOn();
 
-    public Level2MapOfListEntriesValueOperator<K,V> distinct();
+    public Level2MapOfListEntriesValueOperator<K,V,I> distinct();
     
-    public Level2MapOfListEntriesValueOperator<K,V> sort();
-    public Level2MapOfListEntriesValueOperator<K,V> sort(final Comparator<? super V> comparator);
+    public Level2MapOfListEntriesValueOperator<K,V,I> sort();
+    public Level2MapOfListEntriesValueOperator<K,V,I> sort(final Comparator<? super V> comparator);
     
         
-    public Level2MapOfListEntriesValueOperator<K,V> add(final V newElement);
-    public Level2MapOfListEntriesValueOperator<K,V> addAll(final V... newElements);
-    public Level2MapOfListEntriesValueOperator<K,V> insert(final int position, final V newElement);
-    public Level2MapOfListEntriesValueOperator<K,V> insertAll(final int position, final V... newElements);
-    public Level2MapOfListEntriesValueOperator<K,V> addAll(final Collection<V> collection);
-    public Level2MapOfListEntriesValueOperator<K,V> removeAllIndexes(final int... indices);
-    public Level2MapOfListEntriesValueOperator<K,V> removeAllEqual(final V... values);
-    public Level2MapOfListEntriesValueOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfListEntriesValueOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfListEntriesValueOperator<K,V> removeAllNullOrFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfListEntriesValueOperator<K,V> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfListEntriesValueOperator<K,V> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfListEntriesValueOperator<K,V> removeAllNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfListEntriesValueOperator<K,V> removeAllIndexesNot(final int... indices);
-    public Level2MapOfListEntriesValueOperator<K,V> removeAllNull();
-    public Level2MapOfArrayEntriesValueOperator<K,V> toArray(final Type<V> of);
+    public Level2MapOfListEntriesValueOperator<K,V,I> add(final V newElement);
+    public Level2MapOfListEntriesValueOperator<K,V,I> addAll(final V... newElements);
+    public Level2MapOfListEntriesValueOperator<K,V,I> insert(final int position, final V newElement);
+    public Level2MapOfListEntriesValueOperator<K,V,I> insertAll(final int position, final V... newElements);
+    public Level2MapOfListEntriesValueOperator<K,V,I> addAll(final Collection<V> collection);
+    public Level2MapOfListEntriesValueOperator<K,V,I> removeAllIndexes(final int... indices);
+    public Level2MapOfListEntriesValueOperator<K,V,I> removeAllEqual(final V... values);
+    public Level2MapOfListEntriesValueOperator<K,V,I> removeAllTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level2MapOfListEntriesValueOperator<K,V,I> removeAllFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level2MapOfListEntriesValueOperator<K,V,I> removeAllNullOrFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level2MapOfListEntriesValueOperator<K,V,I> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level2MapOfListEntriesValueOperator<K,V,I> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level2MapOfListEntriesValueOperator<K,V,I> removeAllNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level2MapOfListEntriesValueOperator<K,V,I> removeAllIndexesNot(final int... indices);
+    public Level2MapOfListEntriesValueOperator<K,V,I> removeAllNull();
+    public Level2MapOfArrayEntriesValueOperator<K,V,I> toArray(final Type<V> of);
     
     
-    public Level2MapOfSetEntriesValueOperator<K,V> toSet();
+    public Level2MapOfSetEntriesValueOperator<K,V,I> toSet();
     
-    public Level2MapOfMapEntriesValueOperator<K,V,V> toMap();
-    public <K2> Level2MapOfMapEntriesValueOperator<K,K2,V> toMap(final IEvaluator<K2,? super V> keyEval);
-    public <K2,V2> Level2MapOfMapEntriesValueOperator<K,K2,V2> toMap(final IMapBuilder<K2,V2,? super V> mapBuild);
+    public Level2MapOfMapEntriesValueOperator<K,V,V,I> toMap();
+    public <K2> Level2MapOfMapEntriesValueOperator<K,K2,V,I> toMap(final IEvaluator<K2,? super V> keyEval);
+    public <K2,V2> Level2MapOfMapEntriesValueOperator<K,K2,V2,I> toMap(final IMapBuilder<K2,V2,? super V> mapBuild);
 
     
-    public Level2MapOfListEntriesValueOperator<K,V> replaceWith(final List<V> replacement);
-    public Level2MapOfListEntriesValueOperator<K,V> replaceIfNullWith(final List<V> replacement);
+    public Level2MapOfListEntriesValueOperator<K,V,I> replaceWith(final List<V> replacement);
+    public Level2MapOfListEntriesValueOperator<K,V,I> replaceIfNullWith(final List<V> replacement);
 
 
-    public <X> Level2MapOfListEntriesValueOperator<K,X> convert(final IConverter<? extends List<X>,? super List<V>> converter);
+    public <X> Level2MapOfListEntriesValueOperator<K,X,I> convert(final IConverter<? extends List<X>,? super List<V>> converter);
     
-    public <X> Level2MapOfListEntriesValueOperator<K,X> eval(final IEvaluator<? extends List<X>,? super List<V>> eval);
+    public <X> Level2MapOfListEntriesValueOperator<K,X,I> eval(final IEvaluator<? extends List<X>,? super List<V>> eval);
 
-    public <X> Level2MapOfListEntriesValueOperator<K,X> exec(final IFunction<? extends List<X>, ? super List<V>> function);
+    public <X> Level2MapOfListEntriesValueOperator<K,X,I> exec(final IFunction<? extends List<X>, ? super List<V>> function);
 
-    public <X> Level2MapEntriesValueOperator<K,X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<V>> function);
+    public <X> Level2MapEntriesValueOperator<K,X,I> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<V>> function);
     
-    public <X> Level2MapEntriesValueOperator<K,X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super List<V>> eval);
+    public <X> Level2MapEntriesValueOperator<K,X,I> eval(final Type<X> resultType, final IEvaluator<? extends X,? super List<V>> eval);
     
-    public <X> Level2MapEntriesValueOperator<K,X> convert(final Type<X> resultType, final IConverter<? extends X,? super List<V>> converter);    
+    public <X> Level2MapEntriesValueOperator<K,X,I> convert(final Type<X> resultType, final IConverter<? extends X,? super List<V>> converter);    
     
     
-    public <X> Level2MapOfListEntriesValueOperator<K,X> asListOf(final Type<X> type);
-    public Level2MapOfListEntriesValueOperator<K,?> asListOfUnknown();
+    public <X> Level2MapOfListEntriesValueOperator<K,X,I> asListOf(final Type<X> type);
+    public Level2MapOfListEntriesValueOperator<K,?,I> asListOfUnknown();
     
     
                                     

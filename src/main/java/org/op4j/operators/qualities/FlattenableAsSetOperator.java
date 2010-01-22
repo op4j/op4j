@@ -33,8 +33,8 @@ import org.op4j.operators.intf.set.Level0SetOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface FlattenableAsSetOperator<T> {
+public interface FlattenableAsSetOperator<T,I> {
     
-    public Level0SetOperator<T> flatten();
+    public Level0SetOperator<T,I> flatten();
 	
 }

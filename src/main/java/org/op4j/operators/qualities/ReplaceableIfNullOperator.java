@@ -26,8 +26,8 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ReplaceableIfNullOperator<T>  {
+public interface ReplaceableIfNullOperator<T,I>  {
 
-    public ReplaceableIfNullOperator<T> replaceIfNullWith(final T replacement);
+    public ReplaceableIfNullOperator<T,I> replaceIfNullWith(final T replacement);
     
 }

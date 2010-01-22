@@ -30,10 +30,10 @@ import org.op4j.operators.intf.listoflist.Level0ListOfListOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface CastableToListOfListOperator {
+public interface CastableToListOfListOperator<I> {
     
-    public <X> Level0ListOfListOperator<X> asListOfListOf(final Type<X> type);
-    public Level0ListOfListOperator<?> asListOfListOfUnknown();
+    public <X> Level0ListOfListOperator<X,I> asListOfListOf(final Type<X> type);
+    public Level0ListOfListOperator<?,I> asListOfListOfUnknown();
 
     
 }

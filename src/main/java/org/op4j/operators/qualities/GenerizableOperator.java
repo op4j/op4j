@@ -31,8 +31,8 @@ import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface GenerizableOperator<T> {
+public interface GenerizableOperator<T,I> {
     
-    public Level0GenericUniqOperator<T> generic();
+    public Level0GenericUniqOperator<T,I> generic();
     
 }

@@ -36,24 +36,24 @@ import org.op4j.operators.qualities.SelectedOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level0GenericMultiSelectedOperator<T>
-        extends MultiOperator<T>,
-         		ExecutableSelectedOperator<T>,
-                ReplaceableOperator<T>,
-                SelectedOperator<T> {
+public interface Level0GenericMultiSelectedOperator<T,I>
+        extends MultiOperator<T,I>,
+         		ExecutableSelectedOperator<T,I>,
+                ReplaceableOperator<T,I>,
+                SelectedOperator<T,I> {
 
 
 
-    public Level0GenericMultiOperator<T> endIf();
+    public Level0GenericMultiOperator<T,I> endIf();
 
 
-    public Level0GenericMultiSelectedOperator<T> replaceWith(final T replacement);
+    public Level0GenericMultiSelectedOperator<T,I> replaceWith(final T replacement);
     
-    public Level0GenericMultiSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter);
+    public Level0GenericMultiSelectedOperator<T,I> convert(final IConverter<? extends T,? super T> converter);
     
-    public Level0GenericMultiSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
+    public Level0GenericMultiSelectedOperator<T,I> eval(final IEvaluator<? extends T,? super T> eval);
 
-    public Level0GenericMultiSelectedOperator<T> exec(final IFunction<? extends T, ? super T> function);
+    public Level0GenericMultiSelectedOperator<T,I> exec(final IFunction<? extends T, ? super T> function);
     
     
     public T[] getAsArray(final Type<T> type); 

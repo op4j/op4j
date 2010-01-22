@@ -25,9 +25,9 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.UniqOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 
 
 /**
@@ -37,24 +37,24 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level1ArraySelectedElementsSelectedOperator<T>
-        extends UniqOperator<T[]>,
-                SelectedOperator<T>,
-                ExecutableSelectedOperator<T>,
-                ReplaceableOperator<T> {
+public interface Level1ArraySelectedElementsSelectedOperator<T,I>
+        extends UniqOperator<T[],I>,
+                SelectedOperator<T,I>,
+                ExecutableSelectedOperator<T,I>,
+                ReplaceableOperator<T,I> {
 
 
 
-    public Level1ArraySelectedElementsOperator<T> endIf();
+    public Level1ArraySelectedElementsOperator<T,I> endIf();
 
     
-    public Level1ArraySelectedElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter);
+    public Level1ArraySelectedElementsSelectedOperator<T,I> convert(final IConverter<? extends T,? super T> converter);
     
-    public Level1ArraySelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
+    public Level1ArraySelectedElementsSelectedOperator<T,I> eval(final IEvaluator<? extends T,? super T> eval);
 
-    public Level1ArraySelectedElementsSelectedOperator<T> replaceWith(final T replacement);
+    public Level1ArraySelectedElementsSelectedOperator<T,I> replaceWith(final T replacement);
 
-    public Level1ArraySelectedElementsSelectedOperator<T> exec(final IFunction<? extends T, ? super T> function);
+    public Level1ArraySelectedElementsSelectedOperator<T,I> exec(final IFunction<? extends T, ? super T> function);
 	
     
 }

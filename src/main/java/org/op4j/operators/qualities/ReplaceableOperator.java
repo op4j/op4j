@@ -26,8 +26,8 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ReplaceableOperator<T>  {
+public interface ReplaceableOperator<T,I>  {
     
-    public ReplaceableOperator<T> replaceWith(final T replacement);
+    public ReplaceableOperator<T,I> replaceWith(final T replacement);
     
 }

@@ -35,12 +35,12 @@ import org.op4j.functions.evaluators.IEvaluator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ExecutableMapOfMapEntrySelectedOperator<K1,K2,V> {
+public interface ExecutableMapOfMapEntrySelectedOperator<K1,K2,V,I> {
 
-    public ExecutableMapOfMapEntrySelectedOperator<K1,K2,V> exec(final IFunction<? extends Map.Entry<? extends K1,? extends Map<? extends K2,? extends V>>, ? super Map.Entry<K1,Map<K2,V>>> function);
+    public ExecutableMapOfMapEntrySelectedOperator<K1,K2,V,I> exec(final IFunction<? extends Map.Entry<? extends K1,? extends Map<? extends K2,? extends V>>, ? super Map.Entry<K1,Map<K2,V>>> function);
     
-    public ExecutableMapOfMapEntrySelectedOperator<K1,K2,V> eval(final IEvaluator<? extends Map.Entry<? extends K1,? extends Map<? extends K2,? extends V>>,? super Map.Entry<K1,Map<K2,V>>> eval);
+    public ExecutableMapOfMapEntrySelectedOperator<K1,K2,V,I> eval(final IEvaluator<? extends Map.Entry<? extends K1,? extends Map<? extends K2,? extends V>>,? super Map.Entry<K1,Map<K2,V>>> eval);
     
-    public ExecutableMapOfMapEntrySelectedOperator<K1,K2,V> convert(final IConverter<? extends Map.Entry<? extends K1,? extends Map<? extends K2,? extends V>>,? super Map.Entry<K1,Map<K2,V>>> converter);
+    public ExecutableMapOfMapEntrySelectedOperator<K1,K2,V,I> convert(final IConverter<? extends Map.Entry<? extends K1,? extends Map<? extends K2,? extends V>>,? super Map.Entry<K1,Map<K2,V>>> converter);
     
 }

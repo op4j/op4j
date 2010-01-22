@@ -28,14 +28,27 @@ import java.util.Set;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.Op;
+import org.op4j.exceptions.NonEmptyTargetException;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.ListFuncs;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
+import org.op4j.operations.Operation;
 import org.op4j.operators.impl.AbstractOperatorImpl;
+import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperatorImpl;
+import org.op4j.operators.impl.arrayoflist.Level0ArrayOfListOperatorImpl;
+import org.op4j.operators.impl.arrayofmap.Level0ArrayOfMapOperatorImpl;
+import org.op4j.operators.impl.arrayofset.Level0ArrayOfSetOperatorImpl;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperatorImpl;
 import org.op4j.operators.impl.list.Level0ListOperatorImpl;
+import org.op4j.operators.impl.listofarray.Level0ListOfArrayOperatorImpl;
+import org.op4j.operators.impl.listoflist.Level0ListOfListOperatorImpl;
+import org.op4j.operators.impl.listofmap.Level0ListOfMapOperatorImpl;
+import org.op4j.operators.impl.setofarray.Level0SetOfArrayOperatorImpl;
+import org.op4j.operators.impl.setoflist.Level0SetOfListOperatorImpl;
+import org.op4j.operators.impl.setofmap.Level0SetOfMapOperatorImpl;
+import org.op4j.operators.impl.setofset.Level0SetOfSetOperatorImpl;
 import org.op4j.operators.intf.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.Level0ArrayOfListOperator;
 import org.op4j.operators.intf.arrayofmap.Level0ArrayOfMapOperator;
@@ -52,6 +65,7 @@ import org.op4j.operators.intf.setofarray.Level0SetOfArrayOperator;
 import org.op4j.operators.intf.setoflist.Level0SetOfListOperator;
 import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
+import org.op4j.target.OperationChainingTarget;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalization;
 import org.op4j.util.NormalizationUtils;
@@ -64,8 +78,8 @@ import org.op4j.util.NormalizationUtils;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level0ListOfSetOperatorImpl<T> extends AbstractOperatorImpl
-        implements Level0ListOfSetOperator<T>  {
+public class Level0ListOfSetOperatorImpl<T,I> extends AbstractOperatorImpl
+        implements Level0ListOfSetOperator<T,I>  {
 
     
     public Level0ListOfSetOperatorImpl(final Target target) {
@@ -74,192 +88,192 @@ public class Level0ListOfSetOperatorImpl<T> extends AbstractOperatorImpl
 
 
     @SuppressWarnings("unchecked")
-    public Level0ListOfSetOperator<T> add(final Set<T> newElement) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<Set<T>>(NormalizationUtils.normalizeSet(newElement))));
+    public Level0ListOfSetOperator<T,I> add(final Set<T> newElement) {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().execute(new ListFuncs.Add<Set<T>>(NormalizationUtils.normalizeSet(newElement))));
     }
 
-    public Level0ListOfSetOperator<T> addAll(final Set<T>... newElements) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<Set<T>>(NormalizationUtils.normalizeSets(newElements))));
+    public Level0ListOfSetOperator<T,I> addAll(final Set<T>... newElements) {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().execute(new ListFuncs.Add<Set<T>>(NormalizationUtils.normalizeSets(newElements))));
     }
 
 
     @SuppressWarnings("unchecked")
-    public Level0ListOfSetOperator<T> insert(final int position, final Set<T> newElement) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<Set<T>>(position, NormalizationUtils.normalizeSet(newElement))));
+    public Level0ListOfSetOperator<T,I> insert(final int position, final Set<T> newElement) {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().execute(new ListFuncs.Insert<Set<T>>(position, NormalizationUtils.normalizeSet(newElement))));
     }
 
-    public Level0ListOfSetOperator<T> insertAll(final int position, final Set<T>... newElements) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<Set<T>>(position, NormalizationUtils.normalizeSets(newElements))));
-    }
-
-
-    public Level0ListOfSetOperator<T> addAll(final Collection<Set<T>> collection) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.AddAll<Set<T>>(NormalizationUtils.normalizeSets(collection))));
+    public Level0ListOfSetOperator<T,I> insertAll(final int position, final Set<T>... newElements) {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().execute(new ListFuncs.Insert<Set<T>>(position, NormalizationUtils.normalizeSets(newElements))));
     }
 
 
-    public Level0ListOfSetOperator<T> distinct() {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.Distinct<Set<T>>()));
+    public Level0ListOfSetOperator<T,I> addAll(final Collection<Set<T>> collection) {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().execute(new ListFuncs.AddAll<Set<T>>(NormalizationUtils.normalizeSets(collection))));
     }
 
 
-    public Level0ListOperator<T> flatten() {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.FlattenListOfSets<T>()));
+    public Level0ListOfSetOperator<T,I> distinct() {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().execute(new ListFuncs.Distinct<Set<T>>()));
     }
 
 
-    public Level1ListOfSetElementsOperator<T> forEach() {
-        return new Level1ListOfSetElementsOperatorImpl<T>(getTarget().iterate());
+    public Level0ListOperator<T,I> flatten() {
+        return new Level0ListOperatorImpl<T,I>(getTarget().execute(new ListFuncs.FlattenListOfSets<T>()));
     }
 
 
-    public Level0ListOfSetOperator<T> removeAllIndexes(final int... indices) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllIndexes<Set<T>>(indices)));
+    public Level1ListOfSetElementsOperator<T,I> forEach() {
+        return new Level1ListOfSetElementsOperatorImpl<T,I>(getTarget().iterate());
     }
 
 
-    public Level0ListOfSetOperator<T> removeAllEqual(final Set<T>... values) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllEqual<Set<T>>(values)));
+    public Level0ListOfSetOperator<T,I> removeAllIndexes(final int... indices) {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().execute(new ListFuncs.RemoveAllIndexes<Set<T>>(indices)));
     }
 
 
-    public Level0ListOfSetOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super Set<T>> eval) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllTrue<Set<T>>(eval)));
-    }
-
-    public Level0ListOfSetOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super Set<T>> eval) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllFalse<Set<T>>(eval)));
-    }
-
-    public Level0ListOfSetOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super Set<T>> eval) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNullOrFalse<Set<T>>(eval)));
-    }
-
-    public Level0ListOfSetOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super Set<T>> eval) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNotNullAndFalse<Set<T>>(eval)));
+    public Level0ListOfSetOperator<T,I> removeAllEqual(final Set<T>... values) {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().execute(new ListFuncs.RemoveAllEqual<Set<T>>(values)));
     }
 
 
-    public Level0ListOfSetOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super Set<T>> eval) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNullOrTrue<Set<T>>(eval)));
+    public Level0ListOfSetOperator<T,I> removeAllTrue(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().execute(new ListFuncs.RemoveAllTrue<Set<T>>(eval)));
+    }
+
+    public Level0ListOfSetOperator<T,I> removeAllFalse(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().execute(new ListFuncs.RemoveAllFalse<Set<T>>(eval)));
+    }
+
+    public Level0ListOfSetOperator<T,I> removeAllNullOrFalse(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().execute(new ListFuncs.RemoveAllNullOrFalse<Set<T>>(eval)));
+    }
+
+    public Level0ListOfSetOperator<T,I> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().execute(new ListFuncs.RemoveAllNotNullAndFalse<Set<T>>(eval)));
     }
 
 
-    public Level0ListOfSetOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super Set<T>> eval) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNotNullAndTrue<Set<T>>(eval)));
+    public Level0ListOfSetOperator<T,I> removeAllNullOrTrue(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().execute(new ListFuncs.RemoveAllNullOrTrue<Set<T>>(eval)));
     }
 
 
-    public Level0ListOfSetOperator<T> removeAllIndexesNot(final int... indices) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllIndexesNot<Set<T>>(indices)));
+    public Level0ListOfSetOperator<T,I> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super Set<T>> eval) {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().execute(new ListFuncs.RemoveAllNotNullAndTrue<Set<T>>(eval)));
     }
 
 
-    public Level0ListOfSetOperator<T> removeAllNull() {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNull<Set<T>>()));
+    public Level0ListOfSetOperator<T,I> removeAllIndexesNot(final int... indices) {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().execute(new ListFuncs.RemoveAllIndexesNot<Set<T>>(indices)));
+    }
+
+
+    public Level0ListOfSetOperator<T,I> removeAllNull() {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().execute(new ListFuncs.RemoveAllNull<Set<T>>()));
     }
 
     
 
 
     @SuppressWarnings("unchecked")
-    public Level0ListOfSetOperator<T> sort() {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.Sort()));
+    public Level0ListOfSetOperator<T,I> sort() {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().execute(new ListFuncs.Sort()));
     }
 
 
-    public Level0ListOfSetOperator<T> sort(final Comparator<? super Set<T>> comparator) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.SortByComparator<Set<T>>(comparator)));
+    public Level0ListOfSetOperator<T,I> sort(final Comparator<? super Set<T>> comparator) {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().execute(new ListFuncs.SortByComparator<Set<T>>(comparator)));
     }
 
 
-    public Level0ArrayOfArrayOperator<T> toArrayOfArray(final Type<T> of) {
-        return Op.onArrayOfArray(Op.onList(forEach().toArray(of).get()).toArray(Types.arrayOf(of)).get());
-    }
-
-
-    @SuppressWarnings("unchecked")
-    public Level0ArrayOfListOperator<T> toArrayOfList() {
-        return Op.onArrayOfList(Op.onList(forEach().toList().get()).toArray((Type<List<T>>)((Type<?>)Types.LIST_OF_UNKNOWN)).get());
+    public Level0ArrayOfArrayOperator<T,I> toArrayOfArray(final Type<T> of) {
+        return new Level0ArrayOfArrayOperatorImpl<T,I>(getTarget().replaceWith(Op.onArrayOfArray(Op.onList(forEach().toArray(of).get()).toArray(Types.arrayOf(of)).get()).get()));
     }
 
 
     @SuppressWarnings("unchecked")
-    public <K> Level0ArrayOfMapOperator<K, T> toArrayOfMap(final IEvaluator<K, ? super T> keyEval) {
-        return Op.onArrayOfMap(Op.onList(forEach().toMap(keyEval).get()).toArray((Type<Map<K, T>>)((Type<?>)Types.MAP_OF_UNKNOWN_UNKNOWN)).get());
+    public Level0ArrayOfListOperator<T,I> toArrayOfList() {
+        return new Level0ArrayOfListOperatorImpl<T,I>(getTarget().replaceWith(Op.onArrayOfList(Op.onList(forEach().toList().get()).toArray((Type<List<T>>)((Type<?>)Types.LIST_OF_UNKNOWN)).get()).get()));
     }
 
 
     @SuppressWarnings("unchecked")
-    public <K, V> Level0ArrayOfMapOperator<K, V> toArrayOfMap(final IMapBuilder<K, V, ? super T> mapBuild) {
-        return Op.onArrayOfMap(Op.onList(forEach().toMap(mapBuild).get()).toArray((Type<Map<K, V>>)((Type<?>)Types.MAP_OF_UNKNOWN_UNKNOWN)).get());
+    public <K> Level0ArrayOfMapOperator<K, T,I> toArrayOfMap(final IEvaluator<K, ? super T> keyEval) {
+        return new Level0ArrayOfMapOperatorImpl<K, T,I>(getTarget().replaceWith(Op.onArrayOfMap(Op.onList(forEach().toMap(keyEval).get()).toArray((Type<Map<K, T>>)((Type<?>)Types.MAP_OF_UNKNOWN_UNKNOWN)).get()).get()));
     }
 
 
     @SuppressWarnings("unchecked")
-    public Level0ArrayOfSetOperator<T> toArrayOfSet() {
-        return Op.onArrayOfSet(Op.onList(get()).toArray((Type<Set<T>>)((Type<?>)Types.SET_OF_UNKNOWN)).get());
-    }
-
-
-    public Level0ListOfArrayOperator<T> toListOfArray(final Type<T> of) {
-        return forEach().toArray(of).endFor();
-    }
-
-
-    public Level0ListOfListOperator<T> toListOfList() {
-        return forEach().toList().endFor();
-    }
-
-
-    public <K> Level0ListOfMapOperator<K, T> toListOfMap(final IEvaluator<K, ? super T> keyEval) {
-        return forEach().toMap(keyEval).endFor();
-    }
-
-
-    public <K, V> Level0ListOfMapOperator<K, V> toListOfMap(final IMapBuilder<K, V, ? super T> mapBuild) {
-        return forEach().toMap(mapBuild).endFor();
-    }
-
-
-    public Level0SetOfArrayOperator<T> toSetOfArray(final Type<T> of) {
-        return Op.onSetOfArray(Op.onList(forEach().toArray(of).get()).toSet().get());
-    }
-
-
-    public Level0SetOfListOperator<T> toSetOfList() {
-        return Op.onSetOfList(Op.onList(forEach().toList().get()).toSet().get());
-    }
-
-
-    public <K> Level0SetOfMapOperator<K, T> toSetOfMap(final IEvaluator<K, ? super T> keyEval) {
-        return Op.onSetOfMap(Op.onList(forEach().toMap(keyEval).get()).toSet().get());
-    }
-
-
-    public <K, V> Level0SetOfMapOperator<K, V> toSetOfMap(final IMapBuilder<K, V, ? super T> mapBuild) {
-        return Op.onSetOfMap(Op.onList(forEach().toMap(mapBuild).get()).toSet().get());
-    }
-
-
-    public Level0SetOfSetOperator<T> toSetOfSet() {
-        return Op.onSetOfSet(Op.onList(get()).toSet().get());
+    public <K, V> Level0ArrayOfMapOperator<K, V,I> toArrayOfMap(final IMapBuilder<K, V, ? super T> mapBuild) {
+        return new Level0ArrayOfMapOperatorImpl<K, V,I>(getTarget().replaceWith(Op.onArrayOfMap(Op.onList(forEach().toMap(mapBuild).get()).toArray((Type<Map<K, V>>)((Type<?>)Types.MAP_OF_UNKNOWN_UNKNOWN)).get()).get()));
     }
 
 
     @SuppressWarnings("unchecked")
-    public Level0ArrayOfMapOperator<T, T> toArrayOfMap() {
-        return Op.onArrayOfMap(Op.onList(forEach().toMap().get()).toArray((Type<Map<T, T>>)((Type<?>)Types.MAP_OF_UNKNOWN_UNKNOWN)).get());
+    public Level0ArrayOfSetOperator<T,I> toArrayOfSet() {
+        return new Level0ArrayOfSetOperatorImpl<T,I>(getTarget().replaceWith(Op.onArrayOfSet(Op.onList(get()).toArray((Type<Set<T>>)((Type<?>)Types.SET_OF_UNKNOWN)).get()).get()));
     }
 
 
-    public Level0ListOfMapOperator<T, T> toListOfMap() {
-        return forEach().toMap().endFor();
+    public Level0ListOfArrayOperator<T,I> toListOfArray(final Type<T> of) {
+        return new Level0ListOfArrayOperatorImpl<T,I>(getTarget().replaceWith(forEach().toArray(of).endFor().get()));
     }
 
 
-    public Level0SetOfMapOperator<T, T> toSetOfMap() {
-        return Op.onSetOfMap(Op.onList(forEach().toMap().get()).toSet().get());
+    public Level0ListOfListOperator<T,I> toListOfList() {
+        return new Level0ListOfListOperatorImpl<T,I>(getTarget().replaceWith(forEach().toList().endFor().get()));
+    }
+
+
+    public <K> Level0ListOfMapOperator<K, T,I> toListOfMap(final IEvaluator<K, ? super T> keyEval) {
+        return new Level0ListOfMapOperatorImpl<K, T,I>(getTarget().replaceWith(forEach().toMap(keyEval).endFor().get()));
+    }
+
+
+    public <K, V> Level0ListOfMapOperator<K, V,I> toListOfMap(final IMapBuilder<K, V, ? super T> mapBuild) {
+        return new Level0ListOfMapOperatorImpl<K, V,I>(getTarget().replaceWith(forEach().toMap(mapBuild).endFor().get()));
+    }
+
+
+    public Level0SetOfArrayOperator<T,I> toSetOfArray(final Type<T> of) {
+        return new Level0SetOfArrayOperatorImpl<T,I>(getTarget().replaceWith(Op.onSetOfArray(Op.onList(forEach().toArray(of).get()).toSet().get()).get()));
+    }
+
+
+    public Level0SetOfListOperator<T,I> toSetOfList() {
+        return new Level0SetOfListOperatorImpl<T,I>(getTarget().replaceWith(Op.onSetOfList(Op.onList(forEach().toList().get()).toSet().get()).get()));
+    }
+
+
+    public <K> Level0SetOfMapOperator<K, T,I> toSetOfMap(final IEvaluator<K, ? super T> keyEval) {
+        return new Level0SetOfMapOperatorImpl<K, T,I>(getTarget().replaceWith(Op.onSetOfMap(Op.onList(forEach().toMap(keyEval).get()).toSet().get()).get()));
+    }
+
+
+    public <K, V> Level0SetOfMapOperator<K, V,I> toSetOfMap(final IMapBuilder<K, V, ? super T> mapBuild) {
+        return new Level0SetOfMapOperatorImpl<K, V,I>(getTarget().replaceWith(Op.onSetOfMap(Op.onList(forEach().toMap(mapBuild).get()).toSet().get()).get()));
+    }
+
+
+    public Level0SetOfSetOperator<T,I> toSetOfSet() {
+        return new Level0SetOfSetOperatorImpl<T,I>(getTarget().replaceWith(Op.onSetOfSet(Op.onList(get()).toSet().get()).get()));
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public Level0ArrayOfMapOperator<T, T,I> toArrayOfMap() {
+        return new Level0ArrayOfMapOperatorImpl<T, T,I>(getTarget().replaceWith(Op.onArrayOfMap(Op.onList(forEach().toMap().get()).toArray((Type<Map<T, T>>)((Type<?>)Types.MAP_OF_UNKNOWN_UNKNOWN)).get()).get()));
+    }
+
+
+    public Level0ListOfMapOperator<T, T,I> toListOfMap() {
+        return new Level0ListOfMapOperatorImpl<T, T,I>(getTarget().replaceWith(forEach().toMap().endFor().get()));
+    }
+
+
+    public Level0SetOfMapOperator<T, T,I> toSetOfMap() {
+        return new Level0SetOfMapOperatorImpl<T, T,I>(getTarget().replaceWith(Op.onSetOfMap(Op.onList(forEach().toMap().get()).toSet().get()).get()));
     }
 
 
@@ -269,8 +283,8 @@ public class Level0ListOfSetOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0GenericUniqOperator<List<Set<T>>> generic() {
-        return new Level0GenericUniqOperatorImpl<List<Set<T>>>(getTarget());
+    public Level0GenericUniqOperator<List<Set<T>>,I> generic() {
+        return new Level0GenericUniqOperatorImpl<List<Set<T>>,I>(getTarget());
     }
 
     
@@ -279,103 +293,112 @@ public class Level0ListOfSetOperatorImpl<T> extends AbstractOperatorImpl
     
     
     
-	public <X> Level0ListOfSetOperator<X> asListOfSetOf(final Type<X> type) {
+	public <X> Level0ListOfSetOperator<X,I> asListOfSetOf(final Type<X> type) {
         return generic().asListOfSetOf(type);
     }
 
 
-    public Level0ListOfSetOperator<?> asListOfSetOfUnknown() {
+    public Level0ListOfSetOperator<?,I> asListOfSetOfUnknown() {
         return asListOfSetOf(Types.OBJECT);
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> ifIndex(final int... indices) {
-        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().selectIndex(indices));
+    public Level0ListOfSetSelectedOperator<T,I> ifIndex(final int... indices) {
+        return new Level0ListOfSetSelectedOperatorImpl<T,I>(getTarget().selectIndex(indices));
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> ifIndexNot(final int... indices) {
-        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().selectIndexNot(indices));
+    public Level0ListOfSetSelectedOperator<T,I> ifIndexNot(final int... indices) {
+        return new Level0ListOfSetSelectedOperatorImpl<T,I>(getTarget().selectIndexNot(indices));
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super List<Set<T>>> eval) {
-        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().selectMatching(eval));
+    public Level0ListOfSetSelectedOperator<T,I> ifTrue(final IEvaluator<Boolean, ? super List<Set<T>>> eval) {
+        return new Level0ListOfSetSelectedOperatorImpl<T,I>(getTarget().selectMatching(eval));
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super List<Set<T>>> eval) {
-        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().selectNotMatching(eval));
+    public Level0ListOfSetSelectedOperator<T,I> ifFalse(final IEvaluator<Boolean, ? super List<Set<T>>> eval) {
+        return new Level0ListOfSetSelectedOperatorImpl<T,I>(getTarget().selectNotMatching(eval));
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> ifNotNull() {
-        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().selectNotNull());
+    public Level0ListOfSetSelectedOperator<T,I> ifNotNull() {
+        return new Level0ListOfSetSelectedOperatorImpl<T,I>(getTarget().selectNotNull());
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super List<Set<T>>> eval) {
-        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().selectNotNullAndMatching(eval));
+    public Level0ListOfSetSelectedOperator<T,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super List<Set<T>>> eval) {
+        return new Level0ListOfSetSelectedOperatorImpl<T,I>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super List<Set<T>>> eval) {
-        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().selectNotNullAndNotMatching(eval));
+    public Level0ListOfSetSelectedOperator<T,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super List<Set<T>>> eval) {
+        return new Level0ListOfSetSelectedOperatorImpl<T,I>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> ifNull() {
-        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().selectNull());
+    public Level0ListOfSetSelectedOperator<T,I> ifNull() {
+        return new Level0ListOfSetSelectedOperatorImpl<T,I>(getTarget().selectNull());
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super List<Set<T>>> eval) {
-        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().selectNullOrMatching(eval));
+    public Level0ListOfSetSelectedOperator<T,I> ifNullOrTrue(final IEvaluator<Boolean, ? super List<Set<T>>> eval) {
+        return new Level0ListOfSetSelectedOperatorImpl<T,I>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super List<Set<T>>> eval) {
-        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
+    public Level0ListOfSetSelectedOperator<T,I> ifNullOrFalse(final IEvaluator<Boolean, ? super List<Set<T>>> eval) {
+        return new Level0ListOfSetSelectedOperatorImpl<T,I>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public <X> Level0ListOfSetOperator<X> convert(final IConverter<? extends List<? extends Set<X>>, ? super List<Set<T>>> converter) {
-        return new Level0ListOfSetOperatorImpl<X>(getTarget().execute(converter, Normalization.LIST_OF_SET));
+    public <X> Level0ListOfSetOperator<X,I> convert(final IConverter<? extends List<? extends Set<X>>, ? super List<Set<T>>> converter) {
+        return new Level0ListOfSetOperatorImpl<X,I>(getTarget().execute(converter, Normalization.LIST_OF_SET));
     }
 
 
-    public <X> Level0ListOfSetOperator<X> eval(final IEvaluator<? extends List<? extends Set<X>>, ? super List<Set<T>>> eval) {
-        return new Level0ListOfSetOperatorImpl<X>(getTarget().execute(eval, Normalization.LIST_OF_SET));
+    public <X> Level0ListOfSetOperator<X,I> eval(final IEvaluator<? extends List<? extends Set<X>>, ? super List<Set<T>>> eval) {
+        return new Level0ListOfSetOperatorImpl<X,I>(getTarget().execute(eval, Normalization.LIST_OF_SET));
     }
 
 
-    public <X> Level0ListOfSetOperator<X> exec(final IFunction<? extends List<? extends Set<X>>, ? super List<Set<T>>> function) {
-        return new Level0ListOfSetOperatorImpl<X>(getTarget().execute(function, Normalization.LIST_OF_SET));
+    public <X> Level0ListOfSetOperator<X,I> exec(final IFunction<? extends List<? extends Set<X>>, ? super List<Set<T>>> function) {
+        return new Level0ListOfSetOperatorImpl<X,I>(getTarget().execute(function, Normalization.LIST_OF_SET));
     }
 
 
-    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super List<Set<T>>> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalization.NONE));
+    public <X> Level0GenericUniqOperator<X,I> convert(final Type<X> resultType, final IConverter<? extends X, ? super List<Set<T>>> converter) {
+        return new Level0GenericUniqOperatorImpl<X,I>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
-    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super List<Set<T>>> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalization.NONE));
+    public <X> Level0GenericUniqOperator<X,I> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super List<Set<T>>> eval) {
+        return new Level0GenericUniqOperatorImpl<X,I>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
-    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<Set<T>>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
+    public <X> Level0GenericUniqOperator<X,I> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<Set<T>>> function) {
+        return new Level0GenericUniqOperatorImpl<X,I>(getTarget().execute(function, Normalization.NONE));
     }
 
 
-    public Level0ListOfSetOperator<T> replaceWith(final List<Set<T>> replacement) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().replaceWith(replacement));
+    public Level0ListOfSetOperator<T,I> replaceWith(final List<Set<T>> replacement) {
+        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level0ListOfSetOperator<T> replaceIfNullWith(final List<Set<T>> replacement) {
+    public Level0ListOfSetOperator<T,I> replaceIfNullWith(final List<Set<T>> replacement) {
         return ifNull().replaceWith(replacement).endIf();
+    }
+
+
+    public Operation<List<Set<T>>, I> createOperation() {
+        final Target target = getTarget();
+        if (!(target instanceof OperationChainingTarget)) {
+            throw new NonEmptyTargetException();
+        }
+        return new Operation<List<Set<T>>, I>((OperationChainingTarget) target);
     }
     
     

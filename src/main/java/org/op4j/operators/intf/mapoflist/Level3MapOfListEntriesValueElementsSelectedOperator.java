@@ -19,16 +19,16 @@
  */
 package org.op4j.operators.intf.mapoflist;
 
-import java.util.List;
 import java.util.Map;
+import java.util.List;
 
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.UniqOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 
 
 /**
@@ -38,24 +38,24 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level3MapOfListEntriesValueElementsSelectedOperator<K,V>
-        extends UniqOperator<Map<K,List<V>>>,
-        		ExecutableSelectedOperator<V>,
-                ReplaceableOperator<V>,
-                SelectedOperator<V> {
+public interface Level3MapOfListEntriesValueElementsSelectedOperator<K,V,I>
+        extends UniqOperator<Map<K,List<V>>,I>,
+        		ExecutableSelectedOperator<V,I>,
+                ReplaceableOperator<V,I>,
+                SelectedOperator<V,I> {
 
 
 
-    public Level3MapOfListEntriesValueElementsOperator<K,V> endIf();
+    public Level3MapOfListEntriesValueElementsOperator<K,V,I> endIf();
 
     
-    public Level3MapOfListEntriesValueElementsSelectedOperator<K,V> convert(final IConverter<? extends V, ? super V> converter);
+    public Level3MapOfListEntriesValueElementsSelectedOperator<K,V,I> convert(final IConverter<? extends V, ? super V> converter);
     
-    public Level3MapOfListEntriesValueElementsSelectedOperator<K,V> eval(final IEvaluator<? extends V, ? super V> eval);
+    public Level3MapOfListEntriesValueElementsSelectedOperator<K,V,I> eval(final IEvaluator<? extends V, ? super V> eval);
 
-    public Level3MapOfListEntriesValueElementsSelectedOperator<K,V> replaceWith(final V replacement);
+    public Level3MapOfListEntriesValueElementsSelectedOperator<K,V,I> replaceWith(final V replacement);
 
-    public Level3MapOfListEntriesValueElementsSelectedOperator<K,V> exec(final IFunction<? extends V, ? super V> function);
+    public Level3MapOfListEntriesValueElementsSelectedOperator<K,V,I> exec(final IFunction<? extends V, ? super V> function);
     
         
 }

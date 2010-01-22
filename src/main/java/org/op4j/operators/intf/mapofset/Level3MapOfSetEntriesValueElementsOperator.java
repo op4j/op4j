@@ -42,43 +42,43 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level3MapOfSetEntriesValueElementsOperator<K,V>
-        extends UniqOperator<Map<K,Set<V>>>,
-                NavigatingCollectionOperator<V>,
-        		ExecutableOperator<V>,
-                SelectableOperator<V>,
-                ReplaceableOperator<V>,
-                ReplaceableIfNullOperator<V>,
-                CastableToTypeOperator<V> {
+public interface Level3MapOfSetEntriesValueElementsOperator<K,V,I>
+        extends UniqOperator<Map<K,Set<V>>,I>,
+                NavigatingCollectionOperator<V,I>,
+        		ExecutableOperator<V,I>,
+                SelectableOperator<V,I>,
+                ReplaceableOperator<V,I>,
+                ReplaceableIfNullOperator<V,I>,
+                CastableToTypeOperator<V,I> {
 
 
 
-    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V> ifIndex(final int... indices);
-    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V> ifNull();
-    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V> ifIndexNot(final int... indices);
-    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V> ifNotNull();
-    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V,I> ifIndex(final int... indices);
+    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V,I> ifTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V,I> ifFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V,I> ifNullOrFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V,I> ifNull();
+    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V,I> ifNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V,I> ifIndexNot(final int... indices);
+    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V,I> ifNotNull();
+    public Level3MapOfSetEntriesValueElementsSelectedOperator<K,V,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval);
 
     
-    public Level2MapOfSetEntriesValueOperator<K,V> endFor();
+    public Level2MapOfSetEntriesValueOperator<K,V,I> endFor();
     
-    public Level3MapOfSetEntriesValueElementsOperator<K,V> replaceWith(final V replacement);
-    public Level3MapOfSetEntriesValueElementsOperator<K,V> replaceIfNullWith(final V replacement);
+    public Level3MapOfSetEntriesValueElementsOperator<K,V,I> replaceWith(final V replacement);
+    public Level3MapOfSetEntriesValueElementsOperator<K,V,I> replaceIfNullWith(final V replacement);
 
 
-    public <X> Level3MapOfSetEntriesValueElementsOperator<K,X> convert(final IConverter<X,? super V> converter);
+    public <X> Level3MapOfSetEntriesValueElementsOperator<K,X,I> convert(final IConverter<X,? super V> converter);
     
-    public <X> Level3MapOfSetEntriesValueElementsOperator<K,X> eval(final IEvaluator<X,? super V> eval);
+    public <X> Level3MapOfSetEntriesValueElementsOperator<K,X,I> eval(final IEvaluator<X,? super V> eval);
 
-    public <X> Level3MapOfSetEntriesValueElementsOperator<K,X> exec(final IFunction<X, ? super V> function);
+    public <X> Level3MapOfSetEntriesValueElementsOperator<K,X,I> exec(final IFunction<X, ? super V> function);
     
-    public <X> Level3MapOfSetEntriesValueElementsOperator<K,X> asType(final Type<X> type);
-    public Level3MapOfSetEntriesValueElementsOperator<K,?> asUnknown();
+    public <X> Level3MapOfSetEntriesValueElementsOperator<K,X,I> asType(final Type<X> type);
+    public Level3MapOfSetEntriesValueElementsOperator<K,?,I> asUnknown();
     
         
     }

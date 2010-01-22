@@ -41,44 +41,44 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level2MapOfMapEntriesKeyOperator<K1,K2,V>
-        extends UniqOperator<Map<K1,Map<K2,V>>>,
-                NavigatingMapEntryOperator,
-                CastableToTypeOperator<K1>,
-                ExecutableOperator<K1>, 
-                ReplaceableOperator<K1>,
-                ReplaceableIfNullOperator<K1>,
-                SelectableOperator<K1> {
+public interface Level2MapOfMapEntriesKeyOperator<K1,K2,V,I>
+        extends UniqOperator<Map<K1,Map<K2,V>>,I>,
+                NavigatingMapEntryOperator<I>,
+                CastableToTypeOperator<K1,I>,
+                ExecutableOperator<K1,I>, 
+                ReplaceableOperator<K1,I>,
+                ReplaceableIfNullOperator<K1,I>,
+                SelectableOperator<K1,I> {
 
 
 
-    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V> ifIndex(final int... indices);
-    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V> ifTrue(final IEvaluator<Boolean, ? super K1> eval);
-    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V> ifFalse(final IEvaluator<Boolean, ? super K1> eval);
-    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V> ifNullOrFalse(final IEvaluator<Boolean, ? super K1> eval);
-    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K1> eval);
-    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V> ifNull();
-    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V> ifNullOrTrue(final IEvaluator<Boolean, ? super K1> eval);
-    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V> ifIndexNot(final int... indices);
-    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V> ifNotNull();
-    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K1> eval);
+    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V,I> ifIndex(final int... indices);
+    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V,I> ifTrue(final IEvaluator<Boolean, ? super K1> eval);
+    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V,I> ifFalse(final IEvaluator<Boolean, ? super K1> eval);
+    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V,I> ifNullOrFalse(final IEvaluator<Boolean, ? super K1> eval);
+    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K1> eval);
+    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V,I> ifNull();
+    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V,I> ifNullOrTrue(final IEvaluator<Boolean, ? super K1> eval);
+    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V,I> ifIndexNot(final int... indices);
+    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V,I> ifNotNull();
+    public Level2MapOfMapEntriesKeySelectedOperator<K1,K2,V,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K1> eval);
 
     
-    public Level1MapOfMapEntriesOperator<K1,K2,V> endOn();
+    public Level1MapOfMapEntriesOperator<K1,K2,V,I> endOn();
     
-    public <X> Level2MapOfMapEntriesKeyOperator<X,K2,V> asType(final Type<X> type);
-    public Level2MapOfMapEntriesKeyOperator<?,K2,V> asUnknown();
+    public <X> Level2MapOfMapEntriesKeyOperator<X,K2,V,I> asType(final Type<X> type);
+    public Level2MapOfMapEntriesKeyOperator<?,K2,V,I> asUnknown();
 
 
-    public <X> Level2MapOfMapEntriesKeyOperator<X,K2,V> exec(final IFunction<X, ? super K1> function);
+    public <X> Level2MapOfMapEntriesKeyOperator<X,K2,V,I> exec(final IFunction<X, ? super K1> function);
     
-    public <X> Level2MapOfMapEntriesKeyOperator<X,K2,V> eval(final IEvaluator<X,? super K1> eval);
+    public <X> Level2MapOfMapEntriesKeyOperator<X,K2,V,I> eval(final IEvaluator<X,? super K1> eval);
     
-    public Level2MapOfMapEntriesKeyOperator<K1,K2,V> replaceWith(final K1 replacement);
-    public Level2MapOfMapEntriesKeyOperator<K1,K2,V> replaceIfNullWith(final K1 replacement);
+    public Level2MapOfMapEntriesKeyOperator<K1,K2,V,I> replaceWith(final K1 replacement);
+    public Level2MapOfMapEntriesKeyOperator<K1,K2,V,I> replaceIfNullWith(final K1 replacement);
 
 
-    public <X> Level2MapOfMapEntriesKeyOperator<X,K2,V> convert(final IConverter<X,? super K1> converter);
+    public <X> Level2MapOfMapEntriesKeyOperator<X,K2,V,I> convert(final IConverter<X,? super K1> converter);
     
         
 }

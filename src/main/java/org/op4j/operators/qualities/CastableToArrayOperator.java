@@ -29,7 +29,7 @@ import org.javaruntype.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface CastableToArrayOperator {
+public interface CastableToArrayOperator<I> {
     
     public <X> Operator asArrayOf(final Type<X> type);
     public Operator asArrayOfUnknown();

@@ -41,42 +41,42 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level1MapEntriesOperator<K,V>
-		extends UniqOperator<Map<K,V>>,
-		        NavigableMapEntryOperator,
-                NavigatingMapOperator<K,V>,
-                ExecutableMapEntryOperator<K,V>,
-                ReplaceableOperator<Map.Entry<K,V>>,
-                SelectableMapEntryOperator<K, V> {
+public interface Level1MapEntriesOperator<K,V,I>
+		extends UniqOperator<Map<K,V>,I>,
+		        NavigableMapEntryOperator<I>,
+                NavigatingMapOperator<K,V,I>,
+                ExecutableMapEntryOperator<K,V,I>,
+                ReplaceableOperator<Map.Entry<K,V>,I>,
+                SelectableMapEntryOperator<K, V,I> {
 
 
-    public Level1MapEntriesSelectedOperator<K,V> ifIndex(final int... indices);
-    public Level1MapEntriesSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K, V>> eval);
-    public Level1MapEntriesSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K, V>> eval);
-    public Level1MapEntriesSelectedOperator<K,V> ifIndexNot(final int... indices);
-    public Level1MapEntriesSelectedOperator<K,V> ifKeyEquals(final K... keys);
-    public Level1MapEntriesSelectedOperator<K,V> ifKeyNotEquals(final K... keys);
+    public Level1MapEntriesSelectedOperator<K,V,I> ifIndex(final int... indices);
+    public Level1MapEntriesSelectedOperator<K,V,I> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K, V>> eval);
+    public Level1MapEntriesSelectedOperator<K,V,I> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K, V>> eval);
+    public Level1MapEntriesSelectedOperator<K,V,I> ifIndexNot(final int... indices);
+    public Level1MapEntriesSelectedOperator<K,V,I> ifKeyEquals(final K... keys);
+    public Level1MapEntriesSelectedOperator<K,V,I> ifKeyNotEquals(final K... keys);
     
 
-    public Level2MapEntriesKeyOperator<K,V> onKey();
-    public Level2MapEntriesValueOperator<K,V> onValue();
+    public Level2MapEntriesKeyOperator<K,V,I> onKey();
+    public Level2MapEntriesValueOperator<K,V,I> onValue();
     
-    public Level0MapOperator<K,V> endFor();
+    public Level0MapOperator<K,V,I> endFor();
     
-    public <X,Y> Level1MapEntriesOperator<X,Y> exec(final IFunction<? extends Map.Entry<X,Y>, ? super Map.Entry<K,V>> function);
+    public <X,Y> Level1MapEntriesOperator<X,Y,I> exec(final IFunction<? extends Map.Entry<X,Y>, ? super Map.Entry<K,V>> function);
     
-    public <X,Y> Level1MapEntriesOperator<X,Y> eval(final IEvaluator<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> eval);
+    public <X,Y> Level1MapEntriesOperator<X,Y,I> eval(final IEvaluator<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> eval);
     
-    public Level1MapEntriesOperator<K,V> replaceWith(final Map.Entry<K,V> replacement);
+    public Level1MapEntriesOperator<K,V,I> replaceWith(final Map.Entry<K,V> replacement);
 
 
-    public <X,Y> Level1MapEntriesOperator<X,Y> convert(final IConverter<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> converter);
+    public <X,Y> Level1MapEntriesOperator<X,Y,I> convert(final IConverter<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> converter);
 
-    public <X> Level1ListElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K,V>> function);
+    public <X> Level1ListElementsOperator<X,I> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K,V>> function);
     
-    public <X> Level1ListElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map.Entry<K,V>> eval);
+    public <X> Level1ListElementsOperator<X,I> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map.Entry<K,V>> eval);
     
-    public <X> Level1ListElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Map.Entry<K,V>> converter);    
+    public <X> Level1ListElementsOperator<X,I> convert(final Type<X> resultType, final IConverter<? extends X,? super Map.Entry<K,V>> converter);    
 
     
 }

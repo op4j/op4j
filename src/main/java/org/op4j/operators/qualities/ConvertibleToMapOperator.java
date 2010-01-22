@@ -30,7 +30,7 @@ import org.op4j.mapbuild.IMapBuilder;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ConvertibleToMapOperator<T> {
+public interface ConvertibleToMapOperator<T,I> {
     
     public Operator toMap();
     public <K> Operator toMap(final IEvaluator<K,? super T> keyEval);

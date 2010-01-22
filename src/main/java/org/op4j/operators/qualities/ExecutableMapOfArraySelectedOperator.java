@@ -35,12 +35,12 @@ import org.op4j.functions.evaluators.IEvaluator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ExecutableMapOfArraySelectedOperator<K,V> {
+public interface ExecutableMapOfArraySelectedOperator<K,V,I> {
 
-    public ExecutableMapOfArraySelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V[]>, ? super Map<K,V[]>> function);
+    public ExecutableMapOfArraySelectedOperator<K,V,I> exec(final IFunction<? extends Map<? extends K,? extends V[]>, ? super Map<K,V[]>> function);
     
-    public ExecutableMapOfArraySelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> eval);
+    public ExecutableMapOfArraySelectedOperator<K,V,I> eval(final IEvaluator<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> eval);
     
-    public ExecutableMapOfArraySelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> converter);
+    public ExecutableMapOfArraySelectedOperator<K,V,I> convert(final IConverter<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> converter);
     
 }

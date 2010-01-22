@@ -30,10 +30,10 @@ import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface CastableToSetOfSetOperator {
+public interface CastableToSetOfSetOperator<I> {
     
-    public <X> Level0SetOfSetOperator<X> asSetOfSetOf(final Type<X> type);
-    public Level0SetOfSetOperator<?> asSetOfSetOfUnknown();
+    public <X> Level0SetOfSetOperator<X,I> asSetOfSetOf(final Type<X> type);
+    public Level0SetOfSetOperator<?,I> asSetOfSetOfUnknown();
 
     
 }

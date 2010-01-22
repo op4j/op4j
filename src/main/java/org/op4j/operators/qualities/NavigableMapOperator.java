@@ -26,8 +26,8 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface NavigableMapOperator<K,V>  {
+public interface NavigableMapOperator<K,V,I>  {
 
-    public NavigatingMapOperator<K,V> forEachEntry();
+    public NavigatingMapOperator<K,V,I> forEachEntry();
    
 }

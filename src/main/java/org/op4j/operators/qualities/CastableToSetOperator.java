@@ -29,7 +29,7 @@ import org.javaruntype.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface CastableToSetOperator {
+public interface CastableToSetOperator<I> {
     
     public <X> Operator asSetOf(final Type<X> type);
     public Operator asSetOfUnknown();

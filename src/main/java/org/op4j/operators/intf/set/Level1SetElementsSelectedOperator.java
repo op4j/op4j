@@ -25,9 +25,9 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.UniqOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 
 
 /**
@@ -37,24 +37,24 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level1SetElementsSelectedOperator<T>
-        extends UniqOperator<Set<T>>,
-                SelectedOperator<T>,
-                ExecutableSelectedOperator<T>,
-                ReplaceableOperator<T> {
+public interface Level1SetElementsSelectedOperator<T,I>
+        extends UniqOperator<Set<T>,I>,
+                SelectedOperator<T,I>,
+                ExecutableSelectedOperator<T,I>,
+                ReplaceableOperator<T,I> {
 
 
 
-    public Level1SetElementsOperator<T> endIf();
+    public Level1SetElementsOperator<T,I> endIf();
 
     
-    public Level1SetElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter);
+    public Level1SetElementsSelectedOperator<T,I> convert(final IConverter<? extends T,? super T> converter);
     
-    public Level1SetElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
+    public Level1SetElementsSelectedOperator<T,I> eval(final IEvaluator<? extends T,? super T> eval);
 
-    public Level1SetElementsSelectedOperator<T> replaceWith(final T replacement);
+    public Level1SetElementsSelectedOperator<T,I> replaceWith(final T replacement);
 
-    public Level1SetElementsSelectedOperator<T> exec(final IFunction<? extends T, ? super T> function);
+    public Level1SetElementsSelectedOperator<T,I> exec(final IFunction<? extends T, ? super T> function);
 	
     
 }

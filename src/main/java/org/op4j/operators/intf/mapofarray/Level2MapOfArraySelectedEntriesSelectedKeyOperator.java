@@ -38,37 +38,37 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level2MapOfArraySelectedEntriesSelectedKeyOperator<K,V>
-        extends UniqOperator<Map<K,V[]>>,
-                NavigatingMapEntryOperator,
-                ExecutableSelectedOperator<K>,
-                ReplaceableOperator<K>,
-                SelectableOperator<K> {
+public interface Level2MapOfArraySelectedEntriesSelectedKeyOperator<K,V,I>
+        extends UniqOperator<Map<K,V[]>,I>,
+                NavigatingMapEntryOperator<I>,
+                ExecutableSelectedOperator<K,I>,
+                ReplaceableOperator<K,I>,
+                SelectableOperator<K,I> {
 
 
 
-    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V> ifIndex(final int... indices);
-    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V> ifNull();
-    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V> ifIndexNot(final int... indices);
-    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V> ifNotNull();
-    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V,I> ifIndex(final int... indices);
+    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V,I> ifTrue(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V,I> ifFalse(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V,I> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V,I> ifNull();
+    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V,I> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V,I> ifIndexNot(final int... indices);
+    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V,I> ifNotNull();
+    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval);
 
     
-    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> endOn();
+    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V,I> endOn();
     
     
-    public Level2MapOfArraySelectedEntriesSelectedKeyOperator<K,V> replaceWith(final K replacement);
+    public Level2MapOfArraySelectedEntriesSelectedKeyOperator<K,V,I> replaceWith(final K replacement);
 
-    public Level2MapOfArraySelectedEntriesSelectedKeyOperator<K,V> exec(final IFunction<? extends K, ? super K> function);
+    public Level2MapOfArraySelectedEntriesSelectedKeyOperator<K,V,I> exec(final IFunction<? extends K, ? super K> function);
     
-    public Level2MapOfArraySelectedEntriesSelectedKeyOperator<K,V> eval(final IEvaluator<? extends K, ? super K> eval);
+    public Level2MapOfArraySelectedEntriesSelectedKeyOperator<K,V,I> eval(final IEvaluator<? extends K, ? super K> eval);
     
-    public Level2MapOfArraySelectedEntriesSelectedKeyOperator<K,V> convert(final IConverter<? extends K, ? super K> converter);
+    public Level2MapOfArraySelectedEntriesSelectedKeyOperator<K,V,I> convert(final IConverter<? extends K, ? super K> converter);
     
         
 }
