@@ -35,12 +35,12 @@ public class Level1MapOfSetEntriesSelectedOperatorImpl<K,V> extends AbstractOper
 
 
     public Level2MapOfSetEntriesSelectedKeyOperator<K,V> onKey() {
-        return new Level2MapOfSetEntriesSelectedKeyOperatorImpl<K,V>(getTarget().iterateIndex(0));
+        return new Level2MapOfSetEntriesSelectedKeyOperatorImpl<K,V>(getTarget().iterate().selectIndex(0));
     }
 
 
     public Level2MapOfSetEntriesSelectedValueOperator<K,V> onValue() {
-        return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().iterateIndex(1));
+        return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().iterate().selectIndex(1));
     }
 
 

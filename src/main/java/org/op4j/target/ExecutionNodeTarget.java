@@ -41,46 +41,46 @@ import org.op4j.util.NormalizationUtils;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public abstract class NodeTarget extends Target{
+abstract class ExecutionNodeTarget extends ExecutionTarget{
     
 
     
-    public static NodeTarget forObject(final TargetId id, final Object object) {
+    static ExecutionNodeTarget forObject(final ExecutionTargetId id, final Object object) {
 
         if (object == null) {
-            return new NullNodeTarget(id);
+            return new ExecutionNullNodeTarget(id);
         } else if (object instanceof Object[]) {
-            return new ArrayNodeTarget(id, (Object[]) object);
+            return new ExecutionArrayNodeTarget(id, (Object[]) object);
         } else if (object instanceof List<?>) {
-            return new ListNodeTarget(id, (List<?>) object);
+            return new ExecutionListNodeTarget(id, (List<?>) object);
         } else if (object instanceof Set<?>) {
-            return new SetNodeTarget(id, (Set<?>) object);
+            return new ExecutionSetNodeTarget(id, (Set<?>) object);
         } else if (object instanceof Map<?,?>) {
-            return new MapNodeTarget(id, (Map<?,?>) object);
+            return new ExecutionMapNodeTarget(id, (Map<?,?>) object);
         } else if (object instanceof Map.Entry<?,?>) {
-            return new MapEntryNodeTarget(id, (Map.Entry<?,?>) object);
+            return new ExecutionMapEntryNodeTarget(id, (Map.Entry<?,?>) object);
         } else {
-            return new ObjectNodeTarget(id, object);
+            return new ExecutionObjectNodeTarget(id, object);
         }
         
     }
 
 	
-	protected NodeTarget(final TargetId id) {
+	protected ExecutionNodeTarget(final ExecutionTargetId id) {
 		super(id);
 	}
 
 
 
     @Override
-    public int getExecutionLevel() {
+    int getExecutionLevel() {
         throw new IllegalStateException("Cannot retrieve execution level on a node");
     }
 
     
     @Override
-    public List<NodeTarget> getExecutionNodes() {
-        return Arrays.asList(new NodeTarget[] { this });
+    List<ExecutionNodeTarget> getExecutionNodes() {
+        return Arrays.asList(new ExecutionNodeTarget[] { this });
     }
     
 
@@ -89,172 +89,28 @@ public abstract class NodeTarget extends Target{
 
     
     @Override
-    Target doIterate() {
+    ExecutionTarget doIterate() {
         
         final Collection<?> elements = getIterationElements();
-        final List<Target> newElements = new ArrayList<Target>();
-        final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
+        final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
+        final List<ExecutionTargetId> newSelectedElementIds = new ArrayList<ExecutionTargetId>();
         
         int i = 0;
         for (final Object element : elements) {
-            final TargetId elementId = new TargetId(getId(), i);
+            final ExecutionTargetId elementId = new ExecutionTargetId(getId(), i);
             newSelectedElementIds.add(elementId);
-            newElements.add(NodeTarget.forObject(elementId, element));
+            newElements.add(ExecutionNodeTarget.forObject(elementId, element));
             i++;
         }
 
-        return new StructureTarget(getId(),newSelectedElementIds,newElements, getId().getLevel());
-        
-    }
-
-    
-    @Override
-    Target doIterateIndex(final boolean desiredResult, final List<Integer> positions) {
-        
-        final Collection<?> elements = getIterationElements();
-        final List<Target> newElements = new ArrayList<Target>();
-        final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
-        
-        int i = 0;
-        for (final Object element : elements) {
-            final TargetId elementId = new TargetId(getId(), i);
-            newElements.add(NodeTarget.forObject(elementId, element));
-            if (positions.contains(Integer.valueOf(i)) == desiredResult) {
-                newSelectedElementIds.add(elementId);
-            }
-            i++;
-        }
-
-        return new StructureTarget(getId(),newSelectedElementIds,newElements, getId().getLevel());
-        
-    }
-
-    
-    @Override
-    Target doIterateMapKeys(final boolean desiredResult, final List<Object> objects) {
-        throw new IllegalStateException("Iteration by selecting map keys can only be called on a Map");
-    }
-
-    
-    @Override
-    Target doIterateMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
-        
-        final Collection<?> elements = getIterationElements();
-        final List<Target> newElements = new ArrayList<Target>();
-        final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
-        
-        int i = 0;
-        for (final Object element : elements) {
-            
-            final TargetId elementId = new TargetId(getId(), i);
-            newElements.add(NodeTarget.forObject(elementId, element));
-            Boolean evalResult = null;
-            try {
-                evalResult = eval.execute(element, new ExecCtxImpl(elementId)); 
-            } catch (Exception e) {
-                throw new ExecutionException(e);
-            }
-            if ((evalResult != null && evalResult.booleanValue()) == desiredResult) {
-                newSelectedElementIds.add(elementId);
-            }
-            i++;
-            
-        }
-
-        return new StructureTarget(getId(),newSelectedElementIds,newElements, getId().getLevel());
-        
-    }
-
-    
-    @Override
-    Target doIterateNull(final boolean desiredResult) {
-        
-        final Collection<?> elements = getIterationElements();
-        final List<Target> newElements = new ArrayList<Target>();
-        final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
-        
-        int i = 0;
-        for (final Object element : elements) {
-            
-            final TargetId elementId = new TargetId(getId(), i);
-            newElements.add(NodeTarget.forObject(elementId, element));
-            if ((element == null) == desiredResult) {
-                newSelectedElementIds.add(elementId);
-            }
-            i++;
-            
-        }
-
-        return new StructureTarget(getId(),newSelectedElementIds,newElements, getId().getLevel());
-        
-    }
-
-    
-    @Override
-    Target doIterateNullOrMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
-        
-        final Collection<?> elements = getIterationElements();
-        final List<Target> newElements = new ArrayList<Target>();
-        final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
-        
-        int i = 0;
-        for (final Object element : elements) {
-            final TargetId elementId = new TargetId(getId(), i);
-            newElements.add(NodeTarget.forObject(elementId, element));
-            if (element == null) {
-                newSelectedElementIds.add(elementId);
-            } else {
-                Boolean evalResult = null;
-                try {
-                    evalResult = eval.execute(element, new ExecCtxImpl(elementId)); 
-                } catch (Exception e) {
-                    throw new ExecutionException(e);
-                }
-                if ((evalResult != null && evalResult.booleanValue()) == desiredResult) {
-                    newSelectedElementIds.add(elementId);
-                }
-            }
-            i++;
-        }
-
-        return new StructureTarget(getId(),newSelectedElementIds,newElements, getId().getLevel());
-        
-    }
-
-    
-    @Override
-    Target doIterateNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
-        
-        final Collection<?> elements = getIterationElements();
-        final List<Target> newElements = new ArrayList<Target>();
-        final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
-        
-        int i = 0;
-        for (final Object element : elements) {
-            final TargetId elementId = new TargetId(getId(), i);
-            newElements.add(NodeTarget.forObject(elementId, element));
-            if (element != null) {
-                Boolean evalResult = null;
-                try {
-                    evalResult = eval.execute(element, new ExecCtxImpl(elementId)); 
-                } catch (Exception e) {
-                    throw new ExecutionException(e);
-                }
-                if ((evalResult != null && evalResult.booleanValue()) == desiredResult) {
-                    newSelectedElementIds.add(elementId);
-                }
-            }
-            i++;
-        }
-
-        return new StructureTarget(getId(),newSelectedElementIds,newElements, getId().getLevel());
+        return new ExecutionStructureTarget(getId(),newSelectedElementIds,newElements, getId().getLevel());
         
     }
 
     
     
     @Override
-    public Target endIterate(final Structure structure, final Class<?> componentClass) {
+    ExecutionTarget doEndIterate(final Structure structure, final Class<?> componentClass) {
         throw new IllegalStateException("Cannot end iteration on a node");
     }
 
@@ -263,7 +119,7 @@ public abstract class NodeTarget extends Target{
     
 	@Override
     @SuppressWarnings("unchecked")
-    public Target execute(final IFunction<?,?> executable, final Normalization normalization) {
+    ExecutionTarget doExecute(final IFunction<?,?> executable, final Normalization normalization) {
     	Validate.notNull(executable, "An executable must be specified");
     	final IFunction<Object,Object> objectCommand = (IFunction<Object,Object>) executable;
     	try {
@@ -371,7 +227,7 @@ public abstract class NodeTarget extends Target{
                     break;
                 case NONE:
     	    }
-            return NodeTarget.forObject(getId(), result);
+            return ExecutionNodeTarget.forObject(getId(), result);
         } catch (ExecutionException e) {
             throw e;
     	} catch (Throwable t) {
@@ -383,43 +239,43 @@ public abstract class NodeTarget extends Target{
 
     
     @Override
-    public Target endSelect() {
+    ExecutionTarget doEndSelect() {
         throw new IllegalStateException("Cannot select on a node");
     }
 
 	
 	@Override
-	Target doSelectIndex(final boolean desiredResult, final List<Integer> positions) {
+	ExecutionTarget doSelectIndex(final boolean desiredResult, final List<Integer> positions) {
         throw new IllegalStateException("Cannot select on a node");
 	}
 
 
 	@Override
-	Target doSelectMapKeys(final boolean desiredResult, final List<Object> objects) {
+	ExecutionTarget doSelectMapKeys(final boolean desiredResult, final List<Object> objects) {
         throw new IllegalStateException("Cannot select on a node");
 	}
 
 	
     @Override
-    Target doSelectMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
+    ExecutionTarget doSelectMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
         throw new IllegalStateException("Cannot select on a node");
     }
 
 
 	@Override
-	Target doSelectNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
+	ExecutionTarget doSelectNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
         throw new IllegalStateException("Cannot select on a node");
 	}
 
 
 	@Override
-	Target doSelectNull(final boolean desiredResult) {
+	ExecutionTarget doSelectNull(final boolean desiredResult) {
         throw new IllegalStateException("Cannot select on a node");
 	}
 
 
 	@Override
-	Target doSelectNullOrMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
+	ExecutionTarget doSelectNullOrMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
         throw new IllegalStateException("Cannot select on a node");
 	}
 
@@ -428,8 +284,8 @@ public abstract class NodeTarget extends Target{
 
 
     @Override
-    public Target replaceWith(Object replacement) {
-        return NodeTarget.forObject(getId(), replacement);
+    ExecutionTarget doReplaceWith(Object replacement) {
+        return ExecutionNodeTarget.forObject(getId(), replacement);
     }
 
     

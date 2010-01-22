@@ -102,7 +102,7 @@ import org.op4j.operators.intf.setofarray.Level0SetOfArrayOperator;
 import org.op4j.operators.intf.setoflist.Level0SetOfListOperator;
 import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
-import org.op4j.target.Target;
+import org.op4j.target.LoggingTarget;
 import org.op4j.util.NormalizationUtils;
 import org.op4j.util.VarArgsUtil;
 
@@ -126,112 +126,112 @@ public final class Op {
 
     
     public static <T> Level0GenericUniqOperator<T> on(final T target) {
-        return new Level0GenericUniqOperatorImpl<T>(Target.forObject(target));
+        return new Level0GenericUniqOperatorImpl<T>(LoggingTarget.forObject(target));
     }
 
     
     public static <T> Level0GenericMultiOperator<T> onAll(final T... targets) {
-        return new Level0GenericMultiOperatorImpl<T>(Target.forObject(VarArgsUtil.asRequiredObjectList(targets)));
+        return new Level0GenericMultiOperatorImpl<T>(LoggingTarget.forObject(VarArgsUtil.asRequiredObjectList(targets)));
     }
 
     
     public static <T> Level0ArrayOperator<T> onArray(final T[] target) {
-        return new Level0ArrayOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeArray(target)));
+        return new Level0ArrayOperatorImpl<T>(LoggingTarget.forObject(NormalizationUtils.normalizeArray(target)));
     }
 
     
     public static <T> Level0ArrayOfArrayOperator<T> onArrayOfArray(final T[][] target) {
-        return new Level0ArrayOfArrayOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeArrayOfArray(target)));
+        return new Level0ArrayOfArrayOperatorImpl<T>(LoggingTarget.forObject(NormalizationUtils.normalizeArrayOfArray(target)));
     }
 
     
     public static <T> Level0ArrayOfListOperator<T> onArrayOfList(final List<T>[] target) {
-        return new Level0ArrayOfListOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeArrayOfList(target)));
+        return new Level0ArrayOfListOperatorImpl<T>(LoggingTarget.forObject(NormalizationUtils.normalizeArrayOfList(target)));
     }
 
     
     public static <K,V> Level0ArrayOfMapOperator<K,V> onArrayOfMap(final Map<K,V>[] target) {
-        return new Level0ArrayOfMapOperatorImpl<K,V>(Target.forObject(NormalizationUtils.normalizeArrayOfMap(target)));
+        return new Level0ArrayOfMapOperatorImpl<K,V>(LoggingTarget.forObject(NormalizationUtils.normalizeArrayOfMap(target)));
     }
 
     
     public static <T> Level0ArrayOfSetOperator<T> onArrayOfSet(final Set<T>[] target) {
-        return new Level0ArrayOfSetOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeArrayOfSet(target)));
+        return new Level0ArrayOfSetOperatorImpl<T>(LoggingTarget.forObject(NormalizationUtils.normalizeArrayOfSet(target)));
     }
 
     
     public static <T> Level0ListOperator<T> onList(final List<T> target) {
-        return new Level0ListOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeList(target)));
+        return new Level0ListOperatorImpl<T>(LoggingTarget.forObject(NormalizationUtils.normalizeList(target)));
     }
 
     
     public static <T> Level0ListOfArrayOperator<T> onListOfArray(final List<T[]> target) {
-        return new Level0ListOfArrayOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeListOfArray(target)));
+        return new Level0ListOfArrayOperatorImpl<T>(LoggingTarget.forObject(NormalizationUtils.normalizeListOfArray(target)));
     }
 
     
     public static <T> Level0ListOfListOperator<T> onListOfList(final List<? extends List<T>> target) {
-        return new Level0ListOfListOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeListOfList(target)));
+        return new Level0ListOfListOperatorImpl<T>(LoggingTarget.forObject(NormalizationUtils.normalizeListOfList(target)));
     }
 
     
     public static <K,V> Level0ListOfMapOperator<K,V> onListOfMap(final List<? extends Map<K,V>> target) {
-        return new Level0ListOfMapOperatorImpl<K,V>(Target.forObject(NormalizationUtils.normalizeListOfMap(target)));
+        return new Level0ListOfMapOperatorImpl<K,V>(LoggingTarget.forObject(NormalizationUtils.normalizeListOfMap(target)));
     }
 
     
     public static <T> Level0ListOfSetOperator<T> onListOfSet(final List<? extends Set<T>> target) {
-        return new Level0ListOfSetOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeListOfSet(target)));
+        return new Level0ListOfSetOperatorImpl<T>(LoggingTarget.forObject(NormalizationUtils.normalizeListOfSet(target)));
     }
 
     
     public static <K,V> Level0MapOperator<K,V> onMap(final Map<K,V> target) {
-        return new Level0MapOperatorImpl<K,V>(Target.forObject(NormalizationUtils.normalizeMap(target)));
+        return new Level0MapOperatorImpl<K,V>(LoggingTarget.forObject(NormalizationUtils.normalizeMap(target)));
     }
 
     
     public static <K,V> Level0MapOfArrayOperator<K,V> onMapOfArray(final Map<K,V[]> target) {
-        return new Level0MapOfArrayOperatorImpl<K,V>(Target.forObject(NormalizationUtils.normalizeMapOfArray(target)));
+        return new Level0MapOfArrayOperatorImpl<K,V>(LoggingTarget.forObject(NormalizationUtils.normalizeMapOfArray(target)));
     }
 
     
     public static <K,V> Level0MapOfListOperator<K,V> onMapOfList(final Map<K,? extends List<V>> target) {
-        return new Level0MapOfListOperatorImpl<K,V>(Target.forObject(NormalizationUtils.normalizeMapOfList(target)));
+        return new Level0MapOfListOperatorImpl<K,V>(LoggingTarget.forObject(NormalizationUtils.normalizeMapOfList(target)));
     }
 
     
     public static <K1,K2,V> Level0MapOfMapOperator<K1,K2,V> onMapOfMap(final Map<K1,? extends Map<K2,V>> target) {
-        return new Level0MapOfMapOperatorImpl<K1,K2,V>(Target.forObject(NormalizationUtils.normalizeMapOfMap(target)));
+        return new Level0MapOfMapOperatorImpl<K1,K2,V>(LoggingTarget.forObject(NormalizationUtils.normalizeMapOfMap(target)));
     }
 
     
     public static <K,V> Level0MapOfSetOperator<K,V> onMapOfSet(final Map<K,? extends Set<V>> target) {
-        return new Level0MapOfSetOperatorImpl<K,V>(Target.forObject(NormalizationUtils.normalizeMapOfSet(target)));
+        return new Level0MapOfSetOperatorImpl<K,V>(LoggingTarget.forObject(NormalizationUtils.normalizeMapOfSet(target)));
     }
 
     
     public static <T> Level0SetOperator<T> onSet(final Set<T> target) {
-        return new Level0SetOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeSet(target)));
+        return new Level0SetOperatorImpl<T>(LoggingTarget.forObject(NormalizationUtils.normalizeSet(target)));
     }
 
     
     public static <T> Level0SetOfArrayOperator<T> onSetOfArray(final Set<T[]> target) {
-        return new Level0SetOfArrayOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeSetOfArray(target)));
+        return new Level0SetOfArrayOperatorImpl<T>(LoggingTarget.forObject(NormalizationUtils.normalizeSetOfArray(target)));
     }
 
     
     public static <T> Level0SetOfListOperator<T> onSetOfList(final Set<? extends List<T>> target) {
-        return new Level0SetOfListOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeSetOfList(target)));
+        return new Level0SetOfListOperatorImpl<T>(LoggingTarget.forObject(NormalizationUtils.normalizeSetOfList(target)));
     }
 
     
     public static <K,V> Level0SetOfMapOperator<K,V> onSetOfMap(final Set<? extends Map<K,V>> target) {
-        return new Level0SetOfMapOperatorImpl<K,V>(Target.forObject(NormalizationUtils.normalizeSetOfMap(target)));
+        return new Level0SetOfMapOperatorImpl<K,V>(LoggingTarget.forObject(NormalizationUtils.normalizeSetOfMap(target)));
     }
 
     
     public static <T> Level0SetOfSetOperator<T> onSetOfSet(final Set<? extends Set<T>> target) {
-        return new Level0SetOfSetOperatorImpl<T>(Target.forObject(NormalizationUtils.normalizeSetOfSet(target)));
+        return new Level0SetOfSetOperatorImpl<T>(LoggingTarget.forObject(NormalizationUtils.normalizeSetOfSet(target)));
     }
     
     
@@ -386,11 +386,9 @@ public final class Op {
         
         System.out.println(Op.onArrayOfArray(stringsStrings1).forEach(Types.ARRAY_OF_STRING).forEach(Types.STRING).eval(Ognl.forInteger("length()")).get());
         
-        System.out.println(Arrays.asList(Op.onArrayOfList(stringsListStrings1).forEach().forEach().eval(Ognl.forString("toUpperCase()")).get()));
+        System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).forEach().forEach().eval(Ognl.forString("toUpperCase()")).get()));
 
-        System.out.println(Arrays.asList(Op.onArrayOfMap(maps1).forEach().ifTrue(Ognl.forBoolean("size() > 6")).forEachEntry().onValue().eval(Ognl.forString("toUpperCase()"))));
-        
-        System.out.println(Arrays.asList(Op.onArrayOfArray(stringsStrings1).forEach(Types.ARRAY_OF_STRING).forEach(Types.STRING).ifTrue(Ognl.forBoolean("length() > 6")).eval(Ognl.forString("toUpperCase()")).get()[0]));
+        System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().ifTrue(Ognl.forBoolean("size() > 6")).forEachEntry().onValue().eval(Ognl.forString("toUpperCase()")).get()));
         
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().get());
         
@@ -734,12 +732,15 @@ public final class Op {
         
         System.out.println(Op.buildListOfList(Types.STRING).add(stringsList1).add(stringsList1).get());
         System.out.println(Op.buildListOfList(Types.STRING).addAll(stringsList1, stringsList1).get());
-        
+
     }
     
     
     
     private static String printArray(Object[] array) {
+        if (array == null) {
+            return null;
+        }
     	final List<Object> components = new ArrayList<Object>();
     	for (final Object component : array) {
     		if (component instanceof Object[]) {

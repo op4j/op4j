@@ -41,16 +41,16 @@ import org.op4j.util.MapEntry;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class StructureTarget extends Target {
+final class ExecutionStructureTarget extends ExecutionTarget {
 
-	private final List<Target> elements;
-    private final List<TargetId> selectedElementIds;
+	private final List<ExecutionTarget> elements;
+    private final List<ExecutionTargetId> selectedElementIds;
 	private final int actionLevel;
 	private final boolean isCurrentActionLevel;
 	
 
 	
-    public StructureTarget(final TargetId id, final List<TargetId> selectedElementIds, final List<Target> elements, 
+    protected ExecutionStructureTarget(final ExecutionTargetId id, final List<ExecutionTargetId> selectedElementIds, final List<ExecutionTarget> elements, 
             final int actionLevel) {
         
         super(id);
@@ -62,29 +62,29 @@ public class StructureTarget extends Target {
     }
 	
 	
-	public List<Target> getElements() {
+	List<ExecutionTarget> getElements() {
 		return this.elements;
 	}
 
     
 	@Override
-    public Object getObject() {
+    Object getObject() {
         throw new IllegalStateException("Cannot get object from a structure");
     }
 
     
 	@Override
-    public int getExecutionLevel() {
+    int getExecutionLevel() {
 	    return this.actionLevel;
 	}
 	
 
     
     @Override
-    public List<NodeTarget> getExecutionNodes() {
+    List<ExecutionNodeTarget> getExecutionNodes() {
         
-        final List<NodeTarget> nodes = new ArrayList<NodeTarget>();
-        for (final Target element : this.elements) {
+        final List<ExecutionNodeTarget> nodes = new ArrayList<ExecutionNodeTarget>();
+        for (final ExecutionTarget element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
                 nodes.addAll(element.getExecutionNodes());
             }
@@ -96,119 +96,23 @@ public class StructureTarget extends Target {
 
 	
     @Override
-    Target doIterate() {
+    ExecutionTarget doIterate() {
         
-        final List<Target> newElements = new ArrayList<Target>();
-        for (final Target element : this.elements) {
+        final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
+        for (final ExecutionTarget element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
                 newElements.add(element.doIterate());
             } else {
                 newElements.add(element);
             }
         }
-        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel + 1);
+        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel + 1);
         
     }
 
     
     @Override
-    Target doIterateIndex(final boolean desiredResult, final List<Integer> positions) {
-        
-        final List<Target> newElements = new ArrayList<Target>();
-        for (final Target element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.doIterateIndex(desiredResult, positions));
-            } else {
-                newElements.add(element);
-            }
-        }
-        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel + 1);
-        
-    }
-
-    
-    @Override
-    Target doIterateMapKeys(final boolean desiredResult, final List<Object> objects) {
-        
-        final List<Target> newElements = new ArrayList<Target>();
-        for (final Target element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.doIterateMapKeys(desiredResult, objects));
-            } else {
-                newElements.add(element);
-            }
-        }
-        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel + 1);
-        
-    }
-
-
-    @Override
-    Target doIterateMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
-        
-        final List<Target> newElements = new ArrayList<Target>();
-        for (final Target element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.doIterateMatching(desiredResult, eval));
-            } else {
-                newElements.add(element);
-            }
-        }
-        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel + 1);
-        
-    }
-
-    
-    @Override
-    Target doIterateNull(final boolean desiredResult) {
-        
-        final List<Target> newElements = new ArrayList<Target>();
-        for (final Target element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.doIterateNull(desiredResult));
-            } else {
-                newElements.add(element);
-            }
-        }
-        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel + 1);
-        
-    }
-
-    
-    @Override
-    Target doIterateNullOrMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
-        
-        final List<Target> newElements = new ArrayList<Target>();
-        for (final Target element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.doIterateNullOrMatching(desiredResult, eval));
-            } else {
-                newElements.add(element);
-            }
-        }
-        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel + 1);
-        
-    }
-
-    
-    @Override
-    Target doIterateNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
-        
-        final List<Target> newElements = new ArrayList<Target>();
-        for (final Target element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.doIterateNotNullAndMatching(desiredResult, eval));
-            } else {
-                newElements.add(element);
-            }
-        }
-        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel + 1);
-        
-    }
-
-    
-    @Override
-    public Target endIterate(final Structure structure, final Class<?> componentClass) {
+    ExecutionTarget doEndIterate(final Structure structure, final Class<?> componentClass) {
         
         Validate.notNull(structure, "Structure cannot be null");
         Validate.isTrue(!(structure.equals(Structure.ARRAY) && componentClass == null), "Arrays must specify component class");
@@ -220,7 +124,7 @@ public class StructureTarget extends Target {
             switch (structure) {
                 case ARRAY:
                     final List<Object> newObjectArrayList = new ArrayList<Object>();
-                    for (final Target element : this.elements) {
+                    for (final ExecutionTarget element : this.elements) {
                         final Object elementObject = element.getObject();
                         if (elementObject != null && !componentClass.isAssignableFrom(elementObject.getClass())) {
                             throw new IllegalStateException("Cannot put an object of class " + elementObject.getClass().getName() +
@@ -233,21 +137,21 @@ public class StructureTarget extends Target {
                     break;
                 case LIST:
                     final List<Object> newObjectList = new ArrayList<Object>();
-                    for (final Target element : this.elements) {
+                    for (final ExecutionTarget element : this.elements) {
                         newObjectList.add(element.getObject());
                     }
                     newObject = newObjectList;
                     break;
                 case SET:
                     final Set<Object> newObjectSet = new LinkedHashSet<Object>();
-                    for (final Target element : this.elements) {
+                    for (final ExecutionTarget element : this.elements) {
                         newObjectSet.add(element.getObject());
                     }
                     newObject = newObjectSet;
                     break;
                 case MAP:
                     final Map<Object,Object> newObjectMap = new LinkedHashMap<Object,Object>();
-                    for (final Target element : this.elements) {
+                    for (final ExecutionTarget element : this.elements) {
                         final Object elementObject = element.getObject();
                         if (elementObject != null && !Map.Entry.class.isAssignableFrom(elementObject.getClass())) {
                             throw new IllegalStateException("Cannot create a map from an object of class " + elementObject.getClass().getName() +
@@ -268,19 +172,19 @@ public class StructureTarget extends Target {
                     break;
             }
             
-            return NodeTarget.forObject(getId(), newObject);
+            return ExecutionNodeTarget.forObject(getId(), newObject);
             
         }
             
-        final List<Target> newElements = new ArrayList<Target>();
-        for (final Target element : this.elements) {
+        final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
+        for (final ExecutionTarget element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.endIterate(structure, componentClass));
+                newElements.add(element.doEndIterate(structure, componentClass));
             } else {
                 newElements.add(element);
             }
         }
-        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel - 1);
+        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel - 1);
        
     }
 
@@ -289,28 +193,28 @@ public class StructureTarget extends Target {
     
     
     @Override
-    public Target endSelect() {
+    ExecutionTarget doEndSelect() {
         
         if (this.isCurrentActionLevel) {
             
-            final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
+            final List<ExecutionTargetId> newSelectedElementIds = new ArrayList<ExecutionTargetId>();
 
-            for (final Target element : this.elements) {
+            for (final ExecutionTarget element : this.elements) {
                 newSelectedElementIds.add(element.getId());
             }
-            return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            return new ExecutionStructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
             
         }
             
-        final List<Target> newElements = new ArrayList<Target>();
-        for (final Target element : this.elements) {
+        final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
+        for (final ExecutionTarget element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.endSelect());
+                newElements.add(element.doEndSelect());
             } else {
                 newElements.add(element);
             }
         }
-        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
             
     }
 
@@ -318,14 +222,14 @@ public class StructureTarget extends Target {
     
     
 	@Override
-	Target doSelectIndex(final boolean desiredResult, final List<Integer> positions) {
+	ExecutionTarget doSelectIndex(final boolean desiredResult, final List<Integer> positions) {
         
     	if (this.isCurrentActionLevel) {
         	
-            final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
+            final List<ExecutionTargetId> newSelectedElementIds = new ArrayList<ExecutionTargetId>();
 
             int i = 0;
-            for (final Target element : this.elements) {
+            for (final ExecutionTarget element : this.elements) {
             	
                 if (positions.contains(Integer.valueOf(i)) == desiredResult) {
                     newSelectedElementIds.add(element.getId());
@@ -333,19 +237,19 @@ public class StructureTarget extends Target {
                 i++;
                 
             }
-            return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            return new ExecutionStructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
             
     	}
         	
-        final List<Target> newElements = new ArrayList<Target>();
-        for (final Target element : this.elements) {
+        final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
+        for (final ExecutionTarget element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
                 newElements.add(element.doSelectIndex(desiredResult, positions));
             } else {
                 newElements.add(element);
             }
         }
-        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
             
 	}
 
@@ -353,13 +257,13 @@ public class StructureTarget extends Target {
 	
 
 	@Override
-	Target doSelectMapKeys(final boolean desiredResult, final List<Object> objects) {
+	ExecutionTarget doSelectMapKeys(final boolean desiredResult, final List<Object> objects) {
         
     	if (this.isCurrentActionLevel) {
         	
-            final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
+            final List<ExecutionTargetId> newSelectedElementIds = new ArrayList<ExecutionTargetId>();
             
-            for (final Target element : this.elements) {
+            for (final ExecutionTarget element : this.elements) {
             	
             	final Object elementObject = element.getObject();
             	if (!(elementObject instanceof Map.Entry<?,?>)) {
@@ -373,19 +277,19 @@ public class StructureTarget extends Target {
                 }
                 
             }
-            return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            return new ExecutionStructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
             
     	}
         	
-        final List<Target> newElements = new ArrayList<Target>();
-        for (final Target element : this.elements) {
+        final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
+        for (final ExecutionTarget element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
                 newElements.add(element.doSelectMapKeys(desiredResult, objects));
             } else {
                 newElements.add(element);
             }
         }
-        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
     	
 	}
 
@@ -393,13 +297,13 @@ public class StructureTarget extends Target {
 
 
     @Override
-    Target doSelectMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
+    ExecutionTarget doSelectMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
         
     	if (this.isCurrentActionLevel) {
         	
-            final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
+            final List<ExecutionTargetId> newSelectedElementIds = new ArrayList<ExecutionTargetId>();
             
-            for (final Target element : this.elements) {
+            for (final ExecutionTarget element : this.elements) {
             	
                 Boolean evalResult = null;
                 try {
@@ -412,19 +316,19 @@ public class StructureTarget extends Target {
                 }
                 
             }
-            return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            return new ExecutionStructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
             
     	}
         	
-        final List<Target> newElements = new ArrayList<Target>();
-        for (final Target element : this.elements) {
+        final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
+        for (final ExecutionTarget element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
                 newElements.add(element.doSelectMatching(desiredResult, eval));
             } else {
                 newElements.add(element);
             }
         }
-        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
             
     }
     
@@ -432,13 +336,13 @@ public class StructureTarget extends Target {
 
 
 	@Override
-	Target doSelectNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
+	ExecutionTarget doSelectNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
         
     	if (this.isCurrentActionLevel) {
         	
-            final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
+            final List<ExecutionTargetId> newSelectedElementIds = new ArrayList<ExecutionTargetId>();
             
-            for (final Target element : this.elements) {
+            for (final ExecutionTarget element : this.elements) {
             	
                 if (element.getObject() != null) {
                     Boolean evalResult = null;
@@ -453,64 +357,64 @@ public class StructureTarget extends Target {
                 }
                 
             }
-            return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            return new ExecutionStructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
             
     	}
         	
-        final List<Target> newElements = new ArrayList<Target>();
-        for (final Target element : this.elements) {
+        final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
+        for (final ExecutionTarget element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
                 newElements.add(element.doSelectNotNullAndMatching(desiredResult, eval));
             } else {
                 newElements.add(element);
             }
         }
-        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
     	
 	}
 
 
 
 	@Override
-	Target doSelectNull(final boolean desiredResult) {
+	ExecutionTarget doSelectNull(final boolean desiredResult) {
         
     	if (this.isCurrentActionLevel) {
         	
-            final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
+            final List<ExecutionTargetId> newSelectedElementIds = new ArrayList<ExecutionTargetId>();
             
-            for (final Target element : this.elements) {
+            for (final ExecutionTarget element : this.elements) {
             	
                 if ((element.getObject() == null) == desiredResult) {
                     newSelectedElementIds.add(element.getId());
                 }
                 
             }
-            return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            return new ExecutionStructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
             
     	}
         	
-        final List<Target> newElements = new ArrayList<Target>();
-        for (final Target element : this.elements) {
+        final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
+        for (final ExecutionTarget element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
                 newElements.add(element.doSelectNull(desiredResult));
             } else {
                 newElements.add(element);
             }
         }
-        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
             
 	}
 
 
 
 	@Override
-	Target doSelectNullOrMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
+	ExecutionTarget doSelectNullOrMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
         
     	if (this.isCurrentActionLevel) {
         	
-            final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
+            final List<ExecutionTargetId> newSelectedElementIds = new ArrayList<ExecutionTargetId>();
             
-            for (final Target element : this.elements) {
+            for (final ExecutionTarget element : this.elements) {
             	
                 if (element.getObject() == null) {
                     newSelectedElementIds.add(element.getId());
@@ -527,19 +431,19 @@ public class StructureTarget extends Target {
                 }
                 
             }
-            return new StructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            return new ExecutionStructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
             
     	}
         	
-        final List<Target> newElements = new ArrayList<Target>();
-        for (final Target element : this.elements) {
+        final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
+        for (final ExecutionTarget element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
                 newElements.add(element.doSelectNullOrMatching(desiredResult, eval));
             } else {
                 newElements.add(element);
             }
         }
-        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
     	
 	}
 
@@ -548,17 +452,17 @@ public class StructureTarget extends Target {
 
     
     @Override
-    public Target replaceWith(final Object replacement) {
+    ExecutionTarget doReplaceWith(final Object replacement) {
         
-        final List<Target> newElements = new ArrayList<Target>();
-        for (final Target element : this.elements) {
+        final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
+        for (final ExecutionTarget element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.replaceWith(replacement));
+                newElements.add(element.doReplaceWith(replacement));
             } else {
                 newElements.add(element);
             }
         }
-        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
         
         
     }
@@ -566,19 +470,19 @@ public class StructureTarget extends Target {
     
 	
     @Override
-    public Target execute(final IFunction<?,?> executable, final Normalization normalization) {
+    ExecutionTarget doExecute(final IFunction<?,?> executable, final Normalization normalization) {
         
     	Validate.notNull(executable, "An executable must be specified");
 
-        final List<Target> newElements = new ArrayList<Target>();
-        for (final Target element : this.elements) {
+        final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
+        for (final ExecutionTarget element : this.elements) {
             if (this.selectedElementIds.contains(element.getId())) {
-                newElements.add(element.execute(executable, normalization));
+                newElements.add(element.doExecute(executable, normalization));
             } else {
                 newElements.add(element);
             }
         }
-        return new StructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
         
         
     }

@@ -35,12 +35,12 @@ public class Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V> extends Abs
 
 
     public Level2MapOfListSelectedEntriesSelectedKeyOperator<K,V> onKey() {
-        return new Level2MapOfListSelectedEntriesSelectedKeyOperatorImpl<K,V>(getTarget().iterateIndex(0));
+        return new Level2MapOfListSelectedEntriesSelectedKeyOperatorImpl<K,V>(getTarget().iterate().selectIndex(0));
     }
 
 
     public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> onValue() {
-        return new Level2MapOfListSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().iterateIndex(1));
+        return new Level2MapOfListSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().iterate().selectIndex(1));
     }
 
 

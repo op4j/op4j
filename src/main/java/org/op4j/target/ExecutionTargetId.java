@@ -33,44 +33,44 @@ import org.apache.commons.lang.Validate;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class TargetId {
+final class ExecutionTargetId {
 
     
-    public static final TargetId ROOT = new TargetId(null, 0); 
+    public static final ExecutionTargetId ROOT = new ExecutionTargetId(null, 0); 
     
 	private final List<Integer> components = new ArrayList<Integer>();
 	
 	
 	
-	public static TargetId fromString(final String string) {
+	public static ExecutionTargetId fromString(final String string) {
 		
 		Validate.notEmpty(string);
 		
 		final String[] tokens = StringUtils.split(string,".");
 
-		TargetId id = null;
+		ExecutionTargetId id = null;
 		for (final String token : tokens) {
 			Validate.isTrue(StringUtils.isNumeric(token));
-			id = new TargetId(id, Integer.valueOf(token).intValue());
+			id = new ExecutionTargetId(id, Integer.valueOf(token).intValue());
 		}
 		return id;
 		
 	}
 	
-	public static TargetId fromIdList(final List<Integer> idList) {
+	public static ExecutionTargetId fromIdList(final List<Integer> idList) {
 		
 		Validate.notEmpty(idList);
 
-		TargetId id = null;
+		ExecutionTargetId id = null;
 		for (final Integer currentId : idList) {
-			id = new TargetId(id, currentId.intValue());
+			id = new ExecutionTargetId(id, currentId.intValue());
 		}
 		return id;
 		
 	}
 	
 	
-	public TargetId(final TargetId parent, final int index) {
+	public ExecutionTargetId(final ExecutionTargetId parent, final int index) {
 		
 		if (parent != null) {
 			this.components.addAll(parent.getComponents());
@@ -135,7 +135,7 @@ public class TargetId {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		TargetId other = (TargetId) obj;
+		ExecutionTargetId other = (ExecutionTargetId) obj;
 		return this.components.equals(other.components);
 	}
 	

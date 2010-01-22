@@ -30,14 +30,14 @@ import java.util.Collection;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class ObjectNodeTarget extends NodeTarget {
+final class ExecutionObjectNodeTarget extends ExecutionNodeTarget {
     
     
 	private final Object object;
 	
 
 	
-	public ObjectNodeTarget(final TargetId id, final Object object) {
+	protected ExecutionObjectNodeTarget(final ExecutionTargetId id, final Object object) {
 		super(id);
 		this.object = object;
 	}
@@ -53,7 +53,7 @@ public class ObjectNodeTarget extends NodeTarget {
 	
 	
 	@Override
-    public Collection<?> getIterationElements() {
+    Collection<?> getIterationElements() {
         throw new IllegalStateException("Cannot iterate: object is not iterable: " + this.object.getClass().getName());
 	}
 

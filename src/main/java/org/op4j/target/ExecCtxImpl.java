@@ -24,7 +24,7 @@ import java.util.List;
 
 import org.apache.commons.lang.Validate;
 import org.op4j.functions.ExecCtx;
-import org.op4j.target.TargetId;
+import org.op4j.target.ExecutionTargetId;
 
 /**
  * 
@@ -46,7 +46,7 @@ final class ExecCtxImpl implements ExecCtx {
 
     
     
-    public ExecCtxImpl(final TargetId targetId) {
+    public ExecCtxImpl(final ExecutionTargetId targetId) {
         super();
         final List<Integer> ids = targetId.getComponents();
         initialize(

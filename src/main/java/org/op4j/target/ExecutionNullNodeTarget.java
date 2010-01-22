@@ -30,19 +30,19 @@ import java.util.Collection;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class NullNodeTarget extends NodeTarget {
+final class ExecutionNullNodeTarget extends ExecutionNodeTarget {
     
 	
 
 	
-	public NullNodeTarget(final TargetId id) {
+    protected ExecutionNullNodeTarget(final ExecutionTargetId id) {
 		super(id);
 	}
 
 
 
 	@Override
-    public Object getObject() {
+    Object getObject() {
         return null;
     }
 	
@@ -50,7 +50,7 @@ public class NullNodeTarget extends NodeTarget {
 	
 	
 	@Override
-    public Collection<?> getIterationElements() {
+    Collection<?> getIterationElements() {
 	    throw new NullPointerException("Cannot iterate on null");
 	}
     

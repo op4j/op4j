@@ -34,12 +34,12 @@ public class Level1MapOfMapSelectedEntriesSelectedOperatorImpl<K1,K2,V> extends 
 
 
     public Level2MapOfMapSelectedEntriesSelectedKeyOperator<K1,K2,V> onKey() {
-        return new Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V>(getTarget().iterateIndex(0));
+        return new Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V>(getTarget().iterate().selectIndex(0));
     }
 
 
     public Level2MapOfMapSelectedEntriesSelectedValueOperator<K1,K2,V> onValue() {
-        return new Level2MapOfMapSelectedEntriesSelectedValueOperatorImpl<K1,K2,V>(getTarget().iterateIndex(1));
+        return new Level2MapOfMapSelectedEntriesSelectedValueOperatorImpl<K1,K2,V>(getTarget().iterate().selectIndex(1));
     }
 
 

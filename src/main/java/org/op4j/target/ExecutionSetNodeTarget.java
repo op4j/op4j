@@ -20,8 +20,8 @@
 
 package org.op4j.target;
 
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.Set;
 
 /**
  * 
@@ -30,12 +30,12 @@ import java.util.Collection;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class ArrayNodeTarget extends NodeTarget{
+final class ExecutionSetNodeTarget extends ExecutionNodeTarget{
     
-	private final Object[] object;
+	private final Set<?> object;
 
 	
-	public ArrayNodeTarget(final TargetId id, final Object[] object) {
+	protected ExecutionSetNodeTarget(final ExecutionTargetId id, final Set<?> object) {
 		super(id);
 		this.object = object;
 	}
@@ -44,22 +44,22 @@ public class ArrayNodeTarget extends NodeTarget{
 
 
     @Override
-    public Object getObject() {
+    Object getObject() {
         return this.object;
     }
 
     
-	
-	@Override
-    public Collection<?> getIterationElements() {
-		return Arrays.asList(this.object);
-	}
     
+    
+    @Override
+    Collection<?> getIterationElements() {
+        return this.object;
+    }
 
 
     @Override
     public String toString() {
-        return "ArrayNodeTarget [id=" + getId() + ", object=" + Arrays.asList(this.object) + "]";
+        return "SetNodeTarget [id=" + getId() + ", object=" + this.object + "]";
     }
 
     

@@ -20,9 +20,7 @@
 
 package org.op4j.target;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,12 +30,12 @@ import java.util.Map;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class MapNodeTarget extends NodeTarget{
+final class ExecutionMapNodeTarget extends ExecutionNodeTarget{
     
 	private final Map<?,?> object;
 
 	
-	public MapNodeTarget(final TargetId id, final Map<?,?> object) {
+	protected ExecutionMapNodeTarget(final ExecutionTargetId id, final Map<?,?> object) {
 		super(id);
 		this.object = object;
 	}
@@ -46,7 +44,7 @@ public class MapNodeTarget extends NodeTarget{
 
 
     @Override
-    public Object getObject() {
+    Object getObject() {
         return this.object;
     }
 	
@@ -55,33 +53,8 @@ public class MapNodeTarget extends NodeTarget{
     
     
     @Override
-    public Collection<?> getIterationElements() {
+    Collection<?> getIterationElements() {
         return this.object.entrySet();
-    }
-    
-
-
-    /*
-     * This is rewriten so that, for maps, iterating by objects means using keys
-     */
-    @Override
-    Target doIterateMapKeys(final boolean desiredResult, final List<Object> objects) {
-        
-        final List<Target> newElements = new ArrayList<Target>();
-        final List<TargetId> newSelectedElementIds = new ArrayList<TargetId>();
-        
-        int i = 0;
-        for (final Map.Entry<?,?> element : this.object.entrySet()) {
-            final TargetId elementId = new TargetId(getId(), i);
-            newElements.add(NodeTarget.forObject(elementId, element));
-            if (objects.contains(element.getKey()) == desiredResult) {
-                newSelectedElementIds.add(elementId);
-            }
-            i++;
-        }
-
-        return new StructureTarget(getId(),newSelectedElementIds,newElements, getId().getLevel());
-        
     }
     
 

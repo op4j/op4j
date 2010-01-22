@@ -61,12 +61,12 @@ public class Level2ArrayOfMapElementsEntriesOperatorImpl<K,V> extends AbstractOp
 
 
     public Level3ArrayOfMapElementsEntriesKeyOperator<K, V> onKey() {
-        return new Level3ArrayOfMapElementsEntriesKeyOperatorImpl<K, V>(getTarget().iterateIndex(0));
+        return new Level3ArrayOfMapElementsEntriesKeyOperatorImpl<K, V>(getTarget().iterate().selectIndex(0));
     }
 
 
     public Level3ArrayOfMapElementsEntriesValueOperator<K, V> onValue() {
-        return new Level3ArrayOfMapElementsEntriesValueOperatorImpl<K, V>(getTarget().iterateIndex(1));
+        return new Level3ArrayOfMapElementsEntriesValueOperatorImpl<K, V>(getTarget().iterate().selectIndex(1));
     }
 
 

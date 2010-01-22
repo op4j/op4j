@@ -24,6 +24,7 @@ import java.util.List;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.Op;
 import org.op4j.exceptions.EmptyTargetException;
 import org.op4j.exceptions.NonUniqueTargetException;
 import org.op4j.functions.IFunction;
@@ -294,7 +295,7 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
         if (size() > 1) {
             throw new NonUniqueTargetException();
         }
-        return new Level0GenericUniqOperatorImpl<T>(Target.forObject(((List<?>)getTarget()).get(0)));
+        return Op.on(getAsList().get(0));
     }
 
 
