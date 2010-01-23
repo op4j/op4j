@@ -235,112 +235,112 @@ public final class Op {
     
     
     public static <T> Level0GenericUniqOperator<T,T> on(final T target) {
-        return new Level0GenericUniqOperatorImpl<T,T>(OperationChainingTarget.forObject(target));
+        return new Level0GenericUniqOperatorImpl<T,T>(OperationChainingTarget.createForObject(target));
     }
 
     
     public static <T> Level0GenericMultiOperator<T,T> onAll(final T... targets) {
-        return new Level0GenericMultiOperatorImpl<T,T>(OperationChainingTarget.forObject(VarArgsUtil.asRequiredObjectList(targets)));
+        return new Level0GenericMultiOperatorImpl<T,T>(OperationChainingTarget.createForObject(VarArgsUtil.asRequiredObjectList(targets)));
     }
 
     
     public static <T> Level0ArrayOperator<T,T[]> onArray(final T[] target) {
-        return new Level0ArrayOperatorImpl<T,T[]>(OperationChainingTarget.forObject(NormalizationUtils.normalizeArray(target)));
+        return new Level0ArrayOperatorImpl<T,T[]>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeArray(target)));
     }
 
     
     public static <T> Level0ArrayOfArrayOperator<T,T[][]> onArrayOfArray(final T[][] target) {
-        return new Level0ArrayOfArrayOperatorImpl<T,T[][]>(OperationChainingTarget.forObject(NormalizationUtils.normalizeArrayOfArray(target)));
+        return new Level0ArrayOfArrayOperatorImpl<T,T[][]>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeArrayOfArray(target)));
     }
 
     
     public static <T> Level0ArrayOfListOperator<T,List<T>[]> onArrayOfList(final List<T>[] target) {
-        return new Level0ArrayOfListOperatorImpl<T,List<T>[]>(OperationChainingTarget.forObject(NormalizationUtils.normalizeArrayOfList(target)));
+        return new Level0ArrayOfListOperatorImpl<T,List<T>[]>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeArrayOfList(target)));
     }
 
     
     public static <K,V> Level0ArrayOfMapOperator<K,V,Map<K,V>[]> onArrayOfMap(final Map<K,V>[] target) {
-        return new Level0ArrayOfMapOperatorImpl<K,V,Map<K,V>[]>(OperationChainingTarget.forObject(NormalizationUtils.normalizeArrayOfMap(target)));
+        return new Level0ArrayOfMapOperatorImpl<K,V,Map<K,V>[]>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeArrayOfMap(target)));
     }
 
     
     public static <T> Level0ArrayOfSetOperator<T,Set<T>[]> onArrayOfSet(final Set<T>[] target) {
-        return new Level0ArrayOfSetOperatorImpl<T,Set<T>[]>(OperationChainingTarget.forObject(NormalizationUtils.normalizeArrayOfSet(target)));
+        return new Level0ArrayOfSetOperatorImpl<T,Set<T>[]>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeArrayOfSet(target)));
     }
 
     
     public static <T> Level0ListOperator<T,List<T>> onList(final List<T> target) {
-        return new Level0ListOperatorImpl<T,List<T>>(OperationChainingTarget.forObject(NormalizationUtils.normalizeList(target)));
+        return new Level0ListOperatorImpl<T,List<T>>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeList(target)));
     }
 
     
     public static <T> Level0ListOfArrayOperator<T,List<T[]>> onListOfArray(final List<T[]> target) {
-        return new Level0ListOfArrayOperatorImpl<T,List<T[]>>(OperationChainingTarget.forObject(NormalizationUtils.normalizeListOfArray(target)));
+        return new Level0ListOfArrayOperatorImpl<T,List<T[]>>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeListOfArray(target)));
     }
 
     
     public static <T> Level0ListOfListOperator<T,List<? extends List<T>>> onListOfList(final List<? extends List<T>> target) {
-        return new Level0ListOfListOperatorImpl<T,List<? extends List<T>>>(OperationChainingTarget.forObject(NormalizationUtils.normalizeListOfList(target)));
+        return new Level0ListOfListOperatorImpl<T,List<? extends List<T>>>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeListOfList(target)));
     }
 
     
     public static <K,V> Level0ListOfMapOperator<K,V,List<? extends Map<K,V>>> onListOfMap(final List<? extends Map<K,V>> target) {
-        return new Level0ListOfMapOperatorImpl<K,V,List<? extends Map<K,V>>>(OperationChainingTarget.forObject(NormalizationUtils.normalizeListOfMap(target)));
+        return new Level0ListOfMapOperatorImpl<K,V,List<? extends Map<K,V>>>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeListOfMap(target)));
     }
 
     
     public static <T> Level0ListOfSetOperator<T,List<? extends Set<T>>> onListOfSet(final List<? extends Set<T>> target) {
-        return new Level0ListOfSetOperatorImpl<T,List<? extends Set<T>>>(OperationChainingTarget.forObject(NormalizationUtils.normalizeListOfSet(target)));
+        return new Level0ListOfSetOperatorImpl<T,List<? extends Set<T>>>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeListOfSet(target)));
     }
 
     
     public static <K,V> Level0MapOperator<K,V,Map<K,V>> onMap(final Map<K,V> target) {
-        return new Level0MapOperatorImpl<K,V,Map<K,V>>(OperationChainingTarget.forObject(NormalizationUtils.normalizeMap(target)));
+        return new Level0MapOperatorImpl<K,V,Map<K,V>>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeMap(target)));
     }
 
     
     public static <K,V> Level0MapOfArrayOperator<K,V,Map<K,V[]>> onMapOfArray(final Map<K,V[]> target) {
-        return new Level0MapOfArrayOperatorImpl<K,V,Map<K,V[]>>(OperationChainingTarget.forObject(NormalizationUtils.normalizeMapOfArray(target)));
+        return new Level0MapOfArrayOperatorImpl<K,V,Map<K,V[]>>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeMapOfArray(target)));
     }
 
     
     public static <K,V> Level0MapOfListOperator<K,V,Map<K,? extends List<V>>> onMapOfList(final Map<K,? extends List<V>> target) {
-        return new Level0MapOfListOperatorImpl<K,V,Map<K,? extends List<V>>>(OperationChainingTarget.forObject(NormalizationUtils.normalizeMapOfList(target)));
+        return new Level0MapOfListOperatorImpl<K,V,Map<K,? extends List<V>>>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeMapOfList(target)));
     }
 
     
     public static <K1,K2,V> Level0MapOfMapOperator<K1,K2,V,Map<K1,? extends Map<K2,V>>> onMapOfMap(final Map<K1,? extends Map<K2,V>> target) {
-        return new Level0MapOfMapOperatorImpl<K1,K2,V,Map<K1,? extends Map<K2,V>>>(OperationChainingTarget.forObject(NormalizationUtils.normalizeMapOfMap(target)));
+        return new Level0MapOfMapOperatorImpl<K1,K2,V,Map<K1,? extends Map<K2,V>>>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeMapOfMap(target)));
     }
 
     
     public static <K,V> Level0MapOfSetOperator<K,V,Map<K,? extends Set<V>>> onMapOfSet(final Map<K,? extends Set<V>> target) {
-        return new Level0MapOfSetOperatorImpl<K,V,Map<K,? extends Set<V>>>(OperationChainingTarget.forObject(NormalizationUtils.normalizeMapOfSet(target)));
+        return new Level0MapOfSetOperatorImpl<K,V,Map<K,? extends Set<V>>>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeMapOfSet(target)));
     }
 
     
     public static <T> Level0SetOperator<T,Set<T>> onSet(final Set<T> target) {
-        return new Level0SetOperatorImpl<T,Set<T>>(OperationChainingTarget.forObject(NormalizationUtils.normalizeSet(target)));
+        return new Level0SetOperatorImpl<T,Set<T>>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeSet(target)));
     }
 
     
     public static <T> Level0SetOfArrayOperator<T,Set<T[]>> onSetOfArray(final Set<T[]> target) {
-        return new Level0SetOfArrayOperatorImpl<T,Set<T[]>>(OperationChainingTarget.forObject(NormalizationUtils.normalizeSetOfArray(target)));
+        return new Level0SetOfArrayOperatorImpl<T,Set<T[]>>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeSetOfArray(target)));
     }
 
     
     public static <T> Level0SetOfListOperator<T,Set<? extends List<T>>> onSetOfList(final Set<? extends List<T>> target) {
-        return new Level0SetOfListOperatorImpl<T,Set<? extends List<T>>>(OperationChainingTarget.forObject(NormalizationUtils.normalizeSetOfList(target)));
+        return new Level0SetOfListOperatorImpl<T,Set<? extends List<T>>>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeSetOfList(target)));
     }
 
     
     public static <K,V> Level0SetOfMapOperator<K,V,Set<? extends Map<K,V>>> onSetOfMap(final Set<? extends Map<K,V>> target) {
-        return new Level0SetOfMapOperatorImpl<K,V,Set<? extends Map<K,V>>>(OperationChainingTarget.forObject(NormalizationUtils.normalizeSetOfMap(target)));
+        return new Level0SetOfMapOperatorImpl<K,V,Set<? extends Map<K,V>>>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeSetOfMap(target)));
     }
 
     
     public static <T> Level0SetOfSetOperator<T,Set<? extends Set<T>>> onSetOfSet(final Set<? extends Set<T>> target) {
-        return new Level0SetOfSetOperatorImpl<T,Set<? extends Set<T>>>(OperationChainingTarget.forObject(NormalizationUtils.normalizeSetOfSet(target)));
+        return new Level0SetOfSetOperatorImpl<T,Set<? extends Set<T>>>(OperationChainingTarget.createForObject(NormalizationUtils.normalizeSetOfSet(target)));
     }
     
     

@@ -53,7 +53,7 @@ public final class OperationChainingTarget extends Target {
         return new OperationChainingTarget(new ArrayList<OperationStep>(), null, true, null);
     }
     
-    public static OperationChainingTarget forObject(final Object object) {
+    public static OperationChainingTarget createForObject(final Object object) {
         return new OperationChainingTarget(new ArrayList<OperationStep>(), null, false, object);
     }
     
@@ -69,7 +69,12 @@ public final class OperationChainingTarget extends Target {
         this.target = target;
     }
     
+
     
+    public boolean isEmpty() {
+        return this.empty;
+    }
+
     
     @Override
     Target doEndIterate(final Structure structure, final Class<?> componentClass) {

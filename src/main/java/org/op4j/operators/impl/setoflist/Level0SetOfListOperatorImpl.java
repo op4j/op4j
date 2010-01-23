@@ -395,7 +395,11 @@ public class Level0SetOfListOperatorImpl<T,I> extends AbstractOperatorImpl
         if (!(target instanceof OperationChainingTarget)) {
             throw new NonEmptyTargetException();
         }
-        return new Operation<Set<List<T>>, I>((OperationChainingTarget) target);
+        final OperationChainingTarget ocTarget = (OperationChainingTarget) target;
+        if (!ocTarget.isEmpty()) {
+            throw new NonEmptyTargetException();
+        }
+        return new Operation<Set<List<T>>, I>(ocTarget);
     }
     
     

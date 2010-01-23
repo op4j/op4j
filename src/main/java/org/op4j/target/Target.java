@@ -65,7 +65,7 @@ public abstract class Target {
     abstract Target doSelectNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
     
     
-    public Target iterate() {
+    public final Target iterate() {
         return doIterate();
     }
     

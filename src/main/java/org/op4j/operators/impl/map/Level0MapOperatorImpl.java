@@ -312,7 +312,11 @@ public class Level0MapOperatorImpl<K,V,I> extends AbstractOperatorImpl
         if (!(target instanceof OperationChainingTarget)) {
             throw new NonEmptyTargetException();
         }
-        return new Operation<Map<K, V>, I>((OperationChainingTarget) target);
+        final OperationChainingTarget ocTarget = (OperationChainingTarget) target;
+        if (!ocTarget.isEmpty()) {
+            throw new NonEmptyTargetException();
+        }
+        return new Operation<Map<K, V>, I>(ocTarget);
     }
 
     
