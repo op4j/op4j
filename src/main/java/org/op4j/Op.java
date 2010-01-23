@@ -35,6 +35,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.time.StopWatch;
+import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.ExecCtx;
@@ -121,6 +122,117 @@ public final class Op {
         super();
     }
 
+    
+
+    
+    
+    public static <T> Level0GenericUniqOperator<T,T> forObjectOf(final Type<T> type) {
+        return new Level0GenericUniqOperatorImpl<T,T>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <T> Level0ArrayOperator<T,T[]> forArrayOf(final Type<T> type) {
+        return new Level0ArrayOperatorImpl<T,T[]>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <T> Level0ArrayOfArrayOperator<T,T[][]> forArrayOfArrayOf(final Type<T> type) {
+        return new Level0ArrayOfArrayOperatorImpl<T,T[][]>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <T> Level0ArrayOfListOperator<T,List<T>[]> forArrayOfListOf(final Type<T> type) {
+        return new Level0ArrayOfListOperatorImpl<T,List<T>[]>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <K,V> Level0ArrayOfMapOperator<K,V,Map<K,V>[]> forArrayOfMapOf(final Type<K> keyType, final Type<V> valueType) {
+        return new Level0ArrayOfMapOperatorImpl<K,V,Map<K,V>[]>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <T> Level0ArrayOfSetOperator<T,Set<T>[]> forArrayOfSetOf(final Type<T> type) {
+        return new Level0ArrayOfSetOperatorImpl<T,Set<T>[]>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <T> Level0ListOperator<T,List<T>> forListOf(final Type<T> type) {
+        return new Level0ListOperatorImpl<T,List<T>>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <T> Level0ListOfArrayOperator<T,List<T[]>> forListOfArrayOf(final Type<T> type) {
+        return new Level0ListOfArrayOperatorImpl<T,List<T[]>>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <T> Level0ListOfListOperator<T,List<? extends List<T>>> forListOfListOf(final Type<T> type) {
+        return new Level0ListOfListOperatorImpl<T,List<? extends List<T>>>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <K,V> Level0ListOfMapOperator<K,V,List<? extends Map<K,V>>> forListOfMapOf(final Type<K> keyType, final Type<V> valueType) {
+        return new Level0ListOfMapOperatorImpl<K,V,List<? extends Map<K,V>>>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <T> Level0ListOfSetOperator<T,List<? extends Set<T>>> forListOfSetOf(final Type<T> type) {
+        return new Level0ListOfSetOperatorImpl<T,List<? extends Set<T>>>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <K,V> Level0MapOperator<K,V,Map<K,V>> forMapOf(final Type<K> keyType, final Type<V> valueType) {
+        return new Level0MapOperatorImpl<K,V,Map<K,V>>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <K,V> Level0MapOfArrayOperator<K,V,Map<K,V[]>> forMapOfArrayOf(final Type<K> keyType, final Type<V> valueType) {
+        return new Level0MapOfArrayOperatorImpl<K,V,Map<K,V[]>>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <K,V> Level0MapOfListOperator<K,V,Map<K,? extends List<V>>> forMapOfListOf(final Type<K> keyType, final Type<V> valueType) {
+        return new Level0MapOfListOperatorImpl<K,V,Map<K,? extends List<V>>>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <K1,K2,V> Level0MapOfMapOperator<K1,K2,V,Map<K1,? extends Map<K2,V>>> forMapOfMapOf(final Type<K1> keyType, final Type<K2> key2Type, final Type<V> valueType) {
+        return new Level0MapOfMapOperatorImpl<K1,K2,V,Map<K1,? extends Map<K2,V>>>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <K,V> Level0MapOfSetOperator<K,V,Map<K,? extends Set<V>>> forMapOfSetOf(final Type<K> keyType, final Type<V> valueType) {
+        return new Level0MapOfSetOperatorImpl<K,V,Map<K,? extends Set<V>>>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <T> Level0SetOperator<T,Set<T>> forSetOf(final Type<T> type) {
+        return new Level0SetOperatorImpl<T,Set<T>>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <T> Level0SetOfArrayOperator<T,Set<T[]>> forSetOfArrayOf(final Type<T> type) {
+        return new Level0SetOfArrayOperatorImpl<T,Set<T[]>>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <T> Level0SetOfListOperator<T,Set<? extends List<T>>> forSetOfListOf(final Type<T> type) {
+        return new Level0SetOfListOperatorImpl<T,Set<? extends List<T>>>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <K,V> Level0SetOfMapOperator<K,V,Set<? extends Map<K,V>>> forSetOfMapOf(final Type<K> keyType, final Type<V> valueType) {
+        return new Level0SetOfMapOperatorImpl<K,V,Set<? extends Map<K,V>>>(OperationChainingTarget.createEmpty());
+    }
+
+    
+    public static <T> Level0SetOfSetOperator<T,Set<? extends Set<T>>> forSetOfSetOf(final Type<T> type) {
+        return new Level0SetOfSetOperatorImpl<T,Set<? extends Set<T>>>(OperationChainingTarget.createEmpty());
+    }
+    
+    
+    
+    
     
     public static <T> Level0GenericUniqOperator<T,T> on(final T target) {
         return new Level0GenericUniqOperatorImpl<T,T>(OperationChainingTarget.forObject(target));
@@ -740,7 +852,7 @@ watch.start();
         final List<String> stringsList2 = Op.onAll("Portugal", "Spain", "France", "Italy", "Switzerland").getAsList();
         
         Operation<String[],List<String>> op1 =
-            Op.onList(stringsList1).toArray(Types.STRING).forEach(Types.STRING).ifNotNull().exec(StringFuncs.toUpperCase()).createOperation();
+            Op.forListOf(Types.STRING).toArray(Types.STRING).forEach(Types.STRING).ifNotNull().exec(StringFuncs.toUpperCase()).createOperation();
         
         System.out.println(printArray(op1.execute(stringsList1)));
         System.out.println(printArray(op1.execute(stringsList2)));
