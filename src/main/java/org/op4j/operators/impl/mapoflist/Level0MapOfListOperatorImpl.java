@@ -36,9 +36,6 @@ import org.op4j.operations.Operation;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperatorImpl;
 import org.op4j.operators.impl.listoflist.Level0ListOfListOperatorImpl;
-import org.op4j.operators.impl.mapofarray.Level0MapOfArrayOperatorImpl;
-import org.op4j.operators.impl.mapofmap.Level0MapOfMapOperatorImpl;
-import org.op4j.operators.impl.mapofset.Level0MapOfSetOperatorImpl;
 import org.op4j.operators.impl.set.Level0SetOperatorImpl;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.listoflist.Level0ListOfListOperator;
@@ -151,22 +148,22 @@ public class Level0MapOfListOperatorImpl<K,V,I> extends AbstractOperatorImpl
 
 
     public Level0MapOfArrayOperator<K, V,I> toMapOfArray(final Type<V> of) {
-        return new Level0MapOfArrayOperatorImpl<K, V,I>(getTarget().replaceWith(forEachEntry().onValue().toArray(of).endOn().endFor().get()));
+        return forEachEntry().onValue().toArray(of).endOn().endFor();
     }
 
 
     public <K2> Level0MapOfMapOperator<K, K2, V,I> toMapOfMap(final IEvaluator<K2, ? super V> keyEval) {
-        return new Level0MapOfMapOperatorImpl<K, K2, V,I>(getTarget().replaceWith(forEachEntry().onValue().toMap(keyEval).endOn().endFor().get()));
+        return forEachEntry().onValue().toMap(keyEval).endOn().endFor();
     }
 
 
     public <K2, V2> Level0MapOfMapOperator<K, K2, V2,I> toMapOfMap(final IMapBuilder<K2, V2, ? super V> mapBuild) {
-        return new Level0MapOfMapOperatorImpl<K, K2, V2,I>(getTarget().replaceWith(forEachEntry().onValue().toMap(mapBuild).endOn().endFor().get()));
+        return forEachEntry().onValue().toMap(mapBuild).endOn().endFor();
     }
 
 
     public Level0MapOfSetOperator<K, V,I> toMapOfSet() {
-        return new Level0MapOfSetOperatorImpl<K, V,I>(getTarget().replaceWith(forEachEntry().onValue().toSet().endOn().endFor().get()));
+        return forEachEntry().onValue().toSet().endOn().endFor();
     }
 
 

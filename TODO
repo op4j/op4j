@@ -1,7 +1,2 @@
 
-  - NEVER use the result of an operation as a parameter for another. Remove all "replaceWith" in the impls.
-    (This can be searched by looking for calls to "get()")
-  
-  - Normalize target objects input into the "executeChain" method.
-  
   - Should the "add" of arrays have the same name as the "add" of generic operators? (they work on different dimensions!)

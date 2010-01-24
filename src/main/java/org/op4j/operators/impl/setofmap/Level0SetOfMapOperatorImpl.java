@@ -26,11 +26,13 @@ import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.Op;
 import org.op4j.exceptions.NonEmptyTargetException;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.SetFuncs;
 import org.op4j.functions.converters.IConverter;
+import org.op4j.functions.converters.ToArray;
+import org.op4j.functions.converters.ToList;
+import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operations.Operation;
@@ -188,22 +190,22 @@ public class Level0SetOfMapOperatorImpl<K,V,I> extends AbstractOperatorImpl
 
 	@SuppressWarnings("unchecked")
 	public Level0ArrayOfMapOperator<K, V,I> toArrayOfMap() {
-        return new Level0ArrayOfMapOperatorImpl<K, V,I>(getTarget().replaceWith(Op.onArrayOfMap((Map<K, V>[]) Op.onSet(get()).asSetOf(Types.MAP_OF_UNKNOWN_UNKNOWN).toArray(Types.MAP_OF_UNKNOWN_UNKNOWN).get()).get()));
+	    return new Level0ArrayOfMapOperatorImpl<K, V, I>(getTarget().execute(new ToArray.FromCollection<Map<K,V>>((Type<Map<K,V>>)(Type<?>)Types.MAP_OF_UNKNOWN_UNKNOWN)));
     }
 
 
 	public Level0ListOfMapOperator<K, V,I> toListOfMap() {
-        return new Level0ListOfMapOperatorImpl<K, V,I>(getTarget().replaceWith(Op.onListOfMap(Op.onSet(get()).toList().get()).get()));
+        return new Level0ListOfMapOperatorImpl<K, V, I>(getTarget().execute(new ToList.FromCollection<Map<K,V>>()));
     }
 
 
 	public <K1> Level0MapOfMapOperator<K1, K, V,I> toMapOfMap(final IEvaluator<K1, ? super Map<K, V>> keyEval) {
-        return new Level0MapOfMapOperatorImpl<K1, K, V,I>(getTarget().replaceWith(Op.onMapOfMap(Op.onSet(get()).toMap(keyEval).get()).get()));
+        return new Level0MapOfMapOperatorImpl<K1, K, V, I>(getTarget().execute(new ToMap.FromSetByKeyEval<K1, Map<K,V>>(keyEval)));
     }
 
 
 	public <K1, K2, V2> Level0MapOfMapOperator<K1, K2, V2,I> toMapOfMap(final IMapBuilder<K1, Map<K2, V2>, ? super Map<K, V>> mapBuild) {
-        return new Level0MapOfMapOperatorImpl<K1, K2, V2,I>(getTarget().replaceWith(Op.onMapOfMap(Op.onSet(get()).toMap(mapBuild).get()).get()));
+        return new Level0MapOfMapOperatorImpl<K1, K2, V2, I>(getTarget().execute(new ToMap.FromSetByMapBuilder<K1, Map<K2,V2>, Map<K,V>>(mapBuild)));
     }
 
 

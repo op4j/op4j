@@ -135,7 +135,6 @@ public interface Level0ListOfMapOperator<K,V,I>
     public Level0ListOfMapOperator<?,?,I> asListOfMapOfUnknown();
 
     
-    
     public Level0ArrayOfMapOperator<K,V,I> toArrayOfMap();
     
     public <K1> Level0MapOfMapOperator<K1,K,V,I> toMapOfMap(final IEvaluator<K1,? super Map<K, V>> keyEval);

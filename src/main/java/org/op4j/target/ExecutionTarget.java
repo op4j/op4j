@@ -22,9 +22,12 @@ package org.op4j.target;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.op4j.functions.IFunction;
 import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.util.NormalizationUtils;
 
 /**
  * 
@@ -39,9 +42,91 @@ public abstract class ExecutionTarget extends Target {
 
     
     
-    public static ExecutionTarget forObject(final Object object) {
+    @SuppressWarnings("unchecked")
+    public static ExecutionTarget forObject(final Object object, final Normalization targetNormalization) {
         final ExecutionTargetId id = new ExecutionTargetId(ExecutionTargetId.ROOT, 0);
-        final ExecutionNodeTarget node = ExecutionNodeTarget.forObject(id, object);
+        Object normalizedObject = null;
+        switch (targetNormalization) {
+            case NONE:
+                normalizedObject = object;
+                break;
+            case ARRAY:
+                normalizedObject = NormalizationUtils.normalizeArray((Object[])object);
+                break;
+            case ARRAY_OF_ARRAY:
+                normalizedObject = NormalizationUtils.normalizeArrayOfArray((Object[][])object);
+                break;
+            case ARRAY_OF_LIST:
+                normalizedObject = NormalizationUtils.normalizeArrayOfList((List<Object>[])object);
+                break;
+            case ARRAY_OF_MAP:
+                normalizedObject = NormalizationUtils.normalizeArrayOfMap((Map<Object,Object>[])object);
+                break;
+            case ARRAY_OF_SET:
+                normalizedObject = NormalizationUtils.normalizeArrayOfSet((Set<Object>[])object);
+                break;
+            case LIST:
+                normalizedObject = NormalizationUtils.normalizeList((List<Object>)object);
+                break;
+            case LIST_OF_ARRAY:
+                normalizedObject = NormalizationUtils.normalizeListOfArray((List<Object[]>)object);
+                break;
+            case LIST_OF_LIST:
+                normalizedObject = NormalizationUtils.normalizeListOfList((List<List<Object>>)object);
+                break;
+            case LIST_OF_MAP:
+                normalizedObject = NormalizationUtils.normalizeListOfMap((List<Map<Object,Object>>)object);
+                break;
+            case LIST_OF_SET:
+                normalizedObject = NormalizationUtils.normalizeListOfSet((List<Set<Object>>)object);
+                break;
+            case MAP:
+                normalizedObject = NormalizationUtils.normalizeMap((Map<Object,Object>)object);
+                break;
+            case MAPENTRY:
+                normalizedObject = NormalizationUtils.normalizeMapEntry((Map.Entry<Object,Object>)object);
+                break;
+            case MAPENTRY_OF_ARRAY:
+                normalizedObject = NormalizationUtils.normalizeMapEntryOfArray((Map.Entry<Object,Object[]>)object);
+                break;
+            case MAPENTRY_OF_LIST:
+                normalizedObject = NormalizationUtils.normalizeMapEntryOfList((Map.Entry<Object,List<Object>>)object);
+                break;
+            case MAPENTRY_OF_MAP:
+                normalizedObject = NormalizationUtils.normalizeMapEntryOfMap((Map.Entry<Object,Map<Object,Object>>)object);
+                break;
+            case MAPENTRY_OF_SET:
+                normalizedObject = NormalizationUtils.normalizeMapEntryOfSet((Map.Entry<Object,Set<Object>>)object);
+                break;
+            case MAP_OF_ARRAY:
+                normalizedObject = NormalizationUtils.normalizeMapOfArray((Map<Object,Object[]>)object);
+                break;
+            case MAP_OF_LIST:
+                normalizedObject = NormalizationUtils.normalizeMapOfList((Map<Object,List<Object>>)object);
+                break;
+            case MAP_OF_MAP:
+                normalizedObject = NormalizationUtils.normalizeMapOfMap((Map<Object,Map<Object,Object>>)object);
+                break;
+            case MAP_OF_SET:
+                normalizedObject = NormalizationUtils.normalizeMapOfSet((Map<Object,Set<Object>>)object);
+                break;
+            case SET:
+                normalizedObject = NormalizationUtils.normalizeSet((Set<Object>)object);
+                break;
+            case SET_OF_ARRAY:
+                normalizedObject = NormalizationUtils.normalizeSetOfArray((Set<Object[]>)object);
+                break;
+            case SET_OF_LIST:
+                normalizedObject = NormalizationUtils.normalizeSetOfList((Set<List<Object>>)object);
+                break;
+            case SET_OF_MAP:
+                normalizedObject = NormalizationUtils.normalizeSetOfMap((Set<Map<Object,Object>>)object);
+                break;
+            case SET_OF_SET:
+                normalizedObject = NormalizationUtils.normalizeSetOfSet((Set<Set<Object>>)object);
+                break;
+        }
+        final ExecutionNodeTarget node = ExecutionNodeTarget.forObject(id, normalizedObject);
         return new ExecutionStructureTarget(ExecutionTargetId.ROOT, Arrays.asList(new ExecutionTargetId[] {id}), Arrays.asList(new ExecutionTarget[] {node}), 1);
     }
     

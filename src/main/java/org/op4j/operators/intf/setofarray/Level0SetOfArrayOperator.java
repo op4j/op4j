@@ -130,6 +130,8 @@ public interface Level0SetOfArrayOperator<T,I>
     public Level0SetOfArrayOperator<T,I> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T[]> eval);
     public Level0SetOfArrayOperator<T,I> removeAllIndexesNot(final int... indices);
     public Level0SetOfArrayOperator<T,I> removeAllNull();
+    
+    
     public Level0ArrayOfArrayOperator<T,I> toArrayOfArray(final Type<T> of);
     
     public Level0ArrayOfListOperator<T,I> toArrayOfList();

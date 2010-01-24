@@ -47,19 +47,22 @@ public final class OperationChainingTarget extends Target {
     private final List<OperationStep> steps;
     private final boolean empty;
     private final Object target;
+    private final Normalization targetNormalization;
     
     
-    public static OperationChainingTarget createEmpty() {
-        return new OperationChainingTarget(new ArrayList<OperationStep>(), null, true, null);
+    
+    public static OperationChainingTarget createEmpty(final Normalization targetNormalization) {
+        return new OperationChainingTarget(new ArrayList<OperationStep>(), null, true, null, targetNormalization);
     }
     
-    public static OperationChainingTarget createForObject(final Object object) {
-        return new OperationChainingTarget(new ArrayList<OperationStep>(), null, false, object);
+    
+    public static OperationChainingTarget createForObject(final Object object, final Normalization targetNormalization) {
+        return new OperationChainingTarget(new ArrayList<OperationStep>(), null, false, object, targetNormalization);
     }
     
     
     
-    OperationChainingTarget(final List<OperationStep> steps, final OperationStep step, final boolean empty, final Object target) {
+    OperationChainingTarget(final List<OperationStep> steps, final OperationStep step, final boolean empty, final Object target, final Normalization targetNormalization) {
         super();
         this.steps = new ArrayList<OperationStep>(steps);
         this.empty = empty;
@@ -67,6 +70,7 @@ public final class OperationChainingTarget extends Target {
             this.steps.add(step);
         }
         this.target = target;
+        this.targetNormalization = targetNormalization;
     }
     
 
@@ -78,35 +82,35 @@ public final class OperationChainingTarget extends Target {
     
     @Override
     Target doEndIterate(final Structure structure, final Class<?> componentClass) {
-        return new OperationChainingTarget(this.steps, new OperationStep(Operation.END_ITERATE, structure, componentClass), this.empty, this.target);
+        return new OperationChainingTarget(this.steps, new OperationStep(Operation.END_ITERATE, structure, componentClass), this.empty, this.target, this.targetNormalization);
     }
 
     
     
     @Override
     Target doEndSelect() {
-        return new OperationChainingTarget(this.steps, new OperationStep(Operation.END_SELECT), this.empty, this.target);
+        return new OperationChainingTarget(this.steps, new OperationStep(Operation.END_SELECT), this.empty, this.target, this.targetNormalization);
     }
 
 
     
     @Override
-    Target doExecute(final IFunction<?, ?> executable, final Normalization normalization) {
-        return new OperationChainingTarget(this.steps, new OperationStep(Operation.EXECUTE, executable, normalization), this.empty, this.target);
+    Target doExecute(final IFunction<?, ?> executable, final Normalization executionNormalization) {
+        return new OperationChainingTarget(this.steps, new OperationStep(Operation.EXECUTE, executable, executionNormalization), this.empty, this.target, this.targetNormalization);
     }
 
     
     
     @Override
     Target doIterate() {
-        return new OperationChainingTarget(this.steps, new OperationStep(Operation.ITERATE), this.empty, this.target);
+        return new OperationChainingTarget(this.steps, new OperationStep(Operation.ITERATE), this.empty, this.target, this.targetNormalization);
     }
 
     
     
     @Override
     Target doReplaceWith(final Object replacement) {
-        return new OperationChainingTarget(this.steps, new OperationStep(Operation.REPLACE_WITH, replacement), this.empty, this.target);
+        return new OperationChainingTarget(this.steps, new OperationStep(Operation.REPLACE_WITH, replacement), this.empty, this.target, this.targetNormalization);
     }
 
 
@@ -114,7 +118,7 @@ public final class OperationChainingTarget extends Target {
     
     @Override
     Target doSelectIndex(final boolean desiredResult, final List<Integer> positions) {
-        return new OperationChainingTarget(this.steps, new OperationStep(Operation.SELECT_INDEX, Boolean.valueOf(desiredResult), positions), this.empty, this.target);
+        return new OperationChainingTarget(this.steps, new OperationStep(Operation.SELECT_INDEX, Boolean.valueOf(desiredResult), positions), this.empty, this.target, this.targetNormalization);
     }
 
 
@@ -122,7 +126,7 @@ public final class OperationChainingTarget extends Target {
     
     @Override
     Target doSelectMapKeys(final boolean desiredResult, final List<Object> objects) {
-        return new OperationChainingTarget(this.steps, new OperationStep(Operation.SELECT_MAP_KEYS, Boolean.valueOf(desiredResult), objects), this.empty, this.target);
+        return new OperationChainingTarget(this.steps, new OperationStep(Operation.SELECT_MAP_KEYS, Boolean.valueOf(desiredResult), objects), this.empty, this.target, this.targetNormalization);
     }
 
 
@@ -130,7 +134,7 @@ public final class OperationChainingTarget extends Target {
     
     @Override
     Target doSelectMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
-        return new OperationChainingTarget(this.steps, new OperationStep(Operation.SELECT_MATCHING, Boolean.valueOf(desiredResult), eval), this.empty, this.target);
+        return new OperationChainingTarget(this.steps, new OperationStep(Operation.SELECT_MATCHING, Boolean.valueOf(desiredResult), eval), this.empty, this.target, this.targetNormalization);
     }
 
     
@@ -138,7 +142,7 @@ public final class OperationChainingTarget extends Target {
 
     @Override
     Target doSelectNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
-        return new OperationChainingTarget(this.steps, new OperationStep(Operation.SELECT_NOT_NULL_AND_MATCHING, Boolean.valueOf(desiredResult), eval), this.empty, this.target);
+        return new OperationChainingTarget(this.steps, new OperationStep(Operation.SELECT_NOT_NULL_AND_MATCHING, Boolean.valueOf(desiredResult), eval), this.empty, this.target, this.targetNormalization);
     }
 
 
@@ -146,7 +150,7 @@ public final class OperationChainingTarget extends Target {
     
     @Override
     Target doSelectNull(final boolean desiredResult) {
-        return new OperationChainingTarget(this.steps, new OperationStep(Operation.SELECT_NULL, Boolean.valueOf(desiredResult)), this.empty, this.target);
+        return new OperationChainingTarget(this.steps, new OperationStep(Operation.SELECT_NULL, Boolean.valueOf(desiredResult)), this.empty, this.target, this.targetNormalization);
     }
 
 
@@ -154,7 +158,7 @@ public final class OperationChainingTarget extends Target {
     
     @Override
     Target doSelectNullOrMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
-        return new OperationChainingTarget(this.steps, new OperationStep(Operation.SELECT_NULL_OR_MATCHING, Boolean.valueOf(desiredResult), eval), this.empty, this.target);
+        return new OperationChainingTarget(this.steps, new OperationStep(Operation.SELECT_NULL_OR_MATCHING, Boolean.valueOf(desiredResult), eval), this.empty, this.target, this.targetNormalization);
     }
 
     
@@ -174,7 +178,7 @@ public final class OperationChainingTarget extends Target {
     @SuppressWarnings("unchecked")
     public Object executeChain(final Object object) {
 
-        ExecutionTarget executionTarget = ExecutionTarget.forObject(object);
+        ExecutionTarget executionTarget = ExecutionTarget.forObject(object, this.targetNormalization);
 
         for (final OperationStep step : this.steps) {
             

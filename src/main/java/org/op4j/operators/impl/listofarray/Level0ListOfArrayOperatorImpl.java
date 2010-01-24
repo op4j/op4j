@@ -22,33 +22,23 @@ package org.op4j.operators.impl.listofarray;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.Op;
 import org.op4j.exceptions.NonEmptyTargetException;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.ListFuncs;
 import org.op4j.functions.converters.IConverter;
+import org.op4j.functions.converters.ToArray;
+import org.op4j.functions.converters.ToSet;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operations.Operation;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperatorImpl;
-import org.op4j.operators.impl.arrayoflist.Level0ArrayOfListOperatorImpl;
-import org.op4j.operators.impl.arrayofmap.Level0ArrayOfMapOperatorImpl;
-import org.op4j.operators.impl.arrayofset.Level0ArrayOfSetOperatorImpl;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperatorImpl;
 import org.op4j.operators.impl.list.Level0ListOperatorImpl;
-import org.op4j.operators.impl.listoflist.Level0ListOfListOperatorImpl;
-import org.op4j.operators.impl.listofmap.Level0ListOfMapOperatorImpl;
-import org.op4j.operators.impl.listofset.Level0ListOfSetOperatorImpl;
 import org.op4j.operators.impl.setofarray.Level0SetOfArrayOperatorImpl;
-import org.op4j.operators.impl.setoflist.Level0SetOfListOperatorImpl;
-import org.op4j.operators.impl.setofmap.Level0SetOfMapOperatorImpl;
-import org.op4j.operators.impl.setofset.Level0SetOfSetOperatorImpl;
 import org.op4j.operators.intf.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.Level0ArrayOfListOperator;
 import org.op4j.operators.intf.arrayofmap.Level0ArrayOfMapOperator;
@@ -188,92 +178,87 @@ public class Level0ListOfArrayOperatorImpl<T,I> extends AbstractOperatorImpl
 
 
     public Level0ArrayOfArrayOperator<T,I> toArrayOfArray(final Type<T> of) {
-        return new Level0ArrayOfArrayOperatorImpl<T,I>(getTarget().replaceWith(Op.onArrayOfArray(Op.onList(get()).toArray(Types.arrayOf(of)).get()).get()));
+        return new Level0ArrayOfArrayOperatorImpl<T, I>(getTarget().execute(new ToArray.FromCollection<T[]>(Types.arrayOf(of))));
     }
 
 
-    @SuppressWarnings("unchecked")
     public Level0ArrayOfListOperator<T,I> toArrayOfList() {
-        return new Level0ArrayOfListOperatorImpl<T,I>(getTarget().replaceWith(Op.onArrayOfList(Op.onList(forEach().toList().get()).toArray((Type<List<T>>)((Type<?>)Types.LIST_OF_UNKNOWN)).get()).get()));
+        return toListOfList().toArrayOfList();
     }
 
 
-    @SuppressWarnings("unchecked")
     public <K> Level0ArrayOfMapOperator<K, T,I> toArrayOfMap(final IEvaluator<K, ? super T> keyEval) {
-        return new Level0ArrayOfMapOperatorImpl<K, T,I>(getTarget().replaceWith(Op.onArrayOfMap(Op.onList(forEach().toMap(keyEval).get()).toArray((Type<Map<K, T>>)((Type<?>)Types.MAP_OF_UNKNOWN_UNKNOWN)).get()).get()));
+        return toListOfMap(keyEval).toArrayOfMap();
     }
 
 
-    @SuppressWarnings("unchecked")
     public <K, V> Level0ArrayOfMapOperator<K, V,I> toArrayOfMap(final IMapBuilder<K, V, ? super T> mapBuild) {
-        return new Level0ArrayOfMapOperatorImpl<K, V,I>(getTarget().replaceWith(Op.onArrayOfMap(Op.onList(forEach().toMap(mapBuild).get()).toArray((Type<Map<K, V>>)((Type<?>)Types.MAP_OF_UNKNOWN_UNKNOWN)).get()).get()));
+        return toListOfMap(mapBuild).toArrayOfMap();
     }
 
 
-    @SuppressWarnings("unchecked")
     public Level0ArrayOfSetOperator<T,I> toArrayOfSet() {
-        return new Level0ArrayOfSetOperatorImpl<T,I>(getTarget().replaceWith(Op.onArrayOfSet(Op.onList(forEach().toSet().get()).toArray((Type<Set<T>>)((Type<?>)Types.SET_OF_UNKNOWN)).get()).get()));
+        return toListOfSet().toArrayOfSet();
     }
 
 
     public Level0ListOfListOperator<T,I> toListOfList() {
-        return new Level0ListOfListOperatorImpl<T,I>(getTarget().replaceWith(forEach().toList().endFor().get()));
+        return forEach().toList().endFor();
     }
 
 
     public <K> Level0ListOfMapOperator<K, T,I> toListOfMap(final IEvaluator<K, ? super T> keyEval) {
-        return new Level0ListOfMapOperatorImpl<K, T,I>(getTarget().replaceWith(forEach().toMap(keyEval).endFor().get()));
+        return forEach().toMap(keyEval).endFor(); 
     }
 
 
     public <K, V> Level0ListOfMapOperator<K, V,I> toListOfMap(final IMapBuilder<K, V, ? super T> mapBuild) {
-        return new Level0ListOfMapOperatorImpl<K, V,I>(getTarget().replaceWith(forEach().toMap(mapBuild).endFor().get()));
+        return forEach().toMap(mapBuild).endFor();
     }
 
 
     public Level0ListOfSetOperator<T,I> toListOfSet() {
-        return new Level0ListOfSetOperatorImpl<T,I>(getTarget().replaceWith(forEach().toSet().endFor().get()));
+        return forEach().toSet().endFor();
     }
 
 
     public Level0SetOfArrayOperator<T,I> toSetOfArray(final Type<T> of) {
-        return new Level0SetOfArrayOperatorImpl<T,I>(getTarget().replaceWith(Op.onSetOfArray(Op.onList(get()).toSet().get()).get()));
+        return new Level0SetOfArrayOperatorImpl<T, I>(getTarget().execute(new ToSet.FromCollection<T[]>()));
     }
 
 
     public Level0SetOfListOperator<T,I> toSetOfList() {
-        return new Level0SetOfListOperatorImpl<T,I>(getTarget().replaceWith(Op.onSetOfList(Op.onList(forEach().toList().get()).toSet().get()).get()));
+        return toListOfList().toSetOfList();
     }
 
 
     public <K> Level0SetOfMapOperator<K, T,I> toSetOfMap(final IEvaluator<K, ? super T> keyEval) {
-        return new Level0SetOfMapOperatorImpl<K, T,I>(getTarget().replaceWith(Op.onSetOfMap(Op.onList(forEach().toMap(keyEval).get()).toSet().get()).get()));
+        return toListOfMap(keyEval).toSetOfMap();
     }
 
 
     public <K, V> Level0SetOfMapOperator<K, V,I> toSetOfMap(final IMapBuilder<K, V, ? super T> mapBuild) {
-        return new Level0SetOfMapOperatorImpl<K, V,I>(getTarget().replaceWith(Op.onSetOfMap(Op.onList(forEach().toMap(mapBuild).get()).toSet().get()).get()));
+        return toListOfMap(mapBuild).toSetOfMap();
     }
 
 
     public Level0SetOfSetOperator<T,I> toSetOfSet() {
-        return new Level0SetOfSetOperatorImpl<T,I>(getTarget().replaceWith(Op.onSetOfSet(Op.onList(forEach().toSet().get()).toSet().get()).get()));
+        return toListOfSet().toSetOfSet();
     }
 
 
-    @SuppressWarnings("unchecked")
     public Level0ArrayOfMapOperator<T, T,I> toArrayOfMap() {
-        return new Level0ArrayOfMapOperatorImpl<T, T,I>(getTarget().replaceWith(Op.onArrayOfMap(Op.onList(forEach().toMap().get()).toArray((Type<Map<T, T>>)((Type<?>)Types.MAP_OF_UNKNOWN_UNKNOWN)).get()).get()));
+        return toListOfMap().toArrayOfMap();
     }
 
 
     public Level0ListOfMapOperator<T, T,I> toListOfMap() {
-        return new Level0ListOfMapOperatorImpl<T, T,I>(getTarget().replaceWith(forEach().toMap().endFor().get()));
+        return forEach().toMap().endFor();
     }
 
 
     public Level0SetOfMapOperator<T, T,I> toSetOfMap() {
-        return new Level0SetOfMapOperatorImpl<T, T,I>(getTarget().replaceWith(Op.onSetOfMap(Op.onList(forEach().toMap().get()).toSet().get()).get()));
+        return toListOfMap().toSetOfMap();
     }
 
 
