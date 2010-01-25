@@ -5,16 +5,20 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import junit.framework.TestCase;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.junit.Before;
 import org.junit.Test;
 import org.op4j.functions.ExecCtx;
+import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToCalendar;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.functions.evaluators.Ognl;
@@ -137,5 +141,179 @@ public class Tester extends TestCase {
 						result.get(index++));				
 			}
 		}
+	}
+	
+	@Test
+	public void test6() {
+		Integer[] data = this.testUtils.getIntegerArray(16);
+		
+		String[] result = Op.onArray(data)
+			.forEach(Types.INTEGER)
+			.eval(Ognl.forString("\"Value is \" + #target"))
+			.get();
+		
+		for (int index = 0; index < data.length; index++) {						
+			assertEquals("Value is " + data[index], 
+					result[index]);
+		}
+	}
+	
+	@Test
+	public void test7() {
+		Integer[] data = this.testUtils.getIntegerArray(16);
+		
+		Integer[] result = Op.onArray(data)
+			.forEach(Types.INTEGER)
+			.ifIndex(2, 4, 6, 10, 15)
+			.eval(Ognl.forInteger("#target + 10"))
+			.endIf()
+			.endFor()
+			.get();
+				
+		for (int index = 0; index < data.length; index++) {	
+			assertEquals(
+					ArrayUtils.contains((new int[] {2, 4, 6, 10, 15}), index) 
+						? Integer.valueOf(data[index].intValue() + 10) : data[index], 
+					result[index]);
+		}		
+	}
+	
+	@Test
+	public void test8() {
+		Map<Integer, String> data = this.testUtils.getMapOfIntegerString(5);
+		
+		Map<Integer, String> result = Op.onMap(data)
+			.forEachEntry()
+			.onValue()
+			.replaceWith("abc")
+			.get();
+			
+		assertEquals(data.size(), result.size());
+		for (Map.Entry<Integer, String> entry : result.entrySet()) {	
+			assertEquals(
+					"abc", 
+					entry.getValue());
+		}		
+	}
+	
+	@Test
+	public void test9() {
+		Map<Integer, List<String>> data = this.testUtils.getMapOfIntegerStringList(5);
+		Iterator<Integer> iterator = data.keySet().iterator();
+		Integer firstKey = iterator.next();
+		Integer secondKey = iterator.next();
+		Map<Integer, List<String>> result = Op.onMapOfList(data)
+			.forEachEntry()
+			.ifKeyNotEquals(firstKey, secondKey)
+			.onValue()
+			.add("added with op4j")
+			.get();
+			
+		assertEquals(data.size(), result.size());
+		int index = 0;
+		for (Map.Entry<Integer, List<String>> entry : result.entrySet()) {	
+			if (index < 2) {
+				assertEquals(
+						data.get(entry.getKey()), 
+						entry.getValue());
+			} else {
+				assertEquals(
+						Op.onList(data.get(entry.getKey())).add("added with op4j").get(), 
+						entry.getValue());
+			}
+			index++;
+		}		
+	}
+	
+	@Test
+	public void test10() {
+		Map<Integer, Calendar[]> data = this.testUtils.getMapOfIntegerCalendarArray(13);
+		
+		
+		Map<Integer, Calendar[]> result = Op.onMapOfArray(data)
+			.forEachEntry()
+			.onValue()
+			.forEach(Types.CALENDAR)
+			.exec(new IFunction<Calendar, Calendar>() {
+				public Calendar execute(Calendar object, ExecCtx ctx)
+						throws Exception {
+					Calendar calendar = Calendar.getInstance();
+					calendar.setTime(object.getTime());
+					calendar.set(Calendar.YEAR, 2000);
+					return calendar;
+				}
+				public Type<? extends Calendar> getResultType(
+						Type<? extends Calendar> targetType) {
+					return Types.CALENDAR;
+				}
+			})
+			.endFor()
+			.get();
+			
+		assertEquals(data.size(), result.size());
+		for (Map.Entry<Integer, Calendar[]> entry : result.entrySet()) {	
+			int index = 0;
+			for (Calendar calendar : entry.getValue()) {
+				Calendar original = Calendar.getInstance();
+				original.setTime(data.get(entry.getKey())[index].getTime());
+				original.set(Calendar.YEAR, 2000);
+				assertEquals(
+						original, 
+						calendar);
+				index++;
+			}				
+		}		
+	}
+	
+	@Test
+	public void test11() {
+		Map<Integer, Map<Integer, String[]>> data = this.testUtils.getMapOfIntegerMapOfIntegerStringArray(11);
+		
+		Map<Integer, Map<Integer, String[]>> result = Op.onMapOfMap(data)
+			.forEachEntry()
+			.onValue()
+			.forEachEntry()
+			.ifKeyNotEquals(Integer.valueOf(2), Integer.valueOf(33), Integer.valueOf(17))
+			.onValue()
+			.ifTrue(new IEvaluator<Boolean, String[]>() {
+				public Boolean execute(String[] object, ExecCtx ctx)
+						throws Exception {
+					return Boolean.valueOf(object.length > 3);					
+				}
+				public Type<? extends Boolean> getResultType(
+						Type<? extends String[]> targetType) {
+					return Types.BOOLEAN;
+				}
+			})
+			.exec(new IFunction<String[], String[]>() {
+				public String[] execute(String[] object, ExecCtx ctx)
+						throws Exception {					
+					return Op.onArray(object).add("value added with ifunction").get();
+				}
+				public Type<? extends String[]> getResultType(
+						Type<? extends String[]> targetType) {
+					return Types.ARRAY_OF_STRING;
+				}
+			})
+			.get();
+		
+			
+		assertEquals(data.size(), result.size());
+		for (Map.Entry<Integer, Map<Integer, String[]>> entry1 : result.entrySet()) {				
+			for (Map.Entry<Integer, String[]> entry2 : entry1.getValue().entrySet()) {
+				if (ArrayUtils.contains(new Integer[] {Integer.valueOf(2), Integer.valueOf(33), Integer.valueOf(17)}, 
+						entry2.getKey())) {
+					assertEquals(data.get(entry1.getKey()).get(entry2.getKey()), entry2.getValue());
+				} else {
+					if (entry2.getValue().length > 3) {						
+						assertEquals(Op.onArray(data.get(entry1.getKey()).get(entry2.getKey()))
+								.add("value added with ifunction").get(), 
+								entry2.getValue());						
+					} else {
+						assertEquals(data.get(entry1.getKey()).get(entry2.getKey()), entry2.getValue());
+					}
+				}				
+			}				
+		}		
 	}
 }
