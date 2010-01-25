@@ -32,7 +32,7 @@ import org.op4j.operators.intf.mapofarray.Level0MapOfArrayOperator;
  */
 public interface ConvertibleToMapOfArrayOperator<K,V> {
     
-    public Level0MapOfArrayOperator<K,V> toMapOfArray(final Type<V> of);
+    public Level0MapOfArrayOperator<K,V> toMapOfArrayOf(final Type<V> type);
     
 
     

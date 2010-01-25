@@ -141,14 +141,14 @@ public interface Level0ArrayOfArrayOperator<T>
     
     public Level0ArrayOfSetOperator<T> toArrayOfSet();
     
-    public Level0ListOfArrayOperator<T> toListOfArray(final Type<T> of);
+    public Level0ListOfArrayOperator<T> toListOfArrayOf(final Type<T> type);
     
     
     public Level0ListOfListOperator<T> toListOfList();
     
     public Level0ListOfSetOperator<T> toListOfSet();
     
-    public Level0SetOfArrayOperator<T> toSetOfArray(final Type<T> of);
+    public Level0SetOfArrayOperator<T> toSetOfArrayOf(final Type<T> type);
     
     
     public Level0SetOfListOperator<T> toSetOfList();

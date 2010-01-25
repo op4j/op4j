@@ -104,7 +104,7 @@ public interface Level1ArrayOfSetElementsOperator<T>
     public Level1ArrayOfSetElementsOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
     public Level1ArrayOfSetElementsOperator<T> removeAllIndexesNot(final int... indices);
     public Level1ArrayOfSetElementsOperator<T> removeAllNull();
-    public Level1ArrayOfArrayElementsOperator<T> toArray(final Type<T> of);
+    public Level1ArrayOfArrayElementsOperator<T> toArrayOf(final Type<T> type);
     
     
     public Level1ArrayOfListElementsOperator<T> toList();

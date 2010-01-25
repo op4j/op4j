@@ -165,8 +165,8 @@ public class Level2MapOfSetEntriesValueOperatorImpl<K,V> extends AbstractOperato
     }
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, V> toArray(final Type<V> of) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ToArray.FromCollection<V>(of)));
+    public Level2MapOfArrayEntriesValueOperator<K, V> toArrayOf(final Type<V> type) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ToArray.FromCollection<V>(type)));
     }
 
 

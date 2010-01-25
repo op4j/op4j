@@ -169,8 +169,8 @@ public class Level0SetOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ArrayOfArrayOperator<T> toArrayOfArray(final Type<T> of) {
-        return new Level0ArrayOfArrayOperatorImpl<T>(getTarget().execute(new ToArray.FromCollection<T[]>(Types.arrayOf(of))));
+    public Level0ArrayOfArrayOperator<T> toArrayOfArrayOf(final Type<T> type) {
+        return new Level0ArrayOfArrayOperatorImpl<T>(getTarget().execute(new ToArray.FromCollection<T[]>(Types.arrayOf(type))));
     }
 
 
@@ -194,7 +194,7 @@ public class Level0SetOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListOfArrayOperator<T> toListOfArray(final Type<T> of) {
+    public Level0ListOfArrayOperator<T> toListOfArrayOf(final Type<T> type) {
         return new Level0ListOfArrayOperatorImpl<T>(getTarget().execute(new ToList.FromCollection<T[]>()));
     }
 

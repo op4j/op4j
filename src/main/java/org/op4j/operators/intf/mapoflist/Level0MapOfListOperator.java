@@ -100,7 +100,7 @@ public interface Level0MapOfListOperator<K,V>
     public Level0MapOfListOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,List<V>>> eval);
     public Level0MapOfListOperator<K,V> removeAllKeysNot(final K... keys);
     
-    public Level0MapOfArrayOperator<K,V> toMapOfArray(final Type<V> of);
+    public Level0MapOfArrayOperator<K,V> toMapOfArrayOf(final Type<V> type);
     
     
     public Level0MapOfSetOperator<K,V> toMapOfSet();

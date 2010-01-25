@@ -135,7 +135,7 @@ public interface Level0ListOfArrayOperator<T>
     public Level0ListOfArrayOperator<T> removeAllIndexesNot(final int... indices);
     public Level0ListOfArrayOperator<T> removeAllNull();
     
-    public Level0ArrayOfArrayOperator<T> toArrayOfArray(final Type<T> of);
+    public Level0ArrayOfArrayOperator<T> toArrayOfArrayOf(final Type<T> type);
     
     public Level0ArrayOfListOperator<T> toArrayOfList();
     
@@ -145,7 +145,7 @@ public interface Level0ListOfArrayOperator<T>
     
     public Level0ListOfSetOperator<T> toListOfSet();
     
-    public Level0SetOfArrayOperator<T> toSetOfArray(final Type<T> of);
+    public Level0SetOfArrayOperator<T> toSetOfArrayOf(final Type<T> type);
     
     
     public Level0SetOfListOperator<T> toSetOfList();

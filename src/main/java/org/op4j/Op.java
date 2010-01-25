@@ -632,7 +632,7 @@ watch.start();
         
         System.out.println(Op.onArray(stringsArr1).toSet().get());
         System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).forEach().toSet().get()));
-        System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).toArrayOfArray(Types.STRING).get()));
+        System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).toArrayOfArrayOf(Types.STRING).get()));
         
         final List<String[]> listOfStringArray1 = new ArrayList<String[]>();
         listOfStringArray1.add(Op.onAll("Hola", "Hello", "Ciao", "Ola").buildArray(Types.STRING).get());
@@ -654,13 +654,13 @@ watch.start();
         setOfStringSet1.add(Op.onAll("Hola", "Hello", "Ciao", "Ola").buildSet().get());
         setOfStringSet1.add(Op.onAll("Adios", "Goodbye", "Ciao", "Adéus").buildSet().get());
         
-        System.out.println(printArray(Op.onListOfArray(listOfStringArray1).toArrayOfArray(Types.STRING).get()));
-        System.out.println(printArray(Op.onListOfList(listOfListOfString1).toArrayOfArray(Types.STRING).get()));
-        System.out.println(printArray(Op.onListOfSet(listOfStringSet1).toArrayOfArray(Types.STRING).get()));
+        System.out.println(printArray(Op.onListOfArray(listOfStringArray1).toArrayOfArrayOf(Types.STRING).get()));
+        System.out.println(printArray(Op.onListOfList(listOfListOfString1).toArrayOfArrayOf(Types.STRING).get()));
+        System.out.println(printArray(Op.onListOfSet(listOfStringSet1).toArrayOfArrayOf(Types.STRING).get()));
         
-        System.out.println(printArray(Op.onSetOfArray(setOfStringArray1).toArrayOfArray(Types.STRING).get()));
-        System.out.println(printArray(Op.onSetOfList(setOfStringList1).toArrayOfArray(Types.STRING).get()));
-        System.out.println(printArray(Op.onSetOfSet(setOfStringSet1).toArrayOfArray(Types.STRING).get()));
+        System.out.println(printArray(Op.onSetOfArray(setOfStringArray1).toArrayOfArrayOf(Types.STRING).get()));
+        System.out.println(printArray(Op.onSetOfList(setOfStringList1).toArrayOfArrayOf(Types.STRING).get()));
+        System.out.println(printArray(Op.onSetOfSet(setOfStringSet1).toArrayOfArrayOf(Types.STRING).get()));
 
         
         System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).toArrayOfList().get()));

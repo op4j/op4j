@@ -159,8 +159,8 @@ public class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ArrayOperator<T> toArray(final Type<T> of) {
-        return new Level0ArrayOperatorImpl<T>(getTarget().execute(new ToArray.FromCollection<T>(of)));
+    public Level0ArrayOperator<T> toArrayOf(final Type<T> type) {
+        return new Level0ArrayOperatorImpl<T>(getTarget().execute(new ToArray.FromCollection<T>(type)));
     }
 
 

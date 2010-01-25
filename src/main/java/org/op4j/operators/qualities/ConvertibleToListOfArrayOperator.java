@@ -32,7 +32,7 @@ import org.op4j.operators.intf.listofarray.Level0ListOfArrayOperator;
  */
 public interface ConvertibleToListOfArrayOperator<T> {
     
-    public Level0ListOfArrayOperator<T> toListOfArray(final Type<T> of);
+    public Level0ListOfArrayOperator<T> toListOfArrayOf(final Type<T> type);
     
 
     

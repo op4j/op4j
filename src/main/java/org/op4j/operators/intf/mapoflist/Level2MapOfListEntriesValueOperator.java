@@ -109,7 +109,7 @@ public interface Level2MapOfListEntriesValueOperator<K,V>
     public Level2MapOfListEntriesValueOperator<K,V> removeAllNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
     public Level2MapOfListEntriesValueOperator<K,V> removeAllIndexesNot(final int... indices);
     public Level2MapOfListEntriesValueOperator<K,V> removeAllNull();
-    public Level2MapOfArrayEntriesValueOperator<K,V> toArray(final Type<V> of);
+    public Level2MapOfArrayEntriesValueOperator<K,V> toArrayOf(final Type<V> type);
     
     
     public Level2MapOfSetEntriesValueOperator<K,V> toSet();

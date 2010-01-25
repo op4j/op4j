@@ -172,8 +172,8 @@ public class Level0ArrayOfSetOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ArrayOfArrayOperator<T> toArrayOfArray(final Type<T> of) {
-        return forEach().toArray(of).endFor();
+    public Level0ArrayOfArrayOperator<T> toArrayOfArrayOf(final Type<T> type) {
+        return forEach().toArrayOf(type).endFor();
     }
 
 
@@ -192,8 +192,8 @@ public class Level0ArrayOfSetOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListOfArrayOperator<T> toListOfArray(final Type<T> of) {
-        return toArrayOfArray(of).toListOfArray(of);
+    public Level0ListOfArrayOperator<T> toListOfArrayOf(final Type<T> type) {
+        return toArrayOfArrayOf(type).toListOfArrayOf(type);
     }
 
 
@@ -217,8 +217,8 @@ public class Level0ArrayOfSetOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0SetOfArrayOperator<T> toSetOfArray(final Type<T> of) {
-        return toArrayOfArray(of).toSetOfArray(of);
+    public Level0SetOfArrayOperator<T> toSetOfArrayOf(final Type<T> type) {
+        return toArrayOfArrayOf(type).toSetOfArrayOf(type);
     }
 
 

@@ -145,8 +145,8 @@ public class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapOfArrayOperator<K, V> toMapOfArray(final Type<V> of) {
-        return forEachEntry().onValue().toArray(of).endOn().endFor();
+    public Level0MapOfArrayOperator<K, V> toMapOfArrayOf(final Type<V> type) {
+        return forEachEntry().onValue().toArrayOf(type).endOn().endFor();
     }
 
 

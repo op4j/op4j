@@ -32,7 +32,7 @@ import org.op4j.operators.intf.setofarray.Level0SetOfArrayOperator;
  */
 public interface ConvertibleToSetOfArrayOperator<T> {
     
-    public Level0SetOfArrayOperator<T> toSetOfArray(final Type<T> of);
+    public Level0SetOfArrayOperator<T> toSetOfArrayOf(final Type<T> type);
     
 
     

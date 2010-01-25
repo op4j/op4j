@@ -1,2 +1,4 @@
 
+  - Remove "StringFunc" from names of classes in StringFunc
+
   - Should the "add" of arrays have the same name as the "add" of generic operators? (they work on different dimensions!)

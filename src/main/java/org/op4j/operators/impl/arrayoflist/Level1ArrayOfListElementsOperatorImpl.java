@@ -167,8 +167,8 @@ public class Level1ArrayOfListElementsOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
-    public Level1ArrayOfArrayElementsOperator<T> toArray(final Type<T> of) {
-        return new Level1ArrayOfArrayElementsOperatorImpl<T>(Types.arrayOf(of), getTarget().execute(new ToArray.FromCollection<T>(of)));
+    public Level1ArrayOfArrayElementsOperator<T> toArrayOf(final Type<T> type) {
+        return new Level1ArrayOfArrayElementsOperatorImpl<T>(Types.arrayOf(type), getTarget().execute(new ToArray.FromCollection<T>(type)));
     }
 
 

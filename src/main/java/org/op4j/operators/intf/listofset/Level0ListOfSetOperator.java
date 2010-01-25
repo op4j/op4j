@@ -137,18 +137,18 @@ public interface Level0ListOfSetOperator<T>
     public Level0ListOfSetOperator<T> removeAllNull();
     
     
-    public Level0ArrayOfArrayOperator<T> toArrayOfArray(final Type<T> of);
+    public Level0ArrayOfArrayOperator<T> toArrayOfArrayOf(final Type<T> type);
     
     public Level0ArrayOfListOperator<T> toArrayOfList();
     
     public Level0ArrayOfSetOperator<T> toArrayOfSet();
     
-    public Level0ListOfArrayOperator<T> toListOfArray(final Type<T> of);
+    public Level0ListOfArrayOperator<T> toListOfArrayOf(final Type<T> type);
     
     
     public Level0ListOfListOperator<T> toListOfList();
     
-    public Level0SetOfArrayOperator<T> toSetOfArray(final Type<T> of);
+    public Level0SetOfArrayOperator<T> toSetOfArrayOf(final Type<T> type);
     
     
     public Level0SetOfListOperator<T> toSetOfList();

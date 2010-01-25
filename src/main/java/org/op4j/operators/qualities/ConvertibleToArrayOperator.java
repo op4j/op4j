@@ -32,6 +32,6 @@ import org.javaruntype.type.Type;
  */
 public interface ConvertibleToArrayOperator<T> {
     
-    public Operator toArray(final Type<T> of);
+    public Operator toArrayOf(final Type<T> type);
     
 }
