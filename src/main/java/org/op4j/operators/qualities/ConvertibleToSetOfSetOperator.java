@@ -29,9 +29,9 @@ import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ConvertibleToSetOfSetOperator<T,I> {
+public interface ConvertibleToSetOfSetOperator<T> {
     
-    public Level0SetOfSetOperator<T,I> toSetOfSet();
+    public Level0SetOfSetOperator<T> toSetOfSet();
     
     
 }

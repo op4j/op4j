@@ -31,10 +31,10 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface NavigableMapEntryOperator<I> {
+public interface NavigableMapEntryOperator {
 
-    public NavigatingMapEntryOperator<I> onKey();
+    public NavigatingMapEntryOperator onKey();
     
-    public NavigatingMapEntryOperator<I> onValue();
+    public NavigatingMapEntryOperator onValue();
 	
 }

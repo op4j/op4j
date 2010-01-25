@@ -28,7 +28,7 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface DistinguishableOperator<I> {
+public interface DistinguishableOperator {
 
     public Operator distinct();
     

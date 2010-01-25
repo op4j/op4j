@@ -37,25 +37,25 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level4MapOfMapSelectedEntriesSelectedValueEntriesKeySelectedOperator<K1,K2,V,I>
-        extends UniqOperator<Map<K1,Map<K2,V>>,I>,
-                ExecutableSelectedOperator<K2,I>,
-                ReplaceableOperator<K2,I>,
-                SelectedOperator<K2,I> {
+public interface Level4MapOfMapSelectedEntriesSelectedValueEntriesKeySelectedOperator<K1,K2,V>
+        extends UniqOperator<Map<K1,Map<K2,V>>>,
+                ExecutableSelectedOperator<K2>,
+                ReplaceableOperator<K2>,
+                SelectedOperator<K2> {
 
 
 
-    public Level4MapOfMapSelectedEntriesSelectedValueEntriesKeyOperator<K1,K2,V,I> endIf();
+    public Level4MapOfMapSelectedEntriesSelectedValueEntriesKeyOperator<K1,K2,V> endIf();
 
 
-    public Level4MapOfMapSelectedEntriesSelectedValueEntriesKeySelectedOperator<K1,K2,V,I> replaceWith(final K2 replacement);
+    public Level4MapOfMapSelectedEntriesSelectedValueEntriesKeySelectedOperator<K1,K2,V> replaceWith(final K2 replacement);
 
 
-    public Level4MapOfMapSelectedEntriesSelectedValueEntriesKeySelectedOperator<K1,K2,V,I> exec(final IFunction<? extends K2, ? super K2> function);
+    public Level4MapOfMapSelectedEntriesSelectedValueEntriesKeySelectedOperator<K1,K2,V> exec(final IFunction<? extends K2, ? super K2> function);
     
-    public Level4MapOfMapSelectedEntriesSelectedValueEntriesKeySelectedOperator<K1,K2,V,I> eval(final IEvaluator<? extends K2,? super K2> eval);
+    public Level4MapOfMapSelectedEntriesSelectedValueEntriesKeySelectedOperator<K1,K2,V> eval(final IEvaluator<? extends K2,? super K2> eval);
     
-    public Level4MapOfMapSelectedEntriesSelectedValueEntriesKeySelectedOperator<K1,K2,V,I> convert(final IConverter<? extends K2,? super K2> converter);
+    public Level4MapOfMapSelectedEntriesSelectedValueEntriesKeySelectedOperator<K1,K2,V> convert(final IConverter<? extends K2,? super K2> converter);
 
         
 }

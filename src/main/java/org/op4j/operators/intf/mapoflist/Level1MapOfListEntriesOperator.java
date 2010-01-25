@@ -42,42 +42,42 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level1MapOfListEntriesOperator<K,V,I>
-		extends UniqOperator<Map<K,List<V>>,I>,
-		        NavigableMapEntryOperator<I>,
-                ExecutableMapOfListEntryOperator<K,V,I>,
-                SelectableMapEntryOperator<K, List<V>,I>,
-                ReplaceableOperator<Map.Entry<K,List<V>>,I>,
-		        NavigatingMapOperator<K,List<V>,I> {
+public interface Level1MapOfListEntriesOperator<K,V>
+		extends UniqOperator<Map<K,List<V>>>,
+		        NavigableMapEntryOperator,
+                ExecutableMapOfListEntryOperator<K,V>,
+                SelectableMapEntryOperator<K, List<V>>,
+                ReplaceableOperator<Map.Entry<K,List<V>>>,
+		        NavigatingMapOperator<K,List<V>> {
 
 
-    public Level1MapOfListEntriesSelectedOperator<K,V,I> ifIndex(final int... indices);
-    public Level1MapOfListEntriesSelectedOperator<K,V,I> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K, List<V>>> eval);
-    public Level1MapOfListEntriesSelectedOperator<K,V,I> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K, List<V>>> eval);
-    public Level1MapOfListEntriesSelectedOperator<K,V,I> ifIndexNot(final int... indices);
-    public Level1MapOfListEntriesSelectedOperator<K,V,I> ifKeyEquals(final K... keys);
-    public Level1MapOfListEntriesSelectedOperator<K,V,I> ifKeyNotEquals(final K... keys);
+    public Level1MapOfListEntriesSelectedOperator<K,V> ifIndex(final int... indices);
+    public Level1MapOfListEntriesSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K, List<V>>> eval);
+    public Level1MapOfListEntriesSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K, List<V>>> eval);
+    public Level1MapOfListEntriesSelectedOperator<K,V> ifIndexNot(final int... indices);
+    public Level1MapOfListEntriesSelectedOperator<K,V> ifKeyEquals(final K... keys);
+    public Level1MapOfListEntriesSelectedOperator<K,V> ifKeyNotEquals(final K... keys);
     
     
-    public Level2MapOfListEntriesKeyOperator<K,V,I> onKey();
-    public Level2MapOfListEntriesValueOperator<K,V,I> onValue();
+    public Level2MapOfListEntriesKeyOperator<K,V> onKey();
+    public Level2MapOfListEntriesValueOperator<K,V> onValue();
     
-    public Level0MapOfListOperator<K,V,I> endFor();
+    public Level0MapOfListOperator<K,V> endFor();
     
-    public <X,Y> Level1MapOfListEntriesOperator<X,Y,I> exec(final IFunction<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> function);
+    public <X,Y> Level1MapOfListEntriesOperator<X,Y> exec(final IFunction<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> function);
     
-    public <X,Y> Level1MapOfListEntriesOperator<X,Y,I> eval(final IEvaluator<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> eval);
+    public <X,Y> Level1MapOfListEntriesOperator<X,Y> eval(final IEvaluator<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> eval);
     
-    public Level1MapOfListEntriesOperator<K,V,I> replaceWith(final Map.Entry<K,List<V>> replacement);
+    public Level1MapOfListEntriesOperator<K,V> replaceWith(final Map.Entry<K,List<V>> replacement);
 
 
-    public <X,Y> Level1MapOfListEntriesOperator<X,Y,I> convert(final IConverter<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> converter);
+    public <X,Y> Level1MapOfListEntriesOperator<X,Y> convert(final IConverter<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> converter);
 
-    public <X> Level0GenericUniqOperator<X,I> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K,List<V>>> function);
+    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K,List<V>>> function);
     
-    public <X> Level0GenericUniqOperator<X,I> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map.Entry<K,List<V>>> eval);
+    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map.Entry<K,List<V>>> eval);
     
-    public <X> Level0GenericUniqOperator<X,I> convert(final Type<X> resultType, final IConverter<? extends X,? super Map.Entry<K,List<V>>> converter);    
+    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Map.Entry<K,List<V>>> converter);    
 
     
 }

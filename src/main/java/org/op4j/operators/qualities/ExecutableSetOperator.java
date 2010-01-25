@@ -36,13 +36,13 @@ import org.op4j.functions.evaluators.IEvaluator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ExecutableSetOperator<T,I> {
+public interface ExecutableSetOperator<T> {
 
-    public <X> ExecutableSetOperator<X,I> exec(final IFunction<? extends Set<X>, ? super Set<T>> function);
+    public <X> ExecutableSetOperator<X> exec(final IFunction<? extends Set<X>, ? super Set<T>> function);
     
-    public <X> ExecutableSetOperator<X,I> eval(final IEvaluator<? extends Set<X>,? super Set<T>> eval);
+    public <X> ExecutableSetOperator<X> eval(final IEvaluator<? extends Set<X>,? super Set<T>> eval);
     
-    public <X> ExecutableSetOperator<X,I> convert(final IConverter<? extends Set<X>,? super Set<T>> converter);
+    public <X> ExecutableSetOperator<X> convert(final IConverter<? extends Set<X>,? super Set<T>> converter);
 
     public <X> Operator exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<T>> function);
     

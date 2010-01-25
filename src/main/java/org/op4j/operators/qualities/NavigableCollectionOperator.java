@@ -26,8 +26,8 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface NavigableCollectionOperator<T,I>  {
+public interface NavigableCollectionOperator<T>  {
 
-    public NavigatingCollectionOperator<T,I> forEach();
+    public NavigatingCollectionOperator<T> forEach();
 	
 }

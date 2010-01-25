@@ -29,11 +29,10 @@ package org.op4j.exceptions;
  */
 public class ZeroSizeTargetException extends RuntimeException {
 
-	private static final long serialVersionUID = 2917055239442829002L;
+    private static final long serialVersionUID = 1478547461623850572L;
 
-	
-	public ZeroSizeTargetException() {
-        super("Cannot operate on empty target");
+    public ZeroSizeTargetException() {
+        super("Last operator has returned zero targets, but an operator cannot work on zero targets");
     }
 
     

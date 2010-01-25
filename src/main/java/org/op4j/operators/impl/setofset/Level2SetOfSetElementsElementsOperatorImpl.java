@@ -26,7 +26,6 @@ import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operations.Operation;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.setofset.Level1SetOfSetElementsOperator;
 import org.op4j.operators.intf.setofset.Level2SetOfSetElementsElementsOperator;
@@ -43,8 +42,8 @@ import org.op4j.target.Target.Structure;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level2SetOfSetElementsElementsOperatorImpl<T,I> extends AbstractOperatorImpl
-        implements Level2SetOfSetElementsElementsOperator<T,I>  {
+public class Level2SetOfSetElementsElementsOperatorImpl<T> extends AbstractOperatorImpl
+        implements Level2SetOfSetElementsElementsOperator<T>  {
 
     
     public Level2SetOfSetElementsElementsOperatorImpl(final Target target) {
@@ -52,16 +51,16 @@ public class Level2SetOfSetElementsElementsOperatorImpl<T,I> extends AbstractOpe
     }
 
 
-    public Level1SetOfSetElementsOperator<T,I> endFor() {
-        return new Level1SetOfSetElementsOperatorImpl<T,I>(getTarget().endIterate(Structure.SET, null));
+    public Level1SetOfSetElementsOperator<T> endFor() {
+        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().endIterate(Structure.SET, null));
     }
 
 
-    public <X> Level2SetOfSetElementsElementsOperator<X,I> asType(final Type<X> type) {
+    public <X> Level2SetOfSetElementsElementsOperator<X> asType(final Type<X> type) {
     	return endFor().endFor().generic().asSetOfSetOf(type).forEach().forEach();
     }
 
-    public Level2SetOfSetElementsElementsOperator<?,I> asUnknown() {
+    public Level2SetOfSetElementsElementsOperator<?> asUnknown() {
         return asType(Types.OBJECT);
     }
 
@@ -71,83 +70,81 @@ public class Level2SetOfSetElementsElementsOperatorImpl<T,I> extends AbstractOpe
     }
 
 
-    public Level2SetOfSetElementsElementsSelectedOperator<T,I> ifIndex(final int... indices) {
-        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T,I>(getTarget().selectIndex(indices));
+    public Level2SetOfSetElementsElementsSelectedOperator<T> ifIndex(final int... indices) {
+        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectIndex(indices));
     }
 
 
-    public Level2SetOfSetElementsElementsSelectedOperator<T,I> ifIndexNot(final int... indices) {
-        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T,I>(getTarget().selectIndexNot(indices));
+    public Level2SetOfSetElementsElementsSelectedOperator<T> ifIndexNot(final int... indices) {
+        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectIndexNot(indices));
     }
 
 
-    public Level2SetOfSetElementsElementsSelectedOperator<T,I> ifTrue(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T,I>(getTarget().selectMatching(eval));
+    public Level2SetOfSetElementsElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectMatching(eval));
     }
 
 
-    public Level2SetOfSetElementsElementsSelectedOperator<T,I> ifFalse(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T,I>(getTarget().selectNotMatching(eval));
+    public Level2SetOfSetElementsElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectNotMatching(eval));
     }
 
 
-    public Level2SetOfSetElementsElementsSelectedOperator<T,I> ifNotNull() {
-        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T,I>(getTarget().selectNotNull());
+    public Level2SetOfSetElementsElementsSelectedOperator<T> ifNotNull() {
+        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectNotNull());
     }
 
 
-    public Level2SetOfSetElementsElementsSelectedOperator<T,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T,I>(getTarget().selectNotNullAndMatching(eval));
+    public Level2SetOfSetElementsElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level2SetOfSetElementsElementsSelectedOperator<T,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T,I>(getTarget().selectNotNullAndNotMatching(eval));
+    public Level2SetOfSetElementsElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
 
-    public Level2SetOfSetElementsElementsSelectedOperator<T,I> ifNull() {
-        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T,I>(getTarget().selectNull());
+    public Level2SetOfSetElementsElementsSelectedOperator<T> ifNull() {
+        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectNull());
     }
 
 
-    public Level2SetOfSetElementsElementsSelectedOperator<T,I> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T,I>(getTarget().selectNullOrMatching(eval));
+    public Level2SetOfSetElementsElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level2SetOfSetElementsElementsSelectedOperator<T,I> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T,I>(getTarget().selectNullOrNotMatching(eval));
+    public Level2SetOfSetElementsElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public <X> Level2SetOfSetElementsElementsOperator<X,I> convert(final IConverter<X, ? super T> converter) {
-        return new Level2SetOfSetElementsElementsOperatorImpl<X,I>(getTarget().execute(converter, Normalization.NONE));
+    public <X> Level2SetOfSetElementsElementsOperator<X> convert(final IConverter<X, ? super T> converter) {
+        return new Level2SetOfSetElementsElementsOperatorImpl<X>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
-    public <X> Level2SetOfSetElementsElementsOperator<X,I> eval(final IEvaluator<X, ? super T> eval) {
-        return new Level2SetOfSetElementsElementsOperatorImpl<X,I>(getTarget().execute(eval, Normalization.NONE));
+    public <X> Level2SetOfSetElementsElementsOperator<X> eval(final IEvaluator<X, ? super T> eval) {
+        return new Level2SetOfSetElementsElementsOperatorImpl<X>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
-    public <X> Level2SetOfSetElementsElementsOperator<X,I> exec(final IFunction<X, ? super T> function) {
-        return new Level2SetOfSetElementsElementsOperatorImpl<X,I>(getTarget().execute(function, Normalization.NONE));
+    public <X> Level2SetOfSetElementsElementsOperator<X> exec(final IFunction<X, ? super T> function) {
+        return new Level2SetOfSetElementsElementsOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
     }
 
 
-    public Level2SetOfSetElementsElementsOperator<T,I> replaceWith(final T replacement) {
-        return new Level2SetOfSetElementsElementsOperatorImpl<T,I>(getTarget().replaceWith(replacement));
+    public Level2SetOfSetElementsElementsOperator<T> replaceWith(final T replacement) {
+        return new Level2SetOfSetElementsElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level2SetOfSetElementsElementsOperator<T,I> replaceIfNullWith(final T replacement) {
+    public Level2SetOfSetElementsElementsOperator<T> replaceIfNullWith(final T replacement) {
         return ifNull().replaceWith(replacement).endIf();
     }
 
 
-    public Operation<Set<Set<T>>, I> createOperation() {
-        return endFor().createOperation();
-    }
+    
 
 }

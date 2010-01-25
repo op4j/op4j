@@ -31,10 +31,10 @@ import org.op4j.operators.intf.listofmap.Level0ListOfMapOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ConvertibleToListOfMapOperator<T,I> {
+public interface ConvertibleToListOfMapOperator<T> {
     
-    public Level0ListOfMapOperator<T,T,I> toListOfMap();
-    public <K> Level0ListOfMapOperator<K,T,I> toListOfMap(final IEvaluator<K,? super T> keyEval);
-    public <K,V> Level0ListOfMapOperator<K,V,I> toListOfMap(final IMapBuilder<K,V,? super T> mapBuild);
+    public Level0ListOfMapOperator<T,T> toListOfMap();
+    public <K> Level0ListOfMapOperator<K,T> toListOfMap(final IEvaluator<K,? super T> keyEval);
+    public <K,V> Level0ListOfMapOperator<K,V> toListOfMap(final IMapBuilder<K,V,? super T> mapBuild);
 
 }

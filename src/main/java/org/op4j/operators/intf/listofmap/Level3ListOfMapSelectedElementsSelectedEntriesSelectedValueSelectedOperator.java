@@ -19,16 +19,16 @@
  */
 package org.op4j.operators.intf.listofmap;
 
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.UniqOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
 
 
 /**
@@ -38,24 +38,24 @@ import org.op4j.operators.qualities.ReplaceableOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueSelectedOperator<K,V,I>
-        extends UniqOperator<List<Map<K,V>>,I>,
-        		ExecutableSelectedOperator<V,I>,
-                ReplaceableOperator<V,I>,
-                SelectedOperator<V,I> {
+public interface Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueSelectedOperator<K,V>
+        extends UniqOperator<List<Map<K,V>>>,
+        		ExecutableSelectedOperator<V>,
+                ReplaceableOperator<V>,
+                SelectedOperator<V> {
 
 
 
-    public Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueOperator<K,V,I> endIf();
+    public Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueOperator<K,V> endIf();
 
     
-    public Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueSelectedOperator<K,V,I> convert(final IConverter<? extends V, ? super V> converter);
+    public Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueSelectedOperator<K,V> convert(final IConverter<? extends V, ? super V> converter);
     
-    public Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueSelectedOperator<K,V,I> eval(final IEvaluator<? extends V, ? super V> eval);
+    public Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueSelectedOperator<K,V> eval(final IEvaluator<? extends V, ? super V> eval);
 
-    public Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueSelectedOperator<K,V,I> replaceWith(final V replacement);
+    public Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueSelectedOperator<K,V> replaceWith(final V replacement);
 
-    public Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueSelectedOperator<K,V,I> exec(final IFunction<? extends V, ? super V> function);
+    public Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueSelectedOperator<K,V> exec(final IFunction<? extends V, ? super V> function);
     
         
 }

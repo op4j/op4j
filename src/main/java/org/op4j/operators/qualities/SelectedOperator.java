@@ -31,8 +31,8 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface SelectedOperator<T,I> {
+public interface SelectedOperator<T> {
 
-    public SelectableOperator<T,I> endIf();
+    public SelectableOperator<T> endIf();
 	
 }

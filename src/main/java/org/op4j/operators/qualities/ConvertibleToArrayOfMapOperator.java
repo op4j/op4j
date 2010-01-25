@@ -31,11 +31,11 @@ import org.op4j.operators.intf.arrayofmap.Level0ArrayOfMapOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ConvertibleToArrayOfMapOperator<T,I> {
+public interface ConvertibleToArrayOfMapOperator<T> {
     
     
-    public Level0ArrayOfMapOperator<T,T,I> toArrayOfMap();
-    public <K> Level0ArrayOfMapOperator<K,T,I> toArrayOfMap(final IEvaluator<K,? super T> keyEval);
-    public <K,V> Level0ArrayOfMapOperator<K,V,I> toArrayOfMap(final IMapBuilder<K,V,? super T> mapBuild);
+    public Level0ArrayOfMapOperator<T,T> toArrayOfMap();
+    public <K> Level0ArrayOfMapOperator<K,T> toArrayOfMap(final IEvaluator<K,? super T> keyEval);
+    public <K,V> Level0ArrayOfMapOperator<K,V> toArrayOfMap(final IMapBuilder<K,V,? super T> mapBuild);
 
 }

@@ -52,88 +52,88 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level1ArrayOfSetElementsOperator<T,I>
-        extends UniqOperator<Set<T>[],I>,
-                NavigableCollectionOperator<T,I>,
-                NavigatingCollectionOperator<Set<T>,I>,
-		        SortableOperator<T,I>,
-		        CastableToSetOperator<I>,
-                ModifiableCollectionOperator<T,I>,
-                ExecutableSetOperator<T,I>,
-                SelectableOperator<Set<T>,I>,
-                ReplaceableOperator<Set<T>,I>,
-                ReplaceableIfNullOperator<Set<T>,I>,
-                ConvertibleToArrayOperator<T,I>,
-                ConvertibleToListOperator<I>,
-                ConvertibleToMapOperator<T,I> {
+public interface Level1ArrayOfSetElementsOperator<T>
+        extends UniqOperator<Set<T>[]>,
+                NavigableCollectionOperator<T>,
+                NavigatingCollectionOperator<Set<T>>,
+		        SortableOperator<T>,
+		        CastableToSetOperator,
+                ModifiableCollectionOperator<T>,
+                ExecutableSetOperator<T>,
+                SelectableOperator<Set<T>>,
+                ReplaceableOperator<Set<T>>,
+                ReplaceableIfNullOperator<Set<T>>,
+                ConvertibleToArrayOperator<T>,
+                ConvertibleToListOperator,
+                ConvertibleToMapOperator<T> {
 
 
 
-    public Level1ArrayOfSetElementsSelectedOperator<T,I> ifIndex(final int... indices);
-    public Level1ArrayOfSetElementsSelectedOperator<T,I> ifTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level1ArrayOfSetElementsSelectedOperator<T,I> ifFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level1ArrayOfSetElementsSelectedOperator<T,I> ifNullOrFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level1ArrayOfSetElementsSelectedOperator<T,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level1ArrayOfSetElementsSelectedOperator<T,I> ifNull();
-    public Level1ArrayOfSetElementsSelectedOperator<T,I> ifNullOrTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level1ArrayOfSetElementsSelectedOperator<T,I> ifIndexNot(final int... indices);
-    public Level1ArrayOfSetElementsSelectedOperator<T,I> ifNotNull();
-    public Level1ArrayOfSetElementsSelectedOperator<T,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level1ArrayOfSetElementsSelectedOperator<T> ifIndex(final int... indices);
+    public Level1ArrayOfSetElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level1ArrayOfSetElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level1ArrayOfSetElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level1ArrayOfSetElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level1ArrayOfSetElementsSelectedOperator<T> ifNull();
+    public Level1ArrayOfSetElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level1ArrayOfSetElementsSelectedOperator<T> ifIndexNot(final int... indices);
+    public Level1ArrayOfSetElementsSelectedOperator<T> ifNotNull();
+    public Level1ArrayOfSetElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
 
 
     
-    public Level2ArrayOfSetElementsElementsOperator<T,I> forEach();
+    public Level2ArrayOfSetElementsElementsOperator<T> forEach();
     
-    public Level0ArrayOfSetOperator<T,I> endFor();
+    public Level0ArrayOfSetOperator<T> endFor();
     
-    public Level1ArrayOfSetElementsOperator<T,I> sort();
-    public Level1ArrayOfSetElementsOperator<T,I> sort(final Comparator<? super T> comparator);
+    public Level1ArrayOfSetElementsOperator<T> sort();
+    public Level1ArrayOfSetElementsOperator<T> sort(final Comparator<? super T> comparator);
         
-    public Level1ArrayOfSetElementsOperator<T,I> add(final T newElement);
-    public Level1ArrayOfSetElementsOperator<T,I> addAll(final T... newElements);
-    public Level1ArrayOfSetElementsOperator<T,I> insert(final int position, final T newElement);
-    public Level1ArrayOfSetElementsOperator<T,I> insertAll(final int position, final T... newElements);
-    public Level1ArrayOfSetElementsOperator<T,I> addAll(final Collection<T> collection);
-    public Level1ArrayOfSetElementsOperator<T,I> removeAllIndexes(final int... indices);
-    public Level1ArrayOfSetElementsOperator<T,I> removeAllEqual(final T... values);
-    public Level1ArrayOfSetElementsOperator<T,I> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArrayOfSetElementsOperator<T,I> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArrayOfSetElementsOperator<T,I> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArrayOfSetElementsOperator<T,I> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArrayOfSetElementsOperator<T,I> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArrayOfSetElementsOperator<T,I> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArrayOfSetElementsOperator<T,I> removeAllIndexesNot(final int... indices);
-    public Level1ArrayOfSetElementsOperator<T,I> removeAllNull();
-    public Level1ArrayOfArrayElementsOperator<T,I> toArray(final Type<T> of);
+    public Level1ArrayOfSetElementsOperator<T> add(final T newElement);
+    public Level1ArrayOfSetElementsOperator<T> addAll(final T... newElements);
+    public Level1ArrayOfSetElementsOperator<T> insert(final int position, final T newElement);
+    public Level1ArrayOfSetElementsOperator<T> insertAll(final int position, final T... newElements);
+    public Level1ArrayOfSetElementsOperator<T> addAll(final Collection<T> collection);
+    public Level1ArrayOfSetElementsOperator<T> removeAllIndexes(final int... indices);
+    public Level1ArrayOfSetElementsOperator<T> removeAllEqual(final T... values);
+    public Level1ArrayOfSetElementsOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArrayOfSetElementsOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArrayOfSetElementsOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArrayOfSetElementsOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArrayOfSetElementsOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArrayOfSetElementsOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArrayOfSetElementsOperator<T> removeAllIndexesNot(final int... indices);
+    public Level1ArrayOfSetElementsOperator<T> removeAllNull();
+    public Level1ArrayOfArrayElementsOperator<T> toArray(final Type<T> of);
     
     
-    public Level1ArrayOfListElementsOperator<T,I> toList();
+    public Level1ArrayOfListElementsOperator<T> toList();
     
-    public Level1ArrayOfMapElementsOperator<T,T,I> toMap();
-    public <K> Level1ArrayOfMapElementsOperator<K,T,I> toMap(final IEvaluator<K,? super T> keyEval);
-    public <K,V> Level1ArrayOfMapElementsOperator<K,V,I> toMap(final IMapBuilder<K,V,? super T> mapBuild);
+    public Level1ArrayOfMapElementsOperator<T,T> toMap();
+    public <K> Level1ArrayOfMapElementsOperator<K,T> toMap(final IEvaluator<K,? super T> keyEval);
+    public <K,V> Level1ArrayOfMapElementsOperator<K,V> toMap(final IMapBuilder<K,V,? super T> mapBuild);
 
     
-    public Level1ArrayOfSetElementsOperator<T,I> replaceWith(final Set<T> replacement);
-    public Level1ArrayOfSetElementsOperator<T,I> replaceIfNullWith(final Set<T> replacement);
+    public Level1ArrayOfSetElementsOperator<T> replaceWith(final Set<T> replacement);
+    public Level1ArrayOfSetElementsOperator<T> replaceIfNullWith(final Set<T> replacement);
 
 
-    public <X> Level1ArrayOfSetElementsOperator<X,I> convert(final IConverter<? extends Set<X>,? super Set<T>> converter);
+    public <X> Level1ArrayOfSetElementsOperator<X> convert(final IConverter<? extends Set<X>,? super Set<T>> converter);
     
-    public <X> Level1ArrayOfSetElementsOperator<X,I> eval(final IEvaluator<? extends Set<X>,? super Set<T>> eval);
+    public <X> Level1ArrayOfSetElementsOperator<X> eval(final IEvaluator<? extends Set<X>,? super Set<T>> eval);
 
-    public <X> Level1ArrayOfSetElementsOperator<X,I> exec(final IFunction<? extends Set<X>, ? super Set<T>> function);
+    public <X> Level1ArrayOfSetElementsOperator<X> exec(final IFunction<? extends Set<X>, ? super Set<T>> function);
 
-    public <X> Level1ArrayElementsOperator<X,I> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<T>> function);
+    public <X> Level1ArrayElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<T>> function);
     
-    public <X> Level1ArrayElementsOperator<X,I> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Set<T>> eval);
+    public <X> Level1ArrayElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Set<T>> eval);
     
-    public <X> Level1ArrayElementsOperator<X,I> convert(final Type<X> resultType, final IConverter<? extends X,? super Set<T>> converter);    
+    public <X> Level1ArrayElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Set<T>> converter);    
     
     
     
-    public <X> Level1ArrayOfSetElementsOperator<X,I> asSetOf(final Type<X> type);
-    public Level1ArrayOfSetElementsOperator<?,I> asSetOfUnknown();
+    public <X> Level1ArrayOfSetElementsOperator<X> asSetOf(final Type<X> type);
+    public Level1ArrayOfSetElementsOperator<?> asSetOfUnknown();
     
 		                            
 }

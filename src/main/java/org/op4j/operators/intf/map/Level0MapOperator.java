@@ -55,99 +55,99 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level0MapOperator<K,V,I>
-        extends UniqOperator<Map<K,V>,I>,
-                NavigableMapOperator<K,V,I>,
-                CastableToMapOperator<I>,
-                CastableToMapOfArrayOperator<I>,
-                CastableToMapOfListOperator<I>,
-                CastableToMapOfMapOperator<I>,
-                CastableToMapOfSetOperator<I>,
-		        SortableOperator<Map.Entry<K,V>,I>,
-                ExecutableMapOperator<K,V,I>,
-                ModifiableMapOperator<K,V,I>,
-                ExtractableMapOperator<K,V,I>,
-                SelectableOperator<Map<K,V>,I>,
-                ReplaceableOperator<Map<K,V>,I>,
-                ReplaceableIfNullOperator<Map<K,V>,I>,
-                GenerizableOperator<Map<K,V>,I> {
+public interface Level0MapOperator<K,V>
+        extends UniqOperator<Map<K,V>>,
+                NavigableMapOperator<K,V>,
+                CastableToMapOperator,
+                CastableToMapOfArrayOperator,
+                CastableToMapOfListOperator,
+                CastableToMapOfMapOperator,
+                CastableToMapOfSetOperator,
+		        SortableOperator<Map.Entry<K,V>>,
+                ExecutableMapOperator<K,V>,
+                ModifiableMapOperator<K,V>,
+                ExtractableMapOperator<K,V>,
+                SelectableOperator<Map<K,V>>,
+                ReplaceableOperator<Map<K,V>>,
+                ReplaceableIfNullOperator<Map<K,V>>,
+                GenerizableOperator<Map<K,V>> {
 
 
 
-    public Level0MapSelectedOperator<K,V,I> ifIndex(final int... indices);
-    public Level0MapSelectedOperator<K,V,I> ifTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0MapSelectedOperator<K,V,I> ifFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0MapSelectedOperator<K,V,I> ifNullOrFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0MapSelectedOperator<K,V,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0MapSelectedOperator<K,V,I> ifNull();
-    public Level0MapSelectedOperator<K,V,I> ifNullOrTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0MapSelectedOperator<K,V,I> ifIndexNot(final int... indices);
-    public Level0MapSelectedOperator<K,V,I> ifNotNull();
-    public Level0MapSelectedOperator<K,V,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<K,V> ifIndex(final int... indices);
+    public Level0MapSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<K,V> ifNull();
+    public Level0MapSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<K,V> ifIndexNot(final int... indices);
+    public Level0MapSelectedOperator<K,V> ifNotNull();
+    public Level0MapSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
 
 
     
-    public Level1MapEntriesOperator<K,V,I> forEachEntry();
+    public Level1MapEntriesOperator<K,V> forEachEntry();
     
-    public Level0MapOperator<K,V,I> sort();
-    public Level0MapOperator<K,V,I> sort(final Comparator<? super Map.Entry<K,V>> comparator);
+    public Level0MapOperator<K,V> sort();
+    public Level0MapOperator<K,V> sort(final Comparator<? super Map.Entry<K,V>> comparator);
     
-    public Level0MapOperator<K,V,I> put(final K newKey, final V newValue);
-    public Level0MapOperator<K,V,I> insert(final int position, final K newKey, final V newValue);
-    public Level0MapOperator<K,V,I> putAll(final Map<K,V> map);
-    public Level0MapOperator<K,V,I> insertAll(final int position, final Map<K,V> map);
-    public Level0MapOperator<K,V,I> removeAllKeys(final K... keys);
-    public Level0MapOperator<K,V,I> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
-    public Level0MapOperator<K,V,I> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
-    public Level0MapOperator<K,V,I> removeAllKeysNot(final K... keys);
-    
-    
-    public Level0SetOperator<K,I> extractKeys();
-    public Level0ListOperator<V,I> extractValues();
+    public Level0MapOperator<K,V> put(final K newKey, final V newValue);
+    public Level0MapOperator<K,V> insert(final int position, final K newKey, final V newValue);
+    public Level0MapOperator<K,V> putAll(final Map<K,V> map);
+    public Level0MapOperator<K,V> insertAll(final int position, final Map<K,V> map);
+    public Level0MapOperator<K,V> removeAllKeys(final K... keys);
+    public Level0MapOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level0MapOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level0MapOperator<K,V> removeAllKeysNot(final K... keys);
     
     
+    public Level0SetOperator<K> extractKeys();
+    public Level0ListOperator<V> extractValues();
     
-    public Level0GenericUniqOperator<Map<K,V>,I> generic();
+    
+    
+    public Level0GenericUniqOperator<Map<K,V>> generic();
 
     
     
     
-    public Level0MapOperator<K,V,I> replaceWith(final Map<K,V> replacement);
-    public Level0MapOperator<K,V,I> replaceIfNullWith(final Map<K,V> replacement);
+    public Level0MapOperator<K,V> replaceWith(final Map<K,V> replacement);
+    public Level0MapOperator<K,V> replaceIfNullWith(final Map<K,V> replacement);
 
 
-    public <X,Y> Level0MapOperator<X,Y,I> convert(final IConverter<? extends Map<X,Y>,? super Map<K,V>> converter);
+    public <X,Y> Level0MapOperator<X,Y> convert(final IConverter<? extends Map<X,Y>,? super Map<K,V>> converter);
     
-    public <X,Y> Level0MapOperator<X,Y,I> eval(final IEvaluator<? extends Map<X,Y>,? super Map<K,V>> eval);
+    public <X,Y> Level0MapOperator<X,Y> eval(final IEvaluator<? extends Map<X,Y>,? super Map<K,V>> eval);
 
-    public <X,Y> Level0MapOperator<X,Y,I> exec(final IFunction<? extends Map<X,Y>, ? super Map<K,V>> function);
+    public <X,Y> Level0MapOperator<X,Y> exec(final IFunction<? extends Map<X,Y>, ? super Map<K,V>> function);
 
-    public <X> Level0GenericUniqOperator<X,I> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K,V>> function);
+    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K,V>> function);
     
-    public <X> Level0GenericUniqOperator<X,I> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map<K,V>> eval);
+    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map<K,V>> eval);
     
-    public <X> Level0GenericUniqOperator<X,I> convert(final Type<X> resultType, final IConverter<? extends X,? super Map<K,V>> converter);    
-
-    
-    
-    public <X,Y> Level0MapOfArrayOperator<X,Y,I> asMapOfArrayOf(final Type<X> keyType, final Type<Y> valueType);
-    public Level0MapOfArrayOperator<?,?,I> asMapOfArrayOfUnknown();
+    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Map<K,V>> converter);    
 
     
-    public <X,Y> Level0MapOfListOperator<X,Y,I> asMapOfListOf(final Type<X> keyType, final Type<Y> valueType);
-    public Level0MapOfListOperator<?,?,I> asMapOfListOfUnknown();
     
-    
-    public <X1,X2,Y> Level0MapOfMapOperator<X1,X2,Y,I> asMapOfMapOf(final Type<X1> key1Type, final Type<X2> key2Type, final Type<Y> valueType);
-    public Level0MapOfMapOperator<?,?,?,I> asMapOfMapOfUnknown();
+    public <X,Y> Level0MapOfArrayOperator<X,Y> asMapOfArrayOf(final Type<X> keyType, final Type<Y> valueType);
+    public Level0MapOfArrayOperator<?,?> asMapOfArrayOfUnknown();
 
     
-    public <X,Y> Level0MapOfSetOperator<X,Y,I> asMapOfSetOf(final Type<X> keyType, final Type<Y> valueType);
-    public Level0MapOfSetOperator<?,?,I> asMapOfSetOfUnknown();
+    public <X,Y> Level0MapOfListOperator<X,Y> asMapOfListOf(final Type<X> keyType, final Type<Y> valueType);
+    public Level0MapOfListOperator<?,?> asMapOfListOfUnknown();
+    
+    
+    public <X1,X2,Y> Level0MapOfMapOperator<X1,X2,Y> asMapOfMapOf(final Type<X1> key1Type, final Type<X2> key2Type, final Type<Y> valueType);
+    public Level0MapOfMapOperator<?,?,?> asMapOfMapOfUnknown();
 
     
-    public <X,Y> Level0MapOperator<X,Y,I> asMapOf(final Type<X> keyType, final Type<Y> valueType);
-    public Level0MapOperator<?,?,I> asMapOfUnknown();
+    public <X,Y> Level0MapOfSetOperator<X,Y> asMapOfSetOf(final Type<X> keyType, final Type<Y> valueType);
+    public Level0MapOfSetOperator<?,?> asMapOfSetOfUnknown();
+
+    
+    public <X,Y> Level0MapOperator<X,Y> asMapOf(final Type<X> keyType, final Type<Y> valueType);
+    public Level0MapOperator<?,?> asMapOfUnknown();
     
     
 }

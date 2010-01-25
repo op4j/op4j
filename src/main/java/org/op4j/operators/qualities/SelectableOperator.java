@@ -27,17 +27,17 @@ import org.op4j.functions.evaluators.IEvaluator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface SelectableOperator<T,I>  {
+public interface SelectableOperator<T>  {
     
-    public SelectedOperator<T,I> ifIndex(final int... indices);
-    public SelectedOperator<T,I> ifTrue(final IEvaluator<Boolean, ? super T> eval);
-    public SelectedOperator<T,I> ifFalse(final IEvaluator<Boolean, ? super T> eval);
-    public SelectedOperator<T,I> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
-    public SelectedOperator<T,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
-    public SelectedOperator<T,I> ifNull();
-    public SelectedOperator<T,I> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
-    public SelectedOperator<T,I> ifIndexNot(final int... indices);
-    public SelectedOperator<T,I> ifNotNull();
-    public SelectedOperator<T,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public SelectedOperator<T> ifIndex(final int... indices);
+    public SelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
+    public SelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
+    public SelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public SelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public SelectedOperator<T> ifNull();
+    public SelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public SelectedOperator<T> ifIndexNot(final int... indices);
+    public SelectedOperator<T> ifNotNull();
+    public SelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
     
 }

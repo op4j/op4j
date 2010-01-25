@@ -28,7 +28,7 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ConvertibleToSetOperator<I> {
+public interface ConvertibleToSetOperator {
     
     public Operator toSet();
 

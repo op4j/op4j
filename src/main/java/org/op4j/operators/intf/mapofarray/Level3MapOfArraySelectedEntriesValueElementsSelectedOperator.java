@@ -37,24 +37,24 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level3MapOfArraySelectedEntriesValueElementsSelectedOperator<K,V,I>
-        extends UniqOperator<Map<K,V[]>,I>,
-        		ExecutableSelectedOperator<V,I>,
-                ReplaceableOperator<V,I>,
-                SelectedOperator<V,I> {
+public interface Level3MapOfArraySelectedEntriesValueElementsSelectedOperator<K,V>
+        extends UniqOperator<Map<K,V[]>>,
+        		ExecutableSelectedOperator<V>,
+                ReplaceableOperator<V>,
+                SelectedOperator<V> {
 
 
 
-    public Level3MapOfArraySelectedEntriesValueElementsOperator<K,V,I> endIf();
+    public Level3MapOfArraySelectedEntriesValueElementsOperator<K,V> endIf();
 
     
-    public Level3MapOfArraySelectedEntriesValueElementsSelectedOperator<K,V,I> convert(final IConverter<? extends V, ? super V> converter);
+    public Level3MapOfArraySelectedEntriesValueElementsSelectedOperator<K,V> convert(final IConverter<? extends V, ? super V> converter);
     
-    public Level3MapOfArraySelectedEntriesValueElementsSelectedOperator<K,V,I> eval(final IEvaluator<? extends V, ? super V> eval);
+    public Level3MapOfArraySelectedEntriesValueElementsSelectedOperator<K,V> eval(final IEvaluator<? extends V, ? super V> eval);
 
-    public Level3MapOfArraySelectedEntriesValueElementsSelectedOperator<K,V,I> replaceWith(final V replacement);
+    public Level3MapOfArraySelectedEntriesValueElementsSelectedOperator<K,V> replaceWith(final V replacement);
 
-    public Level3MapOfArraySelectedEntriesValueElementsSelectedOperator<K,V,I> exec(final IFunction<? extends V, ? super V> function);
+    public Level3MapOfArraySelectedEntriesValueElementsSelectedOperator<K,V> exec(final IFunction<? extends V, ? super V> function);
     
         
 }

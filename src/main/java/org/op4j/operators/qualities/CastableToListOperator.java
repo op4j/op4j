@@ -29,7 +29,7 @@ import org.javaruntype.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface CastableToListOperator<I> {
+public interface CastableToListOperator {
     
     public <X> Operator asListOf(final Type<X> type);
     public Operator asListOfUnknown();

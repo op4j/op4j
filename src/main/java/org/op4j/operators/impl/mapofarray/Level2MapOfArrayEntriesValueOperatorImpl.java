@@ -34,7 +34,6 @@ import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.converters.ToSet;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
-import org.op4j.operations.Operation;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.map.Level2MapEntriesValueOperatorImpl;
 import org.op4j.operators.impl.mapoflist.Level2MapOfListEntriesValueOperatorImpl;
@@ -61,8 +60,8 @@ import org.op4j.util.NormalizationUtils;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level2MapOfArrayEntriesValueOperatorImpl<K,V,I> extends AbstractOperatorImpl
-        implements Level2MapOfArrayEntriesValueOperator<K,V,I> {
+public class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends AbstractOperatorImpl
+        implements Level2MapOfArrayEntriesValueOperator<K,V> {
 
     
     public Level2MapOfArrayEntriesValueOperatorImpl(final Target target) {
@@ -71,127 +70,127 @@ public class Level2MapOfArrayEntriesValueOperatorImpl<K,V,I> extends AbstractOpe
 
 
     @SuppressWarnings("unchecked")
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> add(final V newElement) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ArrayFuncs.Add<V>(newElement)));
+    public Level2MapOfArrayEntriesValueOperator<K, V> add(final V newElement) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.Add<V>(newElement)));
     }
 
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> addAll(final V... newElements) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ArrayFuncs.Add<V>(newElements)));
+    public Level2MapOfArrayEntriesValueOperator<K, V> addAll(final V... newElements) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.Add<V>(newElements)));
     }
 
 
     @SuppressWarnings("unchecked")
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> insert(final int position, final V newElement) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ArrayFuncs.Insert<V>(position, newElement)));
+    public Level2MapOfArrayEntriesValueOperator<K, V> insert(final int position, final V newElement) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.Insert<V>(position, newElement)));
     }
 
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> insertAll(final int position, final V... newElements) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ArrayFuncs.Insert<V>(position, newElements)));
-    }
-
-
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> addAll(final Collection<V> collection) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ArrayFuncs.AddAll<V>(collection)));
+    public Level2MapOfArrayEntriesValueOperator<K, V> insertAll(final int position, final V... newElements) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.Insert<V>(position, newElements)));
     }
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> distinct() {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ArrayFuncs.Distinct<V>()));
+    public Level2MapOfArrayEntriesValueOperator<K, V> addAll(final Collection<V> collection) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.AddAll<V>(collection)));
     }
 
 
-    public Level1MapOfArrayEntriesOperator<K, V,I> endOn() {
-        return new Level1MapOfArrayEntriesOperatorImpl<K, V,I>(getTarget().endIterate(Structure.MAP_ENTRY, null));
+    public Level2MapOfArrayEntriesValueOperator<K, V> distinct() {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.Distinct<V>()));
     }
 
 
-    public Level3MapOfArrayEntriesValueElementsOperator<K, V,I> forEach(final Type<V> elementType) {
-        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, V,I>(elementType, getTarget().iterate());
+    public Level1MapOfArrayEntriesOperator<K, V> endOn() {
+        return new Level1MapOfArrayEntriesOperatorImpl<K, V>(getTarget().endIterate(Structure.MAP_ENTRY, null));
     }
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> removeAllIndexes(final int... indices) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ArrayFuncs.RemoveAllIndexes<V>(indices)));
+    public Level3MapOfArrayEntriesValueElementsOperator<K, V> forEach(final Type<V> elementType) {
+        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, V>(elementType, getTarget().iterate());
     }
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> removeAllEqual(final V... values) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ArrayFuncs.RemoveAllEqual<V>(values)));
+    public Level2MapOfArrayEntriesValueOperator<K, V> removeAllIndexes(final int... indices) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.RemoveAllIndexes<V>(indices)));
     }
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> removeAllTrue(final IEvaluator<Boolean, ? super V> eval) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ArrayFuncs.RemoveAllTrue<V>(eval)));
-    }
-
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> removeAllFalse(final IEvaluator<Boolean, ? super V> eval) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ArrayFuncs.RemoveAllFalse<V>(eval)));
-    }
-
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> removeAllNullOrFalse(final IEvaluator<Boolean, ? super V> eval) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ArrayFuncs.RemoveAllNullOrFalse<V>(eval)));
-    }
-
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ArrayFuncs.RemoveAllNotNullAndFalse<V>(eval)));
+    public Level2MapOfArrayEntriesValueOperator<K, V> removeAllEqual(final V... values) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.RemoveAllEqual<V>(values)));
     }
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> removeAllNullOrTrue(final IEvaluator<Boolean, ? super V> eval) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ArrayFuncs.RemoveAllNullOrTrue<V>(eval)));
+    public Level2MapOfArrayEntriesValueOperator<K, V> removeAllTrue(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.RemoveAllTrue<V>(eval)));
+    }
+
+    public Level2MapOfArrayEntriesValueOperator<K, V> removeAllFalse(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.RemoveAllFalse<V>(eval)));
+    }
+
+    public Level2MapOfArrayEntriesValueOperator<K, V> removeAllNullOrFalse(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.RemoveAllNullOrFalse<V>(eval)));
+    }
+
+    public Level2MapOfArrayEntriesValueOperator<K, V> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.RemoveAllNotNullAndFalse<V>(eval)));
     }
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ArrayFuncs.RemoveAllNotNullAndTrue<V>(eval)));
+    public Level2MapOfArrayEntriesValueOperator<K, V> removeAllNullOrTrue(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.RemoveAllNullOrTrue<V>(eval)));
     }
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> removeAllIndexesNot(final int... indices) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ArrayFuncs.RemoveAllIndexesNot<V>(indices)));
+    public Level2MapOfArrayEntriesValueOperator<K, V> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.RemoveAllNotNullAndTrue<V>(eval)));
+    }
+
+
+    public Level2MapOfArrayEntriesValueOperator<K, V> removeAllIndexesNot(final int... indices) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.RemoveAllIndexesNot<V>(indices)));
     }
 
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> removeAllNull() {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ArrayFuncs.RemoveAllNull<V>()));
+    public Level2MapOfArrayEntriesValueOperator<K, V> removeAllNull() {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.RemoveAllNull<V>()));
     }
 
     
     @SuppressWarnings("unchecked")
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> sort() {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ArrayFuncs.Sort()));
+    public Level2MapOfArrayEntriesValueOperator<K, V> sort() {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.Sort()));
     }
 
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> sort(final Comparator<? super V> comparator) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ArrayFuncs.SortByComparator<V>(comparator)));
-    }
-
-
-
-
-    public Level2MapOfListEntriesValueOperator<K, V,I> toList() {
-        return new Level2MapOfListEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ToList.FromArray<V>()));
+    public Level2MapOfArrayEntriesValueOperator<K, V> sort(final Comparator<? super V> comparator) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.SortByComparator<V>(comparator)));
     }
 
 
-    public Level2MapOfMapEntriesValueOperator<K, V, V,I> toMap() {
-        return new Level2MapOfMapEntriesValueOperatorImpl<K, V, V,I>(getTarget().execute(new ToMap.FromArrayByAlternateElements<V>()));
+
+
+    public Level2MapOfListEntriesValueOperator<K, V> toList() {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ToList.FromArray<V>()));
     }
 
 
-    public <K2> Level2MapOfMapEntriesValueOperator<K, K2, V,I> toMap(final IEvaluator<K2, ? super V> keyEval) {
-        return new Level2MapOfMapEntriesValueOperatorImpl<K, K2, V,I>(getTarget().execute(new ToMap.FromArrayByKeyEval<K2, V>(keyEval)));
+    public Level2MapOfMapEntriesValueOperator<K, V, V> toMap() {
+        return new Level2MapOfMapEntriesValueOperatorImpl<K, V, V>(getTarget().execute(new ToMap.FromArrayByAlternateElements<V>()));
     }
 
 
-    public <K2, V2> Level2MapOfMapEntriesValueOperator<K, K2, V2,I> toMap(final IMapBuilder<K2, V2, ? super V> mapBuild) {
-        return new Level2MapOfMapEntriesValueOperatorImpl<K, K2, V2,I>(getTarget().execute(new ToMap.FromArrayByMapBuilder<K2, V2, V>(mapBuild)));
+    public <K2> Level2MapOfMapEntriesValueOperator<K, K2, V> toMap(final IEvaluator<K2, ? super V> keyEval) {
+        return new Level2MapOfMapEntriesValueOperatorImpl<K, K2, V>(getTarget().execute(new ToMap.FromArrayByKeyEval<K2, V>(keyEval)));
     }
 
 
-    public Level2MapOfSetEntriesValueOperator<K, V,I> toSet() {
-        return new Level2MapOfSetEntriesValueOperatorImpl<K, V,I>(getTarget().execute(new ToSet.FromArray<V>()));
+    public <K2, V2> Level2MapOfMapEntriesValueOperator<K, K2, V2> toMap(final IMapBuilder<K2, V2, ? super V> mapBuild) {
+        return new Level2MapOfMapEntriesValueOperatorImpl<K, K2, V2>(getTarget().execute(new ToMap.FromArrayByMapBuilder<K2, V2, V>(mapBuild)));
+    }
+
+
+    public Level2MapOfSetEntriesValueOperator<K, V> toSet() {
+        return new Level2MapOfSetEntriesValueOperatorImpl<K, V>(getTarget().execute(new ToSet.FromArray<V>()));
     }
 
 
@@ -218,111 +217,109 @@ public class Level2MapOfArrayEntriesValueOperatorImpl<K,V,I> extends AbstractOpe
     
     
     
-	public <X> Level2MapOfArrayEntriesValueOperator<K, X,I> asArrayOf(final Type<X> type) {
+	public <X> Level2MapOfArrayEntriesValueOperator<K, X> asArrayOf(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
         NormalizationUtils.checkIsMapOfArrayOfValue(type, get());
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K,X,I>(getTarget());
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K,X>(getTarget());
     }
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, ?,I> asArrayOfUnknown() {
+    public Level2MapOfArrayEntriesValueOperator<K, ?> asArrayOfUnknown() {
         return asArrayOf(Types.OBJECT);
     }
 
 
-    public Level2MapOfArrayEntriesValueSelectedOperator<K, V,I> ifIndex(final int... indices) {
-        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V,I>(getTarget().selectIndex(indices));
+    public Level2MapOfArrayEntriesValueSelectedOperator<K, V> ifIndex(final int... indices) {
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
     }
 
 
-    public Level2MapOfArrayEntriesValueSelectedOperator<K, V,I> ifIndexNot(final int... indices) {
-        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V,I>(getTarget().selectIndexNot(indices));
+    public Level2MapOfArrayEntriesValueSelectedOperator<K, V> ifIndexNot(final int... indices) {
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
     }
 
 
-    public Level2MapOfArrayEntriesValueSelectedOperator<K, V,I> ifTrue(final IEvaluator<Boolean, ? super V[]> eval) {
-        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V,I>(getTarget().selectMatching(eval));
+    public Level2MapOfArrayEntriesValueSelectedOperator<K, V> ifTrue(final IEvaluator<Boolean, ? super V[]> eval) {
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level2MapOfArrayEntriesValueSelectedOperator<K, V,I> ifFalse(final IEvaluator<Boolean, ? super V[]> eval) {
-        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V,I>(getTarget().selectNotMatching(eval));
+    public Level2MapOfArrayEntriesValueSelectedOperator<K, V> ifFalse(final IEvaluator<Boolean, ? super V[]> eval) {
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
 
 
-    public Level2MapOfArrayEntriesValueSelectedOperator<K, V,I> ifNotNull() {
-        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V,I>(getTarget().selectNotNull());
+    public Level2MapOfArrayEntriesValueSelectedOperator<K, V> ifNotNull() {
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectNotNull());
     }
 
 
-    public Level2MapOfArrayEntriesValueSelectedOperator<K, V,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V[]> eval) {
-        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V,I>(getTarget().selectNotNullAndMatching(eval));
+    public Level2MapOfArrayEntriesValueSelectedOperator<K, V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V[]> eval) {
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level2MapOfArrayEntriesValueSelectedOperator<K, V,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V[]> eval) {
-        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V,I>(getTarget().selectNotNullAndNotMatching(eval));
+    public Level2MapOfArrayEntriesValueSelectedOperator<K, V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V[]> eval) {
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
 
-    public Level2MapOfArrayEntriesValueSelectedOperator<K, V,I> ifNull() {
-        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V,I>(getTarget().selectNull());
+    public Level2MapOfArrayEntriesValueSelectedOperator<K, V> ifNull() {
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectNull());
     }
 
 
-    public Level2MapOfArrayEntriesValueSelectedOperator<K, V,I> ifNullOrTrue(final IEvaluator<Boolean, ? super V[]> eval) {
-        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V,I>(getTarget().selectNullOrMatching(eval));
+    public Level2MapOfArrayEntriesValueSelectedOperator<K, V> ifNullOrTrue(final IEvaluator<Boolean, ? super V[]> eval) {
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level2MapOfArrayEntriesValueSelectedOperator<K, V,I> ifNullOrFalse(final IEvaluator<Boolean, ? super V[]> eval) {
-        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V,I>(getTarget().selectNullOrNotMatching(eval));
+    public Level2MapOfArrayEntriesValueSelectedOperator<K, V> ifNullOrFalse(final IEvaluator<Boolean, ? super V[]> eval) {
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-	public <X> Level2MapOfArrayEntriesValueOperator<K, X,I> convert(final IConverter<X[], ? super V[]> converter) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X,I>(getTarget().execute(converter, Normalization.ARRAY));
+	public <X> Level2MapOfArrayEntriesValueOperator<K, X> convert(final IConverter<X[], ? super V[]> converter) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(getTarget().execute(converter, Normalization.ARRAY));
     }
 
 
-	public <X> Level2MapOfArrayEntriesValueOperator<K, X,I> eval(final IEvaluator<X[], ? super V[]> eval) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X,I>(getTarget().execute(eval, Normalization.ARRAY));
+	public <X> Level2MapOfArrayEntriesValueOperator<K, X> eval(final IEvaluator<X[], ? super V[]> eval) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(getTarget().execute(eval, Normalization.ARRAY));
     }
 
 
-	public <X> Level2MapOfArrayEntriesValueOperator<K, X,I> exec(final IFunction<X[], ? super V[]> function) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X,I>(getTarget().execute(function, Normalization.ARRAY));
+	public <X> Level2MapOfArrayEntriesValueOperator<K, X> exec(final IFunction<X[], ? super V[]> function) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalization.ARRAY));
     }
 
 
-    public <X> Level2MapEntriesValueOperator<K, X,I> convert(final Type<X> resultType, final IConverter<? extends X, ? super V[]> converter) {
-        return new Level2MapEntriesValueOperatorImpl<K, X,I>(getTarget().execute(converter, Normalization.NONE));
+    public <X> Level2MapEntriesValueOperator<K, X> convert(final Type<X> resultType, final IConverter<? extends X, ? super V[]> converter) {
+        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
-    public <X> Level2MapEntriesValueOperator<K, X,I> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super V[]> eval) {
-        return new Level2MapEntriesValueOperatorImpl<K, X,I>(getTarget().execute(eval, Normalization.NONE));
+    public <X> Level2MapEntriesValueOperator<K, X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super V[]> eval) {
+        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
-    public <X> Level2MapEntriesValueOperator<K, X,I> exec(final Type<X> resultType, final IFunction<? extends X, ? super V[]> function) {
-        return new Level2MapEntriesValueOperatorImpl<K, X,I>(getTarget().execute(function, Normalization.NONE));
+    public <X> Level2MapEntriesValueOperator<K, X> exec(final Type<X> resultType, final IFunction<? extends X, ? super V[]> function) {
+        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalization.NONE));
     }
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> replaceWith(final V[] replacement) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V,I>(getTarget().replaceWith(replacement));
+    public Level2MapOfArrayEntriesValueOperator<K, V> replaceWith(final V[] replacement) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, V,I> replaceIfNullWith(final V[] replacement) {
+    public Level2MapOfArrayEntriesValueOperator<K, V> replaceIfNullWith(final V[] replacement) {
         return ifNull().replaceWith(replacement).endIf();
     }
 
 
-    public Operation<Map<K, V[]>, I> createOperation() {
-        return endOn().createOperation();
-    }
+    
 
     
     

@@ -29,9 +29,9 @@ import org.op4j.operators.intf.arrayofmap.Level0ArrayOfMapOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ConvertibleToArrayOfMapFromStructureOfMapOperator<K,V,I> {
+public interface ConvertibleToArrayOfMapFromStructureOfMapOperator<K,V> {
     
     
-    public Level0ArrayOfMapOperator<K,V,I> toArrayOfMap();
+    public Level0ArrayOfMapOperator<K,V> toArrayOfMap();
 
 }

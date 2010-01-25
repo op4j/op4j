@@ -38,26 +38,26 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level1MapOfArraySelectedEntriesSelectedOperator<K,V,I>
-		extends UniqOperator<Map<K,V[]>,I>,
-		        NavigableMapEntryOperator<I>,
-                ExecutableMapOfArrayEntrySelectedOperator<K,V,I>,
-                ReplaceableOperator<Map.Entry<K,V[]>,I>,
-                SelectedMapEntryOperator<K, V[],I> {
+public interface Level1MapOfArraySelectedEntriesSelectedOperator<K,V>
+		extends UniqOperator<Map<K,V[]>>,
+		        NavigableMapEntryOperator,
+                ExecutableMapOfArrayEntrySelectedOperator<K,V>,
+                ReplaceableOperator<Map.Entry<K,V[]>>,
+                SelectedMapEntryOperator<K, V[]> {
 
 
-    public Level1MapOfArraySelectedEntriesOperator<K,V,I> endIf();
+    public Level1MapOfArraySelectedEntriesOperator<K,V> endIf();
     
     
-    public Level2MapOfArraySelectedEntriesSelectedKeyOperator<K,V,I> onKey();
-    public Level2MapOfArraySelectedEntriesSelectedValueOperator<K,V,I> onValue();
+    public Level2MapOfArraySelectedEntriesSelectedKeyOperator<K,V> onKey();
+    public Level2MapOfArraySelectedEntriesSelectedValueOperator<K,V> onValue();
     
-    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V,I> replaceWith(final Map.Entry<K,V[]> replacement);
+    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> replaceWith(final Map.Entry<K,V[]> replacement);
 
-    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V,I> exec(final IFunction<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> function);
+    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> exec(final IFunction<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> function);
     
-    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V,I> eval(final IEvaluator<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> eval);
+    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> eval);
     
-    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V,I> convert(final IConverter<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> converter);
+    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> convert(final IConverter<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> converter);
                                     
 }

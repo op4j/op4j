@@ -29,15 +29,15 @@ import org.op4j.functions.evaluators.IEvaluator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ModifiableMapOperator<K,V,I> {
+public interface ModifiableMapOperator<K,V> {
     
-    public ModifiableMapOperator<K,V,I> put(final K newKey, final V newValue);
-    public ModifiableMapOperator<K,V,I> insert(final int position, final K newKey, final V newValue);
-    public ModifiableMapOperator<K,V,I> putAll(final Map<K,V> map);
-    public ModifiableMapOperator<K,V,I> insertAll(final int position, final Map<K,V> map);
-    public ModifiableMapOperator<K,V,I> removeAllKeys(final K... keys);
-    public ModifiableMapOperator<K,V,I> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
-    public ModifiableMapOperator<K,V,I> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
-    public ModifiableMapOperator<K,V,I> removeAllKeysNot(final K... keys);
+    public ModifiableMapOperator<K,V> put(final K newKey, final V newValue);
+    public ModifiableMapOperator<K,V> insert(final int position, final K newKey, final V newValue);
+    public ModifiableMapOperator<K,V> putAll(final Map<K,V> map);
+    public ModifiableMapOperator<K,V> insertAll(final int position, final Map<K,V> map);
+    public ModifiableMapOperator<K,V> removeAllKeys(final K... keys);
+    public ModifiableMapOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
+    public ModifiableMapOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
+    public ModifiableMapOperator<K,V> removeAllKeysNot(final K... keys);
     
 }

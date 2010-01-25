@@ -39,41 +39,41 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level2MapOfArrayEntriesKeyOperator<K,V,I>
-        extends UniqOperator<Map<K,V[]>,I>,
-                NavigatingMapEntryOperator<I>,
-                CastableToTypeOperator<K,I>,
-                ExecutableOperator<K,I>, 
-                SelectableOperator<K,I> {
+public interface Level2MapOfArrayEntriesKeyOperator<K,V>
+        extends UniqOperator<Map<K,V[]>>,
+                NavigatingMapEntryOperator,
+                CastableToTypeOperator<K>,
+                ExecutableOperator<K>, 
+                SelectableOperator<K> {
 
 
 
-    public Level2MapOfArrayEntriesKeySelectedOperator<K,V,I> ifIndex(final int... indices);
-    public Level2MapOfArrayEntriesKeySelectedOperator<K,V,I> ifTrue(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfArrayEntriesKeySelectedOperator<K,V,I> ifFalse(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfArrayEntriesKeySelectedOperator<K,V,I> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfArrayEntriesKeySelectedOperator<K,V,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfArrayEntriesKeySelectedOperator<K,V,I> ifNull();
-    public Level2MapOfArrayEntriesKeySelectedOperator<K,V,I> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfArrayEntriesKeySelectedOperator<K,V,I> ifIndexNot(final int... indices);
-    public Level2MapOfArrayEntriesKeySelectedOperator<K,V,I> ifNotNull();
-    public Level2MapOfArrayEntriesKeySelectedOperator<K,V,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfArrayEntriesKeySelectedOperator<K,V> ifIndex(final int... indices);
+    public Level2MapOfArrayEntriesKeySelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfArrayEntriesKeySelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfArrayEntriesKeySelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfArrayEntriesKeySelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfArrayEntriesKeySelectedOperator<K,V> ifNull();
+    public Level2MapOfArrayEntriesKeySelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapOfArrayEntriesKeySelectedOperator<K,V> ifIndexNot(final int... indices);
+    public Level2MapOfArrayEntriesKeySelectedOperator<K,V> ifNotNull();
+    public Level2MapOfArrayEntriesKeySelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval);
 
     
-    public Level1MapOfArrayEntriesOperator<K,V,I> endOn();
+    public Level1MapOfArrayEntriesOperator<K,V> endOn();
     
-    public <X> Level2MapOfArrayEntriesKeyOperator<X,V,I> asType(final Type<X> type);
-    public Level2MapOfArrayEntriesKeyOperator<?,V,I> asUnknown();
+    public <X> Level2MapOfArrayEntriesKeyOperator<X,V> asType(final Type<X> type);
+    public Level2MapOfArrayEntriesKeyOperator<?,V> asUnknown();
 
-    public <X> Level2MapOfArrayEntriesKeyOperator<X,V,I> exec(final IFunction<X, ? super K> function);
+    public <X> Level2MapOfArrayEntriesKeyOperator<X,V> exec(final IFunction<X, ? super K> function);
     
-    public <X> Level2MapOfArrayEntriesKeyOperator<X,V,I> eval(final IEvaluator<X,? super K> eval);
+    public <X> Level2MapOfArrayEntriesKeyOperator<X,V> eval(final IEvaluator<X,? super K> eval);
     
-    public Level2MapOfArrayEntriesKeyOperator<K,V,I> replaceWith(final K replacement);
-    public Level2MapOfArrayEntriesKeyOperator<K,V,I> replaceIfNullWith(final K replacement);
+    public Level2MapOfArrayEntriesKeyOperator<K,V> replaceWith(final K replacement);
+    public Level2MapOfArrayEntriesKeyOperator<K,V> replaceIfNullWith(final K replacement);
 
 
-    public <X> Level2MapOfArrayEntriesKeyOperator<X,V,I> convert(final IConverter<X,? super K> converter);
+    public <X> Level2MapOfArrayEntriesKeyOperator<X,V> convert(final IConverter<X,? super K> converter);
     
         
 }

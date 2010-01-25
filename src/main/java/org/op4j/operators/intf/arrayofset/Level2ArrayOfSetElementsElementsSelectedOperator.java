@@ -25,9 +25,9 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.UniqOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
 
 
 /**
@@ -37,24 +37,24 @@ import org.op4j.operators.qualities.ReplaceableOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level2ArrayOfSetElementsElementsSelectedOperator<T,I>
-        extends UniqOperator<Set<T>[],I>,
-        		ExecutableSelectedOperator<T,I>,
-                ReplaceableOperator<T,I>,
-                SelectedOperator<T,I> {
+public interface Level2ArrayOfSetElementsElementsSelectedOperator<T>
+        extends UniqOperator<Set<T>[]>,
+        		ExecutableSelectedOperator<T>,
+                ReplaceableOperator<T>,
+                SelectedOperator<T> {
 
 
 
-    public Level2ArrayOfSetElementsElementsOperator<T,I> endIf();
+    public Level2ArrayOfSetElementsElementsOperator<T> endIf();
 
     
-    public Level2ArrayOfSetElementsElementsSelectedOperator<T,I> convert(final IConverter<? extends T,? super T> converter);
+    public Level2ArrayOfSetElementsElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter);
     
-    public Level2ArrayOfSetElementsElementsSelectedOperator<T,I> eval(final IEvaluator<? extends T,? super T> eval);
+    public Level2ArrayOfSetElementsElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
 
-    public Level2ArrayOfSetElementsElementsSelectedOperator<T,I> replaceWith(final T replacement);
+    public Level2ArrayOfSetElementsElementsSelectedOperator<T> replaceWith(final T replacement);
 
-    public Level2ArrayOfSetElementsElementsSelectedOperator<T,I> exec(final IFunction<? extends T, ? super T> function);
+    public Level2ArrayOfSetElementsElementsSelectedOperator<T> exec(final IFunction<? extends T, ? super T> function);
 
     
 }

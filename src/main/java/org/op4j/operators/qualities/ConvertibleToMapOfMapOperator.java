@@ -31,9 +31,9 @@ import org.op4j.operators.intf.mapofmap.Level0MapOfMapOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ConvertibleToMapOfMapOperator<K,V,I> {
+public interface ConvertibleToMapOfMapOperator<K,V> {
     
-    public <K2> Level0MapOfMapOperator<K,K2,V,I> toMapOfMap(final IEvaluator<K2,? super V> keyEval);
-    public <K2,V2> Level0MapOfMapOperator<K,K2,V2,I> toMapOfMap(final IMapBuilder<K2,V2,? super V> mapBuild);
+    public <K2> Level0MapOfMapOperator<K,K2,V> toMapOfMap(final IEvaluator<K2,? super V> keyEval);
+    public <K2,V2> Level0MapOfMapOperator<K,K2,V2> toMapOfMap(final IMapBuilder<K2,V2,? super V> mapBuild);
     
 }

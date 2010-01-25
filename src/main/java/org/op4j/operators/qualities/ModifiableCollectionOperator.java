@@ -29,22 +29,22 @@ import org.op4j.functions.evaluators.IEvaluator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ModifiableCollectionOperator<T,I> {
+public interface ModifiableCollectionOperator<T> {
     
-    public ModifiableCollectionOperator<T,I> add(final T newElement);
-    public ModifiableCollectionOperator<T,I> addAll(final T... newElements);
-    public ModifiableCollectionOperator<T,I> insert(final int position, final T newElement);
-    public ModifiableCollectionOperator<T,I> insertAll(final int position, final T... newElements);
-    public ModifiableCollectionOperator<T,I> addAll(final Collection<T> collection);
-    public ModifiableCollectionOperator<T,I> removeAllIndexes(final int... indices);
-    public ModifiableCollectionOperator<T,I> removeAllEqual(final T... values);
-    public ModifiableCollectionOperator<T,I> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
-    public ModifiableCollectionOperator<T,I> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
-    public ModifiableCollectionOperator<T,I> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
-    public ModifiableCollectionOperator<T,I> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
-    public ModifiableCollectionOperator<T,I> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
-    public ModifiableCollectionOperator<T,I> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
-    public ModifiableCollectionOperator<T,I> removeAllIndexesNot(final int... indices);
-    public ModifiableCollectionOperator<T,I> removeAllNull();
+    public ModifiableCollectionOperator<T> add(final T newElement);
+    public ModifiableCollectionOperator<T> addAll(final T... newElements);
+    public ModifiableCollectionOperator<T> insert(final int position, final T newElement);
+    public ModifiableCollectionOperator<T> insertAll(final int position, final T... newElements);
+    public ModifiableCollectionOperator<T> addAll(final Collection<T> collection);
+    public ModifiableCollectionOperator<T> removeAllIndexes(final int... indices);
+    public ModifiableCollectionOperator<T> removeAllEqual(final T... values);
+    public ModifiableCollectionOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableCollectionOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableCollectionOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableCollectionOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableCollectionOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableCollectionOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableCollectionOperator<T> removeAllIndexesNot(final int... indices);
+    public ModifiableCollectionOperator<T> removeAllNull();
     
 }

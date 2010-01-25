@@ -29,9 +29,9 @@ import org.op4j.operators.intf.arrayoflist.Level0ArrayOfListOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ConvertibleToArrayOfListOperator<T,I> {
+public interface ConvertibleToArrayOfListOperator<T> {
     
-    public Level0ArrayOfListOperator<T,I> toArrayOfList();
+    public Level0ArrayOfListOperator<T> toArrayOfList();
 
     
 }

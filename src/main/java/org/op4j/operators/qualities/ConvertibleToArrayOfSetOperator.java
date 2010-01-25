@@ -29,9 +29,9 @@ import org.op4j.operators.intf.arrayofset.Level0ArrayOfSetOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ConvertibleToArrayOfSetOperator<T,I> {
+public interface ConvertibleToArrayOfSetOperator<T> {
     
-    public Level0ArrayOfSetOperator<T,I> toArrayOfSet();
+    public Level0ArrayOfSetOperator<T> toArrayOfSet();
 
     
 }

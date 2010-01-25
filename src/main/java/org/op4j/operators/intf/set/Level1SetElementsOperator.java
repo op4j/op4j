@@ -49,57 +49,57 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level1SetElementsOperator<T,I>
-        extends UniqOperator<Set<T>,I>,
-                CastableToArrayOperator<I>,
-                CastableToListOperator<I>,
-                CastableToMapOperator<I>,
-                CastableToSetOperator<I>,
-        		NavigatingCollectionOperator<T,I>,
-        		ExecutableOperator<T,I>,
-                SelectableOperator<T,I>,
-                ReplaceableOperator<T,I>,
-                ReplaceableIfNullOperator<T,I>,
-                CastableToTypeOperator<T,I> {
+public interface Level1SetElementsOperator<T>
+        extends UniqOperator<Set<T>>,
+                CastableToArrayOperator,
+                CastableToListOperator,
+                CastableToMapOperator,
+                CastableToSetOperator,
+        		NavigatingCollectionOperator<T>,
+        		ExecutableOperator<T>,
+                SelectableOperator<T>,
+                ReplaceableOperator<T>,
+                ReplaceableIfNullOperator<T>,
+                CastableToTypeOperator<T> {
 
 
 
-    public Level1SetElementsSelectedOperator<T,I> ifIndex(final int... indices);
-    public Level1SetElementsSelectedOperator<T,I> ifTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetElementsSelectedOperator<T,I> ifFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetElementsSelectedOperator<T,I> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetElementsSelectedOperator<T,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetElementsSelectedOperator<T,I> ifNull();
-    public Level1SetElementsSelectedOperator<T,I> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetElementsSelectedOperator<T,I> ifIndexNot(final int... indices);
-    public Level1SetElementsSelectedOperator<T,I> ifNotNull();
-    public Level1SetElementsSelectedOperator<T,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetElementsSelectedOperator<T> ifIndex(final int... indices);
+    public Level1SetElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetElementsSelectedOperator<T> ifNull();
+    public Level1SetElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetElementsSelectedOperator<T> ifIndexNot(final int... indices);
+    public Level1SetElementsSelectedOperator<T> ifNotNull();
+    public Level1SetElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
 
 
     
-    public Level0SetOperator<T,I> endFor();
+    public Level0SetOperator<T> endFor();
     
-    public Level1SetElementsOperator<T,I> replaceWith(final T replacement);
-    public Level1SetElementsOperator<T,I> replaceIfNullWith(final T replacement);
+    public Level1SetElementsOperator<T> replaceWith(final T replacement);
+    public Level1SetElementsOperator<T> replaceIfNullWith(final T replacement);
 
 
-    public <X> Level1SetElementsOperator<X,I> convert(final IConverter<X,? super T> converter);
+    public <X> Level1SetElementsOperator<X> convert(final IConverter<X,? super T> converter);
     
-    public <X> Level1SetElementsOperator<X,I> eval(final IEvaluator<X,? super T> eval);
+    public <X> Level1SetElementsOperator<X> eval(final IEvaluator<X,? super T> eval);
 
-    public <X> Level1SetElementsOperator<X,I> exec(final IFunction<X, ? super T> function);
+    public <X> Level1SetElementsOperator<X> exec(final IFunction<X, ? super T> function);
     
-    public <X> Level1SetElementsOperator<X,I> asType(final Type<X> type);
-    public Level1SetElementsOperator<?,I> asUnknown();
+    public <X> Level1SetElementsOperator<X> asType(final Type<X> type);
+    public Level1SetElementsOperator<?> asUnknown();
         
-    public <X> Level1SetOfArrayElementsOperator<X,I> asArrayOf(final Type<X> type);
-    public <X> Level1SetOfListElementsOperator<X,I> asListOf(final Type<X> type);
-    public <K,V> Level1SetOfMapElementsOperator<K,V,I> asMapOf(final Type<K> keyType, final Type<V> valueType);
-    public <X> Level1SetOfSetElementsOperator<X,I> asSetOf(final Type<X> type);
-    public Level1SetOfArrayElementsOperator<?,I> asArrayOfUnknown();
-    public Level1SetOfListElementsOperator<?,I> asListOfUnknown();
-    public Level1SetOfMapElementsOperator<?,?,I> asMapOfUnknown();
-    public Level1SetOfSetElementsOperator<?,I> asSetOfUnknown();
+    public <X> Level1SetOfArrayElementsOperator<X> asArrayOf(final Type<X> type);
+    public <X> Level1SetOfListElementsOperator<X> asListOf(final Type<X> type);
+    public <K,V> Level1SetOfMapElementsOperator<K,V> asMapOf(final Type<K> keyType, final Type<V> valueType);
+    public <X> Level1SetOfSetElementsOperator<X> asSetOf(final Type<X> type);
+    public Level1SetOfArrayElementsOperator<?> asArrayOfUnknown();
+    public Level1SetOfListElementsOperator<?> asListOfUnknown();
+    public Level1SetOfMapElementsOperator<?,?> asMapOfUnknown();
+    public Level1SetOfSetElementsOperator<?> asSetOfUnknown();
     
                                     
 }

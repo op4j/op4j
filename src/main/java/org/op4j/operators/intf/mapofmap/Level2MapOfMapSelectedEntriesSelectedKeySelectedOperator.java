@@ -37,25 +37,25 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V,I>
-        extends UniqOperator<Map<K1,Map<K2,V>>,I>,
-                ExecutableSelectedOperator<K1,I>, 
-                ReplaceableOperator<K1,I>,
-                SelectedOperator<K1,I> {
+public interface Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V>
+        extends UniqOperator<Map<K1,Map<K2,V>>>,
+                ExecutableSelectedOperator<K1>, 
+                ReplaceableOperator<K1>,
+                SelectedOperator<K1> {
 
 
 
-    public Level2MapOfMapSelectedEntriesSelectedKeyOperator<K1,K2,V,I> endIf();
+    public Level2MapOfMapSelectedEntriesSelectedKeyOperator<K1,K2,V> endIf();
 
 
-    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V,I> replaceWith(final K1 replacement);
+    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> replaceWith(final K1 replacement);
 
 
-    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V,I> exec(final IFunction<? extends K1, ? super K1> function);
+    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> exec(final IFunction<? extends K1, ? super K1> function);
     
-    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V,I> eval(final IEvaluator<? extends K1,? super K1> eval);
+    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> eval(final IEvaluator<? extends K1,? super K1> eval);
     
-    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V,I> convert(final IConverter<? extends K1,? super K1> converter);
+    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> convert(final IConverter<? extends K1,? super K1> converter);
     
         
 }

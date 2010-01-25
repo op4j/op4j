@@ -27,7 +27,6 @@ import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operations.Operation;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.arrayofmap.Level2ArrayOfMapElementsEntriesOperator;
 import org.op4j.operators.intf.arrayofmap.Level3ArrayOfMapElementsEntriesKeyOperator;
@@ -45,8 +44,8 @@ import org.op4j.util.NormalizationUtils;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level3ArrayOfMapElementsEntriesKeyOperatorImpl<K,V,I> extends AbstractOperatorImpl
-        implements Level3ArrayOfMapElementsEntriesKeyOperator<K,V,I>  {
+public class Level3ArrayOfMapElementsEntriesKeyOperatorImpl<K,V> extends AbstractOperatorImpl
+        implements Level3ArrayOfMapElementsEntriesKeyOperator<K,V>  {
 
     
     public Level3ArrayOfMapElementsEntriesKeyOperatorImpl(final Target target) {
@@ -54,18 +53,18 @@ public class Level3ArrayOfMapElementsEntriesKeyOperatorImpl<K,V,I> extends Abstr
     }
 
 
-    public Level2ArrayOfMapElementsEntriesOperator<K, V,I> endOn() {
-        return new Level2ArrayOfMapElementsEntriesOperatorImpl<K, V,I>(getTarget().endIterate(Structure.MAP_ENTRY, null));
+    public Level2ArrayOfMapElementsEntriesOperator<K, V> endOn() {
+        return new Level2ArrayOfMapElementsEntriesOperatorImpl<K, V>(getTarget().endIterate(Structure.MAP_ENTRY, null));
     }
 
 
-    public <X> Level3ArrayOfMapElementsEntriesKeyOperator<X, V,I> asType(final Type<X> type) {
+    public <X> Level3ArrayOfMapElementsEntriesKeyOperator<X, V> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
         NormalizationUtils.checkIsArrayOfMapOfKey(type, get());
-        return new Level3ArrayOfMapElementsEntriesKeyOperatorImpl<X, V,I>(getTarget());
+        return new Level3ArrayOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget());
     }
 
-    public Level3ArrayOfMapElementsEntriesKeyOperator<?,V,I> asUnknown() {
+    public Level3ArrayOfMapElementsEntriesKeyOperator<?,V> asUnknown() {
         return asType(Types.OBJECT);
     }
 
@@ -75,83 +74,81 @@ public class Level3ArrayOfMapElementsEntriesKeyOperatorImpl<K,V,I> extends Abstr
     }
 
 
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V,I> ifIndex(final int... indices) {
-        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V,I>(getTarget().selectIndex(indices));
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V> ifIndex(final int... indices) {
+        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
     }
 
 
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V,I> ifIndexNot(final int... indices) {
-        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V,I>(getTarget().selectIndexNot(indices));
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V> ifIndexNot(final int... indices) {
+        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
     }
 
 
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V,I> ifTrue(final IEvaluator<Boolean, ? super K> eval) {
-        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V,I>(getTarget().selectMatching(eval));
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V> ifTrue(final IEvaluator<Boolean, ? super K> eval) {
+        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V,I> ifFalse(final IEvaluator<Boolean, ? super K> eval) {
-        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V,I>(getTarget().selectNotMatching(eval));
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V> ifFalse(final IEvaluator<Boolean, ? super K> eval) {
+        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
 
 
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V,I> ifNotNull() {
-        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V,I>(getTarget().selectNotNull());
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V> ifNotNull() {
+        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNotNull());
     }
 
 
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval) {
-        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V,I>(getTarget().selectNotNullAndMatching(eval));
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval) {
+        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval) {
-        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V,I>(getTarget().selectNotNullAndNotMatching(eval));
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval) {
+        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
 
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V,I> ifNull() {
-        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V,I>(getTarget().selectNull());
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V> ifNull() {
+        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNull());
     }
 
 
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V,I> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval) {
-        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V,I>(getTarget().selectNullOrMatching(eval));
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval) {
+        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V,I> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval) {
-        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V,I>(getTarget().selectNullOrNotMatching(eval));
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval) {
+        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public <X> Level3ArrayOfMapElementsEntriesKeyOperator<X, V,I> convert(final IConverter<X, ? super K> converter) {
-        return new Level3ArrayOfMapElementsEntriesKeyOperatorImpl<X, V,I>(getTarget().execute(converter, Normalization.NONE));
+    public <X> Level3ArrayOfMapElementsEntriesKeyOperator<X, V> convert(final IConverter<X, ? super K> converter) {
+        return new Level3ArrayOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().execute(converter, Normalization.NONE));
     }
 
 
-    public <X> Level3ArrayOfMapElementsEntriesKeyOperator<X, V,I> eval(final IEvaluator<X, ? super K> eval) {
-        return new Level3ArrayOfMapElementsEntriesKeyOperatorImpl<X, V,I>(getTarget().execute(eval, Normalization.NONE));
+    public <X> Level3ArrayOfMapElementsEntriesKeyOperator<X, V> eval(final IEvaluator<X, ? super K> eval) {
+        return new Level3ArrayOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().execute(eval, Normalization.NONE));
     }
 
 
-    public <X> Level3ArrayOfMapElementsEntriesKeyOperator<X, V,I> exec(final IFunction<X, ? super K> function) {
-        return new Level3ArrayOfMapElementsEntriesKeyOperatorImpl<X, V,I>(getTarget().execute(function, Normalization.NONE));
+    public <X> Level3ArrayOfMapElementsEntriesKeyOperator<X, V> exec(final IFunction<X, ? super K> function) {
+        return new Level3ArrayOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().execute(function, Normalization.NONE));
     }
 
 
-    public Level3ArrayOfMapElementsEntriesKeyOperator<K, V,I> replaceWith(final K replacement) {
-        return new Level3ArrayOfMapElementsEntriesKeyOperatorImpl<K, V,I>(getTarget().replaceWith(replacement));
+    public Level3ArrayOfMapElementsEntriesKeyOperator<K, V> replaceWith(final K replacement) {
+        return new Level3ArrayOfMapElementsEntriesKeyOperatorImpl<K, V>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level3ArrayOfMapElementsEntriesKeyOperator<K, V,I> replaceIfNullWith(final K replacement) {
+    public Level3ArrayOfMapElementsEntriesKeyOperator<K, V> replaceIfNullWith(final K replacement) {
         return ifNull().replaceWith(replacement).endIf();
     }
 
 
-    public Operation<Map<K, V>[], I> createOperation() {
-        return endOn().createOperation();
-    }
+    
 
 }

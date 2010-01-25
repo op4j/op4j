@@ -40,56 +40,56 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V,I>
-        extends UniqOperator<Map<K1,Map<K2,V>>,I>,
-                NavigableMapOperator<K2,V,I>,
-		        NavigatingMapEntryOperator<I>,
-		        SortableOperator<Map.Entry<K2,V>,I>,
-                ExecutableMapSelectedOperator<K2,V,I>,
-                ModifiableMapOperator<K2,V,I>,
-                ReplaceableOperator<Map<K2,V>,I>,
-                SelectableOperator<Map<K2,V>,I> {
+public interface Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V>
+        extends UniqOperator<Map<K1,Map<K2,V>>>,
+                NavigableMapOperator<K2,V>,
+		        NavigatingMapEntryOperator,
+		        SortableOperator<Map.Entry<K2,V>>,
+                ExecutableMapSelectedOperator<K2,V>,
+                ModifiableMapOperator<K2,V>,
+                ReplaceableOperator<Map<K2,V>>,
+                SelectableOperator<Map<K2,V>> {
 
 
 
-    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V,I> ifIndex(final int... indices);
-    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V,I> ifTrue(final IEvaluator<Boolean, ? super Map<K2,V>> eval);
-    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V,I> ifFalse(final IEvaluator<Boolean, ? super Map<K2,V>> eval);
-    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V,I> ifNullOrFalse(final IEvaluator<Boolean, ? super Map<K2,V>> eval);
-    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K2,V>> eval);
-    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V,I> ifNull();
-    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V,I> ifNullOrTrue(final IEvaluator<Boolean, ? super Map<K2,V>> eval);
-    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V,I> ifIndexNot(final int... indices);
-    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V,I> ifNotNull();
-    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K2,V>> eval);
+    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifIndex(final int... indices);
+    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifTrue(final IEvaluator<Boolean, ? super Map<K2,V>> eval);
+    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifFalse(final IEvaluator<Boolean, ? super Map<K2,V>> eval);
+    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifNullOrFalse(final IEvaluator<Boolean, ? super Map<K2,V>> eval);
+    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K2,V>> eval);
+    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifNull();
+    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifNullOrTrue(final IEvaluator<Boolean, ? super Map<K2,V>> eval);
+    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifIndexNot(final int... indices);
+    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifNotNull();
+    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K2,V>> eval);
 
     
-    public Level3MapOfMapEntriesSelectedValueEntriesOperator<K1,K2,V,I> forEachEntry();
+    public Level3MapOfMapEntriesSelectedValueEntriesOperator<K1,K2,V> forEachEntry();
     
-    public Level1MapOfMapEntriesSelectedOperator<K1,K2,V,I> endOn();
+    public Level1MapOfMapEntriesSelectedOperator<K1,K2,V> endOn();
     
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V,I> sort();
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V,I> sort(final Comparator<? super Map.Entry<K2,V>> comparator);
+    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> sort();
+    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> sort(final Comparator<? super Map.Entry<K2,V>> comparator);
     
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V,I> put(final K2 newKey, final V newValue);
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V,I> insert(final int position, final K2 newKey, final V newValue);
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V,I> putAll(final Map<K2,V> map);
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V,I> insertAll(final int position, final Map<K2,V> map);
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V,I> removeAllKeys(final K2... keys);
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V,I> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K2,V>> eval);
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V,I> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K2,V>> eval);
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V,I> removeAllKeysNot(final K2... keys);
+    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> put(final K2 newKey, final V newValue);
+    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> insert(final int position, final K2 newKey, final V newValue);
+    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> putAll(final Map<K2,V> map);
+    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> insertAll(final int position, final Map<K2,V> map);
+    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> removeAllKeys(final K2... keys);
+    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K2,V>> eval);
+    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K2,V>> eval);
+    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> removeAllKeysNot(final K2... keys);
     
     
     
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V,I> convert(final IConverter<? extends Map<? extends K2,? extends V>,? super Map<K2,V>> converter);
+    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> convert(final IConverter<? extends Map<? extends K2,? extends V>,? super Map<K2,V>> converter);
     
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V,I> eval(final IEvaluator<? extends Map<? extends K2,? extends V>,? super Map<K2,V>> eval);
+    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> eval(final IEvaluator<? extends Map<? extends K2,? extends V>,? super Map<K2,V>> eval);
 
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V,I> replaceWith(final Map<K2,V> replacement);
+    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> replaceWith(final Map<K2,V> replacement);
 
 
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V,I> exec(final IFunction<? extends Map<? extends K2,? extends V>, ? super Map<K2,V>> function);
+    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> exec(final IFunction<? extends Map<? extends K2,? extends V>, ? super Map<K2,V>> function);
     
     
     

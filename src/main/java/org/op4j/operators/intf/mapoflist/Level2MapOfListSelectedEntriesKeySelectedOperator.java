@@ -19,16 +19,16 @@
  */
 package org.op4j.operators.intf.mapoflist;
 
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.UniqOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
 
 
 /**
@@ -38,24 +38,24 @@ import org.op4j.operators.qualities.ReplaceableOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level2MapOfListSelectedEntriesKeySelectedOperator<K,V,I>
-        extends UniqOperator<Map<K,List<V>>,I>,
-                ExecutableSelectedOperator<K,I>,
-                ReplaceableOperator<K,I>,
-                SelectedOperator<K,I> {
+public interface Level2MapOfListSelectedEntriesKeySelectedOperator<K,V>
+        extends UniqOperator<Map<K,List<V>>>,
+                ExecutableSelectedOperator<K>,
+                ReplaceableOperator<K>,
+                SelectedOperator<K> {
 
 
 
-    public Level2MapOfListSelectedEntriesKeyOperator<K,V,I> endIf();
+    public Level2MapOfListSelectedEntriesKeyOperator<K,V> endIf();
 
 
-    public Level2MapOfListSelectedEntriesKeySelectedOperator<K,V,I> replaceWith(final K replacement);
+    public Level2MapOfListSelectedEntriesKeySelectedOperator<K,V> replaceWith(final K replacement);
 
-    public Level2MapOfListSelectedEntriesKeySelectedOperator<K,V,I> exec(final IFunction<? extends K, ? super K> function);
+    public Level2MapOfListSelectedEntriesKeySelectedOperator<K,V> exec(final IFunction<? extends K, ? super K> function);
     
-    public Level2MapOfListSelectedEntriesKeySelectedOperator<K,V,I> eval(final IEvaluator<? extends K, ? super K> eval);
+    public Level2MapOfListSelectedEntriesKeySelectedOperator<K,V> eval(final IEvaluator<? extends K, ? super K> eval);
     
-    public Level2MapOfListSelectedEntriesKeySelectedOperator<K,V,I> convert(final IConverter<? extends K, ? super K> converter);
+    public Level2MapOfListSelectedEntriesKeySelectedOperator<K,V> convert(final IConverter<? extends K, ? super K> converter);
     
         
 }

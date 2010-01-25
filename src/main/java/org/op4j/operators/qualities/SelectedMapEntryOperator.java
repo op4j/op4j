@@ -31,8 +31,8 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface SelectedMapEntryOperator<K,V,I> {
+public interface SelectedMapEntryOperator<K,V> {
 
-    public SelectableMapEntryOperator<K,V,I> endIf();
+    public SelectableMapEntryOperator<K,V> endIf();
 	
 }

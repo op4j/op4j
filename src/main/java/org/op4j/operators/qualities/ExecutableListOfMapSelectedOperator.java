@@ -36,12 +36,12 @@ import org.op4j.functions.evaluators.IEvaluator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ExecutableListOfMapSelectedOperator<K,V,I> {
+public interface ExecutableListOfMapSelectedOperator<K,V> {
 
-    public ExecutableListOfMapSelectedOperator<K,V,I> exec(final IFunction<? extends List<? extends Map<? extends K,? extends V>>, ? super List<Map<K,V>>> function);
+    public ExecutableListOfMapSelectedOperator<K,V> exec(final IFunction<? extends List<? extends Map<? extends K,? extends V>>, ? super List<Map<K,V>>> function);
     
-    public ExecutableListOfMapSelectedOperator<K,V,I> eval(final IEvaluator<? extends List<? extends Map<? extends K,? extends V>>,? super List<Map<K,V>>> eval);
+    public ExecutableListOfMapSelectedOperator<K,V> eval(final IEvaluator<? extends List<? extends Map<? extends K,? extends V>>,? super List<Map<K,V>>> eval);
     
-    public ExecutableListOfMapSelectedOperator<K,V,I> convert(final IConverter<? extends List<? extends Map<? extends K,? extends V>>,? super List<Map<K,V>>> converter);
+    public ExecutableListOfMapSelectedOperator<K,V> convert(final IConverter<? extends List<? extends Map<? extends K,? extends V>>,? super List<Map<K,V>>> converter);
     
 }

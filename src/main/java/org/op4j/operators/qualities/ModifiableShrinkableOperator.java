@@ -28,17 +28,17 @@ import org.op4j.functions.evaluators.IEvaluator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ModifiableShrinkableOperator<T,I> {
+public interface ModifiableShrinkableOperator<T> {
 
-    public ModifiableGrowableOperator<T,I> removeAllIndexes(final int... indices);
-    public ModifiableGrowableOperator<T,I> removeAllEqual(final T... values);
-    public ModifiableGrowableOperator<T,I> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
-    public ModifiableGrowableOperator<T,I> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
-    public ModifiableGrowableOperator<T,I> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
-    public ModifiableGrowableOperator<T,I> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
-    public ModifiableGrowableOperator<T,I> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
-    public ModifiableGrowableOperator<T,I> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
-    public ModifiableGrowableOperator<T,I> removeAllIndexesNot(final int... indices);
-    public ModifiableGrowableOperator<T,I> removeAllNull();
+    public ModifiableGrowableOperator<T> removeAllIndexes(final int... indices);
+    public ModifiableGrowableOperator<T> removeAllEqual(final T... values);
+    public ModifiableGrowableOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableGrowableOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableGrowableOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableGrowableOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableGrowableOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableGrowableOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableGrowableOperator<T> removeAllIndexesNot(final int... indices);
+    public ModifiableGrowableOperator<T> removeAllNull();
     
 }

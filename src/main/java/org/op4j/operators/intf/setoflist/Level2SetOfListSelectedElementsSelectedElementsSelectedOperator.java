@@ -26,9 +26,9 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.UniqOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
 
 
 /**
@@ -38,24 +38,24 @@ import org.op4j.operators.qualities.ReplaceableOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level2SetOfListSelectedElementsSelectedElementsSelectedOperator<T,I>
-        extends UniqOperator<Set<List<T>>,I>,
-        		ExecutableSelectedOperator<T,I>,
-                ReplaceableOperator<T,I>,
-                SelectedOperator<T,I> {
+public interface Level2SetOfListSelectedElementsSelectedElementsSelectedOperator<T>
+        extends UniqOperator<Set<List<T>>>,
+        		ExecutableSelectedOperator<T>,
+                ReplaceableOperator<T>,
+                SelectedOperator<T> {
 
 
 
-    public Level2SetOfListSelectedElementsSelectedElementsOperator<T,I> endIf();
+    public Level2SetOfListSelectedElementsSelectedElementsOperator<T> endIf();
 
     
-    public Level2SetOfListSelectedElementsSelectedElementsSelectedOperator<T,I> convert(final IConverter<? extends T,? super T> converter);
+    public Level2SetOfListSelectedElementsSelectedElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter);
     
-    public Level2SetOfListSelectedElementsSelectedElementsSelectedOperator<T,I> eval(final IEvaluator<? extends T,? super T> eval);
+    public Level2SetOfListSelectedElementsSelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
 
-    public Level2SetOfListSelectedElementsSelectedElementsSelectedOperator<T,I> replaceWith(final T replacement);
+    public Level2SetOfListSelectedElementsSelectedElementsSelectedOperator<T> replaceWith(final T replacement);
 
-    public Level2SetOfListSelectedElementsSelectedElementsSelectedOperator<T,I> exec(final IFunction<? extends T, ? super T> function);
+    public Level2SetOfListSelectedElementsSelectedElementsSelectedOperator<T> exec(final IFunction<? extends T, ? super T> function);
 
     
 }

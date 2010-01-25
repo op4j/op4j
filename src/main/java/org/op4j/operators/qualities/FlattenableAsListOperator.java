@@ -33,8 +33,8 @@ import org.op4j.operators.intf.list.Level0ListOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface FlattenableAsListOperator<T,I> {
+public interface FlattenableAsListOperator<T> {
     
-    public Level0ListOperator<T,I> flatten();
+    public Level0ListOperator<T> flatten();
 	
 }

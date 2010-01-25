@@ -34,14 +34,14 @@ import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface BuilderMultiOperator<T,I> {
+public interface BuilderMultiOperator<T> {
     
-    public Level0MapOperator<T,T,I> buildMap();
+    public Level0MapOperator<T,T> buildMap();
     
-    public Level0MapOfListOperator<T,T,I> buildMapOfList();
+    public Level0MapOfListOperator<T,T> buildMapOfList();
     
-    public Level0MapOfSetOperator<T,T,I> buildMapOfSet();
+    public Level0MapOfSetOperator<T,T> buildMapOfSet();
     
-    public Level0MapOfArrayOperator<T,T,I> buildMapOfArray(final Type<T> of);
+    public Level0MapOfArrayOperator<T,T> buildMapOfArray(final Type<T> of);
     
 }

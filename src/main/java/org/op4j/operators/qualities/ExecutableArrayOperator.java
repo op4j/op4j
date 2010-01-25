@@ -34,13 +34,13 @@ import org.op4j.functions.evaluators.IEvaluator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ExecutableArrayOperator<T,I> {
+public interface ExecutableArrayOperator<T> {
 
-    public <X> ExecutableArrayOperator<X,I> exec(final IFunction<X[], ? super T[]> function);
+    public <X> ExecutableArrayOperator<X> exec(final IFunction<X[], ? super T[]> function);
     
-    public <X> ExecutableArrayOperator<X,I> eval(final IEvaluator<X[],? super T[]> eval);
+    public <X> ExecutableArrayOperator<X> eval(final IEvaluator<X[],? super T[]> eval);
     
-    public <X> ExecutableArrayOperator<X,I> convert(final IConverter<X[],? super T[]> converter);
+    public <X> ExecutableArrayOperator<X> convert(final IConverter<X[],? super T[]> converter);
 
     public <X> Operator exec(final Type<X> resultType, final IFunction<? extends X, ? super T[]> function);
     

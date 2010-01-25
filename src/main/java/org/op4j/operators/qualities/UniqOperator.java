@@ -19,7 +19,6 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.operations.Operation;
 
 
 
@@ -30,9 +29,8 @@ import org.op4j.operations.Operation;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface UniqOperator<T,I> extends Operator {
+public interface UniqOperator<T> extends Operator {
     
     public T get(); 
-    public Operation<T,I> createOperation();
     
 }

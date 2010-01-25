@@ -31,8 +31,8 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface NavigatingCollectionOperator<T,I> {
+public interface NavigatingCollectionOperator<T> {
 
-    public NavigableCollectionOperator<T,I> endFor();
+    public NavigableCollectionOperator<T> endFor();
 	
 }

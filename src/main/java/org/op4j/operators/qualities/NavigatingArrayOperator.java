@@ -31,8 +31,8 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface NavigatingArrayOperator<T,I> {
+public interface NavigatingArrayOperator<T> {
 
-    public NavigableArrayOperator<T,I> endFor();
+    public NavigableArrayOperator<T> endFor();
 	
 }

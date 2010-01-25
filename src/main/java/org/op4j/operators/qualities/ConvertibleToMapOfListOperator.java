@@ -29,9 +29,9 @@ import org.op4j.operators.intf.mapoflist.Level0MapOfListOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ConvertibleToMapOfListOperator<K,V,I> {
+public interface ConvertibleToMapOfListOperator<K,V> {
     
-    public Level0MapOfListOperator<K,V,I> toMapOfList();
+    public Level0MapOfListOperator<K,V> toMapOfList();
 
     
 }

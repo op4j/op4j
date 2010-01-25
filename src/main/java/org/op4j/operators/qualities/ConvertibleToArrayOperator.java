@@ -30,7 +30,7 @@ import org.javaruntype.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ConvertibleToArrayOperator<T,I> {
+public interface ConvertibleToArrayOperator<T> {
     
     public Operator toArray(final Type<T> of);
     

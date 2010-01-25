@@ -37,24 +37,24 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level0GenericUniqSelectedOperator<T,I>
-        extends UniqOperator<T,I>,
-        		ExecutableSelectedOperator<T,I>,
-                ReplaceableOperator<T,I>,
-                SelectedOperator<T,I> {
+public interface Level0GenericUniqSelectedOperator<T>
+        extends UniqOperator<T>,
+        		ExecutableSelectedOperator<T>,
+                ReplaceableOperator<T>,
+                SelectedOperator<T> {
 
 
 
-    public Level0GenericUniqOperator<T,I> endIf();
+    public Level0GenericUniqOperator<T> endIf();
 
     
-    public Level0GenericUniqSelectedOperator<T,I> replaceWith(final T replacement);
+    public Level0GenericUniqSelectedOperator<T> replaceWith(final T replacement);
     
-    public Level0GenericUniqSelectedOperator<T,I> convert(final IConverter<? extends T,? super T> converter);
+    public Level0GenericUniqSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter);
     
-    public Level0GenericUniqSelectedOperator<T,I> eval(final IEvaluator<? extends T,? super T> eval);
+    public Level0GenericUniqSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
 
-    public Level0GenericUniqSelectedOperator<T,I> exec(final IFunction<? extends T, ? super T> function);
+    public Level0GenericUniqSelectedOperator<T> exec(final IFunction<? extends T, ? super T> function);
 
 
 }

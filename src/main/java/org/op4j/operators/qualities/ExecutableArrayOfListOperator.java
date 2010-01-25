@@ -37,18 +37,18 @@ import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ExecutableArrayOfListOperator<T,I> {
+public interface ExecutableArrayOfListOperator<T> {
 
-    public <X> ExecutableArrayOfListOperator<X,I> exec(final IFunction<? extends List<X>[], ? super List<T>[]> function);
+    public <X> ExecutableArrayOfListOperator<X> exec(final IFunction<? extends List<X>[], ? super List<T>[]> function);
     
-    public <X> ExecutableArrayOfListOperator<X,I> eval(final IEvaluator<? extends List<X>[],? super List<T>[]> eval);
+    public <X> ExecutableArrayOfListOperator<X> eval(final IEvaluator<? extends List<X>[],? super List<T>[]> eval);
     
-    public <X> ExecutableArrayOfListOperator<X,I> convert(final IConverter<? extends List<X>[],? super List<T>[]> converter);
+    public <X> ExecutableArrayOfListOperator<X> convert(final IConverter<? extends List<X>[],? super List<T>[]> converter);
 
-    public <X> Level0GenericUniqOperator<X,I> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T>[]> function);
+    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T>[]> function);
     
-    public <X> Level0GenericUniqOperator<X,I> eval(final Type<X> resultType, final IEvaluator<? extends X,? super List<T>[]> eval);
+    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super List<T>[]> eval);
     
-    public <X> Level0GenericUniqOperator<X,I> convert(final Type<X> resultType, final IConverter<? extends X,? super List<T>[]> converter);    
+    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super List<T>[]> converter);    
     
 }

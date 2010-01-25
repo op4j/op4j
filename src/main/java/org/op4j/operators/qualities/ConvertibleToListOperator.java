@@ -28,7 +28,7 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ConvertibleToListOperator<I> {
+public interface ConvertibleToListOperator {
     
     public Operator toList();
 

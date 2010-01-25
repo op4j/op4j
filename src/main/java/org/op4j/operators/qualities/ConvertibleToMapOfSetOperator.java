@@ -29,9 +29,9 @@ import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ConvertibleToMapOfSetOperator<K,V,I> {
+public interface ConvertibleToMapOfSetOperator<K,V> {
     
-    public Level0MapOfSetOperator<K,V,I> toMapOfSet();
+    public Level0MapOfSetOperator<K,V> toMapOfSet();
 
     
 }

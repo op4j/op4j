@@ -41,42 +41,42 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level2ArrayOfListElementsElementsOperator<T,I>
-        extends UniqOperator<List<T>[],I>,
-                NavigatingCollectionOperator<T,I>,
-        		ExecutableOperator<T,I>,
-                SelectableOperator<T,I>,
-                ReplaceableOperator<T,I>,
-                ReplaceableIfNullOperator<T,I>,
-                CastableToTypeOperator<T,I> {
+public interface Level2ArrayOfListElementsElementsOperator<T>
+        extends UniqOperator<List<T>[]>,
+                NavigatingCollectionOperator<T>,
+        		ExecutableOperator<T>,
+                SelectableOperator<T>,
+                ReplaceableOperator<T>,
+                ReplaceableIfNullOperator<T>,
+                CastableToTypeOperator<T> {
 
 
 
-    public Level2ArrayOfListElementsElementsSelectedOperator<T,I> ifIndex(final int... indices);
-    public Level2ArrayOfListElementsElementsSelectedOperator<T,I> ifTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level2ArrayOfListElementsElementsSelectedOperator<T,I> ifFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level2ArrayOfListElementsElementsSelectedOperator<T,I> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level2ArrayOfListElementsElementsSelectedOperator<T,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level2ArrayOfListElementsElementsSelectedOperator<T,I> ifNull();
-    public Level2ArrayOfListElementsElementsSelectedOperator<T,I> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level2ArrayOfListElementsElementsSelectedOperator<T,I> ifIndexNot(final int... indices);
-    public Level2ArrayOfListElementsElementsSelectedOperator<T,I> ifNotNull();
-    public Level2ArrayOfListElementsElementsSelectedOperator<T,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level2ArrayOfListElementsElementsSelectedOperator<T> ifIndex(final int... indices);
+    public Level2ArrayOfListElementsElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level2ArrayOfListElementsElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level2ArrayOfListElementsElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level2ArrayOfListElementsElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level2ArrayOfListElementsElementsSelectedOperator<T> ifNull();
+    public Level2ArrayOfListElementsElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level2ArrayOfListElementsElementsSelectedOperator<T> ifIndexNot(final int... indices);
+    public Level2ArrayOfListElementsElementsSelectedOperator<T> ifNotNull();
+    public Level2ArrayOfListElementsElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
 
 		    
-    public Level1ArrayOfListElementsOperator<T,I> endFor();
+    public Level1ArrayOfListElementsOperator<T> endFor();
     
-    public Level2ArrayOfListElementsElementsOperator<T,I> replaceWith(final T replacement);
-    public Level2ArrayOfListElementsElementsOperator<T,I> replaceIfNullWith(final T replacement);
+    public Level2ArrayOfListElementsElementsOperator<T> replaceWith(final T replacement);
+    public Level2ArrayOfListElementsElementsOperator<T> replaceIfNullWith(final T replacement);
 
 
-    public <X> Level2ArrayOfListElementsElementsOperator<X,I> convert(final IConverter<X,? super T> converter);
+    public <X> Level2ArrayOfListElementsElementsOperator<X> convert(final IConverter<X,? super T> converter);
     
-    public <X> Level2ArrayOfListElementsElementsOperator<X,I> eval(final IEvaluator<X,? super T> eval);
+    public <X> Level2ArrayOfListElementsElementsOperator<X> eval(final IEvaluator<X,? super T> eval);
 
-    public <X> Level2ArrayOfListElementsElementsOperator<X,I> exec(final IFunction<X, ? super T> function);
+    public <X> Level2ArrayOfListElementsElementsOperator<X> exec(final IFunction<X, ? super T> function);
     
-    public <X> Level2ArrayOfListElementsElementsOperator<X,I> asType(final Type<X> type);
-    public Level2ArrayOfListElementsElementsOperator<?,I> asUnknown();
+    public <X> Level2ArrayOfListElementsElementsOperator<X> asType(final Type<X> type);
+    public Level2ArrayOfListElementsElementsOperator<?> asUnknown();
         
     }

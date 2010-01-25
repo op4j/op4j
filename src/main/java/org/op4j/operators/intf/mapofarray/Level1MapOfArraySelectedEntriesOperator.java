@@ -39,34 +39,34 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level1MapOfArraySelectedEntriesOperator<K,V,I>
-		extends UniqOperator<Map<K,V[]>,I>,
-		        NavigableMapEntryOperator<I>,
-		        NavigatingMapOperator<K,V[],I>,
-                ExecutableMapOfArrayEntrySelectedOperator<K,V,I>,
-                ReplaceableOperator<Map.Entry<K,V[]>,I>,
-                SelectableMapEntryOperator<K, V[],I> {
+public interface Level1MapOfArraySelectedEntriesOperator<K,V>
+		extends UniqOperator<Map<K,V[]>>,
+		        NavigableMapEntryOperator,
+		        NavigatingMapOperator<K,V[]>,
+                ExecutableMapOfArrayEntrySelectedOperator<K,V>,
+                ReplaceableOperator<Map.Entry<K,V[]>>,
+                SelectableMapEntryOperator<K, V[]> {
 
 
-    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V,I> ifIndex(final int... indices);
-    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V,I> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K,V[]>> eval);
-    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V,I> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K,V[]>> eval);
-    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V,I> ifIndexNot(final int... indices);
-    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V,I> ifKeyEquals(final K... keys);
-    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V,I> ifKeyNotEquals(final K... keys);
+    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> ifIndex(final int... indices);
+    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K,V[]>> eval);
+    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K,V[]>> eval);
+    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> ifIndexNot(final int... indices);
+    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> ifKeyEquals(final K... keys);
+    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> ifKeyNotEquals(final K... keys);
     
     
-    public Level2MapOfArraySelectedEntriesKeyOperator<K,V,I> onKey();
-    public Level2MapOfArraySelectedEntriesValueOperator<K,V,I> onValue();
+    public Level2MapOfArraySelectedEntriesKeyOperator<K,V> onKey();
+    public Level2MapOfArraySelectedEntriesValueOperator<K,V> onValue();
     
-    public Level0MapOfArraySelectedOperator<K,V,I> endFor();
+    public Level0MapOfArraySelectedOperator<K,V> endFor();
     
-    public Level1MapOfArraySelectedEntriesOperator<K,V,I> replaceWith(final Map.Entry<K,V[]> replacement);
+    public Level1MapOfArraySelectedEntriesOperator<K,V> replaceWith(final Map.Entry<K,V[]> replacement);
 
-    public Level1MapOfArraySelectedEntriesOperator<K,V,I> exec(final IFunction<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> function);
+    public Level1MapOfArraySelectedEntriesOperator<K,V> exec(final IFunction<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> function);
     
-    public Level1MapOfArraySelectedEntriesOperator<K,V,I> eval(final IEvaluator<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> eval);
+    public Level1MapOfArraySelectedEntriesOperator<K,V> eval(final IEvaluator<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> eval);
     
-    public Level1MapOfArraySelectedEntriesOperator<K,V,I> convert(final IConverter<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> converter);
+    public Level1MapOfArraySelectedEntriesOperator<K,V> convert(final IConverter<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> converter);
                                     
 }

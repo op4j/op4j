@@ -24,7 +24,6 @@ import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.operations.Operation;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.arrayofarray.Level1ArrayOfArrayElementsOperator;
 import org.op4j.operators.intf.arrayofarray.Level2ArrayOfArrayElementsElementsOperator;
@@ -42,8 +41,8 @@ import org.op4j.target.Target.Structure;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level2ArrayOfArrayElementsElementsOperatorImpl<T,I> extends AbstractOperatorImpl
-        implements Level2ArrayOfArrayElementsElementsOperator<T,I> {
+public class Level2ArrayOfArrayElementsElementsOperatorImpl<T> extends AbstractOperatorImpl
+        implements Level2ArrayOfArrayElementsElementsOperator<T> {
     
     private final Type<? extends T> type; 
 
@@ -54,16 +53,16 @@ public class Level2ArrayOfArrayElementsElementsOperatorImpl<T,I> extends Abstrac
     }
 
 
-    public Level1ArrayOfArrayElementsOperator<T,I> endFor() {
-        return new Level1ArrayOfArrayElementsOperatorImpl<T,I>(Types.arrayOf(this.type), getTarget().endIterate(Structure.ARRAY, this.type.getRawClass()));
+    public Level1ArrayOfArrayElementsOperator<T> endFor() {
+        return new Level1ArrayOfArrayElementsOperatorImpl<T>(Types.arrayOf(this.type), getTarget().endIterate(Structure.ARRAY, this.type.getRawClass()));
     }
 
 
-    public <X> Level2ArrayOfArrayElementsElementsOperator<X,I> asType(final Type<X> elementType) {
+    public <X> Level2ArrayOfArrayElementsElementsOperator<X> asType(final Type<X> elementType) {
         return endFor().endFor().asArrayOfArrayOf(elementType).forEach(Types.arrayOf(elementType)).forEach(elementType);
     }
 
-    public Level2ArrayOfArrayElementsElementsOperator<?,I> asUnknown() {
+    public Level2ArrayOfArrayElementsElementsOperator<?> asUnknown() {
         return asType(Types.OBJECT);
     }
 
@@ -73,83 +72,81 @@ public class Level2ArrayOfArrayElementsElementsOperatorImpl<T,I> extends Abstrac
     }
 
 
-    public Level2ArrayOfArrayElementsElementsSelectedOperator<T,I> ifIndex(final int... indices) {
-        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectIndex(indices));
+    public Level2ArrayOfArrayElementsElementsSelectedOperator<T> ifIndex(final int... indices) {
+        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().selectIndex(indices));
     }
 
 
-    public Level2ArrayOfArrayElementsElementsSelectedOperator<T,I> ifIndexNot(final int... indices) {
-        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectIndexNot(indices));
+    public Level2ArrayOfArrayElementsElementsSelectedOperator<T> ifIndexNot(final int... indices) {
+        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().selectIndexNot(indices));
     }
 
 
-    public Level2ArrayOfArrayElementsElementsSelectedOperator<T,I> ifTrue(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectMatching(eval));
+    public Level2ArrayOfArrayElementsElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().selectMatching(eval));
     }
 
 
-    public Level2ArrayOfArrayElementsElementsSelectedOperator<T,I> ifFalse(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectNotMatching(eval));
+    public Level2ArrayOfArrayElementsElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().selectNotMatching(eval));
     }
 
 
-    public Level2ArrayOfArrayElementsElementsSelectedOperator<T,I> ifNotNull() {
-        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectNotNull());
+    public Level2ArrayOfArrayElementsElementsSelectedOperator<T> ifNotNull() {
+        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().selectNotNull());
     }
 
 
-    public Level2ArrayOfArrayElementsElementsSelectedOperator<T,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectNotNullAndMatching(eval));
+    public Level2ArrayOfArrayElementsElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level2ArrayOfArrayElementsElementsSelectedOperator<T,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectNotNullAndNotMatching(eval));
+    public Level2ArrayOfArrayElementsElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().selectNotNullAndNotMatching(eval));
     }
 
 
-    public Level2ArrayOfArrayElementsElementsSelectedOperator<T,I> ifNull() {
-        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectNull());
+    public Level2ArrayOfArrayElementsElementsSelectedOperator<T> ifNull() {
+        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().selectNull());
     }
 
 
-    public Level2ArrayOfArrayElementsElementsSelectedOperator<T,I> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectNullOrMatching(eval));
+    public Level2ArrayOfArrayElementsElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level2ArrayOfArrayElementsElementsSelectedOperator<T,I> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectNullOrNotMatching(eval));
+    public Level2ArrayOfArrayElementsElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval) {
+        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public <X> Level2ArrayOfArrayElementsElementsOperator<X,I> convert(final IConverter<X, ? super T> converter) {
-        return new Level2ArrayOfArrayElementsElementsOperatorImpl<X,I>(converter.getResultType(this.type), getTarget().execute(converter, Normalization.NONE));
+    public <X> Level2ArrayOfArrayElementsElementsOperator<X> convert(final IConverter<X, ? super T> converter) {
+        return new Level2ArrayOfArrayElementsElementsOperatorImpl<X>(converter.getResultType(this.type), getTarget().execute(converter, Normalization.NONE));
     }
 
 
-    public <X> Level2ArrayOfArrayElementsElementsOperator<X,I> eval(final IEvaluator<X, ? super T> eval) {
-        return new Level2ArrayOfArrayElementsElementsOperatorImpl<X,I>(eval.getResultType(this.type), getTarget().execute(eval, Normalization.NONE));
+    public <X> Level2ArrayOfArrayElementsElementsOperator<X> eval(final IEvaluator<X, ? super T> eval) {
+        return new Level2ArrayOfArrayElementsElementsOperatorImpl<X>(eval.getResultType(this.type), getTarget().execute(eval, Normalization.NONE));
     }
 
 
-    public <X> Level2ArrayOfArrayElementsElementsOperator<X,I> exec(final IFunction<X, ? super T> function) {
-        return new Level2ArrayOfArrayElementsElementsOperatorImpl<X,I>(function.getResultType(this.type), getTarget().execute(function, Normalization.NONE));
+    public <X> Level2ArrayOfArrayElementsElementsOperator<X> exec(final IFunction<X, ? super T> function) {
+        return new Level2ArrayOfArrayElementsElementsOperatorImpl<X>(function.getResultType(this.type), getTarget().execute(function, Normalization.NONE));
     }
 
 
-    public Level2ArrayOfArrayElementsElementsOperator<T,I> replaceWith(final T replacement) {
-        return new Level2ArrayOfArrayElementsElementsOperatorImpl<T,I>(this.type, getTarget().replaceWith(replacement));
+    public Level2ArrayOfArrayElementsElementsOperator<T> replaceWith(final T replacement) {
+        return new Level2ArrayOfArrayElementsElementsOperatorImpl<T>(this.type, getTarget().replaceWith(replacement));
     }
 
 
-    public Level2ArrayOfArrayElementsElementsOperator<T,I> replaceIfNullWith(final T replacement) {
+    public Level2ArrayOfArrayElementsElementsOperator<T> replaceIfNullWith(final T replacement) {
         return ifNull().replaceWith(replacement).endIf();
     }
 
 
-    public Operation<T[][], I> createOperation() {
-        return endFor().createOperation();
-    }
+    
 
 }

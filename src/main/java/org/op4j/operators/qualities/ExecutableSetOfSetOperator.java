@@ -37,18 +37,18 @@ import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ExecutableSetOfSetOperator<T,I> {
+public interface ExecutableSetOfSetOperator<T> {
 
-    public <X> ExecutableSetOfSetOperator<X,I> exec(final IFunction<? extends Set<? extends Set<X>>, ? super Set<Set<T>>> function);
+    public <X> ExecutableSetOfSetOperator<X> exec(final IFunction<? extends Set<? extends Set<X>>, ? super Set<Set<T>>> function);
     
-    public <X> ExecutableSetOfSetOperator<X,I> eval(final IEvaluator<? extends Set<? extends Set<X>>,? super Set<Set<T>>> eval);
+    public <X> ExecutableSetOfSetOperator<X> eval(final IEvaluator<? extends Set<? extends Set<X>>,? super Set<Set<T>>> eval);
     
-    public <X> ExecutableSetOfSetOperator<X,I> convert(final IConverter<? extends Set<? extends Set<X>>,? super Set<Set<T>>> converter);
+    public <X> ExecutableSetOfSetOperator<X> convert(final IConverter<? extends Set<? extends Set<X>>,? super Set<Set<T>>> converter);
 
-    public <X> Level0GenericUniqOperator<X,I> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<Set<T>>> function);
+    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<Set<T>>> function);
     
-    public <X> Level0GenericUniqOperator<X,I> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Set<Set<T>>> eval);
+    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Set<Set<T>>> eval);
     
-    public <X> Level0GenericUniqOperator<X,I> convert(final Type<X> resultType, final IConverter<? extends X,? super Set<Set<T>>> converter);    
+    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Set<Set<T>>> converter);    
     
 }

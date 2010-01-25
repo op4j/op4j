@@ -26,9 +26,9 @@ import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
 
 
 /**
@@ -38,37 +38,37 @@ import org.op4j.operators.qualities.ReplaceableOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level1SetSelectedElementsOperator<T,I>
-        extends UniqOperator<Set<T>,I>,
-                NavigatingCollectionOperator<T,I>,
-                SelectableOperator<T,I>,
-                ExecutableSelectedOperator<T,I>,
-                ReplaceableOperator<T,I> {
+public interface Level1SetSelectedElementsOperator<T>
+        extends UniqOperator<Set<T>>,
+                NavigatingCollectionOperator<T>,
+                SelectableOperator<T>,
+                ExecutableSelectedOperator<T>,
+                ReplaceableOperator<T> {
 
 
 
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifIndex(final int... indices);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifNull();
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifIndexNot(final int... indices);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifNotNull();
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetSelectedElementsSelectedOperator<T> ifIndex(final int... indices);
+    public Level1SetSelectedElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetSelectedElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetSelectedElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetSelectedElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetSelectedElementsSelectedOperator<T> ifNull();
+    public Level1SetSelectedElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetSelectedElementsSelectedOperator<T> ifIndexNot(final int... indices);
+    public Level1SetSelectedElementsSelectedOperator<T> ifNotNull();
+    public Level1SetSelectedElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
 
 
 		    
-    public Level0SetSelectedOperator<T,I> endFor();
+    public Level0SetSelectedOperator<T> endFor();
     
-    public Level1SetSelectedElementsOperator<T,I> convert(final IConverter<? extends T,? super T> converter);
+    public Level1SetSelectedElementsOperator<T> convert(final IConverter<? extends T,? super T> converter);
     
-    public Level1SetSelectedElementsOperator<T,I> eval(final IEvaluator<? extends T,? super T> eval);
+    public Level1SetSelectedElementsOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
 
-    public Level1SetSelectedElementsOperator<T,I> replaceWith(final T replacement);
+    public Level1SetSelectedElementsOperator<T> replaceWith(final T replacement);
 
-    public Level1SetSelectedElementsOperator<T,I> exec(final IFunction<? extends T, ? super T> function);
+    public Level1SetSelectedElementsOperator<T> exec(final IFunction<? extends T, ? super T> function);
 	
     
 }

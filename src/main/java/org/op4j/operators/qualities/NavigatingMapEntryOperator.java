@@ -31,8 +31,8 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface NavigatingMapEntryOperator<I> {
+public interface NavigatingMapEntryOperator {
 
-    public NavigableMapEntryOperator<I> endOn();
+    public NavigableMapEntryOperator endOn();
 	
 }

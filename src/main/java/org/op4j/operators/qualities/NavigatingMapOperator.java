@@ -31,8 +31,8 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface NavigatingMapOperator<K,V,I> {
+public interface NavigatingMapOperator<K,V> {
 
-    public NavigableMapOperator<K,V,I> endFor();
+    public NavigableMapOperator<K,V> endFor();
 	
 }

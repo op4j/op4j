@@ -38,36 +38,36 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level3MapOfArraySelectedEntriesSelectedValueElementsOperator<K,V,I>
-        extends UniqOperator<Map<K,V[]>,I>,
-                NavigatingArrayOperator<V,I>,
-        		ExecutableSelectedOperator<V,I>,
-                ReplaceableOperator<V,I>,
-                SelectableOperator<V,I> {
+public interface Level3MapOfArraySelectedEntriesSelectedValueElementsOperator<K,V>
+        extends UniqOperator<Map<K,V[]>>,
+                NavigatingArrayOperator<V>,
+        		ExecutableSelectedOperator<V>,
+                ReplaceableOperator<V>,
+                SelectableOperator<V> {
 
 
 
-    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V,I> ifIndex(final int... indices);
-    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V,I> ifTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V,I> ifFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V,I> ifNullOrFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V,I> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V,I> ifNull();
-    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V,I> ifNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V,I> ifIndexNot(final int... indices);
-    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V,I> ifNotNull();
-    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V,I> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifIndex(final int... indices);
+    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifNull();
+    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifIndexNot(final int... indices);
+    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifNotNull();
+    public Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval);
 
     
-    public Level2MapOfArraySelectedEntriesSelectedValueOperator<K,V,I> endFor();
+    public Level2MapOfArraySelectedEntriesSelectedValueOperator<K,V> endFor();
     
-    public Level3MapOfArraySelectedEntriesSelectedValueElementsOperator<K,V,I> convert(final IConverter<? extends V, ? super V> converter);
+    public Level3MapOfArraySelectedEntriesSelectedValueElementsOperator<K,V> convert(final IConverter<? extends V, ? super V> converter);
     
-    public Level3MapOfArraySelectedEntriesSelectedValueElementsOperator<K,V,I> eval(final IEvaluator<? extends V, ? super V> eval);
+    public Level3MapOfArraySelectedEntriesSelectedValueElementsOperator<K,V> eval(final IEvaluator<? extends V, ? super V> eval);
 
-    public Level3MapOfArraySelectedEntriesSelectedValueElementsOperator<K,V,I> replaceWith(final V replacement);
+    public Level3MapOfArraySelectedEntriesSelectedValueElementsOperator<K,V> replaceWith(final V replacement);
 
-    public Level3MapOfArraySelectedEntriesSelectedValueElementsOperator<K,V,I> exec(final IFunction<? extends V, ? super V> function);
+    public Level3MapOfArraySelectedEntriesSelectedValueElementsOperator<K,V> exec(final IFunction<? extends V, ? super V> function);
     
         
 }

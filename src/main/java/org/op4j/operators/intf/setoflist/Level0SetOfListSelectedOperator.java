@@ -30,10 +30,10 @@ import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSetOfListSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
 /**
  * 
  * @since 1.0
@@ -41,53 +41,53 @@ import org.op4j.operators.qualities.ReplaceableOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level0SetOfListSelectedOperator<T,I>
-        extends UniqOperator<Set<List<T>>,I>,
-                NavigableCollectionOperator<List<T>,I>,
-                SortableOperator<List<T>,I>,
-                ModifiableCollectionOperator<List<T>,I>,
-                ExecutableSetOfListSelectedOperator<T,I>,
-                ReplaceableOperator<Set<List<T>>,I>,
-                SelectedOperator<Set<List<T>>,I> {
+public interface Level0SetOfListSelectedOperator<T>
+        extends UniqOperator<Set<List<T>>>,
+                NavigableCollectionOperator<List<T>>,
+                SortableOperator<List<T>>,
+                ModifiableCollectionOperator<List<T>>,
+                ExecutableSetOfListSelectedOperator<T>,
+                ReplaceableOperator<Set<List<T>>>,
+                SelectedOperator<Set<List<T>>> {
 
 
 
-    public Level0SetOfListOperator<T,I> endIf();
+    public Level0SetOfListOperator<T> endIf();
 
 
 
-    public Level1SetOfListSelectedElementsOperator<T,I> forEach();
+    public Level1SetOfListSelectedElementsOperator<T> forEach();
 
-    public Level0SetOfListSelectedOperator<T,I> sort();
-    public Level0SetOfListSelectedOperator<T,I> sort(final Comparator<? super List<T>> comparator);
+    public Level0SetOfListSelectedOperator<T> sort();
+    public Level0SetOfListSelectedOperator<T> sort(final Comparator<? super List<T>> comparator);
 
 
-    public Level0SetOfListSelectedOperator<T,I> add(final List<T> newElement);
-    public Level0SetOfListSelectedOperator<T,I> addAll(final List<T>... newElements);
-    public Level0SetOfListSelectedOperator<T,I> insert(final int position, final List<T> newElement);
-    public Level0SetOfListSelectedOperator<T,I> insertAll(final int position, final List<T>... newElements);
-    public Level0SetOfListSelectedOperator<T,I> addAll(final Collection<List<T>> collection);
-    public Level0SetOfListSelectedOperator<T,I> removeAllIndexes(final int... indices);
-    public Level0SetOfListSelectedOperator<T,I> removeAllEqual(final List<T>... values);
-    public Level0SetOfListSelectedOperator<T,I> removeAllTrue(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0SetOfListSelectedOperator<T,I> removeAllFalse(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0SetOfListSelectedOperator<T,I> removeAllNullOrFalse(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0SetOfListSelectedOperator<T,I> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0SetOfListSelectedOperator<T,I> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0SetOfListSelectedOperator<T,I> removeAllNullOrTrue(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0SetOfListSelectedOperator<T,I> removeAllIndexesNot(final int... indices);
-    public Level0SetOfListSelectedOperator<T,I> removeAllNull();
+    public Level0SetOfListSelectedOperator<T> add(final List<T> newElement);
+    public Level0SetOfListSelectedOperator<T> addAll(final List<T>... newElements);
+    public Level0SetOfListSelectedOperator<T> insert(final int position, final List<T> newElement);
+    public Level0SetOfListSelectedOperator<T> insertAll(final int position, final List<T>... newElements);
+    public Level0SetOfListSelectedOperator<T> addAll(final Collection<List<T>> collection);
+    public Level0SetOfListSelectedOperator<T> removeAllIndexes(final int... indices);
+    public Level0SetOfListSelectedOperator<T> removeAllEqual(final List<T>... values);
+    public Level0SetOfListSelectedOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0SetOfListSelectedOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0SetOfListSelectedOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0SetOfListSelectedOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0SetOfListSelectedOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0SetOfListSelectedOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0SetOfListSelectedOperator<T> removeAllIndexesNot(final int... indices);
+    public Level0SetOfListSelectedOperator<T> removeAllNull();
 
 
 
     
-    public Level0SetOfListSelectedOperator<T,I> convert(final IConverter<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> converter);
+    public Level0SetOfListSelectedOperator<T> convert(final IConverter<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> converter);
     
-    public Level0SetOfListSelectedOperator<T,I> eval(final IEvaluator<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> eval);
+    public Level0SetOfListSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> eval);
 
-    public Level0SetOfListSelectedOperator<T,I> replaceWith(final Set<List<T>> replacement);
+    public Level0SetOfListSelectedOperator<T> replaceWith(final Set<List<T>> replacement);
 
-    public Level0SetOfListSelectedOperator<T,I> exec(final IFunction<? extends Set<? extends List<? extends T>>, ? super Set<List<T>>> function);
+    public Level0SetOfListSelectedOperator<T> exec(final IFunction<? extends Set<? extends List<? extends T>>, ? super Set<List<T>>> function);
 
     
 }
