@@ -23,7 +23,6 @@ package org.op4j.target;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 
 /**
@@ -39,39 +38,28 @@ final class ExecutionTargetId {
     public static final ExecutionTargetId ROOT = new ExecutionTargetId(null, 0); 
     
 	private final List<Integer> components = new ArrayList<Integer>();
-	private final String componentsStringRepresentation;
+	private final String stringRepresentation;
 	private final int level;
 	private final int hashCode;
 	
 	
 	
-	public static ExecutionTargetId fromIdList(final List<Integer> idList) {
-		
-		Validate.notEmpty(idList);
-
-		ExecutionTargetId id = null;
-		for (final Integer currentId : idList) {
-			id = new ExecutionTargetId(id, currentId.intValue());
-		}
-		return id;
-		
-	}
-	
-	
 	public ExecutionTargetId(final ExecutionTargetId parent, final int index) {
 		
 		if (parent != null) {
+	        this.stringRepresentation = parent.getStringRepresentation() + "." + String.valueOf(index);
 			this.components.addAll(parent.getComponents());
+	        this.components.add(Integer.valueOf(index));
 		} else {
 			/* ID for first level is always 0 */
 			Validate.isTrue(index == 0, "Index for first level must be 0");
+            this.stringRepresentation = String.valueOf(index);
+	        this.components.add(Integer.valueOf(index));
 		}
 		
-		this.components.add(Integer.valueOf(index));
 		
-		this.componentsStringRepresentation = StringUtils.join(this.components, ".");
 		this.level = this.components.size();
-		this.hashCode = this.components.hashCode();
+		this.hashCode = this.stringRepresentation.hashCode();
 		
 	}
 	
@@ -89,12 +77,17 @@ final class ExecutionTargetId {
 	
 	@Override
 	public String toString() {
-		return this.componentsStringRepresentation;
+		return getStringRepresentation();
 	}
 
 	
 
-	@Override
+    public String getStringRepresentation() {
+        return this.stringRepresentation;
+    }
+
+
+    @Override
 	public int hashCode() {
 		return this.hashCode;
 	}
@@ -112,7 +105,7 @@ final class ExecutionTargetId {
 			return false;
 		}
 		ExecutionTargetId other = (ExecutionTargetId) obj;
-		return this.componentsStringRepresentation.equals(other.componentsStringRepresentation);
+		return this.stringRepresentation.equals(other.stringRepresentation);
 	}
 	
 	
