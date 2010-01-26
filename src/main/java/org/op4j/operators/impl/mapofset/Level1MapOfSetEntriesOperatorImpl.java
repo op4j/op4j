@@ -62,12 +62,12 @@ public class Level1MapOfSetEntriesOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public Level2MapOfSetEntriesKeyOperator<K, V> onKey() {
-        return new Level2MapOfSetEntriesKeyOperatorImpl<K, V>(getTarget().iterate().selectIndex(0));
+        return new Level2MapOfSetEntriesKeyOperatorImpl<K, V>(getTarget().onKey());
     }
 
 
     public Level2MapOfSetEntriesValueOperator<K, V> onValue() {
-        return new Level2MapOfSetEntriesValueOperatorImpl<K, V>(getTarget().iterate().selectIndex(1));
+        return new Level2MapOfSetEntriesValueOperatorImpl<K, V>(getTarget().onValue());
     }
 
 

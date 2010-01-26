@@ -50,7 +50,6 @@ import org.op4j.operators.intf.mapofmap.Level2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalization;
-import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalizationUtils;
 
 
@@ -100,7 +99,7 @@ public class Level2MapOfListEntriesValueOperatorImpl<K,V> extends AbstractOperat
 
 
     public Level1MapOfListEntriesOperator<K, V> endOn() {
-        return new Level1MapOfListEntriesOperatorImpl<K, V>(getTarget().endIterate(Structure.MAP_ENTRY, null));
+        return new Level1MapOfListEntriesOperatorImpl<K, V>(getTarget().endOn());
     }
 
 

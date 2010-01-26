@@ -33,7 +33,6 @@ import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueEntriesKeyOper
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueEntriesKeySelectedOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalization;
-import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalizationUtils;
 
 
@@ -54,7 +53,7 @@ public class Level4MapOfMapEntriesValueEntriesKeyOperatorImpl<K1,K2,V> extends A
 
 
     public Level3MapOfMapEntriesValueEntriesOperator<K1, K2, V> endOn() {
-        return new Level3MapOfMapEntriesValueEntriesOperatorImpl<K1, K2, V>(getTarget().endIterate(Structure.MAP_ENTRY, null));
+        return new Level3MapOfMapEntriesValueEntriesOperatorImpl<K1, K2, V>(getTarget().endOn());
     }
 
 

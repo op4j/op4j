@@ -38,6 +38,9 @@ import org.op4j.util.NormalizationUtils;
  */
 public abstract class ExecutionTarget extends Target {
     
+    private static List<Integer> KEY_INDEX = Arrays.asList(new Integer[] { Integer.valueOf(0) });
+    private static List<Integer> VALUE_INDEX = Arrays.asList(new Integer[] { Integer.valueOf(1) });
+    
     private final ExecutionTargetId id;
 
     
@@ -154,6 +157,27 @@ public abstract class ExecutionTarget extends Target {
     @Override
     abstract ExecutionTarget doIterate();
 
+
+    
+    @Override
+    ExecutionTarget doOnKey() {
+        return doIterate().doSelectIndex(true, KEY_INDEX).doIterate();
+    }
+
+    
+    @Override
+    ExecutionTarget doOnValue() {
+        return doIterate().doSelectIndex(true, VALUE_INDEX).doIterate();
+    }
+
+    
+    @Override
+    ExecutionTarget doEndOn() {
+        return doEndIterate(Structure.MAP_ENTRY_PART, null).doEndSelect().doEndIterate(Structure.MAP_ENTRY, null);
+    }
+    
+    
+    
     @Override
     abstract ExecutionTarget doSelectIndex(final boolean desiredResult, final List<Integer> positions);
 

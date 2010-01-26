@@ -66,12 +66,12 @@ public class Level3MapOfMapEntriesSelectedValueSelectedEntriesOperatorImpl<K1,K2
 
 
     public Level4MapOfMapEntriesSelectedValueSelectedEntriesKeyOperator<K1,K2,V> onKey() {
-        return new Level4MapOfMapEntriesSelectedValueSelectedEntriesKeyOperatorImpl<K1,K2,V>(getTarget().iterate().selectIndex(0));
+        return new Level4MapOfMapEntriesSelectedValueSelectedEntriesKeyOperatorImpl<K1,K2,V>(getTarget().onKey());
     }
 
 
     public Level4MapOfMapEntriesSelectedValueSelectedEntriesValueOperator<K1,K2,V> onValue() {
-        return new Level4MapOfMapEntriesSelectedValueSelectedEntriesValueOperatorImpl<K1,K2,V>(getTarget().iterate().selectIndex(1));
+        return new Level4MapOfMapEntriesSelectedValueSelectedEntriesValueOperatorImpl<K1,K2,V>(getTarget().onValue());
     }
 
 

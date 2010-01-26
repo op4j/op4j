@@ -36,7 +36,7 @@ import org.op4j.util.VarArgsUtil;
  */
 public abstract class Target {
 
-    public static enum Structure { ARRAY, LIST, SET, MAP, MAP_ENTRY }
+    public static enum Structure { ARRAY, LIST, SET, MAP, MAP_ENTRY, MAP_ENTRY_PART }
     public static enum Normalization { 
         NONE, 
         ARRAY, LIST, SET, MAP, MAPENTRY, 
@@ -55,6 +55,9 @@ public abstract class Target {
     
     
     abstract Target doIterate();
+    abstract Target doOnKey();
+    abstract Target doOnValue();
+    abstract Target doEndOn();
     
 
     abstract Target doSelectIndex(final boolean desiredResult, final List<Integer> positions);
@@ -69,7 +72,20 @@ public abstract class Target {
         return doIterate();
     }
     
+    public final Target onKey() {
+        return doOnKey();
+    }
+    
+    public final Target onValue() {
+        return doOnValue();
+    }
+    
+    
+    public final Target endOn() {
+        return doEndOn();
+    }
 
+    
     abstract Target doEndIterate(final Structure structure, final Class<?> componentClass);
 
     

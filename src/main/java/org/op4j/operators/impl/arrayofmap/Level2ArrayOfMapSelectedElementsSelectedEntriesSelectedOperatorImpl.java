@@ -34,12 +34,12 @@ public class Level2ArrayOfMapSelectedElementsSelectedEntriesSelectedOperatorImpl
 
 
     public Level3ArrayOfMapSelectedElementsSelectedEntriesSelectedKeyOperator<K,V> onKey() {
-        return new Level3ArrayOfMapSelectedElementsSelectedEntriesSelectedKeyOperatorImpl<K,V>(getTarget().iterate().selectIndex(0));
+        return new Level3ArrayOfMapSelectedElementsSelectedEntriesSelectedKeyOperatorImpl<K,V>(getTarget().onKey());
     }
 
 
     public Level3ArrayOfMapSelectedElementsSelectedEntriesSelectedValueOperator<K,V> onValue() {
-        return new Level3ArrayOfMapSelectedElementsSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().iterate().selectIndex(1));
+        return new Level3ArrayOfMapSelectedElementsSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().onValue());
     }
 
 

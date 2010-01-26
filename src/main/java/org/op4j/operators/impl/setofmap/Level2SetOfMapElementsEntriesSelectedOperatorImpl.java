@@ -35,12 +35,12 @@ public class Level2SetOfMapElementsEntriesSelectedOperatorImpl<K,V> extends Abst
 
 
     public Level3SetOfMapElementsEntriesSelectedKeyOperator<K,V> onKey() {
-        return new Level3SetOfMapElementsEntriesSelectedKeyOperatorImpl<K,V>(getTarget().iterate().selectIndex(0));
+        return new Level3SetOfMapElementsEntriesSelectedKeyOperatorImpl<K,V>(getTarget().onKey());
     }
 
 
     public Level3SetOfMapElementsEntriesSelectedValueOperator<K,V> onValue() {
-        return new Level3SetOfMapElementsEntriesSelectedValueOperatorImpl<K,V>(getTarget().iterate().selectIndex(1));
+        return new Level3SetOfMapElementsEntriesSelectedValueOperatorImpl<K,V>(getTarget().onValue());
     }
 
 

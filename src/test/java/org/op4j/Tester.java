@@ -3,6 +3,7 @@ package org.op4j;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
@@ -305,10 +306,10 @@ public class Tester extends TestCase {
 						entry2.getKey())) {
 					assertEquals(data.get(entry1.getKey()).get(entry2.getKey()), entry2.getValue());
 				} else {
-					if (entry2.getValue().length > 3) {						
-						assertEquals(Op.onArray(data.get(entry1.getKey()).get(entry2.getKey()))
-								.add("value added with ifunction").get(), 
-								entry2.getValue());						
+					if (entry2.getValue().length > 3) {	
+						assertEquals(Arrays.asList(Op.onArray(data.get(entry1.getKey()).get(entry2.getKey()))
+								.add("value added with ifunction").get()), 
+								Arrays.asList(entry2.getValue()));						
 					} else {
 						assertEquals(data.get(entry1.getKey()).get(entry2.getKey()), entry2.getValue());
 					}

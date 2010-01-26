@@ -42,8 +42,8 @@ import org.op4j.util.NormalizationUtils;
  *
  */
 abstract class ExecutionNodeTarget extends ExecutionTarget{
-    
 
+    
     
     static ExecutionNodeTarget forObject(final ExecutionTargetId id, final Object object) {
 
@@ -59,6 +59,8 @@ abstract class ExecutionNodeTarget extends ExecutionTarget{
             return new ExecutionMapNodeTarget(id, (Map<?,?>) object);
         } else if (object instanceof Map.Entry<?,?>) {
             return new ExecutionMapEntryNodeTarget(id, (Map.Entry<?,?>) object);
+        } else if (object instanceof MapEntryPart) {
+            return new ExecutionMapEntryPartNodeTarget(id, (MapEntryPart) object);
         } else {
             return new ExecutionObjectNodeTarget(id, object);
         }
@@ -107,6 +109,9 @@ abstract class ExecutionNodeTarget extends ExecutionTarget{
         
     }
 
+
+    
+    
     
     
     @Override

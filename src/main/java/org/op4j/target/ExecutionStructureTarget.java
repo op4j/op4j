@@ -166,7 +166,15 @@ final class ExecutionStructureTarget extends ExecutionTarget {
                 	if (this.elements.size() != 2) {
                 		throw new IllegalStateException("Cannot create a Map.Entry structure as elements size is != 2 (" + this.elements.size() + ")");
                 	}
-                    newObject = new MapEntry<Object,Object>(this.elements.get(0).getObject(), this.elements.get(1).getObject());
+                	final MapEntryPart keyPart = (MapEntryPart) this.elements.get(0).getObject();
+                    final MapEntryPart valuePart = (MapEntryPart) this.elements.get(1).getObject();
+                    newObject = new MapEntry<Object,Object>(keyPart.getPart(), valuePart.getPart());
+                    break;
+                case MAP_ENTRY_PART:
+                    if (this.elements.size() != 1) {
+                        throw new IllegalStateException("Cannot create a MapEntry part because there is more than one element");
+                    }
+                    newObject = new MapEntryPart(this.elements.get(0).getObject());
                     break;
                 default:
                     break;

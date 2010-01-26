@@ -20,10 +20,6 @@
 
 package org.op4j.target;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-
 /**
  * 
  * @since 1.0
@@ -31,39 +27,17 @@ import java.util.Map;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class ExecutionMapEntryNodeTarget extends ExecutionNodeTarget {
-    
-    
-    private final Map.Entry<?,?> object;
+public class MapEntryPart {
 
+    private final Object part;
     
-    
-    
-    protected ExecutionMapEntryNodeTarget(final ExecutionTargetId id, final Map.Entry<?,?> object) {
-		super(id);
-        this.object = object;
-	}
-
-
-
-    @Override
-    Object getObject() {
-        return this.object;
+    public MapEntryPart(Object part) {
+        super();
+        this.part = part;
     }
 
-    
-	
-	@Override
-    Collection<?> getIterationElements() {
-        return Arrays.asList(new Object[] { new MapEntryPart(this.object.getKey()), new MapEntryPart(this.object.getValue()) });
-	}
-    
-
-
-    @Override
-    public String toString() {
-        return "MapEntryNodeTarget [id=" + getId() + ", object=" + this.object + "]";
+    public Object getPart() {
+        return this.part;
     }
-
     
 }
