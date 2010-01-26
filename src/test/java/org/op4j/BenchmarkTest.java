@@ -43,8 +43,8 @@ import org.op4j.operators.intf.list.Level1ListElementsOperator;
  */
 public class BenchmarkTest {
 
-	private static int STRUCTURE_SIZE = 10000;
-	private static int ITERATIONS = 10;
+	private static int STRUCTURE_SIZE = 1000;
+	private static int ITERATIONS = 1000;
 	
 	
 	public static void main(String[] args) {
@@ -66,8 +66,9 @@ public class BenchmarkTest {
 				
 				stopWatch1.start();
 				
+                String[] upperNames1 = null; 
 				for (int i = 0; i < ITERATIONS; i++) {
-					String[] upperNames1 = 
+					upperNames1 = 
 						Op.onList(users).forEach().eval(MethodCall.forString("getName")).exec(StringFuncs.toUpperCase()).endFor().toArrayOf(Types.STRING).get();
 				}
 				
@@ -76,18 +77,19 @@ public class BenchmarkTest {
 				
 				stopWatch2.start();
 				
+                String[] upperNames2 = null; 
 				for (int i = 0; i < ITERATIONS; i++) {
 					List<String> upperNames2List = new ArrayList<String>();
 					for (final User user : users) {
 						upperNames2List.add(user.getName().toUpperCase());
 					}
-					String[] upperNames2 = 
+					upperNames2 = 
 						upperNames2List.toArray(new String[upperNames2List.size()]);
 				}
 				
 				stopWatch2.stop();
 
-				System.out.println("With op4j: " + stopWatch1.toString());
+				System.out.println("With op4j:    " + stopWatch1.toString());
 
 				System.out.println("Without op4j: " + stopWatch2.toString());
 				
@@ -95,12 +97,13 @@ public class BenchmarkTest {
 				
 				stopWatch1.start();
 				
+                String[] upperNames1 = null; 
 				for (int i = 0; i < ITERATIONS; i++) {
 					List<String> upperNames1List = new ArrayList<String>();
 					for (final User user : users) {
 						upperNames1List.add(user.getName().toUpperCase());
 					}
-					String[] upperNames1 = 
+					upperNames1 = 
 						upperNames1List.toArray(new String[upperNames1List.size()]);
 				}
 				
@@ -109,8 +112,9 @@ public class BenchmarkTest {
 				
 				stopWatch2.start();
 				
+                String[] upperNames2 = null; 
 				for (int i = 0; i < ITERATIONS; i++) {
-					String[] upperNames2 = 
+				    upperNames2 = 
 						Op.onList(users).forEach().eval(MethodCall.forString("getName")).exec(StringFuncs.toUpperCase()).endFor().toArrayOf(Types.STRING).get();
 				}
 				
@@ -119,7 +123,7 @@ public class BenchmarkTest {
 
 				System.out.println("Without op4j: " + stopWatch1.toString());
 
-				System.out.println("With op4j: " + stopWatch2.toString());
+				System.out.println("With op4j:    " + stopWatch2.toString());
 				
 			}
 			
