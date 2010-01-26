@@ -96,12 +96,12 @@ abstract class ExecutionNodeTarget extends ExecutionTarget{
         
         final Collection<?> elements = getIterationElements();
         final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
-        final HashSet<ExecutionTargetId> newSelectedElementIds = new HashSet<ExecutionTargetId>();
+        final HashSet<String> newSelectedElementIds = new HashSet<String>();
         
         int i = 0;
         for (final Object element : elements) {
             final ExecutionTargetId elementId = new ExecutionTargetId(getId(), i);
-            newSelectedElementIds.add(elementId);
+            newSelectedElementIds.add(elementId.getStringRepresentation());
             newElements.add(ExecutionNodeTarget.forObject(elementId, element));
             i++;
         }

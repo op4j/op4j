@@ -132,8 +132,8 @@ public abstract class ExecutionTarget extends Target {
         }
         final ExecutionNodeTarget node = ExecutionNodeTarget.forObject(id, normalizedObject);
         
-        final HashSet<ExecutionTargetId> selectedIds = new HashSet<ExecutionTargetId>();
-        selectedIds.add(id);
+        final HashSet<String> selectedIds = new HashSet<String>();
+        selectedIds.add(id.getStringRepresentation());
         
         return new ExecutionStructureTarget(ExecutionTargetId.ROOT, selectedIds, Arrays.asList(new ExecutionTarget[] {node}), 1);
     }
