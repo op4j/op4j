@@ -20,6 +20,7 @@
 
 package org.op4j.util;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -70,6 +71,21 @@ public class VarArgsUtil {
             result.add(null);
         }
         return Collections.unmodifiableList(result);
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <T> T[] asOptionalObjectArray(final Class<T> arrayClass, final T... parameters) {
+        if (parameters != null) {
+            final T[] result = (T[]) Array.newInstance(arrayClass, parameters.length);
+            for (int i = 0; i < parameters.length; i++) {
+                result[i] = parameters[i];
+            }
+            return result;
+        }
+        final T[] result = (T[]) Array.newInstance(arrayClass, 1);
+        result[0] = null;
+        return result;
     }
 
     
