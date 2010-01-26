@@ -1,2 +1,3 @@
 
-  - Should the "add" of arrays have the same name as the "add" of generic operators? (they work on different dimensions!)
+  - Shouldn't replaceWith allow replacing with any type if not selected??
+  - Create functions for aggregating structures of numbers

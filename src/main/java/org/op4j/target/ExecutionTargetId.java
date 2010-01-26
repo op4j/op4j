@@ -39,23 +39,11 @@ final class ExecutionTargetId {
     public static final ExecutionTargetId ROOT = new ExecutionTargetId(null, 0); 
     
 	private final List<Integer> components = new ArrayList<Integer>();
+	private final String componentsStringRepresentation;
+	private final int level;
+	private final int hashCode;
 	
 	
-	
-	public static ExecutionTargetId fromString(final String string) {
-		
-		Validate.notEmpty(string);
-		
-		final String[] tokens = StringUtils.split(string,".");
-
-		ExecutionTargetId id = null;
-		for (final String token : tokens) {
-			Validate.isTrue(StringUtils.isNumeric(token));
-			id = new ExecutionTargetId(id, Integer.valueOf(token).intValue());
-		}
-		return id;
-		
-	}
 	
 	public static ExecutionTargetId fromIdList(final List<Integer> idList) {
 		
@@ -81,6 +69,10 @@ final class ExecutionTargetId {
 		
 		this.components.add(Integer.valueOf(index));
 		
+		this.componentsStringRepresentation = StringUtils.join(this.components, ".");
+		this.level = this.components.size();
+		this.hashCode = this.components.hashCode();
+		
 	}
 	
 	
@@ -88,39 +80,23 @@ final class ExecutionTargetId {
 		return this.components;
 	}
 	
-	public Integer getIndexComponent() {
-	    return this.components.get(this.components.size() - 1);
-	}
-	
-	public List<Integer> getRootComponents() {
-	    final List<Integer> root = new ArrayList<Integer>(this.components);
-	    root.remove(root.size() - 1);
-	    return root;
-	}
-	
-	public List<Integer> getTailComponents() {
-		final List<Integer> tail = new ArrayList<Integer>(this.components);
-		tail.remove(0);
-		return tail;
-	}
-	
 	
 	public int getLevel() {
-		return this.components.size();
+		return this.level;
 	}
 	
 	
 	
 	@Override
 	public String toString() {
-		return StringUtils.join(this.components, ".");
+		return this.componentsStringRepresentation;
 	}
 
 	
 
 	@Override
 	public int hashCode() {
-		return this.components.hashCode();
+		return this.hashCode;
 	}
 
 	
@@ -136,7 +112,7 @@ final class ExecutionTargetId {
 			return false;
 		}
 		ExecutionTargetId other = (ExecutionTargetId) obj;
-		return this.components.equals(other.components);
+		return this.componentsStringRepresentation.equals(other.componentsStringRepresentation);
 	}
 	
 	

@@ -23,6 +23,7 @@ package org.op4j.target;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -46,7 +47,7 @@ abstract class ExecutionNodeTarget extends ExecutionTarget{
     
     
     static ExecutionNodeTarget forObject(final ExecutionTargetId id, final Object object) {
-
+    	
         if (object == null) {
             return new ExecutionNullNodeTarget(id);
         } else if (object instanceof Object[]) {
@@ -95,7 +96,7 @@ abstract class ExecutionNodeTarget extends ExecutionTarget{
         
         final Collection<?> elements = getIterationElements();
         final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
-        final List<ExecutionTargetId> newSelectedElementIds = new ArrayList<ExecutionTargetId>();
+        final HashSet<ExecutionTargetId> newSelectedElementIds = new HashSet<ExecutionTargetId>();
         
         int i = 0;
         for (final Object element : elements) {
@@ -230,7 +231,7 @@ abstract class ExecutionNodeTarget extends ExecutionTarget{
                     NormalizationUtils.checkIsSetOfSet(Types.OBJECT, result);
                     result = NormalizationUtils.normalizeSetOfSet((Set<Set<Object>>)result);
                     break;
-                case NONE:
+            	case NONE:
     	    }
             return ExecutionNodeTarget.forObject(getId(), result);
         } catch (ExecutionException e) {

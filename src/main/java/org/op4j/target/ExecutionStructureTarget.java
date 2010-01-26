@@ -22,6 +22,7 @@ package org.op4j.target;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -44,13 +45,13 @@ import org.op4j.util.MapEntry;
 final class ExecutionStructureTarget extends ExecutionTarget {
 
 	private final List<ExecutionTarget> elements;
-    private final List<ExecutionTargetId> selectedElementIds;
+    private final HashSet<ExecutionTargetId> selectedElementIds;
 	private final int actionLevel;
 	private final boolean isCurrentActionLevel;
 	
 
 	
-    protected ExecutionStructureTarget(final ExecutionTargetId id, final List<ExecutionTargetId> selectedElementIds, final List<ExecutionTarget> elements, 
+    protected ExecutionStructureTarget(final ExecutionTargetId id, final HashSet<ExecutionTargetId> selectedElementIds, final List<ExecutionTarget> elements, 
             final int actionLevel) {
         
         super(id);
@@ -157,6 +158,9 @@ final class ExecutionStructureTarget extends ExecutionTarget {
                             throw new IllegalStateException("Cannot create a map from an object of class " + elementObject.getClass().getName() +
                                     ". Map.Entry objects are needed instead.");
                         }
+                        if (elementObject == null) {
+                            throw new IllegalStateException("Cannot create a map from null objects.");
+                        }
                         final Map.Entry<?,?> mapEntryElementObject = (Map.Entry<?,?>) elementObject;
                         newObjectMap.put(mapEntryElementObject.getKey(), mapEntryElementObject.getValue());
                     }
@@ -205,7 +209,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         
         if (this.isCurrentActionLevel) {
             
-            final List<ExecutionTargetId> newSelectedElementIds = new ArrayList<ExecutionTargetId>();
+            final HashSet<ExecutionTargetId> newSelectedElementIds = new HashSet<ExecutionTargetId>();
 
             for (final ExecutionTarget element : this.elements) {
                 newSelectedElementIds.add(element.getId());
@@ -234,7 +238,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         
     	if (this.isCurrentActionLevel) {
         	
-            final List<ExecutionTargetId> newSelectedElementIds = new ArrayList<ExecutionTargetId>();
+            final HashSet<ExecutionTargetId> newSelectedElementIds = new HashSet<ExecutionTargetId>();
 
             int i = 0;
             for (final ExecutionTarget element : this.elements) {
@@ -269,7 +273,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         
     	if (this.isCurrentActionLevel) {
         	
-            final List<ExecutionTargetId> newSelectedElementIds = new ArrayList<ExecutionTargetId>();
+            final HashSet<ExecutionTargetId> newSelectedElementIds = new HashSet<ExecutionTargetId>();
             
             for (final ExecutionTarget element : this.elements) {
             	
@@ -309,7 +313,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         
     	if (this.isCurrentActionLevel) {
         	
-            final List<ExecutionTargetId> newSelectedElementIds = new ArrayList<ExecutionTargetId>();
+            final HashSet<ExecutionTargetId> newSelectedElementIds = new HashSet<ExecutionTargetId>();
             
             for (final ExecutionTarget element : this.elements) {
             	
@@ -348,7 +352,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         
     	if (this.isCurrentActionLevel) {
         	
-            final List<ExecutionTargetId> newSelectedElementIds = new ArrayList<ExecutionTargetId>();
+            final HashSet<ExecutionTargetId> newSelectedElementIds = new HashSet<ExecutionTargetId>();
             
             for (final ExecutionTarget element : this.elements) {
             	
@@ -388,7 +392,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         
     	if (this.isCurrentActionLevel) {
         	
-            final List<ExecutionTargetId> newSelectedElementIds = new ArrayList<ExecutionTargetId>();
+            final HashSet<ExecutionTargetId> newSelectedElementIds = new HashSet<ExecutionTargetId>();
             
             for (final ExecutionTarget element : this.elements) {
             	
@@ -420,7 +424,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         
     	if (this.isCurrentActionLevel) {
         	
-            final List<ExecutionTargetId> newSelectedElementIds = new ArrayList<ExecutionTargetId>();
+            final HashSet<ExecutionTargetId> newSelectedElementIds = new HashSet<ExecutionTargetId>();
             
             for (final ExecutionTarget element : this.elements) {
             	

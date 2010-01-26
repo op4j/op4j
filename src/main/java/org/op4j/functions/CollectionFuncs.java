@@ -358,7 +358,7 @@ class CollectionFuncs {
                         result.add(element);
                     }
                 } else {
-                    result.add(element);
+                    result.add(null);
                 }
             }
             return fromList(result);
@@ -394,7 +394,7 @@ class CollectionFuncs {
                         result.add(element);
                     }
                 } else {
-                    result.add(element);
+                    result.add(null);
                 }
             }
             return fromList(result);

@@ -21,6 +21,7 @@
 package org.op4j.target;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -130,7 +131,11 @@ public abstract class ExecutionTarget extends Target {
                 break;
         }
         final ExecutionNodeTarget node = ExecutionNodeTarget.forObject(id, normalizedObject);
-        return new ExecutionStructureTarget(ExecutionTargetId.ROOT, Arrays.asList(new ExecutionTargetId[] {id}), Arrays.asList(new ExecutionTarget[] {node}), 1);
+        
+        final HashSet<ExecutionTargetId> selectedIds = new HashSet<ExecutionTargetId>();
+        selectedIds.add(id);
+        
+        return new ExecutionStructureTarget(ExecutionTargetId.ROOT, selectedIds, Arrays.asList(new ExecutionTarget[] {node}), 1);
     }
     
     

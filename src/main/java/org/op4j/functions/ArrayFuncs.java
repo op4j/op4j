@@ -415,7 +415,7 @@ public class ArrayFuncs {
                         result.add(element);
                     }
                 } else {
-                    result.add(element);
+                    result.add(null);
                 }
             }
             return ArrayFuncs.fromList(object.getClass(), result);
@@ -449,7 +449,7 @@ public class ArrayFuncs {
                         result.add(element);
                     }
                 } else {
-                    result.add(element);
+                    result.add(null);
                 }
             }
             return ArrayFuncs.fromList(object.getClass(), result);

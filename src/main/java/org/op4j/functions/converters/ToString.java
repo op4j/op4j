@@ -758,7 +758,6 @@ public final class ToString {
 	    }		
 		
 
-		@SuppressWarnings("null")
 		private String fromCalendar(final Calendar calendar, final DateStyle theDateStyle,
 				final TimeStyle theTimeStyle, final Locale theLocale) {
 	    	
@@ -881,7 +880,6 @@ public final class ToString {
 	    }		
 		
 
-		@SuppressWarnings("null")
 		private String fromDate(final Date date, final DateStyle theDateStyle,
 				final TimeStyle theTimeStyle, final Locale theLocale) {
 	    	
