@@ -23,6 +23,9 @@ package org.op4j.operators.qualities;
 
 
 /**
+ * <p>
+ * Base interface for all operators working on only one target objects.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -30,7 +33,14 @@ package org.op4j.operators.qualities;
  *
  */
 public interface UniqOperator<T> extends Operator {
-    
+
+    /**
+     * <p>
+     * Returns the target object this operator currently holds.
+     * </p>
+     * 
+     * @return the target object.
+     */
     public T get(); 
     
 }

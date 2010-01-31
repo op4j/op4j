@@ -28,6 +28,13 @@ import org.javaruntype.type.Type;
 
 
 /**
+ * <p>
+ * Base interface for operators holding more than one target at a time.
+ * </p>
+ * <p>
+ * Multioperators will execute all operations on each of their target objects,
+ * in the same way as an iterating list operator would.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -35,10 +42,34 @@ import org.javaruntype.type.Type;
  *
  */
 public interface MultiOperator<T> extends Operator {
-    
+
+    /**
+     * <p>
+     * Returns the number of target objects this operator holds.
+     * </p>
+     * 
+     * @return the number of target objects.
+     */
     public int size();
     
-    public T[] getAsArray(final Type<T> type); 
+    /**
+     * <p>
+     * Returns the target objects as an array of the specified type. 
+     * </p>
+     * 
+     * 
+     * @param type the type of which the array of target objects will be created.
+     * @return the array of target objects.
+     */
+    public T[] getAsArray(final Type<T> type);
+    
+    /**
+     * <p>
+     * Returns the target objects as a list.
+     * </p>
+     * 
+     * @return the list of target objects.
+     */
     public List<T> getAsList(); 
 
     

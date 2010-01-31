@@ -68,7 +68,7 @@
     <dependency>
         <groupId>org.javaruntype</groupId>
         <artifactId>javaruntype</artifactId>
-        <version>1.0-dev</version>
+        <version>1.0</version>
         <scope>compile</scope>
     </dependency>
 

@@ -22,6 +22,9 @@ package org.op4j.operators.qualities;
 
 
 /**
+ * <p>
+ * Base interface for all operators.
+ * </p>
  * 
  * @since 1.0
  * 
