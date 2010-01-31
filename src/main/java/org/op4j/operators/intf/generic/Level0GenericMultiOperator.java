@@ -120,7 +120,7 @@ public interface Level0GenericMultiOperator<T>
     public Level0SetOperator<T> buildSet();
     
     
-    public Level0ArrayOperator<T> buildArray(final Type<T> of);
+    public Level0ArrayOperator<T> buildArrayOf(final Type<T> type);
     
     
     public <K> Level0MapOperator<K,T> buildMap(final IEvaluator<K,? super T> keyEval);
@@ -135,8 +135,8 @@ public interface Level0GenericMultiOperator<T>
     public <K,V> Level0MapOfSetOperator<K,V> buildMapOfSet(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> Level0MapOfArrayOperator<K,T> buildMapOfArray(final Type<T> valueArrayOf, final IEvaluator<K,? super T> keyEval);
-    public <K,V> Level0MapOfArrayOperator<K,V> buildMapOfArray(final Type<V> valueArrayOf, final IMapBuilder<K,V,? super T> mapBuild);
+    public <K> Level0MapOfArrayOperator<K,T> buildMapOfArrayOf(final Type<T> valueType, final IEvaluator<K,? super T> keyEval);
+    public <K,V> Level0MapOfArrayOperator<K,V> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<K,V,? super T> mapBuild);
 
     
     public Level0MapOperator<T,T> buildMap();
@@ -145,7 +145,7 @@ public interface Level0GenericMultiOperator<T>
     
     public Level0MapOfSetOperator<T,T> buildMapOfSet();
     
-    public Level0MapOfArrayOperator<T,T> buildMapOfArray(final Type<T> of);
+    public Level0MapOfArrayOperator<T,T> buildMapOfArrayOf(final Type<T> type);
     
     
     public T[] getAsArray(final Type<T> type); 

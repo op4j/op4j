@@ -32,7 +32,7 @@ public class Level0GenericMultiSelectedOperatorImpl<T> extends AbstractOperatorI
 
 
     public T[] getAsArray(final Type<T> type) {
-        return endIf().buildArray(type).get();
+        return endIf().buildArrayOf(type).get();
     }
 
 

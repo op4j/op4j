@@ -104,7 +104,7 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ArrayOperator<T> buildArray(final Type<T> arrayOf) {
+    public Level0ArrayOperator<T> buildArrayOf(final Type<T> arrayOf) {
         return new Level0ArrayOperatorImpl<T>(getTarget().execute(new ToArray.FromCollection<T>(arrayOf)));
     }
 
@@ -129,17 +129,17 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <K> Level0MapOfArrayOperator<K, T> buildMapOfArray(final Type<T> valueArrayOf, final IEvaluator<K, ? super T> keyEval) {
-        return new Level0MapOfArrayOperatorImpl<K, T>(getTarget().execute(new ToMapOfArray.FromListByKeyEval<K, T>(valueArrayOf, keyEval)));
+    public <K> Level0MapOfArrayOperator<K, T> buildMapOfArrayOf(final Type<T> valueType, final IEvaluator<K, ? super T> keyEval) {
+        return new Level0MapOfArrayOperatorImpl<K, T>(getTarget().execute(new ToMapOfArray.FromListByKeyEval<K, T>(valueType, keyEval)));
     }
 
 
-    public <K, V> Level0MapOfArrayOperator<K, V> buildMapOfArray(final Type<V> valueArrayOf, final IMapBuilder<K, V, ? super T> mapBuild) {
-        return new Level0MapOfArrayOperatorImpl<K, V>(getTarget().execute(new ToMapOfArray.FromListByMapBuilder<K, V, T>(valueArrayOf, mapBuild)));
+    public <K, V> Level0MapOfArrayOperator<K, V> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<K, V, ? super T> mapBuild) {
+        return new Level0MapOfArrayOperatorImpl<K, V>(getTarget().execute(new ToMapOfArray.FromListByMapBuilder<K, V, T>(valueType, mapBuild)));
     }
 
 
-    public Level0MapOfArrayOperator<T, T> buildMapOfArray(final Type<T> valueArrayOf) {
+    public Level0MapOfArrayOperator<T, T> buildMapOfArrayOf(final Type<T> valueArrayOf) {
         return new Level0MapOfArrayOperatorImpl<T, T>(getTarget().execute(new ToMapOfArray.FromListByAlternateElements<T>(valueArrayOf)));
     }
 
@@ -304,7 +304,7 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public T[] getAsArray(final Type<T> type) {
-        return buildArray(type).get();
+        return buildArrayOf(type).get();
     }
 
 
