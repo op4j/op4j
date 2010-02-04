@@ -12,7 +12,7 @@ import org.op4j.operators.intf.mapofarray.Level1MapOfArrayEntriesSelectedOperato
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesSelectedKeyOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesSelectedValueOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level1MapOfArrayEntriesSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level1MapOfArrayEntriesSelectedOperator<K,V> {
@@ -24,7 +24,7 @@ public class Level1MapOfArrayEntriesSelectedOperatorImpl<K,V> extends AbstractOp
 
 
     public Level1MapOfArrayEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> eval) {
-        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAPENTRY_OF_ARRAY));
+        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAPENTRY_OF_ARRAY));
     }
 
 
@@ -44,7 +44,7 @@ public class Level1MapOfArrayEntriesSelectedOperatorImpl<K,V> extends AbstractOp
 
 
     public Level1MapOfArrayEntriesSelectedOperator<K,V> exec(final IFunction<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> function) {
-        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.MAPENTRY_OF_ARRAY));
+        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAPENTRY_OF_ARRAY));
     }
 
 
@@ -54,7 +54,7 @@ public class Level1MapOfArrayEntriesSelectedOperatorImpl<K,V> extends AbstractOp
 
 
     public Level1MapOfArrayEntriesSelectedOperator<K,V> convert(final IConverter<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> converter) {
-        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.MAPENTRY_OF_ARRAY));
+        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAPENTRY_OF_ARRAY));
     }
 
 

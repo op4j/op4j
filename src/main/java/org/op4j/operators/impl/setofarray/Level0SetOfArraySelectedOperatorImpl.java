@@ -13,8 +13,8 @@ import org.op4j.operators.intf.setofarray.Level0SetOfArrayOperator;
 import org.op4j.operators.intf.setofarray.Level0SetOfArraySelectedOperator;
 import org.op4j.operators.intf.setofarray.Level1SetOfArraySelectedElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
-import org.op4j.util.NormalizationUtils;
+import org.op4j.target.Target.Normalisation;
+import org.op4j.util.NormalisationUtils;
 
 
 public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level0SetOfArraySelectedOperator<T> {
@@ -31,7 +31,7 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
 
 
     public Level0SetOfArraySelectedOperator<T> insertAll(final int position, final T[]... newElements) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T[]>(position, NormalizationUtils.normalizeArrays(newElements))));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T[]>(position, NormalisationUtils.normaliseArrays(newElements))));
     }
 
 
@@ -86,7 +86,7 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
 
 
     public Level0SetOfArraySelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T[]>,? super Set<T[]>> eval) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.SET_OF_ARRAY));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.SET_OF_ARRAY));
     }
 
 
@@ -97,28 +97,28 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
 
     @SuppressWarnings("unchecked")
     public Level0SetOfArraySelectedOperator<T> add(final T[] newElement) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T[]>(NormalizationUtils.normalizeArray(newElement))));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T[]>(NormalisationUtils.normaliseArray(newElement))));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> addAll(final T[]... newElements) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T[]>(NormalizationUtils.normalizeArrays(newElements))));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T[]>(NormalisationUtils.normaliseArrays(newElements))));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> addAll(final Collection<T[]> collection) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<T[]>(NormalizationUtils.normalizeArrays(collection))));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<T[]>(NormalisationUtils.normaliseArrays(collection))));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0SetOfArraySelectedOperator<T> insert(final int position, final T[] newElement) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T[]>(position, NormalizationUtils.normalizeArray(newElement))));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T[]>(position, NormalisationUtils.normaliseArray(newElement))));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> exec(final IFunction<? extends Set<? extends T[]>,? super Set<T[]>> function) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(function, Normalization.SET_OF_ARRAY));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.SET_OF_ARRAY));
     }
 
 
@@ -139,7 +139,7 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
 
 
     public Level0SetOfArraySelectedOperator<T> convert(final IConverter<? extends Set<? extends T[]>,? super Set<T[]>> converter) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(converter, Normalization.SET_OF_ARRAY));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.SET_OF_ARRAY));
     }
 
 

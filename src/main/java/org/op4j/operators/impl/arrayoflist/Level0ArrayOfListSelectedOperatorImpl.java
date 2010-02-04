@@ -13,8 +13,8 @@ import org.op4j.operators.intf.arrayoflist.Level0ArrayOfListOperator;
 import org.op4j.operators.intf.arrayoflist.Level0ArrayOfListSelectedOperator;
 import org.op4j.operators.intf.arrayoflist.Level1ArrayOfListSelectedElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
-import org.op4j.util.NormalizationUtils;
+import org.op4j.target.Target.Normalisation;
+import org.op4j.util.NormalisationUtils;
 
 
 public class Level0ArrayOfListSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level0ArrayOfListSelectedOperator<T> {
@@ -36,7 +36,7 @@ public class Level0ArrayOfListSelectedOperatorImpl<T> extends AbstractOperatorIm
 
 
     public Level0ArrayOfListSelectedOperator<T> insertAll(final int position, final List<T>... newElements) {
-        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Insert<List<T>>(position, NormalizationUtils.normalizeLists(newElements))));
+        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Insert<List<T>>(position, NormalisationUtils.normaliseLists(newElements))));
     }
 
 
@@ -91,7 +91,7 @@ public class Level0ArrayOfListSelectedOperatorImpl<T> extends AbstractOperatorIm
 
 
     public Level0ArrayOfListSelectedOperator<T> eval(final IEvaluator<? extends List<? extends T>[],? super List<T>[]> eval) {
-        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.ARRAY_OF_LIST));
+        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.ARRAY_OF_LIST));
     }
 
 
@@ -102,28 +102,28 @@ public class Level0ArrayOfListSelectedOperatorImpl<T> extends AbstractOperatorIm
 
     @SuppressWarnings("unchecked")
     public Level0ArrayOfListSelectedOperator<T> add(final List<T> newElement) {
-        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Add<List<T>>(NormalizationUtils.normalizeList(newElement))));
+        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Add<List<T>>(NormalisationUtils.normaliseList(newElement))));
     }
 
 
     public Level0ArrayOfListSelectedOperator<T> addAll(final List<T>... newElements) {
-        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Add<List<T>>(NormalizationUtils.normalizeLists(newElements))));
+        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Add<List<T>>(NormalisationUtils.normaliseLists(newElements))));
     }
 
 
     public Level0ArrayOfListSelectedOperator<T> addAll(final Collection<List<T>> collection) {
-        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.AddAll<List<T>>(NormalizationUtils.normalizeLists(collection))));
+        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.AddAll<List<T>>(NormalisationUtils.normaliseLists(collection))));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0ArrayOfListSelectedOperator<T> insert(final int position, final List<T> newElement) {
-        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Insert<List<T>>(position, NormalizationUtils.normalizeList(newElement))));
+        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Insert<List<T>>(position, NormalisationUtils.normaliseList(newElement))));
     }
 
 
     public Level0ArrayOfListSelectedOperator<T> exec(final IFunction<? extends List<? extends T>[],? super List<T>[]> function) {
-        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(function, Normalization.ARRAY_OF_LIST));
+        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.ARRAY_OF_LIST));
     }
 
 
@@ -144,7 +144,7 @@ public class Level0ArrayOfListSelectedOperatorImpl<T> extends AbstractOperatorIm
 
 
     public Level0ArrayOfListSelectedOperator<T> convert(final IConverter<? extends List<? extends T>[],? super List<T>[]> converter) {
-        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(converter, Normalization.ARRAY_OF_LIST));
+        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.ARRAY_OF_LIST));
     }
 
 

@@ -9,7 +9,7 @@ import org.op4j.operators.intf.arrayofarray.Level1ArrayOfArrayElementsSelectedOp
 import org.op4j.operators.intf.arrayofarray.Level2ArrayOfArrayElementsSelectedElementsOperator;
 import org.op4j.operators.intf.arrayofarray.Level2ArrayOfArrayElementsSelectedElementsSelectedOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
 
 
@@ -76,7 +76,7 @@ public class Level2ArrayOfArrayElementsSelectedElementsOperatorImpl<T> extends A
 
 
     public Level2ArrayOfArrayElementsSelectedElementsOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return new Level2ArrayOfArrayElementsSelectedElementsOperatorImpl<T>(this.type, getTarget().execute(eval, Normalization.NONE));
+        return new Level2ArrayOfArrayElementsSelectedElementsOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.NONE));
     }
 
 
@@ -86,7 +86,7 @@ public class Level2ArrayOfArrayElementsSelectedElementsOperatorImpl<T> extends A
 
 
     public Level2ArrayOfArrayElementsSelectedElementsOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level2ArrayOfArrayElementsSelectedElementsOperatorImpl<T>(this.type, getTarget().execute(function, Normalization.NONE));
+        return new Level2ArrayOfArrayElementsSelectedElementsOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.NONE));
     }
 
 
@@ -96,7 +96,7 @@ public class Level2ArrayOfArrayElementsSelectedElementsOperatorImpl<T> extends A
 
 
     public Level2ArrayOfArrayElementsSelectedElementsOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return new Level2ArrayOfArrayElementsSelectedElementsOperatorImpl<T>(this.type, getTarget().execute(converter, Normalization.NONE));
+        return new Level2ArrayOfArrayElementsSelectedElementsOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.NONE));
     }
 
 

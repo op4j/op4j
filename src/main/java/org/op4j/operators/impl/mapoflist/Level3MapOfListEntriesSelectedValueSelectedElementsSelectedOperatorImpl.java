@@ -10,7 +10,7 @@ import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapoflist.Level3MapOfListEntriesSelectedValueSelectedElementsOperator;
 import org.op4j.operators.intf.mapoflist.Level3MapOfListEntriesSelectedValueSelectedElementsSelectedOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level3MapOfListEntriesSelectedValueSelectedElementsSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level3MapOfListEntriesSelectedValueSelectedElementsSelectedOperator<K,V> {
@@ -22,7 +22,7 @@ public class Level3MapOfListEntriesSelectedValueSelectedElementsSelectedOperator
 
 
     public Level3MapOfListEntriesSelectedValueSelectedElementsSelectedOperator<K,V> eval(final IEvaluator<? extends V,? super V> eval) {
-        return new Level3MapOfListEntriesSelectedValueSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.NONE));
+        return new Level3MapOfListEntriesSelectedValueSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
@@ -32,7 +32,7 @@ public class Level3MapOfListEntriesSelectedValueSelectedElementsSelectedOperator
 
 
     public Level3MapOfListEntriesSelectedValueSelectedElementsSelectedOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
-        return new Level3MapOfListEntriesSelectedValueSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.NONE));
+        return new Level3MapOfListEntriesSelectedValueSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
@@ -42,7 +42,7 @@ public class Level3MapOfListEntriesSelectedValueSelectedElementsSelectedOperator
 
 
     public Level3MapOfListEntriesSelectedValueSelectedElementsSelectedOperator<K,V> convert(final IConverter<? extends V,? super V> converter) {
-        return new Level3MapOfListEntriesSelectedValueSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.NONE));
+        return new Level3MapOfListEntriesSelectedValueSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 

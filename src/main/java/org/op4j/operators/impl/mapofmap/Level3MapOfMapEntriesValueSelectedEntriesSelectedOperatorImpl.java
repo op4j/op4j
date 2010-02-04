@@ -12,7 +12,7 @@ import org.op4j.operators.intf.mapofmap.Level3MapOfMapEntriesValueSelectedEntrie
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueSelectedEntriesSelectedKeyOperator;
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueSelectedEntriesSelectedValueOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level3MapOfMapEntriesValueSelectedEntriesSelectedOperatorImpl<K1,K2,V> extends AbstractOperatorImpl implements Level3MapOfMapEntriesValueSelectedEntriesSelectedOperator<K1,K2,V> {
@@ -24,7 +24,7 @@ public class Level3MapOfMapEntriesValueSelectedEntriesSelectedOperatorImpl<K1,K2
 
 
     public Level3MapOfMapEntriesValueSelectedEntriesSelectedOperator<K1,K2,V> eval(final IEvaluator<? extends Entry<? extends K2,? extends V>,? super Entry<K2,V>> eval) {
-        return new Level3MapOfMapEntriesValueSelectedEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().execute(eval, Normalization.MAPENTRY));
+        return new Level3MapOfMapEntriesValueSelectedEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().execute(eval, Normalisation.MAPENTRY));
     }
 
 
@@ -44,7 +44,7 @@ public class Level3MapOfMapEntriesValueSelectedEntriesSelectedOperatorImpl<K1,K2
 
 
     public Level3MapOfMapEntriesValueSelectedEntriesSelectedOperator<K1,K2,V> exec(final IFunction<? extends Entry<? extends K2,? extends V>,? super Entry<K2,V>> function) {
-        return new Level3MapOfMapEntriesValueSelectedEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().execute(function, Normalization.MAPENTRY));
+        return new Level3MapOfMapEntriesValueSelectedEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().execute(function, Normalisation.MAPENTRY));
     }
 
 
@@ -54,7 +54,7 @@ public class Level3MapOfMapEntriesValueSelectedEntriesSelectedOperatorImpl<K1,K2
 
 
     public Level3MapOfMapEntriesValueSelectedEntriesSelectedOperator<K1,K2,V> convert(final IConverter<? extends Entry<? extends K2,? extends V>,? super Entry<K2,V>> converter) {
-        return new Level3MapOfMapEntriesValueSelectedEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().execute(converter, Normalization.MAPENTRY));
+        return new Level3MapOfMapEntriesValueSelectedEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().execute(converter, Normalisation.MAPENTRY));
     }
 
 

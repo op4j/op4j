@@ -24,6 +24,9 @@ import org.op4j.operators.intf.arrayofarray.Level0ArrayOfArrayOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for conversions to array of array.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -32,6 +35,14 @@ import org.op4j.operators.intf.arrayofarray.Level0ArrayOfArrayOperator;
  */
 public interface ConvertibleToArrayOfArrayOperator<T> {
     
+    /**
+     * <p>
+     * Converts the current target into an array of array of the specified type.
+     * </p>
+     * 
+     * @param type the type of the second-level array elements.
+     * @return an operator holding the converted object as target.
+     */
     public Level0ArrayOfArrayOperator<T> toArrayOfArrayOf(final Type<T> type);
     
     

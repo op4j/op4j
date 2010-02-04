@@ -33,7 +33,7 @@ import org.javaruntype.type.Types;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.util.NormalizationUtils;
+import org.op4j.util.NormalisationUtils;
 
 /**
  * 
@@ -125,111 +125,111 @@ abstract class ExecutionNodeTarget extends ExecutionTarget{
     
 	@Override
     @SuppressWarnings("unchecked")
-    ExecutionTarget doExecute(final IFunction<?,?> executable, final Normalization normalization) {
+    ExecutionTarget doExecute(final IFunction<?,?> executable, final Normalisation normalisation) {
     	Validate.notNull(executable, "An executable must be specified");
     	final IFunction<Object,Object> objectCommand = (IFunction<Object,Object>) executable;
     	try {
     	    Object result = objectCommand.execute(getObject(), new ExecCtxImpl(getId()));
-    	    switch (normalization) {
+    	    switch (normalisation) {
                 case ARRAY:
-                    NormalizationUtils.checkIsArray(Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeArray((Object[])result);
+                    NormalisationUtils.checkIsArray(Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseArray((Object[])result);
                     break;
                 case ARRAY_OF_ARRAY:
-                    NormalizationUtils.checkIsArrayOfArray(Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeArrayOfArray((Object[][])result);
+                    NormalisationUtils.checkIsArrayOfArray(Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseArrayOfArray((Object[][])result);
                     break;
                 case ARRAY_OF_LIST:
-                    NormalizationUtils.checkIsArrayOfList(Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeArrayOfList((List<Object>[])result);
+                    NormalisationUtils.checkIsArrayOfList(Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseArrayOfList((List<Object>[])result);
                     break;
                 case ARRAY_OF_MAP:
-                    NormalizationUtils.checkIsArrayOfMap(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeArrayOfMap((Map<Object,Object>[])result);
+                    NormalisationUtils.checkIsArrayOfMap(Types.OBJECT, Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseArrayOfMap((Map<Object,Object>[])result);
                     break;
                 case ARRAY_OF_SET:
-                    NormalizationUtils.checkIsArrayOfSet(Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeArrayOfSet((Set<Object>[])result);
+                    NormalisationUtils.checkIsArrayOfSet(Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseArrayOfSet((Set<Object>[])result);
                     break;
                 case LIST:
-                    NormalizationUtils.checkIsList(Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeList((List<Object>)result);
+                    NormalisationUtils.checkIsList(Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseList((List<Object>)result);
                     break;
                 case LIST_OF_ARRAY:
-                    NormalizationUtils.checkIsListOfArray(Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeListOfArray((List<Object[]>)result);
+                    NormalisationUtils.checkIsListOfArray(Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseListOfArray((List<Object[]>)result);
                     break;
                 case LIST_OF_LIST:
-                    NormalizationUtils.checkIsListOfList(Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeListOfList((List<List<Object>>)result);
+                    NormalisationUtils.checkIsListOfList(Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseListOfList((List<List<Object>>)result);
                     break;
                 case LIST_OF_MAP:
-                    NormalizationUtils.checkIsListOfMap(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeListOfMap((List<Map<Object,Object>>)result);
+                    NormalisationUtils.checkIsListOfMap(Types.OBJECT, Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseListOfMap((List<Map<Object,Object>>)result);
                     break;
                 case LIST_OF_SET:
-                    NormalizationUtils.checkIsListOfSet(Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeListOfSet((List<Set<Object>>)result);
+                    NormalisationUtils.checkIsListOfSet(Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseListOfSet((List<Set<Object>>)result);
                     break;
                 case MAP:
-                    NormalizationUtils.checkIsMap(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeMap((Map<Object, Object>)result);
+                    NormalisationUtils.checkIsMap(Types.OBJECT, Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseMap((Map<Object, Object>)result);
                     break;
                 case MAPENTRY:
-                    NormalizationUtils.checkIsMapEntry(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeMapEntry((Map.Entry<Object, Object>)result);
+                    NormalisationUtils.checkIsMapEntry(Types.OBJECT, Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseMapEntry((Map.Entry<Object, Object>)result);
                     break;
                 case MAPENTRY_OF_ARRAY:
-                    NormalizationUtils.checkIsMapEntryOfArray(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeMapEntryOfArray((Map.Entry<Object, Object[]>)result);
+                    NormalisationUtils.checkIsMapEntryOfArray(Types.OBJECT, Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseMapEntryOfArray((Map.Entry<Object, Object[]>)result);
                     break;
                 case MAPENTRY_OF_LIST:
-                    NormalizationUtils.checkIsMapEntryOfList(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeMapEntryOfList((Map.Entry<Object, List<Object>>)result);
+                    NormalisationUtils.checkIsMapEntryOfList(Types.OBJECT, Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseMapEntryOfList((Map.Entry<Object, List<Object>>)result);
                     break;
                 case MAPENTRY_OF_MAP:
-                    NormalizationUtils.checkIsMapEntryOfMap(Types.OBJECT, Types.OBJECT, Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeMapEntryOfMap((Map.Entry<Object, Map<Object, Object>>)result);
+                    NormalisationUtils.checkIsMapEntryOfMap(Types.OBJECT, Types.OBJECT, Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseMapEntryOfMap((Map.Entry<Object, Map<Object, Object>>)result);
                     break;
                 case MAPENTRY_OF_SET:
-                    NormalizationUtils.checkIsMapEntryOfSet(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeMapEntryOfSet((Map.Entry<Object, Set<Object>>)result);
+                    NormalisationUtils.checkIsMapEntryOfSet(Types.OBJECT, Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseMapEntryOfSet((Map.Entry<Object, Set<Object>>)result);
                     break;
                 case MAP_OF_ARRAY:
-                    NormalizationUtils.checkIsMapOfArray(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeMapOfArray((Map<Object, Object[]>)result);
+                    NormalisationUtils.checkIsMapOfArray(Types.OBJECT, Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseMapOfArray((Map<Object, Object[]>)result);
                     break;
                 case MAP_OF_LIST:
-                    NormalizationUtils.checkIsMapOfList(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeMapOfList((Map<Object, List<Object>>)result);
+                    NormalisationUtils.checkIsMapOfList(Types.OBJECT, Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseMapOfList((Map<Object, List<Object>>)result);
                     break;
                 case MAP_OF_MAP:
-                    NormalizationUtils.checkIsMapOfMap(Types.OBJECT, Types.OBJECT, Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeMapOfMap((Map<Object, Map<Object, Object>>)result);
+                    NormalisationUtils.checkIsMapOfMap(Types.OBJECT, Types.OBJECT, Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseMapOfMap((Map<Object, Map<Object, Object>>)result);
                     break;
                 case MAP_OF_SET:
-                    NormalizationUtils.checkIsMapOfSet(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeMapOfSet((Map<Object, Set<Object>>)result);
+                    NormalisationUtils.checkIsMapOfSet(Types.OBJECT, Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseMapOfSet((Map<Object, Set<Object>>)result);
                     break;
                 case SET:
-                    NormalizationUtils.checkIsSet(Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeSet((Set<Object>)result);
+                    NormalisationUtils.checkIsSet(Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseSet((Set<Object>)result);
                     break;
                 case SET_OF_ARRAY:
-                    NormalizationUtils.checkIsSetOfArray(Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeSetOfArray((Set<Object[]>)result);
+                    NormalisationUtils.checkIsSetOfArray(Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseSetOfArray((Set<Object[]>)result);
                     break;
                 case SET_OF_LIST:
-                    NormalizationUtils.checkIsSetOfList(Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeSetOfList((Set<List<Object>>)result);
+                    NormalisationUtils.checkIsSetOfList(Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseSetOfList((Set<List<Object>>)result);
                     break;
                 case SET_OF_MAP:
-                    NormalizationUtils.checkIsSetOfMap(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeSetOfMap((Set<Map<Object, Object>>)result);
+                    NormalisationUtils.checkIsSetOfMap(Types.OBJECT, Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseSetOfMap((Set<Map<Object, Object>>)result);
                     break;
                 case SET_OF_SET:
-                    NormalizationUtils.checkIsSetOfSet(Types.OBJECT, result);
-                    result = NormalizationUtils.normalizeSetOfSet((Set<Set<Object>>)result);
+                    NormalisationUtils.checkIsSetOfSet(Types.OBJECT, result);
+                    result = NormalisationUtils.normaliseSetOfSet((Set<Set<Object>>)result);
                     break;
             	case NONE:
     	    }

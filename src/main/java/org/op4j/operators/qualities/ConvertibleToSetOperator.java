@@ -22,6 +22,9 @@ package org.op4j.operators.qualities;
 
 
 /**
+ * <p>
+ * This interface contains methods for conversions to set.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -30,6 +33,14 @@ package org.op4j.operators.qualities;
  */
 public interface ConvertibleToSetOperator {
     
+    
+    /**
+     * <p>
+     * Converts the current target into a set.
+     * </p>
+     * 
+     * @return an operator holding the converted object as target.
+     */
     public Operator toSet();
 
     

@@ -14,7 +14,7 @@ import org.op4j.operators.intf.mapoflist.Level2MapOfListSelectedEntriesValueOper
 import org.op4j.operators.intf.mapoflist.Level2MapOfListSelectedEntriesValueSelectedOperator;
 import org.op4j.operators.intf.mapoflist.Level3MapOfListSelectedEntriesValueSelectedElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level2MapOfListSelectedEntriesValueSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level2MapOfListSelectedEntriesValueSelectedOperator<K,V> {
@@ -91,7 +91,7 @@ public class Level2MapOfListSelectedEntriesValueSelectedOperatorImpl<K,V> extend
 
 
     public Level2MapOfListSelectedEntriesValueSelectedOperator<K,V> eval(final IEvaluator<? extends List<? extends V>,? super List<V>> eval) {
-        return new Level2MapOfListSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.LIST));
+        return new Level2MapOfListSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.LIST));
     }
 
 
@@ -123,7 +123,7 @@ public class Level2MapOfListSelectedEntriesValueSelectedOperatorImpl<K,V> extend
 
 
     public Level2MapOfListSelectedEntriesValueSelectedOperator<K,V> exec(final IFunction<? extends List<? extends V>,? super List<V>> function) {
-        return new Level2MapOfListSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.LIST));
+        return new Level2MapOfListSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.LIST));
     }
 
 
@@ -144,7 +144,7 @@ public class Level2MapOfListSelectedEntriesValueSelectedOperatorImpl<K,V> extend
 
 
     public Level2MapOfListSelectedEntriesValueSelectedOperator<K,V> convert(final IConverter<? extends List<? extends V>,? super List<V>> converter) {
-        return new Level2MapOfListSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.LIST));
+        return new Level2MapOfListSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.LIST));
     }
 
 

@@ -11,7 +11,7 @@ import org.op4j.operators.intf.mapofset.Level2MapOfSetSelectedEntriesSelectedVal
 import org.op4j.operators.intf.mapofset.Level3MapOfSetSelectedEntriesSelectedValueElementsOperator;
 import org.op4j.operators.intf.mapofset.Level3MapOfSetSelectedEntriesSelectedValueElementsSelectedOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
 
 
@@ -74,7 +74,7 @@ public class Level3MapOfSetSelectedEntriesSelectedValueElementsOperatorImpl<K,V>
 
 
     public Level3MapOfSetSelectedEntriesSelectedValueElementsOperator<K,V> eval(final IEvaluator<? extends V,? super V> eval) {
-        return new Level3MapOfSetSelectedEntriesSelectedValueElementsOperatorImpl<K,V>(getTarget().execute(eval, Normalization.NONE));
+        return new Level3MapOfSetSelectedEntriesSelectedValueElementsOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
@@ -84,7 +84,7 @@ public class Level3MapOfSetSelectedEntriesSelectedValueElementsOperatorImpl<K,V>
 
 
     public Level3MapOfSetSelectedEntriesSelectedValueElementsOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
-        return new Level3MapOfSetSelectedEntriesSelectedValueElementsOperatorImpl<K,V>(getTarget().execute(function, Normalization.NONE));
+        return new Level3MapOfSetSelectedEntriesSelectedValueElementsOperatorImpl<K,V>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
@@ -94,7 +94,7 @@ public class Level3MapOfSetSelectedEntriesSelectedValueElementsOperatorImpl<K,V>
 
 
     public Level3MapOfSetSelectedEntriesSelectedValueElementsOperator<K,V> convert(final IConverter<? extends V,? super V> converter) {
-        return new Level3MapOfSetSelectedEntriesSelectedValueElementsOperatorImpl<K,V>(getTarget().execute(converter, Normalization.NONE));
+        return new Level3MapOfSetSelectedEntriesSelectedValueElementsOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 

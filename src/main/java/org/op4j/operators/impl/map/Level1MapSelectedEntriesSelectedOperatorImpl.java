@@ -12,7 +12,7 @@ import org.op4j.operators.intf.map.Level1MapSelectedEntriesSelectedOperator;
 import org.op4j.operators.intf.map.Level2MapSelectedEntriesSelectedKeyOperator;
 import org.op4j.operators.intf.map.Level2MapSelectedEntriesSelectedValueOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level1MapSelectedEntriesSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level1MapSelectedEntriesSelectedOperator<K,V> {
@@ -24,7 +24,7 @@ public class Level1MapSelectedEntriesSelectedOperatorImpl<K,V> extends AbstractO
 
 
     public Level1MapSelectedEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> eval) {
-        return new Level1MapSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAPENTRY));
+        return new Level1MapSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAPENTRY));
     }
 
 
@@ -44,7 +44,7 @@ public class Level1MapSelectedEntriesSelectedOperatorImpl<K,V> extends AbstractO
 
 
     public Level1MapSelectedEntriesSelectedOperator<K,V> exec(final IFunction<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> function) {
-        return new Level1MapSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.MAPENTRY));
+        return new Level1MapSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAPENTRY));
     }
 
 
@@ -54,7 +54,7 @@ public class Level1MapSelectedEntriesSelectedOperatorImpl<K,V> extends AbstractO
 
 
     public Level1MapSelectedEntriesSelectedOperator<K,V> convert(final IConverter<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> converter) {
-        return new Level1MapSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.MAPENTRY));
+        return new Level1MapSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAPENTRY));
     }
 
 

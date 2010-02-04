@@ -23,6 +23,9 @@ import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for conversions to map of set.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -31,6 +34,14 @@ import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
  */
 public interface ConvertibleToMapOfSetOperator<K,V> {
     
+    
+    /**
+     * <p>
+     * Converts the current target into a map of set.
+     * </p>
+     * 
+     * @return an operator holding the converted object as target.
+     */
     public Level0MapOfSetOperator<K,V> toMapOfSet();
 
     

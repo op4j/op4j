@@ -40,7 +40,7 @@ import org.op4j.exceptions.TargetCastException;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class NormalizationUtils {
+public class NormalisationUtils {
 
 
     
@@ -482,7 +482,7 @@ public class NormalizationUtils {
 
     
     @SuppressWarnings("unchecked")
-    public static <T> T[] normalizeArray(final T[] array) {
+    public static <T> T[] normaliseArray(final T[] array) {
         if (array == null) {
             return null;
         }
@@ -491,58 +491,58 @@ public class NormalizationUtils {
 
     
     @SuppressWarnings("unchecked")
-    public static <T> T[][] normalizeArrayOfArray(final T[][] arrayOfArray) {
+    public static <T> T[][] normaliseArrayOfArray(final T[][] arrayOfArray) {
         if (arrayOfArray == null) {
             return null;
         }
         final T[][] result = (T[][]) ArrayUtils.clone(arrayOfArray);
         for (int i = 0; i < result.length; i++) {
-            result[i] = normalizeArray(result[i]);
+            result[i] = normaliseArray(result[i]);
         }
         return result;
     }
 
     
     @SuppressWarnings("unchecked")
-    public static <T> List<T>[] normalizeArrayOfList(final List<T>[] arrayOfList) {
+    public static <T> List<T>[] normaliseArrayOfList(final List<T>[] arrayOfList) {
         if (arrayOfList == null) {
             return null;
         }
         final List<T>[] result = (List<T>[]) ArrayUtils.clone(arrayOfList);
         for (int i = 0; i < result.length; i++) {
-            result[i] = normalizeList(result[i]);
+            result[i] = normaliseList(result[i]);
         }
         return result;
     }
 
     
     @SuppressWarnings("unchecked")
-    public static <K,V> Map<K,V>[] normalizeArrayOfMap(final Map<K,V>[] arrayOfMap) {
+    public static <K,V> Map<K,V>[] normaliseArrayOfMap(final Map<K,V>[] arrayOfMap) {
         if (arrayOfMap == null) {
             return null;
         }
         final Map<K,V>[] result = (Map<K,V>[]) ArrayUtils.clone(arrayOfMap);
         for (int i = 0; i < result.length; i++) {
-            result[i] = normalizeMap(result[i]);
+            result[i] = normaliseMap(result[i]);
         }
         return result;
     }
 
     
     @SuppressWarnings("unchecked")
-    public static <T> Set<T>[] normalizeArrayOfSet(final Set<T>[] arrayOfSet) {
+    public static <T> Set<T>[] normaliseArrayOfSet(final Set<T>[] arrayOfSet) {
         if (arrayOfSet == null) {
             return null;
         }
         final Set<T>[] result = (Set<T>[]) ArrayUtils.clone(arrayOfSet);
         for (int i = 0; i < result.length; i++) {
-            result[i] = normalizeSet(result[i]);
+            result[i] = normaliseSet(result[i]);
         }
         return result;
     }
     
     
-    public static <T> List<T> normalizeList(final List<T> list) {
+    public static <T> List<T> normaliseList(final List<T> list) {
         if (list == null) {
             return null;
         }
@@ -550,55 +550,55 @@ public class NormalizationUtils {
     }
 
     
-    public static <T> List<T[]> normalizeListOfArray(final List<? extends T[]> listOfArray) {
+    public static <T> List<T[]> normaliseListOfArray(final List<? extends T[]> listOfArray) {
         if (listOfArray == null) {
             return null;
         }
         final List<T[]> result = new ArrayList<T[]>();
         for (final T[] element : listOfArray) {
-            result.add(normalizeArray(element));
+            result.add(normaliseArray(element));
         }
         return result;
     }
 
     
-    public static <T> List<List<T>> normalizeListOfList(final List<? extends List<T>> listOfList) {
+    public static <T> List<List<T>> normaliseListOfList(final List<? extends List<T>> listOfList) {
         if (listOfList == null) {
             return null;
         }
         final List<List<T>> result = new ArrayList<List<T>>();
         for (final List<T> element : listOfList) {
-            result.add(normalizeList(element));
+            result.add(normaliseList(element));
         }
         return result;
     }
 
     
-    public static <K, V> List<Map<K, V>> normalizeListOfMap(final List<? extends Map<K, V>> listOfMap) {
+    public static <K, V> List<Map<K, V>> normaliseListOfMap(final List<? extends Map<K, V>> listOfMap) {
         if (listOfMap == null) {
             return null;
         }
         final List<Map<K, V>> result = new ArrayList<Map<K, V>>();
         for (final Map<K, V> element : listOfMap) {
-            result.add(normalizeMap(element));
+            result.add(normaliseMap(element));
         }
         return result;
     }
 
     
-    public static <T> List<Set<T>> normalizeListOfSet(final List<? extends Set<T>> listOfSet) {
+    public static <T> List<Set<T>> normaliseListOfSet(final List<? extends Set<T>> listOfSet) {
         if (listOfSet == null) {
             return null;
         }
         final List<Set<T>> result = new ArrayList<Set<T>>();
         for (final Set<T> element : listOfSet) {
-            result.add(normalizeSet(element));
+            result.add(normaliseSet(element));
         }
         return result;
     }
     
     
-    public static <K, V> Map<K, V> normalizeMap(final Map<K,V> map) {
+    public static <K, V> Map<K, V> normaliseMap(final Map<K,V> map) {
         if (map == null) {
             return null;
         }
@@ -606,7 +606,7 @@ public class NormalizationUtils {
     }
 
     
-    public static <K, V> Map.Entry<K, V> normalizeMapEntry(final Map.Entry<K,V> mapEntry) {
+    public static <K, V> Map.Entry<K, V> normaliseMapEntry(final Map.Entry<K,V> mapEntry) {
         if (mapEntry == null) {
             return null;
         }
@@ -614,87 +614,87 @@ public class NormalizationUtils {
     }
 
     
-    public static <K, V> Map<K, V[]> normalizeMapOfArray(final Map<K, V[]> mapOfArray) {
+    public static <K, V> Map<K, V[]> normaliseMapOfArray(final Map<K, V[]> mapOfArray) {
         if (mapOfArray == null) {
             return null;
         }
         final Map<K, V[]> result = new LinkedHashMap<K, V[]>();
         for (final Map.Entry<K, V[]> element : mapOfArray.entrySet()) {
-            result.put(element.getKey(), normalizeArray(element.getValue()));
+            result.put(element.getKey(), normaliseArray(element.getValue()));
         }
         return result;
     }
 
     
-    public static <K, V> Map.Entry<K, V[]> normalizeMapEntryOfArray(final Map.Entry<K, V[]> mapEntryOfArray) {
+    public static <K, V> Map.Entry<K, V[]> normaliseMapEntryOfArray(final Map.Entry<K, V[]> mapEntryOfArray) {
         if (mapEntryOfArray == null) {
             return null;
         }
-        return new MapEntry<K, V[]>(mapEntryOfArray.getKey(), normalizeArray(mapEntryOfArray.getValue()));
+        return new MapEntry<K, V[]>(mapEntryOfArray.getKey(), normaliseArray(mapEntryOfArray.getValue()));
     }
 
     
-    public static <K, V> Map<K, List<V>> normalizeMapOfList(final Map<K, ? extends List<V>> mapOfList) {
+    public static <K, V> Map<K, List<V>> normaliseMapOfList(final Map<K, ? extends List<V>> mapOfList) {
         if (mapOfList == null) {
             return null;
         }
         final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
         for (final Map.Entry<K, ? extends List<V>> element : mapOfList.entrySet()) {
-            result.put(element.getKey(), normalizeList(element.getValue()));
+            result.put(element.getKey(), normaliseList(element.getValue()));
         }
         return result;
     }
 
     
-    public static <K, V> Map.Entry<K, List<V>> normalizeMapEntryOfList(final Map.Entry<K, ? extends List<V>> mapEntryOfList) {
+    public static <K, V> Map.Entry<K, List<V>> normaliseMapEntryOfList(final Map.Entry<K, ? extends List<V>> mapEntryOfList) {
         if (mapEntryOfList == null) {
             return null;
         }
-        return new MapEntry<K, List<V>>(mapEntryOfList.getKey(), normalizeList(mapEntryOfList.getValue()));
+        return new MapEntry<K, List<V>>(mapEntryOfList.getKey(), normaliseList(mapEntryOfList.getValue()));
     }
 
     
-    public static <K1, K2, V> Map<K1, Map<K2, V>> normalizeMapOfMap(final Map<K1, ? extends Map<K2, V>> mapOfMap) {
+    public static <K1, K2, V> Map<K1, Map<K2, V>> normaliseMapOfMap(final Map<K1, ? extends Map<K2, V>> mapOfMap) {
         if (mapOfMap == null) {
             return null;
         }
         final Map<K1, Map<K2, V>> result = new LinkedHashMap<K1, Map<K2, V>>();
         for (final Map.Entry<K1, ? extends Map<K2, V>> element : mapOfMap.entrySet()) {
-            result.put(element.getKey(), normalizeMap(element.getValue()));
+            result.put(element.getKey(), normaliseMap(element.getValue()));
         }
         return result;
     }
 
     
-    public static <K1, K2, V> Map.Entry<K1, Map<K2, V>> normalizeMapEntryOfMap(final Map.Entry<K1, ? extends Map<K2, V>> mapEntryOfMap) {
+    public static <K1, K2, V> Map.Entry<K1, Map<K2, V>> normaliseMapEntryOfMap(final Map.Entry<K1, ? extends Map<K2, V>> mapEntryOfMap) {
         if (mapEntryOfMap == null) {
             return null;
         }
-        return new MapEntry<K1, Map<K2, V>>(mapEntryOfMap.getKey(), normalizeMap(mapEntryOfMap.getValue()));
+        return new MapEntry<K1, Map<K2, V>>(mapEntryOfMap.getKey(), normaliseMap(mapEntryOfMap.getValue()));
     }
 
     
-    public static <K, V> Map<K, Set<V>> normalizeMapOfSet(final Map<K, ? extends Set<V>> mapOfSet) {
+    public static <K, V> Map<K, Set<V>> normaliseMapOfSet(final Map<K, ? extends Set<V>> mapOfSet) {
         if (mapOfSet == null) {
             return null;
         }
         final Map<K, Set<V>> result = new LinkedHashMap<K, Set<V>>();
         for (final Map.Entry<K, ? extends Set<V>> element : mapOfSet.entrySet()) {
-            result.put(element.getKey(), normalizeSet(element.getValue()));
+            result.put(element.getKey(), normaliseSet(element.getValue()));
         }
         return result;
     }
 
     
-    public static <K, V> Map.Entry<K, Set<V>> normalizeMapEntryOfSet(final Map.Entry<K, ? extends Set<V>> mapEntryOfSet) {
+    public static <K, V> Map.Entry<K, Set<V>> normaliseMapEntryOfSet(final Map.Entry<K, ? extends Set<V>> mapEntryOfSet) {
         if (mapEntryOfSet == null) {
             return null;
         }
-        return new MapEntry<K, Set<V>>(mapEntryOfSet.getKey(), normalizeSet(mapEntryOfSet.getValue()));
+        return new MapEntry<K, Set<V>>(mapEntryOfSet.getKey(), normaliseSet(mapEntryOfSet.getValue()));
     }
     
     
-    public static <T> Set<T> normalizeSet(final Set<T> set) {
+    public static <T> Set<T> normaliseSet(final Set<T> set) {
         if (set == null) {
             return null;
         }
@@ -702,49 +702,49 @@ public class NormalizationUtils {
     }
 
     
-    public static <T> Set<T[]> normalizeSetOfArray(final Set<? extends T[]> setOfArray) {
+    public static <T> Set<T[]> normaliseSetOfArray(final Set<? extends T[]> setOfArray) {
         if (setOfArray == null) {
             return null;
         }
         final Set<T[]> result = new LinkedHashSet<T[]>();
         for (final T[] element : setOfArray) {
-            result.add(normalizeArray(element));
+            result.add(normaliseArray(element));
         }
         return result;
     }
 
     
-    public static <T> Set<List<T>> normalizeSetOfList(final Set<? extends List<T>> setOfList) {
+    public static <T> Set<List<T>> normaliseSetOfList(final Set<? extends List<T>> setOfList) {
         if (setOfList == null) {
             return null;
         }
         final Set<List<T>> result = new LinkedHashSet<List<T>>();
         for (final List<T> element : setOfList) {
-            result.add(normalizeList(element));
+            result.add(normaliseList(element));
         }
         return result;
     }
 
     
-    public static <K, V> Set<Map<K, V>> normalizeSetOfMap(final Set<? extends Map<K, V>> setOfMap) {
+    public static <K, V> Set<Map<K, V>> normaliseSetOfMap(final Set<? extends Map<K, V>> setOfMap) {
         if (setOfMap == null) {
             return null;
         }
         final Set<Map<K, V>> result = new LinkedHashSet<Map<K, V>>();
         for (final Map<K, V> element : setOfMap) {
-            result.add(normalizeMap(element));
+            result.add(normaliseMap(element));
         }
         return result;
     }
 
     
-    public static <T> Set<Set<T>> normalizeSetOfSet(final Set<? extends Set<T>> setOfSet) {
+    public static <T> Set<Set<T>> normaliseSetOfSet(final Set<? extends Set<T>> setOfSet) {
         if (setOfSet == null) {
             return null;
         }
         final Set<Set<T>> result = new LinkedHashSet<Set<T>>();
         for (final Set<T> element : setOfSet) {
-            result.add(normalizeSet(element));
+            result.add(normaliseSet(element));
         }
         return result;
     }
@@ -752,52 +752,52 @@ public class NormalizationUtils {
 
     
     @SuppressWarnings("unchecked")
-    public static <T> T[][] normalizeArrays(final T[][] input) {
+    public static <T> T[][] normaliseArrays(final T[][] input) {
         if (input == null) {
             return null;
         }
         final T[][] result = (T[][]) ArrayUtils.clone(input);
         for (int i = 0; i < result.length; i++) {
-            result[i] = normalizeArray(result[i]);
+            result[i] = normaliseArray(result[i]);
         }
         return result;
     }
 
     
     @SuppressWarnings("unchecked")
-    public static <T> List<T>[] normalizeLists(final List<T>[] input) {
+    public static <T> List<T>[] normaliseLists(final List<T>[] input) {
         if (input == null) {
             return null;
         }
         final List<T>[] result = (List<T>[]) ArrayUtils.clone(input);
         for (int i = 0; i < result.length; i++) {
-            result[i] = normalizeList(result[i]);
+            result[i] = normaliseList(result[i]);
         }
         return result;
     }
 
     
     @SuppressWarnings("unchecked")
-    public static <K,V> Map<K,V>[] normalizeMaps(final Map<K,V>[] input) {
+    public static <K,V> Map<K,V>[] normaliseMaps(final Map<K,V>[] input) {
         if (input == null) {
             return null;
         }
         final Map<K,V>[] result = (Map<K,V>[]) ArrayUtils.clone(input);
         for (int i = 0; i < result.length; i++) {
-            result[i] = normalizeMap(result[i]);
+            result[i] = normaliseMap(result[i]);
         }
         return result;
     }
 
     
     @SuppressWarnings("unchecked")
-    public static <T> Set<T>[] normalizeSets(final Set<T>[] input) {
+    public static <T> Set<T>[] normaliseSets(final Set<T>[] input) {
         if (input == null) {
             return null;
         }
         final Set<T>[] result = (Set<T>[]) ArrayUtils.clone(input);
         for (int i = 0; i < result.length; i++) {
-            result[i] = normalizeSet(result[i]);
+            result[i] = normaliseSet(result[i]);
         }
         return result;
     }
@@ -806,49 +806,49 @@ public class NormalizationUtils {
     
 
     
-    public static <T> Collection<T[]> normalizeArrays(final Collection<T[]> input) {
+    public static <T> Collection<T[]> normaliseArrays(final Collection<T[]> input) {
         if (input == null) {
             return null;
         }
         final Collection<T[]> result = new ArrayList<T[]>();
         for (final T[] inputElement : input) {
-            result.add(normalizeArray(inputElement));
+            result.add(normaliseArray(inputElement));
         }
         return result;
     }
 
     
-    public static <T> Collection<List<T>> normalizeLists(final Collection<List<T>> input) {
+    public static <T> Collection<List<T>> normaliseLists(final Collection<List<T>> input) {
         if (input == null) {
             return null;
         }
         final Collection<List<T>> result = new ArrayList<List<T>>();
         for (final List<T> inputElement : input) {
-            result.add(normalizeList(inputElement));
+            result.add(normaliseList(inputElement));
         }
         return result;
     }
 
     
-    public static <K,V> Collection<Map<K,V>> normalizeMaps(final Collection<Map<K,V>> input) {
+    public static <K,V> Collection<Map<K,V>> normaliseMaps(final Collection<Map<K,V>> input) {
         if (input == null) {
             return null;
         }
         final Collection<Map<K,V>> result = new ArrayList<Map<K,V>>();
         for (final Map<K,V> inputElement : input) {
-            result.add(normalizeMap(inputElement));
+            result.add(normaliseMap(inputElement));
         }
         return result;
     }
 
     
-    public static <T> Collection<Set<T>> normalizeSets(final Collection<Set<T>> input) {
+    public static <T> Collection<Set<T>> normaliseSets(final Collection<Set<T>> input) {
         if (input == null) {
             return null;
         }
         final Collection<Set<T>> result = new ArrayList<Set<T>>();
         for (final Set<T> inputElement : input) {
-            result.add(normalizeSet(inputElement));
+            result.add(normaliseSet(inputElement));
         }
         return result;
     }
@@ -857,7 +857,7 @@ public class NormalizationUtils {
     
     
     
-    private NormalizationUtils() {
+    private NormalisationUtils() {
         super();
     }
     

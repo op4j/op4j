@@ -40,8 +40,8 @@ import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.Level2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
-import org.op4j.util.NormalizationUtils;
+import org.op4j.target.Target.Normalisation;
+import org.op4j.util.NormalisationUtils;
 
 
 /**
@@ -67,7 +67,7 @@ public class Level2MapEntriesValueOperatorImpl<K,V> extends AbstractOperatorImpl
 
     public <X> Level2MapEntriesValueOperator<K, X> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        NormalizationUtils.checkIsMapOfValue(type, get());
+        NormalisationUtils.checkIsMapOfValue(type, get());
         return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget());
     }
 
@@ -78,14 +78,14 @@ public class Level2MapEntriesValueOperatorImpl<K,V> extends AbstractOperatorImpl
 
     public <X> Level2MapOfArrayEntriesValueOperator<K,X> asArrayOf(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        NormalizationUtils.checkIsMapOfArrayOfValue(type, get());
+        NormalisationUtils.checkIsMapOfArrayOfValue(type, get());
         return new Level2MapOfArrayEntriesValueOperatorImpl<K,X>(getTarget());
     }
 
 
     public <X> Level2MapOfListEntriesValueOperator<K,X> asListOf(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        NormalizationUtils.checkIsMapOfListOfValue(type, get());
+        NormalisationUtils.checkIsMapOfListOfValue(type, get());
         return new Level2MapOfListEntriesValueOperatorImpl<K,X>(getTarget());
     }
 
@@ -93,14 +93,14 @@ public class Level2MapEntriesValueOperatorImpl<K,V> extends AbstractOperatorImpl
     public <K2,V2> Level2MapOfMapEntriesValueOperator<K,K2,V2> asMapOf(final Type<K2> keyType, final Type<V2> valueType) {
         Validate.notNull(keyType, "A type representing the keys must be specified");
         Validate.notNull(valueType, "A type representing the values must be specified");
-        NormalizationUtils.checkIsMapOfMapOfValue(keyType, valueType, get());
+        NormalisationUtils.checkIsMapOfMapOfValue(keyType, valueType, get());
         return new Level2MapOfMapEntriesValueOperatorImpl<K,K2,V2>(getTarget());
     }
 
 
     public <X> Level2MapOfSetEntriesValueOperator<K,X> asSetOf(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        NormalizationUtils.checkIsMapOfSetOfValue(type, get());
+        NormalisationUtils.checkIsMapOfSetOfValue(type, get());
         return new Level2MapOfSetEntriesValueOperatorImpl<K,X>(getTarget());
     }
 
@@ -194,17 +194,17 @@ public class Level2MapEntriesValueOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public <X> Level2MapEntriesValueOperator<K, X> convert(final IConverter<X, ? super V> converter) {
-        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(converter, Normalization.NONE));
+        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
     public <X> Level2MapEntriesValueOperator<K, X> eval(final IEvaluator<X, ? super V> eval) {
-        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(eval, Normalization.NONE));
+        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
     public <X> Level2MapEntriesValueOperator<K, X> exec(final IFunction<X, ? super V> function) {
-        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalization.NONE));
+        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalisation.NONE));
     }
 
 

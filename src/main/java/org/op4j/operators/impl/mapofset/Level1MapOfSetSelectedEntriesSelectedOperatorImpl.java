@@ -13,7 +13,7 @@ import org.op4j.operators.intf.mapofset.Level1MapOfSetSelectedEntriesSelectedOpe
 import org.op4j.operators.intf.mapofset.Level2MapOfSetSelectedEntriesSelectedKeyOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetSelectedEntriesSelectedValueOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level1MapOfSetSelectedEntriesSelectedOperator<K,V> {
@@ -25,7 +25,7 @@ public class Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V> extends Abst
 
 
     public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Entry<? extends K,? extends Set<? extends V>>,? super Entry<K,Set<V>>> eval) {
-        return new Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAPENTRY_OF_SET));
+        return new Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAPENTRY_OF_SET));
     }
 
 
@@ -45,7 +45,7 @@ public class Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V> extends Abst
 
 
     public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> exec(final IFunction<? extends Entry<? extends K,? extends Set<? extends V>>,? super Entry<K,Set<V>>> function) {
-        return new Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.MAPENTRY_OF_SET));
+        return new Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAPENTRY_OF_SET));
     }
 
 
@@ -55,7 +55,7 @@ public class Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V> extends Abst
 
 
     public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> convert(final IConverter<? extends Entry<? extends K,? extends Set<? extends V>>,? super Entry<K,Set<V>>> converter) {
-        return new Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.MAPENTRY_OF_SET));
+        return new Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAPENTRY_OF_SET));
     }
 
 

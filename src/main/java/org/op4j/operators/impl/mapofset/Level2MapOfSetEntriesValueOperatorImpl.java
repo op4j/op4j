@@ -49,8 +49,8 @@ import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueSelectedOperator;
 import org.op4j.operators.intf.mapofset.Level3MapOfSetEntriesValueElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
-import org.op4j.util.NormalizationUtils;
+import org.op4j.target.Target.Normalisation;
+import org.op4j.util.NormalisationUtils;
 
 
 /**
@@ -202,7 +202,7 @@ public class Level2MapOfSetEntriesValueOperatorImpl<K,V> extends AbstractOperato
     
 	public <X> Level2MapOfSetEntriesValueOperator<K, X> asSetOf(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        NormalizationUtils.checkIsMapOfSetOfValue(type, get());
+        NormalisationUtils.checkIsMapOfSetOfValue(type, get());
         return new Level2MapOfSetEntriesValueOperatorImpl<K,X>(getTarget());
     }
 
@@ -263,32 +263,32 @@ public class Level2MapOfSetEntriesValueOperatorImpl<K,V> extends AbstractOperato
 
 
     public <X> Level2MapOfSetEntriesValueOperator<K, X> convert(final IConverter<? extends Set<X>, ? super Set<V>> converter) {
-        return new Level2MapOfSetEntriesValueOperatorImpl<K, X>(getTarget().execute(converter, Normalization.SET));
+        return new Level2MapOfSetEntriesValueOperatorImpl<K, X>(getTarget().execute(converter, Normalisation.SET));
     }
 
 
     public <X> Level2MapOfSetEntriesValueOperator<K, X> eval(final IEvaluator<? extends Set<X>, ? super Set<V>> eval) {
-        return new Level2MapOfSetEntriesValueOperatorImpl<K, X>(getTarget().execute(eval, Normalization.SET));
+        return new Level2MapOfSetEntriesValueOperatorImpl<K, X>(getTarget().execute(eval, Normalisation.SET));
     }
 
 
     public <X> Level2MapOfSetEntriesValueOperator<K, X> exec(final IFunction<? extends Set<X>, ? super Set<V>> function) {
-        return new Level2MapOfSetEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalization.SET));
+        return new Level2MapOfSetEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalisation.SET));
     }
 
 
     public <X> Level2MapEntriesValueOperator<K, X> convert(final Type<X> resultType, final IConverter<? extends X, ? super Set<V>> converter) {
-        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(converter, Normalization.NONE));
+        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
     public <X> Level2MapEntriesValueOperator<K, X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super Set<V>> eval) {
-        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(eval, Normalization.NONE));
+        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
     public <X> Level2MapEntriesValueOperator<K, X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<V>> function) {
-        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalization.NONE));
+        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalisation.NONE));
     }
 
 

@@ -13,7 +13,7 @@ import org.op4j.operators.intf.arrayofset.Level1ArrayOfSetSelectedElementsOperat
 import org.op4j.operators.intf.arrayofset.Level1ArrayOfSetSelectedElementsSelectedOperator;
 import org.op4j.operators.intf.arrayofset.Level2ArrayOfSetSelectedElementsSelectedElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level1ArrayOfSetSelectedElementsSelectedOperator<T> {
@@ -85,7 +85,7 @@ public class Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T> extends Abs
 
 
     public Level1ArrayOfSetSelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval) {
-        return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.SET));
+        return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.SET));
     }
 
 
@@ -117,7 +117,7 @@ public class Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T> extends Abs
 
 
     public Level1ArrayOfSetSelectedElementsSelectedOperator<T> exec(final IFunction<? extends Set<? extends T>,? super Set<T>> function) {
-        return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalization.SET));
+        return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.SET));
     }
 
 
@@ -138,7 +138,7 @@ public class Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T> extends Abs
 
 
     public Level1ArrayOfSetSelectedElementsSelectedOperator<T> convert(final IConverter<? extends Set<? extends T>,? super Set<T>> converter) {
-        return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalization.SET));
+        return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.SET));
     }
 
 

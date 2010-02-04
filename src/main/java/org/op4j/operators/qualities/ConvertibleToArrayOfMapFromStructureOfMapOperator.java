@@ -23,6 +23,10 @@ import org.op4j.operators.intf.arrayofmap.Level0ArrayOfMapOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for conversions to array of map from
+ * operators which already hold a "* of map" structure as target.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -30,8 +34,15 @@ import org.op4j.operators.intf.arrayofmap.Level0ArrayOfMapOperator;
  *
  */
 public interface ConvertibleToArrayOfMapFromStructureOfMapOperator<K,V> {
+
     
-    
+    /**
+     * <p>
+     * Converts the current target into an array of map.
+     * </p>
+     * 
+     * @return an operator holding the converted object as target.
+     */
     public Level0ArrayOfMapOperator<K,V> toArrayOfMap();
 
 }

@@ -25,6 +25,9 @@ import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for conversions to set of map.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -33,8 +36,44 @@ import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
  */
 public interface ConvertibleToSetOfMapOperator<T> {
     
+    
+    /**
+     * <p>
+     * Converts the current target into a set of map by using the second-level
+     * structure even elements as keys and odd elements as values (starting with 0).
+     * </p>
+     * 
+     * @return an operator holding the converted object as target.
+     */
     public Level0SetOfMapOperator<T,T> toSetOfMap();
+    
+    
+    /**
+     * <p>
+     * Converts the current target into a set of map by using the second-level
+     * structure elements as values, and the results of evaluating these values
+     * with the provided keyEval as their corresponding keys.
+     * </p>
+     * 
+     * @param <K> the type of the new map keys
+     * @param keyEval the evaluator to be used for obtaining keys
+     * @return an operator holding the converted object as target.
+     */
     public <K> Level0SetOfMapOperator<K,T> toSetOfMap(final IEvaluator<K,? super T> keyEval);
+    
+
+    /**
+     * <p>
+     * Converts the current target into a set of map by using the second-level
+     * structure elements as input for a map builder which will create corresponding
+     * keys and values for each of them.
+     * </p>
+     * 
+     * @param <K> the type of the new keys being created
+     * @param <V> the type of the new values being created
+     * @param mapBuild the map builder
+     * @return an operator holding the converted object as target
+     */
     public <K,V> Level0SetOfMapOperator<K,V> toSetOfMap(final IMapBuilder<K,V,? super T> mapBuild);
 
 }

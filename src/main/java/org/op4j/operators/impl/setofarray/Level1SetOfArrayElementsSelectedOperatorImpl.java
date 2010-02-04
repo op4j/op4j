@@ -14,7 +14,7 @@ import org.op4j.operators.intf.setofarray.Level1SetOfArrayElementsOperator;
 import org.op4j.operators.intf.setofarray.Level1SetOfArrayElementsSelectedOperator;
 import org.op4j.operators.intf.setofarray.Level2SetOfArrayElementsSelectedElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level1SetOfArrayElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level1SetOfArrayElementsSelectedOperator<T> {
@@ -91,7 +91,7 @@ public class Level1SetOfArrayElementsSelectedOperatorImpl<T> extends AbstractOpe
 
 
     public Level1SetOfArrayElementsSelectedOperator<T> eval(final IEvaluator<? extends T[],? super T[]> eval) {
-        return new Level1SetOfArrayElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.ARRAY));
+        return new Level1SetOfArrayElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.ARRAY));
     }
 
 
@@ -123,7 +123,7 @@ public class Level1SetOfArrayElementsSelectedOperatorImpl<T> extends AbstractOpe
 
 
     public Level1SetOfArrayElementsSelectedOperator<T> exec(final IFunction<? extends T[],? super T[]> function) {
-        return new Level1SetOfArrayElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalization.ARRAY));
+        return new Level1SetOfArrayElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.ARRAY));
     }
 
 
@@ -144,7 +144,7 @@ public class Level1SetOfArrayElementsSelectedOperatorImpl<T> extends AbstractOpe
 
 
     public Level1SetOfArrayElementsSelectedOperator<T> convert(final IConverter<? extends T[],? super T[]> converter) {
-        return new Level1SetOfArrayElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalization.ARRAY));
+        return new Level1SetOfArrayElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.ARRAY));
     }
 
 

@@ -14,7 +14,7 @@ import org.op4j.operators.intf.mapofset.Level1MapOfSetSelectedEntriesSelectedOpe
 import org.op4j.operators.intf.mapofset.Level2MapOfSetSelectedEntriesKeyOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetSelectedEntriesValueOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
 
 
@@ -47,7 +47,7 @@ public class Level1MapOfSetSelectedEntriesOperatorImpl<K,V> extends AbstractOper
 
 
     public Level1MapOfSetSelectedEntriesOperator<K,V> eval(final IEvaluator<? extends Entry<? extends K,? extends Set<? extends V>>,? super Entry<K,Set<V>>> eval) {
-        return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAPENTRY_OF_SET));
+        return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAPENTRY_OF_SET));
     }
 
 
@@ -77,7 +77,7 @@ public class Level1MapOfSetSelectedEntriesOperatorImpl<K,V> extends AbstractOper
 
 
     public Level1MapOfSetSelectedEntriesOperator<K,V> exec(final IFunction<? extends Entry<? extends K,? extends Set<? extends V>>,? super Entry<K,Set<V>>> function) {
-        return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().execute(function, Normalization.MAPENTRY_OF_SET));
+        return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAPENTRY_OF_SET));
     }
 
 
@@ -87,7 +87,7 @@ public class Level1MapOfSetSelectedEntriesOperatorImpl<K,V> extends AbstractOper
 
 
     public Level1MapOfSetSelectedEntriesOperator<K,V> convert(final IConverter<? extends Entry<? extends K,? extends Set<? extends V>>,? super Entry<K,Set<V>>> converter) {
-        return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().execute(converter, Normalization.MAPENTRY_OF_SET));
+        return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAPENTRY_OF_SET));
     }
 
 

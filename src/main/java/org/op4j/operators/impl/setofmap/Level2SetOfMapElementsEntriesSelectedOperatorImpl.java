@@ -13,7 +13,7 @@ import org.op4j.operators.intf.setofmap.Level2SetOfMapElementsEntriesSelectedOpe
 import org.op4j.operators.intf.setofmap.Level3SetOfMapElementsEntriesSelectedKeyOperator;
 import org.op4j.operators.intf.setofmap.Level3SetOfMapElementsEntriesSelectedValueOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level2SetOfMapElementsEntriesSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level2SetOfMapElementsEntriesSelectedOperator<K,V> {
@@ -25,7 +25,7 @@ public class Level2SetOfMapElementsEntriesSelectedOperatorImpl<K,V> extends Abst
 
 
     public Level2SetOfMapElementsEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> eval) {
-        return new Level2SetOfMapElementsEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAPENTRY));
+        return new Level2SetOfMapElementsEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAPENTRY));
     }
 
 
@@ -45,7 +45,7 @@ public class Level2SetOfMapElementsEntriesSelectedOperatorImpl<K,V> extends Abst
 
 
     public Level2SetOfMapElementsEntriesSelectedOperator<K,V> exec(final IFunction<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> function) {
-        return new Level2SetOfMapElementsEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.MAPENTRY));
+        return new Level2SetOfMapElementsEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAPENTRY));
     }
 
 
@@ -55,7 +55,7 @@ public class Level2SetOfMapElementsEntriesSelectedOperatorImpl<K,V> extends Abst
 
 
     public Level2SetOfMapElementsEntriesSelectedOperator<K,V> convert(final IConverter<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> converter) {
-        return new Level2SetOfMapElementsEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.MAPENTRY));
+        return new Level2SetOfMapElementsEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAPENTRY));
     }
 
 

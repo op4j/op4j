@@ -23,6 +23,9 @@ import org.op4j.operators.intf.mapoflist.Level0MapOfListOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for conversions to map of list.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -31,6 +34,14 @@ import org.op4j.operators.intf.mapoflist.Level0MapOfListOperator;
  */
 public interface ConvertibleToMapOfListOperator<K,V> {
     
+    
+    /**
+     * <p>
+     * Converts the current target into a map of list.
+     * </p>
+     * 
+     * @return an operator holding the converted object as target.
+     */
     public Level0MapOfListOperator<K,V> toMapOfList();
 
     

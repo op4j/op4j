@@ -9,7 +9,7 @@ import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.map.Level2MapSelectedEntriesSelectedValueOperator;
 import org.op4j.operators.intf.map.Level2MapSelectedEntriesSelectedValueSelectedOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level2MapSelectedEntriesSelectedValueSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level2MapSelectedEntriesSelectedValueSelectedOperator<K,V> {
@@ -21,7 +21,7 @@ public class Level2MapSelectedEntriesSelectedValueSelectedOperatorImpl<K,V> exte
 
 
     public Level2MapSelectedEntriesSelectedValueSelectedOperator<K,V> eval(final IEvaluator<? extends V,? super V> eval) {
-        return new Level2MapSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.NONE));
+        return new Level2MapSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
@@ -31,7 +31,7 @@ public class Level2MapSelectedEntriesSelectedValueSelectedOperatorImpl<K,V> exte
 
 
     public Level2MapSelectedEntriesSelectedValueSelectedOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
-        return new Level2MapSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.NONE));
+        return new Level2MapSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
@@ -41,7 +41,7 @@ public class Level2MapSelectedEntriesSelectedValueSelectedOperatorImpl<K,V> exte
 
 
     public Level2MapSelectedEntriesSelectedValueSelectedOperator<K,V> convert(final IConverter<? extends V,? super V> converter) {
-        return new Level2MapSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.NONE));
+        return new Level2MapSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 

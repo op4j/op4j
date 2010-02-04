@@ -23,6 +23,10 @@ import org.op4j.operators.intf.listofmap.Level0ListOfMapOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for conversions to list of array from
+ * operators which already hold a "* of map" structure as target.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -31,6 +35,14 @@ import org.op4j.operators.intf.listofmap.Level0ListOfMapOperator;
  */
 public interface ConvertibleToListOfMapFromStructureOfMapOperator<K,V> {
     
+    
+    /**
+     * <p>
+     * Converts the current target into a list of map.
+     * </p>
+     * 
+     * @return an operator holding the converted object as target.
+     */
     public Level0ListOfMapOperator<K,V> toListOfMap();
 
 }

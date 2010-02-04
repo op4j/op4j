@@ -49,7 +49,7 @@ import org.op4j.operators.intf.list.Level0ListOperator;
 import org.op4j.operators.intf.map.Level0MapOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 /**
  * 
@@ -295,32 +295,32 @@ public class Level0ArrayOperatorImpl<T>
 
 
 	public <X> Level0ArrayOperator<X> convert(final IConverter<X[], ? super T[]> converter) {
-        return new Level0ArrayOperatorImpl<X>(getTarget().execute(converter, Normalization.ARRAY));
+        return new Level0ArrayOperatorImpl<X>(getTarget().execute(converter, Normalisation.ARRAY));
     }
 
 
 	public <X> Level0ArrayOperator<X> eval(final IEvaluator<X[], ? super T[]> eval) {
-        return new Level0ArrayOperatorImpl<X>(getTarget().execute(eval, Normalization.ARRAY));
+        return new Level0ArrayOperatorImpl<X>(getTarget().execute(eval, Normalisation.ARRAY));
     }
 
 
 	public <X> Level0ArrayOperator<X> exec(final IFunction<X[], ? super T[]> function) {
-        return new Level0ArrayOperatorImpl<X>(getTarget().execute(function, Normalization.ARRAY));
+        return new Level0ArrayOperatorImpl<X>(getTarget().execute(function, Normalisation.ARRAY));
     }
 
 
     public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super T[]> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalization.NONE));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
     public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super T[]> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalization.NONE));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super T[]> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalisation.NONE));
     }
 
 

@@ -33,8 +33,8 @@ import org.op4j.operators.intf.mapoflist.Level1MapOfListEntriesOperator;
 import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesKeyOperator;
 import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesKeySelectedOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
-import org.op4j.util.NormalizationUtils;
+import org.op4j.target.Target.Normalisation;
+import org.op4j.util.NormalisationUtils;
 
 
 /**
@@ -60,7 +60,7 @@ public class Level2MapOfListEntriesKeyOperatorImpl<K,V> extends AbstractOperator
 
     public <X> Level2MapOfListEntriesKeyOperator<X, V> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        NormalizationUtils.checkIsMapOfKey(type, get());
+        NormalisationUtils.checkIsMapOfKey(type, get());
         return new Level2MapOfListEntriesKeyOperatorImpl<X, V>(getTarget());
     }
 
@@ -125,17 +125,17 @@ public class Level2MapOfListEntriesKeyOperatorImpl<K,V> extends AbstractOperator
 
 
     public <X> Level2MapOfListEntriesKeyOperator<X, V> convert(final IConverter<X, ? super K> converter) {
-        return new Level2MapOfListEntriesKeyOperatorImpl<X, V>(getTarget().execute(converter, Normalization.NONE));
+        return new Level2MapOfListEntriesKeyOperatorImpl<X, V>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
     public <X> Level2MapOfListEntriesKeyOperator<X, V> eval(final IEvaluator<X, ? super K> eval) {
-        return new Level2MapOfListEntriesKeyOperatorImpl<X, V>(getTarget().execute(eval, Normalization.NONE));
+        return new Level2MapOfListEntriesKeyOperatorImpl<X, V>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
     public <X> Level2MapOfListEntriesKeyOperator<X, V> exec(final IFunction<X, ? super K> function) {
-        return new Level2MapOfListEntriesKeyOperatorImpl<X, V>(getTarget().execute(function, Normalization.NONE));
+        return new Level2MapOfListEntriesKeyOperatorImpl<X, V>(getTarget().execute(function, Normalisation.NONE));
     }
 
 

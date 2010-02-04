@@ -9,7 +9,7 @@ import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.listoflist.Level2ListOfListSelectedElementsElementsOperator;
 import org.op4j.operators.intf.listoflist.Level2ListOfListSelectedElementsElementsSelectedOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level2ListOfListSelectedElementsElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level2ListOfListSelectedElementsElementsSelectedOperator<T> {
@@ -21,7 +21,7 @@ public class Level2ListOfListSelectedElementsElementsSelectedOperatorImpl<T> ext
 
 
     public Level2ListOfListSelectedElementsElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return new Level2ListOfListSelectedElementsElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.NONE));
+        return new Level2ListOfListSelectedElementsElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
@@ -31,7 +31,7 @@ public class Level2ListOfListSelectedElementsElementsSelectedOperatorImpl<T> ext
 
 
     public Level2ListOfListSelectedElementsElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level2ListOfListSelectedElementsElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalization.NONE));
+        return new Level2ListOfListSelectedElementsElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
@@ -41,7 +41,7 @@ public class Level2ListOfListSelectedElementsElementsSelectedOperatorImpl<T> ext
 
 
     public Level2ListOfListSelectedElementsElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return new Level2ListOfListSelectedElementsElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalization.NONE));
+        return new Level2ListOfListSelectedElementsElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 

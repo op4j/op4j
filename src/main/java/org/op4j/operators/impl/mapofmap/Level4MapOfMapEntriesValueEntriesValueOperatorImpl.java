@@ -32,8 +32,8 @@ import org.op4j.operators.intf.mapofmap.Level3MapOfMapEntriesValueEntriesOperato
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueEntriesValueSelectedOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
-import org.op4j.util.NormalizationUtils;
+import org.op4j.target.Target.Normalisation;
+import org.op4j.util.NormalisationUtils;
 
 
 /**
@@ -60,7 +60,7 @@ public class Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1,K2,V> extends
 
     public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        NormalizationUtils.checkIsMapOfMapOfValueOfValue(type, get());
+        NormalisationUtils.checkIsMapOfMapOfValueOfValue(type, get());
         return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget());
     }
 
@@ -126,19 +126,19 @@ public class Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1,K2,V> extends
 
 
     public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> convert(final IConverter<X, ? super V> converter) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().execute(converter, Normalization.NONE));
+        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
 
     public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> eval(final IEvaluator<X, ? super V> eval) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().execute(eval, Normalization.NONE));
+        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
 
     public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> exec(final IFunction<X, ? super V> function) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().execute(function, Normalization.NONE));
+        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().execute(function, Normalisation.NONE));
     }
 
 

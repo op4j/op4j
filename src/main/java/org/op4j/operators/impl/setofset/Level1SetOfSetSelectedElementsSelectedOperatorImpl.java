@@ -13,7 +13,7 @@ import org.op4j.operators.intf.setofset.Level1SetOfSetSelectedElementsOperator;
 import org.op4j.operators.intf.setofset.Level1SetOfSetSelectedElementsSelectedOperator;
 import org.op4j.operators.intf.setofset.Level2SetOfSetSelectedElementsSelectedElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level1SetOfSetSelectedElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level1SetOfSetSelectedElementsSelectedOperator<T> {
@@ -85,7 +85,7 @@ public class Level1SetOfSetSelectedElementsSelectedOperatorImpl<T> extends Abstr
 
 
     public Level1SetOfSetSelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval) {
-        return new Level1SetOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.SET));
+        return new Level1SetOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.SET));
     }
 
 
@@ -117,7 +117,7 @@ public class Level1SetOfSetSelectedElementsSelectedOperatorImpl<T> extends Abstr
 
 
     public Level1SetOfSetSelectedElementsSelectedOperator<T> exec(final IFunction<? extends Set<? extends T>,? super Set<T>> function) {
-        return new Level1SetOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalization.SET));
+        return new Level1SetOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.SET));
     }
 
 
@@ -138,7 +138,7 @@ public class Level1SetOfSetSelectedElementsSelectedOperatorImpl<T> extends Abstr
 
 
     public Level1SetOfSetSelectedElementsSelectedOperator<T> convert(final IConverter<? extends Set<? extends T>,? super Set<T>> converter) {
-        return new Level1SetOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalization.SET));
+        return new Level1SetOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.SET));
     }
 
 

@@ -24,6 +24,9 @@ import org.javaruntype.type.Type;
 
 
 /**
+ * <p>
+ * This interface contains methods for conversions to array.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -32,6 +35,15 @@ import org.javaruntype.type.Type;
  */
 public interface ConvertibleToArrayOperator<T> {
     
+
+    /**
+     * <p>
+     * Converts the current target into an array of the specified type.
+     * </p>
+     * 
+     * @param type the type of the array elements.
+     * @return an operator holding the converted object as target.
+     */
     public Operator toArrayOf(final Type<T> type);
     
 }

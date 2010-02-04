@@ -33,8 +33,8 @@ import org.op4j.operators.intf.setofmap.Level2SetOfMapElementsEntriesOperator;
 import org.op4j.operators.intf.setofmap.Level3SetOfMapElementsEntriesValueOperator;
 import org.op4j.operators.intf.setofmap.Level3SetOfMapElementsEntriesValueSelectedOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
-import org.op4j.util.NormalizationUtils;
+import org.op4j.target.Target.Normalisation;
+import org.op4j.util.NormalisationUtils;
 
 
 /**
@@ -60,7 +60,7 @@ public class Level3SetOfMapElementsEntriesValueOperatorImpl<K,V> extends Abstrac
 
     public <X> Level3SetOfMapElementsEntriesValueOperator<K, X> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        NormalizationUtils.checkIsSetOfMapOfValue(type, get());
+        NormalisationUtils.checkIsSetOfMapOfValue(type, get());
         return new Level3SetOfMapElementsEntriesValueOperatorImpl<K, X>(getTarget());
     }
 
@@ -125,17 +125,17 @@ public class Level3SetOfMapElementsEntriesValueOperatorImpl<K,V> extends Abstrac
 
 
     public <X> Level3SetOfMapElementsEntriesValueOperator<K, X> convert(final IConverter<X, ? super V> converter) {
-        return new Level3SetOfMapElementsEntriesValueOperatorImpl<K, X>(getTarget().execute(converter, Normalization.NONE));
+        return new Level3SetOfMapElementsEntriesValueOperatorImpl<K, X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
     public <X> Level3SetOfMapElementsEntriesValueOperator<K, X> eval(final IEvaluator<X, ? super V> eval) {
-        return new Level3SetOfMapElementsEntriesValueOperatorImpl<K, X>(getTarget().execute(eval, Normalization.NONE));
+        return new Level3SetOfMapElementsEntriesValueOperatorImpl<K, X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
     public <X> Level3SetOfMapElementsEntriesValueOperator<K, X> exec(final IFunction<X, ? super V> function) {
-        return new Level3SetOfMapElementsEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalization.NONE));
+        return new Level3SetOfMapElementsEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalisation.NONE));
     }
 
 

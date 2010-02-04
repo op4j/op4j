@@ -28,7 +28,7 @@ import java.util.Set;
 
 import org.op4j.functions.IFunction;
 import org.op4j.functions.evaluators.IEvaluator;
-import org.op4j.util.NormalizationUtils;
+import org.op4j.util.NormalisationUtils;
 
 /**
  * 
@@ -47,90 +47,90 @@ public abstract class ExecutionTarget extends Target {
     
     
     @SuppressWarnings("unchecked")
-    public static ExecutionTarget forObject(final Object object, final Normalization targetNormalization) {
+    public static ExecutionTarget forObject(final Object object, final Normalisation targetNormalisation) {
         final ExecutionTargetId id = new ExecutionTargetId(ExecutionTargetId.ROOT, 0);
-        Object normalizedObject = null;
-        switch (targetNormalization) {
+        Object normalisedObject = null;
+        switch (targetNormalisation) {
             case NONE:
-                normalizedObject = object;
+                normalisedObject = object;
                 break;
             case ARRAY:
-                normalizedObject = NormalizationUtils.normalizeArray((Object[])object);
+                normalisedObject = NormalisationUtils.normaliseArray((Object[])object);
                 break;
             case ARRAY_OF_ARRAY:
-                normalizedObject = NormalizationUtils.normalizeArrayOfArray((Object[][])object);
+                normalisedObject = NormalisationUtils.normaliseArrayOfArray((Object[][])object);
                 break;
             case ARRAY_OF_LIST:
-                normalizedObject = NormalizationUtils.normalizeArrayOfList((List<Object>[])object);
+                normalisedObject = NormalisationUtils.normaliseArrayOfList((List<Object>[])object);
                 break;
             case ARRAY_OF_MAP:
-                normalizedObject = NormalizationUtils.normalizeArrayOfMap((Map<Object,Object>[])object);
+                normalisedObject = NormalisationUtils.normaliseArrayOfMap((Map<Object,Object>[])object);
                 break;
             case ARRAY_OF_SET:
-                normalizedObject = NormalizationUtils.normalizeArrayOfSet((Set<Object>[])object);
+                normalisedObject = NormalisationUtils.normaliseArrayOfSet((Set<Object>[])object);
                 break;
             case LIST:
-                normalizedObject = NormalizationUtils.normalizeList((List<Object>)object);
+                normalisedObject = NormalisationUtils.normaliseList((List<Object>)object);
                 break;
             case LIST_OF_ARRAY:
-                normalizedObject = NormalizationUtils.normalizeListOfArray((List<Object[]>)object);
+                normalisedObject = NormalisationUtils.normaliseListOfArray((List<Object[]>)object);
                 break;
             case LIST_OF_LIST:
-                normalizedObject = NormalizationUtils.normalizeListOfList((List<List<Object>>)object);
+                normalisedObject = NormalisationUtils.normaliseListOfList((List<List<Object>>)object);
                 break;
             case LIST_OF_MAP:
-                normalizedObject = NormalizationUtils.normalizeListOfMap((List<Map<Object,Object>>)object);
+                normalisedObject = NormalisationUtils.normaliseListOfMap((List<Map<Object,Object>>)object);
                 break;
             case LIST_OF_SET:
-                normalizedObject = NormalizationUtils.normalizeListOfSet((List<Set<Object>>)object);
+                normalisedObject = NormalisationUtils.normaliseListOfSet((List<Set<Object>>)object);
                 break;
             case MAP:
-                normalizedObject = NormalizationUtils.normalizeMap((Map<Object,Object>)object);
+                normalisedObject = NormalisationUtils.normaliseMap((Map<Object,Object>)object);
                 break;
             case MAPENTRY:
-                normalizedObject = NormalizationUtils.normalizeMapEntry((Map.Entry<Object,Object>)object);
+                normalisedObject = NormalisationUtils.normaliseMapEntry((Map.Entry<Object,Object>)object);
                 break;
             case MAPENTRY_OF_ARRAY:
-                normalizedObject = NormalizationUtils.normalizeMapEntryOfArray((Map.Entry<Object,Object[]>)object);
+                normalisedObject = NormalisationUtils.normaliseMapEntryOfArray((Map.Entry<Object,Object[]>)object);
                 break;
             case MAPENTRY_OF_LIST:
-                normalizedObject = NormalizationUtils.normalizeMapEntryOfList((Map.Entry<Object,List<Object>>)object);
+                normalisedObject = NormalisationUtils.normaliseMapEntryOfList((Map.Entry<Object,List<Object>>)object);
                 break;
             case MAPENTRY_OF_MAP:
-                normalizedObject = NormalizationUtils.normalizeMapEntryOfMap((Map.Entry<Object,Map<Object,Object>>)object);
+                normalisedObject = NormalisationUtils.normaliseMapEntryOfMap((Map.Entry<Object,Map<Object,Object>>)object);
                 break;
             case MAPENTRY_OF_SET:
-                normalizedObject = NormalizationUtils.normalizeMapEntryOfSet((Map.Entry<Object,Set<Object>>)object);
+                normalisedObject = NormalisationUtils.normaliseMapEntryOfSet((Map.Entry<Object,Set<Object>>)object);
                 break;
             case MAP_OF_ARRAY:
-                normalizedObject = NormalizationUtils.normalizeMapOfArray((Map<Object,Object[]>)object);
+                normalisedObject = NormalisationUtils.normaliseMapOfArray((Map<Object,Object[]>)object);
                 break;
             case MAP_OF_LIST:
-                normalizedObject = NormalizationUtils.normalizeMapOfList((Map<Object,List<Object>>)object);
+                normalisedObject = NormalisationUtils.normaliseMapOfList((Map<Object,List<Object>>)object);
                 break;
             case MAP_OF_MAP:
-                normalizedObject = NormalizationUtils.normalizeMapOfMap((Map<Object,Map<Object,Object>>)object);
+                normalisedObject = NormalisationUtils.normaliseMapOfMap((Map<Object,Map<Object,Object>>)object);
                 break;
             case MAP_OF_SET:
-                normalizedObject = NormalizationUtils.normalizeMapOfSet((Map<Object,Set<Object>>)object);
+                normalisedObject = NormalisationUtils.normaliseMapOfSet((Map<Object,Set<Object>>)object);
                 break;
             case SET:
-                normalizedObject = NormalizationUtils.normalizeSet((Set<Object>)object);
+                normalisedObject = NormalisationUtils.normaliseSet((Set<Object>)object);
                 break;
             case SET_OF_ARRAY:
-                normalizedObject = NormalizationUtils.normalizeSetOfArray((Set<Object[]>)object);
+                normalisedObject = NormalisationUtils.normaliseSetOfArray((Set<Object[]>)object);
                 break;
             case SET_OF_LIST:
-                normalizedObject = NormalizationUtils.normalizeSetOfList((Set<List<Object>>)object);
+                normalisedObject = NormalisationUtils.normaliseSetOfList((Set<List<Object>>)object);
                 break;
             case SET_OF_MAP:
-                normalizedObject = NormalizationUtils.normalizeSetOfMap((Set<Map<Object,Object>>)object);
+                normalisedObject = NormalisationUtils.normaliseSetOfMap((Set<Map<Object,Object>>)object);
                 break;
             case SET_OF_SET:
-                normalizedObject = NormalizationUtils.normalizeSetOfSet((Set<Set<Object>>)object);
+                normalisedObject = NormalisationUtils.normaliseSetOfSet((Set<Set<Object>>)object);
                 break;
         }
-        final ExecutionNodeTarget node = ExecutionNodeTarget.forObject(id, normalizedObject);
+        final ExecutionNodeTarget node = ExecutionNodeTarget.forObject(id, normalisedObject);
         
         final HashSet<String> selectedIds = new HashSet<String>();
         selectedIds.add(id.getStringRepresentation());
@@ -211,7 +211,7 @@ public abstract class ExecutionTarget extends Target {
 
 
     @Override
-    abstract ExecutionTarget doExecute(final IFunction<?, ?> executable, final Normalization normalization);
+    abstract ExecutionTarget doExecute(final IFunction<?, ?> executable, final Normalisation normalisation);
 
 
     @Override

@@ -14,7 +14,7 @@ import org.op4j.operators.intf.setofarray.Level1SetOfArraySelectedElementsOperat
 import org.op4j.operators.intf.setofarray.Level1SetOfArraySelectedElementsSelectedOperator;
 import org.op4j.operators.intf.setofarray.Level2SetOfArraySelectedElementsSelectedElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level1SetOfArraySelectedElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level1SetOfArraySelectedElementsSelectedOperator<T> {
@@ -91,7 +91,7 @@ public class Level1SetOfArraySelectedElementsSelectedOperatorImpl<T> extends Abs
 
 
     public Level1SetOfArraySelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends T[],? super T[]> eval) {
-        return new Level1SetOfArraySelectedElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.ARRAY));
+        return new Level1SetOfArraySelectedElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.ARRAY));
     }
 
 
@@ -123,7 +123,7 @@ public class Level1SetOfArraySelectedElementsSelectedOperatorImpl<T> extends Abs
 
 
     public Level1SetOfArraySelectedElementsSelectedOperator<T> exec(final IFunction<? extends T[],? super T[]> function) {
-        return new Level1SetOfArraySelectedElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalization.ARRAY));
+        return new Level1SetOfArraySelectedElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.ARRAY));
     }
 
 
@@ -144,7 +144,7 @@ public class Level1SetOfArraySelectedElementsSelectedOperatorImpl<T> extends Abs
 
 
     public Level1SetOfArraySelectedElementsSelectedOperator<T> convert(final IConverter<? extends T[],? super T[]> converter) {
-        return new Level1SetOfArraySelectedElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalization.ARRAY));
+        return new Level1SetOfArraySelectedElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.ARRAY));
     }
 
 

@@ -11,7 +11,7 @@ import org.op4j.operators.intf.listofmap.Level2ListOfMapElementsEntriesSelectedO
 import org.op4j.operators.intf.listofmap.Level3ListOfMapElementsEntriesSelectedKeyOperator;
 import org.op4j.operators.intf.listofmap.Level3ListOfMapElementsEntriesSelectedKeySelectedOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level3ListOfMapElementsEntriesSelectedKeyOperatorImpl<K,V> extends AbstractOperatorImpl implements Level3ListOfMapElementsEntriesSelectedKeyOperator<K,V> {
@@ -73,7 +73,7 @@ public class Level3ListOfMapElementsEntriesSelectedKeyOperatorImpl<K,V> extends 
 
 
     public Level3ListOfMapElementsEntriesSelectedKeyOperator<K,V> eval(final IEvaluator<? extends K,? super K> eval) {
-        return new Level3ListOfMapElementsEntriesSelectedKeyOperatorImpl<K,V>(getTarget().execute(eval, Normalization.NONE));
+        return new Level3ListOfMapElementsEntriesSelectedKeyOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
@@ -83,7 +83,7 @@ public class Level3ListOfMapElementsEntriesSelectedKeyOperatorImpl<K,V> extends 
 
 
     public Level3ListOfMapElementsEntriesSelectedKeyOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
-        return new Level3ListOfMapElementsEntriesSelectedKeyOperatorImpl<K,V>(getTarget().execute(function, Normalization.NONE));
+        return new Level3ListOfMapElementsEntriesSelectedKeyOperatorImpl<K,V>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
@@ -93,7 +93,7 @@ public class Level3ListOfMapElementsEntriesSelectedKeyOperatorImpl<K,V> extends 
 
 
     public Level3ListOfMapElementsEntriesSelectedKeyOperator<K,V> convert(final IConverter<? extends K,? super K> converter) {
-        return new Level3ListOfMapElementsEntriesSelectedKeyOperatorImpl<K,V>(getTarget().execute(converter, Normalization.NONE));
+        return new Level3ListOfMapElementsEntriesSelectedKeyOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 

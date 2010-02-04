@@ -47,7 +47,7 @@ import org.op4j.operators.intf.arrayoflist.Level2ArrayOfListElementsElementsOper
 import org.op4j.operators.intf.arrayofmap.Level1ArrayOfMapElementsOperator;
 import org.op4j.operators.intf.arrayofset.Level1ArrayOfSetElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
 
 
@@ -264,32 +264,32 @@ public class Level1ArrayOfListElementsOperatorImpl<T> extends AbstractOperatorIm
 
 
     public <X> Level1ArrayOfListElementsOperator<X> convert(final IConverter<? extends List<X>, ? super List<T>> converter) {
-        return new Level1ArrayOfListElementsOperatorImpl<X>(getTarget().execute(converter, Normalization.LIST));
+        return new Level1ArrayOfListElementsOperatorImpl<X>(getTarget().execute(converter, Normalisation.LIST));
     }
 
 
     public <X> Level1ArrayOfListElementsOperator<X> eval(final IEvaluator<? extends List<X>, ? super List<T>> eval) {
-        return new Level1ArrayOfListElementsOperatorImpl<X>(getTarget().execute(eval, Normalization.LIST));
+        return new Level1ArrayOfListElementsOperatorImpl<X>(getTarget().execute(eval, Normalisation.LIST));
     }
 
 
     public <X> Level1ArrayOfListElementsOperator<X> exec(final IFunction<? extends List<X>, ? super List<T>> function) {
-        return new Level1ArrayOfListElementsOperatorImpl<X>(getTarget().execute(function, Normalization.LIST));
+        return new Level1ArrayOfListElementsOperatorImpl<X>(getTarget().execute(function, Normalisation.LIST));
     }
 
 
     public <X> Level1ArrayElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super List<T>> converter) {
-        return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(converter, Normalization.NONE));
+        return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(converter, Normalisation.NONE));
     }
 
 
     public <X> Level1ArrayElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super List<T>> eval) {
-        return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(eval, Normalization.NONE));
+        return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(eval, Normalisation.NONE));
     }
 
 
     public <X> Level1ArrayElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T>> function) {
-        return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(function, Normalization.NONE));
+        return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(function, Normalisation.NONE));
     }
 
 

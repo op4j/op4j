@@ -14,8 +14,8 @@ import org.op4j.operators.intf.mapoflist.Level0MapOfListOperator;
 import org.op4j.operators.intf.mapoflist.Level0MapOfListSelectedOperator;
 import org.op4j.operators.intf.mapoflist.Level1MapOfListSelectedEntriesOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
-import org.op4j.util.NormalizationUtils;
+import org.op4j.target.Target.Normalisation;
+import org.op4j.util.NormalisationUtils;
 
 
 public class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level0MapOfListSelectedOperator<K,V> {
@@ -27,7 +27,7 @@ public class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOperatorIm
 
 
     public Level0MapOfListSelectedOperator<K,V> insertAll(final int position, final Map<K,List<V>> map) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.InsertAll<K,List<V>>(position, NormalizationUtils.normalizeMapOfList(map))));
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.InsertAll<K,List<V>>(position, NormalisationUtils.normaliseMapOfList(map))));
     }
 
 
@@ -42,7 +42,7 @@ public class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOperatorIm
 
 
     public Level0MapOfListSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends List<? extends V>>,? super Map<K,List<V>>> eval) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAP_OF_LIST));
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAP_OF_LIST));
     }
 
 
@@ -67,22 +67,22 @@ public class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOperatorIm
 
 
     public Level0MapOfListSelectedOperator<K,V> put(final K newKey, final List<V> newValue) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.Put<K,List<V>>(newKey, NormalizationUtils.normalizeList(newValue))));
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.Put<K,List<V>>(newKey, NormalisationUtils.normaliseList(newValue))));
     }
 
 
     public Level0MapOfListSelectedOperator<K,V> putAll(final Map<K,List<V>> map) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.PutAll<K,List<V>>(NormalizationUtils.normalizeMapOfList(map))));
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.PutAll<K,List<V>>(NormalisationUtils.normaliseMapOfList(map))));
     }
 
 
     public Level0MapOfListSelectedOperator<K,V> insert(final int position, final K newKey, final List<V> newValue) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.Insert<K,List<V>>(position, newKey, NormalizationUtils.normalizeList(newValue))));
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.Insert<K,List<V>>(position, newKey, NormalisationUtils.normaliseList(newValue))));
     }
 
 
     public Level0MapOfListSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends List<? extends V>>,? super Map<K,List<V>>> function) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.MAP_OF_LIST));
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAP_OF_LIST));
     }
 
 
@@ -103,7 +103,7 @@ public class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOperatorIm
 
 
     public Level0MapOfListSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends List<? extends V>>,? super Map<K,List<V>>> converter) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.MAP_OF_LIST));
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAP_OF_LIST));
     }
 
 

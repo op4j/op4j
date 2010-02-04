@@ -47,7 +47,7 @@ import org.op4j.operators.intf.listoflist.Level2ListOfListElementsElementsOperat
 import org.op4j.operators.intf.listofmap.Level1ListOfMapElementsOperator;
 import org.op4j.operators.intf.listofset.Level1ListOfSetElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
 
 
@@ -265,32 +265,32 @@ public class Level1ListOfListElementsOperatorImpl<T> extends AbstractOperatorImp
 
 
     public <X> Level1ListOfListElementsOperator<X> convert(final IConverter<? extends List<X>, ? super List<T>> converter) {
-        return new Level1ListOfListElementsOperatorImpl<X>(getTarget().execute(converter, Normalization.LIST));
+        return new Level1ListOfListElementsOperatorImpl<X>(getTarget().execute(converter, Normalisation.LIST));
     }
 
 
     public <X> Level1ListOfListElementsOperator<X> eval(final IEvaluator<? extends List<X>, ? super List<T>> eval) {
-        return new Level1ListOfListElementsOperatorImpl<X>(getTarget().execute(eval, Normalization.LIST));
+        return new Level1ListOfListElementsOperatorImpl<X>(getTarget().execute(eval, Normalisation.LIST));
     }
 
 
     public <X> Level1ListOfListElementsOperator<X> exec(final IFunction<? extends List<X>, ? super List<T>> function) {
-        return new Level1ListOfListElementsOperatorImpl<X>(getTarget().execute(function, Normalization.LIST));
+        return new Level1ListOfListElementsOperatorImpl<X>(getTarget().execute(function, Normalisation.LIST));
     }
 
 
     public <X> Level1ListElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super List<T>> converter) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(converter, Normalization.NONE));
+        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
     public <X> Level1ListElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super List<T>> eval) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(eval, Normalization.NONE));
+        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
     public <X> Level1ListElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T>> function) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
+        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(function, Normalisation.NONE));
     }
 
 

@@ -33,7 +33,7 @@ import org.op4j.operators.intf.arrayoflist.Level1ArrayOfListElementsOperator;
 import org.op4j.operators.intf.arrayofmap.Level1ArrayOfMapElementsOperator;
 import org.op4j.operators.intf.arrayofset.Level1ArrayOfSetElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
 
 
@@ -172,19 +172,19 @@ public class Level1ArrayElementsOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public <X> Level1ArrayElementsOperator<X> convert(final IConverter<X, ? super T> converter) {
-        return new Level1ArrayElementsOperatorImpl<X>(converter.getResultType(this.type), getTarget().execute(converter, Normalization.NONE));
+        return new Level1ArrayElementsOperatorImpl<X>(converter.getResultType(this.type), getTarget().execute(converter, Normalisation.NONE));
     }
 
 
 
     public <X> Level1ArrayElementsOperator<X> eval(final IEvaluator<X, ? super T> eval) {
-        return new Level1ArrayElementsOperatorImpl<X>(eval.getResultType(this.type), getTarget().execute(eval, Normalization.NONE));
+        return new Level1ArrayElementsOperatorImpl<X>(eval.getResultType(this.type), getTarget().execute(eval, Normalisation.NONE));
     }
 
 
 
     public <X> Level1ArrayElementsOperator<X> exec(final IFunction<X, ? super T> function) {
-        return new Level1ArrayElementsOperatorImpl<X>(function.getResultType(this.type), getTarget().execute(function, Normalization.NONE));
+        return new Level1ArrayElementsOperatorImpl<X>(function.getResultType(this.type), getTarget().execute(function, Normalisation.NONE));
     }
 
 

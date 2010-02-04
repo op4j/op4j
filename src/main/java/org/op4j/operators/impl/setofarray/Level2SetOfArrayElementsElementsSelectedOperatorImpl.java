@@ -10,7 +10,7 @@ import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.setofarray.Level2SetOfArrayElementsElementsOperator;
 import org.op4j.operators.intf.setofarray.Level2SetOfArrayElementsElementsSelectedOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level2SetOfArrayElementsElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level2SetOfArrayElementsElementsSelectedOperator<T> {
@@ -26,7 +26,7 @@ public class Level2SetOfArrayElementsElementsSelectedOperatorImpl<T> extends Abs
 
 
     public Level2SetOfArrayElementsElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return new Level2SetOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(eval, Normalization.NONE));
+        return new Level2SetOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.NONE));
     }
 
 
@@ -36,7 +36,7 @@ public class Level2SetOfArrayElementsElementsSelectedOperatorImpl<T> extends Abs
 
 
     public Level2SetOfArrayElementsElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level2SetOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(function, Normalization.NONE));
+        return new Level2SetOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.NONE));
     }
 
 
@@ -46,7 +46,7 @@ public class Level2SetOfArrayElementsElementsSelectedOperatorImpl<T> extends Abs
 
 
     public Level2SetOfArrayElementsElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return new Level2SetOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(converter, Normalization.NONE));
+        return new Level2SetOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.NONE));
     }
 
 

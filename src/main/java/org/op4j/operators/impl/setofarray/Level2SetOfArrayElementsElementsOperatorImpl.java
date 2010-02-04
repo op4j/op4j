@@ -31,7 +31,7 @@ import org.op4j.operators.intf.setofarray.Level1SetOfArrayElementsOperator;
 import org.op4j.operators.intf.setofarray.Level2SetOfArrayElementsElementsOperator;
 import org.op4j.operators.intf.setofarray.Level2SetOfArrayElementsElementsSelectedOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
 
 
@@ -124,17 +124,17 @@ public class Level2SetOfArrayElementsElementsOperatorImpl<T> extends AbstractOpe
 
 
     public <X> Level2SetOfArrayElementsElementsOperator<X> exec(final IFunction<X, ? super T> function) {
-        return new Level2SetOfArrayElementsElementsOperatorImpl<X>(function.getResultType(this.type), getTarget().execute(function, Normalization.NONE));
+        return new Level2SetOfArrayElementsElementsOperatorImpl<X>(function.getResultType(this.type), getTarget().execute(function, Normalisation.NONE));
     }
 
 
     public <X> Level2SetOfArrayElementsElementsOperator<X> convert(final IConverter<X, ? super T> converter) {
-        return new Level2SetOfArrayElementsElementsOperatorImpl<X>(converter.getResultType(this.type), getTarget().execute(converter, Normalization.NONE));
+        return new Level2SetOfArrayElementsElementsOperatorImpl<X>(converter.getResultType(this.type), getTarget().execute(converter, Normalisation.NONE));
     }
 
 
     public <X> Level2SetOfArrayElementsElementsOperator<X> eval(final IEvaluator<X, ? super T> eval) {
-        return new Level2SetOfArrayElementsElementsOperatorImpl<X>(eval.getResultType(this.type), getTarget().execute(eval, Normalization.NONE));
+        return new Level2SetOfArrayElementsElementsOperatorImpl<X>(eval.getResultType(this.type), getTarget().execute(eval, Normalisation.NONE));
     }
 
 

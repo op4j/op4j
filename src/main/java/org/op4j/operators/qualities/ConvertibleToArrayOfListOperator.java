@@ -23,6 +23,9 @@ import org.op4j.operators.intf.arrayoflist.Level0ArrayOfListOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for conversions to array of list.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -31,6 +34,14 @@ import org.op4j.operators.intf.arrayoflist.Level0ArrayOfListOperator;
  */
 public interface ConvertibleToArrayOfListOperator<T> {
     
+    
+    /**
+     * <p>
+     * Converts the current target into an array of list.
+     * </p>
+     * 
+     * @return an operator holding the converted object as target.
+     */
     public Level0ArrayOfListOperator<T> toArrayOfList();
 
     

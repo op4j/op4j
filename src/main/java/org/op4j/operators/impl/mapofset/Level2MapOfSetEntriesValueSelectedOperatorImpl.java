@@ -14,7 +14,7 @@ import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueSelectedOperator;
 import org.op4j.operators.intf.mapofset.Level3MapOfSetEntriesValueSelectedElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level2MapOfSetEntriesValueSelectedOperator<K,V> {
@@ -86,7 +86,7 @@ public class Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V> extends Abstrac
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> eval(final IEvaluator<? extends Set<? extends V>,? super Set<V>> eval) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.SET));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.SET));
     }
 
 
@@ -118,7 +118,7 @@ public class Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V> extends Abstrac
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> exec(final IFunction<? extends Set<? extends V>,? super Set<V>> function) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.SET));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.SET));
     }
 
 
@@ -139,7 +139,7 @@ public class Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V> extends Abstrac
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> convert(final IConverter<? extends Set<? extends V>,? super Set<V>> converter) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.SET));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.SET));
     }
 
 

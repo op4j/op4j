@@ -14,7 +14,7 @@ import org.op4j.operators.intf.mapofset.Level2MapOfSetSelectedEntriesValueOperat
 import org.op4j.operators.intf.mapofset.Level2MapOfSetSelectedEntriesValueSelectedOperator;
 import org.op4j.operators.intf.mapofset.Level3MapOfSetSelectedEntriesValueSelectedElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> {
@@ -86,7 +86,7 @@ public class Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V> extends
 
 
     public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> eval(final IEvaluator<? extends Set<? extends V>,? super Set<V>> eval) {
-        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.SET));
+        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.SET));
     }
 
 
@@ -118,7 +118,7 @@ public class Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V> extends
 
 
     public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> exec(final IFunction<? extends Set<? extends V>,? super Set<V>> function) {
-        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.SET));
+        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.SET));
     }
 
 
@@ -139,7 +139,7 @@ public class Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V> extends
 
 
     public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> convert(final IConverter<? extends Set<? extends V>,? super Set<V>> converter) {
-        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.SET));
+        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.SET));
     }
 
 

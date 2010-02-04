@@ -14,7 +14,7 @@ import org.op4j.operators.intf.setofmap.Level1SetOfMapElementsOperator;
 import org.op4j.operators.intf.setofmap.Level1SetOfMapElementsSelectedOperator;
 import org.op4j.operators.intf.setofmap.Level2SetOfMapElementsSelectedEntriesOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level1SetOfMapElementsSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level1SetOfMapElementsSelectedOperator<K,V> {
@@ -41,7 +41,7 @@ public class Level1SetOfMapElementsSelectedOperatorImpl<K,V> extends AbstractOpe
 
 
     public Level1SetOfMapElementsSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V>,? super Map<K,V>> eval) {
-        return new Level1SetOfMapElementsSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAP));
+        return new Level1SetOfMapElementsSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAP));
     }
 
 
@@ -81,7 +81,7 @@ public class Level1SetOfMapElementsSelectedOperatorImpl<K,V> extends AbstractOpe
 
 
     public Level1SetOfMapElementsSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V>,? super Map<K,V>> function) {
-        return new Level1SetOfMapElementsSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.MAP));
+        return new Level1SetOfMapElementsSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAP));
     }
 
 
@@ -102,7 +102,7 @@ public class Level1SetOfMapElementsSelectedOperatorImpl<K,V> extends AbstractOpe
 
 
     public Level1SetOfMapElementsSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends V>,? super Map<K,V>> converter) {
-        return new Level1SetOfMapElementsSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.MAP));
+        return new Level1SetOfMapElementsSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAP));
     }
 
 

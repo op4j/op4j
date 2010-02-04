@@ -25,6 +25,11 @@ import org.op4j.operators.intf.mapofmap.Level0MapOfMapOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for conversions to map of map from operators
+ * currently holding a "map of *" target and already being iterated by their first-level
+ * map values.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -33,7 +38,32 @@ import org.op4j.operators.intf.mapofmap.Level0MapOfMapOperator;
  */
 public interface ConvertibleToMapOfMapOperator<K,V> {
     
+    
+    /**
+     * <p>
+     * Converts the target object to a map of map by evaluating the values of an
+     * existing map to obtain their corresponding second-level map keys.
+     * </p>
+     * 
+     * @param <K2> the type of the generated second-level map keys 
+     * @param keyEval the evaluator to obtain the second-level map keys
+     * @return an operator holding the converted object as target.
+     */
     public <K2> Level0MapOfMapOperator<K,K2,V> toMapOfMap(final IEvaluator<K2,? super V> keyEval);
+    
+    
+    /**
+     * <p>
+     * Converts the target object to a map of map by inputting the values of an
+     * existing map into a map builder that will create keys and values for the
+     * second-level maps.
+     * </p>
+     * 
+     * @param <K2> the type of the generated second-level map keys
+     * @param <V2> the type of the generated second-level map values
+     * @param mapBuild the map builder which will build keys and values for the second-level maps
+     * @return an operator holding the converted object as target.
+     */
     public <K2,V2> Level0MapOfMapOperator<K,K2,V2> toMapOfMap(final IMapBuilder<K2,V2,? super V> mapBuild);
     
 }

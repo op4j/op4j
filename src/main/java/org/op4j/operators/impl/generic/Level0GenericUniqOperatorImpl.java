@@ -81,8 +81,8 @@ import org.op4j.operators.intf.setoflist.Level0SetOfListOperator;
 import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
-import org.op4j.util.NormalizationUtils;
+import org.op4j.target.Target.Normalisation;
+import org.op4j.util.NormalisationUtils;
 
 
 
@@ -184,14 +184,14 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
 
     public <X> Level0ArrayOperator<X> asArrayOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalizationUtils.checkIsArray(type, get());
+    	NormalisationUtils.checkIsArray(type, get());
         return new Level0ArrayOperatorImpl<X>(getTarget());
     }
 
 
     public <X> Level0ListOperator<X> asListOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalizationUtils.checkIsList(type, get());
+    	NormalisationUtils.checkIsList(type, get());
         return new Level0ListOperatorImpl<X>(getTarget());
     }
 
@@ -199,28 +199,28 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     public <K,V> Level0MapOperator<K,V> asMapOf(final Type<K> keyType, final Type<V> valueType) {
     	Validate.notNull(keyType, "A type representing the keys must be specified");
     	Validate.notNull(valueType, "A type representing the values must be specified");
-    	NormalizationUtils.checkIsMap(keyType, valueType, get());
+    	NormalisationUtils.checkIsMap(keyType, valueType, get());
         return new Level0MapOperatorImpl<K,V>(getTarget());
     }
 
 
     public <X> Level0SetOperator<X> asSetOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalizationUtils.checkIsSet(type, get());
+    	NormalisationUtils.checkIsSet(type, get());
         return new Level0SetOperatorImpl<X>(getTarget());
     }
 
 
     public <X> Level0ArrayOfArrayOperator<X> asArrayOfArrayOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalizationUtils.checkIsArrayOfArray(type, get());
+    	NormalisationUtils.checkIsArrayOfArray(type, get());
         return new Level0ArrayOfArrayOperatorImpl<X>(getTarget());
     }
 
 
     public <X> Level0ArrayOfListOperator<X> asArrayOfListOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalizationUtils.checkIsArrayOfList(type, get());
+    	NormalisationUtils.checkIsArrayOfList(type, get());
         return new Level0ArrayOfListOperatorImpl<X>(getTarget());
     }
 
@@ -228,28 +228,28 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     public <K, V> Level0ArrayOfMapOperator<K, V> asArrayOfMapOf(final Type<K> keyType, final Type<V> valueType) {
     	Validate.notNull(keyType, "A type representing the keys must be specified");
     	Validate.notNull(valueType, "A type representing the values must be specified");
-    	NormalizationUtils.checkIsArrayOfMap(keyType, valueType, get());
+    	NormalisationUtils.checkIsArrayOfMap(keyType, valueType, get());
         return new Level0ArrayOfMapOperatorImpl<K,V>(getTarget());
     }
 
 
     public <X> Level0ArrayOfSetOperator<X> asArrayOfSetOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalizationUtils.checkIsArrayOfSet(type, get());
+    	NormalisationUtils.checkIsArrayOfSet(type, get());
         return new Level0ArrayOfSetOperatorImpl<X>(getTarget());
     }
 
 
     public <X> Level0ListOfArrayOperator<X> asListOfArrayOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalizationUtils.checkIsListOfArray(type, get());
+    	NormalisationUtils.checkIsListOfArray(type, get());
         return new Level0ListOfArrayOperatorImpl<X>(getTarget());
     }
 
 
     public <X> Level0ListOfListOperator<X> asListOfListOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalizationUtils.checkIsListOfList(type, get());
+    	NormalisationUtils.checkIsListOfList(type, get());
         return new Level0ListOfListOperatorImpl<X>(getTarget());
     }
 
@@ -257,14 +257,14 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     public <K, V> Level0ListOfMapOperator<K, V> asListOfMapOf(final Type<K> keyType, final Type<V> valueType) {
     	Validate.notNull(keyType, "A type representing the keys must be specified");
     	Validate.notNull(valueType, "A type representing the values must be specified");
-    	NormalizationUtils.checkIsListOfMap(keyType, valueType, get());
+    	NormalisationUtils.checkIsListOfMap(keyType, valueType, get());
         return new Level0ListOfMapOperatorImpl<K,V>(getTarget());
     }
 
 
     public <X> Level0ListOfSetOperator<X> asListOfSetOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-        NormalizationUtils.checkIsListOfSet(type, get());
+        NormalisationUtils.checkIsListOfSet(type, get());
         return new Level0ListOfSetOperatorImpl<X>(getTarget());
     }
 
@@ -272,7 +272,7 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     public <K, V> Level0MapOfArrayOperator<K, V> asMapOfArrayOf(final Type<K> keyType, final Type<V> valueType) {
     	Validate.notNull(keyType, "A type representing the keys must be specified");
     	Validate.notNull(valueType, "A type representing the values must be specified");
-    	NormalizationUtils.checkIsMapOfArray(keyType, valueType, get());
+    	NormalisationUtils.checkIsMapOfArray(keyType, valueType, get());
         return new Level0MapOfArrayOperatorImpl<K,V>(getTarget());
     }
 
@@ -280,7 +280,7 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     public <K, V> Level0MapOfListOperator<K, V> asMapOfListOf(final Type<K> keyType, final Type<V> valueType) {
     	Validate.notNull(keyType, "A type representing the keys must be specified");
     	Validate.notNull(valueType, "A type representing the values must be specified");
-    	NormalizationUtils.checkIsMapOfList(keyType, valueType, get());
+    	NormalisationUtils.checkIsMapOfList(keyType, valueType, get());
         return new Level0MapOfListOperatorImpl<K,V>(getTarget());
     }
 
@@ -289,7 +289,7 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     	Validate.notNull(key1Type, "A type representing the keys of the first-level map must be specified");
     	Validate.notNull(key2Type, "A type representing the keys of the second-level maps must be specified");
     	Validate.notNull(valueType, "A type representing the values of the second-level maps must be specified");
-    	NormalizationUtils.checkIsMapOfMap(key1Type, key2Type, valueType, get());
+    	NormalisationUtils.checkIsMapOfMap(key1Type, key2Type, valueType, get());
         return new Level0MapOfMapOperatorImpl<K1,K2,V>(getTarget());
     }
 
@@ -297,21 +297,21 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     public <K, V> Level0MapOfSetOperator<K, V> asMapOfSetOf(final Type<K> keyType, final Type<V> valueType) {
     	Validate.notNull(keyType, "A type representing the keys must be specified");
     	Validate.notNull(valueType, "A type representing the values must be specified");
-    	NormalizationUtils.checkIsMapOfSet(keyType, valueType, get());
+    	NormalisationUtils.checkIsMapOfSet(keyType, valueType, get());
         return new Level0MapOfSetOperatorImpl<K,V>(getTarget());
     }
 
 
     public <X> Level0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalizationUtils.checkIsSetOfArray(type,get());
+    	NormalisationUtils.checkIsSetOfArray(type,get());
         return new Level0SetOfArrayOperatorImpl<X>(getTarget());
     }
 
 
     public <X> Level0SetOfListOperator<X> asSetOfListOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalizationUtils.checkIsSetOfList(type,get());
+    	NormalisationUtils.checkIsSetOfList(type,get());
         return new Level0SetOfListOperatorImpl<X>(getTarget());
     }
 
@@ -319,21 +319,21 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     public <K, V> Level0SetOfMapOperator<K, V> asSetOfMapOf(final Type<K> keyType, final Type<V> valueType) {
     	Validate.notNull(keyType, "A type representing the keys must be specified");
     	Validate.notNull(valueType, "A type representing the values must be specified");
-    	NormalizationUtils.checkIsSetOfMap(keyType, valueType, get());
+    	NormalisationUtils.checkIsSetOfMap(keyType, valueType, get());
         return new Level0SetOfMapOperatorImpl<K,V>(getTarget());
     }
 
 
     public <X> Level0SetOfSetOperator<X> asSetOfSetOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalizationUtils.checkIsSetOfSet(type,get());
+    	NormalisationUtils.checkIsSetOfSet(type,get());
         return new Level0SetOfSetOperatorImpl<X>(getTarget());
     }
 
 
     public <X> Level0GenericUniqOperator<X> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the target object must be specified");
-        NormalizationUtils.checkIs(type, get());
+        NormalisationUtils.checkIs(type, get());
         return new Level0GenericUniqOperatorImpl<X>(getTarget());
     }
 
@@ -507,17 +507,17 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super T> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalization.NONE));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
     public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super T> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalization.NONE));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super T> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalisation.NONE));
     }
 
 

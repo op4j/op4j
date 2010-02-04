@@ -13,7 +13,7 @@ import org.op4j.operators.intf.array.Level0ArrayOperator;
 import org.op4j.operators.intf.array.Level0ArraySelectedOperator;
 import org.op4j.operators.intf.array.Level1ArraySelectedElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level0ArraySelectedOperator<T> {
@@ -90,7 +90,7 @@ public class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorImpl imp
 
 
     public Level0ArraySelectedOperator<T> eval(final IEvaluator<? extends T[],? super T[]> eval) {
-        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.ARRAY));
+        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.ARRAY));
     }
 
 
@@ -122,7 +122,7 @@ public class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorImpl imp
 
 
     public Level0ArraySelectedOperator<T> exec(final IFunction<? extends T[],? super T[]> function) {
-        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(function, Normalization.ARRAY));
+        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.ARRAY));
     }
 
 
@@ -143,7 +143,7 @@ public class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorImpl imp
 
 
     public Level0ArraySelectedOperator<T> convert(final IConverter<? extends T[],? super T[]> converter) {
-        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(converter, Normalization.ARRAY));
+        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.ARRAY));
     }
 
 

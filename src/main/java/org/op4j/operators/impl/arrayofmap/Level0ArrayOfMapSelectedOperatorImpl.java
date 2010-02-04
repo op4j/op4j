@@ -13,8 +13,8 @@ import org.op4j.operators.intf.arrayofmap.Level0ArrayOfMapOperator;
 import org.op4j.operators.intf.arrayofmap.Level0ArrayOfMapSelectedOperator;
 import org.op4j.operators.intf.arrayofmap.Level1ArrayOfMapSelectedElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
-import org.op4j.util.NormalizationUtils;
+import org.op4j.target.Target.Normalisation;
+import org.op4j.util.NormalisationUtils;
 
 
 public class Level0ArrayOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level0ArrayOfMapSelectedOperator<K,V> {
@@ -91,7 +91,7 @@ public class Level0ArrayOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V>[],? super Map<K,V>[]> eval) {
-        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.ARRAY_OF_MAP));
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.ARRAY_OF_MAP));
     }
 
 
@@ -102,28 +102,28 @@ public class Level0ArrayOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorI
 
     @SuppressWarnings("unchecked")
     public Level0ArrayOfMapSelectedOperator<K,V> add(final Map<K,V> newElement) {
-        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.Add<Map<K,V>>(NormalizationUtils.normalizeMap(newElement))));
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.Add<Map<K,V>>(NormalisationUtils.normaliseMap(newElement))));
     }
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> addAll(final Map<K,V>... newElements) {
-        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.Add<Map<K,V>>(NormalizationUtils.normalizeMaps(newElements))));
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.Add<Map<K,V>>(NormalisationUtils.normaliseMaps(newElements))));
     }
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> addAll(final Collection<Map<K,V>> collection) {
-        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.AddAll<Map<K,V>>(NormalizationUtils.normalizeMaps(collection))));
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.AddAll<Map<K,V>>(NormalisationUtils.normaliseMaps(collection))));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0ArrayOfMapSelectedOperator<K,V> insert(final int position, final Map<K,V> newElement) {
-        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.Insert<Map<K,V>>(position, NormalizationUtils.normalizeMap(newElement))));
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.Insert<Map<K,V>>(position, NormalisationUtils.normaliseMap(newElement))));
     }
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V>[],? super Map<K,V>[]> function) {
-        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.ARRAY_OF_MAP));
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.ARRAY_OF_MAP));
     }
 
 
@@ -144,7 +144,7 @@ public class Level0ArrayOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends V>[],? super Map<K,V>[]> converter) {
-        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.ARRAY_OF_MAP));
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.ARRAY_OF_MAP));
     }
 
 

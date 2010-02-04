@@ -27,6 +27,9 @@ import org.op4j.functions.evaluators.IEvaluator;
 
 
 /**
+ * <p>
+ * This interface contains methods for executing functions.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -35,10 +38,56 @@ import org.op4j.functions.evaluators.IEvaluator;
  */
 public interface ExecutableOperator<T> {
 
+    
+    /**
+     * <p>
+     * Executes the specified function on the operator's target objects, creating a new operator
+     * containing the results of all the executions, in the same order.
+     * </p>
+     * <p>
+     * This function must be able to take as input an object of type T (the current operator's
+     * target type) and will return an object of type X, which will be from then on the new
+     * operator's target type.
+     * </p>
+     * 
+     * @param <X> the type of the results, and new type for the operator
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
+     */
     public <X> ExecutableOperator<X> exec(final IFunction<X, ? super T> function);
+
     
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * implementing the {@link IEvaluator} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param <X> the type of the results, and new type for the operator
+     * @param eval the evaluator to be executed
+     * @return an operator on the results of evaluator execution
+     */
     public <X> ExecutableOperator<X> eval(final IEvaluator<X,? super T> eval);
+
     
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * implementing the {@link IConverter} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param <X> the type of the results, and new type for the operator
+     * @param converter the converter to be executed
+     * @return an operator on the results of converter execution
+     */
     public <X> ExecutableOperator<X> convert(final IConverter<X,? super T> converter);
     
 }

@@ -35,7 +35,7 @@ import org.op4j.operators.intf.mapofarray.Level1MapOfArrayEntriesSelectedOperato
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesKeyOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesValueOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
 
 
@@ -108,32 +108,32 @@ public class Level1MapOfArrayEntriesOperatorImpl<K,V> extends AbstractOperatorIm
 
 
     public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> convert(final IConverter<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> converter) {
-        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(getTarget().execute(converter, Normalization.MAPENTRY_OF_ARRAY));
+        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(getTarget().execute(converter, Normalisation.MAPENTRY_OF_ARRAY));
     }
 
 
     public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> eval(final IEvaluator<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> eval) {
-        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(getTarget().execute(eval, Normalization.MAPENTRY_OF_ARRAY));
+        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(getTarget().execute(eval, Normalisation.MAPENTRY_OF_ARRAY));
     }
 
 
     public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> exec(final IFunction<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> function) {
-        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(getTarget().execute(function, Normalization.MAPENTRY_OF_ARRAY));
+        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(getTarget().execute(function, Normalisation.MAPENTRY_OF_ARRAY));
     }
 
 
     public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super Entry<K, V[]>> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalization.NONE));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
     public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super Entry<K, V[]>> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalization.NONE));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Entry<K, V[]>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalisation.NONE));
     }
 
 

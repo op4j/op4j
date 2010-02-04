@@ -54,8 +54,8 @@ import org.op4j.operators.intf.setoflist.Level0SetOfListOperator;
 import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
-import org.op4j.util.NormalizationUtils;
+import org.op4j.target.Target.Normalisation;
+import org.op4j.util.NormalisationUtils;
 
 
 /**
@@ -76,26 +76,26 @@ public class Level0ListOfArrayOperatorImpl<T> extends AbstractOperatorImpl
 
     @SuppressWarnings("unchecked")
     public Level0ListOfArrayOperator<T> add(final T[] newElement) {
-        return new Level0ListOfArrayOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T[]>(NormalizationUtils.normalizeArray(newElement))));
+        return new Level0ListOfArrayOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T[]>(NormalisationUtils.normaliseArray(newElement))));
     }
 
     public Level0ListOfArrayOperator<T> addAll(final T[]... newElements) {
-        return new Level0ListOfArrayOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T[]>(NormalizationUtils.normalizeArrays(newElements))));
+        return new Level0ListOfArrayOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T[]>(NormalisationUtils.normaliseArrays(newElements))));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0ListOfArrayOperator<T> insert(final int position, final T[] newElement) {
-        return new Level0ListOfArrayOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<T[]>(position, NormalizationUtils.normalizeArray(newElement))));
+        return new Level0ListOfArrayOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<T[]>(position, NormalisationUtils.normaliseArray(newElement))));
     }
 
     public Level0ListOfArrayOperator<T> insertAll(final int position, final T[]... newElements) {
-        return new Level0ListOfArrayOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<T[]>(position, NormalizationUtils.normalizeArrays(newElements))));
+        return new Level0ListOfArrayOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<T[]>(position, NormalisationUtils.normaliseArrays(newElements))));
     }
 
 
     public Level0ListOfArrayOperator<T> addAll(final Collection<T[]> collection) {
-        return new Level0ListOfArrayOperatorImpl<T>(getTarget().execute(new ListFuncs.AddAll<T[]>(NormalizationUtils.normalizeArrays(collection))));
+        return new Level0ListOfArrayOperatorImpl<T>(getTarget().execute(new ListFuncs.AddAll<T[]>(NormalisationUtils.normaliseArrays(collection))));
     }
 
 
@@ -342,32 +342,32 @@ public class Level0ListOfArrayOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public <X> Level0ListOfArrayOperator<X> convert(final IConverter<? extends List<X[]>, ? super List<T[]>> converter) {
-        return new Level0ListOfArrayOperatorImpl<X>(getTarget().execute(converter, Normalization.LIST_OF_ARRAY));
+        return new Level0ListOfArrayOperatorImpl<X>(getTarget().execute(converter, Normalisation.LIST_OF_ARRAY));
     }
 
 
     public <X> Level0ListOfArrayOperator<X> eval(final IEvaluator<? extends List<X[]>, ? super List<T[]>> eval) {
-        return new Level0ListOfArrayOperatorImpl<X>(getTarget().execute(eval, Normalization.LIST_OF_ARRAY));
+        return new Level0ListOfArrayOperatorImpl<X>(getTarget().execute(eval, Normalisation.LIST_OF_ARRAY));
     }
 
 
     public <X> Level0ListOfArrayOperator<X> exec(final IFunction<? extends List<X[]>, ? super List<T[]>> function) {
-        return new Level0ListOfArrayOperatorImpl<X>(getTarget().execute(function, Normalization.LIST_OF_ARRAY));
+        return new Level0ListOfArrayOperatorImpl<X>(getTarget().execute(function, Normalisation.LIST_OF_ARRAY));
     }
 
 
     public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super List<T[]>> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalization.NONE));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
     public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super List<T[]>> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalization.NONE));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T[]>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalisation.NONE));
     }
 
 

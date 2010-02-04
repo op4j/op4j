@@ -13,7 +13,7 @@ import org.op4j.operators.intf.listoflist.Level1ListOfListElementsOperator;
 import org.op4j.operators.intf.listoflist.Level1ListOfListElementsSelectedOperator;
 import org.op4j.operators.intf.listoflist.Level2ListOfListElementsSelectedElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level1ListOfListElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level1ListOfListElementsSelectedOperator<T> {
@@ -90,7 +90,7 @@ public class Level1ListOfListElementsSelectedOperatorImpl<T> extends AbstractOpe
 
 
     public Level1ListOfListElementsSelectedOperator<T> eval(final IEvaluator<? extends List<? extends T>,? super List<T>> eval) {
-        return new Level1ListOfListElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.LIST));
+        return new Level1ListOfListElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.LIST));
     }
 
 
@@ -122,7 +122,7 @@ public class Level1ListOfListElementsSelectedOperatorImpl<T> extends AbstractOpe
 
 
     public Level1ListOfListElementsSelectedOperator<T> exec(final IFunction<? extends List<? extends T>,? super List<T>> function) {
-        return new Level1ListOfListElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalization.LIST));
+        return new Level1ListOfListElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.LIST));
     }
 
 
@@ -143,7 +143,7 @@ public class Level1ListOfListElementsSelectedOperatorImpl<T> extends AbstractOpe
 
 
     public Level1ListOfListElementsSelectedOperator<T> convert(final IConverter<? extends List<? extends T>,? super List<T>> converter) {
-        return new Level1ListOfListElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalization.LIST));
+        return new Level1ListOfListElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.LIST));
     }
 
 

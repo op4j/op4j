@@ -482,12 +482,12 @@ final class ExecutionStructureTarget extends ExecutionTarget {
     
 	
     @Override
-    ExecutionTarget doExecute(final IFunction<?,?> executable, final Normalization normalization) {
+    ExecutionTarget doExecute(final IFunction<?,?> executable, final Normalisation normalisation) {
 
         final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
         for (final ExecutionTarget element : this.elements) {
             if (this.selectedElementIds.contains(element.getId().getStringRepresentation())) {
-                newElements.add(element.doExecute(executable, normalization));
+                newElements.add(element.doExecute(executable, normalisation));
             } else {
                 newElements.add(element);
             }

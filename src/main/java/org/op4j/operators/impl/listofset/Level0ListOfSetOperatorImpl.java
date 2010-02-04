@@ -55,8 +55,8 @@ import org.op4j.operators.intf.setoflist.Level0SetOfListOperator;
 import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
-import org.op4j.util.NormalizationUtils;
+import org.op4j.target.Target.Normalisation;
+import org.op4j.util.NormalisationUtils;
 
 
 /**
@@ -77,26 +77,26 @@ public class Level0ListOfSetOperatorImpl<T> extends AbstractOperatorImpl
 
     @SuppressWarnings("unchecked")
     public Level0ListOfSetOperator<T> add(final Set<T> newElement) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<Set<T>>(NormalizationUtils.normalizeSet(newElement))));
+        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<Set<T>>(NormalisationUtils.normaliseSet(newElement))));
     }
 
     public Level0ListOfSetOperator<T> addAll(final Set<T>... newElements) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<Set<T>>(NormalizationUtils.normalizeSets(newElements))));
+        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<Set<T>>(NormalisationUtils.normaliseSets(newElements))));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0ListOfSetOperator<T> insert(final int position, final Set<T> newElement) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<Set<T>>(position, NormalizationUtils.normalizeSet(newElement))));
+        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<Set<T>>(position, NormalisationUtils.normaliseSet(newElement))));
     }
 
     public Level0ListOfSetOperator<T> insertAll(final int position, final Set<T>... newElements) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<Set<T>>(position, NormalizationUtils.normalizeSets(newElements))));
+        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<Set<T>>(position, NormalisationUtils.normaliseSets(newElements))));
     }
 
 
     public Level0ListOfSetOperator<T> addAll(final Collection<Set<T>> collection) {
-        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.AddAll<Set<T>>(NormalizationUtils.normalizeSets(collection))));
+        return new Level0ListOfSetOperatorImpl<T>(getTarget().execute(new ListFuncs.AddAll<Set<T>>(NormalisationUtils.normaliseSets(collection))));
     }
 
 
@@ -338,32 +338,32 @@ public class Level0ListOfSetOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public <X> Level0ListOfSetOperator<X> convert(final IConverter<? extends List<? extends Set<X>>, ? super List<Set<T>>> converter) {
-        return new Level0ListOfSetOperatorImpl<X>(getTarget().execute(converter, Normalization.LIST_OF_SET));
+        return new Level0ListOfSetOperatorImpl<X>(getTarget().execute(converter, Normalisation.LIST_OF_SET));
     }
 
 
     public <X> Level0ListOfSetOperator<X> eval(final IEvaluator<? extends List<? extends Set<X>>, ? super List<Set<T>>> eval) {
-        return new Level0ListOfSetOperatorImpl<X>(getTarget().execute(eval, Normalization.LIST_OF_SET));
+        return new Level0ListOfSetOperatorImpl<X>(getTarget().execute(eval, Normalisation.LIST_OF_SET));
     }
 
 
     public <X> Level0ListOfSetOperator<X> exec(final IFunction<? extends List<? extends Set<X>>, ? super List<Set<T>>> function) {
-        return new Level0ListOfSetOperatorImpl<X>(getTarget().execute(function, Normalization.LIST_OF_SET));
+        return new Level0ListOfSetOperatorImpl<X>(getTarget().execute(function, Normalisation.LIST_OF_SET));
     }
 
 
     public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super List<Set<T>>> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalization.NONE));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
     public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super List<Set<T>>> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalization.NONE));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<Set<T>>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalization.NONE));
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalisation.NONE));
     }
 
 

@@ -24,6 +24,9 @@ import org.op4j.operators.intf.setofarray.Level0SetOfArrayOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for conversions to set of array.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -32,6 +35,15 @@ import org.op4j.operators.intf.setofarray.Level0SetOfArrayOperator;
  */
 public interface ConvertibleToSetOfArrayOperator<T> {
     
+
+    /**
+     * <p>
+     * Converts the current target into a set of array of the specified type.
+     * </p>
+     * 
+     * @param type the type of the second-level array elements.
+     * @return an operator holding the converted object as target.
+     */
     public Level0SetOfArrayOperator<T> toSetOfArrayOf(final Type<T> type);
     
 

@@ -11,7 +11,7 @@ import org.op4j.operators.intf.mapofarray.Level2MapOfArraySelectedEntriesSelecte
 import org.op4j.operators.intf.mapofarray.Level3MapOfArraySelectedEntriesSelectedValueElementsOperator;
 import org.op4j.operators.intf.mapofarray.Level3MapOfArraySelectedEntriesSelectedValueElementsSelectedOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
 
 
@@ -78,7 +78,7 @@ public class Level3MapOfArraySelectedEntriesSelectedValueElementsOperatorImpl<K,
 
 
     public Level3MapOfArraySelectedEntriesSelectedValueElementsOperator<K,V> eval(final IEvaluator<? extends V,? super V> eval) {
-        return new Level3MapOfArraySelectedEntriesSelectedValueElementsOperatorImpl<K,V>(this.type, getTarget().execute(eval, Normalization.NONE));
+        return new Level3MapOfArraySelectedEntriesSelectedValueElementsOperatorImpl<K,V>(this.type, getTarget().execute(eval, Normalisation.NONE));
     }
 
 
@@ -88,7 +88,7 @@ public class Level3MapOfArraySelectedEntriesSelectedValueElementsOperatorImpl<K,
 
 
     public Level3MapOfArraySelectedEntriesSelectedValueElementsOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
-        return new Level3MapOfArraySelectedEntriesSelectedValueElementsOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalization.NONE));
+        return new Level3MapOfArraySelectedEntriesSelectedValueElementsOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalisation.NONE));
     }
 
 
@@ -98,7 +98,7 @@ public class Level3MapOfArraySelectedEntriesSelectedValueElementsOperatorImpl<K,
 
 
     public Level3MapOfArraySelectedEntriesSelectedValueElementsOperator<K,V> convert(final IConverter<? extends V,? super V> converter) {
-        return new Level3MapOfArraySelectedEntriesSelectedValueElementsOperatorImpl<K,V>(this.type, getTarget().execute(converter, Normalization.NONE));
+        return new Level3MapOfArraySelectedEntriesSelectedValueElementsOperatorImpl<K,V>(this.type, getTarget().execute(converter, Normalisation.NONE));
     }
 
 

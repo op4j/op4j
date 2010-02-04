@@ -14,7 +14,7 @@ import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesSelectedValueOp
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesSelectedValueSelectedOperator;
 import org.op4j.operators.intf.mapofarray.Level3MapOfArrayEntriesSelectedValueSelectedElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> {
@@ -91,7 +91,7 @@ public class Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V> exten
 
 
     public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> eval(final IEvaluator<? extends V[],? super V[]> eval) {
-        return new Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.ARRAY));
+        return new Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.ARRAY));
     }
 
 
@@ -123,7 +123,7 @@ public class Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V> exten
 
 
     public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> exec(final IFunction<? extends V[],? super V[]> function) {
-        return new Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.ARRAY));
+        return new Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.ARRAY));
     }
 
 
@@ -144,7 +144,7 @@ public class Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V> exten
 
 
     public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> convert(final IConverter<? extends V[],? super V[]> converter) {
-        return new Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.ARRAY));
+        return new Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.ARRAY));
     }
 
 

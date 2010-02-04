@@ -25,6 +25,9 @@ import org.op4j.operators.intf.arrayofmap.Level0ArrayOfMapOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for conversions to array of map.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -34,8 +37,43 @@ import org.op4j.operators.intf.arrayofmap.Level0ArrayOfMapOperator;
 public interface ConvertibleToArrayOfMapOperator<T> {
     
     
+    /**
+     * <p>
+     * Converts the current target into an array of map by using the second-level
+     * structure even elements as keys and odd elements as values (starting with 0).
+     * </p>
+     * 
+     * @return an operator holding the converted object as target.
+     */
     public Level0ArrayOfMapOperator<T,T> toArrayOfMap();
+
+    
+    /**
+     * <p>
+     * Converts the current target into an array of map by using the second-level
+     * structure elements as values, and the results of evaluating these values
+     * with the provided keyEval as their corresponding keys.
+     * </p>
+     * 
+     * @param <K> the type of the new map keys
+     * @param keyEval the evaluator to be used for obtaining keys
+     * @return an operator holding the converted object as target.
+     */
     public <K> Level0ArrayOfMapOperator<K,T> toArrayOfMap(final IEvaluator<K,? super T> keyEval);
+    
+    
+    /**
+     * <p>
+     * Converts the current target into an array of map by using the second-level
+     * structure elements as input for a map builder which will create corresponding
+     * keys and values for each of them.
+     * </p>
+     * 
+     * @param <K> the type of the new keys being created
+     * @param <V> the type of the new values being created
+     * @param mapBuild the map builder
+     * @return an operator holding the converted object as target
+     */
     public <K,V> Level0ArrayOfMapOperator<K,V> toArrayOfMap(final IMapBuilder<K,V,? super T> mapBuild);
 
 }

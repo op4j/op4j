@@ -13,7 +13,7 @@ import org.op4j.operators.intf.arrayofmap.Level1ArrayOfMapSelectedElementsOperat
 import org.op4j.operators.intf.arrayofmap.Level1ArrayOfMapSelectedElementsSelectedOperator;
 import org.op4j.operators.intf.arrayofmap.Level2ArrayOfMapSelectedElementsSelectedEntriesOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> {
@@ -40,7 +40,7 @@ public class Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V> extends A
 
 
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V>,? super Map<K,V>> eval) {
-        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.MAP));
+        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAP));
     }
 
 
@@ -80,7 +80,7 @@ public class Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V> extends A
 
 
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V>,? super Map<K,V>> function) {
-        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.MAP));
+        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAP));
     }
 
 
@@ -101,7 +101,7 @@ public class Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V> extends A
 
 
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends V>,? super Map<K,V>> converter) {
-        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.MAP));
+        return new Level1ArrayOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAP));
     }
 
 

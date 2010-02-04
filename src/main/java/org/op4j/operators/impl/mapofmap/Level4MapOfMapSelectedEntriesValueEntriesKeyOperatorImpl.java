@@ -10,7 +10,7 @@ import org.op4j.operators.intf.mapofmap.Level3MapOfMapSelectedEntriesValueEntrie
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapSelectedEntriesValueEntriesKeyOperator;
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapSelectedEntriesValueEntriesKeySelectedOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level4MapOfMapSelectedEntriesValueEntriesKeyOperatorImpl<K1,K2,V> extends AbstractOperatorImpl implements Level4MapOfMapSelectedEntriesValueEntriesKeyOperator<K1,K2,V> {
@@ -72,7 +72,7 @@ public class Level4MapOfMapSelectedEntriesValueEntriesKeyOperatorImpl<K1,K2,V> e
 
 
     public Level4MapOfMapSelectedEntriesValueEntriesKeyOperator<K1,K2,V> eval(final IEvaluator<? extends K2,? super K2> eval) {
-        return new Level4MapOfMapSelectedEntriesValueEntriesKeyOperatorImpl<K1,K2,V>(getTarget().execute(eval, Normalization.NONE));
+        return new Level4MapOfMapSelectedEntriesValueEntriesKeyOperatorImpl<K1,K2,V>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
@@ -82,7 +82,7 @@ public class Level4MapOfMapSelectedEntriesValueEntriesKeyOperatorImpl<K1,K2,V> e
 
 
     public Level4MapOfMapSelectedEntriesValueEntriesKeyOperator<K1,K2,V> exec(final IFunction<? extends K2,? super K2> function) {
-        return new Level4MapOfMapSelectedEntriesValueEntriesKeyOperatorImpl<K1,K2,V>(getTarget().execute(function, Normalization.NONE));
+        return new Level4MapOfMapSelectedEntriesValueEntriesKeyOperatorImpl<K1,K2,V>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
@@ -92,7 +92,7 @@ public class Level4MapOfMapSelectedEntriesValueEntriesKeyOperatorImpl<K1,K2,V> e
 
 
     public Level4MapOfMapSelectedEntriesValueEntriesKeyOperator<K1,K2,V> convert(final IConverter<? extends K2,? super K2> converter) {
-        return new Level4MapOfMapSelectedEntriesValueEntriesKeyOperatorImpl<K1,K2,V>(getTarget().execute(converter, Normalization.NONE));
+        return new Level4MapOfMapSelectedEntriesValueEntriesKeyOperatorImpl<K1,K2,V>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 

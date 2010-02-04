@@ -37,7 +37,7 @@ import org.op4j.util.VarArgsUtil;
 public abstract class Target {
 
     public static enum Structure { ARRAY, LIST, SET, MAP, MAP_ENTRY, MAP_ENTRY_PART }
-    public static enum Normalization { 
+    public static enum Normalisation { 
         NONE, 
         ARRAY, LIST, SET, MAP, MAPENTRY, 
         ARRAY_OF_ARRAY, ARRAY_OF_LIST, ARRAY_OF_MAP, ARRAY_OF_SET,
@@ -183,15 +183,15 @@ public abstract class Target {
     }
     
     
-    abstract Target doExecute(final IFunction<?,?> executable, final Normalization normalization);
+    abstract Target doExecute(final IFunction<?,?> executable, final Normalisation normalisation);
 
     
     public final Target execute(final IFunction<?,?> executable) {
-        return execute(executable, Normalization.NONE);
+        return execute(executable, Normalisation.NONE);
     }
 
-    public final Target execute(final IFunction<?,?> executable, final Normalization normalization) {
-        return doExecute(executable, normalization);
+    public final Target execute(final IFunction<?,?> executable, final Normalisation normalisation) {
+        return doExecute(executable, normalisation);
     }
     
     

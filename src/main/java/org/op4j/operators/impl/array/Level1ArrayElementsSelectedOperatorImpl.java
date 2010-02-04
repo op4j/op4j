@@ -8,7 +8,7 @@ import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.array.Level1ArrayElementsOperator;
 import org.op4j.operators.intf.array.Level1ArrayElementsSelectedOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level1ArrayElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level1ArrayElementsSelectedOperator<T> {
@@ -24,7 +24,7 @@ public class Level1ArrayElementsSelectedOperatorImpl<T> extends AbstractOperator
 
 
     public Level1ArrayElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(eval, Normalization.NONE));
+        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.NONE));
     }
 
 
@@ -34,7 +34,7 @@ public class Level1ArrayElementsSelectedOperatorImpl<T> extends AbstractOperator
 
 
     public Level1ArrayElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(function, Normalization.NONE));
+        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.NONE));
     }
 
 
@@ -44,7 +44,7 @@ public class Level1ArrayElementsSelectedOperatorImpl<T> extends AbstractOperator
 
 
     public Level1ArrayElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(converter, Normalization.NONE));
+        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.NONE));
     }
 
 

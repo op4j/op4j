@@ -14,8 +14,8 @@ import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
 import org.op4j.operators.intf.setofmap.Level0SetOfMapSelectedOperator;
 import org.op4j.operators.intf.setofmap.Level1SetOfMapSelectedElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
-import org.op4j.util.NormalizationUtils;
+import org.op4j.target.Target.Normalisation;
+import org.op4j.util.NormalisationUtils;
 
 
 public class Level0SetOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level0SetOfMapSelectedOperator<K,V> {
@@ -87,7 +87,7 @@ public class Level0SetOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorImp
 
 
     public Level0SetOfMapSelectedOperator<K,V> eval(final IEvaluator<? extends Set<? extends Map<? extends K,? extends V>>,? super Set<Map<K,V>>> eval) {
-        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalization.SET_OF_MAP));
+        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.SET_OF_MAP));
     }
 
 
@@ -98,28 +98,28 @@ public class Level0SetOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorImp
 
     @SuppressWarnings("unchecked")
     public Level0SetOfMapSelectedOperator<K,V> add(final Map<K,V> newElement) {
-        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Add<Map<K,V>>(NormalizationUtils.normalizeMap(newElement))));
+        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Add<Map<K,V>>(NormalisationUtils.normaliseMap(newElement))));
     }
 
 
     public Level0SetOfMapSelectedOperator<K,V> addAll(final Map<K,V>... newElements) {
-        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Add<Map<K,V>>(NormalizationUtils.normalizeMaps(newElements))));
+        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Add<Map<K,V>>(NormalisationUtils.normaliseMaps(newElements))));
     }
 
 
     public Level0SetOfMapSelectedOperator<K,V> addAll(final Collection<Map<K,V>> collection) {
-        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.AddAll<Map<K,V>>(NormalizationUtils.normalizeMaps(collection))));
+        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.AddAll<Map<K,V>>(NormalisationUtils.normaliseMaps(collection))));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0SetOfMapSelectedOperator<K,V> insert(final int position, final Map<K,V> newElement) {
-        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Insert<Map<K,V>>(position, NormalizationUtils.normalizeMap(newElement))));
+        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Insert<Map<K,V>>(position, NormalisationUtils.normaliseMap(newElement))));
     }
 
 
     public Level0SetOfMapSelectedOperator<K,V> exec(final IFunction<? extends Set<? extends Map<? extends K,? extends V>>,? super Set<Map<K,V>>> function) {
-        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalization.SET_OF_MAP));
+        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.SET_OF_MAP));
     }
 
 
@@ -140,7 +140,7 @@ public class Level0SetOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorImp
 
 
     public Level0SetOfMapSelectedOperator<K,V> convert(final IConverter<? extends Set<? extends Map<? extends K,? extends V>>,? super Set<Map<K,V>>> converter) {
-        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalization.SET_OF_MAP));
+        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.SET_OF_MAP));
     }
 
 

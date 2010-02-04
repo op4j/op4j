@@ -10,7 +10,7 @@ import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofarray.Level3MapOfArrayEntriesValueElementsOperator;
 import org.op4j.operators.intf.mapofarray.Level3MapOfArrayEntriesValueElementsSelectedOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level3MapOfArrayEntriesValueElementsSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level3MapOfArrayEntriesValueElementsSelectedOperator<K,V> {
@@ -26,7 +26,7 @@ public class Level3MapOfArrayEntriesValueElementsSelectedOperatorImpl<K,V> exten
 
 
     public Level3MapOfArrayEntriesValueElementsSelectedOperator<K,V> eval(final IEvaluator<? extends V,? super V> eval) {
-        return new Level3MapOfArrayEntriesValueElementsSelectedOperatorImpl<K,V>(this.type, getTarget().execute(eval, Normalization.NONE));
+        return new Level3MapOfArrayEntriesValueElementsSelectedOperatorImpl<K,V>(this.type, getTarget().execute(eval, Normalisation.NONE));
     }
 
 
@@ -36,7 +36,7 @@ public class Level3MapOfArrayEntriesValueElementsSelectedOperatorImpl<K,V> exten
 
 
     public Level3MapOfArrayEntriesValueElementsSelectedOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
-        return new Level3MapOfArrayEntriesValueElementsSelectedOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalization.NONE));
+        return new Level3MapOfArrayEntriesValueElementsSelectedOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalisation.NONE));
     }
 
 
@@ -46,7 +46,7 @@ public class Level3MapOfArrayEntriesValueElementsSelectedOperatorImpl<K,V> exten
 
 
     public Level3MapOfArrayEntriesValueElementsSelectedOperator<K,V> convert(final IConverter<? extends V,? super V> converter) {
-        return new Level3MapOfArrayEntriesValueElementsSelectedOperatorImpl<K,V>(this.type, getTarget().execute(converter, Normalization.NONE));
+        return new Level3MapOfArrayEntriesValueElementsSelectedOperatorImpl<K,V>(this.type, getTarget().execute(converter, Normalisation.NONE));
     }
 
 

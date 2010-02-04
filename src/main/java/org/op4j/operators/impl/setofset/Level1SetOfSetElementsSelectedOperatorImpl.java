@@ -13,7 +13,7 @@ import org.op4j.operators.intf.setofset.Level1SetOfSetElementsOperator;
 import org.op4j.operators.intf.setofset.Level1SetOfSetElementsSelectedOperator;
 import org.op4j.operators.intf.setofset.Level2SetOfSetElementsSelectedElementsOperator;
 import org.op4j.target.Target;
-import org.op4j.target.Target.Normalization;
+import org.op4j.target.Target.Normalisation;
 
 
 public class Level1SetOfSetElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level1SetOfSetElementsSelectedOperator<T> {
@@ -85,7 +85,7 @@ public class Level1SetOfSetElementsSelectedOperatorImpl<T> extends AbstractOpera
 
 
     public Level1SetOfSetElementsSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval) {
-        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalization.SET));
+        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.SET));
     }
 
 
@@ -117,7 +117,7 @@ public class Level1SetOfSetElementsSelectedOperatorImpl<T> extends AbstractOpera
 
 
     public Level1SetOfSetElementsSelectedOperator<T> exec(final IFunction<? extends Set<? extends T>,? super Set<T>> function) {
-        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalization.SET));
+        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.SET));
     }
 
 
@@ -138,7 +138,7 @@ public class Level1SetOfSetElementsSelectedOperatorImpl<T> extends AbstractOpera
 
 
     public Level1SetOfSetElementsSelectedOperator<T> convert(final IConverter<? extends Set<? extends T>,? super Set<T>> converter) {
-        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalization.SET));
+        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.SET));
     }
 
 

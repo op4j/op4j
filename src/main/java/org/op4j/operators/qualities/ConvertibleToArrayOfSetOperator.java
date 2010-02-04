@@ -23,6 +23,9 @@ import org.op4j.operators.intf.arrayofset.Level0ArrayOfSetOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for conversions to array of set.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -31,6 +34,13 @@ import org.op4j.operators.intf.arrayofset.Level0ArrayOfSetOperator;
  */
 public interface ConvertibleToArrayOfSetOperator<T> {
     
+    /**
+     * <p>
+     * Converts the current target into an array of set.
+     * </p>
+     * 
+     * @return an operator holding the converted object as target.
+     */
     public Level0ArrayOfSetOperator<T> toArrayOfSet();
 
     

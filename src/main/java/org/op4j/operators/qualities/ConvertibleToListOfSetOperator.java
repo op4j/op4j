@@ -23,6 +23,9 @@ import org.op4j.operators.intf.listofset.Level0ListOfSetOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for conversions to list of set.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -31,6 +34,14 @@ import org.op4j.operators.intf.listofset.Level0ListOfSetOperator;
  */
 public interface ConvertibleToListOfSetOperator<T> {
     
+
+    /**
+     * <p>
+     * Converts the current target into a list of set.
+     * </p>
+     * 
+     * @return an operator holding the converted object as target.
+     */
     public Level0ListOfSetOperator<T> toListOfSet();
 
     
