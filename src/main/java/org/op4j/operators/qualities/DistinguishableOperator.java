@@ -22,6 +22,10 @@ package org.op4j.operators.qualities;
 
 
 /**
+ * <p>
+ * This interface contains methods for performing a "distinct" operator (removing all
+ * duplicates from a structure).
+ * </p>
  * 
  * @since 1.0
  * 
@@ -30,6 +34,13 @@ package org.op4j.operators.qualities;
  */
 public interface DistinguishableOperator {
 
+    /**
+     * <p>
+     * Removes all duplicate elements from the target object.
+     * </p>
+     * 
+     * @return an operator with the resulting target object.
+     */
     public Operator distinct();
     
     
