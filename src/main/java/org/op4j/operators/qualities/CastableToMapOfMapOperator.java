@@ -24,6 +24,9 @@ import org.op4j.operators.intf.mapofmap.Level0MapOfMapOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for casts to map of map (Map<K1,Map<K2,V>>).
+ * </p>
  * 
  * @since 1.0
  * 
@@ -32,7 +35,31 @@ import org.op4j.operators.intf.mapofmap.Level0MapOfMapOperator;
  */
 public interface CastableToMapOfMapOperator {
     
+    
+    /**
+     * <p>
+     * Casts the operator's target as a map of map of the specified types.
+     * </p>
+     * 
+     * @param <K> the type for the first-level map's keys
+     * @param <K2> the type for the seconds-level maps' (values of the first-level map) keys
+     * @param <V> the type for the second-level maps' values
+     * @param key1Type the type for the first-level map's keys
+     * @param key2Type the type for the seconds-level maps' (values of the first-level map) keys
+     * @param valueType the type for the second-level maps' values
+     * @return the resulting map of map
+     */
     public <K1,K2,V> Level0MapOfMapOperator<K1,K2,V> asMapOfMapOf(final Type<K1> key1Type, final Type<K2> key2Type, final Type<V> valueType);
+    
+    
+    /**
+     * <p>
+     * Casts the operator's target as a map of map of unknown (first-level keys, second-level
+     * keys and second-level values).
+     * </p>
+     * 
+     * @return the resulting map of map
+     */
     public Level0MapOfMapOperator<?,?,?> asMapOfMapOfUnknown();
 
     

@@ -23,6 +23,9 @@ import org.javaruntype.type.Type;
 
 
 /**
+ * <p>
+ * This interface contains methods for casts to array (T[]).
+ * </p>
  * 
  * @since 1.0
  * 
@@ -31,7 +34,26 @@ import org.javaruntype.type.Type;
  */
 public interface CastableToArrayOperator {
     
+    
+    /**
+     * <p>
+     * Casts the operator's target as an array of the specified type.
+     * </p>
+     * 
+     * @param <X> the type of the elements of the array
+     * @param type the type of the elements of the array
+     * @return the resulting casted operator
+     */
     public <X> Operator asArrayOf(final Type<X> type);
+
+    
+    /**
+     * <p>
+     * Casts the operator's target as an array of unknown.
+     * </p>
+     * 
+     * @return the resulting casted operator
+     */
     public Operator asArrayOfUnknown();
     
 }

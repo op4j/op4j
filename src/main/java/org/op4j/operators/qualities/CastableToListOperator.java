@@ -23,6 +23,9 @@ import org.javaruntype.type.Type;
 
 
 /**
+ * <p>
+ * This interface contains methods for casts to list (List<T>).
+ * </p>
  * 
  * @since 1.0
  * 
@@ -31,7 +34,26 @@ import org.javaruntype.type.Type;
  */
 public interface CastableToListOperator {
     
+
+    /**
+     * <p>
+     * Casts the operator's target as a list of the specified type.
+     * </p>
+     * 
+     * @param <X> the type of the elements of the list
+     * @param type the type of the elements of the list
+     * @return the resulting casted operator
+     */
     public <X> Operator asListOf(final Type<X> type);
+
+    
+    /**
+     * <p>
+     * Casts the operator's target as a list of unknown.
+     * </p>
+     * 
+     * @return the resulting casted operator
+     */
     public Operator asListOfUnknown();
     
 }

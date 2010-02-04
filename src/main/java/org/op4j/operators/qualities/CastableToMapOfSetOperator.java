@@ -24,6 +24,9 @@ import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for casts to map of set (Map<K,Set<V>>).
+ * </p>
  * 
  * @since 1.0
  * 
@@ -32,7 +35,28 @@ import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
  */
 public interface CastableToMapOfSetOperator {
     
+    
+    /**
+     * <p>
+     * Casts the operator's target as a map of set of the specified types.
+     * </p>
+     * 
+     * @param <K> the type for the map's keys
+     * @param <V> the type for the map's values (elements of the value sets)
+     * @param keyType the type for the map's keys
+     * @param valueType the type for the map's values (elements of the value sets)
+     * @return the resulting map of set
+     */
     public <K,V> Level0MapOfSetOperator<K,V> asMapOfSetOf(final Type<K> keyType, final Type<V> valueType);
+    
+    
+    /**
+     * <p>
+     * Casts the operator's target as a map of set of unknown (keys and values).
+     * </p>
+     * 
+     * @return the resulting map of set
+     */
     public Level0MapOfSetOperator<?,?> asMapOfSetOfUnknown();
 
     

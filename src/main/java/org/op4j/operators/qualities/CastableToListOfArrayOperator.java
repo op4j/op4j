@@ -24,6 +24,9 @@ import org.op4j.operators.intf.listofarray.Level0ListOfArrayOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for casts to list of array (List<T[]>).
+ * </p>
  * 
  * @since 1.0
  * 
@@ -32,7 +35,26 @@ import org.op4j.operators.intf.listofarray.Level0ListOfArrayOperator;
  */
 public interface CastableToListOfArrayOperator {
     
+    
+    /**
+     * <p>
+     * Casts the operator's target as a list of array of the specified type.
+     * </p>
+     * 
+     * @param <X> the type of the elements of the list of array
+     * @param type the type of the elements of the list of array
+     * @return the resulting casted operator
+     */
     public <X> Level0ListOfArrayOperator<X> asListOfArrayOf(final Type<X> type);
+
+    
+    /**
+     * <p>
+     * Casts the operator's target as a list of array of unknown.
+     * </p>
+     * 
+     * @return the resulting casted operator
+     */
     public Level0ListOfArrayOperator<?> asListOfArrayOfUnknown();
 
     

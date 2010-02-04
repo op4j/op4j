@@ -24,6 +24,9 @@ import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for casts to set of set (Set<Set<T>>).
+ * </p>
  * 
  * @since 1.0
  * 
@@ -32,7 +35,26 @@ import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
  */
 public interface CastableToSetOfSetOperator {
     
+    
+    /**
+     * <p>
+     * Casts the operator's target as a set of set of the specified type.
+     * </p>
+     * 
+     * @param <X> the type of the elements of the set of set
+     * @param type the type of the elements of the set of set
+     * @return the resulting casted operator
+     */
     public <X> Level0SetOfSetOperator<X> asSetOfSetOf(final Type<X> type);
+
+    
+    /**
+     * <p>
+     * Casts the operator's target as a set of set of unknown.
+     * </p>
+     * 
+     * @return the resulting casted operator
+     */
     public Level0SetOfSetOperator<?> asSetOfSetOfUnknown();
 
     

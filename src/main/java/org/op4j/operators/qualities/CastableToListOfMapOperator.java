@@ -24,6 +24,9 @@ import org.op4j.operators.intf.listofmap.Level0ListOfMapOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for casts to list of map (List<Map<K,V>>).
+ * </p>
  * 
  * @since 1.0
  * 
@@ -32,7 +35,28 @@ import org.op4j.operators.intf.listofmap.Level0ListOfMapOperator;
  */
 public interface CastableToListOfMapOperator {
     
+    
+    /**
+     * <p>
+     * Casts the operator's target as a list of map of the specified types.
+     * </p>
+     * 
+     * @param <K> the type for the maps' keys
+     * @param <V> the type for the maps' values
+     * @param keyType the type for the maps' keys
+     * @param valueType the type for the maps' values
+     * @return the resulting list of map
+     */
     public <K,V> Level0ListOfMapOperator<K,V> asListOfMapOf(final Type<K> keyType, final Type<V> valueType);
+
+    
+    /**
+     * <p>
+     * Casts the operator's target as a list of map of unknown keys and values.
+     * </p>
+     * 
+     * @return the resulting list of map
+     */
     public Level0ListOfMapOperator<?,?> asListOfMapOfUnknown();
 
     

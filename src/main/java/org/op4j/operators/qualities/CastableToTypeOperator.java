@@ -24,6 +24,9 @@ import org.javaruntype.type.Type;
 
 
 /**
+ * <p>
+ * This interface contains methods for casts to a specific type.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -33,7 +36,24 @@ import org.javaruntype.type.Type;
 public interface CastableToTypeOperator<T> {
 
     
+    /**
+     * <p>
+     * Casts the operator's target as the specified type.
+     * </p>
+     * 
+     * @param <X> the type of the targets
+     * @param type the type of targets
+     * @return the resulting casted operator
+     */
     public <X> CastableToTypeOperator<X> asType(final Type<X> type);
+
+    /**
+     * <p>
+     * Casts the operator's target as unknown.
+     * </p>
+     * 
+     * @return the resulting casted operator
+     */
     public CastableToTypeOperator<?> asUnknown();
 
     

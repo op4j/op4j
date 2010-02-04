@@ -24,6 +24,9 @@ import org.op4j.operators.intf.arrayofarray.Level0ArrayOfArrayOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for casts to array of array (T[][]).
+ * </p>
  * 
  * @since 1.0
  * 
@@ -31,8 +34,27 @@ import org.op4j.operators.intf.arrayofarray.Level0ArrayOfArrayOperator;
  *
  */
 public interface CastableToArrayOfArrayOperator {
+
     
+    /**
+     * <p>
+     * Casts the operator's target as an array of array of the specified type.
+     * </p>
+     * 
+     * @param <X> the type of the elements of the array of array
+     * @param type the type of the elements of the array of array
+     * @return the resulting casted operator
+     */
     public <X> Level0ArrayOfArrayOperator<X> asArrayOfArrayOf(final Type<X> type);
+    
+    
+    /**
+     * <p>
+     * Casts the operator's target as an array of array of unknown.
+     * </p>
+     * 
+     * @return the resulting casted operator
+     */
     public Level0ArrayOfArrayOperator<?> asArrayOfArrayOfUnknown();
 
     

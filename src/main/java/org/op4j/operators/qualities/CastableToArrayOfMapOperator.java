@@ -24,6 +24,9 @@ import org.op4j.operators.intf.arrayofmap.Level0ArrayOfMapOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for casts to array of Map (Map<K,V>[]).
+ * </p>
  * 
  * @since 1.0
  * 
@@ -32,7 +35,28 @@ import org.op4j.operators.intf.arrayofmap.Level0ArrayOfMapOperator;
  */
 public interface CastableToArrayOfMapOperator {
     
+
+    /**
+     * <p>
+     * Casts the operator's target as an array of map of the specified types.
+     * </p>
+     * 
+     * @param <K> the type for the maps' keys
+     * @param <V> the type for the maps' values
+     * @param keyType the type for the maps' keys
+     * @param valueType the type for the maps' values
+     * @return the resulting array of map
+     */
     public <K,V> Level0ArrayOfMapOperator<K,V> asArrayOfMapOf(final Type<K> keyType, final Type<V> valueType);
+    
+    
+    /**
+     * <p>
+     * Casts the operator's target as an array of map of unknown keys and values.
+     * </p>
+     * 
+     * @return the resulting array of map
+     */
     public Level0ArrayOfMapOperator<?,?> asArrayOfMapOfUnknown();
 
     

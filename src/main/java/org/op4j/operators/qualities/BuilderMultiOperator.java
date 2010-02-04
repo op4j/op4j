@@ -29,7 +29,7 @@ import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 
 /**
  * <p>
- * This interface defines methods for the building of structures from multioperators.
+ * This interface defines methods for the building of structures from multioperators' targets.
  * This methods will populate the structures created from the target objects by
  * the "alternate elements" method: starting with 0, even elements will be taken as keys,
  * and odd elements as values.
@@ -48,7 +48,7 @@ public interface BuilderMultiOperator<T> {
      * be taken as keys, and odd elements as values.
      * </p>
      * 
-     * @return the resulting map.
+     * @return an operator on the resulting map.
      */
     public Level0MapOperator<T,T> buildMap();
 
@@ -59,7 +59,7 @@ public interface BuilderMultiOperator<T> {
      * relating each key with its list of values.
      * </p>
      * 
-     * @return the resulting map of list
+     * @return an operator on the resulting map of list
      */
     public Level0MapOfListOperator<T,T> buildMapOfList();
 
@@ -70,7 +70,7 @@ public interface BuilderMultiOperator<T> {
      * relating each key with its set of values.
      * </p>
      * 
-     * @return the resulting map of set
+     * @return an operator on the resulting map of set
      */
     public Level0MapOfSetOperator<T,T> buildMapOfSet();
 
@@ -82,7 +82,7 @@ public interface BuilderMultiOperator<T> {
      * </p>
      * 
      * @param type the type of which the arrays will be instantiated
-     * @return the resulting map of array
+     * @return an operator on the resulting map of array
      */
     public Level0MapOfArrayOperator<T,T> buildMapOfArrayOf(final Type<T> type);
     

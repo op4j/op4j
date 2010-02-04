@@ -24,6 +24,9 @@ import org.op4j.operators.intf.arrayofset.Level0ArrayOfSetOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for casts to array of Set (Set<T>[]).
+ * </p>
  * 
  * @since 1.0
  * 
@@ -32,7 +35,26 @@ import org.op4j.operators.intf.arrayofset.Level0ArrayOfSetOperator;
  */
 public interface CastableToArrayOfSetOperator {
     
+    
+    /**
+     * <p>
+     * Casts the operator's target as an array of set of the specified type.
+     * </p>
+     * 
+     * @param <X> the type of the elements of the array of set
+     * @param type the type of the elements of the array of set
+     * @return the resulting casted operator
+     */
     public <X> Level0ArrayOfSetOperator<X> asArrayOfSetOf(final Type<X> type);
+
+    
+    /**
+     * <p>
+     * Casts the operator's target as an array of set of unknown.
+     * </p>
+     * 
+     * @return the resulting casted operator
+     */
     public Level0ArrayOfSetOperator<?> asArrayOfSetOfUnknown();
 
     

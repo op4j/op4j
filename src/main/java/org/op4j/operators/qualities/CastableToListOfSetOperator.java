@@ -24,6 +24,9 @@ import org.op4j.operators.intf.listofset.Level0ListOfSetOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for casts to list of set (List<Set<T>>).
+ * </p>
  * 
  * @since 1.0
  * 
@@ -32,7 +35,26 @@ import org.op4j.operators.intf.listofset.Level0ListOfSetOperator;
  */
 public interface CastableToListOfSetOperator {
     
+    
+    /**
+     * <p>
+     * Casts the operator's target as a list of set of the specified type.
+     * </p>
+     * 
+     * @param <X> the type of the elements of the list of set
+     * @param type the type of the elements of the list of set
+     * @return the resulting casted operator
+     */
     public <X> Level0ListOfSetOperator<X> asListOfSetOf(final Type<X> type);
+
+    
+    /**
+     * <p>
+     * Casts the operator's target as a list of set of unknown.
+     * </p>
+     * 
+     * @return the resulting casted operator
+     */
     public Level0ListOfSetOperator<?> asListOfSetOfUnknown();
 
     

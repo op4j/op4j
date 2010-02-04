@@ -24,6 +24,9 @@ import org.op4j.operators.intf.listoflist.Level0ListOfListOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for casts to list of list(List<List<T>>).
+ * </p>
  * 
  * @since 1.0
  * 
@@ -32,7 +35,26 @@ import org.op4j.operators.intf.listoflist.Level0ListOfListOperator;
  */
 public interface CastableToListOfListOperator {
     
+    
+    /**
+     * <p>
+     * Casts the operator's target as a list of list of the specified type.
+     * </p>
+     * 
+     * @param <X> the type of the elements of the list of list
+     * @param type the type of the elements of the list of list
+     * @return the resulting casted operator
+     */
     public <X> Level0ListOfListOperator<X> asListOfListOf(final Type<X> type);
+
+    
+    /**
+     * <p>
+     * Casts the operator's target as a list of list of unknown.
+     * </p>
+     * 
+     * @return the resulting casted operator
+     */
     public Level0ListOfListOperator<?> asListOfListOfUnknown();
 
     
