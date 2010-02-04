@@ -1,2 +1,4 @@
 
-  - Create functions for aggregating structures of numbers
+  - Create functions for aggregating structures of numbers: MathFuncs
+  - Make better utility abstract functions, evaluators, etc. Maybe one that receives Type as
+    parameter and thus does not need to implement getReturnType.

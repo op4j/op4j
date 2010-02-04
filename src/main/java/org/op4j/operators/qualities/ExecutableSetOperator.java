@@ -30,6 +30,10 @@ import org.op4j.functions.evaluators.IEvaluator;
 
 
 /**
+ * <p>
+ * This interface contains methods for executing functions on operators with
+ * set entry target objects.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -38,16 +42,107 @@ import org.op4j.functions.evaluators.IEvaluator;
  */
 public interface ExecutableSetOperator<T> {
 
+    
+    /**
+     * <p>
+     * Executes the specified function on the target object, creating a new operator
+     * containing the result of the execution.
+     * </p>
+     * <p>
+     * This function must be able to take as input an object of the current operator's
+     * target type, and will return an object of a different type but same structure, 
+     * which will be from then on the new operator's target type.
+     * </p>
+     * 
+     * @param <X> the type of the result elements
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
+     */
     public <X> ExecutableSetOperator<X> exec(final IFunction<? extends Set<X>, ? super Set<T>> function);
     
+    
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * implementing the {@link IEvaluator} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param <X> the type of the result elements
+     * @param eval the evaluator to be executed
+     * @return an operator on the results of evaluator execution
+     */
     public <X> ExecutableSetOperator<X> eval(final IEvaluator<? extends Set<X>,? super Set<T>> eval);
     
+    
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * implementing the {@link IConverter} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param <X> the type of the result elements
+     * @param converter the converter to be executed
+     * @return an operator on the results of converter execution
+     */
     public <X> ExecutableSetOperator<X> convert(final IConverter<? extends Set<X>,? super Set<T>> converter);
 
+    
+    /**
+     * <p>
+     * Executes the specified function on the target object, creating a new operator
+     * containing the result of the execution and setting the new operator type to the one
+     * specified.
+     * </p>
+     * 
+     * @param <X> the type of the result object
+     * @param resultType the new type for the operator
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
+     */
     public <X> Operator exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<T>> function);
     
+    
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(Type, IFunction)} method which executes a function
+     * implementing the {@link IEvaluator} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(Type, IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param <X> the type of the result object
+     * @param resultType the new type for the operator
+     * @param eval the evaluator to be executed
+     * @return an operator on the results of evaluator execution
+     */
     public <X> Operator eval(final Type<X> resultType, final IEvaluator<? extends X,? super Set<T>> eval);
     
+    
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(Type, IFunction)} method which executes a function
+     * implementing the {@link IConverter} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(Type, IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param <X> the type of the result object
+     * @param resultType the new type for the operator
+     * @param converter the converter to be executed
+     * @return an operator on the results of converter execution
+     */
     public <X> Operator convert(final Type<X> resultType, final IConverter<? extends X,? super Set<T>> converter);    
     
 }

@@ -41,7 +41,7 @@ public interface CastableToMapOfMapOperator {
      * Casts the operator's target as a map of map of the specified types.
      * </p>
      * 
-     * @param <K> the type for the first-level map's keys
+     * @param <K1> the type for the first-level map's keys
      * @param <K2> the type for the seconds-level maps' (values of the first-level map) keys
      * @param <V> the type for the second-level maps' values
      * @param key1Type the type for the first-level map's keys

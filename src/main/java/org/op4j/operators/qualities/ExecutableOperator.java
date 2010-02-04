@@ -41,8 +41,8 @@ public interface ExecutableOperator<T> {
     
     /**
      * <p>
-     * Executes the specified function on the operator's target objects, creating a new operator
-     * containing the results of all the executions, in the same order.
+     * Executes the specified function on the target object, creating a new operator
+     * containing the result of the execution.
      * </p>
      * <p>
      * This function must be able to take as input an object of type T (the current operator's
@@ -50,7 +50,7 @@ public interface ExecutableOperator<T> {
      * operator's target type.
      * </p>
      * 
-     * @param <X> the type of the results, and new type for the operator
+     * @param <X> the type of the result, and new type for the operator
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */

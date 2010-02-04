@@ -27,6 +27,10 @@ import org.op4j.functions.evaluators.IEvaluator;
 
 
 /**
+ * <p>
+ * This interface contains methods for executing functions on operators with
+ * array target objects on which a selection ("if") has already been done.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -35,10 +39,53 @@ import org.op4j.functions.evaluators.IEvaluator;
  */
 public interface ExecutableArraySelectedOperator<T> {
 
+    
+    /**
+     * <p>
+     * Executes the specified function on the target object, creating a new operator
+     * containing the result of the execution.
+     * </p>
+     * <p>
+     * This function does not allow the operator target type to change because a selection ("if") has 
+     * already been done on the target objects, and this would render the operator inconsistent
+     * (some objects would belong to a type and others to another type).
+     * </p>
+     * 
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
+     */
     public ExecutableArraySelectedOperator<T> exec(final IFunction<? extends T[], ? super T[]> function);
     
-    public ExecutableArraySelectedOperator<T> eval(final IEvaluator<? extends T[],? super T[]> eval);
     
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * implementing the {@link IEvaluator} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param eval the evaluator to be executed
+     * @return an operator on the results of evaluator execution
+     */
+    public ExecutableArraySelectedOperator<T> eval(final IEvaluator<? extends T[],? super T[]> eval);
+
+    
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * implementing the {@link IConverter} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param converter the converter to be executed
+     * @return an operator on the results of converter execution
+     */
     public ExecutableArraySelectedOperator<T> convert(final IConverter<? extends T[],? super T[]> converter);
     
 }

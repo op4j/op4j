@@ -32,6 +32,10 @@ import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 
 
 /**
+ * <p>
+ * This interface contains methods for executing functions on operators with
+ * set of map entry target objects.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -40,16 +44,110 @@ import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
  */
 public interface ExecutableSetOfMapOperator<K,V> {
 
+    
+    /**
+     * <p>
+     * Executes the specified function on the target object, creating a new operator
+     * containing the result of the execution.
+     * </p>
+     * <p>
+     * This function must be able to take as input an object of the current operator's
+     * target type, and will return an object of a different type but same structure, 
+     * which will be from then on the new operator's target type.
+     * </p>
+     * 
+     * @param <X> the type of the resulting keys
+     * @param <Y> the type of the resulting values
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
+     */
     public <X,Y> ExecutableSetOfMapOperator<X,Y> exec(final IFunction<? extends Set<? extends Map<X,Y>>, ? super Set<Map<K,V>>> function);
     
+    
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * implementing the {@link IEvaluator} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param <X> the type of the resulting keys
+     * @param <Y> the type of the resulting values
+     * @param eval the evaluator to be executed
+     * @return an operator on the results of evaluator execution
+     */
     public <X,Y> ExecutableSetOfMapOperator<X,Y> eval(final IEvaluator<? extends Set<? extends Map<X,Y>>,? super Set<Map<K,V>>> eval);
     
+    
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * implementing the {@link IConverter} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param <X> the type of the resulting keys
+     * @param <Y> the type of the resulting values
+     * @param converter the converter to be executed
+     * @return an operator on the results of converter execution
+     */
     public <X,Y> ExecutableSetOfMapOperator<X,Y> convert(final IConverter<? extends Set<? extends Map<X,Y>>,? super Set<Map<K,V>>> converter);
 
+    
+    /**
+     * <p>
+     * Executes the specified function on the target object, creating a new operator
+     * containing the result of the execution and setting the new operator type to the one
+     * specified.
+     * </p>
+     * 
+     * @param <X> the type of the result object
+     * @param resultType the new type for the operator
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
+     */
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<Map<K,V>>> function);
     
+    
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(Type, IFunction)} method which executes a function
+     * implementing the {@link IEvaluator} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(Type, IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param <X> the type of the result object
+     * @param resultType the new type for the operator
+     * @param eval the evaluator to be executed
+     * @return an operator on the results of evaluator execution
+     */
     public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Set<Map<K,V>>> eval);
     
+
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(Type, IFunction)} method which executes a function
+     * implementing the {@link IConverter} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(Type, IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param <X> the type of the result object
+     * @param resultType the new type for the operator
+     * @param converter the converter to be executed
+     * @return an operator on the results of converter execution
+     */
     public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Set<Map<K,V>>> converter);    
     
 }
