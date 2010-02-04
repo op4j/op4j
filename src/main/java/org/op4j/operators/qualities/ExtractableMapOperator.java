@@ -23,6 +23,10 @@ package org.op4j.operators.qualities;
 
 
 /**
+ * <p>
+ * This interface defines methods for extracting keys (discarding values) or
+ * values (discarding keys) in operators holding map target objects.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -30,8 +34,27 @@ package org.op4j.operators.qualities;
  *
  */
 public interface ExtractableMapOperator<K,V> {
+
     
+    /**
+     * <p>
+     * Extracts only the keys of the map (discarding values) and creates an operator
+     * which will hold these keys as a target object of type Set.
+     * </p>
+     * 
+     * @return an operator with the set of keys as a target object
+     */
     public Operator extractKeys();
+    
+    
+    /**
+     * <p>
+     * Extracts only the values of the map (discarding keys) and creates an operator
+     * which will hold these values as a target object of type List.
+     * </p>
+     * 
+     * @return an operator with the list of values as a target object
+     */
     public Operator extractValues();
     
 }
