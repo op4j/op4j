@@ -176,13 +176,12 @@ public class MathFuncs {
 	
 	public static final class RoundDouble extends AbstractNotNullFunc<Double, Double> {
 
-		private RoundingMode roundingMode = null;
 		private MathContext mathContext = null;
 		
 		public RoundDouble(RoundingMode roundingMode) {
 			super();
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
-			this.roundingMode = roundingMode;
+			this.mathContext = new MathContext(0, roundingMode);
 		}
 		
 		public RoundDouble(MathContext mathContext) {
@@ -194,10 +193,6 @@ public class MathFuncs {
 		@Override
 		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
 			
-			if (this.mathContext != null) {
-				MathContext mc = new MathContext(0, this.roundingMode);
-				return Double.valueOf(BigDecimal.valueOf(input.doubleValue()).round(mc).doubleValue());				
-			}						
 			return Double.valueOf(BigDecimal.valueOf(input.doubleValue()).round(this.mathContext).doubleValue());		
 		}
 
@@ -223,4 +218,149 @@ public class MathFuncs {
 			return Types.DOUBLE;
 		}		
 	}
+	
+	public static final class AddDouble extends AbstractNotNullFunc<Double, Double> {
+
+		private Double add;
+		
+		public AddDouble(Double add) {
+			super();
+			Validate.notNull(add, "Number to be added can't be null");
+			this.add = add;
+		}
+
+		@Override
+		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
+			BigDecimal result = BigDecimal.valueOf(input.doubleValue());
+			result.add(BigDecimal.valueOf(this.add.doubleValue()));
+				
+			return Double.valueOf(result.doubleValue());
+		}
+
+		public Type<? extends Double> getResultType(
+				Type<? extends Double> targetType) {
+			return Types.DOUBLE;
+		}		
+	}
+	
+	public static final class SubtractDouble extends AbstractNotNullFunc<Double, Double> {
+
+		private Double subtract;
+		
+		public SubtractDouble(Double subtract) {
+			super();
+			Validate.notNull(subtract, "Number to be added can't be null");
+			this.subtract = subtract;
+		}
+
+		@Override
+		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
+			BigDecimal result = BigDecimal.valueOf(input.doubleValue());
+			result.subtract(BigDecimal.valueOf(this.subtract.doubleValue()));
+				
+			return Double.valueOf(result.doubleValue());
+		}
+
+		public Type<? extends Double> getResultType(
+				Type<? extends Double> targetType) {
+			return Types.DOUBLE;
+		}		
+	}
+	
+	public static final class DivideByDouble extends AbstractNotNullFunc<Double, Double> {
+
+		private Double divisor;
+		private RoundingMode roundingMode = null;
+		private MathContext mathContext = null;
+		
+		public DivideByDouble(Double divisor) {
+			super();
+			Validate.notNull(divisor, "Divisor can't be null");
+			this.divisor = divisor;
+		}
+		
+		public DivideByDouble(Double divisor, RoundingMode roundingMode) {
+			super();
+			Validate.notNull(divisor, "Divisor can't be null");
+			Validate.notNull(roundingMode, "RoundingMode can't be null");
+			this.divisor = divisor;
+			this.roundingMode = roundingMode;
+		}
+		
+		public DivideByDouble(Double divisor, MathContext mathContext) {
+			super();
+			Validate.notNull(divisor, "Divisor can't be null");
+			Validate.notNull(mathContext, "MathContext can't be null");
+			this.divisor = divisor;
+			this.mathContext = mathContext;
+		}
+
+		@Override
+		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
+			BigDecimal dividend = BigDecimal.valueOf(input.doubleValue());
+			
+			if (this.roundingMode != null) {
+				dividend.divide(BigDecimal.valueOf(this.divisor.doubleValue()), this.roundingMode);					
+			} else if (this.mathContext != null) {
+				dividend.divide(BigDecimal.valueOf(this.divisor.doubleValue()), this.mathContext);				
+			} else {
+				dividend.divide(BigDecimal.valueOf(this.divisor.doubleValue()));	
+			}
+			return Double.valueOf(dividend.doubleValue());
+		}
+
+		public Type<? extends Double> getResultType(
+				Type<? extends Double> targetType) {
+			return Types.DOUBLE;
+		}		
+	}
+	
+	
+	
+	//TODO mod, mul, 
+	
+	
+	public static final class RaiseDouble extends AbstractNotNullFunc<Double, Double> {
+
+		private int power;
+		private MathContext mathContext = null;
+		
+		public RaiseDouble(int power) {
+			super();
+			this.power = power;
+		}
+		
+		public RaiseDouble(int power, RoundingMode roundingMode) {
+			super();
+			Validate.notNull(roundingMode, "RoundingMode can't be null");
+			this.power = power;
+			this.mathContext = new MathContext(0, roundingMode);
+		}
+		
+		public RaiseDouble(int power, MathContext mathContext) {
+			super();
+			Validate.notNull(mathContext, "MathContext can't be null");
+			this.power = power;
+			this.mathContext = mathContext;
+		}
+
+		@Override
+		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
+			BigDecimal base = BigDecimal.valueOf(input.doubleValue());
+			
+			if (this.mathContext != null) {
+				base.pow(this.power, this.mathContext);				
+			} else {
+				base.pow(this.power);	
+			}
+			return Double.valueOf(base.doubleValue());
+		}
+
+		public Type<? extends Double> getResultType(
+				Type<? extends Double> targetType) {
+			return Types.DOUBLE;
+		}		
+	}
+	
+	
 }
