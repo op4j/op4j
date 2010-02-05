@@ -28,7 +28,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.lang.Validate;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -104,9 +103,6 @@ final class ExecutionStructureTarget extends ExecutionTarget {
     
     @Override
     ExecutionTarget doEndIterate(final Structure structure, final Class<?> componentClass) {
-        
-        Validate.notNull(structure, "Structure cannot be null");
-        Validate.isTrue(!(structure.equals(Structure.ARRAY) && componentClass == null), "Arrays must specify component class");
 
         if (this.isCurrentActionLevel) {
 
