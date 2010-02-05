@@ -38,28 +38,23 @@ final class ExecutionTargetId {
     public static final ExecutionTargetId ROOT = new ExecutionTargetId(null, 0); 
     
 	private final List<Integer> components = new ArrayList<Integer>();
-	private final String stringRepresentation;
 	private final int level;
-	private final int hashCode;
 	
 	
 	
 	public ExecutionTargetId(final ExecutionTargetId parent, final int index) {
 		
 		if (parent != null) {
-	        this.stringRepresentation = parent.getStringRepresentation() + "." + String.valueOf(index);
 			this.components.addAll(parent.getComponents());
 	        this.components.add(Integer.valueOf(index));
 		} else {
 			/* ID for first level is always 0 */
 			Validate.isTrue(index == 0, "Index for first level must be 0");
-            this.stringRepresentation = String.valueOf(index);
 	        this.components.add(Integer.valueOf(index));
 		}
 		
 		
 		this.level = this.components.size();
-		this.hashCode = this.stringRepresentation.hashCode();
 		
 	}
 	
@@ -71,41 +66,6 @@ final class ExecutionTargetId {
 	
 	public int getLevel() {
 		return this.level;
-	}
-	
-	
-	
-	@Override
-	public String toString() {
-		return getStringRepresentation();
-	}
-
-	
-
-    public String getStringRepresentation() {
-        return this.stringRepresentation;
-    }
-
-
-    @Override
-	public int hashCode() {
-		return this.hashCode;
-	}
-
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		ExecutionTargetId other = (ExecutionTargetId) obj;
-		return this.stringRepresentation.equals(other.stringRepresentation);
 	}
 	
 	

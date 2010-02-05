@@ -22,7 +22,6 @@ package org.op4j.target;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -45,18 +44,15 @@ import org.op4j.util.MapEntry;
 final class ExecutionStructureTarget extends ExecutionTarget {
 
 	private final List<ExecutionTarget> elements;
-    private final HashSet<String> selectedElementIds;
 	private final int actionLevel;
 	private final boolean isCurrentActionLevel;
 	
 
 	
-    protected ExecutionStructureTarget(final ExecutionTargetId id, final HashSet<String> selectedElementIds, final List<ExecutionTarget> elements, 
-            final int actionLevel) {
+    protected ExecutionStructureTarget(final ExecutionTargetId id, final List<ExecutionTarget> elements, final int actionLevel) {
         
         super(id);
         this.elements = elements;
-        this.selectedElementIds = selectedElementIds;
         this.actionLevel = actionLevel;
         this.isCurrentActionLevel = (actionLevel == id.getLevel());
         
@@ -86,9 +82,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         
         final List<ExecutionNodeTarget> nodes = new ArrayList<ExecutionNodeTarget>();
         for (final ExecutionTarget element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId().getStringRepresentation())) {
-                nodes.addAll(element.getExecutionNodes());
-            }
+            nodes.addAll(element.getExecutionNodes());
         }
         return nodes;
         
@@ -101,13 +95,9 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         
         final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
         for (final ExecutionTarget element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId().getStringRepresentation())) {
-                newElements.add(element.doIterate());
-            } else {
-                newElements.add(element);
-            }
+            newElements.add(element.doIterate());
         }
-        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel + 1);
+        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel + 1);
         
     }
 
@@ -190,13 +180,9 @@ final class ExecutionStructureTarget extends ExecutionTarget {
             
         final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
         for (final ExecutionTarget element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId().getStringRepresentation())) {
-                newElements.add(element.doEndIterate(structure, componentClass));
-            } else {
-                newElements.add(element);
-            }
+            newElements.add(element.doEndIterate(structure, componentClass));
         }
-        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel - 1);
+        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel - 1);
        
     }
 
@@ -209,24 +195,20 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         
         if (this.isCurrentActionLevel) {
             
-            final HashSet<String> newSelectedElementIds = new HashSet<String>();
+            final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
 
             for (final ExecutionTarget element : this.elements) {
-                newSelectedElementIds.add(element.getId().getStringRepresentation());
+                newElements.add(element.reselectExecutionTarget());
             }
-            return new ExecutionStructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
             
         }
             
         final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
         for (final ExecutionTarget element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId().getStringRepresentation())) {
-                newElements.add(element.doEndSelect());
-            } else {
-                newElements.add(element);
-            }
+            newElements.add(element.doEndSelect());
         }
-        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
             
     }
 
@@ -238,30 +220,28 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         
     	if (this.isCurrentActionLevel) {
         	
-            final HashSet<String> newSelectedElementIds = new HashSet<String>();
+            final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
 
             int i = 0;
             for (final ExecutionTarget element : this.elements) {
             	
                 if (positions.contains(Integer.valueOf(i)) == desiredResult) {
-                    newSelectedElementIds.add(element.getId().getStringRepresentation());
+                    newElements.add(element);
+                } else {
+                    newElements.add(element.unselectExecutionTarget());
                 }
                 i++;
                 
             }
-            return new ExecutionStructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
             
     	}
         	
         final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
         for (final ExecutionTarget element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId().getStringRepresentation())) {
-                newElements.add(element.doSelectIndex(desiredResult, positions));
-            } else {
-                newElements.add(element);
-            }
+            newElements.add(element.doSelectIndex(desiredResult, positions));
         }
-        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
             
 	}
 
@@ -273,7 +253,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         
     	if (this.isCurrentActionLevel) {
         	
-            final HashSet<String> newSelectedElementIds = new HashSet<String>();
+            final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
             
             for (final ExecutionTarget element : this.elements) {
             	
@@ -285,23 +265,21 @@ final class ExecutionStructureTarget extends ExecutionTarget {
             		(Map.Entry<?,?>) elementObject;
             	
                 if (objects.contains(elementMapEntryObject.getKey()) == desiredResult) {
-                    newSelectedElementIds.add(element.getId().getStringRepresentation());
+                    newElements.add(element);
+                } else {
+                    newElements.add(element.unselectExecutionTarget());
                 }
                 
             }
-            return new ExecutionStructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
             
     	}
         	
         final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
         for (final ExecutionTarget element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId().getStringRepresentation())) {
-                newElements.add(element.doSelectMapKeys(desiredResult, objects));
-            } else {
-                newElements.add(element);
-            }
+            newElements.add(element.doSelectMapKeys(desiredResult, objects));
         }
-        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
     	
 	}
 
@@ -313,7 +291,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         
     	if (this.isCurrentActionLevel) {
         	
-            final HashSet<String> newSelectedElementIds = new HashSet<String>();
+            final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
             
             for (final ExecutionTarget element : this.elements) {
             	
@@ -324,23 +302,21 @@ final class ExecutionStructureTarget extends ExecutionTarget {
                     throw new ExecutionException(e);
                 }
                 if ((evalResult != null && evalResult.booleanValue()) == desiredResult) {
-                    newSelectedElementIds.add(element.getId().getStringRepresentation());
+                    newElements.add(element);
+                } else {
+                    newElements.add(element.unselectExecutionTarget());
                 }
                 
             }
-            return new ExecutionStructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
             
     	}
         	
         final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
         for (final ExecutionTarget element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId().getStringRepresentation())) {
-                newElements.add(element.doSelectMatching(desiredResult, eval));
-            } else {
-                newElements.add(element);
-            }
+            newElements.add(element.doSelectMatching(desiredResult, eval));
         }
-        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
             
     }
     
@@ -352,7 +328,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         
     	if (this.isCurrentActionLevel) {
         	
-            final HashSet<String> newSelectedElementIds = new HashSet<String>();
+            final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
             
             for (final ExecutionTarget element : this.elements) {
             	
@@ -364,24 +340,24 @@ final class ExecutionStructureTarget extends ExecutionTarget {
                         throw new ExecutionException(e);
                     }
                     if ((evalResult != null && evalResult.booleanValue()) == desiredResult) {
-                        newSelectedElementIds.add(element.getId().getStringRepresentation());
+                        newElements.add(element);
+                    } else {
+                        newElements.add(UnselectedExecutionTargetWrapper.forExecutionTarget(element));
                     }
+                } else {
+                    newElements.add(element.unselectExecutionTarget());
                 }
                 
             }
-            return new ExecutionStructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
             
     	}
         	
         final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
         for (final ExecutionTarget element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId().getStringRepresentation())) {
-                newElements.add(element.doSelectNotNullAndMatching(desiredResult, eval));
-            } else {
-                newElements.add(element);
-            }
+            newElements.add(element.doSelectNotNullAndMatching(desiredResult, eval));
         }
-        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
     	
 	}
 
@@ -392,28 +368,26 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         
     	if (this.isCurrentActionLevel) {
         	
-            final HashSet<String> newSelectedElementIds = new HashSet<String>();
+            final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
             
             for (final ExecutionTarget element : this.elements) {
             	
                 if ((element.getObject() == null) == desiredResult) {
-                    newSelectedElementIds.add(element.getId().getStringRepresentation());
+                    newElements.add(element);
+                } else {
+                    newElements.add(element.unselectExecutionTarget());
                 }
                 
             }
-            return new ExecutionStructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
             
     	}
         	
         final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
         for (final ExecutionTarget element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId().getStringRepresentation())) {
-                newElements.add(element.doSelectNull(desiredResult));
-            } else {
-                newElements.add(element);
-            }
+            newElements.add(element.doSelectNull(desiredResult));
         }
-        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
             
 	}
 
@@ -424,12 +398,12 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         
     	if (this.isCurrentActionLevel) {
         	
-            final HashSet<String> newSelectedElementIds = new HashSet<String>();
+            final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
             
             for (final ExecutionTarget element : this.elements) {
             	
                 if (element.getObject() == null) {
-                    newSelectedElementIds.add(element.getId().getStringRepresentation());
+                    newElements.add(element);
                 } else {
                     Boolean evalResult = null;
                     try {
@@ -438,24 +412,22 @@ final class ExecutionStructureTarget extends ExecutionTarget {
                         throw new ExecutionException(e);
                     }
                     if ((evalResult != null && evalResult.booleanValue()) == desiredResult) {
-                        newSelectedElementIds.add(element.getId().getStringRepresentation());
+                        newElements.add(element);
+                    } else {
+                        newElements.add(element.unselectExecutionTarget());
                     }
                 }
                 
             }
-            return new ExecutionStructureTarget(getId(), newSelectedElementIds, this.elements, this.actionLevel);
+            return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
             
     	}
         	
         final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
         for (final ExecutionTarget element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId().getStringRepresentation())) {
-                newElements.add(element.doSelectNullOrMatching(desiredResult, eval));
-            } else {
-                newElements.add(element);
-            }
+            newElements.add(element.doSelectNullOrMatching(desiredResult, eval));
         }
-        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
     	
 	}
 
@@ -468,13 +440,9 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         
         final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
         for (final ExecutionTarget element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId().getStringRepresentation())) {
-                newElements.add(element.doReplaceWith(replacement));
-            } else {
-                newElements.add(element);
-            }
+            newElements.add(element.doReplaceWith(replacement));
         }
-        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
         
         
     }
@@ -486,15 +454,23 @@ final class ExecutionStructureTarget extends ExecutionTarget {
 
         final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
         for (final ExecutionTarget element : this.elements) {
-            if (this.selectedElementIds.contains(element.getId().getStringRepresentation())) {
-                newElements.add(element.doExecute(executable, normalisation));
-            } else {
-                newElements.add(element);
-            }
+            newElements.add(element.doExecute(executable, normalisation));
         }
-        return new ExecutionStructureTarget(getId(), this.selectedElementIds, newElements, this.actionLevel);
+        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
         
         
+    }
+
+
+    @Override
+    ExecutionTarget reselectExecutionTarget() {
+        return this;
+    }
+
+
+    @Override
+    ExecutionTarget unselectExecutionTarget() {
+        return UnselectedExecutionTargetWrapper.forExecutionTarget(this);
     }
 
     
