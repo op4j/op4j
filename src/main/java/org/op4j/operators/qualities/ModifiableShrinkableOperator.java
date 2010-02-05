@@ -22,6 +22,9 @@ package org.op4j.operators.qualities;
 import org.op4j.functions.evaluators.IEvaluator;
 
 /**
+ * <p>
+ * This interface contains methods for removing elements from a generic operator.
+ * </p> 
  * 
  * @since 1.0
  * 
@@ -30,15 +33,121 @@ import org.op4j.functions.evaluators.IEvaluator;
  */
 public interface ModifiableShrinkableOperator<T> {
 
+    
+    /**
+     * <p>
+     * Removes all the elements in the operator which position (index) in it
+     * matches one the specified indices.
+     * </p>
+     * 
+     * @param indices the positions of the elements to be removed
+     * @return an operator holding the new target objects
+     */
     public ModifiableGrowableOperator<T> removeAllIndexes(final int... indices);
+    
+    
+    /**
+     * <p>
+     * Removes the specified values from the operator.
+     * </p>
+     * 
+     * @param values the values to be removed from the target.
+     * @return an operator holding the new target objects
+     */
     public ModifiableGrowableOperator<T> removeAllEqual(final T... values);
+    
+
+    /**
+     * <p>
+     * Removes from the operator all the elements which evaluate as true
+     * using the specified evaluator.
+     * </p>
+     * 
+     * @param eval the evaluator to be used, which must return Boolean 
+     * @return an operator holding the new target objects
+     */
     public ModifiableGrowableOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
+    
+    
+    /**
+     * <p>
+     * Removes from the operator all the elements which evaluate as false
+     * using the specified evaluator.
+     * </p>
+     * 
+     * @param eval the evaluator to be used, which must return Boolean 
+     * @return an operator holding the new target objects
+     */
     public ModifiableGrowableOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
+    
+    
+    /**
+     * <p>
+     * Removes from the operator all the elements which either are null or evaluate as false
+     * using the specified evaluator.
+     * </p>
+     * 
+     * @param eval the evaluator to be used, which must return Boolean 
+     * @return an operator holding the new target objects
+     */
     public ModifiableGrowableOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+   
+    
+    /**
+     * <p>
+     * Removes from the operator all the elements which are not null and evaluate as false
+     * using the specified evaluator.
+     * </p>
+     * 
+     * @param eval the evaluator to be used, which must return Boolean 
+     * @return an operator holding the new target objects
+     */
     public ModifiableGrowableOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    
+    
+    /**
+     * <p>
+     * Removes from the operator all the elements which are not null and evaluate as true
+     * using the specified evaluator.
+     * </p>
+     * 
+     * @param eval the evaluator to be used, which must return Boolean 
+     * @return an operator holding the new target objects
+     */
     public ModifiableGrowableOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+
+    
+    /**
+     * <p>
+     * Removes from the operator all the elements which either are null or evaluate as true
+     * using the specified evaluator.
+     * </p>
+     * 
+     * @param eval the evaluator to be used, which must return Boolean 
+     * @return an operator holding the new target objects
+     */
     public ModifiableGrowableOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    
+    
+    /**
+     * <p>
+     * Removes all the elements in the operator except those which position (index) in it
+     * matches one of the specified indices.
+     * </p>
+     * 
+     * @param indices the positions of the elements to be kept
+     * @return an operator holding the new target objects
+     */
     public ModifiableGrowableOperator<T> removeAllIndexesNot(final int... indices);
+    
+    
+    /**
+     * <p>
+     * Remove all the null elements in the operator.
+     * </p>
+     * 
+     * @return an operator holding the new target objects
+     */
     public ModifiableGrowableOperator<T> removeAllNull();
     
 }
