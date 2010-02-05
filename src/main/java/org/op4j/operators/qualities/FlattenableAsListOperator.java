@@ -27,6 +27,10 @@ import org.op4j.operators.intf.list.Level0ListOperator;
 
 
 /**
+ * <p>
+ * This interface defines methods for flattening "list of *" two-level structures into
+ * simple list structures.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -35,6 +39,15 @@ import org.op4j.operators.intf.list.Level0ListOperator;
  */
 public interface FlattenableAsListOperator<T> {
     
+    
+    /**
+     * <p>
+     * Flattens a "list of *" two-level structure into a simple list, by creating
+     * a list containing all the elements of the original second-level structures. 
+     * </p>
+     * 
+     * @return an operator on the modified target object
+     */
     public Level0ListOperator<T> flatten();
 	
 }

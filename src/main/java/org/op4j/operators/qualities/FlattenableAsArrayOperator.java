@@ -28,6 +28,10 @@ import org.op4j.operators.intf.array.Level0ArrayOperator;
 
 
 /**
+ * <p>
+ * This interface defines methods for flattening "array of *" two-level structures into
+ * simple array structures.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -35,7 +39,17 @@ import org.op4j.operators.intf.array.Level0ArrayOperator;
  *
  */
 public interface FlattenableAsArrayOperator<T> {
+
     
+    /**
+     * <p>
+     * Flattens an "array of *" two-level structure into a simple array, by creating
+     * an array containing all the elements of the original second-level structures. 
+     * </p>
+     * 
+     * @param type the type of the new array elements
+     * @return an operator on the modified target object
+     */
     public Level0ArrayOperator<T> flatten(final Type<T> type);
 	
 }

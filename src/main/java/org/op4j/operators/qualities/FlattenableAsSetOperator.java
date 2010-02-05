@@ -27,6 +27,10 @@ import org.op4j.operators.intf.set.Level0SetOperator;
 
 
 /**
+ * <p>
+ * This interface defines methods for flattening "set of *" two-level structures into
+ * simple set structures.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -35,6 +39,15 @@ import org.op4j.operators.intf.set.Level0SetOperator;
  */
 public interface FlattenableAsSetOperator<T> {
     
+    
+    /**
+     * <p>
+     * Flattens a "set of *" two-level structure into a simple set, by creating
+     * a set containing all the elements of the original second-level structures. 
+     * </p>
+     * 
+     * @return an operator on the modified target object
+     */
     public Level0SetOperator<T> flatten();
 	
 }
