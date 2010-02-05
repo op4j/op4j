@@ -20,8 +20,7 @@
 
 package org.op4j.target;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 import org.apache.commons.lang.Validate;
 
@@ -37,7 +36,7 @@ final class ExecutionTargetId {
     
     public static final ExecutionTargetId ROOT = new ExecutionTargetId(null, 0); 
     
-	private final List<Integer> components = new ArrayList<Integer>();
+	private final int[] components;
 	private final int level;
 	
 	
@@ -45,21 +44,22 @@ final class ExecutionTargetId {
 	public ExecutionTargetId(final ExecutionTargetId parent, final int index) {
 		
 		if (parent != null) {
-			this.components.addAll(parent.getComponents());
-	        this.components.add(Integer.valueOf(index));
+		    final int[] parentComponents = parent.getComponents();
+			this.components = Arrays.copyOf(parentComponents, parentComponents.length + 1);
+	        this.components[parentComponents.length] = index;
 		} else {
 			/* ID for first level is always 0 */
 			Validate.isTrue(index == 0, "Index for first level must be 0");
-	        this.components.add(Integer.valueOf(index));
+	        this.components = new int[] { index };
 		}
 		
 		
-		this.level = this.components.size();
+		this.level = this.components.length;
 		
 	}
 	
 	
-	public List<Integer> getComponents() {
+	public int[] getComponents() {
 		return this.components;
 	}
 	

@@ -20,11 +20,7 @@
 
 package org.op4j.target;
 
-import java.util.List;
-
-import org.apache.commons.lang.Validate;
 import org.op4j.functions.ExecCtx;
-import org.op4j.target.ExecutionTargetId;
 
 /**
  * 
@@ -48,48 +44,25 @@ final class ExecCtxImpl implements ExecCtx {
     
     public ExecCtxImpl(final ExecutionTargetId targetId) {
         super();
-        final List<Integer> ids = targetId.getComponents();
+        final int[] ids = targetId.getComponents();
         initialize(
-                (ids.size() >= 2? ids.get(1) : null),
-                (ids.size() >= 3? ids.get(2) : null),
-                (ids.size() >= 4? ids.get(3) : null),
-                (ids.size() >= 5? ids.get(4) : null),
-                (ids.size() >= 6? ids.get(5) : null));
-    }
-    
-    
-    public ExecCtxImpl(final Integer level0Index, final Integer level1Index, final Integer level2Index, final Integer level3Index, final Integer level4Index) {
-        super();
-        initialize(level0Index, level1Index, level2Index, level3Index, level4Index);
+                Integer.valueOf(ids.length - 2),
+                (ids.length >= 2? Integer.valueOf(ids[1]) : null),
+                (ids.length >= 3? Integer.valueOf(ids[2]) : null),
+                (ids.length >= 4? Integer.valueOf(ids[3]) : null),
+                (ids.length >= 5? Integer.valueOf(ids[4]) : null),
+                (ids.length >= 6? Integer.valueOf(ids[5]) : null));
     }
 
     
-    private void initialize(final Integer newLevel0Index, final Integer newLevel1Index, final Integer newLevel2Index, final Integer newLevel3Index, final Integer newLevel4Index) {
+    private void initialize(final Integer newLevel, final Integer newLevel0Index, final Integer newLevel1Index, final Integer newLevel2Index, final Integer newLevel3Index, final Integer newLevel4Index) {
 
-        Validate.notNull(newLevel0Index, "Level 0 index cannot be null");
-        Validate.isTrue(((newLevel2Index != null && newLevel1Index != null) || newLevel2Index == null),
-                "Cannot specify level 2 index if no level 1 index is specified");
-        Validate.isTrue(((newLevel3Index != null && newLevel2Index != null) || newLevel3Index == null),
-                "Cannot specify level 3 index if no level 2 index is specified");
-        Validate.isTrue(((newLevel4Index != null && newLevel3Index != null) || newLevel4Index == null),
-                "Cannot specify level 4 index if no level 3 index is specified");
-        
+        this.level = newLevel;
         this.level0Index = newLevel0Index;
         this.level1Index = newLevel1Index;
         this.level2Index = newLevel2Index;
         this.level3Index = newLevel3Index;
         this.level4Index = newLevel4Index;
-        if (this.level4Index != null) {
-            this.level = Integer.valueOf(4);
-        } else if (this.level3Index != null) {
-            this.level = Integer.valueOf(3);
-        } else if (this.level2Index != null) {
-            this.level = Integer.valueOf(2);
-        } else if (this.level1Index != null) {
-            this.level = Integer.valueOf(1);
-        } else {
-            this.level = Integer.valueOf(0);
-        }
         
     }
     
