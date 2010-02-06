@@ -44,7 +44,7 @@ final class ExecCtxImpl implements ExecCtx {
     
     public ExecCtxImpl(final ExecutionTargetId targetId) {
         super();
-        final int[] ids = targetId.getComponents();
+        final int[] ids = targetId.components;
         initialize(
                 Integer.valueOf(ids.length - 2),
                 (ids.length >= 2? Integer.valueOf(ids[1]) : null),

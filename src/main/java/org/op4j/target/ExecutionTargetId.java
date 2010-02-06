@@ -20,8 +20,6 @@
 
 package org.op4j.target;
 
-import java.util.Arrays;
-
 import org.apache.commons.lang.Validate;
 
 /**
@@ -36,16 +34,19 @@ final class ExecutionTargetId {
     
     public static final ExecutionTargetId ROOT = new ExecutionTargetId(null, 0); 
     
-	private final int[] components;
-	private final int level;
+	final int[] components;
+	final int level;
 	
 	
 	
 	public ExecutionTargetId(final ExecutionTargetId parent, final int index) {
 		
 		if (parent != null) {
-		    final int[] parentComponents = parent.getComponents();
-			this.components = Arrays.copyOf(parentComponents, parentComponents.length + 1);
+		    final int[] parentComponents = parent.components;
+		    this.components = new int[parentComponents.length + 1];
+		    for (int i = 0, z = parentComponents.length; i < z; i++) {
+		        this.components[i] = parentComponents[i];
+		    }
 	        this.components[parentComponents.length] = index;
 		} else {
 			/* ID for first level is always 0 */
@@ -55,16 +56,6 @@ final class ExecutionTargetId {
 		
 		this.level = this.components.length;
 		
-	}
-	
-	
-	public int[] getComponents() {
-		return this.components;
-	}
-	
-	
-	public int getLevel() {
-		return this.level;
 	}
 	
 	

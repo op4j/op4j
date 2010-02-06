@@ -58,7 +58,7 @@ final class ExecutionNullNodeTarget extends ExecutionNodeTarget {
 
     @Override
     public String toString() {
-        return "NullNodeTarget [id=" + getId() + ", object=NULL]";
+        return "NullNodeTarget [id=" + this.id + ", object=NULL]";
     }
 
     

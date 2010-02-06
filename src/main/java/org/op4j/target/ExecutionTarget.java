@@ -41,13 +41,13 @@ public abstract class ExecutionTarget extends Target {
     private static List<Integer> KEY_INDEX = Arrays.asList(new Integer[] { Integer.valueOf(0) });
     private static List<Integer> VALUE_INDEX = Arrays.asList(new Integer[] { Integer.valueOf(1) });
     
-    private final ExecutionTargetId id;
+    final ExecutionTargetId id;
 
     
     
     @SuppressWarnings("unchecked")
     public static ExecutionTarget forObject(final Object object, final Normalisation targetNormalisation) {
-        final ExecutionTargetId id = new ExecutionTargetId(ExecutionTargetId.ROOT, 0);
+        final ExecutionTargetId id = ExecutionTargetId.ROOT;
         Object normalisedObject = null;
         switch (targetNormalisation) {
             case NONE:
@@ -140,11 +140,6 @@ public abstract class ExecutionTarget extends Target {
     protected ExecutionTarget(final ExecutionTargetId id) {
         super();
         this.id = id;
-    }
-
-    
-    ExecutionTargetId getId() {
-        return this.id;
     }
     
     

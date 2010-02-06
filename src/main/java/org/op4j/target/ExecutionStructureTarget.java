@@ -53,7 +53,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         super(id);
         this.elements = elements;
         this.actionLevel = actionLevel;
-        this.isCurrentActionLevel = (actionLevel == id.getLevel());
+        this.isCurrentActionLevel = (actionLevel == id.level);
         
     }
 	
@@ -96,7 +96,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         for (final ExecutionTarget element : this.elements) {
             newElements.add(element.doIterate());
         }
-        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel + 1);
+        return new ExecutionStructureTarget(this.id, newElements, this.actionLevel + 1);
         
     }
 
@@ -170,7 +170,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
                     break;
             }
             
-            return ExecutionNodeTarget.forObject(getId(), newObject);
+            return ExecutionNodeTarget.forObject(this.id, newObject);
             
         }
             
@@ -178,7 +178,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         for (final ExecutionTarget element : this.elements) {
             newElements.add(element.doEndIterate(structure, componentClass));
         }
-        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel - 1);
+        return new ExecutionStructureTarget(this.id, newElements, this.actionLevel - 1);
        
     }
 
@@ -196,7 +196,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
             for (final ExecutionTarget element : this.elements) {
                 newElements.add(element.reselectExecutionTarget());
             }
-            return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
+            return new ExecutionStructureTarget(this.id, newElements, this.actionLevel);
             
         }
             
@@ -204,7 +204,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         for (final ExecutionTarget element : this.elements) {
             newElements.add(element.doEndSelect());
         }
-        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
+        return new ExecutionStructureTarget(this.id, newElements, this.actionLevel);
             
     }
 
@@ -229,7 +229,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
                 i++;
                 
             }
-            return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
+            return new ExecutionStructureTarget(this.id, newElements, this.actionLevel);
             
     	}
         	
@@ -237,7 +237,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         for (final ExecutionTarget element : this.elements) {
             newElements.add(element.doSelectIndex(desiredResult, positions));
         }
-        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
+        return new ExecutionStructureTarget(this.id, newElements, this.actionLevel);
             
 	}
 
@@ -267,7 +267,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
                 }
                 
             }
-            return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
+            return new ExecutionStructureTarget(this.id, newElements, this.actionLevel);
             
     	}
         	
@@ -275,7 +275,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         for (final ExecutionTarget element : this.elements) {
             newElements.add(element.doSelectMapKeys(desiredResult, objects));
         }
-        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
+        return new ExecutionStructureTarget(this.id, newElements, this.actionLevel);
     	
 	}
 
@@ -293,7 +293,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
             	
                 Boolean evalResult = null;
                 try {
-                    evalResult = eval.execute(element.getObject(), new ExecCtxImpl(element.getId())); 
+                    evalResult = eval.execute(element.getObject(), new ExecCtxImpl(element.id)); 
                 } catch (Exception e) {
                     throw new ExecutionException(e);
                 }
@@ -304,7 +304,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
                 }
                 
             }
-            return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
+            return new ExecutionStructureTarget(this.id, newElements, this.actionLevel);
             
     	}
         	
@@ -312,7 +312,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         for (final ExecutionTarget element : this.elements) {
             newElements.add(element.doSelectMatching(desiredResult, eval));
         }
-        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
+        return new ExecutionStructureTarget(this.id, newElements, this.actionLevel);
             
     }
     
@@ -331,7 +331,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
                 if (element.getObject() != null) {
                     Boolean evalResult = null;
                     try {
-                        evalResult = eval.execute(element.getObject(), new ExecCtxImpl(element.getId())); 
+                        evalResult = eval.execute(element.getObject(), new ExecCtxImpl(element.id)); 
                     } catch (Exception e) {
                         throw new ExecutionException(e);
                     }
@@ -345,7 +345,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
                 }
                 
             }
-            return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
+            return new ExecutionStructureTarget(this.id, newElements, this.actionLevel);
             
     	}
         	
@@ -353,7 +353,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         for (final ExecutionTarget element : this.elements) {
             newElements.add(element.doSelectNotNullAndMatching(desiredResult, eval));
         }
-        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
+        return new ExecutionStructureTarget(this.id, newElements, this.actionLevel);
     	
 	}
 
@@ -375,7 +375,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
                 }
                 
             }
-            return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
+            return new ExecutionStructureTarget(this.id, newElements, this.actionLevel);
             
     	}
         	
@@ -383,7 +383,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         for (final ExecutionTarget element : this.elements) {
             newElements.add(element.doSelectNull(desiredResult));
         }
-        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
+        return new ExecutionStructureTarget(this.id, newElements, this.actionLevel);
             
 	}
 
@@ -403,7 +403,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
                 } else {
                     Boolean evalResult = null;
                     try {
-                        evalResult = eval.execute(element.getObject(), new ExecCtxImpl(element.getId())); 
+                        evalResult = eval.execute(element.getObject(), new ExecCtxImpl(element.id)); 
                     } catch (Exception e) {
                         throw new ExecutionException(e);
                     }
@@ -415,7 +415,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
                 }
                 
             }
-            return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
+            return new ExecutionStructureTarget(this.id, newElements, this.actionLevel);
             
     	}
         	
@@ -423,7 +423,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         for (final ExecutionTarget element : this.elements) {
             newElements.add(element.doSelectNullOrMatching(desiredResult, eval));
         }
-        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
+        return new ExecutionStructureTarget(this.id, newElements, this.actionLevel);
     	
 	}
 
@@ -438,7 +438,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         for (final ExecutionTarget element : this.elements) {
             newElements.add(element.doReplaceWith(replacement));
         }
-        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
+        return new ExecutionStructureTarget(this.id, newElements, this.actionLevel);
         
         
     }
@@ -452,7 +452,7 @@ final class ExecutionStructureTarget extends ExecutionTarget {
         for (final ExecutionTarget element : this.elements) {
             newElements.add(element.doExecute(executable, normalisation));
         }
-        return new ExecutionStructureTarget(getId(), newElements, this.actionLevel);
+        return new ExecutionStructureTarget(this.id, newElements, this.actionLevel);
         
         
     }

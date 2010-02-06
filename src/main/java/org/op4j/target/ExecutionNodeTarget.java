@@ -97,12 +97,12 @@ abstract class ExecutionNodeTarget extends ExecutionTarget{
         
         int i = 0;
         for (final Object element : elements) {
-            final ExecutionTargetId elementId = new ExecutionTargetId(getId(), i);
+            final ExecutionTargetId elementId = new ExecutionTargetId(this.id, i);
             newElements.add(ExecutionNodeTarget.forObject(elementId, element));
             i++;
         }
 
-        return new ExecutionStructureTarget(getId(), newElements, getId().getLevel());
+        return new ExecutionStructureTarget(this.id, newElements, this.id.level);
         
     }
 
@@ -125,7 +125,7 @@ abstract class ExecutionNodeTarget extends ExecutionTarget{
 
     	final IFunction<Object,Object> objectCommand = (IFunction<Object,Object>) executable;
     	try {
-    	    Object result = objectCommand.execute(getObject(), new ExecCtxImpl(getId()));
+    	    Object result = objectCommand.execute(getObject(), new ExecCtxImpl(this.id));
     	    switch (normalisation) {
                 case ARRAY:
                     NormalisationUtils.checkIsArray(Types.OBJECT, result);
@@ -229,7 +229,7 @@ abstract class ExecutionNodeTarget extends ExecutionTarget{
                     break;
             	case NONE:
     	    }
-            return ExecutionNodeTarget.forObject(getId(), result);
+            return ExecutionNodeTarget.forObject(this.id, result);
         } catch (ExecutionException e) {
             throw e;
     	} catch (Throwable t) {
@@ -288,7 +288,7 @@ abstract class ExecutionNodeTarget extends ExecutionTarget{
 
     @Override
     final ExecutionTarget doReplaceWith(Object replacement) {
-        return ExecutionNodeTarget.forObject(getId(), replacement);
+        return ExecutionNodeTarget.forObject(this.id, replacement);
     }
 
 

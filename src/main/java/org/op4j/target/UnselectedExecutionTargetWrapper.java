@@ -44,7 +44,7 @@ final class UnselectedExecutionTargetWrapper extends ExecutionTarget {
     
     
     private UnselectedExecutionTargetWrapper(final ExecutionTarget executionTarget) {
-        super(executionTarget.getId());
+        super(executionTarget.id);
         this.executionTarget = executionTarget;
     }
 

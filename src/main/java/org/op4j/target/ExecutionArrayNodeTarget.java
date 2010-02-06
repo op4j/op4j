@@ -59,7 +59,7 @@ final class ExecutionArrayNodeTarget extends ExecutionNodeTarget{
 
     @Override
     public String toString() {
-        return "ArrayNodeTarget [id=" + getId() + ", object=" + Arrays.asList(this.object) + "]";
+        return "ArrayNodeTarget [id=" + this.id + ", object=" + Arrays.asList(this.object) + "]";
     }
 
     

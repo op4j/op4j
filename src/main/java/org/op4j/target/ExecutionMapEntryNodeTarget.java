@@ -62,7 +62,7 @@ final class ExecutionMapEntryNodeTarget extends ExecutionNodeTarget {
 
     @Override
     public String toString() {
-        return "MapEntryNodeTarget [id=" + getId() + ", object=" + this.object + "]";
+        return "MapEntryNodeTarget [id=" + this.id + ", object=" + this.object + "]";
     }
 
     

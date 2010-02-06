@@ -61,7 +61,7 @@ final class ExecutionObjectNodeTarget extends ExecutionNodeTarget {
 
     @Override
     public String toString() {
-        return "ObjectNodeTarget [id=" + getId() + ", object=" + this.object + "]";
+        return "ObjectNodeTarget [id=" + this.id + ", object=" + this.object + "]";
     }
 
     
