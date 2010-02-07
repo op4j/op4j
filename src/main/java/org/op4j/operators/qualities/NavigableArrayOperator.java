@@ -22,6 +22,9 @@ package org.op4j.operators.qualities;
 import org.javaruntype.type.Type;
 
 /**
+ * <p>
+ * This interface contains methods for iterating arrays.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -30,6 +33,19 @@ import org.javaruntype.type.Type;
  */
 public interface NavigableArrayOperator<T>  {
 
+
+    /**
+     * <p>
+     * Iterates the target array. After executing this method, any further operations
+     * will be applied on each of the array elements until an "endFor()" method is called.
+     * </p>
+     * <p>
+     * This method requires the type of the array elements to be specified.
+     * </p>
+     * 
+     * @param elementType the type of the array elements.
+     * @return an operator which will execute all operations on each element of the array.
+     */
     public NavigatingArrayOperator<T> forEach(final Type<T> elementType);
 	
 }

@@ -25,6 +25,9 @@ package org.op4j.operators.qualities;
 
 
 /**
+ * <p>
+ * This interface contains methods for ending map entry iterations.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -33,6 +36,16 @@ package org.op4j.operators.qualities;
  */
 public interface NavigatingMapOperator<K,V> {
 
+    
+    /**
+     * <p>
+     * Ends the current iteration. After the execution of this method, all subsequent operations
+     * will be applied on the iterated map as a whole instead of each entry.
+     * </p>
+     * 
+     * @return an operator which will execute all operations on the iterated map as a whole.
+     */
     public NavigableMapOperator<K,V> endFor();
+    
 	
 }

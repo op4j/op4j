@@ -53,7 +53,7 @@ import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.converters.ToMapOfArray;
 import org.op4j.functions.converters.ToString;
 import org.op4j.functions.evaluators.AbstractBooleanEvaluator;
-import org.op4j.functions.evaluators.MethodCall;
+import org.op4j.functions.evaluators.Call;
 import org.op4j.functions.evaluators.Ognl;
 
 /**
@@ -117,7 +117,7 @@ watch.start();
         
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().get());
         
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().eval(MethodCall.forInteger("length")).get());
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().eval(Call.forInteger("length")).get());
         
         
         final BigDecimal bd = new BigDecimal("3455234.6325");
@@ -408,9 +408,9 @@ watch.start();
         System.out.println(Op.onList(listOfListOfString1).forEach().asListOf(Types.STRING).forEach().get());
         
         
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().eval(MethodCall.forInteger("length")).get());
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().ifIndex(0).add("").removeAllTrue(MethodCall.forBoolean("isEmpty")).get());
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().removeAllTrue(MethodCall.forBoolean("isEmpty")).get());
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().eval(Call.forInteger("length")).get());
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().ifIndex(0).add("").removeAllTrue(Call.forBoolean("isEmpty")).get());
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().removeAllTrue(Call.forBoolean("isEmpty")).get());
         
 //        System.out.println(Op.onMap(map1).forEachEntry().eval(Ognl.forString("'in ' + #target.key + ' you say ' + #target.value")).get());
         

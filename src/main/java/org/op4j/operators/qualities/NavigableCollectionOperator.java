@@ -20,6 +20,9 @@
 package org.op4j.operators.qualities;
 
 /**
+ * <p>
+ * This interface contains methods for iterating collections.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -28,6 +31,15 @@ package org.op4j.operators.qualities;
  */
 public interface NavigableCollectionOperator<T>  {
 
+    
+    /**
+     * <p>
+     * Iterates the target collection. After executing this method, any further operations
+     * will be applied on each of the collection elements until an "endFor()" method is called.
+     * </p>
+     * 
+     * @return an operator which will execute all operations on each element of the collection.
+     */
     public NavigatingCollectionOperator<T> forEach();
 	
 }

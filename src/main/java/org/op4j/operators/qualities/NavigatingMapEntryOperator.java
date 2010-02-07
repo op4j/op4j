@@ -25,6 +25,9 @@ package org.op4j.operators.qualities;
 
 
 /**
+ * <p>
+ * This interface contains methods for ending the selection of keys/values in map entries.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -33,6 +36,15 @@ package org.op4j.operators.qualities;
  */
 public interface NavigatingMapEntryOperator {
 
+    
+    /**
+     * <p>
+     * Stops the selection of key/value. After the execution of this method, all subsequent operations
+     * will be applied on the map entry as a whole instead of only on its key or value.
+     * </p>
+     * 
+     * @return an operator which will execute all operations on the map entry as a whole.
+     */
     public NavigableMapEntryOperator endOn();
 	
 }

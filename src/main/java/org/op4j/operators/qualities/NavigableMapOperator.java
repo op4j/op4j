@@ -20,6 +20,9 @@
 package org.op4j.operators.qualities;
 
 /**
+ * <p>
+ * This interface contains methods for iterating the entries in a map.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -28,6 +31,17 @@ package org.op4j.operators.qualities;
  */
 public interface NavigableMapOperator<K,V>  {
 
+    
+    /**
+     * <p>
+     * Iterates the target map's entries. After executing this method, any further operations
+     * will be applied on each of the map entries (java.util.Map.Entry<?,?> objects) until 
+     * an "endFor()" method is called.
+     * </p>
+     * 
+     * @return an operator which will execute all operations on each entry of the map.
+     */
     public NavigatingMapOperator<K,V> forEachEntry();
+    
    
 }

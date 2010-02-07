@@ -25,6 +25,9 @@ package org.op4j.operators.qualities;
 
 
 /**
+ * <p>
+ * This interface contains methods for accessing keys and values at map entries.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -33,8 +36,29 @@ package org.op4j.operators.qualities;
  */
 public interface NavigableMapEntryOperator {
 
-    public NavigatingMapEntryOperator onKey();
     
+    /**
+     * <p>
+     * Accesses the key of a map entry. After the execution of this method, all subsequent
+     * operations will be performed on the map entry's key, until an "endOn()" method
+     * is executed.
+     * </p>
+     * 
+     * @return an operator which will execute all operations on the key of the map entry.
+     */
+    public NavigatingMapEntryOperator onKey();
+
+    
+    /**
+     * <p>
+     * Accesses the value of a map entry. After the execution of this method, all subsequent
+     * operations will be performed on the map entry's value, until an "endOn()" method
+     * is executed.
+     * </p>
+     * 
+     * @return an operator which will execute all operations on the value of the map entry.
+     */
     public NavigatingMapEntryOperator onValue();
 	
+    
 }
