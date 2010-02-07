@@ -42,7 +42,7 @@ public final class ExecutionTarget extends Target {
     
     private final Object target;
     
-    private int currentBlockLevel;
+    private final int currentBlockLevel;
     
     private final ExecutionTargetOperation[][] operations;
     private final int[] previousBlockLevels;
