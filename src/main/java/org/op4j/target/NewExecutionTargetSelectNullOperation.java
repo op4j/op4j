@@ -20,8 +20,6 @@
 
 package org.op4j.target;
 
-import java.util.Arrays;
-import java.util.Collection;
 
 /**
  * 
@@ -30,39 +28,32 @@ import java.util.Collection;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class ExecutionMapEntryPartNodeTarget extends ExecutionNodeTarget {
-    
-    
-    private final MapEntryPart object;
+final class NewExecutionTargetSelectNullOperation implements NewExecutionTargetOperation {
+
+    private final int internalBlock;
+    private final boolean desiredResult;
 
     
     
-    
-    protected ExecutionMapEntryPartNodeTarget(final ExecutionTargetId id, final MapEntryPart object) {
-		super(id);
-        this.object = object;
-	}
-
-
-
-    @Override
-    Object getObject() {
-        return this.object;
+    public NewExecutionTargetSelectNullOperation(final int internalBlock, final boolean desiredResult) {
+        super();
+        this.internalBlock = internalBlock;
+        this.desiredResult = desiredResult;
     }
-
     
-	
-	@Override
-    Collection<?> getIterationElements() {
-        return Arrays.asList(new Object[] { this.object.getPart() });
-	}
     
+    
+    public Object execute(final Object target, final NewExecutionTargetOperation[][] operations, final int[] indices) {
 
-
-    @Override
-    public String toString() {
-        return "MapEntryPartNodeTarget [id=" + this.id + ", object=" + this.object + "]";
+        if ((target == null) == this.desiredResult) {
+            Object result = target;
+            for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
+                result = operations[this.internalBlock][j].execute(result, operations, indices);
+            }
+            return result;
+        }
+        return target;
+        
     }
-
     
 }

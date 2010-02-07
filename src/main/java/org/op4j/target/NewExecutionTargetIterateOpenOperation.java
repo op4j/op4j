@@ -20,7 +20,6 @@
 
 package org.op4j.target;
 
-import org.apache.commons.lang.Validate;
 
 /**
  * 
@@ -29,34 +28,27 @@ import org.apache.commons.lang.Validate;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class ExecutionTargetId {
+final class NewExecutionTargetIterateOpenOperation implements NewExecutionTargetOperation {
+
+    private final int internalBlock;
 
     
-    public static final ExecutionTargetId ROOT = new ExecutionTargetId(null, 0); 
     
-	final int[] components;
-	final int level;
-	
-	
-	
-	public ExecutionTargetId(final ExecutionTargetId parent, final int index) {
-		
-		if (parent != null) {
-		    final int[] parentComponents = parent.components;
-		    this.components = new int[parentComponents.length + 1];
-		    for (int i = 0, z = parentComponents.length; i < z; i++) {
-		        this.components[i] = parentComponents[i];
-		    }
-	        this.components[parentComponents.length] = index;
-		} else {
-			/* ID for first level is always 0 */
-			Validate.isTrue(index == 0, "Index for first level must be 0");
-	        this.components = new int[] { index };
-		}
-		
-		this.level = this.components.length;
-		
-	}
-	
-	
+    public NewExecutionTargetIterateOpenOperation(final int internalBlock) {
+        super();
+        this.internalBlock = internalBlock;
+    }
+
+    
+    public NewExecutionTargetIterateClosedOperation close(final Class<?> arrayComponentClass) {
+        return new NewExecutionTargetIterateClosedOperation(this.internalBlock, arrayComponentClass);
+    }
+    
+    
+    
+    public Object execute(final Object target, final NewExecutionTargetOperation[][] operations, final int[] indices) {
+        throw new IllegalStateException("Cannot execute while open");
+    }
+    
+    
 }

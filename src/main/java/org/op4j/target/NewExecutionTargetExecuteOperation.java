@@ -20,9 +20,6 @@
 
 package org.op4j.target;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -30,7 +27,7 @@ import java.util.Set;
 import org.javaruntype.type.Types;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.target.Target.Normalisation;
 import org.op4j.util.NormalisationUtils;
 
 /**
@@ -40,93 +37,28 @@ import org.op4j.util.NormalisationUtils;
  * @author Daniel Fern&aacute;ndez
  *
  */
-abstract class ExecutionNodeTarget extends ExecutionTarget{
+final class NewExecutionTargetExecuteOperation implements NewExecutionTargetOperation {
+
+    private final IFunction<Object,Object> executable;
+    private final Normalisation normalisation;
 
     
     
-    static ExecutionNodeTarget forObject(final ExecutionTargetId id, final Object object) {
-
-        if (object == null) {
-            return new ExecutionNullNodeTarget(id);
-        } else if (object instanceof Object[]) {
-            return new ExecutionArrayNodeTarget(id, (Object[]) object);
-        } else if (object instanceof List<?>) {
-            return new ExecutionListNodeTarget(id, (List<?>) object);
-        } else if (object instanceof Set<?>) {
-            return new ExecutionSetNodeTarget(id, (Set<?>) object);
-        } else if (object instanceof Map<?,?>) {
-            return new ExecutionMapNodeTarget(id, (Map<?,?>) object);
-        } else if (object instanceof Map.Entry<?,?>) {
-            return new ExecutionMapEntryNodeTarget(id, (Map.Entry<?,?>) object);
-        } else if (object instanceof MapEntryPart) {
-            return new ExecutionMapEntryPartNodeTarget(id, (MapEntryPart) object);
-        } else {
-            return new ExecutionObjectNodeTarget(id, object);
-        }
-        
-    }
-
-	
-	protected ExecutionNodeTarget(final ExecutionTargetId id) {
-		super(id);
-	}
-
-
-
-    @Override
-    final int getExecutionLevel() {
-        throw new IllegalStateException("Cannot retrieve execution level on a node");
-    }
-
-    
-    @Override
-    final List<ExecutionNodeTarget> getExecutionNodes() {
-        return Arrays.asList(new ExecutionNodeTarget[] { this });
-    }
-    
-
-    abstract Collection<?> getIterationElements();
-    
-
-    
-    @Override
-    final ExecutionTarget doIterate() {
-        
-        final Collection<?> elements = getIterationElements();
-        final List<ExecutionTarget> newElements = new ArrayList<ExecutionTarget>();
-        
-        int i = 0;
-        for (final Object element : elements) {
-            final ExecutionTargetId elementId = new ExecutionTargetId(this.id, i);
-            newElements.add(ExecutionNodeTarget.forObject(elementId, element));
-            i++;
-        }
-
-        return new ExecutionStructureTarget(this.id, newElements, this.id.level);
-        
-    }
-
-
-    
-    
-    
-    
-    @Override
-    final ExecutionTarget doEndIterate(final Structure structure, final Class<?> componentClass) {
-        throw new IllegalStateException("Cannot end iteration on a node");
-    }
-
-
-
-    
-	@Override
     @SuppressWarnings("unchecked")
-    final ExecutionTarget doExecute(final IFunction<?,?> executable, final Normalisation normalisation) {
+    public NewExecutionTargetExecuteOperation(final IFunction<?,?> executable, final Normalisation normalisation) {
+        super();
+        this.executable = (IFunction<Object,Object>) executable;
+        this.normalisation = normalisation;
+    }
+    
+    
+    
+    @SuppressWarnings("unchecked")
+    public Object execute(final Object target, final NewExecutionTargetOperation[][] operations, final int[] indices) {
 
-    	final IFunction<Object,Object> objectCommand = (IFunction<Object,Object>) executable;
-    	try {
-    	    Object result = objectCommand.execute(getObject(), new ExecCtxImpl(this.id));
-    	    switch (normalisation) {
+        try {
+            Object result = this.executable.execute(target, new NewExecCtxImpl(indices));
+            switch (this.normalisation) {
                 case ARRAY:
                     NormalisationUtils.checkIsArray(Types.OBJECT, result);
                     result = NormalisationUtils.normaliseArray((Object[])result);
@@ -227,81 +159,15 @@ abstract class ExecutionNodeTarget extends ExecutionTarget{
                     NormalisationUtils.checkIsSetOfSet(Types.OBJECT, result);
                     result = NormalisationUtils.normaliseSetOfSet((Set<Set<Object>>)result);
                     break;
-            	case NONE:
-    	    }
-            return ExecutionNodeTarget.forObject(this.id, result);
+                case NONE:
+            }
+            return result;
         } catch (ExecutionException e) {
             throw e;
-    	} catch (Throwable t) {
-    	    throw new ExecutionException(t);
-    	}
-    	
-    }
-
-
-
-    
-    @Override
-    final ExecutionTarget doEndSelect() {
-        throw new IllegalStateException("Cannot select on a node");
-    }
-
-	
-	@Override
-	final ExecutionTarget doSelectIndex(final boolean desiredResult, final List<Integer> positions) {
-        throw new IllegalStateException("Cannot select on a node");
-	}
-
-
-	@Override
-	final ExecutionTarget doSelectMapKeys(final boolean desiredResult, final List<Object> objects) {
-        throw new IllegalStateException("Cannot select on a node");
-	}
-
-	
-    @Override
-    final ExecutionTarget doSelectMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
-        throw new IllegalStateException("Cannot select on a node");
-    }
-
-
-	@Override
-	final ExecutionTarget doSelectNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
-        throw new IllegalStateException("Cannot select on a node");
-	}
-
-
-	@Override
-	final ExecutionTarget doSelectNull(final boolean desiredResult) {
-        throw new IllegalStateException("Cannot select on a node");
-	}
-
-
-	@Override
-	final ExecutionTarget doSelectNullOrMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
-        throw new IllegalStateException("Cannot select on a node");
-	}
-
-
-
-
-
-    @Override
-    final ExecutionTarget doReplaceWith(Object replacement) {
-        return ExecutionNodeTarget.forObject(this.id, replacement);
-    }
-
-
-    
-    @Override
-    final ExecutionTarget reselectExecutionTarget() {
-        return this;
-    }
-
-    
-    @Override
-    final ExecutionTarget unselectExecutionTarget() {
-        return UnselectedExecutionTargetWrapper.forExecutionTarget(this);
+        } catch (Throwable t) {
+            throw new ExecutionException(t);
+        }
+        
     }
     
 }

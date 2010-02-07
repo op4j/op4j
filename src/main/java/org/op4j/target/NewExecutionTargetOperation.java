@@ -20,8 +20,6 @@
 
 package org.op4j.target;
 
-import java.util.Collection;
-
 
 /**
  * 
@@ -30,36 +28,9 @@ import java.util.Collection;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class ExecutionNullNodeTarget extends ExecutionNodeTarget {
-    
-	
-
-	
-    protected ExecutionNullNodeTarget(final ExecutionTargetId id) {
-		super(id);
-	}
-
-
-
-	@Override
-    Object getObject() {
-        return null;
-    }
-	
-	
-	
-	
-	@Override
-    Collection<?> getIterationElements() {
-	    throw new NullPointerException("Cannot iterate on null");
-	}
-    
-
-
-    @Override
-    public String toString() {
-        return "NullNodeTarget [id=" + this.id + ", object=NULL]";
-    }
+interface NewExecutionTargetOperation {
 
     
+    Object execute(final Object target, final NewExecutionTargetOperation[][] operations, final int[] indices);
+
 }
