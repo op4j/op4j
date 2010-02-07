@@ -21,6 +21,9 @@ package org.op4j.operators.qualities;
 
 import org.op4j.functions.evaluators.IEvaluator;
 /**
+ * <p>
+ * This interface contains methods for selecting targets.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -29,15 +32,132 @@ import org.op4j.functions.evaluators.IEvaluator;
  */
 public interface SelectableOperator<T>  {
     
+
+    /**
+     * <p>
+     * Selects only those targets which index in the current level of iteration matches any of
+     * the specified indices. After this method, all the subsequently executed operations will only be executed
+     * on the target objects selected here, until an "endIf()" method is called. 
+     * </p>
+     * 
+     * @param indices the indices of the target objects which will be selected.
+     * @return an operator which will execute all subsequent operations only on the selected target objects. 
+     */
     public SelectedOperator<T> ifIndex(final int... indices);
+    
+    
+    /**
+     * <p>
+     * Selects only those targets for which the specified evaluator returns true. After this 
+     * method, all the subsequently executed operations will only be executed
+     * on the target objects selected here, until an "endIf()" method is called. 
+     * </p>
+     * 
+     * @param eval the evaluator to be used for selecting targets.
+     * @return an operator which will execute all subsequent operations only on the selected target objects. 
+     */
     public SelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
+    
+
+    /**
+     * <p>
+     * Selects only those targets for which the specified evaluator returns false. After this 
+     * method, all the subsequently executed operations will only be executed
+     * on the target objects selected here, until an "endIf()" method is called. 
+     * </p>
+     * 
+     * @param eval the evaluator to be used for selecting targets.
+     * @return an operator which will execute all subsequent operations only on the selected target objects. 
+     */
     public SelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
+    
+
+    /**
+     * <p>
+     * Selects only those targets which are null or for which the specified evaluator returns false. After this 
+     * method, all the subsequently executed operations will only be executed
+     * on the target objects selected here, until an "endIf()" method is called. 
+     * </p>
+     * 
+     * @param eval the evaluator to be used for selecting targets.
+     * @return an operator which will execute all subsequent operations only on the selected target objects. 
+     */
     public SelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    
+    
+    /**
+     * <p>
+     * Selects only those targets which are not null and for which the specified evaluator returns false. After this 
+     * method, all the subsequently executed operations will only be executed
+     * on the target objects selected here, until an "endIf()" method is called. 
+     * </p>
+     * 
+     * @param eval the evaluator to be used for selecting targets.
+     * @return an operator which will execute all subsequent operations only on the selected target objects. 
+     */
     public SelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    
+
+    /**
+     * <p>
+     * Selects only those targets which are null. After this method, all the subsequently 
+     * executed operations will only be executed on the target objects selected here, until 
+     * an "endIf()" method is called. 
+     * </p>
+     * 
+     * @return an operator which will execute all subsequent operations only on the selected target objects. 
+     */
     public SelectedOperator<T> ifNull();
+    
+    
+    /**
+     * <p>
+     * Selects only those targets which are null or for which the specified evaluator returns true. After this 
+     * method, all the subsequently executed operations will only be executed
+     * on the target objects selected here, until an "endIf()" method is called. 
+     * </p>
+     * 
+     * @param eval the evaluator to be used for selecting targets.
+     * @return an operator which will execute all subsequent operations only on the selected target objects. 
+     */
     public SelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    
+    
+    /**
+     * <p>
+     * Selects only those targets which index in the current level of iteration does not match any of
+     * the specified indices. After this method, all the subsequently executed operations will only be executed
+     * on the target objects selected here, until an "endIf()" method is called. 
+     * </p>
+     * 
+     * @param indices the indices of the target objects which will be selected.
+     * @return an operator which will execute all subsequent operations only on the selected target objects. 
+     */
     public SelectedOperator<T> ifIndexNot(final int... indices);
+    
+    
+    /**
+     * <p>
+     * Selects only those targets which are not null. After this method, all the subsequently 
+     * executed operations will only be executed on the target objects selected here, until an
+     * "endIf()" method is called. 
+     * </p>
+     * 
+     * @return an operator which will execute all subsequent operations only on the selected target objects. 
+     */
     public SelectedOperator<T> ifNotNull();
+    
+    
+    /**
+     * <p>
+     * Selects only those targets which are not null and for which the specified evaluator returns true. After this 
+     * method, all the subsequently executed operations will only be executed
+     * on the target objects selected here, until an "endIf()" method is called. 
+     * </p>
+     * 
+     * @param eval the evaluator to be used for selecting targets.
+     * @return an operator which will execute all subsequent operations only on the selected target objects. 
+     */
     public SelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
     
 }

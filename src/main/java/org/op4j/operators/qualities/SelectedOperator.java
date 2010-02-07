@@ -25,6 +25,9 @@ package org.op4j.operators.qualities;
 
 
 /**
+ * <p>
+ * This interface contains methods for ending selections.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -33,6 +36,15 @@ package org.op4j.operators.qualities;
  */
 public interface SelectedOperator<T> {
 
+    
+    /**
+     * <p>
+     * Ends the selection currently active for this level.
+     * </p>
+     * 
+     * @return an operator which will execute all subsequent operations on 
+     *         all the target objects instead of only on the previously selected ones. 
+     */
     public SelectableOperator<T> endIf();
 	
 }

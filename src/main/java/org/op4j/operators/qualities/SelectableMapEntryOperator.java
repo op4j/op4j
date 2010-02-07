@@ -22,7 +22,11 @@ package org.op4j.operators.qualities;
 import java.util.Map;
 
 import org.op4j.functions.evaluators.IEvaluator;
+
 /**
+ * <p>
+ * This interface contains methods for selecting map entries.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -31,11 +35,82 @@ import org.op4j.functions.evaluators.IEvaluator;
  */
 public interface SelectableMapEntryOperator<K,V>  {
 
+    
+    /**
+     * <p>
+     * Selects only those targets which index in the current level of iteration matches any of
+     * the specified indices. After this method, all the subsequently executed operations will only be executed
+     * on the target objects selected here, until an "endIf()" method is called. 
+     * </p>
+     * 
+     * @param indices the indices of the target objects which will be selected.
+     * @return an operator which will execute all subsequent operations only on the selected target objects. 
+     */
     public SelectedMapEntryOperator<K,V> ifIndex(final int... indices);
+    
+    
+    /**
+     * <p>
+     * Selects only those targets for which the specified evaluator returns true. After this 
+     * method, all the subsequently executed operations will only be executed
+     * on the target objects selected here, until an "endIf()" method is called. 
+     * </p>
+     * 
+     * @param eval the evaluator to be used for selecting targets.
+     * @return an operator which will execute all subsequent operations only on the selected target objects. 
+     */
     public SelectedMapEntryOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K, V>> eval);
+    
+    
+    /**
+     * <p>
+     * Selects only those targets for which the specified evaluator returns false. After this 
+     * method, all the subsequently executed operations will only be executed
+     * on the target objects selected here, until an "endIf()" method is called. 
+     * </p>
+     * 
+     * @param eval the evaluator to be used for selecting targets.
+     * @return an operator which will execute all subsequent operations only on the selected target objects. 
+     */
     public SelectedMapEntryOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K, V>> eval);
+    
+    
+    /**
+     * <p>
+     * Selects only those targets which index in the current level of iteration does not match any of
+     * the specified indices. After this method, all the subsequently executed operations will only be executed
+     * on the target objects selected here, until an "endIf()" method is called. 
+     * </p>
+     * 
+     * @param indices the indices of the target objects which will be selected.
+     * @return an operator which will execute all subsequent operations only on the selected target objects. 
+     */
     public SelectedMapEntryOperator<K,V> ifIndexNot(final int... indices);
+    
+    
+    /**
+     * <p>
+     * Selects only those entries which key matches any of the specified values. After this 
+     * method, all the subsequently executed operations will only be executed
+     * on the target objects selected here, until an "endIf()" method is called. 
+     * </p>
+     * 
+     * @param keys the key values to be matched
+     * @return an operator which will execute all subsequent operations only on the selected target objects. 
+     */
     public SelectedMapEntryOperator<K,V> ifKeyEquals(final K... keys);
+
+    
+    /**
+     * <p>
+     * Selects only those entries which key does not match any of the specified values. After this 
+     * method, all the subsequently executed operations will only be executed
+     * on the target objects selected here, until an "endIf()" method is called. 
+     * </p>
+     * 
+     * @param keys the key values to be matched
+     * @return an operator which will execute all subsequent operations only on the selected target objects. 
+     */
     public SelectedMapEntryOperator<K,V> ifKeyNotEquals(final K... keys);
     
 }
