@@ -24,6 +24,9 @@ import java.util.Comparator;
 
 
 /**
+ * <p>
+ * This interface contains methods for sorting the elements of a structure.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -31,8 +34,26 @@ import java.util.Comparator;
  *
  */
 public interface SortableOperator<T> {
+
     
+    /**
+     * <p>
+     * Sorts the elements of the structure according to their <i>natural ordering</i>.
+     * </p>
+     * 
+     * @return an operator containing the sorted structure as target object.
+     */
     public SortableOperator<T> sort();
+    
+    
+    /**
+     * <p>
+     * Sorts the elements of the structure according to the order induced by the specified comparator.
+     * </p>
+     * 
+     * @param comparator the comparator to be used.
+     * @return an operator containing the sorted structure as target object.
+     */
     public SortableOperator<T> sort(final Comparator<? super T> comparator);
 
     

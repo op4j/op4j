@@ -22,6 +22,10 @@ package org.op4j.operators.qualities;
 
 
 /**
+ * <p>
+ * This interface contains methods for converting a multi-target operator into a
+ * unique-target operator. This can be done when the multi-target operator only holds one target.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -30,7 +34,16 @@ package org.op4j.operators.qualities;
  */
 
 public interface UniqableOperator<T> {
+
     
+    /**
+     * <p>
+     * Converts the multi-target operator into a unique-target one. This can only be done
+     * if the multi-target operator actually only holds one target.
+     * </p>
+     * 
+     * @return a unique-target operator containing the only target object.
+     */
     public UniqOperator<T> uniq();
 
 }
