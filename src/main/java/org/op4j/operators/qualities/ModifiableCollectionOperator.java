@@ -58,7 +58,7 @@ public interface ModifiableCollectionOperator<T> {
      * The original target object is not modified, but copied instead.
      * </p>
      * 
-     * @param newElement the elements to be added
+     * @param newElements the elements to be added
      * @return an operator holding the modified target object
      */
     public ModifiableCollectionOperator<T> addAll(final T... newElements);

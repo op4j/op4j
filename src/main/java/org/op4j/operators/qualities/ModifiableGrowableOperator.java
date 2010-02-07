@@ -52,7 +52,7 @@ public interface ModifiableGrowableOperator<T> {
      * Adds all the specified elements to the operator.
      * </p>
      * 
-     * @param newElement the elements to be added
+     * @param newElements the elements to be added
      * @return an operator holding the new target objects
      */
     public ModifiableShrinkableOperator<T> addAll(final T... newElements);
