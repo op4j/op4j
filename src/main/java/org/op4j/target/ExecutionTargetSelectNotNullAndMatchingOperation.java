@@ -20,6 +20,8 @@
 
 package org.op4j.target;
 
+import org.op4j.exceptions.ExecutionException;
+import org.op4j.functions.evaluators.IEvaluator;
 
 /**
  * 
@@ -28,30 +30,46 @@ package org.op4j.target;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class NewExecutionTargetSelectNullOperation implements NewExecutionTargetOperation {
+final class ExecutionTargetSelectNotNullAndMatchingOperation implements ExecutionTargetOperation {
 
     private final int internalBlock;
     private final boolean desiredResult;
+    private final IEvaluator<Boolean,Object> eval; 
 
     
     
-    public NewExecutionTargetSelectNullOperation(final int internalBlock, final boolean desiredResult) {
+    public ExecutionTargetSelectNotNullAndMatchingOperation(final int internalBlock, final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
         super();
         this.internalBlock = internalBlock;
         this.desiredResult = desiredResult;
+        this.eval = eval;
     }
     
     
     
-    public Object execute(final Object target, final NewExecutionTargetOperation[][] operations, final int[] indices) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indices) {
 
-        if ((target == null) == this.desiredResult) {
+        if (target == null) {
+            return target;
+        }
+            
+        Boolean evalResult = null;
+        try {
+            evalResult = this.eval.execute(target, new ExecCtxImpl(indices)); 
+        } catch (Exception e) {
+            throw new ExecutionException(e);
+        }
+        
+        if ((evalResult != null && evalResult.booleanValue()) == this.desiredResult) {
+            
             Object result = target;
             for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
                 result = operations[this.internalBlock][j].execute(result, operations, indices);
             }
             return result;
+            
         }
+            
         return target;
         
     }

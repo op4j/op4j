@@ -29,7 +29,7 @@ import org.op4j.functions.ExecCtx;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class NewExecCtxImpl implements ExecCtx {
+final class ExecCtxImpl implements ExecCtx {
 
     
     private Integer level0Index;
@@ -42,7 +42,7 @@ final class NewExecCtxImpl implements ExecCtx {
 
     
     
-    public NewExecCtxImpl(final int[] indices) {
+    public ExecCtxImpl(final int[] indices) {
         super();
         initialize(
                 Integer.valueOf(indices.length - 1),

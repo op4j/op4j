@@ -30,7 +30,7 @@ import java.util.Map;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class NewExecutionTargetSelectMapKeysOperation implements NewExecutionTargetOperation {
+final class ExecutionTargetSelectMapKeysOperation implements ExecutionTargetOperation {
 
     private final int internalBlock;
     private final boolean desiredResult;
@@ -38,7 +38,7 @@ final class NewExecutionTargetSelectMapKeysOperation implements NewExecutionTarg
 
     
     
-    public NewExecutionTargetSelectMapKeysOperation(final int internalBlock, final boolean desiredResult, final List<Object> objects) {
+    public ExecutionTargetSelectMapKeysOperation(final int internalBlock, final boolean desiredResult, final List<Object> objects) {
         super();
         this.internalBlock = internalBlock;
         this.desiredResult = desiredResult;
@@ -47,7 +47,7 @@ final class NewExecutionTargetSelectMapKeysOperation implements NewExecutionTarg
     
     
     
-    public Object execute(final Object target, final NewExecutionTargetOperation[][] operations, final int[] indices) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indices) {
 
         if (!(target instanceof Map.Entry<?,?>)) {
             throw new IllegalStateException("Selecting map keys can only be called on a Map");

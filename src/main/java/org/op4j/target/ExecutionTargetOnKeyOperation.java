@@ -20,8 +20,9 @@
 
 package org.op4j.target;
 
-import org.op4j.exceptions.ExecutionException;
-import org.op4j.functions.evaluators.IEvaluator;
+import java.util.Map;
+
+import org.op4j.util.MapEntry;
 
 /**
  * 
@@ -30,43 +31,39 @@ import org.op4j.functions.evaluators.IEvaluator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class NewExecutionTargetSelectMatchingOperation implements NewExecutionTargetOperation {
+final class ExecutionTargetOnKeyOperation implements ExecutionTargetOperation {
 
     private final int internalBlock;
-    private final boolean desiredResult;
-    private final IEvaluator<Boolean,Object> eval; 
 
     
     
-    public NewExecutionTargetSelectMatchingOperation(final int internalBlock, final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
+    public ExecutionTargetOnKeyOperation(final int internalBlock) {
         super();
         this.internalBlock = internalBlock;
-        this.desiredResult = desiredResult;
-        this.eval = eval;
     }
-    
-    
-    
-    public Object execute(final Object target, final NewExecutionTargetOperation[][] operations, final int[] indices) {
 
-        Boolean evalResult = null;
-        try {
-            evalResult = this.eval.execute(target, new NewExecCtxImpl(indices)); 
-        } catch (Exception e) {
-            throw new ExecutionException(e);
-        }
+    
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indices) {
         
-        if ((evalResult != null && evalResult.booleanValue()) == this.desiredResult) {
+        if (target == null) {
             
-            Object result = target;
+            throw new IllegalStateException("Cannot perform onKey on null");
+            
+        } else if (target instanceof Map.Entry<?,?>){
+
+            final Map.Entry<?,?> mapEntryTarget = (Map.Entry<?,?>)target;
+            Object key = mapEntryTarget.getKey();
+            Object value = mapEntryTarget.getValue();
+            
             for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
-                result = operations[this.internalBlock][j].execute(result, operations, indices);
+                key = operations[this.internalBlock][j].execute(key, operations, indices);
             }
-            return result;
             
+            return new MapEntry<Object,Object>(key, value);
+            
+        } else {
+            throw new IllegalStateException("Cannot perform onKey: object is not a map entry: " + target.getClass().getName());
         }
-            
-        return target;
         
     }
     

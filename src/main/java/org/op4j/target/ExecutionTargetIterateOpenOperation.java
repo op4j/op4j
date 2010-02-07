@@ -28,25 +28,25 @@ package org.op4j.target;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class NewExecutionTargetIterateOpenOperation implements NewExecutionTargetOperation {
+final class ExecutionTargetIterateOpenOperation implements ExecutionTargetOperation {
 
     private final int internalBlock;
 
     
     
-    public NewExecutionTargetIterateOpenOperation(final int internalBlock) {
+    public ExecutionTargetIterateOpenOperation(final int internalBlock) {
         super();
         this.internalBlock = internalBlock;
     }
 
     
-    public NewExecutionTargetIterateClosedOperation close(final Class<?> arrayComponentClass) {
-        return new NewExecutionTargetIterateClosedOperation(this.internalBlock, arrayComponentClass);
+    public ExecutionTargetIterateClosedOperation close(final Class<?> arrayComponentClass) {
+        return new ExecutionTargetIterateClosedOperation(this.internalBlock, arrayComponentClass);
     }
     
     
     
-    public Object execute(final Object target, final NewExecutionTargetOperation[][] operations, final int[] indices) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indices) {
         throw new IllegalStateException("Cannot execute while open");
     }
     

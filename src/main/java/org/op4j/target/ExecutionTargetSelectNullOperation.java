@@ -20,9 +20,6 @@
 
 package org.op4j.target;
 
-import java.util.Map;
-
-import org.op4j.util.MapEntry;
 
 /**
  * 
@@ -31,39 +28,31 @@ import org.op4j.util.MapEntry;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class NewExecutionTargetOnValueOperation implements NewExecutionTargetOperation {
+final class ExecutionTargetSelectNullOperation implements ExecutionTargetOperation {
 
     private final int internalBlock;
+    private final boolean desiredResult;
 
     
     
-    public NewExecutionTargetOnValueOperation(final int internalBlock) {
+    public ExecutionTargetSelectNullOperation(final int internalBlock, final boolean desiredResult) {
         super();
         this.internalBlock = internalBlock;
+        this.desiredResult = desiredResult;
     }
-
     
-    public Object execute(final Object target, final NewExecutionTargetOperation[][] operations, final int[] indices) {
-        
-        if (target == null) {
-            
-            throw new IllegalStateException("Cannot perform onValue on null");
-            
-        } else if (target instanceof Map.Entry<?,?>){
+    
+    
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indices) {
 
-            final Map.Entry<?,?> mapEntryTarget = (Map.Entry<?,?>)target;
-            Object key = mapEntryTarget.getKey();
-            Object value = mapEntryTarget.getValue();
-            
+        if ((target == null) == this.desiredResult) {
+            Object result = target;
             for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
-                value = operations[this.internalBlock][j].execute(value, operations, indices);
+                result = operations[this.internalBlock][j].execute(result, operations, indices);
             }
-            
-            return new MapEntry<Object,Object>(key, value);
-            
-        } else {
-            throw new IllegalStateException("Cannot perform onValue: object is not a map entry: " + target.getClass().getName());
+            return result;
         }
+        return target;
         
     }
     

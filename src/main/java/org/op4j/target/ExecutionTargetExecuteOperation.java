@@ -37,7 +37,7 @@ import org.op4j.util.NormalisationUtils;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class NewExecutionTargetExecuteOperation implements NewExecutionTargetOperation {
+final class ExecutionTargetExecuteOperation implements ExecutionTargetOperation {
 
     private final IFunction<Object,Object> executable;
     private final Normalisation normalisation;
@@ -45,7 +45,7 @@ final class NewExecutionTargetExecuteOperation implements NewExecutionTargetOper
     
     
     @SuppressWarnings("unchecked")
-    public NewExecutionTargetExecuteOperation(final IFunction<?,?> executable, final Normalisation normalisation) {
+    public ExecutionTargetExecuteOperation(final IFunction<?,?> executable, final Normalisation normalisation) {
         super();
         this.executable = (IFunction<Object,Object>) executable;
         this.normalisation = normalisation;
@@ -54,10 +54,10 @@ final class NewExecutionTargetExecuteOperation implements NewExecutionTargetOper
     
     
     @SuppressWarnings("unchecked")
-    public Object execute(final Object target, final NewExecutionTargetOperation[][] operations, final int[] indices) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indices) {
 
         try {
-            Object result = this.executable.execute(target, new NewExecCtxImpl(indices));
+            Object result = this.executable.execute(target, new ExecCtxImpl(indices));
             switch (this.normalisation) {
                 case ARRAY:
                     NormalisationUtils.checkIsArray(Types.OBJECT, result);

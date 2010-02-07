@@ -20,7 +20,9 @@
 
 package org.op4j.target;
 
-import java.util.List;
+import java.util.Map;
+
+import org.op4j.util.MapEntry;
 
 /**
  * 
@@ -29,34 +31,39 @@ import java.util.List;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class NewExecutionTargetSelectIndexOperation implements NewExecutionTargetOperation {
+final class ExecutionTargetOnValueOperation implements ExecutionTargetOperation {
 
     private final int internalBlock;
-    private final boolean desiredResult;
-    private final List<Integer> positions; 
 
     
     
-    public NewExecutionTargetSelectIndexOperation(final int internalBlock, final boolean desiredResult, final List<Integer> positions) {
+    public ExecutionTargetOnValueOperation(final int internalBlock) {
         super();
         this.internalBlock = internalBlock;
-        this.desiredResult = desiredResult;
-        this.positions = positions;
     }
-    
-    
-    
-    public Object execute(final Object target, final NewExecutionTargetOperation[][] operations, final int[] indices) {
 
-        final int newIndex = indices[indices.length - 1];
-        if (this.positions.contains(Integer.valueOf(newIndex)) == this.desiredResult) {
-            Object result = target;
+    
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indices) {
+        
+        if (target == null) {
+            
+            throw new IllegalStateException("Cannot perform onValue on null");
+            
+        } else if (target instanceof Map.Entry<?,?>){
+
+            final Map.Entry<?,?> mapEntryTarget = (Map.Entry<?,?>)target;
+            Object key = mapEntryTarget.getKey();
+            Object value = mapEntryTarget.getValue();
+            
             for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
-                result = operations[this.internalBlock][j].execute(result, operations, indices);
+                value = operations[this.internalBlock][j].execute(value, operations, indices);
             }
-            return result;
+            
+            return new MapEntry<Object,Object>(key, value);
+            
+        } else {
+            throw new IllegalStateException("Cannot perform onValue: object is not a map entry: " + target.getClass().getName());
         }
-        return target;
         
     }
     

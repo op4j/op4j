@@ -36,7 +36,7 @@ import org.op4j.util.NormalisationUtils;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class NewExecutionTarget extends Target {
+public final class ExecutionTarget extends Target {
 
 
     
@@ -44,14 +44,14 @@ public final class NewExecutionTarget extends Target {
     
     private int currentBlockLevel;
     
-    private final NewExecutionTargetOperation[][] operations;
+    private final ExecutionTargetOperation[][] operations;
     private final int[] previousBlockLevels;
     
     
     
     
     @SuppressWarnings("unchecked")
-    public static NewExecutionTarget forObject(final Object object, final Normalisation targetNormalisation) {
+    public static ExecutionTarget forObject(final Object object, final Normalisation targetNormalisation) {
         Object normalisedObject = null;
         switch (targetNormalisation) {
             case NONE:
@@ -134,21 +134,21 @@ public final class NewExecutionTarget extends Target {
                 break;
         }
         
-        final NewExecutionTargetOperation[][] newOperations = 
-            (NewExecutionTargetOperation[][]) Array.newInstance(NewExecutionTargetOperation[].class, 1);
-        newOperations[0] = new NewExecutionTargetOperation[0];
+        final ExecutionTargetOperation[][] newOperations = 
+            (ExecutionTargetOperation[][]) Array.newInstance(ExecutionTargetOperation[].class, 1);
+        newOperations[0] = new ExecutionTargetOperation[0];
         
         final int[] newPreviousBlockLevels = new int[] { -1 };
         
-        return new NewExecutionTarget(normalisedObject, 0, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(normalisedObject, 0, newOperations, newPreviousBlockLevels);
         
     }
     
     
     
-    private static NewExecutionTargetOperation[][] cloneOperations(final NewExecutionTargetOperation[][] operations) {
+    private static ExecutionTargetOperation[][] cloneOperations(final ExecutionTargetOperation[][] operations) {
 
-        final NewExecutionTargetOperation[][] newOperations = new NewExecutionTargetOperation[operations.length][];
+        final ExecutionTargetOperation[][] newOperations = new ExecutionTargetOperation[operations.length][];
         for (int i = 0, z = operations.length; i < z; i++) {
             newOperations[i] = operations[i].clone();
         }
@@ -158,16 +158,16 @@ public final class NewExecutionTarget extends Target {
     
     
     
-    private static NewExecutionTargetOperation[][] addOperation(
-            final NewExecutionTargetOperation[][] operations, 
+    private static ExecutionTargetOperation[][] addOperation(
+            final ExecutionTargetOperation[][] operations, 
             final int currentBlockLevel, 
-            final NewExecutionTargetOperation operation) {
+            final ExecutionTargetOperation operation) {
         
-        final NewExecutionTargetOperation[][] newOperations = new NewExecutionTargetOperation[operations.length][];
+        final ExecutionTargetOperation[][] newOperations = new ExecutionTargetOperation[operations.length][];
         for (int i = 0, z = operations.length; i < z; i++) {
             if (i == currentBlockLevel) {
                 newOperations[i] =
-                    new NewExecutionTargetOperation[operations[i].length + 1];
+                    new ExecutionTargetOperation[operations[i].length + 1];
                 for (int j = 0, y = operations[i].length; j < y; j++) {
                     newOperations[i][j] = operations[i][j];
                 }
@@ -181,16 +181,16 @@ public final class NewExecutionTarget extends Target {
     }
 
     
-    private static NewExecutionTargetOperation[][] addOperationAndBlockLevel(
-            final NewExecutionTargetOperation[][] operations, 
+    private static ExecutionTargetOperation[][] addOperationAndBlockLevel(
+            final ExecutionTargetOperation[][] operations, 
             final int currentBlockLevel,
-            final NewExecutionTargetOperation operation) {
+            final ExecutionTargetOperation operation) {
         
-        final NewExecutionTargetOperation[][] newOperations = new NewExecutionTargetOperation[operations.length + 1][];
+        final ExecutionTargetOperation[][] newOperations = new ExecutionTargetOperation[operations.length + 1][];
         for (int i = 0, z = operations.length; i < z; i++) {
             if (i == currentBlockLevel) {
                 newOperations[i] =
-                    new NewExecutionTargetOperation[operations[i].length + 1];
+                    new ExecutionTargetOperation[operations[i].length + 1];
                 for (int j = 0, y = operations[i].length; j < y; j++) {
                     newOperations[i][j] = operations[i][j];
                 }
@@ -199,7 +199,7 @@ public final class NewExecutionTarget extends Target {
                 newOperations[i] = operations[i].clone();
             }
         }
-        newOperations[operations.length] = new NewExecutionTargetOperation[0];
+        newOperations[operations.length] = new ExecutionTargetOperation[0];
         return newOperations;
         
     }
@@ -220,9 +220,9 @@ public final class NewExecutionTarget extends Target {
     
     
     
-    protected NewExecutionTarget(final Object target,
+    protected ExecutionTarget(final Object target,
             final int currentBlockLevel,
-            final NewExecutionTargetOperation[][] operations,
+            final ExecutionTargetOperation[][] operations,
             final int[] previousBlockLevels) {
         
         super();
@@ -241,14 +241,14 @@ public final class NewExecutionTarget extends Target {
     Target doEndIterate(final Structure structure, final Class<?> componentClass) {
             
         final int previousBlockLevel = this.previousBlockLevels[this.currentBlockLevel];
-        final NewExecutionTargetOperation[][] newOperations = cloneOperations(this.operations);
+        final ExecutionTargetOperation[][] newOperations = cloneOperations(this.operations);
         final int previousBlockSize = newOperations[previousBlockLevel].length;
-        final NewExecutionTargetIterateOpenOperation iterateOpenOperation =
-            (NewExecutionTargetIterateOpenOperation) newOperations[previousBlockLevel][previousBlockSize - 1];
+        final ExecutionTargetIterateOpenOperation iterateOpenOperation =
+            (ExecutionTargetIterateOpenOperation) newOperations[previousBlockLevel][previousBlockSize - 1];
         newOperations[previousBlockLevel][previousBlockSize - 1] =
             iterateOpenOperation.close(componentClass);
             
-        return new NewExecutionTarget(this.target, previousBlockLevel, newOperations, this.previousBlockLevels);
+        return new ExecutionTarget(this.target, previousBlockLevel, newOperations, this.previousBlockLevels);
         
     }
 
@@ -258,9 +258,9 @@ public final class NewExecutionTarget extends Target {
     Target doEndOn() {
         
         final int previousBlockLevel = this.previousBlockLevels[this.currentBlockLevel];
-        final NewExecutionTargetOperation[][] newOperations = cloneOperations(this.operations);
+        final ExecutionTargetOperation[][] newOperations = cloneOperations(this.operations);
             
-        return new NewExecutionTarget(this.target, previousBlockLevel, newOperations, this.previousBlockLevels);
+        return new ExecutionTarget(this.target, previousBlockLevel, newOperations, this.previousBlockLevels);
         
     }
 
@@ -270,9 +270,9 @@ public final class NewExecutionTarget extends Target {
     Target doEndSelect() {
         
         final int previousBlockLevel = this.previousBlockLevels[this.currentBlockLevel];
-        final NewExecutionTargetOperation[][] newOperations = cloneOperations(this.operations);
+        final ExecutionTargetOperation[][] newOperations = cloneOperations(this.operations);
             
-        return new NewExecutionTarget(this.target, previousBlockLevel, newOperations, this.previousBlockLevels);
+        return new ExecutionTarget(this.target, previousBlockLevel, newOperations, this.previousBlockLevels);
         
     }
 
@@ -282,12 +282,12 @@ public final class NewExecutionTarget extends Target {
     @Override
     Target doExecute(final IFunction<?, ?> executable, final Normalisation normalisation) {
 
-        final NewExecutionTargetExecuteOperation operation =
-            new NewExecutionTargetExecuteOperation(executable, normalisation);
-        final NewExecutionTargetOperation[][] newOperations =
+        final ExecutionTargetExecuteOperation operation =
+            new ExecutionTargetExecuteOperation(executable, normalisation);
+        final ExecutionTargetOperation[][] newOperations =
             addOperation(this.operations, this.currentBlockLevel, operation);
 
-        return new NewExecutionTarget(this.target, this.currentBlockLevel, newOperations, this.previousBlockLevels);
+        return new ExecutionTarget(this.target, this.currentBlockLevel, newOperations, this.previousBlockLevels);
         
     }
 
@@ -297,14 +297,14 @@ public final class NewExecutionTarget extends Target {
     Target doIterate() {
 
         final int newBlockLevel = this.operations.length;
-        final NewExecutionTargetIterateOpenOperation operation =
-            new NewExecutionTargetIterateOpenOperation(newBlockLevel);
-        final NewExecutionTargetOperation[][] newOperations =
+        final ExecutionTargetIterateOpenOperation operation =
+            new ExecutionTargetIterateOpenOperation(newBlockLevel);
+        final ExecutionTargetOperation[][] newOperations =
             addOperationAndBlockLevel(this.operations, this.currentBlockLevel, operation);
         final int[] newPreviousBlockLevels = 
             addPreviousBlockLevelRelation(this.previousBlockLevels, this.currentBlockLevel);
             
-        return new NewExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
         
     }
 
@@ -314,14 +314,14 @@ public final class NewExecutionTarget extends Target {
     Target doOnKey() {
 
         final int newBlockLevel = this.operations.length;
-        final NewExecutionTargetOnKeyOperation operation =
-            new NewExecutionTargetOnKeyOperation(newBlockLevel);
-        final NewExecutionTargetOperation[][] newOperations =
+        final ExecutionTargetOnKeyOperation operation =
+            new ExecutionTargetOnKeyOperation(newBlockLevel);
+        final ExecutionTargetOperation[][] newOperations =
             addOperationAndBlockLevel(this.operations, this.currentBlockLevel, operation);
         final int[] newPreviousBlockLevels = 
             addPreviousBlockLevelRelation(this.previousBlockLevels, this.currentBlockLevel);
             
-        return new NewExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
         
     }
 
@@ -331,14 +331,14 @@ public final class NewExecutionTarget extends Target {
     Target doOnValue() {
 
         final int newBlockLevel = this.operations.length;
-        final NewExecutionTargetOnValueOperation operation =
-            new NewExecutionTargetOnValueOperation(newBlockLevel);
-        final NewExecutionTargetOperation[][] newOperations =
+        final ExecutionTargetOnValueOperation operation =
+            new ExecutionTargetOnValueOperation(newBlockLevel);
+        final ExecutionTargetOperation[][] newOperations =
             addOperationAndBlockLevel(this.operations, this.currentBlockLevel, operation);
         final int[] newPreviousBlockLevels = 
             addPreviousBlockLevelRelation(this.previousBlockLevels, this.currentBlockLevel);
             
-        return new NewExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
         
     }
 
@@ -347,12 +347,12 @@ public final class NewExecutionTarget extends Target {
     @Override
     Target doReplaceWith(final Object replacement) {
 
-        final NewExecutionTargetReplaceWithOperation operation =
-            new NewExecutionTargetReplaceWithOperation(replacement);
-        final NewExecutionTargetOperation[][] newOperations =
+        final ExecutionTargetReplaceWithOperation operation =
+            new ExecutionTargetReplaceWithOperation(replacement);
+        final ExecutionTargetOperation[][] newOperations =
             addOperation(this.operations, this.currentBlockLevel, operation);
 
-        return new NewExecutionTarget(this.target, this.currentBlockLevel, newOperations, this.previousBlockLevels);
+        return new ExecutionTarget(this.target, this.currentBlockLevel, newOperations, this.previousBlockLevels);
 
     }
 
@@ -363,14 +363,14 @@ public final class NewExecutionTarget extends Target {
     Target doSelectIndex(final boolean desiredResult, final List<Integer> positions) {
 
         final int newBlockLevel = this.operations.length;
-        final NewExecutionTargetSelectIndexOperation operation =
-            new NewExecutionTargetSelectIndexOperation(newBlockLevel, desiredResult, positions);
-        final NewExecutionTargetOperation[][] newOperations =
+        final ExecutionTargetSelectIndexOperation operation =
+            new ExecutionTargetSelectIndexOperation(newBlockLevel, desiredResult, positions);
+        final ExecutionTargetOperation[][] newOperations =
             addOperationAndBlockLevel(this.operations, this.currentBlockLevel, operation);
         final int[] newPreviousBlockLevels = 
             addPreviousBlockLevelRelation(this.previousBlockLevels, this.currentBlockLevel);
             
-        return new NewExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
         
     }
 
@@ -380,14 +380,14 @@ public final class NewExecutionTarget extends Target {
     Target doSelectMapKeys(final boolean desiredResult, final List<Object> objects) {
 
         final int newBlockLevel = this.operations.length;
-        final NewExecutionTargetSelectMapKeysOperation operation =
-            new NewExecutionTargetSelectMapKeysOperation(newBlockLevel, desiredResult, objects);
-        final NewExecutionTargetOperation[][] newOperations =
+        final ExecutionTargetSelectMapKeysOperation operation =
+            new ExecutionTargetSelectMapKeysOperation(newBlockLevel, desiredResult, objects);
+        final ExecutionTargetOperation[][] newOperations =
             addOperationAndBlockLevel(this.operations, this.currentBlockLevel, operation);
         final int[] newPreviousBlockLevels = 
             addPreviousBlockLevelRelation(this.previousBlockLevels, this.currentBlockLevel);
             
-        return new NewExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
         
     }
 
@@ -397,14 +397,14 @@ public final class NewExecutionTarget extends Target {
     Target doSelectMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
 
         final int newBlockLevel = this.operations.length;
-        final NewExecutionTargetSelectMatchingOperation operation =
-            new NewExecutionTargetSelectMatchingOperation(newBlockLevel, desiredResult, eval);
-        final NewExecutionTargetOperation[][] newOperations =
+        final ExecutionTargetSelectMatchingOperation operation =
+            new ExecutionTargetSelectMatchingOperation(newBlockLevel, desiredResult, eval);
+        final ExecutionTargetOperation[][] newOperations =
             addOperationAndBlockLevel(this.operations, this.currentBlockLevel, operation);
         final int[] newPreviousBlockLevels = 
             addPreviousBlockLevelRelation(this.previousBlockLevels, this.currentBlockLevel);
             
-        return new NewExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
         
     }
 
@@ -414,14 +414,14 @@ public final class NewExecutionTarget extends Target {
     Target doSelectNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
 
         final int newBlockLevel = this.operations.length;
-        final NewExecutionTargetSelectNotNullAndMatchingOperation operation =
-            new NewExecutionTargetSelectNotNullAndMatchingOperation(newBlockLevel, desiredResult, eval);
-        final NewExecutionTargetOperation[][] newOperations =
+        final ExecutionTargetSelectNotNullAndMatchingOperation operation =
+            new ExecutionTargetSelectNotNullAndMatchingOperation(newBlockLevel, desiredResult, eval);
+        final ExecutionTargetOperation[][] newOperations =
             addOperationAndBlockLevel(this.operations, this.currentBlockLevel, operation);
         final int[] newPreviousBlockLevels = 
             addPreviousBlockLevelRelation(this.previousBlockLevels, this.currentBlockLevel);
             
-        return new NewExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
         
     }
 
@@ -431,14 +431,14 @@ public final class NewExecutionTarget extends Target {
     Target doSelectNull(final boolean desiredResult) {
 
         final int newBlockLevel = this.operations.length;
-        final NewExecutionTargetSelectNullOperation operation =
-            new NewExecutionTargetSelectNullOperation(newBlockLevel, desiredResult);
-        final NewExecutionTargetOperation[][] newOperations =
+        final ExecutionTargetSelectNullOperation operation =
+            new ExecutionTargetSelectNullOperation(newBlockLevel, desiredResult);
+        final ExecutionTargetOperation[][] newOperations =
             addOperationAndBlockLevel(this.operations, this.currentBlockLevel, operation);
         final int[] newPreviousBlockLevels = 
             addPreviousBlockLevelRelation(this.previousBlockLevels, this.currentBlockLevel);
             
-        return new NewExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
         
     }
 
@@ -448,14 +448,14 @@ public final class NewExecutionTarget extends Target {
     Target doSelectNullOrMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
 
         final int newBlockLevel = this.operations.length;
-        final NewExecutionTargetSelectNullOrMatchingOperation operation =
-            new NewExecutionTargetSelectNullOrMatchingOperation(newBlockLevel, desiredResult, eval);
-        final NewExecutionTargetOperation[][] newOperations =
+        final ExecutionTargetSelectNullOrMatchingOperation operation =
+            new ExecutionTargetSelectNullOrMatchingOperation(newBlockLevel, desiredResult, eval);
+        final ExecutionTargetOperation[][] newOperations =
             addOperationAndBlockLevel(this.operations, this.currentBlockLevel, operation);
         final int[] newPreviousBlockLevels = 
             addPreviousBlockLevelRelation(this.previousBlockLevels, this.currentBlockLevel);
             
-        return new NewExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
         
     }
 

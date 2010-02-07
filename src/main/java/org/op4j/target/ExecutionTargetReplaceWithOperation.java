@@ -28,20 +28,20 @@ package org.op4j.target;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class NewExecutionTargetReplaceWithOperation implements NewExecutionTargetOperation {
+final class ExecutionTargetReplaceWithOperation implements ExecutionTargetOperation {
 
     private final Object replacement;
 
     
     
-    public NewExecutionTargetReplaceWithOperation(final Object replacement) {
+    public ExecutionTargetReplaceWithOperation(final Object replacement) {
         super();
         this.replacement = replacement;
     }
     
     
     
-    public Object execute(final Object target, final NewExecutionTargetOperation[][] operations, final int[] indices) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indices) {
         return this.replacement;
     }
     

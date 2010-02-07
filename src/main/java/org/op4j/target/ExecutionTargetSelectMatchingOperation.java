@@ -30,7 +30,7 @@ import org.op4j.functions.evaluators.IEvaluator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class NewExecutionTargetSelectNotNullAndMatchingOperation implements NewExecutionTargetOperation {
+final class ExecutionTargetSelectMatchingOperation implements ExecutionTargetOperation {
 
     private final int internalBlock;
     private final boolean desiredResult;
@@ -38,7 +38,7 @@ final class NewExecutionTargetSelectNotNullAndMatchingOperation implements NewEx
 
     
     
-    public NewExecutionTargetSelectNotNullAndMatchingOperation(final int internalBlock, final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
+    public ExecutionTargetSelectMatchingOperation(final int internalBlock, final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
         super();
         this.internalBlock = internalBlock;
         this.desiredResult = desiredResult;
@@ -47,15 +47,11 @@ final class NewExecutionTargetSelectNotNullAndMatchingOperation implements NewEx
     
     
     
-    public Object execute(final Object target, final NewExecutionTargetOperation[][] operations, final int[] indices) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indices) {
 
-        if (target == null) {
-            return target;
-        }
-            
         Boolean evalResult = null;
         try {
-            evalResult = this.eval.execute(target, new NewExecCtxImpl(indices)); 
+            evalResult = this.eval.execute(target, new ExecCtxImpl(indices)); 
         } catch (Exception e) {
             throw new ExecutionException(e);
         }

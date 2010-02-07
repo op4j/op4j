@@ -35,14 +35,14 @@ import java.util.Set;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class NewExecutionTargetIterateClosedOperation implements NewExecutionTargetOperation {
+final class ExecutionTargetIterateClosedOperation implements ExecutionTargetOperation {
 
     private final int internalBlock;
     private final Class<?> arrayComponentClass;
 
     
     
-    public NewExecutionTargetIterateClosedOperation(final int internalBlock, final Class<?> arrayComponentClass) {
+    public ExecutionTargetIterateClosedOperation(final int internalBlock, final Class<?> arrayComponentClass) {
         super();
         this.internalBlock = internalBlock;
         this.arrayComponentClass = arrayComponentClass;
@@ -61,7 +61,7 @@ final class NewExecutionTargetIterateClosedOperation implements NewExecutionTarg
     
     
     
-    public Object execute(final Object target, final NewExecutionTargetOperation[][] operations, final int[] indices) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indices) {
         
         if (target == null) {
             

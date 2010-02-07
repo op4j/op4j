@@ -28,9 +28,9 @@ package org.op4j.target;
  * @author Daniel Fern&aacute;ndez
  *
  */
-interface NewExecutionTargetOperation {
+interface ExecutionTargetOperation {
 
     
-    Object execute(final Object target, final NewExecutionTargetOperation[][] operations, final int[] indices);
+    Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indices);
 
 }
