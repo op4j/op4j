@@ -1,4 +1,5 @@
 
+  - Check the correctness of the indices available in ExecCtxImpl in MultiOperations
   - Create a "map(IFunction)" method equivalent to forEach().exec(func).endFor().
   - Make better utility abstract functions, evaluators, etc. Maybe one that receives Type as
     parameter and thus does not need to implement getReturnType.
