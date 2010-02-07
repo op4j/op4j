@@ -34,7 +34,6 @@ import org.op4j.operators.intf.mapofset.Level3MapOfSetEntriesValueElementsOperat
 import org.op4j.operators.intf.mapofset.Level3MapOfSetEntriesValueElementsSelectedOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
-import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalisationUtils;
 
 
@@ -55,7 +54,7 @@ public class Level3MapOfSetEntriesValueElementsOperatorImpl<K,V> extends Abstrac
 
 
     public Level2MapOfSetEntriesValueOperator<K, V> endFor() {
-        return new Level2MapOfSetEntriesValueOperatorImpl<K, V>(getTarget().endIterate(Structure.SET, null));
+        return new Level2MapOfSetEntriesValueOperatorImpl<K, V>(getTarget().endIterate(null));
     }
 
 

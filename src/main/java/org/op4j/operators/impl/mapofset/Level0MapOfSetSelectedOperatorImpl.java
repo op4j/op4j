@@ -15,6 +15,7 @@ import org.op4j.operators.intf.mapofset.Level0MapOfSetSelectedOperator;
 import org.op4j.operators.intf.mapofset.Level1MapOfSetSelectedEntriesOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
+import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalisationUtils;
 
 
@@ -52,7 +53,7 @@ public class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOperatorImp
 
 
     public Level1MapOfSetSelectedEntriesOperator<K,V> forEachEntry() {
-        return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().iterate());
+        return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().iterate(Structure.MAP));
     }
 
 

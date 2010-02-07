@@ -62,7 +62,7 @@ public class Level1ArrayOfMapElementsOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Level0ArrayOfMapOperator<K, V> endFor() {
-        return new Level0ArrayOfMapOperatorImpl<K, V>(getTarget().endIterate(Structure.ARRAY, Map.class));
+        return new Level0ArrayOfMapOperatorImpl<K, V>(getTarget().endIterate(Map.class));
     }
 
 
@@ -77,7 +77,7 @@ public class Level1ArrayOfMapElementsOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Level2ArrayOfMapElementsEntriesOperator<K, V> forEachEntry() {
-        return new Level2ArrayOfMapElementsEntriesOperatorImpl<K, V>(getTarget().iterate());
+        return new Level2ArrayOfMapElementsEntriesOperatorImpl<K, V>(getTarget().iterate(Structure.MAP));
     }
 
 

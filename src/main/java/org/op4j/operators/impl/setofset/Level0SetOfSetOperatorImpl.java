@@ -55,6 +55,7 @@ import org.op4j.operators.intf.setofset.Level0SetOfSetSelectedOperator;
 import org.op4j.operators.intf.setofset.Level1SetOfSetElementsOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
+import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalisationUtils;
 
 
@@ -105,7 +106,7 @@ public class Level0SetOfSetOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level1SetOfSetElementsOperator<T> forEach() {
-        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().iterate());
+        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().iterate(Structure.SET));
     }
 
 

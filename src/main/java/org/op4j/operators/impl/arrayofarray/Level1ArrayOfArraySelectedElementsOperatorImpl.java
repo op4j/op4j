@@ -81,7 +81,7 @@ public class Level1ArrayOfArraySelectedElementsOperatorImpl<T> extends AbstractO
 
 
     public Level2ArrayOfArraySelectedElementsElementsOperator<T> forEach(final Type<T> elementType) {
-        return new Level2ArrayOfArraySelectedElementsElementsOperatorImpl<T>(elementType, getTarget().iterate());
+        return new Level2ArrayOfArraySelectedElementsElementsOperatorImpl<T>(elementType, getTarget().iterate(Structure.ARRAY));
     }
 
 
@@ -151,7 +151,7 @@ public class Level1ArrayOfArraySelectedElementsOperatorImpl<T> extends AbstractO
 
 
     public Level0ArrayOfArraySelectedOperator<T> endFor() {
-        return new Level0ArrayOfArraySelectedOperatorImpl<T>(getTarget().endIterate(Structure.ARRAY, this.type.getRawClass()));
+        return new Level0ArrayOfArraySelectedOperatorImpl<T>(getTarget().endIterate(this.type.getRawClass()));
     }
 
 

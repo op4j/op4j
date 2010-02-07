@@ -50,6 +50,7 @@ import org.op4j.operators.intf.map.Level0MapOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
+import org.op4j.target.Target.Structure;
 
 /**
  * 
@@ -98,7 +99,7 @@ public class Level0ArrayOperatorImpl<T>
     }
 
     public Level1ArrayElementsOperator<T> forEach(final Type<T> elementType) {
-        return new Level1ArrayElementsOperatorImpl<T>(elementType, getTarget().iterate());
+        return new Level1ArrayElementsOperatorImpl<T>(elementType, getTarget().iterate(Structure.ARRAY));
     }
 
     

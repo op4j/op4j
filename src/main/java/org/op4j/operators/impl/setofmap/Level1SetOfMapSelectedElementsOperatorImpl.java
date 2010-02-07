@@ -98,12 +98,12 @@ public class Level1SetOfMapSelectedElementsOperatorImpl<K,V> extends AbstractOpe
 
 
     public Level0SetOfMapSelectedOperator<K,V> endFor() {
-        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().endIterate(Structure.SET, null));
+        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().endIterate(null));
     }
 
 
     public Level2SetOfMapSelectedElementsEntriesOperator<K,V> forEachEntry() {
-        return new Level2SetOfMapSelectedElementsEntriesOperatorImpl<K,V>(getTarget().iterate());
+        return new Level2SetOfMapSelectedElementsEntriesOperatorImpl<K,V>(getTarget().iterate(Structure.MAP));
     }
 
 

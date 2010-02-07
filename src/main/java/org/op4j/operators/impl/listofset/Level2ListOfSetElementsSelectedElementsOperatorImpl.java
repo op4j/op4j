@@ -12,7 +12,6 @@ import org.op4j.operators.intf.listofset.Level2ListOfSetElementsSelectedElements
 import org.op4j.operators.intf.listofset.Level2ListOfSetElementsSelectedElementsSelectedOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
-import org.op4j.target.Target.Structure;
 
 
 public class Level2ListOfSetElementsSelectedElementsOperatorImpl<T> extends AbstractOperatorImpl implements Level2ListOfSetElementsSelectedElementsOperator<T> {
@@ -79,7 +78,7 @@ public class Level2ListOfSetElementsSelectedElementsOperatorImpl<T> extends Abst
 
 
     public Level1ListOfSetElementsSelectedOperator<T> endFor() {
-        return new Level1ListOfSetElementsSelectedOperatorImpl<T>(getTarget().endIterate(Structure.SET, null));
+        return new Level1ListOfSetElementsSelectedOperatorImpl<T>(getTarget().endIterate(null));
     }
 
 

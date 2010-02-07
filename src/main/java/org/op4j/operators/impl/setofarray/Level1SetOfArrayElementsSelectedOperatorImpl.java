@@ -15,6 +15,7 @@ import org.op4j.operators.intf.setofarray.Level1SetOfArrayElementsSelectedOperat
 import org.op4j.operators.intf.setofarray.Level2SetOfArrayElementsSelectedElementsOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
+import org.op4j.target.Target.Structure;
 
 
 public class Level1SetOfArrayElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level1SetOfArrayElementsSelectedOperator<T> {
@@ -26,7 +27,7 @@ public class Level1SetOfArrayElementsSelectedOperatorImpl<T> extends AbstractOpe
 
 
     public Level2SetOfArrayElementsSelectedElementsOperator<T> forEach(final Type<T> elementType) {
-        return new Level2SetOfArrayElementsSelectedElementsOperatorImpl<T>(elementType, getTarget().iterate());
+        return new Level2SetOfArrayElementsSelectedElementsOperatorImpl<T>(elementType, getTarget().iterate(Structure.ARRAY));
     }
 
 

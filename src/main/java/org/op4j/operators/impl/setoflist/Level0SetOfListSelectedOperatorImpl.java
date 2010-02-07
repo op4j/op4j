@@ -15,6 +15,7 @@ import org.op4j.operators.intf.setoflist.Level0SetOfListSelectedOperator;
 import org.op4j.operators.intf.setoflist.Level1SetOfListSelectedElementsOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
+import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalisationUtils;
 
 
@@ -27,7 +28,7 @@ public class Level0SetOfListSelectedOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level1SetOfListSelectedElementsOperator<T> forEach() {
-        return new Level1SetOfListSelectedElementsOperatorImpl<T>(getTarget().iterate());
+        return new Level1SetOfListSelectedElementsOperatorImpl<T>(getTarget().iterate(Structure.SET));
     }
 
 

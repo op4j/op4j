@@ -34,7 +34,6 @@ import org.op4j.operators.intf.arrayofmap.Level1ArrayOfMapElementsOperator;
 import org.op4j.operators.intf.arrayofset.Level1ArrayOfSetElementsOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
-import org.op4j.target.Target.Structure;
 
 
 
@@ -59,7 +58,7 @@ public class Level1ArrayElementsOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0ArrayOperator<T> endFor() {
-        return new Level0ArrayOperatorImpl<T>(getTarget().endIterate(Structure.ARRAY, this.type.getRawClass()));
+        return new Level0ArrayOperatorImpl<T>(getTarget().endIterate(this.type.getRawClass()));
     }
 
 

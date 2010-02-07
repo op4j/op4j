@@ -93,12 +93,12 @@ public class Level1SetOfSetElementsOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0SetOfSetOperator<T> endFor() {
-        return new Level0SetOfSetOperatorImpl<T>(getTarget().endIterate(Structure.SET, null));
+        return new Level0SetOfSetOperatorImpl<T>(getTarget().endIterate(null));
     }
 
 
     public Level2SetOfSetElementsElementsOperator<T> forEach() {
-        return new Level2SetOfSetElementsElementsOperatorImpl<T>(getTarget().iterate());
+        return new Level2SetOfSetElementsElementsOperatorImpl<T>(getTarget().iterate(Structure.SET));
     }
 
 

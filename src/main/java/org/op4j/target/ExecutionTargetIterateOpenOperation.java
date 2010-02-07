@@ -20,6 +20,8 @@
 
 package org.op4j.target;
 
+import org.op4j.target.Target.Structure;
+
 
 /**
  * 
@@ -31,17 +33,19 @@ package org.op4j.target;
 final class ExecutionTargetIterateOpenOperation implements ExecutionTargetOperation {
 
     private final int internalBlock;
+    private final Structure structure;
 
     
     
-    public ExecutionTargetIterateOpenOperation(final int internalBlock) {
+    public ExecutionTargetIterateOpenOperation(final int internalBlock, final Structure structure) {
         super();
         this.internalBlock = internalBlock;
+        this.structure = structure;
     }
 
     
     public ExecutionTargetIterateClosedOperation close(final Class<?> arrayComponentClass) {
-        return new ExecutionTargetIterateClosedOperation(this.internalBlock, arrayComponentClass);
+        return new ExecutionTargetIterateClosedOperation(this.internalBlock, this.structure, arrayComponentClass);
     }
     
     

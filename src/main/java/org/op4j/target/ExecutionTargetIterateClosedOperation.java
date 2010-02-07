@@ -28,6 +28,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.op4j.target.Target.Structure;
+
 /**
  * 
  * @since 1.0
@@ -38,13 +40,15 @@ import java.util.Set;
 final class ExecutionTargetIterateClosedOperation implements ExecutionTargetOperation {
 
     private final int internalBlock;
+    private final Structure structure;
     private final Class<?> arrayComponentClass;
 
     
     
-    public ExecutionTargetIterateClosedOperation(final int internalBlock, final Class<?> arrayComponentClass) {
+    public ExecutionTargetIterateClosedOperation(final int internalBlock, final Structure structure, final Class<?> arrayComponentClass) {
         super();
         this.internalBlock = internalBlock;
+        this.structure = structure;
         this.arrayComponentClass = arrayComponentClass;
     }
     
@@ -67,83 +71,87 @@ final class ExecutionTargetIterateClosedOperation implements ExecutionTargetOper
             
             throw new IllegalStateException("Cannot iterate on null");
             
-        } else if (target instanceof Object[]){
-            
-            final Object[] arrayTarget = (Object[])target;
-            final Object[] arrayResult = 
-                (Object[]) Array.newInstance(this.arrayComponentClass, arrayTarget.length);
-            for (int i = 0, z = arrayTarget.length; i < z; i++) {
-                Object result = arrayTarget[i];
-                for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
-                    result = operations[this.internalBlock][j].execute(result, operations, addIndex(indices, i));
+        }
+        
+        switch(this.structure) {
+        
+            case ARRAY:
+                
+                final Object[] arrayTarget = (Object[])target;
+                final Object[] arrayResult = 
+                    (Object[]) Array.newInstance(this.arrayComponentClass, arrayTarget.length);
+                for (int i = 0, z = arrayTarget.length; i < z; i++) {
+                    Object result = arrayTarget[i];
+                    for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
+                        result = operations[this.internalBlock][j].execute(result, operations, addIndex(indices, i));
+                    }
+                    arrayResult[i] = result;
                 }
-                arrayResult[i] = result;
-            }
-            return arrayResult;
-            
-        } else if (target instanceof List<?>){
-            
-            final List<?> listTarget = (List<?>)target;
-            final List<Object> listResult = new ArrayList<Object>();
-            int i = 0;
-            for (final Object element : listTarget) {
-                Object result = element;
-                for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
-                    result = operations[this.internalBlock][j].execute(result, operations, addIndex(indices, i));
+                return arrayResult;
+
+            case LIST:
+                
+                final List<?> listTarget = (List<?>)target;
+                final List<Object> listResult = new ArrayList<Object>();
+                int iList = 0;
+                for (final Object element : listTarget) {
+                    Object result = element;
+                    for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
+                        result = operations[this.internalBlock][j].execute(result, operations, addIndex(indices, iList));
+                    }
+                    listResult.add(result);
+                    iList++;
                 }
-                listResult.add(result);
-                i++;
-            }
-            return listResult;
-            
-        } else if (target instanceof Map<?,?>){
-            
-            final Map<?,?> mapTarget = (Map<?,?>) target;
-            int i = 0;
-            boolean allMapEntries = true;
-            final List<Object> resultList = new ArrayList<Object>();
-            for (final Map.Entry<?,?> element : mapTarget.entrySet()) {
-                Object result = element;
-                for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
-                    result = operations[this.internalBlock][j].execute(result, operations, addIndex(indices, i));
+                return listResult;
+                
+            case MAP:
+                
+                final Map<?,?> mapTarget = (Map<?,?>) target;
+                int iMap = 0;
+                boolean allMapEntries = true;
+                final List<Object> resultList = new ArrayList<Object>();
+                for (final Map.Entry<?,?> element : mapTarget.entrySet()) {
+                    Object result = element;
+                    for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
+                        result = operations[this.internalBlock][j].execute(result, operations, addIndex(indices, iMap));
+                    }
+                    if (!(result instanceof Map.Entry<?,?>)) {
+                        allMapEntries = false; 
+                    }
+                    resultList.add(result);
+                    iMap++;
                 }
-                if (!(result instanceof Map.Entry<?,?>)) {
-                    allMapEntries = false; 
+                
+                if (allMapEntries) {
+                    final Map<Object,Object> mapResult = new LinkedHashMap<Object,Object>();
+                    for (final Object resultElement : resultList) {
+                        final Map.Entry<?,?> mapEntryResult = (Map.Entry<?,?>) resultElement;
+                        mapResult.put(mapEntryResult.getKey(), mapEntryResult.getValue());
+                    }
+                    return mapResult;
                 }
-                resultList.add(result);
-                i++;
-            }
-            
-            if (allMapEntries) {
-                final Map<Object,Object> mapResult = new LinkedHashMap<Object,Object>();
-                for (final Object resultElement : resultList) {
-                    final Map.Entry<?,?> mapEntryResult = (Map.Entry<?,?>) resultElement;
-                    mapResult.put(mapEntryResult.getKey(), mapEntryResult.getValue());
+                
+                return resultList;
+                
+            case SET:
+                
+                final Set<?> setTarget = (Set<?>)target;
+                final Set<Object> setResult = new LinkedHashSet<Object>();
+                int iSet = 0;
+                for (final Object element : setTarget) {
+                    Object result = element;
+                    for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
+                        result = operations[this.internalBlock][j].execute(result, operations, addIndex(indices, iSet));
+                    }
+                    setResult.add(result);
+                    iSet++;
                 }
-                return mapResult;
-            }
-            
-            return resultList;
-            
-            
-            
-        } else if (target instanceof Set<?>){
-            
-            final Set<?> setTarget = (Set<?>)target;
-            final Set<Object> setResult = new LinkedHashSet<Object>();
-            int i = 0;
-            for (final Object element : setTarget) {
-                Object result = element;
-                for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
-                    result = operations[this.internalBlock][j].execute(result, operations, addIndex(indices, i));
-                }
-                setResult.add(result);
-                i++;
-            }
-            return setResult;
-            
-        } else {
-            throw new IllegalStateException("Cannot iterate: object is not iterable: " + target.getClass().getName());
+                return setResult;
+                
+            default:
+                
+                throw new IllegalStateException("Unsupported structure: " +  this.structure);
+                
         }
         
     }

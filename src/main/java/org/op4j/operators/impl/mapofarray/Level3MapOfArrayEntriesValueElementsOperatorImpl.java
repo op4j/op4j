@@ -33,7 +33,6 @@ import org.op4j.operators.intf.mapofarray.Level3MapOfArrayEntriesValueElementsOp
 import org.op4j.operators.intf.mapofarray.Level3MapOfArrayEntriesValueElementsSelectedOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
-import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalisationUtils;
 
 
@@ -57,7 +56,7 @@ public class Level3MapOfArrayEntriesValueElementsOperatorImpl<K,V> extends Abstr
 
 
     public Level2MapOfArrayEntriesValueOperator<K, V> endFor() {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().endIterate(Structure.ARRAY, this.type.getRawClass()));
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().endIterate(this.type.getRawClass()));
     }
 
 

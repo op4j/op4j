@@ -97,12 +97,12 @@ public class Level1ArrayOfMapSelectedElementsOperatorImpl<K,V> extends AbstractO
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> endFor() {
-        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().endIterate(Structure.ARRAY, Map.class));
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().endIterate(Map.class));
     }
 
 
     public Level2ArrayOfMapSelectedElementsEntriesOperator<K,V> forEachEntry() {
-        return new Level2ArrayOfMapSelectedElementsEntriesOperatorImpl<K,V>(getTarget().iterate());
+        return new Level2ArrayOfMapSelectedElementsEntriesOperatorImpl<K,V>(getTarget().iterate(Structure.MAP));
     }
 
 

@@ -46,6 +46,7 @@ import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
+import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalisationUtils;
 
 
@@ -76,7 +77,7 @@ public class Level0MapOfListOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public Level1MapOfListEntriesOperator<K, V> forEachEntry() {
-        return new Level1MapOfListEntriesOperatorImpl<K, V>(getTarget().iterate());
+        return new Level1MapOfListEntriesOperatorImpl<K, V>(getTarget().iterate(Structure.MAP));
     }
 
 

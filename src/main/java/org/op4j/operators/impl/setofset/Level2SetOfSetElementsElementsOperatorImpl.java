@@ -32,7 +32,6 @@ import org.op4j.operators.intf.setofset.Level2SetOfSetElementsElementsOperator;
 import org.op4j.operators.intf.setofset.Level2SetOfSetElementsElementsSelectedOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
-import org.op4j.target.Target.Structure;
 
 
 /**
@@ -52,7 +51,7 @@ public class Level2SetOfSetElementsElementsOperatorImpl<T> extends AbstractOpera
 
 
     public Level1SetOfSetElementsOperator<T> endFor() {
-        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().endIterate(Structure.SET, null));
+        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().endIterate(null));
     }
 
 

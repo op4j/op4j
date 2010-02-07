@@ -99,12 +99,12 @@ public class Level1SetOfListElementsOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0SetOfListOperator<T> endFor() {
-        return new Level0SetOfListOperatorImpl<T>(getTarget().endIterate(Structure.SET, null));
+        return new Level0SetOfListOperatorImpl<T>(getTarget().endIterate(null));
     }
 
 
     public Level2SetOfListElementsElementsOperator<T> forEach() {
-        return new Level2SetOfListElementsElementsOperatorImpl<T>(getTarget().iterate());
+        return new Level2SetOfListElementsElementsOperatorImpl<T>(getTarget().iterate(Structure.LIST));
     }
 
 

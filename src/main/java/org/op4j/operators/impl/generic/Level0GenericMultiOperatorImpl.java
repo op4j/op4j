@@ -314,17 +314,17 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public <X> Level0GenericMultiOperator<X> convert(final IConverter<X, ? super T> converter) {
-        return new Level0GenericMultiOperatorImpl<X>(getTarget().iterate().execute(converter, Normalisation.NONE).endIterate(Structure.LIST, null));
+        return new Level0GenericMultiOperatorImpl<X>(getTarget().iterate(Structure.LIST).execute(converter, Normalisation.NONE).endIterate(null));
     }
 
 
     public <X> Level0GenericMultiOperator<X> eval(final IEvaluator<X, ? super T> eval) {
-        return new Level0GenericMultiOperatorImpl<X>(getTarget().iterate().execute(eval, Normalisation.NONE).endIterate(Structure.LIST, null));
+        return new Level0GenericMultiOperatorImpl<X>(getTarget().iterate(Structure.LIST).execute(eval, Normalisation.NONE).endIterate(null));
     }
 
 
     public <X> Level0GenericMultiOperator<X> exec(final IFunction<X, ? super T> function) {
-        return new Level0GenericMultiOperatorImpl<X>(getTarget().iterate().execute(function, Normalisation.NONE).endIterate(Structure.LIST, null));
+        return new Level0GenericMultiOperatorImpl<X>(getTarget().iterate(Structure.LIST).execute(function, Normalisation.NONE).endIterate(null));
     }
 
 

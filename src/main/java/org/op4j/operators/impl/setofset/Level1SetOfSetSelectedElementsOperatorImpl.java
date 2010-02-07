@@ -77,7 +77,7 @@ public class Level1SetOfSetSelectedElementsOperatorImpl<T> extends AbstractOpera
 
 
     public Level2SetOfSetSelectedElementsElementsOperator<T> forEach() {
-        return new Level2SetOfSetSelectedElementsElementsOperatorImpl<T>(getTarget().iterate());
+        return new Level2SetOfSetSelectedElementsElementsOperatorImpl<T>(getTarget().iterate(Structure.SET));
     }
 
 
@@ -142,7 +142,7 @@ public class Level1SetOfSetSelectedElementsOperatorImpl<T> extends AbstractOpera
 
 
     public Level0SetOfSetSelectedOperator<T> endFor() {
-        return new Level0SetOfSetSelectedOperatorImpl<T>(getTarget().endIterate(Structure.SET, null));
+        return new Level0SetOfSetSelectedOperatorImpl<T>(getTarget().endIterate(null));
     }
 
 

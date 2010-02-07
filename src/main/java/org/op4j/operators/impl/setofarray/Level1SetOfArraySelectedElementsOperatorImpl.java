@@ -78,7 +78,7 @@ public class Level1SetOfArraySelectedElementsOperatorImpl<T> extends AbstractOpe
 
 
     public Level2SetOfArraySelectedElementsElementsOperator<T> forEach(final Type<T> elementType) {
-        return new Level2SetOfArraySelectedElementsElementsOperatorImpl<T>(elementType, getTarget().iterate());
+        return new Level2SetOfArraySelectedElementsElementsOperatorImpl<T>(elementType, getTarget().iterate(Structure.ARRAY));
     }
 
 
@@ -148,7 +148,7 @@ public class Level1SetOfArraySelectedElementsOperatorImpl<T> extends AbstractOpe
 
 
     public Level0SetOfArraySelectedOperator<T> endFor() {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().endIterate(Structure.SET, null));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().endIterate(null));
     }
 
 

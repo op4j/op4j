@@ -51,6 +51,7 @@ import org.op4j.operators.intf.map.Level0MapOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
+import org.op4j.target.Target.Structure;
 
 
 /**
@@ -100,7 +101,7 @@ public class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level1ListElementsOperator<T> forEach() {
-        return new Level1ListElementsOperatorImpl<T>(getTarget().iterate());
+        return new Level1ListElementsOperatorImpl<T>(getTarget().iterate(Structure.LIST));
     }
 
 

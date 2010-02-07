@@ -12,7 +12,6 @@ import org.op4j.operators.intf.setofarray.Level2SetOfArraySelectedElementsSelect
 import org.op4j.operators.intf.setofarray.Level2SetOfArraySelectedElementsSelectedElementsSelectedOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
-import org.op4j.target.Target.Structure;
 
 
 public class Level2SetOfArraySelectedElementsSelectedElementsOperatorImpl<T> extends AbstractOperatorImpl implements Level2SetOfArraySelectedElementsSelectedElementsOperator<T> {
@@ -83,7 +82,7 @@ public class Level2SetOfArraySelectedElementsSelectedElementsOperatorImpl<T> ext
 
 
     public Level1SetOfArraySelectedElementsSelectedOperator<T> endFor() {
-        return new Level1SetOfArraySelectedElementsSelectedOperatorImpl<T>(getTarget().endIterate(Structure.ARRAY, this.type.getRawClass()));
+        return new Level1SetOfArraySelectedElementsSelectedOperatorImpl<T>(getTarget().endIterate(this.type.getRawClass()));
     }
 
 

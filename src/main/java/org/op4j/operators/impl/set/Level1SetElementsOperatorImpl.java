@@ -36,7 +36,6 @@ import org.op4j.operators.intf.setofmap.Level1SetOfMapElementsOperator;
 import org.op4j.operators.intf.setofset.Level1SetOfSetElementsOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
-import org.op4j.target.Target.Structure;
 
 
 /**
@@ -56,7 +55,7 @@ public class Level1SetElementsOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0SetOperator<T> endFor() {
-        return new Level0SetOperatorImpl<T>(getTarget().endIterate(Structure.SET, null));
+        return new Level0SetOperatorImpl<T>(getTarget().endIterate(null));
     }
 
 

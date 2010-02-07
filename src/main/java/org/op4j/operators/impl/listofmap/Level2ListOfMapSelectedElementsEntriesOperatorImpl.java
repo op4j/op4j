@@ -15,7 +15,6 @@ import org.op4j.operators.intf.listofmap.Level3ListOfMapSelectedElementsEntriesK
 import org.op4j.operators.intf.listofmap.Level3ListOfMapSelectedElementsEntriesValueOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
-import org.op4j.target.Target.Structure;
 
 
 public class Level2ListOfMapSelectedElementsEntriesOperatorImpl<K,V> extends AbstractOperatorImpl implements Level2ListOfMapSelectedElementsEntriesOperator<K,V> {
@@ -52,7 +51,7 @@ public class Level2ListOfMapSelectedElementsEntriesOperatorImpl<K,V> extends Abs
 
 
     public Level1ListOfMapSelectedElementsOperator<K,V> endFor() {
-        return new Level1ListOfMapSelectedElementsOperatorImpl<K,V>(getTarget().endIterate(Structure.MAP, null));
+        return new Level1ListOfMapSelectedElementsOperatorImpl<K,V>(getTarget().endIterate(null));
     }
 
 

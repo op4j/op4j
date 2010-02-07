@@ -238,7 +238,7 @@ public final class ExecutionTarget extends Target {
 
     
     @Override
-    Target doEndIterate(final Structure structure, final Class<?> componentClass) {
+    Target doEndIterate(final Class<?> arrayComponentClass) {
             
         final int previousBlockLevel = this.previousBlockLevels[this.currentBlockLevel];
         final ExecutionTargetOperation[][] newOperations = cloneOperations(this.operations);
@@ -246,7 +246,7 @@ public final class ExecutionTarget extends Target {
         final ExecutionTargetIterateOpenOperation iterateOpenOperation =
             (ExecutionTargetIterateOpenOperation) newOperations[previousBlockLevel][previousBlockSize - 1];
         newOperations[previousBlockLevel][previousBlockSize - 1] =
-            iterateOpenOperation.close(componentClass);
+            iterateOpenOperation.close(arrayComponentClass);
             
         return new ExecutionTarget(this.target, previousBlockLevel, newOperations, this.previousBlockLevels);
         
@@ -294,11 +294,11 @@ public final class ExecutionTarget extends Target {
 
 
     @Override
-    Target doIterate() {
+    Target doIterate(final Structure structure) {
 
         final int newBlockLevel = this.operations.length;
         final ExecutionTargetIterateOpenOperation operation =
-            new ExecutionTargetIterateOpenOperation(newBlockLevel);
+            new ExecutionTargetIterateOpenOperation(newBlockLevel, structure);
         final ExecutionTargetOperation[][] newOperations =
             addOperationAndBlockLevel(this.operations, this.currentBlockLevel, operation);
         final int[] newPreviousBlockLevels = 

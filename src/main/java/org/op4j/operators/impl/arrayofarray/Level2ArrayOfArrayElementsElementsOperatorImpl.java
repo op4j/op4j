@@ -30,7 +30,6 @@ import org.op4j.operators.intf.arrayofarray.Level2ArrayOfArrayElementsElementsOp
 import org.op4j.operators.intf.arrayofarray.Level2ArrayOfArrayElementsElementsSelectedOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
-import org.op4j.target.Target.Structure;
 
 
 
@@ -54,7 +53,7 @@ public class Level2ArrayOfArrayElementsElementsOperatorImpl<T> extends AbstractO
 
 
     public Level1ArrayOfArrayElementsOperator<T> endFor() {
-        return new Level1ArrayOfArrayElementsOperatorImpl<T>(Types.arrayOf(this.type), getTarget().endIterate(Structure.ARRAY, this.type.getRawClass()));
+        return new Level1ArrayOfArrayElementsOperatorImpl<T>(Types.arrayOf(this.type), getTarget().endIterate(this.type.getRawClass()));
     }
 
 

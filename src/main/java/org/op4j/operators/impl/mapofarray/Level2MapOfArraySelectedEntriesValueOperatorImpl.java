@@ -16,6 +16,7 @@ import org.op4j.operators.intf.mapofarray.Level2MapOfArraySelectedEntriesValueSe
 import org.op4j.operators.intf.mapofarray.Level3MapOfArraySelectedEntriesValueElementsOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
+import org.op4j.target.Target.Structure;
 
 
 public class Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V> extends AbstractOperatorImpl implements Level2MapOfArraySelectedEntriesValueOperator<K,V> {
@@ -77,7 +78,7 @@ public class Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V> extends Abstr
 
 
     public Level3MapOfArraySelectedEntriesValueElementsOperator<K,V> forEach(final Type<V> elementType) {
-        return new Level3MapOfArraySelectedEntriesValueElementsOperatorImpl<K,V>(elementType, getTarget().iterate());
+        return new Level3MapOfArraySelectedEntriesValueElementsOperatorImpl<K,V>(elementType, getTarget().iterate(Structure.ARRAY));
     }
 
 

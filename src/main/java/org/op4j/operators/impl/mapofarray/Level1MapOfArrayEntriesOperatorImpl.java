@@ -36,7 +36,6 @@ import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesKeyOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesValueOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
-import org.op4j.target.Target.Structure;
 
 
 /**
@@ -56,7 +55,7 @@ public class Level1MapOfArrayEntriesOperatorImpl<K,V> extends AbstractOperatorIm
 
 
     public Level0MapOfArrayOperator<K, V> endFor() {
-        return new Level0MapOfArrayOperatorImpl<K, V>(getTarget().endIterate(Structure.MAP, null));
+        return new Level0MapOfArrayOperatorImpl<K, V>(getTarget().endIterate(null));
     }
 
 

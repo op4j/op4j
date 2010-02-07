@@ -14,6 +14,7 @@ import org.op4j.operators.intf.arrayofarray.Level0ArrayOfArraySelectedOperator;
 import org.op4j.operators.intf.arrayofarray.Level1ArrayOfArraySelectedElementsOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
+import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalisationUtils;
 
 
@@ -26,7 +27,7 @@ public class Level0ArrayOfArraySelectedOperatorImpl<T> extends AbstractOperatorI
 
 
     public Level1ArrayOfArraySelectedElementsOperator<T> forEach(final Type<T[]> elementType) {
-        return new Level1ArrayOfArraySelectedElementsOperatorImpl<T>(elementType, getTarget().iterate());
+        return new Level1ArrayOfArraySelectedElementsOperatorImpl<T>(elementType, getTarget().iterate(Structure.ARRAY));
     }
 
 

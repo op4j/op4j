@@ -14,6 +14,7 @@ import org.op4j.operators.intf.mapofarray.Level0MapOfArraySelectedOperator;
 import org.op4j.operators.intf.mapofarray.Level1MapOfArraySelectedEntriesOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
+import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalisationUtils;
 
 
@@ -51,7 +52,7 @@ public class Level0MapOfArraySelectedOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Level1MapOfArraySelectedEntriesOperator<K,V> forEachEntry() {
-        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(getTarget().iterate());
+        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(getTarget().iterate(Structure.MAP));
     }
 
 
