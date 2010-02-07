@@ -30,7 +30,6 @@ import org.javaruntype.type.Types;
 import org.op4j.functions.StringFuncs;
 import org.op4j.functions.converters.ToBoolean;
 import org.op4j.functions.evaluators.MethodCall;
-import org.op4j.functions.evaluators.Ognl;
 import org.op4j.operators.intf.array.Level0ArrayOperator;
 import org.op4j.operators.intf.list.Level0ListOperator;
 import org.op4j.operators.intf.list.Level1ListElementsOperator;
@@ -74,7 +73,6 @@ public class BenchmarkTest {
 				}
 				
 				stopWatch1.stop();
-
 				
 				stopWatch2.start();
 				
@@ -190,6 +188,16 @@ public class BenchmarkTest {
 			
 			String time6 = op4jWatch.toString();
 			op4jWatch.reset();
+            
+            String[] op7 = null;
+            op4jWatch.start();
+            for (int i = 0; i < ITERATIONS; i++) {
+                op7 = op6.get();
+            }
+            op4jWatch.stop();
+            
+            String time7 = op4jWatch.toString();
+            op4jWatch.reset();
 
 			
 			System.out.println("Time 01: " + time1);
@@ -198,6 +206,7 @@ public class BenchmarkTest {
 			System.out.println("Time 04: " + time4);
 			System.out.println("Time 05: " + time5);
 			System.out.println("Time 06: " + time6);
+            System.out.println("Time 07: " + time7);
 			
 			
 		} catch (Exception e) {
