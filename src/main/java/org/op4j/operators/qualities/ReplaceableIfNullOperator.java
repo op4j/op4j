@@ -20,6 +20,9 @@
 package org.op4j.operators.qualities;
 
 /**
+ * <p>
+ * This interface contains methods for replacing targets if they are null.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -28,6 +31,17 @@ package org.op4j.operators.qualities;
  */
 public interface ReplaceableIfNullOperator<T>  {
 
+    
+    /**
+     * <p>
+     * Replaces the current target object with the specified replacement if 
+     * the current target is null.
+     * </p>
+     * 
+     * @param replacement the object which will replace the current target object if target is null.
+     * @return an operator containing the original target object if it was not null, or the new one if null.
+     */
     public ReplaceableIfNullOperator<T> replaceIfNullWith(final T replacement);
+    
     
 }

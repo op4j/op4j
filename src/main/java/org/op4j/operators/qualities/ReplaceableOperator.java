@@ -20,6 +20,9 @@
 package org.op4j.operators.qualities;
 
 /**
+ * <p>
+ * This interface contains methods for replacing targets.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -28,6 +31,16 @@ package org.op4j.operators.qualities;
  */
 public interface ReplaceableOperator<T>  {
     
+    
+    /**
+     * <p>
+     * Replaces the current target object with the specified replacement.
+     * </p>
+     * 
+     * @param replacement the object which will replace the current target object.
+     * @return an operator containing the replacement object as target.
+     */
     public ReplaceableOperator<T> replaceWith(final T replacement);
+    
     
 }
