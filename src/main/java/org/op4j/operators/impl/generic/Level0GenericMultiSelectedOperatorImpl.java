@@ -22,7 +22,7 @@ public class Level0GenericMultiSelectedOperatorImpl<T> extends AbstractOperatorI
 
 
     public Level0GenericMultiSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().iterate(org.op4j.target.Target.Structure.LIST).execute(eval, Normalisation.NONE).endIterate(null));
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
@@ -42,7 +42,7 @@ public class Level0GenericMultiSelectedOperatorImpl<T> extends AbstractOperatorI
 
 
     public Level0GenericMultiSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().iterate(org.op4j.target.Target.Structure.LIST).execute(function, Normalisation.NONE).endIterate(null));
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
@@ -52,7 +52,7 @@ public class Level0GenericMultiSelectedOperatorImpl<T> extends AbstractOperatorI
 
 
     public Level0GenericMultiSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().iterate(org.op4j.target.Target.Structure.LIST).execute(converter, Normalisation.NONE).endIterate(null));
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 

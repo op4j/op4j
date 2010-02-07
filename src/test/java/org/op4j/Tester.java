@@ -20,6 +20,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.StringFuncs;
 import org.op4j.functions.converters.ToCalendar;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.functions.evaluators.Ognl;
@@ -388,4 +389,50 @@ public class Tester extends TestCase {
 			}	
 		}
 	}
+	
+	
+
+    @Test
+    public void test13() {
+        
+        List<String> stringList = this.testUtils.getStringList(10);
+        List<String> newStringList =
+            Op.onList(stringList).
+                forEach().
+                    exec(StringFuncs.toUpperCase()).
+                    ifIndex(2).exec(StringFuncs.toLowerCase()).endIf().
+                    eval(Ognl.forString("#target + '--' + #index")).get();
+
+        for (int i = 0; i < 10; i++) {
+            if (i != 2) {
+                assertEquals(stringList.get(i).toUpperCase() + "--" + i, newStringList.get(i));
+            } else {
+                assertEquals(stringList.get(i).toLowerCase() + "--" + i, newStringList.get(i));
+            }
+        }
+        
+        List<List<String>> stringListOfList = this.testUtils.getStringListOfList(10,50);
+        List<List<String>> newStringListOfList =
+            Op.onListOfList(stringListOfList).
+                forEach().forEach().
+                    exec(StringFuncs.toUpperCase()).
+                    ifIndex(2).exec(StringFuncs.toLowerCase()).endIf().
+                    eval(Ognl.forString("#target + '--' + #indexes[1] + #indexes[2]")).get();
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 50; j++) {
+                if (j != 2) {
+                    assertEquals(stringListOfList.get(i).get(j).toUpperCase() + "--" + i + j, newStringListOfList.get(i).get(j));
+                } else {
+                    assertEquals(stringListOfList.get(i).get(j).toLowerCase() + "--" + i + j, newStringListOfList.get(i).get(j));
+                }
+            }
+        }
+        
+        List<String> strList =
+            Op.onAll("one", "two", "three").ifIndex(2).exec(StringFuncs.toUpperCase()).getAsList();
+        assertEquals("THREE", strList.get(2));
+        
+    }
+	
 }

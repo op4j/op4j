@@ -26,6 +26,18 @@ public class TestUtils {
 		}		
 		return result;
 	}
+    
+    public List<List<String>> getStringListOfList(int sizeLevel0, int sizeLevel1) {
+        List<List<String>> result = new ArrayList<List<String>>();
+        for (int i = 0; i < sizeLevel0; i++) {
+            List<String> level1Result = new ArrayList<String>();
+            for (int j = 0; j < sizeLevel1; j++) {
+                level1Result.add(RandomStringUtils.randomAlphanumeric(5));
+            }            
+            result.add(level1Result);
+        }       
+        return result;
+    }
 	
 	public List<Calendar> getCalendarList(int size) {
 		List<Calendar> result = new ArrayList<Calendar>();
