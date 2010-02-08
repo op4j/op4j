@@ -34,115 +34,116 @@ import org.javaruntype.type.Types;
  * @author Soraya S&aacute;nchez
  *
  */
-public class MathFuncs {
+public class MathDouble {
 
-	private static MaxDouble MAX_DOUBLE_FUNC = new MaxDouble();
+	private static Max MAX_FUNC = new Max();
 	
-	private static MinDouble MIN_DOUBLE_FUNC = new MinDouble();
+	private static Min MIN_FUNC = new Min();
 	
-	private static SumDouble SUM_DOUBLE_FUNC = new SumDouble();
+	private static Sum SUM_FUNC = new Sum();
 	
-	private static AvgDouble AVG_DOUBLE_FUNC = new AvgDouble();
+	private static Avg AVG_FUNC = new Avg();
 	
-	private static AbsDouble ABS_DOUBLE_FUNC = new AbsDouble();
+	private static Abs ABS_FUNC = new Abs();
 	
 	
-	private MathFuncs() {
+	private MathDouble() {
 		super();           
 	}
 
 	/**
 	 * @return function that returns the maximum {@link Double} of an object implementing {@link Iterable}
 	 */
-	public static final MaxDouble maxDouble() {
-        return MAX_DOUBLE_FUNC;
+	public static final Max max() {
+        return MAX_FUNC;
     }
 	
 	/**
 	 * @return function that returns the minimum {@link Double} of an object implementing {@link Iterable}
 	 */
-	public static final MinDouble minDouble() {
-        return MIN_DOUBLE_FUNC;
+	public static final Min min() {
+        return MIN_FUNC;
     }
 	
 	/**
 	 * @return function that returns the sum of the {@link Double} elements in an object 
 	 * implementing {@link Iterable}
 	 */
-	public static final SumDouble sumDouble() {
-        return SUM_DOUBLE_FUNC;
+	public static final Sum sum() {
+        return SUM_FUNC;
     }
 	
 	/**
 	 * @return function that returns the average of the {@link Double} elements in an object 
 	 * implementing {@link Iterable}
 	 */
-	public static final AvgDouble avgDouble() {
-        return AVG_DOUBLE_FUNC;
+	public static final Avg avg() {
+        return AVG_FUNC;
     }
-	public static final AvgDouble avgDouble(MathContext mathContext) {
-        return new AvgDouble(mathContext);
+	public static final Avg avg(MathContext mathContext) {
+        return new Avg(mathContext);
     }
-	public static final AvgDouble avgDouble(RoundingMode roundingMode) {
-		return new AvgDouble(roundingMode);
-    }
-	
-	public static final RoundDouble roundDouble(MathContext mathContext) {
-        return new RoundDouble(mathContext);
-    }
-	public static final RoundDouble roundDouble(RoundingMode roundingMode) {
-		return new RoundDouble(roundingMode);
+	public static final Avg avg(RoundingMode roundingMode) {
+		return new Avg(roundingMode);
     }
 	
-	public static final AbsDouble absDouble() {
-		return ABS_DOUBLE_FUNC;
+	public static final Round round(MathContext mathContext) {
+        return new Round(mathContext);
+    }
+	public static final Round round(RoundingMode roundingMode) {
+		return new Round(roundingMode);
     }
 	
-	public static final AddDouble addDouble(Double add) {
-		return new AddDouble(add);
-    }
-	public static final SubtractDouble subtractDouble(Double subtract) {
-		return new SubtractDouble(subtract);
+	public static final Abs abs() {
+		return ABS_FUNC;
     }
 	
-	public static final DivideByDouble divideByDouble(Double divisor) {
-		return new DivideByDouble(divisor);
-    }
-	public static final DivideByDouble divideByDouble(Double divisor, MathContext mathContext) {
-        return new DivideByDouble(divisor, mathContext);
-    }
-	public static final DivideByDouble divideByDouble(Double divisor, RoundingMode roundingMode) {
-		return new DivideByDouble(divisor, roundingMode);
+	public static final Add add(Double add) {
+		return new Add(add);
     }
 	
-	public static final ModuleDouble multiplyByDouble(int module) {
+	public static final Subtract subtract(Double subtract) {
+		return new Subtract(subtract);
+    }
+	
+	public static final Divide divideBy(Double divisor) {
+		return new Divide(divisor);
+    }
+	public static final Divide divideBy(Double divisor, MathContext mathContext) {
+        return new Divide(divisor, mathContext);
+    }
+	public static final Divide divideBy(Double divisor, RoundingMode roundingMode) {
+		return new Divide(divisor, roundingMode);
+    }
+	
+	public static final ModuleDouble module(int module) {
 		return new ModuleDouble(module);
     }	
 	
-	public static final MultiplyByDouble multiplyByDouble(Double multiplicand) {
-		return new MultiplyByDouble(multiplicand);
+	public static final Multiply multiplyBy(Double multiplicand) {
+		return new Multiply(multiplicand);
     }
-	public static final MultiplyByDouble multiplyByDouble(Double multiplicand, MathContext mathContext) {
-        return new MultiplyByDouble(multiplicand, mathContext);
+	public static final Multiply multiplyBy(Double multiplicand, MathContext mathContext) {
+        return new Multiply(multiplicand, mathContext);
     }
-	public static final MultiplyByDouble multiplyByDouble(Double multiplicand, RoundingMode roundingMode) {
-		return new MultiplyByDouble(multiplicand, roundingMode);
-    }
-	
-	public static final RaiseDouble raiseDouble(int power) {
-		return new RaiseDouble(power);
-    }
-	public static final RaiseDouble raiseDouble(int power, MathContext mathContext) {
-        return new RaiseDouble(power, mathContext);
-    }
-	public static final RaiseDouble raiseDouble(int power, RoundingMode roundingMode) {
-		return new RaiseDouble(power, roundingMode);
+	public static final Multiply multiplyBy(Double multiplicand, RoundingMode roundingMode) {
+		return new Multiply(multiplicand, roundingMode);
     }
 	
+	public static final Raise raiseTo(int power) {
+		return new Raise(power);
+    }
+	public static final Raise raiseTo(int power, MathContext mathContext) {
+        return new Raise(power, mathContext);
+    }
+	public static final Raise raiseTo(int power, RoundingMode roundingMode) {
+		return new Raise(power, roundingMode);
+    }
 	
-	public static final class MaxDouble extends AbstractNotNullFunc<Double, Iterable<Double>> {
+	
+	public static final class Max extends AbstractNotNullFunc<Double, Iterable<Double>> {
 
-		public MaxDouble() {
+		public Max() {
 			super();
 		}
 
@@ -168,9 +169,9 @@ public class MathFuncs {
 		}		
 	}
 	
-	public static final class MinDouble extends AbstractNotNullFunc<Double, Iterable<Double>> {
+	public static final class Min extends AbstractNotNullFunc<Double, Iterable<Double>> {
 
-		public MinDouble() {
+		public Min() {
 			super();
 		}
 
@@ -196,9 +197,9 @@ public class MathFuncs {
 		}		
 	}
 	
-	public static final class SumDouble extends AbstractNotNullFunc<Double, Iterable<Double>> {
+	public static final class Sum extends AbstractNotNullFunc<Double, Iterable<Double>> {
 
-		public SumDouble() {
+		public Sum() {
 			super();
 		}
 
@@ -219,22 +220,22 @@ public class MathFuncs {
 		}		
 	}
 	
-	public static final class AvgDouble extends AbstractNotNullFunc<Double, Iterable<Double>> {
+	public static final class Avg extends AbstractNotNullFunc<Double, Iterable<Double>> {
 
 		private RoundingMode roundingMode = null;
 		private MathContext mathContext = null;
 		
-		public AvgDouble() {
+		public Avg() {
 			super();
 		}
 
-		public AvgDouble(RoundingMode roundingMode) {
+		public Avg(RoundingMode roundingMode) {
 			super();
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
 			this.roundingMode = roundingMode;			
 		}
 		
-		public AvgDouble(MathContext mathContext) {
+		public Avg(MathContext mathContext) {
 			super();
 			Validate.notNull(mathContext, "MathContext can't be null");
 			this.mathContext = mathContext;
@@ -266,17 +267,17 @@ public class MathFuncs {
 		}		
 	}
 	
-	public static final class RoundDouble extends AbstractNotNullFunc<Double, Double> {
+	public static final class Round extends AbstractNotNullFunc<Double, Double> {
 
 		private MathContext mathContext = null;
 		
-		public RoundDouble(RoundingMode roundingMode) {
+		public Round(RoundingMode roundingMode) {
 			super();
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
 			this.mathContext = new MathContext(0, roundingMode);
 		}
 		
-		public RoundDouble(MathContext mathContext) {
+		public Round(MathContext mathContext) {
 			super();
 			Validate.notNull(mathContext, "MathContext can't be null");
 			this.mathContext = mathContext;
@@ -294,9 +295,9 @@ public class MathFuncs {
 		}		
 	}
 	
-	public static final class AbsDouble extends AbstractNotNullFunc<Double, Double> {
+	public static final class Abs extends AbstractNotNullFunc<Double, Double> {
 
-		public AbsDouble() {
+		public Abs() {
 			super();
 		}
 		
@@ -311,11 +312,11 @@ public class MathFuncs {
 		}		
 	}
 	
-	public static final class AddDouble extends AbstractNotNullFunc<Double, Double> {
+	public static final class Add extends AbstractNotNullFunc<Double, Double> {
 
 		private Double add;
 		
-		public AddDouble(Double add) {
+		public Add(Double add) {
 			super();
 			Validate.notNull(add, "Number to be added can't be null");
 			this.add = add;
@@ -335,11 +336,11 @@ public class MathFuncs {
 		}		
 	}
 	
-	public static final class SubtractDouble extends AbstractNotNullFunc<Double, Double> {
+	public static final class Subtract extends AbstractNotNullFunc<Double, Double> {
 
 		private Double subtract;
 		
-		public SubtractDouble(Double subtract) {
+		public Subtract(Double subtract) {
 			super();
 			Validate.notNull(subtract, "Number to be subtracted can't be null");
 			Validate.notNull(subtract, "Number to be added can't be null");
@@ -360,19 +361,19 @@ public class MathFuncs {
 		}		
 	}
 	
-	public static final class DivideByDouble extends AbstractNotNullFunc<Double, Double> {
+	public static final class Divide extends AbstractNotNullFunc<Double, Double> {
 
 		private Double divisor;
 		private RoundingMode roundingMode = null;
 		private MathContext mathContext = null;
 		
-		public DivideByDouble(Double divisor) {
+		public Divide(Double divisor) {
 			super();
 			Validate.notNull(divisor, "Divisor can't be null");
 			this.divisor = divisor;
 		}
 		
-		public DivideByDouble(Double divisor, RoundingMode roundingMode) {
+		public Divide(Double divisor, RoundingMode roundingMode) {
 			super();
 			Validate.notNull(divisor, "Divisor can't be null");
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
@@ -380,7 +381,7 @@ public class MathFuncs {
 			this.roundingMode = roundingMode;
 		}
 		
-		public DivideByDouble(Double divisor, MathContext mathContext) {
+		public Divide(Double divisor, MathContext mathContext) {
 			super();
 			Validate.notNull(divisor, "Divisor can't be null");
 			Validate.notNull(mathContext, "MathContext can't be null");
@@ -429,18 +430,18 @@ public class MathFuncs {
 		}		
 	}
 	
-	public static final class MultiplyByDouble extends AbstractNotNullFunc<Double, Double> {
+	public static final class Multiply extends AbstractNotNullFunc<Double, Double> {
 
 		private Double multiplicand;
 		private MathContext mathContext = null;
 		
-		public MultiplyByDouble(Double multiplicand) {
+		public Multiply(Double multiplicand) {
 			super();
 			Validate.notNull(multiplicand, "Multiplicand can't be null");
 			this.multiplicand = multiplicand;
 		}
 		
-		public MultiplyByDouble(Double multiplicand, RoundingMode roundingMode) {
+		public Multiply(Double multiplicand, RoundingMode roundingMode) {
 			super();
 			Validate.notNull(multiplicand, "Multiplicand can't be null");
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
@@ -448,7 +449,7 @@ public class MathFuncs {
 			this.mathContext = new MathContext(0, roundingMode);
 		}
 		
-		public MultiplyByDouble(Double multiplicand, MathContext mathContext) {
+		public Multiply(Double multiplicand, MathContext mathContext) {
 			super();
 			Validate.notNull(multiplicand, "Multiplicand can't be null");
 			Validate.notNull(mathContext, "MathContext can't be null");
@@ -474,24 +475,24 @@ public class MathFuncs {
 		}		
 	}
 	
-	public static final class RaiseDouble extends AbstractNotNullFunc<Double, Double> {
+	public static final class Raise extends AbstractNotNullFunc<Double, Double> {
 
 		private int power;
 		private MathContext mathContext = null;
 		
-		public RaiseDouble(int power) {
+		public Raise(int power) {
 			super();
 			this.power = power;
 		}
 		
-		public RaiseDouble(int power, RoundingMode roundingMode) {
+		public Raise(int power, RoundingMode roundingMode) {
 			super();
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
 			this.power = power;
 			this.mathContext = new MathContext(0, roundingMode);
 		}
 		
-		public RaiseDouble(int power, MathContext mathContext) {
+		public Raise(int power, MathContext mathContext) {
 			super();
 			Validate.notNull(mathContext, "MathContext can't be null");
 			this.power = power;
