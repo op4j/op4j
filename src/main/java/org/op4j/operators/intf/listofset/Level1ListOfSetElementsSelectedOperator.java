@@ -78,13 +78,13 @@ public interface Level1ListOfSetElementsSelectedOperator<T>
     public Level1ListOfSetElementsSelectedOperator<T> removeAllNull();
     
     
-    public Level1ListOfSetElementsSelectedOperator<T> convert(final IConverter<? extends Set<? extends T>,? super Set<T>> converter);
+    public Level1ListOfSetElementsSelectedOperator<T> convertAsSet(final IConverter<? extends Set<? extends T>,? super Set<T>> converter);
     
-    public Level1ListOfSetElementsSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval);
+    public Level1ListOfSetElementsSelectedOperator<T> evalAsSet(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval);
 
     public Level1ListOfSetElementsSelectedOperator<T> replaceWith(final Set<T> replacement);
 
-    public Level1ListOfSetElementsSelectedOperator<T> exec(final IFunction<? extends Set<? extends T>, ? super Set<T>> function);
+    public Level1ListOfSetElementsSelectedOperator<T> execAsSet(final IFunction<? extends Set<? extends T>, ? super Set<T>> function);
     
 		            
 }

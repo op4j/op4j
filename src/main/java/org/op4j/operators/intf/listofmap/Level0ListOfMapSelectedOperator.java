@@ -84,12 +84,12 @@ public interface Level0ListOfMapSelectedOperator<K,V>
     
     
     
-    public Level0ListOfMapSelectedOperator<K,V> convert(final IConverter<? extends List<? extends Map<? extends K,? extends V>>, ? super List<Map<K,V>>> converter);
+    public Level0ListOfMapSelectedOperator<K,V> convertAsListOfMap(final IConverter<? extends List<? extends Map<? extends K,? extends V>>, ? super List<Map<K,V>>> converter);
     
-    public Level0ListOfMapSelectedOperator<K,V> eval(final IEvaluator<? extends List<? extends Map<? extends K,? extends V>>, ? super List<Map<K,V>>> eval);
+    public Level0ListOfMapSelectedOperator<K,V> evalAsListOfMap(final IEvaluator<? extends List<? extends Map<? extends K,? extends V>>, ? super List<Map<K,V>>> eval);
 
     public Level0ListOfMapSelectedOperator<K,V> replaceWith(final List<Map<K,V>> replacement);
 
-    public Level0ListOfMapSelectedOperator<K,V> exec(final IFunction<? extends List<? extends Map<? extends K,? extends V>>, ? super List<Map<K,V>>> function);
+    public Level0ListOfMapSelectedOperator<K,V> execAsListOfMap(final IFunction<? extends List<? extends Map<? extends K,? extends V>>, ? super List<Map<K,V>>> function);
     
 }

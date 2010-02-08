@@ -117,11 +117,11 @@ public interface Level0ListOfMapOperator<K,V>
     public Level0ListOfMapOperator<K,V> replaceIfNullWith(final List<Map<K,V>> replacement);
 
 
-    public <X,Y> Level0ListOfMapOperator<X,Y> convert(final IConverter<? extends List<? extends Map<X,Y>>,? super List<Map<K,V>>> converter);
+    public <X,Y> Level0ListOfMapOperator<X,Y> convertAsListOfMap(final IConverter<? extends List<? extends Map<X,Y>>,? super List<Map<K,V>>> converter);
     
-    public <X,Y> Level0ListOfMapOperator<X,Y> eval(final IEvaluator<? extends List<? extends Map<X,Y>>,? super List<Map<K,V>>> eval);
+    public <X,Y> Level0ListOfMapOperator<X,Y> evalAsListOfMap(final IEvaluator<? extends List<? extends Map<X,Y>>,? super List<Map<K,V>>> eval);
 
-    public <X,Y> Level0ListOfMapOperator<X,Y> exec(final IFunction<? extends List<? extends Map<X,Y>>,? super List<Map<K,V>>> function);
+    public <X,Y> Level0ListOfMapOperator<X,Y> execAsListOfMap(final IFunction<? extends List<? extends Map<X,Y>>,? super List<Map<K,V>>> function);
 
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<Map<K,V>>> function);
     

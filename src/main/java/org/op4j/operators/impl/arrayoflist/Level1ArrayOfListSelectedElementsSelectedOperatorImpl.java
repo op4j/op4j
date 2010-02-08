@@ -90,13 +90,23 @@ public class Level1ArrayOfListSelectedElementsSelectedOperatorImpl<T> extends Ab
     }
 
 
-    public Level1ArrayOfListSelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends List<? extends T>,? super List<T>> eval) {
+    public Level1ArrayOfListSelectedElementsOperator<T> endIf() {
+        return new Level1ArrayOfListSelectedElementsOperatorImpl<T>(getTarget().endSelect());
+    }
+
+
+    public Level1ArrayOfListSelectedElementsSelectedOperator<T> convertAsList(final IConverter<? extends List<? extends T>,? super List<T>> converter) {
+        return new Level1ArrayOfListSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.LIST));
+    }
+
+
+    public Level1ArrayOfListSelectedElementsSelectedOperator<T> evalAsList(final IEvaluator<? extends List<? extends T>,? super List<T>> eval) {
         return new Level1ArrayOfListSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.LIST));
     }
 
 
-    public Level1ArrayOfListSelectedElementsOperator<T> endIf() {
-        return new Level1ArrayOfListSelectedElementsOperatorImpl<T>(getTarget().endSelect());
+    public Level1ArrayOfListSelectedElementsSelectedOperator<T> execAsList(final IFunction<? extends List<? extends T>,? super List<T>> function) {
+        return new Level1ArrayOfListSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.LIST));
     }
 
 
@@ -122,11 +132,6 @@ public class Level1ArrayOfListSelectedElementsSelectedOperatorImpl<T> extends Ab
     }
 
 
-    public Level1ArrayOfListSelectedElementsSelectedOperator<T> exec(final IFunction<? extends List<? extends T>,? super List<T>> function) {
-        return new Level1ArrayOfListSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.LIST));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level1ArrayOfListSelectedElementsSelectedOperator<T> sort() {
         return new Level1ArrayOfListSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.Sort()));
@@ -140,11 +145,6 @@ public class Level1ArrayOfListSelectedElementsSelectedOperatorImpl<T> extends Ab
 
     public Level1ArrayOfListSelectedElementsSelectedOperator<T> replaceWith(final List<T> replacement) {
         return new Level1ArrayOfListSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level1ArrayOfListSelectedElementsSelectedOperator<T> convert(final IConverter<? extends List<? extends T>,? super List<T>> converter) {
-        return new Level1ArrayOfListSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.LIST));
     }
 
 

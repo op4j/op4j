@@ -81,13 +81,13 @@ public interface Level0SetOfListSelectedOperator<T>
 
 
     
-    public Level0SetOfListSelectedOperator<T> convert(final IConverter<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> converter);
+    public Level0SetOfListSelectedOperator<T> convertAsSetOfList(final IConverter<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> converter);
     
-    public Level0SetOfListSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> eval);
+    public Level0SetOfListSelectedOperator<T> evalAsSetOfList(final IEvaluator<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> eval);
 
     public Level0SetOfListSelectedOperator<T> replaceWith(final Set<List<T>> replacement);
 
-    public Level0SetOfListSelectedOperator<T> exec(final IFunction<? extends Set<? extends List<? extends T>>, ? super Set<List<T>>> function);
+    public Level0SetOfListSelectedOperator<T> execAsSetOfList(final IFunction<? extends Set<? extends List<? extends T>>, ? super Set<List<T>>> function);
 
     
 }

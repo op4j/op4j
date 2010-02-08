@@ -86,13 +86,23 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public Level0SetOfArraySelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T[]>,? super Set<T[]>> eval) {
+    public Level0SetOfArrayOperator<T> endIf() {
+        return new Level0SetOfArrayOperatorImpl<T>(getTarget().endSelect());
+    }
+
+
+    public Level0SetOfArraySelectedOperator<T> convertAsSetOfArray(final IConverter<? extends Set<? extends T[]>,? super Set<T[]>> converter) {
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.SET_OF_ARRAY));
+    }
+
+
+    public Level0SetOfArraySelectedOperator<T> evalAsSetOfArray(final IEvaluator<? extends Set<? extends T[]>,? super Set<T[]>> eval) {
         return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.SET_OF_ARRAY));
     }
 
 
-    public Level0SetOfArrayOperator<T> endIf() {
-        return new Level0SetOfArrayOperatorImpl<T>(getTarget().endSelect());
+    public Level0SetOfArraySelectedOperator<T> execAsSetOfArray(final IFunction<? extends Set<? extends T[]>,? super Set<T[]>> function) {
+        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.SET_OF_ARRAY));
     }
 
 
@@ -118,11 +128,6 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public Level0SetOfArraySelectedOperator<T> exec(final IFunction<? extends Set<? extends T[]>,? super Set<T[]>> function) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.SET_OF_ARRAY));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level0SetOfArraySelectedOperator<T> sort() {
         return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Sort()));
@@ -136,11 +141,6 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
 
     public Level0SetOfArraySelectedOperator<T> replaceWith(final Set<T[]> replacement) {
         return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level0SetOfArraySelectedOperator<T> convert(final IConverter<? extends Set<? extends T[]>,? super Set<T[]>> converter) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.SET_OF_ARRAY));
     }
 
 

@@ -61,7 +61,7 @@ public interface ExecutableMapOfSetEntryOperator<K,V> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X,Y> ExecutableMapOfSetEntryOperator<X,Y> exec(final IFunction<? extends Map.Entry<X,? extends Set<Y>>, ? super Map.Entry<K,Set<V>>> function);
+    public <X,Y> ExecutableMapOfSetEntryOperator<X,Y> execAsMapOfSetEntry(final IFunction<? extends Map.Entry<X,? extends Set<Y>>, ? super Map.Entry<K,Set<V>>> function);
     
     
     /**
@@ -79,7 +79,7 @@ public interface ExecutableMapOfSetEntryOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X,Y> ExecutableMapOfSetEntryOperator<X,Y> eval(final IEvaluator<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> eval);
+    public <X,Y> ExecutableMapOfSetEntryOperator<X,Y> evalAsMapOfSetEntry(final IEvaluator<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> eval);
     
 
     /**
@@ -97,7 +97,7 @@ public interface ExecutableMapOfSetEntryOperator<K,V> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public <X,Y> ExecutableMapOfSetEntryOperator<X,Y> convert(final IConverter<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> converter);
+    public <X,Y> ExecutableMapOfSetEntryOperator<X,Y> convertAsMapOfSetEntry(final IConverter<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> converter);
 
     
     /**

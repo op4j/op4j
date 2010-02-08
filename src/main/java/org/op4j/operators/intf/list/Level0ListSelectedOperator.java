@@ -81,13 +81,13 @@ public interface Level0ListSelectedOperator<T>
     public Level0ListSelectedOperator<T> removeAllNull();
     
     
-    public Level0ListSelectedOperator<T> convert(final IConverter<? extends List<? extends T>,? super List<T>> converter);
+    public Level0ListSelectedOperator<T> convertAsList(final IConverter<? extends List<? extends T>,? super List<T>> converter);
     
-    public Level0ListSelectedOperator<T> eval(final IEvaluator<? extends List<? extends T>,? super List<T>> eval);
+    public Level0ListSelectedOperator<T> evalAsList(final IEvaluator<? extends List<? extends T>,? super List<T>> eval);
 
     public Level0ListSelectedOperator<T> replaceWith(final List<T> replacement);
 
-    public Level0ListSelectedOperator<T> exec(final IFunction<? extends List<? extends T>, ? super List<T>> function);
+    public Level0ListSelectedOperator<T> execAsList(final IFunction<? extends List<? extends T>, ? super List<T>> function);
 
     
 }

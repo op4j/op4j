@@ -44,11 +44,6 @@ public class Level2ArrayOfMapSelectedElementsEntriesOperatorImpl<K,V> extends Ab
     }
 
 
-    public Level2ArrayOfMapSelectedElementsEntriesOperator<K,V> eval(final IEvaluator<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> eval) {
-        return new Level2ArrayOfMapSelectedElementsEntriesOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAPENTRY));
-    }
-
-
     public Level1ArrayOfMapSelectedElementsOperator<K,V> endFor() {
         return new Level1ArrayOfMapSelectedElementsOperatorImpl<K,V>(getTarget().endIterate(null));
     }
@@ -74,18 +69,23 @@ public class Level2ArrayOfMapSelectedElementsEntriesOperatorImpl<K,V> extends Ab
     }
 
 
-    public Level2ArrayOfMapSelectedElementsEntriesOperator<K,V> exec(final IFunction<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> function) {
+    public Level2ArrayOfMapSelectedElementsEntriesOperator<K,V> execAsMapEntry(final IFunction<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> function) {
         return new Level2ArrayOfMapSelectedElementsEntriesOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAPENTRY));
+    }
+
+
+    public Level2ArrayOfMapSelectedElementsEntriesOperator<K,V> evalAsMapEntry(final IEvaluator<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> eval) {
+        return new Level2ArrayOfMapSelectedElementsEntriesOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAPENTRY));
+    }
+
+
+    public Level2ArrayOfMapSelectedElementsEntriesOperator<K,V> convertAsMapEntry(final IConverter<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> converter) {
+        return new Level2ArrayOfMapSelectedElementsEntriesOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAPENTRY));
     }
 
 
     public Level2ArrayOfMapSelectedElementsEntriesOperator<K,V> replaceWith(final Entry<K,V> replacement) {
         return new Level2ArrayOfMapSelectedElementsEntriesOperatorImpl<K,V>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level2ArrayOfMapSelectedElementsEntriesOperator<K,V> convert(final IConverter<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> converter) {
-        return new Level2ArrayOfMapSelectedElementsEntriesOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAPENTRY));
     }
 
 

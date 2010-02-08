@@ -56,7 +56,7 @@ public interface ExecutableArrayOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableArrayOperator<X> exec(final IFunction<X[], ? super T[]> function);
+    public <X> ExecutableArrayOperator<X> execAsArray(final IFunction<X[], ? super T[]> function);
     
     
     /**
@@ -73,7 +73,7 @@ public interface ExecutableArrayOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> ExecutableArrayOperator<X> eval(final IEvaluator<X[],? super T[]> eval);
+    public <X> ExecutableArrayOperator<X> evalAsArray(final IEvaluator<X[],? super T[]> eval);
     
     
     /**
@@ -90,7 +90,7 @@ public interface ExecutableArrayOperator<T> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public <X> ExecutableArrayOperator<X> convert(final IConverter<X[],? super T[]> converter);
+    public <X> ExecutableArrayOperator<X> convertAsArray(final IConverter<X[],? super T[]> converter);
 
     
     /**

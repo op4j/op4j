@@ -55,10 +55,10 @@ public interface Level1MapOfListEntriesSelectedOperator<K,V>
     
     public Level1MapOfListEntriesSelectedOperator<K,V> replaceWith(final Map.Entry<K,List<V>> replacement);
 
-    public Level1MapOfListEntriesSelectedOperator<K,V> exec(final IFunction<? extends Map.Entry<? extends K,? extends List<? extends V>>, ? super Map.Entry<K,List<V>>> function);
+    public Level1MapOfListEntriesSelectedOperator<K,V> execAsMapOfListEntry(final IFunction<? extends Map.Entry<? extends K,? extends List<? extends V>>, ? super Map.Entry<K,List<V>>> function);
     
-    public Level1MapOfListEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Map.Entry<? extends K,? extends List<? extends V>>, ? super Map.Entry<K,List<V>>> eval);
+    public Level1MapOfListEntriesSelectedOperator<K,V> evalAsMapOfListEntry(final IEvaluator<? extends Map.Entry<? extends K,? extends List<? extends V>>, ? super Map.Entry<K,List<V>>> eval);
     
-    public Level1MapOfListEntriesSelectedOperator<K,V> convert(final IConverter<? extends Map.Entry<? extends K,? extends List<? extends V>>, ? super Map.Entry<K,List<V>>> converter);
+    public Level1MapOfListEntriesSelectedOperator<K,V> convertAsMapOfListEntry(final IConverter<? extends Map.Entry<? extends K,? extends List<? extends V>>, ? super Map.Entry<K,List<V>>> converter);
                                     
 }

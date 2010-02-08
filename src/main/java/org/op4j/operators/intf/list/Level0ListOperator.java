@@ -137,11 +137,11 @@ public interface Level0ListOperator<T>
     public Level0ListOperator<T> replaceIfNullWith(final List<T> replacement);
 
 
-    public <X> Level0ListOperator<X> convert(final IConverter<? extends List<X>,? super List<T>> converter);
+    public <X> Level0ListOperator<X> convertAsList(final IConverter<? extends List<X>,? super List<T>> converter);
     
-    public <X> Level0ListOperator<X> eval(final IEvaluator<? extends List<X>,? super List<T>> eval);
+    public <X> Level0ListOperator<X> evalAsList(final IEvaluator<? extends List<X>,? super List<T>> eval);
 
-    public <X> Level0ListOperator<X> exec(final IFunction<? extends List<X>, ? super List<T>> function);
+    public <X> Level0ListOperator<X> execAsList(final IFunction<? extends List<X>, ? super List<T>> function);
 
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T>> function);
     

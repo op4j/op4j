@@ -56,7 +56,7 @@ public interface ExecutableMapSelectedOperator<K,V> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableMapSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V>, ? super Map<K,V>> function);
+    public ExecutableMapSelectedOperator<K,V> execAsMap(final IFunction<? extends Map<? extends K,? extends V>, ? super Map<K,V>> function);
     
     
     /**
@@ -72,8 +72,22 @@ public interface ExecutableMapSelectedOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public ExecutableMapSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V>,? super Map<K,V>> eval);
+    public ExecutableMapSelectedOperator<K,V> evalAsMap(final IEvaluator<? extends Map<? extends K,? extends V>,? super Map<K,V>> eval);
     
-    public ExecutableMapSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends V>,? super Map<K,V>> converter);
+    
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * implementing the {@link IConverter} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param converter the converter to be executed
+     * @return an operator on the results of converter execution
+     */
+    public ExecutableMapSelectedOperator<K,V> convertAsMap(final IConverter<? extends Map<? extends K,? extends V>,? super Map<K,V>> converter);
     
 }

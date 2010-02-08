@@ -96,13 +96,13 @@ public interface Level1SetOfListSelectedElementsOperator<T>
     public Level1SetOfListSelectedElementsOperator<T> removeAllNull();
     
     
-    public Level1SetOfListSelectedElementsOperator<T> convert(final IConverter<? extends List<? extends T>,? super List<T>> converter);
+    public Level1SetOfListSelectedElementsOperator<T> convertAsList(final IConverter<? extends List<? extends T>,? super List<T>> converter);
     
-    public Level1SetOfListSelectedElementsOperator<T> eval(final IEvaluator<? extends List<? extends T>,? super List<T>> eval);
+    public Level1SetOfListSelectedElementsOperator<T> evalAsList(final IEvaluator<? extends List<? extends T>,? super List<T>> eval);
 
     public Level1SetOfListSelectedElementsOperator<T> replaceWith(final List<T> replacement);
 
-    public Level1SetOfListSelectedElementsOperator<T> exec(final IFunction<? extends List<? extends T>, ? super List<T>> function);
+    public Level1SetOfListSelectedElementsOperator<T> execAsList(final IFunction<? extends List<? extends T>, ? super List<T>> function);
     
 		            
 }

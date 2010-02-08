@@ -105,11 +105,11 @@ public interface Level1SetOfMapElementsOperator<K,V>
     public Level1SetOfMapElementsOperator<K,V> replaceIfNullWith(final Map<K,V> replacement);
 
 
-    public <X,Y> Level1SetOfMapElementsOperator<X,Y> convert(final IConverter<? extends Map<X,Y>,? super Map<K,V>> converter);
+    public <X,Y> Level1SetOfMapElementsOperator<X,Y> convertAsMap(final IConverter<? extends Map<X,Y>,? super Map<K,V>> converter);
     
-    public <X,Y> Level1SetOfMapElementsOperator<X,Y> eval(final IEvaluator<? extends Map<X,Y>,? super Map<K,V>> eval);
+    public <X,Y> Level1SetOfMapElementsOperator<X,Y> evalAsMap(final IEvaluator<? extends Map<X,Y>,? super Map<K,V>> eval);
 
-    public <X,Y> Level1SetOfMapElementsOperator<X,Y> exec(final IFunction<? extends Map<X,Y>,? super Map<K,V>> function);
+    public <X,Y> Level1SetOfMapElementsOperator<X,Y> execAsMap(final IFunction<? extends Map<X,Y>,? super Map<K,V>> function);
 
     public <X> Level1SetElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K,V>> function);
     

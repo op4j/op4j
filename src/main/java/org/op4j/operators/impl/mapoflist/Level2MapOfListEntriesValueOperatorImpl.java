@@ -270,17 +270,17 @@ public class Level2MapOfListEntriesValueOperatorImpl<K,V> extends AbstractOperat
     }
 
 
-    public <X> Level2MapOfListEntriesValueOperator<K, X> convert(final IConverter<? extends List<X>, ? super List<V>> converter) {
+    public <X> Level2MapOfListEntriesValueOperator<K, X> convertAsList(final IConverter<? extends List<X>, ? super List<V>> converter) {
         return new Level2MapOfListEntriesValueOperatorImpl<K, X>(getTarget().execute(converter, Normalisation.LIST));
     }
 
 
-    public <X> Level2MapOfListEntriesValueOperator<K, X> eval(final IEvaluator<? extends List<X>, ? super List<V>> eval) {
+    public <X> Level2MapOfListEntriesValueOperator<K, X> evalAsList(final IEvaluator<? extends List<X>, ? super List<V>> eval) {
         return new Level2MapOfListEntriesValueOperatorImpl<K, X>(getTarget().execute(eval, Normalisation.LIST));
     }
 
 
-    public <X> Level2MapOfListEntriesValueOperator<K, X> exec(final IFunction<? extends List<X>, ? super List<V>> function) {
+    public <X> Level2MapOfListEntriesValueOperator<K, X> execAsList(final IFunction<? extends List<X>, ? super List<V>> function) {
         return new Level2MapOfListEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalisation.LIST));
     }
 

@@ -263,17 +263,17 @@ public class Level2MapOfSetEntriesValueOperatorImpl<K,V> extends AbstractOperato
     }
 
 
-    public <X> Level2MapOfSetEntriesValueOperator<K, X> convert(final IConverter<? extends Set<X>, ? super Set<V>> converter) {
+    public <X> Level2MapOfSetEntriesValueOperator<K, X> convertAsSet(final IConverter<? extends Set<X>, ? super Set<V>> converter) {
         return new Level2MapOfSetEntriesValueOperatorImpl<K, X>(getTarget().execute(converter, Normalisation.SET));
     }
 
 
-    public <X> Level2MapOfSetEntriesValueOperator<K, X> eval(final IEvaluator<? extends Set<X>, ? super Set<V>> eval) {
+    public <X> Level2MapOfSetEntriesValueOperator<K, X> evalAsSet(final IEvaluator<? extends Set<X>, ? super Set<V>> eval) {
         return new Level2MapOfSetEntriesValueOperatorImpl<K, X>(getTarget().execute(eval, Normalisation.SET));
     }
 
 
-    public <X> Level2MapOfSetEntriesValueOperator<K, X> exec(final IFunction<? extends Set<X>, ? super Set<V>> function) {
+    public <X> Level2MapOfSetEntriesValueOperator<K, X> execAsSet(final IFunction<? extends Set<X>, ? super Set<V>> function) {
         return new Level2MapOfSetEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalisation.SET));
     }
 

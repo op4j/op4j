@@ -84,13 +84,13 @@ public interface Level0ArrayOfArraySelectedOperator<T>
 
 
     
-    public Level0ArrayOfArraySelectedOperator<T> convert(final IConverter<? extends T[][],? super T[][]> converter);
+    public Level0ArrayOfArraySelectedOperator<T> convertAsArrayOfArray(final IConverter<? extends T[][],? super T[][]> converter);
     
-    public Level0ArrayOfArraySelectedOperator<T> eval(final IEvaluator<? extends T[][],? super T[][]> eval);
+    public Level0ArrayOfArraySelectedOperator<T> evalAsArrayOfArray(final IEvaluator<? extends T[][],? super T[][]> eval);
 
     public Level0ArrayOfArraySelectedOperator<T> replaceWith(final T[][] replacement);
 
-    public Level0ArrayOfArraySelectedOperator<T> exec(final IFunction<? extends T[][], ? super T[][]> function);
+    public Level0ArrayOfArraySelectedOperator<T> execAsArrayOfArray(final IFunction<? extends T[][], ? super T[][]> function);
 
     
 }

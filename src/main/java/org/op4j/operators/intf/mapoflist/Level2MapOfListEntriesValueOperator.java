@@ -123,11 +123,11 @@ public interface Level2MapOfListEntriesValueOperator<K,V>
     public Level2MapOfListEntriesValueOperator<K,V> replaceIfNullWith(final List<V> replacement);
 
 
-    public <X> Level2MapOfListEntriesValueOperator<K,X> convert(final IConverter<? extends List<X>,? super List<V>> converter);
+    public <X> Level2MapOfListEntriesValueOperator<K,X> convertAsList(final IConverter<? extends List<X>,? super List<V>> converter);
     
-    public <X> Level2MapOfListEntriesValueOperator<K,X> eval(final IEvaluator<? extends List<X>,? super List<V>> eval);
+    public <X> Level2MapOfListEntriesValueOperator<K,X> evalAsList(final IEvaluator<? extends List<X>,? super List<V>> eval);
 
-    public <X> Level2MapOfListEntriesValueOperator<K,X> exec(final IFunction<? extends List<X>, ? super List<V>> function);
+    public <X> Level2MapOfListEntriesValueOperator<K,X> execAsList(final IFunction<? extends List<X>, ? super List<V>> function);
 
     public <X> Level2MapEntriesValueOperator<K,X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<V>> function);
     

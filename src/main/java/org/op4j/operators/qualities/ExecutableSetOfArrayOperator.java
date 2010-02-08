@@ -59,7 +59,7 @@ public interface ExecutableSetOfArrayOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableSetOfArrayOperator<X> exec(final IFunction<? extends Set<X[]>, ? super Set<T[]>> function);
+    public <X> ExecutableSetOfArrayOperator<X> execAsSetOfArray(final IFunction<? extends Set<X[]>, ? super Set<T[]>> function);
     
     
     /**
@@ -76,7 +76,7 @@ public interface ExecutableSetOfArrayOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> ExecutableSetOfArrayOperator<X> eval(final IEvaluator<? extends Set<X[]>,? super Set<T[]>> eval);
+    public <X> ExecutableSetOfArrayOperator<X> evalAsSetOfArray(final IEvaluator<? extends Set<X[]>,? super Set<T[]>> eval);
     
     
     /**
@@ -93,7 +93,7 @@ public interface ExecutableSetOfArrayOperator<T> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public <X> ExecutableSetOfArrayOperator<X> convert(final IConverter<? extends Set<X[]>,? super Set<T[]>> converter);
+    public <X> ExecutableSetOfArrayOperator<X> convertAsSetOfArray(final IConverter<? extends Set<X[]>,? super Set<T[]>> converter);
 
     
     /**

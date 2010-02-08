@@ -91,13 +91,23 @@ public class Level0ListOfArraySelectedOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
-    public Level0ListOfArraySelectedOperator<T> eval(final IEvaluator<? extends List<? extends T[]>,? super List<T[]>> eval) {
+    public Level0ListOfArrayOperator<T> endIf() {
+        return new Level0ListOfArrayOperatorImpl<T>(getTarget().endSelect());
+    }
+
+
+    public Level0ListOfArraySelectedOperator<T> convertAsListOfArray(final IConverter<? extends List<? extends T[]>,? super List<T[]>> converter) {
+        return new Level0ListOfArraySelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.LIST_OF_ARRAY));
+    }
+
+
+    public Level0ListOfArraySelectedOperator<T> evalAsListOfArray(final IEvaluator<? extends List<? extends T[]>,? super List<T[]>> eval) {
         return new Level0ListOfArraySelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.LIST_OF_ARRAY));
     }
 
 
-    public Level0ListOfArrayOperator<T> endIf() {
-        return new Level0ListOfArrayOperatorImpl<T>(getTarget().endSelect());
+    public Level0ListOfArraySelectedOperator<T> execAsListOfArray(final IFunction<? extends List<? extends T[]>,? super List<T[]>> function) {
+        return new Level0ListOfArraySelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.LIST_OF_ARRAY));
     }
 
 
@@ -123,11 +133,6 @@ public class Level0ListOfArraySelectedOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
-    public Level0ListOfArraySelectedOperator<T> exec(final IFunction<? extends List<? extends T[]>,? super List<T[]>> function) {
-        return new Level0ListOfArraySelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.LIST_OF_ARRAY));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level0ListOfArraySelectedOperator<T> sort() {
         return new Level0ListOfArraySelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.Sort()));
@@ -141,11 +146,6 @@ public class Level0ListOfArraySelectedOperatorImpl<T> extends AbstractOperatorIm
 
     public Level0ListOfArraySelectedOperator<T> replaceWith(final List<T[]> replacement) {
         return new Level0ListOfArraySelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level0ListOfArraySelectedOperator<T> convert(final IConverter<? extends List<? extends T[]>,? super List<T[]>> converter) {
-        return new Level0ListOfArraySelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.LIST_OF_ARRAY));
     }
 
 

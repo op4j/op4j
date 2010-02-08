@@ -123,11 +123,11 @@ public interface Level0MapOfArrayOperator<K,V>
     public Level0MapOfArrayOperator<K,V> replaceIfNullWith(final Map<K,V[]> replacement);
 
 
-    public <X,Y> Level0MapOfArrayOperator<X,Y> convert(final IConverter<? extends Map<X,Y[]>,? super Map<K,V[]>> converter);
+    public <X,Y> Level0MapOfArrayOperator<X,Y> convertAsMapOfArray(final IConverter<? extends Map<X,Y[]>,? super Map<K,V[]>> converter);
     
-    public <X,Y> Level0MapOfArrayOperator<X,Y> eval(final IEvaluator<? extends Map<X,Y[]>,? super Map<K,V[]>> eval);
+    public <X,Y> Level0MapOfArrayOperator<X,Y> evalAsMapOfArray(final IEvaluator<? extends Map<X,Y[]>,? super Map<K,V[]>> eval);
 
-    public <X,Y> Level0MapOfArrayOperator<X,Y> exec(final IFunction<? extends Map<X,Y[]>,? super Map<K,V[]>> function);
+    public <X,Y> Level0MapOfArrayOperator<X,Y> execAsMapOfArray(final IFunction<? extends Map<X,Y[]>,? super Map<K,V[]>> function);
 
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K,V[]>> function);
     

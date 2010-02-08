@@ -91,13 +91,23 @@ public class Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V> extend
     }
 
 
-    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> eval(final IEvaluator<? extends List<? extends V>,? super List<V>> eval) {
+    public Level2MapOfListEntriesSelectedValueOperator<K,V> endIf() {
+        return new Level2MapOfListEntriesSelectedValueOperatorImpl<K,V>(getTarget().endSelect());
+    }
+
+
+    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> convertAsList(final IConverter<? extends List<? extends V>,? super List<V>> converter) {
+        return new Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.LIST));
+    }
+
+
+    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> evalAsList(final IEvaluator<? extends List<? extends V>,? super List<V>> eval) {
         return new Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.LIST));
     }
 
 
-    public Level2MapOfListEntriesSelectedValueOperator<K,V> endIf() {
-        return new Level2MapOfListEntriesSelectedValueOperatorImpl<K,V>(getTarget().endSelect());
+    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> execAsList(final IFunction<? extends List<? extends V>,? super List<V>> function) {
+        return new Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.LIST));
     }
 
 
@@ -123,11 +133,6 @@ public class Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V> extend
     }
 
 
-    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> exec(final IFunction<? extends List<? extends V>,? super List<V>> function) {
-        return new Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.LIST));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> sort() {
         return new Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Sort()));
@@ -141,11 +146,6 @@ public class Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V> extend
 
     public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> replaceWith(final List<V> replacement) {
         return new Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> convert(final IConverter<? extends List<? extends V>,? super List<V>> converter) {
-        return new Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.LIST));
     }
 
 

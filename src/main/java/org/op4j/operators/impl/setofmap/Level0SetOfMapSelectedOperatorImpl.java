@@ -87,13 +87,23 @@ public class Level0SetOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
-    public Level0SetOfMapSelectedOperator<K,V> eval(final IEvaluator<? extends Set<? extends Map<? extends K,? extends V>>,? super Set<Map<K,V>>> eval) {
+    public Level0SetOfMapOperator<K,V> endIf() {
+        return new Level0SetOfMapOperatorImpl<K,V>(getTarget().endSelect());
+    }
+
+
+    public Level0SetOfMapSelectedOperator<K,V> convertAsSetOfMap(final IConverter<? extends Set<? extends Map<? extends K,? extends V>>,? super Set<Map<K,V>>> converter) {
+        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.SET_OF_MAP));
+    }
+
+
+    public Level0SetOfMapSelectedOperator<K,V> evalAsSetOfMap(final IEvaluator<? extends Set<? extends Map<? extends K,? extends V>>,? super Set<Map<K,V>>> eval) {
         return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.SET_OF_MAP));
     }
 
 
-    public Level0SetOfMapOperator<K,V> endIf() {
-        return new Level0SetOfMapOperatorImpl<K,V>(getTarget().endSelect());
+    public Level0SetOfMapSelectedOperator<K,V> execAsSetOfMap(final IFunction<? extends Set<? extends Map<? extends K,? extends V>>,? super Set<Map<K,V>>> function) {
+        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.SET_OF_MAP));
     }
 
 
@@ -119,11 +129,6 @@ public class Level0SetOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
-    public Level0SetOfMapSelectedOperator<K,V> exec(final IFunction<? extends Set<? extends Map<? extends K,? extends V>>,? super Set<Map<K,V>>> function) {
-        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.SET_OF_MAP));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level0SetOfMapSelectedOperator<K,V> sort() {
         return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Sort()));
@@ -137,11 +142,6 @@ public class Level0SetOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorImp
 
     public Level0SetOfMapSelectedOperator<K,V> replaceWith(final Set<Map<K,V>> replacement) {
         return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level0SetOfMapSelectedOperator<K,V> convert(final IConverter<? extends Set<? extends Map<? extends K,? extends V>>,? super Set<Map<K,V>>> converter) {
-        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.SET_OF_MAP));
     }
 
 

@@ -119,11 +119,11 @@ public interface Level2MapOfSetEntriesValueOperator<K,V>
     public Level2MapOfSetEntriesValueOperator<K,V> replaceIfNullWith(final Set<V> replacement);
 
 
-    public <X> Level2MapOfSetEntriesValueOperator<K,X> convert(final IConverter<? extends Set<X>,? super Set<V>> converter);
+    public <X> Level2MapOfSetEntriesValueOperator<K,X> convertAsSet(final IConverter<? extends Set<X>,? super Set<V>> converter);
     
-    public <X> Level2MapOfSetEntriesValueOperator<K,X> eval(final IEvaluator<? extends Set<X>,? super Set<V>> eval);
+    public <X> Level2MapOfSetEntriesValueOperator<K,X> evalAsSet(final IEvaluator<? extends Set<X>,? super Set<V>> eval);
 
-    public <X> Level2MapOfSetEntriesValueOperator<K,X> exec(final IFunction<? extends Set<X>, ? super Set<V>> function);
+    public <X> Level2MapOfSetEntriesValueOperator<K,X> execAsSet(final IFunction<? extends Set<X>, ? super Set<V>> function);
 
     public <X> Level2MapEntriesValueOperator<K,X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<V>> function);
     

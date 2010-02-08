@@ -86,13 +86,23 @@ public class Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public Level2MapOfSetEntriesValueSelectedOperator<K,V> eval(final IEvaluator<? extends Set<? extends V>,? super Set<V>> eval) {
+    public Level2MapOfSetEntriesValueOperator<K,V> endIf() {
+        return new Level2MapOfSetEntriesValueOperatorImpl<K,V>(getTarget().endSelect());
+    }
+
+
+    public Level2MapOfSetEntriesValueSelectedOperator<K,V> convertAsSet(final IConverter<? extends Set<? extends V>,? super Set<V>> converter) {
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.SET));
+    }
+
+
+    public Level2MapOfSetEntriesValueSelectedOperator<K,V> evalAsSet(final IEvaluator<? extends Set<? extends V>,? super Set<V>> eval) {
         return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.SET));
     }
 
 
-    public Level2MapOfSetEntriesValueOperator<K,V> endIf() {
-        return new Level2MapOfSetEntriesValueOperatorImpl<K,V>(getTarget().endSelect());
+    public Level2MapOfSetEntriesValueSelectedOperator<K,V> execAsSet(final IFunction<? extends Set<? extends V>,? super Set<V>> function) {
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.SET));
     }
 
 
@@ -118,11 +128,6 @@ public class Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public Level2MapOfSetEntriesValueSelectedOperator<K,V> exec(final IFunction<? extends Set<? extends V>,? super Set<V>> function) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.SET));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> sort() {
         return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Sort()));
@@ -136,11 +141,6 @@ public class Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V> extends Abstrac
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> replaceWith(final Set<V> replacement) {
         return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level2MapOfSetEntriesValueSelectedOperator<K,V> convert(final IConverter<? extends Set<? extends V>,? super Set<V>> converter) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.SET));
     }
 
 

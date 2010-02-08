@@ -70,13 +70,13 @@ public interface Level0MapSelectedOperator<K,V>
     
     
     
-    public Level0MapSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends V>, ? super Map<K,V>> converter);
+    public Level0MapSelectedOperator<K,V> convertAsMap(final IConverter<? extends Map<? extends K,? extends V>, ? super Map<K,V>> converter);
     
-    public Level0MapSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V>, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<K,V> evalAsMap(final IEvaluator<? extends Map<? extends K,? extends V>, ? super Map<K,V>> eval);
 
     public Level0MapSelectedOperator<K,V> replaceWith(final Map<K,V> replacement);
 
-    public Level0MapSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V>, ? super Map<K,V>> function);
+    public Level0MapSelectedOperator<K,V> execAsMap(final IFunction<? extends Map<? extends K,? extends V>, ? super Map<K,V>> function);
     
     
 }

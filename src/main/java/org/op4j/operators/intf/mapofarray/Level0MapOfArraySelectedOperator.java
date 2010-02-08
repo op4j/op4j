@@ -69,13 +69,13 @@ public interface Level0MapOfArraySelectedOperator<K,V>
     public Level0MapOfArraySelectedOperator<K,V> removeAllKeysNot(final K... keys);
     
     
-    public Level0MapOfArraySelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends V[]>, ? super Map<K,V[]>> converter);
+    public Level0MapOfArraySelectedOperator<K,V> convertAsMapOfArray(final IConverter<? extends Map<? extends K,? extends V[]>, ? super Map<K,V[]>> converter);
     
-    public Level0MapOfArraySelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V[]>, ? super Map<K,V[]>> eval);
+    public Level0MapOfArraySelectedOperator<K,V> evalAsMapOfArray(final IEvaluator<? extends Map<? extends K,? extends V[]>, ? super Map<K,V[]>> eval);
 
     public Level0MapOfArraySelectedOperator<K,V> replaceWith(final Map<K,V[]> replacement);
 
-    public Level0MapOfArraySelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V[]>, ? super Map<K,V[]>> function);
+    public Level0MapOfArraySelectedOperator<K,V> execAsMapOfArray(final IFunction<? extends Map<? extends K,? extends V[]>, ? super Map<K,V[]>> function);
     
     
     

@@ -42,11 +42,6 @@ public class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
-    public Level0MapOfSetSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends Set<? extends V>>,? super Map<K,Set<V>>> eval) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAP_OF_SET));
-    }
-
-
     public Level0MapOfSetOperator<K,V> endIf() {
         return new Level0MapOfSetOperatorImpl<K,V>(getTarget().endSelect());
     }
@@ -67,6 +62,21 @@ public class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
+    public Level0MapOfSetSelectedOperator<K,V> convertAsMapOfSet(final IConverter<? extends Map<? extends K,? extends Set<? extends V>>,? super Map<K,Set<V>>> converter) {
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAP_OF_SET));
+    }
+
+
+    public Level0MapOfSetSelectedOperator<K,V> evalAsMapOfSet(final IEvaluator<? extends Map<? extends K,? extends Set<? extends V>>,? super Map<K,Set<V>>> eval) {
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAP_OF_SET));
+    }
+
+
+    public Level0MapOfSetSelectedOperator<K,V> execAsMapOfSet(final IFunction<? extends Map<? extends K,? extends Set<? extends V>>,? super Map<K,Set<V>>> function) {
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAP_OF_SET));
+    }
+
+
     public Level0MapOfSetSelectedOperator<K,V> put(final K newKey, final Set<V> newValue) {
         return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.Put<K,Set<V>>(newKey, NormalisationUtils.normaliseSet(newValue))));
     }
@@ -82,8 +92,8 @@ public class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
-    public Level0MapOfSetSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends Set<? extends V>>,? super Map<K,Set<V>>> function) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAP_OF_SET));
+    public Level0MapOfSetSelectedOperator<K,V> sort(final Comparator<? super Entry<K,Set<V>>> comparator) {
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,Set<V>>(comparator)));
     }
 
 
@@ -93,18 +103,8 @@ public class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
-    public Level0MapOfSetSelectedOperator<K,V> sort(final Comparator<? super Entry<K,Set<V>>> comparator) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,Set<V>>(comparator)));
-    }
-
-
     public Level0MapOfSetSelectedOperator<K,V> replaceWith(final Map<K,Set<V>> replacement) {
         return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level0MapOfSetSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends Set<? extends V>>,? super Map<K,Set<V>>> converter) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAP_OF_SET));
     }
 
 

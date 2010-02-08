@@ -85,13 +85,23 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
     }
 
 
-    public Level0SetSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval) {
+    public Level0SetOperator<T> endIf() {
+        return new Level0SetOperatorImpl<T>(getTarget().endSelect());
+    }
+
+
+    public Level0SetSelectedOperator<T> convertAsSet(final IConverter<? extends Set<? extends T>,? super Set<T>> converter) {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.SET));
+    }
+
+
+    public Level0SetSelectedOperator<T> evalAsSet(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval) {
         return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.SET));
     }
 
 
-    public Level0SetOperator<T> endIf() {
-        return new Level0SetOperatorImpl<T>(getTarget().endSelect());
+    public Level0SetSelectedOperator<T> execAsSet(final IFunction<? extends Set<? extends T>,? super Set<T>> function) {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.SET));
     }
 
 
@@ -117,11 +127,6 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
     }
 
 
-    public Level0SetSelectedOperator<T> exec(final IFunction<? extends Set<? extends T>,? super Set<T>> function) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.SET));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level0SetSelectedOperator<T> sort() {
         return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Sort()));
@@ -135,11 +140,6 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
 
     public Level0SetSelectedOperator<T> replaceWith(final Set<T> replacement) {
         return new Level0SetSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level0SetSelectedOperator<T> convert(final IConverter<? extends Set<? extends T>,? super Set<T>> converter) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.SET));
     }
 
 

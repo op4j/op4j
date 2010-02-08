@@ -85,13 +85,23 @@ public class Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T> extends Abs
     }
 
 
-    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval) {
+    public Level1ArrayOfSetSelectedElementsOperator<T> endIf() {
+        return new Level1ArrayOfSetSelectedElementsOperatorImpl<T>(getTarget().endSelect());
+    }
+
+
+    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> convertAsSet(final IConverter<? extends Set<? extends T>,? super Set<T>> converter) {
+        return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.SET));
+    }
+
+
+    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> evalAsSet(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval) {
         return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.SET));
     }
 
 
-    public Level1ArrayOfSetSelectedElementsOperator<T> endIf() {
-        return new Level1ArrayOfSetSelectedElementsOperatorImpl<T>(getTarget().endSelect());
+    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> execAsSet(final IFunction<? extends Set<? extends T>,? super Set<T>> function) {
+        return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.SET));
     }
 
 
@@ -117,11 +127,6 @@ public class Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T> extends Abs
     }
 
 
-    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> exec(final IFunction<? extends Set<? extends T>,? super Set<T>> function) {
-        return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.SET));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level1ArrayOfSetSelectedElementsSelectedOperator<T> sort() {
         return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Sort()));
@@ -135,11 +140,6 @@ public class Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T> extends Abs
 
     public Level1ArrayOfSetSelectedElementsSelectedOperator<T> replaceWith(final Set<T> replacement) {
         return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> convert(final IConverter<? extends Set<? extends T>,? super Set<T>> converter) {
-        return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.SET));
     }
 
 

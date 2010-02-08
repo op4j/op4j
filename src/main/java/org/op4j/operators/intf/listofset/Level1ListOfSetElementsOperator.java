@@ -119,11 +119,11 @@ public interface Level1ListOfSetElementsOperator<T>
     public Level1ListOfSetElementsOperator<T> replaceIfNullWith(final Set<T> replacement);
 
 
-    public <X> Level1ListOfSetElementsOperator<X> convert(final IConverter<? extends Set<X>,? super Set<T>> converter);
+    public <X> Level1ListOfSetElementsOperator<X> convertAsSet(final IConverter<? extends Set<X>,? super Set<T>> converter);
     
-    public <X> Level1ListOfSetElementsOperator<X> eval(final IEvaluator<? extends Set<X>,? super Set<T>> eval);
+    public <X> Level1ListOfSetElementsOperator<X> evalAsSet(final IEvaluator<? extends Set<X>,? super Set<T>> eval);
 
-    public <X> Level1ListOfSetElementsOperator<X> exec(final IFunction<? extends Set<X>,? super Set<T>> function);
+    public <X> Level1ListOfSetElementsOperator<X> execAsSet(final IFunction<? extends Set<X>,? super Set<T>> function);
 
     public <X> Level1ListElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<T>> function);
     

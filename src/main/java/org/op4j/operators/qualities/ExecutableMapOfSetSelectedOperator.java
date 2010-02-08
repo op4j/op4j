@@ -57,7 +57,7 @@ public interface ExecutableMapOfSetSelectedOperator<K,V> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableMapOfSetSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> function);
+    public ExecutableMapOfSetSelectedOperator<K,V> execAsMapOfSet(final IFunction<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> function);
     
     
     /**
@@ -73,7 +73,7 @@ public interface ExecutableMapOfSetSelectedOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public ExecutableMapOfSetSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends Set<? extends V>>,? super Map<K,Set<V>>> eval);
+    public ExecutableMapOfSetSelectedOperator<K,V> evalAsMapOfSet(final IEvaluator<? extends Map<? extends K,? extends Set<? extends V>>,? super Map<K,Set<V>>> eval);
     
     
     /**
@@ -89,6 +89,6 @@ public interface ExecutableMapOfSetSelectedOperator<K,V> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public ExecutableMapOfSetSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends Set<? extends V>>,? super Map<K,Set<V>>> converter);
+    public ExecutableMapOfSetSelectedOperator<K,V> convertAsMapOfSet(final IConverter<? extends Map<? extends K,? extends Set<? extends V>>,? super Map<K,Set<V>>> converter);
     
 }

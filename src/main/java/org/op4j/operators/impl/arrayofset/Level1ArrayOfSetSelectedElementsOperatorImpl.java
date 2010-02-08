@@ -136,13 +136,23 @@ public class Level1ArrayOfSetSelectedElementsOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1ArrayOfSetSelectedElementsOperator<T> eval(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval) {
+    public Level0ArrayOfSetSelectedOperator<T> endFor() {
+        return new Level0ArrayOfSetSelectedOperatorImpl<T>(getTarget().endIterate(Set.class));
+    }
+
+
+    public Level1ArrayOfSetSelectedElementsOperator<T> convertAsSet(final IConverter<? extends Set<? extends T>,? super Set<T>> converter) {
+        return new Level1ArrayOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(converter, Normalisation.SET));
+    }
+
+
+    public Level1ArrayOfSetSelectedElementsOperator<T> evalAsSet(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval) {
         return new Level1ArrayOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(eval, Normalisation.SET));
     }
 
 
-    public Level0ArrayOfSetSelectedOperator<T> endFor() {
-        return new Level0ArrayOfSetSelectedOperatorImpl<T>(getTarget().endIterate(Set.class));
+    public Level1ArrayOfSetSelectedElementsOperator<T> execAsSet(final IFunction<? extends Set<? extends T>,? super Set<T>> function) {
+        return new Level1ArrayOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(function, Normalisation.SET));
     }
 
 
@@ -168,11 +178,6 @@ public class Level1ArrayOfSetSelectedElementsOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1ArrayOfSetSelectedElementsOperator<T> exec(final IFunction<? extends Set<? extends T>,? super Set<T>> function) {
-        return new Level1ArrayOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(function, Normalisation.SET));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level1ArrayOfSetSelectedElementsOperator<T> sort() {
         return new Level1ArrayOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.Sort()));
@@ -186,11 +191,6 @@ public class Level1ArrayOfSetSelectedElementsOperatorImpl<T> extends AbstractOpe
 
     public Level1ArrayOfSetSelectedElementsOperator<T> replaceWith(final Set<T> replacement) {
         return new Level1ArrayOfSetSelectedElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level1ArrayOfSetSelectedElementsOperator<T> convert(final IConverter<? extends Set<? extends T>,? super Set<T>> converter) {
-        return new Level1ArrayOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(converter, Normalisation.SET));
     }
 
 

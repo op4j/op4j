@@ -246,17 +246,17 @@ public class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public <X, Y> Level0MapOfSetOperator<X, Y> convert(final IConverter<? extends Map<X, ? extends Set<Y>>, ? super Map<K, Set<V>>> converter) {
+    public <X, Y> Level0MapOfSetOperator<X, Y> convertAsMapOfSet(final IConverter<? extends Map<X, ? extends Set<Y>>, ? super Map<K, Set<V>>> converter) {
         return new Level0MapOfSetOperatorImpl<X, Y>(getTarget().execute(converter, Normalisation.MAP_OF_SET));
     }
 
 
-    public <X, Y> Level0MapOfSetOperator<X, Y> eval(final IEvaluator<? extends Map<X, ? extends Set<Y>>, ? super Map<K, Set<V>>> eval) {
+    public <X, Y> Level0MapOfSetOperator<X, Y> evalAsMapOfSet(final IEvaluator<? extends Map<X, ? extends Set<Y>>, ? super Map<K, Set<V>>> eval) {
         return new Level0MapOfSetOperatorImpl<X, Y>(getTarget().execute(eval, Normalisation.MAP_OF_SET));
     }
 
 
-    public <X, Y> Level0MapOfSetOperator<X, Y> exec(final IFunction<? extends Map<X, ? extends Set<Y>>, ? super Map<K, Set<V>>> function) {
+    public <X, Y> Level0MapOfSetOperator<X, Y> execAsMapOfSet(final IFunction<? extends Map<X, ? extends Set<Y>>, ? super Map<K, Set<V>>> function) {
         return new Level0MapOfSetOperatorImpl<X, Y>(getTarget().execute(function, Normalisation.MAP_OF_SET));
     }
 

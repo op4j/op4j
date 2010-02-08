@@ -56,7 +56,7 @@ public interface ExecutableMapOfArraySelectedOperator<K,V> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableMapOfArraySelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V[]>, ? super Map<K,V[]>> function);
+    public ExecutableMapOfArraySelectedOperator<K,V> execAsMapOfArray(final IFunction<? extends Map<? extends K,? extends V[]>, ? super Map<K,V[]>> function);
     
     
     /**
@@ -72,7 +72,7 @@ public interface ExecutableMapOfArraySelectedOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public ExecutableMapOfArraySelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> eval);
+    public ExecutableMapOfArraySelectedOperator<K,V> evalAsMapOfArray(final IEvaluator<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> eval);
     
     
     /**
@@ -88,6 +88,6 @@ public interface ExecutableMapOfArraySelectedOperator<K,V> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public ExecutableMapOfArraySelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> converter);
+    public ExecutableMapOfArraySelectedOperator<K,V> convertAsMapOfArray(final IConverter<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> converter);
     
 }

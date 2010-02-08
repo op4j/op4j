@@ -56,7 +56,7 @@ public interface ExecutableListOfArraySelectedOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableListOfArraySelectedOperator<T> exec(final IFunction<? extends List<? extends T[]>, ? super List<T[]>> function);
+    public ExecutableListOfArraySelectedOperator<T> execAsListOfArray(final IFunction<? extends List<? extends T[]>, ? super List<T[]>> function);
     
     
     /**
@@ -72,7 +72,7 @@ public interface ExecutableListOfArraySelectedOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public ExecutableListOfArraySelectedOperator<T> eval(final IEvaluator<? extends List<? extends T[]>,? super List<T[]>> eval);
+    public ExecutableListOfArraySelectedOperator<T> evalAsListOfArray(final IEvaluator<? extends List<? extends T[]>,? super List<T[]>> eval);
     
     
     /**
@@ -88,6 +88,6 @@ public interface ExecutableListOfArraySelectedOperator<T> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public ExecutableListOfArraySelectedOperator<T> convert(final IConverter<? extends List<? extends T[]>,? super List<T[]>> converter);
+    public ExecutableListOfArraySelectedOperator<T> convertAsListOfArray(final IConverter<? extends List<? extends T[]>,? super List<T[]>> converter);
     
 }

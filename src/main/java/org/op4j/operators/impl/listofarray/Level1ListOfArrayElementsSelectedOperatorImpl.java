@@ -91,8 +91,18 @@ public class Level1ListOfArrayElementsSelectedOperatorImpl<T> extends AbstractOp
     }
 
 
-    public Level1ListOfArrayElementsSelectedOperator<T> eval(final IEvaluator<? extends T[],? super T[]> eval) {
+    public Level1ListOfArrayElementsSelectedOperator<T> convertAsArray(final IConverter<? extends T[],? super T[]> converter) {
+        return new Level1ListOfArrayElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.ARRAY));
+    }
+
+
+    public Level1ListOfArrayElementsSelectedOperator<T> evalAsArray(final IEvaluator<? extends T[],? super T[]> eval) {
         return new Level1ListOfArrayElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.ARRAY));
+    }
+
+
+    public Level1ListOfArrayElementsSelectedOperator<T> execAsArray(final IFunction<? extends T[],? super T[]> function) {
+        return new Level1ListOfArrayElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.ARRAY));
     }
 
 
@@ -123,11 +133,6 @@ public class Level1ListOfArrayElementsSelectedOperatorImpl<T> extends AbstractOp
     }
 
 
-    public Level1ListOfArrayElementsSelectedOperator<T> exec(final IFunction<? extends T[],? super T[]> function) {
-        return new Level1ListOfArrayElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.ARRAY));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level1ListOfArrayElementsSelectedOperator<T> sort() {
         return new Level1ListOfArrayElementsSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Sort()));
@@ -141,11 +146,6 @@ public class Level1ListOfArrayElementsSelectedOperatorImpl<T> extends AbstractOp
 
     public Level1ListOfArrayElementsSelectedOperator<T> replaceWith(final T[] replacement) {
         return new Level1ListOfArrayElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level1ListOfArrayElementsSelectedOperator<T> convert(final IConverter<? extends T[],? super T[]> converter) {
-        return new Level1ListOfArrayElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.ARRAY));
     }
 
 

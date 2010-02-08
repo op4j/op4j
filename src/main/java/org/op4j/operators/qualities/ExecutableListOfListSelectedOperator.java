@@ -56,7 +56,7 @@ public interface ExecutableListOfListSelectedOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableListOfListSelectedOperator<T> exec(final IFunction<? extends List<? extends List<? extends T>>, ? super List<List<T>>> function);
+    public ExecutableListOfListSelectedOperator<T> execAsListOfList(final IFunction<? extends List<? extends List<? extends T>>, ? super List<List<T>>> function);
     
     
     /**
@@ -72,7 +72,7 @@ public interface ExecutableListOfListSelectedOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public ExecutableListOfListSelectedOperator<T> eval(final IEvaluator<? extends List<? extends List<? extends T>>,? super List<List<T>>> eval);
+    public ExecutableListOfListSelectedOperator<T> evalAsListOfList(final IEvaluator<? extends List<? extends List<? extends T>>,? super List<List<T>>> eval);
 
     
     /**
@@ -88,6 +88,6 @@ public interface ExecutableListOfListSelectedOperator<T> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public ExecutableListOfListSelectedOperator<T> convert(final IConverter<? extends List<? extends List<? extends T>>,? super List<List<T>>> converter);
+    public ExecutableListOfListSelectedOperator<T> convertAsListOfList(final IConverter<? extends List<? extends List<? extends T>>,? super List<List<T>>> converter);
     
 }

@@ -279,17 +279,17 @@ public class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends AbstractOpera
     }
 
 
-	public <X> Level2MapOfArrayEntriesValueOperator<K, X> convert(final IConverter<X[], ? super V[]> converter) {
+	public <X> Level2MapOfArrayEntriesValueOperator<K, X> convertAsArray(final IConverter<X[], ? super V[]> converter) {
         return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(getTarget().execute(converter, Normalisation.ARRAY));
     }
 
 
-	public <X> Level2MapOfArrayEntriesValueOperator<K, X> eval(final IEvaluator<X[], ? super V[]> eval) {
+	public <X> Level2MapOfArrayEntriesValueOperator<K, X> evalAsArray(final IEvaluator<X[], ? super V[]> eval) {
         return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(getTarget().execute(eval, Normalisation.ARRAY));
     }
 
 
-	public <X> Level2MapOfArrayEntriesValueOperator<K, X> exec(final IFunction<X[], ? super V[]> function) {
+	public <X> Level2MapOfArrayEntriesValueOperator<K, X> execAsArray(final IFunction<X[], ? super V[]> function) {
         return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalisation.ARRAY));
     }
 

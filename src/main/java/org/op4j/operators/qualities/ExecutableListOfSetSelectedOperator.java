@@ -57,7 +57,7 @@ public interface ExecutableListOfSetSelectedOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableListOfSetSelectedOperator<T> exec(final IFunction<? extends List<? extends Set<? extends T>>, ? super List<Set<T>>> function);
+    public ExecutableListOfSetSelectedOperator<T> execAsListOfSet(final IFunction<? extends List<? extends Set<? extends T>>, ? super List<Set<T>>> function);
     
     
     /**
@@ -73,7 +73,7 @@ public interface ExecutableListOfSetSelectedOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public ExecutableListOfSetSelectedOperator<T> eval(final IEvaluator<? extends List<? extends Set<? extends T>>,? super List<Set<T>>> eval);
+    public ExecutableListOfSetSelectedOperator<T> evalAsListOfSet(final IEvaluator<? extends List<? extends Set<? extends T>>,? super List<Set<T>>> eval);
     
     
     /**
@@ -89,6 +89,6 @@ public interface ExecutableListOfSetSelectedOperator<T> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public ExecutableListOfSetSelectedOperator<T> convert(final IConverter<? extends List<? extends Set<? extends T>>,? super List<Set<T>>> converter);
+    public ExecutableListOfSetSelectedOperator<T> convertAsListOfSet(final IConverter<? extends List<? extends Set<? extends T>>,? super List<Set<T>>> converter);
     
 }

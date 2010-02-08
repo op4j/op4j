@@ -142,8 +142,18 @@ public class Level1SetOfArraySelectedElementsOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1SetOfArraySelectedElementsOperator<T> eval(final IEvaluator<? extends T[],? super T[]> eval) {
+    public Level1SetOfArraySelectedElementsOperator<T> convertAsArray(final IConverter<? extends T[],? super T[]> converter) {
+        return new Level1SetOfArraySelectedElementsOperatorImpl<T>(getTarget().execute(converter, Normalisation.ARRAY));
+    }
+
+
+    public Level1SetOfArraySelectedElementsOperator<T> evalAsArray(final IEvaluator<? extends T[],? super T[]> eval) {
         return new Level1SetOfArraySelectedElementsOperatorImpl<T>(getTarget().execute(eval, Normalisation.ARRAY));
+    }
+
+
+    public Level1SetOfArraySelectedElementsOperator<T> execAsArray(final IFunction<? extends T[],? super T[]> function) {
+        return new Level1SetOfArraySelectedElementsOperatorImpl<T>(getTarget().execute(function, Normalisation.ARRAY));
     }
 
 
@@ -174,11 +184,6 @@ public class Level1SetOfArraySelectedElementsOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1SetOfArraySelectedElementsOperator<T> exec(final IFunction<? extends T[],? super T[]> function) {
-        return new Level1SetOfArraySelectedElementsOperatorImpl<T>(getTarget().execute(function, Normalisation.ARRAY));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level1SetOfArraySelectedElementsOperator<T> sort() {
         return new Level1SetOfArraySelectedElementsOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Sort()));
@@ -192,11 +197,6 @@ public class Level1SetOfArraySelectedElementsOperatorImpl<T> extends AbstractOpe
 
     public Level1SetOfArraySelectedElementsOperator<T> replaceWith(final T[] replacement) {
         return new Level1SetOfArraySelectedElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level1SetOfArraySelectedElementsOperator<T> convert(final IConverter<? extends T[],? super T[]> converter) {
-        return new Level1SetOfArraySelectedElementsOperatorImpl<T>(getTarget().execute(converter, Normalisation.ARRAY));
     }
 
 

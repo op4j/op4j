@@ -87,13 +87,23 @@ public class Level0SetOfListSelectedOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0SetOfListSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> eval) {
+    public Level0SetOfListOperator<T> endIf() {
+        return new Level0SetOfListOperatorImpl<T>(getTarget().endSelect());
+    }
+
+
+    public Level0SetOfListSelectedOperator<T> convertAsSetOfList(final IConverter<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> converter) {
+        return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.SET_OF_LIST));
+    }
+
+
+    public Level0SetOfListSelectedOperator<T> evalAsSetOfList(final IEvaluator<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> eval) {
         return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.SET_OF_LIST));
     }
 
 
-    public Level0SetOfListOperator<T> endIf() {
-        return new Level0SetOfListOperatorImpl<T>(getTarget().endSelect());
+    public Level0SetOfListSelectedOperator<T> execAsSetOfList(final IFunction<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> function) {
+        return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.SET_OF_LIST));
     }
 
 
@@ -119,11 +129,6 @@ public class Level0SetOfListSelectedOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0SetOfListSelectedOperator<T> exec(final IFunction<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> function) {
-        return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.SET_OF_LIST));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level0SetOfListSelectedOperator<T> sort() {
         return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Sort()));
@@ -137,11 +142,6 @@ public class Level0SetOfListSelectedOperatorImpl<T> extends AbstractOperatorImpl
 
     public Level0SetOfListSelectedOperator<T> replaceWith(final Set<List<T>> replacement) {
         return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level0SetOfListSelectedOperator<T> convert(final IConverter<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> converter) {
-        return new Level0SetOfListSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.SET_OF_LIST));
     }
 
 

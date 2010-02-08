@@ -84,13 +84,13 @@ public interface Level0ArrayOfSetSelectedOperator<T>
 
 
     
-    public Level0ArrayOfSetSelectedOperator<T> convert(final IConverter<? extends Set<? extends T>[],? super Set<T>[]> converter);
+    public Level0ArrayOfSetSelectedOperator<T> convertAsArrayOfSet(final IConverter<? extends Set<? extends T>[],? super Set<T>[]> converter);
     
-    public Level0ArrayOfSetSelectedOperator<T> eval(final IEvaluator<? extends Set<? extends T>[],? super Set<T>[]> eval);
+    public Level0ArrayOfSetSelectedOperator<T> evalAsArrayOfSet(final IEvaluator<? extends Set<? extends T>[],? super Set<T>[]> eval);
 
     public Level0ArrayOfSetSelectedOperator<T> replaceWith(final Set<T>[] replacement);
 
-    public Level0ArrayOfSetSelectedOperator<T> exec(final IFunction<? extends Set<? extends T>[], ? super Set<T>[]> function);
+    public Level0ArrayOfSetSelectedOperator<T> execAsArrayOfSet(final IFunction<? extends Set<? extends T>[], ? super Set<T>[]> function);
 
     
 }

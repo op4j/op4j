@@ -60,7 +60,7 @@ public interface ExecutableMapOfArrayEntryOperator<K,V> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X,Y> ExecutableMapOfArrayEntryOperator<X,Y> exec(final IFunction<? extends Map.Entry<X,Y[]>, ? super Map.Entry<K,V[]>> function);
+    public <X,Y> ExecutableMapOfArrayEntryOperator<X,Y> execAsMapOfArrayEntry(final IFunction<? extends Map.Entry<X,Y[]>, ? super Map.Entry<K,V[]>> function);
     
     
     /**
@@ -78,7 +78,7 @@ public interface ExecutableMapOfArrayEntryOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X,Y> ExecutableMapOfArrayEntryOperator<X,Y> eval(final IEvaluator<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> eval);
+    public <X,Y> ExecutableMapOfArrayEntryOperator<X,Y> evalAsMapOfArrayEntry(final IEvaluator<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> eval);
     
     
     /**
@@ -96,7 +96,7 @@ public interface ExecutableMapOfArrayEntryOperator<K,V> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public <X,Y> ExecutableMapOfArrayEntryOperator<X,Y> convert(final IConverter<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> converter);
+    public <X,Y> ExecutableMapOfArrayEntryOperator<X,Y> convertAsMapOfArrayEntry(final IConverter<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> converter);
 
 
     /**

@@ -106,17 +106,17 @@ public class Level3MapOfMapEntriesValueEntriesOperatorImpl<K1,K2,V> extends Abst
     }
 
 
-    public <X2, Y> Level3MapOfMapEntriesValueEntriesOperator<K1, X2, Y> convert(final IConverter<? extends Entry<X2, Y>, ? super Entry<K2, V>> converter) {
+    public <X2, Y> Level3MapOfMapEntriesValueEntriesOperator<K1, X2, Y> convertAsMapEntry(final IConverter<? extends Entry<X2, Y>, ? super Entry<K2, V>> converter) {
         return new Level3MapOfMapEntriesValueEntriesOperatorImpl<K1, X2, Y>(getTarget().execute(converter, Normalisation.MAPENTRY));
     }
 
 
-    public <X2, Y> Level3MapOfMapEntriesValueEntriesOperator<K1, X2, Y> eval(final IEvaluator<? extends Entry<X2, Y>, ? super Entry<K2, V>> eval) {
+    public <X2, Y> Level3MapOfMapEntriesValueEntriesOperator<K1, X2, Y> evalAsMapEntry(final IEvaluator<? extends Entry<X2, Y>, ? super Entry<K2, V>> eval) {
         return new Level3MapOfMapEntriesValueEntriesOperatorImpl<K1, X2, Y>(getTarget().execute(eval, Normalisation.MAPENTRY));
     }
 
 
-    public <X2, Y> Level3MapOfMapEntriesValueEntriesOperator<K1, X2, Y> exec(final IFunction<? extends Entry<X2, Y>, ? super Entry<K2, V>> function) {
+    public <X2, Y> Level3MapOfMapEntriesValueEntriesOperator<K1, X2, Y> execAsMapEntry(final IFunction<? extends Entry<X2, Y>, ? super Entry<K2, V>> function) {
         return new Level3MapOfMapEntriesValueEntriesOperatorImpl<K1, X2, Y>(getTarget().execute(function, Normalisation.MAPENTRY));
     }
 

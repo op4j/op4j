@@ -134,11 +134,11 @@ public interface Level0ArrayOperator<T>
     public Level0ArrayOperator<T> replaceIfNullWith(final T[] replacement);
 
 
-    public <X> Level0ArrayOperator<X> convert(final IConverter<X[],? super T[]> converter);
+    public <X> Level0ArrayOperator<X> convertAsArray(final IConverter<X[],? super T[]> converter);
     
-    public <X> Level0ArrayOperator<X> eval(final IEvaluator<X[],? super T[]> eval);
+    public <X> Level0ArrayOperator<X> evalAsArray(final IEvaluator<X[],? super T[]> eval);
 
-    public <X> Level0ArrayOperator<X> exec(final IFunction<X[], ? super T[]> function);
+    public <X> Level0ArrayOperator<X> execAsArray(final IFunction<X[], ? super T[]> function);
 
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super T[]> function);
     

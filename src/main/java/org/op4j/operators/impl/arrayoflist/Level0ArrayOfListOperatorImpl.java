@@ -334,17 +334,17 @@ public class Level0ArrayOfListOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <X> Level0ArrayOfListOperator<X> convert(final IConverter<? extends List<X>[], ? super List<T>[]> converter) {
+    public <X> Level0ArrayOfListOperator<X> convertAsArrayOfList(final IConverter<? extends List<X>[], ? super List<T>[]> converter) {
         return new Level0ArrayOfListOperatorImpl<X>(getTarget().execute(converter, Normalisation.ARRAY_OF_LIST));
     }
 
 
-    public <X> Level0ArrayOfListOperator<X> eval(final IEvaluator<? extends List<X>[], ? super List<T>[]> eval) {
+    public <X> Level0ArrayOfListOperator<X> evalAsArrayOfList(final IEvaluator<? extends List<X>[], ? super List<T>[]> eval) {
         return new Level0ArrayOfListOperatorImpl<X>(getTarget().execute(eval, Normalisation.ARRAY_OF_LIST));
     }
 
 
-    public <X> Level0ArrayOfListOperator<X> exec(final IFunction<? extends List<X>[], ? super List<T>[]> function) {
+    public <X> Level0ArrayOfListOperator<X> execAsArrayOfList(final IFunction<? extends List<X>[], ? super List<T>[]> function) {
         return new Level0ArrayOfListOperatorImpl<X>(getTarget().execute(function, Normalisation.ARRAY_OF_LIST));
     }
 

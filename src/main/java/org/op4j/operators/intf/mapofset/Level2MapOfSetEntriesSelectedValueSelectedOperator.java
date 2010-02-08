@@ -78,13 +78,13 @@ public interface Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V>
     public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> removeAllNull();
 
     
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> convert(final IConverter<? extends Set<? extends V>, ? super Set<V>> converter);
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> convertAsSet(final IConverter<? extends Set<? extends V>, ? super Set<V>> converter);
     
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> eval(final IEvaluator<? extends Set<? extends V>, ? super Set<V>> eval);
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> evalAsSet(final IEvaluator<? extends Set<? extends V>, ? super Set<V>> eval);
 
     public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> replaceWith(final Set<V> replacement);
 
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> exec(final IFunction<? extends Set<? extends V>, ? super Set<V>> function);
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> execAsSet(final IFunction<? extends Set<? extends V>, ? super Set<V>> function);
     
     
     

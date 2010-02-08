@@ -137,13 +137,23 @@ public class Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V> extends
     }
 
 
-    public Level2MapOfSetSelectedEntriesSelectedValueOperator<K,V> eval(final IEvaluator<? extends Set<? extends V>,? super Set<V>> eval) {
+    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> endOn() {
+        return new Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().endOn());
+    }
+
+
+    public Level2MapOfSetSelectedEntriesSelectedValueOperator<K,V> convertAsSet(final IConverter<? extends Set<? extends V>,? super Set<V>> converter) {
+        return new Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.SET));
+    }
+
+
+    public Level2MapOfSetSelectedEntriesSelectedValueOperator<K,V> evalAsSet(final IEvaluator<? extends Set<? extends V>,? super Set<V>> eval) {
         return new Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.SET));
     }
 
 
-    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> endOn() {
-        return new Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().endOn());
+    public Level2MapOfSetSelectedEntriesSelectedValueOperator<K,V> execAsSet(final IFunction<? extends Set<? extends V>,? super Set<V>> function) {
+        return new Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(function, Normalisation.SET));
     }
 
 
@@ -169,11 +179,6 @@ public class Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V> extends
     }
 
 
-    public Level2MapOfSetSelectedEntriesSelectedValueOperator<K,V> exec(final IFunction<? extends Set<? extends V>,? super Set<V>> function) {
-        return new Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(function, Normalisation.SET));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level2MapOfSetSelectedEntriesSelectedValueOperator<K,V> sort() {
         return new Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Sort()));
@@ -187,11 +192,6 @@ public class Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V> extends
 
     public Level2MapOfSetSelectedEntriesSelectedValueOperator<K,V> replaceWith(final Set<V> replacement) {
         return new Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level2MapOfSetSelectedEntriesSelectedValueOperator<K,V> convert(final IConverter<? extends Set<? extends V>,? super Set<V>> converter) {
-        return new Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.SET));
     }
 
 

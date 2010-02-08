@@ -80,12 +80,12 @@ public interface Level0SetOfMapSelectedOperator<K,V>
     
     
     
-    public Level0SetOfMapSelectedOperator<K,V> convert(final IConverter<? extends Set<? extends Map<? extends K,? extends V>>, ? super Set<Map<K,V>>> converter);
+    public Level0SetOfMapSelectedOperator<K,V> convertAsSetOfMap(final IConverter<? extends Set<? extends Map<? extends K,? extends V>>, ? super Set<Map<K,V>>> converter);
     
-    public Level0SetOfMapSelectedOperator<K,V> eval(final IEvaluator<? extends Set<? extends Map<? extends K,? extends V>>, ? super Set<Map<K,V>>> eval);
+    public Level0SetOfMapSelectedOperator<K,V> evalAsSetOfMap(final IEvaluator<? extends Set<? extends Map<? extends K,? extends V>>, ? super Set<Map<K,V>>> eval);
 
     public Level0SetOfMapSelectedOperator<K,V> replaceWith(final Set<Map<K,V>> replacement);
 
-    public Level0SetOfMapSelectedOperator<K,V> exec(final IFunction<? extends Set<? extends Map<? extends K,? extends V>>, ? super Set<Map<K,V>>> function);
+    public Level0SetOfMapSelectedOperator<K,V> execAsSetOfMap(final IFunction<? extends Set<? extends Map<? extends K,? extends V>>, ? super Set<Map<K,V>>> function);
     
 }

@@ -215,17 +215,17 @@ public class Level1ListOfMapElementsOperatorImpl<K,V> extends AbstractOperatorIm
     }
 
 
-    public <X, Y> Level1ListOfMapElementsOperator<X, Y> convert(final IConverter<? extends Map<X, Y>, ? super Map<K, V>> converter) {
+    public <X, Y> Level1ListOfMapElementsOperator<X, Y> convertAsMap(final IConverter<? extends Map<X, Y>, ? super Map<K, V>> converter) {
         return new Level1ListOfMapElementsOperatorImpl<X, Y>(getTarget().execute(converter, Normalisation.MAP));
     }
 
 
-    public <X, Y> Level1ListOfMapElementsOperator<X, Y> eval(final IEvaluator<? extends Map<X, Y>, ? super Map<K, V>> eval) {
+    public <X, Y> Level1ListOfMapElementsOperator<X, Y> evalAsMap(final IEvaluator<? extends Map<X, Y>, ? super Map<K, V>> eval) {
         return new Level1ListOfMapElementsOperatorImpl<X, Y>(getTarget().execute(eval, Normalisation.MAP));
     }
 
 
-    public <X, Y> Level1ListOfMapElementsOperator<X, Y> exec(final IFunction<? extends Map<X, Y>, ? super Map<K, V>> function) {
+    public <X, Y> Level1ListOfMapElementsOperator<X, Y> execAsMap(final IFunction<? extends Map<X, Y>, ? super Map<K, V>> function) {
         return new Level1ListOfMapElementsOperatorImpl<X, Y>(getTarget().execute(function, Normalisation.MAP));
     }
 

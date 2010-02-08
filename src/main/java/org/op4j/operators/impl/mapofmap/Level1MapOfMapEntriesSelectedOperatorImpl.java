@@ -23,11 +23,6 @@ public class Level1MapOfMapEntriesSelectedOperatorImpl<K1,K2,V> extends Abstract
     }
 
 
-    public Level1MapOfMapEntriesSelectedOperator<K1,K2,V> eval(final IEvaluator<? extends Entry<? extends K1,? extends Map<? extends K2,? extends V>>,? super Entry<K1,Map<K2,V>>> eval) {
-        return new Level1MapOfMapEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().execute(eval, Normalisation.MAPENTRY_OF_MAP));
-    }
-
-
     public Level1MapOfMapEntriesOperator<K1,K2,V> endIf() {
         return new Level1MapOfMapEntriesOperatorImpl<K1,K2,V>(getTarget().endSelect());
     }
@@ -43,18 +38,23 @@ public class Level1MapOfMapEntriesSelectedOperatorImpl<K1,K2,V> extends Abstract
     }
 
 
-    public Level1MapOfMapEntriesSelectedOperator<K1,K2,V> exec(final IFunction<? extends Entry<? extends K1,? extends Map<? extends K2,? extends V>>,? super Entry<K1,Map<K2,V>>> function) {
+    public Level1MapOfMapEntriesSelectedOperator<K1,K2,V> execAsMapOfMapEntry(final IFunction<? extends Entry<? extends K1,? extends Map<? extends K2,? extends V>>,? super Entry<K1,Map<K2,V>>> function) {
         return new Level1MapOfMapEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().execute(function, Normalisation.MAPENTRY_OF_MAP));
+    }
+
+
+    public Level1MapOfMapEntriesSelectedOperator<K1,K2,V> evalAsMapOfMapEntry(final IEvaluator<? extends Entry<? extends K1,? extends Map<? extends K2,? extends V>>,? super Entry<K1,Map<K2,V>>> eval) {
+        return new Level1MapOfMapEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().execute(eval, Normalisation.MAPENTRY_OF_MAP));
+    }
+
+
+    public Level1MapOfMapEntriesSelectedOperator<K1,K2,V> convertAsMapOfMapEntry(final IConverter<? extends Entry<? extends K1,? extends Map<? extends K2,? extends V>>,? super Entry<K1,Map<K2,V>>> converter) {
+        return new Level1MapOfMapEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().execute(converter, Normalisation.MAPENTRY_OF_MAP));
     }
 
 
     public Level1MapOfMapEntriesSelectedOperator<K1,K2,V> replaceWith(final Entry<K1,Map<K2,V>> replacement) {
         return new Level1MapOfMapEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level1MapOfMapEntriesSelectedOperator<K1,K2,V> convert(final IConverter<? extends Entry<? extends K1,? extends Map<? extends K2,? extends V>>,? super Entry<K1,Map<K2,V>>> converter) {
-        return new Level1MapOfMapEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().execute(converter, Normalisation.MAPENTRY_OF_MAP));
     }
 
 

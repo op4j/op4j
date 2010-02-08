@@ -295,17 +295,17 @@ public class Level0ArrayOperatorImpl<T>
     }
 
 
-	public <X> Level0ArrayOperator<X> convert(final IConverter<X[], ? super T[]> converter) {
+	public <X> Level0ArrayOperator<X> convertAsArray(final IConverter<X[], ? super T[]> converter) {
         return new Level0ArrayOperatorImpl<X>(getTarget().execute(converter, Normalisation.ARRAY));
     }
 
 
-	public <X> Level0ArrayOperator<X> eval(final IEvaluator<X[], ? super T[]> eval) {
+	public <X> Level0ArrayOperator<X> evalAsArray(final IEvaluator<X[], ? super T[]> eval) {
         return new Level0ArrayOperatorImpl<X>(getTarget().execute(eval, Normalisation.ARRAY));
     }
 
 
-	public <X> Level0ArrayOperator<X> exec(final IFunction<X[], ? super T[]> function) {
+	public <X> Level0ArrayOperator<X> execAsArray(final IFunction<X[], ? super T[]> function) {
         return new Level0ArrayOperatorImpl<X>(getTarget().execute(function, Normalisation.ARRAY));
     }
 

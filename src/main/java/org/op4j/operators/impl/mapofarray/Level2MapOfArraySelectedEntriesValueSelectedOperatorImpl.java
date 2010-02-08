@@ -91,8 +91,18 @@ public class Level2MapOfArraySelectedEntriesValueSelectedOperatorImpl<K,V> exten
     }
 
 
-    public Level2MapOfArraySelectedEntriesValueSelectedOperator<K,V> eval(final IEvaluator<? extends V[],? super V[]> eval) {
+    public Level2MapOfArraySelectedEntriesValueSelectedOperator<K,V> convertAsArray(final IConverter<? extends V[],? super V[]> converter) {
+        return new Level2MapOfArraySelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.ARRAY));
+    }
+
+
+    public Level2MapOfArraySelectedEntriesValueSelectedOperator<K,V> evalAsArray(final IEvaluator<? extends V[],? super V[]> eval) {
         return new Level2MapOfArraySelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.ARRAY));
+    }
+
+
+    public Level2MapOfArraySelectedEntriesValueSelectedOperator<K,V> execAsArray(final IFunction<? extends V[],? super V[]> function) {
+        return new Level2MapOfArraySelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.ARRAY));
     }
 
 
@@ -123,11 +133,6 @@ public class Level2MapOfArraySelectedEntriesValueSelectedOperatorImpl<K,V> exten
     }
 
 
-    public Level2MapOfArraySelectedEntriesValueSelectedOperator<K,V> exec(final IFunction<? extends V[],? super V[]> function) {
-        return new Level2MapOfArraySelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.ARRAY));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level2MapOfArraySelectedEntriesValueSelectedOperator<K,V> sort() {
         return new Level2MapOfArraySelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.Sort()));
@@ -141,11 +146,6 @@ public class Level2MapOfArraySelectedEntriesValueSelectedOperatorImpl<K,V> exten
 
     public Level2MapOfArraySelectedEntriesValueSelectedOperator<K,V> replaceWith(final V[] replacement) {
         return new Level2MapOfArraySelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level2MapOfArraySelectedEntriesValueSelectedOperator<K,V> convert(final IConverter<? extends V[],? super V[]> converter) {
-        return new Level2MapOfArraySelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.ARRAY));
     }
 
 

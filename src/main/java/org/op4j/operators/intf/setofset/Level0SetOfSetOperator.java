@@ -170,11 +170,11 @@ public interface Level0SetOfSetOperator<T>
     public Level0SetOfSetOperator<T> replaceIfNullWith(final Set<Set<T>> replacement);
 
 
-    public <X> Level0SetOfSetOperator<X> convert(final IConverter<? extends Set<? extends Set<X>>,? super Set<Set<T>>> converter);
+    public <X> Level0SetOfSetOperator<X> convertAsSetOfSet(final IConverter<? extends Set<? extends Set<X>>,? super Set<Set<T>>> converter);
     
-    public <X> Level0SetOfSetOperator<X> eval(final IEvaluator<? extends Set<? extends Set<X>>,? super Set<Set<T>>> eval);
+    public <X> Level0SetOfSetOperator<X> evalAsSetOfSet(final IEvaluator<? extends Set<? extends Set<X>>,? super Set<Set<T>>> eval);
 
-    public <X> Level0SetOfSetOperator<X> exec(final IFunction<? extends Set<? extends Set<X>>, ? super Set<Set<T>>> function);
+    public <X> Level0SetOfSetOperator<X> execAsSetOfSet(final IFunction<? extends Set<? extends Set<X>>, ? super Set<Set<T>>> function);
 
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<Set<T>>> function);
     

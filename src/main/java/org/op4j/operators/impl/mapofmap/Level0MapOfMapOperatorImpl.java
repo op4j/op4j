@@ -226,17 +226,17 @@ public class Level0MapOfMapOperatorImpl<K1,K2,V> extends AbstractOperatorImpl
     }
 
 
-    public <X1, X2, Y> Level0MapOfMapOperator<X1, X2, Y> convert(final IConverter<? extends Map<X1, ? extends Map<X2, Y>>, ? super Map<K1, Map<K2, V>>> converter) {
+    public <X1, X2, Y> Level0MapOfMapOperator<X1, X2, Y> convertAsMapOfMap(final IConverter<? extends Map<X1, ? extends Map<X2, Y>>, ? super Map<K1, Map<K2, V>>> converter) {
         return new Level0MapOfMapOperatorImpl<X1, X2, Y>(getTarget().execute(converter, Normalisation.MAP_OF_MAP));
     }
 
 
-    public <X1, X2, Y> Level0MapOfMapOperator<X1, X2, Y> eval(final IEvaluator<? extends Map<X1, ? extends Map<X2, Y>>, ? super Map<K1, Map<K2, V>>> eval) {
+    public <X1, X2, Y> Level0MapOfMapOperator<X1, X2, Y> evalAsMapOfMap(final IEvaluator<? extends Map<X1, ? extends Map<X2, Y>>, ? super Map<K1, Map<K2, V>>> eval) {
         return new Level0MapOfMapOperatorImpl<X1, X2, Y>(getTarget().execute(eval, Normalisation.MAP_OF_MAP));
     }
 
 
-    public <X1, X2, Y> Level0MapOfMapOperator<X1, X2, Y> exec(final IFunction<? extends Map<X1, ? extends Map<X2, Y>>, ? super Map<K1, Map<K2, V>>> function) {
+    public <X1, X2, Y> Level0MapOfMapOperator<X1, X2, Y> execAsMapOfMap(final IFunction<? extends Map<X1, ? extends Map<X2, Y>>, ? super Map<K1, Map<K2, V>>> function) {
         return new Level0MapOfMapOperatorImpl<X1, X2, Y>(getTarget().execute(function, Normalisation.MAP_OF_MAP));
     }
 

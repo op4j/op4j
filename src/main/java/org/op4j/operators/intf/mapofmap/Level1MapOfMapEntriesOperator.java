@@ -64,14 +64,14 @@ public interface Level1MapOfMapEntriesOperator<K1,K2,V>
     public Level0MapOfMapOperator<K1,K2,V> endFor();
 
 
-    public <X1,X2,Y> Level1MapOfMapEntriesOperator<X1,X2,Y> exec(final IFunction<? extends Map.Entry<X1,? extends Map<X2,Y>>, ? super Map.Entry<K1,Map<K2,V>>> function);
+    public <X1,X2,Y> Level1MapOfMapEntriesOperator<X1,X2,Y> execAsMapOfMapEntry(final IFunction<? extends Map.Entry<X1,? extends Map<X2,Y>>, ? super Map.Entry<K1,Map<K2,V>>> function);
     
-    public <X1,X2,Y> Level1MapOfMapEntriesOperator<X1,X2,Y> eval(final IEvaluator<? extends Map.Entry<X1,? extends Map<X2,Y>>,? super Map.Entry<K1,Map<K2,V>>> eval);
+    public <X1,X2,Y> Level1MapOfMapEntriesOperator<X1,X2,Y> evalAsMapOfMapEntry(final IEvaluator<? extends Map.Entry<X1,? extends Map<X2,Y>>,? super Map.Entry<K1,Map<K2,V>>> eval);
     
     public Level1MapOfMapEntriesOperator<K1,K2,V> replaceWith(final Map.Entry<K1,Map<K2,V>> replacement);
 
 
-    public <X1,X2,Y> Level1MapOfMapEntriesOperator<X1,X2,Y> convert(final IConverter<? extends Map.Entry<X1,? extends Map<X2,Y>>,? super Map.Entry<K1,Map<K2,V>>> converter);
+    public <X1,X2,Y> Level1MapOfMapEntriesOperator<X1,X2,Y> convertAsMapOfMapEntry(final IConverter<? extends Map.Entry<X1,? extends Map<X2,Y>>,? super Map.Entry<K1,Map<K2,V>>> converter);
 
     public <X> Level1ListElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K1,Map<K2,V>>> function);
     

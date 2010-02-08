@@ -122,11 +122,11 @@ public interface Level1ListOfListElementsOperator<T>
     public Level1ListOfListElementsOperator<T> replaceIfNullWith(final List<T> replacement);
 
 
-    public <X> Level1ListOfListElementsOperator<X> convert(final IConverter<? extends List<X>,? super List<T>> converter);
+    public <X> Level1ListOfListElementsOperator<X> convertAsList(final IConverter<? extends List<X>,? super List<T>> converter);
     
-    public <X> Level1ListOfListElementsOperator<X> eval(final IEvaluator<? extends List<X>,? super List<T>> eval);
+    public <X> Level1ListOfListElementsOperator<X> evalAsList(final IEvaluator<? extends List<X>,? super List<T>> eval);
 
-    public <X> Level1ListOfListElementsOperator<X> exec(final IFunction<? extends List<X>, ? super List<T>> function);
+    public <X> Level1ListOfListElementsOperator<X> execAsList(final IFunction<? extends List<X>, ? super List<T>> function);
 
     public <X> Level1ListElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T>> function);
     

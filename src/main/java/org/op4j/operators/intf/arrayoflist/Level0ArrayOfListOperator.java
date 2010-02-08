@@ -178,11 +178,11 @@ public interface Level0ArrayOfListOperator<T>
     public Level0ArrayOfListOperator<T> replaceIfNullWith(final List<T>[] replacement);
 
 
-    public <X> Level0ArrayOfListOperator<X> convert(final IConverter<? extends List<X>[],? super List<T>[]> converter);
+    public <X> Level0ArrayOfListOperator<X> convertAsArrayOfList(final IConverter<? extends List<X>[],? super List<T>[]> converter);
     
-    public <X> Level0ArrayOfListOperator<X> eval(final IEvaluator<? extends List<X>[],? super List<T>[]> eval);
+    public <X> Level0ArrayOfListOperator<X> evalAsArrayOfList(final IEvaluator<? extends List<X>[],? super List<T>[]> eval);
 
-    public <X> Level0ArrayOfListOperator<X> exec(final IFunction<? extends List<X>[], ? super List<T>[]> function);
+    public <X> Level0ArrayOfListOperator<X> execAsArrayOfList(final IFunction<? extends List<X>[], ? super List<T>[]> function);
 
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T>[]> function);
     

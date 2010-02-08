@@ -262,17 +262,17 @@ public class Level0ArrayOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public <X, Y> Level0ArrayOfMapOperator<X, Y> convert(final IConverter<? extends Map<X, Y>[], ? super Map<K, V>[]> converter) {
+    public <X, Y> Level0ArrayOfMapOperator<X, Y> convertAsArrayOfMap(final IConverter<? extends Map<X, Y>[], ? super Map<K, V>[]> converter) {
         return new Level0ArrayOfMapOperatorImpl<X, Y>(getTarget().execute(converter, Normalisation.ARRAY_OF_MAP));
     }
 
 
-    public <X, Y> Level0ArrayOfMapOperator<X, Y> eval(final IEvaluator<? extends Map<X, Y>[], ? super Map<K, V>[]> eval) {
+    public <X, Y> Level0ArrayOfMapOperator<X, Y> evalAsArrayOfMap(final IEvaluator<? extends Map<X, Y>[], ? super Map<K, V>[]> eval) {
         return new Level0ArrayOfMapOperatorImpl<X, Y>(getTarget().execute(eval, Normalisation.ARRAY_OF_MAP));
     }
 
 
-    public <X, Y> Level0ArrayOfMapOperator<X, Y> exec(final IFunction<? extends Map<X, Y>[], ? super Map<K, V>[]> function) {
+    public <X, Y> Level0ArrayOfMapOperator<X, Y> execAsArrayOfMap(final IFunction<? extends Map<X, Y>[], ? super Map<K, V>[]> function) {
         return new Level0ArrayOfMapOperatorImpl<X, Y>(getTarget().execute(function, Normalisation.ARRAY_OF_MAP));
     }
 

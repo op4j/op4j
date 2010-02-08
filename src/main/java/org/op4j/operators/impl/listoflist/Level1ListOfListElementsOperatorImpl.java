@@ -264,17 +264,17 @@ public class Level1ListOfListElementsOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public <X> Level1ListOfListElementsOperator<X> convert(final IConverter<? extends List<X>, ? super List<T>> converter) {
+    public <X> Level1ListOfListElementsOperator<X> convertAsList(final IConverter<? extends List<X>, ? super List<T>> converter) {
         return new Level1ListOfListElementsOperatorImpl<X>(getTarget().execute(converter, Normalisation.LIST));
     }
 
 
-    public <X> Level1ListOfListElementsOperator<X> eval(final IEvaluator<? extends List<X>, ? super List<T>> eval) {
+    public <X> Level1ListOfListElementsOperator<X> evalAsList(final IEvaluator<? extends List<X>, ? super List<T>> eval) {
         return new Level1ListOfListElementsOperatorImpl<X>(getTarget().execute(eval, Normalisation.LIST));
     }
 
 
-    public <X> Level1ListOfListElementsOperator<X> exec(final IFunction<? extends List<X>, ? super List<T>> function) {
+    public <X> Level1ListOfListElementsOperator<X> execAsList(final IFunction<? extends List<X>, ? super List<T>> function) {
         return new Level1ListOfListElementsOperatorImpl<X>(getTarget().execute(function, Normalisation.LIST));
     }
 

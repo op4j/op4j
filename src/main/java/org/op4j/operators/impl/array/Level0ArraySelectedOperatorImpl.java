@@ -90,8 +90,18 @@ public class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorImpl imp
     }
 
 
-    public Level0ArraySelectedOperator<T> eval(final IEvaluator<? extends T[],? super T[]> eval) {
+    public Level0ArraySelectedOperator<T> convertAsArray(final IConverter<? extends T[],? super T[]> converter) {
+        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.ARRAY));
+    }
+
+
+    public Level0ArraySelectedOperator<T> evalAsArray(final IEvaluator<? extends T[],? super T[]> eval) {
         return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.ARRAY));
+    }
+
+
+    public Level0ArraySelectedOperator<T> execAsArray(final IFunction<? extends T[],? super T[]> function) {
+        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.ARRAY));
     }
 
 
@@ -122,11 +132,6 @@ public class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorImpl imp
     }
 
 
-    public Level0ArraySelectedOperator<T> exec(final IFunction<? extends T[],? super T[]> function) {
-        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.ARRAY));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level0ArraySelectedOperator<T> sort() {
         return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Sort()));
@@ -140,11 +145,6 @@ public class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorImpl imp
 
     public Level0ArraySelectedOperator<T> replaceWith(final T[] replacement) {
         return new Level0ArraySelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level0ArraySelectedOperator<T> convert(final IConverter<? extends T[],? super T[]> converter) {
-        return new Level0ArraySelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.ARRAY));
     }
 
 

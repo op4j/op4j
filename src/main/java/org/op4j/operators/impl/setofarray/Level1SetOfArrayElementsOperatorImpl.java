@@ -260,17 +260,17 @@ public class Level1SetOfArrayElementsOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-	public <X> Level1SetOfArrayElementsOperator<X> convert(final IConverter<X[], ? super T[]> converter) {
+	public <X> Level1SetOfArrayElementsOperator<X> convertAsArray(final IConverter<X[], ? super T[]> converter) {
         return new Level1SetOfArrayElementsOperatorImpl<X>(getTarget().execute(converter, Normalisation.ARRAY));
     }
 
 
-	public <X> Level1SetOfArrayElementsOperator<X> eval(final IEvaluator<X[], ? super T[]> eval) {
+	public <X> Level1SetOfArrayElementsOperator<X> evalAsArray(final IEvaluator<X[], ? super T[]> eval) {
         return new Level1SetOfArrayElementsOperatorImpl<X>(getTarget().execute(eval, Normalisation.ARRAY));
     }
 
 
-	public <X> Level1SetOfArrayElementsOperator<X> exec(final IFunction<X[], ? super T[]> function) {
+	public <X> Level1SetOfArrayElementsOperator<X> execAsArray(final IFunction<X[], ? super T[]> function) {
         return new Level1SetOfArrayElementsOperatorImpl<X>(getTarget().execute(function, Normalisation.ARRAY));
     }
 

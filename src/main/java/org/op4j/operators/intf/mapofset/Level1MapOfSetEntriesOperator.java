@@ -64,14 +64,14 @@ public interface Level1MapOfSetEntriesOperator<K,V>
     
     public Level0MapOfSetOperator<K,V> endFor();
     
-    public <X,Y> Level1MapOfSetEntriesOperator<X,Y> exec(final IFunction<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> function);
+    public <X,Y> Level1MapOfSetEntriesOperator<X,Y> execAsMapOfSetEntry(final IFunction<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> function);
     
-    public <X,Y> Level1MapOfSetEntriesOperator<X,Y> eval(final IEvaluator<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> eval);
+    public <X,Y> Level1MapOfSetEntriesOperator<X,Y> evalAsMapOfSetEntry(final IEvaluator<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> eval);
     
     public Level1MapOfSetEntriesOperator<K,V> replaceWith(final Map.Entry<K,Set<V>> replacement);
 
 
-    public <X,Y> Level1MapOfSetEntriesOperator<X,Y> convert(final IConverter<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> converter);
+    public <X,Y> Level1MapOfSetEntriesOperator<X,Y> convertAsMapOfSetEntry(final IConverter<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> converter);
 
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K,Set<V>>> function);
     

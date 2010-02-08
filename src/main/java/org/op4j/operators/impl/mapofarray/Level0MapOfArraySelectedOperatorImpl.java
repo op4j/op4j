@@ -41,11 +41,6 @@ public class Level0MapOfArraySelectedOperatorImpl<K,V> extends AbstractOperatorI
     }
 
 
-    public Level0MapOfArraySelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> eval) {
-        return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAP_OF_ARRAY));
-    }
-
-
     public Level0MapOfArrayOperator<K,V> endIf() {
         return new Level0MapOfArrayOperatorImpl<K,V>(getTarget().endSelect());
     }
@@ -66,6 +61,21 @@ public class Level0MapOfArraySelectedOperatorImpl<K,V> extends AbstractOperatorI
     }
 
 
+    public Level0MapOfArraySelectedOperator<K,V> convertAsMapOfArray(final IConverter<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> converter) {
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAP_OF_ARRAY));
+    }
+
+
+    public Level0MapOfArraySelectedOperator<K,V> evalAsMapOfArray(final IEvaluator<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> eval) {
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAP_OF_ARRAY));
+    }
+
+
+    public Level0MapOfArraySelectedOperator<K,V> execAsMapOfArray(final IFunction<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> function) {
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAP_OF_ARRAY));
+    }
+
+
     public Level0MapOfArraySelectedOperator<K,V> put(final K newKey, final V[] newValue) {
         return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.Put<K,V[]>(newKey, NormalisationUtils.normaliseArray(newValue))));
     }
@@ -81,8 +91,8 @@ public class Level0MapOfArraySelectedOperatorImpl<K,V> extends AbstractOperatorI
     }
 
 
-    public Level0MapOfArraySelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> function) {
-        return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAP_OF_ARRAY));
+    public Level0MapOfArraySelectedOperator<K,V> sort(final Comparator<? super Entry<K,V[]>> comparator) {
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,V[]>(comparator)));
     }
 
 
@@ -92,18 +102,8 @@ public class Level0MapOfArraySelectedOperatorImpl<K,V> extends AbstractOperatorI
     }
 
 
-    public Level0MapOfArraySelectedOperator<K,V> sort(final Comparator<? super Entry<K,V[]>> comparator) {
-        return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,V[]>(comparator)));
-    }
-
-
     public Level0MapOfArraySelectedOperator<K,V> replaceWith(final Map<K,V[]> replacement) {
         return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level0MapOfArraySelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> converter) {
-        return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAP_OF_ARRAY));
     }
 
 

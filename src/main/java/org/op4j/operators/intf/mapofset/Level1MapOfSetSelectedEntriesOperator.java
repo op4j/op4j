@@ -64,10 +64,10 @@ public interface Level1MapOfSetSelectedEntriesOperator<K,V>
     
     public Level1MapOfSetSelectedEntriesOperator<K,V> replaceWith(final Map.Entry<K,Set<V>> replacement);
 
-    public Level1MapOfSetSelectedEntriesOperator<K,V> exec(final IFunction<? extends Map.Entry<? extends K,? extends Set<? extends V>>, ? super Map.Entry<K,Set<V>>> function);
+    public Level1MapOfSetSelectedEntriesOperator<K,V> execAsMapOfSetEntry(final IFunction<? extends Map.Entry<? extends K,? extends Set<? extends V>>, ? super Map.Entry<K,Set<V>>> function);
     
-    public Level1MapOfSetSelectedEntriesOperator<K,V> eval(final IEvaluator<? extends Map.Entry<? extends K,? extends Set<? extends V>>, ? super Map.Entry<K,Set<V>>> eval);
+    public Level1MapOfSetSelectedEntriesOperator<K,V> evalAsMapOfSetEntry(final IEvaluator<? extends Map.Entry<? extends K,? extends Set<? extends V>>, ? super Map.Entry<K,Set<V>>> eval);
     
-    public Level1MapOfSetSelectedEntriesOperator<K,V> convert(final IConverter<? extends Map.Entry<? extends K,? extends Set<? extends V>>, ? super Map.Entry<K,Set<V>>> converter);
+    public Level1MapOfSetSelectedEntriesOperator<K,V> convertAsMapOfSetEntry(final IConverter<? extends Map.Entry<? extends K,? extends Set<? extends V>>, ? super Map.Entry<K,Set<V>>> converter);
                                     
 }

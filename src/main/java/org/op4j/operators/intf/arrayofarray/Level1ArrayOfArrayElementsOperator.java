@@ -120,11 +120,11 @@ public interface Level1ArrayOfArrayElementsOperator<T>
     public Level1ArrayOfArrayElementsOperator<T> replaceIfNullWith(final T[] replacement);
 
 
-    public <X> Level1ArrayOfArrayElementsOperator<X> convert(final IConverter<X[],? super T[]> converter);
+    public <X> Level1ArrayOfArrayElementsOperator<X> convertAsArray(final IConverter<X[],? super T[]> converter);
     
-    public <X> Level1ArrayOfArrayElementsOperator<X> eval(final IEvaluator<X[],? super T[]> eval);
+    public <X> Level1ArrayOfArrayElementsOperator<X> evalAsArray(final IEvaluator<X[],? super T[]> eval);
 
-    public <X> Level1ArrayOfArrayElementsOperator<X> exec(final IFunction<X[], ? super T[]> function);
+    public <X> Level1ArrayOfArrayElementsOperator<X> execAsArray(final IFunction<X[], ? super T[]> function);
 
     public <X> Level1ArrayElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super T[]> function);
     

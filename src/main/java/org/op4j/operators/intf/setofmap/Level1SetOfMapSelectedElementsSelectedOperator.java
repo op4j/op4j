@@ -74,13 +74,13 @@ public interface Level1SetOfMapSelectedElementsSelectedOperator<K,V>
     
     
     
-    public Level1SetOfMapSelectedElementsSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends V>, ? super Map<K,V>> converter);
+    public Level1SetOfMapSelectedElementsSelectedOperator<K,V> convertAsMap(final IConverter<? extends Map<? extends K,? extends V>, ? super Map<K,V>> converter);
     
-    public Level1SetOfMapSelectedElementsSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends V>, ? super Map<K,V>> eval);
+    public Level1SetOfMapSelectedElementsSelectedOperator<K,V> evalAsMap(final IEvaluator<? extends Map<? extends K,? extends V>, ? super Map<K,V>> eval);
 
     public Level1SetOfMapSelectedElementsSelectedOperator<K,V> replaceWith(final Map<K,V> replacement);
 
-    public Level1SetOfMapSelectedElementsSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends V>, ? super Map<K,V>> function);
+    public Level1SetOfMapSelectedElementsSelectedOperator<K,V> execAsMap(final IFunction<? extends Map<? extends K,? extends V>, ? super Map<K,V>> function);
     
     
 }

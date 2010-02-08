@@ -81,13 +81,13 @@ public interface Level1ArrayOfArrayElementsSelectedOperator<T>
     public Level1ArrayOfArrayElementsSelectedOperator<T> removeAllNull();
     
     
-    public Level1ArrayOfArrayElementsSelectedOperator<T> convert(final IConverter<? extends T[],? super T[]> converter);
+    public Level1ArrayOfArrayElementsSelectedOperator<T> convertAsArray(final IConverter<? extends T[],? super T[]> converter);
     
-    public Level1ArrayOfArrayElementsSelectedOperator<T> eval(final IEvaluator<? extends T[],? super T[]> eval);
+    public Level1ArrayOfArrayElementsSelectedOperator<T> evalAsArray(final IEvaluator<? extends T[],? super T[]> eval);
 
     public Level1ArrayOfArrayElementsSelectedOperator<T> replaceWith(final T[] replacement);
 
-    public Level1ArrayOfArrayElementsSelectedOperator<T> exec(final IFunction<? extends T[], ? super T[]> function);
+    public Level1ArrayOfArrayElementsSelectedOperator<T> execAsArray(final IFunction<? extends T[], ? super T[]> function);
     
 		            
 }

@@ -91,13 +91,23 @@ public class Level0ListOfListSelectedOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public Level0ListOfListSelectedOperator<T> eval(final IEvaluator<? extends List<? extends List<? extends T>>,? super List<List<T>>> eval) {
+    public Level0ListOfListOperator<T> endIf() {
+        return new Level0ListOfListOperatorImpl<T>(getTarget().endSelect());
+    }
+
+
+    public Level0ListOfListSelectedOperator<T> convertAsListOfList(final IConverter<? extends List<? extends List<? extends T>>,? super List<List<T>>> converter) {
+        return new Level0ListOfListSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.LIST_OF_LIST));
+    }
+
+
+    public Level0ListOfListSelectedOperator<T> evalAsListOfList(final IEvaluator<? extends List<? extends List<? extends T>>,? super List<List<T>>> eval) {
         return new Level0ListOfListSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.LIST_OF_LIST));
     }
 
 
-    public Level0ListOfListOperator<T> endIf() {
-        return new Level0ListOfListOperatorImpl<T>(getTarget().endSelect());
+    public Level0ListOfListSelectedOperator<T> execAsListOfList(final IFunction<? extends List<? extends List<? extends T>>,? super List<List<T>>> function) {
+        return new Level0ListOfListSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.LIST_OF_LIST));
     }
 
 
@@ -123,11 +133,6 @@ public class Level0ListOfListSelectedOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public Level0ListOfListSelectedOperator<T> exec(final IFunction<? extends List<? extends List<? extends T>>,? super List<List<T>>> function) {
-        return new Level0ListOfListSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.LIST_OF_LIST));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level0ListOfListSelectedOperator<T> sort() {
         return new Level0ListOfListSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.Sort()));
@@ -141,11 +146,6 @@ public class Level0ListOfListSelectedOperatorImpl<T> extends AbstractOperatorImp
 
     public Level0ListOfListSelectedOperator<T> replaceWith(final List<List<T>> replacement) {
         return new Level0ListOfListSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level0ListOfListSelectedOperator<T> convert(final IConverter<? extends List<? extends List<? extends T>>,? super List<List<T>>> converter) {
-        return new Level0ListOfListSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.LIST_OF_LIST));
     }
 
 

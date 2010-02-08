@@ -44,11 +44,6 @@ public class Level1MapOfArraySelectedEntriesOperatorImpl<K,V> extends AbstractOp
     }
 
 
-    public Level1MapOfArraySelectedEntriesOperator<K,V> eval(final IEvaluator<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> eval) {
-        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAPENTRY_OF_ARRAY));
-    }
-
-
     public Level0MapOfArraySelectedOperator<K,V> endFor() {
         return new Level0MapOfArraySelectedOperatorImpl<K,V>(getTarget().endIterate(null));
     }
@@ -74,18 +69,23 @@ public class Level1MapOfArraySelectedEntriesOperatorImpl<K,V> extends AbstractOp
     }
 
 
-    public Level1MapOfArraySelectedEntriesOperator<K,V> exec(final IFunction<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> function) {
+    public Level1MapOfArraySelectedEntriesOperator<K,V> execAsMapOfArrayEntry(final IFunction<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> function) {
         return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAPENTRY_OF_ARRAY));
+    }
+
+
+    public Level1MapOfArraySelectedEntriesOperator<K,V> evalAsMapOfArrayEntry(final IEvaluator<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> eval) {
+        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAPENTRY_OF_ARRAY));
+    }
+
+
+    public Level1MapOfArraySelectedEntriesOperator<K,V> convertAsMapOfArrayEntry(final IConverter<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> converter) {
+        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAPENTRY_OF_ARRAY));
     }
 
 
     public Level1MapOfArraySelectedEntriesOperator<K,V> replaceWith(final Entry<K,V[]> replacement) {
         return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level1MapOfArraySelectedEntriesOperator<K,V> convert(final IConverter<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> converter) {
-        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAPENTRY_OF_ARRAY));
     }
 
 

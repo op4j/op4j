@@ -339,17 +339,17 @@ public class Level0SetOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <X> Level0SetOfArrayOperator<X> convert(final IConverter<? extends Set<X[]>, ? super Set<T[]>> converter) {
+    public <X> Level0SetOfArrayOperator<X> convertAsSetOfArray(final IConverter<? extends Set<X[]>, ? super Set<T[]>> converter) {
         return new Level0SetOfArrayOperatorImpl<X>(getTarget().execute(converter, Normalisation.SET_OF_ARRAY));
     }
 
 
-    public <X> Level0SetOfArrayOperator<X> eval(final IEvaluator<? extends Set<X[]>, ? super Set<T[]>> eval) {
+    public <X> Level0SetOfArrayOperator<X> evalAsSetOfArray(final IEvaluator<? extends Set<X[]>, ? super Set<T[]>> eval) {
         return new Level0SetOfArrayOperatorImpl<X>(getTarget().execute(eval, Normalisation.SET_OF_ARRAY));
     }
 
 
-    public <X> Level0SetOfArrayOperator<X> exec(final IFunction<? extends Set<X[]>, ? super Set<T[]>> function) {
+    public <X> Level0SetOfArrayOperator<X> execAsSetOfArray(final IFunction<? extends Set<X[]>, ? super Set<T[]>> function) {
         return new Level0SetOfArrayOperatorImpl<X>(getTarget().execute(function, Normalisation.SET_OF_ARRAY));
     }
 

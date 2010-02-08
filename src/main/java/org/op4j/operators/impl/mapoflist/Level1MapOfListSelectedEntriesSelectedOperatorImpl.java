@@ -24,11 +24,6 @@ public class Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V> extends Abs
     }
 
 
-    public Level1MapOfListSelectedEntriesSelectedOperator<K,V> eval(final IEvaluator<? extends Entry<? extends K,? extends List<? extends V>>,? super Entry<K,List<V>>> eval) {
-        return new Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAPENTRY_OF_LIST));
-    }
-
-
     public Level1MapOfListSelectedEntriesOperator<K,V> endIf() {
         return new Level1MapOfListSelectedEntriesOperatorImpl<K,V>(getTarget().endSelect());
     }
@@ -44,18 +39,23 @@ public class Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V> extends Abs
     }
 
 
-    public Level1MapOfListSelectedEntriesSelectedOperator<K,V> exec(final IFunction<? extends Entry<? extends K,? extends List<? extends V>>,? super Entry<K,List<V>>> function) {
+    public Level1MapOfListSelectedEntriesSelectedOperator<K,V> execAsMapOfListEntry(final IFunction<? extends Entry<? extends K,? extends List<? extends V>>,? super Entry<K,List<V>>> function) {
         return new Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAPENTRY_OF_LIST));
+    }
+
+
+    public Level1MapOfListSelectedEntriesSelectedOperator<K,V> evalAsMapOfListEntry(final IEvaluator<? extends Entry<? extends K,? extends List<? extends V>>,? super Entry<K,List<V>>> eval) {
+        return new Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAPENTRY_OF_LIST));
+    }
+
+
+    public Level1MapOfListSelectedEntriesSelectedOperator<K,V> convertAsMapOfListEntry(final IConverter<? extends Entry<? extends K,? extends List<? extends V>>,? super Entry<K,List<V>>> converter) {
+        return new Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAPENTRY_OF_LIST));
     }
 
 
     public Level1MapOfListSelectedEntriesSelectedOperator<K,V> replaceWith(final Entry<K,List<V>> replacement) {
         return new Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level1MapOfListSelectedEntriesSelectedOperator<K,V> convert(final IConverter<? extends Entry<? extends K,? extends List<? extends V>>,? super Entry<K,List<V>>> converter) {
-        return new Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAPENTRY_OF_LIST));
     }
 
 

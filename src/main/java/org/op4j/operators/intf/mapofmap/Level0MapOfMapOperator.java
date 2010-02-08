@@ -105,12 +105,12 @@ public interface Level0MapOfMapOperator<K1,K2,V>
     public Level0MapOfMapOperator<K1,K2,V> replaceIfNullWith(final Map<K1,Map<K2,V>> replacement);
 
 
-    public <X1,X2,Y> Level0MapOfMapOperator<X1,X2,Y> convert(final IConverter<? extends Map<X1,? extends Map<X2,Y>>,? super Map<K1,Map<K2,V>>> converter);
+    public <X1,X2,Y> Level0MapOfMapOperator<X1,X2,Y> convertAsMapOfMap(final IConverter<? extends Map<X1,? extends Map<X2,Y>>,? super Map<K1,Map<K2,V>>> converter);
     
-    public <X1,X2,Y> Level0MapOfMapOperator<X1,X2,Y> eval(final IEvaluator<? extends Map<X1,? extends Map<X2,Y>>,? super Map<K1,Map<K2,V>>> eval);
+    public <X1,X2,Y> Level0MapOfMapOperator<X1,X2,Y> evalAsMapOfMap(final IEvaluator<? extends Map<X1,? extends Map<X2,Y>>,? super Map<K1,Map<K2,V>>> eval);
 
 
-    public <X1,X2,Y> Level0MapOfMapOperator<X1,X2,Y> exec(final IFunction<? extends Map<X1,? extends Map<X2,Y>>, ? super Map<K1,Map<K2,V>>> function);
+    public <X1,X2,Y> Level0MapOfMapOperator<X1,X2,Y> execAsMapOfMap(final IFunction<? extends Map<X1,? extends Map<X2,Y>>, ? super Map<K1,Map<K2,V>>> function);
 
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K1,Map<K2,V>>> function);
     

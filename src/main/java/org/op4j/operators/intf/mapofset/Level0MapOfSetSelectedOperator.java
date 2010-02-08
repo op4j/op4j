@@ -70,13 +70,13 @@ public interface Level0MapOfSetSelectedOperator<K,V>
     public Level0MapOfSetSelectedOperator<K,V> removeAllKeysNot(final K... keys);
     
     
-    public Level0MapOfSetSelectedOperator<K,V> convert(final IConverter<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> converter);
+    public Level0MapOfSetSelectedOperator<K,V> convertAsMapOfSet(final IConverter<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> converter);
     
-    public Level0MapOfSetSelectedOperator<K,V> eval(final IEvaluator<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> eval);
+    public Level0MapOfSetSelectedOperator<K,V> evalAsMapOfSet(final IEvaluator<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> eval);
 
     public Level0MapOfSetSelectedOperator<K,V> replaceWith(final Map<K,Set<V>> replacement);
 
-    public Level0MapOfSetSelectedOperator<K,V> exec(final IFunction<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> function);
+    public Level0MapOfSetSelectedOperator<K,V> execAsMapOfSet(final IFunction<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> function);
     
     
     

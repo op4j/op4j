@@ -106,17 +106,17 @@ public class Level1MapOfArrayEntriesOperatorImpl<K,V> extends AbstractOperatorIm
     }
 
 
-    public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> convert(final IConverter<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> converter) {
+    public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> convertAsMapOfArrayEntry(final IConverter<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> converter) {
         return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(getTarget().execute(converter, Normalisation.MAPENTRY_OF_ARRAY));
     }
 
 
-    public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> eval(final IEvaluator<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> eval) {
+    public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> evalAsMapOfArrayEntry(final IEvaluator<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> eval) {
         return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(getTarget().execute(eval, Normalisation.MAPENTRY_OF_ARRAY));
     }
 
 
-    public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> exec(final IFunction<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> function) {
+    public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> execAsMapOfArrayEntry(final IFunction<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> function) {
         return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(getTarget().execute(function, Normalisation.MAPENTRY_OF_ARRAY));
     }
 

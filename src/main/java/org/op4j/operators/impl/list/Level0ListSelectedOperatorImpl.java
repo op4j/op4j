@@ -90,13 +90,23 @@ public class Level0ListSelectedOperatorImpl<T> extends AbstractOperatorImpl impl
     }
 
 
-    public Level0ListSelectedOperator<T> eval(final IEvaluator<? extends List<? extends T>,? super List<T>> eval) {
+    public Level0ListOperator<T> endIf() {
+        return new Level0ListOperatorImpl<T>(getTarget().endSelect());
+    }
+
+
+    public Level0ListSelectedOperator<T> convertAsList(final IConverter<? extends List<? extends T>,? super List<T>> converter) {
+        return new Level0ListSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.LIST));
+    }
+
+
+    public Level0ListSelectedOperator<T> evalAsList(final IEvaluator<? extends List<? extends T>,? super List<T>> eval) {
         return new Level0ListSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.LIST));
     }
 
 
-    public Level0ListOperator<T> endIf() {
-        return new Level0ListOperatorImpl<T>(getTarget().endSelect());
+    public Level0ListSelectedOperator<T> execAsList(final IFunction<? extends List<? extends T>,? super List<T>> function) {
+        return new Level0ListSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.LIST));
     }
 
 
@@ -122,11 +132,6 @@ public class Level0ListSelectedOperatorImpl<T> extends AbstractOperatorImpl impl
     }
 
 
-    public Level0ListSelectedOperator<T> exec(final IFunction<? extends List<? extends T>,? super List<T>> function) {
-        return new Level0ListSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.LIST));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level0ListSelectedOperator<T> sort() {
         return new Level0ListSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.Sort()));
@@ -140,11 +145,6 @@ public class Level0ListSelectedOperatorImpl<T> extends AbstractOperatorImpl impl
 
     public Level0ListSelectedOperator<T> replaceWith(final List<T> replacement) {
         return new Level0ListSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
-    }
-
-
-    public Level0ListSelectedOperator<T> convert(final IConverter<? extends List<? extends T>,? super List<T>> converter) {
-        return new Level0ListSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.LIST));
     }
 
 

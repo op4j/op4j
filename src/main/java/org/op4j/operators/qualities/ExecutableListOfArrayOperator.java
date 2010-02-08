@@ -59,7 +59,7 @@ public interface ExecutableListOfArrayOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableListOfArrayOperator<X> exec(final IFunction<? extends List<X[]>, ? super List<T[]>> function);
+    public <X> ExecutableListOfArrayOperator<X> execAsListOfArray(final IFunction<? extends List<X[]>, ? super List<T[]>> function);
     
     
     /**
@@ -76,7 +76,7 @@ public interface ExecutableListOfArrayOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> ExecutableListOfArrayOperator<X> eval(final IEvaluator<? extends List<X[]>,? super List<T[]>> eval);
+    public <X> ExecutableListOfArrayOperator<X> evalAsListOfArray(final IEvaluator<? extends List<X[]>,? super List<T[]>> eval);
     
     
     /**
@@ -93,7 +93,7 @@ public interface ExecutableListOfArrayOperator<T> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public <X> ExecutableListOfArrayOperator<X> convert(final IConverter<? extends List<X[]>,? super List<T[]>> converter);
+    public <X> ExecutableListOfArrayOperator<X> convertAsListOfArray(final IConverter<? extends List<X[]>,? super List<T[]>> converter);
 
     
     /**

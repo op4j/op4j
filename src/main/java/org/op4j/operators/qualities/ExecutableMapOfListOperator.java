@@ -61,7 +61,7 @@ public interface ExecutableMapOfListOperator<K,V> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X,Y> ExecutableMapOfListOperator<X,Y> exec(final IFunction<? extends Map<X,? extends List<Y>>, ? super Map<K,List<V>>> function);
+    public <X,Y> ExecutableMapOfListOperator<X,Y> execAsMapOfList(final IFunction<? extends Map<X,? extends List<Y>>, ? super Map<K,List<V>>> function);
     
     
     /**
@@ -79,7 +79,7 @@ public interface ExecutableMapOfListOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X,Y> ExecutableMapOfListOperator<X,Y> eval(final IEvaluator<? extends Map<X,? extends List<Y>>,? super Map<K,List<V>>> eval);
+    public <X,Y> ExecutableMapOfListOperator<X,Y> evalAsMapOfList(final IEvaluator<? extends Map<X,? extends List<Y>>,? super Map<K,List<V>>> eval);
     
 
     /**
@@ -97,7 +97,7 @@ public interface ExecutableMapOfListOperator<K,V> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public <X,Y> ExecutableMapOfListOperator<X,Y> convert(final IConverter<? extends Map<X,? extends List<Y>>,? super Map<K,List<V>>> converter);
+    public <X,Y> ExecutableMapOfListOperator<X,Y> convertAsMapOfList(final IConverter<? extends Map<X,? extends List<Y>>,? super Map<K,List<V>>> converter);
 
     
     /**

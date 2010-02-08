@@ -223,17 +223,17 @@ public class Level2MapOfMapEntriesValueOperatorImpl<K1,K2,V> extends AbstractOpe
     }
 
 
-    public <X2, Y> Level2MapOfMapEntriesValueOperator<K1, X2, Y> convert(final IConverter<? extends Map<X2, Y>, ? super Map<K2, V>> converter) {
+    public <X2, Y> Level2MapOfMapEntriesValueOperator<K1, X2, Y> convertAsMap(final IConverter<? extends Map<X2, Y>, ? super Map<K2, V>> converter) {
         return new Level2MapOfMapEntriesValueOperatorImpl<K1, X2, Y>(getTarget().execute(converter, Normalisation.MAP));
     }
 
 
-    public <X2, Y> Level2MapOfMapEntriesValueOperator<K1, X2, Y> eval(final IEvaluator<? extends Map<X2, Y>, ? super Map<K2, V>> eval) {
+    public <X2, Y> Level2MapOfMapEntriesValueOperator<K1, X2, Y> evalAsMap(final IEvaluator<? extends Map<X2, Y>, ? super Map<K2, V>> eval) {
         return new Level2MapOfMapEntriesValueOperatorImpl<K1, X2, Y>(getTarget().execute(eval, Normalisation.MAP));
     }
 
 
-    public <X2, Y> Level2MapOfMapEntriesValueOperator<K1, X2, Y> exec(final IFunction<? extends Map<X2, Y>, ? super Map<K2, V>> function) {
+    public <X2, Y> Level2MapOfMapEntriesValueOperator<K1, X2, Y> execAsMap(final IFunction<? extends Map<X2, Y>, ? super Map<K2, V>> function) {
         return new Level2MapOfMapEntriesValueOperatorImpl<K1, X2, Y>(getTarget().execute(function, Normalisation.MAP));
     }
 

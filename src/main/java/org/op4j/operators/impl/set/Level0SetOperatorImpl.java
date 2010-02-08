@@ -302,17 +302,17 @@ public class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <X> Level0SetOperator<X> convert(final IConverter<? extends Set<X>, ? super Set<T>> converter) {
+    public <X> Level0SetOperator<X> convertAsSet(final IConverter<? extends Set<X>, ? super Set<T>> converter) {
         return new Level0SetOperatorImpl<X>(getTarget().execute(converter, Normalisation.SET));
     }
 
 
-    public <X> Level0SetOperator<X> eval(final IEvaluator<? extends Set<X>, ? super Set<T>> eval) {
+    public <X> Level0SetOperator<X> evalAsSet(final IEvaluator<? extends Set<X>, ? super Set<T>> eval) {
         return new Level0SetOperatorImpl<X>(getTarget().execute(eval, Normalisation.SET));
     }
 
 
-    public <X> Level0SetOperator<X> exec(final IFunction<? extends Set<X>, ? super Set<T>> function) {
+    public <X> Level0SetOperator<X> execAsSet(final IFunction<? extends Set<X>, ? super Set<T>> function) {
         return new Level0SetOperatorImpl<X>(getTarget().execute(function, Normalisation.SET));
     }
 

@@ -60,7 +60,7 @@ public interface ExecutableMapOfArrayOperator<K,V> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X,Y> ExecutableMapOfArrayOperator<X,Y> exec(final IFunction<? extends Map<X,Y[]>, ? super Map<K,V[]>> function);
+    public <X,Y> ExecutableMapOfArrayOperator<X,Y> execAsMapOfArray(final IFunction<? extends Map<X,Y[]>, ? super Map<K,V[]>> function);
     
     
     /**
@@ -78,7 +78,7 @@ public interface ExecutableMapOfArrayOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X,Y> ExecutableMapOfArrayOperator<X,Y> eval(final IEvaluator<? extends Map<X,Y[]>,? super Map<K,V[]>> eval);
+    public <X,Y> ExecutableMapOfArrayOperator<X,Y> evalAsMapOfArray(final IEvaluator<? extends Map<X,Y[]>,? super Map<K,V[]>> eval);
     
     
     /**
@@ -96,7 +96,7 @@ public interface ExecutableMapOfArrayOperator<K,V> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public <X,Y> ExecutableMapOfArrayOperator<X,Y> convert(final IConverter<? extends Map<X,Y[]>,? super Map<K,V[]>> converter);
+    public <X,Y> ExecutableMapOfArrayOperator<X,Y> convertAsMapOfArray(final IConverter<? extends Map<X,Y[]>,? super Map<K,V[]>> converter);
 
     
     /**

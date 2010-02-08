@@ -63,14 +63,14 @@ public interface Level3MapOfMapEntriesValueEntriesOperator<K1,K2,V>
     
     public Level2MapOfMapEntriesValueOperator<K1,K2,V> endFor();
     
-    public <X2,Y> Level3MapOfMapEntriesValueEntriesOperator<K1,X2,Y> exec(final IFunction<? extends Map.Entry<X2,Y>,? super Map.Entry<K2,V>> function);
+    public <X2,Y> Level3MapOfMapEntriesValueEntriesOperator<K1,X2,Y> execAsMapEntry(final IFunction<? extends Map.Entry<X2,Y>,? super Map.Entry<K2,V>> function);
     
-    public <X2,Y> Level3MapOfMapEntriesValueEntriesOperator<K1,X2,Y> eval(final IEvaluator<? extends Map.Entry<X2,Y>,? super Map.Entry<K2,V>> eval);
+    public <X2,Y> Level3MapOfMapEntriesValueEntriesOperator<K1,X2,Y> evalAsMapEntry(final IEvaluator<? extends Map.Entry<X2,Y>,? super Map.Entry<K2,V>> eval);
     
     public Level3MapOfMapEntriesValueEntriesOperator<K1,K2,V> replaceWith(final Map.Entry<K2,V> replacement);
 
 
-    public <X2,Y> Level3MapOfMapEntriesValueEntriesOperator<K1,X2,Y> convert(final IConverter<? extends Map.Entry<X2,Y>,? super Map.Entry<K2,V>> converter);
+    public <X2,Y> Level3MapOfMapEntriesValueEntriesOperator<K1,X2,Y> convertAsMapEntry(final IConverter<? extends Map.Entry<X2,Y>,? super Map.Entry<K2,V>> converter);
 
     public <X> Level3MapOfListEntriesValueElementsOperator<K1,X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K2,V>> function);
     

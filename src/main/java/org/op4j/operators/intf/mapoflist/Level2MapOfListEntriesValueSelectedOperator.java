@@ -82,13 +82,13 @@ public interface Level2MapOfListEntriesValueSelectedOperator<K,V>
     public Level2MapOfListEntriesValueSelectedOperator<K,V> removeAllNull();
 
     
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> convert(final IConverter<? extends List<? extends V>, ? super List<V>> converter);
+    public Level2MapOfListEntriesValueSelectedOperator<K,V> convertAsList(final IConverter<? extends List<? extends V>, ? super List<V>> converter);
     
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> eval(final IEvaluator<? extends List<? extends V>, ? super List<V>> eval);
+    public Level2MapOfListEntriesValueSelectedOperator<K,V> evalAsList(final IEvaluator<? extends List<? extends V>, ? super List<V>> eval);
 
     public Level2MapOfListEntriesValueSelectedOperator<K,V> replaceWith(final List<V> replacement);
 
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> exec(final IFunction<? extends List<? extends V>, ? super List<V>> function);
+    public Level2MapOfListEntriesValueSelectedOperator<K,V> execAsList(final IFunction<? extends List<? extends V>, ? super List<V>> function);
     
     
     

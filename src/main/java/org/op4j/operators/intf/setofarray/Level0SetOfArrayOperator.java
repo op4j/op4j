@@ -171,11 +171,11 @@ public interface Level0SetOfArrayOperator<T>
     public Level0SetOfArrayOperator<T> replaceIfNullWith(final Set<T[]> replacement);
 
 
-    public <X> Level0SetOfArrayOperator<X> convert(final IConverter<? extends Set<X[]>,? super Set<T[]>> converter);
+    public <X> Level0SetOfArrayOperator<X> convertAsSetOfArray(final IConverter<? extends Set<X[]>,? super Set<T[]>> converter);
     
-    public <X> Level0SetOfArrayOperator<X> eval(final IEvaluator<? extends Set<X[]>,? super Set<T[]>> eval);
+    public <X> Level0SetOfArrayOperator<X> evalAsSetOfArray(final IEvaluator<? extends Set<X[]>,? super Set<T[]>> eval);
 
-    public <X> Level0SetOfArrayOperator<X> exec(final IFunction<? extends Set<X[]>,? super Set<T[]>> function);
+    public <X> Level0SetOfArrayOperator<X> execAsSetOfArray(final IFunction<? extends Set<X[]>,? super Set<T[]>> function);
 
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<T[]>> function);
     

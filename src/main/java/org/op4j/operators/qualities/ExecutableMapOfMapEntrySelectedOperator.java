@@ -56,7 +56,7 @@ public interface ExecutableMapOfMapEntrySelectedOperator<K1,K2,V> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableMapOfMapEntrySelectedOperator<K1,K2,V> exec(final IFunction<? extends Map.Entry<? extends K1,? extends Map<? extends K2,? extends V>>, ? super Map.Entry<K1,Map<K2,V>>> function);
+    public ExecutableMapOfMapEntrySelectedOperator<K1,K2,V> execAsMapOfMapEntry(final IFunction<? extends Map.Entry<? extends K1,? extends Map<? extends K2,? extends V>>, ? super Map.Entry<K1,Map<K2,V>>> function);
     
     
     /**
@@ -72,7 +72,7 @@ public interface ExecutableMapOfMapEntrySelectedOperator<K1,K2,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public ExecutableMapOfMapEntrySelectedOperator<K1,K2,V> eval(final IEvaluator<? extends Map.Entry<? extends K1,? extends Map<? extends K2,? extends V>>,? super Map.Entry<K1,Map<K2,V>>> eval);
+    public ExecutableMapOfMapEntrySelectedOperator<K1,K2,V> evalAsMapOfMapEntry(final IEvaluator<? extends Map.Entry<? extends K1,? extends Map<? extends K2,? extends V>>,? super Map.Entry<K1,Map<K2,V>>> eval);
     
     
     /**
@@ -88,6 +88,6 @@ public interface ExecutableMapOfMapEntrySelectedOperator<K1,K2,V> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public ExecutableMapOfMapEntrySelectedOperator<K1,K2,V> convert(final IConverter<? extends Map.Entry<? extends K1,? extends Map<? extends K2,? extends V>>,? super Map.Entry<K1,Map<K2,V>>> converter);
+    public ExecutableMapOfMapEntrySelectedOperator<K1,K2,V> convertAsMapOfMapEntry(final IConverter<? extends Map.Entry<? extends K1,? extends Map<? extends K2,? extends V>>,? super Map.Entry<K1,Map<K2,V>>> converter);
     
 }

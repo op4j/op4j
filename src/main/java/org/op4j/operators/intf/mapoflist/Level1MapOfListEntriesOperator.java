@@ -64,14 +64,14 @@ public interface Level1MapOfListEntriesOperator<K,V>
     
     public Level0MapOfListOperator<K,V> endFor();
     
-    public <X,Y> Level1MapOfListEntriesOperator<X,Y> exec(final IFunction<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> function);
+    public <X,Y> Level1MapOfListEntriesOperator<X,Y> execAsMapOfListEntry(final IFunction<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> function);
     
-    public <X,Y> Level1MapOfListEntriesOperator<X,Y> eval(final IEvaluator<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> eval);
+    public <X,Y> Level1MapOfListEntriesOperator<X,Y> evalAsMapOfListEntry(final IEvaluator<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> eval);
     
     public Level1MapOfListEntriesOperator<K,V> replaceWith(final Map.Entry<K,List<V>> replacement);
 
 
-    public <X,Y> Level1MapOfListEntriesOperator<X,Y> convert(final IConverter<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> converter);
+    public <X,Y> Level1MapOfListEntriesOperator<X,Y> convertAsMapOfListEntry(final IConverter<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> converter);
 
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K,List<V>>> function);
     

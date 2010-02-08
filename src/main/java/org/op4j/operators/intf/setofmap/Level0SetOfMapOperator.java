@@ -113,11 +113,11 @@ public interface Level0SetOfMapOperator<K,V>
     public Level0SetOfMapOperator<K,V> replaceIfNullWith(final Set<Map<K,V>> replacement);
 
 
-    public <X,Y> Level0SetOfMapOperator<X,Y> convert(final IConverter<? extends Set<? extends Map<X,Y>>,? super Set<Map<K,V>>> converter);
+    public <X,Y> Level0SetOfMapOperator<X,Y> convertAsSetOfMap(final IConverter<? extends Set<? extends Map<X,Y>>,? super Set<Map<K,V>>> converter);
     
-    public <X,Y> Level0SetOfMapOperator<X,Y> eval(final IEvaluator<? extends Set<? extends Map<X,Y>>,? super Set<Map<K,V>>> eval);
+    public <X,Y> Level0SetOfMapOperator<X,Y> evalAsSetOfMap(final IEvaluator<? extends Set<? extends Map<X,Y>>,? super Set<Map<K,V>>> eval);
 
-    public <X,Y> Level0SetOfMapOperator<X,Y> exec(final IFunction<? extends Set<? extends Map<X,Y>>, ? super Set<Map<K,V>>> function);
+    public <X,Y> Level0SetOfMapOperator<X,Y> execAsSetOfMap(final IFunction<? extends Set<? extends Map<X,Y>>, ? super Set<Map<K,V>>> function);
 
     public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<Map<K,V>>> function);
     
