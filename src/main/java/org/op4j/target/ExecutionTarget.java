@@ -294,11 +294,11 @@ public final class ExecutionTarget extends Target {
 
 
     @Override
-    Target doIterate(final Structure structure) {
+    Target doIterate(final Structure structure, final boolean excludeFirstIndex) {
 
         final int newBlockLevel = this.operations.length;
         final ExecutionTargetIterateOpenOperation operation =
-            new ExecutionTargetIterateOpenOperation(newBlockLevel, structure);
+            new ExecutionTargetIterateOpenOperation(newBlockLevel, structure, excludeFirstIndex);
         final ExecutionTargetOperation[][] newOperations =
             addOperationAndBlockLevel(this.operations, this.currentBlockLevel, operation);
         final int[] newPreviousBlockLevels = 

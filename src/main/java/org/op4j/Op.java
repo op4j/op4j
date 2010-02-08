@@ -69,6 +69,7 @@ import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
 import org.op4j.target.ExecutionTarget;
 import org.op4j.target.Target.Normalisation;
+import org.op4j.target.Target.Structure;
 import org.op4j.util.VarArgsUtil;
 
 
@@ -102,7 +103,7 @@ public final class Op {
 
     
     public static <T> Level0GenericMultiOperator<T> onAll(final T... targets) {
-        return new Level0GenericMultiOperatorImpl<T>(ExecutionTarget.forObject(VarArgsUtil.asRequiredObjectList(targets), Normalisation.NONE));
+        return new Level0GenericMultiOperatorImpl<T>(ExecutionTarget.forObject(VarArgsUtil.asRequiredObjectList(targets), Normalisation.NONE).iterate(Structure.LIST, true));
     }
 
     

@@ -433,6 +433,18 @@ public class Tester extends TestCase {
             Op.onAll("one", "two", "three").ifIndex(2).exec(StringFuncs.toUpperCase()).getAsList();
         assertEquals("THREE", strList.get(2));
         
+        List<String> strList2 =
+            Op.onAll("one", "two", "three").eval(Ognl.forString("#target + '--' + #index")).getAsList();
+        assertEquals("three--2", strList2.get(2));
+        
+        List<String> strList3 =
+            Op.onAll("one", "two", "three").eval(Ognl.forString("#target + '--' + #indexes[0]")).getAsList();
+        assertEquals("three--2", strList3.get(2));
+        
+        List<String> strList4 =
+            Op.onAll("one", "two", "three").ifTrue(Ognl.forBoolean("#indexes[0] == 2")).exec(StringFuncs.toUpperCase()).getAsList();
+        assertEquals("THREE", strList4.get(2));
+        
     }
 	
 }

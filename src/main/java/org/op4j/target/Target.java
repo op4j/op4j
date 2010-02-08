@@ -54,7 +54,7 @@ public abstract class Target {
     }
     
     
-    abstract Target doIterate(final Structure structure);
+    abstract Target doIterate(final Structure structure, final boolean excludeFirstIndex);
     abstract Target doOnKey();
     abstract Target doOnValue();
     abstract Target doEndOn();
@@ -69,7 +69,11 @@ public abstract class Target {
     
     
     public final Target iterate(final Structure structure) {
-        return doIterate(structure);
+        return doIterate(structure, false);
+    }
+    
+    public final Target iterate(final Structure structure, final boolean excludeFirstIndex) {
+        return doIterate(structure, excludeFirstIndex);
     }
     
     public final Target onKey() {

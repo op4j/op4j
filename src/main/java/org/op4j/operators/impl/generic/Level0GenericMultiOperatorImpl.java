@@ -82,25 +82,25 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
 
     @SuppressWarnings("unchecked")
     public Level0GenericMultiOperator<T> add(final T newElement) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.Add<T>(newElement)).iterate(Structure.LIST));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.Add<T>(newElement)).iterate(Structure.LIST, true));
     }
 
     public Level0GenericMultiOperator<T> addAll(final T... newElements) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.Add<T>(newElements)).iterate(Structure.LIST));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.Add<T>(newElements)).iterate(Structure.LIST, true));
     }
 
     @SuppressWarnings("unchecked")
     public Level0GenericMultiOperator<T> insert(final int position, final T newElement) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.Insert<T>(position, newElement)).iterate(Structure.LIST));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.Insert<T>(position, newElement)).iterate(Structure.LIST, true));
     }
 
     public Level0GenericMultiOperator<T> insertAll(final int position, final T... newElements) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.Insert<T>(position, newElements)).iterate(Structure.LIST));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.Insert<T>(position, newElements)).iterate(Structure.LIST, true));
     }
 
 
     public Level0GenericMultiOperator<T> addAll(final Collection<T> collection) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.AddAll<T>(collection)).iterate(Structure.LIST));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.AddAll<T>(collection)).iterate(Structure.LIST, true));
     }
 
 
@@ -189,49 +189,49 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0GenericMultiOperator<T> removeAllIndexes(final int... indices) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllIndexes<T>(indices)).iterate(Structure.LIST));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllIndexes<T>(indices)).iterate(Structure.LIST, true));
     }
 
 
     public Level0GenericMultiOperator<T> removeAllEqual(final T... values) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllEqual<T>(values)).iterate(Structure.LIST));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllEqual<T>(values)).iterate(Structure.LIST, true));
     }
 
 
     public Level0GenericMultiOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllTrue<T>(eval)).iterate(Structure.LIST));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllTrue<T>(eval)).iterate(Structure.LIST, true));
     }
 
     public Level0GenericMultiOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllFalse<T>(eval)).iterate(Structure.LIST));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllFalse<T>(eval)).iterate(Structure.LIST, true));
     }
 
     public Level0GenericMultiOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllNullOrFalse<T>(eval)).iterate(Structure.LIST));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllNullOrFalse<T>(eval)).iterate(Structure.LIST, true));
     }
 
     public Level0GenericMultiOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllNotNullAndFalse<T>(eval)).iterate(Structure.LIST));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllNotNullAndFalse<T>(eval)).iterate(Structure.LIST, true));
     }
 
 
     public Level0GenericMultiOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllNullOrTrue<T>(eval)).iterate(Structure.LIST));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllNullOrTrue<T>(eval)).iterate(Structure.LIST, true));
     }
 
 
     public Level0GenericMultiOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllNotNullAndTrue<T>(eval)).iterate(Structure.LIST));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllNotNullAndTrue<T>(eval)).iterate(Structure.LIST, true));
     }
 
 
     public Level0GenericMultiOperator<T> removeAllIndexesNot(final int... indices) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllIndexesNot<T>(indices)).iterate(Structure.LIST));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllIndexesNot<T>(indices)).iterate(Structure.LIST, true));
     }
 
 
     public Level0GenericMultiOperator<T> removeAllNull() {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllNull<T>()).iterate(Structure.LIST));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllNull<T>()).iterate(Structure.LIST, true));
     }
 
     
