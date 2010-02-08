@@ -172,11 +172,11 @@ class CollectionFuncs {
     
     static abstract class RemoveAllIndexes<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
 
-        private final List<Integer> indices;
+        private final List<Integer> indexes;
         
-        public RemoveAllIndexes(final int... indices) {
+        public RemoveAllIndexes(final int... indexes) {
             super();
-            this.indices = VarArgsUtil.asRequiredIntegerList(indices);
+            this.indexes = VarArgsUtil.asRequiredIntegerList(indexes);
         }
 
         @Override
@@ -184,7 +184,7 @@ class CollectionFuncs {
             final List<T> result = new ArrayList<T>();
             int i = 0;
             for (final T element : object) {
-                if (!this.indices.contains(Integer.valueOf(i))) {
+                if (!this.indexes.contains(Integer.valueOf(i))) {
                     result.add(element);
                 }
                 i++;
@@ -285,11 +285,11 @@ class CollectionFuncs {
     
     static abstract class RemoveAllIndexesNot<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
 
-        private final List<Integer> indices;
+        private final List<Integer> indexes;
         
-        public RemoveAllIndexesNot(final int... indices) {
+        public RemoveAllIndexesNot(final int... indexes) {
             super();
-            this.indices = VarArgsUtil.asRequiredIntegerList(indices);
+            this.indexes = VarArgsUtil.asRequiredIntegerList(indexes);
         }
 
         @Override
@@ -297,7 +297,7 @@ class CollectionFuncs {
             final List<T> result = new ArrayList<T>();
             int i = 0;
             for (final T element : object) {
-                if (this.indices.contains(Integer.valueOf(i))) {
+                if (this.indexes.contains(Integer.valueOf(i))) {
                     result.add(element);
                 }
                 i++;

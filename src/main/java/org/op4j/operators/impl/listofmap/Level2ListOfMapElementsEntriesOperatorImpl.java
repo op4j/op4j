@@ -78,13 +78,13 @@ public class Level2ListOfMapElementsEntriesOperatorImpl<K,V> extends AbstractOpe
     
 
     
-    public Level2ListOfMapElementsEntriesSelectedOperator<K, V> ifIndex(final int... indices) {
-        return new Level2ListOfMapElementsEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
+    public Level2ListOfMapElementsEntriesSelectedOperator<K, V> ifIndex(final int... indexes) {
+        return new Level2ListOfMapElementsEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level2ListOfMapElementsEntriesSelectedOperator<K, V> ifIndexNot(final int... indices) {
-        return new Level2ListOfMapElementsEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
+    public Level2ListOfMapElementsEntriesSelectedOperator<K, V> ifIndexNot(final int... indexes) {
+        return new Level2ListOfMapElementsEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indexes));
     }
 
 

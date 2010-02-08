@@ -54,10 +54,10 @@ final class ExecutionTargetExecuteOperation implements ExecutionTargetOperation 
     
     
     @SuppressWarnings("unchecked")
-    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indices) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indexes) {
 
         try {
-            Object result = this.executable.execute(target, new ExecCtxImpl(indices));
+            Object result = this.executable.execute(target, new ExecCtxImpl(indexes));
             switch (this.normalisation) {
                 case ARRAY:
                     NormalisationUtils.checkIsArray(Types.OBJECT, result);

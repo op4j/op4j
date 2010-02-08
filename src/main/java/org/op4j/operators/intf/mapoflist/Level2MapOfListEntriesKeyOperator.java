@@ -49,14 +49,14 @@ public interface Level2MapOfListEntriesKeyOperator<K,V>
 
 
 
-    public Level2MapOfListEntriesKeySelectedOperator<K,V> ifIndex(final int... indices);
+    public Level2MapOfListEntriesKeySelectedOperator<K,V> ifIndex(final int... indexes);
     public Level2MapOfListEntriesKeySelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super K> eval);
     public Level2MapOfListEntriesKeySelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super K> eval);
     public Level2MapOfListEntriesKeySelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval);
     public Level2MapOfListEntriesKeySelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval);
     public Level2MapOfListEntriesKeySelectedOperator<K,V> ifNull();
     public Level2MapOfListEntriesKeySelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapOfListEntriesKeySelectedOperator<K,V> ifIndexNot(final int... indices);
+    public Level2MapOfListEntriesKeySelectedOperator<K,V> ifIndexNot(final int... indexes);
     public Level2MapOfListEntriesKeySelectedOperator<K,V> ifNotNull();
     public Level2MapOfListEntriesKeySelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval);
 

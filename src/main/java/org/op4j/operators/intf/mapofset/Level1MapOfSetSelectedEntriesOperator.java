@@ -49,10 +49,10 @@ public interface Level1MapOfSetSelectedEntriesOperator<K,V>
                 SelectableMapEntryOperator<K, Set<V>> {
 
 
-    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifIndex(final int... indices);
+    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifIndex(final int... indexes);
     public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
     public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
-    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifIndexNot(final int... indices);
+    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifIndexNot(final int... indexes);
     public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifKeyEquals(final K... keys);
     public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifKeyNotEquals(final K... keys);
     

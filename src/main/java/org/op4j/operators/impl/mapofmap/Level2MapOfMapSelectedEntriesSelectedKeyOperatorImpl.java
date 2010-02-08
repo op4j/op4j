@@ -21,8 +21,8 @@ public class Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V> exten
     }
 
 
-    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> ifIndex(final int... indices) {
-        return new Level2MapOfMapSelectedEntriesSelectedKeySelectedOperatorImpl<K1,K2,V>(getTarget().selectIndex(indices));
+    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> ifIndex(final int... indexes) {
+        return new Level2MapOfMapSelectedEntriesSelectedKeySelectedOperatorImpl<K1,K2,V>(getTarget().selectIndex(indexes));
     }
 
 
@@ -56,8 +56,8 @@ public class Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V> exten
     }
 
 
-    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> ifIndexNot(final int... indices) {
-        return new Level2MapOfMapSelectedEntriesSelectedKeySelectedOperatorImpl<K1,K2,V>(getTarget().selectIndexNot(indices));
+    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> ifIndexNot(final int... indexes) {
+        return new Level2MapOfMapSelectedEntriesSelectedKeySelectedOperatorImpl<K1,K2,V>(getTarget().selectIndexNot(indexes));
     }
 
 

@@ -26,8 +26,8 @@ public class Level2ListOfArraySelectedElementsElementsOperatorImpl<T> extends Ab
     }
 
 
-    public Level2ListOfArraySelectedElementsElementsSelectedOperator<T> ifIndex(final int... indices) {
-        return new Level2ListOfArraySelectedElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().selectIndex(indices));
+    public Level2ListOfArraySelectedElementsElementsSelectedOperator<T> ifIndex(final int... indexes) {
+        return new Level2ListOfArraySelectedElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().selectIndex(indexes));
     }
 
 
@@ -61,8 +61,8 @@ public class Level2ListOfArraySelectedElementsElementsOperatorImpl<T> extends Ab
     }
 
 
-    public Level2ListOfArraySelectedElementsElementsSelectedOperator<T> ifIndexNot(final int... indices) {
-        return new Level2ListOfArraySelectedElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().selectIndexNot(indices));
+    public Level2ListOfArraySelectedElementsElementsSelectedOperator<T> ifIndexNot(final int... indexes) {
+        return new Level2ListOfArraySelectedElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().selectIndexNot(indexes));
     }
 
 

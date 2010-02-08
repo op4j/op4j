@@ -78,13 +78,13 @@ public class Level2SetOfMapElementsEntriesOperatorImpl<K,V> extends AbstractOper
     
 
     
-    public Level2SetOfMapElementsEntriesSelectedOperator<K, V> ifIndex(final int... indices) {
-        return new Level2SetOfMapElementsEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
+    public Level2SetOfMapElementsEntriesSelectedOperator<K, V> ifIndex(final int... indexes) {
+        return new Level2SetOfMapElementsEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level2SetOfMapElementsEntriesSelectedOperator<K, V> ifIndexNot(final int... indices) {
-        return new Level2SetOfMapElementsEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
+    public Level2SetOfMapElementsEntriesSelectedOperator<K, V> ifIndexNot(final int... indexes) {
+        return new Level2SetOfMapElementsEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indexes));
     }
 
 

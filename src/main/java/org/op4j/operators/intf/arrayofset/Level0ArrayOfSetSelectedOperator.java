@@ -70,7 +70,7 @@ public interface Level0ArrayOfSetSelectedOperator<T>
     public Level0ArrayOfSetSelectedOperator<T> insert(final int position, final Set<T> newElement);
     public Level0ArrayOfSetSelectedOperator<T> insertAll(final int position, final Set<T>... newElements);
     public Level0ArrayOfSetSelectedOperator<T> addAll(final Collection<Set<T>> collection);
-    public Level0ArrayOfSetSelectedOperator<T> removeAllIndexes(final int... indices);
+    public Level0ArrayOfSetSelectedOperator<T> removeAllIndexes(final int... indexes);
     public Level0ArrayOfSetSelectedOperator<T> removeAllEqual(final Set<T>... values);
     public Level0ArrayOfSetSelectedOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
     public Level0ArrayOfSetSelectedOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
@@ -78,7 +78,7 @@ public interface Level0ArrayOfSetSelectedOperator<T>
     public Level0ArrayOfSetSelectedOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
     public Level0ArrayOfSetSelectedOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
     public Level0ArrayOfSetSelectedOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0ArrayOfSetSelectedOperator<T> removeAllIndexesNot(final int... indices);
+    public Level0ArrayOfSetSelectedOperator<T> removeAllIndexesNot(final int... indexes);
     public Level0ArrayOfSetSelectedOperator<T> removeAllNull();
 
 

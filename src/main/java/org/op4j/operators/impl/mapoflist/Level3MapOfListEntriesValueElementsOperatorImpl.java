@@ -74,13 +74,13 @@ public class Level3MapOfListEntriesValueElementsOperatorImpl<K,V> extends Abstra
     }
 
 
-    public Level3MapOfListEntriesValueElementsSelectedOperator<K, V> ifIndex(final int... indices) {
-        return new Level3MapOfListEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
+    public Level3MapOfListEntriesValueElementsSelectedOperator<K, V> ifIndex(final int... indexes) {
+        return new Level3MapOfListEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level3MapOfListEntriesValueElementsSelectedOperator<K, V> ifIndexNot(final int... indices) {
-        return new Level3MapOfListEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
+    public Level3MapOfListEntriesValueElementsSelectedOperator<K, V> ifIndexNot(final int... indexes) {
+        return new Level3MapOfListEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indexes));
     }
 
 

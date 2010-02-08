@@ -42,15 +42,15 @@ final class ExecCtxImpl implements ExecCtx {
 
     
     
-    public ExecCtxImpl(final int[] indices) {
+    public ExecCtxImpl(final int[] indexes) {
         super();
         initialize(
-                Integer.valueOf(indices.length - 1),
-                (indices.length >= 1? Integer.valueOf(indices[0]) : null),
-                (indices.length >= 2? Integer.valueOf(indices[1]) : null),
-                (indices.length >= 3? Integer.valueOf(indices[2]) : null),
-                (indices.length >= 4? Integer.valueOf(indices[3]) : null),
-                (indices.length >= 5? Integer.valueOf(indices[4]) : null));
+                Integer.valueOf(indexes.length - 1),
+                (indexes.length >= 1? Integer.valueOf(indexes[0]) : null),
+                (indexes.length >= 2? Integer.valueOf(indexes[1]) : null),
+                (indexes.length >= 3? Integer.valueOf(indexes[2]) : null),
+                (indexes.length >= 4? Integer.valueOf(indexes[3]) : null),
+                (indexes.length >= 5? Integer.valueOf(indexes[4]) : null));
     }
 
     

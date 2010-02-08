@@ -50,10 +50,10 @@ public interface Level1MapOfArrayEntriesOperator<K,V>
                 SelectableMapEntryOperator<K, V[]> {
 
 
-    public Level1MapOfArrayEntriesSelectedOperator<K,V> ifIndex(final int... indices);
+    public Level1MapOfArrayEntriesSelectedOperator<K,V> ifIndex(final int... indexes);
     public Level1MapOfArrayEntriesSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K, V[]>> eval);
     public Level1MapOfArrayEntriesSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K, V[]>> eval);
-    public Level1MapOfArrayEntriesSelectedOperator<K,V> ifIndexNot(final int... indices);
+    public Level1MapOfArrayEntriesSelectedOperator<K,V> ifIndexNot(final int... indexes);
     public Level1MapOfArrayEntriesSelectedOperator<K,V> ifKeyEquals(final K... keys);
     public Level1MapOfArrayEntriesSelectedOperator<K,V> ifKeyNotEquals(final K... keys);
     

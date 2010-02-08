@@ -22,8 +22,8 @@ public class Level2MapOfSetEntriesSelectedKeyOperatorImpl<K,V> extends AbstractO
     }
 
 
-    public Level2MapOfSetEntriesSelectedKeySelectedOperator<K,V> ifIndex(final int... indices) {
-        return new Level2MapOfSetEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().selectIndex(indices));
+    public Level2MapOfSetEntriesSelectedKeySelectedOperator<K,V> ifIndex(final int... indexes) {
+        return new Level2MapOfSetEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().selectIndex(indexes));
     }
 
 
@@ -57,8 +57,8 @@ public class Level2MapOfSetEntriesSelectedKeyOperatorImpl<K,V> extends AbstractO
     }
 
 
-    public Level2MapOfSetEntriesSelectedKeySelectedOperator<K,V> ifIndexNot(final int... indices) {
-        return new Level2MapOfSetEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().selectIndexNot(indices));
+    public Level2MapOfSetEntriesSelectedKeySelectedOperator<K,V> ifIndexNot(final int... indexes) {
+        return new Level2MapOfSetEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().selectIndexNot(indexes));
     }
 
 

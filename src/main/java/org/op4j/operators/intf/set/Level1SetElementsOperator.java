@@ -64,14 +64,14 @@ public interface Level1SetElementsOperator<T>
 
 
 
-    public Level1SetElementsSelectedOperator<T> ifIndex(final int... indices);
+    public Level1SetElementsSelectedOperator<T> ifIndex(final int... indexes);
     public Level1SetElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
     public Level1SetElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
     public Level1SetElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
     public Level1SetElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
     public Level1SetElementsSelectedOperator<T> ifNull();
     public Level1SetElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetElementsSelectedOperator<T> ifIndexNot(final int... indices);
+    public Level1SetElementsSelectedOperator<T> ifIndexNot(final int... indexes);
     public Level1SetElementsSelectedOperator<T> ifNotNull();
     public Level1SetElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
 

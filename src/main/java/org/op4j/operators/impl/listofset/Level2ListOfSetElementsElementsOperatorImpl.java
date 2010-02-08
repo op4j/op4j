@@ -70,13 +70,13 @@ public class Level2ListOfSetElementsElementsOperatorImpl<T> extends AbstractOper
     }
 
 
-    public Level2ListOfSetElementsElementsSelectedOperator<T> ifIndex(final int... indices) {
-        return new Level2ListOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectIndex(indices));
+    public Level2ListOfSetElementsElementsSelectedOperator<T> ifIndex(final int... indexes) {
+        return new Level2ListOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level2ListOfSetElementsElementsSelectedOperator<T> ifIndexNot(final int... indices) {
-        return new Level2ListOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectIndexNot(indices));
+    public Level2ListOfSetElementsElementsSelectedOperator<T> ifIndexNot(final int... indexes) {
+        return new Level2ListOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectIndexNot(indexes));
     }
 
 

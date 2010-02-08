@@ -188,8 +188,8 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0GenericMultiOperator<T> removeAllIndexes(final int... indices) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllIndexes<T>(indices)).iterate(Structure.LIST, true));
+    public Level0GenericMultiOperator<T> removeAllIndexes(final int... indexes) {
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllIndexes<T>(indexes)).iterate(Structure.LIST, true));
     }
 
 
@@ -225,8 +225,8 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0GenericMultiOperator<T> removeAllIndexesNot(final int... indices) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllIndexesNot<T>(indices)).iterate(Structure.LIST, true));
+    public Level0GenericMultiOperator<T> removeAllIndexesNot(final int... indexes) {
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().endIterate(null).execute(new ListFuncs.RemoveAllIndexesNot<T>(indexes)).iterate(Structure.LIST, true));
     }
 
 
@@ -237,13 +237,13 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
     
 
 
-    public Level0GenericMultiSelectedOperator<T> ifIndex(final int... indices) {
-        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectIndex(indices));
+    public Level0GenericMultiSelectedOperator<T> ifIndex(final int... indexes) {
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level0GenericMultiSelectedOperator<T> ifIndexNot(final int... indices) {
-        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectIndexNot(indices));
+    public Level0GenericMultiSelectedOperator<T> ifIndexNot(final int... indexes) {
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().selectIndexNot(indexes));
     }
 
 

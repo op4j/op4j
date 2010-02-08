@@ -98,14 +98,14 @@ public interface Level0ArrayOfSetOperator<T>
 
 
 
-    public Level0ArrayOfSetSelectedOperator<T> ifIndex(final int... indices);
+    public Level0ArrayOfSetSelectedOperator<T> ifIndex(final int... indexes);
     public Level0ArrayOfSetSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super Set<T>[]> eval);
     public Level0ArrayOfSetSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super Set<T>[]> eval);
     public Level0ArrayOfSetSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super Set<T>[]> eval);
     public Level0ArrayOfSetSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Set<T>[]> eval);
     public Level0ArrayOfSetSelectedOperator<T> ifNull();
     public Level0ArrayOfSetSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super Set<T>[]> eval);
-    public Level0ArrayOfSetSelectedOperator<T> ifIndexNot(final int... indices);
+    public Level0ArrayOfSetSelectedOperator<T> ifIndexNot(final int... indexes);
     public Level0ArrayOfSetSelectedOperator<T> ifNotNull();
     public Level0ArrayOfSetSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Set<T>[]> eval);
 
@@ -124,7 +124,7 @@ public interface Level0ArrayOfSetOperator<T>
     public Level0ArrayOfSetOperator<T> insert(final int position, final Set<T> newElement);
     public Level0ArrayOfSetOperator<T> insertAll(final int position, final Set<T>... newElements);
     public Level0ArrayOfSetOperator<T> addAll(final Collection<Set<T>> collection);
-    public Level0ArrayOfSetOperator<T> removeAllIndexes(final int... indices);
+    public Level0ArrayOfSetOperator<T> removeAllIndexes(final int... indexes);
     public Level0ArrayOfSetOperator<T> removeAllEqual(final Set<T>... values);
     public Level0ArrayOfSetOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
     public Level0ArrayOfSetOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
@@ -132,7 +132,7 @@ public interface Level0ArrayOfSetOperator<T>
     public Level0ArrayOfSetOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
     public Level0ArrayOfSetOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
     public Level0ArrayOfSetOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0ArrayOfSetOperator<T> removeAllIndexesNot(final int... indices);
+    public Level0ArrayOfSetOperator<T> removeAllIndexesNot(final int... indexes);
     public Level0ArrayOfSetOperator<T> removeAllNull();
     
     

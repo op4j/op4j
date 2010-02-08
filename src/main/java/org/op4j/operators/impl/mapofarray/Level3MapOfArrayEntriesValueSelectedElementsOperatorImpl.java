@@ -26,8 +26,8 @@ public class Level3MapOfArrayEntriesValueSelectedElementsOperatorImpl<K,V> exten
     }
 
 
-    public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifIndex(final int... indices) {
-        return new Level3MapOfArrayEntriesValueSelectedElementsSelectedOperatorImpl<K,V>(this.type, getTarget().selectIndex(indices));
+    public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifIndex(final int... indexes) {
+        return new Level3MapOfArrayEntriesValueSelectedElementsSelectedOperatorImpl<K,V>(this.type, getTarget().selectIndex(indexes));
     }
 
 
@@ -61,8 +61,8 @@ public class Level3MapOfArrayEntriesValueSelectedElementsOperatorImpl<K,V> exten
     }
 
 
-    public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifIndexNot(final int... indices) {
-        return new Level3MapOfArrayEntriesValueSelectedElementsSelectedOperatorImpl<K,V>(this.type, getTarget().selectIndexNot(indices));
+    public Level3MapOfArrayEntriesValueSelectedElementsSelectedOperator<K,V> ifIndexNot(final int... indexes) {
+        return new Level3MapOfArrayEntriesValueSelectedElementsSelectedOperatorImpl<K,V>(this.type, getTarget().selectIndexNot(indexes));
     }
 
 

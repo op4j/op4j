@@ -143,13 +143,13 @@ public class Level2MapEntriesValueOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level2MapEntriesValueSelectedOperator<K, V> ifIndex(final int... indices) {
-        return new Level2MapEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
+    public Level2MapEntriesValueSelectedOperator<K, V> ifIndex(final int... indexes) {
+        return new Level2MapEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level2MapEntriesValueSelectedOperator<K, V> ifIndexNot(final int... indices) {
-        return new Level2MapEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
+    public Level2MapEntriesValueSelectedOperator<K, V> ifIndexNot(final int... indexes) {
+        return new Level2MapEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indexes));
     }
 
 

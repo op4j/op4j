@@ -22,8 +22,8 @@ public class Level3SetOfMapElementsSelectedEntriesValueOperatorImpl<K,V> extends
     }
 
 
-    public Level3SetOfMapElementsSelectedEntriesValueSelectedOperator<K,V> ifIndex(final int... indices) {
-        return new Level3SetOfMapElementsSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().selectIndex(indices));
+    public Level3SetOfMapElementsSelectedEntriesValueSelectedOperator<K,V> ifIndex(final int... indexes) {
+        return new Level3SetOfMapElementsSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().selectIndex(indexes));
     }
 
 
@@ -57,8 +57,8 @@ public class Level3SetOfMapElementsSelectedEntriesValueOperatorImpl<K,V> extends
     }
 
 
-    public Level3SetOfMapElementsSelectedEntriesValueSelectedOperator<K,V> ifIndexNot(final int... indices) {
-        return new Level3SetOfMapElementsSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().selectIndexNot(indices));
+    public Level3SetOfMapElementsSelectedEntriesValueSelectedOperator<K,V> ifIndexNot(final int... indexes) {
+        return new Level3SetOfMapElementsSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().selectIndexNot(indexes));
     }
 
 

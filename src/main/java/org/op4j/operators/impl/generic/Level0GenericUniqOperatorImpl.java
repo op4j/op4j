@@ -456,13 +456,13 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0GenericUniqSelectedOperator<T> ifIndex(final int... indices) {
-        return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().selectIndex(indices));
+    public Level0GenericUniqSelectedOperator<T> ifIndex(final int... indexes) {
+        return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level0GenericUniqSelectedOperator<T> ifIndexNot(final int... indices) {
-        return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().selectIndexNot(indices));
+    public Level0GenericUniqSelectedOperator<T> ifIndexNot(final int... indexes) {
+        return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().selectIndexNot(indexes));
     }
 
 

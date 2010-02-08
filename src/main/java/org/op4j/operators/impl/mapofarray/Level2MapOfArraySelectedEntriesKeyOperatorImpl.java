@@ -21,8 +21,8 @@ public class Level2MapOfArraySelectedEntriesKeyOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public Level2MapOfArraySelectedEntriesKeySelectedOperator<K,V> ifIndex(final int... indices) {
-        return new Level2MapOfArraySelectedEntriesKeySelectedOperatorImpl<K,V>(getTarget().selectIndex(indices));
+    public Level2MapOfArraySelectedEntriesKeySelectedOperator<K,V> ifIndex(final int... indexes) {
+        return new Level2MapOfArraySelectedEntriesKeySelectedOperatorImpl<K,V>(getTarget().selectIndex(indexes));
     }
 
 
@@ -56,8 +56,8 @@ public class Level2MapOfArraySelectedEntriesKeyOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public Level2MapOfArraySelectedEntriesKeySelectedOperator<K,V> ifIndexNot(final int... indices) {
-        return new Level2MapOfArraySelectedEntriesKeySelectedOperatorImpl<K,V>(getTarget().selectIndexNot(indices));
+    public Level2MapOfArraySelectedEntriesKeySelectedOperator<K,V> ifIndexNot(final int... indexes) {
+        return new Level2MapOfArraySelectedEntriesKeySelectedOperatorImpl<K,V>(getTarget().selectIndexNot(indexes));
     }
 
 

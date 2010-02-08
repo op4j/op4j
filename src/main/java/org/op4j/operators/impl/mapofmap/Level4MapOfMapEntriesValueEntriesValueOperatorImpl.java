@@ -74,13 +74,13 @@ public class Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1,K2,V> extends
     }
 
 
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1, K2, V> ifIndex(final int... indices) {
-        return new Level4MapOfMapEntriesValueEntriesValueSelectedOperatorImpl<K1, K2, V>(getTarget().selectIndex(indices));
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1, K2, V> ifIndex(final int... indexes) {
+        return new Level4MapOfMapEntriesValueEntriesValueSelectedOperatorImpl<K1, K2, V>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1, K2, V> ifIndexNot(final int... indices) {
-        return new Level4MapOfMapEntriesValueEntriesValueSelectedOperatorImpl<K1, K2, V>(getTarget().selectIndexNot(indices));
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1, K2, V> ifIndexNot(final int... indexes) {
+        return new Level4MapOfMapEntriesValueEntriesValueSelectedOperatorImpl<K1, K2, V>(getTarget().selectIndexNot(indexes));
     }
 
 

@@ -70,14 +70,14 @@ public interface Level0SetOfMapOperator<K,V>
 
 
 
-    public Level0SetOfMapSelectedOperator<K,V> ifIndex(final int... indices);
+    public Level0SetOfMapSelectedOperator<K,V> ifIndex(final int... indexes);
     public Level0SetOfMapSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Set<Map<K,V>>> eval);
     public Level0SetOfMapSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Set<Map<K,V>>> eval);
     public Level0SetOfMapSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super Set<Map<K,V>>> eval);
     public Level0SetOfMapSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Set<Map<K,V>>> eval);
     public Level0SetOfMapSelectedOperator<K,V> ifNull();
     public Level0SetOfMapSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super Set<Map<K,V>>> eval);
-    public Level0SetOfMapSelectedOperator<K,V> ifIndexNot(final int... indices);
+    public Level0SetOfMapSelectedOperator<K,V> ifIndexNot(final int... indexes);
     public Level0SetOfMapSelectedOperator<K,V> ifNotNull();
     public Level0SetOfMapSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Set<Map<K,V>>> eval);
 
@@ -93,7 +93,7 @@ public interface Level0SetOfMapOperator<K,V>
     public Level0SetOfMapOperator<K,V> insert(final int position, final Map<K,V> newElement);
     public Level0SetOfMapOperator<K,V> insertAll(final int position, final Map<K,V>... newElements);
     public Level0SetOfMapOperator<K,V> addAll(final Collection<Map<K,V>> collection);
-    public Level0SetOfMapOperator<K,V> removeAllIndexes(final int... indices);
+    public Level0SetOfMapOperator<K,V> removeAllIndexes(final int... indexes);
     public Level0SetOfMapOperator<K,V> removeAllEqual(final Map<K,V>... values);
     public Level0SetOfMapOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public Level0SetOfMapOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
@@ -101,7 +101,7 @@ public interface Level0SetOfMapOperator<K,V>
     public Level0SetOfMapOperator<K,V> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public Level0SetOfMapOperator<K,V> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public Level0SetOfMapOperator<K,V> removeAllNullOrTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0SetOfMapOperator<K,V> removeAllIndexesNot(final int... indices);
+    public Level0SetOfMapOperator<K,V> removeAllIndexesNot(final int... indexes);
     public Level0SetOfMapOperator<K,V> removeAllNull();
 
     public Level0GenericUniqOperator<Set<Map<K,V>>> generic();

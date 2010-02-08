@@ -117,14 +117,14 @@ public interface Level0GenericUniqOperator<T>
 
 
 
-    public Level0GenericUniqSelectedOperator<T> ifIndex(final int... indices);
+    public Level0GenericUniqSelectedOperator<T> ifIndex(final int... indexes);
     public Level0GenericUniqSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
     public Level0GenericUniqSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
     public Level0GenericUniqSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
     public Level0GenericUniqSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
     public Level0GenericUniqSelectedOperator<T> ifNull();
     public Level0GenericUniqSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level0GenericUniqSelectedOperator<T> ifIndexNot(final int... indices);
+    public Level0GenericUniqSelectedOperator<T> ifIndexNot(final int... indexes);
     public Level0GenericUniqSelectedOperator<T> ifNotNull();
     public Level0GenericUniqSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
 

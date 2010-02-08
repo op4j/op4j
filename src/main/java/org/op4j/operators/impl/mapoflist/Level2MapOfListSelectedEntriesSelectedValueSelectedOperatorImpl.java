@@ -41,8 +41,8 @@ public class Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V
     }
 
 
-    public Level2MapOfListSelectedEntriesSelectedValueSelectedOperator<K,V> removeAllIndexes(final int... indices) {
-        return new Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.RemoveAllIndexes<V>(indices)));
+    public Level2MapOfListSelectedEntriesSelectedValueSelectedOperator<K,V> removeAllIndexes(final int... indexes) {
+        return new Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.RemoveAllIndexes<V>(indexes)));
     }
 
 
@@ -81,8 +81,8 @@ public class Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V
     }
 
 
-    public Level2MapOfListSelectedEntriesSelectedValueSelectedOperator<K,V> removeAllIndexesNot(final int... indices) {
-        return new Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.RemoveAllIndexesNot<V>(indices)));
+    public Level2MapOfListSelectedEntriesSelectedValueSelectedOperator<K,V> removeAllIndexesNot(final int... indexes) {
+        return new Level2MapOfListSelectedEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.RemoveAllIndexesNot<V>(indexes)));
     }
 
 

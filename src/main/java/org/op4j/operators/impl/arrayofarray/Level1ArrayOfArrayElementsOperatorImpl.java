@@ -110,8 +110,8 @@ public class Level1ArrayOfArrayElementsOperatorImpl<T> extends AbstractOperatorI
     }
 
 
-    public Level1ArrayOfArrayElementsOperator<T> removeAllIndexes(final int... indices) {
-        return new Level1ArrayOfArrayElementsOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllIndexes<T>(indices)));
+    public Level1ArrayOfArrayElementsOperator<T> removeAllIndexes(final int... indexes) {
+        return new Level1ArrayOfArrayElementsOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllIndexes<T>(indexes)));
     }
 
 
@@ -147,8 +147,8 @@ public class Level1ArrayOfArrayElementsOperatorImpl<T> extends AbstractOperatorI
     }
 
 
-    public Level1ArrayOfArrayElementsOperator<T> removeAllIndexesNot(final int... indices) {
-        return new Level1ArrayOfArrayElementsOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllIndexesNot<T>(indices)));
+    public Level1ArrayOfArrayElementsOperator<T> removeAllIndexesNot(final int... indexes) {
+        return new Level1ArrayOfArrayElementsOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllIndexesNot<T>(indexes)));
     }
 
 
@@ -223,13 +223,13 @@ public class Level1ArrayOfArrayElementsOperatorImpl<T> extends AbstractOperatorI
     }
 
 
-    public Level1ArrayOfArrayElementsSelectedOperator<T> ifIndex(final int... indices) {
-        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().selectIndex(indices));
+    public Level1ArrayOfArrayElementsSelectedOperator<T> ifIndex(final int... indexes) {
+        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().selectIndex(indexes));
     }
 
 
-    public Level1ArrayOfArrayElementsSelectedOperator<T> ifIndexNot(final int... indices) {
-        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().selectIndexNot(indices));
+    public Level1ArrayOfArrayElementsSelectedOperator<T> ifIndexNot(final int... indexes) {
+        return new Level1ArrayOfArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().selectIndexNot(indexes));
     }
 
 

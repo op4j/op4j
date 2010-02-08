@@ -27,8 +27,8 @@ public class Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V> extends Abstr
     }
 
 
-    public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> ifIndex(final int... indices) {
-        return new Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().selectIndex(indices));
+    public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> ifIndex(final int... indexes) {
+        return new Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().selectIndex(indexes));
     }
 
 
@@ -62,8 +62,8 @@ public class Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V> extends Abstr
     }
 
 
-    public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> ifIndexNot(final int... indices) {
-        return new Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().selectIndexNot(indices));
+    public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> ifIndexNot(final int... indexes) {
+        return new Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().selectIndexNot(indexes));
     }
 
 
@@ -92,8 +92,8 @@ public class Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V> extends Abstr
     }
 
 
-    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllIndexes(final int... indices) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.RemoveAllIndexes<V>(indices)));
+    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllIndexes(final int... indexes) {
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.RemoveAllIndexes<V>(indexes)));
     }
 
 
@@ -132,8 +132,8 @@ public class Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V> extends Abstr
     }
 
 
-    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllIndexesNot(final int... indices) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.RemoveAllIndexesNot<V>(indices)));
+    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllIndexesNot(final int... indexes) {
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new ArrayFuncs.RemoveAllIndexesNot<V>(indexes)));
     }
 
 

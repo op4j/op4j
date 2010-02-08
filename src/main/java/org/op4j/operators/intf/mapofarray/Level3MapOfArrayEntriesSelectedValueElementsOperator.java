@@ -47,14 +47,14 @@ public interface Level3MapOfArrayEntriesSelectedValueElementsOperator<K,V>
 
 
 
-    public Level3MapOfArrayEntriesSelectedValueElementsSelectedOperator<K,V> ifIndex(final int... indices);
+    public Level3MapOfArrayEntriesSelectedValueElementsSelectedOperator<K,V> ifIndex(final int... indexes);
     public Level3MapOfArrayEntriesSelectedValueElementsSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super V> eval);
     public Level3MapOfArrayEntriesSelectedValueElementsSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super V> eval);
     public Level3MapOfArrayEntriesSelectedValueElementsSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super V> eval);
     public Level3MapOfArrayEntriesSelectedValueElementsSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval);
     public Level3MapOfArrayEntriesSelectedValueElementsSelectedOperator<K,V> ifNull();
     public Level3MapOfArrayEntriesSelectedValueElementsSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level3MapOfArrayEntriesSelectedValueElementsSelectedOperator<K,V> ifIndexNot(final int... indices);
+    public Level3MapOfArrayEntriesSelectedValueElementsSelectedOperator<K,V> ifIndexNot(final int... indexes);
     public Level3MapOfArrayEntriesSelectedValueElementsSelectedOperator<K,V> ifNotNull();
     public Level3MapOfArrayEntriesSelectedValueElementsSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval);
 

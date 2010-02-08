@@ -62,14 +62,14 @@ public interface Level0MapOfMapOperator<K1,K2,V>
 
 
 
-    public Level0MapOfMapSelectedOperator<K1,K2,V> ifIndex(final int... indices);
+    public Level0MapOfMapSelectedOperator<K1,K2,V> ifIndex(final int... indexes);
     public Level0MapOfMapSelectedOperator<K1,K2,V> ifTrue(final IEvaluator<Boolean, ? super Map<K1,Map<K2,V>>> eval);
     public Level0MapOfMapSelectedOperator<K1,K2,V> ifFalse(final IEvaluator<Boolean, ? super Map<K1,Map<K2,V>>> eval);
     public Level0MapOfMapSelectedOperator<K1,K2,V> ifNullOrFalse(final IEvaluator<Boolean, ? super Map<K1,Map<K2,V>>> eval);
     public Level0MapOfMapSelectedOperator<K1,K2,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K1,Map<K2,V>>> eval);
     public Level0MapOfMapSelectedOperator<K1,K2,V> ifNull();
     public Level0MapOfMapSelectedOperator<K1,K2,V> ifNullOrTrue(final IEvaluator<Boolean, ? super Map<K1,Map<K2,V>>> eval);
-    public Level0MapOfMapSelectedOperator<K1,K2,V> ifIndexNot(final int... indices);
+    public Level0MapOfMapSelectedOperator<K1,K2,V> ifIndexNot(final int... indexes);
     public Level0MapOfMapSelectedOperator<K1,K2,V> ifNotNull();
     public Level0MapOfMapSelectedOperator<K1,K2,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K1,Map<K2,V>>> eval);
 

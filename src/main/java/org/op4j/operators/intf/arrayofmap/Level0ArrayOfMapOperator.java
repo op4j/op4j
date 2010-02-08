@@ -71,14 +71,14 @@ public interface Level0ArrayOfMapOperator<K,V>
 
 
 
-    public Level0ArrayOfMapSelectedOperator<K,V> ifIndex(final int... indices);
+    public Level0ArrayOfMapSelectedOperator<K,V> ifIndex(final int... indexes);
     public Level0ArrayOfMapSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map<K,V>[]> eval);
     public Level0ArrayOfMapSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map<K,V>[]> eval);
     public Level0ArrayOfMapSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super Map<K,V>[]> eval);
     public Level0ArrayOfMapSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K,V>[]> eval);
     public Level0ArrayOfMapSelectedOperator<K,V> ifNull();
     public Level0ArrayOfMapSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super Map<K,V>[]> eval);
-    public Level0ArrayOfMapSelectedOperator<K,V> ifIndexNot(final int... indices);
+    public Level0ArrayOfMapSelectedOperator<K,V> ifIndexNot(final int... indexes);
     public Level0ArrayOfMapSelectedOperator<K,V> ifNotNull();
     public Level0ArrayOfMapSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K,V>[]> eval);
 
@@ -96,7 +96,7 @@ public interface Level0ArrayOfMapOperator<K,V>
     public Level0ArrayOfMapOperator<K,V> insert(final int position, final Map<K,V> newElement);
     public Level0ArrayOfMapOperator<K,V> insertAll(final int position, final Map<K,V>... newElements);
     public Level0ArrayOfMapOperator<K,V> addAll(final Collection<Map<K,V>> collection);
-    public Level0ArrayOfMapOperator<K,V> removeAllIndexes(final int... indices);
+    public Level0ArrayOfMapOperator<K,V> removeAllIndexes(final int... indexes);
     public Level0ArrayOfMapOperator<K,V> removeAllEqual(final Map<K,V>... values);
     public Level0ArrayOfMapOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public Level0ArrayOfMapOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
@@ -104,7 +104,7 @@ public interface Level0ArrayOfMapOperator<K,V>
     public Level0ArrayOfMapOperator<K,V> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public Level0ArrayOfMapOperator<K,V> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public Level0ArrayOfMapOperator<K,V> removeAllNullOrTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0ArrayOfMapOperator<K,V> removeAllIndexesNot(final int... indices);
+    public Level0ArrayOfMapOperator<K,V> removeAllIndexesNot(final int... indexes);
     public Level0ArrayOfMapOperator<K,V> removeAllNull();
 
     public Level0GenericUniqOperator<Map<K,V>[]> generic();

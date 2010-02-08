@@ -26,8 +26,8 @@ public class Level1ListOfListSelectedElementsOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1ListOfListSelectedElementsSelectedOperator<T> ifIndex(final int... indices) {
-        return new Level1ListOfListSelectedElementsSelectedOperatorImpl<T>(getTarget().selectIndex(indices));
+    public Level1ListOfListSelectedElementsSelectedOperator<T> ifIndex(final int... indexes) {
+        return new Level1ListOfListSelectedElementsSelectedOperatorImpl<T>(getTarget().selectIndex(indexes));
     }
 
 
@@ -61,8 +61,8 @@ public class Level1ListOfListSelectedElementsOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1ListOfListSelectedElementsSelectedOperator<T> ifIndexNot(final int... indices) {
-        return new Level1ListOfListSelectedElementsSelectedOperatorImpl<T>(getTarget().selectIndexNot(indices));
+    public Level1ListOfListSelectedElementsSelectedOperator<T> ifIndexNot(final int... indexes) {
+        return new Level1ListOfListSelectedElementsSelectedOperatorImpl<T>(getTarget().selectIndexNot(indexes));
     }
 
 
@@ -91,8 +91,8 @@ public class Level1ListOfListSelectedElementsOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1ListOfListSelectedElementsOperator<T> removeAllIndexes(final int... indices) {
-        return new Level1ListOfListSelectedElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllIndexes<T>(indices)));
+    public Level1ListOfListSelectedElementsOperator<T> removeAllIndexes(final int... indexes) {
+        return new Level1ListOfListSelectedElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllIndexes<T>(indexes)));
     }
 
 
@@ -131,8 +131,8 @@ public class Level1ListOfListSelectedElementsOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1ListOfListSelectedElementsOperator<T> removeAllIndexesNot(final int... indices) {
-        return new Level1ListOfListSelectedElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllIndexesNot<T>(indices)));
+    public Level1ListOfListSelectedElementsOperator<T> removeAllIndexesNot(final int... indexes) {
+        return new Level1ListOfListSelectedElementsOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllIndexesNot<T>(indexes)));
     }
 
 

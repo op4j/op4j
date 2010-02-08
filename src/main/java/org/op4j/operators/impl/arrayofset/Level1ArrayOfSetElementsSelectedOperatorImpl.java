@@ -35,8 +35,8 @@ public class Level1ArrayOfSetElementsSelectedOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1ArrayOfSetElementsSelectedOperator<T> removeAllIndexes(final int... indices) {
-        return new Level1ArrayOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexes<T>(indices)));
+    public Level1ArrayOfSetElementsSelectedOperator<T> removeAllIndexes(final int... indexes) {
+        return new Level1ArrayOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexes<T>(indexes)));
     }
 
 
@@ -75,8 +75,8 @@ public class Level1ArrayOfSetElementsSelectedOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1ArrayOfSetElementsSelectedOperator<T> removeAllIndexesNot(final int... indices) {
-        return new Level1ArrayOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<T>(indices)));
+    public Level1ArrayOfSetElementsSelectedOperator<T> removeAllIndexesNot(final int... indexes) {
+        return new Level1ArrayOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<T>(indexes)));
     }
 
 

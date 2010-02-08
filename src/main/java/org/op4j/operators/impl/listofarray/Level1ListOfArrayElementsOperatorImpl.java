@@ -107,8 +107,8 @@ public class Level1ListOfArrayElementsOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
-    public Level1ListOfArrayElementsOperator<T> removeAllIndexes(final int... indices) {
-        return new Level1ListOfArrayElementsOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllIndexes<T>(indices)));
+    public Level1ListOfArrayElementsOperator<T> removeAllIndexes(final int... indexes) {
+        return new Level1ListOfArrayElementsOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllIndexes<T>(indexes)));
     }
 
 
@@ -144,8 +144,8 @@ public class Level1ListOfArrayElementsOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
-    public Level1ListOfArrayElementsOperator<T> removeAllIndexesNot(final int... indices) {
-        return new Level1ListOfArrayElementsOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllIndexesNot<T>(indices)));
+    public Level1ListOfArrayElementsOperator<T> removeAllIndexesNot(final int... indexes) {
+        return new Level1ListOfArrayElementsOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllIndexesNot<T>(indexes)));
     }
 
 
@@ -215,13 +215,13 @@ public class Level1ListOfArrayElementsOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
-    public Level1ListOfArrayElementsSelectedOperator<T> ifIndex(final int... indices) {
-        return new Level1ListOfArrayElementsSelectedOperatorImpl<T>(getTarget().selectIndex(indices));
+    public Level1ListOfArrayElementsSelectedOperator<T> ifIndex(final int... indexes) {
+        return new Level1ListOfArrayElementsSelectedOperatorImpl<T>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level1ListOfArrayElementsSelectedOperator<T> ifIndexNot(final int... indices) {
-        return new Level1ListOfArrayElementsSelectedOperatorImpl<T>(getTarget().selectIndexNot(indices));
+    public Level1ListOfArrayElementsSelectedOperator<T> ifIndexNot(final int... indexes) {
+        return new Level1ListOfArrayElementsSelectedOperatorImpl<T>(getTarget().selectIndexNot(indexes));
     }
 
 

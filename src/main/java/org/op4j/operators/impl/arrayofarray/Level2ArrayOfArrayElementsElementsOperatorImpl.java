@@ -71,13 +71,13 @@ public class Level2ArrayOfArrayElementsElementsOperatorImpl<T> extends AbstractO
     }
 
 
-    public Level2ArrayOfArrayElementsElementsSelectedOperator<T> ifIndex(final int... indices) {
-        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().selectIndex(indices));
+    public Level2ArrayOfArrayElementsElementsSelectedOperator<T> ifIndex(final int... indexes) {
+        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().selectIndex(indexes));
     }
 
 
-    public Level2ArrayOfArrayElementsElementsSelectedOperator<T> ifIndexNot(final int... indices) {
-        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().selectIndexNot(indices));
+    public Level2ArrayOfArrayElementsElementsSelectedOperator<T> ifIndexNot(final int... indexes) {
+        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().selectIndexNot(indexes));
     }
 
 

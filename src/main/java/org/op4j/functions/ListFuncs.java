@@ -151,8 +151,8 @@ public class ListFuncs {
     public static final class RemoveAllIndexes<T> extends CollectionFuncs.RemoveAllIndexes<T, List<T>> {
 
         
-        public RemoveAllIndexes(final int... indices) {
-            super(indices);
+        public RemoveAllIndexes(final int... indexes) {
+            super(indexes);
         }
 
         @Override
@@ -215,8 +215,8 @@ public class ListFuncs {
     
     public static final class RemoveAllIndexesNot<T> extends CollectionFuncs.RemoveAllIndexesNot<T, List<T>> {
 
-        public RemoveAllIndexesNot(final int... indices) {
-            super(indices);
+        public RemoveAllIndexesNot(final int... indexes) {
+            super(indexes);
         }
 
         @Override

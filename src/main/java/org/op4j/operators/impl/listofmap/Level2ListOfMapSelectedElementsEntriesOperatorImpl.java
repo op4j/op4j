@@ -25,8 +25,8 @@ public class Level2ListOfMapSelectedElementsEntriesOperatorImpl<K,V> extends Abs
     }
 
 
-    public Level2ListOfMapSelectedElementsEntriesSelectedOperator<K,V> ifIndex(final int... indices) {
-        return new Level2ListOfMapSelectedElementsEntriesSelectedOperatorImpl<K,V>(getTarget().selectIndex(indices));
+    public Level2ListOfMapSelectedElementsEntriesSelectedOperator<K,V> ifIndex(final int... indexes) {
+        return new Level2ListOfMapSelectedElementsEntriesSelectedOperatorImpl<K,V>(getTarget().selectIndex(indexes));
     }
 
 
@@ -40,8 +40,8 @@ public class Level2ListOfMapSelectedElementsEntriesOperatorImpl<K,V> extends Abs
     }
 
 
-    public Level2ListOfMapSelectedElementsEntriesSelectedOperator<K,V> ifIndexNot(final int... indices) {
-        return new Level2ListOfMapSelectedElementsEntriesSelectedOperatorImpl<K,V>(getTarget().selectIndexNot(indices));
+    public Level2ListOfMapSelectedElementsEntriesSelectedOperator<K,V> ifIndexNot(final int... indexes) {
+        return new Level2ListOfMapSelectedElementsEntriesSelectedOperatorImpl<K,V>(getTarget().selectIndexNot(indexes));
     }
 
 

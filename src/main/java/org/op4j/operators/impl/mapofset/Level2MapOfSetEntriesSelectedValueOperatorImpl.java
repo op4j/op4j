@@ -27,8 +27,8 @@ public class Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> ifIndex(final int... indices) {
-        return new Level2MapOfSetEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().selectIndex(indices));
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> ifIndex(final int... indexes) {
+        return new Level2MapOfSetEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().selectIndex(indexes));
     }
 
 
@@ -62,8 +62,8 @@ public class Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> ifIndexNot(final int... indices) {
-        return new Level2MapOfSetEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().selectIndexNot(indices));
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> ifIndexNot(final int... indexes) {
+        return new Level2MapOfSetEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().selectIndexNot(indexes));
     }
 
 
@@ -87,8 +87,8 @@ public class Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueOperator<K,V> removeAllIndexes(final int... indices) {
-        return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllIndexes<V>(indices)));
+    public Level2MapOfSetEntriesSelectedValueOperator<K,V> removeAllIndexes(final int... indexes) {
+        return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllIndexes<V>(indexes)));
     }
 
 
@@ -127,8 +127,8 @@ public class Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueOperator<K,V> removeAllIndexesNot(final int... indices) {
-        return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<V>(indices)));
+    public Level2MapOfSetEntriesSelectedValueOperator<K,V> removeAllIndexesNot(final int... indexes) {
+        return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<V>(indexes)));
     }
 
 

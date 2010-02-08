@@ -41,8 +41,8 @@ public class Level0ListOfListSelectedOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public Level0ListOfListSelectedOperator<T> removeAllIndexes(final int... indices) {
-        return new Level0ListOfListSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllIndexes<List<T>>(indices)));
+    public Level0ListOfListSelectedOperator<T> removeAllIndexes(final int... indexes) {
+        return new Level0ListOfListSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllIndexes<List<T>>(indexes)));
     }
 
 
@@ -81,8 +81,8 @@ public class Level0ListOfListSelectedOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public Level0ListOfListSelectedOperator<T> removeAllIndexesNot(final int... indices) {
-        return new Level0ListOfListSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllIndexesNot<List<T>>(indices)));
+    public Level0ListOfListSelectedOperator<T> removeAllIndexesNot(final int... indexes) {
+        return new Level0ListOfListSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllIndexesNot<List<T>>(indexes)));
     }
 
 

@@ -44,8 +44,8 @@ public class Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T> extends A
     }
 
 
-    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> removeAllIndexes(final int... indices) {
-        return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllIndexes<T>(indices)));
+    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> removeAllIndexes(final int... indexes) {
+        return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllIndexes<T>(indexes)));
     }
 
 
@@ -84,8 +84,8 @@ public class Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T> extends A
     }
 
 
-    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> removeAllIndexesNot(final int... indices) {
-        return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllIndexesNot<T>(indices)));
+    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> removeAllIndexesNot(final int... indexes) {
+        return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllIndexesNot<T>(indexes)));
     }
 
 

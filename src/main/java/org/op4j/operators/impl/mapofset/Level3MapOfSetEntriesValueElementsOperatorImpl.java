@@ -74,13 +74,13 @@ public class Level3MapOfSetEntriesValueElementsOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public Level3MapOfSetEntriesValueElementsSelectedOperator<K, V> ifIndex(final int... indices) {
-        return new Level3MapOfSetEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
+    public Level3MapOfSetEntriesValueElementsSelectedOperator<K, V> ifIndex(final int... indexes) {
+        return new Level3MapOfSetEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level3MapOfSetEntriesValueElementsSelectedOperator<K, V> ifIndexNot(final int... indices) {
-        return new Level3MapOfSetEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
+    public Level3MapOfSetEntriesValueElementsSelectedOperator<K, V> ifIndexNot(final int... indexes) {
+        return new Level3MapOfSetEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indexes));
     }
 
 

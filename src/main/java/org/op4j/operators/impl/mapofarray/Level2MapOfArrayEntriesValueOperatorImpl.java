@@ -109,8 +109,8 @@ public class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends AbstractOpera
     }
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, V> removeAllIndexes(final int... indices) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.RemoveAllIndexes<V>(indices)));
+    public Level2MapOfArrayEntriesValueOperator<K, V> removeAllIndexes(final int... indexes) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.RemoveAllIndexes<V>(indexes)));
     }
 
 
@@ -146,8 +146,8 @@ public class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends AbstractOpera
     }
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, V> removeAllIndexesNot(final int... indices) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.RemoveAllIndexesNot<V>(indices)));
+    public Level2MapOfArrayEntriesValueOperator<K, V> removeAllIndexesNot(final int... indexes) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ArrayFuncs.RemoveAllIndexesNot<V>(indexes)));
     }
 
 
@@ -229,13 +229,13 @@ public class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends AbstractOpera
     }
 
 
-    public Level2MapOfArrayEntriesValueSelectedOperator<K, V> ifIndex(final int... indices) {
-        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
+    public Level2MapOfArrayEntriesValueSelectedOperator<K, V> ifIndex(final int... indexes) {
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level2MapOfArrayEntriesValueSelectedOperator<K, V> ifIndexNot(final int... indices) {
-        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
+    public Level2MapOfArrayEntriesValueSelectedOperator<K, V> ifIndexNot(final int... indexes) {
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indexes));
     }
 
 

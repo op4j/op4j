@@ -37,13 +37,13 @@ public interface ModifiableShrinkableOperator<T> {
     /**
      * <p>
      * Removes all the elements in the operator which position (index) in it
-     * matches one the specified indices.
+     * matches one the specified indexes.
      * </p>
      * 
-     * @param indices the positions of the elements to be removed
+     * @param indexes the positions of the elements to be removed
      * @return an operator holding the new target objects
      */
-    public ModifiableGrowableOperator<T> removeAllIndexes(final int... indices);
+    public ModifiableGrowableOperator<T> removeAllIndexes(final int... indexes);
     
     
     /**
@@ -132,13 +132,13 @@ public interface ModifiableShrinkableOperator<T> {
     /**
      * <p>
      * Removes all the elements in the operator except those which position (index) in it
-     * matches one of the specified indices.
+     * matches one of the specified indexes.
      * </p>
      * 
-     * @param indices the positions of the elements to be kept
+     * @param indexes the positions of the elements to be kept
      * @return an operator holding the new target objects
      */
-    public ModifiableGrowableOperator<T> removeAllIndexesNot(final int... indices);
+    public ModifiableGrowableOperator<T> removeAllIndexesNot(final int... indexes);
     
     
     /**

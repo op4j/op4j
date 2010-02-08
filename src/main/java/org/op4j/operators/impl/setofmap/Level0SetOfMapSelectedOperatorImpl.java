@@ -37,8 +37,8 @@ public class Level0SetOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
-    public Level0SetOfMapSelectedOperator<K,V> removeAllIndexes(final int... indices) {
-        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllIndexes<Map<K,V>>(indices)));
+    public Level0SetOfMapSelectedOperator<K,V> removeAllIndexes(final int... indexes) {
+        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllIndexes<Map<K,V>>(indexes)));
     }
 
 
@@ -77,8 +77,8 @@ public class Level0SetOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
-    public Level0SetOfMapSelectedOperator<K,V> removeAllIndexesNot(final int... indices) {
-        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<Map<K,V>>(indices)));
+    public Level0SetOfMapSelectedOperator<K,V> removeAllIndexesNot(final int... indexes) {
+        return new Level0SetOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<Map<K,V>>(indexes)));
     }
 
 

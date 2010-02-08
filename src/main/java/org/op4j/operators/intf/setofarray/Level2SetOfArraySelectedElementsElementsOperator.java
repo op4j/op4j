@@ -50,14 +50,14 @@ public interface Level2SetOfArraySelectedElementsElementsOperator<T>
     public Level1SetOfArraySelectedElementsOperator<T> endFor();
 
 
-    public Level2SetOfArraySelectedElementsElementsSelectedOperator<T> ifIndex(final int... indices);
+    public Level2SetOfArraySelectedElementsElementsSelectedOperator<T> ifIndex(final int... indexes);
     public Level2SetOfArraySelectedElementsElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
     public Level2SetOfArraySelectedElementsElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
     public Level2SetOfArraySelectedElementsElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
     public Level2SetOfArraySelectedElementsElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
     public Level2SetOfArraySelectedElementsElementsSelectedOperator<T> ifNull();
     public Level2SetOfArraySelectedElementsElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level2SetOfArraySelectedElementsElementsSelectedOperator<T> ifIndexNot(final int... indices);
+    public Level2SetOfArraySelectedElementsElementsSelectedOperator<T> ifIndexNot(final int... indexes);
     public Level2SetOfArraySelectedElementsElementsSelectedOperator<T> ifNotNull();
     public Level2SetOfArraySelectedElementsElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
 

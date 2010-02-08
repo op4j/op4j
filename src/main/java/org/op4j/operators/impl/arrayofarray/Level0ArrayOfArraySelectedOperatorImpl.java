@@ -41,8 +41,8 @@ public class Level0ArrayOfArraySelectedOperatorImpl<T> extends AbstractOperatorI
     }
 
 
-    public Level0ArrayOfArraySelectedOperator<T> removeAllIndexes(final int... indices) {
-        return new Level0ArrayOfArraySelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllIndexes<T[]>(indices)));
+    public Level0ArrayOfArraySelectedOperator<T> removeAllIndexes(final int... indexes) {
+        return new Level0ArrayOfArraySelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllIndexes<T[]>(indexes)));
     }
 
 
@@ -81,8 +81,8 @@ public class Level0ArrayOfArraySelectedOperatorImpl<T> extends AbstractOperatorI
     }
 
 
-    public Level0ArrayOfArraySelectedOperator<T> removeAllIndexesNot(final int... indices) {
-        return new Level0ArrayOfArraySelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllIndexesNot<T[]>(indices)));
+    public Level0ArrayOfArraySelectedOperator<T> removeAllIndexesNot(final int... indexes) {
+        return new Level0ArrayOfArraySelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllIndexesNot<T[]>(indexes)));
     }
 
 

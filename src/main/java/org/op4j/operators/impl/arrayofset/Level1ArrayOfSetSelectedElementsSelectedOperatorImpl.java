@@ -35,8 +35,8 @@ public class Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T> extends Abs
     }
 
 
-    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> removeAllIndexes(final int... indices) {
-        return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexes<T>(indices)));
+    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> removeAllIndexes(final int... indexes) {
+        return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexes<T>(indexes)));
     }
 
 
@@ -75,8 +75,8 @@ public class Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T> extends Abs
     }
 
 
-    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> removeAllIndexesNot(final int... indices) {
-        return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<T>(indices)));
+    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> removeAllIndexesNot(final int... indexes) {
+        return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<T>(indexes)));
     }
 
 

@@ -48,10 +48,10 @@ public interface Level3MapOfMapEntriesValueSelectedEntriesOperator<K1,K2,V>
 		        NavigatingMapOperator<K2,V> {
 
 
-    public Level3MapOfMapEntriesValueSelectedEntriesSelectedOperator<K1,K2,V> ifIndex(final int... indices);
+    public Level3MapOfMapEntriesValueSelectedEntriesSelectedOperator<K1,K2,V> ifIndex(final int... indexes);
     public Level3MapOfMapEntriesValueSelectedEntriesSelectedOperator<K1,K2,V> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K2, V>> eval);
     public Level3MapOfMapEntriesValueSelectedEntriesSelectedOperator<K1,K2,V> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K2, V>> eval);
-    public Level3MapOfMapEntriesValueSelectedEntriesSelectedOperator<K1,K2,V> ifIndexNot(final int... indices);
+    public Level3MapOfMapEntriesValueSelectedEntriesSelectedOperator<K1,K2,V> ifIndexNot(final int... indexes);
     public Level3MapOfMapEntriesValueSelectedEntriesSelectedOperator<K1,K2,V> ifKeyEquals(final K2... keys);
     public Level3MapOfMapEntriesValueSelectedEntriesSelectedOperator<K1,K2,V> ifKeyNotEquals(final K2... keys);
     

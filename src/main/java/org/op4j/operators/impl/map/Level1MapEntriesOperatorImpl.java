@@ -76,13 +76,13 @@ public class Level1MapEntriesOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     
-    public Level1MapEntriesSelectedOperator<K, V> ifIndex(final int... indices) {
-        return new Level1MapEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
+    public Level1MapEntriesSelectedOperator<K, V> ifIndex(final int... indexes) {
+        return new Level1MapEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level1MapEntriesSelectedOperator<K, V> ifIndexNot(final int... indices) {
-        return new Level1MapEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
+    public Level1MapEntriesSelectedOperator<K, V> ifIndexNot(final int... indexes) {
+        return new Level1MapEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indexes));
     }
 
 

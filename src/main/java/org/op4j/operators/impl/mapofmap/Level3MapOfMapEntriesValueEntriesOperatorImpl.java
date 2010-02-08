@@ -76,13 +76,13 @@ public class Level3MapOfMapEntriesValueEntriesOperatorImpl<K1,K2,V> extends Abst
     
     
     
-    public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1, K2, V> ifIndex(final int... indices) {
-        return new Level3MapOfMapEntriesValueEntriesSelectedOperatorImpl<K1, K2, V>(getTarget().selectIndex(indices));
+    public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1, K2, V> ifIndex(final int... indexes) {
+        return new Level3MapOfMapEntriesValueEntriesSelectedOperatorImpl<K1, K2, V>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1, K2, V> ifIndexNot(final int... indices) {
-        return new Level3MapOfMapEntriesValueEntriesSelectedOperatorImpl<K1, K2, V>(getTarget().selectIndexNot(indices));
+    public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1, K2, V> ifIndexNot(final int... indexes) {
+        return new Level3MapOfMapEntriesValueEntriesSelectedOperatorImpl<K1, K2, V>(getTarget().selectIndexNot(indexes));
     }
 
 

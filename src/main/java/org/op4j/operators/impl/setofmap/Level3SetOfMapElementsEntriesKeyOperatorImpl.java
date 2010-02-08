@@ -74,13 +74,13 @@ public class Level3SetOfMapElementsEntriesKeyOperatorImpl<K,V> extends AbstractO
     }
 
 
-    public Level3SetOfMapElementsEntriesKeySelectedOperator<K, V> ifIndex(final int... indices) {
-        return new Level3SetOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
+    public Level3SetOfMapElementsEntriesKeySelectedOperator<K, V> ifIndex(final int... indexes) {
+        return new Level3SetOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level3SetOfMapElementsEntriesKeySelectedOperator<K, V> ifIndexNot(final int... indices) {
-        return new Level3SetOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
+    public Level3SetOfMapElementsEntriesKeySelectedOperator<K, V> ifIndexNot(final int... indexes) {
+        return new Level3SetOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indexes));
     }
 
 

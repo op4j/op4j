@@ -52,14 +52,14 @@ public interface Level2ListOfListElementsElementsOperator<T>
 
 
 
-    public Level2ListOfListElementsElementsSelectedOperator<T> ifIndex(final int... indices);
+    public Level2ListOfListElementsElementsSelectedOperator<T> ifIndex(final int... indexes);
     public Level2ListOfListElementsElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
     public Level2ListOfListElementsElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
     public Level2ListOfListElementsElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
     public Level2ListOfListElementsElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
     public Level2ListOfListElementsElementsSelectedOperator<T> ifNull();
     public Level2ListOfListElementsElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level2ListOfListElementsElementsSelectedOperator<T> ifIndexNot(final int... indices);
+    public Level2ListOfListElementsElementsSelectedOperator<T> ifIndexNot(final int... indexes);
     public Level2ListOfListElementsElementsSelectedOperator<T> ifNotNull();
     public Level2ListOfListElementsElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
 

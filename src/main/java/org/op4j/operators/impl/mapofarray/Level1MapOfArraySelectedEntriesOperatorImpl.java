@@ -24,8 +24,8 @@ public class Level1MapOfArraySelectedEntriesOperatorImpl<K,V> extends AbstractOp
     }
 
 
-    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> ifIndex(final int... indices) {
-        return new Level1MapOfArraySelectedEntriesSelectedOperatorImpl<K,V>(getTarget().selectIndex(indices));
+    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> ifIndex(final int... indexes) {
+        return new Level1MapOfArraySelectedEntriesSelectedOperatorImpl<K,V>(getTarget().selectIndex(indexes));
     }
 
 
@@ -39,8 +39,8 @@ public class Level1MapOfArraySelectedEntriesOperatorImpl<K,V> extends AbstractOp
     }
 
 
-    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> ifIndexNot(final int... indices) {
-        return new Level1MapOfArraySelectedEntriesSelectedOperatorImpl<K,V>(getTarget().selectIndexNot(indices));
+    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> ifIndexNot(final int... indexes) {
+        return new Level1MapOfArraySelectedEntriesSelectedOperatorImpl<K,V>(getTarget().selectIndexNot(indexes));
     }
 
 

@@ -70,7 +70,7 @@ public interface Level1SetOfListSelectedElementsSelectedOperator<T>
     public Level1SetOfListSelectedElementsSelectedOperator<T> insert(final int position, final T newElement);
     public Level1SetOfListSelectedElementsSelectedOperator<T> insertAll(final int position, final T... newElements);
     public Level1SetOfListSelectedElementsSelectedOperator<T> addAll(final Collection<T> collection);
-    public Level1SetOfListSelectedElementsSelectedOperator<T> removeAllIndexes(final int... indices);
+    public Level1SetOfListSelectedElementsSelectedOperator<T> removeAllIndexes(final int... indexes);
     public Level1SetOfListSelectedElementsSelectedOperator<T> removeAllEqual(final T... values);
     public Level1SetOfListSelectedElementsSelectedOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
     public Level1SetOfListSelectedElementsSelectedOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
@@ -78,7 +78,7 @@ public interface Level1SetOfListSelectedElementsSelectedOperator<T>
     public Level1SetOfListSelectedElementsSelectedOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
     public Level1SetOfListSelectedElementsSelectedOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
     public Level1SetOfListSelectedElementsSelectedOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetOfListSelectedElementsSelectedOperator<T> removeAllIndexesNot(final int... indices);
+    public Level1SetOfListSelectedElementsSelectedOperator<T> removeAllIndexesNot(final int... indexes);
     public Level1SetOfListSelectedElementsSelectedOperator<T> removeAllNull();
     
     

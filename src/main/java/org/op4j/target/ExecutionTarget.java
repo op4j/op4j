@@ -465,9 +465,9 @@ public final class ExecutionTarget extends Target {
     public Object get() {
         
         Object result = this.target;
-        final int[] indices = new int[] { 0 };
+        final int[] indexes = new int[] { 0 };
         for (int i = 0, z = this.operations[0].length; i < z; i++) {
-            result = this.operations[0][i].execute(result, this.operations, indices);
+            result = this.operations[0][i].execute(result, this.operations, indexes);
         }
         return result;
             

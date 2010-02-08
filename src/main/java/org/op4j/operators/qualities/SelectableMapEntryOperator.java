@@ -39,14 +39,14 @@ public interface SelectableMapEntryOperator<K,V>  {
     /**
      * <p>
      * Selects only those targets which index in the current level of iteration matches any of
-     * the specified indices. After this method, all the subsequently executed operations will only be executed
+     * the specified indexes. After this method, all the subsequently executed operations will only be executed
      * on the target objects selected here, until an "endIf()" method is called. 
      * </p>
      * 
-     * @param indices the indices of the target objects which will be selected.
+     * @param indexes the indexes of the target objects which will be selected.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedMapEntryOperator<K,V> ifIndex(final int... indices);
+    public SelectedMapEntryOperator<K,V> ifIndex(final int... indexes);
     
     
     /**
@@ -78,14 +78,14 @@ public interface SelectableMapEntryOperator<K,V>  {
     /**
      * <p>
      * Selects only those targets which index in the current level of iteration does not match any of
-     * the specified indices. After this method, all the subsequently executed operations will only be executed
+     * the specified indexes. After this method, all the subsequently executed operations will only be executed
      * on the target objects selected here, until an "endIf()" method is called. 
      * </p>
      * 
-     * @param indices the indices of the target objects which will be selected.
+     * @param indexes the indexes of the target objects which will be selected.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedMapEntryOperator<K,V> ifIndexNot(final int... indices);
+    public SelectedMapEntryOperator<K,V> ifIndexNot(final int... indexes);
     
     
     /**

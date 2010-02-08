@@ -35,8 +35,8 @@ public class Level1SetOfSetElementsSelectedOperatorImpl<T> extends AbstractOpera
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> removeAllIndexes(final int... indices) {
-        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexes<T>(indices)));
+    public Level1SetOfSetElementsSelectedOperator<T> removeAllIndexes(final int... indexes) {
+        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexes<T>(indexes)));
     }
 
 
@@ -75,8 +75,8 @@ public class Level1SetOfSetElementsSelectedOperatorImpl<T> extends AbstractOpera
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> removeAllIndexesNot(final int... indices) {
-        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<T>(indices)));
+    public Level1SetOfSetElementsSelectedOperator<T> removeAllIndexesNot(final int... indexes) {
+        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<T>(indexes)));
     }
 
 

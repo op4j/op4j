@@ -109,8 +109,8 @@ public class Level2MapOfListEntriesValueOperatorImpl<K,V> extends AbstractOperat
     }
 
 
-    public Level2MapOfListEntriesValueOperator<K, V> removeAllIndexes(final int... indices) {
-        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveAllIndexes<V>(indices)));
+    public Level2MapOfListEntriesValueOperator<K, V> removeAllIndexes(final int... indexes) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveAllIndexes<V>(indexes)));
     }
 
 
@@ -146,8 +146,8 @@ public class Level2MapOfListEntriesValueOperatorImpl<K,V> extends AbstractOperat
     }
 
 
-    public Level2MapOfListEntriesValueOperator<K, V> removeAllIndexesNot(final int... indices) {
-        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveAllIndexesNot<V>(indices)));
+    public Level2MapOfListEntriesValueOperator<K, V> removeAllIndexesNot(final int... indexes) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ListFuncs.RemoveAllIndexesNot<V>(indexes)));
     }
 
 
@@ -220,13 +220,13 @@ public class Level2MapOfListEntriesValueOperatorImpl<K,V> extends AbstractOperat
     }
 
 
-    public Level2MapOfListEntriesValueSelectedOperator<K, V> ifIndex(final int... indices) {
-        return new Level2MapOfListEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
+    public Level2MapOfListEntriesValueSelectedOperator<K, V> ifIndex(final int... indexes) {
+        return new Level2MapOfListEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level2MapOfListEntriesValueSelectedOperator<K, V> ifIndexNot(final int... indices) {
-        return new Level2MapOfListEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
+    public Level2MapOfListEntriesValueSelectedOperator<K, V> ifIndexNot(final int... indexes) {
+        return new Level2MapOfListEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indexes));
     }
 
 

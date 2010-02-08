@@ -27,8 +27,8 @@ public class Level1ListOfSetSelectedElementsOperatorImpl<T> extends AbstractOper
     }
 
 
-    public Level1ListOfSetSelectedElementsSelectedOperator<T> ifIndex(final int... indices) {
-        return new Level1ListOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().selectIndex(indices));
+    public Level1ListOfSetSelectedElementsSelectedOperator<T> ifIndex(final int... indexes) {
+        return new Level1ListOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().selectIndex(indexes));
     }
 
 
@@ -62,8 +62,8 @@ public class Level1ListOfSetSelectedElementsOperatorImpl<T> extends AbstractOper
     }
 
 
-    public Level1ListOfSetSelectedElementsSelectedOperator<T> ifIndexNot(final int... indices) {
-        return new Level1ListOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().selectIndexNot(indices));
+    public Level1ListOfSetSelectedElementsSelectedOperator<T> ifIndexNot(final int... indexes) {
+        return new Level1ListOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().selectIndexNot(indexes));
     }
 
 
@@ -87,8 +87,8 @@ public class Level1ListOfSetSelectedElementsOperatorImpl<T> extends AbstractOper
     }
 
 
-    public Level1ListOfSetSelectedElementsOperator<T> removeAllIndexes(final int... indices) {
-        return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexes<T>(indices)));
+    public Level1ListOfSetSelectedElementsOperator<T> removeAllIndexes(final int... indexes) {
+        return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexes<T>(indexes)));
     }
 
 
@@ -127,8 +127,8 @@ public class Level1ListOfSetSelectedElementsOperatorImpl<T> extends AbstractOper
     }
 
 
-    public Level1ListOfSetSelectedElementsOperator<T> removeAllIndexesNot(final int... indices) {
-        return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<T>(indices)));
+    public Level1ListOfSetSelectedElementsOperator<T> removeAllIndexesNot(final int... indexes) {
+        return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<T>(indexes)));
     }
 
 

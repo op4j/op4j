@@ -49,10 +49,10 @@ public interface Level2ListOfMapElementsSelectedEntriesOperator<K,V>
                 NavigatingMapOperator<K,V> {
 
 
-    public Level2ListOfMapElementsSelectedEntriesSelectedOperator<K,V> ifIndex(final int... indices);
+    public Level2ListOfMapElementsSelectedEntriesSelectedOperator<K,V> ifIndex(final int... indexes);
     public Level2ListOfMapElementsSelectedEntriesSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K, V>> eval);
     public Level2ListOfMapElementsSelectedEntriesSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K, V>> eval);
-    public Level2ListOfMapElementsSelectedEntriesSelectedOperator<K,V> ifIndexNot(final int... indices);
+    public Level2ListOfMapElementsSelectedEntriesSelectedOperator<K,V> ifIndexNot(final int... indexes);
     public Level2ListOfMapElementsSelectedEntriesSelectedOperator<K,V> ifKeyEquals(final K... keys);
     public Level2ListOfMapElementsSelectedEntriesSelectedOperator<K,V> ifKeyNotEquals(final K... keys);
 		    

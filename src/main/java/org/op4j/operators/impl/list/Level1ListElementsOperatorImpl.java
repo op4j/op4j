@@ -120,13 +120,13 @@ public class Level1ListElementsOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level1ListElementsSelectedOperator<T> ifIndex(final int... indices) {
-        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().selectIndex(indices));
+    public Level1ListElementsSelectedOperator<T> ifIndex(final int... indexes) {
+        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level1ListElementsSelectedOperator<T> ifIndexNot(final int... indices) {
-        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().selectIndexNot(indices));
+    public Level1ListElementsSelectedOperator<T> ifIndexNot(final int... indexes) {
+        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().selectIndexNot(indexes));
     }
 
 

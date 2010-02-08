@@ -31,6 +31,6 @@ package org.op4j.target;
 interface ExecutionTargetOperation {
 
     
-    Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indices);
+    Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indexes);
 
 }

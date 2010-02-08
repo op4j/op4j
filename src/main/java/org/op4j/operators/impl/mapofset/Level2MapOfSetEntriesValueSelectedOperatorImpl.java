@@ -36,8 +36,8 @@ public class Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public Level2MapOfSetEntriesValueSelectedOperator<K,V> removeAllIndexes(final int... indices) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllIndexes<V>(indices)));
+    public Level2MapOfSetEntriesValueSelectedOperator<K,V> removeAllIndexes(final int... indexes) {
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllIndexes<V>(indexes)));
     }
 
 
@@ -76,8 +76,8 @@ public class Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public Level2MapOfSetEntriesValueSelectedOperator<K,V> removeAllIndexesNot(final int... indices) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<V>(indices)));
+    public Level2MapOfSetEntriesValueSelectedOperator<K,V> removeAllIndexesNot(final int... indexes) {
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<V>(indexes)));
     }
 
 

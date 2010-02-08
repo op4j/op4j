@@ -111,16 +111,16 @@ public interface ModifiableCollectionOperator<T> {
     /**
      * <p>
      * Removes all the elements in the target structure object which position (index) in it
-     * matches one the specified indices.
+     * matches one the specified indexes.
      * </p>
      * <p>
      * The original target object is not modified, but copied instead.
      * </p>
      * 
-     * @param indices the positions of the elements to be removed
+     * @param indexes the positions of the elements to be removed
      * @return an operator holding the modified target object
      */
-    public ModifiableCollectionOperator<T> removeAllIndexes(final int... indices);
+    public ModifiableCollectionOperator<T> removeAllIndexes(final int... indexes);
     
     
     /**
@@ -230,16 +230,16 @@ public interface ModifiableCollectionOperator<T> {
     /**
      * <p>
      * Removes all the elements in the target structure object except those which position (index) in it
-     * matches one of the specified indices.
+     * matches one of the specified indexes.
      * </p>
      * <p>
      * The original target object is not modified, but copied instead.
      * </p>
      * 
-     * @param indices the positions of the elements to be kept
+     * @param indexes the positions of the elements to be kept
      * @return an operator holding the modified target object
      */
-    public ModifiableCollectionOperator<T> removeAllIndexesNot(final int... indices);
+    public ModifiableCollectionOperator<T> removeAllIndexesNot(final int... indexes);
     
     
     /**

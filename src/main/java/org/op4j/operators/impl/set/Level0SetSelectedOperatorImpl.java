@@ -35,8 +35,8 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
     }
 
 
-    public Level0SetSelectedOperator<T> removeAllIndexes(final int... indices) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexes<T>(indices)));
+    public Level0SetSelectedOperator<T> removeAllIndexes(final int... indexes) {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexes<T>(indexes)));
     }
 
 
@@ -75,8 +75,8 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
     }
 
 
-    public Level0SetSelectedOperator<T> removeAllIndexesNot(final int... indices) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<T>(indices)));
+    public Level0SetSelectedOperator<T> removeAllIndexesNot(final int... indexes) {
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<T>(indexes)));
     }
 
 

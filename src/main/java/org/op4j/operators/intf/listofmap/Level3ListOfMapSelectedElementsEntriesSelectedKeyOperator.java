@@ -48,14 +48,14 @@ public interface Level3ListOfMapSelectedElementsEntriesSelectedKeyOperator<K,V>
 
 
 
-    public Level3ListOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V> ifIndex(final int... indices);
+    public Level3ListOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V> ifIndex(final int... indexes);
     public Level3ListOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super K> eval);
     public Level3ListOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super K> eval);
     public Level3ListOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval);
     public Level3ListOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval);
     public Level3ListOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V> ifNull();
     public Level3ListOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval);
-    public Level3ListOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V> ifIndexNot(final int... indices);
+    public Level3ListOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V> ifIndexNot(final int... indexes);
     public Level3ListOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V> ifNotNull();
     public Level3ListOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval);
 

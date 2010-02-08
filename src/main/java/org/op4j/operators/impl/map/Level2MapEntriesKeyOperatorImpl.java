@@ -73,13 +73,13 @@ public class Level2MapEntriesKeyOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level2MapEntriesKeySelectedOperator<K, V> ifIndex(final int... indices) {
-        return new Level2MapEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
+    public Level2MapEntriesKeySelectedOperator<K, V> ifIndex(final int... indexes) {
+        return new Level2MapEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level2MapEntriesKeySelectedOperator<K, V> ifIndexNot(final int... indices) {
-        return new Level2MapEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
+    public Level2MapEntriesKeySelectedOperator<K, V> ifIndexNot(final int... indexes) {
+        return new Level2MapEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indexes));
     }
 
 

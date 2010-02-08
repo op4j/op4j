@@ -134,8 +134,8 @@ public class SetFuncs {
     public static final class RemoveAllIndexes<T> extends CollectionFuncs.RemoveAllIndexes<T, Set<T>> {
 
         
-        public RemoveAllIndexes(final int... indices) {
-            super(indices);
+        public RemoveAllIndexes(final int... indexes) {
+            super(indexes);
         }
 
         @Override
@@ -198,8 +198,8 @@ public class SetFuncs {
     
     public static final class RemoveAllIndexesNot<T> extends CollectionFuncs.RemoveAllIndexesNot<T, Set<T>> {
 
-        public RemoveAllIndexesNot(final int... indices) {
-            super(indices);
+        public RemoveAllIndexesNot(final int... indexes) {
+            super(indexes);
         }
 
         @Override

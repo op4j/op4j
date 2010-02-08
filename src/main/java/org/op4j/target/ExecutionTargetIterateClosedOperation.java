@@ -56,17 +56,17 @@ final class ExecutionTargetIterateClosedOperation implements ExecutionTargetOper
     
 
     
-    private static int[] addIndex(final int[] indices, final int newIndex, final boolean excludeFirstIndex) {
+    private static int[] addIndex(final int[] indexes, final int newIndex, final boolean excludeFirstIndex) {
         int[] newIndices = null;
         if (excludeFirstIndex) {
-            newIndices = new int[indices.length];
-            for (int i = 0, z = indices.length - 1; i < z; i++) {
-                newIndices[i] = indices[i + 1];
+            newIndices = new int[indexes.length];
+            for (int i = 0, z = indexes.length - 1; i < z; i++) {
+                newIndices[i] = indexes[i + 1];
             }
         } else {
-            newIndices = new int[indices.length + 1];
-            for (int i = 0, z = indices.length; i < z; i++) {
-                newIndices[i] = indices[i];
+            newIndices = new int[indexes.length + 1];
+            for (int i = 0, z = indexes.length; i < z; i++) {
+                newIndices[i] = indexes[i];
             }
         }
         newIndices[newIndices.length - 1] = newIndex;
@@ -75,7 +75,7 @@ final class ExecutionTargetIterateClosedOperation implements ExecutionTargetOper
     
     
     
-    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indices) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indexes) {
         
         if (target == null) {
             
@@ -93,7 +93,7 @@ final class ExecutionTargetIterateClosedOperation implements ExecutionTargetOper
                 for (int i = 0, z = arrayTarget.length; i < z; i++) {
                     Object result = arrayTarget[i];
                     for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
-                        result = operations[this.internalBlock][j].execute(result, operations, addIndex(indices, i, this.excludeFirstIndex));
+                        result = operations[this.internalBlock][j].execute(result, operations, addIndex(indexes, i, this.excludeFirstIndex));
                     }
                     arrayResult[i] = result;
                 }
@@ -107,7 +107,7 @@ final class ExecutionTargetIterateClosedOperation implements ExecutionTargetOper
                 for (final Object element : listTarget) {
                     Object result = element;
                     for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
-                        result = operations[this.internalBlock][j].execute(result, operations, addIndex(indices, iList, this.excludeFirstIndex));
+                        result = operations[this.internalBlock][j].execute(result, operations, addIndex(indexes, iList, this.excludeFirstIndex));
                     }
                     listResult.add(result);
                     iList++;
@@ -123,7 +123,7 @@ final class ExecutionTargetIterateClosedOperation implements ExecutionTargetOper
                 for (final Map.Entry<?,?> element : mapTarget.entrySet()) {
                     Object result = element;
                     for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
-                        result = operations[this.internalBlock][j].execute(result, operations, addIndex(indices, iMap, this.excludeFirstIndex));
+                        result = operations[this.internalBlock][j].execute(result, operations, addIndex(indexes, iMap, this.excludeFirstIndex));
                     }
                     if (!(result instanceof Map.Entry<?,?>)) {
                         allMapEntries = false; 
@@ -151,7 +151,7 @@ final class ExecutionTargetIterateClosedOperation implements ExecutionTargetOper
                 for (final Object element : setTarget) {
                     Object result = element;
                     for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
-                        result = operations[this.internalBlock][j].execute(result, operations, addIndex(indices, iSet, this.excludeFirstIndex));
+                        result = operations[this.internalBlock][j].execute(result, operations, addIndex(indexes, iSet, this.excludeFirstIndex));
                     }
                     setResult.add(result);
                     iSet++;

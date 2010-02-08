@@ -175,13 +175,13 @@ public class Level1ArrayOfMapElementsOperatorImpl<K,V> extends AbstractOperatorI
     }
 
 
-    public Level1ArrayOfMapElementsSelectedOperator<K, V> ifIndex(final int... indices) {
-        return new Level1ArrayOfMapElementsSelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
+    public Level1ArrayOfMapElementsSelectedOperator<K, V> ifIndex(final int... indexes) {
+        return new Level1ArrayOfMapElementsSelectedOperatorImpl<K, V>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level1ArrayOfMapElementsSelectedOperator<K, V> ifIndexNot(final int... indices) {
-        return new Level1ArrayOfMapElementsSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
+    public Level1ArrayOfMapElementsSelectedOperator<K, V> ifIndexNot(final int... indexes) {
+        return new Level1ArrayOfMapElementsSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indexes));
     }
 
 

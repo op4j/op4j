@@ -105,8 +105,8 @@ public class Level2MapOfSetEntriesValueOperatorImpl<K,V> extends AbstractOperato
     }
 
 
-    public Level2MapOfSetEntriesValueOperator<K, V> removeAllIndexes(final int... indices) {
-        return new Level2MapOfSetEntriesValueOperatorImpl<K, V>(getTarget().execute(new SetFuncs.RemoveAllIndexes<V>(indices)));
+    public Level2MapOfSetEntriesValueOperator<K, V> removeAllIndexes(final int... indexes) {
+        return new Level2MapOfSetEntriesValueOperatorImpl<K, V>(getTarget().execute(new SetFuncs.RemoveAllIndexes<V>(indexes)));
     }
 
 
@@ -142,8 +142,8 @@ public class Level2MapOfSetEntriesValueOperatorImpl<K,V> extends AbstractOperato
     }
 
 
-    public Level2MapOfSetEntriesValueOperator<K, V> removeAllIndexesNot(final int... indices) {
-        return new Level2MapOfSetEntriesValueOperatorImpl<K, V>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<V>(indices)));
+    public Level2MapOfSetEntriesValueOperator<K, V> removeAllIndexesNot(final int... indexes) {
+        return new Level2MapOfSetEntriesValueOperatorImpl<K, V>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<V>(indexes)));
     }
 
 
@@ -213,13 +213,13 @@ public class Level2MapOfSetEntriesValueOperatorImpl<K,V> extends AbstractOperato
     }
 
 
-    public Level2MapOfSetEntriesValueSelectedOperator<K, V> ifIndex(final int... indices) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
+    public Level2MapOfSetEntriesValueSelectedOperator<K, V> ifIndex(final int... indexes) {
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level2MapOfSetEntriesValueSelectedOperator<K, V> ifIndexNot(final int... indices) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
+    public Level2MapOfSetEntriesValueSelectedOperator<K, V> ifIndexNot(final int... indexes) {
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indexes));
     }
 
 

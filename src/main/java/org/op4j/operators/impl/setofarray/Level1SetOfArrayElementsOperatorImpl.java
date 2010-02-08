@@ -107,8 +107,8 @@ public class Level1SetOfArrayElementsOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public Level1SetOfArrayElementsOperator<T> removeAllIndexes(final int... indices) {
-        return new Level1SetOfArrayElementsOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllIndexes<T>(indices)));
+    public Level1SetOfArrayElementsOperator<T> removeAllIndexes(final int... indexes) {
+        return new Level1SetOfArrayElementsOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllIndexes<T>(indexes)));
     }
 
 
@@ -144,8 +144,8 @@ public class Level1SetOfArrayElementsOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public Level1SetOfArrayElementsOperator<T> removeAllIndexesNot(final int... indices) {
-        return new Level1SetOfArrayElementsOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllIndexesNot<T>(indices)));
+    public Level1SetOfArrayElementsOperator<T> removeAllIndexesNot(final int... indexes) {
+        return new Level1SetOfArrayElementsOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllIndexesNot<T>(indexes)));
     }
 
 
@@ -210,13 +210,13 @@ public class Level1SetOfArrayElementsOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
-    public Level1SetOfArrayElementsSelectedOperator<T> ifIndex(final int... indices) {
-        return new Level1SetOfArrayElementsSelectedOperatorImpl<T>(getTarget().selectIndex(indices));
+    public Level1SetOfArrayElementsSelectedOperator<T> ifIndex(final int... indexes) {
+        return new Level1SetOfArrayElementsSelectedOperatorImpl<T>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level1SetOfArrayElementsSelectedOperator<T> ifIndexNot(final int... indices) {
-        return new Level1SetOfArrayElementsSelectedOperatorImpl<T>(getTarget().selectIndexNot(indices));
+    public Level1SetOfArrayElementsSelectedOperator<T> ifIndexNot(final int... indexes) {
+        return new Level1SetOfArrayElementsSelectedOperatorImpl<T>(getTarget().selectIndexNot(indexes));
     }
 
 

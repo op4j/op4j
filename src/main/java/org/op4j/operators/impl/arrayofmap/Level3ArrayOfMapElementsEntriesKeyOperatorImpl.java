@@ -73,13 +73,13 @@ public class Level3ArrayOfMapElementsEntriesKeyOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V> ifIndex(final int... indices) {
-        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V> ifIndex(final int... indexes) {
+        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V> ifIndexNot(final int... indices) {
-        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
+    public Level3ArrayOfMapElementsEntriesKeySelectedOperator<K, V> ifIndexNot(final int... indexes) {
+        return new Level3ArrayOfMapElementsEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indexes));
     }
 
 

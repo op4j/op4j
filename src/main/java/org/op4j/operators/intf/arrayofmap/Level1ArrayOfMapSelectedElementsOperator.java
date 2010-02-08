@@ -52,14 +52,14 @@ public interface Level1ArrayOfMapSelectedElementsOperator<K,V>
 
 
 
-    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifIndex(final int... indices);
+    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifIndex(final int... indexes);
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNull();
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifIndexNot(final int... indices);
+    public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifIndexNot(final int... indexes);
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNotNull();
     public Level1ArrayOfMapSelectedElementsSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
 

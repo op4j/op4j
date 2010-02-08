@@ -197,13 +197,13 @@ public class Level0MapOfListOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapOfListSelectedOperator<K, V> ifIndex(final int... indices) {
-        return new Level0MapOfListSelectedOperatorImpl<K, V>(getTarget().selectIndex(indices));
+    public Level0MapOfListSelectedOperator<K, V> ifIndex(final int... indexes) {
+        return new Level0MapOfListSelectedOperatorImpl<K, V>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level0MapOfListSelectedOperator<K, V> ifIndexNot(final int... indices) {
-        return new Level0MapOfListSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indices));
+    public Level0MapOfListSelectedOperator<K, V> ifIndexNot(final int... indexes) {
+        return new Level0MapOfListSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indexes));
     }
 
 
