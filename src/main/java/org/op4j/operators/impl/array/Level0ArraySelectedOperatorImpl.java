@@ -95,17 +95,17 @@ public class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorImpl imp
 
 
     public Level0ArraySelectedOperator<T> convertAsArray(final IConverter<? extends T[],? super T[]> converter) {
-        return new Level0ArraySelectedOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.ARRAY));
+        return new Level0ArraySelectedOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 
     public Level0ArraySelectedOperator<T> evalAsArray(final IEvaluator<? extends T[],? super T[]> eval) {
-        return new Level0ArraySelectedOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.ARRAY));
+        return new Level0ArraySelectedOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 
     public Level0ArraySelectedOperator<T> execAsArray(final IFunction<? extends T[],? super T[]> function) {
-        return new Level0ArraySelectedOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.ARRAY));
+        return new Level0ArraySelectedOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 

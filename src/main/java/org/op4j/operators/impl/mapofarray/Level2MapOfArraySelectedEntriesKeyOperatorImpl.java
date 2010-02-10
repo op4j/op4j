@@ -86,13 +86,13 @@ public class Level2MapOfArraySelectedEntriesKeyOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public Level2MapOfArraySelectedEntriesKeyOperator<K,V> replaceWith(final K replacement) {
-        return new Level2MapOfArraySelectedEntriesKeyOperatorImpl<K,V>(this.type, getTarget().replaceWith(replacement));
+    public Level2MapOfArraySelectedEntriesKeyOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
+        return new Level2MapOfArraySelectedEntriesKeyOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Level2MapOfArraySelectedEntriesKeyOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
-        return new Level2MapOfArraySelectedEntriesKeyOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalisation.NONE));
+    public Level2MapOfArraySelectedEntriesKeyOperator<K,V> replaceWith(final K replacement) {
+        return new Level2MapOfArraySelectedEntriesKeyOperatorImpl<K,V>(this.type, getTarget().replaceWith(replacement));
     }
 
 

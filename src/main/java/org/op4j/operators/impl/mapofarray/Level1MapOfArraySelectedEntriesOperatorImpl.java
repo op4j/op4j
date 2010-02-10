@@ -75,17 +75,17 @@ public class Level1MapOfArraySelectedEntriesOperatorImpl<K,V> extends AbstractOp
 
 
     public Level1MapOfArraySelectedEntriesOperator<K,V> execAsMapOfArrayEntry(final IFunction<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> function) {
-        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalisation.MAPENTRY_OF_ARRAY));
+        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalisation.MAP_OF_ARRAY_ENTRY(this.type.getRawClass())));
     }
 
 
     public Level1MapOfArraySelectedEntriesOperator<K,V> evalAsMapOfArrayEntry(final IEvaluator<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> eval) {
-        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(this.type, getTarget().execute(eval, Normalisation.MAPENTRY_OF_ARRAY));
+        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(this.type, getTarget().execute(eval, Normalisation.MAP_OF_ARRAY_ENTRY(this.type.getRawClass())));
     }
 
 
     public Level1MapOfArraySelectedEntriesOperator<K,V> convertAsMapOfArrayEntry(final IConverter<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> converter) {
-        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(this.type, getTarget().execute(converter, Normalisation.MAPENTRY_OF_ARRAY));
+        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(this.type, getTarget().execute(converter, Normalisation.MAP_OF_ARRAY_ENTRY(this.type.getRawClass())));
     }
 
 

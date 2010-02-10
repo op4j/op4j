@@ -108,17 +108,17 @@ public class Level2ListOfMapElementsEntriesOperatorImpl<K,V> extends AbstractOpe
 
 
     public <X, Y> Level2ListOfMapElementsEntriesOperator<X, Y> convertAsMapEntry(final IConverter<? extends Entry<X, Y>, ? super Entry<K, V>> converter) {
-        return new Level2ListOfMapElementsEntriesOperatorImpl<X, Y>(getTarget().execute(converter, Normalisation.MAPENTRY));
+        return new Level2ListOfMapElementsEntriesOperatorImpl<X, Y>(getTarget().execute(converter, Normalisation.MAP_ENTRY));
     }
 
 
     public <X, Y> Level2ListOfMapElementsEntriesOperator<X, Y> evalAsMapEntry(final IEvaluator<? extends Entry<X, Y>, ? super Entry<K, V>> eval) {
-        return new Level2ListOfMapElementsEntriesOperatorImpl<X, Y>(getTarget().execute(eval, Normalisation.MAPENTRY));
+        return new Level2ListOfMapElementsEntriesOperatorImpl<X, Y>(getTarget().execute(eval, Normalisation.MAP_ENTRY));
     }
 
 
     public <X, Y> Level2ListOfMapElementsEntriesOperator<X, Y> execAsMapEntry(final IFunction<? extends Entry<X, Y>, ? super Entry<K, V>> function) {
-        return new Level2ListOfMapElementsEntriesOperatorImpl<X, Y>(getTarget().execute(function, Normalisation.MAPENTRY));
+        return new Level2ListOfMapElementsEntriesOperatorImpl<X, Y>(getTarget().execute(function, Normalisation.MAP_ENTRY));
     }
 
 

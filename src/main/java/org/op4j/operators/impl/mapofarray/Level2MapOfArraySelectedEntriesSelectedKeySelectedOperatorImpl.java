@@ -35,13 +35,13 @@ public class Level2MapOfArraySelectedEntriesSelectedKeySelectedOperatorImpl<K,V>
     }
 
 
-    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V> replaceWith(final K replacement) {
-        return new Level2MapOfArraySelectedEntriesSelectedKeySelectedOperatorImpl<K,V>(this.type, getTarget().replaceWith(replacement));
+    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
+        return new Level2MapOfArraySelectedEntriesSelectedKeySelectedOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
-        return new Level2MapOfArraySelectedEntriesSelectedKeySelectedOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalisation.NONE));
+    public Level2MapOfArraySelectedEntriesSelectedKeySelectedOperator<K,V> replaceWith(final K replacement) {
+        return new Level2MapOfArraySelectedEntriesSelectedKeySelectedOperatorImpl<K,V>(this.type, getTarget().replaceWith(replacement));
     }
 
 

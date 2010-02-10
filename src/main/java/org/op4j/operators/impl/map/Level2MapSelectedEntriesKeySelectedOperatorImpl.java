@@ -30,13 +30,13 @@ public class Level2MapSelectedEntriesKeySelectedOperatorImpl<K,V> extends Abstra
     }
 
 
-    public Level2MapSelectedEntriesKeySelectedOperator<K,V> replaceWith(final K replacement) {
-        return new Level2MapSelectedEntriesKeySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+    public Level2MapSelectedEntriesKeySelectedOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
+        return new Level2MapSelectedEntriesKeySelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Level2MapSelectedEntriesKeySelectedOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
-        return new Level2MapSelectedEntriesKeySelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.NONE));
+    public Level2MapSelectedEntriesKeySelectedOperator<K,V> replaceWith(final K replacement) {
+        return new Level2MapSelectedEntriesKeySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
     }
 
 

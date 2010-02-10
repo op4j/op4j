@@ -31,13 +31,13 @@ public class Level2ListOfSetElementsElementsSelectedOperatorImpl<T> extends Abst
     }
 
 
-    public Level2ListOfSetElementsElementsSelectedOperator<T> replaceWith(final T replacement) {
-        return new Level2ListOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+    public Level2ListOfSetElementsElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
+        return new Level2ListOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Level2ListOfSetElementsElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level2ListOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.NONE));
+    public Level2ListOfSetElementsElementsSelectedOperator<T> replaceWith(final T replacement) {
+        return new Level2ListOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 

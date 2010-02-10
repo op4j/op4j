@@ -31,13 +31,13 @@ public class Level2MapOfSetEntriesSelectedKeySelectedOperatorImpl<K,V> extends A
     }
 
 
-    public Level2MapOfSetEntriesSelectedKeySelectedOperator<K,V> replaceWith(final K replacement) {
-        return new Level2MapOfSetEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+    public Level2MapOfSetEntriesSelectedKeySelectedOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
+        return new Level2MapOfSetEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Level2MapOfSetEntriesSelectedKeySelectedOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
-        return new Level2MapOfSetEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.NONE));
+    public Level2MapOfSetEntriesSelectedKeySelectedOperator<K,V> replaceWith(final K replacement) {
+        return new Level2MapOfSetEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
     }
 
 

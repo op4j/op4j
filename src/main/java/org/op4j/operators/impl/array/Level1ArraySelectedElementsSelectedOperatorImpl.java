@@ -33,13 +33,13 @@ public class Level1ArraySelectedElementsSelectedOperatorImpl<T> extends Abstract
     }
 
 
-    public Level1ArraySelectedElementsSelectedOperator<T> replaceWith(final T replacement) {
-        return new Level1ArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().replaceWith(replacement));
+    public Level1ArraySelectedElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
+        return new Level1ArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Level1ArraySelectedElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level1ArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.NONE));
+    public Level1ArraySelectedElementsSelectedOperator<T> replaceWith(final T replacement) {
+        return new Level1ArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().replaceWith(replacement));
     }
 
 

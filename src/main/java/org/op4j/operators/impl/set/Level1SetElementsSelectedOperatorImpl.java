@@ -30,13 +30,13 @@ public class Level1SetElementsSelectedOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
-    public Level1SetElementsSelectedOperator<T> replaceWith(final T replacement) {
-        return new Level1SetElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+    public Level1SetElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
+        return new Level1SetElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Level1SetElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level1SetElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.NONE));
+    public Level1SetElementsSelectedOperator<T> replaceWith(final T replacement) {
+        return new Level1SetElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 

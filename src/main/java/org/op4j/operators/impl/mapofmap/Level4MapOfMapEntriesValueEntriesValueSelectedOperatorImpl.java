@@ -30,13 +30,13 @@ public class Level4MapOfMapEntriesValueEntriesValueSelectedOperatorImpl<K1,K2,V>
     }
 
 
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> replaceWith(final V replacement) {
-        return new Level4MapOfMapEntriesValueEntriesValueSelectedOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement));
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> exec(final IFunction<? extends V,? super V> function) {
+        return new Level4MapOfMapEntriesValueEntriesValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> exec(final IFunction<? extends V,? super V> function) {
-        return new Level4MapOfMapEntriesValueEntriesValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(function, Normalisation.NONE));
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1,K2,V> replaceWith(final V replacement) {
+        return new Level4MapOfMapEntriesValueEntriesValueSelectedOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement));
     }
 
 

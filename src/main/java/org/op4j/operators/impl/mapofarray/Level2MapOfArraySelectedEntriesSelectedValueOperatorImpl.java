@@ -147,17 +147,17 @@ public class Level2MapOfArraySelectedEntriesSelectedValueOperatorImpl<K,V> exten
 
 
     public Level2MapOfArraySelectedEntriesSelectedValueOperator<K,V> convertAsArray(final IConverter<? extends V[],? super V[]> converter) {
-        return new Level2MapOfArraySelectedEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(converter, Normalisation.ARRAY));
+        return new Level2MapOfArraySelectedEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(converter, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 
     public Level2MapOfArraySelectedEntriesSelectedValueOperator<K,V> evalAsArray(final IEvaluator<? extends V[],? super V[]> eval) {
-        return new Level2MapOfArraySelectedEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(eval, Normalisation.ARRAY));
+        return new Level2MapOfArraySelectedEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(eval, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 
     public Level2MapOfArraySelectedEntriesSelectedValueOperator<K,V> execAsArray(final IFunction<? extends V[],? super V[]> function) {
-        return new Level2MapOfArraySelectedEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalisation.ARRAY));
+        return new Level2MapOfArraySelectedEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 

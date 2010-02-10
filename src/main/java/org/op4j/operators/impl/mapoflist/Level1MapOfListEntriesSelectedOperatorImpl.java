@@ -40,17 +40,17 @@ public class Level1MapOfListEntriesSelectedOperatorImpl<K,V> extends AbstractOpe
 
 
     public Level1MapOfListEntriesSelectedOperator<K,V> execAsMapOfListEntry(final IFunction<? extends Entry<? extends K,? extends List<? extends V>>,? super Entry<K,List<V>>> function) {
-        return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAPENTRY_OF_LIST));
+        return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAP_OF_LIST_ENTRY));
     }
 
 
     public Level1MapOfListEntriesSelectedOperator<K,V> evalAsMapOfListEntry(final IEvaluator<? extends Entry<? extends K,? extends List<? extends V>>,? super Entry<K,List<V>>> eval) {
-        return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAPENTRY_OF_LIST));
+        return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAP_OF_LIST_ENTRY));
     }
 
 
     public Level1MapOfListEntriesSelectedOperator<K,V> convertAsMapOfListEntry(final IConverter<? extends Entry<? extends K,? extends List<? extends V>>,? super Entry<K,List<V>>> converter) {
-        return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAPENTRY_OF_LIST));
+        return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAP_OF_LIST_ENTRY));
     }
 
 

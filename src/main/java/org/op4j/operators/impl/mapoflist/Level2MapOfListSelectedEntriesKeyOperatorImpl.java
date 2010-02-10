@@ -82,13 +82,13 @@ public class Level2MapOfListSelectedEntriesKeyOperatorImpl<K,V> extends Abstract
     }
 
 
-    public Level2MapOfListSelectedEntriesKeyOperator<K,V> replaceWith(final K replacement) {
-        return new Level2MapOfListSelectedEntriesKeyOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+    public Level2MapOfListSelectedEntriesKeyOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
+        return new Level2MapOfListSelectedEntriesKeyOperatorImpl<K,V>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Level2MapOfListSelectedEntriesKeyOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
-        return new Level2MapOfListSelectedEntriesKeyOperatorImpl<K,V>(getTarget().execute(function, Normalisation.NONE));
+    public Level2MapOfListSelectedEntriesKeyOperator<K,V> replaceWith(final K replacement) {
+        return new Level2MapOfListSelectedEntriesKeyOperatorImpl<K,V>(getTarget().replaceWith(replacement));
     }
 
 

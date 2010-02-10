@@ -107,17 +107,17 @@ public class Level1MapOfMapEntriesOperatorImpl<K1,K2,V> extends AbstractOperator
 
 
     public <X1, X2, Y> Level1MapOfMapEntriesOperator<X1, X2, Y> convertAsMapOfMapEntry(final IConverter<? extends Entry<X1, ? extends Map<X2, Y>>, ? super Entry<K1, Map<K2, V>>> converter) {
-        return new Level1MapOfMapEntriesOperatorImpl<X1, X2, Y>(getTarget().execute(converter, Normalisation.MAPENTRY_OF_MAP));
+        return new Level1MapOfMapEntriesOperatorImpl<X1, X2, Y>(getTarget().execute(converter, Normalisation.MAP_OF_MAP_ENTRY));
     }
 
 
     public <X1, X2, Y> Level1MapOfMapEntriesOperator<X1, X2, Y> evalAsMapOfMapEntry(final IEvaluator<? extends Entry<X1, ? extends Map<X2, Y>>, ? super Entry<K1, Map<K2, V>>> eval) {
-        return new Level1MapOfMapEntriesOperatorImpl<X1, X2, Y>(getTarget().execute(eval, Normalisation.MAPENTRY_OF_MAP));
+        return new Level1MapOfMapEntriesOperatorImpl<X1, X2, Y>(getTarget().execute(eval, Normalisation.MAP_OF_MAP_ENTRY));
     }
 
 
     public <X1, X2, Y> Level1MapOfMapEntriesOperator<X1, X2, Y> execAsMapOfMapEntry(final IFunction<? extends Entry<X1, ? extends Map<X2, Y>>, ? super Entry<K1, Map<K2, V>>> function) {
-        return new Level1MapOfMapEntriesOperatorImpl<X1, X2, Y>(getTarget().execute(function, Normalisation.MAPENTRY_OF_MAP));
+        return new Level1MapOfMapEntriesOperatorImpl<X1, X2, Y>(getTarget().execute(function, Normalisation.MAP_OF_MAP_ENTRY));
     }
 
 

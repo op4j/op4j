@@ -20,6 +20,7 @@
 
 package org.op4j.util;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -482,22 +483,26 @@ public class NormalisationUtils {
 
     
     @SuppressWarnings("unchecked")
-    public static <T> T[] normaliseArray(final T[] array) {
+    public static <T> T[] normaliseArray(final T[] array, final Class<?> arrayComponentClass) {
         if (array == null) {
             return null;
         }
-        return (T[]) ArrayUtils.clone(array);
+        final Object[] result = (Object[]) Array.newInstance(arrayComponentClass, array.length);
+        for (int i = 0, z = result.length; i < z; i++) {
+            result[i] = array[i];
+        }
+        return (T[]) result;
     }
 
     
     @SuppressWarnings("unchecked")
-    public static <T> T[][] normaliseArrayOfArray(final T[][] arrayOfArray) {
+    public static <T> T[][] normaliseArrayOfArray(final T[][] arrayOfArray, final Class<?> arrayComponentClass) {
         if (arrayOfArray == null) {
             return null;
         }
-        final T[][] result = (T[][]) ArrayUtils.clone(arrayOfArray);
+        final T[][] result = (T[][]) Array.newInstance((Array.newInstance(arrayComponentClass, 0)).getClass(), arrayOfArray.length);
         for (int i = 0; i < result.length; i++) {
-            result[i] = normaliseArray(result[i]);
+            result[i] = normaliseArray(arrayOfArray[i], arrayComponentClass);
         }
         return result;
     }
@@ -550,13 +555,13 @@ public class NormalisationUtils {
     }
 
     
-    public static <T> List<T[]> normaliseListOfArray(final List<? extends T[]> listOfArray) {
+    public static <T> List<T[]> normaliseListOfArray(final List<? extends T[]> listOfArray, final Class<?> arrayComponentClass) {
         if (listOfArray == null) {
             return null;
         }
         final List<T[]> result = new ArrayList<T[]>();
         for (final T[] element : listOfArray) {
-            result.add(normaliseArray(element));
+            result.add(normaliseArray(element, arrayComponentClass));
         }
         return result;
     }
@@ -614,23 +619,23 @@ public class NormalisationUtils {
     }
 
     
-    public static <K, V> Map<K, V[]> normaliseMapOfArray(final Map<K, V[]> mapOfArray) {
+    public static <K, V> Map<K, V[]> normaliseMapOfArray(final Map<K, V[]> mapOfArray, final Class<?> arrayComponentClass) {
         if (mapOfArray == null) {
             return null;
         }
         final Map<K, V[]> result = new LinkedHashMap<K, V[]>();
         for (final Map.Entry<K, V[]> element : mapOfArray.entrySet()) {
-            result.put(element.getKey(), normaliseArray(element.getValue()));
+            result.put(element.getKey(), normaliseArray(element.getValue(), arrayComponentClass));
         }
         return result;
     }
 
     
-    public static <K, V> Map.Entry<K, V[]> normaliseMapEntryOfArray(final Map.Entry<K, V[]> mapEntryOfArray) {
+    public static <K, V> Map.Entry<K, V[]> normaliseMapEntryOfArray(final Map.Entry<K, V[]> mapEntryOfArray, final Class<?> arrayComponentClass) {
         if (mapEntryOfArray == null) {
             return null;
         }
-        return new MapEntry<K, V[]>(mapEntryOfArray.getKey(), normaliseArray(mapEntryOfArray.getValue()));
+        return new MapEntry<K, V[]>(mapEntryOfArray.getKey(), normaliseArray(mapEntryOfArray.getValue(), arrayComponentClass));
     }
 
     
@@ -702,13 +707,13 @@ public class NormalisationUtils {
     }
 
     
-    public static <T> Set<T[]> normaliseSetOfArray(final Set<? extends T[]> setOfArray) {
+    public static <T> Set<T[]> normaliseSetOfArray(final Set<? extends T[]> setOfArray, final Class<?> arrayComponentClass) {
         if (setOfArray == null) {
             return null;
         }
         final Set<T[]> result = new LinkedHashSet<T[]>();
         for (final T[] element : setOfArray) {
-            result.add(normaliseArray(element));
+            result.add(normaliseArray(element, arrayComponentClass));
         }
         return result;
     }
@@ -752,13 +757,13 @@ public class NormalisationUtils {
 
     
     @SuppressWarnings("unchecked")
-    public static <T> T[][] normaliseArrays(final T[][] input) {
+    public static <T> T[][] normaliseArrays(final T[][] input, final Class<?> arrayComponentClass) {
         if (input == null) {
             return null;
         }
-        final T[][] result = (T[][]) ArrayUtils.clone(input);
+        final T[][] result = (T[][]) Array.newInstance((Array.newInstance(arrayComponentClass, 0)).getClass(), input.length);
         for (int i = 0; i < result.length; i++) {
-            result[i] = normaliseArray(result[i]);
+            result[i] = normaliseArray(input[i], arrayComponentClass);
         }
         return result;
     }
@@ -806,13 +811,13 @@ public class NormalisationUtils {
     
 
     
-    public static <T> Collection<T[]> normaliseArrays(final Collection<T[]> input) {
+    public static <T> Collection<T[]> normaliseArrays(final Collection<T[]> input, final Class<?> arrayComponentClass) {
         if (input == null) {
             return null;
         }
         final Collection<T[]> result = new ArrayList<T[]>();
         for (final T[] inputElement : input) {
-            result.add(normaliseArray(inputElement));
+            result.add(normaliseArray(inputElement, arrayComponentClass));
         }
         return result;
     }

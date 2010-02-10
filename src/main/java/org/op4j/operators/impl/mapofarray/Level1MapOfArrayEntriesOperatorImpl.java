@@ -111,32 +111,32 @@ public class Level1MapOfArrayEntriesOperatorImpl<K,V> extends AbstractOperatorIm
 
 
     public Level1MapOfArrayEntriesOperator<K,V> convertAsMapOfArrayEntry(final IConverter<? extends Entry<? extends K, ? extends V[]>, ? super Entry<K, V[]>> converter) {
-        return new Level1MapOfArrayEntriesOperatorImpl<K,V>(this.type, getTarget().execute(converter, Normalisation.MAPENTRY_OF_ARRAY));
+        return new Level1MapOfArrayEntriesOperatorImpl<K,V>(this.type, getTarget().execute(converter, Normalisation.MAP_OF_ARRAY_ENTRY(this.type.getRawClass())));
     }
 
 
     public Level1MapOfArrayEntriesOperator<K,V> evalAsMapOfArrayEntry(final IEvaluator<? extends Entry<? extends K, ? extends V[]>, ? super Entry<K, V[]>> eval) {
-        return new Level1MapOfArrayEntriesOperatorImpl<K,V>(this.type, getTarget().execute(eval, Normalisation.MAPENTRY_OF_ARRAY));
+        return new Level1MapOfArrayEntriesOperatorImpl<K,V>(this.type, getTarget().execute(eval, Normalisation.MAP_OF_ARRAY_ENTRY(this.type.getRawClass())));
     }
 
 
     public Level1MapOfArrayEntriesOperator<K,V> execAsMapOfArrayEntry(final IFunction<? extends Entry<? extends K, ? extends V[]>, ? super Entry<K, V[]>> function) {
-        return new Level1MapOfArrayEntriesOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalisation.MAPENTRY_OF_ARRAY));
+        return new Level1MapOfArrayEntriesOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalisation.MAP_OF_ARRAY_ENTRY(this.type.getRawClass())));
     }
 
 
     public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> convertAsMapOfArrayEntryOf(final Type<Y> valueType, final IConverter<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> converter) {
-        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(valueType, getTarget().execute(converter, Normalisation.MAPENTRY_OF_ARRAY));
+        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(valueType, getTarget().execute(converter, Normalisation.MAP_OF_ARRAY_ENTRY(valueType.getRawClass())));
     }
 
 
     public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> evalAsMapOfArrayEntryOf(final Type<Y> valueType, final IEvaluator<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> eval) {
-        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(valueType, getTarget().execute(eval, Normalisation.MAPENTRY_OF_ARRAY));
+        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(valueType, getTarget().execute(eval, Normalisation.MAP_OF_ARRAY_ENTRY(valueType.getRawClass())));
     }
 
 
     public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> execAsMapOfArrayEntryOf(final Type<Y> valueType, final IFunction<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> function) {
-        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(valueType, getTarget().execute(function, Normalisation.MAPENTRY_OF_ARRAY));
+        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(valueType, getTarget().execute(function, Normalisation.MAP_OF_ARRAY_ENTRY(valueType.getRawClass())));
     }
 
 

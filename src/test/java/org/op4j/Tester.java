@@ -462,7 +462,7 @@ public class Tester extends TestCase {
         Serializable[] newArray = Op.onArrayOf(Types.SERIALIZABLE, serArray).add(Integer.valueOf(3)).get();
 
         assertEquals(Serializable[].class, newArray.getClass());
-        assertEquals(expSerArray, serArray);
+        assertEquals(Arrays.asList(expSerArray), Arrays.asList(newArray));
         
     }
 
@@ -496,7 +496,7 @@ public class Tester extends TestCase {
                         }).endIf().add(Integer.valueOf(3)).get();
         
         assertEquals(Serializable[].class, newArray.getClass());
-        assertEquals(expSerArray, serArray);
+        assertEquals(Arrays.asList(expSerArray), Arrays.asList(newArray));
         
     }
     

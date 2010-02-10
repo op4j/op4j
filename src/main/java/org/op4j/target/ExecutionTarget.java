@@ -53,15 +53,15 @@ public final class ExecutionTarget extends Target {
     @SuppressWarnings("unchecked")
     public static ExecutionTarget forObject(final Object object, final Normalisation targetNormalisation) {
         Object normalisedObject = null;
-        switch (targetNormalisation) {
+        switch (targetNormalisation.getNormalisationType()) {
             case NONE:
                 normalisedObject = object;
                 break;
             case ARRAY:
-                normalisedObject = NormalisationUtils.normaliseArray((Object[])object);
+                normalisedObject = NormalisationUtils.normaliseArray((Object[])object, targetNormalisation.getArrayComponentClass());
                 break;
             case ARRAY_OF_ARRAY:
-                normalisedObject = NormalisationUtils.normaliseArrayOfArray((Object[][])object);
+                normalisedObject = NormalisationUtils.normaliseArrayOfArray((Object[][])object, targetNormalisation.getArrayComponentClass());
                 break;
             case ARRAY_OF_LIST:
                 normalisedObject = NormalisationUtils.normaliseArrayOfList((List<Object>[])object);
@@ -76,7 +76,7 @@ public final class ExecutionTarget extends Target {
                 normalisedObject = NormalisationUtils.normaliseList((List<Object>)object);
                 break;
             case LIST_OF_ARRAY:
-                normalisedObject = NormalisationUtils.normaliseListOfArray((List<Object[]>)object);
+                normalisedObject = NormalisationUtils.normaliseListOfArray((List<Object[]>)object, targetNormalisation.getArrayComponentClass());
                 break;
             case LIST_OF_LIST:
                 normalisedObject = NormalisationUtils.normaliseListOfList((List<List<Object>>)object);
@@ -94,7 +94,7 @@ public final class ExecutionTarget extends Target {
                 normalisedObject = NormalisationUtils.normaliseMapEntry((Map.Entry<Object,Object>)object);
                 break;
             case MAPENTRY_OF_ARRAY:
-                normalisedObject = NormalisationUtils.normaliseMapEntryOfArray((Map.Entry<Object,Object[]>)object);
+                normalisedObject = NormalisationUtils.normaliseMapEntryOfArray((Map.Entry<Object,Object[]>)object, targetNormalisation.getArrayComponentClass());
                 break;
             case MAPENTRY_OF_LIST:
                 normalisedObject = NormalisationUtils.normaliseMapEntryOfList((Map.Entry<Object,List<Object>>)object);
@@ -106,7 +106,7 @@ public final class ExecutionTarget extends Target {
                 normalisedObject = NormalisationUtils.normaliseMapEntryOfSet((Map.Entry<Object,Set<Object>>)object);
                 break;
             case MAP_OF_ARRAY:
-                normalisedObject = NormalisationUtils.normaliseMapOfArray((Map<Object,Object[]>)object);
+                normalisedObject = NormalisationUtils.normaliseMapOfArray((Map<Object,Object[]>)object, targetNormalisation.getArrayComponentClass());
                 break;
             case MAP_OF_LIST:
                 normalisedObject = NormalisationUtils.normaliseMapOfList((Map<Object,List<Object>>)object);
@@ -121,7 +121,7 @@ public final class ExecutionTarget extends Target {
                 normalisedObject = NormalisationUtils.normaliseSet((Set<Object>)object);
                 break;
             case SET_OF_ARRAY:
-                normalisedObject = NormalisationUtils.normaliseSetOfArray((Set<Object[]>)object);
+                normalisedObject = NormalisationUtils.normaliseSetOfArray((Set<Object[]>)object, targetNormalisation.getArrayComponentClass());
                 break;
             case SET_OF_LIST:
                 normalisedObject = NormalisationUtils.normaliseSetOfList((Set<List<Object>>)object);

@@ -107,17 +107,17 @@ public class Level1MapOfListEntriesOperatorImpl<K,V> extends AbstractOperatorImp
 
 
     public <X, Y> Level1MapOfListEntriesOperator<X, Y> convertAsMapOfListEntry(final IConverter<? extends Entry<X, ? extends List<Y>>, ? super Entry<K, List<V>>> converter) {
-        return new Level1MapOfListEntriesOperatorImpl<X, Y>(getTarget().execute(converter, Normalisation.MAPENTRY_OF_LIST));
+        return new Level1MapOfListEntriesOperatorImpl<X, Y>(getTarget().execute(converter, Normalisation.MAP_OF_LIST_ENTRY));
     }
 
 
     public <X, Y> Level1MapOfListEntriesOperator<X, Y> evalAsMapOfListEntry(final IEvaluator<? extends Entry<X, ? extends List<Y>>, ? super Entry<K, List<V>>> eval) {
-        return new Level1MapOfListEntriesOperatorImpl<X, Y>(getTarget().execute(eval, Normalisation.MAPENTRY_OF_LIST));
+        return new Level1MapOfListEntriesOperatorImpl<X, Y>(getTarget().execute(eval, Normalisation.MAP_OF_LIST_ENTRY));
     }
 
 
     public <X, Y> Level1MapOfListEntriesOperator<X, Y> execAsMapOfListEntry(final IFunction<? extends Entry<X, ? extends List<Y>>, ? super Entry<K, List<V>>> function) {
-        return new Level1MapOfListEntriesOperatorImpl<X, Y>(getTarget().execute(function, Normalisation.MAPENTRY_OF_LIST));
+        return new Level1MapOfListEntriesOperatorImpl<X, Y>(getTarget().execute(function, Normalisation.MAP_OF_LIST_ENTRY));
     }
 
 

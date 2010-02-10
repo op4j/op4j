@@ -42,7 +42,7 @@ public class Level0ListOfArraySelectedOperatorImpl<T> extends AbstractOperatorIm
 
 
     public Level0ListOfArraySelectedOperator<T> insertAll(final int position, final T[]... newElements) {
-        return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new ListFuncs.Insert<T[]>(position, NormalisationUtils.normaliseArrays(newElements))));
+        return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new ListFuncs.Insert<T[]>(position, NormalisationUtils.normaliseArrays(newElements, this.type.getRawClass()))));
     }
 
 
@@ -102,39 +102,39 @@ public class Level0ListOfArraySelectedOperatorImpl<T> extends AbstractOperatorIm
 
 
     public Level0ListOfArraySelectedOperator<T> convertAsListOfArray(final IConverter<? extends List<? extends T[]>,? super List<T[]>> converter) {
-        return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.LIST_OF_ARRAY));
+        return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.LIST_OF_ARRAY(this.type.getRawClass())));
     }
 
 
     public Level0ListOfArraySelectedOperator<T> evalAsListOfArray(final IEvaluator<? extends List<? extends T[]>,? super List<T[]>> eval) {
-        return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.LIST_OF_ARRAY));
+        return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.LIST_OF_ARRAY(this.type.getRawClass())));
     }
 
 
     public Level0ListOfArraySelectedOperator<T> execAsListOfArray(final IFunction<? extends List<? extends T[]>,? super List<T[]>> function) {
-        return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.LIST_OF_ARRAY));
+        return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.LIST_OF_ARRAY(this.type.getRawClass())));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0ListOfArraySelectedOperator<T> add(final T[] newElement) {
-        return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new ListFuncs.Add<T[]>(NormalisationUtils.normaliseArray(newElement))));
+        return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new ListFuncs.Add<T[]>(NormalisationUtils.normaliseArray(newElement, this.type.getRawClass()))));
     }
 
 
     public Level0ListOfArraySelectedOperator<T> addAll(final T[]... newElements) {
-        return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new ListFuncs.Add<T[]>(NormalisationUtils.normaliseArrays(newElements))));
+        return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new ListFuncs.Add<T[]>(NormalisationUtils.normaliseArrays(newElements, this.type.getRawClass()))));
     }
 
 
     public Level0ListOfArraySelectedOperator<T> addAll(final Collection<T[]> collection) {
-        return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new ListFuncs.AddAll<T[]>(NormalisationUtils.normaliseArrays(collection))));
+        return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new ListFuncs.AddAll<T[]>(NormalisationUtils.normaliseArrays(collection, this.type.getRawClass()))));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0ListOfArraySelectedOperator<T> insert(final int position, final T[] newElement) {
-        return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new ListFuncs.Insert<T[]>(position, NormalisationUtils.normaliseArray(newElement))));
+        return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new ListFuncs.Insert<T[]>(position, NormalisationUtils.normaliseArray(newElement, this.type.getRawClass()))));
     }
 
 

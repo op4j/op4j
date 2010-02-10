@@ -37,7 +37,7 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
 
 
     public Level0SetOfArraySelectedOperator<T> insertAll(final int position, final T[]... newElements) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.Insert<T[]>(position, NormalisationUtils.normaliseArrays(newElements))));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.Insert<T[]>(position, NormalisationUtils.normaliseArrays(newElements, this.type.getRawClass()))));
     }
 
 
@@ -97,39 +97,39 @@ public class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOperatorImp
 
 
     public Level0SetOfArraySelectedOperator<T> convertAsSetOfArray(final IConverter<? extends Set<? extends T[]>,? super Set<T[]>> converter) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.SET_OF_ARRAY));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.SET_OF_ARRAY(this.type.getRawClass())));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> evalAsSetOfArray(final IEvaluator<? extends Set<? extends T[]>,? super Set<T[]>> eval) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.SET_OF_ARRAY));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.SET_OF_ARRAY(this.type.getRawClass())));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> execAsSetOfArray(final IFunction<? extends Set<? extends T[]>,? super Set<T[]>> function) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.SET_OF_ARRAY));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.SET_OF_ARRAY(this.type.getRawClass())));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0SetOfArraySelectedOperator<T> add(final T[] newElement) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.Add<T[]>(NormalisationUtils.normaliseArray(newElement))));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.Add<T[]>(NormalisationUtils.normaliseArray(newElement, this.type.getRawClass()))));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> addAll(final T[]... newElements) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.Add<T[]>(NormalisationUtils.normaliseArrays(newElements))));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.Add<T[]>(NormalisationUtils.normaliseArrays(newElements, this.type.getRawClass()))));
     }
 
 
     public Level0SetOfArraySelectedOperator<T> addAll(final Collection<T[]> collection) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.AddAll<T[]>(NormalisationUtils.normaliseArrays(collection))));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.AddAll<T[]>(NormalisationUtils.normaliseArrays(collection, this.type.getRawClass()))));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0SetOfArraySelectedOperator<T> insert(final int position, final T[] newElement) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.Insert<T[]>(position, NormalisationUtils.normaliseArray(newElement))));
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.Insert<T[]>(position, NormalisationUtils.normaliseArray(newElement, this.type.getRawClass()))));
     }
 
 

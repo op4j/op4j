@@ -147,17 +147,17 @@ public class Level1SetOfArraySelectedElementsOperatorImpl<T> extends AbstractOpe
 
 
     public Level1SetOfArraySelectedElementsOperator<T> convertAsArray(final IConverter<? extends T[],? super T[]> converter) {
-        return new Level1SetOfArraySelectedElementsOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.ARRAY));
+        return new Level1SetOfArraySelectedElementsOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 
     public Level1SetOfArraySelectedElementsOperator<T> evalAsArray(final IEvaluator<? extends T[],? super T[]> eval) {
-        return new Level1SetOfArraySelectedElementsOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.ARRAY));
+        return new Level1SetOfArraySelectedElementsOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 
     public Level1SetOfArraySelectedElementsOperator<T> execAsArray(final IFunction<? extends T[],? super T[]> function) {
-        return new Level1SetOfArraySelectedElementsOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.ARRAY));
+        return new Level1SetOfArraySelectedElementsOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 

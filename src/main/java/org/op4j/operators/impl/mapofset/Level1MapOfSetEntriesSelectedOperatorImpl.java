@@ -40,17 +40,17 @@ public class Level1MapOfSetEntriesSelectedOperatorImpl<K,V> extends AbstractOper
 
 
     public Level1MapOfSetEntriesSelectedOperator<K,V> execAsMapOfSetEntry(final IFunction<? extends Entry<? extends K,? extends Set<? extends V>>,? super Entry<K,Set<V>>> function) {
-        return new Level1MapOfSetEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAPENTRY_OF_SET));
+        return new Level1MapOfSetEntriesSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.MAP_OF_SET_ENTRY));
     }
 
 
     public Level1MapOfSetEntriesSelectedOperator<K,V> evalAsMapOfSetEntry(final IEvaluator<? extends Entry<? extends K,? extends Set<? extends V>>,? super Entry<K,Set<V>>> eval) {
-        return new Level1MapOfSetEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAPENTRY_OF_SET));
+        return new Level1MapOfSetEntriesSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAP_OF_SET_ENTRY));
     }
 
 
     public Level1MapOfSetEntriesSelectedOperator<K,V> convertAsMapOfSetEntry(final IConverter<? extends Entry<? extends K,? extends Set<? extends V>>,? super Entry<K,Set<V>>> converter) {
-        return new Level1MapOfSetEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAPENTRY_OF_SET));
+        return new Level1MapOfSetEntriesSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAP_OF_SET_ENTRY));
     }
 
 

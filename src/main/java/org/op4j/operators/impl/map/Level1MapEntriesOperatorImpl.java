@@ -106,17 +106,17 @@ public class Level1MapEntriesOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public <X, Y> Level1MapEntriesOperator<X, Y> convertAsMapEntry(final IConverter<? extends Entry<X, Y>, ? super Entry<K, V>> converter) {
-        return new Level1MapEntriesOperatorImpl<X, Y>(getTarget().execute(converter, Normalisation.MAPENTRY));
+        return new Level1MapEntriesOperatorImpl<X, Y>(getTarget().execute(converter, Normalisation.MAP_ENTRY));
     }
 
 
     public <X, Y> Level1MapEntriesOperator<X, Y> evalAsMapEntry(final IEvaluator<? extends Entry<X, Y>, ? super Entry<K, V>> eval) {
-        return new Level1MapEntriesOperatorImpl<X, Y>(getTarget().execute(eval, Normalisation.MAPENTRY));
+        return new Level1MapEntriesOperatorImpl<X, Y>(getTarget().execute(eval, Normalisation.MAP_ENTRY));
     }
 
 
     public <X, Y> Level1MapEntriesOperator<X, Y> execAsMapEntry(final IFunction<? extends Entry<X, Y>, ? super Entry<K, V>> function) {
-        return new Level1MapEntriesOperatorImpl<X, Y>(getTarget().execute(function, Normalisation.MAPENTRY));
+        return new Level1MapEntriesOperatorImpl<X, Y>(getTarget().execute(function, Normalisation.MAP_ENTRY));
     }
 
 

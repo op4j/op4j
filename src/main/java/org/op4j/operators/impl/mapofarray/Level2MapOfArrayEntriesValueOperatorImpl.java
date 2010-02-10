@@ -283,32 +283,32 @@ public class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends AbstractOpera
 
 
 	public Level2MapOfArrayEntriesValueOperator<K, V> convertAsArray(final IConverter<? extends V[], ? super V[]> converter) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(this.type, getTarget().execute(converter, Normalisation.ARRAY));
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(this.type, getTarget().execute(converter, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 
 	public Level2MapOfArrayEntriesValueOperator<K, V> evalAsArray(final IEvaluator<? extends V[], ? super V[]> eval) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(this.type, getTarget().execute(eval, Normalisation.ARRAY));
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(this.type, getTarget().execute(eval, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 
 	public Level2MapOfArrayEntriesValueOperator<K, V> execAsArray(final IFunction<? extends V[], ? super V[]> function) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(this.type, getTarget().execute(function, Normalisation.ARRAY));
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(this.type, getTarget().execute(function, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 
     public <X> Level2MapOfArrayEntriesValueOperator<K, X> convertAsArrayOf(final Type<X> valueType, final IConverter<X[], ? super V[]> converter) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(valueType, getTarget().execute(converter, Normalisation.ARRAY));
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(valueType, getTarget().execute(converter, Normalisation.ARRAY(valueType.getRawClass())));
     }
 
 
     public <X> Level2MapOfArrayEntriesValueOperator<K, X> evalAsArrayOf(final Type<X> valueType, final IEvaluator<X[], ? super V[]> eval) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(valueType, getTarget().execute(eval, Normalisation.ARRAY));
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(valueType, getTarget().execute(eval, Normalisation.ARRAY(valueType.getRawClass())));
     }
 
 
     public <X> Level2MapOfArrayEntriesValueOperator<K, X> execAsArrayOf(final Type<X> valueType, final IFunction<X[], ? super V[]> function) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(valueType, getTarget().execute(function, Normalisation.ARRAY));
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(valueType, getTarget().execute(function, Normalisation.ARRAY(valueType.getRawClass())));
     }
 
 

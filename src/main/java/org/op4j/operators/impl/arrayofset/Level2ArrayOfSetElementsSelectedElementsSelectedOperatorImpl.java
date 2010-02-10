@@ -30,13 +30,13 @@ public class Level2ArrayOfSetElementsSelectedElementsSelectedOperatorImpl<T> ext
     }
 
 
-    public Level2ArrayOfSetElementsSelectedElementsSelectedOperator<T> replaceWith(final T replacement) {
-        return new Level2ArrayOfSetElementsSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+    public Level2ArrayOfSetElementsSelectedElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
+        return new Level2ArrayOfSetElementsSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Level2ArrayOfSetElementsSelectedElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level2ArrayOfSetElementsSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.NONE));
+    public Level2ArrayOfSetElementsSelectedElementsSelectedOperator<T> replaceWith(final T replacement) {
+        return new Level2ArrayOfSetElementsSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 

@@ -32,7 +32,7 @@ public class Level0MapOfArraySelectedOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Level0MapOfArraySelectedOperator<K,V> insertAll(final int position, final Map<K,V[]> map) {
-        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.type, getTarget().execute(new MapFuncs.InsertAll<K,V[]>(position, NormalisationUtils.normaliseMapOfArray(map))));
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.type, getTarget().execute(new MapFuncs.InsertAll<K,V[]>(position, NormalisationUtils.normaliseMapOfArray(map, this.type.getRawClass()))));
     }
 
 
@@ -67,32 +67,32 @@ public class Level0MapOfArraySelectedOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Level0MapOfArraySelectedOperator<K,V> convertAsMapOfArray(final IConverter<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> converter) {
-        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.type, getTarget().execute(converter, Normalisation.MAP_OF_ARRAY));
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.type, getTarget().execute(converter, Normalisation.MAP_OF_ARRAY(this.type.getRawClass())));
     }
 
 
     public Level0MapOfArraySelectedOperator<K,V> evalAsMapOfArray(final IEvaluator<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> eval) {
-        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.type, getTarget().execute(eval, Normalisation.MAP_OF_ARRAY));
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.type, getTarget().execute(eval, Normalisation.MAP_OF_ARRAY(this.type.getRawClass())));
     }
 
 
     public Level0MapOfArraySelectedOperator<K,V> execAsMapOfArray(final IFunction<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> function) {
-        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalisation.MAP_OF_ARRAY));
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalisation.MAP_OF_ARRAY(this.type.getRawClass())));
     }
 
 
     public Level0MapOfArraySelectedOperator<K,V> put(final K newKey, final V[] newValue) {
-        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.type, getTarget().execute(new MapFuncs.Put<K,V[]>(newKey, NormalisationUtils.normaliseArray(newValue))));
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.type, getTarget().execute(new MapFuncs.Put<K,V[]>(newKey, NormalisationUtils.normaliseArray(newValue, this.type.getRawClass()))));
     }
 
 
     public Level0MapOfArraySelectedOperator<K,V> putAll(final Map<K,V[]> map) {
-        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.type, getTarget().execute(new MapFuncs.PutAll<K,V[]>(NormalisationUtils.normaliseMapOfArray(map))));
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.type, getTarget().execute(new MapFuncs.PutAll<K,V[]>(NormalisationUtils.normaliseMapOfArray(map, this.type.getRawClass()))));
     }
 
 
     public Level0MapOfArraySelectedOperator<K,V> insert(final int position, final K newKey, final V[] newValue) {
-        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.type, getTarget().execute(new MapFuncs.Insert<K,V[]>(position, newKey, NormalisationUtils.normaliseArray(newValue))));
+        return new Level0MapOfArraySelectedOperatorImpl<K,V>(this.type, getTarget().execute(new MapFuncs.Insert<K,V[]>(position, newKey, NormalisationUtils.normaliseArray(newValue, this.type.getRawClass()))));
     }
 
 

@@ -30,13 +30,13 @@ public class Level2MapEntriesKeySelectedOperatorImpl<K,V> extends AbstractOperat
     }
 
 
-    public Level2MapEntriesKeySelectedOperator<K,V> replaceWith(final K replacement) {
-        return new Level2MapEntriesKeySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+    public Level2MapEntriesKeySelectedOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
+        return new Level2MapEntriesKeySelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Level2MapEntriesKeySelectedOperator<K,V> exec(final IFunction<? extends K,? super K> function) {
-        return new Level2MapEntriesKeySelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.NONE));
+    public Level2MapEntriesKeySelectedOperator<K,V> replaceWith(final K replacement) {
+        return new Level2MapEntriesKeySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
     }
 
 

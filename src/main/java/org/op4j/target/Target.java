@@ -37,14 +37,6 @@ import org.op4j.util.VarArgsUtil;
 public abstract class Target {
 
     public static enum Structure { ARRAY, LIST, SET, MAP }
-    public static enum Normalisation { 
-        NONE, 
-        ARRAY, LIST, SET, MAP, MAPENTRY, 
-        ARRAY_OF_ARRAY, ARRAY_OF_LIST, ARRAY_OF_MAP, ARRAY_OF_SET,
-        LIST_OF_ARRAY, LIST_OF_LIST, LIST_OF_MAP, LIST_OF_SET,
-        MAP_OF_ARRAY, MAP_OF_LIST, MAP_OF_MAP, MAP_OF_SET,
-        MAPENTRY_OF_ARRAY, MAPENTRY_OF_LIST, MAPENTRY_OF_MAP, MAPENTRY_OF_SET,
-        SET_OF_ARRAY, SET_OF_LIST, SET_OF_MAP, SET_OF_SET }
 
     
     
@@ -202,5 +194,86 @@ public abstract class Target {
     public abstract Object get();
     
     
+
+    public static class Normalisation {
+
+        static enum NormalisationType { 
+            NONE, 
+            ARRAY, LIST, SET, MAP, MAPENTRY, 
+            ARRAY_OF_ARRAY, ARRAY_OF_LIST, ARRAY_OF_MAP, ARRAY_OF_SET,
+            LIST_OF_ARRAY, LIST_OF_LIST, LIST_OF_MAP, LIST_OF_SET,
+            MAP_OF_ARRAY, MAP_OF_LIST, MAP_OF_MAP, MAP_OF_SET,
+            MAPENTRY_OF_ARRAY, MAPENTRY_OF_LIST, MAPENTRY_OF_MAP, MAPENTRY_OF_SET,
+            SET_OF_ARRAY, SET_OF_LIST, SET_OF_MAP, SET_OF_SET }
+    
+        public static Normalisation NONE = new Normalisation(NormalisationType.NONE, null);
+        public static Normalisation LIST = new Normalisation(NormalisationType.LIST, null);
+        public static Normalisation SET = new Normalisation(NormalisationType.SET, null);
+        public static Normalisation MAP = new Normalisation(NormalisationType.MAP, null);
+        public static Normalisation MAP_ENTRY = new Normalisation(NormalisationType.MAPENTRY, null);
+        public static Normalisation ARRAY_OF_LIST = new Normalisation(NormalisationType.ARRAY_OF_LIST, null);
+        public static Normalisation ARRAY_OF_MAP = new Normalisation(NormalisationType.ARRAY_OF_MAP, null);
+        public static Normalisation ARRAY_OF_SET = new Normalisation(NormalisationType.ARRAY_OF_SET, null);
+        public static Normalisation LIST_OF_LIST = new Normalisation(NormalisationType.LIST_OF_LIST, null);
+        public static Normalisation LIST_OF_MAP = new Normalisation(NormalisationType.LIST_OF_MAP, null);
+        public static Normalisation LIST_OF_SET = new Normalisation(NormalisationType.LIST_OF_SET, null);
+        public static Normalisation MAP_OF_LIST = new Normalisation(NormalisationType.MAP_OF_LIST, null);
+        public static Normalisation MAP_OF_MAP = new Normalisation(NormalisationType.MAP_OF_MAP, null);
+        public static Normalisation MAP_OF_SET = new Normalisation(NormalisationType.MAP_OF_SET, null);
+        public static Normalisation MAP_OF_LIST_ENTRY = new Normalisation(NormalisationType.MAPENTRY_OF_LIST, null);
+        public static Normalisation MAP_OF_MAP_ENTRY = new Normalisation(NormalisationType.MAPENTRY_OF_MAP, null);
+        public static Normalisation MAP_OF_SET_ENTRY = new Normalisation(NormalisationType.MAPENTRY_OF_SET, null);
+        public static Normalisation SET_OF_LIST = new Normalisation(NormalisationType.SET_OF_LIST, null);
+        public static Normalisation SET_OF_MAP = new Normalisation(NormalisationType.SET_OF_MAP, null);
+        public static Normalisation SET_OF_SET = new Normalisation(NormalisationType.SET_OF_SET, null);
+    
+        
+            
+            
+        private final NormalisationType normalisationType;
+        private final Class<?> arrayComponentClass;
+        
+        
+        
+        public static Normalisation ARRAY(final Class<?> arrayComponentClass) {
+            return new Normalisation(NormalisationType.ARRAY, arrayComponentClass);
+        }
+        
+        public static Normalisation ARRAY_OF_ARRAY(final Class<?> arrayComponentClass) {
+            return new Normalisation(NormalisationType.ARRAY_OF_ARRAY, arrayComponentClass);
+        }
+        
+        public static Normalisation LIST_OF_ARRAY(final Class<?> arrayComponentClass) {
+            return new Normalisation(NormalisationType.LIST_OF_ARRAY, arrayComponentClass);
+        }
+        
+        public static Normalisation MAP_OF_ARRAY(final Class<?> arrayComponentClass) {
+            return new Normalisation(NormalisationType.MAP_OF_ARRAY, arrayComponentClass);
+        }
+        
+        public static Normalisation MAP_OF_ARRAY_ENTRY(final Class<?> arrayComponentClass) {
+            return new Normalisation(NormalisationType.MAPENTRY_OF_ARRAY, arrayComponentClass);
+        }
+        
+        public static Normalisation SET_OF_ARRAY(final Class<?> arrayComponentClass) {
+            return new Normalisation(NormalisationType.SET_OF_ARRAY, arrayComponentClass);
+        }
+        
+        
+        private Normalisation(final NormalisationType normalisationType, final Class<?> arrayComponentClass) {
+            super();
+            this.normalisationType = normalisationType;
+            this.arrayComponentClass = arrayComponentClass;
+        }
+
+        public NormalisationType getNormalisationType() {
+            return this.normalisationType;
+        }
+
+        public Class<?> getArrayComponentClass() {
+            return this.arrayComponentClass;
+        }
+        
+    }
     
 }

@@ -82,13 +82,13 @@ public class Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueOperator
     }
 
 
-    public Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueOperator<K,V> replaceWith(final V replacement) {
-        return new Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+    public Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
+        return new Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
-        return new Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(function, Normalisation.NONE));
+    public Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueOperator<K,V> replaceWith(final V replacement) {
+        return new Level3ListOfMapSelectedElementsSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().replaceWith(replacement));
     }
 
 

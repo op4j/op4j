@@ -31,13 +31,13 @@ public class Level3SetOfMapSelectedElementsEntriesValueSelectedOperatorImpl<K,V>
     }
 
 
-    public Level3SetOfMapSelectedElementsEntriesValueSelectedOperator<K,V> replaceWith(final V replacement) {
-        return new Level3SetOfMapSelectedElementsEntriesValueSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+    public Level3SetOfMapSelectedElementsEntriesValueSelectedOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
+        return new Level3SetOfMapSelectedElementsEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Level3SetOfMapSelectedElementsEntriesValueSelectedOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
-        return new Level3SetOfMapSelectedElementsEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(function, Normalisation.NONE));
+    public Level3SetOfMapSelectedElementsEntriesValueSelectedOperator<K,V> replaceWith(final V replacement) {
+        return new Level3SetOfMapSelectedElementsEntriesValueSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
     }
 
 

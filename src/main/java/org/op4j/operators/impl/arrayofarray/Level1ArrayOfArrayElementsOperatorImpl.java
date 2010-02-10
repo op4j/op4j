@@ -101,7 +101,7 @@ public class Level1ArrayOfArrayElementsOperatorImpl<T> extends AbstractOperatorI
 
 
 	public Level0ArrayOfArrayOperator<T> endFor() {
-        return new Level0ArrayOfArrayOperatorImpl<T>(this.type, getTarget().endIterate(this.type.getRawClass()));
+        return new Level0ArrayOfArrayOperatorImpl<T>(this.type, getTarget().endIterate(Types.arrayOf(this.type).getRawClass()));
     }
 
 
@@ -274,32 +274,32 @@ public class Level1ArrayOfArrayElementsOperatorImpl<T> extends AbstractOperatorI
 
 
 	public Level1ArrayOfArrayElementsOperator<T> convertAsArray(final IConverter<? extends T[], ? super T[]> converter) {
-        return new Level1ArrayOfArrayElementsOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.ARRAY));
+        return new Level1ArrayOfArrayElementsOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 
 	public Level1ArrayOfArrayElementsOperator<T> evalAsArray(final IEvaluator<? extends T[], ? super T[]> eval) {
-        return new Level1ArrayOfArrayElementsOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.ARRAY));
+        return new Level1ArrayOfArrayElementsOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 
 	public Level1ArrayOfArrayElementsOperator<T> execAsArray(final IFunction<? extends T[], ? super T[]> function) {
-        return new Level1ArrayOfArrayElementsOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.ARRAY));
+        return new Level1ArrayOfArrayElementsOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 
     public <X> Level1ArrayOfArrayElementsOperator<X> convertAsArrayOf(final Type<X> newType, final IConverter<X[], ? super T[]> converter) {
-        return new Level1ArrayOfArrayElementsOperatorImpl<X>(newType, getTarget().execute(converter, Normalisation.ARRAY));
+        return new Level1ArrayOfArrayElementsOperatorImpl<X>(newType, getTarget().execute(converter, Normalisation.ARRAY(newType.getRawClass())));
     }
 
 
     public <X> Level1ArrayOfArrayElementsOperator<X> evalAsArrayOf(final Type<X> newType, final IEvaluator<X[], ? super T[]> eval) {
-        return new Level1ArrayOfArrayElementsOperatorImpl<X>(newType, getTarget().execute(eval, Normalisation.ARRAY));
+        return new Level1ArrayOfArrayElementsOperatorImpl<X>(newType, getTarget().execute(eval, Normalisation.ARRAY(newType.getRawClass())));
     }
 
 
     public <X> Level1ArrayOfArrayElementsOperator<X> execAsArrayOf(final Type<X> newType, final IFunction<X[], ? super T[]> function) {
-        return new Level1ArrayOfArrayElementsOperatorImpl<X>(newType, getTarget().execute(function, Normalisation.ARRAY));
+        return new Level1ArrayOfArrayElementsOperatorImpl<X>(newType, getTarget().execute(function, Normalisation.ARRAY(newType.getRawClass())));
     }
 
 

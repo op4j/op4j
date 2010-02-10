@@ -41,13 +41,13 @@ public class Level0GenericMultiSelectedOperatorImpl<T> extends AbstractOperatorI
     }
 
 
-    public Level0GenericMultiSelectedOperator<T> replaceWith(final T replacement) {
-        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+    public Level0GenericMultiSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Level0GenericMultiSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.NONE));
+    public Level0GenericMultiSelectedOperator<T> replaceWith(final T replacement) {
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 

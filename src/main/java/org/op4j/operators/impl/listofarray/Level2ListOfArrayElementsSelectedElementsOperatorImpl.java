@@ -86,13 +86,13 @@ public class Level2ListOfArrayElementsSelectedElementsOperatorImpl<T> extends Ab
     }
 
 
-    public Level2ListOfArrayElementsSelectedElementsOperator<T> replaceWith(final T replacement) {
-        return new Level2ListOfArrayElementsSelectedElementsOperatorImpl<T>(this.type, getTarget().replaceWith(replacement));
+    public Level2ListOfArrayElementsSelectedElementsOperator<T> exec(final IFunction<? extends T,? super T> function) {
+        return new Level2ListOfArrayElementsSelectedElementsOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Level2ListOfArrayElementsSelectedElementsOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level2ListOfArrayElementsSelectedElementsOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.NONE));
+    public Level2ListOfArrayElementsSelectedElementsOperator<T> replaceWith(final T replacement) {
+        return new Level2ListOfArrayElementsSelectedElementsOperatorImpl<T>(this.type, getTarget().replaceWith(replacement));
     }
 
 

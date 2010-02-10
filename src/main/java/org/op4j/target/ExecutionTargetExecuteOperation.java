@@ -58,14 +58,14 @@ final class ExecutionTargetExecuteOperation implements ExecutionTargetOperation 
 
         try {
             Object result = this.executable.execute(target, new ExecCtxImpl(indexes));
-            switch (this.normalisation) {
+            switch (this.normalisation.getNormalisationType()) {
                 case ARRAY:
                     NormalisationUtils.checkIsArray(Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseArray((Object[])result);
+                    result = NormalisationUtils.normaliseArray((Object[])result, this.normalisation.getArrayComponentClass());
                     break;
                 case ARRAY_OF_ARRAY:
                     NormalisationUtils.checkIsArrayOfArray(Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseArrayOfArray((Object[][])result);
+                    result = NormalisationUtils.normaliseArrayOfArray((Object[][])result, this.normalisation.getArrayComponentClass());
                     break;
                 case ARRAY_OF_LIST:
                     NormalisationUtils.checkIsArrayOfList(Types.OBJECT, result);
@@ -85,7 +85,7 @@ final class ExecutionTargetExecuteOperation implements ExecutionTargetOperation 
                     break;
                 case LIST_OF_ARRAY:
                     NormalisationUtils.checkIsListOfArray(Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseListOfArray((List<Object[]>)result);
+                    result = NormalisationUtils.normaliseListOfArray((List<Object[]>)result, this.normalisation.getArrayComponentClass());
                     break;
                 case LIST_OF_LIST:
                     NormalisationUtils.checkIsListOfList(Types.OBJECT, result);
@@ -109,7 +109,7 @@ final class ExecutionTargetExecuteOperation implements ExecutionTargetOperation 
                     break;
                 case MAPENTRY_OF_ARRAY:
                     NormalisationUtils.checkIsMapEntryOfArray(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseMapEntryOfArray((Map.Entry<Object, Object[]>)result);
+                    result = NormalisationUtils.normaliseMapEntryOfArray((Map.Entry<Object, Object[]>)result, this.normalisation.getArrayComponentClass());
                     break;
                 case MAPENTRY_OF_LIST:
                     NormalisationUtils.checkIsMapEntryOfList(Types.OBJECT, Types.OBJECT, result);
@@ -125,7 +125,7 @@ final class ExecutionTargetExecuteOperation implements ExecutionTargetOperation 
                     break;
                 case MAP_OF_ARRAY:
                     NormalisationUtils.checkIsMapOfArray(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseMapOfArray((Map<Object, Object[]>)result);
+                    result = NormalisationUtils.normaliseMapOfArray((Map<Object, Object[]>)result, this.normalisation.getArrayComponentClass());
                     break;
                 case MAP_OF_LIST:
                     NormalisationUtils.checkIsMapOfList(Types.OBJECT, Types.OBJECT, result);
@@ -145,7 +145,7 @@ final class ExecutionTargetExecuteOperation implements ExecutionTargetOperation 
                     break;
                 case SET_OF_ARRAY:
                     NormalisationUtils.checkIsSetOfArray(Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseSetOfArray((Set<Object[]>)result);
+                    result = NormalisationUtils.normaliseSetOfArray((Set<Object[]>)result, this.normalisation.getArrayComponentClass());
                     break;
                 case SET_OF_LIST:
                     NormalisationUtils.checkIsSetOfList(Types.OBJECT, result);
