@@ -81,13 +81,13 @@ public class Level4MapOfMapSelectedEntriesValueEntriesKeyOperatorImpl<K1,K2,V> e
     }
 
 
-    public Level4MapOfMapSelectedEntriesValueEntriesKeyOperator<K1,K2,V> exec(final IFunction<? extends K2,? super K2> function) {
-        return new Level4MapOfMapSelectedEntriesValueEntriesKeyOperatorImpl<K1,K2,V>(getTarget().execute(function, Normalisation.NONE));
+    public Level4MapOfMapSelectedEntriesValueEntriesKeyOperator<K1,K2,V> replaceWith(final K2 replacement) {
+        return new Level4MapOfMapSelectedEntriesValueEntriesKeyOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level4MapOfMapSelectedEntriesValueEntriesKeyOperator<K1,K2,V> replaceWith(final K2 replacement) {
-        return new Level4MapOfMapSelectedEntriesValueEntriesKeyOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement));
+    public Level4MapOfMapSelectedEntriesValueEntriesKeyOperator<K1,K2,V> exec(final IFunction<? extends K2,? super K2> function) {
+        return new Level4MapOfMapSelectedEntriesValueEntriesKeyOperatorImpl<K1,K2,V>(getTarget().execute(function, Normalisation.NONE));
     }
 
 

@@ -63,20 +63,26 @@ public interface Level1MapOfArrayEntriesOperator<K,V>
     
     public Level0MapOfArrayOperator<K,V> endFor();
     
-    public <X,Y> Level1MapOfArrayEntriesOperator<X,Y> execAsMapOfArrayEntry(final IFunction<? extends Map.Entry<X,Y[]>, ? super Map.Entry<K,V[]>> function);
+    public Level1MapOfArrayEntriesOperator<K,V> execAsMapOfArrayEntry(final IFunction<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> function);
     
-    public <X,Y> Level1MapOfArrayEntriesOperator<X,Y> evalAsMapOfArrayEntry(final IEvaluator<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> eval);
+    public Level1MapOfArrayEntriesOperator<K,V> evalAsMapOfArrayEntry(final IEvaluator<? extends Map.Entry<? extends K,? extends V[]>,? super Map.Entry<K,V[]>> eval);
+
+    public Level1MapOfArrayEntriesOperator<K,V> convertAsMapOfArrayEntry(final IConverter<? extends Map.Entry<? extends K,? extends V[]>,? super Map.Entry<K,V[]>> converter);
+    
+    public <X,Y> Level1MapOfArrayEntriesOperator<X,Y> execAsMapOfArrayEntryOf(final Type<Y> valueType, final IFunction<? extends Map.Entry<X,Y[]>, ? super Map.Entry<K,V[]>> function);
+    
+    public <X,Y> Level1MapOfArrayEntriesOperator<X,Y> evalAsMapOfArrayEntryOf(final Type<Y> valueType, final IEvaluator<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> eval);
+
+    public <X,Y> Level1MapOfArrayEntriesOperator<X,Y> convertAsMapOfArrayEntryOf(final Type<Y> valueType, final IConverter<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> converter);
     
     public Level1MapOfArrayEntriesOperator<K,V> replaceWith(final Map.Entry<K,V[]> replacement);
 
 
-    public <X,Y> Level1MapOfArrayEntriesOperator<X,Y> convertAsMapOfArrayEntry(final IConverter<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> converter);
-
-    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K,V[]>> function);
+    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map.Entry<K,V[]>> function);
     
-    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map.Entry<K,V[]>> eval);
+    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Map.Entry<K,V[]>> eval);
     
-    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Map.Entry<K,V[]>> converter);    
+    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Map.Entry<K,V[]>> converter);    
 
     
 }

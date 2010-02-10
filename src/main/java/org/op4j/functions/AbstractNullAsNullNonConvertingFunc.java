@@ -20,7 +20,6 @@
 
 package org.op4j.functions;
 
-import org.javaruntype.type.Type;
 
 
 
@@ -39,9 +38,4 @@ public abstract class AbstractNullAsNullNonConvertingFunc<T> extends AbstractNul
     }
 
 
-    public final Type<? extends T> getResultType(Type<? extends T> targetType) {
-        return targetType;
     }
-    
-    
-}

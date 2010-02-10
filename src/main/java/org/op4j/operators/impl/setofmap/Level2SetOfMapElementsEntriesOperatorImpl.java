@@ -23,7 +23,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
-import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -123,17 +122,17 @@ public class Level2SetOfMapElementsEntriesOperatorImpl<K,V> extends AbstractOper
     }
 
 
-    public <X> Level2SetOfListElementsElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super Entry<K, V>> converter) {
+    public <X> Level2SetOfListElementsElementsOperator<X> convert(final IConverter<X, ? super Entry<K, V>> converter) {
         return new Level2SetOfListElementsElementsOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
-    public <X> Level2SetOfListElementsElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super Entry<K, V>> eval) {
+    public <X> Level2SetOfListElementsElementsOperator<X> eval(final IEvaluator<X, ? super Entry<K, V>> eval) {
         return new Level2SetOfListElementsElementsOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
-    public <X> Level2SetOfListElementsElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Entry<K, V>> function) {
+    public <X> Level2SetOfListElementsElementsOperator<X> exec(final IFunction<X, ? super Entry<K, V>> function) {
         return new Level2SetOfListElementsElementsOperatorImpl<X>(getTarget().execute(function, Normalisation.NONE));
     }
 

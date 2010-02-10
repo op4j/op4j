@@ -20,7 +20,6 @@
 
 package org.op4j.functions;
 
-import org.javaruntype.type.Type;
 
 /**
  * 
@@ -30,8 +29,6 @@ import org.javaruntype.type.Type;
  *
  */
 public interface IFunction<R,T> {
-    
-    public Type<? extends R> getResultType(final Type<? extends T> targetType);
     
     public R execute(final T object, final ExecCtx ctx) throws Exception;
 

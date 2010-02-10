@@ -21,7 +21,6 @@ package org.op4j.operators.qualities;
 
 import java.util.List;
 
-import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -107,7 +106,7 @@ public interface ExecutableListOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> Operator exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T>> function);
+    public <X> Operator exec(final IFunction<X, ? super List<T>> function);
     
     
     /**
@@ -125,7 +124,7 @@ public interface ExecutableListOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> Operator eval(final Type<X> resultType, final IEvaluator<? extends X,? super List<T>> eval);
+    public <X> Operator eval(final IEvaluator<X,? super List<T>> eval);
     
     
     /**
@@ -143,6 +142,6 @@ public interface ExecutableListOperator<T> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public <X> Operator convert(final Type<X> resultType, final IConverter<? extends X,? super List<T>> converter);    
+    public <X> Operator convert(final IConverter<X,? super List<T>> converter);    
     
 }

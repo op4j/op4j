@@ -23,9 +23,6 @@ package org.op4j.functions.converters;
 import java.math.RoundingMode;
 import java.util.Locale;
 
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
-
 /**
  * 
  * @since 1.0
@@ -126,11 +123,6 @@ public class ToDouble {
         }
 
         @Override
-        protected Type<Double> getResultType() {
-            return Types.DOUBLE;
-        }
-
-        @Override
         protected Double fromNumber(final Number number) {
             return ToDouble.internalFromNumber(number);
         }
@@ -149,11 +141,6 @@ public class ToDouble {
 
         public FromBoolean() {
             super();
-        }
-
-        @Override
-        protected Type<Double> getResultType() {
-            return Types.DOUBLE;
         }
 
         @Override
@@ -203,11 +190,6 @@ public class ToDouble {
 
         public FromString(final String locale) {
             super(locale);
-        }
-
-        @Override
-        protected Type<Double> getResultType() {
-            return Types.DOUBLE;
         }
 
         @Override

@@ -25,9 +25,6 @@ import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.Locale;
 
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
-
 /**
  * 
  * @since 1.0
@@ -136,11 +133,6 @@ public class ToBigDecimal {
         }
 
         @Override
-        protected Type<BigDecimal> getResultType() {
-            return Types.BIG_DECIMAL;
-        }
-
-        @Override
         protected BigDecimal fromNumber(final Number number) {
             return ToBigDecimal.internalFromNumber(number);
         }
@@ -159,11 +151,6 @@ public class ToBigDecimal {
 
         public FromBoolean() {
             super();
-        }
-
-        @Override
-        protected Type<BigDecimal> getResultType() {
-            return Types.BIG_DECIMAL;
         }
 
         @Override
@@ -213,11 +200,6 @@ public class ToBigDecimal {
 
         public FromString(final String locale) {
             super(locale);
-        }
-
-        @Override
-        protected Type<BigDecimal> getResultType() {
-            return Types.BIG_DECIMAL;
         }
 
         @Override

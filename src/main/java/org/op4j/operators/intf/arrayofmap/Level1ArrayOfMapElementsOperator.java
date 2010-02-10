@@ -30,7 +30,7 @@ import org.op4j.operators.intf.array.Level1ArrayElementsOperator;
 import org.op4j.operators.intf.arrayoflist.Level1ArrayOfListElementsOperator;
 import org.op4j.operators.intf.arrayofset.Level1ArrayOfSetElementsOperator;
 import org.op4j.operators.qualities.CastableToMapOperator;
-import org.op4j.operators.qualities.ExecutableMapOperator;
+import org.op4j.operators.qualities.ExecutableArrayOfMapElementsOperator;
 import org.op4j.operators.qualities.ExtractableMapOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
@@ -53,7 +53,7 @@ public interface Level1ArrayOfMapElementsOperator<K,V>
                 NavigatingCollectionOperator<Map<K,V>>,
 		        SortableOperator<Map.Entry<K,V>>,
 		        CastableToMapOperator,
-                ExecutableMapOperator<K,V>,
+                ExecutableArrayOfMapElementsOperator<K,V>,
                 SelectableOperator<Map<K,V>>,
                 ReplaceableOperator<Map<K,V>>,
                 ReplaceableIfNullOperator<Map<K,V>>,
@@ -109,11 +109,11 @@ public interface Level1ArrayOfMapElementsOperator<K,V>
 
     public <X,Y> Level1ArrayOfMapElementsOperator<X,Y> execAsMap(final IFunction<? extends Map<X,Y>, ? super Map<K,V>> function);
 
-    public <X> Level1ArrayElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K,V>> function);
+    public <X> Level1ArrayElementsOperator<X> exec(final Type<X> resultType, final IFunction<X, ? super Map<K,V>> function);
     
-    public <X> Level1ArrayElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map<K,V>> eval);
+    public <X> Level1ArrayElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<X,? super Map<K,V>> eval);
     
-    public <X> Level1ArrayElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Map<K,V>> converter);    
+    public <X> Level1ArrayElementsOperator<X> convert(final Type<X> resultType, final IConverter<X,? super Map<K,V>> converter);    
     
     
     public <X,Y> Level1ArrayOfMapElementsOperator<X,Y> asMapOf(final Type<X> keyType, final Type<Y> valueType);

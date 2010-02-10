@@ -57,7 +57,7 @@ import org.op4j.operators.qualities.ExecutableArrayOfArrayOperator;
 import org.op4j.operators.qualities.FlattenableAsArrayOperator;
 import org.op4j.operators.qualities.GenerizableOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
-import org.op4j.operators.qualities.NavigableArrayOperator;
+import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.ReplaceableIfNullOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
@@ -72,7 +72,7 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level0ArrayOfArrayOperator<T>
         extends UniqOperator<T[][]>,
-                NavigableArrayOperator<T[]>,
+                NavigableCollectionOperator<T[]>,
 		        DistinguishableOperator,
 		        SortableOperator<T[]>,
                 CastableToArrayOfArrayOperator,
@@ -110,7 +110,7 @@ public interface Level0ArrayOfArrayOperator<T>
 
 
 
-    public Level1ArrayOfArrayElementsOperator<T> forEach(final Type<T[]> elementType);
+    public Level1ArrayOfArrayElementsOperator<T> forEach();
 
     public Level0ArrayOfArrayOperator<T> distinct();
     
@@ -178,17 +178,23 @@ public interface Level0ArrayOfArrayOperator<T>
     public Level0ArrayOfArrayOperator<T> replaceIfNullWith(final T[][] replacement);
 
 
-    public <X> Level0ArrayOfArrayOperator<X> convertAsArrayOfArray(final IConverter<X[][],? super T[][]> converter);
+    public Level0ArrayOfArrayOperator<T> convertAsArrayOfArray(final IConverter<? extends T[][],? super T[][]> converter);
     
-    public <X> Level0ArrayOfArrayOperator<X> evalAsArrayOfArray(final IEvaluator<X[][],? super T[][]> eval);
+    public Level0ArrayOfArrayOperator<T> evalAsArrayOfArray(final IEvaluator<? extends T[][],? super T[][]> eval);
 
-    public <X> Level0ArrayOfArrayOperator<X> execAsArrayOfArray(final IFunction<X[][], ? super T[][]> function);
+    public Level0ArrayOfArrayOperator<T> execAsArrayOfArray(final IFunction<? extends T[][], ? super T[][]> function);
 
-    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super T[][]> function);
+    public <X> Level0ArrayOfArrayOperator<X> convertAsArrayOfArrayOf(final Type<X> type, final IConverter<X[][],? super T[][]> converter);
     
-    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super T[][]> eval);
+    public <X> Level0ArrayOfArrayOperator<X> evalAsArrayOfArrayOf(final Type<X> type, final IEvaluator<X[][],? super T[][]> eval);
+
+    public <X> Level0ArrayOfArrayOperator<X> execAsArrayOfArrayOf(final Type<X> type, final IFunction<X[][], ? super T[][]> function);
+
+    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super T[][]> function);
     
-    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super T[][]> converter);    
+    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super T[][]> eval);
+    
+    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super T[][]> converter);    
     
     
     

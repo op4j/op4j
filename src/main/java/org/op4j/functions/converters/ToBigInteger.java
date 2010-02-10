@@ -25,9 +25,6 @@ import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.Locale;
 
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
-
 /**
  * 
  * @since 1.0
@@ -156,11 +153,6 @@ public class ToBigInteger {
         }
 
         @Override
-        protected Type<BigInteger> getResultType() {
-            return Types.BIG_INTEGER;
-        }
-
-        @Override
         protected BigInteger fromNumber(final Number number) {
             return ToBigInteger.internalFromNumber(number);
         }
@@ -179,11 +171,6 @@ public class ToBigInteger {
 
         public FromBoolean() {
             super();
-        }
-
-        @Override
-        protected Type<BigInteger> getResultType() {
-            return Types.BIG_INTEGER;
         }
 
         @Override
@@ -240,11 +227,6 @@ public class ToBigInteger {
         }
 
         @Override
-        protected Type<BigInteger> getResultType() {
-            return Types.BIG_INTEGER;
-        }
-
-        @Override
         protected BigInteger fromNumber(final Number number) {
             return ToBigInteger.internalFromNumber(number);
         }
@@ -271,11 +253,6 @@ public class ToBigInteger {
         }
 
         @Override
-        protected Type<BigInteger> getResultType() {
-            return Types.BIG_INTEGER;
-        }
-
-        @Override
         protected BigInteger fromNumber(final Number number) {
             return ToBigInteger.internalFromNumber(number);
         }
@@ -297,11 +274,6 @@ public class ToBigInteger {
         }
 
         @Override
-        protected Type<BigInteger> getResultType() {
-            return Types.BIG_INTEGER;
-        }
-
-        @Override
         protected BigInteger fromNumber(final Number number) {
             return ToBigInteger.internalFromNumber(number);
         }
@@ -320,11 +292,6 @@ public class ToBigInteger {
 
         public FromBigDecimal(final RoundingMode roundingMode) {
             super(roundingMode);
-        }
-
-        @Override
-        protected Type<BigInteger> getResultType() {
-            return Types.BIG_INTEGER;
         }
 
         @Override

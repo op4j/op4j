@@ -21,7 +21,6 @@ package org.op4j.operators.intf.mapofmap;
 
 import java.util.Map;
 
-import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -72,11 +71,11 @@ public interface Level3MapOfMapEntriesValueEntriesOperator<K1,K2,V>
 
     public <X2,Y> Level3MapOfMapEntriesValueEntriesOperator<K1,X2,Y> convertAsMapEntry(final IConverter<? extends Map.Entry<X2,Y>,? super Map.Entry<K2,V>> converter);
 
-    public <X> Level3MapOfListEntriesValueElementsOperator<K1,X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K2,V>> function);
+    public <X> Level3MapOfListEntriesValueElementsOperator<K1,X> exec(final IFunction<X, ? super Map.Entry<K2,V>> function);
     
-    public <X> Level3MapOfListEntriesValueElementsOperator<K1,X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map.Entry<K2,V>> eval);
+    public <X> Level3MapOfListEntriesValueElementsOperator<K1,X> eval(final IEvaluator<X,? super Map.Entry<K2,V>> eval);
     
-    public <X> Level3MapOfListEntriesValueElementsOperator<K1,X> convert(final Type<X> resultType, final IConverter<? extends X,? super Map.Entry<K2,V>> converter);    
+    public <X> Level3MapOfListEntriesValueElementsOperator<K1,X> convert(final IConverter<X,? super Map.Entry<K2,V>> converter);    
 
     
 }

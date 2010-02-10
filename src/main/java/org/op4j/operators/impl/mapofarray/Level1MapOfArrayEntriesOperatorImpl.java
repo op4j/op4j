@@ -48,24 +48,28 @@ import org.op4j.target.Target.Normalisation;
 public class Level1MapOfArrayEntriesOperatorImpl<K,V> extends AbstractOperatorImpl
         implements Level1MapOfArrayEntriesOperator<K,V> {
 
+
+    private final Type<V> type; 
+
     
-    public Level1MapOfArrayEntriesOperatorImpl(final Target target) {
+    public Level1MapOfArrayEntriesOperatorImpl(final Type<V> type, final Target target) {
         super(target);
+        this.type = type;
     }
 
 
     public Level0MapOfArrayOperator<K, V> endFor() {
-        return new Level0MapOfArrayOperatorImpl<K, V>(getTarget().endIterate(null));
+        return new Level0MapOfArrayOperatorImpl<K, V>(this.type, getTarget().endIterate(null));
     }
 
 
     public Level2MapOfArrayEntriesKeyOperator<K, V> onKey() {
-        return new Level2MapOfArrayEntriesKeyOperatorImpl<K, V>(getTarget().onKey());
+        return new Level2MapOfArrayEntriesKeyOperatorImpl<K, V>(this.type, getTarget().onKey());
     }
 
 
     public Level2MapOfArrayEntriesValueOperator<K, V> onValue() {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().onValue());
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(this.type, getTarget().onValue());
     }
 
 
@@ -77,67 +81,82 @@ public class Level1MapOfArrayEntriesOperatorImpl<K,V> extends AbstractOperatorIm
 
     
     public Level1MapOfArrayEntriesSelectedOperator<K, V> ifIndex(final int... indexes) {
-        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndex(indexes));
+        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K, V>(this.type, getTarget().selectIndex(indexes));
     }
 
 
     public Level1MapOfArrayEntriesSelectedOperator<K, V> ifIndexNot(final int... indexes) {
-        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K, V>(getTarget().selectIndexNot(indexes));
+        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K, V>(this.type, getTarget().selectIndexNot(indexes));
     }
 
 
     public Level1MapOfArrayEntriesSelectedOperator<K, V> ifKeyEquals(final K... keys) {
-        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K, V>(getTarget().selectMapKeys(keys));
+        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K, V>(this.type, getTarget().selectMapKeys(keys));
     }
 
 
     public Level1MapOfArrayEntriesSelectedOperator<K, V> ifKeyNotEquals(final K... keys) {
-        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K, V>(getTarget().selectMapKeysNot(keys));
+        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K, V>(this.type, getTarget().selectMapKeysNot(keys));
     }
 
 
     public Level1MapOfArrayEntriesSelectedOperator<K, V> ifTrue(final IEvaluator<Boolean, ? super Entry<K, V[]>> eval) {
-        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
+        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K, V>(this.type, getTarget().selectMatching(eval));
     }
 
 
     public Level1MapOfArrayEntriesSelectedOperator<K, V> ifFalse(final IEvaluator<Boolean, ? super Entry<K, V[]>> eval) {
-        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
+        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K, V>(this.type, getTarget().selectNotMatching(eval));
     }
 
 
-    public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> convertAsMapOfArrayEntry(final IConverter<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> converter) {
-        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(getTarget().execute(converter, Normalisation.MAPENTRY_OF_ARRAY));
+    public Level1MapOfArrayEntriesOperator<K,V> convertAsMapOfArrayEntry(final IConverter<? extends Entry<? extends K, ? extends V[]>, ? super Entry<K, V[]>> converter) {
+        return new Level1MapOfArrayEntriesOperatorImpl<K,V>(this.type, getTarget().execute(converter, Normalisation.MAPENTRY_OF_ARRAY));
     }
 
 
-    public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> evalAsMapOfArrayEntry(final IEvaluator<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> eval) {
-        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(getTarget().execute(eval, Normalisation.MAPENTRY_OF_ARRAY));
+    public Level1MapOfArrayEntriesOperator<K,V> evalAsMapOfArrayEntry(final IEvaluator<? extends Entry<? extends K, ? extends V[]>, ? super Entry<K, V[]>> eval) {
+        return new Level1MapOfArrayEntriesOperatorImpl<K,V>(this.type, getTarget().execute(eval, Normalisation.MAPENTRY_OF_ARRAY));
     }
 
 
-    public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> execAsMapOfArrayEntry(final IFunction<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> function) {
-        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(getTarget().execute(function, Normalisation.MAPENTRY_OF_ARRAY));
+    public Level1MapOfArrayEntriesOperator<K,V> execAsMapOfArrayEntry(final IFunction<? extends Entry<? extends K, ? extends V[]>, ? super Entry<K, V[]>> function) {
+        return new Level1MapOfArrayEntriesOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalisation.MAPENTRY_OF_ARRAY));
     }
 
 
-    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super Entry<K, V[]>> converter) {
+    public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> convertAsMapOfArrayEntryOf(final Type<Y> valueType, final IConverter<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> converter) {
+        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(valueType, getTarget().execute(converter, Normalisation.MAPENTRY_OF_ARRAY));
+    }
+
+
+    public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> evalAsMapOfArrayEntryOf(final Type<Y> valueType, final IEvaluator<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> eval) {
+        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(valueType, getTarget().execute(eval, Normalisation.MAPENTRY_OF_ARRAY));
+    }
+
+
+    public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> execAsMapOfArrayEntryOf(final Type<Y> valueType, final IFunction<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> function) {
+        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(valueType, getTarget().execute(function, Normalisation.MAPENTRY_OF_ARRAY));
+    }
+
+
+    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super Entry<K, V[]>> converter) {
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
-    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super Entry<K, V[]>> eval) {
+    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super Entry<K, V[]>> eval) {
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
-    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Entry<K, V[]>> function) {
+    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Entry<K, V[]>> function) {
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
     public Level1MapOfArrayEntriesOperator<K, V> replaceWith(final Entry<K, V[]> replacement) {
-        return new Level1MapOfArrayEntriesOperatorImpl<K, V>(getTarget().replaceWith(replacement));
+        return new Level1MapOfArrayEntriesOperatorImpl<K, V>(this.type, getTarget().replaceWith(replacement));
     }
 
 

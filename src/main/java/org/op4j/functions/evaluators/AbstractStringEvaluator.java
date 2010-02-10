@@ -20,8 +20,6 @@
 
 package org.op4j.functions.evaluators;
 
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 
 /**
  * 
@@ -38,8 +36,4 @@ public abstract class AbstractStringEvaluator<T> implements IEvaluator<String, T
 	}
 	
 
-	public final Type<? extends String> getResultType(Type<? extends T> targetType) {
-		return Types.STRING;
 	}
-
-}

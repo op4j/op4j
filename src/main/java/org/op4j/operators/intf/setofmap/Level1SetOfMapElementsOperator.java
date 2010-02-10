@@ -111,11 +111,11 @@ public interface Level1SetOfMapElementsOperator<K,V>
 
     public <X,Y> Level1SetOfMapElementsOperator<X,Y> execAsMap(final IFunction<? extends Map<X,Y>,? super Map<K,V>> function);
 
-    public <X> Level1SetElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K,V>> function);
+    public <X> Level1SetElementsOperator<X> exec(final IFunction<X, ? super Map<K,V>> function);
     
-    public <X> Level1SetElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map<K,V>> eval);
+    public <X> Level1SetElementsOperator<X> eval(final IEvaluator<X,? super Map<K,V>> eval);
     
-    public <X> Level1SetElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Map<K,V>> converter);    
+    public <X> Level1SetElementsOperator<X> convert(final IConverter<X,? super Map<K,V>> converter);    
 
     
     

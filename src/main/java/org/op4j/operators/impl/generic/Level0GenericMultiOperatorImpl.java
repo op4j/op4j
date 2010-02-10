@@ -104,8 +104,8 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ArrayOperator<T> buildArrayOf(final Type<T> arrayOf) {
-        return new Level0ArrayOperatorImpl<T>(getTarget().endIterate(null).execute(new ToArray.FromCollection<T>(arrayOf)));
+    public Level0ArrayOperator<T> buildArrayOf(final Type<T> type) {
+        return new Level0ArrayOperatorImpl<T>(type, getTarget().endIterate(null).execute(new ToArray.FromCollection<T>(type)));
     }
 
 
@@ -130,17 +130,17 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public <K> Level0MapOfArrayOperator<K, T> buildMapOfArrayOf(final Type<T> valueType, final IEvaluator<K, ? super T> keyEval) {
-        return new Level0MapOfArrayOperatorImpl<K, T>(getTarget().endIterate(null).execute(new ToMapOfArray.FromListByKeyEval<K, T>(valueType, keyEval)));
+        return new Level0MapOfArrayOperatorImpl<K, T>(valueType, getTarget().endIterate(null).execute(new ToMapOfArray.FromListByKeyEval<K, T>(valueType, keyEval)));
     }
 
 
     public <K, V> Level0MapOfArrayOperator<K, V> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<K, V, ? super T> mapBuild) {
-        return new Level0MapOfArrayOperatorImpl<K, V>(getTarget().endIterate(null).execute(new ToMapOfArray.FromListByMapBuilder<K, V, T>(valueType, mapBuild)));
+        return new Level0MapOfArrayOperatorImpl<K, V>(valueType, getTarget().endIterate(null).execute(new ToMapOfArray.FromListByMapBuilder<K, V, T>(valueType, mapBuild)));
     }
 
 
-    public Level0MapOfArrayOperator<T, T> buildMapOfArrayOf(final Type<T> valueArrayOf) {
-        return new Level0MapOfArrayOperatorImpl<T, T>(getTarget().endIterate(null).execute(new ToMapOfArray.FromListByAlternateElements<T>(valueArrayOf)));
+    public Level0MapOfArrayOperator<T, T> buildMapOfArrayOf(final Type<T> type) {
+        return new Level0MapOfArrayOperatorImpl<T, T>(type, getTarget().endIterate(null).execute(new ToMapOfArray.FromListByAlternateElements<T>(type)));
     }
 
 

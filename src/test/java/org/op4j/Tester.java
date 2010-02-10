@@ -1,6 +1,7 @@
 package org.op4j;
 
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -128,8 +129,8 @@ public class Tester extends TestCase {
 	public void test5() {
 		Date[][] data = this.testUtils.getDateArrayOfArray(6, 3);
 
-		List<Calendar> result = Op.onArrayOfArray(data)
-		.forEach(Types.ARRAY_OF_DATE).forEach(Types.DATE).convert(ToCalendar.fromDate())
+		List<Calendar> result = Op.onArrayOfArrayOf(Types.DATE, data)
+		.forEach().forEach().convert(Types.CALENDAR, ToCalendar.fromDate())
 		.endFor().endFor().flatten(Types.CALENDAR).toList().get();
 
 		int index = 0;
@@ -149,9 +150,9 @@ public class Tester extends TestCase {
 	public void test6() {
 		Integer[] data = this.testUtils.getIntegerArray(16);
 
-		String[] result = Op.onArray(data)
-		.forEach(Types.INTEGER)
-		.eval(Ognl.forString("\"Value is \" + #target"))
+		String[] result = Op.onArrayOf(Types.INTEGER, data)
+		.forEach()
+		.eval(Types.STRING, Ognl.forString("\"Value is \" + #target"))
 		.get();
 
 		for (int index = 0; index < data.length; index++) {						
@@ -164,8 +165,8 @@ public class Tester extends TestCase {
 	public void test7() {
 		Integer[] data = this.testUtils.getIntegerArray(16);
 
-		Integer[] result = Op.onArray(data)
-		.forEach(Types.INTEGER)
+		Integer[] result = Op.onArrayOf(Types.INTEGER, data)
+		.forEach()
 		.ifIndex(2, 4, 6, 10, 15)
 		.eval(Ognl.forInteger("#target + 10"))
 		.endIf()
@@ -232,10 +233,10 @@ public class Tester extends TestCase {
 		Map<Integer, Calendar[]> data = this.testUtils.getMapOfIntegerCalendarArray(13);
 
 
-		Map<Integer, Calendar[]> result = Op.onMapOfArray(data)
+		Map<Integer, Calendar[]> result = Op.onMapOfArrayOf(Types.CALENDAR, data)
 		.forEachEntry()
 		.onValue()
-		.forEach(Types.CALENDAR)
+		.forEach()
 		.exec(new IFunction<Calendar, Calendar>() {
 			public Calendar execute(Calendar object, ExecCtx ctx)
 			throws Exception {
@@ -243,10 +244,6 @@ public class Tester extends TestCase {
 				calendar.setTime(object.getTime());
 				calendar.set(Calendar.YEAR, 2000);
 				return calendar;
-			}
-			public Type<? extends Calendar> getResultType(
-					Type<? extends Calendar> targetType) {
-				return Types.CALENDAR;
 			}
 		})
 		.endFor()
@@ -290,11 +287,7 @@ public class Tester extends TestCase {
 		.exec(new IFunction<String[], String[]>() {
 			public String[] execute(String[] object, ExecCtx ctx)
 			throws Exception {					
-				return Op.onArray(object).add("value added with ifunction").get();
-			}
-			public Type<? extends String[]> getResultType(
-					Type<? extends String[]> targetType) {
-				return Types.ARRAY_OF_STRING;
+				return Op.onArrayOf(Types.STRING,object).add("value added with ifunction").get();
 			}
 		})
 		.get();
@@ -308,7 +301,7 @@ public class Tester extends TestCase {
 					assertEquals(data.get(entry1.getKey()).get(entry2.getKey()), entry2.getValue());
 				} else {
 					if (entry2.getValue().length > 3) {	
-						assertEquals(Arrays.asList(Op.onArray(data.get(entry1.getKey()).get(entry2.getKey()))
+						assertEquals(Arrays.asList(Op.onArrayOf(Types.STRING, data.get(entry1.getKey()).get(entry2.getKey()))
 								.add("value added with ifunction").get()), 
 								Arrays.asList(entry2.getValue()));						
 					} else {
@@ -355,11 +348,7 @@ public class Tester extends TestCase {
 		.exec(new IFunction<String[], String[]>() {
 			public String[] execute(String[] object, ExecCtx ctx)
 			throws Exception {					
-				return Op.onArray(object).add("value added with ifunction").get();
-			}
-			public Type<? extends String[]> getResultType(
-					Type<? extends String[]> targetType) {
-				return Types.ARRAY_OF_STRING;
+				return Op.onArrayOf(Types.STRING, object).add("value added with ifunction").get();
 			}
 		})
 		.get();
@@ -374,7 +363,7 @@ public class Tester extends TestCase {
 							if (!ArrayUtils.contains(new Integer[] {Integer.valueOf(2), Integer.valueOf(33)}, 
 									entry2.getKey())) {
 								if (entry2.getValue().length > 3) {	
-									assertEquals(Arrays.asList(Op.onArray(data.get(entry1.getKey()).get(entry2.getKey()))
+									assertEquals(Arrays.asList(Op.onArrayOf(Types.STRING, data.get(entry1.getKey()).get(entry2.getKey()))
 											.add("value added with ifunction").get()), 
 											Arrays.asList(entry2.getValue()));						
 								} else {
@@ -447,4 +436,68 @@ public class Tester extends TestCase {
         
     }
 	
+    
+    @Test
+    public void test14() {
+
+        List<Integer> expectedListInt1 = Arrays.asList(new Integer[] { 234,12,231 });
+        List<Integer> expectedListInt2 = Arrays.asList(new Integer[] { 234,10 });
+        
+        List<Integer> listInt1 = Op.onAll(234,12,231).getAsList();
+        List<Integer> listInt2 = Op.on(234).addAll(10).getAsList();
+        
+        assertEquals(expectedListInt1, listInt1);
+        assertEquals(expectedListInt2, listInt2);
+        
+    }
+        
+    
+    
+    @Test
+    public void test16() {
+        
+        final Serializable[] expSerArray = new Serializable[] {"one", "two", "three", Integer.valueOf(3) };
+        final Serializable[] serArray = new String[] {"one", "two", "three" };
+        
+        Serializable[] newArray = Op.onArrayOf(Types.SERIALIZABLE, serArray).add(Integer.valueOf(3)).get();
+
+        assertEquals(Serializable[].class, newArray.getClass());
+        assertEquals(expSerArray, serArray);
+        
+    }
+
+    
+    
+    
+    @Test
+    public void test17() {
+
+        final Serializable[] expSerArray = new Serializable[] {"one", "two", "three", Integer.valueOf(3) };
+        
+        final Serializable[] serArray = new Serializable[] {"one", "two", "three" };
+        
+        Serializable[] newArray =
+            Op.onArrayOf(Types.SERIALIZABLE, serArray).ifNotNull().
+                execAsArray(
+                        new IFunction<Serializable[],Serializable[]>() {
+    
+                            public Type<? extends Serializable[]> getResultType(Type<? extends Serializable[]> targetType) {
+                                return targetType;
+                            }
+    
+                            public Serializable[] execute(final Serializable[] object, final ExecCtx ctx) throws Exception {
+                                final String[] result = new String[object.length];
+                                for (int i = 0; i < object.length; i++) {
+                                    result[i] = (String) object[i];
+                                }
+                                return result;
+                            }
+                        
+                        }).endIf().add(Integer.valueOf(3)).get();
+        
+        assertEquals(Serializable[].class, newArray.getClass());
+        assertEquals(expSerArray, serArray);
+        
+    }
+    
 }

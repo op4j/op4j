@@ -17,10 +17,10 @@ import org.op4j.target.Target.Normalisation;
 public class Level3MapOfArrayEntriesValueSelectedElementsOperatorImpl<K,V> extends AbstractOperatorImpl implements Level3MapOfArrayEntriesValueSelectedElementsOperator<K,V> {
 
 
-    private final Type<? extends V> type;
+    private final Type<V> type;
 
 
-    public Level3MapOfArrayEntriesValueSelectedElementsOperatorImpl(final Type<? extends V> type, final Target target) {
+    public Level3MapOfArrayEntriesValueSelectedElementsOperatorImpl(final Type<V> type, final Target target) {
         super(target);
         this.type = type;
     }
@@ -82,17 +82,17 @@ public class Level3MapOfArrayEntriesValueSelectedElementsOperatorImpl<K,V> exten
 
 
     public Level2MapOfArrayEntriesValueSelectedOperator<K,V> endFor() {
-        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V>(getTarget().endIterate(this.type.getRawClass()));
-    }
-
-
-    public Level3MapOfArrayEntriesValueSelectedElementsOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
-        return new Level3MapOfArrayEntriesValueSelectedElementsOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalisation.NONE));
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V>(this.type, getTarget().endIterate(this.type.getRawClass()));
     }
 
 
     public Level3MapOfArrayEntriesValueSelectedElementsOperator<K,V> replaceWith(final V replacement) {
         return new Level3MapOfArrayEntriesValueSelectedElementsOperatorImpl<K,V>(this.type, getTarget().replaceWith(replacement));
+    }
+
+
+    public Level3MapOfArrayEntriesValueSelectedElementsOperator<K,V> exec(final IFunction<? extends V,? super V> function) {
+        return new Level3MapOfArrayEntriesValueSelectedElementsOperatorImpl<K,V>(this.type, getTarget().execute(function, Normalisation.NONE));
     }
 
 

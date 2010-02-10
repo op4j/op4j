@@ -27,7 +27,6 @@ import java.util.List;
 
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.ExecCtx;
 
 /**
@@ -58,11 +57,6 @@ public final class ToArray {
             this.type = type;
         }
 
-        @SuppressWarnings("unchecked")
-        public Type<? extends T[]> getResultType(final Type<? extends Collection<T>> targetType) {
-            return Types.arrayOf(Types.collectionComponentOf((Type<Collection<T>>)targetType));
-        }
-
         @Override
         @SuppressWarnings("unchecked")
         public T[] nullAsNullExecute(final Collection<T> object, final ExecCtx ctx) throws Exception {
@@ -83,11 +77,6 @@ public final class ToArray {
             super();
 			Validate.notNull(type, "A type representing the object must be specified");
             this.type = type;
-        }
-
-        @SuppressWarnings("unchecked")
-        public Type<? extends T[]> getResultType(final Type<? extends T> targetType) {
-            return Types.arrayOf((Type<T>)targetType);
         }
 
         @SuppressWarnings("unchecked")

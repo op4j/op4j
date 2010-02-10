@@ -176,11 +176,11 @@ public interface Level0SetOfSetOperator<T>
 
     public <X> Level0SetOfSetOperator<X> execAsSetOfSet(final IFunction<? extends Set<? extends Set<X>>, ? super Set<Set<T>>> function);
 
-    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<Set<T>>> function);
+    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Set<Set<T>>> function);
     
-    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Set<Set<T>>> eval);
+    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Set<Set<T>>> eval);
     
-    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Set<Set<T>>> converter);    
+    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Set<Set<T>>> converter);    
     
     
     

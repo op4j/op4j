@@ -82,6 +82,7 @@ import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
+import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalisationUtils;
 
 
@@ -105,30 +106,30 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
 
     @SuppressWarnings("unchecked")
     public Level0GenericMultiOperator<T> add(final T newElement) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFuncs.Add<T>(newElement)));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFuncs.Add<T>(newElement)).iterate(Structure.LIST, true));
     }
 
     public Level0GenericMultiOperator<T> addAll(final T... newElements) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFuncs.Add<T>(newElements)));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFuncs.Add<T>(newElements)).iterate(Structure.LIST, true));
     }
 
     @SuppressWarnings("unchecked")
     public Level0GenericMultiOperator<T> insert(final int position, final T newElement) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFuncs.Insert<T>(position, newElement)));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFuncs.Insert<T>(position, newElement)).iterate(Structure.LIST, true));
     }
 
     public Level0GenericMultiOperator<T> insertAll(final int position, final T... newElements) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFuncs.Insert<T>(position, newElements)));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFuncs.Insert<T>(position, newElements)).iterate(Structure.LIST, true));
     }
 
 
     public Level0GenericMultiOperator<T> addAll(final Collection<T> collection) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFuncs.AddAll<T>(collection)));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFuncs.AddAll<T>(collection)).iterate(Structure.LIST, true));
     }
 
 
-    public Level0ArrayOperator<T> buildArrayOf(final Type<T> arrayOf) {
-        return new Level0ArrayOperatorImpl<T>(getTarget().execute(new ToArray.FromObject<T>(arrayOf)));
+    public Level0ArrayOperator<T> buildArrayOf(final Type<T> type) {
+        return new Level0ArrayOperatorImpl<T>(type, getTarget().execute(new ToArray.FromObject<T>(type)));
     }
 
 
@@ -148,12 +149,12 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public <K> Level0MapOfArrayOperator<K, T> buildMapOfArrayOf(final Type<T> valueType, final IEvaluator<K, ? super T> keyEval) {
-        return new Level0MapOfArrayOperatorImpl<K, T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfArray.FromListByKeyEval<K, T>(valueType, keyEval)));
+        return new Level0MapOfArrayOperatorImpl<K, T>(valueType, getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfArray.FromListByKeyEval<K, T>(valueType, keyEval)));
     }
 
 
     public <K, V> Level0MapOfArrayOperator<K, V> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<K, V, ? super T> mapBuild) {
-        return new Level0MapOfArrayOperatorImpl<K, V>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfArray.FromListByMapBuilder<K, V, T>(valueType, mapBuild)));
+        return new Level0MapOfArrayOperatorImpl<K, V>(valueType, getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfArray.FromListByMapBuilder<K, V, T>(valueType, mapBuild)));
     }
 
 
@@ -185,7 +186,7 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     public <X> Level0ArrayOperator<X> asArrayOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
     	NormalisationUtils.checkIsArray(type, get());
-        return new Level0ArrayOperatorImpl<X>(getTarget());
+        return new Level0ArrayOperatorImpl<X>(type, getTarget());
     }
 
 
@@ -214,7 +215,7 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     public <X> Level0ArrayOfArrayOperator<X> asArrayOfArrayOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
     	NormalisationUtils.checkIsArrayOfArray(type, get());
-        return new Level0ArrayOfArrayOperatorImpl<X>(getTarget());
+        return new Level0ArrayOfArrayOperatorImpl<X>(type, getTarget());
     }
 
 
@@ -243,7 +244,7 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     public <X> Level0ListOfArrayOperator<X> asListOfArrayOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
     	NormalisationUtils.checkIsListOfArray(type, get());
-        return new Level0ListOfArrayOperatorImpl<X>(getTarget());
+        return new Level0ListOfArrayOperatorImpl<X>(type, getTarget());
     }
 
 
@@ -273,7 +274,7 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     	Validate.notNull(keyType, "A type representing the keys must be specified");
     	Validate.notNull(valueType, "A type representing the values must be specified");
     	NormalisationUtils.checkIsMapOfArray(keyType, valueType, get());
-        return new Level0MapOfArrayOperatorImpl<K,V>(getTarget());
+        return new Level0MapOfArrayOperatorImpl<K,V>(valueType, getTarget());
     }
 
 
@@ -305,7 +306,7 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     public <X> Level0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
     	NormalisationUtils.checkIsSetOfArray(type,get());
-        return new Level0SetOfArrayOperatorImpl<X>(getTarget());
+        return new Level0SetOfArrayOperatorImpl<X>(type, getTarget());
     }
 
 

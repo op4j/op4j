@@ -171,17 +171,23 @@ public interface Level0SetOfArrayOperator<T>
     public Level0SetOfArrayOperator<T> replaceIfNullWith(final Set<T[]> replacement);
 
 
-    public <X> Level0SetOfArrayOperator<X> convertAsSetOfArray(final IConverter<? extends Set<X[]>,? super Set<T[]>> converter);
+    public Level0SetOfArrayOperator<T> convertAsSetOfArray(final IConverter<? extends Set<? extends T[]>,? super Set<T[]>> converter);
     
-    public <X> Level0SetOfArrayOperator<X> evalAsSetOfArray(final IEvaluator<? extends Set<X[]>,? super Set<T[]>> eval);
+    public Level0SetOfArrayOperator<T> evalAsSetOfArray(final IEvaluator<? extends Set<? extends T[]>,? super Set<T[]>> eval);
 
-    public <X> Level0SetOfArrayOperator<X> execAsSetOfArray(final IFunction<? extends Set<X[]>,? super Set<T[]>> function);
+    public Level0SetOfArrayOperator<T> execAsSetOfArray(final IFunction<? extends Set<? extends T[]>,? super Set<T[]>> function);
 
-    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<T[]>> function);
+    public <X> Level0SetOfArrayOperator<X> convertAsSetOfArrayOf(final Type<X> type, final IConverter<? extends Set<X[]>,? super Set<T[]>> converter);
     
-    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Set<T[]>> eval);
+    public <X> Level0SetOfArrayOperator<X> evalAsSetOfArrayOf(final Type<X> type, final IEvaluator<? extends Set<X[]>,? super Set<T[]>> eval);
+
+    public <X> Level0SetOfArrayOperator<X> execAsSetOfArrayOf(final Type<X> type, final IFunction<? extends Set<X[]>,? super Set<T[]>> function);
+
+    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Set<T[]>> function);
     
-    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Set<T[]>> converter);    
+    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Set<T[]>> eval);
+    
+    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Set<T[]>> converter);    
     
     
     public <X> Level0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type);

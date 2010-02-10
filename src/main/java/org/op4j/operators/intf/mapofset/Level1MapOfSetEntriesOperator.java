@@ -22,7 +22,6 @@ package org.op4j.operators.intf.mapofset;
 import java.util.Map;
 import java.util.Set;
 
-import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -73,11 +72,11 @@ public interface Level1MapOfSetEntriesOperator<K,V>
 
     public <X,Y> Level1MapOfSetEntriesOperator<X,Y> convertAsMapOfSetEntry(final IConverter<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> converter);
 
-    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K,Set<V>>> function);
+    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map.Entry<K,Set<V>>> function);
     
-    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map.Entry<K,Set<V>>> eval);
+    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Map.Entry<K,Set<V>>> eval);
     
-    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Map.Entry<K,Set<V>>> converter);    
+    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Map.Entry<K,Set<V>>> converter);    
 
     
 }

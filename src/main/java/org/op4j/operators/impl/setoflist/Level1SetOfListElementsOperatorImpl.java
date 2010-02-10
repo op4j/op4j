@@ -169,7 +169,7 @@ public class Level1SetOfListElementsOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level1SetOfArrayElementsOperator<T> toArrayOf(final Type<T> type) {
-        return new Level1SetOfArrayElementsOperatorImpl<T>(getTarget().execute(new ToArray.FromCollection<T>(type)));
+        return new Level1SetOfArrayElementsOperatorImpl<T>(type, getTarget().execute(new ToArray.FromCollection<T>(type)));
     }
 
 
@@ -277,17 +277,17 @@ public class Level1SetOfListElementsOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <X> Level1SetElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super List<T>> converter) {
+    public <X> Level1SetElementsOperator<X> convert(final IConverter<X, ? super List<T>> converter) {
         return new Level1SetElementsOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
-    public <X> Level1SetElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super List<T>> eval) {
+    public <X> Level1SetElementsOperator<X> eval(final IEvaluator<X, ? super List<T>> eval) {
         return new Level1SetElementsOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
-    public <X> Level1SetElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T>> function) {
+    public <X> Level1SetElementsOperator<X> exec(final IFunction<X, ? super List<T>> function) {
         return new Level1SetElementsOperatorImpl<X>(getTarget().execute(function, Normalisation.NONE));
     }
 

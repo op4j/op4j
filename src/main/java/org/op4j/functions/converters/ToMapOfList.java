@@ -27,8 +27,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.Validate;
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.exceptions.FunctionExecutionException;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -63,13 +61,7 @@ public class ToMapOfList {
             this.eval = eval;
         }
 
-		@SuppressWarnings("unchecked")
-		public Type<? extends Map<K, List<T>>> getResultType(final Type<? extends T[]> targetType) {
-			final Type<T> typeT = Types.arrayComponentOf((Type<T[]>)targetType);
-			return Types.mapOf((Type<K>)this.eval.getResultType(typeT), Types.listOf(typeT));
-		}
-
-        @Override
+		@Override
         public Map<K, List<T>> nullAsNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
             for (final T element: object) {
@@ -100,13 +92,7 @@ public class ToMapOfList {
             this.mapBuilder = mapBuilder;
         }
 
-		@SuppressWarnings("unchecked")
-		public Type<? extends Map<K, List<V>>> getResultType(final Type<? extends T[]> targetType) {
-			final Type<T> typeT = Types.arrayComponentOf((Type<T[]>)targetType);
-			return Types.mapOf((Type<K>)this.mapBuilder.getKeyType(typeT), Types.listOf((Type<V>)this.mapBuilder.getValueType(typeT)));
-		}
-
-        @Override
+		@Override
         public Map<K, List<V>> nullAsNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
@@ -133,13 +119,7 @@ public class ToMapOfList {
             super();
         }
 
-		@SuppressWarnings("unchecked")
-		public Type<? extends Map<T, List<T>>> getResultType(final Type<? extends T[]> targetType) {
-			final Type<T> typeT = Types.arrayComponentOf((Type<T[]>)targetType);
-			return Types.mapOf(typeT, Types.listOf(typeT));
-		}
-
-        @Override
+		@Override
         public Map<T, List<T>> nullAsNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             if (object.length % 2 != 0) {
                 throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");
@@ -176,13 +156,7 @@ public class ToMapOfList {
             this.eval = eval;
         }
 
-		@SuppressWarnings("unchecked")
-		public Type<? extends Map<K, List<T>>> getResultType(final Type<? extends List<T>> targetType) {
-			final Type<T> typeT = Types.listComponentOf((Type<List<T>>)targetType);
-			return Types.mapOf((Type<K>)this.eval.getResultType(typeT), Types.listOf(typeT));
-		}
-
-        @Override
+		@Override
         public Map<K, List<T>> nullAsNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
             final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
             for (final T element: object) {
@@ -213,13 +187,7 @@ public class ToMapOfList {
             this.mapBuilder = mapBuilder;
         }
 
-		@SuppressWarnings("unchecked")
-		public Type<? extends Map<K, List<V>>> getResultType(final Type<? extends List<T>> targetType) {
-			final Type<T> typeT = Types.listComponentOf((Type<List<T>>)targetType);
-			return Types.mapOf((Type<K>)this.mapBuilder.getKeyType(typeT), Types.listOf((Type<V>)this.mapBuilder.getValueType(typeT)));
-		}
-
-        @Override
+		@Override
         public Map<K, List<V>> nullAsNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
             final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
@@ -246,13 +214,7 @@ public class ToMapOfList {
             super();
         }
 
-		@SuppressWarnings("unchecked")
-		public Type<? extends Map<T, List<T>>> getResultType(final Type<? extends List<T>> targetType) {
-			final Type<T> typeT = Types.listComponentOf((Type<List<T>>)targetType);
-			return Types.mapOf(typeT, Types.listOf(typeT));
-		}
-
-        @Override
+		@Override
         public Map<T, List<T>> nullAsNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
             if (object.size() % 2 != 0) {
                 throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");
@@ -288,13 +250,7 @@ public class ToMapOfList {
             this.eval = eval;
         }
 
-		@SuppressWarnings("unchecked")
-		public Type<? extends Map<K, List<T>>> getResultType(final Type<? extends Set<T>> targetType) {
-			final Type<T> typeT = Types.setComponentOf((Type<Set<T>>)targetType);
-			return Types.mapOf((Type<K>)this.eval.getResultType(typeT), Types.listOf(typeT));
-		}
-
-        @Override
+		@Override
         public Map<K, List<T>> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
             final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
             for (final T element: object) {
@@ -325,13 +281,7 @@ public class ToMapOfList {
             this.mapBuilder = mapBuilder;
         }
 
-		@SuppressWarnings("unchecked")
-		public Type<? extends Map<K, List<V>>> getResultType(final Type<? extends Set<T>> targetType) {
-			final Type<T> typeT = Types.setComponentOf((Type<Set<T>>)targetType);
-			return Types.mapOf((Type<K>)this.mapBuilder.getKeyType(typeT), Types.listOf((Type<V>)this.mapBuilder.getValueType(typeT)));
-		}
-
-        @Override
+		@Override
         public Map<K, List<V>> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
             final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
@@ -358,13 +308,7 @@ public class ToMapOfList {
             super();
         }
 
-		@SuppressWarnings("unchecked")
-		public Type<? extends Map<T, List<T>>> getResultType(final Type<? extends Set<T>> targetType) {
-			final Type<T> typeT = Types.setComponentOf((Type<Set<T>>)targetType);
-			return Types.mapOf(typeT, Types.listOf(typeT));
-		}
-
-        @Override
+		@Override
         public Map<T, List<T>> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
             if (object.size() % 2 != 0) {
                 throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");

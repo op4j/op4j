@@ -22,7 +22,6 @@ package org.op4j.operators.impl.arrayofmap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -121,17 +120,17 @@ public class Level2ArrayOfMapElementsEntriesOperatorImpl<K,V> extends AbstractOp
     }
 
 
-    public <X> Level2ArrayOfListElementsElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super Entry<K, V>> converter) {
+    public <X> Level2ArrayOfListElementsElementsOperator<X> convert(final IConverter<X, ? super Entry<K, V>> converter) {
         return new Level2ArrayOfListElementsElementsOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
-    public <X> Level2ArrayOfListElementsElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super Entry<K, V>> eval) {
+    public <X> Level2ArrayOfListElementsElementsOperator<X> eval(final IEvaluator<X, ? super Entry<K, V>> eval) {
         return new Level2ArrayOfListElementsElementsOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
-    public <X> Level2ArrayOfListElementsElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Entry<K, V>> function) {
+    public <X> Level2ArrayOfListElementsElementsOperator<X> exec(final IFunction<X, ? super Entry<K, V>> function) {
         return new Level2ArrayOfListElementsElementsOperatorImpl<X>(getTarget().execute(function, Normalisation.NONE));
     }
 

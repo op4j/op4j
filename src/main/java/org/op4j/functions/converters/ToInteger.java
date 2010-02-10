@@ -23,9 +23,6 @@ package org.op4j.functions.converters;
 import java.math.RoundingMode;
 import java.util.Locale;
 
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
-
 /**
  * 
  * @since 1.0
@@ -146,11 +143,6 @@ public class ToInteger {
         }
 
         @Override
-        protected Type<Integer> getResultType() {
-            return Types.INTEGER;
-        }
-
-        @Override
         protected Integer fromNumber(final Number number) {
             return ToInteger.internalFromNumber(number);
         }
@@ -169,11 +161,6 @@ public class ToInteger {
 
         public FromBoolean() {
             super();
-        }
-
-        @Override
-        protected Type<Integer> getResultType() {
-            return Types.INTEGER;
         }
 
         @Override
@@ -230,11 +217,6 @@ public class ToInteger {
         }
 
         @Override
-        protected Type<Integer> getResultType() {
-            return Types.INTEGER;
-        }
-
-        @Override
         protected Integer fromNumber(final Number number) {
             return ToInteger.internalFromNumber(number);
         }
@@ -261,11 +243,6 @@ public class ToInteger {
         }
 
         @Override
-        protected Type<Integer> getResultType() {
-            return Types.INTEGER;
-        }
-
-        @Override
         protected Integer fromNumber(final Number number) {
             return ToInteger.internalFromNumber(number);
         }
@@ -287,11 +264,6 @@ public class ToInteger {
         }
 
         @Override
-        protected Type<Integer> getResultType() {
-            return Types.INTEGER;
-        }
-
-        @Override
         protected Integer fromNumber(final Number number) {
             return ToInteger.internalFromNumber(number);
         }
@@ -310,11 +282,6 @@ public class ToInteger {
 
         public FromBigDecimal(final RoundingMode roundingMode) {
             super(roundingMode);
-        }
-
-        @Override
-        protected Type<Integer> getResultType() {
-            return Types.INTEGER;
         }
 
         @Override

@@ -81,13 +81,13 @@ public class Level2ArrayOfSetSelectedElementsElementsOperatorImpl<T> extends Abs
     }
 
 
-    public Level2ArrayOfSetSelectedElementsElementsOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level2ArrayOfSetSelectedElementsElementsOperatorImpl<T>(getTarget().execute(function, Normalisation.NONE));
+    public Level2ArrayOfSetSelectedElementsElementsOperator<T> replaceWith(final T replacement) {
+        return new Level2ArrayOfSetSelectedElementsElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level2ArrayOfSetSelectedElementsElementsOperator<T> replaceWith(final T replacement) {
-        return new Level2ArrayOfSetSelectedElementsElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
+    public Level2ArrayOfSetSelectedElementsElementsOperator<T> exec(final IFunction<? extends T,? super T> function) {
+        return new Level2ArrayOfSetSelectedElementsElementsOperatorImpl<T>(getTarget().execute(function, Normalisation.NONE));
     }
 
 

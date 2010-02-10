@@ -33,7 +33,6 @@ import java.util.Set;
 
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.util.VarArgsUtil;
 
@@ -532,11 +531,6 @@ public class ArrayFuncs {
             this.type = type;
         }
 
-        @SuppressWarnings("unchecked")
-        public Type<? extends T[]> getResultType(final Type<? extends T[][]> targetType) {
-            return Types.arrayComponentOf((Type<T[][]>)targetType);
-        }
-
         @Override
         @SuppressWarnings("unchecked")
         public T[] notNullExecute(final T[][] object, final ExecCtx ctx) throws Exception {
@@ -562,11 +556,6 @@ public class ArrayFuncs {
             super();
             Validate.notNull(type, "A type representing the collection elements must be specified");
             this.type = type;
-        }
-
-        @SuppressWarnings("unchecked")
-        public Type<? extends T[]> getResultType(final Type<? extends List<T>[]> targetType) {
-            return Types.arrayOf(Types.listComponentOf(Types.arrayComponentOf((Type<List<T>[]>)targetType)));
         }
 
         @Override
@@ -595,11 +584,6 @@ public class ArrayFuncs {
             super();
             Validate.notNull(type, "A type representing the collection elements must be specified");
             this.type = type;
-        }
-
-        @SuppressWarnings("unchecked")
-        public Type<? extends T[]> getResultType(final Type<? extends Set<T>[]> targetType) {
-            return Types.arrayOf(Types.setComponentOf(Types.arrayComponentOf((Type<Set<T>[]>)targetType)));
         }
 
         @Override

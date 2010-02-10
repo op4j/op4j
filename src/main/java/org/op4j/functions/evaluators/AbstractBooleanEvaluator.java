@@ -20,8 +20,6 @@
 
 package org.op4j.functions.evaluators;
 
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 
 /**
  * 
@@ -37,9 +35,4 @@ public abstract class AbstractBooleanEvaluator<T> implements IEvaluator<Boolean,
 		super();
 	}
 
-	public final Type<? extends Boolean> getResultType(Type<? extends T> targetType) {
-		return Types.BOOLEAN;
 	}
-	
-
-}

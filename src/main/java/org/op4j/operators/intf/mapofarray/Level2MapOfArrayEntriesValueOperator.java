@@ -39,7 +39,7 @@ import org.op4j.operators.qualities.ConvertibleToSetOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
 import org.op4j.operators.qualities.ExecutableArrayOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
-import org.op4j.operators.qualities.NavigableArrayOperator;
+import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
 import org.op4j.operators.qualities.ReplaceableIfNullOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
@@ -55,7 +55,7 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level2MapOfArrayEntriesValueOperator<K,V>
         extends UniqOperator<Map<K,V[]>>,
-                NavigableArrayOperator<V>,
+                NavigableCollectionOperator<V>,
 	        	NavigatingMapEntryOperator,
 		        DistinguishableOperator,
 		        CastableToArrayOperator,
@@ -83,7 +83,7 @@ public interface Level2MapOfArrayEntriesValueOperator<K,V>
     public Level2MapOfArrayEntriesValueSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V[]> eval);
 
     
-    public Level3MapOfArrayEntriesValueElementsOperator<K,V> forEach(final Type<V> elementType);
+    public Level3MapOfArrayEntriesValueElementsOperator<K,V> forEach();
     
     public Level1MapOfArrayEntriesOperator<K,V> endOn();
 
@@ -121,17 +121,23 @@ public interface Level2MapOfArrayEntriesValueOperator<K,V>
     public Level2MapOfArrayEntriesValueOperator<K,V> replaceIfNullWith(final V[] replacement);
 
 
-    public <X> Level2MapOfArrayEntriesValueOperator<K,X> convertAsArray(final IConverter<X[],? super V[]> converter);
+    public Level2MapOfArrayEntriesValueOperator<K,V> convertAsArray(final IConverter<? extends V[],? super V[]> converter);
     
-    public <X> Level2MapOfArrayEntriesValueOperator<K,X> evalAsArray(final IEvaluator<X[],? super V[]> eval);
+    public Level2MapOfArrayEntriesValueOperator<K,V> evalAsArray(final IEvaluator<? extends V[],? super V[]> eval);
 
-    public <X> Level2MapOfArrayEntriesValueOperator<K,X> execAsArray(final IFunction<X[], ? super V[]> function);
+    public Level2MapOfArrayEntriesValueOperator<K,V> execAsArray(final IFunction<? extends V[], ? super V[]> function);
 
-    public <X> Level2MapEntriesValueOperator<K,X> exec(final Type<X> resultType, final IFunction<? extends X, ? super V[]> function);
+    public <X> Level2MapOfArrayEntriesValueOperator<K,X> convertAsArrayOf(final Type<X> valueType, final IConverter<X[],? super V[]> converter);
     
-    public <X> Level2MapEntriesValueOperator<K,X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super V[]> eval);
+    public <X> Level2MapOfArrayEntriesValueOperator<K,X> evalAsArrayOf(final Type<X> valueType, final IEvaluator<X[],? super V[]> eval);
+
+    public <X> Level2MapOfArrayEntriesValueOperator<K,X> execAsArrayOf(final Type<X> valueType, final IFunction<X[], ? super V[]> function);
+
+    public <X> Level2MapEntriesValueOperator<K,X> exec(final IFunction<X, ? super V[]> function);
     
-    public <X> Level2MapEntriesValueOperator<K,X> convert(final Type<X> resultType, final IConverter<? extends X,? super V[]> converter);    
+    public <X> Level2MapEntriesValueOperator<K,X> eval(final IEvaluator<X,? super V[]> eval);
+    
+    public <X> Level2MapEntriesValueOperator<K,X> convert(final IConverter<X,? super V[]> converter);    
     
     
     

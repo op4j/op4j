@@ -127,12 +127,6 @@ public class Call<R,T> implements IEvaluator<R,T> {
     
     
     
-    public Type<? extends R> getResultType(final Type<? extends T> targetType) {
-    	return this.resultType;
-    }
-
-    
-	
     @SuppressWarnings("unchecked")
 	public R execute(final T input, final ExecCtx ctx) throws Exception {
 

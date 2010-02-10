@@ -123,17 +123,23 @@ public interface Level0MapOfArrayOperator<K,V>
     public Level0MapOfArrayOperator<K,V> replaceIfNullWith(final Map<K,V[]> replacement);
 
 
-    public <X,Y> Level0MapOfArrayOperator<X,Y> convertAsMapOfArray(final IConverter<? extends Map<X,Y[]>,? super Map<K,V[]>> converter);
+    public Level0MapOfArrayOperator<K,V> convertAsMapOfArray(final IConverter<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> converter);
     
-    public <X,Y> Level0MapOfArrayOperator<X,Y> evalAsMapOfArray(final IEvaluator<? extends Map<X,Y[]>,? super Map<K,V[]>> eval);
+    public Level0MapOfArrayOperator<K,V> evalAsMapOfArray(final IEvaluator<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> eval);
 
-    public <X,Y> Level0MapOfArrayOperator<X,Y> execAsMapOfArray(final IFunction<? extends Map<X,Y[]>,? super Map<K,V[]>> function);
+    public Level0MapOfArrayOperator<K,V> execAsMapOfArray(final IFunction<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> function);
 
-    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K,V[]>> function);
+    public <X,Y> Level0MapOfArrayOperator<X,Y> convertAsMapOfArrayOf(final Type<Y> valueType, final IConverter<? extends Map<X,Y[]>,? super Map<K,V[]>> converter);
     
-    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map<K,V[]>> eval);
+    public <X,Y> Level0MapOfArrayOperator<X,Y> evalAsMapOfArrayOf(final Type<Y> valueType, final IEvaluator<? extends Map<X,Y[]>,? super Map<K,V[]>> eval);
+
+    public <X,Y> Level0MapOfArrayOperator<X,Y> execAsMapOfArrayOf(final Type<Y> valueType, final IFunction<? extends Map<X,Y[]>,? super Map<K,V[]>> function);
+
+    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,V[]>> function);
     
-    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Map<K,V[]>> converter);    
+    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Map<K,V[]>> eval);
+    
+    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Map<K,V[]>> converter);    
     
     
     

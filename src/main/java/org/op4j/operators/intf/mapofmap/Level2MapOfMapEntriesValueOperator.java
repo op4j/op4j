@@ -109,11 +109,11 @@ public interface Level2MapOfMapEntriesValueOperator<K1,K2,V>
 
     public <X2,Y> Level2MapOfMapEntriesValueOperator<K1,X2,Y> execAsMap(final IFunction<? extends Map<X2,Y>, ? super Map<K2,V>> function);
 
-    public <X> Level2MapEntriesValueOperator<K1,X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K2,V>> function);
+    public <X> Level2MapEntriesValueOperator<K1,X> exec(final IFunction<X, ? super Map<K2,V>> function);
     
-    public <X> Level2MapEntriesValueOperator<K1,X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map<K2,V>> eval);
+    public <X> Level2MapEntriesValueOperator<K1,X> eval(final IEvaluator<X,? super Map<K2,V>> eval);
     
-    public <X> Level2MapEntriesValueOperator<K1,X> convert(final Type<X> resultType, final IConverter<? extends X,? super Map<K2,V>> converter);    
+    public <X> Level2MapEntriesValueOperator<K1,X> convert(final IConverter<X,? super Map<K2,V>> converter);    
 
     
     

@@ -20,8 +20,6 @@
 
 package org.op4j.functions;
 
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 
 /**
  * 
@@ -38,8 +36,4 @@ public abstract class AbstractBooleanFunction<T> implements IFunction<Boolean, T
 	}
 	
 
-	public final Type<? extends Boolean> getResultType(Type<? extends T> targetType) {
-		return Types.BOOLEAN;
 	}
-
-}

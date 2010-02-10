@@ -228,17 +228,17 @@ public class Level1SetOfMapElementsOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
-    public <X> Level1SetElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super Map<K, V>> converter) {
+    public <X> Level1SetElementsOperator<X> convert(final IConverter<X, ? super Map<K, V>> converter) {
         return new Level1SetElementsOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
-    public <X> Level1SetElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super Map<K, V>> eval) {
+    public <X> Level1SetElementsOperator<X> eval(final IEvaluator<X, ? super Map<K, V>> eval) {
         return new Level1SetElementsOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
-    public <X> Level1SetElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map<K, V>> function) {
+    public <X> Level1SetElementsOperator<X> exec(final IFunction<X, ? super Map<K, V>> function) {
         return new Level1SetElementsOperatorImpl<X>(getTarget().execute(function, Normalisation.NONE));
     }
 

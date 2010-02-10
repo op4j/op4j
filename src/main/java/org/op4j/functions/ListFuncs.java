@@ -27,8 +27,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.evaluators.IEvaluator;
 
 /**
@@ -314,11 +312,6 @@ public class ListFuncs {
             super();
         }
 
-        @SuppressWarnings("unchecked")
-        public Type<? extends List<T>> getResultType(final Type<? extends List<T[]>> targetType) {
-            return Types.listOf(Types.arrayComponentOf(Types.listComponentOf((Type<List<T[]>>)targetType)));
-        }
-
         @Override
         List<T> fromList(final List<T> object) {
             return object;
@@ -336,11 +329,6 @@ public class ListFuncs {
             super();
         }
 
-        @SuppressWarnings("unchecked")
-        public Type<? extends List<T>> getResultType(final Type<? extends List<List<T>>> targetType) {
-            return Types.listOf(Types.listComponentOf(Types.listComponentOf((Type<List<List<T>>>)targetType)));
-        }
-
         @Override
         List<T> fromList(final List<T> object) {
             return object;
@@ -356,11 +344,6 @@ public class ListFuncs {
         
         public FlattenListOfSets() {
             super();
-        }
-
-        @SuppressWarnings("unchecked")
-        public Type<? extends List<T>> getResultType(final Type<? extends List<Set<T>>> targetType) {
-            return Types.listOf(Types.setComponentOf(Types.listComponentOf((Type<List<Set<T>>>)targetType)));
         }
 
         @Override

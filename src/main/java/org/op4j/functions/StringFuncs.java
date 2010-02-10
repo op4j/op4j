@@ -25,8 +25,6 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 
 /**
  * 
@@ -126,11 +124,7 @@ public class StringFuncs {
 			super();			
 		}
 
-        public Type<? extends String> getResultType(final Type<? extends X> targetType) {
-            return Types.STRING;
         }
-		
-	}
 	
 	/**
 	 * The String is returned in a way it can be used to fill in a CSV column as StringEscapeUtils does

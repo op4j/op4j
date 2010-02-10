@@ -17,10 +17,10 @@ import org.op4j.target.Target.Normalisation;
 public class Level2ListOfArraySelectedElementsElementsOperatorImpl<T> extends AbstractOperatorImpl implements Level2ListOfArraySelectedElementsElementsOperator<T> {
 
 
-    private final Type<? extends T> type;
+    private final Type<T> type;
 
 
-    public Level2ListOfArraySelectedElementsElementsOperatorImpl(final Type<? extends T> type, final Target target) {
+    public Level2ListOfArraySelectedElementsElementsOperatorImpl(final Type<T> type, final Target target) {
         super(target);
         this.type = type;
     }
@@ -82,17 +82,17 @@ public class Level2ListOfArraySelectedElementsElementsOperatorImpl<T> extends Ab
 
 
     public Level1ListOfArraySelectedElementsOperator<T> endFor() {
-        return new Level1ListOfArraySelectedElementsOperatorImpl<T>(getTarget().endIterate(this.type.getRawClass()));
-    }
-
-
-    public Level2ListOfArraySelectedElementsElementsOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level2ListOfArraySelectedElementsElementsOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.NONE));
+        return new Level1ListOfArraySelectedElementsOperatorImpl<T>(this.type, getTarget().endIterate(this.type.getRawClass()));
     }
 
 
     public Level2ListOfArraySelectedElementsElementsOperator<T> replaceWith(final T replacement) {
         return new Level2ListOfArraySelectedElementsElementsOperatorImpl<T>(this.type, getTarget().replaceWith(replacement));
+    }
+
+
+    public Level2ListOfArraySelectedElementsElementsOperator<T> exec(final IFunction<? extends T,? super T> function) {
+        return new Level2ListOfArraySelectedElementsElementsOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.NONE));
     }
 
 

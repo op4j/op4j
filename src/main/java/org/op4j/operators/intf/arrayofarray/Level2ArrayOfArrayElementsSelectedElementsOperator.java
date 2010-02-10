@@ -25,7 +25,7 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
-import org.op4j.operators.qualities.NavigatingArrayOperator;
+import org.op4j.operators.qualities.NavigatingCollectionOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOperator;
@@ -42,7 +42,7 @@ public interface Level2ArrayOfArrayElementsSelectedElementsOperator<T>
         extends UniqOperator<T[][]>,
         		ExecutableSelectedOperator<T>,
                 ReplaceableOperator<T>,
-                NavigatingArrayOperator<T>,
+                NavigatingCollectionOperator<T>,
                 SelectableOperator<T> {
 
 

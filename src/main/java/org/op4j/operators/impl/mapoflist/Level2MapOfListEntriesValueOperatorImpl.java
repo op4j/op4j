@@ -170,7 +170,7 @@ public class Level2MapOfListEntriesValueOperatorImpl<K,V> extends AbstractOperat
 
 
     public Level2MapOfArrayEntriesValueOperator<K, V> toArrayOf(final Type<V> type) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().execute(new ToArray.FromCollection<V>(type)));
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(type, getTarget().execute(new ToArray.FromCollection<V>(type)));
     }
 
 
@@ -285,17 +285,17 @@ public class Level2MapOfListEntriesValueOperatorImpl<K,V> extends AbstractOperat
     }
 
 
-    public <X> Level2MapEntriesValueOperator<K, X> convert(final Type<X> resultType, final IConverter<? extends X, ? super List<V>> converter) {
+    public <X> Level2MapEntriesValueOperator<K, X> convert(final IConverter<X, ? super List<V>> converter) {
         return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
-    public <X> Level2MapEntriesValueOperator<K, X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super List<V>> eval) {
+    public <X> Level2MapEntriesValueOperator<K, X> eval(final IEvaluator<X, ? super List<V>> eval) {
         return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
-    public <X> Level2MapEntriesValueOperator<K, X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<V>> function) {
+    public <X> Level2MapEntriesValueOperator<K, X> exec(final IFunction<X, ? super List<V>> function) {
         return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().execute(function, Normalisation.NONE));
     }
 

@@ -22,14 +22,13 @@ package org.op4j.operators.intf.arrayofarray;
 import java.util.Collection;
 import java.util.Comparator;
 
-import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.DistinguishableOperator;
 import org.op4j.operators.qualities.ExecutableArrayOfArraySelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
-import org.op4j.operators.qualities.NavigableArrayOperator;
+import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.SortableOperator;
@@ -43,7 +42,7 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level0ArrayOfArraySelectedOperator<T>
         extends UniqOperator<T[][]>,
-                NavigableArrayOperator<T[]>,
+                NavigableCollectionOperator<T[]>,
                 DistinguishableOperator,
                 SortableOperator<T[]>,
                 ModifiableCollectionOperator<T[]>,
@@ -57,7 +56,7 @@ public interface Level0ArrayOfArraySelectedOperator<T>
 
 
 
-    public Level1ArrayOfArraySelectedElementsOperator<T> forEach(final Type<T[]> elementType);
+    public Level1ArrayOfArraySelectedElementsOperator<T> forEach();
 
     public Level0ArrayOfArraySelectedOperator<T> distinct();
     

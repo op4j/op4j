@@ -37,7 +37,7 @@ import org.op4j.operators.qualities.ConvertibleToArrayOperator;
 import org.op4j.operators.qualities.ConvertibleToMapOperator;
 import org.op4j.operators.qualities.ConvertibleToSetOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
-import org.op4j.operators.qualities.ExecutableListOperator;
+import org.op4j.operators.qualities.ExecutableArrayOfListElementsOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
@@ -60,7 +60,7 @@ public interface Level1ArrayOfListElementsOperator<T>
 		        DistinguishableOperator,
                 CastableToListOperator,
 		        SortableOperator<T>,
-                ExecutableListOperator<T>,
+                ExecutableArrayOfListElementsOperator<T>,
                 SelectableOperator<List<T>>,
                 ReplaceableOperator<List<T>>,
                 ReplaceableIfNullOperator<List<T>>,
@@ -129,11 +129,11 @@ public interface Level1ArrayOfListElementsOperator<T>
 
     public <X> Level1ArrayOfListElementsOperator<X> execAsList(final IFunction<? extends List<X>, ? super List<T>> function);
 
-    public <X> Level1ArrayElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T>> function);
+    public <X> Level1ArrayElementsOperator<X> exec(final Type<X> resultType, final IFunction<X, ? super List<T>> function);
     
-    public <X> Level1ArrayElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super List<T>> eval);
+    public <X> Level1ArrayElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<X,? super List<T>> eval);
     
-    public <X> Level1ArrayElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super List<T>> converter);    
+    public <X> Level1ArrayElementsOperator<X> convert(final Type<X> resultType, final IConverter<X,? super List<T>> converter);    
     
     
     

@@ -39,7 +39,7 @@ import org.op4j.operators.qualities.ConvertibleToSetOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
 import org.op4j.operators.qualities.ExecutableArrayOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
-import org.op4j.operators.qualities.NavigableArrayOperator;
+import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
 import org.op4j.operators.qualities.ReplaceableIfNullOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
@@ -55,7 +55,7 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level1SetOfArrayElementsOperator<T>
         extends UniqOperator<Set<T[]>>,
-                NavigableArrayOperator<T>,
+                NavigableCollectionOperator<T>,
                 NavigatingCollectionOperator<T[]>,
 		        DistinguishableOperator,
 		        SortableOperator<T>,
@@ -84,7 +84,7 @@ public interface Level1SetOfArrayElementsOperator<T>
 
 
     
-    public Level2SetOfArrayElementsElementsOperator<T> forEach(final Type<T> elementType);
+    public Level2SetOfArrayElementsElementsOperator<T> forEach();
     
     public Level0SetOfArrayOperator<T> endFor();
 
@@ -121,17 +121,23 @@ public interface Level1SetOfArrayElementsOperator<T>
     public Level1SetOfArrayElementsOperator<T> replaceIfNullWith(final T[] replacement);
 
 
-    public <X> Level1SetOfArrayElementsOperator<X> convertAsArray(final IConverter<X[],? super T[]> converter);
+    public Level1SetOfArrayElementsOperator<T> convertAsArray(final IConverter<? extends T[],? super T[]> converter);
     
-    public <X> Level1SetOfArrayElementsOperator<X> evalAsArray(final IEvaluator<X[],? super T[]> eval);
+    public Level1SetOfArrayElementsOperator<T> evalAsArray(final IEvaluator<? extends T[],? super T[]> eval);
 
-    public <X> Level1SetOfArrayElementsOperator<X> execAsArray(final IFunction<X[], ? super T[]> function);
+    public Level1SetOfArrayElementsOperator<T> execAsArray(final IFunction<? extends T[], ? super T[]> function);
 
-    public <X> Level1SetElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super T[]> function);
+    public <X> Level1SetOfArrayElementsOperator<X> convertAsArrayOf(final Type<X> type, final IConverter<X[],? super T[]> converter);
     
-    public <X> Level1SetElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super T[]> eval);
+    public <X> Level1SetOfArrayElementsOperator<X> evalAsArrayOf(final Type<X> type, final IEvaluator<X[],? super T[]> eval);
+
+    public <X> Level1SetOfArrayElementsOperator<X> execAsArrayOf(final Type<X> type, final IFunction<X[], ? super T[]> function);
+
+    public <X> Level1SetElementsOperator<X> exec(final IFunction<X, ? super T[]> function);
     
-    public <X> Level1SetElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super T[]> converter);    
+    public <X> Level1SetElementsOperator<X> eval(final IEvaluator<X,? super T[]> eval);
+    
+    public <X> Level1SetElementsOperator<X> convert(final IConverter<X,? super T[]> converter);    
     
     
     public <X> Level1SetOfArrayElementsOperator<X> asArrayOf(final Type<X> type);

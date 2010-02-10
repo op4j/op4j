@@ -28,13 +28,13 @@ public class Level0GenericUniqSelectedOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
-    public Level0GenericUniqSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.NONE));
+    public Level0GenericUniqSelectedOperator<T> replaceWith(final T replacement) {
+        return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level0GenericUniqSelectedOperator<T> replaceWith(final T replacement) {
-        return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+    public Level0GenericUniqSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
+        return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.NONE));
     }
 
 

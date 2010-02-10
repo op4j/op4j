@@ -23,14 +23,13 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
 
-import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.DistinguishableOperator;
 import org.op4j.operators.qualities.ExecutableArraySelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
-import org.op4j.operators.qualities.NavigableArrayOperator;
+import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
@@ -45,7 +44,7 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level2MapOfArraySelectedEntriesValueOperator<K,V>
         extends UniqOperator<Map<K,V[]>>,
-                NavigableArrayOperator<V>,
+                NavigableCollectionOperator<V>,
 	        	NavigatingMapEntryOperator,
 		        DistinguishableOperator,
 		        SortableOperator<V>,
@@ -68,7 +67,7 @@ public interface Level2MapOfArraySelectedEntriesValueOperator<K,V>
     public Level2MapOfArraySelectedEntriesValueSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V[]> eval);
 
     
-    public Level3MapOfArraySelectedEntriesValueElementsOperator<K,V> forEach(final Type<V> elementType);
+    public Level3MapOfArraySelectedEntriesValueElementsOperator<K,V> forEach();
     
     public Level1MapOfArraySelectedEntriesOperator<K,V> endOn();
 

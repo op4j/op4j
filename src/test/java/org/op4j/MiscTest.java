@@ -100,7 +100,7 @@ watch.start();
         final Map<String,String>[] maps1 = (Map<String, String>[]) new Map<?,?>[] { map1, map2 };
 
         
-        System.out.println(printArray(Op.onArrayOfArray(stringsStrings1).forEach(Types.ARRAY_OF_STRING).forEach(Types.STRING).ifIndex(0).eval(Ognl.forString("#target + ' Mundo'")).get()));
+        System.out.println(printArray(Op.onArrayOfArrayOf(Types.STRING, stringsStrings1).forEach().forEach().ifIndex(0).eval(Ognl.forString("#target + ' Mundo'")).get()));
         
         
         
@@ -109,7 +109,7 @@ watch.start();
         System.out.println(Op.onList(stringsList1).forEach().ifNotNull().eval(Ognl.forString("toUpperCase()")).get());
         
         
-        System.out.println(Op.onArrayOfArray(stringsStrings1).forEach(Types.ARRAY_OF_STRING).forEach(Types.STRING).eval(Ognl.forInteger("length()")).get());
+        System.out.println(Op.onArrayOfArrayOf(Types.STRING, stringsStrings1).forEach().forEach().eval(Types.INTEGER, Ognl.forInteger("length()")).get());
         
         System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).forEach().forEach().eval(Ognl.forString("toUpperCase()")).get()));
 
@@ -144,9 +144,9 @@ watch.start();
         System.out.println(Op.onListOfList(listOfListOfString1).distinct().get());
         System.out.println(Op.onListOfList(listOfListOfString1).forEach().distinct().get());
         
-        System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).get()));
-        System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).distinct().get()));
-        System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).forEach(Types.ARRAY_OF_STRING).distinct().get()));
+        System.out.println(printArray(Op.onArrayOfArrayOf(Types.STRING, arrayOfArrayOfString1).get()));
+        System.out.println(printArray(Op.onArrayOfArrayOf(Types.STRING, arrayOfArrayOfString1).distinct().get()));
+        System.out.println(printArray(Op.onArrayOfArrayOf(Types.STRING, arrayOfArrayOfString1).forEach().distinct().get()));
      
         System.out.println(Op.onList(stringsList1).addAll("World!", "Mars!").get());
         System.out.println(Op.onList(stringsList1).insertAll(1, "World!", "Mars!").get());
@@ -182,7 +182,7 @@ watch.start();
         System.out.println(Op.onSet(stringSet1).removeAllNull().get());
         System.out.println(Op.onSet(stringSet1).removeAllNotNullAndTrue(Ognl.forBoolean("length() > 5")).get());
             
-        System.out.println(printArray(Op.onArray(stringsArr1).insertAll(2,"lalero","lururu").get()));
+        System.out.println(printArray(Op.onArrayOf(Types.STRING, stringsArr1).insertAll(2,"lalero","lururu").get()));
      
         
         System.out.println(Op.onMap(map1).put("fr", "Allô!").get());
@@ -349,7 +349,7 @@ watch.start();
 //                        1, 0, 10, ',', '\'', false)).get());
      
         
-        System.out.println(Op.onArray(stringsArr1).toSet().get());
+        System.out.println(Op.onArrayOf(Types.STRING, stringsArr1).toSet().get());
         System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).forEach().toSet().get()));
         System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).toArrayOfArrayOf(Types.STRING).get()));
         
@@ -373,17 +373,17 @@ watch.start();
         setOfStringSet1.add(Op.onAll("Hola", "Hello", "Ciao", "Ola").buildSet().get());
         setOfStringSet1.add(Op.onAll("Adios", "Goodbye", "Ciao", "Adéus").buildSet().get());
         
-        System.out.println(printArray(Op.onListOfArray(listOfStringArray1).toArrayOfArrayOf(Types.STRING).get()));
+        System.out.println(printArray(Op.onListOfArrayOf(Types.STRING, listOfStringArray1).toArrayOfArrayOf(Types.STRING).get()));
         System.out.println(printArray(Op.onListOfList(listOfListOfString1).toArrayOfArrayOf(Types.STRING).get()));
         System.out.println(printArray(Op.onListOfSet(listOfStringSet1).toArrayOfArrayOf(Types.STRING).get()));
         
-        System.out.println(printArray(Op.onSetOfArray(setOfStringArray1).toArrayOfArrayOf(Types.STRING).get()));
+        System.out.println(printArray(Op.onSetOfArrayOf(Types.STRING, setOfStringArray1).toArrayOfArrayOf(Types.STRING).get()));
         System.out.println(printArray(Op.onSetOfList(setOfStringList1).toArrayOfArrayOf(Types.STRING).get()));
         System.out.println(printArray(Op.onSetOfSet(setOfStringSet1).toArrayOfArrayOf(Types.STRING).get()));
 
         
-        System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).toArrayOfList().get()));
-        System.out.println(printArray(Op.onListOfArray(listOfStringArray1).toArrayOfList().get()));
+        System.out.println(printArray(Op.onArrayOfArrayOf(Types.STRING, arrayOfArrayOfString1).toArrayOfList().get()));
+        System.out.println(printArray(Op.onListOfArrayOf(Types.STRING, listOfStringArray1).toArrayOfList().get()));
         System.out.println(printArray(Op.onListOfList(listOfListOfString1).toArrayOfList().get()));
         
         System.out.println(Op.on("http://www.google.es/search?q=op4j&unusedParam=unusedValue '' 2^2 ")
@@ -391,7 +391,7 @@ watch.start();
         System.out.println(Op.on("Body tag is written like \"<body>content here</body>\"")
                 .exec(StringFuncs.escapeHTML()).get());
         
-        System.out.println(Op.onArray(stringsArr1).removeAllNull().toMap(Ognl.forInteger("length()")).get());
+        System.out.println(Op.onArrayOf(Types.STRING, stringsArr1).removeAllNull().toMap(Ognl.forInteger("length()")).get());
 
         System.out.println(Op.onList(stringsList1).removeAllNullOrTrue(Ognl.forBoolean("length() < 6")).get());
 
@@ -415,17 +415,17 @@ watch.start();
 //        System.out.println(Op.onMap(map1).forEachEntry().eval(Ognl.forString("'in ' + #target.key + ' you say ' + #target.value")).get());
         
         
-        System.out.println(printArray(Op.onArrayOfArray(arrayOfArrayOfString1).forEach(Types.ARRAY_OF_STRING).toMap(Ognl.forInteger("length()")).forEachEntry().onKey().asType(Types.forClass(Serializable.class)).endOn().onValue().asType(Types.SERIALIZABLE).get()));
+        System.out.println(printArray(Op.onArrayOfArrayOf(Types.STRING, arrayOfArrayOfString1).forEach().toMap(Ognl.forInteger("length()")).forEachEntry().onKey().asType(Types.forClass(Serializable.class)).endOn().onValue().asType(Types.SERIALIZABLE).get()));
         
         
         System.out.println(Op.onList(stringsList1).removeAllNull().sort().get());
         System.out.println(Op.onList(stringsList1).removeAllNull().forEach().eval(Ognl.forInteger("length()")).get());
         
         System.out.println(Op.on(maps1).eval(Ognl.forInteger("length")).get());
-        System.out.println(printArray(Op.onArray(maps1).forEach(Types.MAP_OF_STRING_STRING).eval(Ognl.forInteger("size()")).get()));
+        System.out.println(printArray(Op.onArrayOf(Types.MAP_OF_STRING_STRING, maps1).forEach().eval(Types.INTEGER, Ognl.forInteger("size()")).get()));
         System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().forEachEntry().onValue().eval(Ognl.forObject("length()")).endOn().endFor().extractValues().get()));
         
-        final Map<Integer,Map<String,String>> mapOfMapOfIntegerStringString = Op.onArray(maps1).toMap(Ognl.forInteger("size()")).asMapOfMapOf(Types.INTEGER, Types.STRING, Types.STRING).get();
+        final Map<Integer,Map<String,String>> mapOfMapOfIntegerStringString = Op.onArrayOf(Types.MAP_OF_STRING_STRING, maps1).toMap(Ognl.forInteger("size()")).asMapOfMapOf(Types.INTEGER, Types.STRING, Types.STRING).get();
         
         System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onValue().forEachEntry().onValue().eval(Ognl.forObject("length()")).get());
         
@@ -440,10 +440,10 @@ watch.start();
 //        
 //        System.out.println(printArray(Op.onListOfMap(listOfMapOfStringString1).toArrayOfMap().get()));
     
-        System.out.println(Op.onMap(map1).forEachEntry().eval(Types.STRING, Ognl.forString("'<<KEY: ' + #target.key + ' | VALUE: ' + #target.value + '>>'")).get());
+        System.out.println(Op.onMap(map1).forEachEntry().eval(Ognl.forString("'<<KEY: ' + #target.key + ' | VALUE: ' + #target.value + '>>'")).get());
         
-        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().eval(Types.STRING, Ognl.forString("'<<KEY: ' + #target.key + ' | VALUE: ' + #target.value + '>>'")).get());
-        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onValue().forEachEntry().eval(Types.STRING, Ognl.forString("'<<KEY: ' + #target.key + ' | VALUE: ' + #target.value + '>>'")).get());
+        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().eval(Ognl.forString("'<<KEY: ' + #target.key + ' | VALUE: ' + #target.value + '>>'")).get());
+        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onValue().forEachEntry().eval(Ognl.forString("'<<KEY: ' + #target.key + ' | VALUE: ' + #target.value + '>>'")).get());
         
         System.out.println(Types.LIST_ITERATOR_OF_BOOLEAN.getSimpleName());
         
@@ -451,8 +451,8 @@ watch.start();
         System.out.println(Op.onList(stringsList1).get());
         System.out.println(Op.onList(stringsList1).forEach().replaceWith("op4j is great!").get());
         System.out.println(Op.onList(stringsList1).forEach().replaceIfNullWith("op4j is great!").get());
-        System.out.println(printArray(Op.onArray(stringsArr1).forEach(Types.STRING).replaceIfNullWith("op4j is great!").get()));
-        System.out.println(printArray(Op.onArray(stringsArr1).replaceWith(new String[] {"alpha", "beta"}).forEach(Types.STRING).exec(StringFuncs.toUpperCase()).get()));
+        System.out.println(printArray(Op.onArrayOf(Types.STRING, stringsArr1).forEach().replaceIfNullWith("op4j is great!").get()));
+        System.out.println(printArray(Op.onArrayOf(Types.STRING, stringsArr1).replaceWith(new String[] {"alpha", "beta"}).forEach().exec(StringFuncs.toUpperCase()).get()));
         
         
 //        System.out.println(Op.buildListOfList(Types.STRING).add(stringsList1).add(stringsList1).get());

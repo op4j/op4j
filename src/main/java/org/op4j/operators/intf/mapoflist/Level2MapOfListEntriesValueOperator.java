@@ -129,11 +129,11 @@ public interface Level2MapOfListEntriesValueOperator<K,V>
 
     public <X> Level2MapOfListEntriesValueOperator<K,X> execAsList(final IFunction<? extends List<X>, ? super List<V>> function);
 
-    public <X> Level2MapEntriesValueOperator<K,X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<V>> function);
+    public <X> Level2MapEntriesValueOperator<K,X> exec(final IFunction<X, ? super List<V>> function);
     
-    public <X> Level2MapEntriesValueOperator<K,X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super List<V>> eval);
+    public <X> Level2MapEntriesValueOperator<K,X> eval(final IEvaluator<X,? super List<V>> eval);
     
-    public <X> Level2MapEntriesValueOperator<K,X> convert(final Type<X> resultType, final IConverter<? extends X,? super List<V>> converter);    
+    public <X> Level2MapEntriesValueOperator<K,X> convert(final IConverter<X,? super List<V>> converter);    
     
     
     public <X> Level2MapOfListEntriesValueOperator<K,X> asListOf(final Type<X> type);

@@ -46,17 +46,17 @@ import org.op4j.util.NormalisationUtils;
 public class Level3MapOfArrayEntriesValueElementsOperatorImpl<K,V> extends AbstractOperatorImpl
         implements Level3MapOfArrayEntriesValueElementsOperator<K,V> {
     
-    private final Type<? extends V> type; 
+    private final Type<V> type; 
 
     
-    public Level3MapOfArrayEntriesValueElementsOperatorImpl(final Type<? extends V> type, final Target target) {
+    public Level3MapOfArrayEntriesValueElementsOperatorImpl(final Type<V> type, final Target target) {
         super(target);
         this.type = type;
     }
 
 
     public Level2MapOfArrayEntriesValueOperator<K, V> endFor() {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(getTarget().endIterate(this.type.getRawClass()));
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(this.type, getTarget().endIterate(this.type.getRawClass()));
     }
 
 
@@ -126,18 +126,33 @@ public class Level3MapOfArrayEntriesValueElementsOperatorImpl<K,V> extends Abstr
     }
 
 
-    public <X> Level3MapOfArrayEntriesValueElementsOperator<K, X> convert(final IConverter<X, ? super V> converter) {
-        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(converter.getResultType(this.type), getTarget().execute(converter, Normalisation.NONE));
+    public Level3MapOfArrayEntriesValueElementsOperator<K, V> convert(final IConverter<? extends V, ? super V> converter) {
+        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, V>(this.type, getTarget().execute(converter, Normalisation.NONE));
     }
 
 
-    public <X> Level3MapOfArrayEntriesValueElementsOperator<K, X> eval(final IEvaluator<X, ? super V> eval) {
-        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(eval.getResultType(this.type), getTarget().execute(eval, Normalisation.NONE));
+    public Level3MapOfArrayEntriesValueElementsOperator<K, V> eval(final IEvaluator<? extends V, ? super V> eval) {
+        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, V>(this.type, getTarget().execute(eval, Normalisation.NONE));
     }
 
 
-    public <X> Level3MapOfArrayEntriesValueElementsOperator<K, X> exec(final IFunction<X, ? super V> function) {
-        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(function.getResultType(this.type), getTarget().execute(function, Normalisation.NONE));
+    public Level3MapOfArrayEntriesValueElementsOperator<K, V> exec(final IFunction<? extends V, ? super V> function) {
+        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, V>(this.type, getTarget().execute(function, Normalisation.NONE));
+    }
+
+
+    public <X> Level3MapOfArrayEntriesValueElementsOperator<K, X> convert(final Type<X> valueType, final IConverter<X, ? super V> converter) {
+        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(valueType, getTarget().execute(converter, Normalisation.NONE));
+    }
+
+
+    public <X> Level3MapOfArrayEntriesValueElementsOperator<K, X> eval(final Type<X> valueType, final IEvaluator<X, ? super V> eval) {
+        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(valueType, getTarget().execute(eval, Normalisation.NONE));
+    }
+
+
+    public <X> Level3MapOfArrayEntriesValueElementsOperator<K, X> exec(final Type<X> valueType, final IFunction<X, ? super V> function) {
+        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(valueType, getTarget().execute(function, Normalisation.NONE));
     }
 
 

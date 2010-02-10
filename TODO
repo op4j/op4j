@@ -1,8 +1,11 @@
 
+  - Make Call check the result type 
+  - Constructors receiving "Type" should normalise their array objects (lots of methods calling them, for example replaceWith.
+  - Maybe "as" methods in generic should not only call check normalisation but also normalise?
+  - Will probably break: Op.onArray(Serializable[]).ifTrue().execAsArray(IFunction<String[],Serializable[]>).endIf().add(Number).get()
   - Create a "map(IFunction)" method equivalent to forEach().exec(func).endFor().
   - Make better utility abstract functions, evaluators, etc. Maybe one that receives Type as
     parameter and thus does not need to implement getReturnType.
-    
     
     
     

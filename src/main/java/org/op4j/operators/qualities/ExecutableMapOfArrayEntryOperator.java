@@ -60,7 +60,7 @@ public interface ExecutableMapOfArrayEntryOperator<K,V> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X,Y> ExecutableMapOfArrayEntryOperator<X,Y> execAsMapOfArrayEntry(final IFunction<? extends Map.Entry<X,Y[]>, ? super Map.Entry<K,V[]>> function);
+    public ExecutableMapOfArrayEntryOperator<K,V> execAsMapOfArrayEntry(final IFunction<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> function);
     
     
     /**
@@ -78,7 +78,7 @@ public interface ExecutableMapOfArrayEntryOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X,Y> ExecutableMapOfArrayEntryOperator<X,Y> evalAsMapOfArrayEntry(final IEvaluator<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> eval);
+    public ExecutableMapOfArrayEntryOperator<K,V> evalAsMapOfArrayEntry(final IEvaluator<? extends Map.Entry<? extends K,? extends V[]>,? super Map.Entry<K,V[]>> eval);
     
     
     /**
@@ -96,9 +96,64 @@ public interface ExecutableMapOfArrayEntryOperator<K,V> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public <X,Y> ExecutableMapOfArrayEntryOperator<X,Y> convertAsMapOfArrayEntry(final IConverter<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> converter);
+    public ExecutableMapOfArrayEntryOperator<K,V> convertAsMapOfArrayEntry(final IConverter<? extends Map.Entry<? extends K,? extends V[]>,? super Map.Entry<K,V[]>> converter);
 
+    
+    /**
+     * <p>
+     * Executes the specified function on the target object, creating a new operator
+     * containing the result of the execution.
+     * </p>
+     * <p>
+     * This function must be able to take as input an object of the current operator's
+     * target type, and will return an object of a different type but same structure, 
+     * which will be from then on the new operator's target type.
+     * </p>
+     * 
+     * @param <X> the type of the resulting keys
+     * @param <Y> the type of the resulting values
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
+     */
+    public <X,Y> ExecutableMapOfArrayEntryOperator<X,Y> execAsMapOfArrayEntryOf(final Type<Y> valueType, final IFunction<? extends Map.Entry<X,Y[]>, ? super Map.Entry<K,V[]>> function);
+    
+    
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * implementing the {@link IEvaluator} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param <X> the type of the resulting keys
+     * @param <Y> the type of the resulting values
+     * @param eval the evaluator to be executed
+     * @return an operator on the results of evaluator execution
+     */
+    public <X,Y> ExecutableMapOfArrayEntryOperator<X,Y> evalAsMapOfArrayEntryOf(final Type<Y> valueType, final IEvaluator<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> eval);
+    
+    
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * implementing the {@link IConverter} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param <X> the type of the resulting keys
+     * @param <Y> the type of the resulting values
+     * @param converter the converter to be executed
+     * @return an operator on the results of converter execution
+     */
+    public <X,Y> ExecutableMapOfArrayEntryOperator<X,Y> convertAsMapOfArrayEntryOf(final Type<Y> valueType, final IConverter<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> converter);
 
+    
     /**
      * <p>
      * Executes the specified function on the target object, creating a new operator
@@ -111,7 +166,7 @@ public interface ExecutableMapOfArrayEntryOperator<K,V> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K,V[]>> function);
+    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map.Entry<K,V[]>> function);
     
 
     /**
@@ -129,7 +184,7 @@ public interface ExecutableMapOfArrayEntryOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map.Entry<K,V[]>> eval);
+    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Map.Entry<K,V[]>> eval);
     
 
     /**
@@ -147,6 +202,6 @@ public interface ExecutableMapOfArrayEntryOperator<K,V> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Map.Entry<K,V[]>> converter);    
+    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Map.Entry<K,V[]>> converter);    
     
 }

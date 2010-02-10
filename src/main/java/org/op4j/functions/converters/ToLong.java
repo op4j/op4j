@@ -23,9 +23,6 @@ package org.op4j.functions.converters;
 import java.math.RoundingMode;
 import java.util.Locale;
 
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
-
 /**
  * 
  * @since 1.0
@@ -145,11 +142,6 @@ public class ToLong {
         }
 
         @Override
-        protected Type<Long> getResultType() {
-            return Types.LONG;
-        }
-
-        @Override
         protected Long fromNumber(final Number number) {
             return ToLong.internalFromNumber(number);
         }
@@ -168,11 +160,6 @@ public class ToLong {
 
         public FromBoolean() {
             super();
-        }
-
-        @Override
-        protected Type<Long> getResultType() {
-            return Types.LONG;
         }
 
         @Override
@@ -229,11 +216,6 @@ public class ToLong {
         }
 
         @Override
-        protected Type<Long> getResultType() {
-            return Types.LONG;
-        }
-
-        @Override
         protected Long fromNumber(final Number number) {
             return ToLong.internalFromNumber(number);
         }
@@ -260,11 +242,6 @@ public class ToLong {
         }
 
         @Override
-        protected Type<Long> getResultType() {
-            return Types.LONG;
-        }
-
-        @Override
         protected Long fromNumber(final Number number) {
             return ToLong.internalFromNumber(number);
         }
@@ -286,11 +263,6 @@ public class ToLong {
         }
 
         @Override
-        protected Type<Long> getResultType() {
-            return Types.LONG;
-        }
-
-        @Override
         protected Long fromNumber(final Number number) {
             return ToLong.internalFromNumber(number);
         }
@@ -309,11 +281,6 @@ public class ToLong {
 
         public FromBigDecimal(final RoundingMode roundingMode) {
             super(roundingMode);
-        }
-
-        @Override
-        protected Type<Long> getResultType() {
-            return Types.LONG;
         }
 
         @Override

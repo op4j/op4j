@@ -32,8 +32,8 @@ import org.op4j.operators.qualities.CastableToListOperator;
 import org.op4j.operators.qualities.CastableToMapOperator;
 import org.op4j.operators.qualities.CastableToSetOperator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
-import org.op4j.operators.qualities.NavigatingArrayOperator;
+import org.op4j.operators.qualities.ExecutableArrayElementsOperator;
+import org.op4j.operators.qualities.NavigatingCollectionOperator;
 import org.op4j.operators.qualities.ReplaceableIfNullOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
@@ -53,11 +53,11 @@ public interface Level1ArrayElementsOperator<T>
                 CastableToListOperator,
                 CastableToMapOperator,
                 CastableToSetOperator,
-                NavigatingArrayOperator<T>,
+                NavigatingCollectionOperator<T>,
                 SelectableOperator<T>,
                 ReplaceableOperator<T>,
                 ReplaceableIfNullOperator<T>,
-                ExecutableOperator<T>,
+                ExecutableArrayElementsOperator<T>,
                 CastableToTypeOperator<T> {
 
 
@@ -81,9 +81,12 @@ public interface Level1ArrayElementsOperator<T>
     public Level1ArrayElementsOperator<T> replaceIfNullWith(final T replacement);
 
 
-    public <X> Level1ArrayElementsOperator<X> convert(final IConverter<X,? super T> converter);
-    public <X> Level1ArrayElementsOperator<X> eval(final IEvaluator<X,? super T> eval);
-    public <X> Level1ArrayElementsOperator<X> exec(final IFunction<X,? super T> function);
+    public Level1ArrayElementsOperator<T> convert(final IConverter<? extends T,? super T> converter);
+    public Level1ArrayElementsOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
+    public Level1ArrayElementsOperator<T> exec(final IFunction<? extends T,? super T> function);
+    public <X> Level1ArrayElementsOperator<X> convert(final Type<X> type, final IConverter<X,? super T> converter);
+    public <X> Level1ArrayElementsOperator<X> eval(final Type<X> type, final IEvaluator<X,? super T> eval);
+    public <X> Level1ArrayElementsOperator<X> exec(final Type<X> type, final IFunction<X,? super T> function);
     
     
     public <X> Level1ArrayElementsOperator<X> asType(final Type<X> type);

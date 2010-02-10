@@ -79,7 +79,7 @@ public class Level2MapEntriesValueOperatorImpl<K,V> extends AbstractOperatorImpl
     public <X> Level2MapOfArrayEntriesValueOperator<K,X> asArrayOf(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
         NormalisationUtils.checkIsMapOfArrayOfValue(type, get());
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K,X>(getTarget());
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K,X>(type, getTarget());
     }
 
 

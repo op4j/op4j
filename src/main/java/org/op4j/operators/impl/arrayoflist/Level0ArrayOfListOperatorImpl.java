@@ -106,7 +106,7 @@ public class Level0ArrayOfListOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0ArrayOperator<T> flatten(final Type<T> type) {
-        return new Level0ArrayOperatorImpl<T>(getTarget().execute(new ArrayFuncs.FlattenArrayOfLists<T>(type)));
+        return new Level0ArrayOperatorImpl<T>(type, getTarget().execute(new ArrayFuncs.FlattenArrayOfLists<T>(type)));
     }
 
 
@@ -349,17 +349,17 @@ public class Level0ArrayOfListOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super List<T>[]> converter) {
+    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super List<T>[]> converter) {
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
-    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super List<T>[]> eval) {
+    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super List<T>[]> eval) {
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
-    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T>[]> function) {
+    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super List<T>[]> function) {
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalisation.NONE));
     }
 

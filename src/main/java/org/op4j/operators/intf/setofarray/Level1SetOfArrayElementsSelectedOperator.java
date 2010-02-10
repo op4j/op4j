@@ -23,14 +23,13 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Set;
 
-import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.DistinguishableOperator;
 import org.op4j.operators.qualities.ExecutableArraySelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
-import org.op4j.operators.qualities.NavigableArrayOperator;
+import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.SortableOperator;
@@ -44,7 +43,7 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level1SetOfArrayElementsSelectedOperator<T>
         extends UniqOperator<Set<T[]>>,
-                NavigableArrayOperator<T>,
+                NavigableCollectionOperator<T>,
     	        DistinguishableOperator,
 		        SortableOperator<T>,
                 ExecutableArraySelectedOperator<T>,
@@ -58,7 +57,7 @@ public interface Level1SetOfArrayElementsSelectedOperator<T>
 
 
             
-    public Level2SetOfArrayElementsSelectedElementsOperator<T> forEach(final Type<T> elementType);
+    public Level2SetOfArrayElementsSelectedElementsOperator<T> forEach();
 
     public Level1SetOfArrayElementsSelectedOperator<T> distinct();
     

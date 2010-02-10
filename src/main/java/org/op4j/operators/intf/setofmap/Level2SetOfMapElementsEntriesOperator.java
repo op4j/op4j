@@ -22,7 +22,6 @@ package org.op4j.operators.intf.setofmap;
 import java.util.Map;
 import java.util.Set;
 
-import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -73,10 +72,10 @@ public interface Level2SetOfMapElementsEntriesOperator<K,V>
 
     public <X,Y> Level2SetOfMapElementsEntriesOperator<X,Y> convertAsMapEntry(final IConverter<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> converter);
 
-    public <X> Level2SetOfListElementsElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K,V>> function);
+    public <X> Level2SetOfListElementsElementsOperator<X> exec(final IFunction<X, ? super Map.Entry<K,V>> function);
     
-    public <X> Level2SetOfListElementsElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map.Entry<K,V>> eval);
+    public <X> Level2SetOfListElementsElementsOperator<X> eval(final IEvaluator<X,? super Map.Entry<K,V>> eval);
     
-    public <X> Level2SetOfListElementsElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Map.Entry<K,V>> converter);    
+    public <X> Level2SetOfListElementsElementsOperator<X> convert(final IConverter<X,? super Map.Entry<K,V>> converter);    
                                     
 }

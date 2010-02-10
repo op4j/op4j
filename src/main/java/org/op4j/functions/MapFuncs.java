@@ -30,8 +30,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.util.VarArgsUtil;
 
@@ -324,11 +322,6 @@ public class MapFuncs {
             super();
         }
 
-        @SuppressWarnings("unchecked")
-        public Type<? extends Set<K>> getResultType(final Type<? extends Map<K, V>> targetType) {
-            return Types.setOf(Types.mapKeyComponentOf((Type<Map<K,V>>)targetType));
-        }
-
         @Override
         public Set<K> notNullExecute(final Map<K, V> object, final ExecCtx ctx) throws Exception {
             return new LinkedHashSet<K>(object.keySet());
@@ -342,11 +335,6 @@ public class MapFuncs {
 
         public ExtractValues() {
             super();
-        }
-
-        @SuppressWarnings("unchecked")
-        public Type<? extends List<V>> getResultType(final Type<? extends Map<K, V>> targetType) {
-            return Types.listOf(Types.mapValueComponentOf((Type<Map<K,V>>)targetType));
         }
 
         @Override

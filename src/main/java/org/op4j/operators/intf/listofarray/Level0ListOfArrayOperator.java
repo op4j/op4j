@@ -175,17 +175,23 @@ public interface Level0ListOfArrayOperator<T>
     public Level0ListOfArrayOperator<T> replaceIfNullWith(final List<T[]> replacement);
 
 
-    public <X> Level0ListOfArrayOperator<X> convertAsListOfArray(final IConverter<? extends List<X[]>,? super List<T[]>> converter);
+    public Level0ListOfArrayOperator<T> convertAsListOfArray(final IConverter<? extends List<? extends T[]>,? super List<T[]>> converter);
     
-    public <X> Level0ListOfArrayOperator<X> evalAsListOfArray(final IEvaluator<? extends List<X[]>,? super List<T[]>> eval);
+    public Level0ListOfArrayOperator<T> evalAsListOfArray(final IEvaluator<? extends List<? extends T[]>,? super List<T[]>> eval);
 
-    public <X> Level0ListOfArrayOperator<X> execAsListOfArray(final IFunction<? extends List<X[]>, ? super List<T[]>> function);
+    public Level0ListOfArrayOperator<T> execAsListOfArray(final IFunction<? extends List<? extends T[]>, ? super List<T[]>> function);
 
-    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T[]>> function);
+    public <X> Level0ListOfArrayOperator<X> convertAsListOfArrayOf(final Type<X> type, final IConverter<? extends List<X[]>,? super List<T[]>> converter);
     
-    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super List<T[]>> eval);
+    public <X> Level0ListOfArrayOperator<X> evalAsListOfArrayOf(final Type<X> type, final IEvaluator<? extends List<X[]>,? super List<T[]>> eval);
+
+    public <X> Level0ListOfArrayOperator<X> execAsListOfArrayOf(final Type<X> type, final IFunction<? extends List<X[]>, ? super List<T[]>> function);
+
+    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super List<T[]>> function);
     
-    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super List<T[]>> converter);    
+    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super List<T[]>> eval);
+    
+    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super List<T[]>> converter);    
     
     
     

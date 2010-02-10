@@ -59,7 +59,7 @@ public interface ExecutableSetOfArrayOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableSetOfArrayOperator<X> execAsSetOfArray(final IFunction<? extends Set<X[]>, ? super Set<T[]>> function);
+    public ExecutableSetOfArrayOperator<T> execAsSetOfArray(final IFunction<? extends Set<? extends T[]>, ? super Set<T[]>> function);
     
     
     /**
@@ -76,7 +76,7 @@ public interface ExecutableSetOfArrayOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> ExecutableSetOfArrayOperator<X> evalAsSetOfArray(final IEvaluator<? extends Set<X[]>,? super Set<T[]>> eval);
+    public ExecutableSetOfArrayOperator<T> evalAsSetOfArray(final IEvaluator<? extends Set<? extends T[]>,? super Set<T[]>> eval);
     
     
     /**
@@ -93,7 +93,59 @@ public interface ExecutableSetOfArrayOperator<T> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public <X> ExecutableSetOfArrayOperator<X> convertAsSetOfArray(final IConverter<? extends Set<X[]>,? super Set<T[]>> converter);
+    public ExecutableSetOfArrayOperator<T> convertAsSetOfArray(final IConverter<? extends Set<? extends T[]>,? super Set<T[]>> converter);
+
+    
+    /**
+     * <p>
+     * Executes the specified function on the target object, creating a new operator
+     * containing the result of the execution.
+     * </p>
+     * <p>
+     * This function must be able to take as input an object of the current operator's
+     * target type, and will return an object of a different type but same structure, 
+     * which will be from then on the new operator's target type.
+     * </p>
+     * 
+     * @param <X> the type of the result elements
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableSetOfArrayOperator<X> execAsSetOfArrayOf(final Type<X> type, final IFunction<? extends Set<X[]>, ? super Set<T[]>> function);
+    
+    
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * implementing the {@link IEvaluator} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param <X> the type of the result elements
+     * @param eval the evaluator to be executed
+     * @return an operator on the results of evaluator execution
+     */
+    public <X> ExecutableSetOfArrayOperator<X> evalAsSetOfArrayOf(final Type<X> type, final IEvaluator<? extends Set<X[]>,? super Set<T[]>> eval);
+    
+    
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * implementing the {@link IConverter} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param <X> the type of the result elements
+     * @param converter the converter to be executed
+     * @return an operator on the results of converter execution
+     */
+    public <X> ExecutableSetOfArrayOperator<X> convertAsSetOfArrayOf(final Type<X> type, final IConverter<? extends Set<X[]>,? super Set<T[]>> converter);
 
     
     /**
@@ -108,7 +160,7 @@ public interface ExecutableSetOfArrayOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<T[]>> function);
+    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Set<T[]>> function);
     
     
     /**
@@ -126,7 +178,7 @@ public interface ExecutableSetOfArrayOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Set<T[]>> eval);
+    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Set<T[]>> eval);
     
     
     /**
@@ -144,6 +196,6 @@ public interface ExecutableSetOfArrayOperator<T> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Set<T[]>> converter);    
+    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Set<T[]>> converter);    
     
 }

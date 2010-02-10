@@ -56,7 +56,7 @@ public interface ExecutableArrayOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableArrayOperator<X> execAsArray(final IFunction<X[], ? super T[]> function);
+    public ExecutableArrayOperator<T> execAsArray(final IFunction<? extends T[], ? super T[]> function);
     
     
     /**
@@ -73,7 +73,7 @@ public interface ExecutableArrayOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> ExecutableArrayOperator<X> evalAsArray(final IEvaluator<X[],? super T[]> eval);
+    public ExecutableArrayOperator<T> evalAsArray(final IEvaluator<? extends T[],? super T[]> eval);
     
     
     /**
@@ -90,7 +90,59 @@ public interface ExecutableArrayOperator<T> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public <X> ExecutableArrayOperator<X> convertAsArray(final IConverter<X[],? super T[]> converter);
+    public ExecutableArrayOperator<T> convertAsArray(final IConverter<? extends T[],? super T[]> converter);
+
+
+    /**
+     * <p>
+     * Executes the specified function on the target object, creating a new operator
+     * containing the result of the execution.
+     * </p>
+     * <p>
+     * This function must be able to take as input an object of the current operator's
+     * target type, and will return an object of a different type but same structure, 
+     * which will be from then on the new operator's target type.
+     * </p>
+     * 
+     * @param <X> the type of the result elements
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableArrayOperator<X> execAsArrayOf(final Type<X> type, final IFunction<X[], ? super T[]> function);
+    
+    
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * implementing the {@link IEvaluator} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param <X> the type of the result elements
+     * @param eval the evaluator to be executed
+     * @return an operator on the results of evaluator execution
+     */
+    public <X> ExecutableArrayOperator<X> evalAsArrayOf(final Type<X> type, final IEvaluator<X[],? super T[]> eval);
+    
+    
+    /**
+     * <p>
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * implementing the {@link IConverter} interface.
+     * </p>
+     * <p>
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * semantical purposes.
+     * </p>
+     * 
+     * @param <X> the type of the result elements
+     * @param converter the converter to be executed
+     * @return an operator on the results of converter execution
+     */
+    public <X> ExecutableArrayOperator<X> convertAsArrayOf(final Type<X> type, final IConverter<X[],? super T[]> converter);
 
     
     /**
@@ -105,7 +157,7 @@ public interface ExecutableArrayOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> Operator exec(final Type<X> resultType, final IFunction<? extends X, ? super T[]> function);
+    public <X> Operator exec(final IFunction<X, ? super T[]> function);
     
     
     /**
@@ -123,7 +175,7 @@ public interface ExecutableArrayOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> Operator eval(final Type<X> resultType, final IEvaluator<? extends X,? super T[]> eval);
+    public <X> Operator eval(final IEvaluator<X,? super T[]> eval);
     
     
     /**
@@ -141,6 +193,6 @@ public interface ExecutableArrayOperator<T> {
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
-    public <X> Operator convert(final Type<X> resultType, final IConverter<? extends X,? super T[]> converter);    
+    public <X> Operator convert(final IConverter<X,? super T[]> converter);    
     
 }

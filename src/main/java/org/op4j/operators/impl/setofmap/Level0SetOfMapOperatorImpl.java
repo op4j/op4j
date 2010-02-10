@@ -272,17 +272,17 @@ public class Level0SetOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public <X> Level0GenericUniqOperator<X> convert(final Type<X> resultType, final IConverter<? extends X, ? super Set<Map<K, V>>> converter) {
+    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super Set<Map<K, V>>> converter) {
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
-    public <X> Level0GenericUniqOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super Set<Map<K, V>>> eval) {
+    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super Set<Map<K, V>>> eval) {
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
-    public <X> Level0GenericUniqOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<Map<K, V>>> function) {
+    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Set<Map<K, V>>> function) {
         return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(function, Normalisation.NONE));
     }
 

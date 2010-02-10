@@ -22,7 +22,6 @@ package org.op4j.operators.impl.mapofmap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -121,17 +120,17 @@ public class Level3MapOfMapEntriesValueEntriesOperatorImpl<K1,K2,V> extends Abst
     }
 
 
-    public <X> Level3MapOfListEntriesValueElementsOperator<K1, X> convert(final Type<X> resultType, final IConverter<? extends X, ? super Entry<K2, V>> converter) {
+    public <X> Level3MapOfListEntriesValueElementsOperator<K1, X> convert(final IConverter<X, ? super Entry<K2, V>> converter) {
         return new Level3MapOfListEntriesValueElementsOperatorImpl<K1, X>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 
-    public <X> Level3MapOfListEntriesValueElementsOperator<K1, X> eval(final Type<X> resultType, final IEvaluator<? extends X, ? super Entry<K2, V>> eval) {
+    public <X> Level3MapOfListEntriesValueElementsOperator<K1, X> eval(final IEvaluator<X, ? super Entry<K2, V>> eval) {
         return new Level3MapOfListEntriesValueElementsOperatorImpl<K1, X>(getTarget().execute(eval, Normalisation.NONE));
     }
 
 
-    public <X> Level3MapOfListEntriesValueElementsOperator<K1, X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Entry<K2, V>> function) {
+    public <X> Level3MapOfListEntriesValueElementsOperator<K1, X> exec(final IFunction<X, ? super Entry<K2, V>> function) {
         return new Level3MapOfListEntriesValueElementsOperatorImpl<K1, X>(getTarget().execute(function, Normalisation.NONE));
     }
 

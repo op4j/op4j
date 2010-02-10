@@ -128,11 +128,11 @@ public interface Level1ListOfListElementsOperator<T>
 
     public <X> Level1ListOfListElementsOperator<X> execAsList(final IFunction<? extends List<X>, ? super List<T>> function);
 
-    public <X> Level1ListElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super List<T>> function);
+    public <X> Level1ListElementsOperator<X> exec(final IFunction<X, ? super List<T>> function);
     
-    public <X> Level1ListElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super List<T>> eval);
+    public <X> Level1ListElementsOperator<X> eval(final IEvaluator<X,? super List<T>> eval);
     
-    public <X> Level1ListElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super List<T>> converter);    
+    public <X> Level1ListElementsOperator<X> convert(final IConverter<X,? super List<T>> converter);    
     
     
     

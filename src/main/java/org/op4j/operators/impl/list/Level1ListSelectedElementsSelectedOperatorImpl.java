@@ -30,13 +30,13 @@ public class Level1ListSelectedElementsSelectedOperatorImpl<T> extends AbstractO
     }
 
 
-    public Level1ListSelectedElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
-        return new Level1ListSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.NONE));
+    public Level1ListSelectedElementsSelectedOperator<T> replaceWith(final T replacement) {
+        return new Level1ListSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
     }
 
 
-    public Level1ListSelectedElementsSelectedOperator<T> replaceWith(final T replacement) {
-        return new Level1ListSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+    public Level1ListSelectedElementsSelectedOperator<T> exec(final IFunction<? extends T,? super T> function) {
+        return new Level1ListSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(function, Normalisation.NONE));
     }
 
 

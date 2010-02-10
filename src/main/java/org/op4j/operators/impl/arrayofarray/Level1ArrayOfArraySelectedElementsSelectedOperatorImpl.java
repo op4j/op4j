@@ -20,17 +20,17 @@ import org.op4j.target.Target.Structure;
 public class Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level1ArrayOfArraySelectedElementsSelectedOperator<T> {
 
 
-    private final Type<? extends T[]> type;
+    private final Type<T> type;
 
 
-    public Level1ArrayOfArraySelectedElementsSelectedOperatorImpl(final Type<? extends T[]> type, final Target target) {
+    public Level1ArrayOfArraySelectedElementsSelectedOperatorImpl(final Type<T> type, final Target target) {
         super(target);
         this.type = type;
     }
 
 
-    public Level2ArrayOfArraySelectedElementsSelectedElementsOperator<T> forEach(final Type<T> elementType) {
-        return new Level2ArrayOfArraySelectedElementsSelectedElementsOperatorImpl<T>(elementType, getTarget().iterate(Structure.ARRAY));
+    public Level2ArrayOfArraySelectedElementsSelectedElementsOperator<T> forEach() {
+        return new Level2ArrayOfArraySelectedElementsSelectedElementsOperatorImpl<T>(this.type, getTarget().iterate(Structure.ARRAY));
     }
 
 

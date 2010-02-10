@@ -124,11 +124,11 @@ public interface Level1SetOfSetElementsOperator<T>
 
     public <X> Level1SetOfSetElementsOperator<X> execAsSet(final IFunction<? extends Set<X>, ? super Set<T>> function);
 
-    public <X> Level1SetElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Set<T>> function);
+    public <X> Level1SetElementsOperator<X> exec(final IFunction<X, ? super Set<T>> function);
     
-    public <X> Level1SetElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Set<T>> eval);
+    public <X> Level1SetElementsOperator<X> eval(final IEvaluator<X,? super Set<T>> eval);
     
-    public <X> Level1SetElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Set<T>> converter);    
+    public <X> Level1SetElementsOperator<X> convert(final IConverter<X,? super Set<T>> converter);    
     
 
     

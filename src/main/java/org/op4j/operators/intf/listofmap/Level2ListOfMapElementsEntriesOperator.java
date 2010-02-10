@@ -22,7 +22,6 @@ package org.op4j.operators.intf.listofmap;
 import java.util.List;
 import java.util.Map;
 
-import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.evaluators.IEvaluator;
@@ -73,11 +72,11 @@ public interface Level2ListOfMapElementsEntriesOperator<K,V>
 
     public <X,Y> Level2ListOfMapElementsEntriesOperator<X,Y> convertAsMapEntry(final IConverter<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> converter);
 
-    public <X> Level2ListOfListElementsElementsOperator<X> exec(final Type<X> resultType, final IFunction<? extends X, ? super Map.Entry<K,V>> function);
+    public <X> Level2ListOfListElementsElementsOperator<X> exec(final IFunction<X, ? super Map.Entry<K,V>> function);
     
-    public <X> Level2ListOfListElementsElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<? extends X,? super Map.Entry<K,V>> eval);
+    public <X> Level2ListOfListElementsElementsOperator<X> eval(final IEvaluator<X,? super Map.Entry<K,V>> eval);
     
-    public <X> Level2ListOfListElementsElementsOperator<X> convert(final Type<X> resultType, final IConverter<? extends X,? super Map.Entry<K,V>> converter);    
+    public <X> Level2ListOfListElementsElementsOperator<X> convert(final IConverter<X,? super Map.Entry<K,V>> converter);    
 
     
 }

@@ -24,8 +24,6 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 
 import org.apache.commons.lang.Validate;
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 
 /**
  * 
@@ -163,10 +161,6 @@ public class MathDouble {
 			return max;
 		}
 
-		public Type<? extends Double> getResultType(
-				Type<? extends Iterable<Double>> targetType) {
-			return Types.DOUBLE;
-		}		
 	}
 	
 	public static final class Min extends AbstractNotNullFunc<Double, Iterable<Double>> {
@@ -191,10 +185,6 @@ public class MathDouble {
 			return min;
 		}
 
-		public Type<? extends Double> getResultType(
-				Type<? extends Iterable<Double>> targetType) {
-			return Types.DOUBLE;
-		}		
 	}
 	
 	public static final class Sum extends AbstractNotNullFunc<Double, Iterable<Double>> {
@@ -214,10 +204,6 @@ public class MathDouble {
 			return Double.valueOf(sum.doubleValue());
 		}
 
-		public Type<? extends Double> getResultType(
-				Type<? extends Iterable<Double>> targetType) {
-			return Types.DOUBLE;
-		}		
 	}
 	
 	public static final class Avg extends AbstractNotNullFunc<Double, Iterable<Double>> {
@@ -261,10 +247,6 @@ public class MathDouble {
 			return Double.valueOf(sum.divide(BigDecimal.valueOf(countNotNull)).doubleValue());
 		}
 
-		public Type<? extends Double> getResultType(
-				Type<? extends Iterable<Double>> targetType) {
-			return Types.DOUBLE;
-		}		
 	}
 	
 	public static final class Round extends AbstractNotNullFunc<Double, Double> {
@@ -289,10 +271,6 @@ public class MathDouble {
 			return Double.valueOf(BigDecimal.valueOf(input.doubleValue()).round(this.mathContext).doubleValue());		
 		}
 
-		public Type<? extends Double> getResultType(
-				Type<? extends Double> targetType) {
-			return Types.DOUBLE;
-		}		
 	}
 	
 	public static final class Abs extends AbstractNotNullFunc<Double, Double> {
@@ -306,10 +284,6 @@ public class MathDouble {
 			return Double.valueOf(Math.abs(input.doubleValue()));
 		}
 
-		public Type<? extends Double> getResultType(
-				Type<? extends Double> targetType) {
-			return Types.DOUBLE;
-		}		
 	}
 	
 	public static final class Add extends AbstractNotNullFunc<Double, Double> {
@@ -330,10 +304,6 @@ public class MathDouble {
 			return Double.valueOf(result.doubleValue());
 		}
 
-		public Type<? extends Double> getResultType(
-				Type<? extends Double> targetType) {
-			return Types.DOUBLE;
-		}		
 	}
 	
 	public static final class Subtract extends AbstractNotNullFunc<Double, Double> {
@@ -355,10 +325,6 @@ public class MathDouble {
 			return Double.valueOf(result.doubleValue());
 		}
 
-		public Type<? extends Double> getResultType(
-				Type<? extends Double> targetType) {
-			return Types.DOUBLE;
-		}		
 	}
 	
 	public static final class Divide extends AbstractNotNullFunc<Double, Double> {
@@ -403,10 +369,6 @@ public class MathDouble {
 			return Double.valueOf(dividend.doubleValue());
 		}
 
-		public Type<? extends Double> getResultType(
-				Type<? extends Double> targetType) {
-			return Types.DOUBLE;
-		}		
 	}
 	
 	
@@ -424,10 +386,6 @@ public class MathDouble {
 			return Double.valueOf(input.doubleValue() % this.module);
 		}
 
-		public Type<? extends Double> getResultType(
-				Type<? extends Double> targetType) {
-			return Types.DOUBLE;
-		}		
 	}
 	
 	public static final class Multiply extends AbstractNotNullFunc<Double, Double> {
@@ -469,10 +427,6 @@ public class MathDouble {
 			return Double.valueOf(base.doubleValue());
 		}
 
-		public Type<? extends Double> getResultType(
-				Type<? extends Double> targetType) {
-			return Types.DOUBLE;
-		}		
 	}
 	
 	public static final class Raise extends AbstractNotNullFunc<Double, Double> {
@@ -511,10 +465,6 @@ public class MathDouble {
 			return Double.valueOf(base.doubleValue());
 		}
 
-		public Type<? extends Double> getResultType(
-				Type<? extends Double> targetType) {
-			return Types.DOUBLE;
-		}		
 	}
 	
 	

@@ -44,22 +44,22 @@ import org.op4j.target.Target.Normalisation;
 public class Level2SetOfArrayElementsElementsOperatorImpl<T> extends AbstractOperatorImpl
         implements Level2SetOfArrayElementsElementsOperator<T>  {
     
-    private final Type<? extends T> type; 
+    private final Type<T> type; 
 
     
-    public Level2SetOfArrayElementsElementsOperatorImpl(final Type<? extends T> type, final Target target) {
+    public Level2SetOfArrayElementsElementsOperatorImpl(final Type<T> type, final Target target) {
         super(target);
         this.type = type;
     }
 
 
     public Level1SetOfArrayElementsOperator<T> endFor() {
-        return new Level1SetOfArrayElementsOperatorImpl<T>(getTarget().endIterate(this.type.getRawClass()));
+        return new Level1SetOfArrayElementsOperatorImpl<T>(this.type, getTarget().endIterate(this.type.getRawClass()));
     }
 
 
     public <X> Level2SetOfArrayElementsElementsOperator<X> asType(final Type<X> elementType) {
-    	return endFor().endFor().generic().asSetOfArrayOf(elementType).forEach().forEach(elementType);
+    	return endFor().endFor().generic().asSetOfArrayOf(elementType).forEach().forEach();
     }
 
     public Level2SetOfArrayElementsElementsOperator<?> asUnknown() {
@@ -122,18 +122,33 @@ public class Level2SetOfArrayElementsElementsOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public <X> Level2SetOfArrayElementsElementsOperator<X> exec(final IFunction<X, ? super T> function) {
-        return new Level2SetOfArrayElementsElementsOperatorImpl<X>(function.getResultType(this.type), getTarget().execute(function, Normalisation.NONE));
+    public Level2SetOfArrayElementsElementsOperator<T> exec(final IFunction<? extends T, ? super T> function) {
+        return new Level2SetOfArrayElementsElementsOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public <X> Level2SetOfArrayElementsElementsOperator<X> convert(final IConverter<X, ? super T> converter) {
-        return new Level2SetOfArrayElementsElementsOperatorImpl<X>(converter.getResultType(this.type), getTarget().execute(converter, Normalisation.NONE));
+    public Level2SetOfArrayElementsElementsOperator<T> convert(final IConverter<? extends T, ? super T> converter) {
+        return new Level2SetOfArrayElementsElementsOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.NONE));
     }
 
 
-    public <X> Level2SetOfArrayElementsElementsOperator<X> eval(final IEvaluator<X, ? super T> eval) {
-        return new Level2SetOfArrayElementsElementsOperatorImpl<X>(eval.getResultType(this.type), getTarget().execute(eval, Normalisation.NONE));
+    public Level2SetOfArrayElementsElementsOperator<T> eval(final IEvaluator<? extends T, ? super T> eval) {
+        return new Level2SetOfArrayElementsElementsOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.NONE));
+    }
+
+
+    public <X> Level2SetOfArrayElementsElementsOperator<X> exec(final Type<X> newType, final IFunction<X, ? super T> function) {
+        return new Level2SetOfArrayElementsElementsOperatorImpl<X>(newType, getTarget().execute(function, Normalisation.NONE));
+    }
+
+
+    public <X> Level2SetOfArrayElementsElementsOperator<X> convert(final Type<X> newType, final IConverter<X, ? super T> converter) {
+        return new Level2SetOfArrayElementsElementsOperatorImpl<X>(newType, getTarget().execute(converter, Normalisation.NONE));
+    }
+
+
+    public <X> Level2SetOfArrayElementsElementsOperator<X> eval(final Type<X> newType, final IEvaluator<X, ? super T> eval) {
+        return new Level2SetOfArrayElementsElementsOperatorImpl<X>(newType, getTarget().execute(eval, Normalisation.NONE));
     }
 
 

@@ -32,8 +32,6 @@ import java.util.Locale;
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.converters.ToString.FromNumber.NumberFormatType;
 
@@ -324,10 +322,6 @@ public final class ToString {
 			super();
 		}
 
-        public Type<? extends String> getResultType(final Type<? extends Object> targetType) {
-            return Types.STRING;
-        }
-
         @Override
 		public String nullAsNullExecute(final Object object, final ExecCtx ctx) throws Exception {
 			return object.toString();
@@ -526,10 +520,6 @@ public final class ToString {
 			setGroupingSeparator(groupingSeparator);
 			setDecimalSeparator(decimalSeparator, decimalSeparatorAlwaysShown);
 		}
-
-        public Type<? extends String> getResultType(final Type<? extends Number> targetType) {
-            return Types.STRING;
-        }
 
         @Override
 		public String nullAsNullExecute(final Number number, final ExecCtx ctx) throws Exception {
@@ -730,10 +720,6 @@ public final class ToString {
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 
-        public Type<? extends String> getResultType(final Type<? extends Calendar> targetType) {
-            return Types.STRING;
-        }
-
         @Override
 		public String nullAsNullExecute(final Calendar calendar, final ExecCtx ctx) throws Exception {
 			if (StringUtils.isNotEmpty(this.pattern)) {
@@ -851,10 +837,6 @@ public final class ToString {
 			this.timeStyle = timeStyle;
 			this.locale = LocaleUtils.toLocale(locale);
 		}
-
-        public Type<? extends String> getResultType(final Type<? extends Date> targetType) {
-            return Types.STRING;
-        }
 
         @Override
 		public String nullAsNullExecute(final Date date, final ExecCtx ctx) throws Exception {
