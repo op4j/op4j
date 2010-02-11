@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.util.NormalisationUtils;
@@ -54,82 +55,82 @@ public final class ExecutionTarget extends Target {
     public static ExecutionTarget forObject(final Object object, final Normalisation targetNormalisation) {
         Object normalisedObject = null;
         switch (targetNormalisation.getNormalisationType()) {
-            case NONE:
+            case TYPE_NONE:
                 normalisedObject = object;
                 break;
-            case ARRAY:
+            case TYPE_ARRAY:
                 normalisedObject = NormalisationUtils.normaliseArray((Object[])object, targetNormalisation.getArrayComponentClass());
                 break;
-            case ARRAY_OF_ARRAY:
+            case TYPE_ARRAY_OF_ARRAY:
                 normalisedObject = NormalisationUtils.normaliseArrayOfArray((Object[][])object, targetNormalisation.getArrayComponentClass());
                 break;
-            case ARRAY_OF_LIST:
+            case TYPE_ARRAY_OF_LIST:
                 normalisedObject = NormalisationUtils.normaliseArrayOfList((List<Object>[])object);
                 break;
-            case ARRAY_OF_MAP:
+            case TYPE_ARRAY_OF_MAP:
                 normalisedObject = NormalisationUtils.normaliseArrayOfMap((Map<Object,Object>[])object);
                 break;
-            case ARRAY_OF_SET:
+            case TYPE_ARRAY_OF_SET:
                 normalisedObject = NormalisationUtils.normaliseArrayOfSet((Set<Object>[])object);
                 break;
-            case LIST:
+            case TYPE_LIST:
                 normalisedObject = NormalisationUtils.normaliseList((List<Object>)object);
                 break;
-            case LIST_OF_ARRAY:
+            case TYPE_LIST_OF_ARRAY:
                 normalisedObject = NormalisationUtils.normaliseListOfArray((List<Object[]>)object, targetNormalisation.getArrayComponentClass());
                 break;
-            case LIST_OF_LIST:
+            case TYPE_LIST_OF_LIST:
                 normalisedObject = NormalisationUtils.normaliseListOfList((List<List<Object>>)object);
                 break;
-            case LIST_OF_MAP:
+            case TYPE_LIST_OF_MAP:
                 normalisedObject = NormalisationUtils.normaliseListOfMap((List<Map<Object,Object>>)object);
                 break;
-            case LIST_OF_SET:
+            case TYPE_LIST_OF_SET:
                 normalisedObject = NormalisationUtils.normaliseListOfSet((List<Set<Object>>)object);
                 break;
-            case MAP:
+            case TYPE_MAP:
                 normalisedObject = NormalisationUtils.normaliseMap((Map<Object,Object>)object);
                 break;
-            case MAPENTRY:
+            case TYPE_MAPENTRY:
                 normalisedObject = NormalisationUtils.normaliseMapEntry((Map.Entry<Object,Object>)object);
                 break;
-            case MAPENTRY_OF_ARRAY:
+            case TYPE_MAPENTRY_OF_ARRAY:
                 normalisedObject = NormalisationUtils.normaliseMapEntryOfArray((Map.Entry<Object,Object[]>)object, targetNormalisation.getArrayComponentClass());
                 break;
-            case MAPENTRY_OF_LIST:
+            case TYPE_MAPENTRY_OF_LIST:
                 normalisedObject = NormalisationUtils.normaliseMapEntryOfList((Map.Entry<Object,List<Object>>)object);
                 break;
-            case MAPENTRY_OF_MAP:
+            case TYPE_MAPENTRY_OF_MAP:
                 normalisedObject = NormalisationUtils.normaliseMapEntryOfMap((Map.Entry<Object,Map<Object,Object>>)object);
                 break;
-            case MAPENTRY_OF_SET:
+            case TYPE_MAPENTRY_OF_SET:
                 normalisedObject = NormalisationUtils.normaliseMapEntryOfSet((Map.Entry<Object,Set<Object>>)object);
                 break;
-            case MAP_OF_ARRAY:
+            case TYPE_MAP_OF_ARRAY:
                 normalisedObject = NormalisationUtils.normaliseMapOfArray((Map<Object,Object[]>)object, targetNormalisation.getArrayComponentClass());
                 break;
-            case MAP_OF_LIST:
+            case TYPE_MAP_OF_LIST:
                 normalisedObject = NormalisationUtils.normaliseMapOfList((Map<Object,List<Object>>)object);
                 break;
-            case MAP_OF_MAP:
+            case TYPE_MAP_OF_MAP:
                 normalisedObject = NormalisationUtils.normaliseMapOfMap((Map<Object,Map<Object,Object>>)object);
                 break;
-            case MAP_OF_SET:
+            case TYPE_MAP_OF_SET:
                 normalisedObject = NormalisationUtils.normaliseMapOfSet((Map<Object,Set<Object>>)object);
                 break;
-            case SET:
+            case TYPE_SET:
                 normalisedObject = NormalisationUtils.normaliseSet((Set<Object>)object);
                 break;
-            case SET_OF_ARRAY:
+            case TYPE_SET_OF_ARRAY:
                 normalisedObject = NormalisationUtils.normaliseSetOfArray((Set<Object[]>)object, targetNormalisation.getArrayComponentClass());
                 break;
-            case SET_OF_LIST:
+            case TYPE_SET_OF_LIST:
                 normalisedObject = NormalisationUtils.normaliseSetOfList((Set<List<Object>>)object);
                 break;
-            case SET_OF_MAP:
+            case TYPE_SET_OF_MAP:
                 normalisedObject = NormalisationUtils.normaliseSetOfMap((Set<Map<Object,Object>>)object);
                 break;
-            case SET_OF_SET:
+            case TYPE_SET_OF_SET:
                 normalisedObject = NormalisationUtils.normaliseSetOfSet((Set<Set<Object>>)object);
                 break;
         }
@@ -457,6 +458,21 @@ public final class ExecutionTarget extends Target {
             
         return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
         
+    }
+
+
+
+    
+    @Override
+    Target doCast(final CastType targetType, final Type<?>... types) {
+
+        final ExecutionTargetCastOperation operation =
+            new ExecutionTargetCastOperation(targetType, types);
+        final ExecutionTargetOperation[][] newOperations =
+            addOperation(this.operations, this.currentBlockLevel, operation);
+
+        return new ExecutionTarget(this.target, this.currentBlockLevel, newOperations, this.previousBlockLevels);
+
     }
 
 

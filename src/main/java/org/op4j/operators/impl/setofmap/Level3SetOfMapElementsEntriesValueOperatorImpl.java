@@ -33,8 +33,8 @@ import org.op4j.operators.intf.setofmap.Level2SetOfMapElementsEntriesOperator;
 import org.op4j.operators.intf.setofmap.Level3SetOfMapElementsEntriesValueOperator;
 import org.op4j.operators.intf.setofmap.Level3SetOfMapElementsEntriesValueSelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.CastType;
 import org.op4j.target.Target.Normalisation;
-import org.op4j.util.NormalisationUtils;
 
 
 /**
@@ -60,8 +60,7 @@ public class Level3SetOfMapElementsEntriesValueOperatorImpl<K,V> extends Abstrac
 
     public <X> Level3SetOfMapElementsEntriesValueOperator<K, X> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        NormalisationUtils.checkIsSetOfMapOfValue(type, get());
-        return new Level3SetOfMapElementsEntriesValueOperatorImpl<K, X>(getTarget());
+        return new Level3SetOfMapElementsEntriesValueOperatorImpl<K, X>(getTarget().cast(CastType.SET_OF_MAP_VALUE, type));
     }
 
     public Level3SetOfMapElementsEntriesValueOperator<K,?> asUnknown() {

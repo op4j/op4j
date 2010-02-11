@@ -32,6 +32,7 @@ import org.op4j.operators.intf.mapofmap.Level1MapOfMapEntriesOperator;
 import org.op4j.operators.intf.mapofmap.Level2MapOfMapEntriesKeyOperator;
 import org.op4j.operators.intf.mapofmap.Level2MapOfMapEntriesKeySelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.CastType;
 import org.op4j.target.Target.Normalisation;
 import org.op4j.util.NormalisationUtils;
 
@@ -59,8 +60,7 @@ public class Level2MapOfMapEntriesKeyOperatorImpl<K1,K2,V> extends AbstractOpera
 
     public <X> Level2MapOfMapEntriesKeyOperator<X, K2, V> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        NormalisationUtils.checkIsMapOfKey(type, get());
-        return new Level2MapOfMapEntriesKeyOperatorImpl<X, K2, V>(getTarget());
+        return new Level2MapOfMapEntriesKeyOperatorImpl<X, K2, V>(getTarget().cast(CastType.MAP_KEY, type));
     }
 
     public Level2MapOfMapEntriesKeyOperator<?, K2, V> asUnknown() {

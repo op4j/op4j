@@ -33,8 +33,8 @@ import org.op4j.operators.intf.listofmap.Level2ListOfMapElementsEntriesOperator;
 import org.op4j.operators.intf.listofmap.Level3ListOfMapElementsEntriesValueOperator;
 import org.op4j.operators.intf.listofmap.Level3ListOfMapElementsEntriesValueSelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.CastType;
 import org.op4j.target.Target.Normalisation;
-import org.op4j.util.NormalisationUtils;
 
 
 /**
@@ -60,8 +60,7 @@ public class Level3ListOfMapElementsEntriesValueOperatorImpl<K,V> extends Abstra
 
     public <X> Level3ListOfMapElementsEntriesValueOperator<K, X> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        NormalisationUtils.checkIsListOfMapOfValue(type, get());
-        return new Level3ListOfMapElementsEntriesValueOperatorImpl<K, X>(getTarget());
+        return new Level3ListOfMapElementsEntriesValueOperatorImpl<K, X>(getTarget().cast(CastType.LIST_OF_MAP_VALUE, type));
     }
 
     public Level3ListOfMapElementsEntriesValueOperator<K,?> asUnknown() {

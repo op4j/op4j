@@ -32,6 +32,7 @@ import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesValueOperator;
 import org.op4j.operators.intf.mapofarray.Level3MapOfArrayEntriesValueElementsOperator;
 import org.op4j.operators.intf.mapofarray.Level3MapOfArrayEntriesValueElementsSelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.CastType;
 import org.op4j.target.Target.Normalisation;
 import org.op4j.util.NormalisationUtils;
 
@@ -62,8 +63,7 @@ public class Level3MapOfArrayEntriesValueElementsOperatorImpl<K,V> extends Abstr
 
     public <X> Level3MapOfArrayEntriesValueElementsOperator<K, X> asType(final Type<X> elementType) {
         Validate.notNull(elementType, "A type representing the elements must be specified");
-        NormalisationUtils.checkIsMapOfArrayOfValue(elementType, get());
-        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(elementType, getTarget());
+        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(elementType, getTarget().cast(CastType.MAP_OF_ARRAY_VALUE, elementType));
     }
 
     public Level3MapOfArrayEntriesValueElementsOperator<K, ?> asUnknown() {

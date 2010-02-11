@@ -40,8 +40,8 @@ import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.Level2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.CastType;
 import org.op4j.target.Target.Normalisation;
-import org.op4j.util.NormalisationUtils;
 
 
 /**
@@ -67,8 +67,7 @@ public class Level2MapEntriesValueOperatorImpl<K,V> extends AbstractOperatorImpl
 
     public <X> Level2MapEntriesValueOperator<K, X> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        NormalisationUtils.checkIsMapOfValue(type, get());
-        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget());
+        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().cast(CastType.MAP_VALUE, type));
     }
 
     public Level2MapEntriesValueOperator<K, ?> asUnknown() {
@@ -78,30 +77,26 @@ public class Level2MapEntriesValueOperatorImpl<K,V> extends AbstractOperatorImpl
 
     public <X> Level2MapOfArrayEntriesValueOperator<K,X> asArrayOf(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        NormalisationUtils.checkIsMapOfArrayOfValue(type, get());
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K,X>(type, getTarget());
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K,X>(type, getTarget().cast(CastType.MAP_OF_ARRAY_VALUE, type));
     }
 
 
     public <X> Level2MapOfListEntriesValueOperator<K,X> asListOf(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        NormalisationUtils.checkIsMapOfListOfValue(type, get());
-        return new Level2MapOfListEntriesValueOperatorImpl<K,X>(getTarget());
+        return new Level2MapOfListEntriesValueOperatorImpl<K,X>(getTarget().cast(CastType.MAP_OF_LIST_VALUE, type));
     }
 
 
     public <K2,V2> Level2MapOfMapEntriesValueOperator<K,K2,V2> asMapOf(final Type<K2> keyType, final Type<V2> valueType) {
         Validate.notNull(keyType, "A type representing the keys must be specified");
         Validate.notNull(valueType, "A type representing the values must be specified");
-        NormalisationUtils.checkIsMapOfMapOfValue(keyType, valueType, get());
-        return new Level2MapOfMapEntriesValueOperatorImpl<K,K2,V2>(getTarget());
+        return new Level2MapOfMapEntriesValueOperatorImpl<K,K2,V2>(getTarget().cast(CastType.MAP_OF_MAP_VALUE, keyType, valueType));
     }
 
 
     public <X> Level2MapOfSetEntriesValueOperator<K,X> asSetOf(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        NormalisationUtils.checkIsMapOfSetOfValue(type, get());
-        return new Level2MapOfSetEntriesValueOperatorImpl<K,X>(getTarget());
+        return new Level2MapOfSetEntriesValueOperatorImpl<K,X>(getTarget().cast(CastType.MAP_OF_SET_VALUE, type));
     }
 
     

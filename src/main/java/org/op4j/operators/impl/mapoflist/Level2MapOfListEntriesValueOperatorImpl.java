@@ -49,9 +49,9 @@ import org.op4j.operators.intf.mapoflist.Level3MapOfListEntriesValueElementsOper
 import org.op4j.operators.intf.mapofmap.Level2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.CastType;
 import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
-import org.op4j.util.NormalisationUtils;
 
 
 /**
@@ -210,8 +210,7 @@ public class Level2MapOfListEntriesValueOperatorImpl<K,V> extends AbstractOperat
     
 	public <X> Level2MapOfListEntriesValueOperator<K, X> asListOf(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        NormalisationUtils.checkIsMapOfListOfValue(type, get());
-        return new Level2MapOfListEntriesValueOperatorImpl<K,X>(getTarget());
+        return new Level2MapOfListEntriesValueOperatorImpl<K,X>(getTarget().cast(CastType.MAP_OF_LIST_VALUE, type));
     }
 
 

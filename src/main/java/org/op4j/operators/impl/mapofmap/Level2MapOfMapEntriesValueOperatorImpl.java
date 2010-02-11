@@ -42,9 +42,9 @@ import org.op4j.operators.intf.mapofmap.Level2MapOfMapEntriesValueSelectedOperat
 import org.op4j.operators.intf.mapofmap.Level3MapOfMapEntriesValueEntriesOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.CastType;
 import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
-import org.op4j.util.NormalisationUtils;
 
 
 /**
@@ -163,8 +163,7 @@ public class Level2MapOfMapEntriesValueOperatorImpl<K1,K2,V> extends AbstractOpe
 	public <X,Y> Level2MapOfMapEntriesValueOperator<K1, X, Y> asMapOf(final Type<X> keyType, final Type<Y> valueType) {
         Validate.notNull(keyType, "A type representing the keys must be specified");
         Validate.notNull(valueType, "A type representing the values must be specified");
-        NormalisationUtils.checkIsMapOfMapOfValue(keyType, valueType, get());
-        return new Level2MapOfMapEntriesValueOperatorImpl<K1,X,Y>(getTarget());
+        return new Level2MapOfMapEntriesValueOperatorImpl<K1,X,Y>(getTarget().cast(CastType.MAP_OF_MAP_VALUE, keyType, valueType));
     }
 
 

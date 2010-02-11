@@ -22,7 +22,6 @@ package org.op4j.operators.impl.listofmap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
@@ -33,8 +32,8 @@ import org.op4j.operators.intf.listofmap.Level2ListOfMapElementsEntriesOperator;
 import org.op4j.operators.intf.listofmap.Level3ListOfMapElementsEntriesKeyOperator;
 import org.op4j.operators.intf.listofmap.Level3ListOfMapElementsEntriesKeySelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.CastType;
 import org.op4j.target.Target.Normalisation;
-import org.op4j.util.NormalisationUtils;
 
 
 /**
@@ -59,9 +58,7 @@ public class Level3ListOfMapElementsEntriesKeyOperatorImpl<K,V> extends Abstract
 
 
     public <X> Level3ListOfMapElementsEntriesKeyOperator<X, V> asType(final Type<X> type) {
-        Validate.notNull(type, "A type representing the elements must be specified");
-        NormalisationUtils.checkIsListOfMapOfKey(type, get());
-        return new Level3ListOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget());
+        return new Level3ListOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().cast(CastType.LIST_OF_MAP_KEY, type));
     }
 
     public Level3ListOfMapElementsEntriesKeyOperator<?,V> asUnknown() {

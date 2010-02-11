@@ -32,6 +32,7 @@ import org.op4j.operators.intf.mapofmap.Level3MapOfMapEntriesValueEntriesOperato
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueEntriesValueOperator;
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueEntriesValueSelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.CastType;
 import org.op4j.target.Target.Normalisation;
 import org.op4j.util.NormalisationUtils;
 
@@ -60,8 +61,7 @@ public class Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1,K2,V> extends
 
     public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        NormalisationUtils.checkIsMapOfMapOfValueOfValue(type, get());
-        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget());
+        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().cast(CastType.MAP_OF_MAP_VALUE_VALUE, type));
     }
 
     public Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, ?> asUnknown() {

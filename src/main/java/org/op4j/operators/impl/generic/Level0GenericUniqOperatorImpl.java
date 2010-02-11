@@ -81,9 +81,9 @@ import org.op4j.operators.intf.setoflist.Level0SetOfListOperator;
 import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
 import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.CastType;
 import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
-import org.op4j.util.NormalisationUtils;
 
 
 
@@ -185,104 +185,90 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
 
     public <X> Level0ArrayOperator<X> asArrayOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalisationUtils.checkIsArray(type, get());
-        return new Level0ArrayOperatorImpl<X>(type, getTarget());
+        return new Level0ArrayOperatorImpl<X>(type, getTarget().cast(CastType.ARRAY, type));
     }
 
 
     public <X> Level0ListOperator<X> asListOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalisationUtils.checkIsList(type, get());
-        return new Level0ListOperatorImpl<X>(getTarget());
+        return new Level0ListOperatorImpl<X>(getTarget().cast(CastType.LIST, type));
     }
 
 
     public <K,V> Level0MapOperator<K,V> asMapOf(final Type<K> keyType, final Type<V> valueType) {
     	Validate.notNull(keyType, "A type representing the keys must be specified");
     	Validate.notNull(valueType, "A type representing the values must be specified");
-    	NormalisationUtils.checkIsMap(keyType, valueType, get());
-        return new Level0MapOperatorImpl<K,V>(getTarget());
+        return new Level0MapOperatorImpl<K,V>(getTarget().cast(CastType.MAP, keyType, valueType));
     }
 
 
     public <X> Level0SetOperator<X> asSetOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalisationUtils.checkIsSet(type, get());
-        return new Level0SetOperatorImpl<X>(getTarget());
+        return new Level0SetOperatorImpl<X>(getTarget().cast(CastType.SET, type));
     }
 
 
     public <X> Level0ArrayOfArrayOperator<X> asArrayOfArrayOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalisationUtils.checkIsArrayOfArray(type, get());
-        return new Level0ArrayOfArrayOperatorImpl<X>(type, getTarget());
+        return new Level0ArrayOfArrayOperatorImpl<X>(type, getTarget().cast(CastType.ARRAY_OF_ARRAY, type));
     }
 
 
     public <X> Level0ArrayOfListOperator<X> asArrayOfListOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalisationUtils.checkIsArrayOfList(type, get());
-        return new Level0ArrayOfListOperatorImpl<X>(getTarget());
+        return new Level0ArrayOfListOperatorImpl<X>(getTarget().cast(CastType.ARRAY_OF_LIST, type));
     }
 
 
     public <K, V> Level0ArrayOfMapOperator<K, V> asArrayOfMapOf(final Type<K> keyType, final Type<V> valueType) {
     	Validate.notNull(keyType, "A type representing the keys must be specified");
     	Validate.notNull(valueType, "A type representing the values must be specified");
-    	NormalisationUtils.checkIsArrayOfMap(keyType, valueType, get());
-        return new Level0ArrayOfMapOperatorImpl<K,V>(getTarget());
+        return new Level0ArrayOfMapOperatorImpl<K,V>(getTarget().cast(CastType.ARRAY_OF_MAP, keyType, valueType));
     }
 
 
     public <X> Level0ArrayOfSetOperator<X> asArrayOfSetOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalisationUtils.checkIsArrayOfSet(type, get());
-        return new Level0ArrayOfSetOperatorImpl<X>(getTarget());
+        return new Level0ArrayOfSetOperatorImpl<X>(getTarget().cast(CastType.SET, type));
     }
 
 
     public <X> Level0ListOfArrayOperator<X> asListOfArrayOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalisationUtils.checkIsListOfArray(type, get());
-        return new Level0ListOfArrayOperatorImpl<X>(type, getTarget());
+        return new Level0ListOfArrayOperatorImpl<X>(type, getTarget().cast(CastType.LIST_OF_ARRAY, type));
     }
 
 
     public <X> Level0ListOfListOperator<X> asListOfListOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalisationUtils.checkIsListOfList(type, get());
-        return new Level0ListOfListOperatorImpl<X>(getTarget());
+        return new Level0ListOfListOperatorImpl<X>(getTarget().cast(CastType.LIST_OF_LIST, type));
     }
 
 
     public <K, V> Level0ListOfMapOperator<K, V> asListOfMapOf(final Type<K> keyType, final Type<V> valueType) {
     	Validate.notNull(keyType, "A type representing the keys must be specified");
     	Validate.notNull(valueType, "A type representing the values must be specified");
-    	NormalisationUtils.checkIsListOfMap(keyType, valueType, get());
-        return new Level0ListOfMapOperatorImpl<K,V>(getTarget());
+        return new Level0ListOfMapOperatorImpl<K,V>(getTarget().cast(CastType.LIST_OF_MAP, keyType, valueType));
     }
 
 
     public <X> Level0ListOfSetOperator<X> asListOfSetOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-        NormalisationUtils.checkIsListOfSet(type, get());
-        return new Level0ListOfSetOperatorImpl<X>(getTarget());
+        return new Level0ListOfSetOperatorImpl<X>(getTarget().cast(CastType.LIST_OF_SET, type));
     }
 
 
     public <K, V> Level0MapOfArrayOperator<K, V> asMapOfArrayOf(final Type<K> keyType, final Type<V> valueType) {
     	Validate.notNull(keyType, "A type representing the keys must be specified");
     	Validate.notNull(valueType, "A type representing the values must be specified");
-    	NormalisationUtils.checkIsMapOfArray(keyType, valueType, get());
-        return new Level0MapOfArrayOperatorImpl<K,V>(valueType, getTarget());
+        return new Level0MapOfArrayOperatorImpl<K,V>(valueType, getTarget().cast(CastType.MAP_OF_ARRAY, keyType, valueType));
     }
 
 
     public <K, V> Level0MapOfListOperator<K, V> asMapOfListOf(final Type<K> keyType, final Type<V> valueType) {
     	Validate.notNull(keyType, "A type representing the keys must be specified");
     	Validate.notNull(valueType, "A type representing the values must be specified");
-    	NormalisationUtils.checkIsMapOfList(keyType, valueType, get());
-        return new Level0MapOfListOperatorImpl<K,V>(getTarget());
+        return new Level0MapOfListOperatorImpl<K,V>(getTarget().cast(CastType.MAP_OF_LIST, keyType, valueType));
     }
 
 
@@ -290,52 +276,45 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     	Validate.notNull(key1Type, "A type representing the keys of the first-level map must be specified");
     	Validate.notNull(key2Type, "A type representing the keys of the second-level maps must be specified");
     	Validate.notNull(valueType, "A type representing the values of the second-level maps must be specified");
-    	NormalisationUtils.checkIsMapOfMap(key1Type, key2Type, valueType, get());
-        return new Level0MapOfMapOperatorImpl<K1,K2,V>(getTarget());
+        return new Level0MapOfMapOperatorImpl<K1,K2,V>(getTarget().cast(CastType.MAP_OF_MAP, key1Type, key2Type, valueType));
     }
 
 
     public <K, V> Level0MapOfSetOperator<K, V> asMapOfSetOf(final Type<K> keyType, final Type<V> valueType) {
     	Validate.notNull(keyType, "A type representing the keys must be specified");
     	Validate.notNull(valueType, "A type representing the values must be specified");
-    	NormalisationUtils.checkIsMapOfSet(keyType, valueType, get());
-        return new Level0MapOfSetOperatorImpl<K,V>(getTarget());
+        return new Level0MapOfSetOperatorImpl<K,V>(getTarget().cast(CastType.MAP_OF_SET, keyType, valueType));
     }
 
 
     public <X> Level0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalisationUtils.checkIsSetOfArray(type,get());
-        return new Level0SetOfArrayOperatorImpl<X>(type, getTarget());
+        return new Level0SetOfArrayOperatorImpl<X>(type, getTarget().cast(CastType.SET_OF_ARRAY, type));
     }
 
 
     public <X> Level0SetOfListOperator<X> asSetOfListOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalisationUtils.checkIsSetOfList(type,get());
-        return new Level0SetOfListOperatorImpl<X>(getTarget());
+        return new Level0SetOfListOperatorImpl<X>(getTarget().cast(CastType.SET_OF_LIST, type));
     }
 
 
     public <K, V> Level0SetOfMapOperator<K, V> asSetOfMapOf(final Type<K> keyType, final Type<V> valueType) {
     	Validate.notNull(keyType, "A type representing the keys must be specified");
     	Validate.notNull(valueType, "A type representing the values must be specified");
-    	NormalisationUtils.checkIsSetOfMap(keyType, valueType, get());
-        return new Level0SetOfMapOperatorImpl<K,V>(getTarget());
+        return new Level0SetOfMapOperatorImpl<K,V>(getTarget().cast(CastType.SET_OF_MAP, keyType, valueType));
     }
 
 
     public <X> Level0SetOfSetOperator<X> asSetOfSetOf(final Type<X> type) {
     	Validate.notNull(type, "A type representing the elements must be specified");
-    	NormalisationUtils.checkIsSetOfSet(type,get());
-        return new Level0SetOfSetOperatorImpl<X>(getTarget());
+        return new Level0SetOfSetOperatorImpl<X>(getTarget().cast(CastType.SET_OF_SET, type));
     }
 
 
     public <X> Level0GenericUniqOperator<X> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the target object must be specified");
-        NormalisationUtils.checkIs(type, get());
-        return new Level0GenericUniqOperatorImpl<X>(getTarget());
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().cast(CastType.OBJECT, type));
     }
 
     public Level0GenericUniqOperator<?> asUnknown() {

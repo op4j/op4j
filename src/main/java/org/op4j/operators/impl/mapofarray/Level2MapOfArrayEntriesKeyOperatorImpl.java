@@ -32,6 +32,7 @@ import org.op4j.operators.intf.mapofarray.Level1MapOfArrayEntriesOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesKeyOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesKeySelectedOperator;
 import org.op4j.target.Target;
+import org.op4j.target.Target.CastType;
 import org.op4j.target.Target.Normalisation;
 import org.op4j.util.NormalisationUtils;
 
@@ -63,8 +64,7 @@ public class Level2MapOfArrayEntriesKeyOperatorImpl<K,V> extends AbstractOperato
 
     public <X> Level2MapOfArrayEntriesKeyOperator<X, V> asType(final Type<X> newType) {
         Validate.notNull(newType, "A type representing the elements must be specified");
-        NormalisationUtils.checkIsMapOfKey(newType, get());
-        return new Level2MapOfArrayEntriesKeyOperatorImpl<X, V>(this.type, getTarget());
+        return new Level2MapOfArrayEntriesKeyOperatorImpl<X, V>(this.type, getTarget().cast(CastType.MAP_KEY, newType));
     }
 
     public Level2MapOfArrayEntriesKeyOperator<?, V> asUnknown() {
