@@ -171,11 +171,11 @@ public abstract class Target {
     
     
     
-    abstract Target doReplaceWith(final Object replacement);
+    abstract Target doReplaceWith(final Object replacement, final Normalisation normalisation);
     
 
-    public final Target replaceWith(final Object replacement) {
-        return doReplaceWith(replacement);
+    public final Target replaceWith(final Object replacement, final Normalisation normalisation) {
+        return doReplaceWith(replacement, normalisation);
     }
     
     

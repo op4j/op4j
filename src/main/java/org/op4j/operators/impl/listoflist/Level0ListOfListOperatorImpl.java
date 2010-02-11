@@ -371,7 +371,7 @@ public class Level0ListOfListOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0ListOfListOperator<T> replaceWith(final List<List<T>> replacement) {
-        return new Level0ListOfListOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level0ListOfListOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.LIST_OF_LIST));
     }
 
 

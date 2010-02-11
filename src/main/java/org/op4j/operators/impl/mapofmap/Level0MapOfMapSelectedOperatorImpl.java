@@ -103,7 +103,7 @@ public class Level0MapOfMapSelectedOperatorImpl<K1,K2,V> extends AbstractOperato
 
 
     public Level0MapOfMapSelectedOperator<K1,K2,V> replaceWith(final Map<K1,Map<K2,V>> replacement) {
-        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement));
+        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement, Normalisation.MAP_OF_MAP));
     }
 
 

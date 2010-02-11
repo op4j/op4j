@@ -36,7 +36,7 @@ public class Level2ListOfListElementsSelectedElementsSelectedOperatorImpl<T> ext
 
 
     public Level2ListOfListElementsSelectedElementsSelectedOperator<T> replaceWith(final T replacement) {
-        return new Level2ListOfListElementsSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level2ListOfListElementsSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

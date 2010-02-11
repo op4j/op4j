@@ -136,7 +136,7 @@ public class Level2ListOfSetElementsElementsOperatorImpl<T> extends AbstractOper
 
 
     public Level2ListOfSetElementsElementsOperator<T> replaceWith(final T replacement) {
-        return new Level2ListOfSetElementsElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level2ListOfSetElementsElementsOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

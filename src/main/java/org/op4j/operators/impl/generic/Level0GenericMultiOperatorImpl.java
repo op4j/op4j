@@ -294,7 +294,7 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
         if (size() > 1) {
             throw new NonUniqueTargetException();
         }
-        return new Level0GenericUniqOperatorImpl<T>(getTarget().endIterate(null).replaceWith(getAsList().get(0)));
+        return new Level0GenericUniqOperatorImpl<T>(getTarget().endIterate(null).replaceWith(getAsList().get(0), Normalisation.NONE));
     }
 
 
@@ -329,7 +329,7 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0GenericMultiOperator<T> replaceWith(final T replacement) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

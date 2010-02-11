@@ -191,7 +191,7 @@ public class Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V> extends
 
 
     public Level2MapOfSetSelectedEntriesSelectedValueOperator<K,V> replaceWith(final Set<V> replacement) {
-        return new Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.SET));
     }
 
 

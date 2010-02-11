@@ -47,7 +47,7 @@ public class Level0GenericMultiSelectedOperatorImpl<T> extends AbstractOperatorI
 
 
     public Level0GenericMultiSelectedOperator<T> replaceWith(final T replacement) {
-        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

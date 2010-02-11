@@ -54,7 +54,7 @@ public class Level2ArrayOfMapElementsSelectedEntriesSelectedOperatorImpl<K,V> ex
 
 
     public Level2ArrayOfMapElementsSelectedEntriesSelectedOperator<K,V> replaceWith(final Entry<K,V> replacement) {
-        return new Level2ArrayOfMapElementsSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level2ArrayOfMapElementsSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.MAP_ENTRY));
     }
 
 

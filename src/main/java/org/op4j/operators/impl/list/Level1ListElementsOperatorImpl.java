@@ -186,7 +186,7 @@ public class Level1ListElementsOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level1ListElementsOperator<T> replaceWith(final T replacement) {
-        return new Level1ListElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level1ListElementsOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

@@ -297,7 +297,7 @@ public class Level0ListOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public Level0ListOfMapOperator<K, V> replaceWith(final List<Map<K, V>> replacement) {
-        return new Level0ListOfMapOperatorImpl<K, V>(getTarget().replaceWith(replacement));
+        return new Level0ListOfMapOperatorImpl<K, V>(getTarget().replaceWith(replacement, Normalisation.LIST_OF_MAP));
     }
 
 

@@ -140,7 +140,7 @@ public class Level3SetOfMapElementsEntriesKeyOperatorImpl<K,V> extends AbstractO
 
 
     public Level3SetOfMapElementsEntriesKeyOperator<K, V> replaceWith(final K replacement) {
-        return new Level3SetOfMapElementsEntriesKeyOperatorImpl<K, V>(getTarget().replaceWith(replacement));
+        return new Level3SetOfMapElementsEntriesKeyOperatorImpl<K, V>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

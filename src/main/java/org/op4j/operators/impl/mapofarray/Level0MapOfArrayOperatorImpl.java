@@ -286,7 +286,7 @@ public class Level0MapOfArrayOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public Level0MapOfArrayOperator<K, V> replaceWith(final Map<K, V[]> replacement) {
-        return new Level0MapOfArrayOperatorImpl<K, V>(this.type, getTarget().replaceWith(replacement));
+        return new Level0MapOfArrayOperatorImpl<K, V>(this.type, getTarget().replaceWith(replacement, Normalisation.MAP_OF_ARRAY(this.type.getRawClass())));
     }
 
 

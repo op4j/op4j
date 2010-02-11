@@ -246,7 +246,7 @@ public class Level1ListOfMapElementsOperatorImpl<K,V> extends AbstractOperatorIm
 
 
     public Level1ListOfMapElementsOperator<K, V> replaceWith(final Map<K, V> replacement) {
-        return new Level1ListOfMapElementsOperatorImpl<K, V>(getTarget().replaceWith(replacement));
+        return new Level1ListOfMapElementsOperatorImpl<K, V>(getTarget().replaceWith(replacement, Normalisation.MAP));
     }
 
 

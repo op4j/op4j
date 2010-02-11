@@ -296,7 +296,7 @@ public class Level0MapOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public Level0MapOperator<K, V> replaceWith(final Map<K, V> replacement) {
-        return new Level0MapOperatorImpl<K, V>(getTarget().replaceWith(replacement));
+        return new Level0MapOperatorImpl<K, V>(getTarget().replaceWith(replacement, Normalisation.MAP));
     }
 
 

@@ -392,7 +392,7 @@ public class Level0ListOfArrayOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0ListOfArrayOperator<T> replaceWith(final List<T[]> replacement) {
-        return new Level0ListOfArrayOperatorImpl<T>(this.type, getTarget().replaceWith(replacement));
+        return new Level0ListOfArrayOperatorImpl<T>(this.type, getTarget().replaceWith(replacement, Normalisation.LIST_OF_ARRAY(this.type.getRawClass())));
     }
 
 

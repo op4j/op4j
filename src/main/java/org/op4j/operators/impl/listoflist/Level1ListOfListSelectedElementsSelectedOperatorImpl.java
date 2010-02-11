@@ -144,7 +144,7 @@ public class Level1ListOfListSelectedElementsSelectedOperatorImpl<T> extends Abs
 
 
     public Level1ListOfListSelectedElementsSelectedOperator<T> replaceWith(final List<T> replacement) {
-        return new Level1ListOfListSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level1ListOfListSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.LIST));
     }
 
 

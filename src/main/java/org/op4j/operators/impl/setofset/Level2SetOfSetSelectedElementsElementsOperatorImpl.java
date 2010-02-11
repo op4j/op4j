@@ -87,7 +87,7 @@ public class Level2SetOfSetSelectedElementsElementsOperatorImpl<T> extends Abstr
 
 
     public Level2SetOfSetSelectedElementsElementsOperator<T> replaceWith(final T replacement) {
-        return new Level2SetOfSetSelectedElementsElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level2SetOfSetSelectedElementsElementsOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

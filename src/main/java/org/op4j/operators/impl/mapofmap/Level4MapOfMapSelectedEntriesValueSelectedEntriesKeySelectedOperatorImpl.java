@@ -36,7 +36,7 @@ public class Level4MapOfMapSelectedEntriesValueSelectedEntriesKeySelectedOperato
 
 
     public Level4MapOfMapSelectedEntriesValueSelectedEntriesKeySelectedOperator<K1,K2,V> replaceWith(final K2 replacement) {
-        return new Level4MapOfMapSelectedEntriesValueSelectedEntriesKeySelectedOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement));
+        return new Level4MapOfMapSelectedEntriesValueSelectedEntriesKeySelectedOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

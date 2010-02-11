@@ -148,7 +148,7 @@ public class Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T> extends A
 
 
     public Level1ArrayOfArraySelectedElementsSelectedOperator<T> replaceWith(final T[] replacement) {
-        return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().replaceWith(replacement));
+        return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().replaceWith(replacement, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 

@@ -37,7 +37,7 @@ public class Level3ListOfMapSelectedElementsEntriesSelectedKeySelectedOperatorIm
 
 
     public Level3ListOfMapSelectedElementsEntriesSelectedKeySelectedOperator<K,V> replaceWith(final K replacement) {
-        return new Level3ListOfMapSelectedElementsEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level3ListOfMapSelectedElementsEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

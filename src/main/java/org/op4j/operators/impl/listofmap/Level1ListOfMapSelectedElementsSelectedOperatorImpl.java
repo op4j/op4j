@@ -103,7 +103,7 @@ public class Level1ListOfMapSelectedElementsSelectedOperatorImpl<K,V> extends Ab
 
 
     public Level1ListOfMapSelectedElementsSelectedOperator<K,V> replaceWith(final Map<K,V> replacement) {
-        return new Level1ListOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level1ListOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.MAP));
     }
 
 

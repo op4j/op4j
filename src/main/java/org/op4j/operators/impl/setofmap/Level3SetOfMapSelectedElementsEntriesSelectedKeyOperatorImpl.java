@@ -88,7 +88,7 @@ public class Level3SetOfMapSelectedElementsEntriesSelectedKeyOperatorImpl<K,V> e
 
 
     public Level3SetOfMapSelectedElementsEntriesSelectedKeyOperator<K,V> replaceWith(final K replacement) {
-        return new Level3SetOfMapSelectedElementsEntriesSelectedKeyOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level3SetOfMapSelectedElementsEntriesSelectedKeyOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

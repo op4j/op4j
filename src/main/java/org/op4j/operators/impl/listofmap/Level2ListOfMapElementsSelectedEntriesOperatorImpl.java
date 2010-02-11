@@ -86,7 +86,7 @@ public class Level2ListOfMapElementsSelectedEntriesOperatorImpl<K,V> extends Abs
 
 
     public Level2ListOfMapElementsSelectedEntriesOperator<K,V> replaceWith(final Entry<K,V> replacement) {
-        return new Level2ListOfMapElementsSelectedEntriesOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level2ListOfMapElementsSelectedEntriesOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.MAP_ENTRY));
     }
 
 

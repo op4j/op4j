@@ -153,7 +153,7 @@ public class Level2MapOfMapSelectedEntriesValueOperatorImpl<K1,K2,V> extends Abs
 
 
     public Level2MapOfMapSelectedEntriesValueOperator<K1,K2,V> replaceWith(final Map<K2,V> replacement) {
-        return new Level2MapOfMapSelectedEntriesValueOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement));
+        return new Level2MapOfMapSelectedEntriesValueOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement, Normalisation.MAP));
     }
 
 

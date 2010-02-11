@@ -142,7 +142,7 @@ public class Level2MapOfMapEntriesKeyOperatorImpl<K1,K2,V> extends AbstractOpera
 
 
     public Level2MapOfMapEntriesKeyOperator<K1, K2, V> replaceWith(final K1 replacement) {
-        return new Level2MapOfMapEntriesKeyOperatorImpl<K1, K2, V>(getTarget().replaceWith(replacement));
+        return new Level2MapOfMapEntriesKeyOperatorImpl<K1, K2, V>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

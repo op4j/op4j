@@ -145,7 +145,7 @@ public class Level1SetOfListElementsSelectedOperatorImpl<T> extends AbstractOper
 
 
     public Level1SetOfListElementsSelectedOperator<T> replaceWith(final List<T> replacement) {
-        return new Level1SetOfListElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level1SetOfListElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.LIST));
     }
 
 

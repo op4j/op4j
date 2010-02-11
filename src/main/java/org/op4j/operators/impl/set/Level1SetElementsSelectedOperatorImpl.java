@@ -36,7 +36,7 @@ public class Level1SetElementsSelectedOperatorImpl<T> extends AbstractOperatorIm
 
 
     public Level1SetElementsSelectedOperator<T> replaceWith(final T replacement) {
-        return new Level1SetElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level1SetElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

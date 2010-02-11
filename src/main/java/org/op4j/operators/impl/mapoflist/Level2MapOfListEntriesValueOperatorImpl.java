@@ -301,7 +301,7 @@ public class Level2MapOfListEntriesValueOperatorImpl<K,V> extends AbstractOperat
 
 
     public Level2MapOfListEntriesValueOperator<K, V> replaceWith(final List<V> replacement) {
-        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().replaceWith(replacement));
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().replaceWith(replacement, Normalisation.LIST));
     }
 
 

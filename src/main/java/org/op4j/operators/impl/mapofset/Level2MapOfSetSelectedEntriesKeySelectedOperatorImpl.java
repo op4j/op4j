@@ -37,7 +37,7 @@ public class Level2MapOfSetSelectedEntriesKeySelectedOperatorImpl<K,V> extends A
 
 
     public Level2MapOfSetSelectedEntriesKeySelectedOperator<K,V> replaceWith(final K replacement) {
-        return new Level2MapOfSetSelectedEntriesKeySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level2MapOfSetSelectedEntriesKeySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

@@ -90,7 +90,7 @@ public class Level2ArrayOfArrayElementsSelectedElementsOperatorImpl<T> extends A
 
 
     public Level2ArrayOfArrayElementsSelectedElementsOperator<T> replaceWith(final T replacement) {
-        return new Level2ArrayOfArrayElementsSelectedElementsOperatorImpl<T>(this.type, getTarget().replaceWith(replacement));
+        return new Level2ArrayOfArrayElementsSelectedElementsOperatorImpl<T>(this.type, getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

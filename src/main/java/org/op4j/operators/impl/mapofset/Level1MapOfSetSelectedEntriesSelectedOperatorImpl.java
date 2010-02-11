@@ -55,7 +55,7 @@ public class Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V> extends Abst
 
 
     public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> replaceWith(final Entry<K,Set<V>> replacement) {
-        return new Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.MAP_OF_SET_ENTRY));
     }
 
 

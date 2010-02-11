@@ -523,7 +523,7 @@ public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0GenericUniqOperator<T> replaceWith(final T replacement) {
-        return new Level0GenericUniqOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level0GenericUniqOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

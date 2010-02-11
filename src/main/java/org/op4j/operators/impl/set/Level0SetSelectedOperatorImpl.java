@@ -139,7 +139,7 @@ public class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl imple
 
 
     public Level0SetSelectedOperator<T> replaceWith(final Set<T> replacement) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.SET));
     }
 
 

@@ -145,7 +145,7 @@ public class Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V> extend
 
 
     public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> replaceWith(final List<V> replacement) {
-        return new Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.LIST));
     }
 
 

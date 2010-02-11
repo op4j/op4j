@@ -36,7 +36,7 @@ public class Level2ListOfListElementsElementsSelectedOperatorImpl<T> extends Abs
 
 
     public Level2ListOfListElementsElementsSelectedOperator<T> replaceWith(final T replacement) {
-        return new Level2ListOfListElementsElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level2ListOfListElementsElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

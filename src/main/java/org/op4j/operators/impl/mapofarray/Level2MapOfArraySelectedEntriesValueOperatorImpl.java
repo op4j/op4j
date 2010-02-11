@@ -200,7 +200,7 @@ public class Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V> extends Abstr
 
 
     public Level2MapOfArraySelectedEntriesValueOperator<K,V> replaceWith(final V[] replacement) {
-        return new Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V>(this.type, getTarget().replaceWith(replacement));
+        return new Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V>(this.type, getTarget().replaceWith(replacement, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 

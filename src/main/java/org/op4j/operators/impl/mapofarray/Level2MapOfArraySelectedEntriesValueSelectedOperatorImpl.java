@@ -149,7 +149,7 @@ public class Level2MapOfArraySelectedEntriesValueSelectedOperatorImpl<K,V> exten
 
 
     public Level2MapOfArraySelectedEntriesValueSelectedOperator<K,V> replaceWith(final V[] replacement) {
-        return new Level2MapOfArraySelectedEntriesValueSelectedOperatorImpl<K,V>(this.type, getTarget().replaceWith(replacement));
+        return new Level2MapOfArraySelectedEntriesValueSelectedOperatorImpl<K,V>(this.type, getTarget().replaceWith(replacement, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 

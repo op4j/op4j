@@ -145,7 +145,7 @@ public class Level0ArrayOfMapSelectedOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Level0ArrayOfMapSelectedOperator<K,V> replaceWith(final Map<K,V>[] replacement) {
-        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level0ArrayOfMapSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.ARRAY_OF_MAP));
     }
 
 

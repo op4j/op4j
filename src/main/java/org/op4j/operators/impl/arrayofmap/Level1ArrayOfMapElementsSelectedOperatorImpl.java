@@ -102,7 +102,7 @@ public class Level1ArrayOfMapElementsSelectedOperatorImpl<K,V> extends AbstractO
 
 
     public Level1ArrayOfMapElementsSelectedOperator<K,V> replaceWith(final Map<K,V> replacement) {
-        return new Level1ArrayOfMapElementsSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level1ArrayOfMapElementsSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.MAP));
     }
 
 

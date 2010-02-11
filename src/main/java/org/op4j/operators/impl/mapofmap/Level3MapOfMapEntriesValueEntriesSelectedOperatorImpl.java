@@ -54,7 +54,7 @@ public class Level3MapOfMapEntriesValueEntriesSelectedOperatorImpl<K1,K2,V> exte
 
 
     public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1,K2,V> replaceWith(final Entry<K2,V> replacement) {
-        return new Level3MapOfMapEntriesValueEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement));
+        return new Level3MapOfMapEntriesValueEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement, Normalisation.MAP_ENTRY));
     }
 
 

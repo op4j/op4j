@@ -254,7 +254,7 @@ public class Level2MapOfMapEntriesValueOperatorImpl<K1,K2,V> extends AbstractOpe
 
 
     public Level2MapOfMapEntriesValueOperator<K1, K2, V> replaceWith(final Map<K2, V> replacement) {
-        return new Level2MapOfMapEntriesValueOperatorImpl<K1, K2, V>(getTarget().replaceWith(replacement));
+        return new Level2MapOfMapEntriesValueOperatorImpl<K1, K2, V>(getTarget().replaceWith(replacement, Normalisation.MAP));
     }
 
 

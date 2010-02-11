@@ -333,7 +333,7 @@ public class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0SetOperator<T> replaceWith(final Set<T> replacement) {
-        return new Level0SetOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level0SetOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.SET));
     }
 
 

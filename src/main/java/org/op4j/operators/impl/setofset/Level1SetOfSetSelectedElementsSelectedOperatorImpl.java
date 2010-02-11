@@ -139,7 +139,7 @@ public class Level1SetOfSetSelectedElementsSelectedOperatorImpl<T> extends Abstr
 
 
     public Level1SetOfSetSelectedElementsSelectedOperator<T> replaceWith(final Set<T> replacement) {
-        return new Level1SetOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level1SetOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.SET));
     }
 
 

@@ -20,6 +20,8 @@
 
 package org.op4j.target;
 
+import org.op4j.target.Target.Normalisation;
+
 
 /**
  * 
@@ -31,12 +33,14 @@ package org.op4j.target;
 final class ExecutionTargetReplaceWithOperation implements ExecutionTargetOperation {
 
     private final Object replacement;
+    private final Normalisation normalisation;
 
     
     
-    public ExecutionTargetReplaceWithOperation(final Object replacement) {
+    public ExecutionTargetReplaceWithOperation(final Object replacement, final Normalisation normalisation) {
         super();
         this.replacement = replacement;
+        this.normalisation = normalisation;
     }
     
     

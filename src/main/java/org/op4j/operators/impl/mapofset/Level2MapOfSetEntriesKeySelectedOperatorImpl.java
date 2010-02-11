@@ -37,7 +37,7 @@ public class Level2MapOfSetEntriesKeySelectedOperatorImpl<K,V> extends AbstractO
 
 
     public Level2MapOfSetEntriesKeySelectedOperator<K,V> replaceWith(final K replacement) {
-        return new Level2MapOfSetEntriesKeySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level2MapOfSetEntriesKeySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

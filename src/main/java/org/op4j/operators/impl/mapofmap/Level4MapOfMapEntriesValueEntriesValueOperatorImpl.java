@@ -144,7 +144,7 @@ public class Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1,K2,V> extends
 
 
     public Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, V> replaceWith(final V replacement) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, V>(getTarget().replaceWith(replacement));
+        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, V>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

@@ -140,7 +140,7 @@ public class Level3SetOfMapElementsEntriesValueOperatorImpl<K,V> extends Abstrac
 
 
     public Level3SetOfMapElementsEntriesValueOperator<K, V> replaceWith(final V replacement) {
-        return new Level3SetOfMapElementsEntriesValueOperatorImpl<K, V>(getTarget().replaceWith(replacement));
+        return new Level3SetOfMapElementsEntriesValueOperatorImpl<K, V>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

@@ -85,7 +85,7 @@ public class Level2ArrayOfMapElementsSelectedEntriesOperatorImpl<K,V> extends Ab
 
 
     public Level2ArrayOfMapElementsSelectedEntriesOperator<K,V> replaceWith(final Entry<K,V> replacement) {
-        return new Level2ArrayOfMapElementsSelectedEntriesOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level2ArrayOfMapElementsSelectedEntriesOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.MAP_ENTRY));
     }
 
 

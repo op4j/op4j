@@ -54,7 +54,7 @@ public class Level1MapOfMapSelectedEntriesSelectedOperatorImpl<K1,K2,V> extends 
 
 
     public Level1MapOfMapSelectedEntriesSelectedOperator<K1,K2,V> replaceWith(final Entry<K1,Map<K2,V>> replacement) {
-        return new Level1MapOfMapSelectedEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement));
+        return new Level1MapOfMapSelectedEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement, Normalisation.MAP_OF_MAP_ENTRY));
     }
 
 

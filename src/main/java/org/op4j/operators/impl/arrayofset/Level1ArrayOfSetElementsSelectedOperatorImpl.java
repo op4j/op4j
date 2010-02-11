@@ -139,7 +139,7 @@ public class Level1ArrayOfSetElementsSelectedOperatorImpl<T> extends AbstractOpe
 
 
     public Level1ArrayOfSetElementsSelectedOperator<T> replaceWith(final Set<T> replacement) {
-        return new Level1ArrayOfSetElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level1ArrayOfSetElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.SET));
     }
 
 

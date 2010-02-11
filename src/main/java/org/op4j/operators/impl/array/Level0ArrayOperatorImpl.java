@@ -344,7 +344,7 @@ public class Level0ArrayOperatorImpl<T>
 
 
     public Level0ArrayOperator<T> replaceWith(final T[] replacement) {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().replaceWith(replacement));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().replaceWith(replacement, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 

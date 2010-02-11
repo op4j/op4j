@@ -206,7 +206,7 @@ public class Level1ArrayElementsOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level1ArrayElementsOperator<T> replaceWith(final T replacement) {
-        return new Level1ArrayElementsOperatorImpl<T>(this.type, getTarget().replaceWith(replacement));
+        return new Level1ArrayElementsOperatorImpl<T>(this.type, getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

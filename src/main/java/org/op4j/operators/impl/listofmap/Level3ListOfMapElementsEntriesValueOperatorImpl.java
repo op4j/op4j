@@ -139,7 +139,7 @@ public class Level3ListOfMapElementsEntriesValueOperatorImpl<K,V> extends Abstra
 
 
     public Level3ListOfMapElementsEntriesValueOperator<K, V> replaceWith(final V replacement) {
-        return new Level3ListOfMapElementsEntriesValueOperatorImpl<K, V>(getTarget().replaceWith(replacement));
+        return new Level3ListOfMapElementsEntriesValueOperatorImpl<K, V>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

@@ -196,7 +196,7 @@ public class Level2MapOfListEntriesSelectedValueOperatorImpl<K,V> extends Abstra
 
 
     public Level2MapOfListEntriesSelectedValueOperator<K,V> replaceWith(final List<V> replacement) {
-        return new Level2MapOfListEntriesSelectedValueOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level2MapOfListEntriesSelectedValueOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.LIST));
     }
 
 

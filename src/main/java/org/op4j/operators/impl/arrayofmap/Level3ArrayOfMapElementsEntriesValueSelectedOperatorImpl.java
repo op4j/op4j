@@ -36,7 +36,7 @@ public class Level3ArrayOfMapElementsEntriesValueSelectedOperatorImpl<K,V> exten
 
 
     public Level3ArrayOfMapElementsEntriesValueSelectedOperator<K,V> replaceWith(final V replacement) {
-        return new Level3ArrayOfMapElementsEntriesValueSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level3ArrayOfMapElementsEntriesValueSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

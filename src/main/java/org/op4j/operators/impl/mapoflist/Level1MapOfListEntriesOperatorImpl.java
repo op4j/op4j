@@ -137,7 +137,7 @@ public class Level1MapOfListEntriesOperatorImpl<K,V> extends AbstractOperatorImp
 
 
     public Level1MapOfListEntriesOperator<K, V> replaceWith(final Entry<K, List<V>> replacement) {
-        return new Level1MapOfListEntriesOperatorImpl<K, V>(getTarget().replaceWith(replacement));
+        return new Level1MapOfListEntriesOperatorImpl<K, V>(getTarget().replaceWith(replacement, Normalisation.MAP_OF_LIST_ENTRY));
     }
 
 

@@ -141,7 +141,7 @@ public class Level2MapOfSetEntriesKeyOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Level2MapOfSetEntriesKeyOperator<K, V> replaceWith(final K replacement) {
-        return new Level2MapOfSetEntriesKeyOperatorImpl<K, V>(getTarget().replaceWith(replacement));
+        return new Level2MapOfSetEntriesKeyOperatorImpl<K, V>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

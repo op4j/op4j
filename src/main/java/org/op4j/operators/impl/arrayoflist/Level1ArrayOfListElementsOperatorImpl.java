@@ -294,7 +294,7 @@ public class Level1ArrayOfListElementsOperatorImpl<T> extends AbstractOperatorIm
 
 
     public Level1ArrayOfListElementsOperator<T> replaceWith(final List<T> replacement) {
-        return new Level1ArrayOfListElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level1ArrayOfListElementsOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.LIST));
     }
 
 

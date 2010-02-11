@@ -54,7 +54,7 @@ public class Level1MapEntriesSelectedOperatorImpl<K,V> extends AbstractOperatorI
 
 
     public Level1MapEntriesSelectedOperator<K,V> replaceWith(final Entry<K,V> replacement) {
-        return new Level1MapEntriesSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level1MapEntriesSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.MAP_ENTRY));
     }
 
 

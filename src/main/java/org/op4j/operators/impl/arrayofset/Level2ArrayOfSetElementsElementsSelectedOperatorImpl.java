@@ -36,7 +36,7 @@ public class Level2ArrayOfSetElementsElementsSelectedOperatorImpl<T> extends Abs
 
 
     public Level2ArrayOfSetElementsElementsSelectedOperator<T> replaceWith(final T replacement) {
-        return new Level2ArrayOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level2ArrayOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

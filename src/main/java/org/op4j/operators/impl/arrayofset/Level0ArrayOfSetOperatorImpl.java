@@ -370,7 +370,7 @@ public class Level0ArrayOfSetOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0ArrayOfSetOperator<T> replaceWith(final Set<T>[] replacement) {
-        return new Level0ArrayOfSetOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level0ArrayOfSetOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.ARRAY_OF_SET));
     }
 
 

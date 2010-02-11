@@ -55,7 +55,7 @@ public class Level1MapOfListEntriesSelectedOperatorImpl<K,V> extends AbstractOpe
 
 
     public Level1MapOfListEntriesSelectedOperator<K,V> replaceWith(final Entry<K,List<V>> replacement) {
-        return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.MAP_OF_LIST_ENTRY));
     }
 
 

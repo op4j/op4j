@@ -139,7 +139,7 @@ public class Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T> extends Abs
 
 
     public Level1ArrayOfSetSelectedElementsSelectedOperator<T> replaceWith(final Set<T> replacement) {
-        return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level1ArrayOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.SET));
     }
 
 

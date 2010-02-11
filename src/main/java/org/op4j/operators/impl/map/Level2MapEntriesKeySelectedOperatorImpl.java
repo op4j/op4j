@@ -36,7 +36,7 @@ public class Level2MapEntriesKeySelectedOperatorImpl<K,V> extends AbstractOperat
 
 
     public Level2MapEntriesKeySelectedOperator<K,V> replaceWith(final K replacement) {
-        return new Level2MapEntriesKeySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level2MapEntriesKeySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

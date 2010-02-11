@@ -156,7 +156,7 @@ public class Level1MapOfArrayEntriesOperatorImpl<K,V> extends AbstractOperatorIm
 
 
     public Level1MapOfArrayEntriesOperator<K, V> replaceWith(final Entry<K, V[]> replacement) {
-        return new Level1MapOfArrayEntriesOperatorImpl<K, V>(this.type, getTarget().replaceWith(replacement));
+        return new Level1MapOfArrayEntriesOperatorImpl<K, V>(this.type, getTarget().replaceWith(replacement, Normalisation.MAP_OF_ARRAY_ENTRY(this.type.getRawClass())));
     }
 
 

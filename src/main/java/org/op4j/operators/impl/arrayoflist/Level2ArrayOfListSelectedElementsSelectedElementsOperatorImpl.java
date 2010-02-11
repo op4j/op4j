@@ -87,7 +87,7 @@ public class Level2ArrayOfListSelectedElementsSelectedElementsOperatorImpl<T> ex
 
 
     public Level2ArrayOfListSelectedElementsSelectedElementsOperator<T> replaceWith(final T replacement) {
-        return new Level2ArrayOfListSelectedElementsSelectedElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level2ArrayOfListSelectedElementsSelectedElementsOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

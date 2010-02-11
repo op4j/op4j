@@ -87,7 +87,7 @@ public class Level4MapOfMapSelectedEntriesValueSelectedEntriesValueOperatorImpl<
 
 
     public Level4MapOfMapSelectedEntriesValueSelectedEntriesValueOperator<K1,K2,V> replaceWith(final V replacement) {
-        return new Level4MapOfMapSelectedEntriesValueSelectedEntriesValueOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement));
+        return new Level4MapOfMapSelectedEntriesValueSelectedEntriesValueOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

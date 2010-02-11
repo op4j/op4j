@@ -150,7 +150,7 @@ public class Level0ListOfArraySelectedOperatorImpl<T> extends AbstractOperatorIm
 
 
     public Level0ListOfArraySelectedOperator<T> replaceWith(final List<T[]> replacement) {
-        return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().replaceWith(replacement));
+        return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().replaceWith(replacement, Normalisation.LIST_OF_ARRAY(this.type.getRawClass())));
     }
 
 

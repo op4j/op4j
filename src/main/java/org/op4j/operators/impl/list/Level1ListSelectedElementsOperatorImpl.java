@@ -87,7 +87,7 @@ public class Level1ListSelectedElementsOperatorImpl<T> extends AbstractOperatorI
 
 
     public Level1ListSelectedElementsOperator<T> replaceWith(final T replacement) {
-        return new Level1ListSelectedElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level1ListSelectedElementsOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

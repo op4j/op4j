@@ -345,10 +345,10 @@ public final class ExecutionTarget extends Target {
 
 
     @Override
-    Target doReplaceWith(final Object replacement) {
+    Target doReplaceWith(final Object replacement, final Normalisation normalisation) {
 
         final ExecutionTargetReplaceWithOperation operation =
-            new ExecutionTargetReplaceWithOperation(replacement);
+            new ExecutionTargetReplaceWithOperation(replacement, normalisation);
         final ExecutionTargetOperation[][] newOperations =
             addOperation(this.operations, this.currentBlockLevel, operation);
 

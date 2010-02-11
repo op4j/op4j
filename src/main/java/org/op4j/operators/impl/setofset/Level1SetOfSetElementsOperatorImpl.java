@@ -289,7 +289,7 @@ public class Level1SetOfSetElementsOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level1SetOfSetElementsOperator<T> replaceWith(final Set<T> replacement) {
-        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level1SetOfSetElementsOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.SET));
     }
 
 

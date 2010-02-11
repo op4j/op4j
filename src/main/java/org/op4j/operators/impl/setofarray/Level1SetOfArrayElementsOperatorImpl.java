@@ -309,7 +309,7 @@ public class Level1SetOfArrayElementsOperatorImpl<T> extends AbstractOperatorImp
 
 
     public Level1SetOfArrayElementsOperator<T> replaceWith(final T[] replacement) {
-        return new Level1SetOfArrayElementsOperatorImpl<T>(this.type, getTarget().replaceWith(replacement));
+        return new Level1SetOfArrayElementsOperatorImpl<T>(this.type, getTarget().replaceWith(replacement, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 

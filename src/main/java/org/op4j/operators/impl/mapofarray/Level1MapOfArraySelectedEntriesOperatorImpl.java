@@ -90,7 +90,7 @@ public class Level1MapOfArraySelectedEntriesOperatorImpl<K,V> extends AbstractOp
 
 
     public Level1MapOfArraySelectedEntriesOperator<K,V> replaceWith(final Entry<K,V[]> replacement) {
-        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(this.type, getTarget().replaceWith(replacement));
+        return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(this.type, getTarget().replaceWith(replacement, Normalisation.MAP_OF_ARRAY_ENTRY(this.type.getRawClass())));
     }
 
 

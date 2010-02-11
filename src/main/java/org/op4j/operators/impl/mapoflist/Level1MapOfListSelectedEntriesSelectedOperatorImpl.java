@@ -55,7 +55,7 @@ public class Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V> extends Abs
 
 
     public Level1MapOfListSelectedEntriesSelectedOperator<K,V> replaceWith(final Entry<K,List<V>> replacement) {
-        return new Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level1MapOfListSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.MAP_OF_LIST_ENTRY));
     }
 
 

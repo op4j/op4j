@@ -36,7 +36,7 @@ public class Level2MapEntriesSelectedKeySelectedOperatorImpl<K,V> extends Abstra
 
 
     public Level2MapEntriesSelectedKeySelectedOperator<K,V> replaceWith(final K replacement) {
-        return new Level2MapEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level2MapEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

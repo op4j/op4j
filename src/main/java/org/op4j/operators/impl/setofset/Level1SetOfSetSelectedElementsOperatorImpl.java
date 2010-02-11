@@ -190,7 +190,7 @@ public class Level1SetOfSetSelectedElementsOperatorImpl<T> extends AbstractOpera
 
 
     public Level1SetOfSetSelectedElementsOperator<T> replaceWith(final Set<T> replacement) {
-        return new Level1SetOfSetSelectedElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level1SetOfSetSelectedElementsOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.SET));
     }
 
 

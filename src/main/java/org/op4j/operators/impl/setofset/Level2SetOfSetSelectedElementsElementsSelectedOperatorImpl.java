@@ -36,7 +36,7 @@ public class Level2SetOfSetSelectedElementsElementsSelectedOperatorImpl<T> exten
 
 
     public Level2SetOfSetSelectedElementsElementsSelectedOperator<T> replaceWith(final T replacement) {
-        return new Level2SetOfSetSelectedElementsElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level2SetOfSetSelectedElementsElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

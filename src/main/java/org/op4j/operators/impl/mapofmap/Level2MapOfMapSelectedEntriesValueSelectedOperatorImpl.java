@@ -102,7 +102,7 @@ public class Level2MapOfMapSelectedEntriesValueSelectedOperatorImpl<K1,K2,V> ext
 
 
     public Level2MapOfMapSelectedEntriesValueSelectedOperator<K1,K2,V> replaceWith(final Map<K2,V> replacement) {
-        return new Level2MapOfMapSelectedEntriesValueSelectedOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement));
+        return new Level2MapOfMapSelectedEntriesValueSelectedOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement, Normalisation.MAP));
     }
 
 

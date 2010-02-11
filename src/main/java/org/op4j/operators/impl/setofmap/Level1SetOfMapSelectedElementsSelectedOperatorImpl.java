@@ -103,7 +103,7 @@ public class Level1SetOfMapSelectedElementsSelectedOperatorImpl<K,V> extends Abs
 
 
     public Level1SetOfMapSelectedElementsSelectedOperator<K,V> replaceWith(final Map<K,V> replacement) {
-        return new Level1SetOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level1SetOfMapSelectedElementsSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.MAP));
     }
 
 

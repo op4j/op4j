@@ -288,7 +288,7 @@ public class Level0SetOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public Level0SetOfMapOperator<K, V> replaceWith(final Set<Map<K, V>> replacement) {
-        return new Level0SetOfMapOperatorImpl<K, V>(getTarget().replaceWith(replacement));
+        return new Level0SetOfMapOperatorImpl<K, V>(getTarget().replaceWith(replacement, Normalisation.SET_OF_MAP));
     }
 
 

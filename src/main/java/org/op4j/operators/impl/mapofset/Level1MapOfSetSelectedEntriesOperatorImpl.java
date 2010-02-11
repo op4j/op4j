@@ -86,7 +86,7 @@ public class Level1MapOfSetSelectedEntriesOperatorImpl<K,V> extends AbstractOper
 
 
     public Level1MapOfSetSelectedEntriesOperator<K,V> replaceWith(final Entry<K,Set<V>> replacement) {
-        return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.MAP_OF_SET_ENTRY));
     }
 
 

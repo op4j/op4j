@@ -139,7 +139,7 @@ public class Level3ArrayOfMapElementsEntriesKeyOperatorImpl<K,V> extends Abstrac
 
 
     public Level3ArrayOfMapElementsEntriesKeyOperator<K, V> replaceWith(final K replacement) {
-        return new Level3ArrayOfMapElementsEntriesKeyOperatorImpl<K, V>(getTarget().replaceWith(replacement));
+        return new Level3ArrayOfMapElementsEntriesKeyOperatorImpl<K, V>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

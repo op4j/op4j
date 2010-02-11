@@ -34,7 +34,7 @@ public class Level0GenericUniqSelectedOperatorImpl<T> extends AbstractOperatorIm
 
 
     public Level0GenericUniqSelectedOperator<T> replaceWith(final T replacement) {
-        return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

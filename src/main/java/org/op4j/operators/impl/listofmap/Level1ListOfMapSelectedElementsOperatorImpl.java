@@ -154,7 +154,7 @@ public class Level1ListOfMapSelectedElementsOperatorImpl<K,V> extends AbstractOp
 
 
     public Level1ListOfMapSelectedElementsOperator<K,V> replaceWith(final Map<K,V> replacement) {
-        return new Level1ListOfMapSelectedElementsOperatorImpl<K,V>(getTarget().replaceWith(replacement));
+        return new Level1ListOfMapSelectedElementsOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.MAP));
     }
 
 

@@ -87,7 +87,7 @@ public class Level2ArrayOfListElementsSelectedElementsOperatorImpl<T> extends Ab
 
 
     public Level2ArrayOfListElementsSelectedElementsOperator<T> replaceWith(final T replacement) {
-        return new Level2ArrayOfListElementsSelectedElementsOperatorImpl<T>(getTarget().replaceWith(replacement));
+        return new Level2ArrayOfListElementsSelectedElementsOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

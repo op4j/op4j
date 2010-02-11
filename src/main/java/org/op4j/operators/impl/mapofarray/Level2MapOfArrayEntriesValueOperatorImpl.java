@@ -328,7 +328,7 @@ public class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends AbstractOpera
 
 
     public Level2MapOfArrayEntriesValueOperator<K, V> replaceWith(final V[] replacement) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(this.type, getTarget().replaceWith(replacement));
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K, V>(this.type, getTarget().replaceWith(replacement, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 
