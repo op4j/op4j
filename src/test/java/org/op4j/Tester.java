@@ -515,5 +515,21 @@ public class Tester extends TestCase {
         assertEquals(Arrays.asList(expSerArray), Arrays.asList(newArray));
         
     }
+
+    
+    @Test
+    public void test19 () {
+
+        final Serializable[] expSerArray = new Serializable[] {"one", "two", "three", Integer.valueOf(3) };
+        
+        final Serializable[] serArray = new String[] {"one", "two", "three" };
+        
+        Serializable[] newArray =
+            Op.on(serArray).asArrayOf(Types.SERIALIZABLE).add(Integer.valueOf(3)).get();
+        
+        assertEquals(Serializable[].class, newArray.getClass());
+        assertEquals(Arrays.asList(expSerArray), Arrays.asList(newArray));
+        
+    }
     
 }
