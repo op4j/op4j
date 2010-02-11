@@ -474,7 +474,7 @@ public class Tester extends TestCase {
 
         final Serializable[] expSerArray = new Serializable[] {"one", "two", "three", Integer.valueOf(3) };
         
-        final Serializable[] serArray = new Serializable[] {"one", "two", "three" };
+        final Serializable[] serArray = new String[] {"one", "two", "three" };
         
         Serializable[] newArray =
             Op.onArrayOf(Types.SERIALIZABLE, serArray).ifNotNull().
@@ -494,6 +494,22 @@ public class Tester extends TestCase {
                             }
                         
                         }).endIf().add(Integer.valueOf(3)).get();
+        
+        assertEquals(Serializable[].class, newArray.getClass());
+        assertEquals(Arrays.asList(expSerArray), Arrays.asList(newArray));
+        
+    }
+
+    
+    @Test
+    public void test18() {
+
+        final Serializable[] expSerArray = new Serializable[] {"one", "two", "three", Integer.valueOf(3) };
+        
+        final Serializable[] serArray = new String[] {"one", "two", "three" };
+        
+        Serializable[] newArray =
+            Op.onArrayOf(Types.SERIALIZABLE, serArray).replaceWith(serArray).add(Integer.valueOf(3)).get();
         
         assertEquals(Serializable[].class, newArray.getClass());
         assertEquals(Arrays.asList(expSerArray), Arrays.asList(newArray));
