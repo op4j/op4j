@@ -1,6 +1,7 @@
 
   - Add Validate.notNull to methods.
-  - Create a "map(IFunction)" method equivalent to forEach().exec(func).endFor().
+  - Create a "map(IFunction)" method equivalent to forEach().exec(func).endFor()
+  - Create a "mapMap(IFunction)" method equivalent to forEach().forEach().exec(func).endFor().endFor()
   - Rebuild javadoc for Executable* interfaces
   - Make better utility abstract functions, evaluators, etc. Maybe one that receives Type as
     parameter and thus does not need to implement getReturnType.
