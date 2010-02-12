@@ -64,14 +64,14 @@ public interface ExecutableMapOfMapEntryOperator<K1,K2,V> {
     
     /**
      * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * Specialisation of the {@link #execAsMapOfMapEntry(IFunction)} method which executes a function
      * implementing the {@link IEvaluator} interface.
      * </p>
      * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * This method is equivalent to {@link #execAsMapOfMapEntry(IFunction)}, and exists only for
      * semantical purposes.
      * </p>
-     * 
+     *
      * @param <X1> the type of the resulting first-level keys
      * @param <X2> the type of the resulting second-level keys
      * @param <Y> the type of the resulting second-level values
@@ -83,14 +83,14 @@ public interface ExecutableMapOfMapEntryOperator<K1,K2,V> {
     
     /**
      * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * Specialisation of the {@link #execAsMapOfMapEntry(IFunction)} method which executes a function
      * implementing the {@link IConverter} interface.
      * </p>
      * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * This method is equivalent to {@link #execAsMapOfMapEntry(IFunction)}, and exists only for
      * semantical purposes.
      * </p>
-     * 
+     *
      * @param <X1> the type of the resulting first-level keys
      * @param <X2> the type of the resulting second-level keys
      * @param <Y> the type of the resulting second-level values
@@ -108,7 +108,6 @@ public interface ExecutableMapOfMapEntryOperator<K1,K2,V> {
      * </p>
      * 
      * @param <X> the type of the result object
-     * @param resultType the new type for the operator
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
@@ -117,16 +116,15 @@ public interface ExecutableMapOfMapEntryOperator<K1,K2,V> {
     
     /**
      * <p>
-     * Specialisation of the {@link #exec(Type, IFunction)} method which executes a function
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
      * implementing the {@link IEvaluator} interface.
      * </p>
      * <p>
-     * This method is equivalent to {@link #exec(Type, IFunction)}, and exists only for
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
      * semantical purposes.
      * </p>
-     * 
+     *
      * @param <X> the type of the result object
-     * @param resultType the new type for the operator
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
@@ -135,16 +133,15 @@ public interface ExecutableMapOfMapEntryOperator<K1,K2,V> {
     
     /**
      * <p>
-     * Specialisation of the {@link #exec(Type, IFunction)} method which executes a function
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
      * implementing the {@link IConverter} interface.
      * </p>
      * <p>
-     * This method is equivalent to {@link #exec(Type, IFunction)}, and exists only for
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
      * semantical purposes.
      * </p>
-     * 
+     *
      * @param <X> the type of the result object
-     * @param resultType the new type for the operator
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */

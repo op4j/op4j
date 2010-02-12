@@ -62,14 +62,14 @@ public interface ExecutableMapOfSetEntrySelectedOperator<K,V> {
     
     /**
      * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * Specialisation of the {@link #execAsMapOfSetEntry(IFunction)} method which executes a function
      * implementing the {@link IEvaluator} interface.
      * </p>
      * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * This method is equivalent to {@link #execAsMapOfSetEntry(IFunction)}, and exists only for
      * semantical purposes.
      * </p>
-     * 
+     *
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
@@ -78,14 +78,14 @@ public interface ExecutableMapOfSetEntrySelectedOperator<K,V> {
     
     /**
      * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * Specialisation of the {@link #execAsMapOfSetEntry(IFunction)} method which executes a function
      * implementing the {@link IConverter} interface.
      * </p>
      * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * This method is equivalent to {@link #execAsMapOfSetEntry(IFunction)}, and exists only for
      * semantical purposes.
      * </p>
-     * 
+     *
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */

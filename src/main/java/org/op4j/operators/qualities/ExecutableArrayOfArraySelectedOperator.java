@@ -58,11 +58,11 @@ public interface ExecutableArrayOfArraySelectedOperator<T> {
     
     /**
      * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * Specialisation of the {@link #execAsArrayOfArray(IFunction)} method which executes a function
      * implementing the {@link IEvaluator} interface.
      * </p>
      * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * This method is equivalent to {@link #execAsArrayOfArray(IFunction)}, and exists only for
      * semantical purposes.
      * </p>
      * 
@@ -74,11 +74,11 @@ public interface ExecutableArrayOfArraySelectedOperator<T> {
     
     /**
      * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * Specialisation of the {@link #execAsArrayOfArray(IFunction)} method which executes a function
      * implementing the {@link IConverter} interface.
      * </p>
      * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * This method is equivalent to {@link #execAsArrayOfArray(IFunction)}, and exists only for
      * semantical purposes.
      * </p>
      * 

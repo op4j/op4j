@@ -64,11 +64,11 @@ public interface ExecutableArrayOfMapOperator<K,V> {
     
     /**
      * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * Specialisation of the {@link #execAsArrayOfMap(IFunction)} method which executes a function
      * implementing the {@link IEvaluator} interface.
      * </p>
      * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * This method is equivalent to {@link #execAsArrayOfMap(IFunction)}, and exists only for
      * semantical purposes.
      * </p>
      * 
@@ -82,11 +82,11 @@ public interface ExecutableArrayOfMapOperator<K,V> {
     
     /**
      * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
+     * Specialisation of the {@link #execAsArrayOfMap(IFunction)} method which executes a function
      * implementing the {@link IConverter} interface.
      * </p>
      * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
+     * This method is equivalent to {@link #execAsArrayOfMap(IFunction)}, and exists only for
      * semantical purposes.
      * </p>
      * 
@@ -106,7 +106,6 @@ public interface ExecutableArrayOfMapOperator<K,V> {
      * </p>
      * 
      * @param <X> the type of the result object
-     * @param resultType the new type for the operator
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
@@ -115,16 +114,15 @@ public interface ExecutableArrayOfMapOperator<K,V> {
     
     /**
      * <p>
-     * Specialisation of the {@link #exec(Type, IFunction)} method which executes a function
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
      * implementing the {@link IEvaluator} interface.
      * </p>
      * <p>
-     * This method is equivalent to {@link #exec(Type, IFunction)}, and exists only for
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
      * semantical purposes.
      * </p>
-     * 
+     *
      * @param <X> the type of the result object
-     * @param resultType the new type for the operator
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
@@ -133,16 +131,15 @@ public interface ExecutableArrayOfMapOperator<K,V> {
     
     /**
      * <p>
-     * Specialisation of the {@link #exec(Type, IFunction)} method which executes a function
+     * Specialisation of the {@link #exec(IFunction)} method which executes a function
      * implementing the {@link IConverter} interface.
      * </p>
      * <p>
-     * This method is equivalent to {@link #exec(Type, IFunction)}, and exists only for
+     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
      * semantical purposes.
      * </p>
-     * 
+     *
      * @param <X> the type of the result object
-     * @param resultType the new type for the operator
      * @param converter the converter to be executed
      * @return an operator on the results of converter execution
      */
