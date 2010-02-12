@@ -72,7 +72,7 @@ class OgnlExpressionUtil {
         
         Object parsedExpression = parsedExpressionsByExpression.get(ognlExpression);
         
-        Class<? super X> resultClass = resultType.getRawClass();
+        final Class<? super X> resultClass = resultType.getRawClass();
         
         if (parsedExpression == null) {
             try {

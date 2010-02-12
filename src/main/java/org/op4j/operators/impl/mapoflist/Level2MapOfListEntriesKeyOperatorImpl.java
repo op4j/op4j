@@ -35,7 +35,6 @@ import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesKeySelectedOperat
 import org.op4j.target.Target;
 import org.op4j.target.Target.CastType;
 import org.op4j.target.Target.Normalisation;
-import org.op4j.util.NormalisationUtils;
 
 
 /**

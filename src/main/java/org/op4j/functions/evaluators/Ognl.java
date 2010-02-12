@@ -49,66 +49,66 @@ public class Ognl<R,T> implements IEvaluator<R,T> {
     
     
     
-    public static Ognl<?,Object> forObject(final String ognlExpression, final Object... optionalParameters) {
+    public static Ognl<?,Object> asObject(final String ognlExpression, final Object... optionalParameters) {
         return new Ognl<Object,Object>(Types.OBJECT, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static <R> Ognl<R,Object> forObjectOfType(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
+    public static <R> Ognl<R,Object> asType(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
         return new Ognl<R,Object>(resultType, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
 
     
     
     
-    public static Ognl<BigInteger,Object> forBigInteger(final String ognlExpression, final Object... optionalParameters) {
+    public static Ognl<BigInteger,Object> asBigInteger(final String ognlExpression, final Object... optionalParameters) {
         return new Ognl<BigInteger,Object>(Types.BIG_INTEGER, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<BigDecimal,Object> forBigDecimal(final String ognlExpression, final Object... optionalParameters) {
+    public static Ognl<BigDecimal,Object> asBigDecimal(final String ognlExpression, final Object... optionalParameters) {
         return new Ognl<BigDecimal,Object>(Types.BIG_DECIMAL, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Boolean,Object> forBoolean(final String ognlExpression, final Object... optionalParameters) {
+    public static Ognl<Boolean,Object> asBoolean(final String ognlExpression, final Object... optionalParameters) {
         return new Ognl<Boolean,Object>(Types.BOOLEAN, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Byte,Object> forByte(final String ognlExpression, final Object... optionalParameters) {
+    public static Ognl<Byte,Object> asByte(final String ognlExpression, final Object... optionalParameters) {
         return new Ognl<Byte,Object>(Types.BYTE, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Character,Object> forCharacter(final String ognlExpression, final Object... optionalParameters) {
+    public static Ognl<Character,Object> asCharacter(final String ognlExpression, final Object... optionalParameters) {
         return new Ognl<Character,Object>(Types.CHARACTER, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Calendar,Object> forCalendar(final String ognlExpression, final Object... optionalParameters) {
+    public static Ognl<Calendar,Object> asCalendar(final String ognlExpression, final Object... optionalParameters) {
         return new Ognl<Calendar,Object>(Types.CALENDAR, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Date,Object> forDate(final String ognlExpression, final Object... optionalParameters) {
+    public static Ognl<Date,Object> asDate(final String ognlExpression, final Object... optionalParameters) {
         return new Ognl<Date,Object>(Types.DATE, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Double,Object> forDouble(final String ognlExpression, final Object... optionalParameters) {
+    public static Ognl<Double,Object> asDouble(final String ognlExpression, final Object... optionalParameters) {
         return new Ognl<Double,Object>(Types.DOUBLE, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Float,Object> forFloat(final String ognlExpression, final Object... optionalParameters) {
+    public static Ognl<Float,Object> asFloat(final String ognlExpression, final Object... optionalParameters) {
         return new Ognl<Float,Object>(Types.FLOAT, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Integer,Object> forInteger(final String ognlExpression, final Object... optionalParameters) {
+    public static Ognl<Integer,Object> asInteger(final String ognlExpression, final Object... optionalParameters) {
         return new Ognl<Integer,Object>(Types.INTEGER, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Long,Object> forLong(final String ognlExpression, final Object... optionalParameters) {
+    public static Ognl<Long,Object> asLong(final String ognlExpression, final Object... optionalParameters) {
         return new Ognl<Long,Object>(Types.LONG, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Short,Object> forShort(final String ognlExpression, final Object... optionalParameters) {
+    public static Ognl<Short,Object> asShort(final String ognlExpression, final Object... optionalParameters) {
         return new Ognl<Short,Object>(Types.SHORT, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<String,Object> forString(final String ognlExpression, final Object... optionalParameters) {
+    public static Ognl<String,Object> asString(final String ognlExpression, final Object... optionalParameters) {
         return new Ognl<String,Object>(Types.STRING, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     

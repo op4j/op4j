@@ -49,65 +49,65 @@ public class Call<R,T> implements IEvaluator<R,T> {
     
     
     
-    public static Call<?,Object> forObject(final String methodName, final Object... optionalParameters) {
+    public static Call<?,Object> asObject(final String methodName, final Object... optionalParameters) {
         return new Call<Object,Object>(Types.OBJECT, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static <R> Call<R,Object> forObjectOfType(final Type<R> resultType, final String methodName, final Object... optionalParameters) {
+    public static <R> Call<R,Object> asType(final Type<R> resultType, final String methodName, final Object... optionalParameters) {
         return new Call<R,Object>(resultType, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
 
 
     
-    public static Call<BigInteger,Object> forBigInteger(final String methodName, final Object... optionalParameters) {
+    public static Call<BigInteger,Object> asBigInteger(final String methodName, final Object... optionalParameters) {
         return new Call<BigInteger,Object>(Types.BIG_INTEGER, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<BigDecimal,Object> forBigDecimal(final String methodName, final Object... optionalParameters) {
+    public static Call<BigDecimal,Object> asBigDecimal(final String methodName, final Object... optionalParameters) {
         return new Call<BigDecimal,Object>(Types.BIG_DECIMAL, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Boolean,Object> forBoolean(final String methodName, final Object... optionalParameters) {
+    public static Call<Boolean,Object> asBoolean(final String methodName, final Object... optionalParameters) {
         return new Call<Boolean,Object>(Types.BOOLEAN, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Byte,Object> forByte(final String methodName, final Object... optionalParameters) {
+    public static Call<Byte,Object> asByte(final String methodName, final Object... optionalParameters) {
         return new Call<Byte,Object>(Types.BYTE, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Character,Object> forCharacter(final String methodName, final Object... optionalParameters) {
+    public static Call<Character,Object> asCharacter(final String methodName, final Object... optionalParameters) {
         return new Call<Character,Object>(Types.CHARACTER, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Calendar,Object> forCalendar(final String methodName, final Object... optionalParameters) {
+    public static Call<Calendar,Object> asCalendar(final String methodName, final Object... optionalParameters) {
         return new Call<Calendar,Object>(Types.CALENDAR, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Date,Object> forDate(final String methodName, final Object... optionalParameters) {
+    public static Call<Date,Object> asDate(final String methodName, final Object... optionalParameters) {
         return new Call<Date,Object>(Types.DATE, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Double,Object> forDouble(final String methodName, final Object... optionalParameters) {
+    public static Call<Double,Object> asDouble(final String methodName, final Object... optionalParameters) {
         return new Call<Double,Object>(Types.DOUBLE, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Float,Object> forFloat(final String methodName, final Object... optionalParameters) {
+    public static Call<Float,Object> asFloat(final String methodName, final Object... optionalParameters) {
         return new Call<Float,Object>(Types.FLOAT, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Integer,Object> forInteger(final String methodName, final Object... optionalParameters) {
+    public static Call<Integer,Object> asInteger(final String methodName, final Object... optionalParameters) {
         return new Call<Integer,Object>(Types.INTEGER, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Long,Object> forLong(final String methodName, final Object... optionalParameters) {
+    public static Call<Long,Object> asLong(final String methodName, final Object... optionalParameters) {
         return new Call<Long,Object>(Types.LONG, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Short,Object> forShort(final String methodName, final Object... optionalParameters) {
+    public static Call<Short,Object> asShort(final String methodName, final Object... optionalParameters) {
         return new Call<Short,Object>(Types.SHORT, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<String,Object> forString(final String methodName, final Object... optionalParameters) {
+    public static Call<String,Object> asString(final String methodName, final Object... optionalParameters) {
         return new Call<String,Object>(Types.STRING, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
@@ -130,8 +130,19 @@ public class Call<R,T> implements IEvaluator<R,T> {
     @SuppressWarnings("unchecked")
 	public R execute(final T input, final ExecCtx ctx) throws Exception {
 
+        final Class<? super R> resultClass = this.resultType.getRawClass();
+        
         final Expression expression = new Expression(input, this.methodName, this.parameters);
-        return (R) expression.getValue();
+        final R result = (R) expression.getValue();
+        
+        if (result != null && resultClass != null && !Object.class.equals(resultClass)) {
+            if (!(resultClass.isAssignableFrom(result.getClass()))) {
+                throw new IllegalStateException("Result of calling method \"" + this.methodName + "\" is not " +
+                        "assignable from class " + resultClass.getName());
+            }
+        }
+        
+        return result;
         
     }
 	

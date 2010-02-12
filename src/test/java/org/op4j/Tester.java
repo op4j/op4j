@@ -19,10 +19,12 @@ import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.junit.Before;
 import org.junit.Test;
+import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.StringFuncs;
 import org.op4j.functions.converters.ToCalendar;
+import org.op4j.functions.evaluators.Call;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.functions.evaluators.Ognl;
 
@@ -97,7 +99,7 @@ public class Tester extends TestCase {
 		List<BigDecimal>[] data = this.testUtils.getBigDecimalListArray(10);
 
 		List<BigDecimal>[] result = Op.onArrayOfList(data)
-		.forEach().forEach().eval(Ognl.forBigDecimal("add(#param[0])", BigDecimal.valueOf(56)))
+		.forEach().forEach().eval(Ognl.asBigDecimal("add(#param[0])", BigDecimal.valueOf(56)))
 		.get();
 
 		assertEquals(data.length, result.length);
@@ -116,7 +118,7 @@ public class Tester extends TestCase {
 		List<Calendar> data = this.testUtils.getCalendarList(13);
 
 		List<Long> result = Op.onList(data)
-		.forEach().eval(Ognl.forLong("getTimeInMillis()")).get();
+		.forEach().eval(Ognl.asLong("getTimeInMillis()")).get();
 
 		assertEquals(data.size(), result.size());
 		for (int index = 0; index < data.size(); index++) {
@@ -152,7 +154,7 @@ public class Tester extends TestCase {
 
 		String[] result = Op.onArrayOf(Types.INTEGER, data)
 		.forEach()
-		.eval(Types.STRING, Ognl.forString("\"Value is \" + #target"))
+		.eval(Types.STRING, Ognl.asString("\"Value is \" + #target"))
 		.get();
 
 		for (int index = 0; index < data.length; index++) {						
@@ -168,7 +170,7 @@ public class Tester extends TestCase {
 		Integer[] result = Op.onArrayOf(Types.INTEGER, data)
 		.forEach()
 		.ifIndex(2, 4, 6, 10, 15)
-		.eval(Ognl.forInteger("#target + 10"))
+		.eval(Ognl.asInteger("#target + 10"))
 		.endIf()
 		.endFor()
 		.get();
@@ -390,7 +392,7 @@ public class Tester extends TestCase {
                 forEach().
                     exec(StringFuncs.toUpperCase()).
                     ifIndex(2).exec(StringFuncs.toLowerCase()).endIf().
-                    eval(Ognl.forString("#target + '--' + #index")).get();
+                    eval(Ognl.asString("#target + '--' + #index")).get();
 
         for (int i = 0; i < 10; i++) {
             if (i != 2) {
@@ -406,7 +408,7 @@ public class Tester extends TestCase {
                 forEach().forEach().
                     exec(StringFuncs.toUpperCase()).
                     ifIndex(2).exec(StringFuncs.toLowerCase()).endIf().
-                    eval(Ognl.forString("#target + '--' + #indexes[1] + #indexes[2]")).get();
+                    eval(Ognl.asString("#target + '--' + #indexes[1] + #indexes[2]")).get();
 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 50; j++) {
@@ -423,15 +425,15 @@ public class Tester extends TestCase {
         assertEquals("THREE", strList.get(2));
         
         List<String> strList2 =
-            Op.onAll("one", "two", "three").eval(Ognl.forString("#target + '--' + #index")).getAsList();
+            Op.onAll("one", "two", "three").eval(Ognl.asString("#target + '--' + #index")).getAsList();
         assertEquals("three--2", strList2.get(2));
         
         List<String> strList3 =
-            Op.onAll("one", "two", "three").eval(Ognl.forString("#target + '--' + #indexes[0]")).getAsList();
+            Op.onAll("one", "two", "three").eval(Ognl.asString("#target + '--' + #indexes[0]")).getAsList();
         assertEquals("three--2", strList3.get(2));
         
         List<String> strList4 =
-            Op.onAll("one", "two", "three").ifTrue(Ognl.forBoolean("#indexes[0] == 2")).exec(StringFuncs.toUpperCase()).getAsList();
+            Op.onAll("one", "two", "three").ifTrue(Ognl.asBoolean("#indexes[0] == 2")).exec(StringFuncs.toUpperCase()).getAsList();
         assertEquals("THREE", strList4.get(2));
         
     }
@@ -529,6 +531,21 @@ public class Tester extends TestCase {
         
         assertEquals(Serializable[].class, newArray.getClass());
         assertEquals(Arrays.asList(expSerArray), Arrays.asList(newArray));
+        
+    }
+
+
+    
+    @Test
+    public void test20 () {
+
+        final List<String> stringList = this.testUtils.getStringList(10);
+        
+        try {
+            Op.onList(stringList).forEach().exec(Call.asInteger("toUpperCase")).endFor().toArrayOf(Types.INTEGER).get();
+        } catch (ExecutionException e) {
+            assertTrue(e.getCause().getMessage().startsWith("Result of calling method"));
+        }
         
     }
     
