@@ -77,16 +77,6 @@ final class ExecutionTargetCastOperation implements ExecutionTargetOperation {
                 result = NormalisationUtils.normaliseMap((Map<Object,Object>)result);
                 break;
                 
-            case MAP_KEY:
-                NormalisationUtils.checkIsMapOfKey(this.types[0], result);
-                result = NormalisationUtils.normaliseMap((Map<Object,Object>)result);
-                break;
-                
-            case MAP_VALUE:
-                NormalisationUtils.checkIsMapOfValue(this.types[0], result);
-                result = NormalisationUtils.normaliseMap((Map<Object,Object>)result);
-                break;
-                
             case SET:
                 NormalisationUtils.checkIsSet(this.types[0], result);
                 result = NormalisationUtils.normaliseSet((Set<Object>)result);
@@ -104,16 +94,6 @@ final class ExecutionTargetCastOperation implements ExecutionTargetOperation {
                 
             case ARRAY_OF_MAP:
                 NormalisationUtils.checkIsArrayOfMap(this.types[0], this.types[1], result);
-                result = NormalisationUtils.normaliseArrayOfMap((Map<Object,Object>[])result);
-                break;
-                
-            case ARRAY_OF_MAP_KEY:
-                NormalisationUtils.checkIsArrayOfMapOfKey(this.types[0], result);
-                result = NormalisationUtils.normaliseArrayOfMap((Map<Object,Object>[])result);
-                break;
-                
-            case ARRAY_OF_MAP_VALUE:
-                NormalisationUtils.checkIsArrayOfMapOfValue(this.types[0], result);
                 result = NormalisationUtils.normaliseArrayOfMap((Map<Object,Object>[])result);
                 break;
                 
@@ -137,16 +117,6 @@ final class ExecutionTargetCastOperation implements ExecutionTargetOperation {
                 result = NormalisationUtils.normaliseListOfMap((List<Map<Object,Object>>)result);
                 break;
                 
-            case LIST_OF_MAP_KEY:
-                NormalisationUtils.checkIsListOfMapOfKey(this.types[0], result);
-                result = NormalisationUtils.normaliseListOfMap((List<Map<Object,Object>>)result);
-                break;
-                
-            case LIST_OF_MAP_VALUE:
-                NormalisationUtils.checkIsListOfMapOfValue(this.types[0], result);
-                result = NormalisationUtils.normaliseListOfMap((List<Map<Object,Object>>)result);
-                break;
-                
             case LIST_OF_SET:
                 NormalisationUtils.checkIsListOfSet(this.types[0], result);
                 result = NormalisationUtils.normaliseListOfSet((List<Set<Object>>)result);
@@ -157,18 +127,8 @@ final class ExecutionTargetCastOperation implements ExecutionTargetOperation {
                 result = NormalisationUtils.normaliseMapOfArray((Map<Object,Object[]>)result, this.types[0].getRawClass());
                 break;
                 
-            case MAP_OF_ARRAY_VALUE:
-                NormalisationUtils.checkIsMapOfArrayOfValue(this.types[0], result);
-                result = NormalisationUtils.normaliseMapOfArray((Map<Object,Object[]>)result, this.types[0].getRawClass());
-                break;
-                
             case MAP_OF_LIST:
                 NormalisationUtils.checkIsMapOfList(this.types[0], this.types[1], result);
-                result = NormalisationUtils.normaliseMapOfList((Map<Object,List<Object>>)result);
-                break;
-                
-            case MAP_OF_LIST_VALUE:
-                NormalisationUtils.checkIsMapOfListOfValue(this.types[0], result);
                 result = NormalisationUtils.normaliseMapOfList((Map<Object,List<Object>>)result);
                 break;
                 
@@ -177,28 +137,8 @@ final class ExecutionTargetCastOperation implements ExecutionTargetOperation {
                 result = NormalisationUtils.normaliseMapOfMap((Map<Object,Map<Object,Object>>)result);
                 break;
                 
-            case MAP_OF_MAP_VALUE:
-                NormalisationUtils.checkIsMapOfMapOfValue(this.types[0], this.types[1], result);
-                result = NormalisationUtils.normaliseMapOfMap((Map<Object,Map<Object,Object>>)result);
-                break;
-                
-            case MAP_OF_MAP_VALUE_KEY:
-                NormalisationUtils.checkIsMapOfMapOfValueOfKey(this.types[0], result);
-                result = NormalisationUtils.normaliseMapOfMap((Map<Object,Map<Object,Object>>)result);
-                break;
-                
-            case MAP_OF_MAP_VALUE_VALUE:
-                NormalisationUtils.checkIsMapOfMapOfValueOfValue(this.types[0], result);
-                result = NormalisationUtils.normaliseMapOfMap((Map<Object,Map<Object,Object>>)result);
-                break;
-                
             case MAP_OF_SET:
                 NormalisationUtils.checkIsMapOfSet(this.types[0], this.types[1], result);
-                result = NormalisationUtils.normaliseMapOfSet((Map<Object,Set<Object>>)result);
-                break;
-                
-            case MAP_OF_SET_VALUE:
-                NormalisationUtils.checkIsMapOfSetOfValue(this.types[0], result);
                 result = NormalisationUtils.normaliseMapOfSet((Map<Object,Set<Object>>)result);
                 break;
                 
@@ -214,16 +154,6 @@ final class ExecutionTargetCastOperation implements ExecutionTargetOperation {
                 
             case SET_OF_MAP:
                 NormalisationUtils.checkIsSetOfMap(this.types[0], this.types[1], result);
-                result = NormalisationUtils.normaliseSetOfMap((Set<Map<Object,Object>>)result);
-                break;
-                
-            case SET_OF_MAP_KEY:
-                NormalisationUtils.checkIsSetOfMapOfKey(this.types[0], result);
-                result = NormalisationUtils.normaliseSetOfMap((Set<Map<Object,Object>>)result);
-                break;
-                
-            case SET_OF_MAP_VALUE:
-                NormalisationUtils.checkIsSetOfMapOfValue(this.types[0], result);
                 result = NormalisationUtils.normaliseSetOfMap((Set<Map<Object,Object>>)result);
                 break;
                 

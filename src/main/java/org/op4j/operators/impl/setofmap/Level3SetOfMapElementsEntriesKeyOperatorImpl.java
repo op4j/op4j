@@ -60,7 +60,7 @@ public class Level3SetOfMapElementsEntriesKeyOperatorImpl<K,V> extends AbstractO
 
     public <X> Level3SetOfMapElementsEntriesKeyOperator<X, V> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        return new Level3SetOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().cast(CastType.SET_OF_MAP_KEY, type));
+        return new Level3SetOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().cast(CastType.OBJECT, type));
     }
 
     public Level3SetOfMapElementsEntriesKeyOperator<?,V> asUnknown() {

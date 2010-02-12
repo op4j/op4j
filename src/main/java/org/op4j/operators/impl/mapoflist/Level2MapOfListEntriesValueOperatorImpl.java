@@ -210,7 +210,7 @@ public class Level2MapOfListEntriesValueOperatorImpl<K,V> extends AbstractOperat
     
 	public <X> Level2MapOfListEntriesValueOperator<K, X> asListOf(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        return new Level2MapOfListEntriesValueOperatorImpl<K,X>(getTarget().cast(CastType.MAP_OF_LIST_VALUE, type));
+        return new Level2MapOfListEntriesValueOperatorImpl<K,X>(getTarget().cast(CastType.LIST, type));
     }
 
 

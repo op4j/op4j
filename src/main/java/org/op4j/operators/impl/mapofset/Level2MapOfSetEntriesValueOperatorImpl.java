@@ -203,7 +203,7 @@ public class Level2MapOfSetEntriesValueOperatorImpl<K,V> extends AbstractOperato
     
 	public <X> Level2MapOfSetEntriesValueOperator<K, X> asSetOf(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        return new Level2MapOfSetEntriesValueOperatorImpl<K,X>(getTarget().cast(CastType.MAP_OF_SET_VALUE, type));
+        return new Level2MapOfSetEntriesValueOperatorImpl<K,X>(getTarget().cast(CastType.SET, type));
     }
 
 

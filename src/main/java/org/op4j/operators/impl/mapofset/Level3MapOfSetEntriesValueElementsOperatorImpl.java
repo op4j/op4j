@@ -60,7 +60,7 @@ public class Level3MapOfSetEntriesValueElementsOperatorImpl<K,V> extends Abstrac
 
     public <X> Level3MapOfSetEntriesValueElementsOperator<K, X> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        return new Level3MapOfSetEntriesValueElementsOperatorImpl<K, X>(getTarget().cast(CastType.MAP_OF_SET_VALUE, type));
+        return new Level3MapOfSetEntriesValueElementsOperatorImpl<K, X>(getTarget().cast(CastType.OBJECT, type));
     }
 
     public Level3MapOfSetEntriesValueElementsOperator<K, ?> asUnknown() {

@@ -60,7 +60,7 @@ public class Level2MapOfListEntriesKeyOperatorImpl<K,V> extends AbstractOperator
 
     public <X> Level2MapOfListEntriesKeyOperator<X, V> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        return new Level2MapOfListEntriesKeyOperatorImpl<X, V>(getTarget().cast(CastType.MAP_KEY, type));
+        return new Level2MapOfListEntriesKeyOperatorImpl<X, V>(getTarget().cast(CastType.OBJECT, type));
     }
 
     public Level2MapOfListEntriesKeyOperator<?, V> asUnknown() {

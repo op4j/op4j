@@ -63,7 +63,7 @@ public class Level2MapOfArrayEntriesKeyOperatorImpl<K,V> extends AbstractOperato
 
     public <X> Level2MapOfArrayEntriesKeyOperator<X, V> asType(final Type<X> newType) {
         Validate.notNull(newType, "A type representing the elements must be specified");
-        return new Level2MapOfArrayEntriesKeyOperatorImpl<X, V>(this.type, getTarget().cast(CastType.MAP_KEY, newType));
+        return new Level2MapOfArrayEntriesKeyOperatorImpl<X, V>(this.type, getTarget().cast(CastType.OBJECT, newType));
     }
 
     public Level2MapOfArrayEntriesKeyOperator<?, V> asUnknown() {

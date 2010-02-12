@@ -163,7 +163,7 @@ public class Level2MapOfMapEntriesValueOperatorImpl<K1,K2,V> extends AbstractOpe
 	public <X,Y> Level2MapOfMapEntriesValueOperator<K1, X, Y> asMapOf(final Type<X> keyType, final Type<Y> valueType) {
         Validate.notNull(keyType, "A type representing the keys must be specified");
         Validate.notNull(valueType, "A type representing the values must be specified");
-        return new Level2MapOfMapEntriesValueOperatorImpl<K1,X,Y>(getTarget().cast(CastType.MAP_OF_MAP_VALUE, keyType, valueType));
+        return new Level2MapOfMapEntriesValueOperatorImpl<K1,X,Y>(getTarget().cast(CastType.MAP, keyType, valueType));
     }
 
 

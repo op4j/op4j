@@ -59,7 +59,7 @@ public class Level3ArrayOfMapElementsEntriesValueOperatorImpl<K,V> extends Abstr
 
     public <X> Level3ArrayOfMapElementsEntriesValueOperator<K, X> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        return new Level3ArrayOfMapElementsEntriesValueOperatorImpl<K, X>(getTarget().cast(CastType.ARRAY_OF_MAP_VALUE, type));
+        return new Level3ArrayOfMapElementsEntriesValueOperatorImpl<K, X>(getTarget().cast(CastType.OBJECT, type));
     }
 
     public Level3ArrayOfMapElementsEntriesValueOperator<K,?> asUnknown() {

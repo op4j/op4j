@@ -58,7 +58,7 @@ public class Level3ListOfMapElementsEntriesKeyOperatorImpl<K,V> extends Abstract
 
 
     public <X> Level3ListOfMapElementsEntriesKeyOperator<X, V> asType(final Type<X> type) {
-        return new Level3ListOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().cast(CastType.LIST_OF_MAP_KEY, type));
+        return new Level3ListOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().cast(CastType.OBJECT, type));
     }
 
     public Level3ListOfMapElementsEntriesKeyOperator<?,V> asUnknown() {

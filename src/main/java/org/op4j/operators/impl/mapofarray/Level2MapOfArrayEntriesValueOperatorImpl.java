@@ -222,7 +222,7 @@ public class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends AbstractOpera
     
 	public <X> Level2MapOfArrayEntriesValueOperator<K, X> asArrayOf(final Type<X> newType) {
         Validate.notNull(newType, "A type representing the elements must be specified");
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K,X>(newType, getTarget().cast(CastType.MAP_OF_ARRAY_VALUE, newType));
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K,X>(newType, getTarget().cast(CastType.ARRAY, newType));
     }
 
 

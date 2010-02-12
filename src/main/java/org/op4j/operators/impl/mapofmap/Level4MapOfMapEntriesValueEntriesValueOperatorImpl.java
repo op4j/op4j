@@ -60,7 +60,7 @@ public class Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1,K2,V> extends
 
     public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().cast(CastType.MAP_OF_MAP_VALUE_VALUE, type));
+        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().cast(CastType.OBJECT, type));
     }
 
     public Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, ?> asUnknown() {

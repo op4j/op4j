@@ -60,7 +60,7 @@ public class Level2MapOfSetEntriesKeyOperatorImpl<K,V> extends AbstractOperatorI
 
     public <X> Level2MapOfSetEntriesKeyOperator<X, V> asType(final Type<X> type) {
         Validate.notNull(type, "A type representing the elements must be specified");
-        return new Level2MapOfSetEntriesKeyOperatorImpl<X, V>(getTarget().cast(CastType.MAP_KEY, type));
+        return new Level2MapOfSetEntriesKeyOperatorImpl<X, V>(getTarget().cast(CastType.OBJECT, type));
     }
 
     public Level2MapOfSetEntriesKeyOperator<?, V> asUnknown() {
