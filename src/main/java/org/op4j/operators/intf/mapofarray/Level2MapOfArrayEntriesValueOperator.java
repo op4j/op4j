@@ -138,6 +138,11 @@ public interface Level2MapOfArrayEntriesValueOperator<K,V>
     public <X> Level2MapEntriesValueOperator<K,X> eval(final IEvaluator<X,? super V[]> eval);
     
     public <X> Level2MapEntriesValueOperator<K,X> convert(final IConverter<X,? super V[]> converter);    
+
+    
+    public <X> Level2MapOfArrayEntriesValueOperator<K,X> map(final Type<X> type, final IFunction<X,? super V> function);
+    
+    public Level2MapOfArrayEntriesValueOperator<K,V> map(final IFunction<? extends V,? super V> function);
     
     
     

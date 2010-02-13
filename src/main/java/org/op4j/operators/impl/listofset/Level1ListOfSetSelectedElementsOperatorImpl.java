@@ -163,13 +163,13 @@ public class Level1ListOfSetSelectedElementsOperatorImpl<T> extends AbstractOper
     }
 
 
-    public Level1ListOfSetSelectedElementsOperator<T> addAll(final T... newElements) {
-        return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElements)));
+    public Level1ListOfSetSelectedElementsOperator<T> addAll(final Collection<T> collection) {
+        return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<T>(collection)));
     }
 
 
-    public Level1ListOfSetSelectedElementsOperator<T> addAll(final Collection<T> collection) {
-        return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<T>(collection)));
+    public Level1ListOfSetSelectedElementsOperator<T> addAll(final T... newElements) {
+        return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElements)));
     }
 
 
@@ -179,14 +179,19 @@ public class Level1ListOfSetSelectedElementsOperatorImpl<T> extends AbstractOper
     }
 
 
+    public Level1ListOfSetSelectedElementsOperator<T> sort(final Comparator<? super T> comparator) {
+        return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.SortByComparator<T>(comparator)));
+    }
+
+
     @SuppressWarnings("unchecked")
     public Level1ListOfSetSelectedElementsOperator<T> sort() {
         return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.Sort()));
     }
 
 
-    public Level1ListOfSetSelectedElementsOperator<T> sort(final Comparator<? super T> comparator) {
-        return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.SortByComparator<T>(comparator)));
+    public Level1ListOfSetSelectedElementsOperator<T> map(final IFunction<? extends T,? super T> function) {
+        return new Level1ListOfSetSelectedElementsOperatorImpl<T>(getTarget().map(Structure.SET, function, null));
     }
 
 

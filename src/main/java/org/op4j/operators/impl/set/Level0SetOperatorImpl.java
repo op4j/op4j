@@ -344,6 +344,10 @@ public class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
 
     
 
+    public <X> Level0SetOperator<X> map(final IFunction<X, ? super T> function) {
+        return new Level0SetOperatorImpl<X>(getTarget().map(Structure.SET, function, null));
+    }
+
     
     
     

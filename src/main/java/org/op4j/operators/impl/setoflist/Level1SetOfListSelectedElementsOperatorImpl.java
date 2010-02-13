@@ -195,6 +195,11 @@ public class Level1SetOfListSelectedElementsOperatorImpl<T> extends AbstractOper
     }
 
 
+    public Level1SetOfListSelectedElementsOperator<T> map(final IFunction<? extends T,? super T> function) {
+        return new Level1SetOfListSelectedElementsOperatorImpl<T>(getTarget().map(Structure.LIST, function, null));
+    }
+
+
     public Level1SetOfListSelectedElementsOperator<T> replaceWith(final List<T> replacement) {
         return new Level1SetOfListSelectedElementsOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.LIST));
     }

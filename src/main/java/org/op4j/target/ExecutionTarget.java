@@ -476,6 +476,22 @@ public final class ExecutionTarget extends Target {
     }
 
 
+
+    @Override
+    Target doMap(final Structure structure, final IFunction<?, ?> executable, final Class<?> arrayComponentClass) {
+
+        final ExecutionTargetMapOperation operation =
+            new ExecutionTargetMapOperation(structure, executable, arrayComponentClass);
+        final ExecutionTargetOperation[][] newOperations =
+            addOperation(this.operations, this.currentBlockLevel, operation);
+
+        return new ExecutionTarget(this.target, this.currentBlockLevel, newOperations, this.previousBlockLevels);
+        
+    }
+
+    
+
+
     
     @Override
     public Object get() {
@@ -488,7 +504,5 @@ public final class ExecutionTarget extends Target {
         return result;
             
     }
-
-    
     
 }

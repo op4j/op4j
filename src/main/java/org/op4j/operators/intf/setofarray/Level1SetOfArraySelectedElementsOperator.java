@@ -102,6 +102,9 @@ public interface Level1SetOfArraySelectedElementsOperator<T>
     public Level1SetOfArraySelectedElementsOperator<T> replaceWith(final T[] replacement);
 
     public Level1SetOfArraySelectedElementsOperator<T> execAsArray(final IFunction<? extends T[], ? super T[]> function);
+
+
     
+    public Level1SetOfArraySelectedElementsOperator<T> map(final IFunction<? extends T, ? super T> function);
 		            
 }

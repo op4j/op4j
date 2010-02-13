@@ -86,5 +86,9 @@ public interface Level1ListOfSetSelectedElementsSelectedOperator<T>
 
     public Level1ListOfSetSelectedElementsSelectedOperator<T> execAsSet(final IFunction<? extends Set<? extends T>, ? super Set<T>> function);
     
+
+
+    public Level1ListOfSetSelectedElementsSelectedOperator<T> map(final IFunction<? extends T, ? super T> function);
+
 		            
 }

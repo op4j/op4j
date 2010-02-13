@@ -134,6 +134,8 @@ public interface Level2MapOfListEntriesValueOperator<K,V>
     public <X> Level2MapEntriesValueOperator<K,X> eval(final IEvaluator<X,? super List<V>> eval);
     
     public <X> Level2MapEntriesValueOperator<K,X> convert(final IConverter<X,? super List<V>> converter);    
+
+    public <X> Level2MapOfListEntriesValueOperator<K,X> map(final IFunction<X,? super V> function);
     
     
     public <X> Level2MapOfListEntriesValueOperator<K,X> asListOf(final Type<X> type);

@@ -91,5 +91,7 @@ public interface Level2MapOfListSelectedEntriesValueSelectedOperator<K,V>
     public Level2MapOfListSelectedEntriesValueSelectedOperator<K,V> execAsList(final IFunction<? extends List<? extends V>, ? super List<V>> function);
     
     
+    public Level2MapOfListSelectedEntriesValueSelectedOperator<K,V> map(final IFunction<? extends V, ? super V> function);
+    
     
 }

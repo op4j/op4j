@@ -162,13 +162,13 @@ public class Level1SetOfSetSelectedElementsOperatorImpl<T> extends AbstractOpera
     }
 
 
-    public Level1SetOfSetSelectedElementsOperator<T> addAll(final T... newElements) {
-        return new Level1SetOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElements)));
+    public Level1SetOfSetSelectedElementsOperator<T> addAll(final Collection<T> collection) {
+        return new Level1SetOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<T>(collection)));
     }
 
 
-    public Level1SetOfSetSelectedElementsOperator<T> addAll(final Collection<T> collection) {
-        return new Level1SetOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<T>(collection)));
+    public Level1SetOfSetSelectedElementsOperator<T> addAll(final T... newElements) {
+        return new Level1SetOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElements)));
     }
 
 
@@ -178,14 +178,19 @@ public class Level1SetOfSetSelectedElementsOperatorImpl<T> extends AbstractOpera
     }
 
 
+    public Level1SetOfSetSelectedElementsOperator<T> sort(final Comparator<? super T> comparator) {
+        return new Level1SetOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.SortByComparator<T>(comparator)));
+    }
+
+
     @SuppressWarnings("unchecked")
     public Level1SetOfSetSelectedElementsOperator<T> sort() {
         return new Level1SetOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.Sort()));
     }
 
 
-    public Level1SetOfSetSelectedElementsOperator<T> sort(final Comparator<? super T> comparator) {
-        return new Level1SetOfSetSelectedElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.SortByComparator<T>(comparator)));
+    public Level1SetOfSetSelectedElementsOperator<T> map(final IFunction<? extends T,? super T> function) {
+        return new Level1SetOfSetSelectedElementsOperatorImpl<T>(getTarget().map(Structure.SET, function, null));
     }
 
 

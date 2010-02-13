@@ -138,6 +138,11 @@ public interface Level1SetOfArrayElementsOperator<T>
     public <X> Level1SetElementsOperator<X> eval(final IEvaluator<X,? super T[]> eval);
     
     public <X> Level1SetElementsOperator<X> convert(final IConverter<X,? super T[]> converter);    
+
+    
+    public <X> Level1SetOfArrayElementsOperator<X> map(final Type<X> type, final IFunction<X,? super T> function);
+    
+    public Level1SetOfArrayElementsOperator<T> map(final IFunction<? extends T,? super T> function);
     
     
     public <X> Level1SetOfArrayElementsOperator<X> asArrayOf(final Type<X> type);

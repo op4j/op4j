@@ -163,13 +163,13 @@ public class Level2MapOfSetSelectedEntriesValueOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public Level2MapOfSetSelectedEntriesValueOperator<K,V> addAll(final V... newElements) {
-        return new Level2MapOfSetSelectedEntriesValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Add<V>(newElements)));
+    public Level2MapOfSetSelectedEntriesValueOperator<K,V> addAll(final Collection<V> collection) {
+        return new Level2MapOfSetSelectedEntriesValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.AddAll<V>(collection)));
     }
 
 
-    public Level2MapOfSetSelectedEntriesValueOperator<K,V> addAll(final Collection<V> collection) {
-        return new Level2MapOfSetSelectedEntriesValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.AddAll<V>(collection)));
+    public Level2MapOfSetSelectedEntriesValueOperator<K,V> addAll(final V... newElements) {
+        return new Level2MapOfSetSelectedEntriesValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Add<V>(newElements)));
     }
 
 
@@ -187,6 +187,11 @@ public class Level2MapOfSetSelectedEntriesValueOperatorImpl<K,V> extends Abstrac
 
     public Level2MapOfSetSelectedEntriesValueOperator<K,V> sort(final Comparator<? super V> comparator) {
         return new Level2MapOfSetSelectedEntriesValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.SortByComparator<V>(comparator)));
+    }
+
+
+    public Level2MapOfSetSelectedEntriesValueOperator<K,V> map(final IFunction<? extends V,? super V> function) {
+        return new Level2MapOfSetSelectedEntriesValueOperatorImpl<K,V>(getTarget().map(Structure.SET, function, null));
     }
 
 

@@ -141,4 +141,8 @@ public interface ExecutableSetOperator<T> {
      */
     public <X> Operator convert(final IConverter<X,? super Set<T>> converter);    
     
+    
+    
+    public <X> ExecutableSetOperator<X> map(final IFunction<X,? super T> function);
+    
 }

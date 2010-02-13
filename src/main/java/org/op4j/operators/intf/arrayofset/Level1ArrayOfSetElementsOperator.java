@@ -131,6 +131,8 @@ public interface Level1ArrayOfSetElementsOperator<T>
     public <X> Level1ArrayElementsOperator<X> convert(final Type<X> resultType, final IConverter<X,? super Set<T>> converter);    
     
     
+    public <X> Level1ArrayOfSetElementsOperator<X> map(final IFunction<X,? super T> function);
+    
     
     public <X> Level1ArrayOfSetElementsOperator<X> asSetOf(final Type<X> type);
     public Level1ArrayOfSetElementsOperator<?> asSetOfUnknown();

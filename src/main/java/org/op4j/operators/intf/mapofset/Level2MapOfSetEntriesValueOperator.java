@@ -130,6 +130,8 @@ public interface Level2MapOfSetEntriesValueOperator<K,V>
     public <X> Level2MapEntriesValueOperator<K,X> eval(final IEvaluator<X,? super Set<V>> eval);
     
     public <X> Level2MapEntriesValueOperator<K,X> convert(final IConverter<X,? super Set<V>> converter);    
+
+    public <X> Level2MapOfSetEntriesValueOperator<K,X> map(final IFunction<X,? super V> function);
     
     
     

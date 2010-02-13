@@ -89,5 +89,9 @@ public interface Level1SetOfArraySelectedElementsSelectedOperator<T>
 
     public Level1SetOfArraySelectedElementsSelectedOperator<T> execAsArray(final IFunction<? extends T[], ? super T[]> function);
     
+
+
+    public Level1SetOfArraySelectedElementsSelectedOperator<T> map(final IFunction<? extends T, ? super T> function);
+
 		            
 }

@@ -145,5 +145,8 @@ public interface ExecutableArrayOfListElementsOperator<T> {
      * @return an operator on the results of converter execution
      */
     public <X> Level1ArrayElementsOperator<X> convert(final Type<X> resultType, final IConverter<X,? super List<T>> converter);    
+
+    
+    public <X> ExecutableArrayOfListElementsOperator<X> map(final IFunction<X,? super T> function);
     
 }

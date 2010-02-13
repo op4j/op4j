@@ -199,6 +199,11 @@ public class Level2MapOfArraySelectedEntriesSelectedValueOperatorImpl<K,V> exten
     }
 
 
+    public Level2MapOfArraySelectedEntriesSelectedValueOperator<K,V> map(final IFunction<? extends V,? super V> function) {
+        return new Level2MapOfArraySelectedEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().map(Structure.ARRAY, function, this.type.getRawClass()));
+    }
+
+
     public Level2MapOfArraySelectedEntriesSelectedValueOperator<K,V> replaceWith(final V[] replacement) {
         return new Level2MapOfArraySelectedEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().replaceWith(replacement, Normalisation.ARRAY(this.type.getRawClass())));
     }

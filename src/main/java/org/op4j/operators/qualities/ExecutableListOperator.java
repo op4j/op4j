@@ -140,5 +140,9 @@ public interface ExecutableListOperator<T> {
      * @return an operator on the results of converter execution
      */
     public <X> Operator convert(final IConverter<X,? super List<T>> converter);    
+
+
     
+    public <X> ExecutableListOperator<X> map(final IFunction<X,? super T> function);
+        
 }

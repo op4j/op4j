@@ -537,7 +537,7 @@ public class Tester extends TestCase {
 
     
     @Test
-    public void test20 () {
+    public void test20() {
 
         final List<String> stringList = this.testUtils.getStringList(10);
         
@@ -546,6 +546,20 @@ public class Tester extends TestCase {
         } catch (ExecutionException e) {
             assertTrue(e.getCause().getMessage().startsWith("Result of calling method"));
         }
+        
+    }
+
+    
+    @Test
+    public void test21() {
+
+        final List<String> stringList = Arrays.asList(new String[] {"one", "two", "three"});
+        final List<String> stringUpperList = Arrays.asList(new String[] {"ONE", "TWO", "THREE"});
+
+        final List<String> result = 
+            Op.onList(stringList).map(StringFuncs.toUpperCase()).get();
+        
+        assertEquals(stringUpperList, result);
         
     }
     

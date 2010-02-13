@@ -135,6 +135,8 @@ public interface Level1SetOfListElementsOperator<T>
     
     public <X> Level1SetElementsOperator<X> convert(final IConverter<X,? super List<T>> converter);    
     
+    public <X> Level1SetOfListElementsOperator<X> map(final IFunction<X,? super T> function);
+    
     
     
     public <X> Level1SetOfListElementsOperator<X> asListOf(final Type<X> type);

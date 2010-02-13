@@ -135,7 +135,8 @@ public interface Level1ArrayOfListElementsOperator<T>
     
     public <X> Level1ArrayElementsOperator<X> convert(final Type<X> resultType, final IConverter<X,? super List<T>> converter);    
     
-    
+    public <X> Level1ArrayOfListElementsOperator<X> map(final IFunction<X,? super T> function);
+
     
     public <X> Level1ArrayOfListElementsOperator<X> asListOf(final Type<X> type);
     public Level1ArrayOfListElementsOperator<?> asListOfUnknown();

@@ -192,5 +192,11 @@ public interface ExecutableArrayOfArrayElementsOperator<T> {
      * @return an operator on the results of converter execution
      */
     public <X> Level1ArrayElementsOperator<X> convert(final Type<X> resultType, final IConverter<X,? super T[]> converter);    
+
+    
+    
+    public <X> ExecutableArrayOfArrayElementsOperator<X> map(final Type<X> type, final IFunction<X,? super T> function);
+    
+    public ExecutableArrayOfArrayElementsOperator<T> map(final IFunction<? extends T,? super T> function);
     
 }

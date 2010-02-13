@@ -318,6 +318,16 @@ public class Level1SetOfArrayElementsOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
+
+    
+    public <X> Level1SetOfArrayElementsOperator<X> map(final Type<X> newType, final IFunction<X, ? super T> function) {
+        return new Level1SetOfArrayElementsOperatorImpl<X>(newType, getTarget().map(Structure.ARRAY, function, newType.getRawClass()));
+    }
+
+
+    public Level1SetOfArrayElementsOperator<T> map(final IFunction<? extends T, ? super T> function) {
+        return new Level1SetOfArrayElementsOperatorImpl<T>(this.type, getTarget().map(Structure.ARRAY, function, this.type.getRawClass()));
+    }
     
 
 

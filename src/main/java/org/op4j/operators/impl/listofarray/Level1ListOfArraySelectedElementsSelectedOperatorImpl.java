@@ -148,6 +148,11 @@ public class Level1ListOfArraySelectedElementsSelectedOperatorImpl<T> extends Ab
     }
 
 
+    public Level1ListOfArraySelectedElementsSelectedOperator<T> map(final IFunction<? extends T,? super T> function) {
+        return new Level1ListOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().map(Structure.ARRAY, function, this.type.getRawClass()));
+    }
+
+
     public Level1ListOfArraySelectedElementsSelectedOperator<T> replaceWith(final T[] replacement) {
         return new Level1ListOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().replaceWith(replacement, Normalisation.ARRAY(this.type.getRawClass())));
     }

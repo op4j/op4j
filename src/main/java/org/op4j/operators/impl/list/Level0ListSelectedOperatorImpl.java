@@ -116,13 +116,13 @@ public class Level0ListSelectedOperatorImpl<T> extends AbstractOperatorImpl impl
     }
 
 
-    public Level0ListSelectedOperator<T> addAll(final T... newElements) {
-        return new Level0ListSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T>(newElements)));
+    public Level0ListSelectedOperator<T> addAll(final Collection<T> collection) {
+        return new Level0ListSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.AddAll<T>(collection)));
     }
 
 
-    public Level0ListSelectedOperator<T> addAll(final Collection<T> collection) {
-        return new Level0ListSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.AddAll<T>(collection)));
+    public Level0ListSelectedOperator<T> addAll(final T... newElements) {
+        return new Level0ListSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T>(newElements)));
     }
 
 
@@ -132,14 +132,19 @@ public class Level0ListSelectedOperatorImpl<T> extends AbstractOperatorImpl impl
     }
 
 
+    public Level0ListSelectedOperator<T> sort(final Comparator<? super T> comparator) {
+        return new Level0ListSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.SortByComparator<T>(comparator)));
+    }
+
+
     @SuppressWarnings("unchecked")
     public Level0ListSelectedOperator<T> sort() {
         return new Level0ListSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.Sort()));
     }
 
 
-    public Level0ListSelectedOperator<T> sort(final Comparator<? super T> comparator) {
-        return new Level0ListSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.SortByComparator<T>(comparator)));
+    public Level0ListSelectedOperator<T> map(final IFunction<? extends T,? super T> function) {
+        return new Level0ListSelectedOperatorImpl<T>(getTarget().map(Structure.LIST, function, null));
     }
 
 

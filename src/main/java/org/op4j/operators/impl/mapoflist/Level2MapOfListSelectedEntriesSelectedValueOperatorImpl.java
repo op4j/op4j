@@ -195,6 +195,11 @@ public class Level2MapOfListSelectedEntriesSelectedValueOperatorImpl<K,V> extend
     }
 
 
+    public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> map(final IFunction<? extends V,? super V> function) {
+        return new Level2MapOfListSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().map(Structure.LIST, function, null));
+    }
+
+
     public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> replaceWith(final List<V> replacement) {
         return new Level2MapOfListSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.LIST));
     }

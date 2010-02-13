@@ -90,5 +90,7 @@ public interface Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V>
     public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> execAsArray(final IFunction<? extends V[], ? super V[]> function);
     
     
+
+    public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> map(final IFunction<? extends V, ? super V> function);
     
 }

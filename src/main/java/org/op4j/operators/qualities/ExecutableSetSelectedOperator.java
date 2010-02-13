@@ -90,4 +90,7 @@ public interface ExecutableSetSelectedOperator<T> {
      */
     public ExecutableSetSelectedOperator<T> convertAsSet(final IConverter<? extends Set<? extends T>,? super Set<T>> converter);
     
+    
+    public ExecutableSetSelectedOperator<T> map(final IFunction<? extends T,? super T> function);
+    
 }

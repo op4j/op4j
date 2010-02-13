@@ -87,5 +87,9 @@ public interface ExecutableArraySelectedOperator<T> {
      * @return an operator on the results of converter execution
      */
     public ExecutableArraySelectedOperator<T> convertAsArray(final IConverter<? extends T[],? super T[]> converter);
+
+    
+    
+    public ExecutableArraySelectedOperator<T> map(final IFunction<? extends T,? super T> function);
     
 }

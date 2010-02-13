@@ -151,6 +151,11 @@ public interface Level0ArrayOperator<T>
     public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super T[]> eval);
     
     public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super T[]> converter);    
+
+    
+    public <X> Level0ArrayOperator<X> map(final Type<X> type, final IFunction<X,? super T> function);
+    
+    public Level0ArrayOperator<T> map(final IFunction<? extends T,? super T> function);
     
     
     

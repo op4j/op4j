@@ -309,6 +309,11 @@ public class Level2MapOfListEntriesValueOperatorImpl<K,V> extends AbstractOperat
     }
 
 
+    public <X> Level2MapOfListEntriesValueOperator<K, X> map(final IFunction<X, ? super V> function) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, X>(getTarget().map(Structure.LIST, function, null));
+    }
+
+
     
 
 

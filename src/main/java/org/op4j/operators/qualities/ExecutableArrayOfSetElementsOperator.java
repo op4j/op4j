@@ -145,5 +145,8 @@ public interface ExecutableArrayOfSetElementsOperator<T> {
      * @return an operator on the results of converter execution
      */
     public <X> Level1ArrayElementsOperator<X> convert(final Type<X> resultType, final IConverter<X,? super Set<T>> converter);    
+
+    
+    public <X> ExecutableArrayOfSetElementsOperator<X> map(final IFunction<X,? super T> function);
     
 }

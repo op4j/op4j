@@ -163,13 +163,13 @@ public class Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V> extends
     }
 
 
-    public Level2MapOfSetSelectedEntriesSelectedValueOperator<K,V> addAll(final V... newElements) {
-        return new Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Add<V>(newElements)));
+    public Level2MapOfSetSelectedEntriesSelectedValueOperator<K,V> addAll(final Collection<V> collection) {
+        return new Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.AddAll<V>(collection)));
     }
 
 
-    public Level2MapOfSetSelectedEntriesSelectedValueOperator<K,V> addAll(final Collection<V> collection) {
-        return new Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.AddAll<V>(collection)));
+    public Level2MapOfSetSelectedEntriesSelectedValueOperator<K,V> addAll(final V... newElements) {
+        return new Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Add<V>(newElements)));
     }
 
 
@@ -187,6 +187,11 @@ public class Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V> extends
 
     public Level2MapOfSetSelectedEntriesSelectedValueOperator<K,V> sort(final Comparator<? super V> comparator) {
         return new Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.SortByComparator<V>(comparator)));
+    }
+
+
+    public Level2MapOfSetSelectedEntriesSelectedValueOperator<K,V> map(final IFunction<? extends V,? super V> function) {
+        return new Level2MapOfSetSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().map(Structure.SET, function, null));
     }
 
 

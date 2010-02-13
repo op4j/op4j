@@ -89,5 +89,9 @@ public interface Level1ArrayOfListSelectedElementsSelectedOperator<T>
 
     public Level1ArrayOfListSelectedElementsSelectedOperator<T> execAsList(final IFunction<? extends List<? extends T>, ? super List<T>> function);
     
+
+
+    public Level1ArrayOfListSelectedElementsSelectedOperator<T> map(final IFunction<? extends T, ? super T> function);
+
 		            
 }

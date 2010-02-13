@@ -99,6 +99,9 @@ public interface Level1ListOfSetSelectedElementsOperator<T>
     public Level1ListOfSetSelectedElementsOperator<T> replaceWith(final Set<T> replacement);
 
     public Level1ListOfSetSelectedElementsOperator<T> execAsSet(final IFunction<? extends Set<? extends T>, ? super Set<T>> function);
+
+
     
+    public Level1ListOfSetSelectedElementsOperator<T> map(final IFunction<? extends T, ? super T> function);
 		            
 }

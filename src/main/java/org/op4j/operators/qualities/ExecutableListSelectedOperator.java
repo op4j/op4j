@@ -89,5 +89,8 @@ public interface ExecutableListSelectedOperator<T> {
      * @return an operator on the results of converter execution
      */
     public ExecutableListSelectedOperator<T> convertAsList(final IConverter<? extends List<? extends T>,? super List<T>> converter);
+ 
+    
+    public ExecutableListSelectedOperator<T> map(final IFunction<? extends T,? super T> function);
     
 }

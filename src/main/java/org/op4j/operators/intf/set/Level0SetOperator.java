@@ -142,6 +142,8 @@ public interface Level0SetOperator<T>
     public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Set<T>> eval);
     
     public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Set<T>> converter);    
+
+    public <X> Level0SetOperator<X> map(final IFunction<X,? super T> function);
     
     
     public <X> Level0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type);

@@ -117,13 +117,13 @@ public class Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V> extend
     }
 
 
-    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> addAll(final V... newElements) {
-        return new Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Add<V>(newElements)));
+    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> addAll(final Collection<V> collection) {
+        return new Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.AddAll<V>(collection)));
     }
 
 
-    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> addAll(final Collection<V> collection) {
-        return new Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.AddAll<V>(collection)));
+    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> addAll(final V... newElements) {
+        return new Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Add<V>(newElements)));
     }
 
 
@@ -133,14 +133,19 @@ public class Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V> extend
     }
 
 
+    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> sort(final Comparator<? super V> comparator) {
+        return new Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.SortByComparator<V>(comparator)));
+    }
+
+
     @SuppressWarnings("unchecked")
     public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> sort() {
         return new Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Sort()));
     }
 
 
-    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> sort(final Comparator<? super V> comparator) {
-        return new Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.SortByComparator<V>(comparator)));
+    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> map(final IFunction<? extends V,? super V> function) {
+        return new Level2MapOfListEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().map(Structure.LIST, function, null));
     }
 
 

@@ -298,6 +298,10 @@ public class Level1ListOfSetElementsOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
+
+    public <X> Level1ListOfSetElementsOperator<X> map(final IFunction<X, ? super T> function) {
+        return new Level1ListOfSetElementsOperatorImpl<X>(getTarget().map(Structure.SET, function, null));
+    }
     
     
     

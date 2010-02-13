@@ -129,6 +129,8 @@ public interface Level1SetOfSetElementsOperator<T>
     public <X> Level1SetElementsOperator<X> eval(final IEvaluator<X,? super Set<T>> eval);
     
     public <X> Level1SetElementsOperator<X> convert(final IConverter<X,? super Set<T>> converter);    
+
+    public <X> Level1SetOfSetElementsOperator<X> map(final IFunction<X,? super T> function);
     
 
     

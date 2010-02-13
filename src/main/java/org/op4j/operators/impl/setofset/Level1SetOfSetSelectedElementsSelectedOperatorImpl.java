@@ -111,13 +111,13 @@ public class Level1SetOfSetSelectedElementsSelectedOperatorImpl<T> extends Abstr
     }
 
 
-    public Level1SetOfSetSelectedElementsSelectedOperator<T> addAll(final T... newElements) {
-        return new Level1SetOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElements)));
+    public Level1SetOfSetSelectedElementsSelectedOperator<T> addAll(final Collection<T> collection) {
+        return new Level1SetOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<T>(collection)));
     }
 
 
-    public Level1SetOfSetSelectedElementsSelectedOperator<T> addAll(final Collection<T> collection) {
-        return new Level1SetOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<T>(collection)));
+    public Level1SetOfSetSelectedElementsSelectedOperator<T> addAll(final T... newElements) {
+        return new Level1SetOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElements)));
     }
 
 
@@ -127,14 +127,19 @@ public class Level1SetOfSetSelectedElementsSelectedOperatorImpl<T> extends Abstr
     }
 
 
+    public Level1SetOfSetSelectedElementsSelectedOperator<T> sort(final Comparator<? super T> comparator) {
+        return new Level1SetOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.SortByComparator<T>(comparator)));
+    }
+
+
     @SuppressWarnings("unchecked")
     public Level1SetOfSetSelectedElementsSelectedOperator<T> sort() {
         return new Level1SetOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Sort()));
     }
 
 
-    public Level1SetOfSetSelectedElementsSelectedOperator<T> sort(final Comparator<? super T> comparator) {
-        return new Level1SetOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.SortByComparator<T>(comparator)));
+    public Level1SetOfSetSelectedElementsSelectedOperator<T> map(final IFunction<? extends T,? super T> function) {
+        return new Level1SetOfSetSelectedElementsSelectedOperatorImpl<T>(getTarget().map(Structure.SET, function, null));
     }
 
 

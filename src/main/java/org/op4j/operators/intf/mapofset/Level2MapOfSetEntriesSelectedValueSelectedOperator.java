@@ -87,5 +87,7 @@ public interface Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V>
     public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> execAsSet(final IFunction<? extends Set<? extends V>, ? super Set<V>> function);
     
     
+
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> map(final IFunction<? extends V, ? super V> function);
     
 }

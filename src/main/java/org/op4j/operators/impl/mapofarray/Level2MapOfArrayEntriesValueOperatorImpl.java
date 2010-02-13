@@ -336,6 +336,16 @@ public class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends AbstractOpera
     }
 
 
+
+    
+    public <X> Level2MapOfArrayEntriesValueOperator<K,X> map(final Type<X> newType, final IFunction<X, ? super V> function) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K,X>(newType, getTarget().map(Structure.ARRAY, function, newType.getRawClass()));
+    }
+
+
+    public Level2MapOfArrayEntriesValueOperator<K,V> map(final IFunction<? extends V, ? super V> function) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K,V>(this.type, getTarget().map(Structure.ARRAY, function, this.type.getRawClass()));
+    }
     
 
     

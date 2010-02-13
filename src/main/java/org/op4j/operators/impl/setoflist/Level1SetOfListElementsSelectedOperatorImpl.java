@@ -117,13 +117,13 @@ public class Level1SetOfListElementsSelectedOperatorImpl<T> extends AbstractOper
     }
 
 
-    public Level1SetOfListElementsSelectedOperator<T> addAll(final T... newElements) {
-        return new Level1SetOfListElementsSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T>(newElements)));
+    public Level1SetOfListElementsSelectedOperator<T> addAll(final Collection<T> collection) {
+        return new Level1SetOfListElementsSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.AddAll<T>(collection)));
     }
 
 
-    public Level1SetOfListElementsSelectedOperator<T> addAll(final Collection<T> collection) {
-        return new Level1SetOfListElementsSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.AddAll<T>(collection)));
+    public Level1SetOfListElementsSelectedOperator<T> addAll(final T... newElements) {
+        return new Level1SetOfListElementsSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T>(newElements)));
     }
 
 
@@ -133,14 +133,19 @@ public class Level1SetOfListElementsSelectedOperatorImpl<T> extends AbstractOper
     }
 
 
+    public Level1SetOfListElementsSelectedOperator<T> sort(final Comparator<? super T> comparator) {
+        return new Level1SetOfListElementsSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.SortByComparator<T>(comparator)));
+    }
+
+
     @SuppressWarnings("unchecked")
     public Level1SetOfListElementsSelectedOperator<T> sort() {
         return new Level1SetOfListElementsSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.Sort()));
     }
 
 
-    public Level1SetOfListElementsSelectedOperator<T> sort(final Comparator<? super T> comparator) {
-        return new Level1SetOfListElementsSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.SortByComparator<T>(comparator)));
+    public Level1SetOfListElementsSelectedOperator<T> map(final IFunction<? extends T,? super T> function) {
+        return new Level1SetOfListElementsSelectedOperatorImpl<T>(getTarget().map(Structure.LIST, function, null));
     }
 
 

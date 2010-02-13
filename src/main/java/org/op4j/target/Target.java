@@ -70,6 +70,14 @@ public abstract class Target {
 
     abstract Target doCast(final CastType targetType, final Type<?>... types);
     
+    abstract Target doMap(final Structure structure, final IFunction<?,?> executable, final Class<?> arrayComponentClass);
+
+    
+    
+    public final Target map(final Structure structure, final IFunction<?,?> executable, final Class<?> arrayComponentClass) {
+        return doMap(structure, executable, arrayComponentClass);
+    }
+    
     
     public final Target cast(final CastType targetType, final Type<?>... types) {
         return doCast(targetType, types);

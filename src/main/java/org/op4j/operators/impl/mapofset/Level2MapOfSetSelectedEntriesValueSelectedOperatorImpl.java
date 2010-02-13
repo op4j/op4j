@@ -112,13 +112,13 @@ public class Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V> extends
     }
 
 
-    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> addAll(final V... newElements) {
-        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Add<V>(newElements)));
+    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> addAll(final Collection<V> collection) {
+        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.AddAll<V>(collection)));
     }
 
 
-    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> addAll(final Collection<V> collection) {
-        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.AddAll<V>(collection)));
+    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> addAll(final V... newElements) {
+        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Add<V>(newElements)));
     }
 
 
@@ -128,14 +128,19 @@ public class Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V> extends
     }
 
 
+    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> sort(final Comparator<? super V> comparator) {
+        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.SortByComparator<V>(comparator)));
+    }
+
+
     @SuppressWarnings("unchecked")
     public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> sort() {
         return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Sort()));
     }
 
 
-    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> sort(final Comparator<? super V> comparator) {
-        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.SortByComparator<V>(comparator)));
+    public Level2MapOfSetSelectedEntriesValueSelectedOperator<K,V> map(final IFunction<? extends V,? super V> function) {
+        return new Level2MapOfSetSelectedEntriesValueSelectedOperatorImpl<K,V>(getTarget().map(Structure.SET, function, null));
     }
 
 

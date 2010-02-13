@@ -302,6 +302,11 @@ public class Level2MapOfSetEntriesValueOperatorImpl<K,V> extends AbstractOperato
     }
 
 
+
+    public <X> Level2MapOfSetEntriesValueOperator<K, X> map(final IFunction<X, ? super V> function) {
+        return new Level2MapOfSetEntriesValueOperatorImpl<K, X>(getTarget().map(Structure.SET, function, null));
+    }
+
     
 
     

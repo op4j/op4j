@@ -59,8 +59,11 @@ public class BenchmarkTest {
 			final StopWatch stopWatch1 = new StopWatch();
 			final StopWatch stopWatch2 = new StopWatch();
 			
+			int seed = RandomUtils.nextInt(2);
+			System.out.println("Seed: " + seed);
+			seed = 1;
 			boolean op4jFirst = 
-				Op.on(RandomUtils.nextInt(2)).convert(ToBoolean.fromNumber()).get().booleanValue();
+				Op.on(seed).convert(ToBoolean.fromNumber()).get().booleanValue();
 			
 			if (op4jFirst) {
 				

@@ -303,6 +303,11 @@ public class Level1ArrayOfListElementsOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
+    public <X> Level1ArrayOfListElementsOperator<X> map(final IFunction<X, ? super T> function) {
+        return new Level1ArrayOfListElementsOperatorImpl<X>(getTarget().map(Structure.LIST, function, null));
+    }
+
+
     
     
     

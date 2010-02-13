@@ -102,6 +102,9 @@ public interface Level1ListOfListSelectedElementsOperator<T>
     public Level1ListOfListSelectedElementsOperator<T> replaceWith(final List<T> replacement);
 
     public Level1ListOfListSelectedElementsOperator<T> execAsList(final IFunction<? extends List<? extends T>, ? super List<T>> function);
+
+
     
+    public Level1ListOfListSelectedElementsOperator<T> map(final IFunction<? extends T, ? super T> function);
 		            
 }

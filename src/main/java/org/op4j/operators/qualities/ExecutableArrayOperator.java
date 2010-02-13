@@ -191,4 +191,12 @@ public interface ExecutableArrayOperator<T> {
      */
     public <X> Operator convert(final IConverter<X,? super T[]> converter);    
     
+    
+
+    
+    public <X> ExecutableArrayOperator<X> map(final Type<X> type, final IFunction<X,? super T> function);
+    
+    public ExecutableArrayOperator<T> map(final IFunction<? extends T,? super T> function);
+
+    
 }

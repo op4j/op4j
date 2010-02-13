@@ -130,6 +130,8 @@ public interface Level1ListOfSetElementsOperator<T>
     public <X> Level1ListElementsOperator<X> eval(final IEvaluator<X,? super Set<T>> eval);
     
     public <X> Level1ListElementsOperator<X> convert(final IConverter<X,? super Set<T>> converter);    
+
+    public <X> Level1ListOfSetElementsOperator<X> map(final IFunction<X,? super T> function);
     
     
     

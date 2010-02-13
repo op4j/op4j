@@ -353,6 +353,16 @@ public class Level0ArrayOperatorImpl<T>
     }
 
 
+    public <X> Level0ArrayOperator<X> map(final Type<X> newType, final IFunction<X, ? super T> function) {
+        return new Level0ArrayOperatorImpl<X>(newType, getTarget().map(Structure.ARRAY, function, newType.getRawClass()));
+    }
+
+
+    public Level0ArrayOperator<T> map(final IFunction<? extends T, ? super T> function) {
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().map(Structure.ARRAY, function, this.type.getRawClass()));
+    }
+
+
     
 
 
