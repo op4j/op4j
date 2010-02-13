@@ -400,6 +400,15 @@ public class Level0ListOfArrayOperatorImpl<T> extends AbstractOperatorImpl
         return ifNull().replaceWith(replacement).endIf();
     }
 
+    
+    public <X> Level0ListOfArrayOperator<X> mapMap(final Type<X> newType, final IFunction<X, ? super T> function) {
+        return forEach().map(newType, function).endFor();
+    }
+
+
+    public Level0ListOfArrayOperator<T> mapMap(final IFunction<? extends T, ? super T> function) {
+        return forEach().map(function).endFor();
+    }
 
     
     

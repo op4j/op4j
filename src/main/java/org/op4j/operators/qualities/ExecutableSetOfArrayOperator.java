@@ -193,5 +193,41 @@ public interface ExecutableSetOfArrayOperator<T> {
      * @return an operator on the results of converter execution
      */
     public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Set<T[]>> converter);    
+
+
+    
+    /**
+     * <p>
+     * Executes the specified function on each of the elements of each of the element structures, 
+     * creating a new operator containing the result of all the executions and setting the new 
+     * operator type to the one specified.
+     * </p>
+     * <p>
+     * This method is equivalent to <tt>forEach().forEach().exec(type, function).endFor().endFor()</tt>.
+     * </p>
+     * 
+     * @param <X> the type of the result elements
+     * @param type the new type for the operator
+     * @param function the function to be executed
+     * @return an operator on the results of function execution on each element
+     */
+    public <X> ExecutableSetOfArrayOperator<X> mapMap(final Type<X> type, final IFunction<X,? super T> function);
+
+    
+    /**
+     * <p>
+     * Executes the specified function on each of the elements of each of the element structures, 
+     * creating a new operator containing the result of all the executions but not changing the 
+     * operator type. The specified function will have to return results compatible with the 
+     * current operator type.
+     * </p>
+     * <p>
+     * This method is equivalent to <tt>forEach().forEach().exec(function).endFor().endFor()</tt>.
+     * </p>
+     * 
+     * @param function the function to be executed
+     * @return an operator on the results of function execution on each element
+     */
+    public ExecutableSetOfArrayOperator<T> mapMap(final IFunction<? extends T,? super T> function);
     
 }

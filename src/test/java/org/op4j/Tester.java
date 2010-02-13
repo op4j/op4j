@@ -562,5 +562,27 @@ public class Tester extends TestCase {
         assertEquals(stringUpperList, result);
         
     }
+
+    
+    @Test
+    @SuppressWarnings("unchecked")
+    public void test22() {
+
+        final List<List<String>> stringListOfList = Arrays.asList(
+                Arrays.asList(new String[] {"one", "two", "three", "four"}),
+                Arrays.asList(new String[] {"un", "dous", "tres", "catro"})
+                );
+        
+        final List<List<String>> stringUpperListOfList = Arrays.asList(
+                Arrays.asList(new String[] {"ONE", "TWO", "THREE", "FOUR"}),
+                Arrays.asList(new String[] {"UN", "DOUS", "TRES", "CATRO"})
+                );
+
+        final List<List<String>> result = 
+            Op.onListOfList(stringListOfList).mapMap(StringFuncs.toUpperCase()).get();
+        
+        assertEquals(stringUpperListOfList, result);
+        
+    }
     
 }

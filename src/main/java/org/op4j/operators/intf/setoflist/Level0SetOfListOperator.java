@@ -185,6 +185,8 @@ public interface Level0SetOfListOperator<T>
     
     public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Set<List<T>>> converter);    
     
+    public <X> Level0SetOfListOperator<X> mapMap(final IFunction<X,? super T> function);
+    
     
     
     public <X> Level0SetOfListOperator<X> asSetOfListOf(final Type<X> type);

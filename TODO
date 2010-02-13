@@ -1,11 +1,10 @@
 
-  - Add Validate.notNull to methods.
-  - Create a "map(IFunction)" method equivalent to forEach().exec(func).endFor()
+  - Some methods in NormalisationUtils are not needed anymore.
   - Create a "mapMap(IFunction)" method equivalent to forEach().forEach().exec(func).endFor().endFor()
-  - Rebuild javadoc for Executable* interfaces
+  - Add Validate.notNull to methods.
+  - Functions in StringFuncs: do they have to be nullasnull or notnull?
   - Make better utility abstract functions, evaluators, etc. Maybe one that receives Type as
     parameter and thus does not need to implement getReturnType.
-  - Some methods in NormalisationUtils are not needed anymore.
     
     
     

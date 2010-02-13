@@ -92,5 +92,9 @@ public interface Level0ListOfListSelectedOperator<T>
 
     public Level0ListOfListSelectedOperator<T> execAsListOfList(final IFunction<? extends List<? extends List<? extends T>>, ? super List<List<T>>> function);
 
+
+
+    public Level0ListOfListSelectedOperator<T> mapMap(final IFunction<? extends T, ? super T> function);
+
     
 }

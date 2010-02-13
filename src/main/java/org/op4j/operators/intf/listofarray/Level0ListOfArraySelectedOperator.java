@@ -92,5 +92,9 @@ public interface Level0ListOfArraySelectedOperator<T>
 
     public Level0ListOfArraySelectedOperator<T> execAsListOfArray(final IFunction<? extends List<? extends T[]>, ? super List<T[]>> function);
 
+
+
+    public Level0ListOfArraySelectedOperator<T> mapMap(final IFunction<? extends T, ? super T> function);
+
     
 }

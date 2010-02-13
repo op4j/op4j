@@ -143,4 +143,22 @@ public interface ExecutableListOfSetOperator<T> {
      */
     public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super List<Set<T>>> converter);    
 
+    
+    
+    /**
+     * <p>
+     * Executes the specified function on each of the elements of each of the element structures, 
+     * creating a new operator containing the result of all the executions and setting the new 
+     * operator type to the one specified.
+     * </p>
+     * <p>
+     * This method is equivalent to <tt>forEach().forEach().exec(function).endFor().endFor()</tt>.
+     * </p>
+     * 
+     * @param <X> the type of the result elements
+     * @param function the function to be executed
+     * @return an operator on the results of function execution on each element
+     */
+    public <X> ExecutableListOfSetOperator<X> mapMap(final IFunction<X,? super T> function);
+    
 }

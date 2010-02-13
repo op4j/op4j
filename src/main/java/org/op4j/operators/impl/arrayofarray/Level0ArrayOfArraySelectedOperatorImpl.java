@@ -115,19 +115,24 @@ public class Level0ArrayOfArraySelectedOperatorImpl<T> extends AbstractOperatorI
     }
 
 
+    public Level0ArrayOfArraySelectedOperator<T> mapMap(final IFunction<? extends T,? super T> function) {
+        return forEach().map(function).endFor();
+    }
+
+
     @SuppressWarnings("unchecked")
     public Level0ArrayOfArraySelectedOperator<T> add(final T[] newElement) {
         return new Level0ArrayOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Add<T[]>(NormalisationUtils.normaliseArray(newElement, this.type.getRawClass()))));
     }
 
 
-    public Level0ArrayOfArraySelectedOperator<T> addAll(final T[]... newElements) {
-        return new Level0ArrayOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Add<T[]>(NormalisationUtils.normaliseArrays(newElements, this.type.getRawClass()))));
+    public Level0ArrayOfArraySelectedOperator<T> addAll(final Collection<T[]> collection) {
+        return new Level0ArrayOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.AddAll<T[]>(NormalisationUtils.normaliseArrays(collection, this.type.getRawClass()))));
     }
 
 
-    public Level0ArrayOfArraySelectedOperator<T> addAll(final Collection<T[]> collection) {
-        return new Level0ArrayOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.AddAll<T[]>(NormalisationUtils.normaliseArrays(collection, this.type.getRawClass()))));
+    public Level0ArrayOfArraySelectedOperator<T> addAll(final T[]... newElements) {
+        return new Level0ArrayOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Add<T[]>(NormalisationUtils.normaliseArrays(newElements, this.type.getRawClass()))));
     }
 
 

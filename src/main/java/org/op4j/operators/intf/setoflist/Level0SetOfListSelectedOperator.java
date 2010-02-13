@@ -89,5 +89,9 @@ public interface Level0SetOfListSelectedOperator<T>
 
     public Level0SetOfListSelectedOperator<T> execAsSetOfList(final IFunction<? extends Set<? extends List<? extends T>>, ? super Set<List<T>>> function);
 
+
+
+    public Level0SetOfListSelectedOperator<T> mapMap(final IFunction<? extends T, ? super T> function);
+
     
 }

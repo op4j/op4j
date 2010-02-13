@@ -198,6 +198,11 @@ public interface Level0ArrayOfArrayOperator<T>
     
     
     
+    public <X> Level0ArrayOfArrayOperator<X> mapMap(final Type<X> type, final IFunction<X,? super T> function);
+    
+    public Level0ArrayOfArrayOperator<T> mapMap(final IFunction<? extends T,? super T> function);
+    
+    
     public <X> Level0ArrayOfArrayOperator<X> asArrayOfArrayOf(final Type<X> type);
     public Level0ArrayOfArrayOperator<?> asArrayOfArrayOfUnknown();
 

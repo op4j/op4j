@@ -190,6 +190,14 @@ public interface Level0SetOfArrayOperator<T>
     public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Set<T[]>> converter);    
     
     
+    
+    public <X> Level0SetOfArrayOperator<X> mapMap(final Type<X> type, final IFunction<X,? super T> function);
+
+    
+    public Level0SetOfArrayOperator<T> mapMap(final IFunction<? extends T,? super T> function);
+
+    
+    
     public <X> Level0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type);
     public Level0SetOfArrayOperator<?> asSetOfArrayOfUnknown();
 

@@ -399,6 +399,18 @@ public class Level0SetOfArrayOperatorImpl<T> extends AbstractOperatorImpl
 
     
     
+    public <X> Level0SetOfArrayOperator<X> mapMap(final Type<X> newType, final IFunction<X, ? super T> function) {
+        return forEach().map(newType, function).endFor();
+    }
+
+
+    public Level0SetOfArrayOperator<T> mapMap(final IFunction<? extends T, ? super T> function) {
+        return forEach().map(function).endFor();
+    }
+
+
+    
+    
     
     
     

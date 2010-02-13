@@ -375,6 +375,12 @@ public class Level0ArrayOfListOperatorImpl<T> extends AbstractOperatorImpl
 
 
     
+    public <X> Level0ArrayOfListOperator<X> mapMap(final IFunction<X, ? super T> function) {
+        return forEach().map(function).endFor();
+    }
+
+
+    
     
     
     

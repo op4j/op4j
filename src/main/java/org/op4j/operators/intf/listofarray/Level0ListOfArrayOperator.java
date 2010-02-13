@@ -192,11 +192,18 @@ public interface Level0ListOfArrayOperator<T>
     public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super List<T[]>> eval);
     
     public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super List<T[]>> converter);    
+
+    
+    
+    public <X> Level0ListOfArrayOperator<X> mapMap(final Type<X> type, final IFunction<X,? super T> function);
+    
+    public Level0ListOfArrayOperator<T> mapMap(final IFunction<? extends T,? super T> function);
     
     
     
     public <X> Level0ListOfArrayOperator<X> asListOfArrayOf(final Type<X> type);
     public Level0ListOfArrayOperator<?> asListOfArrayOfUnknown();
+
 
     
 }

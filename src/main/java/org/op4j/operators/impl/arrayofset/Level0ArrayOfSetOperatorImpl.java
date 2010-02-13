@@ -380,6 +380,11 @@ public class Level0ArrayOfSetOperatorImpl<T> extends AbstractOperatorImpl
 
 
     
+    public <X> Level0ArrayOfSetOperator<X> mapMap(final IFunction<X, ? super T> function) {
+        return forEach().map(function).endFor();
+    }
+
+    
     
     
     

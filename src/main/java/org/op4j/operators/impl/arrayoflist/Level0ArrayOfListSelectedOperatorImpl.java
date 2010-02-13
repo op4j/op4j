@@ -96,6 +96,11 @@ public class Level0ArrayOfListSelectedOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
+    public Level0ArrayOfListSelectedOperator<T> mapMap(final IFunction<? extends T,? super T> function) {
+        return forEach().map(function).endFor();
+    }
+
+
     public Level0ArrayOfListSelectedOperator<T> convertAsArrayOfList(final IConverter<? extends List<? extends T>[],? super List<T>[]> converter) {
         return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.ARRAY_OF_LIST));
     }
@@ -117,13 +122,13 @@ public class Level0ArrayOfListSelectedOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
-    public Level0ArrayOfListSelectedOperator<T> addAll(final List<T>... newElements) {
-        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Add<List<T>>(NormalisationUtils.normaliseLists(newElements))));
+    public Level0ArrayOfListSelectedOperator<T> addAll(final Collection<List<T>> collection) {
+        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.AddAll<List<T>>(NormalisationUtils.normaliseLists(collection))));
     }
 
 
-    public Level0ArrayOfListSelectedOperator<T> addAll(final Collection<List<T>> collection) {
-        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.AddAll<List<T>>(NormalisationUtils.normaliseLists(collection))));
+    public Level0ArrayOfListSelectedOperator<T> addAll(final List<T>... newElements) {
+        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Add<List<T>>(NormalisationUtils.normaliseLists(newElements))));
     }
 
 

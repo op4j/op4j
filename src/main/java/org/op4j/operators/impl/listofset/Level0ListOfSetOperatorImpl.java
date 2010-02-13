@@ -379,6 +379,10 @@ public class Level0ListOfSetOperatorImpl<T> extends AbstractOperatorImpl
 
 
     
+    public <X> Level0ListOfSetOperator<X> mapMap(final IFunction<X, ? super T> function) {
+        return forEach().map(function).endFor();
+    }
+    
     
     
     
