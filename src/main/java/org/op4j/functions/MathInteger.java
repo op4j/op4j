@@ -107,8 +107,8 @@ public class MathInteger {
 		return new Divide(divisor, roundingMode);
     }
 	
-	public static final ModuleInteger module(int module) {
-		return new ModuleInteger(module);
+	public static final Module module(int module) {
+		return new Module(module);
     }	
 	
 	public static final Multiply multiplyBy(Integer multiplicand) {
@@ -333,11 +333,11 @@ public class MathInteger {
 	}
 	
 	
-	public static final class ModuleInteger extends AbstractNotNullFunc<Integer, Integer> {
+	public static final class Module extends AbstractNotNullFunc<Integer, Integer> {
 
 		private int module;
 		
-		public ModuleInteger(int module) {
+		public Module(int module) {
 			super();
 			this.module = module;
 		}

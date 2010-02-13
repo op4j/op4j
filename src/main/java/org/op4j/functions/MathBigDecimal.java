@@ -32,7 +32,7 @@ import org.apache.commons.lang.Validate;
  * @author Soraya S&aacute;nchez
  *
  */
-public class MathDouble {
+public class MathBigDecimal {
 
 	private static Max MAX_FUNC = new Max();
 	
@@ -45,26 +45,26 @@ public class MathDouble {
 	private static Abs ABS_FUNC = new Abs();
 	
 	
-	private MathDouble() {
+	private MathBigDecimal() {
 		super();           
 	}
 
 	/**
-	 * @return function that returns the maximum {@link Double} of an object implementing {@link Iterable}
+	 * @return function that returns the maximum {@link BigDecimal} of an object implementing {@link Iterable}
 	 */
 	public static final Max max() {
         return MAX_FUNC;
     }
 	
 	/**
-	 * @return function that returns the minimum {@link Double} of an object implementing {@link Iterable}
+	 * @return function that returns the minimum {@link BigDecimal} of an object implementing {@link Iterable}
 	 */
 	public static final Min min() {
         return MIN_FUNC;
     }
 	
 	/**
-	 * @return function that returns the sum of the {@link Double} elements in an object 
+	 * @return function that returns the sum of the {@link BigDecimal} elements in an object 
 	 * implementing {@link Iterable}
 	 */
 	public static final Sum sum() {
@@ -72,7 +72,7 @@ public class MathDouble {
     }
 	
 	/**
-	 * @return function that returns the average of the {@link Double} elements in an object 
+	 * @return function that returns the average of the {@link BigDecimal} elements in an object 
 	 * implementing {@link Iterable}
 	 */
 	public static final Avg avg() {
@@ -96,21 +96,21 @@ public class MathDouble {
 		return ABS_FUNC;
     }
 	
-	public static final Add add(Double add) {
+	public static final Add add(BigDecimal add) {
 		return new Add(add);
     }
 	
-	public static final Subtract subtract(Double subtract) {
+	public static final Subtract subtract(BigDecimal subtract) {
 		return new Subtract(subtract);
     }
 	
-	public static final Divide divideBy(Double divisor) {
+	public static final Divide divideBy(BigDecimal divisor) {
 		return new Divide(divisor);
     }
-	public static final Divide divideBy(Double divisor, MathContext mathContext) {
+	public static final Divide divideBy(BigDecimal divisor, MathContext mathContext) {
         return new Divide(divisor, mathContext);
     }
-	public static final Divide divideBy(Double divisor, RoundingMode roundingMode) {
+	public static final Divide divideBy(BigDecimal divisor, RoundingMode roundingMode) {
 		return new Divide(divisor, roundingMode);
     }
 	
@@ -118,13 +118,13 @@ public class MathDouble {
 		return new Module(module);
     }	
 	
-	public static final Multiply multiplyBy(Double multiplicand) {
+	public static final Multiply multiplyBy(BigDecimal multiplicand) {
 		return new Multiply(multiplicand);
     }
-	public static final Multiply multiplyBy(Double multiplicand, MathContext mathContext) {
+	public static final Multiply multiplyBy(BigDecimal multiplicand, MathContext mathContext) {
         return new Multiply(multiplicand, mathContext);
     }
-	public static final Multiply multiplyBy(Double multiplicand, RoundingMode roundingMode) {
+	public static final Multiply multiplyBy(BigDecimal multiplicand, RoundingMode roundingMode) {
 		return new Multiply(multiplicand, roundingMode);
     }
 	
@@ -139,19 +139,19 @@ public class MathDouble {
     }
 	
 	
-	public static final class Max extends AbstractNotNullFunc<Double, Iterable<Double>> {
+	public static final class Max extends AbstractNotNullFunc<BigDecimal, Iterable<BigDecimal>> {
 
 		public Max() {
 			super();
 		}
 
 		@Override
-		public Double notNullExecute(final Iterable<Double> input, final ExecCtx ctx) throws Exception {
+		public BigDecimal notNullExecute(final Iterable<BigDecimal> input, final ExecCtx ctx) throws Exception {
 			if (input.iterator().hasNext() == false) {
 				return null;
 			}
-			Double max = input.iterator().next();
-			for (Double number : input) {
+			BigDecimal max = input.iterator().next();
+			for (BigDecimal number : input) {
 				if (number != null) {
 					if (number.compareTo(max) > 0) {
 						max = number;
@@ -162,19 +162,19 @@ public class MathDouble {
 		}
 	}
 	
-	public static final class Min extends AbstractNotNullFunc<Double, Iterable<Double>> {
+	public static final class Min extends AbstractNotNullFunc<BigDecimal, Iterable<BigDecimal>> {
 
 		public Min() {
 			super();
 		}
 
 		@Override
-		public Double notNullExecute(final Iterable<Double> input, final ExecCtx ctx) throws Exception {
+		public BigDecimal notNullExecute(final Iterable<BigDecimal> input, final ExecCtx ctx) throws Exception {
 			if (input.iterator().hasNext() == false) {
 				return null;
 			}
-			Double min = input.iterator().next();
-			for (Double number : input) {
+			BigDecimal min = input.iterator().next();
+			for (BigDecimal number : input) {
 				if (number != null) {
 					if (number.compareTo(min) < 0) {
 						min = number;
@@ -185,25 +185,25 @@ public class MathDouble {
 		}	
 	}
 	
-	public static final class Sum extends AbstractNotNullFunc<Double, Iterable<Double>> {
+	public static final class Sum extends AbstractNotNullFunc<BigDecimal, Iterable<BigDecimal>> {
 
 		public Sum() {
 			super();
 		}
 
 		@Override
-		public Double notNullExecute(final Iterable<Double> input, final ExecCtx ctx) throws Exception {
+		public BigDecimal notNullExecute(final Iterable<BigDecimal> input, final ExecCtx ctx) throws Exception {
 			BigDecimal sum = BigDecimal.valueOf(0);
-			for (Double number : input) {
+			for (BigDecimal number : input) {
 				if (number != null) {
-					sum = sum.add(BigDecimal.valueOf(number.doubleValue()));
+					sum = sum.add(number);
 				}
 			}	
-			return Double.valueOf(sum.doubleValue());
+			return sum;
 		}		
 	}
 	
-	public static final class Avg extends AbstractNotNullFunc<Double, Iterable<Double>> {
+	public static final class Avg extends AbstractNotNullFunc<BigDecimal, Iterable<BigDecimal>> {
 
 		private RoundingMode roundingMode = null;
 		private MathContext mathContext = null;
@@ -225,27 +225,27 @@ public class MathDouble {
 		}
 		
 		@Override
-		public Double notNullExecute(final Iterable<Double> input, final ExecCtx ctx) throws Exception {
+		public BigDecimal notNullExecute(final Iterable<BigDecimal> input, final ExecCtx ctx) throws Exception {
 			
 			int countNotNull = 0;
 			BigDecimal sum = BigDecimal.valueOf(0);
-			for (Double number : input) {
+			for (BigDecimal number : input) {
 				if (number != null) {
-					sum = sum.add(BigDecimal.valueOf(number.doubleValue()));
+					sum = sum.add(number);
 					countNotNull++;
 				}
 			}	
 			if (this.roundingMode != null) {
-				return Double.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.roundingMode).doubleValue());
+				return sum.divide(BigDecimal.valueOf(countNotNull), this.roundingMode);
 			}
 			if (this.mathContext != null) {
-				return Double.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).doubleValue());
+				return sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext);
 			}
-			return Double.valueOf(sum.divide(BigDecimal.valueOf(countNotNull)).doubleValue());
+			return sum.divide(BigDecimal.valueOf(countNotNull));
 		}		
 	}
 	
-	public static final class Round extends AbstractNotNullFunc<Double, Double> {
+	public static final class Round extends AbstractNotNullFunc<BigDecimal, BigDecimal> {
 
 		private MathContext mathContext = null;
 		private RoundingMode roundingMode = null;
@@ -263,50 +263,51 @@ public class MathDouble {
 		}
 		
 		@Override
-		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
+		public BigDecimal notNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
+			BigDecimal result = input;
 			if (this.roundingMode != null) {
-				return Double.valueOf(BigDecimal.valueOf(input.doubleValue()).setScale(0, this.roundingMode).doubleValue());
+				return result.setScale(0, this.roundingMode);
 			}			
-			return Double.valueOf(BigDecimal.valueOf(input.doubleValue()).round(this.mathContext).doubleValue());
+			return result.round(this.mathContext);
 		}	
 	}
 	
-	public static final class Abs extends AbstractNotNullFunc<Double, Double> {
+	public static final class Abs extends AbstractNotNullFunc<BigDecimal, BigDecimal> {
 
 		public Abs() {
 			super();
 		}
 		
 		@Override
-		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
-			return Double.valueOf(Math.abs(input.doubleValue()));
+		public BigDecimal notNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
+			return BigDecimal.valueOf(Math.abs(input.doubleValue()));
 		}
 	}
 	
-	public static final class Add extends AbstractNotNullFunc<Double, Double> {
+	public static final class Add extends AbstractNotNullFunc<BigDecimal, BigDecimal> {
 
-		private Double add;
+		private BigDecimal add;
 		
-		public Add(Double add) {
+		public Add(BigDecimal add) {
 			super();
 			Validate.notNull(add, "Number to be added can't be null");
 			this.add = add;
 		}
 
 		@Override
-		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
-			BigDecimal result = BigDecimal.valueOf(input.doubleValue());
-			result = result.add(BigDecimal.valueOf(this.add.doubleValue()));
+		public BigDecimal notNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
+			BigDecimal result = input;
+			result = result.add(this.add);
 				
-			return Double.valueOf(result.doubleValue());
+			return result;
 		}	
 	}
 	
-	public static final class Subtract extends AbstractNotNullFunc<Double, Double> {
+	public static final class Subtract extends AbstractNotNullFunc<BigDecimal, BigDecimal> {
 
-		private Double subtract;
+		private BigDecimal subtract;
 		
-		public Subtract(Double subtract) {
+		public Subtract(BigDecimal subtract) {
 			super();
 			Validate.notNull(subtract, "Number to be subtracted can't be null");
 			Validate.notNull(subtract, "Number to be added can't be null");
@@ -314,27 +315,27 @@ public class MathDouble {
 		}
 
 		@Override
-		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
-			BigDecimal result = BigDecimal.valueOf(input.doubleValue());
-			result = result.subtract(BigDecimal.valueOf(this.subtract.doubleValue()));
+		public BigDecimal notNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
+			BigDecimal result = input;
+			result = result.subtract(this.subtract);
 				
-			return Double.valueOf(result.doubleValue());
+			return result;
 		}		
 	}
 	
-	public static final class Divide extends AbstractNotNullFunc<Double, Double> {
+	public static final class Divide extends AbstractNotNullFunc<BigDecimal, BigDecimal> {
 
-		private Double divisor;
+		private BigDecimal divisor;
 		private RoundingMode roundingMode = null;
 		private MathContext mathContext = null;
 		
-		public Divide(Double divisor) {
+		public Divide(BigDecimal divisor) {
 			super();
 			Validate.notNull(divisor, "Divisor can't be null");
 			this.divisor = divisor;
 		}
 		
-		public Divide(Double divisor, RoundingMode roundingMode) {
+		public Divide(BigDecimal divisor, RoundingMode roundingMode) {
 			super();
 			Validate.notNull(divisor, "Divisor can't be null");
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
@@ -342,7 +343,7 @@ public class MathDouble {
 			this.roundingMode = roundingMode;
 		}
 		
-		public Divide(Double divisor, MathContext mathContext) {
+		public Divide(BigDecimal divisor, MathContext mathContext) {
 			super();
 			Validate.notNull(divisor, "Divisor can't be null");
 			Validate.notNull(mathContext, "MathContext can't be null");
@@ -351,22 +352,22 @@ public class MathDouble {
 		}
 
 		@Override
-		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
-			BigDecimal result = BigDecimal.valueOf(input.doubleValue());
+		public BigDecimal notNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
+			BigDecimal result = input;
 			
 			if (this.roundingMode != null) {
-				result = result.divide(BigDecimal.valueOf(this.divisor.doubleValue()), this.roundingMode);					
+				result = result.divide(this.divisor, this.roundingMode);					
 			} else if (this.mathContext != null) {
-				result = result.divide(BigDecimal.valueOf(this.divisor.doubleValue()), this.mathContext);				
+				result = result.divide(this.divisor, this.mathContext);				
 			} else {
-				result = result.divide(BigDecimal.valueOf(this.divisor.doubleValue()));	
+				result = result.divide(this.divisor);	
 			}
-			return Double.valueOf(result.doubleValue());
+			return result;
 		}		
 	}
 	
 	
-	public static final class Module extends AbstractNotNullFunc<Double, Double> {
+	public static final class Module extends AbstractNotNullFunc<BigDecimal, BigDecimal> {
 
 		private int module;
 		
@@ -376,24 +377,24 @@ public class MathDouble {
 		}
 		
 		@Override
-		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
-			return Double.valueOf(input.doubleValue() % this.module);
+		public BigDecimal notNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
+			return BigDecimal.valueOf(input.doubleValue() % this.module);
 		}	
 	}
 	
-	public static final class Multiply extends AbstractNotNullFunc<Double, Double> {
+	public static final class Multiply extends AbstractNotNullFunc<BigDecimal, BigDecimal> {
 
-		private Double multiplicand;
+		private BigDecimal multiplicand;
 		private MathContext mathContext = null;
 		private RoundingMode roundingMode = null;
 		
-		public Multiply(Double multiplicand) {
+		public Multiply(BigDecimal multiplicand) {
 			super();
 			Validate.notNull(multiplicand, "Multiplicand can't be null");
 			this.multiplicand = multiplicand;
 		}
 		
-		public Multiply(Double multiplicand, RoundingMode roundingMode) {
+		public Multiply(BigDecimal multiplicand, RoundingMode roundingMode) {
 			super();
 			Validate.notNull(multiplicand, "Multiplicand can't be null");
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
@@ -401,7 +402,7 @@ public class MathDouble {
 			this.roundingMode = roundingMode;
 		}
 		
-		public Multiply(Double multiplicand, MathContext mathContext) {
+		public Multiply(BigDecimal multiplicand, MathContext mathContext) {
 			super();
 			Validate.notNull(multiplicand, "Multiplicand can't be null");
 			Validate.notNull(mathContext, "MathContext can't be null");
@@ -410,21 +411,21 @@ public class MathDouble {
 		}
 
 		@Override
-		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
-			BigDecimal result = BigDecimal.valueOf(input.doubleValue());
+		public BigDecimal notNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
+			BigDecimal result = input;
 			
 			if (this.mathContext != null) {
-				result = result.multiply(BigDecimal.valueOf(this.multiplicand.doubleValue()), this.mathContext);				
+				result = result.multiply(this.multiplicand, this.mathContext);				
 			} else if (this.roundingMode != null) {
-				result = result.multiply(BigDecimal.valueOf(this.multiplicand.doubleValue())).setScale(0, this.roundingMode);	
+				result = result.multiply(this.multiplicand).setScale(0, this.roundingMode);	
 			} else {
-				result = result.multiply(BigDecimal.valueOf(this.multiplicand.doubleValue()));	
+				result = result.multiply(this.multiplicand);	
 			}
-			return Double.valueOf(result.doubleValue());
+			return result;
 		}	
 	}
 	
-	public static final class Raise extends AbstractNotNullFunc<Double, Double> {
+	public static final class Raise extends AbstractNotNullFunc<BigDecimal, BigDecimal> {
 
 		private int power;
 		private MathContext mathContext = null;
@@ -450,8 +451,8 @@ public class MathDouble {
 		}
 
 		@Override
-		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
-			BigDecimal result = BigDecimal.valueOf(input.doubleValue());
+		public BigDecimal notNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
+			BigDecimal result = input;
 			
 			if (this.mathContext != null) {
 				result = result.pow(this.power, this.mathContext);				
@@ -460,7 +461,7 @@ public class MathDouble {
 			} else {
 				result = result.pow(this.power);	
 			}
-			return Double.valueOf(result.doubleValue());
+			return result;
 		}		
 	}
 	

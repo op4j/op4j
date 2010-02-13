@@ -2,6 +2,7 @@ package org.op4j;
 
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -12,11 +13,19 @@ import junit.framework.TestCase;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.op4j.functions.MathBigDecimal;
+import org.op4j.functions.MathBigInteger;
 import org.op4j.functions.MathDouble;
+import org.op4j.functions.MathFloat;
 import org.op4j.functions.MathInteger;
 import org.op4j.functions.MathLong;
+import org.op4j.functions.MathShort;
+import org.op4j.functions.converters.ToBigDecimal;
+import org.op4j.functions.converters.ToBigInteger;
+import org.op4j.functions.converters.ToFloat;
 import org.op4j.functions.converters.ToInteger;
 import org.op4j.functions.converters.ToLong;
+import org.op4j.functions.converters.ToShort;
 
 public class MathFuncsTest extends TestCase {
 
@@ -73,6 +82,20 @@ public class MathFuncsTest extends TestCase {
 		result = Op.on(this.data).exec(MathDouble.avg(mc)).get();
 		assertEquals(result, Double.valueOf(avg.divide(BigDecimal.valueOf(count), mc).doubleValue()));	
 		System.out.println("Avg: " + result);
+		
+		// Raise
+		List<Double> theResult = Op.onList(this.data).forEach()
+			.exec(MathDouble.raiseTo(5)).get();
+		int index = 0;
+		for(Double aNumber : theResult) {
+			Double bNumber = null;
+			if (this.data.get(index) != null) {
+				bNumber = Double.valueOf(BigDecimal.valueOf(this.data.get(index).doubleValue()).pow(5).doubleValue());
+			}			
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Raise: " + result);
 	}
 
 	@Test
@@ -138,7 +161,207 @@ public class MathFuncsTest extends TestCase {
 		}
 		System.out.println("Divide: " + result);
 		
+		// Multiply
+		result = Op.onList(this.data).forEach().exec(ToInteger.fromDouble(RoundingMode.DOWN))
+			.exec(MathInteger.multiplyBy(Integer.valueOf(3))).get();
+		index = 0;
+		for(Integer aNumber : result) {
+			Integer bNumber = null;
+			if (this.data.get(index) != null) {
+				bNumber = Integer.valueOf(BigDecimal.valueOf(this.data.get(index).doubleValue())
+						.setScale(0, RoundingMode.DOWN).multiply(BigDecimal.valueOf(3))
+						.intValue());
+			}			
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Multiply: " + result);
 		
+	}
+	
+	@Test
+	public void testBigDecimal() {
 		
+		// Module
+		List<BigDecimal> result = Op.onList(this.data).forEach().exec(ToBigDecimal.fromNumber())
+			.exec(MathBigDecimal.module(3)).get();
+		int index = 0;
+		for(BigDecimal aNumber : result) {
+			BigDecimal bNumber = null;
+			if (this.data.get(index) != null) {
+				bNumber = BigDecimal.valueOf(this.data.get(index).doubleValue() % 3);
+			}			
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Module: " + result);
+		
+		// Multiply
+		result = Op.onList(this.data).forEach().exec(ToBigDecimal.fromNumber())
+			.exec(MathBigDecimal.multiplyBy(BigDecimal.valueOf(7.2))).get();
+		index = 0;
+		for(BigDecimal aNumber : result) {
+			BigDecimal bNumber = null;
+			if (this.data.get(index) != null) {
+				bNumber = BigDecimal.valueOf(this.data.get(index).doubleValue()).multiply(BigDecimal.valueOf(7.2));
+			}			
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Multiply: " + result);
+		
+		// Raise
+		result = Op.onList(this.data).forEach().exec(ToBigDecimal.fromNumber())
+			.exec(MathBigDecimal.raiseTo(3)).get();
+		index = 0;
+		for(BigDecimal aNumber : result) {
+			BigDecimal bNumber = null;
+			if (this.data.get(index) != null) {
+				bNumber = BigDecimal.valueOf(this.data.get(index).doubleValue()).pow(3);
+			}			
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Raise: " + result);
+	}
+	
+	@Test
+	public void testBigInteger() {
+		
+		// Module
+		List<BigInteger> result = Op.onList(this.data).forEach().exec(ToBigInteger.fromNumber())
+			.exec(MathBigInteger.module(3)).get();
+		int index = 0;
+		for(BigInteger aNumber : result) {
+			BigInteger bNumber = null;
+			if (this.data.get(index) != null) {
+				bNumber = BigInteger.valueOf(this.data.get(index).longValue() % 3);
+			}			
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Module: " + result);
+		
+		// Multiply
+		result = Op.onList(this.data).forEach().exec(ToBigInteger.fromNumber())
+			.exec(MathBigInteger.multiplyBy(BigInteger.valueOf(7))).get();
+		index = 0;
+		for(BigInteger aNumber : result) {
+			BigInteger bNumber = null;
+			if (this.data.get(index) != null) {
+				bNumber = BigInteger.valueOf(this.data.get(index).longValue()).multiply(BigInteger.valueOf(7));
+			}			
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Multiply: " + result);
+		
+		// Raise
+		result = Op.onList(this.data).forEach().exec(ToBigInteger.fromNumber())
+			.exec(MathBigInteger.raiseTo(3)).get();
+		index = 0;
+		for(BigInteger aNumber : result) {
+			BigInteger bNumber = null;
+			if (this.data.get(index) != null) {
+				bNumber = BigInteger.valueOf(this.data.get(index).longValue()).pow(3);
+			}			
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Raise: " + result);
+	}
+	
+	@Test
+	public void testFloat() {
+		
+		// Module
+		List<Float> result = Op.onList(this.data).forEach().exec(ToFloat.fromNumber())
+			.exec(MathFloat.module(3)).get();
+		int index = 0;
+		for(Float aNumber : result) {
+			Float bNumber = null;
+			if (this.data.get(index) != null) {
+				bNumber = Float.valueOf(this.data.get(index).floatValue() % 3);
+			}			
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Module: " + result);
+		
+		// Multiply
+		result = Op.onList(this.data).forEach().exec(ToFloat.fromNumber())
+			.exec(MathFloat.multiplyBy(Float.valueOf(7))).get();
+		index = 0;
+		for(Float aNumber : result) {
+			Float bNumber = null;
+			if (this.data.get(index) != null) {
+				bNumber = Float.valueOf(BigDecimal.valueOf(this.data.get(index).floatValue())
+						.multiply(BigDecimal.valueOf(7)).floatValue());
+			}			
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Multiply: " + result);
+		
+		// Raise
+		result = Op.onList(this.data).forEach().exec(ToFloat.fromNumber())
+			.exec(MathFloat.raiseTo(3)).get();
+		index = 0;
+		for(Float aNumber : result) {
+			Float bNumber = null;
+			if (this.data.get(index) != null) {
+				bNumber = Float.valueOf(BigDecimal.valueOf(this.data.get(index).floatValue()).pow(3).floatValue());
+			}			
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Raise: " + result);
+	}
+	
+	@Test
+	public void testShort() {
+		
+		// Module
+		List<Short> result = Op.onList(this.data).forEach().exec(ToShort.fromNumber())
+			.exec(MathShort.module(3)).get();
+		int index = 0;
+		for(Short aNumber : result) {
+			Short bNumber = null;
+			if (this.data.get(index) != null) {
+				bNumber = Short.valueOf(Integer.valueOf(this.data.get(index).shortValue() % 3).shortValue());
+			}			
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Module: " + result);
+		
+		// Multiply
+		result = Op.onList(this.data).forEach().exec(ToShort.fromNumber())
+			.exec(MathShort.multiplyBy(Short.valueOf("2127"))).get();
+		index = 0;
+		for(Short aNumber : result) {
+			Short bNumber = null;
+			if (this.data.get(index) != null) {
+				bNumber = Short.valueOf(BigDecimal.valueOf(this.data.get(index).shortValue())
+						.multiply(BigDecimal.valueOf(2127)).shortValue());
+			}			
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Multiply: " + result);
+		
+		// Raise
+		result = Op.onList(this.data).forEach().exec(ToShort.fromNumber())
+			.exec(MathShort.raiseTo(3)).get();
+		index = 0;
+		for(Short aNumber : result) {
+			Short bNumber = null;
+			if (this.data.get(index) != null) {
+				bNumber = Short.valueOf(BigDecimal.valueOf(this.data.get(index).shortValue()).pow(3).shortValue());
+			}			
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Raise: " + result);
 	}
 }

@@ -107,8 +107,8 @@ public class MathLong {
 		return new Divide(divisor, roundingMode);
     }
 	
-	public static final ModuleLong module(int module) {
-		return new ModuleLong(module);
+	public static final Module module(int module) {
+		return new Module(module);
     }	
 	
 	public static final Multiply multiplyBy(Long multiplicand) {
@@ -333,11 +333,11 @@ public class MathLong {
 	}
 	
 	
-	public static final class ModuleLong extends AbstractNotNullFunc<Long, Long> {
+	public static final class Module extends AbstractNotNullFunc<Long, Long> {
 
 		private int module;
 		
-		public ModuleLong(int module) {
+		public Module(int module) {
 			super();
 			this.module = module;
 		}
