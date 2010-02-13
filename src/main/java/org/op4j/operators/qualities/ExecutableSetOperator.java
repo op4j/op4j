@@ -143,6 +143,20 @@ public interface ExecutableSetOperator<T> {
     
     
     
+    /**
+     * <p>
+     * Executes the specified function on each of the elements, creating a new operator
+     * containing the result of all the executions and setting the new operator type to the one
+     * resulting from the function execution.
+     * </p>
+     * <p>
+     * This method is equivalent to <tt>forEach().exec(function).endFor()</tt>.
+     * </p>
+     * 
+     * @param <X> the type of the result elements
+     * @param function the function to be executed
+     * @return an operator on the results of function execution on each element
+     */
     public <X> ExecutableSetOperator<X> map(final IFunction<X,? super T> function);
     
 }

@@ -89,7 +89,23 @@ public interface ExecutableArraySelectedOperator<T> {
     public ExecutableArraySelectedOperator<T> convertAsArray(final IConverter<? extends T[],? super T[]> converter);
 
     
-    
+    /**
+     * <p>
+     * Executes the specified function on each of the elements, creating a new operator
+     * containing the result of all the executions.
+     * </p>
+     * <p>
+     * This function does not allow the operator target type to change because a selection ("if") has 
+     * already been done on the target objects, and this would render the operator inconsistent
+     * (some objects would belong to a type and others to another type).
+     * </p>
+     * <p>
+     * This method is equivalent to <tt>forEach().exec(function).endFor()</tt>.
+     * </p>
+     * 
+     * @param function the function to be executed
+     * @return an operator on the results of function execution on each element
+     */
     public ExecutableArraySelectedOperator<T> map(final IFunction<? extends T,? super T> function);
     
 }
