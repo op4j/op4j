@@ -32,7 +32,7 @@ import java.util.Set;
 import org.apache.commons.lang.ArrayUtils;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.exceptions.TargetCastException;
+import org.op4j.exceptions.ExecutionException;
 
 /**
  * 
@@ -51,7 +51,7 @@ public class NormalisationUtils {
         if (targetObject != null) {
             final Class<?> newTargetClass = Types.arrayOf(of).getRawClass();
             if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-                throw new TargetCastException(targetObject.getClass(), newTargetClass.getSimpleName());
+                throw createCastException(targetObject.getClass(), newTargetClass.getSimpleName());
             }
             for (final Object element : (Object[])targetObject) {
                 checkIs(of, element);
@@ -99,7 +99,7 @@ public class NormalisationUtils {
         if (targetObject != null) {
             final Class<?> newTargetClass = List.class;
             if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-                throw new TargetCastException(targetObject.getClass(), newTargetClass.getSimpleName());
+                throw createCastException(targetObject.getClass(), newTargetClass.getSimpleName());
             }
             for (final Object element : (List<?>)targetObject) {
                 checkIs(of, element);
@@ -147,7 +147,7 @@ public class NormalisationUtils {
         if (targetObject != null) {
             final Class<?> newTargetClass = Map.class;
             if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-                throw new TargetCastException(targetObject.getClass(), newTargetClass.getSimpleName());
+                throw createCastException(targetObject.getClass(), newTargetClass.getSimpleName());
             }
             for (final Map.Entry<?,?> element : ((Map<?,?>)targetObject).entrySet()) {
                 checkIs(keyOf, element.getKey());
@@ -160,7 +160,7 @@ public class NormalisationUtils {
         if (targetObject != null) {
             final Class<?> newTargetClass = Map.Entry.class;
             if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-                throw new TargetCastException(targetObject.getClass(), newTargetClass.getSimpleName());
+                throw createCastException(targetObject.getClass(), newTargetClass.getSimpleName());
             }
             final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
             checkIs(keyOf, element.getKey());
@@ -248,7 +248,7 @@ public class NormalisationUtils {
         if (targetObject != null) {
             final Class<?> newTargetClass = Set.class;
             if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-                throw new TargetCastException(targetObject.getClass(), newTargetClass.getSimpleName());
+                throw createCastException(targetObject.getClass(), newTargetClass.getSimpleName());
             }
             for (final Object element : (Set<?>)targetObject) {
                 checkIs(of, element);
@@ -296,7 +296,7 @@ public class NormalisationUtils {
         if (targetObject != null) {
             final Class<?> newTargetClass = type.getRawClass();
             if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-                throw new TargetCastException(targetObject.getClass(), newTargetClass.getSimpleName());
+                throw createCastException(targetObject.getClass(), newTargetClass.getSimpleName());
             }
         }
     }
@@ -680,6 +680,11 @@ public class NormalisationUtils {
         return result;
     }
     
+    
+    
+    public static ExecutionException createCastException(final Class<?> targetClass, final String cast) {
+        return new ExecutionException("Target of class " + targetClass.getSimpleName() + " cannot be casted as: " + cast);
+    }
     
     
     

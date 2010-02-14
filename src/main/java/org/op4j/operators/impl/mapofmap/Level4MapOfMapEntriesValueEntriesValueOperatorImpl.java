@@ -21,7 +21,6 @@ package org.op4j.operators.impl.mapofmap;
 
 import java.util.Map;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
@@ -59,7 +58,6 @@ public class Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1,K2,V> extends
 
 
     public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> asType(final Type<X> type) {
-        Validate.notNull(type, "A type representing the elements must be specified");
         return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().cast(CastType.OBJECT, type));
     }
 

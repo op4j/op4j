@@ -29,7 +29,7 @@ import ognl.OgnlException;
 
 import org.apache.commons.collections.map.LRUMap;
 import org.javaruntype.type.Type;
-import org.op4j.exceptions.EvaluationException;
+import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.ExecCtx;
 
 /**
@@ -78,7 +78,7 @@ class OgnlExpressionUtil {
             try {
                 parsedExpression = Ognl.parseExpression(ognlExpression);
             } catch (OgnlException e) {
-                throw new EvaluationException(e);
+                throw new ExecutionException(e);
             }
             parsedExpressionsByExpression.put(ognlExpression,parsedExpression);
         }
@@ -99,7 +99,7 @@ class OgnlExpressionUtil {
             }
             return (X) result;
         } catch (OgnlException e) {
-            throw new EvaluationException(e);
+            throw new ExecutionException(e);
         }
         
     }

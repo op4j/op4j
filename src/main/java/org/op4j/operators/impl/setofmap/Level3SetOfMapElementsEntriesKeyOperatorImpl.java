@@ -22,7 +22,6 @@ package org.op4j.operators.impl.setofmap;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
@@ -59,7 +58,6 @@ public class Level3SetOfMapElementsEntriesKeyOperatorImpl<K,V> extends AbstractO
 
 
     public <X> Level3SetOfMapElementsEntriesKeyOperator<X, V> asType(final Type<X> type) {
-        Validate.notNull(type, "A type representing the elements must be specified");
         return new Level3SetOfMapElementsEntriesKeyOperatorImpl<X, V>(getTarget().cast(CastType.OBJECT, type));
     }
 

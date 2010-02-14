@@ -21,7 +21,6 @@ package org.op4j.operators.impl.map;
 
 import java.util.Map;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
@@ -66,7 +65,6 @@ public class Level2MapEntriesValueOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public <X> Level2MapEntriesValueOperator<K, X> asType(final Type<X> type) {
-        Validate.notNull(type, "A type representing the elements must be specified");
         return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().cast(CastType.OBJECT, type));
     }
 
@@ -76,26 +74,21 @@ public class Level2MapEntriesValueOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public <X> Level2MapOfArrayEntriesValueOperator<K,X> asArrayOf(final Type<X> type) {
-        Validate.notNull(type, "A type representing the elements must be specified");
         return new Level2MapOfArrayEntriesValueOperatorImpl<K,X>(type, getTarget().cast(CastType.ARRAY, type));
     }
 
 
     public <X> Level2MapOfListEntriesValueOperator<K,X> asListOf(final Type<X> type) {
-        Validate.notNull(type, "A type representing the elements must be specified");
         return new Level2MapOfListEntriesValueOperatorImpl<K,X>(getTarget().cast(CastType.LIST, type));
     }
 
 
     public <K2,V2> Level2MapOfMapEntriesValueOperator<K,K2,V2> asMapOf(final Type<K2> keyType, final Type<V2> valueType) {
-        Validate.notNull(keyType, "A type representing the keys must be specified");
-        Validate.notNull(valueType, "A type representing the values must be specified");
         return new Level2MapOfMapEntriesValueOperatorImpl<K,K2,V2>(getTarget().cast(CastType.MAP, keyType, valueType));
     }
 
 
     public <X> Level2MapOfSetEntriesValueOperator<K,X> asSetOf(final Type<X> type) {
-        Validate.notNull(type, "A type representing the elements must be specified");
         return new Level2MapOfSetEntriesValueOperatorImpl<K,X>(getTarget().cast(CastType.SET, type));
     }
 

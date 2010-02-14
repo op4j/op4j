@@ -24,7 +24,6 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
@@ -202,7 +201,6 @@ public class Level2MapOfSetEntriesValueOperatorImpl<K,V> extends AbstractOperato
     
     
 	public <X> Level2MapOfSetEntriesValueOperator<K, X> asSetOf(final Type<X> type) {
-        Validate.notNull(type, "A type representing the elements must be specified");
         return new Level2MapOfSetEntriesValueOperatorImpl<K,X>(getTarget().cast(CastType.SET, type));
     }
 

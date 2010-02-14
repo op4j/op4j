@@ -32,7 +32,6 @@ import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.apache.commons.lang.time.DateUtils;
-import org.op4j.exceptions.FunctionExecutionException;
 import org.op4j.functions.ExecCtx;
 
 /**
@@ -308,10 +307,10 @@ public final class ToCalendar {
 			super();
 			Validate.notNull(pattern, "A pattern must be specified");
 	        if (StringUtils.contains(pattern, "MMM")) {
-                throw new FunctionExecutionException("The use of MMM or MMMM as part of the date pattern requires a Locale");
+                throw new IllegalArgumentException("The use of MMM or MMMM as part of the date pattern requires a Locale");
             }
 	        if (StringUtils.contains(pattern, "EEE")) {
-	            throw new FunctionExecutionException("The use of EEE or EEEE as part of the date pattern requires a Locale");
+	            throw new IllegalArgumentException("The use of EEE or EEEE as part of the date pattern requires a Locale");
 	        }
 	        this.simpleDateFormat = new SimpleDateFormat(pattern);            
 		}
@@ -359,13 +358,13 @@ public final class ToCalendar {
         		object.size() != 5 &&  // year, month, day, hour, minute
         		object.size() != 6 &&  // year, month, day, hour, minute, second
         		object.size() != 7) {  // year month, day, hour, minute, second, millisecond
-                throw new FunctionExecutionException(
+                throw new IllegalArgumentException(
                         "Integer arguments array for Calendar conversion should of sizes " +
                         "3 (day,month,year), 5 (+hour,minute), 6 (+second) or 7 (+millisecond). " +
                         "Size " + object.size() + " is not valid.");
             }
             if (object.contains(null)) {
-                throw new FunctionExecutionException(
+                throw new IllegalArgumentException(
                         "Integer arguments array for Calendar conversion should not contain nulls.");
             }
             return fromInts(
@@ -398,13 +397,13 @@ public final class ToCalendar {
         		object.length != 5 &&  // year, month, day, hour, minute
         		object.length != 6 &&  // year, month, day, hour, minute, second
         		object.length != 7) {  // year month, day, hour, minute, second, millisecond
-                throw new FunctionExecutionException(
+                throw new IllegalArgumentException(
                         "Integer arguments array for Calendar conversion should of sizes " +
                         "3 (day,month,year), 5 (+hour,minute), 6 (+second) or 7 (+millisecond). " +
                         "Size " + object.length + " is not valid.");
             }
             if (ArrayUtils.contains(object,null)) {
-                throw new FunctionExecutionException(
+                throw new IllegalArgumentException(
                         "Integer arguments array for Calendar conversion should not contain nulls.");
             }
             return fromInts(
@@ -436,13 +435,13 @@ public final class ToCalendar {
         		object.size() != 5 &&  // year, month, day, hour, minute
         		object.size() != 6 &&  // year, month, day, hour, minute, second
         		object.size() != 7) {  // year month, day, hour, minute, second, millisecond
-                throw new FunctionExecutionException(
+                throw new IllegalArgumentException(
                         "Integer arguments array for Calendar conversion should of sizes " +
                         "3 (day,month,year), 5 (+hour,minute), 6 (+second) or 7 (+millisecond). " +
                         "Size " + object.size() + " is not valid.");
             }
             if (object.contains(null)) {
-                throw new FunctionExecutionException(
+                throw new IllegalArgumentException(
                         "Integer arguments array for Calendar conversion should not contain nulls.");
             }
             return fromInts(
@@ -475,13 +474,13 @@ public final class ToCalendar {
         		object.length != 5 &&  // year, month, day, hour, minute
         		object.length != 6 &&  // year, month, day, hour, minute, second
         		object.length != 7) {  // year month, day, hour, minute, second, millisecond
-                throw new FunctionExecutionException(
+                throw new IllegalArgumentException(
                         "Integer arguments array for Calendar conversion should of sizes " +
                         "3 (day,month,year), 5 (+hour,minute), 6 (+second) or 7 (+millisecond). " +
                         "Size " + object.length + " is not valid.");
             }
             if (ArrayUtils.contains(object,null)) {
-                throw new FunctionExecutionException(
+                throw new IllegalArgumentException(
                         "Integer arguments array for Calendar conversion should not contain nulls.");
             }
             return fromInts(

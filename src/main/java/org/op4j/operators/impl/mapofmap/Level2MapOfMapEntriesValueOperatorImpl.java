@@ -23,7 +23,6 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
@@ -161,8 +160,6 @@ public class Level2MapOfMapEntriesValueOperatorImpl<K1,K2,V> extends AbstractOpe
     
     
 	public <X,Y> Level2MapOfMapEntriesValueOperator<K1, X, Y> asMapOf(final Type<X> keyType, final Type<Y> valueType) {
-        Validate.notNull(keyType, "A type representing the keys must be specified");
-        Validate.notNull(valueType, "A type representing the values must be specified");
         return new Level2MapOfMapEntriesValueOperatorImpl<K1,X,Y>(getTarget().cast(CastType.MAP, keyType, valueType));
     }
 

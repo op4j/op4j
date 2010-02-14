@@ -20,7 +20,6 @@
 
 package org.op4j.functions;
 
-import org.op4j.exceptions.NullTargetException;
 
 /**
  * 
@@ -39,7 +38,9 @@ public abstract class AbstractNotNullFunc<R, T> implements IFunction<R, T> {
 
     public final R execute(final T object, final ExecCtx ctx) throws Exception {
         if (object == null) {
-            throw new NullTargetException();
+            throw new IllegalArgumentException(
+                    "Cannot execute function " + this.getClass().getName() + 
+                    " on a null target.");
         }
         return notNullExecute(object, ctx);
     }

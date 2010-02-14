@@ -47,7 +47,7 @@ final class ExecutionTargetOnKeyOperation implements ExecutionTargetOperation {
         
         if (target == null) {
             
-            throw new IllegalStateException("Cannot perform onKey on null");
+            throw new IllegalArgumentException("Cannot perform onKey on null");
             
         } else if (target instanceof Map.Entry<?,?>){
 
@@ -62,7 +62,7 @@ final class ExecutionTargetOnKeyOperation implements ExecutionTargetOperation {
             return new MapEntry<Object,Object>(key, value);
             
         } else {
-            throw new IllegalStateException("Cannot perform onKey: object is not a map entry: " + target.getClass().getName());
+            throw new IllegalArgumentException("Cannot perform onKey: object is not a map entry: " + target.getClass().getName());
         }
         
     }

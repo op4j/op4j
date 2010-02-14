@@ -50,7 +50,7 @@ final class ExecutionTargetSelectMapKeysOperation implements ExecutionTargetOper
     public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indexes) {
 
         if (!(target instanceof Map.Entry<?,?>)) {
-            throw new IllegalStateException("Selecting map keys can only be called on a Map");
+            throw new IllegalArgumentException("Selecting map keys can only be called on a Map");
         }
         
         final Map.Entry<?,?> elementMapEntryObject = (Map.Entry<?,?>) target;

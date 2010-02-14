@@ -24,8 +24,6 @@ import java.util.List;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.exceptions.NonUniqueTargetException;
-import org.op4j.exceptions.ZeroSizeTargetException;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.ListFuncs;
 import org.op4j.functions.converters.IConverter;
@@ -75,7 +73,7 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
     public Level0GenericMultiOperatorImpl(final Target target) {
         super(target);
         if (((List<?>)target.endIterate(null).get()).size() <= 0) {
-            throw new ZeroSizeTargetException();
+            throw new IllegalStateException("Empty targets: cannot create an operator on no target objects at all.");
         }
     }
 
@@ -292,7 +290,7 @@ public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
 
     public Level0GenericUniqOperator<T> uniq() {
         if (size() > 1) {
-            throw new NonUniqueTargetException();
+            throw new IllegalStateException("Cannot call uniq(): more than one target exist (size: " + size() + ")");
         }
         return new Level0GenericUniqOperatorImpl<T>(getTarget().endIterate(null).replaceWith(getAsList().get(0), Normalisation.NONE));
     }

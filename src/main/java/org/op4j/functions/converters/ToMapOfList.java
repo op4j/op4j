@@ -27,7 +27,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.exceptions.FunctionExecutionException;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
@@ -122,7 +121,7 @@ public class ToMapOfList {
 		@Override
         public Map<T, List<T>> nullAsNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             if (object.length % 2 != 0) {
-                throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");
+                throw new IllegalArgumentException("Cannot create a map from objects: the number of objects must be even.");
             }
             final Map<T, List<T>> result = new LinkedHashMap<T, List<T>>();
             for (int i = 0, n = object.length - 1; i < n; i += 2) {
@@ -217,7 +216,7 @@ public class ToMapOfList {
 		@Override
         public Map<T, List<T>> nullAsNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
             if (object.size() % 2 != 0) {
-                throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");
+                throw new IllegalArgumentException("Cannot create a map from objects: the number of objects must be even.");
             }
             final Map<T, List<T>> result = new LinkedHashMap<T, List<T>>();
             for (int i = 0, n = object.size() - 1; i < n; i += 2) {
@@ -311,7 +310,7 @@ public class ToMapOfList {
 		@Override
         public Map<T, List<T>> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
             if (object.size() % 2 != 0) {
-                throw new FunctionExecutionException("Cannot create a map from objects: the number of objects must be even.");
+                throw new IllegalArgumentException("Cannot create a map from objects: the number of objects must be even.");
             }
             final List<T> objectAsList = new ArrayList<T>(object);
             final Map<T, List<T>> result = new LinkedHashMap<T, List<T>>();

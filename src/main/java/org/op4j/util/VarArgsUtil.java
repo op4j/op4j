@@ -43,13 +43,13 @@ public class VarArgsUtil {
     
     public static <T> List<T> asRequiredObjectList(final T... parameters) {
         Validate.notNull(parameters, "Parameters cannot be null");
-        Validate.isTrue(parameters.length > 0, "Paramters cannot be empty");
+        Validate.isTrue(parameters.length > 0, "Parameters cannot be empty");
         return Arrays.asList(parameters);
     }
     
     public static List<Integer> asRequiredIntegerList(final int... parameters) {
         Validate.notNull(parameters, "Parameters cannot be null");
-        Validate.isTrue(parameters.length > 0, "Paramters cannot be empty");
+        Validate.isTrue(parameters.length > 0, "Parameters cannot be empty");
         return Arrays.asList(ArrayUtils.toObject(parameters));
     }
     

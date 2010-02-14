@@ -21,7 +21,6 @@ package org.op4j.operators.impl.mapofarray;
 
 import java.util.Map;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
@@ -61,7 +60,6 @@ public class Level3MapOfArrayEntriesValueElementsOperatorImpl<K,V> extends Abstr
 
 
     public <X> Level3MapOfArrayEntriesValueElementsOperator<K, X> asType(final Type<X> elementType) {
-        Validate.notNull(elementType, "A type representing the elements must be specified");
         return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(elementType, getTarget().cast(CastType.OBJECT, elementType));
     }
 

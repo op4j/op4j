@@ -22,7 +22,6 @@ package org.op4j.operators.impl.mapoflist;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
@@ -59,7 +58,6 @@ public class Level3MapOfListEntriesValueElementsOperatorImpl<K,V> extends Abstra
 
 
     public <X> Level3MapOfListEntriesValueElementsOperator<K, X> asType(final Type<X> type) {
-        Validate.notNull(type, "A type representing the elements must be specified");
         return new Level3MapOfListEntriesValueElementsOperatorImpl<K, X>(getTarget().cast(CastType.OBJECT, type));
     }
 

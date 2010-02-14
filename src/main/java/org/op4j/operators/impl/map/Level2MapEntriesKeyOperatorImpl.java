@@ -21,7 +21,6 @@ package org.op4j.operators.impl.map;
 
 import java.util.Map;
 
-import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
@@ -58,7 +57,6 @@ public class Level2MapEntriesKeyOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public <X> Level2MapEntriesKeyOperator<X, V> asType(final Type<X> type) {
-        Validate.notNull(type, "A type representing the elements must be specified");
         return new Level2MapEntriesKeyOperatorImpl<X, V>(getTarget().cast(CastType.OBJECT, type));
     }
 

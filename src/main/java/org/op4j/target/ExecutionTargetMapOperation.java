@@ -79,7 +79,7 @@ final class ExecutionTargetMapOperation implements ExecutionTargetOperation {
         
         if (target == null) {
             
-            throw new IllegalStateException("Cannot iterate on null");
+            throw new IllegalArgumentException("Cannot iterate on null");
             
         }
 

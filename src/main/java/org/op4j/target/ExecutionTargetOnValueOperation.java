@@ -47,7 +47,7 @@ final class ExecutionTargetOnValueOperation implements ExecutionTargetOperation 
         
         if (target == null) {
             
-            throw new IllegalStateException("Cannot perform onValue on null");
+            throw new IllegalArgumentException("Cannot perform onValue on null");
             
         } else if (target instanceof Map.Entry<?,?>){
 
@@ -62,7 +62,7 @@ final class ExecutionTargetOnValueOperation implements ExecutionTargetOperation 
             return new MapEntry<Object,Object>(key, value);
             
         } else {
-            throw new IllegalStateException("Cannot perform onValue: object is not a map entry: " + target.getClass().getName());
+            throw new IllegalArgumentException("Cannot perform onValue: object is not a map entry: " + target.getClass().getName());
         }
         
     }
