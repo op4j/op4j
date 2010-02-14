@@ -10,14 +10,12 @@ import java.util.Map;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.math.RandomUtils;
+import org.junit.Ignore;
 
 @SuppressWarnings("unchecked")
-public class TestUtils {
+@Ignore
+class TestUtils {
 
-	
-	public TestUtils() {
-		super();
-	}
 	
 	public List<String> getStringList(int size) {
 		List<String> result = new ArrayList<String>();
@@ -129,5 +127,8 @@ public class TestUtils {
 	}
 	
 	
+	TestUtils() {
+	    super();
+	}
 	
 }

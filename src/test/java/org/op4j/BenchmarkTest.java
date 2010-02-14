@@ -27,6 +27,7 @@ import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.math.RandomUtils;
 import org.apache.commons.lang.time.StopWatch;
 import org.javaruntype.type.Types;
+import org.junit.Test;
 import org.op4j.functions.StringFuncs;
 import org.op4j.functions.converters.ToBoolean;
 import org.op4j.functions.evaluators.Call;
@@ -47,7 +48,8 @@ public class BenchmarkTest {
 	private static int ITERATIONS = 1000;
 	
 	
-	public static void main(String[] args) {
+	@Test
+	public void test() {
 		
 		try {
 			
@@ -231,6 +233,12 @@ public class BenchmarkTest {
 		}
 		
 	}
+
+	
+    
+    public static void main(String[] args) {
+        (new BenchmarkTest()).test();
+    }
 	
 	
 }

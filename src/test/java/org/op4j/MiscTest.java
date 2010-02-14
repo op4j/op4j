@@ -37,6 +37,7 @@ import java.util.Set;
 
 import org.apache.commons.lang.time.StopWatch;
 import org.javaruntype.type.Types;
+import org.junit.Test;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.ListFuncs;
@@ -68,8 +69,8 @@ public class MiscTest {
     
     
     
-    
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         
         
 final StopWatch watch = new StopWatch();
