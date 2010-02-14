@@ -28,14 +28,14 @@ import org.op4j.functions.evaluators.Call;
 import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.functions.evaluators.Ognl;
 
-public class Tester extends TestCase {
+public class AssortedTests extends TestCase {
 
-	private TestUtils testUtils;
+	private AssortedTestsData testUtils;
 
 	@Override
 	@Before
 	public void setUp() throws Exception {
-		this.testUtils = new TestUtils();
+		this.testUtils = new AssortedTestsData();
 	}
 
 	@Test

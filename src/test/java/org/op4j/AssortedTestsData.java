@@ -14,7 +14,7 @@ import org.junit.Ignore;
 
 @SuppressWarnings("unchecked")
 @Ignore
-class TestUtils {
+class AssortedTestsData {
 
 	
 	public List<String> getStringList(int size) {
@@ -127,7 +127,7 @@ class TestUtils {
 	}
 	
 	
-	TestUtils() {
+	AssortedTestsData() {
 	    super();
 	}
 	
