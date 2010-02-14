@@ -86,24 +86,6 @@ public class NormalisationUtils {
         }
     }
     
-    public static void checkIsArrayOfMapOfKey(final Type<?> keyOf, final Object targetObject) {
-        checkIsArray(Types.mapOf(keyOf, Types.OBJECT), targetObject);
-        if (targetObject != null) {
-            for (final Object element : (Object[])targetObject) {
-                checkIsMapOfKey(keyOf, element);
-            }
-        }
-    }
-    
-    public static void checkIsArrayOfMapOfValue(final Type<?> valueOf, final Object targetObject) {
-        checkIsArray(Types.mapOf(Types.OBJECT, valueOf), targetObject);
-        if (targetObject != null) {
-            for (final Object element : (Object[])targetObject) {
-                checkIsMapOfValue(valueOf, element);
-            }
-        }
-    }
-    
     public static void checkIsArrayOfSet(final Type<?> of, final Object targetObject) {
         checkIsArray(Types.setOf(of), targetObject);
         if (targetObject != null) {
@@ -152,24 +134,6 @@ public class NormalisationUtils {
         }
     }
     
-    public static void checkIsListOfMapOfKey(final Type<?> keyOf, final Object targetObject) {
-        checkIsList(Types.mapOf(keyOf, Types.OBJECT), targetObject);
-        if (targetObject != null) {
-            for (final Object element : (List<?>)targetObject) {
-                checkIsMapOfKey(keyOf, element);
-            }
-        }
-    }
-    
-    public static void checkIsListOfMapOfValue(final Type<?> valueOf, final Object targetObject) {
-        checkIsList(Types.mapOf(Types.OBJECT, valueOf), targetObject);
-        if (targetObject != null) {
-            for (final Object element : (List<?>)targetObject) {
-                checkIsMapOfValue(valueOf, element);
-            }
-        }
-    }
-    
     public static void checkIsListOfSet(final Type<?> of, final Object targetObject) {
         checkIsList(Types.setOf(of), targetObject);
         if (targetObject != null) {
@@ -192,30 +156,6 @@ public class NormalisationUtils {
         }
     }
     
-    public static void checkIsMapOfKey(final Type<?> keyOf, final Object targetObject) {
-        if (targetObject != null) {
-            final Class<?> newTargetClass = Map.class;
-            if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-                throw new TargetCastException(targetObject.getClass(), newTargetClass.getSimpleName());
-            }
-            for (final Map.Entry<?,?> element : ((Map<?,?>)targetObject).entrySet()) {
-                checkIs(keyOf, element.getKey());
-            }
-        }
-    }
-    
-    public static void checkIsMapOfValue(final Type<?> valueOf, final Object targetObject) {
-        if (targetObject != null) {
-            final Class<?> newTargetClass = Map.class;
-            if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-                throw new TargetCastException(targetObject.getClass(), newTargetClass.getSimpleName());
-            }
-            for (final Map.Entry<?,?> element : ((Map<?,?>)targetObject).entrySet()) {
-                checkIs(valueOf, element.getValue());
-            }
-        }
-    }
-    
     public static void checkIsMapEntry(final Type<?> keyOf, final Type<?> valueOf, final Object targetObject) {
         if (targetObject != null) {
             final Class<?> newTargetClass = Map.Entry.class;
@@ -224,28 +164,6 @@ public class NormalisationUtils {
             }
             final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
             checkIs(keyOf, element.getKey());
-            checkIs(valueOf, element.getValue());
-        }
-    }
-    
-    public static void checkIsMapEntryOfKey(final Type<?> keyOf, final Object targetObject) {
-        if (targetObject != null) {
-            final Class<?> newTargetClass = Map.Entry.class;
-            if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-                throw new TargetCastException(targetObject.getClass(), newTargetClass.getSimpleName());
-            }
-            final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
-            checkIs(keyOf, element.getKey());
-        }
-    }
-    
-    public static void checkIsMapEntryOfValue(final Type<?> valueOf, final Object targetObject) {
-        if (targetObject != null) {
-            final Class<?> newTargetClass = Map.Entry.class;
-            if (!newTargetClass.isAssignableFrom(targetObject.getClass())) {
-                throw new TargetCastException(targetObject.getClass(), newTargetClass.getSimpleName());
-            }
-            final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
             checkIs(valueOf, element.getValue());
         }
     }
@@ -260,28 +178,11 @@ public class NormalisationUtils {
         }
     }
     
-    public static void checkIsMapOfArrayOfValue(final Type<?> valueOf, final Object targetObject) {
-        checkIsMapOfValue(Types.arrayOf(valueOf), targetObject);
-        if (targetObject != null) {
-            for (final Map.Entry<?,?> element : ((Map<?,?>)targetObject).entrySet()) {
-                checkIsArray(valueOf, element.getValue());
-            }
-        }
-    }
-    
     public static void checkIsMapEntryOfArray(final Type<?> keyOf, final Type<?> valueOf, final Object targetObject) {
         checkIsMapEntry(keyOf, Types.arrayOf(valueOf), targetObject);
         if (targetObject != null) {
             final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
             checkIs(keyOf, element.getKey());
-            checkIsArray(valueOf, element.getValue());
-        }
-    }
-    
-    public static void checkIsMapEntryOfArrayOfValue(final Type<?> valueOf, final Object targetObject) {
-        checkIsMapEntryOfValue(Types.arrayOf(valueOf), targetObject);
-        if (targetObject != null) {
-            final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
             checkIsArray(valueOf, element.getValue());
         }
     }
@@ -296,28 +197,11 @@ public class NormalisationUtils {
         }
     }
     
-    public static void checkIsMapOfListOfValue(final Type<?> valueOf, final Object targetObject) {
-        checkIsMapOfValue(Types.listOf(valueOf), targetObject);
-        if (targetObject != null) {
-            for (final Map.Entry<?,?> element : ((Map<?,?>)targetObject).entrySet()) {
-                checkIsList(valueOf, element.getValue());
-            }
-        }
-    }
-    
     public static void checkIsMapEntryOfList(final Type<?> keyOf, final Type<?> valueOf, final Object targetObject) {
         checkIsMapEntry(keyOf, Types.listOf(valueOf), targetObject);
         if (targetObject != null) {
             final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
             checkIs(keyOf, element.getKey());
-            checkIsList(valueOf, element.getValue());
-        }
-    }
-    
-    public static void checkIsMapEntryOfListOfValue(final Type<?> valueOf, final Object targetObject) {
-        checkIsMapEntryOfValue(Types.listOf(valueOf), targetObject);
-        if (targetObject != null) {
-            final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
             checkIsList(valueOf, element.getValue());
         }
     }
@@ -328,33 +212,6 @@ public class NormalisationUtils {
             for (final Map.Entry<?,?> element : ((Map<?,?>)targetObject).entrySet()) {
                 checkIs(key1Of, element.getKey());
                 checkIsMap(key2Of, valueOf, element.getValue());
-            }
-        }
-    }
-    
-    public static void checkIsMapOfMapOfValue(final Type<?> key2Of, final Type<?> valueOf, final Object targetObject) {
-        checkIsMapOfValue(Types.mapOf(key2Of, valueOf), targetObject);
-        if (targetObject != null) {
-            for (final Map.Entry<?,?> element : ((Map<?,?>)targetObject).entrySet()) {
-                checkIsMap(key2Of, valueOf, element.getValue());
-            }
-        }
-    }
-    
-    public static void checkIsMapOfMapOfValueOfKey(final Type<?> key2Of, final Object targetObject) {
-        checkIsMapOfValue(Types.mapOf(key2Of, Types.OBJECT), targetObject);
-        if (targetObject != null) {
-            for (final Map.Entry<?,?> element : ((Map<?,?>)targetObject).entrySet()) {
-                checkIsMapOfKey(key2Of, element.getValue());
-            }
-        }
-    }
-    
-    public static void checkIsMapOfMapOfValueOfValue(final Type<?> valueOf, final Object targetObject) {
-        checkIsMapOfValue(Types.mapOf(Types.OBJECT, valueOf), targetObject);
-        if (targetObject != null) {
-            for (final Map.Entry<?,?> element : ((Map<?,?>)targetObject).entrySet()) {
-                checkIsMapOfValue(valueOf, element.getValue());
             }
         }
     }
@@ -378,28 +235,11 @@ public class NormalisationUtils {
         }
     }
     
-    public static void checkIsMapOfSetOfValue(final Type<?> valueOf, final Object targetObject) {
-        checkIsMapOfValue(Types.setOf(valueOf), targetObject);
-        if (targetObject != null) {
-            for (final Map.Entry<?,?> element : ((Map<?,?>)targetObject).entrySet()) {
-                checkIsSet(valueOf, element.getValue());
-            }
-        }
-    }
-    
     public static void checkIsMapEntryOfSet(final Type<?> keyOf, final Type<?> valueOf, final Object targetObject) {
         checkIsMapEntry(keyOf, Types.setOf(valueOf), targetObject);
         if (targetObject != null) {
             final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
             checkIs(keyOf, element.getKey());
-            checkIsSet(valueOf, element.getValue());
-        }
-    }
-    
-    public static void checkIsMapEntryOfSetOfValue(final Type<?> valueOf, final Object targetObject) {
-        checkIsMapEntryOfValue(Types.setOf(valueOf), targetObject);
-        if (targetObject != null) {
-            final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
             checkIsSet(valueOf, element.getValue());
         }
     }
@@ -439,24 +279,6 @@ public class NormalisationUtils {
         if (targetObject != null) {
             for (final Object element : (Set<?>)targetObject) {
                 checkIsMap(keyOf, valueOf, element);
-            }
-        }
-    }
-    
-    public static void checkIsSetOfMapOfKey(final Type<?> keyOf, final Object targetObject) {
-        checkIsSet(Types.mapOf(keyOf, Types.OBJECT), targetObject);
-        if (targetObject != null) {
-            for (final Object element : (Set<?>)targetObject) {
-                checkIsMapOfKey(keyOf, element);
-            }
-        }
-    }
-    
-    public static void checkIsSetOfMapOfValue(final Type<?> valueOf, final Object targetObject) {
-        checkIsSet(Types.mapOf(Types.OBJECT, valueOf), targetObject);
-        if (targetObject != null) {
-            for (final Object element : (Set<?>)targetObject) {
-                checkIsMapOfValue(valueOf, element);
             }
         }
     }
