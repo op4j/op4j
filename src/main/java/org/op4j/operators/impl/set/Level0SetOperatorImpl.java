@@ -61,7 +61,7 @@ import org.op4j.target.Target.Structure;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
+public final class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
         implements Level0SetOperator<T>  {
 
     

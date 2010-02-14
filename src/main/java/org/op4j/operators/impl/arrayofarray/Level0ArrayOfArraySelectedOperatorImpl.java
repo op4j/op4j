@@ -18,7 +18,7 @@ import org.op4j.target.Target.Structure;
 import org.op4j.util.NormalisationUtils;
 
 
-public class Level0ArrayOfArraySelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level0ArrayOfArraySelectedOperator<T> {
+public final class Level0ArrayOfArraySelectedOperatorImpl<T> extends AbstractOperatorImpl implements Level0ArrayOfArraySelectedOperator<T> {
 
 
     private final Type<T> type;

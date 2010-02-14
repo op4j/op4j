@@ -18,7 +18,7 @@ import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
 
 
-public class Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level2MapOfArrayEntriesValueSelectedOperator<K,V> {
+public final class Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level2MapOfArrayEntriesValueSelectedOperator<K,V> {
 
 
     private final Type<V> type;

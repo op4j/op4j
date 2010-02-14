@@ -40,7 +40,7 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Call<R,T> implements IEvaluator<R,T> {
+public final class Call<R,T> implements IEvaluator<R,T> {
     
     
     private final Type<R> resultType;
@@ -118,7 +118,6 @@ public class Call<R,T> implements IEvaluator<R,T> {
     
     
     private Call(final Type<R> resultType, final String methodName, final Object[] parameters) {
-        Validate.notNull(resultType, "Result type cannot be null");
         Validate.notNull(methodName, "Method name cannot be null");
         this.resultType = resultType;
         this.methodName = methodName;

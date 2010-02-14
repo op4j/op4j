@@ -58,7 +58,7 @@ import org.op4j.util.NormalisationUtils;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level0ArrayOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
+public final class Level0ArrayOfMapOperatorImpl<K,V> extends AbstractOperatorImpl
         implements Level0ArrayOfMapOperator<K,V>  {
 
     

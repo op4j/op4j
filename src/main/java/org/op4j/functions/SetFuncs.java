@@ -35,7 +35,7 @@ import org.op4j.functions.evaluators.IEvaluator;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-public class SetFuncs {
+public final class SetFuncs {
 
     
     

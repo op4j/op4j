@@ -50,7 +50,7 @@ import org.op4j.target.Target.Normalisation;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level2MapEntriesValueOperatorImpl<K,V> extends AbstractOperatorImpl
+public final class Level2MapEntriesValueOperatorImpl<K,V> extends AbstractOperatorImpl
         implements Level2MapEntriesValueOperator<K,V> {
 
     

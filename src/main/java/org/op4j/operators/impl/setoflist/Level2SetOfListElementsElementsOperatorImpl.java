@@ -42,7 +42,7 @@ import org.op4j.target.Target.Normalisation;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level2SetOfListElementsElementsOperatorImpl<T> extends AbstractOperatorImpl
+public final class Level2SetOfListElementsElementsOperatorImpl<T> extends AbstractOperatorImpl
         implements Level2SetOfListElementsElementsOperator<T>  {
 
     

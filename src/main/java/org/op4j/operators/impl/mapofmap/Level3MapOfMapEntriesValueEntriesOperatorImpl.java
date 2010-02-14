@@ -44,7 +44,7 @@ import org.op4j.target.Target.Normalisation;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level3MapOfMapEntriesValueEntriesOperatorImpl<K1,K2,V> extends AbstractOperatorImpl
+public final class Level3MapOfMapEntriesValueEntriesOperatorImpl<K1,K2,V> extends AbstractOperatorImpl
         implements Level3MapOfMapEntriesValueEntriesOperator<K1,K2,V> {
 
     

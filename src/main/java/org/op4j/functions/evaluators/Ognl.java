@@ -39,7 +39,7 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Ognl<R,T> implements IEvaluator<R,T> {
+public final class Ognl<R,T> implements IEvaluator<R,T> {
     
     
     

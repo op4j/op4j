@@ -40,7 +40,7 @@ import org.op4j.mapbuild.IMapBuilder;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class ToMapOfArray {
+public final class ToMapOfArray {
 
     
     private ToMapOfArray() {

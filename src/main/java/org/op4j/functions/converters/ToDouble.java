@@ -30,7 +30,7 @@ import java.util.Locale;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class ToDouble {
+public final class ToDouble {
 
     
     private static FromNumber FROM_NUMBER = new FromNumber();

@@ -57,7 +57,7 @@ import org.op4j.util.NormalisationUtils;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
+public final class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
         implements Level0MapOfSetOperator<K,V> {
 
     

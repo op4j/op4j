@@ -52,7 +52,7 @@ import org.op4j.util.NormalisationUtils;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level0MapOfMapOperatorImpl<K1,K2,V> extends AbstractOperatorImpl
+public final class Level0MapOfMapOperatorImpl<K1,K2,V> extends AbstractOperatorImpl
         implements Level0MapOfMapOperator<K1,K2,V> {
 
     

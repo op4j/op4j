@@ -32,7 +32,7 @@ import org.apache.commons.lang.Validate;
  * @author Soraya S&aacute;nchez
  *
  */
-public class MathLong {
+public final class MathLong {
 
 	private static Max MAX_FUNC = new Max();
 	

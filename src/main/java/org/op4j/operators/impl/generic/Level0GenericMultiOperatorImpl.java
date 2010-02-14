@@ -66,7 +66,7 @@ import org.op4j.target.Target.Structure;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
+public final class Level0GenericMultiOperatorImpl<T> extends AbstractOperatorImpl
         implements Level0GenericMultiOperator<T>  {
 
     

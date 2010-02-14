@@ -38,7 +38,7 @@ import org.op4j.mapbuild.IMapBuilder;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class ToMap {
+public final class ToMap {
 
     
     private ToMap() {

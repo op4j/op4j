@@ -33,7 +33,7 @@ import org.op4j.functions.ExecCtx;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class ToBoolean {
+public final class ToBoolean {
 
 	private static final FromBoolean FROM_BOOLEAN = new FromBoolean();
 	private static final FromString FROM_STRING = new FromString();

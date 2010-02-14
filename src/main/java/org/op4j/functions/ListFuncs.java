@@ -36,7 +36,7 @@ import org.op4j.functions.evaluators.IEvaluator;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-public class ListFuncs {
+public final class ListFuncs {
     
     
     

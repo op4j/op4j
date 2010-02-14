@@ -58,7 +58,7 @@ import org.op4j.target.Target.Structure;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level1SetOfArrayElementsOperatorImpl<T> extends AbstractOperatorImpl
+public final class Level1SetOfArrayElementsOperatorImpl<T> extends AbstractOperatorImpl
         implements Level1SetOfArrayElementsOperator<T>  {
 
     private final Type<T> type;

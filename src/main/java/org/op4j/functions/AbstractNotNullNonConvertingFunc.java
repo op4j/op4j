@@ -28,7 +28,7 @@ package org.op4j.functions;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public abstract class AbstractNotNullNonConvertingFunc<T> extends AbstractNotNullFunc<T, T> {
+abstract class AbstractNotNullNonConvertingFunc<T> extends AbstractNotNullFunc<T, T> {
     
     
     protected AbstractNotNullNonConvertingFunc() {
@@ -36,4 +36,4 @@ public abstract class AbstractNotNullNonConvertingFunc<T> extends AbstractNotNul
     }
 
 
-    }
+}

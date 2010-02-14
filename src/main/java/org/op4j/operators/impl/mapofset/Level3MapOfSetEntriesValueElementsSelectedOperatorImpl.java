@@ -13,7 +13,7 @@ import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 
 
-public class Level3MapOfSetEntriesValueElementsSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level3MapOfSetEntriesValueElementsSelectedOperator<K,V> {
+public final class Level3MapOfSetEntriesValueElementsSelectedOperatorImpl<K,V> extends AbstractOperatorImpl implements Level3MapOfSetEntriesValueElementsSelectedOperator<K,V> {
 
 
     public Level3MapOfSetEntriesValueElementsSelectedOperatorImpl(final Target target) {

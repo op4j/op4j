@@ -52,8 +52,8 @@ import org.op4j.functions.converters.ToLong;
 import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.converters.ToMapOfArray;
 import org.op4j.functions.converters.ToString;
-import org.op4j.functions.evaluators.AbstractBooleanEvaluator;
 import org.op4j.functions.evaluators.Call;
+import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.functions.evaluators.Ognl;
 
 /**
@@ -156,7 +156,7 @@ watch.start();
         System.out.println(Op.onList(stringsList1).removeAllIndexesNot(0).get());
         System.out.println(Op.onList(stringsList1).removeAllIndexesNot(0,2).get());
         System.out.println(Op.onList(stringsList1).removeAllTrue(Ognl.asBoolean("#target eq 'Hello'")).get());
-        System.out.println(Op.onList(stringsList1).removeAllTrue(new AbstractBooleanEvaluator<String>() {
+        System.out.println(Op.onList(stringsList1).removeAllTrue(new IEvaluator<Boolean,String>() {
 
             public Boolean execute(String target, final ExecCtx ctx) {
                 return Boolean.valueOf(target == null);

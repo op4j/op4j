@@ -55,7 +55,7 @@ import org.op4j.target.Target.Structure;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level0MapOperatorImpl<K,V> extends AbstractOperatorImpl
+public final class Level0MapOperatorImpl<K,V> extends AbstractOperatorImpl
         implements Level0MapOperator<K,V> {
 
     

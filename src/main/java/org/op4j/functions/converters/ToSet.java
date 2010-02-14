@@ -31,7 +31,7 @@ import java.util.Set;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class ToSet {
+public final class ToSet {
 
     
     private ToSet() {

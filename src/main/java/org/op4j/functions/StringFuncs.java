@@ -33,7 +33,7 @@ import org.apache.commons.lang.Validate;
  * @author Soraya S&aacute;nchez
  *
  */
-public class StringFuncs {
+public final class StringFuncs {
 
 	private static EscapeCSV ESCAPE_CSV_STRING_FUNC = new EscapeCSV();
 	private static UnescapeCSV UNESCAPE_CSV_STRING_FUNC = new UnescapeCSV();

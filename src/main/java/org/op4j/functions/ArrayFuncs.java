@@ -43,7 +43,7 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-public class ArrayFuncs {
+public final class ArrayFuncs {
 
     
     

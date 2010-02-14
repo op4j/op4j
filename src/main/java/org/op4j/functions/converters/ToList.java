@@ -29,7 +29,7 @@ import java.util.List;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class ToList {
+public final class ToList {
 
     
     private ToList() {

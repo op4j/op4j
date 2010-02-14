@@ -44,7 +44,7 @@ import org.op4j.target.Target.Normalisation;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level1ArrayElementsOperatorImpl<T> extends AbstractOperatorImpl
+public final class Level1ArrayElementsOperatorImpl<T> extends AbstractOperatorImpl
         implements Level1ArrayElementsOperator<T> {
     
     private final Type<T> type; 

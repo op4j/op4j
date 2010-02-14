@@ -32,7 +32,7 @@ import org.apache.commons.lang.Validate;
  * @author Soraya S&aacute;nchez
  *
  */
-public class MathDouble {
+public final class MathDouble {
 
 	private static Max MAX_FUNC = new Max();
 	

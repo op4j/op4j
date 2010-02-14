@@ -32,7 +32,7 @@ import java.util.Locale;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class ToBigInteger {
+public final class ToBigInteger {
 
     
     private static FromNumber FROM_NUMBER = new FromNumber();

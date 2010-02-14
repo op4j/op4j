@@ -30,7 +30,7 @@ import java.util.Locale;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class ToByte {
+public final class ToByte {
 
     
     private static FromNumber FROM_NUMBER = new FromNumber();

@@ -19,7 +19,7 @@ import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
 
 
-public class Level1SetOfMapSelectedElementsOperatorImpl<K,V> extends AbstractOperatorImpl implements Level1SetOfMapSelectedElementsOperator<K,V> {
+public final class Level1SetOfMapSelectedElementsOperatorImpl<K,V> extends AbstractOperatorImpl implements Level1SetOfMapSelectedElementsOperator<K,V> {
 
 
     public Level1SetOfMapSelectedElementsOperatorImpl(final Target target) {

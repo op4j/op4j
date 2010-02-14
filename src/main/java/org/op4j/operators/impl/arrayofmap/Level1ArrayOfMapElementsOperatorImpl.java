@@ -52,7 +52,7 @@ import org.op4j.target.Target.Structure;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level1ArrayOfMapElementsOperatorImpl<K,V> extends AbstractOperatorImpl
+public final class Level1ArrayOfMapElementsOperatorImpl<K,V> extends AbstractOperatorImpl
         implements Level1ArrayOfMapElementsOperator<K,V>  {
 
     

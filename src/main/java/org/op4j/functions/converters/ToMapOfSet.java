@@ -39,7 +39,7 @@ import org.op4j.mapbuild.IMapBuilder;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class ToMapOfSet {
+public final class ToMapOfSet {
 
     
     private ToMapOfSet() {

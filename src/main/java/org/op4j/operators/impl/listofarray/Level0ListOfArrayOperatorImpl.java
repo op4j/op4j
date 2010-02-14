@@ -66,7 +66,7 @@ import org.op4j.util.NormalisationUtils;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level0ListOfArrayOperatorImpl<T> extends AbstractOperatorImpl
+public final class Level0ListOfArrayOperatorImpl<T> extends AbstractOperatorImpl
         implements Level0ListOfArrayOperator<T>  {
 
 

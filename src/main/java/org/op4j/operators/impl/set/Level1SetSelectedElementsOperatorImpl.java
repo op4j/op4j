@@ -13,7 +13,7 @@ import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 
 
-public class Level1SetSelectedElementsOperatorImpl<T> extends AbstractOperatorImpl implements Level1SetSelectedElementsOperator<T> {
+public final class Level1SetSelectedElementsOperatorImpl<T> extends AbstractOperatorImpl implements Level1SetSelectedElementsOperator<T> {
 
 
     public Level1SetSelectedElementsOperatorImpl(final Target target) {

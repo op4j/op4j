@@ -30,7 +30,7 @@ import org.apache.commons.lang.Validate;
  * @author Soraya S&aacute;nchez
  *
  */
-public class MathBigInteger {
+public final class MathBigInteger {
 
 	private static Max MAX_FUNC = new Max();
 	

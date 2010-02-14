@@ -94,7 +94,7 @@ import org.op4j.target.Target.Structure;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
+public final class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
         implements Level0GenericUniqOperator<T>  {
 
     

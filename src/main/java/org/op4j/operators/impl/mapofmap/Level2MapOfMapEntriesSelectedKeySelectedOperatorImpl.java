@@ -12,7 +12,7 @@ import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 
 
-public class Level2MapOfMapEntriesSelectedKeySelectedOperatorImpl<K1,K2,V> extends AbstractOperatorImpl implements Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V> {
+public final class Level2MapOfMapEntriesSelectedKeySelectedOperatorImpl<K1,K2,V> extends AbstractOperatorImpl implements Level2MapOfMapEntriesSelectedKeySelectedOperator<K1,K2,V> {
 
 
     public Level2MapOfMapEntriesSelectedKeySelectedOperatorImpl(final Target target) {
