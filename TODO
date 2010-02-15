@@ -2,8 +2,6 @@
   - Create mapIfNotNull and mapMapIfNotNull
   - Reorganize functions in package org.op4j.functions
   - Functions in StringFuncs: do they have to be nullasnull or notnull?
-  - Make better utility abstract functions, evaluators, etc. Maybe one that receives Type as
-    parameter and thus does not need to implement getReturnType.
     
     
     
