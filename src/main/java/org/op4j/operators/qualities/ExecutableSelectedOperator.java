@@ -20,8 +20,6 @@
 package org.op4j.operators.qualities;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 
 
 
@@ -61,7 +59,7 @@ public interface ExecutableSelectedOperator<T> {
     /**
      * <p>
      * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #exec(IFunction)}, and exists only for
@@ -71,22 +69,7 @@ public interface ExecutableSelectedOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public ExecutableSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
-    
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public ExecutableSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter);
+    public ExecutableSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function);
+
     
 }

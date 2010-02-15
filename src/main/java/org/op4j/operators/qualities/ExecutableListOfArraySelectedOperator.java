@@ -22,8 +22,6 @@ package org.op4j.operators.qualities;
 import java.util.List;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 
 
 
@@ -62,7 +60,7 @@ public interface ExecutableListOfArraySelectedOperator<T> {
     /**
      * <p>
      * Specialisation of the {@link #execAsListOfArray(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsListOfArray(IFunction)}, and exists only for
@@ -72,23 +70,8 @@ public interface ExecutableListOfArraySelectedOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public ExecutableListOfArraySelectedOperator<T> evalAsListOfArray(final IEvaluator<? extends List<? extends T[]>,? super List<T[]>> eval);
-    
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsListOfArray(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsListOfArray(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     * 
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public ExecutableListOfArraySelectedOperator<T> convertAsListOfArray(final IConverter<? extends List<? extends T[]>,? super List<T[]>> converter);
+    public ExecutableListOfArraySelectedOperator<T> execIfNotNullAsListOfArray(final IFunction<? extends List<? extends T[]>,? super List<T[]>> function);
+
     
     
     

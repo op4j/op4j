@@ -25,7 +25,6 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.StringFuncs;
 import org.op4j.functions.converters.ToCalendar;
 import org.op4j.functions.evaluators.Call;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.functions.evaluators.Ognl;
 
 public class AssortedTests extends TestCase {
@@ -42,7 +41,7 @@ public class AssortedTests extends TestCase {
 	public void test1() {
 		List<String> data = this.testUtils.getStringList(8);
 		List<String> result = Op.onList(data)
-		.forEach().eval(new IEvaluator<String, String>() {
+		.forEach().exec(new IFunction<String, String>() {
 			public String execute(String object, ExecCtx ctx)
 			throws Exception {
 				return ctx.getCurrentIndex() + " - " + object;
@@ -66,7 +65,7 @@ public class AssortedTests extends TestCase {
 		List<String> data2 = this.testUtils.getStringList(10);
 
 		List<String> result = Op.onList(data1)
-		.addAll(data2).removeAllNullOrFalse(new IEvaluator<Boolean, String>() {
+		.addAll(data2).removeAllNullOrFalse(new IFunction<Boolean, String>() {
 
 			public Boolean execute(String object, ExecCtx ctx)
 			throws Exception {
@@ -99,7 +98,7 @@ public class AssortedTests extends TestCase {
 		List<BigDecimal>[] data = this.testUtils.getBigDecimalListArray(10);
 
 		List<BigDecimal>[] result = Op.onArrayOfList(data)
-		.forEach().forEach().eval(Ognl.asBigDecimal("add(#param[0])", BigDecimal.valueOf(56)))
+		.forEach().forEach().exec(Ognl.asBigDecimal("add(#param[0])", BigDecimal.valueOf(56)))
 		.get();
 
 		assertEquals(data.length, result.length);
@@ -118,7 +117,7 @@ public class AssortedTests extends TestCase {
 		List<Calendar> data = this.testUtils.getCalendarList(13);
 
 		List<Long> result = Op.onList(data)
-		.forEach().eval(Ognl.asLong("getTimeInMillis()")).get();
+		.forEach().exec(Ognl.asLong("getTimeInMillis()")).get();
 
 		assertEquals(data.size(), result.size());
 		for (int index = 0; index < data.size(); index++) {
@@ -132,7 +131,7 @@ public class AssortedTests extends TestCase {
 		Date[][] data = this.testUtils.getDateArrayOfArray(6, 3);
 
 		List<Calendar> result = Op.onArrayOfArrayOf(Types.DATE, data)
-		.forEach().forEach().convert(Types.CALENDAR, ToCalendar.fromDate())
+		.forEach().forEach().exec(Types.CALENDAR, ToCalendar.fromDate())
 		.endFor().endFor().flatten(Types.CALENDAR).toList().get();
 
 		int index = 0;
@@ -154,7 +153,7 @@ public class AssortedTests extends TestCase {
 
 		String[] result = Op.onArrayOf(Types.INTEGER, data)
 		.forEach()
-		.eval(Types.STRING, Ognl.asString("\"Value is \" + #target"))
+		.exec(Types.STRING, Ognl.asString("\"Value is \" + #target"))
 		.get();
 
 		for (int index = 0; index < data.length; index++) {						
@@ -170,7 +169,7 @@ public class AssortedTests extends TestCase {
 		Integer[] result = Op.onArrayOf(Types.INTEGER, data)
 		.forEach()
 		.ifIndex(2, 4, 6, 10, 15)
-		.eval(Ognl.asInteger("#target + 10"))
+		.exec(Ognl.asInteger("#target + 10"))
 		.endIf()
 		.endFor()
 		.get();
@@ -276,7 +275,7 @@ public class AssortedTests extends TestCase {
 		.forEachEntry()
 		.ifKeyNotEquals(Integer.valueOf(2), Integer.valueOf(33), Integer.valueOf(17))
 		.onValue()
-		.ifTrue(new IEvaluator<Boolean, String[]>() {
+		.ifTrue(new IFunction<Boolean, String[]>() {
 			public Boolean execute(String[] object, ExecCtx ctx)
 			throws Exception {
 				return Boolean.valueOf(object.length > 3);					
@@ -320,7 +319,7 @@ public class AssortedTests extends TestCase {
 		Map<Integer, Map<Integer, String[]>> data = this.testUtils.getMapOfIntegerMapOfIntegerStringArray(11);
 
 		Map<Integer, Map<Integer, String[]>> result = Op.onMapOfMap(data)
-		.ifFalse(new IEvaluator<Boolean, Map<Integer, Map<Integer, String[]>>>() {
+		.ifFalse(new IFunction<Boolean, Map<Integer, Map<Integer, String[]>>>() {
 			public Boolean execute(Map<Integer, Map<Integer, String[]>> object, ExecCtx ctx)
 			throws Exception {
 				return Boolean.valueOf(object.size() > 13);					
@@ -337,7 +336,7 @@ public class AssortedTests extends TestCase {
 		.forEachEntry()
 		.ifKeyNotEquals(Integer.valueOf(2), Integer.valueOf(33))
 		.onValue()
-		.ifTrue(new IEvaluator<Boolean, String[]>() {
+		.ifTrue(new IFunction<Boolean, String[]>() {
 			public Boolean execute(String[] object, ExecCtx ctx)
 			throws Exception {
 				return Boolean.valueOf(object.length > 3);					
@@ -392,7 +391,7 @@ public class AssortedTests extends TestCase {
                 forEach().
                     exec(StringFuncs.toUpperCase()).
                     ifIndex(2).exec(StringFuncs.toLowerCase()).endIf().
-                    eval(Ognl.asString("#target + '--' + #index")).get();
+                    exec(Ognl.asString("#target + '--' + #index")).get();
 
         for (int i = 0; i < 10; i++) {
             if (i != 2) {
@@ -408,7 +407,7 @@ public class AssortedTests extends TestCase {
                 forEach().forEach().
                     exec(StringFuncs.toUpperCase()).
                     ifIndex(2).exec(StringFuncs.toLowerCase()).endIf().
-                    eval(Ognl.asString("#target + '--' + #indexes[1] + #indexes[2]")).get();
+                    exec(Ognl.asString("#target + '--' + #indexes[1] + #indexes[2]")).get();
 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 50; j++) {
@@ -425,11 +424,11 @@ public class AssortedTests extends TestCase {
         assertEquals("THREE", strList.get(2));
         
         List<String> strList2 =
-            Op.onAll("one", "two", "three").eval(Ognl.asString("#target + '--' + #index")).getAsList();
+            Op.onAll("one", "two", "three").exec(Ognl.asString("#target + '--' + #index")).getAsList();
         assertEquals("three--2", strList2.get(2));
         
         List<String> strList3 =
-            Op.onAll("one", "two", "three").eval(Ognl.asString("#target + '--' + #indexes[0]")).getAsList();
+            Op.onAll("one", "two", "three").exec(Ognl.asString("#target + '--' + #indexes[0]")).getAsList();
         assertEquals("three--2", strList3.get(2));
         
         List<String> strList4 =
@@ -582,6 +581,20 @@ public class AssortedTests extends TestCase {
             Op.onListOfList(stringListOfList).mapMap(StringFuncs.toUpperCase()).get();
         
         assertEquals(stringUpperListOfList, result);
+        
+    }
+
+    
+    @Test
+    public void test24() {
+
+        final List<String> stringList = Arrays.asList(new String[] {"one", "two", "three", null});
+        final List<String> stringUpperList = Arrays.asList(new String[] {"ONE", "TWO", "THREE", null});
+
+        final List<String> result = 
+            Op.onList(stringList).forEach().execIfNotNull(StringFuncs.toUpperCase()).get();
+        
+        assertEquals(stringUpperList, result);
         
     }
     

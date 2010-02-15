@@ -23,8 +23,6 @@ import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.intf.array.Level1ArrayElementsOperator;
 
 
@@ -65,7 +63,7 @@ public interface ExecutableArrayOfSetElementsOperator<T> {
     /**
      * <p>
      * Specialisation of the {@link #execAsSet(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsSet(IFunction)}, and exists only for
@@ -76,24 +74,8 @@ public interface ExecutableArrayOfSetElementsOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> ExecutableArrayOfSetElementsOperator<X> evalAsSet(final IEvaluator<? extends Set<X>,? super Set<T>> eval);
-    
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsSet(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsSet(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     * 
-     * @param <X> the type of the result elements
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X> ExecutableArrayOfSetElementsOperator<X> convertAsSet(final IConverter<? extends Set<X>,? super Set<T>> converter);
+    public <X> ExecutableArrayOfSetElementsOperator<X> execIfNotNullAsSet(final IFunction<? extends Set<X>,? super Set<T>> function);
+
 
     
     /**
@@ -114,7 +96,7 @@ public interface ExecutableArrayOfSetElementsOperator<T> {
     /**
      * <p>
      * Specialisation of the {@link #exec(Type,IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #exec(Type,IFunction)}, and exists only for
@@ -126,25 +108,8 @@ public interface ExecutableArrayOfSetElementsOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> Level1ArrayElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<X,? super Set<T>> eval);
+    public <X> Level1ArrayElementsOperator<X> execIfNotNull(final Type<X> resultType, final IFunction<X,? super Set<T>> function);
     
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #exec(Type,IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(Type,IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param <X> the type of the result object
-     * @param resultType the new type for the operator
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X> Level1ArrayElementsOperator<X> convert(final Type<X> resultType, final IConverter<X,? super Set<T>> converter);    
 
     
     /**

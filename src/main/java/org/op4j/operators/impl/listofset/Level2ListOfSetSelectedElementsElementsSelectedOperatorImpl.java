@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.listofset.Level2ListOfSetSelectedElementsElementsOperator;
 import org.op4j.operators.intf.listofset.Level2ListOfSetSelectedElementsElementsSelectedOperator;
@@ -21,8 +19,8 @@ public final class Level2ListOfSetSelectedElementsElementsSelectedOperatorImpl<T
     }
 
 
-    public Level2ListOfSetSelectedElementsElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return new Level2ListOfSetSelectedElementsElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.NONE));
+    public Level2ListOfSetSelectedElementsElementsSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function) {
+        return new Level2ListOfSetSelectedElementsElementsSelectedOperatorImpl<T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 
@@ -38,11 +36,6 @@ public final class Level2ListOfSetSelectedElementsElementsSelectedOperatorImpl<T
 
     public Level2ListOfSetSelectedElementsElementsSelectedOperator<T> replaceWith(final T replacement) {
         return new Level2ListOfSetSelectedElementsElementsSelectedOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.NONE));
-    }
-
-
-    public Level2ListOfSetSelectedElementsElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return new Level2ListOfSetSelectedElementsElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 

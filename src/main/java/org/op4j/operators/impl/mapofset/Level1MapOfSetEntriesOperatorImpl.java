@@ -24,8 +24,6 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperatorImpl;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
@@ -95,23 +93,18 @@ public final class Level1MapOfSetEntriesOperatorImpl<K,V> extends AbstractOperat
     }
 
 
-    public Level1MapOfSetEntriesSelectedOperator<K, V> ifTrue(final IEvaluator<Boolean, ? super Entry<K, Set<V>>> eval) {
+    public Level1MapOfSetEntriesSelectedOperator<K, V> ifTrue(final IFunction<Boolean, ? super Entry<K, Set<V>>> eval) {
         return new Level1MapOfSetEntriesSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1MapOfSetEntriesSelectedOperator<K, V> ifFalse(final IEvaluator<Boolean, ? super Entry<K, Set<V>>> eval) {
+    public Level1MapOfSetEntriesSelectedOperator<K, V> ifFalse(final IFunction<Boolean, ? super Entry<K, Set<V>>> eval) {
         return new Level1MapOfSetEntriesSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
 
 
-    public <X, Y> Level1MapOfSetEntriesOperator<X, Y> convertAsMapOfSetEntry(final IConverter<? extends Entry<X, ? extends Set<Y>>, ? super Entry<K, Set<V>>> converter) {
-        return new Level1MapOfSetEntriesOperatorImpl<X, Y>(getTarget().execute(converter, Normalisation.MAP_OF_SET_ENTRY));
-    }
-
-
-    public <X, Y> Level1MapOfSetEntriesOperator<X, Y> evalAsMapOfSetEntry(final IEvaluator<? extends Entry<X, ? extends Set<Y>>, ? super Entry<K, Set<V>>> eval) {
-        return new Level1MapOfSetEntriesOperatorImpl<X, Y>(getTarget().execute(eval, Normalisation.MAP_OF_SET_ENTRY));
+    public <X, Y> Level1MapOfSetEntriesOperator<X, Y> execIfNotNullAsMapOfSetEntry(final IFunction<? extends Entry<X, ? extends Set<Y>>, ? super Entry<K, Set<V>>> function) {
+        return new Level1MapOfSetEntriesOperatorImpl<X, Y>(getTarget().executeIfNotNull(function, Normalisation.MAP_OF_SET_ENTRY));
     }
 
 
@@ -120,13 +113,8 @@ public final class Level1MapOfSetEntriesOperatorImpl<K,V> extends AbstractOperat
     }
 
 
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super Entry<K, Set<V>>> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
-    }
-
-
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super Entry<K, Set<V>>> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
+    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X, ? super Entry<K, Set<V>>> function) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

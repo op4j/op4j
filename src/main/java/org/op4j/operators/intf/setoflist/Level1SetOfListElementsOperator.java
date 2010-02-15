@@ -26,8 +26,6 @@ import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.set.Level1SetElementsOperator;
 import org.op4j.operators.intf.setofarray.Level1SetOfArrayElementsOperator;
@@ -73,15 +71,15 @@ public interface Level1SetOfListElementsOperator<T>
 
 
     public Level1SetOfListElementsSelectedOperator<T> ifIndex(final int... indexes);
-    public Level1SetOfListElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level1SetOfListElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level1SetOfListElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level1SetOfListElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level1SetOfListElementsSelectedOperator<T> ifTrue(final IFunction<Boolean, ? super List<T>> eval);
+    public Level1SetOfListElementsSelectedOperator<T> ifFalse(final IFunction<Boolean, ? super List<T>> eval);
+    public Level1SetOfListElementsSelectedOperator<T> ifNullOrFalse(final IFunction<Boolean, ? super List<T>> eval);
+    public Level1SetOfListElementsSelectedOperator<T> ifNotNullAndFalse(final IFunction<Boolean, ? super List<T>> eval);
     public Level1SetOfListElementsSelectedOperator<T> ifNull();
-    public Level1SetOfListElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level1SetOfListElementsSelectedOperator<T> ifNullOrTrue(final IFunction<Boolean, ? super List<T>> eval);
     public Level1SetOfListElementsSelectedOperator<T> ifIndexNot(final int... indexes);
     public Level1SetOfListElementsSelectedOperator<T> ifNotNull();
-    public Level1SetOfListElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level1SetOfListElementsSelectedOperator<T> ifNotNullAndTrue(final IFunction<Boolean, ? super List<T>> eval);
 
 
     
@@ -101,12 +99,12 @@ public interface Level1SetOfListElementsOperator<T>
     public Level1SetOfListElementsOperator<T> addAll(final Collection<T> collection);
     public Level1SetOfListElementsOperator<T> removeAllIndexes(final int... indexes);
     public Level1SetOfListElementsOperator<T> removeAllEqual(final T... values);
-    public Level1SetOfListElementsOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetOfListElementsOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetOfListElementsOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetOfListElementsOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetOfListElementsOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level1SetOfListElementsOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1SetOfListElementsOperator<T> removeAllTrue(final IFunction<Boolean, ? super T> eval);
+    public Level1SetOfListElementsOperator<T> removeAllFalse(final IFunction<Boolean, ? super T> eval);
+    public Level1SetOfListElementsOperator<T> removeAllNullOrFalse(final IFunction<Boolean, ? super T> eval);
+    public Level1SetOfListElementsOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
+    public Level1SetOfListElementsOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
+    public Level1SetOfListElementsOperator<T> removeAllNullOrTrue(final IFunction<Boolean, ? super T> eval);
     public Level1SetOfListElementsOperator<T> removeAllIndexesNot(final int... indexes);
     public Level1SetOfListElementsOperator<T> removeAllNull();
     public Level1SetOfArrayElementsOperator<T> toArrayOf(final Type<T> type);
@@ -115,7 +113,7 @@ public interface Level1SetOfListElementsOperator<T>
     public Level1SetOfSetElementsOperator<T> toSet();
     
     public Level1SetOfMapElementsOperator<T,T> toMap();
-    public <K> Level1SetOfMapElementsOperator<K,T> toMap(final IEvaluator<K,? super T> keyEval);
+    public <K> Level1SetOfMapElementsOperator<K,T> toMap(final IFunction<K,? super T> keyEval);
     public <K,V> Level1SetOfMapElementsOperator<K,V> toMap(final IMapBuilder<K,V,? super T> mapBuild);
 
     
@@ -123,17 +121,13 @@ public interface Level1SetOfListElementsOperator<T>
     public Level1SetOfListElementsOperator<T> replaceIfNullWith(final List<T> replacement);
 
 
-    public <X> Level1SetOfListElementsOperator<X> convertAsList(final IConverter<? extends List<X>,? super List<T>> converter);
-    
-    public <X> Level1SetOfListElementsOperator<X> evalAsList(final IEvaluator<? extends List<X>,? super List<T>> eval);
+    public <X> Level1SetOfListElementsOperator<X> execIfNotNullAsList(final IFunction<? extends List<X>,? super List<T>> function);
 
     public <X> Level1SetOfListElementsOperator<X> execAsList(final IFunction<? extends List<X>, ? super List<T>> function);
 
     public <X> Level1SetElementsOperator<X> exec(final IFunction<X, ? super List<T>> function);
     
-    public <X> Level1SetElementsOperator<X> eval(final IEvaluator<X,? super List<T>> eval);
-    
-    public <X> Level1SetElementsOperator<X> convert(final IConverter<X,? super List<T>> converter);    
+    public <X> Level1SetElementsOperator<X> execIfNotNull(final IFunction<X,? super List<T>> function);
     
     public <X> Level1SetOfListElementsOperator<X> map(final IFunction<X,? super T> function);
     

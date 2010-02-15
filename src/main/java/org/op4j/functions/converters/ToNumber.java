@@ -27,6 +27,7 @@ import java.util.Locale;
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
+import org.op4j.functions.AbstractNullAsNullFunc;
 import org.op4j.functions.ExecCtx;
 
 /**
@@ -53,7 +54,7 @@ final class ToNumber {
     }
     
     
-    static abstract class ToNumberFunction<X extends Number, T> extends AbstractNullAsNullConverter<X, T> {
+    static abstract class ToNumberFunction<X extends Number, T> extends AbstractNullAsNullFunc<X, T> {
         
         ToNumberFunction() {
             super();

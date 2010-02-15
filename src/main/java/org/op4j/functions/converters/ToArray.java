@@ -27,7 +27,9 @@ import java.util.List;
 
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.op4j.functions.AbstractNullAsNullFunc;
 import org.op4j.functions.ExecCtx;
+import org.op4j.functions.IFunction;
 
 /**
  * 
@@ -47,7 +49,7 @@ public final class ToArray {
     
     
     
-    public static final class FromCollection<T> extends AbstractNullAsNullConverter<T[], Collection<T>> {
+    public static final class FromCollection<T> extends AbstractNullAsNullFunc<T[], Collection<T>> {
 
         private final Type<T> type;
         
@@ -69,7 +71,7 @@ public final class ToArray {
 
     
     
-    public static final class FromObject<T> implements IConverter<T[], T> {
+    public static final class FromObject<T> implements IFunction<T[], T> {
 
         private final Type<T> type;
         

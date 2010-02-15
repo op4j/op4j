@@ -22,8 +22,6 @@ package org.op4j.operators.qualities;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 
 
 
@@ -62,7 +60,7 @@ public interface ExecutableSetOfSetSelectedOperator<T> {
     /**
      * <p>
      * Specialisation of the {@link #execAsSetOfSet(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsSetOfSet(IFunction)}, and exists only for
@@ -72,23 +70,8 @@ public interface ExecutableSetOfSetSelectedOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public ExecutableSetOfSetSelectedOperator<T> evalAsSetOfSet(final IEvaluator<? extends Set<? extends Set<? extends T>>,? super Set<Set<T>>> eval);
-    
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsSetOfSet(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsSetOfSet(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public ExecutableSetOfSetSelectedOperator<T> convertAsSetOfSet(final IConverter<? extends Set<? extends Set<? extends T>>,? super Set<Set<T>>> converter);
+    public ExecutableSetOfSetSelectedOperator<T> execIfNotNullAsSetOfSet(final IFunction<? extends Set<? extends Set<? extends T>>,? super Set<Set<T>>> function);
+
     
     
     

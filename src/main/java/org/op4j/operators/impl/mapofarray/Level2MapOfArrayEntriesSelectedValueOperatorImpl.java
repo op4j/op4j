@@ -7,8 +7,6 @@ import java.util.Map;
 import org.javaruntype.type.Type;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofarray.Level1MapOfArrayEntriesSelectedOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesSelectedValueOperator;
@@ -36,22 +34,22 @@ public final class Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V> extends
     }
 
 
-    public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super V[]> eval) {
+    public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> ifTrue(final IFunction<Boolean, ? super V[]> eval) {
         return new Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V>(this.type, getTarget().selectMatching(eval));
     }
 
 
-    public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super V[]> eval) {
+    public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> ifFalse(final IFunction<Boolean, ? super V[]> eval) {
         return new Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V>(this.type, getTarget().selectNotMatching(eval));
     }
 
 
-    public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super V[]> eval) {
+    public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> ifNullOrFalse(final IFunction<Boolean, ? super V[]> eval) {
         return new Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V>(this.type, getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V[]> eval) {
+    public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> ifNotNullAndFalse(final IFunction<Boolean, ? super V[]> eval) {
         return new Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V>(this.type, getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -61,7 +59,7 @@ public final class Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V> extends
     }
 
 
-    public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super V[]> eval) {
+    public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> ifNullOrTrue(final IFunction<Boolean, ? super V[]> eval) {
         return new Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V>(this.type, getTarget().selectNullOrMatching(eval));
     }
 
@@ -76,7 +74,7 @@ public final class Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V> extends
     }
 
 
-    public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V[]> eval) {
+    public Level2MapOfArrayEntriesSelectedValueSelectedOperator<K,V> ifNotNullAndTrue(final IFunction<Boolean, ? super V[]> eval) {
         return new Level2MapOfArrayEntriesSelectedValueSelectedOperatorImpl<K,V>(this.type, getTarget().selectNotNullAndMatching(eval));
     }
 
@@ -106,32 +104,32 @@ public final class Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V> extends
     }
 
 
-    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllTrue(final IEvaluator<Boolean,? super V> eval) {
+    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllTrue(final IFunction<Boolean,? super V> eval) {
         return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllTrue<V>(eval)));
     }
 
 
-    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllFalse(final IEvaluator<Boolean,? super V> eval) {
+    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllFalse(final IFunction<Boolean,? super V> eval) {
         return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllFalse<V>(eval)));
     }
 
 
-    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllNullOrFalse(final IEvaluator<Boolean,? super V> eval) {
+    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllNullOrFalse(final IFunction<Boolean,? super V> eval) {
         return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllNullOrFalse<V>(eval)));
     }
 
 
-    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllNotNullAndFalse(final IEvaluator<Boolean,? super V> eval) {
+    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllNotNullAndFalse(final IFunction<Boolean,? super V> eval) {
         return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllNotNullAndFalse<V>(eval)));
     }
 
 
-    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllNotNullAndTrue(final IEvaluator<Boolean,? super V> eval) {
+    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllNotNullAndTrue(final IFunction<Boolean,? super V> eval) {
         return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllNotNullAndTrue<V>(eval)));
     }
 
 
-    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllNullOrTrue(final IEvaluator<Boolean,? super V> eval) {
+    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllNullOrTrue(final IFunction<Boolean,? super V> eval) {
         return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllNullOrTrue<V>(eval)));
     }
 
@@ -146,13 +144,8 @@ public final class Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V> extends
     }
 
 
-    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> convertAsArray(final IConverter<? extends V[],? super V[]> converter) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(converter, Normalisation.ARRAY(this.type.getRawClass())));
-    }
-
-
-    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> evalAsArray(final IEvaluator<? extends V[],? super V[]> eval) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(eval, Normalisation.ARRAY(this.type.getRawClass())));
+    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> execIfNotNullAsArray(final IFunction<? extends V[],? super V[]> function) {
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().executeIfNotNull(function, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 

@@ -23,8 +23,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableMapOfSetEntrySelectedOperator;
 import org.op4j.operators.qualities.NavigableMapEntryOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
@@ -57,8 +55,6 @@ public interface Level1MapOfSetSelectedEntriesSelectedOperator<K,V>
 
     public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> execAsMapOfSetEntry(final IFunction<? extends Map.Entry<? extends K,? extends Set<? extends V>>, ? super Map.Entry<K,Set<V>>> function);
     
-    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> evalAsMapOfSetEntry(final IEvaluator<? extends Map.Entry<? extends K,? extends Set<? extends V>>, ? super Map.Entry<K,Set<V>>> eval);
+    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> execIfNotNullAsMapOfSetEntry(final IFunction<? extends Map.Entry<? extends K,? extends Set<? extends V>>, ? super Map.Entry<K,Set<V>>> function);
     
-    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> convertAsMapOfSetEntry(final IConverter<? extends Map.Entry<? extends K,? extends Set<? extends V>>, ? super Map.Entry<K,Set<V>>> converter);
-                                    
-}
+    }

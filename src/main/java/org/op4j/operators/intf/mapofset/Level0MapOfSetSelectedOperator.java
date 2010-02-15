@@ -24,8 +24,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableMapOfSetSelectedOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
@@ -65,14 +63,12 @@ public interface Level0MapOfSetSelectedOperator<K,V>
     public Level0MapOfSetSelectedOperator<K,V> putAll(final Map<K,Set<V>> map);
     public Level0MapOfSetSelectedOperator<K,V> insertAll(final int position, final Map<K,Set<V>> map);
     public Level0MapOfSetSelectedOperator<K,V> removeAllKeys(final K... keys);
-    public Level0MapOfSetSelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
-    public Level0MapOfSetSelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
+    public Level0MapOfSetSelectedOperator<K,V> removeAllTrue(final IFunction<Boolean, ? super Map.Entry<K,Set<V>>> eval);
+    public Level0MapOfSetSelectedOperator<K,V> removeAllFalse(final IFunction<Boolean, ? super Map.Entry<K,Set<V>>> eval);
     public Level0MapOfSetSelectedOperator<K,V> removeAllKeysNot(final K... keys);
     
     
-    public Level0MapOfSetSelectedOperator<K,V> convertAsMapOfSet(final IConverter<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> converter);
-    
-    public Level0MapOfSetSelectedOperator<K,V> evalAsMapOfSet(final IEvaluator<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> eval);
+    public Level0MapOfSetSelectedOperator<K,V> execIfNotNullAsMapOfSet(final IFunction<? extends Map<? extends K,? extends Set<? extends V>>, ? super Map<K,Set<V>>> function);
 
     public Level0MapOfSetSelectedOperator<K,V> replaceWith(final Map<K,Set<V>> replacement);
 

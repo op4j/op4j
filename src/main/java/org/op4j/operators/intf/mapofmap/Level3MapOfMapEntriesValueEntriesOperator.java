@@ -22,8 +22,6 @@ package org.op4j.operators.intf.mapofmap;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.intf.mapoflist.Level3MapOfListEntriesValueElementsOperator;
 import org.op4j.operators.qualities.ExecutableMapEntryOperator;
 import org.op4j.operators.qualities.NavigableMapEntryOperator;
@@ -50,8 +48,8 @@ public interface Level3MapOfMapEntriesValueEntriesOperator<K1,K2,V>
 
 
     public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1,K2,V> ifIndex(final int... indexes);
-    public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1,K2,V> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K2, V>> eval);
-    public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1,K2,V> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K2, V>> eval);
+    public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1,K2,V> ifTrue(final IFunction<Boolean, ? super Map.Entry<K2, V>> eval);
+    public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1,K2,V> ifFalse(final IFunction<Boolean, ? super Map.Entry<K2, V>> eval);
     public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1,K2,V> ifIndexNot(final int... indexes);
     public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1,K2,V> ifKeyEquals(final K2... keys);
     public Level3MapOfMapEntriesValueEntriesSelectedOperator<K1,K2,V> ifKeyNotEquals(final K2... keys);
@@ -64,18 +62,13 @@ public interface Level3MapOfMapEntriesValueEntriesOperator<K1,K2,V>
     
     public <X2,Y> Level3MapOfMapEntriesValueEntriesOperator<K1,X2,Y> execAsMapEntry(final IFunction<? extends Map.Entry<X2,Y>,? super Map.Entry<K2,V>> function);
     
-    public <X2,Y> Level3MapOfMapEntriesValueEntriesOperator<K1,X2,Y> evalAsMapEntry(final IEvaluator<? extends Map.Entry<X2,Y>,? super Map.Entry<K2,V>> eval);
+    public <X2,Y> Level3MapOfMapEntriesValueEntriesOperator<K1,X2,Y> execIfNotNullAsMapEntry(final IFunction<? extends Map.Entry<X2,Y>,? super Map.Entry<K2,V>> function);
     
     public Level3MapOfMapEntriesValueEntriesOperator<K1,K2,V> replaceWith(final Map.Entry<K2,V> replacement);
 
 
-    public <X2,Y> Level3MapOfMapEntriesValueEntriesOperator<K1,X2,Y> convertAsMapEntry(final IConverter<? extends Map.Entry<X2,Y>,? super Map.Entry<K2,V>> converter);
-
     public <X> Level3MapOfListEntriesValueElementsOperator<K1,X> exec(final IFunction<X, ? super Map.Entry<K2,V>> function);
     
-    public <X> Level3MapOfListEntriesValueElementsOperator<K1,X> eval(final IEvaluator<X,? super Map.Entry<K2,V>> eval);
+    public <X> Level3MapOfListEntriesValueElementsOperator<K1,X> execIfNotNull(final IFunction<X,? super Map.Entry<K2,V>> function);
     
-    public <X> Level3MapOfListEntriesValueElementsOperator<K1,X> convert(final IConverter<X,? super Map.Entry<K2,V>> converter);    
-
-    
-}
+    }

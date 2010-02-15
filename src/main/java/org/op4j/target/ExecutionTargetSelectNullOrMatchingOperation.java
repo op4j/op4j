@@ -21,7 +21,7 @@
 package org.op4j.target;
 
 import org.op4j.exceptions.ExecutionException;
-import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.functions.IFunction;
 
 /**
  * 
@@ -34,11 +34,11 @@ final class ExecutionTargetSelectNullOrMatchingOperation implements ExecutionTar
 
     private final int internalBlock;
     private final boolean desiredResult;
-    private final IEvaluator<Boolean,Object> eval; 
+    private final IFunction<Boolean,Object> eval; 
 
     
     
-    public ExecutionTargetSelectNullOrMatchingOperation(final int internalBlock, final boolean desiredResult, final IEvaluator<Boolean,Object> eval) {
+    public ExecutionTargetSelectNullOrMatchingOperation(final int internalBlock, final boolean desiredResult, final IFunction<Boolean,Object> eval) {
         super();
         this.internalBlock = internalBlock;
         this.desiredResult = desiredResult;

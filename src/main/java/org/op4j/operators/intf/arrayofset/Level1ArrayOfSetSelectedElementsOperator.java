@@ -24,8 +24,6 @@ import java.util.Comparator;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSetSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
@@ -57,15 +55,15 @@ public interface Level1ArrayOfSetSelectedElementsOperator<T>
 
 
     public Level1ArrayOfSetSelectedElementsSelectedOperator<T> ifIndex(final int... indexes);
-    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> ifTrue(final IFunction<Boolean, ? super Set<T>> eval);
+    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> ifFalse(final IFunction<Boolean, ? super Set<T>> eval);
+    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> ifNullOrFalse(final IFunction<Boolean, ? super Set<T>> eval);
+    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> ifNotNullAndFalse(final IFunction<Boolean, ? super Set<T>> eval);
     public Level1ArrayOfSetSelectedElementsSelectedOperator<T> ifNull();
-    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> ifNullOrTrue(final IFunction<Boolean, ? super Set<T>> eval);
     public Level1ArrayOfSetSelectedElementsSelectedOperator<T> ifIndexNot(final int... indexes);
     public Level1ArrayOfSetSelectedElementsSelectedOperator<T> ifNotNull();
-    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level1ArrayOfSetSelectedElementsSelectedOperator<T> ifNotNullAndTrue(final IFunction<Boolean, ? super Set<T>> eval);
 
 
             
@@ -81,19 +79,17 @@ public interface Level1ArrayOfSetSelectedElementsOperator<T>
     public Level1ArrayOfSetSelectedElementsOperator<T> addAll(final Collection<T> collection);
     public Level1ArrayOfSetSelectedElementsOperator<T> removeAllIndexes(final int... indexes);
     public Level1ArrayOfSetSelectedElementsOperator<T> removeAllEqual(final T... values);
-    public Level1ArrayOfSetSelectedElementsOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArrayOfSetSelectedElementsOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArrayOfSetSelectedElementsOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArrayOfSetSelectedElementsOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArrayOfSetSelectedElementsOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArrayOfSetSelectedElementsOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArrayOfSetSelectedElementsOperator<T> removeAllTrue(final IFunction<Boolean, ? super T> eval);
+    public Level1ArrayOfSetSelectedElementsOperator<T> removeAllFalse(final IFunction<Boolean, ? super T> eval);
+    public Level1ArrayOfSetSelectedElementsOperator<T> removeAllNullOrFalse(final IFunction<Boolean, ? super T> eval);
+    public Level1ArrayOfSetSelectedElementsOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
+    public Level1ArrayOfSetSelectedElementsOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
+    public Level1ArrayOfSetSelectedElementsOperator<T> removeAllNullOrTrue(final IFunction<Boolean, ? super T> eval);
     public Level1ArrayOfSetSelectedElementsOperator<T> removeAllIndexesNot(final int... indexes);
     public Level1ArrayOfSetSelectedElementsOperator<T> removeAllNull();
     
     
-    public Level1ArrayOfSetSelectedElementsOperator<T> convertAsSet(final IConverter<? extends Set<? extends T>,? super Set<T>> converter);
-    
-    public Level1ArrayOfSetSelectedElementsOperator<T> evalAsSet(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval);
+    public Level1ArrayOfSetSelectedElementsOperator<T> execIfNotNullAsSet(final IFunction<? extends Set<? extends T>,? super Set<T>> function);
 
     public Level1ArrayOfSetSelectedElementsOperator<T> replaceWith(final Set<T> replacement);
 

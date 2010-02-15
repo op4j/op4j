@@ -23,8 +23,6 @@ import java.util.List;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.intf.listofarray.Level1ListOfArrayElementsOperator;
 import org.op4j.operators.intf.listoflist.Level1ListOfListElementsOperator;
 import org.op4j.operators.intf.listofmap.Level1ListOfMapElementsOperator;
@@ -65,15 +63,15 @@ public interface Level1ListElementsOperator<T>
 
 
     public Level1ListElementsSelectedOperator<T> ifIndex(final int... indexes);
-    public Level1ListElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ListElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ListElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ListElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ListElementsSelectedOperator<T> ifTrue(final IFunction<Boolean, ? super T> eval);
+    public Level1ListElementsSelectedOperator<T> ifFalse(final IFunction<Boolean, ? super T> eval);
+    public Level1ListElementsSelectedOperator<T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval);
+    public Level1ListElementsSelectedOperator<T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
     public Level1ListElementsSelectedOperator<T> ifNull();
-    public Level1ListElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ListElementsSelectedOperator<T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval);
     public Level1ListElementsSelectedOperator<T> ifIndexNot(final int... indexes);
     public Level1ListElementsSelectedOperator<T> ifNotNull();
-    public Level1ListElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ListElementsSelectedOperator<T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
 
 
     
@@ -83,9 +81,7 @@ public interface Level1ListElementsOperator<T>
     public Level1ListElementsOperator<T> replaceIfNullWith(final T replacement);
 
 
-    public <X> Level1ListElementsOperator<X> convert(final IConverter<X,? super T> converter);
-    
-    public <X> Level1ListElementsOperator<X> eval(final IEvaluator<X,? super T> eval);
+    public <X> Level1ListElementsOperator<X> execIfNotNull(final IFunction<X,? super T> function);
 
     public <X> Level1ListElementsOperator<X> exec(final IFunction<X, ? super T> function);
     

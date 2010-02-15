@@ -23,8 +23,6 @@ import java.util.Collection;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.array.Level0ArrayOperator;
 import org.op4j.operators.intf.arrayofarray.Level0ArrayOfArrayOperator;
@@ -118,24 +116,22 @@ public interface Level0GenericUniqOperator<T>
 
 
     public Level0GenericUniqSelectedOperator<T> ifIndex(final int... indexes);
-    public Level0GenericUniqSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level0GenericUniqSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level0GenericUniqSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level0GenericUniqSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericUniqSelectedOperator<T> ifTrue(final IFunction<Boolean, ? super T> eval);
+    public Level0GenericUniqSelectedOperator<T> ifFalse(final IFunction<Boolean, ? super T> eval);
+    public Level0GenericUniqSelectedOperator<T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval);
+    public Level0GenericUniqSelectedOperator<T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
     public Level0GenericUniqSelectedOperator<T> ifNull();
-    public Level0GenericUniqSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericUniqSelectedOperator<T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval);
     public Level0GenericUniqSelectedOperator<T> ifIndexNot(final int... indexes);
     public Level0GenericUniqSelectedOperator<T> ifNotNull();
-    public Level0GenericUniqSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0GenericUniqSelectedOperator<T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
 
     
     public Level0GenericUniqOperator<T> replaceWith(final T replacement);
     public Level0GenericUniqOperator<T> replaceIfNullWith(final T replacement);
 
 
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super T> converter);
-    
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super T> eval);
+    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super T> function);
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super T> function);
     
@@ -158,19 +154,19 @@ public interface Level0GenericUniqOperator<T>
     public Level0ArrayOperator<T> buildArrayOf(final Type<T> type);
     
     
-    public <K> Level0MapOperator<K,T> buildMap(final IEvaluator<K,? super T> keyEval);
+    public <K> Level0MapOperator<K,T> buildMap(final IFunction<K,? super T> keyEval);
     public <K,V> Level0MapOperator<K,V> buildMap(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> Level0MapOfListOperator<K,T> buildMapOfList(final IEvaluator<K,? super T> keyEval);
+    public <K> Level0MapOfListOperator<K,T> buildMapOfList(final IFunction<K,? super T> keyEval);
     public <K,V> Level0MapOfListOperator<K,V> buildMapOfList(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> Level0MapOfSetOperator<K,T> buildMapOfSet(final IEvaluator<K,? super T> keyEval);
+    public <K> Level0MapOfSetOperator<K,T> buildMapOfSet(final IFunction<K,? super T> keyEval);
     public <K,V> Level0MapOfSetOperator<K,V> buildMapOfSet(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> Level0MapOfArrayOperator<K,T> buildMapOfArrayOf(final Type<T> valueType, final IEvaluator<K,? super T> keyEval);
+    public <K> Level0MapOfArrayOperator<K,T> buildMapOfArrayOf(final Type<T> valueType, final IFunction<K,? super T> keyEval);
     public <K,V> Level0MapOfArrayOperator<K,V> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<K,V,? super T> mapBuild);
 
     

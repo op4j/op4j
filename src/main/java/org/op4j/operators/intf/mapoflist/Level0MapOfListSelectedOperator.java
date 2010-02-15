@@ -24,8 +24,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableMapOfListSelectedOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
@@ -65,14 +63,12 @@ public interface Level0MapOfListSelectedOperator<K,V>
     public Level0MapOfListSelectedOperator<K,V> putAll(final Map<K,List<V>> map);
     public Level0MapOfListSelectedOperator<K,V> insertAll(final int position, final Map<K,List<V>> map);
     public Level0MapOfListSelectedOperator<K,V> removeAllKeys(final K... keys);
-    public Level0MapOfListSelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,List<V>>> eval);
-    public Level0MapOfListSelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,List<V>>> eval);
+    public Level0MapOfListSelectedOperator<K,V> removeAllTrue(final IFunction<Boolean, ? super Map.Entry<K,List<V>>> eval);
+    public Level0MapOfListSelectedOperator<K,V> removeAllFalse(final IFunction<Boolean, ? super Map.Entry<K,List<V>>> eval);
     public Level0MapOfListSelectedOperator<K,V> removeAllKeysNot(final K... keys);
     
     
-    public Level0MapOfListSelectedOperator<K,V> convertAsMapOfList(final IConverter<? extends Map<? extends K,? extends List<? extends V>>, ? super Map<K,List<V>>> converter);
-    
-    public Level0MapOfListSelectedOperator<K,V> evalAsMapOfList(final IEvaluator<? extends Map<? extends K,? extends List<? extends V>>, ? super Map<K,List<V>>> eval);
+    public Level0MapOfListSelectedOperator<K,V> execIfNotNullAsMapOfList(final IFunction<? extends Map<? extends K,? extends List<? extends V>>, ? super Map<K,List<V>>> function);
 
     public Level0MapOfListSelectedOperator<K,V> replaceWith(final Map<K,List<V>> replacement);
 

@@ -22,8 +22,6 @@ package org.op4j.operators.qualities;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 
 
@@ -65,7 +63,7 @@ public interface ExecutableArrayOfMapOperator<K,V> {
     /**
      * <p>
      * Specialisation of the {@link #execAsArrayOfMap(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsArrayOfMap(IFunction)}, and exists only for
@@ -77,25 +75,8 @@ public interface ExecutableArrayOfMapOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X,Y> ExecutableArrayOfMapOperator<X,Y> evalAsArrayOfMap(final IEvaluator<? extends Map<X,Y>[],? super Map<K,V>[]> eval);
-    
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsArrayOfMap(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsArrayOfMap(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     * 
-     * @param <X> the type of the resulting keys
-     * @param <Y> the type of the resulting values
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X,Y> ExecutableArrayOfMapOperator<X,Y> convertAsArrayOfMap(final IConverter<? extends Map<X,Y>[],? super Map<K,V>[]> converter);
+    public <X,Y> ExecutableArrayOfMapOperator<X,Y> execIfNotNullAsArrayOfMap(final IFunction<? extends Map<X,Y>[],? super Map<K,V>[]> function);
+
 
     
     /**
@@ -115,7 +96,7 @@ public interface ExecutableArrayOfMapOperator<K,V> {
     /**
      * <p>
      * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #exec(IFunction)}, and exists only for
@@ -126,23 +107,7 @@ public interface ExecutableArrayOfMapOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Map<K,V>[]> eval);
+    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super Map<K,V>[]> function);
     
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param <X> the type of the result object
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Map<K,V>[]> converter);    
     
 }

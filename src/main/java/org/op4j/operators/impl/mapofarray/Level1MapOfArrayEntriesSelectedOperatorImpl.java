@@ -5,8 +5,6 @@ import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofarray.Level1MapOfArrayEntriesOperator;
 import org.op4j.operators.intf.mapofarray.Level1MapOfArrayEntriesSelectedOperator;
@@ -48,13 +46,8 @@ public final class Level1MapOfArrayEntriesSelectedOperatorImpl<K,V> extends Abst
     }
 
 
-    public Level1MapOfArrayEntriesSelectedOperator<K,V> evalAsMapOfArrayEntry(final IEvaluator<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> eval) {
-        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K,V>(this.type, getTarget().execute(eval, Normalisation.MAP_OF_ARRAY_ENTRY(this.type.getRawClass())));
-    }
-
-
-    public Level1MapOfArrayEntriesSelectedOperator<K,V> convertAsMapOfArrayEntry(final IConverter<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> converter) {
-        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K,V>(this.type, getTarget().execute(converter, Normalisation.MAP_OF_ARRAY_ENTRY(this.type.getRawClass())));
+    public Level1MapOfArrayEntriesSelectedOperator<K,V> execIfNotNullAsMapOfArrayEntry(final IFunction<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> function) {
+        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K,V>(this.type, getTarget().executeIfNotNull(function, Normalisation.MAP_OF_ARRAY_ENTRY(this.type.getRawClass())));
     }
 
 

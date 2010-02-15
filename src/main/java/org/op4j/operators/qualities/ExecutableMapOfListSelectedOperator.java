@@ -23,8 +23,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 
 
 
@@ -63,7 +61,7 @@ public interface ExecutableMapOfListSelectedOperator<K,V> {
     /**
      * <p>
      * Specialisation of the {@link #execAsMapOfList(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsMapOfList(IFunction)}, and exists only for
@@ -73,22 +71,7 @@ public interface ExecutableMapOfListSelectedOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public ExecutableMapOfListSelectedOperator<K,V> evalAsMapOfList(final IEvaluator<? extends Map<? extends K,? extends List<? extends V>>,? super Map<K,List<V>>> eval);
-    
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsMapOfList(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsMapOfList(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public ExecutableMapOfListSelectedOperator<K,V> convertAsMapOfList(final IConverter<? extends Map<? extends K,? extends List<? extends V>>,? super Map<K,List<V>>> converter);
+    public ExecutableMapOfListSelectedOperator<K,V> execIfNotNullAsMapOfList(final IFunction<? extends Map<? extends K,? extends List<? extends V>>,? super Map<K,List<V>>> function);
+
     
 }

@@ -27,10 +27,8 @@ import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.ListFuncs;
-import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.converters.ToArray;
 import org.op4j.functions.converters.ToSet;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.arrayofarray.Level0ArrayOfArrayOperatorImpl;
@@ -129,29 +127,29 @@ public final class Level0ListOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListOfArrayOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T[]> eval) {
+    public Level0ListOfArrayOperator<T> removeAllTrue(final IFunction<Boolean, ? super T[]> eval) {
         return new Level0ListOfArrayOperatorImpl<T>(this.type, getTarget().execute(new ListFuncs.RemoveAllTrue<T[]>(eval)));
     }
 
-    public Level0ListOfArrayOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T[]> eval) {
+    public Level0ListOfArrayOperator<T> removeAllFalse(final IFunction<Boolean, ? super T[]> eval) {
         return new Level0ListOfArrayOperatorImpl<T>(this.type, getTarget().execute(new ListFuncs.RemoveAllFalse<T[]>(eval)));
     }
 
-    public Level0ListOfArrayOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T[]> eval) {
+    public Level0ListOfArrayOperator<T> removeAllNullOrFalse(final IFunction<Boolean, ? super T[]> eval) {
         return new Level0ListOfArrayOperatorImpl<T>(this.type, getTarget().execute(new ListFuncs.RemoveAllNullOrFalse<T[]>(eval)));
     }
 
-    public Level0ListOfArrayOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T[]> eval) {
+    public Level0ListOfArrayOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super T[]> eval) {
         return new Level0ListOfArrayOperatorImpl<T>(this.type, getTarget().execute(new ListFuncs.RemoveAllNotNullAndFalse<T[]>(eval)));
     }
 
 
-    public Level0ListOfArrayOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T[]> eval) {
+    public Level0ListOfArrayOperator<T> removeAllNullOrTrue(final IFunction<Boolean, ? super T[]> eval) {
         return new Level0ListOfArrayOperatorImpl<T>(this.type, getTarget().execute(new ListFuncs.RemoveAllNullOrTrue<T[]>(eval)));
     }
 
 
-    public Level0ListOfArrayOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T[]> eval) {
+    public Level0ListOfArrayOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super T[]> eval) {
         return new Level0ListOfArrayOperatorImpl<T>(this.type, getTarget().execute(new ListFuncs.RemoveAllNotNullAndTrue<T[]>(eval)));
     }
 
@@ -189,7 +187,7 @@ public final class Level0ListOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <K> Level0ArrayOfMapOperator<K, T> toArrayOfMap(final IEvaluator<K, ? super T> keyEval) {
+    public <K> Level0ArrayOfMapOperator<K, T> toArrayOfMap(final IFunction<K, ? super T> keyEval) {
         return toListOfMap(keyEval).toArrayOfMap();
     }
 
@@ -209,7 +207,7 @@ public final class Level0ListOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <K> Level0ListOfMapOperator<K, T> toListOfMap(final IEvaluator<K, ? super T> keyEval) {
+    public <K> Level0ListOfMapOperator<K, T> toListOfMap(final IFunction<K, ? super T> keyEval) {
         return forEach().toMap(keyEval).endFor(); 
     }
 
@@ -234,7 +232,7 @@ public final class Level0ListOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <K> Level0SetOfMapOperator<K, T> toSetOfMap(final IEvaluator<K, ? super T> keyEval) {
+    public <K> Level0SetOfMapOperator<K, T> toSetOfMap(final IFunction<K, ? super T> keyEval) {
         return toListOfMap(keyEval).toSetOfMap();
     }
 
@@ -306,12 +304,12 @@ public final class Level0ListOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListOfArraySelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super List<T[]>> eval) {
+    public Level0ListOfArraySelectedOperator<T> ifTrue(final IFunction<Boolean, ? super List<T[]>> eval) {
         return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().selectMatching(eval));
     }
 
 
-    public Level0ListOfArraySelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super List<T[]>> eval) {
+    public Level0ListOfArraySelectedOperator<T> ifFalse(final IFunction<Boolean, ? super List<T[]>> eval) {
         return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().selectNotMatching(eval));
     }
 
@@ -321,12 +319,12 @@ public final class Level0ListOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListOfArraySelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super List<T[]>> eval) {
+    public Level0ListOfArraySelectedOperator<T> ifNotNullAndTrue(final IFunction<Boolean, ? super List<T[]>> eval) {
         return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level0ListOfArraySelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super List<T[]>> eval) {
+    public Level0ListOfArraySelectedOperator<T> ifNotNullAndFalse(final IFunction<Boolean, ? super List<T[]>> eval) {
         return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -336,23 +334,18 @@ public final class Level0ListOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListOfArraySelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super List<T[]>> eval) {
+    public Level0ListOfArraySelectedOperator<T> ifNullOrTrue(final IFunction<Boolean, ? super List<T[]>> eval) {
         return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level0ListOfArraySelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super List<T[]>> eval) {
+    public Level0ListOfArraySelectedOperator<T> ifNullOrFalse(final IFunction<Boolean, ? super List<T[]>> eval) {
         return new Level0ListOfArraySelectedOperatorImpl<T>(this.type, getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public Level0ListOfArrayOperator<T> convertAsListOfArray(final IConverter<? extends List<? extends T[]>, ? super List<T[]>> converter) {
-        return new Level0ListOfArrayOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.LIST_OF_ARRAY(this.type.getRawClass())));
-    }
-
-
-    public Level0ListOfArrayOperator<T> evalAsListOfArray(final IEvaluator<? extends List<? extends T[]>, ? super List<T[]>> eval) {
-        return new Level0ListOfArrayOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.LIST_OF_ARRAY(this.type.getRawClass())));
+    public Level0ListOfArrayOperator<T> execIfNotNullAsListOfArray(final IFunction<? extends List<? extends T[]>, ? super List<T[]>> function) {
+        return new Level0ListOfArrayOperatorImpl<T>(this.type, getTarget().executeIfNotNull(function, Normalisation.LIST_OF_ARRAY(this.type.getRawClass())));
     }
 
 
@@ -361,13 +354,8 @@ public final class Level0ListOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <X> Level0ListOfArrayOperator<X> convertAsListOfArrayOf(final Type<X> newType, final IConverter<? extends List<X[]>, ? super List<T[]>> converter) {
-        return new Level0ListOfArrayOperatorImpl<X>(newType, getTarget().execute(converter, Normalisation.LIST_OF_ARRAY(newType.getRawClass())));
-    }
-
-
-    public <X> Level0ListOfArrayOperator<X> evalAsListOfArrayOf(final Type<X> newType, final IEvaluator<? extends List<X[]>, ? super List<T[]>> eval) {
-        return new Level0ListOfArrayOperatorImpl<X>(newType, getTarget().execute(eval, Normalisation.LIST_OF_ARRAY(newType.getRawClass())));
+    public <X> Level0ListOfArrayOperator<X> execIfNotNullAsListOfArrayOf(final Type<X> newType, final IFunction<? extends List<X[]>, ? super List<T[]>> function) {
+        return new Level0ListOfArrayOperatorImpl<X>(newType, getTarget().executeIfNotNull(function, Normalisation.LIST_OF_ARRAY(newType.getRawClass())));
     }
 
 
@@ -376,13 +364,8 @@ public final class Level0ListOfArrayOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super List<T[]>> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
-    }
-
-
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super List<T[]>> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
+    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X, ? super List<T[]>> function) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

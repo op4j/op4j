@@ -28,11 +28,9 @@ import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.SetFuncs;
-import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.converters.ToArray;
 import org.op4j.functions.converters.ToList;
 import org.op4j.functions.converters.ToMap;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.list.Level1ListElementsOperatorImpl;
@@ -113,29 +111,29 @@ public final class Level1ListOfSetElementsOperatorImpl<T> extends AbstractOperat
     }
 
 
-    public Level1ListOfSetElementsOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval) {
+    public Level1ListOfSetElementsOperator<T> removeAllTrue(final IFunction<Boolean, ? super T> eval) {
         return new Level1ListOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllTrue<T>(eval)));
     }
 
-    public Level1ListOfSetElementsOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval) {
+    public Level1ListOfSetElementsOperator<T> removeAllFalse(final IFunction<Boolean, ? super T> eval) {
         return new Level1ListOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllFalse<T>(eval)));
     }
 
-    public Level1ListOfSetElementsOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval) {
+    public Level1ListOfSetElementsOperator<T> removeAllNullOrFalse(final IFunction<Boolean, ? super T> eval) {
         return new Level1ListOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNullOrFalse<T>(eval)));
     }
 
-    public Level1ListOfSetElementsOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval) {
+    public Level1ListOfSetElementsOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super T> eval) {
         return new Level1ListOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNotNullAndFalse<T>(eval)));
     }
 
 
-    public Level1ListOfSetElementsOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval) {
+    public Level1ListOfSetElementsOperator<T> removeAllNullOrTrue(final IFunction<Boolean, ? super T> eval) {
         return new Level1ListOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNullOrTrue<T>(eval)));
     }
 
 
-    public Level1ListOfSetElementsOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval) {
+    public Level1ListOfSetElementsOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super T> eval) {
         return new Level1ListOfSetElementsOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNotNullAndTrue<T>(eval)));
     }
 
@@ -178,7 +176,7 @@ public final class Level1ListOfSetElementsOperatorImpl<T> extends AbstractOperat
     }
 
     
-    public <K> Level1ListOfMapElementsOperator<K, T> toMap(final IEvaluator<K, ? super T> keyEval) {
+    public <K> Level1ListOfMapElementsOperator<K, T> toMap(final IFunction<K, ? super T> keyEval) {
         return new Level1ListOfMapElementsOperatorImpl<K, T>(getTarget().execute(new ToMap.FromSetByKeyEval<K, T>(keyEval)));
     }
 
@@ -218,12 +216,12 @@ public final class Level1ListOfSetElementsOperatorImpl<T> extends AbstractOperat
     }
 
 
-    public Level1ListOfSetElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super Set<T>> eval) {
+    public Level1ListOfSetElementsSelectedOperator<T> ifTrue(final IFunction<Boolean, ? super Set<T>> eval) {
         return new Level1ListOfSetElementsSelectedOperatorImpl<T>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1ListOfSetElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super Set<T>> eval) {
+    public Level1ListOfSetElementsSelectedOperator<T> ifFalse(final IFunction<Boolean, ? super Set<T>> eval) {
         return new Level1ListOfSetElementsSelectedOperatorImpl<T>(getTarget().selectNotMatching(eval));
     }
 
@@ -233,12 +231,12 @@ public final class Level1ListOfSetElementsOperatorImpl<T> extends AbstractOperat
     }
 
 
-    public Level1ListOfSetElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Set<T>> eval) {
+    public Level1ListOfSetElementsSelectedOperator<T> ifNotNullAndTrue(final IFunction<Boolean, ? super Set<T>> eval) {
         return new Level1ListOfSetElementsSelectedOperatorImpl<T>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level1ListOfSetElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Set<T>> eval) {
+    public Level1ListOfSetElementsSelectedOperator<T> ifNotNullAndFalse(final IFunction<Boolean, ? super Set<T>> eval) {
         return new Level1ListOfSetElementsSelectedOperatorImpl<T>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -248,23 +246,18 @@ public final class Level1ListOfSetElementsOperatorImpl<T> extends AbstractOperat
     }
 
 
-    public Level1ListOfSetElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super Set<T>> eval) {
+    public Level1ListOfSetElementsSelectedOperator<T> ifNullOrTrue(final IFunction<Boolean, ? super Set<T>> eval) {
         return new Level1ListOfSetElementsSelectedOperatorImpl<T>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level1ListOfSetElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super Set<T>> eval) {
+    public Level1ListOfSetElementsSelectedOperator<T> ifNullOrFalse(final IFunction<Boolean, ? super Set<T>> eval) {
         return new Level1ListOfSetElementsSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public <X> Level1ListOfSetElementsOperator<X> convertAsSet(final IConverter<? extends Set<X>, ? super Set<T>> converter) {
-        return new Level1ListOfSetElementsOperatorImpl<X>(getTarget().execute(converter, Normalisation.SET));
-    }
-
-
-    public <X> Level1ListOfSetElementsOperator<X> evalAsSet(final IEvaluator<? extends Set<X>, ? super Set<T>> eval) {
-        return new Level1ListOfSetElementsOperatorImpl<X>(getTarget().execute(eval, Normalisation.SET));
+    public <X> Level1ListOfSetElementsOperator<X> execIfNotNullAsSet(final IFunction<? extends Set<X>, ? super Set<T>> function) {
+        return new Level1ListOfSetElementsOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.SET));
     }
 
 
@@ -273,13 +266,8 @@ public final class Level1ListOfSetElementsOperatorImpl<T> extends AbstractOperat
     }
 
 
-    public <X> Level1ListElementsOperator<X> convert(final IConverter<X, ? super Set<T>> converter) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
-    }
-
-
-    public <X> Level1ListElementsOperator<X> eval(final IEvaluator<X, ? super Set<T>> eval) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
+    public <X> Level1ListElementsOperator<X> execIfNotNull(final IFunction<X, ? super Set<T>> function) {
+        return new Level1ListElementsOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

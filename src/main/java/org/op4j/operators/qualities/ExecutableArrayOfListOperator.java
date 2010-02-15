@@ -22,8 +22,6 @@ package org.op4j.operators.qualities;
 import java.util.List;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 
 
@@ -64,7 +62,7 @@ public interface ExecutableArrayOfListOperator<T> {
     /**
      * <p>
      * Specialisation of the {@link #execAsArrayOfList(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsArrayOfList(IFunction)}, and exists only for
@@ -75,24 +73,8 @@ public interface ExecutableArrayOfListOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> ExecutableArrayOfListOperator<X> evalAsArrayOfList(final IEvaluator<? extends List<X>[],? super List<T>[]> eval);
-    
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsArrayOfList(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsArrayOfList(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     * 
-     * @param <X> the type of the result elements
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X> ExecutableArrayOfListOperator<X> convertAsArrayOfList(final IConverter<? extends List<X>[],? super List<T>[]> converter);
+    public <X> ExecutableArrayOfListOperator<X> execIfNotNullAsArrayOfList(final IFunction<? extends List<X>[],? super List<T>[]> function);
+
 
     
     /**
@@ -112,7 +94,7 @@ public interface ExecutableArrayOfListOperator<T> {
     /**
      * <p>
      * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #exec(IFunction)}, and exists only for
@@ -123,24 +105,8 @@ public interface ExecutableArrayOfListOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super List<T>[]> eval);
+    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super List<T>[]> function);
     
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param <X> the type of the result object
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super List<T>[]> converter);    
 
     
     

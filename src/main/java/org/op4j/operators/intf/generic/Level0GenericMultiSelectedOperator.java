@@ -23,8 +23,6 @@ import java.util.List;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.MultiOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
@@ -49,9 +47,7 @@ public interface Level0GenericMultiSelectedOperator<T>
 
     public Level0GenericMultiSelectedOperator<T> replaceWith(final T replacement);
     
-    public Level0GenericMultiSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter);
-    
-    public Level0GenericMultiSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
+    public Level0GenericMultiSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function);
 
     public Level0GenericMultiSelectedOperator<T> exec(final IFunction<? extends T, ? super T> function);
     

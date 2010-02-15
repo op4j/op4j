@@ -23,8 +23,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 import org.op4j.operators.qualities.ExecutableMapOfListEntryOperator;
 import org.op4j.operators.qualities.NavigableMapEntryOperator;
@@ -51,8 +49,8 @@ public interface Level1MapOfListEntriesOperator<K,V>
 
 
     public Level1MapOfListEntriesSelectedOperator<K,V> ifIndex(final int... indexes);
-    public Level1MapOfListEntriesSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K, List<V>>> eval);
-    public Level1MapOfListEntriesSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K, List<V>>> eval);
+    public Level1MapOfListEntriesSelectedOperator<K,V> ifTrue(final IFunction<Boolean, ? super Map.Entry<K, List<V>>> eval);
+    public Level1MapOfListEntriesSelectedOperator<K,V> ifFalse(final IFunction<Boolean, ? super Map.Entry<K, List<V>>> eval);
     public Level1MapOfListEntriesSelectedOperator<K,V> ifIndexNot(final int... indexes);
     public Level1MapOfListEntriesSelectedOperator<K,V> ifKeyEquals(final K... keys);
     public Level1MapOfListEntriesSelectedOperator<K,V> ifKeyNotEquals(final K... keys);
@@ -65,18 +63,13 @@ public interface Level1MapOfListEntriesOperator<K,V>
     
     public <X,Y> Level1MapOfListEntriesOperator<X,Y> execAsMapOfListEntry(final IFunction<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> function);
     
-    public <X,Y> Level1MapOfListEntriesOperator<X,Y> evalAsMapOfListEntry(final IEvaluator<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> eval);
+    public <X,Y> Level1MapOfListEntriesOperator<X,Y> execIfNotNullAsMapOfListEntry(final IFunction<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> function);
     
     public Level1MapOfListEntriesOperator<K,V> replaceWith(final Map.Entry<K,List<V>> replacement);
 
 
-    public <X,Y> Level1MapOfListEntriesOperator<X,Y> convertAsMapOfListEntry(final IConverter<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> converter);
-
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map.Entry<K,List<V>>> function);
     
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Map.Entry<K,List<V>>> eval);
+    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super Map.Entry<K,List<V>>> function);
     
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Map.Entry<K,List<V>>> converter);    
-
-    
-}
+    }

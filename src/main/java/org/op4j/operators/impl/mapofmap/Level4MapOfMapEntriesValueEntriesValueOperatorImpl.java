@@ -24,8 +24,6 @@ import java.util.Map;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofmap.Level3MapOfMapEntriesValueEntriesOperator;
 import org.op4j.operators.intf.mapofmap.Level4MapOfMapEntriesValueEntriesValueOperator;
@@ -81,12 +79,12 @@ public final class Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1,K2,V> e
     }
 
 
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1, K2, V> ifTrue(final IEvaluator<Boolean, ? super V> eval) {
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1, K2, V> ifTrue(final IFunction<Boolean, ? super V> eval) {
         return new Level4MapOfMapEntriesValueEntriesValueSelectedOperatorImpl<K1, K2, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1, K2, V> ifFalse(final IEvaluator<Boolean, ? super V> eval) {
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1, K2, V> ifFalse(final IFunction<Boolean, ? super V> eval) {
         return new Level4MapOfMapEntriesValueEntriesValueSelectedOperatorImpl<K1, K2, V>(getTarget().selectNotMatching(eval));
     }
 
@@ -96,12 +94,12 @@ public final class Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1,K2,V> e
     }
 
 
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1, K2, V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval) {
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1, K2, V> ifNotNullAndTrue(final IFunction<Boolean, ? super V> eval) {
         return new Level4MapOfMapEntriesValueEntriesValueSelectedOperatorImpl<K1, K2, V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1, K2, V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval) {
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1, K2, V> ifNotNullAndFalse(final IFunction<Boolean, ? super V> eval) {
         return new Level4MapOfMapEntriesValueEntriesValueSelectedOperatorImpl<K1, K2, V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -111,25 +109,19 @@ public final class Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1,K2,V> e
     }
 
 
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1, K2, V> ifNullOrTrue(final IEvaluator<Boolean, ? super V> eval) {
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1, K2, V> ifNullOrTrue(final IFunction<Boolean, ? super V> eval) {
         return new Level4MapOfMapEntriesValueEntriesValueSelectedOperatorImpl<K1, K2, V>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1, K2, V> ifNullOrFalse(final IEvaluator<Boolean, ? super V> eval) {
+    public Level4MapOfMapEntriesValueEntriesValueSelectedOperator<K1, K2, V> ifNullOrFalse(final IFunction<Boolean, ? super V> eval) {
         return new Level4MapOfMapEntriesValueEntriesValueSelectedOperatorImpl<K1, K2, V>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
 
-    public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> convert(final IConverter<X, ? super V> converter) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().execute(converter, Normalisation.NONE));
-    }
-
-
-
-    public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> eval(final IEvaluator<X, ? super V> eval) {
-        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().execute(eval, Normalisation.NONE));
+    public <X> Level4MapOfMapEntriesValueEntriesValueOperator<K1, K2, X> execIfNotNull(final IFunction<X, ? super V> function) {
+        return new Level4MapOfMapEntriesValueEntriesValueOperatorImpl<K1, K2, X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

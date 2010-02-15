@@ -25,8 +25,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSetOfMapSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
@@ -68,21 +66,19 @@ public interface Level0SetOfMapSelectedOperator<K,V>
     public Level0SetOfMapSelectedOperator<K,V> addAll(final Collection<Map<K,V>> collection);
     public Level0SetOfMapSelectedOperator<K,V> removeAllIndexes(final int... indexes);
     public Level0SetOfMapSelectedOperator<K,V> removeAllEqual(final Map<K,V>... values);
-    public Level0SetOfMapSelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0SetOfMapSelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0SetOfMapSelectedOperator<K,V> removeAllNullOrFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0SetOfMapSelectedOperator<K,V> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0SetOfMapSelectedOperator<K,V> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level0SetOfMapSelectedOperator<K,V> removeAllNullOrTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level0SetOfMapSelectedOperator<K,V> removeAllTrue(final IFunction<Boolean, ? super Map<K,V>> eval);
+    public Level0SetOfMapSelectedOperator<K,V> removeAllFalse(final IFunction<Boolean, ? super Map<K,V>> eval);
+    public Level0SetOfMapSelectedOperator<K,V> removeAllNullOrFalse(final IFunction<Boolean, ? super Map<K,V>> eval);
+    public Level0SetOfMapSelectedOperator<K,V> removeAllNotNullAndFalse(final IFunction<Boolean, ? super Map<K,V>> eval);
+    public Level0SetOfMapSelectedOperator<K,V> removeAllNotNullAndTrue(final IFunction<Boolean, ? super Map<K,V>> eval);
+    public Level0SetOfMapSelectedOperator<K,V> removeAllNullOrTrue(final IFunction<Boolean, ? super Map<K,V>> eval);
     public Level0SetOfMapSelectedOperator<K,V> removeAllIndexesNot(final int... indexes);
     public Level0SetOfMapSelectedOperator<K,V> removeAllNull();
 
     
     
     
-    public Level0SetOfMapSelectedOperator<K,V> convertAsSetOfMap(final IConverter<? extends Set<? extends Map<? extends K,? extends V>>, ? super Set<Map<K,V>>> converter);
-    
-    public Level0SetOfMapSelectedOperator<K,V> evalAsSetOfMap(final IEvaluator<? extends Set<? extends Map<? extends K,? extends V>>, ? super Set<Map<K,V>>> eval);
+    public Level0SetOfMapSelectedOperator<K,V> execIfNotNullAsSetOfMap(final IFunction<? extends Set<? extends Map<? extends K,? extends V>>, ? super Set<Map<K,V>>> function);
 
     public Level0SetOfMapSelectedOperator<K,V> replaceWith(final Set<Map<K,V>> replacement);
 

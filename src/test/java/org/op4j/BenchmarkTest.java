@@ -63,7 +63,7 @@ public class BenchmarkTest {
 			
 			int seed = RandomUtils.nextInt(2);
 			boolean op4jFirst = 
-				Op.on(seed).convert(ToBoolean.fromNumber()).get().booleanValue();
+				Op.on(seed).exec(ToBoolean.fromNumber()).get().booleanValue();
 			
 			if (op4jFirst) {
 				
@@ -72,7 +72,7 @@ public class BenchmarkTest {
                 String[] upperNames1 = null; 
 				for (int i = 0; i < ITERATIONS; i++) {
 					upperNames1 = 
-						Op.onList(users).forEach().eval(Call.asString("getName")).exec(StringFuncs.toUpperCase()).endFor().toArrayOf(Types.STRING).get();
+						Op.onList(users).forEach().exec(Call.asString("getName")).exec(StringFuncs.toUpperCase()).endFor().toArrayOf(Types.STRING).get();
 				}
 				
 				stopWatch1.stop();
@@ -117,7 +117,7 @@ public class BenchmarkTest {
                 String[] upperNames2 = null; 
 				for (int i = 0; i < ITERATIONS; i++) {
 				    upperNames2 = 
-						Op.onList(users).forEach().eval(Call.asString("getName")).exec(StringFuncs.toUpperCase()).endFor().toArrayOf(Types.STRING).get();
+						Op.onList(users).forEach().exec(Call.asString("getName")).exec(StringFuncs.toUpperCase()).endFor().toArrayOf(Types.STRING).get();
 				}
 				
 				stopWatch2.stop();
@@ -155,7 +155,7 @@ public class BenchmarkTest {
 			Level1ListElementsOperator<String> op3 = null;
 			op4jWatch.start();
 			for (int i = 0; i < ITERATIONS; i++) {
-				op3 = op2.eval(Call.asString("getName"));
+				op3 = op2.exec(Call.asString("getName"));
 			}
 			op4jWatch.stop();
 			

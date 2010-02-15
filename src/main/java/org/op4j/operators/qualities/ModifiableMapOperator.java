@@ -21,7 +21,7 @@ package org.op4j.operators.qualities;
 
 import java.util.Map;
 
-import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.functions.IFunction;
 
 /**
  * <p>
@@ -123,7 +123,7 @@ public interface ModifiableMapOperator<K,V> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the modified map
      */
-    public ModifiableMapOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
+    public ModifiableMapOperator<K,V> removeAllTrue(final IFunction<Boolean, ? super Map.Entry<K,V>> eval);
     
     
     /**
@@ -138,7 +138,7 @@ public interface ModifiableMapOperator<K,V> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the modified map
      */
-    public ModifiableMapOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
+    public ModifiableMapOperator<K,V> removeAllFalse(final IFunction<Boolean, ? super Map.Entry<K,V>> eval);
     
     
     /**

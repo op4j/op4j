@@ -26,8 +26,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.op4j.functions.evaluators.IEvaluator;
-
 /**
  * 
  * @since 1.0
@@ -164,7 +162,7 @@ public final class SetFuncs {
     
     public static final class RemoveAllTrue<T> extends CollectionFuncs.RemoveAllTrue<T, Set<T>> {
 
-        public RemoveAllTrue(final IEvaluator<Boolean,? super T> eval) {
+        public RemoveAllTrue(final IFunction<Boolean,? super T> eval) {
             super(eval);
         }
 
@@ -180,7 +178,7 @@ public final class SetFuncs {
     
     public static final class RemoveAllFalse<T> extends CollectionFuncs.RemoveAllTrue<T, Set<T>> {
 
-        public RemoveAllFalse(final IEvaluator<Boolean,? super T> eval) {
+        public RemoveAllFalse(final IFunction<Boolean,? super T> eval) {
             super(eval);
         }
 
@@ -228,7 +226,7 @@ public final class SetFuncs {
     
     public static final class RemoveAllNotNullAndTrue<T> extends CollectionFuncs.RemoveAllNotNullAndTrue<T, Set<T>> {
 
-        public RemoveAllNotNullAndTrue(final IEvaluator<Boolean,? super T> eval) {
+        public RemoveAllNotNullAndTrue(final IFunction<Boolean,? super T> eval) {
             super(eval);
         }
 
@@ -244,7 +242,7 @@ public final class SetFuncs {
     
     public static final class RemoveAllNotNullAndFalse<T> extends CollectionFuncs.RemoveAllNotNullAndTrue<T, Set<T>> {
 
-        public RemoveAllNotNullAndFalse(final IEvaluator<Boolean,? super T> eval) {
+        public RemoveAllNotNullAndFalse(final IFunction<Boolean,? super T> eval) {
             super(eval);
         }
 
@@ -260,7 +258,7 @@ public final class SetFuncs {
     
     public static final class RemoveAllNullOrTrue<T> extends CollectionFuncs.RemoveAllNullOrTrue<T, Set<T>> {
 
-        public RemoveAllNullOrTrue(final IEvaluator<Boolean,? super T> eval) {
+        public RemoveAllNullOrTrue(final IFunction<Boolean,? super T> eval) {
             super(eval);
         }
 
@@ -276,7 +274,7 @@ public final class SetFuncs {
     
     public static final class RemoveAllNullOrFalse<T> extends CollectionFuncs.RemoveAllNullOrTrue<T, Set<T>> {
 
-        public RemoveAllNullOrFalse(final IEvaluator<Boolean,? super T> eval) {
+        public RemoveAllNullOrFalse(final IFunction<Boolean,? super T> eval) {
             super(eval);
         }
 

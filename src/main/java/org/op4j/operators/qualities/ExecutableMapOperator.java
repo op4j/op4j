@@ -22,8 +22,6 @@ package org.op4j.operators.qualities;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 
 
 
@@ -64,7 +62,7 @@ public interface ExecutableMapOperator<K,V> {
     /**
      * <p>
      * Specialisation of the {@link #execAsMap(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsMap(IFunction)}, and exists only for
@@ -76,25 +74,8 @@ public interface ExecutableMapOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X,Y> ExecutableMapOperator<X,Y> evalAsMap(final IEvaluator<? extends Map<X,Y>,? super Map<K,V>> eval);
-    
+    public <X,Y> ExecutableMapOperator<X,Y> execIfNotNullAsMap(final IFunction<? extends Map<X,Y>,? super Map<K,V>> function);
 
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsMap(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsMap(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param <X> the type of the resulting keys
-     * @param <Y> the type of the resulting values
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X,Y> ExecutableMapOperator<X,Y> convertAsMap(final IConverter<? extends Map<X,Y>,? super Map<K,V>> converter);
 
     
     /**
@@ -114,7 +95,7 @@ public interface ExecutableMapOperator<K,V> {
     /**
      * <p>
      * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #exec(IFunction)}, and exists only for
@@ -125,23 +106,7 @@ public interface ExecutableMapOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> Operator eval(final IEvaluator<X,? super Map<K,V>> eval);
+    public <X> Operator execIfNotNull(final IFunction<X,? super Map<K,V>> function);
     
-
-    /**
-     * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param <X> the type of the result object
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X> Operator convert(final IConverter<X,? super Map<K,V>> converter);    
     
 }

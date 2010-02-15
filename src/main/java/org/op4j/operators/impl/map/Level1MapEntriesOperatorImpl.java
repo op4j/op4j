@@ -23,8 +23,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.list.Level1ListElementsOperatorImpl;
 import org.op4j.operators.intf.list.Level1ListElementsOperator;
@@ -95,23 +93,18 @@ public final class Level1MapEntriesOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
-    public Level1MapEntriesSelectedOperator<K, V> ifTrue(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
+    public Level1MapEntriesSelectedOperator<K, V> ifTrue(final IFunction<Boolean, ? super Entry<K, V>> eval) {
         return new Level1MapEntriesSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1MapEntriesSelectedOperator<K, V> ifFalse(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
+    public Level1MapEntriesSelectedOperator<K, V> ifFalse(final IFunction<Boolean, ? super Entry<K, V>> eval) {
         return new Level1MapEntriesSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
 
 
-    public <X, Y> Level1MapEntriesOperator<X, Y> convertAsMapEntry(final IConverter<? extends Entry<X, Y>, ? super Entry<K, V>> converter) {
-        return new Level1MapEntriesOperatorImpl<X, Y>(getTarget().execute(converter, Normalisation.MAP_ENTRY));
-    }
-
-
-    public <X, Y> Level1MapEntriesOperator<X, Y> evalAsMapEntry(final IEvaluator<? extends Entry<X, Y>, ? super Entry<K, V>> eval) {
-        return new Level1MapEntriesOperatorImpl<X, Y>(getTarget().execute(eval, Normalisation.MAP_ENTRY));
+    public <X, Y> Level1MapEntriesOperator<X, Y> execIfNotNullAsMapEntry(final IFunction<? extends Entry<X, Y>, ? super Entry<K, V>> function) {
+        return new Level1MapEntriesOperatorImpl<X, Y>(getTarget().executeIfNotNull(function, Normalisation.MAP_ENTRY));
     }
 
 
@@ -120,13 +113,8 @@ public final class Level1MapEntriesOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
-    public <X> Level1ListElementsOperator<X> convert(final IConverter<X, ? super Entry<K, V>> converter) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
-    }
-
-
-    public <X> Level1ListElementsOperator<X> eval(final IEvaluator<X, ? super Entry<K, V>> eval) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
+    public <X> Level1ListElementsOperator<X> execIfNotNull(final IFunction<X, ? super Entry<K, V>> function) {
+        return new Level1ListElementsOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

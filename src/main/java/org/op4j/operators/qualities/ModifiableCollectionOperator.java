@@ -21,7 +21,7 @@ package org.op4j.operators.qualities;
 
 import java.util.Collection;
 
-import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.functions.IFunction;
 
 /**
  * <p>
@@ -149,7 +149,7 @@ public interface ModifiableCollectionOperator<T> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the modified target object
      */
-    public ModifiableCollectionOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableCollectionOperator<T> removeAllTrue(final IFunction<Boolean, ? super T> eval);
     
     
     /**
@@ -164,7 +164,7 @@ public interface ModifiableCollectionOperator<T> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the modified target object
      */
-    public ModifiableCollectionOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableCollectionOperator<T> removeAllFalse(final IFunction<Boolean, ? super T> eval);
     
     
     /**
@@ -179,7 +179,7 @@ public interface ModifiableCollectionOperator<T> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the modified target object
      */
-    public ModifiableCollectionOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableCollectionOperator<T> removeAllNullOrFalse(final IFunction<Boolean, ? super T> eval);
     
 
     /**
@@ -194,7 +194,7 @@ public interface ModifiableCollectionOperator<T> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the modified target object
      */
-    public ModifiableCollectionOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableCollectionOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
     
     
     /**
@@ -209,7 +209,7 @@ public interface ModifiableCollectionOperator<T> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the modified target object
      */
-    public ModifiableCollectionOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableCollectionOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
     
     
     /**
@@ -224,7 +224,7 @@ public interface ModifiableCollectionOperator<T> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the modified target object
      */
-    public ModifiableCollectionOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public ModifiableCollectionOperator<T> removeAllNullOrTrue(final IFunction<Boolean, ? super T> eval);
     
     
     /**

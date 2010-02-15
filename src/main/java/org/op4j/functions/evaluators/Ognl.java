@@ -28,6 +28,7 @@ import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.ExecCtx;
+import org.op4j.functions.IFunction;
 import org.op4j.util.VarArgsUtil;
 
 
@@ -39,7 +40,7 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class Ognl<R,T> implements IEvaluator<R,T> {
+public final class Ognl<R,T> implements IFunction<R,T> {
     
     
     

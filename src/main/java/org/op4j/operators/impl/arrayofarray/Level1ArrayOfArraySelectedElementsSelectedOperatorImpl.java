@@ -6,8 +6,6 @@ import java.util.Comparator;
 import org.javaruntype.type.Type;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.arrayofarray.Level1ArrayOfArraySelectedElementsOperator;
 import org.op4j.operators.intf.arrayofarray.Level1ArrayOfArraySelectedElementsSelectedOperator;
@@ -54,32 +52,32 @@ public final class Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T> ext
     }
 
 
-    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> removeAllTrue(final IEvaluator<Boolean,? super T> eval) {
+    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> removeAllTrue(final IFunction<Boolean,? super T> eval) {
         return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllTrue<T>(eval)));
     }
 
 
-    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> removeAllFalse(final IEvaluator<Boolean,? super T> eval) {
+    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> removeAllFalse(final IFunction<Boolean,? super T> eval) {
         return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllFalse<T>(eval)));
     }
 
 
-    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean,? super T> eval) {
+    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> removeAllNullOrFalse(final IFunction<Boolean,? super T> eval) {
         return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllNullOrFalse<T>(eval)));
     }
 
 
-    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean,? super T> eval) {
+    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean,? super T> eval) {
         return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllNotNullAndFalse<T>(eval)));
     }
 
 
-    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean,? super T> eval) {
+    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean,? super T> eval) {
         return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllNotNullAndTrue<T>(eval)));
     }
 
 
-    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean,? super T> eval) {
+    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> removeAllNullOrTrue(final IFunction<Boolean,? super T> eval) {
         return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllNullOrTrue<T>(eval)));
     }
 
@@ -94,13 +92,8 @@ public final class Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T> ext
     }
 
 
-    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> convertAsArray(final IConverter<? extends T[],? super T[]> converter) {
-        return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.ARRAY(this.type.getRawClass())));
-    }
-
-
-    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> evalAsArray(final IEvaluator<? extends T[],? super T[]> eval) {
-        return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.ARRAY(this.type.getRawClass())));
+    public Level1ArrayOfArraySelectedElementsSelectedOperator<T> execIfNotNullAsArray(final IFunction<? extends T[],? super T[]> function) {
+        return new Level1ArrayOfArraySelectedElementsSelectedOperatorImpl<T>(this.type, getTarget().executeIfNotNull(function, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 

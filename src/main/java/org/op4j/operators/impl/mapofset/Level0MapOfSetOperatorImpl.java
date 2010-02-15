@@ -28,8 +28,6 @@ import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.MapFuncs;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperatorImpl;
@@ -112,11 +110,11 @@ public final class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapOfSetOperator<K, V> removeAllTrue(final IEvaluator<Boolean, ? super Entry<K, Set<V>>> eval) {
+    public Level0MapOfSetOperator<K, V> removeAllTrue(final IFunction<Boolean, ? super Entry<K, Set<V>>> eval) {
         return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K, Set<V>>(eval)));
     }
 
-    public Level0MapOfSetOperator<K, V> removeAllFalse(final IEvaluator<Boolean, ? super Entry<K, Set<V>>> eval) {
+    public Level0MapOfSetOperator<K, V> removeAllFalse(final IFunction<Boolean, ? super Entry<K, Set<V>>> eval) {
         return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K, Set<V>>(eval)));
     }
 
@@ -156,7 +154,7 @@ public final class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public <K2> Level0MapOfMapOperator<K, K2, V> toMapOfMap(final IEvaluator<K2, ? super V> keyEval) {
+    public <K2> Level0MapOfMapOperator<K, K2, V> toMapOfMap(final IFunction<K2, ? super V> keyEval) {
         return forEachEntry().onValue().toMap(keyEval).endOn().endFor();
     }
 
@@ -206,12 +204,12 @@ public final class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapOfSetSelectedOperator<K, V> ifTrue(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
+    public Level0MapOfSetSelectedOperator<K, V> ifTrue(final IFunction<Boolean, ? super Map<K, Set<V>>> eval) {
         return new Level0MapOfSetSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level0MapOfSetSelectedOperator<K, V> ifFalse(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
+    public Level0MapOfSetSelectedOperator<K, V> ifFalse(final IFunction<Boolean, ? super Map<K, Set<V>>> eval) {
         return new Level0MapOfSetSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
 
@@ -221,12 +219,12 @@ public final class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapOfSetSelectedOperator<K, V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
+    public Level0MapOfSetSelectedOperator<K, V> ifNotNullAndTrue(final IFunction<Boolean, ? super Map<K, Set<V>>> eval) {
         return new Level0MapOfSetSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level0MapOfSetSelectedOperator<K, V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
+    public Level0MapOfSetSelectedOperator<K, V> ifNotNullAndFalse(final IFunction<Boolean, ? super Map<K, Set<V>>> eval) {
         return new Level0MapOfSetSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -236,23 +234,18 @@ public final class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapOfSetSelectedOperator<K, V> ifNullOrTrue(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
+    public Level0MapOfSetSelectedOperator<K, V> ifNullOrTrue(final IFunction<Boolean, ? super Map<K, Set<V>>> eval) {
         return new Level0MapOfSetSelectedOperatorImpl<K, V>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level0MapOfSetSelectedOperator<K, V> ifNullOrFalse(final IEvaluator<Boolean, ? super Map<K, Set<V>>> eval) {
+    public Level0MapOfSetSelectedOperator<K, V> ifNullOrFalse(final IFunction<Boolean, ? super Map<K, Set<V>>> eval) {
         return new Level0MapOfSetSelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public <X, Y> Level0MapOfSetOperator<X, Y> convertAsMapOfSet(final IConverter<? extends Map<X, ? extends Set<Y>>, ? super Map<K, Set<V>>> converter) {
-        return new Level0MapOfSetOperatorImpl<X, Y>(getTarget().execute(converter, Normalisation.MAP_OF_SET));
-    }
-
-
-    public <X, Y> Level0MapOfSetOperator<X, Y> evalAsMapOfSet(final IEvaluator<? extends Map<X, ? extends Set<Y>>, ? super Map<K, Set<V>>> eval) {
-        return new Level0MapOfSetOperatorImpl<X, Y>(getTarget().execute(eval, Normalisation.MAP_OF_SET));
+    public <X, Y> Level0MapOfSetOperator<X, Y> execIfNotNullAsMapOfSet(final IFunction<? extends Map<X, ? extends Set<Y>>, ? super Map<K, Set<V>>> function) {
+        return new Level0MapOfSetOperatorImpl<X, Y>(getTarget().executeIfNotNull(function, Normalisation.MAP_OF_SET));
     }
 
 
@@ -261,13 +254,8 @@ public final class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super Map<K, Set<V>>> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
-    }
-
-
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super Map<K, Set<V>>> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
+    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X, ? super Map<K, Set<V>>> function) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

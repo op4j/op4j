@@ -22,8 +22,6 @@ package org.op4j.operators.intf.listofarray;
 import java.util.List;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -48,9 +46,7 @@ public interface Level2ListOfArraySelectedElementsElementsSelectedOperator<T>
     public Level2ListOfArraySelectedElementsElementsOperator<T> endIf();
 
     
-    public Level2ListOfArraySelectedElementsElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter);
-    
-    public Level2ListOfArraySelectedElementsElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
+    public Level2ListOfArraySelectedElementsElementsSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function);
 
     public Level2ListOfArraySelectedElementsElementsSelectedOperator<T> replaceWith(final T replacement);
 

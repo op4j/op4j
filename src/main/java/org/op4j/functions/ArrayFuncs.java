@@ -33,7 +33,6 @@ import java.util.Set;
 
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -291,9 +290,9 @@ public final class ArrayFuncs {
     
     public static final class RemoveAllTrue<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
-        private final IEvaluator<Boolean,? super T> eval;
+        private final IFunction<Boolean,? super T> eval;
         
-        public RemoveAllTrue(final IEvaluator<Boolean,? super T> eval) {
+        public RemoveAllTrue(final IFunction<Boolean,? super T> eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
@@ -318,9 +317,9 @@ public final class ArrayFuncs {
     
     public static final class RemoveAllFalse<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
-        private final IEvaluator<Boolean,? super T> eval;
+        private final IFunction<Boolean,? super T> eval;
         
-        public RemoveAllFalse(final IEvaluator<Boolean,? super T> eval) {
+        public RemoveAllFalse(final IFunction<Boolean,? super T> eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
@@ -397,9 +396,9 @@ public final class ArrayFuncs {
     
     public static final class RemoveAllNotNullAndTrue<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
-        private final IEvaluator<Boolean,? super T> eval;
+        private final IFunction<Boolean,? super T> eval;
         
-        public RemoveAllNotNullAndTrue(final IEvaluator<Boolean,? super T> eval) {
+        public RemoveAllNotNullAndTrue(final IFunction<Boolean,? super T> eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
@@ -431,9 +430,9 @@ public final class ArrayFuncs {
     
     public static final class RemoveAllNotNullAndFalse<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
-        private final IEvaluator<Boolean,? super T> eval;
+        private final IFunction<Boolean,? super T> eval;
         
-        public RemoveAllNotNullAndFalse(final IEvaluator<Boolean,? super T> eval) {
+        public RemoveAllNotNullAndFalse(final IFunction<Boolean,? super T> eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
@@ -462,9 +461,9 @@ public final class ArrayFuncs {
     
     public static final class RemoveAllNullOrTrue<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
-        private final IEvaluator<Boolean,? super T> eval;
+        private final IFunction<Boolean,? super T> eval;
         
-        public RemoveAllNullOrTrue(final IEvaluator<Boolean,? super T> eval) {
+        public RemoveAllNullOrTrue(final IFunction<Boolean,? super T> eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
@@ -493,9 +492,9 @@ public final class ArrayFuncs {
     
     public static final class RemoveAllNullOrFalse<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
-        private final IEvaluator<Boolean,? super T> eval;
+        private final IFunction<Boolean,? super T> eval;
         
-        public RemoveAllNullOrFalse(final IEvaluator<Boolean,? super T> eval) {
+        public RemoveAllNullOrFalse(final IFunction<Boolean,? super T> eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;

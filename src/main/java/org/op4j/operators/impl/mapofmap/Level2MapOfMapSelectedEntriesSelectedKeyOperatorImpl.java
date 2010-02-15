@@ -3,8 +3,6 @@ package org.op4j.operators.impl.mapofmap;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofmap.Level1MapOfMapSelectedEntriesSelectedOperator;
 import org.op4j.operators.intf.mapofmap.Level2MapOfMapSelectedEntriesSelectedKeyOperator;
@@ -26,22 +24,22 @@ public final class Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V>
     }
 
 
-    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> ifTrue(final IEvaluator<Boolean, ? super K1> eval) {
+    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> ifTrue(final IFunction<Boolean, ? super K1> eval) {
         return new Level2MapOfMapSelectedEntriesSelectedKeySelectedOperatorImpl<K1,K2,V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> ifFalse(final IEvaluator<Boolean, ? super K1> eval) {
+    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> ifFalse(final IFunction<Boolean, ? super K1> eval) {
         return new Level2MapOfMapSelectedEntriesSelectedKeySelectedOperatorImpl<K1,K2,V>(getTarget().selectNotMatching(eval));
     }
 
 
-    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> ifNullOrFalse(final IEvaluator<Boolean, ? super K1> eval) {
+    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> ifNullOrFalse(final IFunction<Boolean, ? super K1> eval) {
         return new Level2MapOfMapSelectedEntriesSelectedKeySelectedOperatorImpl<K1,K2,V>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K1> eval) {
+    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> ifNotNullAndFalse(final IFunction<Boolean, ? super K1> eval) {
         return new Level2MapOfMapSelectedEntriesSelectedKeySelectedOperatorImpl<K1,K2,V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -51,7 +49,7 @@ public final class Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V>
     }
 
 
-    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> ifNullOrTrue(final IEvaluator<Boolean, ? super K1> eval) {
+    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> ifNullOrTrue(final IFunction<Boolean, ? super K1> eval) {
         return new Level2MapOfMapSelectedEntriesSelectedKeySelectedOperatorImpl<K1,K2,V>(getTarget().selectNullOrMatching(eval));
     }
 
@@ -66,13 +64,13 @@ public final class Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V>
     }
 
 
-    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K1> eval) {
+    public Level2MapOfMapSelectedEntriesSelectedKeySelectedOperator<K1,K2,V> ifNotNullAndTrue(final IFunction<Boolean, ? super K1> eval) {
         return new Level2MapOfMapSelectedEntriesSelectedKeySelectedOperatorImpl<K1,K2,V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level2MapOfMapSelectedEntriesSelectedKeyOperator<K1,K2,V> eval(final IEvaluator<? extends K1,? super K1> eval) {
-        return new Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V>(getTarget().execute(eval, Normalisation.NONE));
+    public Level2MapOfMapSelectedEntriesSelectedKeyOperator<K1,K2,V> execIfNotNull(final IFunction<? extends K1,? super K1> function) {
+        return new Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 
@@ -88,11 +86,6 @@ public final class Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V>
 
     public Level2MapOfMapSelectedEntriesSelectedKeyOperator<K1,K2,V> replaceWith(final K1 replacement) {
         return new Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V>(getTarget().replaceWith(replacement, Normalisation.NONE));
-    }
-
-
-    public Level2MapOfMapSelectedEntriesSelectedKeyOperator<K1,K2,V> convert(final IConverter<? extends K1,? super K1> converter) {
-        return new Level2MapOfMapSelectedEntriesSelectedKeyOperatorImpl<K1,K2,V>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 

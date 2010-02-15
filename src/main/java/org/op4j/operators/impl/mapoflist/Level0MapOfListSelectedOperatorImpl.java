@@ -7,8 +7,6 @@ import java.util.Map.Entry;
 
 import org.op4j.functions.IFunction;
 import org.op4j.functions.MapFuncs;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapoflist.Level0MapOfListOperator;
 import org.op4j.operators.intf.mapoflist.Level0MapOfListSelectedOperator;
@@ -32,12 +30,12 @@ public final class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOper
     }
 
 
-    public Level0MapOfListSelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean,? super Entry<K,List<V>>> eval) {
+    public Level0MapOfListSelectedOperator<K,V> removeAllTrue(final IFunction<Boolean,? super Entry<K,List<V>>> eval) {
         return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K,List<V>>(eval)));
     }
 
 
-    public Level0MapOfListSelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean,? super Entry<K,List<V>>> eval) {
+    public Level0MapOfListSelectedOperator<K,V> removeAllFalse(final IFunction<Boolean,? super Entry<K,List<V>>> eval) {
         return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K,List<V>>(eval)));
     }
 
@@ -62,13 +60,8 @@ public final class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOper
     }
 
 
-    public Level0MapOfListSelectedOperator<K,V> convertAsMapOfList(final IConverter<? extends Map<? extends K,? extends List<? extends V>>,? super Map<K,List<V>>> converter) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAP_OF_LIST));
-    }
-
-
-    public Level0MapOfListSelectedOperator<K,V> evalAsMapOfList(final IEvaluator<? extends Map<? extends K,? extends List<? extends V>>,? super Map<K,List<V>>> eval) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAP_OF_LIST));
+    public Level0MapOfListSelectedOperator<K,V> execIfNotNullAsMapOfList(final IFunction<? extends Map<? extends K,? extends List<? extends V>>,? super Map<K,List<V>>> function) {
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().executeIfNotNull(function, Normalisation.MAP_OF_LIST));
     }
 
 
@@ -92,14 +85,14 @@ public final class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOper
     }
 
 
-    public Level0MapOfListSelectedOperator<K,V> sort(final Comparator<? super Entry<K,List<V>>> comparator) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,List<V>>(comparator)));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level0MapOfListSelectedOperator<K,V> sort() {
         return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortByKey()));
+    }
+
+
+    public Level0MapOfListSelectedOperator<K,V> sort(final Comparator<? super Entry<K,List<V>>> comparator) {
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,List<V>>(comparator)));
     }
 
 

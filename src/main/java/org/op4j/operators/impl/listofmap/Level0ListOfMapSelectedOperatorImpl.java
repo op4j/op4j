@@ -7,8 +7,6 @@ import java.util.Map;
 
 import org.op4j.functions.IFunction;
 import org.op4j.functions.ListFuncs;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.listofmap.Level0ListOfMapOperator;
 import org.op4j.operators.intf.listofmap.Level0ListOfMapSelectedOperator;
@@ -52,32 +50,32 @@ public final class Level0ListOfMapSelectedOperatorImpl<K,V> extends AbstractOper
     }
 
 
-    public Level0ListOfMapSelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean,? super Map<K,V>> eval) {
+    public Level0ListOfMapSelectedOperator<K,V> removeAllTrue(final IFunction<Boolean,? super Map<K,V>> eval) {
         return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.RemoveAllTrue<Map<K,V>>(eval)));
     }
 
 
-    public Level0ListOfMapSelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean,? super Map<K,V>> eval) {
+    public Level0ListOfMapSelectedOperator<K,V> removeAllFalse(final IFunction<Boolean,? super Map<K,V>> eval) {
         return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.RemoveAllFalse<Map<K,V>>(eval)));
     }
 
 
-    public Level0ListOfMapSelectedOperator<K,V> removeAllNullOrFalse(final IEvaluator<Boolean,? super Map<K,V>> eval) {
+    public Level0ListOfMapSelectedOperator<K,V> removeAllNullOrFalse(final IFunction<Boolean,? super Map<K,V>> eval) {
         return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.RemoveAllNullOrFalse<Map<K,V>>(eval)));
     }
 
 
-    public Level0ListOfMapSelectedOperator<K,V> removeAllNotNullAndFalse(final IEvaluator<Boolean,? super Map<K,V>> eval) {
+    public Level0ListOfMapSelectedOperator<K,V> removeAllNotNullAndFalse(final IFunction<Boolean,? super Map<K,V>> eval) {
         return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.RemoveAllNotNullAndFalse<Map<K,V>>(eval)));
     }
 
 
-    public Level0ListOfMapSelectedOperator<K,V> removeAllNotNullAndTrue(final IEvaluator<Boolean,? super Map<K,V>> eval) {
+    public Level0ListOfMapSelectedOperator<K,V> removeAllNotNullAndTrue(final IFunction<Boolean,? super Map<K,V>> eval) {
         return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.RemoveAllNotNullAndTrue<Map<K,V>>(eval)));
     }
 
 
-    public Level0ListOfMapSelectedOperator<K,V> removeAllNullOrTrue(final IEvaluator<Boolean,? super Map<K,V>> eval) {
+    public Level0ListOfMapSelectedOperator<K,V> removeAllNullOrTrue(final IFunction<Boolean,? super Map<K,V>> eval) {
         return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.RemoveAllNullOrTrue<Map<K,V>>(eval)));
     }
 
@@ -97,13 +95,8 @@ public final class Level0ListOfMapSelectedOperatorImpl<K,V> extends AbstractOper
     }
 
 
-    public Level0ListOfMapSelectedOperator<K,V> convertAsListOfMap(final IConverter<? extends List<? extends Map<? extends K,? extends V>>,? super List<Map<K,V>>> converter) {
-        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.LIST_OF_MAP));
-    }
-
-
-    public Level0ListOfMapSelectedOperator<K,V> evalAsListOfMap(final IEvaluator<? extends List<? extends Map<? extends K,? extends V>>,? super List<Map<K,V>>> eval) {
-        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.LIST_OF_MAP));
+    public Level0ListOfMapSelectedOperator<K,V> execIfNotNullAsListOfMap(final IFunction<? extends List<? extends Map<? extends K,? extends V>>,? super List<Map<K,V>>> function) {
+        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().executeIfNotNull(function, Normalisation.LIST_OF_MAP));
     }
 
 
@@ -134,14 +127,14 @@ public final class Level0ListOfMapSelectedOperatorImpl<K,V> extends AbstractOper
     }
 
 
-    @SuppressWarnings("unchecked")
-    public Level0ListOfMapSelectedOperator<K,V> sort() {
-        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Sort()));
+    public Level0ListOfMapSelectedOperator<K,V> sort(final Comparator<? super Map<K,V>> comparator) {
+        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.SortByComparator<Map<K,V>>(comparator)));
     }
 
 
-    public Level0ListOfMapSelectedOperator<K,V> sort(final Comparator<? super Map<K,V>> comparator) {
-        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.SortByComparator<Map<K,V>>(comparator)));
+    @SuppressWarnings("unchecked")
+    public Level0ListOfMapSelectedOperator<K,V> sort() {
+        return new Level0ListOfMapSelectedOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Sort()));
     }
 
 

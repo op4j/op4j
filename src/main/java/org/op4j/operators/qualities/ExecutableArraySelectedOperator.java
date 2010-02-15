@@ -20,8 +20,6 @@
 package org.op4j.operators.qualities;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 
 
 
@@ -60,7 +58,7 @@ public interface ExecutableArraySelectedOperator<T> {
     /**
      * <p>
      * Specialisation of the {@link #execAsArray(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsArray(IFunction)}, and exists only for
@@ -70,23 +68,8 @@ public interface ExecutableArraySelectedOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public ExecutableArraySelectedOperator<T> evalAsArray(final IEvaluator<? extends T[],? super T[]> eval);
+    public ExecutableArraySelectedOperator<T> execIfNotNullAsArray(final IFunction<? extends T[],? super T[]> function);
 
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsArray(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsArray(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     * 
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public ExecutableArraySelectedOperator<T> convertAsArray(final IConverter<? extends T[],? super T[]> converter);
 
     
     /**

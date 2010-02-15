@@ -26,8 +26,6 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.map.Level2MapEntriesValueOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesValueOperator;
@@ -73,15 +71,15 @@ public interface Level2MapOfListEntriesValueOperator<K,V>
 
 
     public Level2MapOfListEntriesValueSelectedOperator<K,V> ifIndex(final int... indexes);
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super List<V>> eval);
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super List<V>> eval);
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super List<V>> eval);
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super List<V>> eval);
+    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifTrue(final IFunction<Boolean, ? super List<V>> eval);
+    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifFalse(final IFunction<Boolean, ? super List<V>> eval);
+    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifNullOrFalse(final IFunction<Boolean, ? super List<V>> eval);
+    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifNotNullAndFalse(final IFunction<Boolean, ? super List<V>> eval);
     public Level2MapOfListEntriesValueSelectedOperator<K,V> ifNull();
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super List<V>> eval);
+    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifNullOrTrue(final IFunction<Boolean, ? super List<V>> eval);
     public Level2MapOfListEntriesValueSelectedOperator<K,V> ifIndexNot(final int... indexes);
     public Level2MapOfListEntriesValueSelectedOperator<K,V> ifNotNull();
-    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super List<V>> eval);
+    public Level2MapOfListEntriesValueSelectedOperator<K,V> ifNotNullAndTrue(final IFunction<Boolean, ? super List<V>> eval);
 
     
     public Level3MapOfListEntriesValueElementsOperator<K,V> forEach();
@@ -101,12 +99,12 @@ public interface Level2MapOfListEntriesValueOperator<K,V>
     public Level2MapOfListEntriesValueOperator<K,V> addAll(final Collection<V> collection);
     public Level2MapOfListEntriesValueOperator<K,V> removeAllIndexes(final int... indexes);
     public Level2MapOfListEntriesValueOperator<K,V> removeAllEqual(final V... values);
-    public Level2MapOfListEntriesValueOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfListEntriesValueOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfListEntriesValueOperator<K,V> removeAllNullOrFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfListEntriesValueOperator<K,V> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfListEntriesValueOperator<K,V> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfListEntriesValueOperator<K,V> removeAllNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level2MapOfListEntriesValueOperator<K,V> removeAllTrue(final IFunction<Boolean, ? super V> eval);
+    public Level2MapOfListEntriesValueOperator<K,V> removeAllFalse(final IFunction<Boolean, ? super V> eval);
+    public Level2MapOfListEntriesValueOperator<K,V> removeAllNullOrFalse(final IFunction<Boolean, ? super V> eval);
+    public Level2MapOfListEntriesValueOperator<K,V> removeAllNotNullAndFalse(final IFunction<Boolean, ? super V> eval);
+    public Level2MapOfListEntriesValueOperator<K,V> removeAllNotNullAndTrue(final IFunction<Boolean, ? super V> eval);
+    public Level2MapOfListEntriesValueOperator<K,V> removeAllNullOrTrue(final IFunction<Boolean, ? super V> eval);
     public Level2MapOfListEntriesValueOperator<K,V> removeAllIndexesNot(final int... indexes);
     public Level2MapOfListEntriesValueOperator<K,V> removeAllNull();
     public Level2MapOfArrayEntriesValueOperator<K,V> toArrayOf(final Type<V> type);
@@ -115,7 +113,7 @@ public interface Level2MapOfListEntriesValueOperator<K,V>
     public Level2MapOfSetEntriesValueOperator<K,V> toSet();
     
     public Level2MapOfMapEntriesValueOperator<K,V,V> toMap();
-    public <K2> Level2MapOfMapEntriesValueOperator<K,K2,V> toMap(final IEvaluator<K2,? super V> keyEval);
+    public <K2> Level2MapOfMapEntriesValueOperator<K,K2,V> toMap(final IFunction<K2,? super V> keyEval);
     public <K2,V2> Level2MapOfMapEntriesValueOperator<K,K2,V2> toMap(final IMapBuilder<K2,V2,? super V> mapBuild);
 
     
@@ -123,18 +121,14 @@ public interface Level2MapOfListEntriesValueOperator<K,V>
     public Level2MapOfListEntriesValueOperator<K,V> replaceIfNullWith(final List<V> replacement);
 
 
-    public <X> Level2MapOfListEntriesValueOperator<K,X> convertAsList(final IConverter<? extends List<X>,? super List<V>> converter);
-    
-    public <X> Level2MapOfListEntriesValueOperator<K,X> evalAsList(final IEvaluator<? extends List<X>,? super List<V>> eval);
+    public <X> Level2MapOfListEntriesValueOperator<K,X> execIfNotNullAsList(final IFunction<? extends List<X>,? super List<V>> function);
 
     public <X> Level2MapOfListEntriesValueOperator<K,X> execAsList(final IFunction<? extends List<X>, ? super List<V>> function);
 
     public <X> Level2MapEntriesValueOperator<K,X> exec(final IFunction<X, ? super List<V>> function);
     
-    public <X> Level2MapEntriesValueOperator<K,X> eval(final IEvaluator<X,? super List<V>> eval);
+    public <X> Level2MapEntriesValueOperator<K,X> execIfNotNull(final IFunction<X,? super List<V>> function);
     
-    public <X> Level2MapEntriesValueOperator<K,X> convert(final IConverter<X,? super List<V>> converter);    
-
     public <X> Level2MapOfListEntriesValueOperator<K,X> map(final IFunction<X,? super V> function);
     
     

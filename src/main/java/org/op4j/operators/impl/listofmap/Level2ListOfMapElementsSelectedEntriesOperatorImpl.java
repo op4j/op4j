@@ -5,8 +5,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.listofmap.Level1ListOfMapElementsSelectedOperator;
 import org.op4j.operators.intf.listofmap.Level2ListOfMapElementsSelectedEntriesOperator;
@@ -30,12 +28,12 @@ public final class Level2ListOfMapElementsSelectedEntriesOperatorImpl<K,V> exten
     }
 
 
-    public Level2ListOfMapElementsSelectedEntriesSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Entry<K,V>> eval) {
+    public Level2ListOfMapElementsSelectedEntriesSelectedOperator<K,V> ifTrue(final IFunction<Boolean, ? super Entry<K,V>> eval) {
         return new Level2ListOfMapElementsSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level2ListOfMapElementsSelectedEntriesSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Entry<K,V>> eval) {
+    public Level2ListOfMapElementsSelectedEntriesSelectedOperator<K,V> ifFalse(final IFunction<Boolean, ? super Entry<K,V>> eval) {
         return new Level2ListOfMapElementsSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().selectNotMatching(eval));
     }
 
@@ -75,13 +73,8 @@ public final class Level2ListOfMapElementsSelectedEntriesOperatorImpl<K,V> exten
     }
 
 
-    public Level2ListOfMapElementsSelectedEntriesOperator<K,V> evalAsMapEntry(final IEvaluator<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> eval) {
-        return new Level2ListOfMapElementsSelectedEntriesOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAP_ENTRY));
-    }
-
-
-    public Level2ListOfMapElementsSelectedEntriesOperator<K,V> convertAsMapEntry(final IConverter<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> converter) {
-        return new Level2ListOfMapElementsSelectedEntriesOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAP_ENTRY));
+    public Level2ListOfMapElementsSelectedEntriesOperator<K,V> execIfNotNullAsMapEntry(final IFunction<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> function) {
+        return new Level2ListOfMapElementsSelectedEntriesOperatorImpl<K,V>(getTarget().executeIfNotNull(function, Normalisation.MAP_ENTRY));
     }
 
 

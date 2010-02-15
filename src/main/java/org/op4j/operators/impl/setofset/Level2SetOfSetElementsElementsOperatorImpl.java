@@ -24,8 +24,6 @@ import java.util.Set;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.setofset.Level1SetOfSetElementsOperator;
 import org.op4j.operators.intf.setofset.Level2SetOfSetElementsElementsOperator;
@@ -79,12 +77,12 @@ public final class Level2SetOfSetElementsElementsOperatorImpl<T> extends Abstrac
     }
 
 
-    public Level2SetOfSetElementsElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval) {
+    public Level2SetOfSetElementsElementsSelectedOperator<T> ifTrue(final IFunction<Boolean, ? super T> eval) {
         return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectMatching(eval));
     }
 
 
-    public Level2SetOfSetElementsElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval) {
+    public Level2SetOfSetElementsElementsSelectedOperator<T> ifFalse(final IFunction<Boolean, ? super T> eval) {
         return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectNotMatching(eval));
     }
 
@@ -94,12 +92,12 @@ public final class Level2SetOfSetElementsElementsOperatorImpl<T> extends Abstrac
     }
 
 
-    public Level2SetOfSetElementsElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval) {
+    public Level2SetOfSetElementsElementsSelectedOperator<T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval) {
         return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level2SetOfSetElementsElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval) {
+    public Level2SetOfSetElementsElementsSelectedOperator<T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval) {
         return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -109,23 +107,18 @@ public final class Level2SetOfSetElementsElementsOperatorImpl<T> extends Abstrac
     }
 
 
-    public Level2SetOfSetElementsElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval) {
+    public Level2SetOfSetElementsElementsSelectedOperator<T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval) {
         return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level2SetOfSetElementsElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval) {
+    public Level2SetOfSetElementsElementsSelectedOperator<T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval) {
         return new Level2SetOfSetElementsElementsSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public <X> Level2SetOfSetElementsElementsOperator<X> convert(final IConverter<X, ? super T> converter) {
-        return new Level2SetOfSetElementsElementsOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
-    }
-
-
-    public <X> Level2SetOfSetElementsElementsOperator<X> eval(final IEvaluator<X, ? super T> eval) {
-        return new Level2SetOfSetElementsElementsOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
+    public <X> Level2SetOfSetElementsElementsOperator<X> execIfNotNull(final IFunction<X, ? super T> function) {
+        return new Level2SetOfSetElementsElementsOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

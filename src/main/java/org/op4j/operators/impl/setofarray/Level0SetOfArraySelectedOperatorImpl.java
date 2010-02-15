@@ -7,8 +7,6 @@ import java.util.Set;
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.SetFuncs;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.setofarray.Level0SetOfArrayOperator;
 import org.op4j.operators.intf.setofarray.Level0SetOfArraySelectedOperator;
@@ -51,32 +49,32 @@ public final class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOpera
     }
 
 
-    public Level0SetOfArraySelectedOperator<T> removeAllTrue(final IEvaluator<Boolean,? super T[]> eval) {
+    public Level0SetOfArraySelectedOperator<T> removeAllTrue(final IFunction<Boolean,? super T[]> eval) {
         return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.RemoveAllTrue<T[]>(eval)));
     }
 
 
-    public Level0SetOfArraySelectedOperator<T> removeAllFalse(final IEvaluator<Boolean,? super T[]> eval) {
+    public Level0SetOfArraySelectedOperator<T> removeAllFalse(final IFunction<Boolean,? super T[]> eval) {
         return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.RemoveAllFalse<T[]>(eval)));
     }
 
 
-    public Level0SetOfArraySelectedOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean,? super T[]> eval) {
+    public Level0SetOfArraySelectedOperator<T> removeAllNullOrFalse(final IFunction<Boolean,? super T[]> eval) {
         return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.RemoveAllNullOrFalse<T[]>(eval)));
     }
 
 
-    public Level0SetOfArraySelectedOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean,? super T[]> eval) {
+    public Level0SetOfArraySelectedOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean,? super T[]> eval) {
         return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.RemoveAllNotNullAndFalse<T[]>(eval)));
     }
 
 
-    public Level0SetOfArraySelectedOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean,? super T[]> eval) {
+    public Level0SetOfArraySelectedOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean,? super T[]> eval) {
         return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.RemoveAllNotNullAndTrue<T[]>(eval)));
     }
 
 
-    public Level0SetOfArraySelectedOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean,? super T[]> eval) {
+    public Level0SetOfArraySelectedOperator<T> removeAllNullOrTrue(final IFunction<Boolean,? super T[]> eval) {
         return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.RemoveAllNullOrTrue<T[]>(eval)));
     }
 
@@ -101,13 +99,8 @@ public final class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOpera
     }
 
 
-    public Level0SetOfArraySelectedOperator<T> convertAsSetOfArray(final IConverter<? extends Set<? extends T[]>,? super Set<T[]>> converter) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.SET_OF_ARRAY(this.type.getRawClass())));
-    }
-
-
-    public Level0SetOfArraySelectedOperator<T> evalAsSetOfArray(final IEvaluator<? extends Set<? extends T[]>,? super Set<T[]>> eval) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.SET_OF_ARRAY(this.type.getRawClass())));
+    public Level0SetOfArraySelectedOperator<T> execIfNotNullAsSetOfArray(final IFunction<? extends Set<? extends T[]>,? super Set<T[]>> function) {
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().executeIfNotNull(function, Normalisation.SET_OF_ARRAY(this.type.getRawClass())));
     }
 
 
@@ -122,13 +115,13 @@ public final class Level0SetOfArraySelectedOperatorImpl<T> extends AbstractOpera
     }
 
 
-    public Level0SetOfArraySelectedOperator<T> addAll(final Collection<T[]> collection) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.AddAll<T[]>(NormalisationUtils.normaliseArrays(collection, this.type.getRawClass()))));
+    public Level0SetOfArraySelectedOperator<T> addAll(final T[]... newElements) {
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.Add<T[]>(NormalisationUtils.normaliseArrays(newElements, this.type.getRawClass()))));
     }
 
 
-    public Level0SetOfArraySelectedOperator<T> addAll(final T[]... newElements) {
-        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.Add<T[]>(NormalisationUtils.normaliseArrays(newElements, this.type.getRawClass()))));
+    public Level0SetOfArraySelectedOperator<T> addAll(final Collection<T[]> collection) {
+        return new Level0SetOfArraySelectedOperatorImpl<T>(this.type, getTarget().execute(new SetFuncs.AddAll<T[]>(NormalisationUtils.normaliseArrays(collection, this.type.getRawClass()))));
     }
 
 

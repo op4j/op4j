@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.functions.IFunction;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.listofmap.Level0ListOfMapOperator;
 
@@ -59,7 +59,7 @@ public interface ConvertibleToListOfMapOperator<T> {
      * @param keyEval the evaluator to be used for obtaining keys
      * @return an operator holding the converted object as target.
      */
-    public <K> Level0ListOfMapOperator<K,T> toListOfMap(final IEvaluator<K,? super T> keyEval);
+    public <K> Level0ListOfMapOperator<K,T> toListOfMap(final IFunction<K,? super T> keyEval);
 
     
     /**

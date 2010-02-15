@@ -21,8 +21,6 @@ package org.op4j.operators.qualities;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 
 
 
@@ -59,7 +57,7 @@ public interface ExecutableArrayElementsOperator<T> {
     /**
      * <p>
      * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #exec(IFunction)}, and exists only for
@@ -69,23 +67,7 @@ public interface ExecutableArrayElementsOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public ExecutableArrayElementsOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
-
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public ExecutableArrayElementsOperator<T> convert(final IConverter<? extends T,? super T> converter);
+    public ExecutableArrayElementsOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function);
 
     
     /**
@@ -109,7 +91,7 @@ public interface ExecutableArrayElementsOperator<T> {
     /**
      * <p>
      * Specialisation of the {@link #exec(Type,IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #exec(Type,IFunction)}, and exists only for
@@ -120,23 +102,7 @@ public interface ExecutableArrayElementsOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> ExecutableArrayElementsOperator<X> eval(final Type<X> type, final IEvaluator<X,? super T> eval);
+    public <X> ExecutableArrayElementsOperator<X> execIfNotNull(final Type<X> type, final IFunction<X,? super T> function);
 
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #exec(Type,IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(Type,IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param <X> the type of the results, and new type for the operator
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X> ExecutableArrayElementsOperator<X> convert(final Type<X> type, final IConverter<X,? super T> converter);
     
 }

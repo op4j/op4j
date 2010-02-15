@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.functions.IFunction;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.arrayofmap.Level0ArrayOfMapOperator;
 
@@ -59,7 +59,7 @@ public interface ConvertibleToArrayOfMapOperator<T> {
      * @param keyEval the evaluator to be used for obtaining keys
      * @return an operator holding the converted object as target.
      */
-    public <K> Level0ArrayOfMapOperator<K,T> toArrayOfMap(final IEvaluator<K,? super T> keyEval);
+    public <K> Level0ArrayOfMapOperator<K,T> toArrayOfMap(final IFunction<K,? super T> keyEval);
     
     
     /**

@@ -4,8 +4,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofmap.Level1MapOfMapEntriesOperator;
 import org.op4j.operators.intf.mapofmap.Level1MapOfMapEntriesSelectedOperator;
@@ -43,13 +41,8 @@ public final class Level1MapOfMapEntriesSelectedOperatorImpl<K1,K2,V> extends Ab
     }
 
 
-    public Level1MapOfMapEntriesSelectedOperator<K1,K2,V> evalAsMapOfMapEntry(final IEvaluator<? extends Entry<? extends K1,? extends Map<? extends K2,? extends V>>,? super Entry<K1,Map<K2,V>>> eval) {
-        return new Level1MapOfMapEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().execute(eval, Normalisation.MAP_OF_MAP_ENTRY));
-    }
-
-
-    public Level1MapOfMapEntriesSelectedOperator<K1,K2,V> convertAsMapOfMapEntry(final IConverter<? extends Entry<? extends K1,? extends Map<? extends K2,? extends V>>,? super Entry<K1,Map<K2,V>>> converter) {
-        return new Level1MapOfMapEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().execute(converter, Normalisation.MAP_OF_MAP_ENTRY));
+    public Level1MapOfMapEntriesSelectedOperator<K1,K2,V> execIfNotNullAsMapOfMapEntry(final IFunction<? extends Entry<? extends K1,? extends Map<? extends K2,? extends V>>,? super Entry<K1,Map<K2,V>>> function) {
+        return new Level1MapOfMapEntriesSelectedOperatorImpl<K1,K2,V>(getTarget().executeIfNotNull(function, Normalisation.MAP_OF_MAP_ENTRY));
     }
 
 

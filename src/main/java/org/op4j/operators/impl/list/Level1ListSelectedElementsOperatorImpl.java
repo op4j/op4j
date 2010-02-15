@@ -3,8 +3,6 @@ package org.op4j.operators.impl.list;
 import java.util.List;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.list.Level0ListSelectedOperator;
 import org.op4j.operators.intf.list.Level1ListSelectedElementsOperator;
@@ -26,22 +24,22 @@ public final class Level1ListSelectedElementsOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1ListSelectedElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval) {
+    public Level1ListSelectedElementsSelectedOperator<T> ifTrue(final IFunction<Boolean, ? super T> eval) {
         return new Level1ListSelectedElementsSelectedOperatorImpl<T>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1ListSelectedElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval) {
+    public Level1ListSelectedElementsSelectedOperator<T> ifFalse(final IFunction<Boolean, ? super T> eval) {
         return new Level1ListSelectedElementsSelectedOperatorImpl<T>(getTarget().selectNotMatching(eval));
     }
 
 
-    public Level1ListSelectedElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval) {
+    public Level1ListSelectedElementsSelectedOperator<T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval) {
         return new Level1ListSelectedElementsSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public Level1ListSelectedElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval) {
+    public Level1ListSelectedElementsSelectedOperator<T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval) {
         return new Level1ListSelectedElementsSelectedOperatorImpl<T>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -51,7 +49,7 @@ public final class Level1ListSelectedElementsOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1ListSelectedElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval) {
+    public Level1ListSelectedElementsSelectedOperator<T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval) {
         return new Level1ListSelectedElementsSelectedOperatorImpl<T>(getTarget().selectNullOrMatching(eval));
     }
 
@@ -66,13 +64,13 @@ public final class Level1ListSelectedElementsOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1ListSelectedElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval) {
+    public Level1ListSelectedElementsSelectedOperator<T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval) {
         return new Level1ListSelectedElementsSelectedOperatorImpl<T>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level1ListSelectedElementsOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return new Level1ListSelectedElementsOperatorImpl<T>(getTarget().execute(eval, Normalisation.NONE));
+    public Level1ListSelectedElementsOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function) {
+        return new Level1ListSelectedElementsOperatorImpl<T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 
@@ -88,11 +86,6 @@ public final class Level1ListSelectedElementsOperatorImpl<T> extends AbstractOpe
 
     public Level1ListSelectedElementsOperator<T> replaceWith(final T replacement) {
         return new Level1ListSelectedElementsOperatorImpl<T>(getTarget().replaceWith(replacement, Normalisation.NONE));
-    }
-
-
-    public Level1ListSelectedElementsOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return new Level1ListSelectedElementsOperatorImpl<T>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 

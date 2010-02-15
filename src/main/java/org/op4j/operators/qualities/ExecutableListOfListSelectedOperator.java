@@ -22,8 +22,6 @@ package org.op4j.operators.qualities;
 import java.util.List;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 
 
 
@@ -62,7 +60,7 @@ public interface ExecutableListOfListSelectedOperator<T> {
     /**
      * <p>
      * Specialisation of the {@link #execAsListOfList(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsListOfList(IFunction)}, and exists only for
@@ -72,23 +70,8 @@ public interface ExecutableListOfListSelectedOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public ExecutableListOfListSelectedOperator<T> evalAsListOfList(final IEvaluator<? extends List<? extends List<? extends T>>,? super List<List<T>>> eval);
+    public ExecutableListOfListSelectedOperator<T> execIfNotNullAsListOfList(final IFunction<? extends List<? extends List<? extends T>>,? super List<List<T>>> function);
 
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsListOfList(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsListOfList(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     * 
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public ExecutableListOfListSelectedOperator<T> convertAsListOfList(final IConverter<? extends List<? extends List<? extends T>>,? super List<List<T>>> converter);
  
     
     

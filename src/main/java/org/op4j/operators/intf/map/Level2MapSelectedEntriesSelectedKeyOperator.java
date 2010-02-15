@@ -22,8 +22,6 @@ package org.op4j.operators.intf.map;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
@@ -48,15 +46,15 @@ public interface Level2MapSelectedEntriesSelectedKeyOperator<K,V>
 
 
     public Level2MapSelectedEntriesSelectedKeySelectedOperator<K,V> ifIndex(final int... indexes);
-    public Level2MapSelectedEntriesSelectedKeySelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapSelectedEntriesSelectedKeySelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapSelectedEntriesSelectedKeySelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval);
-    public Level2MapSelectedEntriesSelectedKeySelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapSelectedEntriesSelectedKeySelectedOperator<K,V> ifTrue(final IFunction<Boolean, ? super K> eval);
+    public Level2MapSelectedEntriesSelectedKeySelectedOperator<K,V> ifFalse(final IFunction<Boolean, ? super K> eval);
+    public Level2MapSelectedEntriesSelectedKeySelectedOperator<K,V> ifNullOrFalse(final IFunction<Boolean, ? super K> eval);
+    public Level2MapSelectedEntriesSelectedKeySelectedOperator<K,V> ifNotNullAndFalse(final IFunction<Boolean, ? super K> eval);
     public Level2MapSelectedEntriesSelectedKeySelectedOperator<K,V> ifNull();
-    public Level2MapSelectedEntriesSelectedKeySelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapSelectedEntriesSelectedKeySelectedOperator<K,V> ifNullOrTrue(final IFunction<Boolean, ? super K> eval);
     public Level2MapSelectedEntriesSelectedKeySelectedOperator<K,V> ifIndexNot(final int... indexes);
     public Level2MapSelectedEntriesSelectedKeySelectedOperator<K,V> ifNotNull();
-    public Level2MapSelectedEntriesSelectedKeySelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval);
+    public Level2MapSelectedEntriesSelectedKeySelectedOperator<K,V> ifNotNullAndTrue(final IFunction<Boolean, ? super K> eval);
 
     
     public Level1MapSelectedEntriesSelectedOperator<K,V> endOn();
@@ -65,9 +63,6 @@ public interface Level2MapSelectedEntriesSelectedKeyOperator<K,V>
 
     public Level2MapSelectedEntriesSelectedKeyOperator<K,V> exec(final IFunction<? extends K, ? super K> function);
     
-    public Level2MapSelectedEntriesSelectedKeyOperator<K,V> eval(final IEvaluator<? extends K, ? super K> eval);
+    public Level2MapSelectedEntriesSelectedKeyOperator<K,V> execIfNotNull(final IFunction<? extends K, ? super K> function);
     
-    public Level2MapSelectedEntriesSelectedKeyOperator<K,V> convert(final IConverter<? extends K, ? super K> converter);
-    
-        
-}
+    }

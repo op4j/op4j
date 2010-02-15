@@ -7,8 +7,6 @@ import java.util.Set;
 
 import org.op4j.functions.IFunction;
 import org.op4j.functions.SetFuncs;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofset.Level1MapOfSetEntriesSelectedOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesSelectedValueOperator;
@@ -32,22 +30,22 @@ public final class Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V> extends A
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Set<V>> eval) {
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> ifTrue(final IFunction<Boolean, ? super Set<V>> eval) {
         return new Level2MapOfSetEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Set<V>> eval) {
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> ifFalse(final IFunction<Boolean, ? super Set<V>> eval) {
         return new Level2MapOfSetEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().selectNotMatching(eval));
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super Set<V>> eval) {
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> ifNullOrFalse(final IFunction<Boolean, ? super Set<V>> eval) {
         return new Level2MapOfSetEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Set<V>> eval) {
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> ifNotNullAndFalse(final IFunction<Boolean, ? super Set<V>> eval) {
         return new Level2MapOfSetEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -57,7 +55,7 @@ public final class Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V> extends A
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super Set<V>> eval) {
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> ifNullOrTrue(final IFunction<Boolean, ? super Set<V>> eval) {
         return new Level2MapOfSetEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().selectNullOrMatching(eval));
     }
 
@@ -72,7 +70,7 @@ public final class Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V> extends A
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Set<V>> eval) {
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> ifNotNullAndTrue(final IFunction<Boolean, ? super Set<V>> eval) {
         return new Level2MapOfSetEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().selectNotNullAndMatching(eval));
     }
 
@@ -97,32 +95,32 @@ public final class Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V> extends A
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueOperator<K,V> removeAllTrue(final IEvaluator<Boolean,? super V> eval) {
+    public Level2MapOfSetEntriesSelectedValueOperator<K,V> removeAllTrue(final IFunction<Boolean,? super V> eval) {
         return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllTrue<V>(eval)));
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueOperator<K,V> removeAllFalse(final IEvaluator<Boolean,? super V> eval) {
+    public Level2MapOfSetEntriesSelectedValueOperator<K,V> removeAllFalse(final IFunction<Boolean,? super V> eval) {
         return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllFalse<V>(eval)));
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueOperator<K,V> removeAllNullOrFalse(final IEvaluator<Boolean,? super V> eval) {
+    public Level2MapOfSetEntriesSelectedValueOperator<K,V> removeAllNullOrFalse(final IFunction<Boolean,? super V> eval) {
         return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllNullOrFalse<V>(eval)));
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueOperator<K,V> removeAllNotNullAndFalse(final IEvaluator<Boolean,? super V> eval) {
+    public Level2MapOfSetEntriesSelectedValueOperator<K,V> removeAllNotNullAndFalse(final IFunction<Boolean,? super V> eval) {
         return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllNotNullAndFalse<V>(eval)));
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueOperator<K,V> removeAllNotNullAndTrue(final IEvaluator<Boolean,? super V> eval) {
+    public Level2MapOfSetEntriesSelectedValueOperator<K,V> removeAllNotNullAndTrue(final IFunction<Boolean,? super V> eval) {
         return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllNotNullAndTrue<V>(eval)));
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueOperator<K,V> removeAllNullOrTrue(final IEvaluator<Boolean,? super V> eval) {
+    public Level2MapOfSetEntriesSelectedValueOperator<K,V> removeAllNullOrTrue(final IFunction<Boolean,? super V> eval) {
         return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllNullOrTrue<V>(eval)));
     }
 
@@ -142,13 +140,8 @@ public final class Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V> extends A
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueOperator<K,V> convertAsSet(final IConverter<? extends Set<? extends V>,? super Set<V>> converter) {
-        return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.SET));
-    }
-
-
-    public Level2MapOfSetEntriesSelectedValueOperator<K,V> evalAsSet(final IEvaluator<? extends Set<? extends V>,? super Set<V>> eval) {
-        return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.SET));
+    public Level2MapOfSetEntriesSelectedValueOperator<K,V> execIfNotNullAsSet(final IFunction<? extends Set<? extends V>,? super Set<V>> function) {
+        return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().executeIfNotNull(function, Normalisation.SET));
     }
 
 
@@ -163,13 +156,13 @@ public final class Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V> extends A
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueOperator<K,V> addAll(final Collection<V> collection) {
-        return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.AddAll<V>(collection)));
+    public Level2MapOfSetEntriesSelectedValueOperator<K,V> addAll(final V... newElements) {
+        return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Add<V>(newElements)));
     }
 
 
-    public Level2MapOfSetEntriesSelectedValueOperator<K,V> addAll(final V... newElements) {
-        return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Add<V>(newElements)));
+    public Level2MapOfSetEntriesSelectedValueOperator<K,V> addAll(final Collection<V> collection) {
+        return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new SetFuncs.AddAll<V>(collection)));
     }
 
 

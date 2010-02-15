@@ -25,8 +25,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSetSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
@@ -68,19 +66,17 @@ public interface Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V>
     public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> addAll(final Collection<V> collection);
     public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> removeAllIndexes(final int... indexes);
     public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> removeAllEqual(final V... values);
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> removeAllNullOrFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> removeAllNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> removeAllTrue(final IFunction<Boolean, ? super V> eval);
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> removeAllFalse(final IFunction<Boolean, ? super V> eval);
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> removeAllNullOrFalse(final IFunction<Boolean, ? super V> eval);
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> removeAllNotNullAndFalse(final IFunction<Boolean, ? super V> eval);
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> removeAllNotNullAndTrue(final IFunction<Boolean, ? super V> eval);
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> removeAllNullOrTrue(final IFunction<Boolean, ? super V> eval);
     public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> removeAllIndexesNot(final int... indexes);
     public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> removeAllNull();
 
     
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> convertAsSet(final IConverter<? extends Set<? extends V>, ? super Set<V>> converter);
-    
-    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> evalAsSet(final IEvaluator<? extends Set<? extends V>, ? super Set<V>> eval);
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> execIfNotNullAsSet(final IFunction<? extends Set<? extends V>, ? super Set<V>> function);
 
     public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> replaceWith(final Set<V> replacement);
 

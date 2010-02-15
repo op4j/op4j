@@ -22,8 +22,6 @@ package org.op4j.operators.qualities;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 
 
 
@@ -62,7 +60,7 @@ public interface ExecutableMapEntrySelectedOperator<K,V> {
     /**
      * <p>
      * Specialisation of the {@link #execAsMapEntry(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsMapEntry(IFunction)}, and exists only for
@@ -72,22 +70,7 @@ public interface ExecutableMapEntrySelectedOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public ExecutableMapEntrySelectedOperator<K,V> evalAsMapEntry(final IEvaluator<? extends Map.Entry<? extends K,? extends V>,? super Map.Entry<K,V>> eval);
-    
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsMapEntry(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsMapEntry(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public ExecutableMapEntrySelectedOperator<K,V> convertAsMapEntry(final IConverter<? extends Map.Entry<? extends K,? extends V>,? super Map.Entry<K,V>> converter);
+    public ExecutableMapEntrySelectedOperator<K,V> execIfNotNullAsMapEntry(final IFunction<? extends Map.Entry<? extends K,? extends V>,? super Map.Entry<K,V>> function);
+
     
 }

@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.arrayoflist.Level0ArrayOfListOperator;
 import org.op4j.operators.intf.arrayoflist.Level0ArrayOfListSelectedOperator;
@@ -51,32 +49,32 @@ public final class Level0ArrayOfListSelectedOperatorImpl<T> extends AbstractOper
     }
 
 
-    public Level0ArrayOfListSelectedOperator<T> removeAllTrue(final IEvaluator<Boolean,? super List<T>> eval) {
+    public Level0ArrayOfListSelectedOperator<T> removeAllTrue(final IFunction<Boolean,? super List<T>> eval) {
         return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllTrue<List<T>>(eval)));
     }
 
 
-    public Level0ArrayOfListSelectedOperator<T> removeAllFalse(final IEvaluator<Boolean,? super List<T>> eval) {
+    public Level0ArrayOfListSelectedOperator<T> removeAllFalse(final IFunction<Boolean,? super List<T>> eval) {
         return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllFalse<List<T>>(eval)));
     }
 
 
-    public Level0ArrayOfListSelectedOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean,? super List<T>> eval) {
+    public Level0ArrayOfListSelectedOperator<T> removeAllNullOrFalse(final IFunction<Boolean,? super List<T>> eval) {
         return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllNullOrFalse<List<T>>(eval)));
     }
 
 
-    public Level0ArrayOfListSelectedOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean,? super List<T>> eval) {
+    public Level0ArrayOfListSelectedOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean,? super List<T>> eval) {
         return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllNotNullAndFalse<List<T>>(eval)));
     }
 
 
-    public Level0ArrayOfListSelectedOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean,? super List<T>> eval) {
+    public Level0ArrayOfListSelectedOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean,? super List<T>> eval) {
         return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllNotNullAndTrue<List<T>>(eval)));
     }
 
 
-    public Level0ArrayOfListSelectedOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean,? super List<T>> eval) {
+    public Level0ArrayOfListSelectedOperator<T> removeAllNullOrTrue(final IFunction<Boolean,? super List<T>> eval) {
         return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.RemoveAllNullOrTrue<List<T>>(eval)));
     }
 
@@ -101,13 +99,8 @@ public final class Level0ArrayOfListSelectedOperatorImpl<T> extends AbstractOper
     }
 
 
-    public Level0ArrayOfListSelectedOperator<T> convertAsArrayOfList(final IConverter<? extends List<? extends T>[],? super List<T>[]> converter) {
-        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.ARRAY_OF_LIST));
-    }
-
-
-    public Level0ArrayOfListSelectedOperator<T> evalAsArrayOfList(final IEvaluator<? extends List<? extends T>[],? super List<T>[]> eval) {
-        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.ARRAY_OF_LIST));
+    public Level0ArrayOfListSelectedOperator<T> execIfNotNullAsArrayOfList(final IFunction<? extends List<? extends T>[],? super List<T>[]> function) {
+        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().executeIfNotNull(function, Normalisation.ARRAY_OF_LIST));
     }
 
 
@@ -122,13 +115,13 @@ public final class Level0ArrayOfListSelectedOperatorImpl<T> extends AbstractOper
     }
 
 
-    public Level0ArrayOfListSelectedOperator<T> addAll(final Collection<List<T>> collection) {
-        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.AddAll<List<T>>(NormalisationUtils.normaliseLists(collection))));
+    public Level0ArrayOfListSelectedOperator<T> addAll(final List<T>... newElements) {
+        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Add<List<T>>(NormalisationUtils.normaliseLists(newElements))));
     }
 
 
-    public Level0ArrayOfListSelectedOperator<T> addAll(final List<T>... newElements) {
-        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.Add<List<T>>(NormalisationUtils.normaliseLists(newElements))));
+    public Level0ArrayOfListSelectedOperator<T> addAll(final Collection<List<T>> collection) {
+        return new Level0ArrayOfListSelectedOperatorImpl<T>(getTarget().execute(new ArrayFuncs.AddAll<List<T>>(NormalisationUtils.normaliseLists(collection))));
     }
 
 

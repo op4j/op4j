@@ -22,8 +22,6 @@ package org.op4j.operators.intf.array;
 
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
@@ -48,23 +46,21 @@ public interface Level1ArraySelectedElementsOperator<T>
 
 
     public Level1ArraySelectedElementsSelectedOperator<T> ifIndex(final int... indexes);
-    public Level1ArraySelectedElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArraySelectedElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArraySelectedElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level1ArraySelectedElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArraySelectedElementsSelectedOperator<T> ifTrue(final IFunction<Boolean, ? super T> eval);
+    public Level1ArraySelectedElementsSelectedOperator<T> ifFalse(final IFunction<Boolean, ? super T> eval);
+    public Level1ArraySelectedElementsSelectedOperator<T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval);
+    public Level1ArraySelectedElementsSelectedOperator<T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
     public Level1ArraySelectedElementsSelectedOperator<T> ifNull();
-    public Level1ArraySelectedElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArraySelectedElementsSelectedOperator<T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval);
     public Level1ArraySelectedElementsSelectedOperator<T> ifIndexNot(final int... indexes);
     public Level1ArraySelectedElementsSelectedOperator<T> ifNotNull();
-    public Level1ArraySelectedElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level1ArraySelectedElementsSelectedOperator<T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
 
 
 		    
     public Level0ArraySelectedOperator<T> endFor();
     
-    public Level1ArraySelectedElementsOperator<T> convert(final IConverter<? extends T,? super T> converter);
-    
-    public Level1ArraySelectedElementsOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
+    public Level1ArraySelectedElementsOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function);
 
     public Level1ArraySelectedElementsOperator<T> replaceWith(final T replacement);
 

@@ -23,8 +23,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -53,9 +51,6 @@ public interface Level2MapOfListEntriesSelectedKeySelectedOperator<K,V>
 
     public Level2MapOfListEntriesSelectedKeySelectedOperator<K,V> exec(final IFunction<? extends K, ? super K> function);
     
-    public Level2MapOfListEntriesSelectedKeySelectedOperator<K,V> eval(final IEvaluator<? extends K, ? super K> eval);
+    public Level2MapOfListEntriesSelectedKeySelectedOperator<K,V> execIfNotNull(final IFunction<? extends K, ? super K> function);
     
-    public Level2MapOfListEntriesSelectedKeySelectedOperator<K,V> convert(final IConverter<? extends K, ? super K> converter);
-    
-        
-}
+    }

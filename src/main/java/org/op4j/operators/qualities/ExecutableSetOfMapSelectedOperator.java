@@ -23,8 +23,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 
 
 
@@ -63,7 +61,7 @@ public interface ExecutableSetOfMapSelectedOperator<K,V> {
     /**
      * <p>
      * Specialisation of the {@link #execAsSetOfMap(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsSetOfMap(IFunction)}, and exists only for
@@ -73,22 +71,7 @@ public interface ExecutableSetOfMapSelectedOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public ExecutableSetOfMapSelectedOperator<K,V> evalAsSetOfMap(final IEvaluator<? extends Set<? extends Map<? extends K,? extends V>>,? super Set<Map<K,V>>> eval);
-    
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsSetOfMap(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsSetOfMap(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public ExecutableSetOfMapSelectedOperator<K,V> convertAsSetOfMap(final IConverter<? extends Set<? extends Map<? extends K,? extends V>>,? super Set<Map<K,V>>> converter);
+    public ExecutableSetOfMapSelectedOperator<K,V> execIfNotNullAsSetOfMap(final IFunction<? extends Set<? extends Map<? extends K,? extends V>>,? super Set<Map<K,V>>> function);
+
     
 }

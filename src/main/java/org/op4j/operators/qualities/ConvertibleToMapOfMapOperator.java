@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.functions.IFunction;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.mapofmap.Level0MapOfMapOperator;
 
@@ -49,7 +49,7 @@ public interface ConvertibleToMapOfMapOperator<K,V> {
      * @param keyEval the evaluator to obtain the second-level map keys
      * @return an operator holding the converted object as target.
      */
-    public <K2> Level0MapOfMapOperator<K,K2,V> toMapOfMap(final IEvaluator<K2,? super V> keyEval);
+    public <K2> Level0MapOfMapOperator<K,K2,V> toMapOfMap(final IFunction<K2,? super V> keyEval);
     
     
     /**

@@ -23,8 +23,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -49,9 +47,7 @@ public interface Level2SetOfListElementsElementsSelectedOperator<T>
     public Level2SetOfListElementsElementsOperator<T> endIf();
 
     
-    public Level2SetOfListElementsElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter);
-    
-    public Level2SetOfListElementsElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
+    public Level2SetOfListElementsElementsSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function);
 
     public Level2SetOfListElementsElementsSelectedOperator<T> replaceWith(final T replacement);
 

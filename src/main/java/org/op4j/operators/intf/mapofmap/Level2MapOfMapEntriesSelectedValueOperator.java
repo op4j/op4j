@@ -23,8 +23,6 @@ import java.util.Comparator;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableMapSelectedOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
@@ -53,15 +51,15 @@ public interface Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V>
 
 
     public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifIndex(final int... indexes);
-    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifTrue(final IEvaluator<Boolean, ? super Map<K2,V>> eval);
-    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifFalse(final IEvaluator<Boolean, ? super Map<K2,V>> eval);
-    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifNullOrFalse(final IEvaluator<Boolean, ? super Map<K2,V>> eval);
-    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K2,V>> eval);
+    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifTrue(final IFunction<Boolean, ? super Map<K2,V>> eval);
+    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifFalse(final IFunction<Boolean, ? super Map<K2,V>> eval);
+    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifNullOrFalse(final IFunction<Boolean, ? super Map<K2,V>> eval);
+    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifNotNullAndFalse(final IFunction<Boolean, ? super Map<K2,V>> eval);
     public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifNull();
-    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifNullOrTrue(final IEvaluator<Boolean, ? super Map<K2,V>> eval);
+    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifNullOrTrue(final IFunction<Boolean, ? super Map<K2,V>> eval);
     public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifIndexNot(final int... indexes);
     public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifNotNull();
-    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K2,V>> eval);
+    public Level2MapOfMapEntriesSelectedValueSelectedOperator<K1,K2,V> ifNotNullAndTrue(final IFunction<Boolean, ? super Map<K2,V>> eval);
 
     
     public Level3MapOfMapEntriesSelectedValueEntriesOperator<K1,K2,V> forEachEntry();
@@ -76,15 +74,13 @@ public interface Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V>
     public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> putAll(final Map<K2,V> map);
     public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> insertAll(final int position, final Map<K2,V> map);
     public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> removeAllKeys(final K2... keys);
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K2,V>> eval);
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K2,V>> eval);
+    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> removeAllTrue(final IFunction<Boolean, ? super Map.Entry<K2,V>> eval);
+    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> removeAllFalse(final IFunction<Boolean, ? super Map.Entry<K2,V>> eval);
     public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> removeAllKeysNot(final K2... keys);
     
     
     
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> convertAsMap(final IConverter<? extends Map<? extends K2,? extends V>,? super Map<K2,V>> converter);
-    
-    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> evalAsMap(final IEvaluator<? extends Map<? extends K2,? extends V>,? super Map<K2,V>> eval);
+    public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> execIfNotNullAsMap(final IFunction<? extends Map<? extends K2,? extends V>,? super Map<K2,V>> function);
 
     public Level2MapOfMapEntriesSelectedValueOperator<K1,K2,V> replaceWith(final Map<K2,V> replacement);
 

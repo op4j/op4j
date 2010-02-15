@@ -23,8 +23,6 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 import org.op4j.operators.qualities.ExecutableMapOfArrayEntryOperator;
 import org.op4j.operators.qualities.NavigableMapEntryOperator;
@@ -51,8 +49,8 @@ public interface Level1MapOfArrayEntriesOperator<K,V>
 
 
     public Level1MapOfArrayEntriesSelectedOperator<K,V> ifIndex(final int... indexes);
-    public Level1MapOfArrayEntriesSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K, V[]>> eval);
-    public Level1MapOfArrayEntriesSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K, V[]>> eval);
+    public Level1MapOfArrayEntriesSelectedOperator<K,V> ifTrue(final IFunction<Boolean, ? super Map.Entry<K, V[]>> eval);
+    public Level1MapOfArrayEntriesSelectedOperator<K,V> ifFalse(final IFunction<Boolean, ? super Map.Entry<K, V[]>> eval);
     public Level1MapOfArrayEntriesSelectedOperator<K,V> ifIndexNot(final int... indexes);
     public Level1MapOfArrayEntriesSelectedOperator<K,V> ifKeyEquals(final K... keys);
     public Level1MapOfArrayEntriesSelectedOperator<K,V> ifKeyNotEquals(final K... keys);
@@ -65,24 +63,17 @@ public interface Level1MapOfArrayEntriesOperator<K,V>
     
     public Level1MapOfArrayEntriesOperator<K,V> execAsMapOfArrayEntry(final IFunction<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> function);
     
-    public Level1MapOfArrayEntriesOperator<K,V> evalAsMapOfArrayEntry(final IEvaluator<? extends Map.Entry<? extends K,? extends V[]>,? super Map.Entry<K,V[]>> eval);
+    public Level1MapOfArrayEntriesOperator<K,V> execIfNotNullAsMapOfArrayEntry(final IFunction<? extends Map.Entry<? extends K,? extends V[]>,? super Map.Entry<K,V[]>> function);
 
-    public Level1MapOfArrayEntriesOperator<K,V> convertAsMapOfArrayEntry(final IConverter<? extends Map.Entry<? extends K,? extends V[]>,? super Map.Entry<K,V[]>> converter);
-    
     public <X,Y> Level1MapOfArrayEntriesOperator<X,Y> execAsMapOfArrayEntryOf(final Type<Y> valueType, final IFunction<? extends Map.Entry<X,Y[]>, ? super Map.Entry<K,V[]>> function);
     
-    public <X,Y> Level1MapOfArrayEntriesOperator<X,Y> evalAsMapOfArrayEntryOf(final Type<Y> valueType, final IEvaluator<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> eval);
+    public <X,Y> Level1MapOfArrayEntriesOperator<X,Y> execIfNotNullAsMapOfArrayEntryOf(final Type<Y> valueType, final IFunction<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> function);
 
-    public <X,Y> Level1MapOfArrayEntriesOperator<X,Y> convertAsMapOfArrayEntryOf(final Type<Y> valueType, final IConverter<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> converter);
-    
     public Level1MapOfArrayEntriesOperator<K,V> replaceWith(final Map.Entry<K,V[]> replacement);
 
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map.Entry<K,V[]>> function);
     
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Map.Entry<K,V[]>> eval);
+    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super Map.Entry<K,V[]>> function);
     
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Map.Entry<K,V[]>> converter);    
-
-    
-}
+    }

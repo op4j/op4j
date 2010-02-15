@@ -6,8 +6,6 @@ import java.util.Set;
 
 import org.op4j.functions.IFunction;
 import org.op4j.functions.SetFuncs;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.setofset.Level1SetOfSetElementsOperator;
 import org.op4j.operators.intf.setofset.Level1SetOfSetElementsSelectedOperator;
@@ -45,32 +43,32 @@ public final class Level1SetOfSetElementsSelectedOperatorImpl<T> extends Abstrac
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> removeAllTrue(final IEvaluator<Boolean,? super T> eval) {
+    public Level1SetOfSetElementsSelectedOperator<T> removeAllTrue(final IFunction<Boolean,? super T> eval) {
         return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllTrue<T>(eval)));
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> removeAllFalse(final IEvaluator<Boolean,? super T> eval) {
+    public Level1SetOfSetElementsSelectedOperator<T> removeAllFalse(final IFunction<Boolean,? super T> eval) {
         return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllFalse<T>(eval)));
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean,? super T> eval) {
+    public Level1SetOfSetElementsSelectedOperator<T> removeAllNullOrFalse(final IFunction<Boolean,? super T> eval) {
         return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNullOrFalse<T>(eval)));
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean,? super T> eval) {
+    public Level1SetOfSetElementsSelectedOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean,? super T> eval) {
         return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNotNullAndFalse<T>(eval)));
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean,? super T> eval) {
+    public Level1SetOfSetElementsSelectedOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean,? super T> eval) {
         return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNotNullAndTrue<T>(eval)));
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean,? super T> eval) {
+    public Level1SetOfSetElementsSelectedOperator<T> removeAllNullOrTrue(final IFunction<Boolean,? super T> eval) {
         return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNullOrTrue<T>(eval)));
     }
 
@@ -90,13 +88,8 @@ public final class Level1SetOfSetElementsSelectedOperatorImpl<T> extends Abstrac
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> convertAsSet(final IConverter<? extends Set<? extends T>,? super Set<T>> converter) {
-        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.SET));
-    }
-
-
-    public Level1SetOfSetElementsSelectedOperator<T> evalAsSet(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval) {
-        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.SET));
+    public Level1SetOfSetElementsSelectedOperator<T> execIfNotNullAsSet(final IFunction<? extends Set<? extends T>,? super Set<T>> function) {
+        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().executeIfNotNull(function, Normalisation.SET));
     }
 
 
@@ -111,13 +104,13 @@ public final class Level1SetOfSetElementsSelectedOperatorImpl<T> extends Abstrac
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> addAll(final Collection<T> collection) {
-        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<T>(collection)));
+    public Level1SetOfSetElementsSelectedOperator<T> addAll(final T... newElements) {
+        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElements)));
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> addAll(final T... newElements) {
-        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElements)));
+    public Level1SetOfSetElementsSelectedOperator<T> addAll(final Collection<T> collection) {
+        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<T>(collection)));
     }
 
 
@@ -127,14 +120,14 @@ public final class Level1SetOfSetElementsSelectedOperatorImpl<T> extends Abstrac
     }
 
 
-    public Level1SetOfSetElementsSelectedOperator<T> sort(final Comparator<? super T> comparator) {
-        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.SortByComparator<T>(comparator)));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level1SetOfSetElementsSelectedOperator<T> sort() {
         return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Sort()));
+    }
+
+
+    public Level1SetOfSetElementsSelectedOperator<T> sort(final Comparator<? super T> comparator) {
+        return new Level1SetOfSetElementsSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.SortByComparator<T>(comparator)));
     }
 
 

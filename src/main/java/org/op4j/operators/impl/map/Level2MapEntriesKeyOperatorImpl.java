@@ -24,8 +24,6 @@ import java.util.Map;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.map.Level1MapEntriesOperator;
 import org.op4j.operators.intf.map.Level2MapEntriesKeyOperator;
@@ -80,12 +78,12 @@ public final class Level2MapEntriesKeyOperatorImpl<K,V> extends AbstractOperator
     }
 
 
-    public Level2MapEntriesKeySelectedOperator<K, V> ifTrue(final IEvaluator<Boolean, ? super K> eval) {
+    public Level2MapEntriesKeySelectedOperator<K, V> ifTrue(final IFunction<Boolean, ? super K> eval) {
         return new Level2MapEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level2MapEntriesKeySelectedOperator<K, V> ifFalse(final IEvaluator<Boolean, ? super K> eval) {
+    public Level2MapEntriesKeySelectedOperator<K, V> ifFalse(final IFunction<Boolean, ? super K> eval) {
         return new Level2MapEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
 
@@ -95,12 +93,12 @@ public final class Level2MapEntriesKeyOperatorImpl<K,V> extends AbstractOperator
     }
 
 
-    public Level2MapEntriesKeySelectedOperator<K, V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval) {
+    public Level2MapEntriesKeySelectedOperator<K, V> ifNotNullAndTrue(final IFunction<Boolean, ? super K> eval) {
         return new Level2MapEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level2MapEntriesKeySelectedOperator<K, V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval) {
+    public Level2MapEntriesKeySelectedOperator<K, V> ifNotNullAndFalse(final IFunction<Boolean, ? super K> eval) {
         return new Level2MapEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -110,23 +108,18 @@ public final class Level2MapEntriesKeyOperatorImpl<K,V> extends AbstractOperator
     }
 
 
-    public Level2MapEntriesKeySelectedOperator<K, V> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval) {
+    public Level2MapEntriesKeySelectedOperator<K, V> ifNullOrTrue(final IFunction<Boolean, ? super K> eval) {
         return new Level2MapEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level2MapEntriesKeySelectedOperator<K, V> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval) {
+    public Level2MapEntriesKeySelectedOperator<K, V> ifNullOrFalse(final IFunction<Boolean, ? super K> eval) {
         return new Level2MapEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public <X> Level2MapEntriesKeyOperator<X, V> convert(final IConverter<X, ? super K> converter) {
-        return new Level2MapEntriesKeyOperatorImpl<X, V>(getTarget().execute(converter, Normalisation.NONE));
-    }
-
-
-    public <X> Level2MapEntriesKeyOperator<X, V> eval(final IEvaluator<X, ? super K> eval) {
-        return new Level2MapEntriesKeyOperatorImpl<X, V>(getTarget().execute(eval, Normalisation.NONE));
+    public <X> Level2MapEntriesKeyOperator<X, V> execIfNotNull(final IFunction<X, ? super K> function) {
+        return new Level2MapEntriesKeyOperatorImpl<X, V>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

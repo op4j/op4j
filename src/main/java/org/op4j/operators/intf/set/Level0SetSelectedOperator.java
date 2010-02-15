@@ -24,8 +24,6 @@ import java.util.Comparator;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSetSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
@@ -67,19 +65,17 @@ public interface Level0SetSelectedOperator<T>
     public Level0SetSelectedOperator<T> addAll(final Collection<T> collection);
     public Level0SetSelectedOperator<T> removeAllIndexes(final int... indexes);
     public Level0SetSelectedOperator<T> removeAllEqual(final T... values);
-    public Level0SetSelectedOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level0SetSelectedOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level0SetSelectedOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level0SetSelectedOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level0SetSelectedOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level0SetSelectedOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level0SetSelectedOperator<T> removeAllTrue(final IFunction<Boolean, ? super T> eval);
+    public Level0SetSelectedOperator<T> removeAllFalse(final IFunction<Boolean, ? super T> eval);
+    public Level0SetSelectedOperator<T> removeAllNullOrFalse(final IFunction<Boolean, ? super T> eval);
+    public Level0SetSelectedOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
+    public Level0SetSelectedOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
+    public Level0SetSelectedOperator<T> removeAllNullOrTrue(final IFunction<Boolean, ? super T> eval);
     public Level0SetSelectedOperator<T> removeAllIndexesNot(final int... indexes);
     public Level0SetSelectedOperator<T> removeAllNull();
     
     
-    public Level0SetSelectedOperator<T> convertAsSet(final IConverter<? extends Set<? extends T>,? super Set<T>> converter);
-    
-    public Level0SetSelectedOperator<T> evalAsSet(final IEvaluator<? extends Set<? extends T>,? super Set<T>> eval);
+    public Level0SetSelectedOperator<T> execIfNotNullAsSet(final IFunction<? extends Set<? extends T>,? super Set<T>> function);
 
     public Level0SetSelectedOperator<T> replaceWith(final Set<T> replacement);
 

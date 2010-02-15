@@ -30,7 +30,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -241,9 +240,9 @@ public final class MapFuncs {
     
     public static final class RemoveAllTrue<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 
-        private final IEvaluator<Boolean,? super Map.Entry<K, V>> eval;
+        private final IFunction<Boolean,? super Map.Entry<K, V>> eval;
         
-        public RemoveAllTrue(final IEvaluator<Boolean,? super Map.Entry<K, V>> eval) {
+        public RemoveAllTrue(final IFunction<Boolean,? super Map.Entry<K, V>> eval) {
             super();
             this.eval = eval;
         }
@@ -267,9 +266,9 @@ public final class MapFuncs {
     
     public static final class RemoveAllFalse<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 
-        private final IEvaluator<Boolean,? super Map.Entry<K, V>> eval;
+        private final IFunction<Boolean,? super Map.Entry<K, V>> eval;
         
-        public RemoveAllFalse(final IEvaluator<Boolean,? super Map.Entry<K, V>> eval) {
+        public RemoveAllFalse(final IFunction<Boolean,? super Map.Entry<K, V>> eval) {
             super();
             this.eval = eval;
         }

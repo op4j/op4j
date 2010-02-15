@@ -20,8 +20,6 @@
 package org.op4j.operators.intf.generic;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -50,9 +48,7 @@ public interface Level0GenericUniqSelectedOperator<T>
     
     public Level0GenericUniqSelectedOperator<T> replaceWith(final T replacement);
     
-    public Level0GenericUniqSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter);
-    
-    public Level0GenericUniqSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
+    public Level0GenericUniqSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function);
 
     public Level0GenericUniqSelectedOperator<T> exec(final IFunction<? extends T, ? super T> function);
 

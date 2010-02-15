@@ -5,8 +5,6 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofset.Level0MapOfSetSelectedOperator;
 import org.op4j.operators.intf.mapofset.Level1MapOfSetSelectedEntriesOperator;
@@ -30,12 +28,12 @@ public final class Level1MapOfSetSelectedEntriesOperatorImpl<K,V> extends Abstra
     }
 
 
-    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Entry<K,Set<V>>> eval) {
+    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifTrue(final IFunction<Boolean, ? super Entry<K,Set<V>>> eval) {
         return new Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Entry<K,Set<V>>> eval) {
+    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifFalse(final IFunction<Boolean, ? super Entry<K,Set<V>>> eval) {
         return new Level1MapOfSetSelectedEntriesSelectedOperatorImpl<K,V>(getTarget().selectNotMatching(eval));
     }
 
@@ -75,13 +73,8 @@ public final class Level1MapOfSetSelectedEntriesOperatorImpl<K,V> extends Abstra
     }
 
 
-    public Level1MapOfSetSelectedEntriesOperator<K,V> evalAsMapOfSetEntry(final IEvaluator<? extends Entry<? extends K,? extends Set<? extends V>>,? super Entry<K,Set<V>>> eval) {
-        return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAP_OF_SET_ENTRY));
-    }
-
-
-    public Level1MapOfSetSelectedEntriesOperator<K,V> convertAsMapOfSetEntry(final IConverter<? extends Entry<? extends K,? extends Set<? extends V>>,? super Entry<K,Set<V>>> converter) {
-        return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAP_OF_SET_ENTRY));
+    public Level1MapOfSetSelectedEntriesOperator<K,V> execIfNotNullAsMapOfSetEntry(final IFunction<? extends Entry<? extends K,? extends Set<? extends V>>,? super Entry<K,Set<V>>> function) {
+        return new Level1MapOfSetSelectedEntriesOperatorImpl<K,V>(getTarget().executeIfNotNull(function, Normalisation.MAP_OF_SET_ENTRY));
     }
 
 

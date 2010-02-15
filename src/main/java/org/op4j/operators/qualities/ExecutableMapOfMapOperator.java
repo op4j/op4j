@@ -22,8 +22,6 @@ package org.op4j.operators.qualities;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 
 
@@ -66,7 +64,7 @@ public interface ExecutableMapOfMapOperator<K1,K2,V> {
     /**
      * <p>
      * Specialisation of the {@link #execAsMapOfMap(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsMapOfMap(IFunction)}, and exists only for
@@ -79,26 +77,8 @@ public interface ExecutableMapOfMapOperator<K1,K2,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X1,X2,Y> ExecutableMapOfMapOperator<X1,X2,Y> evalAsMapOfMap(final IEvaluator<? extends Map<X1,? extends Map<X2,Y>>,? super Map<K1,Map<K2,V>>> eval);
-    
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsMapOfMap(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsMapOfMap(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param <X1> the type of the resulting first-level keys
-     * @param <X2> the type of the resulting second-level keys
-     * @param <Y> the type of the resulting second-level values
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X1,X2,Y> ExecutableMapOfMapOperator<X1,X2,Y> convertAsMapOfMap(final IConverter<? extends Map<X1,? extends Map<X2,Y>>,? super Map<K1,Map<K2,V>>> converter);
+    public <X1,X2,Y> ExecutableMapOfMapOperator<X1,X2,Y> execIfNotNullAsMapOfMap(final IFunction<? extends Map<X1,? extends Map<X2,Y>>,? super Map<K1,Map<K2,V>>> function);
+
 
     
     /**
@@ -118,7 +98,7 @@ public interface ExecutableMapOfMapOperator<K1,K2,V> {
     /**
      * <p>
      * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #exec(IFunction)}, and exists only for
@@ -129,23 +109,7 @@ public interface ExecutableMapOfMapOperator<K1,K2,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Map<K1,Map<K2,V>>> eval);
-
+    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super Map<K1,Map<K2,V>>> function);
     
-    /**
-     * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param <X> the type of the result object
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Map<K1,Map<K2,V>>> converter);    
     
 }

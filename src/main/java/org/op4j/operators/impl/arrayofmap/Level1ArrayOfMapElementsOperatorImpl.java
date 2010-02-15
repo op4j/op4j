@@ -27,8 +27,6 @@ import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.MapFuncs;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.array.Level1ArrayElementsOperatorImpl;
 import org.op4j.operators.impl.arrayoflist.Level1ArrayOfListElementsOperatorImpl;
@@ -112,11 +110,11 @@ public final class Level1ArrayOfMapElementsOperatorImpl<K,V> extends AbstractOpe
     }
 
 
-    public Level1ArrayOfMapElementsOperator<K, V> removeAllTrue(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
+    public Level1ArrayOfMapElementsOperator<K, V> removeAllTrue(final IFunction<Boolean, ? super Entry<K, V>> eval) {
         return new Level1ArrayOfMapElementsOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K, V>(eval)));
     }
 
-    public Level1ArrayOfMapElementsOperator<K, V> removeAllFalse(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
+    public Level1ArrayOfMapElementsOperator<K, V> removeAllFalse(final IFunction<Boolean, ? super Entry<K, V>> eval) {
         return new Level1ArrayOfMapElementsOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K, V>(eval)));
     }
 
@@ -185,12 +183,12 @@ public final class Level1ArrayOfMapElementsOperatorImpl<K,V> extends AbstractOpe
     }
 
 
-    public Level1ArrayOfMapElementsSelectedOperator<K, V> ifTrue(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+    public Level1ArrayOfMapElementsSelectedOperator<K, V> ifTrue(final IFunction<Boolean, ? super Map<K, V>> eval) {
         return new Level1ArrayOfMapElementsSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1ArrayOfMapElementsSelectedOperator<K, V> ifFalse(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+    public Level1ArrayOfMapElementsSelectedOperator<K, V> ifFalse(final IFunction<Boolean, ? super Map<K, V>> eval) {
         return new Level1ArrayOfMapElementsSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
 
@@ -200,12 +198,12 @@ public final class Level1ArrayOfMapElementsOperatorImpl<K,V> extends AbstractOpe
     }
 
 
-    public Level1ArrayOfMapElementsSelectedOperator<K, V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+    public Level1ArrayOfMapElementsSelectedOperator<K, V> ifNotNullAndTrue(final IFunction<Boolean, ? super Map<K, V>> eval) {
         return new Level1ArrayOfMapElementsSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level1ArrayOfMapElementsSelectedOperator<K, V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+    public Level1ArrayOfMapElementsSelectedOperator<K, V> ifNotNullAndFalse(final IFunction<Boolean, ? super Map<K, V>> eval) {
         return new Level1ArrayOfMapElementsSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -215,23 +213,18 @@ public final class Level1ArrayOfMapElementsOperatorImpl<K,V> extends AbstractOpe
     }
 
 
-    public Level1ArrayOfMapElementsSelectedOperator<K, V> ifNullOrTrue(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+    public Level1ArrayOfMapElementsSelectedOperator<K, V> ifNullOrTrue(final IFunction<Boolean, ? super Map<K, V>> eval) {
         return new Level1ArrayOfMapElementsSelectedOperatorImpl<K, V>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level1ArrayOfMapElementsSelectedOperator<K, V> ifNullOrFalse(final IEvaluator<Boolean, ? super Map<K, V>> eval) {
+    public Level1ArrayOfMapElementsSelectedOperator<K, V> ifNullOrFalse(final IFunction<Boolean, ? super Map<K, V>> eval) {
         return new Level1ArrayOfMapElementsSelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public <X, Y> Level1ArrayOfMapElementsOperator<X, Y> convertAsMap(final IConverter<? extends Map<X, Y>, ? super Map<K, V>> converter) {
-        return new Level1ArrayOfMapElementsOperatorImpl<X, Y>(getTarget().execute(converter, Normalisation.MAP));
-    }
-
-
-    public <X, Y> Level1ArrayOfMapElementsOperator<X, Y> evalAsMap(final IEvaluator<? extends Map<X, Y>, ? super Map<K, V>> eval) {
-        return new Level1ArrayOfMapElementsOperatorImpl<X, Y>(getTarget().execute(eval, Normalisation.MAP));
+    public <X, Y> Level1ArrayOfMapElementsOperator<X, Y> execIfNotNullAsMap(final IFunction<? extends Map<X, Y>, ? super Map<K, V>> function) {
+        return new Level1ArrayOfMapElementsOperatorImpl<X, Y>(getTarget().executeIfNotNull(function, Normalisation.MAP));
     }
 
 
@@ -240,13 +233,8 @@ public final class Level1ArrayOfMapElementsOperatorImpl<K,V> extends AbstractOpe
     }
 
 
-    public <X> Level1ArrayElementsOperator<X> convert(final Type<X> resultType, final IConverter<X, ? super Map<K, V>> converter) {
-        return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(converter, Normalisation.NONE));
-    }
-
-
-    public <X> Level1ArrayElementsOperator<X> eval(final Type<X> resultType, final IEvaluator<X, ? super Map<K, V>> eval) {
-        return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().execute(eval, Normalisation.NONE));
+    public <X> Level1ArrayElementsOperator<X> execIfNotNull(final Type<X> resultType, final IFunction<X, ? super Map<K, V>> function) {
+        return new Level1ArrayElementsOperatorImpl<X>(resultType, getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

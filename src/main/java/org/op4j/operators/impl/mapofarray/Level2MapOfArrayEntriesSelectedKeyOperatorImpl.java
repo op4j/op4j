@@ -4,8 +4,6 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofarray.Level1MapOfArrayEntriesSelectedOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesSelectedKeyOperator;
@@ -31,22 +29,22 @@ public final class Level2MapOfArrayEntriesSelectedKeyOperatorImpl<K,V> extends A
     }
 
 
-    public Level2MapOfArrayEntriesSelectedKeySelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super K> eval) {
+    public Level2MapOfArrayEntriesSelectedKeySelectedOperator<K,V> ifTrue(final IFunction<Boolean, ? super K> eval) {
         return new Level2MapOfArrayEntriesSelectedKeySelectedOperatorImpl<K,V>(this.type, getTarget().selectMatching(eval));
     }
 
 
-    public Level2MapOfArrayEntriesSelectedKeySelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super K> eval) {
+    public Level2MapOfArrayEntriesSelectedKeySelectedOperator<K,V> ifFalse(final IFunction<Boolean, ? super K> eval) {
         return new Level2MapOfArrayEntriesSelectedKeySelectedOperatorImpl<K,V>(this.type, getTarget().selectNotMatching(eval));
     }
 
 
-    public Level2MapOfArrayEntriesSelectedKeySelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval) {
+    public Level2MapOfArrayEntriesSelectedKeySelectedOperator<K,V> ifNullOrFalse(final IFunction<Boolean, ? super K> eval) {
         return new Level2MapOfArrayEntriesSelectedKeySelectedOperatorImpl<K,V>(this.type, getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public Level2MapOfArrayEntriesSelectedKeySelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval) {
+    public Level2MapOfArrayEntriesSelectedKeySelectedOperator<K,V> ifNotNullAndFalse(final IFunction<Boolean, ? super K> eval) {
         return new Level2MapOfArrayEntriesSelectedKeySelectedOperatorImpl<K,V>(this.type, getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -56,7 +54,7 @@ public final class Level2MapOfArrayEntriesSelectedKeyOperatorImpl<K,V> extends A
     }
 
 
-    public Level2MapOfArrayEntriesSelectedKeySelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval) {
+    public Level2MapOfArrayEntriesSelectedKeySelectedOperator<K,V> ifNullOrTrue(final IFunction<Boolean, ? super K> eval) {
         return new Level2MapOfArrayEntriesSelectedKeySelectedOperatorImpl<K,V>(this.type, getTarget().selectNullOrMatching(eval));
     }
 
@@ -71,13 +69,13 @@ public final class Level2MapOfArrayEntriesSelectedKeyOperatorImpl<K,V> extends A
     }
 
 
-    public Level2MapOfArrayEntriesSelectedKeySelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval) {
+    public Level2MapOfArrayEntriesSelectedKeySelectedOperator<K,V> ifNotNullAndTrue(final IFunction<Boolean, ? super K> eval) {
         return new Level2MapOfArrayEntriesSelectedKeySelectedOperatorImpl<K,V>(this.type, getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level2MapOfArrayEntriesSelectedKeyOperator<K,V> eval(final IEvaluator<? extends K,? super K> eval) {
-        return new Level2MapOfArrayEntriesSelectedKeyOperatorImpl<K,V>(this.type, getTarget().execute(eval, Normalisation.NONE));
+    public Level2MapOfArrayEntriesSelectedKeyOperator<K,V> execIfNotNull(final IFunction<? extends K,? super K> function) {
+        return new Level2MapOfArrayEntriesSelectedKeyOperatorImpl<K,V>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 
@@ -93,11 +91,6 @@ public final class Level2MapOfArrayEntriesSelectedKeyOperatorImpl<K,V> extends A
 
     public Level2MapOfArrayEntriesSelectedKeyOperator<K,V> replaceWith(final K replacement) {
         return new Level2MapOfArrayEntriesSelectedKeyOperatorImpl<K,V>(this.type, getTarget().replaceWith(replacement, Normalisation.NONE));
-    }
-
-
-    public Level2MapOfArrayEntriesSelectedKeyOperator<K,V> convert(final IConverter<? extends K,? super K> converter) {
-        return new Level2MapOfArrayEntriesSelectedKeyOperatorImpl<K,V>(this.type, getTarget().execute(converter, Normalisation.NONE));
     }
 
 

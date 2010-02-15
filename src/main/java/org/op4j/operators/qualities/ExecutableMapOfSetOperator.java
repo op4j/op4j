@@ -23,8 +23,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 
 
@@ -66,7 +64,7 @@ public interface ExecutableMapOfSetOperator<K,V> {
     /**
      * <p>
      * Specialisation of the {@link #execAsMapOfSet(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsMapOfSet(IFunction)}, and exists only for
@@ -78,25 +76,8 @@ public interface ExecutableMapOfSetOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X,Y> ExecutableMapOfSetOperator<X,Y> evalAsMapOfSet(final IEvaluator<? extends Map<X,? extends Set<Y>>,? super Map<K,Set<V>>> eval);
-    
+    public <X,Y> ExecutableMapOfSetOperator<X,Y> execIfNotNullAsMapOfSet(final IFunction<? extends Map<X,? extends Set<Y>>,? super Map<K,Set<V>>> function);
 
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsMapOfSet(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsMapOfSet(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param <X> the type of the resulting keys
-     * @param <Y> the type of the resulting values
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X,Y> ExecutableMapOfSetOperator<X,Y> convertAsMapOfSet(final IConverter<? extends Map<X,? extends Set<Y>>,? super Map<K,Set<V>>> converter);
 
 
     /**
@@ -116,7 +97,7 @@ public interface ExecutableMapOfSetOperator<K,V> {
     /**
      * <p>
      * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #exec(IFunction)}, and exists only for
@@ -127,23 +108,7 @@ public interface ExecutableMapOfSetOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Map<K,Set<V>>> eval);
+    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super Map<K,Set<V>>> function);
     
-
-    /**
-     * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param <X> the type of the result object
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Map<K,Set<V>>> converter);    
     
 }

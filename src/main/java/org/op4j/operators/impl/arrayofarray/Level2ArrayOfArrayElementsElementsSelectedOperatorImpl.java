@@ -2,8 +2,6 @@ package org.op4j.operators.impl.arrayofarray;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.arrayofarray.Level2ArrayOfArrayElementsElementsOperator;
 import org.op4j.operators.intf.arrayofarray.Level2ArrayOfArrayElementsElementsSelectedOperator;
@@ -23,8 +21,8 @@ public final class Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T> ext
     }
 
 
-    public Level2ArrayOfArrayElementsElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.NONE));
+    public Level2ArrayOfArrayElementsElementsSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function) {
+        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 
@@ -40,11 +38,6 @@ public final class Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T> ext
 
     public Level2ArrayOfArrayElementsElementsSelectedOperator<T> replaceWith(final T replacement) {
         return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().replaceWith(replacement, Normalisation.NONE));
-    }
-
-
-    public Level2ArrayOfArrayElementsElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return new Level2ArrayOfArrayElementsElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.NONE));
     }
 
 

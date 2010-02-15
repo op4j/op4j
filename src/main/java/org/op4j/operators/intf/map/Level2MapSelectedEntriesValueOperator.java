@@ -22,8 +22,6 @@ package org.op4j.operators.intf.map;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
@@ -48,22 +46,20 @@ public interface Level2MapSelectedEntriesValueOperator<K,V>
 
 
     public Level2MapSelectedEntriesValueSelectedOperator<K,V> ifIndex(final int... indexes);
-    public Level2MapSelectedEntriesValueSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapSelectedEntriesValueSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapSelectedEntriesValueSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapSelectedEntriesValueSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval);
+    public Level2MapSelectedEntriesValueSelectedOperator<K,V> ifTrue(final IFunction<Boolean, ? super V> eval);
+    public Level2MapSelectedEntriesValueSelectedOperator<K,V> ifFalse(final IFunction<Boolean, ? super V> eval);
+    public Level2MapSelectedEntriesValueSelectedOperator<K,V> ifNullOrFalse(final IFunction<Boolean, ? super V> eval);
+    public Level2MapSelectedEntriesValueSelectedOperator<K,V> ifNotNullAndFalse(final IFunction<Boolean, ? super V> eval);
     public Level2MapSelectedEntriesValueSelectedOperator<K,V> ifNull();
-    public Level2MapSelectedEntriesValueSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level2MapSelectedEntriesValueSelectedOperator<K,V> ifNullOrTrue(final IFunction<Boolean, ? super V> eval);
     public Level2MapSelectedEntriesValueSelectedOperator<K,V> ifIndexNot(final int... indexes);
     public Level2MapSelectedEntriesValueSelectedOperator<K,V> ifNotNull();
-    public Level2MapSelectedEntriesValueSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level2MapSelectedEntriesValueSelectedOperator<K,V> ifNotNullAndTrue(final IFunction<Boolean, ? super V> eval);
 
     
     public Level1MapSelectedEntriesOperator<K,V> endOn();
     
-    public Level2MapSelectedEntriesValueOperator<K,V> convert(final IConverter<? extends V, ? super V> converter);
-    
-    public Level2MapSelectedEntriesValueOperator<K,V> eval(final IEvaluator<? extends V, ? super V> eval);
+    public Level2MapSelectedEntriesValueOperator<K,V> execIfNotNull(final IFunction<? extends V, ? super V> function);
 
     public Level2MapSelectedEntriesValueOperator<K,V> replaceWith(final V replacement);
 

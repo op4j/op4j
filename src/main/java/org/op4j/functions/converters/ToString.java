@@ -32,6 +32,7 @@ import java.util.Locale;
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
+import org.op4j.functions.AbstractNullAsNullFunc;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.converters.ToString.FromNumber.NumberFormatType;
 
@@ -316,7 +317,7 @@ public final class ToString {
 	
 	
 	
-	public static final class FromObject extends AbstractNullAsNullConverter<String,Object> {
+	public static final class FromObject extends AbstractNullAsNullFunc<String,Object> {
 
 		public FromObject() {
 			super();
@@ -329,7 +330,7 @@ public final class ToString {
 		
 	}
 	
-	public static final class FromNumber extends AbstractNullAsNullConverter<String, Number> {
+	public static final class FromNumber extends AbstractNullAsNullFunc<String, Number> {
 
 		private final NumberFormat numberFormat;
 		
@@ -651,7 +652,7 @@ public final class ToString {
 		NONE
 	}		
 	
-	public static final class FromCalendar extends AbstractNullAsNullConverter<String, Calendar> {
+	public static final class FromCalendar extends AbstractNullAsNullFunc<String, Calendar> {
 
 		private DateStyle dateStyle = null;	
 		private TimeStyle timeStyle = null;	
@@ -769,7 +770,7 @@ public final class ToString {
 	    }		
 	}
 	
-	public static final class FromDate extends AbstractNullAsNullConverter<String, java.util.Date> {
+	public static final class FromDate extends AbstractNullAsNullFunc<String, java.util.Date> {
 
 		private DateStyle dateStyle = null;	
 		private TimeStyle timeStyle = null;	

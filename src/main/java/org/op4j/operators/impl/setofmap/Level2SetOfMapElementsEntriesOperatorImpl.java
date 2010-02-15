@@ -24,8 +24,6 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.setoflist.Level2SetOfListElementsElementsOperatorImpl;
 import org.op4j.operators.intf.setoflist.Level2SetOfListElementsElementsOperator;
@@ -97,23 +95,18 @@ public final class Level2SetOfMapElementsEntriesOperatorImpl<K,V> extends Abstra
     }
 
 
-    public Level2SetOfMapElementsEntriesSelectedOperator<K, V> ifTrue(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
+    public Level2SetOfMapElementsEntriesSelectedOperator<K, V> ifTrue(final IFunction<Boolean, ? super Entry<K, V>> eval) {
         return new Level2SetOfMapElementsEntriesSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level2SetOfMapElementsEntriesSelectedOperator<K, V> ifFalse(final IEvaluator<Boolean, ? super Entry<K, V>> eval) {
+    public Level2SetOfMapElementsEntriesSelectedOperator<K, V> ifFalse(final IFunction<Boolean, ? super Entry<K, V>> eval) {
         return new Level2SetOfMapElementsEntriesSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
 
 
-    public <X, Y> Level2SetOfMapElementsEntriesOperator<X, Y> convertAsMapEntry(final IConverter<? extends Entry<X, Y>, ? super Entry<K, V>> converter) {
-        return new Level2SetOfMapElementsEntriesOperatorImpl<X, Y>(getTarget().execute(converter, Normalisation.MAP_ENTRY));
-    }
-
-
-    public <X, Y> Level2SetOfMapElementsEntriesOperator<X, Y> evalAsMapEntry(final IEvaluator<? extends Entry<X, Y>, ? super Entry<K, V>> eval) {
-        return new Level2SetOfMapElementsEntriesOperatorImpl<X, Y>(getTarget().execute(eval, Normalisation.MAP_ENTRY));
+    public <X, Y> Level2SetOfMapElementsEntriesOperator<X, Y> execIfNotNullAsMapEntry(final IFunction<? extends Entry<X, Y>, ? super Entry<K, V>> function) {
+        return new Level2SetOfMapElementsEntriesOperatorImpl<X, Y>(getTarget().executeIfNotNull(function, Normalisation.MAP_ENTRY));
     }
 
 
@@ -122,13 +115,8 @@ public final class Level2SetOfMapElementsEntriesOperatorImpl<K,V> extends Abstra
     }
 
 
-    public <X> Level2SetOfListElementsElementsOperator<X> convert(final IConverter<X, ? super Entry<K, V>> converter) {
-        return new Level2SetOfListElementsElementsOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
-    }
-
-
-    public <X> Level2SetOfListElementsElementsOperator<X> eval(final IEvaluator<X, ? super Entry<K, V>> eval) {
-        return new Level2SetOfListElementsElementsOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
+    public <X> Level2SetOfListElementsElementsOperator<X> execIfNotNull(final IFunction<X, ? super Entry<K, V>> function) {
+        return new Level2SetOfListElementsElementsOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

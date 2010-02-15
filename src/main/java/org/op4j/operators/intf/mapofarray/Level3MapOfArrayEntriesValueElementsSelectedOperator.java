@@ -22,8 +22,6 @@ package org.op4j.operators.intf.mapofarray;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -48,9 +46,7 @@ public interface Level3MapOfArrayEntriesValueElementsSelectedOperator<K,V>
     public Level3MapOfArrayEntriesValueElementsOperator<K,V> endIf();
 
     
-    public Level3MapOfArrayEntriesValueElementsSelectedOperator<K,V> convert(final IConverter<? extends V, ? super V> converter);
-    
-    public Level3MapOfArrayEntriesValueElementsSelectedOperator<K,V> eval(final IEvaluator<? extends V, ? super V> eval);
+    public Level3MapOfArrayEntriesValueElementsSelectedOperator<K,V> execIfNotNull(final IFunction<? extends V, ? super V> function);
 
     public Level3MapOfArrayEntriesValueElementsSelectedOperator<K,V> replaceWith(final V replacement);
 

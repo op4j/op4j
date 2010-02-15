@@ -6,8 +6,6 @@ import java.util.Map.Entry;
 
 import org.op4j.functions.IFunction;
 import org.op4j.functions.MapFuncs;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofmap.Level2MapOfMapSelectedEntriesSelectedValueOperator;
 import org.op4j.operators.intf.mapofmap.Level2MapOfMapSelectedEntriesSelectedValueSelectedOperator;
@@ -30,12 +28,12 @@ public final class Level2MapOfMapSelectedEntriesSelectedValueSelectedOperatorImp
     }
 
 
-    public Level2MapOfMapSelectedEntriesSelectedValueSelectedOperator<K1,K2,V> removeAllTrue(final IEvaluator<Boolean,? super Entry<K2,V>> eval) {
+    public Level2MapOfMapSelectedEntriesSelectedValueSelectedOperator<K1,K2,V> removeAllTrue(final IFunction<Boolean,? super Entry<K2,V>> eval) {
         return new Level2MapOfMapSelectedEntriesSelectedValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K2,V>(eval)));
     }
 
 
-    public Level2MapOfMapSelectedEntriesSelectedValueSelectedOperator<K1,K2,V> removeAllFalse(final IEvaluator<Boolean,? super Entry<K2,V>> eval) {
+    public Level2MapOfMapSelectedEntriesSelectedValueSelectedOperator<K1,K2,V> removeAllFalse(final IFunction<Boolean,? super Entry<K2,V>> eval) {
         return new Level2MapOfMapSelectedEntriesSelectedValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K2,V>(eval)));
     }
 
@@ -60,13 +58,8 @@ public final class Level2MapOfMapSelectedEntriesSelectedValueSelectedOperatorImp
     }
 
 
-    public Level2MapOfMapSelectedEntriesSelectedValueSelectedOperator<K1,K2,V> convertAsMap(final IConverter<? extends Map<? extends K2,? extends V>,? super Map<K2,V>> converter) {
-        return new Level2MapOfMapSelectedEntriesSelectedValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(converter, Normalisation.MAP));
-    }
-
-
-    public Level2MapOfMapSelectedEntriesSelectedValueSelectedOperator<K1,K2,V> evalAsMap(final IEvaluator<? extends Map<? extends K2,? extends V>,? super Map<K2,V>> eval) {
-        return new Level2MapOfMapSelectedEntriesSelectedValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(eval, Normalisation.MAP));
+    public Level2MapOfMapSelectedEntriesSelectedValueSelectedOperator<K1,K2,V> execIfNotNullAsMap(final IFunction<? extends Map<? extends K2,? extends V>,? super Map<K2,V>> function) {
+        return new Level2MapOfMapSelectedEntriesSelectedValueSelectedOperatorImpl<K1,K2,V>(getTarget().executeIfNotNull(function, Normalisation.MAP));
     }
 
 
@@ -90,14 +83,14 @@ public final class Level2MapOfMapSelectedEntriesSelectedValueSelectedOperatorImp
     }
 
 
-    public Level2MapOfMapSelectedEntriesSelectedValueSelectedOperator<K1,K2,V> sort(final Comparator<? super Entry<K2,V>> comparator) {
-        return new Level2MapOfMapSelectedEntriesSelectedValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.SortEntries<K2,V>(comparator)));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level2MapOfMapSelectedEntriesSelectedValueSelectedOperator<K1,K2,V> sort() {
         return new Level2MapOfMapSelectedEntriesSelectedValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.SortByKey()));
+    }
+
+
+    public Level2MapOfMapSelectedEntriesSelectedValueSelectedOperator<K1,K2,V> sort(final Comparator<? super Entry<K2,V>> comparator) {
+        return new Level2MapOfMapSelectedEntriesSelectedValueSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.SortEntries<K2,V>(comparator)));
     }
 
 

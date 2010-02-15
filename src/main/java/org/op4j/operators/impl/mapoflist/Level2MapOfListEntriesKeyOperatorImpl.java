@@ -25,8 +25,6 @@ import java.util.Map;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapoflist.Level1MapOfListEntriesOperator;
 import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesKeyOperator;
@@ -81,12 +79,12 @@ public final class Level2MapOfListEntriesKeyOperatorImpl<K,V> extends AbstractOp
     }
 
 
-    public Level2MapOfListEntriesKeySelectedOperator<K, V> ifTrue(final IEvaluator<Boolean, ? super K> eval) {
+    public Level2MapOfListEntriesKeySelectedOperator<K, V> ifTrue(final IFunction<Boolean, ? super K> eval) {
         return new Level2MapOfListEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level2MapOfListEntriesKeySelectedOperator<K, V> ifFalse(final IEvaluator<Boolean, ? super K> eval) {
+    public Level2MapOfListEntriesKeySelectedOperator<K, V> ifFalse(final IFunction<Boolean, ? super K> eval) {
         return new Level2MapOfListEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
 
@@ -96,12 +94,12 @@ public final class Level2MapOfListEntriesKeyOperatorImpl<K,V> extends AbstractOp
     }
 
 
-    public Level2MapOfListEntriesKeySelectedOperator<K, V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super K> eval) {
+    public Level2MapOfListEntriesKeySelectedOperator<K, V> ifNotNullAndTrue(final IFunction<Boolean, ? super K> eval) {
         return new Level2MapOfListEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level2MapOfListEntriesKeySelectedOperator<K, V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super K> eval) {
+    public Level2MapOfListEntriesKeySelectedOperator<K, V> ifNotNullAndFalse(final IFunction<Boolean, ? super K> eval) {
         return new Level2MapOfListEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -111,23 +109,18 @@ public final class Level2MapOfListEntriesKeyOperatorImpl<K,V> extends AbstractOp
     }
 
 
-    public Level2MapOfListEntriesKeySelectedOperator<K, V> ifNullOrTrue(final IEvaluator<Boolean, ? super K> eval) {
+    public Level2MapOfListEntriesKeySelectedOperator<K, V> ifNullOrTrue(final IFunction<Boolean, ? super K> eval) {
         return new Level2MapOfListEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level2MapOfListEntriesKeySelectedOperator<K, V> ifNullOrFalse(final IEvaluator<Boolean, ? super K> eval) {
+    public Level2MapOfListEntriesKeySelectedOperator<K, V> ifNullOrFalse(final IFunction<Boolean, ? super K> eval) {
         return new Level2MapOfListEntriesKeySelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public <X> Level2MapOfListEntriesKeyOperator<X, V> convert(final IConverter<X, ? super K> converter) {
-        return new Level2MapOfListEntriesKeyOperatorImpl<X, V>(getTarget().execute(converter, Normalisation.NONE));
-    }
-
-
-    public <X> Level2MapOfListEntriesKeyOperator<X, V> eval(final IEvaluator<X, ? super K> eval) {
-        return new Level2MapOfListEntriesKeyOperatorImpl<X, V>(getTarget().execute(eval, Normalisation.NONE));
+    public <X> Level2MapOfListEntriesKeyOperator<X, V> execIfNotNull(final IFunction<X, ? super K> function) {
+        return new Level2MapOfListEntriesKeyOperatorImpl<X, V>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

@@ -23,8 +23,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableMapOfSetEntrySelectedOperator;
 import org.op4j.operators.qualities.NavigableMapEntryOperator;
 import org.op4j.operators.qualities.NavigatingMapOperator;
@@ -50,8 +48,8 @@ public interface Level1MapOfSetSelectedEntriesOperator<K,V>
 
 
     public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifIndex(final int... indexes);
-    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
-    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map.Entry<K,Set<V>>> eval);
+    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifTrue(final IFunction<Boolean, ? super Map.Entry<K,Set<V>>> eval);
+    public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifFalse(final IFunction<Boolean, ? super Map.Entry<K,Set<V>>> eval);
     public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifIndexNot(final int... indexes);
     public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifKeyEquals(final K... keys);
     public Level1MapOfSetSelectedEntriesSelectedOperator<K,V> ifKeyNotEquals(final K... keys);
@@ -66,8 +64,6 @@ public interface Level1MapOfSetSelectedEntriesOperator<K,V>
 
     public Level1MapOfSetSelectedEntriesOperator<K,V> execAsMapOfSetEntry(final IFunction<? extends Map.Entry<? extends K,? extends Set<? extends V>>, ? super Map.Entry<K,Set<V>>> function);
     
-    public Level1MapOfSetSelectedEntriesOperator<K,V> evalAsMapOfSetEntry(final IEvaluator<? extends Map.Entry<? extends K,? extends Set<? extends V>>, ? super Map.Entry<K,Set<V>>> eval);
+    public Level1MapOfSetSelectedEntriesOperator<K,V> execIfNotNullAsMapOfSetEntry(final IFunction<? extends Map.Entry<? extends K,? extends Set<? extends V>>, ? super Map.Entry<K,Set<V>>> function);
     
-    public Level1MapOfSetSelectedEntriesOperator<K,V> convertAsMapOfSetEntry(final IConverter<? extends Map.Entry<? extends K,? extends Set<? extends V>>, ? super Map.Entry<K,Set<V>>> converter);
-                                    
-}
+    }

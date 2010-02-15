@@ -6,8 +6,6 @@ import java.util.Map.Entry;
 
 import org.op4j.functions.IFunction;
 import org.op4j.functions.MapFuncs;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofmap.Level0MapOfMapOperator;
 import org.op4j.operators.intf.mapofmap.Level0MapOfMapSelectedOperator;
@@ -31,12 +29,12 @@ public final class Level0MapOfMapSelectedOperatorImpl<K1,K2,V> extends AbstractO
     }
 
 
-    public Level0MapOfMapSelectedOperator<K1,K2,V> removeAllTrue(final IEvaluator<Boolean,? super Entry<K1,Map<K2,V>>> eval) {
+    public Level0MapOfMapSelectedOperator<K1,K2,V> removeAllTrue(final IFunction<Boolean,? super Entry<K1,Map<K2,V>>> eval) {
         return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K1,Map<K2,V>>(eval)));
     }
 
 
-    public Level0MapOfMapSelectedOperator<K1,K2,V> removeAllFalse(final IEvaluator<Boolean,? super Entry<K1,Map<K2,V>>> eval) {
+    public Level0MapOfMapSelectedOperator<K1,K2,V> removeAllFalse(final IFunction<Boolean,? super Entry<K1,Map<K2,V>>> eval) {
         return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K1,Map<K2,V>>(eval)));
     }
 
@@ -61,13 +59,8 @@ public final class Level0MapOfMapSelectedOperatorImpl<K1,K2,V> extends AbstractO
     }
 
 
-    public Level0MapOfMapSelectedOperator<K1,K2,V> convertAsMapOfMap(final IConverter<? extends Map<? extends K1,? extends Map<? extends K2,? extends V>>,? super Map<K1,Map<K2,V>>> converter) {
-        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(converter, Normalisation.MAP_OF_MAP));
-    }
-
-
-    public Level0MapOfMapSelectedOperator<K1,K2,V> evalAsMapOfMap(final IEvaluator<? extends Map<? extends K1,? extends Map<? extends K2,? extends V>>,? super Map<K1,Map<K2,V>>> eval) {
-        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(eval, Normalisation.MAP_OF_MAP));
+    public Level0MapOfMapSelectedOperator<K1,K2,V> execIfNotNullAsMapOfMap(final IFunction<? extends Map<? extends K1,? extends Map<? extends K2,? extends V>>,? super Map<K1,Map<K2,V>>> function) {
+        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().executeIfNotNull(function, Normalisation.MAP_OF_MAP));
     }
 
 
@@ -91,14 +84,14 @@ public final class Level0MapOfMapSelectedOperatorImpl<K1,K2,V> extends AbstractO
     }
 
 
-    public Level0MapOfMapSelectedOperator<K1,K2,V> sort(final Comparator<? super Entry<K1,Map<K2,V>>> comparator) {
-        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.SortEntries<K1,Map<K2,V>>(comparator)));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level0MapOfMapSelectedOperator<K1,K2,V> sort() {
         return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.SortByKey()));
+    }
+
+
+    public Level0MapOfMapSelectedOperator<K1,K2,V> sort(final Comparator<? super Entry<K1,Map<K2,V>>> comparator) {
+        return new Level0MapOfMapSelectedOperatorImpl<K1,K2,V>(getTarget().execute(new MapFuncs.SortEntries<K1,Map<K2,V>>(comparator)));
     }
 
 

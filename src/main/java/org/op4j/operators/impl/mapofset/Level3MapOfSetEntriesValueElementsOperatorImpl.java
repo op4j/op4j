@@ -25,8 +25,6 @@ import java.util.Set;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.Level3MapOfSetEntriesValueElementsOperator;
@@ -81,12 +79,12 @@ public final class Level3MapOfSetEntriesValueElementsOperatorImpl<K,V> extends A
     }
 
 
-    public Level3MapOfSetEntriesValueElementsSelectedOperator<K, V> ifTrue(final IEvaluator<Boolean, ? super V> eval) {
+    public Level3MapOfSetEntriesValueElementsSelectedOperator<K, V> ifTrue(final IFunction<Boolean, ? super V> eval) {
         return new Level3MapOfSetEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level3MapOfSetEntriesValueElementsSelectedOperator<K, V> ifFalse(final IEvaluator<Boolean, ? super V> eval) {
+    public Level3MapOfSetEntriesValueElementsSelectedOperator<K, V> ifFalse(final IFunction<Boolean, ? super V> eval) {
         return new Level3MapOfSetEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
 
@@ -96,12 +94,12 @@ public final class Level3MapOfSetEntriesValueElementsOperatorImpl<K,V> extends A
     }
 
 
-    public Level3MapOfSetEntriesValueElementsSelectedOperator<K, V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval) {
+    public Level3MapOfSetEntriesValueElementsSelectedOperator<K, V> ifNotNullAndTrue(final IFunction<Boolean, ? super V> eval) {
         return new Level3MapOfSetEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level3MapOfSetEntriesValueElementsSelectedOperator<K, V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval) {
+    public Level3MapOfSetEntriesValueElementsSelectedOperator<K, V> ifNotNullAndFalse(final IFunction<Boolean, ? super V> eval) {
         return new Level3MapOfSetEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -111,23 +109,18 @@ public final class Level3MapOfSetEntriesValueElementsOperatorImpl<K,V> extends A
     }
 
 
-    public Level3MapOfSetEntriesValueElementsSelectedOperator<K, V> ifNullOrTrue(final IEvaluator<Boolean, ? super V> eval) {
+    public Level3MapOfSetEntriesValueElementsSelectedOperator<K, V> ifNullOrTrue(final IFunction<Boolean, ? super V> eval) {
         return new Level3MapOfSetEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level3MapOfSetEntriesValueElementsSelectedOperator<K, V> ifNullOrFalse(final IEvaluator<Boolean, ? super V> eval) {
+    public Level3MapOfSetEntriesValueElementsSelectedOperator<K, V> ifNullOrFalse(final IFunction<Boolean, ? super V> eval) {
         return new Level3MapOfSetEntriesValueElementsSelectedOperatorImpl<K, V>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public <X> Level3MapOfSetEntriesValueElementsOperator<K, X> convert(final IConverter<X, ? super V> converter) {
-        return new Level3MapOfSetEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(converter, Normalisation.NONE));
-    }
-
-
-    public <X> Level3MapOfSetEntriesValueElementsOperator<K, X> eval(final IEvaluator<X, ? super V> eval) {
-        return new Level3MapOfSetEntriesValueElementsOperatorImpl<K, X>(getTarget().execute(eval, Normalisation.NONE));
+    public <X> Level3MapOfSetEntriesValueElementsOperator<K, X> execIfNotNull(final IFunction<X, ? super V> function) {
+        return new Level3MapOfSetEntriesValueElementsOperatorImpl<K, X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

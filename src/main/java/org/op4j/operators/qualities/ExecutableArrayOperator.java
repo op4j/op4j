@@ -21,8 +21,6 @@ package org.op4j.operators.qualities;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 
 
 
@@ -60,7 +58,7 @@ public interface ExecutableArrayOperator<T> {
     /**
      * <p>
      * Specialisation of the {@link #execAsArray(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsArray(IFunction)}, and exists only for
@@ -70,23 +68,8 @@ public interface ExecutableArrayOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public ExecutableArrayOperator<T> evalAsArray(final IEvaluator<? extends T[],? super T[]> eval);
-    
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsArray(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsArray(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     * 
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public ExecutableArrayOperator<T> convertAsArray(final IConverter<? extends T[],? super T[]> converter);
+    public ExecutableArrayOperator<T> execIfNotNullAsArray(final IFunction<? extends T[],? super T[]> function);
+
 
 
     /**
@@ -111,7 +94,7 @@ public interface ExecutableArrayOperator<T> {
     /**
      * <p>
      * Specialisation of the {@link #execAsArrayOf(Type, IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsArrayOf(Type, IFunction)}, and exists only for
@@ -123,25 +106,8 @@ public interface ExecutableArrayOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> ExecutableArrayOperator<X> evalAsArrayOf(final Type<X> type, final IEvaluator<X[],? super T[]> eval);
-    
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsArrayOf(Type, IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsArrayOf(Type, IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     * 
-     * @param <X> the type of the result elements
-     * @param type the new type for the operator
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X> ExecutableArrayOperator<X> convertAsArrayOf(final Type<X> type, final IConverter<X[],? super T[]> converter);
+    public <X> ExecutableArrayOperator<X> execIfNotNullAsArrayOf(final Type<X> type, final IFunction<X[],? super T[]> function);
+
 
     
     /**
@@ -161,7 +127,7 @@ public interface ExecutableArrayOperator<T> {
     /**
      * <p>
      * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #exec(IFunction)}, and exists only for
@@ -172,24 +138,8 @@ public interface ExecutableArrayOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> Operator eval(final IEvaluator<X,? super T[]> eval);
+    public <X> Operator execIfNotNull(final IFunction<X,? super T[]> function);
     
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param <X> the type of the result object
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X> Operator convert(final IConverter<X,? super T[]> converter);    
     
     
 

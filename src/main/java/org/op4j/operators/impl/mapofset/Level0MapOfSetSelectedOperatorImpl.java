@@ -7,8 +7,6 @@ import java.util.Map.Entry;
 
 import org.op4j.functions.IFunction;
 import org.op4j.functions.MapFuncs;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.intf.mapofset.Level0MapOfSetSelectedOperator;
@@ -32,12 +30,12 @@ public final class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOpera
     }
 
 
-    public Level0MapOfSetSelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean,? super Entry<K,Set<V>>> eval) {
+    public Level0MapOfSetSelectedOperator<K,V> removeAllTrue(final IFunction<Boolean,? super Entry<K,Set<V>>> eval) {
         return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K,Set<V>>(eval)));
     }
 
 
-    public Level0MapOfSetSelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean,? super Entry<K,Set<V>>> eval) {
+    public Level0MapOfSetSelectedOperator<K,V> removeAllFalse(final IFunction<Boolean,? super Entry<K,Set<V>>> eval) {
         return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K,Set<V>>(eval)));
     }
 
@@ -62,13 +60,8 @@ public final class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOpera
     }
 
 
-    public Level0MapOfSetSelectedOperator<K,V> convertAsMapOfSet(final IConverter<? extends Map<? extends K,? extends Set<? extends V>>,? super Map<K,Set<V>>> converter) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.MAP_OF_SET));
-    }
-
-
-    public Level0MapOfSetSelectedOperator<K,V> evalAsMapOfSet(final IEvaluator<? extends Map<? extends K,? extends Set<? extends V>>,? super Map<K,Set<V>>> eval) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.MAP_OF_SET));
+    public Level0MapOfSetSelectedOperator<K,V> execIfNotNullAsMapOfSet(final IFunction<? extends Map<? extends K,? extends Set<? extends V>>,? super Map<K,Set<V>>> function) {
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().executeIfNotNull(function, Normalisation.MAP_OF_SET));
     }
 
 
@@ -92,14 +85,14 @@ public final class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOpera
     }
 
 
-    public Level0MapOfSetSelectedOperator<K,V> sort(final Comparator<? super Entry<K,Set<V>>> comparator) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,Set<V>>(comparator)));
-    }
-
-
     @SuppressWarnings("unchecked")
     public Level0MapOfSetSelectedOperator<K,V> sort() {
         return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortByKey()));
+    }
+
+
+    public Level0MapOfSetSelectedOperator<K,V> sort(final Comparator<? super Entry<K,Set<V>>> comparator) {
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,Set<V>>(comparator)));
     }
 
 

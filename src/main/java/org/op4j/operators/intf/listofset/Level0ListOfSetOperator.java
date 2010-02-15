@@ -26,8 +26,6 @@ import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.arrayofarray.Level0ArrayOfArrayOperator;
 import org.op4j.operators.intf.arrayoflist.Level0ArrayOfListOperator;
@@ -100,15 +98,15 @@ public interface Level0ListOfSetOperator<T>
 
 
     public Level0ListOfSetSelectedOperator<T> ifIndex(final int... indexes);
-    public Level0ListOfSetSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super List<Set<T>>> eval);
-    public Level0ListOfSetSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super List<Set<T>>> eval);
-    public Level0ListOfSetSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super List<Set<T>>> eval);
-    public Level0ListOfSetSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super List<Set<T>>> eval);
+    public Level0ListOfSetSelectedOperator<T> ifTrue(final IFunction<Boolean, ? super List<Set<T>>> eval);
+    public Level0ListOfSetSelectedOperator<T> ifFalse(final IFunction<Boolean, ? super List<Set<T>>> eval);
+    public Level0ListOfSetSelectedOperator<T> ifNullOrFalse(final IFunction<Boolean, ? super List<Set<T>>> eval);
+    public Level0ListOfSetSelectedOperator<T> ifNotNullAndFalse(final IFunction<Boolean, ? super List<Set<T>>> eval);
     public Level0ListOfSetSelectedOperator<T> ifNull();
-    public Level0ListOfSetSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super List<Set<T>>> eval);
+    public Level0ListOfSetSelectedOperator<T> ifNullOrTrue(final IFunction<Boolean, ? super List<Set<T>>> eval);
     public Level0ListOfSetSelectedOperator<T> ifIndexNot(final int... indexes);
     public Level0ListOfSetSelectedOperator<T> ifNotNull();
-    public Level0ListOfSetSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super List<Set<T>>> eval);
+    public Level0ListOfSetSelectedOperator<T> ifNotNullAndTrue(final IFunction<Boolean, ? super List<Set<T>>> eval);
 
 
 
@@ -127,12 +125,12 @@ public interface Level0ListOfSetOperator<T>
     public Level0ListOfSetOperator<T> addAll(final Collection<Set<T>> collection);
     public Level0ListOfSetOperator<T> removeAllIndexes(final int... indexes);
     public Level0ListOfSetOperator<T> removeAllEqual(final Set<T>... values);
-    public Level0ListOfSetOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0ListOfSetOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0ListOfSetOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0ListOfSetOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0ListOfSetOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
-    public Level0ListOfSetOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super Set<T>> eval);
+    public Level0ListOfSetOperator<T> removeAllTrue(final IFunction<Boolean, ? super Set<T>> eval);
+    public Level0ListOfSetOperator<T> removeAllFalse(final IFunction<Boolean, ? super Set<T>> eval);
+    public Level0ListOfSetOperator<T> removeAllNullOrFalse(final IFunction<Boolean, ? super Set<T>> eval);
+    public Level0ListOfSetOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super Set<T>> eval);
+    public Level0ListOfSetOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super Set<T>> eval);
+    public Level0ListOfSetOperator<T> removeAllNullOrTrue(final IFunction<Boolean, ? super Set<T>> eval);
     public Level0ListOfSetOperator<T> removeAllIndexesNot(final int... indexes);
     public Level0ListOfSetOperator<T> removeAllNull();
     
@@ -156,15 +154,15 @@ public interface Level0ListOfSetOperator<T>
     public Level0SetOfSetOperator<T> toSetOfSet();
     
     public Level0ArrayOfMapOperator<T,T> toArrayOfMap();
-    public <K> Level0ArrayOfMapOperator<K,T> toArrayOfMap(final IEvaluator<K,? super T> keyEval);
+    public <K> Level0ArrayOfMapOperator<K,T> toArrayOfMap(final IFunction<K,? super T> keyEval);
     public <K,V> Level0ArrayOfMapOperator<K,V> toArrayOfMap(final IMapBuilder<K,V,? super T> mapBuild);
     
     public Level0ListOfMapOperator<T,T> toListOfMap();
-    public <K> Level0ListOfMapOperator<K,T> toListOfMap(final IEvaluator<K,? super T> keyEval);
+    public <K> Level0ListOfMapOperator<K,T> toListOfMap(final IFunction<K,? super T> keyEval);
     public <K,V> Level0ListOfMapOperator<K,V> toListOfMap(final IMapBuilder<K,V,? super T> mapBuild);
     
     public Level0SetOfMapOperator<T,T> toSetOfMap();
-    public <K> Level0SetOfMapOperator<K,T> toSetOfMap(final IEvaluator<K,? super T> keyEval);
+    public <K> Level0SetOfMapOperator<K,T> toSetOfMap(final IFunction<K,? super T> keyEval);
     public <K,V> Level0SetOfMapOperator<K,V> toSetOfMap(final IMapBuilder<K,V,? super T> mapBuild);
 
 
@@ -178,17 +176,13 @@ public interface Level0ListOfSetOperator<T>
     public Level0ListOfSetOperator<T> replaceIfNullWith(final List<Set<T>> replacement);
 
 
-    public <X> Level0ListOfSetOperator<X> convertAsListOfSet(final IConverter<? extends List<? extends Set<X>>,? super List<Set<T>>> converter);
-    
-    public <X> Level0ListOfSetOperator<X> evalAsListOfSet(final IEvaluator<? extends List<? extends Set<X>>,? super List<Set<T>>> eval);
+    public <X> Level0ListOfSetOperator<X> execIfNotNullAsListOfSet(final IFunction<? extends List<? extends Set<X>>,? super List<Set<T>>> function);
 
     public <X> Level0ListOfSetOperator<X> execAsListOfSet(final IFunction<? extends List<? extends Set<X>>,? super List<Set<T>>> function);
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super List<Set<T>>> function);
     
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super List<Set<T>>> eval);
-    
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super List<Set<T>>> converter);    
+    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super List<Set<T>>> function);
     
     public <X> Level0ListOfSetOperator<X> mapMap(final IFunction<X,? super T> function);
     

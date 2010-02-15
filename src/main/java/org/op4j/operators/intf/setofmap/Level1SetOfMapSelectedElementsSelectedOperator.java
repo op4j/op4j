@@ -24,8 +24,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableMapSelectedOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
@@ -65,8 +63,8 @@ public interface Level1SetOfMapSelectedElementsSelectedOperator<K,V>
     public Level1SetOfMapSelectedElementsSelectedOperator<K,V> putAll(final Map<K,V> map);
     public Level1SetOfMapSelectedElementsSelectedOperator<K,V> insertAll(final int position, final Map<K,V> map);
     public Level1SetOfMapSelectedElementsSelectedOperator<K,V> removeAllKeys(final K... keys);
-    public Level1SetOfMapSelectedElementsSelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
-    public Level1SetOfMapSelectedElementsSelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level1SetOfMapSelectedElementsSelectedOperator<K,V> removeAllTrue(final IFunction<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level1SetOfMapSelectedElementsSelectedOperator<K,V> removeAllFalse(final IFunction<Boolean, ? super Map.Entry<K,V>> eval);
     public Level1SetOfMapSelectedElementsSelectedOperator<K,V> removeAllKeysNot(final K... keys);
     
     
@@ -74,9 +72,7 @@ public interface Level1SetOfMapSelectedElementsSelectedOperator<K,V>
     
     
     
-    public Level1SetOfMapSelectedElementsSelectedOperator<K,V> convertAsMap(final IConverter<? extends Map<? extends K,? extends V>, ? super Map<K,V>> converter);
-    
-    public Level1SetOfMapSelectedElementsSelectedOperator<K,V> evalAsMap(final IEvaluator<? extends Map<? extends K,? extends V>, ? super Map<K,V>> eval);
+    public Level1SetOfMapSelectedElementsSelectedOperator<K,V> execIfNotNullAsMap(final IFunction<? extends Map<? extends K,? extends V>, ? super Map<K,V>> function);
 
     public Level1SetOfMapSelectedElementsSelectedOperator<K,V> replaceWith(final Map<K,V> replacement);
 

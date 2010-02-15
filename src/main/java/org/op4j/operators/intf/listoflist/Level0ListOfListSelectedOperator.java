@@ -24,8 +24,6 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.DistinguishableOperator;
 import org.op4j.operators.qualities.ExecutableListOfListSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
@@ -72,21 +70,19 @@ public interface Level0ListOfListSelectedOperator<T>
     public Level0ListOfListSelectedOperator<T> addAll(final Collection<List<T>> collection);
     public Level0ListOfListSelectedOperator<T> removeAllIndexes(final int... indexes);
     public Level0ListOfListSelectedOperator<T> removeAllEqual(final List<T>... values);
-    public Level0ListOfListSelectedOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListOfListSelectedOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListOfListSelectedOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListOfListSelectedOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListOfListSelectedOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super List<T>> eval);
-    public Level0ListOfListSelectedOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super List<T>> eval);
+    public Level0ListOfListSelectedOperator<T> removeAllTrue(final IFunction<Boolean, ? super List<T>> eval);
+    public Level0ListOfListSelectedOperator<T> removeAllFalse(final IFunction<Boolean, ? super List<T>> eval);
+    public Level0ListOfListSelectedOperator<T> removeAllNullOrFalse(final IFunction<Boolean, ? super List<T>> eval);
+    public Level0ListOfListSelectedOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super List<T>> eval);
+    public Level0ListOfListSelectedOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super List<T>> eval);
+    public Level0ListOfListSelectedOperator<T> removeAllNullOrTrue(final IFunction<Boolean, ? super List<T>> eval);
     public Level0ListOfListSelectedOperator<T> removeAllIndexesNot(final int... indexes);
     public Level0ListOfListSelectedOperator<T> removeAllNull();
 
 
 
     
-    public Level0ListOfListSelectedOperator<T> convertAsListOfList(final IConverter<? extends List<? extends List<? extends T>>,? super List<List<T>>> converter);
-    
-    public Level0ListOfListSelectedOperator<T> evalAsListOfList(final IEvaluator<? extends List<? extends List<? extends T>>,? super List<List<T>>> eval);
+    public Level0ListOfListSelectedOperator<T> execIfNotNullAsListOfList(final IFunction<? extends List<? extends List<? extends T>>,? super List<List<T>>> function);
 
     public Level0ListOfListSelectedOperator<T> replaceWith(final List<List<T>> replacement);
 

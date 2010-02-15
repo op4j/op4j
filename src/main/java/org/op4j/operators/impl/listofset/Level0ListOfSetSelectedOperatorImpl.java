@@ -7,8 +7,6 @@ import java.util.Set;
 
 import org.op4j.functions.IFunction;
 import org.op4j.functions.ListFuncs;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.listofset.Level0ListOfSetOperator;
 import org.op4j.operators.intf.listofset.Level0ListOfSetSelectedOperator;
@@ -52,32 +50,32 @@ public final class Level0ListOfSetSelectedOperatorImpl<T> extends AbstractOperat
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> removeAllTrue(final IEvaluator<Boolean,? super Set<T>> eval) {
+    public Level0ListOfSetSelectedOperator<T> removeAllTrue(final IFunction<Boolean,? super Set<T>> eval) {
         return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllTrue<Set<T>>(eval)));
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> removeAllFalse(final IEvaluator<Boolean,? super Set<T>> eval) {
+    public Level0ListOfSetSelectedOperator<T> removeAllFalse(final IFunction<Boolean,? super Set<T>> eval) {
         return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllFalse<Set<T>>(eval)));
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean,? super Set<T>> eval) {
+    public Level0ListOfSetSelectedOperator<T> removeAllNullOrFalse(final IFunction<Boolean,? super Set<T>> eval) {
         return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNullOrFalse<Set<T>>(eval)));
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean,? super Set<T>> eval) {
+    public Level0ListOfSetSelectedOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean,? super Set<T>> eval) {
         return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNotNullAndFalse<Set<T>>(eval)));
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean,? super Set<T>> eval) {
+    public Level0ListOfSetSelectedOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean,? super Set<T>> eval) {
         return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNotNullAndTrue<Set<T>>(eval)));
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean,? super Set<T>> eval) {
+    public Level0ListOfSetSelectedOperator<T> removeAllNullOrTrue(final IFunction<Boolean,? super Set<T>> eval) {
         return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNullOrTrue<Set<T>>(eval)));
     }
 
@@ -102,13 +100,8 @@ public final class Level0ListOfSetSelectedOperatorImpl<T> extends AbstractOperat
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> convertAsListOfSet(final IConverter<? extends List<? extends Set<? extends T>>,? super List<Set<T>>> converter) {
-        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().execute(converter, Normalisation.LIST_OF_SET));
-    }
-
-
-    public Level0ListOfSetSelectedOperator<T> evalAsListOfSet(final IEvaluator<? extends List<? extends Set<? extends T>>,? super List<Set<T>>> eval) {
-        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().execute(eval, Normalisation.LIST_OF_SET));
+    public Level0ListOfSetSelectedOperator<T> execIfNotNullAsListOfSet(final IFunction<? extends List<? extends Set<? extends T>>,? super List<Set<T>>> function) {
+        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().executeIfNotNull(function, Normalisation.LIST_OF_SET));
     }
 
 
@@ -123,13 +116,13 @@ public final class Level0ListOfSetSelectedOperatorImpl<T> extends AbstractOperat
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> addAll(final Collection<Set<T>> collection) {
-        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.AddAll<Set<T>>(NormalisationUtils.normaliseSets(collection))));
+    public Level0ListOfSetSelectedOperator<T> addAll(final Set<T>... newElements) {
+        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<Set<T>>(NormalisationUtils.normaliseSets(newElements))));
     }
 
 
-    public Level0ListOfSetSelectedOperator<T> addAll(final Set<T>... newElements) {
-        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<Set<T>>(NormalisationUtils.normaliseSets(newElements))));
+    public Level0ListOfSetSelectedOperator<T> addAll(final Collection<Set<T>> collection) {
+        return new Level0ListOfSetSelectedOperatorImpl<T>(getTarget().execute(new ListFuncs.AddAll<Set<T>>(NormalisationUtils.normaliseSets(collection))));
     }
 
 

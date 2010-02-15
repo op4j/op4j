@@ -25,8 +25,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.DistinguishableOperator;
 import org.op4j.operators.qualities.ExecutableListSelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
@@ -57,15 +55,15 @@ public interface Level2MapOfListEntriesSelectedValueOperator<K,V>
 
 
     public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> ifIndex(final int... indexes);
-    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super List<V>> eval);
-    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super List<V>> eval);
-    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super List<V>> eval);
-    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super List<V>> eval);
+    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> ifTrue(final IFunction<Boolean, ? super List<V>> eval);
+    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> ifFalse(final IFunction<Boolean, ? super List<V>> eval);
+    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> ifNullOrFalse(final IFunction<Boolean, ? super List<V>> eval);
+    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> ifNotNullAndFalse(final IFunction<Boolean, ? super List<V>> eval);
     public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> ifNull();
-    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super List<V>> eval);
+    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> ifNullOrTrue(final IFunction<Boolean, ? super List<V>> eval);
     public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> ifIndexNot(final int... indexes);
     public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> ifNotNull();
-    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super List<V>> eval);
+    public Level2MapOfListEntriesSelectedValueSelectedOperator<K,V> ifNotNullAndTrue(final IFunction<Boolean, ? super List<V>> eval);
 
     
     public Level3MapOfListEntriesSelectedValueElementsOperator<K,V> forEach();
@@ -85,19 +83,17 @@ public interface Level2MapOfListEntriesSelectedValueOperator<K,V>
     public Level2MapOfListEntriesSelectedValueOperator<K,V> addAll(final Collection<V> collection);
     public Level2MapOfListEntriesSelectedValueOperator<K,V> removeAllIndexes(final int... indexes);
     public Level2MapOfListEntriesSelectedValueOperator<K,V> removeAllEqual(final V... values);
-    public Level2MapOfListEntriesSelectedValueOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfListEntriesSelectedValueOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfListEntriesSelectedValueOperator<K,V> removeAllNullOrFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfListEntriesSelectedValueOperator<K,V> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfListEntriesSelectedValueOperator<K,V> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super V> eval);
-    public Level2MapOfListEntriesSelectedValueOperator<K,V> removeAllNullOrTrue(final IEvaluator<Boolean, ? super V> eval);
+    public Level2MapOfListEntriesSelectedValueOperator<K,V> removeAllTrue(final IFunction<Boolean, ? super V> eval);
+    public Level2MapOfListEntriesSelectedValueOperator<K,V> removeAllFalse(final IFunction<Boolean, ? super V> eval);
+    public Level2MapOfListEntriesSelectedValueOperator<K,V> removeAllNullOrFalse(final IFunction<Boolean, ? super V> eval);
+    public Level2MapOfListEntriesSelectedValueOperator<K,V> removeAllNotNullAndFalse(final IFunction<Boolean, ? super V> eval);
+    public Level2MapOfListEntriesSelectedValueOperator<K,V> removeAllNotNullAndTrue(final IFunction<Boolean, ? super V> eval);
+    public Level2MapOfListEntriesSelectedValueOperator<K,V> removeAllNullOrTrue(final IFunction<Boolean, ? super V> eval);
     public Level2MapOfListEntriesSelectedValueOperator<K,V> removeAllIndexesNot(final int... indexes);
     public Level2MapOfListEntriesSelectedValueOperator<K,V> removeAllNull();
 
     
-    public Level2MapOfListEntriesSelectedValueOperator<K,V> convertAsList(final IConverter<? extends List<? extends V>, ? super List<V>> converter);
-    
-    public Level2MapOfListEntriesSelectedValueOperator<K,V> evalAsList(final IEvaluator<? extends List<? extends V>, ? super List<V>> eval);
+    public Level2MapOfListEntriesSelectedValueOperator<K,V> execIfNotNullAsList(final IFunction<? extends List<? extends V>, ? super List<V>> function);
 
     public Level2MapOfListEntriesSelectedValueOperator<K,V> replaceWith(final List<V> replacement);
 

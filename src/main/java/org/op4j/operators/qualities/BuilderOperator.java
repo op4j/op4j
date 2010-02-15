@@ -20,7 +20,7 @@
 package org.op4j.operators.qualities;
 
 import org.javaruntype.type.Type;
-import org.op4j.functions.evaluators.IEvaluator;
+import org.op4j.functions.IFunction;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.array.Level0ArrayOperator;
 import org.op4j.operators.intf.list.Level0ListOperator;
@@ -87,7 +87,7 @@ public interface BuilderOperator<T> {
      * @param keyEval the evaluator to be used for obtaining keys
      * @return an operator on the resulting map
      */
-    public <K> Level0MapOperator<K,T> buildMap(final IEvaluator<K,? super T> keyEval);
+    public <K> Level0MapOperator<K,T> buildMap(final IFunction<K,? super T> keyEval);
     
     
     /**
@@ -117,7 +117,7 @@ public interface BuilderOperator<T> {
      * @param keyEval the evaluator to be used for obtaining keys
      * @return an operator on the resulting map of list
      */
-    public <K> Level0MapOfListOperator<K,T> buildMapOfList(final IEvaluator<K,? super T> keyEval);
+    public <K> Level0MapOfListOperator<K,T> buildMapOfList(final IFunction<K,? super T> keyEval);
     
     
     /**
@@ -146,7 +146,7 @@ public interface BuilderOperator<T> {
      * @param keyEval the evaluator to be used for obtaining keys
      * @return an operator on the resulting map of list
      */
-    public <K> Level0MapOfSetOperator<K,T> buildMapOfSet(final IEvaluator<K,? super T> keyEval);
+    public <K> Level0MapOfSetOperator<K,T> buildMapOfSet(final IFunction<K,? super T> keyEval);
     
     
     /**
@@ -177,7 +177,7 @@ public interface BuilderOperator<T> {
      * @param keyEval the evaluator to be used for obtaining keys
      * @return an operator on the resulting map of list
      */
-    public <K> Level0MapOfArrayOperator<K,T> buildMapOfArrayOf(final Type<T> valueType, final IEvaluator<K,? super T> keyEval);
+    public <K> Level0MapOfArrayOperator<K,T> buildMapOfArrayOf(final Type<T> valueType, final IFunction<K,? super T> keyEval);
 
     
     /**

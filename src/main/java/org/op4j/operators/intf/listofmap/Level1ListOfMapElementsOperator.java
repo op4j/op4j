@@ -25,8 +25,6 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.intf.list.Level1ListElementsOperator;
 import org.op4j.operators.intf.listoflist.Level1ListOfListElementsOperator;
 import org.op4j.operators.intf.listofset.Level1ListOfSetElementsOperator;
@@ -65,15 +63,15 @@ public interface Level1ListOfMapElementsOperator<K,V>
 
 
     public Level1ListOfMapElementsSelectedOperator<K,V> ifIndex(final int... indexes);
-    public Level1ListOfMapElementsSelectedOperator<K,V> ifTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level1ListOfMapElementsSelectedOperator<K,V> ifFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level1ListOfMapElementsSelectedOperator<K,V> ifNullOrFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
-    public Level1ListOfMapElementsSelectedOperator<K,V> ifNotNullAndFalse(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level1ListOfMapElementsSelectedOperator<K,V> ifTrue(final IFunction<Boolean, ? super Map<K,V>> eval);
+    public Level1ListOfMapElementsSelectedOperator<K,V> ifFalse(final IFunction<Boolean, ? super Map<K,V>> eval);
+    public Level1ListOfMapElementsSelectedOperator<K,V> ifNullOrFalse(final IFunction<Boolean, ? super Map<K,V>> eval);
+    public Level1ListOfMapElementsSelectedOperator<K,V> ifNotNullAndFalse(final IFunction<Boolean, ? super Map<K,V>> eval);
     public Level1ListOfMapElementsSelectedOperator<K,V> ifNull();
-    public Level1ListOfMapElementsSelectedOperator<K,V> ifNullOrTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level1ListOfMapElementsSelectedOperator<K,V> ifNullOrTrue(final IFunction<Boolean, ? super Map<K,V>> eval);
     public Level1ListOfMapElementsSelectedOperator<K,V> ifIndexNot(final int... indexes);
     public Level1ListOfMapElementsSelectedOperator<K,V> ifNotNull();
-    public Level1ListOfMapElementsSelectedOperator<K,V> ifNotNullAndTrue(final IEvaluator<Boolean, ? super Map<K,V>> eval);
+    public Level1ListOfMapElementsSelectedOperator<K,V> ifNotNullAndTrue(final IFunction<Boolean, ? super Map<K,V>> eval);
 
 
     
@@ -89,8 +87,8 @@ public interface Level1ListOfMapElementsOperator<K,V>
     public Level1ListOfMapElementsOperator<K,V> putAll(final Map<K,V> map);
     public Level1ListOfMapElementsOperator<K,V> insertAll(final int position, final Map<K,V> map);
     public Level1ListOfMapElementsOperator<K,V> removeAllKeys(final K... keys);
-    public Level1ListOfMapElementsOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
-    public Level1ListOfMapElementsOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level1ListOfMapElementsOperator<K,V> removeAllTrue(final IFunction<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level1ListOfMapElementsOperator<K,V> removeAllFalse(final IFunction<Boolean, ? super Map.Entry<K,V>> eval);
     public Level1ListOfMapElementsOperator<K,V> removeAllKeysNot(final K... keys);
     
     
@@ -105,18 +103,13 @@ public interface Level1ListOfMapElementsOperator<K,V>
     public Level1ListOfMapElementsOperator<K,V> replaceIfNullWith(final Map<K,V> replacement);
 
 
-    public <X,Y> Level1ListOfMapElementsOperator<X,Y> convertAsMap(final IConverter<? extends Map<X,Y>,? super Map<K,V>> converter);
-    
-    public <X,Y> Level1ListOfMapElementsOperator<X,Y> evalAsMap(final IEvaluator<? extends Map<X,Y>,? super Map<K,V>> eval);
+    public <X,Y> Level1ListOfMapElementsOperator<X,Y> execIfNotNullAsMap(final IFunction<? extends Map<X,Y>,? super Map<K,V>> function);
 
     public <X,Y> Level1ListOfMapElementsOperator<X,Y> execAsMap(final IFunction<? extends Map<X,Y>,? super Map<K,V>> function);
 
     public <X> Level1ListElementsOperator<X> exec(final IFunction<X, ? super Map<K,V>> function);
     
-    public <X> Level1ListElementsOperator<X> eval(final IEvaluator<X,? super Map<K,V>> eval);
-    
-    public <X> Level1ListElementsOperator<X> convert(final IConverter<X,? super Map<K,V>> converter);    
-    
+    public <X> Level1ListElementsOperator<X> execIfNotNull(final IFunction<X,? super Map<K,V>> function);
     
     public <X,Y> Level1ListOfMapElementsOperator<X,Y> asMapOf(final Type<X> keyType, final Type<Y> valueType);
     public Operator asMapOfUnknown();

@@ -40,6 +40,7 @@ import org.javaruntype.type.Types;
 import org.junit.Test;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.ExecCtx;
+import org.op4j.functions.IFunction;
 import org.op4j.functions.ListFuncs;
 import org.op4j.functions.SetFuncs;
 import org.op4j.functions.StringFuncs;
@@ -54,7 +55,6 @@ import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.converters.ToMapOfArray;
 import org.op4j.functions.converters.ToString;
 import org.op4j.functions.evaluators.Call;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.functions.evaluators.Ognl;
 
 /**
@@ -101,24 +101,24 @@ watch.start();
         final Map<String,String>[] maps1 = (Map<String, String>[]) new Map<?,?>[] { map1, map2 };
 
         
-        System.out.println(printArray(Op.onArrayOfArrayOf(Types.STRING, stringsStrings1).forEach().forEach().ifIndex(0).eval(Ognl.asString("#target + ' Mundo'")).get()));
+        System.out.println(printArray(Op.onArrayOfArrayOf(Types.STRING, stringsStrings1).forEach().forEach().ifIndex(0).exec(Ognl.asString("#target + ' Mundo'")).get()));
         
         
         
         System.out.println(Op.onList(stringsList1).get());
         System.out.println(Op.onList(stringsList1).forEach().get());
-        System.out.println(Op.onList(stringsList1).forEach().ifNotNull().eval(Ognl.asString("toUpperCase()")).get());
+        System.out.println(Op.onList(stringsList1).forEach().ifNotNull().exec(Ognl.asString("toUpperCase()")).get());
         
         
-        System.out.println(Op.onArrayOfArrayOf(Types.STRING, stringsStrings1).forEach().forEach().eval(Types.INTEGER, Ognl.asInteger("length()")).get());
+        System.out.println(Op.onArrayOfArrayOf(Types.STRING, stringsStrings1).forEach().forEach().exec(Types.INTEGER, Ognl.asInteger("length()")).get());
         
-        System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).forEach().forEach().eval(Ognl.asString("toUpperCase()")).get()));
+        System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).forEach().forEach().exec(Ognl.asString("toUpperCase()")).get()));
 
-        System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().ifTrue(Ognl.asBoolean("size() > 6")).forEachEntry().onValue().eval(Ognl.asString("toUpperCase()")).get()));
+        System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().ifTrue(Ognl.asBoolean("size() > 6")).forEachEntry().onValue().exec(Ognl.asString("toUpperCase()")).get()));
         
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().get());
         
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().eval(Call.asInteger("length")).get());
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().exec(Call.asInteger("length")).get());
         
         
         final BigDecimal bd = new BigDecimal("3455234.6325");
@@ -157,7 +157,7 @@ watch.start();
         System.out.println(Op.onList(stringsList1).removeAllIndexesNot(0).get());
         System.out.println(Op.onList(stringsList1).removeAllIndexesNot(0,2).get());
         System.out.println(Op.onList(stringsList1).removeAllTrue(Ognl.asBoolean("#target eq 'Hello'")).get());
-        System.out.println(Op.onList(stringsList1).removeAllTrue(new IEvaluator<Boolean,String>() {
+        System.out.println(Op.onList(stringsList1).removeAllTrue(new IFunction<Boolean,String>() {
 
             public Boolean execute(String target, final ExecCtx ctx) {
                 return Boolean.valueOf(target == null);
@@ -403,48 +403,48 @@ watch.start();
         System.out.println(Op.onList(stringsList1).forEach().ifNotNull().exec(StringFuncs.toUpperCase()).get());
         System.out.println("***___****___****");
         
-        System.out.println(Op.onAll("hello", "goodbye").eval(Ognl.asString("#target + ' world!'")).getAsList());
+        System.out.println(Op.onAll("hello", "goodbye").exec(Ognl.asString("#target + ' world!'")).getAsList());
         
         System.out.println(Op.onList(listOfListOfString1).get());
         System.out.println(Op.onList(listOfListOfString1).forEach().asListOf(Types.STRING).forEach().get());
         
         
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().eval(Call.asInteger("length")).get());
+        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().exec(Call.asInteger("length")).get());
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().ifIndex(0).add("").removeAllTrue(Call.asBoolean("isEmpty")).get());
         System.out.println(Op.onListOfList(stringsListStringsList1).forEach().removeAllTrue(Call.asBoolean("isEmpty")).get());
         
-//        System.out.println(Op.onMap(map1).forEachEntry().eval(Ognl.forString("'in ' + #target.key + ' you say ' + #target.value")).get());
+//        System.out.println(Op.onMap(map1).forEachEntry().exec(Ognl.forString("'in ' + #target.key + ' you say ' + #target.value")).get());
         
         
         System.out.println(printArray(Op.onArrayOfArrayOf(Types.STRING, arrayOfArrayOfString1).forEach().toMap(Ognl.asInteger("length()")).forEachEntry().onKey().asType(Types.forClass(Serializable.class)).endOn().onValue().asType(Types.SERIALIZABLE).get()));
         
         
         System.out.println(Op.onList(stringsList1).removeAllNull().sort().get());
-        System.out.println(Op.onList(stringsList1).removeAllNull().forEach().eval(Ognl.asInteger("length()")).get());
+        System.out.println(Op.onList(stringsList1).removeAllNull().forEach().exec(Ognl.asInteger("length()")).get());
         
-        System.out.println(Op.on(maps1).eval(Ognl.asInteger("length")).get());
-        System.out.println(printArray(Op.onArrayOf(Types.MAP_OF_STRING_STRING, maps1).forEach().eval(Types.INTEGER, Ognl.asInteger("size()")).get()));
-        System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().forEachEntry().onValue().eval(Ognl.asObject("length()")).endOn().endFor().extractValues().get()));
+        System.out.println(Op.on(maps1).exec(Ognl.asInteger("length")).get());
+        System.out.println(printArray(Op.onArrayOf(Types.MAP_OF_STRING_STRING, maps1).forEach().exec(Types.INTEGER, Ognl.asInteger("size()")).get()));
+        System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().forEachEntry().onValue().exec(Ognl.asObject("length()")).endOn().endFor().extractValues().get()));
         
         final Map<Integer,Map<String,String>> mapOfMapOfIntegerStringString = Op.onArrayOf(Types.MAP_OF_STRING_STRING, maps1).toMap(Ognl.asInteger("size()")).asMapOfMapOf(Types.INTEGER, Types.STRING, Types.STRING).get();
         
-        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onValue().forEachEntry().onValue().eval(Ognl.asObject("length()")).get());
+        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onValue().forEachEntry().onValue().exec(Ognl.asObject("length()")).get());
         
-        System.out.println(Op.onListOfList(listOfListOfString1).forEach().forEach().eval(Ognl.asString("#target + '' + #index + '-' + #indexes[1] + '/' + #iterationLevel")).get());
+        System.out.println(Op.onListOfList(listOfListOfString1).forEach().forEach().exec(Ognl.asString("#target + '' + #index + '-' + #indexes[1] + '/' + #iterationLevel")).get());
         
         
-        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onKey().convert(ToString.fromNumber()).eval(Ognl.asString("#target + '...'")).get());
-        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onKey().convert(ToString.fromNumber()).eval(Ognl.asString("'onekey'")).get());
+        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onKey().exec(ToString.fromNumber()).exec(Ognl.asString("#target + '...'")).get());
+        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onKey().exec(ToString.fromNumber()).exec(Ognl.asString("'onekey'")).get());
 
 //        final List<Map<String,String>> listOfMapOfStringString1 = 
 //          Op.buildList(Types.MAP_OF_STRING_STRING).add(map1).add(map2).get();
 //        
 //        System.out.println(printArray(Op.onListOfMap(listOfMapOfStringString1).toArrayOfMap().get()));
     
-        System.out.println(Op.onMap(map1).forEachEntry().eval(Ognl.asString("'<<KEY: ' + #target.key + ' | VALUE: ' + #target.value + '>>'")).get());
+        System.out.println(Op.onMap(map1).forEachEntry().exec(Ognl.asString("'<<KEY: ' + #target.key + ' | VALUE: ' + #target.value + '>>'")).get());
         
-        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().eval(Ognl.asString("'<<KEY: ' + #target.key + ' | VALUE: ' + #target.value + '>>'")).get());
-        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onValue().forEachEntry().eval(Ognl.asString("'<<KEY: ' + #target.key + ' | VALUE: ' + #target.value + '>>'")).get());
+        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().exec(Ognl.asString("'<<KEY: ' + #target.key + ' | VALUE: ' + #target.value + '>>'")).get());
+        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onValue().forEachEntry().exec(Ognl.asString("'<<KEY: ' + #target.key + ' | VALUE: ' + #target.value + '>>'")).get());
         
         System.out.println(Types.LIST_ITERATOR_OF_BOOLEAN.getSimpleName());
         

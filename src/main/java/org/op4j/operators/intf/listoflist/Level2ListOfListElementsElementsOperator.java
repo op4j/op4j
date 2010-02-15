@@ -23,8 +23,6 @@ import java.util.List;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
 import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
@@ -53,15 +51,15 @@ public interface Level2ListOfListElementsElementsOperator<T>
 
 
     public Level2ListOfListElementsElementsSelectedOperator<T> ifIndex(final int... indexes);
-    public Level2ListOfListElementsElementsSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval);
-    public Level2ListOfListElementsElementsSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level2ListOfListElementsElementsSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval);
-    public Level2ListOfListElementsElementsSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval);
+    public Level2ListOfListElementsElementsSelectedOperator<T> ifTrue(final IFunction<Boolean, ? super T> eval);
+    public Level2ListOfListElementsElementsSelectedOperator<T> ifFalse(final IFunction<Boolean, ? super T> eval);
+    public Level2ListOfListElementsElementsSelectedOperator<T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval);
+    public Level2ListOfListElementsElementsSelectedOperator<T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
     public Level2ListOfListElementsElementsSelectedOperator<T> ifNull();
-    public Level2ListOfListElementsElementsSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level2ListOfListElementsElementsSelectedOperator<T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval);
     public Level2ListOfListElementsElementsSelectedOperator<T> ifIndexNot(final int... indexes);
     public Level2ListOfListElementsElementsSelectedOperator<T> ifNotNull();
-    public Level2ListOfListElementsElementsSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval);
+    public Level2ListOfListElementsElementsSelectedOperator<T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
 
     
     public Level1ListOfListElementsOperator<T> endFor();
@@ -70,9 +68,7 @@ public interface Level2ListOfListElementsElementsOperator<T>
     public Level2ListOfListElementsElementsOperator<T> replaceIfNullWith(final T replacement);
 
 
-    public <X> Level2ListOfListElementsElementsOperator<X> convert(final IConverter<X,? super T> converter);
-    
-    public <X> Level2ListOfListElementsElementsOperator<X> eval(final IEvaluator<X,? super T> eval);
+    public <X> Level2ListOfListElementsElementsOperator<X> execIfNotNull(final IFunction<X,? super T> function);
 
     public <X> Level2ListOfListElementsElementsOperator<X> exec(final IFunction<X, ? super T> function);
     

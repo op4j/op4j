@@ -23,8 +23,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 
 
@@ -66,7 +64,7 @@ public interface ExecutableMapOfListOperator<K,V> {
     /**
      * <p>
      * Specialisation of the {@link #execAsMapOfList(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsMapOfList(IFunction)}, and exists only for
@@ -78,25 +76,8 @@ public interface ExecutableMapOfListOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X,Y> ExecutableMapOfListOperator<X,Y> evalAsMapOfList(final IEvaluator<? extends Map<X,? extends List<Y>>,? super Map<K,List<V>>> eval);
-    
+    public <X,Y> ExecutableMapOfListOperator<X,Y> execIfNotNullAsMapOfList(final IFunction<? extends Map<X,? extends List<Y>>,? super Map<K,List<V>>> function);
 
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsMapOfList(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsMapOfList(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param <X> the type of the resulting keys
-     * @param <Y> the type of the resulting values
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X,Y> ExecutableMapOfListOperator<X,Y> convertAsMapOfList(final IConverter<? extends Map<X,? extends List<Y>>,? super Map<K,List<V>>> converter);
 
     
     /**
@@ -116,7 +97,7 @@ public interface ExecutableMapOfListOperator<K,V> {
     /**
      * <p>
      * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #exec(IFunction)}, and exists only for
@@ -127,23 +108,7 @@ public interface ExecutableMapOfListOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Map<K,List<V>>> eval);
+    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super Map<K,List<V>>> function);
     
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param <X> the type of the result object
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Map<K,List<V>>> converter);    
     
 }

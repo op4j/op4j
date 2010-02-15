@@ -22,8 +22,6 @@ package org.op4j.operators.qualities;
 import java.util.List;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 
 
 
@@ -63,7 +61,7 @@ public interface ExecutableListOperator<T> {
     /**
      * <p>
      * Specialisation of the {@link #execAsList(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsList(IFunction)}, and exists only for
@@ -74,24 +72,8 @@ public interface ExecutableListOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> ExecutableListOperator<X> evalAsList(final IEvaluator<? extends List<X>,? super List<T>> eval);
-    
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsList(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsList(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param <X> the type of the result elements
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X> ExecutableListOperator<X> convertAsList(final IConverter<? extends List<X>,? super List<T>> converter);
+    public <X> ExecutableListOperator<X> execIfNotNullAsList(final IFunction<? extends List<X>,? super List<T>> function);
+
 
     
     /**
@@ -111,7 +93,7 @@ public interface ExecutableListOperator<T> {
     /**
      * <p>
      * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #exec(IFunction)}, and exists only for
@@ -122,24 +104,8 @@ public interface ExecutableListOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> Operator eval(final IEvaluator<X,? super List<T>> eval);
+    public <X> Operator execIfNotNull(final IFunction<X,? super List<T>> function);
     
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param <X> the type of the result object
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X> Operator convert(final IConverter<X,? super List<T>> converter);    
 
 
     

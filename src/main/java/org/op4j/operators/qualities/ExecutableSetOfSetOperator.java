@@ -22,8 +22,6 @@ package org.op4j.operators.qualities;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 
 
@@ -64,7 +62,7 @@ public interface ExecutableSetOfSetOperator<T> {
     /**
      * <p>
      * Specialisation of the {@link #execAsSetOfSet(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsSetOfSet(IFunction)}, and exists only for
@@ -75,24 +73,8 @@ public interface ExecutableSetOfSetOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> ExecutableSetOfSetOperator<X> evalAsSetOfSet(final IEvaluator<? extends Set<? extends Set<X>>,? super Set<Set<T>>> eval);
-    
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsSetOfSet(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsSetOfSet(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param <X> the type of the result elements
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X> ExecutableSetOfSetOperator<X> convertAsSetOfSet(final IConverter<? extends Set<? extends Set<X>>,? super Set<Set<T>>> converter);
+    public <X> ExecutableSetOfSetOperator<X> execIfNotNullAsSetOfSet(final IFunction<? extends Set<? extends Set<X>>,? super Set<Set<T>>> function);
+
 
     
     /**
@@ -112,7 +94,7 @@ public interface ExecutableSetOfSetOperator<T> {
     /**
      * <p>
      * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #exec(IFunction)}, and exists only for
@@ -123,24 +105,8 @@ public interface ExecutableSetOfSetOperator<T> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super Set<Set<T>>> eval);
+    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super Set<Set<T>>> function);
     
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param <X> the type of the result object
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super Set<Set<T>>> converter);    
     
     
     

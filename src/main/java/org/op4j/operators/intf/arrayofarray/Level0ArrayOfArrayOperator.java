@@ -24,8 +24,6 @@ import java.util.Comparator;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.array.Level0ArrayOperator;
 import org.op4j.operators.intf.arrayoflist.Level0ArrayOfListOperator;
@@ -98,15 +96,15 @@ public interface Level0ArrayOfArrayOperator<T>
 
 
     public Level0ArrayOfArraySelectedOperator<T> ifIndex(final int... indexes);
-    public Level0ArrayOfArraySelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T[][]> eval);
-    public Level0ArrayOfArraySelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T[][]> eval);
-    public Level0ArrayOfArraySelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T[][]> eval);
-    public Level0ArrayOfArraySelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T[][]> eval);
+    public Level0ArrayOfArraySelectedOperator<T> ifTrue(final IFunction<Boolean, ? super T[][]> eval);
+    public Level0ArrayOfArraySelectedOperator<T> ifFalse(final IFunction<Boolean, ? super T[][]> eval);
+    public Level0ArrayOfArraySelectedOperator<T> ifNullOrFalse(final IFunction<Boolean, ? super T[][]> eval);
+    public Level0ArrayOfArraySelectedOperator<T> ifNotNullAndFalse(final IFunction<Boolean, ? super T[][]> eval);
     public Level0ArrayOfArraySelectedOperator<T> ifNull();
-    public Level0ArrayOfArraySelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T[][]> eval);
+    public Level0ArrayOfArraySelectedOperator<T> ifNullOrTrue(final IFunction<Boolean, ? super T[][]> eval);
     public Level0ArrayOfArraySelectedOperator<T> ifIndexNot(final int... indexes);
     public Level0ArrayOfArraySelectedOperator<T> ifNotNull();
-    public Level0ArrayOfArraySelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T[][]> eval);
+    public Level0ArrayOfArraySelectedOperator<T> ifNotNullAndTrue(final IFunction<Boolean, ? super T[][]> eval);
 
 
 
@@ -126,12 +124,12 @@ public interface Level0ArrayOfArrayOperator<T>
     public Level0ArrayOfArrayOperator<T> addAll(final Collection<T[]> collection);
     public Level0ArrayOfArrayOperator<T> removeAllIndexes(final int... indexes);
     public Level0ArrayOfArrayOperator<T> removeAllEqual(final T[]... values);
-    public Level0ArrayOfArrayOperator<T> removeAllTrue(final IEvaluator<Boolean, ? super T[]> eval);
-    public Level0ArrayOfArrayOperator<T> removeAllFalse(final IEvaluator<Boolean, ? super T[]> eval);
-    public Level0ArrayOfArrayOperator<T> removeAllNullOrFalse(final IEvaluator<Boolean, ? super T[]> eval);
-    public Level0ArrayOfArrayOperator<T> removeAllNotNullAndFalse(final IEvaluator<Boolean, ? super T[]> eval);
-    public Level0ArrayOfArrayOperator<T> removeAllNotNullAndTrue(final IEvaluator<Boolean, ? super T[]> eval);
-    public Level0ArrayOfArrayOperator<T> removeAllNullOrTrue(final IEvaluator<Boolean, ? super T[]> eval);
+    public Level0ArrayOfArrayOperator<T> removeAllTrue(final IFunction<Boolean, ? super T[]> eval);
+    public Level0ArrayOfArrayOperator<T> removeAllFalse(final IFunction<Boolean, ? super T[]> eval);
+    public Level0ArrayOfArrayOperator<T> removeAllNullOrFalse(final IFunction<Boolean, ? super T[]> eval);
+    public Level0ArrayOfArrayOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super T[]> eval);
+    public Level0ArrayOfArrayOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super T[]> eval);
+    public Level0ArrayOfArrayOperator<T> removeAllNullOrTrue(final IFunction<Boolean, ? super T[]> eval);
     public Level0ArrayOfArrayOperator<T> removeAllIndexesNot(final int... indexes);
     public Level0ArrayOfArrayOperator<T> removeAllNull();
     
@@ -156,15 +154,15 @@ public interface Level0ArrayOfArrayOperator<T>
     public Level0SetOfSetOperator<T> toSetOfSet();
     
     public Level0ArrayOfMapOperator<T,T> toArrayOfMap();
-    public <K> Level0ArrayOfMapOperator<K,T> toArrayOfMap(final IEvaluator<K,? super T> keyEval);
+    public <K> Level0ArrayOfMapOperator<K,T> toArrayOfMap(final IFunction<K,? super T> keyEval);
     public <K,V> Level0ArrayOfMapOperator<K,V> toArrayOfMap(final IMapBuilder<K,V,? super T> mapBuild);
     
     public Level0ListOfMapOperator<T,T> toListOfMap();
-    public <K> Level0ListOfMapOperator<K,T> toListOfMap(final IEvaluator<K,? super T> keyEval);
+    public <K> Level0ListOfMapOperator<K,T> toListOfMap(final IFunction<K,? super T> keyEval);
     public <K,V> Level0ListOfMapOperator<K,V> toListOfMap(final IMapBuilder<K,V,? super T> mapBuild);
     
     public Level0SetOfMapOperator<T,T> toSetOfMap();
-    public <K> Level0SetOfMapOperator<K,T> toSetOfMap(final IEvaluator<K,? super T> keyEval);
+    public <K> Level0SetOfMapOperator<K,T> toSetOfMap(final IFunction<K,? super T> keyEval);
     public <K,V> Level0SetOfMapOperator<K,V> toSetOfMap(final IMapBuilder<K,V,? super T> mapBuild);
 
     
@@ -178,25 +176,17 @@ public interface Level0ArrayOfArrayOperator<T>
     public Level0ArrayOfArrayOperator<T> replaceIfNullWith(final T[][] replacement);
 
 
-    public Level0ArrayOfArrayOperator<T> convertAsArrayOfArray(final IConverter<? extends T[][],? super T[][]> converter);
-    
-    public Level0ArrayOfArrayOperator<T> evalAsArrayOfArray(final IEvaluator<? extends T[][],? super T[][]> eval);
+    public Level0ArrayOfArrayOperator<T> execIfNotNullAsArrayOfArray(final IFunction<? extends T[][],? super T[][]> function);
 
     public Level0ArrayOfArrayOperator<T> execAsArrayOfArray(final IFunction<? extends T[][], ? super T[][]> function);
 
-    public <X> Level0ArrayOfArrayOperator<X> convertAsArrayOfArrayOf(final Type<X> type, final IConverter<X[][],? super T[][]> converter);
-    
-    public <X> Level0ArrayOfArrayOperator<X> evalAsArrayOfArrayOf(final Type<X> type, final IEvaluator<X[][],? super T[][]> eval);
+    public <X> Level0ArrayOfArrayOperator<X> execIfNotNullAsArrayOfArrayOf(final Type<X> type, final IFunction<X[][],? super T[][]> function);
 
     public <X> Level0ArrayOfArrayOperator<X> execAsArrayOfArrayOf(final Type<X> type, final IFunction<X[][], ? super T[][]> function);
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super T[][]> function);
     
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X,? super T[][]> eval);
-    
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X,? super T[][]> converter);    
-    
-    
+    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super T[][]> function);
     
     public <X> Level0ArrayOfArrayOperator<X> mapMap(final Type<X> type, final IFunction<X,? super T> function);
     

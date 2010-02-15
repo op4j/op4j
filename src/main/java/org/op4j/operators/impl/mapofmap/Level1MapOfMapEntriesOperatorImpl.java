@@ -23,8 +23,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.list.Level1ListElementsOperatorImpl;
 import org.op4j.operators.intf.list.Level1ListElementsOperator;
@@ -96,23 +94,18 @@ public final class Level1MapOfMapEntriesOperatorImpl<K1,K2,V> extends AbstractOp
     }
 
 
-    public Level1MapOfMapEntriesSelectedOperator<K1, K2, V> ifTrue(final IEvaluator<Boolean, ? super Entry<K1, Map<K2, V>>> eval) {
+    public Level1MapOfMapEntriesSelectedOperator<K1, K2, V> ifTrue(final IFunction<Boolean, ? super Entry<K1, Map<K2, V>>> eval) {
         return new Level1MapOfMapEntriesSelectedOperatorImpl<K1, K2, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1MapOfMapEntriesSelectedOperator<K1, K2, V> ifFalse(final IEvaluator<Boolean, ? super Entry<K1, Map<K2, V>>> eval) {
+    public Level1MapOfMapEntriesSelectedOperator<K1, K2, V> ifFalse(final IFunction<Boolean, ? super Entry<K1, Map<K2, V>>> eval) {
         return new Level1MapOfMapEntriesSelectedOperatorImpl<K1, K2, V>(getTarget().selectNotMatching(eval));
     }
 
 
-    public <X1, X2, Y> Level1MapOfMapEntriesOperator<X1, X2, Y> convertAsMapOfMapEntry(final IConverter<? extends Entry<X1, ? extends Map<X2, Y>>, ? super Entry<K1, Map<K2, V>>> converter) {
-        return new Level1MapOfMapEntriesOperatorImpl<X1, X2, Y>(getTarget().execute(converter, Normalisation.MAP_OF_MAP_ENTRY));
-    }
-
-
-    public <X1, X2, Y> Level1MapOfMapEntriesOperator<X1, X2, Y> evalAsMapOfMapEntry(final IEvaluator<? extends Entry<X1, ? extends Map<X2, Y>>, ? super Entry<K1, Map<K2, V>>> eval) {
-        return new Level1MapOfMapEntriesOperatorImpl<X1, X2, Y>(getTarget().execute(eval, Normalisation.MAP_OF_MAP_ENTRY));
+    public <X1, X2, Y> Level1MapOfMapEntriesOperator<X1, X2, Y> execIfNotNullAsMapOfMapEntry(final IFunction<? extends Entry<X1, ? extends Map<X2, Y>>, ? super Entry<K1, Map<K2, V>>> function) {
+        return new Level1MapOfMapEntriesOperatorImpl<X1, X2, Y>(getTarget().executeIfNotNull(function, Normalisation.MAP_OF_MAP_ENTRY));
     }
 
 
@@ -121,13 +114,8 @@ public final class Level1MapOfMapEntriesOperatorImpl<K1,K2,V> extends AbstractOp
     }
 
 
-    public <X> Level1ListElementsOperator<X> convert(final IConverter<X, ? super Entry<K1, Map<K2, V>>> converter) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
-    }
-
-
-    public <X> Level1ListElementsOperator<X> eval(final IEvaluator<X, ? super Entry<K1, Map<K2, V>>> eval) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
+    public <X> Level1ListElementsOperator<X> execIfNotNull(final IFunction<X, ? super Entry<K1, Map<K2, V>>> function) {
+        return new Level1ListElementsOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

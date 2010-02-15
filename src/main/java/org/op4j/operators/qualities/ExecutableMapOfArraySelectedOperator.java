@@ -22,8 +22,6 @@ package org.op4j.operators.qualities;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 
 
 
@@ -62,7 +60,7 @@ public interface ExecutableMapOfArraySelectedOperator<K,V> {
     /**
      * <p>
      * Specialisation of the {@link #execAsMapOfArray(IFunction)} method which executes a function
-     * implementing the {@link IEvaluator} interface.
+     * implementing the {@link IFunction} interface.
      * </p>
      * <p>
      * This method is equivalent to {@link #execAsMapOfArray(IFunction)}, and exists only for
@@ -72,22 +70,7 @@ public interface ExecutableMapOfArraySelectedOperator<K,V> {
      * @param eval the evaluator to be executed
      * @return an operator on the results of evaluator execution
      */
-    public ExecutableMapOfArraySelectedOperator<K,V> evalAsMapOfArray(final IEvaluator<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> eval);
-    
-    
-    /**
-     * <p>
-     * Specialisation of the {@link #execAsMapOfArray(IFunction)} method which executes a function
-     * implementing the {@link IConverter} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsMapOfArray(IFunction)}, and exists only for
-     * semantical purposes.
-     * </p>
-     *
-     * @param converter the converter to be executed
-     * @return an operator on the results of converter execution
-     */
-    public ExecutableMapOfArraySelectedOperator<K,V> convertAsMapOfArray(final IConverter<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> converter);
+    public ExecutableMapOfArraySelectedOperator<K,V> execIfNotNullAsMapOfArray(final IFunction<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> function);
+
     
 }

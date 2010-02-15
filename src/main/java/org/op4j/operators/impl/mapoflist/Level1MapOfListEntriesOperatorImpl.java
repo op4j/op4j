@@ -24,8 +24,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperatorImpl;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
@@ -96,23 +94,18 @@ public final class Level1MapOfListEntriesOperatorImpl<K,V> extends AbstractOpera
     }
 
 
-    public Level1MapOfListEntriesSelectedOperator<K, V> ifTrue(final IEvaluator<Boolean, ? super Entry<K, List<V>>> eval) {
+    public Level1MapOfListEntriesSelectedOperator<K, V> ifTrue(final IFunction<Boolean, ? super Entry<K, List<V>>> eval) {
         return new Level1MapOfListEntriesSelectedOperatorImpl<K, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1MapOfListEntriesSelectedOperator<K, V> ifFalse(final IEvaluator<Boolean, ? super Entry<K, List<V>>> eval) {
+    public Level1MapOfListEntriesSelectedOperator<K, V> ifFalse(final IFunction<Boolean, ? super Entry<K, List<V>>> eval) {
         return new Level1MapOfListEntriesSelectedOperatorImpl<K, V>(getTarget().selectNotMatching(eval));
     }
 
 
-    public <X, Y> Level1MapOfListEntriesOperator<X, Y> convertAsMapOfListEntry(final IConverter<? extends Entry<X, ? extends List<Y>>, ? super Entry<K, List<V>>> converter) {
-        return new Level1MapOfListEntriesOperatorImpl<X, Y>(getTarget().execute(converter, Normalisation.MAP_OF_LIST_ENTRY));
-    }
-
-
-    public <X, Y> Level1MapOfListEntriesOperator<X, Y> evalAsMapOfListEntry(final IEvaluator<? extends Entry<X, ? extends List<Y>>, ? super Entry<K, List<V>>> eval) {
-        return new Level1MapOfListEntriesOperatorImpl<X, Y>(getTarget().execute(eval, Normalisation.MAP_OF_LIST_ENTRY));
+    public <X, Y> Level1MapOfListEntriesOperator<X, Y> execIfNotNullAsMapOfListEntry(final IFunction<? extends Entry<X, ? extends List<Y>>, ? super Entry<K, List<V>>> function) {
+        return new Level1MapOfListEntriesOperatorImpl<X, Y>(getTarget().executeIfNotNull(function, Normalisation.MAP_OF_LIST_ENTRY));
     }
 
 
@@ -121,13 +114,8 @@ public final class Level1MapOfListEntriesOperatorImpl<K,V> extends AbstractOpera
     }
 
 
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super Entry<K, List<V>>> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
-    }
-
-
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super Entry<K, List<V>>> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
+    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X, ? super Entry<K, List<V>>> function) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

@@ -25,7 +25,6 @@ import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.ListFuncs;
-import org.op4j.functions.converters.IConverter;
 import org.op4j.functions.converters.ToArray;
 import org.op4j.functions.converters.ToList;
 import org.op4j.functions.converters.ToMap;
@@ -33,7 +32,6 @@ import org.op4j.functions.converters.ToMapOfArray;
 import org.op4j.functions.converters.ToMapOfList;
 import org.op4j.functions.converters.ToMapOfSet;
 import org.op4j.functions.converters.ToSet;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.array.Level0ArrayOperatorImpl;
@@ -137,7 +135,7 @@ public final class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <K> Level0MapOperator<K, T> buildMap(final IEvaluator<K, ? super T> keyEval) {
+    public <K> Level0MapOperator<K, T> buildMap(final IFunction<K, ? super T> keyEval) {
         return new Level0MapOperatorImpl<K, T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMap.FromListByKeyEval<K, T>(keyEval)));
     }
 
@@ -147,7 +145,7 @@ public final class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <K> Level0MapOfArrayOperator<K, T> buildMapOfArrayOf(final Type<T> valueType, final IEvaluator<K, ? super T> keyEval) {
+    public <K> Level0MapOfArrayOperator<K, T> buildMapOfArrayOf(final Type<T> valueType, final IFunction<K, ? super T> keyEval) {
         return new Level0MapOfArrayOperatorImpl<K, T>(valueType, getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfArray.FromListByKeyEval<K, T>(valueType, keyEval)));
     }
 
@@ -157,7 +155,7 @@ public final class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <K> Level0MapOfListOperator<K, T> buildMapOfList(final IEvaluator<K, ? super T> keyEval) {
+    public <K> Level0MapOfListOperator<K, T> buildMapOfList(final IFunction<K, ? super T> keyEval) {
         return new Level0MapOfListOperatorImpl<K, T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfList.FromListByKeyEval<K, T>(keyEval)));
     }
 
@@ -167,7 +165,7 @@ public final class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <K> Level0MapOfSetOperator<K, T> buildMapOfSet(final IEvaluator<K, ? super T> keyEval) {
+    public <K> Level0MapOfSetOperator<K, T> buildMapOfSet(final IFunction<K, ? super T> keyEval) {
         return new Level0MapOfSetOperatorImpl<K, T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfSet.FromListByKeyEval<K, T>(keyEval)));
     }
 
@@ -415,12 +413,12 @@ public final class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0GenericUniqSelectedOperator<T> ifTrue(final IEvaluator<Boolean, ? super T> eval) {
+    public Level0GenericUniqSelectedOperator<T> ifTrue(final IFunction<Boolean, ? super T> eval) {
         return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().selectMatching(eval));
     }
 
 
-    public Level0GenericUniqSelectedOperator<T> ifFalse(final IEvaluator<Boolean, ? super T> eval) {
+    public Level0GenericUniqSelectedOperator<T> ifFalse(final IFunction<Boolean, ? super T> eval) {
         return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().selectNotMatching(eval));
     }
 
@@ -430,12 +428,12 @@ public final class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0GenericUniqSelectedOperator<T> ifNotNullAndTrue(final IEvaluator<Boolean, ? super T> eval) {
+    public Level0GenericUniqSelectedOperator<T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval) {
         return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level0GenericUniqSelectedOperator<T> ifNotNullAndFalse(final IEvaluator<Boolean, ? super T> eval) {
+    public Level0GenericUniqSelectedOperator<T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval) {
         return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -445,23 +443,18 @@ public final class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0GenericUniqSelectedOperator<T> ifNullOrTrue(final IEvaluator<Boolean, ? super T> eval) {
+    public Level0GenericUniqSelectedOperator<T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval) {
         return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level0GenericUniqSelectedOperator<T> ifNullOrFalse(final IEvaluator<Boolean, ? super T> eval) {
+    public Level0GenericUniqSelectedOperator<T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval) {
         return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public <X> Level0GenericUniqOperator<X> convert(final IConverter<X, ? super T> converter) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(converter, Normalisation.NONE));
-    }
-
-
-    public <X> Level0GenericUniqOperator<X> eval(final IEvaluator<X, ? super T> eval) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().execute(eval, Normalisation.NONE));
+    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X, ? super T> function) {
+        return new Level0GenericUniqOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

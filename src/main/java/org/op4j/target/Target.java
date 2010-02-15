@@ -25,7 +25,6 @@ import java.util.List;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -63,10 +62,10 @@ public abstract class Target {
 
     abstract Target doSelectIndex(final boolean desiredResult, final List<Integer> positions);
     abstract Target doSelectMapKeys(final boolean desiredResult, final List<Object> objects);
-    abstract Target doSelectMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
+    abstract Target doSelectMatching(final boolean desiredResult, final IFunction<Boolean,Object> eval);
     abstract Target doSelectNull(final boolean desiredResult);
-    abstract Target doSelectNullOrMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
-    abstract Target doSelectNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean,Object> eval);
+    abstract Target doSelectNullOrMatching(final boolean desiredResult, final IFunction<Boolean,Object> eval);
+    abstract Target doSelectNotNullAndMatching(final boolean desiredResult, final IFunction<Boolean,Object> eval);
 
     abstract Target doCast(final CastType targetType, final Type<?>... types);
     
@@ -144,16 +143,16 @@ public abstract class Target {
     
     
     @SuppressWarnings("unchecked")
-    public final Target selectMatching(final IEvaluator<Boolean,? extends Object> eval) {
+    public final Target selectMatching(final IFunction<Boolean,? extends Object> eval) {
     	Validate.notNull(eval, "Specified evaluator cannot be null");
-    	return doSelectMatching(true, (IEvaluator<Boolean,Object>) eval);
+    	return doSelectMatching(true, (IFunction<Boolean,Object>) eval);
     }
 
     
     @SuppressWarnings("unchecked")
-    public final Target selectNotMatching(final IEvaluator<Boolean,? extends Object> eval) {
+    public final Target selectNotMatching(final IFunction<Boolean,? extends Object> eval) {
         Validate.notNull(eval, "Specified evaluator cannot be null");
-    	return doSelectMatching(false, (IEvaluator<Boolean,Object>) eval);
+    	return doSelectMatching(false, (IFunction<Boolean,Object>) eval);
     }
 
     
@@ -168,30 +167,30 @@ public abstract class Target {
 
     
     @SuppressWarnings("unchecked")
-    public final Target selectNullOrMatching(final IEvaluator<Boolean,? extends Object> eval) {
+    public final Target selectNullOrMatching(final IFunction<Boolean,? extends Object> eval) {
         Validate.notNull(eval, "Specified evaluator cannot be null");
-        return doSelectNullOrMatching(true, (IEvaluator<Boolean,Object>) eval);
+        return doSelectNullOrMatching(true, (IFunction<Boolean,Object>) eval);
     }
 
     
     @SuppressWarnings("unchecked")
-    public final Target selectNullOrNotMatching(final IEvaluator<Boolean,? extends Object> eval) {
+    public final Target selectNullOrNotMatching(final IFunction<Boolean,? extends Object> eval) {
         Validate.notNull(eval, "Specified evaluator cannot be null");
-        return doSelectNullOrMatching(false, (IEvaluator<Boolean,Object>) eval);
+        return doSelectNullOrMatching(false, (IFunction<Boolean,Object>) eval);
     }
 
     
     @SuppressWarnings("unchecked")
-    public final Target selectNotNullAndMatching(final IEvaluator<Boolean,? extends Object> eval) {
+    public final Target selectNotNullAndMatching(final IFunction<Boolean,? extends Object> eval) {
         Validate.notNull(eval, "Specified evaluator cannot be null");
-        return doSelectNotNullAndMatching(true, (IEvaluator<Boolean,Object>) eval);
+        return doSelectNotNullAndMatching(true, (IFunction<Boolean,Object>) eval);
     }
 
     
     @SuppressWarnings("unchecked")
-    public final Target selectNotNullAndNotMatching(final IEvaluator<Boolean,? extends Object> eval) {
+    public final Target selectNotNullAndNotMatching(final IFunction<Boolean,? extends Object> eval) {
         Validate.notNull(eval, "Specified evaluator cannot be null");
-        return doSelectNotNullAndMatching(false, (IEvaluator<Boolean,Object>) eval);
+        return doSelectNotNullAndMatching(false, (IFunction<Boolean,Object>) eval);
     }
     
     
@@ -205,6 +204,7 @@ public abstract class Target {
     
     
     abstract Target doExecute(final IFunction<?,?> executable, final Normalisation normalisation);
+    abstract Target doExecuteIfNotNull(final IFunction<?,?> executable, final Normalisation normalisation);
 
     
     public final Target execute(final IFunction<?,?> executable) {
@@ -215,6 +215,12 @@ public abstract class Target {
     public final Target execute(final IFunction<?,?> executable, final Normalisation normalisation) {
         Validate.notNull(executable, "Specified executable function cannot be null");
         return doExecute(executable, normalisation);
+    }
+
+    
+    public final Target executeIfNotNull(final IFunction<?,?> executable, final Normalisation normalisation) {
+        Validate.notNull(executable, "Specified executable function cannot be null");
+        return doExecuteIfNotNull(executable, normalisation);
     }
     
     

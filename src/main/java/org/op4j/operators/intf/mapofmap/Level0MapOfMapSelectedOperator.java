@@ -23,8 +23,6 @@ import java.util.Comparator;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableMapOfMapSelectedOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
@@ -64,8 +62,8 @@ public interface Level0MapOfMapSelectedOperator<K1,K2,V>
     public Level0MapOfMapSelectedOperator<K1,K2,V> putAll(final Map<K1,Map<K2,V>> map);
     public Level0MapOfMapSelectedOperator<K1,K2,V> insertAll(final int position, final Map<K1,Map<K2,V>> map);
     public Level0MapOfMapSelectedOperator<K1,K2,V> removeAllKeys(final K1... keys);
-    public Level0MapOfMapSelectedOperator<K1,K2,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K1,Map<K2,V>>> eval);
-    public Level0MapOfMapSelectedOperator<K1,K2,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K1,Map<K2,V>>> eval);
+    public Level0MapOfMapSelectedOperator<K1,K2,V> removeAllTrue(final IFunction<Boolean, ? super Map.Entry<K1,Map<K2,V>>> eval);
+    public Level0MapOfMapSelectedOperator<K1,K2,V> removeAllFalse(final IFunction<Boolean, ? super Map.Entry<K1,Map<K2,V>>> eval);
     public Level0MapOfMapSelectedOperator<K1,K2,V> removeAllKeysNot(final K1... keys);
     
     
@@ -73,9 +71,7 @@ public interface Level0MapOfMapSelectedOperator<K1,K2,V>
     public Level0MapOfMapSelectedOperator<K1,K2,V> replaceWith(final Map<K1,Map<K2,V>> replacement);
     
     
-    public Level0MapOfMapSelectedOperator<K1,K2,V> convertAsMapOfMap(final IConverter<? extends Map<? extends K1,? extends Map<? extends K2,? extends V>>,? super Map<K1,Map<K2,V>>> converter);
-    
-    public Level0MapOfMapSelectedOperator<K1,K2,V> evalAsMapOfMap(final IEvaluator<? extends Map<? extends K1,? extends Map<? extends K2,? extends V>>,? super Map<K1,Map<K2,V>>> eval);
+    public Level0MapOfMapSelectedOperator<K1,K2,V> execIfNotNullAsMapOfMap(final IFunction<? extends Map<? extends K1,? extends Map<? extends K2,? extends V>>,? super Map<K1,Map<K2,V>>> function);
 
 
     public Level0MapOfMapSelectedOperator<K1,K2,V> execAsMapOfMap(final IFunction<? extends Map<? extends K1,? extends Map<? extends K2,? extends V>>, ? super Map<K1,Map<K2,V>>> function);

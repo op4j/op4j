@@ -4,8 +4,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesSelectedKeyOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesSelectedKeySelectedOperator;
@@ -21,8 +19,8 @@ public final class Level2MapOfSetEntriesSelectedKeySelectedOperatorImpl<K,V> ext
     }
 
 
-    public Level2MapOfSetEntriesSelectedKeySelectedOperator<K,V> eval(final IEvaluator<? extends K,? super K> eval) {
-        return new Level2MapOfSetEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().execute(eval, Normalisation.NONE));
+    public Level2MapOfSetEntriesSelectedKeySelectedOperator<K,V> execIfNotNull(final IFunction<? extends K,? super K> function) {
+        return new Level2MapOfSetEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 
@@ -38,11 +36,6 @@ public final class Level2MapOfSetEntriesSelectedKeySelectedOperatorImpl<K,V> ext
 
     public Level2MapOfSetEntriesSelectedKeySelectedOperator<K,V> replaceWith(final K replacement) {
         return new Level2MapOfSetEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.NONE));
-    }
-
-
-    public Level2MapOfSetEntriesSelectedKeySelectedOperator<K,V> convert(final IConverter<? extends K,? super K> converter) {
-        return new Level2MapOfSetEntriesSelectedKeySelectedOperatorImpl<K,V>(getTarget().execute(converter, Normalisation.NONE));
     }
 
 

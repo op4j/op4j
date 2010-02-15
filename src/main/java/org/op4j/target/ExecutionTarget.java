@@ -27,7 +27,6 @@ import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.util.NormalisationUtils;
 
 /**
@@ -292,6 +291,21 @@ public final class ExecutionTarget extends Target {
         
     }
 
+    
+
+
+    @Override
+    Target doExecuteIfNotNull(final IFunction<?, ?> executable, final Normalisation normalisation) {
+
+        final ExecutionTargetExecuteIfNotNullOperation operation =
+            new ExecutionTargetExecuteIfNotNullOperation(executable, normalisation);
+        final ExecutionTargetOperation[][] newOperations =
+            addOperation(this.operations, this.currentBlockLevel, operation);
+
+        return new ExecutionTarget(this.target, this.currentBlockLevel, newOperations, this.previousBlockLevels);
+        
+    }
+
 
 
     @Override
@@ -395,7 +409,7 @@ public final class ExecutionTarget extends Target {
 
 
     @Override
-    Target doSelectMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
+    Target doSelectMatching(final boolean desiredResult, final IFunction<Boolean, Object> eval) {
 
         final int newBlockLevel = this.operations.length;
         final ExecutionTargetSelectMatchingOperation operation =
@@ -412,7 +426,7 @@ public final class ExecutionTarget extends Target {
 
 
     @Override
-    Target doSelectNotNullAndMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
+    Target doSelectNotNullAndMatching(final boolean desiredResult, final IFunction<Boolean, Object> eval) {
 
         final int newBlockLevel = this.operations.length;
         final ExecutionTargetSelectNotNullAndMatchingOperation operation =
@@ -446,7 +460,7 @@ public final class ExecutionTarget extends Target {
 
 
     @Override
-    Target doSelectNullOrMatching(final boolean desiredResult, final IEvaluator<Boolean, Object> eval) {
+    Target doSelectNullOrMatching(final boolean desiredResult, final IFunction<Boolean, Object> eval) {
 
         final int newBlockLevel = this.operations.length;
         final ExecutionTargetSelectNullOrMatchingOperation operation =

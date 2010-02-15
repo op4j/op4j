@@ -23,8 +23,6 @@ import java.util.Comparator;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableMapSelectedOperator;
 import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
@@ -64,17 +62,15 @@ public interface Level1ArrayOfMapElementsSelectedOperator<K,V>
     public Level1ArrayOfMapElementsSelectedOperator<K,V> putAll(final Map<K,V> map);
     public Level1ArrayOfMapElementsSelectedOperator<K,V> insertAll(final int position, final Map<K,V> map);
     public Level1ArrayOfMapElementsSelectedOperator<K,V> removeAllKeys(final K... keys);
-    public Level1ArrayOfMapElementsSelectedOperator<K,V> removeAllTrue(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
-    public Level1ArrayOfMapElementsSelectedOperator<K,V> removeAllFalse(final IEvaluator<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level1ArrayOfMapElementsSelectedOperator<K,V> removeAllTrue(final IFunction<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level1ArrayOfMapElementsSelectedOperator<K,V> removeAllFalse(final IFunction<Boolean, ? super Map.Entry<K,V>> eval);
     public Level1ArrayOfMapElementsSelectedOperator<K,V> removeAllKeysNot(final K... keys);
     
     
     
     
     
-    public Level1ArrayOfMapElementsSelectedOperator<K,V> convertAsMap(final IConverter<? extends Map<? extends K,? extends V>, ? super Map<K,V>> converter);
-    
-    public Level1ArrayOfMapElementsSelectedOperator<K,V> evalAsMap(final IEvaluator<? extends Map<? extends K,? extends V>, ? super Map<K,V>> eval);
+    public Level1ArrayOfMapElementsSelectedOperator<K,V> execIfNotNullAsMap(final IFunction<? extends Map<? extends K,? extends V>, ? super Map<K,V>> function);
 
     public Level1ArrayOfMapElementsSelectedOperator<K,V> replaceWith(final Map<K,V> replacement);
 

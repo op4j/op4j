@@ -22,8 +22,6 @@ package org.op4j.operators.intf.mapofmap;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableMapEntrySelectedOperator;
 import org.op4j.operators.qualities.NavigableMapEntryOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
@@ -57,8 +55,6 @@ public interface Level3MapOfMapEntriesSelectedValueSelectedEntriesSelectedOperat
 
     public Level3MapOfMapEntriesSelectedValueSelectedEntriesSelectedOperator<K1,K2,V> execAsMapEntry(final IFunction<? extends Map.Entry<? extends K2,? extends V>, ? super Map.Entry<K2,V>> function);
     
-    public Level3MapOfMapEntriesSelectedValueSelectedEntriesSelectedOperator<K1,K2,V> evalAsMapEntry(final IEvaluator<? extends Map.Entry<? extends K2,? extends V>,? super Map.Entry<K2,V>> eval);
+    public Level3MapOfMapEntriesSelectedValueSelectedEntriesSelectedOperator<K1,K2,V> execIfNotNullAsMapEntry(final IFunction<? extends Map.Entry<? extends K2,? extends V>,? super Map.Entry<K2,V>> function);
     
-    public Level3MapOfMapEntriesSelectedValueSelectedEntriesSelectedOperator<K1,K2,V> convertAsMapEntry(final IConverter<? extends Map.Entry<? extends K2,? extends V>,? super Map.Entry<K2,V>> converter);
-                                            
-}
+    }

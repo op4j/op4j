@@ -22,8 +22,6 @@ package org.op4j.operators.intf.setofset;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
@@ -48,9 +46,7 @@ public interface Level2SetOfSetSelectedElementsSelectedElementsSelectedOperator<
     public Level2SetOfSetSelectedElementsSelectedElementsOperator<T> endIf();
 
     
-    public Level2SetOfSetSelectedElementsSelectedElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter);
-    
-    public Level2SetOfSetSelectedElementsSelectedElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval);
+    public Level2SetOfSetSelectedElementsSelectedElementsSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function);
 
     public Level2SetOfSetSelectedElementsSelectedElementsSelectedOperator<T> replaceWith(final T replacement);
 

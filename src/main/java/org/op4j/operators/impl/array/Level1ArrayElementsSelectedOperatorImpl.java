@@ -2,8 +2,6 @@ package org.op4j.operators.impl.array;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.IConverter;
-import org.op4j.functions.evaluators.IEvaluator;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.array.Level1ArrayElementsOperator;
 import org.op4j.operators.intf.array.Level1ArrayElementsSelectedOperator;
@@ -23,8 +21,8 @@ public final class Level1ArrayElementsSelectedOperatorImpl<T> extends AbstractOp
     }
 
 
-    public Level1ArrayElementsSelectedOperator<T> eval(final IEvaluator<? extends T,? super T> eval) {
-        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(eval, Normalisation.NONE));
+    public Level1ArrayElementsSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function) {
+        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 
@@ -40,11 +38,6 @@ public final class Level1ArrayElementsSelectedOperatorImpl<T> extends AbstractOp
 
     public Level1ArrayElementsSelectedOperator<T> replaceWith(final T replacement) {
         return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().replaceWith(replacement, Normalisation.NONE));
-    }
-
-
-    public Level1ArrayElementsSelectedOperator<T> convert(final IConverter<? extends T,? super T> converter) {
-        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().execute(converter, Normalisation.NONE));
     }
 
 
