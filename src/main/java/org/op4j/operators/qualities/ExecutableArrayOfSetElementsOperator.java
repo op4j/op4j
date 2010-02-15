@@ -62,17 +62,13 @@ public interface ExecutableArrayOfSetElementsOperator<T> {
     
     /**
      * <p>
-     * Specialisation of the {@link #execAsSet(IFunction)} method which executes a function
-     * implementing the {@link IFunction} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsSet(IFunction)}, and exists only for
-     * semantical purposes.
+     * Executes a function in a way equivalent to {@link #execAsSet(IFunction)} but only
+     * on non-null elements, leaving null elements untouched.
      * </p>
      * 
      * @param <X> the type of the result elements
-     * @param eval the evaluator to be executed
-     * @return an operator on the results of evaluator execution
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
      */
     public <X> ExecutableArrayOfSetElementsOperator<X> execIfNotNullAsSet(final IFunction<? extends Set<X>,? super Set<T>> function);
 
@@ -95,18 +91,14 @@ public interface ExecutableArrayOfSetElementsOperator<T> {
     
     /**
      * <p>
-     * Specialisation of the {@link #exec(Type,IFunction)} method which executes a function
-     * implementing the {@link IFunction} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(Type,IFunction)}, and exists only for
-     * semantical purposes.
+     * Executes a function in a way equivalent to {@link #exec(Type,IFunction)} but only
+     * on non-null elements, leaving null elements untouched.
      * </p>
      *
      * @param <X> the type of the result object
      * @param resultType the new type for the operator
-     * @param eval the evaluator to be executed
-     * @return an operator on the results of evaluator execution
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
      */
     public <X> Level1ArrayElementsOperator<X> execIfNotNull(final Type<X> resultType, final IFunction<X,? super Set<T>> function);
     

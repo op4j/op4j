@@ -57,17 +57,13 @@ public interface ExecutableOperator<T> {
     
     /**
      * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IFunction} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
-     * semantical purposes.
+     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
+     * on non-null elements, leaving null elements untouched.
      * </p>
      *
      * @param <X> the type of the results, and new type for the operator
-     * @param eval the evaluator to be executed
-     * @return an operator on the results of evaluator execution
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
      */
     public <X> ExecutableOperator<X> execIfNotNull(final IFunction<X,? super T> function);
 

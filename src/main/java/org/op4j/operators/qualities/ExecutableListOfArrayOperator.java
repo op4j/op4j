@@ -60,16 +60,12 @@ public interface ExecutableListOfArrayOperator<T> {
     
     /**
      * <p>
-     * Specialisation of the {@link #execAsListOfArray(IFunction)} method which executes a function
-     * implementing the {@link IFunction} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsListOfArray(IFunction)}, and exists only for
-     * semantical purposes.
+     * Executes a function in a way equivalent to {@link #execAsListOfArray(IFunction)} but only
+     * on non-null elements, leaving null elements untouched.
      * </p>
      * 
-     * @param eval the evaluator to be executed
-     * @return an operator on the results of evaluator execution
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
      */
     public ExecutableListOfArrayOperator<T> execIfNotNullAsListOfArray(final IFunction<? extends List<? extends T[]>,? super List<T[]>> function);
 
@@ -96,18 +92,14 @@ public interface ExecutableListOfArrayOperator<T> {
     
     /**
      * <p>
-     * Specialisation of the {@link #execAsListOfArrayOf(Type, IFunction)} method which executes a function
-     * implementing the {@link IFunction} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsListOfArrayOf(Type, IFunction)}, and exists only for
-     * semantical purposes.
+     * Executes a function in a way equivalent to {@link #execAsListOfArrayOf(Type, IFunction)} but only
+     * on non-null elements, leaving null elements untouched.
      * </p>
      * 
      * @param <X> the type of the result elements
      * @param type the new type for the operator
-     * @param eval the evaluator to be executed
-     * @return an operator on the results of evaluator execution
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
      */
     public <X> ExecutableListOfArrayOperator<X> execIfNotNullAsListOfArrayOf(final Type<X> type, final IFunction<? extends List<X[]>,? super List<T[]>> function);
 
@@ -129,17 +121,13 @@ public interface ExecutableListOfArrayOperator<T> {
     
     /**
      * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IFunction} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
-     * semantical purposes.
+     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
+     * on non-null elements, leaving null elements untouched.
      * </p>
      *
      * @param <X> the type of the result object
-     * @param eval the evaluator to be executed
-     * @return an operator on the results of evaluator execution
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
      */
     public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super List<T[]>> function);
 

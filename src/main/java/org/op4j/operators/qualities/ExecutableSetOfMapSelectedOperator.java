@@ -60,16 +60,12 @@ public interface ExecutableSetOfMapSelectedOperator<K,V> {
     
     /**
      * <p>
-     * Specialisation of the {@link #execAsSetOfMap(IFunction)} method which executes a function
-     * implementing the {@link IFunction} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsSetOfMap(IFunction)}, and exists only for
-     * semantical purposes.
+     * Executes a function in a way equivalent to {@link #execAsSetOfMap(IFunction)} but only
+     * on non-null elements, leaving null elements untouched.
      * </p>
      *
-     * @param eval the evaluator to be executed
-     * @return an operator on the results of evaluator execution
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
      */
     public ExecutableSetOfMapSelectedOperator<K,V> execIfNotNullAsSetOfMap(final IFunction<? extends Set<? extends Map<? extends K,? extends V>>,? super Set<Map<K,V>>> function);
 

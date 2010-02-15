@@ -62,18 +62,14 @@ public interface ExecutableArrayOfMapOperator<K,V> {
     
     /**
      * <p>
-     * Specialisation of the {@link #execAsArrayOfMap(IFunction)} method which executes a function
-     * implementing the {@link IFunction} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsArrayOfMap(IFunction)}, and exists only for
-     * semantical purposes.
+     * Executes a function in a way equivalent to {@link #execAsArrayOfMap(IFunction)} but only
+     * on non-null elements, leaving null elements untouched.
      * </p>
      * 
      * @param <X> the type of the resulting keys
      * @param <Y> the type of the resulting values
-     * @param eval the evaluator to be executed
-     * @return an operator on the results of evaluator execution
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
      */
     public <X,Y> ExecutableArrayOfMapOperator<X,Y> execIfNotNullAsArrayOfMap(final IFunction<? extends Map<X,Y>[],? super Map<K,V>[]> function);
 
@@ -95,17 +91,13 @@ public interface ExecutableArrayOfMapOperator<K,V> {
     
     /**
      * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IFunction} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
-     * semantical purposes.
+     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
+     * on non-null elements, leaving null elements untouched.
      * </p>
      *
      * @param <X> the type of the result object
-     * @param eval the evaluator to be executed
-     * @return an operator on the results of evaluator execution
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
      */
     public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super Map<K,V>[]> function);
     

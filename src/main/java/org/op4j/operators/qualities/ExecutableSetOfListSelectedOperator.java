@@ -60,16 +60,12 @@ public interface ExecutableSetOfListSelectedOperator<T> {
     
     /**
      * <p>
-     * Specialisation of the {@link #execAsSetOfList(IFunction)} method which executes a function
-     * implementing the {@link IFunction} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsSetOfList(IFunction)}, and exists only for
-     * semantical purposes.
+     * Executes a function in a way equivalent to {@link #execAsSetOfList(IFunction)} but only
+     * on non-null elements, leaving null elements untouched.
      * </p>
      *
-     * @param eval the evaluator to be executed
-     * @return an operator on the results of evaluator execution
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
      */
     public ExecutableSetOfListSelectedOperator<T> execIfNotNullAsSetOfList(final IFunction<? extends Set<? extends List<? extends T>>,? super Set<List<T>>> function);
 

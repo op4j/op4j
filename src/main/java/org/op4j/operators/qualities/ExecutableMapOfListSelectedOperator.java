@@ -60,16 +60,12 @@ public interface ExecutableMapOfListSelectedOperator<K,V> {
     
     /**
      * <p>
-     * Specialisation of the {@link #execAsMapOfList(IFunction)} method which executes a function
-     * implementing the {@link IFunction} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsMapOfList(IFunction)}, and exists only for
-     * semantical purposes.
+     * Executes a function in a way equivalent to {@link #execAsMapOfList(IFunction)} but only
+     * on non-null elements, leaving null elements untouched.
      * </p>
      *
-     * @param eval the evaluator to be executed
-     * @return an operator on the results of evaluator execution
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
      */
     public ExecutableMapOfListSelectedOperator<K,V> execIfNotNullAsMapOfList(final IFunction<? extends Map<? extends K,? extends List<? extends V>>,? super Map<K,List<V>>> function);
 

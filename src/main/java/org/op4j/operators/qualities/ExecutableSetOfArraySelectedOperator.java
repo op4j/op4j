@@ -59,16 +59,12 @@ public interface ExecutableSetOfArraySelectedOperator<T> {
     
     /**
      * <p>
-     * Specialisation of the {@link #execAsSetOfArray(IFunction)} method which executes a function
-     * implementing the {@link IFunction} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsSetOfArray(IFunction)}, and exists only for
-     * semantical purposes.
+     * Executes a function in a way equivalent to {@link #execAsSetOfArray(IFunction)} but only
+     * on non-null elements, leaving null elements untouched.
      * </p>
      *
-     * @param eval the evaluator to be executed
-     * @return an operator on the results of evaluator execution
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
      */
     public ExecutableSetOfArraySelectedOperator<T> execIfNotNullAsSetOfArray(final IFunction<? extends Set<? extends T[]>,? super Set<T[]>> function);
 

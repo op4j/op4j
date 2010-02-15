@@ -59,16 +59,12 @@ public interface ExecutableArrayOfListSelectedOperator<T> {
     
     /**
      * <p>
-     * Specialisation of the {@link #execAsArrayOfList(IFunction)} method which executes a function
-     * implementing the {@link IFunction} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsArrayOfList(IFunction)}, and exists only for
-     * semantical purposes.
+     * Executes a function in a way equivalent to {@link #execAsArrayOfList(IFunction)} but only
+     * on non-null elements, leaving null elements untouched.
      * </p>
      * 
-     * @param eval the evaluator to be executed
-     * @return an operator on the results of evaluator execution
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
      */
     public ExecutableArrayOfListSelectedOperator<T> execIfNotNullAsArrayOfList(final IFunction<? extends List<? extends T>[],? super List<T>[]> function);
 

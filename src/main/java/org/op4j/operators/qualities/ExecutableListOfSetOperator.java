@@ -62,17 +62,13 @@ public interface ExecutableListOfSetOperator<T> {
     
     /**
      * <p>
-     * Specialisation of the {@link #execAsListOfSet(IFunction)} method which executes a function
-     * implementing the {@link IFunction} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsListOfSet(IFunction)}, and exists only for
-     * semantical purposes.
+     * Executes a function in a way equivalent to {@link #execAsListOfSet(IFunction)} but only
+     * on non-null elements, leaving null elements untouched.
      * </p>
      *
      * @param <X> the type of the result elements
-     * @param eval the evaluator to be executed
-     * @return an operator on the results of evaluator execution
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
      */
     public <X> ExecutableListOfSetOperator<X> execIfNotNullAsListOfSet(final IFunction<? extends List<? extends Set<X>>,? super List<Set<T>>> function);
 
@@ -94,17 +90,13 @@ public interface ExecutableListOfSetOperator<T> {
     
     /**
      * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IFunction} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
-     * semantical purposes.
+     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
+     * on non-null elements, leaving null elements untouched.
      * </p>
      *
      * @param <X> the type of the result object
-     * @param eval the evaluator to be executed
-     * @return an operator on the results of evaluator execution
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
      */
     public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super List<Set<T>>> function);
     

@@ -62,19 +62,15 @@ public interface ExecutableMapOfMapEntryOperator<K1,K2,V> {
     
     /**
      * <p>
-     * Specialisation of the {@link #execAsMapOfMapEntry(IFunction)} method which executes a function
-     * implementing the {@link IFunction} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #execAsMapOfMapEntry(IFunction)}, and exists only for
-     * semantical purposes.
+     * Executes a function in a way equivalent to {@link #execAsMapOfMapEntry(IFunction)} but only
+     * on non-null elements, leaving null elements untouched.
      * </p>
      *
      * @param <X1> the type of the resulting first-level keys
      * @param <X2> the type of the resulting second-level keys
      * @param <Y> the type of the resulting second-level values
-     * @param eval the evaluator to be executed
-     * @return an operator on the results of evaluator execution
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
      */
     public <X1,X2,Y> ExecutableMapOfMapEntryOperator<X1,X2,Y> execIfNotNullAsMapOfMapEntry(final IFunction<? extends Map.Entry<X1,? extends Map<X2,Y>>,? super Map.Entry<K1,Map<K2,V>>> function);
 
@@ -96,17 +92,13 @@ public interface ExecutableMapOfMapEntryOperator<K1,K2,V> {
     
     /**
      * <p>
-     * Specialisation of the {@link #exec(IFunction)} method which executes a function
-     * implementing the {@link IFunction} interface.
-     * </p>
-     * <p>
-     * This method is equivalent to {@link #exec(IFunction)}, and exists only for
-     * semantical purposes.
+     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
+     * on non-null elements, leaving null elements untouched.
      * </p>
      *
      * @param <X> the type of the result object
-     * @param eval the evaluator to be executed
-     * @return an operator on the results of evaluator execution
+     * @param function the function to be executed
+     * @return an operator on the results of function execution
      */
     public <X> Operator execIfNotNull(final IFunction<X,? super Map.Entry<K1,Map<K2,V>>> function);
     
