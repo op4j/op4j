@@ -102,6 +102,11 @@ public final class Level0ArraySelectedOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
+    public Level0ArraySelectedOperator<T> mapIfNotNull(final IFunction<? extends T,? super T> function) {
+        return new Level0ArraySelectedOperatorImpl<T>(this.type, getTarget().mapIfNotNull(Structure.ARRAY, function, this.type.getRawClass()));
+    }
+
+
     public Level0ArrayOperator<T> endIf() {
         return new Level0ArrayOperatorImpl<T>(this.type, getTarget().endSelect());
     }

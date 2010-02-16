@@ -461,6 +461,20 @@ public final class ExecutionTarget extends Target {
         
     }
 
+
+
+    @Override
+    Target doMapIfNotNull(final Structure structure, final IFunction<?, ?> executable, final Class<?> arrayComponentClass) {
+
+        final ExecutionTargetMapIfNotNullOperation operation =
+            new ExecutionTargetMapIfNotNullOperation(structure, executable, arrayComponentClass);
+        final ExecutionTargetOperation[][] newOperations =
+            addOperation(this.operations, this.currentBlockLevel, operation);
+
+        return new ExecutionTarget(this.target, this.currentBlockLevel, newOperations, this.previousBlockLevels);
+        
+    }
+
     
 
 

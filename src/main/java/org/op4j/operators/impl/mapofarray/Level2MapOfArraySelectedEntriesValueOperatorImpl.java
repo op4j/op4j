@@ -154,6 +154,11 @@ public final class Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V> extends
     }
 
 
+    public Level2MapOfArraySelectedEntriesValueOperator<K,V> mapIfNotNull(final IFunction<? extends V,? super V> function) {
+        return new Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V>(this.type, getTarget().mapIfNotNull(Structure.ARRAY, function, this.type.getRawClass()));
+    }
+
+
     public Level1MapOfArraySelectedEntriesOperator<K,V> endOn() {
         return new Level1MapOfArraySelectedEntriesOperatorImpl<K,V>(this.type, getTarget().endOn());
     }
@@ -181,14 +186,14 @@ public final class Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V> extends
     }
 
 
-    @SuppressWarnings("unchecked")
-    public Level2MapOfArraySelectedEntriesValueOperator<K,V> sort() {
-        return new Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.Sort()));
+    public Level2MapOfArraySelectedEntriesValueOperator<K,V> sort(final Comparator<? super V> comparator) {
+        return new Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.SortByComparator<V>(comparator)));
     }
 
 
-    public Level2MapOfArraySelectedEntriesValueOperator<K,V> sort(final Comparator<? super V> comparator) {
-        return new Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.SortByComparator<V>(comparator)));
+    @SuppressWarnings("unchecked")
+    public Level2MapOfArraySelectedEntriesValueOperator<K,V> sort() {
+        return new Level2MapOfArraySelectedEntriesValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.Sort()));
     }
 
 

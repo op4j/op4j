@@ -87,6 +87,8 @@ public interface Level0ListSelectedOperator<T>
 
 
     public Level0ListSelectedOperator<T> map(final IFunction<? extends T, ? super T> function);
+
+    public Level0ListSelectedOperator<T> mapIfNotNull(final IFunction<? extends T, ? super T> function);
     
     
 }

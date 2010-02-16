@@ -140,6 +140,11 @@ public final class Level2MapOfListSelectedEntriesSelectedValueOperatorImpl<K,V> 
     }
 
 
+    public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> mapIfNotNull(final IFunction<? extends V,? super V> function) {
+        return new Level2MapOfListSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().mapIfNotNull(Structure.LIST, function, null));
+    }
+
+
     public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> execIfNotNullAsList(final IFunction<? extends List<? extends V>,? super List<V>> function) {
         return new Level2MapOfListSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().executeIfNotNull(function, Normalisation.LIST));
     }
@@ -177,14 +182,14 @@ public final class Level2MapOfListSelectedEntriesSelectedValueOperatorImpl<K,V> 
     }
 
 
-    @SuppressWarnings("unchecked")
-    public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> sort() {
-        return new Level2MapOfListSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Sort()));
+    public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> sort(final Comparator<? super V> comparator) {
+        return new Level2MapOfListSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new ListFuncs.SortByComparator<V>(comparator)));
     }
 
 
-    public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> sort(final Comparator<? super V> comparator) {
-        return new Level2MapOfListSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new ListFuncs.SortByComparator<V>(comparator)));
+    @SuppressWarnings("unchecked")
+    public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> sort() {
+        return new Level2MapOfListSelectedEntriesSelectedValueOperatorImpl<K,V>(getTarget().execute(new ListFuncs.Sort()));
     }
 
 

@@ -275,6 +275,11 @@ public final class Level2MapOfSetEntriesValueOperatorImpl<K,V> extends AbstractO
         return new Level2MapOfSetEntriesValueOperatorImpl<K, X>(getTarget().map(Structure.SET, function, null));
     }
 
+
+    public <X> Level2MapOfSetEntriesValueOperator<K, X> mapIfNotNull(final IFunction<X, ? super V> function) {
+        return new Level2MapOfSetEntriesValueOperatorImpl<K, X>(getTarget().mapIfNotNull(Structure.SET, function, null));
+    }
+
     
 
     

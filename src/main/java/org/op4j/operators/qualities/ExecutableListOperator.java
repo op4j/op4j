@@ -116,5 +116,23 @@ public interface ExecutableListOperator<T> {
      * @return an operator on the results of function execution on each element
      */
     public <X> ExecutableListOperator<X> map(final IFunction<X,? super T> function);
+
+
+    
+    /**
+     * <p>
+     * Executes the specified function on each of the non-null elements, creating a new operator
+     * containing the result of all the executions and setting the new operator type to the one
+     * resulting from the function execution.
+     * </p>
+     * <p>
+     * This method is equivalent to <tt>forEach().execIfNotNull(function).endFor()</tt>.
+     * </p>
+     * 
+     * @param <X> the type of the result elements
+     * @param function the function to be executed
+     * @return an operator on the results of function execution on each element
+     */
+    public <X> ExecutableListOperator<X> mapIfNotNull(final IFunction<X,? super T> function);
         
 }

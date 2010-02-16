@@ -294,6 +294,11 @@ public final class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
     }
     
 
+    public <X> Level0ListOperator<X> mapIfNotNull(final IFunction<X, ? super T> function) {
+        return new Level0ListOperatorImpl<X>(getTarget().mapIfNotNull(Structure.LIST, function, null));
+    }
+    
+
     
     
     

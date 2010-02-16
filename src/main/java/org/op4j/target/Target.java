@@ -67,12 +67,18 @@ public abstract class Target {
     abstract Target doCast(final CastType targetType, final Type<?>... types);
     
     abstract Target doMap(final Structure structure, final IFunction<?,?> executable, final Class<?> arrayComponentClass);
+    abstract Target doMapIfNotNull(final Structure structure, final IFunction<?,?> executable, final Class<?> arrayComponentClass);
 
     
     
     public final Target map(final Structure structure, final IFunction<?,?> executable, final Class<?> arrayComponentClass) {
         Validate.notNull(executable, "Specified function cannot be null");
         return doMap(structure, executable, arrayComponentClass);
+    }
+    
+    public final Target mapIfNotNull(final Structure structure, final IFunction<?,?> executable, final Class<?> arrayComponentClass) {
+        Validate.notNull(executable, "Specified function cannot be null");
+        return doMapIfNotNull(structure, executable, arrayComponentClass);
     }
     
     

@@ -302,6 +302,16 @@ public final class Level0ArrayOperatorImpl<T>
     }
 
 
+    public <X> Level0ArrayOperator<X> mapIfNotNull(final Type<X> newType, final IFunction<X, ? super T> function) {
+        return new Level0ArrayOperatorImpl<X>(newType, getTarget().mapIfNotNull(Structure.ARRAY, function, newType.getRawClass()));
+    }
+
+
+    public Level0ArrayOperator<T> mapIfNotNull(final IFunction<? extends T, ? super T> function) {
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().mapIfNotNull(Structure.ARRAY, function, this.type.getRawClass()));
+    }
+
+
     
 
 

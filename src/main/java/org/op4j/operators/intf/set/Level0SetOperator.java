@@ -127,6 +127,8 @@ public interface Level0SetOperator<T>
     
     public <X> Level0SetOperator<X> map(final IFunction<X,? super T> function);
     
+    public <X> Level0SetOperator<X> mapIfNotNull(final IFunction<X,? super T> function);
+    
 
     
     public <X> Level0SetOperator<X> asSetOf(final Type<X> type);

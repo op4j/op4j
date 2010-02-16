@@ -127,6 +127,10 @@ public interface Level2MapOfArrayEntriesValueOperator<K,V>
     
     public Level2MapOfArrayEntriesValueOperator<K,V> map(final IFunction<? extends V,? super V> function);
     
+    public <X> Level2MapOfArrayEntriesValueOperator<K,X> mapIfNotNull(final Type<X> type, final IFunction<X,? super V> function);
+    
+    public Level2MapOfArrayEntriesValueOperator<K,V> mapIfNotNull(final IFunction<? extends V,? super V> function);
+    
     
     
     public <X> Level2MapOfArrayEntriesValueOperator<K,X> asArrayOf(final Type<X> type);

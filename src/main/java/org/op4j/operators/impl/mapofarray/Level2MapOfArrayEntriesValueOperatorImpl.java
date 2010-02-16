@@ -311,6 +311,16 @@ public final class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends Abstrac
     
 
     
+    public <X> Level2MapOfArrayEntriesValueOperator<K,X> mapIfNotNull(final Type<X> newType, final IFunction<X, ? super V> function) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K,X>(newType, getTarget().mapIfNotNull(Structure.ARRAY, function, newType.getRawClass()));
+    }
+
+
+    public Level2MapOfArrayEntriesValueOperator<K,V> mapIfNotNull(final IFunction<? extends V, ? super V> function) {
+        return new Level2MapOfArrayEntriesValueOperatorImpl<K,V>(this.type, getTarget().mapIfNotNull(Structure.ARRAY, function, this.type.getRawClass()));
+    }
+
+    
     
     
     

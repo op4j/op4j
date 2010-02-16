@@ -281,6 +281,11 @@ public final class Level2MapOfListEntriesValueOperatorImpl<K,V> extends Abstract
     }
 
 
+    public <X> Level2MapOfListEntriesValueOperator<K, X> mapIfNotNull(final IFunction<X, ? super V> function) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, X>(getTarget().mapIfNotNull(Structure.LIST, function, null));
+    }
+
+
     
 
 

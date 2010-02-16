@@ -133,6 +133,8 @@ public interface Level0ListOperator<T>
     
     public <X> Level0ListOperator<X> map(final IFunction<X,? super T> function);
     
+    public <X> Level0ListOperator<X> mapIfNotNull(final IFunction<X,? super T> function);
+    
 
     
     public <X> Level0ListOperator<X> asListOf(final Type<X> type);

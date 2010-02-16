@@ -72,7 +72,7 @@ public interface ExecutableListSelectedOperator<T> {
     
     /**
      * <p>
-     * Executes the specified function on each of the elements, creating a new operator
+     * Executes the specified function on each of the non-null elements, creating a new operator
      * containing the result of all the executions.
      * </p>
      * <p>
@@ -81,12 +81,12 @@ public interface ExecutableListSelectedOperator<T> {
      * (some objects would belong to a type and others to another type).
      * </p>
      * <p>
-     * This method is equivalent to <tt>forEach().exec(function).endFor()</tt>.
+     * This method is equivalent to <tt>forEach().execIfNotNull(function).endFor()</tt>.
      * </p>
      * 
      * @param function the function to be executed
      * @return an operator on the results of function execution on each element
      */
-    public ExecutableListSelectedOperator<T> map(final IFunction<? extends T,? super T> function);
+    public ExecutableListSelectedOperator<T> mapIfNotNull(final IFunction<? extends T,? super T> function);
     
 }

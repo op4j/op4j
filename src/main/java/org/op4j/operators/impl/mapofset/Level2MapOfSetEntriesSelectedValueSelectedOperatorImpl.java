@@ -84,6 +84,11 @@ public final class Level2MapOfSetEntriesSelectedValueSelectedOperatorImpl<K,V> e
     }
 
 
+    public Level2MapOfSetEntriesSelectedValueSelectedOperator<K,V> mapIfNotNull(final IFunction<? extends V,? super V> function) {
+        return new Level2MapOfSetEntriesSelectedValueSelectedOperatorImpl<K,V>(getTarget().mapIfNotNull(Structure.SET, function, null));
+    }
+
+
     public Level2MapOfSetEntriesSelectedValueOperator<K,V> endIf() {
         return new Level2MapOfSetEntriesSelectedValueOperatorImpl<K,V>(getTarget().endSelect());
     }

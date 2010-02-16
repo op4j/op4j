@@ -119,6 +119,8 @@ public interface Level2MapOfSetEntriesValueOperator<K,V>
     
     public <X> Level2MapOfSetEntriesValueOperator<K,X> map(final IFunction<X,? super V> function);
     
+    public <X> Level2MapOfSetEntriesValueOperator<K,X> mapIfNotNull(final IFunction<X,? super V> function);
+    
     
     
     public <X> Level2MapOfSetEntriesValueOperator<K,X> asSetOf(final Type<X> type);

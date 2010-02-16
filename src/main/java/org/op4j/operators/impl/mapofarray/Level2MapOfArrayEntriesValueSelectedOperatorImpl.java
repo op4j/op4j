@@ -103,6 +103,11 @@ public final class Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V> extends
     }
 
 
+    public Level2MapOfArrayEntriesValueSelectedOperator<K,V> mapIfNotNull(final IFunction<? extends V,? super V> function) {
+        return new Level2MapOfArrayEntriesValueSelectedOperatorImpl<K,V>(this.type, getTarget().mapIfNotNull(Structure.ARRAY, function, this.type.getRawClass()));
+    }
+
+
     public Level2MapOfArrayEntriesValueOperator<K,V> endIf() {
         return new Level2MapOfArrayEntriesValueOperatorImpl<K,V>(this.type, getTarget().endSelect());
     }

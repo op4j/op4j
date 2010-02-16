@@ -88,6 +88,11 @@ public final class Level0ListSelectedOperatorImpl<T> extends AbstractOperatorImp
     }
 
 
+    public Level0ListSelectedOperator<T> mapIfNotNull(final IFunction<? extends T,? super T> function) {
+        return new Level0ListSelectedOperatorImpl<T>(getTarget().mapIfNotNull(Structure.LIST, function, null));
+    }
+
+
     public Level0ListOperator<T> endIf() {
         return new Level0ListOperatorImpl<T>(getTarget().endSelect());
     }

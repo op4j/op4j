@@ -102,4 +102,6 @@ public interface Level2MapOfListSelectedEntriesSelectedValueOperator<K,V>
     
     public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> map(final IFunction<? extends V, ? super V> function);
     
+    public Level2MapOfListSelectedEntriesSelectedValueOperator<K,V> mapIfNotNull(final IFunction<? extends V, ? super V> function);
+    
 }

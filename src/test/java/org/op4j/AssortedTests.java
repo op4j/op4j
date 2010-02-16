@@ -597,5 +597,19 @@ public class AssortedTests extends TestCase {
         assertEquals(stringUpperList, result);
         
     }
+
+    
+    @Test
+    public void test25() {
+
+        final List<String> stringList = Arrays.asList(new String[] {"one", "two", "three", null});
+        final List<String> stringUpperList = Arrays.asList(new String[] {"ONE", "TWO", "THREE", null});
+
+        final List<String> result = 
+            Op.onList(stringList).mapIfNotNull(StringFuncs.toUpperCase()).get();
+        
+        assertEquals(stringUpperList, result);
+        
+    }
     
 }
