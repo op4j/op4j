@@ -245,7 +245,7 @@ public final class MathDouble {
 		}		
 	}
 	
-	public static final class Round extends AbstractNotNullFunc<Double, Double> {
+	public static final class Round extends AbstractNullAsNullFunc<Double, Double> {
 
 		private MathContext mathContext = null;
 		private RoundingMode roundingMode = null;
@@ -263,7 +263,7 @@ public final class MathDouble {
 		}
 		
 		@Override
-		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
+		public Double nullAsNullExecute(final Double input, final ExecCtx ctx) throws Exception {
 			if (this.roundingMode != null) {
 				return Double.valueOf(BigDecimal.valueOf(input.doubleValue()).setScale(0, this.roundingMode).doubleValue());
 			}			
@@ -271,19 +271,19 @@ public final class MathDouble {
 		}	
 	}
 	
-	public static final class Abs extends AbstractNotNullFunc<Double, Double> {
+	public static final class Abs extends AbstractNullAsNullFunc<Double, Double> {
 
 		public Abs() {
 			super();
 		}
 		
 		@Override
-		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
+		public Double nullAsNullExecute(final Double input, final ExecCtx ctx) throws Exception {
 			return Double.valueOf(Math.abs(input.doubleValue()));
 		}
 	}
 	
-	public static final class Add extends AbstractNotNullFunc<Double, Double> {
+	public static final class Add extends AbstractNullAsNullFunc<Double, Double> {
 
 		private Double add;
 		
@@ -294,7 +294,7 @@ public final class MathDouble {
 		}
 
 		@Override
-		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
+		public Double nullAsNullExecute(final Double input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.doubleValue());
 			result = result.add(BigDecimal.valueOf(this.add.doubleValue()));
 				
@@ -302,7 +302,7 @@ public final class MathDouble {
 		}	
 	}
 	
-	public static final class Subtract extends AbstractNotNullFunc<Double, Double> {
+	public static final class Subtract extends AbstractNullAsNullFunc<Double, Double> {
 
 		private Double subtract;
 		
@@ -314,7 +314,7 @@ public final class MathDouble {
 		}
 
 		@Override
-		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
+		public Double nullAsNullExecute(final Double input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.doubleValue());
 			result = result.subtract(BigDecimal.valueOf(this.subtract.doubleValue()));
 				
@@ -322,7 +322,7 @@ public final class MathDouble {
 		}		
 	}
 	
-	public static final class Divide extends AbstractNotNullFunc<Double, Double> {
+	public static final class Divide extends AbstractNullAsNullFunc<Double, Double> {
 
 		private Double divisor;
 		private RoundingMode roundingMode = null;
@@ -351,7 +351,7 @@ public final class MathDouble {
 		}
 
 		@Override
-		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
+		public Double nullAsNullExecute(final Double input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.doubleValue());
 			
 			if (this.roundingMode != null) {
@@ -366,7 +366,7 @@ public final class MathDouble {
 	}
 	
 	
-	public static final class Module extends AbstractNotNullFunc<Double, Double> {
+	public static final class Module extends AbstractNullAsNullFunc<Double, Double> {
 
 		private int module;
 		
@@ -376,12 +376,12 @@ public final class MathDouble {
 		}
 		
 		@Override
-		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
+		public Double nullAsNullExecute(final Double input, final ExecCtx ctx) throws Exception {
 			return Double.valueOf(input.doubleValue() % this.module);
 		}	
 	}
 	
-	public static final class Multiply extends AbstractNotNullFunc<Double, Double> {
+	public static final class Multiply extends AbstractNullAsNullFunc<Double, Double> {
 
 		private Double multiplicand;
 		private MathContext mathContext = null;
@@ -410,7 +410,7 @@ public final class MathDouble {
 		}
 
 		@Override
-		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
+		public Double nullAsNullExecute(final Double input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.doubleValue());
 			
 			if (this.mathContext != null) {
@@ -424,7 +424,7 @@ public final class MathDouble {
 		}	
 	}
 	
-	public static final class Raise extends AbstractNotNullFunc<Double, Double> {
+	public static final class Raise extends AbstractNullAsNullFunc<Double, Double> {
 
 		private int power;
 		private MathContext mathContext = null;
@@ -450,7 +450,7 @@ public final class MathDouble {
 		}
 
 		@Override
-		public Double notNullExecute(final Double input, final ExecCtx ctx) throws Exception {
+		public Double nullAsNullExecute(final Double input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.doubleValue());
 			
 			if (this.mathContext != null) {

@@ -191,19 +191,19 @@ public final class MathBigInteger {
 		}		
 	}
 	
-	public static final class Abs extends AbstractNotNullFunc<BigInteger, BigInteger> {
+	public static final class Abs extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
 
 		public Abs() {
 			super();
 		}
 		
 		@Override
-		public BigInteger notNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
+		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
 			return BigInteger.valueOf(Math.abs(input.longValue()));
 		}
 	}
 	
-	public static final class Add extends AbstractNotNullFunc<BigInteger, BigInteger> {
+	public static final class Add extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
 
 		private BigInteger add;
 		
@@ -214,7 +214,7 @@ public final class MathBigInteger {
 		}
 
 		@Override
-		public BigInteger notNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
+		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
 			BigInteger result = input;
 			result = result.add(this.add);
 				
@@ -222,7 +222,7 @@ public final class MathBigInteger {
 		}	
 	}
 	
-	public static final class Subtract extends AbstractNotNullFunc<BigInteger, BigInteger> {
+	public static final class Subtract extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
 
 		private BigInteger subtract;
 		
@@ -234,7 +234,7 @@ public final class MathBigInteger {
 		}
 
 		@Override
-		public BigInteger notNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
+		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
 			BigInteger result = input;
 			result = result.subtract(this.subtract);
 				
@@ -242,7 +242,7 @@ public final class MathBigInteger {
 		}		
 	}
 	
-	public static final class Divide extends AbstractNotNullFunc<BigInteger, BigInteger> {
+	public static final class Divide extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
 
 		private BigInteger divisor;
 		
@@ -253,7 +253,7 @@ public final class MathBigInteger {
 		}
 		
 		@Override
-		public BigInteger notNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
+		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
 			BigInteger result = input;
 			
 			result = result.divide(this.divisor);	
@@ -263,7 +263,7 @@ public final class MathBigInteger {
 	}
 	
 	
-	public static final class Module extends AbstractNotNullFunc<BigInteger, BigInteger> {
+	public static final class Module extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
 
 		private int module;
 		
@@ -273,12 +273,12 @@ public final class MathBigInteger {
 		}
 		
 		@Override
-		public BigInteger notNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
+		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
 			return BigInteger.valueOf(input.longValue() % this.module);
 		}	
 	}
 	
-	public static final class Multiply extends AbstractNotNullFunc<BigInteger, BigInteger> {
+	public static final class Multiply extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
 
 		private BigInteger multiplicand;
 		
@@ -289,7 +289,7 @@ public final class MathBigInteger {
 		}
 		
 		@Override
-		public BigInteger notNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
+		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
 			BigInteger result = input;
 			
 			result = result.multiply(this.multiplicand);	
@@ -298,7 +298,7 @@ public final class MathBigInteger {
 		}	
 	}
 	
-	public static final class Raise extends AbstractNotNullFunc<BigInteger, BigInteger> {
+	public static final class Raise extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
 
 		private int power;
 		
@@ -308,7 +308,7 @@ public final class MathBigInteger {
 		}
 		
 		@Override
-		public BigInteger notNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
+		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
 			BigInteger result = input;
 			
 			result = result.pow(this.power);	

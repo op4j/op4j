@@ -238,19 +238,19 @@ public final class MathLong {
 		}
 	}
 	
-	public static final class Abs extends AbstractNotNullFunc<Long, Long> {
+	public static final class Abs extends AbstractNullAsNullFunc<Long, Long> {
 
 		public Abs() {
 			super();
 		}
 		
 		@Override
-		public Long notNullExecute(final Long input, final ExecCtx ctx) throws Exception {
+		public Long nullAsNullExecute(final Long input, final ExecCtx ctx) throws Exception {
 			return Long.valueOf(Math.abs(input.longValue()));
 		}		
 	}
 	
-	public static final class Add extends AbstractNotNullFunc<Long, Long> {
+	public static final class Add extends AbstractNullAsNullFunc<Long, Long> {
 
 		private Long add;
 		
@@ -261,7 +261,7 @@ public final class MathLong {
 		}
 
 		@Override
-		public Long notNullExecute(final Long input, final ExecCtx ctx) throws Exception {
+		public Long nullAsNullExecute(final Long input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.longValue());
 			result = result.add(BigDecimal.valueOf(this.add.longValue()));
 				
@@ -269,7 +269,7 @@ public final class MathLong {
 		}	
 	}
 	
-	public static final class Subtract extends AbstractNotNullFunc<Long, Long> {
+	public static final class Subtract extends AbstractNullAsNullFunc<Long, Long> {
 
 		private Long subtract;
 		
@@ -281,7 +281,7 @@ public final class MathLong {
 		}
 
 		@Override
-		public Long notNullExecute(final Long input, final ExecCtx ctx) throws Exception {
+		public Long nullAsNullExecute(final Long input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.longValue());
 			result = result.subtract(BigDecimal.valueOf(this.subtract.longValue()));
 				
@@ -289,7 +289,7 @@ public final class MathLong {
 		}	
 	}
 	
-	public static final class Divide extends AbstractNotNullFunc<Long, Long> {
+	public static final class Divide extends AbstractNullAsNullFunc<Long, Long> {
 
 		private Long divisor;
 		private RoundingMode roundingMode = null;
@@ -318,7 +318,7 @@ public final class MathLong {
 		}
 
 		@Override
-		public Long notNullExecute(final Long input, final ExecCtx ctx) throws Exception {
+		public Long nullAsNullExecute(final Long input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.longValue());
 			
 			if (this.roundingMode != null) {
@@ -333,7 +333,7 @@ public final class MathLong {
 	}
 	
 	
-	public static final class Module extends AbstractNotNullFunc<Long, Long> {
+	public static final class Module extends AbstractNullAsNullFunc<Long, Long> {
 
 		private int module;
 		
@@ -343,12 +343,12 @@ public final class MathLong {
 		}
 		
 		@Override
-		public Long notNullExecute(final Long input, final ExecCtx ctx) throws Exception {
+		public Long nullAsNullExecute(final Long input, final ExecCtx ctx) throws Exception {
 			return Long.valueOf(input.longValue() % this.module);
 		}		
 	}
 	
-	public static final class Multiply extends AbstractNotNullFunc<Long, Long> {
+	public static final class Multiply extends AbstractNullAsNullFunc<Long, Long> {
 
 		private Long multiplicand;
 		private MathContext mathContext = null;
@@ -377,7 +377,7 @@ public final class MathLong {
 		}
 
 		@Override
-		public Long notNullExecute(final Long input, final ExecCtx ctx) throws Exception {
+		public Long nullAsNullExecute(final Long input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.longValue());
 			
 			if (this.mathContext != null) {
@@ -391,7 +391,7 @@ public final class MathLong {
 		}		
 	}
 	
-	public static final class Raise extends AbstractNotNullFunc<Long, Long> {
+	public static final class Raise extends AbstractNullAsNullFunc<Long, Long> {
 
 		private int power;
 		private MathContext mathContext = null;
@@ -417,7 +417,7 @@ public final class MathLong {
 		}
 
 		@Override
-		public Long notNullExecute(final Long input, final ExecCtx ctx) throws Exception {
+		public Long nullAsNullExecute(final Long input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.longValue());
 			
 			if (this.mathContext != null) {

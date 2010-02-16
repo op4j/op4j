@@ -238,19 +238,19 @@ public final class MathShort {
 		}	
 	}
 	
-	public static final class Abs extends AbstractNotNullFunc<Short, Short> {
+	public static final class Abs extends AbstractNullAsNullFunc<Short, Short> {
 
 		public Abs() {
 			super();
 		}
 		
 		@Override
-		public Short notNullExecute(final Short input, final ExecCtx ctx) throws Exception {
+		public Short nullAsNullExecute(final Short input, final ExecCtx ctx) throws Exception {
 			return Short.valueOf(Integer.valueOf(Math.abs(input.shortValue())).shortValue());
 		}	
 	}
 	
-	public static final class Add extends AbstractNotNullFunc<Short, Short> {
+	public static final class Add extends AbstractNullAsNullFunc<Short, Short> {
 
 		private Short add;
 		
@@ -261,12 +261,12 @@ public final class MathShort {
 		}
 
 		@Override
-		public Short notNullExecute(final Short input, final ExecCtx ctx) throws Exception {
+		public Short nullAsNullExecute(final Short input, final ExecCtx ctx) throws Exception {
 			return Short.valueOf(Integer.valueOf(input.shortValue() + this.add.shortValue()).shortValue());
 		}	
 	}
 	
-	public static final class Subtract extends AbstractNotNullFunc<Short, Short> {
+	public static final class Subtract extends AbstractNullAsNullFunc<Short, Short> {
 
 		private Short subtract;
 		
@@ -278,12 +278,12 @@ public final class MathShort {
 		}
 
 		@Override
-		public Short notNullExecute(final Short input, final ExecCtx ctx) throws Exception {
+		public Short nullAsNullExecute(final Short input, final ExecCtx ctx) throws Exception {
 			return Short.valueOf(Integer.valueOf(input.shortValue() - this.subtract.shortValue()).shortValue());
 		}	
 	}
 	
-	public static final class Divide extends AbstractNotNullFunc<Short, Short> {
+	public static final class Divide extends AbstractNullAsNullFunc<Short, Short> {
 
 		private Short divisor;
 		private RoundingMode roundingMode = null;
@@ -312,7 +312,7 @@ public final class MathShort {
 		}
 
 		@Override
-		public Short notNullExecute(final Short input, final ExecCtx ctx) throws Exception {
+		public Short nullAsNullExecute(final Short input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.intValue());
 			
 			if (this.roundingMode != null) {
@@ -327,7 +327,7 @@ public final class MathShort {
 	}
 	
 	
-	public static final class Module extends AbstractNotNullFunc<Short, Short> {
+	public static final class Module extends AbstractNullAsNullFunc<Short, Short> {
 
 		private int module;
 		
@@ -337,12 +337,12 @@ public final class MathShort {
 		}
 		
 		@Override
-		public Short notNullExecute(final Short input, final ExecCtx ctx) throws Exception {
+		public Short nullAsNullExecute(final Short input, final ExecCtx ctx) throws Exception {
 			return Short.valueOf(Integer.valueOf(input.shortValue() % this.module).shortValue());
 		}	
 	}
 	
-	public static final class Multiply extends AbstractNotNullFunc<Short, Short> {
+	public static final class Multiply extends AbstractNullAsNullFunc<Short, Short> {
 
 		private Short multiplicand;
 		private MathContext mathContext = null;
@@ -371,7 +371,7 @@ public final class MathShort {
 		}
 
 		@Override
-		public Short notNullExecute(final Short input, final ExecCtx ctx) throws Exception {
+		public Short nullAsNullExecute(final Short input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.intValue());
 			
 			if (this.mathContext != null) {
@@ -385,7 +385,7 @@ public final class MathShort {
 		}
 	}
 	
-	public static final class Raise extends AbstractNotNullFunc<Short, Short> {
+	public static final class Raise extends AbstractNullAsNullFunc<Short, Short> {
 
 		private int power;
 		private MathContext mathContext = null;
@@ -411,7 +411,7 @@ public final class MathShort {
 		}
 
 		@Override
-		public Short notNullExecute(final Short input, final ExecCtx ctx) throws Exception {
+		public Short nullAsNullExecute(final Short input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.intValue());
 			
 			if (this.mathContext != null) {

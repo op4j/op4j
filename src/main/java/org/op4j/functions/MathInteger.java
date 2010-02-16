@@ -238,19 +238,19 @@ public final class MathInteger {
 		}	
 	}
 	
-	public static final class Abs extends AbstractNotNullFunc<Integer, Integer> {
+	public static final class Abs extends AbstractNullAsNullFunc<Integer, Integer> {
 
 		public Abs() {
 			super();
 		}
 		
 		@Override
-		public Integer notNullExecute(final Integer input, final ExecCtx ctx) throws Exception {
+		public Integer nullAsNullExecute(final Integer input, final ExecCtx ctx) throws Exception {
 			return Integer.valueOf(Math.abs(input.intValue()));
 		}	
 	}
 	
-	public static final class Add extends AbstractNotNullFunc<Integer, Integer> {
+	public static final class Add extends AbstractNullAsNullFunc<Integer, Integer> {
 
 		private Integer add;
 		
@@ -261,7 +261,7 @@ public final class MathInteger {
 		}
 
 		@Override
-		public Integer notNullExecute(final Integer input, final ExecCtx ctx) throws Exception {
+		public Integer nullAsNullExecute(final Integer input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.intValue());
 			result = result.add(BigDecimal.valueOf(this.add.intValue()));
 				
@@ -269,7 +269,7 @@ public final class MathInteger {
 		}	
 	}
 	
-	public static final class Subtract extends AbstractNotNullFunc<Integer, Integer> {
+	public static final class Subtract extends AbstractNullAsNullFunc<Integer, Integer> {
 
 		private Integer subtract;
 		
@@ -281,7 +281,7 @@ public final class MathInteger {
 		}
 
 		@Override
-		public Integer notNullExecute(final Integer input, final ExecCtx ctx) throws Exception {
+		public Integer nullAsNullExecute(final Integer input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.intValue());
 			result = result.subtract(BigDecimal.valueOf(this.subtract.intValue()));
 				
@@ -289,7 +289,7 @@ public final class MathInteger {
 		}	
 	}
 	
-	public static final class Divide extends AbstractNotNullFunc<Integer, Integer> {
+	public static final class Divide extends AbstractNullAsNullFunc<Integer, Integer> {
 
 		private Integer divisor;
 		private RoundingMode roundingMode = null;
@@ -318,7 +318,7 @@ public final class MathInteger {
 		}
 
 		@Override
-		public Integer notNullExecute(final Integer input, final ExecCtx ctx) throws Exception {
+		public Integer nullAsNullExecute(final Integer input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.intValue());
 			
 			if (this.roundingMode != null) {
@@ -333,7 +333,7 @@ public final class MathInteger {
 	}
 	
 	
-	public static final class Module extends AbstractNotNullFunc<Integer, Integer> {
+	public static final class Module extends AbstractNullAsNullFunc<Integer, Integer> {
 
 		private int module;
 		
@@ -343,12 +343,12 @@ public final class MathInteger {
 		}
 		
 		@Override
-		public Integer notNullExecute(final Integer input, final ExecCtx ctx) throws Exception {
+		public Integer nullAsNullExecute(final Integer input, final ExecCtx ctx) throws Exception {
 			return Integer.valueOf(input.intValue() % this.module);
 		}	
 	}
 	
-	public static final class Multiply extends AbstractNotNullFunc<Integer, Integer> {
+	public static final class Multiply extends AbstractNullAsNullFunc<Integer, Integer> {
 
 		private Integer multiplicand;
 		private MathContext mathContext = null;
@@ -377,7 +377,7 @@ public final class MathInteger {
 		}
 
 		@Override
-		public Integer notNullExecute(final Integer input, final ExecCtx ctx) throws Exception {
+		public Integer nullAsNullExecute(final Integer input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.intValue());
 			
 			if (this.mathContext != null) {
@@ -391,7 +391,7 @@ public final class MathInteger {
 		}
 	}
 	
-	public static final class Raise extends AbstractNotNullFunc<Integer, Integer> {
+	public static final class Raise extends AbstractNullAsNullFunc<Integer, Integer> {
 
 		private int power;
 		private MathContext mathContext = null;
@@ -417,7 +417,7 @@ public final class MathInteger {
 		}
 
 		@Override
-		public Integer notNullExecute(final Integer input, final ExecCtx ctx) throws Exception {
+		public Integer nullAsNullExecute(final Integer input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.intValue());
 			
 			if (this.mathContext != null) {
