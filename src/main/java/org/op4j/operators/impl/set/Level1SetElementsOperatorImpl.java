@@ -28,10 +28,6 @@ import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.operators.intf.set.Level1SetElementsOperator;
 import org.op4j.operators.intf.set.Level1SetElementsSelectedOperator;
-import org.op4j.operators.intf.setofarray.Level1SetOfArrayElementsOperator;
-import org.op4j.operators.intf.setoflist.Level1SetOfListElementsOperator;
-import org.op4j.operators.intf.setofmap.Level1SetOfMapElementsOperator;
-import org.op4j.operators.intf.setofset.Level1SetOfSetElementsOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 
@@ -65,47 +61,6 @@ public final class Level1SetElementsOperatorImpl<T> extends AbstractOperatorImpl
         return asType(Types.OBJECT);
     }
 
-
-    public <X> Level1SetOfArrayElementsOperator<X> asArrayOf(final Type<X> type) {
-    	return endFor().generic().asSetOfArrayOf(type).forEach();
-    }
-
-
-    public <X> Level1SetOfListElementsOperator<X> asListOf(final Type<X> type) {
-    	return endFor().generic().asSetOfListOf(type).forEach();
-    }
-
-
-    public <K,V> Level1SetOfMapElementsOperator<K,V> asMapOf(final Type<K> keyType, final Type<V> valueType) {
-    	return endFor().generic().asSetOfMapOf(keyType, valueType).forEach();
-    }
-
-
-    public <X> Level1SetOfSetElementsOperator<X> asSetOf(final Type<X> type) {
-    	return endFor().generic().asSetOfSetOf(type).forEach();
-    }
-    
-
-    
-    
-    public Level1SetOfArrayElementsOperator<?> asArrayOfUnknown() {
-        return asArrayOf(Types.OBJECT);
-    }
-
-
-    public Level1SetOfListElementsOperator<?> asListOfUnknown() {
-        return asListOf(Types.OBJECT);
-    }
-
-
-    public Level1SetOfMapElementsOperator<?, ?> asMapOfUnknown() {
-        return asMapOf(Types.OBJECT, Types.OBJECT);
-    }
-
-
-    public Level1SetOfSetElementsOperator<?> asSetOfUnknown() {
-        return asSetOf(Types.OBJECT);
-    }
 
     
     

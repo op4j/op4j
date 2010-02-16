@@ -41,10 +41,6 @@ import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.list.Level0ListOperator;
 import org.op4j.operators.intf.list.Level0ListSelectedOperator;
 import org.op4j.operators.intf.list.Level1ListElementsOperator;
-import org.op4j.operators.intf.listofarray.Level0ListOfArrayOperator;
-import org.op4j.operators.intf.listoflist.Level0ListOfListOperator;
-import org.op4j.operators.intf.listofmap.Level0ListOfMapOperator;
-import org.op4j.operators.intf.listofset.Level0ListOfSetOperator;
 import org.op4j.operators.intf.map.Level0MapOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.target.Target;
@@ -203,46 +199,6 @@ public final class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
     
 	public <X> Level0ListOperator<X> asListOf(final Type<X> type) {
         return generic().asListOf(type);
-    }
-
-
-    public <X> Level0ListOfArrayOperator<X> asListOfArrayOf(final Type<X> type) {
-        return generic().asListOfArrayOf(type);
-    }
-
-
-    public Level0ListOfArrayOperator<?> asListOfArrayOfUnknown() {
-        return asListOfArrayOf(Types.OBJECT);
-    }
-
-
-    public <X> Level0ListOfListOperator<X> asListOfListOf(final Type<X> type) {
-        return generic().asListOfListOf(type);
-    }
-
-
-    public Level0ListOfListOperator<?> asListOfListOfUnknown() {
-        return asListOfListOf(Types.OBJECT);
-    }
-
-
-    public <K, V> Level0ListOfMapOperator<K, V> asListOfMapOf(final Type<K> keyType, final Type<V> valueType) {
-        return generic().asListOfMapOf(keyType, valueType);
-    }
-
-
-    public Level0ListOfMapOperator<?, ?> asListOfMapOfUnknown() {
-        return asListOfMapOf(Types.OBJECT, Types.OBJECT);
-    }
-
-
-    public <X> Level0ListOfSetOperator<X> asListOfSetOf(final Type<X> type) {
-        return generic().asListOfSetOf(type);
-    }
-
-
-    public Level0ListOfSetOperator<?> asListOfSetOfUnknown() {
-        return asListOfSetOf(Types.OBJECT);
     }
 
 

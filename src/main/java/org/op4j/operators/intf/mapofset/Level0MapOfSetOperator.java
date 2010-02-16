@@ -25,17 +25,14 @@ import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
-import org.op4j.operators.intf.listofset.Level0ListOfSetOperator;
+import org.op4j.operators.intf.list.Level0ListOperator;
 import org.op4j.operators.intf.mapofarray.Level0MapOfArrayOperator;
 import org.op4j.operators.intf.mapoflist.Level0MapOfListOperator;
-import org.op4j.operators.intf.mapofmap.Level0MapOfMapOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.operators.qualities.CastableToMapOfSetOperator;
 import org.op4j.operators.qualities.ConvertibleToMapOfArrayOperator;
 import org.op4j.operators.qualities.ConvertibleToMapOfListOperator;
-import org.op4j.operators.qualities.ConvertibleToMapOfMapOperator;
 import org.op4j.operators.qualities.ExecutableMapOfSetOperator;
 import org.op4j.operators.qualities.ExtractableMapOperator;
 import org.op4j.operators.qualities.GenerizableOperator;
@@ -66,8 +63,7 @@ public interface Level0MapOfSetOperator<K,V>
                 ReplaceableOperator<Map<K,Set<V>>>,
                 ReplaceableIfNullOperator<Map<K,Set<V>>>,
                 ConvertibleToMapOfArrayOperator<K,V>,
-                ConvertibleToMapOfListOperator<K,V>,
-                ConvertibleToMapOfMapOperator<K,V> {
+                ConvertibleToMapOfListOperator<K,V> {
 
 
 
@@ -103,12 +99,9 @@ public interface Level0MapOfSetOperator<K,V>
     
     public Level0MapOfListOperator<K,V> toMapOfList();
     
-    public <K2> Level0MapOfMapOperator<K,K2,V> toMapOfMap(final IFunction<K2,? super V> keyEval);
-    public <K2,V2> Level0MapOfMapOperator<K,K2,V2> toMapOfMap(final IMapBuilder<K2,V2,? super V> mapBuild);
-    
     
     public Level0SetOperator<K> extractKeys();
-    public Level0ListOfSetOperator<V> extractValues();
+    public Level0ListOperator<Set<V>> extractValues();
     
 
 

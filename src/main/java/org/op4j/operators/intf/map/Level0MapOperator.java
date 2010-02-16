@@ -28,12 +28,10 @@ import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.list.Level0ListOperator;
 import org.op4j.operators.intf.mapofarray.Level0MapOfArrayOperator;
 import org.op4j.operators.intf.mapoflist.Level0MapOfListOperator;
-import org.op4j.operators.intf.mapofmap.Level0MapOfMapOperator;
 import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.operators.qualities.CastableToMapOfArrayOperator;
 import org.op4j.operators.qualities.CastableToMapOfListOperator;
-import org.op4j.operators.qualities.CastableToMapOfMapOperator;
 import org.op4j.operators.qualities.CastableToMapOfSetOperator;
 import org.op4j.operators.qualities.CastableToMapOperator;
 import org.op4j.operators.qualities.ExecutableMapOperator;
@@ -59,7 +57,6 @@ public interface Level0MapOperator<K,V>
                 CastableToMapOperator,
                 CastableToMapOfArrayOperator,
                 CastableToMapOfListOperator,
-                CastableToMapOfMapOperator,
                 CastableToMapOfSetOperator,
 		        SortableOperator<Map.Entry<K,V>>,
                 ExecutableMapOperator<K,V>,
@@ -128,10 +125,6 @@ public interface Level0MapOperator<K,V>
     
     public <X,Y> Level0MapOfListOperator<X,Y> asMapOfListOf(final Type<X> keyType, final Type<Y> valueType);
     public Level0MapOfListOperator<?,?> asMapOfListOfUnknown();
-    
-    
-    public <X1,X2,Y> Level0MapOfMapOperator<X1,X2,Y> asMapOfMapOf(final Type<X1> key1Type, final Type<X2> key2Type, final Type<Y> valueType);
-    public Level0MapOfMapOperator<?,?,?> asMapOfMapOfUnknown();
 
     
     public <X,Y> Level0MapOfSetOperator<X,Y> asMapOfSetOf(final Type<X> keyType, final Type<Y> valueType);

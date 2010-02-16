@@ -28,13 +28,10 @@ import org.javaruntype.type.Types;
 import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToList;
-import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.converters.ToSet;
-import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.map.Level2MapEntriesValueOperatorImpl;
 import org.op4j.operators.impl.mapoflist.Level2MapOfListEntriesValueOperatorImpl;
-import org.op4j.operators.impl.mapofmap.Level2MapOfMapEntriesValueOperatorImpl;
 import org.op4j.operators.impl.mapofset.Level2MapOfSetEntriesValueOperatorImpl;
 import org.op4j.operators.intf.map.Level2MapEntriesValueOperator;
 import org.op4j.operators.intf.mapofarray.Level1MapOfArrayEntriesOperator;
@@ -42,7 +39,6 @@ import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesValueOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesValueSelectedOperator;
 import org.op4j.operators.intf.mapofarray.Level3MapOfArrayEntriesValueElementsOperator;
 import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesValueOperator;
-import org.op4j.operators.intf.mapofmap.Level2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.CastType;
@@ -171,21 +167,6 @@ public final class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends Abstrac
 
     public Level2MapOfListEntriesValueOperator<K, V> toList() {
         return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().execute(new ToList.FromArray<V>()));
-    }
-
-
-    public Level2MapOfMapEntriesValueOperator<K, V, V> toMap() {
-        return new Level2MapOfMapEntriesValueOperatorImpl<K, V, V>(getTarget().execute(new ToMap.FromArrayByAlternateElements<V>()));
-    }
-
-
-    public <K2> Level2MapOfMapEntriesValueOperator<K, K2, V> toMap(final IFunction<K2, ? super V> keyEval) {
-        return new Level2MapOfMapEntriesValueOperatorImpl<K, K2, V>(getTarget().execute(new ToMap.FromArrayByKeyEval<K2, V>(keyEval)));
-    }
-
-
-    public <K2, V2> Level2MapOfMapEntriesValueOperator<K, K2, V2> toMap(final IMapBuilder<K2, V2, ? super V> mapBuild) {
-        return new Level2MapOfMapEntriesValueOperatorImpl<K, K2, V2>(getTarget().execute(new ToMap.FromArrayByMapBuilder<K2, V2, V>(mapBuild)));
     }
 
 

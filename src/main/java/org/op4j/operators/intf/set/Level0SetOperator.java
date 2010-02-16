@@ -30,14 +30,6 @@ import org.op4j.operators.intf.array.Level0ArrayOperator;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.list.Level0ListOperator;
 import org.op4j.operators.intf.map.Level0MapOperator;
-import org.op4j.operators.intf.setofarray.Level0SetOfArrayOperator;
-import org.op4j.operators.intf.setoflist.Level0SetOfListOperator;
-import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
-import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
-import org.op4j.operators.qualities.CastableToSetOfArrayOperator;
-import org.op4j.operators.qualities.CastableToSetOfListOperator;
-import org.op4j.operators.qualities.CastableToSetOfMapOperator;
-import org.op4j.operators.qualities.CastableToSetOfSetOperator;
 import org.op4j.operators.qualities.CastableToSetOperator;
 import org.op4j.operators.qualities.ConvertibleToArrayOperator;
 import org.op4j.operators.qualities.ConvertibleToListOperator;
@@ -63,10 +55,6 @@ public interface Level0SetOperator<T>
                 NavigableCollectionOperator<T>,
 		        SortableOperator<T>,
                 CastableToSetOperator,
-                CastableToSetOfArrayOperator,
-                CastableToSetOfListOperator,
-                CastableToSetOfMapOperator,
-                CastableToSetOfSetOperator,
 		        ModifiableCollectionOperator<T>,
 		        GenerizableOperator<Set<T>>,
                 ExecutableSetOperator<T>,
@@ -139,21 +127,6 @@ public interface Level0SetOperator<T>
     
     public <X> Level0SetOperator<X> map(final IFunction<X,? super T> function);
     
-    
-    public <X> Level0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type);
-    public Level0SetOfArrayOperator<?> asSetOfArrayOfUnknown();
-
-    
-    public <X> Level0SetOfListOperator<X> asSetOfListOf(final Type<X> type);
-    public Level0SetOfListOperator<?> asSetOfListOfUnknown();
-
-    
-    public <K,V> Level0SetOfMapOperator<K,V> asSetOfMapOf(final Type<K> keyType, final Type<V> valueType);
-    public Level0SetOfMapOperator<?,?> asSetOfMapOfUnknown();
-
-    
-    public <X> Level0SetOfSetOperator<X> asSetOfSetOf(final Type<X> type);
-    public Level0SetOfSetOperator<?> asSetOfSetOfUnknown();
 
     
     public <X> Level0SetOperator<X> asSetOf(final Type<X> type);

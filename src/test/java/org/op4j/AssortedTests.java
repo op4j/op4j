@@ -93,24 +93,24 @@ public class AssortedTests extends TestCase {
 		}
 	}
 
-	@Test
-	public void test3() {
-		List<BigDecimal>[] data = this.testUtils.getBigDecimalListArray(10);
-
-		List<BigDecimal>[] result = Op.onArrayOfList(data)
-		.forEach().forEach().exec(Ognl.asBigDecimal("add(#param[0])", BigDecimal.valueOf(56)))
-		.get();
-
-		assertEquals(data.length, result.length);
-		for (int indexA = 0; indexA < data.length; indexA++) {
-			List<BigDecimal> aData = data[indexA];
-			List<BigDecimal> aResult = result[indexA];
-			for (int indexB = 0; indexB < aData.size(); indexB++) {
-				assertEquals(aData.get(indexB).add(BigDecimal.valueOf(56)), 
-						aResult.get(indexB));
-			}
-		}
-	}
+//	@Test
+//	public void test3() {
+//		List<BigDecimal>[] data = this.testUtils.getBigDecimalListArray(10);
+//
+//		List<BigDecimal>[] result = Op.onArrayOfList(data)
+//		.forEach().forEach().exec(Ognl.asBigDecimal("add(#param[0])", BigDecimal.valueOf(56)))
+//		.get();
+//
+//		assertEquals(data.length, result.length);
+//		for (int indexA = 0; indexA < data.length; indexA++) {
+//			List<BigDecimal> aData = data[indexA];
+//			List<BigDecimal> aResult = result[indexA];
+//			for (int indexB = 0; indexB < aData.size(); indexB++) {
+//				assertEquals(aData.get(indexB).add(BigDecimal.valueOf(56)), 
+//						aResult.get(indexB));
+//			}
+//		}
+//	}
 
 	@Test
 	public void test4() {
@@ -126,26 +126,26 @@ public class AssortedTests extends TestCase {
 		}
 	}
 
-	@Test
-	public void test5() {
-		Date[][] data = this.testUtils.getDateArrayOfArray(6, 3);
-
-		List<Calendar> result = Op.onArrayOfArrayOf(Types.DATE, data)
-		.forEach().forEach().exec(Types.CALENDAR, ToCalendar.fromDate())
-		.endFor().endFor().flatten(Types.CALENDAR).toList().get();
-
-		int index = 0;
-		for (int outer = 0; outer < data.length; outer++) {
-			Date[] innerDate = data[outer];
-
-			for (int inner = 0; inner < innerDate.length; inner++) {
-				Calendar aCalendar = Calendar.getInstance();
-				aCalendar.setTime(innerDate[inner]);
-				assertEquals(aCalendar, 
-						result.get(index++));				
-			}
-		}
-	}
+//	@Test
+//	public void test5() {
+//		Date[][] data = this.testUtils.getDateArrayOfArray(6, 3);
+//
+//		List<Calendar> result = Op.onArrayOfArrayOf(Types.DATE, data)
+//		.forEach().forEach().exec(Types.CALENDAR, ToCalendar.fromDate())
+//		.endFor().endFor().flatten(Types.CALENDAR).toList().get();
+//
+//		int index = 0;
+//		for (int outer = 0; outer < data.length; outer++) {
+//			Date[] innerDate = data[outer];
+//
+//			for (int inner = 0; inner < innerDate.length; inner++) {
+//				Calendar aCalendar = Calendar.getInstance();
+//				aCalendar.setTime(innerDate[inner]);
+//				assertEquals(aCalendar, 
+//						result.get(index++));				
+//			}
+//		}
+//	}
 
 	@Test
 	public void test6() {
@@ -265,177 +265,177 @@ public class AssortedTests extends TestCase {
 		}		
 	}
 
-	@Test
-	public void test11() {
-		Map<Integer, Map<Integer, String[]>> data = this.testUtils.getMapOfIntegerMapOfIntegerStringArray(11);
+//	@Test
+//	public void test11() {
+//		Map<Integer, Map<Integer, String[]>> data = this.testUtils.getMapOfIntegerMapOfIntegerStringArray(11);
+//
+//		Map<Integer, Map<Integer, String[]>> result = Op.onMapOfMap(data)
+//		.forEachEntry()
+//		.onValue()
+//		.forEachEntry()
+//		.ifKeyNotEquals(Integer.valueOf(2), Integer.valueOf(33), Integer.valueOf(17))
+//		.onValue()
+//		.ifTrue(new IFunction<Boolean, String[]>() {
+//			public Boolean execute(String[] object, ExecCtx ctx)
+//			throws Exception {
+//				return Boolean.valueOf(object.length > 3);					
+//			}
+//			public Type<? extends Boolean> getResultType(
+//					Type<? extends String[]> targetType) {
+//				return Types.BOOLEAN;
+//			}
+//		})
+//		.exec(new IFunction<String[], String[]>() {
+//			public String[] execute(String[] object, ExecCtx ctx)
+//			throws Exception {					
+//				return Op.onArrayOf(Types.STRING,object).add("value added with ifunction").get();
+//			}
+//		})
+//		.get();
+//
+//
+//		assertEquals(data.size(), result.size());
+//		for (Map.Entry<Integer, Map<Integer, String[]>> entry1 : result.entrySet()) {				
+//			for (Map.Entry<Integer, String[]> entry2 : entry1.getValue().entrySet()) {
+//				if (ArrayUtils.contains(new Integer[] {Integer.valueOf(2), Integer.valueOf(33), Integer.valueOf(17)}, 
+//						entry2.getKey())) {
+//					assertEquals(data.get(entry1.getKey()).get(entry2.getKey()), entry2.getValue());
+//				} else {
+//					if (entry2.getValue().length > 3) {	
+//						assertEquals(Arrays.asList(Op.onArrayOf(Types.STRING, data.get(entry1.getKey()).get(entry2.getKey()))
+//								.add("value added with ifunction").get()), 
+//								Arrays.asList(entry2.getValue()));						
+//					} else {
+//						assertEquals(Arrays.asList(data.get(entry1.getKey()).get(entry2.getKey())), 
+//								Arrays.asList(entry2.getValue()));
+//					}
+//				}				
+//			}				
+//		}		
+//	}
 
-		Map<Integer, Map<Integer, String[]>> result = Op.onMapOfMap(data)
-		.forEachEntry()
-		.onValue()
-		.forEachEntry()
-		.ifKeyNotEquals(Integer.valueOf(2), Integer.valueOf(33), Integer.valueOf(17))
-		.onValue()
-		.ifTrue(new IFunction<Boolean, String[]>() {
-			public Boolean execute(String[] object, ExecCtx ctx)
-			throws Exception {
-				return Boolean.valueOf(object.length > 3);					
-			}
-			public Type<? extends Boolean> getResultType(
-					Type<? extends String[]> targetType) {
-				return Types.BOOLEAN;
-			}
-		})
-		.exec(new IFunction<String[], String[]>() {
-			public String[] execute(String[] object, ExecCtx ctx)
-			throws Exception {					
-				return Op.onArrayOf(Types.STRING,object).add("value added with ifunction").get();
-			}
-		})
-		.get();
-
-
-		assertEquals(data.size(), result.size());
-		for (Map.Entry<Integer, Map<Integer, String[]>> entry1 : result.entrySet()) {				
-			for (Map.Entry<Integer, String[]> entry2 : entry1.getValue().entrySet()) {
-				if (ArrayUtils.contains(new Integer[] {Integer.valueOf(2), Integer.valueOf(33), Integer.valueOf(17)}, 
-						entry2.getKey())) {
-					assertEquals(data.get(entry1.getKey()).get(entry2.getKey()), entry2.getValue());
-				} else {
-					if (entry2.getValue().length > 3) {	
-						assertEquals(Arrays.asList(Op.onArrayOf(Types.STRING, data.get(entry1.getKey()).get(entry2.getKey()))
-								.add("value added with ifunction").get()), 
-								Arrays.asList(entry2.getValue()));						
-					} else {
-						assertEquals(Arrays.asList(data.get(entry1.getKey()).get(entry2.getKey())), 
-								Arrays.asList(entry2.getValue()));
-					}
-				}				
-			}				
-		}		
-	}
-
-	@Test
-	public void test12() {
-		Map<Integer, Map<Integer, String[]>> data = this.testUtils.getMapOfIntegerMapOfIntegerStringArray(11);
-
-		Map<Integer, Map<Integer, String[]>> result = Op.onMapOfMap(data)
-		.ifFalse(new IFunction<Boolean, Map<Integer, Map<Integer, String[]>>>() {
-			public Boolean execute(Map<Integer, Map<Integer, String[]>> object, ExecCtx ctx)
-			throws Exception {
-				return Boolean.valueOf(object.size() > 13);					
-			}
-			public Type<? extends Boolean> getResultType(
-					Type<? extends Map<Integer, Map<Integer, String[]>>> targetType) {
-				return Types.BOOLEAN;
-			}
-		})
-		.forEachEntry()
-		.ifIndexNot(1, 3)
-		.onValue()
-		.ifNotNull()
-		.forEachEntry()
-		.ifKeyNotEquals(Integer.valueOf(2), Integer.valueOf(33))
-		.onValue()
-		.ifTrue(new IFunction<Boolean, String[]>() {
-			public Boolean execute(String[] object, ExecCtx ctx)
-			throws Exception {
-				return Boolean.valueOf(object.length > 3);					
-			}
-			public Type<? extends Boolean> getResultType(
-					Type<? extends String[]> targetType) {
-				return Types.BOOLEAN;
-			}
-		})
-		.exec(new IFunction<String[], String[]>() {
-			public String[] execute(String[] object, ExecCtx ctx)
-			throws Exception {					
-				return Op.onArrayOf(Types.STRING, object).add("value added with ifunction").get();
-			}
-		})
-		.get();
-
-		if (!(data.size() > 13)) {
-			assertEquals(data.size(), result.size());
-			int index = 0;
-			for (Map.Entry<Integer, Map<Integer, String[]>> entry1 : result.entrySet()) {
-				if (index != 1 && index != 3) {
-					if (entry1.getValue() != null) {
-						for (Map.Entry<Integer, String[]> entry2 : entry1.getValue().entrySet()) {
-							if (!ArrayUtils.contains(new Integer[] {Integer.valueOf(2), Integer.valueOf(33)}, 
-									entry2.getKey())) {
-								if (entry2.getValue().length > 3) {	
-									assertEquals(Arrays.asList(Op.onArrayOf(Types.STRING, data.get(entry1.getKey()).get(entry2.getKey()))
-											.add("value added with ifunction").get()), 
-											Arrays.asList(entry2.getValue()));						
-								} else {
-									assertEquals(Arrays.asList(data.get(entry1.getKey()).get(entry2.getKey())), 
-											Arrays.asList(entry2.getValue()));
-								}
-							}
-						}	
-					}
-				}	
-				index++;
-			}	
-		}
-	}
+//	@Test
+//	public void test12() {
+//		Map<Integer, Map<Integer, String[]>> data = this.testUtils.getMapOfIntegerMapOfIntegerStringArray(11);
+//
+//		Map<Integer, Map<Integer, String[]>> result = Op.onMapOfMap(data)
+//		.ifFalse(new IFunction<Boolean, Map<Integer, Map<Integer, String[]>>>() {
+//			public Boolean execute(Map<Integer, Map<Integer, String[]>> object, ExecCtx ctx)
+//			throws Exception {
+//				return Boolean.valueOf(object.size() > 13);					
+//			}
+//			public Type<? extends Boolean> getResultType(
+//					Type<? extends Map<Integer, Map<Integer, String[]>>> targetType) {
+//				return Types.BOOLEAN;
+//			}
+//		})
+//		.forEachEntry()
+//		.ifIndexNot(1, 3)
+//		.onValue()
+//		.ifNotNull()
+//		.forEachEntry()
+//		.ifKeyNotEquals(Integer.valueOf(2), Integer.valueOf(33))
+//		.onValue()
+//		.ifTrue(new IFunction<Boolean, String[]>() {
+//			public Boolean execute(String[] object, ExecCtx ctx)
+//			throws Exception {
+//				return Boolean.valueOf(object.length > 3);					
+//			}
+//			public Type<? extends Boolean> getResultType(
+//					Type<? extends String[]> targetType) {
+//				return Types.BOOLEAN;
+//			}
+//		})
+//		.exec(new IFunction<String[], String[]>() {
+//			public String[] execute(String[] object, ExecCtx ctx)
+//			throws Exception {					
+//				return Op.onArrayOf(Types.STRING, object).add("value added with ifunction").get();
+//			}
+//		})
+//		.get();
+//
+//		if (!(data.size() > 13)) {
+//			assertEquals(data.size(), result.size());
+//			int index = 0;
+//			for (Map.Entry<Integer, Map<Integer, String[]>> entry1 : result.entrySet()) {
+//				if (index != 1 && index != 3) {
+//					if (entry1.getValue() != null) {
+//						for (Map.Entry<Integer, String[]> entry2 : entry1.getValue().entrySet()) {
+//							if (!ArrayUtils.contains(new Integer[] {Integer.valueOf(2), Integer.valueOf(33)}, 
+//									entry2.getKey())) {
+//								if (entry2.getValue().length > 3) {	
+//									assertEquals(Arrays.asList(Op.onArrayOf(Types.STRING, data.get(entry1.getKey()).get(entry2.getKey()))
+//											.add("value added with ifunction").get()), 
+//											Arrays.asList(entry2.getValue()));						
+//								} else {
+//									assertEquals(Arrays.asList(data.get(entry1.getKey()).get(entry2.getKey())), 
+//											Arrays.asList(entry2.getValue()));
+//								}
+//							}
+//						}	
+//					}
+//				}	
+//				index++;
+//			}	
+//		}
+//	}
 	
 	
 
-    @Test
-    public void test13() {
-        
-        List<String> stringList = this.testUtils.getStringList(10);
-        List<String> newStringList =
-            Op.onList(stringList).
-                forEach().
-                    exec(StringFuncs.toUpperCase()).
-                    ifIndex(2).exec(StringFuncs.toLowerCase()).endIf().
-                    exec(Ognl.asString("#target + '--' + #index")).get();
-
-        for (int i = 0; i < 10; i++) {
-            if (i != 2) {
-                assertEquals(stringList.get(i).toUpperCase() + "--" + i, newStringList.get(i));
-            } else {
-                assertEquals(stringList.get(i).toLowerCase() + "--" + i, newStringList.get(i));
-            }
-        }
-        
-        List<List<String>> stringListOfList = this.testUtils.getStringListOfList(10,50);
-        List<List<String>> newStringListOfList =
-            Op.onListOfList(stringListOfList).
-                forEach().forEach().
-                    exec(StringFuncs.toUpperCase()).
-                    ifIndex(2).exec(StringFuncs.toLowerCase()).endIf().
-                    exec(Ognl.asString("#target + '--' + #indexes[1] + #indexes[2]")).get();
-
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 50; j++) {
-                if (j != 2) {
-                    assertEquals(stringListOfList.get(i).get(j).toUpperCase() + "--" + i + j, newStringListOfList.get(i).get(j));
-                } else {
-                    assertEquals(stringListOfList.get(i).get(j).toLowerCase() + "--" + i + j, newStringListOfList.get(i).get(j));
-                }
-            }
-        }
-        
-        List<String> strList =
-            Op.onAll("one", "two", "three").ifIndex(2).exec(StringFuncs.toUpperCase()).getAsList();
-        assertEquals("THREE", strList.get(2));
-        
-        List<String> strList2 =
-            Op.onAll("one", "two", "three").exec(Ognl.asString("#target + '--' + #index")).getAsList();
-        assertEquals("three--2", strList2.get(2));
-        
-        List<String> strList3 =
-            Op.onAll("one", "two", "three").exec(Ognl.asString("#target + '--' + #indexes[0]")).getAsList();
-        assertEquals("three--2", strList3.get(2));
-        
-        List<String> strList4 =
-            Op.onAll("one", "two", "three").ifTrue(Ognl.asBoolean("#indexes[0] == 2")).exec(StringFuncs.toUpperCase()).getAsList();
-        assertEquals("THREE", strList4.get(2));
-        
-    }
+//    @Test
+//    public void test13() {
+//        
+//        List<String> stringList = this.testUtils.getStringList(10);
+//        List<String> newStringList =
+//            Op.onList(stringList).
+//                forEach().
+//                    exec(StringFuncs.toUpperCase()).
+//                    ifIndex(2).exec(StringFuncs.toLowerCase()).endIf().
+//                    exec(Ognl.asString("#target + '--' + #index")).get();
+//
+//        for (int i = 0; i < 10; i++) {
+//            if (i != 2) {
+//                assertEquals(stringList.get(i).toUpperCase() + "--" + i, newStringList.get(i));
+//            } else {
+//                assertEquals(stringList.get(i).toLowerCase() + "--" + i, newStringList.get(i));
+//            }
+//        }
+//        
+//        List<List<String>> stringListOfList = this.testUtils.getStringListOfList(10,50);
+//        List<List<String>> newStringListOfList =
+//            Op.onListOfList(stringListOfList).
+//                forEach().forEach().
+//                    exec(StringFuncs.toUpperCase()).
+//                    ifIndex(2).exec(StringFuncs.toLowerCase()).endIf().
+//                    exec(Ognl.asString("#target + '--' + #indexes[1] + #indexes[2]")).get();
+//
+//        for (int i = 0; i < 10; i++) {
+//            for (int j = 0; j < 50; j++) {
+//                if (j != 2) {
+//                    assertEquals(stringListOfList.get(i).get(j).toUpperCase() + "--" + i + j, newStringListOfList.get(i).get(j));
+//                } else {
+//                    assertEquals(stringListOfList.get(i).get(j).toLowerCase() + "--" + i + j, newStringListOfList.get(i).get(j));
+//                }
+//            }
+//        }
+//        
+//        List<String> strList =
+//            Op.onAll("one", "two", "three").ifIndex(2).exec(StringFuncs.toUpperCase()).getAsList();
+//        assertEquals("THREE", strList.get(2));
+//        
+//        List<String> strList2 =
+//            Op.onAll("one", "two", "three").exec(Ognl.asString("#target + '--' + #index")).getAsList();
+//        assertEquals("three--2", strList2.get(2));
+//        
+//        List<String> strList3 =
+//            Op.onAll("one", "two", "three").exec(Ognl.asString("#target + '--' + #indexes[0]")).getAsList();
+//        assertEquals("three--2", strList3.get(2));
+//        
+//        List<String> strList4 =
+//            Op.onAll("one", "two", "three").ifTrue(Ognl.asBoolean("#indexes[0] == 2")).exec(StringFuncs.toUpperCase()).getAsList();
+//        assertEquals("THREE", strList4.get(2));
+//        
+//    }
 	
     
     @Test
@@ -563,26 +563,26 @@ public class AssortedTests extends TestCase {
     }
 
     
-    @Test
-    @SuppressWarnings("unchecked")
-    public void test22() {
-
-        final List<List<String>> stringListOfList = Arrays.asList(
-                Arrays.asList(new String[] {"one", "two", "three", "four"}),
-                Arrays.asList(new String[] {"un", "dous", "tres", "catro"})
-                );
-        
-        final List<List<String>> stringUpperListOfList = Arrays.asList(
-                Arrays.asList(new String[] {"ONE", "TWO", "THREE", "FOUR"}),
-                Arrays.asList(new String[] {"UN", "DOUS", "TRES", "CATRO"})
-                );
-
-        final List<List<String>> result = 
-            Op.onListOfList(stringListOfList).mapMap(StringFuncs.toUpperCase()).get();
-        
-        assertEquals(stringUpperListOfList, result);
-        
-    }
+//    @Test
+//    @SuppressWarnings("unchecked")
+//    public void test22() {
+//
+//        final List<List<String>> stringListOfList = Arrays.asList(
+//                Arrays.asList(new String[] {"one", "two", "three", "four"}),
+//                Arrays.asList(new String[] {"un", "dous", "tres", "catro"})
+//                );
+//        
+//        final List<List<String>> stringUpperListOfList = Arrays.asList(
+//                Arrays.asList(new String[] {"ONE", "TWO", "THREE", "FOUR"}),
+//                Arrays.asList(new String[] {"UN", "DOUS", "TRES", "CATRO"})
+//                );
+//
+//        final List<List<String>> result = 
+//            Op.onListOfList(stringListOfList).mapMap(StringFuncs.toUpperCase()).get();
+//        
+//        assertEquals(stringUpperListOfList, result);
+//        
+//    }
 
     
     @Test

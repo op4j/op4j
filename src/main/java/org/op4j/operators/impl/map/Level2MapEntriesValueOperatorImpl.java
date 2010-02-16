@@ -27,14 +27,12 @@ import org.op4j.functions.IFunction;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.mapofarray.Level2MapOfArrayEntriesValueOperatorImpl;
 import org.op4j.operators.impl.mapoflist.Level2MapOfListEntriesValueOperatorImpl;
-import org.op4j.operators.impl.mapofmap.Level2MapOfMapEntriesValueOperatorImpl;
 import org.op4j.operators.impl.mapofset.Level2MapOfSetEntriesValueOperatorImpl;
 import org.op4j.operators.intf.map.Level1MapEntriesOperator;
 import org.op4j.operators.intf.map.Level2MapEntriesValueOperator;
 import org.op4j.operators.intf.map.Level2MapEntriesValueSelectedOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesValueOperator;
 import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesValueOperator;
-import org.op4j.operators.intf.mapofmap.Level2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.CastType;
@@ -81,10 +79,6 @@ public final class Level2MapEntriesValueOperatorImpl<K,V> extends AbstractOperat
     }
 
 
-    public <K2,V2> Level2MapOfMapEntriesValueOperator<K,K2,V2> asMapOf(final Type<K2> keyType, final Type<V2> valueType) {
-        return new Level2MapOfMapEntriesValueOperatorImpl<K,K2,V2>(getTarget().cast(CastType.MAP, keyType, valueType));
-    }
-
 
     public <X> Level2MapOfSetEntriesValueOperator<K,X> asSetOf(final Type<X> type) {
         return new Level2MapOfSetEntriesValueOperatorImpl<K,X>(getTarget().cast(CastType.SET, type));
@@ -102,10 +96,6 @@ public final class Level2MapEntriesValueOperatorImpl<K,V> extends AbstractOperat
         return asListOf(Types.OBJECT);
     }
 
-
-    public Level2MapOfMapEntriesValueOperator<K, ?, ?> asMapOfUnknown() {
-        return asMapOf(Types.OBJECT, Types.OBJECT);
-    }
 
 
     public Level2MapOfSetEntriesValueOperator<K, ?> asSetOfUnknown() {

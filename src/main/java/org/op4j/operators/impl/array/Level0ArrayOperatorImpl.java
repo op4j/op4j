@@ -38,10 +38,6 @@ import org.op4j.operators.impl.set.Level0SetOperatorImpl;
 import org.op4j.operators.intf.array.Level0ArrayOperator;
 import org.op4j.operators.intf.array.Level0ArraySelectedOperator;
 import org.op4j.operators.intf.array.Level1ArrayElementsOperator;
-import org.op4j.operators.intf.arrayofarray.Level0ArrayOfArrayOperator;
-import org.op4j.operators.intf.arrayoflist.Level0ArrayOfListOperator;
-import org.op4j.operators.intf.arrayofmap.Level0ArrayOfMapOperator;
-import org.op4j.operators.intf.arrayofset.Level0ArrayOfSetOperator;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.list.Level0ListOperator;
 import org.op4j.operators.intf.map.Level0MapOperator;
@@ -198,46 +194,6 @@ public final class Level0ArrayOperatorImpl<T>
 
     public <X> Level0ArrayOperator<X> asArrayOf(final Type<X> newType) {
         return generic().asArrayOf(newType);
-    }
-
-
-    public <X> Level0ArrayOfArrayOperator<X> asArrayOfArrayOf(final Type<X> newType) {
-        return generic().asArrayOfArrayOf(newType);
-    }
-
-
-    public Level0ArrayOfArrayOperator<?> asArrayOfArrayOfUnknown() {
-        return asArrayOfArrayOf(Types.OBJECT);
-    }
-
-
-    public <X> Level0ArrayOfListOperator<X> asArrayOfListOf(final Type<X> newType) {
-        return generic().asArrayOfListOf(newType);
-    }
-
-
-    public Level0ArrayOfListOperator<?> asArrayOfListOfUnknown() {
-        return asArrayOfListOf(Types.OBJECT);
-    }
-
-
-    public <K, V> Level0ArrayOfMapOperator<K, V> asArrayOfMapOf(final Type<K> keyType, final Type<V> valueType) {
-        return generic().asArrayOfMapOf(keyType, valueType);
-    }
-
-
-    public Level0ArrayOfMapOperator<?, ?> asArrayOfMapOfUnknown() {
-        return asArrayOfMapOf(Types.OBJECT, Types.OBJECT);
-    }
-
-
-    public <X> Level0ArrayOfSetOperator<X> asArrayOfSetOf(final Type<X> newType) {
-        return generic().asArrayOfSetOf(newType);
-    }
-
-
-    public Level0ArrayOfSetOperator<?> asArrayOfSetOfUnknown() {
-        return asArrayOfSetOf(Types.OBJECT);
     }
 
 

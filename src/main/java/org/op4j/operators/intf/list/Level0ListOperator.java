@@ -28,16 +28,8 @@ import org.op4j.functions.IFunction;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.array.Level0ArrayOperator;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
-import org.op4j.operators.intf.listofarray.Level0ListOfArrayOperator;
-import org.op4j.operators.intf.listoflist.Level0ListOfListOperator;
-import org.op4j.operators.intf.listofmap.Level0ListOfMapOperator;
-import org.op4j.operators.intf.listofset.Level0ListOfSetOperator;
 import org.op4j.operators.intf.map.Level0MapOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
-import org.op4j.operators.qualities.CastableToListOfArrayOperator;
-import org.op4j.operators.qualities.CastableToListOfListOperator;
-import org.op4j.operators.qualities.CastableToListOfMapOperator;
-import org.op4j.operators.qualities.CastableToListOfSetOperator;
 import org.op4j.operators.qualities.CastableToListOperator;
 import org.op4j.operators.qualities.ConvertibleToArrayOperator;
 import org.op4j.operators.qualities.ConvertibleToMapOperator;
@@ -65,10 +57,6 @@ public interface Level0ListOperator<T>
 		        DistinguishableOperator,
 		        SortableOperator<T>,
                 CastableToListOperator,
-                CastableToListOfArrayOperator,
-                CastableToListOfListOperator,
-                CastableToListOfMapOperator,
-                CastableToListOfSetOperator,
 		        ModifiableCollectionOperator<T>,
 		        GenerizableOperator<List<T>>,
                 ExecutableListOperator<T>,
@@ -145,18 +133,6 @@ public interface Level0ListOperator<T>
     
     public <X> Level0ListOperator<X> map(final IFunction<X,? super T> function);
     
-    
-    public <X> Level0ListOfArrayOperator<X> asListOfArrayOf(final Type<X> type);
-    public Level0ListOfArrayOperator<?> asListOfArrayOfUnknown();
-    
-    public <X> Level0ListOfListOperator<X> asListOfListOf(final Type<X> type);
-    public Level0ListOfListOperator<?> asListOfListOfUnknown();
-    
-    public <K,V> Level0ListOfMapOperator<K,V> asListOfMapOf(final Type<K> keyType, final Type<V> valueType);
-    public Level0ListOfMapOperator<?,?> asListOfMapOfUnknown();
-    
-    public <X> Level0ListOfSetOperator<X> asListOfSetOf(final Type<X> type);
-    public Level0ListOfSetOperator<?> asListOfSetOfUnknown();
 
     
     public <X> Level0ListOperator<X> asListOf(final Type<X> type);

@@ -26,14 +26,11 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.map.Level2MapEntriesValueOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesValueOperator;
-import org.op4j.operators.intf.mapofmap.Level2MapOfMapEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.operators.qualities.CastableToListOperator;
 import org.op4j.operators.qualities.ConvertibleToArrayOperator;
-import org.op4j.operators.qualities.ConvertibleToMapOperator;
 import org.op4j.operators.qualities.ConvertibleToSetOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
 import org.op4j.operators.qualities.ExecutableListOperator;
@@ -65,8 +62,7 @@ public interface Level2MapOfListEntriesValueOperator<K,V>
                 ReplaceableOperator<List<V>>,
                 ReplaceableIfNullOperator<List<V>>,
                 ConvertibleToArrayOperator<V>,
-                ConvertibleToSetOperator,
-                ConvertibleToMapOperator<V> {
+                ConvertibleToSetOperator {
 
 
 
@@ -111,10 +107,6 @@ public interface Level2MapOfListEntriesValueOperator<K,V>
     
     
     public Level2MapOfSetEntriesValueOperator<K,V> toSet();
-    
-    public Level2MapOfMapEntriesValueOperator<K,V,V> toMap();
-    public <K2> Level2MapOfMapEntriesValueOperator<K,K2,V> toMap(final IFunction<K2,? super V> keyEval);
-    public <K2,V2> Level2MapOfMapEntriesValueOperator<K,K2,V2> toMap(final IMapBuilder<K2,V2,? super V> mapBuild);
 
     
     public Level2MapOfListEntriesValueOperator<K,V> replaceWith(final List<V> replacement);

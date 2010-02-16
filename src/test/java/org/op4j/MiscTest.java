@@ -20,7 +20,6 @@
 
 package org.op4j;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.nio.charset.Charset;
@@ -53,8 +52,6 @@ import org.op4j.functions.converters.ToInteger;
 import org.op4j.functions.converters.ToLong;
 import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.converters.ToMapOfArray;
-import org.op4j.functions.converters.ToString;
-import org.op4j.functions.evaluators.Call;
 import org.op4j.functions.evaluators.Ognl;
 
 /**
@@ -101,24 +98,12 @@ watch.start();
         final Map<String,String>[] maps1 = (Map<String, String>[]) new Map<?,?>[] { map1, map2 };
 
         
-        System.out.println(printArray(Op.onArrayOfArrayOf(Types.STRING, stringsStrings1).forEach().forEach().ifIndex(0).exec(Ognl.asString("#target + ' Mundo'")).get()));
-        
         
         
         System.out.println(Op.onList(stringsList1).get());
         System.out.println(Op.onList(stringsList1).forEach().get());
         System.out.println(Op.onList(stringsList1).forEach().ifNotNull().exec(Ognl.asString("toUpperCase()")).get());
         
-        
-        System.out.println(Op.onArrayOfArrayOf(Types.STRING, stringsStrings1).forEach().forEach().exec(Types.INTEGER, Ognl.asInteger("length()")).get());
-        
-        System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).forEach().forEach().exec(Ognl.asString("toUpperCase()")).get()));
-
-        System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().ifTrue(Ognl.asBoolean("size() > 6")).forEachEntry().onValue().exec(Ognl.asString("toUpperCase()")).get()));
-        
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().get());
-        
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().exec(Call.asInteger("length")).get());
         
         
         final BigDecimal bd = new BigDecimal("3455234.6325");
@@ -140,14 +125,6 @@ watch.start();
         
         final String[][] arrayOfArrayOfString1 = 
             new String[][] { new String[] {"a", "b", "a"}, new String[] {"a", "b", "a"}};
-        
-        System.out.println(Op.onListOfList(listOfListOfString1).get());
-        System.out.println(Op.onListOfList(listOfListOfString1).distinct().get());
-        System.out.println(Op.onListOfList(listOfListOfString1).forEach().distinct().get());
-        
-        System.out.println(printArray(Op.onArrayOfArrayOf(Types.STRING, arrayOfArrayOfString1).get()));
-        System.out.println(printArray(Op.onArrayOfArrayOf(Types.STRING, arrayOfArrayOfString1).distinct().get()));
-        System.out.println(printArray(Op.onArrayOfArrayOf(Types.STRING, arrayOfArrayOfString1).forEach().distinct().get()));
      
         System.out.println(Op.onList(stringsList1).addAll("World!", "Mars!").get());
         System.out.println(Op.onList(stringsList1).insertAll(1, "World!", "Mars!").get());
@@ -192,8 +169,6 @@ watch.start();
         System.out.println(Op.onMap(map2).get());
         System.out.println(Op.onMap(map2).putAll(Op.onMap(map1).insert(0,"gl", "Meuuuu!").get()).get());
         System.out.println(Op.onMap(map2).putAll(Op.onMap(map1).insert(0,"gl", "Meuuuu!").get()).removeAllTrue(Ognl.asBoolean("!#target.key.startsWith('e')")).get());
-        
-        System.out.println(printArray(Op.onArrayOfMap(maps1).get()));
         
         System.out.println(Op.onAll(234,12,231));
         System.out.println(Op.on(234).addAll(10));
@@ -351,8 +326,6 @@ watch.start();
      
         
         System.out.println(Op.onArrayOf(Types.STRING, stringsArr1).toSet().get());
-        System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).forEach().toSet().get()));
-        System.out.println(printArray(Op.onArrayOfList(stringsListStrings1).toArrayOfArrayOf(Types.STRING).get()));
         
         final List<String[]> listOfStringArray1 = new ArrayList<String[]>();
         listOfStringArray1.add(Op.onAll("Hola", "Hello", "Ciao", "Ola").buildArrayOf(Types.STRING).get());
@@ -374,19 +347,6 @@ watch.start();
         setOfStringSet1.add(Op.onAll("Hola", "Hello", "Ciao", "Ola").buildSet().get());
         setOfStringSet1.add(Op.onAll("Adios", "Goodbye", "Ciao", "Adéus").buildSet().get());
         
-        System.out.println(printArray(Op.onListOfArrayOf(Types.STRING, listOfStringArray1).toArrayOfArrayOf(Types.STRING).get()));
-        System.out.println(printArray(Op.onListOfList(listOfListOfString1).toArrayOfArrayOf(Types.STRING).get()));
-        System.out.println(printArray(Op.onListOfSet(listOfStringSet1).toArrayOfArrayOf(Types.STRING).get()));
-        
-        System.out.println(printArray(Op.onSetOfArrayOf(Types.STRING, setOfStringArray1).toArrayOfArrayOf(Types.STRING).get()));
-        System.out.println(printArray(Op.onSetOfList(setOfStringList1).toArrayOfArrayOf(Types.STRING).get()));
-        System.out.println(printArray(Op.onSetOfSet(setOfStringSet1).toArrayOfArrayOf(Types.STRING).get()));
-
-        
-        System.out.println(printArray(Op.onArrayOfArrayOf(Types.STRING, arrayOfArrayOfString1).toArrayOfList().get()));
-        System.out.println(printArray(Op.onListOfArrayOf(Types.STRING, listOfStringArray1).toArrayOfList().get()));
-        System.out.println(printArray(Op.onListOfList(listOfListOfString1).toArrayOfList().get()));
-        
         System.out.println(Op.on("http://www.google.es/search?q=op4j&unusedParam=unusedValue '' 2^2 ")
                 .exec(StringFuncs.escapeJavaScript()).get());
         System.out.println(Op.on("Body tag is written like \"<body>content here</body>\"")
@@ -396,9 +356,6 @@ watch.start();
 
         System.out.println(Op.onList(stringsList1).removeAllNullOrTrue(Ognl.asBoolean("length() < 6")).get());
 
-        System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().extractKeys().get()));
-        System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().extractValues().get()));
-
         System.out.println("***___****___****");
         System.out.println(Op.onList(stringsList1).forEach().ifNotNull().exec(StringFuncs.toUpperCase()).get());
         System.out.println("***___****___****");
@@ -406,17 +363,10 @@ watch.start();
         System.out.println(Op.onAll("hello", "goodbye").exec(Ognl.asString("#target + ' world!'")).getAsList());
         
         System.out.println(Op.onList(listOfListOfString1).get());
-        System.out.println(Op.onList(listOfListOfString1).forEach().asListOf(Types.STRING).forEach().get());
         
-        
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().forEach().exec(Call.asInteger("length")).get());
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().ifIndex(0).add("").removeAllTrue(Call.asBoolean("isEmpty")).get());
-        System.out.println(Op.onListOfList(stringsListStringsList1).forEach().removeAllTrue(Call.asBoolean("isEmpty")).get());
         
 //        System.out.println(Op.onMap(map1).forEachEntry().exec(Ognl.forString("'in ' + #target.key + ' you say ' + #target.value")).get());
         
-        
-        System.out.println(printArray(Op.onArrayOfArrayOf(Types.STRING, arrayOfArrayOfString1).forEach().toMap(Ognl.asInteger("length()")).forEachEntry().onKey().asType(Types.forClass(Serializable.class)).endOn().onValue().asType(Types.SERIALIZABLE).get()));
         
         
         System.out.println(Op.onList(stringsList1).removeAllNull().sort().get());
@@ -424,17 +374,6 @@ watch.start();
         
         System.out.println(Op.on(maps1).exec(Ognl.asInteger("length")).get());
         System.out.println(printArray(Op.onArrayOf(Types.MAP_OF_STRING_STRING, maps1).forEach().exec(Types.INTEGER, Ognl.asInteger("size()")).get()));
-        System.out.println(printArray(Op.onArrayOfMap(maps1).forEach().forEachEntry().onValue().exec(Ognl.asObject("length()")).endOn().endFor().extractValues().get()));
-        
-        final Map<Integer,Map<String,String>> mapOfMapOfIntegerStringString = Op.onArrayOf(Types.MAP_OF_STRING_STRING, maps1).toMap(Ognl.asInteger("size()")).asMapOfMapOf(Types.INTEGER, Types.STRING, Types.STRING).get();
-        
-        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onValue().forEachEntry().onValue().exec(Ognl.asObject("length()")).get());
-        
-        System.out.println(Op.onListOfList(listOfListOfString1).forEach().forEach().exec(Ognl.asString("#target + '' + #index + '-' + #indexes[1] + '/' + #iterationLevel")).get());
-        
-        
-        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onKey().exec(ToString.fromNumber()).exec(Ognl.asString("#target + '...'")).get());
-        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onKey().exec(ToString.fromNumber()).exec(Ognl.asString("'onekey'")).get());
 
 //        final List<Map<String,String>> listOfMapOfStringString1 = 
 //          Op.buildList(Types.MAP_OF_STRING_STRING).add(map1).add(map2).get();
@@ -442,9 +381,6 @@ watch.start();
 //        System.out.println(printArray(Op.onListOfMap(listOfMapOfStringString1).toArrayOfMap().get()));
     
         System.out.println(Op.onMap(map1).forEachEntry().exec(Ognl.asString("'<<KEY: ' + #target.key + ' | VALUE: ' + #target.value + '>>'")).get());
-        
-        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().exec(Ognl.asString("'<<KEY: ' + #target.key + ' | VALUE: ' + #target.value + '>>'")).get());
-        System.out.println(Op.onMapOfMap(mapOfMapOfIntegerStringString).forEachEntry().onValue().forEachEntry().exec(Ognl.asString("'<<KEY: ' + #target.key + ' | VALUE: ' + #target.value + '>>'")).get());
         
         System.out.println(Types.LIST_ITERATOR_OF_BOOLEAN.getSimpleName());
         

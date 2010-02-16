@@ -1,4 +1,9 @@
 
+  - Functions: Extract functions have changed?
+  - Functions: any unused functions? (f.e. flatten)
+  - NormaliseUtils now has lots of unused code.
+  - Add static factory methods to ListFuncs, ArrayFuncs, etc
+
   - Create mapIfNotNull and mapMapIfNotNull
   - Reorganize functions in package org.op4j.functions
   - Functions in StringFuncs: do they have to be nullasnull or notnull?

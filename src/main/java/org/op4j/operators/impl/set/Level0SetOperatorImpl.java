@@ -43,10 +43,6 @@ import org.op4j.operators.intf.map.Level0MapOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.operators.intf.set.Level0SetSelectedOperator;
 import org.op4j.operators.intf.set.Level1SetElementsOperator;
-import org.op4j.operators.intf.setofarray.Level0SetOfArrayOperator;
-import org.op4j.operators.intf.setoflist.Level0SetOfListOperator;
-import org.op4j.operators.intf.setofmap.Level0SetOfMapOperator;
-import org.op4j.operators.intf.setofset.Level0SetOfSetOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
@@ -198,46 +194,6 @@ public final class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
     
     
     
-    
-    
-	public <X> Level0SetOfArrayOperator<X> asSetOfArrayOf(final Type<X> type) {
-        return generic().asSetOfArrayOf(type);
-    }
-
-
-    public Level0SetOfArrayOperator<?> asSetOfArrayOfUnknown() {
-        return asSetOfArrayOf(Types.OBJECT);
-    }
-
-
-    public <X> Level0SetOfListOperator<X> asSetOfListOf(final Type<X> type) {
-        return generic().asSetOfListOf(type);
-    }
-
-
-    public Level0SetOfListOperator<?> asSetOfListOfUnknown() {
-        return asSetOfListOf(Types.OBJECT);
-    }
-
-
-    public <K, V> Level0SetOfMapOperator<K, V> asSetOfMapOf(final Type<K> keyType, final Type<V> valueType) {
-    	return generic().asSetOfMapOf(keyType, valueType);
-    }
-
-
-    public Level0SetOfMapOperator<?, ?> asSetOfMapOfUnknown() {
-        return asSetOfMapOf(Types.OBJECT, Types.OBJECT);
-    }
-
-
-    public <X> Level0SetOfSetOperator<X> asSetOfSetOf(final Type<X> type) {
-        return generic().asSetOfSetOf(type);
-    }
-
-
-    public Level0SetOfSetOperator<?> asSetOfSetOfUnknown() {
-        return asSetOfSetOf(Types.OBJECT);
-    }
 
 
     public <X> Level0SetOperator<X> asSetOf(final Type<X> type) {

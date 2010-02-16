@@ -26,10 +26,6 @@ import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.array.Level0ArrayOperator;
 import org.op4j.operators.intf.array.Level1ArrayElementsOperator;
 import org.op4j.operators.intf.array.Level1ArrayElementsSelectedOperator;
-import org.op4j.operators.intf.arrayofarray.Level1ArrayOfArrayElementsOperator;
-import org.op4j.operators.intf.arrayoflist.Level1ArrayOfListElementsOperator;
-import org.op4j.operators.intf.arrayofmap.Level1ArrayOfMapElementsOperator;
-import org.op4j.operators.intf.arrayofset.Level1ArrayOfSetElementsOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 
@@ -66,47 +62,6 @@ public final class Level1ArrayElementsOperatorImpl<T> extends AbstractOperatorIm
 
     public Level1ArrayElementsOperator<?> asUnknown() {
         return asType(Types.OBJECT);
-    }
-
-
-    public <X> Level1ArrayOfArrayElementsOperator<X> asArrayOf(final Type<X> elementType) {
-        return endFor().generic().asArrayOfArrayOf(elementType).forEach();
-    }
-
-
-    public <X> Level1ArrayOfListElementsOperator<X> asListOf(final Type<X> elementType) {
-        return endFor().generic().asArrayOfListOf(elementType).forEach();
-    }
-
-
-    public <K,V> Level1ArrayOfMapElementsOperator<K,V> asMapOf(final Type<K> keyType, final Type<V> valueType) {
-        return endFor().generic().asArrayOfMapOf(keyType, valueType).forEach();
-    }
-
-
-    public <X> Level1ArrayOfSetElementsOperator<X> asSetOf(final Type<X> elementType) {
-        return endFor().generic().asArrayOfSetOf(elementType).forEach();
-    }
-
-
-    
-    public Level1ArrayOfArrayElementsOperator<?> asArrayOfUnknown() {
-        return asArrayOf(Types.OBJECT);
-    }
-
-
-    public Level1ArrayOfListElementsOperator<?> asListOfUnknown() {
-        return asListOf(Types.OBJECT);
-    }
-
-
-    public Level1ArrayOfMapElementsOperator<?, ?> asMapOfUnknown() {
-        return asMapOf(Types.OBJECT, Types.OBJECT);
-    }
-
-
-    public Level1ArrayOfSetElementsOperator<?> asSetOfUnknown() {
-        return asSetOf(Types.OBJECT);
     }
     
     

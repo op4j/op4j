@@ -28,16 +28,14 @@ import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.MapFuncs;
-import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperatorImpl;
-import org.op4j.operators.impl.listofset.Level0ListOfSetOperatorImpl;
+import org.op4j.operators.impl.list.Level0ListOperatorImpl;
 import org.op4j.operators.impl.set.Level0SetOperatorImpl;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
-import org.op4j.operators.intf.listofset.Level0ListOfSetOperator;
+import org.op4j.operators.intf.list.Level0ListOperator;
 import org.op4j.operators.intf.mapofarray.Level0MapOfArrayOperator;
 import org.op4j.operators.intf.mapoflist.Level0MapOfListOperator;
-import org.op4j.operators.intf.mapofmap.Level0MapOfMapOperator;
 import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.intf.mapofset.Level0MapOfSetSelectedOperator;
 import org.op4j.operators.intf.mapofset.Level1MapOfSetEntriesOperator;
@@ -69,8 +67,8 @@ public final class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListOfSetOperator<V> extractValues() {
-        return new Level0ListOfSetOperatorImpl<V>(getTarget().execute(new MapFuncs.ExtractValues<K, V>()));
+    public Level0ListOperator<Set<V>> extractValues() {
+        return new Level0ListOperatorImpl<Set<V>>(getTarget().execute(new MapFuncs.ExtractValues<K, V>()));
     }
 
 
@@ -151,16 +149,6 @@ public final class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
 
     public Level0MapOfListOperator<K, V> toMapOfList() {
         return forEachEntry().onValue().toList().endOn().endFor();
-    }
-
-
-    public <K2> Level0MapOfMapOperator<K, K2, V> toMapOfMap(final IFunction<K2, ? super V> keyEval) {
-        return forEachEntry().onValue().toMap(keyEval).endOn().endFor();
-    }
-
-
-    public <K2, V2> Level0MapOfMapOperator<K, K2, V2> toMapOfMap(final IMapBuilder<K2, V2, ? super V> mapBuild) {
-        return forEachEntry().onValue().toMap(mapBuild).endOn().endFor();
     }
 
 

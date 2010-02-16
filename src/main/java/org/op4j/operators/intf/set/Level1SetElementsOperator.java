@@ -23,14 +23,6 @@ import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.operators.intf.setofarray.Level1SetOfArrayElementsOperator;
-import org.op4j.operators.intf.setoflist.Level1SetOfListElementsOperator;
-import org.op4j.operators.intf.setofmap.Level1SetOfMapElementsOperator;
-import org.op4j.operators.intf.setofset.Level1SetOfSetElementsOperator;
-import org.op4j.operators.qualities.CastableToArrayOperator;
-import org.op4j.operators.qualities.CastableToListOperator;
-import org.op4j.operators.qualities.CastableToMapOperator;
-import org.op4j.operators.qualities.CastableToSetOperator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
 import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
@@ -49,10 +41,6 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level1SetElementsOperator<T>
         extends UniqOperator<Set<T>>,
-                CastableToArrayOperator,
-                CastableToListOperator,
-                CastableToMapOperator,
-                CastableToSetOperator,
         		NavigatingCollectionOperator<T>,
         		ExecutableOperator<T>,
                 SelectableOperator<T>,
@@ -87,15 +75,6 @@ public interface Level1SetElementsOperator<T>
     
     public <X> Level1SetElementsOperator<X> asType(final Type<X> type);
     public Level1SetElementsOperator<?> asUnknown();
-        
-    public <X> Level1SetOfArrayElementsOperator<X> asArrayOf(final Type<X> type);
-    public <X> Level1SetOfListElementsOperator<X> asListOf(final Type<X> type);
-    public <K,V> Level1SetOfMapElementsOperator<K,V> asMapOf(final Type<K> keyType, final Type<V> valueType);
-    public <X> Level1SetOfSetElementsOperator<X> asSetOf(final Type<X> type);
-    public Level1SetOfArrayElementsOperator<?> asArrayOfUnknown();
-    public Level1SetOfListElementsOperator<?> asListOfUnknown();
-    public Level1SetOfMapElementsOperator<?,?> asMapOfUnknown();
-    public Level1SetOfSetElementsOperator<?> asSetOfUnknown();
     
                                     
 }

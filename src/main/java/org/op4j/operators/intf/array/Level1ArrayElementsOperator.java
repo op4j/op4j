@@ -21,14 +21,6 @@ package org.op4j.operators.intf.array;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.operators.intf.arrayofarray.Level1ArrayOfArrayElementsOperator;
-import org.op4j.operators.intf.arrayoflist.Level1ArrayOfListElementsOperator;
-import org.op4j.operators.intf.arrayofmap.Level1ArrayOfMapElementsOperator;
-import org.op4j.operators.intf.arrayofset.Level1ArrayOfSetElementsOperator;
-import org.op4j.operators.qualities.CastableToArrayOperator;
-import org.op4j.operators.qualities.CastableToListOperator;
-import org.op4j.operators.qualities.CastableToMapOperator;
-import org.op4j.operators.qualities.CastableToSetOperator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
 import org.op4j.operators.qualities.ExecutableArrayElementsOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
@@ -47,10 +39,6 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level1ArrayElementsOperator<T>
         extends UniqOperator<T[]>,
-                CastableToArrayOperator,
-                CastableToListOperator,
-                CastableToMapOperator,
-                CastableToSetOperator,
                 NavigatingCollectionOperator<T>,
                 SelectableOperator<T>,
                 ReplaceableOperator<T>,
@@ -87,15 +75,6 @@ public interface Level1ArrayElementsOperator<T>
     
     public <X> Level1ArrayElementsOperator<X> asType(final Type<X> type);
     public Level1ArrayElementsOperator<?> asUnknown();
-        
-    public <X> Level1ArrayOfArrayElementsOperator<X> asArrayOf(final Type<X> type);
-    public <X> Level1ArrayOfListElementsOperator<X> asListOf(final Type<X> type);
-    public <K,V> Level1ArrayOfMapElementsOperator<K,V> asMapOf(final Type<K> keyType, final Type<V> valueType);
-    public <X> Level1ArrayOfSetElementsOperator<X> asSetOf(final Type<X> type);
-    public Level1ArrayOfArrayElementsOperator<?> asArrayOfUnknown();
-    public Level1ArrayOfListElementsOperator<?> asListOfUnknown();
-    public Level1ArrayOfMapElementsOperator<?,?> asMapOfUnknown();
-    public Level1ArrayOfSetElementsOperator<?> asSetOfUnknown();
 	
     
 }
