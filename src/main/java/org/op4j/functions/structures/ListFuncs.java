@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.functions;
+package org.op4j.functions.structures;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,6 +26,9 @@ import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+
+import org.op4j.functions.ExecCtx;
+import org.op4j.functions.IFunction;
 
 /**
  * 
@@ -77,7 +80,7 @@ public final class ListFuncs {
     
     
     
-    public static final class Distinct<T> extends AbstractNotNullNonConvertingFunc<List<T>> {
+    public static final class Distinct<T> extends AbstractStructureNotNullNonConvertingFunc<List<T>> {
 
         public Distinct() {
             super();

@@ -17,7 +17,7 @@
  * 
  * =============================================================================
  */
-package org.op4j.functions.evaluators;
+package org.op4j.functions;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -27,8 +27,6 @@ import java.util.Date;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.functions.ExecCtx;
-import org.op4j.functions.IFunction;
 import org.op4j.util.VarArgsUtil;
 
 

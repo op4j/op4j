@@ -4,8 +4,8 @@ import java.util.Collection;
 import java.util.Comparator;
 
 import org.javaruntype.type.Type;
-import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.structures.ArrayFuncs;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.array.Level0ArrayOperator;
 import org.op4j.operators.intf.array.Level0ArraySelectedOperator;

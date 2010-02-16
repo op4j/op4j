@@ -17,13 +17,16 @@
  * 
  * =============================================================================
  */
-package org.op4j.functions;
+package org.op4j.functions.math;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 
 import org.apache.commons.lang.Validate;
+import org.op4j.functions.AbstractNotNullFunc;
+import org.op4j.functions.AbstractNullAsNullFunc;
+import org.op4j.functions.ExecCtx;
 
 /**
  * 
@@ -32,7 +35,7 @@ import org.apache.commons.lang.Validate;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class MathInteger {
+public final class MathIntegerFuncs {
 
 	private static Max MAX_FUNC = new Max();
 	
@@ -45,7 +48,7 @@ public final class MathInteger {
 	private static Abs ABS_FUNC = new Abs();
 	
 	
-	private MathInteger() {
+	private MathIntegerFuncs() {
 		super();           
 	}
 

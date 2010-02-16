@@ -18,7 +18,9 @@
  * =============================================================================
  */
 
-package org.op4j.functions;
+package org.op4j.functions.structures;
+
+import org.op4j.functions.AbstractNotNullFunc;
 
 
 /**
@@ -28,10 +30,10 @@ package org.op4j.functions;
  * @author Daniel Fern&aacute;ndez
  *
  */
-abstract class AbstractNotNullNonConvertingFunc<T> extends AbstractNotNullFunc<T, T> {
+abstract class AbstractStructureNotNullNonConvertingFunc<T> extends AbstractNotNullFunc<T, T> {
     
     
-    protected AbstractNotNullNonConvertingFunc() {
+    protected AbstractStructureNotNullNonConvertingFunc() {
         super();
     }
 

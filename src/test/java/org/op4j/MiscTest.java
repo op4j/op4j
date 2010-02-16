@@ -37,11 +37,9 @@ import java.util.Set;
 import org.apache.commons.lang.time.StopWatch;
 import org.javaruntype.type.Types;
 import org.junit.Test;
-import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.ListFuncs;
-import org.op4j.functions.SetFuncs;
+import org.op4j.functions.Ognl;
 import org.op4j.functions.StringFuncs;
 import org.op4j.functions.converters.DecimalPoint;
 import org.op4j.functions.converters.ToBigDecimal;
@@ -52,7 +50,9 @@ import org.op4j.functions.converters.ToInteger;
 import org.op4j.functions.converters.ToLong;
 import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.converters.ToMapOfArray;
-import org.op4j.functions.evaluators.Ognl;
+import org.op4j.functions.structures.ArrayFuncs;
+import org.op4j.functions.structures.ListFuncs;
+import org.op4j.functions.structures.SetFuncs;
 
 /**
  * 

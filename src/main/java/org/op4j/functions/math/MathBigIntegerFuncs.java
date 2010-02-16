@@ -17,11 +17,14 @@
  * 
  * =============================================================================
  */
-package org.op4j.functions;
+package org.op4j.functions.math;
 
 import java.math.BigInteger;
 
 import org.apache.commons.lang.Validate;
+import org.op4j.functions.AbstractNotNullFunc;
+import org.op4j.functions.AbstractNullAsNullFunc;
+import org.op4j.functions.ExecCtx;
 
 /**
  * 
@@ -30,7 +33,7 @@ import org.apache.commons.lang.Validate;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class MathBigInteger {
+public final class MathBigIntegerFuncs {
 
 	private static Max MAX_FUNC = new Max();
 	
@@ -43,7 +46,7 @@ public final class MathBigInteger {
 	private static Abs ABS_FUNC = new Abs();
 	
 	
-	private MathBigInteger() {
+	private MathBigIntegerFuncs() {
 		super();           
 	}
 

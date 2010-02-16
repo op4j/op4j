@@ -16,19 +16,19 @@ import org.apache.commons.lang.ArrayUtils;
 import org.javaruntype.type.Types;
 import org.junit.Before;
 import org.junit.Test;
-import org.op4j.functions.MathBigDecimal;
-import org.op4j.functions.MathBigInteger;
-import org.op4j.functions.MathDouble;
-import org.op4j.functions.MathFloat;
-import org.op4j.functions.MathInteger;
-import org.op4j.functions.MathLong;
-import org.op4j.functions.MathShort;
 import org.op4j.functions.converters.ToBigDecimal;
 import org.op4j.functions.converters.ToBigInteger;
 import org.op4j.functions.converters.ToFloat;
 import org.op4j.functions.converters.ToInteger;
 import org.op4j.functions.converters.ToLong;
 import org.op4j.functions.converters.ToShort;
+import org.op4j.functions.math.MathBigDecimalFuncs;
+import org.op4j.functions.math.MathBigIntegerFuncs;
+import org.op4j.functions.math.MathDoubleFuncs;
+import org.op4j.functions.math.MathFloatFuncs;
+import org.op4j.functions.math.MathIntegerFuncs;
+import org.op4j.functions.math.MathLongFuncs;
+import org.op4j.functions.math.MathShortFuncs;
 import org.op4j.test.auto.TestOperation;
 
 public class MathFuncsTest extends TestCase {
@@ -49,17 +49,17 @@ public class MathFuncsTest extends TestCase {
 	@Test
 	public void testDouble() {
 		// MAX
-		Double result = Op.on(this.data).exec(MathDouble.max()).get();
+		Double result = Op.on(this.data).exec(MathDoubleFuncs.max()).get();
 		assertEquals(result, this.data.get(1));	
 		System.out.println("Max: " + result);
 		
 		// MIN
-		result = Op.on(this.data).exec(MathDouble.min()).get();
+		result = Op.on(this.data).exec(MathDoubleFuncs.min()).get();
 		assertEquals(result, this.data.get(4));	
 		System.out.println("Min: " + result);
 		
 		// SUM
-		result = Op.on(this.data).exec(MathDouble.sum()).get();
+		result = Op.on(this.data).exec(MathDoubleFuncs.sum()).get();
 		BigDecimal sum = BigDecimal.valueOf(0);
 		for (Double number : this.data) {
 			if (number != null) {
@@ -70,7 +70,7 @@ public class MathFuncsTest extends TestCase {
 		System.out.println("Sum: " + result);
 		
 		// AVG
-		result = Op.on(this.data).exec(MathDouble.avg()).get();
+		result = Op.on(this.data).exec(MathDoubleFuncs.avg()).get();
 		BigDecimal avg = BigDecimal.valueOf(0);
 		int count = 0;
 		for (Double number : this.data) {
@@ -83,13 +83,13 @@ public class MathFuncsTest extends TestCase {
 		System.out.println("Avg: " + result);
 		
 		MathContext mc = new MathContext(2, RoundingMode.CEILING);
-		result = Op.on(this.data).exec(MathDouble.avg(mc)).get();
+		result = Op.on(this.data).exec(MathDoubleFuncs.avg(mc)).get();
 		assertEquals(result, Double.valueOf(avg.divide(BigDecimal.valueOf(count), mc).doubleValue()));	
 		System.out.println("Avg: " + result);
 		
 		// Raise
 		List<Double> theResult = Op.onList(this.data).forEach()
-			.exec(MathDouble.raiseTo(5)).get();
+			.exec(MathDoubleFuncs.raiseTo(5)).get();
 		int index = 0;
 		for(Double aNumber : theResult) {
 			Double bNumber = null;
@@ -106,14 +106,14 @@ public class MathFuncsTest extends TestCase {
 	public void testLong() {
 		// Abs
 		List<Long> result = Op.onList(this.data).forEach().exec(ToLong.fromDouble(RoundingMode.CEILING))
-			.exec(MathLong.abs()).get();
+			.exec(MathLongFuncs.abs()).get();
 		assertEquals(result, Arrays.asList(Long.valueOf(34), Long.valueOf(45), 
 				Long.valueOf(24), Long.valueOf(24), Long.valueOf(11)));	
 		System.out.println("Abs: " + result);
 		
 		// Add
 		result = Op.onList(this.data).forEach().exec(ToLong.fromDouble(RoundingMode.CEILING))
-			.exec(MathLong.add(Long.valueOf(7))).get();
+			.exec(MathLongFuncs.add(Long.valueOf(7))).get();
 		int index = 0;
 		for(Long aLong : result) {
 			Long bLong = Long.valueOf(7);
@@ -131,7 +131,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// SUBTRACT
 		result = Op.onList(this.data).forEach().exec(ToLong.fromDouble(RoundingMode.CEILING))
-			.exec(MathLong.subtract(Long.valueOf(23))).get();
+			.exec(MathLongFuncs.subtract(Long.valueOf(23))).get();
 		index = 0;
 		for (Double number : this.data) {
 			if (number != null) {
@@ -151,7 +151,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Divide
 		List<Integer> result = Op.onList(this.data).forEach().exec(ToInteger.fromDouble(RoundingMode.CEILING))
-			.exec(MathInteger.divideBy(Integer.valueOf(3), RoundingMode.CEILING)).get();
+			.exec(MathIntegerFuncs.divideBy(Integer.valueOf(3), RoundingMode.CEILING)).get();
 		int index = 0;
 		for(Integer aInt : result) {
 			Integer bInt = null;
@@ -167,7 +167,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Multiply
 		result = Op.onList(this.data).forEach().exec(ToInteger.fromDouble(RoundingMode.DOWN))
-			.exec(MathInteger.multiplyBy(Integer.valueOf(3))).get();
+			.exec(MathIntegerFuncs.multiplyBy(Integer.valueOf(3))).get();
 		index = 0;
 		for(Integer aNumber : result) {
 			Integer bNumber = null;
@@ -188,7 +188,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Module
 		List<BigDecimal> result = Op.onList(this.data).forEach().exec(ToBigDecimal.fromNumber())
-			.exec(MathBigDecimal.module(3)).get();
+			.exec(MathBigDecimalFuncs.module(3)).get();
 		int index = 0;
 		for(BigDecimal aNumber : result) {
 			BigDecimal bNumber = null;
@@ -202,7 +202,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Multiply
 		result = Op.onList(this.data).forEach().exec(ToBigDecimal.fromNumber())
-			.exec(MathBigDecimal.multiplyBy(BigDecimal.valueOf(7.2))).get();
+			.exec(MathBigDecimalFuncs.multiplyBy(BigDecimal.valueOf(7.2))).get();
 		index = 0;
 		for(BigDecimal aNumber : result) {
 			BigDecimal bNumber = null;
@@ -216,7 +216,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Raise
 		result = Op.onList(this.data).forEach().exec(ToBigDecimal.fromNumber())
-			.exec(MathBigDecimal.raiseTo(3)).get();
+			.exec(MathBigDecimalFuncs.raiseTo(3)).get();
 		index = 0;
 		for(BigDecimal aNumber : result) {
 			BigDecimal bNumber = null;
@@ -236,11 +236,11 @@ public class MathFuncsTest extends TestCase {
 		List<TestOperation> testOperations = new ArrayList<TestOperation>();
 		testOperations.add(new TestOperation("add", new Object[] {BigDecimal.valueOf(2)}));		
 		testOperations.add(new TestOperation("forEach"));
-		testOperations.add(new TestOperation("exec", new Object[] {MathBigDecimal.divideBy(BigDecimal.valueOf(23.3),
+		testOperations.add(new TestOperation("exec", new Object[] {MathBigDecimalFuncs.divideBy(BigDecimal.valueOf(23.3),
 				new MathContext(4, RoundingMode.HALF_UP))}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathBigDecimal.raiseTo(3)}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathBigDecimal.subtract(BigDecimal.valueOf(5))}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathBigDecimal.abs()}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathBigDecimalFuncs.raiseTo(3)}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathBigDecimalFuncs.subtract(BigDecimal.valueOf(5))}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathBigDecimalFuncs.abs()}));
 		testOperations.add(new TestOperation("endFor"));
 		testOperations.add(new TestOperation("get"));
 		Object aResult = org.op4j.test.auto.Test.testOnList(bigDecimalList, testOperations);
@@ -273,7 +273,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Module
 		List<BigInteger> result = Op.onList(this.data).forEach().exec(ToBigInteger.fromNumber())
-			.exec(MathBigInteger.module(BigInteger.valueOf(3))).get();
+			.exec(MathBigIntegerFuncs.module(BigInteger.valueOf(3))).get();
 		int index = 0;
 		for(BigInteger aNumber : result) {
 			BigInteger bNumber = null;
@@ -287,7 +287,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Multiply
 		result = Op.onList(this.data).forEach().exec(ToBigInteger.fromNumber())
-			.exec(MathBigInteger.multiplyBy(BigInteger.valueOf(7))).get();
+			.exec(MathBigIntegerFuncs.multiplyBy(BigInteger.valueOf(7))).get();
 		index = 0;
 		for(BigInteger aNumber : result) {
 			BigInteger bNumber = null;
@@ -301,7 +301,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Raise
 		result = Op.onList(this.data).forEach().exec(ToBigInteger.fromNumber())
-			.exec(MathBigInteger.raiseTo(3)).get();
+			.exec(MathBigIntegerFuncs.raiseTo(3)).get();
 		index = 0;
 		for(BigInteger aNumber : result) {
 			BigInteger bNumber = null;
@@ -319,7 +319,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Module
 		List<Float> result = Op.onList(this.data).forEach().exec(ToFloat.fromNumber())
-			.exec(MathFloat.module(3)).get();
+			.exec(MathFloatFuncs.module(3)).get();
 		int index = 0;
 		for(Float aNumber : result) {
 			Float bNumber = null;
@@ -333,7 +333,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Multiply
 		result = Op.onList(this.data).forEach().exec(ToFloat.fromNumber())
-			.exec(MathFloat.multiplyBy(Float.valueOf(7))).get();
+			.exec(MathFloatFuncs.multiplyBy(Float.valueOf(7))).get();
 		index = 0;
 		for(Float aNumber : result) {
 			Float bNumber = null;
@@ -348,7 +348,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Raise
 		result = Op.onList(this.data).forEach().exec(ToFloat.fromNumber())
-			.exec(MathFloat.raiseTo(3)).get();
+			.exec(MathFloatFuncs.raiseTo(3)).get();
 		index = 0;
 		for(Float aNumber : result) {
 			Float bNumber = null;
@@ -366,7 +366,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Module
 		List<Short> result = Op.onList(this.data).forEach().exec(ToShort.fromNumber())
-			.exec(MathShort.module(3)).get();
+			.exec(MathShortFuncs.module(3)).get();
 		int index = 0;
 		for(Short aNumber : result) {
 			Short bNumber = null;
@@ -380,7 +380,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Multiply
 		result = Op.onList(this.data).forEach().exec(ToShort.fromNumber())
-			.exec(MathShort.multiplyBy(Short.valueOf("2127"))).get();
+			.exec(MathShortFuncs.multiplyBy(Short.valueOf("2127"))).get();
 		index = 0;
 		for(Short aNumber : result) {
 			Short bNumber = null;
@@ -395,7 +395,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Raise
 		result = Op.onList(this.data).forEach().exec(ToShort.fromNumber())
-			.exec(MathShort.raiseTo(3)).get();
+			.exec(MathShortFuncs.raiseTo(3)).get();
 		index = 0;
 		for(Short aNumber : result) {
 			Short bNumber = null;

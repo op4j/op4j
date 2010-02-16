@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.MapFuncs;
+import org.op4j.functions.structures.MapFuncs;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofarray.Level0MapOfArrayOperator;
 import org.op4j.operators.intf.mapofarray.Level0MapOfArraySelectedOperator;

@@ -5,8 +5,8 @@ import java.util.Comparator;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
-import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.structures.ArrayFuncs;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofarray.Level1MapOfArrayEntriesSelectedOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesSelectedValueOperator;

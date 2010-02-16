@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.functions;
+package org.op4j.functions.structures;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,6 +30,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import org.op4j.functions.AbstractNotNullFunc;
+import org.op4j.functions.ExecCtx;
+import org.op4j.functions.IFunction;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -53,7 +56,7 @@ public final class MapFuncs {
     
     
     
-    public static class SortByKey<K extends Comparable<? super K>, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
+    public static class SortByKey<K extends Comparable<? super K>, V> extends AbstractStructureNotNullNonConvertingFunc<Map<K, V>> {
 
         public SortByKey() {
             super();
@@ -74,7 +77,7 @@ public final class MapFuncs {
 
     
     
-    public static class SortEntries<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
+    public static class SortEntries<K, V> extends AbstractStructureNotNullNonConvertingFunc<Map<K, V>> {
 
         private final Comparator<? super Map.Entry<K, V>> comparator;
 
@@ -100,7 +103,7 @@ public final class MapFuncs {
     
 
     
-    public static final class Put<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
+    public static final class Put<K, V> extends AbstractStructureNotNullNonConvertingFunc<Map<K, V>> {
 
         private final K key;
         private final V value;
@@ -122,7 +125,7 @@ public final class MapFuncs {
 
     
     
-    public static final class Insert<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
+    public static final class Insert<K, V> extends AbstractStructureNotNullNonConvertingFunc<Map<K, V>> {
 
         private final int position;
         private final K key;
@@ -157,7 +160,7 @@ public final class MapFuncs {
     
     
     
-    public static final class PutAll<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
+    public static final class PutAll<K, V> extends AbstractStructureNotNullNonConvertingFunc<Map<K, V>> {
 
         private final Map<K, V> map;
         
@@ -179,7 +182,7 @@ public final class MapFuncs {
     
     
     
-    public static final class InsertAll<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
+    public static final class InsertAll<K, V> extends AbstractStructureNotNullNonConvertingFunc<Map<K, V>> {
 
         private final int position;
         private final Map<K, V> map;
@@ -214,7 +217,7 @@ public final class MapFuncs {
     
 
     
-    public static final class RemoveAllKeys<K,V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
+    public static final class RemoveAllKeys<K,V> extends AbstractStructureNotNullNonConvertingFunc<Map<K, V>> {
 
         private final List<K> keys;
         
@@ -238,7 +241,7 @@ public final class MapFuncs {
     
 
     
-    public static final class RemoveAllTrue<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
+    public static final class RemoveAllTrue<K, V> extends AbstractStructureNotNullNonConvertingFunc<Map<K, V>> {
 
         private final IFunction<Boolean,? super Map.Entry<K, V>> eval;
         
@@ -264,7 +267,7 @@ public final class MapFuncs {
     
 
     
-    public static final class RemoveAllFalse<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
+    public static final class RemoveAllFalse<K, V> extends AbstractStructureNotNullNonConvertingFunc<Map<K, V>> {
 
         private final IFunction<Boolean,? super Map.Entry<K, V>> eval;
         
@@ -290,7 +293,7 @@ public final class MapFuncs {
 
     
     
-    public static final class RemoveAllKeysNot<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
+    public static final class RemoveAllKeysNot<K, V> extends AbstractStructureNotNullNonConvertingFunc<Map<K, V>> {
 
         private final List<K> keys;
         

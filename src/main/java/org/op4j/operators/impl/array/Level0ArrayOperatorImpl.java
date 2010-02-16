@@ -24,11 +24,11 @@ import java.util.Comparator;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.functions.ArrayFuncs;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToList;
 import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.converters.ToSet;
+import org.op4j.functions.structures.ArrayFuncs;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperatorImpl;

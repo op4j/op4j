@@ -12,7 +12,7 @@ import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.Op;
 import org.op4j.exceptions.ExecutionException;
-import org.op4j.functions.MathInteger;
+import org.op4j.functions.math.MathIntegerFuncs;
 
 
 public class Test {
@@ -179,7 +179,7 @@ public class Test {
 		
 		List<TestOperation> operations = new ArrayList<TestOperation>();
 		operations.add(new TestOperation("forEach", new Object[] {}));
-		operations.add(new TestOperation("exec", new Object[] {MathInteger.add(45)}));
+		operations.add(new TestOperation("exec", new Object[] {MathIntegerFuncs.add(45)}));
 		operations.add(new TestOperation("get", new Object[] {}));
 		
 		Object result = test.testOnList(listTarget, operations);
@@ -191,7 +191,7 @@ public class Test {
 		operations.clear();
 		operations.add(new TestOperation("forEachEntry"));
 		operations.add(new TestOperation("onKey"));
-		operations.add(new TestOperation("exec", new Object[] {MathInteger.add(3)}));
+		operations.add(new TestOperation("exec", new Object[] {MathIntegerFuncs.add(3)}));
 		operations.add(new TestOperation("endOn"));
 		operations.add(new TestOperation("onValue"));
 		operations.add(new TestOperation("add", new Object[] {"another"}));

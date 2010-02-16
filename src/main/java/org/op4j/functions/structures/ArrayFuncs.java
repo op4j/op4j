@@ -18,59 +18,76 @@
  * =============================================================================
  */
 
-package org.op4j.functions;
+package org.op4j.functions.structures;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.lang.Validate;
+import org.javaruntype.type.Type;
+import org.op4j.functions.AbstractNotNullFunc;
+import org.op4j.functions.ExecCtx;
+import org.op4j.functions.IFunction;
 import org.op4j.util.VarArgsUtil;
 
-
 /**
+ * 
+ * @since 1.0
  * 
  * @author Daniel Fern&aacute;ndez
  * 
  */
-class CollectionFuncs {
+public final class ArrayFuncs {
 
     
     
     
-    private CollectionFuncs() {
+    private ArrayFuncs() {
         super();
     }
 
     
     
     
+    @SuppressWarnings("unchecked")
+    protected static final <T> T[] fromList(final Class<?> arrayClass, final List<T> object) {
+        final Class<?> componentClass = arrayClass.getComponentType();
+        final T[] newArray = (T[]) Array.newInstance(componentClass, new int[] { object.size() });
+        return object.toArray(newArray);
+    }
     
-    static abstract class Sort<T extends Comparable<? super T>, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
+    
+    
+    
+    public static final class Sort<T extends Comparable<? super T>> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
 
         public Sort() {
             super();
         }
 
         @Override
-        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
-        	
-            final List<T> result = new ArrayList<T>(object);
-            Collections.sort(result);
-            return fromList(result);
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+
+            final List<T> list = new ArrayList<T>(Arrays.asList(object));
+            Collections.sort(list);
+            return ArrayFuncs.fromList(object.getClass(), list);
             
         }
 
-        abstract X fromList(final List<T> object);
-
     }
 
+
     
     
-    static abstract class SortByComparator<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
+    public static final class SortByComparator<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
 
         private Comparator<? super T> comparator = null;
 
@@ -81,22 +98,83 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
-        	
-            final List<T> result = new ArrayList<T>(object);
-            Collections.sort(result, this.comparator);
-            return fromList(result);
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+
+            final List<T> list = new ArrayList<T>(Arrays.asList(object));
+            Collections.sort(list, this.comparator);
+            return ArrayFuncs.fromList(object.getClass(), list);
             
         }
-
-        abstract X fromList(final List<T> object);
 
     }
     
     
+    
+    
+    public static final class Distinct<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
+
+        public Distinct() {
+            super();
+        }
+
+        @Override
+        @SuppressWarnings("unchecked")
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+
+            Set<?> set = null;
+            if (!object.getClass().getComponentType().isArray()) {
+                set = new LinkedHashSet<T>(Arrays.asList(object));
+            } else {
+                set = new ArrayLinkedHashSet<Object>();
+                ((ArrayLinkedHashSet<Object>) set).addAll(Arrays
+                        .asList((Object[][]) object));
+            }
+
+            return ArrayFuncs.fromList(object.getClass(), new ArrayList<T>((Set<T>)set));
+
+        }
+
+        private static class ArrayLinkedHashSet<T> extends LinkedHashSet<T[]> {
+
+            private static final long serialVersionUID = 4483418737509306962L;
+
+            public ArrayLinkedHashSet() {
+                super();
+            }
+
+            @Override
+            public boolean add(T[] e) {
+                if (contains(e)) {
+                    return false;
+                }
+                return super.add(e);
+            }
+
+            @Override
+            @SuppressWarnings("unchecked")
+            public boolean contains(Object o) {
+                final Iterator<T[]> it = iterator();
+                while (it.hasNext()) {
+                    if (Arrays.equals(it.next(), (T[]) o)) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+        }
+
+    }
 
     
-    static abstract class Add<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
+    
+    
+    
+
+    
+
+    
+    public static final class Add<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
 
         private final List<T> newElements;
         
@@ -106,19 +184,17 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
-            final List<T> result = new ArrayList<T>(object);
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+            final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.addAll(this.newElements);
-            return fromList(result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
-
-        abstract X fromList(final List<T> object);
         
     }
 
     
     
-    static abstract class Insert<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
+    public static final class Insert<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
 
         private final int position;
         private final List<T> newElements;
@@ -130,13 +206,11 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
-            final List<T> result = new ArrayList<T>(object);
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+            final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.addAll(this.position, this.newElements);
-            return fromList(result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
-
-        abstract X fromList(final List<T> object);
         
     }
 
@@ -144,7 +218,7 @@ class CollectionFuncs {
     
     
     
-    static abstract class AddAll<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
+    public static final class AddAll<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
 
         private final List<T> newElements;
         
@@ -155,13 +229,11 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
-            final List<T> result = new ArrayList<T>(object);
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+            final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.addAll(this.newElements);
-            return fromList(result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
-
-        abstract X fromList(final List<T> object);
         
     }
 
@@ -169,7 +241,7 @@ class CollectionFuncs {
     
 
     
-    static abstract class RemoveAllIndexes<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
+    public static final class RemoveAllIndexes<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
 
         private final List<Integer> indexes;
         
@@ -179,7 +251,7 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             int i = 0;
             for (final T element : object) {
@@ -188,10 +260,8 @@ class CollectionFuncs {
                 }
                 i++;
             }
-            return fromList(result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
-
-        abstract X fromList(final List<T> object);
         
     }
 
@@ -199,7 +269,7 @@ class CollectionFuncs {
     
 
     
-    static abstract class RemoveAllEqual<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
+    public static final class RemoveAllEqual<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
 
         private final List<T> values;
         
@@ -209,13 +279,11 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
-            final List<T> result = new ArrayList<T>(object);
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+            final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.removeAll(this.values);
-            return fromList(result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
-
-        abstract X fromList(final List<T> object);
         
     }
 
@@ -223,7 +291,7 @@ class CollectionFuncs {
     
 
     
-    static abstract class RemoveAllTrue<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
+    public static final class RemoveAllTrue<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
 
         private final IFunction<Boolean,? super T> eval;
         
@@ -234,17 +302,15 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (!this.eval.execute(element, ctx).booleanValue()) {
                     result.add(element);
                 }
             }
-            return fromList(result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
-
-        abstract X fromList(final List<T> object);
         
     }
 
@@ -252,8 +318,7 @@ class CollectionFuncs {
     
 
     
-    
-    static abstract class RemoveAllFalse<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
+    public static final class RemoveAllFalse<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
 
         private final IFunction<Boolean,? super T> eval;
         
@@ -264,17 +329,15 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (this.eval.execute(element, ctx).booleanValue()) {
                     result.add(element);
                 }
             }
-            return fromList(result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
-
-        abstract X fromList(final List<T> object);
         
     }
     
@@ -282,7 +345,7 @@ class CollectionFuncs {
 
     
     
-    static abstract class RemoveAllIndexesNot<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
+    public static final class RemoveAllIndexesNot<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
 
         private final List<Integer> indexes;
         
@@ -292,7 +355,7 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             int i = 0;
             for (final T element : object) {
@@ -301,10 +364,8 @@ class CollectionFuncs {
                 }
                 i++;
             }
-            return fromList(result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
-
-        abstract X fromList(final List<T> object);
         
     }
 
@@ -312,24 +373,22 @@ class CollectionFuncs {
 
     
     
-    static abstract class RemoveAllNull<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
+    public static final class RemoveAllNull<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
 
         public RemoveAllNull() {
             super();
         }
 
         @Override
-        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
                     result.add(element);
                 }
             }
-            return fromList(result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
-
-        abstract X fromList(final List<T> object);
         
     }
     
@@ -338,7 +397,7 @@ class CollectionFuncs {
 
     
     
-    static abstract class RemoveAllNotNullAndTrue<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
+    public static final class RemoveAllNotNullAndTrue<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
 
         private final IFunction<Boolean,? super T> eval;
         
@@ -349,7 +408,7 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
@@ -360,21 +419,19 @@ class CollectionFuncs {
                     result.add(null);
                 }
             }
-            return fromList(result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
-
-        abstract X fromList(final List<T> object);
         
     }
     
-    
+
 
     
     
 
     
     
-    static abstract class RemoveAllNotNullAndFalse<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
+    public static final class RemoveAllNotNullAndFalse<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
 
         private final IFunction<Boolean,? super T> eval;
         
@@ -385,7 +442,7 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
@@ -396,19 +453,16 @@ class CollectionFuncs {
                     result.add(null);
                 }
             }
-            return fromList(result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
-
-        abstract X fromList(final List<T> object);
         
     }
     
-
-    
     
 
     
-    static abstract class RemoveAllNullOrTrue<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
+    
+    public static final class RemoveAllNullOrTrue<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
 
         private final IFunction<Boolean,? super T> eval;
         
@@ -419,7 +473,7 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
@@ -428,20 +482,18 @@ class CollectionFuncs {
                     }
                 }
             }
-            return fromList(result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
-
-        abstract X fromList(final List<T> object);
         
     }
-
+    
+    
     
 
 
     
-
     
-    static abstract class RemoveAllNullOrFalse<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
+    public static final class RemoveAllNullOrFalse<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
 
         private final IFunction<Boolean,? super T> eval;
         
@@ -452,7 +504,7 @@ class CollectionFuncs {
         }
 
         @Override
-        public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
+        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
@@ -461,61 +513,95 @@ class CollectionFuncs {
                     }
                 }
             }
-            return fromList(result);
+            return ArrayFuncs.fromList(object.getClass(), result);
         }
-
-        abstract X fromList(final List<T> object);
         
     }
+    
+    
+    
+    
+    
+    
+    public static final class FlattenArrayOfArrays<T> extends AbstractNotNullFunc<T[], T[][]> {
 
-    
-    
-    
-    
-    static abstract class FlattenCollectionOfArrays<T, X extends Collection<T>, Y extends Collection<T[]>> extends AbstractNotNullFunc<X, Y> {
-
-        public FlattenCollectionOfArrays() {
+        private final Type<? super T> type; 
+        
+        public FlattenArrayOfArrays(final Type<? super T> type) {
             super();
+            Validate.notNull(type, "A type representing the array elements must be specified");
+            this.type = type;
         }
 
         @Override
-        public X notNullExecute(final Y object, final ExecCtx ctx) throws Exception {
+        @SuppressWarnings("unchecked")
+        public T[] notNullExecute(final T[][] object, final ExecCtx ctx) throws Exception {
             
             final List<T> result = new ArrayList<T>();
             for (final T[] element : object) {
                 result.addAll(Arrays.asList(element));
             }
-            return fromList(result);
+            final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
+            return result.toArray(array);
             
         }
-
-        abstract X fromList(final List<T> object);
 
     }
     
 
     
-    static abstract class FlattenCollectionOfCollections<T, X extends Collection<T>, Y extends Collection<? extends Collection<T>>> extends AbstractNotNullFunc<X, Y> {
+    public static final class FlattenArrayOfLists<T> extends AbstractNotNullFunc<T[], List<T>[]> {
 
-        public FlattenCollectionOfCollections() {
+        private final Type<? super T> type; 
+
+        public FlattenArrayOfLists(final Type<? super T> type) {
             super();
+            Validate.notNull(type, "A type representing the collection elements must be specified");
+            this.type = type;
         }
 
         @Override
-        public X notNullExecute(final Y object, final ExecCtx ctx) throws Exception {
+        @SuppressWarnings("unchecked")
+        public T[] notNullExecute(final List<T>[] object, final ExecCtx ctx) throws Exception {
             
             final List<T> result = new ArrayList<T>();
-            for (final Collection<T> element : object) {
+            for (final List<T> element : object) {
                 result.addAll(element);
             }
-            return fromList(result);
+            final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
+            return result.toArray(array);
             
         }
 
-        abstract X fromList(final List<T> object);
-
     }
 
+    
+
+    
+    public static final class FlattenArrayOfSets<T> extends AbstractNotNullFunc<T[], Set<T>[]> {
+
+        private final Type<? super T> type; 
+
+        public FlattenArrayOfSets(final Type<? super T> type) {
+            super();
+            Validate.notNull(type, "A type representing the collection elements must be specified");
+            this.type = type;
+        }
+
+        @Override
+        @SuppressWarnings("unchecked")
+        public T[] notNullExecute(final Set<T>[] object, final ExecCtx ctx) throws Exception {
+            
+            final List<T> result = new ArrayList<T>();
+            for (final Set<T> element : object) {
+                result.addAll(element);
+            }
+            final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
+            return result.toArray(array);
+            
+        }
+
+    }
     
     
     
