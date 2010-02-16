@@ -11,6 +11,8 @@ import java.util.List;
 
 import junit.framework.TestCase;
 
+import org.apache.commons.lang.ArrayUtils;
+import org.javaruntype.type.Types;
 import org.junit.Before;
 import org.junit.Test;
 import org.op4j.functions.MathBigDecimal;
@@ -26,6 +28,7 @@ import org.op4j.functions.converters.ToFloat;
 import org.op4j.functions.converters.ToInteger;
 import org.op4j.functions.converters.ToLong;
 import org.op4j.functions.converters.ToShort;
+import org.op4j.test.auto.TestOperation;
 
 public class MathFuncsTest extends TestCase {
 
@@ -363,5 +366,38 @@ public class MathFuncsTest extends TestCase {
 			index++;
 		}
 		System.out.println("Raise: " + result);
+	}
+	
+	@Test
+	public void test() {
+		List<BigDecimal> bigDecimalList = Arrays.asList(BigDecimal.valueOf(34), null, BigDecimal.valueOf(-1256565646.84), 
+				BigDecimal.valueOf(3.89894), BigDecimal.valueOf(-67.6765646456460089), 
+				BigDecimal.valueOf(34.567575), null);
+		List<BigInteger> bigIntegerList = Arrays.asList(BigInteger.valueOf(34), null, BigInteger.valueOf(-1256565646), 
+				BigInteger.valueOf(389894), BigInteger.valueOf(-676765649), 
+				BigInteger.valueOf(34567575), null);
+		List<Double> doubleList = Arrays.asList(Double.valueOf(34), null, Double.valueOf(34), Double.valueOf(3.4), Double.valueOf(-34.78), 
+				null, Double.valueOf(3434343434.675676465));
+		List<Float> floatList = Arrays.asList(Float.valueOf(34), null, Float.valueOf(34), Float.valueOf(34), Float.valueOf(-3478), 
+				null, Float.valueOf(343434343));
+		List<Integer> integerList = Arrays.asList(34, 76, -12, 0, 67, null);
+		List<Long> longList = Arrays.asList(Long.valueOf(34), null, Long.valueOf(34), Long.valueOf(3774), Long.valueOf(-34078), 
+				null, Long.valueOf(343434345));
+		List<Short> shortList = Arrays.asList(Short.valueOf("34"), null, Short.valueOf("34"), 
+				Short.valueOf("304"), Short.valueOf("-3478"), 
+				null, Short.valueOf("3434"));
+		
+		List<TestOperation> testOperations = new ArrayList<TestOperation>();
+		testOperations.add(new TestOperation("add", new Object[] {BigDecimal.valueOf(2)}));		
+		testOperations.add(new TestOperation("forEach"));
+		testOperations.add(new TestOperation("exec", new Object[] {MathBigDecimal.divideBy(BigDecimal.valueOf(23.3),
+				new MathContext(4, RoundingMode.HALF_UP))}));
+		testOperations.add(new TestOperation("endFor"));
+		testOperations.add(new TestOperation("get"));
+		Object result = org.op4j.test.auto.Test.testOnList(bigDecimalList, testOperations);
+		System.out.println("Result onList: " + result);
+		result = org.op4j.test.auto.Test.testOnArrayOf(Types.BIG_DECIMAL, bigDecimalList.toArray(new BigDecimal[]{}), 
+				testOperations);
+		System.out.println("Result onArray: " + ArrayUtils.toString((Object[])result));
 	}
 }
