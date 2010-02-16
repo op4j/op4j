@@ -60,32 +60,8 @@ public final class ExecutionTarget extends Target {
             case TYPE_ARRAY:
                 normalisedObject = NormalisationUtils.normaliseArray((Object[])object, targetNormalisation.getArrayComponentClass());
                 break;
-            case TYPE_ARRAY_OF_ARRAY:
-                normalisedObject = NormalisationUtils.normaliseArrayOfArray((Object[][])object, targetNormalisation.getArrayComponentClass());
-                break;
-            case TYPE_ARRAY_OF_LIST:
-                normalisedObject = NormalisationUtils.normaliseArrayOfList((List<Object>[])object);
-                break;
-            case TYPE_ARRAY_OF_MAP:
-                normalisedObject = NormalisationUtils.normaliseArrayOfMap((Map<Object,Object>[])object);
-                break;
-            case TYPE_ARRAY_OF_SET:
-                normalisedObject = NormalisationUtils.normaliseArrayOfSet((Set<Object>[])object);
-                break;
             case TYPE_LIST:
                 normalisedObject = NormalisationUtils.normaliseList((List<Object>)object);
-                break;
-            case TYPE_LIST_OF_ARRAY:
-                normalisedObject = NormalisationUtils.normaliseListOfArray((List<Object[]>)object, targetNormalisation.getArrayComponentClass());
-                break;
-            case TYPE_LIST_OF_LIST:
-                normalisedObject = NormalisationUtils.normaliseListOfList((List<List<Object>>)object);
-                break;
-            case TYPE_LIST_OF_MAP:
-                normalisedObject = NormalisationUtils.normaliseListOfMap((List<Map<Object,Object>>)object);
-                break;
-            case TYPE_LIST_OF_SET:
-                normalisedObject = NormalisationUtils.normaliseListOfSet((List<Set<Object>>)object);
                 break;
             case TYPE_MAP:
                 normalisedObject = NormalisationUtils.normaliseMap((Map<Object,Object>)object);
@@ -99,9 +75,6 @@ public final class ExecutionTarget extends Target {
             case TYPE_MAPENTRY_OF_LIST:
                 normalisedObject = NormalisationUtils.normaliseMapEntryOfList((Map.Entry<Object,List<Object>>)object);
                 break;
-            case TYPE_MAPENTRY_OF_MAP:
-                normalisedObject = NormalisationUtils.normaliseMapEntryOfMap((Map.Entry<Object,Map<Object,Object>>)object);
-                break;
             case TYPE_MAPENTRY_OF_SET:
                 normalisedObject = NormalisationUtils.normaliseMapEntryOfSet((Map.Entry<Object,Set<Object>>)object);
                 break;
@@ -111,26 +84,11 @@ public final class ExecutionTarget extends Target {
             case TYPE_MAP_OF_LIST:
                 normalisedObject = NormalisationUtils.normaliseMapOfList((Map<Object,List<Object>>)object);
                 break;
-            case TYPE_MAP_OF_MAP:
-                normalisedObject = NormalisationUtils.normaliseMapOfMap((Map<Object,Map<Object,Object>>)object);
-                break;
             case TYPE_MAP_OF_SET:
                 normalisedObject = NormalisationUtils.normaliseMapOfSet((Map<Object,Set<Object>>)object);
                 break;
             case TYPE_SET:
                 normalisedObject = NormalisationUtils.normaliseSet((Set<Object>)object);
-                break;
-            case TYPE_SET_OF_ARRAY:
-                normalisedObject = NormalisationUtils.normaliseSetOfArray((Set<Object[]>)object, targetNormalisation.getArrayComponentClass());
-                break;
-            case TYPE_SET_OF_LIST:
-                normalisedObject = NormalisationUtils.normaliseSetOfList((Set<List<Object>>)object);
-                break;
-            case TYPE_SET_OF_MAP:
-                normalisedObject = NormalisationUtils.normaliseSetOfMap((Set<Map<Object,Object>>)object);
-                break;
-            case TYPE_SET_OF_SET:
-                normalisedObject = NormalisationUtils.normaliseSetOfSet((Set<Set<Object>>)object);
                 break;
         }
         

@@ -67,41 +67,9 @@ final class ExecutionTargetExecuteIfNotNullOperation implements ExecutionTargetO
                     NormalisationUtils.checkIsArray(Types.OBJECT, result);
                     result = NormalisationUtils.normaliseArray((Object[])result, this.normalisation.getArrayComponentClass());
                     break;
-                case TYPE_ARRAY_OF_ARRAY:
-                    NormalisationUtils.checkIsArrayOfArray(Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseArrayOfArray((Object[][])result, this.normalisation.getArrayComponentClass());
-                    break;
-                case TYPE_ARRAY_OF_LIST:
-                    NormalisationUtils.checkIsArrayOfList(Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseArrayOfList((List<Object>[])result);
-                    break;
-                case TYPE_ARRAY_OF_MAP:
-                    NormalisationUtils.checkIsArrayOfMap(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseArrayOfMap((Map<Object,Object>[])result);
-                    break;
-                case TYPE_ARRAY_OF_SET:
-                    NormalisationUtils.checkIsArrayOfSet(Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseArrayOfSet((Set<Object>[])result);
-                    break;
                 case TYPE_LIST:
                     NormalisationUtils.checkIsList(Types.OBJECT, result);
                     result = NormalisationUtils.normaliseList((List<Object>)result);
-                    break;
-                case TYPE_LIST_OF_ARRAY:
-                    NormalisationUtils.checkIsListOfArray(Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseListOfArray((List<Object[]>)result, this.normalisation.getArrayComponentClass());
-                    break;
-                case TYPE_LIST_OF_LIST:
-                    NormalisationUtils.checkIsListOfList(Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseListOfList((List<List<Object>>)result);
-                    break;
-                case TYPE_LIST_OF_MAP:
-                    NormalisationUtils.checkIsListOfMap(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseListOfMap((List<Map<Object,Object>>)result);
-                    break;
-                case TYPE_LIST_OF_SET:
-                    NormalisationUtils.checkIsListOfSet(Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseListOfSet((List<Set<Object>>)result);
                     break;
                 case TYPE_MAP:
                     NormalisationUtils.checkIsMap(Types.OBJECT, Types.OBJECT, result);
@@ -119,10 +87,6 @@ final class ExecutionTargetExecuteIfNotNullOperation implements ExecutionTargetO
                     NormalisationUtils.checkIsMapEntryOfList(Types.OBJECT, Types.OBJECT, result);
                     result = NormalisationUtils.normaliseMapEntryOfList((Map.Entry<Object, List<Object>>)result);
                     break;
-                case TYPE_MAPENTRY_OF_MAP:
-                    NormalisationUtils.checkIsMapEntryOfMap(Types.OBJECT, Types.OBJECT, Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseMapEntryOfMap((Map.Entry<Object, Map<Object, Object>>)result);
-                    break;
                 case TYPE_MAPENTRY_OF_SET:
                     NormalisationUtils.checkIsMapEntryOfSet(Types.OBJECT, Types.OBJECT, result);
                     result = NormalisationUtils.normaliseMapEntryOfSet((Map.Entry<Object, Set<Object>>)result);
@@ -135,10 +99,6 @@ final class ExecutionTargetExecuteIfNotNullOperation implements ExecutionTargetO
                     NormalisationUtils.checkIsMapOfList(Types.OBJECT, Types.OBJECT, result);
                     result = NormalisationUtils.normaliseMapOfList((Map<Object, List<Object>>)result);
                     break;
-                case TYPE_MAP_OF_MAP:
-                    NormalisationUtils.checkIsMapOfMap(Types.OBJECT, Types.OBJECT, Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseMapOfMap((Map<Object, Map<Object, Object>>)result);
-                    break;
                 case TYPE_MAP_OF_SET:
                     NormalisationUtils.checkIsMapOfSet(Types.OBJECT, Types.OBJECT, result);
                     result = NormalisationUtils.normaliseMapOfSet((Map<Object, Set<Object>>)result);
@@ -146,22 +106,6 @@ final class ExecutionTargetExecuteIfNotNullOperation implements ExecutionTargetO
                 case TYPE_SET:
                     NormalisationUtils.checkIsSet(Types.OBJECT, result);
                     result = NormalisationUtils.normaliseSet((Set<Object>)result);
-                    break;
-                case TYPE_SET_OF_ARRAY:
-                    NormalisationUtils.checkIsSetOfArray(Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseSetOfArray((Set<Object[]>)result, this.normalisation.getArrayComponentClass());
-                    break;
-                case TYPE_SET_OF_LIST:
-                    NormalisationUtils.checkIsSetOfList(Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseSetOfList((Set<List<Object>>)result);
-                    break;
-                case TYPE_SET_OF_MAP:
-                    NormalisationUtils.checkIsSetOfMap(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseSetOfMap((Set<Map<Object, Object>>)result);
-                    break;
-                case TYPE_SET_OF_SET:
-                    NormalisationUtils.checkIsSetOfSet(Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseSetOfSet((Set<Set<Object>>)result);
                     break;
                 case TYPE_NONE:
             }
