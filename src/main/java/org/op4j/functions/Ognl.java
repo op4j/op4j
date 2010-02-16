@@ -22,23 +22,40 @@ package org.op4j.functions;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
+import ognl.OgnlException;
+
+import org.apache.commons.collections.map.LRUMap;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.exceptions.ExecutionException;
 import org.op4j.util.VarArgsUtil;
 
 
-
-/**
- * 
- * @since 1.0
- * 
+/** 
  * @author Daniel Fern&aacute;ndez
  *
+ * @since 1.0
  */
 public final class Ognl<R,T> implements IFunction<R,T> {
+    
+    @SuppressWarnings("unchecked")
+    private static final Map<String,Object> parsedExpressionsByExpression =
+        Collections.synchronizedMap(new LRUMap(100));
+    
+    
+    public static final String TARGET_VARIABLE_NAME = "target";
+    public static final String PARAM_VARIABLE_NAME = "param";
+    public static final String CURRENT_INDEX_VARIABLE_NAME = "index";
+    public static final String INDEXES_VARIABLE_NAME = "indexes";
+    public static final String ITERATION_LEVEL_VARIABLE_NAME = "iterationLevel";
+
+
     
     
     
@@ -125,7 +142,52 @@ public final class Ognl<R,T> implements IFunction<R,T> {
     
     
     public R execute(final T input, final ExecCtx ctx) throws Exception {
-        return OgnlExpressionUtil.evalOgnlExpression(this.resultType, this.ognlExpression, input, this.parameters, ctx);
+        return evalOgnlExpression(this.resultType, this.ognlExpression, input, this.parameters, ctx);
+    }
+    
+
+
+
+
+    
+    
+    @SuppressWarnings("unchecked")
+    public static <X> X evalOgnlExpression(
+            final Type<X> resultType, final String ognlExpression, final Object targetObject, final Object parametersObject, 
+            final ExecCtx execCtx) {
+        
+        Object parsedExpression = parsedExpressionsByExpression.get(ognlExpression);
+        
+        final Class<? super X> resultClass = resultType.getRawClass();
+        
+        if (parsedExpression == null) {
+            try {
+                parsedExpression = ognl.Ognl.parseExpression(ognlExpression);
+            } catch (OgnlException e) {
+                throw new ExecutionException(e);
+            }
+            parsedExpressionsByExpression.put(ognlExpression,parsedExpression);
+        }
+        
+        try {
+            final Map<String,Object> ctx = new HashMap<String,Object>();
+            ctx.put(TARGET_VARIABLE_NAME, targetObject);
+            ctx.put(PARAM_VARIABLE_NAME, parametersObject);
+            ctx.put(CURRENT_INDEX_VARIABLE_NAME, execCtx.getCurrentIndex());
+            ctx.put(INDEXES_VARIABLE_NAME, new Integer[] {execCtx.getLevel0Index(), execCtx.getLevel1Index(), execCtx.getLevel2Index(), execCtx.getLevel3Index(), execCtx.getLevel4Index()});
+            ctx.put(ITERATION_LEVEL_VARIABLE_NAME, execCtx.getIterationLevel());
+            final Object result = ognl.Ognl.getValue(parsedExpression, ctx, targetObject);
+            if (result != null && resultClass != null && !Object.class.equals(resultClass)) {
+                if (!(resultClass.isAssignableFrom(result.getClass()))) {
+                    throw new IllegalStateException("Result of expression \"" + ognlExpression + "\" is not " +
+                            "assignable from class " + resultClass.getName());
+                }
+            }
+            return (X) result;
+        } catch (OgnlException e) {
+            throw new ExecutionException(e);
+        }
+        
     }
     
     
