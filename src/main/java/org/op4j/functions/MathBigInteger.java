@@ -93,7 +93,7 @@ public final class MathBigInteger {
 		return new Divide(divisor);
     }
 	
-	public static final Module module(int module) {
+	public static final Module module(BigInteger module) {
 		return new Module(module);
     }	
 	
@@ -199,7 +199,7 @@ public final class MathBigInteger {
 		
 		@Override
 		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
-			return BigInteger.valueOf(Math.abs(input.longValue()));
+			return input.abs();
 		}
 	}
 	
@@ -265,16 +265,16 @@ public final class MathBigInteger {
 	
 	public static final class Module extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
 
-		private int module;
+		private BigInteger module;
 		
-		public Module(int module) {
+		public Module(BigInteger module) {
 			super();
 			this.module = module;
 		}
 		
 		@Override
 		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
-			return BigInteger.valueOf(input.longValue() % this.module);
+			return input.mod(this.module);
 		}	
 	}
 	

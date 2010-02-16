@@ -7,6 +7,7 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import junit.framework.TestCase;
@@ -226,6 +227,45 @@ public class MathFuncsTest extends TestCase {
 			index++;
 		}
 		System.out.println("Raise: " + result);
+		
+		
+		List<BigDecimal> bigDecimalList = Arrays.asList(BigDecimal.valueOf(34), null, BigDecimal.valueOf(-1256565646.84), 
+				BigDecimal.valueOf(3.89894), BigDecimal.valueOf(-67.6765646456460089), 
+				BigDecimal.valueOf(34.567575), null);
+		
+		List<TestOperation> testOperations = new ArrayList<TestOperation>();
+		testOperations.add(new TestOperation("add", new Object[] {BigDecimal.valueOf(2)}));		
+		testOperations.add(new TestOperation("forEach"));
+		testOperations.add(new TestOperation("exec", new Object[] {MathBigDecimal.divideBy(BigDecimal.valueOf(23.3),
+				new MathContext(4, RoundingMode.HALF_UP))}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathBigDecimal.raiseTo(3)}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathBigDecimal.subtract(BigDecimal.valueOf(5))}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathBigDecimal.abs()}));
+		testOperations.add(new TestOperation("endFor"));
+		testOperations.add(new TestOperation("get"));
+		Object aResult = org.op4j.test.auto.Test.testOnList(bigDecimalList, testOperations);
+		index = 0;
+		for (BigDecimal aNumber : ((Iterable<BigDecimal>)aResult)) {
+			BigDecimal bNumber = null;
+			if (bigDecimalList.size() == index) {
+				bNumber = BigDecimal.valueOf(2).divide(BigDecimal.valueOf(23.3),
+						new MathContext(4, RoundingMode.HALF_UP)).pow(3).subtract(BigDecimal.valueOf(5)).abs();
+			} else {
+				if (bigDecimalList.get(index) != null) {
+					bNumber = bigDecimalList.get(index).divide(BigDecimal.valueOf(23.3),
+							new MathContext(4, RoundingMode.HALF_UP)).pow(3).subtract(BigDecimal.valueOf(5)).abs();
+				}			
+			}
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Result onList: " + result);
+		aResult = org.op4j.test.auto.Test.testOnArrayOf(Types.BIG_DECIMAL, bigDecimalList.toArray(new BigDecimal[]{}), 
+				testOperations);
+		System.out.println("Result onArray: " + ArrayUtils.toString((Object[])aResult));
+		aResult = org.op4j.test.auto.Test.testOnSet(new LinkedHashSet<BigDecimal>(bigDecimalList), 
+				testOperations);
+		System.out.println("Result onSet: " + result);			
 	}
 	
 	@Test
@@ -233,12 +273,12 @@ public class MathFuncsTest extends TestCase {
 		
 		// Module
 		List<BigInteger> result = Op.onList(this.data).forEach().exec(ToBigInteger.fromNumber())
-			.exec(MathBigInteger.module(3)).get();
+			.exec(MathBigInteger.module(BigInteger.valueOf(3))).get();
 		int index = 0;
 		for(BigInteger aNumber : result) {
 			BigInteger bNumber = null;
 			if (this.data.get(index) != null) {
-				bNumber = BigInteger.valueOf(this.data.get(index).longValue() % 3);
+				bNumber = BigDecimal.valueOf(this.data.get(index).doubleValue()).toBigInteger().mod(BigInteger.valueOf(3));
 			}			
 			assertEquals(aNumber, bNumber);	
 			index++;
@@ -370,9 +410,7 @@ public class MathFuncsTest extends TestCase {
 	
 	@Test
 	public void test() {
-		List<BigDecimal> bigDecimalList = Arrays.asList(BigDecimal.valueOf(34), null, BigDecimal.valueOf(-1256565646.84), 
-				BigDecimal.valueOf(3.89894), BigDecimal.valueOf(-67.6765646456460089), 
-				BigDecimal.valueOf(34.567575), null);
+		
 		List<BigInteger> bigIntegerList = Arrays.asList(BigInteger.valueOf(34), null, BigInteger.valueOf(-1256565646), 
 				BigInteger.valueOf(389894), BigInteger.valueOf(-676765649), 
 				BigInteger.valueOf(34567575), null);
@@ -387,17 +425,6 @@ public class MathFuncsTest extends TestCase {
 				Short.valueOf("304"), Short.valueOf("-3478"), 
 				null, Short.valueOf("3434"));
 		
-		List<TestOperation> testOperations = new ArrayList<TestOperation>();
-		testOperations.add(new TestOperation("add", new Object[] {BigDecimal.valueOf(2)}));		
-		testOperations.add(new TestOperation("forEach"));
-		testOperations.add(new TestOperation("exec", new Object[] {MathBigDecimal.divideBy(BigDecimal.valueOf(23.3),
-				new MathContext(4, RoundingMode.HALF_UP))}));
-		testOperations.add(new TestOperation("endFor"));
-		testOperations.add(new TestOperation("get"));
-		Object result = org.op4j.test.auto.Test.testOnList(bigDecimalList, testOperations);
-		System.out.println("Result onList: " + result);
-		result = org.op4j.test.auto.Test.testOnArrayOf(Types.BIG_DECIMAL, bigDecimalList.toArray(new BigDecimal[]{}), 
-				testOperations);
-		System.out.println("Result onArray: " + ArrayUtils.toString((Object[])result));
+		
 	}
 }

@@ -280,7 +280,7 @@ public final class MathBigDecimal {
 		
 		@Override
 		public BigDecimal nullAsNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
-			return BigDecimal.valueOf(Math.abs(input.doubleValue()));
+			return input.abs();
 		}
 	}
 	
