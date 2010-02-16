@@ -37,15 +37,15 @@ import org.op4j.functions.ExecCtx;
  */
 public final class MathDoubleFuncs {
 
-	private static Max MAX_FUNC = new Max();
+	private final static Max MAX_FUNC = new Max();
 	
-	private static Min MIN_FUNC = new Min();
+	private final static Min MIN_FUNC = new Min();
 	
-	private static Sum SUM_FUNC = new Sum();
+	private final static Sum SUM_FUNC = new Sum();
 	
-	private static Avg AVG_FUNC = new Avg();
+	private final static Avg AVG_FUNC = new Avg();
 	
-	private static Abs ABS_FUNC = new Abs();
+	private final static Abs ABS_FUNC = new Abs();
 	
 	
 	private MathDoubleFuncs() {
@@ -208,22 +208,26 @@ public final class MathDoubleFuncs {
 	
 	public static final class Avg extends AbstractNotNullFunc<Double, Iterable<Double>> {
 
-		private RoundingMode roundingMode = null;
-		private MathContext mathContext = null;
+		private final RoundingMode roundingMode;
+		private final MathContext mathContext;
 		
 		public Avg() {
 			super();
+			this.roundingMode = null;
+			this.mathContext = null;
 		}
 
 		public Avg(RoundingMode roundingMode) {
 			super();
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
-			this.roundingMode = roundingMode;			
+			this.roundingMode = roundingMode;	
+			this.mathContext = null;
 		}
 		
 		public Avg(MathContext mathContext) {
 			super();
 			Validate.notNull(mathContext, "MathContext can't be null");
+			this.roundingMode = null;
 			this.mathContext = mathContext;
 		}
 		
@@ -250,12 +254,13 @@ public final class MathDoubleFuncs {
 	
 	public static final class Round extends AbstractNullAsNullFunc<Double, Double> {
 
-		private MathContext mathContext = null;
-		private RoundingMode roundingMode = null;
+		private final MathContext mathContext;
+		private final RoundingMode roundingMode;
 		
 		public Round(RoundingMode roundingMode) {
 			super();
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
+			this.mathContext = null;
 			this.roundingMode = roundingMode;
 		}
 		
@@ -263,6 +268,7 @@ public final class MathDoubleFuncs {
 			super();
 			Validate.notNull(mathContext, "MathContext can't be null");
 			this.mathContext = mathContext;
+			this.roundingMode = null;
 		}
 		
 		@Override
@@ -288,7 +294,7 @@ public final class MathDoubleFuncs {
 	
 	public static final class Add extends AbstractNullAsNullFunc<Double, Double> {
 
-		private Double add;
+		private final Double add;
 		
 		public Add(Double add) {
 			super();
@@ -299,15 +305,14 @@ public final class MathDoubleFuncs {
 		@Override
 		public Double nullAsNullExecute(final Double input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.doubleValue());
-			result = result.add(BigDecimal.valueOf(this.add.doubleValue()));
-				
+			result = result.add(BigDecimal.valueOf(this.add.doubleValue()));				
 			return Double.valueOf(result.doubleValue());
 		}	
 	}
 	
 	public static final class Subtract extends AbstractNullAsNullFunc<Double, Double> {
 
-		private Double subtract;
+		private final Double subtract;
 		
 		public Subtract(Double subtract) {
 			super();
@@ -319,22 +324,23 @@ public final class MathDoubleFuncs {
 		@Override
 		public Double nullAsNullExecute(final Double input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = BigDecimal.valueOf(input.doubleValue());
-			result = result.subtract(BigDecimal.valueOf(this.subtract.doubleValue()));
-				
+			result = result.subtract(BigDecimal.valueOf(this.subtract.doubleValue()));			
 			return Double.valueOf(result.doubleValue());
 		}		
 	}
 	
 	public static final class Divide extends AbstractNullAsNullFunc<Double, Double> {
 
-		private Double divisor;
-		private RoundingMode roundingMode = null;
-		private MathContext mathContext = null;
+		private final Double divisor;
+		private final RoundingMode roundingMode;
+		private final MathContext mathContext;
 		
 		public Divide(Double divisor) {
 			super();
 			Validate.notNull(divisor, "Divisor can't be null");
 			this.divisor = divisor;
+			this.roundingMode = null;
+			this.mathContext = null;
 		}
 		
 		public Divide(Double divisor, RoundingMode roundingMode) {
@@ -343,6 +349,7 @@ public final class MathDoubleFuncs {
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
 			this.divisor = divisor;
 			this.roundingMode = roundingMode;
+			this.mathContext = null;
 		}
 		
 		public Divide(Double divisor, MathContext mathContext) {
@@ -350,6 +357,7 @@ public final class MathDoubleFuncs {
 			Validate.notNull(divisor, "Divisor can't be null");
 			Validate.notNull(mathContext, "MathContext can't be null");
 			this.divisor = divisor;
+			this.roundingMode = null;
 			this.mathContext = mathContext;
 		}
 
@@ -371,7 +379,7 @@ public final class MathDoubleFuncs {
 	
 	public static final class Module extends AbstractNullAsNullFunc<Double, Double> {
 
-		private int module;
+		private final int module;
 		
 		public Module(int module) {
 			super();
@@ -386,14 +394,16 @@ public final class MathDoubleFuncs {
 	
 	public static final class Multiply extends AbstractNullAsNullFunc<Double, Double> {
 
-		private Double multiplicand;
-		private MathContext mathContext = null;
-		private RoundingMode roundingMode = null;
+		private final Double multiplicand;
+		private final MathContext mathContext;
+		private final RoundingMode roundingMode;
 		
 		public Multiply(Double multiplicand) {
 			super();
 			Validate.notNull(multiplicand, "Multiplicand can't be null");
 			this.multiplicand = multiplicand;
+			this.mathContext = null;
+			this.roundingMode = null;
 		}
 		
 		public Multiply(Double multiplicand, RoundingMode roundingMode) {
@@ -401,6 +411,7 @@ public final class MathDoubleFuncs {
 			Validate.notNull(multiplicand, "Multiplicand can't be null");
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
 			this.multiplicand = multiplicand;
+			this.mathContext = null;
 			this.roundingMode = roundingMode;
 		}
 		
@@ -410,6 +421,7 @@ public final class MathDoubleFuncs {
 			Validate.notNull(mathContext, "MathContext can't be null");
 			this.multiplicand = multiplicand;
 			this.mathContext = mathContext;
+			this.roundingMode = null;
 		}
 
 		@Override
@@ -429,19 +441,22 @@ public final class MathDoubleFuncs {
 	
 	public static final class Raise extends AbstractNullAsNullFunc<Double, Double> {
 
-		private int power;
-		private MathContext mathContext = null;
-		private RoundingMode roundingMode = null;
+		private final int power;
+		private final MathContext mathContext;
+		private final RoundingMode roundingMode;
 		
 		public Raise(int power) {
 			super();
 			this.power = power;
+			this.mathContext = null;
+			this.roundingMode = null;
 		}
 		
 		public Raise(int power, RoundingMode roundingMode) {
 			super();
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
 			this.power = power;
+			this.mathContext = null;
 			this.roundingMode = roundingMode;
 		}
 		
@@ -450,6 +465,7 @@ public final class MathDoubleFuncs {
 			Validate.notNull(mathContext, "MathContext can't be null");
 			this.power = power;
 			this.mathContext = mathContext;
+			this.roundingMode = null;
 		}
 
 		@Override
@@ -466,6 +482,4 @@ public final class MathDoubleFuncs {
 			return Double.valueOf(result.doubleValue());
 		}		
 	}
-	
-	
 }

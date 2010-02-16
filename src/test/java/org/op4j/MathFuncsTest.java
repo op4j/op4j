@@ -31,6 +31,7 @@ import org.op4j.functions.math.MathLongFuncs;
 import org.op4j.functions.math.MathShortFuncs;
 import org.op4j.test.auto.TestOperation;
 
+@SuppressWarnings (value = "cast")
 public class MathFuncsTest extends TestCase {
 
 	private List<Double> data;
@@ -188,12 +189,12 @@ public class MathFuncsTest extends TestCase {
 		
 		// Module
 		List<BigDecimal> result = Op.onList(this.data).forEach().exec(ToBigDecimal.fromNumber())
-			.exec(MathBigDecimalFuncs.module(3)).get();
+			.exec(MathBigDecimalFuncs.remainder(BigDecimal.valueOf(3))).get();
 		int index = 0;
 		for(BigDecimal aNumber : result) {
 			BigDecimal bNumber = null;
 			if (this.data.get(index) != null) {
-				bNumber = BigDecimal.valueOf(this.data.get(index).doubleValue() % 3);
+				bNumber = BigDecimal.valueOf(this.data.get(index).doubleValue()).remainder(BigDecimal.valueOf(3));
 			}			
 			assertEquals(aNumber, bNumber);	
 			index++;
@@ -312,6 +313,44 @@ public class MathFuncsTest extends TestCase {
 			index++;
 		}
 		System.out.println("Raise: " + result);
+		
+		
+		List<BigInteger> bigIntegerList = Arrays.asList(BigInteger.valueOf(34), null, BigInteger.valueOf(-1256565646), 
+				BigInteger.valueOf(389894), BigInteger.valueOf(-676765649), 
+				BigInteger.valueOf(34567575), null);
+		
+		List<TestOperation> testOperations = new ArrayList<TestOperation>();
+		testOperations.add(new TestOperation("add", new Object[] {BigInteger.valueOf(2)}));		
+		testOperations.add(new TestOperation("forEach"));
+		testOperations.add(new TestOperation("exec", new Object[] {MathBigIntegerFuncs.divideBy(BigInteger.valueOf(23))}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathBigIntegerFuncs.raiseTo(3)}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathBigIntegerFuncs.subtract(BigInteger.valueOf(5))}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathBigIntegerFuncs.abs()}));
+		testOperations.add(new TestOperation("endFor"));
+		testOperations.add(new TestOperation("get"));
+		Object aResult = org.op4j.test.auto.Test.testOnList(bigIntegerList, testOperations);
+		index = 0;
+		for (BigInteger aNumber : ((Iterable<BigInteger>)aResult)) {
+			BigInteger bNumber = null;
+			if (bigIntegerList.size() == index) {
+				bNumber = BigInteger.valueOf(2).divide(BigInteger.valueOf(23))
+				.pow(3).subtract(BigInteger.valueOf(5)).abs();
+			} else {
+				if (bigIntegerList.get(index) != null) {
+					bNumber = bigIntegerList.get(index).divide(BigInteger.valueOf(23))
+						.pow(3).subtract(BigInteger.valueOf(5)).abs();
+				}			
+			}
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Result onList: " + result);
+		aResult = org.op4j.test.auto.Test.testOnArrayOf(Types.BIG_INTEGER, bigIntegerList.toArray(new BigInteger[]{}), 
+				testOperations);
+		System.out.println("Result onArray: " + ArrayUtils.toString((Object[])aResult));
+		aResult = org.op4j.test.auto.Test.testOnSet(new LinkedHashSet<BigInteger>(bigIntegerList), 
+				testOperations);
+		System.out.println("Result onSet: " + result);		
 	}
 	
 	@Test
@@ -411,9 +450,6 @@ public class MathFuncsTest extends TestCase {
 	@Test
 	public void test() {
 		
-		List<BigInteger> bigIntegerList = Arrays.asList(BigInteger.valueOf(34), null, BigInteger.valueOf(-1256565646), 
-				BigInteger.valueOf(389894), BigInteger.valueOf(-676765649), 
-				BigInteger.valueOf(34567575), null);
 		List<Double> doubleList = Arrays.asList(Double.valueOf(34), null, Double.valueOf(34), Double.valueOf(3.4), Double.valueOf(-34.78), 
 				null, Double.valueOf(3434343434.675676465));
 		List<Float> floatList = Arrays.asList(Float.valueOf(34), null, Float.valueOf(34), Float.valueOf(34), Float.valueOf(-3478), 

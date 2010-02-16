@@ -35,15 +35,15 @@ import org.op4j.functions.ExecCtx;
  */
 public final class MathBigIntegerFuncs {
 
-	private static Max MAX_FUNC = new Max();
+	private final static Max MAX_FUNC = new Max();
 	
-	private static Min MIN_FUNC = new Min();
+	private final static Min MIN_FUNC = new Min();
 	
-	private static Sum SUM_FUNC = new Sum();
+	private final static Sum SUM_FUNC = new Sum();
 	
-	private static Avg AVG_FUNC = new Avg();
+	private final static Avg AVG_FUNC = new Avg();
 	
-	private static Abs ABS_FUNC = new Abs();
+	private final static Abs ABS_FUNC = new Abs();
 	
 	
 	private MathBigIntegerFuncs() {
@@ -98,7 +98,11 @@ public final class MathBigIntegerFuncs {
 	
 	public static final Module module(BigInteger module) {
 		return new Module(module);
-    }	
+    }
+	
+	public static final Remainder remainder(BigInteger module) {
+		return new Remainder(module);
+    }
 	
 	public static final Multiply multiplyBy(BigInteger multiplicand) {
 		return new Multiply(multiplicand);
@@ -208,7 +212,7 @@ public final class MathBigIntegerFuncs {
 	
 	public static final class Add extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
 
-		private BigInteger add;
+		private final BigInteger add;
 		
 		public Add(BigInteger add) {
 			super();
@@ -227,7 +231,7 @@ public final class MathBigIntegerFuncs {
 	
 	public static final class Subtract extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
 
-		private BigInteger subtract;
+		private final BigInteger subtract;
 		
 		public Subtract(BigInteger subtract) {
 			super();
@@ -247,7 +251,7 @@ public final class MathBigIntegerFuncs {
 	
 	public static final class Divide extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
 
-		private BigInteger divisor;
+		private final BigInteger divisor;
 		
 		public Divide(BigInteger divisor) {
 			super();
@@ -268,7 +272,7 @@ public final class MathBigIntegerFuncs {
 	
 	public static final class Module extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
 
-		private BigInteger module;
+		private final BigInteger module;
 		
 		public Module(BigInteger module) {
 			super();
@@ -281,9 +285,24 @@ public final class MathBigIntegerFuncs {
 		}	
 	}
 	
+	public static final class Remainder extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
+
+		private final BigInteger divisor;
+		
+		public Remainder(BigInteger module) {
+			super();
+			this.divisor = module;
+		}
+		
+		@Override
+		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
+			return input.remainder(this.divisor);
+		}	
+	}
+	
 	public static final class Multiply extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
 
-		private BigInteger multiplicand;
+		private final BigInteger multiplicand;
 		
 		public Multiply(BigInteger multiplicand) {
 			super();
@@ -293,17 +312,15 @@ public final class MathBigIntegerFuncs {
 		
 		@Override
 		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
-			BigInteger result = input;
-			
-			result = result.multiply(this.multiplicand);	
-			
+			BigInteger result = input;			
+			result = result.multiply(this.multiplicand);			
 			return result;
 		}	
 	}
 	
 	public static final class Raise extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
 
-		private int power;
+		private final int power;
 		
 		public Raise(int power) {
 			super();
@@ -312,10 +329,8 @@ public final class MathBigIntegerFuncs {
 		
 		@Override
 		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
-			BigInteger result = input;
-			
-			result = result.pow(this.power);	
-			
+			BigInteger result = input;			
+			result = result.pow(this.power);			
 			return result;
 		}		
 	}

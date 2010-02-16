@@ -37,15 +37,15 @@ import org.op4j.functions.ExecCtx;
  */
 public final class MathShortFuncs {
 
-	private static Max MAX_FUNC = new Max();
+	private final static Max MAX_FUNC = new Max();
 	
-	private static Min MIN_FUNC = new Min();
+	private final static Min MIN_FUNC = new Min();
 	
-	private static Sum SUM_FUNC = new Sum();
+	private final static Sum SUM_FUNC = new Sum();
 	
-	private static Avg AVG_FUNC = new Avg();
+	private final static Avg AVG_FUNC = new Avg();
 	
-	private static Abs ABS_FUNC = new Abs();
+	private final static Abs ABS_FUNC = new Abs();
 	
 	
 	private MathShortFuncs() {
@@ -192,7 +192,7 @@ public final class MathShortFuncs {
 			BigDecimal sum = BigDecimal.valueOf(0);
 			for (Short number : input) {
 				if (number != null) {
-					sum = sum.add(BigDecimal.valueOf(number.intValue()));
+					sum = sum.add(BigDecimal.valueOf(number.shortValue()));
 				}
 			}	
 			return Short.valueOf(sum.shortValue());
@@ -201,22 +201,26 @@ public final class MathShortFuncs {
 	
 	public static final class Avg extends AbstractNotNullFunc<Short, Iterable<Short>> {
 
-		private RoundingMode roundingMode = null;
-		private MathContext mathContext = null;
+		private final RoundingMode roundingMode;
+		private final MathContext mathContext;
 		
 		public Avg() {
 			super();
+			this.roundingMode = null;
+			this.mathContext = null;
 		}
 
 		public Avg(RoundingMode roundingMode) {
 			super();
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
-			this.roundingMode = roundingMode;			
+			this.roundingMode = roundingMode;	
+			this.mathContext = null;
 		}
 		
 		public Avg(MathContext mathContext) {
 			super();
 			Validate.notNull(mathContext, "MathContext can't be null");
+			this.roundingMode = null;
 			this.mathContext = mathContext;
 		}
 		
@@ -227,7 +231,7 @@ public final class MathShortFuncs {
 			BigDecimal sum = BigDecimal.valueOf(0);
 			for (Short number : input) {
 				if (number != null) {
-					sum = sum.add(BigDecimal.valueOf(number.intValue()));
+					sum = sum.add(BigDecimal.valueOf(number.shortValue()));
 					countNotNull++;
 				}
 			}	
@@ -255,7 +259,7 @@ public final class MathShortFuncs {
 	
 	public static final class Add extends AbstractNullAsNullFunc<Short, Short> {
 
-		private Short add;
+		private final Short add;
 		
 		public Add(Short add) {
 			super();
@@ -271,7 +275,7 @@ public final class MathShortFuncs {
 	
 	public static final class Subtract extends AbstractNullAsNullFunc<Short, Short> {
 
-		private Short subtract;
+		private final Short subtract;
 		
 		public Subtract(Short subtract) {
 			super();
@@ -288,14 +292,16 @@ public final class MathShortFuncs {
 	
 	public static final class Divide extends AbstractNullAsNullFunc<Short, Short> {
 
-		private Short divisor;
-		private RoundingMode roundingMode = null;
-		private MathContext mathContext = null;
+		private final Short divisor;
+		private final RoundingMode roundingMode;
+		private final MathContext mathContext;
 		
 		public Divide(Short divisor) {
 			super();
 			Validate.notNull(divisor, "Divisor can't be null");
 			this.divisor = divisor;
+			this.roundingMode = null;
+			this.mathContext = null;
 		}
 		
 		public Divide(Short divisor, RoundingMode roundingMode) {
@@ -304,6 +310,7 @@ public final class MathShortFuncs {
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
 			this.divisor = divisor;
 			this.roundingMode = roundingMode;
+			this.mathContext = null;
 		}
 		
 		public Divide(Short divisor, MathContext mathContext) {
@@ -311,19 +318,20 @@ public final class MathShortFuncs {
 			Validate.notNull(divisor, "Divisor can't be null");
 			Validate.notNull(mathContext, "MathContext can't be null");
 			this.divisor = divisor;
+			this.roundingMode = null;
 			this.mathContext = mathContext;
 		}
 
 		@Override
 		public Short nullAsNullExecute(final Short input, final ExecCtx ctx) throws Exception {
-			BigDecimal result = BigDecimal.valueOf(input.intValue());
+			BigDecimal result = BigDecimal.valueOf(input.shortValue());
 			
 			if (this.roundingMode != null) {
-				result = result.divide(BigDecimal.valueOf(this.divisor.doubleValue()), this.roundingMode);					
+				result = result.divide(BigDecimal.valueOf(this.divisor.shortValue()), this.roundingMode);					
 			} else if (this.mathContext != null) {
-				result = result.divide(BigDecimal.valueOf(this.divisor.doubleValue()), this.mathContext);				
+				result = result.divide(BigDecimal.valueOf(this.divisor.shortValue()), this.mathContext);				
 			} else {
-				result = result.divide(BigDecimal.valueOf(this.divisor.doubleValue()));	
+				result = result.divide(BigDecimal.valueOf(this.divisor.shortValue()));	
 			}
 			return Short.valueOf(result.shortValue());
 		}		
@@ -332,7 +340,7 @@ public final class MathShortFuncs {
 	
 	public static final class Module extends AbstractNullAsNullFunc<Short, Short> {
 
-		private int module;
+		private final int module;
 		
 		public Module(int module) {
 			super();
@@ -347,14 +355,16 @@ public final class MathShortFuncs {
 	
 	public static final class Multiply extends AbstractNullAsNullFunc<Short, Short> {
 
-		private Short multiplicand;
-		private MathContext mathContext = null;
-		private RoundingMode roundingMode = null;
+		private final Short multiplicand;
+		private final MathContext mathContext;
+		private final RoundingMode roundingMode;
 		
 		public Multiply(Short multiplicand) {
 			super();
 			Validate.notNull(multiplicand, "Multiplicand can't be null");
 			this.multiplicand = multiplicand;
+			this.mathContext = null;
+			this.roundingMode = null;
 		}
 		
 		public Multiply(Short multiplicand, RoundingMode roundingMode) {
@@ -362,6 +372,7 @@ public final class MathShortFuncs {
 			Validate.notNull(multiplicand, "Multiplicand can't be null");
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
 			this.multiplicand = multiplicand;
+			this.mathContext = null;
 			this.roundingMode = roundingMode;
 		}
 		
@@ -371,18 +382,19 @@ public final class MathShortFuncs {
 			Validate.notNull(mathContext, "MathContext can't be null");
 			this.multiplicand = multiplicand;
 			this.mathContext = mathContext;
+			this.roundingMode = null;
 		}
 
 		@Override
 		public Short nullAsNullExecute(final Short input, final ExecCtx ctx) throws Exception {
-			BigDecimal result = BigDecimal.valueOf(input.intValue());
+			BigDecimal result = BigDecimal.valueOf(input.shortValue());
 			
 			if (this.mathContext != null) {
-				result = result.multiply(BigDecimal.valueOf(this.multiplicand.intValue()), this.mathContext);				
+				result = result.multiply(BigDecimal.valueOf(this.multiplicand.shortValue()), this.mathContext);				
 			} else if (this.roundingMode != null) {
-				result = result.multiply(BigDecimal.valueOf(this.multiplicand.intValue())).setScale(0, this.roundingMode);	
+				result = result.multiply(BigDecimal.valueOf(this.multiplicand.shortValue())).setScale(0, this.roundingMode);	
 			} else {
-				result = result.multiply(BigDecimal.valueOf(this.multiplicand.intValue()));	
+				result = result.multiply(BigDecimal.valueOf(this.multiplicand.shortValue()));	
 			}
 			return Short.valueOf(result.shortValue());
 		}
@@ -390,19 +402,22 @@ public final class MathShortFuncs {
 	
 	public static final class Raise extends AbstractNullAsNullFunc<Short, Short> {
 
-		private int power;
-		private MathContext mathContext = null;
-		private RoundingMode roundingMode = null;
+		private final int power;
+		private final MathContext mathContext;
+		private final RoundingMode roundingMode;
 		
 		public Raise(int power) {
 			super();
 			this.power = power;
+			this.mathContext = null;
+			this.roundingMode = null;
 		}
 		
 		public Raise(int power, RoundingMode roundingMode) {
 			super();
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
 			this.power = power;
+			this.mathContext = null;
 			this.roundingMode = roundingMode;
 		}
 		
@@ -411,11 +426,12 @@ public final class MathShortFuncs {
 			Validate.notNull(mathContext, "MathContext can't be null");
 			this.power = power;
 			this.mathContext = mathContext;
+			this.roundingMode = null;
 		}
 
 		@Override
 		public Short nullAsNullExecute(final Short input, final ExecCtx ctx) throws Exception {
-			BigDecimal result = BigDecimal.valueOf(input.intValue());
+			BigDecimal result = BigDecimal.valueOf(input.shortValue());
 			
 			if (this.mathContext != null) {
 				result = result.pow(this.power, this.mathContext);				
@@ -427,6 +443,4 @@ public final class MathShortFuncs {
 			return Short.valueOf(result.shortValue());
 		}	
 	}
-	
-	
 }
