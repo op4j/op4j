@@ -2,7 +2,6 @@
   - Add static factory methods to ListFuncs, ArrayFuncs, etc
 
   - Create mapIfNotNull
-  - Reorganize functions in package org.op4j.functions
   - Functions in StringFuncs: do they have to be nullasnull or notnull?
     
     
