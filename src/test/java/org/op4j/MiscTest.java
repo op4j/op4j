@@ -180,9 +180,9 @@ watch.start();
         System.out.println(Op.on(234).addAll(10).insert(1,3).removeAllTrue(Ognl.asBoolean("#target > 100")));
         System.out.println(printArray(Op.on(234).addAll(10).insert(1,3).removeAllTrue(Ognl.asBoolean("#target > 100")).buildArrayOf(Types.INTEGER).get()));
         System.out.println(printArray(Op.on(234).buildArrayOf(Types.INTEGER).addAll(8).get()));
-        System.out.println(Op.on(null).addAll(123));
-        System.out.println(Op.on(null).buildList().get());
-        System.out.println(Op.on(null).buildSet().get());
+        System.out.println(Op.on((List)null).addAll(123));
+        System.out.println(Op.on((Object)null).buildList().get());
+        System.out.println(Op.on((Object)null).buildSet().get());
         System.out.println(printArray(Op.on((String)null).buildArrayOf(Types.STRING).addAll("a").removeAllNull().removeAllIndexes(0).get()));
         
 //        System.out.println(printArray(Op.buildArrayOfArray(Types.STRING).addAll(Op.buildArray(Types.STRING).addAll("a","b").get()).addAll(Op.buildArray(Types.STRING).addAll("1","2","3").get()).get()));
