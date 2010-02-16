@@ -82,6 +82,27 @@ public final class Op {
     }
 
     
+    
+    
+    
+    public static <T> Level0ListOperator<T>on(final List<T> target) {
+        return onList(target);
+    }
+
+    
+    public static <K,V> Level0MapOperator<K,V> on(final Map<K,V> target) {
+        return onMap(target);
+    }
+
+    
+    public static <T> Level0SetOperator<T> on(final Set<T> target) {
+        return onSet(target);
+    }
+    
+    
+    
+    
+    
     public static <T> Level0ArrayOperator<T> onArrayOf(final Type<T> type, final T[] target) {
         return new Level0ArrayOperatorImpl<T>(type, ExecutionTarget.forObject(target, Normalisation.ARRAY(type.getRawClass())));
     }
