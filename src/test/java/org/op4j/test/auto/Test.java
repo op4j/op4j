@@ -1,20 +1,16 @@
 package org.op4j.test.auto;
 
 import java.beans.Expression;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
+import org.junit.Ignore;
 import org.op4j.Op;
 import org.op4j.exceptions.ExecutionException;
-import org.op4j.functions.math.MathIntegerFuncs;
 
-
+@Ignore
 public class Test {
 	
 	public static final <T> Object testOn(T target,
@@ -163,41 +159,5 @@ public class Test {
 		} catch (Exception e) {
 			throw new ExecutionException("Error executing op4j chained operations" ,e);
 		} 
-    }
-	
-	@SuppressWarnings("boxing")
-	public static void main(String[] args) {
-		Test test = new Test();
-		
-		List<Integer> listTarget = Arrays.asList(3, 4, 12, -2);
-		Integer[] arrayTarget = new Integer[] {3, 4, 12, -2};
-		Map<Integer, List<String>> mapTarget = new LinkedHashMap<Integer, List<String>>();
-		mapTarget.put(2, Arrays.asList("first"));
-		mapTarget.put(22, Arrays.asList("second"));
-		mapTarget.put(222, Arrays.asList("third"));
-		mapTarget.put(2222, Arrays.asList("first", "second", "third"));
-		
-		List<TestOperation> operations = new ArrayList<TestOperation>();
-		operations.add(new TestOperation("forEach", new Object[] {}));
-		operations.add(new TestOperation("exec", new Object[] {MathIntegerFuncs.add(45)}));
-		operations.add(new TestOperation("get", new Object[] {}));
-		
-		Object result = test.testOnList(listTarget, operations);
-		System.out.println("Result onList: " + result);
-		
-		result = test.testOnArrayOf(Types.INTEGER, arrayTarget, operations);
-		System.out.println("Result onArray: " + Arrays.toString((Integer[])result));
-		
-		operations.clear();
-		operations.add(new TestOperation("forEachEntry"));
-		operations.add(new TestOperation("onKey"));
-		operations.add(new TestOperation("exec", new Object[] {MathIntegerFuncs.add(3)}));
-		operations.add(new TestOperation("endOn"));
-		operations.add(new TestOperation("onValue"));
-		operations.add(new TestOperation("add", new Object[] {"another"}));
-		operations.add(new TestOperation("get"));
-		result = test.testOnMapOfList(mapTarget, operations);
-		System.out.println("Result onMapOfList: " + result);
-	}
-	
+    }	
 }
