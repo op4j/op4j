@@ -9,23 +9,7 @@
 Math. Operations
 ----------------
 
-Target: list of numbers
-	max()  
-	min() 
-	sum()
-	avg(), avg(RoundingMode rm), avg(MathContext mc)
-		
-Target: a number
-	round(RoundingMode rm), round(MathContext mc)
-	abs()
-	
-	add(x)
-	sub(x) 
-	div(x), div(x, RoundingMode rm), div(x, MathContext mc)
-	mod(x)
-	mul(x)
-	pow(x), pow(x, MathContext mc)
-	
+Check operations on maps
 Add javadoc
 
 ----------------
