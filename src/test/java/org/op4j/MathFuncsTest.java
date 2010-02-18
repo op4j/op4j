@@ -47,6 +47,7 @@ public class MathFuncsTest extends TestCase {
 		this.data.add(Double.valueOf(-11.2));
 	}
 
+	@SuppressWarnings({ "boxing", "unchecked" })
 	@Test
 	public void testDouble() {
 		// MAX
@@ -101,8 +102,53 @@ public class MathFuncsTest extends TestCase {
 			index++;
 		}
 		System.out.println("Raise: " + result);
+		
+		
+		
+		List<Double> doubleList = Arrays.asList(Double.valueOf(34), null, Double.valueOf(34), Double.valueOf(3.4), Double.valueOf(-34.78), 
+				null, Double.valueOf(3434343434.675676465));
+		
+		List<TestOperation> testOperations = new ArrayList<TestOperation>();
+		testOperations.add(new TestOperation("add", new Object[] {Double.valueOf(2)}));		
+		testOperations.add(new TestOperation("forEach"));
+		testOperations.add(new TestOperation("exec", new Object[] {MathDoubleFuncs.divideBy(Double.valueOf(23.3),
+				new MathContext(4, RoundingMode.HALF_UP))})); 
+		testOperations.add(new TestOperation("exec", new Object[] {MathDoubleFuncs.raiseTo(3)}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathDoubleFuncs.subtract(Double.valueOf(5))}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathDoubleFuncs.abs()}));
+		testOperations.add(new TestOperation("endFor"));
+		testOperations.add(new TestOperation("get"));
+		Object aResult = org.op4j.test.auto.Test.testOnList(doubleList, testOperations);
+		index = 0;
+		for (Double aNumber : ((Iterable<Double>)aResult)) {
+			Double bNumber = null;
+			if (doubleList.size() == index) {
+				bNumber = BigDecimal.valueOf(BigDecimal.valueOf(BigDecimal.valueOf(2).divide(BigDecimal.valueOf(23.3),
+						new MathContext(4, RoundingMode.HALF_UP)).doubleValue())						
+						.pow(3).doubleValue())						
+						.subtract(BigDecimal.valueOf(5)).abs().doubleValue();
+			} else {
+				if (doubleList.get(index) != null) {
+					bNumber = BigDecimal.valueOf(BigDecimal.valueOf(BigDecimal.valueOf(doubleList.get(index)).divide(BigDecimal.valueOf(23.3),
+							new MathContext(4, RoundingMode.HALF_UP))
+							.doubleValue())
+							.pow(3).doubleValue()).subtract(BigDecimal.valueOf(5)).abs().doubleValue();
+				}			
+			}
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Result onList: " + aResult);
+		aResult = org.op4j.test.auto.Test.testOnArrayOf(Types.DOUBLE, doubleList.toArray(new Double[]{}), 
+				testOperations);
+		System.out.println("Result onArray: " + ArrayUtils.toString((Object[])aResult));
+		aResult = org.op4j.test.auto.Test.testOnSet(new LinkedHashSet<Double>(doubleList), 
+				testOperations);
+		System.out.println("Result onSet: " + aResult);		
+				
 	}
 
+	@SuppressWarnings({ "boxing", "unchecked" })
 	@Test
 	public void testLong() {
 		// Abs
@@ -145,8 +191,54 @@ public class MathFuncsTest extends TestCase {
 			index++;
 		}	
 		System.out.println("Subtract: " + result);
+		
+		
+		
+		List<Long> longList = Arrays.asList(Long.valueOf(34), null, Long.valueOf(34), Long.valueOf(3774), Long.valueOf(-34078), 
+				null, Long.valueOf(343434345));
+		
+		List<TestOperation> testOperations = new ArrayList<TestOperation>();
+		testOperations.add(new TestOperation("add", new Object[] {Long.valueOf(2)}));		
+		testOperations.add(new TestOperation("forEach"));
+		testOperations.add(new TestOperation("exec", new Object[] {MathLongFuncs.divideBy(Long.valueOf(23),
+				new MathContext(4, RoundingMode.HALF_UP))})); 
+		testOperations.add(new TestOperation("exec", new Object[] {MathLongFuncs.raiseTo(3)}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathLongFuncs.subtract(Long.valueOf(5))}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathLongFuncs.abs()}));
+		testOperations.add(new TestOperation("endFor"));
+		testOperations.add(new TestOperation("get"));
+		Object aResult = org.op4j.test.auto.Test.testOnList(longList, testOperations);
+		index = 0;
+		for (Long aNumber : ((Iterable<Long>)aResult)) {
+			Long bNumber = null;
+			if (longList.size() == index) {
+				bNumber = BigDecimal.valueOf(BigDecimal.valueOf(BigDecimal.valueOf(2).divide(BigDecimal.valueOf(23),
+						new MathContext(4, RoundingMode.HALF_UP)).longValue())						
+						.pow(3).longValue())						
+						.subtract(BigDecimal.valueOf(5)).abs().longValue();
+			} else {
+				if (longList.get(index) != null) {
+					bNumber = BigDecimal.valueOf(BigDecimal.valueOf(BigDecimal.valueOf(longList.get(index)).divide(BigDecimal.valueOf(23),
+							new MathContext(4, RoundingMode.HALF_UP))
+							.longValue())
+							.pow(3).longValue()).subtract(BigDecimal.valueOf(5)).abs().longValue();
+				}			
+			}
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Result onList: " + aResult);
+		aResult = org.op4j.test.auto.Test.testOnArrayOf(Types.LONG, longList.toArray(new Long[]{}), 
+				testOperations);
+		System.out.println("Result onArray: " + ArrayUtils.toString((Object[])aResult));
+		aResult = org.op4j.test.auto.Test.testOnSet(new LinkedHashSet<Long>(longList), 
+				testOperations);
+		System.out.println("Result onSet: " + aResult);	
+		
+		
 	}
 	
+	@SuppressWarnings({ "boxing", "unchecked" })
 	@Test
 	public void testInteger() {
 		
@@ -182,9 +274,52 @@ public class MathFuncsTest extends TestCase {
 		}
 		System.out.println("Multiply: " + result);
 		
+		
+		
+		List<Integer> integerList = Arrays.asList(34, 76, -12, 0, 67, null);
+		
+		List<TestOperation> testOperations = new ArrayList<TestOperation>();
+		testOperations.add(new TestOperation("add", new Object[] {Integer.valueOf(2)}));		
+		testOperations.add(new TestOperation("forEach"));
+		testOperations.add(new TestOperation("exec", new Object[] {MathIntegerFuncs.divideBy(Integer.valueOf(23),
+				new MathContext(4, RoundingMode.HALF_UP))})); 
+		testOperations.add(new TestOperation("exec", new Object[] {MathIntegerFuncs.raiseTo(3)}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathIntegerFuncs.subtract(Integer.valueOf(5))}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathIntegerFuncs.abs()}));
+		testOperations.add(new TestOperation("endFor"));
+		testOperations.add(new TestOperation("get"));
+		Object aResult = org.op4j.test.auto.Test.testOnList(integerList, testOperations);
+		index = 0;
+		for (Integer aNumber : ((Iterable<Integer>)aResult)) {
+			Integer bNumber = null;
+			if (integerList.size() == index) {
+				bNumber = BigDecimal.valueOf(BigDecimal.valueOf(BigDecimal.valueOf(2).divide(BigDecimal.valueOf(23),
+						new MathContext(4, RoundingMode.HALF_UP)).intValue())						
+						.pow(3).intValue())						
+						.subtract(BigDecimal.valueOf(5)).abs().intValue();
+			} else {
+				if (integerList.get(index) != null) {
+					bNumber = BigDecimal.valueOf(BigDecimal.valueOf(BigDecimal.valueOf(integerList.get(index)).divide(BigDecimal.valueOf(23),
+							new MathContext(4, RoundingMode.HALF_UP))
+							.intValue())
+							.pow(3).intValue()).subtract(BigDecimal.valueOf(5)).abs().intValue();
+				}			
+			}
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Result onList: " + aResult);
+		aResult = org.op4j.test.auto.Test.testOnArrayOf(Types.INTEGER, integerList.toArray(new Integer[]{}), 
+				testOperations);
+		System.out.println("Result onArray: " + ArrayUtils.toString((Object[])aResult));
+		aResult = org.op4j.test.auto.Test.testOnSet(new LinkedHashSet<Integer>(integerList), 
+				testOperations);
+		System.out.println("Result onSet: " + aResult);	
+		
 	}
 	
 	@Test
+	@SuppressWarnings({ "unchecked" })
 	public void testBigDecimal() {
 		
 		// Module
@@ -260,16 +395,17 @@ public class MathFuncsTest extends TestCase {
 			assertEquals(aNumber, bNumber);	
 			index++;
 		}
-		System.out.println("Result onList: " + result);
+		System.out.println("Result onList: " + aResult);
 		aResult = org.op4j.test.auto.Test.testOnArrayOf(Types.BIG_DECIMAL, bigDecimalList.toArray(new BigDecimal[]{}), 
 				testOperations);
 		System.out.println("Result onArray: " + ArrayUtils.toString((Object[])aResult));
 		aResult = org.op4j.test.auto.Test.testOnSet(new LinkedHashSet<BigDecimal>(bigDecimalList), 
 				testOperations);
-		System.out.println("Result onSet: " + result);			
+		System.out.println("Result onSet: " + aResult);			
 	}
 	
 	@Test
+	@SuppressWarnings({ "unchecked" })
 	public void testBigInteger() {
 		
 		// Module
@@ -344,15 +480,16 @@ public class MathFuncsTest extends TestCase {
 			assertEquals(aNumber, bNumber);	
 			index++;
 		}
-		System.out.println("Result onList: " + result);
+		System.out.println("Result onList: " + aResult);
 		aResult = org.op4j.test.auto.Test.testOnArrayOf(Types.BIG_INTEGER, bigIntegerList.toArray(new BigInteger[]{}), 
 				testOperations);
 		System.out.println("Result onArray: " + ArrayUtils.toString((Object[])aResult));
 		aResult = org.op4j.test.auto.Test.testOnSet(new LinkedHashSet<BigInteger>(bigIntegerList), 
 				testOperations);
-		System.out.println("Result onSet: " + result);		
+		System.out.println("Result onSet: " + aResult);		
 	}
 	
+	@SuppressWarnings({ "unchecked", "boxing" })
 	@Test
 	public void testFloat() {
 		
@@ -398,8 +535,51 @@ public class MathFuncsTest extends TestCase {
 			index++;
 		}
 		System.out.println("Raise: " + result);
+		
+		
+		
+		List<Float> floatList = Arrays.asList(Float.valueOf(34), null, Float.valueOf(34), Float.valueOf(34), Float.valueOf(-3478), 
+				null, Float.valueOf(343434343));
+		
+		List<TestOperation> testOperations = new ArrayList<TestOperation>();
+		testOperations.add(new TestOperation("add", new Object[] {Float.valueOf(2)}));		
+		testOperations.add(new TestOperation("forEach"));
+		testOperations.add(new TestOperation("exec", new Object[] {MathFloatFuncs.divideBy(Float.valueOf(23),
+				new MathContext(7, RoundingMode.HALF_UP))}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathFloatFuncs.raiseTo(3)}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathFloatFuncs.subtract(Float.valueOf(5))}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathFloatFuncs.abs()}));
+		testOperations.add(new TestOperation("endFor"));
+		testOperations.add(new TestOperation("get"));
+		Object aResult = org.op4j.test.auto.Test.testOnList(floatList, testOperations);
+		index = 0;
+		for (Float aNumber : ((Iterable<Float>)aResult)) {
+			Float bNumber = null;
+			if (floatList.size() == index) {
+				bNumber = BigDecimal.valueOf(BigDecimal.valueOf(BigDecimal.valueOf(2).divide(BigDecimal.valueOf(23),
+						new MathContext(7, RoundingMode.HALF_UP))
+						.floatValue())
+						.pow(3).floatValue()).subtract(BigDecimal.valueOf(5)).abs().floatValue();
+			} else {
+				if (floatList.get(index) != null) {
+					bNumber = BigDecimal.valueOf(BigDecimal.valueOf(BigDecimal.valueOf(floatList.get(index)).divide(BigDecimal.valueOf(23),
+							new MathContext(7, RoundingMode.HALF_UP)).floatValue())
+						.pow(3).floatValue()).subtract(BigDecimal.valueOf(5)).abs().floatValue();
+				}			
+			}
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Result onList: " + aResult);
+		aResult = org.op4j.test.auto.Test.testOnArrayOf(Types.FLOAT, floatList.toArray(new Float[]{}), 
+				testOperations);
+		System.out.println("Result onArray: " + ArrayUtils.toString((Object[])aResult));
+		aResult = org.op4j.test.auto.Test.testOnSet(new LinkedHashSet<Float>(floatList), 
+				testOperations);
+		System.out.println("Result onSet: " + aResult);
 	}
 	
+	@SuppressWarnings({ "boxing", "unchecked" })
 	@Test
 	public void testShort() {
 		
@@ -445,22 +625,50 @@ public class MathFuncsTest extends TestCase {
 			index++;
 		}
 		System.out.println("Raise: " + result);
-	}
-	
-	@Test
-	public void test() {
 		
-		List<Double> doubleList = Arrays.asList(Double.valueOf(34), null, Double.valueOf(34), Double.valueOf(3.4), Double.valueOf(-34.78), 
-				null, Double.valueOf(3434343434.675676465));
-		List<Float> floatList = Arrays.asList(Float.valueOf(34), null, Float.valueOf(34), Float.valueOf(34), Float.valueOf(-3478), 
-				null, Float.valueOf(343434343));
-		List<Integer> integerList = Arrays.asList(34, 76, -12, 0, 67, null);
-		List<Long> longList = Arrays.asList(Long.valueOf(34), null, Long.valueOf(34), Long.valueOf(3774), Long.valueOf(-34078), 
-				null, Long.valueOf(343434345));
+		
+		
 		List<Short> shortList = Arrays.asList(Short.valueOf("34"), null, Short.valueOf("34"), 
 				Short.valueOf("304"), Short.valueOf("-3478"), 
 				null, Short.valueOf("3434"));
 		
-		
+		List<TestOperation> testOperations = new ArrayList<TestOperation>();
+		testOperations.add(new TestOperation("add", new Object[] {Short.valueOf("2")}));		
+		testOperations.add(new TestOperation("forEach"));
+		testOperations.add(new TestOperation("exec", new Object[] {MathShortFuncs.divideBy(Short.valueOf("23"),
+				new MathContext(7, RoundingMode.HALF_UP))}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathShortFuncs.raiseTo(3)}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathShortFuncs.subtract(Short.valueOf("5"))}));
+		testOperations.add(new TestOperation("exec", new Object[] {MathShortFuncs.abs()}));
+		testOperations.add(new TestOperation("endFor"));
+		testOperations.add(new TestOperation("get"));
+		Object aResult = org.op4j.test.auto.Test.testOnList(shortList, testOperations);
+		index = 0;
+		for (Short aNumber : ((Iterable<Short>)aResult)) {
+			Short bNumber = null;
+			if (shortList.size() == index) {
+				bNumber = BigDecimal.valueOf(BigDecimal.valueOf(BigDecimal.valueOf(2).divide(BigDecimal.valueOf(23),
+						new MathContext(7, RoundingMode.HALF_UP))
+						.shortValue())
+						.pow(3).shortValue()).subtract(BigDecimal.valueOf(5)).abs().shortValue();
+			} else {
+				if (shortList.get(index) != null) {
+					bNumber = BigDecimal.valueOf(BigDecimal.valueOf(BigDecimal.valueOf(shortList.get(index)).divide(BigDecimal.valueOf(23),
+							new MathContext(7, RoundingMode.HALF_UP)).shortValue())
+						.pow(3).shortValue()).subtract(BigDecimal.valueOf(5)).abs().shortValue();
+				}			
+			}
+			assertEquals(aNumber, bNumber);	
+			index++;
+		}
+		System.out.println("Result onList: " + aResult);
+		aResult = org.op4j.test.auto.Test.testOnArrayOf(Types.SHORT, shortList.toArray(new Short[]{}), 
+				testOperations);
+		System.out.println("Result onArray: " + ArrayUtils.toString((Object[])aResult));
+		aResult = org.op4j.test.auto.Test.testOnSet(new LinkedHashSet<Short>(shortList), 
+				testOperations);
+		System.out.println("Result onSet: " + aResult);
+				
 	}
+	
 }
