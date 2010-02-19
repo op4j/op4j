@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 
 import junit.framework.TestCase;
 
@@ -16,6 +17,8 @@ import org.apache.commons.lang.ArrayUtils;
 import org.javaruntype.type.Types;
 import org.junit.Before;
 import org.junit.Test;
+import org.op4j.functions.ExecCtx;
+import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToBigDecimal;
 import org.op4j.functions.converters.ToBigInteger;
 import org.op4j.functions.converters.ToFloat;
@@ -316,6 +319,67 @@ public class MathFuncsTest extends TestCase {
 				testOperations);
 		System.out.println("Result onSet: " + aResult);	
 		
+		
+		
+		
+		Map<String, List<Integer>> mapOfIntegerList = Op.onAll("first", Arrays.asList(34, 76, -12, 0, 67, null),
+				"second", Arrays.asList(3, 776, -122, 20, 627)).buildMap().asMapOf(Types.STRING, Types.LIST_OF_INTEGER).get();
+
+//		Op.onMapOfList(mapOfIntegerList)
+//			.put("third", Arrays.asList(3, null, 776))
+//			.forEachEntry()
+//			.onValue()
+//			.add(Integer.valueOf(9999))
+//			.exec(new IFunction<List<Integer>, List<Integer>>() {
+//				public List<Integer> execute(List<Integer> object, ExecCtx ctx)
+//						throws Exception {
+//					return Op.on(object).forEach()
+//						.exec(FMathInteger.raiseTo(5))
+//						.exec(FMathInteger.divideBy(Integer.valueOf(5), new MathContext(3, RoundingMode.FLOOR)))
+//						.get();					
+//				}
+//			}).get();
+		
+		testOperations = new ArrayList<TestOperation>();
+		testOperations.add(new TestOperation("put", new Object[] {"third", Arrays.asList(3, null, 776)}));		
+		testOperations.add(new TestOperation("forEachEntry"));
+		testOperations.add(new TestOperation("onValue"));
+		testOperations.add(new TestOperation("add", new Object[] {Integer.valueOf(9999)})); 
+		testOperations.add(new TestOperation("exec", new Object[] {
+				new IFunction<List<Integer>, List<Integer>>() {
+					public List<Integer> execute(List<Integer> object, ExecCtx ctx)
+						throws Exception {
+						return Op.on(object).forEach()
+							.exec(FMathInteger.raiseTo(5))
+							.exec(FMathInteger.divideBy(Integer.valueOf(5), new MathContext(3, RoundingMode.FLOOR)))
+							.get();					
+					}
+				}}));
+		testOperations.add(new TestOperation("get"));
+		Map<String, List<Integer>> mapResult = (Map<String, List<Integer>>)org.op4j.test.auto.Test.testOnMapOfList(mapOfIntegerList, testOperations);
+		index = 0;
+		for (Map.Entry<String, List<Integer>> entry : mapResult.entrySet()) {
+			List<Integer> aux = new ArrayList<Integer>();
+			if (mapResult.size() - 1 == index) {
+				assertEquals(entry.getKey(), "third");
+				aux = Arrays.asList(3, null, 776, 9999);
+			} else {
+				aux = new ArrayList<Integer>(mapOfIntegerList.get(entry.getKey()));
+				aux.add(Integer.valueOf(9999));
+			}
+			assertEquals(entry.getValue().size(), aux.size());
+			int innerIndex = 0;
+			for (Integer integer : aux) {
+				if (integer != null) { 
+					assertEquals(entry.getValue().get(innerIndex++), Integer.valueOf(BigDecimal.valueOf(BigDecimal.valueOf(integer)
+						.pow(5).intValue()).divide(BigDecimal.valueOf(5), new MathContext(3, RoundingMode.FLOOR))
+						.intValue()));
+				} else {
+					assertEquals(entry.getValue().get(innerIndex++), integer);
+				}
+			}	
+			index++;
+		}
 	}
 	
 	@Test
