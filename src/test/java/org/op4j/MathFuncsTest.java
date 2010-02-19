@@ -22,13 +22,13 @@ import org.op4j.functions.converters.ToFloat;
 import org.op4j.functions.converters.ToInteger;
 import org.op4j.functions.converters.ToLong;
 import org.op4j.functions.converters.ToShort;
-import org.op4j.functions.math.MathBigDecimalFuncs;
-import org.op4j.functions.math.MathBigIntegerFuncs;
-import org.op4j.functions.math.MathDoubleFuncs;
-import org.op4j.functions.math.MathFloatFuncs;
-import org.op4j.functions.math.MathIntegerFuncs;
-import org.op4j.functions.math.MathLongFuncs;
-import org.op4j.functions.math.MathShortFuncs;
+import org.op4j.functions.math.FMathBigDecimal;
+import org.op4j.functions.math.FMathBigInteger;
+import org.op4j.functions.math.FMathDouble;
+import org.op4j.functions.math.FMathFloat;
+import org.op4j.functions.math.FMathInteger;
+import org.op4j.functions.math.FMathLong;
+import org.op4j.functions.math.FMathShort;
 import org.op4j.test.auto.TestOperation;
 
 @SuppressWarnings (value = "cast")
@@ -51,17 +51,17 @@ public class MathFuncsTest extends TestCase {
 	@Test
 	public void testDouble() {
 		// MAX
-		Double result = Op.on(this.data).exec(MathDoubleFuncs.max()).get();
+		Double result = Op.on(this.data).exec(FMathDouble.max()).get();
 		assertEquals(result, this.data.get(1));	
 		System.out.println("Max: " + result);
 		
 		// MIN
-		result = Op.on(this.data).exec(MathDoubleFuncs.min()).get();
+		result = Op.on(this.data).exec(FMathDouble.min()).get();
 		assertEquals(result, this.data.get(4));	
 		System.out.println("Min: " + result);
 		
 		// SUM
-		result = Op.on(this.data).exec(MathDoubleFuncs.sum()).get();
+		result = Op.on(this.data).exec(FMathDouble.sum()).get();
 		BigDecimal sum = BigDecimal.valueOf(0);
 		for (Double number : this.data) {
 			if (number != null) {
@@ -72,7 +72,7 @@ public class MathFuncsTest extends TestCase {
 		System.out.println("Sum: " + result);
 		
 		// AVG
-		result = Op.on(this.data).exec(MathDoubleFuncs.avg()).get();
+		result = Op.on(this.data).exec(FMathDouble.avg()).get();
 		BigDecimal avg = BigDecimal.valueOf(0);
 		int count = 0;
 		for (Double number : this.data) {
@@ -85,13 +85,13 @@ public class MathFuncsTest extends TestCase {
 		System.out.println("Avg: " + result);
 		
 		MathContext mc = new MathContext(2, RoundingMode.CEILING);
-		result = Op.on(this.data).exec(MathDoubleFuncs.avg(mc)).get();
+		result = Op.on(this.data).exec(FMathDouble.avg(mc)).get();
 		assertEquals(result, Double.valueOf(avg.divide(BigDecimal.valueOf(count), mc).doubleValue()));	
 		System.out.println("Avg: " + result);
 		
 		// Raise
 		List<Double> theResult = Op.onList(this.data).forEach()
-			.exec(MathDoubleFuncs.raiseTo(5)).get();
+			.exec(FMathDouble.raiseTo(5)).get();
 		int index = 0;
 		for(Double aNumber : theResult) {
 			Double bNumber = null;
@@ -111,11 +111,11 @@ public class MathFuncsTest extends TestCase {
 		List<TestOperation> testOperations = new ArrayList<TestOperation>();
 		testOperations.add(new TestOperation("add", new Object[] {Double.valueOf(2)}));		
 		testOperations.add(new TestOperation("forEach"));
-		testOperations.add(new TestOperation("exec", new Object[] {MathDoubleFuncs.divideBy(Double.valueOf(23.3),
+		testOperations.add(new TestOperation("exec", new Object[] {FMathDouble.divideBy(Double.valueOf(23.3),
 				new MathContext(4, RoundingMode.HALF_UP))})); 
-		testOperations.add(new TestOperation("exec", new Object[] {MathDoubleFuncs.raiseTo(3)}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathDoubleFuncs.subtract(Double.valueOf(5))}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathDoubleFuncs.abs()}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathDouble.raiseTo(3)}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathDouble.subtract(Double.valueOf(5))}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathDouble.abs()}));
 		testOperations.add(new TestOperation("endFor"));
 		testOperations.add(new TestOperation("get"));
 		Object aResult = org.op4j.test.auto.Test.testOnList(doubleList, testOperations);
@@ -153,14 +153,14 @@ public class MathFuncsTest extends TestCase {
 	public void testLong() {
 		// Abs
 		List<Long> result = Op.onList(this.data).forEach().exec(ToLong.fromDouble(RoundingMode.CEILING))
-			.exec(MathLongFuncs.abs()).get();
+			.exec(FMathLong.abs()).get();
 		assertEquals(result, Arrays.asList(Long.valueOf(34), Long.valueOf(45), 
 				Long.valueOf(24), Long.valueOf(24), Long.valueOf(11)));	
 		System.out.println("Abs: " + result);
 		
 		// Add
 		result = Op.onList(this.data).forEach().exec(ToLong.fromDouble(RoundingMode.CEILING))
-			.exec(MathLongFuncs.add(Long.valueOf(7))).get();
+			.exec(FMathLong.add(Long.valueOf(7))).get();
 		int index = 0;
 		for(Long aLong : result) {
 			Long bLong = Long.valueOf(7);
@@ -178,7 +178,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// SUBTRACT
 		result = Op.onList(this.data).forEach().exec(ToLong.fromDouble(RoundingMode.CEILING))
-			.exec(MathLongFuncs.subtract(Long.valueOf(23))).get();
+			.exec(FMathLong.subtract(Long.valueOf(23))).get();
 		index = 0;
 		for (Double number : this.data) {
 			if (number != null) {
@@ -200,11 +200,11 @@ public class MathFuncsTest extends TestCase {
 		List<TestOperation> testOperations = new ArrayList<TestOperation>();
 		testOperations.add(new TestOperation("add", new Object[] {Long.valueOf(2)}));		
 		testOperations.add(new TestOperation("forEach"));
-		testOperations.add(new TestOperation("exec", new Object[] {MathLongFuncs.divideBy(Long.valueOf(23),
+		testOperations.add(new TestOperation("exec", new Object[] {FMathLong.divideBy(Long.valueOf(23),
 				new MathContext(4, RoundingMode.HALF_UP))})); 
-		testOperations.add(new TestOperation("exec", new Object[] {MathLongFuncs.raiseTo(3)}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathLongFuncs.subtract(Long.valueOf(5))}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathLongFuncs.abs()}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathLong.raiseTo(3)}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathLong.subtract(Long.valueOf(5))}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathLong.abs()}));
 		testOperations.add(new TestOperation("endFor"));
 		testOperations.add(new TestOperation("get"));
 		Object aResult = org.op4j.test.auto.Test.testOnList(longList, testOperations);
@@ -244,7 +244,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Divide
 		List<Integer> result = Op.onList(this.data).forEach().exec(ToInteger.fromDouble(RoundingMode.CEILING))
-			.exec(MathIntegerFuncs.divideBy(Integer.valueOf(3), RoundingMode.CEILING)).get();
+			.exec(FMathInteger.divideBy(Integer.valueOf(3), RoundingMode.CEILING)).get();
 		int index = 0;
 		for(Integer aInt : result) {
 			Integer bInt = null;
@@ -260,7 +260,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Multiply
 		result = Op.onList(this.data).forEach().exec(ToInteger.fromDouble(RoundingMode.DOWN))
-			.exec(MathIntegerFuncs.multiplyBy(Integer.valueOf(3))).get();
+			.exec(FMathInteger.multiplyBy(Integer.valueOf(3))).get();
 		index = 0;
 		for(Integer aNumber : result) {
 			Integer bNumber = null;
@@ -281,11 +281,11 @@ public class MathFuncsTest extends TestCase {
 		List<TestOperation> testOperations = new ArrayList<TestOperation>();
 		testOperations.add(new TestOperation("add", new Object[] {Integer.valueOf(2)}));		
 		testOperations.add(new TestOperation("forEach"));
-		testOperations.add(new TestOperation("exec", new Object[] {MathIntegerFuncs.divideBy(Integer.valueOf(23),
+		testOperations.add(new TestOperation("exec", new Object[] {FMathInteger.divideBy(Integer.valueOf(23),
 				new MathContext(4, RoundingMode.HALF_UP))})); 
-		testOperations.add(new TestOperation("exec", new Object[] {MathIntegerFuncs.raiseTo(3)}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathIntegerFuncs.subtract(Integer.valueOf(5))}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathIntegerFuncs.abs()}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathInteger.raiseTo(3)}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathInteger.subtract(Integer.valueOf(5))}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathInteger.abs()}));
 		testOperations.add(new TestOperation("endFor"));
 		testOperations.add(new TestOperation("get"));
 		Object aResult = org.op4j.test.auto.Test.testOnList(integerList, testOperations);
@@ -324,7 +324,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Module
 		List<BigDecimal> result = Op.onList(this.data).forEach().exec(ToBigDecimal.fromNumber())
-			.exec(MathBigDecimalFuncs.remainder(BigDecimal.valueOf(3))).get();
+			.exec(FMathBigDecimal.remainder(BigDecimal.valueOf(3))).get();
 		int index = 0;
 		for(BigDecimal aNumber : result) {
 			BigDecimal bNumber = null;
@@ -338,7 +338,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Multiply
 		result = Op.onList(this.data).forEach().exec(ToBigDecimal.fromNumber())
-			.exec(MathBigDecimalFuncs.multiplyBy(BigDecimal.valueOf(7.2))).get();
+			.exec(FMathBigDecimal.multiplyBy(BigDecimal.valueOf(7.2))).get();
 		index = 0;
 		for(BigDecimal aNumber : result) {
 			BigDecimal bNumber = null;
@@ -352,7 +352,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Raise
 		result = Op.onList(this.data).forEach().exec(ToBigDecimal.fromNumber())
-			.exec(MathBigDecimalFuncs.raiseTo(3)).get();
+			.exec(FMathBigDecimal.raiseTo(3)).get();
 		index = 0;
 		for(BigDecimal aNumber : result) {
 			BigDecimal bNumber = null;
@@ -372,11 +372,11 @@ public class MathFuncsTest extends TestCase {
 		List<TestOperation> testOperations = new ArrayList<TestOperation>();
 		testOperations.add(new TestOperation("add", new Object[] {BigDecimal.valueOf(2)}));		
 		testOperations.add(new TestOperation("forEach"));
-		testOperations.add(new TestOperation("exec", new Object[] {MathBigDecimalFuncs.divideBy(BigDecimal.valueOf(23.3),
+		testOperations.add(new TestOperation("exec", new Object[] {FMathBigDecimal.divideBy(BigDecimal.valueOf(23.3),
 				new MathContext(4, RoundingMode.HALF_UP))}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathBigDecimalFuncs.raiseTo(3)}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathBigDecimalFuncs.subtract(BigDecimal.valueOf(5))}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathBigDecimalFuncs.abs()}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathBigDecimal.raiseTo(3)}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathBigDecimal.subtract(BigDecimal.valueOf(5))}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathBigDecimal.abs()}));
 		testOperations.add(new TestOperation("endFor"));
 		testOperations.add(new TestOperation("get"));
 		Object aResult = org.op4j.test.auto.Test.testOnList(bigDecimalList, testOperations);
@@ -410,7 +410,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Module
 		List<BigInteger> result = Op.onList(this.data).forEach().exec(ToBigInteger.fromNumber())
-			.exec(MathBigIntegerFuncs.module(BigInteger.valueOf(3))).get();
+			.exec(FMathBigInteger.module(BigInteger.valueOf(3))).get();
 		int index = 0;
 		for(BigInteger aNumber : result) {
 			BigInteger bNumber = null;
@@ -424,7 +424,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Multiply
 		result = Op.onList(this.data).forEach().exec(ToBigInteger.fromNumber())
-			.exec(MathBigIntegerFuncs.multiplyBy(BigInteger.valueOf(7))).get();
+			.exec(FMathBigInteger.multiplyBy(BigInteger.valueOf(7))).get();
 		index = 0;
 		for(BigInteger aNumber : result) {
 			BigInteger bNumber = null;
@@ -438,7 +438,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Raise
 		result = Op.onList(this.data).forEach().exec(ToBigInteger.fromNumber())
-			.exec(MathBigIntegerFuncs.raiseTo(3)).get();
+			.exec(FMathBigInteger.raiseTo(3)).get();
 		index = 0;
 		for(BigInteger aNumber : result) {
 			BigInteger bNumber = null;
@@ -458,10 +458,10 @@ public class MathFuncsTest extends TestCase {
 		List<TestOperation> testOperations = new ArrayList<TestOperation>();
 		testOperations.add(new TestOperation("add", new Object[] {BigInteger.valueOf(2)}));		
 		testOperations.add(new TestOperation("forEach"));
-		testOperations.add(new TestOperation("exec", new Object[] {MathBigIntegerFuncs.divideBy(BigInteger.valueOf(23))}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathBigIntegerFuncs.raiseTo(3)}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathBigIntegerFuncs.subtract(BigInteger.valueOf(5))}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathBigIntegerFuncs.abs()}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathBigInteger.divideBy(BigInteger.valueOf(23))}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathBigInteger.raiseTo(3)}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathBigInteger.subtract(BigInteger.valueOf(5))}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathBigInteger.abs()}));
 		testOperations.add(new TestOperation("endFor"));
 		testOperations.add(new TestOperation("get"));
 		Object aResult = org.op4j.test.auto.Test.testOnList(bigIntegerList, testOperations);
@@ -495,7 +495,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Module
 		List<Float> result = Op.onList(this.data).forEach().exec(ToFloat.fromNumber())
-			.exec(MathFloatFuncs.module(3)).get();
+			.exec(FMathFloat.module(3)).get();
 		int index = 0;
 		for(Float aNumber : result) {
 			Float bNumber = null;
@@ -509,7 +509,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Multiply
 		result = Op.onList(this.data).forEach().exec(ToFloat.fromNumber())
-			.exec(MathFloatFuncs.multiplyBy(Float.valueOf(7))).get();
+			.exec(FMathFloat.multiplyBy(Float.valueOf(7))).get();
 		index = 0;
 		for(Float aNumber : result) {
 			Float bNumber = null;
@@ -524,7 +524,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Raise
 		result = Op.onList(this.data).forEach().exec(ToFloat.fromNumber())
-			.exec(MathFloatFuncs.raiseTo(3)).get();
+			.exec(FMathFloat.raiseTo(3)).get();
 		index = 0;
 		for(Float aNumber : result) {
 			Float bNumber = null;
@@ -544,11 +544,11 @@ public class MathFuncsTest extends TestCase {
 		List<TestOperation> testOperations = new ArrayList<TestOperation>();
 		testOperations.add(new TestOperation("add", new Object[] {Float.valueOf(2)}));		
 		testOperations.add(new TestOperation("forEach"));
-		testOperations.add(new TestOperation("exec", new Object[] {MathFloatFuncs.divideBy(Float.valueOf(23),
+		testOperations.add(new TestOperation("exec", new Object[] {FMathFloat.divideBy(Float.valueOf(23),
 				new MathContext(7, RoundingMode.HALF_UP))}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathFloatFuncs.raiseTo(3)}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathFloatFuncs.subtract(Float.valueOf(5))}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathFloatFuncs.abs()}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathFloat.raiseTo(3)}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathFloat.subtract(Float.valueOf(5))}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathFloat.abs()}));
 		testOperations.add(new TestOperation("endFor"));
 		testOperations.add(new TestOperation("get"));
 		Object aResult = org.op4j.test.auto.Test.testOnList(floatList, testOperations);
@@ -585,7 +585,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Module
 		List<Short> result = Op.onList(this.data).forEach().exec(ToShort.fromNumber())
-			.exec(MathShortFuncs.module(3)).get();
+			.exec(FMathShort.module(3)).get();
 		int index = 0;
 		for(Short aNumber : result) {
 			Short bNumber = null;
@@ -599,7 +599,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Multiply
 		result = Op.onList(this.data).forEach().exec(ToShort.fromNumber())
-			.exec(MathShortFuncs.multiplyBy(Short.valueOf("2127"))).get();
+			.exec(FMathShort.multiplyBy(Short.valueOf("2127"))).get();
 		index = 0;
 		for(Short aNumber : result) {
 			Short bNumber = null;
@@ -614,7 +614,7 @@ public class MathFuncsTest extends TestCase {
 		
 		// Raise
 		result = Op.onList(this.data).forEach().exec(ToShort.fromNumber())
-			.exec(MathShortFuncs.raiseTo(3)).get();
+			.exec(FMathShort.raiseTo(3)).get();
 		index = 0;
 		for(Short aNumber : result) {
 			Short bNumber = null;
@@ -635,11 +635,11 @@ public class MathFuncsTest extends TestCase {
 		List<TestOperation> testOperations = new ArrayList<TestOperation>();
 		testOperations.add(new TestOperation("add", new Object[] {Short.valueOf("2")}));		
 		testOperations.add(new TestOperation("forEach"));
-		testOperations.add(new TestOperation("exec", new Object[] {MathShortFuncs.divideBy(Short.valueOf("23"),
+		testOperations.add(new TestOperation("exec", new Object[] {FMathShort.divideBy(Short.valueOf("23"),
 				new MathContext(7, RoundingMode.HALF_UP))}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathShortFuncs.raiseTo(3)}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathShortFuncs.subtract(Short.valueOf("5"))}));
-		testOperations.add(new TestOperation("exec", new Object[] {MathShortFuncs.abs()}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathShort.raiseTo(3)}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathShort.subtract(Short.valueOf("5"))}));
+		testOperations.add(new TestOperation("exec", new Object[] {FMathShort.abs()}));
 		testOperations.add(new TestOperation("endFor"));
 		testOperations.add(new TestOperation("get"));
 		Object aResult = org.op4j.test.auto.Test.testOnList(shortList, testOperations);

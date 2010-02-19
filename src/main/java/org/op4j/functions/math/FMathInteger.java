@@ -35,7 +35,7 @@ import org.op4j.functions.ExecCtx;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class MathIntegerFuncs {
+public final class FMathInteger {
 
 	private final static Max MAX_FUNC = new Max();
 	
@@ -48,7 +48,7 @@ public final class MathIntegerFuncs {
 	private final static Abs ABS_FUNC = new Abs();
 	
 	
-	private MathIntegerFuncs() {
+	FMathInteger() {
 		super();           
 	}
 
