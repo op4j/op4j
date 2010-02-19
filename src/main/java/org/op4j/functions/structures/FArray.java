@@ -21,11 +21,15 @@
 package org.op4j.functions.structures;
 
 import java.lang.reflect.Array;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -33,7 +37,7 @@ import java.util.Set;
 
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
-import org.op4j.functions.AbstractNotNullFunc;
+import org.javaruntype.type.Types;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.IFunction;
 import org.op4j.util.VarArgsUtil;
@@ -45,15 +49,183 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-public final class ArrayFuncs {
+public class FArray<T> {
 
     
+    private static final FArray<Object> OF_OBJECT = new FArray<Object>(Types.OBJECT);
+    private static final FArray<BigInteger> OF_BIG_INTEGER = new FArray<BigInteger>(Types.BIG_INTEGER);
+    private static final FArray<BigDecimal> OF_BIG_DECIMAL = new FArray<BigDecimal>(Types.BIG_DECIMAL);
+    private static final FArray<Boolean> OF_BOOLEAN = new FArray<Boolean>(Types.BOOLEAN); 
+    private static final FArray<Byte> OF_BYTE = new FArray<Byte>(Types.BYTE); 
+    private static final FArray<Character> OF_CHARACTER = new FArray<Character>(Types.CHARACTER); 
+    private static final FArray<Calendar> OF_CALENDAR = new FArray<Calendar>(Types.CALENDAR); 
+    private static final FArray<Date> OF_DATE = new FArray<Date>(Types.DATE); 
+    private static final FArray<Double> OF_DOUBLE = new FArray<Double>(Types.DOUBLE); 
+    private static final FArray<Float> OF_FLOAT = new FArray<Float>(Types.FLOAT); 
+    private static final FArray<Integer> OF_INTEGER = new FArray<Integer>(Types.INTEGER); 
+    private static final FArray<Long> OF_LONG = new FArray<Long>(Types.LONG); 
+    private static final FArray<Short> OF_SHORT = new FArray<Short>(Types.SHORT); 
+    private static final FArray<String> OF_STRING = new FArray<String>(Types.STRING); 
+
+    
+    protected final Type<T> type;
     
     
-    private ArrayFuncs() {
-        super();
+    
+    
+    public static <T> FArray<T> of(final Type<T> type) {
+        return new FArray<T>(type);
+    }
+    
+    public static <T> FArrayOfArray<T> ofArrayOf(final Type<T> type) {
+        return new FArrayOfArray<T>(type);
+    }
+    
+    public static <T> FArrayOfList<T> ofListOf(final Type<T> type) {
+        return new FArrayOfList<T>(type);
+    }
+    
+    public static <T> FArrayOfSet<T> ofSetOf(final Type<T> type) {
+        return new FArrayOfSet<T>(type);
+    }
+    
+    public static FArray<Object> ofObject() {
+        return OF_OBJECT;
+    }
+    
+    public static FArray<BigInteger> ofBigInteger() {
+        return OF_BIG_INTEGER;
+    }
+    
+    public static FArray<BigDecimal> ofBigDecimal() {
+        return OF_BIG_DECIMAL;
+    }
+    
+    public static FArray<Boolean> ofBoolean() {
+        return OF_BOOLEAN;
+    }
+    
+    public static FArray<Byte> ofByte() {
+        return OF_BYTE;
+    }
+    
+    public static FArray<Character> ofCharacter() {
+        return OF_CHARACTER;
+    }
+    
+    public static FArray<Calendar> ofCalendar() {
+        return OF_CALENDAR;
+    }
+    
+    public static FArray<Date> ofDate() {
+        return OF_DATE;
+    }
+    
+    public static FArray<Double> ofDouble() {
+        return OF_DOUBLE;
+    }
+    
+    public static FArray<Float> ofFloat() {
+        return OF_FLOAT;
+    }
+    
+    public static FArray<Integer> ofInteger() {
+        return OF_INTEGER;
+    }
+    
+    public static FArray<Long> ofLong() {
+        return OF_LONG;
+    }
+    
+    public static FArray<Short> ofShort() {
+        return OF_SHORT;
+    }
+    
+    public static FArray<String> ofString() {
+        return OF_STRING;
+    }
+    
+    
+    
+    
+
+
+    public final Sort<T> sort() {
+        return new Sort<T>();
     }
 
+    public final SortByComparator<T> sort(final Comparator<? super T> comparator) {
+        return new SortByComparator<T>(comparator);
+    }
+        
+    public final Distinct<T> distinct() {
+        return new Distinct<T>();
+    }
+    
+    public final Add<T> add(final T... newElements) {
+        return new Add<T>(newElements);
+    }
+    
+    public final Insert<T> insert(final int position, final T... newElements) {
+        return new Insert<T>(position, newElements);
+    }
+    
+    public final AddAll<T> addAll(final Collection<T> collection) {
+        return new AddAll<T>(collection);
+    }
+    
+    public final RemoveAllIndexes<T> removeAllIndexes(final int... indexes) {
+        return new RemoveAllIndexes<T>(indexes);
+    }
+    
+    public final RemoveAllEqual<T> removeAllEqual(final T... values) {
+        return new RemoveAllEqual<T>(values);
+    }
+    
+    public final RemoveAllTrue<T> removeAllTrue(final IFunction<Boolean,? super T> eval) {
+        return new RemoveAllTrue<T>(eval);
+    }
+    
+    public final RemoveAllFalse<T> removeAllFalse(final IFunction<Boolean,? super T> eval) {
+        return new RemoveAllFalse<T>(eval);
+    }
+    
+    public final RemoveAllIndexesNot<T> removeAllIndexesNot(final int... indexes) {
+        return new RemoveAllIndexesNot<T>(indexes);
+    }
+    
+    public final RemoveAllNull<T> removeAllNull() {
+        return new RemoveAllNull<T>();
+    }
+    
+    public final RemoveAllNotNullAndTrue<T> removeAllNotNullAndTrue(final IFunction<Boolean,? super T> eval) {
+        return new RemoveAllNotNullAndTrue<T>(eval);
+    }
+    
+    public final RemoveAllNotNullAndFalse<T> removeAllNotNullAndFalse(final IFunction<Boolean,? super T> eval) {
+        return new RemoveAllNotNullAndFalse<T>(eval);
+    }
+    
+    public final RemoveAllNullOrTrue<T> removeAllNullOrTrue(final IFunction<Boolean,? super T> eval) {
+        return new RemoveAllNullOrTrue<T>(eval);
+    }
+    
+    public final RemoveAllNullOrFalse<T> removeAllNullOrFalse(final IFunction<Boolean,? super T> eval) {
+        return new RemoveAllNullOrFalse<T>(eval);
+    }
+
+    
+    
+    
+    
+    protected FArray(final Type<T> type) {
+        super();
+        this.type = type;
+    }
+
+    
+    
+    
     
     
     
@@ -67,7 +239,7 @@ public final class ArrayFuncs {
     
     
     
-    public static final class Sort<T extends Comparable<? super T>> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
+    public static final class Sort<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
 
         public Sort() {
             super();
@@ -75,10 +247,15 @@ public final class ArrayFuncs {
 
         @Override
         public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+            return doSort(object, ctx);
+        }
 
-            final List<T> list = new ArrayList<T>(Arrays.asList(object));
+        @SuppressWarnings("unchecked")
+        public <X extends Comparable<? super X>> T[] doSort(final T[] object, final ExecCtx ctx) throws Exception {
+
+            final List<X> list = (List<X>) new ArrayList<Object>(Arrays.asList(object));
             Collections.sort(list);
-            return ArrayFuncs.fromList(object.getClass(), list);
+            return FArray.fromList(object.getClass(), (List<T>)(List<?>)list);
             
         }
 
@@ -102,7 +279,7 @@ public final class ArrayFuncs {
 
             final List<T> list = new ArrayList<T>(Arrays.asList(object));
             Collections.sort(list, this.comparator);
-            return ArrayFuncs.fromList(object.getClass(), list);
+            return FArray.fromList(object.getClass(), list);
             
         }
 
@@ -130,7 +307,7 @@ public final class ArrayFuncs {
                         .asList((Object[][]) object));
             }
 
-            return ArrayFuncs.fromList(object.getClass(), new ArrayList<T>((Set<T>)set));
+            return FArray.fromList(object.getClass(), new ArrayList<T>((Set<T>)set));
 
         }
 
@@ -187,7 +364,7 @@ public final class ArrayFuncs {
         public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.addAll(this.newElements);
-            return ArrayFuncs.fromList(object.getClass(), result);
+            return FArray.fromList(object.getClass(), result);
         }
         
     }
@@ -209,7 +386,7 @@ public final class ArrayFuncs {
         public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.addAll(this.position, this.newElements);
-            return ArrayFuncs.fromList(object.getClass(), result);
+            return FArray.fromList(object.getClass(), result);
         }
         
     }
@@ -232,7 +409,7 @@ public final class ArrayFuncs {
         public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.addAll(this.newElements);
-            return ArrayFuncs.fromList(object.getClass(), result);
+            return FArray.fromList(object.getClass(), result);
         }
         
     }
@@ -260,7 +437,7 @@ public final class ArrayFuncs {
                 }
                 i++;
             }
-            return ArrayFuncs.fromList(object.getClass(), result);
+            return FArray.fromList(object.getClass(), result);
         }
         
     }
@@ -282,7 +459,7 @@ public final class ArrayFuncs {
         public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.removeAll(this.values);
-            return ArrayFuncs.fromList(object.getClass(), result);
+            return FArray.fromList(object.getClass(), result);
         }
         
     }
@@ -309,7 +486,7 @@ public final class ArrayFuncs {
                     result.add(element);
                 }
             }
-            return ArrayFuncs.fromList(object.getClass(), result);
+            return FArray.fromList(object.getClass(), result);
         }
         
     }
@@ -336,7 +513,7 @@ public final class ArrayFuncs {
                     result.add(element);
                 }
             }
-            return ArrayFuncs.fromList(object.getClass(), result);
+            return FArray.fromList(object.getClass(), result);
         }
         
     }
@@ -364,7 +541,7 @@ public final class ArrayFuncs {
                 }
                 i++;
             }
-            return ArrayFuncs.fromList(object.getClass(), result);
+            return FArray.fromList(object.getClass(), result);
         }
         
     }
@@ -387,7 +564,7 @@ public final class ArrayFuncs {
                     result.add(element);
                 }
             }
-            return ArrayFuncs.fromList(object.getClass(), result);
+            return FArray.fromList(object.getClass(), result);
         }
         
     }
@@ -419,7 +596,7 @@ public final class ArrayFuncs {
                     result.add(null);
                 }
             }
-            return ArrayFuncs.fromList(object.getClass(), result);
+            return FArray.fromList(object.getClass(), result);
         }
         
     }
@@ -453,7 +630,7 @@ public final class ArrayFuncs {
                     result.add(null);
                 }
             }
-            return ArrayFuncs.fromList(object.getClass(), result);
+            return FArray.fromList(object.getClass(), result);
         }
         
     }
@@ -482,7 +659,7 @@ public final class ArrayFuncs {
                     }
                 }
             }
-            return ArrayFuncs.fromList(object.getClass(), result);
+            return FArray.fromList(object.getClass(), result);
         }
         
     }
@@ -513,97 +690,10 @@ public final class ArrayFuncs {
                     }
                 }
             }
-            return ArrayFuncs.fromList(object.getClass(), result);
+            return FArray.fromList(object.getClass(), result);
         }
         
     }
-    
-    
-    
-    
-    
-    
-    public static final class FlattenArrayOfArrays<T> extends AbstractNotNullFunc<T[], T[][]> {
-
-        private final Type<? super T> type; 
-        
-        public FlattenArrayOfArrays(final Type<? super T> type) {
-            super();
-            Validate.notNull(type, "A type representing the array elements must be specified");
-            this.type = type;
-        }
-
-        @Override
-        @SuppressWarnings("unchecked")
-        public T[] notNullExecute(final T[][] object, final ExecCtx ctx) throws Exception {
-            
-            final List<T> result = new ArrayList<T>();
-            for (final T[] element : object) {
-                result.addAll(Arrays.asList(element));
-            }
-            final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
-            return result.toArray(array);
-            
-        }
-
-    }
-    
-
-    
-    public static final class FlattenArrayOfLists<T> extends AbstractNotNullFunc<T[], List<T>[]> {
-
-        private final Type<? super T> type; 
-
-        public FlattenArrayOfLists(final Type<? super T> type) {
-            super();
-            Validate.notNull(type, "A type representing the collection elements must be specified");
-            this.type = type;
-        }
-
-        @Override
-        @SuppressWarnings("unchecked")
-        public T[] notNullExecute(final List<T>[] object, final ExecCtx ctx) throws Exception {
-            
-            final List<T> result = new ArrayList<T>();
-            for (final List<T> element : object) {
-                result.addAll(element);
-            }
-            final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
-            return result.toArray(array);
-            
-        }
-
-    }
-
-    
-
-    
-    public static final class FlattenArrayOfSets<T> extends AbstractNotNullFunc<T[], Set<T>[]> {
-
-        private final Type<? super T> type; 
-
-        public FlattenArrayOfSets(final Type<? super T> type) {
-            super();
-            Validate.notNull(type, "A type representing the collection elements must be specified");
-            this.type = type;
-        }
-
-        @Override
-        @SuppressWarnings("unchecked")
-        public T[] notNullExecute(final Set<T>[] object, final ExecCtx ctx) throws Exception {
-            
-            final List<T> result = new ArrayList<T>();
-            for (final Set<T> element : object) {
-                result.addAll(element);
-            }
-            final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
-            return result.toArray(array);
-            
-        }
-
-    }
-    
-    
     
     
 }

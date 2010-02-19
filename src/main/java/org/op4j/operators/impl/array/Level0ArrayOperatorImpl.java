@@ -28,7 +28,7 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToList;
 import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.converters.ToSet;
-import org.op4j.functions.structures.ArrayFuncs;
+import org.op4j.functions.structures.FArray;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperatorImpl;
@@ -69,30 +69,30 @@ public final class Level0ArrayOperatorImpl<T>
     
     @SuppressWarnings("unchecked")
     public Level0ArrayOperator<T> add(final T newElement) {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Add<T>(newElement)));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new FArray.Add<T>(newElement)));
     }
 
     public Level0ArrayOperator<T> addAll(final T... newElements) {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Add<T>(newElements)));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new FArray.Add<T>(newElements)));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0ArrayOperator<T> insert(final int position, final T newElement) {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Insert<T>(position, newElement)));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new FArray.Insert<T>(position, newElement)));
     }
 
     public Level0ArrayOperator<T> insertAll(final int position, final T... newElements) {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Insert<T>(position, newElements)));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new FArray.Insert<T>(position, newElements)));
     }
 
 
     public Level0ArrayOperator<T> addAll(final Collection<T> collection) {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.AddAll<T>(collection)));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new FArray.AddAll<T>(collection)));
     }
 
     public Level0ArrayOperator<T> distinct() {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Distinct<T>()));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new FArray.Distinct<T>()));
     }
 
     public Level1ArrayElementsOperator<T> forEach() {
@@ -101,61 +101,61 @@ public final class Level0ArrayOperatorImpl<T>
 
     
     public Level0ArrayOperator<T> removeAllIndexes(final int... indexes) {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllIndexes<T>(indexes)));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new FArray.RemoveAllIndexes<T>(indexes)));
     }
 
 
     public Level0ArrayOperator<T> removeAllEqual(final T... values) {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllEqual<T>(values)));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new FArray.RemoveAllEqual<T>(values)));
     }
 
 
     public Level0ArrayOperator<T> removeAllTrue(final IFunction<Boolean, ? super T> eval) {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllTrue<T>(eval)));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new FArray.RemoveAllTrue<T>(eval)));
     }
 
     public Level0ArrayOperator<T> removeAllFalse(final IFunction<Boolean, ? super T> eval) {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllFalse<T>(eval)));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new FArray.RemoveAllFalse<T>(eval)));
     }
 
     public Level0ArrayOperator<T> removeAllNullOrFalse(final IFunction<Boolean, ? super T> eval) {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllNullOrFalse<T>(eval)));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new FArray.RemoveAllNullOrFalse<T>(eval)));
     }
 
     public Level0ArrayOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super T> eval) {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllNotNullAndFalse<T>(eval)));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new FArray.RemoveAllNotNullAndFalse<T>(eval)));
     }
 
 
     public Level0ArrayOperator<T> removeAllNullOrTrue(final IFunction<Boolean, ? super T> eval) {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllNullOrTrue<T>(eval)));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new FArray.RemoveAllNullOrTrue<T>(eval)));
     }
 
 
     public Level0ArrayOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super T> eval) {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllNotNullAndTrue<T>(eval)));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new FArray.RemoveAllNotNullAndTrue<T>(eval)));
     }
 
 
     public Level0ArrayOperator<T> removeAllIndexesNot(final int... indexes) {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllIndexesNot<T>(indexes)));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new FArray.RemoveAllIndexesNot<T>(indexes)));
     }
 
 
 
     public Level0ArrayOperator<T> removeAllNull() {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllNull<T>()));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new FArray.RemoveAllNull<T>()));
     }
 
     
 
     @SuppressWarnings("unchecked")
     public Level0ArrayOperator<T> sort() {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.Sort()));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new FArray.Sort()));
     }
 
     public Level0ArrayOperator<T> sort(final Comparator<? super T> comparator) {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new ArrayFuncs.SortByComparator<T>(comparator)));
+        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().execute(new FArray.SortByComparator<T>(comparator)));
     }
 
     public Level0ListOperator<T> toList() {

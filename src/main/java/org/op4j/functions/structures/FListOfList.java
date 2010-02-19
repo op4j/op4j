@@ -18,34 +18,54 @@
  * =============================================================================
  */
 
-package org.op4j.functions;
+package org.op4j.functions.structures;
 
+import java.util.List;
 
+import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 
 /**
  * 
  * @since 1.0
  * 
  * @author Daniel Fern&aacute;ndez
- *
+ * 
  */
-public abstract class AbstractNullAsNullFunc<R, T> implements IFunction<R, T> {
+public final class FListOfList<T> extends FList<List<T>> {
+
     
     
-    protected AbstractNullAsNullFunc() {
-        super();
+    
+    public FlattenLists<T> flattenLists() {
+        return new FlattenLists<T>();
     }
+    
+    
 
+    
+    
+    protected FListOfList(final Type<T> type) {
+        super(Types.listOf(type));
+    }
+    
+    
+    
+    
+    
+    public static final class FlattenLists<T> extends FCollection.FlattenCollectionOfCollections<T, List<T>, List<List<T>>> {
 
-    public final R execute(final T object, final ExecCtx ctx) throws Exception {
-        if (object == null) {
-            return null;
+        
+        public FlattenLists() {
+            super();
         }
-        return nullAsNullExecute(object, ctx);
+
+        @Override
+        List<T> fromList(final List<T> object) {
+            return object;
+        }
+        
     }
-
-
-    public abstract R nullAsNullExecute(final T object, final ExecCtx ctx) throws Exception;
     
     
     

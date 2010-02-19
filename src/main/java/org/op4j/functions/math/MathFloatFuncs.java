@@ -24,8 +24,8 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.functions.AbstractNotNullFunc;
-import org.op4j.functions.AbstractNullAsNullFunc;
+import org.op4j.functions.AbstractNotNullFunction;
+import org.op4j.functions.AbstractNullAsNullFunction;
 import org.op4j.functions.ExecCtx;
 
 /**
@@ -135,7 +135,7 @@ public final class MathFloatFuncs {
     }
 	
 	
-	public static final class Max extends AbstractNotNullFunc<Float, Iterable<Float>> {
+	public static final class Max extends AbstractNotNullFunction<Float, Iterable<Float>> {
 
 		public Max() {
 			super();
@@ -158,7 +158,7 @@ public final class MathFloatFuncs {
 		}
 	}
 	
-	public static final class Min extends AbstractNotNullFunc<Float, Iterable<Float>> {
+	public static final class Min extends AbstractNotNullFunction<Float, Iterable<Float>> {
 
 		public Min() {
 			super();
@@ -181,7 +181,7 @@ public final class MathFloatFuncs {
 		}	
 	}
 	
-	public static final class Sum extends AbstractNotNullFunc<Float, Iterable<Float>> {
+	public static final class Sum extends AbstractNotNullFunction<Float, Iterable<Float>> {
 
 		public Sum() {
 			super();
@@ -199,7 +199,7 @@ public final class MathFloatFuncs {
 		}		
 	}
 	
-	public static final class Avg extends AbstractNotNullFunc<Float, Iterable<Float>> {
+	public static final class Avg extends AbstractNotNullFunction<Float, Iterable<Float>> {
 
 		private final RoundingMode roundingMode;
 		private final MathContext mathContext;
@@ -245,7 +245,7 @@ public final class MathFloatFuncs {
 		}		
 	}
 	
-	public static final class Abs extends AbstractNullAsNullFunc<Float, Float> {
+	public static final class Abs extends AbstractNullAsNullFunction<Float, Float> {
 
 		public Abs() {
 			super();
@@ -257,7 +257,7 @@ public final class MathFloatFuncs {
 		}
 	}
 	
-	public static final class Add extends AbstractNullAsNullFunc<Float, Float> {
+	public static final class Add extends AbstractNullAsNullFunction<Float, Float> {
 
 		private final Float add;
 		
@@ -276,7 +276,7 @@ public final class MathFloatFuncs {
 		}	
 	}
 	
-	public static final class Subtract extends AbstractNullAsNullFunc<Float, Float> {
+	public static final class Subtract extends AbstractNullAsNullFunction<Float, Float> {
 
 		private final Float subtract;
 		
@@ -296,7 +296,7 @@ public final class MathFloatFuncs {
 		}		
 	}
 	
-	public static final class Divide extends AbstractNullAsNullFunc<Float, Float> {
+	public static final class Divide extends AbstractNullAsNullFunction<Float, Float> {
 
 		private final Float divisor;
 		private final RoundingMode roundingMode;
@@ -344,7 +344,7 @@ public final class MathFloatFuncs {
 	}
 	
 	
-	public static final class Module extends AbstractNullAsNullFunc<Float, Float> {
+	public static final class Module extends AbstractNullAsNullFunction<Float, Float> {
 
 		private final int module;
 		
@@ -359,7 +359,7 @@ public final class MathFloatFuncs {
 		}	
 	}
 	
-	public static final class Multiply extends AbstractNullAsNullFunc<Float, Float> {
+	public static final class Multiply extends AbstractNullAsNullFunction<Float, Float> {
 
 		private final Float multiplicand;
 		private final MathContext mathContext;
@@ -406,7 +406,7 @@ public final class MathFloatFuncs {
 		}	
 	}
 	
-	public static final class Raise extends AbstractNullAsNullFunc<Float, Float> {
+	public static final class Raise extends AbstractNullAsNullFunction<Float, Float> {
 
 		private final int power;
 		private final MathContext mathContext;

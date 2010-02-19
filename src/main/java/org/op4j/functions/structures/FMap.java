@@ -30,7 +30,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
-import org.op4j.functions.AbstractNotNullFunc;
+import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
+import org.op4j.functions.AbstractNotNullFunction;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.IFunction;
 import org.op4j.util.VarArgsUtil;
@@ -42,13 +44,104 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-public final class MapFuncs {
+public final class FMap<K,V> {
+
+    
+    private static final FMap<Object,Object> OF_OBJECT_OBJECT = new FMap<Object,Object>(Types.OBJECT, Types.OBJECT);
+    private static final FMap<String,String> OF_STRING_STRING = new FMap<String,String>(Types.STRING, Types.STRING);
+    private static final FMap<Integer,String> OF_INTEGER_STRING = new FMap<Integer,String>(Types.INTEGER, Types.STRING);
+    private static final FMap<String,Integer> OF_STRING_INTEGER = new FMap<String,Integer>(Types.STRING, Types.INTEGER);
+
+    
+    protected final Type<K> keyType;
+    protected final Type<V> valueType;
+
 
     
     
+    public static <K,V> FMap<K,V> of(final Type<K> keyType, final Type<V> valueType) {
+        return new FMap<K,V>(keyType, valueType);
+    }
     
-    private MapFuncs() {
+    public static FMap<Object,Object> ofObjectObject() {
+        return OF_OBJECT_OBJECT;
+    }
+    
+    public static FMap<String,String> ofStringString() {
+        return OF_STRING_STRING;
+    }
+    
+    public static FMap<Integer,String> ofIntegerString() {
+        return OF_INTEGER_STRING;
+    }
+    
+    public static FMap<String,Integer> ofStringInteger() {
+        return OF_STRING_INTEGER;
+    }
+    
+    
+    
+    
+
+    public final SortByKey<K,V> sortByKey() {
+        return new SortByKey<K,V>();
+    }
+
+    public final SortEntries<K,V> sortByKey(final Comparator<? super Entry<K,V>> comparator) {
+        return new SortEntries<K,V>(comparator);
+    }
+    
+    public final Put<K,V> put(final K key, final V value) {
+        return new Put<K,V>(key, value);
+    }
+    
+    public final Insert<K,V> insert(final int position, final K key, final V value) {
+        return new Insert<K,V>(position, key, value);
+    }
+    
+    public final PutAll<K,V> putAll(final Map<K,V> map) {
+        return new PutAll<K,V>(map);
+    }
+    
+    public final InsertAll<K,V> insertAll(final int position, final Map<K,V> map) {
+        return new InsertAll<K,V>(position, map);
+    }
+    
+    public final RemoveAllKeys<K,V> removeAllKeys(final K... keys) {
+        return new RemoveAllKeys<K,V>(keys);
+    }
+    
+    public final RemoveAllTrue<K,V> removeAllTrue(final IFunction<Boolean,? super Entry<K,V>> eval) {
+        return new RemoveAllTrue<K,V>(eval);
+    }
+    
+    public final RemoveAllFalse<K,V> removeAllFalse(final IFunction<Boolean,? super Entry<K,V>> eval) {
+        return new RemoveAllFalse<K,V>(eval);
+    }
+    
+    public final RemoveAllKeysNot<K,V> removeAllKeysNot(final K... keys) {
+        return new RemoveAllKeysNot<K,V>(keys);
+    }
+    
+    public final ExtractKeys<K,V> extractKeys() {
+        return new ExtractKeys<K,V>();
+    }
+    
+    public final ExtractValues<K,V> extractValues() {
+        return new ExtractValues<K,V>();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    protected FMap(final Type<K> keyType, final Type<V> valueType) {
         super();
+        this.keyType = keyType;
+        this.valueType = valueType;
     }
 
     
@@ -56,7 +149,7 @@ public final class MapFuncs {
     
     
     
-    public static class SortByKey<K extends Comparable<? super K>, V> extends AbstractStructureNotNullNonConvertingFunc<Map<K, V>> {
+    public static class SortByKey<K,V> extends AbstractStructureNotNullNonConvertingFunc<Map<K, V>> {
 
         public SortByKey() {
             super();
@@ -64,10 +157,16 @@ public final class MapFuncs {
 
         @Override
         public Map<K, V> notNullExecute(final Map<K, V> object, final ExecCtx ctx) throws Exception {
-            final List<K> keys = new ArrayList<K>(object.keySet());
+            return doSort(object, ctx);
+        }
+        
+
+        @SuppressWarnings("unchecked")
+        public <X extends Comparable<? super X>> Map<K, V> doSort(final Map<K, V> object, final ExecCtx ctx) throws Exception {
+            final List<X> keys = (List<X>) new ArrayList<Object>(object.keySet());
             Collections.sort(keys);
             final Map<K, V> result = new LinkedHashMap<K, V>();
-            for (final K key : keys) {
+            for (final K key : (List<K>) keys) {
                 result.put(key, object.get(key));
             }
             return result;
@@ -318,7 +417,7 @@ public final class MapFuncs {
     
     
     
-    public static class ExtractKeys<K, V> extends AbstractNotNullFunc<Set<K>, Map<K, V>> {
+    public static class ExtractKeys<K, V> extends AbstractNotNullFunction<Set<K>, Map<K, V>> {
 
         public ExtractKeys() {
             super();
@@ -333,7 +432,7 @@ public final class MapFuncs {
     
     
     
-    public static class ExtractValues<K, V> extends AbstractNotNullFunc<List<V>, Map<K, V>> {
+    public static class ExtractValues<K, V> extends AbstractNotNullFunction<List<V>, Map<K, V>> {
 
         public ExtractValues() {
             super();

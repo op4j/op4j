@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.functions.AbstractNullAsNullFunc;
+import org.op4j.functions.AbstractNullAsNullFunction;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.IFunction;
 import org.op4j.mapbuild.IMapBuilder;
@@ -52,7 +52,7 @@ public final class ToMapOfSet {
     
     
     
-    public static final class FromArrayByKeyEval<K, T> extends AbstractNullAsNullFunc<Map<K, Set<T>>, T[]> {
+    public static final class FromArrayByKeyEval<K, T> extends AbstractNullAsNullFunction<Map<K, Set<T>>, T[]> {
 
         private final IFunction<K,? super T> eval;
         
@@ -83,7 +83,7 @@ public final class ToMapOfSet {
     
     
     
-    public static final class FromArrayByMapBuilder<K, V, T> extends AbstractNullAsNullFunc<Map<K, Set<V>>, T[]> {
+    public static final class FromArrayByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<Map<K, Set<V>>, T[]> {
 
         private final IMapBuilder<K, V, ? super T> mapBuilder;
         
@@ -114,7 +114,7 @@ public final class ToMapOfSet {
     
     
     
-    public static final class FromArrayByAlternateElements<T> extends AbstractNullAsNullFunc<Map<T, Set<T>>, T[]> {
+    public static final class FromArrayByAlternateElements<T> extends AbstractNullAsNullFunction<Map<T, Set<T>>, T[]> {
 
         public FromArrayByAlternateElements() {
             super();
@@ -147,7 +147,7 @@ public final class ToMapOfSet {
     
     
     
-    public static final class FromListByKeyEval<K, T> extends AbstractNullAsNullFunc<Map<K, Set<T>>, List<T>> {
+    public static final class FromListByKeyEval<K, T> extends AbstractNullAsNullFunction<Map<K, Set<T>>, List<T>> {
 
         private final IFunction<K,? super T> eval;
         
@@ -178,7 +178,7 @@ public final class ToMapOfSet {
     
     
     
-    public static final class FromListByMapBuilder<K, V, T> extends AbstractNullAsNullFunc<Map<K, Set<V>>, List<T>> {
+    public static final class FromListByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<Map<K, Set<V>>, List<T>> {
 
         private final IMapBuilder<K, V, ? super T> mapBuilder;
         
@@ -209,7 +209,7 @@ public final class ToMapOfSet {
     
     
     
-    public static final class FromListByAlternateElements<T> extends AbstractNullAsNullFunc<Map<T, Set<T>>, List<T>> {
+    public static final class FromListByAlternateElements<T> extends AbstractNullAsNullFunction<Map<T, Set<T>>, List<T>> {
 
         public FromListByAlternateElements() {
             super();
@@ -241,7 +241,7 @@ public final class ToMapOfSet {
     
     
     
-    public static final class FromSetByKeyEval<K, T> extends AbstractNullAsNullFunc<Map<K, Set<T>>, Set<T>> {
+    public static final class FromSetByKeyEval<K, T> extends AbstractNullAsNullFunction<Map<K, Set<T>>, Set<T>> {
 
         private final IFunction<K,? super T> eval;
         
@@ -272,7 +272,7 @@ public final class ToMapOfSet {
     
     
     
-    public static final class FromSetByMapBuilder<K, V, T> extends AbstractNullAsNullFunc<Map<K, Set<V>>, Set<T>> {
+    public static final class FromSetByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<Map<K, Set<V>>, Set<T>> {
 
         private final IMapBuilder<K, V, ? super T> mapBuilder;
         
@@ -303,7 +303,7 @@ public final class ToMapOfSet {
     
     
     
-    public static final class FromSetByAlternateElements<T> extends AbstractNullAsNullFunc<Map<T, Set<T>>, Set<T>> {
+    public static final class FromSetByAlternateElements<T> extends AbstractNullAsNullFunction<Map<T, Set<T>>, Set<T>> {
 
         public FromSetByAlternateElements() {
             super();

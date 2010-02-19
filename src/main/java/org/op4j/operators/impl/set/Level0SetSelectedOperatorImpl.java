@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.structures.SetFuncs;
+import org.op4j.functions.structures.FSet;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.operators.intf.set.Level0SetSelectedOperator;
@@ -29,57 +29,57 @@ public final class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0SetSelectedOperator<T> insertAll(final int position, final T... newElements) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T>(position, newElements)));
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new FSet.Insert<T>(position, newElements)));
     }
 
 
     public Level0SetSelectedOperator<T> removeAllIndexes(final int... indexes) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexes<T>(indexes)));
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllIndexes<T>(indexes)));
     }
 
 
     public Level0SetSelectedOperator<T> removeAllEqual(final T... values) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllEqual<T>(values)));
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllEqual<T>(values)));
     }
 
 
     public Level0SetSelectedOperator<T> removeAllTrue(final IFunction<Boolean,? super T> eval) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllTrue<T>(eval)));
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllTrue<T>(eval)));
     }
 
 
     public Level0SetSelectedOperator<T> removeAllFalse(final IFunction<Boolean,? super T> eval) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllFalse<T>(eval)));
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllFalse<T>(eval)));
     }
 
 
     public Level0SetSelectedOperator<T> removeAllNullOrFalse(final IFunction<Boolean,? super T> eval) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNullOrFalse<T>(eval)));
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllNullOrFalse<T>(eval)));
     }
 
 
     public Level0SetSelectedOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean,? super T> eval) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNotNullAndFalse<T>(eval)));
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllNotNullAndFalse<T>(eval)));
     }
 
 
     public Level0SetSelectedOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean,? super T> eval) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNotNullAndTrue<T>(eval)));
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllNotNullAndTrue<T>(eval)));
     }
 
 
     public Level0SetSelectedOperator<T> removeAllNullOrTrue(final IFunction<Boolean,? super T> eval) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNullOrTrue<T>(eval)));
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllNullOrTrue<T>(eval)));
     }
 
 
     public Level0SetSelectedOperator<T> removeAllIndexesNot(final int... indexes) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<T>(indexes)));
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllIndexesNot<T>(indexes)));
     }
 
 
     public Level0SetSelectedOperator<T> removeAllNull() {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNull<T>()));
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllNull<T>()));
     }
 
 
@@ -105,34 +105,34 @@ public final class Level0SetSelectedOperatorImpl<T> extends AbstractOperatorImpl
 
     @SuppressWarnings("unchecked")
     public Level0SetSelectedOperator<T> add(final T newElement) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElement)));
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new FSet.Add<T>(newElement)));
     }
 
 
     public Level0SetSelectedOperator<T> addAll(final T... newElements) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElements)));
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new FSet.Add<T>(newElements)));
     }
 
 
     public Level0SetSelectedOperator<T> addAll(final Collection<T> collection) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<T>(collection)));
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new FSet.AddAll<T>(collection)));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0SetSelectedOperator<T> insert(final int position, final T newElement) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T>(position, newElement)));
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new FSet.Insert<T>(position, newElement)));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0SetSelectedOperator<T> sort() {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.Sort()));
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new FSet.Sort()));
     }
 
 
     public Level0SetSelectedOperator<T> sort(final Comparator<? super T> comparator) {
-        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new SetFuncs.SortByComparator<T>(comparator)));
+        return new Level0SetSelectedOperatorImpl<T>(getTarget().execute(new FSet.SortByComparator<T>(comparator)));
     }
 
 

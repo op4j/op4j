@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.structures.MapFuncs;
+import org.op4j.functions.structures.FMap;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.intf.mapofset.Level0MapOfSetSelectedOperator;
@@ -26,17 +26,17 @@ public final class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOpera
 
 
     public Level0MapOfSetSelectedOperator<K,V> insertAll(final int position, final Map<K,Set<V>> map) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.InsertAll<K,Set<V>>(position, NormalisationUtils.normaliseMapOfSet(map))));
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.InsertAll<K,Set<V>>(position, NormalisationUtils.normaliseMapOfSet(map))));
     }
 
 
     public Level0MapOfSetSelectedOperator<K,V> removeAllTrue(final IFunction<Boolean,? super Entry<K,Set<V>>> eval) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K,Set<V>>(eval)));
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.RemoveAllTrue<K,Set<V>>(eval)));
     }
 
 
     public Level0MapOfSetSelectedOperator<K,V> removeAllFalse(final IFunction<Boolean,? super Entry<K,Set<V>>> eval) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K,Set<V>>(eval)));
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.RemoveAllFalse<K,Set<V>>(eval)));
     }
 
 
@@ -51,12 +51,12 @@ public final class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOpera
 
 
     public Level0MapOfSetSelectedOperator<K,V> removeAllKeys(final K... keys) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllKeys<K,Set<V>>(keys)));
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.RemoveAllKeys<K,Set<V>>(keys)));
     }
 
 
     public Level0MapOfSetSelectedOperator<K,V> removeAllKeysNot(final K... keys) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllKeysNot<K,Set<V>>(keys)));
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.RemoveAllKeysNot<K,Set<V>>(keys)));
     }
 
 
@@ -71,28 +71,28 @@ public final class Level0MapOfSetSelectedOperatorImpl<K,V> extends AbstractOpera
 
 
     public Level0MapOfSetSelectedOperator<K,V> put(final K newKey, final Set<V> newValue) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.Put<K,Set<V>>(newKey, NormalisationUtils.normaliseSet(newValue))));
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.Put<K,Set<V>>(newKey, NormalisationUtils.normaliseSet(newValue))));
     }
 
 
     public Level0MapOfSetSelectedOperator<K,V> putAll(final Map<K,Set<V>> map) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.PutAll<K,Set<V>>(NormalisationUtils.normaliseMapOfSet(map))));
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.PutAll<K,Set<V>>(NormalisationUtils.normaliseMapOfSet(map))));
     }
 
 
     public Level0MapOfSetSelectedOperator<K,V> insert(final int position, final K newKey, final Set<V> newValue) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.Insert<K,Set<V>>(position, newKey, NormalisationUtils.normaliseSet(newValue))));
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.Insert<K,Set<V>>(position, newKey, NormalisationUtils.normaliseSet(newValue))));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0MapOfSetSelectedOperator<K,V> sort() {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortByKey()));
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.SortByKey()));
     }
 
 
     public Level0MapOfSetSelectedOperator<K,V> sort(final Comparator<? super Entry<K,Set<V>>> comparator) {
-        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,Set<V>>(comparator)));
+        return new Level0MapOfSetSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.SortEntries<K,Set<V>>(comparator)));
     }
 
 

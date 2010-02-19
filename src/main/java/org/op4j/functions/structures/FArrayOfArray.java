@@ -18,77 +18,75 @@
  * =============================================================================
  */
 
-package org.op4j.functions.converters;
+package org.op4j.functions.structures;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
-import org.op4j.functions.AbstractNullAsNullFunction;
+import org.javaruntype.type.Types;
+import org.op4j.functions.AbstractNotNullFunction;
 import org.op4j.functions.ExecCtx;
-import org.op4j.functions.IFunction;
 
 /**
  * 
  * @since 1.0
  * 
  * @author Daniel Fern&aacute;ndez
- *
+ * 
  */
-public final class ToArray {
+public final class FArrayOfArray<T> extends FArray<T[]> {
+
     
     
-    private ToArray() {
-        super();
+    
+    public FlattenArrays<T> flattenArrays() {
+        return new FlattenArrays<T>(Types.arrayComponentOf(this.type));
     }
     
+    
 
     
     
+    protected FArrayOfArray(final Type<T> type) {
+        super(Types.arrayOf(type));
+    }
     
-    public static final class FromCollection<T> extends AbstractNullAsNullFunction<T[], Collection<T>> {
+    
+    
+    
+    
+    public static final class FlattenArrays<T> extends AbstractNotNullFunction<T[], T[][]> {
 
-        private final Type<T> type;
+        private final Type<T> type; 
         
-        public FromCollection(final Type<T> type) {
+        public FlattenArrays(final Type<T> type) {
             super();
-			Validate.notNull(type, "A type representing the collection elements must be specified");
+            Validate.notNull(type, "A type representing the array elements must be specified");
             this.type = type;
         }
 
         @Override
         @SuppressWarnings("unchecked")
-        public T[] nullAsNullExecute(final Collection<T> object, final ExecCtx ctx) throws Exception {
-            final List<T> result = new ArrayList<T>(object);
-            final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
-            return result.toArray(array);
-        }
-        
-    }
-
-    
-    
-    public static final class FromObject<T> implements IFunction<T[], T> {
-
-        private final Type<T> type;
-        
-        public FromObject(final Type<T> type) {
-            super();
-			Validate.notNull(type, "A type representing the object must be specified");
-            this.type = type;
-        }
-
-        @SuppressWarnings("unchecked")
-        public T[] execute(final T object, final ExecCtx ctx) throws Exception {
+        public T[] notNullExecute(final T[][] object, final ExecCtx ctx) throws Exception {
+            
             final List<T> result = new ArrayList<T>();
-            result.add(object);
+            for (final T[] element : object) {
+                result.addAll(Arrays.asList(element));
+            }
             final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
             return result.toArray(array);
+            
         }
-        
+
     }
+    
+
+    
+    
+    
     
 }

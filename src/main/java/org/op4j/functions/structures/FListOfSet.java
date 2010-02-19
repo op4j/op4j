@@ -18,35 +18,55 @@
  * =============================================================================
  */
 
-package org.op4j.functions;
+package org.op4j.functions.structures;
 
+import java.util.List;
+import java.util.Set;
+
+import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 
 /**
  * 
  * @since 1.0
  * 
  * @author Daniel Fern&aacute;ndez
- *
+ * 
  */
-public abstract class AbstractNotNullFunc<R, T> implements IFunction<R, T> {
+public final class FListOfSet<T> extends FList<Set<T>> {
+
     
     
-    protected AbstractNotNullFunc() {
-        super();
+    
+    public FlattenSets<T> flattenSets() {
+        return new FlattenSets<T>();
     }
+    
+    
 
+    
+    
+    protected FListOfSet(final Type<T> type) {
+        super(Types.setOf(type));
+    }
+    
+    
+    
+    
+    
+    public static final class FlattenSets<T> extends FCollection.FlattenCollectionOfCollections<T, List<T>, List<Set<T>>> {
 
-    public final R execute(final T object, final ExecCtx ctx) throws Exception {
-        if (object == null) {
-            throw new IllegalArgumentException(
-                    "Cannot execute function " + this.getClass().getName() + 
-                    " on a null target.");
+        
+        public FlattenSets() {
+            super();
         }
-        return notNullExecute(object, ctx);
+
+        @Override
+        List<T> fromList(final List<T> object) {
+            return object;
+        }
+        
     }
-
-
-    public abstract R notNullExecute(final T object, final ExecCtx ctx) throws Exception;
     
     
     

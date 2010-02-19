@@ -2,11 +2,9 @@ package org.op4j;
 
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -24,8 +22,8 @@ import org.op4j.functions.Call;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;
-import org.op4j.functions.StringFuncs;
-import org.op4j.functions.converters.ToCalendar;
+import org.op4j.functions.FString;
+import org.op4j.functions.structures.FArray;
 
 public class AssortedTests extends TestCase {
 
@@ -556,7 +554,7 @@ public class AssortedTests extends TestCase {
         final List<String> stringUpperList = Arrays.asList(new String[] {"ONE", "TWO", "THREE"});
 
         final List<String> result = 
-            Op.onList(stringList).map(StringFuncs.toUpperCase()).get();
+            Op.onList(stringList).map(FString.toUpperCase()).get();
         
         assertEquals(stringUpperList, result);
         
@@ -592,7 +590,7 @@ public class AssortedTests extends TestCase {
         final List<String> stringUpperList = Arrays.asList(new String[] {"ONE", "TWO", "THREE", null});
 
         final List<String> result = 
-            Op.onList(stringList).forEach().execIfNotNull(StringFuncs.toUpperCase()).get();
+            Op.onList(stringList).forEach().execIfNotNull(FString.toUpperCase()).get();
         
         assertEquals(stringUpperList, result);
         
@@ -606,9 +604,27 @@ public class AssortedTests extends TestCase {
         final List<String> stringUpperList = Arrays.asList(new String[] {"ONE", "TWO", "THREE", null});
 
         final List<String> result = 
-            Op.onList(stringList).mapIfNotNull(StringFuncs.toUpperCase()).get();
+            Op.onList(stringList).mapIfNotNull(FString.toUpperCase()).get();
         
         assertEquals(stringUpperList, result);
+        
+    }
+
+    
+    @Test
+    public void test26() {
+
+        final String[] stringArr = new String[] {"one", "two", "three", "three", null, null};
+        final String[] stringArrDist = new String[] {"one", "two", "three", null, "four"};
+
+        final String[] result = 
+            Op.onArrayOf(Types.STRING, stringArr).
+                    exec(FArray.ofString().distinct()).
+                    exec(FArray.ofString().add("four")).
+                    get();
+        
+        assertEquals(String[].class, result.getClass());
+        assertEquals(Arrays.asList(stringArrDist), Arrays.asList(result));
         
     }
     

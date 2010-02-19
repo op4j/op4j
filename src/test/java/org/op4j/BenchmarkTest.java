@@ -29,7 +29,7 @@ import org.apache.commons.lang.time.StopWatch;
 import org.javaruntype.type.Types;
 import org.junit.Test;
 import org.op4j.functions.Call;
-import org.op4j.functions.StringFuncs;
+import org.op4j.functions.FString;
 import org.op4j.functions.converters.ToBoolean;
 import org.op4j.operators.intf.array.Level0ArrayOperator;
 import org.op4j.operators.intf.list.Level0ListOperator;
@@ -72,7 +72,7 @@ public class BenchmarkTest {
                 String[] upperNames1 = null; 
 				for (int i = 0; i < ITERATIONS; i++) {
 					upperNames1 = 
-						Op.onList(users).forEach().exec(Call.asString("getName")).exec(StringFuncs.toUpperCase()).endFor().toArrayOf(Types.STRING).get();
+						Op.onList(users).forEach().exec(Call.asString("getName")).exec(FString.toUpperCase()).endFor().toArrayOf(Types.STRING).get();
 				}
 				
 				stopWatch1.stop();
@@ -117,7 +117,7 @@ public class BenchmarkTest {
                 String[] upperNames2 = null; 
 				for (int i = 0; i < ITERATIONS; i++) {
 				    upperNames2 = 
-						Op.onList(users).forEach().exec(Call.asString("getName")).exec(StringFuncs.toUpperCase()).endFor().toArrayOf(Types.STRING).get();
+						Op.onList(users).forEach().exec(Call.asString("getName")).exec(FString.toUpperCase()).endFor().toArrayOf(Types.STRING).get();
 				}
 				
 				stopWatch2.stop();
@@ -165,7 +165,7 @@ public class BenchmarkTest {
 			Level1ListElementsOperator<String> op4 = null;
 			op4jWatch.start();
 			for (int i = 0; i < ITERATIONS; i++) {
-				op4 = op3.exec(StringFuncs.toUpperCase());
+				op4 = op3.exec(FString.toUpperCase());
 			}
 			op4jWatch.stop();
 			

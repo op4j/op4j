@@ -29,7 +29,7 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToArray;
 import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.converters.ToSet;
-import org.op4j.functions.structures.ListFuncs;
+import org.op4j.functions.structures.FList;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.array.Level0ArrayOperatorImpl;
@@ -66,31 +66,31 @@ public final class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
 
     @SuppressWarnings("unchecked")
     public Level0ListOperator<T> add(final T newElement) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T>(newElement)));
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new FList.Add<T>(newElement)));
     }
 
     public Level0ListOperator<T> addAll(final T... newElements) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.Add<T>(newElements)));
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new FList.Add<T>(newElements)));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0ListOperator<T> insert(final int position, final T newElement) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<T>(position, newElement)));
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new FList.Insert<T>(position, newElement)));
     }
 
     public Level0ListOperator<T> insertAll(final int position, final T... newElements) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.Insert<T>(position, newElements)));
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new FList.Insert<T>(position, newElements)));
     }
 
 
     public Level0ListOperator<T> addAll(final Collection<T> collection) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.AddAll<T>(collection)));
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new FList.AddAll<T>(collection)));
     }
 
 
     public Level0ListOperator<T> distinct() {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.Distinct<T>()));
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new FList.Distinct<T>()));
     }
 
 
@@ -100,49 +100,49 @@ public final class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0ListOperator<T> removeAllIndexes(final int... indexes) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllIndexes<T>(indexes)));
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new FList.RemoveAllIndexes<T>(indexes)));
     }
 
 
     public Level0ListOperator<T> removeAllEqual(final T... values) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllEqual<T>(values)));
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new FList.RemoveAllEqual<T>(values)));
     }
 
 
     public Level0ListOperator<T> removeAllTrue(final IFunction<Boolean, ? super T> eval) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllTrue<T>(eval)));
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new FList.RemoveAllTrue<T>(eval)));
     }
 
     public Level0ListOperator<T> removeAllFalse(final IFunction<Boolean, ? super T> eval) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllFalse<T>(eval)));
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new FList.RemoveAllFalse<T>(eval)));
     }
 
     public Level0ListOperator<T> removeAllNullOrFalse(final IFunction<Boolean, ? super T> eval) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNullOrFalse<T>(eval)));
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new FList.RemoveAllNullOrFalse<T>(eval)));
     }
 
     public Level0ListOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super T> eval) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNotNullAndFalse<T>(eval)));
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new FList.RemoveAllNotNullAndFalse<T>(eval)));
     }
 
 
     public Level0ListOperator<T> removeAllNullOrTrue(final IFunction<Boolean, ? super T> eval) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNullOrTrue<T>(eval)));
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new FList.RemoveAllNullOrTrue<T>(eval)));
     }
 
 
     public Level0ListOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super T> eval) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNotNullAndTrue<T>(eval)));
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new FList.RemoveAllNotNullAndTrue<T>(eval)));
     }
 
 
     public Level0ListOperator<T> removeAllIndexesNot(final int... indexes) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllIndexesNot<T>(indexes)));
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new FList.RemoveAllIndexesNot<T>(indexes)));
     }
 
 
     public Level0ListOperator<T> removeAllNull() {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.RemoveAllNull<T>()));
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new FList.RemoveAllNull<T>()));
     }
 
     
@@ -150,12 +150,12 @@ public final class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
 
     @SuppressWarnings("unchecked")
     public Level0ListOperator<T> sort() {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.Sort()));
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new FList.Sort()));
     }
 
 
     public Level0ListOperator<T> sort(final Comparator<? super T> comparator) {
-        return new Level0ListOperatorImpl<T>(getTarget().execute(new ListFuncs.SortByComparator<T>(comparator)));
+        return new Level0ListOperatorImpl<T>(getTarget().execute(new FList.SortByComparator<T>(comparator)));
     }
 
 

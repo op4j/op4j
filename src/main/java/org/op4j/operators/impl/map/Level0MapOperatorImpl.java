@@ -26,7 +26,7 @@ import java.util.Map.Entry;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.structures.MapFuncs;
+import org.op4j.functions.structures.FMap;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperatorImpl;
 import org.op4j.operators.impl.list.Level0ListOperatorImpl;
@@ -62,12 +62,12 @@ public final class Level0MapOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public Level0SetOperator<K> extractKeys() {
-        return new Level0SetOperatorImpl<K>(getTarget().execute(new MapFuncs.ExtractKeys<K, V>()));
+        return new Level0SetOperatorImpl<K>(getTarget().execute(new FMap.ExtractKeys<K, V>()));
     }
 
 
     public Level0ListOperator<V> extractValues() {
-        return new Level0ListOperatorImpl<V>(getTarget().execute(new MapFuncs.ExtractValues<K, V>()));
+        return new Level0ListOperatorImpl<V>(getTarget().execute(new FMap.ExtractValues<K, V>()));
     }
 
 
@@ -81,41 +81,41 @@ public final class Level0MapOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public Level0MapOperator<K, V> put(final K newKey, final V newValue) {
-        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new MapFuncs.Put<K, V>(newKey, newValue)));
+        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new FMap.Put<K, V>(newKey, newValue)));
     }
 
 
     public Level0MapOperator<K, V> insert(final int position, final K newKey, final V newValue) {
-        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new MapFuncs.Insert<K, V>(position, newKey, newValue)));
+        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new FMap.Insert<K, V>(position, newKey, newValue)));
     }
 
 
     public Level0MapOperator<K, V> putAll(final Map<K, V> map) {
-        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new MapFuncs.PutAll<K, V>(map)));
+        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new FMap.PutAll<K, V>(map)));
     }
 
 
     public Level0MapOperator<K, V> insertAll(final int position, final Map<K, V> map) {
-        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new MapFuncs.InsertAll<K, V>(position, map)));
+        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new FMap.InsertAll<K, V>(position, map)));
     }
 
 
     public Level0MapOperator<K, V> removeAllKeys(final K... keys) {
-        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllKeys<K, V>(keys)));
+        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new FMap.RemoveAllKeys<K, V>(keys)));
     }
 
 
     public Level0MapOperator<K, V> removeAllTrue(final IFunction<Boolean, ? super Entry<K, V>> eval) {
-        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K, V>(eval)));
+        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new FMap.RemoveAllTrue<K, V>(eval)));
     }
 
     public Level0MapOperator<K, V> removeAllFalse(final IFunction<Boolean, ? super Entry<K, V>> eval) {
-        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K, V>(eval)));
+        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new FMap.RemoveAllFalse<K, V>(eval)));
     }
 
 
     public Level0MapOperator<K, V> removeAllKeysNot(final K... keys) {
-        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllKeysNot<K, V>(keys)));
+        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new FMap.RemoveAllKeysNot<K, V>(keys)));
     }
 
 
@@ -130,12 +130,12 @@ public final class Level0MapOperatorImpl<K,V> extends AbstractOperatorImpl
 
     @SuppressWarnings("unchecked")
     public Level0MapOperator<K, V> sort() {
-        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new MapFuncs.SortByKey()));
+        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new FMap.SortByKey()));
     }
 
 
     public Level0MapOperator<K, V> sort(final Comparator<? super Entry<K, V>> comparator) {
-        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new MapFuncs.SortEntries<K, V>(comparator)));
+        return new Level0MapOperatorImpl<K, V>(getTarget().execute(new FMap.SortEntries<K, V>(comparator)));
     }
 
 

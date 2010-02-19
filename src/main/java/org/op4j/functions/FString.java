@@ -33,7 +33,7 @@ import org.apache.commons.lang.Validate;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class StringFuncs {
+public final class FString {
 
 	private static EscapeCSV ESCAPE_CSV_STRING_FUNC = new EscapeCSV();
 	private static UnescapeCSV UNESCAPE_CSV_STRING_FUNC = new UnescapeCSV();
@@ -50,7 +50,7 @@ public final class StringFuncs {
 	private static Trim TRIM_STRING_FUNC = new Trim();
 	private static Strip STRIP_STRING_FUNC = new Strip();
 	
-	private StringFuncs() {
+	private FString() {
 		super();           
 	}
 
@@ -118,7 +118,7 @@ public final class StringFuncs {
         return STRIP_STRING_FUNC;
     }
 	
-	static abstract class BaseStringFunc<X> extends AbstractNotNullFunc<String, X> {
+	static abstract class BaseStringFunc<X> extends AbstractNotNullFunction<String, X> {
 	    
 		public BaseStringFunc() {
 			super();			

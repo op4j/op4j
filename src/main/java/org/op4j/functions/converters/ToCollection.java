@@ -25,7 +25,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import org.op4j.functions.AbstractNullAsNullFunc;
+import org.op4j.functions.AbstractNullAsNullFunction;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.IFunction;
 
@@ -47,7 +47,7 @@ class ToCollection {
     
     
     
-    static abstract class FromArray<T, X extends Collection<T>> extends AbstractNullAsNullFunc<X, T[]> {
+    static abstract class FromArray<T, X extends Collection<T>> extends AbstractNullAsNullFunction<X, T[]> {
 
         public FromArray() {
             super();
@@ -66,7 +66,7 @@ class ToCollection {
 
     
     
-    static abstract class FromCollection<T, X extends Collection<T>> extends AbstractNullAsNullFunc<X, Collection<T>> {
+    static abstract class FromCollection<T, X extends Collection<T>> extends AbstractNullAsNullFunction<X, Collection<T>> {
 
         public FromCollection() {
             super();

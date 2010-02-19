@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.structures.ArrayFuncs;
+import org.op4j.functions.structures.FArray;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofarray.Level1MapOfArrayEntriesSelectedOperator;
 import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesSelectedValueOperator;
@@ -85,62 +85,62 @@ public final class Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V> extends
 
 
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> distinct() {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.Distinct<V>()));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new FArray.Distinct<V>()));
     }
 
 
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> insertAll(final int position, final V... newElements) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.Insert<V>(position, newElements)));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new FArray.Insert<V>(position, newElements)));
     }
 
 
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllIndexes(final int... indexes) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllIndexes<V>(indexes)));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new FArray.RemoveAllIndexes<V>(indexes)));
     }
 
 
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllEqual(final V... values) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllEqual<V>(values)));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new FArray.RemoveAllEqual<V>(values)));
     }
 
 
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllTrue(final IFunction<Boolean,? super V> eval) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllTrue<V>(eval)));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new FArray.RemoveAllTrue<V>(eval)));
     }
 
 
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllFalse(final IFunction<Boolean,? super V> eval) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllFalse<V>(eval)));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new FArray.RemoveAllFalse<V>(eval)));
     }
 
 
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllNullOrFalse(final IFunction<Boolean,? super V> eval) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllNullOrFalse<V>(eval)));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new FArray.RemoveAllNullOrFalse<V>(eval)));
     }
 
 
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllNotNullAndFalse(final IFunction<Boolean,? super V> eval) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllNotNullAndFalse<V>(eval)));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new FArray.RemoveAllNotNullAndFalse<V>(eval)));
     }
 
 
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllNotNullAndTrue(final IFunction<Boolean,? super V> eval) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllNotNullAndTrue<V>(eval)));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new FArray.RemoveAllNotNullAndTrue<V>(eval)));
     }
 
 
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllNullOrTrue(final IFunction<Boolean,? super V> eval) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllNullOrTrue<V>(eval)));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new FArray.RemoveAllNullOrTrue<V>(eval)));
     }
 
 
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllIndexesNot(final int... indexes) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllIndexesNot<V>(indexes)));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new FArray.RemoveAllIndexesNot<V>(indexes)));
     }
 
 
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> removeAllNull() {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.RemoveAllNull<V>()));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new FArray.RemoveAllNull<V>()));
     }
 
 
@@ -166,34 +166,34 @@ public final class Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V> extends
 
     @SuppressWarnings("unchecked")
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> add(final V newElement) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.Add<V>(newElement)));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new FArray.Add<V>(newElement)));
     }
 
 
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> addAll(final V... newElements) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.Add<V>(newElements)));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new FArray.Add<V>(newElements)));
     }
 
 
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> addAll(final Collection<V> collection) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.AddAll<V>(collection)));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new FArray.AddAll<V>(collection)));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> insert(final int position, final V newElement) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.Insert<V>(position, newElement)));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new FArray.Insert<V>(position, newElement)));
     }
 
 
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> sort(final Comparator<? super V> comparator) {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.SortByComparator<V>(comparator)));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new FArray.SortByComparator<V>(comparator)));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level2MapOfArrayEntriesSelectedValueOperator<K,V> sort() {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new ArrayFuncs.Sort()));
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().execute(new FArray.Sort()));
     }
 
 

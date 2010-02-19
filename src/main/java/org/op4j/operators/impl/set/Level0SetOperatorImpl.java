@@ -29,7 +29,7 @@ import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToArray;
 import org.op4j.functions.converters.ToList;
 import org.op4j.functions.converters.ToMap;
-import org.op4j.functions.structures.SetFuncs;
+import org.op4j.functions.structures.FSet;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.array.Level0ArrayOperatorImpl;
@@ -66,26 +66,26 @@ public final class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
 
     @SuppressWarnings("unchecked")
     public Level0SetOperator<T> add(final T newElement) {
-        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElement)));
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new FSet.Add<T>(newElement)));
     }
 
     public Level0SetOperator<T> addAll(final T... newElements) {
-        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.Add<T>(newElements)));
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new FSet.Add<T>(newElements)));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0SetOperator<T> insert(final int position, final T newElement) {
-        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T>(position, newElement)));
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new FSet.Insert<T>(position, newElement)));
     }
 
     public Level0SetOperator<T> insertAll(final int position, final T... newElements) {
-        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.Insert<T>(position, newElements)));
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new FSet.Insert<T>(position, newElements)));
     }
 
 
     public Level0SetOperator<T> addAll(final Collection<T> collection) {
-        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.AddAll<T>(collection)));
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new FSet.AddAll<T>(collection)));
     }
 
 
@@ -95,49 +95,49 @@ public final class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
 
 
     public Level0SetOperator<T> removeAllIndexes(final int... indexes) {
-        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexes<T>(indexes)));
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllIndexes<T>(indexes)));
     }
 
 
     public Level0SetOperator<T> removeAllEqual(final T... values) {
-        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllEqual<T>(values)));
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllEqual<T>(values)));
     }
 
 
     public Level0SetOperator<T> removeAllTrue(final IFunction<Boolean, ? super T> eval) {
-        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllTrue<T>(eval)));
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllTrue<T>(eval)));
     }
 
     public Level0SetOperator<T> removeAllFalse(final IFunction<Boolean, ? super T> eval) {
-        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllFalse<T>(eval)));
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllFalse<T>(eval)));
     }
 
     public Level0SetOperator<T> removeAllNullOrFalse(final IFunction<Boolean, ? super T> eval) {
-        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNullOrFalse<T>(eval)));
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllNullOrFalse<T>(eval)));
     }
 
     public Level0SetOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super T> eval) {
-        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNotNullAndFalse<T>(eval)));
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllNotNullAndFalse<T>(eval)));
     }
 
 
     public Level0SetOperator<T> removeAllNullOrTrue(final IFunction<Boolean, ? super T> eval) {
-        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNullOrTrue<T>(eval)));
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllNullOrTrue<T>(eval)));
     }
 
 
     public Level0SetOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super T> eval) {
-        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNotNullAndTrue<T>(eval)));
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllNotNullAndTrue<T>(eval)));
     }
 
 
     public Level0SetOperator<T> removeAllIndexesNot(final int... indexes) {
-        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<T>(indexes)));
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllIndexesNot<T>(indexes)));
     }
 
 
     public Level0SetOperator<T> removeAllNull() {
-        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.RemoveAllNull<T>()));
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new FSet.RemoveAllNull<T>()));
     }
 
     
@@ -145,12 +145,12 @@ public final class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
 
     @SuppressWarnings("unchecked")
     public Level0SetOperator<T> sort() {
-        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.Sort()));
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new FSet.Sort()));
     }
 
 
     public Level0SetOperator<T> sort(final Comparator<? super T> comparator) {
-        return new Level0SetOperatorImpl<T>(getTarget().execute(new SetFuncs.SortByComparator<T>(comparator)));
+        return new Level0SetOperatorImpl<T>(getTarget().execute(new FSet.SortByComparator<T>(comparator)));
     }
 
 

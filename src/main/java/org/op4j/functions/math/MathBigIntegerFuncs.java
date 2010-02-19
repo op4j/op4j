@@ -22,8 +22,8 @@ package org.op4j.functions.math;
 import java.math.BigInteger;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.functions.AbstractNotNullFunc;
-import org.op4j.functions.AbstractNullAsNullFunc;
+import org.op4j.functions.AbstractNotNullFunction;
+import org.op4j.functions.AbstractNullAsNullFunction;
 import org.op4j.functions.ExecCtx;
 
 /**
@@ -113,7 +113,7 @@ public final class MathBigIntegerFuncs {
     }
 	
 	
-	public static final class Max extends AbstractNotNullFunc<BigInteger, Iterable<BigInteger>> {
+	public static final class Max extends AbstractNotNullFunction<BigInteger, Iterable<BigInteger>> {
 
 		public Max() {
 			super();
@@ -136,7 +136,7 @@ public final class MathBigIntegerFuncs {
 		}
 	}
 	
-	public static final class Min extends AbstractNotNullFunc<BigInteger, Iterable<BigInteger>> {
+	public static final class Min extends AbstractNotNullFunction<BigInteger, Iterable<BigInteger>> {
 
 		public Min() {
 			super();
@@ -159,7 +159,7 @@ public final class MathBigIntegerFuncs {
 		}	
 	}
 	
-	public static final class Sum extends AbstractNotNullFunc<BigInteger, Iterable<BigInteger>> {
+	public static final class Sum extends AbstractNotNullFunction<BigInteger, Iterable<BigInteger>> {
 
 		public Sum() {
 			super();
@@ -177,7 +177,7 @@ public final class MathBigIntegerFuncs {
 		}		
 	}
 	
-	public static final class Avg extends AbstractNotNullFunc<BigInteger, Iterable<BigInteger>> {
+	public static final class Avg extends AbstractNotNullFunction<BigInteger, Iterable<BigInteger>> {
 
 		public Avg() {
 			super();
@@ -198,7 +198,7 @@ public final class MathBigIntegerFuncs {
 		}		
 	}
 	
-	public static final class Abs extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
+	public static final class Abs extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
 
 		public Abs() {
 			super();
@@ -210,7 +210,7 @@ public final class MathBigIntegerFuncs {
 		}
 	}
 	
-	public static final class Add extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
+	public static final class Add extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
 
 		private final BigInteger add;
 		
@@ -229,7 +229,7 @@ public final class MathBigIntegerFuncs {
 		}	
 	}
 	
-	public static final class Subtract extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
+	public static final class Subtract extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
 
 		private final BigInteger subtract;
 		
@@ -249,7 +249,7 @@ public final class MathBigIntegerFuncs {
 		}		
 	}
 	
-	public static final class Divide extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
+	public static final class Divide extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
 
 		private final BigInteger divisor;
 		
@@ -270,7 +270,7 @@ public final class MathBigIntegerFuncs {
 	}
 	
 	
-	public static final class Module extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
+	public static final class Module extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
 
 		private final BigInteger module;
 		
@@ -285,7 +285,7 @@ public final class MathBigIntegerFuncs {
 		}	
 	}
 	
-	public static final class Remainder extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
+	public static final class Remainder extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
 
 		private final BigInteger divisor;
 		
@@ -300,7 +300,7 @@ public final class MathBigIntegerFuncs {
 		}	
 	}
 	
-	public static final class Multiply extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
+	public static final class Multiply extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
 
 		private final BigInteger multiplicand;
 		
@@ -318,7 +318,7 @@ public final class MathBigIntegerFuncs {
 		}	
 	}
 	
-	public static final class Raise extends AbstractNullAsNullFunc<BigInteger, BigInteger> {
+	public static final class Raise extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
 
 		private final int power;
 		

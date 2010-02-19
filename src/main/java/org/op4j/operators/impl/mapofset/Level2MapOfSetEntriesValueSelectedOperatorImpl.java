@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.structures.SetFuncs;
+import org.op4j.functions.structures.FSet;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
 import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueSelectedOperator;
@@ -30,57 +30,57 @@ public final class Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V> extends A
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> insertAll(final int position, final V... newElements) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Insert<V>(position, newElements)));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new FSet.Insert<V>(position, newElements)));
     }
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> removeAllIndexes(final int... indexes) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllIndexes<V>(indexes)));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new FSet.RemoveAllIndexes<V>(indexes)));
     }
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> removeAllEqual(final V... values) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllEqual<V>(values)));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new FSet.RemoveAllEqual<V>(values)));
     }
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> removeAllTrue(final IFunction<Boolean,? super V> eval) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllTrue<V>(eval)));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new FSet.RemoveAllTrue<V>(eval)));
     }
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> removeAllFalse(final IFunction<Boolean,? super V> eval) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllFalse<V>(eval)));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new FSet.RemoveAllFalse<V>(eval)));
     }
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> removeAllNullOrFalse(final IFunction<Boolean,? super V> eval) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllNullOrFalse<V>(eval)));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new FSet.RemoveAllNullOrFalse<V>(eval)));
     }
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> removeAllNotNullAndFalse(final IFunction<Boolean,? super V> eval) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllNotNullAndFalse<V>(eval)));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new FSet.RemoveAllNotNullAndFalse<V>(eval)));
     }
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> removeAllNotNullAndTrue(final IFunction<Boolean,? super V> eval) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllNotNullAndTrue<V>(eval)));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new FSet.RemoveAllNotNullAndTrue<V>(eval)));
     }
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> removeAllNullOrTrue(final IFunction<Boolean,? super V> eval) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllNullOrTrue<V>(eval)));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new FSet.RemoveAllNullOrTrue<V>(eval)));
     }
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> removeAllIndexesNot(final int... indexes) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllIndexesNot<V>(indexes)));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new FSet.RemoveAllIndexesNot<V>(indexes)));
     }
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> removeAllNull() {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.RemoveAllNull<V>()));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new FSet.RemoveAllNull<V>()));
     }
 
 
@@ -106,34 +106,34 @@ public final class Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V> extends A
 
     @SuppressWarnings("unchecked")
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> add(final V newElement) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Add<V>(newElement)));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new FSet.Add<V>(newElement)));
     }
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> addAll(final V... newElements) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Add<V>(newElements)));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new FSet.Add<V>(newElements)));
     }
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> addAll(final Collection<V> collection) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.AddAll<V>(collection)));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new FSet.AddAll<V>(collection)));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> insert(final int position, final V newElement) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Insert<V>(position, newElement)));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new FSet.Insert<V>(position, newElement)));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> sort() {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.Sort()));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new FSet.Sort()));
     }
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K,V> sort(final Comparator<? super V> comparator) {
-        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new SetFuncs.SortByComparator<V>(comparator)));
+        return new Level2MapOfSetEntriesValueSelectedOperatorImpl<K,V>(getTarget().execute(new FSet.SortByComparator<V>(comparator)));
     }
 
 

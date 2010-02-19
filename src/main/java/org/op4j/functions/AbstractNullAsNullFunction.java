@@ -18,9 +18,8 @@
  * =============================================================================
  */
 
-package org.op4j.functions.structures;
+package org.op4j.functions;
 
-import org.op4j.functions.AbstractNotNullFunction;
 
 
 /**
@@ -30,12 +29,24 @@ import org.op4j.functions.AbstractNotNullFunction;
  * @author Daniel Fern&aacute;ndez
  *
  */
-abstract class AbstractStructureNotNullNonConvertingFunc<T> extends AbstractNotNullFunction<T, T> {
+public abstract class AbstractNullAsNullFunction<R, T> implements IFunction<R, T> {
     
     
-    protected AbstractStructureNotNullNonConvertingFunc() {
+    protected AbstractNullAsNullFunction() {
         super();
     }
 
 
+    public final R execute(final T object, final ExecCtx ctx) throws Exception {
+        if (object == null) {
+            return null;
+        }
+        return nullAsNullExecute(object, ctx);
+    }
+
+
+    public abstract R nullAsNullExecute(final T object, final ExecCtx ctx) throws Exception;
+    
+    
+    
 }

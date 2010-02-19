@@ -20,22 +20,55 @@
 
 package org.op4j.functions.structures;
 
-import org.op4j.functions.AbstractNotNullFunction;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
+import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 
 /**
  * 
  * @since 1.0
  * 
  * @author Daniel Fern&aacute;ndez
- *
+ * 
  */
-abstract class AbstractStructureNotNullNonConvertingFunc<T> extends AbstractNotNullFunction<T, T> {
+public final class FSetOfArray<T> extends FSet<T[]> {
+
     
     
-    protected AbstractStructureNotNullNonConvertingFunc() {
-        super();
+    
+    public FlattenArrays<T> flattenArrays() {
+        return new FlattenArrays<T>();
     }
+    
+    
 
+    
+    
+    protected FSetOfArray(final Type<T> type) {
+        super(Types.arrayOf(type));
+    }
+    
+    
+    
+    
+    
+    public static final class FlattenArrays<T> extends FCollection.FlattenCollectionOfArrays<T, Set<T>, Set<T[]>> {
 
+        
+        public FlattenArrays() {
+            super();
+        }
+
+        @Override
+        Set<T> fromList(final List<T> object) {
+            return new LinkedHashSet<T>(object);
+        }
+        
+    }
+    
+    
+    
 }

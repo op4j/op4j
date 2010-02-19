@@ -40,7 +40,7 @@ import org.junit.Test;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;
-import org.op4j.functions.StringFuncs;
+import org.op4j.functions.FString;
 import org.op4j.functions.converters.DecimalPoint;
 import org.op4j.functions.converters.ToBigDecimal;
 import org.op4j.functions.converters.ToBigInteger;
@@ -50,9 +50,9 @@ import org.op4j.functions.converters.ToInteger;
 import org.op4j.functions.converters.ToLong;
 import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.converters.ToMapOfArray;
-import org.op4j.functions.structures.ArrayFuncs;
-import org.op4j.functions.structures.ListFuncs;
-import org.op4j.functions.structures.SetFuncs;
+import org.op4j.functions.structures.FArray;
+import org.op4j.functions.structures.FList;
+import org.op4j.functions.structures.FSet;
 
 /**
  * 
@@ -242,22 +242,22 @@ watch.start();
         System.out.println(dateFormat.format(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildList().get()).exec(ToCalendar.fromIntegerFieldList()).get().getTime()));
         System.out.println(dateFormat.format(Op.on(Op.onAll("1979", "11", "25", "12", "30").buildArrayOf(Types.STRING).get()).exec(ToCalendar.fromStringFieldArray()).get().getTime()));
         
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildList().get()).exec(new ListFuncs.Sort<Integer>()).get());
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildSet().get()).exec(new SetFuncs.Sort<Integer>()).get());
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFuncs.Distinct<Integer>()).get());
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildList().get()).exec(new FList.Sort<Integer>()).get());
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildSet().get()).exec(new FSet.Sort<Integer>()).get());
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new FList.Distinct<Integer>()).get());
         
-        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildArrayOf(Types.INTEGER).get()).exec(new ArrayFuncs.Sort<Integer>()).get()));
-        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArrayOf(Types.INTEGER).get()).exec(new ArrayFuncs.Distinct<Integer>()).get()));
-        
-        
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFuncs.Insert<Integer>(2, 1492)).get());
-        
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new ListFuncs.Insert<Integer>(2, 1492)).exec(new ListFuncs.RemoveAllTrue<Integer>(Ognl.asBoolean("#target < 1000"))).exec(new ListFuncs.Sort<Integer>()).get());
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildArrayOf(Types.INTEGER).get()).exec(new FArray.Sort<Integer>()).get()));
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArrayOf(Types.INTEGER).get()).exec(new FArray.Distinct<Integer>()).get()));
         
         
-        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArrayOf(Types.INTEGER).get()).exec(new ArrayFuncs.Insert<Integer>(2, 1492)).get()));
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new FList.Insert<Integer>(2, 1492)).get());
         
-        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArrayOf(Types.INTEGER).get()).exec(new ArrayFuncs.Insert<Integer>(2, 1492)).exec(new ArrayFuncs.RemoveAllTrue<Integer>(Ognl.asBoolean("#target < 1000"))).exec(new ArrayFuncs.Sort<Integer>()).get()));
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new FList.Insert<Integer>(2, 1492)).exec(new FList.RemoveAllTrue<Integer>(Ognl.asBoolean("#target < 1000"))).exec(new FList.Sort<Integer>()).get());
+        
+        
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArrayOf(Types.INTEGER).get()).exec(new FArray.Insert<Integer>(2, 1492)).get()));
+        
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArrayOf(Types.INTEGER).get()).exec(new FArray.Insert<Integer>(2, 1492)).exec(new FArray.RemoveAllTrue<Integer>(Ognl.asBoolean("#target < 1000"))).exec(new FArray.Sort<Integer>()).get()));
         
         System.out.println(Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArrayOf(Types.STRING).get()).exec(new ToMap.FromArrayByKeyEval<Integer,String>(Ognl.asInteger("length()"))).get());
 
@@ -307,8 +307,8 @@ watch.start();
 //              .forEach().exec(StringFuncs.trim()).exec(StringFuncs.toUpperCase()).get());
         
         System.out.println(Op.on("Dublin")
-                .exec(StringFuncs.toHexadecimal(Charset.forName("ISO-8859-1")))
-                .exec(StringFuncs.fromHexadecimal(Charset.forName("ISO-8859-1"))).get());
+                .exec(FString.toHexadecimal(Charset.forName("ISO-8859-1")))
+                .exec(FString.fromHexadecimal(Charset.forName("ISO-8859-1"))).get());
         
 //        System.out.println(Op.buildList(Types.NUMBER)
 //                .addAll(45.9, new BigDecimal(34.456))
@@ -348,16 +348,16 @@ watch.start();
         setOfStringSet1.add(Op.onAll("Adios", "Goodbye", "Ciao", "Adéus").buildSet().get());
         
         System.out.println(Op.on("http://www.google.es/search?q=op4j&unusedParam=unusedValue '' 2^2 ")
-                .exec(StringFuncs.escapeJavaScript()).get());
+                .exec(FString.escapeJavaScript()).get());
         System.out.println(Op.on("Body tag is written like \"<body>content here</body>\"")
-                .exec(StringFuncs.escapeHTML()).get());
+                .exec(FString.escapeHTML()).get());
         
         System.out.println(Op.onArrayOf(Types.STRING, stringsArr1).removeAllNull().toMap(Ognl.asInteger("length()")).get());
 
         System.out.println(Op.onList(stringsList1).removeAllNullOrTrue(Ognl.asBoolean("length() < 6")).get());
 
         System.out.println("***___****___****");
-        System.out.println(Op.onList(stringsList1).forEach().ifNotNull().exec(StringFuncs.toUpperCase()).get());
+        System.out.println(Op.onList(stringsList1).forEach().ifNotNull().exec(FString.toUpperCase()).get());
         System.out.println("***___****___****");
         
         System.out.println(Op.onAll("hello", "goodbye").exec(Ognl.asString("#target + ' world!'")).getAsList());
@@ -389,7 +389,7 @@ watch.start();
         System.out.println(Op.onList(stringsList1).forEach().replaceWith("op4j is great!").get());
         System.out.println(Op.onList(stringsList1).forEach().replaceIfNullWith("op4j is great!").get());
         System.out.println(printArray(Op.onArrayOf(Types.STRING, stringsArr1).forEach().replaceIfNullWith("op4j is great!").get()));
-        System.out.println(printArray(Op.onArrayOf(Types.STRING, stringsArr1).replaceWith(new String[] {"alpha", "beta"}).forEach().exec(StringFuncs.toUpperCase()).get()));
+        System.out.println(printArray(Op.onArrayOf(Types.STRING, stringsArr1).replaceWith(new String[] {"alpha", "beta"}).forEach().exec(FString.toUpperCase()).get()));
         
         
 //        System.out.println(Op.buildListOfList(Types.STRING).add(stringsList1).add(stringsList1).get());

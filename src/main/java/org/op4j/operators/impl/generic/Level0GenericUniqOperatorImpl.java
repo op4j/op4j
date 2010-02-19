@@ -31,7 +31,7 @@ import org.op4j.functions.converters.ToMapOfArray;
 import org.op4j.functions.converters.ToMapOfList;
 import org.op4j.functions.converters.ToMapOfSet;
 import org.op4j.functions.converters.ToSet;
-import org.op4j.functions.structures.ListFuncs;
+import org.op4j.functions.structures.FList;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.array.Level0ArrayOperatorImpl;
@@ -77,25 +77,25 @@ public final class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
 
     @SuppressWarnings("unchecked")
     public Level0GenericMultiOperator<T> add(final T newElement) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFuncs.Add<T>(newElement)).iterate(Structure.LIST, true));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new FList.Add<T>(newElement)).iterate(Structure.LIST, true));
     }
 
     public Level0GenericMultiOperator<T> addAll(final T... newElements) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFuncs.Add<T>(newElements)).iterate(Structure.LIST, true));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new FList.Add<T>(newElements)).iterate(Structure.LIST, true));
     }
 
     @SuppressWarnings("unchecked")
     public Level0GenericMultiOperator<T> insert(final int position, final T newElement) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFuncs.Insert<T>(position, newElement)).iterate(Structure.LIST, true));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new FList.Insert<T>(position, newElement)).iterate(Structure.LIST, true));
     }
 
     public Level0GenericMultiOperator<T> insertAll(final int position, final T... newElements) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFuncs.Insert<T>(position, newElements)).iterate(Structure.LIST, true));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new FList.Insert<T>(position, newElements)).iterate(Structure.LIST, true));
     }
 
 
     public Level0GenericMultiOperator<T> addAll(final Collection<T> collection) {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ListFuncs.AddAll<T>(collection)).iterate(Structure.LIST, true));
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().execute(new ToList.FromObject<T>()).execute(new FList.AddAll<T>(collection)).iterate(Structure.LIST, true));
     }
 
 

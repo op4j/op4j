@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.op4j.functions.IFunction;
-import org.op4j.functions.structures.MapFuncs;
+import org.op4j.functions.structures.FMap;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.mapoflist.Level0MapOfListOperator;
 import org.op4j.operators.intf.mapoflist.Level0MapOfListSelectedOperator;
@@ -26,17 +26,17 @@ public final class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOper
 
 
     public Level0MapOfListSelectedOperator<K,V> insertAll(final int position, final Map<K,List<V>> map) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.InsertAll<K,List<V>>(position, NormalisationUtils.normaliseMapOfList(map))));
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.InsertAll<K,List<V>>(position, NormalisationUtils.normaliseMapOfList(map))));
     }
 
 
     public Level0MapOfListSelectedOperator<K,V> removeAllTrue(final IFunction<Boolean,? super Entry<K,List<V>>> eval) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K,List<V>>(eval)));
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.RemoveAllTrue<K,List<V>>(eval)));
     }
 
 
     public Level0MapOfListSelectedOperator<K,V> removeAllFalse(final IFunction<Boolean,? super Entry<K,List<V>>> eval) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K,List<V>>(eval)));
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.RemoveAllFalse<K,List<V>>(eval)));
     }
 
 
@@ -51,12 +51,12 @@ public final class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOper
 
 
     public Level0MapOfListSelectedOperator<K,V> removeAllKeys(final K... keys) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllKeys<K,List<V>>(keys)));
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.RemoveAllKeys<K,List<V>>(keys)));
     }
 
 
     public Level0MapOfListSelectedOperator<K,V> removeAllKeysNot(final K... keys) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.RemoveAllKeysNot<K,List<V>>(keys)));
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.RemoveAllKeysNot<K,List<V>>(keys)));
     }
 
 
@@ -71,28 +71,28 @@ public final class Level0MapOfListSelectedOperatorImpl<K,V> extends AbstractOper
 
 
     public Level0MapOfListSelectedOperator<K,V> put(final K newKey, final List<V> newValue) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.Put<K,List<V>>(newKey, NormalisationUtils.normaliseList(newValue))));
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.Put<K,List<V>>(newKey, NormalisationUtils.normaliseList(newValue))));
     }
 
 
     public Level0MapOfListSelectedOperator<K,V> putAll(final Map<K,List<V>> map) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.PutAll<K,List<V>>(NormalisationUtils.normaliseMapOfList(map))));
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.PutAll<K,List<V>>(NormalisationUtils.normaliseMapOfList(map))));
     }
 
 
     public Level0MapOfListSelectedOperator<K,V> insert(final int position, final K newKey, final List<V> newValue) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.Insert<K,List<V>>(position, newKey, NormalisationUtils.normaliseList(newValue))));
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.Insert<K,List<V>>(position, newKey, NormalisationUtils.normaliseList(newValue))));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0MapOfListSelectedOperator<K,V> sort() {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortByKey()));
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.SortByKey()));
     }
 
 
     public Level0MapOfListSelectedOperator<K,V> sort(final Comparator<? super Entry<K,List<V>>> comparator) {
-        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new MapFuncs.SortEntries<K,List<V>>(comparator)));
+        return new Level0MapOfListSelectedOperatorImpl<K,V>(getTarget().execute(new FMap.SortEntries<K,List<V>>(comparator)));
     }
 
 

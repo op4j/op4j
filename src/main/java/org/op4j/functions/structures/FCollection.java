@@ -28,7 +28,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.functions.AbstractNotNullFunc;
+import org.op4j.functions.AbstractNotNullFunction;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.IFunction;
 import org.op4j.util.VarArgsUtil;
@@ -39,12 +39,12 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-class CollectionFuncs {
+class FCollection {
 
     
     
     
-    private CollectionFuncs() {
+    private FCollection() {
         super();
     }
 
@@ -52,7 +52,7 @@ class CollectionFuncs {
     
     
     
-    static abstract class Sort<T extends Comparable<? super T>, X extends Collection<T>> extends AbstractStructureNotNullNonConvertingFunc<X> {
+    static abstract class Sort<T, X extends Collection<T>> extends AbstractStructureNotNullNonConvertingFunc<X> {
 
         public Sort() {
             super();
@@ -60,10 +60,15 @@ class CollectionFuncs {
 
         @Override
         public X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
-        	
-            final List<T> result = new ArrayList<T>(object);
-            Collections.sort(result);
-            return fromList(result);
+            return doSort(object, ctx);
+        }
+
+        @SuppressWarnings("unchecked")
+        public <Z extends Comparable<? super Z>> X doSort(final X object, final ExecCtx ctx) throws Exception {
+
+            final List<Z> list = (List<Z>) new ArrayList<Object>(object);
+            Collections.sort(list);
+            return fromList((List<T>)(List<?>)list);
             
         }
 
@@ -475,7 +480,7 @@ class CollectionFuncs {
     
     
     
-    static abstract class FlattenCollectionOfArrays<T, X extends Collection<T>, Y extends Collection<T[]>> extends AbstractNotNullFunc<X, Y> {
+    static abstract class FlattenCollectionOfArrays<T, X extends Collection<T>, Y extends Collection<T[]>> extends AbstractNotNullFunction<X, Y> {
 
         public FlattenCollectionOfArrays() {
             super();
@@ -498,7 +503,7 @@ class CollectionFuncs {
     
 
     
-    static abstract class FlattenCollectionOfCollections<T, X extends Collection<T>, Y extends Collection<? extends Collection<T>>> extends AbstractNotNullFunc<X, Y> {
+    static abstract class FlattenCollectionOfCollections<T, X extends Collection<T>, Y extends Collection<? extends Collection<T>>> extends AbstractNotNullFunction<X, Y> {
 
         public FlattenCollectionOfCollections() {
             super();

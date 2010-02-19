@@ -24,8 +24,8 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.functions.AbstractNotNullFunc;
-import org.op4j.functions.AbstractNullAsNullFunc;
+import org.op4j.functions.AbstractNotNullFunction;
+import org.op4j.functions.AbstractNullAsNullFunction;
 import org.op4j.functions.ExecCtx;
 
 /**
@@ -145,7 +145,7 @@ public final class MathBigDecimalFuncs {
     }
 	
 	
-	public static final class Max extends AbstractNotNullFunc<BigDecimal, Iterable<BigDecimal>> {
+	public static final class Max extends AbstractNotNullFunction<BigDecimal, Iterable<BigDecimal>> {
 
 		public Max() {
 			super();
@@ -168,7 +168,7 @@ public final class MathBigDecimalFuncs {
 		}
 	}
 	
-	public static final class Min extends AbstractNotNullFunc<BigDecimal, Iterable<BigDecimal>> {
+	public static final class Min extends AbstractNotNullFunction<BigDecimal, Iterable<BigDecimal>> {
 
 		public Min() {
 			super();
@@ -191,7 +191,7 @@ public final class MathBigDecimalFuncs {
 		}	
 	}
 	
-	public static final class Sum extends AbstractNotNullFunc<BigDecimal, Iterable<BigDecimal>> {
+	public static final class Sum extends AbstractNotNullFunction<BigDecimal, Iterable<BigDecimal>> {
 
 		public Sum() {
 			super();
@@ -209,7 +209,7 @@ public final class MathBigDecimalFuncs {
 		}		
 	}
 	
-	public static final class Avg extends AbstractNotNullFunc<BigDecimal, Iterable<BigDecimal>> {
+	public static final class Avg extends AbstractNotNullFunction<BigDecimal, Iterable<BigDecimal>> {
 
 		private final RoundingMode roundingMode;
 		private final MathContext mathContext;
@@ -255,7 +255,7 @@ public final class MathBigDecimalFuncs {
 		}		
 	}
 	
-	public static final class Round extends AbstractNullAsNullFunc<BigDecimal, BigDecimal> {
+	public static final class Round extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
 
 		private final MathContext mathContext;
 		private final RoundingMode roundingMode;
@@ -284,7 +284,7 @@ public final class MathBigDecimalFuncs {
 		}	
 	}
 	
-	public static final class Abs extends AbstractNullAsNullFunc<BigDecimal, BigDecimal> {
+	public static final class Abs extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
 
 		public Abs() {
 			super();
@@ -296,7 +296,7 @@ public final class MathBigDecimalFuncs {
 		}
 	}
 	
-	public static final class Add extends AbstractNullAsNullFunc<BigDecimal, BigDecimal> {
+	public static final class Add extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
 
 		private final BigDecimal add;
 		
@@ -315,7 +315,7 @@ public final class MathBigDecimalFuncs {
 		}	
 	}
 	
-	public static final class Subtract extends AbstractNullAsNullFunc<BigDecimal, BigDecimal> {
+	public static final class Subtract extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
 
 		private final BigDecimal subtract;
 		
@@ -335,7 +335,7 @@ public final class MathBigDecimalFuncs {
 		}		
 	}
 	
-	public static final class Divide extends AbstractNullAsNullFunc<BigDecimal, BigDecimal> {
+	public static final class Divide extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
 
 		private final BigDecimal divisor;
 		private final RoundingMode roundingMode;
@@ -383,7 +383,7 @@ public final class MathBigDecimalFuncs {
 	}
 	
 	
-	public static final class Remainder extends AbstractNullAsNullFunc<BigDecimal, BigDecimal> {
+	public static final class Remainder extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
 
 		private final BigDecimal divisor;
 		private final MathContext mathContext;
@@ -409,7 +409,7 @@ public final class MathBigDecimalFuncs {
 		}	
 	}
 	
-	public static final class Multiply extends AbstractNullAsNullFunc<BigDecimal, BigDecimal> {
+	public static final class Multiply extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
 
 		private final BigDecimal multiplicand;
 		private final MathContext mathContext;
@@ -456,7 +456,7 @@ public final class MathBigDecimalFuncs {
 		}	
 	}
 	
-	public static final class Raise extends AbstractNullAsNullFunc<BigDecimal, BigDecimal> {
+	public static final class Raise extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
 
 		private final int power;
 		private final MathContext mathContext;

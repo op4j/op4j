@@ -27,7 +27,7 @@ import java.util.Map.Entry;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.structures.MapFuncs;
+import org.op4j.functions.structures.FMap;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperatorImpl;
 import org.op4j.operators.impl.list.Level0ListOperatorImpl;
@@ -63,12 +63,12 @@ public final class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public Level0SetOperator<K> extractKeys() {
-        return new Level0SetOperatorImpl<K>(getTarget().execute(new MapFuncs.ExtractKeys<K, V>()));
+        return new Level0SetOperatorImpl<K>(getTarget().execute(new FMap.ExtractKeys<K, V>()));
     }
 
 
     public Level0ListOperator<Set<V>> extractValues() {
-        return new Level0ListOperatorImpl<Set<V>>(getTarget().execute(new MapFuncs.ExtractValues<K, V>()));
+        return new Level0ListOperatorImpl<Set<V>>(getTarget().execute(new FMap.ExtractValues<K, V>()));
     }
 
 
@@ -84,41 +84,41 @@ public final class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
 
 
     public Level0MapOfSetOperator<K, V> put(final K newKey, final Set<V> newValue) {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.Put<K, Set<V>>(newKey, NormalisationUtils.normaliseSet(newValue))));
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new FMap.Put<K, Set<V>>(newKey, NormalisationUtils.normaliseSet(newValue))));
     }
 
 
     public Level0MapOfSetOperator<K, V> insert(final int position, final K newKey, final Set<V> newValue) {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.Insert<K, Set<V>>(position, newKey, NormalisationUtils.normaliseSet(newValue))));
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new FMap.Insert<K, Set<V>>(position, newKey, NormalisationUtils.normaliseSet(newValue))));
     }
 
 
     public Level0MapOfSetOperator<K, V> putAll(final Map<K, Set<V>> map) {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.PutAll<K, Set<V>>(NormalisationUtils.normaliseMapOfSet(map))));
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new FMap.PutAll<K, Set<V>>(NormalisationUtils.normaliseMapOfSet(map))));
     }
 
 
     public Level0MapOfSetOperator<K, V> insertAll(final int position, final Map<K, Set<V>> map) {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.InsertAll<K, Set<V>>(position, NormalisationUtils.normaliseMapOfSet(map))));
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new FMap.InsertAll<K, Set<V>>(position, NormalisationUtils.normaliseMapOfSet(map))));
     }
 
 
     public Level0MapOfSetOperator<K, V> removeAllKeys(final K... keys) {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllKeys<K, Set<V>>(keys)));
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new FMap.RemoveAllKeys<K, Set<V>>(keys)));
     }
 
 
     public Level0MapOfSetOperator<K, V> removeAllTrue(final IFunction<Boolean, ? super Entry<K, Set<V>>> eval) {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllTrue<K, Set<V>>(eval)));
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new FMap.RemoveAllTrue<K, Set<V>>(eval)));
     }
 
     public Level0MapOfSetOperator<K, V> removeAllFalse(final IFunction<Boolean, ? super Entry<K, Set<V>>> eval) {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllFalse<K, Set<V>>(eval)));
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new FMap.RemoveAllFalse<K, Set<V>>(eval)));
     }
 
 
     public Level0MapOfSetOperator<K, V> removeAllKeysNot(final K... keys) {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.RemoveAllKeysNot<K, Set<V>>(keys)));
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new FMap.RemoveAllKeysNot<K, Set<V>>(keys)));
     }
 
 
@@ -133,12 +133,12 @@ public final class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
 
     @SuppressWarnings("unchecked")
     public Level0MapOfSetOperator<K, V> sort() {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.SortByKey()));
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new FMap.SortByKey()));
     }
 
 
     public Level0MapOfSetOperator<K, V> sort(final Comparator<? super Entry<K, Set<V>>> comparator) {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new MapFuncs.SortEntries<K, Set<V>>(comparator)));
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new FMap.SortEntries<K, Set<V>>(comparator)));
     }
 
 
