@@ -747,18 +747,18 @@ public final class ToString {
 
 		private String fromCalendar(final Calendar calendar, final DateStyle theDateStyle,
 				final TimeStyle theTimeStyle, final Locale theLocale) {
-	    	
-	    	Validate.isTrue((theDateStyle != null && theTimeStyle != null)
-	    			&& (DateStyle.NONE.compareTo(theDateStyle) != 0
-	    					|| TimeStyle.NONE.compareTo(theTimeStyle) != 0),
+
+		    Validate.notNull(theDateStyle, "Date style cannot be null");
+            Validate.notNull(theTimeStyle, "Time style cannot be null");
+	    	Validate.isTrue(theDateStyle != DateStyle.NONE || theTimeStyle != TimeStyle.NONE,
 	    			"At least one of dateStyle and timeStyle must have a value different from NONE");
 	    	
 	    	DateFormat sdf = null;
-	    	if (DateStyle.NONE.compareTo(theDateStyle) != 0 && (TimeStyle.NONE.compareTo(theTimeStyle) != 0)) {
+	    	if (theDateStyle != DateStyle.NONE && theTimeStyle != TimeStyle.NONE) {
 	    		sdf = DateFormat.getDateTimeInstance(Integer.parseInt(theDateStyle.toString()), 
 	    				Integer.parseInt(theTimeStyle.toString()),
 	    				(theLocale == null) ? Locale.getDefault() : theLocale);
-	    	} else if (DateStyle.NONE.compareTo(theDateStyle) != 0) {
+	    	} else if (theDateStyle != DateStyle.NONE) {
 	    		sdf = DateFormat.getDateInstance(Integer.parseInt(theDateStyle.toString()),
 	    				(theLocale == null) ? Locale.getDefault() : theLocale);
 	    	} else {
@@ -865,18 +865,18 @@ public final class ToString {
 
 		private String fromDate(final Date date, final DateStyle theDateStyle,
 				final TimeStyle theTimeStyle, final Locale theLocale) {
-	    	
-	    	Validate.isTrue((theDateStyle != null && theTimeStyle != null)
-	    			&& (DateStyle.NONE.compareTo(theDateStyle) != 0
-	    					|| TimeStyle.NONE.compareTo(theTimeStyle) != 0),
-	    			"At least one of dateStyle and timeStyle must have a value different from NONE");
+
+            Validate.notNull(theDateStyle, "Date style cannot be null");
+            Validate.notNull(theTimeStyle, "Time style cannot be null");
+            Validate.isTrue(theDateStyle != DateStyle.NONE || theTimeStyle != TimeStyle.NONE,
+                    "At least one of dateStyle and timeStyle must have a value different from NONE");
 	    	
 	    	DateFormat sdf = null;
-	    	if (DateStyle.NONE.compareTo(theDateStyle) != 0 && (TimeStyle.NONE.compareTo(theTimeStyle) != 0)) {
+            if (theDateStyle != DateStyle.NONE && theTimeStyle != TimeStyle.NONE) {
 	    		sdf = DateFormat.getDateTimeInstance(Integer.parseInt(theDateStyle.toString()), 
 	    				Integer.parseInt(theTimeStyle.toString()),
 	    				(theLocale == null) ? Locale.getDefault() : theLocale);
-	    	} else if (DateStyle.NONE.compareTo(theDateStyle) != 0) {
+	    	} else if (theDateStyle != DateStyle.NONE) {
 	    		sdf = DateFormat.getDateInstance(Integer.parseInt(theDateStyle.toString()),
 	    				(theLocale == null) ? Locale.getDefault() : theLocale);
 	    	} else {
