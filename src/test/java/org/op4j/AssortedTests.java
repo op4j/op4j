@@ -20,10 +20,12 @@ import org.junit.Test;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.Call;
 import org.op4j.functions.ExecCtx;
+import org.op4j.functions.FString;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;
-import org.op4j.functions.FString;
+import org.op4j.functions.converters.ToString;
 import org.op4j.functions.structures.FArray;
+import org.op4j.test.auto.TestOperation;
 
 public class AssortedTests extends TestCase {
 
@@ -628,4 +630,29 @@ public class AssortedTests extends TestCase {
         
     }
     
+    @SuppressWarnings("unchecked")
+	@Test
+    public void test27() {
+
+        final List<Integer> integerList = Arrays.asList(new Integer[]{null, 23, 34, null, -34});
+
+        List<TestOperation> testOperations = new ArrayList<TestOperation>();
+		testOperations.add(new TestOperation("add", new Object[] {Integer.valueOf(2)}));		
+		testOperations.add(new TestOperation("forEach"));
+		testOperations.add(new TestOperation("ifNotNull"));
+		testOperations.add(new TestOperation("replaceWith", new Object[]{null}));
+		testOperations.add(new TestOperation("endIf"));
+		testOperations.add(new TestOperation("exec", new Object[]{ToString.fromNumber()}));
+		testOperations.add(new TestOperation("get"));
+		
+		final List<Integer> listResult = (List<Integer>)org.op4j.test.auto.Test.testOnList(integerList, testOperations);
+		assertEquals(Arrays.asList(new Integer[]{null, null, null, null, null, null}), listResult);
+//		System.out.println("test27. Result testOnList: " + listResult);
+		
+		final Integer[] arrayResult = (Integer[])org.op4j.test.auto.Test.testOnArrayOf(Types.INTEGER,
+				integerList.toArray(new Integer[]{}), testOperations);
+		assertEquals(Arrays.asList(new Integer[]{null, null, null, null, null, null}), Arrays.asList(arrayResult));
+//		System.out.println("test27. Result testOnArray: " + ArrayUtils.toString(arrayResult));
+		
+    }
 }
