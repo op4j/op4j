@@ -24,7 +24,6 @@ import java.util.Comparator;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToList;
 import org.op4j.functions.converters.ToSet;
@@ -203,9 +202,7 @@ public final class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public Level2MapOfArrayEntriesValueOperator<K, ?> asArrayOfUnknown() {
-        return asArrayOf(Types.OBJECT);
-    }
+    
 
 
     public Level2MapOfArrayEntriesValueSelectedOperator<K, V> ifIndex(final int... indexes) {

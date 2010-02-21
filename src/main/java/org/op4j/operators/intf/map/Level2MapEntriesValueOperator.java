@@ -88,10 +88,4 @@ public interface Level2MapEntriesValueOperator<K,V>
     public <X> Level2MapOfArrayEntriesValueOperator<K,X> asArrayOf(final Type<X> type);
     public <X> Level2MapOfListEntriesValueOperator<K,X> asListOf(final Type<X> type);
     public <X> Level2MapOfSetEntriesValueOperator<K,X> asSetOf(final Type<X> type);
-    public Level2MapOfArrayEntriesValueOperator<K,?> asArrayOfUnknown();
-    public Level2MapOfListEntriesValueOperator<K,?> asListOfUnknown();
-    public Level2MapOfSetEntriesValueOperator<K,?> asSetOfUnknown();
-    
-
-    
-}
+    }

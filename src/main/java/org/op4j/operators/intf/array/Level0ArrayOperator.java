@@ -137,8 +137,4 @@ public interface Level0ArrayOperator<T>
 
     
     public <X> Level0ArrayOperator<X> asArrayOf(final Type<X> type);
-    public Level0ArrayOperator<?> asArrayOfUnknown();
-    
-
-    
-}
+    }

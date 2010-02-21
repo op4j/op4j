@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.Comparator;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToList;
 import org.op4j.functions.converters.ToMap;
@@ -197,9 +196,7 @@ public final class Level0ArrayOperatorImpl<T>
     }
 
 
-    public Level0ArrayOperator<?> asArrayOfUnknown() {
-        return asArrayOf(Types.OBJECT);
-    }
+    
 
 
     public Level0ArraySelectedOperator<T> ifIndex(final int... indexes) {

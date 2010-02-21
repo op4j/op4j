@@ -87,20 +87,14 @@ public final class Level2MapEntriesValueOperatorImpl<K,V> extends AbstractOperat
     
     
 
-    public Level2MapOfArrayEntriesValueOperator<K, ?> asArrayOfUnknown() {
-        return asArrayOf(Types.OBJECT);
-    }
+    
 
 
-    public Level2MapOfListEntriesValueOperator<K, ?> asListOfUnknown() {
-        return asListOf(Types.OBJECT);
-    }
+    
 
 
 
-    public Level2MapOfSetEntriesValueOperator<K, ?> asSetOfUnknown() {
-        return asSetOf(Types.OBJECT);
-    }
+    
     
     
     

@@ -25,7 +25,6 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.structures.FMap;
 import org.op4j.operators.impl.AbstractOperatorImpl;
@@ -177,9 +176,7 @@ public final class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapOfSetOperator<?,?> asMapOfSetOfUnknown() {
-        return asMapOfSetOf(Types.OBJECT, Types.OBJECT);
-    }
+    
 
 
     public Level0MapOfSetSelectedOperator<K, V> ifIndex(final int... indexes) {

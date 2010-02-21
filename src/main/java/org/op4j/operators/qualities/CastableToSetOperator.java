@@ -45,15 +45,5 @@ public interface CastableToSetOperator {
      * @return the resulting casted operator
      */
     public <X> Operator asSetOf(final Type<X> type);
-
-    
-    /**
-     * <p>
-     * Casts the operator's target as a set of unknown.
-     * </p>
-     * 
-     * @return the resulting casted operator
-     */
-    public Operator asSetOfUnknown();
     
 }

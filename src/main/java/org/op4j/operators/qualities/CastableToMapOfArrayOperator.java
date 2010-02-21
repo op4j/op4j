@@ -50,14 +50,4 @@ public interface CastableToMapOfArrayOperator {
     public <K,V> Level0MapOfArrayOperator<K,V> asMapOfArrayOf(final Type<K> keyType, final Type<V> valueType);
 
     
-    /**
-     * <p>
-     * Casts the operator's target as a map of array of unknown (keys and values).
-     * </p>
-     * 
-     * @return the resulting map of array
-     */
-    public Level0MapOfArrayOperator<?,?> asMapOfArrayOfUnknown();
-
-    
 }

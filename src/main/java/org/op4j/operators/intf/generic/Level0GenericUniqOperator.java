@@ -136,20 +136,7 @@ public interface Level0GenericUniqOperator<T>
     public <X> Level0ListOperator<X> asListOf(final Type<X> type);
     public <K,V> Level0MapOperator<K,V> asMapOf(final Type<K> keyType, final Type<V> valueType);
     public <X> Level0SetOperator<X> asSetOf(final Type<X> type);
-    public Level0ArrayOperator<?> asArrayOfUnknown();
-    public Level0ListOperator<?> asListOfUnknown();
-    public Level0MapOperator<?,?> asMapOfUnknown();
-    public Level0SetOperator<?> asSetOfUnknown();
-    
-    
-    
     public <K,V> Level0MapOfArrayOperator<K,V> asMapOfArrayOf(final Type<K> keyType, final Type<V> valueType);
     public <K,V> Level0MapOfListOperator<K,V> asMapOfListOf(final Type<K> keyType, final Type<V> valueType);
     public <K,V> Level0MapOfSetOperator<K,V> asMapOfSetOf(final Type<K> keyType, final Type<V> valueType);
-    public Level0MapOfArrayOperator<?,?> asMapOfArrayOfUnknown();
-    public Level0MapOfListOperator<?,?> asMapOfListOfUnknown();
-    public Level0MapOfSetOperator<?,?> asMapOfSetOfUnknown();
-    
-    
-    
-}
+    }

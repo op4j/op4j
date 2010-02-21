@@ -45,15 +45,5 @@ public interface CastableToArrayOperator {
      * @return the resulting casted operator
      */
     public <X> Operator asArrayOf(final Type<X> type);
-
-    
-    /**
-     * <p>
-     * Casts the operator's target as an array of unknown.
-     * </p>
-     * 
-     * @return the resulting casted operator
-     */
-    public Operator asArrayOfUnknown();
     
 }

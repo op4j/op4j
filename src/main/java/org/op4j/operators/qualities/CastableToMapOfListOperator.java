@@ -50,14 +50,4 @@ public interface CastableToMapOfListOperator {
     public <K,V> Level0MapOfListOperator<K,V> asMapOfListOf(final Type<K> keyType, final Type<V> valueType);
     
     
-    /**
-     * <p>
-     * Casts the operator's target as a map of list of unknown (keys and values).
-     * </p>
-     * 
-     * @return the resulting map of list
-     */
-    public Level0MapOfListOperator<?,?> asMapOfListOfUnknown();
-    
-    
 }

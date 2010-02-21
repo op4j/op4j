@@ -198,39 +198,25 @@ public final class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ArrayOperator<?> asArrayOfUnknown() {
-        return asArrayOf(Types.OBJECT);
-    }
+    
 
 
-    public Level0ListOperator<?> asListOfUnknown() {
-        return asListOf(Types.OBJECT);
-    }
+    
 
 
-    public Level0MapOfArrayOperator<?, ?> asMapOfArrayOfUnknown() {
-        return asMapOfArrayOf(Types.OBJECT, Types.OBJECT);
-    }
+    
 
 
-    public Level0MapOfListOperator<?, ?> asMapOfListOfUnknown() {
-        return asMapOfListOf(Types.OBJECT, Types.OBJECT);
-    }
+    
 
 
-    public Level0MapOfSetOperator<?, ?> asMapOfSetOfUnknown() {
-        return asMapOfSetOf(Types.OBJECT, Types.OBJECT);
-    }
+    
 
 
-    public Level0MapOperator<?, ?> asMapOfUnknown() {
-        return asMapOf(Types.OBJECT, Types.OBJECT);
-    }
+    
 
 
-    public Level0SetOperator<?> asSetOfUnknown() {
-        return asSetOf(Types.OBJECT);
-    }
+    
 
     
     

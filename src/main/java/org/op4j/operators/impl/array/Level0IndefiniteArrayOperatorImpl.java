@@ -20,7 +20,6 @@
 package org.op4j.operators.impl.array;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToList;
 import org.op4j.functions.converters.ToMap;
@@ -98,9 +97,7 @@ public final class Level0IndefiniteArrayOperatorImpl<T>
     }
 
 
-    public Level0ArrayOperator<?> asArrayOfUnknown() {
-        return asArrayOf(Types.OBJECT);
-    }
+    
 
     
     

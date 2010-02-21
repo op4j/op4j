@@ -128,7 +128,4 @@ public interface Level2MapOfArrayEntriesValueOperator<K,V>
     
     
     public <X> Level2MapOfArrayEntriesValueOperator<K,X> asArrayOf(final Type<X> type);
-    public Level2MapOfArrayEntriesValueOperator<K,?> asArrayOfUnknown();
-    
-    
-}
+    }

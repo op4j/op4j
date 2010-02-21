@@ -118,19 +118,7 @@ public interface Level0MapOperator<K,V>
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,V>> function);
     
     public <X,Y> Level0MapOfArrayOperator<X,Y> asMapOfArrayOf(final Type<X> keyType, final Type<Y> valueType);
-    public Level0MapOfArrayOperator<?,?> asMapOfArrayOfUnknown();
-
-    
     public <X,Y> Level0MapOfListOperator<X,Y> asMapOfListOf(final Type<X> keyType, final Type<Y> valueType);
-    public Level0MapOfListOperator<?,?> asMapOfListOfUnknown();
-
-    
     public <X,Y> Level0MapOfSetOperator<X,Y> asMapOfSetOf(final Type<X> keyType, final Type<Y> valueType);
-    public Level0MapOfSetOperator<?,?> asMapOfSetOfUnknown();
-
-    
     public <X,Y> Level0MapOperator<X,Y> asMapOf(final Type<X> keyType, final Type<Y> valueType);
-    public Level0MapOperator<?,?> asMapOfUnknown();
-    
-    
-}
+    }

@@ -48,14 +48,4 @@ public interface CastableToMapOperator {
      */
     public <K,V> Operator asMapOf(final Type<K> keyType, final Type<V> valueType);
     
-
-    /**
-     * <p>
-     * Casts the operator's target as a map of unknown.
-     * </p>
-     * 
-     * @return the resulting map
-     */
-    public Operator asMapOfUnknown();
-    
 }

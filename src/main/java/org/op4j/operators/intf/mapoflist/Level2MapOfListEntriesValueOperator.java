@@ -125,8 +125,4 @@ public interface Level2MapOfListEntriesValueOperator<K,V>
     
     
     public <X> Level2MapOfListEntriesValueOperator<K,X> asListOf(final Type<X> type);
-    public Level2MapOfListEntriesValueOperator<K,?> asListOfUnknown();
-    
-    
-                                    
-}
+    }

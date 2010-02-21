@@ -123,7 +123,4 @@ public interface Level0MapOfArrayOperator<K,V>
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,V[]>> function);
     
     public <X,Y> Level0MapOfArrayOperator<X,Y> asMapOfArrayOf(final Type<X> keyType, final Type<Y> valueType);
-    public Level0MapOfArrayOperator<?,?> asMapOfArrayOfUnknown();
-
-    
-}
+    }

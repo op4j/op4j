@@ -136,10 +136,4 @@ public interface Level0ListOperator<T>
 
     
     public <X> Level0ListOperator<X> asListOf(final Type<X> type);
-    public Level0ListOperator<?> asListOfUnknown();
-    
-
-
-
-    
-}
+    }

@@ -24,7 +24,6 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToArray;
 import org.op4j.functions.converters.ToMap;
@@ -202,9 +201,7 @@ public final class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListOperator<?> asListOfUnknown() {
-        return asListOf(Types.OBJECT);
-    }
+    
 
 
     public Level0ListSelectedOperator<T> ifIndex(final int... indexes) {

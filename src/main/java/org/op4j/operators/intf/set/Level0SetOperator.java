@@ -130,7 +130,4 @@ public interface Level0SetOperator<T>
 
     
     public <X> Level0SetOperator<X> asSetOf(final Type<X> type);
-    public Level0SetOperator<?> asSetOfUnknown();
-    
-    
-}
+    }

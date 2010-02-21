@@ -121,7 +121,4 @@ public interface Level0MapOfSetOperator<K,V>
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,Set<V>>> function);
     
     public <X,Y> Level0MapOfSetOperator<X,Y> asMapOfSetOf(final Type<X> keyType, final Type<Y> valueType);
-    public Level0MapOfSetOperator<?,?> asMapOfSetOfUnknown();
-
-    
-}
+    }

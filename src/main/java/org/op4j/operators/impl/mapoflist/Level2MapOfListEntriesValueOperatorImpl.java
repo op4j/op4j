@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToArray;
 import org.op4j.functions.converters.ToSet;
@@ -191,9 +190,7 @@ public final class Level2MapOfListEntriesValueOperatorImpl<K,V> extends Abstract
     }
 
 
-    public Level2MapOfListEntriesValueOperator<K, ?> asListOfUnknown() {
-        return asListOf(Types.OBJECT);
-    }
+    
 
 
     public Level2MapOfListEntriesValueSelectedOperator<K, V> ifIndex(final int... indexes) {

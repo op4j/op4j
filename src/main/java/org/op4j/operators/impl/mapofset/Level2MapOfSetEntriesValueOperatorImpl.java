@@ -25,7 +25,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToArray;
 import org.op4j.functions.converters.ToList;
@@ -185,9 +184,7 @@ public final class Level2MapOfSetEntriesValueOperatorImpl<K,V> extends AbstractO
     }
 
 
-    public Level2MapOfSetEntriesValueOperator<K, ?> asSetOfUnknown() {
-        return asSetOf(Types.OBJECT);
-    }
+    
 
 
     public Level2MapOfSetEntriesValueSelectedOperator<K, V> ifIndex(final int... indexes) {

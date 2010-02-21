@@ -48,16 +48,6 @@ public interface CastableToMapOfSetOperator {
      * @return the resulting map of set
      */
     public <K,V> Level0MapOfSetOperator<K,V> asMapOfSetOf(final Type<K> keyType, final Type<V> valueType);
-    
-    
-    /**
-     * <p>
-     * Casts the operator's target as a map of set of unknown (keys and values).
-     * </p>
-     * 
-     * @return the resulting map of set
-     */
-    public Level0MapOfSetOperator<?,?> asMapOfSetOfUnknown();
 
     
 }

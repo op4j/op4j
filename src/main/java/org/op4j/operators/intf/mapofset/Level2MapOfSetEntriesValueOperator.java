@@ -122,7 +122,4 @@ public interface Level2MapOfSetEntriesValueOperator<K,V>
     
     
     public <X> Level2MapOfSetEntriesValueOperator<K,X> asSetOf(final Type<X> type);
-    public Level2MapOfSetEntriesValueOperator<K,?> asSetOfUnknown();
-    
-                                    
-}
+    }

@@ -120,7 +120,4 @@ public interface Level0MapOfListOperator<K,V>
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,List<V>>> function);
     
     public <X,Y> Level0MapOfListOperator<X,Y> asMapOfListOf(final Type<X> keyType, final Type<Y> valueType);
-    public Level0MapOfListOperator<?,?> asMapOfListOfUnknown();
-    
-    
-}
+    }

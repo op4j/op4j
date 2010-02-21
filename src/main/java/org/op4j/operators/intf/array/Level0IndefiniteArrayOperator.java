@@ -64,9 +64,6 @@ public interface Level0IndefiniteArrayOperator<T>
     public Level0GenericUniqOperator<T[]> generic();
 
     public <X> Level0ArrayOperator<X> asArrayOf(final Type<X> type);
-    public Level0ArrayOperator<?> asArrayOfUnknown();
-
-    
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super T[]> function);
 
     

@@ -24,7 +24,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.structures.FMap;
 import org.op4j.operators.impl.AbstractOperatorImpl;
@@ -171,9 +170,7 @@ public final class Level0MapOfArrayOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
-    public Level0MapOfArrayOperator<?,?> asMapOfArrayOfUnknown() {
-        return asMapOfArrayOf(Types.OBJECT, Types.OBJECT);
-    }
+    
 
 
     public Level0MapOfArraySelectedOperator<K, V> ifIndex(final int... indexes) {

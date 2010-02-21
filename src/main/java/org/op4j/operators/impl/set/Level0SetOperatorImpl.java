@@ -24,7 +24,6 @@ import java.util.Comparator;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToArray;
 import org.op4j.functions.converters.ToList;
@@ -201,9 +200,7 @@ public final class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public Level0SetOperator<?> asSetOfUnknown() {
-        return asSetOf(Types.OBJECT);
-    }
+    
 
 
     public Level0SetSelectedOperator<T> ifIndex(final int... indexes) {
