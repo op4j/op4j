@@ -103,9 +103,7 @@ public final class Level1MapEntriesOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
-    public <X, Y> Level1MapEntriesOperator<X, Y> execIfNotNullAsMapEntry(final IFunction<? extends Entry<X, Y>, ? super Entry<K, V>> function) {
-        return new Level1MapEntriesOperatorImpl<X, Y>(getTarget().executeIfNotNull(function, Normalisation.MAP_ENTRY));
-    }
+    
 
 
     public <X, Y> Level1MapEntriesOperator<X, Y> execAsMapEntry(final IFunction<? extends Entry<X, Y>, ? super Entry<K, V>> function) {
@@ -113,9 +111,7 @@ public final class Level1MapEntriesOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
-    public <X> Level1ListElementsOperator<X> execIfNotNull(final IFunction<X, ? super Entry<K, V>> function) {
-        return new Level1ListElementsOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
+    
 
 
     public <X> Level1ListElementsOperator<X> exec(final IFunction<X, ? super Entry<K, V>> function) {

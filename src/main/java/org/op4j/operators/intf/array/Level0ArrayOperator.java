@@ -124,19 +124,13 @@ public interface Level0ArrayOperator<T>
 
     public Level0ArrayOperator<T> execAsArray(final IFunction<? extends T[], ? super T[]> function);
 
-    public <X> Level0ArrayOperator<X> execIfNotNullAsArrayOf(final Type<X> type, final IFunction<X[],? super T[]> function);
-
     public <X> Level0ArrayOperator<X> execAsArrayOf(final Type<X> type, final IFunction<X[], ? super T[]> function);
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super T[]> function);
     
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super T[]> function);
-    
     public <X> Level0ArrayOperator<X> map(final Type<X> type, final IFunction<X,? super T> function);
     
     public Level0ArrayOperator<T> map(final IFunction<? extends T,? super T> function);
-    
-    public <X> Level0ArrayOperator<X> mapIfNotNull(final Type<X> type, final IFunction<X,? super T> function);
     
     public Level0ArrayOperator<T> mapIfNotNull(final IFunction<? extends T,? super T> function);
     

@@ -232,8 +232,8 @@ public final class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public <X, Y> Level0MapOfSetOperator<X, Y> execIfNotNullAsMapOfSet(final IFunction<? extends Map<X, ? extends Set<Y>>, ? super Map<K, Set<V>>> function) {
-        return new Level0MapOfSetOperatorImpl<X, Y>(getTarget().executeIfNotNull(function, Normalisation.MAP_OF_SET));
+    public Level0MapOfSetOperator<K, V> execIfNotNullAsMapOfSet(final IFunction<? extends Map<? extends K, ? extends Set<? extends V>>, ? super Map<K, Set<V>>> function) {
+        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().executeIfNotNull(function, Normalisation.MAP_OF_SET));
     }
 
 
@@ -242,9 +242,7 @@ public final class Level0MapOfSetOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X, ? super Map<K, Set<V>>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
+    
 
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K, Set<V>>> function) {

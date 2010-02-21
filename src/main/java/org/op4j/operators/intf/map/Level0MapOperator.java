@@ -111,13 +111,11 @@ public interface Level0MapOperator<K,V>
     public Level0MapOperator<K,V> replaceIfNullWith(final Map<K,V> replacement);
 
 
-    public <X,Y> Level0MapOperator<X,Y> execIfNotNullAsMap(final IFunction<? extends Map<X,Y>,? super Map<K,V>> function);
+    public Level0MapOperator<K,V> execIfNotNullAsMap(final IFunction<? extends Map<? extends K,? extends V>,? super Map<K,V>> function);
 
     public <X,Y> Level0MapOperator<X,Y> execAsMap(final IFunction<? extends Map<X,Y>, ? super Map<K,V>> function);
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,V>> function);
-    
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super Map<K,V>> function);
     
     public <X,Y> Level0MapOfArrayOperator<X,Y> asMapOfArrayOf(final Type<X> keyType, final Type<Y> valueType);
     public Level0MapOfArrayOperator<?,?> asMapOfArrayOfUnknown();

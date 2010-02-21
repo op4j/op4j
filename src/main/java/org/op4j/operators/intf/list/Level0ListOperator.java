@@ -123,17 +123,15 @@ public interface Level0ListOperator<T>
     public Level0ListOperator<T> replaceIfNullWith(final List<T> replacement);
 
 
-    public <X> Level0ListOperator<X> execIfNotNullAsList(final IFunction<? extends List<X>,? super List<T>> function);
+    public Level0ListOperator<T> execIfNotNullAsList(final IFunction<? extends List<? extends T>,? super List<T>> function);
 
     public <X> Level0ListOperator<X> execAsList(final IFunction<? extends List<X>, ? super List<T>> function);
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super List<T>> function);
     
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super List<T>> function);
-    
     public <X> Level0ListOperator<X> map(final IFunction<X,? super T> function);
     
-    public <X> Level0ListOperator<X> mapIfNotNull(final IFunction<X,? super T> function);
+    public Level0ListOperator<T> mapIfNotNull(final IFunction<? extends T,? super T> function);
     
 
     

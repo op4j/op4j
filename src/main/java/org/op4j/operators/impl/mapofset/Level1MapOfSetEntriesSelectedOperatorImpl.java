@@ -42,11 +42,6 @@ public final class Level1MapOfSetEntriesSelectedOperatorImpl<K,V> extends Abstra
     }
 
 
-    public Level1MapOfSetEntriesSelectedOperator<K,V> execIfNotNullAsMapOfSetEntry(final IFunction<? extends Entry<? extends K,? extends Set<? extends V>>,? super Entry<K,Set<V>>> function) {
-        return new Level1MapOfSetEntriesSelectedOperatorImpl<K,V>(getTarget().executeIfNotNull(function, Normalisation.MAP_OF_SET_ENTRY));
-    }
-
-
     public Level1MapOfSetEntriesSelectedOperator<K,V> replaceWith(final Entry<K,Set<V>> replacement) {
         return new Level1MapOfSetEntriesSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.MAP_OF_SET_ENTRY));
     }

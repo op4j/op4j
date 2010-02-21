@@ -18,13 +18,13 @@ public final class Level2MapEntriesValueSelectedOperatorImpl<K,V> extends Abstra
     }
 
 
-    public Level2MapEntriesValueSelectedOperator<K,V> execIfNotNull(final IFunction<? extends V,? super V> function) {
-        return new Level2MapEntriesValueSelectedOperatorImpl<K,V>(getTarget().executeIfNotNull(function, Normalisation.NONE));
+    public Level2MapEntriesValueOperator<K,V> endIf() {
+        return new Level2MapEntriesValueOperatorImpl<K,V>(getTarget().endSelect());
     }
 
 
-    public Level2MapEntriesValueOperator<K,V> endIf() {
-        return new Level2MapEntriesValueOperatorImpl<K,V>(getTarget().endSelect());
+    public Level2MapEntriesValueSelectedOperator<K,V> execIfNotNull(final IFunction<? extends V,? super V> function) {
+        return new Level2MapEntriesValueSelectedOperatorImpl<K,V>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

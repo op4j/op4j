@@ -19,13 +19,13 @@ public final class Level3MapOfSetEntriesSelectedValueSelectedElementsSelectedOpe
     }
 
 
-    public Level3MapOfSetEntriesSelectedValueSelectedElementsSelectedOperator<K,V> execIfNotNull(final IFunction<? extends V,? super V> function) {
-        return new Level3MapOfSetEntriesSelectedValueSelectedElementsSelectedOperatorImpl<K,V>(getTarget().executeIfNotNull(function, Normalisation.NONE));
+    public Level3MapOfSetEntriesSelectedValueSelectedElementsOperator<K,V> endIf() {
+        return new Level3MapOfSetEntriesSelectedValueSelectedElementsOperatorImpl<K,V>(getTarget().endSelect());
     }
 
 
-    public Level3MapOfSetEntriesSelectedValueSelectedElementsOperator<K,V> endIf() {
-        return new Level3MapOfSetEntriesSelectedValueSelectedElementsOperatorImpl<K,V>(getTarget().endSelect());
+    public Level3MapOfSetEntriesSelectedValueSelectedElementsSelectedOperator<K,V> execIfNotNull(final IFunction<? extends V,? super V> function) {
+        return new Level3MapOfSetEntriesSelectedValueSelectedElementsSelectedOperatorImpl<K,V>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

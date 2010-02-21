@@ -63,17 +63,11 @@ public interface Level1MapOfArrayEntriesOperator<K,V>
     
     public Level1MapOfArrayEntriesOperator<K,V> execAsMapOfArrayEntry(final IFunction<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> function);
     
-    public Level1MapOfArrayEntriesOperator<K,V> execIfNotNullAsMapOfArrayEntry(final IFunction<? extends Map.Entry<? extends K,? extends V[]>,? super Map.Entry<K,V[]>> function);
-
     public <X,Y> Level1MapOfArrayEntriesOperator<X,Y> execAsMapOfArrayEntryOf(final Type<Y> valueType, final IFunction<? extends Map.Entry<X,Y[]>, ? super Map.Entry<K,V[]>> function);
     
-    public <X,Y> Level1MapOfArrayEntriesOperator<X,Y> execIfNotNullAsMapOfArrayEntryOf(final Type<Y> valueType, final IFunction<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> function);
-
     public Level1MapOfArrayEntriesOperator<K,V> replaceWith(final Map.Entry<K,V[]> replacement);
 
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map.Entry<K,V[]>> function);
-    
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super Map.Entry<K,V[]>> function);
     
     }

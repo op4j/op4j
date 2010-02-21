@@ -256,8 +256,8 @@ public final class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <X> Level0SetOperator<X> execIfNotNullAsSet(final IFunction<? extends Set<X>, ? super Set<T>> function) {
-        return new Level0SetOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.SET));
+    public Level0SetOperator<T> execIfNotNullAsSet(final IFunction<? extends Set<? extends T>, ? super Set<T>> function) {
+        return new Level0SetOperatorImpl<T>(getTarget().executeIfNotNull(function, Normalisation.SET));
     }
 
 
@@ -266,9 +266,7 @@ public final class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X, ? super Set<T>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
+    
 
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Set<T>> function) {
@@ -293,8 +291,8 @@ public final class Level0SetOperatorImpl<T> extends AbstractOperatorImpl
     }
     
 
-    public <X> Level0SetOperator<X> mapIfNotNull(final IFunction<X, ? super T> function) {
-        return new Level0SetOperatorImpl<X>(getTarget().mapIfNotNull(Structure.SET, function, null));
+    public Level0SetOperator<T> mapIfNotNull(final IFunction<? extends T, ? super T> function) {
+        return new Level0SetOperatorImpl<T>(getTarget().mapIfNotNull(Structure.SET, function, null));
     }
 
     

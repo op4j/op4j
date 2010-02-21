@@ -84,17 +84,4 @@ public interface ExecutableArrayElementsOperator<T> {
     public <X> ExecutableArrayElementsOperator<X> exec(final Type<X> type, final IFunction<X, ? super T> function);
 
     
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #exec(Type,IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param <X> the type of the results, and new type for the operator
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public <X> ExecutableArrayElementsOperator<X> execIfNotNull(final Type<X> type, final IFunction<X,? super T> function);
-
-    
 }

@@ -134,9 +134,7 @@ public final class Level1ArrayElementsOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
-    public <X> Level1ArrayElementsOperator<X> execIfNotNull(final Type<X> newType, final IFunction<X, ? super T> function) {
-        return new Level1ArrayElementsOperatorImpl<X>(newType, getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
+    
 
 
 

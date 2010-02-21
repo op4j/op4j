@@ -104,9 +104,7 @@ public final class Level1MapOfListEntriesOperatorImpl<K,V> extends AbstractOpera
     }
 
 
-    public <X, Y> Level1MapOfListEntriesOperator<X, Y> execIfNotNullAsMapOfListEntry(final IFunction<? extends Entry<X, ? extends List<Y>>, ? super Entry<K, List<V>>> function) {
-        return new Level1MapOfListEntriesOperatorImpl<X, Y>(getTarget().executeIfNotNull(function, Normalisation.MAP_OF_LIST_ENTRY));
-    }
+    
 
 
     public <X, Y> Level1MapOfListEntriesOperator<X, Y> execAsMapOfListEntry(final IFunction<? extends Entry<X, ? extends List<Y>>, ? super Entry<K, List<V>>> function) {
@@ -114,9 +112,7 @@ public final class Level1MapOfListEntriesOperatorImpl<K,V> extends AbstractOpera
     }
 
 
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X, ? super Entry<K, List<V>>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
+    
 
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Entry<K, List<V>>> function) {

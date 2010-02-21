@@ -246,8 +246,8 @@ public final class Level2MapOfListEntriesValueOperatorImpl<K,V> extends Abstract
     }
 
 
-    public <X> Level2MapOfListEntriesValueOperator<K, X> execIfNotNullAsList(final IFunction<? extends List<X>, ? super List<V>> function) {
-        return new Level2MapOfListEntriesValueOperatorImpl<K, X>(getTarget().executeIfNotNull(function, Normalisation.LIST));
+    public Level2MapOfListEntriesValueOperator<K, V> execIfNotNullAsList(final IFunction<? extends List<? extends V>, ? super List<V>> function) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().executeIfNotNull(function, Normalisation.LIST));
     }
 
 
@@ -256,9 +256,7 @@ public final class Level2MapOfListEntriesValueOperatorImpl<K,V> extends Abstract
     }
 
 
-    public <X> Level2MapEntriesValueOperator<K, X> execIfNotNull(final IFunction<X, ? super List<V>> function) {
-        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
+    
 
 
     public <X> Level2MapEntriesValueOperator<K, X> exec(final IFunction<X, ? super List<V>> function) {
@@ -281,8 +279,8 @@ public final class Level2MapOfListEntriesValueOperatorImpl<K,V> extends Abstract
     }
 
 
-    public <X> Level2MapOfListEntriesValueOperator<K, X> mapIfNotNull(final IFunction<X, ? super V> function) {
-        return new Level2MapOfListEntriesValueOperatorImpl<K, X>(getTarget().mapIfNotNull(Structure.LIST, function, null));
+    public Level2MapOfListEntriesValueOperator<K, V> mapIfNotNull(final IFunction<? extends V, ? super V> function) {
+        return new Level2MapOfListEntriesValueOperatorImpl<K, V>(getTarget().mapIfNotNull(Structure.LIST, function, null));
     }
 
 

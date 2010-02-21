@@ -257,8 +257,8 @@ public final class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <X> Level0ListOperator<X> execIfNotNullAsList(final IFunction<? extends List<X>, ? super List<T>> function) {
-        return new Level0ListOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.LIST));
+    public Level0ListOperator<T> execIfNotNullAsList(final IFunction<? extends List<? extends T>, ? super List<T>> function) {
+        return new Level0ListOperatorImpl<T>(getTarget().executeIfNotNull(function, Normalisation.LIST));
     }
 
 
@@ -267,9 +267,7 @@ public final class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X, ? super List<T>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
+    
 
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super List<T>> function) {
@@ -294,8 +292,8 @@ public final class Level0ListOperatorImpl<T> extends AbstractOperatorImpl
     }
     
 
-    public <X> Level0ListOperator<X> mapIfNotNull(final IFunction<X, ? super T> function) {
-        return new Level0ListOperatorImpl<X>(getTarget().mapIfNotNull(Structure.LIST, function, null));
+    public Level0ListOperator<T> mapIfNotNull(final IFunction<? extends T, ? super T> function) {
+        return new Level0ListOperatorImpl<T>(getTarget().mapIfNotNull(Structure.LIST, function, null));
     }
     
 

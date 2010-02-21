@@ -65,12 +65,10 @@ public interface ExecutableMapOperator<K,V> {
      * on non-null elements, leaving null elements untouched.
      * </p>
      *
-     * @param <X> the type of the resulting keys
-     * @param <Y> the type of the resulting values
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X,Y> ExecutableMapOperator<X,Y> execIfNotNullAsMap(final IFunction<? extends Map<X,Y>,? super Map<K,V>> function);
+    public ExecutableMapOperator<K,V> execIfNotNullAsMap(final IFunction<? extends Map<? extends K,? extends V>,? super Map<K,V>> function);
 
 
     
@@ -86,19 +84,6 @@ public interface ExecutableMapOperator<K,V> {
      * @return an operator on the results of function execution
      */
     public <X> Operator exec(final IFunction<X, ? super Map<K,V>> function);
-    
-
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param <X> the type of the result object
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public <X> Operator execIfNotNull(final IFunction<X,? super Map<K,V>> function);
     
     
 }

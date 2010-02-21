@@ -72,13 +72,13 @@ public final class Level1ArraySelectedElementsOperatorImpl<T> extends AbstractOp
     }
 
 
-    public Level1ArraySelectedElementsOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function) {
-        return new Level1ArraySelectedElementsOperatorImpl<T>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
+    public Level0ArraySelectedOperator<T> endFor() {
+        return new Level0ArraySelectedOperatorImpl<T>(this.type, getTarget().endIterate(this.type.getRawClass()));
     }
 
 
-    public Level0ArraySelectedOperator<T> endFor() {
-        return new Level0ArraySelectedOperatorImpl<T>(this.type, getTarget().endIterate(this.type.getRawClass()));
+    public Level1ArraySelectedElementsOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function) {
+        return new Level1ArraySelectedElementsOperatorImpl<T>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

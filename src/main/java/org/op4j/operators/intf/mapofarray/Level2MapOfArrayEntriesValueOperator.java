@@ -115,19 +115,13 @@ public interface Level2MapOfArrayEntriesValueOperator<K,V>
 
     public Level2MapOfArrayEntriesValueOperator<K,V> execAsArray(final IFunction<? extends V[], ? super V[]> function);
 
-    public <X> Level2MapOfArrayEntriesValueOperator<K,X> execIfNotNullAsArrayOf(final Type<X> valueType, final IFunction<X[],? super V[]> function);
-
     public <X> Level2MapOfArrayEntriesValueOperator<K,X> execAsArrayOf(final Type<X> valueType, final IFunction<X[], ? super V[]> function);
 
     public <X> Level2MapEntriesValueOperator<K,X> exec(final IFunction<X, ? super V[]> function);
     
-    public <X> Level2MapEntriesValueOperator<K,X> execIfNotNull(final IFunction<X,? super V[]> function);
-    
     public <X> Level2MapOfArrayEntriesValueOperator<K,X> map(final Type<X> type, final IFunction<X,? super V> function);
     
     public Level2MapOfArrayEntriesValueOperator<K,V> map(final IFunction<? extends V,? super V> function);
-    
-    public <X> Level2MapOfArrayEntriesValueOperator<K,X> mapIfNotNull(final Type<X> type, final IFunction<X,? super V> function);
     
     public Level2MapOfArrayEntriesValueOperator<K,V> mapIfNotNull(final IFunction<? extends V,? super V> function);
     

@@ -25,6 +25,7 @@ import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.op4j.operators.impl.array.Level0ArrayOperatorImpl;
+import org.op4j.operators.impl.array.Level0IndefiniteArrayOperatorImpl;
 import org.op4j.operators.impl.generic.Level0GenericMultiOperatorImpl;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperatorImpl;
 import org.op4j.operators.impl.list.Level0ListOperatorImpl;
@@ -34,6 +35,7 @@ import org.op4j.operators.impl.mapoflist.Level0MapOfListOperatorImpl;
 import org.op4j.operators.impl.mapofset.Level0MapOfSetOperatorImpl;
 import org.op4j.operators.impl.set.Level0SetOperatorImpl;
 import org.op4j.operators.intf.array.Level0ArrayOperator;
+import org.op4j.operators.intf.array.Level0IndefiniteArrayOperator;
 import org.op4j.operators.intf.generic.Level0GenericMultiOperator;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.list.Level0ListOperator;
@@ -84,6 +86,10 @@ public final class Op {
     
     
     
+    
+    public static <T> Level0IndefiniteArrayOperator<T>on(final T[] target) {
+        return new Level0IndefiniteArrayOperatorImpl<T>(ExecutionTarget.forObject(target, Normalisation.NONE));
+    }
     
     public static <T> Level0ListOperator<T>on(final List<T> target) {
         return onList(target);

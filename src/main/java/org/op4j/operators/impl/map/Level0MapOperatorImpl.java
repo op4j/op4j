@@ -253,8 +253,8 @@ public final class Level0MapOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public <X, Y> Level0MapOperator<X, Y> execIfNotNullAsMap(final IFunction<? extends Map<X, Y>, ? super Map<K, V>> function) {
-        return new Level0MapOperatorImpl<X, Y>(getTarget().executeIfNotNull(function, Normalisation.MAP));
+    public Level0MapOperator<K, V> execIfNotNullAsMap(final IFunction<? extends Map<? extends K, ? extends V>, ? super Map<K, V>> function) {
+        return new Level0MapOperatorImpl<K, V>(getTarget().executeIfNotNull(function, Normalisation.MAP));
     }
 
 
@@ -263,9 +263,7 @@ public final class Level0MapOperatorImpl<K,V> extends AbstractOperatorImpl
     }
 
 
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X, ? super Map<K, V>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
+    
 
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K, V>> function) {

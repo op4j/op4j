@@ -64,11 +64,10 @@ public interface ExecutableListOperator<T> {
      * on non-null elements, leaving null elements untouched.
      * </p>
      *
-     * @param <X> the type of the result elements
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableListOperator<X> execIfNotNullAsList(final IFunction<? extends List<X>,? super List<T>> function);
+    public ExecutableListOperator<T> execIfNotNullAsList(final IFunction<? extends List<? extends T>,? super List<T>> function);
 
 
     
@@ -84,19 +83,6 @@ public interface ExecutableListOperator<T> {
      * @return an operator on the results of function execution
      */
     public <X> Operator exec(final IFunction<X, ? super List<T>> function);
-    
-    
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param <X> the type of the result object
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public <X> Operator execIfNotNull(final IFunction<X,? super List<T>> function);
     
 
 
@@ -122,17 +108,15 @@ public interface ExecutableListOperator<T> {
     /**
      * <p>
      * Executes the specified function on each of the non-null elements, creating a new operator
-     * containing the result of all the executions and setting the new operator type to the one
-     * resulting from the function execution.
+     * containing the result of all the executions.
      * </p>
      * <p>
      * This method is equivalent to <tt>forEach().execIfNotNull(function).endFor()</tt>.
      * </p>
      * 
-     * @param <X> the type of the result elements
      * @param function the function to be executed
      * @return an operator on the results of function execution on each element
      */
-    public <X> ExecutableListOperator<X> mapIfNotNull(final IFunction<X,? super T> function);
+    public ExecutableListOperator<T> mapIfNotNull(final IFunction<? extends T,? super T> function);
         
 }

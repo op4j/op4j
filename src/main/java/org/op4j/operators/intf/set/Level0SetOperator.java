@@ -117,17 +117,15 @@ public interface Level0SetOperator<T>
     public Level0SetOperator<T> replaceIfNullWith(final Set<T> replacement);
 
 
-    public <X> Level0SetOperator<X> execIfNotNullAsSet(final IFunction<? extends Set<X>,? super Set<T>> function);
+    public Level0SetOperator<T> execIfNotNullAsSet(final IFunction<? extends Set<? extends T>,? super Set<T>> function);
 
     public <X> Level0SetOperator<X> execAsSet(final IFunction<? extends Set<X>,? super Set<T>> function);
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Set<T>> function);
     
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super Set<T>> function);
-    
     public <X> Level0SetOperator<X> map(final IFunction<X,? super T> function);
     
-    public <X> Level0SetOperator<X> mapIfNotNull(final IFunction<X,? super T> function);
+    public Level0SetOperator<T> mapIfNotNull(final IFunction<? extends T,? super T> function);
     
 
     

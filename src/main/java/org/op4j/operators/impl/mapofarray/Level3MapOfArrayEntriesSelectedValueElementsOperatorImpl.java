@@ -74,13 +74,13 @@ public final class Level3MapOfArrayEntriesSelectedValueElementsOperatorImpl<K,V>
     }
 
 
-    public Level3MapOfArrayEntriesSelectedValueElementsOperator<K,V> execIfNotNull(final IFunction<? extends V,? super V> function) {
-        return new Level3MapOfArrayEntriesSelectedValueElementsOperatorImpl<K,V>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
+    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> endFor() {
+        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().endIterate(this.type.getRawClass()));
     }
 
 
-    public Level2MapOfArrayEntriesSelectedValueOperator<K,V> endFor() {
-        return new Level2MapOfArrayEntriesSelectedValueOperatorImpl<K,V>(this.type, getTarget().endIterate(this.type.getRawClass()));
+    public Level3MapOfArrayEntriesSelectedValueElementsOperator<K,V> execIfNotNull(final IFunction<? extends V,? super V> function) {
+        return new Level3MapOfArrayEntriesSelectedValueElementsOperatorImpl<K,V>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

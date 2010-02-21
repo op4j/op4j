@@ -18,13 +18,13 @@ public final class Level1ListElementsSelectedOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1ListElementsSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function) {
-        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
+    public Level1ListElementsOperator<T> endIf() {
+        return new Level1ListElementsOperatorImpl<T>(getTarget().endSelect());
     }
 
 
-    public Level1ListElementsOperator<T> endIf() {
-        return new Level1ListElementsOperatorImpl<T>(getTarget().endSelect());
+    public Level1ListElementsSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function) {
+        return new Level1ListElementsSelectedOperatorImpl<T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

@@ -1,6 +1,5 @@
 
-  - Add static factory methods to ListFuncs, ArrayFuncs, etc
-
+  - asArrayOfUnknown actually renders an array into an Object[]... is that ok?
   - Functions in StringFuncs: do they have to be nullasnull or notnull?
     
     

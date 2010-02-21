@@ -69,13 +69,13 @@ public final class Level1ListSelectedElementsOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level1ListSelectedElementsOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function) {
-        return new Level1ListSelectedElementsOperatorImpl<T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
+    public Level0ListSelectedOperator<T> endFor() {
+        return new Level0ListSelectedOperatorImpl<T>(getTarget().endIterate(null));
     }
 
 
-    public Level0ListSelectedOperator<T> endFor() {
-        return new Level0ListSelectedOperatorImpl<T>(getTarget().endIterate(null));
+    public Level1ListSelectedElementsOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function) {
+        return new Level1ListSelectedElementsOperatorImpl<T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

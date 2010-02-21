@@ -54,6 +54,4 @@ public interface Level1MapOfArraySelectedEntriesSelectedOperator<K,V>
 
     public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> execAsMapOfArrayEntry(final IFunction<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> function);
     
-    public Level1MapOfArraySelectedEntriesSelectedOperator<K,V> execIfNotNullAsMapOfArrayEntry(final IFunction<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> function);
-    
     }

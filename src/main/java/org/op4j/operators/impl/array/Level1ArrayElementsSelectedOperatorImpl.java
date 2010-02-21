@@ -21,13 +21,13 @@ public final class Level1ArrayElementsSelectedOperatorImpl<T> extends AbstractOp
     }
 
 
-    public Level1ArrayElementsSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function) {
-        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
+    public Level1ArrayElementsOperator<T> endIf() {
+        return new Level1ArrayElementsOperatorImpl<T>(this.type, getTarget().endSelect());
     }
 
 
-    public Level1ArrayElementsOperator<T> endIf() {
-        return new Level1ArrayElementsOperatorImpl<T>(this.type, getTarget().endSelect());
+    public Level1ArrayElementsSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function) {
+        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

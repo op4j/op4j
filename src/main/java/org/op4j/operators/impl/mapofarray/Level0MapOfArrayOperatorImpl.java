@@ -236,9 +236,7 @@ public final class Level0MapOfArrayOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
-    public <X, Y> Level0MapOfArrayOperator<X, Y> execIfNotNullAsMapOfArrayOf(final Type<Y> valueType, final IFunction<? extends Map<X, Y[]>, ? super Map<K, V[]>> function) {
-        return new Level0MapOfArrayOperatorImpl<X, Y>(valueType, getTarget().executeIfNotNull(function, Normalisation.MAP_OF_ARRAY(valueType.getRawClass())));
-    }
+    
 
 
     public <X, Y> Level0MapOfArrayOperator<X, Y> execAsMapOfArrayOf(final Type<Y> valueType, final IFunction<? extends Map<X, Y[]>, ? super Map<K, V[]>> function) {
@@ -246,9 +244,7 @@ public final class Level0MapOfArrayOperatorImpl<K,V> extends AbstractOperatorImp
     }
 
 
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X, ? super Map<K, V[]>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
+    
 
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K, V[]>> function) {

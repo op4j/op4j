@@ -70,7 +70,6 @@ public interface Level3MapOfArrayEntriesValueElementsOperator<K,V>
 
     public Level3MapOfArrayEntriesValueElementsOperator<K,V> execIfNotNull(final IFunction<? extends V,? super V> function);
     public Level3MapOfArrayEntriesValueElementsOperator<K,V> exec(final IFunction<? extends V,? super V> function);
-    public <X> Level3MapOfArrayEntriesValueElementsOperator<K,X> execIfNotNull(final Type<X> valueType, final IFunction<X,? super V> function);
     public <X> Level3MapOfArrayEntriesValueElementsOperator<K,X> exec(final Type<X> valueType, final IFunction<X,? super V> function);
     
     public <X> Level3MapOfArrayEntriesValueElementsOperator<K,X> asType(final Type<X> type);

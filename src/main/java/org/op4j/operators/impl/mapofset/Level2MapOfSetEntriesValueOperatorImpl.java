@@ -240,8 +240,8 @@ public final class Level2MapOfSetEntriesValueOperatorImpl<K,V> extends AbstractO
     }
 
 
-    public <X> Level2MapOfSetEntriesValueOperator<K, X> execIfNotNullAsSet(final IFunction<? extends Set<X>, ? super Set<V>> function) {
-        return new Level2MapOfSetEntriesValueOperatorImpl<K, X>(getTarget().executeIfNotNull(function, Normalisation.SET));
+    public Level2MapOfSetEntriesValueOperator<K, V> execIfNotNullAsSet(final IFunction<? extends Set<? extends V>, ? super Set<V>> function) {
+        return new Level2MapOfSetEntriesValueOperatorImpl<K, V>(getTarget().executeIfNotNull(function, Normalisation.SET));
     }
 
 
@@ -250,9 +250,7 @@ public final class Level2MapOfSetEntriesValueOperatorImpl<K,V> extends AbstractO
     }
 
 
-    public <X> Level2MapEntriesValueOperator<K, X> execIfNotNull(final IFunction<X, ? super Set<V>> function) {
-        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
+    
 
 
     public <X> Level2MapEntriesValueOperator<K, X> exec(final IFunction<X, ? super Set<V>> function) {
@@ -276,8 +274,8 @@ public final class Level2MapOfSetEntriesValueOperatorImpl<K,V> extends AbstractO
     }
 
 
-    public <X> Level2MapOfSetEntriesValueOperator<K, X> mapIfNotNull(final IFunction<X, ? super V> function) {
-        return new Level2MapOfSetEntriesValueOperatorImpl<K, X>(getTarget().mapIfNotNull(Structure.SET, function, null));
+    public Level2MapOfSetEntriesValueOperator<K, V> mapIfNotNull(final IFunction<? extends V, ? super V> function) {
+        return new Level2MapOfSetEntriesValueOperatorImpl<K, V>(getTarget().mapIfNotNull(Structure.SET, function, null));
     }
 
     

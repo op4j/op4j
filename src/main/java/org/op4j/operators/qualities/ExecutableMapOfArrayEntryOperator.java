@@ -57,18 +57,6 @@ public interface ExecutableMapOfArrayEntryOperator<K,V> {
      * @return an operator on the results of function execution
      */
     public ExecutableMapOfArrayEntryOperator<K,V> execAsMapOfArrayEntry(final IFunction<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> function);
-    
-    
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #execAsMapOfArrayEntry(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public ExecutableMapOfArrayEntryOperator<K,V> execIfNotNullAsMapOfArrayEntry(final IFunction<? extends Map.Entry<? extends K,? extends V[]>,? super Map.Entry<K,V[]>> function);
 
 
     
@@ -90,21 +78,6 @@ public interface ExecutableMapOfArrayEntryOperator<K,V> {
      * @return an operator on the results of function execution
      */
     public <X,Y> ExecutableMapOfArrayEntryOperator<X,Y> execAsMapOfArrayEntryOf(final Type<Y> valueType, final IFunction<? extends Map.Entry<X,Y[]>, ? super Map.Entry<K,V[]>> function);
-    
-    
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #execAsMapOfArrayEntryOf(Type,IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param <X> the type of the resulting keys
-     * @param <Y> the type of the resulting values
-     * @param valueType the type of the new array values
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public <X,Y> ExecutableMapOfArrayEntryOperator<X,Y> execIfNotNullAsMapOfArrayEntryOf(final Type<Y> valueType, final IFunction<? extends Map.Entry<X,Y[]>,? super Map.Entry<K,V[]>> function);
 
 
     
@@ -120,19 +93,6 @@ public interface ExecutableMapOfArrayEntryOperator<K,V> {
      * @return an operator on the results of function execution
      */
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map.Entry<K,V[]>> function);
-    
-
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param <X> the type of the result object
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super Map.Entry<K,V[]>> function);
     
     
 }

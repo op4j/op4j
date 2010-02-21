@@ -19,13 +19,13 @@ public final class Level0GenericMultiSelectedOperatorImpl<T> extends AbstractOpe
     }
 
 
-    public Level0GenericMultiSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function) {
-        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
+    public Level0GenericMultiOperator<T> endIf() {
+        return new Level0GenericMultiOperatorImpl<T>(getTarget().endSelect());
     }
 
 
-    public Level0GenericMultiOperator<T> endIf() {
-        return new Level0GenericMultiOperatorImpl<T>(getTarget().endSelect());
+    public Level0GenericMultiSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function) {
+        return new Level0GenericMultiSelectedOperatorImpl<T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

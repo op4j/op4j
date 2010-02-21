@@ -118,13 +118,9 @@ public interface Level0MapOfArrayOperator<K,V>
 
     public Level0MapOfArrayOperator<K,V> execAsMapOfArray(final IFunction<? extends Map<? extends K,? extends V[]>,? super Map<K,V[]>> function);
 
-    public <X,Y> Level0MapOfArrayOperator<X,Y> execIfNotNullAsMapOfArrayOf(final Type<Y> valueType, final IFunction<? extends Map<X,Y[]>,? super Map<K,V[]>> function);
-
     public <X,Y> Level0MapOfArrayOperator<X,Y> execAsMapOfArrayOf(final Type<Y> valueType, final IFunction<? extends Map<X,Y[]>,? super Map<K,V[]>> function);
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,V[]>> function);
-    
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super Map<K,V[]>> function);
     
     public <X,Y> Level0MapOfArrayOperator<X,Y> asMapOfArrayOf(final Type<X> keyType, final Type<Y> valueType);
     public Level0MapOfArrayOperator<?,?> asMapOfArrayOfUnknown();

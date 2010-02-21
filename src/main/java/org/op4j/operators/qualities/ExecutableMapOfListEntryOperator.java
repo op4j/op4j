@@ -59,20 +59,6 @@ public interface ExecutableMapOfListEntryOperator<K,V> {
      * @return an operator on the results of function execution
      */
     public <X,Y> ExecutableMapOfListEntryOperator<X,Y> execAsMapOfListEntry(final IFunction<? extends Map.Entry<X,? extends List<Y>>, ? super Map.Entry<K,List<V>>> function);
-    
-    
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #execAsMapOfListEntry(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param <X> the type of the resulting keys
-     * @param <Y> the type of the resulting values
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public <X,Y> ExecutableMapOfListEntryOperator<X,Y> execIfNotNullAsMapOfListEntry(final IFunction<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> function);
 
 
     
@@ -88,19 +74,6 @@ public interface ExecutableMapOfListEntryOperator<K,V> {
      * @return an operator on the results of function execution
      */
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map.Entry<K,List<V>>> function);
-    
-
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param <X> the type of the result object
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super Map.Entry<K,List<V>>> function);
     
     
 }

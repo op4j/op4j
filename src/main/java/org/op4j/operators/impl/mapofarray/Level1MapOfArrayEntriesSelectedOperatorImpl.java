@@ -46,11 +46,6 @@ public final class Level1MapOfArrayEntriesSelectedOperatorImpl<K,V> extends Abst
     }
 
 
-    public Level1MapOfArrayEntriesSelectedOperator<K,V> execIfNotNullAsMapOfArrayEntry(final IFunction<? extends Entry<? extends K,? extends V[]>,? super Entry<K,V[]>> function) {
-        return new Level1MapOfArrayEntriesSelectedOperatorImpl<K,V>(this.type, getTarget().executeIfNotNull(function, Normalisation.MAP_OF_ARRAY_ENTRY(this.type.getRawClass())));
-    }
-
-
     public Level1MapOfArrayEntriesSelectedOperator<K,V> replaceWith(final Entry<K,V[]> replacement) {
         return new Level1MapOfArrayEntriesSelectedOperatorImpl<K,V>(this.type, getTarget().replaceWith(replacement, Normalisation.MAP_OF_ARRAY_ENTRY(this.type.getRawClass())));
     }

@@ -55,18 +55,6 @@ public interface ExecutableMapOfArrayEntrySelectedOperator<K,V> {
      * @return an operator on the results of function execution
      */
     public ExecutableMapOfArrayEntrySelectedOperator<K,V> execAsMapOfArrayEntry(final IFunction<? extends Map.Entry<? extends K,? extends V[]>, ? super Map.Entry<K,V[]>> function);
-    
-    
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #execAsMapOfArrayEntry(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public ExecutableMapOfArrayEntrySelectedOperator<K,V> execIfNotNullAsMapOfArrayEntry(final IFunction<? extends Map.Entry<? extends K,? extends V[]>,? super Map.Entry<K,V[]>> function);
 
     
 }

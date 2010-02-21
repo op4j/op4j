@@ -23,13 +23,13 @@ public final class Level2MapOfArraySelectedEntriesKeySelectedOperatorImpl<K,V> e
     }
 
 
-    public Level2MapOfArraySelectedEntriesKeySelectedOperator<K,V> execIfNotNull(final IFunction<? extends K,? super K> function) {
-        return new Level2MapOfArraySelectedEntriesKeySelectedOperatorImpl<K,V>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
+    public Level2MapOfArraySelectedEntriesKeyOperator<K,V> endIf() {
+        return new Level2MapOfArraySelectedEntriesKeyOperatorImpl<K,V>(this.type, getTarget().endSelect());
     }
 
 
-    public Level2MapOfArraySelectedEntriesKeyOperator<K,V> endIf() {
-        return new Level2MapOfArraySelectedEntriesKeyOperatorImpl<K,V>(this.type, getTarget().endSelect());
+    public Level2MapOfArraySelectedEntriesKeySelectedOperator<K,V> execIfNotNull(final IFunction<? extends K,? super K> function) {
+        return new Level2MapOfArraySelectedEntriesKeySelectedOperatorImpl<K,V>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

@@ -268,9 +268,7 @@ public final class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public <X> Level2MapOfArrayEntriesValueOperator<K, X> execIfNotNullAsArrayOf(final Type<X> valueType, final IFunction<X[], ? super V[]> function) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K, X>(valueType, getTarget().executeIfNotNull(function, Normalisation.ARRAY(valueType.getRawClass())));
-    }
+    
 
 
     public <X> Level2MapOfArrayEntriesValueOperator<K, X> execAsArrayOf(final Type<X> valueType, final IFunction<X[], ? super V[]> function) {
@@ -278,9 +276,7 @@ public final class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends Abstrac
     }
 
 
-    public <X> Level2MapEntriesValueOperator<K, X> execIfNotNull(final IFunction<X, ? super V[]> function) {
-        return new Level2MapEntriesValueOperatorImpl<K, X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
+    
 
 
     public <X> Level2MapEntriesValueOperator<K, X> exec(final IFunction<X, ? super V[]> function) {
@@ -311,9 +307,7 @@ public final class Level2MapOfArrayEntriesValueOperatorImpl<K,V> extends Abstrac
     
 
     
-    public <X> Level2MapOfArrayEntriesValueOperator<K,X> mapIfNotNull(final Type<X> newType, final IFunction<X, ? super V> function) {
-        return new Level2MapOfArrayEntriesValueOperatorImpl<K,X>(newType, getTarget().mapIfNotNull(Structure.ARRAY, function, newType.getRawClass()));
-    }
+    
 
 
     public Level2MapOfArrayEntriesValueOperator<K,V> mapIfNotNull(final IFunction<? extends V, ? super V> function) {

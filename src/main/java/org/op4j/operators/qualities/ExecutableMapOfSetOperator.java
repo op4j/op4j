@@ -67,12 +67,10 @@ public interface ExecutableMapOfSetOperator<K,V> {
      * on non-null elements, leaving null elements untouched.
      * </p>
      *
-     * @param <X> the type of the resulting keys
-     * @param <Y> the type of the resulting values
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X,Y> ExecutableMapOfSetOperator<X,Y> execIfNotNullAsMapOfSet(final IFunction<? extends Map<X,? extends Set<Y>>,? super Map<K,Set<V>>> function);
+    public ExecutableMapOfSetOperator<K,V> execIfNotNullAsMapOfSet(final IFunction<? extends Map<? extends K,? extends Set<? extends V>>,? super Map<K,Set<V>>> function);
 
 
 
@@ -88,19 +86,6 @@ public interface ExecutableMapOfSetOperator<K,V> {
      * @return an operator on the results of function execution
      */
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map<K,Set<V>>> function);
-    
-
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param <X> the type of the result object
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super Map<K,Set<V>>> function);
     
     
 }

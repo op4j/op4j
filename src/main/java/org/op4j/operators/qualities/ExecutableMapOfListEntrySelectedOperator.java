@@ -56,18 +56,6 @@ public interface ExecutableMapOfListEntrySelectedOperator<K,V> {
      * @return an operator on the results of function execution
      */
     public ExecutableMapOfListEntrySelectedOperator<K,V> execAsMapOfListEntry(final IFunction<? extends Map.Entry<? extends K,? extends List<? extends V>>, ? super Map.Entry<K,List<V>>> function);
-    
-    
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #execAsMapOfListEntry(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public ExecutableMapOfListEntrySelectedOperator<K,V> execIfNotNullAsMapOfListEntry(final IFunction<? extends Map.Entry<? extends K,? extends List<? extends V>>,? super Map.Entry<K,List<V>>> function);
 
     
 }

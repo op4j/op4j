@@ -18,13 +18,13 @@ public final class Level1SetSelectedElementsSelectedOperatorImpl<T> extends Abst
     }
 
 
-    public Level1SetSelectedElementsSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function) {
-        return new Level1SetSelectedElementsSelectedOperatorImpl<T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
+    public Level1SetSelectedElementsOperator<T> endIf() {
+        return new Level1SetSelectedElementsOperatorImpl<T>(getTarget().endSelect());
     }
 
 
-    public Level1SetSelectedElementsOperator<T> endIf() {
-        return new Level1SetSelectedElementsOperatorImpl<T>(getTarget().endSelect());
+    public Level1SetSelectedElementsSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function) {
+        return new Level1SetSelectedElementsSelectedOperatorImpl<T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

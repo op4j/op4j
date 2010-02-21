@@ -56,18 +56,6 @@ public interface ExecutableMapOfSetEntrySelectedOperator<K,V> {
      * @return an operator on the results of function execution
      */
     public ExecutableMapOfSetEntrySelectedOperator<K,V> execAsMapOfSetEntry(final IFunction<? extends Map.Entry<? extends K,? extends Set<? extends V>>, ? super Map.Entry<K,Set<V>>> function);
-    
-    
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #execAsMapOfSetEntry(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public ExecutableMapOfSetEntrySelectedOperator<K,V> execIfNotNullAsMapOfSetEntry(final IFunction<? extends Map.Entry<? extends K,? extends Set<? extends V>>,? super Map.Entry<K,Set<V>>> function);
 
     
 }

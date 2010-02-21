@@ -63,13 +63,9 @@ public interface Level1MapOfListEntriesOperator<K,V>
     
     public <X,Y> Level1MapOfListEntriesOperator<X,Y> execAsMapOfListEntry(final IFunction<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> function);
     
-    public <X,Y> Level1MapOfListEntriesOperator<X,Y> execIfNotNullAsMapOfListEntry(final IFunction<? extends Map.Entry<X,? extends List<Y>>,? super Map.Entry<K,List<V>>> function);
-    
     public Level1MapOfListEntriesOperator<K,V> replaceWith(final Map.Entry<K,List<V>> replacement);
 
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map.Entry<K,List<V>>> function);
-    
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super Map.Entry<K,List<V>>> function);
     
     }

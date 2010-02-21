@@ -62,13 +62,9 @@ public interface Level1MapEntriesOperator<K,V>
     
     public <X,Y> Level1MapEntriesOperator<X,Y> execAsMapEntry(final IFunction<? extends Map.Entry<X,Y>, ? super Map.Entry<K,V>> function);
     
-    public <X,Y> Level1MapEntriesOperator<X,Y> execIfNotNullAsMapEntry(final IFunction<? extends Map.Entry<X,Y>,? super Map.Entry<K,V>> function);
-    
     public Level1MapEntriesOperator<K,V> replaceWith(final Map.Entry<K,V> replacement);
 
 
     public <X> Level1ListElementsOperator<X> exec(final IFunction<X, ? super Map.Entry<K,V>> function);
-    
-    public <X> Level1ListElementsOperator<X> execIfNotNull(final IFunction<X,? super Map.Entry<K,V>> function);
     
     }

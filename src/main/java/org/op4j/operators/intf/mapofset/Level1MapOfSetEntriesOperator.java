@@ -63,13 +63,9 @@ public interface Level1MapOfSetEntriesOperator<K,V>
     
     public <X,Y> Level1MapOfSetEntriesOperator<X,Y> execAsMapOfSetEntry(final IFunction<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> function);
     
-    public <X,Y> Level1MapOfSetEntriesOperator<X,Y> execIfNotNullAsMapOfSetEntry(final IFunction<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> function);
-    
     public Level1MapOfSetEntriesOperator<K,V> replaceWith(final Map.Entry<K,Set<V>> replacement);
 
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map.Entry<K,Set<V>>> function);
-    
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super Map.Entry<K,Set<V>>> function);
     
     }

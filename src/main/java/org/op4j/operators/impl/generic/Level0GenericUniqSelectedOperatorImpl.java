@@ -16,13 +16,13 @@ public final class Level0GenericUniqSelectedOperatorImpl<T> extends AbstractOper
     }
 
 
-    public Level0GenericUniqSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function) {
-        return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
+    public Level0GenericUniqOperator<T> endIf() {
+        return new Level0GenericUniqOperatorImpl<T>(getTarget().endSelect());
     }
 
 
-    public Level0GenericUniqOperator<T> endIf() {
-        return new Level0GenericUniqOperatorImpl<T>(getTarget().endSelect());
+    public Level0GenericUniqSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function) {
+        return new Level0GenericUniqSelectedOperatorImpl<T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

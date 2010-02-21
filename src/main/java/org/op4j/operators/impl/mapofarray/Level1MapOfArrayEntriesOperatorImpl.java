@@ -108,9 +108,7 @@ public final class Level1MapOfArrayEntriesOperatorImpl<K,V> extends AbstractOper
     }
 
 
-    public Level1MapOfArrayEntriesOperator<K,V> execIfNotNullAsMapOfArrayEntry(final IFunction<? extends Entry<? extends K, ? extends V[]>, ? super Entry<K, V[]>> function) {
-        return new Level1MapOfArrayEntriesOperatorImpl<K,V>(this.type, getTarget().executeIfNotNull(function, Normalisation.MAP_OF_ARRAY_ENTRY(this.type.getRawClass())));
-    }
+    
 
 
     public Level1MapOfArrayEntriesOperator<K,V> execAsMapOfArrayEntry(final IFunction<? extends Entry<? extends K, ? extends V[]>, ? super Entry<K, V[]>> function) {
@@ -118,9 +116,7 @@ public final class Level1MapOfArrayEntriesOperatorImpl<K,V> extends AbstractOper
     }
 
 
-    public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> execIfNotNullAsMapOfArrayEntryOf(final Type<Y> valueType, final IFunction<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> function) {
-        return new Level1MapOfArrayEntriesOperatorImpl<X, Y>(valueType, getTarget().executeIfNotNull(function, Normalisation.MAP_OF_ARRAY_ENTRY(valueType.getRawClass())));
-    }
+    
 
 
     public <X, Y> Level1MapOfArrayEntriesOperator<X, Y> execAsMapOfArrayEntryOf(final Type<Y> valueType, final IFunction<? extends Entry<X, Y[]>, ? super Entry<K, V[]>> function) {
@@ -128,9 +124,7 @@ public final class Level1MapOfArrayEntriesOperatorImpl<K,V> extends AbstractOper
     }
 
 
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X, ? super Entry<K, V[]>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
+    
 
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Entry<K, V[]>> function) {

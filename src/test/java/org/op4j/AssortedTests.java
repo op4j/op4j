@@ -655,4 +655,20 @@ public class AssortedTests extends TestCase {
 //		System.out.println("test27. Result testOnArray: " + ArrayUtils.toString(arrayResult));
 		
     }
+    
+    
+    @Test
+    public void test28() {
+
+        final Integer[] integerArr = new Integer[]{null, 23, 34, null, -34};
+        final List<Integer> integerList = Arrays.asList(integerArr);
+
+        final List<Integer> result = Op.on(integerArr).toList().get();
+        
+        assertEquals(integerList, result);
+        
+    }
+    
+    
 }
+

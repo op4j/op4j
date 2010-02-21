@@ -85,20 +85,6 @@ public interface ExecutableArrayOperator<T> {
      * @return an operator on the results of function execution
      */
     public <X> ExecutableArrayOperator<X> execAsArrayOf(final Type<X> type, final IFunction<X[], ? super T[]> function);
-    
-    
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #execAsArrayOf(Type, IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     * 
-     * @param <X> the type of the result elements
-     * @param type the new type for the operator
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public <X> ExecutableArrayOperator<X> execIfNotNullAsArrayOf(final Type<X> type, final IFunction<X[],? super T[]> function);
 
 
     
@@ -114,19 +100,6 @@ public interface ExecutableArrayOperator<T> {
      * @return an operator on the results of function execution
      */
     public <X> Operator exec(final IFunction<X, ? super T[]> function);
-    
-    
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param <X> the type of the result object
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public <X> Operator execIfNotNull(final IFunction<X,? super T[]> function);
     
     
     
@@ -163,24 +136,6 @@ public interface ExecutableArrayOperator<T> {
      * @return an operator on the results of function execution on each element
      */
     public ExecutableArrayOperator<T> map(final IFunction<? extends T,? super T> function);
-    
-
-    /**
-     * <p>
-     * Executes the specified function on each of the non-null elements, creating a new operator
-     * containing the result of all the executions and setting the new operator type to the one
-     * specified.
-     * </p>
-     * <p>
-     * This method is equivalent to <tt>forEach().execIfNotNull(type, function).endFor()</tt>.
-     * </p>
-     * 
-     * @param <X> the type of the result elements
-     * @param type the new type for the operator
-     * @param function the function to be executed
-     * @return an operator on the results of function execution on each element
-     */
-    public <X> ExecutableArrayOperator<X> mapIfNotNull(final Type<X> type, final IFunction<X,? super T> function);
     
 
     /**

@@ -19,17 +19,15 @@
  */
 package org.op4j.operators.qualities;
 
-import java.util.Map;
-
 import org.op4j.functions.IFunction;
+import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 
 
 
 
 /**
  * <p>
- * This interface contains methods for executing functions on operators with
- * map entry target objects on which a selection ("if") has already been done.
+ * This interface contains methods for executing functions.
  * </p>
  * 
  * @since 1.0
@@ -37,7 +35,7 @@ import org.op4j.functions.IFunction;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ExecutableMapEntrySelectedOperator<K,V> {
+public interface ExecutableIndefiniteArrayOperator<T> {
 
     
     /**
@@ -46,15 +44,16 @@ public interface ExecutableMapEntrySelectedOperator<K,V> {
      * containing the result of the execution.
      * </p>
      * <p>
-     * This function does not allow the operator target type to change because a selection ("if") has 
-     * already been done on the target objects, and this would render the operator inconsistent
-     * (some objects would belong to a type and others to another type).
+     * This function must be able to take as input an object of type T (the current operator's
+     * target type) and will return an object of type X, which will be from then on the new
+     * operator's target type.
      * </p>
      * 
+     * @param <X> the type of the result, and new type for the operator
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableMapEntrySelectedOperator<K,V> execAsMapEntry(final IFunction<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> function);
+    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super T[]> function);
 
     
 }

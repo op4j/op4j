@@ -262,9 +262,7 @@ public final class Level0ArrayOperatorImpl<T>
     }
 
 
-    public <X> Level0ArrayOperator<X> execIfNotNullAsArrayOf(final Type<X> newType, final IFunction<X[], ? super T[]> function) {
-        return new Level0ArrayOperatorImpl<X>(newType, getTarget().executeIfNotNull(function, Normalisation.ARRAY(newType.getRawClass())));
-    }
+    
 
 
     public <X> Level0ArrayOperator<X> execAsArrayOf(final Type<X> newType, final IFunction<X[], ? super T[]> function) {
@@ -272,9 +270,7 @@ public final class Level0ArrayOperatorImpl<T>
     }
 
 
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X, ? super T[]> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
+    
 
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super T[]> function) {
@@ -302,9 +298,7 @@ public final class Level0ArrayOperatorImpl<T>
     }
 
 
-    public <X> Level0ArrayOperator<X> mapIfNotNull(final Type<X> newType, final IFunction<X, ? super T> function) {
-        return new Level0ArrayOperatorImpl<X>(newType, getTarget().mapIfNotNull(Structure.ARRAY, function, newType.getRawClass()));
-    }
+    
 
 
     public Level0ArrayOperator<T> mapIfNotNull(final IFunction<? extends T, ? super T> function) {

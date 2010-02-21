@@ -103,9 +103,7 @@ public final class Level1MapOfSetEntriesOperatorImpl<K,V> extends AbstractOperat
     }
 
 
-    public <X, Y> Level1MapOfSetEntriesOperator<X, Y> execIfNotNullAsMapOfSetEntry(final IFunction<? extends Entry<X, ? extends Set<Y>>, ? super Entry<K, Set<V>>> function) {
-        return new Level1MapOfSetEntriesOperatorImpl<X, Y>(getTarget().executeIfNotNull(function, Normalisation.MAP_OF_SET_ENTRY));
-    }
+    
 
 
     public <X, Y> Level1MapOfSetEntriesOperator<X, Y> execAsMapOfSetEntry(final IFunction<? extends Entry<X, ? extends Set<Y>>, ? super Entry<K, Set<V>>> function) {
@@ -113,9 +111,7 @@ public final class Level1MapOfSetEntriesOperatorImpl<K,V> extends AbstractOperat
     }
 
 
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X, ? super Entry<K, Set<V>>> function) {
-        return new Level0GenericUniqOperatorImpl<X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
+    
 
 
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Entry<K, Set<V>>> function) {

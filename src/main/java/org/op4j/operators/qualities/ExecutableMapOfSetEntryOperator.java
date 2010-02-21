@@ -59,20 +59,6 @@ public interface ExecutableMapOfSetEntryOperator<K,V> {
      * @return an operator on the results of function execution
      */
     public <X,Y> ExecutableMapOfSetEntryOperator<X,Y> execAsMapOfSetEntry(final IFunction<? extends Map.Entry<X,? extends Set<Y>>, ? super Map.Entry<K,Set<V>>> function);
-    
-    
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #execAsMapOfSetEntry(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param <X> the type of the resulting keys
-     * @param <Y> the type of the resulting values
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public <X,Y> ExecutableMapOfSetEntryOperator<X,Y> execIfNotNullAsMapOfSetEntry(final IFunction<? extends Map.Entry<X,? extends Set<Y>>,? super Map.Entry<K,Set<V>>> function);
 
 
     
@@ -88,19 +74,6 @@ public interface ExecutableMapOfSetEntryOperator<K,V> {
      * @return an operator on the results of function execution
      */
     public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super Map.Entry<K,Set<V>>> function);
-    
-
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param <X> the type of the result object
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public <X> Level0GenericUniqOperator<X> execIfNotNull(final IFunction<X,? super Map.Entry<K,Set<V>>> function);
     
     
 }

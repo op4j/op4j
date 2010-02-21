@@ -131,9 +131,7 @@ public final class Level3MapOfArrayEntriesValueElementsOperatorImpl<K,V> extends
     }
 
 
-    public <X> Level3MapOfArrayEntriesValueElementsOperator<K, X> execIfNotNull(final Type<X> valueType, final IFunction<X, ? super V> function) {
-        return new Level3MapOfArrayEntriesValueElementsOperatorImpl<K, X>(valueType, getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
+    
 
 
     public <X> Level3MapOfArrayEntriesValueElementsOperator<K, X> exec(final Type<X> valueType, final IFunction<X, ? super V> function) {

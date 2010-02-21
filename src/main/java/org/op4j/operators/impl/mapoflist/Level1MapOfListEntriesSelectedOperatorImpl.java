@@ -42,11 +42,6 @@ public final class Level1MapOfListEntriesSelectedOperatorImpl<K,V> extends Abstr
     }
 
 
-    public Level1MapOfListEntriesSelectedOperator<K,V> execIfNotNullAsMapOfListEntry(final IFunction<? extends Entry<? extends K,? extends List<? extends V>>,? super Entry<K,List<V>>> function) {
-        return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().executeIfNotNull(function, Normalisation.MAP_OF_LIST_ENTRY));
-    }
-
-
     public Level1MapOfListEntriesSelectedOperator<K,V> replaceWith(final Entry<K,List<V>> replacement) {
         return new Level1MapOfListEntriesSelectedOperatorImpl<K,V>(getTarget().replaceWith(replacement, Normalisation.MAP_OF_LIST_ENTRY));
     }

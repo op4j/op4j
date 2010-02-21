@@ -69,7 +69,6 @@ public interface Level1ArrayElementsOperator<T>
 
     public Level1ArrayElementsOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function);
     public Level1ArrayElementsOperator<T> exec(final IFunction<? extends T,? super T> function);
-    public <X> Level1ArrayElementsOperator<X> execIfNotNull(final Type<X> type, final IFunction<X,? super T> function);
     public <X> Level1ArrayElementsOperator<X> exec(final Type<X> type, final IFunction<X,? super T> function);
     
     
