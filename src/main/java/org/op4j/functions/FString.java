@@ -118,26 +118,20 @@ public final class FString {
         return STRIP_STRING_FUNC;
     }
 	
-	static abstract class BaseStringFunc<X> extends AbstractNotNullFunction<String, X> {
-	    
-		public BaseStringFunc() {
-			super();			
-		}
 
-        }
+
 	
 	/**
 	 * The String is returned in a way it can be used to fill in a CSV column as StringEscapeUtils does
 	 *
 	 */
-	public static final class EscapeCSV extends BaseStringFunc<String> {
+	public static final class EscapeCSV implements IFunction<String,String> {
 		
 		public EscapeCSV() {
 			super();
 		}
 
-        @Override
-		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+		public String execute(final String input, final ExecCtx ctx) throws Exception {
 			return StringEscapeUtils.escapeCsv(input);
 		}		
 	}
@@ -148,13 +142,12 @@ public final class FString {
 	 * as StringEscapeUtils does
 	 *
 	 */
-	public static final class UnescapeCSV extends BaseStringFunc<String> {
+	public static final class UnescapeCSV implements IFunction<String,String> {
 		public UnescapeCSV() {
 			super();
 		}
 
-        @Override
-		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+		public String execute(final String input, final ExecCtx ctx) throws Exception {
 			return StringEscapeUtils.unescapeCsv(input);
 		}		
 	}
@@ -163,13 +156,12 @@ public final class FString {
 	 * The String is returned with the XML characters escaped as StringEscapeUtils does
 	 *
 	 */
-	public static final class EscapeXML extends BaseStringFunc<String> {
+	public static final class EscapeXML implements IFunction<String,String> {
 		public EscapeXML() {
 			super();
 		}
 
-        @Override
-		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+		public String execute(final String input, final ExecCtx ctx) throws Exception {
 			return StringEscapeUtils.escapeXml(input);
 		}		
 	}
@@ -178,13 +170,12 @@ public final class FString {
 	 * The String is returned without the XML escape characters as StringEscapeUtils does
 	 *
 	 */
-	public static final class UnescapeXML extends BaseStringFunc<String> {
+	public static final class UnescapeXML implements IFunction<String,String> {
 		public UnescapeXML() {
 			super();
 		}
 
-        @Override
-		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+		public String execute(final String input, final ExecCtx ctx) throws Exception {
 			return StringEscapeUtils.unescapeXml(input);
 		}		
 	}
@@ -193,13 +184,12 @@ public final class FString {
 	 * It escapes the given String using HTML entities (as StringEscapeUtils does)
 	 *
 	 */
-	public static final class EscapeHTML extends BaseStringFunc<String> {
+	public static final class EscapeHTML implements IFunction<String,String> {
 		public EscapeHTML() {
 			super();
 		}
 
-        @Override
-		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+		public String execute(final String input, final ExecCtx ctx) throws Exception {
 			return StringEscapeUtils.escapeHtml(input);
 		}		
 	}
@@ -209,13 +199,12 @@ public final class FString {
 	 * their unicode characters (as StringEscapeUtils does)
 	 *
 	 */
-	public static final class UnescapeHTML extends BaseStringFunc<String> {
+	public static final class UnescapeHTML implements IFunction<String,String> {
 		public UnescapeHTML() {
 			super();
 		}
 
-        @Override
-		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+		public String execute(final String input, final ExecCtx ctx) throws Exception {
 			return StringEscapeUtils.unescapeHtml(input);
 		}		
 	}
@@ -224,13 +213,12 @@ public final class FString {
 	 * It converts the given String into a JavaScript valid one (as StringEscapeUtils does)
 	 *
 	 */
-	public static final class EscapeJavaScript extends BaseStringFunc<String> {
+	public static final class EscapeJavaScript implements IFunction<String,String> {
 		public EscapeJavaScript() {
 			super();
 		}
 
-        @Override
-		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+		public String execute(final String input, final ExecCtx ctx) throws Exception {
 			return StringEscapeUtils.escapeJavaScript(input);
 		}		
 	}
@@ -239,13 +227,12 @@ public final class FString {
 	 * It unescapes the given JavaScript valid String (as StringEscapeUtils does)
 	 *
 	 */
-	public static final class UnescapeJavaScript extends BaseStringFunc<String> {
+	public static final class UnescapeJavaScript implements IFunction<String,String> {
 		public UnescapeJavaScript() {
 			super();
 		}
 
-        @Override
-		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+		public String execute(final String input, final ExecCtx ctx) throws Exception {
 			return StringEscapeUtils.unescapeJavaScript(input);
 		}		
 	}
@@ -254,7 +241,7 @@ public final class FString {
 	 * It converts the given String into a base64 encoded one
 	 *
 	 */
-	public static final class ToBase64 extends BaseStringFunc<String> {
+	public static final class ToBase64 extends AbstractNullAsNullFunction<String,String> {
 
 		private Charset charset = null;
 
@@ -264,7 +251,7 @@ public final class FString {
 		}
 
         @Override
-		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+		public String nullAsNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			Validate.notNull(this.charset, "Charset can't be null");
 			return new String(new Base64().encode(input.getBytes(
 					this.charset.name())), "US-ASCII");
@@ -275,7 +262,7 @@ public final class FString {
 	 * It decodes the given base64 encoded String
 	 *
 	 */
-	public static final class FromBase64 extends BaseStringFunc<String> {
+	public static final class FromBase64 extends AbstractNullAsNullFunction<String,String> {
 
 		private Charset charset = null;
 
@@ -285,7 +272,7 @@ public final class FString {
 		}
 
         @Override
-		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+		public String nullAsNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			Validate.notNull(this.charset, "Charset can't be null");
 			return new String(new Base64().decode(input.getBytes("US-ASCII")), 
 					this.charset.name()); 
@@ -296,7 +283,7 @@ public final class FString {
 	 * It converts the given String into its Hexadecimal representation using the specified Charset
 	 *
 	 */
-	public static final class ToHexadecimal extends BaseStringFunc<String> {
+	public static final class ToHexadecimal extends AbstractNullAsNullFunction<String,String> {
 
 		private Charset charset = null;
 
@@ -306,7 +293,7 @@ public final class FString {
 		}
 
         @Override
-		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+		public String nullAsNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			Validate.notNull(this.charset, "Charset can't be null");
 
 			final byte[] inputAsByteArray = input.getBytes(this.charset.name());
@@ -322,7 +309,7 @@ public final class FString {
 	 * The given String is converted from its Hexadecimal representation to a String using the specified Charset
 	 *
 	 */
-	public static final class FromHexadecimal extends BaseStringFunc<String> {
+	public static final class FromHexadecimal extends AbstractNullAsNullFunction<String,String> {
 
 		private Charset charset = null;
 
@@ -332,7 +319,7 @@ public final class FString {
 		}
 
         @Override
-		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+		public String nullAsNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			Validate.notNull(this.charset, "Charset can't be null");
 
 			final StringBuffer output = new StringBuffer();            
@@ -352,14 +339,13 @@ public final class FString {
 	 * It converts the given String to uppercase
 	 *
 	 */
-	public static final class ToUpperCase extends BaseStringFunc<String> {
+	public static final class ToUpperCase implements IFunction<String,String> {
 
 		public ToUpperCase() {
 			super();			
 		}
 
-        @Override
-		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+		public String execute(final String input, final ExecCtx ctx) throws Exception {
 			return StringUtils.upperCase(input);
 		}		
 	}
@@ -368,14 +354,13 @@ public final class FString {
 	 * It converts the given String to lowercase
 	 *
 	 */
-	public static final class ToLowerCase extends BaseStringFunc<String> {
+	public static final class ToLowerCase implements IFunction<String,String> {
 
 		public ToLowerCase() {
 			super();			
 		}
 
-        @Override
-		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+		public String execute(final String input, final ExecCtx ctx) throws Exception {
 			return StringUtils.lowerCase(input);
 		}		
 	}
@@ -384,14 +369,13 @@ public final class FString {
 	 * It converts the first letter of the given String to lowercase
 	 *
 	 */
-	public static final class UnCapitalize extends BaseStringFunc<String> {
+	public static final class UnCapitalize implements IFunction<String,String> {
 
 		public UnCapitalize() {
 			super();			
 		}
 
-        @Override
-		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+		public String execute(final String input, final ExecCtx ctx) throws Exception {
 			return StringUtils.uncapitalize(input);
 		}		
 	}
@@ -399,14 +383,13 @@ public final class FString {
 	 * It converts the first letter of the given String to uppercase
 	 *
 	 */
-	public static final class Capitalize extends BaseStringFunc<String> {
+	public static final class Capitalize implements IFunction<String,String> {
 
 		public Capitalize() {
 			super();			
 		}
 
-        @Override
-		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+		public String execute(final String input, final ExecCtx ctx) throws Exception {
 			return StringUtils.capitalize(input);
 		}		
 	}	
@@ -415,14 +398,13 @@ public final class FString {
 	 * Removes control characters (char <= 32) from both ends of the given String
 	 *
 	 */
-	public static final class Trim extends BaseStringFunc<String> {
+	public static final class Trim implements IFunction<String,String> {
 
 		public Trim() {
 			super();			
 		}
 
-        @Override
-		public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+		public String execute(final String input, final ExecCtx ctx) throws Exception {
 			return StringUtils.trim(input);
 		}		
 	}	
@@ -431,14 +413,13 @@ public final class FString {
 	 * Strips whitespace from both sides of the given String
 	 *
 	 */
-	public static final class Strip extends BaseStringFunc<String> {
+	public static final class Strip implements IFunction<String,String> {
 
 		public Strip() {
 			super();			
 		}
 
-		@Override
-        public String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+        public String execute(final String input, final ExecCtx ctx) throws Exception {
 			return StringUtils.strip(input);
 		}		
 	}	
