@@ -75,30 +75,6 @@ final class ExecutionTargetExecuteOperation implements ExecutionTargetOperation 
                     NormalisationUtils.checkIsMapEntry(Types.OBJECT, Types.OBJECT, result);
                     result = NormalisationUtils.normaliseMapEntry((Map.Entry<Object, Object>)result);
                     break;
-                case TYPE_MAPENTRY_OF_ARRAY:
-                    NormalisationUtils.checkIsMapEntryOfArray(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseMapEntryOfArray((Map.Entry<Object, Object[]>)result, this.normalisation.getArrayComponentClass());
-                    break;
-                case TYPE_MAPENTRY_OF_LIST:
-                    NormalisationUtils.checkIsMapEntryOfList(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseMapEntryOfList((Map.Entry<Object, List<Object>>)result);
-                    break;
-                case TYPE_MAPENTRY_OF_SET:
-                    NormalisationUtils.checkIsMapEntryOfSet(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseMapEntryOfSet((Map.Entry<Object, Set<Object>>)result);
-                    break;
-                case TYPE_MAP_OF_ARRAY:
-                    NormalisationUtils.checkIsMapOfArray(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseMapOfArray((Map<Object, Object[]>)result, this.normalisation.getArrayComponentClass());
-                    break;
-                case TYPE_MAP_OF_LIST:
-                    NormalisationUtils.checkIsMapOfList(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseMapOfList((Map<Object, List<Object>>)result);
-                    break;
-                case TYPE_MAP_OF_SET:
-                    NormalisationUtils.checkIsMapOfSet(Types.OBJECT, Types.OBJECT, result);
-                    result = NormalisationUtils.normaliseMapOfSet((Map<Object, Set<Object>>)result);
-                    break;
                 case TYPE_SET:
                     NormalisationUtils.checkIsSet(Types.OBJECT, result);
                     result = NormalisationUtils.normaliseSet((Set<Object>)result);

@@ -20,6 +20,8 @@
 package org.op4j.operators.impl.generic;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
@@ -37,9 +39,6 @@ import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.array.Level0ArrayOperatorImpl;
 import org.op4j.operators.impl.list.Level0ListOperatorImpl;
 import org.op4j.operators.impl.map.Level0MapOperatorImpl;
-import org.op4j.operators.impl.mapofarray.Level0MapOfArrayOperatorImpl;
-import org.op4j.operators.impl.mapoflist.Level0MapOfListOperatorImpl;
-import org.op4j.operators.impl.mapofset.Level0MapOfSetOperatorImpl;
 import org.op4j.operators.impl.set.Level0SetOperatorImpl;
 import org.op4j.operators.intf.array.Level0ArrayOperator;
 import org.op4j.operators.intf.generic.Level0GenericMultiOperator;
@@ -47,9 +46,6 @@ import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.generic.Level0GenericUniqSelectedOperator;
 import org.op4j.operators.intf.list.Level0ListOperator;
 import org.op4j.operators.intf.map.Level0MapOperator;
-import org.op4j.operators.intf.mapofarray.Level0MapOfArrayOperator;
-import org.op4j.operators.intf.mapoflist.Level0MapOfListOperator;
-import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.CastType;
@@ -119,33 +115,33 @@ public final class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
     }
 
 
-    public <K> Level0MapOfArrayOperator<K, T> buildMapOfArrayOf(final Type<T> valueType, final IFunction<K, ? super T> keyEval) {
-        return new Level0MapOfArrayOperatorImpl<K, T>(valueType, getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfArray.FromListByKeyEval<K, T>(valueType, keyEval)));
+    public <K> Level0MapOperator<K, T[]> buildMapOfArrayOf(final Type<T> valueType, final IFunction<K, ? super T> keyEval) {
+        return new Level0MapOperatorImpl<K, T[]>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfArray.FromListByKeyEval<K, T>(valueType, keyEval)));
     }
 
 
-    public <K, V> Level0MapOfArrayOperator<K, V> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<K, V, ? super T> mapBuild) {
-        return new Level0MapOfArrayOperatorImpl<K, V>(valueType, getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfArray.FromListByMapBuilder<K, V, T>(valueType, mapBuild)));
+    public <K, V> Level0MapOperator<K, V[]> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<K, V, ? super T> mapBuild) {
+        return new Level0MapOperatorImpl<K, V[]>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfArray.FromListByMapBuilder<K, V, T>(valueType, mapBuild)));
     }
 
 
-    public <K> Level0MapOfListOperator<K, T> buildMapOfList(final IFunction<K, ? super T> keyEval) {
-        return new Level0MapOfListOperatorImpl<K, T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfList.FromListByKeyEval<K, T>(keyEval)));
+    public <K> Level0MapOperator<K, List<T>> buildMapOfList(final IFunction<K, ? super T> keyEval) {
+        return new Level0MapOperatorImpl<K, List<T>>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfList.FromListByKeyEval<K, T>(keyEval)));
     }
 
 
-    public <K, V> Level0MapOfListOperator<K, V> buildMapOfList(final IMapBuilder<K, V, ? super T> mapBuild) {
-        return new Level0MapOfListOperatorImpl<K, V>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfList.FromListByMapBuilder<K, V, T>(mapBuild)));
+    public <K, V> Level0MapOperator<K, List<V>> buildMapOfList(final IMapBuilder<K, V, ? super T> mapBuild) {
+        return new Level0MapOperatorImpl<K, List<V>>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfList.FromListByMapBuilder<K, V, T>(mapBuild)));
     }
 
 
-    public <K> Level0MapOfSetOperator<K, T> buildMapOfSet(final IFunction<K, ? super T> keyEval) {
-        return new Level0MapOfSetOperatorImpl<K, T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfSet.FromListByKeyEval<K, T>(keyEval)));
+    public <K> Level0MapOperator<K, Set<T>> buildMapOfSet(final IFunction<K, ? super T> keyEval) {
+        return new Level0MapOperatorImpl<K, Set<T>>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfSet.FromListByKeyEval<K, T>(keyEval)));
     }
 
 
-    public <K, V> Level0MapOfSetOperator<K, V> buildMapOfSet(final IMapBuilder<K, V, ? super T> mapBuild) {
-        return new Level0MapOfSetOperatorImpl<K, V>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfSet.FromListByMapBuilder<K, V, T>(mapBuild)));
+    public <K, V> Level0MapOperator<K, Set<V>> buildMapOfSet(final IMapBuilder<K, V, ? super T> mapBuild) {
+        return new Level0MapOperatorImpl<K, Set<V>>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfSet.FromListByMapBuilder<K, V, T>(mapBuild)));
     }
 
 
@@ -171,21 +167,6 @@ public final class Level0GenericUniqOperatorImpl<T> extends AbstractOperatorImpl
 
     public <X> Level0SetOperator<X> asSetOf(final Type<X> type) {
         return new Level0SetOperatorImpl<X>(getTarget().cast(CastType.SET, type));
-    }
-
-
-    public <K, V> Level0MapOfArrayOperator<K, V> asMapOfArrayOf(final Type<K> keyType, final Type<V> valueType) {
-        return new Level0MapOfArrayOperatorImpl<K,V>(valueType, getTarget().cast(CastType.MAP_OF_ARRAY, keyType, valueType));
-    }
-
-
-    public <K, V> Level0MapOfListOperator<K, V> asMapOfListOf(final Type<K> keyType, final Type<V> valueType) {
-        return new Level0MapOfListOperatorImpl<K,V>(getTarget().cast(CastType.MAP_OF_LIST, keyType, valueType));
-    }
-
-
-    public <K, V> Level0MapOfSetOperator<K, V> asMapOfSetOf(final Type<K> keyType, final Type<V> valueType) {
-        return new Level0MapOfSetOperatorImpl<K,V>(getTarget().cast(CastType.MAP_OF_SET, keyType, valueType));
     }
 
 

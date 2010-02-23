@@ -30,9 +30,6 @@ import org.op4j.operators.impl.generic.Level0GenericMultiOperatorImpl;
 import org.op4j.operators.impl.generic.Level0GenericUniqOperatorImpl;
 import org.op4j.operators.impl.list.Level0ListOperatorImpl;
 import org.op4j.operators.impl.map.Level0MapOperatorImpl;
-import org.op4j.operators.impl.mapofarray.Level0MapOfArrayOperatorImpl;
-import org.op4j.operators.impl.mapoflist.Level0MapOfListOperatorImpl;
-import org.op4j.operators.impl.mapofset.Level0MapOfSetOperatorImpl;
 import org.op4j.operators.impl.set.Level0SetOperatorImpl;
 import org.op4j.operators.intf.array.Level0ArrayOperator;
 import org.op4j.operators.intf.array.Level0IndefiniteArrayOperator;
@@ -40,9 +37,6 @@ import org.op4j.operators.intf.generic.Level0GenericMultiOperator;
 import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.list.Level0ListOperator;
 import org.op4j.operators.intf.map.Level0MapOperator;
-import org.op4j.operators.intf.mapofarray.Level0MapOfArrayOperator;
-import org.op4j.operators.intf.mapoflist.Level0MapOfListOperator;
-import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.target.ExecutionTarget;
 import org.op4j.target.Target.Normalisation;
@@ -124,25 +118,9 @@ public final class Op {
     }
 
     
-    public static <K,V> Level0MapOfArrayOperator<K,V> onMapOfArrayOf(final Type<V> valueType, final Map<K,V[]> target) {
-        return new Level0MapOfArrayOperatorImpl<K,V>(valueType, ExecutionTarget.forObject(target, Normalisation.MAP_OF_ARRAY(valueType.getRawClass())));
-    }
-
-    
-    public static <K,V> Level0MapOfListOperator<K,V> onMapOfList(final Map<K,? extends List<V>> target) {
-        return new Level0MapOfListOperatorImpl<K,V>(ExecutionTarget.forObject(target, Normalisation.MAP_OF_LIST));
-    }
-
-    
-    public static <K,V> Level0MapOfSetOperator<K,V> onMapOfSet(final Map<K,? extends Set<V>> target) {
-        return new Level0MapOfSetOperatorImpl<K,V>(ExecutionTarget.forObject(target, Normalisation.MAP_OF_SET));
-    }
-
-    
     public static <T> Level0SetOperator<T> onSet(final Set<T> target) {
         return new Level0SetOperatorImpl<T>(ExecutionTarget.forObject(target, Normalisation.SET));
     }
-    
     
     
 

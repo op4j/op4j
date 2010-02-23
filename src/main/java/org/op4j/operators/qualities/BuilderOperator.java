@@ -19,15 +19,15 @@
  */
 package org.op4j.operators.qualities;
 
+import java.util.List;
+import java.util.Set;
+
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.array.Level0ArrayOperator;
 import org.op4j.operators.intf.list.Level0ListOperator;
 import org.op4j.operators.intf.map.Level0MapOperator;
-import org.op4j.operators.intf.mapofarray.Level0MapOfArrayOperator;
-import org.op4j.operators.intf.mapoflist.Level0MapOfListOperator;
-import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
 
 
@@ -117,7 +117,7 @@ public interface BuilderOperator<T> {
      * @param keyEval the evaluator to be used for obtaining keys
      * @return an operator on the resulting map of list
      */
-    public <K> Level0MapOfListOperator<K,T> buildMapOfList(final IFunction<K,? super T> keyEval);
+    public <K> Level0MapOperator<K,List<T>> buildMapOfList(final IFunction<K,? super T> keyEval);
     
     
     /**
@@ -132,7 +132,7 @@ public interface BuilderOperator<T> {
      * @param mapBuild the map builder
      * @return an operator on the resulting map of list
      */
-    public <K,V> Level0MapOfListOperator<K,V> buildMapOfList(final IMapBuilder<K,V,? super T> mapBuild);
+    public <K,V> Level0MapOperator<K,List<V>> buildMapOfList(final IMapBuilder<K,V,? super T> mapBuild);
     
 
     /**
@@ -146,7 +146,7 @@ public interface BuilderOperator<T> {
      * @param keyEval the evaluator to be used for obtaining keys
      * @return an operator on the resulting map of list
      */
-    public <K> Level0MapOfSetOperator<K,T> buildMapOfSet(final IFunction<K,? super T> keyEval);
+    public <K> Level0MapOperator<K,Set<T>> buildMapOfSet(final IFunction<K,? super T> keyEval);
     
     
     /**
@@ -161,7 +161,7 @@ public interface BuilderOperator<T> {
      * @param mapBuild the map builder
      * @return an operator on the resulting map of list
      */
-    public <K,V> Level0MapOfSetOperator<K,V> buildMapOfSet(final IMapBuilder<K,V,? super T> mapBuild);
+    public <K,V> Level0MapOperator<K,Set<V>> buildMapOfSet(final IMapBuilder<K,V,? super T> mapBuild);
     
     
     /**
@@ -177,7 +177,7 @@ public interface BuilderOperator<T> {
      * @param keyEval the evaluator to be used for obtaining keys
      * @return an operator on the resulting map of list
      */
-    public <K> Level0MapOfArrayOperator<K,T> buildMapOfArrayOf(final Type<T> valueType, final IFunction<K,? super T> keyEval);
+    public <K> Level0MapOperator<K,T[]> buildMapOfArrayOf(final Type<T> valueType, final IFunction<K,? super T> keyEval);
 
     
     /**
@@ -194,6 +194,6 @@ public interface BuilderOperator<T> {
      * @param mapBuild the map builder
      * @return an operator on the resulting map of list
      */
-    public <K,V> Level0MapOfArrayOperator<K,V> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<K,V,? super T> mapBuild);
+    public <K,V> Level0MapOperator<K,V[]> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<K,V,? super T> mapBuild);
     
 }

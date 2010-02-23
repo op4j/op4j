@@ -23,12 +23,6 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.operators.intf.mapofarray.Level2MapOfArrayEntriesValueOperator;
-import org.op4j.operators.intf.mapoflist.Level2MapOfListEntriesValueOperator;
-import org.op4j.operators.intf.mapofset.Level2MapOfSetEntriesValueOperator;
-import org.op4j.operators.qualities.CastableToArrayOperator;
-import org.op4j.operators.qualities.CastableToListOperator;
-import org.op4j.operators.qualities.CastableToSetOperator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
 import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
@@ -47,9 +41,6 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level2MapEntriesValueOperator<K,V>
         extends UniqOperator<Map<K,V>>,
-                CastableToArrayOperator,
-                CastableToListOperator,
-                CastableToSetOperator,
 				NavigatingMapEntryOperator,
         		ExecutableOperator<V>,
                 SelectableOperator<V>,
@@ -85,7 +76,4 @@ public interface Level2MapEntriesValueOperator<K,V>
     public Level2MapEntriesValueOperator<K,?> asUnknown();
     
         
-    public <X> Level2MapOfArrayEntriesValueOperator<K,X> asArrayOf(final Type<X> type);
-    public <X> Level2MapOfListEntriesValueOperator<K,X> asListOf(final Type<X> type);
-    public <X> Level2MapOfSetEntriesValueOperator<K,X> asSetOf(final Type<X> type);
-    }
+}

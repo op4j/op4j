@@ -91,29 +91,29 @@ public class Test {
 			return executeOperations(result, operations);
 	}
     
-    public static final <T, U> Object testOnMapOfArrayOf(Type<U> valueType, Map<T, U[]> target,
-			List<TestOperation> operations) {		
-			Object result = Op.onMapOfArrayOf(valueType, target);
-			return executeOperations(result, operations);
-	}
-    
-    public static final <T, U> Object testOnMapOfList(Map<T, ? extends List<U>> target,
-			List<TestOperation> operations) {		
-			Object result = Op.onMapOfList(target);
-			return executeOperations(result, operations);
-	}
+//    public static final <T, U> Object testOnMapOfArrayOf(Type<U> valueType, Map<T, U[]> target,
+//			List<TestOperation> operations) {		
+//			Object result = Op.onMapOfArrayOf(valueType, target);
+//			return executeOperations(result, operations);
+//	}
+//    
+//    public static final <T, U> Object testOnMapOfList(Map<T, ? extends List<U>> target,
+//			List<TestOperation> operations) {		
+//			Object result = Op.onMapOfList(target);
+//			return executeOperations(result, operations);
+//	}
 //    
 //    public static final <T, U, V> Object testOnMapOfMap(Map<T, ? extends Map<U, V>> target,
 //			List<TestOperation> operations) {		
 //			Object result = Op.onMapOfMap(target);
 //			return executeOperations(result, operations);
 //	}
-    
-    public static final <T, U> Object testOnMapOfSet(Map<T, ? extends Set<U>> target,
-			List<TestOperation> operations) {		
-			Object result = Op.onMapOfSet(target);
-			return executeOperations(result, operations);
-	}
+//    
+//    public static final <T, U> Object testOnMapOfSet(Map<T, ? extends Set<U>> target,
+//			List<TestOperation> operations) {		
+//			Object result = Op.onMapOfSet(target);
+//			return executeOperations(result, operations);
+//	}
     
     public static final <T> Object testOnSet(Set<T> target,
 			List<TestOperation> operations) {		

@@ -200,70 +200,70 @@ public class AssortedTests extends TestCase {
 		}		
 	}
 
-	@Test
-	public void test9() {
-		Map<Integer, List<String>> data = this.testUtils.getMapOfIntegerStringList(5);
-		Iterator<Integer> iterator = data.keySet().iterator();
-		Integer firstKey = iterator.next();
-		Integer secondKey = iterator.next();
-		Map<Integer, List<String>> result = Op.onMapOfList(data)
-		.forEachEntry()
-		.ifKeyNotEquals(firstKey, secondKey)
-		.onValue()
-		.add("added with op4j")
-		.get();
-
-		assertEquals(data.size(), result.size());
-		int index = 0;
-		for (Map.Entry<Integer, List<String>> entry : result.entrySet()) {	
-			if (index < 2) {
-				assertEquals(
-						data.get(entry.getKey()), 
-						entry.getValue());
-			} else {
-				assertEquals(
-						Op.onList(data.get(entry.getKey())).add("added with op4j").get(), 
-						entry.getValue());
-			}
-			index++;
-		}		
-	}
-
-	@Test
-	public void test10() {
-		Map<Integer, Calendar[]> data = this.testUtils.getMapOfIntegerCalendarArray(13);
-
-
-		Map<Integer, Calendar[]> result = Op.onMapOfArrayOf(Types.CALENDAR, data)
-		.forEachEntry()
-		.onValue()
-		.forEach()
-		.exec(new IFunction<Calendar, Calendar>() {
-			public Calendar execute(Calendar object, ExecCtx ctx)
-			throws Exception {
-				Calendar calendar = Calendar.getInstance();
-				calendar.setTime(object.getTime());
-				calendar.set(Calendar.YEAR, 2000);
-				return calendar;
-			}
-		})
-		.endFor()
-		.get();
-
-		assertEquals(data.size(), result.size());
-		for (Map.Entry<Integer, Calendar[]> entry : result.entrySet()) {	
-			int index = 0;
-			for (Calendar calendar : entry.getValue()) {
-				Calendar original = Calendar.getInstance();
-				original.setTime(data.get(entry.getKey())[index].getTime());
-				original.set(Calendar.YEAR, 2000);
-				assertEquals(
-						original, 
-						calendar);
-				index++;
-			}				
-		}		
-	}
+//	@Test
+//	public void test9() {
+//		Map<Integer, List<String>> data = this.testUtils.getMapOfIntegerStringList(5);
+//		Iterator<Integer> iterator = data.keySet().iterator();
+//		Integer firstKey = iterator.next();
+//		Integer secondKey = iterator.next();
+//		Map<Integer, List<String>> result = Op.onMapOfList(data)
+//		.forEachEntry()
+//		.ifKeyNotEquals(firstKey, secondKey)
+//		.onValue()
+//		.add("added with op4j")
+//		.get();
+//
+//		assertEquals(data.size(), result.size());
+//		int index = 0;
+//		for (Map.Entry<Integer, List<String>> entry : result.entrySet()) {	
+//			if (index < 2) {
+//				assertEquals(
+//						data.get(entry.getKey()), 
+//						entry.getValue());
+//			} else {
+//				assertEquals(
+//						Op.onList(data.get(entry.getKey())).add("added with op4j").get(), 
+//						entry.getValue());
+//			}
+//			index++;
+//		}		
+//	}
+//
+//	@Test
+//	public void test10() {
+//		Map<Integer, Calendar[]> data = this.testUtils.getMapOfIntegerCalendarArray(13);
+//
+//
+//		Map<Integer, Calendar[]> result = Op.onMapOfArrayOf(Types.CALENDAR, data)
+//		.forEachEntry()
+//		.onValue()
+//		.forEach()
+//		.exec(new IFunction<Calendar, Calendar>() {
+//			public Calendar execute(Calendar object, ExecCtx ctx)
+//			throws Exception {
+//				Calendar calendar = Calendar.getInstance();
+//				calendar.setTime(object.getTime());
+//				calendar.set(Calendar.YEAR, 2000);
+//				return calendar;
+//			}
+//		})
+//		.endFor()
+//		.get();
+//
+//		assertEquals(data.size(), result.size());
+//		for (Map.Entry<Integer, Calendar[]> entry : result.entrySet()) {	
+//			int index = 0;
+//			for (Calendar calendar : entry.getValue()) {
+//				Calendar original = Calendar.getInstance();
+//				original.setTime(data.get(entry.getKey())[index].getTime());
+//				original.set(Calendar.YEAR, 2000);
+//				assertEquals(
+//						original, 
+//						calendar);
+//				index++;
+//			}				
+//		}		
+//	}
 
 //	@Test
 //	public void test11() {

@@ -21,6 +21,7 @@ package org.op4j.operators.intf.generic;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
@@ -28,9 +29,6 @@ import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.array.Level0ArrayOperator;
 import org.op4j.operators.intf.list.Level0ListOperator;
 import org.op4j.operators.intf.map.Level0MapOperator;
-import org.op4j.operators.intf.mapofarray.Level0MapOfArrayOperator;
-import org.op4j.operators.intf.mapoflist.Level0MapOfListOperator;
-import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.operators.qualities.BuilderMultiOperator;
 import org.op4j.operators.qualities.BuilderOperator;
@@ -123,25 +121,25 @@ public interface Level0GenericMultiOperator<T>
     public <K,V> Level0MapOperator<K,V> buildMap(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> Level0MapOfListOperator<K,T> buildMapOfList(final IFunction<K,? super T> keyEval);
-    public <K,V> Level0MapOfListOperator<K,V> buildMapOfList(final IMapBuilder<K,V,? super T> mapBuild);
+    public <K> Level0MapOperator<K,List<T>> buildMapOfList(final IFunction<K,? super T> keyEval);
+    public <K,V> Level0MapOperator<K,List<V>> buildMapOfList(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> Level0MapOfSetOperator<K,T> buildMapOfSet(final IFunction<K,? super T> keyEval);
-    public <K,V> Level0MapOfSetOperator<K,V> buildMapOfSet(final IMapBuilder<K,V,? super T> mapBuild);
+    public <K> Level0MapOperator<K,Set<T>> buildMapOfSet(final IFunction<K,? super T> keyEval);
+    public <K,V> Level0MapOperator<K,Set<V>> buildMapOfSet(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> Level0MapOfArrayOperator<K,T> buildMapOfArrayOf(final Type<T> valueType, final IFunction<K,? super T> keyEval);
-    public <K,V> Level0MapOfArrayOperator<K,V> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<K,V,? super T> mapBuild);
+    public <K> Level0MapOperator<K,T[]> buildMapOfArrayOf(final Type<T> valueType, final IFunction<K,? super T> keyEval);
+    public <K,V> Level0MapOperator<K,V[]> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<K,V,? super T> mapBuild);
 
     
     public Level0MapOperator<T,T> buildMap();
     
-    public Level0MapOfListOperator<T,T> buildMapOfList();
+    public Level0MapOperator<T,List<T>> buildMapOfList();
     
-    public Level0MapOfSetOperator<T,T> buildMapOfSet();
+    public Level0MapOperator<T,Set<T>> buildMapOfSet();
     
-    public Level0MapOfArrayOperator<T,T> buildMapOfArrayOf(final Type<T> type);
+    public Level0MapOperator<T,T[]> buildMapOfArrayOf(final Type<T> type);
     
     
     public T[] getAsArray(final Type<T> type); 

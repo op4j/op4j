@@ -94,63 +94,6 @@ public class NormalisationUtils {
         }
     }
     
-    public static void checkIsMapOfArray(final Type<?> keyOf, final Type<?> valueOf, final Object targetObject) {
-        checkIsMap(keyOf, Types.arrayOf(valueOf), targetObject);
-        if (targetObject != null) {
-            for (final Map.Entry<?,?> element : ((Map<?,?>)targetObject).entrySet()) {
-                checkIs(keyOf, element.getKey());
-                checkIsArray(valueOf, element.getValue());
-            }
-        }
-    }
-    
-    public static void checkIsMapEntryOfArray(final Type<?> keyOf, final Type<?> valueOf, final Object targetObject) {
-        checkIsMapEntry(keyOf, Types.arrayOf(valueOf), targetObject);
-        if (targetObject != null) {
-            final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
-            checkIs(keyOf, element.getKey());
-            checkIsArray(valueOf, element.getValue());
-        }
-    }
-    
-    public static void checkIsMapOfList(final Type<?> keyOf, final Type<?> valueOf, final Object targetObject) {
-        checkIsMap(keyOf, Types.listOf(valueOf), targetObject);
-        if (targetObject != null) {
-            for (final Map.Entry<?,?> element : ((Map<?,?>)targetObject).entrySet()) {
-                checkIs(keyOf, element.getKey());
-                checkIsList(valueOf, element.getValue());
-            }
-        }
-    }
-    
-    public static void checkIsMapEntryOfList(final Type<?> keyOf, final Type<?> valueOf, final Object targetObject) {
-        checkIsMapEntry(keyOf, Types.listOf(valueOf), targetObject);
-        if (targetObject != null) {
-            final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
-            checkIs(keyOf, element.getKey());
-            checkIsList(valueOf, element.getValue());
-        }
-    }
-    
-    public static void checkIsMapOfSet(final Type<?> keyOf, final Type<?> valueOf, final Object targetObject) {
-        checkIsMap(keyOf, Types.setOf(valueOf), targetObject);
-        if (targetObject != null) {
-            for (final Map.Entry<?,?> element : ((Map<?,?>)targetObject).entrySet()) {
-                checkIs(keyOf, element.getKey());
-                checkIsSet(valueOf, element.getValue());
-            }
-        }
-    }
-    
-    public static void checkIsMapEntryOfSet(final Type<?> keyOf, final Type<?> valueOf, final Object targetObject) {
-        checkIsMapEntry(keyOf, Types.setOf(valueOf), targetObject);
-        if (targetObject != null) {
-            final Map.Entry<?,?> element = (Map.Entry<?,?>)targetObject;
-            checkIs(keyOf, element.getKey());
-            checkIsSet(valueOf, element.getValue());
-        }
-    }
-    
     public static void checkIsSet(final Type<?> of, final Object targetObject) {
         if (targetObject != null) {
             final Class<?> newTargetClass = Set.class;
@@ -209,66 +152,6 @@ public class NormalisationUtils {
             return null;
         }
         return new MapEntry<K,V>(mapEntry.getKey(), mapEntry.getValue());
-    }
-
-    
-    public static <K, V> Map<K, V[]> normaliseMapOfArray(final Map<K, V[]> mapOfArray, final Class<?> arrayComponentClass) {
-        if (mapOfArray == null) {
-            return null;
-        }
-        final Map<K, V[]> result = new LinkedHashMap<K, V[]>();
-        for (final Map.Entry<K, V[]> element : mapOfArray.entrySet()) {
-            result.put(element.getKey(), normaliseArray(element.getValue(), arrayComponentClass));
-        }
-        return result;
-    }
-
-    
-    public static <K, V> Map.Entry<K, V[]> normaliseMapEntryOfArray(final Map.Entry<K, V[]> mapEntryOfArray, final Class<?> arrayComponentClass) {
-        if (mapEntryOfArray == null) {
-            return null;
-        }
-        return new MapEntry<K, V[]>(mapEntryOfArray.getKey(), normaliseArray(mapEntryOfArray.getValue(), arrayComponentClass));
-    }
-
-    
-    public static <K, V> Map<K, List<V>> normaliseMapOfList(final Map<K, ? extends List<V>> mapOfList) {
-        if (mapOfList == null) {
-            return null;
-        }
-        final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
-        for (final Map.Entry<K, ? extends List<V>> element : mapOfList.entrySet()) {
-            result.put(element.getKey(), normaliseList(element.getValue()));
-        }
-        return result;
-    }
-
-    
-    public static <K, V> Map.Entry<K, List<V>> normaliseMapEntryOfList(final Map.Entry<K, ? extends List<V>> mapEntryOfList) {
-        if (mapEntryOfList == null) {
-            return null;
-        }
-        return new MapEntry<K, List<V>>(mapEntryOfList.getKey(), normaliseList(mapEntryOfList.getValue()));
-    }
-
-    
-    public static <K, V> Map<K, Set<V>> normaliseMapOfSet(final Map<K, ? extends Set<V>> mapOfSet) {
-        if (mapOfSet == null) {
-            return null;
-        }
-        final Map<K, Set<V>> result = new LinkedHashMap<K, Set<V>>();
-        for (final Map.Entry<K, ? extends Set<V>> element : mapOfSet.entrySet()) {
-            result.put(element.getKey(), normaliseSet(element.getValue()));
-        }
-        return result;
-    }
-
-    
-    public static <K, V> Map.Entry<K, Set<V>> normaliseMapEntryOfSet(final Map.Entry<K, ? extends Set<V>> mapEntryOfSet) {
-        if (mapEntryOfSet == null) {
-            return null;
-        }
-        return new MapEntry<K, Set<V>>(mapEntryOfSet.getKey(), normaliseSet(mapEntryOfSet.getValue()));
     }
     
     

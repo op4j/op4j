@@ -40,8 +40,7 @@ public abstract class Target {
 
     public static enum CastType { 
         OBJECT,
-        ARRAY, LIST, SET, MAP,
-        MAP_OF_ARRAY, MAP_OF_LIST, MAP_OF_SET }
+        ARRAY, LIST, SET, MAP }
 
     
     
@@ -235,19 +234,13 @@ public abstract class Target {
 
         static enum NormalisationType { 
             TYPE_NONE, 
-            TYPE_ARRAY, TYPE_LIST, TYPE_SET, TYPE_MAP, TYPE_MAPENTRY, 
-            TYPE_MAP_OF_ARRAY, TYPE_MAP_OF_LIST, TYPE_MAP_OF_SET,
-            TYPE_MAPENTRY_OF_ARRAY, TYPE_MAPENTRY_OF_LIST, TYPE_MAPENTRY_OF_SET }
+            TYPE_ARRAY, TYPE_LIST, TYPE_SET, TYPE_MAP, TYPE_MAPENTRY }
     
         public static Normalisation NONE = new Normalisation(NormalisationType.TYPE_NONE, null);
         public static Normalisation LIST = new Normalisation(NormalisationType.TYPE_LIST, null);
         public static Normalisation SET = new Normalisation(NormalisationType.TYPE_SET, null);
         public static Normalisation MAP = new Normalisation(NormalisationType.TYPE_MAP, null);
         public static Normalisation MAP_ENTRY = new Normalisation(NormalisationType.TYPE_MAPENTRY, null);
-        public static Normalisation MAP_OF_LIST = new Normalisation(NormalisationType.TYPE_MAP_OF_LIST, null);
-        public static Normalisation MAP_OF_SET = new Normalisation(NormalisationType.TYPE_MAP_OF_SET, null);
-        public static Normalisation MAP_OF_LIST_ENTRY = new Normalisation(NormalisationType.TYPE_MAPENTRY_OF_LIST, null);
-        public static Normalisation MAP_OF_SET_ENTRY = new Normalisation(NormalisationType.TYPE_MAPENTRY_OF_SET, null);
     
         
             
@@ -259,14 +252,6 @@ public abstract class Target {
         
         public static Normalisation ARRAY(final Class<?> arrayComponentClass) {
             return new Normalisation(NormalisationType.TYPE_ARRAY, arrayComponentClass);
-        }
-        
-        public static Normalisation MAP_OF_ARRAY(final Class<?> arrayComponentClass) {
-            return new Normalisation(NormalisationType.TYPE_MAP_OF_ARRAY, arrayComponentClass);
-        }
-        
-        public static Normalisation MAP_OF_ARRAY_ENTRY(final Class<?> arrayComponentClass) {
-            return new Normalisation(NormalisationType.TYPE_MAPENTRY_OF_ARRAY, arrayComponentClass);
         }
         
         

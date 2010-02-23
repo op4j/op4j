@@ -89,27 +89,6 @@ final class ExecutionTargetCastOperation implements ExecutionTargetOperation {
                 result = NormalisationUtils.normaliseSet((Set<Object>)result);
                 break;
                 
-            case MAP_OF_ARRAY:
-                Validate.notNull(this.types[0], "Specified key type cannot be null");
-                Validate.notNull(this.types[1], "Specified value type cannot be null");
-                NormalisationUtils.checkIsMapOfArray(this.types[0], this.types[1], result);
-                result = NormalisationUtils.normaliseMapOfArray((Map<Object,Object[]>)result, this.types[0].getRawClass());
-                break;
-                
-            case MAP_OF_LIST:
-                Validate.notNull(this.types[0], "Specified key type cannot be null");
-                Validate.notNull(this.types[1], "Specified value type cannot be null");
-                NormalisationUtils.checkIsMapOfList(this.types[0], this.types[1], result);
-                result = NormalisationUtils.normaliseMapOfList((Map<Object,List<Object>>)result);
-                break;
-                
-            case MAP_OF_SET:
-                Validate.notNull(this.types[0], "Specified key type cannot be null");
-                Validate.notNull(this.types[1], "Specified value type cannot be null");
-                NormalisationUtils.checkIsMapOfSet(this.types[0], this.types[1], result);
-                result = NormalisationUtils.normaliseMapOfSet((Map<Object,Set<Object>>)result);
-                break;
-                
         }
 
         return result;

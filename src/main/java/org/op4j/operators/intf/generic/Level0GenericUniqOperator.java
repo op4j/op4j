@@ -20,6 +20,8 @@
 package org.op4j.operators.intf.generic;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
@@ -27,16 +29,10 @@ import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.array.Level0ArrayOperator;
 import org.op4j.operators.intf.list.Level0ListOperator;
 import org.op4j.operators.intf.map.Level0MapOperator;
-import org.op4j.operators.intf.mapofarray.Level0MapOfArrayOperator;
-import org.op4j.operators.intf.mapoflist.Level0MapOfListOperator;
-import org.op4j.operators.intf.mapofset.Level0MapOfSetOperator;
 import org.op4j.operators.intf.set.Level0SetOperator;
 import org.op4j.operators.qualities.BuilderOperator;
 import org.op4j.operators.qualities.CastableToArrayOperator;
 import org.op4j.operators.qualities.CastableToListOperator;
-import org.op4j.operators.qualities.CastableToMapOfArrayOperator;
-import org.op4j.operators.qualities.CastableToMapOfListOperator;
-import org.op4j.operators.qualities.CastableToMapOfSetOperator;
 import org.op4j.operators.qualities.CastableToMapOperator;
 import org.op4j.operators.qualities.CastableToSetOperator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
@@ -63,9 +59,6 @@ public interface Level0GenericUniqOperator<T>
                 CastableToListOperator,
                 CastableToMapOperator,
                 CastableToSetOperator,
-                CastableToMapOfArrayOperator,
-                CastableToMapOfListOperator,
-                CastableToMapOfSetOperator,
         		BuilderOperator<T>,
         		ExecutableOperator<T>,
                 CastableToTypeOperator<T>,
@@ -119,16 +112,16 @@ public interface Level0GenericUniqOperator<T>
     public <K,V> Level0MapOperator<K,V> buildMap(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> Level0MapOfListOperator<K,T> buildMapOfList(final IFunction<K,? super T> keyEval);
-    public <K,V> Level0MapOfListOperator<K,V> buildMapOfList(final IMapBuilder<K,V,? super T> mapBuild);
+    public <K> Level0MapOperator<K,List<T>> buildMapOfList(final IFunction<K,? super T> keyEval);
+    public <K,V> Level0MapOperator<K,List<V>> buildMapOfList(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> Level0MapOfSetOperator<K,T> buildMapOfSet(final IFunction<K,? super T> keyEval);
-    public <K,V> Level0MapOfSetOperator<K,V> buildMapOfSet(final IMapBuilder<K,V,? super T> mapBuild);
+    public <K> Level0MapOperator<K,Set<T>> buildMapOfSet(final IFunction<K,? super T> keyEval);
+    public <K,V> Level0MapOperator<K,Set<V>> buildMapOfSet(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> Level0MapOfArrayOperator<K,T> buildMapOfArrayOf(final Type<T> valueType, final IFunction<K,? super T> keyEval);
-    public <K,V> Level0MapOfArrayOperator<K,V> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<K,V,? super T> mapBuild);
+    public <K> Level0MapOperator<K,T[]> buildMapOfArrayOf(final Type<T> valueType, final IFunction<K,? super T> keyEval);
+    public <K,V> Level0MapOperator<K,V[]> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<K,V,? super T> mapBuild);
 
     
     
@@ -136,7 +129,4 @@ public interface Level0GenericUniqOperator<T>
     public <X> Level0ListOperator<X> asListOf(final Type<X> type);
     public <K,V> Level0MapOperator<K,V> asMapOf(final Type<K> keyType, final Type<V> valueType);
     public <X> Level0SetOperator<X> asSetOf(final Type<X> type);
-    public <K,V> Level0MapOfArrayOperator<K,V> asMapOfArrayOf(final Type<K> keyType, final Type<V> valueType);
-    public <K,V> Level0MapOfListOperator<K,V> asMapOfListOf(final Type<K> keyType, final Type<V> valueType);
-    public <K,V> Level0MapOfSetOperator<K,V> asMapOfSetOf(final Type<K> keyType, final Type<V> valueType);
     }
