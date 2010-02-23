@@ -21,18 +21,16 @@ package org.op4j.operators.intf.array;
 
 import java.util.Collection;
 import java.util.Comparator;
-import org.javaruntype.type.Type;
-
 
 import org.op4j.functions.IFunction;
 import org.op4j.operators.qualities.DistinguishableOperator;
 import org.op4j.operators.qualities.ExecutableArraySelectedOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
 /**
  * 
  * @since 1.0

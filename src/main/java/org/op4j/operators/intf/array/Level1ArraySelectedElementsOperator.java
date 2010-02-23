@@ -24,9 +24,9 @@ package org.op4j.operators.intf.array;
 import org.op4j.functions.IFunction;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
 
 
 /**
