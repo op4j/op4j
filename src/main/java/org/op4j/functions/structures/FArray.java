@@ -251,10 +251,10 @@ public class FArray<T> {
         }
 
         @SuppressWarnings("unchecked")
-        public <X extends Comparable<? super X>> T[] doSort(final T[] object, final ExecCtx ctx) throws Exception {
+        public T[] doSort(final T[] object, final ExecCtx ctx) throws Exception {
 
-            final List<X> list = (List<X>) new ArrayList<Object>(Arrays.asList(object));
-            Collections.sort(list);
+            final List<?> list = new ArrayList<Object>(Arrays.asList(object));
+            Collections.sort((List<Comparable>)list);
             return FArray.fromList(object.getClass(), (List<T>)(List<?>)list);
             
         }

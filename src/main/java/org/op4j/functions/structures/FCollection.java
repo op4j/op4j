@@ -64,10 +64,10 @@ class FCollection {
         }
 
         @SuppressWarnings("unchecked")
-        public <Z extends Comparable<? super Z>> X doSort(final X object, final ExecCtx ctx) throws Exception {
+        public X doSort(final X object, final ExecCtx ctx) throws Exception {
 
-            final List<Z> list = (List<Z>) new ArrayList<Object>(object);
-            Collections.sort(list);
+            final List<?> list = new ArrayList<Object>(object);
+            Collections.sort((List<Comparable>)list);
             return fromList((List<T>)(List<?>)list);
             
         }

@@ -21,6 +21,7 @@ package org.op4j.functions;
 
 import java.util.Calendar;
 
+import org.apache.commons.lang.Validate;
 import org.apache.commons.lang.time.DateUtils;
 
 /**
@@ -72,36 +73,36 @@ public final class FCalendar {
         return new Add(Calendar.YEAR, amount);
     }
 
-    public static final Set set(final int calendarField, final int amount) {
-        return new Set(calendarField, amount);
+    public static final Set set(final int calendarField, final int value) {
+        return new Set(calendarField, value);
     }
     
-    public static final Set setDays(final int amount) {
-        return new Set(Calendar.DATE, amount);
+    public static final Set setDay(final int value) {
+        return new Set(Calendar.DATE, value);
     }
     
-    public static final Set setHours(final int amount) {
-        return new Set(Calendar.HOUR, amount);
+    public static final Set setHour(final int value) {
+        return new Set(Calendar.HOUR, value);
     }
     
-    public static final Set setMilliseconds(final int amount) {
-        return new Set(Calendar.MILLISECOND, amount);
+    public static final Set setMillisecond(final int value) {
+        return new Set(Calendar.MILLISECOND, value);
     }
     
-    public static final Set setMinutes(final int amount) {
-        return new Set(Calendar.MINUTE, amount);
+    public static final Set setMinute(final int value) {
+        return new Set(Calendar.MINUTE, value);
     }
     
-    public static final Set setMonths(final int amount) {
-        return new Set(Calendar.MONTH, amount);
+    public static final Set setMonth(final int value) {
+        return new Set(Calendar.MONTH, value);
     }
     
-    public static final Set setWeeks(final int amount) {
-        return new Set(Calendar.WEEK_OF_YEAR, amount);
+    public static final Set setWeek(final int value) {
+        return new Set(Calendar.WEEK_OF_YEAR, value);
     }
     
-    public static final Set setYears(final int amount) {
-        return new Set(Calendar.YEAR, amount);
+    public static final Set setYear(final int value) {
+        return new Set(Calendar.YEAR, value);
     }
 
     public static final Round round(final int calendarField) {
@@ -111,12 +112,20 @@ public final class FCalendar {
     public static final Truncate truncate(final int calendarField) {
         return new Truncate(calendarField);
     }
+
+    public static final Before before(final Calendar calendar) {
+        return new Before(calendar);
+    }
+
+    public static final After after(final Calendar calendar) {
+        return new After(calendar);
+    }
     
 
 	
 
 	
-	public static final class Add implements IFunction<Calendar,Calendar> {
+	public static final class Add extends AbstractNotNullFunction<Calendar,Calendar> {
 
 	    private final int calendarField;
 	    private final int amount;
@@ -127,7 +136,7 @@ public final class FCalendar {
 			this.amount = amount;
 		}
 
-        public Calendar execute(final Calendar input, final ExecCtx ctx) throws Exception {
+        public Calendar notNullExecute(final Calendar input, final ExecCtx ctx) throws Exception {
             final Calendar result = (Calendar) input.clone();
 			result.add(this.calendarField, this.amount);
 			return result;
@@ -136,8 +145,28 @@ public final class FCalendar {
 	}
 
     
+    public static final class Roll extends AbstractNotNullFunction<Calendar,Calendar> {
+
+        private final int calendarField;
+        private final int amount;
+        
+        public Roll(final int calendarField, final int amount) {
+            super();
+            this.calendarField = calendarField;
+            this.amount = amount;
+        }
+
+        public Calendar notNullExecute(final Calendar input, final ExecCtx ctx) throws Exception {
+            final Calendar result = (Calendar) input.clone();
+            result.roll(this.calendarField, this.amount);
+            return result;
+        }       
+        
+    }
+
+    
 	
-    public static final class Set implements IFunction<Calendar,Calendar> {
+    public static final class Set extends AbstractNotNullFunction<Calendar,Calendar> {
 
         private final int calendarField;
         private final int value;
@@ -148,7 +177,7 @@ public final class FCalendar {
             this.value = value;
         }
 
-        public Calendar execute(final Calendar input, final ExecCtx ctx) throws Exception {
+        public Calendar notNullExecute(final Calendar input, final ExecCtx ctx) throws Exception {
             final Calendar result = (Calendar) input.clone();
             result.set(this.calendarField, this.value);
             return result;
@@ -158,7 +187,7 @@ public final class FCalendar {
 
 	
     
-    public static final class Round implements IFunction<Calendar,Calendar> {
+    public static final class Round extends AbstractNotNullFunction<Calendar,Calendar> {
 
         private final int calendarField;
         
@@ -167,7 +196,7 @@ public final class FCalendar {
             this.calendarField = calendarField;
         }
 
-        public Calendar execute(final Calendar input, final ExecCtx ctx) throws Exception {
+        public Calendar notNullExecute(final Calendar input, final ExecCtx ctx) throws Exception {
             Calendar result = (Calendar) input.clone();
             result = DateUtils.round(result, this.calendarField);
             return result;
@@ -177,7 +206,7 @@ public final class FCalendar {
 
     
     
-    public static final class Truncate implements IFunction<Calendar,Calendar> {
+    public static final class Truncate extends AbstractNotNullFunction<Calendar,Calendar> {
 
         private final int calendarField;
         
@@ -186,12 +215,46 @@ public final class FCalendar {
             this.calendarField = calendarField;
         }
 
-        public Calendar execute(final Calendar input, final ExecCtx ctx) throws Exception {
+        public Calendar notNullExecute(final Calendar input, final ExecCtx ctx) throws Exception {
             Calendar result = (Calendar) input.clone();
             result = DateUtils.truncate(result, this.calendarField);
             return result;
         }       
         
     }
-	
+    
+    
+    public static final class Before extends AbstractNotNullFunction<Boolean,Calendar> {
+
+        private final Calendar calendar;
+        
+        public Before(final Calendar calendar) {
+            super();
+            Validate.notNull(calendar, "Specified calendar cannot be null");
+            this.calendar = calendar;
+        }
+
+        public Boolean notNullExecute(final Calendar input, final ExecCtx ctx) throws Exception {
+            return input.before(calendar);
+        }       
+        
+    }
+    
+    
+    public static final class After extends AbstractNotNullFunction<Boolean,Calendar> {
+
+        private final Calendar calendar;
+        
+        public After(final Calendar calendar) {
+            super();
+            Validate.notNull(calendar, "Specified calendar cannot be null");
+            this.calendar = calendar;
+        }
+
+        public Boolean notNullExecute(final Calendar input, final ExecCtx ctx) throws Exception {
+            return input.after(calendar);
+        }       
+        
+    }
+    
 }

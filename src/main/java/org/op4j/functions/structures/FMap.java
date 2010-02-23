@@ -162,9 +162,9 @@ public final class FMap<K,V> {
         
 
         @SuppressWarnings("unchecked")
-        public <X extends Comparable<? super X>> Map<K, V> doSort(final Map<K, V> object, final ExecCtx ctx) throws Exception {
-            final List<X> keys = (List<X>) new ArrayList<Object>(object.keySet());
-            Collections.sort(keys);
+        public Map<K, V> doSort(final Map<K, V> object, final ExecCtx ctx) throws Exception {
+            final List<?> keys = new ArrayList<Object>(object.keySet());
+            Collections.sort((List<Comparable>)keys);
             final Map<K, V> result = new LinkedHashMap<K, V>();
             for (final K key : (List<K>) keys) {
                 result.put(key, object.get(key));
