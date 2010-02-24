@@ -44,7 +44,7 @@ import org.op4j.target.Target.Normalisation;
  */
 public final class Level0IndefiniteArrayOperatorImpl<T,I> 
         extends AbstractOperatorImpl 
-        implements UniqOpOperator<T[]>, Level0IndefiniteArrayOperator<T,I> {
+        implements UniqOpOperator<T[],I>, Level0IndefiniteArrayOperator<T,I> {
 
 
     

@@ -24,7 +24,7 @@ import java.util.List;
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
-import org.op4j.operators.qualities.MultiOpOperator;
+import org.op4j.operators.qualities.MultiOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectedOperator;
 /**
@@ -35,7 +35,7 @@ import org.op4j.operators.qualities.SelectedOperator;
  *
  */
 public interface Level0GenericMultiSelectedOperator<T,I>
-        extends MultiOpOperator<T>,
+        extends MultiOperator<T>,
          		ExecutableSelectedOperator<T>,
                 ReplaceableOperator<T>,
                 SelectedOperator<T> {

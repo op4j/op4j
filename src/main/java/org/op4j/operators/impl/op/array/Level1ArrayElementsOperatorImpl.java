@@ -38,7 +38,7 @@ import org.op4j.target.Target.Normalisation;
  *
  */
 public final class Level1ArrayElementsOperatorImpl<T,I> extends AbstractOperatorImpl
-        implements UniqOpOperator<T[]>, Level1ArrayElementsOperator<T,I> {
+        implements UniqOpOperator<T[],I>, Level1ArrayElementsOperator<T,I> {
     
     private final Type<T> type; 
 

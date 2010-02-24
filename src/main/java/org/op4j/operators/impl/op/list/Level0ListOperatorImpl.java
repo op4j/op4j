@@ -50,7 +50,7 @@ import org.op4j.target.Target.Structure;
  *
  */
 public final class Level0ListOperatorImpl<T,I> extends AbstractOperatorImpl
-        implements UniqOpOperator<List<T>>, Level0ListOperator<T,I>  {
+        implements UniqOpOperator<List<T>,I>, Level0ListOperator<T,I>  {
 
     
     public Level0ListOperatorImpl(final Target target) {

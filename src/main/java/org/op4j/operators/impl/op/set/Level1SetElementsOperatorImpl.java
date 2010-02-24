@@ -39,7 +39,7 @@ import org.op4j.target.Target.Normalisation;
  *
  */
 public final class Level1SetElementsOperatorImpl<T,I> extends AbstractOperatorImpl
-        implements UniqOpOperator<Set<T>>, Level1SetElementsOperator<T,I>  {
+        implements UniqOpOperator<Set<T>,I>, Level1SetElementsOperator<T,I>  {
 
     
     public Level1SetElementsOperatorImpl(final Target target) {

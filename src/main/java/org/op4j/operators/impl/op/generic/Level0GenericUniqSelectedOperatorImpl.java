@@ -8,7 +8,7 @@ import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 
 
-public final class Level0GenericUniqSelectedOperatorImpl<T,I> extends AbstractOperatorImpl implements UniqOpOperator<T>, Level0GenericUniqSelectedOperator<T,I> {
+public final class Level0GenericUniqSelectedOperatorImpl<T,I> extends AbstractOperatorImpl implements UniqOpOperator<T,I>, Level0GenericUniqSelectedOperator<T,I> {
 
 
     public Level0GenericUniqSelectedOperatorImpl(final Target target) {

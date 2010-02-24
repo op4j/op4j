@@ -1,4 +1,6 @@
 
+
+  - execute shouldn't return Exception... uncomfortable for executing Function!
     
     
 ----------------    

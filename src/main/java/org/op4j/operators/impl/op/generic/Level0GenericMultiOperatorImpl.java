@@ -55,7 +55,7 @@ import org.op4j.target.Target.Structure;
  *
  */
 public final class Level0GenericMultiOperatorImpl<T,I> extends AbstractOperatorImpl
-        implements MultiOpOperator<T>, Level0GenericMultiOperator<T,I>  {
+        implements MultiOpOperator<T,I>, Level0GenericMultiOperator<T,I>  {
 
     
     public Level0GenericMultiOperatorImpl(final Target target) {

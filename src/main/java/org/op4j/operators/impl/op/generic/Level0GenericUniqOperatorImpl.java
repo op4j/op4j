@@ -58,7 +58,7 @@ import org.op4j.target.Target.Structure;
  *
  */
 public final class Level0GenericUniqOperatorImpl<T,I> extends AbstractOperatorImpl
-        implements UniqOpOperator<T>, Level0GenericUniqOperator<T,I>  {
+        implements UniqOpOperator<T,I>, Level0GenericUniqOperator<T,I>  {
 
     
     public Level0GenericUniqOperatorImpl(final Target target) {

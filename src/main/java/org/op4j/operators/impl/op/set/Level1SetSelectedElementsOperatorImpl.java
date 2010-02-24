@@ -10,7 +10,7 @@ import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 
 
-public final class Level1SetSelectedElementsOperatorImpl<T,I> extends AbstractOperatorImpl implements UniqOpOperator<Set<T>>, Level1SetSelectedElementsOperator<T,I> {
+public final class Level1SetSelectedElementsOperatorImpl<T,I> extends AbstractOperatorImpl implements UniqOpOperator<Set<T>,I>, Level1SetSelectedElementsOperator<T,I> {
 
 
     public Level1SetSelectedElementsOperatorImpl(final Target target) {

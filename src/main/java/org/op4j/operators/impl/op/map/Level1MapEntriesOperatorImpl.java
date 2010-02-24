@@ -39,7 +39,7 @@ import org.op4j.target.Target.Normalisation;
  *
  */
 public final class Level1MapEntriesOperatorImpl<K,V,I> extends AbstractOperatorImpl
-        implements UniqOpOperator<Map<K,V>>, Level1MapEntriesOperator<K,V,I> {
+        implements UniqOpOperator<Map<K,V>,I>, Level1MapEntriesOperator<K,V,I> {
 
     
     public Level1MapEntriesOperatorImpl(final Target target) {

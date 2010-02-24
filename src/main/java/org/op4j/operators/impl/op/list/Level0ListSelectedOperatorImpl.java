@@ -14,7 +14,7 @@ import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
 
 
-public final class Level0ListSelectedOperatorImpl<T,I> extends AbstractOperatorImpl implements UniqOpOperator<List<T>>, Level0ListSelectedOperator<T,I> {
+public final class Level0ListSelectedOperatorImpl<T,I> extends AbstractOperatorImpl implements UniqOpOperator<List<T>,I>, Level0ListSelectedOperator<T,I> {
 
 
     public Level0ListSelectedOperatorImpl(final Target target) {

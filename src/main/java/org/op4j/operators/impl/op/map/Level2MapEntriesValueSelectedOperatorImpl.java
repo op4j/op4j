@@ -10,7 +10,7 @@ import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 
 
-public final class Level2MapEntriesValueSelectedOperatorImpl<K,V,I> extends AbstractOperatorImpl implements UniqOpOperator<Map<K,V>>, Level2MapEntriesValueSelectedOperator<K,V,I> {
+public final class Level2MapEntriesValueSelectedOperatorImpl<K,V,I> extends AbstractOperatorImpl implements UniqOpOperator<Map<K,V>,I>, Level2MapEntriesValueSelectedOperator<K,V,I> {
 
 
     public Level2MapEntriesValueSelectedOperatorImpl(final Target target) {

@@ -11,7 +11,7 @@ import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 
 
-public final class Level0GenericMultiSelectedOperatorImpl<T,I> extends AbstractOperatorImpl implements MultiOpOperator<T>, Level0GenericMultiSelectedOperator<T,I> {
+public final class Level0GenericMultiSelectedOperatorImpl<T,I> extends AbstractOperatorImpl implements MultiOpOperator<T,I>, Level0GenericMultiSelectedOperator<T,I> {
 
 
     public Level0GenericMultiSelectedOperatorImpl(final Target target) {

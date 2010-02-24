@@ -9,7 +9,7 @@ import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 
 
-public final class Level1ArraySelectedElementsSelectedOperatorImpl<T,I> extends AbstractOperatorImpl implements UniqOpOperator<T[]>, Level1ArraySelectedElementsSelectedOperator<T,I> {
+public final class Level1ArraySelectedElementsSelectedOperatorImpl<T,I> extends AbstractOperatorImpl implements UniqOpOperator<T[],I>, Level1ArraySelectedElementsSelectedOperator<T,I> {
 
 
     private final Type<T> type;

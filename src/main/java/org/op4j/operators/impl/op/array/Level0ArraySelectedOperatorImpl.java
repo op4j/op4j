@@ -14,7 +14,7 @@ import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
 
 
-public final class Level0ArraySelectedOperatorImpl<T,I> extends AbstractOperatorImpl implements UniqOpOperator<T[]>, Level0ArraySelectedOperator<T,I> {
+public final class Level0ArraySelectedOperatorImpl<T,I> extends AbstractOperatorImpl implements UniqOpOperator<T[],I>, Level0ArraySelectedOperator<T,I> {
 
 
     private final Type<T> type;

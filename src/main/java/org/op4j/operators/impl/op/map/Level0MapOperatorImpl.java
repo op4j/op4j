@@ -45,7 +45,7 @@ import org.op4j.target.Target.Structure;
  *
  */
 public final class Level0MapOperatorImpl<K,V,I> extends AbstractOperatorImpl
-        implements UniqOpOperator<Map<K,V>>, Level0MapOperator<K,V,I> {
+        implements UniqOpOperator<Map<K,V>,I>, Level0MapOperator<K,V,I> {
 
     
     public Level0MapOperatorImpl(final Target target) {

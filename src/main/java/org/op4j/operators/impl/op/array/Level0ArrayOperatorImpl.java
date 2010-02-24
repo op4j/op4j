@@ -49,7 +49,7 @@ import org.op4j.target.Target.Structure;
  */
 public final class Level0ArrayOperatorImpl<T,I> 
         extends AbstractOperatorImpl 
-        implements UniqOpOperator<T[]>, Level0ArrayOperator<T,I> {
+        implements UniqOpOperator<T[],I>, Level0ArrayOperator<T,I> {
 
 
     private final Type<T> type;

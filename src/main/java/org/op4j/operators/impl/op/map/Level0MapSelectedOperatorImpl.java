@@ -14,7 +14,7 @@ import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
 
 
-public final class Level0MapSelectedOperatorImpl<K,V,I> extends AbstractOperatorImpl implements UniqOpOperator<Map<K,V>>, Level0MapSelectedOperator<K,V,I> {
+public final class Level0MapSelectedOperatorImpl<K,V,I> extends AbstractOperatorImpl implements UniqOpOperator<Map<K,V>,I>, Level0MapSelectedOperator<K,V,I> {
 
 
     public Level0MapSelectedOperatorImpl(final Target target) {

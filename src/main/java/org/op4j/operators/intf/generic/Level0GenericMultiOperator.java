@@ -36,7 +36,7 @@ import org.op4j.operators.qualities.CastableToTypeOperator;
 import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.ModifiableGrowableOperator;
 import org.op4j.operators.qualities.ModifiableShrinkableOperator;
-import org.op4j.operators.qualities.MultiOpOperator;
+import org.op4j.operators.qualities.MultiOperator;
 import org.op4j.operators.qualities.ReplaceableIfNullOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
@@ -49,7 +49,7 @@ import org.op4j.operators.qualities.UniqableOperator;
  *
  */
 public interface Level0GenericMultiOperator<T,I>
-        extends MultiOpOperator<T>,
+        extends MultiOperator<T>,
                 UniqableOperator<T>,
         		BuilderOperator<T,I>,
         		BuilderMultiOperator<T,I>,
