@@ -136,6 +136,7 @@ public final class FCalendar {
 			this.amount = amount;
 		}
 
+        @Override
         public Calendar notNullExecute(final Calendar input, final ExecCtx ctx) throws Exception {
             final Calendar result = (Calendar) input.clone();
 			result.add(this.calendarField, this.amount);
@@ -156,6 +157,7 @@ public final class FCalendar {
             this.amount = amount;
         }
 
+        @Override
         public Calendar notNullExecute(final Calendar input, final ExecCtx ctx) throws Exception {
             final Calendar result = (Calendar) input.clone();
             result.roll(this.calendarField, this.amount);
@@ -177,6 +179,7 @@ public final class FCalendar {
             this.value = value;
         }
 
+        @Override
         public Calendar notNullExecute(final Calendar input, final ExecCtx ctx) throws Exception {
             final Calendar result = (Calendar) input.clone();
             result.set(this.calendarField, this.value);
@@ -196,6 +199,7 @@ public final class FCalendar {
             this.calendarField = calendarField;
         }
 
+        @Override
         public Calendar notNullExecute(final Calendar input, final ExecCtx ctx) throws Exception {
             Calendar result = (Calendar) input.clone();
             result = DateUtils.round(result, this.calendarField);
@@ -215,6 +219,7 @@ public final class FCalendar {
             this.calendarField = calendarField;
         }
 
+        @Override
         public Calendar notNullExecute(final Calendar input, final ExecCtx ctx) throws Exception {
             Calendar result = (Calendar) input.clone();
             result = DateUtils.truncate(result, this.calendarField);
@@ -234,8 +239,9 @@ public final class FCalendar {
             this.calendar = calendar;
         }
 
+        @Override
         public Boolean notNullExecute(final Calendar input, final ExecCtx ctx) throws Exception {
-            return input.before(calendar);
+            return Boolean.valueOf(input.before(this.calendar));
         }       
         
     }
@@ -251,8 +257,9 @@ public final class FCalendar {
             this.calendar = calendar;
         }
 
+        @Override
         public Boolean notNullExecute(final Calendar input, final ExecCtx ctx) throws Exception {
-            return input.after(calendar);
+            return Boolean.valueOf(input.after(this.calendar));
         }       
         
     }
