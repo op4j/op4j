@@ -71,7 +71,7 @@ public final class ToDouble {
         return new FromString(locale);
     }
     
-    public static final FromString frtomString(final String locale) {
+    public static final FromString fromString(final String locale) {
         return new FromString(locale);
     }
     
