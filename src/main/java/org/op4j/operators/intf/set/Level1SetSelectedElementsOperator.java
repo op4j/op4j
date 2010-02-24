@@ -36,7 +36,7 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level1SetSelectedElementsOperator<T,I>
+public interface Level1SetSelectedElementsOperator<I,T>
         extends UniqOperator<Set<T>>,
                 NavigatingCollectionOperator<T>,
                 SelectableOperator<T>,
@@ -45,26 +45,26 @@ public interface Level1SetSelectedElementsOperator<T,I>
 
 
 
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifIndex(final int... indexes);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifTrue(final IFunction<Boolean, ? super T> eval);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifNullOrFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifNull();
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifNullOrTrue(final IFunction<Boolean, ? super T> eval);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifIndexNot(final int... indexes);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifNotNull();
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
+    public Level1SetSelectedElementsSelectedOperator<I,T> ifIndex(final int... indexes);
+    public Level1SetSelectedElementsSelectedOperator<I,T> ifTrue(final IFunction<Boolean, ? super T> eval);
+    public Level1SetSelectedElementsSelectedOperator<I,T> ifFalse(final IFunction<Boolean, ? super T> eval);
+    public Level1SetSelectedElementsSelectedOperator<I,T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval);
+    public Level1SetSelectedElementsSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
+    public Level1SetSelectedElementsSelectedOperator<I,T> ifNull();
+    public Level1SetSelectedElementsSelectedOperator<I,T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval);
+    public Level1SetSelectedElementsSelectedOperator<I,T> ifIndexNot(final int... indexes);
+    public Level1SetSelectedElementsSelectedOperator<I,T> ifNotNull();
+    public Level1SetSelectedElementsSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
 
 
 		    
-    public Level0SetSelectedOperator<T,I> endFor();
+    public Level0SetSelectedOperator<I,T> endFor();
     
-    public Level1SetSelectedElementsOperator<T,I> execIfNotNull(final IFunction<? extends T,? super T> function);
+    public Level1SetSelectedElementsOperator<I,T> execIfNotNull(final IFunction<? extends T,? super T> function);
 
-    public Level1SetSelectedElementsOperator<T,I> replaceWith(final T replacement);
+    public Level1SetSelectedElementsOperator<I,T> replaceWith(final T replacement);
 
-    public Level1SetSelectedElementsOperator<T,I> exec(final IFunction<? extends T, ? super T> function);
+    public Level1SetSelectedElementsOperator<I,T> exec(final IFunction<? extends T, ? super T> function);
 	
     
 }

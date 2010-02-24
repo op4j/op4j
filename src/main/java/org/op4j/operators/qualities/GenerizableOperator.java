@@ -36,7 +36,7 @@ import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface GenerizableOperator<T,I> {
+public interface GenerizableOperator<I,T> {
    
     /**
      * <p>
@@ -46,6 +46,6 @@ public interface GenerizableOperator<T,I> {
      * 
      * @return a generic operator on the same target object
      */
-    public Level0GenericUniqOperator<T,I> generic();
+    public Level0GenericUniqOperator<I,T> generic();
     
 }

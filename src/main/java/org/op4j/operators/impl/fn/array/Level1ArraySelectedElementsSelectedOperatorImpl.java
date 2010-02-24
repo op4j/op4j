@@ -9,7 +9,7 @@ import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 
 
-public final class Level1ArraySelectedElementsSelectedOperatorImpl<T,I> extends AbstractOperatorImpl implements UniqFnOperator<T[],I>, Level1ArraySelectedElementsSelectedOperator<T,I> {
+public final class Level1ArraySelectedElementsSelectedOperatorImpl<I,T> extends AbstractOperatorImpl implements UniqFnOperator<I,T[]>, Level1ArraySelectedElementsSelectedOperator<I,T> {
 
 
     private final Type<T> type;
@@ -21,23 +21,23 @@ public final class Level1ArraySelectedElementsSelectedOperatorImpl<T,I> extends 
     }
 
 
-    public Level1ArraySelectedElementsOperatorImpl<T,I> endIf() {
-        return new Level1ArraySelectedElementsOperatorImpl<T,I>(this.type, getTarget().endSelect());
+    public Level1ArraySelectedElementsOperatorImpl<I,T> endIf() {
+        return new Level1ArraySelectedElementsOperatorImpl<I,T>(this.type, getTarget().endSelect());
     }
 
 
-    public Level1ArraySelectedElementsSelectedOperatorImpl<T,I> execIfNotNull(final IFunction<? extends T,? super T> function) {
-        return new Level1ArraySelectedElementsSelectedOperatorImpl<T,I>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
+    public Level1ArraySelectedElementsSelectedOperatorImpl<I,T> execIfNotNull(final IFunction<? extends T,? super T> function) {
+        return new Level1ArraySelectedElementsSelectedOperatorImpl<I,T>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 
-    public Level1ArraySelectedElementsSelectedOperatorImpl<T,I> replaceWith(final T replacement) {
-        return new Level1ArraySelectedElementsSelectedOperatorImpl<T,I>(this.type, getTarget().replaceWith(replacement, Normalisation.NONE));
+    public Level1ArraySelectedElementsSelectedOperatorImpl<I,T> replaceWith(final T replacement) {
+        return new Level1ArraySelectedElementsSelectedOperatorImpl<I,T>(this.type, getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 
-    public Level1ArraySelectedElementsSelectedOperatorImpl<T,I> exec(final IFunction<? extends T,? super T> function) {
-        return new Level1ArraySelectedElementsSelectedOperatorImpl<T,I>(this.type, getTarget().execute(function, Normalisation.NONE));
+    public Level1ArraySelectedElementsSelectedOperatorImpl<I,T> exec(final IFunction<? extends T,? super T> function) {
+        return new Level1ArraySelectedElementsSelectedOperatorImpl<I,T>(this.type, getTarget().execute(function, Normalisation.NONE));
     }
 
 

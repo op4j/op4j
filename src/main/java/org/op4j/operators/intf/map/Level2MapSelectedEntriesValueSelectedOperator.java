@@ -35,7 +35,7 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level2MapSelectedEntriesValueSelectedOperator<K,V,I>
+public interface Level2MapSelectedEntriesValueSelectedOperator<I,K,V>
         extends UniqOperator<Map<K,V>>,
         		ExecutableSelectedOperator<V>,
                 ReplaceableOperator<V>,
@@ -43,14 +43,14 @@ public interface Level2MapSelectedEntriesValueSelectedOperator<K,V,I>
 
 
 
-    public Level2MapSelectedEntriesValueOperator<K,V,I> endIf();
+    public Level2MapSelectedEntriesValueOperator<I,K,V> endIf();
 
     
-    public Level2MapSelectedEntriesValueSelectedOperator<K,V,I> execIfNotNull(final IFunction<? extends V, ? super V> function);
+    public Level2MapSelectedEntriesValueSelectedOperator<I,K,V> execIfNotNull(final IFunction<? extends V, ? super V> function);
 
-    public Level2MapSelectedEntriesValueSelectedOperator<K,V,I> replaceWith(final V replacement);
+    public Level2MapSelectedEntriesValueSelectedOperator<I,K,V> replaceWith(final V replacement);
 
-    public Level2MapSelectedEntriesValueSelectedOperator<K,V,I> exec(final IFunction<? extends V, ? super V> function);
+    public Level2MapSelectedEntriesValueSelectedOperator<I,K,V> exec(final IFunction<? extends V, ? super V> function);
 
     
 }

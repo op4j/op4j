@@ -41,7 +41,7 @@ import org.javaruntype.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface MultiFnOperator<T,I> extends MultiOperator<T> {
+public interface MultiFnOperator<I,T> extends MultiOperator<T> {
     
     /**
      * <p>

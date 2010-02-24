@@ -11,7 +11,7 @@ import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 
 
-public final class Level0GenericMultiSelectedOperatorImpl<T,I> extends AbstractOperatorImpl implements MultiOpOperator<T,I>, Level0GenericMultiSelectedOperator<T,I> {
+public final class Level0GenericMultiSelectedOperatorImpl<I,T> extends AbstractOperatorImpl implements MultiOpOperator<I,T>, Level0GenericMultiSelectedOperator<I,T> {
 
 
     public Level0GenericMultiSelectedOperatorImpl(final Target target) {
@@ -19,13 +19,13 @@ public final class Level0GenericMultiSelectedOperatorImpl<T,I> extends AbstractO
     }
 
 
-    public Level0GenericMultiOperatorImpl<T,I> endIf() {
-        return new Level0GenericMultiOperatorImpl<T,I>(getTarget().endSelect());
+    public Level0GenericMultiOperatorImpl<I,T> endIf() {
+        return new Level0GenericMultiOperatorImpl<I,T>(getTarget().endSelect());
     }
 
 
-    public Level0GenericMultiSelectedOperatorImpl<T,I> execIfNotNull(final IFunction<? extends T,? super T> function) {
-        return new Level0GenericMultiSelectedOperatorImpl<T,I>(getTarget().executeIfNotNull(function, Normalisation.NONE));
+    public Level0GenericMultiSelectedOperatorImpl<I,T> execIfNotNull(final IFunction<? extends T,? super T> function) {
+        return new Level0GenericMultiSelectedOperatorImpl<I,T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 
@@ -39,13 +39,13 @@ public final class Level0GenericMultiSelectedOperatorImpl<T,I> extends AbstractO
     }
 
 
-    public Level0GenericMultiSelectedOperatorImpl<T,I> replaceWith(final T replacement) {
-        return new Level0GenericMultiSelectedOperatorImpl<T,I>(getTarget().replaceWith(replacement, Normalisation.NONE));
+    public Level0GenericMultiSelectedOperatorImpl<I,T> exec(final IFunction<? extends T,? super T> function) {
+        return new Level0GenericMultiSelectedOperatorImpl<I,T>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Level0GenericMultiSelectedOperatorImpl<T,I> exec(final IFunction<? extends T,? super T> function) {
-        return new Level0GenericMultiSelectedOperatorImpl<T,I>(getTarget().execute(function, Normalisation.NONE));
+    public Level0GenericMultiSelectedOperatorImpl<I,T> replaceWith(final T replacement) {
+        return new Level0GenericMultiSelectedOperatorImpl<I,T>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

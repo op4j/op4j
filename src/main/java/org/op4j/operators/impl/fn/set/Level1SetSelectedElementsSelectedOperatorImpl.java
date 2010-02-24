@@ -10,7 +10,7 @@ import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 
 
-public final class Level1SetSelectedElementsSelectedOperatorImpl<T,I> extends AbstractOperatorImpl implements UniqFnOperator<Set<T>,I>, Level1SetSelectedElementsSelectedOperator<T,I> {
+public final class Level1SetSelectedElementsSelectedOperatorImpl<I,T> extends AbstractOperatorImpl implements UniqFnOperator<I,Set<T>>, Level1SetSelectedElementsSelectedOperator<I,T> {
 
 
     public Level1SetSelectedElementsSelectedOperatorImpl(final Target target) {
@@ -18,23 +18,23 @@ public final class Level1SetSelectedElementsSelectedOperatorImpl<T,I> extends Ab
     }
 
 
-    public Level1SetSelectedElementsOperatorImpl<T,I> endIf() {
-        return new Level1SetSelectedElementsOperatorImpl<T,I>(getTarget().endSelect());
+    public Level1SetSelectedElementsOperatorImpl<I,T> endIf() {
+        return new Level1SetSelectedElementsOperatorImpl<I,T>(getTarget().endSelect());
     }
 
 
-    public Level1SetSelectedElementsSelectedOperatorImpl<T,I> execIfNotNull(final IFunction<? extends T,? super T> function) {
-        return new Level1SetSelectedElementsSelectedOperatorImpl<T,I>(getTarget().executeIfNotNull(function, Normalisation.NONE));
+    public Level1SetSelectedElementsSelectedOperatorImpl<I,T> execIfNotNull(final IFunction<? extends T,? super T> function) {
+        return new Level1SetSelectedElementsSelectedOperatorImpl<I,T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 
-    public Level1SetSelectedElementsSelectedOperatorImpl<T,I> replaceWith(final T replacement) {
-        return new Level1SetSelectedElementsSelectedOperatorImpl<T,I>(getTarget().replaceWith(replacement, Normalisation.NONE));
+    public Level1SetSelectedElementsSelectedOperatorImpl<I,T> replaceWith(final T replacement) {
+        return new Level1SetSelectedElementsSelectedOperatorImpl<I,T>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 
-    public Level1SetSelectedElementsSelectedOperatorImpl<T,I> exec(final IFunction<? extends T,? super T> function) {
-        return new Level1SetSelectedElementsSelectedOperatorImpl<T,I>(getTarget().execute(function, Normalisation.NONE));
+    public Level1SetSelectedElementsSelectedOperatorImpl<I,T> exec(final IFunction<? extends T,? super T> function) {
+        return new Level1SetSelectedElementsSelectedOperatorImpl<I,T>(getTarget().execute(function, Normalisation.NONE));
     }
 
 

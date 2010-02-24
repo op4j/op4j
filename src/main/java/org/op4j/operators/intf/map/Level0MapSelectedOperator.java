@@ -37,7 +37,7 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level0MapSelectedOperator<K,V,I>
+public interface Level0MapSelectedOperator<I,K,V>
         extends UniqOperator<Map<K,V>>,
                 NavigableMapOperator<K,V>,
 		        SortableOperator<Map.Entry<K,V>>,
@@ -48,31 +48,31 @@ public interface Level0MapSelectedOperator<K,V,I>
 
 
 
-    public Level0MapOperator<K,V,I> endIf();
+    public Level0MapOperator<I,K,V> endIf();
 
 
     
-    public Level1MapSelectedEntriesOperator<K,V,I> forEachEntry();
+    public Level1MapSelectedEntriesOperator<I,K,V> forEachEntry();
     
-    public Level0MapSelectedOperator<K,V,I> sort();
-    public Level0MapSelectedOperator<K,V,I> sort(final Comparator<? super Map.Entry<K,V>> comparator);
+    public Level0MapSelectedOperator<I,K,V> sort();
+    public Level0MapSelectedOperator<I,K,V> sort(final Comparator<? super Map.Entry<K,V>> comparator);
     
-    public Level0MapSelectedOperator<K,V,I> put(final K newKey, final V newValue);
-    public Level0MapSelectedOperator<K,V,I> insert(final int position, final K newKey, final V newValue);
-    public Level0MapSelectedOperator<K,V,I> putAll(final Map<K,V> map);
-    public Level0MapSelectedOperator<K,V,I> insertAll(final int position, final Map<K,V> map);
-    public Level0MapSelectedOperator<K,V,I> removeAllKeys(final K... keys);
-    public Level0MapSelectedOperator<K,V,I> removeAllTrue(final IFunction<Boolean, ? super Map.Entry<K,V>> eval);
-    public Level0MapSelectedOperator<K,V,I> removeAllFalse(final IFunction<Boolean, ? super Map.Entry<K,V>> eval);
-    public Level0MapSelectedOperator<K,V,I> removeAllKeysNot(final K... keys);
+    public Level0MapSelectedOperator<I,K,V> put(final K newKey, final V newValue);
+    public Level0MapSelectedOperator<I,K,V> insert(final int position, final K newKey, final V newValue);
+    public Level0MapSelectedOperator<I,K,V> putAll(final Map<K,V> map);
+    public Level0MapSelectedOperator<I,K,V> insertAll(final int position, final Map<K,V> map);
+    public Level0MapSelectedOperator<I,K,V> removeAllKeys(final K... keys);
+    public Level0MapSelectedOperator<I,K,V> removeAllTrue(final IFunction<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level0MapSelectedOperator<I,K,V> removeAllFalse(final IFunction<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level0MapSelectedOperator<I,K,V> removeAllKeysNot(final K... keys);
     
     
     
-    public Level0MapSelectedOperator<K,V,I> execIfNotNullAsMap(final IFunction<? extends Map<? extends K,? extends V>, ? super Map<K,V>> function);
+    public Level0MapSelectedOperator<I,K,V> execIfNotNullAsMap(final IFunction<? extends Map<? extends K,? extends V>, ? super Map<K,V>> function);
 
-    public Level0MapSelectedOperator<K,V,I> replaceWith(final Map<K,V> replacement);
+    public Level0MapSelectedOperator<I,K,V> replaceWith(final Map<K,V> replacement);
 
-    public Level0MapSelectedOperator<K,V,I> execAsMap(final IFunction<? extends Map<? extends K,? extends V>, ? super Map<K,V>> function);
+    public Level0MapSelectedOperator<I,K,V> execAsMap(final IFunction<? extends Map<? extends K,? extends V>, ? super Map<K,V>> function);
     
     
 }

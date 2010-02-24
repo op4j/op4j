@@ -11,7 +11,7 @@ import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 
 
-public final class Level1MapSelectedEntriesOperatorImpl<K,V,I> extends AbstractOperatorImpl implements UniqFnOperator<Map<K,V>,I>, Level1MapSelectedEntriesOperator<K,V,I> {
+public final class Level1MapSelectedEntriesOperatorImpl<I,K,V> extends AbstractOperatorImpl implements UniqFnOperator<I,Map<K,V>>, Level1MapSelectedEntriesOperator<I,K,V> {
 
 
     public Level1MapSelectedEntriesOperatorImpl(final Target target) {
@@ -19,63 +19,63 @@ public final class Level1MapSelectedEntriesOperatorImpl<K,V,I> extends AbstractO
     }
 
 
-    public Level1MapSelectedEntriesSelectedOperatorImpl<K,V,I> ifIndex(final int... indexes) {
-        return new Level1MapSelectedEntriesSelectedOperatorImpl<K,V,I>(getTarget().selectIndex(indexes));
+    public Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V> ifIndex(final int... indexes) {
+        return new Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V>(getTarget().selectIndex(indexes));
     }
 
 
-    public Level1MapSelectedEntriesSelectedOperatorImpl<K,V,I> ifTrue(final IFunction<Boolean, ? super Entry<K,V>> eval) {
-        return new Level1MapSelectedEntriesSelectedOperatorImpl<K,V,I>(getTarget().selectMatching(eval));
+    public Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V> ifTrue(final IFunction<Boolean, ? super Entry<K,V>> eval) {
+        return new Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1MapSelectedEntriesSelectedOperatorImpl<K,V,I> ifFalse(final IFunction<Boolean, ? super Entry<K,V>> eval) {
-        return new Level1MapSelectedEntriesSelectedOperatorImpl<K,V,I>(getTarget().selectNotMatching(eval));
+    public Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V> ifFalse(final IFunction<Boolean, ? super Entry<K,V>> eval) {
+        return new Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V>(getTarget().selectNotMatching(eval));
     }
 
 
-    public Level1MapSelectedEntriesSelectedOperatorImpl<K,V,I> ifIndexNot(final int... indexes) {
-        return new Level1MapSelectedEntriesSelectedOperatorImpl<K,V,I>(getTarget().selectIndexNot(indexes));
+    public Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V> ifIndexNot(final int... indexes) {
+        return new Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V>(getTarget().selectIndexNot(indexes));
     }
 
 
-    public Level0MapSelectedOperatorImpl<K,V,I> endFor() {
-        return new Level0MapSelectedOperatorImpl<K,V,I>(getTarget().endIterate(null));
+    public Level0MapSelectedOperatorImpl<I,K,V> endFor() {
+        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().endIterate(null));
     }
 
 
-    public Level1MapSelectedEntriesSelectedOperatorImpl<K,V,I> ifKeyEquals(final K... keys) {
-        return new Level1MapSelectedEntriesSelectedOperatorImpl<K,V,I>(getTarget().selectMapKeys(keys));
+    public Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V> ifKeyEquals(final K... keys) {
+        return new Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V>(getTarget().selectMapKeys(keys));
     }
 
 
-    public Level1MapSelectedEntriesSelectedOperatorImpl<K,V,I> ifKeyNotEquals(final K... keys) {
-        return new Level1MapSelectedEntriesSelectedOperatorImpl<K,V,I>(getTarget().selectMapKeysNot(keys));
+    public Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V> ifKeyNotEquals(final K... keys) {
+        return new Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V>(getTarget().selectMapKeysNot(keys));
     }
 
 
-    public Level2MapSelectedEntriesKeyOperatorImpl<K,V,I> onKey() {
-        return new Level2MapSelectedEntriesKeyOperatorImpl<K,V,I>(getTarget().onKey());
+    public Level2MapSelectedEntriesKeyOperatorImpl<I,K,V> onKey() {
+        return new Level2MapSelectedEntriesKeyOperatorImpl<I,K,V>(getTarget().onKey());
     }
 
 
-    public Level2MapSelectedEntriesValueOperatorImpl<K,V,I> onValue() {
-        return new Level2MapSelectedEntriesValueOperatorImpl<K,V,I>(getTarget().onValue());
+    public Level2MapSelectedEntriesValueOperatorImpl<I,K,V> onValue() {
+        return new Level2MapSelectedEntriesValueOperatorImpl<I,K,V>(getTarget().onValue());
     }
 
 
-    public Level1MapSelectedEntriesOperatorImpl<K,V,I> execAsMapEntry(final IFunction<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> function) {
-        return new Level1MapSelectedEntriesOperatorImpl<K,V,I>(getTarget().execute(function, Normalisation.MAP_ENTRY));
+    public Level1MapSelectedEntriesOperatorImpl<I,K,V> execAsMapEntry(final IFunction<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> function) {
+        return new Level1MapSelectedEntriesOperatorImpl<I,K,V>(getTarget().execute(function, Normalisation.MAP_ENTRY));
     }
 
 
-    public Level1MapSelectedEntriesOperatorImpl<K,V,I> execIfNotNullAsMapEntry(final IFunction<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> function) {
-        return new Level1MapSelectedEntriesOperatorImpl<K,V,I>(getTarget().executeIfNotNull(function, Normalisation.MAP_ENTRY));
+    public Level1MapSelectedEntriesOperatorImpl<I,K,V> execIfNotNullAsMapEntry(final IFunction<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> function) {
+        return new Level1MapSelectedEntriesOperatorImpl<I,K,V>(getTarget().executeIfNotNull(function, Normalisation.MAP_ENTRY));
     }
 
 
-    public Level1MapSelectedEntriesOperatorImpl<K,V,I> replaceWith(final Entry<K,V> replacement) {
-        return new Level1MapSelectedEntriesOperatorImpl<K,V,I>(getTarget().replaceWith(replacement, Normalisation.MAP_ENTRY));
+    public Level1MapSelectedEntriesOperatorImpl<I,K,V> replaceWith(final Entry<K,V> replacement) {
+        return new Level1MapSelectedEntriesOperatorImpl<I,K,V>(getTarget().replaceWith(replacement, Normalisation.MAP_ENTRY));
     }
 
 

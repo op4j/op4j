@@ -48,11 +48,11 @@ import org.op4j.operators.qualities.UniqableOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level0GenericMultiOperator<T,I>
+public interface Level0GenericMultiOperator<I,T>
         extends MultiOperator<T>,
                 UniqableOperator<T>,
-        		BuilderOperator<T,I>,
-        		BuilderMultiOperator<T,I>,
+        		BuilderOperator<I,T>,
+        		BuilderMultiOperator<I,T>,
         		ExecutableOperator<T>,
                 CastableToTypeOperator<T>,
                 SelectableOperator<T>,
@@ -63,83 +63,83 @@ public interface Level0GenericMultiOperator<T,I>
 
 
 
-    public Level0GenericMultiSelectedOperator<T,I> ifIndex(final int... indexes);
-    public Level0GenericMultiSelectedOperator<T,I> ifTrue(final IFunction<Boolean, ? super T> eval);
-    public Level0GenericMultiSelectedOperator<T,I> ifFalse(final IFunction<Boolean, ? super T> eval);
-    public Level0GenericMultiSelectedOperator<T,I> ifNullOrFalse(final IFunction<Boolean, ? super T> eval);
-    public Level0GenericMultiSelectedOperator<T,I> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
-    public Level0GenericMultiSelectedOperator<T,I> ifNull();
-    public Level0GenericMultiSelectedOperator<T,I> ifNullOrTrue(final IFunction<Boolean, ? super T> eval);
-    public Level0GenericMultiSelectedOperator<T,I> ifIndexNot(final int... indexes);
-    public Level0GenericMultiSelectedOperator<T,I> ifNotNull();
-    public Level0GenericMultiSelectedOperator<T,I> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
+    public Level0GenericMultiSelectedOperator<I,T> ifIndex(final int... indexes);
+    public Level0GenericMultiSelectedOperator<I,T> ifTrue(final IFunction<Boolean, ? super T> eval);
+    public Level0GenericMultiSelectedOperator<I,T> ifFalse(final IFunction<Boolean, ? super T> eval);
+    public Level0GenericMultiSelectedOperator<I,T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval);
+    public Level0GenericMultiSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
+    public Level0GenericMultiSelectedOperator<I,T> ifNull();
+    public Level0GenericMultiSelectedOperator<I,T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval);
+    public Level0GenericMultiSelectedOperator<I,T> ifIndexNot(final int... indexes);
+    public Level0GenericMultiSelectedOperator<I,T> ifNotNull();
+    public Level0GenericMultiSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
 
 
     
-    public Level0GenericUniqOperator<T,I> uniq();
+    public Level0GenericUniqOperator<I,T> uniq();
 
     
     
-    public Level0GenericMultiOperator<T,I> replaceWith(final T replacement);
-    public Level0GenericMultiOperator<T,I> replaceIfNullWith(final T replacement);
+    public Level0GenericMultiOperator<I,T> replaceWith(final T replacement);
+    public Level0GenericMultiOperator<I,T> replaceIfNullWith(final T replacement);
 
 
-    public <X> Level0GenericMultiOperator<X,I> execIfNotNull(final IFunction<X,? super T> function);
+    public <X> Level0GenericMultiOperator<I,X> execIfNotNull(final IFunction<X,? super T> function);
 
-    public <X> Level0GenericMultiOperator<X,I> exec(final IFunction<X, ? super T> function);
+    public <X> Level0GenericMultiOperator<I,X> exec(final IFunction<X, ? super T> function);
     
     
     
-    public <X> Level0GenericMultiOperator<X,I> asType(final Type<X> type);
-    public Level0GenericMultiOperator<?,I> asUnknown();
+    public <X> Level0GenericMultiOperator<I,X> asType(final Type<X> type);
+    public Level0GenericMultiOperator<I,?> asUnknown();
         
-    public Level0GenericMultiOperator<T,I> add(final T newElement);
-    public Level0GenericMultiOperator<T,I> addAll(final T... newElements);
-    public Level0GenericMultiOperator<T,I> insert(final int position, final T newElement);
-    public Level0GenericMultiOperator<T,I> insertAll(final int position, final T... newElements);
-    public Level0GenericMultiOperator<T,I> addAll(final Collection<T> collection);
-    public Level0GenericMultiOperator<T,I> removeAllIndexes(final int... indexes);
-    public Level0GenericMultiOperator<T,I> removeAllEqual(final T... values);
-    public Level0GenericMultiOperator<T,I> removeAllTrue(final IFunction<Boolean, ? super T> eval);
-    public Level0GenericMultiOperator<T,I> removeAllFalse(final IFunction<Boolean, ? super T> eval);
-    public Level0GenericMultiOperator<T,I> removeAllNullOrFalse(final IFunction<Boolean, ? super T> eval);
-    public Level0GenericMultiOperator<T,I> removeAllNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
-    public Level0GenericMultiOperator<T,I> removeAllNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
-    public Level0GenericMultiOperator<T,I> removeAllNullOrTrue(final IFunction<Boolean, ? super T> eval);
-    public Level0GenericMultiOperator<T,I> removeAllIndexesNot(final int... indexes);
-    public Level0GenericMultiOperator<T,I> removeAllNull();
-    public Level0ListOperator<T,I> buildList();
+    public Level0GenericMultiOperator<I,T> add(final T newElement);
+    public Level0GenericMultiOperator<I,T> addAll(final T... newElements);
+    public Level0GenericMultiOperator<I,T> insert(final int position, final T newElement);
+    public Level0GenericMultiOperator<I,T> insertAll(final int position, final T... newElements);
+    public Level0GenericMultiOperator<I,T> addAll(final Collection<T> collection);
+    public Level0GenericMultiOperator<I,T> removeAllIndexes(final int... indexes);
+    public Level0GenericMultiOperator<I,T> removeAllEqual(final T... values);
+    public Level0GenericMultiOperator<I,T> removeAllTrue(final IFunction<Boolean, ? super T> eval);
+    public Level0GenericMultiOperator<I,T> removeAllFalse(final IFunction<Boolean, ? super T> eval);
+    public Level0GenericMultiOperator<I,T> removeAllNullOrFalse(final IFunction<Boolean, ? super T> eval);
+    public Level0GenericMultiOperator<I,T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
+    public Level0GenericMultiOperator<I,T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
+    public Level0GenericMultiOperator<I,T> removeAllNullOrTrue(final IFunction<Boolean, ? super T> eval);
+    public Level0GenericMultiOperator<I,T> removeAllIndexesNot(final int... indexes);
+    public Level0GenericMultiOperator<I,T> removeAllNull();
+    public Level0ListOperator<I,T> buildList();
     
     
-    public Level0SetOperator<T,I> buildSet();
+    public Level0SetOperator<I,T> buildSet();
     
     
-    public Level0ArrayOperator<T,I> buildArrayOf(final Type<T> type);
+    public Level0ArrayOperator<I,T> buildArrayOf(final Type<T> type);
     
     
-    public <K> Level0MapOperator<K,T,I> buildMap(final IFunction<K,? super T> keyEval);
-    public <K,V> Level0MapOperator<K,V,I> buildMap(final IMapBuilder<K,V,? super T> mapBuild);
+    public <K> Level0MapOperator<I,K,T> buildMap(final IFunction<K,? super T> keyEval);
+    public <K,V> Level0MapOperator<I,K,V> buildMap(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> Level0MapOperator<K,List<T>,I> buildMapOfList(final IFunction<K,? super T> keyEval);
-    public <K,V> Level0MapOperator<K,List<V>,I> buildMapOfList(final IMapBuilder<K,V,? super T> mapBuild);
+    public <K> Level0MapOperator<I,K,List<T>> buildMapOfList(final IFunction<K,? super T> keyEval);
+    public <K,V> Level0MapOperator<I,K,List<V>> buildMapOfList(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> Level0MapOperator<K,Set<T>,I> buildMapOfSet(final IFunction<K,? super T> keyEval);
-    public <K,V> Level0MapOperator<K,Set<V>,I> buildMapOfSet(final IMapBuilder<K,V,? super T> mapBuild);
+    public <K> Level0MapOperator<I,K,Set<T>> buildMapOfSet(final IFunction<K,? super T> keyEval);
+    public <K,V> Level0MapOperator<I,K,Set<V>> buildMapOfSet(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public <K> Level0MapOperator<K,T[],I> buildMapOfArrayOf(final Type<T> valueType, final IFunction<K,? super T> keyEval);
-    public <K,V> Level0MapOperator<K,V[],I> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<K,V,? super T> mapBuild);
+    public <K> Level0MapOperator<I,K,T[]> buildMapOfArrayOf(final Type<T> valueType, final IFunction<K,? super T> keyEval);
+    public <K,V> Level0MapOperator<I,K,V[]> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<K,V,? super T> mapBuild);
 
     
-    public Level0MapOperator<T,T,I> buildMap();
+    public Level0MapOperator<I,T,T> buildMap();
     
-    public Level0MapOperator<T,List<T>,I> buildMapOfList();
+    public Level0MapOperator<I,T,List<T>> buildMapOfList();
     
-    public Level0MapOperator<T,Set<T>,I> buildMapOfSet();
+    public Level0MapOperator<I,T,Set<T>> buildMapOfSet();
     
-    public Level0MapOperator<T,T[],I> buildMapOfArrayOf(final Type<T> type);
+    public Level0MapOperator<I,T,T[]> buildMapOfArrayOf(final Type<T> type);
     
     
     public T[] getAsArray(final Type<T> type); 

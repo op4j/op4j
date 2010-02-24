@@ -36,7 +36,7 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level1MapEntriesSelectedOperator<K,V,I>
+public interface Level1MapEntriesSelectedOperator<I,K,V>
 		extends UniqOperator<Map<K,V>>,
 		        NavigableMapEntryOperator,
                 ExecutableMapEntrySelectedOperator<K,V>,
@@ -44,16 +44,16 @@ public interface Level1MapEntriesSelectedOperator<K,V,I>
                 SelectedMapEntryOperator<K, V> {
 
 
-    public Level1MapEntriesOperator<K,V,I> endIf();
+    public Level1MapEntriesOperator<I,K,V> endIf();
     
 
-    public Level2MapEntriesSelectedKeyOperator<K,V,I> onKey();
-    public Level2MapEntriesSelectedValueOperator<K,V,I> onValue();
+    public Level2MapEntriesSelectedKeyOperator<I,K,V> onKey();
+    public Level2MapEntriesSelectedValueOperator<I,K,V> onValue();
     
-    public Level1MapEntriesSelectedOperator<K,V,I> replaceWith(final Map.Entry<K,V> replacement);
+    public Level1MapEntriesSelectedOperator<I,K,V> replaceWith(final Map.Entry<K,V> replacement);
 
-    public Level1MapEntriesSelectedOperator<K,V,I> execAsMapEntry(final IFunction<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> function);
+    public Level1MapEntriesSelectedOperator<I,K,V> execAsMapEntry(final IFunction<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> function);
     
-    public Level1MapEntriesSelectedOperator<K,V,I> execIfNotNullAsMapEntry(final IFunction<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> function);
+    public Level1MapEntriesSelectedOperator<I,K,V> execIfNotNullAsMapEntry(final IFunction<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> function);
     
     }

@@ -45,7 +45,7 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level0MapOperator<K,V,I>
+public interface Level0MapOperator<I,K,V>
         extends UniqOperator<Map<K,V>>,
                 NavigableMapOperator<K,V>,
                 CastableToMapOperator,
@@ -56,57 +56,57 @@ public interface Level0MapOperator<K,V,I>
                 SelectableOperator<Map<K,V>>,
                 ReplaceableOperator<Map<K,V>>,
                 ReplaceableIfNullOperator<Map<K,V>>,
-                GenerizableOperator<Map<K,V>,I> {
+                GenerizableOperator<I,Map<K,V>> {
 
 
 
-    public Level0MapSelectedOperator<K,V,I> ifIndex(final int... indexes);
-    public Level0MapSelectedOperator<K,V,I> ifTrue(final IFunction<Boolean, ? super Map<K,V>> eval);
-    public Level0MapSelectedOperator<K,V,I> ifFalse(final IFunction<Boolean, ? super Map<K,V>> eval);
-    public Level0MapSelectedOperator<K,V,I> ifNullOrFalse(final IFunction<Boolean, ? super Map<K,V>> eval);
-    public Level0MapSelectedOperator<K,V,I> ifNotNullAndFalse(final IFunction<Boolean, ? super Map<K,V>> eval);
-    public Level0MapSelectedOperator<K,V,I> ifNull();
-    public Level0MapSelectedOperator<K,V,I> ifNullOrTrue(final IFunction<Boolean, ? super Map<K,V>> eval);
-    public Level0MapSelectedOperator<K,V,I> ifIndexNot(final int... indexes);
-    public Level0MapSelectedOperator<K,V,I> ifNotNull();
-    public Level0MapSelectedOperator<K,V,I> ifNotNullAndTrue(final IFunction<Boolean, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<I,K,V> ifIndex(final int... indexes);
+    public Level0MapSelectedOperator<I,K,V> ifTrue(final IFunction<Boolean, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<I,K,V> ifFalse(final IFunction<Boolean, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<I,K,V> ifNullOrFalse(final IFunction<Boolean, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<I,K,V> ifNotNullAndFalse(final IFunction<Boolean, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<I,K,V> ifNull();
+    public Level0MapSelectedOperator<I,K,V> ifNullOrTrue(final IFunction<Boolean, ? super Map<K,V>> eval);
+    public Level0MapSelectedOperator<I,K,V> ifIndexNot(final int... indexes);
+    public Level0MapSelectedOperator<I,K,V> ifNotNull();
+    public Level0MapSelectedOperator<I,K,V> ifNotNullAndTrue(final IFunction<Boolean, ? super Map<K,V>> eval);
 
 
     
-    public Level1MapEntriesOperator<K,V,I> forEachEntry();
+    public Level1MapEntriesOperator<I,K,V> forEachEntry();
     
-    public Level0MapOperator<K,V,I> sort();
-    public Level0MapOperator<K,V,I> sort(final Comparator<? super Map.Entry<K,V>> comparator);
+    public Level0MapOperator<I,K,V> sort();
+    public Level0MapOperator<I,K,V> sort(final Comparator<? super Map.Entry<K,V>> comparator);
     
-    public Level0MapOperator<K,V,I> put(final K newKey, final V newValue);
-    public Level0MapOperator<K,V,I> insert(final int position, final K newKey, final V newValue);
-    public Level0MapOperator<K,V,I> putAll(final Map<K,V> map);
-    public Level0MapOperator<K,V,I> insertAll(final int position, final Map<K,V> map);
-    public Level0MapOperator<K,V,I> removeAllKeys(final K... keys);
-    public Level0MapOperator<K,V,I> removeAllTrue(final IFunction<Boolean, ? super Map.Entry<K,V>> eval);
-    public Level0MapOperator<K,V,I> removeAllFalse(final IFunction<Boolean, ? super Map.Entry<K,V>> eval);
-    public Level0MapOperator<K,V,I> removeAllKeysNot(final K... keys);
-    
-    
-    public Level0SetOperator<K,I> extractKeys();
-    public Level0ListOperator<V,I> extractValues();
+    public Level0MapOperator<I,K,V> put(final K newKey, final V newValue);
+    public Level0MapOperator<I,K,V> insert(final int position, final K newKey, final V newValue);
+    public Level0MapOperator<I,K,V> putAll(final Map<K,V> map);
+    public Level0MapOperator<I,K,V> insertAll(final int position, final Map<K,V> map);
+    public Level0MapOperator<I,K,V> removeAllKeys(final K... keys);
+    public Level0MapOperator<I,K,V> removeAllTrue(final IFunction<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level0MapOperator<I,K,V> removeAllFalse(final IFunction<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level0MapOperator<I,K,V> removeAllKeysNot(final K... keys);
     
     
+    public Level0SetOperator<I,K> extractKeys();
+    public Level0ListOperator<I,V> extractValues();
     
-    public Level0GenericUniqOperator<Map<K,V>,I> generic();
+    
+    
+    public Level0GenericUniqOperator<I,Map<K,V>> generic();
 
     
     
     
-    public Level0MapOperator<K,V,I> replaceWith(final Map<K,V> replacement);
-    public Level0MapOperator<K,V,I> replaceIfNullWith(final Map<K,V> replacement);
+    public Level0MapOperator<I,K,V> replaceWith(final Map<K,V> replacement);
+    public Level0MapOperator<I,K,V> replaceIfNullWith(final Map<K,V> replacement);
 
 
-    public Level0MapOperator<K,V,I> execIfNotNullAsMap(final IFunction<? extends Map<? extends K,? extends V>,? super Map<K,V>> function);
+    public Level0MapOperator<I,K,V> execIfNotNullAsMap(final IFunction<? extends Map<? extends K,? extends V>,? super Map<K,V>> function);
 
-    public <X,Y> Level0MapOperator<X,Y,I> execAsMap(final IFunction<? extends Map<X,Y>, ? super Map<K,V>> function);
+    public <X,Y> Level0MapOperator<I,X,Y> execAsMap(final IFunction<? extends Map<X,Y>, ? super Map<K,V>> function);
 
-    public <X> Level0GenericUniqOperator<X,I> exec(final IFunction<X, ? super Map<K,V>> function);
+    public <X> Level0GenericUniqOperator<I,X> exec(final IFunction<X, ? super Map<K,V>> function);
     
-    public <X,Y> Level0MapOperator<X,Y,I> asMapOf(final Type<X> keyType, final Type<Y> valueType);
+    public <X,Y> Level0MapOperator<I,X,Y> asMapOf(final Type<X> keyType, final Type<Y> valueType);
     }

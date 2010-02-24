@@ -38,7 +38,7 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level1MapEntriesOperator<K,V,I>
+public interface Level1MapEntriesOperator<I,K,V>
 		extends UniqOperator<Map<K,V>>,
 		        NavigableMapEntryOperator,
                 NavigatingMapOperator<K,V>,
@@ -47,24 +47,24 @@ public interface Level1MapEntriesOperator<K,V,I>
                 SelectableMapEntryOperator<K, V> {
 
 
-    public Level1MapEntriesSelectedOperator<K,V,I> ifIndex(final int... indexes);
-    public Level1MapEntriesSelectedOperator<K,V,I> ifTrue(final IFunction<Boolean, ? super Map.Entry<K, V>> eval);
-    public Level1MapEntriesSelectedOperator<K,V,I> ifFalse(final IFunction<Boolean, ? super Map.Entry<K, V>> eval);
-    public Level1MapEntriesSelectedOperator<K,V,I> ifIndexNot(final int... indexes);
-    public Level1MapEntriesSelectedOperator<K,V,I> ifKeyEquals(final K... keys);
-    public Level1MapEntriesSelectedOperator<K,V,I> ifKeyNotEquals(final K... keys);
+    public Level1MapEntriesSelectedOperator<I,K,V> ifIndex(final int... indexes);
+    public Level1MapEntriesSelectedOperator<I,K,V> ifTrue(final IFunction<Boolean, ? super Map.Entry<K, V>> eval);
+    public Level1MapEntriesSelectedOperator<I,K,V> ifFalse(final IFunction<Boolean, ? super Map.Entry<K, V>> eval);
+    public Level1MapEntriesSelectedOperator<I,K,V> ifIndexNot(final int... indexes);
+    public Level1MapEntriesSelectedOperator<I,K,V> ifKeyEquals(final K... keys);
+    public Level1MapEntriesSelectedOperator<I,K,V> ifKeyNotEquals(final K... keys);
     
 
-    public Level2MapEntriesKeyOperator<K,V,I> onKey();
-    public Level2MapEntriesValueOperator<K,V,I> onValue();
+    public Level2MapEntriesKeyOperator<I,K,V> onKey();
+    public Level2MapEntriesValueOperator<I,K,V> onValue();
     
-    public Level0MapOperator<K,V,I> endFor();
+    public Level0MapOperator<I,K,V> endFor();
     
-    public <X,Y> Level1MapEntriesOperator<X,Y,I> execAsMapEntry(final IFunction<? extends Map.Entry<X,Y>, ? super Map.Entry<K,V>> function);
+    public <X,Y> Level1MapEntriesOperator<I,X,Y> execAsMapEntry(final IFunction<? extends Map.Entry<X,Y>, ? super Map.Entry<K,V>> function);
     
-    public Level1MapEntriesOperator<K,V,I> replaceWith(final Map.Entry<K,V> replacement);
+    public Level1MapEntriesOperator<I,K,V> replaceWith(final Map.Entry<K,V> replacement);
 
 
-    public <X> Level1ListElementsOperator<X,I> exec(final IFunction<X, ? super Map.Entry<K,V>> function);
+    public <X> Level1ListElementsOperator<I,X> exec(final IFunction<X, ? super Map.Entry<K,V>> function);
     
     }

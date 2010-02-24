@@ -74,21 +74,21 @@ public final class Op {
     
     
     
-    public static <T> Level0IndefiniteArrayOperatorImpl<T,T[]> on(final T[] target) {
-        return new Level0IndefiniteArrayOperatorImpl<T,T[]>(ExecutionTarget.forObject(target, Normalisation.NONE));
+    public static <T> Level0IndefiniteArrayOperatorImpl<T[],T> on(final T[] target) {
+        return new Level0IndefiniteArrayOperatorImpl<T[],T>(ExecutionTarget.forObject(target, Normalisation.NONE));
     }
     
-    public static <T> Level0ListOperatorImpl<T,List<T>> on(final List<T> target) {
+    public static <T> Level0ListOperatorImpl<List<T>,T> on(final List<T> target) {
         return onList(target);
     }
 
     
-    public static <K,V> Level0MapOperatorImpl<K,V,Map<K,V>> on(final Map<K,V> target) {
+    public static <K,V> Level0MapOperatorImpl<Map<K,V>,K,V> on(final Map<K,V> target) {
         return onMap(target);
     }
 
     
-    public static <T> Level0SetOperatorImpl<T,Set<T>> on(final Set<T> target) {
+    public static <T> Level0SetOperatorImpl<Set<T>,T> on(final Set<T> target) {
         return onSet(target);
     }
     
@@ -96,23 +96,23 @@ public final class Op {
     
     
     
-    public static <T> Level0ArrayOperatorImpl<T,T> onArrayOf(final Type<T> type, final T[] target) {
-        return new Level0ArrayOperatorImpl<T,T>(type, ExecutionTarget.forObject(target, Normalisation.ARRAY(type.getRawClass())));
+    public static <T> Level0ArrayOperatorImpl<T[],T> onArrayOf(final Type<T> type, final T[] target) {
+        return new Level0ArrayOperatorImpl<T[],T>(type, ExecutionTarget.forObject(target, Normalisation.ARRAY(type.getRawClass())));
     }
 
     
-    public static <T> Level0ListOperatorImpl<T,List<T>> onList(final List<T> target) {
-        return new Level0ListOperatorImpl<T,List<T>>(ExecutionTarget.forObject(target, Normalisation.LIST));
+    public static <T> Level0ListOperatorImpl<List<T>,T> onList(final List<T> target) {
+        return new Level0ListOperatorImpl<List<T>,T>(ExecutionTarget.forObject(target, Normalisation.LIST));
     }
 
     
-    public static <K,V> Level0MapOperatorImpl<K,V,Map<K,V>> onMap(final Map<K,V> target) {
-        return new Level0MapOperatorImpl<K,V,Map<K,V>>(ExecutionTarget.forObject(target, Normalisation.MAP));
+    public static <K,V> Level0MapOperatorImpl<Map<K,V>,K,V> onMap(final Map<K,V> target) {
+        return new Level0MapOperatorImpl<Map<K,V>,K,V>(ExecutionTarget.forObject(target, Normalisation.MAP));
     }
 
     
-    public static <T> Level0SetOperatorImpl<T,Set<T>> onSet(final Set<T> target) {
-        return new Level0SetOperatorImpl<T,Set<T>>(ExecutionTarget.forObject(target, Normalisation.SET));
+    public static <T> Level0SetOperatorImpl<Set<T>,T> onSet(final Set<T> target) {
+        return new Level0SetOperatorImpl<Set<T>,T>(ExecutionTarget.forObject(target, Normalisation.SET));
     }
     
     

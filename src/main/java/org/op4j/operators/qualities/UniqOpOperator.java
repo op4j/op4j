@@ -32,7 +32,7 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface UniqOpOperator<T,I> extends UniqOperator<T> {
+public interface UniqOpOperator<I,T> extends UniqOperator<T> {
 
     /**
      * <p>

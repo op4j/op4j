@@ -35,7 +35,7 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level1ListElementsSelectedOperator<T,I>
+public interface Level1ListElementsSelectedOperator<I,T>
         extends UniqOperator<List<T>>,
                 SelectedOperator<T>,
                 ExecutableSelectedOperator<T>,
@@ -43,14 +43,14 @@ public interface Level1ListElementsSelectedOperator<T,I>
 
 
 
-    public Level1ListElementsOperator<T,I> endIf();
+    public Level1ListElementsOperator<I,T> endIf();
 
     
-    public Level1ListElementsSelectedOperator<T,I> execIfNotNull(final IFunction<? extends T,? super T> function);
+    public Level1ListElementsSelectedOperator<I,T> execIfNotNull(final IFunction<? extends T,? super T> function);
 
-    public Level1ListElementsSelectedOperator<T,I> replaceWith(final T replacement);
+    public Level1ListElementsSelectedOperator<I,T> replaceWith(final T replacement);
 
-    public Level1ListElementsSelectedOperator<T,I> exec(final IFunction<? extends T, ? super T> function);
+    public Level1ListElementsSelectedOperator<I,T> exec(final IFunction<? extends T, ? super T> function);
 	
     
 }

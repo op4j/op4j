@@ -10,7 +10,7 @@ import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 
 
-public final class Level2MapEntriesKeySelectedOperatorImpl<K,V,I> extends AbstractOperatorImpl implements UniqOpOperator<Map<K,V>,I>, Level2MapEntriesKeySelectedOperator<K,V,I> {
+public final class Level2MapEntriesKeySelectedOperatorImpl<I,K,V> extends AbstractOperatorImpl implements UniqOpOperator<I,Map<K,V>>, Level2MapEntriesKeySelectedOperator<I,K,V> {
 
 
     public Level2MapEntriesKeySelectedOperatorImpl(final Target target) {
@@ -18,23 +18,23 @@ public final class Level2MapEntriesKeySelectedOperatorImpl<K,V,I> extends Abstra
     }
 
 
-    public Level2MapEntriesKeyOperatorImpl<K,V,I> endIf() {
-        return new Level2MapEntriesKeyOperatorImpl<K,V,I>(getTarget().endSelect());
+    public Level2MapEntriesKeyOperatorImpl<I,K,V> endIf() {
+        return new Level2MapEntriesKeyOperatorImpl<I,K,V>(getTarget().endSelect());
     }
 
 
-    public Level2MapEntriesKeySelectedOperatorImpl<K,V,I> execIfNotNull(final IFunction<? extends K,? super K> function) {
-        return new Level2MapEntriesKeySelectedOperatorImpl<K,V,I>(getTarget().executeIfNotNull(function, Normalisation.NONE));
+    public Level2MapEntriesKeySelectedOperatorImpl<I,K,V> execIfNotNull(final IFunction<? extends K,? super K> function) {
+        return new Level2MapEntriesKeySelectedOperatorImpl<I,K,V>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 
-    public Level2MapEntriesKeySelectedOperatorImpl<K,V,I> replaceWith(final K replacement) {
-        return new Level2MapEntriesKeySelectedOperatorImpl<K,V,I>(getTarget().replaceWith(replacement, Normalisation.NONE));
+    public Level2MapEntriesKeySelectedOperatorImpl<I,K,V> exec(final IFunction<? extends K,? super K> function) {
+        return new Level2MapEntriesKeySelectedOperatorImpl<I,K,V>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Level2MapEntriesKeySelectedOperatorImpl<K,V,I> exec(final IFunction<? extends K,? super K> function) {
-        return new Level2MapEntriesKeySelectedOperatorImpl<K,V,I>(getTarget().execute(function, Normalisation.NONE));
+    public Level2MapEntriesKeySelectedOperatorImpl<I,K,V> replaceWith(final K replacement) {
+        return new Level2MapEntriesKeySelectedOperatorImpl<I,K,V>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 

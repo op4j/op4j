@@ -40,31 +40,31 @@ import org.op4j.operators.qualities.UniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level0IndefiniteArrayOperator<T,I>
+public interface Level0IndefiniteArrayOperator<I,T>
         extends UniqOperator<T[]>,
 		        CastableToArrayOperator,
-                GenerizableOperator<T[],I>,
+                GenerizableOperator<I,T[]>,
 		        ConvertibleToListOperator,
 		        ConvertibleToSetOperator,
 		        ConvertibleToMapOperator<T>,
-		        ExecutableIndefiniteArrayOperator<T,I> {
+		        ExecutableIndefiniteArrayOperator<I,T> {
 
 
 
     
-    public Level0ListOperator<T,I> toList();
+    public Level0ListOperator<I,T> toList();
     
-    public Level0SetOperator<T,I> toSet();
+    public Level0SetOperator<I,T> toSet();
     
-    public Level0MapOperator<T,T,I> toMap();
-    public <K> Level0MapOperator<K,T,I> toMap(final IFunction<K,? super T> keyEval);
-    public <K,V> Level0MapOperator<K,V,I> toMap(final IMapBuilder<K,V,? super T> mapBuild);
+    public Level0MapOperator<I,T,T> toMap();
+    public <K> Level0MapOperator<I,K,T> toMap(final IFunction<K,? super T> keyEval);
+    public <K,V> Level0MapOperator<I,K,V> toMap(final IMapBuilder<K,V,? super T> mapBuild);
     
     
-    public Level0GenericUniqOperator<T[],I> generic();
+    public Level0GenericUniqOperator<I,T[]> generic();
 
-    public <X> Level0ArrayOperator<X,I> asArrayOf(final Type<X> type);
-    public <X> Level0GenericUniqOperator<X,I> exec(final IFunction<X, ? super T[]> function);
+    public <X> Level0ArrayOperator<I,X> asArrayOf(final Type<X> type);
+    public <X> Level0GenericUniqOperator<I,X> exec(final IFunction<X, ? super T[]> function);
 
     
 }
