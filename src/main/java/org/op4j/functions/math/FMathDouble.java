@@ -142,7 +142,7 @@ public final class FMathDouble {
     }
 	
 	
-	public static final class Max extends AbstractNotNullFunction<Double, Iterable<Double>> {
+	public static final class Max extends AbstractNotNullFunction<Iterable<Double>,Double> {
 
 		public Max() {
 			super();
@@ -165,7 +165,7 @@ public final class FMathDouble {
 		}
 	}
 	
-	public static final class Min extends AbstractNotNullFunction<Double, Iterable<Double>> {
+	public static final class Min extends AbstractNotNullFunction<Iterable<Double>,Double> {
 
 		public Min() {
 			super();
@@ -188,7 +188,7 @@ public final class FMathDouble {
 		}	
 	}
 	
-	public static final class Sum extends AbstractNotNullFunction<Double, Iterable<Double>> {
+	public static final class Sum extends AbstractNotNullFunction<Iterable<Double>,Double> {
 
 		public Sum() {
 			super();
@@ -206,7 +206,7 @@ public final class FMathDouble {
 		}		
 	}
 	
-	public static final class Avg extends AbstractNotNullFunction<Double, Iterable<Double>> {
+	public static final class Avg extends AbstractNotNullFunction<Iterable<Double>,Double> {
 
 		private final RoundingMode roundingMode;
 		private final MathContext mathContext;

@@ -40,7 +40,7 @@ import org.junit.Test;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;
-import org.op4j.functions.FString;
+import org.op4j.functions.FnString;
 import org.op4j.functions.converters.DecimalPoint;
 import org.op4j.functions.converters.ToBigDecimal;
 import org.op4j.functions.converters.ToBigInteger;
@@ -307,8 +307,8 @@ watch.start();
 //              .forEach().exec(StringFuncs.trim()).exec(StringFuncs.toUpperCase()).get());
         
         System.out.println(Op.on("Dublin")
-                .exec(FString.toHexadecimal(Charset.forName("ISO-8859-1")))
-                .exec(FString.fromHexadecimal(Charset.forName("ISO-8859-1"))).get());
+                .exec(FnString.toHexadecimal(Charset.forName("ISO-8859-1")))
+                .exec(FnString.fromHexadecimal(Charset.forName("ISO-8859-1"))).get());
         
 //        System.out.println(Op.buildList(Types.NUMBER)
 //                .addAll(45.9, new BigDecimal(34.456))
@@ -348,16 +348,16 @@ watch.start();
         setOfStringSet1.add(Op.onAll("Adios", "Goodbye", "Ciao", "Adéus").buildSet().get());
         
         System.out.println(Op.on("http://www.google.es/search?q=op4j&unusedParam=unusedValue '' 2^2 ")
-                .exec(FString.escapeJavaScript()).get());
+                .exec(FnString.escapeJavaScript()).get());
         System.out.println(Op.on("Body tag is written like \"<body>content here</body>\"")
-                .exec(FString.escapeHTML()).get());
+                .exec(FnString.escapeHTML()).get());
         
         System.out.println(Op.onArrayOf(Types.STRING, stringsArr1).removeAllNull().toMap(Ognl.asInteger("length()")).get());
 
         System.out.println(Op.onList(stringsList1).removeAllNullOrTrue(Ognl.asBoolean("length() < 6")).get());
 
         System.out.println("***___****___****");
-        System.out.println(Op.onList(stringsList1).forEach().ifNotNull().exec(FString.toUpperCase()).get());
+        System.out.println(Op.onList(stringsList1).forEach().ifNotNull().exec(FnString.toUpperCase()).get());
         System.out.println("***___****___****");
         
         System.out.println(Op.onAll("hello", "goodbye").exec(Ognl.asString("#target + ' world!'")).getAsList());
@@ -389,7 +389,7 @@ watch.start();
         System.out.println(Op.onList(stringsList1).forEach().replaceWith("op4j is great!").get());
         System.out.println(Op.onList(stringsList1).forEach().replaceIfNullWith("op4j is great!").get());
         System.out.println(printArray(Op.onArrayOf(Types.STRING, stringsArr1).forEach().replaceIfNullWith("op4j is great!").get()));
-        System.out.println(printArray(Op.onArrayOf(Types.STRING, stringsArr1).replaceWith(new String[] {"alpha", "beta"}).forEach().exec(FString.toUpperCase()).get()));
+        System.out.println(printArray(Op.onArrayOf(Types.STRING, stringsArr1).replaceWith(new String[] {"alpha", "beta"}).forEach().exec(FnString.toUpperCase()).get()));
         
         
 //        System.out.println(Op.buildListOfList(Types.STRING).add(stringsList1).add(stringsList1).get());

@@ -145,7 +145,7 @@ public final class FMathBigDecimal {
     }
 	
 	
-	public static final class Max extends AbstractNotNullFunction<BigDecimal, Iterable<BigDecimal>> {
+	public static final class Max extends AbstractNotNullFunction<Iterable<BigDecimal>,BigDecimal> {
 
 		public Max() {
 			super();
@@ -168,7 +168,7 @@ public final class FMathBigDecimal {
 		}
 	}
 	
-	public static final class Min extends AbstractNotNullFunction<BigDecimal, Iterable<BigDecimal>> {
+	public static final class Min extends AbstractNotNullFunction<Iterable<BigDecimal>,BigDecimal> {
 
 		public Min() {
 			super();
@@ -191,7 +191,7 @@ public final class FMathBigDecimal {
 		}	
 	}
 	
-	public static final class Sum extends AbstractNotNullFunction<BigDecimal, Iterable<BigDecimal>> {
+	public static final class Sum extends AbstractNotNullFunction<Iterable<BigDecimal>,BigDecimal> {
 
 		public Sum() {
 			super();
@@ -209,7 +209,7 @@ public final class FMathBigDecimal {
 		}		
 	}
 	
-	public static final class Avg extends AbstractNotNullFunction<BigDecimal, Iterable<BigDecimal>> {
+	public static final class Avg extends AbstractNotNullFunction<Iterable<BigDecimal>,BigDecimal> {
 
 		private final RoundingMode roundingMode;
 		private final MathContext mathContext;

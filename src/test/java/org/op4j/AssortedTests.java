@@ -19,7 +19,7 @@ import org.junit.Test;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.Call;
 import org.op4j.functions.ExecCtx;
-import org.op4j.functions.FString;
+import org.op4j.functions.FnString;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;
 import org.op4j.functions.converters.ToString;
@@ -555,7 +555,7 @@ public class AssortedTests extends TestCase {
         final List<String> stringUpperList = Arrays.asList(new String[] {"ONE", "TWO", "THREE"});
 
         final List<String> result = 
-            Op.onList(stringList).map(FString.toUpperCase()).get();
+            Op.onList(stringList).map(FnString.toUpperCase()).get();
         
         assertEquals(stringUpperList, result);
         
@@ -591,7 +591,7 @@ public class AssortedTests extends TestCase {
         final List<String> stringUpperList = Arrays.asList(new String[] {"ONE", "TWO", "THREE", null});
 
         final List<String> result = 
-            Op.onList(stringList).forEach().execIfNotNull(FString.toUpperCase()).get();
+            Op.onList(stringList).forEach().execIfNotNull(FnString.toUpperCase()).get();
         
         assertEquals(stringUpperList, result);
         
@@ -605,7 +605,7 @@ public class AssortedTests extends TestCase {
         final List<String> stringUpperList = Arrays.asList(new String[] {"ONE", "TWO", "THREE", null});
 
         final List<String> result = 
-            Op.onList(stringList).mapIfNotNull(FString.toUpperCase()).get();
+            Op.onList(stringList).mapIfNotNull(FnString.toUpperCase()).get();
         
         assertEquals(stringUpperList, result);
         

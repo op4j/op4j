@@ -31,11 +31,11 @@ import org.apache.commons.lang.time.DateUtils;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class FCalendar {
+public final class FnCalendar {
 
 
     
-	private FCalendar() {
+	private FnCalendar() {
 		super();           
 	}
 	

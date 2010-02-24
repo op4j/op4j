@@ -135,7 +135,7 @@ public final class FMathShort {
     }
 	
 	
-	public static final class Max extends AbstractNotNullFunction<Short, Iterable<Short>> {
+	public static final class Max extends AbstractNotNullFunction<Iterable<Short>,Short> {
 
 		public Max() {
 			super();
@@ -158,7 +158,7 @@ public final class FMathShort {
 		}		
 	}
 	
-	public static final class Min extends AbstractNotNullFunction<Short, Iterable<Short>> {
+	public static final class Min extends AbstractNotNullFunction<Iterable<Short>,Short> {
 
 		public Min() {
 			super();
@@ -181,7 +181,7 @@ public final class FMathShort {
 		}	
 	}
 	
-	public static final class Sum extends AbstractNotNullFunction<Short, Iterable<Short>> {
+	public static final class Sum extends AbstractNotNullFunction<Iterable<Short>,Short> {
 
 		public Sum() {
 			super();
@@ -199,7 +199,7 @@ public final class FMathShort {
 		}	
 	}
 	
-	public static final class Avg extends AbstractNotNullFunction<Short, Iterable<Short>> {
+	public static final class Avg extends AbstractNotNullFunction<Iterable<Short>,Short> {
 
 		private final RoundingMode roundingMode;
 		private final MathContext mathContext;

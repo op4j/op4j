@@ -33,7 +33,7 @@ import org.apache.commons.lang.Validate;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class FString {
+public final class FnString {
 
 	private static EscapeCSV ESCAPE_CSV_STRING_FUNC = new EscapeCSV();
 	private static UnescapeCSV UNESCAPE_CSV_STRING_FUNC = new UnescapeCSV();
@@ -50,7 +50,7 @@ public final class FString {
 	private static Trim TRIM_STRING_FUNC = new Trim();
 	private static Strip STRIP_STRING_FUNC = new Strip();
 	
-	private FString() {
+	private FnString() {
 		super();           
 	}
 
