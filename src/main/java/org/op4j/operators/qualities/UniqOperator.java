@@ -34,13 +34,6 @@ package org.op4j.operators.qualities;
  */
 public interface UniqOperator<T> extends Operator {
 
-    /**
-     * <p>
-     * Returns the target object this operator currently holds.
-     * </p>
-     * 
-     * @return the target object.
-     */
-    public T get(); 
+    // marker interface
     
 }

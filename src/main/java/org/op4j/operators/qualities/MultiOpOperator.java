@@ -19,6 +19,9 @@
  */
 package org.op4j.operators.qualities;
 
+import java.util.List;
+
+import org.javaruntype.type.Type;
 
 
 
@@ -38,16 +41,27 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface MultiOperator<T> extends Operator {
-
+public interface MultiOpOperator<T> extends MultiOperator<T> {
+    
     /**
      * <p>
-     * Returns the number of target objects this operator holds.
+     * Returns the target objects as an array of the specified type. 
      * </p>
      * 
-     * @return the number of target objects.
+     * 
+     * @param type the type of which the array of target objects will be created.
+     * @return the array of target objects.
      */
-    public int size();
+    public T[] getAsArray(final Type<T> type);
+    
+    /**
+     * <p>
+     * Returns the target objects as a list.
+     * </p>
+     * 
+     * @return the list of target objects.
+     */
+    public List<T> getAsList(); 
 
     
 }

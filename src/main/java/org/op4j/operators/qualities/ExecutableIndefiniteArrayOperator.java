@@ -20,7 +20,7 @@
 package org.op4j.operators.qualities;
 
 import org.op4j.functions.IFunction;
-import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
+import org.op4j.operators.op.intf.generic.Level0GenericUniqOperator;
 
 
 
@@ -35,7 +35,7 @@ import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ExecutableIndefiniteArrayOperator<T> {
+public interface ExecutableIndefiniteArrayOperator<T,I> {
 
     
     /**
@@ -53,7 +53,7 @@ public interface ExecutableIndefiniteArrayOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> Level0GenericUniqOperator<X> exec(final IFunction<X, ? super T[]> function);
+    public <X> Level0GenericUniqOperator<X,I> exec(final IFunction<X, ? super T[]> function);
 
     
 }

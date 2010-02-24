@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
-import org.op4j.operators.intf.map.Level0MapOperator;
+import org.op4j.operators.op.intf.map.Level0MapOperator;
 
 
 
@@ -40,7 +40,7 @@ import org.op4j.operators.intf.map.Level0MapOperator;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface BuilderMultiOperator<T> {
+public interface BuilderMultiOperator<T,I> {
 
     /**
      * <p>
@@ -50,7 +50,7 @@ public interface BuilderMultiOperator<T> {
      * 
      * @return an operator on the resulting map.
      */
-    public Level0MapOperator<T,T> buildMap();
+    public Level0MapOperator<T,T,I> buildMap();
 
     /**
      * <p>
@@ -61,7 +61,7 @@ public interface BuilderMultiOperator<T> {
      * 
      * @return an operator on the resulting map of list
      */
-    public Level0MapOperator<T,List<T>> buildMapOfList();
+    public Level0MapOperator<T,List<T>,I> buildMapOfList();
 
     /**
      * <p>
@@ -72,7 +72,7 @@ public interface BuilderMultiOperator<T> {
      * 
      * @return an operator on the resulting map of set
      */
-    public Level0MapOperator<T,Set<T>> buildMapOfSet();
+    public Level0MapOperator<T,Set<T>,I> buildMapOfSet();
 
     /**
      * <p>
@@ -84,6 +84,6 @@ public interface BuilderMultiOperator<T> {
      * @param type the type of which the arrays will be instantiated
      * @return an operator on the resulting map of array
      */
-    public Level0MapOperator<T,T[]> buildMapOfArrayOf(final Type<T> type);
+    public Level0MapOperator<T,T[],I> buildMapOfArrayOf(final Type<T> type);
     
 }

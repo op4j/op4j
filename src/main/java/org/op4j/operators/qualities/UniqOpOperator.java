@@ -17,32 +17,30 @@
  * 
  * =============================================================================
  */
+package org.op4j.operators.qualities;
 
-package org.op4j.operators.impl;
 
-import org.op4j.operators.qualities.Operator;
-import org.op4j.target.Target;
+
 
 /**
+ * <p>
+ * Base interface for all object ("op") operators working on only one target objects.
+ * </p>
  * 
  * @since 1.0
  * 
  * @author Daniel Fern&aacute;ndez
  *
  */
-public abstract class AbstractOperatorImpl implements Operator {
+public interface UniqOpOperator<T> extends UniqOperator<T> {
 
-    private final Target target;
-    
-    
-    protected AbstractOperatorImpl(final Target target) {
-        super();
-        this.target = target;
-    }
-    
-    
-    protected Target getTarget() {
-        return this.target;
-    }
+    /**
+     * <p>
+     * Returns the target object this operator currently holds.
+     * </p>
+     * 
+     * @return the target object.
+     */
+    public T get(); 
     
 }
