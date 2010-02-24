@@ -51,15 +51,15 @@ public interface Level1SetElementsOperator<I,T>
 
 
     public Level1SetElementsSelectedOperator<I,T> ifIndex(final int... indexes);
-    public Level1SetElementsSelectedOperator<I,T> ifTrue(final IFunction<Boolean, ? super T> eval);
-    public Level1SetElementsSelectedOperator<I,T> ifFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1SetElementsSelectedOperator<I,T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1SetElementsSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
+    public Level1SetElementsSelectedOperator<I,T> ifTrue(final IFunction<? super T,Boolean> eval);
+    public Level1SetElementsSelectedOperator<I,T> ifFalse(final IFunction<? super T,Boolean> eval);
+    public Level1SetElementsSelectedOperator<I,T> ifNullOrFalse(final IFunction<? super T,Boolean> eval);
+    public Level1SetElementsSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval);
     public Level1SetElementsSelectedOperator<I,T> ifNull();
-    public Level1SetElementsSelectedOperator<I,T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval);
+    public Level1SetElementsSelectedOperator<I,T> ifNullOrTrue(final IFunction<? super T,Boolean> eval);
     public Level1SetElementsSelectedOperator<I,T> ifIndexNot(final int... indexes);
     public Level1SetElementsSelectedOperator<I,T> ifNotNull();
-    public Level1SetElementsSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
+    public Level1SetElementsSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval);
 
 
     
@@ -69,9 +69,9 @@ public interface Level1SetElementsOperator<I,T>
     public Level1SetElementsOperator<I,T> replaceIfNullWith(final T replacement);
 
 
-    public <X> Level1SetElementsOperator<I,X> execIfNotNull(final IFunction<X,? super T> function);
+    public <X> Level1SetElementsOperator<I,X> execIfNotNull(final IFunction<? super T,X> function);
 
-    public <X> Level1SetElementsOperator<I,X> exec(final IFunction<X, ? super T> function);
+    public <X> Level1SetElementsOperator<I,X> exec(final IFunction<? super T,X> function);
     
     public <X> Level1SetElementsOperator<I,X> asType(final Type<X> type);
     public Level1SetElementsOperator<I,?> asUnknown();

@@ -134,7 +134,7 @@ watch.start();
         System.out.println(Op.onList(stringsList1).removeAllIndexesNot(0).get());
         System.out.println(Op.onList(stringsList1).removeAllIndexesNot(0,2).get());
         System.out.println(Op.onList(stringsList1).removeAllTrue(Ognl.asBoolean("#target eq 'Hello'")).get());
-        System.out.println(Op.onList(stringsList1).removeAllTrue(new IFunction<Boolean,String>() {
+        System.out.println(Op.onList(stringsList1).removeAllTrue(new IFunction<String,Boolean>() {
 
             public Boolean execute(String target, final ExecCtx ctx) {
                 return Boolean.valueOf(target == null);

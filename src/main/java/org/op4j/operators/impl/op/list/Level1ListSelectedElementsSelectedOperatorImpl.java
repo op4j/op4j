@@ -23,12 +23,12 @@ public final class Level1ListSelectedElementsSelectedOperatorImpl<I,T> extends A
     }
 
 
-    public Level1ListSelectedElementsSelectedOperatorImpl<I,T> execIfNotNull(final IFunction<? extends T,? super T> function) {
+    public Level1ListSelectedElementsSelectedOperatorImpl<I,T> execIfNotNull(final IFunction<? super T,? extends T> function) {
         return new Level1ListSelectedElementsSelectedOperatorImpl<I,T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 
-    public Level1ListSelectedElementsSelectedOperatorImpl<I,T> exec(final IFunction<? extends T,? super T> function) {
+    public Level1ListSelectedElementsSelectedOperatorImpl<I,T> exec(final IFunction<? super T,? extends T> function) {
         return new Level1ListSelectedElementsSelectedOperatorImpl<I,T>(getTarget().execute(function, Normalisation.NONE));
     }
 

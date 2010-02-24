@@ -49,15 +49,15 @@ public interface Level1ArrayElementsOperator<I,T>
 
 
     public Level1ArrayElementsSelectedOperator<I,T> ifIndex(final int... indexes);
-    public Level1ArrayElementsSelectedOperator<I,T> ifTrue(final IFunction<Boolean, ? super T> eval);
-    public Level1ArrayElementsSelectedOperator<I,T> ifFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1ArrayElementsSelectedOperator<I,T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1ArrayElementsSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
+    public Level1ArrayElementsSelectedOperator<I,T> ifTrue(final IFunction<? super T,Boolean> eval);
+    public Level1ArrayElementsSelectedOperator<I,T> ifFalse(final IFunction<? super T,Boolean> eval);
+    public Level1ArrayElementsSelectedOperator<I,T> ifNullOrFalse(final IFunction<? super T,Boolean> eval);
+    public Level1ArrayElementsSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval);
     public Level1ArrayElementsSelectedOperator<I,T> ifNull();
-    public Level1ArrayElementsSelectedOperator<I,T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval);
+    public Level1ArrayElementsSelectedOperator<I,T> ifNullOrTrue(final IFunction<? super T,Boolean> eval);
     public Level1ArrayElementsSelectedOperator<I,T> ifIndexNot(final int... indexes);
     public Level1ArrayElementsSelectedOperator<I,T> ifNotNull();
-    public Level1ArrayElementsSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
+    public Level1ArrayElementsSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval);
 
 
 		    
@@ -67,9 +67,9 @@ public interface Level1ArrayElementsOperator<I,T>
     public Level1ArrayElementsOperator<I,T> replaceIfNullWith(final T replacement);
 
 
-    public Level1ArrayElementsOperator<I,T> execIfNotNull(final IFunction<? extends T,? super T> function);
-    public Level1ArrayElementsOperator<I,T> exec(final IFunction<? extends T,? super T> function);
-    public <X> Level1ArrayElementsOperator<I,X> exec(final Type<X> type, final IFunction<X,? super T> function);
+    public Level1ArrayElementsOperator<I,T> execIfNotNull(final IFunction<? super T,? extends T> function);
+    public Level1ArrayElementsOperator<I,T> exec(final IFunction<? super T,? extends T> function);
+    public <X> Level1ArrayElementsOperator<I,X> exec(final Type<X> type, final IFunction<? super T,X> function);
     
     
     public <X> Level1ArrayElementsOperator<I,X> asType(final Type<X> type);

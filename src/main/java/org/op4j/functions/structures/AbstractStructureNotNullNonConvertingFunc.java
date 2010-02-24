@@ -30,7 +30,7 @@ import org.op4j.functions.AbstractNotNullFunction;
  * @author Daniel Fern&aacute;ndez
  *
  */
-abstract class AbstractStructureNotNullNonConvertingFunc<T> extends AbstractNotNullFunction<T, T> {
+abstract class AbstractStructureNotNullNonConvertingFunc<T> extends AbstractNotNullFunction<T,T> {
     
     
     protected AbstractStructureNotNullNonConvertingFunc() {

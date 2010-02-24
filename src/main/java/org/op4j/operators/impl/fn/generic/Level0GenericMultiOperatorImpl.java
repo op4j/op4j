@@ -100,7 +100,7 @@ public final class Level0GenericMultiOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    public <K> Level0MapOperatorImpl<I,K, T> buildMap(final IFunction<K, ? super T> keyEval) {
+    public <K> Level0MapOperatorImpl<I,K, T> buildMap(final IFunction<? super T,K> keyEval) {
         return new Level0MapOperatorImpl<I,K, T>(getTarget().endIterate(null).execute(new ToMap.FromListByKeyEval<K, T>(keyEval)));
     }
 
@@ -115,7 +115,7 @@ public final class Level0GenericMultiOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    public <K> Level0MapOperatorImpl<I,K, T[]> buildMapOfArrayOf(final Type<T> valueType, final IFunction<K, ? super T> keyEval) {
+    public <K> Level0MapOperatorImpl<I,K, T[]> buildMapOfArrayOf(final Type<T> valueType, final IFunction<? super T,K> keyEval) {
         return new Level0MapOperatorImpl<I,K, T[]>(getTarget().endIterate(null).execute(new ToMapOfArray.FromListByKeyEval<K, T>(valueType, keyEval)));
     }
 
@@ -130,7 +130,7 @@ public final class Level0GenericMultiOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    public <K> Level0MapOperatorImpl<I,K, List<T>> buildMapOfList(final IFunction<K, ? super T> keyEval) {
+    public <K> Level0MapOperatorImpl<I,K, List<T>> buildMapOfList(final IFunction<? super T,K> keyEval) {
         return new Level0MapOperatorImpl<I,K, List<T>>(getTarget().endIterate(null).execute(new ToMapOfList.FromListByKeyEval<K, T>(keyEval)));
     }
 
@@ -145,7 +145,7 @@ public final class Level0GenericMultiOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    public <K> Level0MapOperatorImpl<I,K, Set<T>> buildMapOfSet(final IFunction<K, ? super T> keyEval) {
+    public <K> Level0MapOperatorImpl<I,K, Set<T>> buildMapOfSet(final IFunction<? super T,K> keyEval) {
         return new Level0MapOperatorImpl<I,K, Set<T>>(getTarget().endIterate(null).execute(new ToMapOfSet.FromListByKeyEval<K, T>(keyEval)));
     }
 
@@ -184,29 +184,29 @@ public final class Level0GenericMultiOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    public Level0GenericMultiOperatorImpl<I,T> removeAllTrue(final IFunction<Boolean, ? super T> eval) {
+    public Level0GenericMultiOperatorImpl<I,T> removeAllTrue(final IFunction<? super T,Boolean> eval) {
         return new Level0GenericMultiOperatorImpl<I,T>(getTarget().endIterate(null).execute(new FList.RemoveAllTrue<T>(eval)).iterate(Structure.LIST, true));
     }
 
-    public Level0GenericMultiOperatorImpl<I,T> removeAllFalse(final IFunction<Boolean, ? super T> eval) {
+    public Level0GenericMultiOperatorImpl<I,T> removeAllFalse(final IFunction<? super T,Boolean> eval) {
         return new Level0GenericMultiOperatorImpl<I,T>(getTarget().endIterate(null).execute(new FList.RemoveAllFalse<T>(eval)).iterate(Structure.LIST, true));
     }
 
-    public Level0GenericMultiOperatorImpl<I,T> removeAllNullOrFalse(final IFunction<Boolean, ? super T> eval) {
+    public Level0GenericMultiOperatorImpl<I,T> removeAllNullOrFalse(final IFunction<? super T,Boolean> eval) {
         return new Level0GenericMultiOperatorImpl<I,T>(getTarget().endIterate(null).execute(new FList.RemoveAllNullOrFalse<T>(eval)).iterate(Structure.LIST, true));
     }
 
-    public Level0GenericMultiOperatorImpl<I,T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super T> eval) {
+    public Level0GenericMultiOperatorImpl<I,T> removeAllNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
         return new Level0GenericMultiOperatorImpl<I,T>(getTarget().endIterate(null).execute(new FList.RemoveAllNotNullAndFalse<T>(eval)).iterate(Structure.LIST, true));
     }
 
 
-    public Level0GenericMultiOperatorImpl<I,T> removeAllNullOrTrue(final IFunction<Boolean, ? super T> eval) {
+    public Level0GenericMultiOperatorImpl<I,T> removeAllNullOrTrue(final IFunction<? super T,Boolean> eval) {
         return new Level0GenericMultiOperatorImpl<I,T>(getTarget().endIterate(null).execute(new FList.RemoveAllNullOrTrue<T>(eval)).iterate(Structure.LIST, true));
     }
 
 
-    public Level0GenericMultiOperatorImpl<I,T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super T> eval) {
+    public Level0GenericMultiOperatorImpl<I,T> removeAllNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
         return new Level0GenericMultiOperatorImpl<I,T>(getTarget().endIterate(null).execute(new FList.RemoveAllNotNullAndTrue<T>(eval)).iterate(Structure.LIST, true));
     }
 
@@ -233,12 +233,12 @@ public final class Level0GenericMultiOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    public Level0GenericMultiSelectedOperatorImpl<I,T> ifTrue(final IFunction<Boolean, ? super T> eval) {
+    public Level0GenericMultiSelectedOperatorImpl<I,T> ifTrue(final IFunction<? super T,Boolean> eval) {
         return new Level0GenericMultiSelectedOperatorImpl<I,T>(getTarget().selectMatching(eval));
     }
 
 
-    public Level0GenericMultiSelectedOperatorImpl<I,T> ifFalse(final IFunction<Boolean, ? super T> eval) {
+    public Level0GenericMultiSelectedOperatorImpl<I,T> ifFalse(final IFunction<? super T,Boolean> eval) {
         return new Level0GenericMultiSelectedOperatorImpl<I,T>(getTarget().selectNotMatching(eval));
     }
 
@@ -248,12 +248,12 @@ public final class Level0GenericMultiOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    public Level0GenericMultiSelectedOperatorImpl<I,T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval) {
+    public Level0GenericMultiSelectedOperatorImpl<I,T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
         return new Level0GenericMultiSelectedOperatorImpl<I,T>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level0GenericMultiSelectedOperatorImpl<I,T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval) {
+    public Level0GenericMultiSelectedOperatorImpl<I,T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
         return new Level0GenericMultiSelectedOperatorImpl<I,T>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -263,12 +263,12 @@ public final class Level0GenericMultiOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    public Level0GenericMultiSelectedOperatorImpl<I,T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval) {
+    public Level0GenericMultiSelectedOperatorImpl<I,T> ifNullOrTrue(final IFunction<? super T,Boolean> eval) {
         return new Level0GenericMultiSelectedOperatorImpl<I,T>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level0GenericMultiSelectedOperatorImpl<I,T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval) {
+    public Level0GenericMultiSelectedOperatorImpl<I,T> ifNullOrFalse(final IFunction<? super T,Boolean> eval) {
         return new Level0GenericMultiSelectedOperatorImpl<I,T>(getTarget().selectNullOrNotMatching(eval));
     }
 
@@ -299,12 +299,12 @@ public final class Level0GenericMultiOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    public <X> Level0GenericMultiOperatorImpl<I,X> execIfNotNull(final IFunction<X, ? super T> function) {
+    public <X> Level0GenericMultiOperatorImpl<I,X> execIfNotNull(final IFunction<? super T,X> function) {
         return new Level0GenericMultiOperatorImpl<I,X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 
-    public <X> Level0GenericMultiOperatorImpl<I,X> exec(final IFunction<X, ? super T> function) {
+    public <X> Level0GenericMultiOperatorImpl<I,X> exec(final IFunction<? super T,X> function) {
         return new Level0GenericMultiOperatorImpl<I,X>(getTarget().execute(function, Normalisation.NONE));
     }
 

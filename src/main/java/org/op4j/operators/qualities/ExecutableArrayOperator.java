@@ -52,7 +52,7 @@ public interface ExecutableArrayOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableArrayOperator<T> execAsArray(final IFunction<? extends T[], ? super T[]> function);
+    public ExecutableArrayOperator<T> execAsArray(final IFunction<? super T[],? extends T[]> function);
     
     
     /**
@@ -64,7 +64,7 @@ public interface ExecutableArrayOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableArrayOperator<T> execIfNotNullAsArray(final IFunction<? extends T[],? super T[]> function);
+    public ExecutableArrayOperator<T> execIfNotNullAsArray(final IFunction<? super T[],? extends T[]> function);
 
 
 
@@ -84,7 +84,7 @@ public interface ExecutableArrayOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableArrayOperator<X> execAsArrayOf(final Type<X> type, final IFunction<X[], ? super T[]> function);
+    public <X> ExecutableArrayOperator<X> execAsArrayOf(final Type<X> type, final IFunction<? super T[],X[]> function);
 
 
     
@@ -99,7 +99,7 @@ public interface ExecutableArrayOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> Operator exec(final IFunction<X, ? super T[]> function);
+    public <X> Operator exec(final IFunction<? super T[],X> function);
     
     
     
@@ -119,7 +119,7 @@ public interface ExecutableArrayOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution on each element
      */
-    public <X> ExecutableArrayOperator<X> map(final Type<X> type, final IFunction<X,? super T> function);
+    public <X> ExecutableArrayOperator<X> map(final Type<X> type, final IFunction<? super T,X> function);
     
 
     /**
@@ -135,7 +135,7 @@ public interface ExecutableArrayOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution on each element
      */
-    public ExecutableArrayOperator<T> map(final IFunction<? extends T,? super T> function);
+    public ExecutableArrayOperator<T> map(final IFunction<? super T,? extends T> function);
     
 
     /**
@@ -151,7 +151,7 @@ public interface ExecutableArrayOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution on each element
      */
-    public ExecutableArrayOperator<T> mapIfNotNull(final IFunction<? extends T,? super T> function);
+    public ExecutableArrayOperator<T> mapIfNotNull(final IFunction<? super T,? extends T> function);
 
     
 }

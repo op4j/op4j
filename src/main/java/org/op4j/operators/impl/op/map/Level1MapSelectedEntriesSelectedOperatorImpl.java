@@ -34,12 +34,12 @@ public final class Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V> extends A
     }
 
 
-    public Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V> execAsMapEntry(final IFunction<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> function) {
+    public Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V> execAsMapEntry(final IFunction<? super Entry<K,V>,? extends Entry<? extends K,? extends V>> function) {
         return new Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V>(getTarget().execute(function, Normalisation.MAP_ENTRY));
     }
 
 
-    public Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V> execIfNotNullAsMapEntry(final IFunction<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> function) {
+    public Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V> execIfNotNullAsMapEntry(final IFunction<? super Entry<K,V>,? extends Entry<? extends K,? extends V>> function) {
         return new Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V>(getTarget().executeIfNotNull(function, Normalisation.MAP_ENTRY));
     }
 

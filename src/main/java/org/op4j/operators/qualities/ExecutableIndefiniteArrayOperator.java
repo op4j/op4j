@@ -53,7 +53,7 @@ public interface ExecutableIndefiniteArrayOperator<I,T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> Level0GenericUniqOperator<I,X> exec(final IFunction<X, ? super T[]> function);
+    public <X> Level0GenericUniqOperator<I,X> exec(final IFunction<? super T[],X> function);
 
     
 }

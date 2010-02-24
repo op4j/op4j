@@ -68,26 +68,26 @@ public interface Level0ArraySelectedOperator<I,T>
     public Level0ArraySelectedOperator<I,T> addAll(final Collection<T> collection);
     public Level0ArraySelectedOperator<I,T> removeAllIndexes(final int... indexes);
     public Level0ArraySelectedOperator<I,T> removeAllEqual(final T... values);
-    public Level0ArraySelectedOperator<I,T> removeAllTrue(final IFunction<Boolean, ? super T> eval);
-    public Level0ArraySelectedOperator<I,T> removeAllFalse(final IFunction<Boolean, ? super T> eval);
-    public Level0ArraySelectedOperator<I,T> removeAllNullOrFalse(final IFunction<Boolean, ? super T> eval);
-    public Level0ArraySelectedOperator<I,T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
-    public Level0ArraySelectedOperator<I,T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
-    public Level0ArraySelectedOperator<I,T> removeAllNullOrTrue(final IFunction<Boolean, ? super T> eval);
+    public Level0ArraySelectedOperator<I,T> removeAllTrue(final IFunction<? super T,Boolean> eval);
+    public Level0ArraySelectedOperator<I,T> removeAllFalse(final IFunction<? super T,Boolean> eval);
+    public Level0ArraySelectedOperator<I,T> removeAllNullOrFalse(final IFunction<? super T,Boolean> eval);
+    public Level0ArraySelectedOperator<I,T> removeAllNotNullAndFalse(final IFunction<? super T,Boolean> eval);
+    public Level0ArraySelectedOperator<I,T> removeAllNotNullAndTrue(final IFunction<? super T,Boolean> eval);
+    public Level0ArraySelectedOperator<I,T> removeAllNullOrTrue(final IFunction<? super T,Boolean> eval);
     public Level0ArraySelectedOperator<I,T> removeAllIndexesNot(final int... indexes);
     public Level0ArraySelectedOperator<I,T> removeAllNull();
     
     
-    public Level0ArraySelectedOperator<I,T> execIfNotNullAsArray(final IFunction<? extends T[],? super T[]> function);
+    public Level0ArraySelectedOperator<I,T> execIfNotNullAsArray(final IFunction<? super T[],? extends T[]> function);
 
     public Level0ArraySelectedOperator<I,T> replaceWith(final T[] replacement);
 
-    public Level0ArraySelectedOperator<I,T> execAsArray(final IFunction<? extends T[], ? super T[]> function);
+    public Level0ArraySelectedOperator<I,T> execAsArray(final IFunction<? super T[],? extends T[]> function);
 
 
-    public Level0ArraySelectedOperator<I,T> map(final IFunction<? extends T, ? super T> function);
+    public Level0ArraySelectedOperator<I,T> map(final IFunction<? super T,? extends T> function);
 
-    public Level0ArraySelectedOperator<I,T> mapIfNotNull(final IFunction<? extends T, ? super T> function);
+    public Level0ArraySelectedOperator<I,T> mapIfNotNull(final IFunction<? super T,? extends T> function);
     
     
 }

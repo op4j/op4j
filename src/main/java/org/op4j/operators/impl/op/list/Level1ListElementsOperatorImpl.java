@@ -82,12 +82,12 @@ public final class Level1ListElementsOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    public Level1ListElementsSelectedOperatorImpl<I,T> ifTrue(final IFunction<Boolean, ? super T> eval) {
+    public Level1ListElementsSelectedOperatorImpl<I,T> ifTrue(final IFunction<? super T,Boolean> eval) {
         return new Level1ListElementsSelectedOperatorImpl<I,T>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1ListElementsSelectedOperatorImpl<I,T> ifFalse(final IFunction<Boolean, ? super T> eval) {
+    public Level1ListElementsSelectedOperatorImpl<I,T> ifFalse(final IFunction<? super T,Boolean> eval) {
         return new Level1ListElementsSelectedOperatorImpl<I,T>(getTarget().selectNotMatching(eval));
     }
 
@@ -97,12 +97,12 @@ public final class Level1ListElementsOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    public Level1ListElementsSelectedOperatorImpl<I,T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval) {
+    public Level1ListElementsSelectedOperatorImpl<I,T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
         return new Level1ListElementsSelectedOperatorImpl<I,T>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level1ListElementsSelectedOperatorImpl<I,T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval) {
+    public Level1ListElementsSelectedOperatorImpl<I,T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
         return new Level1ListElementsSelectedOperatorImpl<I,T>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -112,22 +112,22 @@ public final class Level1ListElementsOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    public Level1ListElementsSelectedOperatorImpl<I,T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval) {
+    public Level1ListElementsSelectedOperatorImpl<I,T> ifNullOrTrue(final IFunction<? super T,Boolean> eval) {
         return new Level1ListElementsSelectedOperatorImpl<I,T>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level1ListElementsSelectedOperatorImpl<I,T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval) {
+    public Level1ListElementsSelectedOperatorImpl<I,T> ifNullOrFalse(final IFunction<? super T,Boolean> eval) {
         return new Level1ListElementsSelectedOperatorImpl<I,T>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public <X> Level1ListElementsOperatorImpl<I,X> execIfNotNull(final IFunction<X, ? super T> function) {
+    public <X> Level1ListElementsOperatorImpl<I,X> execIfNotNull(final IFunction<? super T,X> function) {
         return new Level1ListElementsOperatorImpl<I,X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 
-    public <X> Level1ListElementsOperatorImpl<I,X> exec(final IFunction<X, ? super T> function) {
+    public <X> Level1ListElementsOperatorImpl<I,X> exec(final IFunction<? super T,X> function) {
         return new Level1ListElementsOperatorImpl<I,X>(getTarget().execute(function, Normalisation.NONE));
     }
 

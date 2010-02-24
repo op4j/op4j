@@ -26,7 +26,7 @@ public final class Level1ArraySelectedElementsSelectedOperatorImpl<I,T> extends 
     }
 
 
-    public Level1ArraySelectedElementsSelectedOperatorImpl<I,T> execIfNotNull(final IFunction<? extends T,? super T> function) {
+    public Level1ArraySelectedElementsSelectedOperatorImpl<I,T> execIfNotNull(final IFunction<? super T,? extends T> function) {
         return new Level1ArraySelectedElementsSelectedOperatorImpl<I,T>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
@@ -36,7 +36,7 @@ public final class Level1ArraySelectedElementsSelectedOperatorImpl<I,T> extends 
     }
 
 
-    public Level1ArraySelectedElementsSelectedOperatorImpl<I,T> exec(final IFunction<? extends T,? super T> function) {
+    public Level1ArraySelectedElementsSelectedOperatorImpl<I,T> exec(final IFunction<? super T,? extends T> function) {
         return new Level1ArraySelectedElementsSelectedOperatorImpl<I,T>(this.type, getTarget().execute(function, Normalisation.NONE));
     }
 

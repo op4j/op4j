@@ -49,7 +49,7 @@ public final class ToArray {
     
     
     
-    public static final class FromCollection<T> extends AbstractNullAsNullFunction<T[], Collection<T>> {
+    public static final class FromCollection<T> extends AbstractNullAsNullFunction<Collection<T>,T[]>  {
 
         private final Type<T> type;
         
@@ -71,7 +71,7 @@ public final class ToArray {
 
     
     
-    public static final class FromObject<T> implements IFunction<T[], T> {
+    public static final class FromObject<T> implements IFunction<T,T[]>  {
 
         private final Type<T> type;
         

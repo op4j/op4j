@@ -51,32 +51,32 @@ public final class Level0ArraySelectedOperatorImpl<I,T> extends AbstractOperator
     }
 
 
-    public Level0ArraySelectedOperatorImpl<I,T> removeAllTrue(final IFunction<Boolean,? super T> eval) {
+    public Level0ArraySelectedOperatorImpl<I,T> removeAllTrue(final IFunction<? super T,Boolean> eval) {
         return new Level0ArraySelectedOperatorImpl<I,T>(this.type, getTarget().execute(new FArray.RemoveAllTrue<T>(eval)));
     }
 
 
-    public Level0ArraySelectedOperatorImpl<I,T> removeAllFalse(final IFunction<Boolean,? super T> eval) {
+    public Level0ArraySelectedOperatorImpl<I,T> removeAllFalse(final IFunction<? super T,Boolean> eval) {
         return new Level0ArraySelectedOperatorImpl<I,T>(this.type, getTarget().execute(new FArray.RemoveAllFalse<T>(eval)));
     }
 
 
-    public Level0ArraySelectedOperatorImpl<I,T> removeAllNullOrFalse(final IFunction<Boolean,? super T> eval) {
+    public Level0ArraySelectedOperatorImpl<I,T> removeAllNullOrFalse(final IFunction<? super T,Boolean> eval) {
         return new Level0ArraySelectedOperatorImpl<I,T>(this.type, getTarget().execute(new FArray.RemoveAllNullOrFalse<T>(eval)));
     }
 
 
-    public Level0ArraySelectedOperatorImpl<I,T> removeAllNotNullAndFalse(final IFunction<Boolean,? super T> eval) {
+    public Level0ArraySelectedOperatorImpl<I,T> removeAllNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
         return new Level0ArraySelectedOperatorImpl<I,T>(this.type, getTarget().execute(new FArray.RemoveAllNotNullAndFalse<T>(eval)));
     }
 
 
-    public Level0ArraySelectedOperatorImpl<I,T> removeAllNotNullAndTrue(final IFunction<Boolean,? super T> eval) {
+    public Level0ArraySelectedOperatorImpl<I,T> removeAllNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
         return new Level0ArraySelectedOperatorImpl<I,T>(this.type, getTarget().execute(new FArray.RemoveAllNotNullAndTrue<T>(eval)));
     }
 
 
-    public Level0ArraySelectedOperatorImpl<I,T> removeAllNullOrTrue(final IFunction<Boolean,? super T> eval) {
+    public Level0ArraySelectedOperatorImpl<I,T> removeAllNullOrTrue(final IFunction<? super T,Boolean> eval) {
         return new Level0ArraySelectedOperatorImpl<I,T>(this.type, getTarget().execute(new FArray.RemoveAllNullOrTrue<T>(eval)));
     }
 
@@ -91,17 +91,17 @@ public final class Level0ArraySelectedOperatorImpl<I,T> extends AbstractOperator
     }
 
 
-    public Level0ArraySelectedOperatorImpl<I,T> execIfNotNullAsArray(final IFunction<? extends T[],? super T[]> function) {
+    public Level0ArraySelectedOperatorImpl<I,T> execIfNotNullAsArray(final IFunction<? super T[],? extends T[]> function) {
         return new Level0ArraySelectedOperatorImpl<I,T>(this.type, getTarget().executeIfNotNull(function, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 
-    public Level0ArraySelectedOperatorImpl<I,T> execAsArray(final IFunction<? extends T[],? super T[]> function) {
+    public Level0ArraySelectedOperatorImpl<I,T> execAsArray(final IFunction<? super T[],? extends T[]> function) {
         return new Level0ArraySelectedOperatorImpl<I,T>(this.type, getTarget().execute(function, Normalisation.ARRAY(this.type.getRawClass())));
     }
 
 
-    public Level0ArraySelectedOperatorImpl<I,T> mapIfNotNull(final IFunction<? extends T,? super T> function) {
+    public Level0ArraySelectedOperatorImpl<I,T> mapIfNotNull(final IFunction<? super T,? extends T> function) {
         return new Level0ArraySelectedOperatorImpl<I,T>(this.type, getTarget().mapIfNotNull(Structure.ARRAY, function, this.type.getRawClass()));
     }
 
@@ -149,7 +149,7 @@ public final class Level0ArraySelectedOperatorImpl<I,T> extends AbstractOperator
     }
 
 
-    public Level0ArraySelectedOperatorImpl<I,T> map(final IFunction<? extends T,? super T> function) {
+    public Level0ArraySelectedOperatorImpl<I,T> map(final IFunction<? super T,? extends T> function) {
         return new Level0ArraySelectedOperatorImpl<I,T>(this.type, getTarget().map(Structure.ARRAY, function, this.type.getRawClass()));
     }
 

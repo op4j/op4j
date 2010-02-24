@@ -34,11 +34,11 @@ final class ExecutionTargetSelectNullOrMatchingOperation implements ExecutionTar
 
     private final int internalBlock;
     private final boolean desiredResult;
-    private final IFunction<Boolean,Object> eval; 
+    private final IFunction<Object,Boolean> eval; 
 
     
     
-    public ExecutionTargetSelectNullOrMatchingOperation(final int internalBlock, final boolean desiredResult, final IFunction<Boolean,Object> eval) {
+    public ExecutionTargetSelectNullOrMatchingOperation(final int internalBlock, final boolean desiredResult, final IFunction<Object,Boolean> eval) {
         super();
         this.internalBlock = internalBlock;
         this.desiredResult = desiredResult;

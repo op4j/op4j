@@ -59,7 +59,7 @@ public interface SelectableMapEntryOperator<K,V>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedMapEntryOperator<K,V> ifTrue(final IFunction<Boolean, ? super Map.Entry<K, V>> eval);
+    public SelectedMapEntryOperator<K,V> ifTrue(final IFunction<? super Map.Entry<K, V>,Boolean> eval);
     
     
     /**
@@ -72,7 +72,7 @@ public interface SelectableMapEntryOperator<K,V>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedMapEntryOperator<K,V> ifFalse(final IFunction<Boolean, ? super Map.Entry<K, V>> eval);
+    public SelectedMapEntryOperator<K,V> ifFalse(final IFunction<? super Map.Entry<K, V>,Boolean> eval);
     
     
     /**

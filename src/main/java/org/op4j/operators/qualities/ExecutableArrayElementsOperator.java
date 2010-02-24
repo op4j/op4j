@@ -51,7 +51,7 @@ public interface ExecutableArrayElementsOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableArrayElementsOperator<T> exec(final IFunction<? extends T, ? super T> function);
+    public ExecutableArrayElementsOperator<T> exec(final IFunction<? super T,? extends T> function);
 
     
     /**
@@ -63,7 +63,7 @@ public interface ExecutableArrayElementsOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableArrayElementsOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function);
+    public ExecutableArrayElementsOperator<T> execIfNotNull(final IFunction<? super T,? extends T> function);
 
     
     /**
@@ -81,7 +81,7 @@ public interface ExecutableArrayElementsOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableArrayElementsOperator<X> exec(final Type<X> type, final IFunction<X, ? super T> function);
+    public <X> ExecutableArrayElementsOperator<X> exec(final Type<X> type, final IFunction<? super T,X> function);
 
     
 }

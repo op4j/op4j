@@ -56,7 +56,7 @@ public interface ExecutableMapOperator<K,V> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X,Y> ExecutableMapOperator<X,Y> execAsMap(final IFunction<? extends Map<X,Y>, ? super Map<K,V>> function);
+    public <X,Y> ExecutableMapOperator<X,Y> execAsMap(final IFunction<? super Map<K,V>,? extends Map<X,Y>> function);
     
     
     /**
@@ -68,7 +68,7 @@ public interface ExecutableMapOperator<K,V> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableMapOperator<K,V> execIfNotNullAsMap(final IFunction<? extends Map<? extends K,? extends V>,? super Map<K,V>> function);
+    public ExecutableMapOperator<K,V> execIfNotNullAsMap(final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function);
 
 
     
@@ -83,7 +83,7 @@ public interface ExecutableMapOperator<K,V> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> Operator exec(final IFunction<X, ? super Map<K,V>> function);
+    public <X> Operator exec(final IFunction<? super Map<K,V>,X> function);
     
     
 }

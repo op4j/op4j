@@ -51,15 +51,15 @@ public interface Level2MapEntriesValueOperator<I,K,V>
 
 
     public Level2MapEntriesValueSelectedOperator<I,K,V> ifIndex(final int... indexes);
-    public Level2MapEntriesValueSelectedOperator<I,K,V> ifTrue(final IFunction<Boolean, ? super V> eval);
-    public Level2MapEntriesValueSelectedOperator<I,K,V> ifFalse(final IFunction<Boolean, ? super V> eval);
-    public Level2MapEntriesValueSelectedOperator<I,K,V> ifNullOrFalse(final IFunction<Boolean, ? super V> eval);
-    public Level2MapEntriesValueSelectedOperator<I,K,V> ifNotNullAndFalse(final IFunction<Boolean, ? super V> eval);
+    public Level2MapEntriesValueSelectedOperator<I,K,V> ifTrue(final IFunction<? super V,Boolean> eval);
+    public Level2MapEntriesValueSelectedOperator<I,K,V> ifFalse(final IFunction<? super V,Boolean> eval);
+    public Level2MapEntriesValueSelectedOperator<I,K,V> ifNullOrFalse(final IFunction<? super V,Boolean> eval);
+    public Level2MapEntriesValueSelectedOperator<I,K,V> ifNotNullAndFalse(final IFunction<? super V,Boolean> eval);
     public Level2MapEntriesValueSelectedOperator<I,K,V> ifNull();
-    public Level2MapEntriesValueSelectedOperator<I,K,V> ifNullOrTrue(final IFunction<Boolean, ? super V> eval);
+    public Level2MapEntriesValueSelectedOperator<I,K,V> ifNullOrTrue(final IFunction<? super V,Boolean> eval);
     public Level2MapEntriesValueSelectedOperator<I,K,V> ifIndexNot(final int... indexes);
     public Level2MapEntriesValueSelectedOperator<I,K,V> ifNotNull();
-    public Level2MapEntriesValueSelectedOperator<I,K,V> ifNotNullAndTrue(final IFunction<Boolean, ? super V> eval);
+    public Level2MapEntriesValueSelectedOperator<I,K,V> ifNotNullAndTrue(final IFunction<? super V,Boolean> eval);
 
     
     public Level1MapEntriesOperator<I,K,V> endOn();
@@ -68,9 +68,9 @@ public interface Level2MapEntriesValueOperator<I,K,V>
     public Level2MapEntriesValueOperator<I,K,V> replaceIfNullWith(final V replacement);
 
 
-    public <X> Level2MapEntriesValueOperator<I,K,X> execIfNotNull(final IFunction<X,? super V> function);
+    public <X> Level2MapEntriesValueOperator<I,K,X> execIfNotNull(final IFunction<? super V,X> function);
 
-    public <X> Level2MapEntriesValueOperator<I,K,X> exec(final IFunction<X, ? super V> function);
+    public <X> Level2MapEntriesValueOperator<I,K,X> exec(final IFunction<? super V,X> function);
     
     public <X> Level2MapEntriesValueOperator<I,K,X> asType(final Type<X> type);
     public Level2MapEntriesValueOperator<I,K,?> asUnknown();

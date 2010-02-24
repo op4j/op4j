@@ -46,24 +46,24 @@ public interface Level2MapEntriesSelectedValueOperator<I,K,V>
 
 
     public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifIndex(final int... indexes);
-    public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifTrue(final IFunction<Boolean, ? super V> eval);
-    public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifFalse(final IFunction<Boolean, ? super V> eval);
-    public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifNullOrFalse(final IFunction<Boolean, ? super V> eval);
-    public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifNotNullAndFalse(final IFunction<Boolean, ? super V> eval);
+    public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifTrue(final IFunction<? super V,Boolean> eval);
+    public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifFalse(final IFunction<? super V,Boolean> eval);
+    public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifNullOrFalse(final IFunction<? super V,Boolean> eval);
+    public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifNotNullAndFalse(final IFunction<? super V,Boolean> eval);
     public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifNull();
-    public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifNullOrTrue(final IFunction<Boolean, ? super V> eval);
+    public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifNullOrTrue(final IFunction<? super V,Boolean> eval);
     public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifIndexNot(final int... indexes);
     public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifNotNull();
-    public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifNotNullAndTrue(final IFunction<Boolean, ? super V> eval);
+    public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifNotNullAndTrue(final IFunction<? super V,Boolean> eval);
 
     
     public Level1MapEntriesSelectedOperator<I,K,V> endOn();
     
-    public Level2MapEntriesSelectedValueOperator<I,K,V> execIfNotNull(final IFunction<? extends V, ? super V> function);
+    public Level2MapEntriesSelectedValueOperator<I,K,V> execIfNotNull(final IFunction<? super V,? extends V> function);
 
     public Level2MapEntriesSelectedValueOperator<I,K,V> replaceWith(final V replacement);
 
-    public Level2MapEntriesSelectedValueOperator<I,K,V> exec(final IFunction<? extends V, ? super V> function);
+    public Level2MapEntriesSelectedValueOperator<I,K,V> exec(final IFunction<? super V,? extends V> function);
 
     
 }

@@ -46,11 +46,11 @@ public interface Level1SetElementsSelectedOperator<I,T>
     public Level1SetElementsOperator<I,T> endIf();
 
     
-    public Level1SetElementsSelectedOperator<I,T> execIfNotNull(final IFunction<? extends T,? super T> function);
+    public Level1SetElementsSelectedOperator<I,T> execIfNotNull(final IFunction<? super T,? extends T> function);
 
     public Level1SetElementsSelectedOperator<I,T> replaceWith(final T replacement);
 
-    public Level1SetElementsSelectedOperator<I,T> exec(final IFunction<? extends T, ? super T> function);
+    public Level1SetElementsSelectedOperator<I,T> exec(final IFunction<? super T,? extends T> function);
 	
     
 }

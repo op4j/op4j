@@ -317,7 +317,7 @@ public final class ToString {
 	
 	
 	
-	public static final class FromObject extends AbstractNullAsNullFunction<String,Object> {
+	public static final class FromObject extends AbstractNullAsNullFunction<Object,String>  {
 
 		public FromObject() {
 			super();
@@ -330,7 +330,7 @@ public final class ToString {
 		
 	}
 	
-	public static final class FromNumber extends AbstractNullAsNullFunction<String, Number> {
+	public static final class FromNumber extends AbstractNullAsNullFunction<Number,String>  {
 
 		private final NumberFormat numberFormat;
 		
@@ -652,7 +652,7 @@ public final class ToString {
 		NONE
 	}		
 	
-	public static final class FromCalendar extends AbstractNullAsNullFunction<String, Calendar> {
+	public static final class FromCalendar extends AbstractNullAsNullFunction<Calendar,String>  {
 
 		private DateStyle dateStyle = null;	
 		private TimeStyle timeStyle = null;	
@@ -770,7 +770,7 @@ public final class ToString {
 	    }		
 	}
 	
-	public static final class FromDate extends AbstractNullAsNullFunction<String, java.util.Date> {
+	public static final class FromDate extends AbstractNullAsNullFunction<java.util.Date,String>  {
 
 		private DateStyle dateStyle = null;	
 		private TimeStyle timeStyle = null;	

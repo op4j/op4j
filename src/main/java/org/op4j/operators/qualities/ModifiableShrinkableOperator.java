@@ -66,7 +66,7 @@ public interface ModifiableShrinkableOperator<T> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the new target objects
      */
-    public ModifiableGrowableOperator<T> removeAllTrue(final IFunction<Boolean, ? super T> eval);
+    public ModifiableGrowableOperator<T> removeAllTrue(final IFunction<? super T,Boolean> eval);
     
     
     /**
@@ -78,7 +78,7 @@ public interface ModifiableShrinkableOperator<T> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the new target objects
      */
-    public ModifiableGrowableOperator<T> removeAllFalse(final IFunction<Boolean, ? super T> eval);
+    public ModifiableGrowableOperator<T> removeAllFalse(final IFunction<? super T,Boolean> eval);
     
     
     /**
@@ -90,7 +90,7 @@ public interface ModifiableShrinkableOperator<T> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the new target objects
      */
-    public ModifiableGrowableOperator<T> removeAllNullOrFalse(final IFunction<Boolean, ? super T> eval);
+    public ModifiableGrowableOperator<T> removeAllNullOrFalse(final IFunction<? super T,Boolean> eval);
    
     
     /**
@@ -102,7 +102,7 @@ public interface ModifiableShrinkableOperator<T> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the new target objects
      */
-    public ModifiableGrowableOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
+    public ModifiableGrowableOperator<T> removeAllNotNullAndFalse(final IFunction<? super T,Boolean> eval);
     
     
     /**
@@ -114,7 +114,7 @@ public interface ModifiableShrinkableOperator<T> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the new target objects
      */
-    public ModifiableGrowableOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
+    public ModifiableGrowableOperator<T> removeAllNotNullAndTrue(final IFunction<? super T,Boolean> eval);
 
     
     /**
@@ -126,7 +126,7 @@ public interface ModifiableShrinkableOperator<T> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the new target objects
      */
-    public ModifiableGrowableOperator<T> removeAllNullOrTrue(final IFunction<Boolean, ? super T> eval);
+    public ModifiableGrowableOperator<T> removeAllNullOrTrue(final IFunction<? super T,Boolean> eval);
     
     
     /**

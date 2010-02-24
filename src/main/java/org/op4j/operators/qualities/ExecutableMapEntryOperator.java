@@ -56,7 +56,7 @@ public interface ExecutableMapEntryOperator<K,V> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X,Y> ExecutableMapEntryOperator<X,Y> execAsMapEntry(final IFunction<? extends Map.Entry<X,Y>, ? super Map.Entry<K,V>> function);
+    public <X,Y> ExecutableMapEntryOperator<X,Y> execAsMapEntry(final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<X,Y>> function);
 
 
     
@@ -71,7 +71,7 @@ public interface ExecutableMapEntryOperator<K,V> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> Operator exec(final IFunction<X, ? super Map.Entry<K,V>> function);
+    public <X> Operator exec(final IFunction<? super Map.Entry<K,V>,X> function);
     
     
 }

@@ -84,12 +84,12 @@ public final class Level1SetElementsOperatorImpl<I,T> extends AbstractOperatorIm
     }
 
 
-    public Level1SetElementsSelectedOperatorImpl<I,T> ifTrue(final IFunction<Boolean, ? super T> eval) {
+    public Level1SetElementsSelectedOperatorImpl<I,T> ifTrue(final IFunction<? super T,Boolean> eval) {
         return new Level1SetElementsSelectedOperatorImpl<I,T>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1SetElementsSelectedOperatorImpl<I,T> ifFalse(final IFunction<Boolean, ? super T> eval) {
+    public Level1SetElementsSelectedOperatorImpl<I,T> ifFalse(final IFunction<? super T,Boolean> eval) {
         return new Level1SetElementsSelectedOperatorImpl<I,T>(getTarget().selectNotMatching(eval));
     }
 
@@ -99,12 +99,12 @@ public final class Level1SetElementsOperatorImpl<I,T> extends AbstractOperatorIm
     }
 
 
-    public Level1SetElementsSelectedOperatorImpl<I,T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval) {
+    public Level1SetElementsSelectedOperatorImpl<I,T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
         return new Level1SetElementsSelectedOperatorImpl<I,T>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level1SetElementsSelectedOperatorImpl<I,T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval) {
+    public Level1SetElementsSelectedOperatorImpl<I,T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
         return new Level1SetElementsSelectedOperatorImpl<I,T>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -114,22 +114,22 @@ public final class Level1SetElementsOperatorImpl<I,T> extends AbstractOperatorIm
     }
 
 
-    public Level1SetElementsSelectedOperatorImpl<I,T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval) {
+    public Level1SetElementsSelectedOperatorImpl<I,T> ifNullOrTrue(final IFunction<? super T,Boolean> eval) {
         return new Level1SetElementsSelectedOperatorImpl<I,T>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level1SetElementsSelectedOperatorImpl<I,T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval) {
+    public Level1SetElementsSelectedOperatorImpl<I,T> ifNullOrFalse(final IFunction<? super T,Boolean> eval) {
         return new Level1SetElementsSelectedOperatorImpl<I,T>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public <X> Level1SetElementsOperatorImpl<I,X> execIfNotNull(final IFunction<X, ? super T> function) {
+    public <X> Level1SetElementsOperatorImpl<I,X> execIfNotNull(final IFunction<? super T,X> function) {
         return new Level1SetElementsOperatorImpl<I,X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 
-    public <X> Level1SetElementsOperatorImpl<I,X> exec(final IFunction<X, ? super T> function) {
+    public <X> Level1SetElementsOperatorImpl<I,X> exec(final IFunction<? super T,X> function) {
         return new Level1SetElementsOperatorImpl<I,X>(getTarget().execute(function, Normalisation.NONE));
     }
 

@@ -233,9 +233,9 @@ class FCollection {
     
     static abstract class RemoveAllTrue<T, X extends Collection<T>> extends AbstractStructureNotNullNonConvertingFunc<X> {
 
-        private final IFunction<Boolean,? super T> eval;
+        private final IFunction<? super T,Boolean> eval;
         
-        public RemoveAllTrue(final IFunction<Boolean,? super T> eval) {
+        public RemoveAllTrue(final IFunction<? super T,Boolean> eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
@@ -263,9 +263,9 @@ class FCollection {
     
     static abstract class RemoveAllFalse<T, X extends Collection<T>> extends AbstractStructureNotNullNonConvertingFunc<X> {
 
-        private final IFunction<Boolean,? super T> eval;
+        private final IFunction<? super T,Boolean> eval;
         
-        public RemoveAllFalse(final IFunction<Boolean,? super T> eval) {
+        public RemoveAllFalse(final IFunction<? super T,Boolean> eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
@@ -348,9 +348,9 @@ class FCollection {
     
     static abstract class RemoveAllNotNullAndTrue<T, X extends Collection<T>> extends AbstractStructureNotNullNonConvertingFunc<X> {
 
-        private final IFunction<Boolean,? super T> eval;
+        private final IFunction<? super T,Boolean> eval;
         
-        public RemoveAllNotNullAndTrue(final IFunction<Boolean,? super T> eval) {
+        public RemoveAllNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
@@ -384,9 +384,9 @@ class FCollection {
     
     static abstract class RemoveAllNotNullAndFalse<T, X extends Collection<T>> extends AbstractStructureNotNullNonConvertingFunc<X> {
 
-        private final IFunction<Boolean,? super T> eval;
+        private final IFunction<? super T,Boolean> eval;
         
-        public RemoveAllNotNullAndFalse(final IFunction<Boolean,? super T> eval) {
+        public RemoveAllNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
@@ -418,9 +418,9 @@ class FCollection {
     
     static abstract class RemoveAllNullOrTrue<T, X extends Collection<T>> extends AbstractStructureNotNullNonConvertingFunc<X> {
 
-        private final IFunction<Boolean,? super T> eval;
+        private final IFunction<? super T,Boolean> eval;
         
-        public RemoveAllNullOrTrue(final IFunction<Boolean,? super T> eval) {
+        public RemoveAllNullOrTrue(final IFunction<? super T,Boolean> eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
@@ -451,9 +451,9 @@ class FCollection {
     
     static abstract class RemoveAllNullOrFalse<T, X extends Collection<T>> extends AbstractStructureNotNullNonConvertingFunc<X> {
 
-        private final IFunction<Boolean,? super T> eval;
+        private final IFunction<? super T,Boolean> eval;
         
-        public RemoveAllNullOrFalse(final IFunction<Boolean,? super T> eval) {
+        public RemoveAllNullOrFalse(final IFunction<? super T,Boolean> eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
@@ -480,7 +480,7 @@ class FCollection {
     
     
     
-    static abstract class FlattenCollectionOfArrays<T, X extends Collection<T>, Y extends Collection<T[]>> extends AbstractNotNullFunction<X, Y> {
+    static abstract class FlattenCollectionOfArrays<T, X extends Collection<T>, Y extends Collection<T[]>> extends AbstractNotNullFunction<Y,X> {
 
         public FlattenCollectionOfArrays() {
             super();
@@ -503,7 +503,7 @@ class FCollection {
     
 
     
-    static abstract class FlattenCollectionOfCollections<T, X extends Collection<T>, Y extends Collection<? extends Collection<T>>> extends AbstractNotNullFunction<X, Y> {
+    static abstract class FlattenCollectionOfCollections<T, X extends Collection<T>, Y extends Collection<? extends Collection<T>>> extends AbstractNotNullFunction<Y,X> {
 
         public FlattenCollectionOfCollections() {
             super();

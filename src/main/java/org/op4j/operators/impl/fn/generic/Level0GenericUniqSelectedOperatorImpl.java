@@ -21,7 +21,7 @@ public final class Level0GenericUniqSelectedOperatorImpl<I,T> extends AbstractOp
     }
 
 
-    public Level0GenericUniqSelectedOperatorImpl<I,T> execIfNotNull(final IFunction<? extends T,? super T> function) {
+    public Level0GenericUniqSelectedOperatorImpl<I,T> execIfNotNull(final IFunction<? super T,? extends T> function) {
         return new Level0GenericUniqSelectedOperatorImpl<I,T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
@@ -31,7 +31,7 @@ public final class Level0GenericUniqSelectedOperatorImpl<I,T> extends AbstractOp
     }
 
 
-    public Level0GenericUniqSelectedOperatorImpl<I,T> exec(final IFunction<? extends T,? super T> function) {
+    public Level0GenericUniqSelectedOperatorImpl<I,T> exec(final IFunction<? super T,? extends T> function) {
         return new Level0GenericUniqSelectedOperatorImpl<I,T>(getTarget().execute(function, Normalisation.NONE));
     }
 

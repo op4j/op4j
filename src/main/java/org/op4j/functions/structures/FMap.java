@@ -111,11 +111,11 @@ public final class FMap<K,V> {
         return new RemoveAllKeys<K,V>(keys);
     }
     
-    public final RemoveAllTrue<K,V> removeAllTrue(final IFunction<Boolean,? super Entry<K,V>> eval) {
+    public final RemoveAllTrue<K,V> removeAllTrue(final IFunction<? super Entry<K,V>,Boolean> eval) {
         return new RemoveAllTrue<K,V>(eval);
     }
     
-    public final RemoveAllFalse<K,V> removeAllFalse(final IFunction<Boolean,? super Entry<K,V>> eval) {
+    public final RemoveAllFalse<K,V> removeAllFalse(final IFunction<? super Entry<K,V>,Boolean> eval) {
         return new RemoveAllFalse<K,V>(eval);
     }
     
@@ -342,9 +342,9 @@ public final class FMap<K,V> {
     
     public static final class RemoveAllTrue<K, V> extends AbstractStructureNotNullNonConvertingFunc<Map<K, V>> {
 
-        private final IFunction<Boolean,? super Map.Entry<K, V>> eval;
+        private final IFunction<? super Map.Entry<K, V>,Boolean> eval;
         
-        public RemoveAllTrue(final IFunction<Boolean,? super Map.Entry<K, V>> eval) {
+        public RemoveAllTrue(final IFunction<? super Map.Entry<K, V>,Boolean> eval) {
             super();
             this.eval = eval;
         }
@@ -368,9 +368,9 @@ public final class FMap<K,V> {
     
     public static final class RemoveAllFalse<K, V> extends AbstractStructureNotNullNonConvertingFunc<Map<K, V>> {
 
-        private final IFunction<Boolean,? super Map.Entry<K, V>> eval;
+        private final IFunction<? super Map.Entry<K, V>,Boolean> eval;
         
-        public RemoveAllFalse(final IFunction<Boolean,? super Map.Entry<K, V>> eval) {
+        public RemoveAllFalse(final IFunction<? super Map.Entry<K, V>,Boolean> eval) {
             super();
             this.eval = eval;
         }
@@ -417,7 +417,7 @@ public final class FMap<K,V> {
     
     
     
-    public static class ExtractKeys<K, V> extends AbstractNotNullFunction<Set<K>, Map<K, V>> {
+    public static class ExtractKeys<K, V> extends AbstractNotNullFunction<Map<K, V>,Set<K>> {
 
         public ExtractKeys() {
             super();
@@ -432,7 +432,7 @@ public final class FMap<K,V> {
     
     
     
-    public static class ExtractValues<K, V> extends AbstractNotNullFunction<List<V>, Map<K, V>> {
+    public static class ExtractValues<K, V> extends AbstractNotNullFunction<Map<K, V>,List<V>> {
 
         public ExtractValues() {
             super();

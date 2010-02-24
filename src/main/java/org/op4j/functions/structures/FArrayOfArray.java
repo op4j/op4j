@@ -59,7 +59,7 @@ public final class FArrayOfArray<T> extends FArray<T[]> {
     
     
     
-    public static final class FlattenArrays<T> extends AbstractNotNullFunction<T[], T[][]> {
+    public static final class FlattenArrays<T> extends AbstractNotNullFunction<T[][],T[]> {
 
         private final Type<T> type; 
         

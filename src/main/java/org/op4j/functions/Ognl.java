@@ -42,7 +42,7 @@ import org.op4j.util.VarArgsUtil;
  *
  * @since 1.0
  */
-public final class Ognl<R,T> implements IFunction<R,T> {
+public final class Ognl<T,R> implements IFunction<T,R> {
     
     @SuppressWarnings("unchecked")
     private static final Map<String,Object> parsedExpressionsByExpression =
@@ -65,67 +65,67 @@ public final class Ognl<R,T> implements IFunction<R,T> {
     
     
     
-    public static Ognl<?,Object> asObject(final String ognlExpression, final Object... optionalParameters) {
+    public static Ognl<Object,Object> asObject(final String ognlExpression, final Object... optionalParameters) {
         return new Ognl<Object,Object>(Types.OBJECT, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static <R> Ognl<R,Object> asType(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
-        return new Ognl<R,Object>(resultType, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    public static <R> Ognl<Object,R> asType(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
+        return new Ognl<Object,R>(resultType, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
 
     
     
     
-    public static Ognl<BigInteger,Object> asBigInteger(final String ognlExpression, final Object... optionalParameters) {
-        return new Ognl<BigInteger,Object>(Types.BIG_INTEGER, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    public static Ognl<Object,BigInteger> asBigInteger(final String ognlExpression, final Object... optionalParameters) {
+        return new Ognl<Object,BigInteger>(Types.BIG_INTEGER, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<BigDecimal,Object> asBigDecimal(final String ognlExpression, final Object... optionalParameters) {
-        return new Ognl<BigDecimal,Object>(Types.BIG_DECIMAL, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    public static Ognl<Object,BigDecimal> asBigDecimal(final String ognlExpression, final Object... optionalParameters) {
+        return new Ognl<Object,BigDecimal>(Types.BIG_DECIMAL, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Boolean,Object> asBoolean(final String ognlExpression, final Object... optionalParameters) {
-        return new Ognl<Boolean,Object>(Types.BOOLEAN, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    public static Ognl<Object,Boolean> asBoolean(final String ognlExpression, final Object... optionalParameters) {
+        return new Ognl<Object,Boolean>(Types.BOOLEAN, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Byte,Object> asByte(final String ognlExpression, final Object... optionalParameters) {
-        return new Ognl<Byte,Object>(Types.BYTE, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    public static Ognl<Object,Byte> asByte(final String ognlExpression, final Object... optionalParameters) {
+        return new Ognl<Object,Byte>(Types.BYTE, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Character,Object> asCharacter(final String ognlExpression, final Object... optionalParameters) {
-        return new Ognl<Character,Object>(Types.CHARACTER, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    public static Ognl<Object,Character> asCharacter(final String ognlExpression, final Object... optionalParameters) {
+        return new Ognl<Object,Character>(Types.CHARACTER, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Calendar,Object> asCalendar(final String ognlExpression, final Object... optionalParameters) {
-        return new Ognl<Calendar,Object>(Types.CALENDAR, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    public static Ognl<Object,Calendar> asCalendar(final String ognlExpression, final Object... optionalParameters) {
+        return new Ognl<Object,Calendar>(Types.CALENDAR, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Date,Object> asDate(final String ognlExpression, final Object... optionalParameters) {
-        return new Ognl<Date,Object>(Types.DATE, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    public static Ognl<Object,Date> asDate(final String ognlExpression, final Object... optionalParameters) {
+        return new Ognl<Object,Date>(Types.DATE, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Double,Object> asDouble(final String ognlExpression, final Object... optionalParameters) {
-        return new Ognl<Double,Object>(Types.DOUBLE, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    public static Ognl<Object,Double> asDouble(final String ognlExpression, final Object... optionalParameters) {
+        return new Ognl<Object,Double>(Types.DOUBLE, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Float,Object> asFloat(final String ognlExpression, final Object... optionalParameters) {
-        return new Ognl<Float,Object>(Types.FLOAT, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    public static Ognl<Object,Float> asFloat(final String ognlExpression, final Object... optionalParameters) {
+        return new Ognl<Object,Float>(Types.FLOAT, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Integer,Object> asInteger(final String ognlExpression, final Object... optionalParameters) {
-        return new Ognl<Integer,Object>(Types.INTEGER, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    public static Ognl<Object,Integer> asInteger(final String ognlExpression, final Object... optionalParameters) {
+        return new Ognl<Object,Integer>(Types.INTEGER, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Long,Object> asLong(final String ognlExpression, final Object... optionalParameters) {
-        return new Ognl<Long,Object>(Types.LONG, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    public static Ognl<Object,Long> asLong(final String ognlExpression, final Object... optionalParameters) {
+        return new Ognl<Object,Long>(Types.LONG, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<Short,Object> asShort(final String ognlExpression, final Object... optionalParameters) {
-        return new Ognl<Short,Object>(Types.SHORT, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    public static Ognl<Object,Short> asShort(final String ognlExpression, final Object... optionalParameters) {
+        return new Ognl<Object,Short>(Types.SHORT, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static Ognl<String,Object> asString(final String ognlExpression, final Object... optionalParameters) {
-        return new Ognl<String,Object>(Types.STRING, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    public static Ognl<Object,String> asString(final String ognlExpression, final Object... optionalParameters) {
+        return new Ognl<Object,String>(Types.STRING, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
     

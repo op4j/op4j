@@ -53,7 +53,7 @@ public interface ExecutableSelectedOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableSelectedOperator<T> exec(final IFunction<? extends T,? super T> function);
+    public ExecutableSelectedOperator<T> exec(final IFunction<? super T,? extends T> function);
     
     
     /**
@@ -65,7 +65,7 @@ public interface ExecutableSelectedOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableSelectedOperator<T> execIfNotNull(final IFunction<? extends T,? super T> function);
+    public ExecutableSelectedOperator<T> execIfNotNull(final IFunction<? super T,? extends T> function);
 
     
 }

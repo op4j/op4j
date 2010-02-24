@@ -81,12 +81,12 @@ public final class Level1ArrayElementsOperatorImpl<I,T> extends AbstractOperator
     }
 
 
-    public Level1ArrayElementsSelectedOperatorImpl<I,T> ifTrue(final IFunction<Boolean, ? super T> eval) {
+    public Level1ArrayElementsSelectedOperatorImpl<I,T> ifTrue(final IFunction<? super T,Boolean> eval) {
         return new Level1ArrayElementsSelectedOperatorImpl<I,T>(this.type, getTarget().selectMatching(eval));
     }
 
 
-    public Level1ArrayElementsSelectedOperatorImpl<I,T> ifFalse(final IFunction<Boolean, ? super T> eval) {
+    public Level1ArrayElementsSelectedOperatorImpl<I,T> ifFalse(final IFunction<? super T,Boolean> eval) {
         return new Level1ArrayElementsSelectedOperatorImpl<I,T>(this.type, getTarget().selectNotMatching(eval));
     }
 
@@ -96,12 +96,12 @@ public final class Level1ArrayElementsOperatorImpl<I,T> extends AbstractOperator
     }
 
 
-    public Level1ArrayElementsSelectedOperatorImpl<I,T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval) {
+    public Level1ArrayElementsSelectedOperatorImpl<I,T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
         return new Level1ArrayElementsSelectedOperatorImpl<I,T>(this.type, getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level1ArrayElementsSelectedOperatorImpl<I,T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval) {
+    public Level1ArrayElementsSelectedOperatorImpl<I,T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
         return new Level1ArrayElementsSelectedOperatorImpl<I,T>(this.type, getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -111,24 +111,24 @@ public final class Level1ArrayElementsOperatorImpl<I,T> extends AbstractOperator
     }
 
 
-    public Level1ArrayElementsSelectedOperatorImpl<I,T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval) {
+    public Level1ArrayElementsSelectedOperatorImpl<I,T> ifNullOrTrue(final IFunction<? super T,Boolean> eval) {
         return new Level1ArrayElementsSelectedOperatorImpl<I,T>(this.type, getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level1ArrayElementsSelectedOperatorImpl<I,T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval) {
+    public Level1ArrayElementsSelectedOperatorImpl<I,T> ifNullOrFalse(final IFunction<? super T,Boolean> eval) {
         return new Level1ArrayElementsSelectedOperatorImpl<I,T>(this.type, getTarget().selectNullOrNotMatching(eval));
     }
 
 
 
-    public Level1ArrayElementsOperatorImpl<I,T> execIfNotNull(final IFunction<? extends T, ? super T> function) {
+    public Level1ArrayElementsOperatorImpl<I,T> execIfNotNull(final IFunction<? super T,? extends T> function) {
         return new Level1ArrayElementsOperatorImpl<I,T>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 
 
-    public Level1ArrayElementsOperatorImpl<I,T> exec(final IFunction<? extends T, ? super T> function) {
+    public Level1ArrayElementsOperatorImpl<I,T> exec(final IFunction<? super T,? extends T> function) {
         return new Level1ArrayElementsOperatorImpl<I,T>(this.type, getTarget().execute(function, Normalisation.NONE));
     }
 
@@ -137,7 +137,7 @@ public final class Level1ArrayElementsOperatorImpl<I,T> extends AbstractOperator
 
 
 
-    public <X> Level1ArrayElementsOperatorImpl<I,X> exec(final Type<X> newType, final IFunction<X, ? super T> function) {
+    public <X> Level1ArrayElementsOperatorImpl<I,X> exec(final Type<X> newType, final IFunction<? super T,X> function) {
         return new Level1ArrayElementsOperatorImpl<I,X>(newType, getTarget().execute(function, Normalisation.NONE));
     }
 

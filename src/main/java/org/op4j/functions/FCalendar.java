@@ -224,7 +224,7 @@ public final class FCalendar {
     }
     
     
-    public static final class Before extends AbstractNotNullFunction<Boolean,Calendar> {
+    public static final class Before extends AbstractNotNullFunction<Calendar,Boolean> {
 
         private final Calendar calendar;
         
@@ -241,7 +241,7 @@ public final class FCalendar {
     }
     
     
-    public static final class After extends AbstractNotNullFunction<Boolean,Calendar> {
+    public static final class After extends AbstractNotNullFunction<Calendar,Boolean> {
 
         private final Calendar calendar;
         

@@ -52,7 +52,7 @@ public interface ExecutableArraySelectedOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableArraySelectedOperator<T> execAsArray(final IFunction<? extends T[], ? super T[]> function);
+    public ExecutableArraySelectedOperator<T> execAsArray(final IFunction<? super T[],? extends T[]> function);
     
     
     /**
@@ -64,7 +64,7 @@ public interface ExecutableArraySelectedOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableArraySelectedOperator<T> execIfNotNullAsArray(final IFunction<? extends T[],? super T[]> function);
+    public ExecutableArraySelectedOperator<T> execIfNotNullAsArray(final IFunction<? super T[],? extends T[]> function);
 
 
     
@@ -85,7 +85,7 @@ public interface ExecutableArraySelectedOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution on each element
      */
-    public ExecutableArraySelectedOperator<T> map(final IFunction<? extends T,? super T> function);
+    public ExecutableArraySelectedOperator<T> map(final IFunction<? super T,? extends T> function);
 
     
     /**
@@ -105,6 +105,6 @@ public interface ExecutableArraySelectedOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution on each element
      */
-    public ExecutableArraySelectedOperator<T> mapIfNotNull(final IFunction<? extends T,? super T> function);
+    public ExecutableArraySelectedOperator<T> mapIfNotNull(final IFunction<? super T,? extends T> function);
     
 }

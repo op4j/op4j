@@ -103,29 +103,29 @@ public final class Level0ListOperatorImpl<I,T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListOperatorImpl<I,T> removeAllTrue(final IFunction<Boolean, ? super T> eval) {
+    public Level0ListOperatorImpl<I,T> removeAllTrue(final IFunction<? super T,Boolean> eval) {
         return new Level0ListOperatorImpl<I,T>(getTarget().execute(new FList.RemoveAllTrue<T>(eval)));
     }
 
-    public Level0ListOperatorImpl<I,T> removeAllFalse(final IFunction<Boolean, ? super T> eval) {
+    public Level0ListOperatorImpl<I,T> removeAllFalse(final IFunction<? super T,Boolean> eval) {
         return new Level0ListOperatorImpl<I,T>(getTarget().execute(new FList.RemoveAllFalse<T>(eval)));
     }
 
-    public Level0ListOperatorImpl<I,T> removeAllNullOrFalse(final IFunction<Boolean, ? super T> eval) {
+    public Level0ListOperatorImpl<I,T> removeAllNullOrFalse(final IFunction<? super T,Boolean> eval) {
         return new Level0ListOperatorImpl<I,T>(getTarget().execute(new FList.RemoveAllNullOrFalse<T>(eval)));
     }
 
-    public Level0ListOperatorImpl<I,T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super T> eval) {
+    public Level0ListOperatorImpl<I,T> removeAllNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
         return new Level0ListOperatorImpl<I,T>(getTarget().execute(new FList.RemoveAllNotNullAndFalse<T>(eval)));
     }
 
 
-    public Level0ListOperatorImpl<I,T> removeAllNullOrTrue(final IFunction<Boolean, ? super T> eval) {
+    public Level0ListOperatorImpl<I,T> removeAllNullOrTrue(final IFunction<? super T,Boolean> eval) {
         return new Level0ListOperatorImpl<I,T>(getTarget().execute(new FList.RemoveAllNullOrTrue<T>(eval)));
     }
 
 
-    public Level0ListOperatorImpl<I,T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super T> eval) {
+    public Level0ListOperatorImpl<I,T> removeAllNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
         return new Level0ListOperatorImpl<I,T>(getTarget().execute(new FList.RemoveAllNotNullAndTrue<T>(eval)));
     }
 
@@ -162,7 +162,7 @@ public final class Level0ListOperatorImpl<I,T> extends AbstractOperatorImpl
         return new Level0MapOperatorImpl<I,T, T>(getTarget().execute(new ToMap.FromListByAlternateElements<T>()));
     }
 
-    public <K> Level0MapOperatorImpl<I,K, T> toMap(final IFunction<K, ? super T> keyEval) {
+    public <K> Level0MapOperatorImpl<I,K, T> toMap(final IFunction<? super T,K> keyEval) {
         return new Level0MapOperatorImpl<I,K, T>(getTarget().execute(new ToMap.FromListByKeyEval<K, T>(keyEval)));
     }
 
@@ -209,12 +209,12 @@ public final class Level0ListOperatorImpl<I,T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListSelectedOperatorImpl<I,T> ifTrue(final IFunction<Boolean, ? super List<T>> eval) {
+    public Level0ListSelectedOperatorImpl<I,T> ifTrue(final IFunction<? super List<T>,Boolean> eval) {
         return new Level0ListSelectedOperatorImpl<I,T>(getTarget().selectMatching(eval));
     }
 
 
-    public Level0ListSelectedOperatorImpl<I,T> ifFalse(final IFunction<Boolean, ? super List<T>> eval) {
+    public Level0ListSelectedOperatorImpl<I,T> ifFalse(final IFunction<? super List<T>,Boolean> eval) {
         return new Level0ListSelectedOperatorImpl<I,T>(getTarget().selectNotMatching(eval));
     }
 
@@ -224,12 +224,12 @@ public final class Level0ListOperatorImpl<I,T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListSelectedOperatorImpl<I,T> ifNotNullAndTrue(final IFunction<Boolean, ? super List<T>> eval) {
+    public Level0ListSelectedOperatorImpl<I,T> ifNotNullAndTrue(final IFunction<? super List<T>,Boolean> eval) {
         return new Level0ListSelectedOperatorImpl<I,T>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level0ListSelectedOperatorImpl<I,T> ifNotNullAndFalse(final IFunction<Boolean, ? super List<T>> eval) {
+    public Level0ListSelectedOperatorImpl<I,T> ifNotNullAndFalse(final IFunction<? super List<T>,Boolean> eval) {
         return new Level0ListSelectedOperatorImpl<I,T>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -239,22 +239,22 @@ public final class Level0ListOperatorImpl<I,T> extends AbstractOperatorImpl
     }
 
 
-    public Level0ListSelectedOperatorImpl<I,T> ifNullOrTrue(final IFunction<Boolean, ? super List<T>> eval) {
+    public Level0ListSelectedOperatorImpl<I,T> ifNullOrTrue(final IFunction<? super List<T>,Boolean> eval) {
         return new Level0ListSelectedOperatorImpl<I,T>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level0ListSelectedOperatorImpl<I,T> ifNullOrFalse(final IFunction<Boolean, ? super List<T>> eval) {
+    public Level0ListSelectedOperatorImpl<I,T> ifNullOrFalse(final IFunction<? super List<T>,Boolean> eval) {
         return new Level0ListSelectedOperatorImpl<I,T>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public Level0ListOperatorImpl<I,T> execIfNotNullAsList(final IFunction<? extends List<? extends T>, ? super List<T>> function) {
+    public Level0ListOperatorImpl<I,T> execIfNotNullAsList(final IFunction<? super List<T>,? extends List<? extends T>> function) {
         return new Level0ListOperatorImpl<I,T>(getTarget().executeIfNotNull(function, Normalisation.LIST));
     }
 
 
-    public <X> Level0ListOperatorImpl<I,X> execAsList(final IFunction<? extends List<X>, ? super List<T>> function) {
+    public <X> Level0ListOperatorImpl<I,X> execAsList(final IFunction<? super List<T>,? extends List<X>> function) {
         return new Level0ListOperatorImpl<I,X>(getTarget().execute(function, Normalisation.LIST));
     }
 
@@ -262,7 +262,7 @@ public final class Level0ListOperatorImpl<I,T> extends AbstractOperatorImpl
     
 
 
-    public <X> Level0GenericUniqOperatorImpl<I,X> exec(final IFunction<X, ? super List<T>> function) {
+    public <X> Level0GenericUniqOperatorImpl<I,X> exec(final IFunction<? super List<T>,X> function) {
         return new Level0GenericUniqOperatorImpl<I,X>(getTarget().execute(function, Normalisation.NONE));
     }
 
@@ -279,12 +279,12 @@ public final class Level0ListOperatorImpl<I,T> extends AbstractOperatorImpl
 
     
 
-    public <X> Level0ListOperatorImpl<I,X> map(final IFunction<X, ? super T> function) {
+    public <X> Level0ListOperatorImpl<I,X> map(final IFunction<? super T,X> function) {
         return new Level0ListOperatorImpl<I,X>(getTarget().map(Structure.LIST, function, null));
     }
     
 
-    public Level0ListOperatorImpl<I,T> mapIfNotNull(final IFunction<? extends T, ? super T> function) {
+    public Level0ListOperatorImpl<I,T> mapIfNotNull(final IFunction<? super T,? extends T> function) {
         return new Level0ListOperatorImpl<I,T>(getTarget().mapIfNotNull(Structure.LIST, function, null));
     }
     

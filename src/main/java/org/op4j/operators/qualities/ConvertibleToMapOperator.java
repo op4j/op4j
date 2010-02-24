@@ -62,7 +62,7 @@ public interface ConvertibleToMapOperator<T> {
      * @param keyEval the evaluator used for obtaining the keys
      * @return an operator holding the converted object as target.
      */
-    public <K> Operator toMap(final IFunction<K,? super T> keyEval);
+    public <K> Operator toMap(final IFunction<? super T,K> keyEval);
 
     
     /**

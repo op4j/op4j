@@ -63,7 +63,7 @@ public final class ToBoolean {
 	
 	
 	
-	public static class FromBoolean extends AbstractNullAsNullFunction<Boolean, Boolean> {
+	public static class FromBoolean extends AbstractNullAsNullFunction<Boolean,Boolean>  {
 		
 		public FromBoolean() {
 			super();
@@ -79,7 +79,7 @@ public final class ToBoolean {
 	
 	
 
-	public static class FromString extends AbstractNullAsNullFunction<Boolean, String> {
+	public static class FromString extends AbstractNullAsNullFunction<String,Boolean>  {
 		
 		public FromString() {
 			super();
@@ -96,7 +96,7 @@ public final class ToBoolean {
 	
 	
 	
-	public static class FromNumber extends AbstractNullAsNullFunction<Boolean, Number> {
+	public static class FromNumber extends AbstractNullAsNullFunction<Number,Boolean>  {
 
 		public FromNumber() {
 			super();

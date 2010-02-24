@@ -23,7 +23,7 @@ public final class Level2MapEntriesKeySelectedOperatorImpl<I,K,V> extends Abstra
     }
 
 
-    public Level2MapEntriesKeySelectedOperatorImpl<I,K,V> execIfNotNull(final IFunction<? extends K,? super K> function) {
+    public Level2MapEntriesKeySelectedOperatorImpl<I,K,V> execIfNotNull(final IFunction<? super K,? extends K> function) {
         return new Level2MapEntriesKeySelectedOperatorImpl<I,K,V>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
@@ -33,7 +33,7 @@ public final class Level2MapEntriesKeySelectedOperatorImpl<I,K,V> extends Abstra
     }
 
 
-    public Level2MapEntriesKeySelectedOperatorImpl<I,K,V> exec(final IFunction<? extends K,? super K> function) {
+    public Level2MapEntriesKeySelectedOperatorImpl<I,K,V> exec(final IFunction<? super K,? extends K> function) {
         return new Level2MapEntriesKeySelectedOperatorImpl<I,K,V>(getTarget().execute(function, Normalisation.NONE));
     }
 

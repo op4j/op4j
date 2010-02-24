@@ -29,7 +29,7 @@ import org.op4j.target.Target;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class Function<R,T> implements IFunction<R, T> {
+public final class Function<T,R> implements IFunction<T,R> {
 
     
     private final Target target;

@@ -56,7 +56,7 @@ public interface SelectableOperator<T>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedOperator<T> ifTrue(final IFunction<Boolean, ? super T> eval);
+    public SelectedOperator<T> ifTrue(final IFunction<? super T,Boolean> eval);
     
 
     /**
@@ -69,7 +69,7 @@ public interface SelectableOperator<T>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedOperator<T> ifFalse(final IFunction<Boolean, ? super T> eval);
+    public SelectedOperator<T> ifFalse(final IFunction<? super T,Boolean> eval);
     
 
     /**
@@ -82,7 +82,7 @@ public interface SelectableOperator<T>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedOperator<T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval);
+    public SelectedOperator<T> ifNullOrFalse(final IFunction<? super T,Boolean> eval);
     
     
     /**
@@ -95,7 +95,7 @@ public interface SelectableOperator<T>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedOperator<T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
+    public SelectedOperator<T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval);
     
 
     /**
@@ -120,7 +120,7 @@ public interface SelectableOperator<T>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedOperator<T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval);
+    public SelectedOperator<T> ifNullOrTrue(final IFunction<? super T,Boolean> eval);
     
     
     /**
@@ -158,6 +158,6 @@ public interface SelectableOperator<T>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedOperator<T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
+    public SelectedOperator<T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval);
     
 }

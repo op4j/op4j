@@ -46,23 +46,23 @@ public interface Level2MapEntriesSelectedKeyOperator<I,K,V>
 
 
     public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifIndex(final int... indexes);
-    public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifTrue(final IFunction<Boolean, ? super K> eval);
-    public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifFalse(final IFunction<Boolean, ? super K> eval);
-    public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifNullOrFalse(final IFunction<Boolean, ? super K> eval);
-    public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifNotNullAndFalse(final IFunction<Boolean, ? super K> eval);
+    public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifTrue(final IFunction<? super K,Boolean> eval);
+    public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifFalse(final IFunction<? super K,Boolean> eval);
+    public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifNullOrFalse(final IFunction<? super K,Boolean> eval);
+    public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifNotNullAndFalse(final IFunction<? super K,Boolean> eval);
     public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifNull();
-    public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifNullOrTrue(final IFunction<Boolean, ? super K> eval);
+    public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifNullOrTrue(final IFunction<? super K,Boolean> eval);
     public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifIndexNot(final int... indexes);
     public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifNotNull();
-    public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifNotNullAndTrue(final IFunction<Boolean, ? super K> eval);
+    public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifNotNullAndTrue(final IFunction<? super K,Boolean> eval);
 
     
     public Level1MapEntriesSelectedOperator<I,K,V> endOn();
 
     public Level2MapEntriesSelectedKeyOperator<I,K,V> replaceWith(final K replacement);
 
-    public Level2MapEntriesSelectedKeyOperator<I,K,V> exec(final IFunction<? extends K, ? super K> function);
+    public Level2MapEntriesSelectedKeyOperator<I,K,V> exec(final IFunction<? super K,? extends K> function);
     
-    public Level2MapEntriesSelectedKeyOperator<I,K,V> execIfNotNull(final IFunction<? extends K, ? super K> function);
+    public Level2MapEntriesSelectedKeyOperator<I,K,V> execIfNotNull(final IFunction<? super K,? extends K> function);
     
     }

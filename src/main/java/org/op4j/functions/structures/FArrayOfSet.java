@@ -60,7 +60,7 @@ public final class FArrayOfSet<T> extends FArray<Set<T>> {
     
 
     
-    public static final class FlattenSets<T> extends AbstractNotNullFunction<T[], Set<T>[]> {
+    public static final class FlattenSets<T> extends AbstractNotNullFunction<Set<T>[],T[]> {
 
         private final Type<T> type; 
 

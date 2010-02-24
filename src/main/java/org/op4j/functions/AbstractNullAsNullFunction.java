@@ -29,7 +29,7 @@ package org.op4j.functions;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public abstract class AbstractNullAsNullFunction<R, T> implements IFunction<R, T> {
+public abstract class AbstractNullAsNullFunction<T,R> implements IFunction<T,R> {
     
     
     protected AbstractNullAsNullFunction() {

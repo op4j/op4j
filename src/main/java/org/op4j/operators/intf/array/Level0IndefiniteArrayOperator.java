@@ -57,14 +57,14 @@ public interface Level0IndefiniteArrayOperator<I,T>
     public Level0SetOperator<I,T> toSet();
     
     public Level0MapOperator<I,T,T> toMap();
-    public <K> Level0MapOperator<I,K,T> toMap(final IFunction<K,? super T> keyEval);
+    public <K> Level0MapOperator<I,K,T> toMap(final IFunction<? super T,K> keyEval);
     public <K,V> Level0MapOperator<I,K,V> toMap(final IMapBuilder<K,V,? super T> mapBuild);
     
     
     public Level0GenericUniqOperator<I,T[]> generic();
 
     public <X> Level0ArrayOperator<I,X> asArrayOf(final Type<X> type);
-    public <X> Level0GenericUniqOperator<I,X> exec(final IFunction<X, ? super T[]> function);
+    public <X> Level0GenericUniqOperator<I,X> exec(final IFunction<? super T[],X> function);
 
     
 }

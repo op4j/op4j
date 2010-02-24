@@ -47,7 +47,7 @@ class ToCollection {
     
     
     
-    static abstract class FromArray<T, X extends Collection<T>> extends AbstractNullAsNullFunction<X, T[]> {
+    static abstract class FromArray<T, X extends Collection<T>> extends AbstractNullAsNullFunction<T[],X>  {
 
         public FromArray() {
             super();
@@ -66,7 +66,7 @@ class ToCollection {
 
     
     
-    static abstract class FromCollection<T, X extends Collection<T>> extends AbstractNullAsNullFunction<X, Collection<T>> {
+    static abstract class FromCollection<T, X extends Collection<T>> extends AbstractNullAsNullFunction<Collection<T>,X>  {
 
         public FromCollection() {
             super();
@@ -85,7 +85,7 @@ class ToCollection {
 
     
     
-    static abstract class FromObject<T, X extends Collection<T>> implements IFunction<X, T> {
+    static abstract class FromObject<T, X extends Collection<T>> implements IFunction<T,X>  {
 
         public FromObject() {
             super();

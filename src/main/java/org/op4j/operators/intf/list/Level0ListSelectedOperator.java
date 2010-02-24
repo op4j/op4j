@@ -69,26 +69,26 @@ public interface Level0ListSelectedOperator<I,T>
     public Level0ListSelectedOperator<I,T> addAll(final Collection<T> collection);
     public Level0ListSelectedOperator<I,T> removeAllIndexes(final int... indexes);
     public Level0ListSelectedOperator<I,T> removeAllEqual(final T... values);
-    public Level0ListSelectedOperator<I,T> removeAllTrue(final IFunction<Boolean, ? super T> eval);
-    public Level0ListSelectedOperator<I,T> removeAllFalse(final IFunction<Boolean, ? super T> eval);
-    public Level0ListSelectedOperator<I,T> removeAllNullOrFalse(final IFunction<Boolean, ? super T> eval);
-    public Level0ListSelectedOperator<I,T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
-    public Level0ListSelectedOperator<I,T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
-    public Level0ListSelectedOperator<I,T> removeAllNullOrTrue(final IFunction<Boolean, ? super T> eval);
+    public Level0ListSelectedOperator<I,T> removeAllTrue(final IFunction<? super T,Boolean> eval);
+    public Level0ListSelectedOperator<I,T> removeAllFalse(final IFunction<? super T,Boolean> eval);
+    public Level0ListSelectedOperator<I,T> removeAllNullOrFalse(final IFunction<? super T,Boolean> eval);
+    public Level0ListSelectedOperator<I,T> removeAllNotNullAndFalse(final IFunction<? super T,Boolean> eval);
+    public Level0ListSelectedOperator<I,T> removeAllNotNullAndTrue(final IFunction<? super T,Boolean> eval);
+    public Level0ListSelectedOperator<I,T> removeAllNullOrTrue(final IFunction<? super T,Boolean> eval);
     public Level0ListSelectedOperator<I,T> removeAllIndexesNot(final int... indexes);
     public Level0ListSelectedOperator<I,T> removeAllNull();
     
     
-    public Level0ListSelectedOperator<I,T> execIfNotNullAsList(final IFunction<? extends List<? extends T>,? super List<T>> function);
+    public Level0ListSelectedOperator<I,T> execIfNotNullAsList(final IFunction<? super List<T>,? extends List<? extends T>> function);
 
     public Level0ListSelectedOperator<I,T> replaceWith(final List<T> replacement);
 
-    public Level0ListSelectedOperator<I,T> execAsList(final IFunction<? extends List<? extends T>, ? super List<T>> function);
+    public Level0ListSelectedOperator<I,T> execAsList(final IFunction<? super List<T>,? extends List<? extends T>> function);
 
 
-    public Level0ListSelectedOperator<I,T> map(final IFunction<? extends T, ? super T> function);
+    public Level0ListSelectedOperator<I,T> map(final IFunction<? super T,? extends T> function);
 
-    public Level0ListSelectedOperator<I,T> mapIfNotNull(final IFunction<? extends T, ? super T> function);
+    public Level0ListSelectedOperator<I,T> mapIfNotNull(final IFunction<? super T,? extends T> function);
     
     
 }

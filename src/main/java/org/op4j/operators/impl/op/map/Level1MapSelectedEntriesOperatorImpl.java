@@ -24,12 +24,12 @@ public final class Level1MapSelectedEntriesOperatorImpl<I,K,V> extends AbstractO
     }
 
 
-    public Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V> ifTrue(final IFunction<Boolean, ? super Entry<K,V>> eval) {
+    public Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V> ifTrue(final IFunction<? super Entry<K,V>,Boolean> eval) {
         return new Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V> ifFalse(final IFunction<Boolean, ? super Entry<K,V>> eval) {
+    public Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V> ifFalse(final IFunction<? super Entry<K,V>,Boolean> eval) {
         return new Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V>(getTarget().selectNotMatching(eval));
     }
 
@@ -64,12 +64,12 @@ public final class Level1MapSelectedEntriesOperatorImpl<I,K,V> extends AbstractO
     }
 
 
-    public Level1MapSelectedEntriesOperatorImpl<I,K,V> execAsMapEntry(final IFunction<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> function) {
+    public Level1MapSelectedEntriesOperatorImpl<I,K,V> execAsMapEntry(final IFunction<? super Entry<K,V>,? extends Entry<? extends K,? extends V>> function) {
         return new Level1MapSelectedEntriesOperatorImpl<I,K,V>(getTarget().execute(function, Normalisation.MAP_ENTRY));
     }
 
 
-    public Level1MapSelectedEntriesOperatorImpl<I,K,V> execIfNotNullAsMapEntry(final IFunction<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> function) {
+    public Level1MapSelectedEntriesOperatorImpl<I,K,V> execIfNotNullAsMapEntry(final IFunction<? super Entry<K,V>,? extends Entry<? extends K,? extends V>> function) {
         return new Level1MapSelectedEntriesOperatorImpl<I,K,V>(getTarget().executeIfNotNull(function, Normalisation.MAP_ENTRY));
     }
 

@@ -183,7 +183,7 @@ public final class ToCalendar {
 	
 	
 	
-	public static final class FromCalendar extends AbstractNullAsNullFunction<Calendar, Calendar> {
+	public static final class FromCalendar extends AbstractNullAsNullFunction<Calendar,Calendar>  {
 	
 		private Integer truncateField = null;
 		
@@ -208,7 +208,7 @@ public final class ToCalendar {
 	
 
 	
-	public static final class FromDate extends AbstractNullAsNullFunction<Calendar, Date> {
+	public static final class FromDate extends AbstractNullAsNullFunction<Date,Calendar>  {
 	
 		private Integer truncateField = null;
 		
@@ -238,7 +238,7 @@ public final class ToCalendar {
 	
 
 	
-	public static final class FromTimestamp extends AbstractNullAsNullFunction<Calendar, Timestamp> {
+	public static final class FromTimestamp extends AbstractNullAsNullFunction<Timestamp,Calendar>  {
 	
 		private Integer truncateField = null;
 		
@@ -268,7 +268,7 @@ public final class ToCalendar {
 	
 
 	
-	public static final class FromTimeInMillis extends AbstractNullAsNullFunction<Calendar, Long> {
+	public static final class FromTimeInMillis extends AbstractNullAsNullFunction<Long,Calendar>  {
 	
 		private Integer truncateField = null;
 		
@@ -299,7 +299,7 @@ public final class ToCalendar {
 	
 	
 	
-	public static final class FromString extends AbstractNullAsNullFunction<Calendar, String> {
+	public static final class FromString extends AbstractNullAsNullFunction<String,Calendar>  {
 
 		private final SimpleDateFormat simpleDateFormat;
 
@@ -345,7 +345,7 @@ public final class ToCalendar {
 
 	
 	
-	public static final class FromIntegerFieldList extends AbstractNullAsNullFunction<Calendar, List<Integer>> {
+	public static final class FromIntegerFieldList extends AbstractNullAsNullFunction<List<Integer>,Calendar>  {
 		
 		
 		public FromIntegerFieldList() {
@@ -384,7 +384,7 @@ public final class ToCalendar {
 	
 	
 	
-	public static final class FromIntegerFieldArray extends AbstractNullAsNullFunction<Calendar, Integer[]> {
+	public static final class FromIntegerFieldArray extends AbstractNullAsNullFunction<Integer[],Calendar>  {
 		
 		
 		public FromIntegerFieldArray() {
@@ -422,7 +422,7 @@ public final class ToCalendar {
 
 	
 	
-	public static final class FromStringFieldList extends AbstractNullAsNullFunction<Calendar, List<String>> {
+	public static final class FromStringFieldList extends AbstractNullAsNullFunction<List<String>,Calendar>  {
 		
 		
 		public FromStringFieldList() {
@@ -461,7 +461,7 @@ public final class ToCalendar {
 	
 	
 	
-	public static final class FromStringFieldArray extends AbstractNullAsNullFunction<Calendar, String[]> {
+	public static final class FromStringFieldArray extends AbstractNullAsNullFunction<String[],Calendar>  {
 		
 		
 		public FromStringFieldArray() {

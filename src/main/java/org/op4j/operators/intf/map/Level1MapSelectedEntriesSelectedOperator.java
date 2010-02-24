@@ -52,8 +52,8 @@ public interface Level1MapSelectedEntriesSelectedOperator<I,K,V>
     
     public Level1MapSelectedEntriesSelectedOperator<I,K,V> replaceWith(final Map.Entry<K,V> replacement);
 
-    public Level1MapSelectedEntriesSelectedOperator<I,K,V> execAsMapEntry(final IFunction<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> function);
+    public Level1MapSelectedEntriesSelectedOperator<I,K,V> execAsMapEntry(final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<? extends K,? extends V>> function);
     
-    public Level1MapSelectedEntriesSelectedOperator<I,K,V> execIfNotNullAsMapEntry(final IFunction<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> function);
+    public Level1MapSelectedEntriesSelectedOperator<I,K,V> execIfNotNullAsMapEntry(final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<? extends K,? extends V>> function);
     
     }

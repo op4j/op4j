@@ -55,7 +55,7 @@ public interface ExecutableListOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableListOperator<X> execAsList(final IFunction<? extends List<X>, ? super List<T>> function);
+    public <X> ExecutableListOperator<X> execAsList(final IFunction<? super List<T>,? extends List<X>> function);
     
     
     /**
@@ -67,7 +67,7 @@ public interface ExecutableListOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableListOperator<T> execIfNotNullAsList(final IFunction<? extends List<? extends T>,? super List<T>> function);
+    public ExecutableListOperator<T> execIfNotNullAsList(final IFunction<? super List<T>,? extends List<? extends T>> function);
 
 
     
@@ -82,7 +82,7 @@ public interface ExecutableListOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> Operator exec(final IFunction<X, ? super List<T>> function);
+    public <X> Operator exec(final IFunction<? super List<T>,X> function);
     
 
 
@@ -101,7 +101,7 @@ public interface ExecutableListOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution on each element
      */
-    public <X> ExecutableListOperator<X> map(final IFunction<X,? super T> function);
+    public <X> ExecutableListOperator<X> map(final IFunction<? super T,X> function);
 
 
     
@@ -117,6 +117,6 @@ public interface ExecutableListOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution on each element
      */
-    public ExecutableListOperator<T> mapIfNotNull(final IFunction<? extends T,? super T> function);
+    public ExecutableListOperator<T> mapIfNotNull(final IFunction<? super T,? extends T> function);
         
 }

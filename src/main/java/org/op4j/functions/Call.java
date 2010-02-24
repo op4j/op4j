@@ -39,7 +39,7 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class Call<R,T> implements IFunction<R,T> {
+public final class Call<T,R> implements IFunction<T,R> {
     
     
     private final Type<R> resultType;
@@ -48,66 +48,66 @@ public final class Call<R,T> implements IFunction<R,T> {
     
     
     
-    public static Call<?,Object> asObject(final String methodName, final Object... optionalParameters) {
+    public static Call<Object,Object> asObject(final String methodName, final Object... optionalParameters) {
         return new Call<Object,Object>(Types.OBJECT, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static <R> Call<R,Object> asType(final Type<R> resultType, final String methodName, final Object... optionalParameters) {
-        return new Call<R,Object>(resultType, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static <R> Call<Object,R> asType(final Type<R> resultType, final String methodName, final Object... optionalParameters) {
+        return new Call<Object,R>(resultType, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
 
 
     
-    public static Call<BigInteger,Object> asBigInteger(final String methodName, final Object... optionalParameters) {
-        return new Call<BigInteger,Object>(Types.BIG_INTEGER, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Call<Object,BigInteger> asBigInteger(final String methodName, final Object... optionalParameters) {
+        return new Call<Object,BigInteger>(Types.BIG_INTEGER, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<BigDecimal,Object> asBigDecimal(final String methodName, final Object... optionalParameters) {
-        return new Call<BigDecimal,Object>(Types.BIG_DECIMAL, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Call<Object,BigDecimal> asBigDecimal(final String methodName, final Object... optionalParameters) {
+        return new Call<Object,BigDecimal>(Types.BIG_DECIMAL, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Boolean,Object> asBoolean(final String methodName, final Object... optionalParameters) {
-        return new Call<Boolean,Object>(Types.BOOLEAN, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Call<Object,Boolean> asBoolean(final String methodName, final Object... optionalParameters) {
+        return new Call<Object,Boolean>(Types.BOOLEAN, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Byte,Object> asByte(final String methodName, final Object... optionalParameters) {
-        return new Call<Byte,Object>(Types.BYTE, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Call<Object,Byte> asByte(final String methodName, final Object... optionalParameters) {
+        return new Call<Object,Byte>(Types.BYTE, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Character,Object> asCharacter(final String methodName, final Object... optionalParameters) {
-        return new Call<Character,Object>(Types.CHARACTER, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Call<Object,Character> asCharacter(final String methodName, final Object... optionalParameters) {
+        return new Call<Object,Character>(Types.CHARACTER, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Calendar,Object> asCalendar(final String methodName, final Object... optionalParameters) {
-        return new Call<Calendar,Object>(Types.CALENDAR, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Call<Object,Calendar> asCalendar(final String methodName, final Object... optionalParameters) {
+        return new Call<Object,Calendar>(Types.CALENDAR, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Date,Object> asDate(final String methodName, final Object... optionalParameters) {
-        return new Call<Date,Object>(Types.DATE, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Call<Object,Date> asDate(final String methodName, final Object... optionalParameters) {
+        return new Call<Object,Date>(Types.DATE, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Double,Object> asDouble(final String methodName, final Object... optionalParameters) {
-        return new Call<Double,Object>(Types.DOUBLE, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Call<Object,Double> asDouble(final String methodName, final Object... optionalParameters) {
+        return new Call<Object,Double>(Types.DOUBLE, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Float,Object> asFloat(final String methodName, final Object... optionalParameters) {
-        return new Call<Float,Object>(Types.FLOAT, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Call<Object,Float> asFloat(final String methodName, final Object... optionalParameters) {
+        return new Call<Object,Float>(Types.FLOAT, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Integer,Object> asInteger(final String methodName, final Object... optionalParameters) {
-        return new Call<Integer,Object>(Types.INTEGER, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Call<Object,Integer> asInteger(final String methodName, final Object... optionalParameters) {
+        return new Call<Object,Integer>(Types.INTEGER, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Long,Object> asLong(final String methodName, final Object... optionalParameters) {
-        return new Call<Long,Object>(Types.LONG, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Call<Object,Long> asLong(final String methodName, final Object... optionalParameters) {
+        return new Call<Object,Long>(Types.LONG, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<Short,Object> asShort(final String methodName, final Object... optionalParameters) {
-        return new Call<Short,Object>(Types.SHORT, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Call<Object,Short> asShort(final String methodName, final Object... optionalParameters) {
+        return new Call<Object,Short>(Types.SHORT, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
-    public static Call<String,Object> asString(final String methodName, final Object... optionalParameters) {
-        return new Call<String,Object>(Types.STRING, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Call<Object,String> asString(final String methodName, final Object... optionalParameters) {
+        return new Call<Object,String>(Types.STRING, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
     

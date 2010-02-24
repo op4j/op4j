@@ -52,7 +52,7 @@ public interface ExecutableOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableOperator<X> exec(final IFunction<X, ? super T> function);
+    public <X> ExecutableOperator<X> exec(final IFunction<? super T,X> function);
 
     
     /**
@@ -65,7 +65,7 @@ public interface ExecutableOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableOperator<X> execIfNotNull(final IFunction<X,? super T> function);
+    public <X> ExecutableOperator<X> execIfNotNull(final IFunction<? super T,X> function);
 
     
 }

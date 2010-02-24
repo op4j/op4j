@@ -220,7 +220,7 @@ public final class ExecutionTarget extends Target {
 
 
     @Override
-    Target doExecute(final IFunction<?, ?> executable, final Normalisation normalisation) {
+    Target doExecute(final IFunction<?,?> executable, final Normalisation normalisation) {
 
         final ExecutionTargetExecuteOperation operation =
             new ExecutionTargetExecuteOperation(executable, normalisation);
@@ -235,7 +235,7 @@ public final class ExecutionTarget extends Target {
 
 
     @Override
-    Target doExecuteIfNotNull(final IFunction<?, ?> executable, final Normalisation normalisation) {
+    Target doExecuteIfNotNull(final IFunction<?,?> executable, final Normalisation normalisation) {
 
         final ExecutionTargetExecuteIfNotNullOperation operation =
             new ExecutionTargetExecuteIfNotNullOperation(executable, normalisation);
@@ -349,7 +349,7 @@ public final class ExecutionTarget extends Target {
 
 
     @Override
-    Target doSelectMatching(final boolean desiredResult, final IFunction<Boolean, Object> eval) {
+    Target doSelectMatching(final boolean desiredResult, final IFunction<Object,Boolean> eval) {
 
         final int newBlockLevel = this.operations.length;
         final ExecutionTargetSelectMatchingOperation operation =
@@ -366,7 +366,7 @@ public final class ExecutionTarget extends Target {
 
 
     @Override
-    Target doSelectNotNullAndMatching(final boolean desiredResult, final IFunction<Boolean, Object> eval) {
+    Target doSelectNotNullAndMatching(final boolean desiredResult, final IFunction<Object,Boolean> eval) {
 
         final int newBlockLevel = this.operations.length;
         final ExecutionTargetSelectNotNullAndMatchingOperation operation =
@@ -400,7 +400,7 @@ public final class ExecutionTarget extends Target {
 
 
     @Override
-    Target doSelectNullOrMatching(final boolean desiredResult, final IFunction<Boolean, Object> eval) {
+    Target doSelectNullOrMatching(final boolean desiredResult, final IFunction<Object,Boolean> eval) {
 
         final int newBlockLevel = this.operations.length;
         final ExecutionTargetSelectNullOrMatchingOperation operation =
@@ -432,7 +432,7 @@ public final class ExecutionTarget extends Target {
 
 
     @Override
-    Target doMap(final Structure structure, final IFunction<?, ?> executable, final Class<?> arrayComponentClass) {
+    Target doMap(final Structure structure, final IFunction<?,?> executable, final Class<?> arrayComponentClass) {
 
         final ExecutionTargetMapOperation operation =
             new ExecutionTargetMapOperation(structure, executable, arrayComponentClass);
@@ -446,7 +446,7 @@ public final class ExecutionTarget extends Target {
 
 
     @Override
-    Target doMapIfNotNull(final Structure structure, final IFunction<?, ?> executable, final Class<?> arrayComponentClass) {
+    Target doMapIfNotNull(final Structure structure, final IFunction<?,?> executable, final Class<?> arrayComponentClass) {
 
         final ExecutionTargetMapIfNotNullOperation operation =
             new ExecutionTargetMapIfNotNullOperation(structure, executable, arrayComponentClass);

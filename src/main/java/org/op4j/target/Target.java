@@ -58,10 +58,10 @@ public abstract class Target {
 
     abstract Target doSelectIndex(final boolean desiredResult, final List<Integer> positions);
     abstract Target doSelectMapKeys(final boolean desiredResult, final List<Object> objects);
-    abstract Target doSelectMatching(final boolean desiredResult, final IFunction<Boolean,Object> eval);
+    abstract Target doSelectMatching(final boolean desiredResult, final IFunction<Object,Boolean> eval);
     abstract Target doSelectNull(final boolean desiredResult);
-    abstract Target doSelectNullOrMatching(final boolean desiredResult, final IFunction<Boolean,Object> eval);
-    abstract Target doSelectNotNullAndMatching(final boolean desiredResult, final IFunction<Boolean,Object> eval);
+    abstract Target doSelectNullOrMatching(final boolean desiredResult, final IFunction<Object,Boolean> eval);
+    abstract Target doSelectNotNullAndMatching(final boolean desiredResult, final IFunction<Object,Boolean> eval);
 
     abstract Target doCast(final CastType targetType, final Type<?>... types);
     
@@ -145,16 +145,16 @@ public abstract class Target {
     
     
     @SuppressWarnings("unchecked")
-    public final Target selectMatching(final IFunction<Boolean,? extends Object> eval) {
+    public final Target selectMatching(final IFunction<? extends Object,Boolean> eval) {
     	Validate.notNull(eval, "Specified evaluator cannot be null");
-    	return doSelectMatching(true, (IFunction<Boolean,Object>) eval);
+    	return doSelectMatching(true, (IFunction<Object,Boolean>) eval);
     }
 
     
     @SuppressWarnings("unchecked")
-    public final Target selectNotMatching(final IFunction<Boolean,? extends Object> eval) {
+    public final Target selectNotMatching(final IFunction<? extends Object,Boolean> eval) {
         Validate.notNull(eval, "Specified evaluator cannot be null");
-    	return doSelectMatching(false, (IFunction<Boolean,Object>) eval);
+    	return doSelectMatching(false, (IFunction<Object,Boolean>) eval);
     }
 
     
@@ -169,30 +169,30 @@ public abstract class Target {
 
     
     @SuppressWarnings("unchecked")
-    public final Target selectNullOrMatching(final IFunction<Boolean,? extends Object> eval) {
+    public final Target selectNullOrMatching(final IFunction<? extends Object,Boolean> eval) {
         Validate.notNull(eval, "Specified evaluator cannot be null");
-        return doSelectNullOrMatching(true, (IFunction<Boolean,Object>) eval);
+        return doSelectNullOrMatching(true, (IFunction<Object,Boolean>) eval);
     }
 
     
     @SuppressWarnings("unchecked")
-    public final Target selectNullOrNotMatching(final IFunction<Boolean,? extends Object> eval) {
+    public final Target selectNullOrNotMatching(final IFunction<? extends Object,Boolean> eval) {
         Validate.notNull(eval, "Specified evaluator cannot be null");
-        return doSelectNullOrMatching(false, (IFunction<Boolean,Object>) eval);
+        return doSelectNullOrMatching(false, (IFunction<Object,Boolean>) eval);
     }
 
     
     @SuppressWarnings("unchecked")
-    public final Target selectNotNullAndMatching(final IFunction<Boolean,? extends Object> eval) {
+    public final Target selectNotNullAndMatching(final IFunction<? extends Object,Boolean> eval) {
         Validate.notNull(eval, "Specified evaluator cannot be null");
-        return doSelectNotNullAndMatching(true, (IFunction<Boolean,Object>) eval);
+        return doSelectNotNullAndMatching(true, (IFunction<Object,Boolean>) eval);
     }
 
     
     @SuppressWarnings("unchecked")
-    public final Target selectNotNullAndNotMatching(final IFunction<Boolean,? extends Object> eval) {
+    public final Target selectNotNullAndNotMatching(final IFunction<? extends Object,Boolean> eval) {
         Validate.notNull(eval, "Specified evaluator cannot be null");
-        return doSelectNotNullAndMatching(false, (IFunction<Boolean,Object>) eval);
+        return doSelectNotNullAndMatching(false, (IFunction<Object,Boolean>) eval);
     }
     
     

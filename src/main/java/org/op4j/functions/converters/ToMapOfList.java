@@ -51,11 +51,11 @@ public final class ToMapOfList {
     
     
     
-    public static final class FromArrayByKeyEval<K, T> extends AbstractNullAsNullFunction<Map<K, List<T>>, T[]> {
+    public static final class FromArrayByKeyEval<K, T> extends AbstractNullAsNullFunction<T[],Map<K,List<T>>> {
 
-        private final IFunction<K,? super T> eval;
+        private final IFunction<? super T,K>  eval;
         
-        public FromArrayByKeyEval(final IFunction<K,? super T> eval) {
+        public FromArrayByKeyEval(final IFunction<? super T,K>  eval) {
             super();
 			Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
@@ -82,7 +82,7 @@ public final class ToMapOfList {
     
     
     
-    public static final class FromArrayByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<Map<K, List<V>>, T[]> {
+    public static final class FromArrayByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<T[],Map<K,List<V>>> {
 
         private final IMapBuilder<K, V, ? super T> mapBuilder;
         
@@ -113,7 +113,7 @@ public final class ToMapOfList {
     
     
     
-    public static final class FromArrayByAlternateElements<T> extends AbstractNullAsNullFunction<Map<T, List<T>>, T[]> {
+    public static final class FromArrayByAlternateElements<T> extends AbstractNullAsNullFunction<T[],Map<T,List<T>>> {
 
         public FromArrayByAlternateElements() {
             super();
@@ -146,11 +146,11 @@ public final class ToMapOfList {
     
     
     
-    public static final class FromListByKeyEval<K, T> extends AbstractNullAsNullFunction<Map<K, List<T>>, List<T>> {
+    public static final class FromListByKeyEval<K, T> extends AbstractNullAsNullFunction<List<T>,Map<K, List<T>>>  {
 
-        private final IFunction<K,? super T> eval;
+        private final IFunction<? super T,K>  eval;
         
-        public FromListByKeyEval(final IFunction<K,? super T> eval) {
+        public FromListByKeyEval(final IFunction<? super T,K>  eval) {
             super();
 			Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
@@ -177,7 +177,7 @@ public final class ToMapOfList {
     
     
     
-    public static final class FromListByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<Map<K, List<V>>, List<T>> {
+    public static final class FromListByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<List<T>,Map<K, List<V>>>  {
 
         private final IMapBuilder<K, V, ? super T> mapBuilder;
         
@@ -208,7 +208,7 @@ public final class ToMapOfList {
     
     
     
-    public static final class FromListByAlternateElements<T> extends AbstractNullAsNullFunction<Map<T, List<T>>, List<T>> {
+    public static final class FromListByAlternateElements<T> extends AbstractNullAsNullFunction<List<T>,Map<T, List<T>>>  {
 
         public FromListByAlternateElements() {
             super();
@@ -240,11 +240,11 @@ public final class ToMapOfList {
     
     
     
-    public static final class FromSetByKeyEval<K, T> extends AbstractNullAsNullFunction<Map<K, List<T>>, Set<T>> {
+    public static final class FromSetByKeyEval<K, T> extends AbstractNullAsNullFunction<Set<T>,Map<K, List<T>>>  {
 
-        private final IFunction<K,? super T> eval;
+        private final IFunction<? super T,K>  eval;
         
-        public FromSetByKeyEval(final IFunction<K,? super T> eval) {
+        public FromSetByKeyEval(final IFunction<? super T,K>  eval) {
             super();
 			Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
@@ -271,7 +271,7 @@ public final class ToMapOfList {
     
     
     
-    public static final class FromSetByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<Map<K, List<V>>, Set<T>> {
+    public static final class FromSetByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<Set<T>,Map<K, List<V>>>  {
 
         private final IMapBuilder<K, V, ? super T> mapBuilder;
         
@@ -302,7 +302,7 @@ public final class ToMapOfList {
     
     
     
-    public static final class FromSetByAlternateElements<T> extends AbstractNullAsNullFunction<Map<T, List<T>>, Set<T>> {
+    public static final class FromSetByAlternateElements<T> extends AbstractNullAsNullFunction<Set<T>,Map<T, List<T>>>  {
 
         public FromSetByAlternateElements() {
             super();

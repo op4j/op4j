@@ -54,7 +54,7 @@ public interface ExecutableSetSelectedOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableSetSelectedOperator<T> execAsSet(final IFunction<? extends Set<? extends T>, ? super Set<T>> function);
+    public ExecutableSetSelectedOperator<T> execAsSet(final IFunction<? super Set<T>,? extends Set<? extends T>> function);
     
     
     /**
@@ -66,7 +66,7 @@ public interface ExecutableSetSelectedOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableSetSelectedOperator<T> execIfNotNullAsSet(final IFunction<? extends Set<? extends T>,? super Set<T>> function);
+    public ExecutableSetSelectedOperator<T> execIfNotNullAsSet(final IFunction<? super Set<T>,? extends Set<? extends T>> function);
 
     
     
@@ -87,7 +87,7 @@ public interface ExecutableSetSelectedOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution on each element
      */
-    public ExecutableSetSelectedOperator<T> map(final IFunction<? extends T,? super T> function);
+    public ExecutableSetSelectedOperator<T> map(final IFunction<? super T,? extends T> function);
     
     
     
@@ -108,6 +108,6 @@ public interface ExecutableSetSelectedOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution on each element
      */
-    public ExecutableSetSelectedOperator<T> mapIfNotNull(final IFunction<? extends T,? super T> function);
+    public ExecutableSetSelectedOperator<T> mapIfNotNull(final IFunction<? super T,? extends T> function);
     
 }

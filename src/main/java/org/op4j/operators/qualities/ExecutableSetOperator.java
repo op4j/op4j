@@ -55,7 +55,7 @@ public interface ExecutableSetOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableSetOperator<X> execAsSet(final IFunction<? extends Set<X>, ? super Set<T>> function);
+    public <X> ExecutableSetOperator<X> execAsSet(final IFunction<? super Set<T>,? extends Set<X>> function);
     
     
     /**
@@ -67,7 +67,7 @@ public interface ExecutableSetOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableSetOperator<T> execIfNotNullAsSet(final IFunction<? extends Set<? extends T>,? super Set<T>> function);
+    public ExecutableSetOperator<T> execIfNotNullAsSet(final IFunction<? super Set<T>,? extends Set<? extends T>> function);
 
 
     
@@ -82,7 +82,7 @@ public interface ExecutableSetOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> Operator exec(final IFunction<X, ? super Set<T>> function);
+    public <X> Operator exec(final IFunction<? super Set<T>,X> function);
     
     
     
@@ -101,7 +101,7 @@ public interface ExecutableSetOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution on each element
      */
-    public <X> ExecutableSetOperator<X> map(final IFunction<X,? super T> function);
+    public <X> ExecutableSetOperator<X> map(final IFunction<? super T,X> function);
     
     
     /**
@@ -116,6 +116,6 @@ public interface ExecutableSetOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution on each element
      */
-    public ExecutableSetOperator<T> mapIfNotNull(final IFunction<? extends T,? super T> function);
+    public ExecutableSetOperator<T> mapIfNotNull(final IFunction<? super T,? extends T> function);
     
 }

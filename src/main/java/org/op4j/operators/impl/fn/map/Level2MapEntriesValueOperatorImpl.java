@@ -81,12 +81,12 @@ public final class Level2MapEntriesValueOperatorImpl<I,K,V> extends AbstractOper
     }
 
 
-    public Level2MapEntriesValueSelectedOperatorImpl<I,K, V> ifTrue(final IFunction<Boolean, ? super V> eval) {
+    public Level2MapEntriesValueSelectedOperatorImpl<I,K, V> ifTrue(final IFunction<? super V,Boolean> eval) {
         return new Level2MapEntriesValueSelectedOperatorImpl<I,K, V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level2MapEntriesValueSelectedOperatorImpl<I,K, V> ifFalse(final IFunction<Boolean, ? super V> eval) {
+    public Level2MapEntriesValueSelectedOperatorImpl<I,K, V> ifFalse(final IFunction<? super V,Boolean> eval) {
         return new Level2MapEntriesValueSelectedOperatorImpl<I,K, V>(getTarget().selectNotMatching(eval));
     }
 
@@ -96,12 +96,12 @@ public final class Level2MapEntriesValueOperatorImpl<I,K,V> extends AbstractOper
     }
 
 
-    public Level2MapEntriesValueSelectedOperatorImpl<I,K, V> ifNotNullAndTrue(final IFunction<Boolean, ? super V> eval) {
+    public Level2MapEntriesValueSelectedOperatorImpl<I,K, V> ifNotNullAndTrue(final IFunction<? super V,Boolean> eval) {
         return new Level2MapEntriesValueSelectedOperatorImpl<I,K, V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level2MapEntriesValueSelectedOperatorImpl<I,K, V> ifNotNullAndFalse(final IFunction<Boolean, ? super V> eval) {
+    public Level2MapEntriesValueSelectedOperatorImpl<I,K, V> ifNotNullAndFalse(final IFunction<? super V,Boolean> eval) {
         return new Level2MapEntriesValueSelectedOperatorImpl<I,K, V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -111,22 +111,22 @@ public final class Level2MapEntriesValueOperatorImpl<I,K,V> extends AbstractOper
     }
 
 
-    public Level2MapEntriesValueSelectedOperatorImpl<I,K, V> ifNullOrTrue(final IFunction<Boolean, ? super V> eval) {
+    public Level2MapEntriesValueSelectedOperatorImpl<I,K, V> ifNullOrTrue(final IFunction<? super V,Boolean> eval) {
         return new Level2MapEntriesValueSelectedOperatorImpl<I,K, V>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level2MapEntriesValueSelectedOperatorImpl<I,K, V> ifNullOrFalse(final IFunction<Boolean, ? super V> eval) {
+    public Level2MapEntriesValueSelectedOperatorImpl<I,K, V> ifNullOrFalse(final IFunction<? super V,Boolean> eval) {
         return new Level2MapEntriesValueSelectedOperatorImpl<I,K, V>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public <X> Level2MapEntriesValueOperatorImpl<I,K, X> execIfNotNull(final IFunction<X, ? super V> function) {
+    public <X> Level2MapEntriesValueOperatorImpl<I,K, X> execIfNotNull(final IFunction<? super V,X> function) {
         return new Level2MapEntriesValueOperatorImpl<I,K, X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 
-    public <X> Level2MapEntriesValueOperatorImpl<I,K, X> exec(final IFunction<X, ? super V> function) {
+    public <X> Level2MapEntriesValueOperatorImpl<I,K, X> exec(final IFunction<? super V,X> function) {
         return new Level2MapEntriesValueOperatorImpl<I,K, X>(getTarget().execute(function, Normalisation.NONE));
     }
 

@@ -195,7 +195,7 @@ final class ToNonDecimalNumber {
     
     
     
-    static abstract class FromFloat<X extends Number> extends ToNumber.ToNumberFunction<X, Float> {
+    static abstract class FromFloat<X extends Number> extends ToNumber.ToNumberFunction<Float,X>  {
 
         private final RoundingMode roundingMode;
         
@@ -221,7 +221,7 @@ final class ToNonDecimalNumber {
     
     
     
-    static abstract class FromDouble<X extends Number> extends ToNumber.ToNumberFunction<X, Double> {
+    static abstract class FromDouble<X extends Number> extends ToNumber.ToNumberFunction<Double,X>  {
 
         private final RoundingMode roundingMode;
         
@@ -247,7 +247,7 @@ final class ToNonDecimalNumber {
     
     
     
-    static abstract class FromBigDecimal<X extends Number> extends ToNumber.ToNumberFunction<X, BigDecimal> {
+    static abstract class FromBigDecimal<X extends Number> extends ToNumber.ToNumberFunction<BigDecimal,X>  {
 
         private final RoundingMode roundingMode;
         

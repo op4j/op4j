@@ -47,8 +47,8 @@ public interface Level1MapSelectedEntriesOperator<I,K,V>
 
 
     public Level1MapSelectedEntriesSelectedOperator<I,K,V> ifIndex(final int... indexes);
-    public Level1MapSelectedEntriesSelectedOperator<I,K,V> ifTrue(final IFunction<Boolean, ? super Map.Entry<K,V>> eval);
-    public Level1MapSelectedEntriesSelectedOperator<I,K,V> ifFalse(final IFunction<Boolean, ? super Map.Entry<K,V>> eval);
+    public Level1MapSelectedEntriesSelectedOperator<I,K,V> ifTrue(final IFunction<? super Map.Entry<K,V>,Boolean> eval);
+    public Level1MapSelectedEntriesSelectedOperator<I,K,V> ifFalse(final IFunction<? super Map.Entry<K,V>,Boolean> eval);
     public Level1MapSelectedEntriesSelectedOperator<I,K,V> ifIndexNot(final int... indexes);
     public Level1MapSelectedEntriesSelectedOperator<I,K,V> ifKeyEquals(final K... keys);
     public Level1MapSelectedEntriesSelectedOperator<I,K,V> ifKeyNotEquals(final K... keys);
@@ -61,8 +61,8 @@ public interface Level1MapSelectedEntriesOperator<I,K,V>
     
     public Level1MapSelectedEntriesOperator<I,K,V> replaceWith(final Map.Entry<K,V> replacement);
 
-    public Level1MapSelectedEntriesOperator<I,K,V> execAsMapEntry(final IFunction<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> function);
+    public Level1MapSelectedEntriesOperator<I,K,V> execAsMapEntry(final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<? extends K,? extends V>> function);
     
-    public Level1MapSelectedEntriesOperator<I,K,V> execIfNotNullAsMapEntry(final IFunction<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> function);
+    public Level1MapSelectedEntriesOperator<I,K,V> execIfNotNullAsMapEntry(final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<? extends K,? extends V>> function);
     
     }

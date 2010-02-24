@@ -62,7 +62,7 @@ public final class Level0IndefiniteArrayOperatorImpl<I,T>
         return new Level0MapOperatorImpl<I,T, T>(getTarget().execute(new ToMap.FromArrayByAlternateElements<T>()));
     }
 
-    public <K> Level0MapOperatorImpl<I,K, T> toMap(final IFunction<K, ? super T> keyEval) {
+    public <K> Level0MapOperatorImpl<I,K, T> toMap(final IFunction<? super T,K> keyEval) {
         return new Level0MapOperatorImpl<I,K, T>(getTarget().execute(new ToMap.FromArrayByKeyEval<K, T>(keyEval)));
     }
 
@@ -82,7 +82,7 @@ public final class Level0IndefiniteArrayOperatorImpl<I,T>
 
 
 
-    public <X> Level0GenericUniqOperatorImpl<I,X> exec(final IFunction<X, ? super T[]> function) {
+    public <X> Level0GenericUniqOperatorImpl<I,X> exec(final IFunction<? super T[],X> function) {
         return new Level0GenericUniqOperatorImpl<I,X>(getTarget().execute(function, Normalisation.NONE));
     }
     

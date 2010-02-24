@@ -27,12 +27,12 @@ public final class Level0MapSelectedOperatorImpl<I,K,V> extends AbstractOperator
     }
 
 
-    public Level0MapSelectedOperatorImpl<I,K,V> removeAllTrue(final IFunction<Boolean,? super Entry<K,V>> eval) {
+    public Level0MapSelectedOperatorImpl<I,K,V> removeAllTrue(final IFunction<? super Entry<K,V>,Boolean> eval) {
         return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(new FMap.RemoveAllTrue<K,V>(eval)));
     }
 
 
-    public Level0MapSelectedOperatorImpl<I,K,V> removeAllFalse(final IFunction<Boolean,? super Entry<K,V>> eval) {
+    public Level0MapSelectedOperatorImpl<I,K,V> removeAllFalse(final IFunction<? super Entry<K,V>,Boolean> eval) {
         return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(new FMap.RemoveAllFalse<K,V>(eval)));
     }
 
@@ -57,12 +57,12 @@ public final class Level0MapSelectedOperatorImpl<I,K,V> extends AbstractOperator
     }
 
 
-    public Level0MapSelectedOperatorImpl<I,K,V> execIfNotNullAsMap(final IFunction<? extends Map<? extends K,? extends V>,? super Map<K,V>> function) {
+    public Level0MapSelectedOperatorImpl<I,K,V> execIfNotNullAsMap(final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function) {
         return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().executeIfNotNull(function, Normalisation.MAP));
     }
 
 
-    public Level0MapSelectedOperatorImpl<I,K,V> execAsMap(final IFunction<? extends Map<? extends K,? extends V>,? super Map<K,V>> function) {
+    public Level0MapSelectedOperatorImpl<I,K,V> execAsMap(final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function) {
         return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(function, Normalisation.MAP));
     }
 

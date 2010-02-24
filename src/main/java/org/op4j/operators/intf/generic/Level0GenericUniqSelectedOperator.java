@@ -48,9 +48,9 @@ public interface Level0GenericUniqSelectedOperator<I,T>
     
     public Level0GenericUniqSelectedOperator<I,T> replaceWith(final T replacement);
     
-    public Level0GenericUniqSelectedOperator<I,T> execIfNotNull(final IFunction<? extends T,? super T> function);
+    public Level0GenericUniqSelectedOperator<I,T> execIfNotNull(final IFunction<? super T,? extends T> function);
 
-    public Level0GenericUniqSelectedOperator<I,T> exec(final IFunction<? extends T, ? super T> function);
+    public Level0GenericUniqSelectedOperator<I,T> exec(final IFunction<? super T,? extends T> function);
 
 
 }

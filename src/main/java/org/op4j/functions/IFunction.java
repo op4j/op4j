@@ -28,7 +28,7 @@ package org.op4j.functions;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface IFunction<R,T> {
+public interface IFunction<T,R> {
     
     public R execute(final T object, final ExecCtx ctx) throws Exception;
 

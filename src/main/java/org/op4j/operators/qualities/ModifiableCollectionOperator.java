@@ -149,7 +149,7 @@ public interface ModifiableCollectionOperator<T> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the modified target object
      */
-    public ModifiableCollectionOperator<T> removeAllTrue(final IFunction<Boolean, ? super T> eval);
+    public ModifiableCollectionOperator<T> removeAllTrue(final IFunction<? super T,Boolean> eval);
     
     
     /**
@@ -164,7 +164,7 @@ public interface ModifiableCollectionOperator<T> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the modified target object
      */
-    public ModifiableCollectionOperator<T> removeAllFalse(final IFunction<Boolean, ? super T> eval);
+    public ModifiableCollectionOperator<T> removeAllFalse(final IFunction<? super T,Boolean> eval);
     
     
     /**
@@ -179,7 +179,7 @@ public interface ModifiableCollectionOperator<T> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the modified target object
      */
-    public ModifiableCollectionOperator<T> removeAllNullOrFalse(final IFunction<Boolean, ? super T> eval);
+    public ModifiableCollectionOperator<T> removeAllNullOrFalse(final IFunction<? super T,Boolean> eval);
     
 
     /**
@@ -194,7 +194,7 @@ public interface ModifiableCollectionOperator<T> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the modified target object
      */
-    public ModifiableCollectionOperator<T> removeAllNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
+    public ModifiableCollectionOperator<T> removeAllNotNullAndFalse(final IFunction<? super T,Boolean> eval);
     
     
     /**
@@ -209,7 +209,7 @@ public interface ModifiableCollectionOperator<T> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the modified target object
      */
-    public ModifiableCollectionOperator<T> removeAllNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
+    public ModifiableCollectionOperator<T> removeAllNotNullAndTrue(final IFunction<? super T,Boolean> eval);
     
     
     /**
@@ -224,7 +224,7 @@ public interface ModifiableCollectionOperator<T> {
      * @param eval the evaluator to be used, which must return Boolean 
      * @return an operator holding the modified target object
      */
-    public ModifiableCollectionOperator<T> removeAllNullOrTrue(final IFunction<Boolean, ? super T> eval);
+    public ModifiableCollectionOperator<T> removeAllNullOrTrue(final IFunction<? super T,Boolean> eval);
     
     
     /**

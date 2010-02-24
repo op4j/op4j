@@ -34,12 +34,12 @@ public final class Level1MapEntriesSelectedOperatorImpl<I,K,V> extends AbstractO
     }
 
 
-    public Level1MapEntriesSelectedOperatorImpl<I,K,V> execAsMapEntry(final IFunction<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> function) {
+    public Level1MapEntriesSelectedOperatorImpl<I,K,V> execAsMapEntry(final IFunction<? super Entry<K,V>,? extends Entry<? extends K,? extends V>> function) {
         return new Level1MapEntriesSelectedOperatorImpl<I,K,V>(getTarget().execute(function, Normalisation.MAP_ENTRY));
     }
 
 
-    public Level1MapEntriesSelectedOperatorImpl<I,K,V> execIfNotNullAsMapEntry(final IFunction<? extends Entry<? extends K,? extends V>,? super Entry<K,V>> function) {
+    public Level1MapEntriesSelectedOperatorImpl<I,K,V> execIfNotNullAsMapEntry(final IFunction<? super Entry<K,V>,? extends Entry<? extends K,? extends V>> function) {
         return new Level1MapEntriesSelectedOperatorImpl<I,K,V>(getTarget().executeIfNotNull(function, Normalisation.MAP_ENTRY));
     }
 

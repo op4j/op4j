@@ -24,7 +24,7 @@ public final class Level0GenericMultiSelectedOperatorImpl<I,T> extends AbstractO
     }
 
 
-    public Level0GenericMultiSelectedOperatorImpl<I,T> execIfNotNull(final IFunction<? extends T,? super T> function) {
+    public Level0GenericMultiSelectedOperatorImpl<I,T> execIfNotNull(final IFunction<? super T,? extends T> function) {
         return new Level0GenericMultiSelectedOperatorImpl<I,T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
@@ -44,7 +44,7 @@ public final class Level0GenericMultiSelectedOperatorImpl<I,T> extends AbstractO
     }
 
 
-    public Level0GenericMultiSelectedOperatorImpl<I,T> exec(final IFunction<? extends T,? super T> function) {
+    public Level0GenericMultiSelectedOperatorImpl<I,T> exec(final IFunction<? super T,? extends T> function) {
         return new Level0GenericMultiSelectedOperatorImpl<I,T>(getTarget().execute(function, Normalisation.NONE));
     }
 

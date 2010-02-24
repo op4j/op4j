@@ -54,7 +54,7 @@ public interface ExecutableListSelectedOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableListSelectedOperator<T> execAsList(final IFunction<? extends List<? extends T>, ? super List<T>> function);
+    public ExecutableListSelectedOperator<T> execAsList(final IFunction<? super List<T>,? extends List<? extends T>> function);
     
     
     /**
@@ -66,7 +66,7 @@ public interface ExecutableListSelectedOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public ExecutableListSelectedOperator<T> execIfNotNullAsList(final IFunction<? extends List<? extends T>,? super List<T>> function);
+    public ExecutableListSelectedOperator<T> execIfNotNullAsList(final IFunction<? super List<T>,? extends List<? extends T>> function);
 
  
     
@@ -87,6 +87,6 @@ public interface ExecutableListSelectedOperator<T> {
      * @param function the function to be executed
      * @return an operator on the results of function execution on each element
      */
-    public ExecutableListSelectedOperator<T> mapIfNotNull(final IFunction<? extends T,? super T> function);
+    public ExecutableListSelectedOperator<T> mapIfNotNull(final IFunction<? super T,? extends T> function);
     
 }

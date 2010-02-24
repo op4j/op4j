@@ -5,7 +5,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -65,7 +64,7 @@ public class AssortedTests extends TestCase {
 		List<String> data2 = this.testUtils.getStringList(10);
 
 		List<String> result = Op.onList(data1)
-		.addAll(data2).removeAllNullOrFalse(new IFunction<Boolean, String>() {
+		.addAll(data2).removeAllNullOrFalse(new IFunction<String, Boolean>() {
 
 			public Boolean execute(String object, ExecCtx ctx)
 			throws Exception {

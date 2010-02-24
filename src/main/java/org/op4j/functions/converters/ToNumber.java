@@ -54,7 +54,7 @@ final class ToNumber {
     }
     
     
-    static abstract class ToNumberFunction<X extends Number, T> extends AbstractNullAsNullFunction<X, T> {
+    static abstract class ToNumberFunction<T,X extends Number>  extends AbstractNullAsNullFunction<T,X>  {
         
         ToNumberFunction() {
             super();
@@ -69,7 +69,7 @@ final class ToNumber {
     
     
     
-    static abstract class FromNumber<X extends Number> extends ToNumberFunction<X, Number> {
+    static abstract class FromNumber<X extends Number> extends ToNumberFunction<Number,X>  {
 
 
         private static enum ExecType 
@@ -109,7 +109,7 @@ final class ToNumber {
     
 
     
-    static abstract class FromBoolean<X extends Number> extends ToNumberFunction<X, Boolean> {
+    static abstract class FromBoolean<X extends Number> extends ToNumberFunction<Boolean,X>  {
 
         protected FromBoolean() {
             super();
@@ -125,7 +125,7 @@ final class ToNumber {
     
 
     
-    static abstract class FromString<X extends Number> extends ToNumberFunction<X, String> {
+    static abstract class FromString<X extends Number> extends ToNumberFunction<String,X>  {
 
         private static enum ExecType 
                 { FROM_STRING, FROM_STRING_LOCALE, FROM_STRING_DECIMALPOINT, DELEGATED } 

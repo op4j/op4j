@@ -46,11 +46,11 @@ public interface Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V>
     public Level2MapSelectedEntriesSelectedValueOperator<I,K,V> endIf();
 
     
-    public Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V> execIfNotNull(final IFunction<? extends V, ? super V> function);
+    public Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V> execIfNotNull(final IFunction<? super V,? extends V> function);
 
     public Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V> replaceWith(final V replacement);
 
-    public Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V> exec(final IFunction<? extends V, ? super V> function);
+    public Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V> exec(final IFunction<? super V,? extends V> function);
 
     
 }

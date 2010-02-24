@@ -23,22 +23,22 @@ public final class Level2MapEntriesSelectedValueOperatorImpl<I,K,V> extends Abst
     }
 
 
-    public Level2MapEntriesSelectedValueSelectedOperatorImpl<I,K,V> ifTrue(final IFunction<Boolean, ? super V> eval) {
+    public Level2MapEntriesSelectedValueSelectedOperatorImpl<I,K,V> ifTrue(final IFunction<? super V,Boolean> eval) {
         return new Level2MapEntriesSelectedValueSelectedOperatorImpl<I,K,V>(getTarget().selectMatching(eval));
     }
 
 
-    public Level2MapEntriesSelectedValueSelectedOperatorImpl<I,K,V> ifFalse(final IFunction<Boolean, ? super V> eval) {
+    public Level2MapEntriesSelectedValueSelectedOperatorImpl<I,K,V> ifFalse(final IFunction<? super V,Boolean> eval) {
         return new Level2MapEntriesSelectedValueSelectedOperatorImpl<I,K,V>(getTarget().selectNotMatching(eval));
     }
 
 
-    public Level2MapEntriesSelectedValueSelectedOperatorImpl<I,K,V> ifNullOrFalse(final IFunction<Boolean, ? super V> eval) {
+    public Level2MapEntriesSelectedValueSelectedOperatorImpl<I,K,V> ifNullOrFalse(final IFunction<? super V,Boolean> eval) {
         return new Level2MapEntriesSelectedValueSelectedOperatorImpl<I,K,V>(getTarget().selectNullOrNotMatching(eval));
     }
 
 
-    public Level2MapEntriesSelectedValueSelectedOperatorImpl<I,K,V> ifNotNullAndFalse(final IFunction<Boolean, ? super V> eval) {
+    public Level2MapEntriesSelectedValueSelectedOperatorImpl<I,K,V> ifNotNullAndFalse(final IFunction<? super V,Boolean> eval) {
         return new Level2MapEntriesSelectedValueSelectedOperatorImpl<I,K,V>(getTarget().selectNotNullAndNotMatching(eval));
     }
 
@@ -48,7 +48,7 @@ public final class Level2MapEntriesSelectedValueOperatorImpl<I,K,V> extends Abst
     }
 
 
-    public Level2MapEntriesSelectedValueSelectedOperatorImpl<I,K,V> ifNullOrTrue(final IFunction<Boolean, ? super V> eval) {
+    public Level2MapEntriesSelectedValueSelectedOperatorImpl<I,K,V> ifNullOrTrue(final IFunction<? super V,Boolean> eval) {
         return new Level2MapEntriesSelectedValueSelectedOperatorImpl<I,K,V>(getTarget().selectNullOrMatching(eval));
     }
 
@@ -63,12 +63,12 @@ public final class Level2MapEntriesSelectedValueOperatorImpl<I,K,V> extends Abst
     }
 
 
-    public Level2MapEntriesSelectedValueSelectedOperatorImpl<I,K,V> ifNotNullAndTrue(final IFunction<Boolean, ? super V> eval) {
+    public Level2MapEntriesSelectedValueSelectedOperatorImpl<I,K,V> ifNotNullAndTrue(final IFunction<? super V,Boolean> eval) {
         return new Level2MapEntriesSelectedValueSelectedOperatorImpl<I,K,V>(getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level2MapEntriesSelectedValueOperatorImpl<I,K,V> execIfNotNull(final IFunction<? extends V,? super V> function) {
+    public Level2MapEntriesSelectedValueOperatorImpl<I,K,V> execIfNotNull(final IFunction<? super V,? extends V> function) {
         return new Level2MapEntriesSelectedValueOperatorImpl<I,K,V>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
@@ -83,7 +83,7 @@ public final class Level2MapEntriesSelectedValueOperatorImpl<I,K,V> extends Abst
     }
 
 
-    public Level2MapEntriesSelectedValueOperatorImpl<I,K,V> exec(final IFunction<? extends V,? super V> function) {
+    public Level2MapEntriesSelectedValueOperatorImpl<I,K,V> exec(final IFunction<? super V,? extends V> function) {
         return new Level2MapEntriesSelectedValueOperatorImpl<I,K,V>(getTarget().execute(function, Normalisation.NONE));
     }
 

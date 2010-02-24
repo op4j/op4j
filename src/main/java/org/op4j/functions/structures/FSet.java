@@ -169,11 +169,11 @@ public class FSet<T> {
         return new RemoveAllEqual<T>(values);
     }
     
-    public final RemoveAllTrue<T> removeAllTrue(final IFunction<Boolean,? super T> eval) {
+    public final RemoveAllTrue<T> removeAllTrue(final IFunction<? super T,Boolean> eval) {
         return new RemoveAllTrue<T>(eval);
     }
     
-    public final RemoveAllFalse<T> removeAllFalse(final IFunction<Boolean,? super T> eval) {
+    public final RemoveAllFalse<T> removeAllFalse(final IFunction<? super T,Boolean> eval) {
         return new RemoveAllFalse<T>(eval);
     }
     
@@ -185,19 +185,19 @@ public class FSet<T> {
         return new RemoveAllNull<T>();
     }
     
-    public final RemoveAllNotNullAndTrue<T> removeAllNotNullAndTrue(final IFunction<Boolean,? super T> eval) {
+    public final RemoveAllNotNullAndTrue<T> removeAllNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
         return new RemoveAllNotNullAndTrue<T>(eval);
     }
     
-    public final RemoveAllNotNullAndFalse<T> removeAllNotNullAndFalse(final IFunction<Boolean,? super T> eval) {
+    public final RemoveAllNotNullAndFalse<T> removeAllNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
         return new RemoveAllNotNullAndFalse<T>(eval);
     }
     
-    public final RemoveAllNullOrTrue<T> removeAllNullOrTrue(final IFunction<Boolean,? super T> eval) {
+    public final RemoveAllNullOrTrue<T> removeAllNullOrTrue(final IFunction<? super T,Boolean> eval) {
         return new RemoveAllNullOrTrue<T>(eval);
     }
     
-    public final RemoveAllNullOrFalse<T> removeAllNullOrFalse(final IFunction<Boolean,? super T> eval) {
+    public final RemoveAllNullOrFalse<T> removeAllNullOrFalse(final IFunction<? super T,Boolean> eval) {
         return new RemoveAllNullOrFalse<T>(eval);
     }
 
@@ -331,7 +331,7 @@ public class FSet<T> {
     
     public static final class RemoveAllTrue<T> extends FCollection.RemoveAllTrue<T, Set<T>> {
 
-        public RemoveAllTrue(final IFunction<Boolean,? super T> eval) {
+        public RemoveAllTrue(final IFunction<? super T,Boolean> eval) {
             super(eval);
         }
 
@@ -347,7 +347,7 @@ public class FSet<T> {
     
     public static final class RemoveAllFalse<T> extends FCollection.RemoveAllTrue<T, Set<T>> {
 
-        public RemoveAllFalse(final IFunction<Boolean,? super T> eval) {
+        public RemoveAllFalse(final IFunction<? super T,Boolean> eval) {
             super(eval);
         }
 
@@ -395,7 +395,7 @@ public class FSet<T> {
     
     public static final class RemoveAllNotNullAndTrue<T> extends FCollection.RemoveAllNotNullAndTrue<T, Set<T>> {
 
-        public RemoveAllNotNullAndTrue(final IFunction<Boolean,? super T> eval) {
+        public RemoveAllNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
             super(eval);
         }
 
@@ -411,7 +411,7 @@ public class FSet<T> {
     
     public static final class RemoveAllNotNullAndFalse<T> extends FCollection.RemoveAllNotNullAndTrue<T, Set<T>> {
 
-        public RemoveAllNotNullAndFalse(final IFunction<Boolean,? super T> eval) {
+        public RemoveAllNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
             super(eval);
         }
 
@@ -427,7 +427,7 @@ public class FSet<T> {
     
     public static final class RemoveAllNullOrTrue<T> extends FCollection.RemoveAllNullOrTrue<T, Set<T>> {
 
-        public RemoveAllNullOrTrue(final IFunction<Boolean,? super T> eval) {
+        public RemoveAllNullOrTrue(final IFunction<? super T,Boolean> eval) {
             super(eval);
         }
 
@@ -443,7 +443,7 @@ public class FSet<T> {
     
     public static final class RemoveAllNullOrFalse<T> extends FCollection.RemoveAllNullOrTrue<T, Set<T>> {
 
-        public RemoveAllNullOrFalse(final IFunction<Boolean,? super T> eval) {
+        public RemoveAllNullOrFalse(final IFunction<? super T,Boolean> eval) {
             super(eval);
         }
 

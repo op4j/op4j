@@ -23,12 +23,12 @@ public final class Level2MapSelectedEntriesSelectedValueSelectedOperatorImpl<I,K
     }
 
 
-    public Level2MapSelectedEntriesSelectedValueSelectedOperatorImpl<I,K,V> execIfNotNull(final IFunction<? extends V,? super V> function) {
+    public Level2MapSelectedEntriesSelectedValueSelectedOperatorImpl<I,K,V> execIfNotNull(final IFunction<? super V,? extends V> function) {
         return new Level2MapSelectedEntriesSelectedValueSelectedOperatorImpl<I,K,V>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 
-    public Level2MapSelectedEntriesSelectedValueSelectedOperatorImpl<I,K,V> exec(final IFunction<? extends V,? super V> function) {
+    public Level2MapSelectedEntriesSelectedValueSelectedOperatorImpl<I,K,V> exec(final IFunction<? super V,? extends V> function) {
         return new Level2MapSelectedEntriesSelectedValueSelectedOperatorImpl<I,K,V>(getTarget().execute(function, Normalisation.NONE));
     }
 

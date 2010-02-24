@@ -47,9 +47,9 @@ public interface Level0GenericMultiSelectedOperator<I,T>
 
     public Level0GenericMultiSelectedOperator<I,T> replaceWith(final T replacement);
     
-    public Level0GenericMultiSelectedOperator<I,T> execIfNotNull(final IFunction<? extends T,? super T> function);
+    public Level0GenericMultiSelectedOperator<I,T> execIfNotNull(final IFunction<? super T,? extends T> function);
 
-    public Level0GenericMultiSelectedOperator<I,T> exec(final IFunction<? extends T, ? super T> function);
+    public Level0GenericMultiSelectedOperator<I,T> exec(final IFunction<? super T,? extends T> function);
     
     
     public T[] getAsArray(final Type<T> type); 

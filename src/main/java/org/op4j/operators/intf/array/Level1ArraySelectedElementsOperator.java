@@ -46,25 +46,25 @@ public interface Level1ArraySelectedElementsOperator<I,T>
 
 
     public Level1ArraySelectedElementsSelectedOperator<I,T> ifIndex(final int... indexes);
-    public Level1ArraySelectedElementsSelectedOperator<I,T> ifTrue(final IFunction<Boolean, ? super T> eval);
-    public Level1ArraySelectedElementsSelectedOperator<I,T> ifFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1ArraySelectedElementsSelectedOperator<I,T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1ArraySelectedElementsSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
+    public Level1ArraySelectedElementsSelectedOperator<I,T> ifTrue(final IFunction<? super T,Boolean> eval);
+    public Level1ArraySelectedElementsSelectedOperator<I,T> ifFalse(final IFunction<? super T,Boolean> eval);
+    public Level1ArraySelectedElementsSelectedOperator<I,T> ifNullOrFalse(final IFunction<? super T,Boolean> eval);
+    public Level1ArraySelectedElementsSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval);
     public Level1ArraySelectedElementsSelectedOperator<I,T> ifNull();
-    public Level1ArraySelectedElementsSelectedOperator<I,T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval);
+    public Level1ArraySelectedElementsSelectedOperator<I,T> ifNullOrTrue(final IFunction<? super T,Boolean> eval);
     public Level1ArraySelectedElementsSelectedOperator<I,T> ifIndexNot(final int... indexes);
     public Level1ArraySelectedElementsSelectedOperator<I,T> ifNotNull();
-    public Level1ArraySelectedElementsSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
+    public Level1ArraySelectedElementsSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval);
 
 
 		    
     public Level0ArraySelectedOperator<I,T> endFor();
     
-    public Level1ArraySelectedElementsOperator<I,T> execIfNotNull(final IFunction<? extends T,? super T> function);
+    public Level1ArraySelectedElementsOperator<I,T> execIfNotNull(final IFunction<? super T,? extends T> function);
 
     public Level1ArraySelectedElementsOperator<I,T> replaceWith(final T replacement);
 
-    public Level1ArraySelectedElementsOperator<I,T> exec(final IFunction<? extends T, ? super T> function);
+    public Level1ArraySelectedElementsOperator<I,T> exec(final IFunction<? super T,? extends T> function);
 	
     
 }

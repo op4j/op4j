@@ -51,15 +51,15 @@ public interface Level1ListElementsOperator<I,T>
 
 
     public Level1ListElementsSelectedOperator<I,T> ifIndex(final int... indexes);
-    public Level1ListElementsSelectedOperator<I,T> ifTrue(final IFunction<Boolean, ? super T> eval);
-    public Level1ListElementsSelectedOperator<I,T> ifFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1ListElementsSelectedOperator<I,T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1ListElementsSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
+    public Level1ListElementsSelectedOperator<I,T> ifTrue(final IFunction<? super T,Boolean> eval);
+    public Level1ListElementsSelectedOperator<I,T> ifFalse(final IFunction<? super T,Boolean> eval);
+    public Level1ListElementsSelectedOperator<I,T> ifNullOrFalse(final IFunction<? super T,Boolean> eval);
+    public Level1ListElementsSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval);
     public Level1ListElementsSelectedOperator<I,T> ifNull();
-    public Level1ListElementsSelectedOperator<I,T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval);
+    public Level1ListElementsSelectedOperator<I,T> ifNullOrTrue(final IFunction<? super T,Boolean> eval);
     public Level1ListElementsSelectedOperator<I,T> ifIndexNot(final int... indexes);
     public Level1ListElementsSelectedOperator<I,T> ifNotNull();
-    public Level1ListElementsSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
+    public Level1ListElementsSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval);
 
 
     
@@ -69,9 +69,9 @@ public interface Level1ListElementsOperator<I,T>
     public Level1ListElementsOperator<I,T> replaceIfNullWith(final T replacement);
 
 
-    public <X> Level1ListElementsOperator<I,X> execIfNotNull(final IFunction<X,? super T> function);
+    public <X> Level1ListElementsOperator<I,X> execIfNotNull(final IFunction<? super T,X> function);
 
-    public <X> Level1ListElementsOperator<I,X> exec(final IFunction<X, ? super T> function);
+    public <X> Level1ListElementsOperator<I,X> exec(final IFunction<? super T,X> function);
     
     public <X> Level1ListElementsOperator<I,X> asType(final Type<X> type);
     public Level1ListElementsOperator<I,?> asUnknown();
