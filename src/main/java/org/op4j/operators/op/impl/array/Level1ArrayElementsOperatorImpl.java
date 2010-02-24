@@ -17,15 +17,16 @@
  * 
  * =============================================================================
  */
-package org.op4j.operators.impl.array;
+package org.op4j.operators.op.impl.array;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
-import org.op4j.operators.impl.AbstractOperatorImpl;
-import org.op4j.operators.intf.array.Level0ArrayOperator;
-import org.op4j.operators.intf.array.Level1ArrayElementsOperator;
-import org.op4j.operators.intf.array.Level1ArrayElementsSelectedOperator;
+import org.op4j.operators.op.impl.AbstractOperatorImpl;
+import org.op4j.operators.op.intf.array.Level0ArrayOperator;
+import org.op4j.operators.op.intf.array.Level1ArrayElementsOperator;
+import org.op4j.operators.op.intf.array.Level1ArrayElementsSelectedOperator;
+import org.op4j.operators.qualities.UniqOpOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 
@@ -38,8 +39,8 @@ import org.op4j.target.Target.Normalisation;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class Level1ArrayElementsOperatorImpl<T> extends AbstractOperatorImpl
-        implements Level1ArrayElementsOperator<T> {
+public final class Level1ArrayElementsOperatorImpl<T,I> extends AbstractOperatorImpl
+        implements UniqOpOperator<T[]>, Level1ArrayElementsOperator<T,I> {
     
     private final Type<T> type; 
 
@@ -51,16 +52,16 @@ public final class Level1ArrayElementsOperatorImpl<T> extends AbstractOperatorIm
 
 
 
-    public Level0ArrayOperator<T> endFor() {
-        return new Level0ArrayOperatorImpl<T>(this.type, getTarget().endIterate(this.type.getRawClass()));
+    public Level0ArrayOperator<T,I> endFor() {
+        return new Level0ArrayOperatorImpl<T,I>(this.type, getTarget().endIterate(this.type.getRawClass()));
     }
 
 
-    public <X> Level1ArrayElementsOperator<X> asType(final Type<X> elementType) {
+    public <X> Level1ArrayElementsOperator<X,I> asType(final Type<X> elementType) {
         return endFor().generic().asArrayOf(elementType).forEach();
     }
 
-    public Level1ArrayElementsOperator<?> asUnknown() {
+    public Level1ArrayElementsOperator<?,I> asUnknown() {
         return asType(Types.OBJECT);
     }
     
@@ -72,65 +73,65 @@ public final class Level1ArrayElementsOperatorImpl<T> extends AbstractOperatorIm
     }
 
 
-    public Level1ArrayElementsSelectedOperator<T> ifIndex(final int... indexes) {
-        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().selectIndex(indexes));
+    public Level1ArrayElementsSelectedOperator<T,I> ifIndex(final int... indexes) {
+        return new Level1ArrayElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectIndex(indexes));
     }
 
 
-    public Level1ArrayElementsSelectedOperator<T> ifIndexNot(final int... indexes) {
-        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().selectIndexNot(indexes));
+    public Level1ArrayElementsSelectedOperator<T,I> ifIndexNot(final int... indexes) {
+        return new Level1ArrayElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectIndexNot(indexes));
     }
 
 
-    public Level1ArrayElementsSelectedOperator<T> ifTrue(final IFunction<Boolean, ? super T> eval) {
-        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().selectMatching(eval));
+    public Level1ArrayElementsSelectedOperator<T,I> ifTrue(final IFunction<Boolean, ? super T> eval) {
+        return new Level1ArrayElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectMatching(eval));
     }
 
 
-    public Level1ArrayElementsSelectedOperator<T> ifFalse(final IFunction<Boolean, ? super T> eval) {
-        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().selectNotMatching(eval));
+    public Level1ArrayElementsSelectedOperator<T,I> ifFalse(final IFunction<Boolean, ? super T> eval) {
+        return new Level1ArrayElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectNotMatching(eval));
     }
 
 
-    public Level1ArrayElementsSelectedOperator<T> ifNotNull() {
-        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().selectNotNull());
+    public Level1ArrayElementsSelectedOperator<T,I> ifNotNull() {
+        return new Level1ArrayElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectNotNull());
     }
 
 
-    public Level1ArrayElementsSelectedOperator<T> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval) {
-        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().selectNotNullAndMatching(eval));
+    public Level1ArrayElementsSelectedOperator<T,I> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval) {
+        return new Level1ArrayElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectNotNullAndMatching(eval));
     }
 
 
-    public Level1ArrayElementsSelectedOperator<T> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval) {
-        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().selectNotNullAndNotMatching(eval));
+    public Level1ArrayElementsSelectedOperator<T,I> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval) {
+        return new Level1ArrayElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectNotNullAndNotMatching(eval));
     }
 
 
-    public Level1ArrayElementsSelectedOperator<T> ifNull() {
-        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().selectNull());
+    public Level1ArrayElementsSelectedOperator<T,I> ifNull() {
+        return new Level1ArrayElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectNull());
     }
 
 
-    public Level1ArrayElementsSelectedOperator<T> ifNullOrTrue(final IFunction<Boolean, ? super T> eval) {
-        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().selectNullOrMatching(eval));
+    public Level1ArrayElementsSelectedOperator<T,I> ifNullOrTrue(final IFunction<Boolean, ? super T> eval) {
+        return new Level1ArrayElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level1ArrayElementsSelectedOperator<T> ifNullOrFalse(final IFunction<Boolean, ? super T> eval) {
-        return new Level1ArrayElementsSelectedOperatorImpl<T>(this.type, getTarget().selectNullOrNotMatching(eval));
-    }
-
-
-
-    public Level1ArrayElementsOperator<T> execIfNotNull(final IFunction<? extends T, ? super T> function) {
-        return new Level1ArrayElementsOperatorImpl<T>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
+    public Level1ArrayElementsSelectedOperator<T,I> ifNullOrFalse(final IFunction<Boolean, ? super T> eval) {
+        return new Level1ArrayElementsSelectedOperatorImpl<T,I>(this.type, getTarget().selectNullOrNotMatching(eval));
     }
 
 
 
-    public Level1ArrayElementsOperator<T> exec(final IFunction<? extends T, ? super T> function) {
-        return new Level1ArrayElementsOperatorImpl<T>(this.type, getTarget().execute(function, Normalisation.NONE));
+    public Level1ArrayElementsOperator<T,I> execIfNotNull(final IFunction<? extends T, ? super T> function) {
+        return new Level1ArrayElementsOperatorImpl<T,I>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
+    }
+
+
+
+    public Level1ArrayElementsOperator<T,I> exec(final IFunction<? extends T, ? super T> function) {
+        return new Level1ArrayElementsOperatorImpl<T,I>(this.type, getTarget().execute(function, Normalisation.NONE));
     }
 
 
@@ -138,19 +139,19 @@ public final class Level1ArrayElementsOperatorImpl<T> extends AbstractOperatorIm
 
 
 
-    public <X> Level1ArrayElementsOperator<X> exec(final Type<X> newType, final IFunction<X, ? super T> function) {
-        return new Level1ArrayElementsOperatorImpl<X>(newType, getTarget().execute(function, Normalisation.NONE));
+    public <X> Level1ArrayElementsOperator<X,I> exec(final Type<X> newType, final IFunction<X, ? super T> function) {
+        return new Level1ArrayElementsOperatorImpl<X,I>(newType, getTarget().execute(function, Normalisation.NONE));
     }
 
 
 
-    public Level1ArrayElementsOperator<T> replaceWith(final T replacement) {
-        return new Level1ArrayElementsOperatorImpl<T>(this.type, getTarget().replaceWith(replacement, Normalisation.NONE));
+    public Level1ArrayElementsOperator<T,I> replaceWith(final T replacement) {
+        return new Level1ArrayElementsOperatorImpl<T,I>(this.type, getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 
 
-    public Level1ArrayElementsOperator<T> replaceIfNullWith(final T replacement) {
+    public Level1ArrayElementsOperator<T,I> replaceIfNullWith(final T replacement) {
         return ifNull().replaceWith(replacement).endIf();
     }
 
