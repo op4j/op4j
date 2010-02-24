@@ -31,9 +31,9 @@ import org.junit.Test;
 import org.op4j.functions.Call;
 import org.op4j.functions.FString;
 import org.op4j.functions.converters.ToBoolean;
-import org.op4j.operators.op.impl.array.Level0ArrayOperatorImpl;
-import org.op4j.operators.op.impl.list.Level0ListOperatorImpl;
-import org.op4j.operators.op.impl.list.Level1ListElementsOperatorImpl;
+import org.op4j.operators.impl.op.array.Level0ArrayOperatorImpl;
+import org.op4j.operators.impl.op.list.Level0ListOperatorImpl;
+import org.op4j.operators.impl.op.list.Level1ListElementsOperatorImpl;
 
 /**
  * 
