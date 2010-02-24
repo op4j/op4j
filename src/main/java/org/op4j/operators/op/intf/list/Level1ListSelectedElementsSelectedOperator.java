@@ -21,10 +21,6 @@ package org.op4j.operators.op.intf.list;
 
 import java.util.List;
 
-import org.op4j.functions.IFunction;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.UniqOpOperator;
 
 
@@ -36,21 +32,7 @@ import org.op4j.operators.qualities.UniqOpOperator;
  *
  */
 public interface Level1ListSelectedElementsSelectedOperator<T,I>
-        extends UniqOpOperator<List<T>>,
-                SelectedOperator<T>,
-                ExecutableSelectedOperator<T>,
-                ReplaceableOperator<T> {
-
-
-
-    public Level1ListSelectedElementsOperator<T,I> endIf();
-
-    
-    public Level1ListSelectedElementsSelectedOperator<T,I> execIfNotNull(final IFunction<? extends T,? super T> function);
-
-    public Level1ListSelectedElementsSelectedOperator<T,I> replaceWith(final T replacement);
-
-    public Level1ListSelectedElementsSelectedOperator<T,I> exec(final IFunction<? extends T, ? super T> function);
+        extends UniqOpOperator<List<T>>, org.op4j.operators.intf.list.Level1ListSelectedElementsSelectedOperator<T,I> {
 	
     
 }

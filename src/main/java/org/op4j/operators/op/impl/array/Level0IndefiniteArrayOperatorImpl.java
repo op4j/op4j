@@ -30,12 +30,7 @@ import org.op4j.operators.op.impl.generic.Level0GenericUniqOperatorImpl;
 import org.op4j.operators.op.impl.list.Level0ListOperatorImpl;
 import org.op4j.operators.op.impl.map.Level0MapOperatorImpl;
 import org.op4j.operators.op.impl.set.Level0SetOperatorImpl;
-import org.op4j.operators.op.intf.array.Level0ArrayOperator;
 import org.op4j.operators.op.intf.array.Level0IndefiniteArrayOperator;
-import org.op4j.operators.op.intf.generic.Level0GenericUniqOperator;
-import org.op4j.operators.op.intf.list.Level0ListOperator;
-import org.op4j.operators.op.intf.map.Level0MapOperator;
-import org.op4j.operators.op.intf.set.Level0SetOperator;
 import org.op4j.operators.qualities.UniqOpOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
@@ -58,42 +53,42 @@ public final class Level0IndefiniteArrayOperatorImpl<T,I>
     }
 
 
-    public Level0ListOperator<T,I> toList() {
+    public Level0ListOperatorImpl<T,I> toList() {
         return new Level0ListOperatorImpl<T,I>(getTarget().execute(new ToList.FromArray<T>()));
     }
 
 
-    public Level0MapOperator<T, T,I> toMap() {
+    public Level0MapOperatorImpl<T, T,I> toMap() {
         return new Level0MapOperatorImpl<T, T,I>(getTarget().execute(new ToMap.FromArrayByAlternateElements<T>()));
     }
 
-    public <K> Level0MapOperator<K, T,I> toMap(final IFunction<K, ? super T> keyEval) {
+    public <K> Level0MapOperatorImpl<K, T,I> toMap(final IFunction<K, ? super T> keyEval) {
         return new Level0MapOperatorImpl<K, T,I>(getTarget().execute(new ToMap.FromArrayByKeyEval<K, T>(keyEval)));
     }
 
-    public <K, V> Level0MapOperator<K, V,I> toMap(final IMapBuilder<K, V, ? super T> mapBuild) {
+    public <K, V> Level0MapOperatorImpl<K, V,I> toMap(final IMapBuilder<K, V, ? super T> mapBuild) {
         return new Level0MapOperatorImpl<K, V,I>(getTarget().execute(new ToMap.FromArrayByMapBuilder<K, V, T>(mapBuild)));
     }
 
-    public Level0SetOperator<T,I> toSet() {
+    public Level0SetOperatorImpl<T,I> toSet() {
         return new Level0SetOperatorImpl<T,I>(getTarget().execute(new ToSet.FromArray<T>()));
     }
 
     
     
-    public Level0GenericUniqOperator<T[],I> generic() {
+    public Level0GenericUniqOperatorImpl<T[],I> generic() {
         return new Level0GenericUniqOperatorImpl<T[],I>(getTarget());
     }
 
 
 
-    public <X> Level0GenericUniqOperator<X,I> exec(final IFunction<X, ? super T[]> function) {
+    public <X> Level0GenericUniqOperatorImpl<X,I> exec(final IFunction<X, ? super T[]> function) {
         return new Level0GenericUniqOperatorImpl<X,I>(getTarget().execute(function, Normalisation.NONE));
     }
     
     
 
-    public <X> Level0ArrayOperator<X,I> asArrayOf(final Type<X> newType) {
+    public <X> Level0ArrayOperatorImpl<X,I> asArrayOf(final Type<X> newType) {
         return generic().asArrayOf(newType);
     }
 

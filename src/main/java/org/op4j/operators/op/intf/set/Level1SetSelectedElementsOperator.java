@@ -21,11 +21,6 @@ package org.op4j.operators.op.intf.set;
 
 import java.util.Set;
 
-import org.op4j.functions.IFunction;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
-import org.op4j.operators.qualities.NavigatingCollectionOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOpOperator;
 
 
@@ -37,34 +32,7 @@ import org.op4j.operators.qualities.UniqOpOperator;
  *
  */
 public interface Level1SetSelectedElementsOperator<T,I>
-        extends UniqOpOperator<Set<T>>,
-                NavigatingCollectionOperator<T>,
-                SelectableOperator<T>,
-                ExecutableSelectedOperator<T>,
-                ReplaceableOperator<T> {
-
-
-
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifIndex(final int... indexes);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifTrue(final IFunction<Boolean, ? super T> eval);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifNullOrFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifNull();
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifNullOrTrue(final IFunction<Boolean, ? super T> eval);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifIndexNot(final int... indexes);
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifNotNull();
-    public Level1SetSelectedElementsSelectedOperator<T,I> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
-
-
-		    
-    public Level0SetSelectedOperator<T,I> endFor();
-    
-    public Level1SetSelectedElementsOperator<T,I> execIfNotNull(final IFunction<? extends T,? super T> function);
-
-    public Level1SetSelectedElementsOperator<T,I> replaceWith(final T replacement);
-
-    public Level1SetSelectedElementsOperator<T,I> exec(final IFunction<? extends T, ? super T> function);
+        extends UniqOpOperator<Set<T>>, org.op4j.operators.intf.set.Level1SetSelectedElementsOperator<T,I> {
 	
     
 }

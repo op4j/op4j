@@ -19,10 +19,6 @@
  */
 package org.op4j.operators.op.intf.generic;
 
-import org.op4j.functions.IFunction;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.UniqOpOperator;
 
 
@@ -36,21 +32,8 @@ import org.op4j.operators.qualities.UniqOpOperator;
  *
  */
 public interface Level0GenericUniqSelectedOperator<T,I>
-        extends UniqOpOperator<T>,
-        		ExecutableSelectedOperator<T>,
-                ReplaceableOperator<T>,
-                SelectedOperator<T> {
-
-
-
-    public Level0GenericUniqOperator<T,I> endIf();
+        extends UniqOpOperator<T>, org.op4j.operators.intf.generic.Level0GenericUniqSelectedOperator<T,I> {
 
     
-    public Level0GenericUniqSelectedOperator<T,I> replaceWith(final T replacement);
-    
-    public Level0GenericUniqSelectedOperator<T,I> execIfNotNull(final IFunction<? extends T,? super T> function);
-
-    public Level0GenericUniqSelectedOperator<T,I> exec(final IFunction<? extends T, ? super T> function);
-
 
 }

@@ -19,7 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import org.op4j.operators.op.intf.generic.Level0GenericUniqOperator;
+import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 
 
 

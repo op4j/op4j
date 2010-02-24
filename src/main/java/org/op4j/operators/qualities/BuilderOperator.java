@@ -25,10 +25,10 @@ import java.util.Set;
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.mapbuild.IMapBuilder;
-import org.op4j.operators.op.intf.array.Level0ArrayOperator;
-import org.op4j.operators.op.intf.list.Level0ListOperator;
-import org.op4j.operators.op.intf.map.Level0MapOperator;
-import org.op4j.operators.op.intf.set.Level0SetOperator;
+import org.op4j.operators.intf.array.Level0ArrayOperator;
+import org.op4j.operators.intf.list.Level0ListOperator;
+import org.op4j.operators.intf.map.Level0MapOperator;
+import org.op4j.operators.intf.set.Level0SetOperator;
 
 
 

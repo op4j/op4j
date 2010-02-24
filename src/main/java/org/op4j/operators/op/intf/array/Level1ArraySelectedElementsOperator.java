@@ -21,11 +21,6 @@ package org.op4j.operators.op.intf.array;
 
 
 
-import org.op4j.functions.IFunction;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
-import org.op4j.operators.qualities.NavigatingCollectionOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOpOperator;
 
 
@@ -37,34 +32,7 @@ import org.op4j.operators.qualities.UniqOpOperator;
  *
  */
 public interface Level1ArraySelectedElementsOperator<T,I>
-        extends UniqOpOperator<T[]>,
-                NavigatingCollectionOperator<T>,
-                SelectableOperator<T>,
-                ExecutableSelectedOperator<T>,
-                ReplaceableOperator<T> {
-
-
-
-    public Level1ArraySelectedElementsSelectedOperator<T,I> ifIndex(final int... indexes);
-    public Level1ArraySelectedElementsSelectedOperator<T,I> ifTrue(final IFunction<Boolean, ? super T> eval);
-    public Level1ArraySelectedElementsSelectedOperator<T,I> ifFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1ArraySelectedElementsSelectedOperator<T,I> ifNullOrFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1ArraySelectedElementsSelectedOperator<T,I> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1ArraySelectedElementsSelectedOperator<T,I> ifNull();
-    public Level1ArraySelectedElementsSelectedOperator<T,I> ifNullOrTrue(final IFunction<Boolean, ? super T> eval);
-    public Level1ArraySelectedElementsSelectedOperator<T,I> ifIndexNot(final int... indexes);
-    public Level1ArraySelectedElementsSelectedOperator<T,I> ifNotNull();
-    public Level1ArraySelectedElementsSelectedOperator<T,I> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
-
-
-		    
-    public Level0ArraySelectedOperator<T,I> endFor();
-    
-    public Level1ArraySelectedElementsOperator<T,I> execIfNotNull(final IFunction<? extends T,? super T> function);
-
-    public Level1ArraySelectedElementsOperator<T,I> replaceWith(final T replacement);
-
-    public Level1ArraySelectedElementsOperator<T,I> exec(final IFunction<? extends T, ? super T> function);
+        extends UniqOpOperator<T[]>, org.op4j.operators.intf.array.Level1ArraySelectedElementsOperator<T,I> {
 	
     
 }

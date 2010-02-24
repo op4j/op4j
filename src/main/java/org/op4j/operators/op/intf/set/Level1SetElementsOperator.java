@@ -21,14 +21,6 @@ package org.op4j.operators.op.intf.set;
 
 import java.util.Set;
 
-import org.javaruntype.type.Type;
-import org.op4j.functions.IFunction;
-import org.op4j.operators.qualities.CastableToTypeOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
-import org.op4j.operators.qualities.NavigatingCollectionOperator;
-import org.op4j.operators.qualities.ReplaceableIfNullOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOpOperator;
 
 
@@ -40,41 +32,7 @@ import org.op4j.operators.qualities.UniqOpOperator;
  *
  */
 public interface Level1SetElementsOperator<T,I>
-        extends UniqOpOperator<Set<T>>,
-        		NavigatingCollectionOperator<T>,
-        		ExecutableOperator<T>,
-                SelectableOperator<T>,
-                ReplaceableOperator<T>,
-                ReplaceableIfNullOperator<T>,
-                CastableToTypeOperator<T> {
-
-
-
-    public Level1SetElementsSelectedOperator<T,I> ifIndex(final int... indexes);
-    public Level1SetElementsSelectedOperator<T,I> ifTrue(final IFunction<Boolean, ? super T> eval);
-    public Level1SetElementsSelectedOperator<T,I> ifFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1SetElementsSelectedOperator<T,I> ifNullOrFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1SetElementsSelectedOperator<T,I> ifNotNullAndFalse(final IFunction<Boolean, ? super T> eval);
-    public Level1SetElementsSelectedOperator<T,I> ifNull();
-    public Level1SetElementsSelectedOperator<T,I> ifNullOrTrue(final IFunction<Boolean, ? super T> eval);
-    public Level1SetElementsSelectedOperator<T,I> ifIndexNot(final int... indexes);
-    public Level1SetElementsSelectedOperator<T,I> ifNotNull();
-    public Level1SetElementsSelectedOperator<T,I> ifNotNullAndTrue(final IFunction<Boolean, ? super T> eval);
-
-
-    
-    public Level0SetOperator<T,I> endFor();
-    
-    public Level1SetElementsOperator<T,I> replaceWith(final T replacement);
-    public Level1SetElementsOperator<T,I> replaceIfNullWith(final T replacement);
-
-
-    public <X> Level1SetElementsOperator<X,I> execIfNotNull(final IFunction<X,? super T> function);
-
-    public <X> Level1SetElementsOperator<X,I> exec(final IFunction<X, ? super T> function);
-    
-    public <X> Level1SetElementsOperator<X,I> asType(final Type<X> type);
-    public Level1SetElementsOperator<?,I> asUnknown();
+        extends UniqOpOperator<Set<T>>, org.op4j.operators.intf.set.Level1SetElementsOperator<T,I> {
     
                                     
 }

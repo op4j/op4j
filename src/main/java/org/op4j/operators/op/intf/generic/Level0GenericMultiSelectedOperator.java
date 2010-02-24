@@ -19,14 +19,7 @@
  */
 package org.op4j.operators.op.intf.generic;
 
-import java.util.List;
-
-import org.javaruntype.type.Type;
-import org.op4j.functions.IFunction;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.MultiOpOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectedOperator;
 /**
  * 
  * @since 1.0
@@ -35,25 +28,7 @@ import org.op4j.operators.qualities.SelectedOperator;
  *
  */
 public interface Level0GenericMultiSelectedOperator<T,I>
-        extends MultiOpOperator<T>,
-         		ExecutableSelectedOperator<T>,
-                ReplaceableOperator<T>,
-                SelectedOperator<T> {
-
-
-
-    public Level0GenericMultiOperator<T,I> endIf();
-
-
-    public Level0GenericMultiSelectedOperator<T,I> replaceWith(final T replacement);
-    
-    public Level0GenericMultiSelectedOperator<T,I> execIfNotNull(final IFunction<? extends T,? super T> function);
-
-    public Level0GenericMultiSelectedOperator<T,I> exec(final IFunction<? extends T, ? super T> function);
-    
-    
-    public T[] getAsArray(final Type<T> type); 
-    public List<T> getAsList(); 
+        extends MultiOpOperator<T>, org.op4j.operators.intf.generic.Level0GenericMultiSelectedOperator<T,I> {
     
 
 }

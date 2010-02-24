@@ -21,11 +21,6 @@ package org.op4j.operators.op.intf.map;
 
 import java.util.Map;
 
-import org.op4j.functions.IFunction;
-import org.op4j.operators.qualities.ExecutableMapEntrySelectedOperator;
-import org.op4j.operators.qualities.NavigableMapEntryOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectedMapEntryOperator;
 import org.op4j.operators.qualities.UniqOpOperator;
 
 
@@ -37,23 +32,7 @@ import org.op4j.operators.qualities.UniqOpOperator;
  *
  */
 public interface Level1MapEntriesSelectedOperator<K,V,I>
-		extends UniqOpOperator<Map<K,V>>,
-		        NavigableMapEntryOperator,
-                ExecutableMapEntrySelectedOperator<K,V>,
-                ReplaceableOperator<Map.Entry<K,V>>,
-                SelectedMapEntryOperator<K, V> {
+		extends UniqOpOperator<Map<K,V>>, org.op4j.operators.intf.map.Level1MapEntriesSelectedOperator<K,V,I> {
 
-
-    public Level1MapEntriesOperator<K,V,I> endIf();
     
-
-    public Level2MapEntriesSelectedKeyOperator<K,V,I> onKey();
-    public Level2MapEntriesSelectedValueOperator<K,V,I> onValue();
-    
-    public Level1MapEntriesSelectedOperator<K,V,I> replaceWith(final Map.Entry<K,V> replacement);
-
-    public Level1MapEntriesSelectedOperator<K,V,I> execAsMapEntry(final IFunction<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> function);
-    
-    public Level1MapEntriesSelectedOperator<K,V,I> execIfNotNullAsMapEntry(final IFunction<? extends Map.Entry<? extends K,? extends V>, ? super Map.Entry<K,V>> function);
-    
-    }
+}

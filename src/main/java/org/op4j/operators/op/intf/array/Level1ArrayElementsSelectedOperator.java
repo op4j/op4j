@@ -21,10 +21,6 @@ package org.op4j.operators.op.intf.array;
 
 
 
-import org.op4j.functions.IFunction;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.UniqOpOperator;
 
 
@@ -36,21 +32,7 @@ import org.op4j.operators.qualities.UniqOpOperator;
  *
  */
 public interface Level1ArrayElementsSelectedOperator<T,I>
-        extends UniqOpOperator<T[]>,
-                SelectedOperator<T>,
-                ExecutableSelectedOperator<T>,
-                ReplaceableOperator<T> {
-
-
-
-    public Level1ArrayElementsOperator<T,I> endIf();
-
-    
-    public Level1ArrayElementsSelectedOperator<T,I> execIfNotNull(final IFunction<? extends T,? super T> function);
-
-    public Level1ArrayElementsSelectedOperator<T,I> replaceWith(final T replacement);
-
-    public Level1ArrayElementsSelectedOperator<T,I> exec(final IFunction<? extends T, ? super T> function);
+        extends UniqOpOperator<T[]>, org.op4j.operators.intf.array.Level1ArrayElementsSelectedOperator<T,I> {
 	
     
 }

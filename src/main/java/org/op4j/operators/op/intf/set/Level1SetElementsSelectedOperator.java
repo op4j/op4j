@@ -21,10 +21,6 @@ package org.op4j.operators.op.intf.set;
 
 import java.util.Set;
 
-import org.op4j.functions.IFunction;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.UniqOpOperator;
 
 
@@ -36,21 +32,7 @@ import org.op4j.operators.qualities.UniqOpOperator;
  *
  */
 public interface Level1SetElementsSelectedOperator<T,I>
-        extends UniqOpOperator<Set<T>>,
-                SelectedOperator<T>,
-                ExecutableSelectedOperator<T>,
-                ReplaceableOperator<T> {
-
-
-
-    public Level1SetElementsOperator<T,I> endIf();
-
-    
-    public Level1SetElementsSelectedOperator<T,I> execIfNotNull(final IFunction<? extends T,? super T> function);
-
-    public Level1SetElementsSelectedOperator<T,I> replaceWith(final T replacement);
-
-    public Level1SetElementsSelectedOperator<T,I> exec(final IFunction<? extends T, ? super T> function);
+        extends UniqOpOperator<Set<T>>, org.op4j.operators.intf.set.Level1SetElementsSelectedOperator<T,I> {
 	
     
 }

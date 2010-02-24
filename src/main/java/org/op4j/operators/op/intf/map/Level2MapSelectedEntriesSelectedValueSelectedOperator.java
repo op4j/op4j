@@ -21,10 +21,6 @@ package org.op4j.operators.op.intf.map;
 
 import java.util.Map;
 
-import org.op4j.functions.IFunction;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectedOperator;
 import org.op4j.operators.qualities.UniqOpOperator;
 
 
@@ -36,21 +32,7 @@ import org.op4j.operators.qualities.UniqOpOperator;
  *
  */
 public interface Level2MapSelectedEntriesSelectedValueSelectedOperator<K,V,I>
-        extends UniqOpOperator<Map<K,V>>,
-        		ExecutableSelectedOperator<V>,
-                ReplaceableOperator<V>,
-                SelectedOperator<V> {
-
-
-
-    public Level2MapSelectedEntriesSelectedValueOperator<K,V,I> endIf();
-
-    
-    public Level2MapSelectedEntriesSelectedValueSelectedOperator<K,V,I> execIfNotNull(final IFunction<? extends V, ? super V> function);
-
-    public Level2MapSelectedEntriesSelectedValueSelectedOperator<K,V,I> replaceWith(final V replacement);
-
-    public Level2MapSelectedEntriesSelectedValueSelectedOperator<K,V,I> exec(final IFunction<? extends V, ? super V> function);
+        extends UniqOpOperator<Map<K,V>>, org.op4j.operators.intf.map.Level2MapSelectedEntriesSelectedValueSelectedOperator<K,V,I> {
 
     
 }

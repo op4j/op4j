@@ -19,19 +19,6 @@
  */
 package org.op4j.operators.op.intf.array;
 
-import org.javaruntype.type.Type;
-import org.op4j.functions.IFunction;
-import org.op4j.mapbuild.IMapBuilder;
-import org.op4j.operators.op.intf.generic.Level0GenericUniqOperator;
-import org.op4j.operators.op.intf.list.Level0ListOperator;
-import org.op4j.operators.op.intf.map.Level0MapOperator;
-import org.op4j.operators.op.intf.set.Level0SetOperator;
-import org.op4j.operators.qualities.CastableToArrayOperator;
-import org.op4j.operators.qualities.ConvertibleToListOperator;
-import org.op4j.operators.qualities.ConvertibleToMapOperator;
-import org.op4j.operators.qualities.ConvertibleToSetOperator;
-import org.op4j.operators.qualities.ExecutableIndefiniteArrayOperator;
-import org.op4j.operators.qualities.GenerizableOperator;
 import org.op4j.operators.qualities.UniqOpOperator;
 /**
  * 
@@ -41,30 +28,7 @@ import org.op4j.operators.qualities.UniqOpOperator;
  *
  */
 public interface Level0IndefiniteArrayOperator<T,I>
-        extends UniqOpOperator<T[]>,
-		        CastableToArrayOperator,
-                GenerizableOperator<T[],I>,
-		        ConvertibleToListOperator,
-		        ConvertibleToSetOperator,
-		        ConvertibleToMapOperator<T>,
-		        ExecutableIndefiniteArrayOperator<T,I> {
-
-
-
-    
-    public Level0ListOperator<T,I> toList();
-    
-    public Level0SetOperator<T,I> toSet();
-    
-    public Level0MapOperator<T,T,I> toMap();
-    public <K> Level0MapOperator<K,T,I> toMap(final IFunction<K,? super T> keyEval);
-    public <K,V> Level0MapOperator<K,V,I> toMap(final IMapBuilder<K,V,? super T> mapBuild);
-    
-    
-    public Level0GenericUniqOperator<T[],I> generic();
-
-    public <X> Level0ArrayOperator<X,I> asArrayOf(final Type<X> type);
-    public <X> Level0GenericUniqOperator<X,I> exec(final IFunction<X, ? super T[]> function);
+        extends UniqOpOperator<T[]>, org.op4j.operators.intf.array.Level0IndefiniteArrayOperator<T,I> {
 
     
 }
