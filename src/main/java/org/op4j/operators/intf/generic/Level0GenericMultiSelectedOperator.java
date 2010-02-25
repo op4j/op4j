@@ -19,9 +19,6 @@
  */
 package org.op4j.operators.intf.generic;
 
-import java.util.List;
-
-import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.MultiOperator;
@@ -51,9 +48,6 @@ public interface Level0GenericMultiSelectedOperator<I,T>
 
     public Level0GenericMultiSelectedOperator<I,T> exec(final IFunction<? super T,? extends T> function);
     
-    
-    public T[] getAsArray(final Type<T> type); 
-    public List<T> getAsList(); 
     
 
 }

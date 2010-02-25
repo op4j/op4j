@@ -19,6 +19,8 @@
  */
 package org.op4j.operators.qualities;
 
+import org.op4j.functions.Function;
+
 
 
 
@@ -41,6 +43,6 @@ public interface UniqFnOperator<I,T> extends UniqOperator<T> {
      * 
      * @return the target object.
      */
-    public T get(); 
+    public Function<I,T> get(); 
     
 }

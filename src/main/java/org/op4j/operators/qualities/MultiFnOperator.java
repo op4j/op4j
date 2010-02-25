@@ -22,6 +22,7 @@ package org.op4j.operators.qualities;
 import java.util.List;
 
 import org.javaruntype.type.Type;
+import org.op4j.functions.Function;
 
 
 
@@ -52,7 +53,7 @@ public interface MultiFnOperator<I,T> extends MultiOperator<T> {
      * @param type the type of which the array of target objects will be created.
      * @return the array of target objects.
      */
-    public T[] getAsArray(final Type<T> type);
+    public Function<I,T[]> getAsArrayOf(final Type<T> type);
     
     /**
      * <p>
@@ -61,7 +62,7 @@ public interface MultiFnOperator<I,T> extends MultiOperator<T> {
      * 
      * @return the list of target objects.
      */
-    public List<T> getAsList(); 
+    public Function<I,List<T>> getAsList(); 
 
     
 }

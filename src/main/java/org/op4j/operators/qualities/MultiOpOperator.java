@@ -52,7 +52,7 @@ public interface MultiOpOperator<I,T> extends MultiOperator<T> {
      * @param type the type of which the array of target objects will be created.
      * @return the array of target objects.
      */
-    public T[] getAsArray(final Type<T> type);
+    public T[] getAsArrayOf(final Type<T> type);
     
     /**
      * <p>

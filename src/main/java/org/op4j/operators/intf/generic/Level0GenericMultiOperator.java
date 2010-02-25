@@ -141,9 +141,5 @@ public interface Level0GenericMultiOperator<I,T>
     
     public Level0MapOperator<I,T,T[]> buildMapOfArrayOf(final Type<T> type);
     
-    
-    public T[] getAsArray(final Type<T> type); 
-    public List<T> getAsList(); 
-    
 
 }
