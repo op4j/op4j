@@ -39,12 +39,13 @@ public final class Function<T,R> implements IFunction<T,R> {
         this.target = target;
     }
     
-    public R execute(T object, ExecCtx ctx) throws Exception {
-        return null;
+    public R execute(final T object, final ExecCtx ctx) throws Exception {
+        return execute(object);
     }
 
-    public R execute(T object) throws Exception {
-        return null;
+    @SuppressWarnings("unchecked")
+    public R execute(final T object) throws Exception {
+        return (R) this.target.execute(object);
     }
     
 }
