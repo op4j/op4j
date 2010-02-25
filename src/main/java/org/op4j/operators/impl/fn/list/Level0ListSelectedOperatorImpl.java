@@ -4,9 +4,10 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
+import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.structures.FList;
-import org.op4j.operators.impl.fn.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.list.Level0ListSelectedOperator;
 import org.op4j.operators.qualities.UniqFnOperator;
 import org.op4j.target.Target;
@@ -140,17 +141,17 @@ public final class Level0ListSelectedOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    public Level0ListSelectedOperatorImpl<I,T> replaceWith(final List<T> replacement) {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().replaceWith(replacement, Normalisation.LIST));
-    }
-
-
     public Level0ListSelectedOperatorImpl<I,T> map(final IFunction<? super T,? extends T> function) {
         return new Level0ListSelectedOperatorImpl<I,T>(getTarget().map(Structure.LIST, function, null));
     }
 
 
-    public List<T> get() {
+    public Level0ListSelectedOperatorImpl<I,T> replaceWith(final List<T> replacement) {
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().replaceWith(replacement, Normalisation.LIST));
+    }
+
+
+    public Function<I,List<T>> get() {
         return endIf().get();
     }
 

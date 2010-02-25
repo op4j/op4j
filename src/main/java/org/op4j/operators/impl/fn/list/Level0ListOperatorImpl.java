@@ -24,13 +24,14 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.javaruntype.type.Type;
+import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToArray;
 import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.converters.ToSet;
 import org.op4j.functions.structures.FList;
 import org.op4j.mapbuild.IMapBuilder;
-import org.op4j.operators.impl.fn.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.fn.array.Level0ArrayOperatorImpl;
 import org.op4j.operators.impl.fn.generic.Level0GenericUniqOperatorImpl;
 import org.op4j.operators.impl.fn.map.Level0MapOperatorImpl;
@@ -177,9 +178,8 @@ public final class Level0ListOperatorImpl<I,T> extends AbstractOperatorImpl
     }
 
 
-    @SuppressWarnings("unchecked")
-    public List<T> get() {
-        return (List<T>) getTarget().get();
+    public Function<I,List<T>> get() {
+        return new Function<I, List<T>>(getTarget());
     }
 
 

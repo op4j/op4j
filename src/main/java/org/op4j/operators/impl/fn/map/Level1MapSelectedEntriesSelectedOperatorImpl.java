@@ -3,8 +3,9 @@ package org.op4j.operators.impl.fn.map;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
-import org.op4j.operators.impl.fn.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.map.Level1MapSelectedEntriesSelectedOperator;
 import org.op4j.operators.qualities.UniqFnOperator;
 import org.op4j.target.Target;
@@ -49,7 +50,7 @@ public final class Level1MapSelectedEntriesSelectedOperatorImpl<I,K,V> extends A
     }
 
 
-    public Map<K,V> get() {
+    public Function<I,Map<K,V>> get() {
         return endIf().get();
     }
 

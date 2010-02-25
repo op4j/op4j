@@ -4,9 +4,10 @@ import java.util.Collection;
 import java.util.Comparator;
 
 import org.javaruntype.type.Type;
+import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.structures.FArray;
-import org.op4j.operators.impl.fn.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.array.Level0ArraySelectedOperator;
 import org.op4j.operators.qualities.UniqFnOperator;
 import org.op4j.target.Target;
@@ -144,17 +145,17 @@ public final class Level0ArraySelectedOperatorImpl<I,T> extends AbstractOperator
     }
 
 
-    public Level0ArraySelectedOperatorImpl<I,T> replaceWith(final T[] replacement) {
-        return new Level0ArraySelectedOperatorImpl<I,T>(this.type, getTarget().replaceWith(replacement, Normalisation.ARRAY(this.type.getRawClass())));
-    }
-
-
     public Level0ArraySelectedOperatorImpl<I,T> map(final IFunction<? super T,? extends T> function) {
         return new Level0ArraySelectedOperatorImpl<I,T>(this.type, getTarget().map(Structure.ARRAY, function, this.type.getRawClass()));
     }
 
 
-    public T[] get() {
+    public Level0ArraySelectedOperatorImpl<I,T> replaceWith(final T[] replacement) {
+        return new Level0ArraySelectedOperatorImpl<I,T>(this.type, getTarget().replaceWith(replacement, Normalisation.ARRAY(this.type.getRawClass())));
+    }
+
+
+    public Function<I,T[]> get() {
         return endIf().get();
     }
 

@@ -2,8 +2,9 @@ package org.op4j.operators.impl.fn.map;
 
 import java.util.Map;
 
+import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
-import org.op4j.operators.impl.fn.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.map.Level2MapSelectedEntriesKeySelectedOperator;
 import org.op4j.operators.qualities.UniqFnOperator;
 import org.op4j.target.Target;
@@ -28,17 +29,17 @@ public final class Level2MapSelectedEntriesKeySelectedOperatorImpl<I,K,V> extend
     }
 
 
-    public Level2MapSelectedEntriesKeySelectedOperatorImpl<I,K,V> replaceWith(final K replacement) {
-        return new Level2MapSelectedEntriesKeySelectedOperatorImpl<I,K,V>(getTarget().replaceWith(replacement, Normalisation.NONE));
-    }
-
-
     public Level2MapSelectedEntriesKeySelectedOperatorImpl<I,K,V> exec(final IFunction<? super K,? extends K> function) {
         return new Level2MapSelectedEntriesKeySelectedOperatorImpl<I,K,V>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Map<K,V> get() {
+    public Level2MapSelectedEntriesKeySelectedOperatorImpl<I,K,V> replaceWith(final K replacement) {
+        return new Level2MapSelectedEntriesKeySelectedOperatorImpl<I,K,V>(getTarget().replaceWith(replacement, Normalisation.NONE));
+    }
+
+
+    public Function<I,Map<K,V>> get() {
         return endIf().get();
     }
 

@@ -24,13 +24,14 @@ import java.util.Comparator;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
+import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToArray;
 import org.op4j.functions.converters.ToList;
 import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.structures.FSet;
 import org.op4j.mapbuild.IMapBuilder;
-import org.op4j.operators.impl.fn.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.fn.array.Level0ArrayOperatorImpl;
 import org.op4j.operators.impl.fn.generic.Level0GenericUniqOperatorImpl;
 import org.op4j.operators.impl.fn.list.Level0ListOperatorImpl;
@@ -173,9 +174,8 @@ public final class Level0SetOperatorImpl<I,T> extends AbstractOperatorImpl
     }
 
 
-    @SuppressWarnings("unchecked")
-    public Set<T> get() {
-        return (Set<T>) getTarget().get();
+    public Function<I,Set<T>> get() {
+        return new Function<I, Set<T>>(getTarget());
     }
 
 

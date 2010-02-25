@@ -1,8 +1,9 @@
 package org.op4j.operators.impl.fn.array;
 
 import org.javaruntype.type.Type;
+import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
-import org.op4j.operators.impl.fn.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.array.Level1ArrayElementsSelectedOperator;
 import org.op4j.operators.qualities.UniqFnOperator;
 import org.op4j.target.Target;
@@ -31,17 +32,17 @@ public final class Level1ArrayElementsSelectedOperatorImpl<I,T> extends Abstract
     }
 
 
-    public Level1ArrayElementsSelectedOperatorImpl<I,T> replaceWith(final T replacement) {
-        return new Level1ArrayElementsSelectedOperatorImpl<I,T>(this.type, getTarget().replaceWith(replacement, Normalisation.NONE));
-    }
-
-
     public Level1ArrayElementsSelectedOperatorImpl<I,T> exec(final IFunction<? super T,? extends T> function) {
         return new Level1ArrayElementsSelectedOperatorImpl<I,T>(this.type, getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public T[] get() {
+    public Level1ArrayElementsSelectedOperatorImpl<I,T> replaceWith(final T replacement) {
+        return new Level1ArrayElementsSelectedOperatorImpl<I,T>(this.type, getTarget().replaceWith(replacement, Normalisation.NONE));
+    }
+
+
+    public Function<I,T[]> get() {
         return endIf().get();
     }
 

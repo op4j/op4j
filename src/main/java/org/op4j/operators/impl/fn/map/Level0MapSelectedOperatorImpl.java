@@ -4,9 +4,10 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.structures.FMap;
-import org.op4j.operators.impl.fn.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.map.Level0MapSelectedOperator;
 import org.op4j.operators.qualities.UniqFnOperator;
 import org.op4j.target.Target;
@@ -98,7 +99,7 @@ public final class Level0MapSelectedOperatorImpl<I,K,V> extends AbstractOperator
     }
 
 
-    public Map<K,V> get() {
+    public Function<I,Map<K,V>> get() {
         return endIf().get();
     }
 

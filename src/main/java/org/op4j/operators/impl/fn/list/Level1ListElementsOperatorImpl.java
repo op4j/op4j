@@ -23,8 +23,9 @@ import java.util.List;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
-import org.op4j.operators.impl.fn.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.list.Level1ListElementsOperator;
 import org.op4j.operators.qualities.UniqFnOperator;
 import org.op4j.target.Target;
@@ -67,7 +68,7 @@ public final class Level1ListElementsOperatorImpl<I,T> extends AbstractOperatorI
     
     
     
-    public List<T> get() {
+    public Function<I,List<T>> get() {
         return endFor().get();
     }
 

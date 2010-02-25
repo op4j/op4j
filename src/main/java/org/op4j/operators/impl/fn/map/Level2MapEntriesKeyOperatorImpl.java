@@ -23,8 +23,9 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
-import org.op4j.operators.impl.fn.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.map.Level2MapEntriesKeyOperator;
 import org.op4j.operators.qualities.UniqFnOperator;
 import org.op4j.target.Target;
@@ -62,7 +63,7 @@ public final class Level2MapEntriesKeyOperatorImpl<I,K,V> extends AbstractOperat
     }
 
 
-    public Map<K, V> get() {
+    public Function<I,Map<K, V>> get() {
         return endOn().endFor().get();
     }
 

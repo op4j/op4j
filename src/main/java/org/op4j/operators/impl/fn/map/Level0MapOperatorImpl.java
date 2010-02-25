@@ -24,9 +24,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
+import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.structures.FMap;
-import org.op4j.operators.impl.fn.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.fn.generic.Level0GenericUniqOperatorImpl;
 import org.op4j.operators.impl.fn.list.Level0ListOperatorImpl;
 import org.op4j.operators.impl.fn.set.Level0SetOperatorImpl;
@@ -131,9 +132,8 @@ public final class Level0MapOperatorImpl<I,K,V> extends AbstractOperatorImpl
     }
 
 
-    @SuppressWarnings("unchecked")
-    public Map<K, V> get() {
-        return (Map<K, V>) getTarget().get();
+    public Function<I,Map<K, V>> get() {
+        return new Function<I, Map<K, V>>(getTarget());
     }
 
 

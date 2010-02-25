@@ -2,8 +2,9 @@ package org.op4j.operators.impl.fn.set;
 
 import java.util.Set;
 
+import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
-import org.op4j.operators.impl.fn.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.set.Level1SetSelectedElementsOperator;
 import org.op4j.operators.qualities.UniqFnOperator;
 import org.op4j.target.Target;
@@ -78,17 +79,17 @@ public final class Level1SetSelectedElementsOperatorImpl<I,T> extends AbstractOp
     }
 
 
-    public Level1SetSelectedElementsOperatorImpl<I,T> replaceWith(final T replacement) {
-        return new Level1SetSelectedElementsOperatorImpl<I,T>(getTarget().replaceWith(replacement, Normalisation.NONE));
-    }
-
-
     public Level1SetSelectedElementsOperatorImpl<I,T> exec(final IFunction<? super T,? extends T> function) {
         return new Level1SetSelectedElementsOperatorImpl<I,T>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public Set<T> get() {
+    public Level1SetSelectedElementsOperatorImpl<I,T> replaceWith(final T replacement) {
+        return new Level1SetSelectedElementsOperatorImpl<I,T>(getTarget().replaceWith(replacement, Normalisation.NONE));
+    }
+
+
+    public Function<I,Set<T>> get() {
         return endFor().get();
     }
 

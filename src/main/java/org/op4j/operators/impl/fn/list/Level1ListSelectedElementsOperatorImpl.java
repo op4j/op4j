@@ -2,8 +2,9 @@ package org.op4j.operators.impl.fn.list;
 
 import java.util.List;
 
+import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
-import org.op4j.operators.impl.fn.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.list.Level1ListSelectedElementsOperator;
 import org.op4j.operators.qualities.UniqFnOperator;
 import org.op4j.target.Target;
@@ -78,17 +79,17 @@ public final class Level1ListSelectedElementsOperatorImpl<I,T> extends AbstractO
     }
 
 
-    public Level1ListSelectedElementsOperatorImpl<I,T> replaceWith(final T replacement) {
-        return new Level1ListSelectedElementsOperatorImpl<I,T>(getTarget().replaceWith(replacement, Normalisation.NONE));
-    }
-
-
     public Level1ListSelectedElementsOperatorImpl<I,T> exec(final IFunction<? super T,? extends T> function) {
         return new Level1ListSelectedElementsOperatorImpl<I,T>(getTarget().execute(function, Normalisation.NONE));
     }
 
 
-    public List<T> get() {
+    public Level1ListSelectedElementsOperatorImpl<I,T> replaceWith(final T replacement) {
+        return new Level1ListSelectedElementsOperatorImpl<I,T>(getTarget().replaceWith(replacement, Normalisation.NONE));
+    }
+
+
+    public Function<I,List<T>> get() {
         return endFor().get();
     }
 

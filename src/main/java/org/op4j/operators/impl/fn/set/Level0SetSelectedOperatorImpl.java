@@ -4,9 +4,10 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Set;
 
+import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.structures.FSet;
-import org.op4j.operators.impl.fn.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.set.Level0SetSelectedOperator;
 import org.op4j.operators.qualities.UniqFnOperator;
 import org.op4j.target.Target;
@@ -135,17 +136,17 @@ public final class Level0SetSelectedOperatorImpl<I,T> extends AbstractOperatorIm
     }
 
 
-    public Level0SetSelectedOperatorImpl<I,T> replaceWith(final Set<T> replacement) {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().replaceWith(replacement, Normalisation.SET));
-    }
-
-
     public Level0SetSelectedOperatorImpl<I,T> map(final IFunction<? super T,? extends T> function) {
         return new Level0SetSelectedOperatorImpl<I,T>(getTarget().map(Structure.SET, function, null));
     }
 
 
-    public Set<T> get() {
+    public Level0SetSelectedOperatorImpl<I,T> replaceWith(final Set<T> replacement) {
+        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().replaceWith(replacement, Normalisation.SET));
+    }
+
+
+    public Function<I,Set<T>> get() {
         return endIf().get();
     }
 

@@ -21,8 +21,9 @@ package org.op4j.operators.impl.fn.array;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
-import org.op4j.operators.impl.fn.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.array.Level1ArrayElementsOperator;
 import org.op4j.operators.qualities.UniqFnOperator;
 import org.op4j.target.Target;
@@ -66,7 +67,7 @@ public final class Level1ArrayElementsOperatorImpl<I,T> extends AbstractOperator
     
     
     
-    public T[] get() {
+    public Function<I,T[]> get() {
         return endFor().get();
     }
 

@@ -23,13 +23,14 @@ import java.util.Collection;
 import java.util.Comparator;
 
 import org.javaruntype.type.Type;
+import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToList;
 import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.converters.ToSet;
 import org.op4j.functions.structures.FArray;
 import org.op4j.mapbuild.IMapBuilder;
-import org.op4j.operators.impl.fn.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.fn.generic.Level0GenericUniqOperatorImpl;
 import org.op4j.operators.impl.fn.list.Level0ListOperatorImpl;
 import org.op4j.operators.impl.fn.map.Level0MapOperatorImpl;
@@ -173,9 +174,9 @@ public final class Level0ArrayOperatorImpl<I,T>
         return new Level0SetOperatorImpl<I,T>(getTarget().execute(new ToSet.FromArray<T>()));
     }
 
-    @SuppressWarnings("unchecked")
-	public T[] get() {
-        return (T[]) getTarget().get();
+
+	public Function<I,T[]> get() {
+        return new Function<I, T[]>(getTarget());
     }
 
     public Level0GenericUniqOperatorImpl<I,T[]> generic() {
