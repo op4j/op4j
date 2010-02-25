@@ -228,6 +228,9 @@ public abstract class Target {
     
     public abstract Object get();
     
+    public abstract Object execute(final Object target);
+    
+    
     
 
     public static class Normalisation {

@@ -40,7 +40,8 @@ public final class ExecutionTarget extends Target {
 
 
     
-    private final Object target;
+    private final Object initialTarget;
+    private final Normalisation initialNormalisation;
     
     private final int currentBlockLevel;
     
@@ -50,39 +51,16 @@ public final class ExecutionTarget extends Target {
     
     
     
-    @SuppressWarnings("unchecked")
-    public static ExecutionTarget forObject(final Object object, final Normalisation targetNormalisation) {
-        Object normalisedObject = null;
-        switch (targetNormalisation.getNormalisationType()) {
-            case TYPE_NONE:
-                normalisedObject = object;
-                break;
-            case TYPE_ARRAY:
-                normalisedObject = NormalisationUtils.normaliseArray((Object[])object, targetNormalisation.getArrayComponentClass());
-                break;
-            case TYPE_LIST:
-                normalisedObject = NormalisationUtils.normaliseList((List<Object>)object);
-                break;
-            case TYPE_MAP:
-                normalisedObject = NormalisationUtils.normaliseMap((Map<Object,Object>)object);
-                break;
-            case TYPE_MAPENTRY:
-                normalisedObject = NormalisationUtils.normaliseMapEntry((Map.Entry<Object,Object>)object);
-                break;
-            case TYPE_SET:
-                normalisedObject = NormalisationUtils.normaliseSet((Set<Object>)object);
-                break;
-        }
-        
-        final ExecutionTargetOperation[][] newOperations = 
-            (ExecutionTargetOperation[][]) Array.newInstance(ExecutionTargetOperation[].class, 1);
-        newOperations[0] = new ExecutionTargetOperation[0];
-        
-        final int[] newPreviousBlockLevels = new int[] { -1 };
-        
-        return new ExecutionTarget(normalisedObject, 0, newOperations, newPreviousBlockLevels);
-        
+    public static ExecutionTarget forFn(final Normalisation initialNormalisation) {
+        return new ExecutionTarget(initialNormalisation);
     }
+    
+    
+    
+    public static ExecutionTarget forOp(final Object object, final Normalisation initialNormalisation) {
+        return new ExecutionTarget(object, initialNormalisation);
+    }
+
     
     
     
@@ -95,6 +73,38 @@ public final class ExecutionTarget extends Target {
         return newOperations;
         
     }
+    
+
+    
+    
+    @SuppressWarnings("unchecked")
+    private static Object normaliseTarget(final Object target, final Normalisation normalisation) {
+        
+        Object normalisedTarget = null;
+        switch (normalisation.getNormalisationType()) {
+            case TYPE_NONE:
+                normalisedTarget = target;
+                break;
+            case TYPE_ARRAY:
+                normalisedTarget = NormalisationUtils.normaliseArray((Object[])target, normalisation.getArrayComponentClass());
+                break;
+            case TYPE_LIST:
+                normalisedTarget = NormalisationUtils.normaliseList((List<Object>)target);
+                break;
+            case TYPE_MAP:
+                normalisedTarget = NormalisationUtils.normaliseMap((Map<Object,Object>)target);
+                break;
+            case TYPE_MAPENTRY:
+                normalisedTarget = NormalisationUtils.normaliseMapEntry((Map.Entry<Object,Object>)target);
+                break;
+            case TYPE_SET:
+                normalisedTarget = NormalisationUtils.normaliseSet((Set<Object>)target);
+                break;
+        }
+        return normalisedTarget;
+        
+    }
+    
     
     
     
@@ -160,14 +170,55 @@ public final class ExecutionTarget extends Target {
     
     
     
-    protected ExecutionTarget(final Object target,
+    private ExecutionTarget(final Normalisation initialNormalisation) {
+        
+        super();
+        
+        final ExecutionTargetOperation[][] newOperations = 
+            (ExecutionTargetOperation[][]) Array.newInstance(ExecutionTargetOperation[].class, 1);
+        newOperations[0] = new ExecutionTargetOperation[0];
+        
+        final int[] newPreviousBlockLevels = new int[] { -1 };
+
+        this.initialTarget = null;
+        this.initialNormalisation = initialNormalisation;
+        this.currentBlockLevel = 0;
+        this.operations = newOperations;
+        this.previousBlockLevels = newPreviousBlockLevels;
+        
+    }
+    
+    
+    private ExecutionTarget(final Object initialTarget, final Normalisation initialNormalisation) {
+        
+        super();
+        
+        final ExecutionTargetOperation[][] newOperations = 
+            (ExecutionTargetOperation[][]) Array.newInstance(ExecutionTargetOperation[].class, 1);
+        newOperations[0] = new ExecutionTargetOperation[0];
+        
+        final int[] newPreviousBlockLevels = new int[] { -1 };
+
+        this.initialTarget = initialTarget;
+        this.initialNormalisation = initialNormalisation;
+        this.currentBlockLevel = 0;
+        this.operations = newOperations;
+        this.previousBlockLevels = newPreviousBlockLevels;
+        
+    }
+    
+    
+    
+    private ExecutionTarget(final Object initialTarget,
+            final Normalisation initialNormalisation,
             final int currentBlockLevel,
             final ExecutionTargetOperation[][] operations,
             final int[] previousBlockLevels) {
         
         super();
         
-        this.target = target;
+        this.initialTarget = initialTarget;
+        this.initialNormalisation = initialNormalisation;
         this.currentBlockLevel = currentBlockLevel;
         this.operations = operations;
         this.previousBlockLevels = previousBlockLevels;
@@ -188,7 +239,7 @@ public final class ExecutionTarget extends Target {
         newOperations[previousBlockLevel][previousBlockSize - 1] =
             iterateOpenOperation.close(arrayComponentClass);
             
-        return new ExecutionTarget(this.target, previousBlockLevel, newOperations, this.previousBlockLevels);
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, previousBlockLevel, newOperations, this.previousBlockLevels);
         
     }
 
@@ -200,7 +251,7 @@ public final class ExecutionTarget extends Target {
         final int previousBlockLevel = this.previousBlockLevels[this.currentBlockLevel];
         final ExecutionTargetOperation[][] newOperations = cloneOperations(this.operations);
             
-        return new ExecutionTarget(this.target, previousBlockLevel, newOperations, this.previousBlockLevels);
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, previousBlockLevel, newOperations, this.previousBlockLevels);
         
     }
 
@@ -212,7 +263,7 @@ public final class ExecutionTarget extends Target {
         final int previousBlockLevel = this.previousBlockLevels[this.currentBlockLevel];
         final ExecutionTargetOperation[][] newOperations = cloneOperations(this.operations);
             
-        return new ExecutionTarget(this.target, previousBlockLevel, newOperations, this.previousBlockLevels);
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, previousBlockLevel, newOperations, this.previousBlockLevels);
         
     }
 
@@ -227,7 +278,7 @@ public final class ExecutionTarget extends Target {
         final ExecutionTargetOperation[][] newOperations =
             addOperation(this.operations, this.currentBlockLevel, operation);
 
-        return new ExecutionTarget(this.target, this.currentBlockLevel, newOperations, this.previousBlockLevels);
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, this.currentBlockLevel, newOperations, this.previousBlockLevels);
         
     }
 
@@ -242,7 +293,7 @@ public final class ExecutionTarget extends Target {
         final ExecutionTargetOperation[][] newOperations =
             addOperation(this.operations, this.currentBlockLevel, operation);
 
-        return new ExecutionTarget(this.target, this.currentBlockLevel, newOperations, this.previousBlockLevels);
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, this.currentBlockLevel, newOperations, this.previousBlockLevels);
         
     }
 
@@ -259,7 +310,7 @@ public final class ExecutionTarget extends Target {
         final int[] newPreviousBlockLevels = 
             addPreviousBlockLevelRelation(this.previousBlockLevels, this.currentBlockLevel);
             
-        return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, newBlockLevel, newOperations, newPreviousBlockLevels);
         
     }
 
@@ -276,7 +327,7 @@ public final class ExecutionTarget extends Target {
         final int[] newPreviousBlockLevels = 
             addPreviousBlockLevelRelation(this.previousBlockLevels, this.currentBlockLevel);
             
-        return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, newBlockLevel, newOperations, newPreviousBlockLevels);
         
     }
 
@@ -293,7 +344,7 @@ public final class ExecutionTarget extends Target {
         final int[] newPreviousBlockLevels = 
             addPreviousBlockLevelRelation(this.previousBlockLevels, this.currentBlockLevel);
             
-        return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, newBlockLevel, newOperations, newPreviousBlockLevels);
         
     }
 
@@ -307,7 +358,7 @@ public final class ExecutionTarget extends Target {
         final ExecutionTargetOperation[][] newOperations =
             addOperation(this.operations, this.currentBlockLevel, operation);
 
-        return new ExecutionTarget(this.target, this.currentBlockLevel, newOperations, this.previousBlockLevels);
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, this.currentBlockLevel, newOperations, this.previousBlockLevels);
 
     }
 
@@ -325,7 +376,7 @@ public final class ExecutionTarget extends Target {
         final int[] newPreviousBlockLevels = 
             addPreviousBlockLevelRelation(this.previousBlockLevels, this.currentBlockLevel);
             
-        return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, newBlockLevel, newOperations, newPreviousBlockLevels);
         
     }
 
@@ -342,7 +393,7 @@ public final class ExecutionTarget extends Target {
         final int[] newPreviousBlockLevels = 
             addPreviousBlockLevelRelation(this.previousBlockLevels, this.currentBlockLevel);
             
-        return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, newBlockLevel, newOperations, newPreviousBlockLevels);
         
     }
 
@@ -359,7 +410,7 @@ public final class ExecutionTarget extends Target {
         final int[] newPreviousBlockLevels = 
             addPreviousBlockLevelRelation(this.previousBlockLevels, this.currentBlockLevel);
             
-        return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, newBlockLevel, newOperations, newPreviousBlockLevels);
         
     }
 
@@ -376,7 +427,7 @@ public final class ExecutionTarget extends Target {
         final int[] newPreviousBlockLevels = 
             addPreviousBlockLevelRelation(this.previousBlockLevels, this.currentBlockLevel);
             
-        return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, newBlockLevel, newOperations, newPreviousBlockLevels);
         
     }
 
@@ -393,7 +444,7 @@ public final class ExecutionTarget extends Target {
         final int[] newPreviousBlockLevels = 
             addPreviousBlockLevelRelation(this.previousBlockLevels, this.currentBlockLevel);
             
-        return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, newBlockLevel, newOperations, newPreviousBlockLevels);
         
     }
 
@@ -410,7 +461,7 @@ public final class ExecutionTarget extends Target {
         final int[] newPreviousBlockLevels = 
             addPreviousBlockLevelRelation(this.previousBlockLevels, this.currentBlockLevel);
             
-        return new ExecutionTarget(this.target, newBlockLevel, newOperations, newPreviousBlockLevels);
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, newBlockLevel, newOperations, newPreviousBlockLevels);
         
     }
 
@@ -425,7 +476,7 @@ public final class ExecutionTarget extends Target {
         final ExecutionTargetOperation[][] newOperations =
             addOperation(this.operations, this.currentBlockLevel, operation);
 
-        return new ExecutionTarget(this.target, this.currentBlockLevel, newOperations, this.previousBlockLevels);
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, this.currentBlockLevel, newOperations, this.previousBlockLevels);
 
     }
 
@@ -439,7 +490,7 @@ public final class ExecutionTarget extends Target {
         final ExecutionTargetOperation[][] newOperations =
             addOperation(this.operations, this.currentBlockLevel, operation);
 
-        return new ExecutionTarget(this.target, this.currentBlockLevel, newOperations, this.previousBlockLevels);
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, this.currentBlockLevel, newOperations, this.previousBlockLevels);
         
     }
 
@@ -453,7 +504,7 @@ public final class ExecutionTarget extends Target {
         final ExecutionTargetOperation[][] newOperations =
             addOperation(this.operations, this.currentBlockLevel, operation);
 
-        return new ExecutionTarget(this.target, this.currentBlockLevel, newOperations, this.previousBlockLevels);
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, this.currentBlockLevel, newOperations, this.previousBlockLevels);
         
     }
 
@@ -463,14 +514,25 @@ public final class ExecutionTarget extends Target {
     
     @Override
     public Object get() {
-        
-        Object result = this.target;
+        return doExecute(this.initialTarget, this.initialNormalisation, this.operations);
+    }
+    
+    
+    @Override
+    public Object execute(final Object executionTarget) {
+        return doExecute(executionTarget, this.initialNormalisation, this.operations);
+    }
+    
+
+    
+    
+    private static Object doExecute(final Object target, final Normalisation initialNormalisation, final ExecutionTargetOperation[][] operations) {
+        Object result = normaliseTarget(target, initialNormalisation);
         final int[] indexes = new int[] { 0 };
-        for (int i = 0, z = this.operations[0].length; i < z; i++) {
-            result = this.operations[0][i].execute(result, this.operations, indexes);
+        for (int i = 0, z = operations[0].length; i < z; i++) {
+            result = operations[0][i].execute(result, operations, indexes);
         }
         return result;
-            
     }
     
 }
