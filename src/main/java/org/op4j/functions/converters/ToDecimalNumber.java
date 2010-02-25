@@ -25,10 +25,12 @@ import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.Locale;
 
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
+import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.converters.ToNumber.Delegated;
 
 /**
@@ -69,14 +71,14 @@ final class ToDecimalNumber {
         }
 
         @Override
-        protected X numberExecute(final Number object) throws Exception {
+        protected X numberExecute(final Number object) {
             return fromNumber(object, this.scale, this.roundingMode);
         }
         
 
         
         protected final X fromNumber(
-                final Number number, final int withScale, final RoundingMode withRoundingMode) throws Exception {
+                final Number number, final int withScale, final RoundingMode withRoundingMode) {
             BigDecimal bigDecimal = null;
             if (number instanceof BigDecimal) {
                 bigDecimal = (BigDecimal) number;
@@ -180,12 +182,16 @@ final class ToDecimalNumber {
 
 
         @Override
-        public X numberExecute(final String object) throws Exception {
+        public X numberExecute(final String object) {
             switch (this.execType) {
                 case FROM_STRING_SCALE_ROUNDINGMODE:
                     return fromString(object, this.scale, this.roundingMode);
                 case FROM_STRING_SCALE_ROUNDINGMODE_LOCALE:
-                    return fromNumber(this.decimalFormat.parse(object), this.scale, this.roundingMode);
+                    try {
+                        return fromNumber(this.decimalFormat.parse(object), this.scale, this.roundingMode);
+                    } catch (final ParseException e) {
+                        throw new ExecutionException("Unable to parse: \"" + object + "\"", e);
+                    }
                 case FROM_STRING_SCALE_ROUNDINGMODE_DECIMALPOINT:
                     try {
                         return fromString(rebuildNumberString(object, this.decimalPoint), this.scale, this.roundingMode);
@@ -201,7 +207,7 @@ final class ToDecimalNumber {
 
         
         protected final X fromNumber(
-                final Number number, final int withScale, final RoundingMode withRoundingMode) throws Exception {
+                final Number number, final int withScale, final RoundingMode withRoundingMode) {
             BigDecimal bigDecimal = null;
             if (number instanceof BigDecimal) {
                 bigDecimal = (BigDecimal) number;
@@ -216,7 +222,7 @@ final class ToDecimalNumber {
 
         
         protected final X fromString(
-                final String string, final int withScale, final RoundingMode withRoundingMode) throws Exception {
+                final String string, final int withScale, final RoundingMode withRoundingMode) {
             return fromNumber(fromString(string), withScale, withRoundingMode);
         }
         

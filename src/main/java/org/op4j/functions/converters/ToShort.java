@@ -226,7 +226,7 @@ public final class ToShort {
         }
 
         @Override
-        protected Short fromString(final String string, final int withRadix) throws Exception {
+        protected Short fromString(final String string, final int withRadix) {
             return ToShort.internalFromString(string, withRadix);
         }
         

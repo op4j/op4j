@@ -226,7 +226,7 @@ public final class ToByte {
         }
 
         @Override
-        protected Byte fromString(final String string, final int withRadix) throws Exception {
+        protected Byte fromString(final String string, final int withRadix) {
             return ToByte.internalFromString(string, withRadix);
         }
         

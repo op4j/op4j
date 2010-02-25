@@ -22,13 +22,13 @@ package org.op4j.functions.converters;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.Locale;
 
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
-import org.op4j.functions.AbstractNullAsNullFunction;
-import org.op4j.functions.ExecCtx;
+import org.op4j.exceptions.ExecutionException;
 
 /**
  * 
@@ -54,11 +54,13 @@ final class ToNumber {
     }
     
     
-    static abstract class ToNumberFunction<T,X extends Number>  extends AbstractNullAsNullFunction<T,X>  {
+    static abstract class ToNumberFunction<T,X extends Number>  {
         
         ToNumberFunction() {
             super();
         }
+
+        public abstract X execute(final T object);
 
         protected abstract X fromNumber(final Number number);
         protected abstract X fromString(final String string);
@@ -91,7 +93,7 @@ final class ToNumber {
         }
 
         @Override
-        public X nullAsNullExecute(final Number object, final ExecCtx ctx) throws Exception {
+        public X execute(final Number object) {
             switch (this.execType) {
                 case DELEGATED:
                     return numberExecute(object);
@@ -102,7 +104,7 @@ final class ToNumber {
             throw new IllegalStateException("Execution type did not match!");
         }
 
-        protected abstract X numberExecute(final Number object) throws Exception;
+        protected abstract X numberExecute(final Number object);
         
     }
     
@@ -116,7 +118,7 @@ final class ToNumber {
         }
 
         @Override
-        public X nullAsNullExecute(Boolean object, final ExecCtx ctx) throws Exception {
+        public X execute(Boolean object) {
             return fromNumber(BooleanUtils.toIntegerObject(object));
         }
         
@@ -174,14 +176,18 @@ final class ToNumber {
 
         
         @Override
-        public final X nullAsNullExecute(final String object, final ExecCtx ctx) throws Exception {
+        public final X execute(final String object) {
             switch (this.execType) {
                 case DELEGATED:
                     return numberExecute(object);
                 case FROM_STRING:
                     return fromString(object);
                 case FROM_STRING_LOCALE:
-                    return fromNumber(this.decimalFormat.parse(object));
+                    try {
+                        return fromNumber(this.decimalFormat.parse(object));
+                    } catch (final ParseException e) {
+                        throw new ExecutionException("Unable to parse: \"" + object + "\"", e);
+                    }
                 case FROM_STRING_DECIMALPOINT:
                     try {
                         return fromString(rebuildNumberString(object, this.decimalPoint));
@@ -195,7 +201,7 @@ final class ToNumber {
         }
         
         
-        public abstract X numberExecute(final String object) throws Exception;
+        public abstract X numberExecute(final String object);
 
         
         protected static final String rebuildNumberString(final String original, final DecimalPoint decimalPoint) {

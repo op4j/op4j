@@ -226,7 +226,7 @@ public final class ToLong {
         }
 
         @Override
-        protected Long fromString(final String string, final int withRadix) throws Exception {
+        protected Long fromString(final String string, final int withRadix) {
             return ToLong.internalFromString(string, withRadix);
         }
         

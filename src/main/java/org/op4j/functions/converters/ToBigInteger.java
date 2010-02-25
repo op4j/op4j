@@ -237,7 +237,7 @@ public final class ToBigInteger {
         }
 
         @Override
-        protected BigInteger fromString(final String string, final int withRadix) throws Exception {
+        protected BigInteger fromString(final String string, final int withRadix) {
             return ToBigInteger.internalFromString(string, withRadix);
         }
         

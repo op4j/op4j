@@ -227,7 +227,7 @@ public final class ToInteger {
         }
 
         @Override
-        protected Integer fromString(final String string, final int withRadix) throws Exception {
+        protected Integer fromString(final String string, final int withRadix) {
             return ToInteger.internalFromString(string, withRadix);
         }
         
