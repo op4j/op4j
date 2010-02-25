@@ -20,6 +20,7 @@ import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.Call;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.FnString;
+import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;
 import org.op4j.functions.converters.ToString;
@@ -668,6 +669,35 @@ public class AssortedTests extends TestCase {
         
     }
     
+
+    
+    @Test
+    public void test29() {
+
+        final String one = Op.onAll("one", "two", "three").removeAllIndexesNot(0).uniq().get();
+        assertEquals("one", one);
+        
+    }
+    
+    
+    @Test
+    public void test30() throws Exception {
+
+        final List<String> stringList = Arrays.asList(new String[] {"one", "two", "three", null});
+        final List<String> stringUpperList = Arrays.asList(new String[] {"ONE", "TWO", "THREE", null});
+        
+        final Function<List<String>,List<String>> fn =
+            Fn.onListOf(Types.STRING).map(FnString.toUpperCase()).get();
+        
+        final List<String> result = fn.execute(stringList);
+        
+        assertEquals(stringUpperList, result);
+        
+        final List<String> result2 = Op.on(stringList).exec(fn).get();
+        
+        assertEquals(stringUpperList, result2);
+        
+    }
     
 }
 
