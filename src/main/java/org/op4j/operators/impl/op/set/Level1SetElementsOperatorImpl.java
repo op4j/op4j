@@ -24,7 +24,7 @@ import java.util.Set;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
-import org.op4j.operators.impl.op.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.set.Level1SetElementsOperator;
 import org.op4j.operators.qualities.UniqOpOperator;
 import org.op4j.target.Target;

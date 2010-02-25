@@ -1,7 +1,7 @@
 package org.op4j.operators.impl.op.generic;
 
 import org.op4j.functions.IFunction;
-import org.op4j.operators.impl.op.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.generic.Level0GenericUniqSelectedOperator;
 import org.op4j.operators.qualities.UniqOpOperator;
 import org.op4j.target.Target;

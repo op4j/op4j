@@ -3,7 +3,7 @@ package org.op4j.operators.impl.op.set;
 import java.util.Set;
 
 import org.op4j.functions.IFunction;
-import org.op4j.operators.impl.op.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.set.Level1SetElementsSelectedOperator;
 import org.op4j.operators.qualities.UniqOpOperator;
 import org.op4j.target.Target;

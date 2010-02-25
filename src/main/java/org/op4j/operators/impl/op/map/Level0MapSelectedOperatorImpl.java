@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 
 import org.op4j.functions.IFunction;
 import org.op4j.functions.structures.FMap;
-import org.op4j.operators.impl.op.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.map.Level0MapSelectedOperator;
 import org.op4j.operators.qualities.UniqOpOperator;
 import org.op4j.target.Target;

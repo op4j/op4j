@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.operators.impl.op.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.generic.Level0GenericMultiSelectedOperator;
 import org.op4j.operators.qualities.MultiOpOperator;
 import org.op4j.target.Target;
@@ -29,8 +29,13 @@ public final class Level0GenericMultiSelectedOperatorImpl<I,T> extends AbstractO
     }
 
 
-    public T[] getAsArray(final Type<T> type) {
-        return endIf().buildArrayOf(type).get();
+    public Level0GenericMultiSelectedOperatorImpl<I,T> exec(final IFunction<? super T,? extends T> function) {
+        return new Level0GenericMultiSelectedOperatorImpl<I,T>(getTarget().execute(function, Normalisation.NONE));
+    }
+
+
+    public Level0GenericMultiSelectedOperatorImpl<I,T> replaceWith(final T replacement) {
+        return new Level0GenericMultiSelectedOperatorImpl<I,T>(getTarget().replaceWith(replacement, Normalisation.NONE));
     }
 
 
@@ -39,13 +44,8 @@ public final class Level0GenericMultiSelectedOperatorImpl<I,T> extends AbstractO
     }
 
 
-    public Level0GenericMultiSelectedOperatorImpl<I,T> exec(final IFunction<? super T,? extends T> function) {
-        return new Level0GenericMultiSelectedOperatorImpl<I,T>(getTarget().execute(function, Normalisation.NONE));
-    }
-
-
-    public Level0GenericMultiSelectedOperatorImpl<I,T> replaceWith(final T replacement) {
-        return new Level0GenericMultiSelectedOperatorImpl<I,T>(getTarget().replaceWith(replacement, Normalisation.NONE));
+    public T[] getAsArrayOf(final Type<T> type) {
+        return endIf().buildArrayOf(type).get();
     }
 
 

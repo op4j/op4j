@@ -26,7 +26,7 @@ import java.util.Map.Entry;
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.structures.FMap;
-import org.op4j.operators.impl.op.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.op.generic.Level0GenericUniqOperatorImpl;
 import org.op4j.operators.impl.op.list.Level0ListOperatorImpl;
 import org.op4j.operators.impl.op.set.Level0SetOperatorImpl;

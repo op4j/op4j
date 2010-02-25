@@ -30,7 +30,7 @@ import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.converters.ToSet;
 import org.op4j.functions.structures.FList;
 import org.op4j.mapbuild.IMapBuilder;
-import org.op4j.operators.impl.op.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.op.array.Level0ArrayOperatorImpl;
 import org.op4j.operators.impl.op.generic.Level0GenericUniqOperatorImpl;
 import org.op4j.operators.impl.op.map.Level0MapOperatorImpl;

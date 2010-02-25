@@ -25,6 +25,7 @@ import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.functions.Call;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.converters.ToArray;
 import org.op4j.functions.converters.ToList;
@@ -35,7 +36,7 @@ import org.op4j.functions.converters.ToMapOfSet;
 import org.op4j.functions.converters.ToSet;
 import org.op4j.functions.structures.FList;
 import org.op4j.mapbuild.IMapBuilder;
-import org.op4j.operators.impl.op.AbstractOperatorImpl;
+import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.op.array.Level0ArrayOperatorImpl;
 import org.op4j.operators.impl.op.list.Level0ListOperatorImpl;
 import org.op4j.operators.impl.op.map.Level0MapOperatorImpl;
@@ -280,7 +281,7 @@ public final class Level0GenericMultiOperatorImpl<I,T> extends AbstractOperatorI
         if (size() > 1) {
             throw new IllegalStateException("Cannot call uniq(): more than one target exist (size: " + size() + ")");
         }
-        return new Level0GenericUniqOperatorImpl<I,T>(getTarget().endIterate(null).replaceWith(getAsList().get(0), Normalisation.NONE));
+        return new Level0GenericUniqOperatorImpl<I,T>(getTarget().endIterate(null).execute(Call.asObject("get", Integer.valueOf(0)), Normalisation.NONE));
     }
 
 
@@ -289,7 +290,7 @@ public final class Level0GenericMultiOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    public T[] getAsArray(final Type<T> type) {
+    public T[] getAsArrayOf(final Type<T> type) {
         return buildArrayOf(type).get();
     }
 
