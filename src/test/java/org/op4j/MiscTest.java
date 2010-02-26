@@ -39,6 +39,7 @@ import org.javaruntype.type.Types;
 import org.junit.Test;
 import org.op4j.functions.DecimalPoint;
 import org.op4j.functions.ExecCtx;
+import org.op4j.functions.FnCalendar;
 import org.op4j.functions.FnString;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;

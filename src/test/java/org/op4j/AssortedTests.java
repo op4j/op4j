@@ -19,11 +19,11 @@ import org.junit.Test;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.Call;
 import org.op4j.functions.ExecCtx;
+import org.op4j.functions.FnNumber;
 import org.op4j.functions.FnString;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;
-import org.op4j.functions.converters.ToString;
 import org.op4j.functions.structures.FArray;
 import org.op4j.test.auto.TestOperation;
 
@@ -642,7 +642,7 @@ public class AssortedTests extends TestCase {
 		testOperations.add(new TestOperation("ifNotNull"));
 		testOperations.add(new TestOperation("replaceWith", new Object[]{null}));
 		testOperations.add(new TestOperation("endIf"));
-		testOperations.add(new TestOperation("exec", new Object[]{ToString.fromNumber()}));
+		testOperations.add(new TestOperation("exec", new Object[]{FnNumber.toStr()}));
 		testOperations.add(new TestOperation("get"));
 		
 		final List<Integer> listResult = (List<Integer>)org.op4j.test.auto.Test.testOnList(integerList, testOperations);

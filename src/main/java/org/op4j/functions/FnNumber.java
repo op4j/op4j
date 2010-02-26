@@ -22,8 +22,14 @@ package org.op4j.functions;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
 
+import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
+import org.op4j.functions.FnNumber.ToString.NumberFormatType;
 
 /**
  * 
@@ -147,6 +153,237 @@ public final class FnNumber {
     }
     
 	
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public static final IFunction<Number,String> toStr() {
+        return new ToString();
+    }   
+    public static final IFunction<Number,String> toStr(boolean groupingUsed) {
+        return new ToString(groupingUsed);
+    }
+    public static final IFunction<Number,String> toStr(Locale locale) {
+        return new ToString(locale);
+    }
+    public static final IFunction<Number,String> toStr(String locale) {
+        return new ToString(locale);
+    }
+    public static final IFunction<Number,String> toStr(Locale locale, boolean groupingUsed) {
+        return new ToString(locale, groupingUsed);
+    }   
+    public static final IFunction<Number,String> toStr(String locale, boolean groupingUsed) {
+        return new ToString(locale, groupingUsed);
+    }
+    public static final IFunction<Number,String> toStr(Locale locale, int minIntegerDigits,
+            int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
+        return new ToString(NumberFormatType.NUMBER, locale, 
+                minIntegerDigits, Integer.MAX_VALUE, 
+                minFractionDigits, maxFractionDigits,
+                groupingUsed);
+    }
+    public static final IFunction<Number,String> toStr(String locale, int minIntegerDigits,
+            int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
+        return new ToString(NumberFormatType.NUMBER, locale, 
+                minIntegerDigits, Integer.MAX_VALUE, 
+                minFractionDigits, maxFractionDigits,
+                groupingUsed);
+    }
+    public static final IFunction<Number,String> toStr(Locale locale, int minIntegerDigits,
+            int minFractionDigits, int maxFractionDigits, 
+            char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+        return new ToString(NumberFormatType.NUMBER, locale, 
+                minIntegerDigits, Integer.MAX_VALUE, 
+                minFractionDigits, maxFractionDigits,
+                true, groupingSeparator, decimalSeparator, 
+                decimalSeparatorAlwaysShown);
+    }
+    public static final IFunction<Number,String> toStr(Locale locale, int minIntegerDigits,
+            int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+            char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+        return new ToString(NumberFormatType.NUMBER, locale, 
+                minIntegerDigits, Integer.MAX_VALUE, 
+                minFractionDigits, maxFractionDigits,
+                groupingUsed, decimalSeparator, 
+                decimalSeparatorAlwaysShown);
+    }
+    public static final IFunction<Number,String> toStr(String locale, int minIntegerDigits, 
+            int minFractionDigits, int maxFractionDigits, 
+            char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+        return new ToString(NumberFormatType.NUMBER, locale, 
+                minIntegerDigits, Integer.MAX_VALUE, 
+                minFractionDigits, maxFractionDigits, 
+                true, groupingSeparator, decimalSeparator, 
+                decimalSeparatorAlwaysShown);
+    }
+    public static final IFunction<Number,String> toStr(String locale, int minIntegerDigits, 
+            int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+            char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+        return new ToString(NumberFormatType.NUMBER, locale, 
+                minIntegerDigits, Integer.MAX_VALUE, 
+                minFractionDigits, maxFractionDigits, 
+                groupingUsed, decimalSeparator, 
+                decimalSeparatorAlwaysShown);
+    }
+    
+    
+    
+    public static final IFunction<Number,String> toCurrencyStr() {
+        return new ToString(NumberFormatType.CURRENCY);
+    }
+    public static final IFunction<Number,String> toCurrencyStr(boolean groupingUsed) {
+        return new ToString(NumberFormatType.CURRENCY, groupingUsed);
+    }
+    public static final IFunction<Number,String> toCurrencyStr(Locale locale) {
+        return new ToString(NumberFormatType.CURRENCY, locale);
+    }
+    public static final IFunction<Number,String> toCurrencyStr(String locale) {
+        return new ToString(NumberFormatType.CURRENCY, locale);
+    }
+    public static final IFunction<Number,String> toCurrencyStr(Locale locale, boolean groupingUsed) {
+        return new ToString(NumberFormatType.CURRENCY, locale, groupingUsed);
+    }
+    public static final IFunction<Number,String> toCurrencyStr(String locale, boolean groupingUsed) {
+        return new ToString(NumberFormatType.CURRENCY, locale, groupingUsed);
+    }
+    public static final IFunction<Number,String> toCurrencyStr(Locale locale, int minIntegerDigits,
+            int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
+        return new ToString(NumberFormatType.CURRENCY, locale, 
+                minIntegerDigits, Integer.MAX_VALUE, 
+                minFractionDigits, maxFractionDigits,
+                groupingUsed);
+    }
+    public static final IFunction<Number,String> toCurrencyStr(String locale, int minIntegerDigits,
+            int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
+        return new ToString(NumberFormatType.CURRENCY, locale, 
+                minIntegerDigits, Integer.MAX_VALUE, 
+                minFractionDigits, maxFractionDigits,
+                groupingUsed);
+    }
+    public static final IFunction<Number,String> toCurrencyStr(Locale locale, int minIntegerDigits,
+            int minFractionDigits, int maxFractionDigits, 
+            char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+        return new ToString(NumberFormatType.CURRENCY, locale, 
+                minIntegerDigits, Integer.MAX_VALUE, 
+                minFractionDigits, maxFractionDigits,
+                true, groupingSeparator, decimalSeparator, 
+                decimalSeparatorAlwaysShown);
+    }
+    public static final IFunction<Number,String> toCurrencyStr(Locale locale, int minIntegerDigits,
+            int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+            char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+        return new ToString(NumberFormatType.CURRENCY, locale, 
+                minIntegerDigits, Integer.MAX_VALUE, 
+                minFractionDigits, maxFractionDigits,
+                groupingUsed, decimalSeparator, 
+                decimalSeparatorAlwaysShown);
+    }
+    public static final IFunction<Number,String> toCurrencyStr(String locale, int minIntegerDigits, 
+            int minFractionDigits, int maxFractionDigits, 
+            char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+        return new ToString(NumberFormatType.CURRENCY, locale, 
+                minIntegerDigits, Integer.MAX_VALUE, 
+                minFractionDigits, maxFractionDigits, 
+                true, groupingSeparator, decimalSeparator, 
+                decimalSeparatorAlwaysShown);
+    }
+    public static final IFunction<Number,String> toCurrencyStr(String locale, int minIntegerDigits, 
+            int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+            char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+        return new ToString(NumberFormatType.CURRENCY, locale, 
+                minIntegerDigits, Integer.MAX_VALUE, 
+                minFractionDigits, maxFractionDigits, 
+                groupingUsed, decimalSeparator, 
+                decimalSeparatorAlwaysShown);
+    }
+    
+    
+    
+    public static final IFunction<Number,String> toPercentStr() {
+        return new ToString(NumberFormatType.PERCENT);
+    }
+    public static final IFunction<Number,String> toPercentStr(boolean groupingUsed) {
+        return new ToString(NumberFormatType.PERCENT, groupingUsed);
+    }
+    public static final IFunction<Number,String> toPercentStr(Locale locale) {
+        return new ToString(NumberFormatType.PERCENT, locale);
+    }
+    public static final IFunction<Number,String> toPercentStr(String locale) {
+        return new ToString(NumberFormatType.PERCENT, locale);
+    }
+    public static final IFunction<Number,String> toPercentStr(Locale locale, boolean groupingUsed) {
+        return new ToString(NumberFormatType.PERCENT, locale, groupingUsed);
+    }   
+    public static final IFunction<Number,String> toPercentStr(String locale, boolean groupingUsed) {
+        return new ToString(NumberFormatType.PERCENT, locale, groupingUsed);
+    }
+    public static final IFunction<Number,String> toPercentStr(Locale locale, int minIntegerDigits,
+            int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
+        return new ToString(NumberFormatType.PERCENT, locale, 
+                minIntegerDigits, Integer.MAX_VALUE, 
+                minFractionDigits, maxFractionDigits,
+                groupingUsed);
+    }
+    public static final IFunction<Number,String> toPercentStr(String locale, int minIntegerDigits,
+            int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
+        return new ToString(NumberFormatType.PERCENT, locale, 
+                minIntegerDigits, Integer.MAX_VALUE, 
+                minFractionDigits, maxFractionDigits,
+                groupingUsed);
+    }
+    public static final IFunction<Number,String> toPercentStr(Locale locale, int minIntegerDigits,
+            int minFractionDigits, int maxFractionDigits, 
+            char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+        return new ToString(NumberFormatType.PERCENT, locale, 
+                minIntegerDigits, Integer.MAX_VALUE, 
+                minFractionDigits, maxFractionDigits,
+                true, groupingSeparator, decimalSeparator, 
+                decimalSeparatorAlwaysShown);
+    }
+    public static final IFunction<Number,String> toPercentStr(Locale locale, int minIntegerDigits,
+            int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+            char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+        return new ToString(NumberFormatType.PERCENT, locale, 
+                minIntegerDigits, Integer.MAX_VALUE, 
+                minFractionDigits, maxFractionDigits,
+                groupingUsed, decimalSeparator, 
+                decimalSeparatorAlwaysShown);
+    }
+    public static final IFunction<Number,String> toPercentStr(String locale, int minIntegerDigits, 
+            int minFractionDigits, int maxFractionDigits, 
+            char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+        return new ToString(NumberFormatType.PERCENT, locale, 
+                minIntegerDigits, Integer.MAX_VALUE, 
+                minFractionDigits, maxFractionDigits, 
+                true, groupingSeparator, decimalSeparator, 
+                decimalSeparatorAlwaysShown);
+    }
+    public static final IFunction<Number,String> toPercentStr(String locale, int minIntegerDigits, 
+            int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+            char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+        return new ToString(NumberFormatType.PERCENT, locale, 
+                minIntegerDigits, Integer.MAX_VALUE, 
+                minFractionDigits, maxFractionDigits, 
+                groupingUsed, decimalSeparator, 
+                decimalSeparatorAlwaysShown);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 	
 	
@@ -506,5 +743,287 @@ public final class FnNumber {
         }
 
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    static final class ToString extends AbstractNullAsNullFunction<Number,String>  {
+
+        private final NumberFormat numberFormat;
+        
+        ToString() {
+            super();
+            this.numberFormat = getNumberFormat(NumberFormatType.NUMBER, null);
+        }
+        
+        ToString(NumberFormatType numberFormatType, boolean groupingUsed) {
+            super();    
+            
+            this.numberFormat = getNumberFormat(numberFormatType, null);
+            setGroupingUsed(groupingUsed);          
+        }
+        
+        ToString(boolean groupingUsed) {
+            super();    
+            this.numberFormat = getNumberFormat(NumberFormatType.NUMBER, null);
+            setGroupingUsed(groupingUsed);
+        }
+        
+        ToString(Locale locale) {
+            super();
+            
+            Validate.notNull(locale, "locale can't be null");
+            
+            this.numberFormat = getNumberFormat(NumberFormatType.NUMBER, locale);
+        }
+        
+        ToString(NumberFormatType numberFormatType, Locale locale) {
+            super();    
+            
+            Validate.notNull(locale, "locale can't be null");
+            
+            this.numberFormat = getNumberFormat(numberFormatType, locale);
+        }
+        
+        ToString(NumberFormatType numberFormatType, String locale) {
+            super();    
+            
+            Validate.notEmpty(locale, "locale can't be neither empty nor null");
+            
+            this.numberFormat = getNumberFormat(numberFormatType, LocaleUtils.toLocale(locale));
+        }
+        
+        ToString(NumberFormatType numberFormatType, Locale locale, boolean groupingUsed) {
+            super();    
+            
+            Validate.notNull(locale, "locale can't be null");
+            
+            this.numberFormat = getNumberFormat(numberFormatType, locale);
+            setGroupingUsed(groupingUsed);
+        }
+        
+        ToString(NumberFormatType numberFormatType, String locale, boolean groupingUsed) {
+            super();    
+            
+            Validate.notEmpty(locale, "locale can't be neither empty nor null");
+            
+            this.numberFormat = getNumberFormat(numberFormatType, LocaleUtils.toLocale(locale));
+            setGroupingUsed(groupingUsed);
+        }
+        
+        ToString(Locale locale, boolean groupingUsed) {
+            super();
+            
+            Validate.notNull(locale, "locale can't be null");
+            
+            this.numberFormat = getNumberFormat(NumberFormatType.NUMBER, locale);
+            setGroupingUsed(groupingUsed);
+        }
+        
+        ToString(String locale) {
+            super();
+            
+            Validate.notEmpty(locale, "locale can't be neither empty nor null");
+            
+            this.numberFormat = getNumberFormat(NumberFormatType.NUMBER, LocaleUtils.toLocale(locale));
+        }
+        
+        ToString(String locale, boolean groupingUsed) {
+            super();
+            
+            Validate.notEmpty(locale, "locale can't be neither empty nor null");
+            
+            this.numberFormat = getNumberFormat(NumberFormatType.NUMBER, LocaleUtils.toLocale(locale));
+            setGroupingUsed(groupingUsed);
+        }
+        
+        ToString(NumberFormatType numberFormatType) {
+            super();
+            
+            this.numberFormat = getNumberFormat(numberFormatType, null);
+        }       
+        
+        ToString(NumberFormatType numberFormatType, int minIntegerDigits, int maxIntegerDigits,
+                int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
+            super();
+            
+            this.numberFormat = getNumberFormat(numberFormatType, null);
+            setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
+            setGroupingUsed(groupingUsed);
+        }
+        
+        ToString(NumberFormatType numberFormatType, int minIntegerDigits, int maxIntegerDigits,
+                int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+                char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+            super();
+            
+            this.numberFormat = getNumberFormat(numberFormatType, null);
+            setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
+            setGroupingUsed(groupingUsed);
+            setGroupingSeparator(groupingSeparator);
+            setDecimalSeparator(decimalSeparator, decimalSeparatorAlwaysShown);
+        }
+        
+        ToString(NumberFormatType numberFormatType, Locale locale, int minIntegerDigits, int maxIntegerDigits,
+                int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
+            super();
+            
+            Validate.notNull(locale, "locale can't be null");
+            
+            this.numberFormat = getNumberFormat(numberFormatType, locale);
+            setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
+            setGroupingUsed(groupingUsed);
+        }
+        
+        ToString(NumberFormatType numberFormatType, Locale locale, int minIntegerDigits, int maxIntegerDigits,
+                int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+                char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+            super();
+            
+            Validate.notNull(locale, "locale can't be null");
+            
+            this.numberFormat = getNumberFormat(numberFormatType, locale);
+            setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
+            setGroupingUsed(groupingUsed);
+            setDecimalSeparator(decimalSeparator, decimalSeparatorAlwaysShown);
+        }
+        
+        ToString(NumberFormatType numberFormatType, Locale locale, int minIntegerDigits, int maxIntegerDigits,
+                int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+                char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+            super();
+            
+            Validate.notNull(locale, "locale can't be null");
+            
+            this.numberFormat = getNumberFormat(numberFormatType, locale);
+            setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
+            setGroupingUsed(groupingUsed);
+            setGroupingSeparator(groupingSeparator);
+            setDecimalSeparator(decimalSeparator, decimalSeparatorAlwaysShown);
+        }
+        
+        ToString(NumberFormatType numberFormatType, String locale, int minIntegerDigits, int maxIntegerDigits,
+                int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
+            super();
+            
+            Validate.notEmpty(locale, "locale can't be neither empty nor null");
+            
+            this.numberFormat = getNumberFormat(numberFormatType, LocaleUtils.toLocale(locale));
+            setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
+            setGroupingUsed(groupingUsed);          
+        }
+        
+        ToString(NumberFormatType numberFormatType, String locale, int minIntegerDigits, int maxIntegerDigits,
+                int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+                char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+            super();
+            
+            Validate.notEmpty(locale, "locale can't be neither empty nor null");
+            
+            this.numberFormat = getNumberFormat(numberFormatType, LocaleUtils.toLocale(locale));
+            setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
+            setGroupingUsed(groupingUsed);
+            setDecimalSeparator(decimalSeparator, decimalSeparatorAlwaysShown);
+        }
+            
+        ToString(NumberFormatType numberFormatType, String locale, int minIntegerDigits, int maxIntegerDigits,
+                int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
+                char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
+            super();
+            
+            Validate.notEmpty(locale, "locale can't be neither empty nor null");
+            
+            this.numberFormat = getNumberFormat(numberFormatType, LocaleUtils.toLocale(locale));
+            setMinAndMaxDigits(minIntegerDigits, maxIntegerDigits, minFractionDigits, maxFractionDigits);
+            setGroupingUsed(groupingUsed);
+            setGroupingSeparator(groupingSeparator);
+            setDecimalSeparator(decimalSeparator, decimalSeparatorAlwaysShown);
+        }
+
+        
+        @Override
+        protected String nullAsNullExecute(final Number number, final ExecCtx ctx) throws Exception {
+            return fromNumber(number);                      
+        }
+        
+        private NumberFormat getNumberFormat(NumberFormatType numberFormatType, Locale locale) {
+            Validate.notNull(numberFormatType, "numberFormatType can't be null");
+            
+            NumberFormat nf = null;
+            switch (numberFormatType) {
+                case CURRENCY :
+                    nf = NumberFormat.getCurrencyInstance((locale != null) ? locale : Locale.getDefault());
+                    break;
+                case PERCENT :
+                    nf = NumberFormat.getPercentInstance((locale != null) ? locale : Locale.getDefault());
+                    break;
+                case NUMBER :
+                    nf = NumberFormat.getNumberInstance((locale != null) ? locale : Locale.getDefault());
+                    break;
+                default :
+                    nf = NumberFormat.getNumberInstance((locale != null) ? locale : Locale.getDefault());                   
+            }
+            return nf;
+        }
+        
+        private void setMinAndMaxDigits(int minIntegerDigits, int maxIntegerDigits, 
+                int minFractionDigits, int maxFractionDigits) {
+            this.numberFormat.setMinimumIntegerDigits(minIntegerDigits);
+            this.numberFormat.setMaximumIntegerDigits(maxIntegerDigits);
+            this.numberFormat.setMinimumFractionDigits(minFractionDigits);
+            this.numberFormat.setMaximumFractionDigits(maxFractionDigits);
+        }
+        
+        private void setDecimalSeparator(char decimalSeparator, 
+                boolean decimalSeparatorAlwaysShown) {
+            if (this.numberFormat instanceof DecimalFormat) {
+                DecimalFormat asDecimalFormat = (DecimalFormat) this.numberFormat;
+                // It returns a clone of decimalFormatSymbols
+                DecimalFormatSymbols decimalFormatSymbols = asDecimalFormat.getDecimalFormatSymbols();
+                decimalFormatSymbols.setDecimalSeparator(decimalSeparator); 
+                asDecimalFormat.setDecimalSeparatorAlwaysShown(decimalSeparatorAlwaysShown);
+                // Update decimalFormatSymbols
+                asDecimalFormat.setDecimalFormatSymbols(decimalFormatSymbols);
+            }
+        }
+        
+        private boolean setGroupingSeparator(char groupingSeparator) {
+            if (this.numberFormat instanceof DecimalFormat) {
+                DecimalFormat asDecimalFormat = (DecimalFormat) this.numberFormat;
+                // It returns a clone of decimalFormatSymbols
+                DecimalFormatSymbols decimalFormatSymbols = asDecimalFormat.getDecimalFormatSymbols();
+                decimalFormatSymbols.setGroupingSeparator(groupingSeparator);   
+                // Update decimalFormatSymbols
+                asDecimalFormat.setDecimalFormatSymbols(decimalFormatSymbols);
+                return true;
+            }   
+            return false;
+        }
+        
+        private void setGroupingUsed(boolean groupingUsed) {
+            this.numberFormat.setGroupingUsed(groupingUsed);
+        }
+        
+        private String fromNumber(final Number number) {    
+            return this.numberFormat.format(number);
+        }       
+        
+        static enum NumberFormatType {
+            CURRENCY,
+            NUMBER,
+            PERCENT         
+        }
+    }
+    
+    
     
 }
