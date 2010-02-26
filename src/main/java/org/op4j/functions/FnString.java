@@ -23,13 +23,18 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
+import org.apache.commons.lang.time.DateUtils;
 import org.op4j.functions.FnStringAuxNumberConverters.ToBigDecimal;
 import org.op4j.functions.FnStringAuxNumberConverters.ToBigInteger;
 import org.op4j.functions.FnStringAuxNumberConverters.ToByte;
@@ -444,6 +449,43 @@ public final class FnString {
 
 
 	
+    
+    public static final IFunction<String,Calendar> toCalendar(final String pattern) {
+        return new ToCalendar(pattern);
+    }
+    
+    public static final IFunction<String,Calendar> toCalendar(final String pattern, final Locale locale) {
+        return new ToCalendar(pattern, locale);
+    }
+    
+    public static final IFunction<String,Calendar> toCalendar(final String pattern, final String locale) {
+        return new ToCalendar(pattern, locale);
+    }
+	
+    
+    
+	
+    
+    public static final IFunction<String,Date> toDate(final String pattern) {
+        return new ToDate(pattern);
+    }
+    
+    public static final IFunction<String,Date> toDate(final String pattern, final Locale locale) {
+        return new ToDate(pattern, locale);
+    }
+    
+    public static final IFunction<String,Date> toDate(final String pattern, final String locale) {
+        return new ToDate(pattern, locale);
+    }
+
+    
+    
+    
+	
+	
+	
+	
+	
 	/**
 	 * The String is returned in a way it can be used to fill in a CSV column as StringEscapeUtils does
 	 *
@@ -763,4 +805,103 @@ public final class FnString {
         
     }
 	
+    
+    
+    
+    
+    
+    static final class ToCalendar extends AbstractNullAsNullFunction<String,Calendar>  {
+
+        private final SimpleDateFormat simpleDateFormat;
+
+        
+        ToCalendar(final String pattern) {
+            super();
+            Validate.notNull(pattern, "A pattern must be specified");
+            if (StringUtils.contains(pattern, "MMM")) {
+                throw new IllegalArgumentException("The use of MMM or MMMM as part of the date pattern requires a Locale");
+            }
+            if (StringUtils.contains(pattern, "EEE")) {
+                throw new IllegalArgumentException("The use of EEE or EEEE as part of the date pattern requires a Locale");
+            }
+            this.simpleDateFormat = new SimpleDateFormat(pattern);            
+        }
+        
+        ToCalendar(final String pattern, final Locale locale) {
+            super();
+            Validate.notNull(pattern, "A pattern must be specified");
+            Validate.notNull(locale, "A locale must be specified");
+            this.simpleDateFormat = new SimpleDateFormat(pattern, locale);
+        }
+        
+        ToCalendar(final String pattern, final String locale) {
+            super();
+            Validate.notNull(pattern, "A pattern must be specified");
+            Validate.notNull(locale, "A locale must be specified");
+            this.simpleDateFormat = new SimpleDateFormat(pattern, LocaleUtils.toLocale(locale));
+        }
+
+
+        @Override
+        protected Calendar nullAsNullExecute(final String object, final ExecCtx ctx) throws Exception {
+            // Calendar is truncated to YEAR to ensure all fields are set to zero before 
+            // parsing the string into the new calendar object
+            final Calendar calendar = 
+                DateUtils.truncate(Calendar.getInstance(), Calendar.YEAR);
+            calendar.setTime(this.simpleDateFormat.parse(object));
+            return calendar;
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    static final class ToDate extends AbstractNullAsNullFunction<String,Date>  {
+
+        private final SimpleDateFormat simpleDateFormat;
+
+        
+        ToDate(final String pattern) {
+            super();
+            Validate.notNull(pattern, "A pattern must be specified");
+            if (StringUtils.contains(pattern, "MMM")) {
+                throw new IllegalArgumentException("The use of MMM or MMMM as part of the date pattern requires a Locale");
+            }
+            if (StringUtils.contains(pattern, "EEE")) {
+                throw new IllegalArgumentException("The use of EEE or EEEE as part of the date pattern requires a Locale");
+            }
+            this.simpleDateFormat = new SimpleDateFormat(pattern);            
+        }
+        
+        ToDate(final String pattern, final Locale locale) {
+            super();
+            Validate.notNull(pattern, "A pattern must be specified");
+            Validate.notNull(locale, "A locale must be specified");
+            this.simpleDateFormat = new SimpleDateFormat(pattern, locale);
+        }
+        
+        ToDate(final String pattern, final String locale) {
+            super();
+            Validate.notNull(pattern, "A pattern must be specified");
+            Validate.notNull(locale, "A locale must be specified");
+            this.simpleDateFormat = new SimpleDateFormat(pattern, LocaleUtils.toLocale(locale));
+        }
+
+
+        @Override
+        protected Date nullAsNullExecute(final String object, final ExecCtx ctx) throws Exception {
+            // Calendar is truncated to YEAR to ensure all fields are set to zero before 
+            // parsing the string into the new calendar object
+            final Calendar calendar = 
+                DateUtils.truncate(Calendar.getInstance(), Calendar.YEAR);
+            calendar.setTime(this.simpleDateFormat.parse(object));
+            return calendar.getTime();
+        }
+        
+    }
+    
+    
 }

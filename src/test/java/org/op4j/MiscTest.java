@@ -43,7 +43,6 @@ import org.op4j.functions.FnCalendar;
 import org.op4j.functions.FnString;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;
-import org.op4j.functions.converters.ToCalendar;
 import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.converters.ToMapOfArray;
 import org.op4j.functions.structures.FArray;
@@ -230,13 +229,13 @@ watch.start();
         System.out.println(Op.on("12314123.4123").exec(FnString.toBigDecimal(3, RoundingMode.CEILING)).get());
         
         final SimpleDateFormat dateFormat = new SimpleDateFormat();
-        System.out.println(dateFormat.format(Op.on(Calendar.getInstance()).exec(new ToCalendar.FromCalendar(Calendar.DATE)).get().getTime()));
+        System.out.println(dateFormat.format(Op.on(Calendar.getInstance()).exec(FnCalendar.truncate(Calendar.DATE)).get().getTime()));
         
-        System.out.println(dateFormat.format(Op.on("25/nov/1979").exec(ToCalendar.fromString("dd/MMM/yyyy", "es")).get().getTime()));
+        System.out.println(dateFormat.format(Op.on("25/nov/1979").exec(FnString.toCalendar("dd/MMM/yyyy", "es")).get().getTime()));
         
 //        System.out.println(dateFormat.format(Op.onAll(1979, 11, 25, 12, 30).buildList().exec(ToCalendar.fromString("dd/MMM/yyyy", "es")).get().getTime()));
-        System.out.println(dateFormat.format(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildList().get()).exec(ToCalendar.fromIntegerFieldList()).get().getTime()));
-        System.out.println(dateFormat.format(Op.on(Op.onAll("1979", "11", "25", "12", "30").buildArrayOf(Types.STRING).get()).exec(ToCalendar.fromStringFieldArray()).get().getTime()));
+        System.out.println(dateFormat.format(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildList().get()).exec(FnCalendar.fieldIntegerListToCalendar()).get().getTime()));
+        System.out.println(dateFormat.format(Op.on(Op.onAll("1979", "11", "25", "12", "30").buildArrayOf(Types.STRING).get()).exec(FnCalendar.fieldStringArrayToCalendar()).get().getTime()));
         
         System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildList().get()).exec(new FList.Sort<Integer>()).get());
         System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildSet().get()).exec(new FSet.Sort<Integer>()).get());

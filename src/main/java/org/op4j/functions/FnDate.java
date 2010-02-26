@@ -19,12 +19,15 @@
  */
 package org.op4j.functions;
 
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
@@ -39,11 +42,35 @@ import org.apache.commons.lang.time.DateUtils;
  */
 public final class FnDate {
 
+    
+    private static final IFunction<Date,Calendar> TO_CALENDAR = new ToCalendar();
+
+    
+    private static IFunction<Timestamp,Date> TIMESTAMP_TO_DATE = new TimestampToDate();
+    private static IFunction<Long,Date> TIME_IN_MILLIS_TO_DATE = new TimeInMillisToDate();
+    
+    private static final IFunction<List<Integer>,Date> FIELD_INTEGER_LIST_TO_DATE = new FieldIntegerListToDate();
+    private static final IFunction<Integer[],Date> FIELD_INTEGER_ARRAY_TO_DATE = new FieldIntegerArrayToDate();
+    private static final IFunction<List<String>,Date> FIELD_STRING_LIST_TO_DATE = new FieldStringListToDate();
+    private static final IFunction<String[],Date> FIELD_STRING_ARRAY_TO_DATE = new FieldStringArrayToCalendar();
+
 
     
 	private FnDate() {
 		super();           
 	}
+	
+
+    
+    
+    public static final IFunction<Date,Calendar> toCalendar() {
+        return TO_CALENDAR;
+    }
+    
+    public static final IFunction<Date,Calendar> toCalendar(final int truncateField) {
+        return new ToCalendar(truncateField);
+    }
+	
 	
 	
 
@@ -154,6 +181,70 @@ public final class FnDate {
     }
     
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public static final IFunction<Timestamp,Date> timestampToDate() {
+        return TIMESTAMP_TO_DATE;
+    }
+    
+    public static final IFunction<Timestamp,Date> timestampToDate(final int truncateField) {
+        return new TimestampToDate(truncateField);
+    }
+    
+    
+    
+    public static final IFunction<Long,Date> timeInMillisToDate() {
+        return TIME_IN_MILLIS_TO_DATE;
+    }
+    
+    public static final IFunction<Long,Date> timeInMillisToDate(final int truncateField) {
+        return new TimeInMillisToDate(truncateField);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    public static final IFunction<List<Integer>, Date> fieldIntegerListToDate() {
+        return FIELD_INTEGER_LIST_TO_DATE;
+    }
+    
+    
+    
+    public static final IFunction<Integer[], Date> fieldIntegerArrayToDate() {
+        return FIELD_INTEGER_ARRAY_TO_DATE;
+    }
+    
+    
+    
+    public static final IFunction<List<String>, Date> fieldStringListToDate() {
+        return FIELD_STRING_LIST_TO_DATE;
+    }
+    
+    
+    
+    public static final IFunction<String[], Date> fieldStringArrayToDate() {
+        return FIELD_STRING_ARRAY_TO_DATE;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -423,6 +514,300 @@ public final class FnDate {
             return sdf.format(date);
         }       
     }
+
     
+    
+    
+    
+
+    
+    static final class ToCalendar extends AbstractNullAsNullFunction<Date,Calendar>  {
+    
+        private Integer truncateField = null;
+        
+        ToCalendar() {
+            super();
+        }
+        
+        ToCalendar(final int truncateField) {
+            super();
+            this.truncateField = Integer.valueOf(truncateField);
+        }
+
+        @Override
+        protected Calendar nullAsNullExecute(final Date object, final ExecCtx ctx) throws Exception {
+            
+            final Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(object.getTime());
+            
+            if (this.truncateField == null) {
+                return calendar;
+            }
+            return DateUtils.truncate(calendar, this.truncateField.intValue());
+            
+        }
+        
+    }
+    
+
+    
+    
+    
+    
+    
+    static final class TimestampToDate extends AbstractNullAsNullFunction<Timestamp,Date>  {
+    
+        private Integer truncateField = null;
+        
+        TimestampToDate() {
+            super();
+        }
+        
+        TimestampToDate(final int truncateField) {
+            super();
+            this.truncateField = Integer.valueOf(truncateField);
+        }
+
+        @Override
+        protected Date nullAsNullExecute(final Timestamp object, final ExecCtx ctx) throws Exception {
+            
+            final Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(object.getTime());
+            
+            if (this.truncateField == null) {
+                return calendar.getTime();
+            }
+            return DateUtils.truncate(calendar, this.truncateField.intValue()).getTime();
+            
+        }
+        
+    }
+    
+
+    
+    static final class TimeInMillisToDate extends AbstractNullAsNullFunction<Long,Date>  {
+    
+        private Integer truncateField = null;
+        
+        TimeInMillisToDate() {
+            super();
+        }
+        
+        TimeInMillisToDate(final int truncateField) {
+            super();
+            this.truncateField = Integer.valueOf(truncateField);
+        }
+
+        @Override
+        protected Date nullAsNullExecute(final Long object, final ExecCtx ctx) throws Exception {
+            
+            final Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(object.longValue());
+            
+            if (this.truncateField == null) {
+                return calendar.getTime();
+            }
+            return DateUtils.truncate(calendar, this.truncateField.intValue()).getTime();
+            
+        }
+        
+    }
+    
+ 
+    
+    
+    
+    
+    protected static Date fromInts(final Integer year, final Integer month, final Integer day, 
+            final Integer hour, final Integer minute, final Integer second, final Integer milli) 
+        throws Exception {
+
+        /*
+         * None of the Integers can be null 
+         */
+        Validate.notNull(year);
+        Validate.notNull(month);
+        Validate.notNull(day);
+        Validate.notNull(hour);
+        Validate.notNull(minute);
+        Validate.notNull(second);
+        Validate.notNull(milli);
+        
+        Integer safeYear = year;    
+        String yearAsString = year.toString();
+        if ((safeYear.intValue() >= 0) && (yearAsString.length() <= 2)) {
+            final SimpleDateFormat sdf = new SimpleDateFormat("yy");
+            final Calendar calendar = Calendar.getInstance();
+            calendar.setTime(sdf.parse(yearAsString));
+            safeYear = Integer.valueOf(calendar.get(Calendar.YEAR));
+        }      
+            
+        final Calendar result = Calendar.getInstance();
+        result.set(Calendar.YEAR, safeYear.intValue());
+        result.set(Calendar.MONTH, month.intValue() - 1);
+        result.set(Calendar.DAY_OF_MONTH, day.intValue());
+        result.set(Calendar.HOUR_OF_DAY, hour.intValue());
+        result.set(Calendar.MINUTE, minute.intValue());
+        result.set(Calendar.SECOND, second.intValue());
+        result.set(Calendar.MILLISECOND, milli.intValue());
+        
+        return result.getTime();
+    }
+
+    
+    
+    
+    
+    static final class FieldIntegerListToDate extends AbstractNullAsNullFunction<List<Integer>,Date>  {
+        
+        
+        FieldIntegerListToDate() {
+            super();
+        }
+
+        @Override
+        protected Date nullAsNullExecute(final List<Integer> object, final ExecCtx ctx) throws Exception {
+            
+            if (object.size() != 3 &&  // year, month, day
+                object.size() != 5 &&  // year, month, day, hour, minute
+                object.size() != 6 &&  // year, month, day, hour, minute, second
+                object.size() != 7) {  // year month, day, hour, minute, second, millisecond
+                throw new IllegalArgumentException(
+                        "Integer arguments array for Calendar conversion should of sizes " +
+                        "3 (day,month,year), 5 (+hour,minute), 6 (+second) or 7 (+millisecond). " +
+                        "Size " + object.size() + " is not valid.");
+            }
+            if (object.contains(null)) {
+                throw new IllegalArgumentException(
+                        "Integer arguments array for Calendar conversion should not contain nulls.");
+            }
+            return fromInts(
+                    object.get(0),
+                    object.get(1),
+                    object.get(2),
+                    (object.size() >= 5? object.get(3) : Integer.valueOf(0)), 
+                    (object.size() >= 5? object.get(4) : Integer.valueOf(0)),
+                    (object.size() >= 6? object.get(5) : Integer.valueOf(0)),
+                    (object.size() == 7? object.get(6) : Integer.valueOf(0)));
+            
+        }
+        
+    }
+
+    
+    
+    
+    static final class FieldIntegerArrayToDate extends AbstractNullAsNullFunction<Integer[],Date>  {
+        
+        
+        FieldIntegerArrayToDate() {
+            super();
+        }
+
+        @Override
+        protected Date nullAsNullExecute(final Integer[] object, final ExecCtx ctx) throws Exception {
+            
+            if (object.length != 3 &&  // year, month, day
+                object.length != 5 &&  // year, month, day, hour, minute
+                object.length != 6 &&  // year, month, day, hour, minute, second
+                object.length != 7) {  // year month, day, hour, minute, second, millisecond
+                throw new IllegalArgumentException(
+                        "Integer arguments array for Calendar conversion should of sizes " +
+                        "3 (day,month,year), 5 (+hour,minute), 6 (+second) or 7 (+millisecond). " +
+                        "Size " + object.length + " is not valid.");
+            }
+            if (ArrayUtils.contains(object,null)) {
+                throw new IllegalArgumentException(
+                        "Integer arguments array for Calendar conversion should not contain nulls.");
+            }
+            return fromInts(
+                    object[0],
+                    object[1],
+                    object[2],
+                    (object.length >= 5? object[3] : Integer.valueOf(0)), 
+                    (object.length >= 5? object[4] : Integer.valueOf(0)),
+                    (object.length >= 6? object[5] : Integer.valueOf(0)),
+                    (object.length == 7? object[6] : Integer.valueOf(0)));
+            
+        }
+        
+    }
+
+    
+    
+    static final class FieldStringListToDate extends AbstractNullAsNullFunction<List<String>,Date>  {
+        
+        
+        FieldStringListToDate() {
+            super();
+        }
+
+        @Override
+        protected Date nullAsNullExecute(final List<String> object, final ExecCtx ctx) throws Exception {
+            
+            if (object.size() != 3 &&  // year, month, day
+                object.size() != 5 &&  // year, month, day, hour, minute
+                object.size() != 6 &&  // year, month, day, hour, minute, second
+                object.size() != 7) {  // year month, day, hour, minute, second, millisecond
+                throw new IllegalArgumentException(
+                        "Integer arguments array for Calendar conversion should of sizes " +
+                        "3 (day,month,year), 5 (+hour,minute), 6 (+second) or 7 (+millisecond). " +
+                        "Size " + object.size() + " is not valid.");
+            }
+            if (object.contains(null)) {
+                throw new IllegalArgumentException(
+                        "Integer arguments array for Calendar conversion should not contain nulls.");
+            }
+            return fromInts(
+                    Integer.valueOf(object.get(0)),
+                    Integer.valueOf(object.get(1)),
+                    Integer.valueOf(object.get(2)),
+                    (object.size() >= 5? Integer.valueOf(object.get(3)) : Integer.valueOf(0)), 
+                    (object.size() >= 5? Integer.valueOf(object.get(4)) : Integer.valueOf(0)),
+                    (object.size() >= 6? Integer.valueOf(object.get(5)) : Integer.valueOf(0)),
+                    (object.size() == 7? Integer.valueOf(object.get(6)) : Integer.valueOf(0)));
+            
+        }
+        
+    }
+
+    
+    
+    
+    static final class FieldStringArrayToCalendar extends AbstractNullAsNullFunction<String[],Date>  {
+        
+        
+        FieldStringArrayToCalendar() {
+            super();
+        }
+
+        @Override
+        protected Date nullAsNullExecute(final String[] object, final ExecCtx ctx) throws Exception {
+            
+            if (object.length != 3 &&  // year, month, day
+                object.length != 5 &&  // year, month, day, hour, minute
+                object.length != 6 &&  // year, month, day, hour, minute, second
+                object.length != 7) {  // year month, day, hour, minute, second, millisecond
+                throw new IllegalArgumentException(
+                        "Integer arguments array for Calendar conversion should of sizes " +
+                        "3 (day,month,year), 5 (+hour,minute), 6 (+second) or 7 (+millisecond). " +
+                        "Size " + object.length + " is not valid.");
+            }
+            if (ArrayUtils.contains(object,null)) {
+                throw new IllegalArgumentException(
+                        "Integer arguments array for Calendar conversion should not contain nulls.");
+            }
+            return fromInts(
+                    Integer.valueOf(object[0]),
+                    Integer.valueOf(object[1]),
+                    Integer.valueOf(object[2]),
+                    (object.length >= 5? Integer.valueOf(object[3]) : Integer.valueOf(0)), 
+                    (object.length >= 5? Integer.valueOf(object[4]) : Integer.valueOf(0)),
+                    (object.length >= 6? Integer.valueOf(object[5]) : Integer.valueOf(0)),
+                    (object.length == 7? Integer.valueOf(object[6]) : Integer.valueOf(0)));
+            
+        }
+        
+    }
     
 }
