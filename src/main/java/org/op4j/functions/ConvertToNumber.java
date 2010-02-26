@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.functions.converters;
+package org.op4j.functions;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -37,10 +37,10 @@ import org.op4j.exceptions.ExecutionException;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class ToNumber {
+final class ConvertToNumber {
     
     
-    private ToNumber() {
+    private ConvertToNumber() {
         super();
     }
     
@@ -62,7 +62,6 @@ final class ToNumber {
 
         public abstract X execute(final T object);
 
-        protected abstract X fromNumber(final Number number);
         protected abstract X fromString(final String string);
         
     }
@@ -71,58 +70,6 @@ final class ToNumber {
     
     
     
-    static abstract class FromNumber<X extends Number> extends ToNumberFunction<Number,X>  {
-
-
-        private static enum ExecType 
-                { FROM_NUMBER, DELEGATED } 
-        
-        private final ExecType execType;
-
-        
-        protected FromNumber() {
-            super();
-            this.execType = ExecType.FROM_NUMBER;
-        }
-        
-        
-        protected FromNumber(final Delegated delegated) {
-            super();
-            Validate.notNull(delegated, "Parameter \"delegated\" cannot be null");
-            this.execType = ExecType.DELEGATED;
-        }
-
-        @Override
-        public X execute(final Number object) {
-            switch (this.execType) {
-                case DELEGATED:
-                    return numberExecute(object);
-                case FROM_NUMBER:
-                    return fromNumber(object);
-            }
-            // This will never be reached
-            throw new IllegalStateException("Execution type did not match!");
-        }
-
-        protected abstract X numberExecute(final Number object);
-        
-    }
-    
-    
-
-    
-    static abstract class FromBoolean<X extends Number> extends ToNumberFunction<Boolean,X>  {
-
-        protected FromBoolean() {
-            super();
-        }
-
-        @Override
-        public X execute(Boolean object) {
-            return fromNumber(BooleanUtils.toIntegerObject(object));
-        }
-        
-    }
     
     
 

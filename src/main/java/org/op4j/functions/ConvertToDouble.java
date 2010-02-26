@@ -18,12 +18,11 @@
  * =============================================================================
  */
 
-package org.op4j.functions.converters;
+package org.op4j.functions;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.Locale;
+
 
 /**
  * 
@@ -32,37 +31,17 @@ import java.util.Locale;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class ToBigDecimal {
+final class ConvertToDouble {
 
     
-    private static FromNumber FROM_NUMBER = new FromNumber();
-    private static FromBoolean FROM_BOOLEAN = new FromBoolean();
     private static FromString FROM_STRING = new FromString();
 
     
     
-    private ToBigDecimal() {
+    private ConvertToDouble() {
         super();
     }
 
-    
-    
-    public static final FromNumber fromNumber() {
-        return FROM_NUMBER;
-    }
-    
-    public static final FromNumber fromNumber(final int scale, final RoundingMode roundingMode) {
-        return new FromNumber(scale, roundingMode);
-    }
-  
-    
-    
-    
-    public static final FromBoolean fromBoolean() {
-        return FROM_BOOLEAN;
-    }
-    
-    
     
     
     public static final FromString fromString() {
@@ -73,7 +52,7 @@ public final class ToBigDecimal {
         return new FromString(locale);
     }
     
-    public static final FromString frtomString(final String locale) {
+    public static final FromString fromString(final String locale) {
         return new FromString(locale);
     }
     
@@ -102,27 +81,19 @@ public final class ToBigDecimal {
     
     
     
-    static final BigDecimal internalFromNumber(final Number number) {
-        if (number instanceof BigDecimal) {
-            return new BigDecimal(
-                    ((BigDecimal)number).unscaledValue(),
-                    ((BigDecimal)number).scale());
-        } else if (number instanceof BigInteger) {
-            return new BigDecimal((BigInteger)number);
-        } else {
-            return BigDecimal.valueOf(number.doubleValue()); 
-        }
+    static final Double internalFromNumber(final Number number) {
+        return Double.valueOf(number.doubleValue());
     }
     
     
-    static final BigDecimal internalFromString(final String string) {
-        return new BigDecimal(string);
+    static final Double internalFromString(final String string) {
+        return Double.valueOf(string);
     }
 
     
     
     
-    public static final class FromNumber extends ToDecimalNumber.FromNumber<BigDecimal> {
+    public static final class FromNumber extends ConvertToDecimalNumber.FromNumber<Double> {
 
         public FromNumber() {
             super();
@@ -133,13 +104,13 @@ public final class ToBigDecimal {
         }
 
         @Override
-        protected BigDecimal fromNumber(final Number number) {
-            return ToBigDecimal.internalFromNumber(number);
+        protected Double fromNumber(final Number number) {
+            return ConvertToDouble.internalFromNumber(number);
         }
 
         @Override
-        protected BigDecimal fromString(final String string) {
-            return ToBigDecimal.internalFromString(string);
+        protected Double fromString(final String string) {
+            return ConvertToDouble.internalFromString(string);
         }
         
     }
@@ -147,20 +118,20 @@ public final class ToBigDecimal {
     
     
     
-    public static final class FromBoolean extends ToNumber.FromBoolean<BigDecimal> {
+    public static final class FromBoolean extends ConvertToNumber.FromBoolean<Double> {
 
         public FromBoolean() {
             super();
         }
 
         @Override
-        protected BigDecimal fromNumber(final Number number) {
-            return ToBigDecimal.internalFromNumber(number);
+        protected Double fromNumber(final Number number) {
+            return ConvertToDouble.internalFromNumber(number);
         }
 
         @Override
-        protected BigDecimal fromString(final String string) {
-            return ToBigDecimal.internalFromString(string);
+        protected Double fromString(final String string) {
+            return ConvertToDouble.internalFromString(string);
         }
         
     }
@@ -168,7 +139,7 @@ public final class ToBigDecimal {
     
     
     
-    public static final class FromString extends ToDecimalNumber.FromString<BigDecimal> {
+    public static final class FromString extends ConvertToDecimalNumber.FromString<Double> {
 
         public FromString() {
             super();
@@ -203,13 +174,13 @@ public final class ToBigDecimal {
         }
 
         @Override
-        protected BigDecimal fromNumber(final Number number) {
-            return ToBigDecimal.internalFromNumber(number);
+        protected Double fromNumber(final Number number) {
+            return ConvertToDouble.internalFromNumber(number);
         }
 
         @Override
-        protected BigDecimal fromString(final String string) {
-            return ToBigDecimal.internalFromString(string);
+        protected Double fromString(final String string) {
+            return ConvertToDouble.internalFromString(string);
         }
         
     }

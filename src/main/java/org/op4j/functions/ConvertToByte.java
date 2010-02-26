@@ -18,10 +18,11 @@
  * =============================================================================
  */
 
-package org.op4j.functions.converters;
+package org.op4j.functions;
 
 import java.math.RoundingMode;
 import java.util.Locale;
+
 
 /**
  * 
@@ -30,7 +31,7 @@ import java.util.Locale;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class ToShort {
+final class ConvertToByte {
 
     
     private static FromNumber FROM_NUMBER = new FromNumber();
@@ -38,7 +39,7 @@ public final class ToShort {
     private static FromString FROM_STRING = new FromString();
 
     
-    private ToShort() {
+    private ConvertToByte() {
         super();
     }
 
@@ -118,37 +119,37 @@ public final class ToShort {
     
     
     
-    static final Short internalFromNumber(final Number number) {
-        return Short.valueOf(number.shortValue());
+    static final Byte internalFromNumber(final Number number) {
+        return Byte.valueOf(number.byteValue());
     }
     
     
-    static final Short internalFromString(final String string) {
-        return Short.valueOf(string);
+    static final Byte internalFromString(final String string) {
+        return Byte.valueOf(string);
     }
     
     
-    static final Short internalFromString(final String string, final int radix) {
-        return Short.valueOf(string, radix);
+    static final Byte internalFromString(final String string, final int radix) {
+        return Byte.valueOf(string, radix);
     }
 
     
     
     
-    public static final class FromNumber extends ToNonDecimalNumber.FromNumber<Short> {
+    public static final class FromNumber extends ConvertToNonDecimalNumber.FromNumber<Byte> {
 
         public FromNumber() {
             super();
         }
 
         @Override
-        protected Short fromNumber(final Number number) {
-            return ToShort.internalFromNumber(number);
+        protected Byte fromNumber(final Number number) {
+            return ConvertToByte.internalFromNumber(number);
         }
 
         @Override
-        protected Short fromString(final String string) {
-            return ToShort.internalFromString(string);
+        protected Byte fromString(final String string) {
+            return ConvertToByte.internalFromString(string);
         }
         
     }
@@ -156,20 +157,20 @@ public final class ToShort {
     
     
     
-    public static final class FromBoolean extends ToNumber.FromBoolean<Short> {
+    public static final class FromBoolean extends ConvertToNumber.FromBoolean<Byte> {
 
         public FromBoolean() {
             super();
         }
 
         @Override
-        protected Short fromNumber(final Number number) {
-            return ToShort.internalFromNumber(number);
+        protected Byte fromNumber(final Number number) {
+            return ConvertToByte.internalFromNumber(number);
         }
 
         @Override
-        protected Short fromString(final String string) {
-            return ToShort.internalFromString(string);
+        protected Byte fromString(final String string) {
+            return ConvertToByte.internalFromString(string);
         }
         
     }
@@ -177,7 +178,7 @@ public final class ToShort {
     
     
     
-    public static final class FromString extends ToNonDecimalNumber.FromString<Short> {
+    public static final class FromString extends ConvertToNonDecimalNumber.FromString<Byte> {
 
         public FromString() {
             super();
@@ -216,18 +217,18 @@ public final class ToShort {
         }
 
         @Override
-        protected Short fromNumber(final Number number) {
-            return ToShort.internalFromNumber(number);
+        protected Byte fromNumber(final Number number) {
+            return ConvertToByte.internalFromNumber(number);
         }
 
         @Override
-        protected Short fromString(final String string) {
-            return ToShort.internalFromString(string);
+        protected Byte fromString(final String string) {
+            return ConvertToByte.internalFromString(string);
         }
 
         @Override
-        protected Short fromString(final String string, final int withRadix) {
-            return ToShort.internalFromString(string, withRadix);
+        protected Byte fromString(final String string, final int withRadix) {
+            return ConvertToByte.internalFromString(string, withRadix);
         }
         
     }
@@ -235,20 +236,20 @@ public final class ToShort {
     
     
     
-    public static final class FromFloat extends ToNonDecimalNumber.FromFloat<Short> {
+    public static final class FromFloat extends ConvertToNonDecimalNumber.FromFloat<Byte> {
 
         public FromFloat(final RoundingMode roundingMode) {
             super(roundingMode);
         }
 
         @Override
-        protected Short fromNumber(final Number number) {
-            return ToShort.internalFromNumber(number);
+        protected Byte fromNumber(final Number number) {
+            return ConvertToByte.internalFromNumber(number);
         }
 
         @Override
-        protected Short fromString(final String string) {
-            return ToShort.internalFromString(string);
+        protected Byte fromString(final String string) {
+            return ConvertToByte.internalFromString(string);
         }
         
     }
@@ -256,20 +257,20 @@ public final class ToShort {
     
     
     
-    public static final class FromDouble extends ToNonDecimalNumber.FromDouble<Short> {
+    public static final class FromDouble extends ConvertToNonDecimalNumber.FromDouble<Byte> {
 
         public FromDouble(final RoundingMode roundingMode) {
             super(roundingMode);
         }
 
         @Override
-        protected Short fromNumber(final Number number) {
-            return ToShort.internalFromNumber(number);
+        protected Byte fromNumber(final Number number) {
+            return ConvertToByte.internalFromNumber(number);
         }
 
         @Override
-        protected Short fromString(final String string) {
-            return ToShort.internalFromString(string);
+        protected Byte fromString(final String string) {
+            return ConvertToByte.internalFromString(string);
         }
         
     }
@@ -277,20 +278,20 @@ public final class ToShort {
     
     
     
-    public static final class FromBigDecimal extends ToNonDecimalNumber.FromBigDecimal<Short> {
+    public static final class FromBigDecimal extends ConvertToNonDecimalNumber.FromBigDecimal<Byte> {
 
         public FromBigDecimal(final RoundingMode roundingMode) {
             super(roundingMode);
         }
 
         @Override
-        protected Short fromNumber(final Number number) {
-            return ToShort.internalFromNumber(number);
+        protected Byte fromNumber(final Number number) {
+            return ConvertToByte.internalFromNumber(number);
         }
 
         @Override
-        protected Short fromString(final String string) {
-            return ToShort.internalFromString(string);
+        protected Byte fromString(final String string) {
+            return ConvertToByte.internalFromString(string);
         }
         
     }

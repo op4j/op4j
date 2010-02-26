@@ -18,13 +18,8 @@ import org.javaruntype.type.Types;
 import org.junit.Before;
 import org.junit.Test;
 import org.op4j.functions.ExecCtx;
+import org.op4j.functions.FnNumber;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.ToBigDecimal;
-import org.op4j.functions.converters.ToBigInteger;
-import org.op4j.functions.converters.ToFloat;
-import org.op4j.functions.converters.ToInteger;
-import org.op4j.functions.converters.ToLong;
-import org.op4j.functions.converters.ToShort;
 import org.op4j.functions.math.FMathBigDecimal;
 import org.op4j.functions.math.FMathBigInteger;
 import org.op4j.functions.math.FMathDouble;
@@ -155,14 +150,14 @@ public class MathFuncsTest extends TestCase {
 	@Test
 	public void testLong() {
 		// Abs
-		List<Long> result = Op.onList(this.data).forEach().exec(ToLong.fromDouble(RoundingMode.CEILING))
+		List<Long> result = Op.onList(this.data).forEach().exec(FnNumber.toLong(RoundingMode.CEILING))
 			.exec(FMathLong.abs()).get();
 		assertEquals(result, Arrays.asList(Long.valueOf(34), Long.valueOf(45), 
 				Long.valueOf(24), Long.valueOf(24), Long.valueOf(11)));	
 		System.out.println("Abs: " + result);
 		
 		// Add
-		result = Op.onList(this.data).forEach().exec(ToLong.fromDouble(RoundingMode.CEILING))
+		result = Op.onList(this.data).forEach().exec(FnNumber.toLong(RoundingMode.CEILING))
 			.exec(FMathLong.add(Long.valueOf(7))).get();
 		int index = 0;
 		for(Long aLong : result) {
@@ -180,7 +175,7 @@ public class MathFuncsTest extends TestCase {
 		
 		
 		// SUBTRACT
-		result = Op.onList(this.data).forEach().exec(ToLong.fromDouble(RoundingMode.CEILING))
+		result = Op.onList(this.data).forEach().exec(FnNumber.toLong(RoundingMode.CEILING))
 			.exec(FMathLong.subtract(Long.valueOf(23))).get();
 		index = 0;
 		for (Double number : this.data) {
@@ -246,7 +241,7 @@ public class MathFuncsTest extends TestCase {
 	public void testInteger() {
 		
 		// Divide
-		List<Integer> result = Op.onList(this.data).forEach().exec(ToInteger.fromDouble(RoundingMode.CEILING))
+		List<Integer> result = Op.onList(this.data).forEach().exec(FnNumber.toInteger(RoundingMode.CEILING))
 			.exec(FMathInteger.divideBy(Integer.valueOf(3), RoundingMode.CEILING)).get();
 		int index = 0;
 		for(Integer aInt : result) {
@@ -262,7 +257,7 @@ public class MathFuncsTest extends TestCase {
 		System.out.println("Divide: " + result);
 		
 		// Multiply
-		result = Op.onList(this.data).forEach().exec(ToInteger.fromDouble(RoundingMode.DOWN))
+		result = Op.onList(this.data).forEach().exec(FnNumber.toInteger(RoundingMode.DOWN))
 			.exec(FMathInteger.multiplyBy(Integer.valueOf(3))).get();
 		index = 0;
 		for(Integer aNumber : result) {
@@ -387,7 +382,7 @@ public class MathFuncsTest extends TestCase {
 	public void testBigDecimal() {
 		
 		// Module
-		List<BigDecimal> result = Op.onList(this.data).forEach().exec(ToBigDecimal.fromNumber())
+		List<BigDecimal> result = Op.onList(this.data).forEach().exec(FnNumber.toBigDecimal())
 			.exec(FMathBigDecimal.remainder(BigDecimal.valueOf(3))).get();
 		int index = 0;
 		for(BigDecimal aNumber : result) {
@@ -401,7 +396,7 @@ public class MathFuncsTest extends TestCase {
 		System.out.println("Module: " + result);
 		
 		// Multiply
-		result = Op.onList(this.data).forEach().exec(ToBigDecimal.fromNumber())
+		result = Op.onList(this.data).forEach().exec(FnNumber.toBigDecimal())
 			.exec(FMathBigDecimal.multiplyBy(BigDecimal.valueOf(7.2))).get();
 		index = 0;
 		for(BigDecimal aNumber : result) {
@@ -415,7 +410,7 @@ public class MathFuncsTest extends TestCase {
 		System.out.println("Multiply: " + result);
 		
 		// Raise
-		result = Op.onList(this.data).forEach().exec(ToBigDecimal.fromNumber())
+		result = Op.onList(this.data).forEach().exec(FnNumber.toBigDecimal())
 			.exec(FMathBigDecimal.raiseTo(3)).get();
 		index = 0;
 		for(BigDecimal aNumber : result) {
@@ -473,7 +468,7 @@ public class MathFuncsTest extends TestCase {
 	public void testBigInteger() {
 		
 		// Module
-		List<BigInteger> result = Op.onList(this.data).forEach().exec(ToBigInteger.fromNumber())
+		List<BigInteger> result = Op.onList(this.data).forEach().exec(FnNumber.toBigInteger())
 			.exec(FMathBigInteger.module(BigInteger.valueOf(3))).get();
 		int index = 0;
 		for(BigInteger aNumber : result) {
@@ -485,9 +480,10 @@ public class MathFuncsTest extends TestCase {
 			index++;
 		}
 		System.out.println("Module: " + result);
+
 		
 		// Multiply
-		result = Op.onList(this.data).forEach().exec(ToBigInteger.fromNumber())
+		result = Op.onList(this.data).forEach().exec(FnNumber.toBigInteger())
 			.exec(FMathBigInteger.multiplyBy(BigInteger.valueOf(7))).get();
 		index = 0;
 		for(BigInteger aNumber : result) {
@@ -501,7 +497,7 @@ public class MathFuncsTest extends TestCase {
 		System.out.println("Multiply: " + result);
 		
 		// Raise
-		result = Op.onList(this.data).forEach().exec(ToBigInteger.fromNumber())
+		result = Op.onList(this.data).forEach().exec(FnNumber.toBigInteger())
 			.exec(FMathBigInteger.raiseTo(3)).get();
 		index = 0;
 		for(BigInteger aNumber : result) {
@@ -558,7 +554,7 @@ public class MathFuncsTest extends TestCase {
 	public void testFloat() {
 		
 		// Module
-		List<Float> result = Op.onList(this.data).forEach().exec(ToFloat.fromNumber())
+		List<Float> result = Op.onList(this.data).forEach().exec(FnNumber.toFloat())
 			.exec(FMathFloat.module(3)).get();
 		int index = 0;
 		for(Float aNumber : result) {
@@ -572,7 +568,7 @@ public class MathFuncsTest extends TestCase {
 		System.out.println("Module: " + result);
 		
 		// Multiply
-		result = Op.onList(this.data).forEach().exec(ToFloat.fromNumber())
+		result = Op.onList(this.data).forEach().exec(FnNumber.toFloat())
 			.exec(FMathFloat.multiplyBy(Float.valueOf(7))).get();
 		index = 0;
 		for(Float aNumber : result) {
@@ -587,7 +583,7 @@ public class MathFuncsTest extends TestCase {
 		System.out.println("Multiply: " + result);
 		
 		// Raise
-		result = Op.onList(this.data).forEach().exec(ToFloat.fromNumber())
+		result = Op.onList(this.data).forEach().exec(FnNumber.toFloat())
 			.exec(FMathFloat.raiseTo(3)).get();
 		index = 0;
 		for(Float aNumber : result) {
@@ -648,7 +644,7 @@ public class MathFuncsTest extends TestCase {
 	public void testShort() {
 		
 		// Module
-		List<Short> result = Op.onList(this.data).forEach().exec(ToShort.fromNumber())
+		List<Short> result = Op.onList(this.data).forEach().exec(FnNumber.toShort())
 			.exec(FMathShort.module(3)).get();
 		int index = 0;
 		for(Short aNumber : result) {
@@ -662,7 +658,7 @@ public class MathFuncsTest extends TestCase {
 		System.out.println("Module: " + result);
 		
 		// Multiply
-		result = Op.onList(this.data).forEach().exec(ToShort.fromNumber())
+		result = Op.onList(this.data).forEach().exec(FnNumber.toShort())
 			.exec(FMathShort.multiplyBy(Short.valueOf("2127"))).get();
 		index = 0;
 		for(Short aNumber : result) {
@@ -677,7 +673,7 @@ public class MathFuncsTest extends TestCase {
 		System.out.println("Multiply: " + result);
 		
 		// Raise
-		result = Op.onList(this.data).forEach().exec(ToShort.fromNumber())
+		result = Op.onList(this.data).forEach().exec(FnNumber.toShort())
 			.exec(FMathShort.raiseTo(3)).get();
 		index = 0;
 		for(Short aNumber : result) {

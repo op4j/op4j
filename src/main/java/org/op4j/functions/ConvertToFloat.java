@@ -18,10 +18,11 @@
  * =============================================================================
  */
 
-package org.op4j.functions.converters;
+package org.op4j.functions;
 
 import java.math.RoundingMode;
 import java.util.Locale;
+
 
 /**
  * 
@@ -30,7 +31,7 @@ import java.util.Locale;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class ToFloat {
+final class ConvertToFloat {
 
     
     private static FromNumber FROM_NUMBER = new FromNumber();
@@ -39,7 +40,7 @@ public final class ToFloat {
 
     
     
-    private ToFloat() {
+    private ConvertToFloat() {
         super();
     }
 
@@ -112,7 +113,7 @@ public final class ToFloat {
     
     
     
-    public static final class FromNumber extends ToDecimalNumber.FromNumber<Float> {
+    public static final class FromNumber extends ConvertToDecimalNumber.FromNumber<Float> {
 
         public FromNumber() {
             super();
@@ -124,12 +125,12 @@ public final class ToFloat {
 
         @Override
         protected Float fromNumber(final Number number) {
-            return ToFloat.internalFromNumber(number);
+            return ConvertToFloat.internalFromNumber(number);
         }
 
         @Override
         protected Float fromString(final String string) {
-            return ToFloat.internalFromString(string);
+            return ConvertToFloat.internalFromString(string);
         }
         
     }
@@ -137,7 +138,7 @@ public final class ToFloat {
     
     
     
-    public static final class FromBoolean extends ToNumber.FromBoolean<Float> {
+    public static final class FromBoolean extends ConvertToNumber.FromBoolean<Float> {
 
         public FromBoolean() {
             super();
@@ -145,12 +146,12 @@ public final class ToFloat {
 
         @Override
         protected Float fromNumber(final Number number) {
-            return ToFloat.internalFromNumber(number);
+            return ConvertToFloat.internalFromNumber(number);
         }
 
         @Override
         protected Float fromString(final String string) {
-            return ToFloat.internalFromString(string);
+            return ConvertToFloat.internalFromString(string);
         }
         
     }
@@ -158,7 +159,7 @@ public final class ToFloat {
     
     
     
-    public static final class FromString extends ToDecimalNumber.FromString<Float> {
+    public static final class FromString extends ConvertToDecimalNumber.FromString<Float> {
 
         public FromString() {
             super();
@@ -194,12 +195,12 @@ public final class ToFloat {
 
         @Override
         protected Float fromNumber(final Number number) {
-            return ToFloat.internalFromNumber(number);
+            return ConvertToFloat.internalFromNumber(number);
         }
 
         @Override
         protected Float fromString(final String string) {
-            return ToFloat.internalFromString(string);
+            return ConvertToFloat.internalFromString(string);
         }
         
     }

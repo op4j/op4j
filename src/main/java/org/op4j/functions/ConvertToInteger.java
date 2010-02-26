@@ -18,10 +18,11 @@
  * =============================================================================
  */
 
-package org.op4j.functions.converters;
+package org.op4j.functions;
 
 import java.math.RoundingMode;
 import java.util.Locale;
+
 
 /**
  * 
@@ -30,7 +31,7 @@ import java.util.Locale;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class ToByte {
+final class ConvertToInteger {
 
     
     private static FromNumber FROM_NUMBER = new FromNumber();
@@ -38,7 +39,8 @@ public final class ToByte {
     private static FromString FROM_STRING = new FromString();
 
     
-    private ToByte() {
+    
+    private ConvertToInteger() {
         super();
     }
 
@@ -118,37 +120,37 @@ public final class ToByte {
     
     
     
-    static final Byte internalFromNumber(final Number number) {
-        return Byte.valueOf(number.byteValue());
+    static final Integer internalFromNumber(final Number number) {
+        return Integer.valueOf(number.intValue());
     }
     
     
-    static final Byte internalFromString(final String string) {
-        return Byte.valueOf(string);
+    static final Integer internalFromString(final String string) {
+        return Integer.valueOf(string);
     }
     
     
-    static final Byte internalFromString(final String string, final int radix) {
-        return Byte.valueOf(string, radix);
+    static final Integer internalFromString(final String string, final int radix) {
+        return Integer.valueOf(string, radix);
     }
 
     
     
     
-    public static final class FromNumber extends ToNonDecimalNumber.FromNumber<Byte> {
+    public static final class FromNumber extends ConvertToNonDecimalNumber.FromNumber<Integer> {
 
         public FromNumber() {
             super();
         }
 
         @Override
-        protected Byte fromNumber(final Number number) {
-            return ToByte.internalFromNumber(number);
+        protected Integer fromNumber(final Number number) {
+            return ConvertToInteger.internalFromNumber(number);
         }
 
         @Override
-        protected Byte fromString(final String string) {
-            return ToByte.internalFromString(string);
+        protected Integer fromString(final String string) {
+            return ConvertToInteger.internalFromString(string);
         }
         
     }
@@ -156,20 +158,20 @@ public final class ToByte {
     
     
     
-    public static final class FromBoolean extends ToNumber.FromBoolean<Byte> {
+    public static final class FromBoolean extends ConvertToNumber.FromBoolean<Integer> {
 
         public FromBoolean() {
             super();
         }
 
         @Override
-        protected Byte fromNumber(final Number number) {
-            return ToByte.internalFromNumber(number);
+        protected Integer fromNumber(final Number number) {
+            return ConvertToInteger.internalFromNumber(number);
         }
 
         @Override
-        protected Byte fromString(final String string) {
-            return ToByte.internalFromString(string);
+        protected Integer fromString(final String string) {
+            return ConvertToInteger.internalFromString(string);
         }
         
     }
@@ -177,7 +179,7 @@ public final class ToByte {
     
     
     
-    public static final class FromString extends ToNonDecimalNumber.FromString<Byte> {
+    public static final class FromString extends ConvertToNonDecimalNumber.FromString<Integer> {
 
         public FromString() {
             super();
@@ -216,18 +218,18 @@ public final class ToByte {
         }
 
         @Override
-        protected Byte fromNumber(final Number number) {
-            return ToByte.internalFromNumber(number);
+        protected Integer fromNumber(final Number number) {
+            return ConvertToInteger.internalFromNumber(number);
         }
 
         @Override
-        protected Byte fromString(final String string) {
-            return ToByte.internalFromString(string);
+        protected Integer fromString(final String string) {
+            return ConvertToInteger.internalFromString(string);
         }
 
         @Override
-        protected Byte fromString(final String string, final int withRadix) {
-            return ToByte.internalFromString(string, withRadix);
+        protected Integer fromString(final String string, final int withRadix) {
+            return ConvertToInteger.internalFromString(string, withRadix);
         }
         
     }
@@ -235,20 +237,20 @@ public final class ToByte {
     
     
     
-    public static final class FromFloat extends ToNonDecimalNumber.FromFloat<Byte> {
+    public static final class FromFloat extends ConvertToNonDecimalNumber.FromFloat<Integer> {
 
         public FromFloat(final RoundingMode roundingMode) {
             super(roundingMode);
         }
 
         @Override
-        protected Byte fromNumber(final Number number) {
-            return ToByte.internalFromNumber(number);
+        protected Integer fromNumber(final Number number) {
+            return ConvertToInteger.internalFromNumber(number);
         }
 
         @Override
-        protected Byte fromString(final String string) {
-            return ToByte.internalFromString(string);
+        protected Integer fromString(final String string) {
+            return ConvertToInteger.internalFromString(string);
         }
         
     }
@@ -256,20 +258,20 @@ public final class ToByte {
     
     
     
-    public static final class FromDouble extends ToNonDecimalNumber.FromDouble<Byte> {
+    public static final class FromDouble extends ConvertToNonDecimalNumber.FromDouble<Integer> {
 
         public FromDouble(final RoundingMode roundingMode) {
             super(roundingMode);
         }
 
         @Override
-        protected Byte fromNumber(final Number number) {
-            return ToByte.internalFromNumber(number);
+        protected Integer fromNumber(final Number number) {
+            return ConvertToInteger.internalFromNumber(number);
         }
 
         @Override
-        protected Byte fromString(final String string) {
-            return ToByte.internalFromString(string);
+        protected Integer fromString(final String string) {
+            return ConvertToInteger.internalFromString(string);
         }
         
     }
@@ -277,20 +279,20 @@ public final class ToByte {
     
     
     
-    public static final class FromBigDecimal extends ToNonDecimalNumber.FromBigDecimal<Byte> {
+    public static final class FromBigDecimal extends ConvertToNonDecimalNumber.FromBigDecimal<Integer> {
 
         public FromBigDecimal(final RoundingMode roundingMode) {
             super(roundingMode);
         }
 
         @Override
-        protected Byte fromNumber(final Number number) {
-            return ToByte.internalFromNumber(number);
+        protected Integer fromNumber(final Number number) {
+            return ConvertToInteger.internalFromNumber(number);
         }
 
         @Override
-        protected Byte fromString(final String string) {
-            return ToByte.internalFromString(string);
+        protected Integer fromString(final String string) {
+            return ConvertToInteger.internalFromString(string);
         }
         
     }

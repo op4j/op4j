@@ -46,7 +46,7 @@ public abstract class AbstractNotNullFunction<T, R> implements IFunction<T, R> {
     }
 
 
-    public abstract R notNullExecute(final T object, final ExecCtx ctx) throws Exception;
+    protected abstract R notNullExecute(final T object, final ExecCtx ctx) throws Exception;
     
     
     

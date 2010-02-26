@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.functions.converters;
+package org.op4j.functions;
 
 /**
  * 

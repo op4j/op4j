@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.functions.converters;
+package org.op4j.functions;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -31,7 +31,7 @@ import java.util.Locale;
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
 import org.op4j.exceptions.ExecutionException;
-import org.op4j.functions.converters.ToNumber.Delegated;
+import org.op4j.functions.ConvertToNumber.Delegated;
 
 /**
  * 
@@ -40,10 +40,10 @@ import org.op4j.functions.converters.ToNumber.Delegated;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class ToDecimalNumber {
+final class ConvertToDecimalNumber {
 
     
-    private ToDecimalNumber() {
+    private ConvertToDecimalNumber() {
         super();
     }
     
@@ -54,57 +54,10 @@ final class ToDecimalNumber {
     
     
     
-    static abstract class FromNumber<X extends Number> extends ToNumber.FromNumber<X> {
-
-        private int scale = 0;
-        private RoundingMode roundingMode = null;
-        
-        public FromNumber() {
-            super();
-        }
-
-        public FromNumber(final int scale, final RoundingMode roundingMode) {
-            super(Delegated.DELEGATED);
-            Validate.notNull(roundingMode, "A rounding mode must be specified");
-            this.scale = scale;
-            this.roundingMode = roundingMode;
-        }
-
-        @Override
-        protected X numberExecute(final Number object) {
-            return fromNumber(object, this.scale, this.roundingMode);
-        }
-        
-
-        
-        protected final X fromNumber(
-                final Number number, final int withScale, final RoundingMode withRoundingMode) {
-            BigDecimal bigDecimal = null;
-            if (number instanceof BigDecimal) {
-                bigDecimal = (BigDecimal) number;
-            } else if (number instanceof BigInteger) {
-                bigDecimal = new BigDecimal((BigInteger) number);
-            } else {
-                bigDecimal = new BigDecimal(number.doubleValue());
-            }
-            bigDecimal = bigDecimal.setScale(withScale, withRoundingMode);
-            return fromNumber(bigDecimal);
-        }
-
-        
-        protected final X fromString(
-                final String string, final int withScale, final RoundingMode withRoundingMode) throws Exception {
-            return fromNumber(fromString(string), withScale, withRoundingMode);
-        }
-        
-    }
-
     
     
     
-    
-    
-    static abstract class FromString<X extends Number> extends ToNumber.FromString<X> {
+    static abstract class FromString<X extends Number> extends ConvertToNumber.FromString<X> {
 
         private static enum ExecType 
                 { FROM_STRING_SCALE_ROUNDINGMODE, FROM_STRING_SCALE_ROUNDINGMODE_LOCALE, FROM_STRING_SCALE_ROUNDINGMODE_DECIMALPOINT } 
@@ -137,7 +90,7 @@ final class ToDecimalNumber {
 
         
         public FromString(final int scale, final RoundingMode roundingMode) {
-            super(ToNumber.Delegated.DELEGATED);
+            super(ConvertToNumber.Delegated.DELEGATED);
             Validate.notNull(roundingMode, "A rounding mode must be specified");
             this.execType = ExecType.FROM_STRING_SCALE_ROUNDINGMODE;
             this.scale = scale;
@@ -146,7 +99,7 @@ final class ToDecimalNumber {
 
         
         public FromString(final int scale, final RoundingMode roundingMode, final Locale locale) {
-            super(ToNumber.Delegated.DELEGATED);
+            super(ConvertToNumber.Delegated.DELEGATED);
             Validate.notNull(roundingMode, "A rounding mode must be specified");
             Validate.notNull(locale, "A locale must be specified");
             this.execType = ExecType.FROM_STRING_SCALE_ROUNDINGMODE_LOCALE;
@@ -158,7 +111,7 @@ final class ToDecimalNumber {
 
         
         public FromString(final int scale, final RoundingMode roundingMode, final String locale) {
-            super(ToNumber.Delegated.DELEGATED);
+            super(ConvertToNumber.Delegated.DELEGATED);
             Validate.notNull(roundingMode, "A rounding mode must be specified");
             Validate.notNull(locale, "A locale must be specified");
             this.execType = ExecType.FROM_STRING_SCALE_ROUNDINGMODE_LOCALE;
@@ -170,7 +123,7 @@ final class ToDecimalNumber {
 
         
         public FromString(final int scale, final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
-            super(ToNumber.Delegated.DELEGATED);
+            super(ConvertToNumber.Delegated.DELEGATED);
             Validate.notNull(roundingMode, "A rounding mode must be specified");
             Validate.notNull(decimalPoint, "A decimal point type must be specified");
             this.execType = ExecType.FROM_STRING_SCALE_ROUNDINGMODE_DECIMALPOINT;

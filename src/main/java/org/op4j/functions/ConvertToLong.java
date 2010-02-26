@@ -18,10 +18,11 @@
  * =============================================================================
  */
 
-package org.op4j.functions.converters;
+package org.op4j.functions;
 
 import java.math.RoundingMode;
 import java.util.Locale;
+
 
 /**
  * 
@@ -30,7 +31,7 @@ import java.util.Locale;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class ToInteger {
+final class ConvertToLong {
 
     
     private static FromNumber FROM_NUMBER = new FromNumber();
@@ -38,8 +39,7 @@ public final class ToInteger {
     private static FromString FROM_STRING = new FromString();
 
     
-    
-    private ToInteger() {
+    private ConvertToLong() {
         super();
     }
 
@@ -119,37 +119,37 @@ public final class ToInteger {
     
     
     
-    static final Integer internalFromNumber(final Number number) {
-        return Integer.valueOf(number.intValue());
+    static final Long internalFromNumber(final Number number) {
+        return Long.valueOf(number.longValue());
     }
     
     
-    static final Integer internalFromString(final String string) {
-        return Integer.valueOf(string);
+    static final Long internalFromString(final String string) {
+        return Long.valueOf(string);
     }
     
     
-    static final Integer internalFromString(final String string, final int radix) {
-        return Integer.valueOf(string, radix);
+    static final Long internalFromString(final String string, final int radix) {
+        return Long.valueOf(string, radix);
     }
 
     
     
     
-    public static final class FromNumber extends ToNonDecimalNumber.FromNumber<Integer> {
+    public static final class FromNumber extends ConvertToNonDecimalNumber.FromNumber<Long> {
 
         public FromNumber() {
             super();
         }
 
         @Override
-        protected Integer fromNumber(final Number number) {
-            return ToInteger.internalFromNumber(number);
+        protected Long fromNumber(final Number number) {
+            return ConvertToLong.internalFromNumber(number);
         }
 
         @Override
-        protected Integer fromString(final String string) {
-            return ToInteger.internalFromString(string);
+        protected Long fromString(final String string) {
+            return ConvertToLong.internalFromString(string);
         }
         
     }
@@ -157,20 +157,20 @@ public final class ToInteger {
     
     
     
-    public static final class FromBoolean extends ToNumber.FromBoolean<Integer> {
+    public static final class FromBoolean extends ConvertToNumber.FromBoolean<Long> {
 
         public FromBoolean() {
             super();
         }
 
         @Override
-        protected Integer fromNumber(final Number number) {
-            return ToInteger.internalFromNumber(number);
+        protected Long fromNumber(final Number number) {
+            return ConvertToLong.internalFromNumber(number);
         }
 
         @Override
-        protected Integer fromString(final String string) {
-            return ToInteger.internalFromString(string);
+        protected Long fromString(final String string) {
+            return ConvertToLong.internalFromString(string);
         }
         
     }
@@ -178,7 +178,7 @@ public final class ToInteger {
     
     
     
-    public static final class FromString extends ToNonDecimalNumber.FromString<Integer> {
+    public static final class FromString extends ConvertToNonDecimalNumber.FromString<Long> {
 
         public FromString() {
             super();
@@ -217,18 +217,18 @@ public final class ToInteger {
         }
 
         @Override
-        protected Integer fromNumber(final Number number) {
-            return ToInteger.internalFromNumber(number);
+        protected Long fromNumber(final Number number) {
+            return ConvertToLong.internalFromNumber(number);
         }
 
         @Override
-        protected Integer fromString(final String string) {
-            return ToInteger.internalFromString(string);
+        protected Long fromString(final String string) {
+            return ConvertToLong.internalFromString(string);
         }
 
         @Override
-        protected Integer fromString(final String string, final int withRadix) {
-            return ToInteger.internalFromString(string, withRadix);
+        protected Long fromString(final String string, final int withRadix) {
+            return ConvertToLong.internalFromString(string, withRadix);
         }
         
     }
@@ -236,20 +236,20 @@ public final class ToInteger {
     
     
     
-    public static final class FromFloat extends ToNonDecimalNumber.FromFloat<Integer> {
+    public static final class FromFloat extends ConvertToNonDecimalNumber.FromFloat<Long> {
 
         public FromFloat(final RoundingMode roundingMode) {
             super(roundingMode);
         }
 
         @Override
-        protected Integer fromNumber(final Number number) {
-            return ToInteger.internalFromNumber(number);
+        protected Long fromNumber(final Number number) {
+            return ConvertToLong.internalFromNumber(number);
         }
 
         @Override
-        protected Integer fromString(final String string) {
-            return ToInteger.internalFromString(string);
+        protected Long fromString(final String string) {
+            return ConvertToLong.internalFromString(string);
         }
         
     }
@@ -257,20 +257,20 @@ public final class ToInteger {
     
     
     
-    public static final class FromDouble extends ToNonDecimalNumber.FromDouble<Integer> {
+    public static final class FromDouble extends ConvertToNonDecimalNumber.FromDouble<Long> {
 
         public FromDouble(final RoundingMode roundingMode) {
             super(roundingMode);
         }
 
         @Override
-        protected Integer fromNumber(final Number number) {
-            return ToInteger.internalFromNumber(number);
+        protected Long fromNumber(final Number number) {
+            return ConvertToLong.internalFromNumber(number);
         }
 
         @Override
-        protected Integer fromString(final String string) {
-            return ToInteger.internalFromString(string);
+        protected Long fromString(final String string) {
+            return ConvertToLong.internalFromString(string);
         }
         
     }
@@ -278,20 +278,20 @@ public final class ToInteger {
     
     
     
-    public static final class FromBigDecimal extends ToNonDecimalNumber.FromBigDecimal<Integer> {
+    public static final class FromBigDecimal extends ConvertToNonDecimalNumber.FromBigDecimal<Long> {
 
         public FromBigDecimal(final RoundingMode roundingMode) {
             super(roundingMode);
         }
 
         @Override
-        protected Integer fromNumber(final Number number) {
-            return ToInteger.internalFromNumber(number);
+        protected Long fromNumber(final Number number) {
+            return ConvertToLong.internalFromNumber(number);
         }
 
         @Override
-        protected Integer fromString(final String string) {
-            return ToInteger.internalFromString(string);
+        protected Long fromString(final String string) {
+            return ConvertToLong.internalFromString(string);
         }
         
     }

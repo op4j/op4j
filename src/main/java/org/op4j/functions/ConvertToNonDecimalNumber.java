@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.functions.converters;
+package org.op4j.functions;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -39,29 +39,15 @@ import org.op4j.exceptions.ExecutionException;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class ToNonDecimalNumber {
+final class ConvertToNonDecimalNumber {
 
     
-    private ToNonDecimalNumber() {
+    private ConvertToNonDecimalNumber() {
         super();
     }
     
     
-    static abstract class FromNumber<X extends Number> extends ToNumber.FromNumber<X> {
-
-        public FromNumber() {
-            super();
-        }
-
-        @Override
-        protected X numberExecute(Number object) {
-            // This will never be reached
-            throw new IllegalStateException("Delegated execution on non decimal number!");
-        }
-        
-    }
-    
-    static abstract class FromString<X extends Number> extends ToNumber.FromString<X> {
+    static abstract class FromString<X extends Number> extends ConvertToNumber.FromString<X> {
 
         private static enum ExecType 
                 { FROM_STRING_RADIX, FROM_STRING_ROUNDINGMODE, FROM_STRING_ROUNDINGMODE_LOCALE, FROM_STRING_ROUNDINGMODE_DECIMALPOINT } 
@@ -94,7 +80,7 @@ final class ToNonDecimalNumber {
 
         
         public FromString(final Integer radix) {
-            super(ToNumber.Delegated.DELEGATED);
+            super(ConvertToNumber.Delegated.DELEGATED);
             Validate.notNull(radix, "A radix must be specified");
             this.execType = ExecType.FROM_STRING_RADIX;
             this.radix = radix;
@@ -102,7 +88,7 @@ final class ToNonDecimalNumber {
 
         
         public FromString(final RoundingMode roundingMode) {
-            super(ToNumber.Delegated.DELEGATED);
+            super(ConvertToNumber.Delegated.DELEGATED);
             Validate.notNull(roundingMode, "A rounding mode must be specified");
             this.execType = ExecType.FROM_STRING_ROUNDINGMODE;
             this.roundingMode = roundingMode;
@@ -110,7 +96,7 @@ final class ToNonDecimalNumber {
 
         
         public FromString(final RoundingMode roundingMode, final Locale locale) {
-            super(ToNumber.Delegated.DELEGATED);
+            super(ConvertToNumber.Delegated.DELEGATED);
             Validate.notNull(roundingMode, "A rounding mode must be specified");
             Validate.notNull(locale, "A locale must be specified");
             this.execType = ExecType.FROM_STRING_ROUNDINGMODE_LOCALE;
@@ -121,7 +107,7 @@ final class ToNonDecimalNumber {
 
         
         public FromString(final RoundingMode roundingMode, final String locale) {
-            super(ToNumber.Delegated.DELEGATED);
+            super(ConvertToNumber.Delegated.DELEGATED);
             Validate.notNull(roundingMode, "A rounding mode must be specified");
             Validate.notNull(locale, "A locale must be specified");
             this.execType = ExecType.FROM_STRING_ROUNDINGMODE_LOCALE;
@@ -132,7 +118,7 @@ final class ToNonDecimalNumber {
 
         
         public FromString(final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
-            super(ToNumber.Delegated.DELEGATED);
+            super(ConvertToNumber.Delegated.DELEGATED);
             Validate.notNull(roundingMode, "A rounding mode must be specified");
             Validate.notNull(decimalPoint, "A decimal point type must be specified");
             this.execType = ExecType.FROM_STRING_ROUNDINGMODE_DECIMALPOINT;
@@ -199,76 +185,5 @@ final class ToNonDecimalNumber {
     
     
     
-    
-    static abstract class FromFloat<X extends Number> extends ToNumber.ToNumberFunction<Float,X>  {
-
-        private final RoundingMode roundingMode;
-        
-        
-        public FromFloat(final RoundingMode roundingMode) {
-            super();
-            Validate.notNull(roundingMode, "A rounding mode must be specified");
-            this.roundingMode = roundingMode;
-        }
-
-        
-        @Override
-        public X execute(Float object) {
-            BigDecimal bigDecimal = 
-                new BigDecimal(object.doubleValue());
-            bigDecimal = bigDecimal.setScale(0, this.roundingMode);
-            return fromNumber(bigDecimal);
-        }
-        
-    }
-    
-    
-    
-    
-    
-    static abstract class FromDouble<X extends Number> extends ToNumber.ToNumberFunction<Double,X>  {
-
-        private final RoundingMode roundingMode;
-        
-        
-        public FromDouble(final RoundingMode roundingMode) {
-            super();
-            Validate.notNull(roundingMode, "A rounding mode must be specified");
-            this.roundingMode = roundingMode;
-        }
-
-        
-        @Override
-        public X execute(Double object) {
-            BigDecimal bigDecimal = 
-                new BigDecimal(object.doubleValue());
-            bigDecimal = bigDecimal.setScale(0, this.roundingMode);
-            return fromNumber(bigDecimal);
-        }
-        
-    }
-    
-    
-    
-    
-    
-    static abstract class FromBigDecimal<X extends Number> extends ToNumber.ToNumberFunction<BigDecimal,X>  {
-
-        private final RoundingMode roundingMode;
-        
-        
-        public FromBigDecimal(final RoundingMode roundingMode) {
-            super();
-            Validate.notNull(roundingMode, "A rounding mode must be specified");
-            this.roundingMode = roundingMode;
-        }
-
-
-        @Override
-        public X execute(BigDecimal object) {
-            return fromNumber(object.setScale(0, this.roundingMode));
-        }
-        
-    }
     
 }

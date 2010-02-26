@@ -45,7 +45,7 @@ public abstract class AbstractNullAsNullFunction<T,R> implements IFunction<T,R> 
     }
 
 
-    public abstract R nullAsNullExecute(final T object, final ExecCtx ctx) throws Exception;
+    protected abstract R nullAsNullExecute(final T object, final ExecCtx ctx) throws Exception;
     
     
     
