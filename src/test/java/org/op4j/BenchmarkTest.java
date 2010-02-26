@@ -29,8 +29,8 @@ import org.apache.commons.lang.time.StopWatch;
 import org.javaruntype.type.Types;
 import org.junit.Test;
 import org.op4j.functions.Call;
+import org.op4j.functions.FnNumber;
 import org.op4j.functions.FnString;
-import org.op4j.functions.converters.ToBoolean;
 import org.op4j.operators.impl.op.array.Level0ArrayOperatorImpl;
 import org.op4j.operators.impl.op.list.Level0ListOperatorImpl;
 import org.op4j.operators.impl.op.list.Level1ListElementsOperatorImpl;
@@ -63,7 +63,7 @@ public class BenchmarkTest {
 			
 			int seed = RandomUtils.nextInt(2);
 			boolean op4jFirst = 
-				Op.on(seed).exec(ToBoolean.fromNumber()).get().booleanValue();
+				Op.on(seed).exec(FnNumber.toBoolean()).get().booleanValue();
 			
 			if (op4jFirst) {
 				

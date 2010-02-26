@@ -26,6 +26,7 @@ import java.nio.charset.Charset;
 import java.util.Locale;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
@@ -71,8 +72,11 @@ public final class FnString {
     private static IFunction<String,Short> TO_SHORT = new ToShort();
     private static IFunction<String,Byte> TO_BYTE = new ToByte();
 	
+    private static IFunction<String,Boolean> TO_BOOLEAN = new ToBoolean();
 	
-	
+
+    
+    
 	
 	private FnString() {
 		super();           
@@ -364,6 +368,13 @@ public final class FnString {
     }
 	
 	
+    
+    
+    public static final IFunction<String,Boolean> toBoolean() {
+        return TO_BOOLEAN;
+    }
+    
+    
 	
 	
 	public static final IFunction<String,String> escapeCSV() {
@@ -735,4 +746,21 @@ public final class FnString {
 			return StringUtils.strip(input);
 		}		
 	}	
+	
+	
+	
+    
+    static class ToBoolean extends AbstractNullAsNullFunction<String,Boolean>  {
+        
+        ToBoolean() {
+            super();
+        }
+
+        @Override
+        protected Boolean nullAsNullExecute(final String string, final ExecCtx ctx) throws Exception {
+            return BooleanUtils.toBooleanObject(string);
+        }
+        
+    }
+	
 }
