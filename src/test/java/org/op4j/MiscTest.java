@@ -39,14 +39,9 @@ import org.javaruntype.type.Types;
 import org.junit.Test;
 import org.op4j.functions.DecimalPoint;
 import org.op4j.functions.ExecCtx;
+import org.op4j.functions.FnString;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;
-import org.op4j.functions.FnString;
-import org.op4j.functions.ConvertToBigDecimal;
-import org.op4j.functions.ConvertToBigInteger;
-import org.op4j.functions.ConvertToDouble;
-import org.op4j.functions.ConvertToInteger;
-import org.op4j.functions.ConvertToLong;
 import org.op4j.functions.converters.ToCalendar;
 import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.converters.ToMapOfArray;
@@ -224,14 +219,14 @@ watch.start();
         }).get()));
         
         
-        System.out.println(Op.on("12314123.4123").exec(new ConvertToInteger.FromString(RoundingMode.CEILING, DecimalPoint.IS_POINT)).get());
-        System.out.println(Op.on("12314123.4123").exec(ConvertToInteger.fromString(RoundingMode.CEILING, DecimalPoint.IS_POINT)).get());
-        System.out.println(Op.on("12314123").exec(ConvertToInteger.fromString()).get());
-        System.out.println(Op.on("12314123").exec(ConvertToLong.fromString()).get());
-        System.out.println(Op.on("12314123").exec(ConvertToBigInteger.fromString()).get());
-        System.out.println(Op.on("12314123.4123").exec(ConvertToDouble.fromString()).get());
-        System.out.println(Op.on("12314123.4123").exec(ConvertToDouble.fromString(3, RoundingMode.CEILING)).get());
-        System.out.println(Op.on("12314123.4123").exec(ConvertToBigDecimal.fromString(3, RoundingMode.CEILING)).get());
+        System.out.println(Op.on("12314123.4123").exec(FnString.toInteger(RoundingMode.CEILING, DecimalPoint.IS_POINT)).get());
+        System.out.println(Op.on("12314123.4123").exec(FnString.toInteger(RoundingMode.CEILING, DecimalPoint.IS_POINT)).get());
+        System.out.println(Op.on("12314123").exec(FnString.toInteger()).get());
+        System.out.println(Op.on("12314123").exec(FnString.toLong()).get());
+        System.out.println(Op.on("12314123").exec(FnString.toBigInteger()).get());
+        System.out.println(Op.on("12314123.4123").exec(FnString.toDouble()).get());
+        System.out.println(Op.on("12314123.4123").exec(FnString.toDouble(3, RoundingMode.CEILING)).get());
+        System.out.println(Op.on("12314123.4123").exec(FnString.toBigDecimal(3, RoundingMode.CEILING)).get());
         
         final SimpleDateFormat dateFormat = new SimpleDateFormat();
         System.out.println(dateFormat.format(Op.on(Calendar.getInstance()).exec(new ToCalendar.FromCalendar(Calendar.DATE)).get().getTime()));

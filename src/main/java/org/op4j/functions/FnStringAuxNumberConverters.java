@@ -39,16 +39,16 @@ import org.op4j.exceptions.ExecutionException;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class AuxFnStringToNumber {
+final class FnStringAuxNumberConverters {
 
 	
-	private AuxFnStringToNumber() {
+	private FnStringAuxNumberConverters() {
 		super();           
 	}
 
 
     
-    final static class Delegated {
+    private final static class Delegated {
         
         public static Delegated DELEGATED = new Delegated();
         
@@ -552,8 +552,32 @@ public final class AuxFnStringToNumber {
             super();
         }
 
-        public ToFloat(int scale, RoundingMode roundingMode) {
+        public ToFloat(final DecimalPoint decimalPoint) {
+            super(decimalPoint);
+        }
+
+        public ToFloat(final Locale locale) {
+            super(locale);
+        }
+
+        public ToFloat(final int scale, final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
+            super(scale, roundingMode, decimalPoint);
+        }
+
+        public ToFloat(final int scale, final RoundingMode roundingMode, final Locale locale) {
+            super(scale, roundingMode, locale);
+        }
+
+        public ToFloat(final int scale, final RoundingMode roundingMode, final String locale) {
+            super(scale, roundingMode, locale);
+        }
+
+        public ToFloat(final int scale, final RoundingMode roundingMode) {
             super(scale, roundingMode);
+        }
+
+        public ToFloat(final String locale) {
+            super(locale);
         }
 
         @Override

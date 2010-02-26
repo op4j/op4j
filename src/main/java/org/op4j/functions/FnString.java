@@ -19,12 +19,24 @@
  */
 package org.op4j.functions;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.nio.charset.Charset;
+import java.util.Locale;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
+import org.op4j.functions.FnStringAuxNumberConverters.ToBigDecimal;
+import org.op4j.functions.FnStringAuxNumberConverters.ToBigInteger;
+import org.op4j.functions.FnStringAuxNumberConverters.ToByte;
+import org.op4j.functions.FnStringAuxNumberConverters.ToDouble;
+import org.op4j.functions.FnStringAuxNumberConverters.ToFloat;
+import org.op4j.functions.FnStringAuxNumberConverters.ToInteger;
+import org.op4j.functions.FnStringAuxNumberConverters.ToLong;
+import org.op4j.functions.FnStringAuxNumberConverters.ToShort;
 
 /**
  * 
@@ -35,86 +47,386 @@ import org.apache.commons.lang.Validate;
  */
 public final class FnString {
 
-	private static EscapeCSV ESCAPE_CSV_STRING_FUNC = new EscapeCSV();
-	private static UnescapeCSV UNESCAPE_CSV_STRING_FUNC = new UnescapeCSV();
-	private static EscapeXML ESCAPE_XML_STRING_FUNC = new EscapeXML();
-	private static UnescapeXML UNESCAPE_XML_STRING_FUNC = new UnescapeXML();
-	private static EscapeHTML ESCAPE_HTML_STRING_FUNC = new EscapeHTML();
-	private static UnescapeHTML UNESCAPE_HTML_STRING_FUNC = new UnescapeHTML();
-	private static EscapeJavaScript ESCAPE_JAVASCRIPT_STRING_FUNC = new EscapeJavaScript();
-	private static UnescapeJavaScript UNESCAPE_JAVASCRIPT_STRING_FUNC = new UnescapeJavaScript();
-	private static ToUpperCase TO_UPPER_CASE_STRING_FUNC = new ToUpperCase();
-	private static ToLowerCase TO_LOWER_CASE_STRING_FUNC = new ToLowerCase();
-	private static UnCapitalize UN_CAPITALIZE_STRING_FUNC = new UnCapitalize();
-	private static Capitalize CAPITALIZE_STRING_FUNC = new Capitalize();
-	private static Trim TRIM_STRING_FUNC = new Trim();
-	private static Strip STRIP_STRING_FUNC = new Strip();
+	private static IFunction<String,String> ESCAPE_CSV_STRING_FUNC = new EscapeCSV();
+	private static IFunction<String,String> UNESCAPE_CSV_STRING_FUNC = new UnescapeCSV();
+	private static IFunction<String,String> ESCAPE_XML_STRING_FUNC = new EscapeXML();
+	private static IFunction<String,String> UNESCAPE_XML_STRING_FUNC = new UnescapeXML();
+	private static IFunction<String,String> ESCAPE_HTML_STRING_FUNC = new EscapeHTML();
+	private static IFunction<String,String> UNESCAPE_HTML_STRING_FUNC = new UnescapeHTML();
+	private static IFunction<String,String> ESCAPE_JAVASCRIPT_STRING_FUNC = new EscapeJavaScript();
+	private static IFunction<String,String> UNESCAPE_JAVASCRIPT_STRING_FUNC = new UnescapeJavaScript();
+	private static IFunction<String,String> TO_UPPER_CASE_STRING_FUNC = new ToUpperCase();
+	private static IFunction<String,String> TO_LOWER_CASE_STRING_FUNC = new ToLowerCase();
+	private static IFunction<String,String> UN_CAPITALIZE_STRING_FUNC = new UnCapitalize();
+	private static IFunction<String,String> CAPITALIZE_STRING_FUNC = new Capitalize();
+	private static IFunction<String,String> TRIM_STRING_FUNC = new Trim();
+	private static IFunction<String,String> STRIP_STRING_FUNC = new Strip();
+	
+	private static IFunction<String,BigDecimal> TO_BIG_DECIMAL = new ToBigDecimal();
+    private static IFunction<String,BigInteger> TO_BIG_INTEGER = new ToBigInteger();
+    private static IFunction<String,Double> TO_DOUBLE = new ToDouble();
+    private static IFunction<String,Float> TO_FLOAT = new ToFloat();
+    private static IFunction<String,Long> TO_LONG = new ToLong();
+    private static IFunction<String,Integer> TO_INTEGER = new ToInteger();
+    private static IFunction<String,Short> TO_SHORT = new ToShort();
+    private static IFunction<String,Byte> TO_BYTE = new ToByte();
+	
+	
+	
 	
 	private FnString() {
 		super();           
 	}
 
-	public static final EscapeCSV escapeCSV() {
+	
+    
+    public static final IFunction<String,BigDecimal> toBigDecimal() {
+        return TO_BIG_DECIMAL;
+    }
+    
+    public static final IFunction<String,BigDecimal> toBigDecimal(final Locale locale) {
+        return new ToBigDecimal(locale);
+    }
+    
+    public static final IFunction<String,BigDecimal> toBigDecimal(final String locale) {
+        return new ToBigDecimal(locale);
+    }
+    
+    public static final IFunction<String,BigDecimal> toBigDecimal(final DecimalPoint decimalPoint) {
+        return new ToBigDecimal(decimalPoint);
+    }
+    
+    public static final IFunction<String,BigDecimal> toBigDecimal(final int scale, final RoundingMode roundingMode) {
+        return new ToBigDecimal(scale, roundingMode);
+    }
+    
+    public static final IFunction<String,BigDecimal> toBigDecimal(final int scale, final RoundingMode roundingMode, final Locale locale) {
+        return new ToBigDecimal(scale, roundingMode, locale);
+    }
+    
+    public static final IFunction<String,BigDecimal> toBigDecimal(final int scale, final RoundingMode roundingMode, final String locale) {
+        return new ToBigDecimal(scale, roundingMode, locale);
+    }
+    
+    public static final IFunction<String,BigDecimal> toBigDecimal(final int scale, final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
+        return new ToBigDecimal(scale, roundingMode, decimalPoint);
+    }
+    
+    
+    public static final IFunction<String,BigInteger> toBigInteger() {
+        return TO_BIG_INTEGER;
+    }
+    
+    public static final IFunction<String,BigInteger> toBigInteger(final Locale locale) {
+        return new ToBigInteger(locale);
+    }
+    
+    public static final IFunction<String,BigInteger> toBigInteger(final String locale) {
+        return new ToBigInteger(locale);
+    }
+    
+    public static final IFunction<String,BigInteger> toBigInteger(final DecimalPoint decimalPoint) {
+        return new ToBigInteger(decimalPoint);
+    }
+    
+    public static final IFunction<String,BigInteger> toBigInteger(final int radix) {
+        return new ToBigInteger(Integer.valueOf(radix));
+    }
+    
+    public static final IFunction<String,BigInteger> toBigInteger(final RoundingMode roundingMode) {
+        return new ToBigInteger(roundingMode);
+    }
+    
+    public static final IFunction<String,BigInteger> toBigInteger(final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
+        return new ToBigInteger(roundingMode, decimalPoint);
+    }
+    
+    public static final IFunction<String,BigInteger> toBigInteger(final RoundingMode roundingMode, final Locale locale) {
+        return new ToBigInteger(roundingMode, locale);
+    }
+    
+    public static final IFunction<String,BigInteger> toBigInteger(final RoundingMode roundingMode, final String locale) {
+        return new ToBigInteger(roundingMode, locale);
+    }
+    
+    
+    public static final IFunction<String,Double> toDouble() {
+        return TO_DOUBLE;
+    }
+    
+    public static final IFunction<String,Double> toDouble(final Locale locale) {
+        return new ToDouble(locale);
+    }
+    
+    public static final IFunction<String,Double> toDouble(final String locale) {
+        return new ToDouble(locale);
+    }
+    
+    public static final IFunction<String,Double> toDouble(final DecimalPoint decimalPoint) {
+        return new ToDouble(decimalPoint);
+    }
+    
+    public static final IFunction<String,Double> toDouble(final int scale, final RoundingMode roundingMode) {
+        return new ToDouble(scale, roundingMode);
+    }
+    
+    public static final IFunction<String,Double> toDouble(final int scale, final RoundingMode roundingMode, final Locale locale) {
+        return new ToDouble(scale, roundingMode, locale);
+    }
+    
+    public static final IFunction<String,Double> toDouble(final int scale, final RoundingMode roundingMode, final String locale) {
+        return new ToDouble(scale, roundingMode, locale);
+    }
+    
+    public static final IFunction<String,Double> toDouble(final int scale, final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
+        return new ToDouble(scale, roundingMode, decimalPoint);
+    }
+    
+    
+    public static final IFunction<String,Float> toFloat() {
+        return TO_FLOAT;
+    }
+    
+    public static final IFunction<String,Float> toFloat(final Locale locale) {
+        return new ToFloat(locale);
+    }
+    
+    public static final IFunction<String,Float> toFloat(final String locale) {
+        return new ToFloat(locale);
+    }
+    
+    public static final IFunction<String,Float> toFloat(final DecimalPoint decimalPoint) {
+        return new ToFloat(decimalPoint);
+    }
+    
+    public static final IFunction<String,Float> toFloat(final int scale, final RoundingMode roundingMode) {
+        return new ToFloat(scale, roundingMode);
+    }
+    
+    public static final IFunction<String,Float> toFloat(final int scale, final RoundingMode roundingMode, final Locale locale) {
+        return new ToFloat(scale, roundingMode, locale);
+    }
+    
+    public static final IFunction<String,Float> toFloat(final int scale, final RoundingMode roundingMode, final String locale) {
+        return new ToFloat(scale, roundingMode, locale);
+    }
+    
+    public static final IFunction<String,Float> toFloat(final int scale, final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
+        return new ToFloat(scale, roundingMode, decimalPoint);
+    }
+    
+    
+    public static final IFunction<String,Long> toLong() {
+        return TO_LONG;
+    }
+    
+    public static final IFunction<String,Long> toLong(final Locale locale) {
+        return new ToLong(locale);
+    }
+    
+    public static final IFunction<String,Long> toLong(final String locale) {
+        return new ToLong(locale);
+    }
+    
+    public static final IFunction<String,Long> toLong(final DecimalPoint decimalPoint) {
+        return new ToLong(decimalPoint);
+    }
+    
+    public static final IFunction<String,Long> toLong(final int radix) {
+        return new ToLong(Integer.valueOf(radix));
+    }
+    
+    public static final IFunction<String,Long> toLong(final RoundingMode roundingMode) {
+        return new ToLong(roundingMode);
+    }
+    
+    public static final IFunction<String,Long> toLong(final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
+        return new ToLong(roundingMode, decimalPoint);
+    }
+    
+    public static final IFunction<String,Long> toLong(final RoundingMode roundingMode, final Locale locale) {
+        return new ToLong(roundingMode, locale);
+    }
+    
+    public static final IFunction<String,Long> toLong(final RoundingMode roundingMode, final String locale) {
+        return new ToLong(roundingMode, locale);
+    }
+    
+    
+    public static final IFunction<String,Integer> toInteger() {
+        return TO_INTEGER;
+    }
+    
+    public static final IFunction<String,Integer> toInteger(final Locale locale) {
+        return new ToInteger(locale);
+    }
+    
+    public static final IFunction<String,Integer> toInteger(final String locale) {
+        return new ToInteger(locale);
+    }
+    
+    public static final IFunction<String,Integer> toInteger(final DecimalPoint decimalPoint) {
+        return new ToInteger(decimalPoint);
+    }
+    
+    public static final IFunction<String,Integer> toInteger(final int radix) {
+        return new ToInteger(Integer.valueOf(radix));
+    }
+    
+    public static final IFunction<String,Integer> toInteger(final RoundingMode roundingMode) {
+        return new ToInteger(roundingMode);
+    }
+    
+    public static final IFunction<String,Integer> toInteger(final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
+        return new ToInteger(roundingMode, decimalPoint);
+    }
+    
+    public static final IFunction<String,Integer> toInteger(final RoundingMode roundingMode, final Locale locale) {
+        return new ToInteger(roundingMode, locale);
+    }
+    
+    public static final IFunction<String,Integer> toInteger(final RoundingMode roundingMode, final String locale) {
+        return new ToInteger(roundingMode, locale);
+    }
+    
+    
+    public static final IFunction<String,Short> toShort() {
+        return TO_SHORT;
+    }
+    
+    public static final IFunction<String,Short> toShort(final Locale locale) {
+        return new ToShort(locale);
+    }
+    
+    public static final IFunction<String,Short> toShort(final String locale) {
+        return new ToShort(locale);
+    }
+    
+    public static final IFunction<String,Short> toShort(final DecimalPoint decimalPoint) {
+        return new ToShort(decimalPoint);
+    }
+    
+    public static final IFunction<String,Short> toShort(final int radix) {
+        return new ToShort(Integer.valueOf(radix));
+    }
+    
+    public static final IFunction<String,Short> toShort(final RoundingMode roundingMode) {
+        return new ToShort(roundingMode);
+    }
+    
+    public static final IFunction<String,Short> toShort(final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
+        return new ToShort(roundingMode, decimalPoint);
+    }
+    
+    public static final IFunction<String,Short> toShort(final RoundingMode roundingMode, final Locale locale) {
+        return new ToShort(roundingMode, locale);
+    }
+    
+    public static final IFunction<String,Short> toShort(final RoundingMode roundingMode, final String locale) {
+        return new ToShort(roundingMode, locale);
+    }
+    
+    
+    public static final IFunction<String,Byte> toByte() {
+        return TO_BYTE;
+    }
+    
+    public static final IFunction<String,Byte> toByte(final Locale locale) {
+        return new ToByte(locale);
+    }
+    
+    public static final IFunction<String,Byte> toByte(final String locale) {
+        return new ToByte(locale);
+    }
+    
+    public static final IFunction<String,Byte> toByte(final DecimalPoint decimalPoint) {
+        return new ToByte(decimalPoint);
+    }
+    
+    public static final IFunction<String,Byte> toByte(final int radix) {
+        return new ToByte(Integer.valueOf(radix));
+    }
+    
+    public static final IFunction<String,Byte> toByte(final RoundingMode roundingMode) {
+        return new ToByte(roundingMode);
+    }
+    
+    public static final IFunction<String,Byte> toByte(final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
+        return new ToByte(roundingMode, decimalPoint);
+    }
+    
+    public static final IFunction<String,Byte> toByte(final RoundingMode roundingMode, final Locale locale) {
+        return new ToByte(roundingMode, locale);
+    }
+    
+    public static final IFunction<String,Byte> toByte(final RoundingMode roundingMode, final String locale) {
+        return new ToByte(roundingMode, locale);
+    }
+	
+	
+	
+	
+	public static final IFunction<String,String> escapeCSV() {
         return ESCAPE_CSV_STRING_FUNC;
     }
-	public static final UnescapeCSV unescapeCSV() {
+	public static final IFunction<String,String> unescapeCSV() {
         return UNESCAPE_CSV_STRING_FUNC;
     }	
 
-	public static final EscapeXML escapeXML() {
+	public static final IFunction<String,String> escapeXML() {
         return ESCAPE_XML_STRING_FUNC;
     }
-	public static final UnescapeXML unescapeXML() {
+	public static final IFunction<String,String> unescapeXML() {
         return UNESCAPE_XML_STRING_FUNC;
     }
 	
-	public static final EscapeHTML escapeHTML() {
+	public static final IFunction<String,String> escapeHTML() {
         return ESCAPE_HTML_STRING_FUNC;
     }
-	public static final UnescapeHTML unescapeHTML() {
+	public static final IFunction<String,String> unescapeHTML() {
         return UNESCAPE_HTML_STRING_FUNC;
     }
 	
-	public static final EscapeJavaScript escapeJavaScript() {
+	public static final IFunction<String,String> escapeJavaScript() {
         return ESCAPE_JAVASCRIPT_STRING_FUNC;
     }
-	public static final UnescapeJavaScript unescapeJavaScript() {
+	public static final IFunction<String,String> unescapeJavaScript() {
         return UNESCAPE_JAVASCRIPT_STRING_FUNC;
     }
 	
-	public static final ToBase64 toBase64(Charset charset) {
+	public static final IFunction<String,String> toBase64(Charset charset) {
         return new ToBase64(charset);
     }
-	public static final FromBase64 fromBase64(Charset charset) {
+	public static final IFunction<String,String> fromBase64(Charset charset) {
         return new FromBase64(charset);
     }
 	
-	public static final ToHexadecimal toHexadecimal(Charset charset) {
+	public static final IFunction<String,String> toHexadecimal(Charset charset) {
         return new ToHexadecimal(charset);
     }
-	public static final FromHexadecimal fromHexadecimal(Charset charset) {
+	public static final IFunction<String,String> fromHexadecimal(Charset charset) {
         return new FromHexadecimal(charset);
     }
 	
-	public static final ToUpperCase toUpperCase() {
+	public static final IFunction<String,String> toUpperCase() {
         return TO_UPPER_CASE_STRING_FUNC;
     }
-	public static final ToLowerCase toLowerCase() {
+	public static final IFunction<String,String> toLowerCase() {
         return TO_LOWER_CASE_STRING_FUNC;
     }
 	
-	public static final UnCapitalize unCapitalize() {
+	public static final IFunction<String,String> unCapitalize() {
         return UN_CAPITALIZE_STRING_FUNC;
     }
-	public static final Capitalize capitalize() {
+	public static final IFunction<String,String> capitalize() {
         return CAPITALIZE_STRING_FUNC;
     }
 	
-	public static final Trim trim() {
+	public static final IFunction<String,String> trim() {
         return TRIM_STRING_FUNC;
     }
 	
-	public static final Strip strip() {
+	public static final IFunction<String,String> strip() {
         return STRIP_STRING_FUNC;
     }
 	
@@ -125,9 +437,9 @@ public final class FnString {
 	 * The String is returned in a way it can be used to fill in a CSV column as StringEscapeUtils does
 	 *
 	 */
-	public static final class EscapeCSV implements IFunction<String,String> {
+	static final class EscapeCSV implements IFunction<String,String> {
 		
-		public EscapeCSV() {
+		EscapeCSV() {
 			super();
 		}
 
@@ -142,8 +454,8 @@ public final class FnString {
 	 * as StringEscapeUtils does
 	 *
 	 */
-	public static final class UnescapeCSV implements IFunction<String,String> {
-		public UnescapeCSV() {
+	static final class UnescapeCSV implements IFunction<String,String> {
+		UnescapeCSV() {
 			super();
 		}
 
@@ -156,8 +468,8 @@ public final class FnString {
 	 * The String is returned with the XML characters escaped as StringEscapeUtils does
 	 *
 	 */
-	public static final class EscapeXML implements IFunction<String,String> {
-		public EscapeXML() {
+	static final class EscapeXML implements IFunction<String,String> {
+		EscapeXML() {
 			super();
 		}
 
@@ -170,8 +482,8 @@ public final class FnString {
 	 * The String is returned without the XML escape characters as StringEscapeUtils does
 	 *
 	 */
-	public static final class UnescapeXML implements IFunction<String,String> {
-		public UnescapeXML() {
+	static final class UnescapeXML implements IFunction<String,String> {
+		UnescapeXML() {
 			super();
 		}
 
@@ -184,8 +496,8 @@ public final class FnString {
 	 * It escapes the given String using HTML entities (as StringEscapeUtils does)
 	 *
 	 */
-	public static final class EscapeHTML implements IFunction<String,String> {
-		public EscapeHTML() {
+	static final class EscapeHTML implements IFunction<String,String> {
+		EscapeHTML() {
 			super();
 		}
 
@@ -199,8 +511,8 @@ public final class FnString {
 	 * their unicode characters (as StringEscapeUtils does)
 	 *
 	 */
-	public static final class UnescapeHTML implements IFunction<String,String> {
-		public UnescapeHTML() {
+	static final class UnescapeHTML implements IFunction<String,String> {
+		UnescapeHTML() {
 			super();
 		}
 
@@ -213,8 +525,8 @@ public final class FnString {
 	 * It converts the given String into a JavaScript valid one (as StringEscapeUtils does)
 	 *
 	 */
-	public static final class EscapeJavaScript implements IFunction<String,String> {
-		public EscapeJavaScript() {
+	static final class EscapeJavaScript implements IFunction<String,String> {
+		EscapeJavaScript() {
 			super();
 		}
 
@@ -227,8 +539,8 @@ public final class FnString {
 	 * It unescapes the given JavaScript valid String (as StringEscapeUtils does)
 	 *
 	 */
-	public static final class UnescapeJavaScript implements IFunction<String,String> {
-		public UnescapeJavaScript() {
+	static final class UnescapeJavaScript implements IFunction<String,String> {
+		UnescapeJavaScript() {
 			super();
 		}
 
@@ -241,17 +553,17 @@ public final class FnString {
 	 * It converts the given String into a base64 encoded one
 	 *
 	 */
-	public static final class ToBase64 extends AbstractNullAsNullFunction<String,String> {
+	static final class ToBase64 extends AbstractNullAsNullFunction<String,String> {
 
 		private Charset charset = null;
 
-		public ToBase64(Charset charset) {
+		ToBase64(Charset charset) {
 			super();
 			this.charset = charset;
 		}
 
         @Override
-		public String nullAsNullExecute(final String input, final ExecCtx ctx) throws Exception {
+        protected String nullAsNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			Validate.notNull(this.charset, "Charset can't be null");
 			return new String(new Base64().encode(input.getBytes(
 					this.charset.name())), "US-ASCII");
@@ -262,17 +574,17 @@ public final class FnString {
 	 * It decodes the given base64 encoded String
 	 *
 	 */
-	public static final class FromBase64 extends AbstractNullAsNullFunction<String,String> {
+	static final class FromBase64 extends AbstractNullAsNullFunction<String,String> {
 
 		private Charset charset = null;
 
-		public FromBase64(Charset charset) {
+		FromBase64(Charset charset) {
 			super();
 			this.charset = charset;
 		}
 
         @Override
-		public String nullAsNullExecute(final String input, final ExecCtx ctx) throws Exception {
+        protected String nullAsNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			Validate.notNull(this.charset, "Charset can't be null");
 			return new String(new Base64().decode(input.getBytes("US-ASCII")), 
 					this.charset.name()); 
@@ -283,17 +595,17 @@ public final class FnString {
 	 * It converts the given String into its Hexadecimal representation using the specified Charset
 	 *
 	 */
-	public static final class ToHexadecimal extends AbstractNullAsNullFunction<String,String> {
+	static final class ToHexadecimal extends AbstractNullAsNullFunction<String,String> {
 
 		private Charset charset = null;
 
-		public ToHexadecimal(Charset charset) {
+		ToHexadecimal(Charset charset) {
 			super();
 			this.charset = charset;
 		}
 
         @Override
-		public String nullAsNullExecute(final String input, final ExecCtx ctx) throws Exception {
+        protected String nullAsNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			Validate.notNull(this.charset, "Charset can't be null");
 
 			final byte[] inputAsByteArray = input.getBytes(this.charset.name());
@@ -309,17 +621,17 @@ public final class FnString {
 	 * The given String is converted from its Hexadecimal representation to a String using the specified Charset
 	 *
 	 */
-	public static final class FromHexadecimal extends AbstractNullAsNullFunction<String,String> {
+	static final class FromHexadecimal extends AbstractNullAsNullFunction<String,String> {
 
 		private Charset charset = null;
 
-		public FromHexadecimal(Charset charset) {
+		FromHexadecimal(Charset charset) {
 			super();
 			this.charset = charset;
 		}
 
         @Override
-		public String nullAsNullExecute(final String input, final ExecCtx ctx) throws Exception {
+		protected String nullAsNullExecute(final String input, final ExecCtx ctx) throws Exception {
 			Validate.notNull(this.charset, "Charset can't be null");
 
 			final StringBuffer output = new StringBuffer();            
@@ -339,9 +651,9 @@ public final class FnString {
 	 * It converts the given String to uppercase
 	 *
 	 */
-	public static final class ToUpperCase implements IFunction<String,String> {
+	static final class ToUpperCase implements IFunction<String,String> {
 
-		public ToUpperCase() {
+		ToUpperCase() {
 			super();			
 		}
 
@@ -354,9 +666,9 @@ public final class FnString {
 	 * It converts the given String to lowercase
 	 *
 	 */
-	public static final class ToLowerCase implements IFunction<String,String> {
+	static final class ToLowerCase implements IFunction<String,String> {
 
-		public ToLowerCase() {
+		ToLowerCase() {
 			super();			
 		}
 
@@ -369,9 +681,9 @@ public final class FnString {
 	 * It converts the first letter of the given String to lowercase
 	 *
 	 */
-	public static final class UnCapitalize implements IFunction<String,String> {
+	static final class UnCapitalize implements IFunction<String,String> {
 
-		public UnCapitalize() {
+		UnCapitalize() {
 			super();			
 		}
 
@@ -383,9 +695,9 @@ public final class FnString {
 	 * It converts the first letter of the given String to uppercase
 	 *
 	 */
-	public static final class Capitalize implements IFunction<String,String> {
+	static final class Capitalize implements IFunction<String,String> {
 
-		public Capitalize() {
+		Capitalize() {
 			super();			
 		}
 
@@ -398,9 +710,9 @@ public final class FnString {
 	 * Removes control characters (char <= 32) from both ends of the given String
 	 *
 	 */
-	public static final class Trim implements IFunction<String,String> {
+	static final class Trim implements IFunction<String,String> {
 
-		public Trim() {
+		Trim() {
 			super();			
 		}
 
@@ -413,9 +725,9 @@ public final class FnString {
 	 * Strips whitespace from both sides of the given String
 	 *
 	 */
-	public static final class Strip implements IFunction<String,String> {
+	static final class Strip implements IFunction<String,String> {
 
-		public Strip() {
+		Strip() {
 			super();			
 		}
 
