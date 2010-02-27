@@ -1,4 +1,3 @@
-/*
  * =============================================================================
  * 
  *   Copyright (c) 2010, The OP4J team (http://www.op4j.org)
@@ -16,35 +15,3 @@
  *   limitations under the License.
  * 
  * =============================================================================
- */
-package org.op4j.operators.qualities;
-
-
-
-
-
-
-/**
- * <p>
- * This interface contains methods for ending selections on map entries.
- * </p>
- * 
- * @since 1.0
- * 
- * @author Daniel Fern&aacute;ndez
- *
- */
-public interface SelectedMapEntryOperator<K,V> {
-
-    
-    /**
-     * <p>
-     * Ends the selection currently active for this level.
-     * </p>
-     * 
-     * @return an operator which will execute all subsequent operations on 
-     *         all the target objects instead of only on the previously selected ones. 
-     */
-    public SelectableMapEntryOperator<K,V> endIf();
-	
-}

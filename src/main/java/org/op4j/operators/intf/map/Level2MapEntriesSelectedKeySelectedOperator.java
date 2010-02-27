@@ -1,7 +1,7 @@
 /*
  * =============================================================================
  * 
- *   Copyright (c) 2008, The OP4J team (http://www.op4j.org)
+ *   Copyright (c) 2010, The OP4J team (http://www.op4j.org)
  * 
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
