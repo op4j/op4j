@@ -20,6 +20,7 @@
 
 package org.op4j.functions;
 
+import org.op4j.exceptions.ExecutionException;
 import org.op4j.target.Target;
 
 /**
@@ -44,8 +45,14 @@ public final class Function<T,R> implements IFunction<T,R> {
     }
 
     @SuppressWarnings("unchecked")
-    public R execute(final T object) throws Exception {
-        return (R) this.target.execute(object);
+    public R execute(final T object) {
+        try {
+            return (R) this.target.execute(object);
+        } catch (final ExecutionException e) {
+            throw e;
+        } catch (final Exception e) {
+            throw new ExecutionException(e);
+        }
     }
     
 }
