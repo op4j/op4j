@@ -28,7 +28,7 @@ package org.op4j.mapbuild;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface IMapBuilder<K,V,T> {
+public interface IMapBuilder<T,K,V> {
 
     public K buildKey(final T target);
     public V buildValue(final T target);

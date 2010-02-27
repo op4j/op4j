@@ -106,7 +106,7 @@ public final class Level0GenericMultiOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    public <K, V> Level0MapOperatorImpl<I,K, V> buildMap(final IMapBuilder<K, V, ? super T> mapBuild) {
+    public <K, V> Level0MapOperatorImpl<I,K, V> buildMap(final IMapBuilder<? super T,K,V> mapBuild) {
         return new Level0MapOperatorImpl<I,K, V>(getTarget().endIterate(null).execute(new ToMap.FromListByMapBuilder<K, V, T>(mapBuild)));
     }
 
@@ -121,7 +121,7 @@ public final class Level0GenericMultiOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    public <K, V> Level0MapOperatorImpl<I,K, V[]> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<K, V, ? super T> mapBuild) {
+    public <K, V> Level0MapOperatorImpl<I,K, V[]> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<? super T,K,V> mapBuild) {
         return new Level0MapOperatorImpl<I,K, V[]>(getTarget().endIterate(null).execute(new ToMapOfArray.FromListByMapBuilder<K, V, T>(valueType, mapBuild)));
     }
 
@@ -136,7 +136,7 @@ public final class Level0GenericMultiOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    public <K, V> Level0MapOperatorImpl<I,K, List<V>> buildMapOfList(final IMapBuilder<K, V, ? super T> mapBuild) {
+    public <K, V> Level0MapOperatorImpl<I,K, List<V>> buildMapOfList(final IMapBuilder<? super T,K,V> mapBuild) {
         return new Level0MapOperatorImpl<I,K, List<V>>(getTarget().endIterate(null).execute(new ToMapOfList.FromListByMapBuilder<K, V, T>(mapBuild)));
     }
 
@@ -151,7 +151,7 @@ public final class Level0GenericMultiOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    public <K, V> Level0MapOperatorImpl<I,K, Set<V>> buildMapOfSet(final IMapBuilder<K, V, ? super T> mapBuild) {
+    public <K, V> Level0MapOperatorImpl<I,K, Set<V>> buildMapOfSet(final IMapBuilder<? super T,K,V> mapBuild) {
         return new Level0MapOperatorImpl<I,K, Set<V>>(getTarget().endIterate(null).execute(new ToMapOfSet.FromListByMapBuilder<K, V, T>(mapBuild)));
     }
 

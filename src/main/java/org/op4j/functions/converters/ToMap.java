@@ -78,9 +78,9 @@ public final class ToMap {
     
     public static final class FromArrayByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<T[],Map<K,V>> {
 
-        private final IMapBuilder<K, V, ? super T> mapBuilder;
+        private final IMapBuilder<? super T,K,V> mapBuilder;
         
-        public FromArrayByMapBuilder(final IMapBuilder<K, V, ? super T> mapBuilder) {
+        public FromArrayByMapBuilder(final IMapBuilder<? super T,K,V> mapBuilder) {
             super();
 			Validate.notNull(mapBuilder, "A map builder must be specified");
             this.mapBuilder = mapBuilder;
@@ -155,9 +155,9 @@ public final class ToMap {
     
     public static final class FromListByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<List<T>,Map<K, V>>  {
 
-        private final IMapBuilder<K, V, ? super T> mapBuilder;
+        private final IMapBuilder<? super T,K,V> mapBuilder;
         
-        public FromListByMapBuilder(final IMapBuilder<K, V, ? super T> mapBuilder) {
+        public FromListByMapBuilder(final IMapBuilder<? super T,K,V> mapBuilder) {
             super();
 			Validate.notNull(mapBuilder, "A map builder must be specified");
             this.mapBuilder = mapBuilder;
@@ -231,9 +231,9 @@ public final class ToMap {
     
     public static final class FromSetByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<Set<T>,Map<K, V>>  {
 
-        private final IMapBuilder<K, V, ? super T> mapBuilder;
+        private final IMapBuilder<? super T,K,V> mapBuilder;
         
-        public FromSetByMapBuilder(final IMapBuilder<K, V, ? super T> mapBuilder) {
+        public FromSetByMapBuilder(final IMapBuilder<? super T,K,V> mapBuilder) {
             super();
 			Validate.notNull(mapBuilder, "A map builder must be specified");
             this.mapBuilder = mapBuilder;

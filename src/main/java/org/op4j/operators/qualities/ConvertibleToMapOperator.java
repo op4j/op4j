@@ -81,6 +81,6 @@ public interface ConvertibleToMapOperator<T> {
      * @param mapBuild the map builder to be used
      * @return an operator holding the converted object as target.
      */
-    public <K,V> Operator toMap(final IMapBuilder<K,V,? super T> mapBuild);
+    public <K,V> Operator toMap(final IMapBuilder<? super T,K,V> mapBuild);
     
 }

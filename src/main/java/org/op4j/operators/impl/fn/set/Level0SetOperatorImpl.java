@@ -174,7 +174,7 @@ public final class Level0SetOperatorImpl<I,T> extends AbstractOperatorImpl
     }
 
 
-    public <K, V> Level0MapOperatorImpl<I,K, V> toMap(final IMapBuilder<K, V, ? super T> mapBuild) {
+    public <K, V> Level0MapOperatorImpl<I,K, V> toMap(final IMapBuilder<? super T,K,V> mapBuild) {
         return new Level0MapOperatorImpl<I,K, V>(getTarget().execute(new ToMap.FromSetByMapBuilder<K, V, T>(mapBuild)));
     }
 

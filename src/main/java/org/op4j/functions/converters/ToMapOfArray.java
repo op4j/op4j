@@ -105,10 +105,10 @@ public final class ToMapOfArray {
     
     public static final class FromArrayByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<T[],Map<K,V[]>> {
 
-        private final IMapBuilder<K, V, ? super T> mapBuilder;
+        private final IMapBuilder<? super T,K,V> mapBuilder;
         private final Type<V> type;
         
-        public FromArrayByMapBuilder(final Type<V> type, final IMapBuilder<K, V, ? super T> mapBuilder) {
+        public FromArrayByMapBuilder(final Type<V> type, final IMapBuilder<? super T,K,V> mapBuilder) {
             super();
 			Validate.notNull(type, "A type representing the array elements must be specified");
 			Validate.notNull(mapBuilder, "A map builder must be specified");
@@ -220,10 +220,10 @@ public final class ToMapOfArray {
     
     public static final class FromListByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<List<T>,Map<K, V[]>>  {
 
-        private final IMapBuilder<K, V, ? super T> mapBuilder;
+        private final IMapBuilder<? super T,K,V> mapBuilder;
         private final Type<V> type;
         
-        public FromListByMapBuilder(final Type<V> type, final IMapBuilder<K, V, ? super T> mapBuilder) {
+        public FromListByMapBuilder(final Type<V> type, final IMapBuilder<? super T,K,V> mapBuilder) {
             super();
 			Validate.notNull(type, "A type representing the collection elements must be specified");
 			Validate.notNull(mapBuilder, "A map builder must be specified");
@@ -334,10 +334,10 @@ public final class ToMapOfArray {
     
     public static final class FromSetByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<Set<T>,Map<K, V[]>>  {
 
-        private final IMapBuilder<K, V, ? super T> mapBuilder;
+        private final IMapBuilder<? super T,K,V> mapBuilder;
         private final Type<V> type;
         
-        public FromSetByMapBuilder(final Type<V> type, final IMapBuilder<K, V, ? super T> mapBuilder) {
+        public FromSetByMapBuilder(final Type<V> type, final IMapBuilder<? super T,K,V> mapBuilder) {
             super();
 			Validate.notNull(type, "A type representing the collection elements must be specified");
 			Validate.notNull(mapBuilder, "A map builder must be specified");
