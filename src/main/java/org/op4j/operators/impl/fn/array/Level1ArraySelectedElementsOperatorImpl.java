@@ -1,3 +1,22 @@
+/*  
+ * ============================================================================= 
+ * 
+ *   Copyright (c) 2010, The OP4J team (http://www.op4j.org) 
+ * 
+ *   Licensed under the Apache License, Version 2.0 (the "License"); 
+ *   you may not use this file except in compliance with the License. 
+ *   You may obtain a copy of the License at 
+ * 
+ *       http://www.apache.org/licenses/LICENSE-2.0 
+ * 
+ *   Unless required by applicable law or agreed to in writing, software 
+ *   distributed under the License is distributed on an "AS IS" BASIS, 
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ *   See the License for the specific language governing permissions and 
+ *   limitations under the License. 
+ * 
+ * ============================================================================= 
+ */ 
 package org.op4j.operators.impl.fn.array;
 
 import org.javaruntype.type.Type;
@@ -19,11 +38,6 @@ public final class Level1ArraySelectedElementsOperatorImpl<I,T> extends Abstract
     public Level1ArraySelectedElementsOperatorImpl(final Type<T> type, final Target target) {
         super(target);
         this.type = type;
-    }
-
-
-    public Level1ArraySelectedElementsSelectedOperatorImpl<I,T> ifIndex(final int... indexes) {
-        return new Level1ArraySelectedElementsSelectedOperatorImpl<I,T>(this.type, getTarget().selectIndex(indexes));
     }
 
 
@@ -57,11 +71,6 @@ public final class Level1ArraySelectedElementsOperatorImpl<I,T> extends Abstract
     }
 
 
-    public Level1ArraySelectedElementsSelectedOperatorImpl<I,T> ifIndexNot(final int... indexes) {
-        return new Level1ArraySelectedElementsSelectedOperatorImpl<I,T>(this.type, getTarget().selectIndexNot(indexes));
-    }
-
-
     public Level1ArraySelectedElementsSelectedOperatorImpl<I,T> ifNotNull() {
         return new Level1ArraySelectedElementsSelectedOperatorImpl<I,T>(this.type, getTarget().selectNotNull());
     }
@@ -69,6 +78,16 @@ public final class Level1ArraySelectedElementsOperatorImpl<I,T> extends Abstract
 
     public Level1ArraySelectedElementsSelectedOperatorImpl<I,T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
         return new Level1ArraySelectedElementsSelectedOperatorImpl<I,T>(this.type, getTarget().selectNotNullAndMatching(eval));
+    }
+
+
+    public Level1ArraySelectedElementsSelectedOperatorImpl<I,T> ifIndex(final int... indexes) {
+        return new Level1ArraySelectedElementsSelectedOperatorImpl<I,T>(this.type, getTarget().selectIndex(indexes));
+    }
+
+
+    public Level1ArraySelectedElementsSelectedOperatorImpl<I,T> ifIndexNot(final int... indexes) {
+        return new Level1ArraySelectedElementsSelectedOperatorImpl<I,T>(this.type, getTarget().selectIndexNot(indexes));
     }
 
 
