@@ -24,7 +24,7 @@ package org.op4j.operators.intf.array;
 import org.op4j.functions.IFunction;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectedOperator;
+import org.op4j.operators.qualities.SelectedElementsOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
 
@@ -37,7 +37,7 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level1ArraySelectedElementsSelectedOperator<I,T>
         extends UniqOperator<T[]>,
-                SelectedOperator<T>,
+                SelectedElementsOperator<T>,
                 ExecutableSelectedOperator<T>,
                 ReplaceableOperator<T> {
 

@@ -67,14 +67,12 @@ public interface Level0SetOperator<I,T>
 
 
 
-    public Level0SetSelectedOperator<I,T> ifIndex(final int... indexes);
     public Level0SetSelectedOperator<I,T> ifTrue(final IFunction<? super Set<T>,Boolean> eval);
     public Level0SetSelectedOperator<I,T> ifFalse(final IFunction<? super Set<T>,Boolean> eval);
     public Level0SetSelectedOperator<I,T> ifNullOrFalse(final IFunction<? super Set<T>,Boolean> eval);
     public Level0SetSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super Set<T>,Boolean> eval);
     public Level0SetSelectedOperator<I,T> ifNull();
     public Level0SetSelectedOperator<I,T> ifNullOrTrue(final IFunction<? super Set<T>,Boolean> eval);
-    public Level0SetSelectedOperator<I,T> ifIndexNot(final int... indexes);
     public Level0SetSelectedOperator<I,T> ifNotNull();
     public Level0SetSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super Set<T>,Boolean> eval);
 

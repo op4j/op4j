@@ -17,40 +17,34 @@
  * 
  * =============================================================================
  */
-package org.op4j.operators.intf.generic;
+package org.op4j.operators.qualities;
 
-import org.op4j.functions.IFunction;
-import org.op4j.operators.qualities.ExecutableSelectedOperator;
-import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectedElementsOperator;
-import org.op4j.operators.qualities.UniqOperator;
+
 
 
 
 
 /**
+ * <p>
+ * This interface contains methods for ending selections.
+ * </p>
  * 
  * @since 1.0
  * 
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface Level0GenericUniqSelectedOperator<I,T>
-        extends UniqOperator<T>,
-        		ExecutableSelectedOperator<T>,
-                ReplaceableOperator<T>,
-                SelectedElementsOperator<T> {
-
-
-
-    public Level0GenericUniqOperator<I,T> endIf();
+public interface SelectedElementsOperator<T> {
 
     
-    public Level0GenericUniqSelectedOperator<I,T> replaceWith(final T replacement);
-    
-    public Level0GenericUniqSelectedOperator<I,T> execIfNotNull(final IFunction<? super T,? extends T> function);
-
-    public Level0GenericUniqSelectedOperator<I,T> exec(final IFunction<? super T,? extends T> function);
-
-
+    /**
+     * <p>
+     * Ends the selection currently active for this level.
+     * </p>
+     * 
+     * @return an operator which will execute all subsequent operations on 
+     *         all the target objects instead of only on the previously selected ones. 
+     */
+    public SelectableElementsOperator<T> endIf();
+	
 }

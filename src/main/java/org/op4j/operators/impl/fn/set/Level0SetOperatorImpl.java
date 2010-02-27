@@ -202,14 +202,6 @@ public final class Level0SetOperatorImpl<I,T> extends AbstractOperatorImpl
     
 
 
-    public Level0SetSelectedOperatorImpl<I,T> ifIndex(final int... indexes) {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().selectIndex(indexes));
-    }
-
-
-    public Level0SetSelectedOperatorImpl<I,T> ifIndexNot(final int... indexes) {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().selectIndexNot(indexes));
-    }
 
 
     public Level0SetSelectedOperatorImpl<I,T> ifTrue(final IFunction<? super Set<T>,Boolean> eval) {

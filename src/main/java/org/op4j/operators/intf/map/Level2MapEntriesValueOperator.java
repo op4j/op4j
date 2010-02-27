@@ -28,7 +28,7 @@ import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
 import org.op4j.operators.qualities.ReplaceableIfNullOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectableOperator;
+import org.op4j.operators.qualities.SelectableElementsOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
 
@@ -43,7 +43,7 @@ public interface Level2MapEntriesValueOperator<I,K,V>
         extends UniqOperator<Map<K,V>>,
 				NavigatingMapEntryOperator,
         		ExecutableOperator<V>,
-                SelectableOperator<V>,
+                SelectableElementsOperator<V>,
                 ReplaceableOperator<V>,
                 ReplaceableIfNullOperator<V>,
                 CastableToTypeOperator<V> {

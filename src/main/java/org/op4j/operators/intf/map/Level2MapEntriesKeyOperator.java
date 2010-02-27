@@ -26,7 +26,7 @@ import org.op4j.functions.IFunction;
 import org.op4j.operators.qualities.CastableToTypeOperator;
 import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
-import org.op4j.operators.qualities.SelectableOperator;
+import org.op4j.operators.qualities.SelectableElementsOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
 
@@ -42,7 +42,7 @@ public interface Level2MapEntriesKeyOperator<I,K,V>
                 NavigatingMapEntryOperator,
                 CastableToTypeOperator<K>,
                 ExecutableOperator<K>, 
-                SelectableOperator<K> {
+                SelectableElementsOperator<K> {
 
 
 

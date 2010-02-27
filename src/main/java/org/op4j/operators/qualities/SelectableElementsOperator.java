@@ -30,9 +30,22 @@ import org.op4j.functions.IFunction;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface SelectableOperator<T>  {
+public interface SelectableElementsOperator<T>  {
     
 
+    /**
+     * <p>
+     * Selects only those targets which index in the current level of iteration matches any of
+     * the specified indexes. After this method, all the subsequently executed operations will only be executed
+     * on the target objects selected here, until an "endIf()" method is called. 
+     * </p>
+     * 
+     * @param indexes the indexes of the target objects which will be selected.
+     * @return an operator which will execute all subsequent operations only on the selected target objects. 
+     */
+    public SelectedElementsOperator<T> ifIndex(final int... indexes);
+    
+    
     /**
      * <p>
      * Selects only those targets for which the specified evaluator returns true. After this 
@@ -43,7 +56,7 @@ public interface SelectableOperator<T>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedOperator<T> ifTrue(final IFunction<? super T,Boolean> eval);
+    public SelectedElementsOperator<T> ifTrue(final IFunction<? super T,Boolean> eval);
     
 
     /**
@@ -56,7 +69,7 @@ public interface SelectableOperator<T>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedOperator<T> ifFalse(final IFunction<? super T,Boolean> eval);
+    public SelectedElementsOperator<T> ifFalse(final IFunction<? super T,Boolean> eval);
     
 
     /**
@@ -69,7 +82,7 @@ public interface SelectableOperator<T>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedOperator<T> ifNullOrFalse(final IFunction<? super T,Boolean> eval);
+    public SelectedElementsOperator<T> ifNullOrFalse(final IFunction<? super T,Boolean> eval);
     
     
     /**
@@ -82,7 +95,7 @@ public interface SelectableOperator<T>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedOperator<T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval);
+    public SelectedElementsOperator<T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval);
     
 
     /**
@@ -94,7 +107,7 @@ public interface SelectableOperator<T>  {
      * 
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedOperator<T> ifNull();
+    public SelectedElementsOperator<T> ifNull();
     
     
     /**
@@ -107,7 +120,20 @@ public interface SelectableOperator<T>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedOperator<T> ifNullOrTrue(final IFunction<? super T,Boolean> eval);
+    public SelectedElementsOperator<T> ifNullOrTrue(final IFunction<? super T,Boolean> eval);
+    
+    
+    /**
+     * <p>
+     * Selects only those targets which index in the current level of iteration does not match any of
+     * the specified indexes. After this method, all the subsequently executed operations will only be executed
+     * on the target objects selected here, until an "endIf()" method is called. 
+     * </p>
+     * 
+     * @param indexes the indexes of the target objects which will be selected.
+     * @return an operator which will execute all subsequent operations only on the selected target objects. 
+     */
+    public SelectedElementsOperator<T> ifIndexNot(final int... indexes);
     
     
     /**
@@ -119,7 +145,7 @@ public interface SelectableOperator<T>  {
      * 
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedOperator<T> ifNotNull();
+    public SelectedElementsOperator<T> ifNotNull();
     
     
     /**
@@ -132,6 +158,6 @@ public interface SelectableOperator<T>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedOperator<T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval);
+    public SelectedElementsOperator<T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval);
     
 }

@@ -24,7 +24,7 @@ import java.util.Map;
 import org.op4j.functions.IFunction;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectedOperator;
+import org.op4j.operators.qualities.SelectedElementsOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
 
@@ -39,7 +39,7 @@ public interface Level2MapSelectedEntriesValueSelectedOperator<I,K,V>
         extends UniqOperator<Map<K,V>>,
         		ExecutableSelectedOperator<V>,
                 ReplaceableOperator<V>,
-                SelectedOperator<V> {
+                SelectedElementsOperator<V> {
 
 
 

@@ -196,14 +196,6 @@ public final class Level0ArrayOperatorImpl<I,T>
     
 
 
-    public Level0ArraySelectedOperatorImpl<I,T> ifIndex(final int... indexes) {
-        return new Level0ArraySelectedOperatorImpl<I,T>(this.type, getTarget().selectIndex(indexes));
-    }
-
-
-    public Level0ArraySelectedOperatorImpl<I,T> ifIndexNot(final int... indexes) {
-        return new Level0ArraySelectedOperatorImpl<I,T>(this.type, getTarget().selectIndexNot(indexes));
-    }
 
     
     public Level0ArraySelectedOperatorImpl<I,T> ifTrue(final IFunction<? super T[],Boolean> eval) {

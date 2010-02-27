@@ -26,7 +26,7 @@ import org.op4j.operators.qualities.ExecutableArrayElementsOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
 import org.op4j.operators.qualities.ReplaceableIfNullOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectableOperator;
+import org.op4j.operators.qualities.SelectableElementsOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
 
@@ -40,7 +40,7 @@ import org.op4j.operators.qualities.UniqOperator;
 public interface Level1ArrayElementsOperator<I,T>
         extends UniqOperator<T[]>,
                 NavigatingCollectionOperator<T>,
-                SelectableOperator<T>,
+                SelectableElementsOperator<T>,
                 ReplaceableOperator<T>,
                 ReplaceableIfNullOperator<T>,
                 ExecutableArrayElementsOperator<T>,

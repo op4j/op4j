@@ -203,14 +203,6 @@ public final class Level0ListOperatorImpl<I,T> extends AbstractOperatorImpl
     
 
 
-    public Level0ListSelectedOperatorImpl<I,T> ifIndex(final int... indexes) {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().selectIndex(indexes));
-    }
-
-
-    public Level0ListSelectedOperatorImpl<I,T> ifIndexNot(final int... indexes) {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().selectIndexNot(indexes));
-    }
 
 
     public Level0ListSelectedOperatorImpl<I,T> ifTrue(final IFunction<? super List<T>,Boolean> eval) {

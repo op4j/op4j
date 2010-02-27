@@ -24,7 +24,7 @@ import java.util.Set;
 import org.op4j.functions.IFunction;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectedOperator;
+import org.op4j.operators.qualities.SelectedElementsOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
 
@@ -37,7 +37,7 @@ import org.op4j.operators.qualities.UniqOperator;
  */
 public interface Level1SetSelectedElementsSelectedOperator<I,T>
         extends UniqOperator<Set<T>>,
-                SelectedOperator<T>,
+                SelectedElementsOperator<T>,
                 ExecutableSelectedOperator<T>,
                 ReplaceableOperator<T> {
 

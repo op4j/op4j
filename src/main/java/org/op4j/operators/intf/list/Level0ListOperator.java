@@ -69,14 +69,12 @@ public interface Level0ListOperator<I,T>
 
 
 
-    public Level0ListSelectedOperator<I,T> ifIndex(final int... indexes);
     public Level0ListSelectedOperator<I,T> ifTrue(final IFunction<? super List<T>,Boolean> eval);
     public Level0ListSelectedOperator<I,T> ifFalse(final IFunction<? super List<T>,Boolean> eval);
     public Level0ListSelectedOperator<I,T> ifNullOrFalse(final IFunction<? super List<T>,Boolean> eval);
     public Level0ListSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super List<T>,Boolean> eval);
     public Level0ListSelectedOperator<I,T> ifNull();
     public Level0ListSelectedOperator<I,T> ifNullOrTrue(final IFunction<? super List<T>,Boolean> eval);
-    public Level0ListSelectedOperator<I,T> ifIndexNot(final int... indexes);
     public Level0ListSelectedOperator<I,T> ifNotNull();
     public Level0ListSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super List<T>,Boolean> eval);
 

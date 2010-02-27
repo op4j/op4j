@@ -68,14 +68,12 @@ public interface Level0ArrayOperator<I,T>
 
 
 
-    public Level0ArraySelectedOperator<I,T> ifIndex(final int... indexes);
     public Level0ArraySelectedOperator<I,T> ifTrue(final IFunction<? super T[],Boolean> eval);
     public Level0ArraySelectedOperator<I,T> ifFalse(final IFunction<? super T[],Boolean> eval);
     public Level0ArraySelectedOperator<I,T> ifNullOrFalse(final IFunction<? super T[],Boolean> eval);
     public Level0ArraySelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super T[],Boolean> eval);
     public Level0ArraySelectedOperator<I,T> ifNull();
     public Level0ArraySelectedOperator<I,T> ifNullOrTrue(final IFunction<? super T[],Boolean> eval);
-    public Level0ArraySelectedOperator<I,T> ifIndexNot(final int... indexes);
     public Level0ArraySelectedOperator<I,T> ifNotNull();
     public Level0ArraySelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super T[],Boolean> eval);
 

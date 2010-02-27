@@ -60,14 +60,12 @@ public interface Level0MapOperator<I,K,V>
 
 
 
-    public Level0MapSelectedOperator<I,K,V> ifIndex(final int... indexes);
     public Level0MapSelectedOperator<I,K,V> ifTrue(final IFunction<? super Map<K,V>,Boolean> eval);
     public Level0MapSelectedOperator<I,K,V> ifFalse(final IFunction<? super Map<K,V>,Boolean> eval);
     public Level0MapSelectedOperator<I,K,V> ifNullOrFalse(final IFunction<? super Map<K,V>,Boolean> eval);
     public Level0MapSelectedOperator<I,K,V> ifNotNullAndFalse(final IFunction<? super Map<K,V>,Boolean> eval);
     public Level0MapSelectedOperator<I,K,V> ifNull();
     public Level0MapSelectedOperator<I,K,V> ifNullOrTrue(final IFunction<? super Map<K,V>,Boolean> eval);
-    public Level0MapSelectedOperator<I,K,V> ifIndexNot(final int... indexes);
     public Level0MapSelectedOperator<I,K,V> ifNotNull();
     public Level0MapSelectedOperator<I,K,V> ifNotNullAndTrue(final IFunction<? super Map<K,V>,Boolean> eval);
 

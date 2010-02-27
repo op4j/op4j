@@ -23,7 +23,7 @@ import org.op4j.functions.IFunction;
 import org.op4j.operators.qualities.ExecutableSelectedOperator;
 import org.op4j.operators.qualities.MultiOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectedOperator;
+import org.op4j.operators.qualities.SelectedElementsOperator;
 /**
  * 
  * @since 1.0
@@ -35,7 +35,7 @@ public interface Level0GenericMultiSelectedOperator<I,T>
         extends MultiOperator<T>,
          		ExecutableSelectedOperator<T>,
                 ReplaceableOperator<T>,
-                SelectedOperator<T> {
+                SelectedElementsOperator<T> {
 
 
 

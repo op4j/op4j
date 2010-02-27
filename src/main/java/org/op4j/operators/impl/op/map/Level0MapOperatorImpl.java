@@ -159,14 +159,6 @@ public final class Level0MapOperatorImpl<I,K,V> extends AbstractOperatorImpl
     
 
 
-    public Level0MapSelectedOperatorImpl<I,K, V> ifIndex(final int... indexes) {
-        return new Level0MapSelectedOperatorImpl<I,K, V>(getTarget().selectIndex(indexes));
-    }
-
-
-    public Level0MapSelectedOperatorImpl<I,K, V> ifIndexNot(final int... indexes) {
-        return new Level0MapSelectedOperatorImpl<I,K, V>(getTarget().selectIndexNot(indexes));
-    }
 
 
     public Level0MapSelectedOperatorImpl<I,K, V> ifTrue(final IFunction<? super Map<K, V>,Boolean> eval) {
