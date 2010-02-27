@@ -18,24 +18,55 @@
  * =============================================================================
  */
 
-package org.op4j.functions.structures;
+package org.op4j.functions;
 
-import org.op4j.functions.AbstractNotNullFunction;
+import java.util.List;
 
+import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 
 /**
  * 
  * @since 1.0
  * 
  * @author Daniel Fern&aacute;ndez
- *
+ * 
  */
-abstract class AbstractStructureNotNullNonConvertingFunc<T> extends AbstractNotNullFunction<T,T> {
+public final class FnListOfArrayOf<T> extends FnListOf<T[]> {
+
     
     
-    protected AbstractStructureNotNullNonConvertingFunc() {
-        super();
+    
+    public IFunction<List<T[]>,List<T>> flattenArrays() {
+        return new FlattenArrays<T>();
     }
+    
+    
 
+    
+    
+    protected FnListOfArrayOf(final Type<T> type) {
+        super(Types.arrayOf(type));
+    }
+    
+    
+    
+    
+    
+    static final class FlattenArrays<T> extends FnCollection.FlattenCollectionOfArrays<T, List<T>, List<T[]>> {
 
+        
+        FlattenArrays() {
+            super();
+        }
+
+        @Override
+        List<T> fromList(final List<T> object) {
+            return object;
+        }
+        
+    }
+    
+    
+    
 }

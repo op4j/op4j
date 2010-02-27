@@ -18,18 +18,14 @@
  * =============================================================================
  */
 
-package org.op4j.functions.structures;
+package org.op4j.functions;
 
 import java.lang.reflect.Array;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -37,9 +33,6 @@ import java.util.Set;
 
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
-import org.op4j.functions.ExecCtx;
-import org.op4j.functions.IFunction;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -49,168 +42,80 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-public class FArray<T> {
+public class FnArrayOf<T> {
 
     
-    private static final FArray<Object> OF_OBJECT = new FArray<Object>(Types.OBJECT);
-    private static final FArray<BigInteger> OF_BIG_INTEGER = new FArray<BigInteger>(Types.BIG_INTEGER);
-    private static final FArray<BigDecimal> OF_BIG_DECIMAL = new FArray<BigDecimal>(Types.BIG_DECIMAL);
-    private static final FArray<Boolean> OF_BOOLEAN = new FArray<Boolean>(Types.BOOLEAN); 
-    private static final FArray<Byte> OF_BYTE = new FArray<Byte>(Types.BYTE); 
-    private static final FArray<Character> OF_CHARACTER = new FArray<Character>(Types.CHARACTER); 
-    private static final FArray<Calendar> OF_CALENDAR = new FArray<Calendar>(Types.CALENDAR); 
-    private static final FArray<Date> OF_DATE = new FArray<Date>(Types.DATE); 
-    private static final FArray<Double> OF_DOUBLE = new FArray<Double>(Types.DOUBLE); 
-    private static final FArray<Float> OF_FLOAT = new FArray<Float>(Types.FLOAT); 
-    private static final FArray<Integer> OF_INTEGER = new FArray<Integer>(Types.INTEGER); 
-    private static final FArray<Long> OF_LONG = new FArray<Long>(Types.LONG); 
-    private static final FArray<Short> OF_SHORT = new FArray<Short>(Types.SHORT); 
-    private static final FArray<String> OF_STRING = new FArray<String>(Types.STRING); 
-
     
     protected final Type<T> type;
     
     
     
     
-    public static <T> FArray<T> of(final Type<T> type) {
-        return new FArray<T>(type);
-    }
-    
-    public static <T> FArrayOfArray<T> ofArrayOf(final Type<T> type) {
-        return new FArrayOfArray<T>(type);
-    }
-    
-    public static <T> FArrayOfList<T> ofListOf(final Type<T> type) {
-        return new FArrayOfList<T>(type);
-    }
-    
-    public static <T> FArrayOfSet<T> ofSetOf(final Type<T> type) {
-        return new FArrayOfSet<T>(type);
-    }
-    
-    public static FArray<Object> ofObject() {
-        return OF_OBJECT;
-    }
-    
-    public static FArray<BigInteger> ofBigInteger() {
-        return OF_BIG_INTEGER;
-    }
-    
-    public static FArray<BigDecimal> ofBigDecimal() {
-        return OF_BIG_DECIMAL;
-    }
-    
-    public static FArray<Boolean> ofBoolean() {
-        return OF_BOOLEAN;
-    }
-    
-    public static FArray<Byte> ofByte() {
-        return OF_BYTE;
-    }
-    
-    public static FArray<Character> ofCharacter() {
-        return OF_CHARACTER;
-    }
-    
-    public static FArray<Calendar> ofCalendar() {
-        return OF_CALENDAR;
-    }
-    
-    public static FArray<Date> ofDate() {
-        return OF_DATE;
-    }
-    
-    public static FArray<Double> ofDouble() {
-        return OF_DOUBLE;
-    }
-    
-    public static FArray<Float> ofFloat() {
-        return OF_FLOAT;
-    }
-    
-    public static FArray<Integer> ofInteger() {
-        return OF_INTEGER;
-    }
-    
-    public static FArray<Long> ofLong() {
-        return OF_LONG;
-    }
-    
-    public static FArray<Short> ofShort() {
-        return OF_SHORT;
-    }
-    
-    public static FArray<String> ofString() {
-        return OF_STRING;
-    }
-    
-    
     
     
 
 
-    public final Sort<T> sort() {
+    public final IFunction<T[],T[]> sort() {
         return new Sort<T>();
     }
 
-    public final SortByComparator<T> sort(final Comparator<? super T> comparator) {
+    public final IFunction<T[],T[]> sort(final Comparator<? super T> comparator) {
         return new SortByComparator<T>(comparator);
     }
         
-    public final Distinct<T> distinct() {
+    public final IFunction<T[],T[]> distinct() {
         return new Distinct<T>();
     }
     
-    public final Add<T> add(final T... newElements) {
+    public final IFunction<T[],T[]> add(final T... newElements) {
         return new Add<T>(newElements);
     }
     
-    public final Insert<T> insert(final int position, final T... newElements) {
+    public final IFunction<T[],T[]> insert(final int position, final T... newElements) {
         return new Insert<T>(position, newElements);
     }
     
-    public final AddAll<T> addAll(final Collection<T> collection) {
+    public final IFunction<T[],T[]> addAll(final Collection<T> collection) {
         return new AddAll<T>(collection);
     }
     
-    public final RemoveAllIndexes<T> removeAllIndexes(final int... indexes) {
+    public final IFunction<T[],T[]> removeAllIndexes(final int... indexes) {
         return new RemoveAllIndexes<T>(indexes);
     }
     
-    public final RemoveAllEqual<T> removeAllEqual(final T... values) {
+    public final IFunction<T[],T[]> removeAllEqual(final T... values) {
         return new RemoveAllEqual<T>(values);
     }
     
-    public final RemoveAllTrue<T> removeAllTrue(final IFunction<? super T,Boolean> eval) {
+    public final IFunction<T[],T[]> removeAllTrue(final IFunction<? super T,Boolean> eval) {
         return new RemoveAllTrue<T>(eval);
     }
     
-    public final RemoveAllFalse<T> removeAllFalse(final IFunction<? super T,Boolean> eval) {
+    public final IFunction<T[],T[]> removeAllFalse(final IFunction<? super T,Boolean> eval) {
         return new RemoveAllFalse<T>(eval);
     }
     
-    public final RemoveAllIndexesNot<T> removeAllIndexesNot(final int... indexes) {
+    public final IFunction<T[],T[]> removeAllIndexesNot(final int... indexes) {
         return new RemoveAllIndexesNot<T>(indexes);
     }
     
-    public final RemoveAllNull<T> removeAllNull() {
+    public final IFunction<T[],T[]> removeAllNull() {
         return new RemoveAllNull<T>();
     }
     
-    public final RemoveAllNotNullAndTrue<T> removeAllNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
+    public final IFunction<T[],T[]> removeAllNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
         return new RemoveAllNotNullAndTrue<T>(eval);
     }
     
-    public final RemoveAllNotNullAndFalse<T> removeAllNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
+    public final IFunction<T[],T[]> removeAllNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
         return new RemoveAllNotNullAndFalse<T>(eval);
     }
     
-    public final RemoveAllNullOrTrue<T> removeAllNullOrTrue(final IFunction<? super T,Boolean> eval) {
+    public final IFunction<T[],T[]> removeAllNullOrTrue(final IFunction<? super T,Boolean> eval) {
         return new RemoveAllNullOrTrue<T>(eval);
     }
     
-    public final RemoveAllNullOrFalse<T> removeAllNullOrFalse(final IFunction<? super T,Boolean> eval) {
+    public final IFunction<T[],T[]> removeAllNullOrFalse(final IFunction<? super T,Boolean> eval) {
         return new RemoveAllNullOrFalse<T>(eval);
     }
 
@@ -218,7 +123,7 @@ public class FArray<T> {
     
     
     
-    protected FArray(final Type<T> type) {
+    protected FnArrayOf(final Type<T> type) {
         super();
         this.type = type;
     }
@@ -239,23 +144,23 @@ public class FArray<T> {
     
     
     
-    public static final class Sort<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
+    static final class Sort<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
-        public Sort() {
+        Sort() {
             super();
         }
 
         @Override
-        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+        protected T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             return doSort(object, ctx);
         }
 
         @SuppressWarnings("unchecked")
-        public T[] doSort(final T[] object, final ExecCtx ctx) throws Exception {
+        private T[] doSort(final T[] object, final ExecCtx ctx) throws Exception {
 
             final List<?> list = new ArrayList<Object>(Arrays.asList(object));
             Collections.sort((List<Comparable>)list);
-            return FArray.fromList(object.getClass(), (List<T>)(List<?>)list);
+            return FnArrayOf.fromList(object.getClass(), (List<T>)(List<?>)list);
             
         }
 
@@ -264,22 +169,22 @@ public class FArray<T> {
 
     
     
-    public static final class SortByComparator<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
+    static final class SortByComparator<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private Comparator<? super T> comparator = null;
 
-        public SortByComparator(final Comparator<? super T> comparator) {
+        SortByComparator(final Comparator<? super T> comparator) {
             super();
             Validate.notNull(comparator, "A comparator must be specified");
             this.comparator = comparator;
         }
 
         @Override
-        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+        protected T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
 
             final List<T> list = new ArrayList<T>(Arrays.asList(object));
             Collections.sort(list, this.comparator);
-            return FArray.fromList(object.getClass(), list);
+            return FnArrayOf.fromList(object.getClass(), list);
             
         }
 
@@ -288,7 +193,7 @@ public class FArray<T> {
     
     
     
-    public static final class Distinct<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
+    static final class Distinct<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         public Distinct() {
             super();
@@ -296,7 +201,7 @@ public class FArray<T> {
 
         @Override
         @SuppressWarnings("unchecked")
-        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+        protected T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
 
             Set<?> set = null;
             if (!object.getClass().getComponentType().isArray()) {
@@ -307,7 +212,7 @@ public class FArray<T> {
                         .asList((Object[][]) object));
             }
 
-            return FArray.fromList(object.getClass(), new ArrayList<T>((Set<T>)set));
+            return FnArrayOf.fromList(object.getClass(), new ArrayList<T>((Set<T>)set));
 
         }
 
@@ -351,42 +256,42 @@ public class FArray<T> {
     
 
     
-    public static final class Add<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
+    static final class Add<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final List<T> newElements;
         
-        public Add(final T... newElements) {
+        Add(final T... newElements) {
             super();
             this.newElements = VarArgsUtil.asRequiredObjectList(newElements);
         }
 
         @Override
-        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+        protected T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.addAll(this.newElements);
-            return FArray.fromList(object.getClass(), result);
+            return FnArrayOf.fromList(object.getClass(), result);
         }
         
     }
 
     
     
-    public static final class Insert<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
+    static final class Insert<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final int position;
         private final List<T> newElements;
         
-        public Insert(final int position, final T... newElements) {
+        Insert(final int position, final T... newElements) {
             super();
             this.position = position;
             this.newElements = VarArgsUtil.asRequiredObjectList(newElements);
         }
 
         @Override
-        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+        protected T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.addAll(this.position, this.newElements);
-            return FArray.fromList(object.getClass(), result);
+            return FnArrayOf.fromList(object.getClass(), result);
         }
         
     }
@@ -395,21 +300,21 @@ public class FArray<T> {
     
     
     
-    public static final class AddAll<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
+    static final class AddAll<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final List<T> newElements;
         
-        public AddAll(final Collection<T> collection) {
+        AddAll(final Collection<T> collection) {
             super();
             Validate.notNull(collection, "A collection must be specified");
             this.newElements = new ArrayList<T>(collection);
         }
 
         @Override
-        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+        protected T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.addAll(this.newElements);
-            return FArray.fromList(object.getClass(), result);
+            return FnArrayOf.fromList(object.getClass(), result);
         }
         
     }
@@ -418,17 +323,17 @@ public class FArray<T> {
     
 
     
-    public static final class RemoveAllIndexes<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
+    static final class RemoveAllIndexes<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final List<Integer> indexes;
         
-        public RemoveAllIndexes(final int... indexes) {
+        RemoveAllIndexes(final int... indexes) {
             super();
             this.indexes = VarArgsUtil.asRequiredIntegerList(indexes);
         }
 
         @Override
-        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+        protected T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             int i = 0;
             for (final T element : object) {
@@ -437,7 +342,7 @@ public class FArray<T> {
                 }
                 i++;
             }
-            return FArray.fromList(object.getClass(), result);
+            return FnArrayOf.fromList(object.getClass(), result);
         }
         
     }
@@ -446,20 +351,20 @@ public class FArray<T> {
     
 
     
-    public static final class RemoveAllEqual<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
+    static final class RemoveAllEqual<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final List<T> values;
         
-        public RemoveAllEqual(final T... values) {
+        RemoveAllEqual(final T... values) {
             super();
             this.values = VarArgsUtil.asRequiredObjectList(values);
         }
 
         @Override
-        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+        protected T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>(Arrays.asList(object));
             result.removeAll(this.values);
-            return FArray.fromList(object.getClass(), result);
+            return FnArrayOf.fromList(object.getClass(), result);
         }
         
     }
@@ -468,25 +373,25 @@ public class FArray<T> {
     
 
     
-    public static final class RemoveAllTrue<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
+    static final class RemoveAllTrue<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final IFunction<? super T,Boolean> eval;
         
-        public RemoveAllTrue(final IFunction<? super T,Boolean> eval) {
+        RemoveAllTrue(final IFunction<? super T,Boolean> eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
         }
 
         @Override
-        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+        protected T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (!this.eval.execute(element, ctx).booleanValue()) {
                     result.add(element);
                 }
             }
-            return FArray.fromList(object.getClass(), result);
+            return FnArrayOf.fromList(object.getClass(), result);
         }
         
     }
@@ -495,25 +400,25 @@ public class FArray<T> {
     
 
     
-    public static final class RemoveAllFalse<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
+    static final class RemoveAllFalse<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final IFunction<? super T,Boolean> eval;
         
-        public RemoveAllFalse(final IFunction<? super T,Boolean> eval) {
+        RemoveAllFalse(final IFunction<? super T,Boolean> eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
         }
 
         @Override
-        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+        protected T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (this.eval.execute(element, ctx).booleanValue()) {
                     result.add(element);
                 }
             }
-            return FArray.fromList(object.getClass(), result);
+            return FnArrayOf.fromList(object.getClass(), result);
         }
         
     }
@@ -522,17 +427,17 @@ public class FArray<T> {
 
     
     
-    public static final class RemoveAllIndexesNot<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
+    static final class RemoveAllIndexesNot<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final List<Integer> indexes;
         
-        public RemoveAllIndexesNot(final int... indexes) {
+        RemoveAllIndexesNot(final int... indexes) {
             super();
             this.indexes = VarArgsUtil.asRequiredIntegerList(indexes);
         }
 
         @Override
-        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+        protected T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             int i = 0;
             for (final T element : object) {
@@ -541,7 +446,7 @@ public class FArray<T> {
                 }
                 i++;
             }
-            return FArray.fromList(object.getClass(), result);
+            return FnArrayOf.fromList(object.getClass(), result);
         }
         
     }
@@ -550,21 +455,21 @@ public class FArray<T> {
 
     
     
-    public static final class RemoveAllNull<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
+    static final class RemoveAllNull<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
-        public RemoveAllNull() {
+        RemoveAllNull() {
             super();
         }
 
         @Override
-        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+        protected T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
                     result.add(element);
                 }
             }
-            return FArray.fromList(object.getClass(), result);
+            return FnArrayOf.fromList(object.getClass(), result);
         }
         
     }
@@ -574,18 +479,18 @@ public class FArray<T> {
 
     
     
-    public static final class RemoveAllNotNullAndTrue<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
+    static final class RemoveAllNotNullAndTrue<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final IFunction<? super T,Boolean> eval;
         
-        public RemoveAllNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
+        RemoveAllNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
         }
 
         @Override
-        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+        protected T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
@@ -596,7 +501,7 @@ public class FArray<T> {
                     result.add(null);
                 }
             }
-            return FArray.fromList(object.getClass(), result);
+            return FnArrayOf.fromList(object.getClass(), result);
         }
         
     }
@@ -608,18 +513,18 @@ public class FArray<T> {
 
     
     
-    public static final class RemoveAllNotNullAndFalse<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
+    static final class RemoveAllNotNullAndFalse<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final IFunction<? super T,Boolean> eval;
         
-        public RemoveAllNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
+        RemoveAllNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
         }
 
         @Override
-        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+        protected T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
@@ -630,7 +535,7 @@ public class FArray<T> {
                     result.add(null);
                 }
             }
-            return FArray.fromList(object.getClass(), result);
+            return FnArrayOf.fromList(object.getClass(), result);
         }
         
     }
@@ -639,18 +544,18 @@ public class FArray<T> {
 
     
     
-    public static final class RemoveAllNullOrTrue<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
+    static final class RemoveAllNullOrTrue<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final IFunction<? super T,Boolean> eval;
         
-        public RemoveAllNullOrTrue(final IFunction<? super T,Boolean> eval) {
+        RemoveAllNullOrTrue(final IFunction<? super T,Boolean> eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
         }
 
         @Override
-        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+        protected T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
@@ -659,7 +564,7 @@ public class FArray<T> {
                     }
                 }
             }
-            return FArray.fromList(object.getClass(), result);
+            return FnArrayOf.fromList(object.getClass(), result);
         }
         
     }
@@ -670,18 +575,18 @@ public class FArray<T> {
 
     
     
-    public static final class RemoveAllNullOrFalse<T> extends AbstractStructureNotNullNonConvertingFunc<T[]> {
+    static final class RemoveAllNullOrFalse<T> extends AbstractNotNullNonConvertingFunc<T[]> {
 
         private final IFunction<? super T,Boolean> eval;
         
-        public RemoveAllNullOrFalse(final IFunction<? super T,Boolean> eval) {
+        RemoveAllNullOrFalse(final IFunction<? super T,Boolean> eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
         }
 
         @Override
-        public T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+        protected T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
             for (final T element : object) {
                 if (element != null) {
@@ -690,7 +595,7 @@ public class FArray<T> {
                     }
                 }
             }
-            return FArray.fromList(object.getClass(), result);
+            return FnArrayOf.fromList(object.getClass(), result);
         }
         
     }

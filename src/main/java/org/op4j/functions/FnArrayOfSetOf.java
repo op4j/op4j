@@ -18,12 +18,14 @@
  * =============================================================================
  */
 
-package org.op4j.functions.structures;
+package org.op4j.functions;
 
-import java.util.LinkedHashSet;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 
@@ -34,40 +36,53 @@ import org.javaruntype.type.Types;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-public final class FSetOfList<T> extends FSet<List<T>> {
+public final class FnArrayOfSetOf<T> extends FnArrayOf<Set<T>> {
 
     
     
     
-    public FlattenLists<T> flattenLists() {
-        return new FlattenLists<T>();
-    }
-    
-    
-
-    
-    
-    protected FSetOfList(final Type<T> type) {
-        super(Types.listOf(type));
+    public IFunction<Set<T>[],T[]> flattenSets() {
+        return new FlattenSets<T>(Types.setComponentOf(this.type));
     }
     
     
     
     
+    protected FnArrayOfSetOf(final Type<T> type) {
+        super(Types.setOf(type));
+    }
     
-    public static final class FlattenLists<T> extends FCollection.FlattenCollectionOfCollections<T, Set<T>, Set<List<T>>> {
+    
+    
 
-        
-        public FlattenLists() {
+    
+
+    
+    static final class FlattenSets<T> extends AbstractNotNullFunction<Set<T>[],T[]> {
+
+        private final Type<T> type; 
+
+        FlattenSets(final Type<T> type) {
             super();
+            Validate.notNull(type, "A type representing the collection elements must be specified");
+            this.type = type;
         }
 
         @Override
-        Set<T> fromList(final List<T> object) {
-            return new LinkedHashSet<T>(object);
+        @SuppressWarnings("unchecked")
+        protected T[] notNullExecute(final Set<T>[] object, final ExecCtx ctx) throws Exception {
+            
+            final List<T> result = new ArrayList<T>();
+            for (final Set<T> element : object) {
+                result.addAll(element);
+            }
+            final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
+            return result.toArray(array);
+            
         }
-        
+
     }
+    
     
     
     

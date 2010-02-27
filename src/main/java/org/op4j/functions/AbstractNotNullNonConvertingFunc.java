@@ -18,55 +18,24 @@
  * =============================================================================
  */
 
-package org.op4j.functions.structures;
+package org.op4j.functions;
 
-import java.util.List;
+import org.op4j.functions.AbstractNotNullFunction;
 
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 
 /**
  * 
  * @since 1.0
  * 
  * @author Daniel Fern&aacute;ndez
- * 
+ *
  */
-public final class FListOfList<T> extends FList<List<T>> {
-
+abstract class AbstractNotNullNonConvertingFunc<T> extends AbstractNotNullFunction<T,T> {
     
     
-    
-    public FlattenLists<T> flattenLists() {
-        return new FlattenLists<T>();
+    protected AbstractNotNullNonConvertingFunc() {
+        super();
     }
-    
-    
 
-    
-    
-    protected FListOfList(final Type<T> type) {
-        super(Types.listOf(type));
-    }
-    
-    
-    
-    
-    
-    public static final class FlattenLists<T> extends FCollection.FlattenCollectionOfCollections<T, List<T>, List<List<T>>> {
 
-        
-        public FlattenLists() {
-            super();
-        }
-
-        @Override
-        List<T> fromList(final List<T> object) {
-            return object;
-        }
-        
-    }
-    
-    
-    
 }

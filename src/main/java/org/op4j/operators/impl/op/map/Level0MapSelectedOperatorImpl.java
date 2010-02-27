@@ -4,8 +4,8 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.op4j.functions.FnMap;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.structures.FMap;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.map.Level0MapSelectedOperator;
 import org.op4j.operators.qualities.UniqOpOperator;
@@ -22,18 +22,21 @@ public final class Level0MapSelectedOperatorImpl<I,K,V> extends AbstractOperator
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0MapSelectedOperatorImpl<I,K,V> insertAll(final int position, final Map<K,V> map) {
-        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(new FMap.InsertAll<K,V>(position, map)));
+        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(FnMap.ofObjectObject().insertAll(position, (Map)map)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0MapSelectedOperatorImpl<I,K,V> removeAllTrue(final IFunction<? super Entry<K,V>,Boolean> eval) {
-        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(new FMap.RemoveAllTrue<K,V>(eval)));
+        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(FnMap.ofObjectObject().removeAllTrue((IFunction)eval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0MapSelectedOperatorImpl<I,K,V> removeAllFalse(final IFunction<? super Entry<K,V>,Boolean> eval) {
-        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(new FMap.RemoveAllFalse<K,V>(eval)));
+        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(FnMap.ofObjectObject().removeAllFalse((IFunction)eval)));
     }
 
 
@@ -48,12 +51,12 @@ public final class Level0MapSelectedOperatorImpl<I,K,V> extends AbstractOperator
 
 
     public Level0MapSelectedOperatorImpl<I,K,V> removeAllKeys(final K... keys) {
-        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(new FMap.RemoveAllKeys<K,V>(keys)));
+        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(FnMap.ofObjectObject().removeAllKeys(keys)));
     }
 
 
     public Level0MapSelectedOperatorImpl<I,K,V> removeAllKeysNot(final K... keys) {
-        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(new FMap.RemoveAllKeysNot<K,V>(keys)));
+        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(FnMap.ofObjectObject().removeAllKeysNot(keys)));
     }
 
 
@@ -68,28 +71,29 @@ public final class Level0MapSelectedOperatorImpl<I,K,V> extends AbstractOperator
 
 
     public Level0MapSelectedOperatorImpl<I,K,V> put(final K newKey, final V newValue) {
-        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(new FMap.Put<K,V>(newKey, newValue)));
-    }
-
-
-    public Level0MapSelectedOperatorImpl<I,K,V> putAll(final Map<K,V> map) {
-        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(new FMap.PutAll<K,V>(map)));
-    }
-
-
-    public Level0MapSelectedOperatorImpl<I,K,V> insert(final int position, final K newKey, final V newValue) {
-        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(new FMap.Insert<K,V>(position, newKey, newValue)));
+        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(FnMap.ofObjectObject().put(newKey, newValue)));
     }
 
 
     @SuppressWarnings("unchecked")
-    public Level0MapSelectedOperatorImpl<I,K,V> sort() {
-        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(new FMap.SortByKey()));
+    public Level0MapSelectedOperatorImpl<I,K,V> putAll(final Map<K,V> map) {
+        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(FnMap.ofObjectObject().putAll((Map)map)));
     }
 
 
+    public Level0MapSelectedOperatorImpl<I,K,V> insert(final int position, final K newKey, final V newValue) {
+        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(FnMap.ofObjectObject().insert(position, newKey, newValue)));
+    }
+
+
+    public Level0MapSelectedOperatorImpl<I,K,V> sort() {
+        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(FnMap.ofObjectObject().sortByKey()));
+    }
+
+
+    @SuppressWarnings("unchecked")
     public Level0MapSelectedOperatorImpl<I,K,V> sort(final Comparator<? super Entry<K,V>> comparator) {
-        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(new FMap.SortEntries<K,V>(comparator)));
+        return new Level0MapSelectedOperatorImpl<I,K,V>(getTarget().execute(FnMap.ofObjectObject().sortEntries((Comparator)comparator)));
     }
 
 

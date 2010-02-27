@@ -18,11 +18,9 @@
  * =============================================================================
  */
 
-package org.op4j.functions.structures;
+package org.op4j.functions;
 
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
@@ -34,37 +32,37 @@ import org.javaruntype.type.Types;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-public final class FSetOfSet<T> extends FSet<Set<T>> {
+public final class FnListOfListOf<T> extends FnListOf<List<T>> {
 
     
     
     
-    public FlattenSets<T> flattenSets() {
-        return new FlattenSets<T>();
+    public IFunction<List<List<T>>,List<T>> flattenLists() {
+        return new FlattenLists<T>();
     }
     
     
 
     
     
-    protected FSetOfSet(final Type<T> type) {
-        super(Types.setOf(type));
+    protected FnListOfListOf(final Type<T> type) {
+        super(Types.listOf(type));
     }
     
     
     
     
     
-    public static final class FlattenSets<T> extends FCollection.FlattenCollectionOfCollections<T, Set<T>, Set<Set<T>>> {
+    static final class FlattenLists<T> extends FnCollection.FlattenCollectionOfCollections<T, List<T>, List<List<T>>> {
 
         
-        public FlattenSets() {
+        FlattenLists() {
             super();
         }
 
         @Override
-        Set<T> fromList(final List<T> object) {
-            return new LinkedHashSet<T>(object);
+        List<T> fromList(final List<T> object) {
+            return object;
         }
         
     }

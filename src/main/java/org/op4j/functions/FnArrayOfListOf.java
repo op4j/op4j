@@ -18,18 +18,15 @@
  * =============================================================================
  */
 
-package org.op4j.functions.structures;
+package org.op4j.functions;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.functions.AbstractNotNullFunction;
-import org.op4j.functions.ExecCtx;
 
 /**
  * 
@@ -38,33 +35,33 @@ import org.op4j.functions.ExecCtx;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-public final class FArrayOfSet<T> extends FArray<Set<T>> {
+public final class FnArrayOfListOf<T> extends FnArrayOf<List<T>> {
 
     
     
     
-    public FlattenSets<T> flattenSets() {
-        return new FlattenSets<T>(Types.setComponentOf(this.type));
+    public IFunction<List<T>[],T[]> flattenLists() {
+        return new FlattenLists<T>(Types.listComponentOf(this.type));
     }
     
     
     
     
-    protected FArrayOfSet(final Type<T> type) {
-        super(Types.setOf(type));
+    protected FnArrayOfListOf(final Type<T> type) {
+        super(Types.listOf(type));
     }
-    
-    
-    
 
     
-
     
-    public static final class FlattenSets<T> extends AbstractNotNullFunction<Set<T>[],T[]> {
+    
+    
+    
+    
+    static final class FlattenLists<T> extends AbstractNotNullFunction<List<T>[],T[]> {
 
         private final Type<T> type; 
 
-        public FlattenSets(final Type<T> type) {
+        FlattenLists(final Type<T> type) {
             super();
             Validate.notNull(type, "A type representing the collection elements must be specified");
             this.type = type;
@@ -72,10 +69,10 @@ public final class FArrayOfSet<T> extends FArray<Set<T>> {
 
         @Override
         @SuppressWarnings("unchecked")
-        public T[] notNullExecute(final Set<T>[] object, final ExecCtx ctx) throws Exception {
+        protected T[] notNullExecute(final List<T>[] object, final ExecCtx ctx) throws Exception {
             
             final List<T> result = new ArrayList<T>();
-            for (final Set<T> element : object) {
+            for (final List<T> element : object) {
                 result.addAll(element);
             }
             final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
@@ -84,7 +81,7 @@ public final class FArrayOfSet<T> extends FArray<Set<T>> {
         }
 
     }
-    
+
     
     
     

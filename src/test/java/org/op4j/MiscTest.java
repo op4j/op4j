@@ -39,15 +39,15 @@ import org.javaruntype.type.Types;
 import org.junit.Test;
 import org.op4j.functions.DecimalPoint;
 import org.op4j.functions.ExecCtx;
+import org.op4j.functions.FnArray;
 import org.op4j.functions.FnCalendar;
+import org.op4j.functions.FnList;
+import org.op4j.functions.FnSet;
 import org.op4j.functions.FnString;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;
 import org.op4j.functions.converters.ToMap;
 import org.op4j.functions.converters.ToMapOfArray;
-import org.op4j.functions.structures.FArray;
-import org.op4j.functions.structures.FList;
-import org.op4j.functions.structures.FSet;
 
 /**
  * 
@@ -237,22 +237,22 @@ watch.start();
         System.out.println(dateFormat.format(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildList().get()).exec(FnCalendar.fieldIntegerListToCalendar()).get().getTime()));
         System.out.println(dateFormat.format(Op.on(Op.onAll("1979", "11", "25", "12", "30").buildArrayOf(Types.STRING).get()).exec(FnCalendar.fieldStringArrayToCalendar()).get().getTime()));
         
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildList().get()).exec(new FList.Sort<Integer>()).get());
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildSet().get()).exec(new FSet.Sort<Integer>()).get());
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new FList.Distinct<Integer>()).get());
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildList().get()).exec(FnList.ofInteger().sort()).get());
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildSet().get()).exec(FnSet.ofInteger().sort()).get());
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(FnList.ofInteger().distinct()).get());
         
-        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildArrayOf(Types.INTEGER).get()).exec(new FArray.Sort<Integer>()).get()));
-        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArrayOf(Types.INTEGER).get()).exec(new FArray.Distinct<Integer>()).get()));
-        
-        
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new FList.Insert<Integer>(2, 1492)).get());
-        
-        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(new FList.Insert<Integer>(2, 1492)).exec(new FList.RemoveAllTrue<Integer>(Ognl.asBoolean("#target < 1000"))).exec(new FList.Sort<Integer>()).get());
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30).buildArrayOf(Types.INTEGER).get()).exec(FnArray.ofInteger().sort()).get()));
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArrayOf(Types.INTEGER).get()).exec(FnArray.ofInteger().distinct()).get()));
         
         
-        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArrayOf(Types.INTEGER).get()).exec(new FArray.Insert<Integer>(2, 1492)).get()));
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(FnList.ofInteger().insert(2, 1492)).get());
         
-        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArrayOf(Types.INTEGER).get()).exec(new FArray.Insert<Integer>(2, 1492)).exec(new FArray.RemoveAllTrue<Integer>(Ognl.asBoolean("#target < 1000"))).exec(new FArray.Sort<Integer>()).get()));
+        System.out.println(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildList().get()).exec(FnList.ofInteger().insert(2, 1492)).exec(FnList.ofInteger().removeAllTrue(Ognl.asBoolean("#target < 1000"))).exec(FnList.ofInteger().sort()).get());
+        
+        
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArrayOf(Types.INTEGER).get()).exec(FnArray.ofInteger().insert(2, 1492)).get()));
+        
+        System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArrayOf(Types.INTEGER).get()).exec(FnArray.ofInteger().insert(2, 1492)).exec(FnArray.ofInteger().removeAllTrue(Ognl.asBoolean("#target < 1000"))).exec(FnArray.ofInteger().sort()).get()));
         
         System.out.println(Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArrayOf(Types.STRING).get()).exec(new ToMap.FromArrayByKeyEval<Integer,String>(Ognl.asInteger("length()"))).get());
 

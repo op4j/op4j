@@ -4,9 +4,9 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Set;
 
+import org.op4j.functions.FnSet;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.structures.FSet;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.set.Level0SetSelectedOperator;
 import org.op4j.operators.qualities.UniqFnOperator;
@@ -29,57 +29,63 @@ public final class Level0SetSelectedOperatorImpl<I,T> extends AbstractOperatorIm
 
 
     public Level0SetSelectedOperatorImpl<I,T> insertAll(final int position, final T... newElements) {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(new FSet.Insert<T>(position, newElements)));
+        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(FnSet.ofObject().insert(position, newElements)));
     }
 
 
     public Level0SetSelectedOperatorImpl<I,T> removeAllIndexes(final int... indexes) {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(new FSet.RemoveAllIndexes<T>(indexes)));
+        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(FnSet.ofObject().removeAllIndexes(indexes)));
     }
 
 
     public Level0SetSelectedOperatorImpl<I,T> removeAllEqual(final T... values) {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(new FSet.RemoveAllEqual<T>(values)));
+        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(FnSet.ofObject().removeAllEqual(values)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0SetSelectedOperatorImpl<I,T> removeAllTrue(final IFunction<? super T,Boolean> eval) {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(new FSet.RemoveAllTrue<T>(eval)));
+        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(FnSet.ofObject().removeAllTrue((IFunction)eval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0SetSelectedOperatorImpl<I,T> removeAllFalse(final IFunction<? super T,Boolean> eval) {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(new FSet.RemoveAllFalse<T>(eval)));
+        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(FnSet.ofObject().removeAllFalse((IFunction)eval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0SetSelectedOperatorImpl<I,T> removeAllNullOrFalse(final IFunction<? super T,Boolean> eval) {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(new FSet.RemoveAllNullOrFalse<T>(eval)));
+        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(FnSet.ofObject().removeAllNullOrFalse((IFunction)eval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0SetSelectedOperatorImpl<I,T> removeAllNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(new FSet.RemoveAllNotNullAndFalse<T>(eval)));
+        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(FnSet.ofObject().removeAllNotNullAndFalse((IFunction)eval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0SetSelectedOperatorImpl<I,T> removeAllNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(new FSet.RemoveAllNotNullAndTrue<T>(eval)));
+        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(FnSet.ofObject().removeAllNotNullAndTrue((IFunction)eval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0SetSelectedOperatorImpl<I,T> removeAllNullOrTrue(final IFunction<? super T,Boolean> eval) {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(new FSet.RemoveAllNullOrTrue<T>(eval)));
+        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(FnSet.ofObject().removeAllNullOrTrue((IFunction)eval)));
     }
 
 
     public Level0SetSelectedOperatorImpl<I,T> removeAllIndexesNot(final int... indexes) {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(new FSet.RemoveAllIndexesNot<T>(indexes)));
+        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(FnSet.ofObject().removeAllIndexesNot(indexes)));
     }
 
 
     public Level0SetSelectedOperatorImpl<I,T> removeAllNull() {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(new FSet.RemoveAllNull<T>()));
+        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(FnSet.ofObject().removeAllNull()));
     }
 
 
@@ -103,36 +109,35 @@ public final class Level0SetSelectedOperatorImpl<I,T> extends AbstractOperatorIm
     }
 
 
-    @SuppressWarnings("unchecked")
     public Level0SetSelectedOperatorImpl<I,T> add(final T newElement) {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(new FSet.Add<T>(newElement)));
+        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(FnSet.ofObject().add(newElement)));
     }
 
 
     public Level0SetSelectedOperatorImpl<I,T> addAll(final T... newElements) {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(new FSet.Add<T>(newElements)));
+        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(FnSet.ofObject().add(newElements)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0SetSelectedOperatorImpl<I,T> addAll(final Collection<T> collection) {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(new FSet.AddAll<T>(collection)));
+        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(FnSet.ofObject().addAll((Collection)collection)));
     }
 
 
-    @SuppressWarnings("unchecked")
     public Level0SetSelectedOperatorImpl<I,T> insert(final int position, final T newElement) {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(new FSet.Insert<T>(position, newElement)));
+        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(FnSet.ofObject().insert(position, newElement)));
+    }
+
+
+    public Level0SetSelectedOperatorImpl<I,T> sort() {
+        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(FnSet.ofObject().sort()));
     }
 
 
     @SuppressWarnings("unchecked")
-    public Level0SetSelectedOperatorImpl<I,T> sort() {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(new FSet.Sort()));
-    }
-
-
     public Level0SetSelectedOperatorImpl<I,T> sort(final Comparator<? super T> comparator) {
-        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(new FSet.SortByComparator<T>(comparator)));
+        return new Level0SetSelectedOperatorImpl<I,T>(getTarget().execute(FnSet.ofObject().sort((Comparator)comparator)));
     }
 
 

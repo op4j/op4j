@@ -19,12 +19,12 @@ import org.junit.Test;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.Call;
 import org.op4j.functions.ExecCtx;
+import org.op4j.functions.FnArray;
 import org.op4j.functions.FnNumber;
 import org.op4j.functions.FnString;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;
-import org.op4j.functions.structures.FArray;
 import org.op4j.test.auto.TestOperation;
 
 public class AssortedTests extends TestCase {
@@ -621,8 +621,8 @@ public class AssortedTests extends TestCase {
 
         final String[] result = 
             Op.onArrayOf(Types.STRING, stringArr).
-                    exec(FArray.ofString().distinct()).
-                    exec(FArray.ofString().add("four")).
+                    exec(FnArray.ofString().distinct()).
+                    exec(FnArray.ofString().add("four")).
                     get();
         
         assertEquals(String[].class, result.getClass());

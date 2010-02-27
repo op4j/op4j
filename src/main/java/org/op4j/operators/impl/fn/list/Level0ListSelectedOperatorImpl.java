@@ -4,9 +4,9 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
+import org.op4j.functions.FnList;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.structures.FList;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.list.Level0ListSelectedOperator;
 import org.op4j.operators.qualities.UniqFnOperator;
@@ -29,62 +29,68 @@ public final class Level0ListSelectedOperatorImpl<I,T> extends AbstractOperatorI
 
 
     public Level0ListSelectedOperatorImpl<I,T> distinct() {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(new FList.Distinct<T>()));
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().distinct()));
     }
 
 
     public Level0ListSelectedOperatorImpl<I,T> insertAll(final int position, final T... newElements) {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(new FList.Insert<T>(position, newElements)));
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().insert(position, newElements)));
     }
 
 
     public Level0ListSelectedOperatorImpl<I,T> removeAllIndexes(final int... indexes) {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(new FList.RemoveAllIndexes<T>(indexes)));
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().removeAllIndexes(indexes)));
     }
 
 
     public Level0ListSelectedOperatorImpl<I,T> removeAllEqual(final T... values) {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(new FList.RemoveAllEqual<T>(values)));
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().removeAllEqual(values)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0ListSelectedOperatorImpl<I,T> removeAllTrue(final IFunction<? super T,Boolean> eval) {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(new FList.RemoveAllTrue<T>(eval)));
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().removeAllTrue((IFunction)eval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0ListSelectedOperatorImpl<I,T> removeAllFalse(final IFunction<? super T,Boolean> eval) {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(new FList.RemoveAllFalse<T>(eval)));
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().removeAllFalse((IFunction)eval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0ListSelectedOperatorImpl<I,T> removeAllNullOrFalse(final IFunction<? super T,Boolean> eval) {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(new FList.RemoveAllNullOrFalse<T>(eval)));
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().removeAllNullOrFalse((IFunction)eval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0ListSelectedOperatorImpl<I,T> removeAllNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(new FList.RemoveAllNotNullAndFalse<T>(eval)));
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().removeAllNotNullAndFalse((IFunction)eval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0ListSelectedOperatorImpl<I,T> removeAllNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(new FList.RemoveAllNotNullAndTrue<T>(eval)));
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().removeAllNotNullAndTrue((IFunction)eval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0ListSelectedOperatorImpl<I,T> removeAllNullOrTrue(final IFunction<? super T,Boolean> eval) {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(new FList.RemoveAllNullOrTrue<T>(eval)));
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().removeAllNullOrTrue((IFunction)eval)));
     }
 
 
     public Level0ListSelectedOperatorImpl<I,T> removeAllIndexesNot(final int... indexes) {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(new FList.RemoveAllIndexesNot<T>(indexes)));
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().removeAllIndexesNot(indexes)));
     }
 
 
     public Level0ListSelectedOperatorImpl<I,T> removeAllNull() {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(new FList.RemoveAllNull<T>()));
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().removeAllNull()));
     }
 
 
@@ -108,36 +114,35 @@ public final class Level0ListSelectedOperatorImpl<I,T> extends AbstractOperatorI
     }
 
 
-    @SuppressWarnings("unchecked")
     public Level0ListSelectedOperatorImpl<I,T> add(final T newElement) {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(new FList.Add<T>(newElement)));
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().add(newElement)));
     }
 
 
     public Level0ListSelectedOperatorImpl<I,T> addAll(final T... newElements) {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(new FList.Add<T>(newElements)));
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().add(newElements)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public Level0ListSelectedOperatorImpl<I,T> addAll(final Collection<T> collection) {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(new FList.AddAll<T>(collection)));
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().addAll((Collection)collection)));
     }
 
 
-    @SuppressWarnings("unchecked")
     public Level0ListSelectedOperatorImpl<I,T> insert(final int position, final T newElement) {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(new FList.Insert<T>(position, newElement)));
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().insert(position, newElement)));
+    }
+
+
+    public Level0ListSelectedOperatorImpl<I,T> sort() {
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().sort()));
     }
 
 
     @SuppressWarnings("unchecked")
-    public Level0ListSelectedOperatorImpl<I,T> sort() {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(new FList.Sort()));
-    }
-
-
     public Level0ListSelectedOperatorImpl<I,T> sort(final Comparator<? super T> comparator) {
-        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(new FList.SortByComparator<T>(comparator)));
+        return new Level0ListSelectedOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().sort((Comparator)comparator)));
     }
 
 
