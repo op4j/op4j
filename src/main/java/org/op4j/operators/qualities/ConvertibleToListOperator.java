@@ -36,7 +36,7 @@ public interface ConvertibleToListOperator {
     
     /**
      * <p>
-     * Converts the current target into a list.
+     * Converts the current target to a list.
      * </p>
      * 
      * @return an operator holding the converted object as target.

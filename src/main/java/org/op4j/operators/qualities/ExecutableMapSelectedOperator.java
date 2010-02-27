@@ -42,7 +42,7 @@ public interface ExecutableMapSelectedOperator<K,V> {
     
     /**
      * <p>
-     * Executes the specified function on the target object, creating a new operator
+     * Executes the specified function on the target object, creating a new map operator
      * containing the result of the execution.
      * </p>
      * <p>

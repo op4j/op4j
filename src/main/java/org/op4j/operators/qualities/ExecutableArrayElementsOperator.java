@@ -41,7 +41,7 @@ public interface ExecutableArrayElementsOperator<T> {
     /**
      * <p>
      * Executes the specified function on the target object, creating a new operator
-     * containing the result of the execution.
+     * containing the result of the execution as a new array.
      * </p>
      * <p>
      * This function must be able to take as input an object of type T (the current operator's
@@ -68,7 +68,7 @@ public interface ExecutableArrayElementsOperator<T> {
     
     /**
      * <p>
-     * Executes the specified function on the target object, creating a new operator
+     * Executes the specified function on the target object, creating a new array
      * containing the result of the execution.
      * </p>
      * <p>

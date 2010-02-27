@@ -42,7 +42,7 @@ public interface ExecutableListSelectedOperator<T> {
     
     /**
      * <p>
-     * Executes the specified function on the target object, creating a new operator
+     * Executes the specified function on the target object, creating a new list operator
      * containing the result of the execution.
      * </p>
      * <p>
@@ -72,7 +72,7 @@ public interface ExecutableListSelectedOperator<T> {
     
     /**
      * <p>
-     * Executes the specified function on each of the non-null elements, creating a new operator
+     * Executes the specified function on each of the non-null elements, creating a new list operator
      * containing the result of all the executions.
      * </p>
      * <p>

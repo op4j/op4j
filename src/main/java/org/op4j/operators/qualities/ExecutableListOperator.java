@@ -42,12 +42,12 @@ public interface ExecutableListOperator<T> {
     
     /**
      * <p>
-     * Executes the specified function on the target object, creating a new operator
+     * Executes the specified function on the target object, creating a new list operator
      * containing the result of the execution.
      * </p>
      * <p>
-     * This function must be able to take as input an object of the current operator's
-     * target type, and will return an object of a different type but same structure, 
+     * This function must be able to take as input a list of the current operator's
+     * target type, and can return a list of a different type, 
      * which will be from then on the new operator's target type.
      * </p>
      * 
@@ -73,7 +73,7 @@ public interface ExecutableListOperator<T> {
     
     /**
      * <p>
-     * Executes the specified function on the target object, creating a new operator
+     * Executes the specified function on the target list, creating a new generic operator
      * containing the result of the execution and setting the new operator type to the one
      * specified.
      * </p>
@@ -89,7 +89,7 @@ public interface ExecutableListOperator<T> {
     
     /**
      * <p>
-     * Executes the specified function on each of the elements, creating a new operator
+     * Executes the specified function on each of the elements, creating a new list operator
      * containing the result of all the executions and setting the new operator type to the one
      * resulting from the function execution.
      * </p>
@@ -107,7 +107,7 @@ public interface ExecutableListOperator<T> {
     
     /**
      * <p>
-     * Executes the specified function on each of the non-null elements, creating a new operator
+     * Executes the specified function on each of the non-null elements, creating a new list operator
      * containing the result of all the executions.
      * </p>
      * <p>

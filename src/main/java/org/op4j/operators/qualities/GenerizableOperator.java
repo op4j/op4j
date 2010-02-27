@@ -40,8 +40,8 @@ public interface GenerizableOperator<I,T> {
    
     /**
      * <p>
-     * Converts the specialized structure operator into generic operators 
-     * (as if an "Op.on(...)" was executed on the target instead of "Op.onX(...)")
+     * Converts the specialized structure operator into generic operators
+     * (with no specific methods for structures - e.g. forEach())
      * </p>
      * 
      * @return a generic operator on the same target object

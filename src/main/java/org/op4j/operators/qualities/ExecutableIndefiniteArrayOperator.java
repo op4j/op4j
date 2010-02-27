@@ -27,7 +27,8 @@ import org.op4j.operators.intf.generic.Level0GenericUniqOperator;
 
 /**
  * <p>
- * This interface contains methods for executing functions.
+ * This interface contains methods for executing functions on arrays for which
+ * a component type has not yet been specified.
  * </p>
  * 
  * @since 1.0
@@ -40,11 +41,11 @@ public interface ExecutableIndefiniteArrayOperator<I,T> {
     
     /**
      * <p>
-     * Executes the specified function on the target object, creating a new operator
+     * Executes the specified function on the target object, creating a new generic operator
      * containing the result of the execution.
      * </p>
      * <p>
-     * This function must be able to take as input an object of type T (the current operator's
+     * This function must be able to take as input an array of type T (the current operator's
      * target type) and will return an object of type X, which will be from then on the new
      * operator's target type.
      * </p>

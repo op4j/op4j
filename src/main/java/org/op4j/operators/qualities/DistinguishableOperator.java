@@ -36,10 +36,10 @@ public interface DistinguishableOperator {
 
     /**
      * <p>
-     * Removes all duplicate elements from the target object.
+     * Removes all duplicate elements from the target collection or array.
      * </p>
      * 
-     * @return an operator with the resulting target object.
+     * @return an operator with the resulting target collection or array.
      */
     public Operator distinct();
     

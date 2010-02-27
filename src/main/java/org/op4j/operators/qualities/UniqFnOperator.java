@@ -26,7 +26,7 @@ import org.op4j.functions.Function;
 
 /**
  * <p>
- * Base interface for all object ("op") operators working on only one target objects.
+ * Base interface for all function ("fn") operators working on only one target object.
  * </p>
  * 
  * @since 1.0
@@ -38,10 +38,11 @@ public interface UniqFnOperator<I,T> extends UniqOperator<T> {
 
     /**
      * <p>
-     * Returns the target object this operator currently holds.
+     * Returns a function which will execute all the logic specified 
+     * from the "Fn.on" expression.
      * </p>
      * 
-     * @return the target object.
+     * @return the function.
      */
     public Function<I,T> get(); 
     

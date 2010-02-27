@@ -34,7 +34,7 @@ import org.op4j.operators.intf.set.Level0SetOperator;
 
 /**
  * <p>
- * This interface defines methods for the building of structures from operators' targets.
+ * This interface defines methods for the building of structures from generic non-multi operators.
  * </p>
  * 
  * @since 1.0

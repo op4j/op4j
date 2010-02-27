@@ -42,7 +42,7 @@ public interface ExecutableMapOperator<K,V> {
     
     /**
      * <p>
-     * Executes the specified function on the target object, creating a new operator
+     * Executes the specified function on the target map, creating a new map operator
      * containing the result of the execution.
      * </p>
      * <p>
@@ -74,7 +74,7 @@ public interface ExecutableMapOperator<K,V> {
     
     /**
      * <p>
-     * Executes the specified function on the target object, creating a new operator
+     * Executes the specified function on the target object, creating a new generic operator
      * containing the result of the execution and setting the new operator type to the one
      * specified.
      * </p>

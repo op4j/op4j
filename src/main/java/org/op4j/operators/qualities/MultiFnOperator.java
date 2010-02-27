@@ -30,7 +30,7 @@ import org.op4j.functions.Function;
 
 /**
  * <p>
- * Base interface for operators holding more than one target at a time.
+ * Base interface for function ("fn") operators holding more than one target at a time.
  * </p>
  * <p>
  * Multioperators will execute all operations on each of their target objects,
@@ -46,21 +46,23 @@ public interface MultiFnOperator<I,T> extends MultiOperator<T> {
     
     /**
      * <p>
-     * Returns the target objects as an array of the specified type. 
+     * Returns a function which will return the final target objects 
+     * as an array of the specified type. 
      * </p>
      * 
      * 
      * @param type the type of which the array of target objects will be created.
-     * @return the array of target objects.
+     * @return the function.
      */
     public Function<I,T[]> getAsArrayOf(final Type<T> type);
     
+    
     /**
      * <p>
-     * Returns the target objects as a list.
+     * Returns a function which will return the final target objects as a list.
      * </p>
      * 
-     * @return the list of target objects.
+     * @return the function.
      */
     public Function<I,List<T>> getAsList(); 
 

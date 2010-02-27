@@ -29,7 +29,7 @@ import org.op4j.operators.intf.map.Level0MapOperator;
 
 /**
  * <p>
- * This interface defines methods for the building of structures from multioperators' targets.
+ * This interface defines methods for the building of structures from generic multi-operators.
  * This methods will populate the structures created from the target objects by
  * the "alternate elements" method: starting with 0, even elements will be taken as keys,
  * and odd elements as values.

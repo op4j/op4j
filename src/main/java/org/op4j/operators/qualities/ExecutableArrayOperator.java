@@ -45,8 +45,8 @@ public interface ExecutableArrayOperator<T> {
      * containing the result of the execution.
      * </p>
      * <p>
-     * This function must be able to take as input an object of the current operator's
-     * target type, and will return an object of the same type and structure.
+     * This function must be able to take as input an array of the current operator's
+     * target type, and will return an array of the same type and structure.
      * </p>
      * 
      * @param function the function to be executed
@@ -74,8 +74,8 @@ public interface ExecutableArrayOperator<T> {
      * containing the result of the execution.
      * </p>
      * <p>
-     * This function must be able to take as input an object of the current operator's
-     * target type, and will return an object of a different type but same structure, 
+     * This function must be able to take as input an array of the current operator's
+     * target type, and can return an array of a different type (specified by the type parameter), 
      * which will be from then on the new operator's target type.
      * </p>
      * 
@@ -90,7 +90,7 @@ public interface ExecutableArrayOperator<T> {
     
     /**
      * <p>
-     * Executes the specified function on the target object, creating a new operator
+     * Executes the specified function on the target object, creating a new generic operator
      * containing the result of the execution and setting the new operator type to the one
      * specified.
      * </p>

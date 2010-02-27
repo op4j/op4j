@@ -42,7 +42,7 @@ public interface ExecutableMapEntrySelectedOperator<K,V> {
     
     /**
      * <p>
-     * Executes the specified function on the target object, creating a new operator
+     * Executes the specified function on the target mape entry, creating a new map entry operator
      * containing the result of the execution.
      * </p>
      * <p>

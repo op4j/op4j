@@ -42,7 +42,7 @@ public interface ExecutableSetOperator<T> {
     
     /**
      * <p>
-     * Executes the specified function on the target object, creating a new operator
+     * Executes the specified function on the target set, creating a new set operator
      * containing the result of the execution.
      * </p>
      * <p>
@@ -73,7 +73,7 @@ public interface ExecutableSetOperator<T> {
     
     /**
      * <p>
-     * Executes the specified function on the target object, creating a new operator
+     * Executes the specified function on the target set, creating a new generic operator
      * containing the result of the execution and setting the new operator type to the one
      * specified.
      * </p>

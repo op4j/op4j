@@ -38,7 +38,7 @@ public interface ConvertibleToArrayOperator<T> {
 
     /**
      * <p>
-     * Converts the current target into an array of the specified type.
+     * Converts the current target to an array of the specified type.
      * </p>
      * 
      * @param type the type of the array elements.
