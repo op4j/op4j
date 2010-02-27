@@ -210,14 +210,6 @@ public final class Level0GenericUniqOperatorImpl<I,T> extends AbstractOperatorIm
     }
 
 
-    public Level0GenericUniqSelectedOperatorImpl<I,T> ifIndex(final int... indexes) {
-        return new Level0GenericUniqSelectedOperatorImpl<I,T>(getTarget().selectIndex(indexes));
-    }
-
-
-    public Level0GenericUniqSelectedOperatorImpl<I,T> ifIndexNot(final int... indexes) {
-        return new Level0GenericUniqSelectedOperatorImpl<I,T>(getTarget().selectIndexNot(indexes));
-    }
 
 
     public Level0GenericUniqSelectedOperatorImpl<I,T> ifTrue(final IFunction<? super T,Boolean> eval) {

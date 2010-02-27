@@ -40,7 +40,7 @@ import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.ModifiableGrowableOperator;
 import org.op4j.operators.qualities.ReplaceableIfNullOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectableElementsOperator;
+import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
 
@@ -62,21 +62,19 @@ public interface Level0GenericUniqOperator<I,T>
         		BuilderOperator<I,T>,
         		ExecutableOperator<T>,
                 CastableToTypeOperator<T>,
-                SelectableElementsOperator<T>,
+                SelectableOperator<T>,
                 ReplaceableOperator<T>,
                 ReplaceableIfNullOperator<T>,
                 ModifiableGrowableOperator<T> {
 
 
 
-    public Level0GenericUniqSelectedOperator<I,T> ifIndex(final int... indexes);
     public Level0GenericUniqSelectedOperator<I,T> ifTrue(final IFunction<? super T,Boolean> eval);
     public Level0GenericUniqSelectedOperator<I,T> ifFalse(final IFunction<? super T,Boolean> eval);
     public Level0GenericUniqSelectedOperator<I,T> ifNullOrFalse(final IFunction<? super T,Boolean> eval);
     public Level0GenericUniqSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval);
     public Level0GenericUniqSelectedOperator<I,T> ifNull();
     public Level0GenericUniqSelectedOperator<I,T> ifNullOrTrue(final IFunction<? super T,Boolean> eval);
-    public Level0GenericUniqSelectedOperator<I,T> ifIndexNot(final int... indexes);
     public Level0GenericUniqSelectedOperator<I,T> ifNotNull();
     public Level0GenericUniqSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval);
 
