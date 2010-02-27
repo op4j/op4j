@@ -44,7 +44,7 @@ public interface ConvertibleToMapOperator<T> {
      * 
      * @return an operator holding the converted object as target.
      */
-    public Operator toMap();
+    public Operator toMapByAlternateElements();
  
     
     /**
@@ -62,7 +62,7 @@ public interface ConvertibleToMapOperator<T> {
      * @param keyEval the evaluator used for obtaining the keys
      * @return an operator holding the converted object as target.
      */
-    public <K> Operator toMap(final IFunction<? super T,K> keyEval);
+    public <K> Operator toMapByKeyEval(final IFunction<? super T,K> keyEval);
 
     
     /**
@@ -78,9 +78,9 @@ public interface ConvertibleToMapOperator<T> {
      * 
      * @param <K> the type of the keys that will be created
      * @param <V> the type of the values that will be created
-     * @param mapBuild the map builder to be used
+     * @param mapBuilder the map builder to be used
      * @return an operator holding the converted object as target.
      */
-    public <K,V> Operator toMap(final IMapBuilder<? super T,K,V> mapBuild);
+    public <K,V> Operator toMap(final IMapBuilder<? super T,K,V> mapBuilder);
     
 }

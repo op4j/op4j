@@ -160,16 +160,16 @@ public final class Level0ArrayOperatorImpl<I,T>
     }
 
 
-    public Level0MapOperatorImpl<I,T, T> toMap() {
+    public Level0MapOperatorImpl<I,T, T> toMapByAlternateElements() {
         return new Level0MapOperatorImpl<I,T, T>(getTarget().execute(FnArray.of(this.type).toMapByAlternateElements()));
     }
 
-    public <K> Level0MapOperatorImpl<I,K, T> toMap(final IFunction<? super T,K> keyEval) {
+    public <K> Level0MapOperatorImpl<I,K, T> toMapByKeyEval(final IFunction<? super T,K> keyEval) {
         return new Level0MapOperatorImpl<I,K, T>(getTarget().execute(FnArray.of(this.type).toMapByKeyEval(keyEval)));
     }
 
-    public <K, V> Level0MapOperatorImpl<I,K, V> toMap(final IMapBuilder<? super T,K,V> mapBuild) {
-        return new Level0MapOperatorImpl<I,K, V>(getTarget().execute(FnArray.of(this.type).toMapByMapBuilder(mapBuild)));
+    public <K, V> Level0MapOperatorImpl<I,K, V> toMap(final IMapBuilder<? super T,K,V> mapBuilder) {
+        return new Level0MapOperatorImpl<I,K, V>(getTarget().execute(FnArray.of(this.type).toMap(mapBuilder)));
     }
 
     public Level0SetOperatorImpl<I,T> toSet() {

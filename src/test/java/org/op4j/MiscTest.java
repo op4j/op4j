@@ -181,13 +181,13 @@ watch.start();
         
 //        System.out.println(printArray(Op.buildArrayOfArray(Types.STRING).addAll(Op.buildArray(Types.STRING).addAll("a","b").get()).addAll(Op.buildArray(Types.STRING).addAll("1","2","3").get()).get()));
 //        System.out.println(Op.buildMap(Types.INTEGER,Types.STRING).put(12,"hello!").get());
-        System.out.println(Op.onAll("a",1,"b",3).buildMap().get());
-        System.out.println(Op.onAll("hello", "goodbye").buildMap(Ognl.asInteger("length()")).get());
+        System.out.println(Op.onAll("a",1,"b",3).buildMapByAlternateElements().get());
+        System.out.println(Op.onAll("hello", "goodbye").buildMapByKeyEval(Ognl.asInteger("length()")).get());
         
-        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfSet(Ognl.asInteger("length()")).get());
-        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfList(Ognl.asInteger("length()")).get());
+        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfSetByKeyEval(Ognl.asInteger("length()")).get());
+        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfListByKeyEval(Ognl.asInteger("length()")).get());
         
-        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfArrayOf(Types.STRING, Ognl.asInteger("length()")).get());
+        System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildMapOfArrayByKeyEvalOf(Types.STRING, Ognl.asInteger("length()")).get());
         
         System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildList().sort().get());
         System.out.println(Op.onAll("hello", "goodbye", "adios", "ciao", "hola").buildSet().sort(new Comparator<String>() {
@@ -267,9 +267,9 @@ watch.start();
         System.out.println(Op.on("hello").addAll("goodbye"));
         System.out.println(Op.on("hello").buildList().get());
         System.out.println(printArray(Op.on("hello").buildArrayOf(Types.STRING).get()));
-        System.out.println(Op.on("hello").buildMap(Ognl.asInteger("length()")).get());
-        System.out.println(Op.on("hello").buildMapOfList(Ognl.asInteger("length()")).get());
-        System.out.println(Op.onAll(12, "hello", 14, "goodbye").buildMapOfList().get());
+        System.out.println(Op.on("hello").buildMapByKeyEval(Ognl.asInteger("length()")).get());
+        System.out.println(Op.on("hello").buildMapOfListByKeyEval(Ognl.asInteger("length()")).get());
+        System.out.println(Op.onAll(12, "hello", 14, "goodbye").buildMapOfListByAlternateElements().get());
         
         
 //        System.out.println(Op.buildList(Types.CALENDAR)
@@ -346,7 +346,7 @@ watch.start();
         System.out.println(Op.on("Body tag is written like \"<body>content here</body>\"")
                 .exec(FnString.escapeHTML()).get());
         
-        System.out.println(Op.onArrayOf(Types.STRING, stringsArr1).removeAllNull().toMap(Ognl.asInteger("length()")).get());
+        System.out.println(Op.onArrayOf(Types.STRING, stringsArr1).removeAllNull().toMapByKeyEval(Ognl.asInteger("length()")).get());
 
         System.out.println(Op.onList(stringsList1).removeAllNullOrTrue(Ognl.asBoolean("length() < 6")).get());
 

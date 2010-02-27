@@ -136,7 +136,7 @@ public class FnArrayOf<T> {
         return new ToMapByKeyEval<K,T>(eval);
     }
     
-    public final <K,V> IFunction<T[],Map<K,V>> toMapByMapBuilder(final IMapBuilder<? super T,K,V> mapBuilder) {
+    public final <K,V> IFunction<T[],Map<K,V>> toMap(final IMapBuilder<? super T,K,V> mapBuilder) {
         return new ToMapByMapBuilder<K,V,T>(mapBuilder);
     }
     
@@ -148,7 +148,7 @@ public class FnArrayOf<T> {
         return new ToMapOfArrayByKeyEval<K,T>(this.type, eval);
     }
     
-    public final <K,V> IFunction<T[],Map<K,V[]>> toMapOfArrayByMapBuilder(final Type<V> valueType, final IMapBuilder<? super T,K,V> mapBuilder) {
+    public final <K,V> IFunction<T[],Map<K,V[]>> toMapOfArrayOf(final Type<V> valueType, final IMapBuilder<? super T,K,V> mapBuilder) {
         return new ToMapOfArrayByMapBuilder<K,V,T>(valueType, mapBuilder);
     }
     
@@ -160,7 +160,7 @@ public class FnArrayOf<T> {
         return new ToMapOfListByKeyEval<K,T>(eval);
     }
     
-    public final <K,V> IFunction<T[],Map<K,List<V>>> toMapOfListByMapBuilder(final IMapBuilder<? super T,K,V> mapBuilder) {
+    public final <K,V> IFunction<T[],Map<K,List<V>>> toMapOfList(final IMapBuilder<? super T,K,V> mapBuilder) {
         return new ToMapOfListByMapBuilder<K,V,T>(mapBuilder);
     }
     
@@ -172,7 +172,7 @@ public class FnArrayOf<T> {
         return new ToMapOfSetByKeyEval<K,T>(eval);
     }
     
-    public final <K,V> IFunction<T[],Map<K,Set<V>>> toMapOfSetByMapBuilder(final IMapBuilder<? super T,K,V> mapBuilder) {
+    public final <K,V> IFunction<T[],Map<K,Set<V>>> toMapOfSet(final IMapBuilder<? super T,K,V> mapBuilder) {
         return new ToMapOfSetByMapBuilder<K,V,T>(mapBuilder);
     }
     

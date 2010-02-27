@@ -50,7 +50,7 @@ public interface BuilderMultiOperator<I,T> {
      * 
      * @return an operator on the resulting map.
      */
-    public Level0MapOperator<I,T,T> buildMap();
+    public Level0MapOperator<I,T,T> buildMapByAlternateElements();
 
     /**
      * <p>
@@ -61,7 +61,7 @@ public interface BuilderMultiOperator<I,T> {
      * 
      * @return an operator on the resulting map of list
      */
-    public Level0MapOperator<I,T,List<T>> buildMapOfList();
+    public Level0MapOperator<I,T,List<T>> buildMapOfListByAlternateElements();
 
     /**
      * <p>
@@ -72,7 +72,7 @@ public interface BuilderMultiOperator<I,T> {
      * 
      * @return an operator on the resulting map of set
      */
-    public Level0MapOperator<I,T,Set<T>> buildMapOfSet();
+    public Level0MapOperator<I,T,Set<T>> buildMapOfSetByAlternateElements();
 
     /**
      * <p>
@@ -84,6 +84,6 @@ public interface BuilderMultiOperator<I,T> {
      * @param type the type of which the arrays will be instantiated
      * @return an operator on the resulting map of array
      */
-    public Level0MapOperator<I,T,T[]> buildMapOfArrayOf(final Type<T> type);
+    public Level0MapOperator<I,T,T[]> buildMapOfArrayByAlternateElementsOf(final Type<T> type);
     
 }

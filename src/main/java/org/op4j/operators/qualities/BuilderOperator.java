@@ -87,7 +87,7 @@ public interface BuilderOperator<I,T> {
      * @param keyEval the evaluator to be used for obtaining keys
      * @return an operator on the resulting map
      */
-    public <K> Level0MapOperator<I,K,T> buildMap(final IFunction<? super T,K> keyEval);
+    public <K> Level0MapOperator<I,K,T> buildMapByKeyEval(final IFunction<? super T,K> keyEval);
     
     
     /**
@@ -100,10 +100,10 @@ public interface BuilderOperator<I,T> {
      * 
      * @param <K> the type of the keys returned by the map builder
      * @param <V> the type of the values returned by the map builder
-     * @param mapBuild the map builder
+     * @param mapBuilder the map builder
      * @return an operator on the resulting map
      */
-    public <K,V> Level0MapOperator<I,K,V> buildMap(final IMapBuilder<? super T,K,V> mapBuild);
+    public <K,V> Level0MapOperator<I,K,V> buildMap(final IMapBuilder<? super T,K,V> mapBuilder);
     
     
     /**
@@ -117,7 +117,7 @@ public interface BuilderOperator<I,T> {
      * @param keyEval the evaluator to be used for obtaining keys
      * @return an operator on the resulting map of list
      */
-    public <K> Level0MapOperator<I,K,List<T>> buildMapOfList(final IFunction<? super T,K> keyEval);
+    public <K> Level0MapOperator<I,K,List<T>> buildMapOfListByKeyEval(final IFunction<? super T,K> keyEval);
     
     
     /**
@@ -129,10 +129,10 @@ public interface BuilderOperator<I,T> {
      * 
      * @param <K> the type of the keys returned by the map builder
      * @param <V> the type of the values returned by the map builder
-     * @param mapBuild the map builder
+     * @param mapBuilder the map builder
      * @return an operator on the resulting map of list
      */
-    public <K,V> Level0MapOperator<I,K,List<V>> buildMapOfList(final IMapBuilder<? super T,K,V> mapBuild);
+    public <K,V> Level0MapOperator<I,K,List<V>> buildMapOfList(final IMapBuilder<? super T,K,V> mapBuilder);
     
 
     /**
@@ -146,7 +146,7 @@ public interface BuilderOperator<I,T> {
      * @param keyEval the evaluator to be used for obtaining keys
      * @return an operator on the resulting map of list
      */
-    public <K> Level0MapOperator<I,K,Set<T>> buildMapOfSet(final IFunction<? super T,K> keyEval);
+    public <K> Level0MapOperator<I,K,Set<T>> buildMapOfSetByKeyEval(final IFunction<? super T,K> keyEval);
     
     
     /**
@@ -158,10 +158,10 @@ public interface BuilderOperator<I,T> {
      * 
      * @param <K> the type of the keys returned by the map builder
      * @param <V> the type of the values returned by the map builder
-     * @param mapBuild the map builder
+     * @param mapBuilder the map builder
      * @return an operator on the resulting map of list
      */
-    public <K,V> Level0MapOperator<I,K,Set<V>> buildMapOfSet(final IMapBuilder<? super T,K,V> mapBuild);
+    public <K,V> Level0MapOperator<I,K,Set<V>> buildMapOfSet(final IMapBuilder<? super T,K,V> mapBuilder);
     
     
     /**
@@ -177,7 +177,7 @@ public interface BuilderOperator<I,T> {
      * @param keyEval the evaluator to be used for obtaining keys
      * @return an operator on the resulting map of list
      */
-    public <K> Level0MapOperator<I,K,T[]> buildMapOfArrayOf(final Type<T> valueType, final IFunction<? super T,K> keyEval);
+    public <K> Level0MapOperator<I,K,T[]> buildMapOfArrayByKeyEvalOf(final Type<T> valueType, final IFunction<? super T,K> keyEval);
 
     
     /**
@@ -191,9 +191,9 @@ public interface BuilderOperator<I,T> {
      * @param <K> the type of the keys returned by the map builder
      * @param <V> the type of the values returned by the map builder
      * @param valueType the type to be used to create the arrays of values
-     * @param mapBuild the map builder
+     * @param mapBuilder the map builder
      * @return an operator on the resulting map of list
      */
-    public <K,V> Level0MapOperator<I,K,V[]> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<? super T,K,V> mapBuild);
+    public <K,V> Level0MapOperator<I,K,V[]> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<? super T,K,V> mapBuilder);
     
 }

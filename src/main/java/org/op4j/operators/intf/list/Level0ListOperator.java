@@ -109,9 +109,9 @@ public interface Level0ListOperator<I,T>
     
     public Level0SetOperator<I,T> toSet();
     
-    public Level0MapOperator<I,T,T> toMap();
-    public <K> Level0MapOperator<I,K,T> toMap(final IFunction<? super T,K> keyEval);
-    public <K,V> Level0MapOperator<I,K,V> toMap(final IMapBuilder<? super T,K,V> mapBuild);
+    public Level0MapOperator<I,T,T> toMapByAlternateElements();
+    public <K> Level0MapOperator<I,K,T> toMapByKeyEval(final IFunction<? super T,K> keyEval);
+    public <K,V> Level0MapOperator<I,K,V> toMap(final IMapBuilder<? super T,K,V> mapBuilder);
 
     
     public Level0GenericUniqOperator<I,List<T>> generic();

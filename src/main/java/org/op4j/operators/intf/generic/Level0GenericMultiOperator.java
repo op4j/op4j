@@ -117,29 +117,29 @@ public interface Level0GenericMultiOperator<I,T>
     public Level0ArrayOperator<I,T> buildArrayOf(final Type<T> type);
     
     
-    public <K> Level0MapOperator<I,K,T> buildMap(final IFunction<? super T,K> keyEval);
-    public <K,V> Level0MapOperator<I,K,V> buildMap(final IMapBuilder<? super T,K,V> mapBuild);
+    public <K> Level0MapOperator<I,K,T> buildMapByKeyEval(final IFunction<? super T,K> keyEval);
+    public <K,V> Level0MapOperator<I,K,V> buildMap(final IMapBuilder<? super T,K,V> mapBuilder);
     
     
-    public <K> Level0MapOperator<I,K,List<T>> buildMapOfList(final IFunction<? super T,K> keyEval);
-    public <K,V> Level0MapOperator<I,K,List<V>> buildMapOfList(final IMapBuilder<? super T,K,V> mapBuild);
+    public <K> Level0MapOperator<I,K,List<T>> buildMapOfListByKeyEval(final IFunction<? super T,K> keyEval);
+    public <K,V> Level0MapOperator<I,K,List<V>> buildMapOfList(final IMapBuilder<? super T,K,V> mapBuilder);
     
     
-    public <K> Level0MapOperator<I,K,Set<T>> buildMapOfSet(final IFunction<? super T,K> keyEval);
-    public <K,V> Level0MapOperator<I,K,Set<V>> buildMapOfSet(final IMapBuilder<? super T,K,V> mapBuild);
+    public <K> Level0MapOperator<I,K,Set<T>> buildMapOfSetByKeyEval(final IFunction<? super T,K> keyEval);
+    public <K,V> Level0MapOperator<I,K,Set<V>> buildMapOfSet(final IMapBuilder<? super T,K,V> mapBuilder);
     
     
-    public <K> Level0MapOperator<I,K,T[]> buildMapOfArrayOf(final Type<T> valueType, final IFunction<? super T,K> keyEval);
-    public <K,V> Level0MapOperator<I,K,V[]> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<? super T,K,V> mapBuild);
+    public <K> Level0MapOperator<I,K,T[]> buildMapOfArrayByKeyEvalOf(final Type<T> valueType, final IFunction<? super T,K> keyEval);
+    public <K,V> Level0MapOperator<I,K,V[]> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<? super T,K,V> mapBuilder);
 
     
-    public Level0MapOperator<I,T,T> buildMap();
+    public Level0MapOperator<I,T,T> buildMapByAlternateElements();
     
-    public Level0MapOperator<I,T,List<T>> buildMapOfList();
+    public Level0MapOperator<I,T,List<T>> buildMapOfListByAlternateElements();
     
-    public Level0MapOperator<I,T,Set<T>> buildMapOfSet();
+    public Level0MapOperator<I,T,Set<T>> buildMapOfSetByAlternateElements();
     
-    public Level0MapOperator<I,T,T[]> buildMapOfArrayOf(final Type<T> type);
+    public Level0MapOperator<I,T,T[]> buildMapOfArrayByAlternateElementsOf(final Type<T> type);
     
 
 }

@@ -161,20 +161,20 @@ public final class Level0SetOperatorImpl<I,T> extends AbstractOperatorImpl
     }
 
 
-    public Level0MapOperatorImpl<I,T, T> toMap() {
+    public Level0MapOperatorImpl<I,T, T> toMapByAlternateElements() {
         return new Level0MapOperatorImpl<I,T, T>(getTarget().execute(FnSet.ofObject().toMapByAlternateElements()));
     }
 
 
     @SuppressWarnings("unchecked")
-    public <K> Level0MapOperatorImpl<I,K, T> toMap(final IFunction<? super T,K> keyEval) {
+    public <K> Level0MapOperatorImpl<I,K, T> toMapByKeyEval(final IFunction<? super T,K> keyEval) {
         return new Level0MapOperatorImpl<I,K, T>(getTarget().execute(FnSet.ofObject().toMapByKeyEval((IFunction)keyEval)));
     }
 
 
     @SuppressWarnings("unchecked")
-    public <K, V> Level0MapOperatorImpl<I,K, V> toMap(final IMapBuilder<? super T,K,V> mapBuild) {
-        return new Level0MapOperatorImpl<I,K, V>(getTarget().execute(FnSet.ofObject().toMapByMapBuilder((IMapBuilder)mapBuild)));
+    public <K, V> Level0MapOperatorImpl<I,K, V> toMap(final IMapBuilder<? super T,K,V> mapBuilder) {
+        return new Level0MapOperatorImpl<I,K, V>(getTarget().execute(FnSet.ofObject().toMap((IMapBuilder)mapBuilder)));
     }
 
 

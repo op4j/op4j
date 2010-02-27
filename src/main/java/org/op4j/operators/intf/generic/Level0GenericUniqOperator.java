@@ -108,20 +108,20 @@ public interface Level0GenericUniqOperator<I,T>
     public Level0ArrayOperator<I,T> buildArrayOf(final Type<T> type);
     
     
-    public <K> Level0MapOperator<I,K,T> buildMap(final IFunction<? super T,K> keyEval);
-    public <K,V> Level0MapOperator<I,K,V> buildMap(final IMapBuilder<? super T,K,V> mapBuild);
+    public <K> Level0MapOperator<I,K,T> buildMapByKeyEval(final IFunction<? super T,K> keyEval);
+    public <K,V> Level0MapOperator<I,K,V> buildMap(final IMapBuilder<? super T,K,V> mapBuilder);
     
     
-    public <K> Level0MapOperator<I,K,List<T>> buildMapOfList(final IFunction<? super T,K> keyEval);
-    public <K,V> Level0MapOperator<I,K,List<V>> buildMapOfList(final IMapBuilder<? super T,K,V> mapBuild);
+    public <K> Level0MapOperator<I,K,List<T>> buildMapOfListByKeyEval(final IFunction<? super T,K> keyEval);
+    public <K,V> Level0MapOperator<I,K,List<V>> buildMapOfList(final IMapBuilder<? super T,K,V> mapBuilder);
     
     
-    public <K> Level0MapOperator<I,K,Set<T>> buildMapOfSet(final IFunction<? super T,K> keyEval);
-    public <K,V> Level0MapOperator<I,K,Set<V>> buildMapOfSet(final IMapBuilder<? super T,K,V> mapBuild);
+    public <K> Level0MapOperator<I,K,Set<T>> buildMapOfSetByKeyEval(final IFunction<? super T,K> keyEval);
+    public <K,V> Level0MapOperator<I,K,Set<V>> buildMapOfSet(final IMapBuilder<? super T,K,V> mapBuilder);
     
     
-    public <K> Level0MapOperator<I,K,T[]> buildMapOfArrayOf(final Type<T> valueType, final IFunction<? super T,K> keyEval);
-    public <K,V> Level0MapOperator<I,K,V[]> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<? super T,K,V> mapBuild);
+    public <K> Level0MapOperator<I,K,T[]> buildMapOfArrayByKeyEvalOf(final Type<T> valueType, final IFunction<? super T,K> keyEval);
+    public <K,V> Level0MapOperator<I,K,V[]> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<? super T,K,V> mapBuilder);
 
     
     
