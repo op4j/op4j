@@ -170,9 +170,7 @@ public final class Level0GenericUniqOperatorImpl<I,T> extends AbstractOperatorIm
         return new Level0GenericUniqOperatorImpl<I,X>(getTarget().cast(CastType.OBJECT, type));
     }
 
-    public Level0GenericUniqOperatorImpl<I,?> asUnknown() {
-        return asType(Types.OBJECT);
-    }
+    
 
 
     

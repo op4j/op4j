@@ -47,14 +47,5 @@ public interface CastableToTypeOperator<T> {
      */
     public <X> CastableToTypeOperator<X> asType(final Type<X> type);
 
-    /**
-     * <p>
-     * Casts the operator's target as unknown.
-     * </p>
-     * 
-     * @return the resulting casted operator
-     */
-    public CastableToTypeOperator<?> asUnknown();
-
     
 }

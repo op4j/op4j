@@ -88,7 +88,7 @@ public interface Level0GenericUniqOperator<I,T>
     public <X> Level0GenericUniqOperator<I,X> exec(final IFunction<? super T,X> function);
     
     public <X> Level0GenericUniqOperator<I,X> asType(final Type<X> type);
-    public Level0GenericUniqOperator<I,?> asUnknown();
+    
         
     public Level0GenericMultiOperator<I,T> add(final T newElement);
     public Level0GenericMultiOperator<I,T> addAll(final T... newElements);

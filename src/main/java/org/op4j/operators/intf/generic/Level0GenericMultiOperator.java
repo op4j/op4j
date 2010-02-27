@@ -91,7 +91,7 @@ public interface Level0GenericMultiOperator<I,T>
     
     
     public <X> Level0GenericMultiOperator<I,X> asType(final Type<X> type);
-    public Level0GenericMultiOperator<I,?> asUnknown();
+    
         
     public Level0GenericMultiOperator<I,T> add(final T newElement);
     public Level0GenericMultiOperator<I,T> addAll(final T... newElements);

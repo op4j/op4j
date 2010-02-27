@@ -22,7 +22,6 @@ package org.op4j.operators.impl.op.map;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.map.Level2MapEntriesKeyOperator;
@@ -57,9 +56,7 @@ public final class Level2MapEntriesKeyOperatorImpl<I,K,V> extends AbstractOperat
         return new Level2MapEntriesKeyOperatorImpl<I,X, V>(getTarget().cast(CastType.OBJECT, type));
     }
 
-    public Level2MapEntriesKeyOperatorImpl<I,?, V> asUnknown() {
-        return asType(Types.OBJECT);
-    }
+    
 
 
     public Map<K, V> get() {

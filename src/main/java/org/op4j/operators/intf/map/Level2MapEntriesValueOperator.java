@@ -73,7 +73,7 @@ public interface Level2MapEntriesValueOperator<I,K,V>
     public <X> Level2MapEntriesValueOperator<I,K,X> exec(final IFunction<? super V,X> function);
     
     public <X> Level2MapEntriesValueOperator<I,K,X> asType(final Type<X> type);
-    public Level2MapEntriesValueOperator<I,K,?> asUnknown();
+    
     
         
 }

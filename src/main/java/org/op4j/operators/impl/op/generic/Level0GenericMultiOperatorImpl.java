@@ -24,7 +24,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.Call;
 import org.op4j.functions.FnList;
 import org.op4j.functions.IFunction;
@@ -170,9 +169,7 @@ public final class Level0GenericMultiOperatorImpl<I,T> extends AbstractOperatorI
         return new Level0GenericMultiOperatorImpl<I,X>(getTarget());
     }
 
-    public Level0GenericMultiOperatorImpl<I,?> asUnknown() {
-        return asType(Types.OBJECT);
-    }
+    
 
 
     public Level0GenericMultiOperatorImpl<I,T> removeAllIndexes(final int... indexes) {

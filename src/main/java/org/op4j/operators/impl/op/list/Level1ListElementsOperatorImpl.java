@@ -22,7 +22,6 @@ package org.op4j.operators.impl.op.list;
 import java.util.List;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.list.Level1ListElementsOperator;
@@ -56,9 +55,7 @@ public final class Level1ListElementsOperatorImpl<I,T> extends AbstractOperatorI
         return endFor().generic().asListOf(type).forEach();
     }
 
-    public Level1ListElementsOperatorImpl<I,?> asUnknown() {
-        return asType(Types.OBJECT);
-    }
+    
 
     
     

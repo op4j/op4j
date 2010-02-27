@@ -61,7 +61,7 @@ public interface Level2MapEntriesKeyOperator<I,K,V>
     public Level1MapEntriesOperator<I,K,V> endOn();
     
     public <X> Level2MapEntriesKeyOperator<I,X,V> asType(final Type<X> type);
-    public Level2MapEntriesKeyOperator<I,?,V> asUnknown();
+    
 
     public <X> Level2MapEntriesKeyOperator<I,X,V> exec(final IFunction<? super K,X> function);
     

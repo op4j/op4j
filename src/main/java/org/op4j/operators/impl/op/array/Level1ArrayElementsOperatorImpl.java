@@ -20,7 +20,6 @@
 package org.op4j.operators.impl.op.array;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.IFunction;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.intf.array.Level1ArrayElementsOperator;
@@ -59,9 +58,7 @@ public final class Level1ArrayElementsOperatorImpl<I,T> extends AbstractOperator
         return endFor().generic().asArrayOf(elementType).forEach();
     }
 
-    public Level1ArrayElementsOperatorImpl<I,?> asUnknown() {
-        return asType(Types.OBJECT);
-    }
+    
     
     
     

@@ -22,7 +22,6 @@ package org.op4j.operators.impl.fn.set;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.operators.impl.AbstractOperatorImpl;
@@ -57,9 +56,7 @@ public final class Level1SetElementsOperatorImpl<I,T> extends AbstractOperatorIm
     	return endFor().generic().asSetOf(type).forEach();
     }
 
-    public Level1SetElementsOperatorImpl<I,?> asUnknown() {
-        return asType(Types.OBJECT);
-    }
+    
 
 
     

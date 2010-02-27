@@ -73,7 +73,6 @@ public interface Level1ArrayElementsOperator<I,T>
     
     
     public <X> Level1ArrayElementsOperator<I,X> asType(final Type<X> type);
-    public Level1ArrayElementsOperator<I,?> asUnknown();
 	
     
 }

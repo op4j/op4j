@@ -74,7 +74,7 @@ public interface Level1ListElementsOperator<I,T>
     public <X> Level1ListElementsOperator<I,X> exec(final IFunction<? super T,X> function);
     
     public <X> Level1ListElementsOperator<I,X> asType(final Type<X> type);
-    public Level1ListElementsOperator<I,?> asUnknown();
+    
     
                                     
 }
