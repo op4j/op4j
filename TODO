@@ -1,4 +1,5 @@
 
+  . Make sure methods for maps explain how they are created: buildMapByAlternateElements, toMapByAlternateElements...
 
   - execute shouldn't return Exception... uncomfortable for executing Function!
     

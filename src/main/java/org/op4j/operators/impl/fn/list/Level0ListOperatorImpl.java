@@ -27,9 +27,6 @@ import org.javaruntype.type.Type;
 import org.op4j.functions.FnList;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.ToArray;
-import org.op4j.functions.converters.ToMap;
-import org.op4j.functions.converters.ToSet;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.fn.array.Level0ArrayOperatorImpl;
@@ -160,26 +157,28 @@ public final class Level0ListOperatorImpl<I,T> extends AbstractOperatorImpl
 
 
     public Level0ArrayOperatorImpl<I,T> toArrayOf(final Type<T> type) {
-        return new Level0ArrayOperatorImpl<I,T>(type, getTarget().execute(new ToArray.FromCollection<T>(type)));
+        return new Level0ArrayOperatorImpl<I,T>(type, getTarget().execute(FnList.of(type).toArray()));
     }
 
 
     public Level0MapOperatorImpl<I,T, T> toMap() {
-        return new Level0MapOperatorImpl<I,T, T>(getTarget().execute(new ToMap.FromListByAlternateElements<T>()));
+        return new Level0MapOperatorImpl<I,T, T>(getTarget().execute(FnList.ofObject().toMapByAlternateElements()));
     }
 
+    @SuppressWarnings("unchecked")
     public <K> Level0MapOperatorImpl<I,K, T> toMap(final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperatorImpl<I,K, T>(getTarget().execute(new ToMap.FromListByKeyEval<K, T>(keyEval)));
+        return new Level0MapOperatorImpl<I,K, T>(getTarget().execute(FnList.ofObject().toMapByKeyEval((IFunction)keyEval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K, V> Level0MapOperatorImpl<I,K, V> toMap(final IMapBuilder<? super T,K,V> mapBuild) {
-        return new Level0MapOperatorImpl<I,K, V>(getTarget().execute(new ToMap.FromListByMapBuilder<K, V, T>(mapBuild)));
+        return new Level0MapOperatorImpl<I,K, V>(getTarget().execute(FnList.ofObject().toMapByMapBuilder((IMapBuilder)mapBuild)));
     }
 
 
     public Level0SetOperatorImpl<I,T> toSet() {
-        return new Level0SetOperatorImpl<I,T>(getTarget().execute(new ToSet.FromCollection<T>()));
+        return new Level0SetOperatorImpl<I,T>(getTarget().execute(FnList.ofObject().toSet()));
     }
 
 

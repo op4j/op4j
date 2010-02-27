@@ -28,13 +28,6 @@ import org.javaruntype.type.Types;
 import org.op4j.functions.Call;
 import org.op4j.functions.FnList;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.ToArray;
-import org.op4j.functions.converters.ToList;
-import org.op4j.functions.converters.ToMap;
-import org.op4j.functions.converters.ToMapOfArray;
-import org.op4j.functions.converters.ToMapOfList;
-import org.op4j.functions.converters.ToMapOfSet;
-import org.op4j.functions.converters.ToSet;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.op.array.Level0ArrayOperatorImpl;
@@ -91,77 +84,85 @@ public final class Level0GenericMultiOperatorImpl<I,T> extends AbstractOperatorI
 
 
     public Level0ArrayOperatorImpl<I,T> buildArrayOf(final Type<T> type) {
-        return new Level0ArrayOperatorImpl<I,T>(type, getTarget().endIterate(null).execute(new ToArray.FromCollection<T>(type)));
+        return new Level0ArrayOperatorImpl<I,T>(type, getTarget().endIterate(null).execute(FnList.of(type).toArray()));
     }
 
 
     public Level0ListOperatorImpl<I,T> buildList() {
-        return new Level0ListOperatorImpl<I,T>(getTarget().endIterate(null).execute(new ToList.FromCollection<T>()));
+        return new Level0ListOperatorImpl<I,T>(getTarget().endIterate(null));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K> Level0MapOperatorImpl<I,K, T> buildMap(final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperatorImpl<I,K, T>(getTarget().endIterate(null).execute(new ToMap.FromListByKeyEval<K, T>(keyEval)));
+        return new Level0MapOperatorImpl<I,K, T>(getTarget().endIterate(null).execute(FnList.ofObject().toMapByKeyEval((IFunction)keyEval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K, V> Level0MapOperatorImpl<I,K, V> buildMap(final IMapBuilder<? super T,K,V> mapBuild) {
-        return new Level0MapOperatorImpl<I,K, V>(getTarget().endIterate(null).execute(new ToMap.FromListByMapBuilder<K, V, T>(mapBuild)));
+        return new Level0MapOperatorImpl<I,K, V>(getTarget().endIterate(null).execute(FnList.ofObject().toMapByMapBuilder((IMapBuilder)mapBuild)));
     }
 
 
     public Level0MapOperatorImpl<I,T, T> buildMap() {
-        return new Level0MapOperatorImpl<I,T, T>(getTarget().endIterate(null).execute(new ToMap.FromListByAlternateElements<T>()));
+        return new Level0MapOperatorImpl<I,T, T>(getTarget().endIterate(null).execute(FnList.ofObject().toMapByAlternateElements()));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K> Level0MapOperatorImpl<I,K, T[]> buildMapOfArrayOf(final Type<T> valueType, final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperatorImpl<I,K, T[]>(getTarget().endIterate(null).execute(new ToMapOfArray.FromListByKeyEval<K, T>(valueType, keyEval)));
+        return new Level0MapOperatorImpl<I,K, T[]>(getTarget().endIterate(null).execute(FnList.of(valueType).toMapOfArrayByKeyEval((IFunction)keyEval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K, V> Level0MapOperatorImpl<I,K, V[]> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<? super T,K,V> mapBuild) {
-        return new Level0MapOperatorImpl<I,K, V[]>(getTarget().endIterate(null).execute(new ToMapOfArray.FromListByMapBuilder<K, V, T>(valueType, mapBuild)));
+        return new Level0MapOperatorImpl<I,K, V[]>(getTarget().endIterate(null).execute(FnList.ofObject().toMapOfArrayByMapBuilder(valueType, (IMapBuilder)mapBuild)));
     }
 
 
     public Level0MapOperatorImpl<I,T, T[]> buildMapOfArrayOf(final Type<T> type) {
-        return new Level0MapOperatorImpl<I,T, T[]>(getTarget().endIterate(null).execute(new ToMapOfArray.FromListByAlternateElements<T>(type)));
+        return new Level0MapOperatorImpl<I,T, T[]>(getTarget().endIterate(null).execute(FnList.of(type).toMapOfArrayByAlternateElements()));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K> Level0MapOperatorImpl<I,K, List<T>> buildMapOfList(final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperatorImpl<I,K, List<T>>(getTarget().endIterate(null).execute(new ToMapOfList.FromListByKeyEval<K, T>(keyEval)));
+        return new Level0MapOperatorImpl<I,K, List<T>>(getTarget().endIterate(null).execute(FnList.ofObject().toMapOfListByKeyEval((IFunction)keyEval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K, V> Level0MapOperatorImpl<I,K, List<V>> buildMapOfList(final IMapBuilder<? super T,K,V> mapBuild) {
-        return new Level0MapOperatorImpl<I,K, List<V>>(getTarget().endIterate(null).execute(new ToMapOfList.FromListByMapBuilder<K, V, T>(mapBuild)));
+        return new Level0MapOperatorImpl<I,K, List<V>>(getTarget().endIterate(null).execute(FnList.ofObject().toMapOfListByMapBuilder((IMapBuilder)mapBuild)));
     }
 
 
     public Level0MapOperatorImpl<I,T, List<T>> buildMapOfList() {
-        return new Level0MapOperatorImpl<I,T, List<T>>(getTarget().endIterate(null).execute(new ToMapOfList.FromListByAlternateElements<T>()));
+        return new Level0MapOperatorImpl<I,T, List<T>>(getTarget().endIterate(null).execute(FnList.ofObject().toMapOfListByAlternateElements()));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K> Level0MapOperatorImpl<I,K, Set<T>> buildMapOfSet(final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperatorImpl<I,K, Set<T>>(getTarget().endIterate(null).execute(new ToMapOfSet.FromListByKeyEval<K, T>(keyEval)));
+        return new Level0MapOperatorImpl<I,K, Set<T>>(getTarget().endIterate(null).execute(FnList.ofObject().toMapOfSetByKeyEval((IFunction)keyEval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K, V> Level0MapOperatorImpl<I,K, Set<V>> buildMapOfSet(final IMapBuilder<? super T,K,V> mapBuild) {
-        return new Level0MapOperatorImpl<I,K, Set<V>>(getTarget().endIterate(null).execute(new ToMapOfSet.FromListByMapBuilder<K, V, T>(mapBuild)));
+        return new Level0MapOperatorImpl<I,K, Set<V>>(getTarget().endIterate(null).execute(FnList.ofObject().toMapOfSetByMapBuilder((IMapBuilder)mapBuild)));
     }
 
 
     public Level0MapOperatorImpl<I,T, Set<T>> buildMapOfSet() {
-        return new Level0MapOperatorImpl<I,T, Set<T>>(getTarget().endIterate(null).execute(new ToMapOfSet.FromListByAlternateElements<T>()));
+        return new Level0MapOperatorImpl<I,T, Set<T>>(getTarget().endIterate(null).execute(FnList.ofObject().toMapOfSetByAlternateElements()));
     }
 
 
     public Level0SetOperatorImpl<I,T> buildSet() {
-        return new Level0SetOperatorImpl<I,T>(getTarget().endIterate(null).execute(new ToSet.FromCollection<T>()));
+        return new Level0SetOperatorImpl<I,T>(getTarget().endIterate(null).execute(FnList.ofObject().toSet()));
     }
 
 

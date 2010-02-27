@@ -20,10 +20,8 @@
 package org.op4j.operators.impl.op.array;
 
 import org.javaruntype.type.Type;
+import org.op4j.functions.FnArray;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.ToList;
-import org.op4j.functions.converters.ToMap;
-import org.op4j.functions.converters.ToSet;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.op.generic.Level0GenericUniqOperatorImpl;
@@ -54,24 +52,26 @@ public final class Level0IndefiniteArrayOperatorImpl<I,T>
 
 
     public Level0ListOperatorImpl<I,T> toList() {
-        return new Level0ListOperatorImpl<I,T>(getTarget().execute(new ToList.FromArray<T>()));
+        return new Level0ListOperatorImpl<I,T>(getTarget().execute(FnArray.ofObject().toList()));
     }
 
 
     public Level0MapOperatorImpl<I,T, T> toMap() {
-        return new Level0MapOperatorImpl<I,T, T>(getTarget().execute(new ToMap.FromArrayByAlternateElements<T>()));
+        return new Level0MapOperatorImpl<I,T, T>(getTarget().execute(FnArray.ofObject().toMapByAlternateElements()));
     }
 
+    @SuppressWarnings("unchecked")
     public <K> Level0MapOperatorImpl<I,K, T> toMap(final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperatorImpl<I,K, T>(getTarget().execute(new ToMap.FromArrayByKeyEval<K, T>(keyEval)));
+        return new Level0MapOperatorImpl<I,K, T>(getTarget().execute(FnArray.ofObject().toMapByKeyEval((IFunction)keyEval)));
     }
 
+    @SuppressWarnings("unchecked")
     public <K, V> Level0MapOperatorImpl<I,K, V> toMap(final IMapBuilder<? super T,K,V> mapBuild) {
-        return new Level0MapOperatorImpl<I,K, V>(getTarget().execute(new ToMap.FromArrayByMapBuilder<K, V, T>(mapBuild)));
+        return new Level0MapOperatorImpl<I,K, V>(getTarget().execute(FnArray.ofObject().toMapByMapBuilder((IMapBuilder)mapBuild)));
     }
 
     public Level0SetOperatorImpl<I,T> toSet() {
-        return new Level0SetOperatorImpl<I,T>(getTarget().execute(new ToSet.FromArray<T>()));
+        return new Level0SetOperatorImpl<I,T>(getTarget().execute(FnArray.ofObject().toSet()));
     }
 
     

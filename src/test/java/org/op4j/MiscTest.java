@@ -42,12 +42,11 @@ import org.op4j.functions.ExecCtx;
 import org.op4j.functions.FnArray;
 import org.op4j.functions.FnCalendar;
 import org.op4j.functions.FnList;
+import org.op4j.functions.FnObject;
 import org.op4j.functions.FnSet;
 import org.op4j.functions.FnString;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;
-import org.op4j.functions.converters.ToMap;
-import org.op4j.functions.converters.ToMapOfArray;
 
 /**
  * 
@@ -254,10 +253,10 @@ watch.start();
         
         System.out.println(printArray(Op.on(Op.onAll(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).buildArrayOf(Types.INTEGER).get()).exec(FnArray.ofInteger().insert(2, 1492)).exec(FnArray.ofInteger().removeAllTrue(Ognl.asBoolean("#target < 1000"))).exec(FnArray.ofInteger().sort()).get()));
         
-        System.out.println(Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArrayOf(Types.STRING).get()).exec(new ToMap.FromArrayByKeyEval<Integer,String>(Ognl.asInteger("length()"))).get());
+        System.out.println(Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArrayOf(Types.STRING).get()).exec(FnArray.of(Types.STRING).toMapByKeyEval(Ognl.asInteger("length()"))).get());
 
         final Map<Integer,String[]> greetingsByLength = 
-            Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArrayOf(Types.STRING).get()).exec(new ToMapOfArray.FromArrayByKeyEval<Integer, String>(Types.STRING, Ognl.asInteger("length()"))).get();
+            Op.on(Op.onAll("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").buildArrayOf(Types.STRING).get()).exec(FnArray.of(Types.STRING).toMapOfArrayByKeyEval(Ognl.asInteger("length()"))).get();
         System.out.println("*** MAP: ");
         for (Map.Entry<Integer,String[]> entry : greetingsByLength.entrySet()) {
             System.out.println(entry.getKey() + " : " + Arrays.asList(entry.getValue()));
@@ -391,7 +390,7 @@ watch.start();
 //        System.out.println(Op.buildListOfList(Types.STRING).addAll(stringsList1, stringsList1).get());
 
 
-        
+        Op.on(Integer.valueOf(12)).exec(FnObject.toSingletonArrayOf(Types.INTEGER)).get();
         
         watch.stop();
         

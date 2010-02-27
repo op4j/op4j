@@ -27,9 +27,6 @@ import org.javaruntype.type.Type;
 import org.op4j.functions.FnSet;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.ToArray;
-import org.op4j.functions.converters.ToList;
-import org.op4j.functions.converters.ToMap;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.fn.array.Level0ArrayOperatorImpl;
@@ -155,27 +152,29 @@ public final class Level0SetOperatorImpl<I,T> extends AbstractOperatorImpl
 
 
     public Level0ArrayOperatorImpl<I,T> toArrayOf(final Type<T> type) {
-        return new Level0ArrayOperatorImpl<I,T>(type, getTarget().execute(new ToArray.FromCollection<T>(type)));
+        return new Level0ArrayOperatorImpl<I,T>(type, getTarget().execute(FnSet.of(type).toArray()));
     }
 
 
     public Level0ListOperatorImpl<I,T> toList() {
-        return new Level0ListOperatorImpl<I,T>(getTarget().execute(new ToList.FromCollection<T>()));
+        return new Level0ListOperatorImpl<I,T>(getTarget().execute(FnSet.ofObject().toList()));
     }
 
 
     public Level0MapOperatorImpl<I,T, T> toMap() {
-        return new Level0MapOperatorImpl<I,T, T>(getTarget().execute(new ToMap.FromSetByAlternateElements<T>()));
+        return new Level0MapOperatorImpl<I,T, T>(getTarget().execute(FnSet.ofObject().toMapByAlternateElements()));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K> Level0MapOperatorImpl<I,K, T> toMap(final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperatorImpl<I,K, T>(getTarget().execute(new ToMap.FromSetByKeyEval<K, T>(keyEval)));
+        return new Level0MapOperatorImpl<I,K, T>(getTarget().execute(FnSet.ofObject().toMapByKeyEval((IFunction)keyEval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K, V> Level0MapOperatorImpl<I,K, V> toMap(final IMapBuilder<? super T,K,V> mapBuild) {
-        return new Level0MapOperatorImpl<I,K, V>(getTarget().execute(new ToMap.FromSetByMapBuilder<K, V, T>(mapBuild)));
+        return new Level0MapOperatorImpl<I,K, V>(getTarget().execute(FnSet.ofObject().toMapByMapBuilder((IMapBuilder)mapBuild)));
     }
 
 

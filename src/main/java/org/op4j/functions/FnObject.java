@@ -19,6 +19,15 @@
  */
 package org.op4j.functions;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.apache.commons.lang.Validate;
+import org.javaruntype.type.Type;
+
 
 /**
  * 
@@ -46,9 +55,21 @@ public final class FnObject {
         return TO_STRING;
     }
     
-    
     public static final IFunction<Object,String> toStrNullSafe() {
         return TO_STRING_NULL_SAFE;
+    }
+    
+    
+    public static final <T> IFunction<T,T[]> toSingletonArrayOf(final Type<T> type) {
+        return new ToSingletonArray<T>(type);
+    }
+    
+    public static final <T> IFunction<T,List<T>> toSingletonListOf(final Type<T> type) {
+        return new ToSingletonList<T>();
+    }
+    
+    public static final <T> IFunction<T,Set<T>> toSingletonSetOf(final Type<T> type) {
+        return new ToSingletonSet<T>();
     }
 
     
@@ -79,5 +100,62 @@ public final class FnObject {
         }       
     }   
 
+
+    
+    
+    static final class ToSingletonArray<T> implements IFunction<T,T[]>  {
+
+        private final Type<T> type;
+        
+        ToSingletonArray(final Type<T> type) {
+            super();
+            Validate.notNull(type, "A type representing the object must be specified");
+            this.type = type;
+        }
+
+        @SuppressWarnings("unchecked")
+        public T[] execute(final T object, final ExecCtx ctx) throws Exception {
+            final List<T> result = new ArrayList<T>();
+            result.add(object);
+            final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
+            return result.toArray(array);
+        }
+        
+    }
+    
+    
+    
+    
+    
+    static final class ToSingletonList<T> implements IFunction<T,List<T>> {
+
+        ToSingletonList() {
+            super();
+        }
+
+        public List<T> execute(final T object, final ExecCtx ctx) throws Exception {
+            final List<T> result = new ArrayList<T>();
+            result.add(object);
+            return result;
+        }
+        
+    }
+ 
+    
+    
+    static final class ToSingletonSet<T> implements IFunction<T,Set<T>> {
+
+        ToSingletonSet() {
+            super();
+        }
+
+        public Set<T> execute(final T object, final ExecCtx ctx) throws Exception {
+            final Set<T> result = new LinkedHashSet<T>();
+            result.add(object);
+            return result;
+        }
+        
+    }
+    
     
 }

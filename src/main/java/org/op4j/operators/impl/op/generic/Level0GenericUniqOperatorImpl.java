@@ -26,14 +26,8 @@ import java.util.Set;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.FnList;
+import org.op4j.functions.FnObject;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.converters.ToArray;
-import org.op4j.functions.converters.ToList;
-import org.op4j.functions.converters.ToMap;
-import org.op4j.functions.converters.ToMapOfArray;
-import org.op4j.functions.converters.ToMapOfList;
-import org.op4j.functions.converters.ToMapOfSet;
-import org.op4j.functions.converters.ToSet;
 import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperatorImpl;
 import org.op4j.operators.impl.op.array.Level0ArrayOperatorImpl;
@@ -67,80 +61,88 @@ public final class Level0GenericUniqOperatorImpl<I,T> extends AbstractOperatorIm
 
 
     public Level0GenericMultiOperatorImpl<I,T> add(final T newElement) {
-        return new Level0GenericMultiOperatorImpl<I,T>(getTarget().execute(new ToList.FromObject<T>()).execute(FnList.ofObject().add(newElement)).iterate(Structure.LIST, true));
+        return new Level0GenericMultiOperatorImpl<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().add(newElement)).iterate(Structure.LIST, true));
     }
 
     public Level0GenericMultiOperatorImpl<I,T> addAll(final T... newElements) {
-        return new Level0GenericMultiOperatorImpl<I,T>(getTarget().execute(new ToList.FromObject<T>()).execute(FnList.ofObject().add(newElements)).iterate(Structure.LIST, true));
+        return new Level0GenericMultiOperatorImpl<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().add(newElements)).iterate(Structure.LIST, true));
     }
 
     public Level0GenericMultiOperatorImpl<I,T> insert(final int position, final T newElement) {
-        return new Level0GenericMultiOperatorImpl<I,T>(getTarget().execute(new ToList.FromObject<T>()).execute(FnList.ofObject().insert(position, newElement)).iterate(Structure.LIST, true));
+        return new Level0GenericMultiOperatorImpl<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().insert(position, newElement)).iterate(Structure.LIST, true));
     }
 
     public Level0GenericMultiOperatorImpl<I,T> insertAll(final int position, final T... newElements) {
-        return new Level0GenericMultiOperatorImpl<I,T>(getTarget().execute(new ToList.FromObject<T>()).execute(FnList.ofObject().insert(position, newElements)).iterate(Structure.LIST, true));
+        return new Level0GenericMultiOperatorImpl<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().insert(position, newElements)).iterate(Structure.LIST, true));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0GenericMultiOperatorImpl<I,T> addAll(final Collection<T> collection) {
-        return new Level0GenericMultiOperatorImpl<I,T>(getTarget().execute(new ToList.FromObject<T>()).execute(FnList.ofObject().addAll((Collection)collection)).iterate(Structure.LIST, true));
+        return new Level0GenericMultiOperatorImpl<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().addAll((Collection)collection)).iterate(Structure.LIST, true));
     }
 
 
     public Level0ArrayOperatorImpl<I,T> buildArrayOf(final Type<T> type) {
-        return new Level0ArrayOperatorImpl<I,T>(type, getTarget().execute(new ToArray.FromObject<T>(type)));
+        return new Level0ArrayOperatorImpl<I,T>(type, getTarget().execute(FnObject.toSingletonArrayOf(type)));
     }
 
 
     public Level0ListOperatorImpl<I,T> buildList() {
-        return new Level0ListOperatorImpl<I,T>(getTarget().execute(new ToList.FromObject<T>()));
+        return new Level0ListOperatorImpl<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K> Level0MapOperatorImpl<I,K, T> buildMap(final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperatorImpl<I,K, T>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMap.FromListByKeyEval<K, T>(keyEval)));
+        return new Level0MapOperatorImpl<I,K, T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().toMapByKeyEval((IFunction)keyEval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K, V> Level0MapOperatorImpl<I,K, V> buildMap(final IMapBuilder<? super T,K,V> mapBuild) {
-        return new Level0MapOperatorImpl<I,K, V>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMap.FromListByMapBuilder<K, V, T>(mapBuild)));
+        return new Level0MapOperatorImpl<I,K, V>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().toMapByMapBuilder((IMapBuilder)mapBuild)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K> Level0MapOperatorImpl<I,K, T[]> buildMapOfArrayOf(final Type<T> valueType, final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperatorImpl<I,K, T[]>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfArray.FromListByKeyEval<K, T>(valueType, keyEval)));
+        return new Level0MapOperatorImpl<I,K, T[]>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.of(valueType).toMapOfArrayByKeyEval((IFunction)keyEval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K, V> Level0MapOperatorImpl<I,K, V[]> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<? super T,K,V> mapBuild) {
-        return new Level0MapOperatorImpl<I,K, V[]>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfArray.FromListByMapBuilder<K, V, T>(valueType, mapBuild)));
+        return new Level0MapOperatorImpl<I,K, V[]>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().toMapOfArrayByMapBuilder(valueType, (IMapBuilder)mapBuild)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K> Level0MapOperatorImpl<I,K, List<T>> buildMapOfList(final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperatorImpl<I,K, List<T>>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfList.FromListByKeyEval<K, T>(keyEval)));
+        return new Level0MapOperatorImpl<I,K, List<T>>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().toMapOfListByKeyEval((IFunction)keyEval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K, V> Level0MapOperatorImpl<I,K, List<V>> buildMapOfList(final IMapBuilder<? super T,K,V> mapBuild) {
-        return new Level0MapOperatorImpl<I,K, List<V>>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfList.FromListByMapBuilder<K, V, T>(mapBuild)));
+        return new Level0MapOperatorImpl<I,K, List<V>>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().toMapOfListByMapBuilder((IMapBuilder)mapBuild)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K> Level0MapOperatorImpl<I,K, Set<T>> buildMapOfSet(final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperatorImpl<I,K, Set<T>>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfSet.FromListByKeyEval<K, T>(keyEval)));
+        return new Level0MapOperatorImpl<I,K, Set<T>>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().toMapOfSetByKeyEval((IFunction)keyEval)));
     }
 
 
+    @SuppressWarnings("unchecked")
     public <K, V> Level0MapOperatorImpl<I,K, Set<V>> buildMapOfSet(final IMapBuilder<? super T,K,V> mapBuild) {
-        return new Level0MapOperatorImpl<I,K, Set<V>>(getTarget().execute(new ToList.FromObject<T>()).execute(new ToMapOfSet.FromListByMapBuilder<K, V, T>(mapBuild)));
+        return new Level0MapOperatorImpl<I,K, Set<V>>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().toMapOfSetByMapBuilder((IMapBuilder)mapBuild)));
     }
 
 
     public Level0SetOperatorImpl<I,T> buildSet() {
-        return new Level0SetOperatorImpl<I,T>(getTarget().execute(new ToSet.FromObject<T>()));
+        return new Level0SetOperatorImpl<I,T>(getTarget().execute(FnObject.toSingletonSetOf(Types.OBJECT)));
     }
 
 
