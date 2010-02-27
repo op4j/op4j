@@ -17,16 +17,13 @@
  * 
  * =============================================================================
  */
-package org.op4j.functions.math;
+package org.op4j.functions;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.functions.AbstractNotNullFunction;
-import org.op4j.functions.AbstractNullAsNullFunction;
-import org.op4j.functions.ExecCtx;
 
 /**
  * 
@@ -35,7 +32,7 @@ import org.op4j.functions.ExecCtx;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class FMathBigDecimal {
+public final class FnMathBigDecimal {
 
 	private final static Max MAX_FUNC = new Max();
 	
@@ -48,21 +45,21 @@ public final class FMathBigDecimal {
 	private final static Abs ABS_FUNC = new Abs();
 	
 	
-	FMathBigDecimal() {
+	FnMathBigDecimal() {
 		super();           
 	}
 
 	/**
 	 * @return function that returns the maximum {@link BigDecimal} of an object implementing {@link Iterable}
 	 */
-	public static final Max max() {
+	public static final IFunction<Iterable<BigDecimal>,BigDecimal> max() {
         return MAX_FUNC;
     }
 	
 	/**
 	 * @return function that returns the minimum {@link BigDecimal} of an object implementing {@link Iterable}
 	 */
-	public static final Min min() {
+	public static final IFunction<Iterable<BigDecimal>,BigDecimal> min() {
         return MIN_FUNC;
     }
 	
@@ -70,7 +67,7 @@ public final class FMathBigDecimal {
 	 * @return function that returns the sum of the {@link BigDecimal} elements in an object 
 	 * implementing {@link Iterable}
 	 */
-	public static final Sum sum() {
+	public static final IFunction<Iterable<BigDecimal>,BigDecimal> sum() {
         return SUM_FUNC;
     }
 	
@@ -78,81 +75,81 @@ public final class FMathBigDecimal {
 	 * @return function that returns the average of the {@link BigDecimal} elements in an object 
 	 * implementing {@link Iterable}
 	 */
-	public static final Avg avg() {
+	public static final IFunction<Iterable<BigDecimal>,BigDecimal> avg() {
         return AVG_FUNC;
     }
-	public static final Avg avg(MathContext mathContext) {
+	public static final IFunction<Iterable<BigDecimal>,BigDecimal> avg(MathContext mathContext) {
         return new Avg(mathContext);
     }
-	public static final Avg avg(RoundingMode roundingMode) {
+	public static final IFunction<Iterable<BigDecimal>,BigDecimal> avg(RoundingMode roundingMode) {
 		return new Avg(roundingMode);
     }
 	
-	public static final Round round(MathContext mathContext) {
+	public static final IFunction<BigDecimal,BigDecimal> round(MathContext mathContext) {
         return new Round(mathContext);
     }
-	public static final Round round(RoundingMode roundingMode) {
+	public static final IFunction<BigDecimal,BigDecimal> round(RoundingMode roundingMode) {
 		return new Round(roundingMode);
     }
 	
-	public static final Abs abs() {
+	public static final IFunction<BigDecimal,BigDecimal> abs() {
 		return ABS_FUNC;
     }
 	
-	public static final Add add(BigDecimal add) {
+	public static final IFunction<BigDecimal,BigDecimal> add(BigDecimal add) {
 		return new Add(add);
     }
 	
-	public static final Subtract subtract(BigDecimal subtract) {
+	public static final IFunction<BigDecimal,BigDecimal> subtract(BigDecimal subtract) {
 		return new Subtract(subtract);
     }
 	
-	public static final Divide divideBy(BigDecimal divisor) {
+	public static final IFunction<BigDecimal,BigDecimal> divideBy(BigDecimal divisor) {
 		return new Divide(divisor);
     }
-	public static final Divide divideBy(BigDecimal divisor, MathContext mathContext) {
+	public static final IFunction<BigDecimal,BigDecimal> divideBy(BigDecimal divisor, MathContext mathContext) {
         return new Divide(divisor, mathContext);
     }
-	public static final Divide divideBy(BigDecimal divisor, RoundingMode roundingMode) {
+	public static final IFunction<BigDecimal,BigDecimal> divideBy(BigDecimal divisor, RoundingMode roundingMode) {
 		return new Divide(divisor, roundingMode);
     }
 	
-	public static final Remainder remainder(BigDecimal divisor) {
+	public static final IFunction<BigDecimal,BigDecimal> remainder(BigDecimal divisor) {
 		return new Remainder(divisor);
     }
-	public static final Remainder remainder(BigDecimal divisor, MathContext mathContext) {
+	public static final IFunction<BigDecimal,BigDecimal> remainder(BigDecimal divisor, MathContext mathContext) {
 		return new Remainder(divisor, mathContext);
     }
 	
-	public static final Multiply multiplyBy(BigDecimal multiplicand) {
+	public static final IFunction<BigDecimal,BigDecimal> multiplyBy(BigDecimal multiplicand) {
 		return new Multiply(multiplicand);
     }
-	public static final Multiply multiplyBy(BigDecimal multiplicand, MathContext mathContext) {
+	public static final IFunction<BigDecimal,BigDecimal> multiplyBy(BigDecimal multiplicand, MathContext mathContext) {
         return new Multiply(multiplicand, mathContext);
     }
-	public static final Multiply multiplyBy(BigDecimal multiplicand, RoundingMode roundingMode) {
+	public static final IFunction<BigDecimal,BigDecimal> multiplyBy(BigDecimal multiplicand, RoundingMode roundingMode) {
 		return new Multiply(multiplicand, roundingMode);
     }
 	
-	public static final Raise raiseTo(int power) {
-		return new Raise(power);
+	public static final IFunction<BigDecimal,BigDecimal> pow(int power) {
+		return new Pow(power);
     }
-	public static final Raise raiseTo(int power, MathContext mathContext) {
-        return new Raise(power, mathContext);
+	public static final IFunction<BigDecimal,BigDecimal> pow(int power, MathContext mathContext) {
+        return new Pow(power, mathContext);
     }
-	public static final Raise raiseTo(int power, RoundingMode roundingMode) {
-		return new Raise(power, roundingMode);
+	public static final IFunction<BigDecimal,BigDecimal> pow(int power, RoundingMode roundingMode) {
+		return new Pow(power, roundingMode);
     }
 	
 	
-	public static final class Max extends AbstractNotNullFunction<Iterable<BigDecimal>,BigDecimal> {
+	static final class Max extends AbstractNotNullFunction<Iterable<BigDecimal>,BigDecimal> {
 
-		public Max() {
+		Max() {
 			super();
 		}
 
 		@Override
-		public BigDecimal notNullExecute(final Iterable<BigDecimal> input, final ExecCtx ctx) throws Exception {
+		protected BigDecimal notNullExecute(final Iterable<BigDecimal> input, final ExecCtx ctx) throws Exception {
 			if (input.iterator().hasNext() == false) {
 				return null;
 			}
@@ -168,14 +165,14 @@ public final class FMathBigDecimal {
 		}
 	}
 	
-	public static final class Min extends AbstractNotNullFunction<Iterable<BigDecimal>,BigDecimal> {
+	static final class Min extends AbstractNotNullFunction<Iterable<BigDecimal>,BigDecimal> {
 
-		public Min() {
+		Min() {
 			super();
 		}
 
 		@Override
-		public BigDecimal notNullExecute(final Iterable<BigDecimal> input, final ExecCtx ctx) throws Exception {
+		protected BigDecimal notNullExecute(final Iterable<BigDecimal> input, final ExecCtx ctx) throws Exception {
 			if (input.iterator().hasNext() == false) {
 				return null;
 			}
@@ -191,14 +188,14 @@ public final class FMathBigDecimal {
 		}	
 	}
 	
-	public static final class Sum extends AbstractNotNullFunction<Iterable<BigDecimal>,BigDecimal> {
+	static final class Sum extends AbstractNotNullFunction<Iterable<BigDecimal>,BigDecimal> {
 
-		public Sum() {
+		Sum() {
 			super();
 		}
 
 		@Override
-		public BigDecimal notNullExecute(final Iterable<BigDecimal> input, final ExecCtx ctx) throws Exception {
+		protected BigDecimal notNullExecute(final Iterable<BigDecimal> input, final ExecCtx ctx) throws Exception {
 			BigDecimal sum = BigDecimal.valueOf(0);
 			for (BigDecimal number : input) {
 				if (number != null) {
@@ -209,25 +206,25 @@ public final class FMathBigDecimal {
 		}		
 	}
 	
-	public static final class Avg extends AbstractNotNullFunction<Iterable<BigDecimal>,BigDecimal> {
+	static final class Avg extends AbstractNotNullFunction<Iterable<BigDecimal>,BigDecimal> {
 
 		private final RoundingMode roundingMode;
 		private final MathContext mathContext;
 		
-		public Avg() {
+		Avg() {
 			super();
 			this.roundingMode = null;
 			this.mathContext = null;
 		}
 
-		public Avg(RoundingMode roundingMode) {
+		Avg(RoundingMode roundingMode) {
 			super();
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
 			this.roundingMode = roundingMode;
 			this.mathContext = null;
 		}
 		
-		public Avg(MathContext mathContext) {
+		Avg(MathContext mathContext) {
 			super();
 			Validate.notNull(mathContext, "MathContext can't be null");
 			this.roundingMode = null;
@@ -235,7 +232,7 @@ public final class FMathBigDecimal {
 		}
 		
 		@Override
-		public BigDecimal notNullExecute(final Iterable<BigDecimal> input, final ExecCtx ctx) throws Exception {
+		protected BigDecimal notNullExecute(final Iterable<BigDecimal> input, final ExecCtx ctx) throws Exception {
 			
 			int countNotNull = 0;
 			BigDecimal sum = BigDecimal.valueOf(0);
@@ -255,19 +252,19 @@ public final class FMathBigDecimal {
 		}		
 	}
 	
-	public static final class Round extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
+	static final class Round extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
 
 		private final MathContext mathContext;
 		private final RoundingMode roundingMode;
 		
-		public Round(RoundingMode roundingMode) {
+		Round(RoundingMode roundingMode) {
 			super();
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
 			this.mathContext = null;
 			this.roundingMode = roundingMode;
 		}
 		
-		public Round(MathContext mathContext) {
+		Round(MathContext mathContext) {
 			super();
 			Validate.notNull(mathContext, "MathContext can't be null");
 			this.mathContext = mathContext;
@@ -275,7 +272,7 @@ public final class FMathBigDecimal {
 		}
 		
 		@Override
-		public BigDecimal nullAsNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
+		protected BigDecimal nullAsNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = input;
 			if (this.roundingMode != null) {
 				return result.setScale(0, this.roundingMode);
@@ -284,30 +281,30 @@ public final class FMathBigDecimal {
 		}	
 	}
 	
-	public static final class Abs extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
+	static final class Abs extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
 
-		public Abs() {
+		Abs() {
 			super();
 		}
 		
 		@Override
-		public BigDecimal nullAsNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
+		protected BigDecimal nullAsNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
 			return input.abs();
 		}
 	}
 	
-	public static final class Add extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
+	static final class Add extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
 
 		private final BigDecimal add;
 		
-		public Add(BigDecimal add) {
+		Add(BigDecimal add) {
 			super();
 			Validate.notNull(add, "Number to be added can't be null");
 			this.add = add;
 		}
 
 		@Override
-		public BigDecimal nullAsNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
+		protected BigDecimal nullAsNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = input;
 			result = result.add(this.add);
 				
@@ -315,11 +312,11 @@ public final class FMathBigDecimal {
 		}	
 	}
 	
-	public static final class Subtract extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
+	static final class Subtract extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
 
 		private final BigDecimal subtract;
 		
-		public Subtract(BigDecimal subtract) {
+		Subtract(BigDecimal subtract) {
 			super();
 			Validate.notNull(subtract, "Number to be subtracted can't be null");
 			Validate.notNull(subtract, "Number to be added can't be null");
@@ -327,7 +324,7 @@ public final class FMathBigDecimal {
 		}
 
 		@Override
-		public BigDecimal nullAsNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
+		protected BigDecimal nullAsNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = input;
 			result = result.subtract(this.subtract);
 				
@@ -335,13 +332,13 @@ public final class FMathBigDecimal {
 		}		
 	}
 	
-	public static final class Divide extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
+	static final class Divide extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
 
 		private final BigDecimal divisor;
 		private final RoundingMode roundingMode;
 		private final MathContext mathContext;
 		
-		public Divide(BigDecimal divisor) {
+		Divide(BigDecimal divisor) {
 			super();
 			Validate.notNull(divisor, "Divisor can't be null");
 			this.divisor = divisor;
@@ -349,7 +346,7 @@ public final class FMathBigDecimal {
 			this.mathContext = null;
 		}
 		
-		public Divide(BigDecimal divisor, RoundingMode roundingMode) {
+		Divide(BigDecimal divisor, RoundingMode roundingMode) {
 			super();
 			Validate.notNull(divisor, "Divisor can't be null");
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
@@ -358,7 +355,7 @@ public final class FMathBigDecimal {
 			this.mathContext = null;
 		}
 		
-		public Divide(BigDecimal divisor, MathContext mathContext) {
+		Divide(BigDecimal divisor, MathContext mathContext) {
 			super();
 			Validate.notNull(divisor, "Divisor can't be null");
 			Validate.notNull(mathContext, "MathContext can't be null");
@@ -368,7 +365,7 @@ public final class FMathBigDecimal {
 		}
 
 		@Override
-		public BigDecimal nullAsNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
+		protected BigDecimal nullAsNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = input;
 			
 			if (this.roundingMode != null) {
@@ -383,25 +380,25 @@ public final class FMathBigDecimal {
 	}
 	
 	
-	public static final class Remainder extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
+	static final class Remainder extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
 
 		private final BigDecimal divisor;
 		private final MathContext mathContext;
 		
-		public Remainder(BigDecimal divisor) {
+		Remainder(BigDecimal divisor) {
 			super();
 			this.divisor = divisor;
 			this.mathContext = null;
 		}
 		
-		public Remainder(BigDecimal divisor, MathContext mathContext) {
+		Remainder(BigDecimal divisor, MathContext mathContext) {
 			super();
 			this.divisor = divisor;
 			this.mathContext = mathContext;
 		}
 		
 		@Override
-		public BigDecimal nullAsNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
+		protected BigDecimal nullAsNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
 			if (this.mathContext != null) {
 				return input.remainder(this.divisor, this.mathContext);
 			}
@@ -409,13 +406,13 @@ public final class FMathBigDecimal {
 		}	
 	}
 	
-	public static final class Multiply extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
+	static final class Multiply extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
 
 		private final BigDecimal multiplicand;
 		private final MathContext mathContext;
 		private final RoundingMode roundingMode;
 		
-		public Multiply(BigDecimal multiplicand) {
+		Multiply(BigDecimal multiplicand) {
 			super();
 			Validate.notNull(multiplicand, "Multiplicand can't be null");
 			this.multiplicand = multiplicand;
@@ -423,7 +420,7 @@ public final class FMathBigDecimal {
 			this.roundingMode = null;
 		}
 		
-		public Multiply(BigDecimal multiplicand, RoundingMode roundingMode) {
+		Multiply(BigDecimal multiplicand, RoundingMode roundingMode) {
 			super();
 			Validate.notNull(multiplicand, "Multiplicand can't be null");
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
@@ -432,7 +429,7 @@ public final class FMathBigDecimal {
 			this.roundingMode = roundingMode;
 		}
 		
-		public Multiply(BigDecimal multiplicand, MathContext mathContext) {
+		Multiply(BigDecimal multiplicand, MathContext mathContext) {
 			super();
 			Validate.notNull(multiplicand, "Multiplicand can't be null");
 			Validate.notNull(mathContext, "MathContext can't be null");
@@ -442,7 +439,7 @@ public final class FMathBigDecimal {
 		}
 
 		@Override
-		public BigDecimal nullAsNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
+		protected BigDecimal nullAsNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = input;
 			
 			if (this.mathContext != null) {
@@ -456,20 +453,20 @@ public final class FMathBigDecimal {
 		}	
 	}
 	
-	public static final class Raise extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
+	static final class Pow extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
 
 		private final int power;
 		private final MathContext mathContext;
 		private final RoundingMode roundingMode;
 		
-		public Raise(int power) {
+		Pow(int power) {
 			super();
 			this.power = power;
 			this.mathContext = null;
 			this.roundingMode = null;
 		}
 		
-		public Raise(int power, RoundingMode roundingMode) {
+		Pow(int power, RoundingMode roundingMode) {
 			super();
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
 			this.power = power;
@@ -477,7 +474,7 @@ public final class FMathBigDecimal {
 			this.roundingMode = roundingMode;
 		}
 		
-		public Raise(int power, MathContext mathContext) {
+		Pow(int power, MathContext mathContext) {
 			super();
 			Validate.notNull(mathContext, "MathContext can't be null");
 			this.power = power;
@@ -486,7 +483,7 @@ public final class FMathBigDecimal {
 		}
 
 		@Override
-		public BigDecimal nullAsNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
+		protected BigDecimal nullAsNullExecute(final BigDecimal input, final ExecCtx ctx) throws Exception {
 			BigDecimal result = input;
 			
 			if (this.mathContext != null) {

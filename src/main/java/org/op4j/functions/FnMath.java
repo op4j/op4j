@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.functions.math;
+package org.op4j.functions;
 
 
 /**
@@ -28,50 +28,50 @@ package org.op4j.functions.math;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-public final class FMath {
+public final class FnMath {
 
     
-    private static final FMathBigDecimal OF_BIG_DECIMAL = new FMathBigDecimal();
-    private static final FMathBigInteger OF_BIG_INTEGER = new FMathBigInteger();
-    private static final FMathDouble OF_DOUBLE = new FMathDouble();
-    private static final FMathFloat OF_FLOAT = new FMathFloat();
-    private static final FMathInteger OF_INTEGER = new FMathInteger();
-    private static final FMathLong OF_LONG = new FMathLong();
-    private static final FMathShort OF_SHORT = new FMathShort();
+    private static final FnMathBigDecimal OF_BIG_DECIMAL = new FnMathBigDecimal();
+    private static final FnMathBigInteger OF_BIG_INTEGER = new FnMathBigInteger();
+    private static final FnMathDouble OF_DOUBLE = new FnMathDouble();
+    private static final FnMathFloat OF_FLOAT = new FnMathFloat();
+    private static final FnMathInteger OF_INTEGER = new FnMathInteger();
+    private static final FnMathLong OF_LONG = new FnMathLong();
+    private static final FnMathShort OF_SHORT = new FnMathShort();
     
     
     
     
-    public static FMathBigDecimal ofBigDecimal() {
+    public static FnMathBigDecimal ofBigDecimal() {
         return OF_BIG_DECIMAL;
     }
     
-    public static FMathBigInteger ofBigInteger() {
+    public static FnMathBigInteger ofBigInteger() {
         return OF_BIG_INTEGER;
     }
     
-    public static FMathDouble ofDouble() {
+    public static FnMathDouble ofDouble() {
         return OF_DOUBLE;
     }
     
-    public static FMathFloat ofFloat() {
+    public static FnMathFloat ofFloat() {
         return OF_FLOAT;
     }
     
-    public static FMathInteger ofInteger() {
+    public static FnMathInteger ofInteger() {
         return OF_INTEGER;
     }
     
-    public static FMathLong ofLong() {
+    public static FnMathLong ofLong() {
         return OF_LONG;
     }
     
-    public static FMathShort ofShort() {
+    public static FnMathShort ofShort() {
         return OF_SHORT;
     }
 
     
-    private FMath() {
+    private FnMath() {
         super();
     }
     

@@ -17,14 +17,11 @@
  * 
  * =============================================================================
  */
-package org.op4j.functions.math;
+package org.op4j.functions;
 
 import java.math.BigInteger;
 
 import org.apache.commons.lang.Validate;
-import org.op4j.functions.AbstractNotNullFunction;
-import org.op4j.functions.AbstractNullAsNullFunction;
-import org.op4j.functions.ExecCtx;
 
 /**
  * 
@@ -33,7 +30,7 @@ import org.op4j.functions.ExecCtx;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class FMathBigInteger {
+public final class FnMathBigInteger {
 
 	private final static Max MAX_FUNC = new Max();
 	
@@ -46,21 +43,21 @@ public final class FMathBigInteger {
 	private final static Abs ABS_FUNC = new Abs();
 	
 	
-	FMathBigInteger() {
+	FnMathBigInteger() {
 		super();           
 	}
 
 	/**
 	 * @return function that returns the maximum {@link BigInteger} of an object implementing {@link Iterable}
 	 */
-	public static final Max max() {
+	public static final IFunction<Iterable<BigInteger>,BigInteger> max() {
         return MAX_FUNC;
     }
 	
 	/**
 	 * @return function that returns the minimum {@link BigInteger} of an object implementing {@link Iterable}
 	 */
-	public static final Min min() {
+	public static final IFunction<Iterable<BigInteger>,BigInteger> min() {
         return MIN_FUNC;
     }
 	
@@ -68,7 +65,7 @@ public final class FMathBigInteger {
 	 * @return function that returns the sum of the {@link BigInteger} elements in an object 
 	 * implementing {@link Iterable}
 	 */
-	public static final Sum sum() {
+	public static final IFunction<Iterable<BigInteger>,BigInteger> sum() {
         return SUM_FUNC;
     }
 	
@@ -76,51 +73,51 @@ public final class FMathBigInteger {
 	 * @return function that returns the average of the {@link BigInteger} elements in an object 
 	 * implementing {@link Iterable}
 	 */
-	public static final Avg avg() {
+	public static final IFunction<Iterable<BigInteger>,BigInteger> avg() {
         return AVG_FUNC;
     }
 	
-	public static final Abs abs() {
+	public static final IFunction<BigInteger,BigInteger> abs() {
 		return ABS_FUNC;
     }
 	
-	public static final Add add(BigInteger add) {
+	public static final IFunction<BigInteger,BigInteger> add(BigInteger add) {
 		return new Add(add);
     }
 	
-	public static final Subtract subtract(BigInteger subtract) {
+	public static final IFunction<BigInteger,BigInteger> subtract(BigInteger subtract) {
 		return new Subtract(subtract);
     }
 	
-	public static final Divide divideBy(BigInteger divisor) {
+	public static final IFunction<BigInteger,BigInteger> divideBy(BigInteger divisor) {
 		return new Divide(divisor);
     }
 	
-	public static final Module module(BigInteger module) {
+	public static final IFunction<BigInteger,BigInteger> module(BigInteger module) {
 		return new Module(module);
     }
 	
-	public static final Remainder remainder(BigInteger module) {
+	public static final IFunction<BigInteger,BigInteger> remainder(BigInteger module) {
 		return new Remainder(module);
     }
 	
-	public static final Multiply multiplyBy(BigInteger multiplicand) {
+	public static final IFunction<BigInteger,BigInteger> multiplyBy(BigInteger multiplicand) {
 		return new Multiply(multiplicand);
     }
 	
-	public static final Raise raiseTo(int power) {
-		return new Raise(power);
+	public static final IFunction<BigInteger,BigInteger> pow(int power) {
+		return new Pow(power);
     }
 	
 	
-	public static final class Max extends AbstractNotNullFunction<Iterable<BigInteger>,BigInteger> {
+	static final class Max extends AbstractNotNullFunction<Iterable<BigInteger>,BigInteger> {
 
-		public Max() {
+		Max() {
 			super();
 		}
 
 		@Override
-		public BigInteger notNullExecute(final Iterable<BigInteger> input, final ExecCtx ctx) throws Exception {
+		protected BigInteger notNullExecute(final Iterable<BigInteger> input, final ExecCtx ctx) throws Exception {
 			if (input.iterator().hasNext() == false) {
 				return null;
 			}
@@ -136,14 +133,14 @@ public final class FMathBigInteger {
 		}
 	}
 	
-	public static final class Min extends AbstractNotNullFunction<Iterable<BigInteger>,BigInteger> {
+	static final class Min extends AbstractNotNullFunction<Iterable<BigInteger>,BigInteger> {
 
-		public Min() {
+		Min() {
 			super();
 		}
 
 		@Override
-		public BigInteger notNullExecute(final Iterable<BigInteger> input, final ExecCtx ctx) throws Exception {
+		protected BigInteger notNullExecute(final Iterable<BigInteger> input, final ExecCtx ctx) throws Exception {
 			if (input.iterator().hasNext() == false) {
 				return null;
 			}
@@ -159,14 +156,14 @@ public final class FMathBigInteger {
 		}	
 	}
 	
-	public static final class Sum extends AbstractNotNullFunction<Iterable<BigInteger>,BigInteger> {
+	static final class Sum extends AbstractNotNullFunction<Iterable<BigInteger>,BigInteger> {
 
-		public Sum() {
+		Sum() {
 			super();
 		}
 
 		@Override
-		public BigInteger notNullExecute(final Iterable<BigInteger> input, final ExecCtx ctx) throws Exception {
+		protected BigInteger notNullExecute(final Iterable<BigInteger> input, final ExecCtx ctx) throws Exception {
 			BigInteger sum = BigInteger.valueOf(0);
 			for (BigInteger number : input) {
 				if (number != null) {
@@ -177,14 +174,14 @@ public final class FMathBigInteger {
 		}		
 	}
 	
-	public static final class Avg extends AbstractNotNullFunction<Iterable<BigInteger>,BigInteger> {
+	static final class Avg extends AbstractNotNullFunction<Iterable<BigInteger>,BigInteger> {
 
-		public Avg() {
+		Avg() {
 			super();
 		}
 		
 		@Override
-		public BigInteger notNullExecute(final Iterable<BigInteger> input, final ExecCtx ctx) throws Exception {
+		protected BigInteger notNullExecute(final Iterable<BigInteger> input, final ExecCtx ctx) throws Exception {
 			
 			int countNotNull = 0;
 			BigInteger sum = BigInteger.valueOf(0);
@@ -198,30 +195,30 @@ public final class FMathBigInteger {
 		}		
 	}
 	
-	public static final class Abs extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
+	static final class Abs extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
 
-		public Abs() {
+		Abs() {
 			super();
 		}
 		
 		@Override
-		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
+		protected BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
 			return input.abs();
 		}
 	}
 	
-	public static final class Add extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
+	static final class Add extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
 
 		private final BigInteger add;
 		
-		public Add(BigInteger add) {
+		Add(BigInteger add) {
 			super();
 			Validate.notNull(add, "Number to be added can't be null");
 			this.add = add;
 		}
 
 		@Override
-		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
+		protected BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
 			BigInteger result = input;
 			result = result.add(this.add);
 				
@@ -229,11 +226,11 @@ public final class FMathBigInteger {
 		}	
 	}
 	
-	public static final class Subtract extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
+	static final class Subtract extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
 
 		private final BigInteger subtract;
 		
-		public Subtract(BigInteger subtract) {
+		Subtract(BigInteger subtract) {
 			super();
 			Validate.notNull(subtract, "Number to be subtracted can't be null");
 			Validate.notNull(subtract, "Number to be added can't be null");
@@ -241,7 +238,7 @@ public final class FMathBigInteger {
 		}
 
 		@Override
-		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
+		protected BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
 			BigInteger result = input;
 			result = result.subtract(this.subtract);
 				
@@ -249,18 +246,18 @@ public final class FMathBigInteger {
 		}		
 	}
 	
-	public static final class Divide extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
+	static final class Divide extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
 
 		private final BigInteger divisor;
 		
-		public Divide(BigInteger divisor) {
+		Divide(BigInteger divisor) {
 			super();
 			Validate.notNull(divisor, "Divisor can't be null");
 			this.divisor = divisor;
 		}
 		
 		@Override
-		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
+		protected BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
 			BigInteger result = input;
 			
 			result = result.divide(this.divisor);	
@@ -270,65 +267,65 @@ public final class FMathBigInteger {
 	}
 	
 	
-	public static final class Module extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
+	static final class Module extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
 
 		private final BigInteger module;
 		
-		public Module(BigInteger module) {
+		Module(BigInteger module) {
 			super();
 			this.module = module;
 		}
 		
 		@Override
-		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
+		protected BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
 			return input.mod(this.module);
 		}	
 	}
 	
-	public static final class Remainder extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
+	static final class Remainder extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
 
 		private final BigInteger divisor;
 		
-		public Remainder(BigInteger module) {
+		Remainder(BigInteger module) {
 			super();
 			this.divisor = module;
 		}
 		
 		@Override
-		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
+		protected BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
 			return input.remainder(this.divisor);
 		}	
 	}
 	
-	public static final class Multiply extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
+	static final class Multiply extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
 
 		private final BigInteger multiplicand;
 		
-		public Multiply(BigInteger multiplicand) {
+		Multiply(BigInteger multiplicand) {
 			super();
 			Validate.notNull(multiplicand, "Multiplicand can't be null");
 			this.multiplicand = multiplicand;
 		}
 		
 		@Override
-		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
+		protected BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
 			BigInteger result = input;			
 			result = result.multiply(this.multiplicand);			
 			return result;
 		}	
 	}
 	
-	public static final class Raise extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
+	static final class Pow extends AbstractNullAsNullFunction<BigInteger, BigInteger> {
 
 		private final int power;
 		
-		public Raise(int power) {
+		Pow(int power) {
 			super();
 			this.power = power;
 		}
 		
 		@Override
-		public BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
+		protected BigInteger nullAsNullExecute(final BigInteger input, final ExecCtx ctx) throws Exception {
 			BigInteger result = input;			
 			result = result.pow(this.power);			
 			return result;
