@@ -48,7 +48,7 @@ final class FnStringAuxNumberConverters {
 
 
     
-    private final static class Delegated {
+    private static final class Delegated {
         
         public static Delegated DELEGATED = new Delegated();
         

@@ -277,7 +277,7 @@ public class FnArrayOf<T> {
 
         }
 
-        private static class ArrayLinkedHashSet<T> extends LinkedHashSet<T[]> {
+        private static final class ArrayLinkedHashSet<T> extends LinkedHashSet<T[]> {
 
             private static final long serialVersionUID = 4483418737509306962L;
 

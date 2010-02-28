@@ -118,7 +118,7 @@ public final class FnMapOf<K,V> {
     
     
     
-    static class SortByKey<K,V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
+    static final class SortByKey<K,V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 
         SortByKey() {
             super();
@@ -145,7 +145,7 @@ public final class FnMapOf<K,V> {
 
     
     
-    static class SortEntries<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
+    static final class SortEntries<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 
         private final Comparator<? super Map.Entry<K, V>> comparator;
 
@@ -386,7 +386,7 @@ public final class FnMapOf<K,V> {
     
     
     
-    static class ExtractKeys<K, V> extends AbstractNotNullFunction<Map<K, V>,Set<K>> {
+    static final class ExtractKeys<K, V> extends AbstractNotNullFunction<Map<K, V>,Set<K>> {
 
         ExtractKeys() {
             super();
@@ -401,7 +401,7 @@ public final class FnMapOf<K,V> {
     
     
     
-    static class ExtractValues<K, V> extends AbstractNotNullFunction<Map<K, V>,List<V>> {
+    static final class ExtractValues<K, V> extends AbstractNotNullFunction<Map<K, V>,List<V>> {
 
         ExtractValues() {
             super();

@@ -45,7 +45,7 @@ Bending the Java spoon
   Ok, this was a little bit more readable than "normal" java code... but what if all those 
   Strings where dates in the <<<dd/MM/yyyy>>> format and we wanted to 
   convert them to <<<java.util.Calendar>>> objects? 
-  Let's iterate the newly created set and execute one of op4j's more than 100 predefined 
+  Let's iterate the newly created set and execute one of op4j's more than 200 predefined 
   functions on each of the array's elements...
 
 ---

@@ -792,7 +792,7 @@ public final class FnString {
 	
 	
     
-    static class ToBoolean extends AbstractNullAsNullFunction<String,Boolean>  {
+    static final class ToBoolean extends AbstractNullAsNullFunction<String,Boolean>  {
         
         ToBoolean() {
             super();
