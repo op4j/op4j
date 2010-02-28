@@ -23,14 +23,17 @@ package org.op4j;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.nio.charset.Charset;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -45,6 +48,7 @@ import org.op4j.functions.FnList;
 import org.op4j.functions.FnObject;
 import org.op4j.functions.FnSet;
 import org.op4j.functions.FnString;
+import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;
 
@@ -395,6 +399,83 @@ watch.start();
         watch.stop();
         
         System.out.println("TIME: " + watch.toString());
+        
+        
+        System.out.println("**********************");
+        System.out.println("**********************");
+        System.out.println("**********************");
+        System.out.println("**********************");
+        System.out.println("**********************");
+        System.out.println("**********************");
+        System.out.println("**********************");
+        System.out.println("**********************");
+        System.out.println("**********************");
+        System.out.println("**********************");
+        System.out.println("**********************");
+        System.out.println("**********************");
+        System.out.println("**********************");
+        System.out.println("**********************");
+
+        
+        List<String> list = Arrays.asList(new String[] { "12/10/1492", "6/12/1978", "15/07/2045", null });
+        
+        Set<String> set1 = new LinkedHashSet<String>(list);
+        Set<String> set2 = Op.on(list).toSet().get();
+
+        System.out.println("set1 : " + set1);
+        System.out.println("set2 : " + set2);
+
+        Set<Calendar> set3 = 
+            Op.on(list).toSet().forEach().exec(FnString.toCalendar("dd/MM/yyyy")).get();
+
+        System.out.println("set3asStr : " + Op.on(set3).map(FnCalendar.toStr("EEEE dd MMMM yyyy")).get());
+        
+        Set<Calendar> set4 = 
+            Op.on(list).toSet().removeAllNull().forEach().exec(FnString.toCalendar("dd/MM/yyyy")).get();
+        
+        System.out.println("set4asStr : " + Op.on(set4).map(FnCalendar.toStr("EEEE dd MMMM yyyy", new Locale("en"))).get());
+
+        Set<Calendar> set5 = 
+            Op.on(list).toSet().removeAllNull().map(FnString.toCalendar("dd/MM/yyyy")).get();
+        
+        System.out.println("set5asStr : " + Op.on(set5).map(FnCalendar.toStr("EEEE dd MMMM yyyy", new Locale("en"))).get());
+     
+        Calendar now = Calendar.getInstance();
+        Set<Calendar> set6 = 
+            Op.on(list).toSet().map(FnString.toCalendar("dd/MM/yyyy")).removeAllNullOrTrue(FnCalendar.after(now)).get();
+        
+        System.out.println("set6asStr : " + Op.on(set6).map(FnCalendar.toStr("EEEE dd MMMM yyyy HH:mm:ss", new Locale("en"))).get());
+
+        
+        // ****************************
+        // WARNING: Non-op4j code!!
+        // ****************************
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("dd/MM/yyyy");
+        Set<Calendar> set = new LinkedHashSet<Calendar>();
+        for (String element : list) {
+          if (element != null) {
+              Date date = null;
+              try {
+                  date = dateFormat1.parse(element);
+              } catch (ParseException e) {
+                  throw new RuntimeException(e);
+              }
+              Calendar calendar = Calendar.getInstance();
+              calendar.setTimeInMillis(date.getTime());
+              if (!calendar.after(now)) {
+                  set.add(calendar);
+              }
+          }
+        }
+
+        
+        System.out.println("setasStr : " + Op.on(set).map(FnCalendar.toStr("EEEE dd MMMM yyyy HH:mm:ss", new Locale("en"))).get());
+        
+
+        Function<List<String>,Set<Calendar>> conversionFunction = 
+            Fn.onListOf(Types.STRING).toSet().map(FnString.toCalendar("dd/MM/yyyy")).removeAllNullOrTrue(FnCalendar.after(now)).get();
+
+        System.out.println("setFnasStr : " + Op.on(conversionFunction.execute(list)).map(FnCalendar.toStr("EEEE dd MMMM yyyy HH:mm:ss", new Locale("en"))).get());
         
     }
     

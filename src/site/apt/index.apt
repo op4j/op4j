@@ -13,10 +13,10 @@
 Bending the Java spoon
 
   <<op4j>> (pronounced <['op-ah]>) <<is a developer happiness tool>>. It is a Java library aimed at
-  improving quality, cleanness and readibility of Java code, especially auxiliary code like
-  structure iteration, mapping, data conversion...
+  <<improving quality, semantics, cleanness and readability of Java code>>, especially auxiliary code like
+  structure iteration, filtering, mapping, data conversion, etc.
   
-  op4j allows you to create <<chained operation expressions>> which apply both predefined or user-defined
+  op4j allows you to create <chained operation expressions> which apply both predefined or user-defined
   functions to your objects in a fluid and readable way. This improves the way your code looks and 
   greatly reduces the complexity of executing auxiliary low-level tasks in the highly bureaucratic, statically 
   -and strongly- typed language that Java is.  
@@ -29,10 +29,10 @@ Bending the Java spoon
 * A very quick overview example
 
   op4j expressions usually start with <<Op.on(...)>> (read it as <"operate on">) specifying the object on 
-  which op4j will operate, and end with <<get()>>, which returns the result of the 
-  expression. Let's see an example:
+  which op4j will operate, and end with <<get()>>, which effectively executes the defined 
+  expression and returns the result. Let's see an example:
 
-  First, let's convert a <<<List\<String\>>>> into an (ordered) <<<Set\<String\>>>>:
+  Let's convert a <<<List\<String\>>>> into an (ordered) <<<Set\<String\>>>>:
 
 ---
   // Without op4j
@@ -42,38 +42,43 @@ Bending the Java spoon
   Set<String> set = Op.on(list).toSet().get();
 ---
 
-  Ok, this was a little bit more readable than "normal" java code... but what if all those 
-  Strings where dates in the <<<dd/MM/yyyy>>> format and we wanted to 
-  convert them to <<<java.util.Calendar>>> objects? 
+  Ok, op4j code here was a little bit more readable than "normal" java code... but what if all those 
+  Strings were dates in the <<<dd/MM/yyyy>>> format and we wanted to 
+  convert them into <<<java.util.Calendar>>> objects?
+  
   Let's iterate the newly created set and execute one of op4j's more than 200 predefined 
-  functions on each of the array's elements...
+  functions on each of the set's elements...
 
 ---
   Set<Calendar> set = 
       Op.on(list).toSet().forEach().exec(FnString.toCalendar("dd/MM/yyyy")).get();
 ---
 
-  That was cool. But unfortunately, some of those Strings can be null, and of course
-  we don't want to apply the conversion on them, so let's add a check... 
+  That was cool. But unfortunately, it seems that some of those Strings could be null, and we don't want
+  nulls to be included in the final result, so let's remove them before executing the conversion...
 
 ---
   Set<Calendar> set = 
-      Op.on(list).toSet().forEach().ifNotNull().exec(FnString.toCalendar("dd/MM/yyyy")).get();
+      Op.on(list).toSet().removeAllNull().forEach().exec(FnString.toCalendar("dd/MM/yyyy")).get();
 ---
 
-  ...which is equivalent to:
-
----
-  Set<Calendar> set = 
-      Op.on(list).toSet().forEach().execIfNotNull(FnString.toCalendar("dd/MM/yyyy")).get();
----
-
-  And a <<<forEach().exec()>>> (= <execute on each>) operation is what is usually called a "map" operation, so let's
-  use that name (with the added nullity check): 
+  And a <<<forEach().exec()>>> (= <execute on each>) operation is what is usually called a <"map"> operation
+  (in fact <<<map()>>> is a <<<forEach().exec().endFor()>>>), so why not use that <cooler> name: 
 
 ---
   Set<Calendar> set = 
-      Op.on(list).toSet().mapIfNotNull(FnString.toCalendar("dd/MM/yyyy")).get();
+      Op.on(list).toSet().removeAllNull().map(FnString.toCalendar("dd/MM/yyyy")).get();
+---
+
+  But we will go a little bit further because we don't want dates in the future, only the past ones, 
+  and so we will reposition that
+  <<<removeAllNull()>>> operation after the <<<map>>> operation (conversion will not affect nulls)
+  and extend it with a boolean condition (a function returning a boolean) in order to remove future dates:
+
+---
+  Calendar now = Calendar.getInstance();
+  Set<Calendar> set = 
+      Op.on(list).toSet().map(FnString.toCalendar("dd/MM/yyyy")).removeAllNullOrTrue(FnCalendar.after(now)).get();
 ---
 
   Wow! this looks great. There is no need to compare with "normal" java code, right?... but let's do it anyway ;-)
@@ -82,42 +87,71 @@ Bending the Java spoon
   // ****************************
   // WARNING: Non-op4j code!!
   // ****************************
+  Calendar now = Calendar.getInstance();
   SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
   Set<Calendar> set = new LinkedHashSet<Calendar>();
   for (String element : list) {
     if (element != null) {
-        Date date = dateFormat.parse(element);
+        try {
+            date = dateFormat1.parse(element);
+        } catch (ParseException e) {
+            throw new SomeException(e);
+        }
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(date.getTime());
-        aux.add(calendar);
+        if (!calendar.after(now)) {
+            set.add(calendar);
+        }
     }
   }
 ---
 
-  And... what if we didn't really want to execute this operation right there, but rather just define it
-  and use it later? Well, then instead of our <<Op.on(...)>> we can create an equivalent 
-  <<Fn.on(...)>> one with exactly the same structure, and we will obtain an executable 
-  <<<Function\<List\<String\>,Set\<Calendar\>\>>>> object (read it as <"Function that receives
-  a List of String and returns a Set of Calendar">) at the other end:
+  Awful!! And this isn't even application logic, it's just auxiliary code for converting and filtering
+  a list of String dates... and it has turned into a lot of complex and hard-to-understand code, probably
+  bigger and uglier than the (much more important) application logic that might surround it.
+  
+  Output will be exactly the same for both fragments of code. Given:
   
 ---
-  Function<List<String>,Set<Calendar>> conversionFunction = 
-      Fn.onListOf(Types.STRING).toSet().mapIfNotNull(FnString.toCalendar("dd/MM/yyyy")).get();
+List<String> list = ["12/10/1492", "6/12/1978", "15/07/2045", null]
 ---
 
-  ...and then we can execute it just like:
+  ...both will return:
   
 ---
-  Set<Calendar> set = conversionFunction.execute(list);
+Set<Calendar> set = [Calendar(12 October 1492), Calendar(6 December 1978)]
+---
+
+  \
+  \
+  <<Making it last: turning expressions into functions>>  
+
+  And... what if we didn't really want to execute our date expression right there, but rather just define it
+  and <store> it somehow for later use (similar to what you'd do for a closure)? 
+  
+  Well, then instead of our <<Op.on(...)>> we can create an equivalent 
+  <<Fn.on(...)>> expression with exactly the same structure, and when executing <<get()>> we will 
+  obtain an executable <<<Function\<List\<String\>,Set\<Calendar\>\>>>> object (read it 
+  as <"Function that receives a List of String and returns a Set of Calendar">):
+  
+---
+  Function<List<String>,Set<Calendar>> dateProcessFunction = 
+      Fn.onListOf(Types.STRING).toSet().map(FnString.toCalendar("dd/MM/yyyy")).removeAllNullOrTrue(FnCalendar.after(now)).get();
+---
+
+  ...and then we will be able to execute it just like:
+  
+---
+  Set<Calendar> set = dateProcessFunction.execute(list);
 ---
   
-  ...or even use it in an <<<exec>>> expression exactly as any other predefined (or user-defined)
+  ...or even use it in an <<<exec>>> operation exactly as any other predefined (or user-defined)
   function, like:  
   
 ---
   List<List<String>> listOfListOfStrings = ...
   List<Set<Calendar>> listOfSetOfCalendars =
-      Op.on(listOfListOfStrings).forEach().exec(conversionFunction).get();
+      Op.on(listOfListOfStrings).forEach().exec(dateProcessFunction).get();
 ---
   
 * Learning more...
