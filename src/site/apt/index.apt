@@ -4,19 +4,25 @@
 
   <<op4j 1.0-beta1 RELEASED!>> (March 3rd, 2010). {{{download.html}[DOWNLOAD]}}
 
+  This software is in beta stage, although fairly stable and tested already. An official stable release is intended for Spring 2010.
 
 Bending the Java spoon
 
-  <<op4j>> (pronounced <"opah">) is a <developer happiness tool>. It is a Java library aimed at
+  <<op4j>> (pronounced <"opah">) <<is a developer happiness tool>>. It is a Java library aimed at
   improving quality, cleanness and readibility of Java code, especially auxiliary code like
   structure iteration, mapping, data conversion...
   
-  op4j allows you to create <<chained expressions>> which apply both predefined or user-defined
-  functions to your objects in a fluid and readable way. This improves your code clarity and 
-  eliminates the complexity inherent to the statically -and strongly- typed language Java is for
-  executing auxiliary low-level tasks.  
+  op4j allows you to create <<chained operation expressions>> which apply both predefined or user-defined
+  functions to your objects in a fluid and readable way. This improves the way your code looks and 
+  greatly reduces the complexity of executing auxiliary low-level tasks in the highly bureaucratic, statically 
+  -and strongly- typed language that Java is.  
+
+  op4j is open source, and it is distributed under the terms of the Apache License 2.0.
   
-* A very quick overview
+  Read the quick example below, go to <<{{{basics.html}The Basics Page}}>> or choose any link from the
+  menu on the left.
+  
+* A very quick overview example
 
   op4j expressions usually start with <<Op.on(...)>> (read it as <"operate on">) specifying the object on 
   which op4j will operate, and end with <<get()>>, which returns the result of the 
@@ -59,16 +65,14 @@ Bending the Java spoon
 ---
 
   And a <<<forEach().exec()>>> (= <execute on each>) operation is what is usually called a "map" operation, so let's
-  use it (with the added nullity check): 
+  use that name (with the added nullity check): 
 
 ---
   Set<Calendar> set = 
       Op.on(list).toSet().mapIfNotNull(FnString.toCalendar("dd/MM/yyyy")).get();
 ---
 
-  Wow! this looked great. There is no need to compare with "normal" java code, is there?
-  
-  Hmmm let's do it anyway ;-)
+  Wow! this looks great. There is no need to compare with "normal" java code, right?... but let's do it anyway ;-)
 
 ---
   // ****************************
@@ -112,6 +116,22 @@ Bending the Java spoon
       Op.on(listOfListOfStrings).forEach().exec(conversionFunction).get();
 ---
   
+* Learning more...
+
+  If you want to know more, here are some documentation links:
+  
+    * {{{basics.html}The Basics}}
+    
+    * {{{arrays.html}Working with arrays}}
+    
+    * {{{lists.html}Working with lists}}
+    
+    * {{{maps.html}Working with maps}}
+    
+    * {{{sets.html}Working with sets}}
+    
+    * {{{generic.html}Working with any object of any type (generic operations)}}
+
   
   
 

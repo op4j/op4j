@@ -36,6 +36,15 @@
       <item name="· Dependencies" href="dependencies.html"/>
       <item name="· User Forum/List" href="userlist.html"/>
       <item name="· Documentation">
+        <item name="· The Basics" href="basics.html"/>
+        <item name="· Functions" href="functions.html"/>
+        <item name="· Working with...">
+          <item name="· Arrays" href="arrays.html"/>
+          <item name="· Lists" href="lists.html"/>
+          <item name="· Maps" href="maps.html"/>
+          <item name="· Sets" href="sets.html"/>
+          <item name="· Any object (generic)" href="generic.html"/>
+        </item>
         <item name="· Javadoc" href="apidocs/index.html"/>
         <item name="· FAQ" href="faq.html" />
       </item>
