@@ -4,11 +4,15 @@
 
   <<op4j 1.0-beta1 RELEASED!>> (March 3rd, 2010). {{{download.html}[DOWNLOAD]}}
 
-  This software is in beta stage, although fairly stable and tested already. An official stable release is intended for Spring 2010.
+  This software is in beta stage, although fairly stable and tested already. An official stable release is 
+  intended for Spring 2010.\
+  Subscribe to the 
+  {{{https://lists.sourceforge.net/lists/listinfo/jasypt-announce}Announcement Mailing List}} and 
+  be the first to know! 
 
 Bending the Java spoon
 
-  <<op4j>> (pronounced <"opah">) <<is a developer happiness tool>>. It is a Java library aimed at
+  <<op4j>> (pronounced <['op-ah]>) <<is a developer happiness tool>>. It is a Java library aimed at
   improving quality, cleanness and readibility of Java code, especially auxiliary code like
   structure iteration, mapping, data conversion...
   

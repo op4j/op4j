@@ -37,7 +37,10 @@
       <item name="· User Forum/List" href="userlist.html"/>
       <item name="· Documentation">
         <item name="· The Basics" href="basics.html"/>
-        <item name="· Functions" href="functions.html"/>
+        <item name="· Functions">
+          <item name="· About Functions" href="functions.html"/>
+          <item name="· Function List" href="functionlist.html"/>
+        </item>
         <item name="· Working with...">
           <item name="· Arrays" href="arrays.html"/>
           <item name="· Lists" href="lists.html"/>
