@@ -2,10 +2,8 @@
   Main
   -------
 
-  <<op4j 1.0-beta1 RELEASED!>> (March 3rd, 2010). {{{download.html}[DOWNLOAD]}}
-
-  This software is in beta stage, although fairly stable and tested already. An official stable release is 
-  intended for Spring 2010.\
+  This software is in development stage, although fairly stable and tested already. A beta release
+  will appear in the next couple of days. An official stable release is intended for Spring 2010.\
   Subscribe to the 
   {{{https://lists.sourceforge.net/lists/listinfo/op4j-announce}Announcement Mailing List}} and 
   be the first to know! 
@@ -23,8 +21,10 @@ Bending the Java spoon
 
   op4j is open source, and it is distributed under the terms of the Apache License 2.0.
   
-  Read the quick example below, go to <<{{{basics.html}The Basics Page}}>> or choose any link from the
+  Read the quick example below, have a look at the {{{http://www.op4j.org/op4j_bending_the_Java_spoon.pdf}<<"op4j: An Introduction">>}} presentation,
+  go to <<{{{basics.html}The Basics Page}}>> or choose any link from the
   menu on the left.
+ 
   
 * A very quick overview example
 
