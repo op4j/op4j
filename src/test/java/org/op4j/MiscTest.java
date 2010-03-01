@@ -45,6 +45,7 @@ import org.op4j.functions.ExecCtx;
 import org.op4j.functions.FnArray;
 import org.op4j.functions.FnCalendar;
 import org.op4j.functions.FnList;
+import org.op4j.functions.FnMath;
 import org.op4j.functions.FnObject;
 import org.op4j.functions.FnSet;
 import org.op4j.functions.FnString;
@@ -479,10 +480,15 @@ watch.start();
      
         
         int[] v1 = new int[] {3,2,1,3};
+        long[] v2 = new long[] {3,2,1,3};
         
         Op.on(1).get();
         List<Integer> iL = Op.onAll(2,1,4,213).buildList().get();
         System.out.println(iL);
+        
+        System.out.println(Arrays.asList(Op.on(v1).forEach().exec(FnMath.ofInteger().add(Integer.valueOf(10))).get()));
+        
+        Op.on(v2).forEach().get();
         
     }
     

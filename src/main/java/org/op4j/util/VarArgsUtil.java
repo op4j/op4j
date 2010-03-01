@@ -42,54 +42,6 @@ public class VarArgsUtil {
     
     
     
-    public static List<Byte> asByteTargetList(final byte... targets) {
-        Validate.notNull(targets, "Targets cannot be null");
-        Validate.isTrue(targets.length > 0, "Targets cannot be empty");
-        return Arrays.asList(ArrayUtils.toObject(targets));
-    }
-    
-    public static List<Short> asShortTargetList(final short... targets) {
-        Validate.notNull(targets, "Targets cannot be null");
-        Validate.isTrue(targets.length > 0, "Targets cannot be empty");
-        return Arrays.asList(ArrayUtils.toObject(targets));
-    }
-    
-    public static List<Integer> asIntegerTargetList(final int... targets) {
-        Validate.notNull(targets, "Targets cannot be null");
-        Validate.isTrue(targets.length > 0, "Targets cannot be empty");
-        return Arrays.asList(ArrayUtils.toObject(targets));
-    }
-    
-    public static List<Long> asLongTargetList(final long... targets) {
-        Validate.notNull(targets, "Targets cannot be null");
-        Validate.isTrue(targets.length > 0, "Targets cannot be empty");
-        return Arrays.asList(ArrayUtils.toObject(targets));
-    }
-    
-    public static List<Float> asFloatTargetList(final float... targets) {
-        Validate.notNull(targets, "Targets cannot be null");
-        Validate.isTrue(targets.length > 0, "Targets cannot be empty");
-        return Arrays.asList(ArrayUtils.toObject(targets));
-    }
-    
-    public static List<Double> asDoubleTargetList(final double... targets) {
-        Validate.notNull(targets, "Targets cannot be null");
-        Validate.isTrue(targets.length > 0, "Targets cannot be empty");
-        return Arrays.asList(ArrayUtils.toObject(targets));
-    }
-    
-    public static List<Boolean> asBooleanTargetList(final boolean... targets) {
-        Validate.notNull(targets, "Targets cannot be null");
-        Validate.isTrue(targets.length > 0, "Targets cannot be empty");
-        return Arrays.asList(ArrayUtils.toObject(targets));
-    }
-    
-    public static List<Character> asCharacterTargetList(final char... targets) {
-        Validate.notNull(targets, "Targets cannot be null");
-        Validate.isTrue(targets.length > 0, "Targets cannot be empty");
-        return Arrays.asList(ArrayUtils.toObject(targets));
-    }
-    
     public static <T> List<T> asTargetList(final T... targets) {
         Validate.notNull(targets, "Targets cannot be null");
         Validate.isTrue(targets.length > 0, "Targets cannot be empty");
