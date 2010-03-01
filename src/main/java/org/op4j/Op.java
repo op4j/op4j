@@ -64,11 +64,76 @@ public final class Op {
     public static <T> Level0GenericUniqOperatorImpl<T,T> on(final T target) {
         return new Level0GenericUniqOperatorImpl<T,T>(ExecutionTarget.forOp(target, Normalisation.NONE));
     }
+    
+    public static <T> Level0GenericUniqOperatorImpl<Byte,Byte> on(final byte target) {
+        return new Level0GenericUniqOperatorImpl<Byte,Byte>(ExecutionTarget.forOp(Byte.valueOf(target), Normalisation.NONE));
+    }
+    
+    public static <T> Level0GenericUniqOperatorImpl<Short,Short> on(final short target) {
+        return new Level0GenericUniqOperatorImpl<Short,Short>(ExecutionTarget.forOp(Short.valueOf(target), Normalisation.NONE));
+    }
+    
+    public static <T> Level0GenericUniqOperatorImpl<Integer,Integer> on(final int target) {
+        return new Level0GenericUniqOperatorImpl<Integer,Integer>(ExecutionTarget.forOp(Integer.valueOf(target), Normalisation.NONE));
+    }
+    
+    public static <T> Level0GenericUniqOperatorImpl<Long,Long> on(final long target) {
+        return new Level0GenericUniqOperatorImpl<Long,Long>(ExecutionTarget.forOp(Long.valueOf(target), Normalisation.NONE));
+    }
+    
+    public static <T> Level0GenericUniqOperatorImpl<Float,Float> on(final float target) {
+        return new Level0GenericUniqOperatorImpl<Float,Float>(ExecutionTarget.forOp(Float.valueOf(target), Normalisation.NONE));
+    }
+    
+    public static <T> Level0GenericUniqOperatorImpl<Double,Double> on(final double target) {
+        return new Level0GenericUniqOperatorImpl<Double,Double>(ExecutionTarget.forOp(Double.valueOf(target), Normalisation.NONE));
+    }
+    
+    public static <T> Level0GenericUniqOperatorImpl<Boolean,Boolean> on(final boolean target) {
+        return new Level0GenericUniqOperatorImpl<Boolean,Boolean>(ExecutionTarget.forOp(Boolean.valueOf(target), Normalisation.NONE));
+    }
+    
+    public static <T> Level0GenericUniqOperatorImpl<Character,Character> on(final char target) {
+        return new Level0GenericUniqOperatorImpl<Character,Character>(ExecutionTarget.forOp(Character.valueOf(target), Normalisation.NONE));
+    }
 
     
+    
     public static <T> Level0GenericMultiOperatorImpl<T,T> onAll(final T... targets) {
-        return new Level0GenericMultiOperatorImpl<T,T>(ExecutionTarget.forOp(VarArgsUtil.asRequiredObjectList(targets), Normalisation.NONE).iterate(Structure.LIST, true));
+        return new Level0GenericMultiOperatorImpl<T,T>(ExecutionTarget.forOp(VarArgsUtil.asTargetList(targets), Normalisation.NONE).iterate(Structure.LIST, true));
     }
+    
+//    public static <T> Level0GenericMultiOperatorImpl<Byte,Byte> onAll(final byte... targets) {
+//        return new Level0GenericMultiOperatorImpl<Byte,Byte>(ExecutionTarget.forOp(VarArgsUtil.asByteTargetList(targets), Normalisation.NONE).iterate(Structure.LIST, true));
+//    }
+//    
+//    public static <T> Level0GenericMultiOperatorImpl<Short,Short> onAll(final short... targets) {
+//        return new Level0GenericMultiOperatorImpl<Short,Short>(ExecutionTarget.forOp(VarArgsUtil.asShortTargetList(targets), Normalisation.NONE).iterate(Structure.LIST, true));
+//    }
+    
+    public static <T> Level0GenericMultiOperatorImpl<Integer,Integer> onAll(final int... targets) {
+        return new Level0GenericMultiOperatorImpl<Integer,Integer>(ExecutionTarget.forOp(VarArgsUtil.asIntegerTargetList(targets), Normalisation.NONE).iterate(Structure.LIST, true));
+    }
+    
+    public static <T> Level0GenericMultiOperatorImpl<Long,Long> onAll(final long... targets) {
+        return new Level0GenericMultiOperatorImpl<Long,Long>(ExecutionTarget.forOp(VarArgsUtil.asLongTargetList(targets), Normalisation.NONE).iterate(Structure.LIST, true));
+    }
+//    
+//    public static <T> Level0GenericMultiOperatorImpl<Float,Float> onAll(final float... targets) {
+//        return new Level0GenericMultiOperatorImpl<Float,Float>(ExecutionTarget.forOp(VarArgsUtil.asFloatTargetList(targets), Normalisation.NONE).iterate(Structure.LIST, true));
+//    }
+//    
+//    public static <T> Level0GenericMultiOperatorImpl<Double,Double> onAll(final double... targets) {
+//        return new Level0GenericMultiOperatorImpl<Double,Double>(ExecutionTarget.forOp(VarArgsUtil.asDoubleTargetList(targets), Normalisation.NONE).iterate(Structure.LIST, true));
+//    }
+//    
+//    public static <T> Level0GenericMultiOperatorImpl<Boolean,Boolean> onAll(final boolean... targets) {
+//        return new Level0GenericMultiOperatorImpl<Boolean,Boolean>(ExecutionTarget.forOp(VarArgsUtil.asBooleanTargetList(targets), Normalisation.NONE).iterate(Structure.LIST, true));
+//    }
+//    
+//    public static <T> Level0GenericMultiOperatorImpl<Character,Character> onAll(final char... targets) {
+//        return new Level0GenericMultiOperatorImpl<Character,Character>(ExecutionTarget.forOp(VarArgsUtil.asCharacterTargetList(targets), Normalisation.NONE).iterate(Structure.LIST, true));
+//    }
 
     
     

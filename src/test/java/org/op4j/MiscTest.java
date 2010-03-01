@@ -476,6 +476,13 @@ watch.start();
             Fn.onListOf(Types.STRING).toSet().map(FnString.toCalendar("dd/MM/yyyy")).removeAllNullOrTrue(FnCalendar.after(now)).get();
 
         System.out.println("setFnasStr : " + Op.on(conversionFunction.execute(list)).map(FnCalendar.toStr("EEEE dd MMMM yyyy HH:mm:ss", new Locale("en"))).get());
+     
+        
+        int[] v1 = new int[] {3,2,1,3};
+        
+        Op.on(1).get();
+        List<Integer> iL = Op.onAll(2,1,4,213).buildList().get();
+        System.out.println(iL);
         
     }
     
