@@ -17,35 +17,40 @@
  * 
  * =============================================================================
  */
-package org.op4j.operators.qualities;
+package org.op4j.operators.intf.generic;
 
-import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
+import org.op4j.functions.IFunction;
+import org.op4j.operators.qualities.ExecutableSelectedOperator;
+import org.op4j.operators.qualities.ReplaceableOperator;
+import org.op4j.operators.qualities.SelectedOperator;
+import org.op4j.operators.qualities.UniqOperator;
 
 
 
 
 /**
- * <p>
- * This interface contains methods for converting specialized structure operators
- * (list, set, array...) into generic operators (as if an "Op.on" was executed on
- * them instead of "Op.onList", "Op.onArray", etc.)
- * </p>
  * 
  * @since 1.0
  * 
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface GenerizableOperator<I,T> {
-   
-    /**
-     * <p>
-     * Converts the specialized structure operator into generic operators
-     * (with no specific methods for structures - e.g. forEach())
-     * </p>
-     * 
-     * @return a generic operator on the same target object
-     */
-    public ILevel0GenericUniqOperator<I,T> generic();
+public interface ILevel0GenericUniqSelectedOperator<I,T>
+        extends UniqOperator<T>,
+        		ExecutableSelectedOperator<T>,
+                ReplaceableOperator<T>,
+                SelectedOperator<T> {
+
+
+
+    public ILevel0GenericUniqOperator<I,T> endIf();
+
     
+    public ILevel0GenericUniqSelectedOperator<I,T> replaceWith(final T replacement);
+    
+    public ILevel0GenericUniqSelectedOperator<I,T> execIfNotNull(final IFunction<? super T,? extends T> function);
+
+    public ILevel0GenericUniqSelectedOperator<I,T> exec(final IFunction<? super T,? extends T> function);
+
+
 }

@@ -31,9 +31,9 @@ import org.junit.Test;
 import org.op4j.functions.Call;
 import org.op4j.functions.FnNumber;
 import org.op4j.functions.FnString;
-import org.op4j.operators.impl.op.array.Level0ArrayOperatorImpl;
-import org.op4j.operators.impl.op.list.Level0ListOperatorImpl;
-import org.op4j.operators.impl.op.list.Level1ListElementsOperatorImpl;
+import org.op4j.operators.impl.op.array.Level0ArrayOperator;
+import org.op4j.operators.impl.op.list.Level0ListOperator;
+import org.op4j.operators.impl.op.list.Level1ListElementsOperator;
 
 /**
  * 
@@ -132,7 +132,7 @@ public class BenchmarkTest {
 			
 			StopWatch op4jWatch = new StopWatch();
 			
-			Level0ListOperatorImpl<List<User>,User> op1 = null;
+			Level0ListOperator<List<User>,User> op1 = null;
 			op4jWatch.start();
 			for (int i = 0; i < ITERATIONS; i++) {
 				op1 = Op.onList(users);
@@ -142,7 +142,7 @@ public class BenchmarkTest {
 			String time1 = op4jWatch.toString();
 			op4jWatch.reset();
 			
-			Level1ListElementsOperatorImpl<List<User>,User> op2 = null;
+			Level1ListElementsOperator<List<User>,User> op2 = null;
 			op4jWatch.start();
 			for (int i = 0; i < ITERATIONS; i++) {
 				op2 = op1.forEach();
@@ -152,7 +152,7 @@ public class BenchmarkTest {
 			String time2 = op4jWatch.toString();
 			op4jWatch.reset();
 			
-			Level1ListElementsOperatorImpl<List<User>,String> op3 = null;
+			Level1ListElementsOperator<List<User>,String> op3 = null;
 			op4jWatch.start();
 			for (int i = 0; i < ITERATIONS; i++) {
 				op3 = op2.exec(Call.asString("getName"));
@@ -162,7 +162,7 @@ public class BenchmarkTest {
 			String time3 = op4jWatch.toString();
 			op4jWatch.reset();
 			
-			Level1ListElementsOperatorImpl<List<User>,String> op4 = null;
+			Level1ListElementsOperator<List<User>,String> op4 = null;
 			op4jWatch.start();
 			for (int i = 0; i < ITERATIONS; i++) {
 				op4 = op3.exec(FnString.toUpperCase());
@@ -172,7 +172,7 @@ public class BenchmarkTest {
 			String time4 = op4jWatch.toString();
 			op4jWatch.reset();
 			
-			Level0ListOperatorImpl<List<User>,String> op5 = null;
+			Level0ListOperator<List<User>,String> op5 = null;
 			op4jWatch.start();
 			for (int i = 0; i < ITERATIONS; i++) {
 				op5 = op4.endFor();
@@ -182,7 +182,7 @@ public class BenchmarkTest {
 			String time5 = op4jWatch.toString();
 			op4jWatch.reset();
 			
-			Level0ArrayOperatorImpl<List<User>,String> op6 = null;
+			Level0ArrayOperator<List<User>,String> op6 = null;
 			op4jWatch.start();
 			for (int i = 0; i < ITERATIONS; i++) {
 				op6 = op5.toArrayOf(Types.STRING);

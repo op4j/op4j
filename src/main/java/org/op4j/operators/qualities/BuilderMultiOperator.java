@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
-import org.op4j.operators.intf.map.Level0MapOperator;
+import org.op4j.operators.intf.map.ILevel0MapOperator;
 
 
 
@@ -50,7 +50,7 @@ public interface BuilderMultiOperator<I,T> {
      * 
      * @return an operator on the resulting map.
      */
-    public Level0MapOperator<I,T,T> buildMapByAlternateElements();
+    public ILevel0MapOperator<I,T,T> buildMapByAlternateElements();
 
     /**
      * <p>
@@ -61,7 +61,7 @@ public interface BuilderMultiOperator<I,T> {
      * 
      * @return an operator on the resulting map of list
      */
-    public Level0MapOperator<I,T,List<T>> buildMapOfListByAlternateElements();
+    public ILevel0MapOperator<I,T,List<T>> buildMapOfListByAlternateElements();
 
     /**
      * <p>
@@ -72,7 +72,7 @@ public interface BuilderMultiOperator<I,T> {
      * 
      * @return an operator on the resulting map of set
      */
-    public Level0MapOperator<I,T,Set<T>> buildMapOfSetByAlternateElements();
+    public ILevel0MapOperator<I,T,Set<T>> buildMapOfSetByAlternateElements();
 
     /**
      * <p>
@@ -84,6 +84,6 @@ public interface BuilderMultiOperator<I,T> {
      * @param type the type of which the arrays will be instantiated
      * @return an operator on the resulting map of array
      */
-    public Level0MapOperator<I,T,T[]> buildMapOfArrayByAlternateElementsOf(final Type<T> type);
+    public ILevel0MapOperator<I,T,T[]> buildMapOfArrayByAlternateElementsOf(final Type<T> type);
     
 }

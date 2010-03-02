@@ -25,11 +25,11 @@ import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.operators.impl.fn.array.Level0ArrayOperatorImpl;
-import org.op4j.operators.impl.fn.generic.Level0GenericUniqOperatorImpl;
-import org.op4j.operators.impl.fn.list.Level0ListOperatorImpl;
-import org.op4j.operators.impl.fn.map.Level0MapOperatorImpl;
-import org.op4j.operators.impl.fn.set.Level0SetOperatorImpl;
+import org.op4j.operators.impl.fn.array.Level0ArrayOperator;
+import org.op4j.operators.impl.fn.generic.Level0GenericUniqOperator;
+import org.op4j.operators.impl.fn.list.Level0ListOperator;
+import org.op4j.operators.impl.fn.map.Level0MapOperator;
+import org.op4j.operators.impl.fn.set.Level0SetOperator;
 import org.op4j.target.ExecutionTarget;
 import org.op4j.target.Target.Normalisation;
 
@@ -58,26 +58,26 @@ public final class Fn {
     
     
     
-    public static <T> Level0GenericUniqOperatorImpl<T,T> on(final Type<T> type) {
-        return new Level0GenericUniqOperatorImpl<T,T>(ExecutionTarget.forFn(Normalisation.NONE));
+    public static <T> Level0GenericUniqOperator<T,T> on(final Type<T> type) {
+        return new Level0GenericUniqOperator<T,T>(ExecutionTarget.forFn(Normalisation.NONE));
     }
     
     
-    public static <T> Level0ArrayOperatorImpl<T[],T> on(final Type<T[]> type) {
+    public static <T> Level0ArrayOperator<T[],T> on(final Type<T[]> type) {
         return onArrayOf(Types.arrayComponentOf(type));
     }
     
-    public static <T> Level0ListOperatorImpl<List<T>,T> on(final Type<List<T>> type) {
+    public static <T> Level0ListOperator<List<T>,T> on(final Type<List<T>> type) {
         return onListOf(Types.listComponentOf(type));
     }
 
     
-    public static <K,V> Level0MapOperatorImpl<Map<K,V>,K,V> on(final Type<Map<K,V>> type) {
+    public static <K,V> Level0MapOperator<Map<K,V>,K,V> on(final Type<Map<K,V>> type) {
         return onMapOf(Types.mapKeyComponentOf(type), Types.mapValueComponentOf(type));
     }
 
     
-    public static <T> Level0SetOperatorImpl<Set<T>,T> on(final Type<Set<T>> type) {
+    public static <T> Level0SetOperator<Set<T>,T> on(final Type<Set<T>> type) {
         return onSetOf(Types.setComponentOf(type));
     }
     
@@ -85,23 +85,23 @@ public final class Fn {
     
     
     
-    public static <T> Level0ArrayOperatorImpl<T[],T> onArrayOf(final Type<T> type) {
-        return new Level0ArrayOperatorImpl<T[],T>(type, ExecutionTarget.forFn(Normalisation.ARRAY(type.getRawClass())));
+    public static <T> Level0ArrayOperator<T[],T> onArrayOf(final Type<T> type) {
+        return new Level0ArrayOperator<T[],T>(type, ExecutionTarget.forFn(Normalisation.ARRAY(type.getRawClass())));
     }
 
     
-    public static <T> Level0ListOperatorImpl<List<T>,T> onListOf(final Type<T> type) {
-        return new Level0ListOperatorImpl<List<T>,T>(ExecutionTarget.forFn(Normalisation.LIST));
+    public static <T> Level0ListOperator<List<T>,T> onListOf(final Type<T> type) {
+        return new Level0ListOperator<List<T>,T>(ExecutionTarget.forFn(Normalisation.LIST));
     }
 
     
-    public static <K,V> Level0MapOperatorImpl<Map<K,V>,K,V> onMapOf(final Type<K> keyType, Type<V> valueType) {
-        return new Level0MapOperatorImpl<Map<K,V>,K,V>(ExecutionTarget.forFn(Normalisation.MAP));
+    public static <K,V> Level0MapOperator<Map<K,V>,K,V> onMapOf(final Type<K> keyType, Type<V> valueType) {
+        return new Level0MapOperator<Map<K,V>,K,V>(ExecutionTarget.forFn(Normalisation.MAP));
     }
 
     
-    public static <T> Level0SetOperatorImpl<Set<T>,T> onSetOf(final Type<T> type) {
-        return new Level0SetOperatorImpl<Set<T>,T>(ExecutionTarget.forFn(Normalisation.SET));
+    public static <T> Level0SetOperator<Set<T>,T> onSetOf(final Type<T> type) {
+        return new Level0SetOperator<Set<T>,T>(ExecutionTarget.forFn(Normalisation.SET));
     }
     
     
