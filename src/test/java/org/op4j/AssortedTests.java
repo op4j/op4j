@@ -44,7 +44,7 @@ public class AssortedTests extends TestCase {
 		.forEach().exec(new IFunction<String, String>() {
 			public String execute(String object, ExecCtx ctx)
 			throws Exception {
-				return ctx.getCurrentIndex() + " - " + object;
+				return ctx.getIndex() + " - " + object;
 			}
 			public Type<? extends String> getResultType(
 					Type<? extends String> targetType) {

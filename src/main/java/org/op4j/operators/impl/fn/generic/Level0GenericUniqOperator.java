@@ -62,25 +62,25 @@ public final class Level0GenericUniqOperator<I,T> extends AbstractOperator
 
 
     public Level0GenericMultiOperator<I,T> add(final T newElement) {
-        return new Level0GenericMultiOperator<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().add(newElement)).iterate(Structure.LIST, true));
+        return new Level0GenericMultiOperator<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().add(newElement)).iterate(Structure.LIST));
     }
 
     public Level0GenericMultiOperator<I,T> addAll(final T... newElements) {
-        return new Level0GenericMultiOperator<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().add(newElements)).iterate(Structure.LIST, true));
+        return new Level0GenericMultiOperator<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().add(newElements)).iterate(Structure.LIST));
     }
 
     public Level0GenericMultiOperator<I,T> insert(final int position, final T newElement) {
-        return new Level0GenericMultiOperator<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().insert(position, newElement)).iterate(Structure.LIST, true));
+        return new Level0GenericMultiOperator<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().insert(position, newElement)).iterate(Structure.LIST));
     }
 
     public Level0GenericMultiOperator<I,T> insertAll(final int position, final T... newElements) {
-        return new Level0GenericMultiOperator<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().insert(position, newElements)).iterate(Structure.LIST, true));
+        return new Level0GenericMultiOperator<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().insert(position, newElements)).iterate(Structure.LIST));
     }
 
 
     @SuppressWarnings("unchecked")
     public Level0GenericMultiOperator<I,T> addAll(final Collection<T> collection) {
-        return new Level0GenericMultiOperator<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().addAll((Collection)collection)).iterate(Structure.LIST, true));
+        return new Level0GenericMultiOperator<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().addAll((Collection)collection)).iterate(Structure.LIST));
     }
 
 

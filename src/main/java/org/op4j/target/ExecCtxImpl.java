@@ -32,81 +32,21 @@ import org.op4j.functions.ExecCtx;
 final class ExecCtxImpl implements ExecCtx {
 
     
-    private Integer level0Index;
-    private Integer level1Index;
-    private Integer level2Index;
-    private Integer level3Index;
-    private Integer level4Index;
-    private Integer level;
+    private Integer iterIndex;
 
 
     
     
-    public ExecCtxImpl(final int[] indexes) {
+    public ExecCtxImpl(final Integer index) {
         super();
-        initialize(
-                Integer.valueOf(indexes.length - 1),
-                (indexes.length >= 1? Integer.valueOf(indexes[0]) : null),
-                (indexes.length >= 2? Integer.valueOf(indexes[1]) : null),
-                (indexes.length >= 3? Integer.valueOf(indexes[2]) : null),
-                (indexes.length >= 4? Integer.valueOf(indexes[3]) : null),
-                (indexes.length >= 5? Integer.valueOf(indexes[4]) : null));
-    }
-
-    
-    private void initialize(final Integer newLevel, final Integer newLevel0Index, final Integer newLevel1Index, final Integer newLevel2Index, final Integer newLevel3Index, final Integer newLevel4Index) {
-
-        this.level = newLevel;
-        this.level0Index = newLevel0Index;
-        this.level1Index = newLevel1Index;
-        this.level2Index = newLevel2Index;
-        this.level3Index = newLevel3Index;
-        this.level4Index = newLevel4Index;
-        
+        this.iterIndex = index;
     }
     
 
-    public Integer getLevel0Index() {
-        return this.level0Index;
+    public Integer getIndex() {
+        return this.iterIndex;
     }
-
-
-    public Integer getLevel1Index() {
-        return this.level1Index;
-    }
-
-
-    public Integer getLevel2Index() {
-        return this.level2Index;
-    }
-
-
-    public Integer getLevel3Index() {
-        return this.level3Index;
-    }
-
     
-    public Integer getLevel4Index() {
-        return this.level4Index;
-    }
-
-    public Integer getCurrentIndex() {
-        switch (this.level.intValue()) {
-            case 0: return this.level0Index;
-            case 1: return this.level1Index;
-            case 2: return this.level2Index;
-            case 3: return this.level3Index;
-            case 4: return this.level4Index;
-        }
-        // Will never happen
-        return null;
-    }
-
-
-    public Integer getIterationLevel() {
-        return this.level;
-    }
-
     
     
     

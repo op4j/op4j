@@ -46,13 +46,12 @@ final class ExecutionTargetSelectIndexOperation implements ExecutionTargetOperat
     
     
     
-    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indexes) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final Integer index) {
 
-        final int newIndex = indexes[indexes.length - 1];
-        if (this.positions.contains(Integer.valueOf(newIndex)) == this.desiredResult) {
+        if (this.positions.contains(index) == this.desiredResult) {
             Object result = target;
             for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
-                result = operations[this.internalBlock][j].execute(result, operations, indexes);
+                result = operations[this.internalBlock][j].execute(result, operations, index);
             }
             return result;
         }

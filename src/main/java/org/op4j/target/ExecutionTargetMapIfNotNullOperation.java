@@ -56,26 +56,8 @@ final class ExecutionTargetMapIfNotNullOperation implements ExecutionTargetOpera
     
 
     
-    private static int[] addIndex(final int[] indexes, final int newIndex, final boolean excludeFirstIndex) {
-        int[] newIndices = null;
-        if (excludeFirstIndex) {
-            newIndices = new int[indexes.length];
-            for (int i = 0, z = indexes.length - 1; i < z; i++) {
-                newIndices[i] = indexes[i + 1];
-            }
-        } else {
-            newIndices = new int[indexes.length + 1];
-            for (int i = 0, z = indexes.length; i < z; i++) {
-                newIndices[i] = indexes[i];
-            }
-        }
-        newIndices[newIndices.length - 1] = newIndex;
-        return newIndices;
-    }
     
-    
-    
-    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indexes) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final Integer index) {
         
         if (target == null) {
             
@@ -98,7 +80,7 @@ final class ExecutionTargetMapIfNotNullOperation implements ExecutionTargetOpera
                         arrayResult[i] =
                             (arrayTarget[i] == null?
                                 null :
-                                this.executable.execute(arrayTarget[i], new ExecCtxImpl(addIndex(indexes, i, false))));
+                                this.executable.execute(arrayTarget[i], new ExecCtxImpl(Integer.valueOf(i))));
                     }
                     return arrayResult;
     
@@ -111,7 +93,7 @@ final class ExecutionTargetMapIfNotNullOperation implements ExecutionTargetOpera
                         listResult.add(
                                 (element == null?
                                         null :
-                                        this.executable.execute(element, new ExecCtxImpl(addIndex(indexes, iList, false)))));
+                                        this.executable.execute(element, new ExecCtxImpl(Integer.valueOf(iList)))));
                         iList++;
                     }
                     return listResult;
@@ -126,7 +108,7 @@ final class ExecutionTargetMapIfNotNullOperation implements ExecutionTargetOpera
                         setResult.add(
                                 (element == null?
                                         null :
-                                        this.executable.execute(element, new ExecCtxImpl(addIndex(indexes, iSet, false)))));
+                                        this.executable.execute(element, new ExecCtxImpl(Integer.valueOf(iSet)))));
                         iSet++;
                     }
                     return setResult;

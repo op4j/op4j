@@ -43,7 +43,7 @@ final class ExecutionTargetOnValueOperation implements ExecutionTargetOperation 
     }
 
     
-    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indexes) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final Integer index) {
         
         if (target == null) {
             
@@ -56,7 +56,7 @@ final class ExecutionTargetOnValueOperation implements ExecutionTargetOperation 
             Object value = mapEntryTarget.getValue();
             
             for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
-                value = operations[this.internalBlock][j].execute(value, operations, indexes);
+                value = operations[this.internalBlock][j].execute(value, operations, index);
             }
             
             return new MapEntry<Object,Object>(key, value);

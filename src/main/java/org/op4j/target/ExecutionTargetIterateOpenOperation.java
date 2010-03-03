@@ -34,25 +34,23 @@ final class ExecutionTargetIterateOpenOperation implements ExecutionTargetOperat
 
     private final int internalBlock;
     private final Structure structure;
-    private final boolean excludeFirstIndex;
 
     
     
-    public ExecutionTargetIterateOpenOperation(final int internalBlock, final Structure structure, final boolean excludeFirstIndex) {
+    public ExecutionTargetIterateOpenOperation(final int internalBlock, final Structure structure) {
         super();
         this.internalBlock = internalBlock;
         this.structure = structure;
-        this.excludeFirstIndex = excludeFirstIndex;
     }
 
     
     public ExecutionTargetIterateClosedOperation close(final Class<?> arrayComponentClass) {
-        return new ExecutionTargetIterateClosedOperation(this.internalBlock, this.structure, arrayComponentClass, this.excludeFirstIndex);
+        return new ExecutionTargetIterateClosedOperation(this.internalBlock, this.structure, arrayComponentClass);
     }
     
     
     
-    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indexes) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final Integer index) {
         throw new IllegalStateException("Cannot execute while open");
     }
     

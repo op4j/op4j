@@ -52,7 +52,7 @@ final class ExecutionTargetReplaceWithOperation implements ExecutionTargetOperat
     
     
     @SuppressWarnings("unchecked")
-    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indexes) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final Integer index) {
         
         Object result = this.replacement;
         

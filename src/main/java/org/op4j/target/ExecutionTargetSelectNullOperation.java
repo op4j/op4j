@@ -43,12 +43,12 @@ final class ExecutionTargetSelectNullOperation implements ExecutionTargetOperati
     
     
     
-    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indexes) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final Integer index) {
 
         if ((target == null) == this.desiredResult) {
             Object result = target;
             for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
-                result = operations[this.internalBlock][j].execute(result, operations, indexes);
+                result = operations[this.internalBlock][j].execute(result, operations, index);
             }
             return result;
         }

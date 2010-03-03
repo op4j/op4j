@@ -300,11 +300,11 @@ public final class ExecutionTarget extends Target {
 
 
     @Override
-    Target doIterate(final Structure structure, final boolean excludeFirstIndex) {
+    Target doIterate(final Structure structure) {
 
         final int newBlockLevel = this.operations.length;
         final ExecutionTargetIterateOpenOperation operation =
-            new ExecutionTargetIterateOpenOperation(newBlockLevel, structure, excludeFirstIndex);
+            new ExecutionTargetIterateOpenOperation(newBlockLevel, structure);
         final ExecutionTargetOperation[][] newOperations =
             addOperationAndBlockLevel(this.operations, this.currentBlockLevel, operation);
         final int[] newPreviousBlockLevels = 
@@ -528,9 +528,9 @@ public final class ExecutionTarget extends Target {
     
     private static Object doExecute(final Object target, final Normalisation initialNormalisation, final ExecutionTargetOperation[][] operations) {
         Object result = normaliseTarget(target, initialNormalisation);
-        final int[] indexes = new int[] { 0 };
+        final Integer index = Integer.valueOf(0);
         for (int i = 0, z = operations[0].length; i < z; i++) {
-            result = operations[0][i].execute(result, operations, indexes);
+            result = operations[0][i].execute(result, operations, index);
         }
         return result;
     }

@@ -31,15 +31,7 @@ package org.op4j.functions;
 public interface ExecCtx {
 
 
-    public Integer getLevel0Index();
-    public Integer getLevel1Index();
-    public Integer getLevel2Index();
-    public Integer getLevel3Index();    
-    public Integer getLevel4Index();
-
-    public Integer getCurrentIndex();
-
-    public Integer getIterationLevel();
-
+    public Integer getIndex();
+    
     
 }

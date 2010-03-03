@@ -75,7 +75,7 @@ public final class Op {
     
     
     public static <T> Level0GenericMultiOperator<T,T> onAll(final T... targets) {
-        return new Level0GenericMultiOperator<T,T>(ExecutionTarget.forOp(VarArgsUtil.asTargetList(targets), Normalisation.NONE).iterate(Structure.LIST, true));
+        return new Level0GenericMultiOperator<T,T>(ExecutionTarget.forOp(VarArgsUtil.asTargetList(targets), Normalisation.NONE).iterate(Structure.LIST));
     }
 
     

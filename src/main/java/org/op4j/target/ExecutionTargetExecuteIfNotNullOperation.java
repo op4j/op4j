@@ -54,14 +54,14 @@ final class ExecutionTargetExecuteIfNotNullOperation implements ExecutionTargetO
     
     
     @SuppressWarnings("unchecked")
-    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indexes) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final Integer index) {
 
         if (target == null) {
             return null;
         }
         
         try {
-            Object result = this.executable.execute(target, new ExecCtxImpl(indexes));
+            Object result = this.executable.execute(target, new ExecCtxImpl(index));
             switch (this.normalisation.getNormalisationType()) {
                 case TYPE_ARRAY:
                     NormalisationUtils.checkIsArray(Types.OBJECT, result);

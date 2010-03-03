@@ -47,11 +47,11 @@ final class ExecutionTargetSelectMatchingOperation implements ExecutionTargetOpe
     
     
     
-    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indexes) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final Integer index) {
 
         Boolean evalResult = null;
         try {
-            evalResult = this.eval.execute(target, new ExecCtxImpl(indexes)); 
+            evalResult = this.eval.execute(target, new ExecCtxImpl(index)); 
         } catch (Exception e) {
             throw new ExecutionException(e);
         }
@@ -60,7 +60,7 @@ final class ExecutionTargetSelectMatchingOperation implements ExecutionTargetOpe
             
             Object result = target;
             for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
-                result = operations[this.internalBlock][j].execute(result, operations, indexes);
+                result = operations[this.internalBlock][j].execute(result, operations, index);
             }
             return result;
             

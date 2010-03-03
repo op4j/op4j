@@ -47,7 +47,7 @@ final class ExecutionTargetSelectMapKeysOperation implements ExecutionTargetOper
     
     
     
-    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indexes) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final Integer index) {
 
         if (!(target instanceof Map.Entry<?,?>)) {
             throw new IllegalArgumentException("Selecting map keys can only be called on a Map");
@@ -59,7 +59,7 @@ final class ExecutionTargetSelectMapKeysOperation implements ExecutionTargetOper
             
             Object result = target;
             for (int j = 0, y = operations[this.internalBlock].length; j < y; j++) {
-                result = operations[this.internalBlock][j].execute(result, operations, indexes);
+                result = operations[this.internalBlock][j].execute(result, operations, index);
             }
             return result;
             

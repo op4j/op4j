@@ -53,7 +53,7 @@ final class ExecutionTargetCastOperation implements ExecutionTargetOperation {
     
     
     @SuppressWarnings("unchecked")
-    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final int[] indexes) {
+    public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final Integer index) {
         
         Object result = target;
         
