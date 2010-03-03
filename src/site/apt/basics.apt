@@ -4,16 +4,16 @@
 
 
 
-Capabilities: a general overview
+Features: a general overview
 
   Here are some quick details about what op4j can do:
   
-    * Applying functions on objects.
+    * Apply functions on objects.
     
       * Including more than 200 predefined functions for data conversion, string handling, 
         calendar operation, math operations, etc...
          
-    * Managing structures (arrays, lists, maps and sets), including:
+    * Manage structures (arrays, lists, maps and sets), including:
     
       * Easily creating them from their elements (building).
         
@@ -23,9 +23,9 @@ Capabilities: a general overview
       
       * Transforming them into other structures.
       
-    * Executing conditional logic (execute actions depending on conditions).
+    * Execute conditional logic (execute actions depending on conditions).
     
-    * Defining functions from expressions, for later use (similar to closures).
+    * Define functions from expressions, for later use (similar to closures).
     
     * ...and more.
 
@@ -37,6 +37,7 @@ The key concepts
   
 ---
 output = Op.on(input).[ACTION].[ACTION]...[ACTION].get();
+function = Fn.on(inputType).[ACTION].[ACTION]...[ACTION].get();
 ---    
 
   They start by calling either the <<<Op.on(...)>>> or the <<<Fn.on(...)>>> static methods, which 
@@ -47,11 +48,24 @@ output = Op.on(input).[ACTION].[ACTION]...[ACTION].get();
     * Expressions starting with <<<Op>>> are called <<Op expressions>> or <<Operation expressions>>.
       They act on a specific input object/s and perform a set of chained actions on it before returning a 
       result. 
+
+---
+String[] values = ...;
+List<String> upperStrs = Op.on(values).toList().map(FnString.toUpperCase()).get();
+---    
     
     * Expressions starting with <<<Fn>>> are called <<Fn expressions>> or <<Function expressions>>.
       They allow the definition of <functions> as a set of chained actions of exactly the same
       kind as <op expressions>, returning as a result an executable <<<Function>>> object equivalent
       to the defined chain.
+
+---
+Function<String[],List<String> upperStrsFunc = 
+    Fn.onArrayOf(Types.STRING).map(FnString.toUpperCase()).get();
+...
+String[] values = ...;
+List<String> upperStrs = upperStrsFunc.execute(values);
+---    
 
   Expressions end with <<<get()>>>, which returns the output (op expressions) or the 
   defined function (fn expressions).
@@ -65,7 +79,8 @@ output = Op.on(input).[ACTION].[ACTION]...[ACTION].get();
   For example:
   
 ---
-List<String> = Op.on(myArrayOfIntegers).toList().forEach().exec(FnNumber.toStr()).get();
+String[] values = ...;
+List<Integer> intValueList = Op.on(values).toList().forEach().exec(FnString.toInteger()).get();
 ---
 
   Here we can see three chained actions: <toList>, <forEach> and <exec>.   
@@ -84,7 +99,7 @@ List<String> = Op.on(myArrayOfIntegers).toList().forEach().exec(FnNumber.toStr()
   Looking again at our example:
   
 ---
-List<String> = Op.on(myArrayOfIntegers).toList().forEach().exec(FnNumber.toStr()).get();
+List<Integer> intValueList = Op.on(values).toList().forEach().exec(FnString.toInteger()).get();
 ---
 
   We can explain it as:
@@ -115,30 +130,30 @@ List<String> = Op.on(myArrayOfIntegers).toList().forEach().exec(FnNumber.toStr()
   Following the previous example:
   
 ---
-List<String> = Op.on(myArrayOfIntegers).toList().forEach().exec(FnNumber.toStr()).get();
+List<Integer> intValueList = Op.on(values).toList().forEach().exec(FnString.toInteger()).get();
 ---
   
     [[1]] The <<<on(...)>>> method creates <operator1>.
       
-      * <Operator1>: TARGET = input (an Integer[] object called <<<myArrayOfIntegers>>>)
+      * <Operator1>: TARGET = input (a String[] object called <<<values>>>)
       
       
     [[2]] The <<<toList()>>> method (or action) is called on <operator1>, which returns <operator2>.
       
-      * <Operator2>: TARGET = a List\<Integer\> object created from the original array.
+      * <Operator2>: TARGET = a List\<String\> object created from the original array.
       
       
     [[3]] The <<<forEach()>>> method (or action) is called on <operator2>, which returns <operator3>.
       
-      * <Operator3>: TARGET = each of the elements of List\<Integer\> (an <iterating list>)
+      * <Operator3>: TARGET = each of the elements of List\<String\> (an <iterating list>)
       
       
     [[4]] The <<<exec(...)>>> method (or action) is called on <operator3>, which returns <operator4>.
       
-      * <Operator4>: TARGET (for each execution) = one of the elements of List\<Integer\>
+      * <Operator4>: TARGET (for each execution) = one of the elements of List\<String\>
       
       
-    [[5]] The <<<get()>>> method is called on <operator4>, which returns the expression result.
+    [[5]] The <<<get()>>> method is called on <operator4>, which returns the expression result (List\<Integer\>).
   
 
   
@@ -157,7 +172,7 @@ List<String> = Op.on(myArrayOfIntegers).toList().forEach().exec(FnNumber.toStr()
   Another example, the following sentence will not compile:
   
 ---
-List<String> = Op.on(myArrayOfIntegers).forEach().forEach()...
+List<Integer> intValueList = Op.on(values).forEach().forEach()...
 ---
 
   After the first <<<forEach()>>>, you are already iterating the input array, so there is no point
@@ -252,6 +267,7 @@ List<String> = Op.on(myArrayOfIntegers).forEach().forEach()...
   feature in your IDE (usually by pressing Ctrl+Space after ".") and going through the list of actions 
   (methods) available to you at a specific point in the chain, selecting the one that fits your needs.
   
+[images/contentassist.png] Content Assist
 
 * Functions
 
