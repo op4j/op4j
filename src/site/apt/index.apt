@@ -13,9 +13,9 @@ Bending the Java spoon
 
   <<op4j>> (pronounced <['op-ah]>) <<is a developer happiness tool>>. It is a Java library aimed at
   <<improving quality, semantics, cleanness and readability of Java code>>, especially auxiliary code like
-  structure iteration, filtering, mapping, data conversion, etc.
+  data conversion, structure iteration, filtering, mapping, etc.
   
-  op4j allows you to create <chained operation expressions> which apply both predefined or user-defined
+  op4j allows you to create <chained expressions> which apply both predefined or user-defined
   functions to your objects in a fluid and readable way. This improves the way your code looks and 
   greatly reduces the complexity of executing auxiliary low-level tasks in the highly bureaucratic, statically 
   -and strongly- typed language that Java is.  
@@ -29,7 +29,9 @@ Bending the Java spoon
   
 * A very quick overview example
 
-  op4j expressions usually start with <<Op.on(...)>> (read it as <"operate on">) specifying the object on 
+  Let's see an example of an op4j <operation expression>.
+  
+  op4j operation expressions usually start with <<Op.on(...)>> (read it as <"operate on">) specifying the object on 
   which op4j will operate, and end with <<get()>>, which effectively executes the defined 
   expression and returns the result. Let's see an example:
 
@@ -64,7 +66,7 @@ Bending the Java spoon
 ---
 
   And a <<<forEach().exec()>>> (= <execute on each>) operation is what is usually called a <"map"> operation
-  (in fact <<<map()>>> is a <<<forEach().exec().endFor()>>>), so why not use that <cooler> name: 
+  (in fact <<<map()>>> is a <<<forEach().exec().endFor()>>>), so why not use that more fitting name: 
 
 ---
   Set<Calendar> set = 
@@ -127,7 +129,7 @@ Set<Calendar> set = [Calendar(12 October 1492), Calendar(6 December 1978)]
   \
   <<Making it last: turning expressions into functions>>  
 
-  And... what if we didn't really want to execute our date expression right there, but rather just define it
+  And... what if we didn't really want to execute our date handling expression right there, but rather just define it
   and <store> it somehow for later use (similar to what you'd do for a closure)? 
   
   Well, then instead of our <<Op.on(...)>> we can create an equivalent 
