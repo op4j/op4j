@@ -66,7 +66,7 @@ Bending the Java spoon
 ---
 
   And a <<<forEach().exec()>>> (= <execute on each>) operation is what is usually called a <"map"> operation
-  (in fact <<<map()>>> is a <<<forEach().exec().endFor()>>>), so why not use that more fitting name: 
+  (in fact <<<map()>>> is a <<<forEach().exec().endFor()>>>), so why not use that more suitable name: 
 
 ---
   Set<Calendar> set = 
