@@ -4,4 +4,131 @@
 
 Working with arrays
 
-  Blah blah...   
+  This page explains topics specific to dealing with arrays in op4j. For an explanation
+  on the concepts common to all structures (arrays, lists, sets and maps), read the
+  {{{structures.html}Working with structures}} page.
+  
+
+* Creating array expressions
+
+** Operation expressions
+
+  The creation of operation expressions on arrays in op4j is a little bit different (and a little 
+  bit more complex) than it is for creating any other kind of operation expression.
+  
+  This is because, when dealing with structures (arrays, lists, maps or sets), op4j needs to be able
+  to internally create new instances of those structures. And while creating an instance of
+  <<<List\<String\>>>> or <<<List\<Integer\>>>> is just a matter of instantiating the 
+  <<<java.util.ArrayList>>> class (independently of its type parameters or <generics>), for 
+  instantiating an array the <actual array class> is needed, and creating an instance of 
+  <<<String[]>>> is different from creating an instance of <<<Integer[]>>>.
+  
+  Although Java makes this in fact a little bit more complex than what is explained here, 
+  this is in general terms why <<op4j needs a Type (javaRuntype Type) to be specified when creating
+  operation expressions on arrays>>. Specifically, it needs the type of the array elements 
+  (i.e. <<<Type\<String\>>>> for a String[]).
+  
+*** Specifying the array element type
+
+  This is then the basic way of creating an operation expression on an array:
+  
+---
+String[] array = ...;
+Op.onArrayOf(Types.STRING, array)...
+---
+
+*** Making it faster: the partial array operator
+
+  In order to make this faster, however, an abbreviated option is available: 
+  
+---
+MyObject[] array = ...;
+Op.on(array)...
+---
+
+  ...which looks like the creation of an operation expression for a list, a map, a set or any other
+  object, but in fact on an array this will only give you a <<partial operator>>. An operator only
+  able of executing some actions (for example, <<<exec(...)>>> or <<<toList()>>>) which do not
+  involve instantiating a new array. For example, you will not be able to iterate (<<<forEach()>>>),
+  but this will be valid:
+  
+---
+MyObject[] array = ...;
+List<MyObject> list = Op.on(array).toList().get();
+---
+
+  In order to convert a partial array operator into a full-featured array operator, a cast will 
+  be needed:  
+  
+---
+MyObject[] array = ...;
+Type<MyObject> myType = ...;
+Op.on(array).asArrayOf(myType).forEach()...
+---
+
+
+*** Making it even faster for known types
+
+  There are some types, though, which are of everyday use, and for which op4j offers you the 
+  possibility of <<obtaining a full-featured array operator without specifying the type>>.
+  
+  These types are:
+  
+    * <<<String[]>>>
+    
+    * <<<Boolean[]>>>
+    
+    * <<<Character[]>>>
+    
+    * Numbers: <<<Byte[]>>>, <<<Short[]>>>, <<<Integer[]>>>, <<<Long[]>>>, <<<Float[]>>>, <<<Double[]>>>, 
+      <<<BigInteger[]>>>, <<<BigDecimal[]>>>.
+      
+    * Dates: <<<Calendar[]>>>, <<<java.util.Date[]>>>, <<<java.sql.Datev>>>, <<<Timestamp[]>>>. 
+   
+  <<For arrays of all these types, the abbreviated method of creating the operation expression
+  returns a full-featured operator>> just as if <<<onArrayOf(...)>>> had been executed instead:
+  
+---
+String[] array = ...;
+Op.on(array).forEach()...
+---
+  
+  This code is therefore completely equivalent to:
+  
+---
+String[] array = ...;
+Op.onArrayOf(Types.STRING, array).forEach()...
+---
+  
+
+
+** Function expressions
+
+  Function expressions are created as usual with other structures:
+  
+---
+// Create a function which receives a String[] variable as input
+function = Fn.onArrayOf(Types.STRING)...get();
+---
+     
+     
+* Building arrays
+
+  Arrays can be built from their elements very easily by creating a generic operator (which can
+  be <unique> or <multiple>) and then calling the <<<buildArrayOf(...)>>> action.
+  
+  This action requires the type of the array elements to be specified:
+  
+---
+String[] capitals = Op.onAll("Santiago", "Madrid", "Brussels").buildArrayOf(Types.STRING).get();
+---
+
+
+* Converting to array
+
+
+* Converting from array to...
+
+* Removing duplicates
+
+* Sorting

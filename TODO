@@ -1,5 +1,7 @@
 
- - Rethink ExecCtx
+ - Create new version of Generic operators with type for everyday types, so that
+   buildArrayOf does not need any type parameter.
+
 
     
 ----------------    
