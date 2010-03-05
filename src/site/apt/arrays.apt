@@ -83,7 +83,7 @@ Op.on(array).asArrayOf(myType).forEach()...
     * Numbers: <<<Byte[]>>>, <<<Short[]>>>, <<<Integer[]>>>, <<<Long[]>>>, <<<Float[]>>>, <<<Double[]>>>, 
       <<<BigInteger[]>>>, <<<BigDecimal[]>>>.
       
-    * Dates: <<<Calendar[]>>>, <<<java.util.Date[]>>>, <<<java.sql.Datev>>>, <<<Timestamp[]>>>. 
+    * Dates: <<<Calendar[]>>>, <<<java.util.Date[]>>>, <<<java.sql.Date[]>>>, <<<Timestamp[]>>>. 
    
   <<For arrays of all these types, the abbreviated method of creating the operation expression
   returns a full-featured operator>> just as if <<<onArrayOf(...)>>> had been executed instead:
@@ -124,10 +124,29 @@ String[] capitals = Op.onAll("Santiago", "Madrid", "Brussels").buildArrayOf(Type
 ---
 
 
-* Converting to array
+* Converting to...
 
+* Iterating
 
-* Converting from array to...
+See the section in the {{{structures.html}Working with structures}} page.
+  
+* Modifying
+
+See the section in the {{{structures.html}Working with structures}} page.
+
+* Selecting (conditional code)
+
+See the section in the {{{structures.html}Working with structures}} page.
+
+* Executing
+
+See the section in the {{{structures.html}Working with structures}} page.
+
+* Mapping
+
+See the section in the {{{structures.html}Working with structures}} page.
+
+* Replacing
 
 * Removing duplicates
 
