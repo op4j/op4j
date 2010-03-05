@@ -6,7 +6,7 @@ Working with arrays
 
   This page explains topics specific to dealing with arrays in op4j. For an explanation
   on the concepts common to all structures (arrays, lists, sets and maps), read the
-  {{{structures.html}Working with structures}} page.
+  {{{structures.html}Working with Structures}} page.
   
 
 * Creating array expressions
@@ -128,23 +128,23 @@ String[] capitals = Op.onAll("Santiago", "Madrid", "Brussels").buildArrayOf(Type
 
 * Iterating
 
-See the section in the {{{structures.html}Working with structures}} page.
+  See this section in the {{{structures.html}Working with Structures}} page.
   
 * Modifying
 
-See the section in the {{{structures.html}Working with structures}} page.
+  See this section in the {{{structures.html}Working with Structures}} page.
 
 * Selecting (conditional code)
 
-See the section in the {{{structures.html}Working with structures}} page.
+  See this section in the {{{structures.html}Working with Structures}} page.
 
-* Executing
+* Executing functions
 
-See the section in the {{{structures.html}Working with structures}} page.
+  See this section in the {{{structures.html}Working with Structures}} page.
 
-* Mapping
+* Mapping functions
 
-See the section in the {{{structures.html}Working with structures}} page.
+  See this section in the {{{structures.html}Working with Structures}} page.
 
 * Replacing
 
