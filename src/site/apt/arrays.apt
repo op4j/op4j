@@ -126,9 +126,95 @@ String[] capitals = Op.onAll("Santiago", "Madrid", "Brussels").buildArrayOf(Type
 
 * Converting to...
 
+** Lists
+  
+  For converting an array into a list:
+
+---
+List<String> list = Op.on(array).toList().get();
+---
+
+** Sets
+  
+  For converting an array into a set:
+
+---
+Set<String> set = Op.on(array).toSet().get();
+---
+
+** Maps
+
+*** Using a Map Builder
+
+  A Map Builder is an object which implements the <<<org.op4j.mapbuild.IMapBuilder>>> interface,
+  and which provides op4j with a way of creating a map entry from each of the array's elements.
+  
+  <<<IMapBuilder>>> looks like this:
+  
+---
+public interface IMapBuilder<T,K,V> {
+    public K buildKey(final T target);
+    public V buildValue(final T target);
+}
+---   
+
+  ...and using it is very easy:    
+
+---
+IMapBuilder<String,Integer,Calendar> mapBuilder = ...;
+Map<Integer,Calendar> map = Op.on(array).toMap(mapBuilder).get();
+---
+
+
+*** Evaluating keys
+
+  A Map can also be created from an array by creating map entries using the array elements as
+  values and executing (evaluating) a function on each value for obtaining its corresponding key.
+
+---
+IFunction<String,Integer> keyEvalFn = ...;
+Map<Integer,String> map = Op.on(array).toMapByKeyEval(keyEvalFn).get();
+---
+
+*** Alternating elements
+
+  The third way to create a Map from an array is by alternating elements, this is, by considering
+  even elements as keys and odd elements as values (starting with 0). This will mean of course that, for
+  a <<<String[]>>>, we will get a <<<Map\<String,String\>>>>.
+
+---
+Map<String,String> map = Op.on(array).toMapByAlternateElements().get();
+---
+  
+  
+
 * Iterating
 
-  See this section in the {{{structures.html}Working with Structures}} page.
+  Arrays can be iterated according to the following scheme:
+
+---
+Op.on(array).forEach().[ELEMENT ACTIONS].get();
+---
+
+  After the <forEach()> action, any action added to the expression chain will be applied, not on
+  the array itself, but on each of its elements, and the result obtained when executing <<<get()>>> 
+  will be an array with the results of applying the subsequently chained actions on each of the 
+  array elements.  
+
+  Iteration can be ended with the <<<endFor()>>> action:
+
+---
+Op.on(array).forEach().[ELEMENT ACTIONS].endFor().[ARRAY ACTIONS].get();
+---
+
+  The <endFor()> action allows the subsequent execution of actions acting again on the whole array, 
+  after having executed some actions on its elements by separate between <forEach()> and <endFor()>. 
+  For example:
+
+---
+List<String> list = Op.on(array).forEach().exec(FnString.toUpperCase()).endFor().toList().get();
+---
+   
   
 * Modifying
 
@@ -148,6 +234,28 @@ String[] capitals = Op.onAll("Santiago", "Madrid", "Brussels").buildArrayOf(Type
 
 * Replacing
 
+  See this section in the {{{structures.html}Working with Structures}} page.
+
 * Removing duplicates
 
+  Arrays can contain duplicate elements, which can be removed by executing a <distinct()> action:
+  
+---
+String[] newArray = Op.on(array).distinct().get();
+---
+  
+
 * Sorting
+
+  Arrays can be sorted, both using a comparator or <natural order>:
+  
+---
+String[] newArray = Op.on(array).sort().get();
+---
+  
+  
+---
+Comparator<String> comparator = ...;
+String[] newArray = Op.on(array).sort(comparator).get();
+---
+  
