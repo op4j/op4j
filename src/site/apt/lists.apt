@@ -147,7 +147,7 @@ Set<String> set = Op.on(list).forEach().exec(FnString.toUpperCase()).endFor().to
   
 * Modifying
 
-  Lists can be modified by adding or removing elements from it. 
+  A list can be modified by adding or removing elements from it. 
   
   Several options for adding new elements at the end of a list:
 
@@ -223,7 +223,6 @@ List<String> newList = Op.on(list).forEach().exec(FnString.toUpperCase()).get();
 
 ---
 List<String> list = ...;
-IFunction<String,String> myFunction = ...;
 ...
 List<Integer> newList = Op.on(list).forEach().execIfNotNull(FnString.toInteger()).get();
 ---
@@ -339,7 +338,7 @@ List<String> newList =
 
   If a selection is executed after an iteration, it will be applied on the list elements.
   
-  Selection can be done by the element's position in the list:
+  Selection can be done on the element's position in the list:
 
 ---  
 Op.on(list).forEach().ifIndex(0,2,3)....

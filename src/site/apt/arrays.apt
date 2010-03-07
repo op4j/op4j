@@ -222,7 +222,7 @@ List<String> list = Op.on(array).forEach().exec(FnString.toUpperCase()).endFor()
   
 * Modifying
 
-  Arrays can be modified by adding or removing elements from it. 
+  An array can be modified by adding or removing elements from it. 
   
   Several options for adding new elements at the end of an array:
 
@@ -477,7 +477,7 @@ String[] newArray =
 
   If a selection is executed after an iteration, it will be applied on the array elements.
   
-  Selection can be done by the element's position in the array:
+  Selection can be done on the element's position in the array:
 
 ---  
 Op.on(array).forEach().ifIndex(0,2,3)....
