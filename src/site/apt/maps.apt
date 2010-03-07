@@ -4,4 +4,473 @@
 
 Working with maps
 
-  Blah blah...   
+  This page explains how op4j can deal with map objects (objects 
+  implementing <<<java.util.Map\<K,V\>>>>).
+
+  Map input objects are considered immutable, so they will not be changed when used in an op4j
+  expression and a new map will always be returned when executing <<<get()>>>.
+  
+  This, however, does not apply to the input map element objects, which could be changed if you
+  executed on them any functions which might change their state instead of substituting them 
+  for new elements.
+
+* Creating map expressions
+
+** Operation expressions
+
+  There are two equivalent ways of creating an operation expression on a map. Just use the method
+  you like most:
+  
+---
+Map<String,String> map = ...;
+Op.on(map)...
+---
+  
+---
+Map<String,String> map = ...;
+Op.onMap(map)...
+---
+
+
+
+** Function expressions
+
+  Function expressions are created as usual with other structures:
+  
+---
+// Create a function which receives a Map<Integer,String> variable as input
+function = Fn.onMapOf(Types.INTEGER, Types.STRING)...get();
+---
+     
+     
+* Building maps
+
+  Maps can be built from their elements in a number of different ways by creating a generic 
+  operator (which can be <unique> or <multiple>) and then calling one of the <buildMap> actions.
+  
+  Not only maps (<<<Map\<K,V\>>>>) can be built this way, but also maps of arrays
+  (<<<Map\<K,V[]\>>>>), maps of lists (<<<Map\<K,List\<V\>\>>>>) and maps of sets
+  (<<<Map\<K,Set\<V\>\>>>>), which are the result of grouping multiple values with the same 
+  assigned key. 
+  
+  
+** Building Map\<K,V\> objects 
+  
+---
+List<String> capitals = Op.onAll("Santiago", "Madrid", "Brussels").buildList().get();
+---
+
+
+** Building Map\<K,V[]\> objects 
+
+
+** Building Map\<K,List\<V\>\> objects 
+
+
+** Building Map\<K,Set\<V\>\> objects 
+
+
+
+* Converting to...
+
+** Arrays
+  
+  For converting a list into an array:
+
+---
+String[] array = Op.on(list).toArrayOf(Types.STRING).get();
+---
+
+** Sets
+  
+  For converting a list into a set:
+
+---
+Set<String> set = Op.on(list).toSet().get();
+---
+
+** Maps
+
+*** Using a Map Builder
+
+  A Map Builder is an object which implements the <<<org.op4j.mapbuild.IMapBuilder>>> interface,
+  and which provides op4j with a way of creating a map entry from each of the list's elements.
+  
+  <<<IMapBuilder>>> looks like this:
+  
+---
+public interface IMapBuilder<T,K,V> {
+    public K buildKey(final T target);
+    public V buildValue(final T target);
+}
+---   
+
+  ...and using it is very easy:    
+
+---
+IMapBuilder<String,Integer,Calendar> mapBuilder = ...;
+Map<Integer,Calendar> map = Op.on(list).toMap(mapBuilder).get();
+---
+
+
+*** Evaluating keys
+
+  A Map can also be created from a list by creating map entries using the list elements as
+  values and executing (evaluating) a function on each value for obtaining its corresponding key.
+
+---
+IFunction<String,Integer> keyEvalFn = ...;
+Map<Integer,String> map = Op.on(list).toMapByKeyEval(keyEvalFn).get();
+---
+
+*** Alternating elements
+
+  The third way to create a Map from a list is by alternating elements, this is, by considering
+  even elements as keys and odd elements as values (starting with 0). This will mean of course that, for
+  a <<<List\<String\>>>>, we will get a <<<Map\<String,String\>>>>.
+
+---
+Map<String,String> map = Op.on(list).toMapByAlternateElements().get();
+---
+  
+  
+
+* Iterating
+
+  Lists can be iterated according to the following scheme:
+
+---
+Op.on(list).forEach().[ELEMENT ACTIONS].get();
+---
+
+  After the <forEach()> action, any action added to the expression chain will be applied, not on
+  the list itself, but on each of its elements, and the result obtained when executing <<<get()>>> 
+  will be a list with the results of applying the subsequently chained actions on each of the 
+  list elements.  
+
+  Iteration can be ended with the <<<endFor()>>> action:
+
+---
+Op.on(list).forEach().[ELEMENT ACTIONS].endFor().[LIST ACTIONS].get();
+---
+
+  The <endFor()> action allows the subsequent execution of actions acting again on the whole list, 
+  after having executed some actions on its elements by separate between <forEach()> and <endFor()>. 
+  For example:
+
+---
+Set<String> set = Op.on(list).forEach().exec(FnString.toUpperCase()).endFor().toSet().get();
+---
+   
+  
+* Modifying
+
+  Lists can be modified by adding or removing elements from it. 
+  
+  Several options for adding new elements at the end of a list:
+
+---
+List<String> list = ...;
+Collection<String> strCol = ...;
+...
+Op.on(list).add("new String")...
+Op.on(list).addAll("new String", "another new String")...
+Op.on(list).addAll(strCol)...
+---
+
+  New elements can also be inserted into a specific position. Positions start with 0.
+
+---
+List<String> list = ...;
+...
+Op.on(list).insert(2, "new string")...
+Op.on(list).insertAll(2, "new String", "another new String")...
+---
+  
+  Removal of elements can be done in several ways. Elements can be removed attending to their 
+  position inside the list:
+
+---
+Op.on(list).removeAllIndexes(2,3,5)...
+Op.on(list).insertAllIndexesNot(2,3,5)...
+---
+
+  Also attending to their value:
+
+---
+Op.on(list).removeAllEqual("Coast", "Mountain")...
+---
+
+  Nulls can be removed easily:    
+
+---
+Op.on(list).removeAllNull()...
+---
+
+  And finally a function returning <<<Boolean>>> can be used as evaluator to determine whether
+  an element should be removed or not, in several ways:
+  
+---
+List<String> list = ...;
+IFunction<String,Boolean> eval = ...;
+...
+Op.on(list).removeAllTrue(eval)...
+Op.on(list).removeAllFalse(eval)...
+Op.on(list).removeAllNullOrTrue(eval)...
+Op.on(list).removeAllNullOrFalse(eval)...
+Op.on(list).removeAllNotNullAndTrue(eval)...
+Op.on(list).removeAllNotNullAndFalse(eval)...
+---
+
+
+
+
+* Executing functions
+  
+** Executing functions on the list elements
+
+  Functions can be executed on each of the list elements after a <forEach()> action:
+
+---
+List<String> list = ...;
+...
+List<String> newList = Op.on(list).forEach().exec(FnString.toUpperCase()).get();
+---
+
+  A condition can be added for <null-saving> a function execution, if needed:
+
+---
+List<String> list = ...;
+IFunction<String,String> myFunction = ...;
+...
+List<Integer> newList = Op.on(list).forEach().execIfNotNull(FnString.toInteger()).get();
+---
+
+
+  
+** Executing functions on the whole list
+
+  If a list has not been iterated (<forEach()>) (or it has, but <endFor()> has been called), functions
+  can be executed on the whole list. 
+
+  There are three ways of executing functions on a list as a whole:
+  
+    * Executions which return a list (example: List\<String\> -> List\<String\> or List\<String\> -> List\<Integer\>)
+    
+    * Executions which do not return a list (example: List\<String\> -> Calendar)
+    
+    
+*** Returning a list
+
+  Functions will be executed using the <<<execAsList(...)>>> action:
+
+---
+List<String> list = ...;
+IFunction<List<String>,List<Integer>> myFunction = ...;
+...
+Op.on(list).execAsList(myFunction)...
+---
+
+  A not-null check can be added:  
+
+---
+List<String> list = ...;
+IFunction<List<String>,List<Integer>> myFunction = ...;
+...
+Op.on(list).execIfNotNullAsList(myFunction)...
+---
+    
+    
+*** Not returning a list
+
+---
+List<String> list = ...;
+Calendar calendar =
+    Op.on(list).exec(FnCalendar.fieldStringListToCalendar()).get();
+---
+
+
+
+
+  
+
+* Mapping functions
+
+  <Mapping> a list is the equivalent to iterating it, applying a function to each of its elements
+  and then ending the iteration:
+  
+---
+Op.on(list).map(function).get();
+--- 
+
+  Is equivalent to:
+  
+---
+Op.on(list).forEach().exec(function).endFor().get();
+--- 
+
+For example:
+
+---
+List<String> list = ...;
+...
+List<BigDecimal> newList = 
+    Op.on(list).map(FnString.toBigDecimal(DecimalPoint.IS_COMMA)).get();
+---
+
+  A null condition on each of the list elements can be added for <null-saving> a function 
+  execution, if needed:
+
+---
+List<String> list = ...;
+IFunction<String,String> myFunction = ...;
+...
+Op.on(list).mapIfNotNull(myFunction)...
+---
+  
+
+
+
+  
+  
+* Selecting (conditional code)
+
+  op4j allows the conditional execution of actions. Once the condition (an action starting with
+  "<<<if>>>") is executed, all subsequent actions will apply only on the selected parts of the target object.
+  
+  For example, lets convert into upper case only the first String element of the list:
+  
+---
+List<String> newList = Op.on(list).forEach().ifIndex(0).exec(FnString.toUpperCase()).get();
+---
+
+  Selections can be ended with <<<endIf(...)>>>:
+  
+---
+List<String> newList = 
+    Op.on(list).forEach().ifIndex(0,1,3).[ACTIONS ON SELECTED ELEMENTS].endIf()...
+---
+  
+  
+
+** Selecting specific list elements  
+
+  If a selection is executed after an iteration, it will be applied on the list elements.
+  
+  Selection can be done by the element's position in the list:
+
+---  
+Op.on(list).forEach().ifIndex(0,2,3)....
+Op.on(list).forEach().ifIndexNot(0,1,5)....
+---
+  
+  Selection can also be based on the nullity of the element:  
+
+---  
+Op.on(list).forEach().ifNull()....
+Op.on(list).forEach().ifNotNull()....
+---
+
+  And also on the value returned by the evaluation of a function returning <<<Boolean>>>:
+  
+---
+List<String> list = ...;
+IFunction<String,Boolean> eval = ...;
+...
+Op.on(list).forEach().ifTrue(eval)...
+Op.on(list).forEach().ifFalse(eval)...
+Op.on(list).forEach().ifNullOrTrue(eval)...
+Op.on(list).forEach().ifNullOrFalse(eval)...
+Op.on(list).forEach().ifNotNullAndTrue(eval)...
+Op.on(list).forEach().ifNotNullAndFalse(eval)...
+---
+
+
+
+** Selecting the list as a whole  
+
+  Selection can also be performed on the list itself as a whole, effectively deciding whether
+  subsequent actions will be executed at all or not. 
+
+---  
+List<String> list = ...;
+IFunction<List<String>,Boolean> eval = ...;
+...
+Op.on(list).ifNull()....
+Op.on(list).ifNotNull()....
+Op.on(list).ifTrue(eval)...
+Op.on(list).ifFalse(eval)...
+Op.on(list).ifNullOrTrue(eval)...
+Op.on(list).ifNullOrFalse(eval)...
+Op.on(list).ifNotNullAndTrue(eval)...
+Op.on(list).ifNotNullAndFalse(eval)...
+---
+
+
+** Restricions on execution actions after selection
+
+  After executing a selection action, function executed by means of a <map> or an <exec> action
+  cannot change the list type (i.e., a <<<List\<String\>>>> must remain <<<List\<String\>>>>.
+  
+  So this would not be valid:
+
+---
+// Will not compile!
+List<String> newList = 
+    Op.on(list).forEach().ifIndex(0,1,3).exec(FnString.toInteger()).get();
+---
+
+  ...because converting only <some> of the list elements to integer would render the list type
+  inconsistent (some elements would be <<<String>>>, some other <<<Integer>>>).
+
+  This is perfectly valid, though:
+
+---
+// FnString.toUpperCase is IFunction<String,String>
+List<String> newArray = 
+    Op.on(list).forEach().ifIndex(0,1,3).exec(FnString.toUpperCase()).get();
+---
+  
+
+* Replacing
+
+  Array elements (or the list itself) can be replaced by other objects:
+  
+---
+List<String> newList = 
+    Op.on(list).forEach().ifNull().replaceWith("[no value]").get();
+---
+
+  ...which is equivalent to:
+  
+---
+List<String> newList = 
+    Op.on(list).forEach().replaceIfNullWith("[no value]").get();
+---
+  
+
+
+
+* Removing duplicates
+
+  Lists can contain duplicate elements, which can be removed by executing a <distinct()> action:
+  
+---
+List<String> newList = Op.on(list).distinct().get();
+---
+  
+
+* Sorting
+
+  Lists can be sorted, both using a comparator or <natural order>:
+  
+---
+List<String> newList = Op.on(list).sort().get();
+---
+  
+  
+---
+Comparator<String> comparator = ...;
+List<String> newList = Op.on(list).sort(comparator).get();
+---
+  

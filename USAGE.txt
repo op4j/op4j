@@ -1,0 +1,20 @@
+ 
+ Using op4j from Maven 2
+ -----------------------
+ 
+ 
+ To use it in your Maven 2 applications, you will need to add it as
+ a dependency with:
+
+     <dependency>
+       <groupId>org.op4j</groupId>
+       <artifactId>op4j</artifactId>
+       <version>{version}</version>
+       <scope>compile</scope>
+     </dependency>
+
+ In order for this to work correctly, you need to have previously installed
+ op4j in your local repository (as explained in BUILD.txt) or have a
+ working internet connection to let maven automatically download op4j 
+ binaries from Maven 2's central repositories.
+ 

@@ -29,7 +29,7 @@
       <item name="Sourceforge.net Project Page" href="http://www.sourceforge.net/projects/op4j" />
     </links>
 
-    <menu name="The javaRuntype Project">
+    <menu name="The op4j Project">
       <item name="· Main" href="index.html"/>
       <item name="· Download" href="download.html"/>
       <item name="· Maven Info" href="maveninfo.html"/>

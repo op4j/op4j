@@ -1,0 +1,34 @@
+
+ Building op4j
+ -------------
+ 
+ To build op4j you will need Maven 2. You can get it at:
+ 
+     http://maven.apache.org
+
+ Build and install the project executing, from the op4j
+ project root folder:
+ 
+     mvn clean:clean install
+     
+ And you will get a fresh target/op4j-{version}.jar file.
+ You will also get it installed in your local repository at:
+ 
+     $M2_REPO/org/op4j/op4j/{version}/op4j-{version}.jar
+
+
+
+ Generating Javadoc for op4j
+ ---------------------------
+ 
+ If you wish to generate the javadoc for op4j, execute this from the
+ op4j root folder:
+ 
+     mvn javadoc:javadoc
+     
+ This will generate the javadoc documentation in HTML format in:
+ 
+     target/site/apidocs
+ 
+
+ 
