@@ -4,10 +4,14 @@
 
 Working with arrays
 
-  This page explains topics specific to dealing with arrays in op4j. For an explanation
-  on the concepts common to all structures (arrays, lists, sets and maps), read the
-  {{{structures.html}Working with Structures}} page.
+  This page explains how op4j can deal with array objects.
+
+  Array input objects are considered immutable, so they will not be changed when used in an op4j
+  expression and a new array will always be returned when executing <<<get()>>>.
   
+  This, however, does not apply to the input array's element objects, which could be changed if you
+  executed on them any functions which might change their state instead of substituting them 
+  for new elements.
 
 * Creating array expressions
 
@@ -218,17 +222,238 @@ List<String> list = Op.on(array).forEach().exec(FnString.toUpperCase()).endFor()
   
 * Modifying
 
-  See this section in the {{{structures.html}Working with Structures}} page.
+  Arrays can be modified by adding or removing elements from it. 
+  
+  Several options for adding new elements at the end of an array:
 
-* Selecting (conditional code)
+---
+String[] array = ...;
+Collection<String> arrayCol = ...;
+...
+Op.on(array).add("new String")...
+Op.on(array).addAll("new String", "another new String")...
+Op.on(array).addAll(arrayCol)...
+---
 
-  See this section in the {{{structures.html}Working with Structures}} page.
+  New elements can also be inserted into a specific position. Positions start with 0.
+
+---
+String[] array = ...;
+...
+Op.on(array).insert(2, "new string")...
+Op.on(array).insertAll(2, "new String", "another new String")...
+---
+  
+  Removal of elements can be done in several ways. Elements can be removed attending to their 
+  position inside the array:
+
+---
+Op.on(array).removeAllIndexes(2,3,5)...
+Op.on(array).insertAllIndexesNot(2,3,5)...
+---
+
+  Also attending to their value:
+
+---
+Op.on(array).removeAllEqual("Coast", "Mountain")...
+---
+
+  Nulls can be removed easily:    
+
+---
+Op.on(array).removeAllNull()...
+---
+
+  And finally a function returning <<<Boolean>>> can be used as evaluator to determine whether
+  an element should be removed or not, in several ways:
+  
+---
+String[] array = ...;
+IFunction<String,Boolean> eval = ...;
+...
+Op.on(array).removeAllTrue(eval)...
+Op.on(array).removeAllFalse(eval)...
+Op.on(array).removeAllNullOrTrue(eval)...
+Op.on(array).removeAllNullOrFalse(eval)...
+Op.on(array).removeAllNotNullAndTrue(eval)...
+Op.on(array).removeAllNotNullAndFalse(eval)...
+---
+
+
+
 
 * Executing functions
+  
+** Executing functions on the array elements
 
-  See this section in the {{{structures.html}Working with Structures}} page.
+  Due to the special condition of arrays in Java, op4j makes a difference between two ways 
+  of executing functions on them:
+  
+    * Executions which keep the array element type (example: String[] -> String[])
+    
+    * Executions which change the array element type (example: String[] -> Integer[])
+
+
+*** Keeping the array element type
+
+  Functions can be executed on each of the array elements after a <forEach()> action:
+
+---
+String[] array = ...;
+...
+Op.on(array).forEach().exec(FnString.toUpperCase())...
+---
+
+  <<<FnString.toUpperCase()>>> was executable this way because it is an <<<IFunction\<String,String\>>>>,
+  and so it would not change the array element type.
+  
+  A condition can be added for <null-saving> a function execution, if needed:
+
+---
+String[] array = ...;
+IFunction<String,String> myFunction = ...;
+...
+Op.on(array).forEach().execIfNotNull(myFunction)...
+---
+  
+
+*** Changing the array element type
+
+  When the executed function changes the array element type, the new type has to be specified
+  in the <exec(...)> call, so that op4j is able to instantiate the new array:
+
+---
+String[] array = ...;
+...
+BigDecimal[] newArray = 
+    Op.on(array).forEach().exec(Types.BIG_DECIMAL, FnString.toBigDecimal(DecimalPoint.IS_COMMA)).get();
+---
+
+
+  
+** Executing functions on the whole array
+
+  If an array has not been iterated (<forEach()>) (or it has, but <endFor()> has been called), functions
+  can be executed on the whole array. 
+
+  There are three ways of executing functions on an array as a whole:
+  
+    * Executions which return an array keeping the array element type (example: String[] -> String[])
+    
+    * Executions which return an array changing the array element type (example: String[] -> Integer[])
+    
+    * Executions which do not return an array (example: String[] -> Calendar)
+    
+    
+*** Returning an array and keeping the array element type
+
+  Functions will be executed using the <<<execAsArray(...)>>>:
+
+---
+String[] array = ...;
+IFunction<String[],String[]> myFunction = ...;
+...
+Op.on(array).execAsArray(myFunction)...
+---
+
+  A not-null check can be added:  
+
+---
+String[] array = ...;
+IFunction<String[],String[]> myFunction = ...;
+...
+Op.on(array).execIfNotNullAsArray(myFunction)...
+---
+    
+    
+*** Returning an array and changing the array element type
+
+---
+String[] array = ...;
+IFunction<String[],Integer[]> myFunction = ...;
+...
+Op.on(array).execAsArray(Types.INTEGER, myFunction)...
+---
+    
+    
+*** Not returning an array
+
+---
+String[] array = new String[] {"1978", "12", "6"};
+Calendar calendar =
+    Op.on(array).exec(FnCalendar.fieldStringArrayToCalendar()).get();
+---
+
+
+
+
+  
 
 * Mapping functions
+
+  <Mapping> an array is the equivalent to iterating it, applying a function to each of its elements
+  and then ending the iteration:
+  
+---
+Op.on(array).map(function).get();
+--- 
+
+  Is equivalent to:
+  
+---
+Op.on(array).forEach().exec(function).endFor().get();
+--- 
+
+  In the same way as executing functions on array elements, there are two ways of mapping:
+  
+    * Executions which keep the array element type (example: String[] -> String[])
+    
+    * Executions which change the array element type (example: String[] -> Integer[])
+  
+
+** Keeping the array element type
+
+  Functions can be mapped easily:
+
+---
+String[] array = ...;
+...
+Op.on(array).map(FnString.toUpperCase())...
+---
+
+  As with <exec>, <<<FnString.toUpperCase()>>> was executable this way because it is an <<<IFunction\<String,String\>>>>,
+  and so it would not change the array element type.
+  
+  A null condition on each of the array elements can be added for <null-saving> a function 
+  execution, if needed:
+
+---
+String[] array = ...;
+IFunction<String,String> myFunction = ...;
+...
+Op.on(array).mapIfNotNull(myFunction)...
+---
+  
+
+** Changing the array element type
+
+  When the executed function changes the array element type, the new type has to be specified
+  in the <map(...)> call, so that op4j is able to instantiate the new array:
+
+---
+String[] array = ...;
+...
+BigDecimal[] newArray = 
+    Op.on(array).map(Types.BIG_DECIMAL, FnString.toBigDecimal(DecimalPoint.IS_COMMA)).get();
+---
+
+
+
+
+
+  
+  
+* Selecting (conditional code)
 
   See this section in the {{{structures.html}Working with Structures}} page.
 
