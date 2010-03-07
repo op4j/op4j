@@ -228,11 +228,11 @@ List<String> list = Op.on(array).forEach().exec(FnString.toUpperCase()).endFor()
 
 ---
 String[] array = ...;
-Collection<String> arrayCol = ...;
+Collection<String> strCol = ...;
 ...
 Op.on(array).add("new String")...
 Op.on(array).addAll("new String", "another new String")...
-Op.on(array).addAll(arrayCol)...
+Op.on(array).addAll(strCol)...
 ---
 
   New elements can also be inserted into a specific position. Positions start with 0.
@@ -347,7 +347,7 @@ BigDecimal[] newArray =
     
 *** Returning an array and keeping the array element type
 
-  Functions will be executed using the <<<execAsArray(...)>>>:
+  Functions will be executed using the <<<execAsArray(...)>>> action:
 
 ---
 String[] array = ...;
@@ -455,11 +455,121 @@ BigDecimal[] newArray =
   
 * Selecting (conditional code)
 
-  See this section in the {{{structures.html}Working with Structures}} page.
+  op4j allows the conditional execution of actions. Once the condition (an action starting with
+  "<<<if>>>") is executed, all subsequent actions will apply only on the selected parts of the target object.
+  
+  For example, lets convert into upper case only the first String element of the array:
+  
+---
+String[] newArray = Op.on(array).forEach().ifIndex(0).exec(FnString.toUpperCase()).get();
+---
+
+  Selections can be ended with <<<endIf(...)>>>:
+  
+---
+String[] newArray = 
+    Op.on(array).forEach().ifIndex(0,1,3).[ACTIONS ON SELECTED ELEMENTS].endIf()...
+---
+  
+  
+
+** Selecting specific array elements  
+
+  If a selection is executed after an iteration, it will be applied on the array elements.
+  
+  Selection can be done by the element's position in the array:
+
+---  
+Op.on(array).forEach().ifIndex(0,2,3)....
+Op.on(array).forEach().ifIndexNot(0,1,5)....
+---
+  
+  Selection can also be based on the nullity of the element:  
+
+---  
+Op.on(array).forEach().ifNull()....
+Op.on(array).forEach().ifNotNull()....
+---
+
+  And also on the value returned by the evaluation of a function returning <<<Boolean>>>:
+  
+---
+String[] array = ...;
+IFunction<String,Boolean> eval = ...;
+...
+Op.on(array).forEach().ifTrue(eval)...
+Op.on(array).forEach().ifFalse(eval)...
+Op.on(array).forEach().ifNullOrTrue(eval)...
+Op.on(array).forEach().ifNullOrFalse(eval)...
+Op.on(array).forEach().ifNotNullAndTrue(eval)...
+Op.on(array).forEach().ifNotNullAndFalse(eval)...
+---
+
+
+
+** Selecting the array as a whole  
+
+  Selection can also be performed on the array itself as a whole, effectively deciding whether
+  subsequent actions will be executed at all or not. 
+
+---  
+String[] array = ...;
+IFunction<String[],Boolean> eval = ...;
+...
+Op.on(array).ifNull()....
+Op.on(array).ifNotNull()....
+Op.on(array).ifTrue(eval)...
+Op.on(array).ifFalse(eval)...
+Op.on(array).ifNullOrTrue(eval)...
+Op.on(array).ifNullOrFalse(eval)...
+Op.on(array).ifNotNullAndTrue(eval)...
+Op.on(array).ifNotNullAndFalse(eval)...
+---
+
+
+** Restricions on execution actions after selection
+
+  After executing a selection action, function executed by means of a <map> or an <exec> action
+  cannot change the array type (i.e., a <<<String[]>>> must remain <<<String[]>>>.
+  
+  So this would not be valid:
+
+---
+// Will not compile!
+String[] newArray = 
+    Op.on(array).forEach().ifIndex(0,1,3).exec(FnString.toInteger()).get();
+---
+
+  ...because converting only <some> of the array elements to integer would render the array type
+  inconsistent (some elements would be <<<String>>>, some other <<<Integer>>>).
+
+  This is perfectly valid, though:
+
+---
+// FnString.toUpperCase is IFunction<String,String>
+String[] newArray = 
+    Op.on(array).forEach().ifIndex(0,1,3).exec(FnString.toUpperCase()).get();
+---
+  
 
 * Replacing
 
-  See this section in the {{{structures.html}Working with Structures}} page.
+  Array elements (or the array itself) can be replaced by other objects:
+  
+---
+String[] newArray = 
+    Op.on(array).forEach().ifNull().replaceWith("[no value]").get();
+---
+
+  ...which is equivalent to:
+  
+---
+String[] newArray = 
+    Op.on(array).forEach().replaceIfNullWith("[no value]").get();
+---
+  
+
+
 
 * Removing duplicates
 
