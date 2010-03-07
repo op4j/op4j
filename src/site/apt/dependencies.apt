@@ -1,0 +1,20 @@
+  -------
+  op4j dependencies
+  -------
+
+op4j dependencies on other libraries
+  
+  op4j depends on the following libraries:
+  
+    * Apache Commons-Lang 2.4 or later
+  
+    * Apache Commons-Collections 3.1 or later
+  
+    * Apache Commons-Codec 1.3 (do NOT use the severely flawed Commons-Codec 1.4 version)
+  
+    * OGNL 2.7.1 or later
+  
+    * Javassist 3.6.ga or later
+  
+    * javaRuntype 1.0 or later
+  

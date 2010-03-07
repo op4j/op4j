@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<faqs title="Frequently Asked Questions">
+
+
+  <part id="aboutjavaruntype">
+    <title>About op4j</title>
+    
+    <faq id="where-does-op4-come-from">
+      <question>Where does op4j come from? Is it made or backed by any software company?</question>
+      <answer>
+        <p>
+          op4j is Open Source Software created by a Spanish Software Engineer
+          called <a href="team.html">Daniel Fernández</a> with help from another Spanish
+          Software Engineer called <a href="team.html">Soraya Sánchez</a> in their spare time. 
+        </p>
+        <p>
+          It is neither made nor backed
+          by any software (or any other type of) company, and it is offered to the public
+          totally free of charge, both in binary and in source code forms, under the <b>Apache License 2.0</b>.
+        </p>
+      </answer>
+    </faq>
+    
+    <faq id="what-is-relation-op4j">
+      <question>What is javaRuntype's relation to the op4j project?</question>
+      <answer>
+        <p>
+          javaRuntype was conceived at first as a part of the op4j project [<a href="http://www.op4j.org">http://www.op4j.org</a>],
+          and by the same person who created op4j itself, but later during op4j's development it was decided that javaRuntype should be a project
+          of its own as its range of application by separate was in fact quite broad.
+        </p>
+        <p>
+          So, javaRuntype remains today as a useful and required dependency for op4j, but it can also
+          be used without op4j at all for several different purposes.
+        </p>
+      </answer>
+    </faq>
+    
+    <faq id="can-it-be-considered-production-ready">
+      <question>Is it stable? Can it be considered production-ready?</question>
+      <answer>
+        <p>
+          Not until a stable version is released. op4j is currently beta software.
+        </p>
+        <p>
+          A stable version is scheduled to be released during Spring 2010.
+        </p>
+      </answer>
+    </faq>
+    
+    <faq id="does-op4j-offer-commercial-support">
+      <question>Does op4j offer any type of commercial support?</question>
+      <answer>
+        <p>
+          No, it does not. Commercial support is not offered at the moment, but
+          there are <a href="userlist.html">User Forums and Mailing Lists</a> at your disposal.
+        </p>
+      </answer>
+    </faq>
+    
+    <faq id="contribute">
+      <question>How can I contribute to op4j?</question>
+      <answer>
+        <p>
+          In many ways:
+        </p>
+        <ul>
+          <li>You can write in the <a href="userlist.html">User 
+              Forums</a> (or directly to the <a href="team.html">Team</a>) with your
+              ideas for improving op4j.</li>
+          <li>You can contribute some code, write a patch for a new feature
+              or behaviour (please, tell the project admins first about your idea so 
+              that effort can be correctly coordinated).</li> 
+          <li>You can write articles, reviews, blog posts, etc. about op4j, showing
+              how it works or how it integrates with other technologies.</li> 
+          <li>You can promote op4j in your company/work and among your colleague developers.</li>
+        </ul>
+        <p>
+          If you want to contribute some code to op4j, please read first the
+          page on <a href="contributing.html">Contributing to op4j</a>.
+        </p>
+      </answer>
+    </faq>
+
+  </part>
+  
+
+  <part id="general">
+    <title>General</title>
+    
+    <faq id="what-is-javaruntype-useful-for">
+      <question>What is op4j useful for?</question>
+      <answer>
+        <p>
+          op4j is mainly useful for developers. We say it is a <b>developer happiness tools</b> because
+          its aim is mainly to enable developers to create cleaner and more readable java code, especially
+          auxiliary code (data conversions, structure managing, etc).
+        </p>
+      </answer>
+    </faq>
+    
+  </part>
+
+    
+</faqs>
