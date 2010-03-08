@@ -2,9 +2,10 @@
   Main
   -------
 
-  This software is in development stage, although fairly stable and tested already. Online
-  documentation is still work in progress, and a beta release
-  will appear in the next couple of days. An official stable release is intended for Spring 2010.\
+  <<op4j 1.0-beta1 RELEASED!>> (March 8th, 2010). {{{download.html}[DOWNLOAD]}}
+
+  This software is in beta stage, although fairly stable and tested already. Online
+  documentation is still work in progress. An official stable release is intended for Spring 2010.\
   Subscribe to the 
   {{{https://lists.sourceforge.net/lists/listinfo/op4j-announce}Announcement Mailing List}} and 
   be the first to know! 
