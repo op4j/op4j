@@ -1,0 +1,64 @@
+  -------
+  Functions: Call
+  -------
+
+Functions: Call
+
+  <<<org.op4j.functions.Call>>> is a special functions class which allows the execution of 
+  a method in the target object.
+
+  Here is an example: Imagine your application has a <<<User>>> class which contains a
+  <<<getName()>>> method, returning a String. Let's get the names of all the users in a list:
+  
+---
+List<User> users = ...;
+List<String> userNames = Op.on(users).map(Call.asString("getName")).get();
+---
+
+  The <asX(...)> methods in the <<<Call>>> class return <<<IFunction>>> objects (this is, <functions>):
+  
+*----------------------------+-------------------------------------------------+
+| <<Method>>                 | <<Returned function type>>                      |
+*----------------------------+-------------------------------------------------+
+| <<<asBigDecimal(...)>>>    | <<<IFunction\<Object,BigDecimal\>>>>            |
+*----------------------------+-------------------------------------------------+
+| <<<asBigInteger(...)>>>    | <<<IFunction\<Object,BigInteger\>>>>            |
+*----------------------------+-------------------------------------------------+
+| <<<asBoolean(...)>>>       | <<<IFunction\<Object,Boolean\>>>>               |
+*----------------------------+-------------------------------------------------+
+| <<<asByte(...)>>>          | <<<IFunction\<Object,Byte\>>>>                  |
+*----------------------------+-------------------------------------------------+
+| <<<asCalendar(...)>>>      | <<<IFunction\<Object,Calendar\>>>>              |
+*----------------------------+-------------------------------------------------+
+| <<<asCharacter(...)>>>     | <<<IFunction\<Object,Character\>>>>             |
+*----------------------------+-------------------------------------------------+
+| <<<asDate(...)>>>          | <<<IFunction\<Object,Date\>>>>                  |
+*----------------------------+-------------------------------------------------+
+| <<<asDouble(...)>>>        | <<<IFunction\<Object,Double\>>>>                |
+*----------------------------+-------------------------------------------------+
+| <<<asFloat(...)>>>         | <<<IFunction\<Object,Float\>>>>                 |
+*----------------------------+-------------------------------------------------+
+| <<<asInteger(...)>>>       | <<<IFunction\<Object,Integer\>>>>               |
+*----------------------------+-------------------------------------------------+
+| <<<asLong(...)>>>          | <<<IFunction\<Object,Long\>>>>                  |
+*----------------------------+-------------------------------------------------+
+| <<<asObject(...)>>>        | <<<IFunction\<Object,Object\>>>>                |
+*----------------------------+-------------------------------------------------+
+| <<<asShort(...)>>>         | <<<IFunction\<Object,Short\>>>>                 |
+*----------------------------+-------------------------------------------------+
+| <<<asString(...)>>>        | <<<IFunction\<Object,String\>>>>                |
+*----------------------------+-------------------------------------------------+
+| <<<asType(Type<T>,...)>>>  | <<<IFunction\<Object,T\>>>>                     |
+*----------------------------+-------------------------------------------------+
+  
+  Every <asX(...)> method can be passed parameters, and these have to correspond with the 
+  parameters of the method being called.
+
+---
+List<User> users = ...;
+Group group = ...;
+...
+List<User> usersInGroup = 
+    Op.on(users).removeAllFalse(Call.asBoolean("isInGroup", group).get();
+---
+  
