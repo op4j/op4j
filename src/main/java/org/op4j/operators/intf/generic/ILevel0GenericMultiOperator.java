@@ -21,11 +21,11 @@ package org.op4j.operators.intf.generic;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
@@ -118,19 +118,19 @@ public interface ILevel0GenericMultiOperator<I,T>
     
     
     public <K> ILevel0MapOperator<I,K,T> buildMapByKeyEval(final IFunction<? super T,K> keyEval);
-    public <K,V> ILevel0MapOperator<I,K,V> buildMap(final IMapBuilder<? super T,K,V> mapBuilder);
+    public <K,V> ILevel0MapOperator<I,K,V> buildMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
     
     
     public <K> ILevel0MapOperator<I,K,List<T>> buildMapOfListByKeyEval(final IFunction<? super T,K> keyEval);
-    public <K,V> ILevel0MapOperator<I,K,List<V>> buildMapOfList(final IMapBuilder<? super T,K,V> mapBuilder);
+    public <K,V> ILevel0MapOperator<I,K,List<V>> buildMapOfList(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
     
     
     public <K> ILevel0MapOperator<I,K,Set<T>> buildMapOfSetByKeyEval(final IFunction<? super T,K> keyEval);
-    public <K,V> ILevel0MapOperator<I,K,Set<V>> buildMapOfSet(final IMapBuilder<? super T,K,V> mapBuilder);
+    public <K,V> ILevel0MapOperator<I,K,Set<V>> buildMapOfSet(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
     
     
     public <K> ILevel0MapOperator<I,K,T[]> buildMapOfArrayByKeyEvalOf(final Type<T> valueType, final IFunction<? super T,K> keyEval);
-    public <K,V> ILevel0MapOperator<I,K,V[]> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<? super T,K,V> mapBuilder);
+    public <K,V> ILevel0MapOperator<I,K,V[]> buildMapOfArrayOf(final Type<V> valueType, final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
 
     
     public ILevel0MapOperator<I,T,T> buildMapByAlternateElements();

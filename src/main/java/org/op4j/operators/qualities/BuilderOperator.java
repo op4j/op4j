@@ -20,11 +20,11 @@
 package org.op4j.operators.qualities;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.array.ILevel0ArrayOperator;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
@@ -92,18 +92,19 @@ public interface BuilderOperator<I,T> {
     
     /**
      * <p>
-     * Builds a map by inputting the operator's targets into a map builder object, which
-     * is in charge of creating the corresponding key and value for each original target.
+     * Builds a map by inputting the operator's targets into a map builder object
+     * (a function returning map entries), which is in charge of creating the 
+     * corresponding key and value for each original target.
      * If two values have the same key, all of them but the last to be evaluated will be 
      * overwritten.
      * </p>
      * 
      * @param <K> the type of the keys returned by the map builder
      * @param <V> the type of the values returned by the map builder
-     * @param mapBuilder the map builder
+     * @param mapBuilder the map builder function
      * @return an operator on the resulting map
      */
-    public <K,V> ILevel0MapOperator<I,K,V> buildMap(final IMapBuilder<? super T,K,V> mapBuilder);
+    public <K,V> ILevel0MapOperator<I,K,V> buildMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
     
     
     /**
@@ -132,7 +133,7 @@ public interface BuilderOperator<I,T> {
      * @param mapBuilder the map builder
      * @return an operator on the resulting map of list
      */
-    public <K,V> ILevel0MapOperator<I,K,List<V>> buildMapOfList(final IMapBuilder<? super T,K,V> mapBuilder);
+    public <K,V> ILevel0MapOperator<I,K,List<V>> buildMapOfList(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
     
 
     /**
@@ -161,7 +162,7 @@ public interface BuilderOperator<I,T> {
      * @param mapBuilder the map builder
      * @return an operator on the resulting map of list
      */
-    public <K,V> ILevel0MapOperator<I,K,Set<V>> buildMapOfSet(final IMapBuilder<? super T,K,V> mapBuilder);
+    public <K,V> ILevel0MapOperator<I,K,Set<V>> buildMapOfSet(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
     
     
     /**
@@ -194,6 +195,6 @@ public interface BuilderOperator<I,T> {
      * @param mapBuilder the map builder
      * @return an operator on the resulting map of list
      */
-    public <K,V> ILevel0MapOperator<I,K,V[]> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<? super T,K,V> mapBuilder);
+    public <K,V> ILevel0MapOperator<I,K,V[]> buildMapOfArrayOf(final Type<V> valueType, final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
     
 }

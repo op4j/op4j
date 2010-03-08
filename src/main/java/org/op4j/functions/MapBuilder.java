@@ -17,20 +17,41 @@
  * 
  * =============================================================================
  */
-package org.op4j.mapbuild;
+package org.op4j.functions;
+
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.op4j.util.MapEntry;
 
 
 
 /**
+ * <p>
+ * This is an implementation of {@link IFunction} aimed at map building, which
+ * substitutes the <tt>execute(...)</tt> method by two more easily implementable
+ * {@link #buildKey(Object)} and {@link #buildValue(Object)}, creating map entries
+ * from the results of these two methods.
+ * </p>
  * 
  * @since 1.0
  * 
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface IMapBuilder<T,K,V> {
+public abstract class MapBuilder<T,K,V> implements IFunction<T,Map.Entry<K,V>> {
+    
+    protected MapBuilder() {
+        super();
+    }
+    
 
-    public K buildKey(final T target);
-    public V buildValue(final T target);
+    public abstract K buildKey(final T target);
+    public abstract V buildValue(final T target);
+
+
+    public final Entry<K, V> execute(final T object, final ExecCtx ctx) throws Exception {
+        return new MapEntry<K,V>(buildKey(object), buildValue(object));
+    }
     
 }

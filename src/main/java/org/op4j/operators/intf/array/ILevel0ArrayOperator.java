@@ -21,10 +21,10 @@ package org.op4j.operators.intf.array;
 
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
-import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
@@ -107,7 +107,7 @@ public interface ILevel0ArrayOperator<I,T>
     
     public ILevel0MapOperator<I,T,T> toMapByAlternateElements();
     public <K> ILevel0MapOperator<I,K,T> toMapByKeyEval(final IFunction<? super T,K> keyEval);
-    public <K,V> ILevel0MapOperator<I,K,V> toMap(final IMapBuilder<? super T,K,V> mapBuilder);
+    public <K,V> ILevel0MapOperator<I,K,V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
     
     
     public ILevel0GenericUniqOperator<I,T[]> generic();

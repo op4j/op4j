@@ -21,6 +21,7 @@ package org.op4j.operators.impl.fn.generic;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
@@ -28,7 +29,6 @@ import org.op4j.functions.Call;
 import org.op4j.functions.FnList;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
-import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperator;
 import org.op4j.operators.impl.fn.array.Level0ArrayOperator;
 import org.op4j.operators.impl.fn.list.Level0ListOperator;
@@ -100,8 +100,8 @@ public final class Level0GenericMultiOperator<I,T> extends AbstractOperator
 
 
     @SuppressWarnings("unchecked")
-    public <K, V> Level0MapOperator<I,K, V> buildMap(final IMapBuilder<? super T,K,V> mapBuilder) {
-        return new Level0MapOperator<I,K, V>(getTarget().endIterate(null).execute(FnList.ofObject().toMap((IMapBuilder)mapBuilder)));
+    public <K, V> Level0MapOperator<I,K, V> buildMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+        return new Level0MapOperator<I,K, V>(getTarget().endIterate(null).execute(FnList.ofObject().toMap((IFunction)mapBuilder)));
     }
 
 
@@ -117,8 +117,8 @@ public final class Level0GenericMultiOperator<I,T> extends AbstractOperator
 
 
     @SuppressWarnings("unchecked")
-    public <K, V> Level0MapOperator<I,K, V[]> buildMapOfArrayOf(final Type<V> valueType, final IMapBuilder<? super T,K,V> mapBuilder) {
-        return new Level0MapOperator<I,K, V[]>(getTarget().endIterate(null).execute(FnList.ofObject().toMapOfArrayOf(valueType, (IMapBuilder)mapBuilder)));
+    public <K, V> Level0MapOperator<I,K, V[]> buildMapOfArrayOf(final Type<V> valueType, final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+        return new Level0MapOperator<I,K, V[]>(getTarget().endIterate(null).execute(FnList.ofObject().toMapOfArrayOf(valueType, (IFunction)mapBuilder)));
     }
 
 
@@ -134,8 +134,8 @@ public final class Level0GenericMultiOperator<I,T> extends AbstractOperator
 
 
     @SuppressWarnings("unchecked")
-    public <K, V> Level0MapOperator<I,K, List<V>> buildMapOfList(final IMapBuilder<? super T,K,V> mapBuilder) {
-        return new Level0MapOperator<I,K, List<V>>(getTarget().endIterate(null).execute(FnList.ofObject().toMapOfList((IMapBuilder)mapBuilder)));
+    public <K, V> Level0MapOperator<I,K, List<V>> buildMapOfList(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+        return new Level0MapOperator<I,K, List<V>>(getTarget().endIterate(null).execute(FnList.ofObject().toMapOfList((IFunction)mapBuilder)));
     }
 
 
@@ -151,8 +151,8 @@ public final class Level0GenericMultiOperator<I,T> extends AbstractOperator
 
 
     @SuppressWarnings("unchecked")
-    public <K, V> Level0MapOperator<I,K, Set<V>> buildMapOfSet(final IMapBuilder<? super T,K,V> mapBuilder) {
-        return new Level0MapOperator<I,K, Set<V>>(getTarget().endIterate(null).execute(FnList.ofObject().toMapOfSet((IMapBuilder)mapBuilder)));
+    public <K, V> Level0MapOperator<I,K, Set<V>> buildMapOfSet(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+        return new Level0MapOperator<I,K, Set<V>>(getTarget().endIterate(null).execute(FnList.ofObject().toMapOfSet((IFunction)mapBuilder)));
     }
 
 

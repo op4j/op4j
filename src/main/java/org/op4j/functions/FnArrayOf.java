@@ -35,7 +35,7 @@ import java.util.Set;
 
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
-import org.op4j.mapbuild.IMapBuilder;
+import org.op4j.exceptions.ExecutionException;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -136,7 +136,7 @@ public class FnArrayOf<T> {
         return new ToMapByKeyEval<K,T>(eval);
     }
     
-    public final <K,V> IFunction<T[],Map<K,V>> toMap(final IMapBuilder<? super T,K,V> mapBuilder) {
+    public final <K,V> IFunction<T[],Map<K,V>> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
         return new ToMapByMapBuilder<K,V,T>(mapBuilder);
     }
     
@@ -148,7 +148,7 @@ public class FnArrayOf<T> {
         return new ToMapOfArrayByKeyEval<K,T>(this.type, eval);
     }
     
-    public final <K,V> IFunction<T[],Map<K,V[]>> toMapOfArrayOf(final Type<V> valueType, final IMapBuilder<? super T,K,V> mapBuilder) {
+    public final <K,V> IFunction<T[],Map<K,V[]>> toMapOfArrayOf(final Type<V> valueType, final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
         return new ToMapOfArrayByMapBuilder<K,V,T>(valueType, mapBuilder);
     }
     
@@ -160,7 +160,7 @@ public class FnArrayOf<T> {
         return new ToMapOfListByKeyEval<K,T>(eval);
     }
     
-    public final <K,V> IFunction<T[],Map<K,List<V>>> toMapOfList(final IMapBuilder<? super T,K,V> mapBuilder) {
+    public final <K,V> IFunction<T[],Map<K,List<V>>> toMapOfList(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
         return new ToMapOfListByMapBuilder<K,V,T>(mapBuilder);
     }
     
@@ -172,7 +172,7 @@ public class FnArrayOf<T> {
         return new ToMapOfSetByKeyEval<K,T>(eval);
     }
     
-    public final <K,V> IFunction<T[],Map<K,Set<V>>> toMapOfSet(final IMapBuilder<? super T,K,V> mapBuilder) {
+    public final <K,V> IFunction<T[],Map<K,Set<V>>> toMapOfSet(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
         return new ToMapOfSetByMapBuilder<K,V,T>(mapBuilder);
     }
     
@@ -726,9 +726,9 @@ public class FnArrayOf<T> {
     
     static final class ToMapByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<T[],Map<K,V>> {
 
-        private final IMapBuilder<? super T,K,V> mapBuilder;
+        private final IFunction<? super T,Map.Entry<K,V>> mapBuilder;
         
-        ToMapByMapBuilder(final IMapBuilder<? super T,K,V> mapBuilder) {
+        ToMapByMapBuilder(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
             super();
             Validate.notNull(mapBuilder, "A map builder must be specified");
             this.mapBuilder = mapBuilder;
@@ -738,7 +738,12 @@ public class FnArrayOf<T> {
         protected Map<K, V> nullAsNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>();
             for (final T element: object) {
-                result.put(this.mapBuilder.buildKey(element), this.mapBuilder.buildValue(element));
+                final Map.Entry<K,V> entry = this.mapBuilder.execute(element, ctx);
+                if (entry == null) {
+                    throw new ExecutionException(
+                            "Map builder returned null, but a map builder should never return null");
+                }
+                result.put(entry.getKey(), entry.getValue());
             }
             return result;
         }
@@ -828,10 +833,10 @@ public class FnArrayOf<T> {
     
     static final class ToMapOfArrayByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<T[],Map<K,V[]>> {
 
-        private final IMapBuilder<? super T,K,V> mapBuilder;
+        private final IFunction<? super T,Map.Entry<K,V>> mapBuilder;
         private final Type<V> type;
         
-        ToMapOfArrayByMapBuilder(final Type<V> type, final IMapBuilder<? super T,K,V> mapBuilder) {
+        ToMapOfArrayByMapBuilder(final Type<V> type, final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
             super();
             Validate.notNull(type, "A type representing the array elements must be specified");
             Validate.notNull(mapBuilder, "A map builder must be specified");
@@ -844,13 +849,18 @@ public class FnArrayOf<T> {
             
             final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
-                final K key = this.mapBuilder.buildKey(element);
+                final Map.Entry<K,V> entry = this.mapBuilder.execute(element, ctx);
+                if (entry == null) {
+                    throw new ExecutionException(
+                            "Map builder returned null, but a map builder should never return null");
+                }
+                final K key = entry.getKey();
                 List<V> value = result.get(key);
                 if (value == null) {
                     value = new ArrayList<V>();
                     result.put(key, value);
                 }
-                value.add(this.mapBuilder.buildValue(element));
+                value.add(entry.getValue());
             }
             
             return createFromMapOfList(this.type, result);
@@ -935,9 +945,9 @@ public class FnArrayOf<T> {
     
     static final class ToMapOfListByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<T[],Map<K,List<V>>> {
 
-        private final IMapBuilder<? super T,K,V> mapBuilder;
+        private final IFunction<? super T,Map.Entry<K,V>> mapBuilder;
         
-        ToMapOfListByMapBuilder(final IMapBuilder<? super T,K,V> mapBuilder) {
+        ToMapOfListByMapBuilder(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
             super();
             Validate.notNull(mapBuilder, "A map builder must be specified");
             this.mapBuilder = mapBuilder;
@@ -947,13 +957,18 @@ public class FnArrayOf<T> {
         protected Map<K, List<V>> nullAsNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
             for (final T element: object) {
-                final K key = this.mapBuilder.buildKey(element);
+                final Map.Entry<K,V> entry = this.mapBuilder.execute(element, ctx);
+                if (entry == null) {
+                    throw new ExecutionException(
+                            "Map builder returned null, but a map builder should never return null");
+                }
+                final K key = entry.getKey();
                 List<V> value = result.get(key);
                 if (value == null) {
                     value = new ArrayList<V>();
                     result.put(key, value);
                 }
-                value.add(this.mapBuilder.buildValue(element));
+                value.add(entry.getValue());
             }
             return result;
         }
@@ -1028,9 +1043,9 @@ public class FnArrayOf<T> {
     
     static final class ToMapOfSetByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<T[],Map<K,Set<V>>> {
 
-        private final IMapBuilder<? super T,K,V> mapBuilder;
+        private final IFunction<? super T,Map.Entry<K,V>> mapBuilder;
         
-        ToMapOfSetByMapBuilder(final IMapBuilder<? super T,K,V> mapBuilder) {
+        ToMapOfSetByMapBuilder(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
             super();
             Validate.notNull(mapBuilder, "A map builder must be specified");
             this.mapBuilder = mapBuilder;
@@ -1040,13 +1055,18 @@ public class FnArrayOf<T> {
         protected Map<K, Set<V>> nullAsNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             final Map<K, Set<V>> result = new LinkedHashMap<K, Set<V>>();
             for (final T element: object) {
-                final K key = this.mapBuilder.buildKey(element);
+                final Map.Entry<K,V> entry = this.mapBuilder.execute(element, ctx);
+                if (entry == null) {
+                    throw new ExecutionException(
+                            "Map builder returned null, but a map builder should never return null");
+                }
+                final K key = entry.getKey();
                 Set<V> value = result.get(key);
                 if (value == null) {
                     value = new LinkedHashSet<V>();
                     result.put(key, value);
                 }
-                value.add(this.mapBuilder.buildValue(element));
+                value.add(entry.getValue());
             }
             return result;
         }

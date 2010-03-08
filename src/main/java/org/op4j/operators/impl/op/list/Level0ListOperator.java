@@ -22,11 +22,11 @@ package org.op4j.operators.impl.op.list;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.FnList;
 import org.op4j.functions.IFunction;
-import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperator;
 import org.op4j.operators.impl.op.array.Level0ArrayOperator;
 import org.op4j.operators.impl.op.generic.Level0GenericUniqOperator;
@@ -171,8 +171,8 @@ public final class Level0ListOperator<I,T> extends AbstractOperator
 
 
     @SuppressWarnings("unchecked")
-    public <K, V> Level0MapOperator<I,K, V> toMap(final IMapBuilder<? super T,K,V> mapBuilder) {
-        return new Level0MapOperator<I,K, V>(getTarget().execute(FnList.ofObject().toMap((IMapBuilder)mapBuilder)));
+    public <K, V> Level0MapOperator<I,K, V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+        return new Level0MapOperator<I,K, V>(getTarget().execute(FnList.ofObject().toMap((IFunction)mapBuilder)));
     }
 
 

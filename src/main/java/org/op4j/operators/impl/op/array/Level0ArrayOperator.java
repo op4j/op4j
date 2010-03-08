@@ -21,11 +21,11 @@ package org.op4j.operators.impl.op.array;
 
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.FnArray;
 import org.op4j.functions.IFunction;
-import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperator;
 import org.op4j.operators.impl.op.generic.Level0GenericUniqOperator;
 import org.op4j.operators.impl.op.list.Level0ListOperator;
@@ -167,7 +167,7 @@ public final class Level0ArrayOperator<I,T>
         return new Level0MapOperator<I,K, T>(getTarget().execute(FnArray.of(this.type).toMapByKeyEval(keyEval)));
     }
 
-    public <K, V> Level0MapOperator<I,K, V> toMap(final IMapBuilder<? super T,K,V> mapBuilder) {
+    public <K, V> Level0MapOperator<I,K, V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
         return new Level0MapOperator<I,K, V>(getTarget().execute(FnArray.of(this.type).toMap(mapBuilder)));
     }
 

@@ -19,8 +19,9 @@
  */
 package org.op4j.operators.qualities;
 
+import java.util.Map;
+
 import org.op4j.functions.IFunction;
-import org.op4j.mapbuild.IMapBuilder;
 
 
 /**
@@ -68,8 +69,8 @@ public interface ConvertibleToMapOperator<T> {
     /**
      * <p>
      * Converts the target object to a map by inputting the original target's
-     * elements into the specified map builder which will create the
-     * resulting keys and values.
+     * elements into the specified map builder (a function returning map entries)
+     * which will create the resulting keys and values.
      * </p>
      * <p>
      * Note that if more than one value get the same key, only the last one
@@ -78,9 +79,9 @@ public interface ConvertibleToMapOperator<T> {
      * 
      * @param <K> the type of the keys that will be created
      * @param <V> the type of the values that will be created
-     * @param mapBuilder the map builder to be used
+     * @param mapBuilder the map builder function to be used
      * @return an operator holding the converted object as target.
      */
-    public <K,V> Operator toMap(final IMapBuilder<? super T,K,V> mapBuilder);
+    public <K,V> Operator toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
     
 }

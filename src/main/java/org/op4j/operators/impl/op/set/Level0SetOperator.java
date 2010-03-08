@@ -21,12 +21,12 @@ package org.op4j.operators.impl.op.set;
 
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.FnSet;
 import org.op4j.functions.IFunction;
-import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperator;
 import org.op4j.operators.impl.op.array.Level0ArrayOperator;
 import org.op4j.operators.impl.op.generic.Level0GenericUniqOperator;
@@ -172,8 +172,8 @@ public final class Level0SetOperator<I,T> extends AbstractOperator
 
 
     @SuppressWarnings("unchecked")
-    public <K, V> Level0MapOperator<I,K, V> toMap(final IMapBuilder<? super T,K,V> mapBuilder) {
-        return new Level0MapOperator<I,K, V>(getTarget().execute(FnSet.ofObject().toMap((IMapBuilder)mapBuilder)));
+    public <K, V> Level0MapOperator<I,K, V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+        return new Level0MapOperator<I,K, V>(getTarget().execute(FnSet.ofObject().toMap((IFunction)mapBuilder)));
     }
 
 

@@ -19,10 +19,11 @@
  */
 package org.op4j.operators.impl.op.array;
 
+import java.util.Map;
+
 import org.javaruntype.type.Type;
 import org.op4j.functions.FnArray;
 import org.op4j.functions.IFunction;
-import org.op4j.mapbuild.IMapBuilder;
 import org.op4j.operators.impl.AbstractOperator;
 import org.op4j.operators.impl.op.generic.Level0GenericUniqOperator;
 import org.op4j.operators.impl.op.list.Level0ListOperator;
@@ -66,8 +67,8 @@ public final class Level0IndefiniteArrayOperator<I,T>
     }
 
     @SuppressWarnings("unchecked")
-    public <K, V> Level0MapOperator<I,K, V> toMap(final IMapBuilder<? super T,K,V> mapBuilder) {
-        return new Level0MapOperator<I,K, V>(getTarget().execute(FnArray.ofObject().toMap((IMapBuilder)mapBuilder)));
+    public <K, V> Level0MapOperator<I,K, V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+        return new Level0MapOperator<I,K, V>(getTarget().execute(FnArray.ofObject().toMap((IFunction)mapBuilder)));
     }
 
     public Level0SetOperator<I,T> toSet() {
