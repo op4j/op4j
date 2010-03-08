@@ -13,7 +13,31 @@ Working with arrays
   executed on them any functions which might change their state instead of substituting them 
   for new elements.
 
-* Creating array expressions
+  * {{{a1}Creating array expressions}}
+  
+  * {{{a2}Building arrays}}
+  
+  * {{{a3}Converting to...}}
+  
+  * {{{a4}Iterating}}
+  
+  * {{{a5}Modifying}}
+  
+  * {{{a6}Executing functions}}
+  
+  * {{{a7}Mapping functions}}
+  
+  * {{{a8}Selecting (conditional code)}}
+  
+  * {{{a9}Replacing}}
+  
+  * {{{a10}Removing duplicates}}
+  
+  * {{{a11}Sorting}}
+
+
+
+* {1}. Creating array expressions
 
 ** Operation expressions
 
@@ -116,7 +140,7 @@ function = Fn.onArrayOf(Types.STRING)...get();
 ---
      
      
-* Building arrays
+* {2}. Building arrays
 
   Arrays can be built from their elements very easily by creating a generic operator (which can
   be <unique> or <multiple>) and then calling the <<<buildArrayOf(...)>>> action.
@@ -128,7 +152,7 @@ String[] capitals = Op.onAll("Santiago", "Madrid", "Brussels").buildArrayOf(Type
 ---
 
 
-* Converting to...
+* {3}. Converting to...
 
 ** Lists
   
@@ -194,7 +218,7 @@ Map<String,String> map = Op.on(array).toMapByAlternateElements().get();
   
   
 
-* Iterating
+* {4}. Iterating
 
   Arrays can be iterated according to the following scheme:
 
@@ -222,7 +246,7 @@ List<String> list = Op.on(array).forEach().exec(FnString.toUpperCase()).endFor()
 ---
    
   
-* Modifying
+* {5}. Modifying
 
   An array can be modified by adding or removing elements from it. 
   
@@ -284,7 +308,7 @@ Op.on(array).removeAllNotNullAndFalse(eval)...
 
 
 
-* Executing functions
+* {6}. Executing functions
   
 ** Executing functions on the array elements
 
@@ -391,7 +415,7 @@ Calendar calendar =
 
   
 
-* Mapping functions
+* {7}. Mapping functions
 
   <Mapping> an array is the equivalent to iterating it, applying a function to each of its elements
   and then ending the iteration:
@@ -455,7 +479,7 @@ BigDecimal[] newArray =
 
   
   
-* Selecting (conditional code)
+* {8}. Selecting (conditional code)
 
   op4j allows the conditional execution of actions. Once the condition (an action starting with
   "<<<if>>>") is executed, all subsequent actions will apply only on the selected parts of the target object.
@@ -554,7 +578,7 @@ String[] newArray =
 ---
   
 
-* Replacing
+* {9} Replacing
 
   Array elements (or the array itself) can be replaced by other objects:
   
@@ -573,7 +597,7 @@ String[] newArray =
 
 
 
-* Removing duplicates
+* {10}. Removing duplicates
 
   Arrays can contain duplicate elements, which can be removed by executing a <distinct()> action:
   
@@ -582,7 +606,7 @@ String[] newArray = Op.on(array).distinct().get();
 ---
   
 
-* Sorting
+* {11}. Sorting
 
   Arrays can be sorted, both using a comparator or <natural order>:
   

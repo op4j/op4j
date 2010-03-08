@@ -31,7 +31,21 @@ Features: a general overview
 
 The key concepts
 
-* Expressions
+
+  * {{{a1}Expressions}}
+  
+  * {{{a2}Actions}}
+  
+  * {{{a3}Operators}}
+  
+  * {{{a4}Targets}}
+  
+  * {{{a5}The operators as a state machine}}
+  
+  * {{{a6}Functions}}
+
+
+* {1}. Expressions
 
   op4j is used for implementing (mainly) auxiliary code as <<expressions>>. Expressions look like this:
   
@@ -71,7 +85,7 @@ List<String> upperStrs = upperStrsFunc.execute(values);
   defined function (fn expressions).
    
   
-* Actions
+* {2}. Actions
 
   An <<action>> is a chained method executed in an expression, between the <"on(...)"> and
   the <"get()"> methods.
@@ -85,7 +99,7 @@ List<Integer> intValueList = Op.on(values).toList().forEach().exec(FnString.toIn
 
   Here we can see three chained actions: <toList>, <forEach> and <exec>.   
   
-* Operators
+* {3}. Operators
 
   <<Operators>> are the objects representing each of the states of an expression. They are the
   objects resulting from the execution of <<actions>> (or <on(...)>).
@@ -119,7 +133,7 @@ List<Integer> intValueList = Op.on(values).toList().forEach().exec(FnString.toIn
   operator representing the new state, instead of changing their own internal state.
 
 
-* Targets
+* {4}. Targets
 
   The "<<target>>" or "<<targets>>" of an operator are the objects that the operator's
   actions (methods) will execute on.
@@ -157,7 +171,7 @@ List<Integer> intValueList = Op.on(values).toList().forEach().exec(FnString.toIn
   
 
   
-* The operators as a state machine
+* {5}. The operators as a state machine
   
   The behaviour of operators in op4j allows the operator system to be thought of as a <<state machine>> 
   where <<operators represent states>>, and <<actions represent state changes>>. Thanks to this: 
@@ -269,7 +283,7 @@ List<Integer> intValueList = Op.on(values).forEach().forEach()...
   
 [images/contentassist.png] Content Assist
 
-* Functions
+* {6}. Functions
 
   <<Functions>> are a key concept in op4j. A quick definition:
   
