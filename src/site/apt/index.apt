@@ -160,19 +160,7 @@ Set<Calendar> set = [Calendar(12 October 1492), Calendar(6 December 1978)]
   
 * Learning more...
 
-  If you want to know more, here are some documentation links:
-  
-    * {{{basics.html}The Basics}}
-    
-    * {{{arrays.html}Working with arrays}}
-    
-    * {{{lists.html}Working with lists}}
-    
-    * {{{maps.html}Working with maps}}
-    
-    * {{{sets.html}Working with sets}}
-    
-    * {{{generic.html}Working with any object of any type (generic operations)}}
+  If you want to know more, you should start with {{{basics.html}The Basics}}.
 
   
   
