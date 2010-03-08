@@ -59,7 +59,7 @@ function = Fn.onMapOf(Types.INTEGER, Types.STRING)...get();
 *** Using a Map Builder
   
 ---
-IMapBuilder<String,Integer,String> mapBuilder = ...;
+MapBuilder<String,Integer,String> mapBuilder = ...;
 Map<Integer,String> map = 
     Op.onAll("Santiago", "Madrid", "Brussels").buildMap(mapBuilder).get();
 ---
@@ -95,7 +95,7 @@ Map<String,String> capitalsByTerritory =
 *** Using a Map Builder
   
 ---
-IMapBuilder<String,Integer,String> mapBuilder = ...;
+MapBuilder<String,Integer,String> mapBuilder = ...;
 Map<Integer,String[]> map = 
     Op.onAll("Santiago", "Madrid", "Brussels").buildMapOfArrayOf(Types.STRING, mapBuilder).get();
 ---
@@ -125,7 +125,7 @@ Map<String,String[]> citiesByCountry =
 *** Using a Map Builder
   
 ---
-IMapBuilder<String,Integer,String> mapBuilder = ...;
+MapBuilder<String,Integer,String> mapBuilder = ...;
 Map<Integer,List<String>> map = 
     Op.onAll("Santiago", "Madrid", "Brussels").buildMapOfList(mapBuilder).get();
 ---
@@ -155,7 +155,7 @@ Map<String,List<String>> citiesByCountry =
 *** Using a Map Builder
   
 ---
-IMapBuilder<String,Integer,String> mapBuilder = ...;
+MapBuilder<String,Integer,String> mapBuilder = ...;
 Map<Integer,Set<String>> map = 
     Op.onAll("Santiago", "Madrid", "Brussels").buildMapOfSet(mapBuilder).get();
 ---

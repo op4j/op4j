@@ -75,22 +75,24 @@ List<String> list = Op.on(set).toList().get();
 
 *** Using a Map Builder
 
-  A Map Builder is an object which implements the <<<org.op4j.mapbuild.IMapBuilder>>> interface,
+  A Map Builder is an function which returns map entries (<<<IFunction<T,Map.Entry\<K,V\>\>>>>),
+  usually created by extending the abstract class <<<org.op4j.functions.MapBuilder>>>, 
   and which provides op4j with a way of creating a map entry from each of the set's elements.
   
-  <<<IMapBuilder>>> looks like this:
+  <<<MapBuilder>>> looks like this:
   
 ---
-public interface IMapBuilder<T,K,V> {
-    public K buildKey(final T target);
-    public V buildValue(final T target);
+public abstract class MapBuilder<T,K,V> implements IFunction<T,Map.Entry<K,V>> {
+    public abstract K buildKey(final T target);
+    public abstract V buildValue(final T target);
+    ...
 }
 ---   
 
   ...and using it is very easy:    
 
 ---
-IMapBuilder<String,Integer,Calendar> mapBuilder = ...;
+MapBuilder<String,Integer,Calendar> mapBuilder = ...;
 Map<Integer,Calendar> map = Op.on(set).toMap(mapBuilder).get();
 ---
 
