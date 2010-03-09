@@ -277,7 +277,7 @@ List<Integer> intValueList = Op.on(values).forEach().forEach()...
   
 ** Flowing code: the advantage of the state machine  
   
-  op4j's state machine makes it easy for you to create your expressions by just using the <Context assist>
+  op4j's state machine makes it easy for you to create your expressions by just using the <Content assist>
   feature in your IDE (usually by pressing Ctrl+Space after ".") and going through the list of actions 
   (methods) available to you at a specific point in the chain, selecting the one that fits your needs.
   
