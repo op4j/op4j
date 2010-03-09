@@ -14,7 +14,33 @@ Working with lists
   executed on them any functions which might change their state instead of substituting them 
   for new elements.
 
-* Creating list expressions
+
+  * {{{a1}Creating list expressions}}
+
+  * {{{a2}Building lists}}
+
+  * {{{a3}Converting to...}}
+
+  * {{{a4}Iterating}}
+
+  * {{{a5}Modifying}}
+
+  * {{{a6}Executing functions}}
+  
+  * {{{a7}Mapping functions}}
+
+  * {{{a8}Selecting (conditional code)}}
+
+  * {{{a9}Replacing}}
+
+  * {{{a10}Removing duplicates}}
+
+  * {{{a11}Sorting}}
+
+
+
+
+* {1}. Creating list expressions
 
 ** Operation expressions
 
@@ -43,7 +69,7 @@ function = Fn.onListOf(Types.STRING)...get();
 ---
      
      
-* Building lists
+* {2}. Building lists
 
   Lists can be built from their elements very easily by creating a generic operator (which can
   be <unique> or <multiple>) and then calling the <<<buildList()>>> action:
@@ -53,7 +79,7 @@ List<String> capitals = Op.onAll("Santiago", "Madrid", "Brussels").buildList().g
 ---
 
 
-* Converting to...
+* {3}. Converting to...
 
 ** Arrays
   
@@ -119,7 +145,7 @@ Map<String,String> map = Op.on(list).toMapByAlternateElements().get();
   
   
 
-* Iterating
+* {4}. Iterating
 
   Lists can be iterated according to the following scheme:
 
@@ -147,7 +173,7 @@ Set<String> set = Op.on(list).forEach().exec(FnString.toUpperCase()).endFor().to
 ---
    
   
-* Modifying
+* {5}. Modifying
 
   A list can be modified by adding or removing elements from it. 
   
@@ -209,7 +235,7 @@ Op.on(list).removeAllNotNullAndFalse(eval)...
 
 
 
-* Executing functions
+* {6}. Executing functions
   
 ** Executing functions on the list elements
 
@@ -277,7 +303,7 @@ Calendar calendar =
 
   
 
-* Mapping functions
+* {7}. Mapping functions
 
   <Mapping> a list is the equivalent to iterating it, applying a function to each of its elements
   and then ending the iteration:
@@ -316,7 +342,7 @@ Op.on(list).mapIfNotNull(myFunction)...
 
   
   
-* Selecting (conditional code)
+* {8}. Selecting (conditional code)
 
   op4j allows the conditional execution of actions. Once the condition (an action starting with
   "<<<if>>>") is executed, all subsequent actions will apply only on the selected parts of the target object.
@@ -415,9 +441,9 @@ List<String> newArray =
 ---
   
 
-* Replacing
+* {9}. Replacing
 
-  Array elements (or the list itself) can be replaced by other objects:
+  List elements (or the list itself) can be replaced by other objects:
   
 ---
 List<String> newList = 
@@ -434,7 +460,7 @@ List<String> newList =
 
 
 
-* Removing duplicates
+* {10}. Removing duplicates
 
   Lists can contain duplicate elements, which can be removed by executing a <distinct()> action:
   
@@ -443,7 +469,7 @@ List<String> newList = Op.on(list).distinct().get();
 ---
   
 
-* Sorting
+* {11}. Sorting
 
   Lists can be sorted, both using a comparator or <natural order>:
   

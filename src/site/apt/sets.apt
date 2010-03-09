@@ -14,7 +14,28 @@ Working with sets
   executed on them any functions which might change their state instead of substituting them 
   for new elements.
 
-* Creating set expressions
+  * {{{a1}Creating set expressions}}
+
+  * {{{a2}Building sets}}
+
+  * {{{a3}Converting to...}}
+
+  * {{{a4}Iterating}}
+  
+  * {{{a5}Modifying}}
+
+  * {{{a6}Executing functions}}
+  
+  * {{{a7}Mapping functions}}
+
+  * {{{a8}Selecting (conditional code)}}
+
+  * {{{a9}Replacing}}
+
+  * {{{a10}Sorting}}
+
+
+* {1}. Creating set expressions
 
 ** Operation expressions
 
@@ -43,7 +64,7 @@ function = Fn.onSetOf(Types.STRING)...get();
 ---
      
      
-* Building sets
+* {2}. Building sets
 
   Sets can be built from their elements very easily by creating a generic operator (which can
   be <unique> or <multiple>) and then calling the <<<buildSet()>>> action:
@@ -53,7 +74,7 @@ Set<String> capitals = Op.onAll("Santiago", "Madrid", "Brussels").buildSet().get
 ---
 
 
-* Converting to...
+* {3}. Converting to...
 
 ** Arrays
   
@@ -119,7 +140,7 @@ Map<String,String> map = Op.on(set).toMapByAlternateElements().get();
   
   
 
-* Iterating
+* {4}. Iterating
 
   Sets can be iterated according to the following scheme:
 
@@ -147,7 +168,7 @@ List<String> list = Op.on(set).forEach().exec(FnString.toUpperCase()).endFor().t
 ---
    
   
-* Modifying
+* {5}. Modifying
 
   A set can be modified by adding or removing elements from it. 
   
@@ -211,7 +232,7 @@ Op.on(set).removeAllNotNullAndFalse(eval)...
 
 
 
-* Executing functions
+* {6}. Executing functions
   
 ** Executing functions on the set elements
 
@@ -279,7 +300,7 @@ Integer result = Op.on(set).exec(countsetElementsFn).get();
 
   
 
-* Mapping functions
+* {7}. Mapping functions
 
   <Mapping> a set is the equivalent to iterating it, applying a function to each of its elements
   and then ending the iteration:
@@ -318,7 +339,7 @@ Op.on(set).mapIfNotNull(myFunction)...
 
   
   
-* Selecting (conditional code)
+* {8}. Selecting (conditional code)
 
   op4j allows the conditional execution of actions. Once the condition (an action starting with
   "<<<if>>>") is executed, all subsequent actions will apply only on the selected parts of the target object.
@@ -417,9 +438,9 @@ Set<String> newArray =
 ---
   
 
-* Replacing
+* {9}. Replacing
 
-  Array elements (or the set itself) can be replaced by other objects:
+  Set elements (or the set itself) can be replaced by other objects:
   
 ---
 Set<String> newSet = 
@@ -436,7 +457,7 @@ Set<String> newSet =
 
 
 
-* Sorting
+* {10}. Sorting
 
   Sets can be sorted (op4j uses <<<LinkedHashSet>>> internally), both using a comparator 
   or <natural order>:

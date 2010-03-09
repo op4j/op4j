@@ -14,7 +14,24 @@ Working with maps
   executed on them any functions which might change their state instead of substituting them 
   for new elements.
 
-* Creating map expressions
+  * {{{a1}Creating map expressions}}
+
+  * {{{a2}Building maps}}
+
+  * {{{a3}Extracting keys and values}}
+  
+  * {{{a4}Iterating}}
+
+  * {{{a5}Modifying}}
+
+  * {{{a6}Executing functions}}
+  
+  * {{{a7}Selecting (conditional code)}}
+
+  * {{{a8}Replacing}}
+
+
+* {1}. Creating map expressions
 
 ** Operation expressions
 
@@ -43,7 +60,7 @@ function = Fn.onMapOf(Types.INTEGER, Types.STRING)...get();
 ---
      
      
-* Building maps
+* {2}. Building maps
 
   Maps can be built from their elements in a number of different ways by creating a generic 
   operator (which can be <unique> or <multiple>) and then calling one of the <buildMap> actions.
@@ -178,7 +195,7 @@ Map<String,Set<String>> citiesByCountry =
 
 
 
-* Extracting keys and values
+* {3}. Extracting keys and values
   
   All keys of a map can be extracted as a Set:
 
@@ -196,7 +213,7 @@ List<String> values = Op.on(map).extractValues().get();
   
   
 
-* Iterating
+* {4}. Iterating
 
   Maps can be iterated, resulting in an operator acting on its <map entries> (<<<Map.Entry\<K,V\>>>>).
 
@@ -240,7 +257,7 @@ Op.on(map).forEachEntry().onValue().[VALUE ACTIONS].endOn().endFor().[MAP ACTION
 ---
    
   
-* Modifying
+* {5}. Modifying
 
   A map can be modified by adding or removing elements from it. 
   
@@ -287,7 +304,7 @@ Op.on(map).removeAllFalse(eval)...
 
 
 
-* Executing functions
+* {6}. Executing functions
   
 ** Executing functions on the map keys or values
 
@@ -389,7 +406,7 @@ Calendar calendar = Op.on(map).exec(myFunction).get();
 
   
   
-* Selecting (conditional code)
+* {7}. Selecting (conditional code)
 
   op4j allows the conditional execution of actions. Once the condition (an action starting with
   "<<<if>>>") is executed, all subsequent actions will apply only on the selected parts of the target object.
@@ -514,7 +531,7 @@ Map<String,String> newMap =
 ---
   
 
-* Replacing
+* {8}. Replacing
 
   Map keys, values, entries or even the map itself can be replaced by other objects:
   
