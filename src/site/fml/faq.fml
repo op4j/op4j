@@ -88,7 +88,7 @@
   <part id="general">
     <title>General</title>
     
-    <faq id="what-is-javaruntype-useful-for">
+    <faq id="what-is-op4j-useful-for">
       <question>What is op4j useful for?</question>
       <answer>
         <p>
