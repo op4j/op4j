@@ -53,7 +53,7 @@
       <answer>
         <p>
           No, it does not. Commercial support is not offered at the moment, but
-          there are <a href="userlist.html">User Forums and Mailing Lists</a> at your disposal.
+          there is <a href="http://sourceforge.net/apps/phpbb/op4j/">User Forum</a> at your disposal.
         </p>
       </answer>
     </faq>
@@ -65,8 +65,8 @@
           In many ways:
         </p>
         <ul>
-          <li>You can write in the <a href="userlist.html">User 
-              Forums</a> (or directly to the <a href="team.html">Team</a>) with your
+          <li>You can write in the <a href="http://sourceforge.net/apps/phpbb/op4j/">User 
+              Forum</a> (or directly to the <a href="team.html">Team</a>) with your
               ideas for improving op4j.</li>
           <li>You can contribute some code, write a patch for a new feature
               or behaviour (please, tell the project admins first about your idea so 

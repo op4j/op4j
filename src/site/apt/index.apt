@@ -2,7 +2,10 @@
   Main
   -------
 
-  <<op4j 1.0-beta1 RELEASED!>> (March 8th, 2010). {{{download.html}[DOWNLOAD]}}
+  <<op4j 1.0-beta1 RELEASED!>> (March 8th, 2010). <<{{{download.html}[DOWNLOAD]}}>>
+
+  <<Update (March 9th, 2010)>>: {{{http://sourceforge.net/apps/phpbb/op4j/}User Forum}} is now active!\
+  <<Update (March 9th, 2010)>>: op4j 1.0-beta1 uploaded to central Maven repositories. 
 
   This software is in beta stage, although fairly stable and tested already. Online
   documentation is still work in progress. An official stable release is intended for Spring 2010.\

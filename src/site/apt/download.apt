@@ -10,4 +10,7 @@ Download OP4J
   
   <<{{{https://sourceforge.net/projects/op4j/files/}DOWNLOAD OP4J (from SourceForge.net)}}>>
   
+  Nevertheless, if you are using Apache Maven for your projects, you can obtain op4j
+  easily from the Maven central repositories by following these {{{maveninfo.html}instructions}}.
+  
   You can also browse the Source Repository {{{source-repository.html}here}}.
