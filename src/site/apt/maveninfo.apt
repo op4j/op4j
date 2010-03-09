@@ -4,10 +4,6 @@
 
 Using op4j with Maven
   
-  <<Note for 1.0-beta1>>: Please allow a couple of days after the release of version 1.0-beta1 for
-  the maven repositories to be updated. In the meantime, you can download the complete binary 
-  distribution {{{download.html}here}}.
-  
   In order to include op4j in your maven-managed project, you will have to declare your dependency 
   like this:
   
