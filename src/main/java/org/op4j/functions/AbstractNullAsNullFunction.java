@@ -37,11 +37,11 @@ public abstract class AbstractNullAsNullFunction<T,R> implements IFunction<T,R> 
     }
 
 
-    public final R execute(final T object, final ExecCtx ctx) throws Exception {
-        if (object == null) {
+    public final R execute(final T input, final ExecCtx ctx) throws Exception {
+        if (input == null) {
             return null;
         }
-        return nullAsNullExecute(object, ctx);
+        return nullAsNullExecute(input, ctx);
     }
 
 

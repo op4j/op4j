@@ -36,13 +36,13 @@ public abstract class AbstractNotNullFunction<T, R> implements IFunction<T, R> {
     }
 
 
-    public final R execute(final T object, final ExecCtx ctx) throws Exception {
-        if (object == null) {
+    public final R execute(final T input, final ExecCtx ctx) throws Exception {
+        if (input == null) {
             throw new IllegalArgumentException(
                     "Cannot execute function " + this.getClass().getName() + 
                     " on a null target.");
         }
-        return notNullExecute(object, ctx);
+        return notNullExecute(input, ctx);
     }
 
 

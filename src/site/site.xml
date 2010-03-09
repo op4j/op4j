@@ -45,6 +45,7 @@
           <item name="· Any object (generic)" href="generic.html"/>
         </item>
         <item name="· Functions">
+          <item name="· About Functions" href="functions.html"/>
           <item name="· Ognl" href="ognl.html"/>
           <item name="· Call" href="call.html"/>
           <item name="· FnBoolean" href="fnboolean.html"/>

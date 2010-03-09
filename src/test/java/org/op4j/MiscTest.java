@@ -490,8 +490,24 @@ watch.start();
         
         Op.on(v2).forEach().get();
         
+        
+        Op.on(123).exec(new IFunction<Integer,String>() {
+            public String execute(Integer input, ExecCtx ctx) throws Exception {
+                return "The input number is: " + input;
+            }
+        }).get();
+        
+        
     }
     
+    
+    private static class Fun implements IFunction<Integer,String> {
+
+        public String execute(Integer input, ExecCtx ctx) throws Exception {
+            return "The input number is: " + input;
+        }
+        
+    }
     
     
     private static String printArray(Object[] array) {

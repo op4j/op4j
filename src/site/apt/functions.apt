@@ -1,0 +1,97 @@
+  -------
+  About Functions
+  -------
+
+Functions
+
+  Functions are one of the main components of op4j. They are implementations of the
+  <<<org.op4j.functions.IFunction\<T,R\>>>> interface, being <<<T>>> the input type
+  and <<<R>>> the result type.
+  
+  For example: <<<IFunction\<String,Integer\>>>> defines a function which takes
+  a <<<String>>> as input and returns an <<<Integer>>>.
+  
+  Inside expressions, functions are executed by the <<<exec(...)>>> action or by any of its variants: 
+  <<<map(...)>>>, <<<execAsArray(...)>>>, etc.
+  
+
+* Predefined functions
+
+  op4j provides more than 200 functions out-of-the-box. They are usually obtained by calling
+  static methods in <function classes>. For example:
+  
+---
+IFunction<String,String> fn = FnString.toUpperCase();
+---
+
+  <<<FnString>>> is one of the predefined <function classes> (most of them start with <<<Fn>>>), 
+  and the <<<toUpperCase()>>> static method returns a function which takes a <<<String>>> input 
+  and returns a <<<String>>> result (<<<IFunction\<String,String\>>>>).
+  
+  Let's see some random examples:
+  
+---
+IFunction<String,String> fn = FnString.trim();
+IFunction<String,Calendar> fn = FnString.toCalendar("dd/MM/yyyy");
+IFunction<Number,BigDecimal> fn = FnNumber.toBigDecimal(2, RoundingMode.HALF_UP);
+IFunction<Iterable<Double>,Double> fn = FnMath.ofDouble().avg();
+IFunction<Iterable<Integer>,Integer> fn = FnMath.ofInteger().max();
+---
+
+  As we can see, some function classes like <<<FnMath>>> are a little bit special because they
+  require specialization (type parameterization), which is what is done with the <<<ofDouble()>>>
+  and <<<ofInteger()>>> methods.
+  
+  Let's see another example of specialization:
+  
+---
+Type<User> type = ...;
+IFunction<List<User[]>,List<User>>> fn = FnList.ofArrayOf(type).flattenArrays();
+---
+
+* User-defined functions
+
+** Function expressions
+
+  Functions can be created by means of <<<Fn.on>>> expressions:
+  
+---
+Function<String[],Calendar[]> fnParseStringDates =
+    Fn.onArrayOf(Types.STRING).map(FnString.toCalendar("dd/MM/yyyy"));
+---
+
+  Note that <function expressions> return <<<org.op4j.functions.Function>>> objects, which are
+  an implementation of <<<IFunction>>> adding a special <<<execute(T input)>>> method
+  for easily calling them <even outside op4j expressions>:
+
+---
+Calendar[] calendars = fnParseStringDates.execute(stringDates);  
+---
+
+
+** Custom functions
+
+  Creating a custom function without using a function expression is as simple as implementing
+  the one-method <<<IFunction>>> interface:
+
+---
+public class MyFunction implements IFunction<Integer,String> {
+
+    public String execute(Integer input, ExecCtx ctx) throws Exception {
+        return "The input number is: " + input;
+    }
+        
+}
+---
+
+  ...which can also be done anonymously:
+  
+---
+String result = 
+    Op.on(value).exec(new IFunction<Integer,String>() {
+        public String execute(Integer input, ExecCtx ctx) throws Exception {
+            return "The input number is: " + input;
+        }
+    }).get();
+--- 
+  

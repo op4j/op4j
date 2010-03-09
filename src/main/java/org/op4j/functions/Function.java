@@ -40,8 +40,8 @@ public final class Function<T,R> implements IFunction<T,R> {
         this.target = target;
     }
     
-    public R execute(final T object, final ExecCtx ctx) throws Exception {
-        return execute(object);
+    public R execute(final T input, final ExecCtx ctx) throws Exception {
+        return execute(input);
     }
 
     @SuppressWarnings("unchecked")

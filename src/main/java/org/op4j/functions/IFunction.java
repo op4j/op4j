@@ -30,6 +30,6 @@ package org.op4j.functions;
  */
 public interface IFunction<T,R> {
     
-    public R execute(final T object, final ExecCtx ctx) throws Exception;
+    public R execute(final T input, final ExecCtx ctx) throws Exception;
 
 }

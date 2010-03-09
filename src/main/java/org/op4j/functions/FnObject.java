@@ -114,9 +114,9 @@ public final class FnObject {
         }
 
         @SuppressWarnings("unchecked")
-        public T[] execute(final T object, final ExecCtx ctx) throws Exception {
+        public T[] execute(final T input, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
-            result.add(object);
+            result.add(input);
             final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
             return result.toArray(array);
         }
@@ -133,9 +133,9 @@ public final class FnObject {
             super();
         }
 
-        public List<T> execute(final T object, final ExecCtx ctx) throws Exception {
+        public List<T> execute(final T input, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>();
-            result.add(object);
+            result.add(input);
             return result;
         }
         
@@ -149,9 +149,9 @@ public final class FnObject {
             super();
         }
 
-        public Set<T> execute(final T object, final ExecCtx ctx) throws Exception {
+        public Set<T> execute(final T input, final ExecCtx ctx) throws Exception {
             final Set<T> result = new LinkedHashSet<T>();
-            result.add(object);
+            result.add(input);
             return result;
         }
         

@@ -50,8 +50,8 @@ public abstract class MapBuilder<T,K,V> implements IFunction<T,Map.Entry<K,V>> {
     public abstract V buildValue(final T target);
 
 
-    public final Entry<K, V> execute(final T object, final ExecCtx ctx) throws Exception {
-        return new MapEntry<K,V>(buildKey(object), buildValue(object));
+    public final Entry<K, V> execute(final T input, final ExecCtx ctx) throws Exception {
+        return new MapEntry<K,V>(buildKey(input), buildValue(input));
     }
     
 }

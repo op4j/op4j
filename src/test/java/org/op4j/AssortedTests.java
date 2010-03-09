@@ -42,9 +42,9 @@ public class AssortedTests extends TestCase {
 		List<String> data = this.testUtils.getStringList(8);
 		List<String> result = Op.onList(data)
 		.forEach().exec(new IFunction<String, String>() {
-			public String execute(String object, ExecCtx ctx)
+			public String execute(String input, ExecCtx ctx)
 			throws Exception {
-				return ctx.getIndex() + " - " + object;
+				return ctx.getIndex() + " - " + input;
 			}
 			public Type<? extends String> getResultType(
 					Type<? extends String> targetType) {
@@ -67,9 +67,9 @@ public class AssortedTests extends TestCase {
 		List<String> result = Op.onList(data1)
 		.addAll(data2).removeAllNullOrFalse(new IFunction<String, Boolean>() {
 
-			public Boolean execute(String object, ExecCtx ctx)
+			public Boolean execute(String input, ExecCtx ctx)
 			throws Exception {
-				return Boolean.valueOf(StringUtils.contains("a", object));
+				return Boolean.valueOf(StringUtils.contains("a", input));
 			}
 
 			public Type<? extends Boolean> getResultType(
@@ -486,10 +486,10 @@ public class AssortedTests extends TestCase {
                                 return targetType;
                             }
     
-                            public Serializable[] execute(final Serializable[] object, final ExecCtx ctx) throws Exception {
-                                final String[] result = new String[object.length];
-                                for (int i = 0; i < object.length; i++) {
-                                    result[i] = (String) object[i];
+                            public Serializable[] execute(final Serializable[] input, final ExecCtx ctx) throws Exception {
+                                final String[] result = new String[input.length];
+                                for (int i = 0; i < input.length; i++) {
+                                    result[i] = (String) input[i];
                                 }
                                 return result;
                             }

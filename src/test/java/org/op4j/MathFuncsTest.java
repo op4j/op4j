@@ -342,9 +342,9 @@ public class MathFuncsTest extends TestCase {
 		testOperations.add(new TestOperation("add", new Object[] {Integer.valueOf(9999)})); 
 		testOperations.add(new TestOperation("exec", new Object[] {
 				new IFunction<List<Integer>, List<Integer>>() {
-					public List<Integer> execute(List<Integer> object, ExecCtx ctx)
+					public List<Integer> execute(List<Integer> input, ExecCtx ctx)
 						throws Exception {
-						return Op.on(object).forEach()
+						return Op.on(input).forEach()
 							.exec(FnMathInteger.pow(5))
 							.exec(FnMathInteger.divideBy(Integer.valueOf(5), new MathContext(3, RoundingMode.FLOOR)))
 							.get();					
