@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.target;
+package org.op4j.util;
 
 import org.op4j.functions.ExecCtx;
 
@@ -29,7 +29,7 @@ import org.op4j.functions.ExecCtx;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class ExecCtxImpl implements ExecCtx {
+public final class ExecCtxImpl implements ExecCtx {
 
     
     private Integer iterIndex;

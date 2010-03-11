@@ -44,6 +44,7 @@ import org.op4j.functions.DecimalPoint;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.FnArray;
 import org.op4j.functions.FnCalendar;
+import org.op4j.functions.FnFunc;
 import org.op4j.functions.FnList;
 import org.op4j.functions.FnMath;
 import org.op4j.functions.FnObject;
@@ -52,6 +53,7 @@ import org.op4j.functions.FnString;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;
+import org.op4j.util.ValuePair;
 
 /**
  * 
@@ -492,11 +494,33 @@ watch.start();
         
         
         Op.on(123).exec(new IFunction<Integer,String>() {
-            public String execute(Integer input, ExecCtx ctx) throws Exception {
+            public String execute(Inbteger input, ExecCtx ctx) throws Exception {
                 return "The input number is: " + input;
             }
         }).get();
         
+        
+        IFunction<ValuePair<Integer>,Integer> pairSumFunc = new IFunction<ValuePair<Integer>,Integer>() {
+
+            public Integer execute(ValuePair<Integer> input, ExecCtx ctx)
+                    throws Exception {
+                return Integer.valueOf(input.getLeft().intValue() + input.getRight().intValue());
+            }
+            
+        };
+        
+        IFunction<ValuePair<String>,String> pairConcFunc = new IFunction<ValuePair<String>,String>() {
+
+            public String execute(ValuePair<String> input, ExecCtx ctx)
+                    throws Exception {
+                return input.getLeft() + "|" + input.getRight();
+            }
+            
+        };
+        
+        System.out.println(Op.onAll(12,3,41,22).buildArrayOf(Types.INTEGER).exec(FnFunc.ofInteger().foldRightArray(pairSumFunc)).get());
+        
+        System.out.println(Op.onAll("hello", "hola", "ola", "ciao").buildArrayOf(Types.STRING).exec(FnFunc.ofString().foldRightArray(pairConcFunc)).get());
         
     }
     
