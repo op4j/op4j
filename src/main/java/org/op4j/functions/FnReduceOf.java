@@ -11,19 +11,19 @@ public class FnReduceOf<T> {
 
 
     
-    public final IFunction<ValuePair<T>,T> max() {
+    public final IFunction<ValuePair<T,T>,T> max() {
         return new Max<T>();
     }
     
-    public final IFunction<ValuePair<T>,T> min() {
+    public final IFunction<ValuePair<T,T>,T> min() {
         return new Min<T>();
     }
     
-    public final <X extends Comparable<X>> IFunction<ValuePair<T>,T> maxBy(final IFunction<T,X> function) {
+    public final <X extends Comparable<X>> IFunction<ValuePair<T,T>,T> maxBy(final IFunction<T,X> function) {
         return new MaxBy<T,X>(function);
     }
     
-    public final <X extends Comparable<X>> IFunction<ValuePair<T>,T> minBy(final IFunction<T,X> function) {
+    public final <X extends Comparable<X>> IFunction<ValuePair<T,T>,T> minBy(final IFunction<T,X> function) {
         return new MinBy<T,X>(function);
     }
     
@@ -41,7 +41,7 @@ public class FnReduceOf<T> {
 
     
     
-    static final class Max<T> extends Reductor<T> {
+    static final class Max<T> extends Reductor<T,T> {
 
         public Max() {
             super();
@@ -49,7 +49,7 @@ public class FnReduceOf<T> {
 
         @Override
         @SuppressWarnings("unchecked")
-        protected T reduceExecute(final T left, final T right, final ExecCtx ctx) {
+        protected T reduce(final T left, final T right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }
@@ -74,7 +74,7 @@ public class FnReduceOf<T> {
     }
     
     
-    static final class Min<T> extends Reductor<T> {
+    static final class Min<T> extends Reductor<T,T> {
 
         public Min() {
             super();
@@ -82,7 +82,7 @@ public class FnReduceOf<T> {
 
         @Override
         @SuppressWarnings("unchecked")
-        protected T reduceExecute(final T left, final T right, final ExecCtx ctx) {
+        protected T reduce(final T left, final T right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }
@@ -110,7 +110,7 @@ public class FnReduceOf<T> {
     
     
     
-    static final class MaxBy<T,X extends Comparable<X>> extends Reductor<T> {
+    static final class MaxBy<T,X extends Comparable<X>> extends Reductor<T,T> {
 
         private final IFunction<T,X> function;
         
@@ -120,7 +120,7 @@ public class FnReduceOf<T> {
         }
 
         @Override
-        protected T reduceExecute(final T left, final T right, final ExecCtx ctx) throws Exception {
+        protected T reduce(final T left, final T right, final ExecCtx ctx) throws Exception {
             
             final X leftResult = this.function.execute(left, ctx);
             final X rightResult = this.function.execute(right, ctx);
@@ -148,7 +148,7 @@ public class FnReduceOf<T> {
     
     
     
-    static final class MinBy<T,X extends Comparable<X>> extends Reductor<T> {
+    static final class MinBy<T,X extends Comparable<X>> extends Reductor<T,T> {
 
         private final IFunction<T,X> function;
         
@@ -158,7 +158,7 @@ public class FnReduceOf<T> {
         }
 
         @Override
-        protected T reduceExecute(final T left, final T right, final ExecCtx ctx) throws Exception {
+        protected T reduce(final T left, final T right, final ExecCtx ctx) throws Exception {
             
             final X leftResult = this.function.execute(left, ctx);
             final X rightResult = this.function.execute(right, ctx);

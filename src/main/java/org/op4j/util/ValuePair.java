@@ -1,23 +1,23 @@
 package org.op4j.util;
 
-public final class ValuePair<T> {
+public final class ValuePair<L,R> {
 
-    private final T left;
-    private final T right;
+    private final L left;
+    private final R right;
 
 
     
-    public ValuePair(T left, T right) {
+    public ValuePair(L left, R right) {
         super();
         this.left = left;
         this.right = right;
     }
 
-    public T getLeft() {
+    public L getLeft() {
         return this.left;
     }
 
-    public T getRight() {
+    public R getRight() {
         return this.right;
     }
     

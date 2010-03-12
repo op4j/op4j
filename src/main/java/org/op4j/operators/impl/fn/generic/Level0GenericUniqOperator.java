@@ -26,8 +26,10 @@ import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.functions.FnArray;
 import org.op4j.functions.FnList;
 import org.op4j.functions.FnObject;
+import org.op4j.functions.FnSet;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.operators.impl.AbstractOperator;
@@ -41,6 +43,7 @@ import org.op4j.target.Target;
 import org.op4j.target.Target.CastType;
 import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
+import org.op4j.util.ValuePair;
 
 
 
@@ -272,8 +275,50 @@ public final class Level0GenericUniqOperator<I,T> extends AbstractOperator
 
     
     
+
+    @SuppressWarnings("unchecked")
+    public Level0GenericUniqOperator<I, T> reduce(final IFunction<ValuePair<T, T>, T> reductor) {
+        return new Level0GenericUniqOperator<I, T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.of((Type<T>)Types.OBJECT).reduce(reductor)));
+    }
+
+
+
+    @SuppressWarnings("unchecked")
+    public <X> Level0GenericUniqOperator<I, X> reduce(final IFunction<ValuePair<X, T>, X> reductor, final X initialValue) {
+        return new Level0GenericUniqOperator<I, X>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.of((Type<T>)Types.OBJECT).reduce(reductor, initialValue)));
+    }
     
     
+    
+
+    
+    public Level0ArrayOperator<I, T> unfoldArrayOf(final Type<T> type, final IFunction<? super T, ? extends T> function) {
+        return new Level0ArrayOperator<I, T>(type, getTarget().execute(FnArray.of(type).unfold(function)));
+    }
+
+    public Level0ArrayOperator<I, T> unfoldArrayOf(final Type<T> type, final IFunction<? super T, ? extends T> function, final IFunction<? super T, Boolean> unless) {
+        return new Level0ArrayOperator<I, T>(type, getTarget().execute(FnArray.of(type).unfold(function, unless)));
+    }
+
+    @SuppressWarnings("unchecked")
+    public Level0ListOperator<I, T> unfoldList(final IFunction<? super T, ? extends T> function) {
+        return new Level0ListOperator<I, T>(getTarget().execute(FnList.of((Type<T>)Types.OBJECT).unfold(function)));
+    }
+
+    @SuppressWarnings("unchecked")
+    public Level0ListOperator<I, T> unfoldList(final IFunction<? super T, ? extends T> function, final IFunction<? super T, Boolean> unless) {
+        return new Level0ListOperator<I, T>(getTarget().execute(FnList.of((Type<T>)Types.OBJECT).unfold(function, unless)));
+    }
+
+    @SuppressWarnings("unchecked")
+    public Level0SetOperator<I, T> unfoldSet(final IFunction<? super T, ? extends T> function) {
+        return new Level0SetOperator<I, T>(getTarget().execute(FnSet.of((Type<T>)Types.OBJECT).unfold(function)));
+    }
+
+    @SuppressWarnings("unchecked")
+    public Level0SetOperator<I, T> unfoldSet(final IFunction<? super T, ? extends T> function, final IFunction<? super T, Boolean> unless) {
+        return new Level0SetOperator<I, T>(getTarget().execute(FnSet.of((Type<T>)Types.OBJECT).unfold(function, unless)));
+    }
     
     
 }

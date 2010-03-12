@@ -29,7 +29,7 @@ import org.op4j.util.ValuePair;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public abstract class Reductor<T> extends AbstractNotNullFunction<ValuePair<T>,T>{
+public abstract class Reductor<T,R> extends AbstractNotNullFunction<ValuePair<R,T>,R>{
 
     
     public Reductor() {
@@ -38,10 +38,10 @@ public abstract class Reductor<T> extends AbstractNotNullFunction<ValuePair<T>,T
     
 
     @Override
-    public final T notNullExecute(final ValuePair<T> input, final ExecCtx ctx) throws Exception {
-        return reduceExecute(input.getLeft(), input.getRight(), ctx);
+    public final R notNullExecute(final ValuePair<R,T> input, final ExecCtx ctx) throws Exception {
+        return reduce(input.getLeft(), input.getRight(), ctx);
     }
     
-    protected abstract T reduceExecute(final T left, final T right, final ExecCtx ctx) throws Exception;
+    protected abstract R reduce(final R left, final T right, final ExecCtx ctx) throws Exception;
 
 }

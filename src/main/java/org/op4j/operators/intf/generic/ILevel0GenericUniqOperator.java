@@ -42,6 +42,7 @@ import org.op4j.operators.qualities.ReplaceableIfNullOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOperator;
+import org.op4j.util.ValuePair;
 
 
 
@@ -127,4 +128,19 @@ public interface ILevel0GenericUniqOperator<I,T>
     public <X> ILevel0ListOperator<I,X> asListOf(final Type<X> type);
     public <K,V> ILevel0MapOperator<I,K,V> asMapOf(final Type<K> keyType, final Type<V> valueType);
     public <X> ILevel0SetOperator<I,X> asSetOf(final Type<X> type);
-    }
+    
+
+    
+    public ILevel0GenericUniqOperator<I,T> reduce(final IFunction<ValuePair<T,T>,T> reductor);
+    public <X> ILevel0GenericUniqOperator<I,X> reduce(final IFunction<ValuePair<X,T>,X> reductor, final X initialValue);
+    
+    
+    public ILevel0ArrayOperator<I,T> unfoldArrayOf(final Type<T> type, final IFunction<? super T,? extends T> function);
+    public ILevel0ArrayOperator<I,T> unfoldArrayOf(final Type<T> type, final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> unless);
+    public ILevel0ListOperator<I,T> unfoldList(final IFunction<? super T,? extends T> function);
+    public ILevel0ListOperator<I,T> unfoldList(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> unless);
+    public ILevel0SetOperator<I,T> unfoldSet(final IFunction<? super T,? extends T> function);
+    public ILevel0SetOperator<I,T> unfoldSet(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> unless);
+    
+    
+}

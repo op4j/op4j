@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.FnSet;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
@@ -38,6 +39,7 @@ import org.op4j.operators.qualities.UniqFnOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
+import org.op4j.util.ValuePair;
 
 
 /**
@@ -283,6 +285,19 @@ public final class Level0SetOperator<I,T> extends AbstractOperator
         return new Level0SetOperator<I,T>(getTarget().mapIfNotNull(Structure.SET, function, null));
     }
 
+
+
+    @SuppressWarnings("unchecked")
+    public Level0GenericUniqOperator<I, T> reduce(final IFunction<ValuePair<T, T>, T> reductor) {
+        return new Level0GenericUniqOperator<I, T>(getTarget().execute(FnSet.of((Type<T>)Types.OBJECT).reduce(reductor)));
+    }
+
+
+
+    @SuppressWarnings("unchecked")
+    public <X> Level0GenericUniqOperator<I, X> reduce(final IFunction<ValuePair<X, T>, X> reductor, final X initialValue) {
+        return new Level0GenericUniqOperator<I, X>(getTarget().execute(FnSet.of((Type<T>)Types.OBJECT).reduce(reductor, initialValue)));
+    }
     
     
     

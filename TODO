@@ -1,4 +1,5 @@
 
+  Maybe add some "super" and "extends" to reduce and unfold operations in FnArray and such?
   Why do key an value operators have "ifIndex"?
   
     

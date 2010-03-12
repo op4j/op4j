@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.Call;
 import org.op4j.functions.FnList;
 import org.op4j.functions.Function;
@@ -34,11 +35,13 @@ import org.op4j.operators.impl.fn.array.Level0ArrayOperator;
 import org.op4j.operators.impl.fn.list.Level0ListOperator;
 import org.op4j.operators.impl.fn.map.Level0MapOperator;
 import org.op4j.operators.impl.fn.set.Level0SetOperator;
+import org.op4j.operators.impl.fn.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericMultiOperator;
 import org.op4j.operators.qualities.MultiFnOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
+import org.op4j.util.ValuePair;
 
 
 /**
@@ -321,6 +324,21 @@ public final class Level0GenericMultiOperator<I,T> extends AbstractOperator
 
     public Level0GenericMultiOperator<I,T> replaceIfNullWith(final T replacement) {
         return ifNull().replaceWith(replacement).endIf();
+    }
+
+    
+    
+    
+    @SuppressWarnings("unchecked")
+    public Level0GenericUniqOperator<I, T> reduce(final IFunction<ValuePair<T, T>, T> reductor) {
+        return new Level0GenericUniqOperator<I, T>(getTarget().endIterate(null).execute(FnList.of((Type<T>)Types.OBJECT).reduce(reductor)));
+    }
+
+
+
+    @SuppressWarnings("unchecked")
+    public <X> Level0GenericUniqOperator<I, X> reduce(final IFunction<ValuePair<X, T>, X> reductor, final X initialValue) {
+        return new Level0GenericUniqOperator<I, X>(getTarget().endIterate(null).execute(FnList.of((Type<T>)Types.OBJECT).reduce(reductor, initialValue)));
     }
     
 }

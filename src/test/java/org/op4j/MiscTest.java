@@ -20,6 +20,7 @@
 
 package org.op4j;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
@@ -41,7 +42,7 @@ import java.util.Set;
 import org.apache.commons.lang.time.StopWatch;
 import org.javaruntype.type.Types;
 import org.junit.Test;
-import org.op4j.functions.FnReduce;
+import org.op4j.functions.Call;
 import org.op4j.functions.DecimalPoint;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.FnArray;
@@ -50,12 +51,13 @@ import org.op4j.functions.FnList;
 import org.op4j.functions.FnMath;
 import org.op4j.functions.FnNumber;
 import org.op4j.functions.FnObject;
+import org.op4j.functions.FnReduce;
 import org.op4j.functions.FnSet;
 import org.op4j.functions.FnString;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;
-import org.op4j.util.ValuePair;
+import org.op4j.functions.Reductor;
 
 /**
  * 
@@ -502,33 +504,37 @@ watch.start();
         }).get();
         
         
-        IFunction<ValuePair<Integer>,Integer> pairSumFunc = new IFunction<ValuePair<Integer>,Integer>() {
+        Reductor<Integer,String> redFn1 = new Reductor<Integer,String>() {
 
-            public Integer execute(ValuePair<Integer> input, ExecCtx ctx)
-                    throws Exception {
-                return Integer.valueOf(input.getLeft().intValue() + input.getRight().intValue());
+            @Override
+            protected String reduce(final String left, final Integer right, final ExecCtx ctx) throws Exception {
+                return left + "(" + right + ")";
             }
             
         };
         
-        IFunction<ValuePair<String>,String> pairConcFunc = new IFunction<ValuePair<String>,String>() {
+        System.out.println(Op.onAll(12,3,41,22).buildArrayOf(Types.INTEGER).reduce(FnReduce.ofInteger().max()).get());
+        
+        System.out.println(Op.onAll("hello", "hola", "ola", "ciao").buildArrayOf(Types.STRING).reduce(FnReduce.ofString().join("%")).get());
+        
+        System.out.println(Op.onAll("hello", "hola", "ola", "ciao").buildArrayOf(Types.STRING).reduce(FnReduce.ofString().join("%"), "---").get());
+        
+        System.out.println(Op.onAll(1,2,3,4,5,6).buildArrayOf(Types.INTEGER).reduce(redFn1, "-->").get());
+        
+        System.out.println(Op.onAll(1,2,3,4,5,6).reduce(redFn1, "-->").get());
+        System.out.println(Op.on(1).reduce(redFn1, "-->").get());
+        
+        
+        System.out.println(Arrays.asList(Op.on(2).exec(FnNumber.toBigInteger()).unfoldArrayOf(Types.BIG_INTEGER, FnMath.ofBigInteger().multiplyBy(BigInteger.valueOf(2)), Ognl.asBoolean("#index == 10")).get()));
 
-            public String execute(ValuePair<String> input, ExecCtx ctx)
-                    throws Exception {
-                return input.getLeft() + "|" + input.getRight();
-            }
-            
-        };
+        Function<Class,List<Class>> fnImplemented = 
+            Fn.on(Types.forClass(Class.class)).unfoldList(
+                    Call.asType(Types.forClass(Class.class), "getSuperclass")).get();
+                    
+        System.out.println(fnImplemented.execute(String.class));
+        System.out.println(fnImplemented.execute(Integer.class));
+        System.out.println(fnImplemented.execute(Serializable[].class));
         
-        System.out.println(Op.onAll(12,3,41,22).buildArrayOf(Types.INTEGER).exec(FnArray.ofInteger().reduce(FnReduce.ofInteger().max())).get());
-        
-        System.out.println(Op.onAll("hello", "hola", "ola", "ciao").buildArrayOf(Types.STRING).exec(FnArray.ofString().reduce(pairConcFunc)).get());
-        
-        System.out.println(Op.onAll("hello", "hola", "ola", "ciao").buildArrayOf(Types.STRING).exec(FnArray.ofString().reduce(FnReduce.ofString().join("%"))).get());
-        
-        
-        
-        System.out.println(Arrays.asList(Op.on(2).exec(FnNumber.toBigInteger()).exec(FnArray.ofBigInteger().unfold(FnMath.ofBigInteger().multiplyBy(BigInteger.valueOf(2)), Ognl.asBoolean("#index == 25"))).get()));
     }
     
     

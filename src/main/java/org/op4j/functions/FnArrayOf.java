@@ -186,22 +186,22 @@ public class FnArrayOf<T> {
     
     
     public final IFunction<T,T[]> unfold(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> unless) {
-        return new Unfold<T>(function, unless);
+        return new Unfold<T>(function, unless, this.type);
     }
     
     public final IFunction<T,T[]> unfold(final IFunction<? super T,? extends T> function) {
-        return new Unfold<T>(function, null);
+        return new Unfold<T>(function, null, this.type);
     }
     
 
     
-    public final IFunction<T[],T> reduce(final IFunction<ValuePair<T>,T> function) {
+    public final IFunction<T[],T> reduce(final IFunction<ValuePair<T,T>,T> function) {
         return new Reduce<T>(function);
     }
 
     
-    public final IFunction<T[],T> reduce(final IFunction<ValuePair<T>,T> function, final T initialValue) {
-        return new Reduce<T>(function, initialValue);
+    public final <I> IFunction<T[],I> reduce(final IFunction<ValuePair<I,T>,I> function, final I initialValue) {
+        return new ReduceInitialValue<T,I>(function, initialValue);
     }
 
     
@@ -1133,20 +1133,21 @@ public class FnArrayOf<T> {
         
         private final IFunction<? super T,? extends T> function;
         private final IFunction<? super T,Boolean> unless;
+        private final Type<T> type;
 
         
-        public Unfold(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> unless) {
+        public Unfold(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> unless, final Type<T> type) {
             super();
             Validate.notNull(function, "Unfold function cannot be null");
             this.function = function;
             this.unless = unless;
+            this.type = type;
         }
 
         @SuppressWarnings("unchecked")
         @Override
         public T[] notNullExecute(final T input, final ExecCtx ctx) throws Exception {
             
-            final Class<T> inputClass = (Class<T>) input.getClass();
             final List<T> resultList = new ArrayList<T>();
             int index = 0;
             
@@ -1179,7 +1180,7 @@ public class FnArrayOf<T> {
                 
             }
             
-            return resultList.toArray((T[])Array.newInstance(inputClass, resultList.size()));
+            return resultList.toArray((T[])Array.newInstance(this.type.getRawClass(), resultList.size()));
             
         }
         
@@ -1193,51 +1194,62 @@ public class FnArrayOf<T> {
     
     static final class Reduce<T> extends AbstractNotNullFunction<T[],T> {
         
-        private final IFunction<ValuePair<T>,T> function;
-        private final T initialValue;
+        private final IFunction<ValuePair<T,T>,T> function;
 
         
-        public Reduce(final IFunction<ValuePair<T>, T> function) {
+        public Reduce(final IFunction<ValuePair<T,T>, T> function) {
             super();
-            Validate.notNull(function, "Fold function cannot be null");
+            Validate.notNull(function, "Reduce function cannot be null");
             this.function = function;
-            this.initialValue = null;
-        }
-        
-        public Reduce(final IFunction<ValuePair<T>, T> function, final T initialValue) {
-            super();
-            Validate.notNull(function, "Fold function cannot be null");
-            this.function = function;
-            this.initialValue = initialValue;
         }
 
         
         @Override
         public T notNullExecute(final T[] input, final ExecCtx ctx) throws Exception {
             if (input.length == 0) {
-                if (this.initialValue == null) {
-                    throw new ExecutionException("Cannot fold: array contains no elements");
-                }
-                return this.initialValue;
+                throw new ExecutionException("Cannot reduce: array contains no elements");
             }
-            if (input.length == 1 && this.initialValue == null) {
+            if (input.length == 1) {
                 return input[0];
             }
-            T result = null;
-            int indexDiff = 0;
-            if (this.initialValue != null) {
-                final ValuePair<T> currentPair = new ValuePair<T>(this.initialValue, input[0]);
-                final ExecCtx currentCtx = new ExecCtxImpl(Integer.valueOf(0));
-                result = this.function.execute(currentPair, currentCtx);
-                indexDiff = 0;
-            } else {
-                result = input[0];
-                indexDiff = 1;
-            }
+            T result = input[0];
             
             for (int i = 1, z = input.length; i < z; i++) {
-                final ValuePair<T> currentPair = new ValuePair<T>(result, input[i]);
-                final ExecCtx currentCtx = new ExecCtxImpl(Integer.valueOf(i - indexDiff));
+                final ValuePair<T,T> currentPair = new ValuePair<T,T>(result, input[i]);
+                final ExecCtx currentCtx = new ExecCtxImpl(Integer.valueOf(i - 1));
+                result = this.function.execute(currentPair, currentCtx);
+            }
+            return result;
+        }
+        
+    }
+    
+    
+    
+    static final class ReduceInitialValue<R,L> extends AbstractNotNullFunction<R[],L> {
+        
+        private final IFunction<ValuePair<L,R>,L> function;
+        private final L initialValue;
+
+        
+        public ReduceInitialValue(final IFunction<ValuePair<L,R>, L> function, final L initialValue) {
+            super();
+            Validate.notNull(function, "Reduce function cannot be null");
+            this.function = function;
+            this.initialValue = initialValue;
+        }
+
+        
+        @Override
+        public L notNullExecute(final R[] input, final ExecCtx ctx) throws Exception {
+            if (input.length == 0) {
+                return this.initialValue;
+            }
+            L result = this.initialValue;
+            
+            for (int i = 0, z = input.length; i < z; i++) {
+                final ValuePair<L,R> currentPair = new ValuePair<L,R>(result, input[i]);
+                final ExecCtx currentCtx = new ExecCtxImpl(Integer.valueOf(i));
                 result = this.function.execute(currentPair, currentCtx);
             }
             return result;

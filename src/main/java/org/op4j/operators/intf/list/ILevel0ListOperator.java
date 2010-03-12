@@ -44,6 +44,7 @@ import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.UniqOperator;
+import org.op4j.util.ValuePair;
 /**
  * 
  * @since 1.0
@@ -134,4 +135,10 @@ public interface ILevel0ListOperator<I,T>
 
     
     public <X> ILevel0ListOperator<I,X> asListOf(final Type<X> type);
-    }
+
+    
+    public ILevel0GenericUniqOperator<I,T> reduce(final IFunction<ValuePair<T,T>,T> reductor);
+    public <X> ILevel0GenericUniqOperator<I,X> reduce(final IFunction<ValuePair<X,T>,X> reductor, final X initialValue);
+    
+    
+}

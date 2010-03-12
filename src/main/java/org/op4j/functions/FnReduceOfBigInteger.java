@@ -7,35 +7,35 @@ import org.op4j.util.ValuePair;
 
 public final class FnReduceOfBigInteger extends FnReduceOf<BigInteger> {
 
-    private static final IFunction<ValuePair<BigInteger>,BigInteger> SUM = new Sum();
-    private static final IFunction<ValuePair<BigInteger>,BigInteger> AVG = new Avg();
-    private static final IFunction<ValuePair<BigInteger>,BigInteger> SUBT = new Subt();
-    private static final IFunction<ValuePair<BigInteger>,BigInteger> MULT = new Mult();
-    private static final IFunction<ValuePair<BigInteger>,BigInteger> DIV = new Div();
-    private static final IFunction<ValuePair<BigInteger>,BigInteger> MOD = new Mod();
+    private static final IFunction<ValuePair<BigInteger,BigInteger>,BigInteger> SUM = new Sum();
+    private static final IFunction<ValuePair<BigInteger,BigInteger>,BigInteger> AVG = new Avg();
+    private static final IFunction<ValuePair<BigInteger,BigInteger>,BigInteger> SUBT = new Subt();
+    private static final IFunction<ValuePair<BigInteger,BigInteger>,BigInteger> MULT = new Mult();
+    private static final IFunction<ValuePair<BigInteger,BigInteger>,BigInteger> DIV = new Div();
+    private static final IFunction<ValuePair<BigInteger,BigInteger>,BigInteger> MOD = new Mod();
 
     
-    public IFunction<ValuePair<BigInteger>,BigInteger> sum() {
+    public IFunction<ValuePair<BigInteger,BigInteger>,BigInteger> sum() {
         return SUM;
     }
     
-    public IFunction<ValuePair<BigInteger>,BigInteger> avg() {
+    public IFunction<ValuePair<BigInteger,BigInteger>,BigInteger> avg() {
         return AVG;
     }
     
-    public IFunction<ValuePair<BigInteger>,BigInteger> subt() {
+    public IFunction<ValuePair<BigInteger,BigInteger>,BigInteger> subt() {
         return SUBT;
     }
     
-    public IFunction<ValuePair<BigInteger>,BigInteger> mult() {
+    public IFunction<ValuePair<BigInteger,BigInteger>,BigInteger> mult() {
         return MULT;
     }
     
-    public IFunction<ValuePair<BigInteger>,BigInteger> div() {
+    public IFunction<ValuePair<BigInteger,BigInteger>,BigInteger> div() {
         return DIV;
     }
     
-    public IFunction<ValuePair<BigInteger>,BigInteger> mod() {
+    public IFunction<ValuePair<BigInteger,BigInteger>,BigInteger> mod() {
         return MOD;
     }
     
@@ -50,14 +50,14 @@ public final class FnReduceOfBigInteger extends FnReduceOf<BigInteger> {
     
     
     
-    static final class Sum extends Reductor<BigInteger> {
+    static final class Sum extends Reductor<BigInteger,BigInteger> {
 
         public Sum() {
             super();
         }
 
         @Override
-        protected BigInteger reduceExecute(final BigInteger left, final BigInteger right, final ExecCtx ctx) {
+        protected BigInteger reduce(final BigInteger left, final BigInteger right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }
@@ -70,14 +70,14 @@ public final class FnReduceOfBigInteger extends FnReduceOf<BigInteger> {
     }
 
     
-    static final class Subt extends Reductor<BigInteger> {
+    static final class Subt extends Reductor<BigInteger,BigInteger> {
 
         public Subt() {
             super();
         }
 
         @Override
-        protected BigInteger reduceExecute(final BigInteger left, final BigInteger right, final ExecCtx ctx) {
+        protected BigInteger reduce(final BigInteger left, final BigInteger right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }
@@ -90,14 +90,14 @@ public final class FnReduceOfBigInteger extends FnReduceOf<BigInteger> {
     }
 
     
-    static final class Mult extends Reductor<BigInteger> {
+    static final class Mult extends Reductor<BigInteger,BigInteger> {
 
         public Mult() {
             super();
         }
 
         @Override
-        protected BigInteger reduceExecute(final BigInteger left, final BigInteger right, final ExecCtx ctx) {
+        protected BigInteger reduce(final BigInteger left, final BigInteger right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }
@@ -110,14 +110,14 @@ public final class FnReduceOfBigInteger extends FnReduceOf<BigInteger> {
     }
 
     
-    static final class Div extends Reductor<BigInteger> {
+    static final class Div extends Reductor<BigInteger,BigInteger> {
 
         public Div() {
             super();
         }
 
         @Override
-        protected BigInteger reduceExecute(final BigInteger left, final BigInteger right, final ExecCtx ctx) {
+        protected BigInteger reduce(final BigInteger left, final BigInteger right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }
@@ -130,14 +130,14 @@ public final class FnReduceOfBigInteger extends FnReduceOf<BigInteger> {
     }
 
     
-    static final class Mod extends Reductor<BigInteger> {
+    static final class Mod extends Reductor<BigInteger,BigInteger> {
 
         public Mod() {
             super();
         }
 
         @Override
-        protected BigInteger reduceExecute(final BigInteger left, final BigInteger right, final ExecCtx ctx) {
+        protected BigInteger reduce(final BigInteger left, final BigInteger right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }
@@ -150,14 +150,14 @@ public final class FnReduceOfBigInteger extends FnReduceOf<BigInteger> {
     }
 
     
-    static final class Avg extends Reductor<BigInteger> {
+    static final class Avg extends Reductor<BigInteger,BigInteger> {
 
         public Avg() {
             super();
         }
 
         @Override
-        protected BigInteger reduceExecute(final BigInteger left, final BigInteger right, ExecCtx ctx) {
+        protected BigInteger reduce(final BigInteger left, final BigInteger right, ExecCtx ctx) {
             if (left == null) {
                 return right;
             }

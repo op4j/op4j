@@ -5,40 +5,40 @@ import org.op4j.util.ValuePair;
 
 public final class FnReduceOfLong extends FnReduceOf<Long> {
 
-    private static final IFunction<ValuePair<Long>,Long> SUM = new Sum();
-    private static final IFunction<ValuePair<Long>,Long> AVG = new Avg();
-    private static final IFunction<ValuePair<Long>,Long> SUBT = new Subt();
-    private static final IFunction<ValuePair<Long>,Long> MULT = new Mult();
-    private static final IFunction<ValuePair<Long>,Long> DIV = new Div();
-    private static final IFunction<ValuePair<Long>,Long> MOD = new Mod();
-    private static final IFunction<ValuePair<Long>,Long> POW = new Pow();
+    private static final IFunction<ValuePair<Long,Long>,Long> SUM = new Sum();
+    private static final IFunction<ValuePair<Long,Long>,Long> AVG = new Avg();
+    private static final IFunction<ValuePair<Long,Long>,Long> SUBT = new Subt();
+    private static final IFunction<ValuePair<Long,Long>,Long> MULT = new Mult();
+    private static final IFunction<ValuePair<Long,Long>,Long> DIV = new Div();
+    private static final IFunction<ValuePair<Long,Long>,Long> MOD = new Mod();
+    private static final IFunction<ValuePair<Long,Long>,Long> POW = new Pow();
 
     
-    public IFunction<ValuePair<Long>,Long> sum() {
+    public IFunction<ValuePair<Long,Long>,Long> sum() {
         return SUM;
     }
     
-    public IFunction<ValuePair<Long>,Long> avg() {
+    public IFunction<ValuePair<Long,Long>,Long> avg() {
         return AVG;
     }
     
-    public IFunction<ValuePair<Long>,Long> subt() {
+    public IFunction<ValuePair<Long,Long>,Long> subt() {
         return SUBT;
     }
     
-    public IFunction<ValuePair<Long>,Long> mult() {
+    public IFunction<ValuePair<Long,Long>,Long> mult() {
         return MULT;
     }
     
-    public IFunction<ValuePair<Long>,Long> div() {
+    public IFunction<ValuePair<Long,Long>,Long> div() {
         return DIV;
     }
     
-    public IFunction<ValuePair<Long>,Long> mod() {
+    public IFunction<ValuePair<Long,Long>,Long> mod() {
         return MOD;
     }
     
-    public IFunction<ValuePair<Long>,Long> pow() {
+    public IFunction<ValuePair<Long,Long>,Long> pow() {
         return POW;
     }
     
@@ -53,14 +53,14 @@ public final class FnReduceOfLong extends FnReduceOf<Long> {
     
     
     
-    static final class Sum extends Reductor<Long> {
+    static final class Sum extends Reductor<Long,Long> {
 
         public Sum() {
             super();
         }
 
         @Override
-        protected Long reduceExecute(final Long left, final Long right, final ExecCtx ctx) {
+        protected Long reduce(final Long left, final Long right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }
@@ -73,14 +73,14 @@ public final class FnReduceOfLong extends FnReduceOf<Long> {
     }
 
     
-    static final class Subt extends Reductor<Long> {
+    static final class Subt extends Reductor<Long,Long> {
 
         public Subt() {
             super();
         }
 
         @Override
-        protected Long reduceExecute(final Long left, final Long right, final ExecCtx ctx) {
+        protected Long reduce(final Long left, final Long right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }
@@ -93,14 +93,14 @@ public final class FnReduceOfLong extends FnReduceOf<Long> {
     }
 
     
-    static final class Mult extends Reductor<Long> {
+    static final class Mult extends Reductor<Long,Long> {
 
         public Mult() {
             super();
         }
 
         @Override
-        protected Long reduceExecute(final Long left, final Long right, final ExecCtx ctx) {
+        protected Long reduce(final Long left, final Long right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }
@@ -113,14 +113,14 @@ public final class FnReduceOfLong extends FnReduceOf<Long> {
     }
 
     
-    static final class Div extends Reductor<Long> {
+    static final class Div extends Reductor<Long,Long> {
 
         public Div() {
             super();
         }
 
         @Override
-        protected Long reduceExecute(final Long left, final Long right, final ExecCtx ctx) {
+        protected Long reduce(final Long left, final Long right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }
@@ -133,14 +133,14 @@ public final class FnReduceOfLong extends FnReduceOf<Long> {
     }
 
     
-    static final class Mod extends Reductor<Long> {
+    static final class Mod extends Reductor<Long,Long> {
 
         public Mod() {
             super();
         }
 
         @Override
-        protected Long reduceExecute(final Long left, final Long right, final ExecCtx ctx) {
+        protected Long reduce(final Long left, final Long right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }
@@ -153,14 +153,14 @@ public final class FnReduceOfLong extends FnReduceOf<Long> {
     }
 
     
-    static final class Pow extends Reductor<Long> {
+    static final class Pow extends Reductor<Long,Long> {
 
         public Pow() {
             super();
         }
 
         @Override
-        protected Long reduceExecute(final Long left, final Long right, final ExecCtx ctx) {
+        protected Long reduce(final Long left, final Long right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }
@@ -173,14 +173,14 @@ public final class FnReduceOfLong extends FnReduceOf<Long> {
     }
 
     
-    static final class Avg extends Reductor<Long> {
+    static final class Avg extends Reductor<Long,Long> {
 
         public Avg() {
             super();
         }
 
         @Override
-        protected Long reduceExecute(final Long left, final Long right, ExecCtx ctx) {
+        protected Long reduce(final Long left, final Long right, ExecCtx ctx) {
             if (left == null) {
                 return right;
             }

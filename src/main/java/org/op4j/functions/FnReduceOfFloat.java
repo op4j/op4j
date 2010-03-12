@@ -5,35 +5,35 @@ import org.op4j.util.ValuePair;
 
 public final class FnReduceOfFloat extends FnReduceOf<Float> {
 
-    private static final IFunction<ValuePair<Float>,Float> SUM = new Sum();
-    private static final IFunction<ValuePair<Float>,Float> AVG = new Avg();
-    private static final IFunction<ValuePair<Float>,Float> SUBT = new Subt();
-    private static final IFunction<ValuePair<Float>,Float> MULT = new Mult();
-    private static final IFunction<ValuePair<Float>,Float> DIV = new Div();
-    private static final IFunction<ValuePair<Float>,Float> MOD = new Mod();
+    private static final IFunction<ValuePair<Float,Float>,Float> SUM = new Sum();
+    private static final IFunction<ValuePair<Float,Float>,Float> AVG = new Avg();
+    private static final IFunction<ValuePair<Float,Float>,Float> SUBT = new Subt();
+    private static final IFunction<ValuePair<Float,Float>,Float> MULT = new Mult();
+    private static final IFunction<ValuePair<Float,Float>,Float> DIV = new Div();
+    private static final IFunction<ValuePair<Float,Float>,Float> MOD = new Mod();
 
     
-    public IFunction<ValuePair<Float>,Float> sum() {
+    public IFunction<ValuePair<Float,Float>,Float> sum() {
         return SUM;
     }
     
-    public IFunction<ValuePair<Float>,Float> avg() {
+    public IFunction<ValuePair<Float,Float>,Float> avg() {
         return AVG;
     }
     
-    public IFunction<ValuePair<Float>,Float> subt() {
+    public IFunction<ValuePair<Float,Float>,Float> subt() {
         return SUBT;
     }
     
-    public IFunction<ValuePair<Float>,Float> mult() {
+    public IFunction<ValuePair<Float,Float>,Float> mult() {
         return MULT;
     }
     
-    public IFunction<ValuePair<Float>,Float> div() {
+    public IFunction<ValuePair<Float,Float>,Float> div() {
         return DIV;
     }
     
-    public IFunction<ValuePair<Float>,Float> mod() {
+    public IFunction<ValuePair<Float,Float>,Float> mod() {
         return MOD;
     }
     
@@ -49,14 +49,14 @@ public final class FnReduceOfFloat extends FnReduceOf<Float> {
     
 
     
-    static final class Sum extends Reductor<Float> {
+    static final class Sum extends Reductor<Float,Float> {
 
         public Sum() {
             super();
         }
 
         @Override
-        protected Float reduceExecute(final Float left, final Float right, final ExecCtx ctx) {
+        protected Float reduce(final Float left, final Float right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }
@@ -69,14 +69,14 @@ public final class FnReduceOfFloat extends FnReduceOf<Float> {
     }
 
     
-    static final class Subt extends Reductor<Float> {
+    static final class Subt extends Reductor<Float,Float> {
 
         public Subt() {
             super();
         }
 
         @Override
-        protected Float reduceExecute(final Float left, final Float right, final ExecCtx ctx) {
+        protected Float reduce(final Float left, final Float right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }
@@ -89,14 +89,14 @@ public final class FnReduceOfFloat extends FnReduceOf<Float> {
     }
 
     
-    static final class Mult extends Reductor<Float> {
+    static final class Mult extends Reductor<Float,Float> {
 
         public Mult() {
             super();
         }
 
         @Override
-        protected Float reduceExecute(final Float left, final Float right, final ExecCtx ctx) {
+        protected Float reduce(final Float left, final Float right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }
@@ -109,14 +109,14 @@ public final class FnReduceOfFloat extends FnReduceOf<Float> {
     }
 
     
-    static final class Div extends Reductor<Float> {
+    static final class Div extends Reductor<Float,Float> {
 
         public Div() {
             super();
         }
 
         @Override
-        protected Float reduceExecute(final Float left, final Float right, final ExecCtx ctx) {
+        protected Float reduce(final Float left, final Float right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }
@@ -129,14 +129,14 @@ public final class FnReduceOfFloat extends FnReduceOf<Float> {
     }
 
     
-    static final class Mod extends Reductor<Float> {
+    static final class Mod extends Reductor<Float,Float> {
 
         public Mod() {
             super();
         }
 
         @Override
-        protected Float reduceExecute(final Float left, final Float right, final ExecCtx ctx) {
+        protected Float reduce(final Float left, final Float right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }
@@ -149,14 +149,14 @@ public final class FnReduceOfFloat extends FnReduceOf<Float> {
     }
 
     
-    static final class Avg extends Reductor<Float> {
+    static final class Avg extends Reductor<Float,Float> {
 
         public Avg() {
             super();
         }
 
         @Override
-        protected Float reduceExecute(final Float left, final Float right, ExecCtx ctx) {
+        protected Float reduce(final Float left, final Float right, ExecCtx ctx) {
             if (left == null) {
                 return right;
             }

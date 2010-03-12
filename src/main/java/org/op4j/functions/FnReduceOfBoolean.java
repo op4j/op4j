@@ -5,15 +5,15 @@ import org.op4j.util.ValuePair;
 
 public final class FnReduceOfBoolean extends FnReduceOf<Boolean> {
 
-    private static final IFunction<ValuePair<Boolean>,Boolean> AND = new And();
-    private static final IFunction<ValuePair<Boolean>,Boolean> OR = new Or();
+    private static final IFunction<ValuePair<Boolean,Boolean>,Boolean> AND = new And();
+    private static final IFunction<ValuePair<Boolean,Boolean>,Boolean> OR = new Or();
 
     
-    public IFunction<ValuePair<Boolean>,Boolean> and() {
+    public IFunction<ValuePair<Boolean,Boolean>,Boolean> and() {
         return AND;
     }
     
-    public IFunction<ValuePair<Boolean>,Boolean> or() {
+    public IFunction<ValuePair<Boolean,Boolean>,Boolean> or() {
         return OR;
     }
 
@@ -29,14 +29,14 @@ public final class FnReduceOfBoolean extends FnReduceOf<Boolean> {
     
     
     
-    static final class And extends Reductor<Boolean> {
+    static final class And extends Reductor<Boolean,Boolean> {
 
         public And() {
             super();
         }
 
         @Override
-        protected Boolean reduceExecute(final Boolean left, final Boolean right, final ExecCtx ctx) {
+        protected Boolean reduce(final Boolean left, final Boolean right, final ExecCtx ctx) {
             if (left == null) {
                 return Boolean.FALSE;
             }
@@ -53,14 +53,14 @@ public final class FnReduceOfBoolean extends FnReduceOf<Boolean> {
 
     
     
-    static final class Or extends Reductor<Boolean> {
+    static final class Or extends Reductor<Boolean,Boolean> {
 
         public Or() {
             super();
         }
 
         @Override
-        protected Boolean reduceExecute(final Boolean left, final Boolean right, final ExecCtx ctx) {
+        protected Boolean reduce(final Boolean left, final Boolean right, final ExecCtx ctx) {
             if (left == null) {
                 return right;
             }

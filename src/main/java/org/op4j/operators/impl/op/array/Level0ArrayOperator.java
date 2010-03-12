@@ -36,6 +36,7 @@ import org.op4j.operators.qualities.UniqOpOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
+import org.op4j.util.ValuePair;
 
 /**
  * 
@@ -289,6 +290,19 @@ public final class Level0ArrayOperator<I,T>
 
     public Level0ArrayOperator<I,T> mapIfNotNull(final IFunction<? super T,? extends T> function) {
         return new Level0ArrayOperator<I,T>(this.type, getTarget().mapIfNotNull(Structure.ARRAY, function, this.type.getRawClass()));
+    }
+
+
+
+
+    public Level0GenericUniqOperator<I, T> reduce(final IFunction<ValuePair<T, T>, T> reductor) {
+        return new Level0GenericUniqOperator<I, T>(getTarget().execute(FnArray.of(this.type).reduce(reductor)));
+    }
+
+
+
+    public <X> Level0GenericUniqOperator<I, X> reduce(final IFunction<ValuePair<X, T>, X> reductor, final X initialValue) {
+        return new Level0GenericUniqOperator<I, X>(getTarget().execute(FnArray.of(this.type).reduce(reductor, initialValue)));
     }
 
 
