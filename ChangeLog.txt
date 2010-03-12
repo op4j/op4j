@@ -1,4 +1,12 @@
 
+1.0-beta2
+=========
+- FnMathOfX methods are no longer static.
+- org.op4j.target.ExecCtxImpl is now public and was moved to org.op4j.util.ExecCtxImpl.
+- Created org.op4j.util.ValuePair in order to support Binary Operation Functions.
+- Created "FnReduce" functions and "reduce" actions for arrays, lists and sets.
+
+
 1.0-beta1
 =========
-- First beta release of op4j
+- First beta release of op4j.

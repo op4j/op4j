@@ -32,7 +32,7 @@ import org.apache.commons.lang.Validate;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class FnMathBigDecimal {
+public final class FnMathOfBigDecimal {
 
 	private final static Max MAX_FUNC = new Max();
 	
@@ -45,21 +45,21 @@ public final class FnMathBigDecimal {
 	private final static Abs ABS_FUNC = new Abs();
 	
 	
-	FnMathBigDecimal() {
+	FnMathOfBigDecimal() {
 		super();           
 	}
 
 	/**
 	 * @return function that returns the maximum {@link BigDecimal} of an object implementing {@link Iterable}
 	 */
-	public static final IFunction<Iterable<BigDecimal>,BigDecimal> max() {
+	public final IFunction<Iterable<BigDecimal>,BigDecimal> max() {
         return MAX_FUNC;
     }
 	
 	/**
 	 * @return function that returns the minimum {@link BigDecimal} of an object implementing {@link Iterable}
 	 */
-	public static final IFunction<Iterable<BigDecimal>,BigDecimal> min() {
+	public final IFunction<Iterable<BigDecimal>,BigDecimal> min() {
         return MIN_FUNC;
     }
 	
@@ -67,7 +67,7 @@ public final class FnMathBigDecimal {
 	 * @return function that returns the sum of the {@link BigDecimal} elements in an object 
 	 * implementing {@link Iterable}
 	 */
-	public static final IFunction<Iterable<BigDecimal>,BigDecimal> sum() {
+	public final IFunction<Iterable<BigDecimal>,BigDecimal> sum() {
         return SUM_FUNC;
     }
 	
@@ -75,69 +75,69 @@ public final class FnMathBigDecimal {
 	 * @return function that returns the average of the {@link BigDecimal} elements in an object 
 	 * implementing {@link Iterable}
 	 */
-	public static final IFunction<Iterable<BigDecimal>,BigDecimal> avg() {
+	public final IFunction<Iterable<BigDecimal>,BigDecimal> avg() {
         return AVG_FUNC;
     }
-	public static final IFunction<Iterable<BigDecimal>,BigDecimal> avg(MathContext mathContext) {
+	public final IFunction<Iterable<BigDecimal>,BigDecimal> avg(MathContext mathContext) {
         return new Avg(mathContext);
     }
-	public static final IFunction<Iterable<BigDecimal>,BigDecimal> avg(RoundingMode roundingMode) {
+	public final IFunction<Iterable<BigDecimal>,BigDecimal> avg(RoundingMode roundingMode) {
 		return new Avg(roundingMode);
     }
 	
-	public static final IFunction<BigDecimal,BigDecimal> round(MathContext mathContext) {
+	public final IFunction<BigDecimal,BigDecimal> round(MathContext mathContext) {
         return new Round(mathContext);
     }
-	public static final IFunction<BigDecimal,BigDecimal> round(RoundingMode roundingMode) {
+	public final IFunction<BigDecimal,BigDecimal> round(RoundingMode roundingMode) {
 		return new Round(roundingMode);
     }
 	
-	public static final IFunction<BigDecimal,BigDecimal> abs() {
+	public final IFunction<BigDecimal,BigDecimal> abs() {
 		return ABS_FUNC;
     }
 	
-	public static final IFunction<BigDecimal,BigDecimal> add(BigDecimal add) {
+	public final IFunction<BigDecimal,BigDecimal> add(BigDecimal add) {
 		return new Add(add);
     }
 	
-	public static final IFunction<BigDecimal,BigDecimal> subtract(BigDecimal subtract) {
+	public final IFunction<BigDecimal,BigDecimal> subtract(BigDecimal subtract) {
 		return new Subtract(subtract);
     }
 	
-	public static final IFunction<BigDecimal,BigDecimal> divideBy(BigDecimal divisor) {
+	public final IFunction<BigDecimal,BigDecimal> divideBy(BigDecimal divisor) {
 		return new Divide(divisor);
     }
-	public static final IFunction<BigDecimal,BigDecimal> divideBy(BigDecimal divisor, MathContext mathContext) {
+	public final IFunction<BigDecimal,BigDecimal> divideBy(BigDecimal divisor, MathContext mathContext) {
         return new Divide(divisor, mathContext);
     }
-	public static final IFunction<BigDecimal,BigDecimal> divideBy(BigDecimal divisor, RoundingMode roundingMode) {
+	public final IFunction<BigDecimal,BigDecimal> divideBy(BigDecimal divisor, RoundingMode roundingMode) {
 		return new Divide(divisor, roundingMode);
     }
 	
-	public static final IFunction<BigDecimal,BigDecimal> remainder(BigDecimal divisor) {
+	public final IFunction<BigDecimal,BigDecimal> remainder(BigDecimal divisor) {
 		return new Remainder(divisor);
     }
-	public static final IFunction<BigDecimal,BigDecimal> remainder(BigDecimal divisor, MathContext mathContext) {
+	public final IFunction<BigDecimal,BigDecimal> remainder(BigDecimal divisor, MathContext mathContext) {
 		return new Remainder(divisor, mathContext);
     }
 	
-	public static final IFunction<BigDecimal,BigDecimal> multiplyBy(BigDecimal multiplicand) {
+	public final IFunction<BigDecimal,BigDecimal> multiplyBy(BigDecimal multiplicand) {
 		return new Multiply(multiplicand);
     }
-	public static final IFunction<BigDecimal,BigDecimal> multiplyBy(BigDecimal multiplicand, MathContext mathContext) {
+	public final IFunction<BigDecimal,BigDecimal> multiplyBy(BigDecimal multiplicand, MathContext mathContext) {
         return new Multiply(multiplicand, mathContext);
     }
-	public static final IFunction<BigDecimal,BigDecimal> multiplyBy(BigDecimal multiplicand, RoundingMode roundingMode) {
+	public final IFunction<BigDecimal,BigDecimal> multiplyBy(BigDecimal multiplicand, RoundingMode roundingMode) {
 		return new Multiply(multiplicand, roundingMode);
     }
 	
-	public static final IFunction<BigDecimal,BigDecimal> pow(int power) {
+	public final IFunction<BigDecimal,BigDecimal> pow(int power) {
 		return new Pow(power);
     }
-	public static final IFunction<BigDecimal,BigDecimal> pow(int power, MathContext mathContext) {
+	public final IFunction<BigDecimal,BigDecimal> pow(int power, MathContext mathContext) {
         return new Pow(power, mathContext);
     }
-	public static final IFunction<BigDecimal,BigDecimal> pow(int power, RoundingMode roundingMode) {
+	public final IFunction<BigDecimal,BigDecimal> pow(int power, RoundingMode roundingMode) {
 		return new Pow(power, roundingMode);
     }
 	

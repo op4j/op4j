@@ -44,6 +44,7 @@ public final class FnBoolean {
     private static final ToNumber<Integer> TO_INTEGER = new ToNumber<Integer>(Types.INTEGER);
     private static final ToNumber<Short> TO_SHORT = new ToNumber<Short>(Types.SHORT);
     private static final ToNumber<Byte> TO_BYTE = new ToNumber<Byte>(Types.BYTE);
+    private static final Not NOT = new Not();
 
     
     
@@ -92,7 +93,10 @@ public final class FnBoolean {
     public static final IFunction<Boolean,Byte> toByte() {
         return TO_BYTE;
     }
-	
+
+    public static final IFunction<Boolean,Boolean> not() {
+        return NOT;
+    }
     
 	
 
@@ -142,6 +146,24 @@ public final class FnBoolean {
         public final X nullAsNullExecute(final Boolean number, final ExecCtx ctx) throws Exception {
             return (number.booleanValue()? (X) this.trueValue : (X) this.falseValue);
         }
+        
+    }
+
+    
+    
+    
+    
+    static class Not extends AbstractNullAsNullFunction<Boolean, Boolean> {
+
+        public Not() {
+            super();
+        }
+
+        @Override
+        protected Boolean nullAsNullExecute(final Boolean object, final ExecCtx ctx) throws Exception {
+            return (object.booleanValue()? Boolean.FALSE : Boolean.TRUE);
+        }
+        
         
     }
     

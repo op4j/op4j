@@ -73,6 +73,11 @@ public final class FnObject {
     }
 
     
+    public static final IFunction<Object,Boolean> eq(final Object object) {
+        return new Equals(object);
+    }
+
+    
     
     
     
@@ -156,6 +161,29 @@ public final class FnObject {
         }
         
     }
+
+
+    
+    
+    
+    static final class Equals implements IFunction<Object,Boolean> {
+
+        private final Object object;
+        
+        Equals(final Object object) {
+            super();
+            this.object = object;
+        }
+
+        public Boolean execute(final Object input, final ExecCtx ctx) throws Exception {
+            if (input == null) {
+                return Boolean.valueOf(this.object == null);
+            }
+            return Boolean.valueOf(input.equals(this.object));
+        }
+        
+    }
+    
     
     
 }

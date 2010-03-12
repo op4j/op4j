@@ -31,42 +31,42 @@ package org.op4j.functions;
 public final class FnMath {
 
     
-    private static final FnMathBigDecimal OF_BIG_DECIMAL = new FnMathBigDecimal();
-    private static final FnMathBigInteger OF_BIG_INTEGER = new FnMathBigInteger();
-    private static final FnMathDouble OF_DOUBLE = new FnMathDouble();
-    private static final FnMathFloat OF_FLOAT = new FnMathFloat();
-    private static final FnMathInteger OF_INTEGER = new FnMathInteger();
-    private static final FnMathLong OF_LONG = new FnMathLong();
-    private static final FnMathShort OF_SHORT = new FnMathShort();
+    private static final FnMathOfBigDecimal OF_BIG_DECIMAL = new FnMathOfBigDecimal();
+    private static final FnMathOfBigInteger OF_BIG_INTEGER = new FnMathOfBigInteger();
+    private static final FnMathOfDouble OF_DOUBLE = new FnMathOfDouble();
+    private static final FnMathOfFloat OF_FLOAT = new FnMathOfFloat();
+    private static final FnMathOfInteger OF_INTEGER = new FnMathOfInteger();
+    private static final FnMathOfLong OF_LONG = new FnMathOfLong();
+    private static final FnMathOfShort OF_SHORT = new FnMathOfShort();
     
     
     
     
-    public static FnMathBigDecimal ofBigDecimal() {
+    public static FnMathOfBigDecimal ofBigDecimal() {
         return OF_BIG_DECIMAL;
     }
     
-    public static FnMathBigInteger ofBigInteger() {
+    public static FnMathOfBigInteger ofBigInteger() {
         return OF_BIG_INTEGER;
     }
     
-    public static FnMathDouble ofDouble() {
+    public static FnMathOfDouble ofDouble() {
         return OF_DOUBLE;
     }
     
-    public static FnMathFloat ofFloat() {
+    public static FnMathOfFloat ofFloat() {
         return OF_FLOAT;
     }
     
-    public static FnMathInteger ofInteger() {
+    public static FnMathOfInteger ofInteger() {
         return OF_INTEGER;
     }
     
-    public static FnMathLong ofLong() {
+    public static FnMathOfLong ofLong() {
         return OF_LONG;
     }
     
-    public static FnMathShort ofShort() {
+    public static FnMathOfShort ofShort() {
         return OF_SHORT;
     }
 

@@ -32,7 +32,7 @@ import org.apache.commons.lang.Validate;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class FnMathInteger {
+public final class FnMathOfInteger {
 
 	private final static Max MAX_FUNC = new Max();
 	
@@ -45,7 +45,7 @@ public final class FnMathInteger {
 	private final static Abs ABS_FUNC = new Abs();
 	
 	
-	FnMathInteger() {
+	FnMathOfInteger() {
 		super();           
 	}
 

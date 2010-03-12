@@ -30,7 +30,7 @@ import org.apache.commons.lang.Validate;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class FnMathBigInteger {
+public final class FnMathOfBigInteger {
 
 	private final static Max MAX_FUNC = new Max();
 	
@@ -43,21 +43,21 @@ public final class FnMathBigInteger {
 	private final static Abs ABS_FUNC = new Abs();
 	
 	
-	FnMathBigInteger() {
+	FnMathOfBigInteger() {
 		super();           
 	}
 
 	/**
 	 * @return function that returns the maximum {@link BigInteger} of an object implementing {@link Iterable}
 	 */
-	public static final IFunction<Iterable<BigInteger>,BigInteger> max() {
+	public final IFunction<Iterable<BigInteger>,BigInteger> max() {
         return MAX_FUNC;
     }
 	
 	/**
 	 * @return function that returns the minimum {@link BigInteger} of an object implementing {@link Iterable}
 	 */
-	public static final IFunction<Iterable<BigInteger>,BigInteger> min() {
+	public final IFunction<Iterable<BigInteger>,BigInteger> min() {
         return MIN_FUNC;
     }
 	
@@ -65,7 +65,7 @@ public final class FnMathBigInteger {
 	 * @return function that returns the sum of the {@link BigInteger} elements in an object 
 	 * implementing {@link Iterable}
 	 */
-	public static final IFunction<Iterable<BigInteger>,BigInteger> sum() {
+	public final IFunction<Iterable<BigInteger>,BigInteger> sum() {
         return SUM_FUNC;
     }
 	
@@ -73,39 +73,39 @@ public final class FnMathBigInteger {
 	 * @return function that returns the average of the {@link BigInteger} elements in an object 
 	 * implementing {@link Iterable}
 	 */
-	public static final IFunction<Iterable<BigInteger>,BigInteger> avg() {
+	public final IFunction<Iterable<BigInteger>,BigInteger> avg() {
         return AVG_FUNC;
     }
 	
-	public static final IFunction<BigInteger,BigInteger> abs() {
+	public final IFunction<BigInteger,BigInteger> abs() {
 		return ABS_FUNC;
     }
 	
-	public static final IFunction<BigInteger,BigInteger> add(BigInteger add) {
+	public final IFunction<BigInteger,BigInteger> add(BigInteger add) {
 		return new Add(add);
     }
 	
-	public static final IFunction<BigInteger,BigInteger> subtract(BigInteger subtract) {
+	public final IFunction<BigInteger,BigInteger> subtract(BigInteger subtract) {
 		return new Subtract(subtract);
     }
 	
-	public static final IFunction<BigInteger,BigInteger> divideBy(BigInteger divisor) {
+	public final IFunction<BigInteger,BigInteger> divideBy(BigInteger divisor) {
 		return new Divide(divisor);
     }
 	
-	public static final IFunction<BigInteger,BigInteger> module(BigInteger module) {
+	public final IFunction<BigInteger,BigInteger> module(BigInteger module) {
 		return new Module(module);
     }
 	
-	public static final IFunction<BigInteger,BigInteger> remainder(BigInteger module) {
+	public final IFunction<BigInteger,BigInteger> remainder(BigInteger module) {
 		return new Remainder(module);
     }
 	
-	public static final IFunction<BigInteger,BigInteger> multiplyBy(BigInteger multiplicand) {
+	public final IFunction<BigInteger,BigInteger> multiplyBy(BigInteger multiplicand) {
 		return new Multiply(multiplicand);
     }
 	
-	public static final IFunction<BigInteger,BigInteger> pow(int power) {
+	public final IFunction<BigInteger,BigInteger> pow(int power) {
 		return new Pow(power);
     }
 	

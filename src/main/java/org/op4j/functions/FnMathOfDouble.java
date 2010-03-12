@@ -32,7 +32,7 @@ import org.apache.commons.lang.Validate;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class FnMathDouble {
+public final class FnMathOfDouble {
 
 	private final static Max MAX_FUNC = new Max();
 	
@@ -45,21 +45,21 @@ public final class FnMathDouble {
 	private final static Abs ABS_FUNC = new Abs();
 	
 	
-	FnMathDouble() {
+	FnMathOfDouble() {
 		super();           
 	}
 
 	/**
 	 * @return function that returns the maximum {@link Double} of an object implementing {@link Iterable}
 	 */
-	public static final IFunction<Iterable<Double>,Double> max() {
+	public final IFunction<Iterable<Double>,Double> max() {
         return MAX_FUNC;
     }
 	
 	/**
 	 * @return function that returns the minimum {@link Double} of an object implementing {@link Iterable}
 	 */
-	public static final IFunction<Iterable<Double>,Double> min() {
+	public final IFunction<Iterable<Double>,Double> min() {
         return MIN_FUNC;
     }
 	
@@ -67,7 +67,7 @@ public final class FnMathDouble {
 	 * @return function that returns the sum of the {@link Double} elements in an object 
 	 * implementing {@link Iterable}
 	 */
-	public static final IFunction<Iterable<Double>,Double> sum() {
+	public final IFunction<Iterable<Double>,Double> sum() {
         return SUM_FUNC;
     }
 	
@@ -75,66 +75,66 @@ public final class FnMathDouble {
 	 * @return function that returns the average of the {@link Double} elements in an object 
 	 * implementing {@link Iterable}
 	 */
-	public static final IFunction<Iterable<Double>,Double> avg() {
+	public final IFunction<Iterable<Double>,Double> avg() {
         return AVG_FUNC;
     }
-	public static final IFunction<Iterable<Double>,Double> avg(MathContext mathContext) {
+	public final IFunction<Iterable<Double>,Double> avg(MathContext mathContext) {
         return new Avg(mathContext);
     }
-	public static final IFunction<Iterable<Double>,Double> avg(RoundingMode roundingMode) {
+	public final IFunction<Iterable<Double>,Double> avg(RoundingMode roundingMode) {
 		return new Avg(roundingMode);
     }
 	
-	public static final IFunction<Double,Double> round(MathContext mathContext) {
+	public final IFunction<Double,Double> round(MathContext mathContext) {
         return new Round(mathContext);
     }
-	public static final IFunction<Double,Double> round(RoundingMode roundingMode) {
+	public final IFunction<Double,Double> round(RoundingMode roundingMode) {
 		return new Round(roundingMode);
     }
 	
-	public static final IFunction<Double,Double> abs() {
+	public final IFunction<Double,Double> abs() {
 		return ABS_FUNC;
     }
 	
-	public static final IFunction<Double,Double> add(Double add) {
+	public final IFunction<Double,Double> add(Double add) {
 		return new Add(add);
     }
 	
-	public static final IFunction<Double,Double> subtract(Double subtract) {
+	public final IFunction<Double,Double> subtract(Double subtract) {
 		return new Subtract(subtract);
     }
 	
-	public static final IFunction<Double,Double> divideBy(Double divisor) {
+	public final IFunction<Double,Double> divideBy(Double divisor) {
 		return new Divide(divisor);
     }
-	public static final IFunction<Double,Double> divideBy(Double divisor, MathContext mathContext) {
+	public final IFunction<Double,Double> divideBy(Double divisor, MathContext mathContext) {
         return new Divide(divisor, mathContext);
     }
-	public static final IFunction<Double,Double> divideBy(Double divisor, RoundingMode roundingMode) {
+	public final IFunction<Double,Double> divideBy(Double divisor, RoundingMode roundingMode) {
 		return new Divide(divisor, roundingMode);
     }
 	
-	public static final IFunction<Double,Double> module(int module) {
+	public final IFunction<Double,Double> module(int module) {
 		return new Module(module);
     }	
 	
-	public static final IFunction<Double,Double> multiplyBy(Double multiplicand) {
+	public final IFunction<Double,Double> multiplyBy(Double multiplicand) {
 		return new Multiply(multiplicand);
     }
-	public static final IFunction<Double,Double> multiplyBy(Double multiplicand, MathContext mathContext) {
+	public final IFunction<Double,Double> multiplyBy(Double multiplicand, MathContext mathContext) {
         return new Multiply(multiplicand, mathContext);
     }
-	public static final IFunction<Double,Double> multiplyBy(Double multiplicand, RoundingMode roundingMode) {
+	public final IFunction<Double,Double> multiplyBy(Double multiplicand, RoundingMode roundingMode) {
 		return new Multiply(multiplicand, roundingMode);
     }
 	
-	public static final IFunction<Double,Double> pow(int power) {
+	public final IFunction<Double,Double> pow(int power) {
 		return new Pow(power);
     }
-	public static final IFunction<Double,Double> pow(int power, MathContext mathContext) {
+	public final IFunction<Double,Double> pow(int power, MathContext mathContext) {
         return new Pow(power, mathContext);
     }
-	public static final IFunction<Double,Double> pow(int power, RoundingMode roundingMode) {
+	public final IFunction<Double,Double> pow(int power, RoundingMode roundingMode) {
 		return new Pow(power, roundingMode);
     }
 	

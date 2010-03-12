@@ -32,7 +32,7 @@ import org.apache.commons.lang.Validate;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class FnMathShort {
+public final class FnMathOfLong {
 
 	private final static Max MAX_FUNC = new Max();
 	
@@ -45,106 +45,106 @@ public final class FnMathShort {
 	private final static Abs ABS_FUNC = new Abs();
 	
 	
-	FnMathShort() {
+	FnMathOfLong() {
 		super();           
 	}
 
 	/**
-	 * @return function that returns the maximum {@link Short} of an object implementing {@link Iterable}
+	 * @return function that returns the maximum {@link Long} of an object implementing {@link Iterable}
 	 */
-	public static final IFunction<Iterable<Short>,Short> max() {
+	public static final IFunction<Iterable<Long>,Long> max() {
         return MAX_FUNC;
     }
 	
 	/**
-	 * @return function that returns the minimum {@link Short} of an object implementing {@link Iterable}
+	 * @return function that returns the minimum {@link Long} of an object implementing {@link Iterable}
 	 */
-	public static final IFunction<Iterable<Short>,Short> min() {
+	public static final IFunction<Iterable<Long>,Long> min() {
         return MIN_FUNC;
     }
 	
 	/**
-	 * @return function that returns the sum of the {@link Short} elements in an object 
+	 * @return function that returns the sum of the {@link Long} elements in an object 
 	 * implementing {@link Iterable}
 	 */
-	public static final IFunction<Iterable<Short>,Short> sum() {
+	public static final IFunction<Iterable<Long>,Long> sum() {
         return SUM_FUNC;
     }
 	
 	/**
-	 * @return function that returns the average of the {@link Short} elements in an object 
+	 * @return function that returns the average of the {@link Long} elements in an object 
 	 * implementing {@link Iterable}
 	 */
-	public static final IFunction<Iterable<Short>,Short> avg() {
+	public static final IFunction<Iterable<Long>,Long> avg() {
         return AVG_FUNC;
     }
-	public static final IFunction<Iterable<Short>,Short> avg(MathContext mathContext) {
+	public static final IFunction<Iterable<Long>,Long> avg(MathContext mathContext) {
         return new Avg(mathContext);
     }
-	public static final IFunction<Iterable<Short>,Short> avg(RoundingMode roundingMode) {
+	public static final IFunction<Iterable<Long>,Long> avg(RoundingMode roundingMode) {
 		return new Avg(roundingMode);
     }
 	
-	public static final IFunction<Short,Short> abs() {
+	public static final IFunction<Long,Long> abs() {
 		return ABS_FUNC;
     }
 	
-	public static final IFunction<Short,Short> add(Short add) {
+	public static final IFunction<Long,Long> add(Long add) {
 		return new Add(add);
     }
 	
-	public static final IFunction<Short,Short> subtract(Short subtract) {
+	public static final IFunction<Long,Long> subtract(Long subtract) {
 		return new Subtract(subtract);
     }
 	
-	public static final IFunction<Short,Short> divideBy(Short divisor) {
+	public static final IFunction<Long,Long> divideBy(Long divisor) {
 		return new Divide(divisor);
     }
-	public static final IFunction<Short,Short> divideBy(Short divisor, MathContext mathContext) {
+	public static final IFunction<Long,Long> divideBy(Long divisor, MathContext mathContext) {
         return new Divide(divisor, mathContext);
     }
-	public static final IFunction<Short,Short> divideBy(Short divisor, RoundingMode roundingMode) {
+	public static final IFunction<Long,Long> divideBy(Long divisor, RoundingMode roundingMode) {
 		return new Divide(divisor, roundingMode);
     }
 	
-	public static final IFunction<Short,Short> module(int module) {
+	public static final IFunction<Long,Long> module(int module) {
 		return new Module(module);
     }	
 	
-	public static final IFunction<Short,Short> multiplyBy(Short multiplicand) {
+	public static final IFunction<Long,Long> multiplyBy(Long multiplicand) {
 		return new Multiply(multiplicand);
     }
-	public static final IFunction<Short,Short> multiplyBy(Short multiplicand, MathContext mathContext) {
+	public static final IFunction<Long,Long> multiplyBy(Long multiplicand, MathContext mathContext) {
         return new Multiply(multiplicand, mathContext);
     }
-	public static final IFunction<Short,Short> multiplyBy(Short multiplicand, RoundingMode roundingMode) {
+	public static final IFunction<Long,Long> multiplyBy(Long multiplicand, RoundingMode roundingMode) {
 		return new Multiply(multiplicand, roundingMode);
     }
 	
-	public static final IFunction<Short,Short> pow(int power) {
+	public static final IFunction<Long,Long> pow(int power) {
 		return new Pow(power);
     }
-	public static final IFunction<Short,Short> pow(int power, MathContext mathContext) {
+	public static final IFunction<Long,Long> pow(int power, MathContext mathContext) {
         return new Pow(power, mathContext);
     }
-	public static final IFunction<Short,Short> pow(int power, RoundingMode roundingMode) {
+	public static final IFunction<Long,Long> pow(int power, RoundingMode roundingMode) {
 		return new Pow(power, roundingMode);
     }
 	
 	
-	static final class Max extends AbstractNotNullFunction<Iterable<Short>,Short> {
+	static final class Max extends AbstractNotNullFunction<Iterable<Long>,Long> {
 
 		Max() {
 			super();
 		}
 
 		@Override
-		protected Short notNullExecute(final Iterable<Short> input, final ExecCtx ctx) throws Exception {
+		protected Long notNullExecute(final Iterable<Long> input, final ExecCtx ctx) throws Exception {
 			if (input.iterator().hasNext() == false) {
 				return null;
 			}
-			Short max = input.iterator().next();
-			for (Short number : input) {
+			Long max = input.iterator().next();
+			for (Long number : input) {
 				if (number != null) {
 					if (number.compareTo(max) > 0) {
 						max = number;
@@ -152,22 +152,22 @@ public final class FnMathShort {
 				}
 			}	
 			return max;
-		}		
+		}	
 	}
 	
-	static final class Min extends AbstractNotNullFunction<Iterable<Short>,Short> {
+	static final class Min extends AbstractNotNullFunction<Iterable<Long>,Long> {
 
 		Min() {
 			super();
 		}
 
 		@Override
-		protected Short notNullExecute(final Iterable<Short> input, final ExecCtx ctx) throws Exception {
+		protected Long notNullExecute(final Iterable<Long> input, final ExecCtx ctx) throws Exception {
 			if (input.iterator().hasNext() == false) {
 				return null;
 			}
-			Short min = input.iterator().next();
-			for (Short number : input) {
+			Long min = input.iterator().next();
+			for (Long number : input) {
 				if (number != null) {
 					if (number.compareTo(min) < 0) {
 						min = number;
@@ -178,25 +178,25 @@ public final class FnMathShort {
 		}	
 	}
 	
-	static final class Sum extends AbstractNotNullFunction<Iterable<Short>,Short> {
+	static final class Sum extends AbstractNotNullFunction<Iterable<Long>,Long> {
 
 		Sum() {
 			super();
 		}
 
 		@Override
-		protected Short notNullExecute(final Iterable<Short> input, final ExecCtx ctx) throws Exception {
+		protected Long notNullExecute(final Iterable<Long> input, final ExecCtx ctx) throws Exception {
 			BigDecimal sum = BigDecimal.valueOf(0);
-			for (Short number : input) {
+			for (Long number : input) {
 				if (number != null) {
-					sum = sum.add(BigDecimal.valueOf(number.shortValue()));
+					sum = sum.add(BigDecimal.valueOf(number.longValue()));
 				}
 			}	
-			return Short.valueOf(sum.shortValue());
+			return Long.valueOf(sum.longValue());
 		}	
 	}
 	
-	static final class Avg extends AbstractNotNullFunction<Iterable<Short>,Short> {
+	static final class Avg extends AbstractNotNullFunction<Iterable<Long>,Long> {
 
 		private final RoundingMode roundingMode;
 		private final MathContext mathContext;
@@ -222,59 +222,62 @@ public final class FnMathShort {
 		}
 		
 		@Override
-		protected Short notNullExecute(final Iterable<Short> input, final ExecCtx ctx) throws Exception {
+		protected Long notNullExecute(final Iterable<Long> input, final ExecCtx ctx) throws Exception {
 			
 			int countNotNull = 0;
 			BigDecimal sum = BigDecimal.valueOf(0);
-			for (Short number : input) {
+			for (Long number : input) {
 				if (number != null) {
-					sum = sum.add(BigDecimal.valueOf(number.shortValue()));
+					sum = sum.add(BigDecimal.valueOf(number.longValue()));
 					countNotNull++;
 				}
 			}	
 			if (this.roundingMode != null) {
-				return Short.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.roundingMode).shortValue());
+				return Long.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.roundingMode).longValue());
 			}
 			if (this.mathContext != null) {
-				return Short.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).shortValue());
+				return Long.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).longValue());
 			}
-			return Short.valueOf(sum.divide(BigDecimal.valueOf(countNotNull)).shortValue());
-		}	
+			return Long.valueOf(sum.divide(BigDecimal.valueOf(countNotNull)).longValue());
+		}
 	}
 	
-	static final class Abs extends AbstractNullAsNullFunction<Short, Short> {
+	static final class Abs extends AbstractNullAsNullFunction<Long, Long> {
 
 		Abs() {
 			super();
 		}
 		
 		@Override
-		protected Short nullAsNullExecute(final Short input, final ExecCtx ctx) throws Exception {
-			return Short.valueOf(Integer.valueOf(Math.abs(input.shortValue())).shortValue());
-		}	
+		protected Long nullAsNullExecute(final Long input, final ExecCtx ctx) throws Exception {
+			return Long.valueOf(Math.abs(input.longValue()));
+		}		
 	}
 	
-	static final class Add extends AbstractNullAsNullFunction<Short, Short> {
+	static final class Add extends AbstractNullAsNullFunction<Long, Long> {
 
-		private final Short add;
+		private final Long add;
 		
-		Add(Short add) {
+		Add(Long add) {
 			super();
 			Validate.notNull(add, "Number to be added can't be null");
 			this.add = add;
 		}
 
 		@Override
-		protected Short nullAsNullExecute(final Short input, final ExecCtx ctx) throws Exception {
-			return Short.valueOf(Integer.valueOf(input.shortValue() + this.add.shortValue()).shortValue());
+		protected Long nullAsNullExecute(final Long input, final ExecCtx ctx) throws Exception {
+			BigDecimal result = BigDecimal.valueOf(input.longValue());
+			result = result.add(BigDecimal.valueOf(this.add.longValue()));
+				
+			return Long.valueOf(result.longValue());
 		}	
 	}
 	
-	static final class Subtract extends AbstractNullAsNullFunction<Short, Short> {
+	static final class Subtract extends AbstractNullAsNullFunction<Long, Long> {
 
-		private final Short subtract;
+		private final Long subtract;
 		
-		Subtract(Short subtract) {
+		Subtract(Long subtract) {
 			super();
 			Validate.notNull(subtract, "Number to be subtracted can't be null");
 			Validate.notNull(subtract, "Number to be added can't be null");
@@ -282,18 +285,21 @@ public final class FnMathShort {
 		}
 
 		@Override
-		protected Short nullAsNullExecute(final Short input, final ExecCtx ctx) throws Exception {
-			return Short.valueOf(Integer.valueOf(input.shortValue() - this.subtract.shortValue()).shortValue());
+		protected Long nullAsNullExecute(final Long input, final ExecCtx ctx) throws Exception {
+			BigDecimal result = BigDecimal.valueOf(input.longValue());
+			result = result.subtract(BigDecimal.valueOf(this.subtract.longValue()));
+				
+			return Long.valueOf(result.longValue());
 		}	
 	}
 	
-	static final class Divide extends AbstractNullAsNullFunction<Short, Short> {
+	static final class Divide extends AbstractNullAsNullFunction<Long, Long> {
 
-		private final Short divisor;
+		private final Long divisor;
 		private final RoundingMode roundingMode;
 		private final MathContext mathContext;
 		
-		Divide(Short divisor) {
+		Divide(Long divisor) {
 			super();
 			Validate.notNull(divisor, "Divisor can't be null");
 			this.divisor = divisor;
@@ -301,7 +307,7 @@ public final class FnMathShort {
 			this.mathContext = null;
 		}
 		
-		Divide(Short divisor, RoundingMode roundingMode) {
+		Divide(Long divisor, RoundingMode roundingMode) {
 			super();
 			Validate.notNull(divisor, "Divisor can't be null");
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
@@ -310,7 +316,7 @@ public final class FnMathShort {
 			this.mathContext = null;
 		}
 		
-		Divide(Short divisor, MathContext mathContext) {
+		Divide(Long divisor, MathContext mathContext) {
 			super();
 			Validate.notNull(divisor, "Divisor can't be null");
 			Validate.notNull(mathContext, "MathContext can't be null");
@@ -320,22 +326,22 @@ public final class FnMathShort {
 		}
 
 		@Override
-		protected Short nullAsNullExecute(final Short input, final ExecCtx ctx) throws Exception {
-			BigDecimal result = BigDecimal.valueOf(input.shortValue());
+		protected Long nullAsNullExecute(final Long input, final ExecCtx ctx) throws Exception {
+			BigDecimal result = BigDecimal.valueOf(input.longValue());
 			
 			if (this.roundingMode != null) {
-				result = result.divide(BigDecimal.valueOf(this.divisor.shortValue()), this.roundingMode);					
+				result = result.divide(BigDecimal.valueOf(this.divisor.longValue()), this.roundingMode);					
 			} else if (this.mathContext != null) {
-				result = result.divide(BigDecimal.valueOf(this.divisor.shortValue()), this.mathContext);				
+				result = result.divide(BigDecimal.valueOf(this.divisor.longValue()), this.mathContext);				
 			} else {
-				result = result.divide(BigDecimal.valueOf(this.divisor.shortValue()));	
+				result = result.divide(BigDecimal.valueOf(this.divisor.longValue()));	
 			}
-			return Short.valueOf(result.shortValue());
-		}		
+			return Long.valueOf(result.longValue());
+		}	
 	}
 	
 	
-	static final class Module extends AbstractNullAsNullFunction<Short, Short> {
+	static final class Module extends AbstractNullAsNullFunction<Long, Long> {
 
 		private final int module;
 		
@@ -345,18 +351,18 @@ public final class FnMathShort {
 		}
 		
 		@Override
-		protected Short nullAsNullExecute(final Short input, final ExecCtx ctx) throws Exception {
-			return Short.valueOf(Integer.valueOf(input.shortValue() % this.module).shortValue());
-		}	
+		protected Long nullAsNullExecute(final Long input, final ExecCtx ctx) throws Exception {
+			return Long.valueOf(input.longValue() % this.module);
+		}		
 	}
 	
-	static final class Multiply extends AbstractNullAsNullFunction<Short, Short> {
+	static final class Multiply extends AbstractNullAsNullFunction<Long, Long> {
 
-		private final Short multiplicand;
+		private final Long multiplicand;
 		private final MathContext mathContext;
 		private final RoundingMode roundingMode;
 		
-		Multiply(Short multiplicand) {
+		Multiply(Long multiplicand) {
 			super();
 			Validate.notNull(multiplicand, "Multiplicand can't be null");
 			this.multiplicand = multiplicand;
@@ -364,7 +370,7 @@ public final class FnMathShort {
 			this.roundingMode = null;
 		}
 		
-		Multiply(Short multiplicand, RoundingMode roundingMode) {
+		Multiply(Long multiplicand, RoundingMode roundingMode) {
 			super();
 			Validate.notNull(multiplicand, "Multiplicand can't be null");
 			Validate.notNull(roundingMode, "RoundingMode can't be null");
@@ -373,7 +379,7 @@ public final class FnMathShort {
 			this.roundingMode = roundingMode;
 		}
 		
-		Multiply(Short multiplicand, MathContext mathContext) {
+		Multiply(Long multiplicand, MathContext mathContext) {
 			super();
 			Validate.notNull(multiplicand, "Multiplicand can't be null");
 			Validate.notNull(mathContext, "MathContext can't be null");
@@ -383,21 +389,21 @@ public final class FnMathShort {
 		}
 
 		@Override
-		protected Short nullAsNullExecute(final Short input, final ExecCtx ctx) throws Exception {
-			BigDecimal result = BigDecimal.valueOf(input.shortValue());
+		protected Long nullAsNullExecute(final Long input, final ExecCtx ctx) throws Exception {
+			BigDecimal result = BigDecimal.valueOf(input.longValue());
 			
 			if (this.mathContext != null) {
-				result = result.multiply(BigDecimal.valueOf(this.multiplicand.shortValue()), this.mathContext);				
+				result = result.multiply(BigDecimal.valueOf(this.multiplicand.longValue()), this.mathContext);				
 			} else if (this.roundingMode != null) {
-				result = result.multiply(BigDecimal.valueOf(this.multiplicand.shortValue())).setScale(0, this.roundingMode);	
+				result = result.multiply(BigDecimal.valueOf(this.multiplicand.longValue())).setScale(0, this.roundingMode);	
 			} else {
-				result = result.multiply(BigDecimal.valueOf(this.multiplicand.shortValue()));	
+				result = result.multiply(BigDecimal.valueOf(this.multiplicand.longValue()));	
 			}
-			return Short.valueOf(result.shortValue());
-		}
+			return Long.valueOf(result.longValue());
+		}		
 	}
 	
-	static final class Pow extends AbstractNullAsNullFunction<Short, Short> {
+	static final class Pow extends AbstractNullAsNullFunction<Long, Long> {
 
 		private final int power;
 		private final MathContext mathContext;
@@ -427,8 +433,8 @@ public final class FnMathShort {
 		}
 
 		@Override
-		protected Short nullAsNullExecute(final Short input, final ExecCtx ctx) throws Exception {
-			BigDecimal result = BigDecimal.valueOf(input.shortValue());
+		protected Long nullAsNullExecute(final Long input, final ExecCtx ctx) throws Exception {
+			BigDecimal result = BigDecimal.valueOf(input.longValue());
 			
 			if (this.mathContext != null) {
 				result = result.pow(this.power, this.mathContext);				
@@ -437,7 +443,7 @@ public final class FnMathShort {
 			} else {
 				result = result.pow(this.power);	
 			}
-			return Short.valueOf(result.shortValue());
+			return Long.valueOf(result.longValue());
 		}	
 	}
 }

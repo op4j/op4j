@@ -21,6 +21,7 @@
 package org.op4j;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.nio.charset.Charset;
 import java.text.ParseException;
@@ -40,13 +41,14 @@ import java.util.Set;
 import org.apache.commons.lang.time.StopWatch;
 import org.javaruntype.type.Types;
 import org.junit.Test;
+import org.op4j.functions.FnReduce;
 import org.op4j.functions.DecimalPoint;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.FnArray;
 import org.op4j.functions.FnCalendar;
-import org.op4j.functions.FnFunc;
 import org.op4j.functions.FnList;
 import org.op4j.functions.FnMath;
+import org.op4j.functions.FnNumber;
 import org.op4j.functions.FnObject;
 import org.op4j.functions.FnSet;
 import org.op4j.functions.FnString;
@@ -494,7 +496,7 @@ watch.start();
         
         
         Op.on(123).exec(new IFunction<Integer,String>() {
-            public String execute(Inbteger input, ExecCtx ctx) throws Exception {
+            public String execute(Integer input, ExecCtx ctx) throws Exception {
                 return "The input number is: " + input;
             }
         }).get();
@@ -518,20 +520,18 @@ watch.start();
             
         };
         
-        System.out.println(Op.onAll(12,3,41,22).buildArrayOf(Types.INTEGER).exec(FnFunc.ofInteger().foldRightArray(pairSumFunc)).get());
+        System.out.println(Op.onAll(12,3,41,22).buildArrayOf(Types.INTEGER).exec(FnArray.ofInteger().reduce(FnReduce.ofInteger().max())).get());
         
-        System.out.println(Op.onAll("hello", "hola", "ola", "ciao").buildArrayOf(Types.STRING).exec(FnFunc.ofString().foldRightArray(pairConcFunc)).get());
+        System.out.println(Op.onAll("hello", "hola", "ola", "ciao").buildArrayOf(Types.STRING).exec(FnArray.ofString().reduce(pairConcFunc)).get());
         
+        System.out.println(Op.onAll("hello", "hola", "ola", "ciao").buildArrayOf(Types.STRING).exec(FnArray.ofString().reduce(FnReduce.ofString().join("%"))).get());
+        
+        
+        
+        System.out.println(Arrays.asList(Op.on(2).exec(FnNumber.toBigInteger()).exec(FnArray.ofBigInteger().unfold(FnMath.ofBigInteger().multiplyBy(BigInteger.valueOf(2)), Ognl.asBoolean("#index == 25"))).get()));
     }
     
     
-    private static class Fun implements IFunction<Integer,String> {
-
-        public String execute(Integer input, ExecCtx ctx) throws Exception {
-            return "The input number is: " + input;
-        }
-        
-    }
     
     
     private static String printArray(Object[] array) {

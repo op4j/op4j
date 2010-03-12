@@ -23,6 +23,7 @@ package org.op4j.functions;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -33,6 +34,8 @@ import java.util.Set;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.op4j.exceptions.ExecutionException;
+import org.op4j.util.ExecCtxImpl;
+import org.op4j.util.ValuePair;
 
 /**
  * 
@@ -171,6 +174,17 @@ public class FnSetOf<T> {
         return new ToMapOfSetByAlternateElements<T>();
     }
     
+    
+    
+
+    
+    public final IFunction<Set<T>,T> reduce(final IFunction<ValuePair<T>,T> function) {
+        return new Reduce<T>(function);
+    }
+    
+    public final IFunction<Set<T>,T> reduce(final IFunction<ValuePair<T>,T> function, final T initialValue) {
+        return new Reduce<T>(function, initialValue);
+    }
     
     
     
@@ -872,6 +886,127 @@ public class FnSetOf<T> {
                     result.put(key, value);
                 }
                 value.add(objectAsList.get(i + 1));
+            }
+            return result;
+        }
+        
+    }
+    
+ 
+    
+    
+    
+    
+    
+    static final class Unfold<T> extends AbstractNotNullFunction<T,Set<T>> {
+        
+        private final IFunction<? super T,? extends T> function;
+        private final IFunction<? super T,Boolean> unless;
+
+        
+        public Unfold(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> unless) {
+            super();
+            Validate.notNull(function, "Unfold function cannot be null");
+            this.function = function;
+            this.unless = unless;
+        }
+
+        @Override
+        public Set<T> notNullExecute(final T input, final ExecCtx ctx) throws Exception {
+            
+            final Set<T> resultSet = new LinkedHashSet<T>();
+            int index = 0;
+            
+            T currentTarget = input;
+            ExecCtx currentCtx = new ExecCtxImpl(Integer.valueOf(index));
+
+            if (this.unless == null) {
+                
+                while (currentTarget != null) {
+                    resultSet.add(currentTarget);
+                    index++;
+                    currentCtx = new ExecCtxImpl(Integer.valueOf(index));
+                    currentTarget = this.function.execute(currentTarget, currentCtx);
+                }
+                
+            } else {
+                
+                Boolean unlessResult = null;
+                resultSet.add(currentTarget);
+                do {
+                    index++;
+                    currentCtx = new ExecCtxImpl(Integer.valueOf(index));
+                    currentTarget = this.function.execute(currentTarget, currentCtx);
+                    resultSet.add(currentTarget);
+                    unlessResult = this.unless.execute(currentTarget, currentCtx);
+                    if (unlessResult == null) {
+                        throw new ExecutionException("Unless function returned null!");
+                    }
+                } while (!unlessResult.booleanValue());
+                
+            }
+            
+            return Collections.unmodifiableSet(resultSet);
+            
+        }
+        
+        
+    }
+    
+    
+
+    
+    
+    
+    static final class Reduce<T> extends AbstractNotNullFunction<Set<T>,T> {
+        
+        private final IFunction<ValuePair<T>,T> function;
+        private final T initialValue;
+
+        
+        public Reduce(final IFunction<ValuePair<T>, T> function) {
+            super();
+            Validate.notNull(function, "Fold function cannot be null");
+            this.function = function;
+            this.initialValue = null;
+        }
+        
+        public Reduce(final IFunction<ValuePair<T>, T> function, final T initialValue) {
+            super();
+            Validate.notNull(function, "Fold function cannot be null");
+            this.function = function;
+            this.initialValue = initialValue;
+        }
+
+        
+        @Override
+        public T notNullExecute(final Set<T> input, final ExecCtx ctx) throws Exception {
+            final List<T> inputList = new ArrayList<T>(input);
+            if (inputList.size() == 0) {
+                if (this.initialValue == null) {
+                    throw new ExecutionException("Cannot fold: array contains no elements");
+                }
+                return this.initialValue;
+            }
+            if (inputList.size() == 1 && this.initialValue == null) {
+                return inputList.get(0);
+            }
+            T result = null;
+            int indexDiff = 0;
+            if (this.initialValue != null) {
+                final ValuePair<T> currentPair = new ValuePair<T>(this.initialValue, inputList.get(0));
+                final ExecCtx currentCtx = new ExecCtxImpl(Integer.valueOf(0));
+                result = this.function.execute(currentPair, currentCtx);
+                indexDiff = 0;
+            } else {
+                result = inputList.get(0);
+                indexDiff = 1;
+            }
+            
+            for (int i = 1, z = inputList.size(); i < z; i++) {
+                final ValuePair<T> currentPair = new ValuePair<T>(result, inputList.get(i));
+                final ExecCtx currentCtx = new ExecCtxImpl(Integer.valueOf(i - indexDiff));
+                result = this.function.execute(currentPair, currentCtx);
             }
             return result;
         }
