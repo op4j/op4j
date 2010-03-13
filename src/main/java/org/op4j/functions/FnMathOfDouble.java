@@ -96,36 +96,36 @@ public final class FnMathOfDouble {
 		return ABS_FUNC;
     }
 	
-	public final IFunction<Double,Double> add(Double add) {
-		return new Add(add);
+	public final IFunction<Double,Double> add(Number add) {
+		return new Add(fromNumber(add));
     }
 	
-	public final IFunction<Double,Double> subtract(Double subtract) {
-		return new Subtract(subtract);
+	public final IFunction<Double,Double> subtract(Number subtract) {
+		return new Subtract(fromNumber(subtract));
     }
 	
-	public final IFunction<Double,Double> divideBy(Double divisor) {
-		return new Divide(divisor);
+	public final IFunction<Double,Double> divideBy(Number divisor) {
+		return new Divide(fromNumber(divisor));
     }
-	public final IFunction<Double,Double> divideBy(Double divisor, MathContext mathContext) {
-        return new Divide(divisor, mathContext);
+	public final IFunction<Double,Double> divideBy(Number divisor, MathContext mathContext) {
+        return new Divide(fromNumber(divisor), mathContext);
     }
-	public final IFunction<Double,Double> divideBy(Double divisor, RoundingMode roundingMode) {
-		return new Divide(divisor, roundingMode);
+	public final IFunction<Double,Double> divideBy(Number divisor, RoundingMode roundingMode) {
+		return new Divide(fromNumber(divisor), roundingMode);
     }
 	
 	public final IFunction<Double,Double> module(int module) {
 		return new Module(module);
     }	
 	
-	public final IFunction<Double,Double> multiplyBy(Double multiplicand) {
-		return new Multiply(multiplicand);
+	public final IFunction<Double,Double> multiplyBy(Number multiplicand) {
+		return new Multiply(fromNumber(multiplicand));
     }
-	public final IFunction<Double,Double> multiplyBy(Double multiplicand, MathContext mathContext) {
-        return new Multiply(multiplicand, mathContext);
+	public final IFunction<Double,Double> multiplyBy(Number multiplicand, MathContext mathContext) {
+        return new Multiply(fromNumber(multiplicand), mathContext);
     }
-	public final IFunction<Double,Double> multiplyBy(Double multiplicand, RoundingMode roundingMode) {
-		return new Multiply(multiplicand, roundingMode);
+	public final IFunction<Double,Double> multiplyBy(Number multiplicand, RoundingMode roundingMode) {
+		return new Multiply(fromNumber(multiplicand), roundingMode);
     }
 	
 	public final IFunction<Double,Double> pow(int power) {
@@ -138,6 +138,22 @@ public final class FnMathOfDouble {
 		return new Pow(power, roundingMode);
     }
 	
+	
+	
+	
+	
+    
+    private static Double fromNumber(final Number number) {
+        if (number == null) {
+            return null;
+        }
+        return Double.valueOf(number.doubleValue());
+    }
+	
+
+    
+    
+    
 	
 	static final class Max extends AbstractNotNullFunction<Iterable<Double>,Double> {
 

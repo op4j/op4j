@@ -19,6 +19,7 @@
  */
 package org.op4j.functions;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import org.apache.commons.lang.Validate;
@@ -81,33 +82,55 @@ public final class FnMathOfBigInteger {
 		return ABS_FUNC;
     }
 	
-	public final IFunction<BigInteger,BigInteger> add(BigInteger add) {
-		return new Add(add);
+	public final IFunction<BigInteger,BigInteger> add(Number add) {
+		return new Add(fromNumber(add));
     }
 	
-	public final IFunction<BigInteger,BigInteger> subtract(BigInteger subtract) {
-		return new Subtract(subtract);
+	public final IFunction<BigInteger,BigInteger> subtract(Number subtract) {
+		return new Subtract(fromNumber(subtract));
     }
 	
-	public final IFunction<BigInteger,BigInteger> divideBy(BigInteger divisor) {
-		return new Divide(divisor);
+	public final IFunction<BigInteger,BigInteger> divideBy(Number divisor) {
+		return new Divide(fromNumber(divisor));
     }
 	
-	public final IFunction<BigInteger,BigInteger> module(BigInteger module) {
-		return new Module(module);
+	public final IFunction<BigInteger,BigInteger> module(Number module) {
+		return new Module(fromNumber(module));
     }
 	
-	public final IFunction<BigInteger,BigInteger> remainder(BigInteger module) {
-		return new Remainder(module);
+	public final IFunction<BigInteger,BigInteger> remainder(Number module) {
+		return new Remainder(fromNumber(module));
     }
 	
-	public final IFunction<BigInteger,BigInteger> multiplyBy(BigInteger multiplicand) {
-		return new Multiply(multiplicand);
+	public final IFunction<BigInteger,BigInteger> multiplyBy(Number multiplicand) {
+		return new Multiply(fromNumber(multiplicand));
     }
 	
 	public final IFunction<BigInteger,BigInteger> pow(int power) {
 		return new Pow(power);
     }
+	
+	
+	
+	
+	
+	
+	
+    
+    private static BigInteger fromNumber(final Number number) {
+        if (number == null) {
+            return null;
+        }
+        if (number instanceof BigDecimal) {
+            return ((BigDecimal) number).toBigInteger();
+        }
+        if (number instanceof BigInteger) {
+            return (BigInteger)number;
+        }
+        return (BigDecimal.valueOf(number.doubleValue())).toBigInteger();
+    }
+	
+	
 	
 	
 	static final class Max extends AbstractNotNullFunction<Iterable<BigInteger>,BigInteger> {

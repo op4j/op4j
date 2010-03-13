@@ -20,6 +20,7 @@
 package org.op4j.functions;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.MathContext;
 import java.math.RoundingMode;
 
@@ -96,39 +97,39 @@ public final class FnMathOfBigDecimal {
 		return ABS_FUNC;
     }
 	
-	public final IFunction<BigDecimal,BigDecimal> add(BigDecimal add) {
-		return new Add(add);
+	public final IFunction<BigDecimal,BigDecimal> add(Number add) {
+		return new Add(fromNumber(add));
     }
 	
-	public final IFunction<BigDecimal,BigDecimal> subtract(BigDecimal subtract) {
-		return new Subtract(subtract);
+	public final IFunction<BigDecimal,BigDecimal> subtract(Number subtract) {
+		return new Subtract(fromNumber(subtract));
     }
 	
-	public final IFunction<BigDecimal,BigDecimal> divideBy(BigDecimal divisor) {
-		return new Divide(divisor);
+	public final IFunction<BigDecimal,BigDecimal> divideBy(Number divisor) {
+		return new Divide(fromNumber(divisor));
     }
-	public final IFunction<BigDecimal,BigDecimal> divideBy(BigDecimal divisor, MathContext mathContext) {
-        return new Divide(divisor, mathContext);
+	public final IFunction<BigDecimal,BigDecimal> divideBy(Number divisor, MathContext mathContext) {
+        return new Divide(fromNumber(divisor), mathContext);
     }
-	public final IFunction<BigDecimal,BigDecimal> divideBy(BigDecimal divisor, RoundingMode roundingMode) {
-		return new Divide(divisor, roundingMode);
-    }
-	
-	public final IFunction<BigDecimal,BigDecimal> remainder(BigDecimal divisor) {
-		return new Remainder(divisor);
-    }
-	public final IFunction<BigDecimal,BigDecimal> remainder(BigDecimal divisor, MathContext mathContext) {
-		return new Remainder(divisor, mathContext);
+	public final IFunction<BigDecimal,BigDecimal> divideBy(Number divisor, RoundingMode roundingMode) {
+		return new Divide(fromNumber(divisor), roundingMode);
     }
 	
-	public final IFunction<BigDecimal,BigDecimal> multiplyBy(BigDecimal multiplicand) {
-		return new Multiply(multiplicand);
+	public final IFunction<BigDecimal,BigDecimal> remainder(Number divisor) {
+		return new Remainder(fromNumber(divisor));
     }
-	public final IFunction<BigDecimal,BigDecimal> multiplyBy(BigDecimal multiplicand, MathContext mathContext) {
-        return new Multiply(multiplicand, mathContext);
+	public final IFunction<BigDecimal,BigDecimal> remainder(Number divisor, MathContext mathContext) {
+		return new Remainder(fromNumber(divisor), mathContext);
     }
-	public final IFunction<BigDecimal,BigDecimal> multiplyBy(BigDecimal multiplicand, RoundingMode roundingMode) {
-		return new Multiply(multiplicand, roundingMode);
+	
+	public final IFunction<BigDecimal,BigDecimal> multiplyBy(Number multiplicand) {
+		return new Multiply(fromNumber(multiplicand));
+    }
+	public final IFunction<BigDecimal,BigDecimal> multiplyBy(Number multiplicand, MathContext mathContext) {
+        return new Multiply(fromNumber(multiplicand), mathContext);
+    }
+	public final IFunction<BigDecimal,BigDecimal> multiplyBy(Number multiplicand, RoundingMode roundingMode) {
+		return new Multiply(fromNumber(multiplicand), roundingMode);
     }
 	
 	public final IFunction<BigDecimal,BigDecimal> pow(int power) {
@@ -140,6 +141,24 @@ public final class FnMathOfBigDecimal {
 	public final IFunction<BigDecimal,BigDecimal> pow(int power, RoundingMode roundingMode) {
 		return new Pow(power, roundingMode);
     }
+	
+	
+	
+	
+	private static BigDecimal fromNumber(final Number number) {
+	    if (number == null) {
+	        return null;
+	    }
+	    if (number instanceof BigDecimal) {
+	        return (BigDecimal) number;
+	    }
+	    if (number instanceof BigInteger) {
+	        return new BigDecimal((BigInteger)number);
+	    }
+	    return BigDecimal.valueOf(number.doubleValue());
+	}
+	
+	
 	
 	
 	static final class Max extends AbstractNotNullFunction<Iterable<BigDecimal>,BigDecimal> {

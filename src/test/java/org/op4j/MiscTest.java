@@ -581,6 +581,8 @@ watch.start();
         System.out.println(ValuePair.TYPE_VALUE_PAIR_OF(Types.STRING, Types.CALENDAR));
         
         
+        System.out.println(Op.on(23.24).exec(FnMath.ofDouble().add(43)).get());
+        
     }
     
     

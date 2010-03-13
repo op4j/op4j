@@ -89,36 +89,36 @@ public final class FnMathOfShort {
 		return ABS_FUNC;
     }
 	
-	public static final IFunction<Short,Short> add(Short add) {
-		return new Add(add);
+	public static final IFunction<Short,Short> add(Number add) {
+		return new Add(fromNumber(add));
     }
 	
-	public static final IFunction<Short,Short> subtract(Short subtract) {
-		return new Subtract(subtract);
+	public static final IFunction<Short,Short> subtract(Number subtract) {
+		return new Subtract(fromNumber(subtract));
     }
 	
-	public static final IFunction<Short,Short> divideBy(Short divisor) {
-		return new Divide(divisor);
+	public static final IFunction<Short,Short> divideBy(Number divisor) {
+		return new Divide(fromNumber(divisor));
     }
-	public static final IFunction<Short,Short> divideBy(Short divisor, MathContext mathContext) {
-        return new Divide(divisor, mathContext);
+	public static final IFunction<Short,Short> divideBy(Number divisor, MathContext mathContext) {
+        return new Divide(fromNumber(divisor), mathContext);
     }
-	public static final IFunction<Short,Short> divideBy(Short divisor, RoundingMode roundingMode) {
-		return new Divide(divisor, roundingMode);
+	public static final IFunction<Short,Short> divideBy(Number divisor, RoundingMode roundingMode) {
+		return new Divide(fromNumber(divisor), roundingMode);
     }
 	
 	public static final IFunction<Short,Short> module(int module) {
 		return new Module(module);
     }	
 	
-	public static final IFunction<Short,Short> multiplyBy(Short multiplicand) {
-		return new Multiply(multiplicand);
+	public static final IFunction<Short,Short> multiplyBy(Number multiplicand) {
+		return new Multiply(fromNumber(multiplicand));
     }
-	public static final IFunction<Short,Short> multiplyBy(Short multiplicand, MathContext mathContext) {
-        return new Multiply(multiplicand, mathContext);
+	public static final IFunction<Short,Short> multiplyBy(Number multiplicand, MathContext mathContext) {
+        return new Multiply(fromNumber(multiplicand), mathContext);
     }
-	public static final IFunction<Short,Short> multiplyBy(Short multiplicand, RoundingMode roundingMode) {
-		return new Multiply(multiplicand, roundingMode);
+	public static final IFunction<Short,Short> multiplyBy(Number multiplicand, RoundingMode roundingMode) {
+		return new Multiply(fromNumber(multiplicand), roundingMode);
     }
 	
 	public static final IFunction<Short,Short> pow(int power) {
@@ -130,6 +130,20 @@ public final class FnMathOfShort {
 	public static final IFunction<Short,Short> pow(int power, RoundingMode roundingMode) {
 		return new Pow(power, roundingMode);
     }
+	
+	
+	
+	
+    
+    
+    private static Short fromNumber(final Number number) {
+        if (number == null) {
+            return null;
+        }
+        return Short.valueOf(number.shortValue());
+    }
+
+    
 	
 	
 	static final class Max extends AbstractNotNullFunction<Iterable<Short>,Short> {

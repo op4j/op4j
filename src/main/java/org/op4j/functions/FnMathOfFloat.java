@@ -89,36 +89,36 @@ public final class FnMathOfFloat {
 		return ABS_FUNC;
     }
 	
-	public final IFunction<Float,Float> add(Float add) {
-		return new Add(add);
+	public final IFunction<Float,Float> add(Number add) {
+		return new Add(fromNumber(add));
     }
 	
-	public final IFunction<Float,Float> subtract(Float subtract) {
-		return new Subtract(subtract);
+	public final IFunction<Float,Float> subtract(Number subtract) {
+		return new Subtract(fromNumber(subtract));
     }
 	
-	public final IFunction<Float,Float> divideBy(Float divisor) {
-		return new Divide(divisor);
+	public final IFunction<Float,Float> divideBy(Number divisor) {
+		return new Divide(fromNumber(divisor));
     }
-	public final IFunction<Float,Float> divideBy(Float divisor, MathContext mathContext) {
-        return new Divide(divisor, mathContext);
+	public final IFunction<Float,Float> divideBy(Number divisor, MathContext mathContext) {
+        return new Divide(fromNumber(divisor), mathContext);
     }
-	public final IFunction<Float,Float> divideBy(Float divisor, RoundingMode roundingMode) {
-		return new Divide(divisor, roundingMode);
+	public final IFunction<Float,Float> divideBy(Number divisor, RoundingMode roundingMode) {
+		return new Divide(fromNumber(divisor), roundingMode);
     }
 	
 	public final IFunction<Float,Float> module(int module) {
 		return new Module(module);
     }	
 	
-	public final IFunction<Float,Float> multiplyBy(Float multiplicand) {
-		return new Multiply(multiplicand);
+	public final IFunction<Float,Float> multiplyBy(Number multiplicand) {
+		return new Multiply(fromNumber(multiplicand));
     }
-	public final IFunction<Float,Float> multiplyBy(Float multiplicand, MathContext mathContext) {
-        return new Multiply(multiplicand, mathContext);
+	public final IFunction<Float,Float> multiplyBy(Number multiplicand, MathContext mathContext) {
+        return new Multiply(fromNumber(multiplicand), mathContext);
     }
-	public final IFunction<Float,Float> multiplyBy(Float multiplicand, RoundingMode roundingMode) {
-		return new Multiply(multiplicand, roundingMode);
+	public final IFunction<Float,Float> multiplyBy(Number multiplicand, RoundingMode roundingMode) {
+		return new Multiply(fromNumber(multiplicand), roundingMode);
     }
 	
 	public final IFunction<Float,Float> pow(int power) {
@@ -130,6 +130,22 @@ public final class FnMathOfFloat {
 	public final IFunction<Float,Float> pow(int power, RoundingMode roundingMode) {
 		return new Pow(power, roundingMode);
     }
+	
+	
+	
+    
+    
+    
+    private static Float fromNumber(final Number number) {
+        if (number == null) {
+            return null;
+        }
+        return Float.valueOf(number.floatValue());
+    }
+
+	
+	
+	
 	
 	
 	static final class Max extends AbstractNotNullFunction<Iterable<Float>,Float> {
