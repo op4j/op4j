@@ -1,6 +1,4 @@
 
-  Never use BigDecimal.divide without roundingmode (default: FLOOR)
-  Divide Methods in FnReduce do not have rounding modes
   Why do key an value operators have "ifIndex"?
   
     
