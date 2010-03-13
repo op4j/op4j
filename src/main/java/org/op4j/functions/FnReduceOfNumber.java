@@ -2,6 +2,10 @@ package org.op4j.functions;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.MathContext;
+import java.math.RoundingMode;
+
+import org.apache.commons.lang.Validate;
 
 final class FnReduceOfNumber<T extends Number> {
     
@@ -97,8 +101,25 @@ final class FnReduceOfNumber<T extends Number> {
     
     static abstract class Div<T extends Number> extends Reductor<Number,Number,T> {
 
+        private final RoundingMode roundingMode;
+        private final MathContext mathContext;
+        
         public Div() {
             super();
+            this.roundingMode = null;
+            this.mathContext = null;
+        }
+        
+        public Div(final RoundingMode roundingMode) {
+            super();
+            this.roundingMode = roundingMode;
+            this.mathContext = null;
+        }
+        
+        public Div(final MathContext mathContext) {
+            super();
+            this.roundingMode = null;
+            this.mathContext = mathContext;
         }
 
         @Override
@@ -111,7 +132,13 @@ final class FnReduceOfNumber<T extends Number> {
             }
             BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
             BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
-            return fromNumber(bLeft.divide(bRight)); 
+            if (this.roundingMode != null) {
+                return fromNumber(bLeft.divide(bRight, this.roundingMode));
+            }
+            if (this.mathContext != null) {
+                return fromNumber(bLeft.divide(bRight, this.mathContext));
+            }
+            return fromNumber(bLeft.divide(bRight, RoundingMode.FLOOR)); 
         }
         
         protected abstract T fromNumber(final Number number);
@@ -119,10 +146,18 @@ final class FnReduceOfNumber<T extends Number> {
     }
 
     
-    static abstract class Mod<T extends Number> extends Reductor<Number,Number,T> {
+    static abstract class Remainder<T extends Number> extends Reductor<Number,Number,T> {
 
-        public Mod() {
+        private final MathContext mathContext;
+        
+        public Remainder() {
             super();
+            this.mathContext = null;
+        }
+        
+        public Remainder(final MathContext mathContext) {
+            super();
+            this.mathContext = mathContext;
         }
 
         @Override
@@ -135,6 +170,9 @@ final class FnReduceOfNumber<T extends Number> {
             }
             BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
             BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            if (this.mathContext != null) {
+                return fromNumber(bLeft.remainder(bRight, this.mathContext));
+            }
             return fromNumber(bLeft.remainder(bRight)); 
         }
         
@@ -145,8 +183,27 @@ final class FnReduceOfNumber<T extends Number> {
     
     static abstract class Avg<T extends Number> extends Reductor<Number,Number,T> {
 
-        public Avg() {
+        private final RoundingMode roundingMode;
+        private final MathContext mathContext;
+        
+        Avg() {
             super();
+            this.roundingMode = null;
+            this.mathContext = null;
+        }
+
+        Avg(RoundingMode roundingMode) {
+            super();
+            Validate.notNull(roundingMode, "RoundingMode can't be null");
+            this.roundingMode = roundingMode;
+            this.mathContext = null;
+        }
+        
+        Avg(MathContext mathContext) {
+            super();
+            Validate.notNull(mathContext, "MathContext can't be null");
+            this.roundingMode = null;
+            this.mathContext = mathContext;
         }
 
         @Override
@@ -159,7 +216,13 @@ final class FnReduceOfNumber<T extends Number> {
             }
             BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
             BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
-            return fromNumber(bLeft.add(bRight).divide(BigDecimal.valueOf(2.0d))); 
+            if (this.roundingMode != null) {
+                return fromNumber(bLeft.add(bRight).divide(BigDecimal.valueOf(2.0d), this.roundingMode));
+            }
+            if (this.mathContext != null) {
+                return fromNumber(bLeft.add(bRight).divide(BigDecimal.valueOf(2.0d), this.mathContext));
+            }
+            return fromNumber(bLeft.add(bRight).divide(BigDecimal.valueOf(2.0d), RoundingMode.FLOOR)); 
         }
         
         protected abstract T fromNumber(final Number number);

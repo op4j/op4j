@@ -1,5 +1,8 @@
 package org.op4j.functions;
 
+import java.math.MathContext;
+import java.math.RoundingMode;
+
 import org.javaruntype.type.Types;
 import org.op4j.util.ValuePair;
 
@@ -10,7 +13,7 @@ public final class FnReduceOfByte extends FnReduceOf<Byte> {
     private static final IFunction<ValuePair<Number,Number>,Byte> SUBT = new Subt();
     private static final IFunction<ValuePair<Number,Number>,Byte> MULT = new Mult();
     private static final IFunction<ValuePair<Number,Number>,Byte> DIV = new Div();
-    private static final IFunction<ValuePair<Number,Number>,Byte> MOD = new Mod();
+    private static final IFunction<ValuePair<Number,Number>,Byte> REMAINDER = new Remainder();
 
     
     public IFunction<ValuePair<Number,Number>,Byte> sum() {
@@ -19,6 +22,14 @@ public final class FnReduceOfByte extends FnReduceOf<Byte> {
     
     public IFunction<ValuePair<Number,Number>,Byte> avg() {
         return AVG;
+    }
+    
+    public IFunction<ValuePair<Number,Number>,Byte> avg(final RoundingMode roundingMode) {
+        return new Avg(roundingMode);
+    }
+    
+    public IFunction<ValuePair<Number,Number>,Byte> avg(final MathContext mathContext) {
+        return new Avg(mathContext);
     }
     
     public IFunction<ValuePair<Number,Number>,Byte> subt() {
@@ -33,8 +44,20 @@ public final class FnReduceOfByte extends FnReduceOf<Byte> {
         return DIV;
     }
     
-    public IFunction<ValuePair<Number,Number>,Byte> mod() {
-        return MOD;
+    public IFunction<ValuePair<Number,Number>,Byte> div(final RoundingMode roundingMode) {
+        return new Div(roundingMode);
+    }
+    
+    public IFunction<ValuePair<Number,Number>,Byte> div(final MathContext mathContext) {
+        return new Div(mathContext);
+    }
+    
+    public IFunction<ValuePair<Number,Number>,Byte> remainder() {
+        return REMAINDER;
+    }
+    
+    public IFunction<ValuePair<Number,Number>,Byte> remainder(final MathContext mathContext) {
+        return new Remainder(mathContext);
     }
     
     
@@ -103,6 +126,14 @@ public final class FnReduceOfByte extends FnReduceOf<Byte> {
             super();
         }
 
+        public Div(final RoundingMode roundingMode) {
+            super(roundingMode);
+        }
+
+        public Div(final MathContext mathContext) {
+            super(mathContext);
+        }
+
         @Override
         protected Byte fromNumber(final Number number) {
             return FnReduceOfByte.fromNumber(number);
@@ -111,10 +142,14 @@ public final class FnReduceOfByte extends FnReduceOf<Byte> {
     }
 
     
-    static final class Mod extends FnReduceOfNumber.Mod<Byte> {
+    static final class Remainder extends FnReduceOfNumber.Remainder<Byte> {
 
-        public Mod() {
+        public Remainder() {
             super();
+        }
+
+        public Remainder(final MathContext mathContext) {
+            super(mathContext);
         }
 
         @Override
@@ -129,6 +164,14 @@ public final class FnReduceOfByte extends FnReduceOf<Byte> {
 
         public Avg() {
             super();
+        }
+
+        public Avg(final RoundingMode roundingMode) {
+            super(roundingMode);
+        }
+
+        public Avg(final MathContext mathContext) {
+            super(mathContext);
         }
 
         @Override

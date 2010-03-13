@@ -1,5 +1,8 @@
 package org.op4j.functions;
 
+import java.math.MathContext;
+import java.math.RoundingMode;
+
 import org.javaruntype.type.Types;
 import org.op4j.util.ValuePair;
 
@@ -10,7 +13,7 @@ public final class FnReduceOfShort extends FnReduceOf<Short> {
     private static final IFunction<ValuePair<Number,Number>,Short> SUBT = new Subt();
     private static final IFunction<ValuePair<Number,Number>,Short> MULT = new Mult();
     private static final IFunction<ValuePair<Number,Number>,Short> DIV = new Div();
-    private static final IFunction<ValuePair<Number,Number>,Short> MOD = new Mod();
+    private static final IFunction<ValuePair<Number,Number>,Short> REMAINDER = new Remainder();
 
     
     public IFunction<ValuePair<Number,Number>,Short> sum() {
@@ -19,6 +22,14 @@ public final class FnReduceOfShort extends FnReduceOf<Short> {
     
     public IFunction<ValuePair<Number,Number>,Short> avg() {
         return AVG;
+    }
+    
+    public IFunction<ValuePair<Number,Number>,Short> avg(final RoundingMode roundingMode) {
+        return new Avg(roundingMode);
+    }
+    
+    public IFunction<ValuePair<Number,Number>,Short> avg(final MathContext mathContext) {
+        return new Avg(mathContext);
     }
     
     public IFunction<ValuePair<Number,Number>,Short> subt() {
@@ -33,8 +44,20 @@ public final class FnReduceOfShort extends FnReduceOf<Short> {
         return DIV;
     }
     
-    public IFunction<ValuePair<Number,Number>,Short> mod() {
-        return MOD;
+    public IFunction<ValuePair<Number,Number>,Short> div(final RoundingMode roundingMode) {
+        return new Div(roundingMode);
+    }
+    
+    public IFunction<ValuePair<Number,Number>,Short> div(final MathContext mathContext) {
+        return new Div(mathContext);
+    }
+    
+    public IFunction<ValuePair<Number,Number>,Short> remainder() {
+        return REMAINDER;
+    }
+    
+    public IFunction<ValuePair<Number,Number>,Short> remainder(final MathContext mathContext) {
+        return new Remainder(mathContext);
     }
     
     
@@ -102,6 +125,14 @@ public final class FnReduceOfShort extends FnReduceOf<Short> {
             super();
         }
 
+        public Div(final RoundingMode roundingMode) {
+            super(roundingMode);
+        }
+
+        public Div(final MathContext mathContext) {
+            super(mathContext);
+        }
+
         @Override
         protected Short fromNumber(final Number number) {
             return FnReduceOfShort.fromNumber(number);
@@ -110,10 +141,14 @@ public final class FnReduceOfShort extends FnReduceOf<Short> {
     }
 
     
-    static final class Mod extends FnReduceOfNumber.Mod<Short> {
+    static final class Remainder extends FnReduceOfNumber.Remainder<Short> {
 
-        public Mod() {
+        public Remainder() {
             super();
+        }
+
+        public Remainder(final MathContext mathContext) {
+            super(mathContext);
         }
 
         @Override
@@ -130,6 +165,14 @@ public final class FnReduceOfShort extends FnReduceOf<Short> {
 
         public Avg() {
             super();
+        }
+
+        public Avg(final RoundingMode roundingMode) {
+            super(roundingMode);
+        }
+
+        public Avg(final MathContext mathContext) {
+            super(mathContext);
         }
 
         @Override
