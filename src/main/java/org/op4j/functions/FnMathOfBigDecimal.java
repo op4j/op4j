@@ -35,15 +35,23 @@ import org.apache.commons.lang.Validate;
  */
 public final class FnMathOfBigDecimal {
 
-	private final static Max MAX_FUNC = new Max();
+	private final static IFunction<Iterable<BigDecimal>, BigDecimal> MAX_FUNC = new Max();
 	
-	private final static Min MIN_FUNC = new Min();
+	private final static IFunction<Iterable<BigDecimal>, BigDecimal> MIN_FUNC = new Min();
 	
-	private final static Sum SUM_FUNC = new Sum();
+	private final static IFunction<Iterable<BigDecimal>, BigDecimal> SUM_FUNC = new Sum();
 	
-	private final static Avg AVG_FUNC = new Avg();
+	private final static IFunction<Iterable<BigDecimal>, BigDecimal> AVG_FUNC = new Avg();
+
+    private final static IFunction<BigDecimal[], BigDecimal> MAX_ARRAY_FUNC = new MaxArray();
+    
+    private final static IFunction<BigDecimal[], BigDecimal> MIN_ARRAY_FUNC = new MinArray();
+    
+    private final static IFunction<BigDecimal[], BigDecimal> SUM_ARRAY_FUNC = new SumArray();
+    
+    private final static IFunction<BigDecimal[], BigDecimal> AVG_ARRAY_FUNC = new AvgArray();
 	
-	private final static Abs ABS_FUNC = new Abs();
+	private final static IFunction<BigDecimal, BigDecimal> ABS_FUNC = new Abs();
 	
 	
 	FnMathOfBigDecimal() {
@@ -88,6 +96,30 @@ public final class FnMathOfBigDecimal {
 
     public final IFunction<Iterable<BigDecimal>, BigDecimal> avg(RoundingMode roundingMode) {
         return new Avg(roundingMode);
+    }
+
+    public final IFunction<BigDecimal[], BigDecimal> maxArray() {
+        return MAX_ARRAY_FUNC;
+    }
+
+    public final IFunction<BigDecimal[], BigDecimal> minArray() {
+        return MIN_ARRAY_FUNC;
+    }
+
+    public final IFunction<BigDecimal[], BigDecimal> sumArray() {
+        return SUM_ARRAY_FUNC;
+    }
+
+    public final IFunction<BigDecimal[], BigDecimal> avgArray() {
+        return AVG_ARRAY_FUNC;
+    }
+
+    public final IFunction<BigDecimal[], BigDecimal> avgArray(MathContext mathContext) {
+        return new AvgArray(mathContext);
+    }
+
+    public final IFunction<BigDecimal[], BigDecimal> avgArray(RoundingMode roundingMode) {
+        return new AvgArray(roundingMode);
     }
 
     public final IFunction<BigDecimal, BigDecimal> round(MathContext mathContext) {
@@ -529,9 +561,143 @@ public final class FnMathOfBigDecimal {
 			if (this.mathContext != null) {
 				return sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext);
 			}
-			return sum.divide(BigDecimal.valueOf(countNotNull));
+			return sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR);
 		}		
 	}
+
+	
+	
+	
+	
+    
+    
+    static final class MaxArray extends AbstractNotNullFunction<BigDecimal[],BigDecimal> {
+
+        MaxArray() {
+            super();
+        }
+
+        @Override
+        protected BigDecimal notNullExecute(final BigDecimal[] input, final ExecCtx ctx) throws Exception {
+            if (input.length == 0) {
+                return null;
+            }
+            BigDecimal max = input[0];
+            for (BigDecimal number : input) {
+                if (number != null) {
+                    if (number.compareTo(max) > 0) {
+                        max = number;
+                    }
+                }
+            }   
+            return max;
+        }
+    }
+    
+    static final class MinArray extends AbstractNotNullFunction<BigDecimal[],BigDecimal> {
+
+        MinArray() {
+            super();
+        }
+
+        @Override
+        protected BigDecimal notNullExecute(final BigDecimal[] input, final ExecCtx ctx) throws Exception {
+            if (input.length == 0) {
+                return null;
+            }
+            BigDecimal min = input[0];
+            for (BigDecimal number : input) {
+                if (number != null) {
+                    if (number.compareTo(min) < 0) {
+                        min = number;
+                    }
+                }
+            }   
+            return min;
+        }   
+    }
+    
+    static final class SumArray extends AbstractNotNullFunction<BigDecimal[],BigDecimal> {
+
+        SumArray() {
+            super();
+        }
+
+        @Override
+        protected BigDecimal notNullExecute(final BigDecimal[] input, final ExecCtx ctx) throws Exception {
+            BigDecimal sum = BigDecimal.valueOf(0);
+            for (BigDecimal number : input) {
+                if (number != null) {
+                    sum = sum.add(number);
+                }
+            }   
+            return sum;
+        }       
+    }
+    
+    static final class AvgArray extends AbstractNotNullFunction<BigDecimal[],BigDecimal> {
+
+        private final RoundingMode roundingMode;
+        private final MathContext mathContext;
+        
+        AvgArray() {
+            super();
+            this.roundingMode = null;
+            this.mathContext = null;
+        }
+
+        AvgArray(RoundingMode roundingMode) {
+            super();
+            Validate.notNull(roundingMode, "RoundingMode can't be null");
+            this.roundingMode = roundingMode;
+            this.mathContext = null;
+        }
+        
+        AvgArray(MathContext mathContext) {
+            super();
+            Validate.notNull(mathContext, "MathContext can't be null");
+            this.roundingMode = null;
+            this.mathContext = mathContext;
+        }
+        
+        @Override
+        protected BigDecimal notNullExecute(final BigDecimal[] input, final ExecCtx ctx) throws Exception {
+            
+            int countNotNull = 0;
+            BigDecimal sum = BigDecimal.valueOf(0);
+            for (BigDecimal number : input) {
+                if (number != null) {
+                    sum = sum.add(number);
+                    countNotNull++;
+                }
+            }   
+            if (this.roundingMode != null) {
+                return sum.divide(BigDecimal.valueOf(countNotNull), this.roundingMode);
+            }
+            if (this.mathContext != null) {
+                return sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext);
+            }
+            return sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR);
+        }       
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	static final class Round extends AbstractNullAsNullFunction<BigDecimal, BigDecimal> {
 
@@ -654,7 +820,7 @@ public final class FnMathOfBigDecimal {
 			} else if (this.mathContext != null) {
 				result = result.divide(this.divisor, this.mathContext);				
 			} else {
-				result = result.divide(this.divisor);	
+				result = result.divide(this.divisor, RoundingMode.FLOOR);	
 			}
 			return result;
 		}		

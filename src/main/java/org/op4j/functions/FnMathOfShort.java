@@ -34,15 +34,23 @@ import org.apache.commons.lang.Validate;
  */
 public final class FnMathOfShort {
 
-	private final static Max MAX_FUNC = new Max();
+	private final static IFunction<Iterable<Short>, Short> MAX_FUNC = new Max();
 	
-	private final static Min MIN_FUNC = new Min();
+	private final static IFunction<Iterable<Short>, Short> MIN_FUNC = new Min();
 	
-	private final static Sum SUM_FUNC = new Sum();
+	private final static IFunction<Iterable<Short>, Short> SUM_FUNC = new Sum();
 	
-	private final static Avg AVG_FUNC = new Avg();
+	private final static IFunction<Iterable<Short>, Short> AVG_FUNC = new Avg();
+
+    private final static IFunction<Short[], Short> MAX_ARRAY_FUNC = new MaxArray();
+    
+    private final static IFunction<Short[], Short> MIN_ARRAY_FUNC = new MinArray();
+    
+    private final static IFunction<Short[], Short> SUM_ARRAY_FUNC = new SumArray();
+    
+    private final static IFunction<Short[], Short> AVG_ARRAY_FUNC = new AvgArray();
 	
-	private final static Abs ABS_FUNC = new Abs();
+	private final static IFunction<Short, Short> ABS_FUNC = new Abs();
 	
 	
 	FnMathOfShort() {
@@ -87,6 +95,30 @@ public final class FnMathOfShort {
 
     public final IFunction<Iterable<Short>, Short> avg(RoundingMode roundingMode) {
         return new Avg(roundingMode);
+    }
+
+    public final IFunction<Short[], Short> maxArray() {
+        return MAX_ARRAY_FUNC;
+    }
+
+    public final IFunction<Short[], Short> minArray() {
+        return MIN_ARRAY_FUNC;
+    }
+
+    public final IFunction<Short[], Short> sumArray() {
+        return SUM_ARRAY_FUNC;
+    }
+
+    public final IFunction<Short[], Short> avgArray() {
+        return AVG_ARRAY_FUNC;
+    }
+
+    public final IFunction<Short[], Short> avgArray(MathContext mathContext) {
+        return new AvgArray(mathContext);
+    }
+
+    public final IFunction<Short[], Short> avgArray(RoundingMode roundingMode) {
+        return new AvgArray(roundingMode);
     }
 
     public final IFunction<Short, Short> abs() {
@@ -461,9 +493,140 @@ public final class FnMathOfShort {
 			if (this.mathContext != null) {
 				return Short.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).shortValue());
 			}
-			return Short.valueOf(sum.divide(BigDecimal.valueOf(countNotNull)).shortValue());
+			return Short.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR).shortValue());
 		}	
 	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+    
+    
+    static final class MaxArray extends AbstractNotNullFunction<Short[],Short> {
+
+        MaxArray() {
+            super();
+        }
+
+        @Override
+        protected Short notNullExecute(final Short[] input, final ExecCtx ctx) throws Exception {
+            if (input.length == 0) {
+                return null;
+            }
+            Short max = input[0];
+            for (Short number : input) {
+                if (number != null) {
+                    if (number.compareTo(max) > 0) {
+                        max = number;
+                    }
+                }
+            }   
+            return max;
+        }       
+    }
+    
+    static final class MinArray extends AbstractNotNullFunction<Short[],Short> {
+
+        MinArray() {
+            super();
+        }
+
+        @Override
+        protected Short notNullExecute(final Short[] input, final ExecCtx ctx) throws Exception {
+            if (input.length == 0) {
+                return null;
+            }
+            Short min = input[0];
+            for (Short number : input) {
+                if (number != null) {
+                    if (number.compareTo(min) < 0) {
+                        min = number;
+                    }
+                }
+            }   
+            return min;
+        }   
+    }
+    
+    static final class SumArray extends AbstractNotNullFunction<Short[],Short> {
+
+        SumArray() {
+            super();
+        }
+
+        @Override
+        protected Short notNullExecute(final Short[] input, final ExecCtx ctx) throws Exception {
+            BigDecimal sum = BigDecimal.valueOf(0);
+            for (Short number : input) {
+                if (number != null) {
+                    sum = sum.add(BigDecimal.valueOf(number.shortValue()));
+                }
+            }   
+            return Short.valueOf(sum.shortValue());
+        }   
+    }
+    
+    static final class AvgArray extends AbstractNotNullFunction<Short[],Short> {
+
+        private final RoundingMode roundingMode;
+        private final MathContext mathContext;
+        
+        AvgArray() {
+            super();
+            this.roundingMode = null;
+            this.mathContext = null;
+        }
+
+        AvgArray(RoundingMode roundingMode) {
+            super();
+            Validate.notNull(roundingMode, "RoundingMode can't be null");
+            this.roundingMode = roundingMode;   
+            this.mathContext = null;
+        }
+        
+        AvgArray(MathContext mathContext) {
+            super();
+            Validate.notNull(mathContext, "MathContext can't be null");
+            this.roundingMode = null;
+            this.mathContext = mathContext;
+        }
+        
+        @Override
+        protected Short notNullExecute(final Short[] input, final ExecCtx ctx) throws Exception {
+            
+            int countNotNull = 0;
+            BigDecimal sum = BigDecimal.valueOf(0);
+            for (Short number : input) {
+                if (number != null) {
+                    sum = sum.add(BigDecimal.valueOf(number.shortValue()));
+                    countNotNull++;
+                }
+            }   
+            if (this.roundingMode != null) {
+                return Short.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.roundingMode).shortValue());
+            }
+            if (this.mathContext != null) {
+                return Short.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).shortValue());
+            }
+            return Short.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR).shortValue());
+        }   
+    }
+	
+	
+	
+	
+	
+	
+	
 	
 	static final class Abs extends AbstractNullAsNullFunction<Short, Short> {
 
@@ -551,7 +714,7 @@ public final class FnMathOfShort {
 			} else if (this.mathContext != null) {
 				result = result.divide(BigDecimal.valueOf(this.divisor.shortValue()), this.mathContext);				
 			} else {
-				result = result.divide(BigDecimal.valueOf(this.divisor.shortValue()));	
+				result = result.divide(BigDecimal.valueOf(this.divisor.shortValue()), RoundingMode.FLOOR);	
 			}
 			return Short.valueOf(result.shortValue());
 		}		

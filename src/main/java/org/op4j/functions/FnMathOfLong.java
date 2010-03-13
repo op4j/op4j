@@ -34,15 +34,23 @@ import org.apache.commons.lang.Validate;
  */
 public final class FnMathOfLong {
 
-	private final static Max MAX_FUNC = new Max();
+	private final static IFunction<Iterable<Long>, Long> MAX_FUNC = new Max();
 	
-	private final static Min MIN_FUNC = new Min();
+	private final static IFunction<Iterable<Long>, Long> MIN_FUNC = new Min();
 	
-	private final static Sum SUM_FUNC = new Sum();
+	private final static IFunction<Iterable<Long>, Long> SUM_FUNC = new Sum();
 	
-	private final static Avg AVG_FUNC = new Avg();
+	private final static IFunction<Iterable<Long>, Long> AVG_FUNC = new Avg();
+
+    private final static IFunction<Long[], Long> MAX_ARRAY_FUNC = new MaxArray();
+    
+    private final static IFunction<Long[], Long> MIN_ARRAY_FUNC = new MinArray();
+    
+    private final static IFunction<Long[], Long> SUM_ARRAY_FUNC = new SumArray();
+    
+    private final static IFunction<Long[], Long> AVG_ARRAY_FUNC = new AvgArray();
 	
-	private final static Abs ABS_FUNC = new Abs();
+	private final static IFunction<Long, Long> ABS_FUNC = new Abs();
 	
 	
 	FnMathOfLong() {
@@ -87,6 +95,30 @@ public final class FnMathOfLong {
 
     public final IFunction<Iterable<Long>, Long> avg(RoundingMode roundingMode) {
         return new Avg(roundingMode);
+    }
+
+    public final IFunction<Long[], Long> maxArray() {
+        return MAX_ARRAY_FUNC;
+    }
+
+    public final IFunction<Long[], Long> minArray() {
+        return MIN_ARRAY_FUNC;
+    }
+
+    public final IFunction<Long[], Long> sumArray() {
+        return SUM_ARRAY_FUNC;
+    }
+
+    public final IFunction<Long[], Long> avgArray() {
+        return AVG_ARRAY_FUNC;
+    }
+
+    public final IFunction<Long[], Long> avgArray(MathContext mathContext) {
+        return new AvgArray(mathContext);
+    }
+
+    public final IFunction<Long[], Long> avgArray(RoundingMode roundingMode) {
+        return new AvgArray(roundingMode);
     }
 
     public final IFunction<Long, Long> abs() {
@@ -463,9 +495,147 @@ public final class FnMathOfLong {
 			if (this.mathContext != null) {
 				return Long.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).longValue());
 			}
-			return Long.valueOf(sum.divide(BigDecimal.valueOf(countNotNull)).longValue());
+			return Long.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR).longValue());
 		}
 	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+    
+    
+    static final class MaxArray extends AbstractNotNullFunction<Long[],Long> {
+
+        MaxArray() {
+            super();
+        }
+
+        @Override
+        protected Long notNullExecute(final Long[] input, final ExecCtx ctx) throws Exception {
+            if (input.length == 0) {
+                return null;
+            }
+            Long max = input[0];
+            for (Long number : input) {
+                if (number != null) {
+                    if (number.compareTo(max) > 0) {
+                        max = number;
+                    }
+                }
+            }   
+            return max;
+        }   
+    }
+    
+    static final class MinArray extends AbstractNotNullFunction<Long[],Long> {
+
+        MinArray() {
+            super();
+        }
+
+        @Override
+        protected Long notNullExecute(final Long[] input, final ExecCtx ctx) throws Exception {
+            if (input.length == 0) {
+                return null;
+            }
+            Long min = input[0];
+            for (Long number : input) {
+                if (number != null) {
+                    if (number.compareTo(min) < 0) {
+                        min = number;
+                    }
+                }
+            }   
+            return min;
+        }   
+    }
+    
+    static final class SumArray extends AbstractNotNullFunction<Long[],Long> {
+
+        SumArray() {
+            super();
+        }
+
+        @Override
+        protected Long notNullExecute(final Long[] input, final ExecCtx ctx) throws Exception {
+            BigDecimal sum = BigDecimal.valueOf(0);
+            for (Long number : input) {
+                if (number != null) {
+                    sum = sum.add(BigDecimal.valueOf(number.longValue()));
+                }
+            }   
+            return Long.valueOf(sum.longValue());
+        }   
+    }
+    
+    static final class AvgArray extends AbstractNotNullFunction<Long[],Long> {
+
+        private final RoundingMode roundingMode;
+        private final MathContext mathContext;
+        
+        AvgArray() {
+            super();
+            this.roundingMode = null;
+            this.mathContext = null;
+        }
+
+        AvgArray(RoundingMode roundingMode) {
+            super();
+            Validate.notNull(roundingMode, "RoundingMode can't be null");
+            this.roundingMode = roundingMode;   
+            this.mathContext = null;
+        }
+        
+        AvgArray(MathContext mathContext) {
+            super();
+            Validate.notNull(mathContext, "MathContext can't be null");
+            this.roundingMode = null;
+            this.mathContext = mathContext;
+        }
+        
+        @Override
+        protected Long notNullExecute(final Long[] input, final ExecCtx ctx) throws Exception {
+            
+            int countNotNull = 0;
+            BigDecimal sum = BigDecimal.valueOf(0);
+            for (Long number : input) {
+                if (number != null) {
+                    sum = sum.add(BigDecimal.valueOf(number.longValue()));
+                    countNotNull++;
+                }
+            }   
+            if (this.roundingMode != null) {
+                return Long.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.roundingMode).longValue());
+            }
+            if (this.mathContext != null) {
+                return Long.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).longValue());
+            }
+            return Long.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR).longValue());
+        }
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	static final class Abs extends AbstractNullAsNullFunction<Long, Long> {
 
@@ -559,7 +729,7 @@ public final class FnMathOfLong {
 			} else if (this.mathContext != null) {
 				result = result.divide(BigDecimal.valueOf(this.divisor.longValue()), this.mathContext);				
 			} else {
-				result = result.divide(BigDecimal.valueOf(this.divisor.longValue()));	
+				result = result.divide(BigDecimal.valueOf(this.divisor.longValue()), RoundingMode.FLOOR);	
 			}
 			return Long.valueOf(result.longValue());
 		}	

@@ -34,15 +34,23 @@ import org.apache.commons.lang.Validate;
  */
 public final class FnMathOfDouble {
 
-	private final static Max MAX_FUNC = new Max();
+	private final static IFunction<Iterable<Double>, Double> MAX_FUNC = new Max();
 	
-	private final static Min MIN_FUNC = new Min();
+	private final static IFunction<Iterable<Double>, Double> MIN_FUNC = new Min();
 	
-	private final static Sum SUM_FUNC = new Sum();
+	private final static IFunction<Iterable<Double>, Double> SUM_FUNC = new Sum();
 	
-	private final static Avg AVG_FUNC = new Avg();
+	private final static IFunction<Iterable<Double>, Double> AVG_FUNC = new Avg();
+
+    private final static IFunction<Double[], Double> MAX_ARRAY_FUNC = new MaxArray();
+    
+    private final static IFunction<Double[], Double> MIN_ARRAY_FUNC = new MinArray();
+    
+    private final static IFunction<Double[], Double> SUM_ARRAY_FUNC = new SumArray();
+    
+    private final static IFunction<Double[], Double> AVG_ARRAY_FUNC = new AvgArray();
 	
-	private final static Abs ABS_FUNC = new Abs();
+	private final static IFunction<Double, Double> ABS_FUNC = new Abs();
 	
 	
 	FnMathOfDouble() {
@@ -87,6 +95,30 @@ public final class FnMathOfDouble {
 
     public final IFunction<Iterable<Double>, Double> avg(RoundingMode roundingMode) {
         return new Avg(roundingMode);
+    }
+
+    public final IFunction<Double[], Double> maxArray() {
+        return MAX_ARRAY_FUNC;
+    }
+
+    public final IFunction<Double[], Double> minArray() {
+        return MIN_ARRAY_FUNC;
+    }
+
+    public final IFunction<Double[], Double> sumArray() {
+        return SUM_ARRAY_FUNC;
+    }
+
+    public final IFunction<Double[], Double> avgArray() {
+        return AVG_ARRAY_FUNC;
+    }
+
+    public final IFunction<Double[], Double> avgArray(MathContext mathContext) {
+        return new AvgArray(mathContext);
+    }
+
+    public final IFunction<Double[], Double> avgArray(RoundingMode roundingMode) {
+        return new AvgArray(roundingMode);
     }
 
     public final IFunction<Double, Double> round(MathContext mathContext) {
@@ -471,9 +503,138 @@ public final class FnMathOfDouble {
 			if (this.mathContext != null) {
 				return Double.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).doubleValue());
 			}
-			return Double.valueOf(sum.divide(BigDecimal.valueOf(countNotNull)).doubleValue());
+			return Double.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR).doubleValue());
 		}		
 	}
+
+	
+	
+	
+	
+	
+	
+	
+    
+    
+    static final class MaxArray extends AbstractNotNullFunction<Double[],Double> {
+
+        MaxArray() {
+            super();
+        }
+
+        @Override
+        protected Double notNullExecute(final Double[] input, final ExecCtx ctx) throws Exception {
+            if (input.length == 0) {
+                return null;
+            }
+            Double max = input[0];
+            for (Double number : input) {
+                if (number != null) {
+                    if (number.compareTo(max) > 0) {
+                        max = number;
+                    }
+                }
+            }   
+            return max;
+        }
+    }
+    
+    static final class MinArray extends AbstractNotNullFunction<Double[],Double> {
+
+        MinArray() {
+            super();
+        }
+
+        @Override
+        protected Double notNullExecute(final Double[] input, final ExecCtx ctx) throws Exception {
+            if (input.length == 0) {
+                return null;
+            }
+            Double min = input[0];
+            for (Double number : input) {
+                if (number != null) {
+                    if (number.compareTo(min) < 0) {
+                        min = number;
+                    }
+                }
+            }   
+            return min;
+        }   
+    }
+    
+    static final class SumArray extends AbstractNotNullFunction<Double[],Double> {
+
+        SumArray() {
+            super();
+        }
+
+        @Override
+        protected Double notNullExecute(final Double[] input, final ExecCtx ctx) throws Exception {
+            BigDecimal sum = BigDecimal.valueOf(0);
+            for (Double number : input) {
+                if (number != null) {
+                    sum = sum.add(BigDecimal.valueOf(number.doubleValue()));
+                }
+            }   
+            return Double.valueOf(sum.doubleValue());
+        }       
+    }
+    
+    static final class AvgArray extends AbstractNotNullFunction<Double[],Double> {
+
+        private final RoundingMode roundingMode;
+        private final MathContext mathContext;
+        
+        AvgArray() {
+            super();
+            this.roundingMode = null;
+            this.mathContext = null;
+        }
+
+        AvgArray(RoundingMode roundingMode) {
+            super();
+            Validate.notNull(roundingMode, "RoundingMode can't be null");
+            this.roundingMode = roundingMode;   
+            this.mathContext = null;
+        }
+        
+        AvgArray(MathContext mathContext) {
+            super();
+            Validate.notNull(mathContext, "MathContext can't be null");
+            this.roundingMode = null;
+            this.mathContext = mathContext;
+        }
+        
+        @Override
+        protected Double notNullExecute(final Double[] input, final ExecCtx ctx) throws Exception {
+            
+            int countNotNull = 0;
+            BigDecimal sum = BigDecimal.valueOf(0);
+            for (Double number : input) {
+                if (number != null) {
+                    sum = sum.add(BigDecimal.valueOf(number.doubleValue()));
+                    countNotNull++;
+                }
+            }   
+            if (this.roundingMode != null) {
+                return Double.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.roundingMode).doubleValue());
+            }
+            if (this.mathContext != null) {
+                return Double.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).doubleValue());
+            }
+            return Double.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR).doubleValue());
+        }       
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	static final class Round extends AbstractNullAsNullFunction<Double, Double> {
 
@@ -593,7 +754,7 @@ public final class FnMathOfDouble {
 			} else if (this.mathContext != null) {
 				result = result.divide(BigDecimal.valueOf(this.divisor.doubleValue()), this.mathContext);				
 			} else {
-				result = result.divide(BigDecimal.valueOf(this.divisor.doubleValue()));	
+				result = result.divide(BigDecimal.valueOf(this.divisor.doubleValue()), RoundingMode.FLOOR);	
 			}
 			return Double.valueOf(result.doubleValue());
 		}		

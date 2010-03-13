@@ -585,6 +585,8 @@ watch.start();
         
         System.out.println(Op.on(BigDecimal.valueOf(23.24)).exec(FnMath.ofBigDecimal().add(1.2)).get());
         
+        System.out.println(Op.onAll(30,30,40).exec(FnNumber.toBigInteger()).buildList().exec(FnMath.ofBigInteger().avg(RoundingMode.CEILING)).get());
+        
     }
     
     
