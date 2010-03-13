@@ -344,9 +344,6 @@ final class FnReduceOfNumber<T extends Number> {
             BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
             BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
             if (this.roundingMode != null) {
-System.out.println("bLEFT : " + bLeft);
-System.out.println("bRIGHT : " + bRight);
-System.out.println("RESULT: " + bLeft.divide(bRight, this.roundingMode));
                 return fromNumber(bLeft.divide(bRight, this.roundingMode).setScale(0, this.roundingMode));
             }
             if (this.mathContext != null) {

@@ -2,6 +2,7 @@ package org.op4j;
 
 
 import java.io.Serializable;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -20,6 +21,7 @@ import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.Call;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.FnArray;
+import org.op4j.functions.FnMath;
 import org.op4j.functions.FnNumber;
 import org.op4j.functions.FnString;
 import org.op4j.functions.Function;
@@ -696,6 +698,14 @@ public class AssortedTests extends TestCase {
         final List<String> result2 = Op.on(stringList).exec(fn).get();
         
         assertEquals(stringUpperList, result2);
+        
+    }
+    
+    
+    @Test
+    public void test31() throws Exception {
+
+        assertEquals(Integer.valueOf(4), Op.on(10).exec(FnMath.ofInteger().divideBy(3,RoundingMode.CEILING)).get());
         
     }
     

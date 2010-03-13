@@ -1,6 +1,5 @@
 
   Why do key an value operators have "ifIndex"?
-  Extract MAP function from target to FnArray+FnList+FnSet
   Create ANY and ALL functions for FnArray+FnList+FnSet
   
     
