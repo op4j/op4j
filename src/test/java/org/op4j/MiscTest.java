@@ -583,6 +583,8 @@ watch.start();
         
         System.out.println(Op.on(23.24).exec(FnMath.ofDouble().add(43)).get());
         
+        System.out.println(Op.on(BigDecimal.valueOf(23.24)).exec(FnMath.ofBigDecimal().add(1.2)).get());
+        
     }
     
     

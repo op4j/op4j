@@ -1,6 +1,5 @@
 
-  Math add and subtract and etc should allow Number parameters instead of only their same type.
-    -> Careful with precision!!
+  Math methods for arrays
   Why do key an value operators have "ifIndex"?
   
     
