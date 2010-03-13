@@ -5,35 +5,35 @@ import org.op4j.util.ValuePair;
 
 public final class FnReduceOfFloat extends FnReduceOf<Float> {
 
-    private static final IFunction<ValuePair<Float,Float>,Float> SUM = new Sum();
-    private static final IFunction<ValuePair<Float,Float>,Float> AVG = new Avg();
-    private static final IFunction<ValuePair<Float,Float>,Float> SUBT = new Subt();
-    private static final IFunction<ValuePair<Float,Float>,Float> MULT = new Mult();
-    private static final IFunction<ValuePair<Float,Float>,Float> DIV = new Div();
-    private static final IFunction<ValuePair<Float,Float>,Float> MOD = new Mod();
+    private static final IFunction<ValuePair<Number,Number>,Float> SUM = new Sum();
+    private static final IFunction<ValuePair<Number,Number>,Float> AVG = new Avg();
+    private static final IFunction<ValuePair<Number,Number>,Float> SUBT = new Subt();
+    private static final IFunction<ValuePair<Number,Number>,Float> MULT = new Mult();
+    private static final IFunction<ValuePair<Number,Number>,Float> DIV = new Div();
+    private static final IFunction<ValuePair<Number,Number>,Float> MOD = new Mod();
 
     
-    public IFunction<ValuePair<Float,Float>,Float> sum() {
+    public IFunction<ValuePair<Number,Number>,Float> sum() {
         return SUM;
     }
     
-    public IFunction<ValuePair<Float,Float>,Float> avg() {
+    public IFunction<ValuePair<Number,Number>,Float> avg() {
         return AVG;
     }
     
-    public IFunction<ValuePair<Float,Float>,Float> subt() {
+    public IFunction<ValuePair<Number,Number>,Float> subt() {
         return SUBT;
     }
     
-    public IFunction<ValuePair<Float,Float>,Float> mult() {
+    public IFunction<ValuePair<Number,Number>,Float> mult() {
         return MULT;
     }
     
-    public IFunction<ValuePair<Float,Float>,Float> div() {
+    public IFunction<ValuePair<Number,Number>,Float> div() {
         return DIV;
     }
     
-    public IFunction<ValuePair<Float,Float>,Float> mod() {
+    public IFunction<ValuePair<Number,Number>,Float> mod() {
         return MOD;
     }
     
@@ -44,126 +44,95 @@ public final class FnReduceOfFloat extends FnReduceOf<Float> {
     }
 
     
+
+    
+    static Float fromNumber(final Number number) {
+        return Float.valueOf(number.floatValue());
+    }
     
     
     
 
     
-    static final class Sum extends Reductor<Float,Float,Float> {
+    static final class Sum extends FnReduceOfNumber.Sum<Float> {
 
         public Sum() {
             super();
         }
 
         @Override
-        protected Float reduce(final Float left, final Float right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Float.valueOf(left.floatValue() + right.floatValue()); 
+        protected Float fromNumber(final Number number) {
+            return FnReduceOfFloat.fromNumber(number);
         }
         
     }
 
     
-    static final class Subt extends Reductor<Float,Float,Float> {
+    static final class Subt extends FnReduceOfNumber.Subt<Float> {
 
         public Subt() {
             super();
         }
 
         @Override
-        protected Float reduce(final Float left, final Float right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Float.valueOf(left.floatValue() - right.floatValue()); 
+        protected Float fromNumber(final Number number) {
+            return FnReduceOfFloat.fromNumber(number);
         }
         
     }
 
     
-    static final class Mult extends Reductor<Float,Float,Float> {
+    static final class Mult extends FnReduceOfNumber.Mult<Float> {
 
         public Mult() {
             super();
         }
 
         @Override
-        protected Float reduce(final Float left, final Float right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Float.valueOf(left.floatValue() * right.floatValue()); 
+        protected Float fromNumber(final Number number) {
+            return FnReduceOfFloat.fromNumber(number);
         }
         
     }
 
     
-    static final class Div extends Reductor<Float,Float,Float> {
+    static final class Div extends FnReduceOfNumber.Div<Float> {
 
         public Div() {
             super();
         }
 
         @Override
-        protected Float reduce(final Float left, final Float right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Float.valueOf(left.floatValue() / right.floatValue()); 
+        protected Float fromNumber(final Number number) {
+            return FnReduceOfFloat.fromNumber(number);
         }
         
     }
 
     
-    static final class Mod extends Reductor<Float,Float,Float> {
+    static final class Mod extends FnReduceOfNumber.Mod<Float> {
 
         public Mod() {
             super();
         }
 
         @Override
-        protected Float reduce(final Float left, final Float right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Float.valueOf(left.floatValue() % right.floatValue()); 
+        protected Float fromNumber(final Number number) {
+            return FnReduceOfFloat.fromNumber(number);
         }
         
     }
 
     
-    static final class Avg extends Reductor<Float,Float,Float> {
+    static final class Avg extends FnReduceOfNumber.Avg<Float> {
 
         public Avg() {
             super();
         }
 
         @Override
-        protected Float reduce(final Float left, final Float right, ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Float.valueOf((left.floatValue() + right.floatValue()) / 2); 
+        protected Float fromNumber(final Number number) {
+            return FnReduceOfFloat.fromNumber(number);
         }
         
     }

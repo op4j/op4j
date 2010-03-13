@@ -136,11 +136,11 @@ public interface ILevel0GenericUniqOperator<I,T>
     
     
     public ILevel0ArrayOperator<I,T> unfoldArrayOf(final Type<T> type, final IFunction<? super T,? extends T> function);
-    public ILevel0ArrayOperator<I,T> unfoldArrayOf(final Type<T> type, final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> unless);
+    public ILevel0ArrayOperator<I,T> unfoldArrayOf(final Type<T> type, final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> whileCondition);
     public ILevel0ListOperator<I,T> unfoldList(final IFunction<? super T,? extends T> function);
-    public ILevel0ListOperator<I,T> unfoldList(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> unless);
+    public ILevel0ListOperator<I,T> unfoldList(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> whileCondition);
     public ILevel0SetOperator<I,T> unfoldSet(final IFunction<? super T,? extends T> function);
-    public ILevel0SetOperator<I,T> unfoldSet(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> unless);
+    public ILevel0SetOperator<I,T> unfoldSet(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> whileCondition);
     
     
 }

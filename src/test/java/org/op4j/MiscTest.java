@@ -527,7 +527,7 @@ watch.start();
         System.out.println(Op.on(1).reduce(redFn1, "-->").get());
         
         
-        System.out.println(Arrays.asList(Op.on(2).exec(FnNumber.toBigInteger()).unfoldArrayOf(Types.BIG_INTEGER, FnMath.ofBigInteger().multiplyBy(BigInteger.valueOf(2)), Ognl.asBoolean("#index == 10")).get()));
+        System.out.println(Arrays.asList(Op.on(2).exec(FnNumber.toBigInteger()).unfoldArrayOf(Types.BIG_INTEGER, FnMath.ofBigInteger().multiplyBy(BigInteger.valueOf(2)), Ognl.asBoolean("#index < 10")).get()));
 
         Function<Class,List<Class>> fnImplemented = 
             Fn.on(Types.forClass(Class.class)).unfoldList(
@@ -573,6 +573,12 @@ watch.start();
         
         System.out.println(Op.onAll(213,23,142).reduce(fnSumBigDecimal, BigDecimal.valueOf(0)).get());
      
+        System.out.println(Op.onAll(213,23,142).reduce(FnReduce.ofBigInteger().sum(), BigInteger.valueOf(0)).get());
+        System.out.println(Op.onAll(213,23,142).exec(FnNumber.toBigDecimal()).reduce(FnReduce.ofBigDecimal().sum()).get());
+        
+    
+        System.out.println(ValuePair.TYPE_VALUE_PAIR_OF_UNKNOWN);
+        System.out.println(ValuePair.TYPE_VALUE_PAIR_OF(Types.STRING, Types.CALENDAR));
         
         
     }

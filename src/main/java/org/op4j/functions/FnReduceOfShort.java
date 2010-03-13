@@ -5,42 +5,38 @@ import org.op4j.util.ValuePair;
 
 public final class FnReduceOfShort extends FnReduceOf<Short> {
 
-    private static final IFunction<ValuePair<Short,Short>,Short> SUM = new Sum();
-    private static final IFunction<ValuePair<Short,Short>,Short> AVG = new Avg();
-    private static final IFunction<ValuePair<Short,Short>,Short> SUBT = new Subt();
-    private static final IFunction<ValuePair<Short,Short>,Short> MULT = new Mult();
-    private static final IFunction<ValuePair<Short,Short>,Short> DIV = new Div();
-    private static final IFunction<ValuePair<Short,Short>,Short> MOD = new Mod();
-    private static final IFunction<ValuePair<Short,Short>,Short> POW = new Pow();
+    private static final IFunction<ValuePair<Number,Number>,Short> SUM = new Sum();
+    private static final IFunction<ValuePair<Number,Number>,Short> AVG = new Avg();
+    private static final IFunction<ValuePair<Number,Number>,Short> SUBT = new Subt();
+    private static final IFunction<ValuePair<Number,Number>,Short> MULT = new Mult();
+    private static final IFunction<ValuePair<Number,Number>,Short> DIV = new Div();
+    private static final IFunction<ValuePair<Number,Number>,Short> MOD = new Mod();
 
     
-    public IFunction<ValuePair<Short,Short>,Short> sum() {
+    public IFunction<ValuePair<Number,Number>,Short> sum() {
         return SUM;
     }
     
-    public IFunction<ValuePair<Short,Short>,Short> avg() {
+    public IFunction<ValuePair<Number,Number>,Short> avg() {
         return AVG;
     }
     
-    public IFunction<ValuePair<Short,Short>,Short> subt() {
+    public IFunction<ValuePair<Number,Number>,Short> subt() {
         return SUBT;
     }
     
-    public IFunction<ValuePair<Short,Short>,Short> mult() {
+    public IFunction<ValuePair<Number,Number>,Short> mult() {
         return MULT;
     }
     
-    public IFunction<ValuePair<Short,Short>,Short> div() {
+    public IFunction<ValuePair<Number,Number>,Short> div() {
         return DIV;
     }
     
-    public IFunction<ValuePair<Short,Short>,Short> mod() {
+    public IFunction<ValuePair<Number,Number>,Short> mod() {
         return MOD;
     }
     
-    public IFunction<ValuePair<Short,Short>,Short> pow() {
-        return POW;
-    }
     
 
     
@@ -50,145 +46,95 @@ public final class FnReduceOfShort extends FnReduceOf<Short> {
 
     
     
+    static Short fromNumber(final Number number) {
+        return Short.valueOf(number.shortValue());
+    }
+    
     
     
 
     
-    static final class Sum extends Reductor<Short,Short,Short> {
+    static final class Sum extends FnReduceOfNumber.Sum<Short> {
 
         public Sum() {
             super();
         }
 
         @Override
-        protected Short reduce(final Short left, final Short right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Short.valueOf((short)(left.shortValue() + right.shortValue())); 
+        protected Short fromNumber(final Number number) {
+            return FnReduceOfShort.fromNumber(number);
         }
         
     }
 
     
-    static final class Subt extends Reductor<Short,Short,Short> {
+    static final class Subt extends FnReduceOfNumber.Subt<Short> {
 
         public Subt() {
             super();
         }
 
         @Override
-        protected Short reduce(final Short left, final Short right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Short.valueOf((short)(left.shortValue() - right.shortValue())); 
+        protected Short fromNumber(final Number number) {
+            return FnReduceOfShort.fromNumber(number);
         }
         
     }
 
     
-    static final class Mult extends Reductor<Short,Short,Short> {
+    static final class Mult extends FnReduceOfNumber.Mult<Short> {
 
         public Mult() {
             super();
         }
 
         @Override
-        protected Short reduce(final Short left, final Short right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Short.valueOf((short)(left.shortValue() * right.shortValue())); 
+        protected Short fromNumber(final Number number) {
+            return FnReduceOfShort.fromNumber(number);
         }
         
     }
 
     
-    static final class Div extends Reductor<Short,Short,Short> {
+    static final class Div extends FnReduceOfNumber.Div<Short> {
 
         public Div() {
             super();
         }
 
         @Override
-        protected Short reduce(final Short left, final Short right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Short.valueOf((short)(left.shortValue() / right.shortValue())); 
+        protected Short fromNumber(final Number number) {
+            return FnReduceOfShort.fromNumber(number);
         }
         
     }
 
     
-    static final class Mod extends Reductor<Short,Short,Short> {
+    static final class Mod extends FnReduceOfNumber.Mod<Short> {
 
         public Mod() {
             super();
         }
 
         @Override
-        protected Short reduce(final Short left, final Short right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Short.valueOf((short)(left.shortValue() % right.shortValue())); 
+        protected Short fromNumber(final Number number) {
+            return FnReduceOfShort.fromNumber(number);
         }
         
     }
 
     
-    static final class Pow extends Reductor<Short,Short,Short> {
-
-        public Pow() {
-            super();
-        }
-
-        @Override
-        protected Short reduce(final Short left, final Short right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Short.valueOf((short)(left.shortValue() ^ right.shortValue())); 
-        }
-        
-    }
 
     
-    static final class Avg extends Reductor<Short,Short,Short> {
+    static final class Avg extends FnReduceOfNumber.Avg<Short> {
 
         public Avg() {
             super();
         }
 
         @Override
-        protected Short reduce(final Short left, final Short right, ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Short.valueOf((short)((left.shortValue() + right.shortValue()) / 2L)); 
+        protected Short fromNumber(final Number number) {
+            return FnReduceOfShort.fromNumber(number);
         }
         
     }

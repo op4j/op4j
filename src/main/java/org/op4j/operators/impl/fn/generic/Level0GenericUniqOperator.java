@@ -296,8 +296,8 @@ public final class Level0GenericUniqOperator<I,T> extends AbstractOperator
         return new Level0ArrayOperator<I, T>(type, getTarget().execute(FnArray.of(type).unfold(function)));
     }
 
-    public Level0ArrayOperator<I, T> unfoldArrayOf(final Type<T> type, final IFunction<? super T, ? extends T> function, final IFunction<? super T, Boolean> unless) {
-        return new Level0ArrayOperator<I, T>(type, getTarget().execute(FnArray.of(type).unfold(function, unless)));
+    public Level0ArrayOperator<I, T> unfoldArrayOf(final Type<T> type, final IFunction<? super T, ? extends T> function, final IFunction<? super T, Boolean> whileCondition) {
+        return new Level0ArrayOperator<I, T>(type, getTarget().execute(FnArray.of(type).unfold(function, whileCondition)));
     }
 
     @SuppressWarnings("unchecked")
@@ -306,8 +306,8 @@ public final class Level0GenericUniqOperator<I,T> extends AbstractOperator
     }
 
     @SuppressWarnings("unchecked")
-    public Level0ListOperator<I, T> unfoldList(final IFunction<? super T, ? extends T> function, final IFunction<? super T, Boolean> unless) {
-        return new Level0ListOperator<I, T>(getTarget().execute(FnList.of((Type<T>)Types.OBJECT).unfold(function, unless)));
+    public Level0ListOperator<I, T> unfoldList(final IFunction<? super T, ? extends T> function, final IFunction<? super T, Boolean> whileCondition) {
+        return new Level0ListOperator<I, T>(getTarget().execute(FnList.of((Type<T>)Types.OBJECT).unfold(function, whileCondition)));
     }
 
     @SuppressWarnings("unchecked")
@@ -316,8 +316,8 @@ public final class Level0GenericUniqOperator<I,T> extends AbstractOperator
     }
 
     @SuppressWarnings("unchecked")
-    public Level0SetOperator<I, T> unfoldSet(final IFunction<? super T, ? extends T> function, final IFunction<? super T, Boolean> unless) {
-        return new Level0SetOperator<I, T>(getTarget().execute(FnSet.of((Type<T>)Types.OBJECT).unfold(function, unless)));
+    public Level0SetOperator<I, T> unfoldSet(final IFunction<? super T, ? extends T> function, final IFunction<? super T, Boolean> whileCondition) {
+        return new Level0SetOperator<I, T>(getTarget().execute(FnSet.of((Type<T>)Types.OBJECT).unfold(function, whileCondition)));
     }
     
     

@@ -6,42 +6,38 @@ import org.op4j.util.ValuePair;
 
 public final class FnReduceOfInteger extends FnReduceOf<Integer> {
 
-    private static final IFunction<ValuePair<Integer,Integer>,Integer> SUM = new Sum();
-    private static final IFunction<ValuePair<Integer,Integer>,Integer> AVG = new Avg();
-    private static final IFunction<ValuePair<Integer,Integer>,Integer> SUBT = new Subt();
-    private static final IFunction<ValuePair<Integer,Integer>,Integer> MULT = new Mult();
-    private static final IFunction<ValuePair<Integer,Integer>,Integer> DIV = new Div();
-    private static final IFunction<ValuePair<Integer,Integer>,Integer> MOD = new Mod();
-    private static final IFunction<ValuePair<Integer,Integer>,Integer> POW = new Pow();
+    private static final IFunction<ValuePair<Number,Number>,Integer> SUM = new Sum();
+    private static final IFunction<ValuePair<Number,Number>,Integer> AVG = new Avg();
+    private static final IFunction<ValuePair<Number,Number>,Integer> SUBT = new Subt();
+    private static final IFunction<ValuePair<Number,Number>,Integer> MULT = new Mult();
+    private static final IFunction<ValuePair<Number,Number>,Integer> DIV = new Div();
+    private static final IFunction<ValuePair<Number,Number>,Integer> MOD = new Mod();
 
     
-    public IFunction<ValuePair<Integer,Integer>,Integer> sum() {
+    public IFunction<ValuePair<Number,Number>,Integer> sum() {
         return SUM;
     }
     
-    public IFunction<ValuePair<Integer,Integer>,Integer> avg() {
+    public IFunction<ValuePair<Number,Number>,Integer> avg() {
         return AVG;
     }
     
-    public IFunction<ValuePair<Integer,Integer>,Integer> subt() {
+    public IFunction<ValuePair<Number,Number>,Integer> subt() {
         return SUBT;
     }
     
-    public IFunction<ValuePair<Integer,Integer>,Integer> mult() {
+    public IFunction<ValuePair<Number,Number>,Integer> mult() {
         return MULT;
     }
     
-    public IFunction<ValuePair<Integer,Integer>,Integer> div() {
+    public IFunction<ValuePair<Number,Number>,Integer> div() {
         return DIV;
     }
     
-    public IFunction<ValuePair<Integer,Integer>,Integer> mod() {
+    public IFunction<ValuePair<Number,Number>,Integer> mod() {
         return MOD;
     }
     
-    public IFunction<ValuePair<Integer,Integer>,Integer> pow() {
-        return POW;
-    }
     
 
     
@@ -50,146 +46,96 @@ public final class FnReduceOfInteger extends FnReduceOf<Integer> {
     }
 
     
+
+    
+    static Integer fromNumber(final Number number) {
+        return Integer.valueOf(number.intValue());
+    }
     
     
 
     
     
-    static final class Sum extends Reductor<Integer,Integer,Integer> {
+    static final class Sum extends FnReduceOfNumber.Sum<Integer> {
 
         public Sum() {
             super();
         }
 
         @Override
-        protected Integer reduce(final Integer left, final Integer right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Integer.valueOf(left.intValue() + right.intValue()); 
+        protected Integer fromNumber(final Number number) {
+            return FnReduceOfInteger.fromNumber(number);
         }
         
     }
 
     
-    static final class Subt extends Reductor<Integer,Integer,Integer> {
+    static final class Subt extends FnReduceOfNumber.Subt<Integer> {
 
         public Subt() {
             super();
         }
 
         @Override
-        protected Integer reduce(final Integer left, final Integer right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Integer.valueOf(left.intValue() - right.intValue()); 
+        protected Integer fromNumber(final Number number) {
+            return FnReduceOfInteger.fromNumber(number);
         }
         
     }
 
     
-    static final class Mult extends Reductor<Integer,Integer,Integer> {
+    static final class Mult extends FnReduceOfNumber.Mult<Integer> {
 
         public Mult() {
             super();
         }
 
         @Override
-        protected Integer reduce(final Integer left, final Integer right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Integer.valueOf(left.intValue() * right.intValue()); 
+        protected Integer fromNumber(final Number number) {
+            return FnReduceOfInteger.fromNumber(number);
         }
         
     }
 
     
-    static final class Div extends Reductor<Integer,Integer,Integer> {
+    static final class Div extends FnReduceOfNumber.Div<Integer> {
 
         public Div() {
             super();
         }
 
         @Override
-        protected Integer reduce(final Integer left, final Integer right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Integer.valueOf(left.intValue() / right.intValue()); 
+        protected Integer fromNumber(final Number number) {
+            return FnReduceOfInteger.fromNumber(number);
         }
         
     }
 
     
-    static final class Mod extends Reductor<Integer,Integer,Integer> {
+    static final class Mod extends FnReduceOfNumber.Mod<Integer> {
 
         public Mod() {
             super();
         }
 
         @Override
-        protected Integer reduce(final Integer left, final Integer right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Integer.valueOf(left.intValue() % right.intValue()); 
+        protected Integer fromNumber(final Number number) {
+            return FnReduceOfInteger.fromNumber(number);
         }
         
     }
 
     
-    static final class Pow extends Reductor<Integer,Integer,Integer> {
-
-        public Pow() {
-            super();
-        }
-
-        @Override
-        protected Integer reduce(final Integer left, final Integer right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Integer.valueOf(left.intValue() ^ right.intValue()); 
-        }
-        
-    }
-
     
-    static final class Avg extends Reductor<Integer,Integer,Integer> {
+    static final class Avg extends FnReduceOfNumber.Avg<Integer> {
 
         public Avg() {
             super();
         }
 
         @Override
-        protected Integer reduce(final Integer left, final Integer right, ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Integer.valueOf((left.intValue() + right.intValue()) / 2); 
+        protected Integer fromNumber(final Number number) {
+            return FnReduceOfInteger.fromNumber(number);
         }
         
     }

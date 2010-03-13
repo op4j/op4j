@@ -1,5 +1,4 @@
 
-  Maybe add some "super" and "extends" to reduce and unfold operations in FnArray and such?
   Math add and subtract and etc should allow Number parameters instead of only their same type.
     -> Careful with precision!!
   Why do key an value operators have "ifIndex"?

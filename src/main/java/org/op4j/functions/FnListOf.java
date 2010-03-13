@@ -34,7 +34,6 @@ import java.util.Set;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.op4j.exceptions.ExecutionException;
-import org.op4j.functions.FnArrayOf.ReduceInitialValue;
 import org.op4j.util.ExecCtxImpl;
 import org.op4j.util.ValuePair;
 
@@ -180,8 +179,8 @@ public class FnListOf<T> {
     
     
     
-    public final IFunction<T,List<T>> unfold(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> unless) {
-        return new Unfold<T>(function, unless);
+    public final IFunction<T,List<T>> unfold(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> whileCondition) {
+        return new Unfold<T>(function, whileCondition);
     }
     
     public final IFunction<T,List<T>> unfold(final IFunction<? super T,? extends T> function) {
@@ -933,14 +932,14 @@ public class FnListOf<T> {
     static final class Unfold<T> extends AbstractNotNullFunction<T,List<T>> {
         
         private final IFunction<? super T,? extends T> function;
-        private final IFunction<? super T,Boolean> unless;
+        private final IFunction<? super T,Boolean> whileCondition;
 
         
-        public Unfold(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> unless) {
+        public Unfold(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> whileCondition) {
             super();
             Validate.notNull(function, "Unfold function cannot be null");
             this.function = function;
-            this.unless = unless;
+            this.whileCondition = whileCondition;
         }
 
         @Override
@@ -952,7 +951,7 @@ public class FnListOf<T> {
             T currentTarget = input;
             ExecCtx currentCtx = new ExecCtxImpl(Integer.valueOf(index));
 
-            if (this.unless == null) {
+            if (this.whileCondition == null) {
                 
                 while (currentTarget != null) {
                     resultList.add(currentTarget);
@@ -963,18 +962,21 @@ public class FnListOf<T> {
                 
             } else {
                 
-                Boolean unlessResult = null;
-                resultList.add(currentTarget);
-                do {
+                Boolean whileResult = this.whileCondition.execute(currentTarget, currentCtx);
+                if (whileResult == null) {
+                    throw new ExecutionException("Unless function returned null!");
+                }
+
+                while (whileResult.booleanValue()) {
+                    resultList.add(currentTarget);
                     index++;
                     currentCtx = new ExecCtxImpl(Integer.valueOf(index));
                     currentTarget = this.function.execute(currentTarget, currentCtx);
-                    resultList.add(currentTarget);
-                    unlessResult = this.unless.execute(currentTarget, currentCtx);
-                    if (unlessResult == null) {
+                    whileResult = this.whileCondition.execute(currentTarget, currentCtx);
+                    if (whileResult == null) {
                         throw new ExecutionException("Unless function returned null!");
                     }
-                } while (!unlessResult.booleanValue());
+                }
                 
             }
             
@@ -994,6 +996,11 @@ public class FnListOf<T> {
     
     static final class Reduce<T> extends AbstractNotNullFunction<List<T>,T> {
         
+        /*
+         * Result has to be "? extends T" instead of "X extends T" because this function 
+         * cannot change the operator's type. This is because, if the original structure only
+         * has one element, that element has to be returned (and it is of type T, not X).
+         */
         private final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> function;
 
         

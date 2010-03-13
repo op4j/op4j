@@ -4,7 +4,8 @@
 - FnMathOfX methods are no longer static.
 - org.op4j.target.ExecCtxImpl is now public and was moved to org.op4j.util.ExecCtxImpl.
 - Created org.op4j.util.ValuePair in order to support Binary Operation Functions.
-- Created "FnReduce" functions and "reduce" actions for arrays, lists, sets and generic multiple operators.
+- Created "reduce" actions for arrays, lists, sets and generic multiple operators.
+- Created "FnReduce" function class with functions ready to be used in "reduce" operations.
 - Created unfold functions and actions for generic unique operators.
 
 

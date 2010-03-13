@@ -5,42 +5,38 @@ import org.op4j.util.ValuePair;
 
 public final class FnReduceOfByte extends FnReduceOf<Byte> {
 
-    private static final IFunction<ValuePair<Byte,Byte>,Byte> SUM = new Sum();
-    private static final IFunction<ValuePair<Byte,Byte>,Byte> AVG = new Avg();
-    private static final IFunction<ValuePair<Byte,Byte>,Byte> SUBT = new Subt();
-    private static final IFunction<ValuePair<Byte,Byte>,Byte> MULT = new Mult();
-    private static final IFunction<ValuePair<Byte,Byte>,Byte> DIV = new Div();
-    private static final IFunction<ValuePair<Byte,Byte>,Byte> MOD = new Mod();
-    private static final IFunction<ValuePair<Byte,Byte>,Byte> POW = new Pow();
+    private static final IFunction<ValuePair<Number,Number>,Byte> SUM = new Sum();
+    private static final IFunction<ValuePair<Number,Number>,Byte> AVG = new Avg();
+    private static final IFunction<ValuePair<Number,Number>,Byte> SUBT = new Subt();
+    private static final IFunction<ValuePair<Number,Number>,Byte> MULT = new Mult();
+    private static final IFunction<ValuePair<Number,Number>,Byte> DIV = new Div();
+    private static final IFunction<ValuePair<Number,Number>,Byte> MOD = new Mod();
 
     
-    public IFunction<ValuePair<Byte,Byte>,Byte> sum() {
+    public IFunction<ValuePair<Number,Number>,Byte> sum() {
         return SUM;
     }
     
-    public IFunction<ValuePair<Byte,Byte>,Byte> avg() {
+    public IFunction<ValuePair<Number,Number>,Byte> avg() {
         return AVG;
     }
     
-    public IFunction<ValuePair<Byte,Byte>,Byte> subt() {
+    public IFunction<ValuePair<Number,Number>,Byte> subt() {
         return SUBT;
     }
     
-    public IFunction<ValuePair<Byte,Byte>,Byte> mult() {
+    public IFunction<ValuePair<Number,Number>,Byte> mult() {
         return MULT;
     }
     
-    public IFunction<ValuePair<Byte,Byte>,Byte> div() {
+    public IFunction<ValuePair<Number,Number>,Byte> div() {
         return DIV;
     }
     
-    public IFunction<ValuePair<Byte,Byte>,Byte> mod() {
+    public IFunction<ValuePair<Number,Number>,Byte> mod() {
         return MOD;
     }
     
-    public IFunction<ValuePair<Byte,Byte>,Byte> pow() {
-        return POW;
-    }
     
 
     
@@ -52,142 +48,92 @@ public final class FnReduceOfByte extends FnReduceOf<Byte> {
     
     
     
+    static Byte fromNumber(final Number number) {
+        return Byte.valueOf(number.byteValue());
+    }
     
-    static final class Sum extends Reductor<Byte,Byte,Byte> {
+    
+    
+    
+    static final class Sum extends FnReduceOfNumber.Sum<Byte> {
 
         public Sum() {
             super();
         }
 
         @Override
-        protected Byte reduce(final Byte left, final Byte right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Byte.valueOf((byte)(left.byteValue() + right.byteValue())); 
+        protected Byte fromNumber(final Number number) {
+            return FnReduceOfByte.fromNumber(number);
         }
         
     }
 
     
-    static final class Subt extends Reductor<Byte,Byte,Byte> {
+    static final class Subt extends FnReduceOfNumber.Subt<Byte> {
 
         public Subt() {
             super();
         }
 
         @Override
-        protected Byte reduce(final Byte left, final Byte right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Byte.valueOf((byte)(left.byteValue() - right.byteValue())); 
+        protected Byte fromNumber(final Number number) {
+            return FnReduceOfByte.fromNumber(number);
         }
         
     }
 
     
-    static final class Mult extends Reductor<Byte,Byte,Byte> {
+    static final class Mult extends FnReduceOfNumber.Mult<Byte> {
 
         public Mult() {
             super();
         }
 
         @Override
-        protected Byte reduce(final Byte left, final Byte right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Byte.valueOf((byte)(left.byteValue() * right.byteValue())); 
+        protected Byte fromNumber(final Number number) {
+            return FnReduceOfByte.fromNumber(number);
         }
         
     }
 
     
-    static final class Div extends Reductor<Byte,Byte,Byte> {
+    static final class Div extends FnReduceOfNumber.Div<Byte> {
 
         public Div() {
             super();
         }
 
         @Override
-        protected Byte reduce(final Byte left, final Byte right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Byte.valueOf((byte)(left.byteValue() / right.byteValue())); 
+        protected Byte fromNumber(final Number number) {
+            return FnReduceOfByte.fromNumber(number);
         }
         
     }
 
     
-    static final class Mod extends Reductor<Byte,Byte,Byte> {
+    static final class Mod extends FnReduceOfNumber.Mod<Byte> {
 
         public Mod() {
             super();
         }
 
         @Override
-        protected Byte reduce(final Byte left, final Byte right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Byte.valueOf((byte)(left.byteValue() % right.byteValue())); 
+        protected Byte fromNumber(final Number number) {
+            return FnReduceOfByte.fromNumber(number);
         }
         
     }
 
     
-    static final class Pow extends Reductor<Byte,Byte,Byte> {
-
-        public Pow() {
-            super();
-        }
-
-        @Override
-        protected Byte reduce(final Byte left, final Byte right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Byte.valueOf((byte)(left.byteValue() ^ right.byteValue())); 
-        }
-        
-    }
-
-    
-    static final class Avg extends Reductor<Byte,Byte,Byte> {
+    static final class Avg extends FnReduceOfNumber.Avg<Byte> {
 
         public Avg() {
             super();
         }
 
         @Override
-        protected Byte reduce(final Byte left, final Byte right, ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Byte.valueOf((byte)((left.byteValue() + right.byteValue()) / 2L)); 
+        protected Byte fromNumber(final Number number) {
+            return FnReduceOfByte.fromNumber(number);
         }
         
     }

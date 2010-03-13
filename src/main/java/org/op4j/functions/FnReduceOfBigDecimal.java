@@ -1,41 +1,42 @@
 package org.op4j.functions;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 import org.javaruntype.type.Types;
 import org.op4j.util.ValuePair;
 
 public final class FnReduceOfBigDecimal extends FnReduceOf<BigDecimal> {
 
-    private static final IFunction<ValuePair<BigDecimal,BigDecimal>,BigDecimal> SUM = new Sum();
-    private static final IFunction<ValuePair<BigDecimal,BigDecimal>,BigDecimal> AVG = new Avg();
-    private static final IFunction<ValuePair<BigDecimal,BigDecimal>,BigDecimal> SUBT = new Subt();
-    private static final IFunction<ValuePair<BigDecimal,BigDecimal>,BigDecimal> MULT = new Mult();
-    private static final IFunction<ValuePair<BigDecimal,BigDecimal>,BigDecimal> DIV = new Div();
-    private static final IFunction<ValuePair<BigDecimal,BigDecimal>,BigDecimal> MOD = new Mod();
+    private static final IFunction<ValuePair<Number,Number>,BigDecimal> SUM = new Sum();
+    private static final IFunction<ValuePair<Number,Number>,BigDecimal> AVG = new Avg();
+    private static final IFunction<ValuePair<Number,Number>,BigDecimal> SUBT = new Subt();
+    private static final IFunction<ValuePair<Number,Number>,BigDecimal> MULT = new Mult();
+    private static final IFunction<ValuePair<Number,Number>,BigDecimal> DIV = new Div();
+    private static final IFunction<ValuePair<Number,Number>,BigDecimal> MOD = new Mod();
 
     
-    public IFunction<ValuePair<BigDecimal,BigDecimal>,BigDecimal> sum() {
+    public IFunction<ValuePair<Number,Number>,BigDecimal> sum() {
         return SUM;
     }
     
-    public IFunction<ValuePair<BigDecimal,BigDecimal>,BigDecimal> avg() {
+    public IFunction<ValuePair<Number,Number>,BigDecimal> avg() {
         return AVG;
     }
     
-    public IFunction<ValuePair<BigDecimal,BigDecimal>,BigDecimal> subt() {
+    public IFunction<ValuePair<Number,Number>,BigDecimal> subt() {
         return SUBT;
     }
     
-    public IFunction<ValuePair<BigDecimal,BigDecimal>,BigDecimal> mult() {
+    public IFunction<ValuePair<Number,Number>,BigDecimal> mult() {
         return MULT;
     }
     
-    public IFunction<ValuePair<BigDecimal,BigDecimal>,BigDecimal> div() {
+    public IFunction<ValuePair<Number,Number>,BigDecimal> div() {
         return DIV;
     }
     
-    public IFunction<ValuePair<BigDecimal,BigDecimal>,BigDecimal> mod() {
+    public IFunction<ValuePair<Number,Number>,BigDecimal> mod() {
         return MOD;
     }
     
@@ -47,124 +48,99 @@ public final class FnReduceOfBigDecimal extends FnReduceOf<BigDecimal> {
 
     
     
+    static BigDecimal fromNumber(final Number number) {
+        if (number instanceof BigDecimal) {
+            return (BigDecimal) number;
+        }
+        if (number instanceof BigInteger) {
+            return new BigDecimal((BigInteger)number);
+        }
+        return BigDecimal.valueOf(number.doubleValue());
+    }
     
     
     
-    static final class Sum extends Reductor<BigDecimal,BigDecimal,BigDecimal> {
+    
+    
+    static final class Sum extends FnReduceOfNumber.Sum<BigDecimal> {
 
         public Sum() {
             super();
         }
 
         @Override
-        protected BigDecimal reduce(final BigDecimal left, final BigDecimal right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return left.add(right); 
+        protected BigDecimal fromNumber(final Number number) {
+            return FnReduceOfBigDecimal.fromNumber(number);
         }
         
     }
 
     
-    static final class Subt extends Reductor<BigDecimal,BigDecimal,BigDecimal> {
+    static final class Subt extends FnReduceOfNumber.Subt<BigDecimal> {
 
         public Subt() {
             super();
         }
 
         @Override
-        protected BigDecimal reduce(final BigDecimal left, final BigDecimal right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return left.subtract(right); 
+        protected BigDecimal fromNumber(final Number number) {
+            return FnReduceOfBigDecimal.fromNumber(number);
         }
         
     }
 
     
-    static final class Mult extends Reductor<BigDecimal,BigDecimal,BigDecimal> {
+    static final class Mult extends FnReduceOfNumber.Mult<BigDecimal> {
 
         public Mult() {
             super();
         }
 
         @Override
-        protected BigDecimal reduce(final BigDecimal left, final BigDecimal right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return left.multiply(right); 
+        protected BigDecimal fromNumber(final Number number) {
+            return FnReduceOfBigDecimal.fromNumber(number);
         }
         
     }
 
     
-    static final class Div extends Reductor<BigDecimal,BigDecimal,BigDecimal> {
+    static final class Div extends FnReduceOfNumber.Div<BigDecimal> {
 
         public Div() {
             super();
         }
 
         @Override
-        protected BigDecimal reduce(final BigDecimal left, final BigDecimal right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return left.divide(right); 
+        protected BigDecimal fromNumber(final Number number) {
+            return FnReduceOfBigDecimal.fromNumber(number);
         }
         
     }
 
     
-    static final class Mod extends Reductor<BigDecimal,BigDecimal,BigDecimal> {
+    static final class Mod extends FnReduceOfNumber.Mod<BigDecimal> {
 
         public Mod() {
             super();
         }
 
         @Override
-        protected BigDecimal reduce(final BigDecimal left, final BigDecimal right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return left.remainder(right); 
+        protected BigDecimal fromNumber(final Number number) {
+            return FnReduceOfBigDecimal.fromNumber(number);
         }
         
     }
 
     
-    static final class Avg extends Reductor<BigDecimal,BigDecimal,BigDecimal> {
+    static final class Avg extends FnReduceOfNumber.Avg<BigDecimal> {
 
         public Avg() {
             super();
         }
 
         @Override
-        protected BigDecimal reduce(final BigDecimal left, final BigDecimal right, ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return left.add(right).divide(BigDecimal.valueOf(2L)); 
+        protected BigDecimal fromNumber(final Number number) {
+            return FnReduceOfBigDecimal.fromNumber(number);
         }
         
     }

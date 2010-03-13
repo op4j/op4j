@@ -5,36 +5,36 @@ import org.op4j.util.ValuePair;
 
 public final class FnReduceOfDouble extends FnReduceOf<Double> {
 
-    private static final IFunction<ValuePair<Double,Double>,Double> SUM = new Sum();
-    private static final IFunction<ValuePair<Double,Double>,Double> AVG = new Avg();
-    private static final IFunction<ValuePair<Double,Double>,Double> SUBT = new Subt();
-    private static final IFunction<ValuePair<Double,Double>,Double> MULT = new Mult();
-    private static final IFunction<ValuePair<Double,Double>,Double> DIV = new Div();
-    private static final IFunction<ValuePair<Double,Double>,Double> MOD = new Mod();
+    private static final IFunction<ValuePair<Number,Number>,Double> SUM = new Sum();
+    private static final IFunction<ValuePair<Number,Number>,Double> AVG = new Avg();
+    private static final IFunction<ValuePair<Number,Number>,Double> SUBT = new Subt();
+    private static final IFunction<ValuePair<Number,Number>,Double> MULT = new Mult();
+    private static final IFunction<ValuePair<Number,Number>,Double> DIV = new Div();
+    private static final IFunction<ValuePair<Number,Number>,Double> MOD = new Mod();
 
     
 
-    public IFunction<ValuePair<Double,Double>,Double> sum() {
+    public IFunction<ValuePair<Number,Number>,Double> sum() {
         return SUM;
     }
     
-    public IFunction<ValuePair<Double,Double>,Double> avg() {
+    public IFunction<ValuePair<Number,Number>,Double> avg() {
         return AVG;
     }
     
-    public IFunction<ValuePair<Double,Double>,Double> subt() {
+    public IFunction<ValuePair<Number,Number>,Double> subt() {
         return SUBT;
     }
     
-    public IFunction<ValuePair<Double,Double>,Double> mult() {
+    public IFunction<ValuePair<Number,Number>,Double> mult() {
         return MULT;
     }
     
-    public IFunction<ValuePair<Double,Double>,Double> div() {
+    public IFunction<ValuePair<Number,Number>,Double> div() {
         return DIV;
     }
     
-    public IFunction<ValuePair<Double,Double>,Double> mod() {
+    public IFunction<ValuePair<Number,Number>,Double> mod() {
         return MOD;
     }
     
@@ -46,125 +46,93 @@ public final class FnReduceOfDouble extends FnReduceOf<Double> {
 
     
     
+    static Double fromNumber(final Number number) {
+        return Double.valueOf(number.doubleValue());
+    }
+    
     
     
 
     
-    static final class Sum extends Reductor<Double,Double,Double> {
+    static final class Sum extends FnReduceOfNumber.Sum<Double> {
 
         public Sum() {
             super();
         }
 
         @Override
-        protected Double reduce(final Double left, final Double right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Double.valueOf(left.doubleValue() + right.doubleValue()); 
+        protected Double fromNumber(final Number number) {
+            return FnReduceOfDouble.fromNumber(number);
         }
         
     }
 
     
-    static final class Subt extends Reductor<Double,Double,Double> {
+    static final class Subt extends FnReduceOfNumber.Subt<Double> {
 
         public Subt() {
             super();
         }
 
         @Override
-        protected Double reduce(final Double left, final Double right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Double.valueOf(left.doubleValue() - right.doubleValue()); 
+        protected Double fromNumber(final Number number) {
+            return FnReduceOfDouble.fromNumber(number);
         }
         
     }
 
     
-    static final class Mult extends Reductor<Double,Double,Double> {
+    static final class Mult extends FnReduceOfNumber.Mult<Double> {
 
         public Mult() {
             super();
         }
 
         @Override
-        protected Double reduce(final Double left, final Double right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Double.valueOf(left.doubleValue() * right.doubleValue()); 
+        protected Double fromNumber(final Number number) {
+            return FnReduceOfDouble.fromNumber(number);
         }
         
     }
 
     
-    static final class Div extends Reductor<Double,Double,Double> {
+    static final class Div extends FnReduceOfNumber.Div<Double> {
 
         public Div() {
             super();
         }
 
         @Override
-        protected Double reduce(final Double left, final Double right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Double.valueOf(left.doubleValue() / right.doubleValue()); 
+        protected Double fromNumber(final Number number) {
+            return FnReduceOfDouble.fromNumber(number);
         }
         
     }
 
     
-    static final class Mod extends Reductor<Double,Double,Double> {
+    static final class Mod extends FnReduceOfNumber.Mod<Double> {
 
         public Mod() {
             super();
         }
 
         @Override
-        protected Double reduce(final Double left, final Double right, final ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Double.valueOf(left.doubleValue() % right.doubleValue()); 
+        protected Double fromNumber(final Number number) {
+            return FnReduceOfDouble.fromNumber(number);
         }
         
     }
 
     
-    static final class Avg extends Reductor<Double,Double,Double> {
+    static final class Avg extends FnReduceOfNumber.Avg<Double> {
 
         public Avg() {
             super();
         }
 
         @Override
-        protected Double reduce(final Double left, final Double right, ExecCtx ctx) {
-            if (left == null) {
-                return right;
-            }
-            if (right == null) {
-                return left;
-            }
-            return Double.valueOf((left.doubleValue() + right.doubleValue()) / 2); 
+        protected Double fromNumber(final Number number) {
+            return FnReduceOfDouble.fromNumber(number);
         }
         
     }
