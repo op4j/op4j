@@ -53,7 +53,7 @@ public final class FnReduceOfLong extends FnReduceOf<Long> {
     
     
     
-    static final class Sum extends Reductor<Long,Long> {
+    static final class Sum extends Reductor<Long,Long,Long> {
 
         public Sum() {
             super();
@@ -73,7 +73,7 @@ public final class FnReduceOfLong extends FnReduceOf<Long> {
     }
 
     
-    static final class Subt extends Reductor<Long,Long> {
+    static final class Subt extends Reductor<Long,Long,Long> {
 
         public Subt() {
             super();
@@ -93,7 +93,7 @@ public final class FnReduceOfLong extends FnReduceOf<Long> {
     }
 
     
-    static final class Mult extends Reductor<Long,Long> {
+    static final class Mult extends Reductor<Long,Long,Long> {
 
         public Mult() {
             super();
@@ -113,7 +113,7 @@ public final class FnReduceOfLong extends FnReduceOf<Long> {
     }
 
     
-    static final class Div extends Reductor<Long,Long> {
+    static final class Div extends Reductor<Long,Long,Long> {
 
         public Div() {
             super();
@@ -133,7 +133,7 @@ public final class FnReduceOfLong extends FnReduceOf<Long> {
     }
 
     
-    static final class Mod extends Reductor<Long,Long> {
+    static final class Mod extends Reductor<Long,Long,Long> {
 
         public Mod() {
             super();
@@ -153,7 +153,7 @@ public final class FnReduceOfLong extends FnReduceOf<Long> {
     }
 
     
-    static final class Pow extends Reductor<Long,Long> {
+    static final class Pow extends Reductor<Long,Long,Long> {
 
         public Pow() {
             super();
@@ -173,7 +173,7 @@ public final class FnReduceOfLong extends FnReduceOf<Long> {
     }
 
     
-    static final class Avg extends Reductor<Long,Long> {
+    static final class Avg extends Reductor<Long,Long,Long> {
 
         public Avg() {
             super();

@@ -40,6 +40,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.time.StopWatch;
+import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.junit.Test;
 import org.op4j.functions.Call;
@@ -58,6 +59,7 @@ import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;
 import org.op4j.functions.Reductor;
+import org.op4j.util.ValuePair;
 
 /**
  * 
@@ -504,7 +506,7 @@ watch.start();
         }).get();
         
         
-        Reductor<Integer,String> redFn1 = new Reductor<Integer,String>() {
+        Reductor<String,Integer,String> redFn1 = new Reductor<String,Integer,String>() {
 
             @Override
             protected String reduce(final String left, final Integer right, final ExecCtx ctx) throws Exception {
@@ -534,6 +536,44 @@ watch.start();
         System.out.println(fnImplemented.execute(String.class));
         System.out.println(fnImplemented.execute(Integer.class));
         System.out.println(fnImplemented.execute(Serializable[].class));
+        
+        
+        IFunction<ValuePair<Number,Number>,BigDecimal> fnSumBigDecimal =
+            new IFunction<ValuePair<Number,Number>,BigDecimal>() {
+
+                public BigDecimal execute(final ValuePair<Number, Number> input, final ExecCtx ctx) throws Exception {
+                    final Number left = input.getLeft();
+                    final Number right = input.getRight();
+                    if (left == null && right == null) {
+                        return null;
+                    }
+                    if (left == null) {
+                        if (right instanceof BigDecimal) {
+                            return (BigDecimal) right;
+                        }
+                        if (right instanceof BigInteger) {
+                            return new BigDecimal((BigInteger)right);
+                        }
+                        return BigDecimal.valueOf(right.doubleValue());
+                    }
+                    if (right == null) {
+                        if (left instanceof BigDecimal) {
+                            return (BigDecimal) left;
+                        }
+                        if (left instanceof BigInteger) {
+                            return new BigDecimal((BigInteger)left);
+                        }
+                        return BigDecimal.valueOf(left.doubleValue());
+                    }
+                    return BigDecimal.valueOf(left.doubleValue()).add(BigDecimal.valueOf(right.doubleValue()));
+                }
+            
+            };
+        
+        
+        System.out.println(Op.onAll(213,23,142).reduce(fnSumBigDecimal, BigDecimal.valueOf(0)).get());
+     
+        
         
     }
     

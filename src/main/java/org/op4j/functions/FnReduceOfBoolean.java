@@ -29,7 +29,7 @@ public final class FnReduceOfBoolean extends FnReduceOf<Boolean> {
     
     
     
-    static final class And extends Reductor<Boolean,Boolean> {
+    static final class And extends Reductor<Boolean,Boolean,Boolean> {
 
         public And() {
             super();
@@ -53,7 +53,7 @@ public final class FnReduceOfBoolean extends FnReduceOf<Boolean> {
 
     
     
-    static final class Or extends Reductor<Boolean,Boolean> {
+    static final class Or extends Reductor<Boolean,Boolean,Boolean> {
 
         public Or() {
             super();

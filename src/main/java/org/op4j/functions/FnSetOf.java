@@ -187,12 +187,12 @@ public class FnSetOf<T> {
     }
 
     
-    public final IFunction<Set<T>,T> reduce(final IFunction<ValuePair<T,T>,T> function) {
+    public final IFunction<Set<T>,T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> function) {
         return new Reduce<T>(function);
     }
     
-    public final <I> IFunction<Set<T>,I> reduce(final IFunction<ValuePair<I,T>,I> function, final I initialValue) {
-        return new ReduceInitialValue<T,I>(function, initialValue);
+    public final <R> IFunction<Set<T>,R> reduce(final IFunction<? extends ValuePair<? super R,? super T>,R> function, final R initialValue) {
+        return new ReduceInitialValue<T,R>(function, initialValue);
     }
     
     
@@ -971,10 +971,10 @@ public class FnSetOf<T> {
     
     static final class Reduce<T> extends AbstractNotNullFunction<Set<T>,T> {
         
-        private final IFunction<ValuePair<T,T>,T> function;
+        private final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> function;
 
         
-        public Reduce(final IFunction<ValuePair<T,T>, T> function) {
+        public Reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> function) {
             super();
             Validate.notNull(function, "Reduce function cannot be null");
             this.function = function;
@@ -982,6 +982,7 @@ public class FnSetOf<T> {
 
         
         @Override
+        @SuppressWarnings("unchecked")
         public T notNullExecute(final Set<T> input, final ExecCtx ctx) throws Exception {
             final List<T> inputList = new ArrayList<T>(input);
             if (inputList.size() == 0) {
@@ -995,7 +996,7 @@ public class FnSetOf<T> {
             for (int i = 1, z = inputList.size(); i < z; i++) {
                 final ValuePair<T,T> currentPair = new ValuePair<T,T>(result, inputList.get(i));
                 final ExecCtx currentCtx = new ExecCtxImpl(Integer.valueOf(i - 1));
-                result = this.function.execute(currentPair, currentCtx);
+                result = (T) ((IFunction)this.function).execute(currentPair, currentCtx);
             }
             return result;
         }
@@ -1004,13 +1005,13 @@ public class FnSetOf<T> {
     
     
     
-    static final class ReduceInitialValue<R,L> extends AbstractNotNullFunction<Set<R>,L> {
+    static final class ReduceInitialValue<T,R> extends AbstractNotNullFunction<Set<T>,R> {
         
-        private final IFunction<ValuePair<L,R>,L> function;
-        private final L initialValue;
+        private final IFunction<? extends ValuePair<? super R,? super T>,R> function;
+        private final R initialValue;
 
         
-        public ReduceInitialValue(final IFunction<ValuePair<L,R>, L> function, final L initialValue) {
+        public ReduceInitialValue(final IFunction<? extends ValuePair<? super R,? super T>,R> function, final R initialValue) {
             super();
             Validate.notNull(function, "Reduce function cannot be null");
             this.function = function;
@@ -1019,17 +1020,18 @@ public class FnSetOf<T> {
 
         
         @Override
-        public L notNullExecute(final Set<R> input, final ExecCtx ctx) throws Exception {
-            final List<R> inputList = new ArrayList<R>(input);
+        @SuppressWarnings("unchecked")
+        public R notNullExecute(final Set<T> input, final ExecCtx ctx) throws Exception {
+            final List<T> inputList = new ArrayList<T>(input);
             if (inputList.size() == 0) {
                 return this.initialValue;
             }
-            L result = this.initialValue;
+            R result = this.initialValue;
             
             for (int i = 0, z = inputList.size(); i < z; i++) {
-                final ValuePair<L,R> currentPair = new ValuePair<L,R>(result, inputList.get(i));
+                final ValuePair<R,T> currentPair = new ValuePair<R,T>(result, inputList.get(i));
                 final ExecCtx currentCtx = new ExecCtxImpl(Integer.valueOf(i));
-                result = this.function.execute(currentPair, currentCtx);
+                result = (R) ((IFunction)this.function).execute(currentPair, currentCtx);
             }
             return result;
         }

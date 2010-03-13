@@ -330,14 +330,14 @@ public final class Level0GenericMultiOperator<I,T> extends AbstractOperator
     
     
     @SuppressWarnings("unchecked")
-    public Level0GenericUniqOperator<I, T> reduce(final IFunction<ValuePair<T, T>, T> reductor) {
+    public Level0GenericUniqOperator<I, T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> reductor) {
         return new Level0GenericUniqOperator<I, T>(getTarget().endIterate(null).execute(FnList.of((Type<T>)Types.OBJECT).reduce(reductor)));
     }
 
 
 
     @SuppressWarnings("unchecked")
-    public <X> Level0GenericUniqOperator<I, X> reduce(final IFunction<ValuePair<X, T>, X> reductor, final X initialValue) {
+    public <X> Level0GenericUniqOperator<I, X> reduce(final IFunction<? extends ValuePair<? super X,? super T>,X> reductor, final X initialValue) {
         return new Level0GenericUniqOperator<I, X>(getTarget().endIterate(null).execute(FnList.of((Type<T>)Types.OBJECT).reduce(reductor, initialValue)));
     }
     

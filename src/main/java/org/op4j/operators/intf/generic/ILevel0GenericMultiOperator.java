@@ -144,8 +144,8 @@ public interface ILevel0GenericMultiOperator<I,T>
     
 
     
-    public ILevel0GenericUniqOperator<I,T> reduce(final IFunction<ValuePair<T,T>,T> reductor);
-    public <X> ILevel0GenericUniqOperator<I,X> reduce(final IFunction<ValuePair<X,T>,X> reductor, final X initialValue);
+    public ILevel0GenericUniqOperator<I,T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> reductor);
+    public <X> ILevel0GenericUniqOperator<I,X> reduce(final IFunction<? extends ValuePair<? super X,? super T>,X> reductor, final X initialValue);
 
     
 }

@@ -295,13 +295,13 @@ public final class Level0ArrayOperator<I,T>
 
 
 
-    public Level0GenericUniqOperator<I, T> reduce(final IFunction<ValuePair<T, T>, T> reductor) {
+    public Level0GenericUniqOperator<I, T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> reductor) {
         return new Level0GenericUniqOperator<I, T>(getTarget().execute(FnArray.of(this.type).reduce(reductor)));
     }
 
 
 
-    public <X> Level0GenericUniqOperator<I, X> reduce(final IFunction<ValuePair<X, T>, X> reductor, final X initialValue) {
+    public <X> Level0GenericUniqOperator<I, X> reduce(final IFunction<? extends ValuePair<? super X,? super T>,X> reductor, final X initialValue) {
         return new Level0GenericUniqOperator<I, X>(getTarget().execute(FnArray.of(this.type).reduce(reductor, initialValue)));
     }
 

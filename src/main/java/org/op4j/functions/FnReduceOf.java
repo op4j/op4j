@@ -19,11 +19,11 @@ public class FnReduceOf<T> {
         return new Min<T>();
     }
     
-    public final <X extends Comparable<X>> IFunction<ValuePair<T,T>,T> maxBy(final IFunction<T,X> function) {
+    public final <X extends Comparable<? super X>> IFunction<ValuePair<T,T>,T> maxBy(final IFunction<? super T,X> function) {
         return new MaxBy<T,X>(function);
     }
     
-    public final <X extends Comparable<X>> IFunction<ValuePair<T,T>,T> minBy(final IFunction<T,X> function) {
+    public final <X extends Comparable<? super X>> IFunction<ValuePair<T,T>,T> minBy(final IFunction<? super T,X> function) {
         return new MinBy<T,X>(function);
     }
     
@@ -41,7 +41,7 @@ public class FnReduceOf<T> {
 
     
     
-    static final class Max<T> extends Reductor<T,T> {
+    static final class Max<T> extends Reductor<T,T,T> {
 
         public Max() {
             super();
@@ -74,7 +74,7 @@ public class FnReduceOf<T> {
     }
     
     
-    static final class Min<T> extends Reductor<T,T> {
+    static final class Min<T> extends Reductor<T,T,T> {
 
         public Min() {
             super();
@@ -110,11 +110,11 @@ public class FnReduceOf<T> {
     
     
     
-    static final class MaxBy<T,X extends Comparable<X>> extends Reductor<T,T> {
+    static final class MaxBy<T,X extends Comparable<? super X>> extends Reductor<T,T,T> {
 
-        private final IFunction<T,X> function;
+        private final IFunction<? super T,X> function;
         
-        public MaxBy(final IFunction<T,X> function) {
+        public MaxBy(final IFunction<? super T,X> function) {
             super();
             this.function = function;
         }
@@ -148,11 +148,11 @@ public class FnReduceOf<T> {
     
     
     
-    static final class MinBy<T,X extends Comparable<X>> extends Reductor<T,T> {
+    static final class MinBy<T,X extends Comparable<? super X>> extends Reductor<T,T,T> {
 
-        private final IFunction<T,X> function;
+        private final IFunction<? super T,X> function;
         
-        public MinBy(final IFunction<T,X> function) {
+        public MinBy(final IFunction<? super T,X> function) {
             super();
             this.function = function;
         }

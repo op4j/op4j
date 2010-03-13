@@ -29,7 +29,7 @@ public final class FnReduceOfString extends FnReduceOf<String> {
     
 
     
-    static final class Join extends Reductor<String,String> {
+    static final class Join extends Reductor<String,String,String> {
 
         private final String separator; 
         

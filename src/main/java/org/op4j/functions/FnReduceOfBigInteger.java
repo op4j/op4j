@@ -50,7 +50,7 @@ public final class FnReduceOfBigInteger extends FnReduceOf<BigInteger> {
     
     
     
-    static final class Sum extends Reductor<BigInteger,BigInteger> {
+    static final class Sum extends Reductor<BigInteger,BigInteger,BigInteger> {
 
         public Sum() {
             super();
@@ -70,7 +70,7 @@ public final class FnReduceOfBigInteger extends FnReduceOf<BigInteger> {
     }
 
     
-    static final class Subt extends Reductor<BigInteger,BigInteger> {
+    static final class Subt extends Reductor<BigInteger,BigInteger,BigInteger> {
 
         public Subt() {
             super();
@@ -90,7 +90,7 @@ public final class FnReduceOfBigInteger extends FnReduceOf<BigInteger> {
     }
 
     
-    static final class Mult extends Reductor<BigInteger,BigInteger> {
+    static final class Mult extends Reductor<BigInteger,BigInteger,BigInteger> {
 
         public Mult() {
             super();
@@ -110,7 +110,7 @@ public final class FnReduceOfBigInteger extends FnReduceOf<BigInteger> {
     }
 
     
-    static final class Div extends Reductor<BigInteger,BigInteger> {
+    static final class Div extends Reductor<BigInteger,BigInteger,BigInteger> {
 
         public Div() {
             super();
@@ -130,7 +130,7 @@ public final class FnReduceOfBigInteger extends FnReduceOf<BigInteger> {
     }
 
     
-    static final class Mod extends Reductor<BigInteger,BigInteger> {
+    static final class Mod extends Reductor<BigInteger,BigInteger,BigInteger> {
 
         public Mod() {
             super();
@@ -150,7 +150,7 @@ public final class FnReduceOfBigInteger extends FnReduceOf<BigInteger> {
     }
 
     
-    static final class Avg extends Reductor<BigInteger,BigInteger> {
+    static final class Avg extends Reductor<BigInteger,BigInteger,BigInteger> {
 
         public Avg() {
             super();

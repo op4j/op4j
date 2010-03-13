@@ -53,7 +53,7 @@ public final class FnReduceOfByte extends FnReduceOf<Byte> {
     
     
     
-    static final class Sum extends Reductor<Byte,Byte> {
+    static final class Sum extends Reductor<Byte,Byte,Byte> {
 
         public Sum() {
             super();
@@ -73,7 +73,7 @@ public final class FnReduceOfByte extends FnReduceOf<Byte> {
     }
 
     
-    static final class Subt extends Reductor<Byte,Byte> {
+    static final class Subt extends Reductor<Byte,Byte,Byte> {
 
         public Subt() {
             super();
@@ -93,7 +93,7 @@ public final class FnReduceOfByte extends FnReduceOf<Byte> {
     }
 
     
-    static final class Mult extends Reductor<Byte,Byte> {
+    static final class Mult extends Reductor<Byte,Byte,Byte> {
 
         public Mult() {
             super();
@@ -113,7 +113,7 @@ public final class FnReduceOfByte extends FnReduceOf<Byte> {
     }
 
     
-    static final class Div extends Reductor<Byte,Byte> {
+    static final class Div extends Reductor<Byte,Byte,Byte> {
 
         public Div() {
             super();
@@ -133,7 +133,7 @@ public final class FnReduceOfByte extends FnReduceOf<Byte> {
     }
 
     
-    static final class Mod extends Reductor<Byte,Byte> {
+    static final class Mod extends Reductor<Byte,Byte,Byte> {
 
         public Mod() {
             super();
@@ -153,7 +153,7 @@ public final class FnReduceOfByte extends FnReduceOf<Byte> {
     }
 
     
-    static final class Pow extends Reductor<Byte,Byte> {
+    static final class Pow extends Reductor<Byte,Byte,Byte> {
 
         public Pow() {
             super();
@@ -173,7 +173,7 @@ public final class FnReduceOfByte extends FnReduceOf<Byte> {
     }
 
     
-    static final class Avg extends Reductor<Byte,Byte> {
+    static final class Avg extends Reductor<Byte,Byte,Byte> {
 
         public Avg() {
             super();
