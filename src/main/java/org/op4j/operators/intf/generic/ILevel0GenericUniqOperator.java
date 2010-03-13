@@ -143,4 +143,7 @@ public interface ILevel0GenericUniqOperator<I,T>
     public ILevel0SetOperator<I,T> unfoldSet(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> whileCondition);
     
     
+    public ILevel0GenericUniqOperator<I,Boolean> any(final IFunction<? super T,Boolean> eval);
+    public ILevel0GenericUniqOperator<I,Boolean> all(final IFunction<? super T,Boolean> eval);
+    
 }

@@ -32,6 +32,7 @@ import org.op4j.functions.FnObject;
 import org.op4j.functions.FnSet;
 import org.op4j.functions.IFunction;
 import org.op4j.operators.impl.AbstractOperator;
+import org.op4j.operators.impl.op.generic.Level0GenericUniqOperator;
 import org.op4j.operators.impl.op.array.Level0ArrayOperator;
 import org.op4j.operators.impl.op.list.Level0ListOperator;
 import org.op4j.operators.impl.op.map.Level0MapOperator;
@@ -319,6 +320,23 @@ public final class Level0GenericUniqOperator<I,T> extends AbstractOperator
         return new Level0SetOperator<I, T>(getTarget().execute(FnSet.of((Type<T>)Types.OBJECT).unfold(function, whileCondition)));
     }
     
+    
+    
+    
+    
+    
+    
+
+    @SuppressWarnings("unchecked")
+    public Level0GenericUniqOperator<I, Boolean> all(final IFunction<? super T, Boolean> eval) {
+        return new Level0GenericUniqOperator<I, Boolean>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.of((Type<T>)Types.OBJECT).all(eval)));
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public Level0GenericUniqOperator<I, Boolean> any(final IFunction<? super T, Boolean> eval) {
+        return new Level0GenericUniqOperator<I, Boolean>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.of((Type<T>)Types.OBJECT).any(eval)));
+    }
     
     
     

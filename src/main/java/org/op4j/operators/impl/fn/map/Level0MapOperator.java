@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
+import org.javaruntype.type.Types;
 import org.op4j.functions.FnMap;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
@@ -229,6 +230,28 @@ public final class Level0MapOperator<I,K,V> extends AbstractOperator
     }
 
 
+    
+
+
+    
+
+    
+
+
+    
+    
+    
+
+    @SuppressWarnings("unchecked")
+    public Level0GenericUniqOperator<I, Boolean> all(final IFunction<? super Map.Entry<K,V>, Boolean> eval) {
+        return new Level0GenericUniqOperator<I, Boolean>(getTarget().execute(FnMap.of((Type<K>)Types.OBJECT,(Type<V>)Types.OBJECT).all(eval)));
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public Level0GenericUniqOperator<I, Boolean> any(final IFunction<? super Map.Entry<K,V>, Boolean> eval) {
+        return new Level0GenericUniqOperator<I, Boolean>(getTarget().execute(FnMap.of((Type<K>)Types.OBJECT,(Type<V>)Types.OBJECT).any(eval)));
+    }
     
 
     

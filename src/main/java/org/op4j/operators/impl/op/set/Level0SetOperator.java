@@ -300,5 +300,23 @@ public final class Level0SetOperator<I,T> extends AbstractOperator
         return new Level0GenericUniqOperator<I, X>(getTarget().execute(FnSet.of((Type<T>)Types.OBJECT).reduce(reductor, initialValue)));
     }
     
+
+    
+
+
+    
+    
+    
+
+    @SuppressWarnings("unchecked")
+    public Level0GenericUniqOperator<I, Boolean> all(final IFunction<? super T, Boolean> eval) {
+        return new Level0GenericUniqOperator<I, Boolean>(getTarget().execute(FnSet.of((Type<T>)Types.OBJECT).all(eval)));
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public Level0GenericUniqOperator<I, Boolean> any(final IFunction<? super T, Boolean> eval) {
+        return new Level0GenericUniqOperator<I, Boolean>(getTarget().execute(FnSet.of((Type<T>)Types.OBJECT).any(eval)));
+    }
     
 }

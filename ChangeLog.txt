@@ -8,7 +8,7 @@
 - Created "FnReduce" function class with functions ready to be used in "reduce" operations.
 - Created unfold functions and actions for generic unique operators.
 - Added aggregation functions in FnMath for arrays.
-- Fixed precision issues in some FnMath functions
+- Improved precision management in FnMath functions
 
 
 1.0-beta1

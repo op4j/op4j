@@ -107,4 +107,9 @@ public interface ILevel0MapOperator<I,K,V>
     public <X> ILevel0GenericUniqOperator<I,X> exec(final IFunction<? super Map<K,V>,X> function);
     
     public <X,Y> ILevel0MapOperator<I,X,Y> asMapOf(final Type<X> keyType, final Type<Y> valueType);
-    }
+    
+    
+    public ILevel0GenericUniqOperator<I,Boolean> any(final IFunction<? super Map.Entry<K,V>,Boolean> eval);
+    public ILevel0GenericUniqOperator<I,Boolean> all(final IFunction<? super Map.Entry<K,V>,Boolean> eval);
+    
+}

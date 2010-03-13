@@ -704,9 +704,19 @@ public class AssortedTests extends TestCase {
     
     @Test
     public void test31() throws Exception {
-
         assertEquals(Integer.valueOf(4), Op.on(10).exec(FnMath.ofInteger().divideBy(3,RoundingMode.CEILING)).get());
-        
+    }
+
+    
+    @Test
+    public void test32() throws Exception {
+        assertEquals(Boolean.TRUE, Op.onAll(10,11).all(Ognl.asBoolean("#target <= 11")).get());
+    }
+
+    
+    @Test
+    public void test33() throws Exception {
+        assertEquals(Boolean.TRUE, Op.onAll(10,11).any(Ognl.asBoolean("#target < 11")).get());
     }
     
 }

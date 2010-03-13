@@ -307,6 +307,20 @@ public final class Level0ArrayOperator<I,T>
 
 
     
+    
+    
+
+    public Level0GenericUniqOperator<I, Boolean> all(final IFunction<? super T, Boolean> eval) {
+        return new Level0GenericUniqOperator<I, Boolean>(getTarget().execute(FnArray.of(this.type).all(eval)));
+    }
+
+
+    public Level0GenericUniqOperator<I, Boolean> any(final IFunction<? super T, Boolean> eval) {
+        return new Level0GenericUniqOperator<I, Boolean>(getTarget().execute(FnArray.of(this.type).any(eval)));
+    }
+
+
+    
 
 
 }

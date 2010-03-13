@@ -1,6 +1,8 @@
 
   Why do key an value operators have "ifIndex"?
-  Create ANY and ALL functions for FnArray+FnList+FnSet
+  Make all predefined functions extend Function. Is that possible?
+  Make Fn add things like "concat"
+  Create simple condition functions like "Contains", "equals", "less than", "greater than"...
   
     
 ----------------    

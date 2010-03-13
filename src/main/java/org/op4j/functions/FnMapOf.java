@@ -31,6 +31,8 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
+import org.op4j.exceptions.ExecutionException;
+import org.op4j.util.ExecCtxImpl;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -100,6 +102,17 @@ public final class FnMapOf<K,V> {
         return new ExtractValues<K,V>();
     }
     
+
+    
+    
+
+    public final IFunction<Map<K,V>,Boolean> all(final IFunction<? super Map.Entry<K,V>,Boolean> eval) {
+        return new All<K,V>(eval);
+    }
+    
+    public final IFunction<Map<K,V>,Boolean> any(final IFunction<? super Map.Entry<K,V>,Boolean> eval) {
+        return new Any<K,V>(eval);
+    }
     
     
     
@@ -410,6 +423,77 @@ public final class FnMapOf<K,V> {
         @Override
         protected List<V> notNullExecute(final Map<K, V> object, final ExecCtx ctx) throws Exception {
             return new ArrayList<V>(object.values());
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    static final class Any<K,V> extends AbstractNotNullFunction<Map<K,V>,Boolean> {
+
+        private final IFunction<? super Map.Entry<K,V>, Boolean> function;
+        
+        
+        public Any(IFunction<? super Map.Entry<K,V>, Boolean> function) {
+            super();
+            this.function = function;
+        }
+        
+        
+        @Override
+        protected Boolean notNullExecute(final Map<K,V> object, final ExecCtx ctx) throws Exception {
+            int index = 0;
+            for (final Map.Entry<K,V> element : object.entrySet()) {
+                final Boolean elementResult = 
+                    this.function.execute(element, new ExecCtxImpl(Integer.valueOf(index)));
+                if (elementResult == null) {
+                    throw new ExecutionException("Evaluation function returned null, which is " +
+                            "not allowed executing \"any\"");
+                }
+                if (elementResult.booleanValue()) {
+                    return Boolean.TRUE;
+                }
+                index++;
+            }
+            return Boolean.FALSE;
+        }
+        
+    }
+
+    
+    
+    static final class All<K,V> extends AbstractNotNullFunction<Map<K,V>,Boolean> {
+
+        private final IFunction<? super Map.Entry<K,V>, Boolean> function;
+        
+        
+        public All(IFunction<? super Map.Entry<K,V>, Boolean> function) {
+            super();
+            this.function = function;
+        }
+        
+        
+        @Override
+        protected Boolean notNullExecute(final Map<K,V> object, final ExecCtx ctx) throws Exception {
+            int index = 0;
+            for (final Map.Entry<K,V> element : object.entrySet()) {
+                final Boolean elementResult = 
+                    this.function.execute(element, new ExecCtxImpl(Integer.valueOf(index)));
+                if (elementResult == null) {
+                    throw new ExecutionException("Evaluation function returned null, which is " +
+                            "not allowed executing \"any\"");
+                }
+                if (!elementResult.booleanValue()) {
+                    return Boolean.FALSE;
+                }
+                index++;
+            }
+            return Boolean.TRUE;
         }
         
     }

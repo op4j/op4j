@@ -37,6 +37,7 @@ import org.op4j.operators.impl.fn.array.Level0ArrayOperator;
 import org.op4j.operators.impl.fn.list.Level0ListOperator;
 import org.op4j.operators.impl.fn.map.Level0MapOperator;
 import org.op4j.operators.impl.fn.set.Level0SetOperator;
+import org.op4j.operators.impl.fn.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.qualities.UniqFnOperator;
 import org.op4j.target.Target;
@@ -318,6 +319,25 @@ public final class Level0GenericUniqOperator<I,T> extends AbstractOperator
     @SuppressWarnings("unchecked")
     public Level0SetOperator<I, T> unfoldSet(final IFunction<? super T, ? extends T> function, final IFunction<? super T, Boolean> whileCondition) {
         return new Level0SetOperator<I, T>(getTarget().execute(FnSet.of((Type<T>)Types.OBJECT).unfold(function, whileCondition)));
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+
+    @SuppressWarnings("unchecked")
+    public Level0GenericUniqOperator<I, Boolean> all(final IFunction<? super T, Boolean> eval) {
+        return new Level0GenericUniqOperator<I, Boolean>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.of((Type<T>)Types.OBJECT).all(eval)));
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public Level0GenericUniqOperator<I, Boolean> any(final IFunction<? super T, Boolean> eval) {
+        return new Level0GenericUniqOperator<I, Boolean>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.of((Type<T>)Types.OBJECT).any(eval)));
     }
     
     

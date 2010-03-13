@@ -30,6 +30,7 @@ import org.op4j.functions.Call;
 import org.op4j.functions.FnList;
 import org.op4j.functions.IFunction;
 import org.op4j.operators.impl.AbstractOperator;
+import org.op4j.operators.impl.op.generic.Level0GenericUniqOperator;
 import org.op4j.operators.impl.op.array.Level0ArrayOperator;
 import org.op4j.operators.impl.op.list.Level0ListOperator;
 import org.op4j.operators.impl.op.map.Level0MapOperator;
@@ -337,6 +338,23 @@ public final class Level0GenericMultiOperator<I,T> extends AbstractOperator
     @SuppressWarnings("unchecked")
     public <X> Level0GenericUniqOperator<I, X> reduce(final IFunction<? extends ValuePair<? super X,? super T>,X> reductor, final X initialValue) {
         return new Level0GenericUniqOperator<I, X>(getTarget().endIterate(null).execute(FnList.of((Type<T>)Types.OBJECT).reduce(reductor, initialValue)));
+    }
+    
+    
+    
+    
+    
+    
+
+    @SuppressWarnings("unchecked")
+    public Level0GenericUniqOperator<I, Boolean> all(final IFunction<? super T, Boolean> eval) {
+        return new Level0GenericUniqOperator<I, Boolean>(getTarget().endIterate(null).execute(FnList.of((Type<T>)Types.OBJECT).all(eval)));
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public Level0GenericUniqOperator<I, Boolean> any(final IFunction<? super T, Boolean> eval) {
+        return new Level0GenericUniqOperator<I, Boolean>(getTarget().endIterate(null).execute(FnList.of((Type<T>)Types.OBJECT).any(eval)));
     }
     
     

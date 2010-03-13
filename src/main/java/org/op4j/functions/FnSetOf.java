@@ -194,6 +194,16 @@ public class FnSetOf<T> {
     public final <R> IFunction<Set<T>,R> reduce(final IFunction<? extends ValuePair<? super R,? super T>,R> function, final R initialValue) {
         return new ReduceInitialValue<T,R>(function, initialValue);
     }
+
+    
+
+    public final IFunction<Set<T>,Boolean> all(final IFunction<? super T,Boolean> eval) {
+        return new All<T>(eval);
+    }
+    
+    public final IFunction<Set<T>,Boolean> any(final IFunction<? super T,Boolean> eval) {
+        return new Any<T>(eval);
+    }
     
     
     
@@ -1046,6 +1056,76 @@ public class FnSetOf<T> {
         
     }
     
+    
+    
+    
+    
+    
+    
+    
+    static final class Any<T> extends AbstractNotNullFunction<Set<T>,Boolean> {
+
+        private final IFunction<? super T, Boolean> function;
+        
+        
+        public Any(IFunction<? super T, Boolean> function) {
+            super();
+            this.function = function;
+        }
+        
+        
+        @Override
+        protected Boolean notNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
+            int index = 0;
+            for (final T element : object) {
+                final Boolean elementResult = 
+                    this.function.execute(element, new ExecCtxImpl(Integer.valueOf(index)));
+                if (elementResult == null) {
+                    throw new ExecutionException("Evaluation function returned null, which is " +
+                            "not allowed executing \"any\"");
+                }
+                if (elementResult.booleanValue()) {
+                    return Boolean.TRUE;
+                }
+                index++;
+            }
+            return Boolean.FALSE;
+        }
+        
+    }
+
+    
+    
+    static final class All<T> extends AbstractNotNullFunction<Set<T>,Boolean> {
+
+        private final IFunction<? super T, Boolean> function;
+        
+        
+        public All(IFunction<? super T, Boolean> function) {
+            super();
+            this.function = function;
+        }
+        
+        
+        @Override
+        protected Boolean notNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
+            int index = 0;
+            for (final T element : object) {
+                final Boolean elementResult = 
+                    this.function.execute(element, new ExecCtxImpl(Integer.valueOf(index)));
+                if (elementResult == null) {
+                    throw new ExecutionException("Evaluation function returned null, which is " +
+                            "not allowed executing \"any\"");
+                }
+                if (!elementResult.booleanValue()) {
+                    return Boolean.FALSE;
+                }
+                index++;
+            }
+            return Boolean.TRUE;
+        }
+        
+    }
     
     
 }
