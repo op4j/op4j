@@ -84,7 +84,7 @@ public final class FnReduceOfBigDecimal extends FnReduceOf<BigDecimal> {
     
     
     
-    static final class Sum extends FnReduceOfNumber.Sum<BigDecimal> {
+    static final class Sum extends FnReduceOfNumber.DecimalSum<BigDecimal> {
 
         public Sum() {
             super();
@@ -98,7 +98,7 @@ public final class FnReduceOfBigDecimal extends FnReduceOf<BigDecimal> {
     }
 
     
-    static final class Subt extends FnReduceOfNumber.Subt<BigDecimal> {
+    static final class Subt extends FnReduceOfNumber.DecimalSubt<BigDecimal> {
 
         public Subt() {
             super();
@@ -112,7 +112,7 @@ public final class FnReduceOfBigDecimal extends FnReduceOf<BigDecimal> {
     }
 
     
-    static final class Mult extends FnReduceOfNumber.Mult<BigDecimal> {
+    static final class Mult extends FnReduceOfNumber.DecimalMult<BigDecimal> {
 
         public Mult() {
             super();
@@ -126,7 +126,7 @@ public final class FnReduceOfBigDecimal extends FnReduceOf<BigDecimal> {
     }
 
     
-    static final class Div extends FnReduceOfNumber.Div<BigDecimal> {
+    static final class Div extends FnReduceOfNumber.DecimalDiv<BigDecimal> {
 
         public Div() {
             super();
@@ -148,7 +148,7 @@ public final class FnReduceOfBigDecimal extends FnReduceOf<BigDecimal> {
     }
 
     
-    static final class Remainder extends FnReduceOfNumber.Remainder<BigDecimal> {
+    static final class Remainder extends FnReduceOfNumber.DecimalRemainder<BigDecimal> {
 
         public Remainder() {
             super();
@@ -166,7 +166,7 @@ public final class FnReduceOfBigDecimal extends FnReduceOf<BigDecimal> {
     }
 
     
-    static final class Avg extends FnReduceOfNumber.Avg<BigDecimal> {
+    static final class Avg extends FnReduceOfNumber.DecimalAvg<BigDecimal> {
 
         public Avg() {
             super();

@@ -77,7 +77,7 @@ public final class FnReduceOfFloat extends FnReduceOf<Float> {
     
 
     
-    static final class Sum extends FnReduceOfNumber.Sum<Float> {
+    static final class Sum extends FnReduceOfNumber.DecimalSum<Float> {
 
         public Sum() {
             super();
@@ -91,7 +91,7 @@ public final class FnReduceOfFloat extends FnReduceOf<Float> {
     }
 
     
-    static final class Subt extends FnReduceOfNumber.Subt<Float> {
+    static final class Subt extends FnReduceOfNumber.DecimalSubt<Float> {
 
         public Subt() {
             super();
@@ -105,7 +105,7 @@ public final class FnReduceOfFloat extends FnReduceOf<Float> {
     }
 
     
-    static final class Mult extends FnReduceOfNumber.Mult<Float> {
+    static final class Mult extends FnReduceOfNumber.DecimalMult<Float> {
 
         public Mult() {
             super();
@@ -119,7 +119,7 @@ public final class FnReduceOfFloat extends FnReduceOf<Float> {
     }
 
     
-    static final class Div extends FnReduceOfNumber.Div<Float> {
+    static final class Div extends FnReduceOfNumber.DecimalDiv<Float> {
 
         public Div() {
             super();
@@ -141,7 +141,7 @@ public final class FnReduceOfFloat extends FnReduceOf<Float> {
     }
 
     
-    static final class Remainder extends FnReduceOfNumber.Remainder<Float> {
+    static final class Remainder extends FnReduceOfNumber.DecimalRemainder<Float> {
 
         public Remainder() {
             super();
@@ -159,7 +159,7 @@ public final class FnReduceOfFloat extends FnReduceOf<Float> {
     }
 
     
-    static final class Avg extends FnReduceOfNumber.Avg<Float> {
+    static final class Avg extends FnReduceOfNumber.DecimalAvg<Float> {
 
         public Avg() {
             super();

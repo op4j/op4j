@@ -27,9 +27,9 @@ final class FnReduceOfNumber<T extends Number> {
     
     
     
-    static abstract class Sum<T extends Number> extends Reductor<Number,Number,T> {
+    static abstract class DecimalSum<T extends Number> extends Reductor<Number,Number,T> {
 
-        public Sum() {
+        public DecimalSum() {
             super();
         }
 
@@ -51,9 +51,9 @@ final class FnReduceOfNumber<T extends Number> {
     }
 
     
-    static abstract class Subt<T extends Number> extends Reductor<Number,Number,T> {
+    static abstract class DecimalSubt<T extends Number> extends Reductor<Number,Number,T> {
 
-        public Subt() {
+        public DecimalSubt() {
             super();
         }
 
@@ -75,9 +75,9 @@ final class FnReduceOfNumber<T extends Number> {
     }
 
     
-    static abstract class Mult<T extends Number> extends Reductor<Number,Number,T> {
+    static abstract class DecimalMult<T extends Number> extends Reductor<Number,Number,T> {
 
-        public Mult() {
+        public DecimalMult() {
             super();
         }
 
@@ -99,24 +99,24 @@ final class FnReduceOfNumber<T extends Number> {
     }
 
     
-    static abstract class Div<T extends Number> extends Reductor<Number,Number,T> {
+    static abstract class DecimalDiv<T extends Number> extends Reductor<Number,Number,T> {
 
         private final RoundingMode roundingMode;
         private final MathContext mathContext;
         
-        public Div() {
+        public DecimalDiv() {
             super();
             this.roundingMode = null;
             this.mathContext = null;
         }
         
-        public Div(final RoundingMode roundingMode) {
+        public DecimalDiv(final RoundingMode roundingMode) {
             super();
             this.roundingMode = roundingMode;
             this.mathContext = null;
         }
         
-        public Div(final MathContext mathContext) {
+        public DecimalDiv(final MathContext mathContext) {
             super();
             this.roundingMode = null;
             this.mathContext = mathContext;
@@ -146,16 +146,16 @@ final class FnReduceOfNumber<T extends Number> {
     }
 
     
-    static abstract class Remainder<T extends Number> extends Reductor<Number,Number,T> {
+    static abstract class DecimalRemainder<T extends Number> extends Reductor<Number,Number,T> {
 
         private final MathContext mathContext;
         
-        public Remainder() {
+        public DecimalRemainder() {
             super();
             this.mathContext = null;
         }
         
-        public Remainder(final MathContext mathContext) {
+        public DecimalRemainder(final MathContext mathContext) {
             super();
             this.mathContext = mathContext;
         }
@@ -181,25 +181,25 @@ final class FnReduceOfNumber<T extends Number> {
     }
 
     
-    static abstract class Avg<T extends Number> extends Reductor<Number,Number,T> {
+    static abstract class DecimalAvg<T extends Number> extends Reductor<Number,Number,T> {
 
         private final RoundingMode roundingMode;
         private final MathContext mathContext;
         
-        Avg() {
+        DecimalAvg() {
             super();
             this.roundingMode = null;
             this.mathContext = null;
         }
 
-        Avg(RoundingMode roundingMode) {
+        DecimalAvg(RoundingMode roundingMode) {
             super();
             Validate.notNull(roundingMode, "RoundingMode can't be null");
             this.roundingMode = roundingMode;
             this.mathContext = null;
         }
         
-        Avg(MathContext mathContext) {
+        DecimalAvg(MathContext mathContext) {
             super();
             Validate.notNull(mathContext, "MathContext can't be null");
             this.roundingMode = null;
@@ -229,6 +229,219 @@ final class FnReduceOfNumber<T extends Number> {
         
     }
 
+
+    
+    
+    
+    
+    
+    
+    
+    
+    static abstract class NonDecimalSum<T extends Number> extends Reductor<Number,Number,T> {
+
+        public NonDecimalSum() {
+            super();
+        }
+
+        @Override
+        protected T reduce(final Number left, final Number right, final ExecCtx ctx) {
+            if (left == null) {
+                return fromNumber(right);
+            }
+            if (right == null) {
+                return fromNumber(left);
+            }
+            BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
+            BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            return fromNumber(bLeft.add(bRight).setScale(0, RoundingMode.FLOOR)); 
+        }
+        
+        protected abstract T fromNumber(final Number number);
+        
+    }
+
+    
+    static abstract class NonDecimalSubt<T extends Number> extends Reductor<Number,Number,T> {
+
+        public NonDecimalSubt() {
+            super();
+        }
+
+        @Override
+        protected T reduce(final Number left, final Number right, final ExecCtx ctx) {
+            if (left == null) {
+                return fromNumber(right);
+            }
+            if (right == null) {
+                return fromNumber(left);
+            }
+            BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
+            BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            return fromNumber(bLeft.subtract(bRight).setScale(0, RoundingMode.FLOOR)); 
+        }
+        
+        protected abstract T fromNumber(final Number number);
+        
+    }
+
+    
+    static abstract class NonDecimalMult<T extends Number> extends Reductor<Number,Number,T> {
+
+        public NonDecimalMult() {
+            super();
+        }
+
+        @Override
+        protected T reduce(final Number left, final Number right, final ExecCtx ctx) {
+            if (left == null) {
+                return fromNumber(right);
+            }
+            if (right == null) {
+                return fromNumber(left);
+            }
+            BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
+            BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            return fromNumber(bLeft.multiply(bRight).setScale(0, RoundingMode.FLOOR)); 
+        }
+        
+        protected abstract T fromNumber(final Number number);
+        
+    }
+
+    
+    static abstract class NonDecimalDiv<T extends Number> extends Reductor<Number,Number,T> {
+
+        private final RoundingMode roundingMode;
+        private final MathContext mathContext;
+        
+        public NonDecimalDiv() {
+            super();
+            this.roundingMode = null;
+            this.mathContext = null;
+        }
+        
+        public NonDecimalDiv(final RoundingMode roundingMode) {
+            super();
+            this.roundingMode = roundingMode;
+            this.mathContext = null;
+        }
+        
+        public NonDecimalDiv(final MathContext mathContext) {
+            super();
+            this.roundingMode = null;
+            this.mathContext = mathContext;
+        }
+
+        @Override
+        protected T reduce(final Number left, final Number right, final ExecCtx ctx) {
+            if (left == null) {
+                return fromNumber(right);
+            }
+            if (right == null) {
+                return fromNumber(left);
+            }
+            BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
+            BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            if (this.roundingMode != null) {
+System.out.println("bLEFT : " + bLeft);
+System.out.println("bRIGHT : " + bRight);
+System.out.println("RESULT: " + bLeft.divide(bRight, this.roundingMode));
+                return fromNumber(bLeft.divide(bRight, this.roundingMode).setScale(0, this.roundingMode));
+            }
+            if (this.mathContext != null) {
+                return fromNumber(bLeft.divide(bRight, this.mathContext).setScale(0, this.mathContext.getRoundingMode()));
+            }
+            return fromNumber(bLeft.divide(bRight, RoundingMode.FLOOR).setScale(0, RoundingMode.FLOOR)); 
+        }
+        
+        protected abstract T fromNumber(final Number number);
+        
+    }
+
+    
+    static abstract class NonDecimalRemainder<T extends Number> extends Reductor<Number,Number,T> {
+
+        private final MathContext mathContext;
+        
+        public NonDecimalRemainder() {
+            super();
+            this.mathContext = null;
+        }
+        
+        public NonDecimalRemainder(final MathContext mathContext) {
+            super();
+            this.mathContext = mathContext;
+        }
+
+        @Override
+        protected T reduce(final Number left, final Number right, final ExecCtx ctx) {
+            if (left == null) {
+                return fromNumber(right);
+            }
+            if (right == null) {
+                return fromNumber(left);
+            }
+            BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
+            BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            if (this.mathContext != null) {
+                return fromNumber(bLeft.remainder(bRight, this.mathContext).setScale(0, this.mathContext.getRoundingMode()));
+            }
+            return fromNumber(bLeft.remainder(bRight).setScale(0, RoundingMode.FLOOR)); 
+        }
+        
+        protected abstract T fromNumber(final Number number);
+        
+    }
+
+    
+    static abstract class NonDecimalAvg<T extends Number> extends Reductor<Number,Number,T> {
+
+        private final RoundingMode roundingMode;
+        private final MathContext mathContext;
+        
+        NonDecimalAvg() {
+            super();
+            this.roundingMode = null;
+            this.mathContext = null;
+        }
+
+        NonDecimalAvg(RoundingMode roundingMode) {
+            super();
+            Validate.notNull(roundingMode, "RoundingMode can't be null");
+            this.roundingMode = roundingMode;
+            this.mathContext = null;
+        }
+        
+        NonDecimalAvg(MathContext mathContext) {
+            super();
+            Validate.notNull(mathContext, "MathContext can't be null");
+            this.roundingMode = null;
+            this.mathContext = mathContext;
+        }
+
+        @Override
+        protected T reduce(final Number left, final Number right, final ExecCtx ctx) {
+            if (left == null) {
+                return fromNumber(right);
+            }
+            if (right == null) {
+                return fromNumber(left);
+            }
+            BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
+            BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            if (this.roundingMode != null) {
+                return fromNumber(bLeft.add(bRight).divide(BigDecimal.valueOf(2.0d), this.roundingMode).setScale(0, this.roundingMode));
+            }
+            if (this.mathContext != null) {
+                return fromNumber(bLeft.add(bRight).divide(BigDecimal.valueOf(2.0d), this.mathContext).setScale(0, this.mathContext.getRoundingMode()));
+            }
+            return fromNumber(bLeft.add(bRight).divide(BigDecimal.valueOf(2.0d), RoundingMode.FLOOR).setScale(0, RoundingMode.FLOOR)); 
+        }
+        
+        protected abstract T fromNumber(final Number number);
+        
+    }
     
     
 }

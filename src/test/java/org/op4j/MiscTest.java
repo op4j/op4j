@@ -587,6 +587,9 @@ watch.start();
         
         System.out.println(Op.onAll(30,30,40).exec(FnNumber.toBigInteger()).buildList().exec(FnMath.ofBigInteger().avg(RoundingMode.CEILING)).get());
         
+        System.out.println(Op.on(10).exec(FnMath.ofInteger().divideBy(3,RoundingMode.CEILING)).get());
+        System.out.println(Op.onAll(10,3).reduce(FnReduce.ofInteger().div(RoundingMode.CEILING)).get());
+        
     }
     
     

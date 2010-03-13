@@ -79,7 +79,7 @@ public final class FnReduceOfInteger extends FnReduceOf<Integer> {
 
     
     
-    static final class Sum extends FnReduceOfNumber.Sum<Integer> {
+    static final class Sum extends FnReduceOfNumber.NonDecimalSum<Integer> {
 
         public Sum() {
             super();
@@ -93,7 +93,7 @@ public final class FnReduceOfInteger extends FnReduceOf<Integer> {
     }
 
     
-    static final class Subt extends FnReduceOfNumber.Subt<Integer> {
+    static final class Subt extends FnReduceOfNumber.NonDecimalSubt<Integer> {
 
         public Subt() {
             super();
@@ -107,7 +107,7 @@ public final class FnReduceOfInteger extends FnReduceOf<Integer> {
     }
 
     
-    static final class Mult extends FnReduceOfNumber.Mult<Integer> {
+    static final class Mult extends FnReduceOfNumber.NonDecimalMult<Integer> {
 
         public Mult() {
             super();
@@ -121,7 +121,7 @@ public final class FnReduceOfInteger extends FnReduceOf<Integer> {
     }
 
     
-    static final class Div extends FnReduceOfNumber.Div<Integer> {
+    static final class Div extends FnReduceOfNumber.NonDecimalDiv<Integer> {
 
         public Div() {
             super();
@@ -143,7 +143,7 @@ public final class FnReduceOfInteger extends FnReduceOf<Integer> {
     }
 
     
-    static final class Remainder extends FnReduceOfNumber.Remainder<Integer> {
+    static final class Remainder extends FnReduceOfNumber.NonDecimalRemainder<Integer> {
 
         public Remainder() {
             super();
@@ -162,7 +162,7 @@ public final class FnReduceOfInteger extends FnReduceOf<Integer> {
 
     
     
-    static final class Avg extends FnReduceOfNumber.Avg<Integer> {
+    static final class Avg extends FnReduceOfNumber.NonDecimalAvg<Integer> {
 
         public Avg() {
             super();
