@@ -1,0 +1,75 @@
+<!DOCTYPE document PUBLIC
+  "-//Apache Software Foundation//DTD XDOC 1.0//EN"
+  "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+
+
+<document>
+  <properties>
+    <title>Functions: FnDate</title>    
+  </properties>
+  <body>
+  
+    <section name="Functions: FnDate">
+
+      
+
+      <subsection name="1. Overview">
+
+        <p>
+        	<b><a href="http://www.op4j.org/apidocs/org/op4j/functions/FnDate.html">FnDate</a></b> is a <em>function class</em>
+        	containing a lot of static methods to work with Date objects. Those static methods return functions that take 
+        	a <b>Date</b> object either as its input or output (depending on the function). It includes 
+        	conversions to String, to Date and adding days to a Date among others.        	  
+        </p>
+        
+      </subsection>
+
+      <subsection name="2. Functions">
+
+
+<table>
+<thead><tr><th>Function name</th><th>Return type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>toCalendar</td><td>IFunction&lt;Date,Calendar&gt;</td><td></td><td></td></tr>
+<tr><td>toCalendar</td><td>IFunction&lt;Date,Calendar&gt;</td><td>int truncateField</td><td></td></tr>
+<tr><td>add</td><td>IFunction&lt;Date,Date&gt;</td><td>int calendarField<br />int amount</td><td></td></tr>
+<tr><td>addDays</td><td>IFunction&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
+<tr><td>addHours</td><td>IFunction&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
+<tr><td>addMilliseconds</td><td>IFunction&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
+<tr><td>addMinutes</td><td>IFunction&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
+<tr><td>addMonths</td><td>IFunction&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
+<tr><td>addWeeks</td><td>IFunction&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
+<tr><td>addYears</td><td>IFunction&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
+<tr><td>set</td><td>IFunction&lt;Date,Date&gt;</td><td>int calendarField<br />int value</td><td></td></tr>
+<tr><td>setDay</td><td>IFunction&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
+<tr><td>setHour</td><td>IFunction&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
+<tr><td>setMillisecond</td><td>IFunction&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
+<tr><td>setMinute</td><td>IFunction&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
+<tr><td>setMonth</td><td>IFunction&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
+<tr><td>setWeek</td><td>IFunction&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
+<tr><td>setYear</td><td>IFunction&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
+<tr><td>round</td><td>IFunction&lt;Date,Date&gt;</td><td>int calendarField</td><td></td></tr>
+<tr><td>truncate</td><td>IFunction&lt;Date,Date&gt;</td><td>int calendarField</td><td></td></tr>
+<tr><td>before</td><td>IFunction&lt;Date,Boolean&gt;</td><td>Date date</td><td></td></tr>
+<tr><td>after</td><td>IFunction&lt;Date,Boolean&gt;</td><td>Date date</td><td></td></tr>
+<tr><td>toStr</td><td>IFunction&lt;Date,String&gt;</td><td>String pattern</td><td></td></tr>
+<tr><td>toStr</td><td>IFunction&lt;Date,String&gt;</td><td>String pattern<br />Locale locale</td><td></td></tr>
+<tr><td>toStr</td><td>IFunction&lt;Date,String&gt;</td><td>String pattern<br />String locale</td><td></td></tr>
+<tr><td>toStr</td><td>IFunction&lt;Date,String&gt;</td><td>DateStyle dateStyle<br />TimeStyle timeStyle</td><td></td></tr>
+<tr><td>toStr</td><td>IFunction&lt;Date,String&gt;</td><td>DateStyle dateStyle<br />TimeStyle timeStyle<br />Locale locale</td><td></td></tr>
+<tr><td>toStr</td><td>IFunction&lt;Date,String&gt;</td><td>DateStyle dateStyle<br />TimeStyle timeStyle<br />String locale</td><td></td></tr>
+<tr><td>timestampToDate</td><td>IFunction&lt;Timestamp,Date&gt;</td><td></td><td></td></tr>
+<tr><td>timestampToDate</td><td>IFunction&lt;Timestamp,Date&gt;</td><td>int truncateField</td><td></td></tr>
+<tr><td>timeInMillisToDate</td><td>IFunction&lt;Long,Date&gt;</td><td></td><td></td></tr>
+<tr><td>timeInMillisToDate</td><td>IFunction&lt;Long,Date&gt;</td><td>int truncateField</td><td></td></tr>
+<tr><td>fieldIntegerListToDate</td><td>IFunction&lt;List&lt;Integer&gt;, Date&gt;</td><td></td><td></td></tr>
+<tr><td>fieldIntegerArrayToDate</td><td>IFunction&lt;Integer[], Date&gt;</td><td></td><td></td></tr>
+<tr><td>fieldStringListToDate</td><td>IFunction&lt;List&lt;String&gt;, Date&gt;</td><td></td><td></td></tr>
+<tr><td>fieldStringArrayToDate</td><td>IFunction&lt;String[], Date&gt;</td><td></td><td></td></tr>
+</tbody></table>
+
+
+ 	</subsection>
+   </section>
+  </body>
+</document>
