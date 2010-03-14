@@ -1,0 +1,95 @@
+<!DOCTYPE document PUBLIC
+  "-//Apache Software Foundation//DTD XDOC 1.0//EN"
+  "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+
+
+<document>
+  <properties>
+    <title>Functions: FnNumber</title>    
+  </properties>
+  <body>
+  
+    <section name="Functions: FnNumber">
+
+      
+
+      <subsection name="1. Overview">
+
+        <p>
+        	<b><a href="http://www.op4j.org/apidocs/org/op4j/functions/FnNumber.html">FnNumber</a></b> is a <em>function class</em>
+        	containing a lot of static methods to work with Number objects. Those static methods return functions that deal 
+        	with Number objects. Those functions include conversions to String, to String when the number 
+        	represents a currency and rounding functions among others.        	  
+        </p>
+        
+      </subsection>
+
+      <subsection name="2. Functions">
+
+  
+
+<table>
+<thead><tr><th>Function name</th><th>Return type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>toBigDecimal</td><td>IFunction&lt;Number,BigDecimal&gt;</td><td></td><td></td></tr>
+<tr><td>toBigDecimal</td><td>IFunction&lt;Number,BigDecimal&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toBigInteger</td><td>IFunction&lt;Number,BigInteger&gt;</td><td></td><td></td></tr>
+<tr><td>toBigInteger</td><td>IFunction&lt;Number,BigInteger&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toDouble</td><td>IFunction&lt;Number,Double&gt;</td><td></td><td></td></tr>
+<tr><td>toDouble</td><td>IFunction&lt;Number,Double&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toFloat</td><td>IFunction&lt;Number,Float&gt;</td><td></td><td></td></tr>
+<tr><td>toFloat</td><td>IFunction&lt;Number,Float&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toLong</td><td>IFunction&lt;Number,Long&gt;</td><td></td><td></td></tr>
+<tr><td>toLong</td><td>IFunction&lt;Number,Long&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toInteger</td><td>IFunction&lt;Number,Integer&gt;</td><td></td><td></td></tr>
+<tr><td>toInteger</td><td>IFunction&lt;Number,Integer&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toShort</td><td>IFunction&lt;Number,Short&gt;</td><td></td><td></td></tr>
+<tr><td>toShort</td><td>IFunction&lt;Number,Short&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toByte</td><td>IFunction&lt;Number,Byte&gt;</td><td></td><td></td></tr>
+<tr><td>toByte</td><td>IFunction&lt;Number,Byte&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toBoolean</td><td>IFunction&lt;Number,Boolean&gt;</td><td></td><td></td></tr>
+<tr><td>roundBigDecimal</td><td>IFunction&lt;BigDecimal,BigDecimal&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>roundFloat</td><td>IFunction&lt;Float,Float&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>roundDouble</td><td>IFunction&lt;Double,Double&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td></td><td></td></tr>
+<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>boolean groupingUsed</td><td></td></tr>
+<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale</td><td></td></tr>
+<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td></td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>boolean groupingUsed</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td></td><td></td></tr>
+<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>boolean groupingUsed</td><td></td></tr>
+<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale</td><td></td></tr>
+<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+</tbody></table>
+
+ 	</subsection>
+   </section>
+  </body>
+</document>
