@@ -1,0 +1,47 @@
+<!DOCTYPE document PUBLIC
+  "-//Apache Software Foundation//DTD XDOC 1.0//EN"
+  "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+
+
+<document>
+  <properties>
+    <title>Functions: FnBoolean</title>    
+  </properties>
+  <body>
+  
+    <section name="Functions: FnBoolean">
+
+      
+
+      <subsection name="1. Overview">
+
+        <p>
+        	<b><a href="http://www.op4j.org/apidocs/org/op4j/functions/FnBoolean.html">FnBoolean</a></b> is a <em>function class</em>
+        	containing a lot of static methods returning functions that take a <b>Boolean</b> object as its input. 
+        </p>
+        
+      </subsection>
+
+      <subsection name="2. Functions">
+  
+
+  
+
+<table>
+<thead><tr><th>Function name</th><th>Return type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>toBigDecimal</td><td>IFunction&lt;Boolean,BigDecimal&gt;</td><td></td><td></td></tr>
+<tr><td>toBigInteger</td><td>IFunction&lt;Boolean,BigInteger&gt;</td><td></td><td></td></tr>
+<tr><td>toDouble</td><td>IFunction&lt;Boolean,Double&gt;</td><td></td><td></td></tr>
+<tr><td>toFloat</td><td>IFunction&lt;Boolean,Float&gt;</td><td></td><td></td></tr>
+<tr><td>toLong</td><td>IFunction&lt;Boolean,Long&gt;</td><td></td><td></td></tr>
+<tr><td>toInteger</td><td>IFunction&lt;Boolean,Integer&gt;</td><td></td><td></td></tr>
+<tr><td>toShort</td><td>IFunction&lt;Boolean,Short&gt;</td><td></td><td></td></tr>
+<tr><td>toByte</td><td>IFunction&lt;Boolean,Byte&gt;</td><td></td><td></td></tr>
+<tr><td>not</td><td>IFunction&lt;Boolean,Boolean&gt;</td><td></td><td></td></tr>
+</tbody></table>
+
+ 	</subsection>
+   </section>
+  </body>
+</document>
