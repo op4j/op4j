@@ -41,7 +41,7 @@ public final class FnArrayOfSetOf<T> extends FnArrayOf<Set<T>> {
     
     
     
-    public IFunction<Set<T>[],T[]> flattenSets() {
+    public final Function<Set<T>[],T[]> flattenSets() {
         return new FlattenSets<T>(Types.setComponentOf(this.type));
     }
     

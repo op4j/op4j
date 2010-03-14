@@ -8,56 +8,56 @@ import org.op4j.util.ValuePair;
 
 public final class FnReduceOfDouble extends FnReduceOf<Double> {
 
-    private static final IFunction<ValuePair<Number,Number>,Double> SUM = new Sum();
-    private static final IFunction<ValuePair<Number,Number>,Double> AVG = new Avg();
-    private static final IFunction<ValuePair<Number,Number>,Double> SUBT = new Subt();
-    private static final IFunction<ValuePair<Number,Number>,Double> MULT = new Mult();
-    private static final IFunction<ValuePair<Number,Number>,Double> DIV = new Div();
-    private static final IFunction<ValuePair<Number,Number>,Double> REMAINDER = new Remainder();
+    private static final Function<ValuePair<Number,Number>,Double> SUM = new Sum();
+    private static final Function<ValuePair<Number,Number>,Double> AVG = new Avg();
+    private static final Function<ValuePair<Number,Number>,Double> SUBT = new Subt();
+    private static final Function<ValuePair<Number,Number>,Double> MULT = new Mult();
+    private static final Function<ValuePair<Number,Number>,Double> DIV = new Div();
+    private static final Function<ValuePair<Number,Number>,Double> REMAINDER = new Remainder();
 
     
 
-    public IFunction<ValuePair<Number,Number>,Double> sum() {
+    public final Function<ValuePair<Number,Number>,Double> sum() {
         return SUM;
     }
     
-    public IFunction<ValuePair<Number,Number>,Double> avg() {
+    public final Function<ValuePair<Number,Number>,Double> avg() {
         return AVG;
     }
     
-    public IFunction<ValuePair<Number,Number>,Double> avg(final RoundingMode roundingMode) {
+    public final Function<ValuePair<Number,Number>,Double> avg(final RoundingMode roundingMode) {
         return new Avg(roundingMode);
     }
     
-    public IFunction<ValuePair<Number,Number>,Double> avg(final MathContext mathContext) {
+    public final Function<ValuePair<Number,Number>,Double> avg(final MathContext mathContext) {
         return new Avg(mathContext);
     }
     
-    public IFunction<ValuePair<Number,Number>,Double> subt() {
+    public final Function<ValuePair<Number,Number>,Double> subt() {
         return SUBT;
     }
     
-    public IFunction<ValuePair<Number,Number>,Double> mult() {
+    public final Function<ValuePair<Number,Number>,Double> mult() {
         return MULT;
     }
     
-    public IFunction<ValuePair<Number,Number>,Double> div() {
+    public final Function<ValuePair<Number,Number>,Double> div() {
         return DIV;
     }
     
-    public IFunction<ValuePair<Number,Number>,Double> div(final RoundingMode roundingMode) {
+    public final Function<ValuePair<Number,Number>,Double> div(final RoundingMode roundingMode) {
         return new Div(roundingMode);
     }
     
-    public IFunction<ValuePair<Number,Number>,Double> div(final MathContext mathContext) {
+    public final Function<ValuePair<Number,Number>,Double> div(final MathContext mathContext) {
         return new Div(mathContext);
     }
     
-    public IFunction<ValuePair<Number,Number>,Double> remainder() {
+    public final Function<ValuePair<Number,Number>,Double> remainder() {
         return REMAINDER;
     }
     
-    public IFunction<ValuePair<Number,Number>,Double> remainder(final MathContext mathContext) {
+    public final Function<ValuePair<Number,Number>,Double> remainder(final MathContext mathContext) {
         return new Remainder(mathContext);
     }
     

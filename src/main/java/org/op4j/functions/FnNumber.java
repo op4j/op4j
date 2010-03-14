@@ -60,95 +60,95 @@ public final class FnNumber {
 	
 	
 	
-	public static final IFunction<Number,BigDecimal> toBigDecimal() {
+	public static final Function<Number,BigDecimal> toBigDecimal() {
         return TO_BIG_DECIMAL;
     }
     
-    public static final IFunction<Number,BigDecimal> toBigDecimal(final int scale, final RoundingMode roundingMode) {
+    public static final Function<Number,BigDecimal> toBigDecimal(final int scale, final RoundingMode roundingMode) {
         return new ToBigDecimal(scale, roundingMode);
     }
     
     
-    public static final IFunction<Number,BigInteger> toBigInteger() {
+    public static final Function<Number,BigInteger> toBigInteger() {
         return TO_BIG_INTEGER;
     }
     
-    public static final IFunction<Number,BigInteger> toBigInteger(final RoundingMode roundingMode) {
+    public static final Function<Number,BigInteger> toBigInteger(final RoundingMode roundingMode) {
         return new ToBigInteger(roundingMode);
     }
     
     
-    public static final IFunction<Number,Double> toDouble() {
+    public static final Function<Number,Double> toDouble() {
         return TO_DOUBLE;
     }
     
-    public static final IFunction<Number,Double> toDouble(final int scale, final RoundingMode roundingMode) {
+    public static final Function<Number,Double> toDouble(final int scale, final RoundingMode roundingMode) {
         return new ToDouble(scale, roundingMode);
     }
     
     
-    public static final IFunction<Number,Float> toFloat() {
+    public static final Function<Number,Float> toFloat() {
         return TO_FLOAT;
     }
     
-    public static final IFunction<Number,Float> toFloat(final int scale, final RoundingMode roundingMode) {
+    public static final Function<Number,Float> toFloat(final int scale, final RoundingMode roundingMode) {
         return new ToFloat(scale, roundingMode);
     }
     
     
-    public static final IFunction<Number,Long> toLong() {
+    public static final Function<Number,Long> toLong() {
         return TO_LONG;
     }
     
-    public static final IFunction<Number,Long> toLong(final RoundingMode roundingMode) {
+    public static final Function<Number,Long> toLong(final RoundingMode roundingMode) {
         return new ToLong(roundingMode);
     }
     
     
-    public static final IFunction<Number,Integer> toInteger() {
+    public static final Function<Number,Integer> toInteger() {
         return TO_INTEGER;
     }
     
-    public static final IFunction<Number,Integer> toInteger(final RoundingMode roundingMode) {
+    public static final Function<Number,Integer> toInteger(final RoundingMode roundingMode) {
         return new ToInteger(roundingMode);
     }
     
     
-    public static final IFunction<Number,Short> toShort() {
+    public static final Function<Number,Short> toShort() {
         return TO_SHORT;
     }
     
-    public static final IFunction<Number,Short> toShort(final RoundingMode roundingMode) {
+    public static final Function<Number,Short> toShort(final RoundingMode roundingMode) {
         return new ToShort(roundingMode);
     }
     
     
-    public static final IFunction<Number,Byte> toByte() {
+    public static final Function<Number,Byte> toByte() {
         return TO_BYTE;
     }
     
-    public static final IFunction<Number,Byte> toByte(final RoundingMode roundingMode) {
+    public static final Function<Number,Byte> toByte(final RoundingMode roundingMode) {
         return new ToByte(roundingMode);
     }
     
     
     
-    public static final IFunction<Number,Boolean> toBoolean() {
+    public static final Function<Number,Boolean> toBoolean() {
         return TO_BOOLEAN;
     }
 	
 
     
     
-    public static final IFunction<BigDecimal,BigDecimal> roundBigDecimal(final int scale, final RoundingMode roundingMode) {
+    public static final Function<BigDecimal,BigDecimal> roundBigDecimal(final int scale, final RoundingMode roundingMode) {
         return new RoundBigDecimal(scale, roundingMode);
     }
     
-    public static final IFunction<Float,Float> roundFloat(final int scale, final RoundingMode roundingMode) {
+    public static final Function<Float,Float> roundFloat(final int scale, final RoundingMode roundingMode) {
         return new RoundFloat(scale, roundingMode);
     }
     
-    public static final IFunction<Double,Double> roundDouble(final int scale, final RoundingMode roundingMode) {
+    public static final Function<Double,Double> roundDouble(final int scale, final RoundingMode roundingMode) {
         return new RoundDouble(scale, roundingMode);
     }
     
@@ -165,39 +165,39 @@ public final class FnNumber {
     
     
     
-    public static final IFunction<Number,String> toStr() {
+    public static final Function<Number,String> toStr() {
         return new ToString();
     }   
-    public static final IFunction<Number,String> toStr(boolean groupingUsed) {
+    public static final Function<Number,String> toStr(boolean groupingUsed) {
         return new ToString(groupingUsed);
     }
-    public static final IFunction<Number,String> toStr(Locale locale) {
+    public static final Function<Number,String> toStr(Locale locale) {
         return new ToString(locale);
     }
-    public static final IFunction<Number,String> toStr(String locale) {
+    public static final Function<Number,String> toStr(String locale) {
         return new ToString(locale);
     }
-    public static final IFunction<Number,String> toStr(Locale locale, boolean groupingUsed) {
+    public static final Function<Number,String> toStr(Locale locale, boolean groupingUsed) {
         return new ToString(locale, groupingUsed);
     }   
-    public static final IFunction<Number,String> toStr(String locale, boolean groupingUsed) {
+    public static final Function<Number,String> toStr(String locale, boolean groupingUsed) {
         return new ToString(locale, groupingUsed);
     }
-    public static final IFunction<Number,String> toStr(Locale locale, int minIntegerDigits,
+    public static final Function<Number,String> toStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
         return new ToString(NumberFormatType.NUMBER, locale, 
                 minIntegerDigits, Integer.MAX_VALUE, 
                 minFractionDigits, maxFractionDigits,
                 groupingUsed);
     }
-    public static final IFunction<Number,String> toStr(String locale, int minIntegerDigits,
+    public static final Function<Number,String> toStr(String locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
         return new ToString(NumberFormatType.NUMBER, locale, 
                 minIntegerDigits, Integer.MAX_VALUE, 
                 minFractionDigits, maxFractionDigits,
                 groupingUsed);
     }
-    public static final IFunction<Number,String> toStr(Locale locale, int minIntegerDigits,
+    public static final Function<Number,String> toStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, 
             char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
         return new ToString(NumberFormatType.NUMBER, locale, 
@@ -206,7 +206,7 @@ public final class FnNumber {
                 true, groupingSeparator, decimalSeparator, 
                 decimalSeparatorAlwaysShown);
     }
-    public static final IFunction<Number,String> toStr(Locale locale, int minIntegerDigits,
+    public static final Function<Number,String> toStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
             char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
         return new ToString(NumberFormatType.NUMBER, locale, 
@@ -215,7 +215,7 @@ public final class FnNumber {
                 groupingUsed, decimalSeparator, 
                 decimalSeparatorAlwaysShown);
     }
-    public static final IFunction<Number,String> toStr(String locale, int minIntegerDigits, 
+    public static final Function<Number,String> toStr(String locale, int minIntegerDigits, 
             int minFractionDigits, int maxFractionDigits, 
             char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
         return new ToString(NumberFormatType.NUMBER, locale, 
@@ -224,7 +224,7 @@ public final class FnNumber {
                 true, groupingSeparator, decimalSeparator, 
                 decimalSeparatorAlwaysShown);
     }
-    public static final IFunction<Number,String> toStr(String locale, int minIntegerDigits, 
+    public static final Function<Number,String> toStr(String locale, int minIntegerDigits, 
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
             char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
         return new ToString(NumberFormatType.NUMBER, locale, 
@@ -236,39 +236,39 @@ public final class FnNumber {
     
     
     
-    public static final IFunction<Number,String> toCurrencyStr() {
+    public static final Function<Number,String> toCurrencyStr() {
         return new ToString(NumberFormatType.CURRENCY);
     }
-    public static final IFunction<Number,String> toCurrencyStr(boolean groupingUsed) {
+    public static final Function<Number,String> toCurrencyStr(boolean groupingUsed) {
         return new ToString(NumberFormatType.CURRENCY, groupingUsed);
     }
-    public static final IFunction<Number,String> toCurrencyStr(Locale locale) {
+    public static final Function<Number,String> toCurrencyStr(Locale locale) {
         return new ToString(NumberFormatType.CURRENCY, locale);
     }
-    public static final IFunction<Number,String> toCurrencyStr(String locale) {
+    public static final Function<Number,String> toCurrencyStr(String locale) {
         return new ToString(NumberFormatType.CURRENCY, locale);
     }
-    public static final IFunction<Number,String> toCurrencyStr(Locale locale, boolean groupingUsed) {
+    public static final Function<Number,String> toCurrencyStr(Locale locale, boolean groupingUsed) {
         return new ToString(NumberFormatType.CURRENCY, locale, groupingUsed);
     }
-    public static final IFunction<Number,String> toCurrencyStr(String locale, boolean groupingUsed) {
+    public static final Function<Number,String> toCurrencyStr(String locale, boolean groupingUsed) {
         return new ToString(NumberFormatType.CURRENCY, locale, groupingUsed);
     }
-    public static final IFunction<Number,String> toCurrencyStr(Locale locale, int minIntegerDigits,
+    public static final Function<Number,String> toCurrencyStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
         return new ToString(NumberFormatType.CURRENCY, locale, 
                 minIntegerDigits, Integer.MAX_VALUE, 
                 minFractionDigits, maxFractionDigits,
                 groupingUsed);
     }
-    public static final IFunction<Number,String> toCurrencyStr(String locale, int minIntegerDigits,
+    public static final Function<Number,String> toCurrencyStr(String locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
         return new ToString(NumberFormatType.CURRENCY, locale, 
                 minIntegerDigits, Integer.MAX_VALUE, 
                 minFractionDigits, maxFractionDigits,
                 groupingUsed);
     }
-    public static final IFunction<Number,String> toCurrencyStr(Locale locale, int minIntegerDigits,
+    public static final Function<Number,String> toCurrencyStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, 
             char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
         return new ToString(NumberFormatType.CURRENCY, locale, 
@@ -277,7 +277,7 @@ public final class FnNumber {
                 true, groupingSeparator, decimalSeparator, 
                 decimalSeparatorAlwaysShown);
     }
-    public static final IFunction<Number,String> toCurrencyStr(Locale locale, int minIntegerDigits,
+    public static final Function<Number,String> toCurrencyStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
             char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
         return new ToString(NumberFormatType.CURRENCY, locale, 
@@ -286,7 +286,7 @@ public final class FnNumber {
                 groupingUsed, decimalSeparator, 
                 decimalSeparatorAlwaysShown);
     }
-    public static final IFunction<Number,String> toCurrencyStr(String locale, int minIntegerDigits, 
+    public static final Function<Number,String> toCurrencyStr(String locale, int minIntegerDigits, 
             int minFractionDigits, int maxFractionDigits, 
             char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
         return new ToString(NumberFormatType.CURRENCY, locale, 
@@ -295,7 +295,7 @@ public final class FnNumber {
                 true, groupingSeparator, decimalSeparator, 
                 decimalSeparatorAlwaysShown);
     }
-    public static final IFunction<Number,String> toCurrencyStr(String locale, int minIntegerDigits, 
+    public static final Function<Number,String> toCurrencyStr(String locale, int minIntegerDigits, 
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
             char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
         return new ToString(NumberFormatType.CURRENCY, locale, 
@@ -307,39 +307,39 @@ public final class FnNumber {
     
     
     
-    public static final IFunction<Number,String> toPercentStr() {
+    public static final Function<Number,String> toPercentStr() {
         return new ToString(NumberFormatType.PERCENT);
     }
-    public static final IFunction<Number,String> toPercentStr(boolean groupingUsed) {
+    public static final Function<Number,String> toPercentStr(boolean groupingUsed) {
         return new ToString(NumberFormatType.PERCENT, groupingUsed);
     }
-    public static final IFunction<Number,String> toPercentStr(Locale locale) {
+    public static final Function<Number,String> toPercentStr(Locale locale) {
         return new ToString(NumberFormatType.PERCENT, locale);
     }
-    public static final IFunction<Number,String> toPercentStr(String locale) {
+    public static final Function<Number,String> toPercentStr(String locale) {
         return new ToString(NumberFormatType.PERCENT, locale);
     }
-    public static final IFunction<Number,String> toPercentStr(Locale locale, boolean groupingUsed) {
+    public static final Function<Number,String> toPercentStr(Locale locale, boolean groupingUsed) {
         return new ToString(NumberFormatType.PERCENT, locale, groupingUsed);
     }   
-    public static final IFunction<Number,String> toPercentStr(String locale, boolean groupingUsed) {
+    public static final Function<Number,String> toPercentStr(String locale, boolean groupingUsed) {
         return new ToString(NumberFormatType.PERCENT, locale, groupingUsed);
     }
-    public static final IFunction<Number,String> toPercentStr(Locale locale, int minIntegerDigits,
+    public static final Function<Number,String> toPercentStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
         return new ToString(NumberFormatType.PERCENT, locale, 
                 minIntegerDigits, Integer.MAX_VALUE, 
                 minFractionDigits, maxFractionDigits,
                 groupingUsed);
     }
-    public static final IFunction<Number,String> toPercentStr(String locale, int minIntegerDigits,
+    public static final Function<Number,String> toPercentStr(String locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
         return new ToString(NumberFormatType.PERCENT, locale, 
                 minIntegerDigits, Integer.MAX_VALUE, 
                 minFractionDigits, maxFractionDigits,
                 groupingUsed);
     }
-    public static final IFunction<Number,String> toPercentStr(Locale locale, int minIntegerDigits,
+    public static final Function<Number,String> toPercentStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, 
             char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
         return new ToString(NumberFormatType.PERCENT, locale, 
@@ -348,7 +348,7 @@ public final class FnNumber {
                 true, groupingSeparator, decimalSeparator, 
                 decimalSeparatorAlwaysShown);
     }
-    public static final IFunction<Number,String> toPercentStr(Locale locale, int minIntegerDigits,
+    public static final Function<Number,String> toPercentStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
             char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
         return new ToString(NumberFormatType.PERCENT, locale, 
@@ -357,7 +357,7 @@ public final class FnNumber {
                 groupingUsed, decimalSeparator, 
                 decimalSeparatorAlwaysShown);
     }
-    public static final IFunction<Number,String> toPercentStr(String locale, int minIntegerDigits, 
+    public static final Function<Number,String> toPercentStr(String locale, int minIntegerDigits, 
             int minFractionDigits, int maxFractionDigits, 
             char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
         return new ToString(NumberFormatType.PERCENT, locale, 
@@ -366,7 +366,7 @@ public final class FnNumber {
                 true, groupingSeparator, decimalSeparator, 
                 decimalSeparatorAlwaysShown);
     }
-    public static final IFunction<Number,String> toPercentStr(String locale, int minIntegerDigits, 
+    public static final Function<Number,String> toPercentStr(String locale, int minIntegerDigits, 
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
             char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
         return new ToString(NumberFormatType.PERCENT, locale, 

@@ -9,6 +9,8 @@
 - Created unfold functions and actions for generic unique operators.
 - Added aggregation functions in FnMath for arrays.
 - Improved precision management in FnMath functions
+- All predefined op4j functions now extend Function and thus provide an "execute" method
+  without context which allows them to be executed on their own more easily.
 
 
 1.0-beta1

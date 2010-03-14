@@ -37,7 +37,7 @@ public final class FnListOfArrayOf<T> extends FnListOf<T[]> {
     
     
     
-    public IFunction<List<T[]>,List<T>> flattenArrays() {
+    public final Function<List<T[]>,List<T>> flattenArrays() {
         return new FlattenArrays<T>();
     }
     

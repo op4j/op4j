@@ -20,53 +20,28 @@
 
 package org.op4j.functions;
 
-import java.util.List;
-
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
+import org.op4j.target.Target;
 
 /**
  * 
  * @since 1.0
  * 
  * @author Daniel Fern&aacute;ndez
- * 
+ *
  */
-public final class FnListOfListOf<T> extends FnListOf<List<T>> {
+public final class ExpressionFunction<T,R> extends Function<T,R> {
 
     
+    private final Target target;
     
-    
-    public final Function<List<List<T>>,List<T>> flattenLists() {
-        return new FlattenLists<T>();
+    public ExpressionFunction(final Target target) {
+        super();
+        this.target = target;
     }
     
-    
-
-    
-    
-    protected FnListOfListOf(final Type<T> type) {
-        super(Types.listOf(type));
+    @SuppressWarnings("unchecked")
+    public R execute(final T input, final ExecCtx ctx) throws Exception {
+        return (R) this.target.execute(input);
     }
-    
-    
-    
-    
-    
-    static final class FlattenLists<T> extends FnCollection.FlattenCollectionOfCollections<T, List<T>, List<List<T>>> {
-
-        
-        FlattenLists() {
-            super();
-        }
-
-        @Override
-        List<T> fromList(final List<T> object) {
-            return object;
-        }
-        
-    }
-    
-    
     
 }

@@ -39,7 +39,7 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class Call<T,R> implements IFunction<T,R> {
+public final class Call<T,R> extends Function<T,R> {
     
     
     private final Type<R> resultType;

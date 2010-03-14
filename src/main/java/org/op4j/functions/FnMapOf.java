@@ -54,51 +54,51 @@ public final class FnMapOf<K,V> {
     
     
 
-    public final IFunction<Map<K,V>,Map<K,V>> sortByKey() {
+    public final Function<Map<K,V>,Map<K,V>> sortByKey() {
         return new SortByKey<K,V>();
     }
 
-    public final IFunction<Map<K,V>,Map<K,V>> sortEntries(final Comparator<? super Entry<K,V>> comparator) {
+    public final Function<Map<K,V>,Map<K,V>> sortEntries(final Comparator<? super Entry<K,V>> comparator) {
         return new SortEntries<K,V>(comparator);
     }
     
-    public final IFunction<Map<K,V>,Map<K,V>> put(final K key, final V value) {
+    public final Function<Map<K,V>,Map<K,V>> put(final K key, final V value) {
         return new Put<K,V>(key, value);
     }
     
-    public final IFunction<Map<K,V>,Map<K,V>> insert(final int position, final K key, final V value) {
+    public final Function<Map<K,V>,Map<K,V>> insert(final int position, final K key, final V value) {
         return new Insert<K,V>(position, key, value);
     }
     
-    public final IFunction<Map<K,V>,Map<K,V>> putAll(final Map<K,V> map) {
+    public final Function<Map<K,V>,Map<K,V>> putAll(final Map<K,V> map) {
         return new PutAll<K,V>(map);
     }
     
-    public final IFunction<Map<K,V>,Map<K,V>> insertAll(final int position, final Map<K,V> map) {
+    public final Function<Map<K,V>,Map<K,V>> insertAll(final int position, final Map<K,V> map) {
         return new InsertAll<K,V>(position, map);
     }
     
-    public final IFunction<Map<K,V>,Map<K,V>> removeAllKeys(final K... keys) {
+    public final Function<Map<K,V>,Map<K,V>> removeAllKeys(final K... keys) {
         return new RemoveAllKeys<K,V>(keys);
     }
     
-    public final IFunction<Map<K,V>,Map<K,V>> removeAllTrue(final IFunction<? super Entry<K,V>,Boolean> eval) {
+    public final Function<Map<K,V>,Map<K,V>> removeAllTrue(final IFunction<? super Entry<K,V>,Boolean> eval) {
         return new RemoveAllTrue<K,V>(eval);
     }
     
-    public final IFunction<Map<K,V>,Map<K,V>> removeAllFalse(final IFunction<? super Entry<K,V>,Boolean> eval) {
+    public final Function<Map<K,V>,Map<K,V>> removeAllFalse(final IFunction<? super Entry<K,V>,Boolean> eval) {
         return new RemoveAllFalse<K,V>(eval);
     }
     
-    public final IFunction<Map<K,V>,Map<K,V>> removeAllKeysNot(final K... keys) {
+    public final Function<Map<K,V>,Map<K,V>> removeAllKeysNot(final K... keys) {
         return new RemoveAllKeysNot<K,V>(keys);
     }
     
-    public final IFunction<Map<K,V>,Set<K>> extractKeys() {
+    public final Function<Map<K,V>,Set<K>> extractKeys() {
         return new ExtractKeys<K,V>();
     }
     
-    public final IFunction<Map<K,V>,List<V>> extractValues() {
+    public final Function<Map<K,V>,List<V>> extractValues() {
         return new ExtractValues<K,V>();
     }
     
@@ -106,11 +106,11 @@ public final class FnMapOf<K,V> {
     
     
 
-    public final IFunction<Map<K,V>,Boolean> all(final IFunction<? super Map.Entry<K,V>,Boolean> eval) {
+    public final Function<Map<K,V>,Boolean> all(final IFunction<? super Map.Entry<K,V>,Boolean> eval) {
         return new All<K,V>(eval);
     }
     
-    public final IFunction<Map<K,V>,Boolean> any(final IFunction<? super Map.Entry<K,V>,Boolean> eval) {
+    public final Function<Map<K,V>,Boolean> any(final IFunction<? super Map.Entry<K,V>,Boolean> eval) {
         return new Any<K,V>(eval);
     }
     

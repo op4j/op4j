@@ -42,7 +42,7 @@ import org.op4j.util.VarArgsUtil;
  *
  * @since 1.0
  */
-public final class Ognl<T,R> implements IFunction<T,R> {
+public final class Ognl<T,R> extends Function<T,R> {
     
     @SuppressWarnings("unchecked")
     private static final Map<String,Object> parsedExpressionsByExpression =

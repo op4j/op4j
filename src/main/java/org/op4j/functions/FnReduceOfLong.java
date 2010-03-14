@@ -8,55 +8,55 @@ import org.op4j.util.ValuePair;
 
 public final class FnReduceOfLong extends FnReduceOf<Long> {
 
-    private static final IFunction<ValuePair<Number,Number>,Long> SUM = new Sum();
-    private static final IFunction<ValuePair<Number,Number>,Long> AVG = new Avg();
-    private static final IFunction<ValuePair<Number,Number>,Long> SUBT = new Subt();
-    private static final IFunction<ValuePair<Number,Number>,Long> MULT = new Mult();
-    private static final IFunction<ValuePair<Number,Number>,Long> DIV = new Div();
-    private static final IFunction<ValuePair<Number,Number>,Long> REMAINDER = new Remainder();
+    private static final Function<ValuePair<Number,Number>,Long> SUM = new Sum();
+    private static final Function<ValuePair<Number,Number>,Long> AVG = new Avg();
+    private static final Function<ValuePair<Number,Number>,Long> SUBT = new Subt();
+    private static final Function<ValuePair<Number,Number>,Long> MULT = new Mult();
+    private static final Function<ValuePair<Number,Number>,Long> DIV = new Div();
+    private static final Function<ValuePair<Number,Number>,Long> REMAINDER = new Remainder();
 
     
-    public IFunction<ValuePair<Number,Number>,Long> sum() {
+    public final Function<ValuePair<Number,Number>,Long> sum() {
         return SUM;
     }
     
-    public IFunction<ValuePair<Number,Number>,Long> avg() {
+    public final Function<ValuePair<Number,Number>,Long> avg() {
         return AVG;
     }
     
-    public IFunction<ValuePair<Number,Number>,Long> avg(final RoundingMode roundingMode) {
+    public final Function<ValuePair<Number,Number>,Long> avg(final RoundingMode roundingMode) {
         return new Avg(roundingMode);
     }
     
-    public IFunction<ValuePair<Number,Number>,Long> avg(final MathContext mathContext) {
+    public final Function<ValuePair<Number,Number>,Long> avg(final MathContext mathContext) {
         return new Avg(mathContext);
     }
     
-    public IFunction<ValuePair<Number,Number>,Long> subt() {
+    public final Function<ValuePair<Number,Number>,Long> subt() {
         return SUBT;
     }
     
-    public IFunction<ValuePair<Number,Number>,Long> mult() {
+    public final Function<ValuePair<Number,Number>,Long> mult() {
         return MULT;
     }
     
-    public IFunction<ValuePair<Number,Number>,Long> div() {
+    public final Function<ValuePair<Number,Number>,Long> div() {
         return DIV;
     }
     
-    public IFunction<ValuePair<Number,Number>,Long> div(final RoundingMode roundingMode) {
+    public final Function<ValuePair<Number,Number>,Long> div(final RoundingMode roundingMode) {
         return new Div(roundingMode);
     }
     
-    public IFunction<ValuePair<Number,Number>,Long> div(final MathContext mathContext) {
+    public final Function<ValuePair<Number,Number>,Long> div(final MathContext mathContext) {
         return new Div(mathContext);
     }
     
-    public IFunction<ValuePair<Number,Number>,Long> remainder() {
+    public final Function<ValuePair<Number,Number>,Long> remainder() {
         return REMAINDER;
     }
     
-    public IFunction<ValuePair<Number,Number>,Long> remainder(final MathContext mathContext) {
+    public final Function<ValuePair<Number,Number>,Long> remainder(final MathContext mathContext) {
         return new Remainder(mathContext);
     }
     

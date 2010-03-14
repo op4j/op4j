@@ -26,6 +26,7 @@ import java.util.Map;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.functions.ExpressionFunction;
 import org.op4j.functions.FnList;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
@@ -185,7 +186,7 @@ public final class Level0ListOperator<I,T> extends AbstractOperator
 
 
     public Function<I,List<T>> get() {
-        return new Function<I, List<T>>(getTarget());
+        return new ExpressionFunction<I, List<T>>(getTarget());
     }
 
 

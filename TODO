@@ -1,6 +1,5 @@
 
   Why do key an value operators have "ifIndex"?
-  Make all predefined functions extend Function. Is that possible?
   Make Fn add things like "concat"
   Create simple condition functions like "Contains", "equals", "less than", "greater than"...
   

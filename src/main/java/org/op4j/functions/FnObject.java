@@ -39,8 +39,8 @@ import org.javaruntype.type.Type;
 public final class FnObject {
 
     
-	private static IFunction<Object,String> TO_STRING = new ToString();
-    private static IFunction<Object,String> TO_STRING_NULL_SAFE = new ToStringNullSafe();
+	private static final Function<Object,String> TO_STRING = new ToString();
+    private static final Function<Object,String> TO_STRING_NULL_SAFE = new ToStringNullSafe();
 	
 	
 	
@@ -51,29 +51,29 @@ public final class FnObject {
 
 	
     
-    public static final IFunction<Object,String> toStr() {
+    public static final Function<Object,String> toStr() {
         return TO_STRING;
     }
     
-    public static final IFunction<Object,String> toStrNullSafe() {
+    public static final Function<Object,String> toStrNullSafe() {
         return TO_STRING_NULL_SAFE;
     }
     
     
-    public static final <T> IFunction<T,T[]> toSingletonArrayOf(final Type<T> type) {
+    public static final <T> Function<T,T[]> toSingletonArrayOf(final Type<T> type) {
         return new ToSingletonArray<T>(type);
     }
     
-    public static final <T> IFunction<T,List<T>> toSingletonListOf(final Type<T> type) {
+    public static final <T> Function<T,List<T>> toSingletonListOf(final Type<T> type) {
         return new ToSingletonList<T>();
     }
     
-    public static final <T> IFunction<T,Set<T>> toSingletonSetOf(final Type<T> type) {
+    public static final <T> Function<T,Set<T>> toSingletonSetOf(final Type<T> type) {
         return new ToSingletonSet<T>();
     }
 
     
-    public static final IFunction<Object,Boolean> eq(final Object object) {
+    public static final Function<Object,Boolean> eq(final Object object) {
         return new Equals(object);
     }
 
@@ -81,7 +81,7 @@ public final class FnObject {
     
     
     
-	static final class ToString implements IFunction<Object,String> {
+	static final class ToString extends Function<Object,String> {
 
 	    ToString() {
 			super();			
@@ -108,7 +108,7 @@ public final class FnObject {
 
     
     
-    static final class ToSingletonArray<T> implements IFunction<T,T[]>  {
+    static final class ToSingletonArray<T> extends Function<T,T[]>  {
 
         private final Type<T> type;
         
@@ -132,7 +132,7 @@ public final class FnObject {
     
     
     
-    static final class ToSingletonList<T> implements IFunction<T,List<T>> {
+    static final class ToSingletonList<T> extends Function<T,List<T>> {
 
         ToSingletonList() {
             super();
@@ -148,7 +148,7 @@ public final class FnObject {
  
     
     
-    static final class ToSingletonSet<T> implements IFunction<T,Set<T>> {
+    static final class ToSingletonSet<T> extends Function<T,Set<T>> {
 
         ToSingletonSet() {
             super();
@@ -166,7 +166,7 @@ public final class FnObject {
     
     
     
-    static final class Equals implements IFunction<Object,Boolean> {
+    static final class Equals extends Function<Object,Boolean> {
 
         private final Object object;
         

@@ -42,13 +42,13 @@ import org.apache.commons.lang.time.DateUtils;
 public final class FnCalendar {
 
     
-    private static IFunction<Timestamp,Calendar> TIMESTAMP_TO_CALENDAR = new TimestampToCalendar();
-    private static IFunction<Long,Calendar> TIME_IN_MILLIS_TO_CALENDAR = new TimeInMillisToCalendar();
+    private static final Function<Timestamp,Calendar> TIMESTAMP_TO_CALENDAR = new TimestampToCalendar();
+    private static final Function<Long,Calendar> TIME_IN_MILLIS_TO_CALENDAR = new TimeInMillisToCalendar();
     
-    private static final IFunction<List<Integer>,Calendar> FIELD_INTEGER_LIST_TO_CALENDAR = new FieldIntegerListToCalendar();
-    private static final IFunction<Integer[],Calendar> FIELD_INTEGER_ARRAY_TO_CALENDAR = new FieldIntegerArrayToCalendar();
-    private static final IFunction<List<String>,Calendar> FIELD_STRING_LIST_TO_CALENDAR = new FieldStringListToCalendar();
-    private static final IFunction<String[],Calendar> FIELD_STRING_ARRAY_TO_CALENDAR = new FieldStringArrayToCalendar();
+    private static final Function<List<Integer>,Calendar> FIELD_INTEGER_LIST_TO_CALENDAR = new FieldIntegerListToCalendar();
+    private static final Function<Integer[],Calendar> FIELD_INTEGER_ARRAY_TO_CALENDAR = new FieldIntegerArrayToCalendar();
+    private static final Function<List<String>,Calendar> FIELD_STRING_LIST_TO_CALENDAR = new FieldStringListToCalendar();
+    private static final Function<String[],Calendar> FIELD_STRING_ARRAY_TO_CALENDAR = new FieldStringArrayToCalendar();
 
     
     
@@ -58,109 +58,109 @@ public final class FnCalendar {
 	
 	
 
-	public static final IFunction<Calendar,Calendar> add(final int calendarField, final int amount) {
+	public static final Function<Calendar,Calendar> add(final int calendarField, final int amount) {
         return new Add(calendarField, amount);
     }
 	
-    public static final IFunction<Calendar,Calendar> addDays(final int amount) {
+    public static final Function<Calendar,Calendar> addDays(final int amount) {
         return new Add(Calendar.DATE, amount);
     }
     
-    public static final IFunction<Calendar,Calendar> addHours(final int amount) {
+    public static final Function<Calendar,Calendar> addHours(final int amount) {
         return new Add(Calendar.HOUR, amount);
     }
     
-    public static final IFunction<Calendar,Calendar> addMilliseconds(final int amount) {
+    public static final Function<Calendar,Calendar> addMilliseconds(final int amount) {
         return new Add(Calendar.MILLISECOND, amount);
     }
     
-    public static final IFunction<Calendar,Calendar> addMinutes(final int amount) {
+    public static final Function<Calendar,Calendar> addMinutes(final int amount) {
         return new Add(Calendar.MINUTE, amount);
     }
     
-    public static final IFunction<Calendar,Calendar> addMonths(final int amount) {
+    public static final Function<Calendar,Calendar> addMonths(final int amount) {
         return new Add(Calendar.MONTH, amount);
     }
     
-    public static final IFunction<Calendar,Calendar> addWeeks(final int amount) {
+    public static final Function<Calendar,Calendar> addWeeks(final int amount) {
         return new Add(Calendar.WEEK_OF_YEAR, amount);
     }
     
-    public static final IFunction<Calendar,Calendar> addYears(final int amount) {
+    public static final Function<Calendar,Calendar> addYears(final int amount) {
         return new Add(Calendar.YEAR, amount);
     }
 
-    public static final IFunction<Calendar,Calendar> set(final int calendarField, final int value) {
+    public static final Function<Calendar,Calendar> set(final int calendarField, final int value) {
         return new Set(calendarField, value);
     }
     
-    public static final IFunction<Calendar,Calendar> setDay(final int value) {
+    public static final Function<Calendar,Calendar> setDay(final int value) {
         return new Set(Calendar.DATE, value);
     }
     
-    public static final IFunction<Calendar,Calendar> setHour(final int value) {
+    public static final Function<Calendar,Calendar> setHour(final int value) {
         return new Set(Calendar.HOUR, value);
     }
     
-    public static final IFunction<Calendar,Calendar> setMillisecond(final int value) {
+    public static final Function<Calendar,Calendar> setMillisecond(final int value) {
         return new Set(Calendar.MILLISECOND, value);
     }
     
-    public static final IFunction<Calendar,Calendar> setMinute(final int value) {
+    public static final Function<Calendar,Calendar> setMinute(final int value) {
         return new Set(Calendar.MINUTE, value);
     }
     
-    public static final IFunction<Calendar,Calendar> setMonth(final int value) {
+    public static final Function<Calendar,Calendar> setMonth(final int value) {
         return new Set(Calendar.MONTH, value);
     }
     
-    public static final IFunction<Calendar,Calendar> setWeek(final int value) {
+    public static final Function<Calendar,Calendar> setWeek(final int value) {
         return new Set(Calendar.WEEK_OF_YEAR, value);
     }
     
-    public static final IFunction<Calendar,Calendar> setYear(final int value) {
+    public static final Function<Calendar,Calendar> setYear(final int value) {
         return new Set(Calendar.YEAR, value);
     }
 
-    public static final IFunction<Calendar,Calendar> round(final int calendarField) {
+    public static final Function<Calendar,Calendar> round(final int calendarField) {
         return new Round(calendarField);
     }
 
-    public static final IFunction<Calendar,Calendar> truncate(final int calendarField) {
+    public static final Function<Calendar,Calendar> truncate(final int calendarField) {
         return new Truncate(calendarField);
     }
 
-    public static final IFunction<Calendar,Boolean> before(final Calendar calendar) {
+    public static final Function<Calendar,Boolean> before(final Calendar calendar) {
         return new Before(calendar);
     }
 
-    public static final IFunction<Calendar,Boolean> after(final Calendar calendar) {
+    public static final Function<Calendar,Boolean> after(final Calendar calendar) {
         return new After(calendar);
     }
     
     
     
-    public static final IFunction<Calendar,String> toStr(final String pattern) {
+    public static final Function<Calendar,String> toStr(final String pattern) {
         return new ToString(pattern);
     }
     
-    public static final IFunction<Calendar,String> toStr(final String pattern, final Locale locale) {
+    public static final Function<Calendar,String> toStr(final String pattern, final Locale locale) {
         return new ToString(pattern, locale);
     }
     
-    public static final IFunction<Calendar,String> toStr(final String pattern, final String locale) {
+    public static final Function<Calendar,String> toStr(final String pattern, final String locale) {
         return new ToString(pattern, locale);
     }
     
-    public static final IFunction<Calendar,String> toStr(final DateStyle dateStyle, final TimeStyle timeStyle) {
+    public static final Function<Calendar,String> toStr(final DateStyle dateStyle, final TimeStyle timeStyle) {
         return new ToString(dateStyle, timeStyle);
     }
     
-    public static final IFunction<Calendar,String> toStr(final DateStyle dateStyle, final TimeStyle timeStyle, final Locale locale) {
+    public static final Function<Calendar,String> toStr(final DateStyle dateStyle, final TimeStyle timeStyle, final Locale locale) {
         return new ToString(dateStyle, timeStyle, locale);
     }
     
-    public static final IFunction<Calendar,String> toStr(final DateStyle dateStyle, final TimeStyle timeStyle, final String locale) {
+    public static final Function<Calendar,String> toStr(final DateStyle dateStyle, final TimeStyle timeStyle, final String locale) {
         return new ToString(dateStyle, timeStyle, locale);
     }
     
@@ -170,21 +170,21 @@ public final class FnCalendar {
     
     
     
-    public static final IFunction<Timestamp,Calendar> timestampToCalendar() {
+    public static final Function<Timestamp,Calendar> timestampToCalendar() {
         return TIMESTAMP_TO_CALENDAR;
     }
     
-    public static final IFunction<Timestamp,Calendar> timestampToCalendar(final int truncateField) {
+    public static final Function<Timestamp,Calendar> timestampToCalendar(final int truncateField) {
         return new TimestampToCalendar(truncateField);
     }
     
     
     
-    public static final IFunction<Long,Calendar> timeInMillisToCalendar() {
+    public static final Function<Long,Calendar> timeInMillisToCalendar() {
         return TIME_IN_MILLIS_TO_CALENDAR;
     }
     
-    public static final IFunction<Long,Calendar> timeInMillisToCalendar(final int truncateField) {
+    public static final Function<Long,Calendar> timeInMillisToCalendar(final int truncateField) {
         return new TimeInMillisToCalendar(truncateField);
     }
     
@@ -195,25 +195,25 @@ public final class FnCalendar {
     
     
     
-    public static final IFunction<List<Integer>, Calendar> fieldIntegerListToCalendar() {
+    public static final Function<List<Integer>, Calendar> fieldIntegerListToCalendar() {
         return FIELD_INTEGER_LIST_TO_CALENDAR;
     }
     
     
     
-    public static final IFunction<Integer[], Calendar> fieldIntegerArrayToCalendar() {
+    public static final Function<Integer[], Calendar> fieldIntegerArrayToCalendar() {
         return FIELD_INTEGER_ARRAY_TO_CALENDAR;
     }
     
     
     
-    public static final IFunction<List<String>, Calendar> fieldStringListToCalendar() {
+    public static final Function<List<String>, Calendar> fieldStringListToCalendar() {
         return FIELD_STRING_LIST_TO_CALENDAR;
     }
     
     
     
-    public static final IFunction<String[], Calendar> fieldStringArrayToCalendar() {
+    public static final Function<String[], Calendar> fieldStringArrayToCalendar() {
         return FIELD_STRING_ARRAY_TO_CALENDAR;
     }
     

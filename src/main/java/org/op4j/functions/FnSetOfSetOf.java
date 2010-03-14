@@ -39,7 +39,7 @@ public final class FnSetOfSetOf<T> extends FnSetOf<Set<T>> {
     
     
     
-    public IFunction<Set<Set<T>>,Set<T>> flattenSets() {
+    public final Function<Set<Set<T>>,Set<T>> flattenSets() {
         return new FlattenSets<T>();
     }
     

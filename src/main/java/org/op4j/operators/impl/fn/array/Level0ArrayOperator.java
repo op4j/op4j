@@ -24,6 +24,7 @@ import java.util.Comparator;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
+import org.op4j.functions.ExpressionFunction;
 import org.op4j.functions.FnArray;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
@@ -179,7 +180,7 @@ public final class Level0ArrayOperator<I,T>
 
 
 	public Function<I,T[]> get() {
-        return new Function<I, T[]>(getTarget());
+        return new ExpressionFunction<I, T[]>(getTarget());
     }
 
     public Level0GenericUniqOperator<I,T[]> generic() {

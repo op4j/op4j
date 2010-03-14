@@ -21,7 +21,7 @@
 package org.op4j.functions;
 
 import org.op4j.exceptions.ExecutionException;
-import org.op4j.target.Target;
+import org.op4j.util.ExecCtxImpl;
 
 /**
  * 
@@ -30,24 +30,17 @@ import org.op4j.target.Target;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public final class Function<T,R> implements IFunction<T,R> {
+public abstract class Function<T,R> implements IFunction<T,R> {
 
     
-    private final Target target;
-    
-    public Function(final Target target) {
+    protected Function() {
         super();
-        this.target = target;
-    }
-    
-    public R execute(final T input, final ExecCtx ctx) throws Exception {
-        return execute(input);
     }
 
-    @SuppressWarnings("unchecked")
-    public R execute(final T object) {
+    
+    public R execute(final T input) {
         try {
-            return (R) this.target.execute(object);
+            return execute(input, new ExecCtxImpl(null));
         } catch (final ExecutionException e) {
             throw e;
         } catch (final Exception e) {

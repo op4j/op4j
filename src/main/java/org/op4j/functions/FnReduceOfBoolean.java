@@ -5,15 +5,15 @@ import org.op4j.util.ValuePair;
 
 public final class FnReduceOfBoolean extends FnReduceOf<Boolean> {
 
-    private static final IFunction<ValuePair<Boolean,Boolean>,Boolean> AND = new And();
-    private static final IFunction<ValuePair<Boolean,Boolean>,Boolean> OR = new Or();
+    private static final Function<ValuePair<Boolean,Boolean>,Boolean> AND = new And();
+    private static final Function<ValuePair<Boolean,Boolean>,Boolean> OR = new Or();
 
     
-    public IFunction<ValuePair<Boolean,Boolean>,Boolean> and() {
+    public final Function<ValuePair<Boolean,Boolean>,Boolean> and() {
         return AND;
     }
     
-    public IFunction<ValuePair<Boolean,Boolean>,Boolean> or() {
+    public final Function<ValuePair<Boolean,Boolean>,Boolean> or() {
         return OR;
     }
 

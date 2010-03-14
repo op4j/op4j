@@ -40,7 +40,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.time.StopWatch;
-import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.junit.Test;
 import org.op4j.functions.Call;
@@ -589,6 +588,7 @@ watch.start();
         
         System.out.println(Op.on(10).exec(FnMath.ofInteger().divideBy(3,RoundingMode.CEILING)).get());
         System.out.println(Op.onAll(10,3).reduce(FnReduce.ofInteger().div(RoundingMode.CEILING)).get());
+        
         
     }
     

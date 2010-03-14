@@ -40,7 +40,7 @@ public final class FnArrayOfListOf<T> extends FnArrayOf<List<T>> {
     
     
     
-    public IFunction<List<T>[],T[]> flattenLists() {
+    public final Function<List<T>[],T[]> flattenLists() {
         return new FlattenLists<T>(Types.listComponentOf(this.type));
     }
     

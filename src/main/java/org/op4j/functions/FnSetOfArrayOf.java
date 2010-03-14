@@ -39,7 +39,7 @@ public final class FnSetOfArrayOf<T> extends FnSetOf<T[]> {
     
     
     
-    public IFunction<Set<T[]>,Set<T>> flattenArrays() {
+    public final Function<Set<T[]>,Set<T>> flattenArrays() {
         return new FlattenArrays<T>();
     }
     

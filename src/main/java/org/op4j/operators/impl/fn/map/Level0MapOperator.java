@@ -25,6 +25,7 @@ import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.functions.ExpressionFunction;
 import org.op4j.functions.FnMap;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
@@ -138,7 +139,7 @@ public final class Level0MapOperator<I,K,V> extends AbstractOperator
 
 
     public Function<I,Map<K, V>> get() {
-        return new Function<I, Map<K, V>>(getTarget());
+        return new ExpressionFunction<I, Map<K, V>>(getTarget());
     }
 
 

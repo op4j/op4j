@@ -39,7 +39,7 @@ import org.op4j.util.MapEntry;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public abstract class MapBuilder<T,K,V> implements IFunction<T,Map.Entry<K,V>> {
+public abstract class MapBuilder<T,K,V> extends Function<T,Map.Entry<K,V>> {
     
     protected MapBuilder() {
         super();

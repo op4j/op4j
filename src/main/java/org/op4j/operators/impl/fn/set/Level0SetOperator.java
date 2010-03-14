@@ -26,6 +26,7 @@ import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.functions.ExpressionFunction;
 import org.op4j.functions.FnSet;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
@@ -181,7 +182,7 @@ public final class Level0SetOperator<I,T> extends AbstractOperator
 
 
     public Function<I,Set<T>> get() {
-        return new Function<I, Set<T>>(getTarget());
+        return new ExpressionFunction<I, Set<T>>(getTarget());
     }
 
 

@@ -5,14 +5,14 @@ import org.op4j.util.ValuePair;
 
 public final class FnReduceOfString extends FnReduceOf<String> {
 
-    private static final IFunction<ValuePair<String,String>,String> JOIN = new Join();
+    private static final Function<ValuePair<String,String>,String> JOIN = new Join();
 
     
-    public IFunction<ValuePair<String,String>,String> join() {
+    public final Function<ValuePair<String,String>,String> join() {
         return JOIN;
     }
     
-    public IFunction<ValuePair<String,String>,String> join(final String separator) {
+    public final Function<ValuePair<String,String>,String> join(final String separator) {
         return new Join(separator);
     }
 

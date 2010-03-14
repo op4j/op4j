@@ -11,19 +11,19 @@ public class FnReduceOf<T> {
 
 
     
-    public final IFunction<ValuePair<T,T>,T> max() {
+    public final Function<ValuePair<T,T>,T> max() {
         return new Max<T>();
     }
     
-    public final IFunction<ValuePair<T,T>,T> min() {
+    public final Function<ValuePair<T,T>,T> min() {
         return new Min<T>();
     }
     
-    public final <X extends Comparable<? super X>> IFunction<ValuePair<T,T>,T> maxBy(final IFunction<? super T,X> function) {
+    public final <X extends Comparable<? super X>> Function<ValuePair<T,T>,T> maxBy(final IFunction<? super T,X> function) {
         return new MaxBy<T,X>(function);
     }
     
-    public final <X extends Comparable<? super X>> IFunction<ValuePair<T,T>,T> minBy(final IFunction<? super T,X> function) {
+    public final <X extends Comparable<? super X>> Function<ValuePair<T,T>,T> minBy(final IFunction<? super T,X> function) {
         return new MinBy<T,X>(function);
     }
     

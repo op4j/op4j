@@ -10,55 +10,55 @@ import org.op4j.util.ValuePair;
 
 public final class FnReduceOfBigDecimal extends FnReduceOf<BigDecimal> {
 
-    private static final IFunction<ValuePair<Number,Number>,BigDecimal> SUM = new Sum();
-    private static final IFunction<ValuePair<Number,Number>,BigDecimal> AVG = new Avg();
-    private static final IFunction<ValuePair<Number,Number>,BigDecimal> SUBT = new Subt();
-    private static final IFunction<ValuePair<Number,Number>,BigDecimal> MULT = new Mult();
-    private static final IFunction<ValuePair<Number,Number>,BigDecimal> DIV = new Div();
-    private static final IFunction<ValuePair<Number,Number>,BigDecimal> REMAINDER = new Remainder();
+    private static final Function<ValuePair<Number,Number>,BigDecimal> SUM = new Sum();
+    private static final Function<ValuePair<Number,Number>,BigDecimal> AVG = new Avg();
+    private static final Function<ValuePair<Number,Number>,BigDecimal> SUBT = new Subt();
+    private static final Function<ValuePair<Number,Number>,BigDecimal> MULT = new Mult();
+    private static final Function<ValuePair<Number,Number>,BigDecimal> DIV = new Div();
+    private static final Function<ValuePair<Number,Number>,BigDecimal> REMAINDER = new Remainder();
 
     
-    public IFunction<ValuePair<Number,Number>,BigDecimal> sum() {
+    public final Function<ValuePair<Number,Number>,BigDecimal> sum() {
         return SUM;
     }
     
-    public IFunction<ValuePair<Number,Number>,BigDecimal> avg() {
+    public final Function<ValuePair<Number,Number>,BigDecimal> avg() {
         return AVG;
     }
     
-    public IFunction<ValuePair<Number,Number>,BigDecimal> avg(final RoundingMode roundingMode) {
+    public final Function<ValuePair<Number,Number>,BigDecimal> avg(final RoundingMode roundingMode) {
         return new Avg(roundingMode);
     }
     
-    public IFunction<ValuePair<Number,Number>,BigDecimal> avg(final MathContext mathContext) {
+    public final Function<ValuePair<Number,Number>,BigDecimal> avg(final MathContext mathContext) {
         return new Avg(mathContext);
     }
     
-    public IFunction<ValuePair<Number,Number>,BigDecimal> subt() {
+    public final Function<ValuePair<Number,Number>,BigDecimal> subt() {
         return SUBT;
     }
     
-    public IFunction<ValuePair<Number,Number>,BigDecimal> mult() {
+    public final Function<ValuePair<Number,Number>,BigDecimal> mult() {
         return MULT;
     }
     
-    public IFunction<ValuePair<Number,Number>,BigDecimal> div() {
+    public final Function<ValuePair<Number,Number>,BigDecimal> div() {
         return DIV;
     }
     
-    public IFunction<ValuePair<Number,Number>,BigDecimal> div(final RoundingMode roundingMode) {
+    public final Function<ValuePair<Number,Number>,BigDecimal> div(final RoundingMode roundingMode) {
         return new Div(roundingMode);
     }
     
-    public IFunction<ValuePair<Number,Number>,BigDecimal> div(final MathContext mathContext) {
+    public final Function<ValuePair<Number,Number>,BigDecimal> div(final MathContext mathContext) {
         return new Div(mathContext);
     }
     
-    public IFunction<ValuePair<Number,Number>,BigDecimal> remainder() {
+    public final Function<ValuePair<Number,Number>,BigDecimal> remainder() {
         return REMAINDER;
     }
     
-    public IFunction<ValuePair<Number,Number>,BigDecimal> remainder(final MathContext mathContext) {
+    public final Function<ValuePair<Number,Number>,BigDecimal> remainder(final MathContext mathContext) {
         return new Remainder(mathContext);
     }
     

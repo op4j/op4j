@@ -56,121 +56,121 @@ public class FnSetOf<T> {
 
 
 
-    public final IFunction<Set<T>,Set<T>> sort() {
+    public final Function<Set<T>,Set<T>> sort() {
         return new Sort<T>();
     }
 
-    public final IFunction<Set<T>,Set<T>> sort(final Comparator<? super T> comparator) {
+    public final Function<Set<T>,Set<T>> sort(final Comparator<? super T> comparator) {
         return new SortByComparator<T>(comparator);
     }
     
-    public final IFunction<Set<T>,Set<T>> add(final T... newElements) {
+    public final Function<Set<T>,Set<T>> add(final T... newElements) {
         return new Add<T>(newElements);
     }
     
-    public final IFunction<Set<T>,Set<T>> insert(final int position, final T... newElements) {
+    public final Function<Set<T>,Set<T>> insert(final int position, final T... newElements) {
         return new Insert<T>(position, newElements);
     }
     
-    public final IFunction<Set<T>,Set<T>> addAll(final Collection<T> collection) {
+    public final Function<Set<T>,Set<T>> addAll(final Collection<T> collection) {
         return new AddAll<T>(collection);
     }
     
-    public final IFunction<Set<T>,Set<T>> removeAllIndexes(final int... indexes) {
+    public final Function<Set<T>,Set<T>> removeAllIndexes(final int... indexes) {
         return new RemoveAllIndexes<T>(indexes);
     }
     
-    public final IFunction<Set<T>,Set<T>> removeAllEqual(final T... values) {
+    public final Function<Set<T>,Set<T>> removeAllEqual(final T... values) {
         return new RemoveAllEqual<T>(values);
     }
     
-    public final IFunction<Set<T>,Set<T>> removeAllTrue(final IFunction<? super T,Boolean> eval) {
+    public final Function<Set<T>,Set<T>> removeAllTrue(final IFunction<? super T,Boolean> eval) {
         return new RemoveAllTrue<T>(eval);
     }
     
-    public final IFunction<Set<T>,Set<T>> removeAllFalse(final IFunction<? super T,Boolean> eval) {
+    public final Function<Set<T>,Set<T>> removeAllFalse(final IFunction<? super T,Boolean> eval) {
         return new RemoveAllFalse<T>(eval);
     }
     
-    public final IFunction<Set<T>,Set<T>> removeAllIndexesNot(final int... indexes) {
+    public final Function<Set<T>,Set<T>> removeAllIndexesNot(final int... indexes) {
         return new RemoveAllIndexesNot<T>(indexes);
     }
     
-    public final IFunction<Set<T>,Set<T>> removeAllNull() {
+    public final Function<Set<T>,Set<T>> removeAllNull() {
         return new RemoveAllNull<T>();
     }
     
-    public final IFunction<Set<T>,Set<T>> removeAllNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
+    public final Function<Set<T>,Set<T>> removeAllNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
         return new RemoveAllNotNullAndTrue<T>(eval);
     }
     
-    public final IFunction<Set<T>,Set<T>> removeAllNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
+    public final Function<Set<T>,Set<T>> removeAllNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
         return new RemoveAllNotNullAndFalse<T>(eval);
     }
     
-    public final IFunction<Set<T>,Set<T>> removeAllNullOrTrue(final IFunction<? super T,Boolean> eval) {
+    public final Function<Set<T>,Set<T>> removeAllNullOrTrue(final IFunction<? super T,Boolean> eval) {
         return new RemoveAllNullOrTrue<T>(eval);
     }
     
-    public final IFunction<Set<T>,Set<T>> removeAllNullOrFalse(final IFunction<? super T,Boolean> eval) {
+    public final Function<Set<T>,Set<T>> removeAllNullOrFalse(final IFunction<? super T,Boolean> eval) {
         return new RemoveAllNullOrFalse<T>(eval);
     }
     
 
     
-    public final IFunction<Set<T>,T[]> toArray() {
+    public final Function<Set<T>,T[]> toArray() {
         return new ToArray<T>(this.type);
     }
 
-    public final IFunction<Set<T>,List<T>> toList() {
+    public final Function<Set<T>,List<T>> toList() {
         return new ToList<T>();
     }
     
-    public final <K> IFunction<Set<T>,Map<K,T>> toMapByKeyEval(final IFunction<? super T, K> eval) {
+    public final <K> Function<Set<T>,Map<K,T>> toMapByKeyEval(final IFunction<? super T, K> eval) {
         return new ToMapByKeyEval<K,T>(eval);
     }
     
-    public final <K,V> IFunction<Set<T>,Map<K,V>> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+    public final <K,V> Function<Set<T>,Map<K,V>> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
         return new ToMapByMapBuilder<K,V,T>(mapBuilder);
     }
     
-    public final IFunction<Set<T>,Map<T,T>> toMapByAlternateElements() {
+    public final Function<Set<T>,Map<T,T>> toMapByAlternateElements() {
         return new ToMapByAlternateElements<T>();
     }
     
-    public final <K> IFunction<Set<T>,Map<K,T[]>> toMapOfArrayByKeyEval(final IFunction<? super T, K> eval) {
+    public final <K> Function<Set<T>,Map<K,T[]>> toMapOfArrayByKeyEval(final IFunction<? super T, K> eval) {
         return new ToMapOfArrayByKeyEval<K,T>(this.type, eval);
     }
     
-    public final <K,V> IFunction<Set<T>,Map<K,V[]>> toMapOfArrayOf(final Type<V> valueType, final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+    public final <K,V> Function<Set<T>,Map<K,V[]>> toMapOfArrayOf(final Type<V> valueType, final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
         return new ToMapOfArrayByMapBuilder<K,V,T>(valueType, mapBuilder);
     }
     
-    public final IFunction<Set<T>,Map<T,T[]>> toMapOfArrayByAlternateElements() {
+    public final Function<Set<T>,Map<T,T[]>> toMapOfArrayByAlternateElements() {
         return new ToMapOfArrayByAlternateElements<T>(this.type);
     }
     
-    public final <K> IFunction<Set<T>,Map<K,List<T>>> toMapOfListByKeyEval(final IFunction<? super T, K> eval) {
+    public final <K> Function<Set<T>,Map<K,List<T>>> toMapOfListByKeyEval(final IFunction<? super T, K> eval) {
         return new ToMapOfListByKeyEval<K,T>(eval);
     }
     
-    public final <K,V> IFunction<Set<T>,Map<K,List<V>>> toMapOfList(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+    public final <K,V> Function<Set<T>,Map<K,List<V>>> toMapOfList(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
         return new ToMapOfListByMapBuilder<K,V,T>(mapBuilder);
     }
     
-    public final IFunction<Set<T>,Map<T,List<T>>> toMapOfListByAlternateElements() {
+    public final Function<Set<T>,Map<T,List<T>>> toMapOfListByAlternateElements() {
         return new ToMapOfListByAlternateElements<T>();
     }
     
-    public final <K> IFunction<Set<T>,Map<K,Set<T>>> toMapOfSetByKeyEval(final IFunction<? super T, K> eval) {
+    public final <K> Function<Set<T>,Map<K,Set<T>>> toMapOfSetByKeyEval(final IFunction<? super T, K> eval) {
         return new ToMapOfSetByKeyEval<K,T>(eval);
     }
     
-    public final <K,V> IFunction<Set<T>,Map<K,Set<V>>> toMapOfSet(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+    public final <K,V> Function<Set<T>,Map<K,Set<V>>> toMapOfSet(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
         return new ToMapOfSetByMapBuilder<K,V,T>(mapBuilder);
     }
     
-    public final IFunction<Set<T>,Map<T,Set<T>>> toMapOfSetByAlternateElements() {
+    public final Function<Set<T>,Map<T,Set<T>>> toMapOfSetByAlternateElements() {
         return new ToMapOfSetByAlternateElements<T>();
     }
     
@@ -178,30 +178,30 @@ public class FnSetOf<T> {
     
     
     
-    public final IFunction<T,Set<T>> unfold(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> whileCondition) {
+    public final Function<T,Set<T>> unfold(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> whileCondition) {
         return new Unfold<T>(function, whileCondition);
     }
     
-    public final IFunction<T,Set<T>> unfold(final IFunction<? super T,? extends T> function) {
+    public final Function<T,Set<T>> unfold(final IFunction<? super T,? extends T> function) {
         return new Unfold<T>(function, null);
     }
 
     
-    public final IFunction<Set<T>,T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> function) {
+    public final Function<Set<T>,T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> function) {
         return new Reduce<T>(function);
     }
     
-    public final <R> IFunction<Set<T>,R> reduce(final IFunction<? extends ValuePair<? super R,? super T>,R> function, final R initialValue) {
+    public final <R> Function<Set<T>,R> reduce(final IFunction<? extends ValuePair<? super R,? super T>,R> function, final R initialValue) {
         return new ReduceInitialValue<T,R>(function, initialValue);
     }
 
     
 
-    public final IFunction<Set<T>,Boolean> all(final IFunction<? super T,Boolean> eval) {
+    public final Function<Set<T>,Boolean> all(final IFunction<? super T,Boolean> eval) {
         return new All<T>(eval);
     }
     
-    public final IFunction<Set<T>,Boolean> any(final IFunction<? super T,Boolean> eval) {
+    public final Function<Set<T>,Boolean> any(final IFunction<? super T,Boolean> eval) {
         return new Any<T>(eval);
     }
     

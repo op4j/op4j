@@ -8,55 +8,55 @@ import org.op4j.util.ValuePair;
 
 public final class FnReduceOfFloat extends FnReduceOf<Float> {
 
-    private static final IFunction<ValuePair<Number,Number>,Float> SUM = new Sum();
-    private static final IFunction<ValuePair<Number,Number>,Float> AVG = new Avg();
-    private static final IFunction<ValuePair<Number,Number>,Float> SUBT = new Subt();
-    private static final IFunction<ValuePair<Number,Number>,Float> MULT = new Mult();
-    private static final IFunction<ValuePair<Number,Number>,Float> DIV = new Div();
-    private static final IFunction<ValuePair<Number,Number>,Float> REMAINDER = new Remainder();
+    private static final Function<ValuePair<Number,Number>,Float> SUM = new Sum();
+    private static final Function<ValuePair<Number,Number>,Float> AVG = new Avg();
+    private static final Function<ValuePair<Number,Number>,Float> SUBT = new Subt();
+    private static final Function<ValuePair<Number,Number>,Float> MULT = new Mult();
+    private static final Function<ValuePair<Number,Number>,Float> DIV = new Div();
+    private static final Function<ValuePair<Number,Number>,Float> REMAINDER = new Remainder();
 
     
-    public IFunction<ValuePair<Number,Number>,Float> sum() {
+    public final Function<ValuePair<Number,Number>,Float> sum() {
         return SUM;
     }
     
-    public IFunction<ValuePair<Number,Number>,Float> avg() {
+    public final Function<ValuePair<Number,Number>,Float> avg() {
         return AVG;
     }
     
-    public IFunction<ValuePair<Number,Number>,Float> avg(final RoundingMode roundingMode) {
+    public final Function<ValuePair<Number,Number>,Float> avg(final RoundingMode roundingMode) {
         return new Avg(roundingMode);
     }
     
-    public IFunction<ValuePair<Number,Number>,Float> avg(final MathContext mathContext) {
+    public final Function<ValuePair<Number,Number>,Float> avg(final MathContext mathContext) {
         return new Avg(mathContext);
     }
     
-    public IFunction<ValuePair<Number,Number>,Float> subt() {
+    public final Function<ValuePair<Number,Number>,Float> subt() {
         return SUBT;
     }
     
-    public IFunction<ValuePair<Number,Number>,Float> mult() {
+    public final Function<ValuePair<Number,Number>,Float> mult() {
         return MULT;
     }
     
-    public IFunction<ValuePair<Number,Number>,Float> div() {
+    public final Function<ValuePair<Number,Number>,Float> div() {
         return DIV;
     }
     
-    public IFunction<ValuePair<Number,Number>,Float> div(final RoundingMode roundingMode) {
+    public final Function<ValuePair<Number,Number>,Float> div(final RoundingMode roundingMode) {
         return new Div(roundingMode);
     }
     
-    public IFunction<ValuePair<Number,Number>,Float> div(final MathContext mathContext) {
+    public final Function<ValuePair<Number,Number>,Float> div(final MathContext mathContext) {
         return new Div(mathContext);
     }
     
-    public IFunction<ValuePair<Number,Number>,Float> remainder() {
+    public final Function<ValuePair<Number,Number>,Float> remainder() {
         return REMAINDER;
     }
     
-    public IFunction<ValuePair<Number,Number>,Float> remainder(final MathContext mathContext) {
+    public final Function<ValuePair<Number,Number>,Float> remainder(final MathContext mathContext) {
         return new Remainder(mathContext);
     }
     

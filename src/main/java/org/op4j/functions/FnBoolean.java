@@ -55,46 +55,46 @@ public final class FnBoolean {
 	
 	
 	
-	public static final IFunction<Boolean,BigDecimal> toBigDecimal() {
+	public static final Function<Boolean,BigDecimal> toBigDecimal() {
         return TO_BIG_DECIMAL;
     }
     
     
-    public static final IFunction<Boolean,BigInteger> toBigInteger() {
+    public static final Function<Boolean,BigInteger> toBigInteger() {
         return TO_BIG_INTEGER;
     }
     
     
-    public static final IFunction<Boolean,Double> toDouble() {
+    public static final Function<Boolean,Double> toDouble() {
         return TO_DOUBLE;
     }
     
     
-    public static final IFunction<Boolean,Float> toFloat() {
+    public static final Function<Boolean,Float> toFloat() {
         return TO_FLOAT;
     }
     
     
-    public static final IFunction<Boolean,Long> toLong() {
+    public static final Function<Boolean,Long> toLong() {
         return TO_LONG;
     }
     
     
-    public static final IFunction<Boolean,Integer> toInteger() {
+    public static final Function<Boolean,Integer> toInteger() {
         return TO_INTEGER;
     }
     
     
-    public static final IFunction<Boolean,Short> toShort() {
+    public static final Function<Boolean,Short> toShort() {
         return TO_SHORT;
     }
     
     
-    public static final IFunction<Boolean,Byte> toByte() {
+    public static final Function<Boolean,Byte> toByte() {
         return TO_BYTE;
     }
 
-    public static final IFunction<Boolean,Boolean> not() {
+    public static final Function<Boolean,Boolean> not() {
         return NOT;
     }
     

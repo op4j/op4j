@@ -26,6 +26,7 @@ import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.functions.ExpressionFunction;
 import org.op4j.functions.FnArray;
 import org.op4j.functions.FnList;
 import org.op4j.functions.FnObject;
@@ -37,7 +38,6 @@ import org.op4j.operators.impl.fn.array.Level0ArrayOperator;
 import org.op4j.operators.impl.fn.list.Level0ListOperator;
 import org.op4j.operators.impl.fn.map.Level0MapOperator;
 import org.op4j.operators.impl.fn.set.Level0SetOperator;
-import org.op4j.operators.impl.fn.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
 import org.op4j.operators.qualities.UniqFnOperator;
 import org.op4j.target.Target;
@@ -208,7 +208,7 @@ public final class Level0GenericUniqOperator<I,T> extends AbstractOperator
 
 
     public Function<I,T> get() {
-        return new Function<I,T>(getTarget());
+        return new ExpressionFunction<I,T>(getTarget());
     }
 
 

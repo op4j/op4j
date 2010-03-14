@@ -43,16 +43,16 @@ import org.apache.commons.lang.time.DateUtils;
 public final class FnDate {
 
     
-    private static final IFunction<Date,Calendar> TO_CALENDAR = new ToCalendar();
+    private static final Function<Date,Calendar> TO_CALENDAR = new ToCalendar();
 
     
-    private static IFunction<Timestamp,Date> TIMESTAMP_TO_DATE = new TimestampToDate();
-    private static IFunction<Long,Date> TIME_IN_MILLIS_TO_DATE = new TimeInMillisToDate();
+    private static final Function<Timestamp,Date> TIMESTAMP_TO_DATE = new TimestampToDate();
+    private static final Function<Long,Date> TIME_IN_MILLIS_TO_DATE = new TimeInMillisToDate();
     
-    private static final IFunction<List<Integer>,Date> FIELD_INTEGER_LIST_TO_DATE = new FieldIntegerListToDate();
-    private static final IFunction<Integer[],Date> FIELD_INTEGER_ARRAY_TO_DATE = new FieldIntegerArrayToDate();
-    private static final IFunction<List<String>,Date> FIELD_STRING_LIST_TO_DATE = new FieldStringListToDate();
-    private static final IFunction<String[],Date> FIELD_STRING_ARRAY_TO_DATE = new FieldStringArrayToCalendar();
+    private static final Function<List<Integer>,Date> FIELD_INTEGER_LIST_TO_DATE = new FieldIntegerListToDate();
+    private static final Function<Integer[],Date> FIELD_INTEGER_ARRAY_TO_DATE = new FieldIntegerArrayToDate();
+    private static final Function<List<String>,Date> FIELD_STRING_LIST_TO_DATE = new FieldStringListToDate();
+    private static final Function<String[],Date> FIELD_STRING_ARRAY_TO_DATE = new FieldStringArrayToCalendar();
 
 
     
@@ -63,120 +63,120 @@ public final class FnDate {
 
     
     
-    public static final IFunction<Date,Calendar> toCalendar() {
+    public static final Function<Date,Calendar> toCalendar() {
         return TO_CALENDAR;
     }
     
-    public static final IFunction<Date,Calendar> toCalendar(final int truncateField) {
+    public static final Function<Date,Calendar> toCalendar(final int truncateField) {
         return new ToCalendar(truncateField);
     }
 	
 	
 	
 
-	public static final IFunction<Date,Date> add(final int calendarField, final int amount) {
+	public static final Function<Date,Date> add(final int calendarField, final int amount) {
         return new Add(calendarField, amount);
     }
 	
-    public static final IFunction<Date,Date> addDays(final int amount) {
+    public static final Function<Date,Date> addDays(final int amount) {
         return new Add(Calendar.DATE, amount);
     }
     
-    public static final IFunction<Date,Date> addHours(final int amount) {
+    public static final Function<Date,Date> addHours(final int amount) {
         return new Add(Calendar.HOUR, amount);
     }
     
-    public static final IFunction<Date,Date> addMilliseconds(final int amount) {
+    public static final Function<Date,Date> addMilliseconds(final int amount) {
         return new Add(Calendar.MILLISECOND, amount);
     }
     
-    public static final IFunction<Date,Date> addMinutes(final int amount) {
+    public static final Function<Date,Date> addMinutes(final int amount) {
         return new Add(Calendar.MINUTE, amount);
     }
     
-    public static final IFunction<Date,Date> addMonths(final int amount) {
+    public static final Function<Date,Date> addMonths(final int amount) {
         return new Add(Calendar.MONTH, amount);
     }
     
-    public static final IFunction<Date,Date> addWeeks(final int amount) {
+    public static final Function<Date,Date> addWeeks(final int amount) {
         return new Add(Calendar.WEEK_OF_YEAR, amount);
     }
     
-    public static final IFunction<Date,Date> addYears(final int amount) {
+    public static final Function<Date,Date> addYears(final int amount) {
         return new Add(Calendar.YEAR, amount);
     }
 
-    public static final IFunction<Date,Date> set(final int calendarField, final int value) {
+    public static final Function<Date,Date> set(final int calendarField, final int value) {
         return new Set(calendarField, value);
     }
     
-    public static final IFunction<Date,Date> setDay(final int value) {
+    public static final Function<Date,Date> setDay(final int value) {
         return new Set(Calendar.DATE, value);
     }
     
-    public static final IFunction<Date,Date> setHour(final int value) {
+    public static final Function<Date,Date> setHour(final int value) {
         return new Set(Calendar.HOUR, value);
     }
     
-    public static final IFunction<Date,Date> setMillisecond(final int value) {
+    public static final Function<Date,Date> setMillisecond(final int value) {
         return new Set(Calendar.MILLISECOND, value);
     }
     
-    public static final IFunction<Date,Date> setMinute(final int value) {
+    public static final Function<Date,Date> setMinute(final int value) {
         return new Set(Calendar.MINUTE, value);
     }
     
-    public static final IFunction<Date,Date> setMonth(final int value) {
+    public static final Function<Date,Date> setMonth(final int value) {
         return new Set(Calendar.MONTH, value);
     }
     
-    public static final IFunction<Date,Date> setWeek(final int value) {
+    public static final Function<Date,Date> setWeek(final int value) {
         return new Set(Calendar.WEEK_OF_YEAR, value);
     }
     
-    public static final IFunction<Date,Date> setYear(final int value) {
+    public static final Function<Date,Date> setYear(final int value) {
         return new Set(Calendar.YEAR, value);
     }
 
-    public static final IFunction<Date,Date> round(final int calendarField) {
+    public static final Function<Date,Date> round(final int calendarField) {
         return new Round(calendarField);
     }
 
-    public static final IFunction<Date,Date> truncate(final int calendarField) {
+    public static final Function<Date,Date> truncate(final int calendarField) {
         return new Truncate(calendarField);
     }
 
-    public static final IFunction<Date,Boolean> before(final Date date) {
+    public static final Function<Date,Boolean> before(final Date date) {
         return new Before(date);
     }
 
-    public static final IFunction<Date,Boolean> after(final Date date) {
+    public static final Function<Date,Boolean> after(final Date date) {
         return new After(date);
     }
     
     
     
-    public static final IFunction<Date,String> toStr(final String pattern) {
+    public static final Function<Date,String> toStr(final String pattern) {
         return new ToString(pattern);
     }
     
-    public static final IFunction<Date,String> toStr(final String pattern, final Locale locale) {
+    public static final Function<Date,String> toStr(final String pattern, final Locale locale) {
         return new ToString(pattern, locale);
     }
     
-    public static final IFunction<Date,String> toStr(final String pattern, final String locale) {
+    public static final Function<Date,String> toStr(final String pattern, final String locale) {
         return new ToString(pattern, locale);
     }
     
-    public static final IFunction<Date,String> toStr(final DateStyle dateStyle, final TimeStyle timeStyle) {
+    public static final Function<Date,String> toStr(final DateStyle dateStyle, final TimeStyle timeStyle) {
         return new ToString(dateStyle, timeStyle);
     }
     
-    public static final IFunction<Date,String> toStr(final DateStyle dateStyle, final TimeStyle timeStyle, final Locale locale) {
+    public static final Function<Date,String> toStr(final DateStyle dateStyle, final TimeStyle timeStyle, final Locale locale) {
         return new ToString(dateStyle, timeStyle, locale);
     }
     
-    public static final IFunction<Date,String> toStr(final DateStyle dateStyle, final TimeStyle timeStyle, final String locale) {
+    public static final Function<Date,String> toStr(final DateStyle dateStyle, final TimeStyle timeStyle, final String locale) {
         return new ToString(dateStyle, timeStyle, locale);
     }
     
@@ -191,21 +191,21 @@ public final class FnDate {
     
     
     
-    public static final IFunction<Timestamp,Date> timestampToDate() {
+    public static final Function<Timestamp,Date> timestampToDate() {
         return TIMESTAMP_TO_DATE;
     }
     
-    public static final IFunction<Timestamp,Date> timestampToDate(final int truncateField) {
+    public static final Function<Timestamp,Date> timestampToDate(final int truncateField) {
         return new TimestampToDate(truncateField);
     }
     
     
     
-    public static final IFunction<Long,Date> timeInMillisToDate() {
+    public static final Function<Long,Date> timeInMillisToDate() {
         return TIME_IN_MILLIS_TO_DATE;
     }
     
-    public static final IFunction<Long,Date> timeInMillisToDate(final int truncateField) {
+    public static final Function<Long,Date> timeInMillisToDate(final int truncateField) {
         return new TimeInMillisToDate(truncateField);
     }
     
@@ -216,25 +216,25 @@ public final class FnDate {
     
     
     
-    public static final IFunction<List<Integer>, Date> fieldIntegerListToDate() {
+    public static final Function<List<Integer>, Date> fieldIntegerListToDate() {
         return FIELD_INTEGER_LIST_TO_DATE;
     }
     
     
     
-    public static final IFunction<Integer[], Date> fieldIntegerArrayToDate() {
+    public static final Function<Integer[], Date> fieldIntegerArrayToDate() {
         return FIELD_INTEGER_ARRAY_TO_DATE;
     }
     
     
     
-    public static final IFunction<List<String>, Date> fieldStringListToDate() {
+    public static final Function<List<String>, Date> fieldStringListToDate() {
         return FIELD_STRING_LIST_TO_DATE;
     }
     
     
     
-    public static final IFunction<String[], Date> fieldStringArrayToDate() {
+    public static final Function<String[], Date> fieldStringArrayToDate() {
         return FIELD_STRING_ARRAY_TO_DATE;
     }
     

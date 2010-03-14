@@ -34,23 +34,23 @@ import org.apache.commons.lang.Validate;
  */
 public final class FnMathOfInteger {
 
-	private final static IFunction<Iterable<Integer>, Integer> MAX_FUNC = new Max();
+	private static final Function<Iterable<Integer>, Integer> MAX_FUNC = new Max();
 	
-	private final static IFunction<Iterable<Integer>, Integer> MIN_FUNC = new Min();
+	private static final Function<Iterable<Integer>, Integer> MIN_FUNC = new Min();
 	
-	private final static IFunction<Iterable<Integer>, Integer> SUM_FUNC = new Sum();
+	private static final Function<Iterable<Integer>, Integer> SUM_FUNC = new Sum();
 	
-	private final static IFunction<Iterable<Integer>, Integer> AVG_FUNC = new Avg();
+	private static final Function<Iterable<Integer>, Integer> AVG_FUNC = new Avg();
 
-    private final static IFunction<Integer[], Integer> MAX_ARRAY_FUNC = new MaxArray();
+    private static final Function<Integer[], Integer> MAX_ARRAY_FUNC = new MaxArray();
     
-    private final static IFunction<Integer[], Integer> MIN_ARRAY_FUNC = new MinArray();
+    private static final Function<Integer[], Integer> MIN_ARRAY_FUNC = new MinArray();
     
-    private final static IFunction<Integer[], Integer> SUM_ARRAY_FUNC = new SumArray();
+    private static final Function<Integer[], Integer> SUM_ARRAY_FUNC = new SumArray();
     
-    private final static IFunction<Integer[], Integer> AVG_ARRAY_FUNC = new AvgArray();
+    private static final Function<Integer[], Integer> AVG_ARRAY_FUNC = new AvgArray();
 	
-	private final static IFunction<Integer, Integer> ABS_FUNC = new Abs();
+	private static final Function<Integer, Integer> ABS_FUNC = new Abs();
 	
 	
 	FnMathOfInteger() {
@@ -61,7 +61,7 @@ public final class FnMathOfInteger {
      * @return function that returns the maximum {@link Integer} of an object
      *         implementing {@link Iterable}
      */
-    public final IFunction<Iterable<Integer>, Integer> max() {
+    public final Function<Iterable<Integer>, Integer> max() {
         return MAX_FUNC;
     }
 
@@ -69,7 +69,7 @@ public final class FnMathOfInteger {
      * @return function that returns the minimum {@link Integer} of an object
      *         implementing {@link Iterable}
      */
-    public final IFunction<Iterable<Integer>, Integer> min() {
+    public final Function<Iterable<Integer>, Integer> min() {
         return MIN_FUNC;
     }
 
@@ -77,7 +77,7 @@ public final class FnMathOfInteger {
      * @return function that returns the sum of the {@link Integer} elements in
      *         an object implementing {@link Iterable}
      */
-    public final IFunction<Iterable<Integer>, Integer> sum() {
+    public final Function<Iterable<Integer>, Integer> sum() {
         return SUM_FUNC;
     }
 
@@ -85,291 +85,291 @@ public final class FnMathOfInteger {
      * @return function that returns the average of the {@link Integer} elements
      *         in an object implementing {@link Iterable}
      */
-    public final IFunction<Iterable<Integer>, Integer> avg() {
+    public final Function<Iterable<Integer>, Integer> avg() {
         return AVG_FUNC;
     }
 
-    public final IFunction<Iterable<Integer>, Integer> avg(MathContext mathContext) {
+    public final Function<Iterable<Integer>, Integer> avg(MathContext mathContext) {
         return new Avg(mathContext);
     }
 
-    public final IFunction<Iterable<Integer>, Integer> avg(RoundingMode roundingMode) {
+    public final Function<Iterable<Integer>, Integer> avg(RoundingMode roundingMode) {
         return new Avg(roundingMode);
     }
 
-    public final IFunction<Integer[], Integer> maxArray() {
+    public final Function<Integer[], Integer> maxArray() {
         return MAX_ARRAY_FUNC;
     }
 
-    public final IFunction<Integer[], Integer> minArray() {
+    public final Function<Integer[], Integer> minArray() {
         return MIN_ARRAY_FUNC;
     }
 
-    public final IFunction<Integer[], Integer> sumArray() {
+    public final Function<Integer[], Integer> sumArray() {
         return SUM_ARRAY_FUNC;
     }
 
-    public final IFunction<Integer[], Integer> avgArray() {
+    public final Function<Integer[], Integer> avgArray() {
         return AVG_ARRAY_FUNC;
     }
 
-    public final IFunction<Integer[], Integer> avgArray(MathContext mathContext) {
+    public final Function<Integer[], Integer> avgArray(MathContext mathContext) {
         return new AvgArray(mathContext);
     }
 
-    public final IFunction<Integer[], Integer> avgArray(RoundingMode roundingMode) {
+    public final Function<Integer[], Integer> avgArray(RoundingMode roundingMode) {
         return new AvgArray(roundingMode);
     }
 
-    public final IFunction<Integer, Integer> abs() {
+    public final Function<Integer, Integer> abs() {
         return ABS_FUNC;
     }
 
-    public final IFunction<Integer, Integer> add(Number add) {
+    public final Function<Integer, Integer> add(Number add) {
         return new Add(fromNumber(add));
     }
 
-    public final IFunction<Integer, Integer> add(byte add) {
+    public final Function<Integer, Integer> add(byte add) {
         return add(Byte.valueOf(add));
     }
 
-    public final IFunction<Integer, Integer> add(short add) {
+    public final Function<Integer, Integer> add(short add) {
         return add(Short.valueOf(add));
     }
 
-    public final IFunction<Integer, Integer> add(int add) {
+    public final Function<Integer, Integer> add(int add) {
         return add(Integer.valueOf(add));
     }
 
-    public final IFunction<Integer, Integer> add(long add) {
+    public final Function<Integer, Integer> add(long add) {
         return add(Long.valueOf(add));
     }
 
-    public final IFunction<Integer, Integer> add(float add) {
+    public final Function<Integer, Integer> add(float add) {
         return add(Float.valueOf(add));
     }
 
-    public final IFunction<Integer, Integer> add(double add) {
+    public final Function<Integer, Integer> add(double add) {
         return add(Double.valueOf(add));
     }
 
 
-    public final IFunction<Integer, Integer> subtract(Number subtract) {
+    public final Function<Integer, Integer> subtract(Number subtract) {
         return new Subtract(fromNumber(subtract));
     }
 
-    public final IFunction<Integer, Integer> subtract(byte subtract) {
+    public final Function<Integer, Integer> subtract(byte subtract) {
         return subtract(Byte.valueOf(subtract));
     }
 
-    public final IFunction<Integer, Integer> subtract(short subtract) {
+    public final Function<Integer, Integer> subtract(short subtract) {
         return subtract(Short.valueOf(subtract));
     }
 
-    public final IFunction<Integer, Integer> subtract(int subtract) {
+    public final Function<Integer, Integer> subtract(int subtract) {
         return subtract(Integer.valueOf(subtract));
     }
 
-    public final IFunction<Integer, Integer> subtract(long subtract) {
+    public final Function<Integer, Integer> subtract(long subtract) {
         return subtract(Long.valueOf(subtract));
     }
 
-    public final IFunction<Integer, Integer> subtract(float subtract) {
+    public final Function<Integer, Integer> subtract(float subtract) {
         return subtract(Float.valueOf(subtract));
     }
 
-    public final IFunction<Integer, Integer> subtract(double subtract) {
+    public final Function<Integer, Integer> subtract(double subtract) {
         return subtract(Double.valueOf(subtract));
     }
 
 
-    public final IFunction<Integer, Integer> divideBy(Number divisor) {
+    public final Function<Integer, Integer> divideBy(Number divisor) {
         return new Divide(fromNumber(divisor));
     }
 
-    public final IFunction<Integer, Integer> divideBy(byte divisor) {
+    public final Function<Integer, Integer> divideBy(byte divisor) {
         return divideBy(Byte.valueOf(divisor));
     }
 
-    public final IFunction<Integer, Integer> divideBy(short divisor) {
+    public final Function<Integer, Integer> divideBy(short divisor) {
         return divideBy(Short.valueOf(divisor));
     }
 
-    public final IFunction<Integer, Integer> divideBy(int divisor) {
+    public final Function<Integer, Integer> divideBy(int divisor) {
         return divideBy(Integer.valueOf(divisor));
     }
 
-    public final IFunction<Integer, Integer> divideBy(long divisor) {
+    public final Function<Integer, Integer> divideBy(long divisor) {
         return divideBy(Long.valueOf(divisor));
     }
 
-    public final IFunction<Integer, Integer> divideBy(float divisor) {
+    public final Function<Integer, Integer> divideBy(float divisor) {
         return divideBy(Float.valueOf(divisor));
     }
 
-    public final IFunction<Integer, Integer> divideBy(double divisor) {
+    public final Function<Integer, Integer> divideBy(double divisor) {
         return divideBy(Double.valueOf(divisor));
     }
 
 
-    public final IFunction<Integer, Integer> divideBy(Number divisor, MathContext mathContext) {
+    public final Function<Integer, Integer> divideBy(Number divisor, MathContext mathContext) {
         return new Divide(fromNumber(divisor), mathContext);
     }
 
-    public final IFunction<Integer, Integer> divideBy(byte divisor, MathContext mathContext) {
+    public final Function<Integer, Integer> divideBy(byte divisor, MathContext mathContext) {
         return divideBy(Byte.valueOf(divisor), mathContext);
     }
 
-    public final IFunction<Integer, Integer> divideBy(short divisor, MathContext mathContext) {
+    public final Function<Integer, Integer> divideBy(short divisor, MathContext mathContext) {
         return divideBy(Short.valueOf(divisor), mathContext);
     }
 
-    public final IFunction<Integer, Integer> divideBy(int divisor, MathContext mathContext) {
+    public final Function<Integer, Integer> divideBy(int divisor, MathContext mathContext) {
         return divideBy(Integer.valueOf(divisor), mathContext);
     }
 
-    public final IFunction<Integer, Integer> divideBy(long divisor, MathContext mathContext) {
+    public final Function<Integer, Integer> divideBy(long divisor, MathContext mathContext) {
         return divideBy(Long.valueOf(divisor), mathContext);
     }
 
-    public final IFunction<Integer, Integer> divideBy(float divisor, MathContext mathContext) {
+    public final Function<Integer, Integer> divideBy(float divisor, MathContext mathContext) {
         return divideBy(Float.valueOf(divisor), mathContext);
     }
 
-    public final IFunction<Integer, Integer> divideBy(double divisor, MathContext mathContext) {
+    public final Function<Integer, Integer> divideBy(double divisor, MathContext mathContext) {
         return divideBy(Double.valueOf(divisor), mathContext);
     }
 
 
-    public final IFunction<Integer, Integer> divideBy(Number divisor, RoundingMode roundingMode) {
+    public final Function<Integer, Integer> divideBy(Number divisor, RoundingMode roundingMode) {
         return new Divide(fromNumber(divisor), roundingMode);
     }
 
-    public final IFunction<Integer, Integer> divideBy(byte divisor, RoundingMode roundingMode) {
+    public final Function<Integer, Integer> divideBy(byte divisor, RoundingMode roundingMode) {
         return divideBy(Byte.valueOf(divisor), roundingMode);
     }
 
-    public final IFunction<Integer, Integer> divideBy(short divisor, RoundingMode roundingMode) {
+    public final Function<Integer, Integer> divideBy(short divisor, RoundingMode roundingMode) {
         return divideBy(Short.valueOf(divisor), roundingMode);
     }
 
-    public final IFunction<Integer, Integer> divideBy(int divisor, RoundingMode roundingMode) {
+    public final Function<Integer, Integer> divideBy(int divisor, RoundingMode roundingMode) {
         return divideBy(Integer.valueOf(divisor), roundingMode);
     }
 
-    public final IFunction<Integer, Integer> divideBy(long divisor, RoundingMode roundingMode) {
+    public final Function<Integer, Integer> divideBy(long divisor, RoundingMode roundingMode) {
         return divideBy(Long.valueOf(divisor), roundingMode);
     }
 
-    public final IFunction<Integer, Integer> divideBy(float divisor, RoundingMode roundingMode) {
+    public final Function<Integer, Integer> divideBy(float divisor, RoundingMode roundingMode) {
         return divideBy(Float.valueOf(divisor), roundingMode);
     }
 
-    public final IFunction<Integer, Integer> divideBy(double divisor, RoundingMode roundingMode) {
+    public final Function<Integer, Integer> divideBy(double divisor, RoundingMode roundingMode) {
         return divideBy(Double.valueOf(divisor), roundingMode);
     }
 
 
-    public final IFunction<Integer, Integer> module(int module) {
+    public final Function<Integer, Integer> module(int module) {
         return new Module(module);
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(Number multiplicand) {
+    public final Function<Integer, Integer> multiplyBy(Number multiplicand) {
         return new Multiply(fromNumber(multiplicand));
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(byte multiplicand) {
+    public final Function<Integer, Integer> multiplyBy(byte multiplicand) {
         return multiplyBy(Byte.valueOf(multiplicand));
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(short multiplicand) {
+    public final Function<Integer, Integer> multiplyBy(short multiplicand) {
         return multiplyBy(Short.valueOf(multiplicand));
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(int multiplicand) {
+    public final Function<Integer, Integer> multiplyBy(int multiplicand) {
         return multiplyBy(Integer.valueOf(multiplicand));
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(long multiplicand) {
+    public final Function<Integer, Integer> multiplyBy(long multiplicand) {
         return multiplyBy(Long.valueOf(multiplicand));
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(float multiplicand) {
+    public final Function<Integer, Integer> multiplyBy(float multiplicand) {
         return multiplyBy(Float.valueOf(multiplicand));
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(double multiplicand) {
+    public final Function<Integer, Integer> multiplyBy(double multiplicand) {
         return multiplyBy(Double.valueOf(multiplicand));
     }
 
 
-    public final IFunction<Integer, Integer> multiplyBy(Number multiplicand, MathContext mathContext) {
+    public final Function<Integer, Integer> multiplyBy(Number multiplicand, MathContext mathContext) {
         return new Multiply(fromNumber(multiplicand), mathContext);
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(byte multiplicand, MathContext mathContext) {
+    public final Function<Integer, Integer> multiplyBy(byte multiplicand, MathContext mathContext) {
         return multiplyBy(Byte.valueOf(multiplicand), mathContext);
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(short multiplicand, MathContext mathContext) {
+    public final Function<Integer, Integer> multiplyBy(short multiplicand, MathContext mathContext) {
         return multiplyBy(Short.valueOf(multiplicand), mathContext);
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(int multiplicand, MathContext mathContext) {
+    public final Function<Integer, Integer> multiplyBy(int multiplicand, MathContext mathContext) {
         return multiplyBy(Integer.valueOf(multiplicand), mathContext);
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(long multiplicand, MathContext mathContext) {
+    public final Function<Integer, Integer> multiplyBy(long multiplicand, MathContext mathContext) {
         return multiplyBy(Long.valueOf(multiplicand), mathContext);
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(float multiplicand, MathContext mathContext) {
+    public final Function<Integer, Integer> multiplyBy(float multiplicand, MathContext mathContext) {
         return multiplyBy(Float.valueOf(multiplicand), mathContext);
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(double multiplicand, MathContext mathContext) {
+    public final Function<Integer, Integer> multiplyBy(double multiplicand, MathContext mathContext) {
         return multiplyBy(Double.valueOf(multiplicand), mathContext);
     }
 
 
-    public final IFunction<Integer, Integer> multiplyBy(Number multiplicand, RoundingMode roundingMode) {
+    public final Function<Integer, Integer> multiplyBy(Number multiplicand, RoundingMode roundingMode) {
         return new Multiply(fromNumber(multiplicand), roundingMode);
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(byte multiplicand, RoundingMode roundingMode) {
+    public final Function<Integer, Integer> multiplyBy(byte multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Byte.valueOf(multiplicand), roundingMode);
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(short multiplicand, RoundingMode roundingMode) {
+    public final Function<Integer, Integer> multiplyBy(short multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Short.valueOf(multiplicand), roundingMode);
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(int multiplicand, RoundingMode roundingMode) {
+    public final Function<Integer, Integer> multiplyBy(int multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Integer.valueOf(multiplicand), roundingMode);
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(long multiplicand, RoundingMode roundingMode) {
+    public final Function<Integer, Integer> multiplyBy(long multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Long.valueOf(multiplicand), roundingMode);
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(float multiplicand, RoundingMode roundingMode) {
+    public final Function<Integer, Integer> multiplyBy(float multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Float.valueOf(multiplicand), roundingMode);
     }
 
-    public final IFunction<Integer, Integer> multiplyBy(double multiplicand, RoundingMode roundingMode) {
+    public final Function<Integer, Integer> multiplyBy(double multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Double.valueOf(multiplicand), roundingMode);
     }
 
 
-    public final IFunction<Integer, Integer> pow(int power) {
+    public final Function<Integer, Integer> pow(int power) {
         return new Pow(power);
     }
 
-    public final IFunction<Integer, Integer> pow(int power, MathContext mathContext) {
+    public final Function<Integer, Integer> pow(int power, MathContext mathContext) {
         return new Pow(power, mathContext);
     }
 
-    public final IFunction<Integer, Integer> pow(int power, RoundingMode roundingMode) {
+    public final Function<Integer, Integer> pow(int power, RoundingMode roundingMode) {
         return new Pow(power, roundingMode);
     }	
 	

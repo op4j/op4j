@@ -41,7 +41,7 @@ public final class FnArrayOfArrayOf<T> extends FnArrayOf<T[]> {
     
     
     
-    public IFunction<T[][],T[]> flattenArrays() {
+    public final Function<T[][],T[]> flattenArrays() {
         return new FlattenArrays<T>(Types.arrayComponentOf(this.type));
     }
     

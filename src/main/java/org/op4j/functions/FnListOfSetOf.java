@@ -38,7 +38,7 @@ public final class FnListOfSetOf<T> extends FnListOf<Set<T>> {
     
     
     
-    public IFunction<List<Set<T>>,List<T>> flattenSets() {
+    public final Function<List<Set<T>>,List<T>> flattenSets() {
         return new FlattenSets<T>();
     }
     

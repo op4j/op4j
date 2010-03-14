@@ -35,23 +35,23 @@ import org.apache.commons.lang.Validate;
  */
 public final class FnMathOfBigInteger {
 
-	private final static IFunction<Iterable<BigInteger>, BigInteger> MAX_FUNC = new Max();
+	private static final Function<Iterable<BigInteger>, BigInteger> MAX_FUNC = new Max();
 	
-	private final static IFunction<Iterable<BigInteger>, BigInteger> MIN_FUNC = new Min();
+	private static final Function<Iterable<BigInteger>, BigInteger> MIN_FUNC = new Min();
 	
-	private final static IFunction<Iterable<BigInteger>, BigInteger> SUM_FUNC = new Sum();
+	private static final Function<Iterable<BigInteger>, BigInteger> SUM_FUNC = new Sum();
 	
-	private final static IFunction<Iterable<BigInteger>, BigInteger> AVG_FUNC = new Avg();
+	private static final Function<Iterable<BigInteger>, BigInteger> AVG_FUNC = new Avg();
 
-    private final static IFunction<BigInteger[], BigInteger> MAX_ARRAY_FUNC = new MaxArray();
+    private static final Function<BigInteger[], BigInteger> MAX_ARRAY_FUNC = new MaxArray();
     
-    private final static IFunction<BigInteger[], BigInteger> MIN_ARRAY_FUNC = new MinArray();
+    private static final Function<BigInteger[], BigInteger> MIN_ARRAY_FUNC = new MinArray();
     
-    private final static IFunction<BigInteger[], BigInteger> SUM_ARRAY_FUNC = new SumArray();
+    private static final Function<BigInteger[], BigInteger> SUM_ARRAY_FUNC = new SumArray();
     
-    private final static IFunction<BigInteger[], BigInteger> AVG_ARRAY_FUNC = new AvgArray();
+    private static final Function<BigInteger[], BigInteger> AVG_ARRAY_FUNC = new AvgArray();
 	
-	private final static IFunction<BigInteger, BigInteger> ABS_FUNC = new Abs();
+	private static final Function<BigInteger, BigInteger> ABS_FUNC = new Abs();
 	
 	
 	FnMathOfBigInteger() {
@@ -62,7 +62,7 @@ public final class FnMathOfBigInteger {
      * @return function that returns the maximum {@link BigInteger} of an object
      *         implementing {@link Iterable}
      */
-    public final IFunction<Iterable<BigInteger>, BigInteger> max() {
+    public final Function<Iterable<BigInteger>, BigInteger> max() {
         return MAX_FUNC;
     }
 
@@ -70,7 +70,7 @@ public final class FnMathOfBigInteger {
      * @return function that returns the minimum {@link BigInteger} of an object
      *         implementing {@link Iterable}
      */
-    public final IFunction<Iterable<BigInteger>, BigInteger> min() {
+    public final Function<Iterable<BigInteger>, BigInteger> min() {
         return MIN_FUNC;
     }
 
@@ -78,7 +78,7 @@ public final class FnMathOfBigInteger {
      * @return function that returns the sum of the {@link BigInteger} elements
      *         in an object implementing {@link Iterable}
      */
-    public final IFunction<Iterable<BigInteger>, BigInteger> sum() {
+    public final Function<Iterable<BigInteger>, BigInteger> sum() {
         return SUM_FUNC;
     }
 
@@ -86,171 +86,171 @@ public final class FnMathOfBigInteger {
      * @return function that returns the average of the {@link BigInteger}
      *         elements in an object implementing {@link Iterable}
      */
-    public final IFunction<Iterable<BigInteger>, BigInteger> avg() {
+    public final Function<Iterable<BigInteger>, BigInteger> avg() {
         return AVG_FUNC;
     }
 
-    public final IFunction<Iterable<BigInteger>, BigInteger> avg(RoundingMode roundingMode) {
+    public final Function<Iterable<BigInteger>, BigInteger> avg(RoundingMode roundingMode) {
         return new Avg(roundingMode);
     }
 
-    public final IFunction<Iterable<BigInteger>, BigInteger> avg(MathContext mathContext) {
+    public final Function<Iterable<BigInteger>, BigInteger> avg(MathContext mathContext) {
         return new Avg(mathContext);
     }
     
-    public final IFunction<BigInteger[], BigInteger> maxArray() {
+    public final Function<BigInteger[], BigInteger> maxArray() {
         return MAX_ARRAY_FUNC;
     }
 
-    public final IFunction<BigInteger[], BigInteger> minArray() {
+    public final Function<BigInteger[], BigInteger> minArray() {
         return MIN_ARRAY_FUNC;
     }
 
-    public final IFunction<BigInteger[], BigInteger> sumArray() {
+    public final Function<BigInteger[], BigInteger> sumArray() {
         return SUM_ARRAY_FUNC;
     }
 
-    public final IFunction<BigInteger[], BigInteger> avgArray() {
+    public final Function<BigInteger[], BigInteger> avgArray() {
         return AVG_ARRAY_FUNC;
     }
 
-    public final IFunction<BigInteger[], BigInteger> avgArray(RoundingMode roundingMode) {
+    public final Function<BigInteger[], BigInteger> avgArray(RoundingMode roundingMode) {
         return new AvgArray(roundingMode);
     }
 
-    public final IFunction<BigInteger[], BigInteger> avgArray(MathContext mathContext) {
+    public final Function<BigInteger[], BigInteger> avgArray(MathContext mathContext) {
         return new AvgArray(mathContext);
     }
 
-    public final IFunction<BigInteger, BigInteger> abs() {
+    public final Function<BigInteger, BigInteger> abs() {
         return ABS_FUNC;
     }
 
-    public final IFunction<BigInteger, BigInteger> add(Number add) {
+    public final Function<BigInteger, BigInteger> add(Number add) {
         return new Add(fromNumber(add));
     }
 
-    public final IFunction<BigInteger, BigInteger> add(byte add) {
+    public final Function<BigInteger, BigInteger> add(byte add) {
         return add(Byte.valueOf(add));
     }
 
-    public final IFunction<BigInteger, BigInteger> add(short add) {
+    public final Function<BigInteger, BigInteger> add(short add) {
         return add(Short.valueOf(add));
     }
 
-    public final IFunction<BigInteger, BigInteger> add(int add) {
+    public final Function<BigInteger, BigInteger> add(int add) {
         return add(Integer.valueOf(add));
     }
 
-    public final IFunction<BigInteger, BigInteger> add(long add) {
+    public final Function<BigInteger, BigInteger> add(long add) {
         return add(Long.valueOf(add));
     }
 
-    public final IFunction<BigInteger, BigInteger> add(float add) {
+    public final Function<BigInteger, BigInteger> add(float add) {
         return add(Float.valueOf(add));
     }
 
-    public final IFunction<BigInteger, BigInteger> add(double add) {
+    public final Function<BigInteger, BigInteger> add(double add) {
         return add(Double.valueOf(add));
     }
 
 
-    public final IFunction<BigInteger, BigInteger> subtract(Number subtract) {
+    public final Function<BigInteger, BigInteger> subtract(Number subtract) {
         return new Subtract(fromNumber(subtract));
     }
 
-    public final IFunction<BigInteger, BigInteger> subtract(byte subtract) {
+    public final Function<BigInteger, BigInteger> subtract(byte subtract) {
         return subtract(Byte.valueOf(subtract));
     }
 
-    public final IFunction<BigInteger, BigInteger> subtract(short subtract) {
+    public final Function<BigInteger, BigInteger> subtract(short subtract) {
         return subtract(Short.valueOf(subtract));
     }
 
-    public final IFunction<BigInteger, BigInteger> subtract(int subtract) {
+    public final Function<BigInteger, BigInteger> subtract(int subtract) {
         return subtract(Integer.valueOf(subtract));
     }
 
-    public final IFunction<BigInteger, BigInteger> subtract(long subtract) {
+    public final Function<BigInteger, BigInteger> subtract(long subtract) {
         return subtract(Long.valueOf(subtract));
     }
 
-    public final IFunction<BigInteger, BigInteger> subtract(float subtract) {
+    public final Function<BigInteger, BigInteger> subtract(float subtract) {
         return subtract(Float.valueOf(subtract));
     }
 
-    public final IFunction<BigInteger, BigInteger> subtract(double subtract) {
+    public final Function<BigInteger, BigInteger> subtract(double subtract) {
         return subtract(Double.valueOf(subtract));
     }
 
 
-    public final IFunction<BigInteger, BigInteger> divideBy(Number divisor) {
+    public final Function<BigInteger, BigInteger> divideBy(Number divisor) {
         return new Divide(fromNumber(divisor));
     }
 
-    public final IFunction<BigInteger, BigInteger> divideBy(byte divisor) {
+    public final Function<BigInteger, BigInteger> divideBy(byte divisor) {
         return divideBy(Byte.valueOf(divisor));
     }
 
-    public final IFunction<BigInteger, BigInteger> divideBy(short divisor) {
+    public final Function<BigInteger, BigInteger> divideBy(short divisor) {
         return divideBy(Short.valueOf(divisor));
     }
 
-    public final IFunction<BigInteger, BigInteger> divideBy(int divisor) {
+    public final Function<BigInteger, BigInteger> divideBy(int divisor) {
         return divideBy(Integer.valueOf(divisor));
     }
 
-    public final IFunction<BigInteger, BigInteger> divideBy(long divisor) {
+    public final Function<BigInteger, BigInteger> divideBy(long divisor) {
         return divideBy(Long.valueOf(divisor));
     }
 
-    public final IFunction<BigInteger, BigInteger> divideBy(float divisor) {
+    public final Function<BigInteger, BigInteger> divideBy(float divisor) {
         return divideBy(Float.valueOf(divisor));
     }
 
-    public final IFunction<BigInteger, BigInteger> divideBy(double divisor) {
+    public final Function<BigInteger, BigInteger> divideBy(double divisor) {
         return divideBy(Double.valueOf(divisor));
     }
 
 
-    public final IFunction<BigInteger, BigInteger> module(Number module) {
+    public final Function<BigInteger, BigInteger> module(Number module) {
         return new Module(fromNumber(module));
     }
 
-    public final IFunction<BigInteger, BigInteger> remainder(Number module) {
+    public final Function<BigInteger, BigInteger> remainder(Number module) {
         return new Remainder(fromNumber(module));
     }
 
-    public final IFunction<BigInteger, BigInteger> multiplyBy(Number multiplicand) {
+    public final Function<BigInteger, BigInteger> multiplyBy(Number multiplicand) {
         return new Multiply(fromNumber(multiplicand));
     }
 
-    public final IFunction<BigInteger, BigInteger> multiplyBy(byte multiplicand) {
+    public final Function<BigInteger, BigInteger> multiplyBy(byte multiplicand) {
         return multiplyBy(Byte.valueOf(multiplicand));
     }
 
-    public final IFunction<BigInteger, BigInteger> multiplyBy(short multiplicand) {
+    public final Function<BigInteger, BigInteger> multiplyBy(short multiplicand) {
         return multiplyBy(Short.valueOf(multiplicand));
     }
 
-    public final IFunction<BigInteger, BigInteger> multiplyBy(int multiplicand) {
+    public final Function<BigInteger, BigInteger> multiplyBy(int multiplicand) {
         return multiplyBy(Integer.valueOf(multiplicand));
     }
 
-    public final IFunction<BigInteger, BigInteger> multiplyBy(long multiplicand) {
+    public final Function<BigInteger, BigInteger> multiplyBy(long multiplicand) {
         return multiplyBy(Long.valueOf(multiplicand));
     }
 
-    public final IFunction<BigInteger, BigInteger> multiplyBy(float multiplicand) {
+    public final Function<BigInteger, BigInteger> multiplyBy(float multiplicand) {
         return multiplyBy(Float.valueOf(multiplicand));
     }
 
-    public final IFunction<BigInteger, BigInteger> multiplyBy(double multiplicand) {
+    public final Function<BigInteger, BigInteger> multiplyBy(double multiplicand) {
         return multiplyBy(Double.valueOf(multiplicand));
     }
 
 
-    public final IFunction<BigInteger, BigInteger> pow(int power) {
+    public final Function<BigInteger, BigInteger> pow(int power) {
         return new Pow(power);
     }	
 	
