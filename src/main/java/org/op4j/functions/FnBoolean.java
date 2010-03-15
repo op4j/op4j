@@ -225,7 +225,7 @@ public final class FnBoolean {
     
     
     
-    static class And<T> extends AbstractNullAsNullFunction<T, Boolean> {
+    static class And<T> extends Function<T, Boolean> {
 
         private final List<IFunction<? super T,Boolean>> functions;
         
@@ -237,8 +237,7 @@ public final class FnBoolean {
             }
         }
 
-        @Override
-        protected Boolean nullAsNullExecute(final T object, final ExecCtx ctx) throws Exception {
+        public Boolean execute(final T object, final ExecCtx ctx) throws Exception {
             for (final IFunction<? super T, Boolean> function : this.functions) {
                 final Boolean result = function.execute(object, ctx);
                 if (result == null) {
@@ -258,7 +257,7 @@ public final class FnBoolean {
     
     
     
-    static class Or<T> extends AbstractNullAsNullFunction<T, Boolean> {
+    static class Or<T> extends Function<T, Boolean> {
 
         private final List<IFunction<? super T,Boolean>> functions;
         
@@ -270,8 +269,7 @@ public final class FnBoolean {
             }
         }
 
-        @Override
-        protected Boolean nullAsNullExecute(final T object, final ExecCtx ctx) throws Exception {
+        public Boolean execute(final T object, final ExecCtx ctx) throws Exception {
             for (final IFunction<? super T, Boolean> function : this.functions) {
                 final Boolean result = function.execute(object, ctx);
                 if (result == null) {
@@ -293,7 +291,7 @@ public final class FnBoolean {
 
     
     
-    static class Not<T> extends AbstractNullAsNullFunction<T, Boolean> {
+    static class Not<T> extends Function<T, Boolean> {
 
         private final IFunction<? super T,Boolean> function;
         
@@ -303,8 +301,7 @@ public final class FnBoolean {
             this.function = function;
         }
 
-        @Override
-        protected Boolean nullAsNullExecute(final T object, final ExecCtx ctx) throws Exception {
+        public Boolean execute(final T object, final ExecCtx ctx) throws Exception {
             final Boolean result = this.function.execute(object, ctx);
             if (result == null) {
                 throw new ExecutionException("Evaluation function returned null, which is " +

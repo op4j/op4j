@@ -21,6 +21,7 @@
 - Added "and", "or" and "not" functions to FnBoolean and Fn.
 - Added "isNull" and "isNotNull" functions to FnObject, FnNumber, FnBoolean, FnString, FnCalendar,
   FnDate.
+- Added "concat" function to "Fn".
 
 
 1.0-beta1

@@ -27,9 +27,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.TypeParameters;
 import org.javaruntype.type.Types;
+import org.op4j.functions.ExecCtx;
 import org.op4j.functions.FnBoolean;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
@@ -395,7 +397,33 @@ public final class Fn {
     }
     
     
+    public static final <X,Y,Z> Function<X,Z> concat(final IFunction<X,Y> fn1, final IFunction<? super Y,Z> fn2) {
+        return new Concat<X,Y,Z>(fn1, fn2);
+    }
     
     
+    
+    
+    
+    private static final class Concat<X,Y,Z> extends Function<X,Z> {
+
+        private final IFunction<X,Y> fn1;
+        private final IFunction<? super Y,Z> fn2; 
+
+        
+        public Concat(final IFunction<X,Y> fn1, final IFunction<? super Y,Z> fn2) {
+            super();
+            Validate.notNull(fn1, "Null function received: First function in concat is null");
+            Validate.notNull(fn2, "Null function received: Second function in concat is null");
+            this.fn1 = fn1;
+            this.fn2 = fn2;
+        }
+
+        
+        public Z execute(final X input, final ExecCtx ctx) throws Exception {
+            return this.fn2.execute(this.fn1.execute(input, ctx), ctx);
+        }
+        
+    }
 
 }

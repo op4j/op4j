@@ -1,6 +1,5 @@
 
   Why do key an value operators have "ifIndex"?
-  Add "concat" to Fn
   Add "contains" "notContains" actions to structure operators
   
     

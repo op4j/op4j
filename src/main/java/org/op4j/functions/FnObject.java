@@ -536,14 +536,13 @@ public final class FnObject {
     
 
     
-    static class IsNull extends AbstractNullAsNullFunction<Object, Boolean> {
+    static class IsNull extends Function<Object, Boolean> {
 
         public IsNull() {
             super();
         }
 
-        @Override
-        protected Boolean nullAsNullExecute(final Object object, final ExecCtx ctx) throws Exception {
+        public Boolean execute(final Object object, final ExecCtx ctx) throws Exception {
             if (object == null) {
                 return Boolean.TRUE;
             }
@@ -553,14 +552,13 @@ public final class FnObject {
         
     }
     
-    static class IsNotNull extends AbstractNullAsNullFunction<Object, Boolean> {
+    static class IsNotNull extends Function<Object, Boolean> {
 
         public IsNotNull() {
             super();
         }
 
-        @Override
-        protected Boolean nullAsNullExecute(final Object object, final ExecCtx ctx) throws Exception {
+        public Boolean execute(final Object object, final ExecCtx ctx) throws Exception {
             if (object == null) {
                 return Boolean.FALSE;
             }
