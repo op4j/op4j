@@ -104,20 +104,20 @@ public final class FnBoolean {
 	
 
     
-    public static final Function<Boolean,Boolean> eq(final Boolean object) {
-        return new Equals(object);
+    public static final Function<Object,Boolean> eq(final Boolean object) {
+        return FnObject.eq(object);
     }
     
-    public static final Function<Boolean,Boolean> eq(final boolean object) {
-        return new Equals(Boolean.valueOf(object));
+    public static final Function<Object,Boolean> eq(final boolean object) {
+        return FnObject.eq(object);
     }
     
-    public static final Function<Boolean,Boolean> notEq(final Boolean object) {
-        return new NotEquals(object);
+    public static final Function<Object,Boolean> notEq(final Boolean object) {
+        return FnObject.notEq(object);
     }
     
-    public static final Function<Boolean,Boolean> notEq(final boolean object) {
-        return new NotEquals(Boolean.valueOf(object));
+    public static final Function<Object,Boolean> notEq(final boolean object) {
+        return FnObject.notEq(object);
     }
 
     
@@ -203,44 +203,6 @@ public final class FnBoolean {
  
     
     
-    
-    
-    static final class Equals extends Function<Boolean,Boolean> {
-
-        private final Boolean object;
-        
-        Equals(final Boolean object) {
-            super();
-            this.object = object;
-        }
-
-        public Boolean execute(final Boolean input, final ExecCtx ctx) throws Exception {
-            if (input == null) {
-                return Boolean.valueOf(this.object == null);
-            }
-            return Boolean.valueOf(input.equals(this.object));
-        }
-        
-    }
-    
-    
-    static final class NotEquals extends Function<Boolean,Boolean> {
-
-        private final Boolean object;
-        
-        NotEquals(final Boolean object) {
-            super();
-            this.object = object;
-        }
-
-        public Boolean execute(final Boolean input, final ExecCtx ctx) throws Exception {
-            if (input == null) {
-                return Boolean.valueOf(this.object == null);
-            }
-            return Boolean.valueOf(!input.equals(this.object));
-        }
-        
-    }
     
 
     

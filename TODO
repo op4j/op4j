@@ -1,8 +1,7 @@
 
   Why do key an value operators have "ifIndex"?
-  Make eq, notEq, lessThan etc. Be implemented only in FnObject.
-  Make Fn add things like "concat", and, or? (Both in FnBoolean and Fn? If so, Fn should have "not")
-  Create simple condition functions like "Contains", "equals", "less than", "greater than"...
+  Add "concat" to Fn
+  Add "contains" "notContains" actions to structure operators
   
     
 ----------------    

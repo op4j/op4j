@@ -35,7 +35,6 @@ import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.apache.commons.lang.time.DateUtils;
-import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.FnStringAuxNumberConverters.ToBigDecimal;
 import org.op4j.functions.FnStringAuxNumberConverters.ToBigInteger;
 import org.op4j.functions.FnStringAuxNumberConverters.ToByte;
@@ -484,12 +483,12 @@ public final class FnString {
     
 
     
-    public static final Function<String,Boolean> eq(final String object) {
-        return new Equals(object);
+    public static final Function<Object,Boolean> eq(final String object) {
+        return FnObject.eq(object);
     }
     
-    public static final Function<String,Boolean> notEq(final String object) {
-        return new NotEquals(object);
+    public static final Function<Object,Boolean> notEq(final String object) {
+        return FnObject.notEq(object);
     }
 
     
@@ -510,23 +509,23 @@ public final class FnString {
     
 
     
-    public static final Function<String,Boolean> lessThan(final String object) {
-        return new LessThan(object);
+    public static final Function<Object,Boolean> lessThan(final String object) {
+        return FnObject.lessThan(object);
     }
 
     
-    public static final Function<String,Boolean> lessOrEqTo(final String object) {
-        return new LessOrEqualTo(object);
+    public static final Function<Object,Boolean> lessOrEqTo(final String object) {
+        return FnObject.lessOrEqTo(object);
     }
     
     
-    public static final Function<String,Boolean> greaterThan(final String object) {
-        return new GreaterThan(object);
+    public static final Function<Object,Boolean> greaterThan(final String object) {
+        return FnObject.greaterThan(object);
     }
     
     
-    public static final Function<String,Boolean> greaterOrEqTo(final String object) {
-        return new GreaterOrEqualTo(object);
+    public static final Function<Object,Boolean> greaterOrEqTo(final String object) {
+        return FnObject.greaterOrEqTo(object);
     }
     
     
@@ -963,158 +962,6 @@ public final class FnString {
     
     
     
-    static final class Equals extends Function<String,Boolean> {
-
-        private final String object;
-        
-        Equals(final String object) {
-            super();
-            this.object = object;
-        }
-
-        public Boolean execute(final String input, final ExecCtx ctx) throws Exception {
-            if (input == null) {
-                return Boolean.valueOf(this.object == null);
-            }
-            return Boolean.valueOf(input.equals(this.object));
-        }
-        
-    }
-    
-    
-    static final class NotEquals extends Function<String,Boolean> {
-
-        private final String object;
-        
-        NotEquals(final String object) {
-            super();
-            this.object = object;
-        }
-
-        public Boolean execute(final String input, final ExecCtx ctx) throws Exception {
-            if (input == null) {
-                return Boolean.valueOf(this.object == null);
-            }
-            return Boolean.valueOf(!input.equals(this.object));
-        }
-        
-    }
-    
-    
-    
-    
-    
-    
-    static final class LessThan extends Function<String,Boolean> {
-
-        private final String object;
-        
-        LessThan(final String object) {
-            super();
-            this.object = object;
-        }
-
-        @SuppressWarnings("unchecked")
-        public Boolean execute(final String input, final ExecCtx ctx) throws Exception {
-            if (input == null) {
-                return Boolean.valueOf(this.object == null);
-            }
-            if (!(input instanceof Comparable<?>)) {
-                throw new ExecutionException(
-                        "Target object is not comparable: " + input.getClass());
-            }
-            if (this.object != null && !(this.object instanceof Comparable<?>)) {
-                throw new ExecutionException(
-                        "Compared object is not comparable: " + this.object.getClass());
-            }
-            return Boolean.valueOf(((Comparable)input).compareTo((Comparable)this.object) < 0);
-        }
-        
-    }
-    
-    
-    static final class LessOrEqualTo extends Function<String,Boolean> {
-
-        private final String object;
-        
-        LessOrEqualTo(final String object) {
-            super();
-            this.object = object;
-        }
-
-        @SuppressWarnings("unchecked")
-        public Boolean execute(final String input, final ExecCtx ctx) throws Exception {
-            if (input == null) {
-                return Boolean.valueOf(this.object == null);
-            }
-            if (!(input instanceof Comparable<?>)) {
-                throw new ExecutionException(
-                        "Target object is not comparable: " + input.getClass());
-            }
-            if (this.object != null && !(this.object instanceof Comparable<?>)) {
-                throw new ExecutionException(
-                        "Compared object is not comparable: " + this.object.getClass());
-            }
-            return Boolean.valueOf(((Comparable)input).compareTo((Comparable)this.object) <= 0);
-        }
-        
-    }
-    
-    
-    static final class GreaterThan extends Function<String,Boolean> {
-
-        private final String object;
-        
-        GreaterThan(final String object) {
-            super();
-            this.object = object;
-        }
-
-        @SuppressWarnings("unchecked")
-        public Boolean execute(final String input, final ExecCtx ctx) throws Exception {
-            if (input == null) {
-                return Boolean.valueOf(this.object == null);
-            }
-            if (!(input instanceof Comparable<?>)) {
-                throw new ExecutionException(
-                        "Target object is not comparable: " + input.getClass());
-            }
-            if (this.object != null && !(this.object instanceof Comparable<?>)) {
-                throw new ExecutionException(
-                        "Compared object is not comparable: " + this.object.getClass());
-            }
-            return Boolean.valueOf(((Comparable)input).compareTo((Comparable)this.object) > 0);
-        }
-        
-    }
-    
-    
-    static final class GreaterOrEqualTo extends Function<String,Boolean> {
-
-        private final String object;
-        
-        GreaterOrEqualTo(final String object) {
-            super();
-            this.object = object;
-        }
-
-        @SuppressWarnings("unchecked")
-        public Boolean execute(final String input, final ExecCtx ctx) throws Exception {
-            if (input == null) {
-                return Boolean.valueOf(this.object == null);
-            }
-            if (!(input instanceof Comparable<?>)) {
-                throw new ExecutionException(
-                        "Target object is not comparable: " + input.getClass());
-            }
-            if (this.object != null && !(this.object instanceof Comparable<?>)) {
-                throw new ExecutionException(
-                        "Compared object is not comparable: " + this.object.getClass());
-            }
-            return Boolean.valueOf(((Comparable)input).compareTo((Comparable)this.object) >= 0);
-        }
-        
-    }
     
     
     
