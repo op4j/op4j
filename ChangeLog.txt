@@ -11,6 +11,8 @@
 - Improved precision management in FnMath functions
 - All predefined op4j functions now extend Function and thus provide an "execute" method
   without context which allows them to be executed on their own more easily.
+- Added utility methods to Fn like "Fn.onString()" to avoid having to specify the type as
+  "Fn.on(Types.STRING)".
 
 
 1.0-beta1

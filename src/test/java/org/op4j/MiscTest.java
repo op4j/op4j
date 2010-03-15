@@ -590,6 +590,7 @@ watch.start();
         System.out.println(Op.onAll(10,3).reduce(FnReduce.ofInteger().div(RoundingMode.CEILING)).get());
         
         
+        
     }
     
     
