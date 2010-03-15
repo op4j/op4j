@@ -568,6 +568,22 @@ public final class FnNumber {
     
     
     
+    
+    
+    
+    
+    public static final Function<Object,Boolean> isNull() {
+        return FnObject.isNull();
+    }
+    
+    public static final Function<Object,Boolean> isNotNull() {
+        return FnObject.isNotNull();
+    }
+    
+    
+    
+    
+    
 
 	
 	
@@ -1273,7 +1289,7 @@ public final class FnNumber {
                 throw new ExecutionException(
                         "Compared object is not comparable: " + this.object.getClass());
             }
-            return Boolean.valueOf(((Comparable)input).compareTo((Comparable)this.object) < 0);
+            return Boolean.valueOf(((Comparable)input).compareTo(this.object) < 0);
         }
         
     }
@@ -1301,7 +1317,7 @@ public final class FnNumber {
                 throw new ExecutionException(
                         "Compared object is not comparable: " + this.object.getClass());
             }
-            return Boolean.valueOf(((Comparable)input).compareTo((Comparable)this.object) <= 0);
+            return Boolean.valueOf(((Comparable)input).compareTo(this.object) <= 0);
         }
         
     }
@@ -1329,7 +1345,7 @@ public final class FnNumber {
                 throw new ExecutionException(
                         "Compared object is not comparable: " + this.object.getClass());
             }
-            return Boolean.valueOf(((Comparable)input).compareTo((Comparable)this.object) > 0);
+            return Boolean.valueOf(((Comparable)input).compareTo(this.object) > 0);
         }
         
     }
@@ -1357,7 +1373,7 @@ public final class FnNumber {
                 throw new ExecutionException(
                         "Compared object is not comparable: " + this.object.getClass());
             }
-            return Boolean.valueOf(((Comparable)input).compareTo((Comparable)this.object) >= 0);
+            return Boolean.valueOf(((Comparable)input).compareTo(this.object) >= 0);
         }
         
     }

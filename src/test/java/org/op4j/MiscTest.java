@@ -46,6 +46,7 @@ import org.op4j.functions.Call;
 import org.op4j.functions.DecimalPoint;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.FnArray;
+import org.op4j.functions.FnBoolean;
 import org.op4j.functions.FnCalendar;
 import org.op4j.functions.FnList;
 import org.op4j.functions.FnMath;
@@ -592,6 +593,13 @@ watch.start();
         
         System.out.println(Op.on(3).unfoldList(FnMath.ofInteger().multiplyBy(2), FnNumber.lessOrEqTo(100)).get());
         
+        Function<Integer,Boolean> fnAnd1 = FnBoolean.and(FnObject.eq("lala"), FnNumber.notEq(534));
+        
+        System.out.println(
+                Op.on(233).exec(FnBoolean.and(FnNumber.greaterThan(44), FnObject.lessThan(534))).get());
+        
+        System.out.println(
+                Op.on(1233).ifTrue(Fn.not(Fn.and(FnNumber.greaterThan(44), FnObject.lessThan(534)))).exec(FnMath.ofInteger().add(10)).get());
     }
     
     

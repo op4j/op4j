@@ -252,6 +252,18 @@ public final class FnDate {
     
     
     
+    public static final Function<Object,Boolean> isNull() {
+        return FnObject.isNull();
+    }
+    
+    public static final Function<Object,Boolean> isNotNull() {
+        return FnObject.isNotNull();
+    }
+    
+    
+    
+    
+    
     
     
     

@@ -21,10 +21,13 @@ package org.op4j.functions;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.List;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.exceptions.ExecutionException;
+import org.op4j.util.VarArgsUtil;
 
 /**
  * 
@@ -44,7 +47,7 @@ public final class FnBoolean {
     private static final ToNumber<Integer> TO_INTEGER = new ToNumber<Integer>(Types.INTEGER);
     private static final ToNumber<Short> TO_SHORT = new ToNumber<Short>(Types.SHORT);
     private static final ToNumber<Byte> TO_BYTE = new ToNumber<Byte>(Types.BYTE);
-    private static final Not NOT = new Not();
+    private static final Negate NEGATE = new Negate();
 
     
     
@@ -94,8 +97,8 @@ public final class FnBoolean {
         return TO_BYTE;
     }
 
-    public static final Function<Boolean,Boolean> not() {
-        return NOT;
+    public static final Function<Boolean,Boolean> negate() {
+        return NEGATE;
     }
     
 	
@@ -117,6 +120,34 @@ public final class FnBoolean {
         return new NotEquals(Boolean.valueOf(object));
     }
 
+    
+    
+    
+    
+    
+    public static final <T> Function<T,Boolean> and(final IFunction<? super T, Boolean>... functions) {
+        return new And<T>(VarArgsUtil.asRequiredObjectList(functions));
+    }
+    
+    public static final <T> Function<T,Boolean> or(final IFunction<? super T, Boolean>... functions) {
+        return new Or<T>(VarArgsUtil.asRequiredObjectList(functions));
+    }
+    
+    public static final <T> Function<T,Boolean> not(final IFunction<? super T, Boolean> function) {
+        return new Not<T>(function);
+    }
+    
+    
+    
+    public static final Function<Object,Boolean> isNull() {
+        return FnObject.isNull();
+    }
+    
+    public static final Function<Object,Boolean> isNotNull() {
+        return FnObject.isNotNull();
+    }
+    
+    
     
     
 	
@@ -215,9 +246,9 @@ public final class FnBoolean {
     
     
     
-    static class Not extends AbstractNullAsNullFunction<Boolean, Boolean> {
+    static class Negate extends AbstractNullAsNullFunction<Boolean, Boolean> {
 
-        public Not() {
+        public Negate() {
             super();
         }
 
@@ -232,4 +263,99 @@ public final class FnBoolean {
     
     
     
+    static class And<T> extends AbstractNullAsNullFunction<T, Boolean> {
+
+        private final List<IFunction<? super T,Boolean>> functions;
+        
+        public And(final List<IFunction<? super T,Boolean>> functions) {
+            super();
+            this.functions = functions;
+            if (functions.contains(null)) {
+                throw new IllegalArgumentException("Null function found: None of the specified functions can be null");
+            }
+        }
+
+        @Override
+        protected Boolean nullAsNullExecute(final T object, final ExecCtx ctx) throws Exception {
+            for (final IFunction<? super T, Boolean> function : this.functions) {
+                final Boolean result = function.execute(object, ctx);
+                if (result == null) {
+                    throw new ExecutionException("Evaluation function returned null, which is " +
+                            "not allowed executing \"and\"");
+                }
+                if (!result.booleanValue()) {
+                    return Boolean.FALSE;
+                }
+            }
+            return Boolean.TRUE;
+        }
+        
+        
+    }
+    
+    
+    
+    
+    static class Or<T> extends AbstractNullAsNullFunction<T, Boolean> {
+
+        private final List<IFunction<? super T,Boolean>> functions;
+        
+        public Or(final List<IFunction<? super T,Boolean>> functions) {
+            super();
+            this.functions = functions;
+            if (functions.contains(null)) {
+                throw new IllegalArgumentException("Null function found: None of the specified functions can be null");
+            }
+        }
+
+        @Override
+        protected Boolean nullAsNullExecute(final T object, final ExecCtx ctx) throws Exception {
+            for (final IFunction<? super T, Boolean> function : this.functions) {
+                final Boolean result = function.execute(object, ctx);
+                if (result == null) {
+                    throw new ExecutionException("Evaluation function returned null, which is " +
+                            "not allowed executing \"or\"");
+                }
+                if (result.booleanValue()) {
+                    return Boolean.TRUE;
+                }
+            }
+            return Boolean.FALSE;
+        }
+        
+        
+    }
+    
+
+
+
+    
+    
+    static class Not<T> extends AbstractNullAsNullFunction<T, Boolean> {
+
+        private final IFunction<? super T,Boolean> function;
+        
+        public Not(final IFunction<? super T,Boolean> function) {
+            super();
+            Validate.notNull(function, "Null function found: None of the specified functions can be null");
+            this.function = function;
+        }
+
+        @Override
+        protected Boolean nullAsNullExecute(final T object, final ExecCtx ctx) throws Exception {
+            final Boolean result = this.function.execute(object, ctx);
+            if (result == null) {
+                throw new ExecutionException("Evaluation function returned null, which is " +
+                        "not allowed executing \"or\"");
+            }
+            if (result.booleanValue()) {
+                return Boolean.FALSE;
+            }
+            return Boolean.TRUE;
+        }
+        
+        
+    }
+
+
 }

@@ -30,6 +30,9 @@ import java.util.Set;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.TypeParameters;
 import org.javaruntype.type.Types;
+import org.op4j.functions.FnBoolean;
+import org.op4j.functions.Function;
+import org.op4j.functions.IFunction;
 import org.op4j.operators.impl.fn.array.Level0ArrayOperator;
 import org.op4j.operators.impl.fn.generic.Level0GenericUniqOperator;
 import org.op4j.operators.impl.fn.list.Level0ListOperator;
@@ -366,6 +369,32 @@ public final class Fn {
     public static <T> Level0SetOperator<Set<T>,T> onSetOf(final Type<T> type) {
         return new Level0SetOperator<Set<T>,T>(ExecutionTarget.forFn(Normalisation.SET));
     }
+    
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public static final <T> Function<T,Boolean> and(final IFunction<? super T, Boolean>... functions) {
+        return FnBoolean.and(functions);
+    }
+    
+    public static final <T> Function<T,Boolean> or(final IFunction<? super T, Boolean>... functions) {
+        return FnBoolean.or(functions);
+    }
+    
+    public static final <T> Function<T,Boolean> not(final IFunction<? super T, Boolean> function) {
+        return FnBoolean.not(function);
+    }
+    
+    
     
     
 

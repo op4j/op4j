@@ -9,6 +9,7 @@
 - Created unfold functions and actions for generic unique operators.
 - Added aggregation functions in FnMath for arrays.
 - Improved precision management in FnMath functions
+- Added "negate" function to FnBoolean.
 - All predefined op4j functions now extend Function and thus provide an "execute" method
   without context which allows them to be executed on their own more easily.
 - Added utility methods to Fn like "Fn.onString()" to avoid having to specify the type as
@@ -17,6 +18,9 @@
   FnBoolean, FnString, FnCalendar, FnDate.
 - Added "lessThan", "lessOrEqTo", "greaterThan" and "greaterOrEqTo" functions to 
   FnObject, FnNumber and FnString.
+- Added "and", "or" and "not" functions to FnBoolean and Fn.
+- Added "isNull" and "isNotNull" functions to FnObject, FnNumber, FnBoolean, FnString, FnCalendar,
+  FnDate.
 
 
 1.0-beta1

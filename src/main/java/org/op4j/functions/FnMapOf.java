@@ -486,7 +486,7 @@ public final class FnMapOf<K,V> {
                     this.function.execute(element, new ExecCtxImpl(Integer.valueOf(index)));
                 if (elementResult == null) {
                     throw new ExecutionException("Evaluation function returned null, which is " +
-                            "not allowed executing \"any\"");
+                            "not allowed executing \"all\"");
                 }
                 if (!elementResult.booleanValue()) {
                     return Boolean.FALSE;

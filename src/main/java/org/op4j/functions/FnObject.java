@@ -43,6 +43,8 @@ public final class FnObject {
 	private static final Function<Object,String> TO_STRING = new ToString();
     private static final Function<Object,String> TO_STRING_NULL_SAFE = new ToStringNullSafe();
 	
+    private static final Function<Object,Boolean> IS_NULL = new IsNull();
+    private static final Function<Object,Boolean> IS_NOT_NULL = new IsNotNull();
 	
 	
 	
@@ -275,6 +277,14 @@ public final class FnObject {
     
     
     
+    public static final Function<Object,Boolean> isNull() {
+        return IS_NULL;
+    }
+    
+    public static final Function<Object,Boolean> isNotNull() {
+        return IS_NOT_NULL;
+    }
+    
     
     
     
@@ -432,7 +442,7 @@ public final class FnObject {
                 throw new ExecutionException(
                         "Compared object is not comparable: " + this.object.getClass());
             }
-            return Boolean.valueOf(((Comparable)input).compareTo((Comparable)this.object) < 0);
+            return Boolean.valueOf(((Comparable)input).compareTo(this.object) < 0);
         }
         
     }
@@ -460,7 +470,7 @@ public final class FnObject {
                 throw new ExecutionException(
                         "Compared object is not comparable: " + this.object.getClass());
             }
-            return Boolean.valueOf(((Comparable)input).compareTo((Comparable)this.object) <= 0);
+            return Boolean.valueOf(((Comparable)input).compareTo(this.object) <= 0);
         }
         
     }
@@ -488,7 +498,7 @@ public final class FnObject {
                 throw new ExecutionException(
                         "Compared object is not comparable: " + this.object.getClass());
             }
-            return Boolean.valueOf(((Comparable)input).compareTo((Comparable)this.object) > 0);
+            return Boolean.valueOf(((Comparable)input).compareTo(this.object) > 0);
         }
         
     }
@@ -516,8 +526,47 @@ public final class FnObject {
                 throw new ExecutionException(
                         "Compared object is not comparable: " + this.object.getClass());
             }
-            return Boolean.valueOf(((Comparable)input).compareTo((Comparable)this.object) >= 0);
+            return Boolean.valueOf(((Comparable)input).compareTo(this.object) >= 0);
         }
+        
+    }
+    
+    
+    
+    
+
+    
+    static class IsNull extends AbstractNullAsNullFunction<Object, Boolean> {
+
+        public IsNull() {
+            super();
+        }
+
+        @Override
+        protected Boolean nullAsNullExecute(final Object object, final ExecCtx ctx) throws Exception {
+            if (object == null) {
+                return Boolean.TRUE;
+            }
+            return Boolean.FALSE;
+        }
+        
+        
+    }
+    
+    static class IsNotNull extends AbstractNullAsNullFunction<Object, Boolean> {
+
+        public IsNotNull() {
+            super();
+        }
+
+        @Override
+        protected Boolean nullAsNullExecute(final Object object, final ExecCtx ctx) throws Exception {
+            if (object == null) {
+                return Boolean.FALSE;
+            }
+            return Boolean.TRUE;
+        }
+        
         
     }
     
