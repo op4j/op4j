@@ -590,6 +590,7 @@ watch.start();
         System.out.println(Op.onAll(10,3).reduce(FnReduce.ofInteger().div(RoundingMode.CEILING)).get());
         
         
+        System.out.println(Op.on(3).unfoldList(FnMath.ofInteger().multiplyBy(2), FnNumber.lessOrEqTo(100)).get());
         
     }
     

@@ -238,6 +238,15 @@ public final class FnDate {
         return FIELD_STRING_ARRAY_TO_DATE;
     }
     
+
+    
+    public static final Function<Date,Boolean> eq(final Date object) {
+        return new Equals(object);
+    }
+    
+    public static final Function<Date,Boolean> notEq(final Date object) {
+        return new NotEquals(object);
+    }
     
     
     
@@ -809,5 +818,49 @@ public final class FnDate {
         }
         
     }
+    
+    
+    
+    
+    
+    
+    
+    static final class Equals extends Function<Date,Boolean> {
+
+        private final Date object;
+        
+        Equals(final Date object) {
+            super();
+            this.object = object;
+        }
+
+        public Boolean execute(final Date input, final ExecCtx ctx) throws Exception {
+            if (input == null) {
+                return Boolean.valueOf(this.object == null);
+            }
+            return Boolean.valueOf(input.equals(this.object));
+        }
+        
+    }
+    
+    
+    static final class NotEquals extends Function<Date,Boolean> {
+
+        private final Date object;
+        
+        NotEquals(final Date object) {
+            super();
+            this.object = object;
+        }
+
+        public Boolean execute(final Date input, final ExecCtx ctx) throws Exception {
+            if (input == null) {
+                return Boolean.valueOf(this.object == null);
+            }
+            return Boolean.valueOf(!input.equals(this.object));
+        }
+        
+    }
+        
     
 }

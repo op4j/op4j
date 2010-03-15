@@ -27,6 +27,7 @@ import java.util.Set;
 
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.op4j.exceptions.ExecutionException;
 
 
 /**
@@ -72,11 +73,213 @@ public final class FnObject {
         return new ToSingletonSet<T>();
     }
 
+
+    
     
     public static final Function<Object,Boolean> eq(final Object object) {
         return new Equals(object);
     }
+    
+    public static final Function<Object,Boolean> eq(final float object) {
+        return new Equals(Float.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> eq(final double object) {
+        return new Equals(Double.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> eq(final byte object) {
+        return new Equals(Byte.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> eq(final short object) {
+        return new Equals(Short.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> eq(final int object) {
+        return new Equals(Integer.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> eq(final long object) {
+        return new Equals(Long.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> eq(final boolean object) {
+        return new Equals(Boolean.valueOf(object));
+    }
+    
+    
+    public static final Function<Object,Boolean> notEq(final Object object) {
+        return new NotEquals(object);
+    }
+    
+    public static final Function<Object,Boolean> notEq(final float object) {
+        return new NotEquals(Float.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> notEq(final double object) {
+        return new NotEquals(Double.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> notEq(final byte object) {
+        return new NotEquals(Byte.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> notEq(final short object) {
+        return new NotEquals(Short.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> notEq(final int object) {
+        return new NotEquals(Integer.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> notEq(final long object) {
+        return new NotEquals(Long.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> notEq(final boolean object) {
+        return new NotEquals(Boolean.valueOf(object));
+    }
 
+    
+    
+    
+    
+    
+    
+
+    
+    public static final Function<Object,Boolean> lessThan(final Object object) {
+        return new LessThan(object);
+    }
+    
+    public static final Function<Object,Boolean> lessThan(final float object) {
+        return new LessThan(Float.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> lessThan(final double object) {
+        return new LessThan(Double.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> lessThan(final byte object) {
+        return new LessThan(Byte.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> lessThan(final short object) {
+        return new LessThan(Short.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> lessThan(final int object) {
+        return new LessThan(Integer.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> lessThan(final long object) {
+        return new LessThan(Long.valueOf(object));
+    }
+
+    
+    
+    public static final Function<Object,Boolean> lessOrEqTo(final Object object) {
+        return new LessOrEqualTo(object);
+    }
+    
+    public static final Function<Object,Boolean> lessOrEqTo(final float object) {
+        return new LessOrEqualTo(Float.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> lessOrEqTo(final double object) {
+        return new LessOrEqualTo(Double.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> lessOrEqTo(final byte object) {
+        return new LessOrEqualTo(Byte.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> lessOrEqTo(final short object) {
+        return new LessOrEqualTo(Short.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> lessOrEqTo(final int object) {
+        return new LessOrEqualTo(Integer.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> lessOrEqTo(final long object) {
+        return new LessOrEqualTo(Long.valueOf(object));
+    }
+    
+    
+
+    
+
+    
+
+
+    
+    public static final Function<Object,Boolean> greaterThan(final Object object) {
+        return new GreaterThan(object);
+    }
+    
+    public static final Function<Object,Boolean> greaterThan(final float object) {
+        return new GreaterThan(Float.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> greaterThan(final double object) {
+        return new GreaterThan(Double.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> greaterThan(final byte object) {
+        return new GreaterThan(Byte.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> greaterThan(final short object) {
+        return new GreaterThan(Short.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> greaterThan(final int object) {
+        return new GreaterThan(Integer.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> greaterThan(final long object) {
+        return new GreaterThan(Long.valueOf(object));
+    }
+
+    
+    
+    public static final Function<Object,Boolean> greaterOrEqTo(final Object object) {
+        return new GreaterOrEqualTo(object);
+    }
+    
+    public static final Function<Object,Boolean> greaterOrEqTo(final float object) {
+        return new GreaterOrEqualTo(Float.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> greaterOrEqTo(final double object) {
+        return new GreaterOrEqualTo(Double.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> greaterOrEqTo(final byte object) {
+        return new GreaterOrEqualTo(Byte.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> greaterOrEqTo(final short object) {
+        return new GreaterOrEqualTo(Short.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> greaterOrEqTo(final int object) {
+        return new GreaterOrEqualTo(Integer.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> greaterOrEqTo(final long object) {
+        return new GreaterOrEqualTo(Long.valueOf(object));
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -180,6 +383,140 @@ public final class FnObject {
                 return Boolean.valueOf(this.object == null);
             }
             return Boolean.valueOf(input.equals(this.object));
+        }
+        
+    }
+    
+    
+    static final class NotEquals extends Function<Object,Boolean> {
+
+        private final Object object;
+        
+        NotEquals(final Object object) {
+            super();
+            this.object = object;
+        }
+
+        public Boolean execute(final Object input, final ExecCtx ctx) throws Exception {
+            if (input == null) {
+                return Boolean.valueOf(this.object == null);
+            }
+            return Boolean.valueOf(!input.equals(this.object));
+        }
+        
+    }
+    
+    
+    
+    
+    
+    static final class LessThan extends Function<Object,Boolean> {
+
+        private final Object object;
+        
+        LessThan(final Object object) {
+            super();
+            this.object = object;
+        }
+
+        @SuppressWarnings("unchecked")
+        public Boolean execute(final Object input, final ExecCtx ctx) throws Exception {
+            if (input == null) {
+                return Boolean.valueOf(this.object == null);
+            }
+            if (!(input instanceof Comparable<?>)) {
+                throw new ExecutionException(
+                        "Target object is not comparable: " + input.getClass());
+            }
+            if (this.object != null && !(this.object instanceof Comparable<?>)) {
+                throw new ExecutionException(
+                        "Compared object is not comparable: " + this.object.getClass());
+            }
+            return Boolean.valueOf(((Comparable)input).compareTo((Comparable)this.object) < 0);
+        }
+        
+    }
+    
+    
+    static final class LessOrEqualTo extends Function<Object,Boolean> {
+
+        private final Object object;
+        
+        LessOrEqualTo(final Object object) {
+            super();
+            this.object = object;
+        }
+
+        @SuppressWarnings("unchecked")
+        public Boolean execute(final Object input, final ExecCtx ctx) throws Exception {
+            if (input == null) {
+                return Boolean.valueOf(this.object == null);
+            }
+            if (!(input instanceof Comparable<?>)) {
+                throw new ExecutionException(
+                        "Target object is not comparable: " + input.getClass());
+            }
+            if (this.object != null && !(this.object instanceof Comparable<?>)) {
+                throw new ExecutionException(
+                        "Compared object is not comparable: " + this.object.getClass());
+            }
+            return Boolean.valueOf(((Comparable)input).compareTo((Comparable)this.object) <= 0);
+        }
+        
+    }
+    
+    
+    static final class GreaterThan extends Function<Object,Boolean> {
+
+        private final Object object;
+        
+        GreaterThan(final Object object) {
+            super();
+            this.object = object;
+        }
+
+        @SuppressWarnings("unchecked")
+        public Boolean execute(final Object input, final ExecCtx ctx) throws Exception {
+            if (input == null) {
+                return Boolean.valueOf(this.object == null);
+            }
+            if (!(input instanceof Comparable<?>)) {
+                throw new ExecutionException(
+                        "Target object is not comparable: " + input.getClass());
+            }
+            if (this.object != null && !(this.object instanceof Comparable<?>)) {
+                throw new ExecutionException(
+                        "Compared object is not comparable: " + this.object.getClass());
+            }
+            return Boolean.valueOf(((Comparable)input).compareTo((Comparable)this.object) > 0);
+        }
+        
+    }
+    
+    
+    static final class GreaterOrEqualTo extends Function<Object,Boolean> {
+
+        private final Object object;
+        
+        GreaterOrEqualTo(final Object object) {
+            super();
+            this.object = object;
+        }
+
+        @SuppressWarnings("unchecked")
+        public Boolean execute(final Object input, final ExecCtx ctx) throws Exception {
+            if (input == null) {
+                return Boolean.valueOf(this.object == null);
+            }
+            if (!(input instanceof Comparable<?>)) {
+                throw new ExecutionException(
+                        "Target object is not comparable: " + input.getClass());
+            }
+            if (this.object != null && !(this.object instanceof Comparable<?>)) {
+                throw new ExecutionException(
+                        "Compared object is not comparable: " + this.object.getClass());
+            }
+            return Boolean.valueOf(((Comparable)input).compareTo((Comparable)this.object) >= 0);
         }
         
     }

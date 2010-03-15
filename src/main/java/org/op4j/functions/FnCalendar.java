@@ -219,6 +219,17 @@ public final class FnCalendar {
     
     
     
+
+    
+    public static final Function<Calendar,Boolean> eq(final Calendar object) {
+        return new Equals(object);
+    }
+    
+    public static final Function<Calendar,Boolean> notEq(final Calendar object) {
+        return new NotEquals(object);
+    }
+    
+    
     
     
     
@@ -745,5 +756,46 @@ public final class FnCalendar {
         
     }
     
+    
+    
+    
+    
+    static final class Equals extends Function<Calendar,Boolean> {
+
+        private final Calendar object;
+        
+        Equals(final Calendar object) {
+            super();
+            this.object = object;
+        }
+
+        public Boolean execute(final Calendar input, final ExecCtx ctx) throws Exception {
+            if (input == null) {
+                return Boolean.valueOf(this.object == null);
+            }
+            return Boolean.valueOf(input.equals(this.object));
+        }
+        
+    }
+    
+    
+    static final class NotEquals extends Function<Calendar,Boolean> {
+
+        private final Calendar object;
+        
+        NotEquals(final Calendar object) {
+            super();
+            this.object = object;
+        }
+
+        public Boolean execute(final Calendar input, final ExecCtx ctx) throws Exception {
+            if (input == null) {
+                return Boolean.valueOf(this.object == null);
+            }
+            return Boolean.valueOf(!input.equals(this.object));
+        }
+        
+    }
+        
     
 }
