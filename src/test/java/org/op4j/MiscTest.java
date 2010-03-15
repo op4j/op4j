@@ -602,7 +602,7 @@ watch.start();
                 Op.on(1233).ifTrue(Fn.not(Fn.and(FnNumber.greaterThan(44), FnObject.lessThan(534)))).exec(FnMath.ofInteger().add(10)).get());
         
         System.out.println(
-                Op.on(1233).exec(Fn.concat(FnMath.ofInteger().add(10), FnNumber.greaterThan(1200))).get());
+                Op.on(1233).exec(Fn.chain(FnMath.ofInteger().add(10), FnNumber.greaterThan(1200))).get());
         
     }
     

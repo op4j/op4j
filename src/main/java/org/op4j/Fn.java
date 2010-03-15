@@ -397,21 +397,21 @@ public final class Fn {
     }
     
     
-    public static final <X,Y,Z> Function<X,Z> concat(final IFunction<X,Y> fn1, final IFunction<? super Y,Z> fn2) {
-        return new Concat<X,Y,Z>(fn1, fn2);
+    public static final <X,Y,Z> Function<X,Z> chain(final IFunction<X,Y> fn1, final IFunction<? super Y,Z> fn2) {
+        return new Chain<X,Y,Z>(fn1, fn2);
     }
     
     
     
     
     
-    private static final class Concat<X,Y,Z> extends Function<X,Z> {
+    private static final class Chain<X,Y,Z> extends Function<X,Z> {
 
         private final IFunction<X,Y> fn1;
         private final IFunction<? super Y,Z> fn2; 
 
         
-        public Concat(final IFunction<X,Y> fn1, final IFunction<? super Y,Z> fn2) {
+        public Chain(final IFunction<X,Y> fn1, final IFunction<? super Y,Z> fn2) {
             super();
             Validate.notNull(fn1, "Null function received: First function in concat is null");
             Validate.notNull(fn2, "Null function received: Second function in concat is null");
