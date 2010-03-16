@@ -35,7 +35,6 @@ import org.op4j.operators.impl.fn.array.Level0ArrayOperator;
 import org.op4j.operators.impl.fn.list.Level0ListOperator;
 import org.op4j.operators.impl.fn.map.Level0MapOperator;
 import org.op4j.operators.impl.fn.set.Level0SetOperator;
-import org.op4j.operators.impl.fn.generic.Level0GenericUniqOperator;
 import org.op4j.operators.intf.generic.ILevel0GenericMultiOperator;
 import org.op4j.operators.qualities.MultiFnOperator;
 import org.op4j.target.Target;

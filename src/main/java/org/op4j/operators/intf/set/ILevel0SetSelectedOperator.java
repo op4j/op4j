@@ -57,6 +57,7 @@ public interface ILevel0SetSelectedOperator<I,T>
 
     public ILevel0SetSelectedOperator<I,T> sort();
     public ILevel0SetSelectedOperator<I,T> sort(final Comparator<? super T> comparator);
+    public ILevel0SetSelectedOperator<I,T> sortBy(final IFunction<? super T,?> by);
         
     public ILevel0SetSelectedOperator<I,T> add(final T newElement);
     public ILevel0SetSelectedOperator<I,T> addAll(final T... newElements);

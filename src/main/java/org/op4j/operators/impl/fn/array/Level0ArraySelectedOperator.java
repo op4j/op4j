@@ -56,6 +56,12 @@ public final class Level0ArraySelectedOperator<I,T> extends AbstractOperator imp
     }
 
 
+    @SuppressWarnings("unchecked")
+    public Level0ArraySelectedOperator<I,T> sortBy(final IFunction<? super T,?> by) {
+        return new Level0ArraySelectedOperator<I,T>(this.type, getTarget().execute(FnArray.ofObject().sortBy((IFunction)by)));
+    }
+
+
     public Level0ArraySelectedOperator<I,T> insertAll(final int position, final T... newElements) {
         return new Level0ArraySelectedOperator<I,T>(this.type, getTarget().execute(FnArray.ofObject().insert(position, newElements)));
     }

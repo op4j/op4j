@@ -61,6 +61,7 @@ public interface ILevel0ListSelectedOperator<I,T>
     
     public ILevel0ListSelectedOperator<I,T> sort();
     public ILevel0ListSelectedOperator<I,T> sort(final Comparator<? super T> comparator);
+    public ILevel0ListSelectedOperator<I,T> sortBy(final IFunction<? super T,?> by);
         
     public ILevel0ListSelectedOperator<I,T> add(final T newElement);
     public ILevel0ListSelectedOperator<I,T> addAll(final T... newElements);

@@ -30,7 +30,6 @@ import org.op4j.functions.Call;
 import org.op4j.functions.FnList;
 import org.op4j.functions.IFunction;
 import org.op4j.operators.impl.AbstractOperator;
-import org.op4j.operators.impl.op.generic.Level0GenericUniqOperator;
 import org.op4j.operators.impl.op.array.Level0ArrayOperator;
 import org.op4j.operators.impl.op.list.Level0ListOperator;
 import org.op4j.operators.impl.op.map.Level0MapOperator;

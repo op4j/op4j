@@ -253,6 +253,15 @@ public final class Level0MapOperator<I,K,V> extends AbstractOperator
     public Level0GenericUniqOperator<I, Boolean> any(final IFunction<? super Map.Entry<K,V>, Boolean> eval) {
         return new Level0GenericUniqOperator<I, Boolean>(getTarget().execute(FnMap.of((Type<K>)Types.OBJECT,(Type<V>)Types.OBJECT).any(eval)));
     }
+
+
+
+
+    
+    @SuppressWarnings("unchecked")
+    public Level0MapOperator<I, K, V> sortBy(IFunction<? super Entry<K, V>, ?> by) {
+        return new Level0MapOperator<I, K, V>(getTarget().execute(FnMap.of((Type<K>)Types.OBJECT,(Type<V>)Types.OBJECT).sortBy(by)));
+    }
     
 
     

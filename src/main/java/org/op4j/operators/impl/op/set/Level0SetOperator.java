@@ -318,5 +318,20 @@ public final class Level0SetOperator<I,T> extends AbstractOperator
     public Level0GenericUniqOperator<I, Boolean> any(final IFunction<? super T, Boolean> eval) {
         return new Level0GenericUniqOperator<I, Boolean>(getTarget().execute(FnSet.of((Type<T>)Types.OBJECT).any(eval)));
     }
+ 
+    
+    
+    
+    
+
+    
+
+
+    @SuppressWarnings("unchecked")
+    public Level0SetOperator<I, T> sortBy(IFunction<? super T, ?> by) {
+        return new Level0SetOperator<I, T>(getTarget().execute(FnSet.of((Type<T>)Types.OBJECT).sortBy(by)));
+    }
+    
+    
     
 }

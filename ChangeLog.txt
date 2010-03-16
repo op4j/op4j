@@ -28,7 +28,11 @@
 - Added "containsKey", "notContainsKey", "containsAllKeys", "containsAnyKeys" and 
   "containsNoneKeys" to FnMap.
 - Added "by" to Fn and FnBoolean.
-- Added "isNullBy" and "isNotNullBy" to FnBoolean and FnObject 
+- Added "isNullBy" and "isNotNullBy" to FnBoolean and FnObject
+- Added "eqBy" and "notEqBy" to FnObject, FnNumber and FnBoolean.
+- Added "lessThanBy", "lessOrEqToBy", "greaterThanBy", "greaterOrEqToBy" to FnObject and FnNumber.
+- Added "sortBy" functions to FnArray, FnList, FnMap and FnSet. Added "sortBy" actions to
+  array, list, map and set operators. 
 
 
 1.0-beta1

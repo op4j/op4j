@@ -42,6 +42,12 @@ public final class Level0MapSelectedOperator<I,K,V> extends AbstractOperator imp
 
 
     @SuppressWarnings("unchecked")
+    public Level0MapSelectedOperator<I,K,V> sortBy(final IFunction<? super Entry<K,V>,?> by) {
+        return new Level0MapSelectedOperator<I,K,V>(getTarget().execute(FnMap.ofObjectObject().sortBy((IFunction)by)));
+    }
+
+
+    @SuppressWarnings("unchecked")
     public Level0MapSelectedOperator<I,K,V> insertAll(final int position, final Map<K,V> map) {
         return new Level0MapSelectedOperator<I,K,V>(getTarget().execute(FnMap.ofObjectObject().insertAll(position, (Map)map)));
     }

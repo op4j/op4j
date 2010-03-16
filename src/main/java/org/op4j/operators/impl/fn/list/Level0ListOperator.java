@@ -321,4 +321,12 @@ public final class Level0ListOperator<I,T> extends AbstractOperator
         return new Level0GenericUniqOperator<I, Boolean>(getTarget().execute(FnList.of((Type<T>)Types.OBJECT).any(eval)));
     }
 
+    
+
+
+    @SuppressWarnings("unchecked")
+    public Level0ListOperator<I, T> sortBy(IFunction<? super T, ?> by) {
+        return new Level0ListOperator<I, T>(getTarget().execute(FnList.of((Type<T>)Types.OBJECT).sortBy(by)));
+    }
+
 }

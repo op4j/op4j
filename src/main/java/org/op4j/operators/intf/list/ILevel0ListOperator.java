@@ -87,6 +87,7 @@ public interface ILevel0ListOperator<I,T>
     
     public ILevel0ListOperator<I,T> sort();
     public ILevel0ListOperator<I,T> sort(final Comparator<? super T> comparator);
+    public ILevel0ListOperator<I,T> sortBy(final IFunction<? super T,?> by);
         
     public ILevel0ListOperator<I,T> add(final T newElement);
     public ILevel0ListOperator<I,T> addAll(final T... newElements);

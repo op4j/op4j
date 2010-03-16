@@ -52,6 +52,12 @@ public final class Level0ListSelectedOperator<I,T> extends AbstractOperator impl
     }
 
 
+    @SuppressWarnings("unchecked")
+    public Level0ListSelectedOperator<I,T> sortBy(final IFunction<? super T,?> by) {
+        return new Level0ListSelectedOperator<I,T>(getTarget().execute(FnList.ofObject().sortBy((IFunction)by)));
+    }
+
+
     public Level0ListSelectedOperator<I,T> insertAll(final int position, final T... newElements) {
         return new Level0ListSelectedOperator<I,T>(getTarget().execute(FnList.ofObject().insert(position, newElements)));
     }

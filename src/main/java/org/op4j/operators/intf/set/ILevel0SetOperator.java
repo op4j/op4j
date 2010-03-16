@@ -83,6 +83,7 @@ public interface ILevel0SetOperator<I,T>
     
     public ILevel0SetOperator<I,T> sort();
     public ILevel0SetOperator<I,T> sort(final Comparator<? super T> comparator);
+    public ILevel0SetOperator<I,T> sortBy(final IFunction<? super T,?> by);
         
     public ILevel0SetOperator<I,T> add(final T newElement);
     public ILevel0SetOperator<I,T> addAll(final T... newElements);

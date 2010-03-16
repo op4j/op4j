@@ -60,6 +60,7 @@ public interface ILevel0ArraySelectedOperator<I,T>
     
     public ILevel0ArraySelectedOperator<I,T> sort();
     public ILevel0ArraySelectedOperator<I,T> sort(final Comparator<? super T> comparator);
+    public ILevel0ArraySelectedOperator<I,T> sortBy(final IFunction<? super T,?> by);
         
     public ILevel0ArraySelectedOperator<I,T> add(final T newElement);
     public ILevel0ArraySelectedOperator<I,T> addAll(final T... newElements);

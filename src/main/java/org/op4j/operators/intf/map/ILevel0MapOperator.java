@@ -75,6 +75,7 @@ public interface ILevel0MapOperator<I,K,V>
     
     public ILevel0MapOperator<I,K,V> sort();
     public ILevel0MapOperator<I,K,V> sort(final Comparator<? super Map.Entry<K,V>> comparator);
+    public ILevel0MapOperator<I,K,V> sortBy(final IFunction<? super Map.Entry<K,V>,?> by);
     
     public ILevel0MapOperator<I,K,V> put(final K newKey, final V newValue);
     public ILevel0MapOperator<I,K,V> insert(final int position, final K newKey, final V newValue);

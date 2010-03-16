@@ -55,7 +55,8 @@ public final class FnMapOf<K,V> {
     
     
     
-
+    
+    
     public final Function<Map<K,V>,Map<K,V>> sortByKey() {
         return new SortByKey<K,V>();
     }
@@ -63,6 +64,12 @@ public final class FnMapOf<K,V> {
     public final Function<Map<K,V>,Map<K,V>> sortEntries(final Comparator<? super Entry<K,V>> comparator) {
         return new SortEntries<K,V>(comparator);
     }
+
+    
+    public final Function<Map<K,V>,Map<K,V>> sortBy(final IFunction<? super Map.Entry<K,V>, ?> by) {
+        return new SortBy<K,V>(by);
+    }
+
     
     public final Function<Map<K,V>,Map<K,V>> put(final K key, final V value) {
         return new Put<K,V>(key, value);
@@ -222,6 +229,86 @@ public final class FnMapOf<K,V> {
 
     
 
+    
+    
+    
+    
+    static final class SortBy<K,V> extends AbstractNotNullNonConvertingFunc<Map<K,V>> {
+
+        private final IFunction<? super Map.Entry<K,V>, ?> by;
+        
+        SortBy(final IFunction<? super Map.Entry<K,V>, ?> by) {
+            super();
+            this.by = by;
+        }
+
+        @Override
+        protected Map<K,V> notNullExecute(final Map<K,V> object, final ExecCtx ctx) throws Exception {
+
+            final List<OrderableElement<Map.Entry<K,V>>> ordList = new ArrayList<OrderableElement<Map.Entry<K,V>>>();
+            int index = 0;
+            for (final Map.Entry<K,V> element : object.entrySet()) {
+                ordList.add(
+                    new OrderableElement<Map.Entry<K,V>>(
+                        element, 
+                        (Comparable<?>) this.by.execute(element, new ExecCtxImpl(Integer.valueOf(index)))));
+            }
+            Collections.sort(ordList);
+            final Map<K,V> resultMap = new LinkedHashMap<K,V>();
+            for (final OrderableElement<Map.Entry<K,V>> element : ordList) {
+                resultMap.put(element.getElement().getKey(), element.getElement().getValue());
+            }
+            return resultMap;
+            
+        }
+        
+        private static class OrderableElement<T> implements Comparable<OrderableElement<T>> {
+
+            private final T element;
+            private final Comparable<?> comparator;
+            
+            public OrderableElement(final T element, final Comparable<?> comparator) {
+                super();
+                this.element = element;
+                this.comparator = comparator;
+            }
+            
+            public T getElement() {
+                return this.element;
+            }
+
+            public Comparable<?> getComparator() {
+                return this.comparator;
+            }
+
+            @SuppressWarnings("unchecked")
+            public int compareTo(OrderableElement<T> o) {
+                if (this.comparator == null) {
+                    throw new NullPointerException();
+                }
+                return ((Comparable)this.comparator).compareTo(o.getComparator());
+            }
+            
+        }
+        
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     static final class Put<K, V> extends AbstractNotNullNonConvertingFunc<Map<K, V>> {
 

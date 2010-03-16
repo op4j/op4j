@@ -47,6 +47,12 @@ public final class Level0SetSelectedOperator<I,T> extends AbstractOperator imple
     }
 
 
+    @SuppressWarnings("unchecked")
+    public Level0SetSelectedOperator<I,T> sortBy(final IFunction<? super T,?> by) {
+        return new Level0SetSelectedOperator<I,T>(getTarget().execute(FnSet.ofObject().sortBy((IFunction)by)));
+    }
+
+
     public Level0SetSelectedOperator<I,T> insertAll(final int position, final T... newElements) {
         return new Level0SetSelectedOperator<I,T>(getTarget().execute(FnSet.ofObject().insert(position, newElements)));
     }

@@ -251,6 +251,17 @@ public final class Level0MapOperator<I,K,V> extends AbstractOperator
     }
     
 
+
+
+
+
+
+    
+    @SuppressWarnings("unchecked")
+    public Level0MapOperator<I, K, V> sortBy(IFunction<? super Entry<K, V>, ?> by) {
+        return new Level0MapOperator<I, K, V>(getTarget().execute(FnMap.of((Type<K>)Types.OBJECT,(Type<V>)Types.OBJECT).sortBy(by)));
+    }
+    
     
     
 }

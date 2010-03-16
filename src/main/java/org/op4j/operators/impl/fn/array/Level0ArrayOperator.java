@@ -318,6 +318,12 @@ public final class Level0ArrayOperator<I,T>
         return new Level0GenericUniqOperator<I, Boolean>(getTarget().execute(FnArray.of(this.type).any(eval)));
     }
 
+
+    
+    public Level0ArrayOperator<I, T> sortBy(final IFunction<? super T, ?> by) {
+        return new Level0ArrayOperator<I, T>(this.type, getTarget().execute(FnArray.of(this.type).sortBy(by)));
+    }
+
     
 
 

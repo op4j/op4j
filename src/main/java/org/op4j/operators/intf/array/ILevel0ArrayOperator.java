@@ -86,6 +86,7 @@ public interface ILevel0ArrayOperator<I,T>
     
     public ILevel0ArrayOperator<I,T> sort();
     public ILevel0ArrayOperator<I,T> sort(final Comparator<? super T> comparator);
+    public ILevel0ArrayOperator<I,T> sortBy(final IFunction<? super T,?> by);
         
     public ILevel0ArrayOperator<I,T> add(final T newElement);
     public ILevel0ArrayOperator<I,T> addAll(final T... newElements);
