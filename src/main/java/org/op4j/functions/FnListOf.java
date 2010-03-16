@@ -62,7 +62,13 @@ public class FnListOf<T> {
     public final Function<List<T>,List<T>> sort(final Comparator<? super T> comparator) {
         return new SortByComparator<T>(comparator);
     }
-        
+    
+    public final Function<List<T>,List<T>> sortBy(final IFunction<? super T, ?> by) {
+        return new SortBy<T>(by);
+    }
+
+    
+    
     public final Function<List<T>,List<T>> distinct() {
         return new Distinct<T>();
     }
@@ -284,6 +290,23 @@ public class FnListOf<T> {
         }
 
     }
+    
+    
+    
+    static final class SortBy<T> extends FnCollection.SortBy<T, List<T>> {
+
+        SortBy(final IFunction<? super T, ?> by) {
+            super(by);
+        }
+
+        @Override
+        List<T> fromList(final List<T> object) {
+            return object;
+        }
+
+    }
+    
+    
     
     
     

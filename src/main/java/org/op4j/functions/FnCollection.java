@@ -28,6 +28,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
+import org.op4j.util.ExecCtxImpl;
 import org.op4j.util.VarArgsUtil;
 
 
@@ -97,6 +98,80 @@ class FnCollection {
         abstract X fromList(final List<T> object);
 
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    static abstract class SortBy<T, X extends Collection<T>> extends AbstractNotNullNonConvertingFunc<X> {
+
+        private final IFunction<? super T, ?> by;
+        
+        SortBy(final IFunction<? super T, ?> by) {
+            super();
+            this.by = by;
+        }
+
+        @Override
+        protected X notNullExecute(final X object, final ExecCtx ctx) throws Exception {
+
+            final List<OrderableElement<T>> ordList = new ArrayList<OrderableElement<T>>();
+            int index = 0;
+            for (final T element : object) {
+                ordList.add(
+                    new OrderableElement<T>(
+                        element, 
+                        (Comparable<?>) this.by.execute(element, new ExecCtxImpl(Integer.valueOf(index)))));
+            }
+            Collections.sort(ordList);
+            final List<T> resultList = new ArrayList<T>();
+            for (final OrderableElement<T> element : ordList) {
+                resultList.add(element.getElement());
+            }
+            return fromList(resultList);
+            
+        }
+
+        abstract X fromList(final List<T> object);
+        
+        private static class OrderableElement<T> implements Comparable<OrderableElement<T>> {
+
+            private final T element;
+            private final Comparable<?> comparator;
+            
+            public OrderableElement(final T element, final Comparable<?> comparator) {
+                super();
+                this.element = element;
+                this.comparator = comparator;
+            }
+            
+            public T getElement() {
+                return this.element;
+            }
+
+            public Comparable<?> getComparator() {
+                return this.comparator;
+            }
+
+            @SuppressWarnings("unchecked")
+            public int compareTo(OrderableElement<T> o) {
+                if (this.comparator == null) {
+                    throw new NullPointerException();
+                }
+                return ((Comparable)this.comparator).compareTo(o.getComparator());
+            }
+            
+        }
+        
+
+    }
+
+    
+    
     
     
 

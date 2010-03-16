@@ -67,6 +67,13 @@ public class FnSetOf<T> {
         return new SortByComparator<T>(comparator);
     }
     
+    public final Function<Set<T>,Set<T>> sortBy(final IFunction<? super T, ?> by) {
+        return new SortBy<T>(by);
+    }
+
+    
+    
+    
     public final Function<Set<T>,Set<T>> add(final T... newElements) {
         return new Add<T>(newElements);
     }
@@ -277,6 +284,21 @@ public class FnSetOf<T> {
 
         SortByComparator(final Comparator<? super T> comparator) {
             super(comparator);
+        }
+
+        @Override
+        Set<T> fromList(final List<T> object) {
+            return new LinkedHashSet<T>(object);
+        }
+
+    }
+    
+    
+    
+    static final class SortBy<T> extends FnCollection.SortBy<T, Set<T>> {
+
+        SortBy(final IFunction<? super T, ?> by) {
+            super(by);
         }
 
         @Override

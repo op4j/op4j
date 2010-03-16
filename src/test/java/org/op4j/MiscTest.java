@@ -30,7 +30,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -608,6 +607,13 @@ watch.start();
         System.out.println(Op.onAll(1,2,3,4).buildList().exec(FnList.ofInteger().containsAny(12,3)).get());
         
     
+        String[] arr231 = new String[] { "be", "a", "31aa", "31_l", "31A" };
+        
+        System.out.println(Arrays.asList(FnArray.ofString().sort().execute(arr231)));
+        System.out.println(Arrays.asList(FnArray.ofString().sortBy(Call.asInteger("length")).execute(arr231)));
+
+        System.out.println(FnList.ofString().sortBy(Call.asInteger("length")).execute(Arrays.asList(arr231)));
+
     }
     
     

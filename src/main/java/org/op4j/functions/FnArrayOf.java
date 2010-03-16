@@ -70,9 +70,9 @@ public class FnArrayOf<T> {
         return new SortByComparator<T>(comparator);
     }
     
-//    public final <X> Function<T[],T[]> sortBy(final IFunction<? super T,X> by) {
-//        
-//    }
+    public final Function<T[],T[]> sortBy(final IFunction<? super T, ?> by) {
+        return new SortBy<T>(by);
+    }
     
         
     public final Function<T[],T[]> distinct() {
@@ -342,8 +342,12 @@ public class FnArrayOf<T> {
         protected T[] notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
 
             final List<OrderableElement<T>> ordList = new ArrayList<OrderableElement<T>>();
+            int index = 0;
             for (final T element : object) {
-                ordList.add(new OrderableElement<T>(element));
+                ordList.add(
+                    new OrderableElement<T>(
+                        element, 
+                        (Comparable<?>) this.by.execute(element, new ExecCtxImpl(Integer.valueOf(index)))));
             }
             Collections.sort(ordList);
             final List<T> resultList = new ArrayList<T>();
@@ -354,28 +358,31 @@ public class FnArrayOf<T> {
             
         }
         
-        
         private static class OrderableElement<T> implements Comparable<OrderableElement<T>> {
 
             private final T element;
+            private final Comparable<?> comparator;
             
-            public OrderableElement(final T element) {
+            public OrderableElement(final T element, final Comparable<?> comparator) {
                 super();
                 this.element = element;
+                this.comparator = comparator;
             }
-            
             
             public T getElement() {
                 return this.element;
             }
 
+            public Comparable<?> getComparator() {
+                return this.comparator;
+            }
 
             @SuppressWarnings("unchecked")
             public int compareTo(OrderableElement<T> o) {
-                if (this.element == null) {
+                if (this.comparator == null) {
                     throw new NullPointerException();
                 }
-                return ((Comparable)this.element).compareTo(o.getElement());
+                return ((Comparable)this.comparator).compareTo(o.getComparator());
             }
             
         }
