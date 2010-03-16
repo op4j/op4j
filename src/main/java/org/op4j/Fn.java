@@ -19,6 +19,8 @@
  */
 package org.op4j;
 
+import static org.op4j.Fn.on;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
@@ -396,6 +398,10 @@ public final class Fn {
         return FnBoolean.not(function);
     }
     
+    public static final <X,Y> Function<X,Boolean> by(final IFunction<X,Y> by, final IFunction<? super Y,Boolean> eval) {
+        return chain(by, eval);
+    }
+    
     
     public static final <X,Y,Z> Function<X,Z> chain(final IFunction<X,Y> fn1, final IFunction<? super Y,Z> fn2) {
         return new Chain<X,Y,Z>(fn1, fn2);
@@ -425,5 +431,8 @@ public final class Fn {
         }
         
     }
+    
+    
+    
 
 }

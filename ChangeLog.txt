@@ -27,6 +27,8 @@
   FnArray, FnList and FnSet.
 - Added "containsKey", "notContainsKey", "containsAllKeys", "containsAnyKeys" and 
   "containsNoneKeys" to FnMap.
+- Added "by" to Fn and FnBoolean.
+- Added "isNullBy" and "isNotNullBy" to FnBoolean and FnObject 
 
 
 1.0-beta1

@@ -26,6 +26,7 @@ import java.util.List;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
+import org.op4j.Fn;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.util.VarArgsUtil;
 
@@ -48,6 +49,8 @@ public final class FnBoolean {
     private static final ToNumber<Short> TO_SHORT = new ToNumber<Short>(Types.SHORT);
     private static final ToNumber<Byte> TO_BYTE = new ToNumber<Byte>(Types.BYTE);
     private static final Negate NEGATE = new Negate();
+    private static final Function<Object,Boolean> IS_TRUE = eq(true);
+    private static final Function<Object,Boolean> IS_FALSE = eq(false); 
 
     
     
@@ -120,6 +123,49 @@ public final class FnBoolean {
         return FnObject.notEq(object);
     }
 
+
+    
+    
+    public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final Boolean object) {
+        return Fn.by(by, eq(object));
+    }
+    
+    public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final boolean object) {
+        return Fn.by(by, eq(object));
+    }
+    
+    
+    public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final Boolean object) {
+        return Fn.by(by, notEq(object));
+    }
+    
+    public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final boolean object) {
+        return Fn.by(by, notEq(object));
+    }
+
+    
+    
+    
+    public static final Function<Object,Boolean> isTrue() {
+        return IS_TRUE;
+    }
+    
+    public static final Function<Object,Boolean> isFalse() {
+        return IS_FALSE;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -136,6 +182,13 @@ public final class FnBoolean {
     public static final <T> Function<T,Boolean> not(final IFunction<? super T, Boolean> function) {
         return new Not<T>(function);
     }
+
+    
+    
+    public static final <X,Y> Function<X,Boolean> by(final IFunction<X,Y> by, final IFunction<? super Y, Boolean> eval) {
+        return Fn.by(by, eval);
+    }
+    
     
     
     
@@ -145,6 +198,14 @@ public final class FnBoolean {
     
     public static final Function<Object,Boolean> isNotNull() {
         return FnObject.isNotNull();
+    }
+    
+    public static final <X> Function<X,Boolean> isNullBy(final IFunction<X,?> by) {
+        return by(by, FnObject.isNull());
+    }
+    
+    public static final <X> Function<X,Boolean> isNotNullBy(final IFunction<X,?> by) {
+        return by(by, FnObject.isNotNull());
     }
     
     

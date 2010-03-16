@@ -606,6 +606,7 @@ watch.start();
 
         System.out.println(Op.onAll(1,2,3,4).buildList().exec(FnList.ofInteger().containsAny(12,3)).get());
         
+    
     }
     
     
