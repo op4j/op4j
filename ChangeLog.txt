@@ -33,6 +33,8 @@
 - Added "lessThanBy", "lessOrEqToBy", "greaterThanBy", "greaterOrEqToBy" to FnObject and FnNumber.
 - Added "sortBy" functions to FnArray, FnList, FnMap and FnSet. Added "sortBy" actions to
   array, list, map and set operators. 
+- Added "ifTrue", "ifFalse", "ifNull", "ifNotNull", "ifNullOrTrue", "ifNullOrFalse",
+  "ifNotNullAndTrue" and "ifNotNulAndFalse" functions to Fn.
 
 
 1.0-beta1

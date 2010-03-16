@@ -6,4 +6,4 @@
   - Add "find(IFunction<?,Boolean>" method to FnArray, FnList, FnMap, FnSet. (Returns the first true)
   - Add "filter" or "findAll" methods as counter-aliases of "remove"?
   - Add "partition" method to FnArray, FnList, FnMap, FnSet.
-  
+  - Add "loop" and "while" methods to Fn  

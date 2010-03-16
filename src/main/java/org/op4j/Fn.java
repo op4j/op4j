@@ -19,8 +19,6 @@
  */
 package org.op4j;
 
-import static org.op4j.Fn.on;
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
@@ -33,8 +31,10 @@ import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.TypeParameters;
 import org.javaruntype.type.Types;
+import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.FnBoolean;
+import org.op4j.functions.FnObject;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.operators.impl.fn.array.Level0ArrayOperator;
@@ -386,12 +386,12 @@ public final class Fn {
     
     
     
-    public static final <T> Function<T,Boolean> and(final IFunction<? super T, Boolean>... functions) {
-        return FnBoolean.and(functions);
+    public static final <T> Function<T,Boolean> and(final IFunction<? super T, Boolean> left, final IFunction<? super T, Boolean> right) {
+        return FnBoolean.and(left, right);
     }
     
-    public static final <T> Function<T,Boolean> or(final IFunction<? super T, Boolean>... functions) {
-        return FnBoolean.or(functions);
+    public static final <T> Function<T,Boolean> or(final IFunction<? super T, Boolean> left, final IFunction<? super T, Boolean> right) {
+        return FnBoolean.or(left, right);
     }
     
     public static final <T> Function<T,Boolean> not(final IFunction<? super T, Boolean> function) {
@@ -406,6 +406,42 @@ public final class Fn {
     public static final <X,Y,Z> Function<X,Z> chain(final IFunction<X,Y> fn1, final IFunction<? super Y,Z> fn2) {
         return new Chain<X,Y,Z>(fn1, fn2);
     }
+    
+
+    
+    
+    public static final <T> Function<T,T> ifTrue(final IFunction<? super T, Boolean> condition, final IFunction<? super T, ? extends T> function) {
+        return new If<T>(true, condition, function);
+    }
+    
+    public static final <T> Function<T,T> ifFalse(final IFunction<? super T, Boolean> condition, final IFunction<? super T, ? extends T> function) {
+        return new If<T>(false, condition, function);
+    }
+    
+    public static final <T> Function<T,T> ifNull(final IFunction<? super T, ? extends T> function) {
+        return ifTrue(FnObject.isNull(), function);
+    }
+    
+    public static final <T> Function<T,T> ifNotNull(final IFunction<? super T, ? extends T> function) {
+        return ifTrue(FnObject.isNotNull(), function);
+    }
+    
+    public static final <T> Function<T,T> ifNullOrTrue(final IFunction<? super T, Boolean> condition, final IFunction<? super T, ? extends T> function) {
+        return ifTrue(Fn.or(FnObject.isNull(),condition), function);
+    }
+    
+    public static final <T> Function<T,T> ifNullOrFalse(final IFunction<? super T, Boolean> condition, final IFunction<? super T, ? extends T> function) {
+        return ifTrue(Fn.or(FnObject.isNull(), Fn.not(condition)), function);
+    }
+    
+    public static final <T> Function<T,T> ifNotNullAndTrue(final IFunction<? super T, Boolean> condition, final IFunction<? super T, ? extends T> function) {
+        return ifTrue(Fn.and(FnObject.isNotNull(),condition), function);
+    }
+    
+    public static final <T> Function<T,T> ifNotNullAndFalse(final IFunction<? super T, Boolean> condition, final IFunction<? super T, ? extends T> function) {
+        return ifTrue(Fn.and(FnObject.isNotNull(), Fn.not(condition)), function);
+    }
+    
     
     
     
@@ -432,6 +468,36 @@ public final class Fn {
         
     }
     
+    
+    
+    private static final class If<T> extends Function<T,T> {
+        
+        private final IFunction<? super T, Boolean> condition;
+        private final IFunction<? super T, ? extends T> function;
+        private final boolean desiredResult;
+        
+        public If(final boolean desiredResult, final IFunction<? super T, Boolean> condition, final IFunction<? super T, ? extends T> function) {
+            super();
+            Validate.notNull(condition, "Condition cannot be null");
+            Validate.notNull(function, "Function cannot be null");
+            this.desiredResult = desiredResult;
+            this.condition = condition;
+            this.function = function;
+        }
+
+        public T execute(final T input, final ExecCtx ctx) throws Exception {
+            
+            final Boolean conditionResult = this.condition.execute(input, ctx);
+            if (conditionResult == null) {
+                throw new ExecutionException("Condition returned null, which is not allowed");
+            }
+            if (conditionResult.booleanValue() == this.desiredResult) {
+                return this.function.execute(input, ctx);
+            }
+            return input;
+        }
+        
+    }
     
     
 

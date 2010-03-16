@@ -21,14 +21,12 @@ package org.op4j.functions;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.List;
 
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.Fn;
 import org.op4j.exceptions.ExecutionException;
-import org.op4j.util.VarArgsUtil;
 
 /**
  * 
@@ -171,12 +169,12 @@ public final class FnBoolean {
     
     
     
-    public static final <T> Function<T,Boolean> and(final IFunction<? super T, Boolean>... functions) {
-        return new And<T>(VarArgsUtil.asRequiredObjectList(functions));
+    public static final <T> Function<T,Boolean> and(final IFunction<? super T, Boolean> left, final IFunction<? super T, Boolean> right) {
+        return new And<T>(left, right);
     }
     
-    public static final <T> Function<T,Boolean> or(final IFunction<? super T, Boolean>... functions) {
-        return new Or<T>(VarArgsUtil.asRequiredObjectList(functions));
+    public static final <T> Function<T,Boolean> or(final IFunction<? super T, Boolean> left, final IFunction<? super T, Boolean> right) {
+        return new Or<T>(left, right);
     }
     
     public static final <T> Function<T,Boolean> not(final IFunction<? super T, Boolean> function) {
@@ -288,28 +286,38 @@ public final class FnBoolean {
     
     static class And<T> extends Function<T, Boolean> {
 
-        private final List<IFunction<? super T,Boolean>> functions;
+        private final IFunction<? super T,Boolean> left;
+        private final IFunction<? super T,Boolean> right;
         
-        public And(final List<IFunction<? super T,Boolean>> functions) {
+        public And(final IFunction<? super T,Boolean> left, final IFunction<? super T,Boolean> right) {
             super();
-            this.functions = functions;
-            if (functions.contains(null)) {
-                throw new IllegalArgumentException("Null function found: None of the specified functions can be null");
-            }
+            Validate.notNull(left, "Null function found: None of the specified functions can be null");
+            Validate.notNull(right, "Null function found: None of the specified functions can be null");
+            this.left = left;
+            this.right = right;
         }
 
         public Boolean execute(final T object, final ExecCtx ctx) throws Exception {
-            for (final IFunction<? super T, Boolean> function : this.functions) {
-                final Boolean result = function.execute(object, ctx);
-                if (result == null) {
-                    throw new ExecutionException("Evaluation function returned null, which is " +
-                            "not allowed executing \"and\"");
-                }
-                if (!result.booleanValue()) {
-                    return Boolean.FALSE;
-                }
+            
+            Boolean result = this.left.execute(object, ctx);
+            if (result == null) {
+                throw new ExecutionException("Evaluation function returned null, which is " +
+                        "not allowed executing \"and\"");
             }
+            if (!result.booleanValue()) {
+                return Boolean.FALSE;
+            }
+            result = this.right.execute(object, ctx);
+            if (result == null) {
+                throw new ExecutionException("Evaluation function returned null, which is " +
+                        "not allowed executing \"and\"");
+            }
+            if (!result.booleanValue()) {
+                return Boolean.FALSE;
+            }
+                
             return Boolean.TRUE;
+            
         }
         
         
@@ -320,28 +328,39 @@ public final class FnBoolean {
     
     static class Or<T> extends Function<T, Boolean> {
 
-        private final List<IFunction<? super T,Boolean>> functions;
+        private final IFunction<? super T,Boolean> left;
+        private final IFunction<? super T,Boolean> right;
         
-        public Or(final List<IFunction<? super T,Boolean>> functions) {
+        public Or(final IFunction<? super T,Boolean> left, final IFunction<? super T,Boolean> right) {
             super();
-            this.functions = functions;
-            if (functions.contains(null)) {
-                throw new IllegalArgumentException("Null function found: None of the specified functions can be null");
-            }
+            Validate.notNull(left, "Null function found: None of the specified functions can be null");
+            Validate.notNull(right, "Null function found: None of the specified functions can be null");
+            this.left = left;
+            this.right = right;
         }
 
         public Boolean execute(final T object, final ExecCtx ctx) throws Exception {
-            for (final IFunction<? super T, Boolean> function : this.functions) {
-                final Boolean result = function.execute(object, ctx);
-                if (result == null) {
-                    throw new ExecutionException("Evaluation function returned null, which is " +
-                            "not allowed executing \"or\"");
-                }
-                if (result.booleanValue()) {
-                    return Boolean.TRUE;
-                }
+            
+            Boolean result = this.left.execute(object, ctx);
+            if (result == null) {
+                throw new ExecutionException("Evaluation function returned null, which is " +
+                        "not allowed executing \"or\"");
             }
+            if (result.booleanValue()) {
+                return Boolean.TRUE;
+            }
+            
+            result = this.right.execute(object, ctx);
+            if (result == null) {
+                throw new ExecutionException("Evaluation function returned null, which is " +
+                        "not allowed executing \"or\"");
+            }
+            if (result.booleanValue()) {
+                return Boolean.TRUE;
+            }
+                
             return Boolean.FALSE;
+            
         }
         
         
