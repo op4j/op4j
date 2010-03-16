@@ -24,6 +24,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
@@ -51,7 +52,9 @@ public class FnList {
     private static final FnListOf<Integer> OF_INTEGER = new FnListOf<Integer>(Types.INTEGER); 
     private static final FnListOf<Long> OF_LONG = new FnListOf<Long>(Types.LONG); 
     private static final FnListOf<Short> OF_SHORT = new FnListOf<Short>(Types.SHORT); 
-    private static final FnListOf<String> OF_STRING = new FnListOf<String>(Types.STRING); 
+    private static final FnListOf<String> OF_STRING = new FnListOf<String>(Types.STRING);
+    
+    private static final Count COUNT = new Count();
 
     
     
@@ -131,6 +134,14 @@ public class FnList {
 
     
     
+    
+    
+    public static final Function<List<?>,Integer> count() {
+        return COUNT;
+    }
+    
+    
+    
 
     private FnList() {
         super();
@@ -138,6 +149,20 @@ public class FnList {
     
 
     
+    
+    
+    private static final class Count extends AbstractNotNullFunction<List<?>,Integer> {
+        
+        public Count() {
+            super();
+        }
+        
+        @Override
+        protected Integer notNullExecute(final List<?> object, final ExecCtx ctx) throws Exception {
+            return Integer.valueOf(object.size());
+        }
+        
+    }
     
     
     

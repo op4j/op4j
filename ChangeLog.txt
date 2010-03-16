@@ -22,6 +22,11 @@
 - Added "isNull" and "isNotNull" functions to FnObject, FnNumber, FnBoolean, FnString, FnCalendar,
   FnDate.
 - Added "chain" function to "Fn".
+- Added "count" function to FnArray, FnList, FnMap and FnSet
+- Added "contains", "notContains, "containsAll", "containsAny" and "containsNone" to 
+  FnArray, FnList and FnSet.
+- Added "containsKey", "notContainsKey", "containsAllKeys", "containsAnyKeys" and 
+  "containsNoneKeys" to FnMap.
 
 
 1.0-beta1

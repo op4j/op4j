@@ -23,6 +23,7 @@ package org.op4j.functions;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -31,6 +32,7 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
+import org.op4j.Fn;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.util.ExecCtxImpl;
 import org.op4j.util.VarArgsUtil;
@@ -113,6 +115,43 @@ public final class FnMapOf<K,V> {
     public final Function<Map<K,V>,Boolean> any(final IFunction<? super Map.Entry<K,V>,Boolean> eval) {
         return new Any<K,V>(eval);
     }
+    
+    
+    
+    
+    
+    
+    
+    public final Function<Map<?,?>,Integer> count() {
+        return FnMap.count();
+    }
+    
+    
+    
+    
+    
+    
+    public final Function<Map<K,V>,Boolean> containsKey(final K key) {
+        return new ContainsKey<K,V>(key);
+    }
+    
+    public final Function<Map<K,V>,Boolean> notContainsKey(final K key) {
+        return Fn.not(containsKey(key));
+    }
+    
+    public final Function<Map<K,V>,Boolean> containsAllKeys(final K... keys) {
+        return new ContainsAllKeys<K,V>(VarArgsUtil.asRequiredObjectList(keys));
+    }
+    
+    public final Function<Map<K,V>,Boolean> containsAnyKeys(final K... keys) {
+        return new ContainsAnyKeys<K,V>(VarArgsUtil.asRequiredObjectList(keys));
+    }
+    
+    public final Function<Map<K,V>,Boolean> containsNoneKeys(final K... keys) {
+        return new ContainsNoneKeys<K,V>(VarArgsUtil.asRequiredObjectList(keys));
+    }
+    
+    
     
     
     
@@ -498,6 +537,133 @@ public final class FnMapOf<K,V> {
         
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    static final class ContainsKey<K,V> extends AbstractNotNullFunction<Map<K,V>,Boolean> {
+        
+        private final K key;
+        
+        public ContainsKey(final K key) {
+            super();
+            this.key = key;
+        }
+
+        @Override
+        protected Boolean notNullExecute(final Map<K,V> input, final ExecCtx ctx) throws Exception {
+            for (final K element : input.keySet()) {
+                if (element == null) {
+                    if (this.key == null) {
+                        return Boolean.TRUE;
+                    }
+                } else if (element.equals(this.key)) {
+                    return Boolean.TRUE;
+                }
+            }
+            return Boolean.FALSE;
+        }
+        
+    }
+    
+    
+    static final class ContainsAllKeys<K,V> extends AbstractNotNullFunction<Map<K,V>,Boolean> {
+        
+        private final List<K> keys;
+        
+        public ContainsAllKeys(final List<K> keys) {
+            super();
+            this.keys = keys;
+        }
+
+        @Override
+        protected Boolean notNullExecute(final Map<K,V> input, final ExecCtx ctx) throws Exception {
+            final Set<K> notContained = new HashSet<K>(this.keys);
+            for (final K element : input.keySet()) {
+                for (final K comparedElement : this.keys) {
+                    if (element == null) {
+                        if (comparedElement == null) {
+                            notContained.remove(null);
+                        }
+                    } else if (element.equals(comparedElement)) {
+                        notContained.remove(comparedElement);
+                    }
+                }
+            }
+            return (notContained.isEmpty()? Boolean.TRUE : Boolean.FALSE);
+        }
+        
+    }
+    
+    
+    
+    static final class ContainsAnyKeys<K,V> extends AbstractNotNullFunction<Map<K,V>,Boolean> {
+        
+        private final List<K> keys;
+        
+        public ContainsAnyKeys(final List<K> keys) {
+            super();
+            this.keys = keys;
+        }
+
+        @Override
+        protected Boolean notNullExecute(final Map<K,V> input, final ExecCtx ctx) throws Exception {
+            for (final K element : input.keySet()) {
+                for (final K comparedElement : this.keys) {
+                    if (element == null) {
+                        if (comparedElement == null) {
+                            return Boolean.TRUE;
+                        }
+                    } else if (element.equals(comparedElement)) {
+                        return Boolean.TRUE;
+                    }
+                }
+            }
+            return Boolean.FALSE;
+        }
+        
+    }
+    
+    
+    
+    static final class ContainsNoneKeys<K,V> extends AbstractNotNullFunction<Map<K,V>,Boolean> {
+        
+        private final List<K> keys;
+        
+        public ContainsNoneKeys(final List<K> keys) {
+            super();
+            this.keys = keys;
+        }
+
+        @Override
+        protected Boolean notNullExecute(final Map<K,V> input, final ExecCtx ctx) throws Exception {
+            for (final K element : input.keySet()) {
+                for (final K comparedElement : this.keys) {
+                    if (element == null) {
+                        if (comparedElement == null) {
+                            return Boolean.FALSE;
+                        }
+                    } else if (element.equals(comparedElement)) {
+                        return Boolean.FALSE;
+                    }
+                }
+            }
+            return Boolean.TRUE;
+        }
+        
+    }
     
     
 }

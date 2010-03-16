@@ -26,6 +26,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -35,6 +36,7 @@ import java.util.Set;
 
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
+import org.op4j.Fn;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.util.ExecCtxImpl;
 import org.op4j.util.ValuePair;
@@ -214,6 +216,39 @@ public class FnArrayOf<T> {
     public final Function<T[],Boolean> any(final IFunction<? super T,Boolean> eval) {
         return new Any<T>(eval);
     }
+    
+    
+    
+    
+    public final Function<Object[],Integer> count() {
+        return FnArray.count();
+    }
+
+    
+    
+    
+    public final Function<T[],Boolean> contains(final T object) {
+        return new Contains<T>(object);
+    }
+    
+    public final Function<T[],Boolean> notContains(final T object) {
+        return Fn.not(contains(object));
+    }
+    
+    public final Function<T[],Boolean> containsAll(final T... objects) {
+        return new ContainsAll<T>(VarArgsUtil.asRequiredObjectList(objects));
+    }
+    
+    public final Function<T[],Boolean> containsAny(final T... objects) {
+        return new ContainsAny<T>(VarArgsUtil.asRequiredObjectList(objects));
+    }
+    
+    public final Function<T[],Boolean> containsNone(final T... objects) {
+        return new ContainsNone<T>(VarArgsUtil.asRequiredObjectList(objects));
+    }
+
+    
+    
     
     
     
@@ -1345,6 +1380,123 @@ public class FnArrayOf<T> {
         }
         
     }
+    
+    
+    
+    
+    
+    static final class Contains<T> extends AbstractNotNullFunction<T[],Boolean> {
+        
+        private final T object;
+        
+        public Contains(final T object) {
+            super();
+            this.object = object;
+        }
+
+        @Override
+        protected Boolean notNullExecute(final T[] input, final ExecCtx ctx) throws Exception {
+            for (final T element : input) {
+                if (element == null) {
+                    if (this.object == null) {
+                        return Boolean.TRUE;
+                    }
+                } else if (element.equals(this.object)) {
+                    return Boolean.TRUE;
+                }
+            }
+            return Boolean.FALSE;
+        }
+        
+    }
+    
+    
+    static final class ContainsAll<T> extends AbstractNotNullFunction<T[],Boolean> {
+        
+        private final List<T> objects;
+        
+        public ContainsAll(final List<T> objects) {
+            super();
+            this.objects = objects;
+        }
+
+        @Override
+        protected Boolean notNullExecute(final T[] input, final ExecCtx ctx) throws Exception {
+            final Set<T> notContained = new HashSet<T>(this.objects);
+            for (final T element : input) {
+                for (final T comparedElement : this.objects) {
+                    if (element == null) {
+                        if (comparedElement == null) {
+                            notContained.remove(null);
+                        }
+                    } else if (element.equals(comparedElement)) {
+                        notContained.remove(comparedElement);
+                    }
+                }
+            }
+            return (notContained.isEmpty()? Boolean.TRUE : Boolean.FALSE);
+        }
+        
+    }
+    
+    
+    
+    static final class ContainsAny<T> extends AbstractNotNullFunction<T[],Boolean> {
+        
+        private final List<T> objects;
+        
+        public ContainsAny(final List<T> objects) {
+            super();
+            this.objects = objects;
+        }
+
+        @Override
+        protected Boolean notNullExecute(final T[] input, final ExecCtx ctx) throws Exception {
+            for (final T element : input) {
+                for (final T comparedElement : this.objects) {
+                    if (element == null) {
+                        if (comparedElement == null) {
+                            return Boolean.TRUE;
+                        }
+                    } else if (element.equals(comparedElement)) {
+                        return Boolean.TRUE;
+                    }
+                }
+            }
+            return Boolean.FALSE;
+        }
+        
+    }
+    
+    
+    
+    static final class ContainsNone<T> extends AbstractNotNullFunction<T[],Boolean> {
+        
+        private final List<T> objects;
+        
+        public ContainsNone(final List<T> objects) {
+            super();
+            this.objects = objects;
+        }
+
+        @Override
+        protected Boolean notNullExecute(final T[] input, final ExecCtx ctx) throws Exception {
+            for (final T element : input) {
+                for (final T comparedElement : this.objects) {
+                    if (element == null) {
+                        if (comparedElement == null) {
+                            return Boolean.FALSE;
+                        }
+                    } else if (element.equals(comparedElement)) {
+                        return Boolean.FALSE;
+                    }
+                }
+            }
+            return Boolean.TRUE;
+        }
+        
+    }
+    
     
     
 }

@@ -1,6 +1,7 @@
 
   Why do key an value operators have "ifIndex"?
-  Add "contains" "notContains" actions to structure operators
+  Check if adding "Fn.by(IFunction, IFunction)" is possible
+  Add "by" versions to comparators: eq, notEq, lessThan, null, isNull, etc.
   
     
 ----------------    

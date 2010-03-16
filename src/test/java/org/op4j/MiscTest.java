@@ -603,6 +603,8 @@ watch.start();
         
         System.out.println(
                 Op.on(1233).exec(Fn.chain(FnMath.ofInteger().add(10), FnNumber.greaterThan(1200))).get());
+
+        System.out.println(Op.onAll(1,2,3,4).buildList().exec(FnList.ofInteger().containsAny(12,3)).get());
         
     }
     
