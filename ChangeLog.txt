@@ -35,6 +35,9 @@
   array, list, map and set operators. 
 - Added "ifTrue", "ifFalse", "ifNull", "ifNotNull", "ifNullOrTrue", "ifNullOrFalse",
   "ifNotNullAndTrue" and "ifNotNulAndFalse" functions to Fn.
+- Added "whileTrue" and "whileFalse" functions to Fn.
+
+
 
 
 1.0-beta1

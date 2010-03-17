@@ -19,6 +19,8 @@
  */
 package org.op4j;
 
+import static org.op4j.Fn.on;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
@@ -445,6 +447,19 @@ public final class Fn {
     
     
     
+    public static final <T> Function<T,T> whileTrue(final IFunction<? super T, Boolean> condition, final IFunction<? super T, ? extends T> function) {
+        return new While<T>(true, condition, function);
+    }
+    
+    public static final <T> Function<T,T> whileFalse(final IFunction<? super T, Boolean> condition, final IFunction<? super T, ? extends T> function) {
+        return new While<T>(false, condition, function);
+    }
+    
+    
+    
+    
+    
+    
     
     
     private static final class Chain<X,Y,Z> extends Function<X,Z> {
@@ -495,6 +510,46 @@ public final class Fn {
                 return this.function.execute(input, ctx);
             }
             return input;
+        }
+        
+    }
+    
+    
+    
+    private static final class While<T> extends Function<T,T> {
+        
+        private final IFunction<? super T, Boolean> condition;
+        private final IFunction<? super T, ? extends T> function;
+        private final boolean desiredResult;
+        
+        public While(final boolean desiredResult, final IFunction<? super T, Boolean> condition, final IFunction<? super T, ? extends T> function) {
+            super();
+            Validate.notNull(condition, "Condition cannot be null");
+            Validate.notNull(function, "Function cannot be null");
+            this.desiredResult = desiredResult;
+            this.condition = condition;
+            this.function = function;
+        }
+
+        public T execute(final T input, final ExecCtx ctx) throws Exception {
+            
+            T result = input;
+            
+            Boolean conditionResult = this.condition.execute(result, ctx);
+            if (conditionResult == null) {
+                throw new ExecutionException("Condition returned null, which is not allowed");
+            }
+            
+            while (conditionResult.booleanValue()) {
+                result = this.function.execute(result, ctx);
+                conditionResult = this.condition.execute(result, ctx);
+                if (conditionResult == null) {
+                    throw new ExecutionException("Condition returned null, which is not allowed");
+                }
+            }
+            
+            return result;
+            
         }
         
     }
