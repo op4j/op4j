@@ -713,9 +713,6 @@ watch.start();
         
         
         
-        
-        
-        
         BigInteger biValue = BigInteger.valueOf(-1256565646);
         
         System.out.println("Starting value = " + biValue);
@@ -758,6 +755,12 @@ watch.start();
         System.out.println("[1D] Without op4j: " + biNorResult1d);
         
         
+
+        
+        System.out.println(
+                Op.on(Types.STRING,null).exec(Fn.ifTrue(Fn.or(FnObject.isNull(), Fn.and(FnObject.isNotNull(), Fn.chain(FnString.toInteger(),FnNumber.greaterThan(100)))), FnObject.replaceWith("lelo"))).get());
+        
+
         
     }
     

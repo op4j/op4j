@@ -530,7 +530,9 @@ public final class FnObject {
 
     
     
-    
+    public static final <T> Function<Object,T> replaceWith(final T object) {
+        return new ReplaceWith<T>(object);
+    }
 
     
     
@@ -815,6 +817,7 @@ public final class FnObject {
         
     }
     
+    
     static class IsNotNull extends Function<Object, Boolean> {
 
         public IsNotNull() {
@@ -828,6 +831,23 @@ public final class FnObject {
             return Boolean.TRUE;
         }
         
+        
+    }
+    
+    
+    
+    static class ReplaceWith<T> extends Function<Object,T> {
+        
+        private final T object;
+
+        public ReplaceWith(final T object) {
+            super();
+            this.object = object;
+        }
+
+        public T execute(final Object input, final ExecCtx ctx) throws Exception {
+            return this.object;
+        }
         
     }
     

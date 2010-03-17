@@ -446,11 +446,11 @@ public final class Fn {
     
     
     
-    public static final <T> Function<T,T> whileTrue(final IFunction<? super T, Boolean> condition, final IFunction<? super T, ? extends T> function) {
+    public static final <T> Function<T,T> whileTrue(final IFunction<? super T, Boolean> condition, final IFunction<? super T, T> function) {
         return new While<T>(true, condition, function);
     }
     
-    public static final <T> Function<T,T> whileFalse(final IFunction<? super T, Boolean> condition, final IFunction<? super T, ? extends T> function) {
+    public static final <T> Function<T,T> whileFalse(final IFunction<? super T, Boolean> condition, final IFunction<? super T, T> function) {
         return new While<T>(false, condition, function);
     }
     
@@ -487,10 +487,10 @@ public final class Fn {
     private static final class If<R> extends Function<R,R> {
         
         private final IFunction<? super R, Boolean> condition;
-        private final IFunction<? super R,? extends R> function;
+        private final IFunction<? super R, R> function;
         private final boolean desiredResult;
         
-        public If(final boolean desiredResult, final IFunction<? super R, Boolean> condition, final IFunction<? super R,? extends R> function) {
+        public If(final boolean desiredResult, final IFunction<? super R, Boolean> condition, final IFunction<? super R,R> function) {
             super();
             Validate.notNull(condition, "Condition cannot be null");
             Validate.notNull(function, "Function cannot be null");
@@ -518,10 +518,10 @@ public final class Fn {
     private static final class While<T> extends Function<T,T> {
         
         private final IFunction<? super T, Boolean> condition;
-        private final IFunction<? super T, ? extends T> function;
+        private final IFunction<? super T, T> function;
         private final boolean desiredResult;
         
-        public While(final boolean desiredResult, final IFunction<? super T, Boolean> condition, final IFunction<? super T, ? extends T> function) {
+        public While(final boolean desiredResult, final IFunction<? super T, Boolean> condition, final IFunction<? super T, T> function) {
             super();
             Validate.notNull(condition, "Condition cannot be null");
             Validate.notNull(function, "Function cannot be null");
