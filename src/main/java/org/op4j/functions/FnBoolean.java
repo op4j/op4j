@@ -169,15 +169,15 @@ public final class FnBoolean {
     
     
     
-    public static final <T> Function<T,Boolean> and(final IFunction<? super T, Boolean> left, final IFunction<? super T, Boolean> right) {
-        return new And<T>(left, right);
+    public static final <X, R extends X> Function<R,Boolean> and(final IFunction<X,Boolean> left, final IFunction<? super R,Boolean> right) {
+        return new And<X,R>(left, right);
     }
     
-    public static final <T> Function<T,Boolean> or(final IFunction<? super T, Boolean> left, final IFunction<? super T, Boolean> right) {
-        return new Or<T>(left, right);
+    public static final <X, R extends X> Function<R,Boolean> or(final IFunction<X,Boolean> left, final IFunction<? super R,Boolean> right) {
+        return new Or<X,R>(left, right);
     }
     
-    public static final <T> Function<T,Boolean> not(final IFunction<? super T, Boolean> function) {
+    public static final <T> Function<T,Boolean> not(final IFunction<T, Boolean> function) {
         return new Not<T>(function);
     }
 
@@ -284,12 +284,12 @@ public final class FnBoolean {
     
     
     
-    static class And<T> extends Function<T, Boolean> {
+    static class And<X,R extends X> extends Function<R, Boolean> {
 
-        private final IFunction<? super T,Boolean> left;
-        private final IFunction<? super T,Boolean> right;
+        private final IFunction<X,Boolean> left;
+        private final IFunction<? super R,Boolean> right;
         
-        public And(final IFunction<? super T,Boolean> left, final IFunction<? super T,Boolean> right) {
+        public And(final IFunction<X,Boolean> left, final IFunction<? super R,Boolean> right) {
             super();
             Validate.notNull(left, "Null function found: None of the specified functions can be null");
             Validate.notNull(right, "Null function found: None of the specified functions can be null");
@@ -297,7 +297,7 @@ public final class FnBoolean {
             this.right = right;
         }
 
-        public Boolean execute(final T object, final ExecCtx ctx) throws Exception {
+        public Boolean execute(final R object, final ExecCtx ctx) throws Exception {
             
             Boolean result = this.left.execute(object, ctx);
             if (result == null) {
@@ -326,12 +326,12 @@ public final class FnBoolean {
     
     
     
-    static class Or<T> extends Function<T, Boolean> {
+    static class Or<X,R extends X> extends Function<R, Boolean> {
 
-        private final IFunction<? super T,Boolean> left;
-        private final IFunction<? super T,Boolean> right;
+        private final IFunction<X,Boolean> left;
+        private final IFunction<? super R,Boolean> right;
         
-        public Or(final IFunction<? super T,Boolean> left, final IFunction<? super T,Boolean> right) {
+        public Or(final IFunction<X,Boolean> left, final IFunction<? super R,Boolean> right) {
             super();
             Validate.notNull(left, "Null function found: None of the specified functions can be null");
             Validate.notNull(right, "Null function found: None of the specified functions can be null");
@@ -339,7 +339,7 @@ public final class FnBoolean {
             this.right = right;
         }
 
-        public Boolean execute(final T object, final ExecCtx ctx) throws Exception {
+        public Boolean execute(final R object, final ExecCtx ctx) throws Exception {
             
             Boolean result = this.left.execute(object, ctx);
             if (result == null) {
@@ -373,9 +373,9 @@ public final class FnBoolean {
     
     static class Not<T> extends Function<T, Boolean> {
 
-        private final IFunction<? super T,Boolean> function;
+        private final IFunction<T,Boolean> function;
         
-        public Not(final IFunction<? super T,Boolean> function) {
+        public Not(final IFunction<T,Boolean> function) {
             super();
             Validate.notNull(function, "Null function found: None of the specified functions can be null");
             this.function = function;

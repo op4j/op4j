@@ -614,6 +614,52 @@ watch.start();
 
         System.out.println(FnList.ofString().sortBy(Call.asInteger("length")).execute(Arrays.asList(arr231)));
 
+        
+        String[] datesStr = new String[] {"12-10-1492", "06-12-1978" };
+
+        List<Calendar> dates = 
+            Op.on(datesStr).toList().map(FnString.toCalendar("dd-MM-yyyy")).get();
+
+        System.out.println(Op.on(dates).map(FnCalendar.toStr("yyyy, MMMM dd", new Locale("gl","ES"))).get());
+
+        
+        Function<Integer,Boolean> afnb1 = null;
+        Function<Number,Boolean> afnb2 = null;
+        Function<Integer,Boolean> afnb = Fn.and(afnb1,afnb2);
+        
+        Function<Number,Boolean> bfnb1 = null;
+        Function<Integer,Boolean> bfnb2 = null;
+        Function<Integer,Boolean> bfnb = Fn.and(bfnb1,bfnb2);
+    
+        Op.on(231).ifTrue(afnb).get();
+        Op.on(231).ifTrue(bfnb).get();
+        
+        Op.on(231).ifTrue(Fn.and(afnb1,afnb2)).get();
+        Op.on(231).ifTrue(Fn.and(bfnb1,bfnb2)).get();
+        
+        Function<Object,Boolean> cfnb1 = null;
+        Function<Number,Boolean> cfnb2 = null;
+        Function<Number,Boolean> cfnb = Fn.and(cfnb1,cfnb2);
+        
+        Function<Number,Boolean> dfnb1 = null;
+        Function<Object,Boolean> dfnb2 = null;
+        Function<Number,Boolean> dfnb = Fn.and(dfnb1,dfnb2);
+    
+        Op.on(231.2).ifTrue(cfnb).get();
+        Op.on(231.1).ifTrue(dfnb).get();
+        
+        Op.on(231.2).ifTrue(Fn.and(cfnb1,cfnb2)).get();
+        Op.on(231.1).ifTrue(Fn.and(dfnb1,dfnb2)).get();
+    
+        
+        Function<Number,Integer> fnz1 = null;
+        
+        Function<Integer,Integer> fnn1 = 
+            Fn.ifTrue(FnNumber.greaterThan(2),fnz1);
+        
+        Fn.on(Types.INTEGER).exec(Fn.ifTrue(FnNumber.greaterThan(2),fnz1)).get();
+        
+        
     }
     
     
