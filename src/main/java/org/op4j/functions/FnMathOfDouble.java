@@ -503,7 +503,7 @@ public final class FnMathOfDouble {
 			if (this.mathContext != null) {
 				return Double.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).doubleValue());
 			}
-			return Double.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR).doubleValue());
+			return Double.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.DOWN).doubleValue());
 		}		
 	}
 
@@ -622,7 +622,7 @@ public final class FnMathOfDouble {
             if (this.mathContext != null) {
                 return Double.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).doubleValue());
             }
-            return Double.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR).doubleValue());
+            return Double.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.DOWN).doubleValue());
         }       
     }
 	
@@ -754,7 +754,7 @@ public final class FnMathOfDouble {
 			} else if (this.mathContext != null) {
 				result = result.divide(BigDecimal.valueOf(this.divisor.doubleValue()), this.mathContext);				
 			} else {
-				result = result.divide(BigDecimal.valueOf(this.divisor.doubleValue()), RoundingMode.FLOOR);	
+				result = result.divide(BigDecimal.valueOf(this.divisor.doubleValue()), RoundingMode.DOWN);	
 			}
 			return Double.valueOf(result.doubleValue());
 		}		

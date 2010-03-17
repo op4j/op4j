@@ -384,7 +384,7 @@ public final class FnMathOfBigInteger {
             if (this.mathContext != null) {
                 return sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).setScale(0,this.mathContext.getRoundingMode()).toBigInteger();
             }
-			return sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR).setScale(0, RoundingMode.FLOOR).toBigInteger();
+			return sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.DOWN).setScale(0, RoundingMode.DOWN).toBigInteger();
 		}		
 	}
 
@@ -503,7 +503,7 @@ public final class FnMathOfBigInteger {
             if (this.mathContext != null) {
                 return sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).setScale(0,this.mathContext.getRoundingMode()).toBigInteger();
             }
-            return sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR).setScale(0, RoundingMode.FLOOR).toBigInteger();
+            return sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.DOWN).setScale(0, RoundingMode.DOWN).toBigInteger();
         }       
     }
 	
@@ -607,7 +607,7 @@ public final class FnMathOfBigInteger {
             } else if (this.mathContext != null) {
                 return bigInput.divide(new BigDecimal(this.divisor), this.mathContext).setScale(0, this.mathContext.getRoundingMode()).toBigInteger();             
             } else {
-                return bigInput.divide(new BigDecimal(this.divisor), RoundingMode.FLOOR).setScale(0, RoundingMode.FLOOR).toBigInteger();   
+                return bigInput.divide(new BigDecimal(this.divisor), RoundingMode.DOWN).setScale(0, RoundingMode.DOWN).toBigInteger();   
             }
 
 		}		

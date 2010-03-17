@@ -495,7 +495,7 @@ public final class FnMathOfFloat {
 			if (this.mathContext != null) {
 				return Float.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).floatValue());
 			}
-			return Float.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR).floatValue());
+			return Float.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.DOWN).floatValue());
 		}		
 	}
 
@@ -618,7 +618,7 @@ public final class FnMathOfFloat {
             if (this.mathContext != null) {
                 return Float.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).floatValue());
             }
-            return Float.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR).floatValue());
+            return Float.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.DOWN).floatValue());
         }       
     }
 	
@@ -723,7 +723,7 @@ public final class FnMathOfFloat {
 			} else if (this.mathContext != null) {
 				result = result.divide(BigDecimal.valueOf(this.divisor.floatValue()), this.mathContext);				
 			} else {
-				result = result.divide(BigDecimal.valueOf(this.divisor.floatValue()), RoundingMode.FLOOR);	
+				result = result.divide(BigDecimal.valueOf(this.divisor.floatValue()), RoundingMode.DOWN);	
 			}
 			return Float.valueOf(result.floatValue());
 		}		

@@ -73,12 +73,16 @@ public class MathFuncsTest extends TestCase {
 				count++;
 			}
 		}	
-		assertEquals(result, Double.valueOf(avg.divide(BigDecimal.valueOf(count)).doubleValue()));	
+		assertEquals(
+		        BigDecimal.valueOf(result).setScale(4, RoundingMode.FLOOR), 
+		        avg.divide(BigDecimal.valueOf(count)).setScale(4, RoundingMode.FLOOR));	
 		System.out.println("Avg: " + result);
 		
 		MathContext mc = new MathContext(2, RoundingMode.CEILING);
 		result = Op.on(this.data).exec(FnMath.ofDouble().avg(mc)).get();
-		assertEquals(result, Double.valueOf(avg.divide(BigDecimal.valueOf(count), mc).doubleValue()));	
+		assertEquals(
+		        BigDecimal.valueOf(result).setScale(4, RoundingMode.FLOOR), 
+		        avg.divide(BigDecimal.valueOf(count), mc).setScale(4, RoundingMode.FLOOR));	
 		System.out.println("Avg: " + result);
 		
 		// Raise
@@ -531,6 +535,7 @@ public class MathFuncsTest extends TestCase {
 						.pow(3).subtract(BigInteger.valueOf(5)).abs();
 				}			
 			}
+			System.out.println("Comparing: " + aNumber + "  with  " + bNumber);
 			assertEquals(aNumber, bNumber);	
 			index++;
 		}

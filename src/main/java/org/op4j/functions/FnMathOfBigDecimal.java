@@ -561,7 +561,7 @@ public final class FnMathOfBigDecimal {
 			if (this.mathContext != null) {
 				return sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext);
 			}
-			return sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR);
+			return sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.DOWN);
 		}		
 	}
 
@@ -677,7 +677,7 @@ public final class FnMathOfBigDecimal {
             if (this.mathContext != null) {
                 return sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext);
             }
-            return sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR);
+            return sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.DOWN);
         }       
     }
 	
@@ -820,7 +820,7 @@ public final class FnMathOfBigDecimal {
 			} else if (this.mathContext != null) {
 				result = result.divide(this.divisor, this.mathContext);				
 			} else {
-				result = result.divide(this.divisor, RoundingMode.FLOOR);	
+				result = result.divide(this.divisor, RoundingMode.DOWN);	
 			}
 			return result;
 		}		

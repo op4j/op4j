@@ -59,6 +59,7 @@ import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;
 import org.op4j.functions.Reductor;
+import org.op4j.test.auto.TestOperation;
 import org.op4j.util.ValuePair;
 
 /**
@@ -623,12 +624,32 @@ watch.start();
         System.out.println(Op.on(dates).map(FnCalendar.toStr("yyyy, MMMM dd", new Locale("gl","ES"))).get());
 
         
-        Function<Integer,Boolean> afnb1 = null;
-        Function<Number,Boolean> afnb2 = null;
+        Function<Integer,Boolean> afnb1 = new Function<Integer, Boolean>() {
+
+            public Boolean execute(Integer input, ExecCtx ctx) throws Exception {
+                return Boolean.TRUE;
+            }
+        };
+        
+        Function<Number,Boolean> afnb2 =  new Function<Number, Boolean>() {
+
+            public Boolean execute(Number input, ExecCtx ctx) throws Exception {
+                return Boolean.TRUE;
+            }
+        };
+        
         Function<Integer,Boolean> afnb = Fn.and(afnb1,afnb2);
         
-        Function<Number,Boolean> bfnb1 = null;
-        Function<Integer,Boolean> bfnb2 = null;
+        Function<Number,Boolean> bfnb1 = new Function<Number, Boolean>() {
+            public Boolean execute(Number input, ExecCtx ctx) throws Exception {
+                return Boolean.TRUE;
+            }
+        };
+        Function<Integer,Boolean> bfnb2 = new Function<Integer, Boolean>() {
+            public Boolean execute(Integer input, ExecCtx ctx) throws Exception {
+                return Boolean.TRUE;
+            }
+        };
         Function<Integer,Boolean> bfnb = Fn.and(bfnb1,bfnb2);
     
         Op.on(231).ifTrue(afnb).get();
@@ -637,12 +658,33 @@ watch.start();
         Op.on(231).ifTrue(Fn.and(afnb1,afnb2)).get();
         Op.on(231).ifTrue(Fn.and(bfnb1,bfnb2)).get();
         
-        Function<Object,Boolean> cfnb1 = null;
-        Function<Number,Boolean> cfnb2 = null;
+        Function<Object,Boolean> cfnb1 = new Function<Object, Boolean>() {
+
+            public Boolean execute(Object input, ExecCtx ctx) throws Exception {
+                return Boolean.TRUE;
+            }
+        };
+        
+        Function<Number,Boolean> cfnb2 = new Function<Number, Boolean>() {
+
+            public Boolean execute(Number input, ExecCtx ctx) throws Exception {
+                return Boolean.TRUE;
+            }
+        };
         Function<Number,Boolean> cfnb = Fn.and(cfnb1,cfnb2);
         
-        Function<Number,Boolean> dfnb1 = null;
-        Function<Object,Boolean> dfnb2 = null;
+        Function<Number,Boolean> dfnb1 = new Function<Number, Boolean>() {
+
+            public Boolean execute(Number input, ExecCtx ctx) throws Exception {
+                return Boolean.TRUE;
+            }
+        };
+        Function<Object,Boolean> dfnb2 = new Function<Object, Boolean>() {
+
+            public Boolean execute(Object input, ExecCtx ctx) throws Exception {
+                return Boolean.TRUE;
+            }
+        };
         Function<Number,Boolean> dfnb = Fn.and(dfnb1,dfnb2);
     
         Op.on(231.2).ifTrue(cfnb).get();
@@ -652,12 +694,69 @@ watch.start();
         Op.on(231.1).ifTrue(Fn.and(dfnb1,dfnb2)).get();
     
         
-        Function<Number,Integer> fnz1 = null;
+        Function<Number,Integer> fnz1 = new Function<Number, Integer>() {
+
+            public Integer execute(Number input, ExecCtx ctx) throws Exception {
+                // TODO Auto-generated method stub
+                return null;
+            }
+        };
         
         Function<Integer,Integer> fnn1 = 
             Fn.ifTrue(FnNumber.greaterThan(2),fnz1);
         
         Fn.on(Types.INTEGER).exec(Fn.ifTrue(FnNumber.greaterThan(2),fnz1)).get();
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        BigInteger biValue = BigInteger.valueOf(-1256565646);
+        
+        System.out.println("Starting value = " + biValue);
+
+        BigInteger biOpResult =
+            Op.on(biValue).
+                exec(FnMath.ofBigInteger().divideBy(BigInteger.valueOf(23))).
+                exec(FnMath.ofBigInteger().pow(3)).
+                exec(FnMath.ofBigInteger().subtract(BigInteger.valueOf(5))).
+                exec(FnMath.ofBigInteger().abs()).get();
+
+        System.out.println("With op4j:    " + biOpResult);
+        
+        BigInteger biNorResult =
+            biValue.divide(BigInteger.valueOf(23))
+                .pow(3).subtract(BigInteger.valueOf(5)).abs();
+
+        System.out.println("Without op4j: " + biNorResult);
+
+        BigInteger biOpResult1 =
+            Op.on(biValue).
+                exec(FnMath.ofBigInteger().divideBy(BigInteger.valueOf(23))).get();
+
+        System.out.println("[1] With op4j:    " + biOpResult1);
+        
+        BigInteger biNorResult1 =
+            biValue.divide(BigInteger.valueOf(23));
+
+        System.out.println("[1] Without op4j: " + biNorResult1);
+
+        BigDecimal biOpResult1d =
+            Op.on(new BigDecimal(biValue)).
+                exec(FnMath.ofBigDecimal().divideBy(BigDecimal.valueOf(23.0), RoundingMode.DOWN)).get();
+
+        System.out.println("[1D] With op4j:    " + biOpResult1d);
+        
+        BigDecimal biNorResult1d =
+            new BigDecimal(biValue).divide(BigDecimal.valueOf(23.0), RoundingMode.DOWN);
+
+        System.out.println("[1D] Without op4j: " + biNorResult1d);
+        
         
         
     }

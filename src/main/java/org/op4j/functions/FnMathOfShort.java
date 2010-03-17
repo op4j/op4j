@@ -493,7 +493,7 @@ public final class FnMathOfShort {
 			if (this.mathContext != null) {
 				return Short.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).shortValue());
 			}
-			return Short.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR).shortValue());
+			return Short.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.DOWN).shortValue());
 		}	
 	}
 
@@ -617,7 +617,7 @@ public final class FnMathOfShort {
             if (this.mathContext != null) {
                 return Short.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).shortValue());
             }
-            return Short.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR).shortValue());
+            return Short.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.DOWN).shortValue());
         }   
     }
 	
@@ -714,7 +714,7 @@ public final class FnMathOfShort {
 			} else if (this.mathContext != null) {
 				result = result.divide(BigDecimal.valueOf(this.divisor.shortValue()), this.mathContext);				
 			} else {
-				result = result.divide(BigDecimal.valueOf(this.divisor.shortValue()), RoundingMode.FLOOR);	
+				result = result.divide(BigDecimal.valueOf(this.divisor.shortValue()), RoundingMode.DOWN);	
 			}
 			return Short.valueOf(result.shortValue());
 		}		

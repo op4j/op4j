@@ -495,7 +495,7 @@ public final class FnMathOfInteger {
 			if (this.mathContext != null) {
 				return Integer.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).intValue());
 			}
-			return Integer.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR).intValue());
+			return Integer.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.DOWN).intValue());
 		}	
 	}
 	
@@ -612,7 +612,7 @@ public final class FnMathOfInteger {
             if (this.mathContext != null) {
                 return Integer.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).intValue());
             }
-            return Integer.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR).intValue());
+            return Integer.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.DOWN).intValue());
         }   
     }
 	
@@ -716,7 +716,7 @@ public final class FnMathOfInteger {
 			} else if (this.mathContext != null) {
 				result = result.divide(BigDecimal.valueOf(this.divisor.intValue()), this.mathContext);				
 			} else {
-				result = result.divide(BigDecimal.valueOf(this.divisor.intValue()), RoundingMode.FLOOR);	
+				result = result.divide(BigDecimal.valueOf(this.divisor.intValue()), RoundingMode.DOWN);	
 			}
 			return Integer.valueOf(result.intValue());
 		}		

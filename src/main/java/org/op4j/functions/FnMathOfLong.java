@@ -495,7 +495,7 @@ public final class FnMathOfLong {
 			if (this.mathContext != null) {
 				return Long.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).longValue());
 			}
-			return Long.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR).longValue());
+			return Long.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.DOWN).longValue());
 		}
 	}
 
@@ -619,7 +619,7 @@ public final class FnMathOfLong {
             if (this.mathContext != null) {
                 return Long.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), this.mathContext).longValue());
             }
-            return Long.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.FLOOR).longValue());
+            return Long.valueOf(sum.divide(BigDecimal.valueOf(countNotNull), RoundingMode.DOWN).longValue());
         }
     }
 	
@@ -729,7 +729,7 @@ public final class FnMathOfLong {
 			} else if (this.mathContext != null) {
 				result = result.divide(BigDecimal.valueOf(this.divisor.longValue()), this.mathContext);				
 			} else {
-				result = result.divide(BigDecimal.valueOf(this.divisor.longValue()), RoundingMode.FLOOR);	
+				result = result.divide(BigDecimal.valueOf(this.divisor.longValue()), RoundingMode.DOWN);	
 			}
 			return Long.valueOf(result.longValue());
 		}	
