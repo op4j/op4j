@@ -3,7 +3,5 @@
   - Check the possibility of removing the ofX() step from FnMath
   - Add method to create maps from arrays, lists and sets considering them values/keys and zipping
     keys/values. Maybe think about renaming current "toMapByX" methods.
-  - Add "find(IFunction<?,Boolean>" method to FnArray, FnList, FnMap, FnSet. (Returns the first true)
-  - Add "filter" or "findAll" methods as counter-aliases of "remove"?
   - Add "partition" method to FnArray, FnList, FnMap, FnSet.
   
