@@ -16,8 +16,12 @@
   "Fn.on(Types.STRING)".
 - Added "eq" (equality) and "notEq" (not equality) function to FnObject, FnNumber, 
   FnBoolean, FnString, FnCalendar, FnDate.
+- Added "eqBy" and "notEqBy" to FnObject, FnNumber and FnBoolean.
+- Added "sortBy" functions to FnArray, FnList, FnMap and FnSet. Added "sortBy" actions to
+  array, list, map and set operators. 
 - Added "lessThan", "lessOrEqTo", "greaterThan" and "greaterOrEqTo" functions to 
   FnObject, FnNumber and FnString.
+- Added "lessThanBy", "lessOrEqToBy", "greaterThanBy", "greaterOrEqToBy" to FnObject and FnNumber.
 - Added "and", "or" and "not" functions to FnBoolean and Fn.
 - Added "isNull" and "isNotNull" functions to FnObject, FnNumber, FnBoolean, FnString, FnCalendar,
   FnDate.
@@ -27,12 +31,8 @@
   FnArray, FnList and FnSet.
 - Added "containsKey", "notContainsKey", "containsAllKeys", "containsAnyKeys" and 
   "containsNoneKeys" to FnMap.
-- Added "by" to Fn and FnBoolean.
+- Added "by" function to Fn and FnBoolean.
 - Added "isNullBy" and "isNotNullBy" to FnBoolean and FnObject
-- Added "eqBy" and "notEqBy" to FnObject, FnNumber and FnBoolean.
-- Added "lessThanBy", "lessOrEqToBy", "greaterThanBy", "greaterOrEqToBy" to FnObject and FnNumber.
-- Added "sortBy" functions to FnArray, FnList, FnMap and FnSet. Added "sortBy" actions to
-  array, list, map and set operators. 
 - Added "ifTrue", "ifFalse", "ifNull", "ifNotNull", "ifNullOrTrue", "ifNullOrFalse",
   "ifNotNullAndTrue" and "ifNotNulAndFalse" functions to Fn.
 - Added "whileTrue" and "whileFalse" functions to Fn.
