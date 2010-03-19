@@ -81,6 +81,18 @@ public final class Level0GenericUniqOperator<I,T> extends AbstractOperator
 
 
     @SuppressWarnings("unchecked")
+    public <K> Level0MapOperator<I,K, T> zipKey(final K key) {
+        return new Level0MapOperator<I,K, T>(getTarget().execute(FnObject.intoSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().zipKeys(key)));
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public <V> Level0MapOperator<I,T, V> zipValue(final V value) {
+        return new Level0MapOperator<I,T, V>(getTarget().execute(FnObject.intoSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().zipValues(value)));
+    }
+
+
+    @SuppressWarnings("unchecked")
     public <K, V> Level0MapOperator<I,K, V> intoSingletonMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
         return new Level0MapOperator<I,K, V>(getTarget().execute(FnObject.intoSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().toMap((IFunction)mapBuilder)));
     }

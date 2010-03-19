@@ -93,6 +93,8 @@ public interface ILevel0GenericUniqOperator<I,T>
     
     public <K> ILevel0MapOperator<I,K,T> zipKeyBy(final IFunction<? super T,K> keyEval);
     public <V> ILevel0MapOperator<I,T,V> zipValueBy(final IFunction<? super T,V> valueEval);
+    public <K> ILevel0MapOperator<I,K,T> zipKey(final K key);
+    public <V> ILevel0MapOperator<I,T,V> zipValue(final V value);
     
     
     

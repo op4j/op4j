@@ -76,7 +76,7 @@ public interface BuilderOperator<I,T> {
     
     /**
      * <p>
-     * Builds a map using the operator's target as a value, and the result of executing
+     * Builds a one-entry map using the operator's target as a value, and the result of executing
      * the keyEval evaluator on the target as a key.
      * </p>
      * 
@@ -89,7 +89,7 @@ public interface BuilderOperator<I,T> {
     
     /**
      * <p>
-     * Builds a map using the operator's target as a key, and the result of executing
+     * Builds a one-entry map using the operator's target as a key, and the result of executing
      * the valueEval evaluator on the target as a value.
      * </p>
      * 
@@ -98,6 +98,32 @@ public interface BuilderOperator<I,T> {
      * @return an operator on the resulting map
      */
     public <V> ILevel0MapOperator<I,T,V> zipValueBy(final IFunction<? super T,V> valueEval);
+    
+    
+    /**
+     * <p>
+     * Builds a one-entry map using the operator's target as a value, and the specified
+     * object as a key.
+     * </p>
+     * 
+     * @param <K> the type of the new key, resulting from evaluating keyEval
+     * @param keyEval the evaluator to be used for obtaining the key
+     * @return an operator on the resulting map
+     */
+    public <K> ILevel0MapOperator<I,K,T> zipKey(final K key);
+    
+    
+    /**
+     * <p>
+     * Builds a one-entry map using the operator's target as a key, and the specified
+     * object as a value.
+     * </p>
+     * 
+     * @param <V> the type of the new value, resulting from evaluating valueEval
+     * @param valueEval the evaluator to be used for obtaining the value
+     * @return an operator on the resulting map
+     */
+    public <V> ILevel0MapOperator<I,T,V> zipValue(final V value);
     
     
     /**

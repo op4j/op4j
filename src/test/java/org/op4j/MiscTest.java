@@ -746,6 +746,8 @@ watch.start();
         System.out.println(Arrays.asList(Op.onArrayFor(4,2).get()));
         
         
+        System.out.println(Op.on("hello").zipKey(98).get());
+        
     }
     
     

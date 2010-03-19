@@ -143,6 +143,14 @@ public class FnListOf<T> {
         return new ZipValuesBy<T,V>(eval);
     }
     
+    public final <K> Function<List<T>,Map<K,T>> zipKeys(final K... keys) {
+        return new ZipKeys<K,T>(VarArgsUtil.asRequiredObjectList(keys));
+    }
+    
+    public final <V> Function<List<T>,Map<T,V>> zipValues(final V... values) {
+        return new ZipValues<T,V>(VarArgsUtil.asRequiredObjectList(values));
+    }
+    
     public final <K,V> Function<List<T>,Map<K,V>> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
         return new ToMapByMapBuilder<K,V,T>(mapBuilder);
     }
@@ -586,7 +594,7 @@ public class FnListOf<T> {
     
     
     
-    static final class ZipKeysBy<K, T> extends AbstractNullAsNullFunction<List<T>,Map<K, T>>  {
+    static final class ZipKeysBy<K, T> extends AbstractNotNullFunction<List<T>,Map<K, T>>  {
 
         private final IFunction<? super T,K>  eval;
         
@@ -597,7 +605,7 @@ public class FnListOf<T> {
         }
 
         @Override
-        protected Map<K, T> nullAsNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
+        protected Map<K, T> notNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
             final Map<K, T> result = new LinkedHashMap<K, T>();
             for (final T element: object) {
                 result.put(this.eval.execute(element, ctx), element);
@@ -607,7 +615,7 @@ public class FnListOf<T> {
         
     }
     
-    static final class ZipValuesBy<T, V> extends AbstractNullAsNullFunction<List<T>,Map<T, V>>  {
+    static final class ZipValuesBy<T, V> extends AbstractNotNullFunction<List<T>,Map<T, V>>  {
 
         private final IFunction<? super T,V>  eval;
         
@@ -618,7 +626,7 @@ public class FnListOf<T> {
         }
 
         @Override
-        protected Map<T, V> nullAsNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
+        protected Map<T, V> notNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
             final Map<T, V> result = new LinkedHashMap<T, V>();
             for (final T element: object) {
                 result.put(element, this.eval.execute(element, ctx));
@@ -628,6 +636,64 @@ public class FnListOf<T> {
         
     }
 
+
+    
+    
+    static final class ZipKeys<K, T> extends AbstractNotNullFunction<List<T>,Map<K, T>>  {
+
+        private final List<K> keys;
+        
+        ZipKeys(final List<K> keys) {
+            super();
+            Validate.notNull(keys, "Keys must be specified");
+            this.keys = keys;
+        }
+
+        @Override
+        protected Map<K, T> notNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
+            if (object.size() != this.keys.size()) {
+                throw new IllegalArgumentException(
+                        "Incorrect number of keys specified: should be " + object.size() + 
+                        " but are " + this.keys.size());
+            }
+            final Map<K, T> result = new LinkedHashMap<K, T>();
+            int index = 0;
+            for (final T element: object) {
+                result.put(this.keys.get(index), element);
+                index++;
+            }
+            return result;
+        }
+        
+    }
+    
+    static final class ZipValues<T, V> extends AbstractNotNullFunction<List<T>,Map<T, V>>  {
+
+        private final List<V> values;
+        
+        ZipValues(final List<V> values) {
+            super();
+            Validate.notNull(values, "Values must be specified");
+            this.values = values;
+        }
+
+        @Override
+        protected Map<T, V> notNullExecute(final List<T> object, final ExecCtx ctx) throws Exception {
+            if (object.size() != this.values.size()) {
+                throw new IllegalArgumentException(
+                        "Incorrect number of values specified: should be " + object.size() + 
+                        " but are " + this.values.size());
+            }
+            final Map<T, V> result = new LinkedHashMap<T, V>();
+            int index = 0;
+            for (final T element: object) {
+                result.put(element, this.values.get(index));
+                index++;
+            }
+            return result;
+        }
+        
+    }
     
     
     
