@@ -64,16 +64,16 @@ public final class FnObject {
     }
     
     
-    public static final <T> Function<T,T[]> toSingletonArrayOf(final Type<T> type) {
-        return new ToSingletonArray<T>(type);
+    public static final <T> Function<T,T[]> intoSingletonArrayOf(final Type<T> type) {
+        return new IntoSingletonArray<T>(type);
     }
     
-    public static final <T> Function<T,List<T>> toSingletonListOf(final Type<T> type) {
-        return new ToSingletonList<T>();
+    public static final <T> Function<T,List<T>> intoSingletonListOf(final Type<T> type) {
+        return new IntoSingletonList<T>();
     }
     
-    public static final <T> Function<T,Set<T>> toSingletonSetOf(final Type<T> type) {
-        return new ToSingletonSet<T>();
+    public static final <T> Function<T,Set<T>> intoSingletonSetOf(final Type<T> type) {
+        return new IntoSingletonSet<T>();
     }
 
     
@@ -586,11 +586,11 @@ public final class FnObject {
 
     
     
-    static final class ToSingletonArray<T> extends Function<T,T[]>  {
+    static final class IntoSingletonArray<T> extends Function<T,T[]>  {
 
         private final Type<T> type;
         
-        ToSingletonArray(final Type<T> type) {
+        IntoSingletonArray(final Type<T> type) {
             super();
             Validate.notNull(type, "A type representing the object must be specified");
             this.type = type;
@@ -610,9 +610,9 @@ public final class FnObject {
     
     
     
-    static final class ToSingletonList<T> extends Function<T,List<T>> {
+    static final class IntoSingletonList<T> extends Function<T,List<T>> {
 
-        ToSingletonList() {
+        IntoSingletonList() {
             super();
         }
 
@@ -626,9 +626,9 @@ public final class FnObject {
  
     
     
-    static final class ToSingletonSet<T> extends Function<T,Set<T>> {
+    static final class IntoSingletonSet<T> extends Function<T,Set<T>> {
 
-        ToSingletonSet() {
+        IntoSingletonSet() {
             super();
         }
 

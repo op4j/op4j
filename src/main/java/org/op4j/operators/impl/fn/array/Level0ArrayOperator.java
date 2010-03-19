@@ -167,7 +167,7 @@ public final class Level0ArrayOperator<I,T>
     }
 
     public <K> Level0MapOperator<I,K, T> toMapByKeyEval(final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperator<I,K, T>(getTarget().execute(FnArray.of(this.type).toMapByKeyEval(keyEval)));
+        return new Level0MapOperator<I,K, T>(getTarget().execute(FnArray.of(this.type).zipKeysBy(keyEval)));
     }
 
     public <K, V> Level0MapOperator<I,K, V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {

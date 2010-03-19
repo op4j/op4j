@@ -170,7 +170,7 @@ public final class Level0ListOperator<I,T> extends AbstractOperator
 
     @SuppressWarnings("unchecked")
     public <K> Level0MapOperator<I,K, T> toMapByKeyEval(final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperator<I,K, T>(getTarget().execute(FnList.ofObject().toMapByKeyEval((IFunction)keyEval)));
+        return new Level0MapOperator<I,K, T>(getTarget().execute(FnList.ofObject().zipKeysBy((IFunction)keyEval)));
     }
 
 

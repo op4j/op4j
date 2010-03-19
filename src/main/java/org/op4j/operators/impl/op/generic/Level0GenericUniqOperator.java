@@ -19,9 +19,7 @@
  */
 package org.op4j.operators.impl.op.generic;
 
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
@@ -60,66 +58,36 @@ public final class Level0GenericUniqOperator<I,T> extends AbstractOperator
     }
 
 
-    public Level0ArrayOperator<I,T> buildArrayOf(final Type<T> type) {
-        return new Level0ArrayOperator<I,T>(type, getTarget().execute(FnObject.toSingletonArrayOf(type)));
+    public Level0ArrayOperator<I,T> intoSingletonArrayOf(final Type<T> type) {
+        return new Level0ArrayOperator<I,T>(type, getTarget().execute(FnObject.intoSingletonArrayOf(type)));
     }
 
 
-    public Level0ListOperator<I,T> buildList() {
-        return new Level0ListOperator<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)));
-    }
-
-
-    @SuppressWarnings("unchecked")
-    public <K> Level0MapOperator<I,K, T> buildMapByKeyEval(final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperator<I,K, T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().toMapByKeyEval((IFunction)keyEval)));
+    public Level0ListOperator<I,T> intoSingletonList() {
+        return new Level0ListOperator<I,T>(getTarget().execute(FnObject.intoSingletonListOf(Types.OBJECT)));
     }
 
 
     @SuppressWarnings("unchecked")
-    public <K, V> Level0MapOperator<I,K, V> buildMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
-        return new Level0MapOperator<I,K, V>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().toMap((IFunction)mapBuilder)));
+    public <K> Level0MapOperator<I,K, T> zipKeyBy(final IFunction<? super T,K> keyEval) {
+        return new Level0MapOperator<I,K, T>(getTarget().execute(FnObject.intoSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().zipKeysBy((IFunction)keyEval)));
     }
 
 
     @SuppressWarnings("unchecked")
-    public <K> Level0MapOperator<I,K, T[]> buildMapOfArrayByKeyEvalOf(final Type<T> valueType, final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperator<I,K, T[]>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.of(valueType).toMapOfArrayByKeyEval((IFunction)keyEval)));
+    public <V> Level0MapOperator<I,T, V> zipValueBy(final IFunction<? super T,V> valueEval) {
+        return new Level0MapOperator<I,T, V>(getTarget().execute(FnObject.intoSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().zipValuesBy((IFunction)valueEval)));
     }
 
 
     @SuppressWarnings("unchecked")
-    public <K, V> Level0MapOperator<I,K, V[]> buildMapOfArrayOf(final Type<V> valueType, final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
-        return new Level0MapOperator<I,K, V[]>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().toMapOfArrayOf(valueType, (IFunction)mapBuilder)));
+    public <K, V> Level0MapOperator<I,K, V> intoSingletonMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+        return new Level0MapOperator<I,K, V>(getTarget().execute(FnObject.intoSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().toMap((IFunction)mapBuilder)));
     }
 
 
-    @SuppressWarnings("unchecked")
-    public <K> Level0MapOperator<I,K, List<T>> buildMapOfListByKeyEval(final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperator<I,K, List<T>>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().toMapOfListByKeyEval((IFunction)keyEval)));
-    }
-
-
-    @SuppressWarnings("unchecked")
-    public <K, V> Level0MapOperator<I,K, List<V>> buildMapOfList(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
-        return new Level0MapOperator<I,K, List<V>>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().toMapOfList((IFunction)mapBuilder)));
-    }
-
-
-    @SuppressWarnings("unchecked")
-    public <K> Level0MapOperator<I,K, Set<T>> buildMapOfSetByKeyEval(final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperator<I,K, Set<T>>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().toMapOfSetByKeyEval((IFunction)keyEval)));
-    }
-
-
-    @SuppressWarnings("unchecked")
-    public <K, V> Level0MapOperator<I,K, Set<V>> buildMapOfSet(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
-        return new Level0MapOperator<I,K, Set<V>>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().toMapOfSet((IFunction)mapBuilder)));
-    }
-
-
-    public Level0SetOperator<I,T> buildSet() {
-        return new Level0SetOperator<I,T>(getTarget().execute(FnObject.toSingletonSetOf(Types.OBJECT)));
+    public Level0SetOperator<I,T> intoSingletonSet() {
+        return new Level0SetOperator<I,T>(getTarget().execute(FnObject.intoSingletonSetOf(Types.OBJECT)));
     }
 
 

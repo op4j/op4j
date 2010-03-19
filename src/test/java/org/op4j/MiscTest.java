@@ -187,11 +187,11 @@ watch.start();
         System.out.println(Op.onListFor(234).addAll(10).insert(1,3).removeAllIndexesNot(1));
         System.out.println(Op.onListFor(234).addAll(10).insert(1,3).removeAllTrue(Ognl.asBoolean("#target > 100")));
         System.out.println(printArray(Op.onListFor(234).addAll(10).insert(1,3).removeAllTrue(Ognl.asBoolean("#target > 100")).toArrayOf(Types.INTEGER).get()));
-        System.out.println(printArray(Op.on(234).buildArrayOf(Types.INTEGER).addAll(8).get()));
+        System.out.println(printArray(Op.on(234).intoSingletonArrayOf(Types.INTEGER).addAll(8).get()));
         System.out.println(Op.on((List)null).addAll(123));
-        System.out.println(Op.on((Object)null).buildList().get());
-        System.out.println(Op.on((Object)null).buildSet().get());
-        System.out.println(printArray(Op.on((String)null).buildArrayOf(Types.STRING).addAll("a").removeAllNull().removeAllIndexes(0).get()));
+        System.out.println(Op.on((Object)null).intoSingletonList().get());
+        System.out.println(Op.on((Object)null).intoSingletonSet().get());
+        System.out.println(printArray(Op.on((String)null).intoSingletonArrayOf(Types.STRING).addAll("a").removeAllNull().removeAllIndexes(0).get()));
         
 //        System.out.println(printArray(Op.buildArrayOfArray(Types.STRING).addAll(Op.buildArray(Types.STRING).addAll("a","b").get()).addAll(Op.buildArray(Types.STRING).addAll("1","2","3").get()).get()));
 //        System.out.println(Op.buildMap(Types.INTEGER,Types.STRING).put(12,"hello!").get());
@@ -250,7 +250,7 @@ watch.start();
         System.out.println(Op.on(Op.onListFor(1979, 11, 25, 12, 30, 1980, 2, 43, 12, 11).get()).exec(FnList.ofInteger().distinct()).get());
         
         
-        System.out.println(Op.on(Op.onListFor("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").toArrayOf(Types.STRING).get()).exec(FnArray.of(Types.STRING).toMapByKeyEval(Ognl.asInteger("length()"))).get());
+        System.out.println(Op.on(Op.onListFor("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").toArrayOf(Types.STRING).get()).exec(FnArray.of(Types.STRING).zipKeysBy(Ognl.asInteger("length()"))).get());
 
         final Map<Integer,String[]> greetingsByLength = 
             Op.on(Op.onArrayFor("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").get()).exec(FnArray.of(Types.STRING).toMapOfArrayByKeyEval(Ognl.asInteger("length()"))).get();
@@ -261,10 +261,10 @@ watch.start();
         System.out.println("***");
 
 
-        System.out.println(Op.on("hello").buildList().get());
-        System.out.println(printArray(Op.on("hello").buildArrayOf(Types.STRING).get()));
-        System.out.println(Op.on("hello").buildMapByKeyEval(Ognl.asInteger("length()")).get());
-        System.out.println(Op.on("hello").buildMapOfListByKeyEval(Ognl.asInteger("length()")).get());
+        System.out.println(Op.on("hello").intoSingletonList().get());
+        System.out.println(printArray(Op.on("hello").intoSingletonArrayOf(Types.STRING).get()));
+        System.out.println(Op.on("hello").zipKeyBy(Ognl.asInteger("length()")).get());
+        System.out.println(Op.on("hello").zipKeyBy(Ognl.asInteger("length()")).get());
         
         
 //        System.out.println(Op.buildList(Types.CALENDAR)
@@ -385,7 +385,7 @@ watch.start();
 //        System.out.println(Op.buildListOfList(Types.STRING).addAll(stringsList1, stringsList1).get());
 
 
-        Op.on(Integer.valueOf(12)).exec(FnObject.toSingletonArrayOf(Types.INTEGER)).get();
+        Op.on(Integer.valueOf(12)).exec(FnObject.intoSingletonArrayOf(Types.INTEGER)).get();
         
         watch.stop();
         

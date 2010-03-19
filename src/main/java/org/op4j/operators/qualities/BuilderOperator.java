@@ -19,9 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
@@ -52,7 +50,7 @@ public interface BuilderOperator<I,T> {
      * 
      * @return an operator on the resulting list
      */
-    public ILevel0ListOperator<I,T> buildList();
+    public ILevel0ListOperator<I,T> intoSingletonList();
     
     
     /**
@@ -62,7 +60,7 @@ public interface BuilderOperator<I,T> {
      * 
      * @return an operator on the resulting set
      */
-    public ILevel0SetOperator<I,T> buildSet();
+    public ILevel0SetOperator<I,T> intoSingletonSet();
     
     
     /**
@@ -73,21 +71,33 @@ public interface BuilderOperator<I,T> {
      * @param type the type if which the array will be instantiated
      * @return an operator on the resulting array
      */
-    public ILevel0ArrayOperator<I,T> buildArrayOf(final Type<T> type);
+    public ILevel0ArrayOperator<I,T> intoSingletonArrayOf(final Type<T> type);
     
     
     /**
      * <p>
-     * Builds a map using the operator's targets as values, and the results of executing
-     * the keyEval evaluator on each targets as it key. If two values have the same key,
-     * all of them but the last to be evaluated will be overwritten.
+     * Builds a map using the operator's target as a value, and the result of executing
+     * the keyEval evaluator on the target as a key.
      * </p>
      * 
-     * @param <K> the type of the new keys, resulting from evaluating keyEval
-     * @param keyEval the evaluator to be used for obtaining keys
+     * @param <K> the type of the new key, resulting from evaluating keyEval
+     * @param keyEval the evaluator to be used for obtaining the key
      * @return an operator on the resulting map
      */
-    public <K> ILevel0MapOperator<I,K,T> buildMapByKeyEval(final IFunction<? super T,K> keyEval);
+    public <K> ILevel0MapOperator<I,K,T> zipKeyBy(final IFunction<? super T,K> keyEval);
+    
+    
+    /**
+     * <p>
+     * Builds a map using the operator's target as a key, and the result of executing
+     * the valueEval evaluator on the target as a value.
+     * </p>
+     * 
+     * @param <V> the type of the new value, resulting from evaluating valueEval
+     * @param valueEval the evaluator to be used for obtaining the value
+     * @return an operator on the resulting map
+     */
+    public <V> ILevel0MapOperator<I,T,V> zipValueBy(final IFunction<? super T,V> valueEval);
     
     
     /**
@@ -104,97 +114,7 @@ public interface BuilderOperator<I,T> {
      * @param mapBuilder the map builder function
      * @return an operator on the resulting map
      */
-    public <K,V> ILevel0MapOperator<I,K,V> buildMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
+    public <K,V> ILevel0MapOperator<I,K,V> intoSingletonMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
     
-    
-    /**
-     * <p>
-     * Builds a map of list (Map&lt;K,List&lt;V&gt;&gt;) using the operator's targets as values, 
-     * and the results of executing the keyEval evaluator on each targets as it key. Values 
-     * which share the same key will be added to that key's value list. 
-     * </p>
-     * 
-     * @param <K> the type of the new keys, resulting from evaluating keyEval
-     * @param keyEval the evaluator to be used for obtaining keys
-     * @return an operator on the resulting map of list
-     */
-    public <K> ILevel0MapOperator<I,K,List<T>> buildMapOfListByKeyEval(final IFunction<? super T,K> keyEval);
-    
-    
-    /**
-     * <p>
-     * Builds a map of list (Map&lt;K,List&lt;V&gt;&gt;) by inputting the operator's targets into 
-     * a map builder object, which is in charge of creating the corresponding key and value for 
-     * each original target. Values which share the same key will be added to that key's value list. 
-     * </p>
-     * 
-     * @param <K> the type of the keys returned by the map builder
-     * @param <V> the type of the values returned by the map builder
-     * @param mapBuilder the map builder
-     * @return an operator on the resulting map of list
-     */
-    public <K,V> ILevel0MapOperator<I,K,List<V>> buildMapOfList(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
-    
-
-    /**
-     * <p>
-     * Builds a map of set (Map&lt;K,Set&lt;V&gt;&gt;) using the operator's targets as values, 
-     * and the results of executing the keyEval evaluator on each targets as it key. Values 
-     * which share the same key will be added to that key's value set. 
-     * </p>
-     * 
-     * @param <K> the type of the new keys, resulting from evaluating keyEval
-     * @param keyEval the evaluator to be used for obtaining keys
-     * @return an operator on the resulting map of list
-     */
-    public <K> ILevel0MapOperator<I,K,Set<T>> buildMapOfSetByKeyEval(final IFunction<? super T,K> keyEval);
-    
-    
-    /**
-     * <p>
-     * Builds a map of set (Map&lt;K,Set&lt;V&gt;&gt;) by inputting the operator's targets into 
-     * a map builder object, which is in charge of creating the corresponding key and value for 
-     * each original target. Values which share the same key will be added to that key's value set. 
-     * </p>
-     * 
-     * @param <K> the type of the keys returned by the map builder
-     * @param <V> the type of the values returned by the map builder
-     * @param mapBuilder the map builder
-     * @return an operator on the resulting map of list
-     */
-    public <K,V> ILevel0MapOperator<I,K,Set<V>> buildMapOfSet(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
-    
-    
-    /**
-     * <p>
-     * Builds a map of array (Map&lt;K,V[]&gt;) using the operator's targets as values, 
-     * and the results of executing the keyEval evaluator on each targets as it key. Values 
-     * which share the same key will be added to that key's value array. This array will be 
-     * instantiated using the type passed as a parameter. 
-     * </p>
-     * 
-     * @param <K> the type of the new keys, resulting from evaluating keyEval
-     * @param valueType the type to be used to create the arrays of values
-     * @param keyEval the evaluator to be used for obtaining keys
-     * @return an operator on the resulting map of list
-     */
-    public <K> ILevel0MapOperator<I,K,T[]> buildMapOfArrayByKeyEvalOf(final Type<T> valueType, final IFunction<? super T,K> keyEval);
-
-    
-    /**
-     * <p>
-     * Builds a map of array (Map&lt;K,V[]&gt;) by inputting the operator's targets into 
-     * a map builder object, which is in charge of creating the corresponding key and value for 
-     * each original target. Values which share the same key will be added to that key's value 
-     * array. This array will be instantiated using the type passed as a parameter.
-     * </p>
-     * 
-     * @param <K> the type of the keys returned by the map builder
-     * @param <V> the type of the values returned by the map builder
-     * @param valueType the type to be used to create the arrays of values
-     * @param mapBuilder the map builder
-     * @return an operator on the resulting map of list
-     */
-    public <K,V> ILevel0MapOperator<I,K,V[]> buildMapOfArrayOf(final Type<V> valueType, final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
     
 }

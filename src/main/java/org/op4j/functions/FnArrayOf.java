@@ -141,8 +141,12 @@ public class FnArrayOf<T> {
         return new ToSet<T>();
     }
     
-    public final <K> Function<T[],Map<K,T>> toMapByKeyEval(final IFunction<? super T, K> eval) {
-        return new ToMapByKeyEval<K,T>(eval);
+    public final <K> Function<T[],Map<K,T>> zipKeysBy(final IFunction<? super T, K> eval) {
+        return new ZipKeysBy<K,T>(eval);
+    }
+    
+    public final <V> Function<T[],Map<T,V>> zipValuesBy(final IFunction<? super T, V> eval) {
+        return new ZipValuesBy<T,V>(eval);
     }
     
     public final <K,V> Function<T[],Map<K,V>> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
@@ -838,11 +842,11 @@ public class FnArrayOf<T> {
     
     
     
-    static final class ToMapByKeyEval<K, T> extends AbstractNullAsNullFunction<T[],Map<K,T>> {
+    static final class ZipKeysBy<K, T> extends AbstractNullAsNullFunction<T[],Map<K,T>> {
 
         private final IFunction<? super T,K>  eval;
         
-        ToMapByKeyEval(final IFunction<? super T,K>  eval) {
+        ZipKeysBy(final IFunction<? super T,K>  eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
@@ -853,6 +857,29 @@ public class FnArrayOf<T> {
             final Map<K, T> result = new LinkedHashMap<K, T>();
             for (final T element: object) {
                 result.put(this.eval.execute(element, ctx), element);
+            }
+            return result;
+        }
+        
+    }
+    
+    
+    
+    static final class ZipValuesBy<T, V> extends AbstractNullAsNullFunction<T[],Map<T, V>> {
+
+        private final IFunction<? super T,V>  eval;
+        
+        ZipValuesBy(final IFunction<? super T,V>  eval) {
+            super();
+            Validate.notNull(eval, "An evaluator must be specified");
+            this.eval = eval;
+        }
+
+        @Override
+        protected Map<T, V> nullAsNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+            final Map<T, V> result = new LinkedHashMap<T, V>();
+            for (final T element: object) {
+                result.put(element, this.eval.execute(element, ctx));
             }
             return result;
         }
