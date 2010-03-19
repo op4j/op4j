@@ -315,8 +315,9 @@ public class MathFuncsTest extends TestCase {
 		
 		
 		
-		Map<String, List<Integer>> mapOfIntegerList = Op.onAll("first", Arrays.asList(34, 76, -12, 0, 67, null),
-				"second", Arrays.asList(3, 776, -122, 20, 627)).buildMapByAlternateElements().asMapOf(Types.STRING, Types.LIST_OF_INTEGER).get();
+		Map<String, List<Integer>> mapOfIntegerList = 
+		    Op.onListFor("first", Arrays.asList(34, 76, -12, 0, 67, null), "second", Arrays.asList(3, 776, -122, 20, 627)).
+				toMapByAlternateElements().of(Types.STRING, Types.LIST_OF_INTEGER).get();
 
 //		Op.onMapOfList(mapOfIntegerList)
 //			.put("third", Arrays.asList(3, null, 776))

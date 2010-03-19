@@ -44,6 +44,6 @@ public interface CastableToSetOperator {
      * @param type the type of the elements of the set
      * @return the resulting casted operator
      */
-    public <X> Operator asSetOf(final Type<X> type);
+    public <X> Operator of(final Type<X> type);
     
 }

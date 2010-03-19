@@ -19,7 +19,6 @@
  */
 package org.op4j.operators.impl.op.generic;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -41,7 +40,6 @@ import org.op4j.operators.qualities.UniqOpOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.CastType;
 import org.op4j.target.Target.Normalisation;
-import org.op4j.target.Target.Structure;
 import org.op4j.util.ValuePair;
 
 
@@ -60,29 +58,6 @@ public final class Level0GenericUniqOperator<I,T> extends AbstractOperator
     
     public Level0GenericUniqOperator(final Target target) {
         super(target);
-    }
-
-
-    public Level0GenericMultiOperator<I,T> add(final T newElement) {
-        return new Level0GenericMultiOperator<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().add(newElement)).iterate(Structure.LIST));
-    }
-
-    public Level0GenericMultiOperator<I,T> addAll(final T... newElements) {
-        return new Level0GenericMultiOperator<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().add(newElements)).iterate(Structure.LIST));
-    }
-
-    public Level0GenericMultiOperator<I,T> insert(final int position, final T newElement) {
-        return new Level0GenericMultiOperator<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().insert(position, newElement)).iterate(Structure.LIST));
-    }
-
-    public Level0GenericMultiOperator<I,T> insertAll(final int position, final T... newElements) {
-        return new Level0GenericMultiOperator<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().insert(position, newElements)).iterate(Structure.LIST));
-    }
-
-
-    @SuppressWarnings("unchecked")
-    public Level0GenericMultiOperator<I,T> addAll(final Collection<T> collection) {
-        return new Level0GenericMultiOperator<I,T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.ofObject().addAll((Collection)collection)).iterate(Structure.LIST));
     }
 
 

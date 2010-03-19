@@ -129,7 +129,7 @@ public interface ILevel0SetOperator<I,T>
     
 
     
-    public <X> ILevel0SetOperator<I,X> asSetOf(final Type<X> type);
+    public <X> ILevel0SetOperator<I,X> of(final Type<X> type);
     
     public ILevel0GenericUniqOperator<I,T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> reductor);
     public <X> ILevel0GenericUniqOperator<I,X> reduce(final IFunction<? extends ValuePair<? super X,? super T>,X> reductor, final X initialValue);

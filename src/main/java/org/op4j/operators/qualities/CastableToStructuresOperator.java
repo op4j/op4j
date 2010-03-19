@@ -24,7 +24,7 @@ import org.javaruntype.type.Type;
 
 /**
  * <p>
- * This interface contains methods for casts to map (Map<K,V>).
+ * This interface contains methods for casts to structures: array, lists, maps and sets.
  * </p>
  * 
  * @since 1.0
@@ -32,7 +32,31 @@ import org.javaruntype.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface CastableToMapOperator {
+public interface CastableToStructuresOperator {
+    
+    
+    /**
+     * <p>
+     * Casts the operator's target as an array of the specified type.
+     * </p>
+     * 
+     * @param <X> the type of the elements of the array
+     * @param type the type of the elements of the array
+     * @return the resulting casted operator
+     */
+    public <X> Operator asArrayOf(final Type<X> type);
+    
+    
+    /**
+     * <p>
+     * Casts the operator's target as a list of the specified type.
+     * </p>
+     * 
+     * @param <X> the type of the elements of the list
+     * @param type the type of the elements of the list
+     * @return the resulting casted operator
+     */
+    public <X> Operator asListOf(final Type<X> type);
     
     
     /**
@@ -46,6 +70,18 @@ public interface CastableToMapOperator {
      * @param valueType the type for the map's values
      * @return the resulting map
      */
-    public <K,V> Operator of(final Type<K> keyType, final Type<V> valueType);
+    public <K,V> Operator asMapOf(final Type<K> keyType, final Type<V> valueType);
+
+    
+    /**
+     * <p>
+     * Casts the operator's target as a set of the specified type.
+     * </p>
+     * 
+     * @param <X> the type of the elements of the set
+     * @param type the type of the elements of the set
+     * @return the resulting casted operator
+     */
+    public <X> Operator asSetOf(final Type<X> type);
     
 }

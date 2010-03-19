@@ -36,6 +36,12 @@
 - Added "ifTrue", "ifFalse", "ifNull", "ifNotNull", "ifNullOrTrue", "ifNullOrFalse",
   "ifNotNullAndTrue" and "ifNotNulAndFalse" functions to Fn.
 - Added "whileTrue" and "whileFalse" functions to Fn.
+- Cast methods "asArrayOf", "asListOf", "asMapOf" and "asSetOf" in array, list, map and set
+  operators renamed to "of".
+- Multi generic operators removed.
+- Added "onArrayFor", "onListFor" and "onSetFor" methods to Op in order to build structures 
+  from their elements.
+  
 
 
 

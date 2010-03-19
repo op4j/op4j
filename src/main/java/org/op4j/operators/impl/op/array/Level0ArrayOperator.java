@@ -189,7 +189,7 @@ public final class Level0ArrayOperator<I,T>
     
     
 
-    public <X> Level0ArrayOperator<I,X> asArrayOf(final Type<X> newType) {
+    public <X> Level0ArrayOperator<I,X> of(final Type<X> newType) {
         return generic().asArrayOf(newType);
     }
 

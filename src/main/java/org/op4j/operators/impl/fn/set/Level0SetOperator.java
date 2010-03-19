@@ -197,7 +197,7 @@ public final class Level0SetOperator<I,T> extends AbstractOperator
     
 
 
-    public <X> Level0SetOperator<I,X> asSetOf(final Type<X> type) {
+    public <X> Level0SetOperator<I,X> of(final Type<X> type) {
         return generic().asSetOf(type);
     }
 

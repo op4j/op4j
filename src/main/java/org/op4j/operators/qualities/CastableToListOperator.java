@@ -44,6 +44,6 @@ public interface CastableToListOperator {
      * @param type the type of the elements of the list
      * @return the resulting casted operator
      */
-    public <X> Operator asListOf(final Type<X> type);
+    public <X> Operator of(final Type<X> type);
     
 }

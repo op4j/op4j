@@ -44,6 +44,6 @@ public interface CastableToArrayOperator {
      * @param type the type of the elements of the array
      * @return the resulting casted operator
      */
-    public <X> Operator asArrayOf(final Type<X> type);
+    public <X> Operator of(final Type<X> type);
     
 }

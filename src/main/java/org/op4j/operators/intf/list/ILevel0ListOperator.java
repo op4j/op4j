@@ -135,7 +135,7 @@ public interface ILevel0ListOperator<I,T>
     
 
     
-    public <X> ILevel0ListOperator<I,X> asListOf(final Type<X> type);
+    public <X> ILevel0ListOperator<I,X> of(final Type<X> type);
 
     
     public ILevel0GenericUniqOperator<I,T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> reductor);

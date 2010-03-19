@@ -19,7 +19,6 @@
  */
 package org.op4j.operators.intf.generic;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -31,13 +30,9 @@ import org.op4j.operators.intf.list.ILevel0ListOperator;
 import org.op4j.operators.intf.map.ILevel0MapOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
 import org.op4j.operators.qualities.BuilderOperator;
-import org.op4j.operators.qualities.CastableToArrayOperator;
-import org.op4j.operators.qualities.CastableToListOperator;
-import org.op4j.operators.qualities.CastableToMapOperator;
-import org.op4j.operators.qualities.CastableToSetOperator;
+import org.op4j.operators.qualities.CastableToStructuresOperator;
 import org.op4j.operators.qualities.CastableToTypeOperator;
 import org.op4j.operators.qualities.ExecutableOperator;
-import org.op4j.operators.qualities.ModifiableGrowableOperator;
 import org.op4j.operators.qualities.ReplaceableIfNullOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
@@ -56,17 +51,13 @@ import org.op4j.util.ValuePair;
  */
 public interface ILevel0GenericUniqOperator<I,T>
         extends UniqOperator<T>,
-                CastableToArrayOperator,
-                CastableToListOperator,
-                CastableToMapOperator,
-                CastableToSetOperator,
+                CastableToStructuresOperator,
         		BuilderOperator<I,T>,
         		ExecutableOperator<T>,
                 CastableToTypeOperator<T>,
                 SelectableOperator<T>,
                 ReplaceableOperator<T>,
-                ReplaceableIfNullOperator<T>,
-                ModifiableGrowableOperator<T> {
+                ReplaceableIfNullOperator<T> {
 
 
 
@@ -90,12 +81,6 @@ public interface ILevel0GenericUniqOperator<I,T>
     
     public <X> ILevel0GenericUniqOperator<I,X> asType(final Type<X> type);
     
-        
-    public ILevel0GenericMultiOperator<I,T> add(final T newElement);
-    public ILevel0GenericMultiOperator<I,T> addAll(final T... newElements);
-    public ILevel0GenericMultiOperator<I,T> insert(final int position, final T newElement);
-    public ILevel0GenericMultiOperator<I,T> insertAll(final int position, final T... newElements);
-    public ILevel0GenericMultiOperator<I,T> addAll(final Collection<T> collection);
 
     
     public ILevel0ListOperator<I,T> buildList();

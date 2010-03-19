@@ -24,7 +24,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.Validate;
@@ -55,6 +57,13 @@ public class VarArgsUtil {
         return Arrays.asList(parameters);
     }
     
+    
+    public static <T> Set<T> asRequiredObjectSet(final T... parameters) {
+        Validate.notNull(parameters, "Parameters cannot be null");
+        Validate.isTrue(parameters.length > 0, "Parameters cannot be empty");
+        return new LinkedHashSet<T>(Arrays.asList(parameters));
+    }
+    
     public static List<Integer> asRequiredIntegerList(final int... parameters) {
         Validate.notNull(parameters, "Parameters cannot be null");
         Validate.isTrue(parameters.length > 0, "Parameters cannot be empty");
@@ -65,6 +74,12 @@ public class VarArgsUtil {
         Validate.notNull(parameters, "Parameters cannot be null");
         Validate.isTrue(parameters.length > 0, "Paramters cannot be empty");
         return ArrayUtils.toObject(parameters);
+    }
+    
+    public static <T> T[] asRequiredObjectArray(final T... parameters) {
+        Validate.notNull(parameters, "Parameters cannot be null");
+        Validate.isTrue(parameters.length > 0, "Paramters cannot be empty");
+        return parameters;
     }
     
     

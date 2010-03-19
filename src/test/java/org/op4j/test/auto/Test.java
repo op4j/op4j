@@ -19,11 +19,11 @@ public class Test {
 			return executeOperations(result, operations);
 	}
 	
-	public static final Object testOnAll(Object[] onParams,
-			List<TestOperation> operations) {		
-			Object result = Op.onAll(onParams);
-			return executeOperations(result, operations);
-	}
+//	public static final Object testOnAll(Object[] onParams,
+//			List<TestOperation> operations) {		
+//			Object result = Op.onAll(onParams);
+//			return executeOperations(result, operations);
+//	}
 	
 	public static final <T> Object testOnArrayOf(Type<T> type, T[] target,
 			List<TestOperation> operations) {		

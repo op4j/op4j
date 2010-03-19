@@ -446,8 +446,8 @@ public class AssortedTests extends TestCase {
         List<Integer> expectedListInt1 = Arrays.asList(new Integer[] { 234,12,231 });
         List<Integer> expectedListInt2 = Arrays.asList(new Integer[] { 234,10 });
         
-        List<Integer> listInt1 = Op.onAll(234,12,231).getAsList();
-        List<Integer> listInt2 = Op.on(234).addAll(10).getAsList();
+        List<Integer> listInt1 = Op.onListFor(234,12,231).get();
+        List<Integer> listInt2 = Op.onListFor(234).addAll(10).get();
         
         assertEquals(expectedListInt1, listInt1);
         assertEquals(expectedListInt2, listInt2);
@@ -528,7 +528,7 @@ public class AssortedTests extends TestCase {
         final Serializable[] serArray = new String[] {"one", "two", "three" };
         
         Serializable[] newArray =
-            Op.on(serArray).asArrayOf(Types.SERIALIZABLE).add(Integer.valueOf(3)).get();
+            Op.on(serArray).of(Types.SERIALIZABLE).add(Integer.valueOf(3)).get();
         
         assertEquals(Serializable[].class, newArray.getClass());
         assertEquals(Arrays.asList(expSerArray), Arrays.asList(newArray));
@@ -673,14 +673,6 @@ public class AssortedTests extends TestCase {
     
 
     
-    @Test
-    public void test29() {
-
-        final String one = Op.onAll("one", "two", "three").removeAllIndexesNot(0).uniq().get();
-        assertEquals("one", one);
-        
-    }
-    
     
     @Test
     public void test30() throws Exception {
@@ -710,13 +702,13 @@ public class AssortedTests extends TestCase {
     
     @Test
     public void test32() throws Exception {
-        assertEquals(Boolean.TRUE, Op.onAll(10,11).all(Ognl.asBoolean("#target <= 11")).get());
+        assertEquals(Boolean.TRUE, Op.onListFor(10,11).all(Ognl.asBoolean("#target <= 11")).get());
     }
 
     
     @Test
     public void test33() throws Exception {
-        assertEquals(Boolean.TRUE, Op.onAll(10,11).any(Ognl.asBoolean("#target < 11")).get());
+        assertEquals(Boolean.TRUE, Op.onListFor(10,11).any(Ognl.asBoolean("#target < 11")).get());
     }
     
 }

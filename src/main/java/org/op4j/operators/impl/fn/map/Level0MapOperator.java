@@ -153,7 +153,7 @@ public final class Level0MapOperator<I,K,V> extends AbstractOperator
     
 
 
-    public <X, Y> Level0MapOperator<I,X, Y> asMapOf(final Type<X> keyType, final Type<Y> valueType) {
+    public <X, Y> Level0MapOperator<I,X, Y> of(final Type<X> keyType, final Type<Y> valueType) {
         return generic().asMapOf(keyType, valueType);
     }
 
