@@ -51,8 +51,8 @@ public final class Level1SetElementsOperator<I,T> extends AbstractOperator
     }
 
 
-    public <X> Level1SetElementsOperator<I,X> asType(final Type<X> type) {
-    	return endFor().generic().asSetOf(type).forEach();
+    public <X> Level1SetElementsOperator<I,X> castTo(final Type<X> type) {
+    	return endFor().generic().castToSetOf(type).forEach();
     }
 
     

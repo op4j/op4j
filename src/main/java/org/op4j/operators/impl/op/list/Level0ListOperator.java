@@ -198,7 +198,11 @@ public final class Level0ListOperator<I,T> extends AbstractOperator
     
     
 	public <X> Level0ListOperator<I,X> of(final Type<X> type) {
-        return generic().asListOf(type);
+        return generic().castToListOf(type);
+    }
+    
+    public <X> Level0ListOperator<I,X> castToListOf(final Type<X> type) {
+        return generic().castToListOf(type);
     }
 
 

@@ -72,7 +72,7 @@ public interface ILevel2MapEntriesValueOperator<I,K,V>
 
     public <X> ILevel2MapEntriesValueOperator<I,K,X> exec(final IFunction<? super V,X> function);
     
-    public <X> ILevel2MapEntriesValueOperator<I,K,X> asType(final Type<X> type);
+    public <X> ILevel2MapEntriesValueOperator<I,K,X> castTo(final Type<X> type);
     
     
         

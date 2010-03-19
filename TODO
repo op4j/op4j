@@ -1,5 +1,6 @@
 
   - Why do key an value operators have "ifIndex"?
+  - Add "reduce" methods to maps.
   - Check the possibility of removing the ofX() step from FnMath
   - Add method to create maps from arrays, lists and sets considering them values/keys and zipping
     keys/values. Maybe think about renaming current "toMapByX" methods.

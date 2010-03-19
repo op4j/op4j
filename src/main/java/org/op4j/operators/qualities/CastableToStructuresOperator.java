@@ -44,7 +44,7 @@ public interface CastableToStructuresOperator {
      * @param type the type of the elements of the array
      * @return the resulting casted operator
      */
-    public <X> Operator asArrayOf(final Type<X> type);
+    public <X> Operator castToArrayOf(final Type<X> type);
     
     
     /**
@@ -56,7 +56,7 @@ public interface CastableToStructuresOperator {
      * @param type the type of the elements of the list
      * @return the resulting casted operator
      */
-    public <X> Operator asListOf(final Type<X> type);
+    public <X> Operator castToListOf(final Type<X> type);
     
     
     /**
@@ -70,7 +70,7 @@ public interface CastableToStructuresOperator {
      * @param valueType the type for the map's values
      * @return the resulting map
      */
-    public <K,V> Operator asMapOf(final Type<K> keyType, final Type<V> valueType);
+    public <K,V> Operator castToMapOf(final Type<K> keyType, final Type<V> valueType);
 
     
     /**
@@ -82,6 +82,6 @@ public interface CastableToStructuresOperator {
      * @param type the type of the elements of the set
      * @return the resulting casted operator
      */
-    public <X> Operator asSetOf(final Type<X> type);
+    public <X> Operator castToSetOf(final Type<X> type);
     
 }

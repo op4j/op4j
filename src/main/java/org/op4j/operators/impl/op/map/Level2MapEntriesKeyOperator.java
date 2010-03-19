@@ -52,7 +52,7 @@ public final class Level2MapEntriesKeyOperator<I,K,V> extends AbstractOperator
     }
 
 
-    public <X> Level2MapEntriesKeyOperator<I,X, V> asType(final Type<X> type) {
+    public <X> Level2MapEntriesKeyOperator<I,X, V> castTo(final Type<X> type) {
         return new Level2MapEntriesKeyOperator<I,X, V>(getTarget().cast(CastType.OBJECT, type));
     }
 

@@ -38,10 +38,12 @@ import org.op4j.operators.qualities.ExecutableSetOperator;
 import org.op4j.operators.qualities.GenerizableOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
+import org.op4j.operators.qualities.ReducibleOperator;
 import org.op4j.operators.qualities.ReplaceableIfNullOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.SortableOperator;
+import org.op4j.operators.qualities.TotalizableOperator;
 import org.op4j.operators.qualities.UniqOperator;
 import org.op4j.util.ValuePair;
 /**
@@ -64,7 +66,9 @@ public interface ILevel0SetOperator<I,T>
                 ReplaceableIfNullOperator<Set<T>>,
                 ConvertibleToArrayOperator<T>,
 		        ConvertibleToListOperator,
-                ConvertibleToMapOperator<T> {
+                ConvertibleToMapOperator<T>,
+                ReducibleOperator<I,T>,
+                TotalizableOperator<I,T> {
 
 
 
@@ -130,6 +134,8 @@ public interface ILevel0SetOperator<I,T>
 
     
     public <X> ILevel0SetOperator<I,X> of(final Type<X> type);
+    public <X> ILevel0SetOperator<I,X> castToSetOf(final Type<X> type);
+    
     
     public ILevel0GenericUniqOperator<I,T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> reductor);
     public <X> ILevel0GenericUniqOperator<I,X> reduce(final IFunction<? extends ValuePair<? super X,? super T>,X> reductor, final X initialValue);

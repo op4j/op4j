@@ -73,7 +73,7 @@ public interface ILevel1SetElementsOperator<I,T>
 
     public <X> ILevel1SetElementsOperator<I,X> exec(final IFunction<? super T,X> function);
     
-    public <X> ILevel1SetElementsOperator<I,X> asType(final Type<X> type);
+    public <X> ILevel1SetElementsOperator<I,X> castTo(final Type<X> type);
     
     
                                     

@@ -46,4 +46,15 @@ public interface CastableToSetOperator {
      */
     public <X> Operator of(final Type<X> type);
     
+    /**
+     * <p>
+     * Casts the operator's target as a set of the specified type.
+     * </p>
+     * 
+     * @param <X> the type of the elements of the set
+     * @param type the type of the elements of the set
+     * @return the resulting casted operator
+     */
+    public <X> Operator castToSetOf(final Type<X> type);
+    
 }

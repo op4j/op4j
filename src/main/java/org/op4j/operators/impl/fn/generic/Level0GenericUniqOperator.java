@@ -42,7 +42,6 @@ import org.op4j.operators.qualities.UniqFnOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.CastType;
 import org.op4j.target.Target.Normalisation;
-import org.op4j.util.ValuePair;
 
 
 
@@ -126,27 +125,27 @@ public final class Level0GenericUniqOperator<I,T> extends AbstractOperator
     }
 
 
-    public <X> Level0ArrayOperator<I,X> asArrayOf(final Type<X> type) {
+    public <X> Level0ArrayOperator<I,X> castToArrayOf(final Type<X> type) {
         return new Level0ArrayOperator<I,X>(type, getTarget().cast(CastType.ARRAY, type));
     }
 
 
-    public <X> Level0ListOperator<I,X> asListOf(final Type<X> type) {
+    public <X> Level0ListOperator<I,X> castToListOf(final Type<X> type) {
         return new Level0ListOperator<I,X>(getTarget().cast(CastType.LIST, type));
     }
 
 
-    public <K,V> Level0MapOperator<I,K,V> asMapOf(final Type<K> keyType, final Type<V> valueType) {
+    public <K,V> Level0MapOperator<I,K,V> castToMapOf(final Type<K> keyType, final Type<V> valueType) {
         return new Level0MapOperator<I,K,V>(getTarget().cast(CastType.MAP, keyType, valueType));
     }
 
 
-    public <X> Level0SetOperator<I,X> asSetOf(final Type<X> type) {
+    public <X> Level0SetOperator<I,X> castToSetOf(final Type<X> type) {
         return new Level0SetOperator<I,X>(getTarget().cast(CastType.SET, type));
     }
 
 
-    public <X> Level0GenericUniqOperator<I,X> asType(final Type<X> type) {
+    public <X> Level0GenericUniqOperator<I,X> castTo(final Type<X> type) {
         return new Level0GenericUniqOperator<I,X>(getTarget().cast(CastType.OBJECT, type));
     }
 
@@ -252,21 +251,6 @@ public final class Level0GenericUniqOperator<I,T> extends AbstractOperator
     
     
 
-    @SuppressWarnings("unchecked")
-    public Level0GenericUniqOperator<I, T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> reductor) {
-        return new Level0GenericUniqOperator<I, T>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.of((Type<T>)Types.OBJECT).reduce(reductor)));
-    }
-
-
-
-    @SuppressWarnings("unchecked")
-    public <X> Level0GenericUniqOperator<I, X> reduce(final IFunction<? extends ValuePair<? super X,? super T>,X> reductor, final X initialValue) {
-        return new Level0GenericUniqOperator<I, X>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.of((Type<T>)Types.OBJECT).reduce(reductor, initialValue)));
-    }
-    
-    
-    
-
     
     public Level0ArrayOperator<I, T> unfoldArrayOf(final Type<T> type, final IFunction<? super T, ? extends T> function) {
         return new Level0ArrayOperator<I, T>(type, getTarget().execute(FnArray.of(type).unfold(function)));
@@ -298,22 +282,6 @@ public final class Level0GenericUniqOperator<I,T> extends AbstractOperator
     
     
     
-    
-    
-    
-    
-    
-
-    @SuppressWarnings("unchecked")
-    public Level0GenericUniqOperator<I, Boolean> all(final IFunction<? super T, Boolean> eval) {
-        return new Level0GenericUniqOperator<I, Boolean>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.of((Type<T>)Types.OBJECT).all(eval)));
-    }
-
-
-    @SuppressWarnings("unchecked")
-    public Level0GenericUniqOperator<I, Boolean> any(final IFunction<? super T, Boolean> eval) {
-        return new Level0GenericUniqOperator<I, Boolean>(getTarget().execute(FnObject.toSingletonListOf(Types.OBJECT)).execute(FnList.of((Type<T>)Types.OBJECT).any(eval)));
-    }
     
     
 }

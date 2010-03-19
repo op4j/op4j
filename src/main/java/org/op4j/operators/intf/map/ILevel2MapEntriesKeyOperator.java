@@ -60,7 +60,7 @@ public interface ILevel2MapEntriesKeyOperator<I,K,V>
     
     public ILevel1MapEntriesOperator<I,K,V> endOn();
     
-    public <X> ILevel2MapEntriesKeyOperator<I,X,V> asType(final Type<X> type);
+    public <X> ILevel2MapEntriesKeyOperator<I,X,V> castTo(final Type<X> type);
     
 
     public <X> ILevel2MapEntriesKeyOperator<I,X,V> exec(final IFunction<? super K,X> function);

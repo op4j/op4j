@@ -4,7 +4,7 @@
 - FnMathOfX methods are no longer static.
 - org.op4j.target.ExecCtxImpl is now public and was moved to org.op4j.util.ExecCtxImpl.
 - Created org.op4j.util.ValuePair in order to support Binary Operation Functions.
-- Created "reduce" actions for arrays, lists, sets and generic multiple operators.
+- Created "reduce" actions for arrays, lists, and sets.
 - Created "FnReduce" function class with functions ready to be used in "reduce" operations.
 - Created unfold functions and actions for generic unique operators.
 - Added aggregation functions in FnMath for arrays.
@@ -37,10 +37,12 @@
   "ifNotNullAndTrue" and "ifNotNulAndFalse" functions to Fn.
 - Added "whileTrue" and "whileFalse" functions to Fn.
 - Cast methods "asArrayOf", "asListOf", "asMapOf" and "asSetOf" in array, list, map and set
-  operators renamed to "of".
+  operators renamed to "of" and created "castToArrayOf", "castToListOf", "castToMapOf" and
+  "castToSetOf" aliases. "asType" methods renamed to "castTo".
 - Multi generic operators removed.
 - Added "onArrayFor", "onListFor" and "onSetFor" methods to Op in order to build structures 
   from their elements.
+  
   
 
 

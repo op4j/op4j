@@ -19,12 +19,14 @@
  */
 package org.op4j.operators.qualities;
 
-import org.javaruntype.type.Type;
+import org.op4j.functions.IFunction;
+import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
+
 
 
 /**
  * <p>
- * This interface contains methods for casts to list (List<T>).
+ * This interface defines methods for executing "all" and "any" operations.
  * </p>
  * 
  * @since 1.0
@@ -32,29 +34,11 @@ import org.javaruntype.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface CastableToListOperator {
+public interface TotalizableOperator<I,T> {
     
+    
+    public ILevel0GenericUniqOperator<I,Boolean> any(final IFunction<? super T,Boolean> eval);
+    public ILevel0GenericUniqOperator<I,Boolean> all(final IFunction<? super T,Boolean> eval);
 
-    /**
-     * <p>
-     * Casts the operator's target as a list of the specified type.
-     * </p>
-     * 
-     * @param <X> the type of the elements of the list
-     * @param type the type of the elements of the list
-     * @return the resulting casted operator
-     */
-    public <X> Operator of(final Type<X> type);
-
-    /**
-     * <p>
-     * Casts the operator's target as a list of the specified type.
-     * </p>
-     * 
-     * @param <X> the type of the elements of the list
-     * @param type the type of the elements of the list
-     * @return the resulting casted operator
-     */
-    public <X> Operator castToListOf(final Type<X> type);
     
 }

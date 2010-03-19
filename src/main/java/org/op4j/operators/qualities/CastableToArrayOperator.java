@@ -46,4 +46,15 @@ public interface CastableToArrayOperator {
      */
     public <X> Operator of(final Type<X> type);
     
+    /**
+     * <p>
+     * Casts the operator's target as an array of the specified type.
+     * </p>
+     * 
+     * @param <X> the type of the elements of the array
+     * @param type the type of the elements of the array
+     * @return the resulting casted operator
+     */
+    public <X> Operator castToArrayOf(final Type<X> type);
+    
 }

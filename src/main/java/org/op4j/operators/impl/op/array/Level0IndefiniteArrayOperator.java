@@ -90,7 +90,11 @@ public final class Level0IndefiniteArrayOperator<I,T>
     
 
     public <X> Level0ArrayOperator<I,X> of(final Type<X> newType) {
-        return generic().asArrayOf(newType);
+        return generic().castToArrayOf(newType);
+    }
+
+    public <X> Level0ArrayOperator<I,X> castToArrayOf(final Type<X> newType) {
+        return generic().castToArrayOf(newType);
     }
 
 

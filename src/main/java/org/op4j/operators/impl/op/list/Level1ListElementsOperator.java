@@ -51,8 +51,8 @@ public final class Level1ListElementsOperator<I,T> extends AbstractOperator
     }
 
 
-    public <X> Level1ListElementsOperator<I,X> asType(final Type<X> type) {
-        return endFor().generic().asListOf(type).forEach();
+    public <X> Level1ListElementsOperator<I,X> castTo(final Type<X> type) {
+        return endFor().generic().castToListOf(type).forEach();
     }
 
     

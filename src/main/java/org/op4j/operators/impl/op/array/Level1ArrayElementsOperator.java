@@ -54,8 +54,8 @@ public final class Level1ArrayElementsOperator<I,T> extends AbstractOperator
     }
 
 
-    public <X> Level1ArrayElementsOperator<I,X> asType(final Type<X> elementType) {
-        return endFor().generic().asArrayOf(elementType).forEach();
+    public <X> Level1ArrayElementsOperator<I,X> castTo(final Type<X> elementType) {
+        return endFor().generic().castToArrayOf(elementType).forEach();
     }
 
     

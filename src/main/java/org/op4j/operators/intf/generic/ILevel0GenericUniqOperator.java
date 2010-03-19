@@ -37,7 +37,6 @@ import org.op4j.operators.qualities.ReplaceableIfNullOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.UniqOperator;
-import org.op4j.util.ValuePair;
 
 
 
@@ -78,8 +77,14 @@ public interface ILevel0GenericUniqOperator<I,T>
     public <X> ILevel0GenericUniqOperator<I,X> execIfNotNull(final IFunction<? super T,X> function);
 
     public <X> ILevel0GenericUniqOperator<I,X> exec(final IFunction<? super T,X> function);
+
     
-    public <X> ILevel0GenericUniqOperator<I,X> asType(final Type<X> type);
+    
+    public <X> ILevel0GenericUniqOperator<I,X> castTo(final Type<X> type);
+    public <X> ILevel0ArrayOperator<I,X> castToArrayOf(final Type<X> type);
+    public <X> ILevel0ListOperator<I,X> castToListOf(final Type<X> type);
+    public <K,V> ILevel0MapOperator<I,K,V> castToMapOf(final Type<K> keyType, final Type<V> valueType);
+    public <X> ILevel0SetOperator<I,X> castToSetOf(final Type<X> type);
     
 
     
@@ -109,16 +114,6 @@ public interface ILevel0GenericUniqOperator<I,T>
 
     
     
-    public <X> ILevel0ArrayOperator<I,X> asArrayOf(final Type<X> type);
-    public <X> ILevel0ListOperator<I,X> asListOf(final Type<X> type);
-    public <K,V> ILevel0MapOperator<I,K,V> asMapOf(final Type<K> keyType, final Type<V> valueType);
-    public <X> ILevel0SetOperator<I,X> asSetOf(final Type<X> type);
-    
-
-    
-    public ILevel0GenericUniqOperator<I,T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> reductor);
-    public <X> ILevel0GenericUniqOperator<I,X> reduce(final IFunction<? extends ValuePair<? super X,? super T>,X> reductor, final X initialValue);
-    
     
     public ILevel0ArrayOperator<I,T> unfoldArrayOf(final Type<T> type, final IFunction<? super T,? extends T> function);
     public ILevel0ArrayOperator<I,T> unfoldArrayOf(final Type<T> type, final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> whileCondition);
@@ -127,8 +122,5 @@ public interface ILevel0GenericUniqOperator<I,T>
     public ILevel0SetOperator<I,T> unfoldSet(final IFunction<? super T,? extends T> function);
     public ILevel0SetOperator<I,T> unfoldSet(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> whileCondition);
     
-    
-    public ILevel0GenericUniqOperator<I,Boolean> any(final IFunction<? super T,Boolean> eval);
-    public ILevel0GenericUniqOperator<I,Boolean> all(final IFunction<? super T,Boolean> eval);
     
 }

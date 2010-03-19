@@ -72,7 +72,7 @@ public interface ILevel1ArrayElementsOperator<I,T>
     public <X> ILevel1ArrayElementsOperator<I,X> exec(final Type<X> type, final IFunction<? super T,X> function);
     
     
-    public <X> ILevel1ArrayElementsOperator<I,X> asType(final Type<X> type);
+    public <X> ILevel1ArrayElementsOperator<I,X> castTo(final Type<X> type);
 	
     
 }

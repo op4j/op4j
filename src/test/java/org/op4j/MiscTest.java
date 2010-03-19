@@ -506,7 +506,6 @@ watch.start();
         System.out.println(Op.onListFor(1,2,3,4,5,6).toArrayOf(Types.INTEGER).reduce(redFn1, "-->").get());
         
         System.out.println(Op.onListFor(1,2,3,4,5,6).reduce(redFn1, "-->").get());
-        System.out.println(Op.on(1).reduce(redFn1, "-->").get());
         
         
         System.out.println(Arrays.asList(Op.on(2).exec(FnNumber.toBigInteger()).unfoldArrayOf(Types.BIG_INTEGER, FnMath.ofBigInteger().multiplyBy(BigInteger.valueOf(2)), Ognl.asBoolean("#index < 10")).get()));
@@ -745,6 +744,7 @@ watch.start();
         
         
         System.out.println(Arrays.asList(Op.onArrayFor(4,2).get()));
+        
         
     }
     

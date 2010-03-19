@@ -45,7 +45,7 @@ public interface CastableToTypeOperator<T> {
      * @param type the type of targets
      * @return the resulting casted operator
      */
-    public <X> CastableToTypeOperator<X> asType(final Type<X> type);
+    public <X> CastableToTypeOperator<X> castTo(final Type<X> type);
 
     
 }

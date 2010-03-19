@@ -19,12 +19,15 @@
  */
 package org.op4j.operators.qualities;
 
-import org.javaruntype.type.Type;
+import org.op4j.functions.IFunction;
+import org.op4j.operators.intf.generic.ILevel0GenericUniqOperator;
+import org.op4j.util.ValuePair;
+
 
 
 /**
  * <p>
- * This interface contains methods for casts to list (List<T>).
+ * This interface defines methods for reducing structures.
  * </p>
  * 
  * @since 1.0
@@ -32,29 +35,11 @@ import org.javaruntype.type.Type;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface CastableToListOperator {
+public interface ReducibleOperator<I,T> {
     
+    
+    public ILevel0GenericUniqOperator<I,T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> reductor);
+    public <X> ILevel0GenericUniqOperator<I,X> reduce(final IFunction<? extends ValuePair<? super X,? super T>,X> reductor, final X initialValue);
 
-    /**
-     * <p>
-     * Casts the operator's target as a list of the specified type.
-     * </p>
-     * 
-     * @param <X> the type of the elements of the list
-     * @param type the type of the elements of the list
-     * @return the resulting casted operator
-     */
-    public <X> Operator of(final Type<X> type);
-
-    /**
-     * <p>
-     * Casts the operator's target as a list of the specified type.
-     * </p>
-     * 
-     * @param <X> the type of the elements of the list
-     * @param type the type of the elements of the list
-     * @return the resulting casted operator
-     */
-    public <X> Operator castToListOf(final Type<X> type);
     
 }
