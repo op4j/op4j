@@ -45,7 +45,7 @@ public interface ConvertibleToMapOperator<T> {
      * 
      * @return an operator holding the converted object as target.
      */
-    public Operator toMapByAlternateElements();
+    public Operator couple();
  
     
     /**

@@ -113,7 +113,8 @@ public interface ILevel0SetOperator<I,T>
     public <K,V> ILevel0MapOperator<I,K,V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
     public <K,V> ILevel0MapOperator<I,K,Set<V>> toGroupMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
     
-    public ILevel0MapOperator<I,T,T> toMapByAlternateElements();
+    public ILevel0MapOperator<I,T,T> couple();
+    public ILevel0MapOperator<I,T,Set<T>> coupleAndGroup();
     
     public <K> ILevel0MapOperator<I,K,T> zipKeys(final K... keys);
     public <V> ILevel0MapOperator<I,T,V> zipValues(final V... values);

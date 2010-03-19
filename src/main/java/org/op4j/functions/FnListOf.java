@@ -159,8 +159,8 @@ public class FnListOf<T> {
         return new ToGroupMap<K,V,T>(mapBuilder);
     }
     
-    public final Function<List<T>,Map<T,T>> toMapByAlternateElements() {
-        return new ToMapByAlternateElements<T>();
+    public final Function<List<T>,Map<T,T>> couple() {
+        return new Couple<T>();
     }
     
     public final <K> Function<List<T>,Map<K,List<T>>> zipAndGroupKeysBy(final IFunction<? super T, K> eval) {
@@ -183,8 +183,8 @@ public class FnListOf<T> {
     
     
     
-    public final Function<List<T>,Map<T,List<T>>> toMapOfListByAlternateElements() {
-        return new ToMapOfListByAlternateElements<T>();
+    public final Function<List<T>,Map<T,List<T>>> coupleAndGroup() {
+        return new CoupleAndGroup<T>();
     }
     
     
@@ -720,9 +720,9 @@ public class FnListOf<T> {
     
     
     
-    static final class ToMapByAlternateElements<T> extends AbstractNotNullFunction<List<T>,Map<T, T>>  {
+    static final class Couple<T> extends AbstractNotNullFunction<List<T>,Map<T, T>>  {
 
-        ToMapByAlternateElements() {
+        Couple() {
             super();
         }
 
@@ -953,9 +953,9 @@ public class FnListOf<T> {
     
     
     
-    static final class ToMapOfListByAlternateElements<T> extends AbstractNotNullFunction<List<T>,Map<T, List<T>>>  {
+    static final class CoupleAndGroup<T> extends AbstractNotNullFunction<List<T>,Map<T, List<T>>>  {
 
-        ToMapOfListByAlternateElements() {
+        CoupleAndGroup() {
             super();
         }
 

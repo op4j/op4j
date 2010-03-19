@@ -162,10 +162,15 @@ public final class Level0ListOperator<I,T> extends AbstractOperator
     }
 
 
-    public Level0MapOperator<I,T, T> toMapByAlternateElements() {
-        return new Level0MapOperator<I,T, T>(getTarget().execute(FnList.ofObject().toMapByAlternateElements()));
+    public Level0MapOperator<I,T,T> couple() {
+        return new Level0MapOperator<I,T,T>(getTarget().execute(FnList.ofObject().couple()));
     }
 
+    public Level0MapOperator<I,T,List<T>> coupleAndGroup() {
+        return new Level0MapOperator<I,T,List<T>>(getTarget().execute(FnList.ofObject().coupleAndGroup()));
+    }
+
+    
     @SuppressWarnings("unchecked")
     public <K> Level0MapOperator<I,K, T> zipKeysBy(final IFunction<? super T,K> keyEval) {
         return new Level0MapOperator<I,K, T>(getTarget().execute(FnList.ofObject().zipKeysBy((IFunction)keyEval)));

@@ -162,8 +162,12 @@ public final class Level0SetOperator<I,T> extends AbstractOperator
     }
 
 
-    public Level0MapOperator<I,T, T> toMapByAlternateElements() {
-        return new Level0MapOperator<I,T, T>(getTarget().execute(FnSet.ofObject().toMapByAlternateElements()));
+    public Level0MapOperator<I,T,T> couple() {
+        return new Level0MapOperator<I,T,T>(getTarget().execute(FnSet.ofObject().couple()));
+    }
+
+    public Level0MapOperator<I,T,Set<T>> coupleAndGroup() {
+        return new Level0MapOperator<I,T,Set<T>>(getTarget().execute(FnSet.ofObject().coupleAndGroup()));
     }
 
 

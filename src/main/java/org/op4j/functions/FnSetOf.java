@@ -160,8 +160,8 @@ public class FnSetOf<T> {
         return new ToGroupMap<K,V,T>(mapBuilder);
     }
     
-    public final Function<Set<T>,Map<T,T>> toMapByAlternateElements() {
-        return new ToMapByAlternateElements<T>();
+    public final Function<Set<T>,Map<T,T>> couple() {
+        return new Couple<T>();
     }
     
     public final <K> Function<Set<T>,Map<K,Set<T>>> zipAndGroupKeysBy(final IFunction<? super T, K> eval) {
@@ -185,8 +185,8 @@ public class FnSetOf<T> {
     
     
     
-    public final Function<Set<T>,Map<T,Set<T>>> toMapOfSetByAlternateElements() {
-        return new ToMapOfSetByAlternateElements<T>();
+    public final Function<Set<T>,Map<T,Set<T>>> coupleAndGroup() {
+        return new CoupleAndGroup<T>();
     }
     
     
@@ -711,9 +711,9 @@ public class FnSetOf<T> {
     
     
     
-    static final class ToMapByAlternateElements<T> extends AbstractNotNullFunction<Set<T>,Map<T, T>>  {
+    static final class Couple<T> extends AbstractNotNullFunction<Set<T>,Map<T, T>>  {
 
-        ToMapByAlternateElements() {
+        Couple() {
             super();
         }
 
@@ -936,9 +936,9 @@ public class FnSetOf<T> {
     
     
     
-    static final class ToMapOfSetByAlternateElements<T> extends AbstractNotNullFunction<Set<T>,Map<T, Set<T>>>  {
+    static final class CoupleAndGroup<T> extends AbstractNotNullFunction<Set<T>,Map<T, Set<T>>>  {
 
-        ToMapOfSetByAlternateElements() {
+        CoupleAndGroup() {
             super();
         }
 

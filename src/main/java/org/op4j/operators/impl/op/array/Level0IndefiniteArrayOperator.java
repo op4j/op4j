@@ -57,8 +57,8 @@ public final class Level0IndefiniteArrayOperator<I,T>
     }
 
 
-    public Level0MapOperator<I,T, T> toMapByAlternateElements() {
-        return new Level0MapOperator<I,T, T>(getTarget().execute(FnArray.ofObject().toMapByAlternateElements()));
+    public Level0MapOperator<I,T, T> couple() {
+        return new Level0MapOperator<I,T, T>(getTarget().execute(FnArray.ofObject().couple()));
     }
 
     @SuppressWarnings("unchecked")

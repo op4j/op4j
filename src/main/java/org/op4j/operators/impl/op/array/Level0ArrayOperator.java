@@ -160,10 +160,16 @@ public final class Level0ArrayOperator<I,T>
     }
 
 
-    public Level0MapOperator<I,T, T> toMapByAlternateElements() {
-        return new Level0MapOperator<I,T, T>(getTarget().execute(FnArray.of(this.type).toMapByAlternateElements()));
+    public Level0MapOperator<I,T, T> couple() {
+        return new Level0MapOperator<I,T, T>(getTarget().execute(FnArray.of(this.type).couple()));
     }
 
+    public Level0MapOperator<I,T,T[]> coupleAndGroup() {
+        return new Level0MapOperator<I,T,T[]>(getTarget().execute(FnArray.of(this.type).coupleAndGroup()));
+    }
+
+    
+    
     public <K> Level0MapOperator<I,K,T> zipKeysBy(final IFunction<? super T,K> keyEval) {
         return new Level0MapOperator<I,K,T>(getTarget().execute(FnArray.of(this.type).zipKeysBy(keyEval)));
     }

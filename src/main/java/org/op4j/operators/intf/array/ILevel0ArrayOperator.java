@@ -128,7 +128,8 @@ public interface ILevel0ArrayOperator<I,T>
 
     
     
-    public ILevel0MapOperator<I,T,T> toMapByAlternateElements();
+    public ILevel0MapOperator<I,T,T> couple();
+    public ILevel0MapOperator<I,T,T[]> coupleAndGroup();
     
     
     public ILevel0GenericUniqOperator<I,T[]> generic();

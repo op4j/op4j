@@ -51,6 +51,19 @@ public interface ConvertibleToMapOfSetOperator<T> {
      * @return an operator holding the converted object as target.
      */
     public <K,V> Operator toGroupMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
+
+    
+    
+    /**
+     * <p>
+     * Converts the target object to a map, by using the even elements 
+     * (starting at 0) as keys, and the odd elements as values. Values with
+     * the same key will be grouped into sets.
+     * </p>
+     * 
+     * @return an operator holding the converted object as target.
+     */
+    public Operator coupleAndGroup();
     
     
     

@@ -165,8 +165,8 @@ public class FnArrayOf<T> {
         return new ToGroupMap<K,V,T>(valueType, mapBuilder);
     }
     
-    public final Function<T[],Map<T,T>> toMapByAlternateElements() {
-        return new ToMapByAlternateElements<T>();
+    public final Function<T[],Map<T,T>> couple() {
+        return new Couple<T>();
     }
     
     public final <K> Function<T[],Map<K,T[]>> zipAndGroupKeysBy(final IFunction<? super T, K> eval) {
@@ -188,8 +188,8 @@ public class FnArrayOf<T> {
 
     
     
-    public final Function<T[],Map<T,T[]>> toMapOfArrayByAlternateElements() {
-        return new ToMapOfArrayByAlternateElements<T>(this.type);
+    public final Function<T[],Map<T,T[]>> coupleAndGroup() {
+        return new CoupleAndGroup<T>(this.type);
     }
     
     
@@ -1078,9 +1078,9 @@ public class FnArrayOf<T> {
     
     
     
-    static final class ToMapByAlternateElements<T> extends AbstractNotNullFunction<T[],Map<T,T>> {
+    static final class Couple<T> extends AbstractNotNullFunction<T[],Map<T,T>> {
 
-        ToMapByAlternateElements() {
+        Couple() {
             super();
         }
 
@@ -1231,11 +1231,11 @@ public class FnArrayOf<T> {
     
     
     
-    static final class ToMapOfArrayByAlternateElements<T> extends AbstractNotNullFunction<T[],Map<T,T[]>> {
+    static final class CoupleAndGroup<T> extends AbstractNotNullFunction<T[],Map<T,T[]>> {
 
         private final Type<T> type;
         
-        ToMapOfArrayByAlternateElements(final Type<T> type) {
+        CoupleAndGroup(final Type<T> type) {
             super();
             Validate.notNull(type, "A type representing the array elements must be specified");
             this.type = type;

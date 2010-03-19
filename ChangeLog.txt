@@ -43,6 +43,7 @@
 - Added "onArrayFor", "onListFor" and "onSetFor" methods to Op in order to build structures 
   from their elements.
 - Renamed "toMapByKeyEval" to "zipKeysBy", and added "zipValuesBy", "zipKeys" and "zipValues".
+- Renamed "toMapByAlternateElements" to "couple", and added "coupleAndGroup".
   
   
 

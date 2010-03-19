@@ -195,7 +195,7 @@ watch.start();
         
 //        System.out.println(printArray(Op.buildArrayOfArray(Types.STRING).addAll(Op.buildArray(Types.STRING).addAll("a","b").get()).addAll(Op.buildArray(Types.STRING).addAll("1","2","3").get()).get()));
 //        System.out.println(Op.buildMap(Types.INTEGER,Types.STRING).put(12,"hello!").get());
-        System.out.println(Op.onListFor("a",1,"b",3).toMapByAlternateElements().get());
+        System.out.println(Op.onListFor("a",1,"b",3).couple().get());
         System.out.println(Op.onListFor("hello", "goodbye").zipKeysBy(Ognl.asInteger("length()")).get());
         
         System.out.println(Op.onListFor("hello", "goodbye", "adios", "ciao", "hola").sort().get());
