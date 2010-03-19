@@ -79,9 +79,17 @@ public final class Level0IndefiniteArrayOperator<I,T>
         return new Level0MapOperator<I,T,V>(getTarget().execute(FnArray.ofObject().zipValues(values)));
     }
 
+    
+
+
     @SuppressWarnings("unchecked")
-    public <K, V> Level0MapOperator<I,K, V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
-        return new Level0MapOperator<I,K, V>(getTarget().execute(FnArray.ofObject().toMap((IFunction)mapBuilder)));
+    public <K, V> Level0MapOperator<I,K,V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+        return new Level0MapOperator<I,K,V>(getTarget().execute(FnArray.ofObject().toMap((IFunction)mapBuilder)));
+    }
+
+    @SuppressWarnings("unchecked")
+    public <K, V> Level0MapOperator<I,K,V[]> toGroupMapOf(final Type<V> valueType, final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+        return new Level0MapOperator<I,K,V[]>(getTarget().execute(FnArray.ofObject().toGroupMapOf(valueType, (IFunction)mapBuilder)));
     }
 
     public Level0SetOperator<I,T> toSet() {

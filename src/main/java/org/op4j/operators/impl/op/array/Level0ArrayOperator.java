@@ -180,8 +180,33 @@ public final class Level0ArrayOperator<I,T>
         return new Level0MapOperator<I,T,V>(getTarget().execute(FnArray.of(this.type).zipValues(values)));
     }
 
+
+    
+    public <K> Level0MapOperator<I,K,T[]> zipAndGroupKeysBy(final IFunction<? super T,K> keyEval) {
+        return new Level0MapOperator<I,K,T[]>(getTarget().execute(FnArray.of(this.type).zipAndGroupKeysBy(keyEval)));
+    }
+
+    public <V> Level0MapOperator<I,T,V[]> zipAndGroupValuesBy(final Type<V> valueType, final IFunction<? super T,V> valueEval) {
+        return new Level0MapOperator<I,T,V[]>(getTarget().execute(FnArray.of(this.type).zipAndGroupValuesBy(valueType, valueEval)));
+    }
+    
+    public <K> Level0MapOperator<I,K,T[]> zipAndGroupKeys(final K...keys) {
+        return new Level0MapOperator<I,K,T[]>(getTarget().execute(FnArray.of(this.type).zipAndGroupKeys(keys)));
+    }
+
+    public <V> Level0MapOperator<I,T,V[]> zipAndGroupValues(final Type<V> valueType, final V... values) {
+        return new Level0MapOperator<I,T,V[]>(getTarget().execute(FnArray.of(this.type).zipAndGroupValues(valueType, values)));
+    }
+    
+    
+    
+    
     public <K, V> Level0MapOperator<I,K, V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
         return new Level0MapOperator<I,K, V>(getTarget().execute(FnArray.of(this.type).toMap(mapBuilder)));
+    }
+
+    public <K, V> Level0MapOperator<I,K, V[]> toGroupMapOf(final Type<V> valueType, final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+        return new Level0MapOperator<I,K, V[]>(getTarget().execute(FnArray.of(this.type).toGroupMapOf(valueType, mapBuilder)));
     }
 
     public Level0SetOperator<I,T> toSet() {

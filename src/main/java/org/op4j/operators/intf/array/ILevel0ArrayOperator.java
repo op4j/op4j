@@ -31,6 +31,7 @@ import org.op4j.operators.intf.map.ILevel0MapOperator;
 import org.op4j.operators.intf.set.ILevel0SetOperator;
 import org.op4j.operators.qualities.CastableToArrayOperator;
 import org.op4j.operators.qualities.ConvertibleToListOperator;
+import org.op4j.operators.qualities.ConvertibleToMapOfArrayOperator;
 import org.op4j.operators.qualities.ConvertibleToMapOperator;
 import org.op4j.operators.qualities.ConvertibleToSetOperator;
 import org.op4j.operators.qualities.DistinguishableOperator;
@@ -68,6 +69,7 @@ public interface ILevel0ArrayOperator<I,T>
 		        ConvertibleToListOperator,
 		        ConvertibleToSetOperator,
 		        ConvertibleToMapOperator<T>,
+                ConvertibleToMapOfArrayOperator<T>,
                 ReducibleOperator<I,T>,
                 TotalizableOperator<I,T> {
 
@@ -110,13 +112,21 @@ public interface ILevel0ArrayOperator<I,T>
     
     public ILevel0ListOperator<I,T> toList();
     public ILevel0SetOperator<I,T> toSet();
+    
     public <K,V> ILevel0MapOperator<I,K,V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
+    public <K,V> ILevel0MapOperator<I,K,V[]> toGroupMapOf(final Type<V> valueType, final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
 
     public <K> ILevel0MapOperator<I,K,T> zipKeys(final K... keys);
     public <V> ILevel0MapOperator<I,T,V> zipValues(final V... values);
     public <K> ILevel0MapOperator<I,K,T> zipKeysBy(final IFunction<? super T,K> keyEval);
     public <V> ILevel0MapOperator<I,T,V> zipValuesBy(final IFunction<? super T,V> valueEval);
 
+    public <K> ILevel0MapOperator<I,K,T[]> zipAndGroupKeys(final K... keys);
+    public <V> ILevel0MapOperator<I,T,V[]> zipAndGroupValues(final Type<V> valueType, final V... values);
+    public <K> ILevel0MapOperator<I,K,T[]> zipAndGroupKeysBy(final IFunction<? super T,K> keyEval);
+    public <V> ILevel0MapOperator<I,T,V[]> zipAndGroupValuesBy(final Type<V> valueType, final IFunction<? super T,V> valueEval);
+
+    
     
     public ILevel0MapOperator<I,T,T> toMapByAlternateElements();
     

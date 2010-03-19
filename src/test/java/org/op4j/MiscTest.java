@@ -253,7 +253,7 @@ watch.start();
         System.out.println(Op.on(Op.onListFor("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").toArrayOf(Types.STRING).get()).exec(FnArray.of(Types.STRING).zipKeysBy(Ognl.asInteger("length()"))).get());
 
         final Map<Integer,String[]> greetingsByLength = 
-            Op.on(Op.onArrayFor("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").get()).exec(FnArray.of(Types.STRING).toMapOfArrayByKeyEval(Ognl.asInteger("length()"))).get();
+            Op.on(Op.onArrayFor("hello", "hola", "ciao", "ola", "olá", "hallô", "hallo", "hej").get()).exec(FnArray.of(Types.STRING).zipAndGroupKeysBy(Ognl.asInteger("length()"))).get();
         System.out.println("*** MAP: ");
         for (Map.Entry<Integer,String[]> entry : greetingsByLength.entrySet()) {
             System.out.println(entry.getKey() + " : " + Arrays.asList(entry.getValue()));
@@ -747,6 +747,19 @@ watch.start();
         
         
         System.out.println(Op.on("hello").zipKey(98).get());
+
+        
+        System.out.println(
+                Op.onListFor("en", "en", "es", "gl", "fr").
+                zipAndGroupValues("hello", "goodbye", "hola", "ola", "allô").get());
+        
+        System.out.println(
+                Op.onListFor("hello", "goodbye", "hola", "ola", "allô").
+                zipAndGroupKeys("en", "en", "es", "gl", "fr").get());
+        
+        System.out.println(
+                Op.onArrayFor("hello", "goodbye", "hola", "ola", "allô").
+                zipAndGroupKeys("en", "en", "es", "gl", "fr").get());
         
     }
     

@@ -153,44 +153,37 @@ public class FnSetOf<T> {
     }
     
     public final <K,V> Function<Set<T>,Map<K,V>> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
-        return new ToMapByMapBuilder<K,V,T>(mapBuilder);
+        return new ToMap<K,V,T>(mapBuilder);
+    }
+    
+    public final <K,V> Function<Set<T>,Map<K,Set<V>>> toGroupMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+        return new ToGroupMap<K,V,T>(mapBuilder);
     }
     
     public final Function<Set<T>,Map<T,T>> toMapByAlternateElements() {
         return new ToMapByAlternateElements<T>();
     }
     
-    public final <K> Function<Set<T>,Map<K,T[]>> toMapOfArrayByKeyEval(final IFunction<? super T, K> eval) {
-        return new ToMapOfArrayByKeyEval<K,T>(this.type, eval);
+    public final <K> Function<Set<T>,Map<K,Set<T>>> zipAndGroupKeysBy(final IFunction<? super T, K> eval) {
+        return new ZipAndGroupKeysBy<K,T>(eval);
     }
     
-    public final <K,V> Function<Set<T>,Map<K,V[]>> toMapOfArrayOf(final Type<V> valueType, final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
-        return new ToMapOfArrayByMapBuilder<K,V,T>(valueType, mapBuilder);
+    public final <V> Function<Set<T>,Map<T,Set<V>>> zipAndGroupValuesBy(final IFunction<? super T, V> eval) {
+        return new ZipAndGroupValuesBy<T,V>(eval);
     }
     
-    public final Function<Set<T>,Map<T,T[]>> toMapOfArrayByAlternateElements() {
-        return new ToMapOfArrayByAlternateElements<T>(this.type);
+    public final <K> Function<Set<T>,Map<K,Set<T>>> zipAndGroupKeys(final K... keys) {
+        return new ZipAndGroupKeys<K,T>(VarArgsUtil.asRequiredObjectList(keys));
     }
     
-    public final <K> Function<Set<T>,Map<K,List<T>>> toMapOfListByKeyEval(final IFunction<? super T, K> eval) {
-        return new ToMapOfListByKeyEval<K,T>(eval);
+    public final <V> Function<Set<T>,Map<T,Set<V>>> zipAndGroupValues(final V... values) {
+        return new ZipAndGroupValues<T,V>(VarArgsUtil.asRequiredObjectList(values));
     }
     
-    public final <K,V> Function<Set<T>,Map<K,List<V>>> toMapOfList(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
-        return new ToMapOfListByMapBuilder<K,V,T>(mapBuilder);
-    }
     
-    public final Function<Set<T>,Map<T,List<T>>> toMapOfListByAlternateElements() {
-        return new ToMapOfListByAlternateElements<T>();
-    }
     
-    public final <K> Function<Set<T>,Map<K,Set<T>>> toMapOfSetByKeyEval(final IFunction<? super T, K> eval) {
-        return new ToMapOfSetByKeyEval<K,T>(eval);
-    }
     
-    public final <K,V> Function<Set<T>,Map<K,Set<V>>> toMapOfSet(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
-        return new ToMapOfSetByMapBuilder<K,V,T>(mapBuilder);
-    }
+    
     
     public final Function<Set<T>,Map<T,Set<T>>> toMapOfSetByAlternateElements() {
         return new ToMapOfSetByAlternateElements<T>();
@@ -535,7 +528,7 @@ public class FnSetOf<T> {
     
     
     
-    static final class ToArray<T> extends AbstractNullAsNullFunction<Set<T>,T[]>  {
+    static final class ToArray<T> extends AbstractNotNullFunction<Set<T>,T[]>  {
 
         private final Type<T> type;
         
@@ -547,7 +540,7 @@ public class FnSetOf<T> {
 
         @Override
         @SuppressWarnings("unchecked")
-        public T[] nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
+        public T[] notNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
             final List<T> result = new ArrayList<T>(object);
             final T[] array = (T[]) Array.newInstance(this.type.getRawClass(), result.size());
             return result.toArray(array);
@@ -557,14 +550,14 @@ public class FnSetOf<T> {
     
     
     
-    static final class ToList<T> extends AbstractNullAsNullFunction<Set<T>,List<T>> {
+    static final class ToList<T> extends AbstractNotNullFunction<Set<T>,List<T>> {
 
         ToList() {
             super();
         }
 
         @Override
-        protected List<T> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
+        protected List<T> notNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
             return new ArrayList<T>(object);
         }
         
@@ -688,18 +681,18 @@ public class FnSetOf<T> {
     
     
     
-    static final class ToMapByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<Set<T>,Map<K, V>>  {
+    static final class ToMap<K, V, T> extends AbstractNotNullFunction<Set<T>,Map<K, V>>  {
 
         private final IFunction<? super T,Map.Entry<K,V>> mapBuilder;
         
-        ToMapByMapBuilder(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+        ToMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
             super();
             Validate.notNull(mapBuilder, "A map builder must be specified");
             this.mapBuilder = mapBuilder;
         }
 
         @Override
-        protected Map<K, V> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
+        protected Map<K, V> notNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
             final Map<K, V> result = new LinkedHashMap<K, V>();
             for (final T element: object) {
                 final Map.Entry<K,V> entry = this.mapBuilder.execute(element, ctx);
@@ -718,14 +711,14 @@ public class FnSetOf<T> {
     
     
     
-    static final class ToMapByAlternateElements<T> extends AbstractNullAsNullFunction<Set<T>,Map<T, T>>  {
+    static final class ToMapByAlternateElements<T> extends AbstractNotNullFunction<Set<T>,Map<T, T>>  {
 
         ToMapByAlternateElements() {
             super();
         }
 
         @Override
-        protected Map<T, T> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
+        protected Map<T, T> notNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
             if (object.size() % 2 != 0) {
                 throw new IllegalArgumentException("Cannot create a map from objects: the number of objects must be even.");
             }
@@ -755,240 +748,24 @@ public class FnSetOf<T> {
     
     
     
-    static final class ToMapOfArrayByKeyEval<K, T> extends AbstractNullAsNullFunction<Set<T>,Map<K, T[]>>  {
-
-        private final IFunction<? super T,K>  eval;
-        private final Type<T> type;
-        
-        ToMapOfArrayByKeyEval(final Type<T> type, final IFunction<? super T,K>  eval) {
-            super();
-            Validate.notNull(type, "A type representing the collection elements must be specified");
-            Validate.notNull(eval, "An evaluator must be specified");
-            this.type = type;
-            this.eval = eval;
-        }
-
-        @Override
-        protected Map<K, T[]> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
-            
-            final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
-            for (final T element: object) {
-                final K key = this.eval.execute(element, ctx);
-                List<T> value = result.get(key);
-                if (value == null) {
-                    value = new ArrayList<T>();
-                    result.put(key, value);
-                }
-                value.add(element);
-            }
-            
-            return createFromMapOfList(this.type, result);
-
-        }
-        
-    }
-
-    
-    
-    
-    
-    static final class ToMapOfArrayByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<Set<T>,Map<K, V[]>>  {
-
-        private final IFunction<? super T,Map.Entry<K,V>> mapBuilder;
-        private final Type<V> type;
-        
-        ToMapOfArrayByMapBuilder(final Type<V> type, final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
-            super();
-            Validate.notNull(type, "A type representing the collection elements must be specified");
-            Validate.notNull(mapBuilder, "A map builder must be specified");
-            this.type = type;
-            this.mapBuilder = mapBuilder;
-        }
-
-        @Override
-        protected Map<K, V[]> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
-            
-            final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
-            for (final T element: object) {
-                final Map.Entry<K,V> entry = this.mapBuilder.execute(element, ctx);
-                if (entry == null) {
-                    throw new ExecutionException(
-                            "Map builder returned null, but a map builder should never return null");
-                }
-                final K key = entry.getKey();
-                List<V> value = result.get(key);
-                if (value == null) {
-                    value = new ArrayList<V>();
-                    result.put(key, value);
-                }
-                value.add(entry.getValue());
-            }
-            
-            return createFromMapOfList(this.type, result);
-            
-        }
-        
-    }
-
-    
-    
-    
-    
-    static final class ToMapOfArrayByAlternateElements<T> extends AbstractNullAsNullFunction<Set<T>,Map<T, T[]>>  {
-
-        private final Type<T> type;
-        
-        ToMapOfArrayByAlternateElements(final Type<T> type) {
-            super();
-            Validate.notNull(type, "A type representing the collection elements must be specified");
-            this.type = type;
-        }
-
-        @Override
-        protected Map<T, T[]> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
-            
-            if (object.size() % 2 != 0) {
-                throw new IllegalArgumentException("Cannot create a map from objects: the number of objects must be even.");
-            }
-            
-            final List<T> objectAsList = new ArrayList<T>(object);
-            final Map<T, List<T>> result = new LinkedHashMap<T, List<T>>();
-            for (int i = 0, n = objectAsList.size() - 1; i < n; i += 2) {
-                final T key = objectAsList.get(i);
-                List<T> value = result.get(key);
-                if (value == null) {
-                    value = new ArrayList<T>();
-                    result.put(key, value);
-                }
-                value.add(objectAsList.get(i + 1));
-            }
-            
-            return createFromMapOfList(this.type, result);
-            
-        }
-        
-    }
     
     
     
     
     
     
-    
-    
-    static final class ToMapOfListByKeyEval<K, T> extends AbstractNullAsNullFunction<Set<T>,Map<K, List<T>>>  {
+    static final class ZipAndGroupKeysBy<K, T> extends AbstractNotNullFunction<Set<T>,Map<K, Set<T>>>  {
 
         private final IFunction<? super T,K>  eval;
         
-        ToMapOfListByKeyEval(final IFunction<? super T,K>  eval) {
+        ZipAndGroupKeysBy(final IFunction<? super T,K>  eval) {
             super();
             Validate.notNull(eval, "An evaluator must be specified");
             this.eval = eval;
         }
 
         @Override
-        protected Map<K, List<T>> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
-            final Map<K, List<T>> result = new LinkedHashMap<K, List<T>>();
-            for (final T element: object) {
-                final K key = this.eval.execute(element, ctx);
-                List<T> value = result.get(key);
-                if (value == null) {
-                    value = new ArrayList<T>();
-                    result.put(key, value);
-                }
-                value.add(element);
-            }
-            return result;
-        }
-        
-    }
-
-    
-    
-    
-    
-    static final class ToMapOfListByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<Set<T>,Map<K, List<V>>>  {
-
-        private final IFunction<? super T,Map.Entry<K,V>> mapBuilder;
-        
-        ToMapOfListByMapBuilder(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
-            super();
-            Validate.notNull(mapBuilder, "A map builder must be specified");
-            this.mapBuilder = mapBuilder;
-        }
-
-        @Override
-        protected Map<K, List<V>> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
-            final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
-            for (final T element: object) {
-                final Map.Entry<K,V> entry = this.mapBuilder.execute(element, ctx);
-                if (entry == null) {
-                    throw new ExecutionException(
-                            "Map builder returned null, but a map builder should never return null");
-                }
-                final K key = entry.getKey();
-                List<V> value = result.get(key);
-                if (value == null) {
-                    value = new ArrayList<V>();
-                    result.put(key, value);
-                }
-                value.add(entry.getValue());
-            }
-            return result;
-        }
-        
-    }
-
-    
-    
-    
-    
-    static final class ToMapOfListByAlternateElements<T> extends AbstractNullAsNullFunction<Set<T>,Map<T, List<T>>>  {
-
-        ToMapOfListByAlternateElements() {
-            super();
-        }
-
-        @Override
-        protected Map<T, List<T>> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
-            if (object.size() % 2 != 0) {
-                throw new IllegalArgumentException("Cannot create a map from objects: the number of objects must be even.");
-            }
-            final List<T> objectAsList = new ArrayList<T>(object);
-            final Map<T, List<T>> result = new LinkedHashMap<T, List<T>>();
-            for (int i = 0, n = objectAsList.size() - 1; i < n; i += 2) {
-                final T key = objectAsList.get(i);
-                List<T> value = result.get(key);
-                if (value == null) {
-                    value = new ArrayList<T>();
-                    result.put(key, value);
-                }
-                value.add(objectAsList.get(i + 1));
-            }
-            return result;
-        }
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    static final class ToMapOfSetByKeyEval<K, T> extends AbstractNullAsNullFunction<Set<T>,Map<K, Set<T>>>  {
-
-        private final IFunction<? super T,K>  eval;
-        
-        ToMapOfSetByKeyEval(final IFunction<? super T,K>  eval) {
-            super();
-            Validate.notNull(eval, "An evaluator must be specified");
-            this.eval = eval;
-        }
-
-        @Override
-        protected Map<K, Set<T>> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
+        protected Map<K, Set<T>> notNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
             final Map<K, Set<T>> result = new LinkedHashMap<K, Set<T>>();
             for (final T element: object) {
                 final K key = this.eval.execute(element, ctx);
@@ -1006,20 +783,135 @@ public class FnSetOf<T> {
 
     
     
+    static final class ZipAndGroupValuesBy<T, V> extends AbstractNotNullFunction<Set<T>,Map<T,Set<V>>> {
+
+        private final IFunction<? super T,V>  eval;
+        
+        ZipAndGroupValuesBy(final IFunction<? super T,V>  eval) {
+            super();
+            Validate.notNull(eval, "An evaluator must be specified");
+            this.eval = eval;
+        }
+
+        @Override
+        protected Map<T,Set<V>> notNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
+            
+            final Map<T, Set<V>> result = new LinkedHashMap<T, Set<V>>();
+            for (final T element: object) {
+                final V valueElement = this.eval.execute(element, ctx);
+                Set<V> value = result.get(element);
+                if (value == null) {
+                    value = new LinkedHashSet<V>();
+                    result.put(element, value);
+                }
+                value.add(valueElement);
+            }
+            
+            return result;
+            
+        }
+        
+    }
+
+    
+
     
     
-    static final class ToMapOfSetByMapBuilder<K, V, T> extends AbstractNullAsNullFunction<Set<T>,Map<K, Set<V>>>  {
+    
+    
+    
+    
+    static final class ZipAndGroupKeys<K, T> extends AbstractNotNullFunction<Set<T>,Map<K, Set<T>>>  {
+
+        private final List<K> keys;
+        
+        ZipAndGroupKeys(final List<K> keys) {
+            super();
+            Validate.notNull(keys, "Keys must be specified");
+            this.keys = keys;
+        }
+
+        @Override
+        protected Map<K, Set<T>> notNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
+            
+            if (object.size() != this.keys.size()) {
+                throw new IllegalArgumentException(
+                        "Incorrect number of keys specified: should be " + object.size() + 
+                        " but are " + this.keys.size());
+            }
+            final Map<K, Set<T>> result = new LinkedHashMap<K, Set<T>>();
+            int index = 0;
+            for (final T element: object) {
+                final K key = this.keys.get(index);
+                Set<T> value = result.get(key);
+                if (value == null) {
+                    value = new LinkedHashSet<T>();
+                    result.put(key, value);
+                }
+                value.add(element);
+                index++;
+            }
+            return result;
+            
+        }
+        
+    }
+
+    
+    
+    static final class ZipAndGroupValues<T, V> extends AbstractNotNullFunction<Set<T>,Map<T,Set<V>>> {
+
+        private final List<V> values;
+        
+        ZipAndGroupValues(final List<V> values) {
+            super();
+            Validate.notNull(values, "Values must be specified");
+            this.values = values;
+        }
+
+        @Override
+        protected Map<T,Set<V>> notNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
+            
+            if (object.size() != this.values.size()) {
+                throw new IllegalArgumentException(
+                        "Incorrect number of values specified: should be " + object.size() + 
+                        " but are " + this.values.size());
+            }
+            final Map<T, Set<V>> result = new LinkedHashMap<T, Set<V>>();
+            int index = 0;
+            for (final T element: object) {
+                final V valueElement = this.values.get(index);
+                Set<V> value = result.get(element);
+                if (value == null) {
+                    value = new LinkedHashSet<V>();
+                    result.put(element, value);
+                }
+                value.add(valueElement);
+                index++;
+            }
+            
+            return result;
+            
+        }
+        
+    }
+
+    
+    
+    
+    
+    static final class ToGroupMap<K, V, T> extends AbstractNotNullFunction<Set<T>,Map<K, Set<V>>>  {
 
         private final IFunction<? super T,Map.Entry<K,V>> mapBuilder;
         
-        ToMapOfSetByMapBuilder(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+        ToGroupMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
             super();
             Validate.notNull(mapBuilder, "A map builder must be specified");
             this.mapBuilder = mapBuilder;
         }
 
         @Override
-        protected Map<K, Set<V>> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
+        protected Map<K, Set<V>> notNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
             final Map<K, Set<V>> result = new LinkedHashMap<K, Set<V>>();
             for (final T element: object) {
                 final Map.Entry<K,V> entry = this.mapBuilder.execute(element, ctx);
@@ -1044,14 +936,14 @@ public class FnSetOf<T> {
     
     
     
-    static final class ToMapOfSetByAlternateElements<T> extends AbstractNullAsNullFunction<Set<T>,Map<T, Set<T>>>  {
+    static final class ToMapOfSetByAlternateElements<T> extends AbstractNotNullFunction<Set<T>,Map<T, Set<T>>>  {
 
         ToMapOfSetByAlternateElements() {
             super();
         }
 
         @Override
-        protected Map<T, Set<T>> nullAsNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
+        protected Map<T, Set<T>> notNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
             if (object.size() % 2 != 0) {
                 throw new IllegalArgumentException("Cannot create a map from objects: the number of objects must be even.");
             }

@@ -33,6 +33,7 @@ import org.op4j.operators.intf.map.ILevel0MapOperator;
 import org.op4j.operators.qualities.CastableToSetOperator;
 import org.op4j.operators.qualities.ConvertibleToArrayOperator;
 import org.op4j.operators.qualities.ConvertibleToListOperator;
+import org.op4j.operators.qualities.ConvertibleToMapOfSetOperator;
 import org.op4j.operators.qualities.ConvertibleToMapOperator;
 import org.op4j.operators.qualities.ExecutableSetOperator;
 import org.op4j.operators.qualities.GenerizableOperator;
@@ -67,6 +68,7 @@ public interface ILevel0SetOperator<I,T>
                 ConvertibleToArrayOperator<T>,
 		        ConvertibleToListOperator,
                 ConvertibleToMapOperator<T>,
+                ConvertibleToMapOfSetOperator<T>,
                 ReducibleOperator<I,T>,
                 TotalizableOperator<I,T> {
 
@@ -107,7 +109,9 @@ public interface ILevel0SetOperator<I,T>
     
     public ILevel0ArrayOperator<I,T> toArrayOf(final Type<T> type);
     public ILevel0ListOperator<I,T> toList();
+    
     public <K,V> ILevel0MapOperator<I,K,V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
+    public <K,V> ILevel0MapOperator<I,K,Set<V>> toGroupMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
     
     public ILevel0MapOperator<I,T,T> toMapByAlternateElements();
     
@@ -115,6 +119,11 @@ public interface ILevel0SetOperator<I,T>
     public <V> ILevel0MapOperator<I,T,V> zipValues(final V... values);
     public <K> ILevel0MapOperator<I,K,T> zipKeysBy(final IFunction<? super T,K> keyEval);
     public <V> ILevel0MapOperator<I,T,V> zipValuesBy(final IFunction<? super T,V> valueEval);
+
+    public <K> ILevel0MapOperator<I,K,Set<T>> zipAndGroupKeys(final K... keys);
+    public <V> ILevel0MapOperator<I,T,Set<V>> zipAndGroupValues(final V... values);
+    public <K> ILevel0MapOperator<I,K,Set<T>> zipAndGroupKeysBy(final IFunction<? super T,K> keyEval);
+    public <V> ILevel0MapOperator<I,T,Set<V>> zipAndGroupValuesBy(final IFunction<? super T,V> valueEval);
     
     
     public ILevel0GenericUniqOperator<I,Set<T>> generic();

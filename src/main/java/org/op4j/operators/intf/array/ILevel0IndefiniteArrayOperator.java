@@ -53,11 +53,15 @@ public interface ILevel0IndefiniteArrayOperator<I,T>
 
     public ILevel0ListOperator<I,T> toList();
     public ILevel0SetOperator<I,T> toSet();
+    
     public <K,V> ILevel0MapOperator<I,K,V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
+    public <K,V> ILevel0MapOperator<I,K,V[]> toGroupMapOf(final Type<V> valueType, final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
 
     
     public ILevel0MapOperator<I,T,T> toMapByAlternateElements();
 
+    public <K> ILevel0MapOperator<I,K,T> zipKeys(final K... keys);
+    public <V> ILevel0MapOperator<I,T,V> zipValues(final V... values);
     public <K> ILevel0MapOperator<I,K,T> zipKeysBy(final IFunction<? super T,K> keyEval);
     public <V> ILevel0MapOperator<I,T,V> zipValuesBy(final IFunction<? super T,V> valueEval);
     

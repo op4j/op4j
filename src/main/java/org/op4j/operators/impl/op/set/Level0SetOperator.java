@@ -185,10 +185,34 @@ public final class Level0SetOperator<I,T> extends AbstractOperator
         return new Level0MapOperator<I,T,V>(getTarget().execute(FnSet.ofObject().zipValues(values)));
     }
 
+    
+    @SuppressWarnings("unchecked")
+    public <K> Level0MapOperator<I,K,Set<T>> zipAndGroupKeysBy(final IFunction<? super T,K> keyEval) {
+        return new Level0MapOperator<I,K,Set<T>>(getTarget().execute(FnSet.ofObject().zipAndGroupKeysBy((IFunction)keyEval)));
+    }
 
     @SuppressWarnings("unchecked")
-    public <K, V> Level0MapOperator<I,K, V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
-        return new Level0MapOperator<I,K, V>(getTarget().execute(FnSet.ofObject().toMap((IFunction)mapBuilder)));
+    public <V> Level0MapOperator<I,T,Set<V>> zipAndGroupValuesBy(final IFunction<? super T,V> valueEval) {
+        return new Level0MapOperator<I,T,Set<V>>(getTarget().execute(FnSet.ofObject().zipAndGroupValuesBy((IFunction)valueEval)));
+    }
+    
+    public <K> Level0MapOperator<I,K,Set<T>> zipAndGroupKeys(final K... keys) {
+        return new Level0MapOperator<I,K,Set<T>>(getTarget().execute(FnSet.ofObject().zipAndGroupKeys(keys)));
+    }
+
+    public <V> Level0MapOperator<I,T,Set<V>> zipAndGroupValues(final V... values) {
+        return new Level0MapOperator<I,T,Set<V>>(getTarget().execute(FnSet.ofObject().zipAndGroupValues(values)));
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public <K, V> Level0MapOperator<I,K,V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+        return new Level0MapOperator<I,K,V>(getTarget().execute(FnSet.ofObject().toMap((IFunction)mapBuilder)));
+    }
+
+    @SuppressWarnings("unchecked")
+    public <K, V> Level0MapOperator<I,K,Set<V>> toGroupMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
+        return new Level0MapOperator<I,K,Set<V>>(getTarget().execute(FnSet.ofObject().toGroupMap((IFunction)mapBuilder)));
     }
 
 
