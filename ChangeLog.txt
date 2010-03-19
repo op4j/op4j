@@ -42,6 +42,7 @@
 - Multi generic operators removed.
 - Added "onArrayFor", "onListFor" and "onSetFor" methods to Op in order to build structures 
   from their elements.
+- Renamed "toMapByKeyEval" to "zipKeysBy", and added "zipValuesBy", "zipKeys" and "zipValues".
   
   
 

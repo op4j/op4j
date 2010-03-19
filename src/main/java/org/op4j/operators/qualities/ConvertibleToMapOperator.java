@@ -63,7 +63,54 @@ public interface ConvertibleToMapOperator<T> {
      * @param keyEval the evaluator used for obtaining the keys
      * @return an operator holding the converted object as target.
      */
-    public <K> Operator toMapByKeyEval(final IFunction<? super T,K> keyEval);
+    public <K> Operator zipKeysBy(final IFunction<? super T,K> keyEval);
+    
+    /**
+     * <p>
+     * Converts the target object to a map by using the original target's
+     * elements as keys and applying an evaluator (valueEval) to them
+     * in order to obtain their corresponding value.
+     * </p>
+     * <p>
+     * Note that if more than one value get the same key, only the last one
+     * will be in the resulting map (the other ones will be overwritten).
+     * </p>
+     * 
+     * @param <V> the type of the values that will be created
+     * @param valueEval the evaluator used for obtaining the values
+     * @return an operator holding the converted object as target.
+     */
+    public <V> Operator zipValuesBy(final IFunction<? super T,V> valueEval);
+ 
+    
+    /**
+     * <p>
+     * Converts the target object to a map by using the original target's
+     * elements as values and setting the specified objects as keys.
+     * </p>
+     * <p>
+     * Note that if more than one value get the same key, only the last one
+     * will be in the resulting map (the other ones will be overwritten).
+     * </p>
+     * 
+     * @param <K> the type of the keys
+     * @param keys the new keys
+     * @return an operator holding the converted object as target.
+     */
+    public <K> Operator zipKeys(final K... keys);
+    
+    /**
+     * <p>
+     * Converts the target object to a map by using the original target's
+     * elements as keys and applying an evaluator (valueEval) to them
+     * in order to obtain their corresponding value.
+     * </p>
+     * 
+     * @param <V> the type of the values
+     * @param values the new values
+     * @return an operator holding the converted object as target.
+     */
+    public <V> Operator zipValues(final V... values);
 
     
     /**

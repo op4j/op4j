@@ -166,8 +166,20 @@ public final class Level0ArrayOperator<I,T>
         return new Level0MapOperator<I,T, T>(getTarget().execute(FnArray.of(this.type).toMapByAlternateElements()));
     }
 
-    public <K> Level0MapOperator<I,K, T> toMapByKeyEval(final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperator<I,K, T>(getTarget().execute(FnArray.of(this.type).zipKeysBy(keyEval)));
+    public <K> Level0MapOperator<I,K,T> zipKeysBy(final IFunction<? super T,K> keyEval) {
+        return new Level0MapOperator<I,K,T>(getTarget().execute(FnArray.of(this.type).zipKeysBy(keyEval)));
+    }
+
+    public <V> Level0MapOperator<I,T,V> zipValuesBy(final IFunction<? super T,V> valueEval) {
+        return new Level0MapOperator<I,T,V>(getTarget().execute(FnArray.of(this.type).zipValuesBy(valueEval)));
+    }
+
+    public <K> Level0MapOperator<I,K,T> zipKeys(final K... keys) {
+        return new Level0MapOperator<I,K,T>(getTarget().execute(FnArray.of(this.type).zipKeys(keys)));
+    }
+
+    public <V> Level0MapOperator<I,T,V> zipValues(final V... values) {
+        return new Level0MapOperator<I,T,V>(getTarget().execute(FnArray.of(this.type).zipValues(values)));
     }
 
     public <K, V> Level0MapOperator<I,K, V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {

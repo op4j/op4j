@@ -196,7 +196,7 @@ watch.start();
 //        System.out.println(printArray(Op.buildArrayOfArray(Types.STRING).addAll(Op.buildArray(Types.STRING).addAll("a","b").get()).addAll(Op.buildArray(Types.STRING).addAll("1","2","3").get()).get()));
 //        System.out.println(Op.buildMap(Types.INTEGER,Types.STRING).put(12,"hello!").get());
         System.out.println(Op.onListFor("a",1,"b",3).toMapByAlternateElements().get());
-        System.out.println(Op.onListFor("hello", "goodbye").toMapByKeyEval(Ognl.asInteger("length()")).get());
+        System.out.println(Op.onListFor("hello", "goodbye").zipKeysBy(Ognl.asInteger("length()")).get());
         
         System.out.println(Op.onListFor("hello", "goodbye", "adios", "ciao", "hola").sort().get());
         System.out.println(Op.onListFor("hello", "goodbye", "adios", "ciao", "hola").toSet().sort(new Comparator<String>() {
@@ -341,7 +341,7 @@ watch.start();
         System.out.println(Op.on("Body tag is written like \"<body>content here</body>\"")
                 .exec(FnString.escapeHTML()).get());
         
-        System.out.println(Op.onArrayOf(Types.STRING, stringsArr1).removeAllNull().toMapByKeyEval(Ognl.asInteger("length()")).get());
+        System.out.println(Op.onArrayOf(Types.STRING, stringsArr1).removeAllNull().zipKeysBy(Ognl.asInteger("length()")).get());
 
         System.out.println(Op.onList(stringsList1).removeAllNullOrTrue(Ognl.asBoolean("length() < 6")).get());
 

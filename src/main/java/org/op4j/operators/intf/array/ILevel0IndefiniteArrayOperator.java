@@ -51,15 +51,15 @@ public interface ILevel0IndefiniteArrayOperator<I,T>
 		        ExecutableIndefiniteArrayOperator<I,T> {
 
 
+    public ILevel0ListOperator<I,T> toList();
+    public ILevel0SetOperator<I,T> toSet();
+    public <K,V> ILevel0MapOperator<I,K,V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
 
     
-    public ILevel0ListOperator<I,T> toList();
-    
-    public ILevel0SetOperator<I,T> toSet();
-    
     public ILevel0MapOperator<I,T,T> toMapByAlternateElements();
-    public <K> ILevel0MapOperator<I,K,T> toMapByKeyEval(final IFunction<? super T,K> keyEval);
-    public <K,V> ILevel0MapOperator<I,K,V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
+
+    public <K> ILevel0MapOperator<I,K,T> zipKeysBy(final IFunction<? super T,K> keyEval);
+    public <V> ILevel0MapOperator<I,T,V> zipValuesBy(final IFunction<? super T,V> valueEval);
     
     
     public ILevel0GenericUniqOperator<I,T[]> generic();

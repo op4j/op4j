@@ -108,14 +108,18 @@ public interface ILevel0ListOperator<I,T>
     public ILevel0ListOperator<I,T> removeAllNullOrTrue(final IFunction<? super T,Boolean> eval);
     public ILevel0ListOperator<I,T> removeAllIndexesNot(final int... indexes);
     public ILevel0ListOperator<I,T> removeAllNull();
+    
+    
     public ILevel0ArrayOperator<I,T> toArrayOf(final Type<T> type);
-    
-    
     public ILevel0SetOperator<I,T> toSet();
+    public <K,V> ILevel0MapOperator<I,K,V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
     
     public ILevel0MapOperator<I,T,T> toMapByAlternateElements();
-    public <K> ILevel0MapOperator<I,K,T> toMapByKeyEval(final IFunction<? super T,K> keyEval);
-    public <K,V> ILevel0MapOperator<I,K,V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
+    
+    public <K> ILevel0MapOperator<I,K,T> zipKeys(final K... keys);
+    public <V> ILevel0MapOperator<I,T,V> zipValues(final V... values);
+    public <K> ILevel0MapOperator<I,K,T> zipKeysBy(final IFunction<? super T,K> keyEval);
+    public <V> ILevel0MapOperator<I,T,V> zipValuesBy(final IFunction<? super T,V> valueEval);
 
     
     public ILevel0GenericUniqOperator<I,List<T>> generic();

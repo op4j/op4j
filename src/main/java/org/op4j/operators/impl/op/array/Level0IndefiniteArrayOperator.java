@@ -62,8 +62,21 @@ public final class Level0IndefiniteArrayOperator<I,T>
     }
 
     @SuppressWarnings("unchecked")
-    public <K> Level0MapOperator<I,K, T> toMapByKeyEval(final IFunction<? super T,K> keyEval) {
-        return new Level0MapOperator<I,K, T>(getTarget().execute(FnArray.ofObject().zipKeysBy((IFunction)keyEval)));
+    public <K> Level0MapOperator<I,K,T> zipKeysBy(final IFunction<? super T,K> keyEval) {
+        return new Level0MapOperator<I,K,T>(getTarget().execute(FnArray.ofObject().zipKeysBy((IFunction)keyEval)));
+    }
+
+    @SuppressWarnings("unchecked")
+    public <V> Level0MapOperator<I,T,V> zipValuesBy(final IFunction<? super T,V> valueEval) {
+        return new Level0MapOperator<I,T,V>(getTarget().execute(FnArray.ofObject().zipValuesBy((IFunction)valueEval)));
+    }
+
+    public <K> Level0MapOperator<I,K,T> zipKeys(final K... keys) {
+        return new Level0MapOperator<I,K,T>(getTarget().execute(FnArray.ofObject().zipKeys(keys)));
+    }
+
+    public <V> Level0MapOperator<I,T,V> zipValues(final V... values) {
+        return new Level0MapOperator<I,T,V>(getTarget().execute(FnArray.ofObject().zipValues(values)));
     }
 
     @SuppressWarnings("unchecked")
