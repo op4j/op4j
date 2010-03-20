@@ -24,6 +24,7 @@ import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -35,6 +36,7 @@ import org.op4j.operators.impl.op.array.Level0ArrayOperator;
 import org.op4j.operators.impl.op.array.Level0IndefiniteArrayOperator;
 import org.op4j.operators.impl.op.generic.Level0GenericUniqOperator;
 import org.op4j.operators.impl.op.list.Level0ListOperator;
+import org.op4j.operators.impl.op.map.Level0BuildingMapOperator;
 import org.op4j.operators.impl.op.map.Level0MapOperator;
 import org.op4j.operators.impl.op.set.Level0SetOperator;
 import org.op4j.target.ExecutionTarget;
@@ -421,6 +423,12 @@ public final class Op {
         return new Level0MapOperator<Map<K,V>,K,V>(ExecutionTarget.forOp(target, Normalisation.MAP));
     }
 
+
+    public static <K,V> Level0BuildingMapOperator<Map<K,V>,K,V> onMapFor(final K key, final V value) {
+        final Map<K,V> newTarget = new LinkedHashMap<K, V>();
+        newTarget.put(key, value);
+        return new Level0BuildingMapOperator<Map<K,V>,K,V>(ExecutionTarget.forOp(newTarget, Normalisation.MAP));
+    }
 
     
     

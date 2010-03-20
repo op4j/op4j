@@ -760,6 +760,11 @@ watch.start();
         System.out.println(
                 Op.onArrayFor("hello", "goodbye", "hola", "ola", "allô").
                 zipAndGroupKeys("en", "en", "es", "gl", "fr").get());
+     
+        
+        System.out.println(
+                Op.onMapFor(23, "twenty-three").and(43, "forty-three").sort().get());
+        
         
     }
     

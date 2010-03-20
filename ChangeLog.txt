@@ -42,6 +42,9 @@
 - Multi generic operators removed.
 - Added "onArrayFor", "onListFor" and "onSetFor" methods to Op in order to build structures 
   from their elements.
+- Added "onMapFor" to Op returning a new class of map operator: "Building map operator". This allows
+  the building of maps with successive calls to the "and" method after the "onMapFor" call. This
+  "and" method will dissapear after any other method is called.
 - Renamed "toMapByKeyEval" to "zipKeysBy", and added "zipValuesBy", "zipKeys" and "zipValues".
 - Renamed "toMapByAlternateElements" to "couple", and added "coupleAndGroup".
   
