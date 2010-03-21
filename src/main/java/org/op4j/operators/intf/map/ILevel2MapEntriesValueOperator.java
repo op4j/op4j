@@ -28,7 +28,7 @@ import org.op4j.operators.qualities.ExecutableOperator;
 import org.op4j.operators.qualities.NavigatingMapEntryOperator;
 import org.op4j.operators.qualities.ReplaceableIfNullOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
-import org.op4j.operators.qualities.SelectableElementsOperator;
+import org.op4j.operators.qualities.SelectableMapEntryComponentOperator;
 import org.op4j.operators.qualities.UniqOperator;
 
 
@@ -43,21 +43,19 @@ public interface ILevel2MapEntriesValueOperator<I,K,V>
         extends UniqOperator<Map<K,V>>,
 				NavigatingMapEntryOperator,
         		ExecutableOperator<V>,
-                SelectableElementsOperator<V>,
+                SelectableMapEntryComponentOperator<V>,
                 ReplaceableOperator<V>,
                 ReplaceableIfNullOperator<V>,
                 CastableToTypeOperator<V> {
 
 
 
-    public ILevel2MapEntriesValueSelectedOperator<I,K,V> ifIndex(final int... indexes);
     public ILevel2MapEntriesValueSelectedOperator<I,K,V> ifTrue(final IFunction<? super V,Boolean> eval);
     public ILevel2MapEntriesValueSelectedOperator<I,K,V> ifFalse(final IFunction<? super V,Boolean> eval);
     public ILevel2MapEntriesValueSelectedOperator<I,K,V> ifNullOrFalse(final IFunction<? super V,Boolean> eval);
     public ILevel2MapEntriesValueSelectedOperator<I,K,V> ifNotNullAndFalse(final IFunction<? super V,Boolean> eval);
     public ILevel2MapEntriesValueSelectedOperator<I,K,V> ifNull();
     public ILevel2MapEntriesValueSelectedOperator<I,K,V> ifNullOrTrue(final IFunction<? super V,Boolean> eval);
-    public ILevel2MapEntriesValueSelectedOperator<I,K,V> ifIndexNot(final int... indexes);
     public ILevel2MapEntriesValueSelectedOperator<I,K,V> ifNotNull();
     public ILevel2MapEntriesValueSelectedOperator<I,K,V> ifNotNullAndTrue(final IFunction<? super V,Boolean> eval);
 

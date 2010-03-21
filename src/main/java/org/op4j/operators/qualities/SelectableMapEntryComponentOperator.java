@@ -43,7 +43,7 @@ public interface SelectableMapEntryComponentOperator<T>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedElementsOperator<T> ifTrue(final IFunction<? super T,Boolean> eval);
+    public SelectedMapEntryComponentOperator<T> ifTrue(final IFunction<? super T,Boolean> eval);
     
 
     /**
@@ -56,7 +56,7 @@ public interface SelectableMapEntryComponentOperator<T>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedElementsOperator<T> ifFalse(final IFunction<? super T,Boolean> eval);
+    public SelectedMapEntryComponentOperator<T> ifFalse(final IFunction<? super T,Boolean> eval);
     
 
     /**
@@ -69,7 +69,7 @@ public interface SelectableMapEntryComponentOperator<T>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedElementsOperator<T> ifNullOrFalse(final IFunction<? super T,Boolean> eval);
+    public SelectedMapEntryComponentOperator<T> ifNullOrFalse(final IFunction<? super T,Boolean> eval);
     
     
     /**
@@ -82,7 +82,7 @@ public interface SelectableMapEntryComponentOperator<T>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedElementsOperator<T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval);
+    public SelectedMapEntryComponentOperator<T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval);
     
 
     /**
@@ -94,7 +94,7 @@ public interface SelectableMapEntryComponentOperator<T>  {
      * 
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedElementsOperator<T> ifNull();
+    public SelectedMapEntryComponentOperator<T> ifNull();
     
     
     /**
@@ -107,7 +107,7 @@ public interface SelectableMapEntryComponentOperator<T>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedElementsOperator<T> ifNullOrTrue(final IFunction<? super T,Boolean> eval);
+    public SelectedMapEntryComponentOperator<T> ifNullOrTrue(final IFunction<? super T,Boolean> eval);
     
     
     /**
@@ -119,7 +119,7 @@ public interface SelectableMapEntryComponentOperator<T>  {
      * 
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedElementsOperator<T> ifNotNull();
+    public SelectedMapEntryComponentOperator<T> ifNotNull();
     
     
     /**
@@ -132,6 +132,6 @@ public interface SelectableMapEntryComponentOperator<T>  {
      * @param eval the evaluator to be used for selecting targets.
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
-    public SelectedElementsOperator<T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval);
+    public SelectedMapEntryComponentOperator<T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval);
     
 }

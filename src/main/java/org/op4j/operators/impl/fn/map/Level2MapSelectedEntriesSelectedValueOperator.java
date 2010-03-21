@@ -78,16 +78,6 @@ public final class Level2MapSelectedEntriesSelectedValueOperator<I,K,V> extends 
     }
 
 
-    public Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V> ifIndex(final int... indexes) {
-        return new Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V>(getTarget().selectIndex(indexes));
-    }
-
-
-    public Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V> ifIndexNot(final int... indexes) {
-        return new Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V>(getTarget().selectIndexNot(indexes));
-    }
-
-
     public Level2MapSelectedEntriesSelectedValueOperator<I,K,V> execIfNotNull(final IFunction<? super V,? extends V> function) {
         return new Level2MapSelectedEntriesSelectedValueOperator<I,K,V>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }

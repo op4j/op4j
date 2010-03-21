@@ -68,16 +68,6 @@ public final class Level2MapEntriesValueOperator<I,K,V> extends AbstractOperator
     }
 
 
-    public Level2MapEntriesValueSelectedOperator<I,K, V> ifIndex(final int... indexes) {
-        return new Level2MapEntriesValueSelectedOperator<I,K, V>(getTarget().selectIndex(indexes));
-    }
-
-
-    public Level2MapEntriesValueSelectedOperator<I,K, V> ifIndexNot(final int... indexes) {
-        return new Level2MapEntriesValueSelectedOperator<I,K, V>(getTarget().selectIndexNot(indexes));
-    }
-
-
     public Level2MapEntriesValueSelectedOperator<I,K, V> ifTrue(final IFunction<? super V,Boolean> eval) {
         return new Level2MapEntriesValueSelectedOperator<I,K, V>(getTarget().selectMatching(eval));
     }
