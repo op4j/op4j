@@ -15,30 +15,36 @@ Functions
   <<<map(...)>>>, <<<execAsArray(...)>>>, etc.
   
 
-* Predefined functions
+* Predefined functions: Function hub classes
 
   op4j provides more than 200 functions out-of-the-box. They are usually obtained by calling
-  static methods in <function classes>. For example:
+  static methods in <function hub classes>. For example:
   
 ---
-IFunction<String,String> fn = FnString.toUpperCase();
+Function<String,String> fn = FnString.toUpperCase();
 ---
 
-  <<<FnString>>> is one of the predefined <function classes> (most of them start with <<<Fn>>>), 
+  <<<FnString>>> is one of the predefined <function hub classes> (most of them start with <<<Fn>>>), 
   and the <<<toUpperCase()>>> static method returns a function which takes a <<<String>>> input 
   and returns a <<<String>>> result (<<<IFunction\<String,String\>>>>).
+
+
+  All predefined functions, as well as functions defined with <function expressions> 
+  are <<<org.op4j.functions.Function>>> objects, which are
+  an implementation of <<<IFunction>>> adding a special <<<execute(T input)>>> method
+  for easily calling them <even outside op4j expressions>.
   
   Let's see some random examples:
   
 ---
-IFunction<String,String> fn = FnString.trim();
-IFunction<String,Calendar> fn = FnString.toCalendar("dd/MM/yyyy");
-IFunction<Number,BigDecimal> fn = FnNumber.toBigDecimal(2, RoundingMode.HALF_UP);
-IFunction<Iterable<Double>,Double> fn = FnMath.ofDouble().avg();
-IFunction<Iterable<Integer>,Integer> fn = FnMath.ofInteger().max();
+Function<String,String> fn = FnString.trim();
+Function<String,Calendar> fn = FnString.toCalendar("dd/MM/yyyy");
+Function<Number,BigDecimal> fn = FnNumber.toBigDecimal(2, RoundingMode.HALF_UP);
+Function<Iterable<Double>,Double> fn = FnMath.ofDouble().avg();
+Function<Iterable<Integer>,Integer> fn = FnMath.ofInteger().max();
 ---
 
-  As we can see, some function classes like <<<FnMath>>> are a little bit special because they
+  As we can see, some function hub classes like <<<FnMath>>> are a little bit special because they
   require specialization (type parameterization), which is what is done with the <<<ofDouble()>>>
   and <<<ofInteger()>>> methods.
   
@@ -46,7 +52,7 @@ IFunction<Iterable<Integer>,Integer> fn = FnMath.ofInteger().max();
   
 ---
 Type<User> type = ...;
-IFunction<List<User[]>,List<User>>> fn = FnList.ofArrayOf(type).flattenArrays();
+Function<List<User[]>,List<User>>> fn = FnList.ofArrayOf(type).flattenArrays();
 ---
 
 * User-defined functions
@@ -60,9 +66,8 @@ Function<String[],Calendar[]> fnParseStringDates =
     Fn.onArrayOf(Types.STRING).map(FnString.toCalendar("dd/MM/yyyy"));
 ---
 
-  Note that <function expressions> return <<<org.op4j.functions.Function>>> objects, which are
-  an implementation of <<<IFunction>>> adding a special <<<execute(T input)>>> method
-  for easily calling them <even outside op4j expressions>:
+  As functions created with <function expressions> return <<<org.op4j.functions.Function>>> objects
+  they can be easily called <even outside op4j expressions>:
 
 ---
 Calendar[] calendars = fnParseStringDates.execute(stringDates);  

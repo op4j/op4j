@@ -59,7 +59,7 @@ function = Fn.on(inputType).[ACTION].[ACTION]...[ACTION].get();
   methods with slightly different names, which are explained in the documentation sections for the
   specific types of input.
   
-    * Expressions starting with <<<Op>>> are called <<Op expressions>> or <<Operation expressions>>.
+    * Expressions starting with <<<Op.on>>> are called <<Op expressions>> or <<Operation expressions>>.
       They act on a specific input object/s and perform a set of chained actions on it before returning a 
       result. 
 
@@ -68,7 +68,7 @@ String[] values = ...;
 List<String> upperStrs = Op.on(values).toList().map(FnString.toUpperCase()).get();
 ---    
     
-    * Expressions starting with <<<Fn>>> are called <<Fn expressions>> or <<Function expressions>>.
+    * Expressions starting with <<<Fn.on>>> are called <<Fn expressions>> or <<Function expressions>>.
       They allow the definition of <functions> as a set of chained actions of exactly the same
       kind as <op expressions>, returning as a result an executable <<<Function>>> object equivalent
       to the defined chain.
@@ -221,6 +221,9 @@ List<Integer> intValueList = Op.on(values).forEach().forEach()...
     * <<<Op.onArrayOf(type, input)>>> is called being <<<input>>> an array variable and 
       <<<type>>> the {{{http://www.javaruntype.org}javaRuntype}} <<<Type>>> object representing the array's 
       elements (e.g: <<<Op.onArrayOf(Types.STRING, myStrArr)>>>).
+      
+    * <<<Op.onArrayFor(e1, e2, e3...)>>> is called being <<<e1>>>, <<<e2>>>, <<<e3>>>... the
+      elements on which the expression will be created, treating them as an array. 
   
     * <<<Fn.onArrayOf(type)>>> is called being <<<type>>> the type of the elements of the arrays that
       will be passed as input to the defined function. 
@@ -233,6 +236,9 @@ List<Integer> intValueList = Op.on(values).forEach().forEach()...
     * <<<Op.on(input)>>> is called being <<<input>>> a List<T> variable. 
   
     * <<<Op.onList(input)>>> is called being <<<input>>> a List<T> variable. 
+      
+    * <<<Op.onListFor(e1, e2, e3...)>>> is called being <<<e1>>>, <<<e2>>>, <<<e3>>>... the
+      elements on which the expression will be created, treating them as a list. 
   
     * <<<Fn.onListOf(type)>>> is called being <<<type>>> the type of the elements of the lists that
       will be passed as input to the defined function. 
@@ -245,6 +251,10 @@ List<Integer> intValueList = Op.on(values).forEach().forEach()...
     * <<<Op.on(input)>>> is called being <<<input>>> a Map<K,V> variable. 
   
     * <<<Op.onMap(input)>>> is called being <<<input>>> a Map<K,V> variable. 
+      
+    * <<<Op.onMapFor(key, value)>>> is called being (<<<key>>>,<<<value>>>) the first entry added
+      to a map on which the expression will be created. Before executing any actions, new entries
+      can be added like <<<Op.onMapFor(key, value).and(key2, value2).and(key3, value3)...>>>
   
     * <<<Fn.onMapOf(keyType,valueType)>>> is called being <<<keyType>>> and <<valueType>> the types 
       of the keys and values of the maps that will be passed as input to the defined function. 
@@ -257,6 +267,9 @@ List<Integer> intValueList = Op.on(values).forEach().forEach()...
     * <<<Op.on(input)>>> is called being <<<input>>> a Set<T> variable. 
   
     * <<<Op.onSet(input)>>> is called being <<<input>>> a Set<T> variable. 
+      
+    * <<<Op.onSetFor(e1, e2, e3...)>>> is called being <<<e1>>>, <<<e2>>>, <<<e3>>>... the
+      elements on which the expression will be created, treating them as a set. 
   
     * <<<Fn.onSetOf(type)>>> is called being <<<type>>> the type of the elements of the sets that
       will be passed as input to the defined function. 
@@ -295,10 +308,10 @@ List<Integer> intValueList = Op.on(values).forEach().forEach()...
   IFunction only has one method, <<<R execute(T input, ExecCtx ctx)>>>, which receives a T object and 
   a <context> (an internal structure containing iteration information) and returns an R object.
   
-  There is a special implementation of <<<IFunction\<T,R\>>>> called <<<Function\<T,R\>>>>, which is
-  the class of the objects returned by function expressions (<Fn.on>). This class adds a simpler 
-  <<<R execute(T input)>>> method, useful for the isolated (not inside an expression) execution of a
-  <<<Function>>> object.
+  All op4j predefined functions, as well as all functions returned by <<<Fn.on>>> expressions
+  extend a special implementation of <<<IFunction\<T,R\>>>> called <<<Function\<T,R\>>>>. This 
+  class adds a simpler <<<R execute(T input)>>> method, useful for the isolated (not inside an 
+  expression) execution of a <<<Function>>> object.
 
 ** Executing functions
   
