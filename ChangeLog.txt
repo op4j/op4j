@@ -47,7 +47,7 @@
   "and" method will dissapear after any other method is called.
 - Renamed "toMapByKeyEval" to "zipKeysBy", and added "zipValuesBy", "zipKeys" and "zipValues".
 - Renamed "toMapByAlternateElements" to "couple", and added "coupleAndGroup".
-  
+- Moved class "Fn" to package org.op4j.functions
   
 
 

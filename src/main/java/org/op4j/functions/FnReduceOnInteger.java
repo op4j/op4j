@@ -7,7 +7,7 @@ import java.math.RoundingMode;
 import org.javaruntype.type.Types;
 import org.op4j.util.ValuePair;
 
-public final class FnReduceOfInteger extends FnReduceOf<Integer> {
+public final class FnReduceOnInteger extends FnReduceOn<Integer> {
 
     private static final Function<ValuePair<Number,Number>,Integer> SUM = new Sum();
     private static final Function<ValuePair<Number,Number>,Integer> AVG = new Avg();
@@ -64,7 +64,7 @@ public final class FnReduceOfInteger extends FnReduceOf<Integer> {
     
 
     
-    FnReduceOfInteger() {
+    FnReduceOnInteger() {
         super(Types.INTEGER);
     }
 
@@ -79,7 +79,7 @@ public final class FnReduceOfInteger extends FnReduceOf<Integer> {
 
     
     
-    static final class Sum extends FnReduceOfNumber.NonDecimalSum<Integer> {
+    static final class Sum extends FnReduceOnNumber.NonDecimalSum<Integer> {
 
         public Sum() {
             super();
@@ -87,13 +87,13 @@ public final class FnReduceOfInteger extends FnReduceOf<Integer> {
 
         @Override
         protected Integer fromNumber(final Number number) {
-            return FnReduceOfInteger.fromNumber(number);
+            return FnReduceOnInteger.fromNumber(number);
         }
         
     }
 
     
-    static final class Subt extends FnReduceOfNumber.NonDecimalSubt<Integer> {
+    static final class Subt extends FnReduceOnNumber.NonDecimalSubt<Integer> {
 
         public Subt() {
             super();
@@ -101,13 +101,13 @@ public final class FnReduceOfInteger extends FnReduceOf<Integer> {
 
         @Override
         protected Integer fromNumber(final Number number) {
-            return FnReduceOfInteger.fromNumber(number);
+            return FnReduceOnInteger.fromNumber(number);
         }
         
     }
 
     
-    static final class Mult extends FnReduceOfNumber.NonDecimalMult<Integer> {
+    static final class Mult extends FnReduceOnNumber.NonDecimalMult<Integer> {
 
         public Mult() {
             super();
@@ -115,13 +115,13 @@ public final class FnReduceOfInteger extends FnReduceOf<Integer> {
 
         @Override
         protected Integer fromNumber(final Number number) {
-            return FnReduceOfInteger.fromNumber(number);
+            return FnReduceOnInteger.fromNumber(number);
         }
         
     }
 
     
-    static final class Div extends FnReduceOfNumber.NonDecimalDiv<Integer> {
+    static final class Div extends FnReduceOnNumber.NonDecimalDiv<Integer> {
 
         public Div() {
             super();
@@ -137,13 +137,13 @@ public final class FnReduceOfInteger extends FnReduceOf<Integer> {
 
         @Override
         protected Integer fromNumber(final Number number) {
-            return FnReduceOfInteger.fromNumber(number);
+            return FnReduceOnInteger.fromNumber(number);
         }
         
     }
 
     
-    static final class Remainder extends FnReduceOfNumber.NonDecimalRemainder<Integer> {
+    static final class Remainder extends FnReduceOnNumber.NonDecimalRemainder<Integer> {
 
         public Remainder() {
             super();
@@ -155,14 +155,14 @@ public final class FnReduceOfInteger extends FnReduceOf<Integer> {
 
         @Override
         protected Integer fromNumber(final Number number) {
-            return FnReduceOfInteger.fromNumber(number);
+            return FnReduceOnInteger.fromNumber(number);
         }
         
     }
 
     
     
-    static final class Avg extends FnReduceOfNumber.NonDecimalAvg<Integer> {
+    static final class Avg extends FnReduceOnNumber.NonDecimalAvg<Integer> {
 
         public Avg() {
             super();
@@ -178,7 +178,7 @@ public final class FnReduceOfInteger extends FnReduceOf<Integer> {
 
         @Override
         protected Integer fromNumber(final Number number) {
-            return FnReduceOfInteger.fromNumber(number);
+            return FnReduceOnInteger.fromNumber(number);
         }
         
     }

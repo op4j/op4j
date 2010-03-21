@@ -25,7 +25,6 @@ import java.math.BigInteger;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.Fn;
 import org.op4j.exceptions.ExecutionException;
 
 /**

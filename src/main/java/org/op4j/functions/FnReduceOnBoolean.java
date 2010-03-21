@@ -3,7 +3,7 @@ package org.op4j.functions;
 import org.javaruntype.type.Types;
 import org.op4j.util.ValuePair;
 
-public final class FnReduceOfBoolean extends FnReduceOf<Boolean> {
+public final class FnReduceOnBoolean extends FnReduceOn<Boolean> {
 
     private static final Function<ValuePair<Boolean,Boolean>,Boolean> AND = new And();
     private static final Function<ValuePair<Boolean,Boolean>,Boolean> OR = new Or();
@@ -20,7 +20,7 @@ public final class FnReduceOfBoolean extends FnReduceOf<Boolean> {
 
     
     
-    FnReduceOfBoolean() {
+    FnReduceOnBoolean() {
         super(Types.BOOLEAN);
     }
 

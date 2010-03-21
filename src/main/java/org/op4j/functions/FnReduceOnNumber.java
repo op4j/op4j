@@ -7,11 +7,11 @@ import java.math.RoundingMode;
 
 import org.apache.commons.lang.Validate;
 
-final class FnReduceOfNumber<T extends Number> {
+final class FnReduceOnNumber<T extends Number> {
     
 
     
-    private FnReduceOfNumber() {
+    private FnReduceOnNumber() {
         super();
     }
 
@@ -41,8 +41,8 @@ final class FnReduceOfNumber<T extends Number> {
             if (right == null) {
                 return fromNumber(left);
             }
-            BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
-            BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            BigDecimal bLeft = FnReduceOnNumber.toBigDecimal(left);
+            BigDecimal bRight = FnReduceOnNumber.toBigDecimal(right);
             return fromNumber(bLeft.add(bRight)); 
         }
         
@@ -65,8 +65,8 @@ final class FnReduceOfNumber<T extends Number> {
             if (right == null) {
                 return fromNumber(left);
             }
-            BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
-            BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            BigDecimal bLeft = FnReduceOnNumber.toBigDecimal(left);
+            BigDecimal bRight = FnReduceOnNumber.toBigDecimal(right);
             return fromNumber(bLeft.subtract(bRight)); 
         }
         
@@ -89,8 +89,8 @@ final class FnReduceOfNumber<T extends Number> {
             if (right == null) {
                 return fromNumber(left);
             }
-            BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
-            BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            BigDecimal bLeft = FnReduceOnNumber.toBigDecimal(left);
+            BigDecimal bRight = FnReduceOnNumber.toBigDecimal(right);
             return fromNumber(bLeft.multiply(bRight)); 
         }
         
@@ -130,8 +130,8 @@ final class FnReduceOfNumber<T extends Number> {
             if (right == null) {
                 return fromNumber(left);
             }
-            BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
-            BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            BigDecimal bLeft = FnReduceOnNumber.toBigDecimal(left);
+            BigDecimal bRight = FnReduceOnNumber.toBigDecimal(right);
             if (this.roundingMode != null) {
                 return fromNumber(bLeft.divide(bRight, this.roundingMode));
             }
@@ -168,8 +168,8 @@ final class FnReduceOfNumber<T extends Number> {
             if (right == null) {
                 return fromNumber(left);
             }
-            BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
-            BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            BigDecimal bLeft = FnReduceOnNumber.toBigDecimal(left);
+            BigDecimal bRight = FnReduceOnNumber.toBigDecimal(right);
             if (this.mathContext != null) {
                 return fromNumber(bLeft.remainder(bRight, this.mathContext));
             }
@@ -214,8 +214,8 @@ final class FnReduceOfNumber<T extends Number> {
             if (right == null) {
                 return fromNumber(left);
             }
-            BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
-            BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            BigDecimal bLeft = FnReduceOnNumber.toBigDecimal(left);
+            BigDecimal bRight = FnReduceOnNumber.toBigDecimal(right);
             if (this.roundingMode != null) {
                 return fromNumber(bLeft.add(bRight).divide(BigDecimal.valueOf(2.0d), this.roundingMode));
             }
@@ -252,8 +252,8 @@ final class FnReduceOfNumber<T extends Number> {
             if (right == null) {
                 return fromNumber(left);
             }
-            BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
-            BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            BigDecimal bLeft = FnReduceOnNumber.toBigDecimal(left);
+            BigDecimal bRight = FnReduceOnNumber.toBigDecimal(right);
             return fromNumber(bLeft.add(bRight).setScale(0, RoundingMode.FLOOR)); 
         }
         
@@ -276,8 +276,8 @@ final class FnReduceOfNumber<T extends Number> {
             if (right == null) {
                 return fromNumber(left);
             }
-            BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
-            BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            BigDecimal bLeft = FnReduceOnNumber.toBigDecimal(left);
+            BigDecimal bRight = FnReduceOnNumber.toBigDecimal(right);
             return fromNumber(bLeft.subtract(bRight).setScale(0, RoundingMode.FLOOR)); 
         }
         
@@ -300,8 +300,8 @@ final class FnReduceOfNumber<T extends Number> {
             if (right == null) {
                 return fromNumber(left);
             }
-            BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
-            BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            BigDecimal bLeft = FnReduceOnNumber.toBigDecimal(left);
+            BigDecimal bRight = FnReduceOnNumber.toBigDecimal(right);
             return fromNumber(bLeft.multiply(bRight).setScale(0, RoundingMode.FLOOR)); 
         }
         
@@ -341,8 +341,8 @@ final class FnReduceOfNumber<T extends Number> {
             if (right == null) {
                 return fromNumber(left);
             }
-            BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
-            BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            BigDecimal bLeft = FnReduceOnNumber.toBigDecimal(left);
+            BigDecimal bRight = FnReduceOnNumber.toBigDecimal(right);
             if (this.roundingMode != null) {
                 return fromNumber(bLeft.divide(bRight, this.roundingMode).setScale(0, this.roundingMode));
             }
@@ -379,8 +379,8 @@ final class FnReduceOfNumber<T extends Number> {
             if (right == null) {
                 return fromNumber(left);
             }
-            BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
-            BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            BigDecimal bLeft = FnReduceOnNumber.toBigDecimal(left);
+            BigDecimal bRight = FnReduceOnNumber.toBigDecimal(right);
             if (this.mathContext != null) {
                 return fromNumber(bLeft.remainder(bRight, this.mathContext).setScale(0, this.mathContext.getRoundingMode()));
             }
@@ -425,8 +425,8 @@ final class FnReduceOfNumber<T extends Number> {
             if (right == null) {
                 return fromNumber(left);
             }
-            BigDecimal bLeft = FnReduceOfNumber.toBigDecimal(left);
-            BigDecimal bRight = FnReduceOfNumber.toBigDecimal(right);
+            BigDecimal bLeft = FnReduceOnNumber.toBigDecimal(left);
+            BigDecimal bRight = FnReduceOnNumber.toBigDecimal(right);
             if (this.roundingMode != null) {
                 return fromNumber(bLeft.add(bRight).divide(BigDecimal.valueOf(2.0d), this.roundingMode).setScale(0, this.roundingMode));
             }

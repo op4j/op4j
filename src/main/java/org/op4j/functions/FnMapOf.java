@@ -32,7 +32,6 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import org.javaruntype.type.Type;
-import org.op4j.Fn;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.util.ExecCtxImpl;
 import org.op4j.util.VarArgsUtil;

@@ -8,7 +8,7 @@ import java.math.RoundingMode;
 import org.javaruntype.type.Types;
 import org.op4j.util.ValuePair;
 
-public final class FnReduceOfBigDecimal extends FnReduceOf<BigDecimal> {
+public final class FnReduceOnBigDecimal extends FnReduceOn<BigDecimal> {
 
     private static final Function<ValuePair<Number,Number>,BigDecimal> SUM = new Sum();
     private static final Function<ValuePair<Number,Number>,BigDecimal> AVG = new Avg();
@@ -64,7 +64,7 @@ public final class FnReduceOfBigDecimal extends FnReduceOf<BigDecimal> {
     
 
     
-    FnReduceOfBigDecimal() {
+    FnReduceOnBigDecimal() {
         super(Types.BIG_DECIMAL);
     }
 
@@ -84,7 +84,7 @@ public final class FnReduceOfBigDecimal extends FnReduceOf<BigDecimal> {
     
     
     
-    static final class Sum extends FnReduceOfNumber.DecimalSum<BigDecimal> {
+    static final class Sum extends FnReduceOnNumber.DecimalSum<BigDecimal> {
 
         public Sum() {
             super();
@@ -92,13 +92,13 @@ public final class FnReduceOfBigDecimal extends FnReduceOf<BigDecimal> {
 
         @Override
         protected BigDecimal fromNumber(final Number number) {
-            return FnReduceOfBigDecimal.fromNumber(number);
+            return FnReduceOnBigDecimal.fromNumber(number);
         }
         
     }
 
     
-    static final class Subt extends FnReduceOfNumber.DecimalSubt<BigDecimal> {
+    static final class Subt extends FnReduceOnNumber.DecimalSubt<BigDecimal> {
 
         public Subt() {
             super();
@@ -106,13 +106,13 @@ public final class FnReduceOfBigDecimal extends FnReduceOf<BigDecimal> {
 
         @Override
         protected BigDecimal fromNumber(final Number number) {
-            return FnReduceOfBigDecimal.fromNumber(number);
+            return FnReduceOnBigDecimal.fromNumber(number);
         }
         
     }
 
     
-    static final class Mult extends FnReduceOfNumber.DecimalMult<BigDecimal> {
+    static final class Mult extends FnReduceOnNumber.DecimalMult<BigDecimal> {
 
         public Mult() {
             super();
@@ -120,13 +120,13 @@ public final class FnReduceOfBigDecimal extends FnReduceOf<BigDecimal> {
 
         @Override
         protected BigDecimal fromNumber(final Number number) {
-            return FnReduceOfBigDecimal.fromNumber(number);
+            return FnReduceOnBigDecimal.fromNumber(number);
         }
         
     }
 
     
-    static final class Div extends FnReduceOfNumber.DecimalDiv<BigDecimal> {
+    static final class Div extends FnReduceOnNumber.DecimalDiv<BigDecimal> {
 
         public Div() {
             super();
@@ -142,13 +142,13 @@ public final class FnReduceOfBigDecimal extends FnReduceOf<BigDecimal> {
 
         @Override
         protected BigDecimal fromNumber(final Number number) {
-            return FnReduceOfBigDecimal.fromNumber(number);
+            return FnReduceOnBigDecimal.fromNumber(number);
         }
         
     }
 
     
-    static final class Remainder extends FnReduceOfNumber.DecimalRemainder<BigDecimal> {
+    static final class Remainder extends FnReduceOnNumber.DecimalRemainder<BigDecimal> {
 
         public Remainder() {
             super();
@@ -160,13 +160,13 @@ public final class FnReduceOfBigDecimal extends FnReduceOf<BigDecimal> {
 
         @Override
         protected BigDecimal fromNumber(final Number number) {
-            return FnReduceOfBigDecimal.fromNumber(number);
+            return FnReduceOnBigDecimal.fromNumber(number);
         }
         
     }
 
     
-    static final class Avg extends FnReduceOfNumber.DecimalAvg<BigDecimal> {
+    static final class Avg extends FnReduceOnNumber.DecimalAvg<BigDecimal> {
 
         public Avg() {
             super();
@@ -182,7 +182,7 @@ public final class FnReduceOfBigDecimal extends FnReduceOf<BigDecimal> {
 
         @Override
         protected BigDecimal fromNumber(final Number number) {
-            return FnReduceOfBigDecimal.fromNumber(number);
+            return FnReduceOnBigDecimal.fromNumber(number);
         }
         
     }

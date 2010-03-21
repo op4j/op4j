@@ -6,7 +6,7 @@ import java.math.RoundingMode;
 import org.javaruntype.type.Types;
 import org.op4j.util.ValuePair;
 
-public final class FnReduceOfDouble extends FnReduceOf<Double> {
+public final class FnReduceOnDouble extends FnReduceOn<Double> {
 
     private static final Function<ValuePair<Number,Number>,Double> SUM = new Sum();
     private static final Function<ValuePair<Number,Number>,Double> AVG = new Avg();
@@ -63,7 +63,7 @@ public final class FnReduceOfDouble extends FnReduceOf<Double> {
     
 
     
-    FnReduceOfDouble() {
+    FnReduceOnDouble() {
         super(Types.DOUBLE);
     }
 
@@ -77,7 +77,7 @@ public final class FnReduceOfDouble extends FnReduceOf<Double> {
     
 
     
-    static final class Sum extends FnReduceOfNumber.DecimalSum<Double> {
+    static final class Sum extends FnReduceOnNumber.DecimalSum<Double> {
 
         public Sum() {
             super();
@@ -85,13 +85,13 @@ public final class FnReduceOfDouble extends FnReduceOf<Double> {
 
         @Override
         protected Double fromNumber(final Number number) {
-            return FnReduceOfDouble.fromNumber(number);
+            return FnReduceOnDouble.fromNumber(number);
         }
         
     }
 
     
-    static final class Subt extends FnReduceOfNumber.DecimalSubt<Double> {
+    static final class Subt extends FnReduceOnNumber.DecimalSubt<Double> {
 
         public Subt() {
             super();
@@ -99,13 +99,13 @@ public final class FnReduceOfDouble extends FnReduceOf<Double> {
 
         @Override
         protected Double fromNumber(final Number number) {
-            return FnReduceOfDouble.fromNumber(number);
+            return FnReduceOnDouble.fromNumber(number);
         }
         
     }
 
     
-    static final class Mult extends FnReduceOfNumber.DecimalMult<Double> {
+    static final class Mult extends FnReduceOnNumber.DecimalMult<Double> {
 
         public Mult() {
             super();
@@ -113,13 +113,13 @@ public final class FnReduceOfDouble extends FnReduceOf<Double> {
 
         @Override
         protected Double fromNumber(final Number number) {
-            return FnReduceOfDouble.fromNumber(number);
+            return FnReduceOnDouble.fromNumber(number);
         }
         
     }
 
     
-    static final class Div extends FnReduceOfNumber.DecimalDiv<Double> {
+    static final class Div extends FnReduceOnNumber.DecimalDiv<Double> {
 
         public Div() {
             super();
@@ -135,13 +135,13 @@ public final class FnReduceOfDouble extends FnReduceOf<Double> {
 
         @Override
         protected Double fromNumber(final Number number) {
-            return FnReduceOfDouble.fromNumber(number);
+            return FnReduceOnDouble.fromNumber(number);
         }
         
     }
 
     
-    static final class Remainder extends FnReduceOfNumber.DecimalRemainder<Double> {
+    static final class Remainder extends FnReduceOnNumber.DecimalRemainder<Double> {
 
         public Remainder() {
             super();
@@ -153,13 +153,13 @@ public final class FnReduceOfDouble extends FnReduceOf<Double> {
 
         @Override
         protected Double fromNumber(final Number number) {
-            return FnReduceOfDouble.fromNumber(number);
+            return FnReduceOnDouble.fromNumber(number);
         }
         
     }
 
     
-    static final class Avg extends FnReduceOfNumber.DecimalAvg<Double> {
+    static final class Avg extends FnReduceOnNumber.DecimalAvg<Double> {
 
         public Avg() {
             super();
@@ -175,7 +175,7 @@ public final class FnReduceOfDouble extends FnReduceOf<Double> {
 
         @Override
         protected Double fromNumber(final Number number) {
-            return FnReduceOfDouble.fromNumber(number);
+            return FnReduceOnDouble.fromNumber(number);
         }
         
     }

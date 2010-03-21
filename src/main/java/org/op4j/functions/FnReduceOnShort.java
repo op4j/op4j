@@ -6,7 +6,7 @@ import java.math.RoundingMode;
 import org.javaruntype.type.Types;
 import org.op4j.util.ValuePair;
 
-public final class FnReduceOfShort extends FnReduceOf<Short> {
+public final class FnReduceOnShort extends FnReduceOn<Short> {
 
     private static final Function<ValuePair<Number,Number>,Short> SUM = new Sum();
     private static final Function<ValuePair<Number,Number>,Short> AVG = new Avg();
@@ -63,7 +63,7 @@ public final class FnReduceOfShort extends FnReduceOf<Short> {
     
 
     
-    FnReduceOfShort() {
+    FnReduceOnShort() {
         super(Types.SHORT);
     }
 
@@ -77,7 +77,7 @@ public final class FnReduceOfShort extends FnReduceOf<Short> {
     
 
     
-    static final class Sum extends FnReduceOfNumber.NonDecimalSum<Short> {
+    static final class Sum extends FnReduceOnNumber.NonDecimalSum<Short> {
 
         public Sum() {
             super();
@@ -85,13 +85,13 @@ public final class FnReduceOfShort extends FnReduceOf<Short> {
 
         @Override
         protected Short fromNumber(final Number number) {
-            return FnReduceOfShort.fromNumber(number);
+            return FnReduceOnShort.fromNumber(number);
         }
         
     }
 
     
-    static final class Subt extends FnReduceOfNumber.NonDecimalSubt<Short> {
+    static final class Subt extends FnReduceOnNumber.NonDecimalSubt<Short> {
 
         public Subt() {
             super();
@@ -99,13 +99,13 @@ public final class FnReduceOfShort extends FnReduceOf<Short> {
 
         @Override
         protected Short fromNumber(final Number number) {
-            return FnReduceOfShort.fromNumber(number);
+            return FnReduceOnShort.fromNumber(number);
         }
         
     }
 
     
-    static final class Mult extends FnReduceOfNumber.NonDecimalMult<Short> {
+    static final class Mult extends FnReduceOnNumber.NonDecimalMult<Short> {
 
         public Mult() {
             super();
@@ -113,13 +113,13 @@ public final class FnReduceOfShort extends FnReduceOf<Short> {
 
         @Override
         protected Short fromNumber(final Number number) {
-            return FnReduceOfShort.fromNumber(number);
+            return FnReduceOnShort.fromNumber(number);
         }
         
     }
 
     
-    static final class Div extends FnReduceOfNumber.NonDecimalDiv<Short> {
+    static final class Div extends FnReduceOnNumber.NonDecimalDiv<Short> {
 
         public Div() {
             super();
@@ -135,13 +135,13 @@ public final class FnReduceOfShort extends FnReduceOf<Short> {
 
         @Override
         protected Short fromNumber(final Number number) {
-            return FnReduceOfShort.fromNumber(number);
+            return FnReduceOnShort.fromNumber(number);
         }
         
     }
 
     
-    static final class Remainder extends FnReduceOfNumber.NonDecimalRemainder<Short> {
+    static final class Remainder extends FnReduceOnNumber.NonDecimalRemainder<Short> {
 
         public Remainder() {
             super();
@@ -153,7 +153,7 @@ public final class FnReduceOfShort extends FnReduceOf<Short> {
 
         @Override
         protected Short fromNumber(final Number number) {
-            return FnReduceOfShort.fromNumber(number);
+            return FnReduceOnShort.fromNumber(number);
         }
         
     }
@@ -161,7 +161,7 @@ public final class FnReduceOfShort extends FnReduceOf<Short> {
     
 
     
-    static final class Avg extends FnReduceOfNumber.NonDecimalAvg<Short> {
+    static final class Avg extends FnReduceOnNumber.NonDecimalAvg<Short> {
 
         public Avg() {
             super();
@@ -177,7 +177,7 @@ public final class FnReduceOfShort extends FnReduceOf<Short> {
 
         @Override
         protected Short fromNumber(final Number number) {
-            return FnReduceOfShort.fromNumber(number);
+            return FnReduceOnShort.fromNumber(number);
         }
         
     }

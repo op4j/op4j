@@ -20,6 +20,7 @@ import org.junit.Test;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.Call;
 import org.op4j.functions.ExecCtx;
+import org.op4j.functions.Fn;
 import org.op4j.functions.FnArray;
 import org.op4j.functions.FnMath;
 import org.op4j.functions.FnNumber;

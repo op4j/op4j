@@ -36,7 +36,6 @@ import java.util.Set;
 
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
-import org.op4j.Fn;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.util.ExecCtxImpl;
 import org.op4j.util.ValuePair;

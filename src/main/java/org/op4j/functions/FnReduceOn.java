@@ -4,7 +4,7 @@ import org.javaruntype.type.Type;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.util.ValuePair;
 
-public class FnReduceOf<T> {
+public class FnReduceOn<T> {
 
     
     protected final Type<T> type;
@@ -32,7 +32,7 @@ public class FnReduceOf<T> {
     
     
     
-    FnReduceOf(final Type<T> type) {
+    FnReduceOn(final Type<T> type) {
         super();
         this.type = type;
     }

@@ -45,6 +45,7 @@ import org.junit.Test;
 import org.op4j.functions.Call;
 import org.op4j.functions.DecimalPoint;
 import org.op4j.functions.ExecCtx;
+import org.op4j.functions.Fn;
 import org.op4j.functions.FnArray;
 import org.op4j.functions.FnBoolean;
 import org.op4j.functions.FnCalendar;
@@ -497,11 +498,11 @@ watch.start();
             
         };
         
-        System.out.println(Op.onListFor(12,3,41,22).toArrayOf(Types.INTEGER).reduce(FnReduce.ofInteger().max()).get());
+        System.out.println(Op.onListFor(12,3,41,22).toArrayOf(Types.INTEGER).reduce(FnReduce.onInteger().max()).get());
         
-        System.out.println(Op.onListFor("hello", "hola", "ola", "ciao").toArrayOf(Types.STRING).reduce(FnReduce.ofString().join("%")).get());
+        System.out.println(Op.onListFor("hello", "hola", "ola", "ciao").toArrayOf(Types.STRING).reduce(FnReduce.onString().join("%")).get());
         
-        System.out.println(Op.onListFor("hello", "hola", "ola", "ciao").toArrayOf(Types.STRING).reduce(FnReduce.ofString().join("%"), "---").get());
+        System.out.println(Op.onListFor("hello", "hola", "ola", "ciao").toArrayOf(Types.STRING).reduce(FnReduce.onString().join("%"), "---").get());
         
         System.out.println(Op.onListFor(1,2,3,4,5,6).toArrayOf(Types.INTEGER).reduce(redFn1, "-->").get());
         
@@ -554,8 +555,8 @@ watch.start();
         
         System.out.println(Op.onListFor(213,23,142).reduce(fnSumBigDecimal, BigDecimal.valueOf(0)).get());
      
-        System.out.println(Op.onListFor(213,23,142).reduce(FnReduce.ofBigInteger().sum(), BigInteger.valueOf(0)).get());
-        System.out.println(Op.onListFor(213,23,142).map(FnNumber.toBigDecimal()).reduce(FnReduce.ofBigDecimal().sum()).get());
+        System.out.println(Op.onListFor(213,23,142).reduce(FnReduce.onBigInteger().sum(), BigInteger.valueOf(0)).get());
+        System.out.println(Op.onListFor(213,23,142).map(FnNumber.toBigDecimal()).reduce(FnReduce.onBigDecimal().sum()).get());
         
     
         System.out.println(ValuePair.TYPE_VALUE_PAIR_OF_UNKNOWN);
@@ -569,7 +570,7 @@ watch.start();
         System.out.println(Op.onListFor(30,30,40).map(FnNumber.toBigInteger()).exec(FnMath.ofBigInteger().avg(RoundingMode.CEILING)).get());
         
         System.out.println(Op.on(10).exec(FnMath.ofInteger().divideBy(3,RoundingMode.CEILING)).get());
-        System.out.println(Op.onListFor(10,3).reduce(FnReduce.ofInteger().div(RoundingMode.CEILING)).get());
+        System.out.println(Op.onListFor(10,3).reduce(FnReduce.onInteger().div(RoundingMode.CEILING)).get());
         
         
         System.out.println(Op.on(3).unfoldList(FnMath.ofInteger().multiplyBy(2), FnNumber.lessOrEqTo(100)).get());
@@ -763,7 +764,7 @@ watch.start();
      
         
         System.out.println(
-                Op.onMapFor(23, "twenty-three").and(43, "forty-three").sort().get());
+                Op.onMapFor(23, "twenty-three").and(43, "forty-three").and(10,"ten").sort().get());
         
         
     }
