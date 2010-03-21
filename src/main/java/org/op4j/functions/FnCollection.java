@@ -147,6 +147,9 @@ class FnCollection {
                 super();
                 this.element = element;
                 this.comparator = comparator;
+                if (this.comparator == null) {
+                    throw new NullPointerException("Cannot sort null elements");
+                }
             }
             
             public T getElement() {
@@ -160,10 +163,36 @@ class FnCollection {
             @SuppressWarnings("unchecked")
             public int compareTo(OrderableElement<T> o) {
                 if (this.comparator == null) {
-                    throw new NullPointerException();
+                    throw new NullPointerException("Cannot sort null elements");
                 }
                 return ((Comparable)this.comparator).compareTo(o.getComparator());
             }
+
+            @Override
+            public int hashCode() {
+                final int prime = 31;
+                int result = 1;
+                result = prime * result
+                        + ((this.comparator == null) ? 0 : this.comparator.hashCode());
+                return result;
+            }
+
+            @Override
+            @SuppressWarnings("unchecked")
+            public boolean equals(Object obj) {
+                if (this == obj) {
+                    return true;
+                }
+                if (obj == null) {
+                    return false;
+                }
+                if (getClass() != obj.getClass()) {
+                    return false;
+                }
+                final OrderableElement<T> other = (OrderableElement<T>) obj;
+                return this.comparator.equals(other.comparator);
+            }
+
             
         }
         
