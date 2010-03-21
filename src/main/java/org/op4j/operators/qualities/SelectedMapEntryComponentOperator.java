@@ -20,13 +20,9 @@
 package org.op4j.operators.qualities;
 
 
-
-
-
-
 /**
  * <p>
- * This interface contains methods for ending array iterations.
+ * This interface contains methods for ending selections.
  * </p>
  * 
  * @since 1.0
@@ -34,17 +30,17 @@ package org.op4j.operators.qualities;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface NavigatingArrayOperator<T> {
+public interface SelectedMapEntryComponentOperator<T> {
 
     
     /**
      * <p>
-     * Ends the current iteration. After the execution of this method, all subsequent operations
-     * will be applied on the iterated array as a whole instead of in a by-element basis.
+     * Ends the selection currently active for this level.
      * </p>
      * 
-     * @return an operator which will execute all operations on the iterated array as a whole.
+     * @return an operator which will execute all subsequent operations on 
+     *         all the target objects instead of only on the previously selected ones. 
      */
-    public NavigableArrayOperator<T> endFor();
+    public SelectableMapEntryComponentOperator<T> endIf();
 	
 }

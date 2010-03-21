@@ -21,6 +21,8 @@ package org.op4j.operators.qualities;
 
 import java.util.Comparator;
 
+import org.op4j.functions.IFunction;
+
 
 
 /**
@@ -55,6 +57,18 @@ public interface SortableOperator<T> {
      * @return an operator containing the sorted structure as target object.
      */
     public SortableOperator<T> sort(final Comparator<? super T> comparator);
+    
+    
+    /**
+     * <p>
+     * Sorts the elements of the structure according to the result of executing the specified
+     * function.
+     * </p>
+     * 
+     * @param by the function to be executed in order to obtain the compared object
+     * @return an operator containing the sorted structure as target object.
+     */
+    public SortableOperator<T> sortBy(final IFunction<? super T,?> by);
 
     
 }
