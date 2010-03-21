@@ -17,25 +17,23 @@ Working with lists
 
   * {{{a1}Creating list expressions}}
 
-  * {{{a2}Building lists}}
+  * {{{a2}Converting to arrays, sets or maps}}
 
-  * {{{a3}Converting to...}}
+  * {{{a3}Iterating}}
 
-  * {{{a4}Iterating}}
+  * {{{a4}Modifying}}
 
-  * {{{a5}Modifying}}
-
-  * {{{a6}Executing functions}}
+  * {{{a5}Executing functions}}
   
-  * {{{a7}Mapping functions}}
+  * {{{a6}Mapping functions}}
 
-  * {{{a8}Selecting (conditional code)}}
+  * {{{a7}Selecting (conditional code)}}
 
-  * {{{a9}Replacing}}
+  * {{{a8}Replacing}}
 
-  * {{{a10}Removing duplicates}}
+  * {{{a9}Removing duplicates}}
 
-  * {{{a11}Sorting}}
+  * {{{a10}Sorting}}
 
 
 
@@ -58,6 +56,14 @@ Op.onList(list)...
 ---
 
 
+*** Creating lists from their elements
+
+  List expressions can be created by directly specifying the list elements, like this:
+  
+---
+Op.onListFor("hello", "ola", "hola", "hallo", "ciao").forEach()...
+---
+
 
 ** Function expressions
 
@@ -67,19 +73,9 @@ Op.onList(list)...
 // Create a function which receives a List<String> variable as input
 function = Fn.onListOf(Types.STRING)...get();
 ---
-     
-     
-* {2}. Building lists
-
-  Lists can be built from their elements very easily by creating a generic operator (which can
-  be <unique> or <multiple>) and then calling the <<<buildList()>>> action:
-  
----
-List<String> capitals = Op.onAll("Santiago", "Madrid", "Brussels").buildList().get();
----
 
 
-* {3}. Converting to...
+* {2}. Converting to arrays, sets or maps
 
 ** Arrays
   
@@ -123,29 +119,85 @@ Map<Integer,Calendar> map = Op.on(list).toMap(mapBuilder).get();
 ---
 
 
-*** Evaluating keys
+*** Zipping keys or values
 
-  A Map can also be created from a list by creating map entries using the list elements as
-  values and executing (evaluating) a function on each value for obtaining its corresponding key.
+  A Map can also be created from a list by zipping. Zipping means combining the elements in
+  the list with other objects like this:
 
 ---
-IFunction<String,Integer> keyEvalFn = ...;
-Map<Integer,String> map = Op.on(list).toMapByKeyEval(keyEvalFn).get();
+// map = {{1="a"}, {2="b"}}
+Map<Integer,String> map = 
+    Op.onListFor(1,2).zipValues("a","b").get();
 ---
 
-*** Alternating elements
+  Or similarly:
+  
+---
+// map = {{"a"=1}, {"b"=2}}
+Map<String,Integer> map = 
+    Op.onListFor(1,2).zipKeys("a","b").get();
+---
 
-  The third way to create a Map from a list is by alternating elements, this is, by considering
+  Alternatively, a function can be used for evaluating existing elements and obtaining keys or values:
+
+---
+IFunction<Integer,String> valueEvaluatorFn = ...;
+Map<Integer,String> map = 
+    Op.onListFor(1,2).zipValuesBy(valueEvaluatorFn).get();
+---
+
+---
+IFunction<Integer,String> keyEvaluatorFn = ...;
+Map<String,Integer> map = 
+    Op.onListFor(1,2).zipKeysBy(keyEvaluatorFn).get();
+---
+
+
+**** Zipping and Grouping
+
+  Collisions (entries with the same key) can be avoided when zipping by using <grouping> actions:
+  
+---
+// mapOfArrays = {{1=["a","c"]}, {2=["b","d","e]}}
+Map<Integer,List<String>> mapOfArrays = 
+    Op.onListFor(1,2,1,2,2).zipAndGroupValues("a","b","c","d","e").get();
+---
+
+---
+IFunction<Integer,String> keyEvaluatorFn = ...;
+Map<String,List<Integer>> map = 
+    Op.onListFor(1,2,3,4,5,6).zipAndGroupKeysBy(keyEvaluatorFn).get();
+---
+  
+    
+  
+*** Coupling
+
+  The third way to create a Map from a list is by "coupling" or alternating elements, this is, by considering
   even elements as keys and odd elements as values (starting with 0). This will mean of course that, for
   a <<<List\<String\>>>>, we will get a <<<Map\<String,String\>>>>.
 
 ---
-Map<String,String> map = Op.on(list).toMapByAlternateElements().get();
+// map = {{"a"="X"}, {"b"="Y"}}
+Map<String,String> map = 
+    Op.onListFor("a","X","b","Y").couple().get();
 ---
   
   
+**** Coupling and Grouping
 
-* {4}. Iterating
+  Again, collisions can be avoided by grouping...
+
+---
+// map = {{"a"=["X","Y","Z"]}, {"b"=["1","2"]}}
+Map<String,List<String>> mapOfArray = 
+    Op.onListFor("a","X","b","1","a","Y","a","Z","b","2").coupleAndGroup().get();
+---
+
+  
+  
+
+* {3}. Iterating
 
   Lists can be iterated according to the following scheme:
 
@@ -173,7 +225,7 @@ Set<String> set = Op.on(list).forEach().exec(FnString.toUpperCase()).endFor().to
 ---
    
   
-* {5}. Modifying
+* {4}. Modifying
 
   A list can be modified by adding or removing elements from it. 
   
@@ -235,7 +287,7 @@ Op.on(list).removeAllNotNullAndFalse(eval)...
 
 
 
-* {6}. Executing functions
+* {5}. Executing functions
   
 ** Executing functions on the list elements
 
@@ -303,7 +355,7 @@ Calendar calendar =
 
   
 
-* {7}. Mapping functions
+* {6}. Mapping functions
 
   <Mapping> a list is the equivalent to iterating it, applying a function to each of its elements
   and then ending the iteration:
@@ -342,7 +394,7 @@ Op.on(list).mapIfNotNull(myFunction)...
 
   
   
-* {8}. Selecting (conditional code)
+* {7}. Selecting (conditional code)
 
   op4j allows the conditional execution of actions. Once the condition (an action starting with
   "<<<if>>>") is executed, all subsequent actions will apply only on the selected parts of the target object.
@@ -441,7 +493,7 @@ List<String> newArray =
 ---
   
 
-* {9}. Replacing
+* {8}. Replacing
 
   List elements (or the list itself) can be replaced by other objects:
   
@@ -460,7 +512,7 @@ List<String> newList =
 
 
 
-* {10}. Removing duplicates
+* {9}. Removing duplicates
 
   Lists can contain duplicate elements, which can be removed by executing a <distinct()> action:
   
@@ -469,7 +521,7 @@ List<String> newList = Op.on(list).distinct().get();
 ---
   
 
-* {11}. Sorting
+* {10}. Sorting
 
   Lists can be sorted, both using a comparator or <natural order>:
   
@@ -482,4 +534,15 @@ List<String> newList = Op.on(list).sort().get();
 Comparator<String> comparator = ...;
 List<String> newList = Op.on(list).sort(comparator).get();
 ---
+  
+  
+  Also, lists can be sorted not by the elements themselves, but by the result of executing a function
+  on the array elements:
+  
+  
+---
+IFunction<String, Comparable<?>> function = ...;
+List<String> newList = Op.on(list).sortBy(function).get();
+---
+  
   

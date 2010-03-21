@@ -16,23 +16,21 @@ Working with sets
 
   * {{{a1}Creating set expressions}}
 
-  * {{{a2}Building sets}}
+  * {{{a2}Converting to arrays, lists or maps}}
 
-  * {{{a3}Converting to...}}
-
-  * {{{a4}Iterating}}
+  * {{{a3}Iterating}}
   
-  * {{{a5}Modifying}}
+  * {{{a4}Modifying}}
 
-  * {{{a6}Executing functions}}
+  * {{{a5}Executing functions}}
   
-  * {{{a7}Mapping functions}}
+  * {{{a6}Mapping functions}}
 
-  * {{{a8}Selecting (conditional code)}}
+  * {{{a7}Selecting (conditional code)}}
 
-  * {{{a9}Replacing}}
+  * {{{a8}Replacing}}
 
-  * {{{a10}Sorting}}
+  * {{{a9}Sorting}}
 
 
 * {1}. Creating set expressions
@@ -54,6 +52,15 @@ Op.onList(set)...
 
 
 
+*** Creating lists from their elements
+
+  List expressions can be created by directly specifying the list elements, like this:
+  
+---
+Op.onListFor("hello", "ola", "hola", "hallo", "ciao").forEach()...
+---
+
+
 ** Function expressions
 
   Function expressions are created as usual with other structures:
@@ -62,19 +69,9 @@ Op.onList(set)...
 // Create a function which receives a Set<String> variable as input
 function = Fn.onSetOf(Types.STRING)...get();
 ---
-     
-     
-* {2}. Building sets
-
-  Sets can be built from their elements very easily by creating a generic operator (which can
-  be <unique> or <multiple>) and then calling the <<<buildSet()>>> action:
-  
----
-Set<String> capitals = Op.onAll("Santiago", "Madrid", "Brussels").buildSet().get();
----
 
 
-* {3}. Converting to...
+* {2}. Converting to...
 
 ** Arrays
   
@@ -118,29 +115,76 @@ Map<Integer,Calendar> map = Op.on(set).toMap(mapBuilder).get();
 ---
 
 
-*** Evaluating keys
+*** Zipping keys or values
 
-  A Map can also be created from a set by creating map entries using the set elements as
-  values and executing (evaluating) a function on each value for obtaining its corresponding key.
+  A Map can also be created from a set by zipping. Zipping means combining the elements in
+  the set with other objects like this:
 
 ---
-IFunction<String,Integer> keyEvalFn = ...;
-Map<Integer,String> map = Op.on(set).toMapByKeyEval(keyEvalFn).get();
+// map = {{1="a"}, {2="b"}}
+Map<Integer,String> map = 
+    Op.onSetFor(1,2).zipValues("a","b").get();
 ---
 
-*** Alternating elements
+  Or similarly:
+  
+---
+// map = {{"a"=1}, {"b"=2}}
+Map<String,Integer> map = 
+    Op.onSetFor(1,2).zipKeys("a","b").get();
+---
 
-  The third way to create a Map from a set is by alternating elements, this is, by considering
+  Alternatively, a function can be used for evaluating existing elements and obtaining keys or values:
+
+---
+IFunction<Integer,String> valueEvaluatorFn = ...;
+Map<Integer,String> map = 
+    Op.onSetFor(1,2).zipValuesBy(valueEvaluatorFn).get();
+---
+
+---
+IFunction<Integer,String> keyEvaluatorFn = ...;
+Map<String,Integer> map = 
+    Op.onSetFor(1,2).zipKeysBy(keyEvaluatorFn).get();
+---
+
+
+**** Zipping and Grouping
+
+  Collisions (entries with the same key) can be avoided when zipping by using <grouping> actions:
+  
+---
+// mapOfArrays = {{1=["a","c"]}, {2=["b","d","e]}}
+Map<Integer,Set<String>> mapOfArrays = 
+    Op.onSetFor(1,2,1,2,2).zipAndGroupValues(Types.STRING, "a","b","c","d","e").get();
+---
+
+---
+IFunction<Integer,String> keyEvaluatorFn = ...;
+Map<String,Set<Integer>> map = 
+    Op.onSetFor(1,2,3,4,5,6).zipAndGroupKeysBy(keyEvaluatorFn).get();
+---
+  
+
+
+
+*** Coupling
+
+  The third way to create a Map from a set is by "coupling" or alternating elements, this is, by considering
   even elements as keys and odd elements as values (starting with 0). This will mean of course that, for
   a <<<Set\<String\>>>>, we will get a <<<Map\<String,String\>>>>.
 
 ---
-Map<String,String> map = Op.on(set).toMapByAlternateElements().get();
+// map = {{"a"="X"}, {"b"="Y"}}
+Map<String,String> map = 
+    Op.onSetFor("a","X","b","Y").couple().get();
 ---
   
   
+  
+  
 
-* {4}. Iterating
+* {3}. Iterating
 
   Sets can be iterated according to the following scheme:
 
@@ -168,7 +212,7 @@ List<String> list = Op.on(set).forEach().exec(FnString.toUpperCase()).endFor().t
 ---
    
   
-* {5}. Modifying
+* {4}. Modifying
 
   A set can be modified by adding or removing elements from it. 
   
@@ -232,7 +276,7 @@ Op.on(set).removeAllNotNullAndFalse(eval)...
 
 
 
-* {6}. Executing functions
+* {5}. Executing functions
   
 ** Executing functions on the set elements
 
@@ -300,7 +344,7 @@ Integer result = Op.on(set).exec(countsetElementsFn).get();
 
   
 
-* {7}. Mapping functions
+* {6}. Mapping functions
 
   <Mapping> a set is the equivalent to iterating it, applying a function to each of its elements
   and then ending the iteration:
@@ -339,7 +383,7 @@ Op.on(set).mapIfNotNull(myFunction)...
 
   
   
-* {8}. Selecting (conditional code)
+* {7}. Selecting (conditional code)
 
   op4j allows the conditional execution of actions. Once the condition (an action starting with
   "<<<if>>>") is executed, all subsequent actions will apply only on the selected parts of the target object.
@@ -438,7 +482,7 @@ Set<String> newArray =
 ---
   
 
-* {9}. Replacing
+* {8}. Replacing
 
   Set elements (or the set itself) can be replaced by other objects:
   
@@ -457,7 +501,7 @@ Set<String> newSet =
 
 
 
-* {10}. Sorting
+* {9}. Sorting
 
   Sets can be sorted (op4j uses <<<LinkedHashSet>>> internally), both using a comparator 
   or <natural order>:
@@ -471,4 +515,17 @@ Set<String> newSet = Op.on(set).sort().get();
 Comparator<String> comparator = ...;
 Set<String> newSet = Op.on(set).sort(comparator).get();
 ---
+  
+  
+  
+  Also, lists can be sorted not by the elements themselves, but by the result of executing a function
+  on the array elements:
+  
+  
+---
+IFunction<String, Comparable<?>> function = ...;
+Set<String> newSet = Op.on(set).sortBy(function).get();
+---
+  
+  
   

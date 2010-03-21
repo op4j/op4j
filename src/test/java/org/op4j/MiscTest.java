@@ -766,6 +766,8 @@ watch.start();
         System.out.println(
                 Op.onMapFor(23, "twenty-three").and(43, "forty-three").and(10,"ten").sort().get());
         
+        System.out.println(
+                    Arrays.asList(Op.onArrayFor(1,2,1,2,2).zipAndGroupValues(Types.STRING, "a","b","c","d","e").get().get(1)));
         
     }
     
