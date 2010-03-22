@@ -9,39 +9,34 @@ Working with objects of any type (generic operators)
   operator which will let you execute actions on your objects, but not offer any special built-in
   features like iterating with <forEach()>.
   
-  * {{{a1}Creating generic expressions}}
+    * {{{a1}Creating generic expressions}}
 
-  * {{{a2}Returning results}}
+    * {{{a2}Returning results}}
 
-  * {{{a3}Building structures}}
+    * {{{a3}Converting to arrays, lists, sets or maps}}
 
-  * {{{a4}Modifying}}
+    * {{{a4}Executing functions}}
 
-  * {{{a5}Executing functions}}
+    * {{{a5}Selecting (conditional code)}}
 
-  * {{{a6}Selecting (conditional code)}}
+    * {{{a6}Replacing}}
 
-  * {{{a7}Replacing}}
+    * {{{a7}Unfolding}}
   
 
 * {1}. Creating generic expressions
 
 ** Operation expressions
 
-  Operation expressions can be created on just one object, in which case they are called "unique"
-  operators:
+  Generic operation expressions are created on an object which is neither an array, nor a list,
+  map or set:
   
 ---
 Op.on(object)...
 ---
 
-  ...or they can be created on any number of objects, in which case they are called "multi" operators: 
-  
----
-Op.onAll(object1, object2, object3)...
----
-
-  Also, any operator can be turned into a generic operator by executing the <generic()> action:
+  Also, any operator on arrays, lists, maps or sets can be turned into a generic operator by 
+  executing the <generic()> action:
   
 ---
 Op.onList(...).generic().[GENERIC ACTIONS]...
@@ -51,7 +46,7 @@ Op.onList(...).generic().[GENERIC ACTIONS]...
 
 ** Function expressions
 
-  Function expressions are created by specifying the input type. Only one input type can be specified:
+  Function expressions are created by specifying the input type:
   
 ---
 // Create a function which receives a String variable as input
@@ -62,313 +57,173 @@ function = Fn.on(Types.STRING)...get();
 
 * {2}. Returning results
 
-  Generic operators are a bit different to other operators in that they don't always return their
-  results with a <<<get()>>> action, but instead this will only be true for <unique> operators:
+  Generic operators, as all others, return their results by means of the <<<get()>>> action:
   
 ---
 newObject = Op.on(object)...get();
 ---
   
-  ...but <multi> operators will need to specify whether the results are to be returned as a list or
-  as an array:
-
----
-Type<T> type = ...;
-...
-List<T> newObjectList = Op.onAll(object1, object2)...getAsList();
-T[] newObjectArray = Op.onAll(object1, object2)...getAsArray(type);
----
-
-     
-     
-* {3}. Building structures
-
-  One of the most useful uses of generic operators is for building structures (arrays, lists, maps
-  or sets) from their elements. 
-  
-  Once a structure is built, the operator is no longer a generic operator but an array/list/map/set
-  operator.
-
-** Building arrays
-
-  Arrays can be built from their elements by calling the <<<buildArrayOf(...)>>> action.
-  
-  This action requires the type of the array elements to be specified:
-  
----
-String[] capitals = Op.onAll("Santiago", "Madrid", "Brussels").buildArrayOf(Types.STRING).get();
----
-
-** Building lists
-
-  Lists can be built from their elements by calling the <<<buildList()>>> action:
-  
----
-List<String> capitals = Op.onAll("Santiago", "Madrid", "Brussels").buildList().get();
----
-
-
-
-** Building maps
-
-  Maps can be built from their elements in a number of different ways.
-  
-  Not only maps (<<<Map\<K,V\>>>>) can be built this way, but also maps of arrays
-  (<<<Map\<K,V[]\>>>>), maps of lists (<<<Map\<K,List\<V\>\>>>>) and maps of sets
-  (<<<Map\<K,Set\<V\>\>>>>), which are the result of grouping multiple values with the same 
-  assigned key. 
-  
-  
-*** Building Map\<K,V\> objects 
-
-**** Using a Map Builder
-  
----
-MapBuilder<String,Integer,String> mapBuilder = ...;
-Map<Integer,String> map = 
-    Op.onAll("Santiago", "Madrid", "Brussels").buildMap(mapBuilder).get();
----
-
-
-**** Evaluating keys
-  
----
-IFunction<String,Integer> keyEval = ...;
-Map<Integer,String> map = 
-    Op.onAll("Santiago", "Madrid", "Brussels").buildMapByKeyEval(keyEval).get();
----
-
-
-**** Alternating elements
-  
----
-Map<String,String> capitalsByTerritory = 
-    Op.onAll("Galicia", "Santiago", "Spain", "Madrid", "EU", "Brussels").
-        buildMapByAlternateElements().get();
----
-
-
-
-*** Building Map\<K,V[]\> objects
-  
-  Maps of arrays are created in the same way as <<<Map\<K,V\>>>>, but elements with
-  the same key are now grouped into arrays instead of all but the last one being discarded.
-
-  Building maps of arrays needs the type of the arrays' elements in order to being able to 
-  instantiate those arrays. 
-
-**** Using a Map Builder
-  
----
-MapBuilder<String,Integer,String> mapBuilder = ...;
-Map<Integer,String[]> map = 
-    Op.onAll("Santiago", "Madrid", "Brussels").buildMapOfArrayOf(Types.STRING, mapBuilder).get();
----
-
-**** Evaluating keys
-  
----
-IFunction<String,Integer> keyEval = ...;
-Map<Integer,String[]> map = 
-    Op.onAll("Santiago", "Madrid", "Brussels").buildMapOfArrayByKeyEvalOf(Types.STRING, keyEval).get();
----
-
-**** Alternating elements
-  
----
-Map<String,String[]> citiesByCountry = 
-    Op.onAll("Spain", "Santiago", "Spain", "Madrid", "Belgium", "Brussels").
-        buildMapOfArrayByAlternateElementsOf(Types.STRING).get();
----
-
-
-*** Building Map\<K,List\<V\>\> objects 
-  
-  Maps of lists are created in the same way as <<<Map\<K,V\>>>>, but elements with
-  the same key are now grouped into lists instead of all but the last one being discarded.
-
-**** Using a Map Builder
-  
----
-MapBuilder<String,Integer,String> mapBuilder = ...;
-Map<Integer,List<String>> map = 
-    Op.onAll("Santiago", "Madrid", "Brussels").buildMapOfList(mapBuilder).get();
----
-
-**** Evaluating keys
-  
----
-IFunction<String,Integer> keyEval = ...;
-Map<Integer,List<String>> map = 
-    Op.onAll("Santiago", "Madrid", "Brussels").buildMapOfListByKeyEval(keyEval).get();
----
-
-**** Alternating elements
-  
----
-Map<String,List<String>> citiesByCountry = 
-    Op.onAll("Spain", "Santiago", "Spain", "Madrid", "Belgium", "Brussels").
-        buildMapOfListByAlternateElements().get();
----
-
-
-*** Building Map\<K,Set\<V\>\> objects 
-  
-  Maps of sets are created in the same way as <<<Map\<K,V\>>>>, but elements with
-  the same key are now grouped into sets instead of all but the last one being discarded.
-
-**** Using a Map Builder
-  
----
-MapBuilder<String,Integer,String> mapBuilder = ...;
-Map<Integer,Set<String>> map = 
-    Op.onAll("Santiago", "Madrid", "Brussels").buildMapOfSet(mapBuilder).get();
----
-
-**** Evaluating keys
-  
----
-IFunction<String,Integer> keyEval = ...;
-Map<Integer,Set<String>> map = 
-    Op.onAll("Santiago", "Madrid", "Brussels").buildMapOfSetByKeyEval(keyEval).get();
----
-
-**** Alternating elements
-  
----
-Map<String,Set<String>> citiesByCountry = 
-    Op.onAll("Spain", "Santiago", "Spain", "Madrid", "Belgium", "Brussels").
-        buildMapOfSetByAlternateElements().get();
----
-
-
-
-** Building sets
-
-  Sets can be built from their elements by calling the <<<buildSet()>>> action:
-  
----
-Set<String> capitals = Op.onAll("Santiago", "Madrid", "Brussels").buildSet().get();
----
-
 
 
 
   
-* {4}. Modifying
-
-  Modifying a generic operator means adding or removing elements from it. 
-  
-  Several options for adding new elements at the end of the operator's targets:
-
----
-Collection<String> strCol = ...;
-...
-Op.on("a String").add("a new String")...
-Op.on("a String").addAll("a new String", "another new String")...
-Op.on("a String").addAll(strCol)...
----
-
-  New elements can also be inserted into a specific position. Positions start with 0.
-
----
-Op.on("a String").insert(2, "a new string")...
-Op.on("a String").insertAll(2, "a new String", "another new String")...
----
-  
-  Removal of elements can be done in several ways. Elements can be removed attending to their 
-  position in the operator:
-
----
-Op.onAll(...).removeAllIndexes(2,3,5)...
-Op.onAll(...).insertAllIndexesNot(2,3,5)...
----
-
-  Also attending to their value:
-
----
-Op.onAll(...).removeAllEqual("Coast", "Mountain")...
----
-
-  Nulls can be removed easily:    
-
----
-Op.onAll(...).removeAllNull()...
----
-
-  And finally a function returning <<<Boolean>>> can be used as evaluator to determine whether
-  an object should be removed or not, in several ways:
-  
----
-IFunction<T,Boolean> eval = ...;
-...
-Op.onAll(...).removeAllTrue(eval)...
-Op.onAll(...).removeAllFalse(eval)...
-Op.onAll(...).removeAllNullOrTrue(eval)...
-Op.onAll(...).removeAllNullOrFalse(eval)...
-Op.onAll(...).removeAllNotNullAndTrue(eval)...
-Op.onAll(...).removeAllNotNullAndFalse(eval)...
----
-
-
-
   
 
-* {5}. Executing functions
+* {3}. Converting to arrays, lists, sets or maps
 
-  When executing a function on a generic operator, if this operator is a multi operator, 
-  the function will be executed on each target object, as if it were a list operator being
-  iterated:
+  Generic operators can convert their targets into <singleton> arrays, lists, sets or maps. This
+  means creating one of these structures and then adding only one element (the target) to them.
+
+
+** Arrays
+  
+  For creating a singleton array:
 
 ---
-List<String> strings = 
-    Op.onAll("a String", "another String").exec(FnString.toUpperCase()).getAsList();
+String[] array = Op.on(str).intoSingletonArrayOf(Types.STRING).get();
+---
+
+
+** Lists
+  
+  For creating a singleton list:
+
+---
+List<String> list = Op.on(str).intoSingletonList().get();
+---
+
+** Sets
+  
+  For creating a singleton set:
+
+---
+Set<String> set = Op.on(str).intoSingletonSet().get();
+---
+
+
+** Maps
+
+  Maps are a little bit trickier, because each <element> of a map (a <map entry>) is in fact composed
+  of two objects instead of one: a <key>, and a <value>.
+  
+  That is why, in order to obtain a map with a single entry from the generic operator's target,
+  we will have to either apply a <map builder> function, or simply add (<zip>) another object as
+  key or value. 
+   
+
+*** Using a Map Builder
+
+  A Map Builder is an function which returns map entries (<<<IFunction<T,Map.Entry\<K,V\>\>>>>),
+  usually created by extending the abstract class <<<org.op4j.functions.MapBuilder>>>, 
+  and which provides op4j with a way of creating a map entry from each of the list's elements.
+  
+  <<<MapBuilder>>> looks like this:
+  
+---
+public abstract class MapBuilder<T,K,V> implements IFunction<T,Map.Entry<K,V>> {
+    public abstract K buildKey(final T target);
+    public abstract V buildValue(final T target);
+    ...
+}
+---   
+
+  Let's use it for creating our singleton map:    
+
+---
+MapBuilder<String,Integer,Calendar> mapBuilder = ...;
+Map<Integer,Calendar> map = Op.on(str).intoSingletonMap(mapBuilder).get();
+---
+
+
+*** Zipping key or value
+
+  The singleton map can also be created by zipping. This means either considering the generic
+  operator's target object as a key and then adding (zipping) a value, or the opposite.
+  
+  Let's add the value:
+
+---
+// map = {{1="a"}}
+Map<Integer,String> map = Op.on(1).zipValue("a").get();
+---
+
+  Or the contrary:
+  
+---
+// map = {{"a"=1}}
+Map<String,Integer> map = Op.on(1).zipKey("a").get();
+---
+
+  Alternatively, a function can be used for evaluating the target object and obtaining the zipped
+  key or value:
+
+---
+IFunction<Integer,String> valueEvaluatorFn = ...;
+Map<Integer,String> map = Op.on(1).zipValueBy(valueEvaluatorFn).get();
+---
+
+---
+IFunction<Integer,String> keyEvaluatorFn = ...;
+Map<String,Integer> map = Op.on(1).zipKeyBy(keyEvaluatorFn).get();
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+* {4}. Executing functions
+
+  In generic operators, functions are executed the usual way:
+
+---
+String upperStr = Op.on("a String").exec(FnString.toUpperCase()).get();
 ---
 
   A condition can be added for <null-saving> a function execution, if needed:
 
 ---
-List<Integer> newList = 
-    Op.onAll(...).execIfNotNull(FnString.toInteger()).getAsList();
+String upperStr = Op.on(str).execIfNotNull(FnString.toUpperCase()).get();
 ---
 
 
 
 
   
-* {6}. Selecting (conditional code)
+* {5}. Selecting (conditional code)
 
   op4j allows the conditional execution of actions. Once the condition (an action starting with
-  "<<<if>>>") is executed, all subsequent actions will apply only on the selected target objects.
+  "<<<if>>>") is executed, all subsequent actions will apply only on the target object only
+  if it has been selected (condition was true).
   
-  For example, lets convert into upper case only the first String target:
+  For example, lets convert into upper case only if the String value is not "uncapitalizable".
   
 ---
-List<String> newList = Op.onAll(...).ifIndex(0).exec(FnString.toUpperCase()).getAsList();
+String upper = 
+    Op.on(str).ifTrue(FnString.notEq("uncapitalizable")).exec(FnString.toUpperCase()).get();
 ---
 
-  Selections can be ended with <<<endIf(...)>>>:
+  As usual, selections can be ended with <<<endIf(...)>>>:
   
 ---
-List<String> newList = 
-    Op.onAll(...).ifIndex(0,1,3).[ACTIONS ON SELECTED ELEMENTS].endIf()...
+Op.on(...).ifNullOrTrue(...).[ACTIONS ON SELECTED ELEMENTS].endIf()...
 ---
   
   
 ** Types of selection actions
-
-  Selection can be done on the target's position in the operator:
-
----  
-Op.onAll(...).ifIndex(0,2,3)....
-Op.onAll(...).ifIndexNot(0,1,5)....
----
   
-  Selection can also be based on the nullity of the target:  
+  Selection can be based on the nullity of the target:  
 
 ---  
-Op.onAll(...).ifNull()....
-Op.onAll(...).ifNotNull()....
+Op.on(...).ifNull()....
+Op.on(...).ifNotNull()....
 ---
 
   And also on the value returned by the evaluation of a function returning <<<Boolean>>>:
@@ -376,12 +231,12 @@ Op.onAll(...).ifNotNull()....
 ---
 IFunction<T,Boolean> eval = ...;
 ...
-Op.onAll(...).ifTrue(eval)...
-Op.onAll(...).ifFalse(eval)...
-Op.onAll(...).ifNullOrTrue(eval)...
-Op.onAll(...).ifNullOrFalse(eval)...
-Op.onAll(...).ifNotNullAndTrue(eval)...
-Op.onAll(...).ifNotNullAndFalse(eval)...
+Op.on(...).ifTrue(eval)...
+Op.on(...).ifFalse(eval)...
+Op.on(...).ifNullOrTrue(eval)...
+Op.on(...).ifNullOrFalse(eval)...
+Op.on(...).ifNotNullAndTrue(eval)...
+Op.on(...).ifNotNullAndFalse(eval)...
 ---
 
 
@@ -394,36 +249,82 @@ Op.onAll(...).ifNotNullAndFalse(eval)...
 
 ---
 // Will not compile!
-List<String> newList = 
-    Op.onAll("1", "2", "3").ifIndex(0,1).exec(FnString.toInteger()).getAsList();
+Integer intObj = 
+    Op.on(str).ifTrue(FnString.notEq("-")).exec(FnString.toInteger()).get();
 ---
 
-  ...because converting only <some> of the operator targets to integer would render the operator type
-  inconsistent (some elements would be <<<String>>>, some other <<<Integer>>>).
-
-  This is perfectly valid, though:
-
----
-// FnString.toUpperCase is IFunction<String,String>
-List<String> newArray = 
-    Op.onAll("a", "b", "c").ifIndex(0,1).exec(FnString.toUpperCase()).getAsList();
----
+  ...because converting the operator target only <sometimes> (if some condition is true)
+  means that the real type of the target object cannot be known after executing.
 
 
 
-* {7}. Replacing
+* {6}. Replacing
 
   Operator targets can be replaced by other objects:
   
 ---
-List<String> newList = 
-    Op.onAll(...).ifNull().replaceWith("[no value]").getAsList();
+String newString = 
+    Op.on(str).ifNull().replaceWith("[no value]").get();
 ---
 
   ...which is equivalent to:
   
 ---
-List<String> newList = 
-    Op.onAll(...).replaceIfNullWith("[no value]").getAsList();
+String newString = 
+    Op.on(str).replaceIfNotNullWith("[no value]").get();
 ---
+  
+
+  
+  
+  
+
+* {7}. Unfolding
+
+  Unfolding is a special way of creating arrays, lists or sets from a single object 
+  (in a generic operator) by iteratively applying a function. The resulting structure will 
+  contain the following elements:
+  
+    * Original object ("a").
+  
+    * Result of applying function on "a" ("b").
+  
+    * Result of applying function on "b" ("c").
+  
+    * etc.
+  
+  This iterative execution can end in two ways: if a <while condition> is not specified, iteration
+  will end when the function produces a <<<null>>> result (which will not be added to the list):
+  
+---
+IFunction<Integer,Integer> fn = ...;
+List<Integer> list = Op.on(10).unfoldList(fn).get();
+---
+  
+  If a <while condition> is added, iteration will end when this condition is no longer met:
+  
+---
+IFunction<Integer,Integer> fn = ...;
+Set<Integer> set = Op.on(10).unfoldSet(fn, FnNumber.lessThan(100)).get();
+---
+  
+---
+IFunction<Integer,Integer> fn = ...;
+Integer[] array = Op.on(10).unfoldArrayOf(Types.INTEGER, fn, FnNumber.lessThan(100)).get();
+---
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   

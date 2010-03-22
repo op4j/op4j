@@ -771,7 +771,10 @@ watch.start();
     
         
         System.out.println(Op.onArrayFor(2,4,3,5).reduce(FnReduce.onInteger().max()).get());
+
         
+        System.out.println(Op.on("hello").ifTrue(FnString.notEq("uncapitalizable")).exec(FnString.toUpperCase()).get());
+        System.out.println(Op.on("uncapitalizable").ifTrue(FnString.notEq("uncapitalizable")).exec(FnString.toUpperCase()).get());
     }
     
     
