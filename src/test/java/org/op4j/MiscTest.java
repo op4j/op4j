@@ -768,8 +768,13 @@ watch.start();
         
         System.out.println(
                     Arrays.asList(Op.onArrayFor(1,2,1,2,2).zipAndGroupValues(Types.STRING, "a","b","c","d","e").get().get(1)));
+    
+        
+        System.out.println(Op.onArrayFor(2,4,3,5).reduce(FnReduce.onInteger().max()).get());
         
     }
+    
+    
     
     
     
