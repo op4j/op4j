@@ -1,4 +1,6 @@
 
   - Check the possibility of removing the ofX() step from FnMath
+  - Check FnNumber in order to add methods to FnX (FnMathOfX)
+  
   - FnString.isNumeric or FnString.isInteger(), isFloat() or similar...
   - Maybe create a class containing methods, specific for static importing.
