@@ -47,10 +47,13 @@ import org.op4j.functions.DecimalPoint;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.Fn;
 import org.op4j.functions.FnArray;
+import org.op4j.functions.FnBigDecimal;
+import org.op4j.functions.FnBigInteger;
 import org.op4j.functions.FnBoolean;
 import org.op4j.functions.FnCalendar;
+import org.op4j.functions.FnDouble;
+import org.op4j.functions.FnInteger;
 import org.op4j.functions.FnList;
-import org.op4j.functions.FnMath;
 import org.op4j.functions.FnNumber;
 import org.op4j.functions.FnObject;
 import org.op4j.functions.FnReduce;
@@ -60,7 +63,6 @@ import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Ognl;
 import org.op4j.functions.Reductor;
-import org.op4j.test.auto.TestOperation;
 import org.op4j.util.ValuePair;
 
 /**
@@ -477,7 +479,7 @@ watch.start();
         List<Integer> iL = Op.onListFor(2,1,4,213).get();
         System.out.println(iL);
         
-        System.out.println(Arrays.asList(Op.on(v1).forEach().exec(FnMath.ofInteger().add(Integer.valueOf(10))).get()));
+        System.out.println(Arrays.asList(Op.on(v1).forEach().exec(FnInteger.add(Integer.valueOf(10))).get()));
         
         Op.on(v2).forEach().get();
         
@@ -509,7 +511,7 @@ watch.start();
         System.out.println(Op.onListFor(1,2,3,4,5,6).reduce(redFn1, "-->").get());
         
         
-        System.out.println(Arrays.asList(Op.on(2).exec(FnNumber.toBigInteger()).unfoldArrayOf(Types.BIG_INTEGER, FnMath.ofBigInteger().multiplyBy(BigInteger.valueOf(2)), Ognl.asBoolean("#index < 10")).get()));
+        System.out.println(Arrays.asList(Op.on(2).exec(FnNumber.toBigInteger()).unfoldArrayOf(Types.BIG_INTEGER, FnBigInteger.multiplyBy(BigInteger.valueOf(2)), Ognl.asBoolean("#index < 10")).get()));
 
         Function<Class,List<Class>> fnImplemented = 
             Fn.on(Types.forClass(Class.class)).unfoldList(
@@ -563,17 +565,17 @@ watch.start();
         System.out.println(ValuePair.TYPE_VALUE_PAIR_OF(Types.STRING, Types.CALENDAR));
         
         
-        System.out.println(Op.on(23.24).exec(FnMath.ofDouble().add(43)).get());
+        System.out.println(Op.on(23.24).exec(FnDouble.add(43)).get());
         
-        System.out.println(Op.on(BigDecimal.valueOf(23.24)).exec(FnMath.ofBigDecimal().add(1.2)).get());
+        System.out.println(Op.on(BigDecimal.valueOf(23.24)).exec(FnBigDecimal.add(1.2)).get());
         
-        System.out.println(Op.onListFor(30,30,40).map(FnNumber.toBigInteger()).exec(FnMath.ofBigInteger().avg(RoundingMode.CEILING)).get());
+        System.out.println(Op.onListFor(30,30,40).map(FnNumber.toBigInteger()).exec(FnBigInteger.avg(RoundingMode.CEILING)).get());
         
-        System.out.println(Op.on(10).exec(FnMath.ofInteger().divideBy(3,RoundingMode.CEILING)).get());
+        System.out.println(Op.on(10).exec(FnInteger.divideBy(3,RoundingMode.CEILING)).get());
         System.out.println(Op.onListFor(10,3).reduce(FnReduce.onInteger().div(RoundingMode.CEILING)).get());
         
         
-        System.out.println(Op.on(3).unfoldList(FnMath.ofInteger().multiplyBy(2), FnNumber.lessOrEqTo(100)).get());
+        System.out.println(Op.on(3).unfoldList(FnInteger.multiplyBy(2), FnNumber.lessOrEqTo(100)).get());
         
         Function<Integer,Boolean> fnAnd1 = FnBoolean.and(FnObject.eq("lala"), FnNumber.notEq(534));
         
@@ -581,10 +583,10 @@ watch.start();
                 Op.on(233).exec(FnBoolean.and(FnNumber.greaterThan(44), FnObject.lessThan(534))).get());
         
         System.out.println(
-                Op.on(1233).ifTrue(Fn.not(Fn.and(FnNumber.greaterThan(44), FnObject.lessThan(534)))).exec(FnMath.ofInteger().add(10)).get());
+                Op.on(1233).ifTrue(Fn.not(Fn.and(FnNumber.greaterThan(44), FnObject.lessThan(534)))).exec(FnInteger.add(10)).get());
         
         System.out.println(
-                Op.on(1233).exec(Fn.chain(FnMath.ofInteger().add(10), FnNumber.greaterThan(1200))).get());
+                Op.on(1233).exec(Fn.chain(FnInteger.add(10), FnNumber.greaterThan(1200))).get());
 
         System.out.println(Op.onListFor(1,2,3,4).exec(FnList.ofInteger().containsAny(12,3)).get());
         
@@ -700,10 +702,10 @@ watch.start();
 
         BigInteger biOpResult =
             Op.on(biValue).
-                exec(FnMath.ofBigInteger().divideBy(BigInteger.valueOf(23))).
-                exec(FnMath.ofBigInteger().pow(3)).
-                exec(FnMath.ofBigInteger().subtract(BigInteger.valueOf(5))).
-                exec(FnMath.ofBigInteger().abs()).get();
+                exec(FnBigInteger.divideBy(BigInteger.valueOf(23))).
+                exec(FnBigInteger.pow(3)).
+                exec(FnBigInteger.subtract(BigInteger.valueOf(5))).
+                exec(FnBigInteger.abs()).get();
 
         System.out.println("With op4j:    " + biOpResult);
         
@@ -715,7 +717,7 @@ watch.start();
 
         BigInteger biOpResult1 =
             Op.on(biValue).
-                exec(FnMath.ofBigInteger().divideBy(BigInteger.valueOf(23))).get();
+                exec(FnBigInteger.divideBy(BigInteger.valueOf(23))).get();
 
         System.out.println("[1] With op4j:    " + biOpResult1);
         
@@ -726,7 +728,7 @@ watch.start();
 
         BigDecimal biOpResult1d =
             Op.on(new BigDecimal(biValue)).
-                exec(FnMath.ofBigDecimal().divideBy(BigDecimal.valueOf(23.0), RoundingMode.DOWN)).get();
+                exec(FnBigDecimal.divideBy(BigDecimal.valueOf(23.0), RoundingMode.DOWN)).get();
 
         System.out.println("[1D] With op4j:    " + biOpResult1d);
         
