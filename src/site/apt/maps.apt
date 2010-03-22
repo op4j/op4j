@@ -10,25 +10,23 @@ Working with maps
   Map input objects are considered immutable, so they will not be changed when used in an op4j
   expression and a new map will always be returned when executing <<<get()>>>.
   
-  This, however, does not apply to the input map element objects, which could be changed if you
+  This, however, does not apply to the input map key and value objects, which could be changed if you
   executed on them any functions which might change their state instead of substituting them 
   for new elements.
 
   * {{{a1}Creating map expressions}}
 
-  * {{{a2}Building maps}}
-
-  * {{{a3}Extracting keys and values}}
+  * {{{a2}Extracting keys and values}}
   
-  * {{{a4}Iterating}}
+  * {{{a3}Iterating}}
 
-  * {{{a5}Modifying}}
+  * {{{a4}Modifying}}
 
-  * {{{a6}Executing functions}}
+  * {{{a5}Executing functions}}
   
-  * {{{a7}Selecting (conditional code)}}
+  * {{{a6}Selecting (conditional code)}}
 
-  * {{{a8}Replacing}}
+  * {{{a7}Replacing}}
 
 
 * {1}. Creating map expressions
@@ -49,6 +47,29 @@ Op.onMap(map)...
 ---
 
 
+*** Maps from their elements
+
+  Map expressions can be created by specifying the map elements (entries), as <key>/<value> pairs, like:
+
+---
+Op.onMapFor(key1, value1).and(key2, value2).and(key3, value3)...
+---
+
+  Once any action is called, the <<<and(...)>>> method will not be available anymore, as it is only
+  meant to <build> the map. 
+
+
+*** Maps from arrays, lists or sets. 
+
+  Maps can be built from arrays, lists or sets in a variety of ways (see the {{{arrays.html}arrays}},
+  {{{lists.html}lists}} or {{{sets.html}sets}} documentation for details).
+  
+  For example, zipping can be used:
+  
+---
+  Map<String,Integer> map = Op.onListFor("a","b","c").zipValues(1,2,3).get();
+---
+
 
 ** Function expressions
 
@@ -60,142 +81,8 @@ function = Fn.onMapOf(Types.INTEGER, Types.STRING)...get();
 ---
      
      
-* {2}. Building maps
 
-  Maps can be built from their elements in a number of different ways by creating a generic 
-  operator (which can be <unique> or <multiple>) and then calling one of the <buildMap> actions.
-  
-  Not only maps (<<<Map\<K,V\>>>>) can be built this way, but also maps of arrays
-  (<<<Map\<K,V[]\>>>>), maps of lists (<<<Map\<K,List\<V\>\>>>>) and maps of sets
-  (<<<Map\<K,Set\<V\>\>>>>), which are the result of grouping multiple values with the same 
-  assigned key. 
-  
-  
-** Building Map\<K,V\> objects 
-
-*** Using a Map Builder
-  
----
-MapBuilder<String,Integer,String> mapBuilder = ...;
-Map<Integer,String> map = 
-    Op.onAll("Santiago", "Madrid", "Brussels").buildMap(mapBuilder).get();
----
-
-
-*** Evaluating keys
-  
----
-IFunction<String,Integer> keyEval = ...;
-Map<Integer,String> map = 
-    Op.onAll("Santiago", "Madrid", "Brussels").buildMapByKeyEval(keyEval).get();
----
-
-
-*** Alternating elements
-  
----
-Map<String,String> capitalsByTerritory = 
-    Op.onAll("Galicia", "Santiago", "Spain", "Madrid", "EU", "Brussels").
-        buildMapByAlternateElements().get();
----
-
-
-
-** Building Map\<K,V[]\> objects
-  
-  Maps of arrays are created in the same way as <<<Map\<K,V\>>>>, but elements with
-  the same key are now grouped into arrays instead of all but the last one being discarded.
-
-  Building maps of arrays needs the type of the arrays' elements in order to being able to 
-  instantiate those arrays. 
-
-*** Using a Map Builder
-  
----
-MapBuilder<String,Integer,String> mapBuilder = ...;
-Map<Integer,String[]> map = 
-    Op.onAll("Santiago", "Madrid", "Brussels").buildMapOfArrayOf(Types.STRING, mapBuilder).get();
----
-
-*** Evaluating keys
-  
----
-IFunction<String,Integer> keyEval = ...;
-Map<Integer,String[]> map = 
-    Op.onAll("Santiago", "Madrid", "Brussels").buildMapOfArrayByKeyEvalOf(Types.STRING, keyEval).get();
----
-
-*** Alternating elements
-  
----
-Map<String,String[]> citiesByCountry = 
-    Op.onAll("Spain", "Santiago", "Spain", "Madrid", "Belgium", "Brussels").
-        buildMapOfArrayByAlternateElementsOf(Types.STRING).get();
----
-
-
-** Building Map\<K,List\<V\>\> objects 
-  
-  Maps of lists are created in the same way as <<<Map\<K,V\>>>>, but elements with
-  the same key are now grouped into lists instead of all but the last one being discarded.
-
-*** Using a Map Builder
-  
----
-MapBuilder<String,Integer,String> mapBuilder = ...;
-Map<Integer,List<String>> map = 
-    Op.onAll("Santiago", "Madrid", "Brussels").buildMapOfList(mapBuilder).get();
----
-
-*** Evaluating keys
-  
----
-IFunction<String,Integer> keyEval = ...;
-Map<Integer,List<String>> map = 
-    Op.onAll("Santiago", "Madrid", "Brussels").buildMapOfListByKeyEval(keyEval).get();
----
-
-*** Alternating elements
-  
----
-Map<String,List<String>> citiesByCountry = 
-    Op.onAll("Spain", "Santiago", "Spain", "Madrid", "Belgium", "Brussels").
-        buildMapOfListByAlternateElements().get();
----
-
-
-** Building Map\<K,Set\<V\>\> objects 
-  
-  Maps of sets are created in the same way as <<<Map\<K,V\>>>>, but elements with
-  the same key are now grouped into sets instead of all but the last one being discarded.
-
-*** Using a Map Builder
-  
----
-MapBuilder<String,Integer,String> mapBuilder = ...;
-Map<Integer,Set<String>> map = 
-    Op.onAll("Santiago", "Madrid", "Brussels").buildMapOfSet(mapBuilder).get();
----
-
-*** Evaluating keys
-  
----
-IFunction<String,Integer> keyEval = ...;
-Map<Integer,Set<String>> map = 
-    Op.onAll("Santiago", "Madrid", "Brussels").buildMapOfSetByKeyEval(keyEval).get();
----
-
-*** Alternating elements
-  
----
-Map<String,Set<String>> citiesByCountry = 
-    Op.onAll("Spain", "Santiago", "Spain", "Madrid", "Belgium", "Brussels").
-        buildMapOfSetByAlternateElements().get();
----
-
-
-
-* {3}. Extracting keys and values
+* {2}. Extracting keys and values
   
   All keys of a map can be extracted as a Set:
 
@@ -213,7 +100,7 @@ List<String> values = Op.on(map).extractValues().get();
   
   
 
-* {4}. Iterating
+* {3}. Iterating
 
   Maps can be iterated, resulting in an operator acting on its <map entries> (<<<Map.Entry\<K,V\>>>>).
 
@@ -257,7 +144,7 @@ Op.on(map).forEachEntry().onValue().[VALUE ACTIONS].endOn().endFor().[MAP ACTION
 ---
    
   
-* {5}. Modifying
+* {4}. Modifying
 
   A map can be modified by adding or removing elements from it. 
   
@@ -304,7 +191,7 @@ Op.on(map).removeAllFalse(eval)...
 
 
 
-* {6}. Executing functions
+* {5}. Executing functions
   
 ** Executing functions on the map keys or values
 
@@ -406,7 +293,7 @@ Calendar calendar = Op.on(map).exec(myFunction).get();
 
   
   
-* {7}. Selecting (conditional code)
+* {6}. Selecting (conditional code)
 
   op4j allows the conditional execution of actions. Once the condition (an action starting with
   "<<<if>>>") is executed, all subsequent actions will apply only on the selected parts of the target object.
@@ -531,7 +418,7 @@ Map<String,String> newMap =
 ---
   
 
-* {8}. Replacing
+* {7}. Replacing
 
   Map keys, values, entries or even the map itself can be replaced by other objects:
   
