@@ -33,7 +33,7 @@ import org.apache.commons.lang.Validate;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class FnMathOfBigDecimal {
+public final class FnBigDecimal {
 
 	private static final Function<Iterable<BigDecimal>, BigDecimal> MAX_FUNC = new Max();
 	
@@ -54,7 +54,7 @@ public final class FnMathOfBigDecimal {
 	private static final Function<BigDecimal, BigDecimal> ABS_FUNC = new Abs();
 	
 	
-	FnMathOfBigDecimal() {
+	FnBigDecimal() {
 		super();           
 	}
 
@@ -62,7 +62,7 @@ public final class FnMathOfBigDecimal {
      * @return function that returns the maximum {@link BigDecimal} of an object
      *         implementing {@link Iterable}
      */
-    public final Function<Iterable<BigDecimal>, BigDecimal> max() {
+    public final static Function<Iterable<BigDecimal>, BigDecimal> max() {
         return MAX_FUNC;
     }
 
@@ -70,7 +70,7 @@ public final class FnMathOfBigDecimal {
      * @return function that returns the minimum {@link BigDecimal} of an object
      *         implementing {@link Iterable}
      */
-    public final Function<Iterable<BigDecimal>, BigDecimal> min() {
+    public final static Function<Iterable<BigDecimal>, BigDecimal> min() {
         return MIN_FUNC;
     }
 
@@ -78,7 +78,7 @@ public final class FnMathOfBigDecimal {
      * @return function that returns the sum of the {@link BigDecimal} elements
      *         in an object implementing {@link Iterable}
      */
-    public final Function<Iterable<BigDecimal>, BigDecimal> sum() {
+    public final static Function<Iterable<BigDecimal>, BigDecimal> sum() {
         return SUM_FUNC;
     }
 
@@ -86,354 +86,354 @@ public final class FnMathOfBigDecimal {
      * @return function that returns the average of the {@link BigDecimal}
      *         elements in an object implementing {@link Iterable}
      */
-    public final Function<Iterable<BigDecimal>, BigDecimal> avg() {
+    public final static Function<Iterable<BigDecimal>, BigDecimal> avg() {
         return AVG_FUNC;
     }
 
-    public final Function<Iterable<BigDecimal>, BigDecimal> avg(MathContext mathContext) {
+    public final static Function<Iterable<BigDecimal>, BigDecimal> avg(MathContext mathContext) {
         return new Avg(mathContext);
     }
 
-    public final Function<Iterable<BigDecimal>, BigDecimal> avg(RoundingMode roundingMode) {
+    public final static Function<Iterable<BigDecimal>, BigDecimal> avg(RoundingMode roundingMode) {
         return new Avg(roundingMode);
     }
 
-    public final Function<BigDecimal[], BigDecimal> maxArray() {
+    public final static Function<BigDecimal[], BigDecimal> maxArray() {
         return MAX_ARRAY_FUNC;
     }
 
-    public final Function<BigDecimal[], BigDecimal> minArray() {
+    public final static Function<BigDecimal[], BigDecimal> minArray() {
         return MIN_ARRAY_FUNC;
     }
 
-    public final Function<BigDecimal[], BigDecimal> sumArray() {
+    public final static Function<BigDecimal[], BigDecimal> sumArray() {
         return SUM_ARRAY_FUNC;
     }
 
-    public final Function<BigDecimal[], BigDecimal> avgArray() {
+    public final static Function<BigDecimal[], BigDecimal> avgArray() {
         return AVG_ARRAY_FUNC;
     }
 
-    public final Function<BigDecimal[], BigDecimal> avgArray(MathContext mathContext) {
+    public final static Function<BigDecimal[], BigDecimal> avgArray(MathContext mathContext) {
         return new AvgArray(mathContext);
     }
 
-    public final Function<BigDecimal[], BigDecimal> avgArray(RoundingMode roundingMode) {
+    public final static Function<BigDecimal[], BigDecimal> avgArray(RoundingMode roundingMode) {
         return new AvgArray(roundingMode);
     }
 
-    public final Function<BigDecimal, BigDecimal> round(MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> round(MathContext mathContext) {
         return new Round(mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> round(RoundingMode roundingMode) {
+    public final static Function<BigDecimal, BigDecimal> round(RoundingMode roundingMode) {
         return new Round(roundingMode);
     }
 
-    public final Function<BigDecimal, BigDecimal> abs() {
+    public final static Function<BigDecimal, BigDecimal> abs() {
         return ABS_FUNC;
     }
 
-    public final Function<BigDecimal, BigDecimal> add(Number add) {
+    public final static Function<BigDecimal, BigDecimal> add(Number add) {
         return new Add(fromNumber(add));
     }
 
-    public final Function<BigDecimal, BigDecimal> add(byte add) {
+    public final static Function<BigDecimal, BigDecimal> add(byte add) {
         return add(Byte.valueOf(add));
     }
 
-    public final Function<BigDecimal, BigDecimal> add(short add) {
+    public final static Function<BigDecimal, BigDecimal> add(short add) {
         return add(Short.valueOf(add));
     }
 
-    public final Function<BigDecimal, BigDecimal> add(int add) {
+    public final static Function<BigDecimal, BigDecimal> add(int add) {
         return add(Integer.valueOf(add));
     }
 
-    public final Function<BigDecimal, BigDecimal> add(long add) {
+    public final static Function<BigDecimal, BigDecimal> add(long add) {
         return add(Long.valueOf(add));
     }
 
-    public final Function<BigDecimal, BigDecimal> add(float add) {
+    public final static Function<BigDecimal, BigDecimal> add(float add) {
         return add(Float.valueOf(add));
     }
 
-    public final Function<BigDecimal, BigDecimal> add(double add) {
+    public final static Function<BigDecimal, BigDecimal> add(double add) {
         return add(Double.valueOf(add));
     }
 
 
-    public final Function<BigDecimal, BigDecimal> subtract(Number subtract) {
+    public final static Function<BigDecimal, BigDecimal> subtract(Number subtract) {
         return new Subtract(fromNumber(subtract));
     }
 
-    public final Function<BigDecimal, BigDecimal> subtract(byte subtract) {
+    public final static Function<BigDecimal, BigDecimal> subtract(byte subtract) {
         return subtract(Byte.valueOf(subtract));
     }
 
-    public final Function<BigDecimal, BigDecimal> subtract(short subtract) {
+    public final static Function<BigDecimal, BigDecimal> subtract(short subtract) {
         return subtract(Short.valueOf(subtract));
     }
 
-    public final Function<BigDecimal, BigDecimal> subtract(int subtract) {
+    public final static Function<BigDecimal, BigDecimal> subtract(int subtract) {
         return subtract(Integer.valueOf(subtract));
     }
 
-    public final Function<BigDecimal, BigDecimal> subtract(long subtract) {
+    public final static Function<BigDecimal, BigDecimal> subtract(long subtract) {
         return subtract(Long.valueOf(subtract));
     }
 
-    public final Function<BigDecimal, BigDecimal> subtract(float subtract) {
+    public final static Function<BigDecimal, BigDecimal> subtract(float subtract) {
         return subtract(Float.valueOf(subtract));
     }
 
-    public final Function<BigDecimal, BigDecimal> subtract(double subtract) {
+    public final static Function<BigDecimal, BigDecimal> subtract(double subtract) {
         return subtract(Double.valueOf(subtract));
     }
 
 
-    public final Function<BigDecimal, BigDecimal> divideBy(Number divisor) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(Number divisor) {
         return new Divide(fromNumber(divisor));
     }
 
-    public final Function<BigDecimal, BigDecimal> divideBy(byte divisor) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(byte divisor) {
         return divideBy(Byte.valueOf(divisor));
     }
 
-    public final Function<BigDecimal, BigDecimal> divideBy(short divisor) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(short divisor) {
         return divideBy(Short.valueOf(divisor));
     }
 
-    public final Function<BigDecimal, BigDecimal> divideBy(int divisor) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(int divisor) {
         return divideBy(Integer.valueOf(divisor));
     }
 
-    public final Function<BigDecimal, BigDecimal> divideBy(long divisor) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(long divisor) {
         return divideBy(Long.valueOf(divisor));
     }
 
-    public final Function<BigDecimal, BigDecimal> divideBy(float divisor) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(float divisor) {
         return divideBy(Float.valueOf(divisor));
     }
 
-    public final Function<BigDecimal, BigDecimal> divideBy(double divisor) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(double divisor) {
         return divideBy(Double.valueOf(divisor));
     }
 
 
-    public final Function<BigDecimal, BigDecimal> divideBy(Number divisor, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(Number divisor, MathContext mathContext) {
         return new Divide(fromNumber(divisor), mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> divideBy(byte divisor, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(byte divisor, MathContext mathContext) {
         return divideBy(Byte.valueOf(divisor), mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> divideBy(short divisor, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(short divisor, MathContext mathContext) {
         return divideBy(Short.valueOf(divisor), mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> divideBy(int divisor, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(int divisor, MathContext mathContext) {
         return divideBy(Integer.valueOf(divisor), mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> divideBy(long divisor, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(long divisor, MathContext mathContext) {
         return divideBy(Long.valueOf(divisor), mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> divideBy(float divisor, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(float divisor, MathContext mathContext) {
         return divideBy(Float.valueOf(divisor), mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> divideBy(double divisor, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(double divisor, MathContext mathContext) {
         return divideBy(Double.valueOf(divisor), mathContext);
     }
 
 
-    public final Function<BigDecimal, BigDecimal> divideBy(Number divisor, RoundingMode roundingMode) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(Number divisor, RoundingMode roundingMode) {
         return new Divide(fromNumber(divisor), roundingMode);
     }
 
-    public final Function<BigDecimal, BigDecimal> divideBy(byte divisor, RoundingMode roundingMode) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(byte divisor, RoundingMode roundingMode) {
         return divideBy(Byte.valueOf(divisor), roundingMode);
     }
 
-    public final Function<BigDecimal, BigDecimal> divideBy(short divisor, RoundingMode roundingMode) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(short divisor, RoundingMode roundingMode) {
         return divideBy(Short.valueOf(divisor), roundingMode);
     }
 
-    public final Function<BigDecimal, BigDecimal> divideBy(int divisor, RoundingMode roundingMode) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(int divisor, RoundingMode roundingMode) {
         return divideBy(Integer.valueOf(divisor), roundingMode);
     }
 
-    public final Function<BigDecimal, BigDecimal> divideBy(long divisor, RoundingMode roundingMode) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(long divisor, RoundingMode roundingMode) {
         return divideBy(Long.valueOf(divisor), roundingMode);
     }
 
-    public final Function<BigDecimal, BigDecimal> divideBy(float divisor, RoundingMode roundingMode) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(float divisor, RoundingMode roundingMode) {
         return divideBy(Float.valueOf(divisor), roundingMode);
     }
 
-    public final Function<BigDecimal, BigDecimal> divideBy(double divisor, RoundingMode roundingMode) {
+    public final static Function<BigDecimal, BigDecimal> divideBy(double divisor, RoundingMode roundingMode) {
         return divideBy(Double.valueOf(divisor), roundingMode);
     }
 
     
 
-    public final Function<BigDecimal, BigDecimal> remainder(Number divisor) {
+    public final static Function<BigDecimal, BigDecimal> remainder(Number divisor) {
         return new Remainder(fromNumber(divisor));
     }
 
-    public final Function<BigDecimal, BigDecimal> remainder(byte divisor) {
+    public final static Function<BigDecimal, BigDecimal> remainder(byte divisor) {
         return remainder(Byte.valueOf(divisor));
     }
 
-    public final Function<BigDecimal, BigDecimal> remainder(short divisor) {
+    public final static Function<BigDecimal, BigDecimal> remainder(short divisor) {
         return remainder(Short.valueOf(divisor));
     }
 
-    public final Function<BigDecimal, BigDecimal> remainder(int divisor) {
+    public final static Function<BigDecimal, BigDecimal> remainder(int divisor) {
         return remainder(Integer.valueOf(divisor));
     }
 
-    public final Function<BigDecimal, BigDecimal> remainder(long divisor) {
+    public final static Function<BigDecimal, BigDecimal> remainder(long divisor) {
         return remainder(Long.valueOf(divisor));
     }
 
-    public final Function<BigDecimal, BigDecimal> remainder(float divisor) {
+    public final static Function<BigDecimal, BigDecimal> remainder(float divisor) {
         return remainder(Float.valueOf(divisor));
     }
 
-    public final Function<BigDecimal, BigDecimal> remainder(double divisor) {
+    public final static Function<BigDecimal, BigDecimal> remainder(double divisor) {
         return remainder(Double.valueOf(divisor));
     }
 
 
-    public final Function<BigDecimal, BigDecimal> remainder(Number divisor, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> remainder(Number divisor, MathContext mathContext) {
         return new Remainder(fromNumber(divisor), mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> remainder(byte divisor, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> remainder(byte divisor, MathContext mathContext) {
         return remainder(Byte.valueOf(divisor), mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> remainder(short divisor, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> remainder(short divisor, MathContext mathContext) {
         return remainder(Short.valueOf(divisor), mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> remainder(int divisor, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> remainder(int divisor, MathContext mathContext) {
         return remainder(Integer.valueOf(divisor), mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> remainder(long divisor, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> remainder(long divisor, MathContext mathContext) {
         return remainder(Long.valueOf(divisor), mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> remainder(float divisor, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> remainder(float divisor, MathContext mathContext) {
         return remainder(Float.valueOf(divisor), mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> remainder(double divisor, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> remainder(double divisor, MathContext mathContext) {
         return remainder(Double.valueOf(divisor), mathContext);
     }
 
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(Number multiplicand) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(Number multiplicand) {
         return new Multiply(fromNumber(multiplicand));
     }
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(byte multiplicand) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(byte multiplicand) {
         return multiplyBy(Byte.valueOf(multiplicand));
     }
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(short multiplicand) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(short multiplicand) {
         return multiplyBy(Short.valueOf(multiplicand));
     }
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(int multiplicand) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(int multiplicand) {
         return multiplyBy(Integer.valueOf(multiplicand));
     }
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(long multiplicand) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(long multiplicand) {
         return multiplyBy(Long.valueOf(multiplicand));
     }
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(float multiplicand) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(float multiplicand) {
         return multiplyBy(Float.valueOf(multiplicand));
     }
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(double multiplicand) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(double multiplicand) {
         return multiplyBy(Double.valueOf(multiplicand));
     }
 
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(Number multiplicand, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(Number multiplicand, MathContext mathContext) {
         return new Multiply(fromNumber(multiplicand), mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(byte multiplicand, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(byte multiplicand, MathContext mathContext) {
         return multiplyBy(Byte.valueOf(multiplicand), mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(short multiplicand, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(short multiplicand, MathContext mathContext) {
         return multiplyBy(Short.valueOf(multiplicand), mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(int multiplicand, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(int multiplicand, MathContext mathContext) {
         return multiplyBy(Integer.valueOf(multiplicand), mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(long multiplicand, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(long multiplicand, MathContext mathContext) {
         return multiplyBy(Long.valueOf(multiplicand), mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(float multiplicand, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(float multiplicand, MathContext mathContext) {
         return multiplyBy(Float.valueOf(multiplicand), mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(double multiplicand, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(double multiplicand, MathContext mathContext) {
         return multiplyBy(Double.valueOf(multiplicand), mathContext);
     }
 
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(Number multiplicand, RoundingMode roundingMode) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(Number multiplicand, RoundingMode roundingMode) {
         return new Multiply(fromNumber(multiplicand), roundingMode);
     }
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(byte multiplicand, RoundingMode roundingMode) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(byte multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Byte.valueOf(multiplicand), roundingMode);
     }
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(short multiplicand, RoundingMode roundingMode) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(short multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Short.valueOf(multiplicand), roundingMode);
     }
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(int multiplicand, RoundingMode roundingMode) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(int multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Integer.valueOf(multiplicand), roundingMode);
     }
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(long multiplicand, RoundingMode roundingMode) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(long multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Long.valueOf(multiplicand), roundingMode);
     }
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(float multiplicand, RoundingMode roundingMode) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(float multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Float.valueOf(multiplicand), roundingMode);
     }
 
-    public final Function<BigDecimal, BigDecimal> multiplyBy(double multiplicand, RoundingMode roundingMode) {
+    public final static Function<BigDecimal, BigDecimal> multiplyBy(double multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Double.valueOf(multiplicand), roundingMode);
     }
 
 
-    public final Function<BigDecimal, BigDecimal> pow(int power) {
+    public final static Function<BigDecimal, BigDecimal> pow(int power) {
         return new Pow(power);
     }
 
-    public final Function<BigDecimal, BigDecimal> pow(int power, MathContext mathContext) {
+    public final static Function<BigDecimal, BigDecimal> pow(int power, MathContext mathContext) {
         return new Pow(power, mathContext);
     }
 
-    public final Function<BigDecimal, BigDecimal> pow(int power, RoundingMode roundingMode) {
+    public final static Function<BigDecimal, BigDecimal> pow(int power, RoundingMode roundingMode) {
         return new Pow(power, roundingMode);
     }	
 	

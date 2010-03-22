@@ -32,7 +32,7 @@ import org.apache.commons.lang.Validate;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class FnMathOfShort {
+public final class FnShort {
 
 	private static final Function<Iterable<Short>, Short> MAX_FUNC = new Max();
 	
@@ -53,7 +53,7 @@ public final class FnMathOfShort {
 	private static final Function<Short, Short> ABS_FUNC = new Abs();
 	
 	
-	FnMathOfShort() {
+	FnShort() {
 		super();           
 	}
 
@@ -61,7 +61,7 @@ public final class FnMathOfShort {
      * @return function that returns the maximum {@link Short} of an object
      *         implementing {@link Iterable}
      */
-    public final Function<Iterable<Short>, Short> max() {
+    public final static Function<Iterable<Short>, Short> max() {
         return MAX_FUNC;
     }
 
@@ -69,7 +69,7 @@ public final class FnMathOfShort {
      * @return function that returns the minimum {@link Short} of an object
      *         implementing {@link Iterable}
      */
-    public final Function<Iterable<Short>, Short> min() {
+    public final static Function<Iterable<Short>, Short> min() {
         return MIN_FUNC;
     }
 
@@ -77,7 +77,7 @@ public final class FnMathOfShort {
      * @return function that returns the sum of the {@link Short} elements in an
      *         object implementing {@link Iterable}
      */
-    public final Function<Iterable<Short>, Short> sum() {
+    public final static Function<Iterable<Short>, Short> sum() {
         return SUM_FUNC;
     }
 
@@ -85,291 +85,291 @@ public final class FnMathOfShort {
      * @return function that returns the average of the {@link Short} elements
      *         in an object implementing {@link Iterable}
      */
-    public final Function<Iterable<Short>, Short> avg() {
+    public final static Function<Iterable<Short>, Short> avg() {
         return AVG_FUNC;
     }
 
-    public final Function<Iterable<Short>, Short> avg(MathContext mathContext) {
+    public final static Function<Iterable<Short>, Short> avg(MathContext mathContext) {
         return new Avg(mathContext);
     }
 
-    public final Function<Iterable<Short>, Short> avg(RoundingMode roundingMode) {
+    public final static Function<Iterable<Short>, Short> avg(RoundingMode roundingMode) {
         return new Avg(roundingMode);
     }
 
-    public final Function<Short[], Short> maxArray() {
+    public final static Function<Short[], Short> maxArray() {
         return MAX_ARRAY_FUNC;
     }
 
-    public final Function<Short[], Short> minArray() {
+    public final static Function<Short[], Short> minArray() {
         return MIN_ARRAY_FUNC;
     }
 
-    public final Function<Short[], Short> sumArray() {
+    public final static Function<Short[], Short> sumArray() {
         return SUM_ARRAY_FUNC;
     }
 
-    public final Function<Short[], Short> avgArray() {
+    public final static Function<Short[], Short> avgArray() {
         return AVG_ARRAY_FUNC;
     }
 
-    public final Function<Short[], Short> avgArray(MathContext mathContext) {
+    public final static Function<Short[], Short> avgArray(MathContext mathContext) {
         return new AvgArray(mathContext);
     }
 
-    public final Function<Short[], Short> avgArray(RoundingMode roundingMode) {
+    public final static Function<Short[], Short> avgArray(RoundingMode roundingMode) {
         return new AvgArray(roundingMode);
     }
 
-    public final Function<Short, Short> abs() {
+    public final static Function<Short, Short> abs() {
         return ABS_FUNC;
     }
 
-    public final Function<Short, Short> add(Number add) {
+    public final static Function<Short, Short> add(Number add) {
         return new Add(fromNumber(add));
     }
 
-    public final Function<Short, Short> add(byte add) {
+    public final static Function<Short, Short> add(byte add) {
         return add(Byte.valueOf(add));
     }
 
-    public final Function<Short, Short> add(short add) {
+    public final static Function<Short, Short> add(short add) {
         return add(Short.valueOf(add));
     }
 
-    public final Function<Short, Short> add(int add) {
+    public final static Function<Short, Short> add(int add) {
         return add(Integer.valueOf(add));
     }
 
-    public final Function<Short, Short> add(long add) {
+    public final static Function<Short, Short> add(long add) {
         return add(Long.valueOf(add));
     }
 
-    public final Function<Short, Short> add(float add) {
+    public final static Function<Short, Short> add(float add) {
         return add(Float.valueOf(add));
     }
 
-    public final Function<Short, Short> add(double add) {
+    public final static Function<Short, Short> add(double add) {
         return add(Double.valueOf(add));
     }
 
 
-    public final Function<Short, Short> subtract(Number subtract) {
+    public final static Function<Short, Short> subtract(Number subtract) {
         return new Subtract(fromNumber(subtract));
     }
 
-    public final Function<Short, Short> subtract(byte subtract) {
+    public final static Function<Short, Short> subtract(byte subtract) {
         return subtract(Byte.valueOf(subtract));
     }
 
-    public final Function<Short, Short> subtract(short subtract) {
+    public final static Function<Short, Short> subtract(short subtract) {
         return subtract(Short.valueOf(subtract));
     }
 
-    public final Function<Short, Short> subtract(int subtract) {
+    public final static Function<Short, Short> subtract(int subtract) {
         return subtract(Integer.valueOf(subtract));
     }
 
-    public final Function<Short, Short> subtract(long subtract) {
+    public final static Function<Short, Short> subtract(long subtract) {
         return subtract(Long.valueOf(subtract));
     }
 
-    public final Function<Short, Short> subtract(float subtract) {
+    public final static Function<Short, Short> subtract(float subtract) {
         return subtract(Float.valueOf(subtract));
     }
 
-    public final Function<Short, Short> subtract(double subtract) {
+    public final static Function<Short, Short> subtract(double subtract) {
         return subtract(Double.valueOf(subtract));
     }
 
 
-    public final Function<Short, Short> divideBy(Number divisor) {
+    public final static Function<Short, Short> divideBy(Number divisor) {
         return new Divide(fromNumber(divisor));
     }
 
-    public final Function<Short, Short> divideBy(byte divisor) {
+    public final static Function<Short, Short> divideBy(byte divisor) {
         return divideBy(Byte.valueOf(divisor));
     }
 
-    public final Function<Short, Short> divideBy(short divisor) {
+    public final static Function<Short, Short> divideBy(short divisor) {
         return divideBy(Short.valueOf(divisor));
     }
 
-    public final Function<Short, Short> divideBy(int divisor) {
+    public final static Function<Short, Short> divideBy(int divisor) {
         return divideBy(Integer.valueOf(divisor));
     }
 
-    public final Function<Short, Short> divideBy(long divisor) {
+    public final static Function<Short, Short> divideBy(long divisor) {
         return divideBy(Long.valueOf(divisor));
     }
 
-    public final Function<Short, Short> divideBy(float divisor) {
+    public final static Function<Short, Short> divideBy(float divisor) {
         return divideBy(Float.valueOf(divisor));
     }
 
-    public final Function<Short, Short> divideBy(double divisor) {
+    public final static Function<Short, Short> divideBy(double divisor) {
         return divideBy(Double.valueOf(divisor));
     }
 
 
-    public final Function<Short, Short> divideBy(Number divisor, MathContext mathContext) {
+    public final static Function<Short, Short> divideBy(Number divisor, MathContext mathContext) {
         return new Divide(fromNumber(divisor), mathContext);
     }
 
-    public final Function<Short, Short> divideBy(byte divisor, MathContext mathContext) {
+    public final static Function<Short, Short> divideBy(byte divisor, MathContext mathContext) {
         return divideBy(Byte.valueOf(divisor), mathContext);
     }
 
-    public final Function<Short, Short> divideBy(short divisor, MathContext mathContext) {
+    public final static Function<Short, Short> divideBy(short divisor, MathContext mathContext) {
         return divideBy(Short.valueOf(divisor), mathContext);
     }
 
-    public final Function<Short, Short> divideBy(int divisor, MathContext mathContext) {
+    public final static Function<Short, Short> divideBy(int divisor, MathContext mathContext) {
         return divideBy(Integer.valueOf(divisor), mathContext);
     }
 
-    public final Function<Short, Short> divideBy(long divisor, MathContext mathContext) {
+    public final static Function<Short, Short> divideBy(long divisor, MathContext mathContext) {
         return divideBy(Long.valueOf(divisor), mathContext);
     }
 
-    public final Function<Short, Short> divideBy(float divisor, MathContext mathContext) {
+    public final static Function<Short, Short> divideBy(float divisor, MathContext mathContext) {
         return divideBy(Float.valueOf(divisor), mathContext);
     }
 
-    public final Function<Short, Short> divideBy(double divisor, MathContext mathContext) {
+    public final static Function<Short, Short> divideBy(double divisor, MathContext mathContext) {
         return divideBy(Double.valueOf(divisor), mathContext);
     }
 
 
-    public final Function<Short, Short> divideBy(Number divisor, RoundingMode roundingMode) {
+    public final static Function<Short, Short> divideBy(Number divisor, RoundingMode roundingMode) {
         return new Divide(fromNumber(divisor), roundingMode);
     }
 
-    public final Function<Short, Short> divideBy(byte divisor, RoundingMode roundingMode) {
+    public final static Function<Short, Short> divideBy(byte divisor, RoundingMode roundingMode) {
         return divideBy(Byte.valueOf(divisor), roundingMode);
     }
 
-    public final Function<Short, Short> divideBy(short divisor, RoundingMode roundingMode) {
+    public final static Function<Short, Short> divideBy(short divisor, RoundingMode roundingMode) {
         return divideBy(Short.valueOf(divisor), roundingMode);
     }
 
-    public final Function<Short, Short> divideBy(int divisor, RoundingMode roundingMode) {
+    public final static Function<Short, Short> divideBy(int divisor, RoundingMode roundingMode) {
         return divideBy(Integer.valueOf(divisor), roundingMode);
     }
 
-    public final Function<Short, Short> divideBy(long divisor, RoundingMode roundingMode) {
+    public final static Function<Short, Short> divideBy(long divisor, RoundingMode roundingMode) {
         return divideBy(Long.valueOf(divisor), roundingMode);
     }
 
-    public final Function<Short, Short> divideBy(float divisor, RoundingMode roundingMode) {
+    public final static Function<Short, Short> divideBy(float divisor, RoundingMode roundingMode) {
         return divideBy(Float.valueOf(divisor), roundingMode);
     }
 
-    public final Function<Short, Short> divideBy(double divisor, RoundingMode roundingMode) {
+    public final static Function<Short, Short> divideBy(double divisor, RoundingMode roundingMode) {
         return divideBy(Double.valueOf(divisor), roundingMode);
     }
 
 
-    public final Function<Short, Short> module(int module) {
+    public final static Function<Short, Short> module(int module) {
         return new Module(module);
     }
 
-    public final Function<Short, Short> multiplyBy(Number multiplicand) {
+    public final static Function<Short, Short> multiplyBy(Number multiplicand) {
         return new Multiply(fromNumber(multiplicand));
     }
 
-    public final Function<Short, Short> multiplyBy(byte multiplicand) {
+    public final static Function<Short, Short> multiplyBy(byte multiplicand) {
         return multiplyBy(Byte.valueOf(multiplicand));
     }
 
-    public final Function<Short, Short> multiplyBy(short multiplicand) {
+    public final static Function<Short, Short> multiplyBy(short multiplicand) {
         return multiplyBy(Short.valueOf(multiplicand));
     }
 
-    public final Function<Short, Short> multiplyBy(int multiplicand) {
+    public final static Function<Short, Short> multiplyBy(int multiplicand) {
         return multiplyBy(Integer.valueOf(multiplicand));
     }
 
-    public final Function<Short, Short> multiplyBy(long multiplicand) {
+    public final static Function<Short, Short> multiplyBy(long multiplicand) {
         return multiplyBy(Long.valueOf(multiplicand));
     }
 
-    public final Function<Short, Short> multiplyBy(float multiplicand) {
+    public final static Function<Short, Short> multiplyBy(float multiplicand) {
         return multiplyBy(Float.valueOf(multiplicand));
     }
 
-    public final Function<Short, Short> multiplyBy(double multiplicand) {
+    public final static Function<Short, Short> multiplyBy(double multiplicand) {
         return multiplyBy(Double.valueOf(multiplicand));
     }
 
 
-    public final Function<Short, Short> multiplyBy(Number multiplicand, MathContext mathContext) {
+    public final static Function<Short, Short> multiplyBy(Number multiplicand, MathContext mathContext) {
         return new Multiply(fromNumber(multiplicand), mathContext);
     }
 
-    public final Function<Short, Short> multiplyBy(byte multiplicand, MathContext mathContext) {
+    public final static Function<Short, Short> multiplyBy(byte multiplicand, MathContext mathContext) {
         return multiplyBy(Byte.valueOf(multiplicand), mathContext);
     }
 
-    public final Function<Short, Short> multiplyBy(short multiplicand, MathContext mathContext) {
+    public final static Function<Short, Short> multiplyBy(short multiplicand, MathContext mathContext) {
         return multiplyBy(Short.valueOf(multiplicand), mathContext);
     }
 
-    public final Function<Short, Short> multiplyBy(int multiplicand, MathContext mathContext) {
+    public final static Function<Short, Short> multiplyBy(int multiplicand, MathContext mathContext) {
         return multiplyBy(Integer.valueOf(multiplicand), mathContext);
     }
 
-    public final Function<Short, Short> multiplyBy(long multiplicand, MathContext mathContext) {
+    public final static Function<Short, Short> multiplyBy(long multiplicand, MathContext mathContext) {
         return multiplyBy(Long.valueOf(multiplicand), mathContext);
     }
 
-    public final Function<Short, Short> multiplyBy(float multiplicand, MathContext mathContext) {
+    public final static Function<Short, Short> multiplyBy(float multiplicand, MathContext mathContext) {
         return multiplyBy(Float.valueOf(multiplicand), mathContext);
     }
 
-    public final Function<Short, Short> multiplyBy(double multiplicand, MathContext mathContext) {
+    public final static Function<Short, Short> multiplyBy(double multiplicand, MathContext mathContext) {
         return multiplyBy(Double.valueOf(multiplicand), mathContext);
     }
 
 
-    public final Function<Short, Short> multiplyBy(Number multiplicand, RoundingMode roundingMode) {
+    public final static Function<Short, Short> multiplyBy(Number multiplicand, RoundingMode roundingMode) {
         return new Multiply(fromNumber(multiplicand), roundingMode);
     }
 
-    public final Function<Short, Short> multiplyBy(byte multiplicand, RoundingMode roundingMode) {
+    public final static Function<Short, Short> multiplyBy(byte multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Byte.valueOf(multiplicand), roundingMode);
     }
 
-    public final Function<Short, Short> multiplyBy(short multiplicand, RoundingMode roundingMode) {
+    public final static Function<Short, Short> multiplyBy(short multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Short.valueOf(multiplicand), roundingMode);
     }
 
-    public final Function<Short, Short> multiplyBy(int multiplicand, RoundingMode roundingMode) {
+    public final static Function<Short, Short> multiplyBy(int multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Integer.valueOf(multiplicand), roundingMode);
     }
 
-    public final Function<Short, Short> multiplyBy(long multiplicand, RoundingMode roundingMode) {
+    public final static Function<Short, Short> multiplyBy(long multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Long.valueOf(multiplicand), roundingMode);
     }
 
-    public final Function<Short, Short> multiplyBy(float multiplicand, RoundingMode roundingMode) {
+    public final static Function<Short, Short> multiplyBy(float multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Float.valueOf(multiplicand), roundingMode);
     }
 
-    public final Function<Short, Short> multiplyBy(double multiplicand, RoundingMode roundingMode) {
+    public final static Function<Short, Short> multiplyBy(double multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Double.valueOf(multiplicand), roundingMode);
     }
 
 
-    public final Function<Short, Short> pow(int power) {
+    public final static Function<Short, Short> pow(int power) {
         return new Pow(power);
     }
 
-    public final Function<Short, Short> pow(int power, MathContext mathContext) {
+    public final static Function<Short, Short> pow(int power, MathContext mathContext) {
         return new Pow(power, mathContext);
     }
 
-    public final Function<Short, Short> pow(int power, RoundingMode roundingMode) {
+    public final static Function<Short, Short> pow(int power, RoundingMode roundingMode) {
         return new Pow(power, roundingMode);
     }	
 	
