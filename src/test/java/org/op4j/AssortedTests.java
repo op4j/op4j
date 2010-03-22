@@ -22,7 +22,7 @@ import org.op4j.functions.Call;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.Fn;
 import org.op4j.functions.FnArray;
-import org.op4j.functions.FnMath;
+import org.op4j.functions.FnInteger;
 import org.op4j.functions.FnNumber;
 import org.op4j.functions.FnString;
 import org.op4j.functions.Function;
@@ -697,7 +697,7 @@ public class AssortedTests extends TestCase {
     
     @Test
     public void test31() throws Exception {
-        assertEquals(Integer.valueOf(4), Op.on(10).exec(FnMath.ofInteger().divideBy(3,RoundingMode.CEILING)).get());
+        assertEquals(Integer.valueOf(4), Op.on(10).exec(FnInteger.divideBy(3,RoundingMode.CEILING)).get());
     }
 
     
