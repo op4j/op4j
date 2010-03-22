@@ -31,42 +31,42 @@ package org.op4j.functions;
 public final class FnMath {
 
     
-    private static final FnMathOfBigDecimal OF_BIG_DECIMAL = new FnMathOfBigDecimal();
-    private static final FnMathOfBigInteger OF_BIG_INTEGER = new FnMathOfBigInteger();
-    private static final FnMathOfDouble OF_DOUBLE = new FnMathOfDouble();
-    private static final FnMathOfFloat OF_FLOAT = new FnMathOfFloat();
-    private static final FnMathOfInteger OF_INTEGER = new FnMathOfInteger();
-    private static final FnMathOfLong OF_LONG = new FnMathOfLong();
-    private static final FnMathOfShort OF_SHORT = new FnMathOfShort();
+    private static final FnBigDecimal OF_BIG_DECIMAL = new FnBigDecimal();
+    private static final FnBigInteger OF_BIG_INTEGER = new FnBigInteger();
+    private static final FnDouble OF_DOUBLE = new FnDouble();
+    private static final FnFloat OF_FLOAT = new FnFloat();
+    private static final FnInteger OF_INTEGER = new FnInteger();
+    private static final FnLong OF_LONG = new FnLong();
+    private static final FnShort OF_SHORT = new FnShort();
     
     
     
     
-    public static FnMathOfBigDecimal ofBigDecimal() {
+    public static FnBigDecimal ofBigDecimal() {
         return OF_BIG_DECIMAL;
     }
     
-    public static FnMathOfBigInteger ofBigInteger() {
+    public static FnBigInteger ofBigInteger() {
         return OF_BIG_INTEGER;
     }
     
-    public static FnMathOfDouble ofDouble() {
+    public static FnDouble ofDouble() {
         return OF_DOUBLE;
     }
     
-    public static FnMathOfFloat ofFloat() {
+    public static FnFloat ofFloat() {
         return OF_FLOAT;
     }
     
-    public static FnMathOfInteger ofInteger() {
+    public static FnInteger ofInteger() {
         return OF_INTEGER;
     }
     
-    public static FnMathOfLong ofLong() {
+    public static FnLong ofLong() {
         return OF_LONG;
     }
     
-    public static FnMathOfShort ofShort() {
+    public static FnShort ofShort() {
         return OF_SHORT;
     }
 
