@@ -58,6 +58,24 @@ public final class FnBigInteger {
 		super();           
 	}
 
+	
+	
+	public static final Function<Number,BigInteger> toBigInteger() {
+        return FnNumber.toBigInteger();
+    }
+    
+    public static final Function<Number,BigInteger> toBigInteger(final RoundingMode roundingMode) {
+        return FnNumber.toBigInteger(roundingMode);
+    }
+    
+    
+	
+	
+	
+	
+	
+	
+	
     /**
      * @return function that returns the maximum {@link BigInteger} of an object
      *         implementing {@link Iterable}

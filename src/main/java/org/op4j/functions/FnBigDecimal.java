@@ -58,6 +58,20 @@ public final class FnBigDecimal {
 		super();           
 	}
 
+	public static final Function<Number,BigDecimal> toBigDecimal() {
+	    return FnNumber.toBigDecimal();
+	}
+	public static final Function<Number,BigDecimal> toBigDecimal(final int scale, final RoundingMode roundingMode) {
+        return FnNumber.toBigDecimal(scale, roundingMode);
+    }
+	public static final Function<BigDecimal,BigDecimal> roundBigDecimal(final int scale, final RoundingMode roundingMode) {
+        return FnNumber.roundBigDecimal(scale, roundingMode);
+    }
+	
+	
+	
+	
+	
     /**
      * @return function that returns the maximum {@link BigDecimal} of an object
      *         implementing {@link Iterable}

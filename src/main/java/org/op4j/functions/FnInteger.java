@@ -57,6 +57,20 @@ public final class FnInteger {
 		super();           
 	}
 
+	
+	public static final Function<Number,Integer> toInteger() {
+        return FnNumber.toInteger();
+    }
+    
+    public static final Function<Number,Integer> toInteger(final RoundingMode roundingMode) {
+        return FnNumber.toInteger(roundingMode);
+    }
+    
+    
+    
+    
+    
+    
     /**
      * @return function that returns the maximum {@link Integer} of an object
      *         implementing {@link Iterable}

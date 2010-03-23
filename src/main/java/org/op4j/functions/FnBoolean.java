@@ -56,6 +56,11 @@ public final class FnBoolean {
 	}
 
 	
+	public static final Function<Number,Boolean> toBoolean() {
+        return FnNumber.toBoolean();
+    }
+	
+	
 	
 	
 	public static final Function<Boolean,BigDecimal> toBigDecimal() {

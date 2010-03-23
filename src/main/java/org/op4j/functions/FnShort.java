@@ -57,6 +57,19 @@ public final class FnShort {
 		super();           
 	}
 
+	
+	public static final Function<Number,Short> toShort() {
+        return FnNumber.toShort();
+    }
+    
+    public static final Function<Number,Short> toShort(final RoundingMode roundingMode) {
+        return FnNumber.toShort(roundingMode);
+    }
+    
+    
+    
+    
+    
     /**
      * @return function that returns the maximum {@link Short} of an object
      *         implementing {@link Iterable}

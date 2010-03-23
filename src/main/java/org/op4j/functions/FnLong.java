@@ -57,6 +57,20 @@ public final class FnLong {
 		super();           
 	}
 
+	
+	public static final Function<Number,Long> toLong() {
+        return FnNumber.toLong();
+    }
+    
+    public static final Function<Number,Long> toLong(final RoundingMode roundingMode) {
+        return FnNumber.toLong(roundingMode);
+    }
+    
+    
+    
+    
+    
+    
     /**
      * @return function that returns the maximum {@link Long} of an object
      *         implementing {@link Iterable}

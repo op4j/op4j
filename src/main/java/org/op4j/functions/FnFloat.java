@@ -57,6 +57,21 @@ public final class FnFloat {
 		super();           
 	}
 
+	
+	
+	public static final Function<Number,Float> toFloat() {
+        return FnNumber.toFloat();
+    }
+    public static final Function<Number,Float> toFloat(final int scale, final RoundingMode roundingMode) {
+        return FnNumber.toFloat(scale, roundingMode);
+    }
+    public static final Function<Float,Float> roundFloat(final int scale, final RoundingMode roundingMode) {
+        return FnNumber.roundFloat(scale, roundingMode);
+    }
+    
+    
+    
+    
     /**
      * @return function that returns the maximum {@link Float} of an object
      *         implementing {@link Iterable}
