@@ -60,7 +60,7 @@ public final class FnBigInteger {
 	}
 
 	
-	
+	// From FnNumber
 	public static final Function<Number,BigInteger> toBigInteger() {
         return FnNumber.toBigInteger();
     }    
