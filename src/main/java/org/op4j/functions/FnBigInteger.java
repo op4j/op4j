@@ -64,9 +64,6 @@ public final class FnBigInteger {
 	public static final Function<Number,BigInteger> toBigInteger() {
         return FnNumber.toBigInteger();
     }    
-    public static final Function<Number,BigInteger> toBigInteger(final RoundingMode roundingMode) {
-        return FnNumber.toBigInteger(roundingMode);
-    }
     public static final Function<Number,String> toStr() {
         return FnNumber.toStr();
     }   
