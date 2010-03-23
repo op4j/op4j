@@ -2,55 +2,66 @@
 1.0-beta2
 =========
 
-- FnMath removed...FnX will be used instead
-- FnMathX renamed to FnX
-- org.op4j.target.ExecCtxImpl is now public and was moved to org.op4j.util.ExecCtxImpl.
-- Created org.op4j.util.ValuePair in order to support Binary Operation Functions.
-- Created "reduce" actions for arrays, lists, and sets.
-- Created "FnReduce" function class with functions ready to be used in "reduce" operations.
-- Created unfold functions and actions for generic unique operators.
-- Added aggregation functions in FnMath for arrays.
-- Improved precision management in FnMath functions
-- Added "negate" function to FnBoolean.
-- All predefined op4j functions now extend Function and thus provide an "execute" method
-  without context which allows them to be executed on their own more easily.
-- Added utility methods to Fn like "Fn.onString()" to avoid having to specify the type as
-  "Fn.on(Types.STRING)".
-- Added "eq" (equality) and "notEq" (not equality) function to FnObject, FnNumber, 
-  FnBoolean, FnString, FnCalendar, FnDate.
-- Added "eqBy" and "notEqBy" to FnObject, FnNumber and FnBoolean.
-- Added "sortBy" functions to FnArray, FnList, FnMap and FnSet. Added "sortBy" actions to
-  array, list, map and set operators. 
-- Added "lessThan", "lessOrEqTo", "greaterThan" and "greaterOrEqTo" functions to 
-  FnObject, FnNumber and FnString.
-- Added "lessThanBy", "lessOrEqToBy", "greaterThanBy", "greaterOrEqToBy" to FnObject and FnNumber.
-- Added "and", "or" and "not" functions to FnBoolean and Fn.
-- Added "isNull" and "isNotNull" functions to FnObject, FnNumber, FnBoolean, FnString, FnCalendar,
-  FnDate.
-- Added "chain" function to "Fn".
-- Added "count" function to FnArray, FnList, FnMap and FnSet
-- Added "contains", "notContains, "containsAll", "containsAny" and "containsNone" to 
-  FnArray, FnList and FnSet.
-- Added "containsKey", "notContainsKey", "containsAllKeys", "containsAnyKeys" and 
-  "containsNoneKeys" to FnMap.
-- Added "by" function to Fn and FnBoolean.
-- Added "isNullBy" and "isNotNullBy" to FnBoolean and FnObject
-- Added "ifTrue", "ifFalse", "ifNull", "ifNotNull", "ifNullOrTrue", "ifNullOrFalse",
-  "ifNotNullAndTrue" and "ifNotNulAndFalse" functions to Fn.
-- Added "whileTrue" and "whileFalse" functions to Fn.
-- Cast methods "asArrayOf", "asListOf", "asMapOf" and "asSetOf" in array, list, map and set
-  operators renamed to "of" and created "castToArrayOf", "castToListOf", "castToMapOf" and
-  "castToSetOf" aliases. "asType" methods renamed to "castTo".
-- Multi generic operators removed.
-- Added "onArrayFor", "onListFor" and "onSetFor" methods to Op in order to build structures 
-  from their elements.
-- Added "onMapFor" to Op returning a new class of map operator: "Building map operator". This allows
-  the building of maps with successive calls to the "and" method after the "onMapFor" call. This
-  "and" method will dissapear after any other method is called.
-- Renamed "toMapByKeyEval" to "zipKeysBy", and added "zipValuesBy", "zipKeys" and "zipValues".
-- Renamed "toMapByAlternateElements" to "couple", and added "coupleAndGroup".
-- Moved class "Fn" to package org.op4j.functions
-  
+- Structural changes:
+  * "Multi" generic operators removed.
+  * Made all predefined op4j functions extend org.op4j.function.Function and thus provide an 
+    "execute" method without context which allows them to be executed on their own more easily.
+  * Moved class "Fn" to package org.op4j.functions. Now it will also contain "function-oriented"
+    functions, and thus act also as a "function hub" class.
+  * org.op4j.target.ExecCtxImpl is now public and was moved to org.op4j.util.ExecCtxImpl.
+  * FnMath removed. FnX (X=Integer,Long,Double...) will be used instead.
+  * FnMathOfX classes renamed to FnX.
+  * Added aggregation functions in FnInteger,FnLong,etc. for arrays.
+  * Improved precision management in FnInteger,FnLong,etc. mathematical functions.
+  * Created org.op4j.util.ValuePair in order to support Binary Operation Functions (e.g. reductions).
+  * Cast methods "asArrayOf", "asListOf", "asMapOf" and "asSetOf" in array, list, map and set
+    operators renamed to "of" and created "castToArrayOf", "castToListOf", "castToMapOf" and
+    "castToSetOf" aliases. "asType" methods renamed to "castTo".
+  * Renamed "toMapByKeyEval" to "zipKeysBy", and added "zipValuesBy", "zipKeys" and "zipValues".
+  * Renamed "toMapByAlternateElements" to "couple", and added "coupleAndGroup".
+
+- New functions
+  * Created "FnReduce" function hub class with functions ready to be used in "reduce" operations.
+  * Created "unfoldArrayOf", "unfoldList" and "unfoldSet" actions to FnArray, FnList and FnSet for
+    creating these structures by unfolding (using an iterative function) from a single object.
+  * Added "negate" function to FnBoolean.
+  * Added "eq" (equality) and "notEq" (non-equality) function to FnObject, FnNumber, 
+    FnBoolean, FnString, FnCalendar, FnDate.
+  * Added "eqBy" and "notEqBy" functions to FnObject, FnNumber and FnBoolean, for evaluating equality
+    based on the execution of a function on the target/s.
+  * Added "sortBy" functions to FnArray, FnList, FnMap and FnSet. 
+  * Added "lessThan", "lessOrEqTo", "greaterThan" and "greaterOrEqTo" functions to FnObject, 
+    FnNumber and FnString.
+  * Added "lessThanBy", "lessOrEqToBy", "greaterThanBy" and "greaterOrEqToBy" functions to FnObject 
+    and FnNumber.
+  * Added "isNull" and "isNotNull" functions to FnObject, FnNumber, FnBoolean, FnString, FnCalendar
+    and FnDate.
+  * Added "and", "or" and "not" functions to FnBoolean and Fn.
+  * Added "chain" function to Fn.
+  * Added "count" function to FnArray, FnList, FnMap and FnSet
+  * Added "contains", "notContains, "containsAll", "containsAny" and "containsNone" functions to 
+    FnArray, FnList and FnSet.
+  * Added "containsKey", "notContainsKey", "containsAllKeys", "containsAnyKeys" and 
+    "containsNoneKeys" functions to FnMap.
+  * Added "by" function to Fn and FnBoolean, for allowing the execution of any function not on the 
+    target object itself, but on the result of applying a function ("by" function) on it.
+  * Added "isNullBy" and "isNotNullBy" to FnBoolean and FnObject
+  * Added "ifTrue", "ifFalse", "ifNull", "ifNotNull", "ifNullOrTrue", "ifNullOrFalse",
+    "ifNotNullAndTrue" and "ifNotNulAndFalse" functions to Fn.
+  * Added "whileTrue" and "whileFalse" functions to Fn for executing a function on a target object
+    while a specified condition continues to be true.
+
+- New actions
+  * Added "onArrayFor", "onListFor" and "onSetFor" methods to Op in order to build structures 
+    from their elements.
+  * Added "onMapFor" to Op returning a new class of map operator: "Building map operator". This allows
+    the building of maps with successive calls to the "and" method after the "onMapFor" call. This
+    "and" method will dissapear after any other method is called.
+  * Added utility initializer actions to Fn like "Fn.onString()" to avoid always having to specify the 
+    type as "Fn.on(Types.STRING)".
+  * Created "reduce" actions for arrays, lists, and sets.
+  * Created "unfoldArrayOf", "unfoldList" and "unfoldSet" actions for generic operators.
+  * Added "sortBy" actions to array, list, map and set operators. 
 
 
 
