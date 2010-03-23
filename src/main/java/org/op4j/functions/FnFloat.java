@@ -60,10 +60,7 @@ public final class FnFloat {
 
 	
 	// From FnNumber
-	public static final Function<Number,Float> toFloat() {
-	    return FnNumber.toFloat();
-    }
-    public static final Function<Number,String> toStr() {
+	public static final Function<Number,String> toStr() {
         return FnNumber.toStr();
     }   
     public static final Function<Number,String> toStr(boolean groupingUsed) {

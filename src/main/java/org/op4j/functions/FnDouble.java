@@ -60,10 +60,7 @@ public final class FnDouble {
 	
 	
 	// From FnNumber
-	public static final Function<Number,Double> toDouble() {
-        return FnNumber.toDouble();
-    }
-    public static final Function<Number,Double> toDouble(final int scale, final RoundingMode roundingMode) {
+	public static final Function<Number,Double> toDouble(final int scale, final RoundingMode roundingMode) {
         return FnNumber.toDouble(scale, roundingMode);
     }
     public static final Function<Double,Double> roundDouble(final int scale, final RoundingMode roundingMode) {

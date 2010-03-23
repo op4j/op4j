@@ -63,10 +63,7 @@ public final class FnInteger {
     
     
 	// From FnNumber
-	public static final Function<Number,Integer> toInteger() {
-        return FnNumber.toInteger();
-    }
-    public static final Function<Number,String> toStr() {
+	public static final Function<Number,String> toStr() {
         return FnNumber.toStr();
     }   
     public static final Function<Number,String> toStr(boolean groupingUsed) {
