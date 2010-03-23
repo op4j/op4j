@@ -16,7 +16,9 @@ Bending the Java spoon
   <<improving quality, semantics, cleanness and readability of Java code>>, especially auxiliary code like
   data conversion, structure iteration, filtering, mapping, etc.
   
-  op4j allows you to create <chained expressions> which apply both predefined or user-defined
+  op4j is a powerful implementation of the {{{http://martinfowler.com/bliki/FluentInterface.html}Fluent Interface}}
+  style of code defined by Martin Fowler. 
+  It allows you to create <chained expressions> which apply both predefined or user-defined
   functions to your objects in a fluid and readable way. This improves the way your code looks and 
   greatly reduces the complexity of executing auxiliary low-level tasks in the highly bureaucratic, statically 
   -and strongly- typed language that Java is.  
