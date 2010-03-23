@@ -60,9 +60,6 @@ public final class FnBigDecimal {
 	}
 
 	// From FnNumber
-	public static final Function<Number,BigDecimal> toBigDecimal(final int scale, final RoundingMode roundingMode) {
-        return FnNumber.toBigDecimal(scale, roundingMode);
-    }
 	public static final Function<BigDecimal,BigDecimal> roundBigDecimal(final int scale, final RoundingMode roundingMode) {
         return FnNumber.roundBigDecimal(scale, roundingMode);
     }
