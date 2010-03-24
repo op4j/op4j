@@ -33,6 +33,7 @@ import org.apache.commons.lang.Validate;
  * @author Soraya S&aacute;nchez
  *
  */
+@SuppressWarnings({"cast", "unchecked"})
 public final class FnFloat {
 
 	private static final Function<Iterable<Float>, Float> MAX_FUNC = new Max();
@@ -63,315 +64,315 @@ public final class FnFloat {
 	public static final Function<Number,String> toStr() {
         return FnNumber.toStr();
     }   
-    public static final Function<Number,String> toStr(boolean groupingUsed) {
-        return FnNumber.toStr(groupingUsed);
+    public static final Function<Float,String> toStr(boolean groupingUsed) {
+        return (Function<Float,String>)((Function)FnNumber.toStr(groupingUsed));
     }
-    public static final Function<Number,String> toStr(Locale locale) {
-        return FnNumber.toStr(locale);
+    public static final Function<Float,String> toStr(Locale locale) {
+        return (Function<Float,String>)((Function)FnNumber.toStr(locale));
     }
-    public static final Function<Number,String> toStr(String locale) {
-        return FnNumber.toStr(locale);
+    public static final Function<Float,String> toStr(String locale) {
+        return (Function<Float,String>)((Function)FnNumber.toStr(locale));
     }
-    public static final Function<Number,String> toStr(Locale locale, boolean groupingUsed) {
-        return FnNumber.toStr(locale, groupingUsed);
+    public static final Function<Float,String> toStr(Locale locale, boolean groupingUsed) {
+        return (Function<Float,String>)((Function)FnNumber.toStr(locale, groupingUsed));
     }   
-    public static final Function<Number,String> toStr(String locale, boolean groupingUsed) {
-        return FnNumber.toStr(locale, groupingUsed);
+    public static final Function<Float,String> toStr(String locale, boolean groupingUsed) {
+        return (Function<Float,String>)((Function)FnNumber.toStr(locale, groupingUsed));
     }
-    public static final Function<Number,String> toCurrencyStr() {
-        return FnNumber.toCurrencyStr();
+    public static final Function<Float,String> toCurrencyStr() {
+        return (Function<Float,String>)((Function)FnNumber.toCurrencyStr());
     }
-    public static final Function<Number,String> toCurrencyStr(boolean groupingUsed) {
-        return FnNumber.toCurrencyStr(groupingUsed);
+    public static final Function<Float,String> toCurrencyStr(boolean groupingUsed) {
+        return (Function<Float,String>)((Function)FnNumber.toCurrencyStr(groupingUsed));
     }
-    public static final Function<Number,String> toCurrencyStr(Locale locale) {
-        return FnNumber.toCurrencyStr(locale);
+    public static final Function<Float,String> toCurrencyStr(Locale locale) {
+        return (Function<Float,String>)((Function)FnNumber.toCurrencyStr(locale));
     }
-    public static final Function<Number,String> toCurrencyStr(String locale) {
-        return FnNumber.toCurrencyStr(locale);
+    public static final Function<Float,String> toCurrencyStr(String locale) {
+        return (Function<Float,String>)((Function)FnNumber.toCurrencyStr(locale));
     }
-    public static final Function<Number,String> toCurrencyStr(Locale locale, boolean groupingUsed) {
-        return FnNumber.toCurrencyStr(locale, groupingUsed);
+    public static final Function<Float,String> toCurrencyStr(Locale locale, boolean groupingUsed) {
+        return (Function<Float,String>)((Function)FnNumber.toCurrencyStr(locale, groupingUsed));
     }
-    public static final Function<Number,String> toCurrencyStr(String locale, boolean groupingUsed) {
-        return FnNumber.toCurrencyStr(locale, groupingUsed);
+    public static final Function<Float,String> toCurrencyStr(String locale, boolean groupingUsed) {
+        return (Function<Float,String>)((Function)FnNumber.toCurrencyStr(locale, groupingUsed));
     }
-    public static final Function<Number,String> toPercentStr() {
-        return FnNumber.toPercentStr();
+    public static final Function<Float,String> toPercentStr() {
+        return (Function<Float,String>)((Function)FnNumber.toPercentStr());
     }
-    public static final Function<Number,String> toPercentStr(boolean groupingUsed) {
-        return FnNumber.toPercentStr(groupingUsed);
+    public static final Function<Float,String> toPercentStr(boolean groupingUsed) {
+        return (Function<Float,String>)((Function)FnNumber.toPercentStr(groupingUsed));
     }
-    public static final Function<Number,String> toPercentStr(Locale locale) {
-        return FnNumber.toPercentStr(locale);
+    public static final Function<Float,String> toPercentStr(Locale locale) {
+        return (Function<Float,String>)((Function)FnNumber.toPercentStr(locale));
     }
-    public static final Function<Number,String> toPercentStr(String locale) {
-        return FnNumber.toPercentStr(locale);
+    public static final Function<Float,String> toPercentStr(String locale) {
+        return (Function<Float,String>)((Function)FnNumber.toPercentStr(locale));
     }
-    public static final Function<Number,String> toPercentStr(Locale locale, boolean groupingUsed) {
-        return FnNumber.toPercentStr(locale, groupingUsed);
+    public static final Function<Float,String> toPercentStr(Locale locale, boolean groupingUsed) {
+        return (Function<Float,String>)((Function)FnNumber.toPercentStr(locale, groupingUsed));
     }   
-    public static final Function<Number,String> toPercentStr(String locale, boolean groupingUsed) {
-        return FnNumber.toPercentStr(locale, groupingUsed);
+    public static final Function<Float,String> toPercentStr(String locale, boolean groupingUsed) {
+        return (Function<Float,String>)((Function)FnNumber.toPercentStr(locale, groupingUsed));
     }
-    public static final Function<Object,Boolean> eq(final Number object) {
-        return FnObject.eq(object);
+    public static final Function<Float,Boolean> eq(final Number object) {
+        return (Function<Float,Boolean>)((Function)FnObject.eq(object));
     }
-    public static final Function<Object,Boolean> eq(final float object) {
-        return FnObject.eq(object);
+    public static final Function<Float,Boolean> eq(final float object) {
+        return (Function<Float,Boolean>)((Function)FnObject.eq(object));
     }
-    public static final Function<Object,Boolean> eq(final double object) {
-        return FnObject.eq(object);
+    public static final Function<Float,Boolean> eq(final double object) {
+        return (Function<Float,Boolean>)((Function)FnObject.eq(object));
     }
-    public static final Function<Object,Boolean> eq(final byte object) {
-        return FnObject.eq(object);
+    public static final Function<Float,Boolean> eq(final byte object) {
+        return (Function<Float,Boolean>)((Function)FnObject.eq(object));
     }
-    public static final Function<Object,Boolean> eq(final short object) {
-        return FnObject.eq(object);
+    public static final Function<Float,Boolean> eq(final short object) {
+        return (Function<Float,Boolean>)((Function)FnObject.eq(object));
     }
-    public static final Function<Object,Boolean> eq(final int object) {
-        return FnObject.eq(object);
+    public static final Function<Float,Boolean> eq(final int object) {
+        return (Function<Float,Boolean>)((Function)FnObject.eq(object));
     }
-    public static final Function<Object,Boolean> eq(final long object) {
-        return FnObject.eq(object);
+    public static final Function<Float,Boolean> eq(final long object) {
+        return (Function<Float,Boolean>)((Function)FnObject.eq(object));
     }
-    public static final Function<Object,Boolean> notEq(final Number object) {
-        return FnObject.notEq(object);
+    public static final Function<Float,Boolean> notEq(final Number object) {
+        return (Function<Float,Boolean>)((Function)FnObject.notEq(object));
     }
-    public static final Function<Object,Boolean> notEq(final float object) {
-        return FnObject.notEq(object);
+    public static final Function<Float,Boolean> notEq(final float object) {
+        return (Function<Float,Boolean>)((Function)FnObject.notEq(object));
     }
-    public static final Function<Object,Boolean> notEq(final double object) {
-        return FnObject.notEq(object);
+    public static final Function<Float,Boolean> notEq(final double object) {
+        return (Function<Float,Boolean>)((Function)FnObject.notEq(object));
     }
-    public static final Function<Object,Boolean> notEq(final byte object) {
-        return FnObject.notEq(object);
+    public static final Function<Float,Boolean> notEq(final byte object) {
+        return (Function<Float,Boolean>)((Function)FnObject.notEq(object));
     }
-    public static final Function<Object,Boolean> notEq(final short object) {
-        return FnObject.notEq(object);
+    public static final Function<Float,Boolean> notEq(final short object) {
+        return (Function<Float,Boolean>)((Function)FnObject.notEq(object));
     }
-    public static final Function<Object,Boolean> notEq(final int object) {
-        return FnObject.notEq(object);
+    public static final Function<Float,Boolean> notEq(final int object) {
+        return (Function<Float,Boolean>)((Function)FnObject.notEq(object));
     }
-    public static final Function<Object,Boolean> notEq(final long object) {
-        return FnObject.notEq(object);
+    public static final Function<Float,Boolean> notEq(final long object) {
+        return (Function<Float,Boolean>)((Function)FnObject.notEq(object));
     }
-    public static final Function<Object,Boolean> lessThan(final Number object) {
-        return FnObject.lessThan(object);
+    public static final Function<Float,Boolean> lessThan(final Number object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessThan(object));
     }    
-    public static final Function<Object,Boolean> lessThan(final float object) {
-        return FnObject.lessThan(object);
+    public static final Function<Float,Boolean> lessThan(final float object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessThan(object));
     }    
-    public static final Function<Object,Boolean> lessThan(final double object) {
-        return FnObject.lessThan(object);
+    public static final Function<Float,Boolean> lessThan(final double object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessThan(object));
     }    
-    public static final Function<Object,Boolean> lessThan(final byte object) {
-        return FnObject.lessThan(object);
+    public static final Function<Float,Boolean> lessThan(final byte object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessThan(object));
     }    
-    public static final Function<Object,Boolean> lessThan(final short object) {
-        return FnObject.lessThan(object);
+    public static final Function<Float,Boolean> lessThan(final short object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessThan(object));
     }
-    public static final Function<Object,Boolean> lessThan(final int object) {
-        return FnObject.lessThan(object);
+    public static final Function<Float,Boolean> lessThan(final int object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessThan(object));
     }   
-    public static final Function<Object,Boolean> lessThan(final long object) {
-        return FnObject.lessThan(object);
+    public static final Function<Float,Boolean> lessThan(final long object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessThan(object));
     }    
-    public static final Function<Object,Boolean> lessOrEqTo(final Number object) {
-        return FnObject.lessOrEqTo(object);
+    public static final Function<Float,Boolean> lessOrEqTo(final Number object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessOrEqTo(object));
     }    
-    public static final Function<Object,Boolean> lessOrEqTo(final float object) {
-        return FnObject.lessOrEqTo(object);
+    public static final Function<Float,Boolean> lessOrEqTo(final float object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessOrEqTo(object));
     }    
-    public static final Function<Object,Boolean> lessOrEqTo(final double object) {
-        return FnObject.lessOrEqTo(object);
+    public static final Function<Float,Boolean> lessOrEqTo(final double object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessOrEqTo(object));
     }    
-    public static final Function<Object,Boolean> lessOrEqTo(final byte object) {
-        return FnObject.lessOrEqTo(object);
+    public static final Function<Float,Boolean> lessOrEqTo(final byte object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessOrEqTo(object));
     }
-    public static final Function<Object,Boolean> lessOrEqTo(final short object) {
-        return FnObject.lessOrEqTo(object);
+    public static final Function<Float,Boolean> lessOrEqTo(final short object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessOrEqTo(object));
     }    
-    public static final Function<Object,Boolean> lessOrEqTo(final int object) {
-        return FnObject.lessOrEqTo(object);
+    public static final Function<Float,Boolean> lessOrEqTo(final int object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessOrEqTo(object));
     }    
-    public static final Function<Object,Boolean> lessOrEqTo(final long object) {
-        return FnObject.lessOrEqTo(object);
+    public static final Function<Float,Boolean> lessOrEqTo(final long object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessOrEqTo(object));
     }
-    public static final Function<Object,Boolean> greaterThan(final Number object) {
-        return FnObject.greaterThan(object);
+    public static final Function<Float,Boolean> greaterThan(final Number object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterThan(object));
     }
-    public static final Function<Object,Boolean> greaterThan(final float object) {
-        return FnObject.greaterThan(object);
+    public static final Function<Float,Boolean> greaterThan(final float object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterThan(object));
     }
-    public static final Function<Object,Boolean> greaterThan(final double object) {
-        return FnObject.greaterThan(object);
+    public static final Function<Float,Boolean> greaterThan(final double object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterThan(object));
     }
-    public static final Function<Object,Boolean> greaterThan(final byte object) {
-        return FnObject.greaterThan(object);
+    public static final Function<Float,Boolean> greaterThan(final byte object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterThan(object));
     }
-    public static final Function<Object,Boolean> greaterThan(final short object) {
-        return FnObject.greaterThan(object);
+    public static final Function<Float,Boolean> greaterThan(final short object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterThan(object));
     }
-    public static final Function<Object,Boolean> greaterThan(final int object) {
-        return FnObject.greaterThan(object);
+    public static final Function<Float,Boolean> greaterThan(final int object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterThan(object));
     }
-    public static final Function<Object,Boolean> greaterThan(final long object) {
-        return FnObject.greaterThan(object);
+    public static final Function<Float,Boolean> greaterThan(final long object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterThan(object));
     }    
-    public static final Function<Object,Boolean> greaterOrEqTo(final Number object) {
-        return FnObject.greaterOrEqTo(object);
+    public static final Function<Float,Boolean> greaterOrEqTo(final Number object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
-    public static final Function<Object,Boolean> greaterOrEqTo(final float object) {
-        return FnObject.greaterOrEqTo(object);
+    public static final Function<Float,Boolean> greaterOrEqTo(final float object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
-    public static final Function<Object,Boolean> greaterOrEqTo(final double object) {
-        return FnObject.greaterOrEqTo(object);
+    public static final Function<Float,Boolean> greaterOrEqTo(final double object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
-    public static final Function<Object,Boolean> greaterOrEqTo(final byte object) {
-        return FnObject.greaterOrEqTo(object);
+    public static final Function<Float,Boolean> greaterOrEqTo(final byte object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
-    public static final Function<Object,Boolean> greaterOrEqTo(final short object) {
-        return FnObject.greaterOrEqTo(object);
+    public static final Function<Float,Boolean> greaterOrEqTo(final short object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
-    public static final Function<Object,Boolean> greaterOrEqTo(final int object) {
-        return FnObject.greaterOrEqTo(object);
+    public static final Function<Float,Boolean> greaterOrEqTo(final int object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
-    public static final Function<Object,Boolean> greaterOrEqTo(final long object) {
-        return FnObject.greaterOrEqTo(object);
+    public static final Function<Float,Boolean> greaterOrEqTo(final long object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
-    public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final Number object) {
-        return FnObject.eqBy(by, object);
+    public static final <X> Function<Float,Boolean> eqBy(final IFunction<X,?> by, final Number object) {
+        return (Function<Float,Boolean>)((Function)FnObject.eqBy(by, object));
     }
-    public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final float object) {
-        return FnObject.eqBy(by, object);
+    public static final <X> Function<Float,Boolean> eqBy(final IFunction<X,?> by, final float object) {
+        return (Function<Float,Boolean>)((Function)FnObject.eqBy(by, object));
     }
-    public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final double object) {
-        return FnObject.eqBy(by, object);
+    public static final <X> Function<Float,Boolean> eqBy(final IFunction<X,?> by, final double object) {
+        return (Function<Float,Boolean>)((Function)FnObject.eqBy(by, object));
     }
-    public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final byte object) {
-        return FnObject.eqBy(by, object);
+    public static final <X> Function<Float,Boolean> eqBy(final IFunction<X,?> by, final byte object) {
+        return (Function<Float,Boolean>)((Function)FnObject.eqBy(by, object));
     }
-    public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final short object) {
-        return FnObject.eqBy(by, object);
+    public static final <X> Function<Float,Boolean> eqBy(final IFunction<X,?> by, final short object) {
+        return (Function<Float,Boolean>)((Function)FnObject.eqBy(by, object));
     }
-    public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final int object) {
-        return FnObject.eqBy(by, object);
+    public static final <X> Function<Float,Boolean> eqBy(final IFunction<X,?> by, final int object) {
+        return (Function<Float,Boolean>)((Function)FnObject.eqBy(by, object));
     }
-    public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final long object) {
-        return FnObject.eqBy(by, object);
+    public static final <X> Function<Float,Boolean> eqBy(final IFunction<X,?> by, final long object) {
+        return (Function<Float,Boolean>)((Function)FnObject.eqBy(by, object));
     }
-    public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final Number object) {
-        return FnObject.notEqBy(by, object);
+    public static final <X> Function<Float,Boolean> notEqBy(final IFunction<X,?> by, final Number object) {
+        return (Function<Float,Boolean>)((Function)FnObject.notEqBy(by, object));
     }
-    public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final float object) {
-        return FnObject.notEqBy(by, object);
+    public static final <X> Function<Float,Boolean> notEqBy(final IFunction<X,?> by, final float object) {
+        return (Function<Float,Boolean>)((Function)FnObject.notEqBy(by, object));
     }
-    public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final double object) {
-        return FnObject.notEqBy(by, object);
+    public static final <X> Function<Float,Boolean> notEqBy(final IFunction<X,?> by, final double object) {
+        return (Function<Float,Boolean>)((Function)FnObject.notEqBy(by, object));
     }
-    public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final byte object) {
-        return FnObject.notEqBy(by, object);
+    public static final <X> Function<Float,Boolean> notEqBy(final IFunction<X,?> by, final byte object) {
+        return (Function<Float,Boolean>)((Function)FnObject.notEqBy(by, object));
     }
-    public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final short object) {
-        return FnObject.notEqBy(by, object);
+    public static final <X> Function<Float,Boolean> notEqBy(final IFunction<X,?> by, final short object) {
+        return (Function<Float,Boolean>)((Function)FnObject.notEqBy(by, object));
     }
-    public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final int object) {
-        return FnObject.notEqBy(by, object);
+    public static final <X> Function<Float,Boolean> notEqBy(final IFunction<X,?> by, final int object) {
+        return (Function<Float,Boolean>)((Function)FnObject.notEqBy(by, object));
     }
-    public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final long object) {
-        return FnObject.notEqBy(by, object);
+    public static final <X> Function<Float,Boolean> notEqBy(final IFunction<X,?> by, final long object) {
+        return (Function<Float,Boolean>)((Function)FnObject.notEqBy(by, object));
     }
-    public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final Number object) {
-        return FnObject.lessThanBy(by, object);
+    public static final <X> Function<Float,Boolean> lessThanBy(final IFunction<X,?> by, final Number object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
-    public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final float object) {
-        return FnObject.lessThanBy(by, object);
+    public static final <X> Function<Float,Boolean> lessThanBy(final IFunction<X,?> by, final float object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
-    public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final double object) {
-        return FnObject.lessThanBy(by, object);
+    public static final <X> Function<Float,Boolean> lessThanBy(final IFunction<X,?> by, final double object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
-    public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final byte object) {
-        return FnObject.lessThanBy(by, object);
+    public static final <X> Function<Float,Boolean> lessThanBy(final IFunction<X,?> by, final byte object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
-    public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final short object) {
-        return FnObject.lessThanBy(by, object);
+    public static final <X> Function<Float,Boolean> lessThanBy(final IFunction<X,?> by, final short object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
-    public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final int object) {
-        return FnObject.lessThanBy(by, object);
+    public static final <X> Function<Float,Boolean> lessThanBy(final IFunction<X,?> by, final int object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
-    public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final long object) {
-        return FnObject.lessThanBy(by, object);
+    public static final <X> Function<Float,Boolean> lessThanBy(final IFunction<X,?> by, final long object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
-    public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final Number object) {
-        return FnObject.lessOrEqToBy(by, object);
+    public static final <X> Function<Float,Boolean> lessOrEqToBy(final IFunction<X,?> by, final Number object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
-    public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final float object) {
-        return FnObject.lessOrEqToBy(by, object);
+    public static final <X> Function<Float,Boolean> lessOrEqToBy(final IFunction<X,?> by, final float object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
-    public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final double object) {
-        return FnObject.lessOrEqToBy(by, object);
+    public static final <X> Function<Float,Boolean> lessOrEqToBy(final IFunction<X,?> by, final double object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
-    public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final byte object) {
-        return FnObject.lessOrEqToBy(by, object);
+    public static final <X> Function<Float,Boolean> lessOrEqToBy(final IFunction<X,?> by, final byte object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
-    public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final short object) {
-        return FnObject.lessOrEqToBy(by, object);
+    public static final <X> Function<Float,Boolean> lessOrEqToBy(final IFunction<X,?> by, final short object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
-    public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final int object) {
-        return FnObject.lessOrEqToBy(by, object);
+    public static final <X> Function<Float,Boolean> lessOrEqToBy(final IFunction<X,?> by, final int object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
-    public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final long object) {
-        return FnObject.lessOrEqToBy(by, object);
+    public static final <X> Function<Float,Boolean> lessOrEqToBy(final IFunction<X,?> by, final long object) {
+        return (Function<Float,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
-    public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final Number object) {
-        return FnObject.greaterThanBy(by, object);
+    public static final <X> Function<Float,Boolean> greaterThanBy(final IFunction<X,?> by, final Number object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
-    public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final float object) {
-        return FnObject.greaterThanBy(by, object);
+    public static final <X> Function<Float,Boolean> greaterThanBy(final IFunction<X,?> by, final float object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
-    public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final double object) {
-        return FnObject.greaterThanBy(by, object);
+    public static final <X> Function<Float,Boolean> greaterThanBy(final IFunction<X,?> by, final double object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
-    public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final byte object) {
-        return FnObject.greaterThanBy(by, object);
+    public static final <X> Function<Float,Boolean> greaterThanBy(final IFunction<X,?> by, final byte object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
-    public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final short object) {
-        return FnObject.greaterThanBy(by, object);
+    public static final <X> Function<Float,Boolean> greaterThanBy(final IFunction<X,?> by, final short object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
-    public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final int object) {
-        return FnObject.greaterThanBy(by, object);
+    public static final <X> Function<Float,Boolean> greaterThanBy(final IFunction<X,?> by, final int object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
-    public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final long object) {
-        return FnObject.greaterThanBy(by, object);
+    public static final <X> Function<Float,Boolean> greaterThanBy(final IFunction<X,?> by, final long object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
-    public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final Number object) {
-        return FnObject.greaterOrEqToBy(by, object);
+    public static final <X> Function<Float,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final Number object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }    
-    public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final float object) {
-        return FnObject.greaterOrEqToBy(by, object);
+    public static final <X> Function<Float,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final float object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }    
-    public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final double object) {
-        return FnObject.greaterOrEqToBy(by, object);
+    public static final <X> Function<Float,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final double object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }    
-    public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final byte object) {
-        return FnObject.greaterOrEqToBy(by, object);
+    public static final <X> Function<Float,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final byte object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }    
-    public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final short object) {
-        return FnObject.greaterOrEqToBy(by, object);
+    public static final <X> Function<Float,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final short object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }    
-    public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final int object) {
-        return FnObject.greaterOrEqToBy(by, object);
+    public static final <X> Function<Float,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final int object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }    
-    public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final long object) {
-        return FnObject.greaterOrEqToBy(by, object);
+    public static final <X> Function<Float,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final long object) {
+        return (Function<Float,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }
-    public static final Function<Object,Boolean> isNull() {
-        return FnObject.isNull();
+    public static final Function<Float,Boolean> isNull() {
+        return (Function<Float,Boolean>)((Function)FnObject.isNull());
     }
     
-    public static final Function<Object,Boolean> isNotNull() {
-        return FnObject.isNotNull();
+    public static final Function<Float,Boolean> isNotNull() {
+        return (Function<Float,Boolean>)((Function)FnObject.isNotNull());
     }
     // End From FnNumber
     
