@@ -48,13 +48,22 @@
           <item name="· About Functions" href="functions.html"/>
           <item name="· Ognl" href="ognl.html"/>
           <item name="· Call" href="call.html"/>
+          <item name="· Fn" href="fn.html"/>
           <item name="· FnBoolean" href="fnboolean.html"/>
           <item name="· FnCalendar" href="fncalendar.html"/>
           <item name="· FnDate" href="fndate.html"/>
-          <item name="· FnMath" href="fnmath.html"/>
-          <item name="· FnNumber" href="fnnumber.html"/>
           <item name="· FnObject" href="fnobject.html"/>
+          <item name="· FnReduce" href="fnreduce.html"/>
           <item name="· FnString" href="fnstring.html"/>
+          <item name="· Numbers">
+            <item name="· FnNumber" href="fnnumber.html"/>
+            <item name="· FnBigDecimal" href="fnbigdecimal.html"/>
+            <item name="· FnBigInteger" href="fnbiginteger.html"/>
+            <item name="· FnInteger" href="fninteger.html"/>
+            <item name="· FnLong" href="fnlong.html"/>
+            <item name="· FnFloat" href="fnfloat.html"/>
+            <item name="· FnDouble" href="fndouble.html"/>
+          </item>
           <item name="· Structures">
             <item name="· FnArray" href="fnarray.html"/>
             <item name="· FnList" href="fnlist.html"/>
