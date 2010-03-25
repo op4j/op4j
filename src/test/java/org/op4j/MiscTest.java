@@ -78,7 +78,7 @@ public class MiscTest {
     
     
     @Test
-    public void test() {
+    public void test() throws Exception {
         
         
 final StopWatch watch = new StopWatch();
@@ -777,6 +777,29 @@ watch.start();
         
         System.out.println(Op.on("hello").ifTrue(FnString.notEq("uncapitalizable")).exec(FnString.toUpperCase()).get());
         System.out.println(Op.on("uncapitalizable").ifTrue(FnString.notEq("uncapitalizable")).exec(FnString.toUpperCase()).get());
+        
+        
+        Map<String,Integer> agesByName =
+            Op.onListFor(27, 49, 19).zipKeys("John", "Mary", "Derek").get();
+        
+        System.out.println(agesByName);
+        
+        Map<String,String> capitals =
+            Op.onListFor("Spain", "Madrid", "United Kingdom", "London", "France", "Paris").couple().get();
+        
+        System.out.println(capitals);
+        
+        String date = "06/12/1978";
+        Calendar cal =
+            Op.on(date).exec(FnString.toCalendar("dd/MM/yyyy")).get();
+            
+        System.out.println(dateFormat.format(cal.getTime()));
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date dt = sdf.parse("06/12/1978");
+        Calendar c = Calendar.getInstance();
+        c.setTime(dt);
+        System.out.println(dateFormat.format(c.getTime()));
     }
     
     
