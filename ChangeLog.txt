@@ -1,3 +1,10 @@
+1.0-beta3
+=========
+
+- Structural changes:
+  * FnY (FnBigDecimal, FnBigInteger, FnDouble, FnFloat, FnInteger, FnLong and FnShort) return 
+  types replaced in methods returning Function<X, Boolean> with  Function<Y, Boolean>
+
 
 1.0-beta2
 =========
