@@ -2,6 +2,7 @@ package org.op4j;
 
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,6 +23,7 @@ import org.op4j.functions.Call;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.Fn;
 import org.op4j.functions.FnArray;
+import org.op4j.functions.FnBigDecimal;
 import org.op4j.functions.FnInteger;
 import org.op4j.functions.FnNumber;
 import org.op4j.functions.FnString;
@@ -712,5 +714,25 @@ public class AssortedTests extends TestCase {
         assertEquals(Boolean.TRUE, Op.onListFor(10,11).any(Ognl.asBoolean("#target < 11")).get());
     }
     
+    @Test
+    public void test34() {
+
+        final List<Integer> integerList = Arrays.asList(new Integer[]{null, 23, 34, null, -34});
+
+        assertEquals(Arrays.asList(null, 27, 38, null, -30), Op.on(integerList).forEach().exec(FnInteger.add(4)).get());
+        
+    }
+    
+    @Test
+    public void test35() {
+
+        final List<BigDecimal> list = Arrays.asList(new BigDecimal[]{null, BigDecimal.valueOf(23), 
+                BigDecimal.valueOf(34), null, BigDecimal.valueOf(-34)});
+
+        assertEquals(Arrays.asList(null, BigDecimal.valueOf(23).add(BigDecimal.valueOf(4)), 
+                BigDecimal.valueOf(34).add(BigDecimal.valueOf(4)), null, BigDecimal.valueOf(-34).add(BigDecimal.valueOf(4))), 
+                Op.on(list).forEach().exec(FnBigDecimal.add(BigDecimal.valueOf(4))).get());
+        
+    }
 }
 
