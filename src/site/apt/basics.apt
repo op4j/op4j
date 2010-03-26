@@ -43,6 +43,8 @@ The key concepts
   * {{{a5}The operators as a state machine}}
   
   * {{{a6}Functions}}
+  
+  * {{{a7}Types}}
 
 
 * {1}. Expressions
@@ -341,7 +343,7 @@ output = function.execute(input);
 ---  
 
   
-* Types
+* {7}. Types
 
   op4j is tightly integrated with the <<{{{http://www.javaruntype.org}javaRuntype project}}>>, which in
   fact was born as a part of op4j (later separated as a project on its own during development). 
