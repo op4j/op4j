@@ -25,106 +25,118 @@
 
       <subsection name="2. Functions">
       
+
+
+
+
 <table>
 <thead><tr><th>Function name</th><th>Return type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td>toBigDecimal</td><td>IFunction&lt;String,BigDecimal&gt;</td><td></td><td></td></tr>
-<tr><td>toBigDecimal</td><td>IFunction&lt;String,BigDecimal&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td>toBigDecimal</td><td>IFunction&lt;String,BigDecimal&gt;</td><td>String locale</td><td></td></tr>
-<tr><td>toBigDecimal</td><td>IFunction&lt;String,BigDecimal&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td>toBigDecimal</td><td>IFunction&lt;String,BigDecimal&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
-<tr><td>toBigDecimal</td><td>IFunction&lt;String,BigDecimal&gt;</td><td>int scale<br />RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
-<tr><td>toBigDecimal</td><td>IFunction&lt;String,BigDecimal&gt;</td><td>int scale<br />RoundingMode roundingMode<br />String locale</td><td></td></tr>
-<tr><td>toBigDecimal</td><td>IFunction&lt;String,BigDecimal&gt;</td><td>int scale<br />RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td>toBigInteger</td><td>IFunction&lt;String,BigInteger&gt;</td><td></td><td></td></tr>
-<tr><td>toBigInteger</td><td>IFunction&lt;String,BigInteger&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td>toBigInteger</td><td>IFunction&lt;String,BigInteger&gt;</td><td>String locale</td><td></td></tr>
-<tr><td>toBigInteger</td><td>IFunction&lt;String,BigInteger&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td>toBigInteger</td><td>IFunction&lt;String,BigInteger&gt;</td><td>int radix</td><td></td></tr>
-<tr><td>toBigInteger</td><td>IFunction&lt;String,BigInteger&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-<tr><td>toBigInteger</td><td>IFunction&lt;String,BigInteger&gt;</td><td>RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td>toBigInteger</td><td>IFunction&lt;String,BigInteger&gt;</td><td>RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
-<tr><td>toBigInteger</td><td>IFunction&lt;String,BigInteger&gt;</td><td>RoundingMode roundingMode<br />String locale</td><td></td></tr>
-<tr><td>toDouble</td><td>IFunction&lt;String,Double&gt;</td><td></td><td></td></tr>
-<tr><td>toDouble</td><td>IFunction&lt;String,Double&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td>toDouble</td><td>IFunction&lt;String,Double&gt;</td><td>String locale</td><td></td></tr>
-<tr><td>toDouble</td><td>IFunction&lt;String,Double&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td>toDouble</td><td>IFunction&lt;String,Double&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
-<tr><td>toDouble</td><td>IFunction&lt;String,Double&gt;</td><td>int scale<br />RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
-<tr><td>toDouble</td><td>IFunction&lt;String,Double&gt;</td><td>int scale<br />RoundingMode roundingMode<br />String locale</td><td></td></tr>
-<tr><td>toDouble</td><td>IFunction&lt;String,Double&gt;</td><td>int scale<br />RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td>toFloat</td><td>IFunction&lt;String,Float&gt;</td><td></td><td></td></tr>
-<tr><td>toFloat</td><td>IFunction&lt;String,Float&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td>toFloat</td><td>IFunction&lt;String,Float&gt;</td><td>String locale</td><td></td></tr>
-<tr><td>toFloat</td><td>IFunction&lt;String,Float&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td>toFloat</td><td>IFunction&lt;String,Float&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
-<tr><td>toFloat</td><td>IFunction&lt;String,Float&gt;</td><td>int scale<br />RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
-<tr><td>toFloat</td><td>IFunction&lt;String,Float&gt;</td><td>int scale<br />RoundingMode roundingMode<br />String locale</td><td></td></tr>
-<tr><td>toFloat</td><td>IFunction&lt;String,Float&gt;</td><td>int scale<br />RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td>toLong</td><td>IFunction&lt;String,Long&gt;</td><td></td><td></td></tr>
-<tr><td>toLong</td><td>IFunction&lt;String,Long&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td>toLong</td><td>IFunction&lt;String,Long&gt;</td><td>String locale</td><td></td></tr>
-<tr><td>toLong</td><td>IFunction&lt;String,Long&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td>toLong</td><td>IFunction&lt;String,Long&gt;</td><td>int radix</td><td></td></tr>
-<tr><td>toLong</td><td>IFunction&lt;String,Long&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-<tr><td>toLong</td><td>IFunction&lt;String,Long&gt;</td><td>RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td>toLong</td><td>IFunction&lt;String,Long&gt;</td><td>RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
-<tr><td>toLong</td><td>IFunction&lt;String,Long&gt;</td><td>RoundingMode roundingMode<br />String locale</td><td></td></tr>
-<tr><td>toInteger</td><td>IFunction&lt;String,Integer&gt;</td><td></td><td></td></tr>
-<tr><td>toInteger</td><td>IFunction&lt;String,Integer&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td>toInteger</td><td>IFunction&lt;String,Integer&gt;</td><td>String locale</td><td></td></tr>
-<tr><td>toInteger</td><td>IFunction&lt;String,Integer&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td>toInteger</td><td>IFunction&lt;String,Integer&gt;</td><td>int radix</td><td></td></tr>
-<tr><td>toInteger</td><td>IFunction&lt;String,Integer&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-<tr><td>toInteger</td><td>IFunction&lt;String,Integer&gt;</td><td>RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td>toInteger</td><td>IFunction&lt;String,Integer&gt;</td><td>RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
-<tr><td>toInteger</td><td>IFunction&lt;String,Integer&gt;</td><td>RoundingMode roundingMode<br />String locale</td><td></td></tr>
-<tr><td>toShort</td><td>IFunction&lt;String,Short&gt;</td><td></td><td></td></tr>
-<tr><td>toShort</td><td>IFunction&lt;String,Short&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td>toShort</td><td>IFunction&lt;String,Short&gt;</td><td>String locale</td><td></td></tr>
-<tr><td>toShort</td><td>IFunction&lt;String,Short&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td>toShort</td><td>IFunction&lt;String,Short&gt;</td><td>int radix</td><td></td></tr>
-<tr><td>toShort</td><td>IFunction&lt;String,Short&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-<tr><td>toShort</td><td>IFunction&lt;String,Short&gt;</td><td>RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td>toShort</td><td>IFunction&lt;String,Short&gt;</td><td>RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
-<tr><td>toShort</td><td>IFunction&lt;String,Short&gt;</td><td>RoundingMode roundingMode<br />String locale</td><td></td></tr>
-<tr><td>toByte</td><td>IFunction&lt;String,Byte&gt;</td><td></td><td></td></tr>
-<tr><td>toByte</td><td>IFunction&lt;String,Byte&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td>toByte</td><td>IFunction&lt;String,Byte&gt;</td><td>String locale</td><td></td></tr>
-<tr><td>toByte</td><td>IFunction&lt;String,Byte&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td>toByte</td><td>IFunction&lt;String,Byte&gt;</td><td>int radix</td><td></td></tr>
-<tr><td>toByte</td><td>IFunction&lt;String,Byte&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-<tr><td>toByte</td><td>IFunction&lt;String,Byte&gt;</td><td>RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td>toByte</td><td>IFunction&lt;String,Byte&gt;</td><td>RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
-<tr><td>toByte</td><td>IFunction&lt;String,Byte&gt;</td><td>RoundingMode roundingMode<br />String locale</td><td></td></tr>
-<tr><td>toBoolean</td><td>IFunction&lt;String,Boolean&gt;</td><td></td><td></td></tr>
-<tr><td>escapeCSV</td><td>IFunction&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr><td>unescapeCSV</td><td>IFunction&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr><td>escapeXML</td><td>IFunction&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr><td>unescapeXML</td><td>IFunction&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr><td>escapeHTML</td><td>IFunction&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr><td>unescapeHTML</td><td>IFunction&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr><td>escapeJavaScript</td><td>IFunction&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr><td>unescapeJavaScript</td><td>IFunction&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr><td>toBase64</td><td>IFunction&lt;String,String&gt;</td><td>Charset charset</td><td></td></tr>
-<tr><td>fromBase64</td><td>IFunction&lt;String,String&gt;</td><td>Charset charset</td><td></td></tr>
-<tr><td>toHexadecimal</td><td>IFunction&lt;String,String&gt;</td><td>Charset charset</td><td></td></tr>
-<tr><td>fromHexadecimal</td><td>IFunction&lt;String,String&gt;</td><td>Charset charset</td><td></td></tr>
-<tr><td>toUpperCase</td><td>IFunction&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr><td>toLowerCase</td><td>IFunction&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr><td>unCapitalize</td><td>IFunction&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr><td>capitalize</td><td>IFunction&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr><td>trim</td><td>IFunction&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr><td>strip</td><td>IFunction&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr><td>toCalendar</td><td>IFunction&lt;String,Calendar&gt;</td><td>String pattern</td><td></td></tr>
-<tr><td>toCalendar</td><td>IFunction&lt;String,Calendar&gt;</td><td>String pattern<br />Locale locale</td><td></td></tr>
-<tr><td>toCalendar</td><td>IFunction&lt;String,Calendar&gt;</td><td>String pattern<br />String locale</td><td></td></tr>
-<tr><td>toDate</td><td>IFunction&lt;String,Date&gt;</td><td>String pattern</td><td></td></tr>
-<tr><td>toDate</td><td>IFunction&lt;String,Date&gt;</td><td>String pattern<br />Locale locale</td><td></td></tr>
-<tr><td>toDate</td><td>IFunction&lt;String,Date&gt;</td><td>String pattern<br />String locale</td><td></td></tr>
+<tr><td>toBigDecimal</td><td>Function&lt;String,BigDecimal&gt;</td><td></td><td></td></tr>
+<tr><td>toBigDecimal</td><td>Function&lt;String,BigDecimal&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td>toBigDecimal</td><td>Function&lt;String,BigDecimal&gt;</td><td>String locale</td><td></td></tr>
+<tr><td>toBigDecimal</td><td>Function&lt;String,BigDecimal&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td>toBigDecimal</td><td>Function&lt;String,BigDecimal&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toBigDecimal</td><td>Function&lt;String,BigDecimal&gt;</td><td>int scale<br />RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
+<tr><td>toBigDecimal</td><td>Function&lt;String,BigDecimal&gt;</td><td>int scale<br />RoundingMode roundingMode<br />String locale</td><td></td></tr>
+<tr><td>toBigDecimal</td><td>Function&lt;String,BigDecimal&gt;</td><td>int scale<br />RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td>toBigInteger</td><td>Function&lt;String,BigInteger&gt;</td><td></td><td></td></tr>
+<tr><td>toBigInteger</td><td>Function&lt;String,BigInteger&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td>toBigInteger</td><td>Function&lt;String,BigInteger&gt;</td><td>String locale</td><td></td></tr>
+<tr><td>toBigInteger</td><td>Function&lt;String,BigInteger&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td>toBigInteger</td><td>Function&lt;String,BigInteger&gt;</td><td>int radix</td><td></td></tr>
+<tr><td>toBigInteger</td><td>Function&lt;String,BigInteger&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toBigInteger</td><td>Function&lt;String,BigInteger&gt;</td><td>RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td>toBigInteger</td><td>Function&lt;String,BigInteger&gt;</td><td>RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
+<tr><td>toBigInteger</td><td>Function&lt;String,BigInteger&gt;</td><td>RoundingMode roundingMode<br />String locale</td><td></td></tr>
+<tr><td>toDouble</td><td>Function&lt;String,Double&gt;</td><td></td><td></td></tr>
+<tr><td>toDouble</td><td>Function&lt;String,Double&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td>toDouble</td><td>Function&lt;String,Double&gt;</td><td>String locale</td><td></td></tr>
+<tr><td>toDouble</td><td>Function&lt;String,Double&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td>toDouble</td><td>Function&lt;String,Double&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toDouble</td><td>Function&lt;String,Double&gt;</td><td>int scale<br />RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
+<tr><td>toDouble</td><td>Function&lt;String,Double&gt;</td><td>int scale<br />RoundingMode roundingMode<br />String locale</td><td></td></tr>
+<tr><td>toDouble</td><td>Function&lt;String,Double&gt;</td><td>int scale<br />RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td>toFloat</td><td>Function&lt;String,Float&gt;</td><td></td><td></td></tr>
+<tr><td>toFloat</td><td>Function&lt;String,Float&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td>toFloat</td><td>Function&lt;String,Float&gt;</td><td>String locale</td><td></td></tr>
+<tr><td>toFloat</td><td>Function&lt;String,Float&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td>toFloat</td><td>Function&lt;String,Float&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toFloat</td><td>Function&lt;String,Float&gt;</td><td>int scale<br />RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
+<tr><td>toFloat</td><td>Function&lt;String,Float&gt;</td><td>int scale<br />RoundingMode roundingMode<br />String locale</td><td></td></tr>
+<tr><td>toFloat</td><td>Function&lt;String,Float&gt;</td><td>int scale<br />RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td>toLong</td><td>Function&lt;String,Long&gt;</td><td></td><td></td></tr>
+<tr><td>toLong</td><td>Function&lt;String,Long&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td>toLong</td><td>Function&lt;String,Long&gt;</td><td>String locale</td><td></td></tr>
+<tr><td>toLong</td><td>Function&lt;String,Long&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td>toLong</td><td>Function&lt;String,Long&gt;</td><td>int radix</td><td></td></tr>
+<tr><td>toLong</td><td>Function&lt;String,Long&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toLong</td><td>Function&lt;String,Long&gt;</td><td>RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td>toLong</td><td>Function&lt;String,Long&gt;</td><td>RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
+<tr><td>toLong</td><td>Function&lt;String,Long&gt;</td><td>RoundingMode roundingMode<br />String locale</td><td></td></tr>
+<tr><td>toInteger</td><td>Function&lt;String,Integer&gt;</td><td></td><td></td></tr>
+<tr><td>toInteger</td><td>Function&lt;String,Integer&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td>toInteger</td><td>Function&lt;String,Integer&gt;</td><td>String locale</td><td></td></tr>
+<tr><td>toInteger</td><td>Function&lt;String,Integer&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td>toInteger</td><td>Function&lt;String,Integer&gt;</td><td>int radix</td><td></td></tr>
+<tr><td>toInteger</td><td>Function&lt;String,Integer&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toInteger</td><td>Function&lt;String,Integer&gt;</td><td>RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td>toInteger</td><td>Function&lt;String,Integer&gt;</td><td>RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
+<tr><td>toInteger</td><td>Function&lt;String,Integer&gt;</td><td>RoundingMode roundingMode<br />String locale</td><td></td></tr>
+<tr><td>toShort</td><td>Function&lt;String,Short&gt;</td><td></td><td></td></tr>
+<tr><td>toShort</td><td>Function&lt;String,Short&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td>toShort</td><td>Function&lt;String,Short&gt;</td><td>String locale</td><td></td></tr>
+<tr><td>toShort</td><td>Function&lt;String,Short&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td>toShort</td><td>Function&lt;String,Short&gt;</td><td>int radix</td><td></td></tr>
+<tr><td>toShort</td><td>Function&lt;String,Short&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toShort</td><td>Function&lt;String,Short&gt;</td><td>RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td>toShort</td><td>Function&lt;String,Short&gt;</td><td>RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
+<tr><td>toShort</td><td>Function&lt;String,Short&gt;</td><td>RoundingMode roundingMode<br />String locale</td><td></td></tr>
+<tr><td>toByte</td><td>Function&lt;String,Byte&gt;</td><td></td><td></td></tr>
+<tr><td>toByte</td><td>Function&lt;String,Byte&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td>toByte</td><td>Function&lt;String,Byte&gt;</td><td>String locale</td><td></td></tr>
+<tr><td>toByte</td><td>Function&lt;String,Byte&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td>toByte</td><td>Function&lt;String,Byte&gt;</td><td>int radix</td><td></td></tr>
+<tr><td>toByte</td><td>Function&lt;String,Byte&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toByte</td><td>Function&lt;String,Byte&gt;</td><td>RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td>toByte</td><td>Function&lt;String,Byte&gt;</td><td>RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
+<tr><td>toByte</td><td>Function&lt;String,Byte&gt;</td><td>RoundingMode roundingMode<br />String locale</td><td></td></tr>
+<tr><td>toBoolean</td><td>Function&lt;String,Boolean&gt;</td><td></td><td></td></tr>
+<tr><td>escapeCSV</td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr><td>unescapeCSV</td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr><td>escapeXML</td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr><td>unescapeXML</td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr><td>escapeHTML</td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr><td>unescapeHTML</td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr><td>escapeJavaScript</td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr><td>unescapeJavaScript</td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr><td>toBase64</td><td>Function&lt;String,String&gt;</td><td>Charset charset</td><td></td></tr>
+<tr><td>fromBase64</td><td>Function&lt;String,String&gt;</td><td>Charset charset</td><td></td></tr>
+<tr><td>toHexadecimal</td><td>Function&lt;String,String&gt;</td><td>Charset charset</td><td></td></tr>
+<tr><td>fromHexadecimal</td><td>Function&lt;String,String&gt;</td><td>Charset charset</td><td></td></tr>
+<tr><td>toUpperCase</td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr><td>toLowerCase</td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr><td>unCapitalize</td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr><td>capitalize</td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr><td>trim</td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr><td>strip</td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr><td>toCalendar</td><td>Function&lt;String,Calendar&gt;</td><td>String pattern</td><td></td></tr>
+<tr><td>toCalendar</td><td>Function&lt;String,Calendar&gt;</td><td>String pattern<br />Locale locale</td><td></td></tr>
+<tr><td>toCalendar</td><td>Function&lt;String,Calendar&gt;</td><td>String pattern<br />String locale</td><td></td></tr>
+<tr><td>toDate</td><td>Function&lt;String,Date&gt;</td><td>String pattern</td><td></td></tr>
+<tr><td>toDate</td><td>Function&lt;String,Date&gt;</td><td>String pattern<br />Locale locale</td><td></td></tr>
+<tr><td>toDate</td><td>Function&lt;String,Date&gt;</td><td>String pattern<br />String locale</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
+<tr><td>isNull</td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr><td>isNotNull</td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
 </tbody></table>
 
- 	</subsection>
+    </subsection>
    </section>
   </body>
 </document>

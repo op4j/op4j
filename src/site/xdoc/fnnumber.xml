@@ -31,65 +31,151 @@
 <table>
 <thead><tr><th>Function name</th><th>Return type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td>toBigDecimal</td><td>IFunction&lt;Number,BigDecimal&gt;</td><td></td><td></td></tr>
-<tr><td>toBigDecimal</td><td>IFunction&lt;Number,BigDecimal&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
-<tr><td>toBigInteger</td><td>IFunction&lt;Number,BigInteger&gt;</td><td></td><td></td></tr>
-<tr><td>toBigInteger</td><td>IFunction&lt;Number,BigInteger&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-<tr><td>toDouble</td><td>IFunction&lt;Number,Double&gt;</td><td></td><td></td></tr>
-<tr><td>toDouble</td><td>IFunction&lt;Number,Double&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
-<tr><td>toFloat</td><td>IFunction&lt;Number,Float&gt;</td><td></td><td></td></tr>
-<tr><td>toFloat</td><td>IFunction&lt;Number,Float&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
-<tr><td>toLong</td><td>IFunction&lt;Number,Long&gt;</td><td></td><td></td></tr>
-<tr><td>toLong</td><td>IFunction&lt;Number,Long&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-<tr><td>toInteger</td><td>IFunction&lt;Number,Integer&gt;</td><td></td><td></td></tr>
-<tr><td>toInteger</td><td>IFunction&lt;Number,Integer&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-<tr><td>toShort</td><td>IFunction&lt;Number,Short&gt;</td><td></td><td></td></tr>
-<tr><td>toShort</td><td>IFunction&lt;Number,Short&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-<tr><td>toByte</td><td>IFunction&lt;Number,Byte&gt;</td><td></td><td></td></tr>
-<tr><td>toByte</td><td>IFunction&lt;Number,Byte&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-<tr><td>toBoolean</td><td>IFunction&lt;Number,Boolean&gt;</td><td></td><td></td></tr>
-<tr><td>roundBigDecimal</td><td>IFunction&lt;BigDecimal,BigDecimal&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
-<tr><td>roundFloat</td><td>IFunction&lt;Float,Float&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
-<tr><td>roundDouble</td><td>IFunction&lt;Double,Double&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
-<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td></td><td></td></tr>
-<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>boolean groupingUsed</td><td></td></tr>
-<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale</td><td></td></tr>
-<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />boolean groupingUsed</td><td></td></tr>
-<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />boolean groupingUsed</td><td></td></tr>
-<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
-<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
-<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
-<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
-<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
-<tr><td>toStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
-<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td></td><td></td></tr>
-<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>boolean groupingUsed</td><td></td></tr>
-<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale</td><td></td></tr>
-<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />boolean groupingUsed</td><td></td></tr>
-<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />boolean groupingUsed</td><td></td></tr>
-<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
-<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
-<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
-<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
-<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
-<tr><td>toCurrencyStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
-<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td></td><td></td></tr>
-<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>boolean groupingUsed</td><td></td></tr>
-<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale</td><td></td></tr>
-<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />boolean groupingUsed</td><td></td></tr>
-<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />boolean groupingUsed</td><td></td></tr>
-<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
-<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
-<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
-<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
-<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
-<tr><td>toPercentStr</td><td>IFunction&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toBigDecimal</td><td>Function&lt;Number,BigDecimal&gt;</td><td></td><td></td></tr>
+<tr><td>toBigDecimal</td><td>Function&lt;Number,BigDecimal&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toBigInteger</td><td>Function&lt;Number,BigInteger&gt;</td><td></td><td></td></tr>
+<tr><td>toBigInteger</td><td>Function&lt;Number,BigInteger&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toDouble</td><td>Function&lt;Number,Double&gt;</td><td></td><td></td></tr>
+<tr><td>toDouble</td><td>Function&lt;Number,Double&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toFloat</td><td>Function&lt;Number,Float&gt;</td><td></td><td></td></tr>
+<tr><td>toFloat</td><td>Function&lt;Number,Float&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toLong</td><td>Function&lt;Number,Long&gt;</td><td></td><td></td></tr>
+<tr><td>toLong</td><td>Function&lt;Number,Long&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toInteger</td><td>Function&lt;Number,Integer&gt;</td><td></td><td></td></tr>
+<tr><td>toInteger</td><td>Function&lt;Number,Integer&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toShort</td><td>Function&lt;Number,Short&gt;</td><td></td><td></td></tr>
+<tr><td>toShort</td><td>Function&lt;Number,Short&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toByte</td><td>Function&lt;Number,Byte&gt;</td><td></td><td></td></tr>
+<tr><td>toByte</td><td>Function&lt;Number,Byte&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toBoolean</td><td>Function&lt;Number,Boolean&gt;</td><td></td><td></td></tr>
+<tr><td>roundBigDecimal</td><td>Function&lt;BigDecimal,BigDecimal&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>roundFloat</td><td>Function&lt;Float,Float&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>roundDouble</td><td>Function&lt;Double,Double&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;Number,String&gt;</td><td></td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;Number,String&gt;</td><td>boolean groupingUsed</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;Number,String&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;Number,String&gt;</td><td>String locale</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;Number,String&gt;</td><td>Locale locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;Number,String&gt;</td><td>String locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;Number,String&gt;</td><td></td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;Number,String&gt;</td><td>boolean groupingUsed</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;Number,String&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;Number,String&gt;</td><td>String locale</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;Number,String&gt;</td><td>Locale locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;Number,String&gt;</td><td>String locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;Number,String&gt;</td><td></td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;Number,String&gt;</td><td>boolean groupingUsed</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;Number,String&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;Number,String&gt;</td><td>String locale</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;Number,String&gt;</td><td>Locale locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;Number,String&gt;</td><td>String locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;Number,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;Number,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>Number object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>Number object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;Object,Boolean&gt;</td><td>Number object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;Object,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;Object,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;Object,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;Object,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;Object,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;Object,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>Number object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;Object,Boolean&gt;</td><td>Number object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;Object,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;Object,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;Object,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;Object,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;Object,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;Object,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>Number object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />Number object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />float object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />double object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />short object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />int object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />long object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />Number object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />float object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />double object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />short object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />int object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />long object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />Number object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />float object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />double object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />short object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />int object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />long object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />Number object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />float object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />double object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />short object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />int object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />long object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />Number object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />float object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />double object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />short object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />int object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />long object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />Number object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />float object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />double object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />short object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />int object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />long object</td><td></td></tr>
+<tr><td>isNull</td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr><td>isNotNull</td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
 </tbody></table>
 
- 	</subsection>
+    </subsection>
    </section>
   </body>
 </document>

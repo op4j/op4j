@@ -1,0 +1,252 @@
+<!DOCTYPE document PUBLIC
+  "-//Apache Software Foundation//DTD XDOC 1.0//EN"
+  "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+
+
+<document>
+  <properties>
+    <title>Functions: FnBigDecimal</title>    
+  </properties>
+  <body>
+  
+    <section name="Functions: FnBigDecimal">
+
+      
+
+      <subsection name="1. Overview">
+
+        <p>
+            <b><a href="http://www.op4j.org/apidocs/org/op4j/functions/FnBigDecimal.html">FnBigDecimal</a></b> is a <em>function class</em>
+            containing a lot of static methods to work with BigDecimal objects. Those static methods return functions that take 
+            an <b>BigDecimal</b> object either as its input or output (depending on the function). It includes 
+            conversions to String, to an String representing a currency and logical operations between BigDecimal objects 
+            among others.            
+        </p>
+        
+      </subsection>
+
+      <subsection name="2. Functions">
+
+
+
+  
+
+<table>
+<thead><tr><th>Function name</th><th>Return type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>toStr</td><td>Function&lt;BigDecimal,String&gt;</td><td></td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>boolean groupingUsed</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>String locale</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>Locale locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>String locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;BigDecimal,String&gt;</td><td></td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>boolean groupingUsed</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>String locale</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>Locale locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>String locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toCurrencyStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;BigDecimal,String&gt;</td><td></td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>boolean groupingUsed</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>String locale</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>Locale locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>String locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>Locale locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />char groupingSeparator<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>toPercentStr</td><td>Function&lt;BigDecimal,String&gt;</td><td>String locale<br />int minIntegerDigits<br />int minFractionDigits<br />int maxFractionDigits<br />boolean groupingUsed<br />char decimalSeparator<br />boolean decimalSeparatorAlwaysShown</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>Number object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>Number object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>Number object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>Number object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>Number object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>Number object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />Number object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />float object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />double object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />short object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />int object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />long object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />Number object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />float object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />double object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />short object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />int object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />long object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />Number object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />float object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />double object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />short object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />int object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />long object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />Number object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />float object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />double object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />short object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />int object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />long object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />Number object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />float object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />double object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />short object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />int object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />long object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />Number object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />float object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />double object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />short object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />int object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td>IFunction&lt;BigDecimal,?&gt; by<br />long object</td><td></td></tr>
+<tr><td>isNull</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td></td><td></td></tr>
+<tr><td>isNotNull</td><td>Function&lt;BigDecimal,Boolean&gt;</td><td></td><td></td></tr>
+<tr><td>min</td><td>Function&lt;Iterable&lt;BigDecimal&gt;, BigDecimal&gt;</td><td></td><td></td></tr>
+<tr><td>sum</td><td>Function&lt;Iterable&lt;BigDecimal&gt;, BigDecimal&gt;</td><td></td><td></td></tr>
+<tr><td>avg</td><td>Function&lt;Iterable&lt;BigDecimal&gt;, BigDecimal&gt;</td><td></td><td></td></tr>
+<tr><td>avg</td><td>Function&lt;Iterable&lt;BigDecimal&gt;, BigDecimal&gt;</td><td>MathContext mathContext</td><td></td></tr>
+<tr><td>avg</td><td>Function&lt;Iterable&lt;BigDecimal&gt;, BigDecimal&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td>maxArray</td><td>Function&lt;BigDecimal[], BigDecimal&gt;</td><td></td><td></td></tr>
+<tr><td>minArray</td><td>Function&lt;BigDecimal[], BigDecimal&gt;</td><td></td><td></td></tr>
+<tr><td>sumArray</td><td>Function&lt;BigDecimal[], BigDecimal&gt;</td><td></td><td></td></tr>
+<tr><td>avgArray</td><td>Function&lt;BigDecimal[], BigDecimal&gt;</td><td></td><td></td></tr>
+<tr><td>avgArray</td><td>Function&lt;BigDecimal[], BigDecimal&gt;</td><td>MathContext mathContext</td><td></td></tr>
+<tr><td>avgArray</td><td>Function&lt;BigDecimal[], BigDecimal&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td>round</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>MathContext mathContext</td><td></td></tr>
+<tr><td>round</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td>abs</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td></td><td></td></tr>
+<tr><td>add</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>Number add</td><td></td></tr>
+<tr><td>add</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>byte add</td><td></td></tr>
+<tr><td>add</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>short add</td><td></td></tr>
+<tr><td>add</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>int add</td><td></td></tr>
+<tr><td>add</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>long add</td><td></td></tr>
+<tr><td>add</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>float add</td><td></td></tr>
+<tr><td>add</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>double add</td><td></td></tr>
+<tr><td>subtract</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>Number subtract</td><td></td></tr>
+<tr><td>subtract</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>byte subtract</td><td></td></tr>
+<tr><td>subtract</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>short subtract</td><td></td></tr>
+<tr><td>subtract</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>int subtract</td><td></td></tr>
+<tr><td>subtract</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>long subtract</td><td></td></tr>
+<tr><td>subtract</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>float subtract</td><td></td></tr>
+<tr><td>subtract</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>double subtract</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>Number divisor</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>byte divisor</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>short divisor</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>int divisor</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>long divisor</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>float divisor</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>double divisor</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>Number divisor<br />MathContext mathContext</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>byte divisor<br />MathContext mathContext</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>short divisor<br />MathContext mathContext</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>int divisor<br />MathContext mathContext</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>long divisor<br />MathContext mathContext</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>float divisor<br />MathContext mathContext</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>double divisor<br />MathContext mathContext</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>Number divisor<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>byte divisor<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>short divisor<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>int divisor<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>long divisor<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>float divisor<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>divideBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>double divisor<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>remainder</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>Number divisor</td><td></td></tr>
+<tr><td>remainder</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>byte divisor</td><td></td></tr>
+<tr><td>remainder</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>short divisor</td><td></td></tr>
+<tr><td>remainder</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>int divisor</td><td></td></tr>
+<tr><td>remainder</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>long divisor</td><td></td></tr>
+<tr><td>remainder</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>float divisor</td><td></td></tr>
+<tr><td>remainder</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>double divisor</td><td></td></tr>
+<tr><td>remainder</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>Number divisor<br />MathContext mathContext</td><td></td></tr>
+<tr><td>remainder</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>byte divisor<br />MathContext mathContext</td><td></td></tr>
+<tr><td>remainder</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>short divisor<br />MathContext mathContext</td><td></td></tr>
+<tr><td>remainder</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>int divisor<br />MathContext mathContext</td><td></td></tr>
+<tr><td>remainder</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>long divisor<br />MathContext mathContext</td><td></td></tr>
+<tr><td>remainder</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>float divisor<br />MathContext mathContext</td><td></td></tr>
+<tr><td>remainder</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>double divisor<br />MathContext mathContext</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>Number multiplicand</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>byte multiplicand</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>short multiplicand</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>int multiplicand</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>long multiplicand</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>float multiplicand</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>double multiplicand</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>Number multiplicand<br />MathContext mathContext</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>byte multiplicand<br />MathContext mathContext</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>short multiplicand<br />MathContext mathContext</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>int multiplicand<br />MathContext mathContext</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>long multiplicand<br />MathContext mathContext</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>float multiplicand<br />MathContext mathContext</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>double multiplicand<br />MathContext mathContext</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>Number multiplicand<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>byte multiplicand<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>short multiplicand<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>int multiplicand<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>long multiplicand<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>float multiplicand<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>multiplyBy</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>double multiplicand<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td>pow</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>int power</td><td></td></tr>
+<tr><td>pow</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>int power<br />MathContext mathContext</td><td></td></tr>
+<tr><td>pow</td><td>Function&lt;BigDecimal, BigDecimal&gt;</td><td>int power<br />RoundingMode roundingMode</td><td></td></tr>
+</tbody></table>
+
+
+ </subsection>
+   </section>
+  </body>
+</document>

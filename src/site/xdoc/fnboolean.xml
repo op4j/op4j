@@ -25,23 +25,42 @@
       <subsection name="2. Functions">
   
 
-  
+
 
 <table>
 <thead><tr><th>Function name</th><th>Return type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td>toBigDecimal</td><td>IFunction&lt;Boolean,BigDecimal&gt;</td><td></td><td></td></tr>
-<tr><td>toBigInteger</td><td>IFunction&lt;Boolean,BigInteger&gt;</td><td></td><td></td></tr>
-<tr><td>toDouble</td><td>IFunction&lt;Boolean,Double&gt;</td><td></td><td></td></tr>
-<tr><td>toFloat</td><td>IFunction&lt;Boolean,Float&gt;</td><td></td><td></td></tr>
-<tr><td>toLong</td><td>IFunction&lt;Boolean,Long&gt;</td><td></td><td></td></tr>
-<tr><td>toInteger</td><td>IFunction&lt;Boolean,Integer&gt;</td><td></td><td></td></tr>
-<tr><td>toShort</td><td>IFunction&lt;Boolean,Short&gt;</td><td></td><td></td></tr>
-<tr><td>toByte</td><td>IFunction&lt;Boolean,Byte&gt;</td><td></td><td></td></tr>
-<tr><td>not</td><td>IFunction&lt;Boolean,Boolean&gt;</td><td></td><td></td></tr>
+<tr><td>toBoolean</td><td>Function&lt;Number,Boolean&gt;</td><td></td><td></td></tr>
+<tr><td>toBigDecimal</td><td>Function&lt;Boolean,BigDecimal&gt;</td><td></td><td></td></tr>
+<tr><td>toBigInteger</td><td>Function&lt;Boolean,BigInteger&gt;</td><td></td><td></td></tr>
+<tr><td>toDouble</td><td>Function&lt;Boolean,Double&gt;</td><td></td><td></td></tr>
+<tr><td>toFloat</td><td>Function&lt;Boolean,Float&gt;</td><td></td><td></td></tr>
+<tr><td>toLong</td><td>Function&lt;Boolean,Long&gt;</td><td></td><td></td></tr>
+<tr><td>toInteger</td><td>Function&lt;Boolean,Integer&gt;</td><td></td><td></td></tr>
+<tr><td>toShort</td><td>Function&lt;Boolean,Short&gt;</td><td></td><td></td></tr>
+<tr><td>toByte</td><td>Function&lt;Boolean,Byte&gt;</td><td></td><td></td></tr>
+<tr><td>negate</td><td>Function&lt;Boolean,Boolean&gt;</td><td></td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>Boolean object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>boolean object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>Boolean object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>boolean object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />Boolean object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />boolean object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />Boolean object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />boolean object</td><td></td></tr>
+<tr><td>isTrue</td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr><td>isFalse</td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr><td>and</td><td>Function&lt;R,Boolean&gt;</td><td>IFunction&lt;X,Boolean&gt; left<br />IFunction&lt;? super R,Boolean&gt; right</td><td></td></tr>
+<tr><td>or</td><td>Function&lt;R,Boolean&gt;</td><td>IFunction&lt;X,Boolean&gt; left<br />IFunction&lt;? super R,Boolean&gt; right</td><td></td></tr>
+<tr><td>not</td><td>Function&lt;T,Boolean&gt;</td><td>IFunction&lt;T, Boolean&gt; function</td><td></td></tr>
+<tr><td>by</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,Y&gt; by<br />IFunction&lt;? super Y, Boolean&gt; eval</td><td></td></tr>
+<tr><td>isNull</td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr><td>isNotNull</td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr><td>isNullBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by</td><td></td></tr>
+<tr><td>isNotNullBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by</td><td></td></tr>
 </tbody></table>
 
- 	</subsection>
+    </subsection>
    </section>
   </body>
 </document>
