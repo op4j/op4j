@@ -1,0 +1,50 @@
+<!DOCTYPE document PUBLIC
+  "-//Apache Software Foundation//DTD XDOC 1.0//EN"
+  "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+
+
+<document>
+  <properties>
+    <title>Functions: Fn</title>    
+  </properties>
+  <body>
+  
+    <section name="Functions: Fn">
+
+      
+
+      <subsection name="1. Overview">
+
+        <p>
+            <b><a href="http://www.op4j.org/apidocs/org/op4j/functions/Fn.html">Fn</a></b> is a <em>function class</em>
+            containing basic static methods that operate on Objects 
+        </p>
+        
+      </subsection>
+
+      <subsection name="2. Functions">
+      
+<table>
+<thead><tr><th>Function name</th><th>Return type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>and</td><td>Function&lt;R,Boolean&gt;</td><td>IFunction&lt;X,Boolean&gt; left<br />IFunction&lt;? super R,Boolean&gt; right</td><td></td></tr>
+<tr><td>or</td><td>Function&lt;R,Boolean&gt;</td><td>IFunction&lt;X,Boolean&gt; left<br />IFunction&lt;? super R,Boolean&gt; right</td><td></td></tr>
+<tr><td>not</td><td>Function&lt;T,Boolean&gt;</td><td>IFunction&lt;T, Boolean&gt; function</td><td></td></tr>
+<tr><td>by</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,Y&gt; by<br />IFunction&lt;? super Y,Boolean&gt; eval</td><td></td></tr>
+<tr><td>chain</td><td>Function&lt;X,Z&gt;</td><td>IFunction&lt;X,Y&gt; fn1<br />IFunction&lt;? super Y,Z&gt; fn2</td><td></td></tr>
+<tr><td>ifTrue</td><td>Function&lt;R,R&gt;</td><td>IFunction&lt;? super R, Boolean&gt; condition<br />IFunction&lt;? super R,R&gt; function</td><td></td></tr>
+<tr><td>ifFalse</td><td>Function&lt;R,R&gt;</td><td>IFunction&lt;? super R, Boolean&gt; condition<br />IFunction&lt;? super R,R&gt; function</td><td></td></tr>
+<tr><td>ifNull</td><td>Function&lt;T,T&gt;</td><td>IFunction&lt;? super T,T&gt; function</td><td></td></tr>
+<tr><td>ifNotNull</td><td>Function&lt;T,T&gt;</td><td>IFunction&lt;? super T, T&gt; function</td><td></td></tr>
+<tr><td>ifNullOrTrue</td><td>Function&lt;R,R&gt;</td><td>IFunction&lt;? super R, Boolean&gt; condition<br />IFunction&lt;? super R,R&gt; function</td><td></td></tr>
+<tr><td>ifNullOrFalse</td><td>Function&lt;R,R&gt;</td><td>IFunction&lt;? super R, Boolean&gt; condition<br />IFunction&lt;? super R,R&gt; function</td><td></td></tr>
+<tr><td>ifNotNullAndTrue</td><td>Function&lt;R,R&gt;</td><td>IFunction&lt;? super R, Boolean&gt; condition<br />IFunction&lt;? super R,R&gt; function</td><td></td></tr>
+<tr><td>ifNotNullAndFalse</td><td>Function&lt;R,R&gt;</td><td>IFunction&lt;? super R, Boolean&gt; condition<br />IFunction&lt;? super R,R&gt; function</td><td></td></tr>
+<tr><td>whileTrue</td><td>Function&lt;T,T&gt;</td><td>IFunction&lt;? super T, Boolean&gt; condition<br />IFunction&lt;? super T, T&gt; function</td><td></td></tr>
+<tr><td>whileFalse</td><td>Function&lt;T,T&gt;</td><td>IFunction&lt;? super T, Boolean&gt; condition<br />IFunction&lt;? super T, T&gt; function</td><td></td></tr>
+</tbody></table>
+
+ </subsection>
+   </section>
+  </body>
+</document>
