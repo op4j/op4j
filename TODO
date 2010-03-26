@@ -1,6 +1,5 @@
 
-  - Check the possibility of removing the ofX() step from FnMath
-  - Check FnNumber in order to add methods to FnX (FnMathOfX)
-  
+  - Add a way to create a map from an array/list/set by specifying TWO functions instead of one.
   - FnString.isNumeric or FnString.isInteger(), isFloat() or similar...
-  - Maybe create a class containing methods, specific for static importing.
+  - Maybe create a class containing methods, specific for static importing. Or maybe recommend
+    the static import of "Call", which would require the renaming of its methods...
