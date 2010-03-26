@@ -1,0 +1,136 @@
+<!DOCTYPE document PUBLIC
+  "-//Apache Software Foundation//DTD XDOC 1.0//EN"
+  "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+
+
+<document>
+  <properties>
+    <title>Functions: FnObject</title>    
+  </properties>
+  <body>
+  
+    <section name="Functions: FnObject">
+
+      
+
+      <subsection name="1. Overview">
+
+        <p>
+            <b><a href="http://www.op4j.org/apidocs/org/op4j/functions/FnObject.html">FnObject</a></b> is a <em>function class</em>
+            containing a lot of static methods to work with Objects in general.             
+        </p>
+        
+      </subsection>
+
+      <subsection name="2. Functions">
+      
+    
+  
+
+<table>
+<thead><tr><th>Function name</th><th>Return type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>toStr</td><td>Function&lt;Object,String&gt;</td><td></td><td></td></tr>
+<tr><td>toStrNullSafe</td><td>Function&lt;Object,String&gt;</td><td></td><td></td></tr>
+<tr><td>intoSingletonArrayOf</td><td>Function&lt;T,T[]&gt;</td><td>Type&lt;T&gt; type</td><td></td></tr>
+<tr><td>intoSingletonListOf</td><td>Function&lt;T,List&lt;T&gt;&gt;</td><td>Type&lt;T&gt; type</td><td></td></tr>
+<tr><td>intoSingletonSetOf</td><td>Function&lt;T,Set&lt;T&gt;&gt;</td><td>Type&lt;T&gt; type</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>Object object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>boolean object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>Object object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>boolean object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;Object,Boolean&gt;</td><td>Object object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;Object,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;Object,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;Object,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;Object,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;Object,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td>lessThan</td><td>Function&lt;Object,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>Object object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td>lessOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;Object,Boolean&gt;</td><td>Object object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;Object,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;Object,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;Object,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;Object,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;Object,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td>greaterThan</td><td>Function&lt;Object,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>Object object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td>greaterOrEqTo</td><td>Function&lt;Object,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />Object object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />float object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />double object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />short object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />int object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />long object</td><td></td></tr>
+<tr><td>eqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />boolean object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />Object object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />float object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />double object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />short object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />int object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />long object</td><td></td></tr>
+<tr><td>notEqBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />boolean object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />Object object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />float object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />double object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />short object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />int object</td><td></td></tr>
+<tr><td>lessThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />long object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />Object object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />float object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />double object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />short object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />int object</td><td></td></tr>
+<tr><td>lessOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />long object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />Object object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />float object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />double object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />short object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />int object</td><td></td></tr>
+<tr><td>greaterThanBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />long object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />Object object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />float object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />double object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />short object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />int object</td><td></td></tr>
+<tr><td>greaterOrEqToBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />long object</td><td></td></tr>
+<tr><td>isNull</td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr><td>isNotNull</td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr><td>isNullBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by</td><td></td></tr>
+<tr><td>isNotNullBy</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by</td><td></td></tr>
+<tr><td>replaceWith</td><td>Function&lt;Object,T&gt;</td><td>T object</td><td></td></tr>
+</tbody></table>
+
+ </subsection>
+   </section>
+  </body>
+</document>
