@@ -272,6 +272,7 @@ public class RecipesTests extends TestCase {
     
     
     @Test
+    @SuppressWarnings("boxing")
     public void testOP4J_011() throws Exception {
 
         final List<Integer> result = Arrays.asList(new Integer[] { 53, 430 });
@@ -302,7 +303,41 @@ public class RecipesTests extends TestCase {
 
     }
 
+
     
+    
+    @Test
+    public void testOP4J_012() throws Exception {
+
+        final String[] result = new String[] { "earth", "air", "fire", "water" };
+
+        List<String> elementList = Arrays.asList(new String[] { "earth", "air", "fire", "water" });
+
+        {
+            String[] elementArray =
+                Op.on(elementList).toArrayOf(Types.STRING).get();
+                
+            assertEquals(String[].class, elementArray.getClass());
+            assertEquals(Arrays.asList(result), Arrays.asList(elementArray));
+        }
+
+        {
+            Set<String> elementSet =
+                Op.on(elementList).toSet().get();
+                
+            assertEquals(Arrays.asList(result), new ArrayList<String>(elementSet));
+        }
+        
+        {
+            String[] elementArray = 
+                elementList.toArray(new String[elementList.size()]);
+            
+            assertEquals(String[].class, elementArray.getClass());
+            assertEquals(Arrays.asList(result), Arrays.asList(elementArray));
+        }
+
+    }
+
 
     
     
