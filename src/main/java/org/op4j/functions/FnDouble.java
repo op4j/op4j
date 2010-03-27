@@ -61,6 +61,7 @@ public final class FnDouble {
 	
 	
 	// From FnNumber
+	
 	public static final Function<Double,Double> roundDouble(final int scale, final RoundingMode roundingMode) {
         return FnNumber.roundDouble(scale, roundingMode);
     }
@@ -527,6 +528,7 @@ public final class FnDouble {
     public static final Function<Double,Boolean> isNotNull() {
         return (Function<Double,Boolean>)((Function)FnObject.isNotNull());
     }
+    
     // End From FnNumber
     
     
