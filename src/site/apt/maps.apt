@@ -61,8 +61,8 @@ Op.onMapFor(key1, value1).and(key2, value2).and(key3, value3)...
 
 *** Maps from arrays, lists or sets. 
 
-  Maps can be built from arrays, lists or sets in a variety of ways (see the {{{arrays.html}arrays}},
-  {{{lists.html}lists}} or {{{sets.html}sets}} documentation for details).
+  Maps can be built from arrays, lists or sets in a variety of ways (see the {{{./arrays.html}arrays}},
+  {{{./lists.html}lists}} or {{{./sets.html}sets}} documentation for details).
   
   For example, zipping can be used:
   
