@@ -29,159 +29,194 @@
 
   
 
-<table>
+
+<table border="0">
 <thead><tr><th>Function name</th><th>Return type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td>toStr</td><td>Function&lt;BigInteger,String&gt;</td><td>boolean groupingUsed</td><td></td></tr>
-<tr><td>toStr</td><td>Function&lt;BigInteger,String&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td>toStr</td><td>Function&lt;BigInteger,String&gt;</td><td>String locale</td><td></td></tr>
-<tr><td>toStr</td><td>Function&lt;BigInteger,String&gt;</td><td>Locale locale<br />boolean groupingUsed</td><td></td></tr>
-<tr><td>toStr</td><td>Function&lt;BigInteger,String&gt;</td><td>String locale<br />boolean groupingUsed</td><td></td></tr>
-<tr><td>toCurrencyStr</td><td>Function&lt;BigInteger,String&gt;</td><td></td><td></td></tr>
-<tr><td>toCurrencyStr</td><td>Function&lt;BigInteger,String&gt;</td><td>boolean groupingUsed</td><td></td></tr>
-<tr><td>toCurrencyStr</td><td>Function&lt;BigInteger,String&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td>toCurrencyStr</td><td>Function&lt;BigInteger,String&gt;</td><td>String locale</td><td></td></tr>
-<tr><td>toCurrencyStr</td><td>Function&lt;BigInteger,String&gt;</td><td>Locale locale<br />boolean groupingUsed</td><td></td></tr>
-<tr><td>toCurrencyStr</td><td>Function&lt;BigInteger,String&gt;</td><td>String locale<br />boolean groupingUsed</td><td></td></tr>
-<tr><td>toPercentStr</td><td>Function&lt;BigInteger,String&gt;</td><td></td><td></td></tr>
-<tr><td>toPercentStr</td><td>Function&lt;BigInteger,String&gt;</td><td>boolean groupingUsed</td><td></td></tr>
-<tr><td>toPercentStr</td><td>Function&lt;BigInteger,String&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td>toPercentStr</td><td>Function&lt;BigInteger,String&gt;</td><td>String locale</td><td></td></tr>
-<tr><td>toPercentStr</td><td>Function&lt;BigInteger,String&gt;</td><td>Locale locale<br />boolean groupingUsed</td><td></td></tr>
-<tr><td>toPercentStr</td><td>Function&lt;BigInteger,String&gt;</td><td>String locale<br />boolean groupingUsed</td><td></td></tr>
-<tr><td>eq</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>Number object</td><td></td></tr>
-<tr><td>eq</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>float object</td><td></td></tr>
-<tr><td>eq</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>double object</td><td></td></tr>
-<tr><td>eq</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>byte object</td><td></td></tr>
-<tr><td>eq</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>short object</td><td></td></tr>
-<tr><td>eq</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>int object</td><td></td></tr>
-<tr><td>eq</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>long object</td><td></td></tr>
-<tr><td>notEq</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>Number object</td><td></td></tr>
-<tr><td>notEq</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>float object</td><td></td></tr>
-<tr><td>notEq</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>double object</td><td></td></tr>
-<tr><td>notEq</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>byte object</td><td></td></tr>
-<tr><td>notEq</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>short object</td><td></td></tr>
-<tr><td>notEq</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>int object</td><td></td></tr>
-<tr><td>notEq</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>long object</td><td></td></tr>
-<tr><td>lessThan</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>Number object</td><td></td></tr>
-<tr><td>lessThan</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>float object</td><td></td></tr>
-<tr><td>lessThan</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>double object</td><td></td></tr>
-<tr><td>lessThan</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>byte object</td><td></td></tr>
-<tr><td>lessThan</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>short object</td><td></td></tr>
-<tr><td>lessThan</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>int object</td><td></td></tr>
-<tr><td>lessThan</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>long object</td><td></td></tr>
-<tr><td>lessOrEqTo</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>Number object</td><td></td></tr>
-<tr><td>lessOrEqTo</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>float object</td><td></td></tr>
-<tr><td>lessOrEqTo</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>double object</td><td></td></tr>
-<tr><td>lessOrEqTo</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>byte object</td><td></td></tr>
-<tr><td>lessOrEqTo</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>short object</td><td></td></tr>
-<tr><td>lessOrEqTo</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>int object</td><td></td></tr>
-<tr><td>lessOrEqTo</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>long object</td><td></td></tr>
-<tr><td>greaterThan</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>Number object</td><td></td></tr>
-<tr><td>greaterThan</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>float object</td><td></td></tr>
-<tr><td>greaterThan</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>double object</td><td></td></tr>
-<tr><td>greaterThan</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>byte object</td><td></td></tr>
-<tr><td>greaterThan</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>short object</td><td></td></tr>
-<tr><td>greaterThan</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>int object</td><td></td></tr>
-<tr><td>greaterThan</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>long object</td><td></td></tr>
-<tr><td>greaterOrEqTo</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>Number object</td><td></td></tr>
-<tr><td>greaterOrEqTo</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>float object</td><td></td></tr>
-<tr><td>greaterOrEqTo</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>double object</td><td></td></tr>
-<tr><td>greaterOrEqTo</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>byte object</td><td></td></tr>
-<tr><td>greaterOrEqTo</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>short object</td><td></td></tr>
-<tr><td>greaterOrEqTo</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>int object</td><td></td></tr>
-<tr><td>greaterOrEqTo</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>long object</td><td></td></tr>
-<tr><td>eqBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />Number object</td><td></td></tr>
-<tr><td>eqBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />float object</td><td></td></tr>
-<tr><td>eqBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />double object</td><td></td></tr>
-<tr><td>eqBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />byte object</td><td></td></tr>
-<tr><td>eqBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />short object</td><td></td></tr>
-<tr><td>eqBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />int object</td><td></td></tr>
-<tr><td>eqBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />long object</td><td></td></tr>
-<tr><td>notEqBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />Number object</td><td></td></tr>
-<tr><td>notEqBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />float object</td><td></td></tr>
-<tr><td>notEqBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />double object</td><td></td></tr>
-<tr><td>notEqBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />byte object</td><td></td></tr>
-<tr><td>notEqBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />short object</td><td></td></tr>
-<tr><td>notEqBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />int object</td><td></td></tr>
-<tr><td>notEqBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />long object</td><td></td></tr>
-<tr><td>lessThanBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />Number object</td><td></td></tr>
-<tr><td>lessThanBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />float object</td><td></td></tr>
-<tr><td>lessThanBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />double object</td><td></td></tr>
-<tr><td>lessThanBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />byte object</td><td></td></tr>
-<tr><td>lessThanBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />short object</td><td></td></tr>
-<tr><td>lessThanBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />int object</td><td></td></tr>
-<tr><td>lessThanBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />long object</td><td></td></tr>
-<tr><td>lessOrEqToBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />Number object</td><td></td></tr>
-<tr><td>lessOrEqToBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />float object</td><td></td></tr>
-<tr><td>lessOrEqToBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />double object</td><td></td></tr>
-<tr><td>lessOrEqToBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />byte object</td><td></td></tr>
-<tr><td>lessOrEqToBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />short object</td><td></td></tr>
-<tr><td>lessOrEqToBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />int object</td><td></td></tr>
-<tr><td>lessOrEqToBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />long object</td><td></td></tr>
-<tr><td>greaterThanBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />Number object</td><td></td></tr>
-<tr><td>greaterThanBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />float object</td><td></td></tr>
-<tr><td>greaterThanBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />double object</td><td></td></tr>
-<tr><td>greaterThanBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />byte object</td><td></td></tr>
-<tr><td>greaterThanBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />short object</td><td></td></tr>
-<tr><td>greaterThanBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />int object</td><td></td></tr>
-<tr><td>greaterThanBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />long object</td><td></td></tr>
-<tr><td>greaterOrEqToBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />Number object</td><td></td></tr>
-<tr><td>greaterOrEqToBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />float object</td><td></td></tr>
-<tr><td>greaterOrEqToBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />double object</td><td></td></tr>
-<tr><td>greaterOrEqToBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />byte object</td><td></td></tr>
-<tr><td>greaterOrEqToBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />short object</td><td></td></tr>
-<tr><td>greaterOrEqToBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />int object</td><td></td></tr>
-<tr><td>greaterOrEqToBy</td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />long object</td><td></td></tr>
-<tr><td>isNull</td><td>Function&lt;BigInteger,Boolean&gt;</td><td></td><td></td></tr>
-<tr><td>isNotNull</td><td>Function&lt;BigInteger,Boolean&gt;</td><td></td><td></td></tr>
-<tr><td>min</td><td>Function&lt;Iterable&lt;BigInteger&gt;, BigInteger&gt;</td><td></td><td></td></tr>
-<tr><td>sum</td><td>Function&lt;Iterable&lt;BigInteger&gt;, BigInteger&gt;</td><td></td><td></td></tr>
-<tr><td>avg</td><td>Function&lt;Iterable&lt;BigInteger&gt;, BigInteger&gt;</td><td></td><td></td></tr>
-<tr><td>avg</td><td>Function&lt;Iterable&lt;BigInteger&gt;, BigInteger&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-<tr><td>avg</td><td>Function&lt;Iterable&lt;BigInteger&gt;, BigInteger&gt;</td><td>MathContext mathContext</td><td></td></tr>
-<tr><td>maxArray</td><td>Function&lt;BigInteger[], BigInteger&gt;</td><td></td><td></td></tr>
-<tr><td>minArray</td><td>Function&lt;BigInteger[], BigInteger&gt;</td><td></td><td></td></tr>
-<tr><td>sumArray</td><td>Function&lt;BigInteger[], BigInteger&gt;</td><td></td><td></td></tr>
-<tr><td>avgArray</td><td>Function&lt;BigInteger[], BigInteger&gt;</td><td></td><td></td></tr>
-<tr><td>avgArray</td><td>Function&lt;BigInteger[], BigInteger&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-<tr><td>avgArray</td><td>Function&lt;BigInteger[], BigInteger&gt;</td><td>MathContext mathContext</td><td></td></tr>
-<tr><td>abs</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td></td><td></td></tr>
-<tr><td>add</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>Number add</td><td></td></tr>
-<tr><td>add</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>byte add</td><td></td></tr>
-<tr><td>add</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>short add</td><td></td></tr>
-<tr><td>add</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>int add</td><td></td></tr>
-<tr><td>add</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>long add</td><td></td></tr>
-<tr><td>add</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>float add</td><td></td></tr>
-<tr><td>add</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>double add</td><td></td></tr>
-<tr><td>subtract</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>Number subtract</td><td></td></tr>
-<tr><td>subtract</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>byte subtract</td><td></td></tr>
-<tr><td>subtract</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>short subtract</td><td></td></tr>
-<tr><td>subtract</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>int subtract</td><td></td></tr>
-<tr><td>subtract</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>long subtract</td><td></td></tr>
-<tr><td>subtract</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>float subtract</td><td></td></tr>
-<tr><td>subtract</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>double subtract</td><td></td></tr>
-<tr><td>divideBy</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>Number divisor</td><td></td></tr>
-<tr><td>divideBy</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>byte divisor</td><td></td></tr>
-<tr><td>divideBy</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>short divisor</td><td></td></tr>
-<tr><td>divideBy</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>int divisor</td><td></td></tr>
-<tr><td>divideBy</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>long divisor</td><td></td></tr>
-<tr><td>divideBy</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>float divisor</td><td></td></tr>
-<tr><td>divideBy</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>double divisor</td><td></td></tr>
-<tr><td>module</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>Number module</td><td></td></tr>
-<tr><td>remainder</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>Number module</td><td></td></tr>
-<tr><td>multiplyBy</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>Number multiplicand</td><td></td></tr>
-<tr><td>multiplyBy</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>byte multiplicand</td><td></td></tr>
-<tr><td>multiplyBy</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>short multiplicand</td><td></td></tr>
-<tr><td>multiplyBy</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>int multiplicand</td><td></td></tr>
-<tr><td>multiplyBy</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>long multiplicand</td><td></td></tr>
-<tr><td>multiplyBy</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>float multiplicand</td><td></td></tr>
-<tr><td>multiplyBy</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>double multiplicand</td><td></td></tr>
-<tr><td>pow</td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>int power</td><td></td></tr>
+<tr><td><b>toStr</b></td><td>Function&lt;Number,String&gt;</td><td></td><td></td></tr>
+<tr><td><b>toStr</b></td><td>Function&lt;BigInteger,String&gt;</td><td>boolean groupingUsed</td><td></td></tr>
+<tr><td><b>toStr</b></td><td>Function&lt;BigInteger,String&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td><b>toStr</b></td><td>Function&lt;BigInteger,String&gt;</td><td>String locale</td><td></td></tr>
+<tr><td><b>toStr</b></td><td>Function&lt;BigInteger,String&gt;</td><td>Locale locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td><b>toStr</b></td><td>Function&lt;BigInteger,String&gt;</td><td>String locale<br />boolean groupingUsed</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>toCurrencyStr</b></td><td>Function&lt;BigInteger,String&gt;</td><td></td><td></td></tr>
+<tr><td><b>toCurrencyStr</b></td><td>Function&lt;BigInteger,String&gt;</td><td>boolean groupingUsed</td><td></td></tr>
+<tr><td><b>toCurrencyStr</b></td><td>Function&lt;BigInteger,String&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td><b>toCurrencyStr</b></td><td>Function&lt;BigInteger,String&gt;</td><td>String locale</td><td></td></tr>
+<tr><td><b>toCurrencyStr</b></td><td>Function&lt;BigInteger,String&gt;</td><td>Locale locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td><b>toCurrencyStr</b></td><td>Function&lt;BigInteger,String&gt;</td><td>String locale<br />boolean groupingUsed</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>toPercentStr</b></td><td>Function&lt;BigInteger,String&gt;</td><td></td><td></td></tr>
+<tr><td><b>toPercentStr</b></td><td>Function&lt;BigInteger,String&gt;</td><td>boolean groupingUsed</td><td></td></tr>
+<tr><td><b>toPercentStr</b></td><td>Function&lt;BigInteger,String&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td><b>toPercentStr</b></td><td>Function&lt;BigInteger,String&gt;</td><td>String locale</td><td></td></tr>
+<tr><td><b>toPercentStr</b></td><td>Function&lt;BigInteger,String&gt;</td><td>Locale locale<br />boolean groupingUsed</td><td></td></tr>
+<tr><td><b>toPercentStr</b></td><td>Function&lt;BigInteger,String&gt;</td><td>String locale<br />boolean groupingUsed</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>eq</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>Number object</td><td></td></tr>
+<tr><td><b>eq</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td><b>eq</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td><b>eq</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td><b>eq</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td><b>eq</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td><b>eq</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>notEq</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>Number object</td><td></td></tr>
+<tr><td><b>notEq</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td><b>notEq</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td><b>notEq</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td><b>notEq</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td><b>notEq</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td><b>notEq</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>lessThan</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>Number object</td><td></td></tr>
+<tr><td><b>lessThan</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td><b>lessThan</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td><b>lessThan</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td><b>lessThan</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td><b>lessThan</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td><b>lessThan</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>lessOrEqTo</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>Number object</td><td></td></tr>
+<tr><td><b>lessOrEqTo</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td><b>lessOrEqTo</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td><b>lessOrEqTo</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td><b>lessOrEqTo</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td><b>lessOrEqTo</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td><b>lessOrEqTo</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>greaterThan</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>Number object</td><td></td></tr>
+<tr><td><b>greaterThan</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td><b>greaterThan</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td><b>greaterThan</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td><b>greaterThan</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td><b>greaterThan</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td><b>greaterThan</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>greaterOrEqTo</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>Number object</td><td></td></tr>
+<tr><td><b>greaterOrEqTo</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>float object</td><td></td></tr>
+<tr><td><b>greaterOrEqTo</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>double object</td><td></td></tr>
+<tr><td><b>greaterOrEqTo</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>byte object</td><td></td></tr>
+<tr><td><b>greaterOrEqTo</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>short object</td><td></td></tr>
+<tr><td><b>greaterOrEqTo</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>int object</td><td></td></tr>
+<tr><td><b>greaterOrEqTo</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>long object</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>eqBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />Number object</td><td></td></tr>
+<tr><td><b>eqBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />float object</td><td></td></tr>
+<tr><td><b>eqBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />double object</td><td></td></tr>
+<tr><td><b>eqBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td><b>eqBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />short object</td><td></td></tr>
+<tr><td><b>eqBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />int object</td><td></td></tr>
+<tr><td><b>eqBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />long object</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>notEqBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />Number object</td><td></td></tr>
+<tr><td><b>notEqBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />float object</td><td></td></tr>
+<tr><td><b>notEqBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />double object</td><td></td></tr>
+<tr><td><b>notEqBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td><b>notEqBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />short object</td><td></td></tr>
+<tr><td><b>notEqBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />int object</td><td></td></tr>
+<tr><td><b>notEqBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />long object</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>lessThanBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />Number object</td><td></td></tr>
+<tr><td><b>lessThanBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />float object</td><td></td></tr>
+<tr><td><b>lessThanBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />double object</td><td></td></tr>
+<tr><td><b>lessThanBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td><b>lessThanBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />short object</td><td></td></tr>
+<tr><td><b>lessThanBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />int object</td><td></td></tr>
+<tr><td><b>lessThanBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />long object</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>lessOrEqToBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />Number object</td><td></td></tr>
+<tr><td><b>lessOrEqToBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />float object</td><td></td></tr>
+<tr><td><b>lessOrEqToBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />double object</td><td></td></tr>
+<tr><td><b>lessOrEqToBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td><b>lessOrEqToBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />short object</td><td></td></tr>
+<tr><td><b>lessOrEqToBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />int object</td><td></td></tr>
+<tr><td><b>lessOrEqToBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />long object</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>greaterThanBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />Number object</td><td></td></tr>
+<tr><td><b>greaterThanBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />float object</td><td></td></tr>
+<tr><td><b>greaterThanBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />double object</td><td></td></tr>
+<tr><td><b>greaterThanBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td><b>greaterThanBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />short object</td><td></td></tr>
+<tr><td><b>greaterThanBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />int object</td><td></td></tr>
+<tr><td><b>greaterThanBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />long object</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>greaterOrEqToBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />Number object</td><td></td></tr>
+<tr><td><b>greaterOrEqToBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />float object</td><td></td></tr>
+<tr><td><b>greaterOrEqToBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />double object</td><td></td></tr>
+<tr><td><b>greaterOrEqToBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />byte object</td><td></td></tr>
+<tr><td><b>greaterOrEqToBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />short object</td><td></td></tr>
+<tr><td><b>greaterOrEqToBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />int object</td><td></td></tr>
+<tr><td><b>greaterOrEqToBy</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td>IFunction&lt;BigInteger,?&gt; by<br />long object</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>isNull</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>isNotNull</b></td><td>Function&lt;BigInteger,Boolean&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>max</b></td><td>Function&lt;Iterable&lt;BigInteger&gt;, BigInteger&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>min</b></td><td>Function&lt;Iterable&lt;BigInteger&gt;, BigInteger&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>sum</b></td><td>Function&lt;Iterable&lt;BigInteger&gt;, BigInteger&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>avg</b></td><td>Function&lt;Iterable&lt;BigInteger&gt;, BigInteger&gt;</td><td></td><td></td></tr>
+<tr><td><b>avg</b></td><td>Function&lt;Iterable&lt;BigInteger&gt;, BigInteger&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td><b>avg</b></td><td>Function&lt;Iterable&lt;BigInteger&gt;, BigInteger&gt;</td><td>MathContext mathContext</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>maxArray</b></td><td>Function&lt;BigInteger[], BigInteger&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>minArray</b></td><td>Function&lt;BigInteger[], BigInteger&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>sumArray</b></td><td>Function&lt;BigInteger[], BigInteger&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>avgArray</b></td><td>Function&lt;BigInteger[], BigInteger&gt;</td><td></td><td></td></tr>
+<tr><td><b>avgArray</b></td><td>Function&lt;BigInteger[], BigInteger&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td><b>avgArray</b></td><td>Function&lt;BigInteger[], BigInteger&gt;</td><td>MathContext mathContext</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>abs</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>add</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>Number add</td><td></td></tr>
+<tr><td><b>add</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>byte add</td><td></td></tr>
+<tr><td><b>add</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>short add</td><td></td></tr>
+<tr><td><b>add</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>int add</td><td></td></tr>
+<tr><td><b>add</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>long add</td><td></td></tr>
+<tr><td><b>add</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>float add</td><td></td></tr>
+<tr><td><b>add</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>double add</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>subtract</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>Number subtract</td><td></td></tr>
+<tr><td><b>subtract</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>byte subtract</td><td></td></tr>
+<tr><td><b>subtract</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>short subtract</td><td></td></tr>
+<tr><td><b>subtract</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>int subtract</td><td></td></tr>
+<tr><td><b>subtract</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>long subtract</td><td></td></tr>
+<tr><td><b>subtract</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>float subtract</td><td></td></tr>
+<tr><td><b>subtract</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>double subtract</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>divideBy</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>Number divisor</td><td></td></tr>
+<tr><td><b>divideBy</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>byte divisor</td><td></td></tr>
+<tr><td><b>divideBy</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>short divisor</td><td></td></tr>
+<tr><td><b>divideBy</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>int divisor</td><td></td></tr>
+<tr><td><b>divideBy</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>long divisor</td><td></td></tr>
+<tr><td><b>divideBy</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>float divisor</td><td></td></tr>
+<tr><td><b>divideBy</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>double divisor</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>module</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>Number module</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>remainder</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>Number module</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>multiplyBy</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>Number multiplicand</td><td></td></tr>
+<tr><td><b>multiplyBy</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>byte multiplicand</td><td></td></tr>
+<tr><td><b>multiplyBy</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>short multiplicand</td><td></td></tr>
+<tr><td><b>multiplyBy</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>int multiplicand</td><td></td></tr>
+<tr><td><b>multiplyBy</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>long multiplicand</td><td></td></tr>
+<tr><td><b>multiplyBy</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>float multiplicand</td><td></td></tr>
+<tr><td><b>multiplyBy</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>double multiplicand</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>pow</b></td><td>Function&lt;BigInteger, BigInteger&gt;</td><td>int power</td><td></td></tr>
 </tbody></table>
 
-
- </subsection>
-   </section>
+      </subsection>
+      
+    </section>
   </body>
 </document>

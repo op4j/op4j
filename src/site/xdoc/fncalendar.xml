@@ -28,53 +28,81 @@
 
 
 
-
-
-
-<table>
+<table border="0">
 <thead><tr><th>Function name</th><th>Return type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td>add</td><td>Function&lt;Calendar,Calendar&gt;</td><td>int calendarField<br />int amount</td><td></td></tr>
-<tr><td>addDays</td><td>Function&lt;Calendar,Calendar&gt;</td><td>int amount</td><td></td></tr>
-<tr><td>addHours</td><td>Function&lt;Calendar,Calendar&gt;</td><td>int amount</td><td></td></tr>
-<tr><td>addMilliseconds</td><td>Function&lt;Calendar,Calendar&gt;</td><td>int amount</td><td></td></tr>
-<tr><td>addMinutes</td><td>Function&lt;Calendar,Calendar&gt;</td><td>int amount</td><td></td></tr>
-<tr><td>addMonths</td><td>Function&lt;Calendar,Calendar&gt;</td><td>int amount</td><td></td></tr>
-<tr><td>addWeeks</td><td>Function&lt;Calendar,Calendar&gt;</td><td>int amount</td><td></td></tr>
-<tr><td>addYears</td><td>Function&lt;Calendar,Calendar&gt;</td><td>int amount</td><td></td></tr>
-<tr><td>set</td><td>Function&lt;Calendar,Calendar&gt;</td><td>int calendarField<br />int value</td><td></td></tr>
-<tr><td>setDay</td><td>Function&lt;Calendar,Calendar&gt;</td><td>int value</td><td></td></tr>
-<tr><td>setHour</td><td>Function&lt;Calendar,Calendar&gt;</td><td>int value</td><td></td></tr>
-<tr><td>setMillisecond</td><td>Function&lt;Calendar,Calendar&gt;</td><td>int value</td><td></td></tr>
-<tr><td>setMinute</td><td>Function&lt;Calendar,Calendar&gt;</td><td>int value</td><td></td></tr>
-<tr><td>setMonth</td><td>Function&lt;Calendar,Calendar&gt;</td><td>int value</td><td></td></tr>
-<tr><td>setWeek</td><td>Function&lt;Calendar,Calendar&gt;</td><td>int value</td><td></td></tr>
-<tr><td>setYear</td><td>Function&lt;Calendar,Calendar&gt;</td><td>int value</td><td></td></tr>
-<tr><td>round</td><td>Function&lt;Calendar,Calendar&gt;</td><td>int calendarField</td><td></td></tr>
-<tr><td>truncate</td><td>Function&lt;Calendar,Calendar&gt;</td><td>int calendarField</td><td></td></tr>
-<tr><td>before</td><td>Function&lt;Calendar,Boolean&gt;</td><td>Calendar calendar</td><td></td></tr>
-<tr><td>after</td><td>Function&lt;Calendar,Boolean&gt;</td><td>Calendar calendar</td><td></td></tr>
-<tr><td>toStr</td><td>Function&lt;Calendar,String&gt;</td><td>String pattern</td><td></td></tr>
-<tr><td>toStr</td><td>Function&lt;Calendar,String&gt;</td><td>String pattern<br />Locale locale</td><td></td></tr>
-<tr><td>toStr</td><td>Function&lt;Calendar,String&gt;</td><td>String pattern<br />String locale</td><td></td></tr>
-<tr><td>toStr</td><td>Function&lt;Calendar,String&gt;</td><td>DateStyle dateStyle<br />TimeStyle timeStyle</td><td></td></tr>
-<tr><td>toStr</td><td>Function&lt;Calendar,String&gt;</td><td>DateStyle dateStyle<br />TimeStyle timeStyle<br />Locale locale</td><td></td></tr>
-<tr><td>toStr</td><td>Function&lt;Calendar,String&gt;</td><td>DateStyle dateStyle<br />TimeStyle timeStyle<br />String locale</td><td></td></tr>
-<tr><td>timestampToCalendar</td><td>Function&lt;Timestamp,Calendar&gt;</td><td></td><td></td></tr>
-<tr><td>timestampToCalendar</td><td>Function&lt;Timestamp,Calendar&gt;</td><td>int truncateField</td><td></td></tr>
-<tr><td>timeInMillisToCalendar</td><td>Function&lt;Long,Calendar&gt;</td><td></td><td></td></tr>
-<tr><td>timeInMillisToCalendar</td><td>Function&lt;Long,Calendar&gt;</td><td>int truncateField</td><td></td></tr>
-<tr><td>fieldIntegerListToCalendar</td><td>Function&lt;List&lt;Integer&gt;, Calendar&gt;</td><td></td><td></td></tr>
-<tr><td>fieldIntegerArrayToCalendar</td><td>Function&lt;Integer[], Calendar&gt;</td><td></td><td></td></tr>
-<tr><td>fieldStringListToCalendar</td><td>Function&lt;List&lt;String&gt;, Calendar&gt;</td><td></td><td></td></tr>
-<tr><td>fieldStringArrayToCalendar</td><td>Function&lt;String[], Calendar&gt;</td><td></td><td></td></tr>
-<tr><td>eq</td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
-<tr><td>notEq</td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
-<tr><td>isNull</td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
-<tr><td>isNotNull</td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr><td><b>add</b></td><td>Function&lt;Calendar,Calendar&gt;</td><td>int calendarField<br />int amount</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>addDays</b></td><td>Function&lt;Calendar,Calendar&gt;</td><td>int amount</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>addHours</b></td><td>Function&lt;Calendar,Calendar&gt;</td><td>int amount</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>addMilliseconds</b></td><td>Function&lt;Calendar,Calendar&gt;</td><td>int amount</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>addMinutes</b></td><td>Function&lt;Calendar,Calendar&gt;</td><td>int amount</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>addMonths</b></td><td>Function&lt;Calendar,Calendar&gt;</td><td>int amount</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>addWeeks</b></td><td>Function&lt;Calendar,Calendar&gt;</td><td>int amount</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>addYears</b></td><td>Function&lt;Calendar,Calendar&gt;</td><td>int amount</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>set</b></td><td>Function&lt;Calendar,Calendar&gt;</td><td>int calendarField<br />int value</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>setDay</b></td><td>Function&lt;Calendar,Calendar&gt;</td><td>int value</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>setHour</b></td><td>Function&lt;Calendar,Calendar&gt;</td><td>int value</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>setMillisecond</b></td><td>Function&lt;Calendar,Calendar&gt;</td><td>int value</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>setMinute</b></td><td>Function&lt;Calendar,Calendar&gt;</td><td>int value</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>setMonth</b></td><td>Function&lt;Calendar,Calendar&gt;</td><td>int value</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>setWeek</b></td><td>Function&lt;Calendar,Calendar&gt;</td><td>int value</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>setYear</b></td><td>Function&lt;Calendar,Calendar&gt;</td><td>int value</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>round</b></td><td>Function&lt;Calendar,Calendar&gt;</td><td>int calendarField</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>truncate</b></td><td>Function&lt;Calendar,Calendar&gt;</td><td>int calendarField</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>before</b></td><td>Function&lt;Calendar,Boolean&gt;</td><td>Calendar calendar</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>after</b></td><td>Function&lt;Calendar,Boolean&gt;</td><td>Calendar calendar</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>toStr</b></td><td>Function&lt;Calendar,String&gt;</td><td>String pattern</td><td></td></tr>
+<tr><td><b>toStr</b></td><td>Function&lt;Calendar,String&gt;</td><td>String pattern<br />Locale locale</td><td></td></tr>
+<tr><td><b>toStr</b></td><td>Function&lt;Calendar,String&gt;</td><td>String pattern<br />String locale</td><td></td></tr>
+<tr><td><b>toStr</b></td><td>Function&lt;Calendar,String&gt;</td><td>DateStyle dateStyle<br />TimeStyle timeStyle</td><td></td></tr>
+<tr><td><b>toStr</b></td><td>Function&lt;Calendar,String&gt;</td><td>DateStyle dateStyle<br />TimeStyle timeStyle<br />Locale locale</td><td></td></tr>
+<tr><td><b>toStr</b></td><td>Function&lt;Calendar,String&gt;</td><td>DateStyle dateStyle<br />TimeStyle timeStyle<br />String locale</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>timestampToCalendar</b></td><td>Function&lt;Timestamp,Calendar&gt;</td><td></td><td></td></tr>
+<tr><td><b>timestampToCalendar</b></td><td>Function&lt;Timestamp,Calendar&gt;</td><td>int truncateField</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>timeInMillisToCalendar</b></td><td>Function&lt;Long,Calendar&gt;</td><td></td><td></td></tr>
+<tr><td><b>timeInMillisToCalendar</b></td><td>Function&lt;Long,Calendar&gt;</td><td>int truncateField</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>fieldIntegerListToCalendar</b></td><td>Function&lt;List&lt;Integer&gt;, Calendar&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>fieldIntegerArrayToCalendar</b></td><td>Function&lt;Integer[], Calendar&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>fieldStringListToCalendar</b></td><td>Function&lt;List&lt;String&gt;, Calendar&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>fieldStringArrayToCalendar</b></td><td>Function&lt;String[], Calendar&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>eq</b></td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>notEq</b></td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>isNull</b></td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>isNotNull</b></td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
 </tbody></table>
 
-</subsection>
-   </section>
+      </subsection>
+      
+    </section>
   </body>
 </document>

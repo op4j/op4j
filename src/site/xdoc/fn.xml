@@ -24,27 +24,58 @@
 
       <subsection name="2. Functions">
       
-<table>
+
+
+<table border="0">
 <thead><tr><th>Function name</th><th>Return type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td>and</td><td>Function&lt;R,Boolean&gt;</td><td>IFunction&lt;X,Boolean&gt; left<br />IFunction&lt;? super R,Boolean&gt; right</td><td></td></tr>
-<tr><td>or</td><td>Function&lt;R,Boolean&gt;</td><td>IFunction&lt;X,Boolean&gt; left<br />IFunction&lt;? super R,Boolean&gt; right</td><td></td></tr>
-<tr><td>not</td><td>Function&lt;T,Boolean&gt;</td><td>IFunction&lt;T, Boolean&gt; function</td><td></td></tr>
-<tr><td>by</td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,Y&gt; by<br />IFunction&lt;? super Y,Boolean&gt; eval</td><td></td></tr>
-<tr><td>chain</td><td>Function&lt;X,Z&gt;</td><td>IFunction&lt;X,Y&gt; fn1<br />IFunction&lt;? super Y,Z&gt; fn2</td><td></td></tr>
-<tr><td>ifTrue</td><td>Function&lt;R,R&gt;</td><td>IFunction&lt;? super R, Boolean&gt; condition<br />IFunction&lt;? super R,R&gt; function</td><td></td></tr>
-<tr><td>ifFalse</td><td>Function&lt;R,R&gt;</td><td>IFunction&lt;? super R, Boolean&gt; condition<br />IFunction&lt;? super R,R&gt; function</td><td></td></tr>
-<tr><td>ifNull</td><td>Function&lt;T,T&gt;</td><td>IFunction&lt;? super T,T&gt; function</td><td></td></tr>
-<tr><td>ifNotNull</td><td>Function&lt;T,T&gt;</td><td>IFunction&lt;? super T, T&gt; function</td><td></td></tr>
-<tr><td>ifNullOrTrue</td><td>Function&lt;R,R&gt;</td><td>IFunction&lt;? super R, Boolean&gt; condition<br />IFunction&lt;? super R,R&gt; function</td><td></td></tr>
-<tr><td>ifNullOrFalse</td><td>Function&lt;R,R&gt;</td><td>IFunction&lt;? super R, Boolean&gt; condition<br />IFunction&lt;? super R,R&gt; function</td><td></td></tr>
-<tr><td>ifNotNullAndTrue</td><td>Function&lt;R,R&gt;</td><td>IFunction&lt;? super R, Boolean&gt; condition<br />IFunction&lt;? super R,R&gt; function</td><td></td></tr>
-<tr><td>ifNotNullAndFalse</td><td>Function&lt;R,R&gt;</td><td>IFunction&lt;? super R, Boolean&gt; condition<br />IFunction&lt;? super R,R&gt; function</td><td></td></tr>
-<tr><td>whileTrue</td><td>Function&lt;T,T&gt;</td><td>IFunction&lt;? super T, Boolean&gt; condition<br />IFunction&lt;? super T, T&gt; function</td><td></td></tr>
-<tr><td>whileFalse</td><td>Function&lt;T,T&gt;</td><td>IFunction&lt;? super T, Boolean&gt; condition<br />IFunction&lt;? super T, T&gt; function</td><td></td></tr>
+<tr><td><b>on</b></td><td>&lt;T&gt; Level0GenericUniqOperator&lt;T,T&gt;</td><td>Type&lt;T&gt; type</td><td></td></tr>
+<tr><td><b>on</b></td><td>&lt;T&gt; Level0ArrayOperator&lt;T[],T&gt;</td><td>Type&lt;T[]&gt; type</td><td></td></tr>
+<tr><td><b>on</b></td><td>&lt;T&gt; Level0ListOperator&lt;List&lt;T&gt;,T&gt;</td><td>Type&lt;List&lt;T&gt;&gt; type</td><td></td></tr>
+<tr><td><b>on</b></td><td>&lt;K,V&gt; Level0MapOperator&lt;Map&lt;K,V&gt;,K,V&gt;</td><td>Type&lt;Map&lt;K,V&gt;&gt; type</td><td></td></tr>
+<tr><td><b>on</b></td><td>&lt;T&gt; Level0SetOperator&lt;Set&lt;T&gt;,T&gt;</td><td>Type&lt;Set&lt;T&gt;&gt; type</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>onArrayOf</b></td><td>&lt;T&gt; Level0ArrayOperator&lt;T[],T&gt;</td><td>Type&lt;T&gt; type</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>onListOf</b></td><td>&lt;T&gt; Level0ListOperator&lt;List&lt;T&gt;,T&gt;</td><td>Type&lt;T&gt; type</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>onMapOf</b></td><td>&lt;K,V&gt; Level0MapOperator&lt;Map&lt;K,V&gt;,K,V&gt;</td><td>Type&lt;K&gt; keyType<br />Type&lt;V&gt; valueType</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>onSetOf</b></td><td>&lt;T&gt; Level0SetOperator&lt;Set&lt;T&gt;,T&gt;</td><td>Type&lt;T&gt; type</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>and</b></td><td>Function&lt;R,Boolean&gt;</td><td>IFunction&lt;X,Boolean&gt; left<br />IFunction&lt;? super R,Boolean&gt; right</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>or</b></td><td>Function&lt;R,Boolean&gt;</td><td>IFunction&lt;X,Boolean&gt; left<br />IFunction&lt;? super R,Boolean&gt; right</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>not</b></td><td>Function&lt;T,Boolean&gt;</td><td>IFunction&lt;T, Boolean&gt; function</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>by</b></td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,Y&gt; by<br />IFunction&lt;? super Y,Boolean&gt; eval</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>chain</b></td><td>Function&lt;X,Z&gt;</td><td>IFunction&lt;X,Y&gt; fn1<br />IFunction&lt;? super Y,Z&gt; fn2</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>ifTrue</b></td><td>Function&lt;R,R&gt;</td><td>IFunction&lt;? super R, Boolean&gt; condition<br />IFunction&lt;? super R,R&gt; function</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>ifFalse</b></td><td>Function&lt;R,R&gt;</td><td>IFunction&lt;? super R, Boolean&gt; condition<br />IFunction&lt;? super R,R&gt; function</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>ifNull</b></td><td>Function&lt;T,T&gt;</td><td>IFunction&lt;? super T,T&gt; function</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>ifNotNull</b></td><td>Function&lt;T,T&gt;</td><td>IFunction&lt;? super T,T&gt; function</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>ifNullOrTrue</b></td><td>Function&lt;R,R&gt;</td><td>IFunction&lt;? super R, Boolean&gt; condition<br />IFunction&lt;? super R,R&gt; function</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>ifNullOrFalse</b></td><td>Function&lt;R,R&gt;</td><td>IFunction&lt;? super R, Boolean&gt; condition<br />IFunction&lt;? super R,R&gt; function</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>ifNotNullAndTrue</b></td><td>Function&lt;R,R&gt;</td><td>IFunction&lt;? super R, Boolean&gt; condition<br />IFunction&lt;? super R,R&gt; function</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>ifNotNullAndFalse</b></td><td>Function&lt;R,R&gt;</td><td>IFunction&lt;? super R, Boolean&gt; condition<br />IFunction&lt;? super R,R&gt; function</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>whileTrue</b></td><td>Function&lt;T,T&gt;</td><td>IFunction&lt;? super T, Boolean&gt; condition<br />IFunction&lt;? super T, T&gt; function</td><td></td></tr>
+<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr><td><b>whileFalse</b></td><td>Function&lt;T,T&gt;</td><td>IFunction&lt;? super T, Boolean&gt; condition<br />IFunction&lt;? super T, T&gt; function</td><td></td></tr>
 </tbody></table>
 
- </subsection>
-   </section>
+      </subsection>
+      
+    </section>
   </body>
 </document>
