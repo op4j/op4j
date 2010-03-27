@@ -29,20 +29,6 @@
 <table border="0">
 <thead><tr><th>Function name</th><th>Return type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><b>on</b></td><td>&lt;T&gt; Level0GenericUniqOperator&lt;T,T&gt;</td><td>Type&lt;T&gt; type</td><td></td></tr>
-<tr><td><b>on</b></td><td>&lt;T&gt; Level0ArrayOperator&lt;T[],T&gt;</td><td>Type&lt;T[]&gt; type</td><td></td></tr>
-<tr><td><b>on</b></td><td>&lt;T&gt; Level0ListOperator&lt;List&lt;T&gt;,T&gt;</td><td>Type&lt;List&lt;T&gt;&gt; type</td><td></td></tr>
-<tr><td><b>on</b></td><td>&lt;K,V&gt; Level0MapOperator&lt;Map&lt;K,V&gt;,K,V&gt;</td><td>Type&lt;Map&lt;K,V&gt;&gt; type</td><td></td></tr>
-<tr><td><b>on</b></td><td>&lt;T&gt; Level0SetOperator&lt;Set&lt;T&gt;,T&gt;</td><td>Type&lt;Set&lt;T&gt;&gt; type</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>onArrayOf</b></td><td>&lt;T&gt; Level0ArrayOperator&lt;T[],T&gt;</td><td>Type&lt;T&gt; type</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>onListOf</b></td><td>&lt;T&gt; Level0ListOperator&lt;List&lt;T&gt;,T&gt;</td><td>Type&lt;T&gt; type</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>onMapOf</b></td><td>&lt;K,V&gt; Level0MapOperator&lt;Map&lt;K,V&gt;,K,V&gt;</td><td>Type&lt;K&gt; keyType<br />Type&lt;V&gt; valueType</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>onSetOf</b></td><td>&lt;T&gt; Level0SetOperator&lt;Set&lt;T&gt;,T&gt;</td><td>Type&lt;T&gt; type</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
 <tr><td><b>and</b></td><td>Function&lt;R,Boolean&gt;</td><td>IFunction&lt;X,Boolean&gt; left<br />IFunction&lt;? super R,Boolean&gt; right</td><td></td></tr>
 <tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
 <tr><td><b>or</b></td><td>Function&lt;R,Boolean&gt;</td><td>IFunction&lt;X,Boolean&gt; left<br />IFunction&lt;? super R,Boolean&gt; right</td><td></td></tr>
