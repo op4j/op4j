@@ -379,4 +379,39 @@ public final class Level0SetOperator<I,T> extends AbstractOperator
     
     
     
+    
+    
+    
+    public <K> Level0MapOperator<I, K, Set<T>> zipAndGroupKeysFrom(final Collection<K> keys) {
+        return new Level0MapOperator<I,K,Set<T>>(getTarget().execute(FnSet.ofObject().zipAndGroupKeysFrom(keys)));
+    }
+
+    public <K> Level0MapOperator<I, K, Set<T>> zipAndGroupKeysFrom(final K[] keys) {
+        return new Level0MapOperator<I,K,Set<T>>(getTarget().execute(FnSet.ofObject().zipAndGroupKeysFrom(keys)));
+    }
+
+    public <V> Level0MapOperator<I, T, Set<V>> zipAndGroupValuesFrom(final Collection<V> values) {
+        return new Level0MapOperator<I,T,Set<V>>(getTarget().execute(FnSet.ofObject().zipAndGroupValuesFrom(values)));
+    }
+
+    public <V> Level0MapOperator<I, T, Set<V>> zipAndGroupValuesFrom(final V[] values) {
+        return new Level0MapOperator<I,T,Set<V>>(getTarget().execute(FnSet.ofObject().zipAndGroupValuesFrom(values)));
+    }
+
+    public <K> Level0MapOperator<I, K, T> zipKeysFrom(final Collection<K> keys) {
+        return new Level0MapOperator<I,K,T>(getTarget().execute(FnSet.ofObject().zipKeysFrom(keys)));
+    }
+
+    public <K> Level0MapOperator<I, K, T> zipKeysFrom(final K[] keys) {
+        return new Level0MapOperator<I,K,T>(getTarget().execute(FnSet.ofObject().zipKeysFrom(keys)));
+    }
+
+    public <V> Level0MapOperator<I, T, V> zipValuesFrom(final Collection<V> values) {
+        return new Level0MapOperator<I,T,V>(getTarget().execute(FnSet.ofObject().zipValuesFrom(values)));
+    }
+
+    public <V> Level0MapOperator<I, T, V> zipValuesFrom(final V[] values) {
+        return new Level0MapOperator<I,T,V>(getTarget().execute(FnSet.ofObject().zipValuesFrom(values)));
+    }
+    
 }

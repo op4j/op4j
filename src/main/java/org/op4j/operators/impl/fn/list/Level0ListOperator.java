@@ -378,4 +378,49 @@ public final class Level0ListOperator<I,T> extends AbstractOperator
         return new Level0ListOperator<I, T>(getTarget().execute(FnList.of((Type<T>)Types.OBJECT).sortBy(by)));
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public <K> Level0MapOperator<I, K, List<T>> zipAndGroupKeysFrom(final Collection<K> keys) {
+        return new Level0MapOperator<I,K,List<T>>(getTarget().execute(FnList.ofObject().zipAndGroupKeysFrom(keys)));
+    }
+
+    public <K> Level0MapOperator<I, K, List<T>> zipAndGroupKeysFrom(final K[] keys) {
+        return new Level0MapOperator<I,K,List<T>>(getTarget().execute(FnList.ofObject().zipAndGroupKeysFrom(keys)));
+    }
+
+    public <V> Level0MapOperator<I, T, List<V>> zipAndGroupValuesFrom(final Collection<V> values) {
+        return new Level0MapOperator<I,T,List<V>>(getTarget().execute(FnList.ofObject().zipAndGroupValuesFrom(values)));
+    }
+
+    public <V> Level0MapOperator<I, T, List<V>> zipAndGroupValuesFrom(final V[] values) {
+        return new Level0MapOperator<I,T,List<V>>(getTarget().execute(FnList.ofObject().zipAndGroupValuesFrom(values)));
+    }
+
+    public <K> Level0MapOperator<I, K, T> zipKeysFrom(final Collection<K> keys) {
+        return new Level0MapOperator<I,K,T>(getTarget().execute(FnList.ofObject().zipKeysFrom(keys)));
+    }
+
+    public <K> Level0MapOperator<I, K, T> zipKeysFrom(final K[] keys) {
+        return new Level0MapOperator<I,K,T>(getTarget().execute(FnList.ofObject().zipKeysFrom(keys)));
+    }
+
+    public <V> Level0MapOperator<I, T, V> zipValuesFrom(final Collection<V> values) {
+        return new Level0MapOperator<I,T,V>(getTarget().execute(FnList.ofObject().zipValuesFrom(values)));
+    }
+
+    public <V> Level0MapOperator<I, T, V> zipValuesFrom(final V[] values) {
+        return new Level0MapOperator<I,T,V>(getTarget().execute(FnList.ofObject().zipValuesFrom(values)));
+    }
+    
+    
+    
+    
+    
 }

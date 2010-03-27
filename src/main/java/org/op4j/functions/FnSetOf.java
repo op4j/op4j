@@ -22,6 +22,7 @@ package org.op4j.functions;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -151,6 +152,22 @@ public class FnSetOf<T> {
         return new ZipValues<T,V>(VarArgsUtil.asRequiredObjectList(values));
     }
     
+    public final <K> Function<Set<T>,Map<K,T>> zipKeysFrom(final Collection<K> keys) {
+        return new ZipKeys<K,T>(keys);
+    }
+    
+    public final <V> Function<Set<T>,Map<T,V>> zipValuesFrom(final Collection<V> values) {
+        return new ZipValues<T,V>(values);
+    }
+    
+    public final <K> Function<Set<T>,Map<K,T>> zipKeysFrom(final K[] keys) {
+        return new ZipKeys<K,T>(keys);
+    }
+    
+    public final <V> Function<Set<T>,Map<T,V>> zipValuesFrom(final V[] values) {
+        return new ZipValues<T,V>(values);
+    }
+    
     public final <K,V> Function<Set<T>,Map<K,V>> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
         return new ToMap<K,V,T>(mapBuilder);
     }
@@ -177,6 +194,22 @@ public class FnSetOf<T> {
     
     public final <V> Function<Set<T>,Map<T,Set<V>>> zipAndGroupValues(final V... values) {
         return new ZipAndGroupValues<T,V>(VarArgsUtil.asRequiredObjectList(values));
+    }
+    
+    public final <K> Function<Set<T>,Map<K,Set<T>>> zipAndGroupKeysFrom(final Collection<K> keys) {
+        return new ZipAndGroupKeys<K,T>(keys);
+    }
+    
+    public final <V> Function<Set<T>,Map<T,Set<V>>> zipAndGroupValuesFrom(final Collection<V> values) {
+        return new ZipAndGroupValues<T,V>(values);
+    }
+    
+    public final <K> Function<Set<T>,Map<K,Set<T>>> zipAndGroupKeysFrom(final K[] keys) {
+        return new ZipAndGroupKeys<K,T>(keys);
+    }
+    
+    public final <V> Function<Set<T>,Map<T,Set<V>>> zipAndGroupValuesFrom(final V[] values) {
+        return new ZipAndGroupValues<T,V>(values);
     }
     
     
@@ -623,10 +656,16 @@ public class FnSetOf<T> {
 
         private final List<K> keys;
         
-        ZipKeys(final List<K> keys) {
+        ZipKeys(final Collection<K> keys) {
             super();
             Validate.notNull(keys, "Keys must be specified");
-            this.keys = keys;
+            this.keys = new ArrayList<K>(keys);
+        }
+        
+        ZipKeys(final K[] keys) {
+            super();
+            Validate.notNull(keys, "Keys must be specified");
+            this.keys = Arrays.asList(keys);
         }
 
         @Override
@@ -651,10 +690,16 @@ public class FnSetOf<T> {
 
         private final List<V> values;
         
-        ZipValues(final List<V> values) {
+        ZipValues(final Collection<V> values) {
             super();
             Validate.notNull(values, "Values must be specified");
-            this.values = values;
+            this.values = new ArrayList<V>(values);
+        }
+        
+        ZipValues(final V[] values) {
+            super();
+            Validate.notNull(values, "Values must be specified");
+            this.values = Arrays.asList(values);
         }
 
         @Override
@@ -824,10 +869,16 @@ public class FnSetOf<T> {
 
         private final List<K> keys;
         
-        ZipAndGroupKeys(final List<K> keys) {
+        ZipAndGroupKeys(final Collection<K> keys) {
             super();
             Validate.notNull(keys, "Keys must be specified");
-            this.keys = keys;
+            this.keys = new ArrayList<K>(keys);
+        }
+        
+        ZipAndGroupKeys(final K[] keys) {
+            super();
+            Validate.notNull(keys, "Keys must be specified");
+            this.keys = Arrays.asList(keys);
         }
 
         @Override
@@ -862,10 +913,16 @@ public class FnSetOf<T> {
 
         private final List<V> values;
         
-        ZipAndGroupValues(final List<V> values) {
+        ZipAndGroupValues(final Collection<V> values) {
             super();
             Validate.notNull(values, "Values must be specified");
-            this.values = values;
+            this.values = new ArrayList<V>(values);
+        }
+        
+        ZipAndGroupValues(final V[] values) {
+            super();
+            Validate.notNull(values, "Values must be specified");
+            this.values = Arrays.asList(values);
         }
 
         @Override

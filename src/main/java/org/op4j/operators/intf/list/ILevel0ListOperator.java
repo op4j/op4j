@@ -123,11 +123,19 @@ public interface ILevel0ListOperator<I,T>
     
     public <K> ILevel0MapOperator<I,K,T> zipKeys(final K... keys);
     public <V> ILevel0MapOperator<I,T,V> zipValues(final V... values);
+    public <K> ILevel0MapOperator<I,K,T> zipKeysFrom(final Collection<K> keys);
+    public <V> ILevel0MapOperator<I,T,V> zipValuesFrom(final Collection<V> values);
+    public <K> ILevel0MapOperator<I,K,T> zipKeysFrom(final K[] keys);
+    public <V> ILevel0MapOperator<I,T,V> zipValuesFrom(final V[] values);
     public <K> ILevel0MapOperator<I,K,T> zipKeysBy(final IFunction<? super T,K> keyEval);
     public <V> ILevel0MapOperator<I,T,V> zipValuesBy(final IFunction<? super T,V> valueEval);
 
     public <K> ILevel0MapOperator<I,K,List<T>> zipAndGroupKeys(final K... keys);
     public <V> ILevel0MapOperator<I,T,List<V>> zipAndGroupValues(final V... values);
+    public <K> ILevel0MapOperator<I,K,List<T>> zipAndGroupKeysFrom(final Collection<K> keys);
+    public <V> ILevel0MapOperator<I,T,List<V>> zipAndGroupValuesFrom(final Collection<V> values);
+    public <K> ILevel0MapOperator<I,K,List<T>> zipAndGroupKeysFrom(final K[] keys);
+    public <V> ILevel0MapOperator<I,T,List<V>> zipAndGroupValuesFrom(final V[] values);
     public <K> ILevel0MapOperator<I,K,List<T>> zipAndGroupKeysBy(final IFunction<? super T,K> keyEval);
     public <V> ILevel0MapOperator<I,T,List<V>> zipAndGroupValuesBy(final IFunction<? super T,V> valueEval);
 

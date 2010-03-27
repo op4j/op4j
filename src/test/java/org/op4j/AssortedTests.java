@@ -754,6 +754,25 @@ public class AssortedTests extends TestCase {
 
     }
 
+
+    
+    @Test
+    public void test37() throws Exception {
+
+        final Long[] values = new Long[] { 53L, 430L };
+
+        String[] keys = new String[] { "A", "A" };
+
+        {
+            Map<String,Long[]> groupedMap =
+                Op.on(keys).zipAndGroupValuesFrom(Types.LONG, values).get();
+                
+            assertEquals(1, groupedMap.size());
+            assertEquals(Long[].class, groupedMap.get("A").getClass());
+            assertEquals(Arrays.asList(values), Arrays.asList(groupedMap.get("A")));
+        }
+
+    }
     
     
 }

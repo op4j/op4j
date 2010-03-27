@@ -19,6 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
+import java.util.Collection;
 import java.util.Map;
 
 import org.op4j.functions.IFunction;
@@ -111,6 +112,66 @@ public interface ConvertibleToMapOperator<T> {
      * @return an operator holding the converted object as target.
      */
     public <V> Operator zipValues(final V... values);
+ 
+    
+    /**
+     * <p>
+     * Converts the target object to a map by using the original target's
+     * elements as values and setting the specified objects as keys.
+     * </p>
+     * <p>
+     * Note that if more than one value get the same key, only the last one
+     * will be in the resulting map (the other ones will be overwritten).
+     * </p>
+     * 
+     * @param <K> the type of the keys
+     * @param keys the new keys
+     * @return an operator holding the converted object as target.
+     */
+    public <K> Operator zipKeysFrom(final Collection<K> keys);
+    
+    /**
+     * <p>
+     * Converts the target object to a map by using the original target's
+     * elements as keys and applying an evaluator (valueEval) to them
+     * in order to obtain their corresponding value.
+     * </p>
+     * 
+     * @param <V> the type of the values
+     * @param values the new values
+     * @return an operator holding the converted object as target.
+     */
+    public <V> Operator zipValuesFrom(final Collection<V> values);
+ 
+    
+    /**
+     * <p>
+     * Converts the target object to a map by using the original target's
+     * elements as values and setting the specified objects as keys.
+     * </p>
+     * <p>
+     * Note that if more than one value get the same key, only the last one
+     * will be in the resulting map (the other ones will be overwritten).
+     * </p>
+     * 
+     * @param <K> the type of the keys
+     * @param keys the new keys
+     * @return an operator holding the converted object as target.
+     */
+    public <K> Operator zipKeysFrom(final K[] keys);
+    
+    /**
+     * <p>
+     * Converts the target object to a map by using the original target's
+     * elements as keys and applying an evaluator (valueEval) to them
+     * in order to obtain their corresponding value.
+     * </p>
+     * 
+     * @param <V> the type of the values
+     * @param values the new values
+     * @return an operator holding the converted object as target.
+     */
+    public <V> Operator zipValuesFrom(final V[] values);
 
     
     /**

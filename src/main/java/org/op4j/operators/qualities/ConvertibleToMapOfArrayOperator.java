@@ -19,6 +19,7 @@
  */
 package org.op4j.operators.qualities;
 
+import java.util.Collection;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
@@ -107,7 +108,7 @@ public interface ConvertibleToMapOfArrayOperator<T> {
      * </p>
      * 
      * @param <K> the type of the keys that will be created
-     * @param keyEval the evaluator used for obtaining the keys
+     * @param keys the keys to be zipped
      * @return an operator holding the converted object as target.
      */
     public <K> Operator zipAndGroupKeys(final K... keys);
@@ -121,10 +122,66 @@ public interface ConvertibleToMapOfArrayOperator<T> {
      * 
      * @param <V> the type of the values that will be created
      * @param valueType the type of the values, that will be used for instantiating the value arrays
-     * @param valueEval the evaluator used for obtaining the values
+     * @param values the values to be zipped
      * @return an operator holding the converted object as target.
      */
     public <V> Operator zipAndGroupValues(final Type<V> valueType, final V... values);
+    
+    
+    /**
+     * <p>
+     * Converts the target object to a map by using the original target's
+     * elements as values the specified objects as keys. Values with the same key
+     * will be grouped into arrays.
+     * </p>
+     * 
+     * @param <K> the type of the keys that will be created
+     * @param keys the keys to be zipped
+     * @return an operator holding the converted object as target.
+     */
+    public <K> Operator zipAndGroupKeysFrom(final Collection<K> keys);
+    
+    /**
+     * <p>
+     * Converts the target object to a map by using the original target's
+     * elements as keys and the specified objects as values. Values with the same key
+     * will be grouped into arrays.
+     * </p>
+     * 
+     * @param <V> the type of the values that will be created
+     * @param valueType the type of the values, that will be used for instantiating the value arrays
+     * @param values the values to be zipped
+     * @return an operator holding the converted object as target.
+     */
+    public <V> Operator zipAndGroupValuesFrom(final Type<V> valueType, final Collection<V> values);
+    
+    
+    /**
+     * <p>
+     * Converts the target object to a map by using the original target's
+     * elements as values the specified objects as keys. Values with the same key
+     * will be grouped into arrays.
+     * </p>
+     * 
+     * @param <K> the type of the keys that will be created
+     * @param keys the keys to be zipped
+     * @return an operator holding the converted object as target.
+     */
+    public <K> Operator zipAndGroupKeysFrom(final K[] keys);
+    
+    /**
+     * <p>
+     * Converts the target object to a map by using the original target's
+     * elements as keys and the specified objects as values. Values with the same key
+     * will be grouped into arrays.
+     * </p>
+     * 
+     * @param <V> the type of the values that will be created
+     * @param valueType the type of the values, that will be used for instantiating the value arrays
+     * @param values the values to be zipped
+     * @return an operator holding the converted object as target.
+     */
+    public <V> Operator zipAndGroupValuesFrom(final Type<V> valueType, final V[] values);
 
     
 }

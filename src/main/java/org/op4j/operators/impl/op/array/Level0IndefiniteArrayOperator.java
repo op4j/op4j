@@ -19,6 +19,7 @@
  */
 package org.op4j.operators.impl.op.array;
 
+import java.util.Collection;
 import java.util.Map;
 
 import org.javaruntype.type.Type;
@@ -121,6 +122,25 @@ public final class Level0IndefiniteArrayOperator<I,T>
 
     
 
+
+    public <K> Level0MapOperator<I, K, T> zipKeysFrom(final Collection<K> keys) {
+        return new Level0MapOperator<I,K,T>(getTarget().execute(FnArray.ofObject().zipKeysFrom(keys)));
+    }
+
+    public <K> Level0MapOperator<I, K, T> zipKeysFrom(final K[] keys) {
+        return new Level0MapOperator<I,K,T>(getTarget().execute(FnArray.ofObject().zipKeysFrom(keys)));
+    }
+
+    public <V> Level0MapOperator<I, T, V> zipValuesFrom(final Collection<V> values) {
+        return new Level0MapOperator<I,T,V>(getTarget().execute(FnArray.ofObject().zipValuesFrom(values)));
+    }
+
+    public <V> Level0MapOperator<I, T, V> zipValuesFrom(final V[] values) {
+        return new Level0MapOperator<I,T,V>(getTarget().execute(FnArray.ofObject().zipValuesFrom(values)));
+    }
+    
+    
+    
     
     
     @SuppressWarnings("unchecked")
