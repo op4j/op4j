@@ -14,7 +14,7 @@
   {{{https://lists.sourceforge.net/lists/listinfo/op4j-announce}Announcement Mailing List}} and 
   be the first to know! 
 
-Bending the Java spoon
+op4j: Bending the Java spoon
 
   <<op4j>> (pronounced <['op-ah]>) <<is a developer happiness tool>>. It is a Java library aimed at
   <<improving quality, semantics, cleanness and readability of Java code>>, especially auxiliary code like
