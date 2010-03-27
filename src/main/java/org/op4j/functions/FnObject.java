@@ -20,6 +20,8 @@
 package org.op4j.functions;
 
 import java.lang.reflect.Array;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -542,7 +544,22 @@ public final class FnObject {
     
     
     
-    
+    @SuppressWarnings("unchecked")
+    protected static final Comparable prepareComparable(Comparable comp) {
+        if (comp == null) {
+            return comp;
+        }
+        if (!(comp instanceof Number)) {
+            return comp;
+        }
+        if (comp instanceof BigDecimal) {
+            return comp;
+        }
+        if (comp instanceof BigInteger) {
+            return new BigDecimal((BigInteger)comp);
+        }
+        return new BigDecimal(((Number)comp).doubleValue());
+    }
     
     
     
@@ -706,7 +723,9 @@ public final class FnObject {
                 throw new ExecutionException(
                         "Compared object is not comparable: " + this.object.getClass());
             }
-            return Boolean.valueOf(((Comparable)input).compareTo(this.object) < 0);
+            Comparable comp1 = prepareComparable((Comparable) input);
+            Comparable comp2 = prepareComparable((Comparable) this.object);
+            return Boolean.valueOf(comp1.compareTo(comp2) < 0);
         }
         
     }
@@ -734,7 +753,9 @@ public final class FnObject {
                 throw new ExecutionException(
                         "Compared object is not comparable: " + this.object.getClass());
             }
-            return Boolean.valueOf(((Comparable)input).compareTo(this.object) <= 0);
+            Comparable comp1 = prepareComparable((Comparable) input);
+            Comparable comp2 = prepareComparable((Comparable) this.object);
+            return Boolean.valueOf(comp1.compareTo(comp2) <= 0);
         }
         
     }
@@ -762,7 +783,9 @@ public final class FnObject {
                 throw new ExecutionException(
                         "Compared object is not comparable: " + this.object.getClass());
             }
-            return Boolean.valueOf(((Comparable)input).compareTo(this.object) > 0);
+            Comparable comp1 = prepareComparable((Comparable) input);
+            Comparable comp2 = prepareComparable((Comparable) this.object);
+            return Boolean.valueOf(comp1.compareTo(comp2) > 0);
         }
         
     }
@@ -790,7 +813,9 @@ public final class FnObject {
                 throw new ExecutionException(
                         "Compared object is not comparable: " + this.object.getClass());
             }
-            return Boolean.valueOf(((Comparable)input).compareTo(this.object) >= 0);
+            Comparable comp1 = prepareComparable((Comparable) input);
+            Comparable comp2 = prepareComparable((Comparable) this.object);
+            return Boolean.valueOf(comp1.compareTo(comp2) >= 0);
         }
         
     }
