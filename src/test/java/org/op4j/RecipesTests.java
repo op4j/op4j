@@ -16,7 +16,7 @@ import org.apache.commons.lang.time.DateUtils;
 import org.javaruntype.type.Types;
 import org.junit.Test;
 import org.op4j.functions.DecimalPoint;
-import org.op4j.functions.FnLong;
+import org.op4j.functions.FnInteger;
 import org.op4j.functions.FnString;
 
 public class RecipesTests extends TestCase {
@@ -274,14 +274,14 @@ public class RecipesTests extends TestCase {
     @Test
     public void testOP4J_011() throws Exception {
 
-        final List<Long> result = Arrays.asList(new Long[] { 53L, 430L });
+        final List<Integer> result = Arrays.asList(new Integer[] { 53, 430 });
 
-        List<Long> values = Arrays.asList(new Long[] { 6641L, 53L, 430L, 1245L });
-        final List<Long> originalValues = values;
+        List<Integer> values = Arrays.asList(new Integer[] { 6641, 53, 430, 1245 });
+        final List<Integer> originalValues = values;
 
         {
             values =
-                Op.on(values).removeAllTrue(FnLong.greaterThan(500)).get();
+                Op.on(values).removeAllTrue(FnInteger.greaterThan(500)).get();
                 
             assertEquals(result, values);
         }
@@ -289,8 +289,8 @@ public class RecipesTests extends TestCase {
         values = originalValues;
         
         {
-            List<Long> valuesAux = new ArrayList<Long>();
-            for (Long value : values) {
+            List<Integer> valuesAux = new ArrayList<Integer>();
+            for (Integer value : values) {
                 if (value.longValue() <= 500) {
                     valuesAux.add(value);
                 }

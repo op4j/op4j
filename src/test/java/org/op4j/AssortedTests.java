@@ -25,6 +25,7 @@ import org.op4j.functions.Fn;
 import org.op4j.functions.FnArray;
 import org.op4j.functions.FnBigDecimal;
 import org.op4j.functions.FnInteger;
+import org.op4j.functions.FnLong;
 import org.op4j.functions.FnNumber;
 import org.op4j.functions.FnString;
 import org.op4j.functions.Function;
@@ -734,5 +735,26 @@ public class AssortedTests extends TestCase {
                 Op.on(list).forEach().exec(FnBigDecimal.add(BigDecimal.valueOf(4))).get());
         
     }
+    
+    
+    
+    @Test
+    public void test36() throws Exception {
+
+        final List<Long> result = Arrays.asList(new Long[] { 53L, 430L });
+
+        List<Long> values = Arrays.asList(new Long[] { 6641L, 53L, 430L, 1245L });
+
+        {
+            values =
+                Op.on(values).removeAllTrue(FnLong.greaterThan(500)).get();
+                
+            assertEquals(result, values);
+        }
+
+    }
+
+    
+    
 }
 
