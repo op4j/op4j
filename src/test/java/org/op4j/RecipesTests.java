@@ -16,7 +16,7 @@ import org.apache.commons.lang.time.DateUtils;
 import org.javaruntype.type.Types;
 import org.junit.Test;
 import org.op4j.functions.DecimalPoint;
-import org.op4j.functions.FnInteger;
+import org.op4j.functions.FnNumber;
 import org.op4j.functions.FnString;
 
 public class RecipesTests extends TestCase {
@@ -281,7 +281,7 @@ public class RecipesTests extends TestCase {
 
         {
             values =
-                Op.on(values).removeAllTrue(FnInteger.greaterThan(500)).get();
+                Op.on(values).removeAllTrue(FnNumber.greaterThan(500)).get();
                 
             assertEquals(result, values);
         }
