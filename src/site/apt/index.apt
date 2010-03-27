@@ -2,7 +2,7 @@
   Main
   -------
 
-  <<op4j 1.0-beta2 RELEASED!>> (March 24th, 2010). <<{{{download.html}[DOWNLOAD]}}>> <<{{{http://www.op4j.org/ChangeLog.txt}[CHANGELOG]}}>>
+  <<op4j 1.0-beta2 RELEASED!>> (March 24th, 2010). <<{{{./download.html}[DOWNLOAD]}}>> <<{{{http://www.op4j.org/ChangeLog.txt}[CHANGELOG]}}>>
 
   <<UPDATE (March 25th, 2010): NEW op4j RECIPES BLOG>>. {{{http://www.bendingthejavaspoon.com}Bending
   the Java spoon [www.bendingthejavaspoon.com]}} is a blog dedicated to publishing news and recipes (small, practical
@@ -29,7 +29,7 @@ Bending the Java spoon
 
   op4j is open source, and it is distributed under the terms of the Apache License 2.0.
   
-  Read the quick example below, have a look at the <<{{{basics.html}Basics}}>> page or choose any link from the
+  Read the quick example below, have a look at the <<{{{./basics.html}Basics}}>> page or choose any link from the
   menu on the left.
  
   
@@ -165,7 +165,7 @@ Set<Calendar> set = [Calendar(12 October 1492), Calendar(6 December 1978)]
   
 * Learning more...
 
-  If you want to know more, you should start with {{{basics.html}The Basics}}.
+  If you want to know more, you should start with {{{./basics.html}The Basics}}.
 
   
   
