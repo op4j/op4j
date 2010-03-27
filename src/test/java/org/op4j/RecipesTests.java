@@ -1,20 +1,22 @@
 package org.op4j;
 
 
-import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
 import junit.framework.TestCase;
 
 import org.apache.commons.lang.time.DateUtils;
+import org.javaruntype.type.Types;
 import org.junit.Test;
+import org.op4j.functions.DecimalPoint;
+import org.op4j.functions.FnLong;
 import org.op4j.functions.FnString;
 
 public class RecipesTests extends TestCase {
@@ -182,8 +184,8 @@ public class RecipesTests extends TestCase {
         Integer[] filteredValues =
             Op.on(values).removeAllNull().get();
             
+        assertEquals(Integer[].class, filteredValues.getClass());
         assertEquals(Arrays.asList(result), Arrays.asList(filteredValues));
-        
 
     }
     
@@ -205,7 +207,112 @@ public class RecipesTests extends TestCase {
 
     }
     
+    
+    
+    @Test
+    public void testOP4J_009() throws Exception {
 
+        final Double result1 = Double.valueOf(871.21);
+        final Double result2 = Double.valueOf(421.441);
+
+        final String strValue1 = "871,21";
+        final String strValue2 = "421.441";
+        
+        Double value1 =
+            Op.on(strValue1).exec(FnString.toDouble(DecimalPoint.CAN_BE_POINT_OR_COMMA)).get();
+        Double value2 =
+            Op.on(strValue2).exec(FnString.toDouble(DecimalPoint.CAN_BE_POINT_OR_COMMA)).get();
+            
+        assertEquals(result1, value1);
+        assertEquals(result2, value2);
+        
+
+    }
+    
+    
+    
+    @Test
+    @SuppressWarnings("boxing")
+    public void testOP4J_010() throws Exception {
+
+        final Integer[] result = new Integer[] { 431, 94, 398 };
+
+        final String[] strArray = new String[] { "431", null, "94", "398" };
+
+        {
+            Integer[] values =
+                Op.on(strArray).map(Types.INTEGER, FnString.toInteger()).removeAllNull().get();
+                
+            assertEquals(Integer[].class, values.getClass());
+            assertEquals(Arrays.asList(result), Arrays.asList(values));
+        }
+        
+        {
+            Integer[] values =
+                Op.on(strArray).forEach().exec(Types.INTEGER, FnString.toInteger()).endFor().removeAllNull().get();
+                
+            assertEquals(Integer[].class, values.getClass());
+            assertEquals(Arrays.asList(result), Arrays.asList(values));
+        }
+        
+        {
+            List<Integer> valuesList = new ArrayList<Integer>();
+            for (String element : strArray) {
+                if (element != null) {
+                    valuesList.add(Integer.parseInt(element));
+                }
+            }
+            Integer[] values = valuesList.toArray(new Integer[valuesList.size()]);
+            
+            assertEquals(Arrays.asList(result), Arrays.asList(values));
+        }
+
+    }
+
+    
+    
+    @Test
+    public void testOP4J_011() throws Exception {
+
+        final List<Long> result = Arrays.asList(new Long[] { 53L, 430L });
+
+        List<Long> values = Arrays.asList(new Long[] { 6641L, 53L, 430L, 1245L });
+        final List<Long> originalValues = values;
+
+        {
+            values =
+                Op.on(values).removeAllTrue(FnLong.greaterThan(500)).get();
+                
+            assertEquals(result, values);
+        }
+
+        values = originalValues;
+        
+        {
+            List<Long> valuesAux = new ArrayList<Long>();
+            for (Long value : values) {
+                if (value.longValue() <= 500) {
+                    valuesAux.add(value);
+                }
+            }
+            values = valuesAux;
+            
+            assertEquals(result, values);
+        }
+
+    }
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
