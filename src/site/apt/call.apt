@@ -18,7 +18,7 @@ List<String> userNames = Op.on(users).map(Call.asString("getName")).get();
   The <asX(...)> methods in the <<<Call>>> class return <<<IFunction>>> objects (this is, <functions>):
   
 *----------------------------+-------------------------------------------------+
-| <<Method>>                 | <<Returned function type>>                      |
+|| Method                    || Returned function type                         |
 *----------------------------+-------------------------------------------------+
 | <<<asBigDecimal(...)>>>    | <<<IFunction\<Object,BigDecimal\>>>>            |
 *----------------------------+-------------------------------------------------+
