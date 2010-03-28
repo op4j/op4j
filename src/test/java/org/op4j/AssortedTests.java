@@ -7,6 +7,7 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,7 @@ import org.op4j.functions.FnBigDecimal;
 import org.op4j.functions.FnInteger;
 import org.op4j.functions.FnList;
 import org.op4j.functions.FnLong;
+import org.op4j.functions.FnMap;
 import org.op4j.functions.FnNumber;
 import org.op4j.functions.FnSet;
 import org.op4j.functions.FnString;
@@ -918,6 +920,53 @@ public class AssortedTests extends TestCase {
         assertEquals(set3Res, set3);
         assertEquals(set4Res, set4);
         assertEquals(set5Res, set5);
+        
+    }
+
+    
+    
+    
+    @Test
+    public void test44() throws Exception {
+
+        Map<Integer, String> map0 = new LinkedHashMap<Integer, String>();
+        Map<Integer, String> map1 = new LinkedHashMap<Integer, String>(map0);
+        map1.put(1, "one");
+        Map<Integer, String> map2 = new LinkedHashMap<Integer, String>(map1);
+        map2.put(2, "two");
+        Map<Integer, String> map3 = new LinkedHashMap<Integer, String>(map2);
+        map3.put(3, "three");
+        Map<Integer, String> map4 = new LinkedHashMap<Integer, String>(map3);
+        map4.put(4, "four");
+        
+        Map<Integer, String> map0Res = new LinkedHashMap<Integer, String>();
+        Map<Integer, String> map1Res = new LinkedHashMap<Integer, String>();
+        map1Res.put(1, "one");
+        Map<Integer, String> map2Res = new LinkedHashMap<Integer, String>();
+        map2Res.put(2, "two");
+        map2Res.put(1, "one");
+        Map<Integer, String> map3Res = new LinkedHashMap<Integer, String>();
+        map3Res.put(3, "three");
+        map3Res.put(2, "two");
+        map3Res.put(1, "one");
+        Map<Integer, String> map4Res = new LinkedHashMap<Integer, String>();
+        map4Res.put(4, "four");
+        map4Res.put(3, "three");
+        map4Res.put(2, "two");
+        map4Res.put(1, "one");
+
+
+        map0 = Op.on(map0).exec(FnMap.ofIntegerString().reverse()).get();
+        map1 = Op.on(map1).exec(FnMap.ofIntegerString().reverse()).get();
+        map2 = Op.on(map2).exec(FnMap.ofIntegerString().reverse()).get();
+        map3 = Op.on(map3).exec(FnMap.ofIntegerString().reverse()).get();
+        map4 = Op.on(map4).exec(FnMap.ofIntegerString().reverse()).get();
+        
+        assertEquals(map0Res, map0);
+        assertEquals(map1Res, map1);
+        assertEquals(map2Res, map2);
+        assertEquals(map3Res, map3);
+        assertEquals(map4Res, map4);
         
     }
     

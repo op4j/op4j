@@ -161,6 +161,12 @@ public final class FnMapOf<K,V> {
     
     
     
+    public final Function<Map<K,V>,Map<K,V>> reverse() {
+        return new Reverse<K,V>();
+    }
+    
+    
+    
     
     
     
@@ -775,6 +781,40 @@ public final class FnMapOf<K,V> {
                 }
             }
             return Boolean.TRUE;
+        }
+        
+    }
+    
+    
+    
+    
+    static final class Reverse<K,V> extends AbstractNotNullNonConvertingFunc<Map<K,V>> {
+        
+        public Reverse() {
+            super();
+        }
+
+        @Override
+        @SuppressWarnings("unchecked")
+        protected Map<K,V> notNullExecute(final Map<K,V> input, final ExecCtx ctx) throws Exception {
+            
+            final Object[] revertArray = input.entrySet().toArray(new Object[input.size()]); 
+            if (revertArray.length < 2) {
+                return new LinkedHashMap<K,V>(input);
+            }
+            int size = revertArray.length;
+            Object aux = null;
+            for (int i = 0, z = size / 2; i < z; i++) {
+                aux = revertArray[i];
+                revertArray[i] = revertArray[size - (i + 1)];
+                revertArray[size - (i + 1)] = aux;
+            }
+            final Map<K,V> result = new LinkedHashMap<K,V>();
+            for (final Object element : revertArray) {
+                final Map.Entry<K,V> entry = (Map.Entry<K,V>) element;
+                result.put(entry.getKey(), entry.getValue());
+            }
+            return result;
         }
         
     }
