@@ -9,7 +9,10 @@ public class FnReduceOn<T> {
     
     protected final Type<T> type;
 
-
+    FnReduceOn(final Type<T> type) {
+        super();
+        this.type = type;
+    }
     
     public final Function<ValuePair<T,T>,T> max() {
         return new Max<T>();
@@ -27,19 +30,7 @@ public class FnReduceOn<T> {
         return new MinBy<T,X>(function);
     }
     
-
-    
-    
-    
-    
-    FnReduceOn(final Type<T> type) {
-        super();
-        this.type = type;
-    }
-
-    
-
-    
+   
     
     static final class Max<T> extends Reductor<T,T,T> {
 
