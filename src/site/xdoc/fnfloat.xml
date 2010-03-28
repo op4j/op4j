@@ -16,7 +16,7 @@
       <subsection name="1. Overview">
 
         <p>
-            <b><a href="http://www.op4j.org/apidocs/org/op4j/functions/FnFloat.html">FnFloat</a></b> is a <em>function class</em>
+            <b><a href="http://www.op4j.org/apidocs/org/op4j/functions/FnFloat.html">FnFloat</a></b> is a <em>function hub class</em>
             containing a lot of static methods to work with Float objects. Those static methods return functions that take 
             a <b>Float</b> object either as its input or output (depending on the function). It includes 
             conversions to String, to an String representing a currency and logical operations between Float objects among others.            

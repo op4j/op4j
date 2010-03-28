@@ -16,77 +16,66 @@
       <subsection name="1. Overview">
         <p>
             <a href="http://en.wikipedia.org/wiki/Fold_%28higher-order_function%29"><b>Reduce</b> (also known as Fold)</a> functions 
-            receive, as a parameter, a function that is applied to two elements on every execution: the 
-            function executes on two elements of the target list and returns another one that will be used
+            receive, as a parameter, a function that is applied to two elements on each execution: the 
+            function executes on two consecutive elements of the target list and returns another one that will be used
             as the first target element for the next execution of the function. 
         </p>
         
         <p>
-            <a href="http://www.op4j.org/apidocs/org/op4j/functions/FnReduce.html"><b>FnReduce</b></a> is a <em>function class</em>
-            containing several static methods returning functions that allow the execution of <em>Reduce</em> operations 
-            on different types of objects. Those functions returned by <em>FnReduce</em> are:                         
+            <a href="http://www.op4j.org/apidocs/org/op4j/functions/FnReduce.html"><b>FnReduce</b></a> is a 
+            <em>parameterizable function hub class</em> and, before giving you access to the real functions, you will 
+            have to specify the type parameter, which will give you access to the functions containing the reduce operations:                                    
         </p>
         <ul>
             <li>
-                <a href="#FnReduceOn">FnReduceOn&lt;T&gt;</a>: returned with the type parameter T replaced based on 
-                the method called: 
-                <ul>
-                    <li>FnReduce.onCharacter()</li>
-                    <li>FnReduce.onCalendar()</li>
-                    <li>FnReduce.onDate()</li>
-                    <li>FnReduce.onObject()</li>
-                    <li>FnReduce.on(final Type&lt;T&gt; type)</li>
-                </ul>   
-                All of the methods above return a <em>FnReduceOn</em> function with the same methods available but with 
-                a different type parameter                              
+                <code>FnReduce.onBigDecimal()</code>: returns <a href="#FnReduceOnBigDecimal">FnReduceOnBigDecimal</a>                                 
             </li>
             <li>
-                <a href="#FnReduceOnBigDecimal">FnReduceOnBigDecimal</a>: returned by calling 
-                <code>FnReduce.onBigDecimal()</code>                 
+                <code>FnReduce.onBigInteger()</code>: returns <a href="#FnReduceOnBigInteger">FnReduceOnBigInteger</a>                                 
             </li>
             <li>
-                <a href="#FnReduceOnBigInteger">FnReduceOnBigInteger</a>: returned by calling 
-                <code>FnReduce.onBigInteger()</code>                 
+                <code>FnReduce.onBoolean()</code>: returns <a href="#FnReduceOnBoolean">FnReduceOnBoolean</a>
             </li>
             <li>
-                <a href="#FnReduceOnBoolean">FnReduceOnBoolean</a>: returned by calling 
-                <code>FnReduce.onBoolean()</code>                 
+                <code>FnReduce.onByte()</code>: returns <a href="#FnReduceOnByte">FnReduceOnByte</a>                                
             </li>
             <li>
-                <a href="#FnReduceOnByte">FnReduceOnByte</a>: returned by calling 
-                <code>FnReduce.onByte()</code>                 
+                <code>FnReduce.onDouble()</code>: returns <a href="#FnReduceOnDouble">FnReduceOnDouble</a>                                 
             </li>
             <li>
-                <a href="#FnReduceOnDouble">FnReduceOnDouble</a>: returned by calling 
-                <code>FnReduce.onDouble()</code>                 
+                <code>FnReduce.onFloat()</code>: returns <a href="#FnReduceOnFloat">FnReduceOnFloat</a>                                 
             </li>
             <li>
-                <a href="#FnReduceOnFloat">FnReduceOnFloat</a>: returned by calling 
-                <code>FnReduce.onFloat()</code>                 
+                <code>FnReduce.onInteger()</code>: returns <a href="#FnReduceOnInteger">FnReduceOnInteger</a>                                 
             </li>
             <li>
-                <a href="#FnReduceOnInteger">FnReduceOnInteger</a>: returned by calling 
-                <code>FnReduce.onInteger()</code>                 
+                <code>FnReduce.onLong()</code>: returns <a href="#FnReduceOnLong">FnReduceOnLong</a>                                 
             </li>
             <li>
-                <a href="#FnReduceOnLong">FnReduceOnLong</a>: returned by calling 
-                <code>FnReduce.onLong()</code>                 
+                <code>FnReduce.onShort()</code>: returns <a href="#FnReduceOnShort">FnReduceOnShort</a>                                 
             </li>
             <li>
-                <a href="#FnReduceOnShort">FnReduceOnShort</a>: returned by calling 
-                <code>FnReduce.onShort()</code>                 
+                <code>FnReduce.onString()</code>: returns <a href="#FnReduceOnString">FnReduceOnString</a>                                 
             </li>
             <li>
-                <a href="#FnReduceOnString">FnReduceOnString</a>: returned by calling 
-                <code>FnReduce.onString()</code>                 
+                <code>FnReduce.onCharacter()</code>: returns <a href="#FnReduceOn">FnReduceOn&lt;Character&gt;</a>                                 
             </li>
+            <li>
+                <code>FnReduce.onCalendar()</code>: returns <a href="#FnReduceOn">FnReduceOn&lt;Calendar&gt;</a>                                 
+            </li>
+            <li>
+                <code>FnReduce.onDate()</code>: returns <a href="#FnReduceOn">FnReduceOn&lt;Date&gt;</a>                                 
+            </li>
+            <li>
+                <code>FnReduce.onObject()</code>: returns <a href="#FnReduceOn">FnReduceOn&lt;Object&gt;</a>                                 
+            </li>
+            <li>
+                <code>FnReduce.on(final Type&lt;T&gt; type)</code>: returns <a href="#FnReduceOn">FnReduceOn&lt;T&gt;</a> 
+                parameterized with the given type. This is the most generic function in <em>FnReduce</em>                               
+            </li>           
         </ul>
         
         <hr/>
-        
-        <p>
-            <b>FnReduce</b> acts as a shortcut to all of the functions above.
-        </p>
         
         <p>
             These <em>Reduce</em> operations are <b>executed by means of the reduce method</b> as follows:
@@ -96,50 +85,24 @@
         </code> 
         <p>as in</p>       
         <code>
-            Op.on(new Integer[] {2, 3, 4}).toList().reduce(FnReduce.onBigDecimal().avg(), BigDecimal.valueOf(13)).get();                       
-        </code>
-        
-      </subsection>
-
-      <subsection name="FnReduceOn">
-
-        <p>
-          The functions in <b>FnReduceOn</b> are applied on<em> objects</em> of any type. <em>FnReduceOn is a generic class</em> and, by calling
-          <code>FnReduce.onCharacter(), FnReduce.onCalendar(), FnReduce.onDate(), FnReduce.onObject() or
-          FnReduce.on(final Type&lt;T&gt; type)</code>, the type parameter can be replaced with the type you need at 
-          any time so that chaining functions becomes easier and less error-prone.                 
-        </p>
-        
-        <code>
-            Op.on(new Calendar[] {Calendar.getInstance(), Calendar.getInstance()}).toList() <br />                        
-                .reduce(FnReduce.onCalendar().min()).get();
-                
+            /* In this case, we insert an initial value: 13 */ <br />
+            Op.on(new Integer[] {2, 3, 4}).toList().reduce(FnReduce.onBigDecimal().avg(), BigDecimal.valueOf(13)).get(); 
             <br /><br />
-            
-            Op.on(aListOfComprables)) <br />                        
-                .reduce(FnReduce.on(Types.forClass(MyClassOfComparables.class)).min()).get());
-        </code>   
+            Op.on(new Float[] {Float.valueOf(3), Float.valueOf(5), Float.valueOf(8), Float.valueOf(9)}) <br />
+              .toList().reduce(FnReduce.onFloat().div(MathContext.DECIMAL32)).get(); 
+            <br /><br /> 
+            /* In this case, we insert an initial value: 100 */ <br />
+            Op.on(new Integer[] {Integer.valueOf(3), Integer.valueOf(5), Integer.valueOf(8), Integer.valueOf(9)}) <br />
+                .toList().reduce(FnReduce.onFloat().div(MathContext.DECIMAL32), Float.valueOf(100)).get();                             
+        </code>        
         
-        <br/><br/>
-        
-        <div>
-        <!-- Table with functions -->
-        <table border="0">
-		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
-		<tbody>
-		<tr><td><b>max</b></td><td>Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td></td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>maxBy</b></td><td>&lt;X extends Comparable&lt;? super X&gt;&gt; Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td>IFunction&lt;? super T,X&gt; function</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>min</b></td><td>Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td></td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>minBy</b></td><td>&lt;X extends Comparable&lt;? super X&gt;&gt; Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td>IFunction&lt;? super T,X&gt; function</td><td></td></tr>
-		</tbody></table>
-        </div>
-        
+        <p>        
+        <em>Note that you can specify an initial value (as in the first and third examples above) which is initially
+        combined with the first target element in the list (as op4j implements left fold).</em>
+        </p>
+                
       </subsection>
-        
-        
+
       <subsection name="FnReduceOnBigDecimal">
 
         <p>
@@ -159,7 +122,7 @@
                 .reduce(FnReduce.onBigDecimal().avg(MathContext.DECIMAL32), BigDecimal.valueOf(0)).get(); <br />
         </code>   
         
-        <br/>
+        <br/><br/>
         
         <div>
 	    <!-- Table with functions -->
@@ -189,9 +152,21 @@
       <subsection name="FnReduceOnBigInteger">
 
         <p>
-          These functions are to be applied on <em>Numbers</em> and all of them return an <em>Integer</em>.                
+          These functions are to be applied on <em>Numbers</em> and all of them return an <em>Integer</em>. Let's see some
+          examples:                
         </p>
-               
+        
+        <code>
+            Op.on(new Integer[] {Integer.valueOf(3), Integer.valueOf(5), Integer.valueOf(8), Integer.valueOf(9)}).toList() <br />                         
+              .reduce(FnReduce.onBigInteger().div(MathContext.DECIMAL32), BigInteger.valueOf(100)).get();
+              
+            <br /> <br />
+            
+            Op.on(new BigInteger[] {BigInteger.valueOf(3), BigInteger.valueOf(5), BigInteger.valueOf(8), BigInteger.valueOf(9)}).toList() <br />                         
+              .reduce(FnReduce.onBigInteger().div(MathContext.DECIMAL32)).get();
+        </code>
+             
+        <br/><br/>
         
         <div>
         <!-- Table with functions -->
@@ -461,6 +436,45 @@
         </div>
         
       </subsection>
+      
+      <subsection name="FnReduceOn">
+
+        <p>
+          The functions in <b>FnReduceOn</b> are applied on<em> objects</em> of any type. <em>FnReduceOn is a generic class</em> and, by calling
+          <code>FnReduce.onCharacter(), FnReduce.onCalendar(), FnReduce.onDate(), FnReduce.onObject() or
+          FnReduce.on(final Type&lt;T&gt; type)</code>, the type parameter can be replaced with the type you need at 
+          any time so that chaining functions becomes easier and less error-prone.                 
+        </p>
+        
+        <code>
+            Op.on(new Calendar[] {Calendar.getInstance(), Calendar.getInstance()}).toList() <br />                        
+                .reduce(FnReduce.onCalendar().min()).get();
+                
+            <br /><br />
+            
+            Op.on(aListOfComprables)) <br />                        
+                .reduce(FnReduce.on(Types.forClass(MyClassOfComparables.class)).min()).get());
+        </code>   
+        
+        <br/><br/>
+        
+        <div>
+        <!-- Table with functions -->
+        <table border="0">
+        <thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+        <tbody>
+        <tr><td><b>max</b></td><td>Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td></td><td></td></tr>
+        <tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+        <tr><td><b>maxBy</b></td><td>&lt;X extends Comparable&lt;? super X&gt;&gt; Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td>IFunction&lt;? super T,X&gt; function</td><td></td></tr>
+        <tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+        <tr><td><b>min</b></td><td>Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td></td><td></td></tr>
+        <tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+        <tr><td><b>minBy</b></td><td>&lt;X extends Comparable&lt;? super X&gt;&gt; Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td>IFunction&lt;? super T,X&gt; function</td><td></td></tr>
+        </tbody></table>
+        </div>
+        
+      </subsection>
+      
     </section>
   </body>
 </document>

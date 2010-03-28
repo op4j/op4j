@@ -16,7 +16,7 @@
       <subsection name="1. Overview">
 
         <p>
-        	<b><a href="http://www.op4j.org/apidocs/org/op4j/functions/FnString.html">FnString</a></b> is a <em>function class</em>
+        	<b><a href="http://www.op4j.org/apidocs/org/op4j/functions/FnString.html">FnString</a></b> is a <em>function hub class</em>
         	containing a lot of static methods returning functions that take a <b>String</b> object as its input. It includes 
         	conversions to numbers, calendar and escape functions among others.        	  
         </p>
