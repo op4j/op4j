@@ -4,6 +4,7 @@ package org.op4j;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.Set;
 
 import junit.framework.TestCase;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.javaruntype.type.Types;
 import org.junit.Test;
@@ -339,6 +341,80 @@ public class RecipesTests extends TestCase {
     }
 
 
+    
+    
+    @Test
+    public void testOP4J_013() throws Exception {
+
+        final String[] result = new String[] { "Lisboa", "Madrid", "Paris", "Bruxelles" };
+
+        String[] capitals = new String[] { "Lisboa", "Madrid", "Paris", "Lisboa", "Bruxelles" };
+        String[] originalCapitals = (String[]) ArrayUtils.clone(capitals);
+
+        {
+            capitals = Op.on(capitals).distinct().get();
+                
+            assertEquals(String[].class, capitals.getClass());
+            assertEquals(Arrays.asList(result), Arrays.asList(capitals));
+        }
+
+        {
+            List<String> capitalList = Arrays.asList(originalCapitals);
+            
+            // capitalList == LIST [ "Lisboa", "Madrid", "Paris", "Lisboa", "Bruxelles" ]
+            capitalList = Op.on(capitalList).distinct().get();
+                
+            assertEquals(Arrays.asList(result), capitalList);
+        }
+        
+        {
+            Set<String> capitalSet = new LinkedHashSet<String>();
+            for (String capital : capitals) {
+                capitalSet.add(capital);
+            }
+            capitals = capitalSet.toArray(new String[capitalSet.size()]);
+            
+            assertEquals(String[].class, capitals.getClass());
+            assertEquals(Arrays.asList(result), Arrays.asList(capitals));
+        }
+
+    }
+
+
+    
+    
+    @Test
+    public void testOP4J_014() throws Exception {
+
+        final String[] result = new String[] { "Arctic", "Atlantic", "Indian", "Pacific", "Southern" };
+
+        String[] oceans = new String[] { "Pacific", "Atlantic", "Indian", "Arctic", "Southern" };
+        String[] originalOceans = (String[]) ArrayUtils.clone(oceans);
+
+        {
+            oceans = Op.on(oceans).sort().get();
+                
+            assertEquals(String[].class, oceans.getClass());
+            assertEquals(Arrays.asList(result), Arrays.asList(oceans));
+        }
+        
+        oceans = (String[]) ArrayUtils.clone(originalOceans);
+        
+        {
+            List<String> oceansList = Arrays.asList(oceans);
+            Collections.sort(oceansList);
+            oceans = oceansList.toArray(new String[oceansList.size()]);
+            
+            assertEquals(String[].class, oceans.getClass());
+            assertEquals(Arrays.asList(result), Arrays.asList(oceans));
+        }
+
+    }
+
+    
+    
+
+    
     
     
     
