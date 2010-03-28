@@ -539,6 +539,10 @@ public final class FnString {
     public static final Function<String,Boolean> matches(final String regex) {
         return new Matches(regex);
     }
+    
+    public static final Function<String,Boolean> contains(final String regex) {
+        return new Contains(regex);
+    }
 
     
     
@@ -996,6 +1000,27 @@ public final class FnString {
     }
     
     
+    
+    
+    static final class Contains extends AbstractNotNullFunction<String,Boolean>  {
+
+        private final Pattern pattern;
+
+        
+        Contains(final String regex) {
+            super();
+            Validate.notEmpty(regex, "Regular expression cannot be null or empty");
+            this.pattern = Pattern.compile(regex);
+        }
+
+
+        @Override
+        protected Boolean notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+            final Matcher matcher = this.pattern.matcher(input);
+            return Boolean.valueOf(matcher.find());
+        }
+        
+    }
     
     
     
