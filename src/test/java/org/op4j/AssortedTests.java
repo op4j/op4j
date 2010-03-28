@@ -793,8 +793,34 @@ public class AssortedTests extends TestCase {
         final String str = "Earth";
         Boolean matches = Op.on(str).exec(FnString.contains("a")).get();
         assertEquals(Boolean.TRUE, matches);
+        matches = Op.on(str).exec(FnString.contains("b")).get();
+        assertEquals(Boolean.FALSE, matches);
         matches = Op.on(str).exec(FnString.contains(".a.*h")).get();
         assertEquals(Boolean.TRUE, matches);
+        
+    }
+    
+    
+    @Test
+    public void test40() throws Exception {
+
+        final String str = 
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+        	"Fusce a lacus lectus, quis tristique nibh. Aenean sit amet dolor justo. " +
+        	"Morbi nibh urna, ornare non congue non, dignissim at nibh. Nulla euismod, " +
+        	"dui id consequat tempus, lacus velit sodales metus, non luctus ipsum " +
+        	"purus id neque. Ut eleifend vestibulum rutrum. Praesent quis dui urna, " +
+        	"quis cursus arcu. Aliquam interdum quam quis erat condimentum ullamcorper. " +
+        	"Nam eget massa eu tellus pulvinar blandit sed quis libero. Proin ut quam " +
+        	"nunc, id rutrum mi. Vestibulum ante ipsum primis in faucibus orci luctus " +
+        	"et ultrices posuere cubilia Curae;";
+        
+
+        assertEquals(11, Op.on(str).exec(FnString.extractAll("qu..")).get().size());
+        assertEquals("quis", Op.on(str).exec(FnString.extractFirst("qu..")).get());
+        assertEquals("quam", Op.on(str).exec(FnString.extractLast("qu..")).get());
+        assertEquals("eleif", Op.on(str).exec(FnString.matchAndExtract("(.*?)(ele..)(.*?)", 2)).get());
+        assertEquals(Arrays.asList(new String[] {"eleif", "liq"}), Op.on(str).exec(FnString.matchAndExtractAll("(.*?)(ele..)(.*?)(li.)(.*?)", 2, 4)).get());
         
     }
     

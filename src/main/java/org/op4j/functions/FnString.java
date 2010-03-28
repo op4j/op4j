@@ -24,8 +24,11 @@ import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -37,6 +40,7 @@ import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.apache.commons.lang.time.DateUtils;
+import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.FnStringAuxNumberConverters.ToBigDecimal;
 import org.op4j.functions.FnStringAuxNumberConverters.ToBigInteger;
 import org.op4j.functions.FnStringAuxNumberConverters.ToByte;
@@ -45,6 +49,7 @@ import org.op4j.functions.FnStringAuxNumberConverters.ToFloat;
 import org.op4j.functions.FnStringAuxNumberConverters.ToInteger;
 import org.op4j.functions.FnStringAuxNumberConverters.ToLong;
 import org.op4j.functions.FnStringAuxNumberConverters.ToShort;
+import org.op4j.util.VarArgsUtil;
 
 /**
  * 
@@ -544,7 +549,31 @@ public final class FnString {
         return new Contains(regex);
     }
 
+
+
     
+    
+    
+    public static final Function<String,String> extractFirst(final String regex) {
+        return new Extract(regex, false);
+    }
+    
+    public static final Function<String,String> extractLast(final String regex) {
+        return new Extract(regex, true);
+    }
+    
+    public static final Function<String,List<String>> extractAll(final String regex) {
+        return new ExtractAll(regex);
+    }
+    
+    public static final Function<String,String> matchAndExtract(final String regex, final int group) {
+        return new MatchAndExtract(regex, group);
+    }
+    
+    public static final Function<String,List<String>> matchAndExtractAll(final String regex, final int... groups) {
+        return new MatchAndExtractAll(regex, VarArgsUtil.asRequiredIntegerList(groups));
+    }
+
     
     
     
@@ -1027,4 +1056,127 @@ public final class FnString {
     
     
     
+    static final class Extract extends AbstractNotNullFunction<String,String>  {
+
+        private final Pattern pattern;
+        private final boolean last;
+
+        
+        Extract(final String regex, final boolean last) {
+            super();
+            Validate.notEmpty(regex, "Regular expression cannot be null or empty");
+            this.pattern = Pattern.compile(regex);
+            this.last = last;
+        }
+
+
+        @Override
+        protected String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+            final Matcher matcher = this.pattern.matcher(input);
+            if (!this.last) {
+                if (!matcher.find()) {
+                    throw new ExecutionException("Cannot extract: target does not match regular expression");
+                }
+                return matcher.group();
+            }
+            String result = null;
+            while (matcher.find()) {
+                result = matcher.group();
+            }
+            if (result == null) {
+                throw new ExecutionException("Cannot extract: target does not match regular expression");
+            }
+            return result;
+        }
+        
+    }
+
+  
+    
+    
+    static final class ExtractAll extends AbstractNotNullFunction<String,List<String>>  {
+
+        private final Pattern pattern;
+
+        
+        ExtractAll(final String regex) {
+            super();
+            Validate.notEmpty(regex, "Regular expression cannot be null or empty");
+            this.pattern = Pattern.compile(regex);
+        }
+
+
+        @Override
+        protected List<String> notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+            final Matcher matcher = this.pattern.matcher(input);
+            final List<String> result = new ArrayList<String>();
+            while (matcher.find()) {
+                result.add(matcher.group());
+            }
+            return Collections.unmodifiableList(result);
+        }
+        
+    }
+
+    
+    
+    static final class MatchAndExtract extends AbstractNotNullFunction<String,String>  {
+
+        private final Pattern pattern;
+        private final int group;
+
+        
+        MatchAndExtract(final String regex, final int group) {
+            super();
+            Validate.notEmpty(regex, "Regular expression cannot be null or empty");
+            this.pattern = Pattern.compile(regex);
+            this.group = group;
+        }
+
+
+        @Override
+        protected String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+            final Matcher matcher = this.pattern.matcher(input);
+            if (!matcher.matches()) {
+                throw new ExecutionException("Cannot extract: target does not match regular expression");
+            }
+            return matcher.group(this.group);
+        }
+        
+    }
+    
+
+
+
+    
+    static final class MatchAndExtractAll extends AbstractNotNullFunction<String,List<String>>  {
+
+        private final Pattern pattern;
+        private final List<Integer> groups;
+
+        
+        MatchAndExtractAll(final String regex, final List<Integer> groups) {
+            super();
+            Validate.notEmpty(regex, "Regular expression cannot be null or empty");
+            Validate.notEmpty(groups, "Groups cannot be null or empty");
+            this.pattern = Pattern.compile(regex);
+            this.groups = new ArrayList<Integer>(groups);
+        }
+
+
+        @Override
+        protected List<String> notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+            final Matcher matcher = this.pattern.matcher(input);
+            if (!matcher.matches()) {
+                throw new ExecutionException("Cannot extract: target does not match regular expression");
+            }
+            final List<String> result = new ArrayList<String>();
+            for (final Integer group : this.groups) {
+                result.add(matcher.group(group.intValue()));
+            }
+            return result;
+        }
+        
+    }
+
 }
