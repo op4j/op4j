@@ -1,0 +1,405 @@
+ <!DOCTYPE document PUBLIC
+  "-//Apache Software Foundation//DTD XDOC 1.0//EN"
+  "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+
+
+<document>
+  <properties>
+    <title>Functions: FnReduce</title>    
+  </properties>
+  <body>
+  
+    <section name="Functions: FnReduce">
+
+      
+
+      <subsection name="1. Overview">
+
+        <p>
+            <b><a href="http://www.op4j.org/apidocs/org/op4j/functions/FnReduce.html">FnReduce</a></b> is a <em>function class</em>
+            containing several static methods returning functions that allow the execution of  
+            <a href="http://en.wikipedia.org/wiki/Fold_%28higher-order_function%29">Reduce (also known as Fold)</a> functions 
+            on different types of objects. Those functions are:                         
+        </p>
+        <!-- TODO Character, Calendar, Date and Object -->
+        <ul>
+            <li>
+                <a href="#FnReduceOnBigDecimal">FnReduceOnBigDecimal</a>: returned by calling 
+                <code>FnReduce.onBigDecimal()</code>                 
+            </li>
+            <li>
+                <a href="#FnReduceOnBigInteger">FnReduceOnBigInteger</a>: returned by calling 
+                <code>FnReduce.onBigInteger()</code>                 
+            </li>
+            <li>
+                <a href="#FnReduceOnBoolean">FnReduceOnBoolean</a>: returned by calling 
+                <code>FnReduce.onBoolean()</code>                 
+            </li>
+            <li>
+                <a href="#FnReduceOnByte">FnReduceOnByte</a>: returned by calling 
+                <code>FnReduce.onByte()</code>                 
+            </li>
+            <li>
+                <a href="#FnReduceOnDouble">FnReduceOnDouble</a>: returned by calling 
+                <code>FnReduce.onDouble()</code>                 
+            </li>
+            <li>
+                <a href="#FnReduceOnFloat">FnReduceOnFloat</a>: returned by calling 
+                <code>FnReduce.onFloat()</code>                 
+            </li>
+            <li>
+                <a href="#FnReduceOnInteger">FnReduceOnInteger</a>: returned by calling 
+                <code>FnReduce.onInteger()</code>                 
+            </li>
+            <li>
+                <a href="#FnReduceOnLong">FnReduceOnLong</a>: returned by calling 
+                <code>FnReduce.onLong()</code>                 
+            </li>
+            <li>
+                <a href="#FnReduceOnShort">FnReduceOnShort</a>: returned by calling 
+                <code>FnReduce.onShort()</code>                 
+            </li>
+            <li>
+                <a href="#FnReduceOnString">FnReduceOnString</a>: returned by calling 
+                <code>FnReduce.onString()</code>                 
+            </li>
+        </ul>
+        
+        <p>
+            FnReduce acts as a shortcut to all of the functions above.
+        </p>
+        <p>
+            Reduce functions receive, as a parameter, a function that is applied to two elements on every execution: the 
+            function executes on two elements of the target list and returns another one that will be used
+            as the first target element for the next execution of the function. <br />
+            These operations are executed by means of the reduce method as follows:
+        </p>
+        
+        <code>
+            Op.on(...)...reduce(FnReduce.onX().Y(...))...; 
+        </code> 
+        <p>as in</p>       
+        <code>
+            Op.on(new Integer[] {2, 3, 4}).toList().reduce(FnReduce.onBigDecimal().avg(), BigDecimal.valueOf(13)).get();                       
+        </code>
+        
+      </subsection>
+
+      <subsection name="FnReduceOnBigDecimal">
+
+        <p>
+          These functions are to be applied on Numbers and all of them return a BigDecimal. Let's see some examples:                 
+        </p>
+        
+        <code>
+            /*  The code below would return 3.25 as avg(2, 3, 4) -> avg(avg(2, 3), 4) -> avg(2.5, 4) -> 3.25 */ <br />
+            Op.on(new Integer[] {2, 3, 4}).toList() <br />
+                .forEach().exec(FnNumber.toBigDecimal()).endFor() <br />               
+                .reduce(FnReduce.onBigDecimal().avg(MathContext.DECIMAL32)).get(); 
+                
+            <br /><br />
+            
+            /*  The code below would return 3 as avg(0, 2, 3, 4) -> avg(avg(avg(0, 2), 3), 4) -> avg(avg(1, 3), 4) -> avg(2, 4) -> 3 */ <br />
+            Op.on(new Integer[] {2, 3, 4}).toList() <br />                             
+                .reduce(FnReduce.onBigDecimal().avg(MathContext.DECIMAL32), BigDecimal.valueOf(0)).get(); <br />
+        </code>   
+        
+        <h4>Functions</h4>
+
+	    <!-- Table with functions -->
+        <table border="0">
+		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+		<tbody>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td></td><td></td></tr>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td></td><td></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td></td><td></td></tr>
+		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td></td><td></td></tr>
+		</tbody></table>
+        <!--  -->
+        
+      
+      </subsection>
+      
+      <subsection name="FnReduceOnBigInteger">
+
+        <p>
+          These functions are to be applied on Numbers and all of them return an Integer.                
+        </p>
+               
+        <h4>Functions</h4>
+
+        <!-- Table with functions -->
+        <table border="0">
+		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+		<tbody>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td></td><td></td></tr>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td></td><td></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td></td><td></td></tr>
+		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td></td><td></td></tr>
+		</tbody></table>
+        <!--  -->
+        
+      </subsection>
+      
+      <subsection name="FnReduceOnBoolean">
+
+        <p>
+          These functions are to be applied on Boolean elements and all of them return a Boolean.                 
+        </p>
+
+        <h4>Functions</h4>
+
+        <!-- Table with functions -->
+        <table border="0">
+		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+		<tbody>
+		<tr><td><b>or</b></td><td>Function&lt;ValuePair&lt;Boolean,Boolean&gt;,Boolean&gt;</td><td></td><td></td></tr>
+		</tbody></table>
+        <!--  -->
+        
+      </subsection>
+      
+      <subsection name="FnReduceOnByte">
+
+        <p>
+          These functions are to be applied on Numbers and all of them return a Byte.               
+        </p>        
+        
+        <h4>Functions</h4>
+
+        <!-- Table with functions -->
+        <table border="0">
+		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+		<tbody>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td></td><td></td></tr>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td></td><td></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td></td><td></td></tr>
+		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td></td><td></td></tr>
+		</tbody></table>
+        <!--  -->
+        
+      </subsection>
+      
+      <subsection name="FnReduceOnDouble">
+
+        <p>
+          These functions are to be applied on Numbers and all of them return a Double. Let's see some examples:                 
+        </p>
+        
+        <code>
+            /*  The code below would return 3.25 as avg(2, 3, 4) -> avg(avg(2, 3), 4) -> avg(2.5, 4) -> 3.25 */ <br />
+            Op.on(new Integer[] {2, 3, 4}).toList() <br />
+                .forEach().exec(FnNumber.toDouble()).endFor() <br />               
+                .reduce(FnReduce.onDouble().avg(MathContext.DECIMAL32)).get(); 
+                
+            <br /><br />
+            
+            /*  The code below would return 3.525 as avg(4.2, 2, 3, 4) -> avg(avg(avg(4.2, 2), 3), 4) -> avg(avg(3.1, 3), 4) -> avg(3.05, 4) -> 3.525 */ <br />
+            Op.on(new Integer[] {2, 3, 4}).toList() <br />                             
+                .reduce(FnReduce.onDouble().avg(MathContext.DECIMAL32), Double.valueOf(4.2)).get(); <br />
+        </code>  
+        
+        <h4>Functions</h4>
+
+        <!-- Table with functions -->
+        <table border="0">
+		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+		<tbody>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td></td><td></td></tr>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td></td><td></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td></td><td></td></tr>
+		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td></td><td></td></tr>
+		</tbody></table>
+        <!--  -->
+        
+      </subsection>
+      
+      <subsection name="FnReduceOnFloat">
+
+        <p>
+          These functions are to be applied on Numbers and all of them return a Float.                 
+        </p>
+        
+        <h4>Functions</h4>
+
+        <!-- Table with functions -->
+        <table border="0">
+		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+		<tbody>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td></td><td></td></tr>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td></td><td></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td></td><td></td></tr>
+		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td></td><td></td></tr>
+		</tbody></table>
+        <!--  -->
+        
+      </subsection>
+      
+      <subsection name="FnReduceOnInteger">
+
+        <p>
+          These functions are to be applied on Numbers and all of them return an Integer.              
+        </p>
+        
+        <h4>Functions</h4>
+
+        <!-- Table with functions -->
+        <table border="0">
+		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+		<tbody>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td></td><td></td></tr>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td></td><td></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td></td><td></td></tr>
+		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td></td><td></td></tr>
+		</tbody></table>
+        <!--  -->
+        
+      </subsection>
+      
+      <subsection name="FnReduceOnLong">
+
+        <p>
+          These functions are to be applied on Numbers and all of them return a Long.                
+        </p>
+        
+        <h4>Functions</h4>
+
+        <!-- Table with functions -->
+        <table border="0">
+		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+		<tbody>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td></td><td></td></tr>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td></td><td></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td></td><td></td></tr>
+		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td></td><td></td></tr>
+		</tbody></table>
+        <!--  -->
+        
+      </subsection>
+      
+      <subsection name="FnReduceOnShort">
+
+        <p>
+          These functions are to be applied on Numbers and all of them return a Short.                 
+        </p>
+        
+        <h4>Functions</h4>
+
+        <!-- Table with functions -->
+        <table border="0">
+		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+		<tbody>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td></td><td></td></tr>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td></td><td></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td></td><td></td></tr>
+		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td></td><td></td></tr>
+		</tbody></table>
+        <!--  -->
+        
+      </subsection>
+      
+      <subsection name="FnReduceOnString">
+
+        <p>
+          These functions are to be applied on Strings and all of them return a String as well.           
+        </p>
+        
+        <h4>Functions</h4>
+
+        <!-- Table with functions -->
+        <table border="0">
+		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+		<tbody>
+		<tr><td><b>join</b></td><td>Function&lt;ValuePair&lt;String,String&gt;,String&gt;</td><td>String separator</td><td></td></tr>
+		</tbody></table>
+        <!--  -->
+        
+      </subsection>
+    </section>
+  </body>
+</document>
+ 
+ 
+
+
+  
