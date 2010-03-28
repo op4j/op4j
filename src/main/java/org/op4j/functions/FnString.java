@@ -41,6 +41,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.apache.commons.lang.time.DateUtils;
 import org.op4j.exceptions.ExecutionException;
+import org.op4j.functions.FnString.Replace.ReplaceType;
 import org.op4j.functions.FnStringAuxNumberConverters.ToBigDecimal;
 import org.op4j.functions.FnStringAuxNumberConverters.ToBigInteger;
 import org.op4j.functions.FnStringAuxNumberConverters.ToByte;
@@ -575,6 +576,18 @@ public final class FnString {
     }
 
     
+    
+    public static final Function<String,String> replaceFirst(final String regex, final String replacement) {
+        return new Replace(regex, replacement, ReplaceType.FIRST);
+    }
+    
+    public static final Function<String,String> replaceLast(final String regex, final String replacement) {
+        return new Replace(regex, replacement, ReplaceType.LAST);
+    }
+    
+    public static final Function<String,String> replaceAll(final String regex, final String replacement) {
+        return new Replace(regex, replacement, ReplaceType.ALL);
+    }
     
     
     
@@ -1179,4 +1192,49 @@ public final class FnString {
         
     }
 
+
+
+    
+    
+    static final class Replace extends AbstractNotNullFunction<String,String>  {
+
+        public enum ReplaceType { ALL, FIRST, LAST }
+        
+        private final Pattern pattern;
+        private final String replacement;
+        private final ReplaceType replaceType;
+
+        
+        Replace(final String regex, String replacement, final ReplaceType replaceType) {
+            super();
+            Validate.notEmpty(regex, "Regular expression cannot be null or empty");
+            this.pattern = Pattern.compile(regex);
+            this.replacement = replacement;
+            this.replaceType = replaceType;
+        }
+
+
+        @Override
+        protected String notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+            final Matcher matcher = this.pattern.matcher(input);
+            if (this.replaceType.equals(ReplaceType.ALL)) {
+                return matcher.replaceAll(this.replacement);
+            }
+            if (this.replaceType.equals(ReplaceType.FIRST)) {
+                return matcher.replaceFirst(this.replacement);
+            }
+            int regionStart = -1;
+            while (matcher.find()) {
+                regionStart = matcher.start();
+            }
+            if (regionStart == -1) {
+                return input;
+            }
+            return
+                input.substring(0, regionStart) + 
+                this.pattern.matcher(input.substring(regionStart)).replaceFirst(this.replacement);
+        }
+        
+    }
+    
 }
