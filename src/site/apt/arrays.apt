@@ -37,6 +37,8 @@ Working with arrays
 
     * {{{a12}Unfolding and reducing}}
 
+    * {{{a13}Reversing}}
+
 
 * {1}. Creating array expressions
 
@@ -783,4 +785,15 @@ Integer[] array = Op.on(10).unfoldArrayOf(Types.INTEGER, fn, FnNumber.lessThan(1
   String result = Op.onArrayFor(2,4,3,5).reduce(concatFn, "x").get();
 ---
   
+
+  
+* {13}. Reversing
+
+  Arrays can be reversed, so that the order of its elements gets inverted:
+  
+---
+  // array = 5,3,4,2
+  Integer[] array = Op.onArrayFor(2,4,3,5).reverse().get();
+---
+
     

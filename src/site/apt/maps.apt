@@ -28,6 +28,8 @@ Working with maps
 
   * {{{a7}Replacing}}
 
+  * {{{a8}Reversing}}
+
 
 * {1}. Creating map expressions
 
@@ -434,4 +436,17 @@ Map<String,String> newMap =
     Op.on(map).forEachEntry().onValue().replaceIfNullWith("[no value]").get();
 ---
   
+
+ 
+  
+* {8}. Reversing
+
+  Maps can be reversed, so that the order of its entries gets inverted:
+  
+---
+  // map = {{"a"=1},{"b"=2},{"c"=3}}
+  // newMap = {{"c"=3},{"b"=2},{"a"=1}}
+  Map<String,Integer> newMap = Op.on().reverse().get();
+---
+
 

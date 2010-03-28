@@ -36,6 +36,8 @@ Working with sets
 
     * {{{a11}Unfolding and reducing}}
 
+    * {{{a12}Reversing}}
+
 
 * {1}. Creating set expressions
 
@@ -632,3 +634,15 @@ Set<Integer> set = Op.on(10).unfoldSet(fn, FnNumber.lessThan(100)).get();
   
   
   
+ 
+  
+* {12}. Reversing
+
+  Sets can be reversed, so that the order of its elements gets inverted:
+  
+---
+  // set = 5,3,4,2
+  Set<Integer> set = Op.onSetFor(2,4,3,5).reverse().get();
+---
+
+ 

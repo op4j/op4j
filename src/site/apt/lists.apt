@@ -39,6 +39,8 @@ Working with lists
 
     * {{{a12}Unfolding and reducing}}
 
+    * {{{a13}Reversing}}
+
 
 
 
@@ -647,4 +649,15 @@ List<Integer> list = Op.on(10).unfoldList(fn, FnNumber.lessThan(100)).get();
   String result = Op.onListFor(2,4,3,5).reduce(concatFn, "x").get();
 ---
   
+
+
+* {13}. Reversing
+
+  Lists can be reversed, so that the order of its elements gets inverted:
+  
+---
+  // list = 5,3,4,2
+  List<Integer> list = Op.onListFor(2,4,3,5).reverse().get();
+---
+
   
