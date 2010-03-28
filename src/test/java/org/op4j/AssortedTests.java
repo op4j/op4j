@@ -7,8 +7,10 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import junit.framework.TestCase;
 
@@ -25,8 +27,10 @@ import org.op4j.functions.Fn;
 import org.op4j.functions.FnArray;
 import org.op4j.functions.FnBigDecimal;
 import org.op4j.functions.FnInteger;
+import org.op4j.functions.FnList;
 import org.op4j.functions.FnLong;
 import org.op4j.functions.FnNumber;
+import org.op4j.functions.FnSet;
 import org.op4j.functions.FnString;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
@@ -821,6 +825,99 @@ public class AssortedTests extends TestCase {
         assertEquals("quam", Op.on(str).exec(FnString.extractLast("qu..")).get());
         assertEquals("eleif", Op.on(str).exec(FnString.matchAndExtract("(.*?)(ele..)(.*?)", 2)).get());
         assertEquals(Arrays.asList(new String[] {"eleif", "liq"}), Op.on(str).exec(FnString.matchAndExtractAll("(.*?)(ele..)(.*?)(li.)(.*?)", 2, 4)).get());
+        
+    }
+
+    
+    
+    @Test
+    public void test41() throws Exception {
+
+        String[] arr1 = new String[] { "one", "two", "three" };
+        String[] arr2 = new String[] { "one", "two", "three", "four" };
+        String[] arr3 = new String[] { "one", "two" };
+        String[] arr4 = new String[] { "one" };
+        String[] arr5 = new String[] {  };
+        
+        String[] arr1Res = new String[] { "three", "two", "one" };
+        String[] arr2Res = new String[] { "four", "three", "two", "one" };
+        String[] arr3Res = new String[] { "two", "one" };
+        String[] arr4Res = new String[] { "one" };
+        String[] arr5Res = new String[] {  };
+
+        arr1 = Op.on(arr1).exec(FnArray.ofString().reverse()).get();
+        arr2 = Op.on(arr2).exec(FnArray.ofString().reverse()).get();
+        arr3 = Op.on(arr3).exec(FnArray.ofString().reverse()).get();
+        arr4 = Op.on(arr4).exec(FnArray.ofString().reverse()).get();
+        arr5 = Op.on(arr5).exec(FnArray.ofString().reverse()).get();
+        
+        assertEquals(Arrays.asList(arr1Res), Arrays.asList(arr1));
+        assertEquals(Arrays.asList(arr2Res), Arrays.asList(arr2));
+        assertEquals(Arrays.asList(arr3Res), Arrays.asList(arr3));
+        assertEquals(Arrays.asList(arr4Res), Arrays.asList(arr4));
+        assertEquals(Arrays.asList(arr5Res), Arrays.asList(arr5));
+        
+    }
+    
+    
+    
+    @Test
+    public void test42() throws Exception {
+
+        List<String> list1 = Arrays.asList(new String[] { "one", "two", "three" });
+        List<String> list2 = Arrays.asList(new String[] { "one", "two", "three", "four" });
+        List<String> list3 = Arrays.asList(new String[] { "one", "two" });
+        List<String> list4 = Arrays.asList(new String[] { "one" });
+        List<String> list5 = Arrays.asList(new String[] {  });
+        
+        List<String> list1Res = Arrays.asList(new String[] { "three", "two", "one" });
+        List<String> list2Res = Arrays.asList(new String[] { "four", "three", "two", "one" });
+        List<String> list3Res = Arrays.asList(new String[] { "two", "one" });
+        List<String> list4Res = Arrays.asList(new String[] { "one" });
+        List<String> list5Res = Arrays.asList(new String[] {  });
+
+        list1 = Op.on(list1).exec(FnList.ofString().reverse()).get();
+        list2 = Op.on(list2).exec(FnList.ofString().reverse()).get();
+        list3 = Op.on(list3).exec(FnList.ofString().reverse()).get();
+        list4 = Op.on(list4).exec(FnList.ofString().reverse()).get();
+        list5 = Op.on(list5).exec(FnList.ofString().reverse()).get();
+        
+        assertEquals(list1Res, list1);
+        assertEquals(list2Res, list2);
+        assertEquals(list3Res, list3);
+        assertEquals(list4Res, list4);
+        assertEquals(list5Res, list5);
+        
+    }
+    
+    
+    
+    @Test
+    public void test43() throws Exception {
+
+        Set<String> set1 = new LinkedHashSet<String>(Arrays.asList(new String[] { "one", "two", "three" }));
+        Set<String> set2 = new LinkedHashSet<String>(Arrays.asList(new String[] { "one", "two", "three", "four" }));
+        Set<String> set3 = new LinkedHashSet<String>(Arrays.asList(new String[] { "one", "two" }));
+        Set<String> set4 = new LinkedHashSet<String>(Arrays.asList(new String[] { "one" }));
+        Set<String> set5 = new LinkedHashSet<String>(Arrays.asList(new String[] {  }));
+        
+        Set<String> set1Res = new LinkedHashSet<String>(Arrays.asList(new String[] { "three", "two", "one" }));
+        Set<String> set2Res = new LinkedHashSet<String>(Arrays.asList(new String[] { "four", "three", "two", "one" }));
+        Set<String> set3Res = new LinkedHashSet<String>(Arrays.asList(new String[] { "two", "one" }));
+        Set<String> set4Res = new LinkedHashSet<String>(Arrays.asList(new String[] { "one" }));
+        Set<String> set5Res = new LinkedHashSet<String>(Arrays.asList(new String[] {  }));
+
+        set1 = Op.on(set1).exec(FnSet.ofString().reverse()).get();
+        set2 = Op.on(set2).exec(FnSet.ofString().reverse()).get();
+        set3 = Op.on(set3).exec(FnSet.ofString().reverse()).get();
+        set4 = Op.on(set4).exec(FnSet.ofString().reverse()).get();
+        set5 = Op.on(set5).exec(FnSet.ofString().reverse()).get();
+        
+        assertEquals(set1Res, set1);
+        assertEquals(set2Res, set2);
+        assertEquals(set3Res, set3);
+        assertEquals(set4Res, set4);
+        assertEquals(set5Res, set5);
         
     }
     

@@ -287,6 +287,13 @@ public class FnSetOf<T> {
     
     
     
+    public final Function<Set<T>,Set<T>> reverse() {
+        return new Reverse<T>();
+    }
+    
+    
+    
+    
     
     
 
@@ -1356,5 +1363,38 @@ public class FnSetOf<T> {
         
     }
     
+
+    
+    
+    
+    static final class Reverse<T> extends AbstractNotNullNonConvertingFunc<Set<T>> {
+        
+        public Reverse() {
+            super();
+        }
+
+        @Override
+        @SuppressWarnings("unchecked")
+        protected Set<T> notNullExecute(final Set<T> input, final ExecCtx ctx) throws Exception {
+            
+            final Object[] revertArray = input.toArray(new Object[input.size()]); 
+            if (revertArray.length < 2) {
+                return new LinkedHashSet<T>(input);
+            }
+            int size = revertArray.length;
+            Object aux = null;
+            for (int i = 0, z = size / 2; i < z; i++) {
+                aux = revertArray[i];
+                revertArray[i] = revertArray[size - (i + 1)];
+                revertArray[size - (i + 1)] = aux;
+            }
+            final Set<T> result = new LinkedHashSet<T>();
+            for (final Object element : revertArray) {
+                result.add((T)element);
+            }
+            return result;
+        }
+        
+    }
     
 }

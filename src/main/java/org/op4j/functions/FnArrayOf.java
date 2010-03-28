@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.op4j.exceptions.ExecutionException;
@@ -286,6 +287,12 @@ public class FnArrayOf<T> {
         return new ContainsNone<T>(VarArgsUtil.asRequiredObjectList(objects));
     }
 
+
+    
+    
+    public final Function<T[],T[]> reverse() {
+        return new Reverse<T>();
+    }
     
     
     
@@ -1674,6 +1681,35 @@ public class FnArrayOf<T> {
         
     }
     
+
+    
+    
+    
+    static final class Reverse<T> extends AbstractNotNullNonConvertingFunc<T[]> {
+        
+        public Reverse() {
+            super();
+        }
+
+        @Override
+        @SuppressWarnings("unchecked")
+        protected T[] notNullExecute(final T[] input, final ExecCtx ctx) throws Exception {
+            
+            final T[] revertArray = (T[]) ArrayUtils.clone(input); 
+            if (revertArray.length < 2) {
+                return revertArray;
+            }
+            int size = revertArray.length;
+            T aux = null;
+            for (int i = 0, z = size / 2; i < z; i++) {
+                aux = revertArray[i];
+                revertArray[i] = revertArray[size - (i + 1)];
+                revertArray[size - (i + 1)] = aux;
+            }
+            return revertArray;
+        }
+        
+    }
     
     
 }
