@@ -14,15 +14,32 @@
       
 
       <subsection name="1. Overview">
-
         <p>
-            <b><a href="http://www.op4j.org/apidocs/org/op4j/functions/FnReduce.html">FnReduce</a></b> is a <em>function class</em>
-            containing several static methods returning functions that allow the execution of  
-            <a href="http://en.wikipedia.org/wiki/Fold_%28higher-order_function%29">Reduce (also known as Fold)</a> functions 
-            on different types of objects. Those functions are:                         
+            <a href="http://en.wikipedia.org/wiki/Fold_%28higher-order_function%29"><b>Reduce</b> (also known as Fold)</a> functions 
+            receive, as a parameter, a function that is applied to two elements on every execution: the 
+            function executes on two elements of the target list and returns another one that will be used
+            as the first target element for the next execution of the function. 
         </p>
-        <!-- TODO Character, Calendar, Date and Object -->
+        
+        <p>
+            <a href="http://www.op4j.org/apidocs/org/op4j/functions/FnReduce.html"><b>FnReduce</b></a> is a <em>function class</em>
+            containing several static methods returning functions that allow the execution of <em>Reduce</em> operations 
+            on different types of objects. Those functions returned by <em>FnReduce</em> are:                         
+        </p>
         <ul>
+            <li>
+                <a href="#FnReduceOn">FnReduceOn&lt;T&gt;</a>: returned with the type parameter T replaced based on 
+                the method called: 
+                <ul>
+                    <li>FnReduce.onCharacter()</li>
+                    <li>FnReduce.onCalendar()</li>
+                    <li>FnReduce.onDate()</li>
+                    <li>FnReduce.onObject()</li>
+                    <li>FnReduce.on(final Type&lt;T&gt; type)</li>
+                </ul>   
+                All of the methods above return a <em>FnReduceOn</em> function with the same methods available but with 
+                a different type parameter                              
+            </li>
             <li>
                 <a href="#FnReduceOnBigDecimal">FnReduceOnBigDecimal</a>: returned by calling 
                 <code>FnReduce.onBigDecimal()</code>                 
@@ -65,16 +82,15 @@
             </li>
         </ul>
         
+        <hr/>
+        
         <p>
-            FnReduce acts as a shortcut to all of the functions above.
-        </p>
-        <p>
-            Reduce functions receive, as a parameter, a function that is applied to two elements on every execution: the 
-            function executes on two elements of the target list and returns another one that will be used
-            as the first target element for the next execution of the function. <br />
-            These operations are executed by means of the reduce method as follows:
+            <b>FnReduce</b> acts as a shortcut to all of the functions above.
         </p>
         
+        <p>
+            These <em>Reduce</em> operations are <b>executed by means of the reduce method</b> as follows:
+        </p>        
         <code>
             Op.on(...)...reduce(FnReduce.onX().Y(...))...; 
         </code> 
@@ -85,10 +101,49 @@
         
       </subsection>
 
+      <subsection name="FnReduceOn">
+
+        <p>
+          The functions in <b>FnReduceOn</b> are applied on<em> objects</em> of any type. <em>FnReduceOn is a generic class</em> and, by calling
+          <code>FnReduce.onCharacter(), FnReduce.onCalendar(), FnReduce.onDate(), FnReduce.onObject() or
+          FnReduce.on(final Type&lt;T&gt; type)</code>, the type parameter can be replaced with the type you need at 
+          any time so that chaining functions becomes easier and less error-prone.                 
+        </p>
+        
+        <code>
+            Op.on(new Calendar[] {Calendar.getInstance(), Calendar.getInstance()}).toList() <br />                        
+                .reduce(FnReduce.onCalendar().min()).get();
+                
+            <br /><br />
+            
+            Op.on(aListOfComprables)) <br />                        
+                .reduce(FnReduce.on(Types.forClass(MyClassOfComparables.class)).min()).get());
+        </code>   
+        
+        <br/><br/>
+        
+        <div>
+        <!-- Table with functions -->
+        <table border="0">
+		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+		<tbody>
+		<tr><td><b>max</b></td><td>Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>maxBy</b></td><td>&lt;X extends Comparable&lt;? super X&gt;&gt; Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td>IFunction&lt;? super T,X&gt; function</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>min</b></td><td>Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>minBy</b></td><td>&lt;X extends Comparable&lt;? super X&gt;&gt; Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td>IFunction&lt;? super T,X&gt; function</td><td></td></tr>
+		</tbody></table>
+        </div>
+        
+      </subsection>
+        
+        
       <subsection name="FnReduceOnBigDecimal">
 
         <p>
-          These functions are to be applied on Numbers and all of them return a BigDecimal. Let's see some examples:                 
+          These functions are to be applied on <em>Numbers</em> and all of them return a <em>BigDecimal</em>. Let's see some examples:                 
         </p>
         
         <code>
@@ -104,8 +159,9 @@
                 .reduce(FnReduce.onBigDecimal().avg(MathContext.DECIMAL32), BigDecimal.valueOf(0)).get(); <br />
         </code>   
         
-        <h4>Functions</h4>
-
+        <br/>
+        
+        <div>
 	    <!-- Table with functions -->
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
@@ -126,18 +182,18 @@
 		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td></td><td></td></tr>
 		</tbody></table>
         <!--  -->
-        
+        </div>
       
       </subsection>
       
       <subsection name="FnReduceOnBigInteger">
 
         <p>
-          These functions are to be applied on Numbers and all of them return an Integer.                
+          These functions are to be applied on <em>Numbers</em> and all of them return an <em>Integer</em>.                
         </p>
                
-        <h4>Functions</h4>
-
+        
+        <div>
         <!-- Table with functions -->
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
@@ -158,17 +214,18 @@
 		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td></td><td></td></tr>
 		</tbody></table>
         <!--  -->
+        </div>
         
       </subsection>
       
       <subsection name="FnReduceOnBoolean">
 
         <p>
-          These functions are to be applied on Boolean elements and all of them return a Boolean.                 
+          These functions are to be applied on <em>Boolean</em> elements and all of them return a <em>Boolean</em>.                 
         </p>
 
-        <h4>Functions</h4>
-
+        
+        <div>
         <!-- Table with functions -->
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
@@ -176,17 +233,18 @@
 		<tr><td><b>or</b></td><td>Function&lt;ValuePair&lt;Boolean,Boolean&gt;,Boolean&gt;</td><td></td><td></td></tr>
 		</tbody></table>
         <!--  -->
+        </div>
         
       </subsection>
       
       <subsection name="FnReduceOnByte">
 
         <p>
-          These functions are to be applied on Numbers and all of them return a Byte.               
+          These functions are to be applied on <em>Numbers</em> and all of them return a <em>Byte</em>.               
         </p>        
         
-        <h4>Functions</h4>
-
+        
+        <div>
         <!-- Table with functions -->
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
@@ -207,13 +265,14 @@
 		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td></td><td></td></tr>
 		</tbody></table>
         <!--  -->
+        </div>
         
       </subsection>
       
       <subsection name="FnReduceOnDouble">
 
         <p>
-          These functions are to be applied on Numbers and all of them return a Double. Let's see some examples:                 
+          These functions are to be applied on <em>Numbers</em> and all of them return a <em>Double</em>. Let's see some examples:                 
         </p>
         
         <code>
@@ -229,8 +288,9 @@
                 .reduce(FnReduce.onDouble().avg(MathContext.DECIMAL32), Double.valueOf(4.2)).get(); <br />
         </code>  
         
-        <h4>Functions</h4>
-
+        <br/>
+        
+        <div>
         <!-- Table with functions -->
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
@@ -251,17 +311,18 @@
 		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td></td><td></td></tr>
 		</tbody></table>
         <!--  -->
+        </div>
         
       </subsection>
       
       <subsection name="FnReduceOnFloat">
 
         <p>
-          These functions are to be applied on Numbers and all of them return a Float.                 
+          These functions are to be applied on <em>Numbers</em> and all of them return a <em>Float</em>.                 
         </p>
         
-        <h4>Functions</h4>
-
+        
+        <div>
         <!-- Table with functions -->
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
@@ -282,17 +343,18 @@
 		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td></td><td></td></tr>
 		</tbody></table>
         <!--  -->
+        </div>
         
       </subsection>
       
       <subsection name="FnReduceOnInteger">
 
         <p>
-          These functions are to be applied on Numbers and all of them return an Integer.              
+          These functions are to be applied on <em>Numbers</em> and all of them return an <em>Integer</em>.              
         </p>
         
-        <h4>Functions</h4>
-
+        
+        <div>
         <!-- Table with functions -->
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
@@ -313,17 +375,18 @@
 		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td></td><td></td></tr>
 		</tbody></table>
         <!--  -->
+        </div>
         
       </subsection>
       
       <subsection name="FnReduceOnLong">
 
         <p>
-          These functions are to be applied on Numbers and all of them return a Long.                
+          These functions are to be applied on <em>Numbers</em> and all of them return a <em>Long</em>.                
         </p>
         
-        <h4>Functions</h4>
-
+        
+        <div>
         <!-- Table with functions -->
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
@@ -344,17 +407,18 @@
 		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td></td><td></td></tr>
 		</tbody></table>
         <!--  -->
+        </div>
         
       </subsection>
       
       <subsection name="FnReduceOnShort">
 
         <p>
-          These functions are to be applied on Numbers and all of them return a Short.                 
+          These functions are to be applied on <em>Numbers</em> and all of them return a <em>Short</em>.                 
         </p>
         
-        <h4>Functions</h4>
-
+        
+        <div>
         <!-- Table with functions -->
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
@@ -375,17 +439,18 @@
 		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td></td><td></td></tr>
 		</tbody></table>
         <!--  -->
+        </div>
         
       </subsection>
       
       <subsection name="FnReduceOnString">
 
         <p>
-          These functions are to be applied on Strings and all of them return a String as well.           
+          These functions are to be applied on <em>Strings</em> and all of them return a <em>String</em> as well.           
         </p>
         
-        <h4>Functions</h4>
-
+        
+        <div>
         <!-- Table with functions -->
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
@@ -393,6 +458,7 @@
 		<tr><td><b>join</b></td><td>Function&lt;ValuePair&lt;String,String&gt;,String&gt;</td><td>String separator</td><td></td></tr>
 		</tbody></table>
         <!--  -->
+        </div>
         
       </subsection>
     </section>
