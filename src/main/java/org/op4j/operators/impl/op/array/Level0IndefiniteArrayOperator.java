@@ -139,6 +139,12 @@ public final class Level0IndefiniteArrayOperator<I,T>
         return new Level0MapOperator<I,T,V>(getTarget().execute(FnArray.ofObject().zipValuesFrom(values)));
     }
     
+
+
+    public Level0IndefiniteArrayOperator<I, T> reverse() {
+        return new Level0IndefiniteArrayOperator<I, T>(getTarget().execute(FnArray.ofObject().reverse()));
+    }
+
     
     
     

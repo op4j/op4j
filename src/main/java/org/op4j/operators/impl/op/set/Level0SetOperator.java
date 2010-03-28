@@ -417,5 +417,10 @@ public final class Level0SetOperator<I,T> extends AbstractOperator
     }
     
     
+
+    public Level0SetOperator<I, T> reverse() {
+        return new Level0SetOperator<I, T>(getTarget().execute(FnSet.ofObject().reverse()));
+    }
+    
     
 }

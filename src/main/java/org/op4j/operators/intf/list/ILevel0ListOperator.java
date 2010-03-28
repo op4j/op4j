@@ -43,6 +43,7 @@ import org.op4j.operators.qualities.NavigableCollectionOperator;
 import org.op4j.operators.qualities.ReducibleOperator;
 import org.op4j.operators.qualities.ReplaceableIfNullOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
+import org.op4j.operators.qualities.ReversibleOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.TotalizableOperator;
@@ -72,7 +73,8 @@ public interface ILevel0ListOperator<I,T>
                 ConvertibleToMapOperator<T>,
                 ConvertibleToMapOfListOperator<T>,
                 ReducibleOperator<I,T>,
-                TotalizableOperator<I,T> {
+                TotalizableOperator<I,T>,
+                ReversibleOperator<T> {
 
 
 
@@ -171,5 +173,8 @@ public interface ILevel0ListOperator<I,T>
     
     public ILevel0GenericUniqOperator<I,Boolean> any(final IFunction<? super T,Boolean> eval);
     public ILevel0GenericUniqOperator<I,Boolean> all(final IFunction<? super T,Boolean> eval);
+    
+    
+    public ILevel0ListOperator<I,T> reverse();
     
 }

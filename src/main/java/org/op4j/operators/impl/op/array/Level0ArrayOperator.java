@@ -408,6 +408,11 @@ public final class Level0ArrayOperator<I,T>
         return new Level0MapOperator<I,T,V>(getTarget().execute(FnArray.of(this.type).zipValuesFrom(values)));
     }
 
+
+    public Level0ArrayOperator<I, T> reverse() {
+        return new Level0ArrayOperator<I, T>(this.type, getTarget().execute(FnArray.of(this.type).reverse()));
+    }
+
     
 
 

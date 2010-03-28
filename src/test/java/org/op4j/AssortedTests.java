@@ -28,11 +28,8 @@ import org.op4j.functions.Fn;
 import org.op4j.functions.FnArray;
 import org.op4j.functions.FnBigDecimal;
 import org.op4j.functions.FnInteger;
-import org.op4j.functions.FnList;
 import org.op4j.functions.FnLong;
-import org.op4j.functions.FnMap;
 import org.op4j.functions.FnNumber;
-import org.op4j.functions.FnSet;
 import org.op4j.functions.FnString;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
@@ -847,11 +844,11 @@ public class AssortedTests extends TestCase {
         String[] arr4Res = new String[] { "one" };
         String[] arr5Res = new String[] {  };
 
-        arr1 = Op.on(arr1).exec(FnArray.ofString().reverse()).get();
-        arr2 = Op.on(arr2).exec(FnArray.ofString().reverse()).get();
-        arr3 = Op.on(arr3).exec(FnArray.ofString().reverse()).get();
-        arr4 = Op.on(arr4).exec(FnArray.ofString().reverse()).get();
-        arr5 = Op.on(arr5).exec(FnArray.ofString().reverse()).get();
+        arr1 = Op.on(arr1).reverse().get();
+        arr2 = Op.on(arr2).reverse().get();
+        arr3 = Op.on(arr3).reverse().get();
+        arr4 = Op.on(arr4).reverse().get();
+        arr5 = Op.on(arr5).reverse().get();
         
         assertEquals(Arrays.asList(arr1Res), Arrays.asList(arr1));
         assertEquals(Arrays.asList(arr2Res), Arrays.asList(arr2));
@@ -878,11 +875,11 @@ public class AssortedTests extends TestCase {
         List<String> list4Res = Arrays.asList(new String[] { "one" });
         List<String> list5Res = Arrays.asList(new String[] {  });
 
-        list1 = Op.on(list1).exec(FnList.ofString().reverse()).get();
-        list2 = Op.on(list2).exec(FnList.ofString().reverse()).get();
-        list3 = Op.on(list3).exec(FnList.ofString().reverse()).get();
-        list4 = Op.on(list4).exec(FnList.ofString().reverse()).get();
-        list5 = Op.on(list5).exec(FnList.ofString().reverse()).get();
+        list1 = Op.on(list1).reverse().get();
+        list2 = Op.on(list2).reverse().get();
+        list3 = Op.on(list3).reverse().get();
+        list4 = Op.on(list4).reverse().get();
+        list5 = Op.on(list5).reverse().get();
         
         assertEquals(list1Res, list1);
         assertEquals(list2Res, list2);
@@ -909,11 +906,11 @@ public class AssortedTests extends TestCase {
         Set<String> set4Res = new LinkedHashSet<String>(Arrays.asList(new String[] { "one" }));
         Set<String> set5Res = new LinkedHashSet<String>(Arrays.asList(new String[] {  }));
 
-        set1 = Op.on(set1).exec(FnSet.ofString().reverse()).get();
-        set2 = Op.on(set2).exec(FnSet.ofString().reverse()).get();
-        set3 = Op.on(set3).exec(FnSet.ofString().reverse()).get();
-        set4 = Op.on(set4).exec(FnSet.ofString().reverse()).get();
-        set5 = Op.on(set5).exec(FnSet.ofString().reverse()).get();
+        set1 = Op.on(set1).reverse().get();
+        set2 = Op.on(set2).reverse().get();
+        set3 = Op.on(set3).reverse().get();
+        set4 = Op.on(set4).reverse().get();
+        set5 = Op.on(set5).reverse().get();
         
         assertEquals(set1Res, set1);
         assertEquals(set2Res, set2);
@@ -956,11 +953,11 @@ public class AssortedTests extends TestCase {
         map4Res.put(1, "one");
 
 
-        map0 = Op.on(map0).exec(FnMap.ofIntegerString().reverse()).get();
-        map1 = Op.on(map1).exec(FnMap.ofIntegerString().reverse()).get();
-        map2 = Op.on(map2).exec(FnMap.ofIntegerString().reverse()).get();
-        map3 = Op.on(map3).exec(FnMap.ofIntegerString().reverse()).get();
-        map4 = Op.on(map4).exec(FnMap.ofIntegerString().reverse()).get();
+        map0 = Op.on(map0).reverse().get();
+        map1 = Op.on(map1).reverse().get();
+        map2 = Op.on(map2).reverse().get();
+        map3 = Op.on(map3).reverse().get();
+        map4 = Op.on(map4).reverse().get();
         
         assertEquals(map0Res, map0);
         assertEquals(map1Res, map1);

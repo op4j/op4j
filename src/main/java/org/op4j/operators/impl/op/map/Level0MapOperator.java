@@ -266,6 +266,12 @@ public final class Level0MapOperator<I,K,V> extends AbstractOperator
         return new Level0MapOperator<I, K, V>(getTarget().execute(FnMap.of((Type<K>)Types.OBJECT,(Type<V>)Types.OBJECT).sortBy(by)));
     }
     
+
+
+
+    public Level0MapOperator<I, K, V> reverse() {
+        return new Level0MapOperator<I, K, V>(getTarget().execute(FnMap.ofObjectObject().reverse()));
+    }
     
     
 }

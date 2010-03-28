@@ -33,6 +33,7 @@ import org.op4j.operators.qualities.ConvertibleToMapOperator;
 import org.op4j.operators.qualities.ConvertibleToSetOperator;
 import org.op4j.operators.qualities.ExecutableIndefiniteArrayOperator;
 import org.op4j.operators.qualities.GenerizableOperator;
+import org.op4j.operators.qualities.ReversibleOperator;
 import org.op4j.operators.qualities.UniqOperator;
 /**
  * 
@@ -48,7 +49,8 @@ public interface ILevel0IndefiniteArrayOperator<I,T>
 		        ConvertibleToListOperator,
 		        ConvertibleToSetOperator,
 		        ConvertibleToMapOperator<T>,
-		        ExecutableIndefiniteArrayOperator<I,T> {
+		        ExecutableIndefiniteArrayOperator<I,T>,
+		        ReversibleOperator<T> {
 
 
     public ILevel0ListOperator<I,T> toList();
@@ -71,5 +73,7 @@ public interface ILevel0IndefiniteArrayOperator<I,T>
     public <X> ILevel0ArrayOperator<I,X> of(final Type<X> type);
     public <X> ILevel0GenericUniqOperator<I,X> exec(final IFunction<? super T[],X> function);
 
+
+    public ILevel0IndefiniteArrayOperator<I,T> reverse();
     
 }

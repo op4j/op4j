@@ -36,6 +36,7 @@ import org.op4j.operators.qualities.ModifiableMapOperator;
 import org.op4j.operators.qualities.NavigableMapOperator;
 import org.op4j.operators.qualities.ReplaceableIfNullOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
+import org.op4j.operators.qualities.ReversibleOperator;
 import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.TotalizableOperator;
@@ -60,7 +61,8 @@ public interface ILevel0BuildingMapOperator<I,K,V>
                 ReplaceableIfNullOperator<Map<K,V>>,
                 GenerizableOperator<I,Map<K,V>>,
                 TotalizableOperator<I,Map.Entry<K,V>>,
-                BuildingMapOperator<I,K,V> {
+                BuildingMapOperator<I,K,V>,
+                ReversibleOperator<Map.Entry<K,V>>{
 
     
     public ILevel0BuildingMapOperator<I,K,V> and(final K key, final V value);
@@ -120,5 +122,8 @@ public interface ILevel0BuildingMapOperator<I,K,V>
     
     public ILevel0GenericUniqOperator<I,Boolean> any(final IFunction<? super Map.Entry<K,V>,Boolean> eval);
     public ILevel0GenericUniqOperator<I,Boolean> all(final IFunction<? super Map.Entry<K,V>,Boolean> eval);
+    
+
+    public ILevel0MapOperator<I,K,V> reverse();
     
 }

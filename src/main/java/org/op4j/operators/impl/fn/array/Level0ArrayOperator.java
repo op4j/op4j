@@ -413,4 +413,10 @@ public final class Level0ArrayOperator<I,T>
     }
     
 
+
+    public Level0ArrayOperator<I, T> reverse() {
+        return new Level0ArrayOperator<I, T>(this.type, getTarget().execute(FnArray.of(this.type).reverse()));
+    }
+
+    
 }

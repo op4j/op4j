@@ -415,5 +415,10 @@ public final class Level0ListOperator<I,T> extends AbstractOperator
         return new Level0MapOperator<I,T,V>(getTarget().execute(FnList.ofObject().zipValuesFrom(values)));
     }
     
+
+
+    public Level0ListOperator<I, T> reverse() {
+        return new Level0ListOperator<I, T>(getTarget().execute(FnList.ofObject().reverse()));
+    }
     
 }
