@@ -30,79 +30,79 @@
 
 
 <table border="0">
-<thead><tr><th>Function name</th><th>Return type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 <tbody>
+<tr><td><b>add</b></td><td>Function&lt;Date,Date&gt;</td><td>int calendarField<br />int amount</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>addDays</b></td><td>Function&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>addHours</b></td><td>Function&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>addMilliseconds</b></td><td>Function&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>addMinutes</b></td><td>Function&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>addMonths</b></td><td>Function&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>addWeeks</b></td><td>Function&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>addYears</b></td><td>Function&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>after</b></td><td>Function&lt;Date,Boolean&gt;</td><td>Date date</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>before</b></td><td>Function&lt;Date,Boolean&gt;</td><td>Date date</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>eq</b></td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>fieldIntegerArrayToDate</b></td><td>Function&lt;Integer[], Date&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>fieldIntegerListToDate</b></td><td>Function&lt;List&lt;Integer&gt;, Date&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>fieldStringArrayToDate</b></td><td>Function&lt;String[], Date&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>fieldStringListToDate</b></td><td>Function&lt;List&lt;String&gt;, Date&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>isNotNull</b></td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>isNull</b></td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>notEq</b></td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>round</b></td><td>Function&lt;Date,Date&gt;</td><td>int calendarField</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>set</b></td><td>Function&lt;Date,Date&gt;</td><td>int calendarField<br />int value</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>setDay</b></td><td>Function&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>setHour</b></td><td>Function&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>setMillisecond</b></td><td>Function&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>setMinute</b></td><td>Function&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>setMonth</b></td><td>Function&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>setWeek</b></td><td>Function&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>setYear</b></td><td>Function&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>timeInMillisToDate</b></td><td>Function&lt;Long,Date&gt;</td><td></td><td></td></tr>
+<tr><td><b>timeInMillisToDate</b></td><td>Function&lt;Long,Date&gt;</td><td>int truncateField</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>timestampToDate</b></td><td>Function&lt;Timestamp,Date&gt;</td><td></td><td></td></tr>
+<tr><td><b>timestampToDate</b></td><td>Function&lt;Timestamp,Date&gt;</td><td>int truncateField</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
 <tr><td><b>toCalendar</b></td><td>Function&lt;Date,Calendar&gt;</td><td></td><td></td></tr>
 <tr><td><b>toCalendar</b></td><td>Function&lt;Date,Calendar&gt;</td><td>int truncateField</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>add</b></td><td>Function&lt;Date,Date&gt;</td><td>int calendarField<br />int amount</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>addDays</b></td><td>Function&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>addHours</b></td><td>Function&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>addMilliseconds</b></td><td>Function&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>addMinutes</b></td><td>Function&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>addMonths</b></td><td>Function&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>addWeeks</b></td><td>Function&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>addYears</b></td><td>Function&lt;Date,Date&gt;</td><td>int amount</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>set</b></td><td>Function&lt;Date,Date&gt;</td><td>int calendarField<br />int value</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>setDay</b></td><td>Function&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>setHour</b></td><td>Function&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>setMillisecond</b></td><td>Function&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>setMinute</b></td><td>Function&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>setMonth</b></td><td>Function&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>setWeek</b></td><td>Function&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>setYear</b></td><td>Function&lt;Date,Date&gt;</td><td>int value</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>round</b></td><td>Function&lt;Date,Date&gt;</td><td>int calendarField</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>truncate</b></td><td>Function&lt;Date,Date&gt;</td><td>int calendarField</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>before</b></td><td>Function&lt;Date,Boolean&gt;</td><td>Date date</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>after</b></td><td>Function&lt;Date,Boolean&gt;</td><td>Date date</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
 <tr><td><b>toStr</b></td><td>Function&lt;Date,String&gt;</td><td>String pattern</td><td></td></tr>
 <tr><td><b>toStr</b></td><td>Function&lt;Date,String&gt;</td><td>String pattern<br />Locale locale</td><td></td></tr>
 <tr><td><b>toStr</b></td><td>Function&lt;Date,String&gt;</td><td>String pattern<br />String locale</td><td></td></tr>
 <tr><td><b>toStr</b></td><td>Function&lt;Date,String&gt;</td><td>DateStyle dateStyle<br />TimeStyle timeStyle</td><td></td></tr>
 <tr><td><b>toStr</b></td><td>Function&lt;Date,String&gt;</td><td>DateStyle dateStyle<br />TimeStyle timeStyle<br />Locale locale</td><td></td></tr>
 <tr><td><b>toStr</b></td><td>Function&lt;Date,String&gt;</td><td>DateStyle dateStyle<br />TimeStyle timeStyle<br />String locale</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>timestampToDate</b></td><td>Function&lt;Timestamp,Date&gt;</td><td></td><td></td></tr>
-<tr><td><b>timestampToDate</b></td><td>Function&lt;Timestamp,Date&gt;</td><td>int truncateField</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>timeInMillisToDate</b></td><td>Function&lt;Long,Date&gt;</td><td></td><td></td></tr>
-<tr><td><b>timeInMillisToDate</b></td><td>Function&lt;Long,Date&gt;</td><td>int truncateField</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>fieldIntegerListToDate</b></td><td>Function&lt;List&lt;Integer&gt;, Date&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>fieldIntegerArrayToDate</b></td><td>Function&lt;Integer[], Date&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>fieldStringListToDate</b></td><td>Function&lt;List&lt;String&gt;, Date&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>fieldStringArrayToDate</b></td><td>Function&lt;String[], Date&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>eq</b></td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>notEq</b></td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>isNull</b></td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>isNotNull</b></td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>truncate</b></td><td>Function&lt;Date,Date&gt;</td><td>int calendarField</td><td></td></tr>
 </tbody></table>
 
       </subsection>

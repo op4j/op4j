@@ -27,9 +27,44 @@
       
 
 
+
 <table border="0">
-<thead><tr><th>Function name</th><th>Return type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 <tbody>
+<tr><td><b>capitalize</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>eq</b></td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>escapeCSV</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>escapeHTML</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>escapeJavaScript</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>escapeXML</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>fromBase64</b></td><td>Function&lt;String,String&gt;</td><td>Charset charset</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>fromHexadecimal</b></td><td>Function&lt;String,String&gt;</td><td>Charset charset</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>greaterOrEqTo</b></td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>greaterThan</b></td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>isNotNull</b></td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>isNull</b></td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>lessOrEqTo</b></td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>lessThan</b></td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>notEq</b></td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>strip</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>toBase64</b></td><td>Function&lt;String,String&gt;</td><td>Charset charset</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
 <tr><td><b>toBigDecimal</b></td><td>Function&lt;String,BigDecimal&gt;</td><td></td><td></td></tr>
 <tr><td><b>toBigDecimal</b></td><td>Function&lt;String,BigDecimal&gt;</td><td>Locale locale</td><td></td></tr>
 <tr><td><b>toBigDecimal</b></td><td>Function&lt;String,BigDecimal&gt;</td><td>String locale</td><td></td></tr>
@@ -38,7 +73,7 @@
 <tr><td><b>toBigDecimal</b></td><td>Function&lt;String,BigDecimal&gt;</td><td>int scale<br />RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
 <tr><td><b>toBigDecimal</b></td><td>Function&lt;String,BigDecimal&gt;</td><td>int scale<br />RoundingMode roundingMode<br />String locale</td><td></td></tr>
 <tr><td><b>toBigDecimal</b></td><td>Function&lt;String,BigDecimal&gt;</td><td>int scale<br />RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
 <tr><td><b>toBigInteger</b></td><td>Function&lt;String,BigInteger&gt;</td><td></td><td></td></tr>
 <tr><td><b>toBigInteger</b></td><td>Function&lt;String,BigInteger&gt;</td><td>Locale locale</td><td></td></tr>
 <tr><td><b>toBigInteger</b></td><td>Function&lt;String,BigInteger&gt;</td><td>String locale</td><td></td></tr>
@@ -48,55 +83,9 @@
 <tr><td><b>toBigInteger</b></td><td>Function&lt;String,BigInteger&gt;</td><td>RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
 <tr><td><b>toBigInteger</b></td><td>Function&lt;String,BigInteger&gt;</td><td>RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
 <tr><td><b>toBigInteger</b></td><td>Function&lt;String,BigInteger&gt;</td><td>RoundingMode roundingMode<br />String locale</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>toDouble</b></td><td>Function&lt;String,Double&gt;</td><td></td><td></td></tr>
-<tr><td><b>toDouble</b></td><td>Function&lt;String,Double&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td><b>toDouble</b></td><td>Function&lt;String,Double&gt;</td><td>String locale</td><td></td></tr>
-<tr><td><b>toDouble</b></td><td>Function&lt;String,Double&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td><b>toDouble</b></td><td>Function&lt;String,Double&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
-<tr><td><b>toDouble</b></td><td>Function&lt;String,Double&gt;</td><td>int scale<br />RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
-<tr><td><b>toDouble</b></td><td>Function&lt;String,Double&gt;</td><td>int scale<br />RoundingMode roundingMode<br />String locale</td><td></td></tr>
-<tr><td><b>toDouble</b></td><td>Function&lt;String,Double&gt;</td><td>int scale<br />RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>toFloat</b></td><td>Function&lt;String,Float&gt;</td><td></td><td></td></tr>
-<tr><td><b>toFloat</b></td><td>Function&lt;String,Float&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td><b>toFloat</b></td><td>Function&lt;String,Float&gt;</td><td>String locale</td><td></td></tr>
-<tr><td><b>toFloat</b></td><td>Function&lt;String,Float&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td><b>toFloat</b></td><td>Function&lt;String,Float&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
-<tr><td><b>toFloat</b></td><td>Function&lt;String,Float&gt;</td><td>int scale<br />RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
-<tr><td><b>toFloat</b></td><td>Function&lt;String,Float&gt;</td><td>int scale<br />RoundingMode roundingMode<br />String locale</td><td></td></tr>
-<tr><td><b>toFloat</b></td><td>Function&lt;String,Float&gt;</td><td>int scale<br />RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>toLong</b></td><td>Function&lt;String,Long&gt;</td><td></td><td></td></tr>
-<tr><td><b>toLong</b></td><td>Function&lt;String,Long&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td><b>toLong</b></td><td>Function&lt;String,Long&gt;</td><td>String locale</td><td></td></tr>
-<tr><td><b>toLong</b></td><td>Function&lt;String,Long&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td><b>toLong</b></td><td>Function&lt;String,Long&gt;</td><td>int radix</td><td></td></tr>
-<tr><td><b>toLong</b></td><td>Function&lt;String,Long&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-<tr><td><b>toLong</b></td><td>Function&lt;String,Long&gt;</td><td>RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td><b>toLong</b></td><td>Function&lt;String,Long&gt;</td><td>RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
-<tr><td><b>toLong</b></td><td>Function&lt;String,Long&gt;</td><td>RoundingMode roundingMode<br />String locale</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>toInteger</b></td><td>Function&lt;String,Integer&gt;</td><td></td><td></td></tr>
-<tr><td><b>toInteger</b></td><td>Function&lt;String,Integer&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td><b>toInteger</b></td><td>Function&lt;String,Integer&gt;</td><td>String locale</td><td></td></tr>
-<tr><td><b>toInteger</b></td><td>Function&lt;String,Integer&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td><b>toInteger</b></td><td>Function&lt;String,Integer&gt;</td><td>int radix</td><td></td></tr>
-<tr><td><b>toInteger</b></td><td>Function&lt;String,Integer&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-<tr><td><b>toInteger</b></td><td>Function&lt;String,Integer&gt;</td><td>RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td><b>toInteger</b></td><td>Function&lt;String,Integer&gt;</td><td>RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
-<tr><td><b>toInteger</b></td><td>Function&lt;String,Integer&gt;</td><td>RoundingMode roundingMode<br />String locale</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>toShort</b></td><td>Function&lt;String,Short&gt;</td><td></td><td></td></tr>
-<tr><td><b>toShort</b></td><td>Function&lt;String,Short&gt;</td><td>Locale locale</td><td></td></tr>
-<tr><td><b>toShort</b></td><td>Function&lt;String,Short&gt;</td><td>String locale</td><td></td></tr>
-<tr><td><b>toShort</b></td><td>Function&lt;String,Short&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td><b>toShort</b></td><td>Function&lt;String,Short&gt;</td><td>int radix</td><td></td></tr>
-<tr><td><b>toShort</b></td><td>Function&lt;String,Short&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-<tr><td><b>toShort</b></td><td>Function&lt;String,Short&gt;</td><td>RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
-<tr><td><b>toShort</b></td><td>Function&lt;String,Short&gt;</td><td>RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
-<tr><td><b>toShort</b></td><td>Function&lt;String,Short&gt;</td><td>RoundingMode roundingMode<br />String locale</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>toBoolean</b></td><td>Function&lt;String,Boolean&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
 <tr><td><b>toByte</b></td><td>Function&lt;String,Byte&gt;</td><td></td><td></td></tr>
 <tr><td><b>toByte</b></td><td>Function&lt;String,Byte&gt;</td><td>Locale locale</td><td></td></tr>
 <tr><td><b>toByte</b></td><td>Function&lt;String,Byte&gt;</td><td>String locale</td><td></td></tr>
@@ -106,68 +95,80 @@
 <tr><td><b>toByte</b></td><td>Function&lt;String,Byte&gt;</td><td>RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
 <tr><td><b>toByte</b></td><td>Function&lt;String,Byte&gt;</td><td>RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
 <tr><td><b>toByte</b></td><td>Function&lt;String,Byte&gt;</td><td>RoundingMode roundingMode<br />String locale</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>toBoolean</b></td><td>Function&lt;String,Boolean&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>escapeCSV</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>unescapeCSV</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>escapeXML</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>unescapeXML</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>escapeHTML</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>unescapeHTML</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>escapeJavaScript</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>unescapeJavaScript</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>toBase64</b></td><td>Function&lt;String,String&gt;</td><td>Charset charset</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>fromBase64</b></td><td>Function&lt;String,String&gt;</td><td>Charset charset</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>toHexadecimal</b></td><td>Function&lt;String,String&gt;</td><td>Charset charset</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>fromHexadecimal</b></td><td>Function&lt;String,String&gt;</td><td>Charset charset</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>toUpperCase</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>toLowerCase</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>unCapitalize</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>capitalize</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>trim</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>strip</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
 <tr><td><b>toCalendar</b></td><td>Function&lt;String,Calendar&gt;</td><td>String pattern</td><td></td></tr>
 <tr><td><b>toCalendar</b></td><td>Function&lt;String,Calendar&gt;</td><td>String pattern<br />Locale locale</td><td></td></tr>
 <tr><td><b>toCalendar</b></td><td>Function&lt;String,Calendar&gt;</td><td>String pattern<br />String locale</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
 <tr><td><b>toDate</b></td><td>Function&lt;String,Date&gt;</td><td>String pattern</td><td></td></tr>
 <tr><td><b>toDate</b></td><td>Function&lt;String,Date&gt;</td><td>String pattern<br />Locale locale</td><td></td></tr>
 <tr><td><b>toDate</b></td><td>Function&lt;String,Date&gt;</td><td>String pattern<br />String locale</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>eq</b></td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>notEq</b></td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>isNull</b></td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>isNotNull</b></td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>lessThan</b></td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>lessOrEqTo</b></td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>greaterThan</b></td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
-<tr bgcolor="#6E6E6E"><td bgcolor="#6E6E6E" colspan="4"></td></tr>
-<tr><td><b>greaterOrEqTo</b></td><td>Function&lt;Object,Boolean&gt;</td><td>String object</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>toDouble</b></td><td>Function&lt;String,Double&gt;</td><td></td><td></td></tr>
+<tr><td><b>toDouble</b></td><td>Function&lt;String,Double&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td><b>toDouble</b></td><td>Function&lt;String,Double&gt;</td><td>String locale</td><td></td></tr>
+<tr><td><b>toDouble</b></td><td>Function&lt;String,Double&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td><b>toDouble</b></td><td>Function&lt;String,Double&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td><b>toDouble</b></td><td>Function&lt;String,Double&gt;</td><td>int scale<br />RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
+<tr><td><b>toDouble</b></td><td>Function&lt;String,Double&gt;</td><td>int scale<br />RoundingMode roundingMode<br />String locale</td><td></td></tr>
+<tr><td><b>toDouble</b></td><td>Function&lt;String,Double&gt;</td><td>int scale<br />RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>toFloat</b></td><td>Function&lt;String,Float&gt;</td><td></td><td></td></tr>
+<tr><td><b>toFloat</b></td><td>Function&lt;String,Float&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td><b>toFloat</b></td><td>Function&lt;String,Float&gt;</td><td>String locale</td><td></td></tr>
+<tr><td><b>toFloat</b></td><td>Function&lt;String,Float&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td><b>toFloat</b></td><td>Function&lt;String,Float&gt;</td><td>int scale<br />RoundingMode roundingMode</td><td></td></tr>
+<tr><td><b>toFloat</b></td><td>Function&lt;String,Float&gt;</td><td>int scale<br />RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
+<tr><td><b>toFloat</b></td><td>Function&lt;String,Float&gt;</td><td>int scale<br />RoundingMode roundingMode<br />String locale</td><td></td></tr>
+<tr><td><b>toFloat</b></td><td>Function&lt;String,Float&gt;</td><td>int scale<br />RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>toHexadecimal</b></td><td>Function&lt;String,String&gt;</td><td>Charset charset</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>toInteger</b></td><td>Function&lt;String,Integer&gt;</td><td></td><td></td></tr>
+<tr><td><b>toInteger</b></td><td>Function&lt;String,Integer&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td><b>toInteger</b></td><td>Function&lt;String,Integer&gt;</td><td>String locale</td><td></td></tr>
+<tr><td><b>toInteger</b></td><td>Function&lt;String,Integer&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td><b>toInteger</b></td><td>Function&lt;String,Integer&gt;</td><td>int radix</td><td></td></tr>
+<tr><td><b>toInteger</b></td><td>Function&lt;String,Integer&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td><b>toInteger</b></td><td>Function&lt;String,Integer&gt;</td><td>RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td><b>toInteger</b></td><td>Function&lt;String,Integer&gt;</td><td>RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
+<tr><td><b>toInteger</b></td><td>Function&lt;String,Integer&gt;</td><td>RoundingMode roundingMode<br />String locale</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>toLong</b></td><td>Function&lt;String,Long&gt;</td><td></td><td></td></tr>
+<tr><td><b>toLong</b></td><td>Function&lt;String,Long&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td><b>toLong</b></td><td>Function&lt;String,Long&gt;</td><td>String locale</td><td></td></tr>
+<tr><td><b>toLong</b></td><td>Function&lt;String,Long&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td><b>toLong</b></td><td>Function&lt;String,Long&gt;</td><td>int radix</td><td></td></tr>
+<tr><td><b>toLong</b></td><td>Function&lt;String,Long&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td><b>toLong</b></td><td>Function&lt;String,Long&gt;</td><td>RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td><b>toLong</b></td><td>Function&lt;String,Long&gt;</td><td>RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
+<tr><td><b>toLong</b></td><td>Function&lt;String,Long&gt;</td><td>RoundingMode roundingMode<br />String locale</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>toLowerCase</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>toShort</b></td><td>Function&lt;String,Short&gt;</td><td></td><td></td></tr>
+<tr><td><b>toShort</b></td><td>Function&lt;String,Short&gt;</td><td>Locale locale</td><td></td></tr>
+<tr><td><b>toShort</b></td><td>Function&lt;String,Short&gt;</td><td>String locale</td><td></td></tr>
+<tr><td><b>toShort</b></td><td>Function&lt;String,Short&gt;</td><td>DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td><b>toShort</b></td><td>Function&lt;String,Short&gt;</td><td>int radix</td><td></td></tr>
+<tr><td><b>toShort</b></td><td>Function&lt;String,Short&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+<tr><td><b>toShort</b></td><td>Function&lt;String,Short&gt;</td><td>RoundingMode roundingMode<br />DecimalPoint decimalPoint</td><td></td></tr>
+<tr><td><b>toShort</b></td><td>Function&lt;String,Short&gt;</td><td>RoundingMode roundingMode<br />Locale locale</td><td></td></tr>
+<tr><td><b>toShort</b></td><td>Function&lt;String,Short&gt;</td><td>RoundingMode roundingMode<br />String locale</td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>toUpperCase</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>trim</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>unCapitalize</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>unescapeCSV</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>unescapeHTML</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>unescapeJavaScript</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr><td><b>unescapeXML</b></td><td>Function&lt;String,String&gt;</td><td></td><td></td></tr>
 </tbody></table>
 
       </subsection>
