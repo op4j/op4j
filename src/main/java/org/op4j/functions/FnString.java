@@ -27,6 +27,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.BooleanUtils;
@@ -534,6 +536,15 @@ public final class FnString {
     
     
     
+    public static final Function<String,Boolean> matches(final String regex) {
+        return new Matches(regex);
+    }
+
+    
+    
+    
+    
+    
     
     
 	
@@ -958,6 +969,31 @@ public final class FnString {
         
     }
     
+    
+    
+
+    
+    
+    
+    static final class Matches extends AbstractNotNullFunction<String,Boolean>  {
+
+        private final Pattern pattern;
+
+        
+        Matches(final String regex) {
+            super();
+            Validate.notEmpty(regex, "Regular expression cannot be null or empty");
+            this.pattern = Pattern.compile(regex);
+        }
+
+
+        @Override
+        protected Boolean notNullExecute(final String input, final ExecCtx ctx) throws Exception {
+            final Matcher matcher = this.pattern.matcher(input);
+            return Boolean.valueOf(matcher.matches());
+        }
+        
+    }
     
     
     

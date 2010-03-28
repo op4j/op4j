@@ -775,5 +775,16 @@ public class AssortedTests extends TestCase {
     }
     
     
+    @Test
+    public void test38() throws Exception {
+
+        final String str = "Earth";
+        Boolean matches = Op.on(str).exec(FnString.matches("a")).get();
+        assertEquals(Boolean.FALSE, matches);
+        matches = Op.on(str).exec(FnString.matches(".a.*h")).get();
+        assertEquals(Boolean.TRUE, matches);
+        
+    }
+    
 }
 

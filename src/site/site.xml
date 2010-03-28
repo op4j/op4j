@@ -25,6 +25,7 @@
       <item name="Main" href="index.html" />
       <item name="Download" href="download.html" />
       <item name="User Forum" href="https://sourceforge.net/apps/phpbb/op4j/" />
+      <item name="Issue Tracking" href="https://sourceforge.net/apps/mantisbt/op4j/" />
       <item name="Javadoc" href="apidocs/index.html" />
       <item name="Sourceforge.net Project Page" href="http://www.sourceforge.net/projects/op4j" />
     </links>
@@ -35,6 +36,7 @@
       <item name="· Maven Info" href="maveninfo.html"/>
       <item name="· Dependencies" href="dependencies.html"/>
       <item name="· User Forum" href="http://sourceforge.net/apps/phpbb/op4j/"/>
+      <item name="· Issue Tracking" href="http://sourceforge.net/apps/mantisbt/op4j/"/>
       <item name="· Documentation">
         <item name="· The Basics" href="basics.html"/>
         <item name="· Working with...">
