@@ -80,21 +80,25 @@
         <p>
             These <em>Reduce</em> operations are <b>executed by means of the reduce method</b> as follows:
         </p>        
-        <code>
-            Op.on(...)...reduce(FnReduce.onX().Y(...))...; 
-        </code> 
+        <div class="source">
+        <pre>
+Op.on(...)...reduce(FnReduce.onX().Y(...))...;</pre> 
+        </div>
         <p>as in</p>       
-        <code>
-            /* In this case, we insert an initial value: 13 */ <br />
-            Op.on(new Integer[] {2, 3, 4}).toList().reduce(FnReduce.onBigDecimal().avg(), BigDecimal.valueOf(13)).get(); 
-            <br /><br />
-            Op.on(new Float[] {Float.valueOf(3), Float.valueOf(5), Float.valueOf(8), Float.valueOf(9)}) <br />
-              .toList().reduce(FnReduce.onFloat().div(MathContext.DECIMAL32)).get(); 
-            <br /><br /> 
-            /* In this case, we insert an initial value: 100 */ <br />
-            Op.on(new Integer[] {Integer.valueOf(3), Integer.valueOf(5), Integer.valueOf(8), Integer.valueOf(9)}) <br />
-                .toList().reduce(FnReduce.onFloat().div(MathContext.DECIMAL32), Float.valueOf(100)).get();                             
-        </code>        
+        <div class="source">
+        <pre>
+/* In this case, we insert an initial value: 13 */ 
+Op.on(new Integer[] {2, 3, 4}).toList().reduce(FnReduce.onBigDecimal().avg(), BigDecimal.valueOf(13)).get(); 
+            
+            
+Op.on(new Float[] {Float.valueOf(3), Float.valueOf(5), Float.valueOf(8), Float.valueOf(9)}) 
+    .toList().reduce(FnReduce.onFloat().div(MathContext.DECIMAL32)).get(); 
+            
+ 
+/* In this case, we insert an initial value: 100 */ 
+Op.on(new Integer[] {Integer.valueOf(3), Integer.valueOf(5), Integer.valueOf(8), Integer.valueOf(9)}) 
+    .toList().reduce(FnReduce.onFloat().div(MathContext.DECIMAL32), Float.valueOf(100)).get();</pre>
+        </div>        
         
         <p>        
         <em>Note that you can specify an initial value (as in the first and third examples above) which is initially
@@ -109,20 +113,18 @@
           These functions are to be applied on <em>Numbers</em> and all of them return a <em>BigDecimal</em>. Let's see some examples:                 
         </p>
         
-        <code>
-            /*  The code below would return 3.25 as avg(2, 3, 4) -> avg(avg(2, 3), 4) -> avg(2.5, 4) -> 3.25 */ <br />
-            Op.on(new Integer[] {2, 3, 4}).toList() <br />
-                .forEach().exec(FnNumber.toBigDecimal()).endFor() <br />               
-                .reduce(FnReduce.onBigDecimal().avg(MathContext.DECIMAL32)).get(); 
+        <div class="source">
+        <pre>
+/*  The code below would return 3.25 as avg(2, 3, 4) -> avg(avg(2, 3), 4) -> avg(2.5, 4) -> 3.25 */ 
+Op.on(new Integer[] {2, 3, 4}).toList() 
+    .forEach().exec(FnNumber.toBigDecimal()).endFor()              
+    .reduce(FnReduce.onBigDecimal().avg(MathContext.DECIMAL32)).get(); 
                 
-            <br /><br />
-            
-            /*  The code below would return 3 as avg(0, 2, 3, 4) -> avg(avg(avg(0, 2), 3), 4) -> avg(avg(1, 3), 4) -> avg(2, 4) -> 3 */ <br />
-            Op.on(new Integer[] {2, 3, 4}).toList() <br />                             
-                .reduce(FnReduce.onBigDecimal().avg(MathContext.DECIMAL32), BigDecimal.valueOf(0)).get(); <br />
-        </code>   
-        
-        <br/><br/>
+
+/*  The code below would return 3 as avg(0, 2, 3, 4) -> avg(avg(avg(0, 2), 3), 4) -> avg(avg(1, 3), 4) -> avg(2, 4) -> 3 */ 
+Op.on(new Integer[] {2, 3, 4}).toList()                             
+    .reduce(FnReduce.onBigDecimal().avg(MathContext.DECIMAL32), BigDecimal.valueOf(0)).get();</pre>   
+        </div>
         
         <div>
 	    <!-- Table with functions -->
@@ -156,17 +158,15 @@
           examples:                
         </p>
         
-        <code>
-            Op.on(new Integer[] {Integer.valueOf(3), Integer.valueOf(5), Integer.valueOf(8), Integer.valueOf(9)}).toList() <br />                         
-              .reduce(FnReduce.onBigInteger().div(MathContext.DECIMAL32), BigInteger.valueOf(100)).get();
-              
-            <br /> <br />
+        <div class="source">
+        <pre>
+Op.on(new Integer[] {Integer.valueOf(3), Integer.valueOf(5), Integer.valueOf(8), Integer.valueOf(9)}).toList()                      
+    .reduce(FnReduce.onBigInteger().div(MathContext.DECIMAL32), BigInteger.valueOf(100)).get();
+  
             
-            Op.on(new BigInteger[] {BigInteger.valueOf(3), BigInteger.valueOf(5), BigInteger.valueOf(8), BigInteger.valueOf(9)}).toList() <br />                         
-              .reduce(FnReduce.onBigInteger().div(MathContext.DECIMAL32)).get();
-        </code>
-             
-        <br/><br/>
+Op.on(new BigInteger[] {BigInteger.valueOf(3), BigInteger.valueOf(5), BigInteger.valueOf(8), BigInteger.valueOf(9)}).toList()                          
+    .reduce(FnReduce.onBigInteger().div(MathContext.DECIMAL32)).get();</pre>
+        </div>
         
         <div>
         <!-- Table with functions -->
@@ -250,20 +250,18 @@
           These functions are to be applied on <em>Numbers</em> and all of them return a <em>Double</em>. Let's see some examples:                 
         </p>
         
-        <code>
-            /*  The code below would return 3.25 as avg(2, 3, 4) -> avg(avg(2, 3), 4) -> avg(2.5, 4) -> 3.25 */ <br />
-            Op.on(new Integer[] {2, 3, 4}).toList() <br />
-                .forEach().exec(FnNumber.toDouble()).endFor() <br />               
-                .reduce(FnReduce.onDouble().avg(MathContext.DECIMAL32)).get(); 
-                
-            <br /><br />
+        <div class="source">
+        <pre>
+/*  The code below would return 3.25 as avg(2, 3, 4) -> avg(avg(2, 3), 4) -> avg(2.5, 4) -> 3.25 */ 
+Op.on(new Integer[] {2, 3, 4}).toList() 
+    .forEach().exec(FnNumber.toDouble()).endFor()                
+    .reduce(FnReduce.onDouble().avg(MathContext.DECIMAL32)).get(); 
+    
             
-            /*  The code below would return 3.525 as avg(4.2, 2, 3, 4) -> avg(avg(avg(4.2, 2), 3), 4) -> avg(avg(3.1, 3), 4) -> avg(3.05, 4) -> 3.525 */ <br />
-            Op.on(new Integer[] {2, 3, 4}).toList() <br />                             
-                .reduce(FnReduce.onDouble().avg(MathContext.DECIMAL32), Double.valueOf(4.2)).get(); <br />
-        </code>  
-        
-        <br/>
+/*  The code below would return 3.525 as avg(4.2, 2, 3, 4) -> avg(avg(avg(4.2, 2), 3), 4) -> avg(avg(3.1, 3), 4) -> avg(3.05, 4) -> 3.525 */ 
+Op.on(new Integer[] {2, 3, 4}).toList()                             
+    .reduce(FnReduce.onDouble().avg(MathContext.DECIMAL32), Double.valueOf(4.2)).get();</pre> 
+        </div> 
         
         <div>
         <!-- Table with functions -->
@@ -446,17 +444,15 @@
           any time so that chaining functions becomes easier and less error-prone.                 
         </p>
         
-        <code>
-            Op.on(new Calendar[] {Calendar.getInstance(), Calendar.getInstance()}).toList() <br />                        
-                .reduce(FnReduce.onCalendar().min()).get();
-                
-            <br /><br />
+        <div class="source">
+        <pre>
+Op.on(new Calendar[] {Calendar.getInstance(), Calendar.getInstance()}).toList()                         
+    .reduce(FnReduce.onCalendar().min()).get();
+    
             
-            Op.on(aListOfComprables)) <br />                        
-                .reduce(FnReduce.on(Types.forClass(MyClassOfComparables.class)).min()).get());
-        </code>   
-        
-        <br/><br/>
+Op.on(aListOfComprables))                      
+    .reduce(FnReduce.on(Types.forClass(MyClassOfComparables.class)).min()).get());</pre>  
+        </div> 
         
         <div>
         <!-- Table with functions -->
