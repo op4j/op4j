@@ -20,9 +20,9 @@ Functions
   op4j provides more than 200 functions out-of-the-box. They are usually obtained by calling
   static methods in <function hub classes>. For example:
   
----
++--
 Function<String,String> fn = FnString.toUpperCase();
----
++--
 
   <<<FnString>>> is one of the predefined <function hub classes> (most of them start with <<<Fn>>>), 
   and the <<<toUpperCase()>>> static method returns a function which takes a <<<String>>> input 
@@ -36,13 +36,13 @@ Function<String,String> fn = FnString.toUpperCase();
   
   Let's see some random examples:
   
----
++--
 Function<String,String> fn = FnString.trim();
 Function<String,Calendar> fn = FnString.toCalendar("dd/MM/yyyy");
 Function<Number,BigDecimal> fn = FnNumber.toBigDecimal(2, RoundingMode.HALF_UP);
 Function<Iterable<Double>,Double> fn = FnMath.ofDouble().avg();
 Function<Iterable<Integer>,Integer> fn = FnMath.ofInteger().max();
----
++--
 
   As we can see, some function hub classes like <<<FnMath>>> are a little bit special because they
   require specialization (type parameterization), which is what is done with the <<<ofDouble()>>>
@@ -50,10 +50,10 @@ Function<Iterable<Integer>,Integer> fn = FnMath.ofInteger().max();
   
   Let's see another example of specialization:
   
----
++--
 Type<User> type = ...;
 Function<List<User[]>,List<User>>> fn = FnList.ofArrayOf(type).flattenArrays();
----
++--
 
 * User-defined functions
 
@@ -61,17 +61,17 @@ Function<List<User[]>,List<User>>> fn = FnList.ofArrayOf(type).flattenArrays();
 
   Functions can be created by means of <<<Fn.on>>> expressions:
   
----
++--
 Function<String[],Calendar[]> fnParseStringDates =
     Fn.onArrayOf(Types.STRING).map(FnString.toCalendar("dd/MM/yyyy"));
----
++--
 
   As functions created with <function expressions> return <<<org.op4j.functions.Function>>> objects
   they can be easily called <even outside op4j expressions>:
 
----
++--
 Calendar[] calendars = fnParseStringDates.execute(stringDates);  
----
++--
 
 
 ** Custom functions
@@ -79,7 +79,7 @@ Calendar[] calendars = fnParseStringDates.execute(stringDates);
   Creating a custom function without using a function expression is as simple as implementing
   the one-method <<<IFunction>>> interface:
 
----
++--
 public class MyFunction implements IFunction<Integer,String> {
 
     public String execute(Integer input, ExecCtx ctx) throws Exception {
@@ -87,16 +87,16 @@ public class MyFunction implements IFunction<Integer,String> {
     }
         
 }
----
++--
 
   ...which can also be done anonymously:
   
----
++--
 String result = 
     Op.on(value).exec(new IFunction<Integer,String>() {
         public String execute(Integer input, ExecCtx ctx) throws Exception {
             return "The input number is: " + input;
         }
     }).get();
---- 
++-- 
   

@@ -51,10 +51,10 @@ The key concepts
 
   op4j is used for implementing (mainly) auxiliary code as <<expressions>>. Expressions look like this:
   
----
++--
 output = Op.on(input).[ACTION].[ACTION]...[ACTION].get();
 function = Fn.on(inputType).[ACTION].[ACTION]...[ACTION].get();
----    
++--    
 
   They start by calling either the <<<Op.on(...)>>> or the <<<Fn.on(...)>>> static methods, which 
   receive the input object (<Op.on>) or input type (<Fn.on>) as a parameter. There are some variations of the "on(...)"
@@ -65,23 +65,23 @@ function = Fn.on(inputType).[ACTION].[ACTION]...[ACTION].get();
       They act on a specific input object/s and perform a set of chained actions on it before returning a 
       result. 
 
----
++--
 String[] values = ...;
 List<String> upperStrs = Op.on(values).toList().map(FnString.toUpperCase()).get();
----    
++--    
     
     * Expressions starting with <<<Fn.on>>> are called <<Fn expressions>> or <<Function expressions>>.
       They allow the definition of <functions> as a set of chained actions of exactly the same
       kind as <op expressions>, returning as a result an executable <<<Function>>> object equivalent
       to the defined chain.
 
----
++--
 Function<String[],List<String> upperStrsFunc = 
     Fn.onArrayOf(Types.STRING).map(FnString.toUpperCase()).get();
 ...
 String[] values = ...;
 List<String> upperStrs = upperStrsFunc.execute(values);
----    
++--    
 
   Expressions end with <<<get()>>>, which returns the output (op expressions) or the 
   defined function (fn expressions).
@@ -94,10 +94,10 @@ List<String> upperStrs = upperStrsFunc.execute(values);
   
   For example:
   
----
++--
 String[] values = ...;
 List<Integer> intValueList = Op.on(values).toList().forEach().exec(FnString.toInteger()).get();
----
++--
 
   Here we can see three chained actions: <toList>, <forEach> and <exec>.   
   
@@ -114,9 +114,9 @@ List<Integer> intValueList = Op.on(values).toList().forEach().exec(FnString.toIn
   
   Looking again at our example:
   
----
++--
 List<Integer> intValueList = Op.on(values).toList().forEach().exec(FnString.toInteger()).get();
----
++--
 
   We can explain it as:
   
@@ -145,9 +145,9 @@ List<Integer> intValueList = Op.on(values).toList().forEach().exec(FnString.toIn
   
   Following the previous example:
   
----
++--
 List<Integer> intValueList = Op.on(values).toList().forEach().exec(FnString.toInteger()).get();
----
++--
   
     [[1]] The <<<on(...)>>> method creates <operator1>.
       
@@ -187,9 +187,9 @@ List<Integer> intValueList = Op.on(values).toList().forEach().exec(FnString.toIn
   
   Another example, the following sentence will not compile:
   
----
++--
 List<Integer> intValueList = Op.on(values).forEach().forEach()...
----
++--
 
   After the first <<<forEach()>>>, you are already iterating the input array, so there is no point
   in iterating it again!
@@ -337,10 +337,10 @@ List<Integer> intValueList = Op.on(values).forEach().forEach()...
   special <<<Function>>> class), can also be executed by
   themselves without being part of any other expression:
   
----
++--
 function = Fn.on(...)...get();
 output = function.execute(input); 
----  
++--  
 
   
 * {7}. Types

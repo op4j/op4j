@@ -10,10 +10,10 @@ Functions: Call
   Here is an example: Imagine your application has a <<<User>>> class which contains a
   <<<getName()>>> method, returning a String. Let's get the names of all the users in a list:
   
----
++--
 List<User> users = ...;
 List<String> userNames = Op.on(users).map(Call.asString("getName")).get();
----
++--
 
   The <asX(...)> methods in the <<<Call>>> class return <<<IFunction>>> objects (this is, <functions>):
   
@@ -54,11 +54,11 @@ List<String> userNames = Op.on(users).map(Call.asString("getName")).get();
   Every <asX(...)> method can be passed parameters, and these have to correspond with the 
   parameters of the method being called.
 
----
++--
 List<User> users = ...;
 Group group = ...;
 ...
 List<User> usersInGroup = 
     Op.on(users).removeAllFalse(Call.asBoolean("isInGroup", group).get();
----
++--
   
