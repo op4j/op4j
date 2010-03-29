@@ -104,7 +104,7 @@ Op.on(new String[] {"2000/11/10", "2010/10/10", "2000/01/10"})
 Op.on(new BigDecimal[] {BigDecimal.valueOf(23), BigDecimal.valueOf(2.3), BigDecimal.valueOf(-23.456)})
 	.exec(FnArray.ofBigDecimal().zipAndGroupKeys("first", "second", "third")).get();
 /* This piece of code creates the map {ff0000 = red, 00ff00 = green, 0000ff = blue} */	
-Op.on(new String[] {"ff0000", "red", "00ff00", "green", "0000ff", "blue"})
+Op.onArrayFor("ff0000", "red", "00ff00", "green", "0000ff", "blue")
 	.exec(FnArray.ofString().couple()).get();</pre>
         </div>
         

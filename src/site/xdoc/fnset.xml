@@ -95,7 +95,17 @@
           The examples below show how this functions can be used:
         </p>
         <div class="source">
-        <pre></pre>
+        <pre>
+/* This piece of code converts the Strings into Calendar and sorts them */        
+Op.onSetFor("2000/11/10", "2010/10/10", "2000/01/10")
+	.forEach().exec(FnString.toCalendar("yyyy/MM/dd")).endFor()
+	.exec(FnSet.ofCalendar().sort()).get()
+/* This piece of code creates the map {first = [23], second = [2.3], third = [-23.456]} */        
+Op.onSetFor(BigDecimal.valueOf(23), BigDecimal.valueOf(2.3), BigDecimal.valueOf(-23.456))
+	.exec(FnSet.ofBigDecimal().zipAndGroupKeys("first", "second", "third")).get();
+/* This piece of code creates the map {ff0000 = red, 00ff00 = green, 0000ff = blue} */	
+Op.onSetFor("ff0000", "red", "00ff00", "green", "0000ff", "blue")
+	.exec(FnSet.ofString().couple()).get();</pre>        
         </div>
         
         <div>
@@ -115,7 +125,10 @@
         </p>
         
         <div class="source">
-        <pre></pre>
+        <pre>
+/* The code below flattens the target List of Array so, the result of the operation will be the set ["first", "second", "third"] */
+Op.on(new String[][] {Op.onArrayFor("first", "second").get(), Op.onArrayFor("third").get()})
+	.toSet().exec(FnSet.ofArrayOf(Types.STRING).flattenArrays()).get();</pre>            
         </div>
         
         <div>
