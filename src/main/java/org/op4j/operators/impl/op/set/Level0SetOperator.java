@@ -422,5 +422,20 @@ public final class Level0SetOperator<I,T> extends AbstractOperator
         return new Level0SetOperator<I, T>(getTarget().execute(FnSet.ofObject().reverse()));
     }
     
+ 
+    
+
+
+    @SuppressWarnings("unchecked")
+    public <K, V> Level0MapOperator<I, K, Set<V>> toGroupMap(final IFunction<? super T, K> keyFunction, final IFunction<? super T, V> valueFunction) {
+        return new Level0MapOperator<I, K, Set<V>>(getTarget().execute(FnSet.ofObject().toGroupMap((IFunction)keyFunction,(IFunction)valueFunction)));
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public <K, V> Level0MapOperator<I, K, V> toMap(final IFunction<? super T, K> keyFunction, final IFunction<? super T, V> valueFunction) {
+        return new Level0MapOperator<I, K, V>(getTarget().execute(FnSet.ofObject().toMap((IFunction)keyFunction,(IFunction)valueFunction)));
+    }
+    
     
 }

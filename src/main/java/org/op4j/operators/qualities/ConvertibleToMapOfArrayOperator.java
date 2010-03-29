@@ -54,6 +54,24 @@ public interface ConvertibleToMapOfArrayOperator<T> {
      * @return an operator holding the converted object as target.
      */
     public <K,V> Operator toGroupMapOf(final Type<V> valueType, final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
+    
+    
+    /**
+     * <p>
+     * Converts the target object to a map by inputting the original target's
+     * elements into the specified functions,
+     * which will create the resulting keys and values. Values with the same key
+     * will be grouped into arrays.
+     * </p>
+     * 
+     * @param <K> the type of the keys that will be created
+     * @param <V> the type of the values that will be created
+     * @param valueType the type of the values, that will be used for instantiating the value arrays
+     * @param keyFunction the function for building the keys
+     * @param valueFunction the function for building the values
+     * @return an operator holding the converted object as target.
+     */
+    public <K,V> Operator toGroupMapOf(final Type<V> valueType, final IFunction<? super T,K> keyFunction, final IFunction<? super T,V> valueFunction);
 
     
     

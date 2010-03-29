@@ -413,6 +413,16 @@ public final class Level0ArrayOperator<I,T>
         return new Level0ArrayOperator<I, T>(this.type, getTarget().execute(FnArray.of(this.type).reverse()));
     }
 
+
+    public <K, V> Level0MapOperator<I, K, V[]> toGroupMapOf(final Type<V> valueType, final IFunction<? super T, K> keyFunction, final IFunction<? super T, V> valueFunction) {
+        return new Level0MapOperator<I, K, V[]>(getTarget().execute(FnArray.of(this.type).toGroupMapOf(valueType, keyFunction, valueFunction)));
+    }
+
+
+    public <K, V> Level0MapOperator<I, K, V> toMap(final IFunction<? super T, K> keyFunction, final IFunction<? super T, V> valueFunction) {
+        return new Level0MapOperator<I, K, V>(getTarget().execute(FnArray.of(this.type).toMap(keyFunction, valueFunction)));
+    }
+
     
 
 

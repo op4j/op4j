@@ -118,7 +118,9 @@ public interface ILevel0ListOperator<I,T>
     public ILevel0SetOperator<I,T> toSet();
     
     public <K,V> ILevel0MapOperator<I,K,V> toMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
+    public <K,V> ILevel0MapOperator<I,K,V> toMap(final IFunction<? super T,K> keyFunction, final IFunction<? super T,V> valueFunction);
     public <K,V> ILevel0MapOperator<I,K,List<V>> toGroupMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder);
+    public <K,V> ILevel0MapOperator<I,K,List<V>> toGroupMap(final IFunction<? super T,K> keyFunction, final IFunction<? super T,V> valueFunction);
     
     public ILevel0MapOperator<I,T,T> couple();
     public ILevel0MapOperator<I,T,List<T>> coupleAndGroup();

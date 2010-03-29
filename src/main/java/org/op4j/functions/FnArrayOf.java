@@ -177,8 +177,16 @@ public class FnArrayOf<T> {
         return new ToMap<K,V,T>(mapBuilder);
     }
     
+    public final <K,V> Function<T[],Map<K,V>> toMap(final IFunction<? super T,K> keyFunction, final IFunction<? super T,V> valueFunction) {
+        return new ToMapByKeyValueFunctions<K,V,T>(keyFunction, valueFunction);
+    }
+    
     public final <K,V> Function<T[],Map<K,V[]>> toGroupMapOf(final Type<V> valueType, final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
         return new ToGroupMap<K,V,T>(valueType, mapBuilder);
+    }
+    
+    public final <K,V> Function<T[],Map<K,V[]>> toGroupMapOf(final Type<V> valueType, final IFunction<? super T,K> keyFunction, final IFunction<? super T,V> valueFunction) {
+        return new ToGroupMapByKeyValueFunctions<K,V,T>(valueType, keyFunction, valueFunction);
     }
     
     public final Function<T[],Map<T,T>> couple() {
@@ -1146,7 +1154,7 @@ public class FnArrayOf<T> {
         
         ToMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
             super();
-            Validate.notNull(mapBuilder, "A map builder must be specified");
+            Validate.notNull(mapBuilder, "A map builder function must be specified");
             this.mapBuilder = mapBuilder;
         }
 
@@ -1166,6 +1174,33 @@ public class FnArrayOf<T> {
         
     }
 
+    
+    
+    static final class ToMapByKeyValueFunctions<K, V, T> extends AbstractNotNullFunction<T[],Map<K,V>> {
+
+        private final IFunction<? super T,K> keyFunction;
+        private final IFunction<? super T,V> valueFunction;
+        
+        ToMapByKeyValueFunctions(final IFunction<? super T,K> keyFunction, final IFunction<? super T,V> valueFunction) {
+            super();
+            Validate.notNull(keyFunction, "A function for obtaining keys must be specified");
+            Validate.notNull(valueFunction, "A function for obtaining keys must be specified");
+            this.keyFunction = keyFunction;
+            this.valueFunction = valueFunction;
+        }
+
+        @Override
+        protected Map<K, V> notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+            final Map<K, V> result = new LinkedHashMap<K, V>();
+            for (final T element: object) {
+                final K key = this.keyFunction.execute(element, ctx);
+                final V value = this.valueFunction.execute(element, ctx);
+                result.put(key, value);
+            }
+            return result;
+        }
+        
+    }
     
     
     
@@ -1319,6 +1354,45 @@ public class FnArrayOf<T> {
         
     }
 
+
+    
+    static final class ToGroupMapByKeyValueFunctions<K, V, T> extends AbstractNotNullFunction<T[],Map<K,V[]>> {
+
+        
+        private final IFunction<? super T,K> keyFunction;
+        private final IFunction<? super T,V> valueFunction;
+        private final Type<V> type;
+        
+        ToGroupMapByKeyValueFunctions(final Type<V> type, final IFunction<? super T,K> keyFunction, final IFunction<? super T,V> valueFunction) {
+            super();
+            Validate.notNull(type, "A type representing the array elements must be specified");
+            Validate.notNull(keyFunction, "A function for obtaining keys must be specified");
+            Validate.notNull(valueFunction, "A function for obtaining keys must be specified");
+            this.type = type;
+            this.keyFunction = keyFunction;
+            this.valueFunction = valueFunction;
+        }
+
+        @Override
+        protected Map<K, V[]> notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
+            
+            final Map<K, List<V>> result = new LinkedHashMap<K, List<V>>();
+            for (final T element: object) {
+                final K key = this.keyFunction.execute(element, ctx);
+                final V value = this.valueFunction.execute(element, ctx);
+                List<V> valueList = result.get(key);
+                if (valueList == null) {
+                    valueList = new ArrayList<V>();
+                    result.put(key, valueList);
+                }
+                valueList.add(value);
+            }
+            
+            return createFromMapOfList(this.type, result);
+            
+        }
+        
+    }
     
     
     

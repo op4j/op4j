@@ -966,6 +966,58 @@ public class AssortedTests extends TestCase {
         assertEquals(map4Res, map4);
         
     }
+
+    
+    
+    @Test
+    public void test45() throws Exception {
+    
+        
+        Function<Object,String> keyFn = Ognl.asString("'KEY: ' + #target");
+        Function<Object,String> valueFn = Ognl.asString("'VALUE: ' + #target");
+        
+        String[] valuesArray = new String[] {"one", "two", "three", "one"};
+        List<String> valuesList = Arrays.asList(valuesArray);
+        Set<String> valuesSet = new LinkedHashSet<String>(valuesList);
+        
+        Map<String,String> mapArray = Op.on(valuesArray).toMap(keyFn, valueFn).get(); 
+        Map<String,String> mapList = Op.on(valuesList).toMap(keyFn, valueFn).get(); 
+        Map<String,String> mapSet = Op.on(valuesSet).toMap(keyFn, valueFn).get();
+        
+        assertEquals(3, mapArray.size());
+        assertEquals("KEY: one", mapArray.keySet().iterator().next());
+        assertEquals("VALUE: one", mapArray.get("KEY: one"));
+        assertEquals("VALUE: two", mapArray.get("KEY: two"));
+        assertEquals(mapArray, mapList);
+        assertEquals(mapList, mapSet);
+
+        Map<String,String[]> mapGroupArray = Op.on(valuesArray).toGroupMapOf(Types.STRING, keyFn, valueFn).get(); 
+        Map<String,List<String>> mapGroupList = Op.on(valuesList).toGroupMap(keyFn, valueFn).get(); 
+        Map<String,Set<String>> mapGroupSet = Op.on(valuesSet).toGroupMap(keyFn, valueFn).get();
+
+        assertEquals(3, mapGroupArray.size());
+        assertEquals(3, mapGroupList.size());
+        assertEquals(3, mapGroupSet.size());
+        assertEquals(2, mapGroupArray.get("KEY: one").length);
+        assertEquals(2, mapGroupList.get("KEY: one").size());
+        assertEquals(1, mapGroupSet.get("KEY: one").size());
+        assertEquals(1, mapGroupArray.get("KEY: two").length);
+        assertEquals(1, mapGroupList.get("KEY: two").size());
+        assertEquals(1, mapGroupSet.get("KEY: two").size());
+        assertEquals(String[].class, mapGroupArray.get("KEY: one").getClass());
+        assertEquals(ArrayList.class, mapGroupList.get("KEY: one").getClass());
+        assertEquals(LinkedHashSet.class, mapGroupSet.get("KEY: one").getClass());
+        assertEquals("KEY: one", mapGroupArray.keySet().iterator().next());
+        assertEquals("VALUE: one", mapGroupArray.get("KEY: one")[0]);
+        assertEquals("VALUE: two", mapGroupArray.get("KEY: two")[0]);
+        assertEquals(Arrays.asList(mapGroupArray.get("KEY: one")), mapGroupList.get("KEY: one"));
+        assertEquals(Arrays.asList(mapGroupArray.get("KEY: two")), mapGroupList.get("KEY: two"));
+        assertEquals(Arrays.asList(mapGroupArray.get("KEY: three")), mapGroupList.get("KEY: three"));
+        assertEquals(mapGroupList.get("KEY: two"), new ArrayList<String>(mapGroupSet.get("KEY: two")));
+        assertEquals(mapGroupList.get("KEY: three"), new ArrayList<String>(mapGroupSet.get("KEY: three")));
+        
+    }
+    
     
 }
 

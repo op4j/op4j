@@ -172,8 +172,16 @@ public class FnSetOf<T> {
         return new ToMap<K,V,T>(mapBuilder);
     }
     
+    public final <K,V> Function<Set<T>,Map<K,V>> toMap(final IFunction<? super T,K> keyFunction, final IFunction<? super T,V> valueFunction) {
+        return new ToMapByKeyValueFunctions<K,V,T>(keyFunction, valueFunction);
+    }
+    
     public final <K,V> Function<Set<T>,Map<K,Set<V>>> toGroupMap(final IFunction<? super T,Map.Entry<K,V>> mapBuilder) {
         return new ToGroupMap<K,V,T>(mapBuilder);
+    }
+    
+    public final <K,V> Function<Set<T>,Map<K,Set<V>>> toGroupMap(final IFunction<? super T,K> keyFunction, final IFunction<? super T,V> valueFunction) {
+        return new ToGroupMapByKeyValueFunctions<K,V,T>(keyFunction, valueFunction);
     }
     
     public final Function<Set<T>,Map<T,T>> couple() {
@@ -761,6 +769,33 @@ public class FnSetOf<T> {
     
     
     
+    static final class ToMapByKeyValueFunctions<K, V, T> extends AbstractNotNullFunction<Set<T>,Map<K,V>> {
+
+        private final IFunction<? super T,K> keyFunction;
+        private final IFunction<? super T,V> valueFunction;
+        
+        ToMapByKeyValueFunctions(final IFunction<? super T,K> keyFunction, final IFunction<? super T,V> valueFunction) {
+            super();
+            Validate.notNull(keyFunction, "A function for obtaining keys must be specified");
+            Validate.notNull(valueFunction, "A function for obtaining keys must be specified");
+            this.keyFunction = keyFunction;
+            this.valueFunction = valueFunction;
+        }
+
+        @Override
+        protected Map<K, V> notNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
+            final Map<K, V> result = new LinkedHashMap<K, V>();
+            for (final T element: object) {
+                final K key = this.keyFunction.execute(element, ctx);
+                final V value = this.valueFunction.execute(element, ctx);
+                result.put(key, value);
+            }
+            return result;
+        }
+        
+    }
+    
+    
     
     static final class Couple<T> extends AbstractNotNullFunction<Set<T>,Map<T, T>>  {
 
@@ -996,6 +1031,43 @@ public class FnSetOf<T> {
     }
 
     
+    
+
+    
+    static final class ToGroupMapByKeyValueFunctions<K, V, T> extends AbstractNotNullFunction<Set<T>,Map<K,Set<V>>> {
+
+        
+        private final IFunction<? super T,K> keyFunction;
+        private final IFunction<? super T,V> valueFunction;
+        
+        ToGroupMapByKeyValueFunctions(final IFunction<? super T,K> keyFunction, final IFunction<? super T,V> valueFunction) {
+            super();
+            Validate.notNull(keyFunction, "A function for obtaining keys must be specified");
+            Validate.notNull(valueFunction, "A function for obtaining keys must be specified");
+            this.keyFunction = keyFunction;
+            this.valueFunction = valueFunction;
+        }
+
+        @Override
+        protected Map<K, Set<V>> notNullExecute(final Set<T> object, final ExecCtx ctx) throws Exception {
+            
+            final Map<K, Set<V>> result = new LinkedHashMap<K, Set<V>>();
+            for (final T element: object) {
+                final K key = this.keyFunction.execute(element, ctx);
+                final V value = this.valueFunction.execute(element, ctx);
+                Set<V> valueList = result.get(key);
+                if (valueList == null) {
+                    valueList = new LinkedHashSet<V>();
+                    result.put(key, valueList);
+                }
+                valueList.add(value);
+            }
+            
+            return result;
+            
+        }
+        
+    }
     
     
     

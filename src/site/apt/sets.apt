@@ -122,6 +122,46 @@ Map<Integer,Calendar> map = Op.on(set).toMap(mapBuilder).get();
 +--
 
 
+
+
+**** Grouping using a Map Builder
+
+  If one or more values can have the same key, you should create a <grouped map>, like:
+   
++--
+MapBuilder<String,Integer,Calendar> mapBuilder = ...;
+Map<Integer,Set<Calendar>> map = Op.on(set).toGroupMap(mapBuilder).get();
++--
+
+
+
+*** Using two functions
+
+  Instead of a <map builder> function, we could just use two functions instead, one for
+  creating keys, and a different one for creating values:
+
++--
+IFunction<String,Integer> keyFunction = ...;
+IFunction<String,Calendar> valueFunction = ...;
+Map<Integer,Calendar> map = Op.on(set).toMap(keyFunction, valueFunction).get();
++--
+
+
+**** Grouping using two functions
+
+  Again, if one or more values can have the same key, you should create a <grouped map>, like:
+   
++--
+IFunction<String,Integer> keyFunction = ...;
+IFunction<String,Calendar> valueFunction = ...;
+Map<Integer,Set<Calendar>> map = Op.on(set).toGroupMap(keyFunction, valueFunction).get();
++--
+
+
+
+
+
+
 *** Zipping keys or values
 
   A Map can also be created from a set by zipping. Zipping means combining the elements in

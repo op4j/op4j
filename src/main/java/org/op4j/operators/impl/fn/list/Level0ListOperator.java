@@ -425,6 +425,18 @@ public final class Level0ListOperator<I,T> extends AbstractOperator
     }
     
     
+
+
+    @SuppressWarnings("unchecked")
+    public <K, V> Level0MapOperator<I, K, List<V>> toGroupMap(final IFunction<? super T, K> keyFunction, final IFunction<? super T, V> valueFunction) {
+        return new Level0MapOperator<I, K, List<V>>(getTarget().execute(FnList.ofObject().toGroupMap((IFunction)keyFunction,(IFunction)valueFunction)));
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public <K, V> Level0MapOperator<I, K, V> toMap(final IFunction<? super T, K> keyFunction, final IFunction<? super T, V> valueFunction) {
+        return new Level0MapOperator<I, K, V>(getTarget().execute(FnList.ofObject().toMap((IFunction)keyFunction,(IFunction)valueFunction)));
+    }
     
     
 }
