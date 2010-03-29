@@ -5,18 +5,18 @@
 
 <document>
   <properties>
-    <title>Functions: Fn</title>    
+    <title>Functions: FnFunc</title>    
   </properties>
   <body>
   
-    <section name="Functions: Fn">
+    <section name="Functions: FnFunc">
 
       
 
       <subsection name="1. Overview">
 
         <p>
-            <b><a href="http://www.op4j.org/apidocs/org/op4j/functions/Fn.html">Fn</a></b> is a <em>function hub class</em>
+            <b><a href="http://www.op4j.org/apidocs/org/op4j/functions/FnFunc.html">FnFunc</a></b> is a <em>function hub class</em>
             containing basic static methods that operate on Objects 
         </p>
         

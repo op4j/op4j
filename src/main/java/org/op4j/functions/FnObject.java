@@ -298,68 +298,68 @@ public final class FnObject {
     
     
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final Object object) {
-        return Fn.by(by, eq(object));
+        return FnFunc.by(by, eq(object));
     }
     
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final float object) {
-        return Fn.by(by, eq(object));
+        return FnFunc.by(by, eq(object));
     }
     
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final double object) {
-        return Fn.by(by, eq(object));
+        return FnFunc.by(by, eq(object));
     }
     
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final byte object) {
-        return Fn.by(by, eq(object));
+        return FnFunc.by(by, eq(object));
     }
     
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final short object) {
-        return Fn.by(by, eq(object));
+        return FnFunc.by(by, eq(object));
     }
     
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final int object) {
-        return Fn.by(by, eq(object));
+        return FnFunc.by(by, eq(object));
     }
     
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final long object) {
-        return Fn.by(by, eq(object));
+        return FnFunc.by(by, eq(object));
     }
     
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final boolean object) {
-        return Fn.by(by, eq(object));
+        return FnFunc.by(by, eq(object));
     }
     
     
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final Object object) {
-        return Fn.by(by, notEq(object));
+        return FnFunc.by(by, notEq(object));
     }
     
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final float object) {
-        return Fn.by(by, notEq(object));
+        return FnFunc.by(by, notEq(object));
     }
     
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final double object) {
-        return Fn.by(by, notEq(object));
+        return FnFunc.by(by, notEq(object));
     }
     
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final byte object) {
-        return Fn.by(by, notEq(object));
+        return FnFunc.by(by, notEq(object));
     }
     
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final short object) {
-        return Fn.by(by, notEq(object));
+        return FnFunc.by(by, notEq(object));
     }
     
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final int object) {
-        return Fn.by(by, notEq(object));
+        return FnFunc.by(by, notEq(object));
     }
     
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final long object) {
-        return Fn.by(by, notEq(object));
+        return FnFunc.by(by, notEq(object));
     }
     
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final boolean object) {
-        return Fn.by(by, notEq(object));
+        return FnFunc.by(by, notEq(object));
     }
 
     
@@ -371,61 +371,61 @@ public final class FnObject {
 
     
     public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final Object object) {
-        return Fn.by(by, lessThan(object));
+        return FnFunc.by(by, lessThan(object));
     }
     
     public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final float object) {
-        return Fn.by(by, lessThan(object));
+        return FnFunc.by(by, lessThan(object));
     }
     
     public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final double object) {
-        return Fn.by(by, lessThan(object));
+        return FnFunc.by(by, lessThan(object));
     }
     
     public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final byte object) {
-        return Fn.by(by, lessThan(object));
+        return FnFunc.by(by, lessThan(object));
     }
     
     public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final short object) {
-        return Fn.by(by, lessThan(object));
+        return FnFunc.by(by, lessThan(object));
     }
     
     public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final int object) {
-        return Fn.by(by, lessThan(object));
+        return FnFunc.by(by, lessThan(object));
     }
     
     public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final long object) {
-        return Fn.by(by, lessThan(object));
+        return FnFunc.by(by, lessThan(object));
     }
 
     
     
     public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final Object object) {
-        return Fn.by(by, lessOrEqTo(object));
+        return FnFunc.by(by, lessOrEqTo(object));
     }
     
     public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final float object) {
-        return Fn.by(by, lessOrEqTo(object));
+        return FnFunc.by(by, lessOrEqTo(object));
     }
     
     public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final double object) {
-        return Fn.by(by, lessOrEqTo(object));
+        return FnFunc.by(by, lessOrEqTo(object));
     }
     
     public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final byte object) {
-        return Fn.by(by, lessOrEqTo(object));
+        return FnFunc.by(by, lessOrEqTo(object));
     }
     
     public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final short object) {
-        return Fn.by(by, lessOrEqTo(object));
+        return FnFunc.by(by, lessOrEqTo(object));
     }
     
     public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final int object) {
-        return Fn.by(by, lessOrEqTo(object));
+        return FnFunc.by(by, lessOrEqTo(object));
     }
     
     public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final long object) {
-        return Fn.by(by, lessOrEqTo(object));
+        return FnFunc.by(by, lessOrEqTo(object));
     }
     
     
@@ -437,61 +437,61 @@ public final class FnObject {
 
     
     public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final Object object) {
-        return Fn.by(by, greaterThan(object));
+        return FnFunc.by(by, greaterThan(object));
     }
     
     public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final float object) {
-        return Fn.by(by, greaterThan(object));
+        return FnFunc.by(by, greaterThan(object));
     }
     
     public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final double object) {
-        return Fn.by(by, greaterThan(object));
+        return FnFunc.by(by, greaterThan(object));
     }
     
     public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final byte object) {
-        return Fn.by(by, greaterThan(object));
+        return FnFunc.by(by, greaterThan(object));
     }
     
     public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final short object) {
-        return Fn.by(by, greaterThan(object));
+        return FnFunc.by(by, greaterThan(object));
     }
     
     public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final int object) {
-        return Fn.by(by, greaterThan(object));
+        return FnFunc.by(by, greaterThan(object));
     }
     
     public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final long object) {
-        return Fn.by(by, greaterThan(object));
+        return FnFunc.by(by, greaterThan(object));
     }
 
     
     
     public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final Object object) {
-        return Fn.by(by, greaterOrEqTo(object));
+        return FnFunc.by(by, greaterOrEqTo(object));
     }
     
     public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final float object) {
-        return Fn.by(by, greaterOrEqTo(object));
+        return FnFunc.by(by, greaterOrEqTo(object));
     }
     
     public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final double object) {
-        return Fn.by(by, greaterOrEqTo(object));
+        return FnFunc.by(by, greaterOrEqTo(object));
     }
     
     public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final byte object) {
-        return Fn.by(by, greaterOrEqTo(object));
+        return FnFunc.by(by, greaterOrEqTo(object));
     }
     
     public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final short object) {
-        return Fn.by(by, greaterOrEqTo(object));
+        return FnFunc.by(by, greaterOrEqTo(object));
     }
     
     public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final int object) {
-        return Fn.by(by, greaterOrEqTo(object));
+        return FnFunc.by(by, greaterOrEqTo(object));
     }
     
     public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final long object) {
-        return Fn.by(by, greaterOrEqTo(object));
+        return FnFunc.by(by, greaterOrEqTo(object));
     }
     
     
@@ -519,11 +519,11 @@ public final class FnObject {
     
     
     public static final <X> Function<X,Boolean> isNullBy(final IFunction<X,?> by) {
-        return Fn.by(by, IS_NULL);
+        return FnFunc.by(by, IS_NULL);
     }
     
     public static final <X> Function<X,Boolean> isNotNullBy(final IFunction<X,?> by) {
-        return Fn.by(by, IS_NOT_NULL);
+        return FnFunc.by(by, IS_NOT_NULL);
     }
     
     

@@ -276,7 +276,7 @@ public class FnListOf<T> {
     }
     
     public final Function<List<T>,Boolean> notContains(final T object) {
-        return Fn.not(contains(object));
+        return FnFunc.not(contains(object));
     }
     
     public final Function<List<T>,Boolean> containsAll(final T... objects) {

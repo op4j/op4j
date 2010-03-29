@@ -280,7 +280,7 @@ public class FnArrayOf<T> {
     }
     
     public final Function<T[],Boolean> notContains(final T object) {
-        return Fn.not(contains(object));
+        return FnFunc.not(contains(object));
     }
     
     public final Function<T[],Boolean> containsAll(final T... objects) {

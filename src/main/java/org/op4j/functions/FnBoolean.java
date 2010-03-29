@@ -129,20 +129,20 @@ public final class FnBoolean {
     
     
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final Boolean object) {
-        return Fn.by(by, eq(object));
+        return FnFunc.by(by, eq(object));
     }
     
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final boolean object) {
-        return Fn.by(by, eq(object));
+        return FnFunc.by(by, eq(object));
     }
     
     
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final Boolean object) {
-        return Fn.by(by, notEq(object));
+        return FnFunc.by(by, notEq(object));
     }
     
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final boolean object) {
-        return Fn.by(by, notEq(object));
+        return FnFunc.by(by, notEq(object));
     }
 
     
@@ -188,7 +188,7 @@ public final class FnBoolean {
     
     
     public static final <X,Y> Function<X,Boolean> by(final IFunction<X,Y> by, final IFunction<? super Y, Boolean> eval) {
-        return Fn.by(by, eval);
+        return FnFunc.by(by, eval);
     }
     
     

@@ -52,6 +52,7 @@ import org.op4j.functions.FnBigInteger;
 import org.op4j.functions.FnBoolean;
 import org.op4j.functions.FnCalendar;
 import org.op4j.functions.FnDouble;
+import org.op4j.functions.FnFunc;
 import org.op4j.functions.FnInteger;
 import org.op4j.functions.FnList;
 import org.op4j.functions.FnNumber;
@@ -583,10 +584,10 @@ watch.start();
                 Op.on(233).exec(FnBoolean.and(FnNumber.greaterThan(44), FnObject.lessThan(534))).get());
         
         System.out.println(
-                Op.on(1233).ifTrue(Fn.not(Fn.and(FnNumber.greaterThan(44), FnObject.lessThan(534)))).exec(FnInteger.add(10)).get());
+                Op.on(1233).ifTrue(FnFunc.not(FnFunc.and(FnNumber.greaterThan(44), FnObject.lessThan(534)))).exec(FnInteger.add(10)).get());
         
         System.out.println(
-                Op.on(1233).exec(Fn.chain(FnInteger.add(10), FnNumber.greaterThan(1200))).get());
+                Op.on(1233).exec(FnFunc.chain(FnInteger.add(10), FnNumber.greaterThan(1200))).get());
 
         System.out.println(Op.onListFor(1,2,3,4).exec(FnList.ofInteger().containsAny(12,3)).get());
         
@@ -621,7 +622,7 @@ watch.start();
             }
         };
         
-        Function<Integer,Boolean> afnb = Fn.and(afnb1,afnb2);
+        Function<Integer,Boolean> afnb = FnFunc.and(afnb1,afnb2);
         
         Function<Number,Boolean> bfnb1 = new Function<Number, Boolean>() {
             public Boolean execute(Number input, ExecCtx ctx) throws Exception {
@@ -633,13 +634,13 @@ watch.start();
                 return Boolean.TRUE;
             }
         };
-        Function<Integer,Boolean> bfnb = Fn.and(bfnb1,bfnb2);
+        Function<Integer,Boolean> bfnb = FnFunc.and(bfnb1,bfnb2);
     
         Op.on(231).ifTrue(afnb).get();
         Op.on(231).ifTrue(bfnb).get();
         
-        Op.on(231).ifTrue(Fn.and(afnb1,afnb2)).get();
-        Op.on(231).ifTrue(Fn.and(bfnb1,bfnb2)).get();
+        Op.on(231).ifTrue(FnFunc.and(afnb1,afnb2)).get();
+        Op.on(231).ifTrue(FnBoolean.and(bfnb1,bfnb2)).get();
         
         Function<Object,Boolean> cfnb1 = new Function<Object, Boolean>() {
 
@@ -654,7 +655,7 @@ watch.start();
                 return Boolean.TRUE;
             }
         };
-        Function<Number,Boolean> cfnb = Fn.and(cfnb1,cfnb2);
+        Function<Number,Boolean> cfnb = FnFunc.and(cfnb1,cfnb2);
         
         Function<Number,Boolean> dfnb1 = new Function<Number, Boolean>() {
 
@@ -668,13 +669,13 @@ watch.start();
                 return Boolean.TRUE;
             }
         };
-        Function<Number,Boolean> dfnb = Fn.and(dfnb1,dfnb2);
+        Function<Number,Boolean> dfnb = FnFunc.and(dfnb1,dfnb2);
     
         Op.on(231.2).ifTrue(cfnb).get();
         Op.on(231.1).ifTrue(dfnb).get();
         
-        Op.on(231.2).ifTrue(Fn.and(cfnb1,cfnb2)).get();
-        Op.on(231.1).ifTrue(Fn.and(dfnb1,dfnb2)).get();
+        Op.on(231.2).ifTrue(FnFunc.and(cfnb1,cfnb2)).get();
+        Op.on(231.1).ifTrue(FnFunc.and(dfnb1,dfnb2)).get();
     
         
         Function<Number,Integer> fnz1 = new Function<Number, Integer>() {
@@ -686,9 +687,9 @@ watch.start();
         };
         
         Function<Integer,Integer> fnn1 = 
-            Fn.ifTrue(FnNumber.greaterThan(2),fnz1);
+            FnFunc.ifTrue(FnNumber.greaterThan(2),fnz1);
         
-        Fn.on(Types.INTEGER).exec(Fn.ifTrue(FnNumber.greaterThan(2),fnz1)).get();
+        Fn.on(Types.INTEGER).exec(FnFunc.ifTrue(FnNumber.greaterThan(2),fnz1)).get();
         
         
         
@@ -741,7 +742,7 @@ watch.start();
 
         
         System.out.println(
-                Op.on(Types.STRING,null).exec(Fn.ifTrue(Fn.or(FnObject.isNull(), Fn.and(FnObject.isNotNull(), Fn.chain(FnString.toInteger(),FnNumber.greaterThan(100)))), FnObject.replaceWith("lelo"))).get());
+                Op.on(Types.STRING,null).exec(FnFunc.ifTrue(FnBoolean.or(FnObject.isNull(), FnBoolean.and(FnObject.isNotNull(), FnFunc.chain(FnString.toInteger(),FnNumber.greaterThan(100)))), FnObject.replaceWith("lelo"))).get());
         
 
         
