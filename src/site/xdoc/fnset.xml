@@ -1,0 +1,174 @@
+ <!DOCTYPE document PUBLIC
+  "-//Apache Software Foundation//DTD XDOC 1.0//EN"
+  "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+
+
+<document>
+  <properties>
+    <title>Functions: FnSet</title>    
+  </properties>
+  <body>
+  
+    <section name="Functions: FnSet">
+      
+
+      <subsection name="1. Overview">
+        <p>
+            <a href="http://www.op4j.org/apidocs/org/op4j/functions/FnSet.html"><b>FnSet</b></a> is a 
+            <em>parameterizable function hub class</em> and, before giving you access to the real functions, you will 
+            have to specify the type parameter, which will give you access to the functions containing the operations
+            on <em>Sets</em>:                                    
+        </p>
+        <ul>
+            <li>
+                <code>FnSet.ofBigDecimal()</code>: returns <a href="#FnSetOf">#FnSetOf&lt;BigDecimal&gt;</a>                       
+            </li>
+            <li>
+                <code>FnSet.ofBigInteger()</code>: returns <a href="#FnSetOf">#FnSetOf&lt;BigInteger&gt;</a>                      
+            </li>
+            <li>
+                <code>FnSet.ofBoolean()</code>: returns <a href="#FnSetOf">#FnSetOf&lt;Boolean&gt;</a>                            
+            </li>
+            <li>
+                <code>FnSet.ofByte()</code>: returns <a href="#FnSetOf">#FnSetOf&lt;Byte&gt;</a>                               
+            </li> 
+            <li>
+                <code>FnSet.ofCalendar()</code>: returns <a href="#FnSetOf">#FnSetOf&lt;Calendar&gt;</a>                          
+            </li> 
+            <li>
+                <code>FnSet.ofCharacter()</code>: returns <a href="#FnSetOf">#FnSetOf&lt;Character&gt;</a>                         
+            </li> 
+            <li>
+                <code>FnSet.ofDate()</code>: returns <a href="#FnSetOf">#FnSetOf&lt;Date&gt;</a>                               
+            </li>
+            <li>
+                <code>FnSet.ofDouble()</code>: returns <a href="#FnSetOf">#FnSetOf&lt;Double&gt;</a>                              
+            </li>
+            <li>
+                <code>FnSet.ofFloat()</code>: returns <a href="#FnSetOf">#FnSetOf&lt;Float&gt;</a>                               
+            </li> 
+            <li>
+                <code>FnSet.ofInteger()</code>: returns <a href="#FnSetOf">#FnSetOf&lt;Integer&gt;</a>                            
+            </li>
+            <li>
+                <code>FnSet.ofLong()</code>: returns <a href="#FnSetOf">#FnSetOf&lt;Long&gt;</a>                              
+            </li> 
+            <li>
+                <code>FnSet.ofObject()</code>: returns <a href="#FnSetOf">#FnSetOf&lt;Object&gt;</a>                              
+            </li>
+            <li>
+                <code>FnSet.ofShort()</code>: returns <a href="#FnSetOf">#FnSetOf&lt;Short&gt;</a>                               
+            </li>
+            <li>
+                <code>FnSet.ofString()</code>: returns <a href="#FnSetOf">#FnSetOf&lt;String&gt;</a>                              
+            </li>
+            <li>
+                <code>FnSet.of(final Type&lt;T&gt; type)</code>: returns <a href="#FnSetOf">#FnSetOf&lt;T&gt;</a> 
+                parameterized with the given type. This is the most generic function in <em>FnSet</em>                               
+            </li>
+            <li>
+                <code>FnSet.ofArrayOf(final Type&lt;T&gt; type)</code>: returns <a href="#FnSetOfArrayOf">FnSetOfArrayOf&lt;T&gt;</a> 
+                parameterized with the given type.                               
+            </li>
+            <li>
+                <code>FnSet.ofListOf(final Type&lt;T&gt; type)</code>: returns <a href="#FnSetOfListOf">FnSetOfListOf&lt;T&gt;</a> 
+                parameterized with the given type.                               
+            </li>
+            <li>
+                <code>FnSet.ofSetOf(final Type&lt;T&gt; type)</code>: returns <a href="#FnSetOfSetOf">FnSetOfSetOf&lt;T&gt;</a> 
+                parameterized with the given type.                            
+            </li>  
+        </ul>
+                
+      </subsection>
+
+      <subsection name="FnSetOf">
+
+        <p>
+          The functions in <b>FnSetOf</b> are applied on <em>Sets</em>. <em>FnSetOf is a parameterizable class</em> so, 
+          in order to use it, you must specify the type parameter (i.e. FnSet.ofBigDecimal(), FnSet.ofLong(), 
+          FnSet.of(final Type&lt;T&gt; type), ...). <code>FnSet.of(final Type&lt;T&gt; type)</code>
+          is the most generic method that gives you access to <em>FnSetOf</em> though there are some shortcuts for common classes:
+          <code>FnSet.ofBigDecimal(), FnSet.ofInteger(), FnSet.ofDate(), FnSet.ofCharacter(), ...</code>
+          The examples below show how this functions can be used:                 
+        </p>
+        
+        <div class="source">
+        <pre></pre>
+        </div>
+        
+        <div>
+	    <!-- Table with functions -->
+        
+        <!--  -->
+        </div>
+      
+      </subsection>
+      
+      <subsection name="FnSetOfArrayOf">
+
+        <p>
+          The functions in <b>FnSetOfArrayOf</b> are applied on <em>Sets of Arrays</em> of any type. <em>FnSetOfArrayOf is a 
+          parameterizable class</em> so, in order to use it, you must specify the type parameter 
+          (i.e. FnSet.ofArrayOf(Types.INTEGER), FnSet.ofArrayOf(Types.LONG)). The example below shows how it can be used:                 
+        </p>
+        
+        <div class="source">
+        <pre></pre>
+        </div>
+        
+        <div>
+        <!-- Table with functions -->
+        
+        <!--  -->
+        </div>
+        
+      </subsection>
+      
+      <subsection name="FnSetOfListOf">
+
+        <p>
+          The functions in <b>FnSetOfListOf</b> are applied on <em>Sets of Lists</em> of any type. <em>FnSetOfListOf is a 
+          parameterizable class</em> so, in order to use it, you must specify the type parameter 
+          (i.e. FnSet.ofListOf(Types.INTEGER), FnSet.ofListOf(Types.LONG)). The example below shows how it can be used:                 
+        </p> 
+
+        <div class="source">
+        <pre></pre>
+        </div>
+        
+        <div>
+        <!-- Table with functions -->
+        
+        <!--  -->
+        </div>
+        
+      </subsection>
+      
+      <subsection name="FnSetOfSetOf">
+
+        <p>
+          The functions in <b>FnSetOfSetOf</b> are applied on <em>Sets of Sets</em> of any type. <em>FnSetOfSetOf is a 
+          parameterizable class</em> so, in order to use it, you must specify the type parameter 
+          (i.e. FnSet.ofSetOf(Types.INTEGER), FnSet.ofSetOf(Types.LONG)). The example below shows how it can be used:                 
+        </p>        
+        
+        <div class="source">
+        <pre></pre>
+        </div>
+        
+        <div>
+        <!-- Table with functions -->
+        
+        <!--  -->
+        </div>
+        
+      </subsection>
+      
+    </section>
+  </body>
+</document>
+
+
+
+  

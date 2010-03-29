@@ -68,15 +68,15 @@
             </li>
             <li>
                 <code>FnArray.ofArrayOf(final Type&lt;T&gt; type)</code>: returns <a href="#FnArrayOfArrayOf">FnArrayOfArrayOf&lt;T&gt;</a> 
-                parameterized with the given type. This is the most generic function in <em>FnArray</em>                               
+                parameterized with the given type.                             
             </li>
             <li>
                 <code>FnArray.ofListOf(final Type&lt;T&gt; type)</code>: returns <a href="#FnArrayOfListOf">FnArrayOfListOf&lt;T&gt;</a> 
-                parameterized with the given type. This is the most generic function in <em>FnArray</em>                               
+                parameterized with the given type.                              
             </li>
             <li>
                 <code>FnArray.ofSetOf(final Type&lt;T&gt; type)</code>: returns <a href="#FnArrayOfSetOf">FnArrayOfSetOf&lt;T&gt;</a> 
-                parameterized with the given type. This is the most generic function in <em>FnArray</em>                               
+                parameterized with the given type.                         
             </li>  
         </ul>
                 
@@ -88,7 +88,7 @@
           The functions in <b>FnArrayOf</b> are applied on <em>Arrays</em>. <em>FnArrayOf is a parameterizable class</em> so, 
           in order to use it, you must specify the type parameter (i.e. FnArray.ofBigDecimal(), FnArray.ofLong(), 
           FnArray.of(final Type&lt;T&gt; type), ...). <code>FnArray.of(final Type&lt;T&gt; type)</code>
-          is the most generic method that gives you access to <em>FnArrayOf</em> though there are some shortcuts to common classes:
+          is the most generic method that gives you access to <em>FnArrayOf</em> though there are some shortcuts for common classes:
           <code>FnArray.ofBigDecimal(), FnArray.ofInteger(), FnArray.ofDate(), FnArray.ofCharacter(), ...</code>
           The examples below show how this functions can be used:                 
         </p>
