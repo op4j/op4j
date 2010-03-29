@@ -413,8 +413,98 @@ public class RecipesTests extends TestCase {
 
     
     
+    
+    @Test
+    public void testOP4J_015() throws Exception {
+
+        final String[] result = new String[] { "Lettuce", "Tomato", "Onion", "Olive Oil" };
+        String[] ingredients = new String[] { "Lettuce", "Tomato", "Onion" };
+        String[] originalIngredients = (String[]) ArrayUtils.clone(ingredients);
+        
+        {
+            
+            ingredients = Op.on(ingredients).add("Olive Oil").get();
+
+            assertEquals(String[].class, ingredients.getClass());
+            assertEquals(Arrays.asList(result), Arrays.asList(ingredients));
+            
+        }
+        
+        ingredients = (String[]) ArrayUtils.clone(originalIngredients);
+        
+        {
+            final String[] result2 = new String[] { "Lettuce", "Tomato", "Onion", "Olive Oil", "Balsamic Vinegar" };
+            
+            ingredients = Op.on(ingredients).addAll("Olive Oil", "Balsamic Vinegar").get();
+
+            assertEquals(String[].class, ingredients.getClass());
+            assertEquals(Arrays.asList(result2), Arrays.asList(ingredients));
+            
+        }
+        
+        ingredients = (String[]) ArrayUtils.clone(originalIngredients);
+        
+        {
+            ingredients = Arrays.copyOf(ingredients, ingredients.length + 1);
+            ingredients[ingredients.length - 1] = "Olive Oil";
+
+            assertEquals(String[].class, ingredients.getClass());
+            assertEquals(Arrays.asList(result), Arrays.asList(ingredients));
+            
+        }
+
+    }
 
     
+    
+    
+    
+    
+    
+    @Test
+    public void testOP4J_016() throws Exception {
+
+        final String[] result = new String[] { "Talc", "Fluorite", "Quartz", "Diamond" };
+        String[] minerals = new String[] { "Talc", "Quartz", "Diamond" };
+        String[] originalMinerals = (String[]) ArrayUtils.clone(minerals);
+        
+        {
+            
+            minerals = Op.on(minerals).insert(1 ,"Fluorite").get();
+
+            assertEquals(String[].class, minerals.getClass());
+            assertEquals(Arrays.asList(result), Arrays.asList(minerals));
+            
+        }
+        
+        minerals = (String[]) ArrayUtils.clone(originalMinerals);
+        
+        {
+            final String[] result2 = new String[] { "Talc", "Fluorite", "Apatite", "Quartz", "Diamond" };
+            
+            minerals = Op.on(minerals).insertAll(1, "Fluorite", "Apatite").get();
+
+            assertEquals(String[].class, minerals.getClass());
+            assertEquals(Arrays.asList(result2), Arrays.asList(minerals));
+            
+        }
+        
+        minerals = (String[]) ArrayUtils.clone(originalMinerals);
+        
+        {
+            minerals = Arrays.copyOf(minerals, minerals.length + 1);
+            for (int i = (minerals.length - 1), z = 1; i > z; i--) {
+                minerals[i] = minerals[i - 1];
+            }
+            minerals[1] = "Fluorite";
+
+            assertEquals(String[].class, minerals.getClass());
+            assertEquals(Arrays.asList(result), Arrays.asList(minerals));
+            
+        }
+
+    }
+
     
     
     
