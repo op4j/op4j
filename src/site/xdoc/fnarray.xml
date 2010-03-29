@@ -85,12 +85,26 @@
       <subsection name="FnArrayOf">
 
         <p>
-          
+          The functions in <b>FnArrayOf</b> are applied on <em>Arrays</em>. <em>FnArrayOf is a parameterizable class</em> so, 
+          in order to use it, you must specify the type parameter (i.e. FnArray.ofBigDecimal(), FnArray.ofLong(), 
+          FnArray.of(final Type&lt;T&gt; type), ...). <code>FnArray.of(final Type&lt;T&gt; type)</code>
+          is the most generic method that gives you access to <em>FnArrayOf</em> though there are some shortcuts to common classes:
+          <code>FnArray.ofBigDecimal(), FnArray.ofInteger(), FnArray.ofDate(), FnArray.ofCharacter(), ...</code>
+          The examples below show how this functions can be used:                 
         </p>
         
         <div class="source">
         <pre>
-        </pre>
+/* This piece of code converts the Strings into Calendar and sorts them */        
+Op.on(new String[] {"2000/11/10", "2010/10/10", "2000/01/10"})
+	.forEach().exec(Types.CALENDAR, FnString.toCalendar("yyyy/MM/dd")).endFor()
+	.exec(FnArray.ofCalendar().sort()).get();
+/* This piece of code creates the map {first = [23], second = [2.3], third = [-23.456]} */        
+Op.on(new BigDecimal[] {BigDecimal.valueOf(23), BigDecimal.valueOf(2.3), BigDecimal.valueOf(-23.456)})
+	.exec(FnArray.ofBigDecimal().zipAndGroupKeys("first", "second", "third")).get();
+/* This piece of code creates the map {ff0000 = red, 00ff00 = green, 0000ff = blue} */	
+Op.on(new String[] {"ff0000", "red", "00ff00", "green", "0000ff", "blue"})
+	.exec(FnArray.ofString().couple()).get();</pre>
         </div>
         
         <div>
