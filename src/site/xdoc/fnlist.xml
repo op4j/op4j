@@ -89,10 +89,11 @@
           in order to use it, you must specify the type parameter (i.e. FnList.ofBigDecimal(), FnList.ofLong(), 
           FnList.of(final Type&lt;T&gt; type), ...). <code>FnList.of(final Type&lt;T&gt; type)</code>
           is the most generic method that gives you access to <em>FnListOf</em> though there are some shortcuts for common classes:
-          <code>FnList.ofBigDecimal(), FnList.ofInteger(), FnList.ofDate(), FnList.ofCharacter(), ...</code>
-          The examples below show how this functions can be used:                 
+          <code>FnList.ofBigDecimal(), FnList.ofInteger(), FnList.ofDate(), FnList.ofCharacter(), ...</code>                          
         </p>
-        
+        <p>
+          The examples below show how this functions can be used:
+        </p>
         <div class="source">
         <pre></pre>
         </div>
