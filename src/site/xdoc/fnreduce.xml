@@ -131,20 +131,20 @@ Op.on(new Integer[] {2, 3, 4}).toList()
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 		<tbody>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td></td><td></td></tr>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td></td><td></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td></td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td></td><td></td></tr>
-		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td></td><td></td></tr>
+		<tr class="a"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr class="b"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr class="a"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigDecimal&gt;</td><td></td><td></td></tr>
 		</tbody></table>
         <!--  -->
         </div>
@@ -173,20 +173,20 @@ Op.on(new BigInteger[] {BigInteger.valueOf(3), BigInteger.valueOf(5), BigInteger
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 		<tbody>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td></td><td></td></tr>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td></td><td></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td></td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td></td><td></td></tr>
-		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td></td><td></td></tr>
+		<tr class="a"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr class="b"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr class="a"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,BigInteger&gt;</td><td></td><td></td></tr>
 		</tbody></table>
         <!--  -->
         </div>
@@ -205,7 +205,7 @@ Op.on(new BigInteger[] {BigInteger.valueOf(3), BigInteger.valueOf(5), BigInteger
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 		<tbody>
-		<tr><td><b>or</b></td><td>Function&lt;ValuePair&lt;Boolean,Boolean&gt;,Boolean&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>or</b></td><td>Function&lt;ValuePair&lt;Boolean,Boolean&gt;,Boolean&gt;</td><td></td><td></td></tr>
 		</tbody></table>
         <!--  -->
         </div>
@@ -224,20 +224,20 @@ Op.on(new BigInteger[] {BigInteger.valueOf(3), BigInteger.valueOf(5), BigInteger
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 		<tbody>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td></td><td></td></tr>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td></td><td></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td></td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td></td><td></td></tr>
-		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td></td><td></td></tr>
+		<tr class="a"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr class="b"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr class="a"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Byte&gt;</td><td></td><td></td></tr>
 		</tbody></table>
         <!--  -->
         </div>
@@ -268,20 +268,20 @@ Op.on(new Integer[] {2, 3, 4}).toList()
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 		<tbody>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td></td><td></td></tr>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td></td><td></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td></td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td></td><td></td></tr>
-		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td></td><td></td></tr>
+		<tr class="a"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr class="b"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr class="a"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Double&gt;</td><td></td><td></td></tr>
 		</tbody></table>
         <!--  -->
         </div>
@@ -300,20 +300,20 @@ Op.on(new Integer[] {2, 3, 4}).toList()
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 		<tbody>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td></td><td></td></tr>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td></td><td></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td></td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td></td><td></td></tr>
-		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td></td><td></td></tr>
+		<tr class="a"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr class="b"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr class="a"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Float&gt;</td><td></td><td></td></tr>
 		</tbody></table>
         <!--  -->
         </div>
@@ -332,20 +332,20 @@ Op.on(new Integer[] {2, 3, 4}).toList()
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 		<tbody>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td></td><td></td></tr>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td></td><td></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td></td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td></td><td></td></tr>
-		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td></td><td></td></tr>
+		<tr class="a"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr class="b"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr class="a"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Integer&gt;</td><td></td><td></td></tr>
 		</tbody></table>
         <!--  -->
         </div>
@@ -364,20 +364,20 @@ Op.on(new Integer[] {2, 3, 4}).toList()
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 		<tbody>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td></td><td></td></tr>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td></td><td></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td></td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td></td><td></td></tr>
-		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td></td><td></td></tr>
+		<tr class="a"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr class="b"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr class="a"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Long&gt;</td><td></td><td></td></tr>
 		</tbody></table>
         <!--  -->
         </div>
@@ -396,20 +396,20 @@ Op.on(new Integer[] {2, 3, 4}).toList()
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 		<tbody>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td></td><td></td></tr>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-		<tr><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td></td><td></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
-		<tr><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td></td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td></td><td></td></tr>
-		<tr><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td>MathContext mathContext</td><td></td></tr>
-		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-		<tr><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td></td><td></td></tr>
+		<tr class="a"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr class="b"><td><b>avg</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td>RoundingMode roundingMode</td><td></td></tr>
+		<tr class="a"><td><b>div</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>mult</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td></td><td></td></tr>
+		<tr class="b"><td><b>remainder</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td>MathContext mathContext</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>subt</b></td><td>Function&lt;ValuePair&lt;Number,Number&gt;,Short&gt;</td><td></td><td></td></tr>
 		</tbody></table>
         <!--  -->
         </div>
@@ -428,7 +428,7 @@ Op.on(new Integer[] {2, 3, 4}).toList()
         <table border="0">
 		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 		<tbody>
-		<tr><td><b>join</b></td><td>Function&lt;ValuePair&lt;String,String&gt;,String&gt;</td><td>String separator</td><td></td></tr>
+		<tr class="b"><td><b>join</b></td><td>Function&lt;ValuePair&lt;String,String&gt;,String&gt;</td><td>String separator</td><td></td></tr>
 		</tbody></table>
         <!--  -->
         </div>
@@ -457,16 +457,16 @@ Op.on(aListOfComprables))
         <div>
         <!-- Table with functions -->
         <table border="0">
-        <thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
-        <tbody>
-        <tr><td><b>max</b></td><td>Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td></td><td></td></tr>
-        <tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-        <tr><td><b>maxBy</b></td><td>&lt;X extends Comparable&lt;? super X&gt;&gt; Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td>IFunction&lt;? super T,X&gt; function</td><td></td></tr>
-        <tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-        <tr><td><b>min</b></td><td>Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td></td><td></td></tr>
-        <tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-        <tr><td><b>minBy</b></td><td>&lt;X extends Comparable&lt;? super X&gt;&gt; Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td>IFunction&lt;? super T,X&gt; function</td><td></td></tr>
-        </tbody></table>
+		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+		<tbody>
+		<tr class="b"><td><b>max</b></td><td>Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>maxBy</b></td><td>&lt;X extends Comparable&lt;? super X&gt;&gt; Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td>IFunction&lt;? super T,X&gt; function</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>min</b></td><td>Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>minBy</b></td><td>&lt;X extends Comparable&lt;? super X&gt;&gt; Function&lt;ValuePair&lt;T,T&gt;,T&gt;</td><td>IFunction&lt;? super T,X&gt; function</td><td></td></tr>
+		</tbody></table>
         </div>
         
       </subsection>

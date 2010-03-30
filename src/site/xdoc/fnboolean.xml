@@ -24,63 +24,60 @@
 
       <subsection name="2. Functions">
   
-
-
-
 <table border="0">
 <thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><b>and</b></td><td>Function&lt;R,Boolean&gt;</td><td>IFunction&lt;X,Boolean&gt; left<br />IFunction&lt;? super R,Boolean&gt; right</td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>by</b></td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,Y&gt; by<br />IFunction&lt;? super Y, Boolean&gt; eval</td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>eq</b></td><td>Function&lt;Object,Boolean&gt;</td><td>Boolean object</td><td></td></tr>
-<tr><td><b>eq</b></td><td>Function&lt;Object,Boolean&gt;</td><td>boolean object</td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>eqBy</b></td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />Boolean object</td><td></td></tr>
-<tr><td><b>eqBy</b></td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />boolean object</td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>isFalse</b></td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>isNotNull</b></td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>isNotNullBy</b></td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by</td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>isNull</b></td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>isNullBy</b></td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by</td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>isTrue</b></td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>negate</b></td><td>Function&lt;Boolean,Boolean&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>not</b></td><td>Function&lt;T,Boolean&gt;</td><td>IFunction&lt;T, Boolean&gt; function</td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>notEq</b></td><td>Function&lt;Object,Boolean&gt;</td><td>Boolean object</td><td></td></tr>
-<tr><td><b>notEq</b></td><td>Function&lt;Object,Boolean&gt;</td><td>boolean object</td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>notEqBy</b></td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />Boolean object</td><td></td></tr>
-<tr><td><b>notEqBy</b></td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />boolean object</td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>or</b></td><td>Function&lt;R,Boolean&gt;</td><td>IFunction&lt;X,Boolean&gt; left<br />IFunction&lt;? super R,Boolean&gt; right</td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>toBigDecimal</b></td><td>Function&lt;Boolean,BigDecimal&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>toBigInteger</b></td><td>Function&lt;Boolean,BigInteger&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>toBoolean</b></td><td>Function&lt;Number,Boolean&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>toByte</b></td><td>Function&lt;Boolean,Byte&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>toDouble</b></td><td>Function&lt;Boolean,Double&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>toFloat</b></td><td>Function&lt;Boolean,Float&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>toInteger</b></td><td>Function&lt;Boolean,Integer&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>toLong</b></td><td>Function&lt;Boolean,Long&gt;</td><td></td><td></td></tr>
-<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
-<tr><td><b>toShort</b></td><td>Function&lt;Boolean,Short&gt;</td><td></td><td></td></tr>
+<tr class="b"><td><b>and</b></td><td>Function&lt;R,Boolean&gt;</td><td>IFunction&lt;X,Boolean&gt; left<br />IFunction&lt;? super R,Boolean&gt; right</td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="a"><td><b>by</b></td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,Y&gt; by<br />IFunction&lt;? super Y, Boolean&gt; eval</td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="b"><td><b>eq</b></td><td>Function&lt;Object,Boolean&gt;</td><td>Boolean object</td><td></td></tr>
+<tr class="a"><td><b>eq</b></td><td>Function&lt;Object,Boolean&gt;</td><td>boolean object</td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="b"><td><b>eqBy</b></td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />Boolean object</td><td></td></tr>
+<tr class="a"><td><b>eqBy</b></td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />boolean object</td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="b"><td><b>isFalse</b></td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="a"><td><b>isNotNull</b></td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="b"><td><b>isNotNullBy</b></td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by</td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="a"><td><b>isNull</b></td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="b"><td><b>isNullBy</b></td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by</td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="a"><td><b>isTrue</b></td><td>Function&lt;Object,Boolean&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="b"><td><b>negate</b></td><td>Function&lt;Boolean,Boolean&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="a"><td><b>not</b></td><td>Function&lt;T,Boolean&gt;</td><td>IFunction&lt;T, Boolean&gt; function</td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="b"><td><b>notEq</b></td><td>Function&lt;Object,Boolean&gt;</td><td>Boolean object</td><td></td></tr>
+<tr class="a"><td><b>notEq</b></td><td>Function&lt;Object,Boolean&gt;</td><td>boolean object</td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="b"><td><b>notEqBy</b></td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />Boolean object</td><td></td></tr>
+<tr class="a"><td><b>notEqBy</b></td><td>Function&lt;X,Boolean&gt;</td><td>IFunction&lt;X,?&gt; by<br />boolean object</td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="b"><td><b>or</b></td><td>Function&lt;R,Boolean&gt;</td><td>IFunction&lt;X,Boolean&gt; left<br />IFunction&lt;? super R,Boolean&gt; right</td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="a"><td><b>toBigDecimal</b></td><td>Function&lt;Boolean,BigDecimal&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="b"><td><b>toBigInteger</b></td><td>Function&lt;Boolean,BigInteger&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="a"><td><b>toBoolean</b></td><td>Function&lt;Number,Boolean&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="b"><td><b>toByte</b></td><td>Function&lt;Boolean,Byte&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="a"><td><b>toDouble</b></td><td>Function&lt;Boolean,Double&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="b"><td><b>toFloat</b></td><td>Function&lt;Boolean,Float&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="a"><td><b>toInteger</b></td><td>Function&lt;Boolean,Integer&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="b"><td><b>toLong</b></td><td>Function&lt;Boolean,Long&gt;</td><td></td><td></td></tr>
+<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+<tr class="a"><td><b>toShort</b></td><td>Function&lt;Boolean,Short&gt;</td><td></td><td></td></tr>
 </tbody></table>
 
       </subsection>
