@@ -21,49 +21,49 @@
         </p>
         <ul>
             <li>
-                <code>FnList.ofBigDecimal()</code>: returns <a href="#FnListOf">#FnListOf&lt;BigDecimal&gt;</a>                       
+                <code>FnList.ofBigDecimal()</code>: returns <a href="#FnListOf">FnListOf&lt;BigDecimal&gt;</a>                       
             </li>
             <li>
-                <code>FnList.ofBigInteger()</code>: returns <a href="#FnListOf">#FnListOf&lt;BigInteger&gt;</a>                      
+                <code>FnList.ofBigInteger()</code>: returns <a href="#FnListOf">FnListOf&lt;BigInteger&gt;</a>                      
             </li>
             <li>
-                <code>FnList.ofBoolean()</code>: returns <a href="#FnListOf">#FnListOf&lt;Boolean&gt;</a>                            
+                <code>FnList.ofBoolean()</code>: returns <a href="#FnListOf">FnListOf&lt;Boolean&gt;</a>                            
             </li>
             <li>
-                <code>FnList.ofByte()</code>: returns <a href="#FnListOf">#FnListOf&lt;Byte&gt;</a>                               
+                <code>FnList.ofByte()</code>: returns <a href="#FnListOf">FnListOf&lt;Byte&gt;</a>                               
             </li> 
             <li>
-                <code>FnList.ofCalendar()</code>: returns <a href="#FnListOf">#FnListOf&lt;Calendar&gt;</a>                          
+                <code>FnList.ofCalendar()</code>: returns <a href="#FnListOf">FnListOf&lt;Calendar&gt;</a>                          
             </li> 
             <li>
-                <code>FnList.ofCharacter()</code>: returns <a href="#FnListOf">#FnListOf&lt;Character&gt;</a>                         
+                <code>FnList.ofCharacter()</code>: returns <a href="#FnListOf">FnListOf&lt;Character&gt;</a>                         
             </li> 
             <li>
-                <code>FnList.ofDate()</code>: returns <a href="#FnListOf">#FnListOf&lt;Date&gt;</a>                               
+                <code>FnList.ofDate()</code>: returns <a href="#FnListOf">FnListOf&lt;Date&gt;</a>                               
             </li>
             <li>
-                <code>FnList.ofDouble()</code>: returns <a href="#FnListOf">#FnListOf&lt;Double&gt;</a>                              
+                <code>FnList.ofDouble()</code>: returns <a href="#FnListOf">FnListOf&lt;Double&gt;</a>                              
             </li>
             <li>
-                <code>FnList.ofFloat()</code>: returns <a href="#FnListOf">#FnListOf&lt;Float&gt;</a>                               
+                <code>FnList.ofFloat()</code>: returns <a href="#FnListOf">FnListOf&lt;Float&gt;</a>                               
             </li> 
             <li>
-                <code>FnList.ofInteger()</code>: returns <a href="#FnListOf">#FnListOf&lt;Integer&gt;</a>                            
+                <code>FnList.ofInteger()</code>: returns <a href="#FnListOf">FnListOf&lt;Integer&gt;</a>                            
             </li>
             <li>
-                <code>FnList.ofLong()</code>: returns <a href="#FnListOf">#FnListOf&lt;Long&gt;</a>                              
+                <code>FnList.ofLong()</code>: returns <a href="#FnListOf">FnListOf&lt;Long&gt;</a>                              
             </li> 
             <li>
-                <code>FnList.ofObject()</code>: returns <a href="#FnListOf">#FnListOf&lt;Object&gt;</a>                              
+                <code>FnList.ofObject()</code>: returns <a href="#FnListOf">FnListOf&lt;Object&gt;</a>                              
             </li>
             <li>
-                <code>FnList.ofShort()</code>: returns <a href="#FnListOf">#FnListOf&lt;Short&gt;</a>                               
+                <code>FnList.ofShort()</code>: returns <a href="#FnListOf">FnListOf&lt;Short&gt;</a>                               
             </li>
             <li>
-                <code>FnList.ofString()</code>: returns <a href="#FnListOf">#FnListOf&lt;String&gt;</a>                              
+                <code>FnList.ofString()</code>: returns <a href="#FnListOf">FnListOf&lt;String&gt;</a>                              
             </li>
             <li>
-                <code>FnList.of(final Type&lt;T&gt; type)</code>: returns <a href="#FnListOf">#FnListOf&lt;T&gt;</a> 
+                <code>FnList.of(final Type&lt;T&gt; type)</code>: returns <a href="#FnListOf">FnListOf&lt;T&gt;</a> 
                 parameterized with the given type. This is the most generic function in <em>FnList</em>                               
             </li>
             <li>
@@ -87,9 +87,12 @@
         <p>
           The functions in <b>FnListOf</b> are applied on <em>Lists</em>. <em>FnListOf is a parameterizable class</em> so, 
           in order to use it, you must specify the type parameter (i.e. FnList.ofBigDecimal(), FnList.ofLong(), 
-          FnList.of(final Type&lt;T&gt; type), ...). <code>FnList.of(final Type&lt;T&gt; type)</code>
+          FnList.of(final Type&lt;T&gt; type), ...).                           
+        </p>
+        <p>
+          <code>FnList.of(final Type&lt;T&gt; type)</code>
           is the most generic method that gives you access to <em>FnListOf</em> though there are some shortcuts for common classes:
-          <code>FnList.ofBigDecimal(), FnList.ofInteger(), FnList.ofDate(), FnList.ofCharacter(), ...</code>                          
+          <code>FnList.ofBigDecimal(), FnList.ofInteger(), FnList.ofDate(), FnList.ofCharacter(), ...</code>
         </p>
         <p>
           The examples below show how this functions can be used:
@@ -100,9 +103,11 @@
 Op.onListFor("2000/11/10", "2010/10/10", "2000/01/10")
 	.forEach().exec(FnString.toCalendar("yyyy/MM/dd")).endFor()
 	.exec(FnList.ofCalendar().sort()).get();
+	
 /* This piece of code creates the map {first = [23], second = [2.3], third = [-23.456]} */        
 Op.onListFor(BigDecimal.valueOf(23), BigDecimal.valueOf(2.3), BigDecimal.valueOf(-23.456))
 	.exec(FnList.ofBigDecimal().zipAndGroupKeys("first", "second", "third")).get();
+	
 /* This piece of code creates the map {ff0000 = red, 00ff00 = green, 0000ff = blue} */	
 Op.onListFor("ff0000", "red", "00ff00", "green", "0000ff", "blue")
 	.exec(FnList.ofString().couple()).get();</pre>        
@@ -110,7 +115,81 @@ Op.onListFor("ff0000", "red", "00ff00", "green", "0000ff", "blue")
         
         <div>
 	    <!-- Table with functions -->
-        
+        <table border="0">
+		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+		<tbody>
+		<tr><td><b>addAll</b></td><td>Function&lt;List&lt;T&gt;,List&lt;T&gt;&gt;</td><td>Collection&lt;T&gt; collection</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>all</b></td><td>Function&lt;List&lt;T&gt;,Boolean&gt;</td><td>IFunction&lt;? super T,Boolean&gt; eval</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>any</b></td><td>Function&lt;List&lt;T&gt;,Boolean&gt;</td><td>IFunction&lt;? super T,Boolean&gt; eval</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>contains</b></td><td>Function&lt;List&lt;T&gt;,Boolean&gt;</td><td>T object</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>count</b></td><td>Function&lt;List&lt;?&gt;,Integer&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>couple</b></td><td>Function&lt;List&lt;T&gt;,Map&lt;T,T&gt;&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>coupleAndGroup</b></td><td>Function&lt;List&lt;T&gt;,Map&lt;T,List&lt;T&gt;&gt;&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>distinct</b></td><td>Function&lt;List&lt;T&gt;,List&lt;T&gt;&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>notContains</b></td><td>Function&lt;List&lt;T&gt;,Boolean&gt;</td><td>T object</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>reduce</b></td><td>Function&lt;List&lt;T&gt;,T&gt;</td><td>IFunction&lt;? extends ValuePair&lt;? super T,? super T&gt;, ? extends T&gt; function</td><td></td></tr>
+		<tr><td><b>reduce</b></td><td>Function&lt;List&lt;T&gt;,R&gt;</td><td>IFunction&lt;? extends ValuePair&lt;? super R,? super T&gt;,R&gt; function<br />R initialValue</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>removeAllFalse</b></td><td>Function&lt;List&lt;T&gt;,List&lt;T&gt;&gt;</td><td>IFunction&lt;? super T,Boolean&gt; eval</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>removeAllNotNullAndFalse</b></td><td>Function&lt;List&lt;T&gt;,List&lt;T&gt;&gt;</td><td>IFunction&lt;? super T,Boolean&gt; eval</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>removeAllNotNullAndTrue</b></td><td>Function&lt;List&lt;T&gt;,List&lt;T&gt;&gt;</td><td>IFunction&lt;? super T,Boolean&gt; eval</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>removeAllNull</b></td><td>Function&lt;List&lt;T&gt;,List&lt;T&gt;&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>removeAllNullOrFalse</b></td><td>Function&lt;List&lt;T&gt;,List&lt;T&gt;&gt;</td><td>IFunction&lt;? super T,Boolean&gt; eval</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>removeAllNullOrTrue</b></td><td>Function&lt;List&lt;T&gt;,List&lt;T&gt;&gt;</td><td>IFunction&lt;? super T,Boolean&gt; eval</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>removeAllTrue</b></td><td>Function&lt;List&lt;T&gt;,List&lt;T&gt;&gt;</td><td>IFunction&lt;? super T,Boolean&gt; eval</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>reverse</b></td><td>Function&lt;List&lt;T&gt;,List&lt;T&gt;&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>sort</b></td><td>Function&lt;List&lt;T&gt;,List&lt;T&gt;&gt;</td><td>Comparator&lt;? super T&gt; comparator</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>sortBy</b></td><td>Function&lt;List&lt;T&gt;,List&lt;T&gt;&gt;</td><td>IFunction&lt;? super T, ?&gt; by</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>toArray</b></td><td>Function&lt;List&lt;T&gt;,T[]&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>toGroupMap</b></td><td>Function&lt;List&lt;T&gt;,Map&lt;K,List&lt;V&gt;&gt;&gt;</td><td>IFunction&lt;? super T,K&gt; keyFunction<br />IFunction&lt;? super T,V&gt; valueFunction</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>toMap</b></td><td>Function&lt;List&lt;T&gt;,Map&lt;K,V&gt;&gt;</td><td>IFunction&lt;? super T,K&gt; keyFunction<br />IFunction&lt;? super T,V&gt; valueFunction</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>toSet</b></td><td>Function&lt;List&lt;T&gt;,Set&lt;T&gt;&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>unfold</b></td><td>Function&lt;T,List&lt;T&gt;&gt;</td><td>IFunction&lt;? super T,? extends T&gt; function</td><td></td></tr>
+		<tr><td><b>unfold</b></td><td>Function&lt;T,List&lt;T&gt;&gt;</td><td>IFunction&lt;? super T,? extends T&gt; function<br />IFunction&lt;? super T,Boolean&gt; whileCondition</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>zipAndGroupKeysBy</b></td><td>Function&lt;List&lt;T&gt;,Map&lt;K,List&lt;T&gt;&gt;&gt;</td><td>IFunction&lt;? super T, K&gt; eval</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>zipAndGroupKeysFrom</b></td><td>Function&lt;List&lt;T&gt;,Map&lt;K,List&lt;T&gt;&gt;&gt;</td><td>Collection&lt;K&gt; keys</td><td></td></tr>
+		<tr><td><b>zipAndGroupKeysFrom</b></td><td>Function&lt;List&lt;T&gt;,Map&lt;K,List&lt;T&gt;&gt;&gt;</td><td>K[] keys</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>zipAndGroupValuesBy</b></td><td>Function&lt;List&lt;T&gt;,Map&lt;T,List&lt;V&gt;&gt;&gt;</td><td>IFunction&lt;? super T, V&gt; eval</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>zipAndGroupValuesFrom</b></td><td>Function&lt;List&lt;T&gt;,Map&lt;T,List&lt;V&gt;&gt;&gt;</td><td>Collection&lt;V&gt; values</td><td></td></tr>
+		<tr><td><b>zipAndGroupValuesFrom</b></td><td>Function&lt;List&lt;T&gt;,Map&lt;T,List&lt;V&gt;&gt;&gt;</td><td>V[] values</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>zipKeysBy</b></td><td>Function&lt;List&lt;T&gt;,Map&lt;K,T&gt;&gt;</td><td>IFunction&lt;? super T, K&gt; eval</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>zipKeysFrom</b></td><td>Function&lt;List&lt;T&gt;,Map&lt;K,T&gt;&gt;</td><td>Collection&lt;K&gt; keys</td><td></td></tr>
+		<tr><td><b>zipKeysFrom</b></td><td>Function&lt;List&lt;T&gt;,Map&lt;K,T&gt;&gt;</td><td>K[] keys</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>zipValuesBy</b></td><td>Function&lt;List&lt;T&gt;,Map&lt;T,V&gt;&gt;</td><td>IFunction&lt;? super T, V&gt; eval</td><td></td></tr>
+		<tr bgcolor="#A4A4A4"><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr><td><b>zipValuesFrom</b></td><td>Function&lt;List&lt;T&gt;,Map&lt;T,V&gt;&gt;</td><td>Collection&lt;V&gt; values</td><td></td></tr>
+		<tr><td><b>zipValuesFrom</b></td><td>Function&lt;List&lt;T&gt;,Map&lt;T,V&gt;&gt;</td><td>V[] values</td><td></td></tr>
+		</tbody></table>
         <!--  -->
         </div>
       
@@ -133,7 +212,11 @@ Op.on(new String[][] {Op.onArrayFor("first", "second").get(), Op.onArrayFor("thi
         
         <div>
         <!-- Table with functions -->
-        
+        <table border="0">
+		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+		<tbody>
+		<tr><td><b>flattenArrays</b></td><td>Function&lt;List&lt;T[]&gt;,List&lt;T&gt;&gt;</td><td></td><td></td></tr>
+		</tbody></table>
         <!--  -->
         </div>
         
@@ -148,12 +231,19 @@ Op.on(new String[][] {Op.onArrayFor("first", "second").get(), Op.onArrayFor("thi
         </p> 
 
         <div class="source">
-        <pre></pre>
+        <pre>
+/* Suppose we have a List&lt;List&lt;String&gt;&gt;, the piece of code below would return the flattened lists as a single list: ["first", "second", "third"] */
+Op.onListFor(Op.onListFor("first", "second").get(), Op.onListFor("third").get())
+              .exec(FnList.ofListOf(Types.STRING).flattenLists()).get();</pre>
         </div>
         
         <div>
         <!-- Table with functions -->
-        
+        <table border="0">
+		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+		<tbody>
+		<tr><td><b>flattenLists</b></td><td>Function&lt;List&lt;List&lt;T&gt;&gt;,List&lt;T&gt;&gt;</td><td></td><td></td></tr>
+		</tbody></table>
         <!--  -->
         </div>
         
@@ -168,12 +258,19 @@ Op.on(new String[][] {Op.onArrayFor("first", "second").get(), Op.onArrayFor("thi
         </p>        
         
         <div class="source">
-        <pre></pre>
+        <pre>
+/* Suppose we have a List&lt;Set&lt;String&gt;&gt;, the piece of code below would return the flattened sets as a single list: ["first", "second", "third"] */
+Op.onListFor(Op.onSetFor("first", "second").get(), Op.onSetFor("third").get())
+              .exec(FnList.ofSetOf(Types.STRING).flattenSets()).get()</pre>
         </div>
         
         <div>
         <!-- Table with functions -->
-        
+        <table border="0">
+		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+		<tbody>
+		<tr><td><b>flattenSets</b></td><td>Function&lt;List&lt;Set&lt;T&gt;&gt;,List&lt;T&gt;&gt;</td><td></td><td></td></tr>
+		</tbody></table>
         <!--  -->
         </div>
         
