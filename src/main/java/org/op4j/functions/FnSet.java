@@ -24,7 +24,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Set;
 
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
@@ -53,9 +52,6 @@ public class FnSet {
     private static final FnSetOf<Long> OF_LONG = new FnSetOf<Long>(Types.LONG); 
     private static final FnSetOf<Short> OF_SHORT = new FnSetOf<Short>(Types.SHORT); 
     private static final FnSetOf<String> OF_STRING = new FnSetOf<String>(Types.STRING); 
-    
-    private static final Count COUNT = new Count();
-
     
     
     
@@ -133,37 +129,10 @@ public class FnSet {
     }
     
     
-    
-    public static final Function<Set<?>,Integer> count() {
-        return COUNT;
-    }
-
-
-    
-    
     private FnSet() {
         super();
     }
 
-    
-    
-    
-    
-    
-    
-    private static final class Count extends AbstractNotNullFunction<Set<?>,Integer> {
         
-        public Count() {
-            super();
-        }
-        
-        @Override
-        protected Integer notNullExecute(final Set<?> object, final ExecCtx ctx) throws Exception {
-            return Integer.valueOf(object.size());
-        }
-        
-    }
-    
-    
     
 }

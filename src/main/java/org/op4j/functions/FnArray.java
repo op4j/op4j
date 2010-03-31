@@ -53,10 +53,6 @@ public class FnArray {
     private static final FnArrayOf<Short> OF_SHORT = new FnArrayOf<Short>(Types.SHORT); 
     private static final FnArrayOf<String> OF_STRING = new FnArrayOf<String>(Types.STRING); 
     
-    private static final Count COUNT = new Count();
-
-    
-    
     
     
     public static <T> FnArrayOf<T> of(final Type<T> type) {
@@ -134,35 +130,11 @@ public class FnArray {
     
     
     
-    
-    public static final Function<Object[],Integer> count() {
-        return COUNT;
-    }
-    
-    
-    
-    
-    
     private FnArray() {
         super();
     }
     
     
     
-    
-    
-    
-    private static final class Count extends AbstractNotNullFunction<Object[],Integer> {
-        
-        public Count() {
-            super();
-        }
-        
-        @Override
-        protected Integer notNullExecute(final Object[] object, final ExecCtx ctx) throws Exception {
-            return Integer.valueOf(object.length);
-        }
-        
-    }
     
 }
