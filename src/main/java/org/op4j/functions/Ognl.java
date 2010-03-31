@@ -22,18 +22,17 @@ package org.op4j.functions;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import ognl.OgnlException;
 
-import org.apache.commons.collections.map.LRUMap;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.exceptions.ExecutionException;
+import org.op4j.util.OgnlExpressionMap;
 import org.op4j.util.VarArgsUtil;
 
 
@@ -44,9 +43,7 @@ import org.op4j.util.VarArgsUtil;
  */
 public final class Ognl<T,R> extends Function<T,R> {
     
-    @SuppressWarnings("unchecked")
-    private static final Map<String,Object> parsedExpressionsByExpression =
-        Collections.synchronizedMap(new LRUMap(100));
+    private static final OgnlExpressionMap parsedExpressionsByExpression = new OgnlExpressionMap();
     
     
     public static final String TARGET_VARIABLE_NAME = "target";
