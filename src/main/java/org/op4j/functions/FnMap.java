@@ -20,8 +20,6 @@
 
 package org.op4j.functions;
 
-import java.util.Map;
-
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 
@@ -40,10 +38,7 @@ public final class FnMap {
     private static final FnMapOf<Integer,String> OF_INTEGER_STRING = new FnMapOf<Integer,String>(Types.INTEGER, Types.STRING);
     private static final FnMapOf<String,Integer> OF_STRING_INTEGER = new FnMapOf<String,Integer>(Types.STRING, Types.INTEGER);
     
-    private static final Count COUNT = new Count();
-
-
-
+    
     
     
     public static <K,V> FnMapOf<K,V> of(final Type<K> keyType, final Type<V> valueType) {
@@ -69,36 +64,11 @@ public final class FnMap {
     
     
     
-    public static final Function<Map<?,?>,Integer> count() {
-        return COUNT;
-    }
-    
-
-    
-    
 
     private FnMap() {
         super();
     }
     
-    
-    
-    
-    
-    
-    
-    private static final class Count extends AbstractNotNullFunction<Map<?,?>,Integer> {
-        
-        public Count() {
-            super();
-        }
-        
-        @Override
-        protected Integer notNullExecute(final Map<?,?> object, final ExecCtx ctx) throws Exception {
-            return Integer.valueOf(object.size());
-        }
-        
-    }
     
     
     
