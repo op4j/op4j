@@ -51,7 +51,8 @@ public final class FnMapOf<K,V> {
     protected final Type<V> valueType;
 
     
-    
+    private static final Count COUNT = new Count();
+
     
     
     
@@ -129,7 +130,7 @@ public final class FnMapOf<K,V> {
     
     
     public final Function<Map<?,?>,Integer> count() {
-        return FnMap.count();
+        return COUNT;
     }
     
     
@@ -819,5 +820,17 @@ public final class FnMapOf<K,V> {
         
     }
     
+    static final class Count extends AbstractNotNullFunction<Map<?,?>,Integer> {
+        
+        public Count() {
+            super();
+        }
+        
+        @Override
+        protected Integer notNullExecute(final Map<?,?> object, final ExecCtx ctx) throws Exception {
+            return Integer.valueOf(object.size());
+        }
+        
+    }
     
 }

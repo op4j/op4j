@@ -56,7 +56,8 @@ public class FnArrayOf<T> {
     protected final Type<T> type;
     
     
-    
+    private static final Count COUNT = new Count();
+
     
     
     
@@ -269,7 +270,7 @@ public class FnArrayOf<T> {
     
     
     public final Function<Object[],Integer> count() {
-        return FnArray.count();
+        return COUNT;
     }
 
     
@@ -1785,5 +1786,17 @@ public class FnArrayOf<T> {
         
     }
     
+    static final class Count extends AbstractNotNullFunction<Object[],Integer> {
+        
+        public Count() {
+            super();
+        }
+        
+        @Override
+        protected Integer notNullExecute(final Object[] object, final ExecCtx ctx) throws Exception {
+            return Integer.valueOf(object.length);
+        }
+        
+    }
     
 }
