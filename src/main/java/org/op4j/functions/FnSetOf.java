@@ -54,7 +54,7 @@ public class FnSetOf<T> {
     protected final Type<T> type;
     
     
-    
+    private static final Count COUNT = new Count();
 
 
 
@@ -265,7 +265,7 @@ public class FnSetOf<T> {
     
     
     public final Function<Set<?>,Integer> count() {
-        return FnSet.count();
+        return COUNT;
     }
     
     
@@ -1469,4 +1469,16 @@ public class FnSetOf<T> {
         
     }
     
+    static final class Count extends AbstractNotNullFunction<Set<?>,Integer> {
+        
+        public Count() {
+            super();
+        }
+        
+        @Override
+        protected Integer notNullExecute(final Set<?> object, final ExecCtx ctx) throws Exception {
+            return Integer.valueOf(object.size());
+        }
+        
+    }
 }

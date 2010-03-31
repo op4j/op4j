@@ -52,7 +52,8 @@ public class FnListOf<T> {
     
     protected final Type<T> type;
 
-    
+    private static final Count COUNT = new Count();
+
 
 
     public final Function<List<T>,List<T>> sort() {
@@ -263,7 +264,7 @@ public class FnListOf<T> {
     
     
     public final Function<List<?>,Integer> count() {
-        return FnList.count();
+        return COUNT;
     }
     
     
@@ -1486,6 +1487,17 @@ public class FnListOf<T> {
         
     }
     
-    
+    static final class Count extends AbstractNotNullFunction<List<?>,Integer> {
+        
+        public Count() {
+            super();
+        }
+        
+        @Override
+        protected Integer notNullExecute(final List<?> object, final ExecCtx ctx) throws Exception {
+            return Integer.valueOf(object.size());
+        }
+        
+    }
     
 }
