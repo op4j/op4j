@@ -1,0 +1,128 @@
+<!DOCTYPE document PUBLIC
+  "-//Apache Software Foundation//DTD XDOC 1.0//EN"
+  "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+
+
+<document>
+  <properties>
+    <title>Functions: FnMap</title>    
+  </properties>
+  <body>
+  
+    <section name="Functions: FnMap">
+
+      
+
+      <subsection name="1. Overview">
+
+        <p>
+            <b><a href="http://www.op4j.org/apidocs/org/op4j/functions/FnMap.html">FnMap</a></b> is a 
+            <em>parameterizable function hub class</em> and, before giving you access to the real functions, you will 
+            have to specify the type parameter, which will give you access to the functions containing the operations
+            on <em>Maps</em>:                                    
+        </p>
+        <ul>
+            <li>
+                <code>FnMap.ofIntegerString()</code>: returns <a href="#FnMapOf">FnMapOf&lt;Integer, String&gt;</a>                       
+            </li>
+            <li>
+                <code>FnMap.ofObjectObject()</code>: returns <a href="#FnMapOf">FnMapOf&lt;Object, Object&gt;</a>                       
+            </li>
+            <li>
+                <code>FnMap.ofStringInteger()</code>: returns <a href="#FnMapOf">FnMapOf&lt;String, Integer&gt;</a>                       
+            </li>
+            <li>
+                <code>FnMap.ofStringString()</code>: returns <a href="#FnMapOf">FnMapOf&lt;String, String&gt;</a>                       
+            </li>
+            <li>
+                <code>FnMap.of()</code>: returns <a href="#FnMapOf">FnMapOf&lt;K, V&gt;</a>                       
+            </li>
+        </ul>            
+      </subsection>
+
+      <subsection name="FnMapOf">
+
+        <p>
+          The functions in <b>FnMapOf</b> are applied on <em>Maps</em>. <em>FnMapOf is a parameterizable class</em> so, 
+          in order to use it, you must specify the type parameter (i.e. FnMap.ofIntegerString(), FnMap.ofStringString(), 
+          FnMap.of(final Type&lt;K&gt; keyType, final Type&lt;V&gt; valueType), ...).                  
+        </p>
+        <p>
+          <code>FnMap.of(final Type&lt;K&gt; keyType, final Type&lt;V&gt; valueType)</code> is the most generic method 
+          that gives you access to <em>FnMapOf</em> though there are some shortcuts for common classes:
+          <code>FnMap.ofIntegerString(), FnMap.ofObjectObject(), FnMap.ofStringInteger() and FnMap.ofStringString()</code>
+        </p>
+        <p>
+          The examples below show how these functions can be used:
+        </p>
+        <div class="source">
+        <pre>
+/* The piece of code below, creates a Map&lt;Integer, String&gt; and removes the entries with null value */
+Op.onMapFor(Integer.valueOf(0), "all").put(Integer.valueOf(1), "first") 
+                .put(Integer.valueOf(2), null).put(Integer.valueOf(3), "third")
+                .exec(FnMap.ofIntegerString().removeAllFalse(
+                        new IFunction&lt;Map.Entry&lt;Integer, String&gt;, Boolean>() {
+                    public Boolean execute(Entry&lt;Integer, String&gt; input,
+                            ExecCtx ctx) throws Exception {
+                        return input.getValue() != null;
+                    }
+                })).get()        
+        </pre>        
+        </div>
+        
+        <div>
+        <!-- Table with functions -->
+        <table border="0">
+		<thead><tr><th>Function name</th><th>Type</th><th width="240px">Params</th><th>Description</th></tr></thead>
+		<tbody>
+		<tr class="b"><td><b>all</b></td><td>Function&lt;Map&lt;K,V&gt;,Boolean&gt;</td><td>IFunction&lt;? super Map.Entry&lt;K,V&gt;,Boolean&gt; eval</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>any</b></td><td>Function&lt;Map&lt;K,V&gt;,Boolean&gt;</td><td>IFunction&lt;? super Map.Entry&lt;K,V&gt;,Boolean&gt; eval</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>containsAllKeys</b></td><td>Function&lt;Map&lt;K,V&gt;,Boolean&gt;</td><td>K... keys</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>containsAnyKeys</b></td><td>Function&lt;Map&lt;K,V&gt;,Boolean&gt;</td><td>K... keys</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>containsKey</b></td><td>Function&lt;Map&lt;K,V&gt;,Boolean&gt;</td><td>K key</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>containsNoneKeys</b></td><td>Function&lt;Map&lt;K,V&gt;,Boolean&gt;</td><td>K... keys</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>count</b></td><td>Function&lt;Map&lt;?,?&gt;,Integer&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>extractKeys</b></td><td>Function&lt;Map&lt;K,V&gt;,Set&lt;K&gt;&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>extractValues</b></td><td>Function&lt;Map&lt;K,V&gt;,List&lt;V&gt;&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>insert</b></td><td>Function&lt;Map&lt;K,V&gt;,Map&lt;K,V&gt;&gt;</td><td>int position<br />K key<br />V value</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>insertAll</b></td><td>Function&lt;Map&lt;K,V&gt;,Map&lt;K,V&gt;&gt;</td><td>int position<br />Map&lt;K,V&gt; map</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>notContainsKey</b></td><td>Function&lt;Map&lt;K,V&gt;,Boolean&gt;</td><td>K key</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>put</b></td><td>Function&lt;Map&lt;K,V&gt;,Map&lt;K,V&gt;&gt;</td><td>K key<br />V value</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>putAll</b></td><td>Function&lt;Map&lt;K,V&gt;,Map&lt;K,V&gt;&gt;</td><td>Map&lt;K,V&gt; map</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>removeAllFalse</b></td><td>Function&lt;Map&lt;K,V&gt;,Map&lt;K,V&gt;&gt;</td><td>IFunction&lt;? super Entry&lt;K,V&gt;,Boolean&gt; eval</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>removeAllKeys</b></td><td>Function&lt;Map&lt;K,V&gt;,Map&lt;K,V&gt;&gt;</td><td>K... keys</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>removeAllKeysNot</b></td><td>Function&lt;Map&lt;K,V&gt;,Map&lt;K,V&gt;&gt;</td><td>K... keys</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>removeAllTrue</b></td><td>Function&lt;Map&lt;K,V&gt;,Map&lt;K,V&gt;&gt;</td><td>IFunction&lt;? super Entry&lt;K,V&gt;,Boolean&gt; eval</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>reverse</b></td><td>Function&lt;Map&lt;K,V&gt;,Map&lt;K,V&gt;&gt;</td><td></td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="a"><td><b>sortBy</b></td><td>Function&lt;Map&lt;K,V&gt;,Map&lt;K,V&gt;&gt;</td><td>IFunction&lt;? super Map.Entry&lt;K,V&gt;, ?&gt; by</td><td></td></tr>
+		<tr bgcolor="#A4A4A4" class=""><td bgcolor="#A4A4A4" colspan="4"></td></tr>
+		<tr class="b"><td><b>sortEntries</b></td><td>Function&lt;Map&lt;K,V&gt;,Map&lt;K,V&gt;&gt;</td><td>Comparator&lt;? super Entry&lt;K,V&gt;&gt; comparator</td><td></td></tr>
+		</tbody></table>        
+        <!--  -->
+        </div>
+      
+      </subsection>
+
+    </section>
+</body>
+</document>
+

@@ -95,7 +95,7 @@
           <code>FnList.ofBigDecimal(), FnList.ofInteger(), FnList.ofDate(), FnList.ofCharacter(), ...</code>
         </p>
         <p>
-          The examples below show how this functions can be used:
+          The examples below show how these functions can be used:
         </p>
         <div class="source">
         <pre>
