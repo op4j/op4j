@@ -1450,7 +1450,7 @@ public final class FnNumber {
                 throws Exception {
             
             if (input == null || this.other == null) {
-                return Boolean.FALSE;
+                return Boolean.valueOf(input == null && this.other == null);
             } else if (input instanceof BigDecimal) { 
                 if (this.other instanceof BigDecimal) {
                     return Boolean.valueOf(((BigDecimal)input).compareTo((BigDecimal)this.other) == 0);
@@ -1477,7 +1477,7 @@ public final class FnNumber {
                 throws Exception {
             
             if (input == null || this.other == null) {
-                return Boolean.TRUE;
+                return Boolean.valueOf(input != null || this.other != null);
             } else if (input instanceof BigDecimal) { 
                 if (this.other instanceof BigDecimal) {
                     return Boolean.valueOf(((BigDecimal)input).compareTo((BigDecimal)this.other) != 0);

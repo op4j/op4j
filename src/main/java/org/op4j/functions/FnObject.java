@@ -690,7 +690,7 @@ public final class FnObject {
 
         public Boolean execute(final Object input, final ExecCtx ctx) throws Exception {
             if (input == null) {
-                return Boolean.TRUE;
+                return Boolean.valueOf(this.object != null);
             }
             return Boolean.valueOf(!input.equals(this.object));
         }
