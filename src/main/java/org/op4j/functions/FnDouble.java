@@ -270,46 +270,46 @@ public final class FnDouble {
                 decimalSeparatorAlwaysShown));
     }
     public static final Function<Double,Boolean> eq(final Number object) {
-        return (Function<Double,Boolean>)((Function)FnObject.eq(object));
+        return (Function<Double,Boolean>)((Function)FnNumber.eq(object));
     }
     public static final Function<Double,Boolean> eq(final float object) {
-        return (Function<Double,Boolean>)((Function)FnObject.eq(object));
+        return (Function<Double,Boolean>)((Function)FnNumber.eq(object));
     }
     public static final Function<Double,Boolean> eq(final double object) {
-        return (Function<Double,Boolean>)((Function)FnObject.eq(object));
+        return (Function<Double,Boolean>)((Function)FnNumber.eq(object));
     }
     public static final Function<Double,Boolean> eq(final byte object) {
-        return (Function<Double,Boolean>)((Function)FnObject.eq(object));
+        return (Function<Double,Boolean>)((Function)FnNumber.eq(object));
     }
     public static final Function<Double,Boolean> eq(final short object) {
-        return (Function<Double,Boolean>)((Function)FnObject.eq(object));
+        return (Function<Double,Boolean>)((Function)FnNumber.eq(object));
     }
     public static final Function<Double,Boolean> eq(final int object) {
-        return (Function<Double,Boolean>)((Function)FnObject.eq(object));
+        return (Function<Double,Boolean>)((Function)FnNumber.eq(object));
     }
     public static final Function<Double,Boolean> eq(final long object) {
-        return (Function<Double,Boolean>)((Function)FnObject.eq(object));
+        return (Function<Double,Boolean>)((Function)FnNumber.eq(object));
     }
     public static final Function<Double,Boolean> notEq(final Number object) {
-        return (Function<Double,Boolean>)((Function)FnObject.notEq(object));
+        return (Function<Double,Boolean>)((Function)FnNumber.notEq(object));
     }
     public static final Function<Double,Boolean> notEq(final float object) {
-        return (Function<Double,Boolean>)((Function)FnObject.notEq(object));
+        return (Function<Double,Boolean>)((Function)FnNumber.notEq(object));
     }
     public static final Function<Double,Boolean> notEq(final double object) {
-        return (Function<Double,Boolean>)((Function)FnObject.notEq(object));
+        return (Function<Double,Boolean>)((Function)FnNumber.notEq(object));
     }
     public static final Function<Double,Boolean> notEq(final byte object) {
-        return (Function<Double,Boolean>)((Function)FnObject.notEq(object));
+        return (Function<Double,Boolean>)((Function)FnNumber.notEq(object));
     }
     public static final Function<Double,Boolean> notEq(final short object) {
-        return (Function<Double,Boolean>)((Function)FnObject.notEq(object));
+        return (Function<Double,Boolean>)((Function)FnNumber.notEq(object));
     }
     public static final Function<Double,Boolean> notEq(final int object) {
-        return (Function<Double,Boolean>)((Function)FnObject.notEq(object));
+        return (Function<Double,Boolean>)((Function)FnNumber.notEq(object));
     }
     public static final Function<Double,Boolean> notEq(final long object) {
-        return (Function<Double,Boolean>)((Function)FnObject.notEq(object));
+        return (Function<Double,Boolean>)((Function)FnNumber.notEq(object));
     }
     public static final Function<Double,Boolean> lessThan(final Number object) {
         return (Function<Double,Boolean>)((Function)FnObject.lessThan(object));
