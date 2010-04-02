@@ -33,7 +33,6 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.StringEscapeUtils;
@@ -97,42 +96,143 @@ public final class FnString {
 
 	
     
+	/**
+	 * <p>
+     * Converts a String into a BigDecimal, using the default configuration
+     * for for decimal point and precision.
+	 * </p>
+	 * 
+	 * @return the equivalent BigDecimal object
+	 */
     public static final Function<String,BigDecimal> toBigDecimal() {
         return TO_BIG_DECIMAL;
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a BigDecimal, using the specified locale for decimal
+     * point and thousands separator configuration.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number was written
+     * @return the equivalent BigDecimal object
+     */
     public static final Function<String,BigDecimal> toBigDecimal(final Locale locale) {
         return new ToBigDecimal(locale);
     }
+
     
+    /**
+     * <p>
+     * Converts a String into a BigDecimal, using the specified locale for decimal
+     * point and thousands separator configuration. Locale is specified as a String
+     * (for example: "en_US", "es_ES", etc.)
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number was written
+     * @return the equivalent BigDecimal object
+     */
     public static final Function<String,BigDecimal> toBigDecimal(final String locale) {
         return new ToBigDecimal(locale);
     }
+
     
+    /**
+     * <p>
+     * Converts a String into a BigDecimal, using the specified decimal point
+     * configuration ({@link DecimalPoint}). The targetString should contain no
+     * thousand separators.
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return the equivalent BigDecimal object
+     */
     public static final Function<String,BigDecimal> toBigDecimal(final DecimalPoint decimalPoint) {
         return new ToBigDecimal(decimalPoint);
     }
+
     
+    /**
+     * <p>
+     * Converts a String into a BigDecimal, using the default configuration
+     * for for decimal point and thousands separator and establishing the specified scale. Rounding
+     * mode is used for setting the scale to the specified value. 
+     * </p>
+     * 
+     * @param scale the desired scale for the resulting BigDecimal object
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @return the equivalent BigDecimal object
+     */
     public static final Function<String,BigDecimal> toBigDecimal(final int scale, final RoundingMode roundingMode) {
         return new ToBigDecimal(scale, roundingMode);
     }
+
     
+    /**
+     * <p>
+     * Converts a String into a BigDecimal, using the specified locale for decimal
+     * point and thousands separator configuration and establishing the specified scale. Rounding
+     * mode is used for setting the scale to the specified value.
+     * </p>
+     * 
+     * @param scale the desired scale for the resulting BigDecimal object
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param locale the locale defining the way in which the number was written
+     * @return the equivalent BigDecimal object
+     */
     public static final Function<String,BigDecimal> toBigDecimal(final int scale, final RoundingMode roundingMode, final Locale locale) {
         return new ToBigDecimal(scale, roundingMode, locale);
     }
-    
+
+
+    /**
+     * <p>
+     * Converts a String into a BigDecimal, using the specified locale for decimal
+     * point and thousands separator configuration and establishing the specified scale. Rounding
+     * mode is used for setting the scale to the specified value.  Locale is specified as a String
+     * (for example: "en_US", "es_ES", etc.)
+     * </p>
+     * 
+     * @param scale the desired scale for the resulting BigDecimal object
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param locale the locale defining the way in which the number was written
+     * @return the equivalent BigDecimal object
+     */
     public static final Function<String,BigDecimal> toBigDecimal(final int scale, final RoundingMode roundingMode, final String locale) {
         return new ToBigDecimal(scale, roundingMode, locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a BigDecimal, using the specified decimal point
+     * configuration ({@link DecimalPoint}) and establishing the specified scale. Rounding
+     * mode is used for setting the scale to the specified value.. The target String should contain no
+     * thousand separators.
+     * </p>
+     * 
+     * @param scale the desired scale for the resulting BigDecimal object
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param decimalPoint
+     * @return the equivalent BigDecimal object
+     */
     public static final Function<String,BigDecimal> toBigDecimal(final int scale, final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
         return new ToBigDecimal(scale, roundingMode, decimalPoint);
     }
     
     
+    /**
+     * <p>
+     * Converts a String into a BigInteger, using the default configuration.
+     * </p>
+     * 
+     * @return the equivalent BigInteger object
+     */
     public static final Function<String,BigInteger> toBigInteger() {
         return TO_BIG_INTEGER;
     }
+
     
     public static final Function<String,BigInteger> toBigInteger(final Locale locale) {
         return new ToBigInteger(locale);
@@ -416,13 +516,6 @@ public final class FnString {
     }
 	public static final Function<String,String> unescapeJavaScript() {
         return UNESCAPE_JAVASCRIPT_STRING_FUNC;
-    }
-	
-	public static final Function<String,String> toBase64(Charset charset) {
-        return new ToBase64(charset);
-    }
-	public static final Function<String,String> fromBase64(Charset charset) {
-        return new FromBase64(charset);
     }
 	
 	public static final Function<String,String> toHexadecimal(Charset charset) {
@@ -711,48 +804,6 @@ public final class FnString {
 
 		public String execute(final String input, final ExecCtx ctx) throws Exception {
 			return StringEscapeUtils.unescapeJavaScript(input);
-		}		
-	}
-
-	/**
-	 * It converts the given String into a base64 encoded one
-	 *
-	 */
-	static final class ToBase64 extends AbstractNullAsNullFunction<String,String> {
-
-		private Charset charset = null;
-
-		ToBase64(Charset charset) {
-			super();
-			this.charset = charset;
-		}
-
-        @Override
-        protected String nullAsNullExecute(final String input, final ExecCtx ctx) throws Exception {
-			Validate.notNull(this.charset, "Charset can't be null");
-			return new String(new Base64().encode(input.getBytes(
-					this.charset.name())), "US-ASCII");
-		}		
-	}
-
-	/**
-	 * It decodes the given base64 encoded String
-	 *
-	 */
-	static final class FromBase64 extends AbstractNullAsNullFunction<String,String> {
-
-		private Charset charset = null;
-
-		FromBase64(Charset charset) {
-			super();
-			this.charset = charset;
-		}
-
-        @Override
-        protected String nullAsNullExecute(final String input, final ExecCtx ctx) throws Exception {
-			Validate.notNull(this.charset, "Charset can't be null");
-			return new String(new Base64().decode(input.getBytes("US-ASCII")), 
-					this.charset.name()); 
 		}		
 	}
 
