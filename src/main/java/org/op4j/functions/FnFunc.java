@@ -70,48 +70,79 @@ public final class FnFunc {
 
     
     
-    public static final <R> Function<R,R> ifTrue(final IFunction<? super R, Boolean> condition, final IFunction<? super R,R> function) {
-        return new If<R>(true, condition, function);
+    public static final <R> Function<R,R> ifTrue(final IFunction<? super R, Boolean> condition, final IFunction<? super R,R> thenFunction) {
+        return new IfThen<R>(true, condition, thenFunction);
     }
     
-    public static final <R> Function<R,R> ifFalse(final IFunction<? super R, Boolean> condition, final IFunction<? super R,R> function) {
-        return new If<R>(false, condition, function);
+    public static final <T,R> Function<T,R> ifTrue(final IFunction<? super T, Boolean> condition, final IFunction<? super T,R> thenFunction, final IFunction<? super T,R> elseFunction) {
+        return new IfThenElse<T,R>(true, condition, thenFunction, elseFunction);
     }
     
-    public static final <T> Function<T,T> ifNull(final IFunction<? super T,T> function) {
-        return ifTrue(FnObject.isNull(), function);
+    public static final <R> Function<R,R> ifFalse(final IFunction<? super R, Boolean> condition, final IFunction<? super R,R> thenFunction) {
+        return new IfThen<R>(false, condition, thenFunction);
     }
     
-    // TODO This should be T,R
-    public static final <T> Function<T,T> ifNotNull(final IFunction<? super T,T> function) {
-        return ifTrue(FnObject.isNotNull(), function);
+    public static final <T,R> Function<T,R> ifFalse(final IFunction<? super T, Boolean> condition, final IFunction<? super T,R> thenFunction, final IFunction<? super T,R> elseFunction) {
+        return new IfThenElse<T,R>(false, condition, thenFunction, elseFunction);
     }
     
-    public static final <R> Function<R,R> ifNullOrTrue(final IFunction<? super R, Boolean> condition, final IFunction<? super R,R> function) {
-        return ifTrue(FnFunc.or(FnObject.isNull(),condition), function);
+    public static final <T> Function<T,T> ifNull(final IFunction<? super T,T> thenFunction) {
+        return ifTrue(FnObject.isNull(), thenFunction);
     }
     
-    public static final <R> Function<R,R> ifNullOrFalse(final IFunction<? super R, Boolean> condition, final IFunction<? super R,R> function) {
-        return ifTrue(FnFunc.or(FnObject.isNull(), FnFunc.not(condition)), function);
+    public static final <T,R> Function<T,R> ifNull(final IFunction<? super T,R> thenFunction, final IFunction<? super T,R> elseFunction) {
+        return ifTrue(FnObject.isNull(), thenFunction, elseFunction);
     }
     
-    public static final <R> Function<R,R> ifNotNullAndTrue(final IFunction<? super R, Boolean> condition, final IFunction<? super R,R> function) {
-        return ifTrue(FnFunc.and(FnObject.isNotNull(),condition), function);
+    public static final <T> Function<T,T> ifNotNull(final IFunction<? super T,T> thenFunction) {
+        return ifTrue(FnObject.isNotNull(), thenFunction);
     }
     
-    public static final <R> Function<R,R> ifNotNullAndFalse(final IFunction<? super R, Boolean> condition, final IFunction<? super R,R> function) {
-        return ifTrue(FnFunc.and(FnObject.isNotNull(), FnFunc.not(condition)), function);
+    public static final <T,R> Function<T,R> ifNotNull(final IFunction<? super T,R> thenFunction, final IFunction<? super T,R> elseFunction) {
+        return ifTrue(FnObject.isNotNull(), thenFunction, elseFunction);
+    }
+    
+    public static final <R> Function<R,R> ifNullOrTrue(final IFunction<? super R, Boolean> condition, final IFunction<? super R,R> thenFunction) {
+        return ifTrue(FnFunc.or(FnObject.isNull(),condition), thenFunction);
+    }
+    
+    public static final <T,R> Function<T,R> ifNullOrTrue(final IFunction<? super T, Boolean> condition, final IFunction<? super T,R> thenFunction, final IFunction<? super T,R> elseFunction) {
+        return ifTrue(FnFunc.or(FnObject.isNull(),condition), thenFunction, elseFunction);
+    }
+    
+    public static final <R> Function<R,R> ifNullOrFalse(final IFunction<? super R, Boolean> condition, final IFunction<? super R,R> thenFunction) {
+        return ifTrue(FnFunc.or(FnObject.isNull(), FnFunc.not(condition)), thenFunction);
+    }
+    
+    public static final <T,R> Function<T,R> ifNullOrFalse(final IFunction<? super T, Boolean> condition, final IFunction<? super T,R> thenFunction, final IFunction<? super T,R> elseFunction) {
+        return ifTrue(FnFunc.or(FnObject.isNull(), FnFunc.not(condition)), thenFunction, elseFunction);
+    }
+    
+    public static final <R> Function<R,R> ifNotNullAndTrue(final IFunction<? super R, Boolean> condition, final IFunction<? super R,R> thenFunction) {
+        return ifTrue(FnFunc.and(FnObject.isNotNull(),condition), thenFunction);
+    }
+    
+    public static final <T,R> Function<T,R> ifNotNullAndTrue(final IFunction<? super T, Boolean> condition, final IFunction<? super T,R> thenFunction, final IFunction<? super T,R> elseFunction) {
+        return ifTrue(FnFunc.and(FnObject.isNotNull(),condition), thenFunction, elseFunction);
+    }
+    
+    public static final <R> Function<R,R> ifNotNullAndFalse(final IFunction<? super R, Boolean> condition, final IFunction<? super R,R> thenFunction) {
+        return ifTrue(FnFunc.and(FnObject.isNotNull(), FnFunc.not(condition)), thenFunction);
+    }
+    
+    public static final <T,R> Function<T,R> ifNotNullAndFalse(final IFunction<? super T, Boolean> condition, final IFunction<? super T,R> thenFunction, final IFunction<? super T,R> elseFunction) {
+        return ifTrue(FnFunc.and(FnObject.isNotNull(), FnFunc.not(condition)), thenFunction, elseFunction);
     }
     
     
     
     
-    public static final <T> Function<T,T> whileTrue(final IFunction<? super T, Boolean> condition, final IFunction<? super T, T> function) {
-        return new While<T>(true, condition, function);
+    public static final <T> Function<T,T> whileTrue(final IFunction<? super T, Boolean> condition, final IFunction<? super T, T> thenFunction) {
+        return new While<T>(true, condition, thenFunction);
     }
     
-    public static final <T> Function<T,T> whileFalse(final IFunction<? super T, Boolean> condition, final IFunction<? super T, T> function) {
-        return new While<T>(false, condition, function);
+    public static final <T> Function<T,T> whileFalse(final IFunction<? super T, Boolean> condition, final IFunction<? super T, T> thenFunction) {
+        return new While<T>(false, condition, thenFunction);
     }
     
     
@@ -141,22 +172,25 @@ public final class FnFunc {
         }
         
     }
+
     
     
     
-    private static final class If<R> extends Function<R,R> {
+    private static final class IfThen<R> extends Function<R,R> {
         
         private final IFunction<? super R, Boolean> condition;
-        private final IFunction<? super R, R> function;
+        private final IFunction<? super R, R> thenFunction;
         private final boolean desiredResult;
         
-        public If(final boolean desiredResult, final IFunction<? super R, Boolean> condition, final IFunction<? super R,R> function) {
+        public IfThen(final boolean desiredResult, 
+                final IFunction<? super R, Boolean> condition, 
+                final IFunction<? super R,R> thenFunction) {
             super();
             Validate.notNull(condition, "Condition cannot be null");
-            Validate.notNull(function, "Function cannot be null");
+            Validate.notNull(thenFunction, "Then function cannot be null");
             this.desiredResult = desiredResult;
             this.condition = condition;
-            this.function = function;
+            this.thenFunction = thenFunction;
         }
 
         public R execute(final R input, final ExecCtx ctx) throws Exception {
@@ -166,9 +200,48 @@ public final class FnFunc {
                 throw new ExecutionException("Condition returned null, which is not allowed");
             }
             if (conditionResult.booleanValue() == this.desiredResult) {
-                return this.function.execute(input, ctx);
+                return this.thenFunction.execute(input, ctx);
             }
             return input;
+        }
+        
+    }
+    
+    
+
+    
+    
+    private static final class IfThenElse<T,R> extends Function<T,R> {
+        
+        private final IFunction<? super T, Boolean> condition;
+        private final IFunction<? super T, R> thenFunction;
+        private final IFunction<? super T, R> elseFunction;
+        private final boolean desiredResult;
+        
+        public IfThenElse(final boolean desiredResult, 
+                final IFunction<? super T, Boolean> condition, 
+                final IFunction<? super T,R> thenFunction,
+                final IFunction<? super T,R> elseFunction) {
+            super();
+            Validate.notNull(condition, "Condition cannot be null");
+            Validate.notNull(thenFunction, "Then function cannot be null");
+            Validate.notNull(elseFunction, "Else function cannot be null");
+            this.desiredResult = desiredResult;
+            this.condition = condition;
+            this.thenFunction = thenFunction;
+            this.elseFunction = elseFunction;
+        }
+
+        public R execute(final T input, final ExecCtx ctx) throws Exception {
+            
+            final Boolean conditionResult = this.condition.execute(input, ctx);
+            if (conditionResult == null) {
+                throw new ExecutionException("Condition returned null, which is not allowed");
+            }
+            if (conditionResult.booleanValue() == this.desiredResult) {
+                return this.thenFunction.execute(input, ctx);
+            }
+            return this.elseFunction.execute(input, ctx);
         }
         
     }
