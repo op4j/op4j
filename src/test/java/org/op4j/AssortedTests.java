@@ -656,11 +656,11 @@ public class AssortedTests extends TestCase {
     public void test47() throws Exception {
         Boolean result = Op.on(Types.BIG_DECIMAL, null)
             .exec(FnNumber.notEq(null)).get();
-        assertTrue("null notequals to null", result);
+        assertFalse("null notequals to null", result);
         
         result = Op.on(Types.BIG_DECIMAL, null)
             .exec(FnNumber.eq(null)).get();
-        assertFalse("null equals to null", result);
+        assertTrue("null equals to null", result);
     
     }
   
@@ -668,11 +668,11 @@ public class AssortedTests extends TestCase {
     public void test48() throws Exception {
         Boolean result = Op.on(Types.BIG_DECIMAL, null)
             .exec(FnBigDecimal.notEq(null)).get();
-        assertTrue("null notequals to null", result);
+        assertFalse("null notequals to null", result);
         
         result = Op.on(Types.BIG_DECIMAL, null)
             .exec(FnBigDecimal.eq(null)).get();
-        assertFalse("null equals to null", result);
+        assertTrue("null equals to null", result);
     
     }
   
@@ -704,11 +704,11 @@ public class AssortedTests extends TestCase {
     public void test51() throws Exception {
         Boolean result = Op.on(Types.DOUBLE, null)
             .exec(FnDouble.notEq(null)).get();
-        assertTrue("null notequals to null", result);
+        assertFalse("null notequals to null", result);
         
         result = Op.on(Types.DOUBLE, null)
             .exec(FnDouble.eq(null)).get();
-        assertFalse("null equals to null", result);
+        assertTrue("null equals to null", result);
     
     }
     
@@ -723,6 +723,7 @@ public class AssortedTests extends TestCase {
         
     }
     
+   
     
 }
 
