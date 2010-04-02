@@ -25,6 +25,7 @@ import org.op4j.functions.ExecCtx;
 import org.op4j.functions.Fn;
 import org.op4j.functions.FnArray;
 import org.op4j.functions.FnBigDecimal;
+import org.op4j.functions.FnDouble;
 import org.op4j.functions.FnInteger;
 import org.op4j.functions.FnLong;
 import org.op4j.functions.FnNumber;
@@ -627,7 +628,100 @@ public class AssortedTests extends TestCase {
         
     }
 
+    @Test
+    public void test45() throws Exception {
+        List<Boolean> result = Op.onListFor(BigDecimal.valueOf(34), Double.valueOf(34), BigDecimal.valueOf(34).setScale(4))
+            .forEach().exec(FnNumber.eq(BigDecimal.valueOf(34))).get();
+        
+        assertTrue("BigDecimal.valueOf(34) equals to BigDecimal.valueOf(34)", result.get(0));
+        assertTrue("Double.valueOf(34) equals to BigDecimal.valueOf(34)", result.get(1));
+        assertTrue("BigDecimal.valueOf(34).setScale(4) equals to BigDecimal.valueOf(34)", result.get(2));       
+        
+    }
     
+    @Test
+    public void test46() throws Exception {
+        List<Boolean> result = Op.onListFor(BigDecimal.valueOf(34), Double.valueOf(34), BigDecimal.valueOf(34).setScale(4),
+                null)
+            .forEach().exec(FnNumber.notEq(BigDecimal.valueOf(34))).get();
+        
+        assertFalse("BigDecimal.valueOf(34) notequals to BigDecimal.valueOf(34)", result.get(0));
+        assertFalse("Double.valueOf(34) notequals to BigDecimal.valueOf(34)", result.get(1));
+        assertFalse("BigDecimal.valueOf(34).setScale(4) notequals to BigDecimal.valueOf(34)", result.get(2)); 
+        assertTrue("null notequals to BigDecimal.valueOf(34)", result.get(3)); 
+        
+    }
+    
+    @Test
+    public void test47() throws Exception {
+        Boolean result = Op.on(Types.BIG_DECIMAL, null)
+            .exec(FnNumber.notEq(null)).get();
+        assertTrue("null notequals to null", result);
+        
+        result = Op.on(Types.BIG_DECIMAL, null)
+            .exec(FnNumber.eq(null)).get();
+        assertFalse("null equals to null", result);
+    
+    }
+  
+    @Test
+    public void test48() throws Exception {
+        Boolean result = Op.on(Types.BIG_DECIMAL, null)
+            .exec(FnBigDecimal.notEq(null)).get();
+        assertTrue("null notequals to null", result);
+        
+        result = Op.on(Types.BIG_DECIMAL, null)
+            .exec(FnBigDecimal.eq(null)).get();
+        assertFalse("null equals to null", result);
+    
+    }
+  
+    @Test
+    public void test49() throws Exception {
+        List<Boolean> result = Op.onListFor(BigDecimal.valueOf(34), BigDecimal.valueOf(34).setScale(10), BigDecimal.valueOf(34).setScale(4))
+            .forEach().exec(FnBigDecimal.eq(BigDecimal.valueOf(34))).get();
+        
+        assertTrue("BigDecimal.valueOf(34) equals to BigDecimal.valueOf(34)", result.get(0));
+        assertTrue("BigDecimal.valueOf(34).setScale(10) equals to BigDecimal.valueOf(34)", result.get(1));
+        assertTrue("BigDecimal.valueOf(34).setScale(4) equals to BigDecimal.valueOf(34)", result.get(2));       
+        
+    }
+    
+    @Test
+    public void test50() throws Exception {
+        List<Boolean> result = Op.onListFor(BigDecimal.valueOf(34), BigDecimal.valueOf(34).setScale(10), BigDecimal.valueOf(34).setScale(4),
+                null)
+            .forEach().exec(FnBigDecimal.notEq(BigDecimal.valueOf(34))).get();
+        
+        assertFalse("BigDecimal.valueOf(34) notequals to BigDecimal.valueOf(34)", result.get(0));
+        assertFalse("BigDecimal.valueOf(34).setScale(10) notequals to BigDecimal.valueOf(34)", result.get(1));
+        assertFalse("BigDecimal.valueOf(34).setScale(4) notequals to BigDecimal.valueOf(34)", result.get(2)); 
+        assertTrue("null notequals to BigDecimal.valueOf(34)", result.get(3)); 
+        
+    }
+    
+    @Test
+    public void test51() throws Exception {
+        Boolean result = Op.on(Types.DOUBLE, null)
+            .exec(FnDouble.notEq(null)).get();
+        assertTrue("null notequals to null", result);
+        
+        result = Op.on(Types.DOUBLE, null)
+            .exec(FnDouble.eq(null)).get();
+        assertFalse("null equals to null", result);
+    
+    }
+    
+    @Test
+    public void test52() throws Exception {
+        List<Boolean> result = Op.onListFor(Double.valueOf(34), 
+                null)
+            .forEach().exec(FnDouble.notEq(Double.valueOf(34))).get();
+        
+        assertFalse("Double.valueOf(34) notequals to Double.valueOf(34)", result.get(0));
+        assertTrue("null notequals to Double.valueOf(34)", result.get(1)); 
+        
+    }
     
     
 }
