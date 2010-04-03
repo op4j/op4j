@@ -117,47 +117,91 @@ public final class FnBigInteger {
         return (Function<BigInteger,String>)((Function)FnNumber.toPercentStr(locale, groupingUsed));
     }
     public static final Function<BigInteger,Boolean> eq(final Number object) {
-        return (Function<BigInteger,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<BigInteger,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<BigInteger,Boolean> eq(final float object) {
-        return (Function<BigInteger,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<BigInteger,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<BigInteger,Boolean> eq(final double object) {
-        return (Function<BigInteger,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<BigInteger,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<BigInteger,Boolean> eq(final byte object) {
-        return (Function<BigInteger,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<BigInteger,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<BigInteger,Boolean> eq(final short object) {
-        return (Function<BigInteger,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<BigInteger,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<BigInteger,Boolean> eq(final int object) {
-        return (Function<BigInteger,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<BigInteger,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<BigInteger,Boolean> eq(final long object) {
-        return (Function<BigInteger,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<BigInteger,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<BigInteger,Boolean> notEq(final Number object) {
-        return (Function<BigInteger,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<BigInteger,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<BigInteger,Boolean> notEq(final float object) {
-        return (Function<BigInteger,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<BigInteger,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<BigInteger,Boolean> notEq(final double object) {
-        return (Function<BigInteger,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<BigInteger,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<BigInteger,Boolean> notEq(final byte object) {
-        return (Function<BigInteger,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<BigInteger,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<BigInteger,Boolean> notEq(final short object) {
-        return (Function<BigInteger,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<BigInteger,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<BigInteger,Boolean> notEq(final int object) {
-        return (Function<BigInteger,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<BigInteger,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<BigInteger,Boolean> notEq(final long object) {
-        return (Function<BigInteger,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<BigInteger,Boolean>)((Function)FnObject.notEq(object));
     }
+    // Ignore Scale
+    public static final Function<BigInteger,Boolean> eqIgnoreScale(final Number object) {
+        return (Function<BigInteger,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }    
+    public static final Function<BigInteger,Boolean> eqIgnoreScale(final float object) {
+        return (Function<BigInteger,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }    
+    public static final Function<BigInteger,Boolean> eqIgnoreScale(final double object) {
+        return (Function<BigInteger,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }    
+    public static final Function<BigInteger,Boolean> eqIgnoreScale(final byte object) {
+        return (Function<BigInteger,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }
+    public static final Function<BigInteger,Boolean> eqIgnoreScale(final short object) {
+        return (Function<BigInteger,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }    
+    public static final Function<BigInteger,Boolean> eqIgnoreScale(final int object) {
+        return (Function<BigInteger,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }    
+    public static final Function<BigInteger,Boolean> eqIgnoreScale(final long object) {
+        return (Function<BigInteger,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }    
+    public static final Function<BigInteger,Boolean> notEqIgnoreScale(final Number object) {
+        return (Function<BigInteger,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }    
+    public static final Function<BigInteger,Boolean> notEqIgnoreScale(final float object) {
+        return (Function<BigInteger,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }    
+    public static final Function<BigInteger,Boolean> notEqIgnoreScale(final double object) {
+        return (Function<BigInteger,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }    
+    public static final Function<BigInteger,Boolean> notEqIgnoreScale(final byte object) {
+        return (Function<BigInteger,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }    
+    public static final Function<BigInteger,Boolean> notEqIgnoreScale(final short object) {
+        return (Function<BigInteger,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }    
+    public static final Function<BigInteger,Boolean> notEqIgnoreScale(final int object) {
+        return (Function<BigInteger,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }    
+    public static final Function<BigInteger,Boolean> notEqIgnoreScale(final long object) {
+        return (Function<BigInteger,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }
+    //
     public static final Function<BigInteger,Boolean> lessThan(final Number object) {
         return (Function<BigInteger,Boolean>)((Function)FnObject.lessThan(object));
     }    
