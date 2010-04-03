@@ -383,63 +383,120 @@ public final class FnNumber {
 
     
     public static final Function<Number,Boolean> eq(final Number object) {
-        return new Equals(object);
+        return (Function<Number,Boolean>)((Function)FnObject.eq(object));
     }
     
     public static final Function<Number,Boolean> eq(final float object) {
-        return new Equals(Float.valueOf(object));
+        return (Function<Number,Boolean>)((Function)FnObject.eq(object));
     }
     
     public static final Function<Number,Boolean> eq(final double object) {
-        return new Equals(Double.valueOf(object));
+        return (Function<Number,Boolean>)((Function)FnObject.eq(object));
     }
     
     public static final Function<Number,Boolean> eq(final byte object) {
-        return new Equals(Byte.valueOf(object));
+        return (Function<Number,Boolean>)((Function)FnObject.eq(object));
     }
     
     public static final Function<Number,Boolean> eq(final short object) {
-        return new Equals(Short.valueOf(object));
+        return (Function<Number,Boolean>)((Function)FnObject.eq(object));
     }
     
     public static final Function<Number,Boolean> eq(final int object) {
-        return new Equals(Integer.valueOf(object));
+        return (Function<Number,Boolean>)((Function)FnObject.eq(object));
     }
     
     public static final Function<Number,Boolean> eq(final long object) {
-        return new Equals(Long.valueOf(object));
+        return (Function<Number,Boolean>)((Function)FnObject.eq(object));
     }
 
     
     public static final Function<Number,Boolean> notEq(final Number object) {
-        return new NotEquals(object);
+        return (Function<Number,Boolean>)((Function)FnObject.notEq(object));
     }
     
     public static final Function<Number,Boolean> notEq(final float object) {
-        return new NotEquals(Float.valueOf(object));
+        return (Function<Number,Boolean>)((Function)FnObject.notEq(object));
     }
     
     public static final Function<Number,Boolean> notEq(final double object) {
-        return new NotEquals(Double.valueOf(object));
+        return (Function<Number,Boolean>)((Function)FnObject.notEq(object));
     }
     
     public static final Function<Number,Boolean> notEq(final byte object) {
-        return new NotEquals(Byte.valueOf(object));
+        return (Function<Number,Boolean>)((Function)FnObject.notEq(object));
     }
     
     public static final Function<Number,Boolean> notEq(final short object) {
-        return new NotEquals(Short.valueOf(object));
+        return (Function<Number,Boolean>)((Function)FnObject.notEq(object));
     }
     
     public static final Function<Number,Boolean> notEq(final int object) {
-        return new NotEquals(Integer.valueOf(object));
+        return (Function<Number,Boolean>)((Function)FnObject.notEq(object));
     }
     
     public static final Function<Number,Boolean> notEq(final long object) {
-        return new NotEquals(Long.valueOf(object));
+        return (Function<Number,Boolean>)((Function)FnObject.notEq(object));
     }
     
+    // Ignore Scale
+    public static final Function<Number,Boolean> eqIgnoreScale(final Number object) {
+        return new EqualsIgnoreScale(object);
+    }
+    
+    public static final Function<Number,Boolean> eqIgnoreScale(final float object) {
+        return new EqualsIgnoreScale(Float.valueOf(object));
+    }
+    
+    public static final Function<Number,Boolean> eqIgnoreScale(final double object) {
+        return new EqualsIgnoreScale(Double.valueOf(object));
+    }
+    
+    public static final Function<Number,Boolean> eqIgnoreScale(final byte object) {
+        return new EqualsIgnoreScale(Byte.valueOf(object));
+    }
+    
+    public static final Function<Number,Boolean> eqIgnoreScale(final short object) {
+        return new EqualsIgnoreScale(Short.valueOf(object));
+    }
+    
+    public static final Function<Number,Boolean> eqIgnoreScale(final int object) {
+        return new EqualsIgnoreScale(Integer.valueOf(object));
+    }
+    
+    public static final Function<Number,Boolean> eqIgnoreScale(final long object) {
+        return new EqualsIgnoreScale(Long.valueOf(object));
+    }
 
+    
+    public static final Function<Number,Boolean> notEqIgnoreScale(final Number object) {
+        return new NotEqualsIgnoreScale(object);
+    }
+    
+    public static final Function<Number,Boolean> notEqIgnoreScale(final float object) {
+        return new NotEqualsIgnoreScale(Float.valueOf(object));
+    }
+    
+    public static final Function<Number,Boolean> notEqIgnoreScale(final double object) {
+        return new NotEqualsIgnoreScale(Double.valueOf(object));
+    }
+    
+    public static final Function<Number,Boolean> notEqIgnoreScale(final byte object) {
+        return new NotEqualsIgnoreScale(Byte.valueOf(object));
+    }
+    
+    public static final Function<Number,Boolean> notEqIgnoreScale(final short object) {
+        return new NotEqualsIgnoreScale(Short.valueOf(object));
+    }
+    
+    public static final Function<Number,Boolean> notEqIgnoreScale(final int object) {
+        return new NotEqualsIgnoreScale(Integer.valueOf(object));
+    }
+    
+    public static final Function<Number,Boolean> notEqIgnoreScale(final long object) {
+        return new NotEqualsIgnoreScale(Long.valueOf(object));
+    }
+    //
 
     
     public static final Function<Number,Boolean> lessThan(final Number object) {
@@ -1437,11 +1494,11 @@ public final class FnNumber {
     }
     
     
-    static final class Equals extends Function<Number, Boolean> {
+    static final class EqualsIgnoreScale extends Function<Number, Boolean> {
 
         private final Number other;
 
-        Equals(Number other) {
+        EqualsIgnoreScale(Number other) {
             super();
             this.other = other;
         }
@@ -1459,16 +1516,17 @@ public final class FnNumber {
             } else if (this.other instanceof BigDecimal) {                
                     return Boolean.valueOf((BigDecimal.valueOf(input.doubleValue()).compareTo((BigDecimal)this.other)) == 0);
             } else {
-                return Boolean.valueOf(input.equals(this.other));
+                return Boolean.valueOf(BigDecimal.valueOf(input.doubleValue()).setScale(0)
+                        .compareTo(BigDecimal.valueOf(this.other.doubleValue()).setScale(0)) == 0);
             }            
         }   
     } 
     
-    static final class NotEquals extends Function<Number, Boolean> {
+    static final class NotEqualsIgnoreScale extends Function<Number, Boolean> {
 
         private final Number other;
 
-        NotEquals(Number other) {
+        NotEqualsIgnoreScale(Number other) {
             super();
             this.other = other;
         }
@@ -1486,7 +1544,8 @@ public final class FnNumber {
             } else if (this.other instanceof BigDecimal) {                
                     return Boolean.valueOf((BigDecimal.valueOf(input.doubleValue()).compareTo((BigDecimal)this.other)) != 0);
             } else {
-                return Boolean.valueOf(!input.equals(this.other));
+                return Boolean.valueOf(BigDecimal.valueOf(input.doubleValue())
+                        .compareTo(BigDecimal.valueOf(this.other.doubleValue())) != 0);
             }            
         }   
     } 
