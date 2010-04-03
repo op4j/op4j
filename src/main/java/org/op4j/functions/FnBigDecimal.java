@@ -268,47 +268,89 @@ public final class FnBigDecimal {
                 decimalSeparatorAlwaysShown));
     }
     public static final Function<BigDecimal,Boolean> eq(final Number object) {
-        return (Function<BigDecimal,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<BigDecimal,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<BigDecimal,Boolean> eq(final float object) {
-        return (Function<BigDecimal,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<BigDecimal,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<BigDecimal,Boolean> eq(final double object) {
-        return (Function<BigDecimal,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<BigDecimal,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<BigDecimal,Boolean> eq(final byte object) {
-        return (Function<BigDecimal,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<BigDecimal,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<BigDecimal,Boolean> eq(final short object) {
-        return (Function<BigDecimal,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<BigDecimal,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<BigDecimal,Boolean> eq(final int object) {
-        return (Function<BigDecimal,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<BigDecimal,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<BigDecimal,Boolean> eq(final long object) {
-        return (Function<BigDecimal,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<BigDecimal,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<BigDecimal,Boolean> notEq(final Number object) {
-        return (Function<BigDecimal,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<BigDecimal,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<BigDecimal,Boolean> notEq(final float object) {
-        return (Function<BigDecimal,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<BigDecimal,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<BigDecimal,Boolean> notEq(final double object) {
-        return (Function<BigDecimal,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<BigDecimal,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<BigDecimal,Boolean> notEq(final byte object) {
-        return (Function<BigDecimal,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<BigDecimal,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<BigDecimal,Boolean> notEq(final short object) {
-        return (Function<BigDecimal,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<BigDecimal,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<BigDecimal,Boolean> notEq(final int object) {
-        return (Function<BigDecimal,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<BigDecimal,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<BigDecimal,Boolean> notEq(final long object) {
-        return (Function<BigDecimal,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<BigDecimal,Boolean>)((Function)FnObject.notEq(object));
     }
+    public static final Function<BigDecimal,Boolean> eqIgnoreScale(final Number object) {
+        return (Function<BigDecimal,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }    
+    public static final Function<BigDecimal,Boolean> eqIgnoreScale(final float object) {
+        return (Function<BigDecimal,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }    
+    public static final Function<BigDecimal,Boolean> eqIgnoreScale(final double object) {
+        return (Function<BigDecimal,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }    
+    public static final Function<BigDecimal,Boolean> eqIgnoreScale(final byte object) {
+        return (Function<BigDecimal,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }
+    public static final Function<BigDecimal,Boolean> eqIgnoreScale(final short object) {
+        return (Function<BigDecimal,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }    
+    public static final Function<BigDecimal,Boolean> eqIgnoreScale(final int object) {
+        return (Function<BigDecimal,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }    
+    public static final Function<BigDecimal,Boolean> eqIgnoreScale(final long object) {
+        return (Function<BigDecimal,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }    
+    public static final Function<BigDecimal,Boolean> notEqIgnoreScale(final Number object) {
+        return (Function<BigDecimal,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }    
+    public static final Function<BigDecimal,Boolean> notEqIgnoreScale(final float object) {
+        return (Function<BigDecimal,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }    
+    public static final Function<BigDecimal,Boolean> notEqIgnoreScale(final double object) {
+        return (Function<BigDecimal,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }    
+    public static final Function<BigDecimal,Boolean> notEqIgnoreScale(final byte object) {
+        return (Function<BigDecimal,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }    
+    public static final Function<BigDecimal,Boolean> notEqIgnoreScale(final short object) {
+        return (Function<BigDecimal,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }    
+    public static final Function<BigDecimal,Boolean> notEqIgnoreScale(final int object) {
+        return (Function<BigDecimal,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }    
+    public static final Function<BigDecimal,Boolean> notEqIgnoreScale(final long object) {
+        return (Function<BigDecimal,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }   
     public static final Function<BigDecimal,Boolean> lessThan(final Number object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.lessThan(object));
     }    
