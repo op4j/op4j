@@ -116,47 +116,91 @@ public final class FnFloat {
         return (Function<Float,String>)((Function)FnNumber.toPercentStr(locale, groupingUsed));
     }
     public static final Function<Float,Boolean> eq(final Number object) {
-        return (Function<Float,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<Float,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<Float,Boolean> eq(final float object) {
-        return (Function<Float,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<Float,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<Float,Boolean> eq(final double object) {
-        return (Function<Float,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<Float,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<Float,Boolean> eq(final byte object) {
-        return (Function<Float,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<Float,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<Float,Boolean> eq(final short object) {
-        return (Function<Float,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<Float,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<Float,Boolean> eq(final int object) {
-        return (Function<Float,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<Float,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<Float,Boolean> eq(final long object) {
-        return (Function<Float,Boolean>)((Function)FnNumber.eq(object));
+        return (Function<Float,Boolean>)((Function)FnObject.eq(object));
     }
     public static final Function<Float,Boolean> notEq(final Number object) {
-        return (Function<Float,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<Float,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<Float,Boolean> notEq(final float object) {
-        return (Function<Float,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<Float,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<Float,Boolean> notEq(final double object) {
-        return (Function<Float,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<Float,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<Float,Boolean> notEq(final byte object) {
-        return (Function<Float,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<Float,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<Float,Boolean> notEq(final short object) {
-        return (Function<Float,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<Float,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<Float,Boolean> notEq(final int object) {
-        return (Function<Float,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<Float,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<Float,Boolean> notEq(final long object) {
-        return (Function<Float,Boolean>)((Function)FnNumber.notEq(object));
+        return (Function<Float,Boolean>)((Function)FnObject.notEq(object));
     }
+    // Ignore Scale
+    public static final Function<Float,Boolean> eqIgnoreScale(final Number object) {
+        return (Function<Float,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }    
+    public static final Function<Float,Boolean> eqIgnoreScale(final float object) {
+        return (Function<Float,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }    
+    public static final Function<Float,Boolean> eqIgnoreScale(final double object) {
+        return (Function<Float,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }    
+    public static final Function<Float,Boolean> eqIgnoreScale(final byte object) {
+        return (Function<Float,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }
+    public static final Function<Float,Boolean> eqIgnoreScale(final short object) {
+        return (Function<Float,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }    
+    public static final Function<Float,Boolean> eqIgnoreScale(final int object) {
+        return (Function<Float,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }    
+    public static final Function<Float,Boolean> eqIgnoreScale(final long object) {
+        return (Function<Float,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
+    }    
+    public static final Function<Float,Boolean> notEqIgnoreScale(final Number object) {
+        return (Function<Float,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }    
+    public static final Function<Float,Boolean> notEqIgnoreScale(final float object) {
+        return (Function<Float,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }    
+    public static final Function<Float,Boolean> notEqIgnoreScale(final double object) {
+        return (Function<Float,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }    
+    public static final Function<Float,Boolean> notEqIgnoreScale(final byte object) {
+        return (Function<Float,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }    
+    public static final Function<Float,Boolean> notEqIgnoreScale(final short object) {
+        return (Function<Float,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }    
+    public static final Function<Float,Boolean> notEqIgnoreScale(final int object) {
+        return (Function<Float,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }    
+    public static final Function<Float,Boolean> notEqIgnoreScale(final long object) {
+        return (Function<Float,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
+    }
+    //
     public static final Function<Float,Boolean> lessThan(final Number object) {
         return (Function<Float,Boolean>)((Function)FnObject.lessThan(object));
     }    
