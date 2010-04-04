@@ -632,7 +632,7 @@ public class AssortedTests extends TestCase {
     @Test
     public void test45() throws Exception {
         List<Boolean> result = Op.onListFor(BigDecimal.valueOf(34), Double.valueOf(34), BigDecimal.valueOf(34).setScale(4))
-            .forEach().exec(FnNumber.eqIgnoreScale(BigDecimal.valueOf(34))).get();
+            .forEach().exec(FnNumber.eqValue(BigDecimal.valueOf(34))).get();
         
         assertTrue("BigDecimal.valueOf(34) equals to BigDecimal.valueOf(34)", result.get(0));
         assertTrue("Double.valueOf(34) equals to BigDecimal.valueOf(34)", result.get(1));
@@ -642,25 +642,23 @@ public class AssortedTests extends TestCase {
     
     @Test
     public void test46() throws Exception {
-        List<Boolean> result = Op.onListFor(BigDecimal.valueOf(34), Double.valueOf(34), BigDecimal.valueOf(34).setScale(4),
-                null)
-            .forEach().exec(FnNumber.notEqIgnoreScale(BigDecimal.valueOf(34))).get();
+        List<Boolean> result = Op.onListFor(BigDecimal.valueOf(34), Double.valueOf(34), BigDecimal.valueOf(34).setScale(4))
+            .forEach().exec(FnNumber.notEqValue(BigDecimal.valueOf(34))).get();
         
         assertFalse("BigDecimal.valueOf(34) notequals to BigDecimal.valueOf(34)", result.get(0));
         assertFalse("Double.valueOf(34) notequals to BigDecimal.valueOf(34)", result.get(1));
         assertFalse("BigDecimal.valueOf(34).setScale(4) notequals to BigDecimal.valueOf(34)", result.get(2)); 
-        assertTrue("null notequals to BigDecimal.valueOf(34)", result.get(3)); 
         
     }
     
     @Test
     public void test47() throws Exception {
         Boolean result = Op.on(Types.BIG_DECIMAL, null)
-            .exec(FnNumber.notEqIgnoreScale(null)).get();
+            .exec(FnNumber.notEq(null)).get();
         assertFalse("null notequals to null", result);
         
         result = Op.on(Types.BIG_DECIMAL, null)
-            .exec(FnNumber.eqIgnoreScale(null)).get();
+            .exec(FnNumber.eq(null)).get();
         assertTrue("null equals to null", result);
     
     }
@@ -668,11 +666,11 @@ public class AssortedTests extends TestCase {
     @Test
     public void test48() throws Exception {
         Boolean result = Op.on(Types.BIG_DECIMAL, null)
-            .exec(FnBigDecimal.notEqIgnoreScale(null)).get();
+            .exec(FnBigDecimal.notEq(null)).get();
         assertFalse("null notequals to null", result);
         
         result = Op.on(Types.BIG_DECIMAL, null)
-            .exec(FnBigDecimal.eqIgnoreScale(null)).get();
+            .exec(FnBigDecimal.eq(null)).get();
         assertTrue("null equals to null", result);
     
     }
@@ -680,7 +678,7 @@ public class AssortedTests extends TestCase {
     @Test
     public void test49() throws Exception {
         List<Boolean> result = Op.onListFor(BigDecimal.valueOf(34), BigDecimal.valueOf(34).setScale(10), BigDecimal.valueOf(34).setScale(4))
-            .forEach().exec(FnBigDecimal.eqIgnoreScale(BigDecimal.valueOf(34))).get();
+            .forEach().exec(FnBigDecimal.eqValue(BigDecimal.valueOf(34))).get();
         
         assertTrue("BigDecimal.valueOf(34) equals to BigDecimal.valueOf(34)", result.get(0));
         assertTrue("BigDecimal.valueOf(34).setScale(10) equals to BigDecimal.valueOf(34)", result.get(1));
@@ -690,14 +688,12 @@ public class AssortedTests extends TestCase {
     
     @Test
     public void test50() throws Exception {
-        List<Boolean> result = Op.onListFor(BigDecimal.valueOf(34), BigDecimal.valueOf(34).setScale(10), BigDecimal.valueOf(34).setScale(4),
-                null)
-            .forEach().exec(FnBigDecimal.notEqIgnoreScale(BigDecimal.valueOf(34))).get();
+        List<Boolean> result = Op.onListFor(BigDecimal.valueOf(34), BigDecimal.valueOf(34).setScale(10), BigDecimal.valueOf(34).setScale(4))
+            .forEach().exec(FnBigDecimal.notEqValue(BigDecimal.valueOf(34))).get();
         
         assertFalse("BigDecimal.valueOf(34) notequals to BigDecimal.valueOf(34)", result.get(0));
         assertFalse("BigDecimal.valueOf(34).setScale(10) notequals to BigDecimal.valueOf(34)", result.get(1));
         assertFalse("BigDecimal.valueOf(34).setScale(4) notequals to BigDecimal.valueOf(34)", result.get(2)); 
-        assertTrue("null notequals to BigDecimal.valueOf(34)", result.get(3)); 
         
     }
     
@@ -737,40 +733,42 @@ public class AssortedTests extends TestCase {
     @Test
     public void test53() throws Exception {
         
-        assertTrue("Op.on(Double.valueOf(4)).exec(FnNumber.eqIgnoreScale(4))", Op.on(Double.valueOf(4))
-                .exec(FnNumber.eqIgnoreScale(4)).get());
-        assertTrue("Op.on(Double.valueOf(4)).exec(FnNumber.notEqIgnoreScale(null))", Op.on(Double.valueOf(4))
-                .exec(FnNumber.notEqIgnoreScale(null)).get());
-        assertTrue("Op.on(Double.valueOf(4)).exec(FnNumber.eqIgnoreScale(BigDecimal.valueOf(4).setScale(6)))", 
-                Op.on(Double.valueOf(4)).exec(FnNumber.eqIgnoreScale(BigDecimal.valueOf(4).setScale(6))).get());
-        assertFalse("Op.on(Double.valueOf(4)).exec(FnNumber.notEqIgnoreScale(BigDecimal.valueOf(4).setScale(6)))", 
-                Op.on(Double.valueOf(4)).exec(FnNumber.notEqIgnoreScale(BigDecimal.valueOf(4).setScale(6))).get());
-        assertFalse("Op.on(BigDecimal.valueOf(4)).exec(FnNumber.notEqIgnoreScale(BigDecimal.valueOf(4).setScale(6)))", 
-                Op.on(BigDecimal.valueOf(4)).exec(FnNumber.notEqIgnoreScale(BigDecimal.valueOf(4).setScale(6))).get());
-        assertFalse("Op.on(Integer.valueOf(4)).exec(FnNumber.notEqIgnoreScale(BigDecimal.valueOf(4).setScale(6)))", 
-                Op.on(Integer.valueOf(4)).exec(FnNumber.notEqIgnoreScale(BigDecimal.valueOf(4).setScale(6))).get());
-        assertTrue("Op.on(Integer.valueOf(4)).exec(FnNumber.notEqIgnoreScale(BigDecimal.valueOf(4).setScale(6)))", 
-                Op.on(Integer.valueOf(4)).exec(FnNumber.eqIgnoreScale(BigDecimal.valueOf(4).setScale(6))).get());
-        assertTrue("Op.on(Integer.valueOf(4)).exec(FnNumber.notEqIgnoreScale(BigDecimal.valueOf(4).setScale(6)))", 
-                Op.on(Double.valueOf(4.1)).exec(FnNumber.notEqIgnoreScale(BigDecimal.valueOf(4).setScale(6))).get());
-        assertTrue("Op.on(Integer.valueOf(4)).exec(FnNumber.notEqIgnoreScale(BigDecimal.valueOf(4.1).setScale(6)))", 
-                Op.on(Double.valueOf(4)).exec(FnNumber.notEqIgnoreScale(BigDecimal.valueOf(4.1).setScale(6))).get());
-        assertTrue("Op.on(Short.valueOf((short)4)).exec(FnNumber.eqIgnoreScale(BigDecimal.valueOf(4).setScale(6)))", 
-                Op.on(Short.valueOf((short)4)).exec(FnNumber.eqIgnoreScale(BigDecimal.valueOf(4).setScale(6))).get());
-        assertFalse("Op.on(Long.valueOf(4)).exec(FnNumber.notEqIgnoreScale(BigDecimal.valueOf(4).setScale(6)))", 
-                Op.on(Long.valueOf(4)).exec(FnNumber.notEqIgnoreScale(BigDecimal.valueOf(4).setScale(6))).get());
+        assertTrue("Op.on(Double.valueOf(4)).exec(FnNumber.eqValue(4))", Op.on(Double.valueOf(4))
+                .exec(FnNumber.eqValue(4)).get());
+        assertTrue("Op.on(Double.valueOf(4)).exec(FnNumber.notEq(null))", Op.on(Double.valueOf(4))
+                .exec(FnNumber.notEq(null)).get());
+        assertTrue("Op.on(Double.valueOf(4)).exec(FnNumber.eqValue(BigDecimal.valueOf(4).setScale(6)))", 
+                Op.on(Double.valueOf(4)).exec(FnNumber.eqValue(BigDecimal.valueOf(4).setScale(6))).get());
+        assertFalse("Op.on(Double.valueOf(4)).exec(FnNumber.notEqValue(BigDecimal.valueOf(4).setScale(6)))", 
+                Op.on(Double.valueOf(4)).exec(FnNumber.notEqValue(BigDecimal.valueOf(4).setScale(6))).get());
+        assertFalse("Op.on(BigDecimal.valueOf(4)).exec(FnNumber.notEqValue(BigDecimal.valueOf(4).setScale(6)))", 
+                Op.on(BigDecimal.valueOf(4)).exec(FnNumber.notEqValue(BigDecimal.valueOf(4).setScale(6))).get());
+        assertFalse("Op.on(Integer.valueOf(4)).exec(FnNumber.notEqValue(BigDecimal.valueOf(4).setScale(6)))", 
+                Op.on(Integer.valueOf(4)).exec(FnNumber.notEqValue(BigDecimal.valueOf(4).setScale(6))).get());
+        assertTrue("Op.on(Integer.valueOf(4)).exec(FnNumber.eqValue(BigDecimal.valueOf(4).setScale(6)))", 
+                Op.on(Integer.valueOf(4)).exec(FnNumber.eqValue(BigDecimal.valueOf(4).setScale(6))).get());
+        assertTrue("Op.on(Integer.valueOf(4)).exec(FnNumber.notEqValue(BigDecimal.valueOf(4).setScale(6)))", 
+                Op.on(Double.valueOf(4.1)).exec(FnNumber.notEqValue(BigDecimal.valueOf(4).setScale(6))).get());
+        assertTrue("Op.on(Integer.valueOf(4)).exec(FnNumber.notEqValue(BigDecimal.valueOf(4.1).setScale(6)))", 
+                Op.on(Double.valueOf(4)).exec(FnNumber.notEqValue(BigDecimal.valueOf(4.1).setScale(6))).get());
+        assertTrue("Op.on(Short.valueOf((short)4)).exec(FnNumber.eqValue(BigDecimal.valueOf(4).setScale(6)))", 
+                Op.on(Short.valueOf((short)4)).exec(FnNumber.eqValue(BigDecimal.valueOf(4).setScale(6))).get());
+        assertFalse("Op.on(Long.valueOf(4)).exec(FnNumber.notEqValue(BigDecimal.valueOf(4).setScale(6)))", 
+                Op.on(Long.valueOf(4)).exec(FnNumber.notEqValue(BigDecimal.valueOf(4).setScale(6))).get());
         
         
         assertTrue("Op.on(Double.valueOf(4)).exec(FnNumber.eq(4))", Op.on(Double.valueOf(4))
-                .exec(FnNumber.eq(4)).get());
-        assertTrue("Op.on(Double.valueOf(4)).exec(FnNumber.eq(Integer.valueOf(4)))", Op.on(Double.valueOf(4))
+                .exec(FnNumber.eq((double)4)).get());
+        assertFalse("Op.on(Double.valueOf(4)).exec(FnNumber.eq(Integer.valueOf(4)))", Op.on(Double.valueOf(4))
                 .exec(FnNumber.eq(Integer.valueOf(4))).get());
-        assertTrue("Op.on(Double.valueOf(4)).exec(FnNumber.eq(BigDecimal.valueOf(4).setScale(6)))", Op.on(Double.valueOf(4))
+        assertFalse("Op.on(Double.valueOf(4)).exec(FnNumber.eq(BigDecimal.valueOf(4).setScale(6)))", Op.on(Double.valueOf(4))
                 .exec(FnNumber.eq(BigDecimal.valueOf(4).setScale(6))).get());
-        assertTrue("Op.on(BigDecimal.valueOf(4)).exec(FnNumber.notEqIgnoreScale(BigDecimal.valueOf(4).setScale(6)))", 
+        assertTrue("Op.on(BigDecimal.valueOf(4)).exec(FnNumber.notEq(BigDecimal.valueOf(4).setScale(6)))", 
                 Op.on(BigDecimal.valueOf(4)).exec(FnNumber.notEq(BigDecimal.valueOf(4).setScale(6))).get());
         
     }
+    
+
    
     
 }
