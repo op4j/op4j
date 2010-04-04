@@ -119,89 +119,32 @@ public final class FnShort {
     public static final Function<Short,Boolean> eq(final Number object) {
         return (Function<Short,Boolean>)((Function)FnObject.eq(object));
     }
-    public static final Function<Short,Boolean> eq(final float object) {
-        return (Function<Short,Boolean>)((Function)FnObject.eq(object));
-    }
-    public static final Function<Short,Boolean> eq(final double object) {
-        return (Function<Short,Boolean>)((Function)FnObject.eq(object));
-    }
-    public static final Function<Short,Boolean> eq(final byte object) {
-        return (Function<Short,Boolean>)((Function)FnObject.eq(object));
-    }
     public static final Function<Short,Boolean> eq(final short object) {
         return (Function<Short,Boolean>)((Function)FnObject.eq(object));
     }
-    public static final Function<Short,Boolean> eq(final int object) {
-        return (Function<Short,Boolean>)((Function)FnObject.eq(object));
+    
+    public static final Function<Number,Boolean> eqValue(final Number object) {
+        return (Function<Number,Boolean>)((Function)FnObject.eqValue(object));
     }
-    public static final Function<Short,Boolean> eq(final long object) {
-        return (Function<Short,Boolean>)((Function)FnObject.eq(object));
+    public static final Function<Number,Boolean> eqValue(final short object) {
+        return (Function<Number,Boolean>)((Function)FnObject.eqValue(object));
     }
+    
     public static final Function<Short,Boolean> notEq(final Number object) {
-        return (Function<Short,Boolean>)((Function)FnObject.notEq(object));
-    }
-    public static final Function<Short,Boolean> notEq(final float object) {
-        return (Function<Short,Boolean>)((Function)FnObject.notEq(object));
-    }
-    public static final Function<Short,Boolean> notEq(final double object) {
-        return (Function<Short,Boolean>)((Function)FnObject.notEq(object));
-    }
-    public static final Function<Short,Boolean> notEq(final byte object) {
         return (Function<Short,Boolean>)((Function)FnObject.notEq(object));
     }
     public static final Function<Short,Boolean> notEq(final short object) {
         return (Function<Short,Boolean>)((Function)FnObject.notEq(object));
     }
-    public static final Function<Short,Boolean> notEq(final int object) {
-        return (Function<Short,Boolean>)((Function)FnObject.notEq(object));
+    
+    public static final Function<Number,Boolean> notEqValue(final Number object) {
+        return (Function<Number,Boolean>)((Function)FnObject.notEqValue(object));
     }
-    public static final Function<Short,Boolean> notEq(final long object) {
-        return (Function<Short,Boolean>)((Function)FnObject.notEq(object));
+    public static final Function<Number,Boolean> notEqValue(final short object) {
+        return (Function<Number,Boolean>)((Function)FnObject.notEqValue(object));
     }
-    // Ignore Scale
-    public static final Function<Short,Boolean> eqIgnoreScale(final Number object) {
-        return (Function<Short,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
-    }    
-    public static final Function<Short,Boolean> eqIgnoreScale(final float object) {
-        return (Function<Short,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
-    }    
-    public static final Function<Short,Boolean> eqIgnoreScale(final double object) {
-        return (Function<Short,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
-    }    
-    public static final Function<Short,Boolean> eqIgnoreScale(final byte object) {
-        return (Function<Short,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
-    }
-    public static final Function<Short,Boolean> eqIgnoreScale(final short object) {
-        return (Function<Short,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
-    }    
-    public static final Function<Short,Boolean> eqIgnoreScale(final int object) {
-        return (Function<Short,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
-    }    
-    public static final Function<Short,Boolean> eqIgnoreScale(final long object) {
-        return (Function<Short,Boolean>) ((Function)FnNumber.eqIgnoreScale(object));
-    }    
-    public static final Function<Short,Boolean> notEqIgnoreScale(final Number object) {
-        return (Function<Short,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
-    }    
-    public static final Function<Short,Boolean> notEqIgnoreScale(final float object) {
-        return (Function<Short,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
-    }    
-    public static final Function<Short,Boolean> notEqIgnoreScale(final double object) {
-        return (Function<Short,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
-    }    
-    public static final Function<Short,Boolean> notEqIgnoreScale(final byte object) {
-        return (Function<Short,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
-    }    
-    public static final Function<Short,Boolean> notEqIgnoreScale(final short object) {
-        return (Function<Short,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
-    }    
-    public static final Function<Short,Boolean> notEqIgnoreScale(final int object) {
-        return (Function<Short,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
-    }    
-    public static final Function<Short,Boolean> notEqIgnoreScale(final long object) {
-        return (Function<Short,Boolean>) ((Function)FnNumber.notEqIgnoreScale(object));
-    }
-    //
+    
+    
     public static final Function<Short,Boolean> lessThan(final Number object) {
         return (Function<Short,Boolean>)((Function)FnObject.lessThan(object));
     }    
@@ -289,45 +232,31 @@ public final class FnShort {
     public static final Function<Short,Boolean> eqBy(final IFunction<Short,?> by, final Number object) {
         return (Function<Short,Boolean>)((Function)FnObject.eqBy(by, object));
     }
-    public static final Function<Short,Boolean> eqBy(final IFunction<Short,?> by, final float object) {
-        return (Function<Short,Boolean>)((Function)FnObject.eqBy(by, object));
-    }
-    public static final Function<Short,Boolean> eqBy(final IFunction<Short,?> by, final double object) {
-        return (Function<Short,Boolean>)((Function)FnObject.eqBy(by, object));
-    }
-    public static final Function<Short,Boolean> eqBy(final IFunction<Short,?> by, final byte object) {
-        return (Function<Short,Boolean>)((Function)FnObject.eqBy(by, object));
-    }
     public static final Function<Short,Boolean> eqBy(final IFunction<Short,?> by, final short object) {
         return (Function<Short,Boolean>)((Function)FnObject.eqBy(by, object));
     }
-    public static final Function<Short,Boolean> eqBy(final IFunction<Short,?> by, final int object) {
-        return (Function<Short,Boolean>)((Function)FnObject.eqBy(by, object));
+    
+    public static final Function<Number,Boolean> eqValueBy(final IFunction<Number,?> by, final Number object) {
+        return FnObject.eqValueBy(by, object);
     }
-    public static final Function<Short,Boolean> eqBy(final IFunction<Short,?> by, final long object) {
-        return (Function<Short,Boolean>)((Function)FnObject.eqBy(by, object));
+    public static final Function<Number,Boolean> eqValueBy(final IFunction<Number,?> by, final short object) {
+        return FnObject.eqValueBy(by, object);
     }
+    
     public static final Function<Short,Boolean> notEqBy(final IFunction<Short,?> by, final Number object) {
-        return (Function<Short,Boolean>)((Function)FnObject.notEqBy(by, object));
-    }
-    public static final Function<Short,Boolean> notEqBy(final IFunction<Short,?> by, final float object) {
-        return (Function<Short,Boolean>)((Function)FnObject.notEqBy(by, object));
-    }
-    public static final Function<Short,Boolean> notEqBy(final IFunction<Short,?> by, final double object) {
-        return (Function<Short,Boolean>)((Function)FnObject.notEqBy(by, object));
-    }
-    public static final Function<Short,Boolean> notEqBy(final IFunction<Short,?> by, final byte object) {
         return (Function<Short,Boolean>)((Function)FnObject.notEqBy(by, object));
     }
     public static final Function<Short,Boolean> notEqBy(final IFunction<Short,?> by, final short object) {
         return (Function<Short,Boolean>)((Function)FnObject.notEqBy(by, object));
     }
-    public static final Function<Short,Boolean> notEqBy(final IFunction<Short,?> by, final int object) {
-        return (Function<Short,Boolean>)((Function)FnObject.notEqBy(by, object));
+    
+    public static final Function<Number,Boolean> notEqValueBy(final IFunction<Number,?> by, final Number object) {
+        return FnObject.notEqValueBy(by, object);
     }
-    public static final Function<Short,Boolean> notEqBy(final IFunction<Short,?> by, final long object) {
-        return (Function<Short,Boolean>)((Function)FnObject.notEqBy(by, object));
+    public static final Function<Number,Boolean> notEqValueBy(final IFunction<Number,?> by, final short object) {
+        return FnObject.notEqValueBy(by, object);
     }
+    
     public static final Function<Short,Boolean> lessThanBy(final IFunction<Short,?> by, final Number object) {
         return (Function<Short,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
