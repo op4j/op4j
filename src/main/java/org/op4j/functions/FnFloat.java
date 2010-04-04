@@ -61,8 +61,8 @@ public final class FnFloat {
 
 	
 	// From FnNumber
-	public static final Function<Number,String> toStr() {
-        return FnNumber.toStr();
+	public static final Function<Float,String> toStr() {
+        return (Function<Float,String>)((Function)FnNumber.toStr());
     }   
     public static final Function<Float,String> toStr(boolean groupingUsed) {
         return (Function<Float,String>)((Function)FnNumber.toStr(groupingUsed));
@@ -122,11 +122,11 @@ public final class FnFloat {
         return (Function<Float,Boolean>)((Function)FnObject.eq(object));
     }
 
-    public static final Function<Number,Boolean> eqValue(final Number object) {
-        return (Function<Number,Boolean>)((Function)FnObject.eqValue(object));
+    public static final Function<Float,Boolean> eqValue(final Number object) {
+        return (Function<Float,Boolean>)((Function)FnObject.eqValue(object));
     }
-    public static final Function<Number,Boolean> eqValue(final float object) {
-        return (Function<Number,Boolean>)((Function)FnObject.eqValue(object));
+    public static final Function<Float,Boolean> eqValue(final float object) {
+        return (Function<Float,Boolean>)((Function)FnObject.eqValue(object));
     }
     
     public static final Function<Float,Boolean> notEq(final Number object) {
@@ -136,11 +136,11 @@ public final class FnFloat {
         return (Function<Float,Boolean>)((Function)FnObject.notEq(object));
     }
     
-    public static final Function<Number,Boolean> notEqValue(final Number object) {
-        return (Function<Number,Boolean>)((Function)FnObject.notEqValue(object));
+    public static final Function<Float,Boolean> notEqValue(final Number object) {
+        return (Function<Float,Boolean>)((Function)FnObject.notEqValue(object));
     }
-    public static final Function<Number,Boolean> notEqValue(final float object) {
-        return (Function<Number,Boolean>)((Function)FnObject.notEqValue(object));
+    public static final Function<Float,Boolean> notEqValue(final float object) {
+        return (Function<Float,Boolean>)((Function)FnObject.notEqValue(object));
     }
     
     public static final Function<Float,Boolean> lessThan(final Number object) {
@@ -234,11 +234,11 @@ public final class FnFloat {
         return (Function<Float,Boolean>)((Function)FnObject.eqBy(by, object));
     }
     
-    public static final Function<Number,Boolean> eqValueBy(final IFunction<Number,?> by, final Number object) {
-        return FnObject.eqValueBy(by, object);
+    public static final Function<Float,Boolean> eqValueBy(final IFunction<Float,?> by, final Number object) {
+        return (Function<Float,Boolean>)((Function)FnObject.eqValueBy(by, object));
     }
-    public static final Function<Number,Boolean> eqValueBy(final IFunction<Number,?> by, final float object) {
-        return FnObject.eqValueBy(by, object);
+    public static final Function<Float,Boolean> eqValueBy(final IFunction<Float,?> by, final float object) {
+        return (Function<Float,Boolean>)((Function)FnObject.eqValueBy(by, object));
     }
     
     public static final Function<Float,Boolean> notEqBy(final IFunction<Float,?> by, final Number object) {
@@ -248,11 +248,11 @@ public final class FnFloat {
         return (Function<Float,Boolean>)((Function)FnObject.notEqBy(by, object));
     }
     
-    public static final Function<Number,Boolean> notEqValueBy(final IFunction<Number,?> by, final Number object) {
-        return FnObject.notEqValueBy(by, object);
+    public static final Function<Float,Boolean> notEqValueBy(final IFunction<Float,?> by, final Number object) {
+        return (Function<Float,Boolean>)((Function)FnObject.notEqValueBy(by, object));
     }
-    public static final Function<Number,Boolean> notEqValueBy(final IFunction<Number,?> by, final float object) {
-        return FnObject.notEqValueBy(by, object);
+    public static final Function<Float,Boolean> notEqValueBy(final IFunction<Float,?> by, final float object) {
+        return (Function<Float,Boolean>)((Function)FnObject.notEqValueBy(by, object));
     }
     
     public static final Function<Float,Boolean> lessThanBy(final IFunction<Float,?> by, final Number object) {

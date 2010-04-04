@@ -276,11 +276,11 @@ public final class FnDouble {
         return (Function<Double,Boolean>)((Function)FnObject.eq(object));
     }
 
-    public static final Function<Number,Boolean> eqValue(final Number object) {
-        return (Function<Number,Boolean>)((Function)FnObject.eqValue(object));
+    public static final Function<Double,Boolean> eqValue(final Number object) {
+        return (Function<Double,Boolean>)((Function)FnObject.eqValue(object));
     }
-    public static final Function<Number,Boolean> eqValue(final double object) {
-        return (Function<Number,Boolean>)((Function)FnObject.eqValue(object));
+    public static final Function<Double,Boolean> eqValue(final double object) {
+        return (Function<Double,Boolean>)((Function)FnObject.eqValue(object));
     }
     
     public static final Function<Double,Boolean> notEq(final Number object) {
@@ -290,11 +290,11 @@ public final class FnDouble {
         return (Function<Double,Boolean>)((Function)FnObject.notEq(object));
     }
     
-    public static final Function<Number,Boolean> notEqValue(final Number object) {
-        return (Function<Number,Boolean>)((Function)FnObject.notEqValue(object));
+    public static final Function<Double,Boolean> notEqValue(final Number object) {
+        return (Function<Double,Boolean>)((Function)FnObject.notEqValue(object));
     }
-    public static final Function<Number,Boolean> notEqValue(final double object) {
-        return (Function<Number,Boolean>)((Function)FnObject.notEqValue(object));
+    public static final Function<Double,Boolean> notEqValue(final double object) {
+        return (Function<Double,Boolean>)((Function)FnObject.notEqValue(object));
     }
     
     public static final Function<Double,Boolean> lessThan(final Number object) {
@@ -388,11 +388,11 @@ public final class FnDouble {
         return (Function<Double,Boolean>)((Function)FnObject.eqBy(by, object));
     }
     
-    public static final Function<Number,Boolean> eqValueBy(final IFunction<Number,?> by, final Number object) {
-        return FnObject.eqValueBy(by, object);
+    public static final Function<Double,Boolean> eqValueBy(final IFunction<Double,?> by, final Number object) {
+        return (Function<Double,Boolean>)((Function)FnObject.eqValueBy(by, object));
     }
-    public static final Function<Number,Boolean> eqValueBy(final IFunction<Number,?> by, final double object) {
-        return FnObject.eqValueBy(by, object);
+    public static final Function<Double,Boolean> eqValueBy(final IFunction<Double,?> by, final double object) {
+        return (Function<Double,Boolean>)((Function)FnObject.eqValueBy(by, object));
     }
     
     
@@ -403,11 +403,11 @@ public final class FnDouble {
         return (Function<Double,Boolean>)((Function)FnObject.notEqBy(by, object));
     }
     
-    public static final Function<Number,Boolean> notEqValueBy(final IFunction<Number,?> by, final Number object) {
-        return FnObject.notEqValueBy(by, object);
+    public static final Function<Double,Boolean> notEqValueBy(final IFunction<Double,?> by, final Number object) {
+        return (Function<Double,Boolean>)((Function)FnObject.notEqValueBy(by, object));
     }
-    public static final Function<Number,Boolean> notEqValueBy(final IFunction<Number,?> by, final double object) {
-        return FnObject.notEqValueBy(by, object);
+    public static final Function<Double,Boolean> notEqValueBy(final IFunction<Double,?> by, final double object) {
+        return (Function<Double,Boolean>)((Function)FnObject.notEqValueBy(by, object));
     }
     
     

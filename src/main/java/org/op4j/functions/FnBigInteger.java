@@ -62,8 +62,8 @@ public final class FnBigInteger {
 
 	
 	// From FnNumber
-	public static final Function<Number,String> toStr() {
-        return FnNumber.toStr();
+	public static final Function<BigInteger,String> toStr() {
+        return (Function<BigInteger,String>)((Function)FnNumber.toStr());
     }   
     public static final Function<BigInteger,String> toStr(boolean groupingUsed) {
         return (Function<BigInteger,String>)((Function)FnNumber.toStr(groupingUsed));
