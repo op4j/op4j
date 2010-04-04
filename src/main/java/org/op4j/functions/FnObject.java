@@ -817,27 +817,22 @@ public final class FnObject {
     }
     
     
-    static final class EqualValue extends Function<Object,Boolean> {
+    static final class EqualValue extends AbstractNotNullFunction<Object,Boolean> {
 
         private final Object object;
         
         EqualValue(final Object object) {
             super();
+            Validate.notNull(object, "Object can't be null");
             this.object = object;
         }
 
+        @Override
         @SuppressWarnings("unchecked")
-        public Boolean execute(final Object input, final ExecCtx ctx) throws Exception {
-            if (input == null) {
-                return Boolean.valueOf(this.object == null);
-            }
+        public Boolean notNullExecute(final Object input, final ExecCtx ctx) throws Exception {
             if (!(input instanceof Comparable<?>)) {
                 throw new ExecutionException(
                         "Target object is not comparable: " + input.getClass());
-            }
-            if (this.object != null) {
-                throw new ExecutionException(
-                        "Compared object is not comparable: " + this.object.getClass());
             }
             Comparable comp1 = prepareComparable((Comparable<?>) input);
             Comparable comp2 = prepareComparable((Comparable) this.object);
@@ -847,27 +842,22 @@ public final class FnObject {
     }
     
     
-    static final class NotEqualValue extends Function<Object,Boolean> {
+    static final class NotEqualValue extends AbstractNotNullFunction<Object,Boolean> {
 
         private final Object object;
         
         NotEqualValue(final Object object) {
             super();
+            Validate.notNull(object, "Object can't be null");
             this.object = object;
         }
 
+        @Override
         @SuppressWarnings("unchecked")
-        public Boolean execute(final Object input, final ExecCtx ctx) throws Exception {
-            if (input == null) {
-                return Boolean.valueOf(this.object != null);
-            }
+        public Boolean notNullExecute(final Object input, final ExecCtx ctx) throws Exception {
             if (!(input instanceof Comparable<?>)) {
                 throw new ExecutionException(
                         "Target object is not comparable: " + input.getClass());
-            }
-            if (this.object != null) {
-                throw new ExecutionException(
-                        "Compared object is not comparable: " + this.object.getClass());
             }
             Comparable comp1 = prepareComparable((Comparable<?>) input);
             Comparable comp2 = prepareComparable((Comparable) this.object);
@@ -877,25 +867,24 @@ public final class FnObject {
     }
     
     
-    static final class LessThan extends Function<Object,Boolean> {
+    static final class LessThan extends AbstractNotNullFunction<Object,Boolean> {
 
         private final Object object;
         
         LessThan(final Object object) {
             super();
+            Validate.notNull(object, "Object can't be null");
             this.object = object;
         }
 
+        @Override
         @SuppressWarnings("unchecked")
-        public Boolean execute(final Object input, final ExecCtx ctx) throws Exception {
-            if (input == null) {
-                return Boolean.valueOf(this.object == null);
-            }
+        public Boolean notNullExecute(final Object input, final ExecCtx ctx) throws Exception {
             if (!(input instanceof Comparable<?>)) {
                 throw new ExecutionException(
                         "Target object is not comparable: " + input.getClass());
             }
-            if (this.object != null && !(this.object instanceof Comparable<?>)) {
+            if (!(this.object instanceof Comparable<?>)) {
                 throw new ExecutionException(
                         "Compared object is not comparable: " + this.object.getClass());
             }
@@ -907,25 +896,24 @@ public final class FnObject {
     }
     
     
-    static final class LessOrEqualTo extends Function<Object,Boolean> {
+    static final class LessOrEqualTo extends AbstractNotNullFunction<Object,Boolean> {
 
         private final Object object;
         
         LessOrEqualTo(final Object object) {
             super();
+            Validate.notNull(object, "Object can't be null");
             this.object = object;
         }
 
+        @Override
         @SuppressWarnings("unchecked")
-        public Boolean execute(final Object input, final ExecCtx ctx) throws Exception {
-            if (input == null) {
-                return Boolean.valueOf(this.object == null);
-            }
+        public Boolean notNullExecute(final Object input, final ExecCtx ctx) throws Exception {
             if (!(input instanceof Comparable<?>)) {
                 throw new ExecutionException(
                         "Target object is not comparable: " + input.getClass());
             }
-            if (this.object != null && !(this.object instanceof Comparable<?>)) {
+            if (!(this.object instanceof Comparable<?>)) {
                 throw new ExecutionException(
                         "Compared object is not comparable: " + this.object.getClass());
             }
@@ -937,25 +925,24 @@ public final class FnObject {
     }
     
     
-    static final class GreaterThan extends Function<Object,Boolean> {
+    static final class GreaterThan extends AbstractNotNullFunction<Object,Boolean> {
 
         private final Object object;
         
         GreaterThan(final Object object) {
             super();
+            Validate.notNull(object, "Object can't be null");
             this.object = object;
         }
 
+        @Override
         @SuppressWarnings("unchecked")
-        public Boolean execute(final Object input, final ExecCtx ctx) throws Exception {
-            if (input == null) {
-                return Boolean.valueOf(this.object == null);
-            }
+        public Boolean notNullExecute(final Object input, final ExecCtx ctx) throws Exception {
             if (!(input instanceof Comparable<?>)) {
                 throw new ExecutionException(
                         "Target object is not comparable: " + input.getClass());
             }
-            if (this.object != null && !(this.object instanceof Comparable<?>)) {
+            if (!(this.object instanceof Comparable<?>)) {
                 throw new ExecutionException(
                         "Compared object is not comparable: " + this.object.getClass());
             }
@@ -967,25 +954,24 @@ public final class FnObject {
     }
     
     
-    static final class GreaterOrEqualTo extends Function<Object,Boolean> {
+    static final class GreaterOrEqualTo extends AbstractNotNullFunction<Object,Boolean> {
 
         private final Object object;
         
         GreaterOrEqualTo(final Object object) {
             super();
+            Validate.notNull(object, "Object can't be null");
             this.object = object;
         }
 
+        @Override
         @SuppressWarnings("unchecked")
-        public Boolean execute(final Object input, final ExecCtx ctx) throws Exception {
-            if (input == null) {
-                return Boolean.valueOf(this.object == null);
-            }
+        public Boolean notNullExecute(final Object input, final ExecCtx ctx) throws Exception {
             if (!(input instanceof Comparable<?>)) {
                 throw new ExecutionException(
                         "Target object is not comparable: " + input.getClass());
             }
-            if (this.object != null && !(this.object instanceof Comparable<?>)) {
+            if (!(this.object instanceof Comparable<?>)) {
                 throw new ExecutionException(
                         "Compared object is not comparable: " + this.object.getClass());
             }
