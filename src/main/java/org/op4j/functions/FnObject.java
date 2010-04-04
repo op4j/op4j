@@ -115,11 +115,42 @@ public final class FnObject {
         return new Equals(Boolean.valueOf(object));
     }
     
+    public static final Function<Object,Boolean> eqValue(final Object object) {
+        return new EqualValue(object);
+    }
+    
+    public static final Function<Object,Boolean> eqValue(final float object) {
+        return new EqualValue(Float.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> eqValue(final double object) {
+        return new EqualValue(Double.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> eqValue(final byte object) {
+        return new EqualValue(Byte.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> eqValue(final short object) {
+        return new EqualValue(Short.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> eqValue(final int object) {
+        return new EqualValue(Integer.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> eqValue(final long object) {
+        return new EqualValue(Long.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> eqValue(final boolean object) {
+        return new EqualValue(Boolean.valueOf(object));
+    }
     
     public static final Function<Object,Boolean> notEq(final Object object) {
         return new NotEquals(object);
     }
-    
+        
     public static final Function<Object,Boolean> notEq(final float object) {
         return new NotEquals(Float.valueOf(object));
     }
@@ -148,9 +179,37 @@ public final class FnObject {
         return new NotEquals(Boolean.valueOf(object));
     }
 
+    public static final Function<Object,Boolean> notEqValue(final Object object) {
+        return new NotEqualValue(object);
+    }
     
+    public static final Function<Object,Boolean> notEqValue(final float object) {
+        return new NotEqualValue(Float.valueOf(object));
+    }
     
+    public static final Function<Object,Boolean> notEqValue(final double object) {
+        return new NotEqualValue(Double.valueOf(object));
+    }
     
+    public static final Function<Object,Boolean> notEqValue(final byte object) {
+        return new NotEqualValue(Byte.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> notEqValue(final short object) {
+        return new NotEqualValue(Short.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> notEqValue(final int object) {
+        return new NotEqualValue(Integer.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> notEqValue(final long object) {
+        return new NotEqualValue(Long.valueOf(object));
+    }
+    
+    public static final Function<Object,Boolean> notEqValue(final boolean object) {
+        return new NotEqualValue(Boolean.valueOf(object));
+    }
     
     
     
@@ -159,7 +218,7 @@ public final class FnObject {
     public static final Function<Object,Boolean> lessThan(final Object object) {
         return new LessThan(object);
     }
-    
+        
     public static final Function<Object,Boolean> lessThan(final float object) {
         return new LessThan(Float.valueOf(object));
     }
@@ -300,7 +359,7 @@ public final class FnObject {
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final Object object) {
         return FnFunc.by(by, eq(object));
     }
-    
+        
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final float object) {
         return FnFunc.by(by, eq(object));
     }
@@ -329,6 +388,37 @@ public final class FnObject {
         return FnFunc.by(by, eq(object));
     }
     
+    public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final Object object) {
+        return FnFunc.by(by, eqValue(object));
+    }
+    
+    public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final float object) {
+        return FnFunc.by(by, eqValue(object));
+    }
+    
+    public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final double object) {
+        return FnFunc.by(by, eqValue(object));
+    }
+    
+    public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final byte object) {
+        return FnFunc.by(by, eqValue(object));
+    }
+    
+    public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final short object) {
+        return FnFunc.by(by, eqValue(object));
+    }
+    
+    public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final int object) {
+        return FnFunc.by(by, eqValue(object));
+    }
+    
+    public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final long object) {
+        return FnFunc.by(by, eqValue(object));
+    }
+    
+    public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final boolean object) {
+        return FnFunc.by(by, eqValue(object));
+    }
     
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final Object object) {
         return FnFunc.by(by, notEq(object));
@@ -362,8 +452,37 @@ public final class FnObject {
         return FnFunc.by(by, notEq(object));
     }
 
+    public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final Object object) {
+        return FnFunc.by(by, notEqValue(object));
+    }
     
+    public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final float object) {
+        return FnFunc.by(by, notEqValue(object));
+    }
     
+    public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final double object) {
+        return FnFunc.by(by, notEqValue(object));
+    }
+    
+    public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final byte object) {
+        return FnFunc.by(by, notEqValue(object));
+    }
+    
+    public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final short object) {
+        return FnFunc.by(by, notEqValue(object));
+    }
+    
+    public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final int object) {
+        return FnFunc.by(by, notEqValue(object));
+    }
+    
+    public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final long object) {
+        return FnFunc.by(by, notEqValue(object));
+    }
+    
+    public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final boolean object) {
+        return FnFunc.by(by, notEqValue(object));
+    }
     
     
     
@@ -698,7 +817,64 @@ public final class FnObject {
     }
     
     
+    static final class EqualValue extends Function<Object,Boolean> {
+
+        private final Object object;
+        
+        EqualValue(final Object object) {
+            super();
+            this.object = object;
+        }
+
+        @SuppressWarnings("unchecked")
+        public Boolean execute(final Object input, final ExecCtx ctx) throws Exception {
+            if (input == null) {
+                return Boolean.valueOf(this.object == null);
+            }
+            if (!(input instanceof Comparable<?>)) {
+                throw new ExecutionException(
+                        "Target object is not comparable: " + input.getClass());
+            }
+            if (this.object != null) {
+                throw new ExecutionException(
+                        "Compared object is not comparable: " + this.object.getClass());
+            }
+            Comparable comp1 = prepareComparable((Comparable<?>) input);
+            Comparable comp2 = prepareComparable((Comparable) this.object);
+            return Boolean.valueOf(comp1.compareTo(comp2) == 0);
+        }
+        
+    }
     
+    
+    static final class NotEqualValue extends Function<Object,Boolean> {
+
+        private final Object object;
+        
+        NotEqualValue(final Object object) {
+            super();
+            this.object = object;
+        }
+
+        @SuppressWarnings("unchecked")
+        public Boolean execute(final Object input, final ExecCtx ctx) throws Exception {
+            if (input == null) {
+                return Boolean.valueOf(this.object != null);
+            }
+            if (!(input instanceof Comparable<?>)) {
+                throw new ExecutionException(
+                        "Target object is not comparable: " + input.getClass());
+            }
+            if (this.object != null) {
+                throw new ExecutionException(
+                        "Compared object is not comparable: " + this.object.getClass());
+            }
+            Comparable comp1 = prepareComparable((Comparable<?>) input);
+            Comparable comp2 = prepareComparable((Comparable) this.object);
+            return Boolean.valueOf(comp1.compareTo(comp2) != 0);
+        }
+        
+    }
     
     
     static final class LessThan extends Function<Object,Boolean> {
