@@ -655,9 +655,9 @@ watch.start();
         };
         
         Function<Integer,Integer> fnn1 = 
-            FnFunc.ifTrue(FnNumber.greaterThan(2),fnz1);
+            FnFunc.ifTrueThen(Types.INTEGER, FnNumber.greaterThan(2),fnz1);
         
-        Fn.on(Types.INTEGER).exec(FnFunc.ifTrue(FnNumber.greaterThan(2),fnz1)).get();
+        Fn.on(Types.INTEGER).exec(FnFunc.ifTrueThen(Types.NUMBER, FnNumber.greaterThan(2),fnz1)).get();
         
         
         
@@ -710,7 +710,7 @@ watch.start();
 
         
         System.out.println(
-                Op.on(Types.STRING,null).exec(FnFunc.ifTrue(FnBoolean.or(FnObject.isNull(), FnBoolean.and(FnObject.isNotNull(), FnFunc.chain(FnString.toInteger(),FnNumber.greaterThan(100)))), FnObject.replaceWith("lelo"))).get());
+                Op.on(Types.STRING,null).exec(FnFunc.ifTrueThen(Types.STRING, FnBoolean.or(FnObject.isNull(), FnBoolean.and(FnObject.isNotNull(), FnFunc.chain(FnString.toInteger(),FnNumber.greaterThan(100)))), FnObject.replaceWith("lelo"))).get());
         
 
         
