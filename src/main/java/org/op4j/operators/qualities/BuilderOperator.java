@@ -107,7 +107,7 @@ public interface BuilderOperator<I,T> {
      * </p>
      * 
      * @param <K> the type of the new key, resulting from evaluating keyEval
-     * @param keyEval the evaluator to be used for obtaining the key
+     * @param key the key to be zipped
      * @return an operator on the resulting map
      */
     public <K> ILevel0MapOperator<I,K,T> zipKey(final K key);
@@ -120,7 +120,7 @@ public interface BuilderOperator<I,T> {
      * </p>
      * 
      * @param <V> the type of the new value, resulting from evaluating valueEval
-     * @param valueEval the evaluator to be used for obtaining the value
+     * @param value the value to be zipped
      * @return an operator on the resulting map
      */
     public <V> ILevel0MapOperator<I,T,V> zipValue(final V value);
