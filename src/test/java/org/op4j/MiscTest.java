@@ -769,6 +769,12 @@ watch.start();
         Calendar c = Calendar.getInstance();
         c.setTime(dt);
         System.out.println(dateFormat.format(c.getTime()));
+        
+        
+        
+        System.out.println(Op.onListFor(2,12,42,5,9,24).mapIfTrue(FnNumber.lessOrEqTo(10), FnObject.replaceWith("<"), FnObject.replaceWith(">")).get());
+        
+        
     }
     
     

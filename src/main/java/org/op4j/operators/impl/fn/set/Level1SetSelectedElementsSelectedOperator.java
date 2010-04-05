@@ -43,11 +43,6 @@ public final class Level1SetSelectedElementsSelectedOperator<I,T> extends Abstra
     }
 
 
-    public Level1SetSelectedElementsSelectedOperator<I,T> execIfNotNull(final IFunction<? super T,? extends T> function) {
-        return new Level1SetSelectedElementsSelectedOperator<I,T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
-
-
     public Level1SetSelectedElementsSelectedOperator<I,T> exec(final IFunction<? super T,? extends T> function) {
         return new Level1SetSelectedElementsSelectedOperator<I,T>(getTarget().execute(function, Normalisation.NONE));
     }

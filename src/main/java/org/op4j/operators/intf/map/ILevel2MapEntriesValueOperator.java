@@ -52,12 +52,8 @@ public interface ILevel2MapEntriesValueOperator<I,K,V>
 
     public ILevel2MapEntriesValueSelectedOperator<I,K,V> ifTrue(final IFunction<? super V,Boolean> eval);
     public ILevel2MapEntriesValueSelectedOperator<I,K,V> ifFalse(final IFunction<? super V,Boolean> eval);
-    public ILevel2MapEntriesValueSelectedOperator<I,K,V> ifNullOrFalse(final IFunction<? super V,Boolean> eval);
-    public ILevel2MapEntriesValueSelectedOperator<I,K,V> ifNotNullAndFalse(final IFunction<? super V,Boolean> eval);
     public ILevel2MapEntriesValueSelectedOperator<I,K,V> ifNull();
-    public ILevel2MapEntriesValueSelectedOperator<I,K,V> ifNullOrTrue(final IFunction<? super V,Boolean> eval);
     public ILevel2MapEntriesValueSelectedOperator<I,K,V> ifNotNull();
-    public ILevel2MapEntriesValueSelectedOperator<I,K,V> ifNotNullAndTrue(final IFunction<? super V,Boolean> eval);
 
     
     public ILevel1MapEntriesOperator<I,K,V> endOn();
@@ -66,9 +62,18 @@ public interface ILevel2MapEntriesValueOperator<I,K,V>
     public ILevel2MapEntriesValueOperator<I,K,V> replaceIfNullWith(final V replacement);
 
 
-    public <X> ILevel2MapEntriesValueOperator<I,K,X> execIfNotNull(final IFunction<? super V,X> function);
-
     public <X> ILevel2MapEntriesValueOperator<I,K,X> exec(final IFunction<? super V,X> function);
+    
+    public ILevel2MapEntriesValueOperator<I,K,V> execIfNotNull(final IFunction<? super V,? extends V> function);
+    public ILevel2MapEntriesValueOperator<I,K,V> execIfNull(final IFunction<? super V,? extends V> function);
+    public ILevel2MapEntriesValueOperator<I,K,V> execIfTrue(final IFunction<? super V, Boolean> eval, final IFunction<? super V,? extends V> function);
+    public ILevel2MapEntriesValueOperator<I,K,V> execIfFalse(final IFunction<? super V, Boolean> eval, final IFunction<? super V,? extends V> function);
+    public <X> ILevel2MapEntriesValueOperator<I,K,X> execIfNotNull(final IFunction<? super V,X> function, final IFunction<? super V,X> elseFunction);
+    public <X> ILevel2MapEntriesValueOperator<I,K,X> execIfNull(final IFunction<? super V,X> function, final IFunction<? super V,X> elseFunction);
+    public <X> ILevel2MapEntriesValueOperator<I,K,X> execIfTrue(final IFunction<? super V, Boolean> eval, final IFunction<? super V,X> function, final IFunction<? super V,X> elseFunction);
+    public <X> ILevel2MapEntriesValueOperator<I,K,X> execIfFalse(final IFunction<? super V, Boolean> eval, final IFunction<? super V,X> function, final IFunction<? super V,X> elseFunction);
+    
+    
     
     public <X> ILevel2MapEntriesValueOperator<I,K,X> castTo(final Type<X> type);
     

@@ -78,12 +78,8 @@ public interface ILevel0SetOperator<I,T>
 
     public ILevel0SetSelectedOperator<I,T> ifTrue(final IFunction<? super Set<T>,Boolean> eval);
     public ILevel0SetSelectedOperator<I,T> ifFalse(final IFunction<? super Set<T>,Boolean> eval);
-    public ILevel0SetSelectedOperator<I,T> ifNullOrFalse(final IFunction<? super Set<T>,Boolean> eval);
-    public ILevel0SetSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super Set<T>,Boolean> eval);
     public ILevel0SetSelectedOperator<I,T> ifNull();
-    public ILevel0SetSelectedOperator<I,T> ifNullOrTrue(final IFunction<? super Set<T>,Boolean> eval);
     public ILevel0SetSelectedOperator<I,T> ifNotNull();
-    public ILevel0SetSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super Set<T>,Boolean> eval);
 
 
     
@@ -146,17 +142,33 @@ public interface ILevel0SetOperator<I,T>
     public ILevel0SetOperator<I,T> replaceIfNullWith(final Set<T> replacement);
 
 
-    public ILevel0SetOperator<I,T> execIfNotNullAsSet(final IFunction<? super Set<T>,? extends Set<? extends T>> function);
 
-    public <X> ILevel0SetOperator<I,X> execAsSet(final IFunction<? super Set<T>,? extends Set<X>> function);
-
-    public <X> ILevel0GenericUniqOperator<I,X> exec(final IFunction<? super Set<T>,X> function);
     
+    
+    public <X> ILevel0GenericUniqOperator<I,X> exec(final IFunction<? super Set<T>,X> function);
+    public <X> ILevel0SetOperator<I,X> execAsSet(final IFunction<? super Set<T>,? extends Set<X>> function);
+    
+    public ILevel0SetOperator<I,T> execIfNotNullAsSet(final IFunction<? super Set<T>,? extends Set<? extends T>> function);
+    public ILevel0SetOperator<I,T> execIfNullAsSet(final IFunction<? super Set<T>,? extends Set<? extends T>> function);
+    public ILevel0SetOperator<I,T> execIfTrueAsSet(final IFunction<? super Set<T>, Boolean> eval, final IFunction<? super Set<T>,? extends Set<? extends T>> function);
+    public ILevel0SetOperator<I,T> execIfFalseAsSet(final IFunction<? super Set<T>, Boolean> eval, final IFunction<? super Set<T>,? extends Set<? extends T>> function);
+    public <X> ILevel0SetOperator<I,X> execIfNotNullAsSet(final IFunction<? super Set<T>,? extends Set<X>> function, final IFunction<? super Set<T>,? extends Set<X>> elseFunction);
+    public <X> ILevel0SetOperator<I,X> execIfNullAsSet(final IFunction<? super Set<T>,? extends Set<X>> function, final IFunction<? super Set<T>,? extends Set<X>> elseFunction);
+    public <X> ILevel0SetOperator<I,X> execIfTrueAsSet(final IFunction<? super Set<T>, Boolean> eval, final IFunction<? super Set<T>,? extends Set<X>> function, final IFunction<? super Set<T>,? extends Set<X>> elseFunction);
+    public <X> ILevel0SetOperator<I,X> execIfFalseAsSet(final IFunction<? super Set<T>, Boolean> eval, final IFunction<? super Set<T>,? extends Set<X>> function, final IFunction<? super Set<T>,? extends Set<X>> elseFunction);
+
     public <X> ILevel0SetOperator<I,X> map(final IFunction<? super T,X> function);
     
     public ILevel0SetOperator<I,T> mapIfNotNull(final IFunction<? super T,? extends T> function);
+    public ILevel0SetOperator<I,T> mapIfNull(final IFunction<? super T,? extends T> function);
+    public ILevel0SetOperator<I,T> mapIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+    public ILevel0SetOperator<I,T> mapIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+    public <X> ILevel0SetOperator<I,X> mapIfNotNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel0SetOperator<I,X> mapIfNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel0SetOperator<I,X> mapIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel0SetOperator<I,X> mapIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
     
-
+    
     
     public <X> ILevel0SetOperator<I,X> of(final Type<X> type);
     public <X> ILevel0SetOperator<I,X> castToSetOf(final Type<X> type);

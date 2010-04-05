@@ -53,7 +53,5 @@ public interface ILevel1MapEntriesSelectedOperator<I,K,V>
     public ILevel1MapEntriesSelectedOperator<I,K,V> replaceWith(final Map.Entry<K,V> replacement);
 
     public ILevel1MapEntriesSelectedOperator<I,K,V> execAsMapEntry(final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<? extends K,? extends V>> function);
-    
-    public ILevel1MapEntriesSelectedOperator<I,K,V> execIfNotNullAsMapEntry(final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<? extends K,? extends V>> function);
-    
-    }
+   
+}

@@ -51,13 +51,9 @@ public interface ILevel1ArrayElementsOperator<I,T>
     public ILevel1ArrayElementsSelectedOperator<I,T> ifIndex(final int... indexes);
     public ILevel1ArrayElementsSelectedOperator<I,T> ifTrue(final IFunction<? super T,Boolean> eval);
     public ILevel1ArrayElementsSelectedOperator<I,T> ifFalse(final IFunction<? super T,Boolean> eval);
-    public ILevel1ArrayElementsSelectedOperator<I,T> ifNullOrFalse(final IFunction<? super T,Boolean> eval);
-    public ILevel1ArrayElementsSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval);
     public ILevel1ArrayElementsSelectedOperator<I,T> ifNull();
-    public ILevel1ArrayElementsSelectedOperator<I,T> ifNullOrTrue(final IFunction<? super T,Boolean> eval);
     public ILevel1ArrayElementsSelectedOperator<I,T> ifIndexNot(final int... indexes);
     public ILevel1ArrayElementsSelectedOperator<I,T> ifNotNull();
-    public ILevel1ArrayElementsSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval);
 
 
 		    
@@ -67,9 +63,24 @@ public interface ILevel1ArrayElementsOperator<I,T>
     public ILevel1ArrayElementsOperator<I,T> replaceIfNullWith(final T replacement);
 
 
-    public ILevel1ArrayElementsOperator<I,T> execIfNotNull(final IFunction<? super T,? extends T> function);
+    
     public ILevel1ArrayElementsOperator<I,T> exec(final IFunction<? super T,? extends T> function);
     public <X> ILevel1ArrayElementsOperator<I,X> exec(final Type<X> type, final IFunction<? super T,X> function);
+    
+    public ILevel1ArrayElementsOperator<I,T> execIfIndex(final int[] indexes, final IFunction<? super T,? extends T> function);
+    public ILevel1ArrayElementsOperator<I,T> execIfIndexNot(final int[] indexes, final IFunction<? super T,? extends T> function);
+    public ILevel1ArrayElementsOperator<I,T> execIfNotNull(final IFunction<? super T,? extends T> function);
+    public ILevel1ArrayElementsOperator<I,T> execIfNull(final IFunction<? super T,? extends T> function);
+    public ILevel1ArrayElementsOperator<I,T> execIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+    public ILevel1ArrayElementsOperator<I,T> execIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+    public <X> ILevel1ArrayElementsOperator<I,X> execIfIndex(final Type<X> type, final int[] indexes, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel1ArrayElementsOperator<I,X> execIfIndexNot(final Type<X> type, final int[] indexes, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel1ArrayElementsOperator<I,X> execIfNotNull(final Type<X> type, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel1ArrayElementsOperator<I,X> execIfNull(final Type<X> type, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel1ArrayElementsOperator<I,X> execIfTrue(final Type<X> type, final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel1ArrayElementsOperator<I,X> execIfFalse(final Type<X> type, final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    
+    
     
     
     public <X> ILevel1ArrayElementsOperator<I,X> castTo(final Type<X> type);

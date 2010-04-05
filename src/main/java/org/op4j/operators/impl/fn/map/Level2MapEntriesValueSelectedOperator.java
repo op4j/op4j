@@ -43,11 +43,6 @@ public final class Level2MapEntriesValueSelectedOperator<I,K,V> extends Abstract
     }
 
 
-    public Level2MapEntriesValueSelectedOperator<I,K,V> execIfNotNull(final IFunction<? super V,? extends V> function) {
-        return new Level2MapEntriesValueSelectedOperator<I,K,V>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
-
-
     public Level2MapEntriesValueSelectedOperator<I,K,V> exec(final IFunction<? super V,? extends V> function) {
         return new Level2MapEntriesValueSelectedOperator<I,K,V>(getTarget().execute(function, Normalisation.NONE));
     }

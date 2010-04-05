@@ -24,7 +24,7 @@ import java.util.List;
 import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 import org.op4j.operators.qualities.CastableToTypeOperator;
-import org.op4j.operators.qualities.ExecutableOperator;
+import org.op4j.operators.qualities.ExecutableElementsOperator;
 import org.op4j.operators.qualities.NavigatingCollectionOperator;
 import org.op4j.operators.qualities.ReplaceableIfNullOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
@@ -42,7 +42,7 @@ import org.op4j.operators.qualities.UniqOperator;
 public interface ILevel1ListElementsOperator<I,T>
         extends UniqOperator<List<T>>,
                 NavigatingCollectionOperator<T>,
-        		ExecutableOperator<T>,
+        		ExecutableElementsOperator<T>,
                 SelectableElementsOperator<T>,
                 ReplaceableOperator<T>,
                 ReplaceableIfNullOperator<T>,
@@ -53,13 +53,9 @@ public interface ILevel1ListElementsOperator<I,T>
     public ILevel1ListElementsSelectedOperator<I,T> ifIndex(final int... indexes);
     public ILevel1ListElementsSelectedOperator<I,T> ifTrue(final IFunction<? super T,Boolean> eval);
     public ILevel1ListElementsSelectedOperator<I,T> ifFalse(final IFunction<? super T,Boolean> eval);
-    public ILevel1ListElementsSelectedOperator<I,T> ifNullOrFalse(final IFunction<? super T,Boolean> eval);
-    public ILevel1ListElementsSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval);
     public ILevel1ListElementsSelectedOperator<I,T> ifNull();
-    public ILevel1ListElementsSelectedOperator<I,T> ifNullOrTrue(final IFunction<? super T,Boolean> eval);
     public ILevel1ListElementsSelectedOperator<I,T> ifIndexNot(final int... indexes);
     public ILevel1ListElementsSelectedOperator<I,T> ifNotNull();
-    public ILevel1ListElementsSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval);
 
 
     
@@ -69,9 +65,25 @@ public interface ILevel1ListElementsOperator<I,T>
     public ILevel1ListElementsOperator<I,T> replaceIfNullWith(final T replacement);
 
 
-    public <X> ILevel1ListElementsOperator<I,X> execIfNotNull(final IFunction<? super T,X> function);
-
+    
+    
     public <X> ILevel1ListElementsOperator<I,X> exec(final IFunction<? super T,X> function);
+    
+    public ILevel1ListElementsOperator<I,T> execIfIndex(final int[] indexes, final IFunction<? super T,? extends T> function);
+    public ILevel1ListElementsOperator<I,T> execIfIndexNot(final int[] indexes, final IFunction<? super T,? extends T> function);
+    public ILevel1ListElementsOperator<I,T> execIfNotNull(final IFunction<? super T,? extends T> function);
+    public ILevel1ListElementsOperator<I,T> execIfNull(final IFunction<? super T,? extends T> function);
+    public ILevel1ListElementsOperator<I,T> execIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+    public ILevel1ListElementsOperator<I,T> execIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+    public <X> ILevel1ListElementsOperator<I,X> execIfIndex(final int[] indexes, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel1ListElementsOperator<I,X> execIfIndexNot(final int[] indexes, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel1ListElementsOperator<I,X> execIfNotNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel1ListElementsOperator<I,X> execIfNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel1ListElementsOperator<I,X> execIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel1ListElementsOperator<I,X> execIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    
+    
+    
     
     public <X> ILevel1ListElementsOperator<I,X> castTo(final Type<X> type);
     

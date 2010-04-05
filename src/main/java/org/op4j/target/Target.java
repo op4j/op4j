@@ -66,7 +66,8 @@ public abstract class Target {
     abstract Target doCast(final CastType targetType, final Type<?>... types);
     
     abstract Target doMap(final Structure structure, final IFunction<?,?> executable, final Class<?> arrayComponentClass);
-    abstract Target doMapIfNotNull(final Structure structure, final IFunction<?,?> executable, final Class<?> arrayComponentClass);
+    abstract Target doMapIfNull(final boolean result, final Structure structure, final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Class<?> arrayComponentClass);
+    abstract Target doMapIf(final boolean result, final Structure structure, final IFunction<?,Boolean> condition, final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Class<?> arrayComponentClass);
 
     
     
@@ -75,9 +76,26 @@ public abstract class Target {
         return doMap(structure, executable, arrayComponentClass);
     }
     
-    public final Target mapIfNotNull(final Structure structure, final IFunction<?,?> executable, final Class<?> arrayComponentClass) {
+    public final Target mapIfNotNull(final Structure structure, final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Class<?> arrayComponentClass) {
         Validate.notNull(executable, "Specified function cannot be null");
-        return doMapIfNotNull(structure, executable, arrayComponentClass);
+        return doMapIfNull(false, structure, executable, elseExecutable, arrayComponentClass);
+    }
+    
+    public final Target mapIfNull(final Structure structure, final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Class<?> arrayComponentClass) {
+        Validate.notNull(executable, "Specified function cannot be null");
+        return doMapIfNull(true, structure, executable, elseExecutable, arrayComponentClass);
+    }
+    
+    public final Target mapIfTrue(final Structure structure, final IFunction<?,Boolean> condition, final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Class<?> arrayComponentClass) {
+        Validate.notNull(executable, "Specified condition evaluator function cannot be null");
+        Validate.notNull(executable, "Specified function cannot be null");
+        return doMapIf(true, structure, condition, executable, elseExecutable, arrayComponentClass);
+    }
+    
+    public final Target mapIfFalse(final Structure structure, final IFunction<?,Boolean> condition, final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Class<?> arrayComponentClass) {
+        Validate.notNull(executable, "Specified condition evaluator function cannot be null");
+        Validate.notNull(executable, "Specified function cannot be null");
+        return doMapIf(false, structure, condition, executable, elseExecutable, arrayComponentClass);
     }
     
     
@@ -202,7 +220,9 @@ public abstract class Target {
     
     
     abstract Target doExecute(final IFunction<?,?> executable, final Normalisation normalisation);
-    abstract Target doExecuteIfNotNull(final IFunction<?,?> executable, final Normalisation normalisation);
+    abstract Target doExecuteIfNull(final boolean result, final IFunction<?,?> executable, final IFunction<?,?> elseFunction, final Normalisation normalisation);
+    abstract Target doExecuteIf(final boolean result, final IFunction<?,Boolean> condition, final IFunction<?,?> executable, final IFunction<?,?> elseFunction, final Normalisation normalisation);
+    abstract Target doExecuteIfIndex(final boolean result, final int[] indexes, final IFunction<?,?> executable, final IFunction<?,?> elseFunction, final Normalisation normalisation);
 
     
     public final Target execute(final IFunction<?,?> executable) {
@@ -216,9 +236,43 @@ public abstract class Target {
     }
 
     
-    public final Target executeIfNotNull(final IFunction<?,?> executable, final Normalisation normalisation) {
+    public final Target executeIfNotNull(final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Normalisation normalisation) {
         Validate.notNull(executable, "Specified executable function cannot be null");
-        return doExecuteIfNotNull(executable, normalisation);
+        return doExecuteIfNull(false, executable, elseExecutable, normalisation);
+    }
+
+    
+    public final Target executeIfNull(final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Normalisation normalisation) {
+        Validate.notNull(executable, "Specified executable function cannot be null");
+        return doExecuteIfNull(true, executable, elseExecutable, normalisation);
+    }
+
+    
+    public final Target executeIfTrue(final IFunction<?,Boolean> condition, final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Normalisation normalisation) {
+        Validate.notNull(executable, "Specified condition evaluator function cannot be null");
+        Validate.notNull(executable, "Specified executable function cannot be null");
+        return doExecuteIf(true, condition, executable, elseExecutable, normalisation);
+    }
+
+    
+    public final Target executeIfFalse(final IFunction<?,Boolean> condition, final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Normalisation normalisation) {
+        Validate.notNull(executable, "Specified condition evaluator function cannot be null");
+        Validate.notNull(executable, "Specified executable function cannot be null");
+        return doExecuteIf(false, condition, executable, elseExecutable, normalisation);
+    }
+
+    
+    public final Target executeIfIndex(final int[] indexes, final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Normalisation normalisation) {
+        Validate.notNull(indexes, "Specified indexes cannot be null");
+        Validate.notNull(executable, "Specified executable function cannot be null");
+        return doExecuteIfIndex(true, indexes, executable, elseExecutable, normalisation);
+    }
+
+    
+    public final Target executeIfIndexNot(final int[] indexes, final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Normalisation normalisation) {
+        Validate.notNull(indexes, "Specified indexes cannot be null");
+        Validate.notNull(executable, "Specified executable function cannot be null");
+        return doExecuteIfIndex(false, indexes, executable, elseExecutable, normalisation);
     }
     
     

@@ -120,6 +120,29 @@ public final class Level1MapEntriesOperator<I,K,V> extends AbstractOperator
         return new Level1MapEntriesOperator<I,K, V>(getTarget().replaceWith(replacement, Normalisation.MAP_ENTRY));
     }
 
+    
+    
+    
+    public Level1MapEntriesOperator<I, K, V> execIfFalseAsMapEntry(final IFunction<? super Entry<K, V>, Boolean> eval, final IFunction<? super Entry<K, V>, ? extends Entry<? extends K, ? extends V>> function) {
+        return new Level1MapEntriesOperator<I,K,V>(getTarget().executeIfFalse(eval, function, null, Normalisation.MAP_ENTRY));
+    }
+
+
+    public <X, Y> Level1MapEntriesOperator<I, X, Y> execIfFalseAsMapEntry(final IFunction<? super Entry<K, V>, Boolean> eval, final IFunction<? super Entry<K, V>, ? extends Entry<X, Y>> function, final IFunction<? super Entry<K, V>, ? extends Entry<X, Y>> elseFunction) {
+        return new Level1MapEntriesOperator<I,X,Y>(getTarget().executeIfFalse(eval, function, elseFunction, Normalisation.MAP_ENTRY));
+    }
+
+
+    public Level1MapEntriesOperator<I, K, V> execIfTrueAsMapEntry(final IFunction<? super Entry<K, V>, Boolean> eval, final IFunction<? super Entry<K, V>, ? extends Entry<? extends K, ? extends V>> function) {
+        return new Level1MapEntriesOperator<I,K,V>(getTarget().executeIfTrue(eval, function, null, Normalisation.MAP_ENTRY));
+    }
+
+
+    public <X, Y> Level1MapEntriesOperator<I, X, Y> execIfTrueAsMapEntry(final IFunction<? super Entry<K, V>, Boolean> eval, final IFunction<? super Entry<K, V>, ? extends Entry<X, Y>> function, final IFunction<? super Entry<K, V>, ? extends Entry<X, Y>> elseFunction) {
+        return new Level1MapEntriesOperator<I,X,Y>(getTarget().executeIfTrue(eval, function, elseFunction, Normalisation.MAP_ENTRY));
+    }
+
+    
 
     
 

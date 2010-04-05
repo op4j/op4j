@@ -46,11 +46,6 @@ public final class Level1ArraySelectedElementsSelectedOperator<I,T> extends Abst
     }
 
 
-    public Level1ArraySelectedElementsSelectedOperator<I,T> execIfNotNull(final IFunction<? super T,? extends T> function) {
-        return new Level1ArraySelectedElementsSelectedOperator<I,T>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
-
-
     public Level1ArraySelectedElementsSelectedOperator<I,T> exec(final IFunction<? super T,? extends T> function) {
         return new Level1ArraySelectedElementsSelectedOperator<I,T>(this.type, getTarget().execute(function, Normalisation.NONE));
     }

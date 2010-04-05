@@ -80,12 +80,8 @@ public interface ILevel0ListOperator<I,T>
 
     public ILevel0ListSelectedOperator<I,T> ifTrue(final IFunction<? super List<T>,Boolean> eval);
     public ILevel0ListSelectedOperator<I,T> ifFalse(final IFunction<? super List<T>,Boolean> eval);
-    public ILevel0ListSelectedOperator<I,T> ifNullOrFalse(final IFunction<? super List<T>,Boolean> eval);
-    public ILevel0ListSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super List<T>,Boolean> eval);
     public ILevel0ListSelectedOperator<I,T> ifNull();
-    public ILevel0ListSelectedOperator<I,T> ifNullOrTrue(final IFunction<? super List<T>,Boolean> eval);
     public ILevel0ListSelectedOperator<I,T> ifNotNull();
-    public ILevel0ListSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super List<T>,Boolean> eval);
 
 
 
@@ -153,17 +149,32 @@ public interface ILevel0ListOperator<I,T>
     public ILevel0ListOperator<I,T> replaceIfNullWith(final List<T> replacement);
 
 
-    public ILevel0ListOperator<I,T> execIfNotNullAsList(final IFunction<? super List<T>,? extends List<? extends T>> function);
-
-    public <X> ILevel0ListOperator<I,X> execAsList(final IFunction<? super List<T>,? extends List<X>> function);
-
-    public <X> ILevel0GenericUniqOperator<I,X> exec(final IFunction<? super List<T>,X> function);
     
+    public <X> ILevel0GenericUniqOperator<I,X> exec(final IFunction<? super List<T>,X> function);
+    public <X> ILevel0ListOperator<I,X> execAsList(final IFunction<? super List<T>,? extends List<X>> function);
+    
+    public ILevel0ListOperator<I,T> execIfNotNullAsList(final IFunction<? super List<T>,? extends List<? extends T>> function);
+    public ILevel0ListOperator<I,T> execIfNullAsList(final IFunction<? super List<T>,? extends List<? extends T>> function);
+    public ILevel0ListOperator<I,T> execIfTrueAsList(final IFunction<? super List<T>, Boolean> eval, final IFunction<? super List<T>,? extends List<? extends T>> function);
+    public ILevel0ListOperator<I,T> execIfFalseAsList(final IFunction<? super List<T>, Boolean> eval, final IFunction<? super List<T>,? extends List<? extends T>> function);
+    public <X> ILevel0ListOperator<I,X> execIfNotNullAsList(final IFunction<? super List<T>,? extends List<X>> function, final IFunction<? super List<T>,? extends List<X>> elseFunction);
+    public <X> ILevel0ListOperator<I,X> execIfNullAsList(final IFunction<? super List<T>,? extends List<X>> function, final IFunction<? super List<T>,? extends List<X>> elseFunction);
+    public <X> ILevel0ListOperator<I,X> execIfTrueAsList(final IFunction<? super List<T>, Boolean> eval, final IFunction<? super List<T>,? extends List<X>> function, final IFunction<? super List<T>,? extends List<X>> elseFunction);
+    public <X> ILevel0ListOperator<I,X> execIfFalseAsList(final IFunction<? super List<T>, Boolean> eval, final IFunction<? super List<T>,? extends List<X>> function, final IFunction<? super List<T>,? extends List<X>> elseFunction);
+
     public <X> ILevel0ListOperator<I,X> map(final IFunction<? super T,X> function);
     
     public ILevel0ListOperator<I,T> mapIfNotNull(final IFunction<? super T,? extends T> function);
+    public ILevel0ListOperator<I,T> mapIfNull(final IFunction<? super T,? extends T> function);
+    public ILevel0ListOperator<I,T> mapIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+    public ILevel0ListOperator<I,T> mapIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+    public <X> ILevel0ListOperator<I,X> mapIfNotNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel0ListOperator<I,X> mapIfNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel0ListOperator<I,X> mapIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel0ListOperator<I,X> mapIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
     
-
+    
+    
     
     public <X> ILevel0ListOperator<I,X> of(final Type<X> type);
     public <X> ILevel0ListOperator<I,X> castToListOf(final Type<X> type);

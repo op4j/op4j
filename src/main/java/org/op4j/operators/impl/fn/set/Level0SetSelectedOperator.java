@@ -114,18 +114,8 @@ public final class Level0SetSelectedOperator<I,T> extends AbstractOperator imple
     }
 
 
-    public Level0SetSelectedOperator<I,T> mapIfNotNull(final IFunction<? super T,? extends T> function) {
-        return new Level0SetSelectedOperator<I,T>(getTarget().mapIfNotNull(Structure.SET, function, null));
-    }
-
-
     public Level0SetOperator<I,T> endIf() {
         return new Level0SetOperator<I,T>(getTarget().endSelect());
-    }
-
-
-    public Level0SetSelectedOperator<I,T> execIfNotNullAsSet(final IFunction<? super Set<T>,? extends Set<? extends T>> function) {
-        return new Level0SetSelectedOperator<I,T>(getTarget().executeIfNotNull(function, Normalisation.SET));
     }
 
 

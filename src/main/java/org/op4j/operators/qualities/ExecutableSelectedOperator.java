@@ -54,18 +54,6 @@ public interface ExecutableSelectedOperator<T> {
      * @return an operator on the results of function execution
      */
     public ExecutableSelectedOperator<T> exec(final IFunction<? super T,? extends T> function);
-    
-    
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public ExecutableSelectedOperator<T> execIfNotNull(final IFunction<? super T,? extends T> function);
 
     
 }

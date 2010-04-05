@@ -61,32 +61,6 @@ public interface SelectableMapEntryComponentOperator<T>  {
 
     /**
      * <p>
-     * Selects only those targets which are null or for which the specified evaluator returns false. After this 
-     * method, all the subsequently executed operations will only be executed
-     * on the target objects selected here, until an "endIf()" method is called. 
-     * </p>
-     * 
-     * @param eval the evaluator to be used for selecting targets.
-     * @return an operator which will execute all subsequent operations only on the selected target objects. 
-     */
-    public SelectedMapEntryComponentOperator<T> ifNullOrFalse(final IFunction<? super T,Boolean> eval);
-    
-    
-    /**
-     * <p>
-     * Selects only those targets which are not null and for which the specified evaluator returns false. After this 
-     * method, all the subsequently executed operations will only be executed
-     * on the target objects selected here, until an "endIf()" method is called. 
-     * </p>
-     * 
-     * @param eval the evaluator to be used for selecting targets.
-     * @return an operator which will execute all subsequent operations only on the selected target objects. 
-     */
-    public SelectedMapEntryComponentOperator<T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval);
-    
-
-    /**
-     * <p>
      * Selects only those targets which are null. After this method, all the subsequently 
      * executed operations will only be executed on the target objects selected here, until 
      * an "endIf()" method is called. 
@@ -99,19 +73,6 @@ public interface SelectableMapEntryComponentOperator<T>  {
     
     /**
      * <p>
-     * Selects only those targets which are null or for which the specified evaluator returns true. After this 
-     * method, all the subsequently executed operations will only be executed
-     * on the target objects selected here, until an "endIf()" method is called. 
-     * </p>
-     * 
-     * @param eval the evaluator to be used for selecting targets.
-     * @return an operator which will execute all subsequent operations only on the selected target objects. 
-     */
-    public SelectedMapEntryComponentOperator<T> ifNullOrTrue(final IFunction<? super T,Boolean> eval);
-    
-    
-    /**
-     * <p>
      * Selects only those targets which are not null. After this method, all the subsequently 
      * executed operations will only be executed on the target objects selected here, until an
      * "endIf()" method is called. 
@@ -120,18 +81,5 @@ public interface SelectableMapEntryComponentOperator<T>  {
      * @return an operator which will execute all subsequent operations only on the selected target objects. 
      */
     public SelectedMapEntryComponentOperator<T> ifNotNull();
-    
-    
-    /**
-     * <p>
-     * Selects only those targets which are not null and for which the specified evaluator returns true. After this 
-     * method, all the subsequently executed operations will only be executed
-     * on the target objects selected here, until an "endIf()" method is called. 
-     * </p>
-     * 
-     * @param eval the evaluator to be used for selecting targets.
-     * @return an operator which will execute all subsequent operations only on the selected target objects. 
-     */
-    public SelectedMapEntryComponentOperator<T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval);
     
 }

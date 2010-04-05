@@ -286,10 +286,38 @@ public final class ExecutionTarget extends Target {
 
 
     @Override
-    Target doExecuteIfNotNull(final IFunction<?,?> executable, final Normalisation normalisation) {
+    Target doExecuteIfNull(final boolean result, final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Normalisation normalisation) {
 
-        final ExecutionTargetExecuteIfNotNullOperation operation =
-            new ExecutionTargetExecuteIfNotNullOperation(executable, normalisation);
+        final ExecutionTargetExecuteIfNullOperation operation =
+            new ExecutionTargetExecuteIfNullOperation(result, executable, elseExecutable, normalisation);
+        final ExecutionTargetOperation[][] newOperations =
+            addOperation(this.operations, this.currentBlockLevel, operation);
+
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, this.currentBlockLevel, newOperations, this.previousBlockLevels);
+        
+    }
+
+    
+
+
+    @Override
+    Target doExecuteIf(final boolean result, final IFunction<?,Boolean> condition, final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Normalisation normalisation) {
+
+        final ExecutionTargetExecuteIfOperation operation =
+            new ExecutionTargetExecuteIfOperation(result, condition, executable, elseExecutable, normalisation);
+        final ExecutionTargetOperation[][] newOperations =
+            addOperation(this.operations, this.currentBlockLevel, operation);
+
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, this.currentBlockLevel, newOperations, this.previousBlockLevels);
+        
+    }
+
+
+    @Override
+    Target doExecuteIfIndex(final boolean result, final int[] indexes, final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Normalisation normalisation) {
+
+        final ExecutionTargetExecuteIfIndexOperation operation =
+            new ExecutionTargetExecuteIfIndexOperation(result, indexes, executable, elseExecutable, normalisation);
         final ExecutionTargetOperation[][] newOperations =
             addOperation(this.operations, this.currentBlockLevel, operation);
 
@@ -497,10 +525,24 @@ public final class ExecutionTarget extends Target {
 
 
     @Override
-    Target doMapIfNotNull(final Structure structure, final IFunction<?,?> executable, final Class<?> arrayComponentClass) {
+    Target doMapIfNull(final boolean result, final Structure structure, final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Class<?> arrayComponentClass) {
 
-        final ExecutionTargetMapIfNotNullOperation operation =
-            new ExecutionTargetMapIfNotNullOperation(structure, executable, arrayComponentClass);
+        final ExecutionTargetMapIfNullOperation operation =
+            new ExecutionTargetMapIfNullOperation(result, structure, executable, elseExecutable, arrayComponentClass);
+        final ExecutionTargetOperation[][] newOperations =
+            addOperation(this.operations, this.currentBlockLevel, operation);
+
+        return new ExecutionTarget(this.initialTarget, this.initialNormalisation, this.currentBlockLevel, newOperations, this.previousBlockLevels);
+        
+    }
+
+
+
+    @Override
+    Target doMapIf(final boolean result, final Structure structure, final IFunction<?,Boolean> eval, final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Class<?> arrayComponentClass) {
+
+        final ExecutionTargetMapIfOperation operation =
+            new ExecutionTargetMapIfOperation(result, structure, eval, executable, elseExecutable, arrayComponentClass);
         final ExecutionTargetOperation[][] newOperations =
             addOperation(this.operations, this.currentBlockLevel, operation);
 

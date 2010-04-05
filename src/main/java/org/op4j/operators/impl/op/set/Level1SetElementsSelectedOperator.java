@@ -42,11 +42,6 @@ public final class Level1SetElementsSelectedOperator<I,T> extends AbstractOperat
     }
 
 
-    public Level1SetElementsSelectedOperator<I,T> execIfNotNull(final IFunction<? super T,? extends T> function) {
-        return new Level1SetElementsSelectedOperator<I,T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
-
-
     public Level1SetElementsSelectedOperator<I,T> exec(final IFunction<? super T,? extends T> function) {
         return new Level1SetElementsSelectedOperator<I,T>(getTarget().execute(function, Normalisation.NONE));
     }

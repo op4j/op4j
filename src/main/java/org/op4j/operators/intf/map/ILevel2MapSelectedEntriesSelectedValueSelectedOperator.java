@@ -45,8 +45,6 @@ public interface ILevel2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V>
 
     public ILevel2MapSelectedEntriesSelectedValueOperator<I,K,V> endIf();
 
-    
-    public ILevel2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V> execIfNotNull(final IFunction<? super V,? extends V> function);
 
     public ILevel2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V> replaceWith(final V replacement);
 

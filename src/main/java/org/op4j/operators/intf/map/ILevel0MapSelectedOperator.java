@@ -69,8 +69,6 @@ public interface ILevel0MapSelectedOperator<I,K,V>
     
     
     
-    public ILevel0MapSelectedOperator<I,K,V> execIfNotNullAsMap(final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function);
-
     public ILevel0MapSelectedOperator<I,K,V> replaceWith(final Map<K,V> replacement);
 
     public ILevel0MapSelectedOperator<I,K,V> execAsMap(final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function);

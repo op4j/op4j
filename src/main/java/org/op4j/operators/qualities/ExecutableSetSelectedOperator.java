@@ -55,18 +55,6 @@ public interface ExecutableSetSelectedOperator<T> {
      * @return an operator on the results of function execution
      */
     public ExecutableSetSelectedOperator<T> execAsSet(final IFunction<? super Set<T>,? extends Set<? extends T>> function);
-    
-    
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #execAsSet(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public ExecutableSetSelectedOperator<T> execIfNotNullAsSet(final IFunction<? super Set<T>,? extends Set<? extends T>> function);
 
     
     
@@ -88,26 +76,5 @@ public interface ExecutableSetSelectedOperator<T> {
      * @return an operator on the results of function execution on each element
      */
     public ExecutableSetSelectedOperator<T> map(final IFunction<? super T,? extends T> function);
-    
-    
-    
-    /**
-     * <p>
-     * Executes the specified function on each of the non-null elements, creating a new set operator
-     * containing the result of all the executions.
-     * </p>
-     * <p>
-     * This function does not allow the operator target type to change because a selection ("if") has 
-     * already been done on the target objects, and this would render the operator inconsistent
-     * (some objects would belong to a type and others to another type).
-     * </p>
-     * <p>
-     * This method is equivalent to <tt>forEach().execIfNotNull(function).endFor()</tt>.
-     * </p>
-     * 
-     * @param function the function to be executed
-     * @return an operator on the results of function execution on each element
-     */
-    public ExecutableSetSelectedOperator<T> mapIfNotNull(final IFunction<? super T,? extends T> function);
     
 }

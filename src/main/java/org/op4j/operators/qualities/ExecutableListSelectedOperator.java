@@ -55,24 +55,12 @@ public interface ExecutableListSelectedOperator<T> {
      * @return an operator on the results of function execution
      */
     public ExecutableListSelectedOperator<T> execAsList(final IFunction<? super List<T>,? extends List<? extends T>> function);
-    
-    
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #execAsList(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public ExecutableListSelectedOperator<T> execIfNotNullAsList(final IFunction<? super List<T>,? extends List<? extends T>> function);
 
  
     
     /**
      * <p>
-     * Executes the specified function on each of the non-null elements, creating a new list operator
+     * Executes the specified function on each of the elements, creating a new list operator
      * containing the result of all the executions.
      * </p>
      * <p>
@@ -81,12 +69,12 @@ public interface ExecutableListSelectedOperator<T> {
      * (some objects would belong to a type and others to another type).
      * </p>
      * <p>
-     * This method is equivalent to <tt>forEach().execIfNotNull(function).endFor()</tt>.
+     * This method is equivalent to <tt>forEach().exec(function).endFor()</tt>.
      * </p>
      * 
      * @param function the function to be executed
      * @return an operator on the results of function execution on each element
      */
-    public ExecutableListSelectedOperator<T> mapIfNotNull(final IFunction<? super T,? extends T> function);
+    public ExecutableListSelectedOperator<T> map(final IFunction<? super T,? extends T> function);
     
 }

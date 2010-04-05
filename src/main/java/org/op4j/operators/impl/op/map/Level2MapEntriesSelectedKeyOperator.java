@@ -47,6 +47,16 @@ public final class Level2MapEntriesSelectedKeyOperator<I,K,V> extends AbstractOp
     }
 
 
+    public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifNull() {
+        return new Level2MapEntriesSelectedKeySelectedOperator<I,K,V>(getTarget().selectNull());
+    }
+
+
+    public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifNotNull() {
+        return new Level2MapEntriesSelectedKeySelectedOperator<I,K,V>(getTarget().selectNotNull());
+    }
+
+
     public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifNullOrFalse(final IFunction<? super K,Boolean> eval) {
         return new Level2MapEntriesSelectedKeySelectedOperator<I,K,V>(getTarget().selectNullOrNotMatching(eval));
     }
@@ -57,28 +67,13 @@ public final class Level2MapEntriesSelectedKeyOperator<I,K,V> extends AbstractOp
     }
 
 
-    public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifNull() {
-        return new Level2MapEntriesSelectedKeySelectedOperator<I,K,V>(getTarget().selectNull());
-    }
-
-
     public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifNullOrTrue(final IFunction<? super K,Boolean> eval) {
         return new Level2MapEntriesSelectedKeySelectedOperator<I,K,V>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifNotNull() {
-        return new Level2MapEntriesSelectedKeySelectedOperator<I,K,V>(getTarget().selectNotNull());
-    }
-
-
     public Level2MapEntriesSelectedKeySelectedOperator<I,K,V> ifNotNullAndTrue(final IFunction<? super K,Boolean> eval) {
         return new Level2MapEntriesSelectedKeySelectedOperator<I,K,V>(getTarget().selectNotNullAndMatching(eval));
-    }
-
-
-    public Level2MapEntriesSelectedKeyOperator<I,K,V> execIfNotNull(final IFunction<? super K,? extends K> function) {
-        return new Level2MapEntriesSelectedKeyOperator<I,K,V>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

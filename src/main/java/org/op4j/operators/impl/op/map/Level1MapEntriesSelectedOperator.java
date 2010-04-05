@@ -58,11 +58,6 @@ public final class Level1MapEntriesSelectedOperator<I,K,V> extends AbstractOpera
     }
 
 
-    public Level1MapEntriesSelectedOperator<I,K,V> execIfNotNullAsMapEntry(final IFunction<? super Entry<K,V>,? extends Entry<? extends K,? extends V>> function) {
-        return new Level1MapEntriesSelectedOperator<I,K,V>(getTarget().executeIfNotNull(function, Normalisation.MAP_ENTRY));
-    }
-
-
     public Level1MapEntriesSelectedOperator<I,K,V> replaceWith(final Entry<K,V> replacement) {
         return new Level1MapEntriesSelectedOperator<I,K,V>(getTarget().replaceWith(replacement, Normalisation.MAP_ENTRY));
     }

@@ -70,12 +70,8 @@ public interface ILevel0BuildingMapOperator<I,K,V>
 
     public ILevel0MapSelectedOperator<I,K,V> ifTrue(final IFunction<? super Map<K,V>,Boolean> eval);
     public ILevel0MapSelectedOperator<I,K,V> ifFalse(final IFunction<? super Map<K,V>,Boolean> eval);
-    public ILevel0MapSelectedOperator<I,K,V> ifNullOrFalse(final IFunction<? super Map<K,V>,Boolean> eval);
-    public ILevel0MapSelectedOperator<I,K,V> ifNotNullAndFalse(final IFunction<? super Map<K,V>,Boolean> eval);
     public ILevel0MapSelectedOperator<I,K,V> ifNull();
-    public ILevel0MapSelectedOperator<I,K,V> ifNullOrTrue(final IFunction<? super Map<K,V>,Boolean> eval);
     public ILevel0MapSelectedOperator<I,K,V> ifNotNull();
-    public ILevel0MapSelectedOperator<I,K,V> ifNotNullAndTrue(final IFunction<? super Map<K,V>,Boolean> eval);
 
 
     
@@ -109,11 +105,20 @@ public interface ILevel0BuildingMapOperator<I,K,V>
     public ILevel0MapOperator<I,K,V> replaceIfNullWith(final Map<K,V> replacement);
 
 
-    public ILevel0MapOperator<I,K,V> execIfNotNullAsMap(final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function);
-
-    public <X,Y> ILevel0MapOperator<I,X,Y> execAsMap(final IFunction<? super Map<K,V>,? extends Map<X,Y>> function);
 
     public <X> ILevel0GenericUniqOperator<I,X> exec(final IFunction<? super Map<K,V>,X> function);
+    public <X,Y> ILevel0MapOperator<I,X,Y> execAsMap(final IFunction<? super Map<K,V>,? extends Map<X,Y>> function);
+    
+    
+    public ILevel0MapOperator<I,K,V> execIfNotNullAsMap(final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function);
+    public ILevel0MapOperator<I,K,V> execIfNullAsMap(final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function);
+    public ILevel0MapOperator<I,K,V> execIfTrueAsMap(final IFunction<? super Map<K,V>, Boolean> eval, final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function);
+    public ILevel0MapOperator<I,K,V> execIfFalseAsMap(final IFunction<? super Map<K,V>, Boolean> eval, final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function);
+    public <X,Y> ILevel0MapOperator<I,X,Y> execIfNotNullAsMap(final IFunction<? super Map<K,V>,? extends Map<X,Y>> function, final IFunction<? super Map<K,V>,? extends Map<X,Y>> elseFunction);
+    public <X,Y> ILevel0MapOperator<I,X,Y> execIfNullAsMap(final IFunction<? super Map<K,V>,? extends Map<X,Y>> function, final IFunction<? super Map<K,V>,? extends Map<X,Y>> elseFunction);
+    public <X,Y> ILevel0MapOperator<I,X,Y> execIfTrueAsMap(final IFunction<? super Map<K,V>, Boolean> eval, final IFunction<? super Map<K,V>,? extends Map<X,Y>> function, final IFunction<? super Map<K,V>,? extends Map<X,Y>> elseFunction);
+    public <X,Y> ILevel0MapOperator<I,X,Y> execIfFalseAsMap(final IFunction<? super Map<K,V>, Boolean> eval, final IFunction<? super Map<K,V>,? extends Map<X,Y>> function, final IFunction<? super Map<K,V>,? extends Map<X,Y>> elseFunction);
+    
     
     
     public <X,Y> ILevel0MapOperator<I,X,Y> of(final Type<X> keyType, final Type<Y> valueType);

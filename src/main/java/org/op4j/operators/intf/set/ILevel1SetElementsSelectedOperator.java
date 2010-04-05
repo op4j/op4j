@@ -45,8 +45,6 @@ public interface ILevel1SetElementsSelectedOperator<I,T>
 
     public ILevel1SetElementsOperator<I,T> endIf();
 
-    
-    public ILevel1SetElementsSelectedOperator<I,T> execIfNotNull(final IFunction<? super T,? extends T> function);
 
     public ILevel1SetElementsSelectedOperator<I,T> replaceWith(final T replacement);
 

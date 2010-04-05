@@ -41,11 +41,6 @@ public final class Level0GenericUniqSelectedOperator<I,T> extends AbstractOperat
     }
 
 
-    public Level0GenericUniqSelectedOperator<I,T> execIfNotNull(final IFunction<? super T,? extends T> function) {
-        return new Level0GenericUniqSelectedOperator<I,T>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
-
-
     public Level0GenericUniqSelectedOperator<I,T> exec(final IFunction<? super T,? extends T> function) {
         return new Level0GenericUniqSelectedOperator<I,T>(getTarget().execute(function, Normalisation.NONE));
     }

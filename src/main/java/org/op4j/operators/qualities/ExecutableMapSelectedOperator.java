@@ -55,18 +55,6 @@ public interface ExecutableMapSelectedOperator<K,V> {
      * @return an operator on the results of function execution
      */
     public ExecutableMapSelectedOperator<K,V> execAsMap(final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function);
-    
-    
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #execAsMap(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public ExecutableMapSelectedOperator<K,V> execIfNotNullAsMap(final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function);
 
     
 }

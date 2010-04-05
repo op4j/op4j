@@ -57,18 +57,6 @@ public interface ExecutableMapOperator<K,V> {
      * @return an operator on the results of function execution
      */
     public <X,Y> ExecutableMapOperator<X,Y> execAsMap(final IFunction<? super Map<K,V>,? extends Map<X,Y>> function);
-    
-    
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #execAsMap(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     *
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public ExecutableMapOperator<K,V> execIfNotNullAsMap(final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function);
 
 
     
@@ -85,5 +73,123 @@ public interface ExecutableMapOperator<K,V> {
      */
     public <X> Operator exec(final IFunction<? super Map<K,V>,X> function);
     
+    
+    
+    
+    
+    
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsMap(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableMapOperator<K,V> execIfNotNullAsMap(final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsMap(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableMapOperator<K,V> execIfNullAsMap(final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsMap(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableMapOperator<K,V> execIfTrueAsMap(final IFunction<? super Map<K,V>, Boolean> eval, final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsMap(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableMapOperator<K,V> execIfFalseAsMap(final IFunction<? super Map<K,V>, Boolean> eval, final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsMap(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type of the keys returned by the functions
+     * @param <Y> the new type of the values returned by the functions
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X,Y> ExecutableMapOperator<X,Y> execIfNotNullAsMap(final IFunction<? super Map<K,V>,? extends Map<X,Y>> function, final IFunction<? super Map<K,V>,? extends Map<X,Y>> elseFunction);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsMap(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type of the keys returned by the functions
+     * @param <Y> the new type of the values returned by the functions
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X,Y> ExecutableMapOperator<X,Y> execIfNullAsMap(final IFunction<? super Map<K,V>,? extends Map<X,Y>> function, final IFunction<? super Map<K,V>,? extends Map<X,Y>> elseFunction);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsMap(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type of the keys returned by the functions
+     * @param <Y> the new type of the values returned by the functions
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X,Y> ExecutableMapOperator<X,Y> execIfTrueAsMap(final IFunction<? super Map<K,V>, Boolean> eval, final IFunction<? super Map<K,V>,? extends Map<X,Y>> function, final IFunction<? super Map<K,V>,? extends Map<X,Y>> elseFunction);
+
+
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsMap(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     * 
+     * @param <X> the new type of the keys returned by the functions
+     * @param <Y> the new type of the values returned by the functions
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X,Y> ExecutableMapOperator<X,Y> execIfFalseAsMap(final IFunction<? super Map<K,V>, Boolean> eval, final IFunction<? super Map<K,V>,? extends Map<X,Y>> function, final IFunction<? super Map<K,V>,? extends Map<X,Y>> elseFunction);
+
+
     
 }

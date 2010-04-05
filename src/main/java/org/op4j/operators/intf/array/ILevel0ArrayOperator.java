@@ -79,12 +79,8 @@ public interface ILevel0ArrayOperator<I,T>
 
     public ILevel0ArraySelectedOperator<I,T> ifTrue(final IFunction<? super T[],Boolean> eval);
     public ILevel0ArraySelectedOperator<I,T> ifFalse(final IFunction<? super T[],Boolean> eval);
-    public ILevel0ArraySelectedOperator<I,T> ifNullOrFalse(final IFunction<? super T[],Boolean> eval);
-    public ILevel0ArraySelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super T[],Boolean> eval);
     public ILevel0ArraySelectedOperator<I,T> ifNull();
-    public ILevel0ArraySelectedOperator<I,T> ifNullOrTrue(final IFunction<? super T[],Boolean> eval);
     public ILevel0ArraySelectedOperator<I,T> ifNotNull();
-    public ILevel0ArraySelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super T[],Boolean> eval);
 
 
 
@@ -154,19 +150,34 @@ public interface ILevel0ArrayOperator<I,T>
     public ILevel0ArrayOperator<I,T> replaceIfNullWith(final T[] replacement);
 
 
-    public ILevel0ArrayOperator<I,T> execIfNotNullAsArray(final IFunction<? super T[],? extends T[]> function);
-
-    public ILevel0ArrayOperator<I,T> execAsArray(final IFunction<? super T[],? extends T[]> function);
-
-    public <X> ILevel0ArrayOperator<I,X> execAsArrayOf(final Type<X> type, final IFunction<? super T[],X[]> function);
-
-    public <X> ILevel0GenericUniqOperator<I,X> exec(final IFunction<? super T[],X> function);
     
+    
+    
+    public <X> ILevel0GenericUniqOperator<I,X> exec(final IFunction<? super T[],X> function);
+    public ILevel0ArrayOperator<I,T> execAsArray(final IFunction<? super T[],? extends T[]> function);
+    public <X> ILevel0ArrayOperator<I,X> execAsArrayOf(final Type<X> type, final IFunction<? super T[],X[]> function);
+    
+    public ILevel0ArrayOperator<I,T> execIfNotNullAsArray(final IFunction<? super T[],? extends T[]> function);
+    public ILevel0ArrayOperator<I,T> execIfNullAsArray(final IFunction<? super T[],? extends T[]> function);
+    public ILevel0ArrayOperator<I,T> execIfTrueAsArray(final IFunction<? super T[], Boolean> eval, final IFunction<? super T[],? extends T[]> function);
+    public ILevel0ArrayOperator<I,T> execIfFalseAsArray(final IFunction<? super T[], Boolean> eval, final IFunction<? super T[],? extends T[]> function);
+    public <X> ILevel0ArrayOperator<I,X> execIfNotNullAsArrayOf(final Type<X> type, final IFunction<? super T[],X[]> function, final IFunction<? super T[],X[]> elseFunction);
+    public <X> ILevel0ArrayOperator<I,X> execIfNullAsArrayOf(final Type<X> type, final IFunction<? super T[],X[]> function, final IFunction<? super T[],X[]> elseFunction);
+    public <X> ILevel0ArrayOperator<I,X> execIfTrueAsArrayOf(final Type<X> type, final IFunction<? super T[], Boolean> eval, final IFunction<? super T[],X[]> function, final IFunction<? super T[],X[]> elseFunction);
+    public <X> ILevel0ArrayOperator<I,X> execIfFalseAsArrayOf(final Type<X> type, final IFunction<? super T[], Boolean> eval, final IFunction<? super T[],X[]> function, final IFunction<? super T[],X[]> elseFunction);
+
+    public ILevel0ArrayOperator<I,T> map(final IFunction<? super T,? extends T> function);
     public <X> ILevel0ArrayOperator<I,X> map(final Type<X> type, final IFunction<? super T,X> function);
     
-    public ILevel0ArrayOperator<I,T> map(final IFunction<? super T,? extends T> function);
-    
     public ILevel0ArrayOperator<I,T> mapIfNotNull(final IFunction<? super T,? extends T> function);
+    public ILevel0ArrayOperator<I,T> mapIfNull(final IFunction<? super T,? extends T> function);
+    public ILevel0ArrayOperator<I,T> mapIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+    public ILevel0ArrayOperator<I,T> mapIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+    public <X> ILevel0ArrayOperator<I,X> mapIfNotNull(final Type<X> type, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel0ArrayOperator<I,X> mapIfNull(final Type<X> type, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel0ArrayOperator<I,X> mapIfTrue(final Type<X> type, final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel0ArrayOperator<I,X> mapIfFalse(final Type<X> type, final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    
     
 
     

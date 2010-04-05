@@ -49,6 +49,4 @@ public interface ILevel2MapSelectedEntriesSelectedKeySelectedOperator<I,K,V>
 
     public ILevel2MapSelectedEntriesSelectedKeySelectedOperator<I,K,V> exec(final IFunction<? super K,? extends K> function);
     
-    public ILevel2MapSelectedEntriesSelectedKeySelectedOperator<I,K,V> execIfNotNull(final IFunction<? super K,? extends K> function);
-    
-    }
+}

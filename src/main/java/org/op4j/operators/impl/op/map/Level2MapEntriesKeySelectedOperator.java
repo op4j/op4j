@@ -42,11 +42,6 @@ public final class Level2MapEntriesKeySelectedOperator<I,K,V> extends AbstractOp
     }
 
 
-    public Level2MapEntriesKeySelectedOperator<I,K,V> execIfNotNull(final IFunction<? super K,? extends K> function) {
-        return new Level2MapEntriesKeySelectedOperator<I,K,V>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
-
-
     public Level2MapEntriesKeySelectedOperator<I,K,V> exec(final IFunction<? super K,? extends K> function) {
         return new Level2MapEntriesKeySelectedOperator<I,K,V>(getTarget().execute(function, Normalisation.NONE));
     }

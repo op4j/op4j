@@ -48,12 +48,8 @@ public interface ILevel2MapEntriesKeyOperator<I,K,V>
 
     public ILevel2MapEntriesKeySelectedOperator<I,K,V> ifTrue(final IFunction<? super K,Boolean> eval);
     public ILevel2MapEntriesKeySelectedOperator<I,K,V> ifFalse(final IFunction<? super K,Boolean> eval);
-    public ILevel2MapEntriesKeySelectedOperator<I,K,V> ifNullOrFalse(final IFunction<? super K,Boolean> eval);
-    public ILevel2MapEntriesKeySelectedOperator<I,K,V> ifNotNullAndFalse(final IFunction<? super K,Boolean> eval);
     public ILevel2MapEntriesKeySelectedOperator<I,K,V> ifNull();
-    public ILevel2MapEntriesKeySelectedOperator<I,K,V> ifNullOrTrue(final IFunction<? super K,Boolean> eval);
     public ILevel2MapEntriesKeySelectedOperator<I,K,V> ifNotNull();
-    public ILevel2MapEntriesKeySelectedOperator<I,K,V> ifNotNullAndTrue(final IFunction<? super K,Boolean> eval);
 
     
     public ILevel1MapEntriesOperator<I,K,V> endOn();
@@ -63,7 +59,18 @@ public interface ILevel2MapEntriesKeyOperator<I,K,V>
 
     public <X> ILevel2MapEntriesKeyOperator<I,X,V> exec(final IFunction<? super K,X> function);
     
-    public <X> ILevel2MapEntriesKeyOperator<I,X,V> execIfNotNull(final IFunction<? super K,X> function);
+    
+    public ILevel2MapEntriesKeyOperator<I,K,V> execIfNotNull(final IFunction<? super K,? extends K> function);
+    public ILevel2MapEntriesKeyOperator<I,K,V> execIfNull(final IFunction<? super K,? extends K> function);
+    public ILevel2MapEntriesKeyOperator<I,K,V> execIfTrue(final IFunction<? super K, Boolean> eval, final IFunction<? super K,? extends K> function);
+    public ILevel2MapEntriesKeyOperator<I,K,V> execIfFalse(final IFunction<? super K, Boolean> eval, final IFunction<? super K,? extends K> function);
+    public <X> ILevel2MapEntriesKeyOperator<I,X,V> execIfNotNull(final IFunction<? super K,X> function, final IFunction<? super K,X> elseFunction);
+    public <X> ILevel2MapEntriesKeyOperator<I,X,V> execIfNull(final IFunction<? super K,X> function, final IFunction<? super K,X> elseFunction);
+    public <X> ILevel2MapEntriesKeyOperator<I,X,V> execIfTrue(final IFunction<? super K, Boolean> eval, final IFunction<? super K,X> function, final IFunction<? super K,X> elseFunction);
+    public <X> ILevel2MapEntriesKeyOperator<I,X,V> execIfFalse(final IFunction<? super K, Boolean> eval, final IFunction<? super K,X> function, final IFunction<? super K,X> elseFunction);
+    
+    
+    
     
     public ILevel2MapEntriesKeyOperator<I,K,V> replaceWith(final K replacement);
     public ILevel2MapEntriesKeyOperator<I,K,V> replaceIfNullWith(final K replacement);

@@ -58,18 +58,121 @@ public interface ExecutableListOperator<T> {
     public <X> ExecutableListOperator<X> execAsList(final IFunction<? super List<T>,? extends List<X>> function);
     
     
+    
     /**
      * <p>
      * Executes a function in a way equivalent to {@link #execAsList(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
+     * on selected elements, leaving all other elements untouched.
      * </p>
      *
-     * @param function the function to be executed
+     * @param function the function to be executed on the selected elements
      * @return an operator on the results of function execution
      */
     public ExecutableListOperator<T> execIfNotNullAsList(final IFunction<? super List<T>,? extends List<? extends T>> function);
 
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsList(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableListOperator<T> execIfNullAsList(final IFunction<? super List<T>,? extends List<? extends T>> function);
 
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsList(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableListOperator<T> execIfTrueAsList(final IFunction<? super List<T>, Boolean> eval, final IFunction<? super List<T>,? extends List<? extends T>> function);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsList(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableListOperator<T> execIfFalseAsList(final IFunction<? super List<T>, Boolean> eval, final IFunction<? super List<T>,? extends List<? extends T>> function);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsList(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type returned by the functions
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableListOperator<X> execIfNotNullAsList(final IFunction<? super List<T>,? extends List<X>> function, final IFunction<? super List<T>,? extends List<X>> elseFunction);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsList(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type returned by the functions
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableListOperator<X> execIfNullAsList(final IFunction<? super List<T>,? extends List<X>> function, final IFunction<? super List<T>,? extends List<X>> elseFunction);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsList(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type returned by the functions
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableListOperator<X> execIfTrueAsList(final IFunction<? super List<T>, Boolean> eval, final IFunction<? super List<T>,? extends List<X>> function, final IFunction<? super List<T>,? extends List<X>> elseFunction);
+
+
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsList(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     * 
+     * @param <X> the new type returned by the functions
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableListOperator<X> execIfFalseAsList(final IFunction<? super List<T>, Boolean> eval, final IFunction<? super List<T>,? extends List<X>> function, final IFunction<? super List<T>,? extends List<X>> elseFunction);
+
+
+    
+    
+    
+    
+    
+    
     
     /**
      * <p>
@@ -102,21 +205,114 @@ public interface ExecutableListOperator<T> {
      * @return an operator on the results of function execution on each element
      */
     public <X> ExecutableListOperator<X> map(final IFunction<? super T,X> function);
+    
 
+    /**
+     * <p>
+     * Maps a function in a way equivalent to {@link #map(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableListOperator<T> mapIfNotNull(final IFunction<? super T,? extends T> function);
 
     
     /**
      * <p>
-     * Executes the specified function on each of the non-null elements, creating a new list operator
-     * containing the result of all the executions.
+     * Maps a function in a way equivalent to {@link #map(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
      * </p>
+     *
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableListOperator<T> mapIfNull(final IFunction<? super T,? extends T> function);
+
+    
+    /**
      * <p>
-     * This method is equivalent to <tt>forEach().execIfNotNull(function).endFor()</tt>.
+     * Maps a function in a way equivalent to {@link #map(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableListOperator<T> mapIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+
+    
+    /**
+     * <p>
+     * Maps a function in a way equivalent to {@link #map(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableListOperator<T> mapIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+
+    
+    /**
+     * <p>
+     * Maps a function in a way equivalent to {@link #map(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type returned by the functions
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableListOperator<X> mapIfNotNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+
+    
+    /**
+     * <p>
+     * Maps a function in a way equivalent to {@link #map(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type returned by the functions
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableListOperator<X> mapIfNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+
+    
+    /**
+     * <p>
+     * Maps a function in a way equivalent to {@link #map(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type returned by the functions
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableListOperator<X> mapIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+
+
+    /**
+     * <p>
+     * Maps a function in a way equivalent to {@link #map(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
      * </p>
      * 
-     * @param function the function to be executed
-     * @return an operator on the results of function execution on each element
+     * @param <X> the new type returned by the functions
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
      */
-    public ExecutableListOperator<T> mapIfNotNull(final IFunction<? super T,? extends T> function);
-        
+    public <X> ExecutableListOperator<X> mapIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    
+    
 }

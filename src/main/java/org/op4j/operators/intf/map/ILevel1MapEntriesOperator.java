@@ -65,6 +65,15 @@ public interface ILevel1MapEntriesOperator<I,K,V>
     public ILevel1MapEntriesOperator<I,K,V> replaceWith(final Map.Entry<K,V> replacement);
 
 
+
     public <X> ILevel1ListElementsOperator<I,X> exec(final IFunction<? super Map.Entry<K,V>,X> function);
     
-    }
+    public ILevel1MapEntriesOperator<I,K,V> execIfTrueAsMapEntry(final IFunction<? super Map.Entry<K,V>, Boolean> eval, final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<? extends K,? extends V>> function);
+    public ILevel1MapEntriesOperator<I,K,V> execIfFalseAsMapEntry(final IFunction<? super Map.Entry<K,V>, Boolean> eval, final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<? extends K,? extends V>> function);
+    public <X,Y> ILevel1MapEntriesOperator<I,X,Y> execIfTrueAsMapEntry(final IFunction<? super Map.Entry<K,V>, Boolean> eval, final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<X,Y>> function, final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<X,Y>> elseFunction);
+    public <X,Y> ILevel1MapEntriesOperator<I,X,Y> execIfFalseAsMapEntry(final IFunction<? super Map.Entry<K,V>, Boolean> eval, final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<X,Y>> function, final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<X,Y>> elseFunction);
+    
+    
+    
+    
+}

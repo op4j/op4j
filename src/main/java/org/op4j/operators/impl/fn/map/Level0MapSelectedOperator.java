@@ -86,11 +86,6 @@ public final class Level0MapSelectedOperator<I,K,V> extends AbstractOperator imp
     }
 
 
-    public Level0MapSelectedOperator<I,K,V> execIfNotNullAsMap(final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function) {
-        return new Level0MapSelectedOperator<I,K,V>(getTarget().executeIfNotNull(function, Normalisation.MAP));
-    }
-
-
     public Level0MapSelectedOperator<I,K,V> execAsMap(final IFunction<? super Map<K,V>,? extends Map<? extends K,? extends V>> function) {
         return new Level0MapSelectedOperator<I,K,V>(getTarget().execute(function, Normalisation.MAP));
     }

@@ -48,6 +48,16 @@ public final class Level2MapEntriesSelectedValueOperator<I,K,V> extends Abstract
     }
 
 
+    public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifNull() {
+        return new Level2MapEntriesSelectedValueSelectedOperator<I,K,V>(getTarget().selectNull());
+    }
+
+
+    public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifNotNull() {
+        return new Level2MapEntriesSelectedValueSelectedOperator<I,K,V>(getTarget().selectNotNull());
+    }
+
+
     public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifNullOrFalse(final IFunction<? super V,Boolean> eval) {
         return new Level2MapEntriesSelectedValueSelectedOperator<I,K,V>(getTarget().selectNullOrNotMatching(eval));
     }
@@ -58,28 +68,13 @@ public final class Level2MapEntriesSelectedValueOperator<I,K,V> extends Abstract
     }
 
 
-    public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifNull() {
-        return new Level2MapEntriesSelectedValueSelectedOperator<I,K,V>(getTarget().selectNull());
-    }
-
-
     public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifNullOrTrue(final IFunction<? super V,Boolean> eval) {
         return new Level2MapEntriesSelectedValueSelectedOperator<I,K,V>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifNotNull() {
-        return new Level2MapEntriesSelectedValueSelectedOperator<I,K,V>(getTarget().selectNotNull());
-    }
-
-
     public Level2MapEntriesSelectedValueSelectedOperator<I,K,V> ifNotNullAndTrue(final IFunction<? super V,Boolean> eval) {
         return new Level2MapEntriesSelectedValueSelectedOperator<I,K,V>(getTarget().selectNotNullAndMatching(eval));
-    }
-
-
-    public Level2MapEntriesSelectedValueOperator<I,K,V> execIfNotNull(final IFunction<? super V,? extends V> function) {
-        return new Level2MapEntriesSelectedValueOperator<I,K,V>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

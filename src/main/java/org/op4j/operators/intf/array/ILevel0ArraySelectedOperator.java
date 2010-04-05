@@ -78,8 +78,6 @@ public interface ILevel0ArraySelectedOperator<I,T>
     public ILevel0ArraySelectedOperator<I,T> removeAllIndexesNot(final int... indexes);
     public ILevel0ArraySelectedOperator<I,T> removeAllNull();
     
-    
-    public ILevel0ArraySelectedOperator<I,T> execIfNotNullAsArray(final IFunction<? super T[],? extends T[]> function);
 
     public ILevel0ArraySelectedOperator<I,T> replaceWith(final T[] replacement);
 
@@ -87,8 +85,6 @@ public interface ILevel0ArraySelectedOperator<I,T>
 
 
     public ILevel0ArraySelectedOperator<I,T> map(final IFunction<? super T,? extends T> function);
-
-    public ILevel0ArraySelectedOperator<I,T> mapIfNotNull(final IFunction<? super T,? extends T> function);
     
     
 }

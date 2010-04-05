@@ -123,18 +123,8 @@ public final class Level0ArraySelectedOperator<I,T> extends AbstractOperator imp
     }
 
 
-    public Level0ArraySelectedOperator<I,T> execIfNotNullAsArray(final IFunction<? super T[],? extends T[]> function) {
-        return new Level0ArraySelectedOperator<I,T>(this.type, getTarget().executeIfNotNull(function, Normalisation.ARRAY(this.type.getRawClass())));
-    }
-
-
     public Level0ArraySelectedOperator<I,T> execAsArray(final IFunction<? super T[],? extends T[]> function) {
         return new Level0ArraySelectedOperator<I,T>(this.type, getTarget().execute(function, Normalisation.ARRAY(this.type.getRawClass())));
-    }
-
-
-    public Level0ArraySelectedOperator<I,T> mapIfNotNull(final IFunction<? super T,? extends T> function) {
-        return new Level0ArraySelectedOperator<I,T>(this.type, getTarget().mapIfNotNull(Structure.ARRAY, function, this.type.getRawClass()));
     }
 
 

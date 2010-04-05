@@ -38,17 +38,21 @@ import org.op4j.util.NormalisationUtils;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class ExecutionTargetExecuteIfNotNullOperation implements ExecutionTargetOperation {
+final class ExecutionTargetExecuteIfNullOperation implements ExecutionTargetOperation {
 
+    private final boolean desiredResult;
     private final IFunction<Object,Object> executable;
+    private final IFunction<Object,Object> elseExecutable;
     private final Normalisation normalisation;
 
     
     
     @SuppressWarnings("unchecked")
-    public ExecutionTargetExecuteIfNotNullOperation(final IFunction<?,?> executable, final Normalisation normalisation) {
+    public ExecutionTargetExecuteIfNullOperation(final boolean desiredResult, final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Normalisation normalisation) {
         super();
+        this.desiredResult = desiredResult;
         this.executable = (IFunction<Object,Object>) executable;
+        this.elseExecutable = (IFunction<Object,Object>) elseExecutable;
         this.normalisation = normalisation;
     }
     
@@ -57,12 +61,17 @@ final class ExecutionTargetExecuteIfNotNullOperation implements ExecutionTargetO
     @SuppressWarnings("unchecked")
     public Object execute(final Object target, final ExecutionTargetOperation[][] operations, final Integer index) {
 
-        if (target == null) {
-            return null;
+        IFunction<Object,Object> appliedExecutable = this.executable;
+
+        if ((target == null) != this.desiredResult) {
+            if (this.elseExecutable == null) {
+                return target;
+            }
+            appliedExecutable = this.elseExecutable;
         }
         
         try {
-            Object result = this.executable.execute(target, new ExecCtxImpl(index));
+            Object result = appliedExecutable.execute(target, new ExecCtxImpl(index));
             switch (this.normalisation.getNormalisationType()) {
                 case TYPE_ARRAY:
                     NormalisationUtils.checkIsArray(Types.OBJECT, result);

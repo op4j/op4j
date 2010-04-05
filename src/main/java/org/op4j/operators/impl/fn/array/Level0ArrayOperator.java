@@ -267,14 +267,10 @@ public final class Level0ArrayOperator<I,T>
     }
 
 
-    public Level0ArraySelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super T[],Boolean> eval) {
-        return new Level0ArraySelectedOperator<I,T>(this.type, getTarget().selectNotNullAndMatching(eval));
-    }
+    
 
 
-    public Level0ArraySelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super T[],Boolean> eval) {
-        return new Level0ArraySelectedOperator<I,T>(this.type, getTarget().selectNotNullAndNotMatching(eval));
-    }
+    
 
 
     public Level0ArraySelectedOperator<I,T> ifNull() {
@@ -282,19 +278,12 @@ public final class Level0ArrayOperator<I,T>
     }
 
 
-    public Level0ArraySelectedOperator<I,T> ifNullOrTrue(final IFunction<? super T[],Boolean> eval) {
-        return new Level0ArraySelectedOperator<I,T>(this.type, getTarget().selectNullOrMatching(eval));
-    }
+    
 
 
-    public Level0ArraySelectedOperator<I,T> ifNullOrFalse(final IFunction<? super T[],Boolean> eval) {
-        return new Level0ArraySelectedOperator<I,T>(this.type, getTarget().selectNullOrNotMatching(eval));
-    }
+    
 
 
-	public Level0ArrayOperator<I,T> execIfNotNullAsArray(final IFunction<? super T[],? extends T[]> function) {
-        return new Level0ArrayOperator<I,T>(this.type, getTarget().executeIfNotNull(function, Normalisation.ARRAY(this.type.getRawClass())));
-    }
 
 
 	public Level0ArrayOperator<I,T> execAsArray(final IFunction<? super T[],? extends T[]> function) {
@@ -341,9 +330,6 @@ public final class Level0ArrayOperator<I,T>
     
 
 
-    public Level0ArrayOperator<I,T> mapIfNotNull(final IFunction<? super T,? extends T> function) {
-        return new Level0ArrayOperator<I,T>(this.type, getTarget().mapIfNotNull(Structure.ARRAY, function, this.type.getRawClass()));
-    }
 
 
 
@@ -429,5 +415,78 @@ public final class Level0ArrayOperator<I,T>
         return new Level0MapOperator<I, K, V>(getTarget().execute(FnArray.of(this.type).toMap(keyFunction, valueFunction)));
     }
 
+    
+    
+    
+    
+    
+    
+    public Level0ArrayOperator<I, T> execIfFalseAsArray(final IFunction<? super T[], Boolean> eval, final IFunction<? super T[], ? extends T[]> function) {
+        return new Level0ArrayOperator<I,T>(this.type, getTarget().executeIfFalse(eval, function, null, Normalisation.ARRAY(this.type.getRawClass())));
+    }
+
+    public <X> Level0ArrayOperator<I, X> execIfFalseAsArrayOf(final Type<X> newType, final IFunction<? super T[], Boolean> eval, final IFunction<? super T[], X[]> function, final IFunction<? super T[], X[]> elseFunction) {
+        return new Level0ArrayOperator<I,X>(newType, getTarget().executeIfFalse(eval, function, elseFunction, Normalisation.ARRAY(newType.getRawClass())));
+    }
+
+    public Level0ArrayOperator<I, T> execIfNotNullAsArray(final IFunction<? super T[], ? extends T[]> function) {
+        return new Level0ArrayOperator<I,T>(this.type, getTarget().executeIfNotNull(function, null, Normalisation.ARRAY(this.type.getRawClass())));
+    }
+
+    public <X> Level0ArrayOperator<I, X> execIfNotNullAsArrayOf(final Type<X> newType, final IFunction<? super T[], X[]> function, final IFunction<? super T[], X[]> elseFunction) {
+        return new Level0ArrayOperator<I,X>(newType, getTarget().executeIfNotNull(function, elseFunction, Normalisation.ARRAY(newType.getRawClass())));
+    }
+
+    public Level0ArrayOperator<I, T> execIfNullAsArray(final IFunction<? super T[], ? extends T[]> function) {
+        return new Level0ArrayOperator<I,T>(this.type, getTarget().executeIfNull(function, null, Normalisation.ARRAY(this.type.getRawClass())));
+    }
+
+    public <X> Level0ArrayOperator<I, X> execIfNullAsArrayOf(final Type<X> newType, final IFunction<? super T[], X[]> function, final IFunction<? super T[], X[]> elseFunction) {
+        return new Level0ArrayOperator<I,X>(newType, getTarget().executeIfNull(function, elseFunction, Normalisation.ARRAY(newType.getRawClass())));
+    }
+
+    public Level0ArrayOperator<I, T> execIfTrueAsArray(final IFunction<? super T[], Boolean> eval, final IFunction<? super T[], ? extends T[]> function) {
+        return new Level0ArrayOperator<I,T>(this.type, getTarget().executeIfTrue(eval, function, null, Normalisation.ARRAY(this.type.getRawClass())));
+    }
+
+    public <X> Level0ArrayOperator<I, X> execIfTrueAsArrayOf(final Type<X> newType, final IFunction<? super T[], Boolean> eval, final IFunction<? super T[], X[]> function, final IFunction<? super T[], X[]> elseFunction) {
+        return new Level0ArrayOperator<I,X>(newType, getTarget().executeIfTrue(eval, function, elseFunction, Normalisation.ARRAY(newType.getRawClass())));
+    }
+    
+    
+
+    public Level0ArrayOperator<I, T> mapIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T, ? extends T> function) {
+        return new Level0ArrayOperator<I,T>(this.type, getTarget().mapIfFalse(Structure.ARRAY, eval, function, null, this.type.getRawClass()));
+    }
+
+    public <X> Level0ArrayOperator<I, X> mapIfFalse(final Type<X> newType, final IFunction<? super T, Boolean> eval, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level0ArrayOperator<I,X>(newType, getTarget().mapIfFalse(Structure.ARRAY, eval, function, elseFunction, newType.getRawClass()));
+    }
+
+    public Level0ArrayOperator<I, T> mapIfNotNull(final IFunction<? super T, ? extends T> function) {
+        return new Level0ArrayOperator<I,T>(this.type, getTarget().mapIfNotNull(Structure.ARRAY, function, null, this.type.getRawClass()));
+    }
+
+    public <X> Level0ArrayOperator<I, X> mapIfNotNull(final Type<X> newType, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level0ArrayOperator<I,X>(newType, getTarget().mapIfNotNull(Structure.ARRAY, function, elseFunction, newType.getRawClass()));
+    }
+
+    public Level0ArrayOperator<I, T> mapIfNull(final IFunction<? super T, ? extends T> function) {
+        return new Level0ArrayOperator<I,T>(this.type, getTarget().mapIfNull(Structure.ARRAY, function, null, this.type.getRawClass()));
+    }
+
+    public <X> Level0ArrayOperator<I, X> mapIfNull(final Type<X> newType, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level0ArrayOperator<I,X>(newType, getTarget().mapIfNull(Structure.ARRAY, function, elseFunction, newType.getRawClass()));
+    }
+
+    public Level0ArrayOperator<I, T> mapIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T, ? extends T> function) {
+        return new Level0ArrayOperator<I,T>(this.type, getTarget().mapIfTrue(Structure.ARRAY, eval, function, null, this.type.getRawClass()));
+    }
+
+    public <X> Level0ArrayOperator<I, X> mapIfTrue(final Type<X> newType, final IFunction<? super T, Boolean> eval, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level0ArrayOperator<I,X>(newType, getTarget().mapIfTrue(Structure.ARRAY, eval, function, elseFunction, newType.getRawClass()));
+    }
+
+    
     
 }

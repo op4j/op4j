@@ -182,14 +182,10 @@ public final class Level0MapOperator<I,K,V> extends AbstractOperator
     }
 
 
-    public Level0MapSelectedOperator<I,K, V> ifNotNullAndTrue(final IFunction<? super Map<K, V>,Boolean> eval) {
-        return new Level0MapSelectedOperator<I,K, V>(getTarget().selectNotNullAndMatching(eval));
-    }
+    
 
 
-    public Level0MapSelectedOperator<I,K, V> ifNotNullAndFalse(final IFunction<? super Map<K, V>,Boolean> eval) {
-        return new Level0MapSelectedOperator<I,K, V>(getTarget().selectNotNullAndNotMatching(eval));
-    }
+    
 
 
     public Level0MapSelectedOperator<I,K, V> ifNull() {
@@ -197,19 +193,12 @@ public final class Level0MapOperator<I,K,V> extends AbstractOperator
     }
 
 
-    public Level0MapSelectedOperator<I,K, V> ifNullOrTrue(final IFunction<? super Map<K, V>,Boolean> eval) {
-        return new Level0MapSelectedOperator<I,K, V>(getTarget().selectNullOrMatching(eval));
-    }
+    
 
 
-    public Level0MapSelectedOperator<I,K, V> ifNullOrFalse(final IFunction<? super Map<K, V>,Boolean> eval) {
-        return new Level0MapSelectedOperator<I,K, V>(getTarget().selectNullOrNotMatching(eval));
-    }
+    
 
 
-    public Level0MapOperator<I,K, V> execIfNotNullAsMap(final IFunction<? super Map<K, V>,? extends Map<? extends K, ? extends V>> function) {
-        return new Level0MapOperator<I,K, V>(getTarget().executeIfNotNull(function, Normalisation.MAP));
-    }
 
 
     public <X, Y> Level0MapOperator<I,X, Y> execAsMap(final IFunction<? super Map<K, V>,? extends Map<X, Y>> function) {
@@ -272,6 +261,51 @@ public final class Level0MapOperator<I,K,V> extends AbstractOperator
     public Level0MapOperator<I, K, V> reverse() {
         return new Level0MapOperator<I, K, V>(getTarget().execute(FnMap.ofObjectObject().reverse()));
     }
+    
+    
+    
+    
+    
+
+    public Level0MapOperator<I, K, V> execIfFalseAsMap(final IFunction<? super Map<K, V>, Boolean> eval, final IFunction<? super Map<K, V>, ? extends Map<? extends K, ? extends V>> function) {
+        return new Level0MapOperator<I, K, V>(getTarget().executeIfFalse(eval, function, null, Normalisation.MAP));
+    }
+
+
+    public <X, Y> Level0MapOperator<I, X, Y> execIfFalseAsMap(final IFunction<? super Map<K, V>, Boolean> eval, final IFunction<? super Map<K, V>, ? extends Map<X, Y>> function, final IFunction<? super Map<K, V>, ? extends Map<X, Y>> elseFunction) {
+        return new Level0MapOperator<I, X, Y>(getTarget().executeIfFalse(eval, function, elseFunction, Normalisation.MAP));
+    }
+
+
+    public Level0MapOperator<I, K, V> execIfNotNullAsMap(final IFunction<? super Map<K, V>, ? extends Map<? extends K, ? extends V>> function) {
+        return new Level0MapOperator<I, K, V>(getTarget().executeIfNotNull(function, null, Normalisation.MAP));
+    }
+
+
+    public <X, Y> Level0MapOperator<I, X, Y> execIfNotNullAsMap(final IFunction<? super Map<K, V>, ? extends Map<X, Y>> function, final IFunction<? super Map<K, V>, ? extends Map<X, Y>> elseFunction) {
+        return new Level0MapOperator<I, X, Y>(getTarget().executeIfNotNull(function, elseFunction, Normalisation.MAP));
+    }
+
+
+    public Level0MapOperator<I, K, V> execIfNullAsMap(final IFunction<? super Map<K, V>, ? extends Map<? extends K, ? extends V>> function) {
+        return new Level0MapOperator<I, K, V>(getTarget().executeIfNull(function, null, Normalisation.MAP));
+    }
+
+
+    public <X, Y> Level0MapOperator<I, X, Y> execIfNullAsMap(final IFunction<? super Map<K, V>, ? extends Map<X, Y>> function, final IFunction<? super Map<K, V>, ? extends Map<X, Y>> elseFunction) {
+        return new Level0MapOperator<I, X, Y>(getTarget().executeIfNull(function, elseFunction, Normalisation.MAP));
+    }
+
+
+    public Level0MapOperator<I, K, V> execIfTrueAsMap(final IFunction<? super Map<K, V>, Boolean> eval, final IFunction<? super Map<K, V>, ? extends Map<? extends K, ? extends V>> function) {
+        return new Level0MapOperator<I, K, V>(getTarget().executeIfTrue(eval, function, null, Normalisation.MAP));
+    }
+
+
+    public <X, Y> Level0MapOperator<I, X, Y> execIfTrueAsMap(final IFunction<? super Map<K, V>, Boolean> eval, final IFunction<? super Map<K, V>, ? extends Map<X, Y>> function, final IFunction<? super Map<K, V>, ? extends Map<X, Y>> elseFunction) {
+        return new Level0MapOperator<I, X, Y>(getTarget().executeIfTrue(eval, function, elseFunction, Normalisation.MAP));
+    }
+    
     
     
 }

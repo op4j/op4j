@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.op4j.exceptions.ExecutionException;
+import org.op4j.functions.ExecCtx;
 import org.op4j.functions.IFunction;
 import org.op4j.target.Target.Structure;
 import org.op4j.util.ExecCtxImpl;
@@ -38,20 +39,26 @@ import org.op4j.util.ExecCtxImpl;
  * @author Daniel Fern&aacute;ndez
  *
  */
-final class ExecutionTargetMapIfNotNullOperation implements ExecutionTargetOperation {
+final class ExecutionTargetMapIfOperation implements ExecutionTargetOperation {
 
-    private final Structure structure;
+    private final boolean desiredResult;
+    private final IFunction<Object,Boolean> condition;
     private final IFunction<Object,Object> executable;
+    private final IFunction<Object,Object> elseExecutable;
+    private final Structure structure;
     private final Class<?> arrayComponentClass;
 
     
     
     
     @SuppressWarnings("unchecked")
-    public ExecutionTargetMapIfNotNullOperation(final Structure structure, final IFunction<?,?> executable, final Class<?> arrayComponentClass) {
+    public ExecutionTargetMapIfOperation(final boolean desiredResult, final Structure structure, final IFunction<?,Boolean> condition, final IFunction<?,?> executable, final IFunction<?,?> elseExecutable, final Class<?> arrayComponentClass) {
         super();
+        this.desiredResult = desiredResult;
         this.structure = structure;
+        this.condition = (IFunction<Object,Boolean>) condition;
         this.executable = (IFunction<Object,Object>) executable;
+        this.elseExecutable = (IFunction<Object,Object>) elseExecutable;
         this.arrayComponentClass = arrayComponentClass;
     }
     
@@ -78,10 +85,15 @@ final class ExecutionTargetMapIfNotNullOperation implements ExecutionTargetOpera
                     final Object[] arrayResult = 
                         (Object[]) Array.newInstance(this.arrayComponentClass, arrayTarget.length);
                     for (int i = 0, z = arrayTarget.length; i < z; i++) {
+                        final ExecCtx ctx = new ExecCtxImpl(Integer.valueOf(i));
+                        final boolean conditionResult = 
+                            this.condition.execute(arrayTarget[i], ctx).booleanValue();
                         arrayResult[i] =
-                            (arrayTarget[i] == null?
-                                null :
-                                this.executable.execute(arrayTarget[i], new ExecCtxImpl(Integer.valueOf(i))));
+                            (conditionResult != this.desiredResult?
+                                (this.elseExecutable == null?
+                                        arrayTarget[i] :
+                                        this.elseExecutable.execute(arrayTarget[i], ctx)) :
+                                this.executable.execute(arrayTarget[i], ctx));
                     }
                     return arrayResult;
     
@@ -91,10 +103,15 @@ final class ExecutionTargetMapIfNotNullOperation implements ExecutionTargetOpera
                     final List<Object> listResult = new ArrayList<Object>();
                     int iList = 0;
                     for (final Object element : listTarget) {
+                        final ExecCtx ctx = new ExecCtxImpl(Integer.valueOf(iList)); 
+                        final boolean conditionResult = 
+                            this.condition.execute(element, ctx).booleanValue();
                         listResult.add(
-                                (element == null?
-                                        null :
-                                        this.executable.execute(element, new ExecCtxImpl(Integer.valueOf(iList)))));
+                                (conditionResult != this.desiredResult?
+                                        (this.elseExecutable == null?
+                                                element :
+                                                this.elseExecutable.execute(element, ctx)) :
+                                        this.executable.execute(element, ctx)));
                         iList++;
                     }
                     return listResult;
@@ -106,10 +123,15 @@ final class ExecutionTargetMapIfNotNullOperation implements ExecutionTargetOpera
                     final Set<Object> setResult = new LinkedHashSet<Object>();
                     int iSet = 0;
                     for (final Object element : setTarget) {
+                        final ExecCtx ctx = new ExecCtxImpl(Integer.valueOf(iSet)); 
+                        final boolean conditionResult = 
+                            this.condition.execute(element, ctx).booleanValue();
                         setResult.add(
-                                (element == null?
-                                        null :
-                                        this.executable.execute(element, new ExecCtxImpl(Integer.valueOf(iSet)))));
+                                (conditionResult != this.desiredResult?
+                                        (this.elseExecutable == null?
+                                                element :
+                                                this.elseExecutable.execute(element, ctx)) :
+                                        this.executable.execute(element, ctx)));
                         iSet++;
                     }
                     return setResult;

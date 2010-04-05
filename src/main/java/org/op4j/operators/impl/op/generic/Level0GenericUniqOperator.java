@@ -182,14 +182,10 @@ public final class Level0GenericUniqOperator<I,T> extends AbstractOperator
     }
 
 
-    public Level0GenericUniqSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
-        return new Level0GenericUniqSelectedOperator<I,T>(getTarget().selectNotNullAndMatching(eval));
-    }
+    
 
 
-    public Level0GenericUniqSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
-        return new Level0GenericUniqSelectedOperator<I,T>(getTarget().selectNotNullAndNotMatching(eval));
-    }
+    
 
 
     public Level0GenericUniqSelectedOperator<I,T> ifNull() {
@@ -197,19 +193,11 @@ public final class Level0GenericUniqOperator<I,T> extends AbstractOperator
     }
 
 
-    public Level0GenericUniqSelectedOperator<I,T> ifNullOrTrue(final IFunction<? super T,Boolean> eval) {
-        return new Level0GenericUniqSelectedOperator<I,T>(getTarget().selectNullOrMatching(eval));
-    }
+    
 
 
-    public Level0GenericUniqSelectedOperator<I,T> ifNullOrFalse(final IFunction<? super T,Boolean> eval) {
-        return new Level0GenericUniqSelectedOperator<I,T>(getTarget().selectNullOrNotMatching(eval));
-    }
+    
 
-
-    public <X> Level0GenericUniqOperator<I,X> execIfNotNull(final IFunction<? super T,X> function) {
-        return new Level0GenericUniqOperator<I,X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
 
 
     public <X> Level0GenericUniqOperator<I,X> exec(final IFunction<? super T,X> function) {
@@ -257,14 +245,53 @@ public final class Level0GenericUniqOperator<I,T> extends AbstractOperator
     public Level0SetOperator<I, T> unfoldSet(final IFunction<? super T, ? extends T> function, final IFunction<? super T, Boolean> whileCondition) {
         return new Level0SetOperator<I, T>(getTarget().execute(FnSet.of((Type<T>)Types.OBJECT).unfold(function, whileCondition)));
     }
-    
-    
-    
-    
-    
-    
-    
 
+
+
+    
+    
+    public Level0GenericUniqOperator<I, T> execIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T, ? extends T> function) {
+        return new Level0GenericUniqOperator<I, T>(getTarget().executeIfFalse(eval, function, null, Normalisation.NONE));
+    }
+
+
+    public <X> Level0GenericUniqOperator<I, X> execIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level0GenericUniqOperator<I, X>(getTarget().executeIfFalse(eval, function, elseFunction, Normalisation.NONE));
+    }
+
+
+    public Level0GenericUniqOperator<I, T> execIfNotNull(final IFunction<? super T, ? extends T> function) {
+        return new Level0GenericUniqOperator<I, T>(getTarget().executeIfNotNull(function, null, Normalisation.NONE));
+    }
+
+
+    public <X> Level0GenericUniqOperator<I, X> execIfNotNull(final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level0GenericUniqOperator<I, X>(getTarget().executeIfNotNull(function, elseFunction, Normalisation.NONE));
+    }
+
+
+    public Level0GenericUniqOperator<I, T> execIfNull(final IFunction<? super T, ? extends T> function) {
+        return new Level0GenericUniqOperator<I, T>(getTarget().executeIfNull(function, null, Normalisation.NONE));
+    }
+
+
+    public <X> Level0GenericUniqOperator<I, X> execIfNull(final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level0GenericUniqOperator<I, X>(getTarget().executeIfNull(function, elseFunction, Normalisation.NONE));
+    }
+
+
+    public Level0GenericUniqOperator<I, T> execIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T, ? extends T> function) {
+        return new Level0GenericUniqOperator<I, T>(getTarget().executeIfTrue(eval, function, null, Normalisation.NONE));
+    }
+
+    
+    public <X> Level0GenericUniqOperator<I, X> execIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level0GenericUniqOperator<I, X>(getTarget().executeIfTrue(eval, function, elseFunction, Normalisation.NONE));
+    }
+    
+    
+    
+    
     
     
 }

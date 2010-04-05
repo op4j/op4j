@@ -268,14 +268,10 @@ public final class Level0SetOperator<I,T> extends AbstractOperator
     }
 
 
-    public Level0SetSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super Set<T>,Boolean> eval) {
-        return new Level0SetSelectedOperator<I,T>(getTarget().selectNotNullAndMatching(eval));
-    }
+    
 
 
-    public Level0SetSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super Set<T>,Boolean> eval) {
-        return new Level0SetSelectedOperator<I,T>(getTarget().selectNotNullAndNotMatching(eval));
-    }
+    
 
 
     public Level0SetSelectedOperator<I,T> ifNull() {
@@ -283,19 +279,12 @@ public final class Level0SetOperator<I,T> extends AbstractOperator
     }
 
 
-    public Level0SetSelectedOperator<I,T> ifNullOrTrue(final IFunction<? super Set<T>,Boolean> eval) {
-        return new Level0SetSelectedOperator<I,T>(getTarget().selectNullOrMatching(eval));
-    }
+    
 
 
-    public Level0SetSelectedOperator<I,T> ifNullOrFalse(final IFunction<? super Set<T>,Boolean> eval) {
-        return new Level0SetSelectedOperator<I,T>(getTarget().selectNullOrNotMatching(eval));
-    }
+    
 
 
-    public Level0SetOperator<I,T> execIfNotNullAsSet(final IFunction<? super Set<T>,? extends Set<? extends T>> function) {
-        return new Level0SetOperator<I,T>(getTarget().executeIfNotNull(function, Normalisation.SET));
-    }
 
 
     public <X> Level0SetOperator<I,X> execAsSet(final IFunction<? super Set<T>,? extends Set<X>> function) {
@@ -328,9 +317,6 @@ public final class Level0SetOperator<I,T> extends AbstractOperator
     }
     
 
-    public Level0SetOperator<I,T> mapIfNotNull(final IFunction<? super T,? extends T> function) {
-        return new Level0SetOperator<I,T>(getTarget().mapIfNotNull(Structure.SET, function, null));
-    }
 
 
 
@@ -434,6 +420,78 @@ public final class Level0SetOperator<I,T> extends AbstractOperator
     public <K, V> Level0MapOperator<I, K, V> toMap(final IFunction<? super T, K> keyFunction, final IFunction<? super T, V> valueFunction) {
         return new Level0MapOperator<I, K, V>(getTarget().execute(FnSet.ofObject().toMap((IFunction)keyFunction,(IFunction)valueFunction)));
     }
+    
+    
+    
+    
+    
+    
+    public Level0SetOperator<I, T> execIfFalseAsSet(final IFunction<? super Set<T>, Boolean> eval, final IFunction<? super Set<T>, ? extends Set<? extends T>> function) {
+        return new Level0SetOperator<I,T>(getTarget().executeIfFalse(eval, function, null, Normalisation.SET));
+    }
+
+    public <X> Level0SetOperator<I, X> execIfFalseAsSet(final IFunction<? super Set<T>, Boolean> eval, final IFunction<? super Set<T>, ? extends Set<X>> function, final IFunction<? super Set<T>, ? extends Set<X>> elseFunction) {
+        return new Level0SetOperator<I,X>(getTarget().executeIfFalse(eval, function, elseFunction, Normalisation.SET));
+    }
+
+    public Level0SetOperator<I, T> execIfNotNullAsSet(final IFunction<? super Set<T>, ? extends Set<? extends T>> function) {
+        return new Level0SetOperator<I,T>(getTarget().executeIfNotNull(function, null, Normalisation.SET));
+    }
+
+    public <X> Level0SetOperator<I, X> execIfNotNullAsSet(final IFunction<? super Set<T>, ? extends Set<X>> function, final IFunction<? super Set<T>, ? extends Set<X>> elseFunction) {
+        return new Level0SetOperator<I,X>(getTarget().executeIfNotNull(function, elseFunction, Normalisation.SET));
+    }
+
+    public Level0SetOperator<I, T> execIfNullAsSet(final IFunction<? super Set<T>, ? extends Set<? extends T>> function) {
+        return new Level0SetOperator<I,T>(getTarget().executeIfNull(function, null, Normalisation.SET));
+    }
+
+    public <X> Level0SetOperator<I, X> execIfNullAsSet(final IFunction<? super Set<T>, ? extends Set<X>> function, final IFunction<? super Set<T>, ? extends Set<X>> elseFunction) {
+        return new Level0SetOperator<I,X>(getTarget().executeIfNull(function, elseFunction, Normalisation.SET));
+    }
+
+    public Level0SetOperator<I, T> execIfTrueAsSet(final IFunction<? super Set<T>, Boolean> eval, final IFunction<? super Set<T>, ? extends Set<? extends T>> function) {
+        return new Level0SetOperator<I,T>(getTarget().executeIfTrue(eval, function, null, Normalisation.SET));
+    }
+
+    public <X> Level0SetOperator<I, X> execIfTrueAsSet(final IFunction<? super Set<T>, Boolean> eval, final IFunction<? super Set<T>, ? extends Set<X>> function, final IFunction<? super Set<T>, ? extends Set<X>> elseFunction) {
+        return new Level0SetOperator<I,X>(getTarget().executeIfTrue(eval, function, elseFunction, Normalisation.SET));
+    }
+    
+    
+
+    public Level0SetOperator<I, T> mapIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T, ? extends T> function) {
+        return new Level0SetOperator<I,T>(getTarget().mapIfFalse(Structure.SET, eval, function, null, null));
+    }
+
+    public <X> Level0SetOperator<I, X> mapIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level0SetOperator<I,X>(getTarget().mapIfFalse(Structure.SET, eval, function, elseFunction, null));
+    }
+
+    public Level0SetOperator<I, T> mapIfNotNull(final IFunction<? super T, ? extends T> function) {
+        return new Level0SetOperator<I,T>(getTarget().mapIfNotNull(Structure.SET, function, null, null));
+    }
+
+    public <X> Level0SetOperator<I, X> mapIfNotNull(final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level0SetOperator<I,X>(getTarget().mapIfNotNull(Structure.SET, function, elseFunction, null));
+    }
+
+    public Level0SetOperator<I, T> mapIfNull(final IFunction<? super T, ? extends T> function) {
+        return new Level0SetOperator<I,T>(getTarget().mapIfNull(Structure.SET, function, null, null));
+    }
+
+    public <X> Level0SetOperator<I, X> mapIfNull(final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level0SetOperator<I,X>(getTarget().mapIfNull(Structure.SET, function, elseFunction, null));
+    }
+
+    public Level0SetOperator<I, T> mapIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T, ? extends T> function) {
+        return new Level0SetOperator<I,T>(getTarget().mapIfTrue(Structure.SET, eval, function, null, null));
+    }
+
+    public <X> Level0SetOperator<I, X> mapIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level0SetOperator<I,X>(getTarget().mapIfTrue(Structure.SET, eval, function, elseFunction, null));
+    }
+
     
     
     

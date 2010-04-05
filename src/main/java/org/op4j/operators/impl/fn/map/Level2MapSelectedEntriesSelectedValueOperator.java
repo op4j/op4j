@@ -48,6 +48,16 @@ public final class Level2MapSelectedEntriesSelectedValueOperator<I,K,V> extends 
     }
 
 
+    public Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V> ifNull() {
+        return new Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V>(getTarget().selectNull());
+    }
+
+
+    public Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V> ifNotNull() {
+        return new Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V>(getTarget().selectNotNull());
+    }
+
+
     public Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V> ifNullOrFalse(final IFunction<? super V,Boolean> eval) {
         return new Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V>(getTarget().selectNullOrNotMatching(eval));
     }
@@ -58,28 +68,13 @@ public final class Level2MapSelectedEntriesSelectedValueOperator<I,K,V> extends 
     }
 
 
-    public Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V> ifNull() {
-        return new Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V>(getTarget().selectNull());
-    }
-
-
     public Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V> ifNullOrTrue(final IFunction<? super V,Boolean> eval) {
         return new Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V>(getTarget().selectNullOrMatching(eval));
     }
 
 
-    public Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V> ifNotNull() {
-        return new Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V>(getTarget().selectNotNull());
-    }
-
-
     public Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V> ifNotNullAndTrue(final IFunction<? super V,Boolean> eval) {
         return new Level2MapSelectedEntriesSelectedValueSelectedOperator<I,K,V>(getTarget().selectNotNullAndMatching(eval));
-    }
-
-
-    public Level2MapSelectedEntriesSelectedValueOperator<I,K,V> execIfNotNull(final IFunction<? super V,? extends V> function) {
-        return new Level2MapSelectedEntriesSelectedValueOperator<I,K,V>(getTarget().executeIfNotNull(function, Normalisation.NONE));
     }
 
 

@@ -60,22 +60,27 @@ public interface ILevel0GenericUniqOperator<I,T>
 
     public ILevel0GenericUniqSelectedOperator<I,T> ifTrue(final IFunction<? super T,Boolean> eval);
     public ILevel0GenericUniqSelectedOperator<I,T> ifFalse(final IFunction<? super T,Boolean> eval);
-    public ILevel0GenericUniqSelectedOperator<I,T> ifNullOrFalse(final IFunction<? super T,Boolean> eval);
-    public ILevel0GenericUniqSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval);
     public ILevel0GenericUniqSelectedOperator<I,T> ifNull();
-    public ILevel0GenericUniqSelectedOperator<I,T> ifNullOrTrue(final IFunction<? super T,Boolean> eval);
     public ILevel0GenericUniqSelectedOperator<I,T> ifNotNull();
-    public ILevel0GenericUniqSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval);
 
     
     public ILevel0GenericUniqOperator<I,T> replaceWith(final T replacement);
     public ILevel0GenericUniqOperator<I,T> replaceIfNullWith(final T replacement);
 
 
-    public <X> ILevel0GenericUniqOperator<I,X> execIfNotNull(final IFunction<? super T,X> function);
-
     public <X> ILevel0GenericUniqOperator<I,X> exec(final IFunction<? super T,X> function);
 
+    public ILevel0GenericUniqOperator<I,T> execIfNotNull(final IFunction<? super T,? extends T> function);
+    public ILevel0GenericUniqOperator<I,T> execIfNull(final IFunction<? super T,? extends T> function);
+    public ILevel0GenericUniqOperator<I,T> execIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+    public ILevel0GenericUniqOperator<I,T> execIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+    public <X> ILevel0GenericUniqOperator<I,X> execIfNotNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel0GenericUniqOperator<I,X> execIfNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel0GenericUniqOperator<I,X> execIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ILevel0GenericUniqOperator<I,X> execIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    
+    
+    
     
     
     public <X> ILevel0GenericUniqOperator<I,X> castTo(final Type<X> type);

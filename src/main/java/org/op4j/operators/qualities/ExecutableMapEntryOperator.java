@@ -74,4 +74,64 @@ public interface ExecutableMapEntryOperator<K,V> {
     public <X> Operator exec(final IFunction<? super Map.Entry<K,V>,X> function);
     
     
+    
+    
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsMapEntry(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableMapEntryOperator<K,V> execIfTrueAsMapEntry(final IFunction<? super Map.Entry<K,V>, Boolean> eval, final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<? extends K,? extends V>> function);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsMapEntry(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableMapEntryOperator<K,V> execIfFalseAsMapEntry(final IFunction<? super Map.Entry<K,V>, Boolean> eval, final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<? extends K,? extends V>> function);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsMapEntry(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type of the keys returned by the functions
+     * @param <Y> the new type of the values returned by the functions
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X,Y> ExecutableMapEntryOperator<X,Y> execIfTrueAsMapEntry(final IFunction<? super Map.Entry<K,V>, Boolean> eval, final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<X,Y>> function, final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<X,Y>> elseFunction);
+
+
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsMapEntry(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     * 
+     * @param <X> the new type of the keys returned by the functions
+     * @param <Y> the new type of the values returned by the functions
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X,Y> ExecutableMapEntryOperator<X,Y> execIfFalseAsMapEntry(final IFunction<? super Map.Entry<K,V>, Boolean> eval, final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<X,Y>> function, final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<X,Y>> elseFunction);
+    
 }

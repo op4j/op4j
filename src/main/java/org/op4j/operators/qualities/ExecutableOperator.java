@@ -55,17 +55,113 @@ public interface ExecutableOperator<T> {
     public <X> ExecutableOperator<X> exec(final IFunction<? super T,X> function);
 
     
+    
     /**
      * <p>
      * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
+     * on selected elements, leaving all other elements untouched.
      * </p>
      *
-     * @param <X> the type of the results, and new type for the operator
-     * @param function the function to be executed
+     * @param function the function to be executed on the selected elements
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableOperator<X> execIfNotNull(final IFunction<? super T,X> function);
+    public ExecutableOperator<T> execIfNotNull(final IFunction<? super T,? extends T> function);
 
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableOperator<T> execIfNull(final IFunction<? super T,? extends T> function);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableOperator<T> execIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableOperator<T> execIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type returned by the functions
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableOperator<X> execIfNotNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type returned by the functions
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableOperator<X> execIfNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type returned by the functions
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableOperator<X> execIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+
+
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     * 
+     * @param <X> the new type returned by the functions
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableOperator<X> execIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    
     
 }

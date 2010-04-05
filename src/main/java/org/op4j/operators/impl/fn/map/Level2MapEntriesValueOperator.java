@@ -84,14 +84,10 @@ public final class Level2MapEntriesValueOperator<I,K,V> extends AbstractOperator
     }
 
 
-    public Level2MapEntriesValueSelectedOperator<I,K, V> ifNotNullAndTrue(final IFunction<? super V,Boolean> eval) {
-        return new Level2MapEntriesValueSelectedOperator<I,K, V>(getTarget().selectNotNullAndMatching(eval));
-    }
+    
 
 
-    public Level2MapEntriesValueSelectedOperator<I,K, V> ifNotNullAndFalse(final IFunction<? super V,Boolean> eval) {
-        return new Level2MapEntriesValueSelectedOperator<I,K, V>(getTarget().selectNotNullAndNotMatching(eval));
-    }
+    
 
 
     public Level2MapEntriesValueSelectedOperator<I,K, V> ifNull() {
@@ -99,19 +95,12 @@ public final class Level2MapEntriesValueOperator<I,K,V> extends AbstractOperator
     }
 
 
-    public Level2MapEntriesValueSelectedOperator<I,K, V> ifNullOrTrue(final IFunction<? super V,Boolean> eval) {
-        return new Level2MapEntriesValueSelectedOperator<I,K, V>(getTarget().selectNullOrMatching(eval));
-    }
+    
 
 
-    public Level2MapEntriesValueSelectedOperator<I,K, V> ifNullOrFalse(final IFunction<? super V,Boolean> eval) {
-        return new Level2MapEntriesValueSelectedOperator<I,K, V>(getTarget().selectNullOrNotMatching(eval));
-    }
+    
 
 
-    public <X> Level2MapEntriesValueOperator<I,K, X> execIfNotNull(final IFunction<? super V,X> function) {
-        return new Level2MapEntriesValueOperator<I,K, X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
 
 
     public <X> Level2MapEntriesValueOperator<I,K, X> exec(final IFunction<? super V,X> function) {
@@ -127,6 +116,52 @@ public final class Level2MapEntriesValueOperator<I,K,V> extends AbstractOperator
     public Level2MapEntriesValueOperator<I,K, V> replaceIfNullWith(final V replacement) {
         return ifNull().replaceWith(replacement).endIf();
     }
+
+    
+    
+    
+    
+    
+    
+    public Level2MapEntriesValueOperator<I, K, V> execIfFalse(final IFunction<? super V, Boolean> eval, final IFunction<? super V, ? extends V> function) {
+        return new Level2MapEntriesValueOperator<I, K, V>(getTarget().executeIfFalse(eval, function, null, Normalisation.NONE));
+    }
+
+
+    public <X> Level2MapEntriesValueOperator<I, K, X> execIfFalse(final IFunction<? super V, Boolean> eval, final IFunction<? super V, X> function, final IFunction<? super V, X> elseFunction) {
+        return new Level2MapEntriesValueOperator<I, K, X>(getTarget().executeIfFalse(eval, function, elseFunction, Normalisation.NONE));
+    }
+
+
+    public Level2MapEntriesValueOperator<I, K, V> execIfNotNull(final IFunction<? super V, ? extends V> function) {
+        return new Level2MapEntriesValueOperator<I, K, V>(getTarget().executeIfNotNull(function, null, Normalisation.NONE));
+    }
+
+
+    public <X> Level2MapEntriesValueOperator<I, K, X> execIfNotNull(final IFunction<? super V, X> function, final IFunction<? super V, X> elseFunction) {
+        return new Level2MapEntriesValueOperator<I, K, X>(getTarget().executeIfNotNull(function, elseFunction, Normalisation.NONE));
+    }
+
+
+    public Level2MapEntriesValueOperator<I, K, V> execIfNull(final IFunction<? super V, ? extends V> function) {
+        return new Level2MapEntriesValueOperator<I, K, V>(getTarget().executeIfNull(function, null, Normalisation.NONE));
+    }
+
+
+    public <X> Level2MapEntriesValueOperator<I, K, X> execIfNull(final IFunction<? super V, X> function, final IFunction<? super V, X> elseFunction) {
+        return new Level2MapEntriesValueOperator<I, K, X>(getTarget().executeIfNull(function, elseFunction, Normalisation.NONE));
+    }
+
+
+    public Level2MapEntriesValueOperator<I, K, V> execIfTrue(final IFunction<? super V, Boolean> eval, final IFunction<? super V, ? extends V> function) {
+        return new Level2MapEntriesValueOperator<I, K, V>(getTarget().executeIfTrue(eval, function, null, Normalisation.NONE));
+    }
+
+
+    public <X> Level2MapEntriesValueOperator<I, K, X> execIfTrue(final IFunction<? super V, Boolean> eval, final IFunction<? super V, X> function, final IFunction<? super V, X> elseFunction) {
+        return new Level2MapEntriesValueOperator<I, K, X>(getTarget().executeIfTrue(eval, function, elseFunction, Normalisation.NONE));
+    }
+
 
 
     

@@ -75,8 +75,6 @@ public interface ILevel0SetSelectedOperator<I,T>
     public ILevel0SetSelectedOperator<I,T> removeAllIndexesNot(final int... indexes);
     public ILevel0SetSelectedOperator<I,T> removeAllNull();
     
-    
-    public ILevel0SetSelectedOperator<I,T> execIfNotNullAsSet(final IFunction<? super Set<T>,? extends Set<? extends T>> function);
 
     public ILevel0SetSelectedOperator<I,T> replaceWith(final Set<T> replacement);
 
@@ -84,8 +82,6 @@ public interface ILevel0SetSelectedOperator<I,T>
 
 
     public ILevel0SetSelectedOperator<I,T> map(final IFunction<? super T,? extends T> function);
-
-    public ILevel0SetSelectedOperator<I,T> mapIfNotNull(final IFunction<? super T,? extends T> function);
     
     
 }

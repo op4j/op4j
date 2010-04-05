@@ -19,7 +19,6 @@
  */
 package org.op4j.operators.qualities;
 
-import org.javaruntype.type.Type;
 import org.op4j.functions.IFunction;
 
 
@@ -35,24 +34,8 @@ import org.op4j.functions.IFunction;
  * @author Daniel Fern&aacute;ndez
  *
  */
-public interface ExecutableArrayElementsOperator<T> {
+public interface ExecutableElementsOperator<T> {
 
-    
-    /**
-     * <p>
-     * Executes the specified function on the target object, creating a new operator
-     * containing the result of the execution as a new array.
-     * </p>
-     * <p>
-     * This function must be able to take as input an object of type T (the current operator's
-     * target type) and will return another object of type T.
-     * </p>
-     * 
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public ExecutableArrayElementsOperator<T> exec(final IFunction<? super T,? extends T> function);
-    
     
     /**
      * <p>
@@ -66,11 +49,10 @@ public interface ExecutableArrayElementsOperator<T> {
      * </p>
      * 
      * @param <X> the type of the result, and new type for the operator
-     * @param type the type returned by the function
      * @param function the function to be executed
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableArrayElementsOperator<X> exec(final Type<X> type, final IFunction<? super T,X> function);
+    public <X> ExecutableElementsOperator<X> exec(final IFunction<? super T,X> function);
 
     
     /**
@@ -83,7 +65,7 @@ public interface ExecutableArrayElementsOperator<T> {
      * @param function the function to be executed on the selected elements
      * @return an operator on the results of function execution
      */
-    public ExecutableArrayElementsOperator<T> execIfIndex(final int[] indexes, final IFunction<? super T,? extends T> function);
+    public ExecutableElementsOperator<T> execIfIndex(final int[] indexes, final IFunction<? super T,? extends T> function);
 
     
     /**
@@ -96,7 +78,7 @@ public interface ExecutableArrayElementsOperator<T> {
      * @param function the function to be executed on the selected elements
      * @return an operator on the results of function execution
      */
-    public ExecutableArrayElementsOperator<T> execIfIndexNot(final int[] indexes, final IFunction<? super T,? extends T> function);
+    public ExecutableElementsOperator<T> execIfIndexNot(final int[] indexes, final IFunction<? super T,? extends T> function);
 
     
     /**
@@ -108,7 +90,7 @@ public interface ExecutableArrayElementsOperator<T> {
      * @param function the function to be executed on the selected elements
      * @return an operator on the results of function execution
      */
-    public ExecutableArrayElementsOperator<T> execIfNotNull(final IFunction<? super T,? extends T> function);
+    public ExecutableElementsOperator<T> execIfNotNull(final IFunction<? super T,? extends T> function);
 
     
     /**
@@ -120,20 +102,7 @@ public interface ExecutableArrayElementsOperator<T> {
      * @param function the function to be executed on the selected elements
      * @return an operator on the results of function execution
      */
-    public ExecutableArrayElementsOperator<T> execIfNull(final IFunction<? super T,? extends T> function);
-
-    
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
-     * on selected elements, leaving all other elements untouched.
-     * </p>
-     *
-     * @param eval the evaluation function used to select elements
-     * @param function the function to be executed on the selected elements
-     * @return an operator on the results of function execution
-     */
-    public ExecutableArrayElementsOperator<T> execIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+    public ExecutableElementsOperator<T> execIfNull(final IFunction<? super T,? extends T> function);
 
     
     /**
@@ -146,7 +115,20 @@ public interface ExecutableArrayElementsOperator<T> {
      * @param function the function to be executed on the selected elements
      * @return an operator on the results of function execution
      */
-    public ExecutableArrayElementsOperator<T> execIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+    public ExecutableElementsOperator<T> execIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #exec(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableElementsOperator<T> execIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
 
     
     /**
@@ -156,13 +138,12 @@ public interface ExecutableArrayElementsOperator<T> {
      * </p>
      *
      * @param <X> the new type returned by the functions
-     * @param type the new type returned by the functions
      * @param indexes the iteration indexes that will be selected
      * @param function the function to be executed on the selected elements
      * @param elseFunc the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableArrayElementsOperator<X> execIfIndex(final Type<X> type, final int[] indexes, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ExecutableElementsOperator<X> execIfIndex(final int[] indexes, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
 
     
     /**
@@ -172,13 +153,12 @@ public interface ExecutableArrayElementsOperator<T> {
      * </p>
      *
      * @param <X> the new type returned by the functions
-     * @param type the new type returned by the functions
      * @param indexes the iteration indexes that will not be selected
      * @param function the function to be executed on the selected elements
      * @param elseFunc the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableArrayElementsOperator<X> execIfIndexNot(final Type<X> type, final int[] indexes, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ExecutableElementsOperator<X> execIfIndexNot(final int[] indexes, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
 
     
     /**
@@ -188,12 +168,11 @@ public interface ExecutableArrayElementsOperator<T> {
      * </p>
      *
      * @param <X> the new type returned by the functions
-     * @param type the new type returned by the functions
      * @param function the function to be executed on the selected elements
      * @param elseFunc the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableArrayElementsOperator<X> execIfNotNull(final Type<X> type, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ExecutableElementsOperator<X> execIfNotNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
 
     
     /**
@@ -203,12 +182,11 @@ public interface ExecutableArrayElementsOperator<T> {
      * </p>
      *
      * @param <X> the new type returned by the functions
-     * @param type the new type returned by the functions
      * @param function the function to be executed on the selected elements
      * @param elseFunc the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableArrayElementsOperator<X> execIfNull(final Type<X> type, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ExecutableElementsOperator<X> execIfNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
 
     
     /**
@@ -218,13 +196,12 @@ public interface ExecutableArrayElementsOperator<T> {
      * </p>
      *
      * @param <X> the new type returned by the functions
-     * @param type the new type returned by the functions
      * @param eval the evaluation function used to select elements
      * @param function the function to be executed on the selected elements
      * @param elseFunc the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableArrayElementsOperator<X> execIfTrue(final Type<X> type, final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ExecutableElementsOperator<X> execIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
 
 
     /**
@@ -234,13 +211,12 @@ public interface ExecutableArrayElementsOperator<T> {
      * </p>
      * 
      * @param <X> the new type returned by the functions
-     * @param type the new type returned by the functions
      * @param eval the evaluation function used to select elements
      * @param function the function to be executed on the selected elements
      * @param elseFunc the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
-    public <X> ExecutableArrayElementsOperator<X> execIfFalse(final Type<X> type, final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    public <X> ExecutableElementsOperator<X> execIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
 
     
 }

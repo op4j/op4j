@@ -94,14 +94,10 @@ public final class Level1ArrayElementsOperator<I,T> extends AbstractOperator
     }
 
 
-    public Level1ArrayElementsSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
-        return new Level1ArrayElementsSelectedOperator<I,T>(this.type, getTarget().selectNotNullAndMatching(eval));
-    }
+    
 
 
-    public Level1ArrayElementsSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
-        return new Level1ArrayElementsSelectedOperator<I,T>(this.type, getTarget().selectNotNullAndNotMatching(eval));
-    }
+    
 
 
     public Level1ArrayElementsSelectedOperator<I,T> ifNull() {
@@ -109,20 +105,13 @@ public final class Level1ArrayElementsOperator<I,T> extends AbstractOperator
     }
 
 
-    public Level1ArrayElementsSelectedOperator<I,T> ifNullOrTrue(final IFunction<? super T,Boolean> eval) {
-        return new Level1ArrayElementsSelectedOperator<I,T>(this.type, getTarget().selectNullOrMatching(eval));
-    }
+    
 
 
-    public Level1ArrayElementsSelectedOperator<I,T> ifNullOrFalse(final IFunction<? super T,Boolean> eval) {
-        return new Level1ArrayElementsSelectedOperator<I,T>(this.type, getTarget().selectNullOrNotMatching(eval));
-    }
+    
 
 
 
-    public Level1ArrayElementsOperator<I,T> execIfNotNull(final IFunction<? super T,? extends T> function) {
-        return new Level1ArrayElementsOperator<I,T>(this.type, getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
 
 
 
@@ -152,6 +141,74 @@ public final class Level1ArrayElementsOperator<I,T> extends AbstractOperator
     }
 
 
+    
+    
+    public Level1ArrayElementsOperator<I,T> execIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T, ? extends T> function) {
+        return new Level1ArrayElementsOperator<I,T>(this.type, getTarget().executeIfFalse(eval, function, null, Normalisation.NONE));
+    }
+
+
+    public <X> Level1ArrayElementsOperator<I,X> execIfFalse(final Type<X> newType, final IFunction<? super T, Boolean> eval, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level1ArrayElementsOperator<I,X>(newType, getTarget().executeIfFalse(eval, function, elseFunction, Normalisation.NONE));
+    }
+
+
+    public Level1ArrayElementsOperator<I,T> execIfIndex(final int[] indexes, final IFunction<? super T, ? extends T> function) {
+        return new Level1ArrayElementsOperator<I,T>(this.type, getTarget().executeIfIndex(indexes, function, null, Normalisation.NONE));
+    }
+
+
+    public <X> Level1ArrayElementsOperator<I,X> execIfIndex(final Type<X> newType, final int[] indexes, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level1ArrayElementsOperator<I,X>(newType, getTarget().executeIfIndex(indexes, function, elseFunction, Normalisation.NONE));
+    }
+
+
+    public Level1ArrayElementsOperator<I,T> execIfIndexNot(final int[] indexes, final IFunction<? super T, ? extends T> function) {
+        return new Level1ArrayElementsOperator<I,T>(this.type, getTarget().executeIfIndexNot(indexes, function, null, Normalisation.NONE));
+    }
+
+
+    public <X> Level1ArrayElementsOperator<I,X> execIfIndexNot(final Type<X> newType, final int[] indexes, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level1ArrayElementsOperator<I,X>(newType, getTarget().executeIfIndexNot(indexes, function, elseFunction, Normalisation.NONE));
+    }
+
+
+    
+    public Level1ArrayElementsOperator<I, T> execIfNotNull(final IFunction<? super T, ? extends T> function) {
+        return new Level1ArrayElementsOperator<I,T>(this.type, getTarget().executeIfNotNull(function, null, Normalisation.NONE));
+    }
+    
+    
+
+    public <X> Level1ArrayElementsOperator<I,X> execIfNotNull(final Type<X> newType, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level1ArrayElementsOperator<I,X>(newType, getTarget().executeIfNotNull(function, elseFunction, Normalisation.NONE));
+    }
+
+
+
+    public Level1ArrayElementsOperator<I,T> execIfNull(final IFunction<? super T, ? extends T> function) {
+        return new Level1ArrayElementsOperator<I,T>(this.type, getTarget().executeIfNull(function, null, Normalisation.NONE));
+    }
+
+
+
+    public <X> Level1ArrayElementsOperator<I,X> execIfNull(final Type<X> newType, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level1ArrayElementsOperator<I,X>(newType, getTarget().executeIfNull(function, elseFunction, Normalisation.NONE));
+    }
+
+
+
+    public Level1ArrayElementsOperator<I,T> execIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T, ? extends T> function) {
+        return new Level1ArrayElementsOperator<I,T>(this.type, getTarget().executeIfTrue(eval, function, null, Normalisation.NONE));
+    }
+
+
+
+    public <X> Level1ArrayElementsOperator<I,X> execIfTrue(final Type<X> newType, final IFunction<? super T, Boolean> eval, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level1ArrayElementsOperator<I,X>(newType, getTarget().executeIfTrue(eval, function, elseFunction, Normalisation.NONE));
+    }
+
+    
 
     
 

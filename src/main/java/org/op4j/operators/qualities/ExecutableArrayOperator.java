@@ -53,19 +53,6 @@ public interface ExecutableArrayOperator<T> {
      * @return an operator on the results of function execution
      */
     public ExecutableArrayOperator<T> execAsArray(final IFunction<? super T[],? extends T[]> function);
-    
-    
-    /**
-     * <p>
-     * Executes a function in a way equivalent to {@link #execAsArray(IFunction)} but only
-     * on non-null elements, leaving null elements untouched.
-     * </p>
-     * 
-     * @param function the function to be executed
-     * @return an operator on the results of function execution
-     */
-    public ExecutableArrayOperator<T> execIfNotNullAsArray(final IFunction<? super T[],? extends T[]> function);
-
 
 
     /**
@@ -85,6 +72,134 @@ public interface ExecutableArrayOperator<T> {
      * @return an operator on the results of function execution
      */
     public <X> ExecutableArrayOperator<X> execAsArrayOf(final Type<X> type, final IFunction<? super T[],X[]> function);
+    
+    
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsArray(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableArrayOperator<T> execIfNotNullAsArray(final IFunction<? super T[],? extends T[]> function);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsArray(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableArrayOperator<T> execIfNullAsArray(final IFunction<? super T[],? extends T[]> function);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsArray(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableArrayOperator<T> execIfTrueAsArray(final IFunction<? super T[], Boolean> eval, final IFunction<? super T[],? extends T[]> function);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsArray(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableArrayOperator<T> execIfFalseAsArray(final IFunction<? super T[], Boolean> eval, final IFunction<? super T[],? extends T[]> function);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsArray(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type returned by the functions
+     * @param type the new type returned by the functions
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableArrayOperator<X> execIfNotNullAsArrayOf(final Type<X> type, final IFunction<? super T[],X[]> function, final IFunction<? super T[],X[]> elseFunction);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsArray(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type returned by the functions
+     * @param type the new type returned by the functions
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableArrayOperator<X> execIfNullAsArrayOf(final Type<X> type, final IFunction<? super T[],X[]> function, final IFunction<? super T[],X[]> elseFunction);
+
+    
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsArray(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type returned by the functions
+     * @param type the new type returned by the functions
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableArrayOperator<X> execIfTrueAsArrayOf(final Type<X> type, final IFunction<? super T[], Boolean> eval, final IFunction<? super T[],X[]> function, final IFunction<? super T[],X[]> elseFunction);
+
+
+    /**
+     * <p>
+     * Executes a function in a way equivalent to {@link #execAsArray(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     * 
+     * @param <X> the new type returned by the functions
+     * @param type the new type returned by the functions
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableArrayOperator<X> execIfFalseAsArrayOf(final Type<X> type, final IFunction<? super T[], Boolean> eval, final IFunction<? super T[],X[]> function, final IFunction<? super T[],X[]> elseFunction);
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
     
@@ -140,18 +255,114 @@ public interface ExecutableArrayOperator<T> {
 
     /**
      * <p>
-     * Executes the specified function on each of the non-null elements, creating a new operator
-     * containing the result of all the executions but not changing the operator type. The
-     * specified function will have to return results compatible with the current operator type.
+     * Maps a function in a way equivalent to {@link #map(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
      * </p>
-     * <p>
-     * This method is equivalent to <tt>forEach().execIfNotNull(function).endFor()</tt>.
-     * </p>
-     * 
-     * @param function the function to be executed
-     * @return an operator on the results of function execution on each element
+     *
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
      */
     public ExecutableArrayOperator<T> mapIfNotNull(final IFunction<? super T,? extends T> function);
 
+    
+    /**
+     * <p>
+     * Maps a function in a way equivalent to {@link #map(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableArrayOperator<T> mapIfNull(final IFunction<? super T,? extends T> function);
+
+    
+    /**
+     * <p>
+     * Maps a function in a way equivalent to {@link #map(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableArrayOperator<T> mapIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+
+    
+    /**
+     * <p>
+     * Maps a function in a way equivalent to {@link #map(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @return an operator on the results of function execution
+     */
+    public ExecutableArrayOperator<T> mapIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,? extends T> function);
+
+    
+    /**
+     * <p>
+     * Maps a function in a way equivalent to {@link #map(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type returned by the functions
+     * @param type the new type returned by the functions
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableArrayOperator<X> mapIfNotNull(final Type<X> type, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+
+    
+    /**
+     * <p>
+     * Maps a function in a way equivalent to {@link #map(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type returned by the functions
+     * @param type the new type returned by the functions
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableArrayOperator<X> mapIfNull(final Type<X> type, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+
+    
+    /**
+     * <p>
+     * Maps a function in a way equivalent to {@link #map(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     *
+     * @param <X> the new type returned by the functions
+     * @param type the new type returned by the functions
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableArrayOperator<X> mapIfTrue(final Type<X> type, final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+
+
+    /**
+     * <p>
+     * Maps a function in a way equivalent to {@link #map(IFunction)} but only
+     * on selected elements, leaving all other elements untouched.
+     * </p>
+     * 
+     * @param <X> the new type returned by the functions
+     * @param type the new type returned by the functions
+     * @param eval the evaluation function used to select elements
+     * @param function the function to be executed on the selected elements
+     * @param elseFunc the function to be executed on the non-selected elements
+     * @return an operator on the results of function execution
+     */
+    public <X> ExecutableArrayOperator<X> mapIfFalse(final Type<X> type, final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
+    
     
 }

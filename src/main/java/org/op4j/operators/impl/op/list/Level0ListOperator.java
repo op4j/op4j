@@ -270,14 +270,10 @@ public final class Level0ListOperator<I,T> extends AbstractOperator
     }
 
 
-    public Level0ListSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super List<T>,Boolean> eval) {
-        return new Level0ListSelectedOperator<I,T>(getTarget().selectNotNullAndMatching(eval));
-    }
+    
 
 
-    public Level0ListSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super List<T>,Boolean> eval) {
-        return new Level0ListSelectedOperator<I,T>(getTarget().selectNotNullAndNotMatching(eval));
-    }
+    
 
 
     public Level0ListSelectedOperator<I,T> ifNull() {
@@ -285,19 +281,12 @@ public final class Level0ListOperator<I,T> extends AbstractOperator
     }
 
 
-    public Level0ListSelectedOperator<I,T> ifNullOrTrue(final IFunction<? super List<T>,Boolean> eval) {
-        return new Level0ListSelectedOperator<I,T>(getTarget().selectNullOrMatching(eval));
-    }
+    
 
 
-    public Level0ListSelectedOperator<I,T> ifNullOrFalse(final IFunction<? super List<T>,Boolean> eval) {
-        return new Level0ListSelectedOperator<I,T>(getTarget().selectNullOrNotMatching(eval));
-    }
+    
 
 
-    public Level0ListOperator<I,T> execIfNotNullAsList(final IFunction<? super List<T>,? extends List<? extends T>> function) {
-        return new Level0ListOperator<I,T>(getTarget().executeIfNotNull(function, Normalisation.LIST));
-    }
 
 
     public <X> Level0ListOperator<I,X> execAsList(final IFunction<? super List<T>,? extends List<X>> function) {
@@ -330,10 +319,6 @@ public final class Level0ListOperator<I,T> extends AbstractOperator
     }
     
 
-    public Level0ListOperator<I,T> mapIfNotNull(final IFunction<? super T,? extends T> function) {
-        return new Level0ListOperator<I,T>(getTarget().mapIfNotNull(Structure.LIST, function, null));
-    }
-    
 
 
 
@@ -432,5 +417,86 @@ public final class Level0ListOperator<I,T> extends AbstractOperator
     public <K, V> Level0MapOperator<I, K, V> toMap(final IFunction<? super T, K> keyFunction, final IFunction<? super T, V> valueFunction) {
         return new Level0MapOperator<I, K, V>(getTarget().execute(FnList.ofObject().toMap((IFunction)keyFunction,(IFunction)valueFunction)));
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public Level0ListOperator<I, T> execIfFalseAsList(final IFunction<? super List<T>, Boolean> eval, final IFunction<? super List<T>, ? extends List<? extends T>> function) {
+        return new Level0ListOperator<I,T>(getTarget().executeIfFalse(eval, function, null, Normalisation.LIST));
+    }
+
+    public <X> Level0ListOperator<I, X> execIfFalseAsList(final IFunction<? super List<T>, Boolean> eval, final IFunction<? super List<T>, ? extends List<X>> function, final IFunction<? super List<T>, ? extends List<X>> elseFunction) {
+        return new Level0ListOperator<I,X>(getTarget().executeIfFalse(eval, function, elseFunction, Normalisation.LIST));
+    }
+
+    public Level0ListOperator<I, T> execIfNotNullAsList(final IFunction<? super List<T>, ? extends List<? extends T>> function) {
+        return new Level0ListOperator<I,T>(getTarget().executeIfNotNull(function, null, Normalisation.LIST));
+    }
+
+    public <X> Level0ListOperator<I, X> execIfNotNullAsList(final IFunction<? super List<T>, ? extends List<X>> function, final IFunction<? super List<T>, ? extends List<X>> elseFunction) {
+        return new Level0ListOperator<I,X>(getTarget().executeIfNotNull(function, elseFunction, Normalisation.LIST));
+    }
+
+    public Level0ListOperator<I, T> execIfNullAsList(final IFunction<? super List<T>, ? extends List<? extends T>> function) {
+        return new Level0ListOperator<I,T>(getTarget().executeIfNull(function, null, Normalisation.LIST));
+    }
+
+    public <X> Level0ListOperator<I, X> execIfNullAsList(final IFunction<? super List<T>, ? extends List<X>> function, final IFunction<? super List<T>, ? extends List<X>> elseFunction) {
+        return new Level0ListOperator<I,X>(getTarget().executeIfNull(function, elseFunction, Normalisation.LIST));
+    }
+
+    public Level0ListOperator<I, T> execIfTrueAsList(final IFunction<? super List<T>, Boolean> eval, final IFunction<? super List<T>, ? extends List<? extends T>> function) {
+        return new Level0ListOperator<I,T>(getTarget().executeIfTrue(eval, function, null, Normalisation.LIST));
+    }
+
+    public <X> Level0ListOperator<I, X> execIfTrueAsList(final IFunction<? super List<T>, Boolean> eval, final IFunction<? super List<T>, ? extends List<X>> function, final IFunction<? super List<T>, ? extends List<X>> elseFunction) {
+        return new Level0ListOperator<I,X>(getTarget().executeIfTrue(eval, function, elseFunction, Normalisation.LIST));
+    }
+    
+    
+
+    public Level0ListOperator<I, T> mapIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T, ? extends T> function) {
+        return new Level0ListOperator<I,T>(getTarget().mapIfFalse(Structure.LIST, eval, function, null, null));
+    }
+
+    public <X> Level0ListOperator<I, X> mapIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level0ListOperator<I,X>(getTarget().mapIfFalse(Structure.LIST, eval, function, elseFunction, null));
+    }
+
+    public Level0ListOperator<I, T> mapIfNotNull(final IFunction<? super T, ? extends T> function) {
+        return new Level0ListOperator<I,T>(getTarget().mapIfNotNull(Structure.LIST, function, null, null));
+    }
+
+    public <X> Level0ListOperator<I, X> mapIfNotNull(final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level0ListOperator<I,X>(getTarget().mapIfNotNull(Structure.LIST, function, elseFunction, null));
+    }
+
+    public Level0ListOperator<I, T> mapIfNull(final IFunction<? super T, ? extends T> function) {
+        return new Level0ListOperator<I,T>(getTarget().mapIfNull(Structure.LIST, function, null, null));
+    }
+
+    public <X> Level0ListOperator<I, X> mapIfNull(final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level0ListOperator<I,X>(getTarget().mapIfNull(Structure.LIST, function, elseFunction, null));
+    }
+
+    public Level0ListOperator<I, T> mapIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T, ? extends T> function) {
+        return new Level0ListOperator<I,T>(getTarget().mapIfTrue(Structure.LIST, eval, function, null, null));
+    }
+
+    public <X> Level0ListOperator<I, X> mapIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level0ListOperator<I,X>(getTarget().mapIfTrue(Structure.LIST, eval, function, elseFunction, null));
+    }
+
     
 }

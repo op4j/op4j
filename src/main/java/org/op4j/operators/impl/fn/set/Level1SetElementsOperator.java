@@ -97,14 +97,10 @@ public final class Level1SetElementsOperator<I,T> extends AbstractOperator
     }
 
 
-    public Level1SetElementsSelectedOperator<I,T> ifNotNullAndTrue(final IFunction<? super T,Boolean> eval) {
-        return new Level1SetElementsSelectedOperator<I,T>(getTarget().selectNotNullAndMatching(eval));
-    }
+    
 
 
-    public Level1SetElementsSelectedOperator<I,T> ifNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
-        return new Level1SetElementsSelectedOperator<I,T>(getTarget().selectNotNullAndNotMatching(eval));
-    }
+    
 
 
     public Level1SetElementsSelectedOperator<I,T> ifNull() {
@@ -112,19 +108,12 @@ public final class Level1SetElementsOperator<I,T> extends AbstractOperator
     }
 
 
-    public Level1SetElementsSelectedOperator<I,T> ifNullOrTrue(final IFunction<? super T,Boolean> eval) {
-        return new Level1SetElementsSelectedOperator<I,T>(getTarget().selectNullOrMatching(eval));
-    }
+    
 
 
-    public Level1SetElementsSelectedOperator<I,T> ifNullOrFalse(final IFunction<? super T,Boolean> eval) {
-        return new Level1SetElementsSelectedOperator<I,T>(getTarget().selectNullOrNotMatching(eval));
-    }
+    
 
 
-    public <X> Level1SetElementsOperator<I,X> execIfNotNull(final IFunction<? super T,X> function) {
-        return new Level1SetElementsOperator<I,X>(getTarget().executeIfNotNull(function, Normalisation.NONE));
-    }
 
 
     public <X> Level1SetElementsOperator<I,X> exec(final IFunction<? super T,X> function) {
@@ -144,6 +133,76 @@ public final class Level1SetElementsOperator<I,T> extends AbstractOperator
 
     
 
+
+    
+    
+    
+    public Level1SetElementsOperator<I,T> execIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T, ? extends T> function) {
+        return new Level1SetElementsOperator<I,T>(getTarget().executeIfFalse(eval, function, null, Normalisation.NONE));
+    }
+
+
+    public <X> Level1SetElementsOperator<I,X> execIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level1SetElementsOperator<I,X>(getTarget().executeIfFalse(eval, function, elseFunction, Normalisation.NONE));
+    }
+
+
+    public Level1SetElementsOperator<I,T> execIfIndex(final int[] indexes, final IFunction<? super T, ? extends T> function) {
+        return new Level1SetElementsOperator<I,T>(getTarget().executeIfIndex(indexes, function, null, Normalisation.NONE));
+    }
+
+
+    public <X> Level1SetElementsOperator<I,X> execIfIndex(final int[] indexes, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level1SetElementsOperator<I,X>(getTarget().executeIfIndex(indexes, function, elseFunction, Normalisation.NONE));
+    }
+
+
+    public Level1SetElementsOperator<I,T> execIfIndexNot(final int[] indexes, final IFunction<? super T, ? extends T> function) {
+        return new Level1SetElementsOperator<I,T>(getTarget().executeIfIndexNot(indexes, function, null, Normalisation.NONE));
+    }
+
+
+    public <X> Level1SetElementsOperator<I,X> execIfIndexNot(final int[] indexes, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level1SetElementsOperator<I,X>(getTarget().executeIfIndexNot(indexes, function, elseFunction, Normalisation.NONE));
+    }
+
+
+    
+    public Level1SetElementsOperator<I, T> execIfNotNull(final IFunction<? super T, ? extends T> function) {
+        return new Level1SetElementsOperator<I,T>(getTarget().executeIfNotNull(function, null, Normalisation.NONE));
+    }
+    
+    
+
+    public <X> Level1SetElementsOperator<I,X> execIfNotNull(final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level1SetElementsOperator<I,X>(getTarget().executeIfNotNull(function, elseFunction, Normalisation.NONE));
+    }
+
+
+
+    public Level1SetElementsOperator<I,T> execIfNull(final IFunction<? super T, ? extends T> function) {
+        return new Level1SetElementsOperator<I,T>(getTarget().executeIfNull(function, null, Normalisation.NONE));
+    }
+
+
+
+    public <X> Level1SetElementsOperator<I,X> execIfNull(final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level1SetElementsOperator<I,X>(getTarget().executeIfNull(function, elseFunction, Normalisation.NONE));
+    }
+
+
+
+    public Level1SetElementsOperator<I,T> execIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T, ? extends T> function) {
+        return new Level1SetElementsOperator<I,T>(getTarget().executeIfTrue(eval, function, null, Normalisation.NONE));
+    }
+
+
+
+    public <X> Level1SetElementsOperator<I,X> execIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T, X> function, final IFunction<? super T, X> elseFunction) {
+        return new Level1SetElementsOperator<I,X>(getTarget().executeIfTrue(eval, function, elseFunction, Normalisation.NONE));
+    }
+
+    
     
     
 }
