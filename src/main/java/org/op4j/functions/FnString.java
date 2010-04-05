@@ -39,6 +39,7 @@ import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.apache.commons.lang.time.DateUtils;
+import org.op4j.Op;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.FnString.Replace.ReplaceType;
 import org.op4j.functions.FnStringAuxNumberConverters.ToBigDecimal;
@@ -86,7 +87,9 @@ public final class FnString {
 	
     private static final Function<String,Boolean> TO_BOOLEAN = new ToBoolean();
 	
-
+    private static final Function<List<Object>,String> JOIN = new Join();
+    private static final Function<Object[],String> JOIN_ARRAY = new JoinArray();
+    
     
     
 	
@@ -518,39 +521,78 @@ public final class FnString {
         return UNESCAPE_JAVASCRIPT_STRING_FUNC;
     }
 	
+	/**
+	 * It converts the given String into its Hexadecimal representation using the specified Charset
+	 * 
+	 * @param charset
+	 * @return
+	 */
 	public static final Function<String,String> toHexadecimal(Charset charset) {
         return new ToHexadecimal(charset);
     }
+	/**
+	 * The given String is converted from its Hexadecimal representation into a String using the specified Charset
+	 * 
+	 * @param charset
+	 * @return
+	 */
 	public static final Function<String,String> fromHexadecimal(Charset charset) {
         return new FromHexadecimal(charset);
     }
 	
+	/**
+	 * It converts the given String to uppercase
+	 * 
+	 * @return
+	 */
 	public static final Function<String,String> toUpperCase() {
         return TO_UPPER_CASE_STRING_FUNC;
     }
+	/**
+	 * It converts the given String to lowercase
+	 * 
+	 * @return
+	 */
 	public static final Function<String,String> toLowerCase() {
         return TO_LOWER_CASE_STRING_FUNC;
     }
 	
+	/**
+	 * It converts the first letter of the given String to lowercase
+	 * 
+	 * @return
+	 */
 	public static final Function<String,String> unCapitalize() {
         return UN_CAPITALIZE_STRING_FUNC;
     }
+	/**
+	 * It converts the first letter of the given String to uppercase
+	 * 
+	 * @return
+	 */
 	public static final Function<String,String> capitalize() {
         return CAPITALIZE_STRING_FUNC;
     }
 	
+	/**
+	 * Removes control characters (char <= 32) from both ends of the given String
+	 * 
+	 * @return
+	 */
 	public static final Function<String,String> trim() {
         return TRIM_STRING_FUNC;
     }
 	
+	/**
+	 * Strips whitespace from both sides of the given String
+	 * 
+	 * @return
+	 */
 	public static final Function<String,String> strip() {
         return STRIP_STRING_FUNC;
     }
 	
-
-
 	
-    
     public static final Function<String,Calendar> toCalendar(final String pattern) {
         return new ToCalendar(pattern);
     }
@@ -683,6 +725,25 @@ public final class FnString {
     }
     
     
+    public static final Function<String, List<String>> split(String separator) {
+        return new Split(separator);        
+    }
+    public static final Function<String, String[]> splitAsArray(String separator) {
+        return new SplitAsArray(separator);        
+    }
+    
+    public static final Function<List<Object>, String> join() {
+        return JOIN;        
+    }
+    public static final Function<List<Object>, String> join(String separator) {
+        return new Join(separator);        
+    }
+    public static final Function<Object[], String> joinArray() {
+        return JOIN_ARRAY;        
+    }
+    public static final Function<Object[], String> joinArray(String separator) {
+        return new JoinArray(separator);        
+    }
     
     
     
@@ -834,7 +895,7 @@ public final class FnString {
 	}
 
 	/**
-	 * The given String is converted from its Hexadecimal representation to a String using the specified Charset
+	 * The given String is converted from its Hexadecimal representation into a String using the specified Charset
 	 *
 	 */
 	static final class FromHexadecimal extends AbstractNullAsNullFunction<String,String> {
@@ -1287,5 +1348,80 @@ public final class FnString {
         }
         
     }
+ 
+    static final class Split extends Function<String,List<String>> {
+
+        private final String separator;
+        
+        Split(String separator) {
+            super(); 
+            Validate.notNull(separator, "Separator can't be null");
+            this.separator = separator;
+        }
+
+        public List<String> execute(final String input, final ExecCtx ctx) throws Exception {
+            return Op.on(StringUtils.split(input, this.separator)).toList().get();
+        }       
+    }   
     
+    static final class SplitAsArray extends Function<String,String[]> {
+
+        private final String separator;
+        
+        SplitAsArray(String separator) {
+            super(); 
+            Validate.notNull(separator, "Separator can't be null");
+            this.separator = separator;
+        }
+
+        public String[] execute(final String input, final ExecCtx ctx) throws Exception {
+            return StringUtils.split(input, this.separator);
+        }       
+    }   
+    
+    static final class Join extends Function<List<Object>,String> {
+
+        private final String separator;
+        
+        Join() {
+            super(); 
+            this.separator = null;
+        }
+
+        Join(String separator) {
+            super(); 
+            this.separator = separator;
+        }
+        
+        public String execute(final List<Object> input, final ExecCtx ctx) throws Exception {
+            if (this.separator != null) {
+                return StringUtils.join(input.toArray(), this.separator);
+            } else {
+                return StringUtils.join(input.toArray());
+            }            
+        }       
+    }   
+    
+    static final class JoinArray extends Function<Object[],String> {
+
+        private final String separator;
+        
+        JoinArray() {
+            super(); 
+            this.separator = null;
+        }
+        
+        JoinArray(String separator) {
+            super(); 
+            this.separator = separator;
+        }
+
+        public String execute(final Object[] input, final ExecCtx ctx) throws Exception {
+            if (this.separator != null) {
+                return StringUtils.join(input, this.separator);
+            } else {
+                return StringUtils.join(input);
+            }
+        }       
+    }   
 }

@@ -768,7 +768,22 @@ public class AssortedTests extends TestCase {
         
     }
     
-
+    @Test
+    public void test54() throws Exception {
+        assertEquals(
+                Op.on(new Object[] {4.5, "hello", BigDecimal.valueOf(45.78)})
+                    .exec(FnString.joinArray(",")).get(),
+                    "4.5,hello,45.78");
+        assertEquals(
+                Op.on(new Object[] {4.5, "hello", BigDecimal.valueOf(45.78)})
+                    .exec(FnString.joinArray("*")).get(),
+                    "4.5*hello*45.78");
+        
+        assertEquals(Op.on("Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday")
+                    .exec(FnString.split(",")).castToListOf(Types.STRING).forEach().exec(FnString.trim()).get(),
+                    Op.onListFor("Sunday", "Monday", "Tuesday", "Wednesday", 
+                            "Thursday", "Friday", "Saturday", "Sunday").get());
+    }
    
     
 }
