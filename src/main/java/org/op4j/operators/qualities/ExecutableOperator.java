@@ -114,7 +114,7 @@ public interface ExecutableOperator<T> {
      *
      * @param <X> the new type returned by the functions
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableOperator<X> execIfNotNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
@@ -128,7 +128,7 @@ public interface ExecutableOperator<T> {
      *
      * @param <X> the new type returned by the functions
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableOperator<X> execIfNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
@@ -143,7 +143,7 @@ public interface ExecutableOperator<T> {
      * @param <X> the new type returned by the functions
      * @param eval the evaluation function used to select elements
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableOperator<X> execIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
@@ -158,7 +158,7 @@ public interface ExecutableOperator<T> {
      * @param <X> the new type returned by the functions
      * @param eval the evaluation function used to select elements
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableOperator<X> execIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);

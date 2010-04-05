@@ -43,8 +43,6 @@ public interface BuildingMapOperator<I,K,V> {
      * Adds a new entry to the map being built.
      * </p>
      * 
-     * @param <K> the type of the map keys
-     * @param <V> the type of the map values
      * @param key the key to be added
      * @param value the value to be added
      * @return an operator on the resulting map

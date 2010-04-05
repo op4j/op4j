@@ -121,7 +121,7 @@ public interface ExecutableSetOperator<T> {
      *
      * @param <X> the new type returned by the functions
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableSetOperator<X> execIfNotNullAsSet(final IFunction<? super Set<T>,? extends Set<X>> function, final IFunction<? super Set<T>,? extends Set<X>> elseFunction);
@@ -135,7 +135,7 @@ public interface ExecutableSetOperator<T> {
      *
      * @param <X> the new type returned by the functions
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableSetOperator<X> execIfNullAsSet(final IFunction<? super Set<T>,? extends Set<X>> function, final IFunction<? super Set<T>,? extends Set<X>> elseFunction);
@@ -150,7 +150,7 @@ public interface ExecutableSetOperator<T> {
      * @param <X> the new type returned by the functions
      * @param eval the evaluation function used to select elements
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableSetOperator<X> execIfTrueAsSet(final IFunction<? super Set<T>, Boolean> eval, final IFunction<? super Set<T>,? extends Set<X>> function, final IFunction<? super Set<T>,? extends Set<X>> elseFunction);
@@ -165,7 +165,7 @@ public interface ExecutableSetOperator<T> {
      * @param <X> the new type returned by the functions
      * @param eval the evaluation function used to select elements
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableSetOperator<X> execIfFalseAsSet(final IFunction<? super Set<T>, Boolean> eval, final IFunction<? super Set<T>,? extends Set<X>> function, final IFunction<? super Set<T>,? extends Set<X>> elseFunction);
@@ -270,7 +270,7 @@ public interface ExecutableSetOperator<T> {
      *
      * @param <X> the new type returned by the functions
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableSetOperator<X> mapIfNotNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
@@ -284,7 +284,7 @@ public interface ExecutableSetOperator<T> {
      *
      * @param <X> the new type returned by the functions
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableSetOperator<X> mapIfNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
@@ -299,7 +299,7 @@ public interface ExecutableSetOperator<T> {
      * @param <X> the new type returned by the functions
      * @param eval the evaluation function used to select elements
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableSetOperator<X> mapIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
@@ -314,7 +314,7 @@ public interface ExecutableSetOperator<T> {
      * @param <X> the new type returned by the functions
      * @param eval the evaluation function used to select elements
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableSetOperator<X> mapIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);

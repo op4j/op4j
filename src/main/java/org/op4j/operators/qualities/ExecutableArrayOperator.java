@@ -134,7 +134,7 @@ public interface ExecutableArrayOperator<T> {
      * @param <X> the new type returned by the functions
      * @param type the new type returned by the functions
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableArrayOperator<X> execIfNotNullAsArrayOf(final Type<X> type, final IFunction<? super T[],X[]> function, final IFunction<? super T[],X[]> elseFunction);
@@ -149,7 +149,7 @@ public interface ExecutableArrayOperator<T> {
      * @param <X> the new type returned by the functions
      * @param type the new type returned by the functions
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableArrayOperator<X> execIfNullAsArrayOf(final Type<X> type, final IFunction<? super T[],X[]> function, final IFunction<? super T[],X[]> elseFunction);
@@ -165,7 +165,7 @@ public interface ExecutableArrayOperator<T> {
      * @param type the new type returned by the functions
      * @param eval the evaluation function used to select elements
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableArrayOperator<X> execIfTrueAsArrayOf(final Type<X> type, final IFunction<? super T[], Boolean> eval, final IFunction<? super T[],X[]> function, final IFunction<? super T[],X[]> elseFunction);
@@ -181,7 +181,7 @@ public interface ExecutableArrayOperator<T> {
      * @param type the new type returned by the functions
      * @param eval the evaluation function used to select elements
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableArrayOperator<X> execIfFalseAsArrayOf(final Type<X> type, final IFunction<? super T[], Boolean> eval, final IFunction<? super T[],X[]> function, final IFunction<? super T[],X[]> elseFunction);
@@ -312,7 +312,7 @@ public interface ExecutableArrayOperator<T> {
      * @param <X> the new type returned by the functions
      * @param type the new type returned by the functions
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableArrayOperator<X> mapIfNotNull(final Type<X> type, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
@@ -327,7 +327,7 @@ public interface ExecutableArrayOperator<T> {
      * @param <X> the new type returned by the functions
      * @param type the new type returned by the functions
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableArrayOperator<X> mapIfNull(final Type<X> type, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
@@ -343,7 +343,7 @@ public interface ExecutableArrayOperator<T> {
      * @param type the new type returned by the functions
      * @param eval the evaluation function used to select elements
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableArrayOperator<X> mapIfTrue(final Type<X> type, final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
@@ -359,7 +359,7 @@ public interface ExecutableArrayOperator<T> {
      * @param type the new type returned by the functions
      * @param eval the evaluation function used to select elements
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableArrayOperator<X> mapIfFalse(final Type<X> type, final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);

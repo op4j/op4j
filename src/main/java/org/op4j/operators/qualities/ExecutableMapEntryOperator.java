@@ -113,7 +113,7 @@ public interface ExecutableMapEntryOperator<K,V> {
      * @param <Y> the new type of the values returned by the functions
      * @param eval the evaluation function used to select elements
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X,Y> ExecutableMapEntryOperator<X,Y> execIfTrueAsMapEntry(final IFunction<? super Map.Entry<K,V>, Boolean> eval, final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<X,Y>> function, final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<X,Y>> elseFunction);
@@ -129,7 +129,7 @@ public interface ExecutableMapEntryOperator<K,V> {
      * @param <Y> the new type of the values returned by the functions
      * @param eval the evaluation function used to select elements
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X,Y> ExecutableMapEntryOperator<X,Y> execIfFalseAsMapEntry(final IFunction<? super Map.Entry<K,V>, Boolean> eval, final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<X,Y>> function, final IFunction<? super Map.Entry<K,V>,? extends Map.Entry<X,Y>> elseFunction);

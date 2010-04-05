@@ -117,7 +117,7 @@ public interface ExecutableListOperator<T> {
      *
      * @param <X> the new type returned by the functions
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableListOperator<X> execIfNotNullAsList(final IFunction<? super List<T>,? extends List<X>> function, final IFunction<? super List<T>,? extends List<X>> elseFunction);
@@ -131,7 +131,7 @@ public interface ExecutableListOperator<T> {
      *
      * @param <X> the new type returned by the functions
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableListOperator<X> execIfNullAsList(final IFunction<? super List<T>,? extends List<X>> function, final IFunction<? super List<T>,? extends List<X>> elseFunction);
@@ -146,7 +146,7 @@ public interface ExecutableListOperator<T> {
      * @param <X> the new type returned by the functions
      * @param eval the evaluation function used to select elements
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableListOperator<X> execIfTrueAsList(final IFunction<? super List<T>, Boolean> eval, final IFunction<? super List<T>,? extends List<X>> function, final IFunction<? super List<T>,? extends List<X>> elseFunction);
@@ -161,7 +161,7 @@ public interface ExecutableListOperator<T> {
      * @param <X> the new type returned by the functions
      * @param eval the evaluation function used to select elements
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableListOperator<X> execIfFalseAsList(final IFunction<? super List<T>, Boolean> eval, final IFunction<? super List<T>,? extends List<X>> function, final IFunction<? super List<T>,? extends List<X>> elseFunction);
@@ -265,7 +265,7 @@ public interface ExecutableListOperator<T> {
      *
      * @param <X> the new type returned by the functions
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableListOperator<X> mapIfNotNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
@@ -279,7 +279,7 @@ public interface ExecutableListOperator<T> {
      *
      * @param <X> the new type returned by the functions
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableListOperator<X> mapIfNull(final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
@@ -294,7 +294,7 @@ public interface ExecutableListOperator<T> {
      * @param <X> the new type returned by the functions
      * @param eval the evaluation function used to select elements
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableListOperator<X> mapIfTrue(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
@@ -309,7 +309,7 @@ public interface ExecutableListOperator<T> {
      * @param <X> the new type returned by the functions
      * @param eval the evaluation function used to select elements
      * @param function the function to be executed on the selected elements
-     * @param elseFunc the function to be executed on the non-selected elements
+     * @param elseFunction the function to be executed on the non-selected elements
      * @return an operator on the results of function execution
      */
     public <X> ExecutableListOperator<X> mapIfFalse(final IFunction<? super T, Boolean> eval, final IFunction<? super T,X> function, final IFunction<? super T,X> elseFunction);
