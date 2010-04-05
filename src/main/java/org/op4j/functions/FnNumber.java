@@ -36,6 +36,7 @@ import org.op4j.functions.FnNumber.ToString.NumberFormatType;
  * @since 1.0
  * 
  * @author Daniel Fern&aacute;ndez
+ * @author Soraya S&aacute;nchez
  *
  */
 @SuppressWarnings({"cast", "unchecked"})

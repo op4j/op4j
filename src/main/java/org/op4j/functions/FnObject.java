@@ -37,6 +37,7 @@ import org.op4j.exceptions.ExecutionException;
  * @since 1.0
  * 
  * @author Daniel Fern&aacute;ndez
+ * @author Soraya S&aacute;nchez
  *
  */
 public final class FnObject {

@@ -1396,9 +1396,8 @@ public final class FnString {
         public String execute(final List<Object> input, final ExecCtx ctx) throws Exception {
             if (this.separator != null) {
                 return StringUtils.join(input.toArray(), this.separator);
-            } else {
-                return StringUtils.join(input.toArray());
-            }            
+            }
+            return StringUtils.join(input.toArray());
         }       
     }   
     
@@ -1419,9 +1418,8 @@ public final class FnString {
         public String execute(final Object[] input, final ExecCtx ctx) throws Exception {
             if (this.separator != null) {
                 return StringUtils.join(input, this.separator);
-            } else {
-                return StringUtils.join(input);
             }
+            return StringUtils.join(input);
         }       
     }   
 }
