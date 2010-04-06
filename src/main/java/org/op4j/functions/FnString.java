@@ -1166,7 +1166,10 @@ public final class FnString {
      * <p>
      * Converts a String into a Boolean. Case is ignored, and all three 
      * "true"/"false", "yes"/"no" and "on"/"off" versions are 
-     * supported. 
+     * supported.  
+     * </p>
+     * <p>
+     * This method calls <tt>org.apache.commons.lang.StringUtils.toBooleanObject()</tt>.
      * </p>
      * 
      * @return the resulting Boolean object
@@ -1177,101 +1180,296 @@ public final class FnString {
     
     
 	
-	
+	/**
+	 * <p>
+	 * Turns a String into a value valid for being a CSV column value,
+	 * enclosed in double quotes if needed.
+	 * </p>
+     * <p>
+     * This method calls <tt>org.apache.commons.lang.StringUtils.escapeCsv()</tt>.
+     * From its definition:
+     * </p>
+     * <ul>
+     *   <li>If the value contains a comma, newline or double quote, then the
+     *       String value is written enclosed in double quotes.</li>
+     *   <li>Any double quote characters in the value are escaped with another double quote.</li>
+     *   <li>If the value does not contain a comma, newline or double quote, then the
+     *       String value is written unchanged (null values are ignored).</li>
+     * </ul>
+	 * 
+	 * @return the resulting String.
+	 */
 	public static final Function<String,String> escapeCSV() {
         return ESCAPE_CSV_STRING_FUNC;
     }
+	
+	
+	/**
+     * <p>
+     * Removes escaping from a String escaped for a CSV column.
+     * </p>
+     * <p>
+     * This method calls <tt>org.apache.commons.lang.StringUtils.unescapeCsv()</tt>.
+     * From its definition:
+     * </p>
+     * <ul>
+     *   <li>Returns a <code>String</code> value for an unescaped CSV column.</li>
+     *   <li>If the value is enclosed in double quotes, and contains a comma, newline 
+     *       or double quote, then quotes are removed.</li> 
+     *   <li>Any double quote escaped characters (a pair of double quotes) are unescaped 
+     *       to just one double quote.</li>
+     *   <li>If the value is not enclosed in double quotes, or is and does not contain a 
+     *       comma, newline or double quote, then the String value is returned unchanged.</li>
+     * </ul>
+	 * 
+     * @return the resulting String.
+	 */
 	public static final Function<String,String> unescapeCSV() {
         return UNESCAPE_CSV_STRING_FUNC;
     }	
 
+	
+	/**
+     * <p>
+     * Escapes the characters in a <code>String</code> using XML entities.
+     * </p>
+     * <p>
+     * This method calls <tt>org.apache.commons.lang.StringUtils.escapeXml()</tt>.
+     * From its definition:
+     * </p>
+     * <ul>
+     *   <li>For example: <tt>"bread" & "butter"</tt> =>
+     *       <tt>&amp;quot;bread&amp;quot; &amp;amp; &amp;quot;butter&amp;quot;</tt>.</li>
+     *   <li>Supports only the five basic XML entities (gt, lt, quot, amp, apos).
+     *       Does not support DTDs or external entities.</li>
+     *   <li>Note that unicode characters greater than 0x7f are currently escaped to 
+     *    their numerical \\u equivalent. This may change in future releases.</li>
+     * </ul>
+     *    
+     * @return the resulting String.
+	 */
 	public static final Function<String,String> escapeXML() {
         return ESCAPE_XML_STRING_FUNC;
     }
+	
+	
+	/**
+     * <p>
+     * Unescapes a string containing XML entity escapes to a string
+     * containing the actual Unicode characters corresponding to the
+     * escapes.
+     * </p>
+     * <p>
+     * This method calls <tt>org.apache.commons.lang.StringUtils.unescapeXml()</tt>.
+     * From its definition:
+     * </p>
+     * <ul>
+     *   <li>Supports only the five basic XML entities (gt, lt, quot, amp, apos).
+     *       Does not support DTDs or external entities.</li>
+     *   <li>Note that numerical \\u unicode codes are unescaped to their respective 
+     *       unicode characters. This may change in future releases.</li>
+     * </ul>
+	 * 
+     * @return the resulting String.
+	 */
 	public static final Function<String,String> unescapeXML() {
         return UNESCAPE_XML_STRING_FUNC;
     }
+
 	
+	/**
+     * <p>
+     * Escapes the characters in a <code>String</code> using HTML entities.
+     * </p>
+     * <p>
+     * This method calls <tt>org.apache.commons.lang.StringUtils.escapeHtml()</tt>.
+     * From its definition:
+     * </p>
+     * <ul>
+     *   <li>The strig <code>"bread" & "butter"</code></p> becomes 
+     *       <tt>&amp;quot;bread&amp;quot; &amp;amp; &amp;quot;butter&amp;quot;</tt>.</li>
+     *   <li>Supports all known HTML 4.0 entities, including funky accents.
+     *       Note that the commonly used apostrophe escape character (&amp;apos;)
+     *       is not a legal entity and so is not supported).</li>
+     * </ul>
+	 * 
+     * @return the resulting String.
+	 */
 	public static final Function<String,String> escapeHTML() {
         return ESCAPE_HTML_STRING_FUNC;
     }
+	
+	
+	/**
+     * <p>
+     * Unescapes a string containing entity escapes to a string
+     * containing the actual Unicode characters corresponding to the
+     * escapes. Supports HTML 4.0 entities.
+     * </p>
+     * <p>
+     * This method calls <tt>org.apache.commons.lang.StringUtils.unescapeHtml()</tt>.
+     * From its definition:
+     * </p>
+     * <ul>
+     *   <li>The string "&amp;lt;Fran&amp;ccedil;ais&amp;gt;"
+     *       will become "&lt;Fran&ccedil;ais&gt;"</li>
+     *   <li>If an entity is unrecognized, it is left alone, and inserted
+     *       verbatim into the result string. e.g. "&amp;gt;&amp;zzzz;x" will
+     *       become "&gt;&amp;zzzz;x".</li>
+     * </ul>
+	 * 
+     * @return the resulting String.
+	 */
 	public static final Function<String,String> unescapeHTML() {
         return UNESCAPE_HTML_STRING_FUNC;
     }
 	
+	
+	/**
+     * <p>
+     * Escapes the characters in a <code>String</code> using JavaScript String rules.
+     * </p>
+     * <p>
+     * This method calls <tt>org.apache.commons.lang.StringUtils.escapeJavascript()</tt>.
+     * From its definition:
+     * </p>
+     * <ul> 
+     *   <li>Escapes any values it finds into their JavaScript String form.
+     *       Deals correctly with quotes and control-chars (tab, backslash, cr, ff, etc.)</li>
+     *   <li>So a tab becomes the characters <code>'\\'</code> and <code>'t'</code>.</li>
+     *   <li>The only difference between Java strings and JavaScript strings
+     *       is that in JavaScript, a single quote must be escaped.</li>
+     * </ul>
+     *
+     * <p>Example:
+     * <pre>
+     * input string: He didn't say, "Stop!"
+     * output string: He didn\'t say, \"Stop!\"
+     * </pre>
+     * </p>
+	 * 
+     * @return the resulting String.
+	 */
 	public static final Function<String,String> escapeJavaScript() {
         return ESCAPE_JAVASCRIPT_STRING_FUNC;
     }
+	
+	
+	/**
+     * <p>
+     * Unescapes any JavaScript literals found in the <code>String</code>.
+     * </p>
+     *
+     * <p>
+     * For example, it will turn a sequence of <code>'\'</code> and <code>'n'</code>
+     * into a newline character, unless the <code>'\'</code> is preceded by another
+     * <code>'\'</code>.
+     * </p>
+     * <p>
+     * This method calls <tt>org.apache.commons.lang.StringUtils.unescapeJavascript()</tt>.
+     * </p>
+	 * 
+     * @return the resulting String.
+	 */
 	public static final Function<String,String> unescapeJavaScript() {
         return UNESCAPE_JAVASCRIPT_STRING_FUNC;
     }
 	
+	
+	
 	/**
-	 * It converts the given String into its Hexadecimal representation using the specified Charset
+     * <p>
+	 * Converts the target String into the Hexadecimal representation of its bytes using the 
+	 * specified Charset to obtain them (the bytes).
+     * </p>
 	 * 
-	 * @param charset
-	 * @return
+	 * @param charset the charset to be used
+     * @return the resulting String.
 	 */
-	public static final Function<String,String> toHexadecimal(Charset charset) {
+	public static final Function<String,String> toHexadecimal(final Charset charset) {
         return new ToHexadecimal(charset);
     }
+	
+	
 	/**
-	 * The given String is converted from its Hexadecimal representation into a String using the specified Charset
+	 * <p>
+	 * Converts the target String from the Hexadecimal representation of its bytes back into 
+	 * a String using the specified Charset.
+	 * </p>
 	 * 
-	 * @param charset
-	 * @return
+	 * @param charset the charset to be used
+     * @return the resulting String.
 	 */
 	public static final Function<String,String> fromHexadecimal(Charset charset) {
         return new FromHexadecimal(charset);
     }
 	
+	
 	/**
-	 * It converts the given String to uppercase
+     * <p>
+	 * Converts the target String to upper case.
+     * </p>
 	 * 
-	 * @return
+     * @return the resulting String.
 	 */
 	public static final Function<String,String> toUpperCase() {
         return TO_UPPER_CASE_STRING_FUNC;
     }
+	
 	/**
-	 * It converts the given String to lowercase
+     * <p>
+     * Converts the target String to lower case.
+     * </p>
 	 * 
-	 * @return
+	 * @return the resulting String
 	 */
 	public static final Function<String,String> toLowerCase() {
         return TO_LOWER_CASE_STRING_FUNC;
     }
 	
+	
 	/**
-	 * It converts the first letter of the given String to lowercase
+     * <p>
+	 * Converts the first letter of each word in the target String to lowercase
+     * </p>
 	 * 
-	 * @return
+     * @return the resulting String
 	 */
 	public static final Function<String,String> unCapitalize() {
         return UN_CAPITALIZE_STRING_FUNC;
     }
+	
+	
 	/**
-	 * It converts the first letter of the given String to uppercase
+     * <p>
+	 * Converts the first letter of each word in the target String to upper case.
+	 * </p>
 	 * 
-	 * @return
+     * @return the resulting String
 	 */
 	public static final Function<String,String> capitalize() {
         return CAPITALIZE_STRING_FUNC;
     }
 	
+	
 	/**
-	 * Removes control characters (char <= 32) from both ends of the given String
+     * <p>
+	 * Removes control characters (char <= 32) from both ends of the target String.
+     * </p>
 	 * 
-	 * @return
+     * @return the resulting String
 	 */
 	public static final Function<String,String> trim() {
         return TRIM_STRING_FUNC;
     }
 	
+	
 	/**
-	 * Strips whitespace from both sides of the given String
+     * <p>
+	 * Strips whitespace from both sides of the target String.
+     * </p>
 	 * 
-	 * @return
+     * @return the resulting String
 	 */
 	public static final Function<String,String> strip() {
         return STRIP_STRING_FUNC;
