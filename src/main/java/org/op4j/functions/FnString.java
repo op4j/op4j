@@ -1286,7 +1286,7 @@ public final class FnString {
      * From its definition:
      * </p>
      * <ul>
-     *   <li>The strig <code>"bread" & "butter"</code></p> becomes 
+     *   <li>The string <code>"bread" & "butter"</code> becomes 
      *       <tt>&amp;quot;bread&amp;quot; &amp;amp; &amp;quot;butter&amp;quot;</tt>.</li>
      *   <li>Supports all known HTML 4.0 entities, including funky accents.
      *       Note that the commonly used apostrophe escape character (&amp;apos;)
@@ -1400,7 +1400,7 @@ public final class FnString {
 	 * @param charset the charset to be used
      * @return the resulting String.
 	 */
-	public static final Function<String,String> fromHexadecimal(Charset charset) {
+	public static final Function<String,String> fromHexadecimal(final Charset charset) {
         return new FromHexadecimal(charset);
     }
 	
@@ -1454,7 +1454,7 @@ public final class FnString {
 	
 	/**
      * <p>
-	 * Removes control characters (char <= 32) from both ends of the target String.
+	 * Removes control characters (char &lt;= 32) from both ends of the target String.
      * </p>
 	 * 
      * @return the resulting String
@@ -1476,14 +1476,54 @@ public final class FnString {
     }
 	
 	
+	/**
+	 * <p>
+	 * Converts the target String to a <tt>java.util.Calendar</tt> by applying the specified
+	 * pattern.
+	 * </p>
+	 * <p>
+	 * Pattern format is that of <tt>java.text.SimpleDateFormat</tt>.
+	 * </p>
+	 * 
+	 * @param pattern the pattern to be used
+	 * @return the resulting Calendar
+	 */
     public static final Function<String,Calendar> toCalendar(final String pattern) {
         return new ToCalendar(pattern);
     }
+
     
+    /**
+     * <p>
+     * Converts the target String to a <tt>java.util.Calendar</tt> by applying the specified
+     * pattern and locale. The locale is needed for correctly parsing month names.
+     * </p>
+     * <p>
+     * Pattern format is that of <tt>java.text.SimpleDateFormat</tt>.
+     * </p>
+     * 
+     * @param pattern the pattern to be used.
+     * @param locale the locale which will be used for parsing month names
+     * @return the resulting Calendar
+     */
     public static final Function<String,Calendar> toCalendar(final String pattern, final Locale locale) {
         return new ToCalendar(pattern, locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts the target String to a <tt>java.util.Calendar</tt> by applying the specified
+     * pattern and locale. The locale is needed for correctly parsing month names.
+     * </p>
+     * <p>
+     * Pattern format is that of <tt>java.text.SimpleDateFormat</tt>.
+     * </p>
+     * 
+     * @param pattern the pattern to be used (ex: "en_US", "es_ES", etc.)
+     * @param locale the locale which will be used for parsing month names
+     * @return the resulting Calendar
+     */
     public static final Function<String,Calendar> toCalendar(final String pattern, final String locale) {
         return new ToCalendar(pattern, locale);
     }
@@ -1492,14 +1532,54 @@ public final class FnString {
     
 	
     
+    /**
+     * <p>
+     * Converts the target String to a <tt>java.util.Date</tt> by applying the specified
+     * pattern.
+     * </p>
+     * <p>
+     * Pattern format is that of <tt>java.text.SimpleDateFormat</tt>.
+     * </p>
+     * 
+     * @param pattern the pattern to be used
+     * @return the resulting Date
+     */
     public static final Function<String,Date> toDate(final String pattern) {
         return new ToDate(pattern);
     }
+
     
+    /**
+     * <p>
+     * Converts the target String to a <tt>java.util.Date</tt> by applying the specified
+     * pattern and locale. The locale is needed for correctly parsing month names.
+     * </p>
+     * <p>
+     * Pattern format is that of <tt>java.text.SimpleDateFormat</tt>.
+     * </p>
+     * 
+     * @param pattern the pattern to be used.
+     * @param locale the locale which will be used for parsing month names
+     * @return the resulting Date
+     */
     public static final Function<String,Date> toDate(final String pattern, final Locale locale) {
         return new ToDate(pattern, locale);
     }
+
     
+    /**
+     * <p>
+     * Converts the target String to a <tt>java.util.Date</tt> by applying the specified
+     * pattern and locale. The locale is needed for correctly parsing month names.
+     * </p>
+     * <p>
+     * Pattern format is that of <tt>java.text.SimpleDateFormat</tt>.
+     * </p>
+     * 
+     * @param pattern the pattern to be used (ex: "en_US", "es_ES", etc.)
+     * @param locale the locale which will be used for parsing month names
+     * @return the resulting Date
+     */
     public static final Function<String,Date> toDate(final String pattern, final String locale) {
         return new ToDate(pattern, locale);
     }
