@@ -59,6 +59,10 @@ import org.op4j.util.VarArgsUtil;
  * @author Soraya S&aacute;nchez
  *
  */
+/**
+ * @author Soraya
+ *
+ */
 public final class FnString {
 
 	private static final Function<String,String> ESCAPE_CSV_STRING_FUNC = new EscapeCSV();
@@ -1406,28 +1410,85 @@ public final class FnString {
     }
     
     
+    /**
+     * Splits a String into a list of substrings using the whitespace as the separator
+     * 
+     * @return
+     */
     public static final Function<String, List<String>> split() {
         return SPLIT;        
     }
+    
+    /**
+     * Splits a String into a list of substrings using the given separator
+     * as the substrings separator (the separator is not included in the
+     * returned list)
+     * 
+     * @param separator
+     * @return
+     */
     public static final Function<String, List<String>> split(String separator) {
         return new Split(separator);        
     }
+    
+    /**
+     * Splits a String into an array of substrings using the whitespace as the separator
+     * 
+     * @return
+     */
     public static final Function<String, String[]> splitAsArray() {
         return SPLIT_AS_ARRAY;        
     }
+    
+    /**
+     * Splits a String into an array of substrings using the given separator
+     * as the substrings separator (the separator is not included in the
+     * returned list)
+     * 
+     * @param separator
+     * @return
+     */
     public static final Function<String, String[]> splitAsArray(String separator) {
         return new SplitAsArray(separator);        
     }
     
+    
+    /**
+     * Joins the string representation of the objects in the list into a single String 
+     * (no separator used)
+     * 
+     * @return
+     */
     public static final Function<List<Object>, String> join() {
         return JOIN;        
     }
+    
+    /**
+     * Joins the string representation of the objects in the list into a single String 
+     * using the given separator
+     * 
+     * @return
+     */
     public static final Function<List<Object>, String> join(String separator) {
         return new Join(separator);        
     }
+    
+    /**
+     * Joins the string representation of the objects in the array into a single String 
+     * (no separator used)
+     * 
+     * @return
+     */
     public static final Function<Object[], String> joinArray() {
         return JOIN_ARRAY;        
     }
+    
+    /**
+     * Joins the string representation of the objects in the array into a single String 
+     * using the given separator
+     * 
+     * @return
+     */
     public static final Function<Object[], String> joinArray(String separator) {
         return new JoinArray(separator);        
     }

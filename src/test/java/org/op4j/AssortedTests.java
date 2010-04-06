@@ -795,6 +795,11 @@ public class AssortedTests extends TestCase {
                     "4.5,hello," + cal1.toString());
         
         assertEquals(
+                Op.on(new Object[] {4.5, "hello", cal1})
+                    .exec(FnString.joinArray()).get(),
+                    "4.5hello" + cal1.toString());
+        
+        assertEquals(
                 Op.on("hello*goodbye")
                     .exec(FnString.splitAsArray("*")).castToArrayOf(Types.STRING).toList().get(),
                     Op.onArrayFor("hello", "goodbye").toList().get());
