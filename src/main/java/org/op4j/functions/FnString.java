@@ -105,7 +105,7 @@ public final class FnString {
      * for for decimal point and precision.
 	 * </p>
 	 * 
-	 * @return the equivalent BigDecimal object
+	 * @return the resulting BigDecimal object
 	 */
     public static final Function<String,BigDecimal> toBigDecimal() {
         return TO_BIG_DECIMAL;
@@ -119,7 +119,7 @@ public final class FnString {
      * </p>
      * 
      * @param locale the locale defining the way in which the number was written
-     * @return the equivalent BigDecimal object
+     * @return the resulting BigDecimal object
      */
     public static final Function<String,BigDecimal> toBigDecimal(final Locale locale) {
         return new ToBigDecimal(locale);
@@ -134,7 +134,7 @@ public final class FnString {
      * </p>
      * 
      * @param locale the locale defining the way in which the number was written
-     * @return the equivalent BigDecimal object
+     * @return the resulting BigDecimal object
      */
     public static final Function<String,BigDecimal> toBigDecimal(final String locale) {
         return new ToBigDecimal(locale);
@@ -144,12 +144,12 @@ public final class FnString {
     /**
      * <p>
      * Converts a String into a BigDecimal, using the specified decimal point
-     * configuration ({@link DecimalPoint}). The targetString should contain no
+     * configuration ({@link DecimalPoint}). The target String should contain no
      * thousand separators.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
-     * @return the equivalent BigDecimal object
+     * @return the resulting BigDecimal object
      */
     public static final Function<String,BigDecimal> toBigDecimal(final DecimalPoint decimalPoint) {
         return new ToBigDecimal(decimalPoint);
@@ -165,7 +165,7 @@ public final class FnString {
      * 
      * @param scale the desired scale for the resulting BigDecimal object
      * @param roundingMode the rounding mode to be used when setting the scale
-     * @return the equivalent BigDecimal object
+     * @return the resulting BigDecimal object
      */
     public static final Function<String,BigDecimal> toBigDecimal(final int scale, final RoundingMode roundingMode) {
         return new ToBigDecimal(scale, roundingMode);
@@ -182,7 +182,7 @@ public final class FnString {
      * @param scale the desired scale for the resulting BigDecimal object
      * @param roundingMode the rounding mode to be used when setting the scale
      * @param locale the locale defining the way in which the number was written
-     * @return the equivalent BigDecimal object
+     * @return the resulting BigDecimal object
      */
     public static final Function<String,BigDecimal> toBigDecimal(final int scale, final RoundingMode roundingMode, final Locale locale) {
         return new ToBigDecimal(scale, roundingMode, locale);
@@ -200,7 +200,7 @@ public final class FnString {
      * @param scale the desired scale for the resulting BigDecimal object
      * @param roundingMode the rounding mode to be used when setting the scale
      * @param locale the locale defining the way in which the number was written
-     * @return the equivalent BigDecimal object
+     * @return the resulting BigDecimal object
      */
     public static final Function<String,BigDecimal> toBigDecimal(final int scale, final RoundingMode roundingMode, final String locale) {
         return new ToBigDecimal(scale, roundingMode, locale);
@@ -217,8 +217,8 @@ public final class FnString {
      * 
      * @param scale the desired scale for the resulting BigDecimal object
      * @param roundingMode the rounding mode to be used when setting the scale
-     * @param decimalPoint
-     * @return the equivalent BigDecimal object
+     * @param decimalPoint the decimal point being used by the String
+     * @return the resulting BigDecimal object
      */
     public static final Function<String,BigDecimal> toBigDecimal(final int scale, final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
         return new ToBigDecimal(scale, roundingMode, decimalPoint);
@@ -230,255 +230,924 @@ public final class FnString {
      * Converts a String into a BigInteger, using the default configuration.
      * </p>
      * 
-     * @return the equivalent BigInteger object
+     * @return the resulting BigInteger object
      */
     public static final Function<String,BigInteger> toBigInteger() {
         return TO_BIG_INTEGER;
     }
 
     
+    /**
+     * <p>
+     * Converts a String into a BigInteger, using the specified locale for decimal
+     * point and thousands separator configuration.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting BigInteger object
+     */
     public static final Function<String,BigInteger> toBigInteger(final Locale locale) {
         return new ToBigInteger(locale);
     }
+
     
+    /**
+     * <p>
+     * Converts a String into a BigInteger, using the specified locale for decimal
+     * point and thousands separator configuration. Locale is specified as a String
+     * (for example: "en_US", "es_ES", etc.)
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting BigInteger object
+     */
     public static final Function<String,BigInteger> toBigInteger(final String locale) {
         return new ToBigInteger(locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a BigInteger, using the specified decimal point
+     * configuration ({@link DecimalPoint}). The target String should contain no
+     * thousand separators.
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return the resulting BigInteger object
+     */
     public static final Function<String,BigInteger> toBigInteger(final DecimalPoint decimalPoint) {
         return new ToBigInteger(decimalPoint);
     }
+
     
+    /**
+     * <p>
+     * Converts a String into a BigInteger, using the specified radix for computing the
+     * equivalent number. 
+     * </p>
+     * 
+     * @param radix the radix in which the number is supposedly represented in the String
+     * @return the resulting BigInteger object
+     */
     public static final Function<String,BigInteger> toBigInteger(final int radix) {
         return new ToBigInteger(Integer.valueOf(radix));
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a BigInteger, using the default configuration
+     * for for decimal point and thousands separator. Rounding
+     * mode is used for removing the decimal part of the number. 
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @return the resulting BigInteger object
+     */
     public static final Function<String,BigInteger> toBigInteger(final RoundingMode roundingMode) {
         return new ToBigInteger(roundingMode);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a BigInteger, using the specified decimal point
+     * configuration ({@link DecimalPoint}). Rounding mode is used for removing the 
+     * decimal part of the number. The target String should contain no
+     * thousand separators.
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param decimalPoint the decimal point being used by the String
+     * @return the resulting BigInteger object
+     */
     public static final Function<String,BigInteger> toBigInteger(final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
         return new ToBigInteger(roundingMode, decimalPoint);
     }
+
     
+    /**
+     * <p>
+     * Converts a String into a BigInteger, using the specified locale for determining
+     * decimal point. Rounding mode is used for removing the 
+     * decimal part of the number.
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting BigInteger object
+     */
     public static final Function<String,BigInteger> toBigInteger(final RoundingMode roundingMode, final Locale locale) {
         return new ToBigInteger(roundingMode, locale);
     }
+
     
+    /**
+     * <p>
+     * Converts a String into a BigInteger, using the specified locale for determining
+     * decimal point. Rounding mode is used for removing the 
+     * decimal part of the number. Locale is specified as a String
+     * (for example: "en_US", "es_ES", etc.)
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting BigInteger object
+     */
     public static final Function<String,BigInteger> toBigInteger(final RoundingMode roundingMode, final String locale) {
         return new ToBigInteger(roundingMode, locale);
     }
     
     
+    /**
+     * <p>
+     * Converts a String into a Double, using the default configuration
+     * for for decimal point and precision.
+     * </p>
+     * 
+     * @return the resulting Double object
+     */
     public static final Function<String,Double> toDouble() {
         return TO_DOUBLE;
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Double, using the specified locale for decimal
+     * point and thousands separator configuration.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Double object
+     */
     public static final Function<String,Double> toDouble(final Locale locale) {
         return new ToDouble(locale);
     }
     
+
+    /**
+     * <p>
+     * Converts a String into a Double, using the specified locale for decimal
+     * point and thousands separator configuration. Locale is specified as a String
+     * (for example: "en_US", "es_ES", etc.)
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Double object
+     */
     public static final Function<String,Double> toDouble(final String locale) {
         return new ToDouble(locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Double, using the specified decimal point
+     * configuration ({@link DecimalPoint}). The target String should contain no
+     * thousand separators.
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return the resulting Double object
+     */
     public static final Function<String,Double> toDouble(final DecimalPoint decimalPoint) {
         return new ToDouble(decimalPoint);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Double, using the default configuration
+     * for for decimal point and thousands separator and establishing the specified scale. Rounding
+     * mode is used for setting the scale to the specified value. 
+     * </p>
+     * 
+     * @param scale the desired scale for the resulting Double object
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @return the resulting Double object
+     */
     public static final Function<String,Double> toDouble(final int scale, final RoundingMode roundingMode) {
         return new ToDouble(scale, roundingMode);
     }
     
+    /**
+     * <p>
+     * Converts a String into a Double, using the specified decimal point
+     * configuration ({@link DecimalPoint}) and establishing the specified scale. Rounding
+     * mode is used for setting the scale to the specified value.. The target String should contain no
+     * thousand separators.
+     * </p>
+     * 
+     * @param scale the desired scale for the resulting Double object
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param decimalPoint the decimal point being used by the String
+     * @return the resulting Double object
+     */
     public static final Function<String,Double> toDouble(final int scale, final RoundingMode roundingMode, final Locale locale) {
         return new ToDouble(scale, roundingMode, locale);
     }
+
     
+    /**
+     * <p>
+     * Converts a String into a Double, using the specified locale for decimal
+     * point and thousands separator configuration and establishing the specified scale. Rounding
+     * mode is used for setting the scale to the specified value.  Locale is specified as a String
+     * (for example: "en_US", "es_ES", etc.)
+     * </p>
+     * 
+     * @param scale the desired scale for the resulting Double object
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Double object
+     */
     public static final Function<String,Double> toDouble(final int scale, final RoundingMode roundingMode, final String locale) {
         return new ToDouble(scale, roundingMode, locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Double, using the specified decimal point
+     * configuration ({@link DecimalPoint}) and establishing the specified scale. Rounding
+     * mode is used for setting the scale to the specified value.. The target String should contain no
+     * thousand separators.
+     * </p>
+     * 
+     * @param scale the desired scale for the resulting Double object
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param decimalPoint the decimal point being used by the String
+     * @return the resulting Double object
+     */
     public static final Function<String,Double> toDouble(final int scale, final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
         return new ToDouble(scale, roundingMode, decimalPoint);
     }
     
     
+    /**
+     * <p>
+     * Converts a String into a Float, using the default configuration
+     * for for decimal point and precision.
+     * </p>
+     * 
+     * @return the resulting Float object
+     */
     public static final Function<String,Float> toFloat() {
         return TO_FLOAT;
     }
+
     
+    /**
+     * <p>
+     * Converts a String into a Float, using the specified locale for decimal
+     * point and thousands separator configuration.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Float object
+     */
     public static final Function<String,Float> toFloat(final Locale locale) {
         return new ToFloat(locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Float, using the specified locale for decimal
+     * point and thousands separator configuration. Locale is specified as a String
+     * (for example: "en_US", "es_ES", etc.)
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Float object
+     */
     public static final Function<String,Float> toFloat(final String locale) {
         return new ToFloat(locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Float, using the specified decimal point
+     * configuration ({@link DecimalPoint}). The target String should contain no
+     * thousand separators.
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return the resulting Float object
+     */
     public static final Function<String,Float> toFloat(final DecimalPoint decimalPoint) {
         return new ToFloat(decimalPoint);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Float, using the default configuration
+     * for for decimal point and thousands separator and establishing the specified scale. Rounding
+     * mode is used for setting the scale to the specified value. 
+     * </p>
+     * 
+     * @param scale the desired scale for the resulting Float object
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @return the resulting Float object
+     */
     public static final Function<String,Float> toFloat(final int scale, final RoundingMode roundingMode) {
         return new ToFloat(scale, roundingMode);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Float, using the specified decimal point
+     * configuration ({@link DecimalPoint}) and establishing the specified scale. Rounding
+     * mode is used for setting the scale to the specified value.. The target String should contain no
+     * thousand separators.
+     * </p>
+     * 
+     * @param scale the desired scale for the resulting Float object
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param decimalPoint the decimal point being used by the String
+     * @return the resulting Float object
+     */
     public static final Function<String,Float> toFloat(final int scale, final RoundingMode roundingMode, final Locale locale) {
         return new ToFloat(scale, roundingMode, locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Float, using the specified locale for decimal
+     * point and thousands separator configuration and establishing the specified scale. Rounding
+     * mode is used for setting the scale to the specified value.  Locale is specified as a String
+     * (for example: "en_US", "es_ES", etc.)
+     * </p>
+     * 
+     * @param scale the desired scale for the resulting Float object
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Float object
+     */
     public static final Function<String,Float> toFloat(final int scale, final RoundingMode roundingMode, final String locale) {
         return new ToFloat(scale, roundingMode, locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Float, using the specified decimal point
+     * configuration ({@link DecimalPoint}) and establishing the specified scale. Rounding
+     * mode is used for setting the scale to the specified value.. The target String should contain no
+     * thousand separators.
+     * </p>
+     * 
+     * @param scale the desired scale for the resulting Float object
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param decimalPoint the decimal point being used by the String
+     * @return the resulting Float object
+     */
     public static final Function<String,Float> toFloat(final int scale, final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
         return new ToFloat(scale, roundingMode, decimalPoint);
     }
     
     
+    /**
+     * <p>
+     * Converts a String into a Long, using the default configuration.
+     * </p>
+     * 
+     * @return the resulting Long object
+     */
     public static final Function<String,Long> toLong() {
         return TO_LONG;
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Long, using the specified locale for decimal
+     * point and thousands separator configuration.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Long object
+     */
     public static final Function<String,Long> toLong(final Locale locale) {
         return new ToLong(locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Long, using the specified locale for decimal
+     * point and thousands separator configuration. Locale is specified as a String
+     * (for example: "en_US", "es_ES", etc.)
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Long object
+     */
     public static final Function<String,Long> toLong(final String locale) {
         return new ToLong(locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Long, using the specified decimal point
+     * configuration ({@link DecimalPoint}). The target String should contain no
+     * thousand separators.
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return the resulting Long object
+     */
     public static final Function<String,Long> toLong(final DecimalPoint decimalPoint) {
         return new ToLong(decimalPoint);
     }
+
     
+    /**
+     * <p>
+     * Converts a String into a Long, using the specified radix for computing the
+     * equivalent number. 
+     * </p>
+     * 
+     * @param radix the radix in which the number is supposedly represented in the String
+     * @return the resulting Long object
+     */
     public static final Function<String,Long> toLong(final int radix) {
         return new ToLong(Integer.valueOf(radix));
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Long, using the default configuration
+     * for for decimal point and thousands separator. Rounding
+     * mode is used for removing the decimal part of the number. 
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @return the resulting Long object
+     */
     public static final Function<String,Long> toLong(final RoundingMode roundingMode) {
         return new ToLong(roundingMode);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Long, using the specified decimal point
+     * configuration ({@link DecimalPoint}). Rounding mode is used for removing the 
+     * decimal part of the number. The target String should contain no
+     * thousand separators.
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param decimalPoint the decimal point being used by the String
+     * @return the resulting Long object
+     */
     public static final Function<String,Long> toLong(final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
         return new ToLong(roundingMode, decimalPoint);
     }
+
     
+    /**
+     * <p>
+     * Converts a String into a Long, using the specified locale for determining
+     * decimal point. Rounding mode is used for removing the 
+     * decimal part of the number.
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Long object
+     */
     public static final Function<String,Long> toLong(final RoundingMode roundingMode, final Locale locale) {
         return new ToLong(roundingMode, locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Long, using the specified locale for determining
+     * decimal point. Rounding mode is used for removing the 
+     * decimal part of the number. Locale is specified as a String
+     * (for example: "en_US", "es_ES", etc.)
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Long object
+     */
     public static final Function<String,Long> toLong(final RoundingMode roundingMode, final String locale) {
         return new ToLong(roundingMode, locale);
     }
     
     
+    /**
+     * <p>
+     * Converts a String into an Integer, using the default configuration.
+     * </p>
+     * 
+     * @return the resulting Integer object
+     */
     public static final Function<String,Integer> toInteger() {
         return TO_INTEGER;
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into an Integer, using the specified locale for decimal
+     * point and thousands separator configuration.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Integer object
+     */
     public static final Function<String,Integer> toInteger(final Locale locale) {
         return new ToInteger(locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into an Integer, using the specified locale for decimal
+     * point and thousands separator configuration. Locale is specified as a String
+     * (for example: "en_US", "es_ES", etc.)
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Integer object
+     */
     public static final Function<String,Integer> toInteger(final String locale) {
         return new ToInteger(locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into an Integer, using the specified decimal point
+     * configuration ({@link DecimalPoint}). The target String should contain no
+     * thousand separators.
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return the resulting Integer object
+     */
     public static final Function<String,Integer> toInteger(final DecimalPoint decimalPoint) {
         return new ToInteger(decimalPoint);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into an Integer, using the specified radix for computing the
+     * equivalent number. 
+     * </p>
+     * 
+     * @param radix the radix in which the number is supposedly represented in the String
+     * @return the resulting Integer object
+     */
     public static final Function<String,Integer> toInteger(final int radix) {
         return new ToInteger(Integer.valueOf(radix));
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into an Integer, using the default configuration
+     * for for decimal point and thousands separator. Rounding
+     * mode is used for removing the decimal part of the number. 
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @return the resulting Integer object
+     */
     public static final Function<String,Integer> toInteger(final RoundingMode roundingMode) {
         return new ToInteger(roundingMode);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into an Integer, using the specified decimal point
+     * configuration ({@link DecimalPoint}). Rounding mode is used for removing the 
+     * decimal part of the number. The target String should contain no
+     * thousand separators.
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param decimalPoint the decimal point being used by the String
+     * @return the resulting Integer object
+     */
     public static final Function<String,Integer> toInteger(final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
         return new ToInteger(roundingMode, decimalPoint);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into an Integer, using the specified locale for determining
+     * decimal point. Rounding mode is used for removing the 
+     * decimal part of the number.
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Integer object
+     */
     public static final Function<String,Integer> toInteger(final RoundingMode roundingMode, final Locale locale) {
         return new ToInteger(roundingMode, locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into an Integer, using the specified locale for determining
+     * decimal point. Rounding mode is used for removing the 
+     * decimal part of the number. Locale is specified as a String
+     * (for example: "en_US", "es_ES", etc.)
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Integer object
+     */
     public static final Function<String,Integer> toInteger(final RoundingMode roundingMode, final String locale) {
         return new ToInteger(roundingMode, locale);
     }
     
     
+    /**
+     * <p>
+     * Converts a String into a Short, using the default configuration.
+     * </p>
+     * 
+     * @return the resulting Short object
+     */
     public static final Function<String,Short> toShort() {
         return TO_SHORT;
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Short, using the specified locale for decimal
+     * point and thousands separator configuration.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Short object
+     */
     public static final Function<String,Short> toShort(final Locale locale) {
         return new ToShort(locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Short, using the specified locale for decimal
+     * point and thousands separator configuration. Locale is specified as a String
+     * (for example: "en_US", "es_ES", etc.)
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Short object
+     */
     public static final Function<String,Short> toShort(final String locale) {
         return new ToShort(locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Short, using the specified decimal point
+     * configuration ({@link DecimalPoint}). The target String should contain no
+     * thousand separators.
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return the resulting Short object
+     */
     public static final Function<String,Short> toShort(final DecimalPoint decimalPoint) {
         return new ToShort(decimalPoint);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Short, using the specified radix for computing the
+     * equivalent number. 
+     * </p>
+     * 
+     * @param radix the radix in which the number is supposedly represented in the String
+     * @return the resulting Short object
+     */
     public static final Function<String,Short> toShort(final int radix) {
         return new ToShort(Integer.valueOf(radix));
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Short, using the default configuration
+     * for for decimal point and thousands separator. Rounding
+     * mode is used for removing the decimal part of the number. 
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @return the resulting Short object
+     */
     public static final Function<String,Short> toShort(final RoundingMode roundingMode) {
         return new ToShort(roundingMode);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Short, using the specified decimal point
+     * configuration ({@link DecimalPoint}). Rounding mode is used for removing the 
+     * decimal part of the number. The target String should contain no
+     * thousand separators.
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param decimalPoint the decimal point being used by the String
+     * @return the resulting Short object
+     */
     public static final Function<String,Short> toShort(final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
         return new ToShort(roundingMode, decimalPoint);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Short, using the specified locale for determining
+     * decimal point. Rounding mode is used for removing the 
+     * decimal part of the number.
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Short object
+     */
     public static final Function<String,Short> toShort(final RoundingMode roundingMode, final Locale locale) {
         return new ToShort(roundingMode, locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Short, using the specified locale for determining
+     * decimal point. Rounding mode is used for removing the 
+     * decimal part of the number. Locale is specified as a String
+     * (for example: "en_US", "es_ES", etc.)
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Short object
+     */
     public static final Function<String,Short> toShort(final RoundingMode roundingMode, final String locale) {
         return new ToShort(roundingMode, locale);
     }
     
     
+    /**
+     * <p>
+     * Converts a String into a Byte, using the default configuration.
+     * </p>
+     * 
+     * @return the resulting Byte object
+     */
     public static final Function<String,Byte> toByte() {
         return TO_BYTE;
     }
+
     
+    /**
+     * <p>
+     * Converts a String into a Byte, using the specified locale for decimal
+     * point and thousands separator configuration.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Byte object
+     */
     public static final Function<String,Byte> toByte(final Locale locale) {
         return new ToByte(locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Byte, using the specified locale for decimal
+     * point and thousands separator configuration. Locale is specified as a String
+     * (for example: "en_US", "es_ES", etc.)
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Byte object
+     */
     public static final Function<String,Byte> toByte(final String locale) {
         return new ToByte(locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Byte, using the specified decimal point
+     * configuration ({@link DecimalPoint}). The target String should contain no
+     * thousand separators.
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return the resulting Byte object
+     */
     public static final Function<String,Byte> toByte(final DecimalPoint decimalPoint) {
         return new ToByte(decimalPoint);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Byte, using the specified radix for computing the
+     * equivalent number. 
+     * </p>
+     * 
+     * @param radix the radix in which the number is supposedly represented in the String
+     * @return the resulting Byte object
+     */
     public static final Function<String,Byte> toByte(final int radix) {
         return new ToByte(Integer.valueOf(radix));
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Byte, using the default configuration
+     * for for decimal point and thousands separator. Rounding
+     * mode is used for removing the decimal part of the number. 
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @return the resulting Byte object
+     */
     public static final Function<String,Byte> toByte(final RoundingMode roundingMode) {
         return new ToByte(roundingMode);
     }
     
+
+    /**
+     * <p>
+     * Converts a String into a Byte, using the specified decimal point
+     * configuration ({@link DecimalPoint}). Rounding mode is used for removing the 
+     * decimal part of the number. The target String should contain no
+     * thousand separators.
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param decimalPoint the decimal point being used by the String
+     * @return the resulting Byte object
+     */
     public static final Function<String,Byte> toByte(final RoundingMode roundingMode, final DecimalPoint decimalPoint) {
         return new ToByte(roundingMode, decimalPoint);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Byte, using the specified locale for determining
+     * decimal point. Rounding mode is used for removing the 
+     * decimal part of the number.
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Byte object
+     */
     public static final Function<String,Byte> toByte(final RoundingMode roundingMode, final Locale locale) {
         return new ToByte(roundingMode, locale);
     }
     
+    
+    /**
+     * <p>
+     * Converts a String into a Byte, using the specified locale for determining
+     * decimal point. Rounding mode is used for removing the 
+     * decimal part of the number. Locale is specified as a String
+     * (for example: "en_US", "es_ES", etc.)
+     * </p>
+     * 
+     * @param roundingMode the rounding mode to be used when setting the scale
+     * @param locale the locale defining the way in which the number was written
+     * @return the resulting Byte object
+     */
     public static final Function<String,Byte> toByte(final RoundingMode roundingMode, final String locale) {
         return new ToByte(roundingMode, locale);
     }
@@ -486,6 +1155,15 @@ public final class FnString {
 	
     
     
+    /**
+     * <p>
+     * Converts a String into a Boolean. Case is ignored, and all three 
+     * "true"/"false", "yes"/"no" and "on"/"off" versions are 
+     * supported. 
+     * </p>
+     * 
+     * @return the resulting Boolean object
+     */
     public static final Function<String,Boolean> toBoolean() {
         return TO_BOOLEAN;
     }
