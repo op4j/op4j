@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -785,6 +786,27 @@ public class AssortedTests extends TestCase {
                             "Thursday", "Friday", "Saturday", "Sunday").get());
     }
    
-    
+    @Test
+    public void test55() throws Exception {
+        Calendar cal1 = Calendar.getInstance();
+        assertEquals(
+                Op.on(new Object[] {4.5, "hello", cal1})
+                    .exec(FnString.joinArray(",")).get(),
+                    "4.5,hello," + cal1.toString());
+        
+        assertEquals(
+                Op.on("hello*goodbye")
+                    .exec(FnString.splitAsArray("*")).castToArrayOf(Types.STRING).toList().get(),
+                    Op.onArrayFor("hello", "goodbye").toList().get());
+        
+        assertNull(
+                Op.on(Types.ARRAY_OF_STRING, null)
+                    .exec(FnString.joinArray(",")).get());
+        
+        assertNull(
+                Op.on(Types.STRING, null)
+                    .exec(FnString.split()).get());
+        
+    }
 }
 
