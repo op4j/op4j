@@ -1311,11 +1311,11 @@ public final class FnString {
      * From its definition:
      * </p>
      * <ul>
-     *   <li>The string "&amp;lt;Fran&amp;ccedil;ais&amp;gt;"
-     *       will become "&lt;Fran&ccedil;ais&gt;"</li>
+     *   <li>The string <tt>&amp;lt;Fran&amp;ccedil;ais&amp;gt;</tt>
+     *       will become <tt>&lt;Fran&ccedil;ais&gt;</tt></li>
      *   <li>If an entity is unrecognized, it is left alone, and inserted
-     *       verbatim into the result string. e.g. "&amp;gt;&amp;zzzz;x" will
-     *       become "&gt;&amp;zzzz;x".</li>
+     *       verbatim into the result string. e.g. <tt>&amp;gt;&amp;zzzz;x</tt> will
+     *       become <tt>&gt;&amp;zzzz;x</tt>.</li>
      * </ul>
 	 * 
      * @return the resulting String.
@@ -1585,14 +1585,30 @@ public final class FnString {
     }
 
     
-    
-    
 
-    
+    /**
+     * <p>
+     * Performs an <i>equals</i> operation between the target object and the
+     * specified one.
+     * </p>
+     * 
+     * @param object the object that will be passed as a parameter to the "equals" operation.
+     * @return the boolean result of the "equals" operation.
+     */
     public static final Function<Object,Boolean> eq(final String object) {
         return FnObject.eq(object);
     }
+
     
+    /**
+     * <p>
+     * Performs an inverse <i>equals</i> operation between the target object and the
+     * specified one.
+     * </p>
+     * 
+     * @param object the object that will be passed as a parameter to the "equals" operation.
+     * @return the boolean result of the inverse of an "equals" operation.
+     */
     public static final Function<Object,Boolean> notEq(final String object) {
         return FnObject.notEq(object);
     }
@@ -1600,11 +1616,25 @@ public final class FnString {
     
     
     
-    
+    /**
+     * <p>
+     * Returns whether the target object is null or not (true = yes).
+     * </p>
+     * 
+     * @return true if null, false if not
+     */
     public static final Function<Object,Boolean> isNull() {
         return FnObject.isNull();
     }
+
     
+    /**
+     * <p>
+     * Returns whether the target object is null or not (true = no).
+     * </p>
+     * 
+     * @return false if null, true if not
+     */
     public static final Function<Object,Boolean> isNotNull() {
         return FnObject.isNotNull();
     }
