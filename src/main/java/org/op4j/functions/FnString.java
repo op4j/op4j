@@ -1698,16 +1698,40 @@ public final class FnString {
         return FnObject.greaterOrEqTo(object);
     }
     
+
     
     
     
     
-    
-    
+    /**
+     * <p>
+     * Determines whether the target String matches the specified regular
+     * expression.
+     * </p>
+     * <p>
+     * Regular expressions must conform to the <tt>java.util.regex.Pattern</tt> format.
+     * </p>
+     * 
+     * @param regex the regular expression to match against
+     * @return true if the target String matches the regex, false if not.
+     */
     public static final Function<String,Boolean> matches(final String regex) {
         return new Matches(regex);
     }
     
+
+    /**
+     * <p>
+     * Determines whether the target String contains a fragment matching the specified regular
+     * expression.
+     * </p>
+     * <p>
+     * Regular expressions must conform to the <tt>java.util.regex.Pattern</tt> format.
+     * </p>
+     * 
+     * @param regex the regular expression to match against
+     * @return true if the target String contains a fragment matching the regex, false if not.
+     */
     public static final Function<String,Boolean> contains(final String regex) {
         return new Contains(regex);
     }
@@ -1716,120 +1740,247 @@ public final class FnString {
 
     
     
-    
+    /**
+     * <p>
+     * Extracts the first substring from the target String that matches the specified
+     * regular expression.
+     * </p>
+     * <p>
+     * Regular expressions must conform to the <tt>java.util.regex.Pattern</tt> format.
+     * </p>
+     * 
+     * @param regex the regular expression to match against
+     * @return the matching substring.
+     */
     public static final Function<String,String> extractFirst(final String regex) {
         return new Extract(regex, false);
     }
+
     
+    /**
+     * <p>
+     * Extracts the last substring from the target String that matches the specified
+     * regular expression.
+     * </p>
+     * <p>
+     * Regular expressions must conform to the <tt>java.util.regex.Pattern</tt> format.
+     * </p>
+     * 
+     * @param regex the regular expression to match against
+     * @return the matching substring.
+     */
     public static final Function<String,String> extractLast(final String regex) {
         return new Extract(regex, true);
     }
     
+
+    /**
+     * <p>
+     * Extracts every substring from the target String that match the specified
+     * regular expression.
+     * </p>
+     * <p>
+     * Regular expressions must conform to the <tt>java.util.regex.Pattern</tt> format.
+     * </p>
+     * 
+     * @param regex the regular expression to match against
+     * @return a List with the matching substrings
+     */
     public static final Function<String,List<String>> extractAll(final String regex) {
         return new ExtractAll(regex);
     }
+
     
+    /**
+     * <p>
+     * Matches the entire target String against the specified regular expression and extracts
+     * the specified group from it (as specified by <tt>java.util.regex.Matcher</tt>.
+     * </p>
+     * <p>
+     * Regular expressions must conform to the <tt>java.util.regex.Pattern</tt> format.
+     * </p>
+     * 
+     * @param regex the regular expression to match against
+     * @param group the group number to be extracted
+     * @return the substring matching the group number
+     */ 
     public static final Function<String,String> matchAndExtract(final String regex, final int group) {
         return new MatchAndExtract(regex, group);
     }
+  
     
+    /**
+     * <p>
+     * Matches the entire target String against the specified regular expression and extracts
+     * the specified groups from it (as specified by <tt>java.util.regex.Matcher</tt>.
+     * </p>
+     * <p>
+     * Regular expressions must conform to the <tt>java.util.regex.Pattern</tt> format.
+     * </p>
+     * 
+     * @param regex the regular expression to match against
+     * @param groups the group numbers to be extracted
+     * @return a List with the substrings matching the group number
+     */
     public static final Function<String,List<String>> matchAndExtractAll(final String regex, final int... groups) {
         return new MatchAndExtractAll(regex, VarArgsUtil.asRequiredIntegerList(groups));
     }
 
     
     
+    /**
+     * <p>
+     * Replaces in the target String the first substring matching the specified regular expression
+     * with the specified replacement String.
+     * </p>
+     * <p>
+     * Regular expressions must conform to the <tt>java.util.regex.Pattern</tt> format.
+     * </p>
+     * 
+     * @param regex the regular expression to match against
+     * @param replacement the replacement string
+     * @return the resulting String
+     */
     public static final Function<String,String> replaceFirst(final String regex, final String replacement) {
         return new Replace(regex, replacement, ReplaceType.FIRST);
     }
     
+    
+    /**
+     * <p>
+     * Replaces in the target String the last substring matching the specified regular expression
+     * with the specified replacement String.
+     * </p>
+     * <p>
+     * Regular expressions must conform to the <tt>java.util.regex.Pattern</tt> format.
+     * </p>
+     * 
+     * @param regex the regular expression to match against
+     * @param replacement the replacement string
+     * @return the resulting String
+     */
     public static final Function<String,String> replaceLast(final String regex, final String replacement) {
         return new Replace(regex, replacement, ReplaceType.LAST);
     }
     
+
+    /**
+     * <p>
+     * Replaces in the target String all substrings matching the specified regular expression
+     * with the specified replacement String.
+     * </p>
+     * <p>
+     * Regular expressions must conform to the <tt>java.util.regex.Pattern</tt> format.
+     * </p>
+     * 
+     * @param regex the regular expression to match against
+     * @param replacement the replacement string
+     * @return the resulting String
+     */
     public static final Function<String,String> replaceAll(final String regex, final String replacement) {
         return new Replace(regex, replacement, ReplaceType.ALL);
     }
     
     
     /**
-     * Splits a String into a list of substrings using the whitespace as the separator
+     * <p>
+     * Splits a String into a list of substrings using a whitespace as a separator.
+     * </p>
      * 
-     * @return
+     * @return a List with the resulting substrings.
      */
     public static final Function<String, List<String>> split() {
         return SPLIT;        
     }
     
-    /**
-     * Splits a String into a list of substrings using the given separator
-     * as the substrings separator (the separator is not included in the
-     * returned list)
-     * 
-     * @param separator
-     * @return
-     */
-    public static final Function<String, List<String>> split(String separator) {
-        return new Split(separator);        
-    }
     
     /**
-     * Splits a String into an array of substrings using the whitespace as the separator
+     * <p>
+     * Splits a String into a list of substrings using the given separator
+     * as a substrings separator (the separator is not included in the
+     * elements of the returned list).
+     * </p>
      * 
-     * @return
+     * @param separator the separator to be used
+     * @return a List with the resulting substrings.
+     */
+    public static final Function<String, List<String>> split(final String separator) {
+        return new Split(separator);        
+    }
+
+    
+    /**
+     * <p>
+     * Splits a String into an array of substrings using a whitespace as a separator.
+     * </p>
+     * 
+     * @return an array with the resulting substrings.
      */
     public static final Function<String, String[]> splitAsArray() {
         return SPLIT_AS_ARRAY;        
     }
     
+    
     /**
+     * <p>
      * Splits a String into an array of substrings using the given separator
-     * as the substrings separator (the separator is not included in the
-     * returned list)
+     * as a substrings separator (the separator is not included in the
+     * elements of the returned array).
+     * </p>
      * 
-     * @param separator
-     * @return
+     * @param separator the separator to be used
+     * @return an array with the resulting substrings.
      */
-    public static final Function<String, String[]> splitAsArray(String separator) {
+    public static final Function<String, String[]> splitAsArray(final String separator) {
         return new SplitAsArray(separator);        
     }
     
     
     /**
-     * Joins the string representation of the objects in the list into a single String 
-     * (no separator used)
+     * <p>
+     * Joins the string representation of the objects in the list (which might be
+     * Strings themselves) into a single String (no separator used).
+     * </p>
      * 
-     * @return
+     * @return the resulting String
      */
     public static final Function<List<Object>, String> join() {
         return JOIN;        
     }
     
+    
     /**
-     * Joins the string representation of the objects in the list into a single String 
-     * using the given separator
+     * <p>
+     * Joins the string representation of the objects in the list (which might be
+     * Strings themselves) into a single String using the given separator.
+     * </p>
      * 
-     * @return
+     * @return the resulting String
      */
     public static final Function<List<Object>, String> join(String separator) {
         return new Join(separator);        
     }
     
+    
     /**
-     * Joins the string representation of the objects in the array into a single String 
-     * (no separator used)
+     * <p>
+     * Joins the string representation of the objects in the array (which might be
+     * Strings themselves) into a single String (no separator used).
+     * </p>
      * 
-     * @return
+     * @return the resulting String
      */
     public static final Function<Object[], String> joinArray() {
         return JOIN_ARRAY;        
     }
     
     /**
-     * Joins the string representation of the objects in the array into a single String 
-     * using the given separator
+     * <p>
+     * Joins the string representation of the objects in the array (which might be
+     * Strings themselves) into a single String using the given separator.
+     * </p>
      * 
-     * @return
+     * @return the resulting String
      */
     public static final Function<Object[], String> joinArray(String separator) {
         return new JoinArray(separator);        
