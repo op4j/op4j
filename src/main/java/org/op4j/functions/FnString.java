@@ -1238,7 +1238,7 @@ public final class FnString {
      * From its definition:
      * </p>
      * <ul>
-     *   <li>For example: <tt>"bread" & "butter"</tt> =>
+     *   <li>For example: <tt>"bread" &amp; "butter"</tt> =>
      *       <tt>&amp;quot;bread&amp;quot; &amp;amp; &amp;quot;butter&amp;quot;</tt>.</li>
      *   <li>Supports only the five basic XML entities (gt, lt, quot, amp, apos).
      *       Does not support DTDs or external entities.</li>
@@ -1286,7 +1286,7 @@ public final class FnString {
      * From its definition:
      * </p>
      * <ul>
-     *   <li>The string <code>"bread" & "butter"</code> becomes 
+     *   <li>The string <code>"bread" &amp; "butter"</code> becomes 
      *       <tt>&amp;quot;bread&amp;quot; &amp;amp; &amp;quot;butter&amp;quot;</tt>.</li>
      *   <li>Supports all known HTML 4.0 entities, including funky accents.
      *       Note that the commonly used apostrophe escape character (&amp;apos;)
@@ -1341,12 +1341,11 @@ public final class FnString {
      *       is that in JavaScript, a single quote must be escaped.</li>
      * </ul>
      *
-     * <p>Example:
-     * <pre>
-     * input string: He didn't say, "Stop!"
-     * output string: He didn\'t say, \"Stop!\"
-     * </pre>
-     * </p>
+     * <p>Example:</p>
+     * <ul>
+     *   <li>input string: <tt>He didn't say, &quot;Stop!&quot;</tt></li>
+     *   <li>output string: <tt>He didn\'t say, \&quot;Stop!\&quot;</tt></li>
+     * </ul>
 	 * 
      * @return the resulting String.
 	 */
@@ -1644,22 +1643,57 @@ public final class FnString {
     
     
 
-    
+    /**
+     * <p>
+     * Returns whether the target object is less (using natural order, which
+     * is alphabetic for strings) than the specified object.
+     * </p>
+     * 
+     * @param object the value to compare the target with.
+     * @return true if the target is less, false if not.
+     */
     public static final Function<Object,Boolean> lessThan(final String object) {
         return FnObject.lessThan(object);
     }
 
     
+    /**
+     * <p>
+     * Returns whether the target object is less or equal (using natural order, which
+     * is alphabetic for strings) to the specified object.
+     * </p>
+     * 
+     * @param object the value to compare the target with.
+     * @return true if the target is less or equal, false if not.
+     */
     public static final Function<Object,Boolean> lessOrEqTo(final String object) {
         return FnObject.lessOrEqTo(object);
     }
     
     
+    /**
+     * <p>
+     * Returns whether the target object is greater (using natural order, which
+     * is alphabetic for strings) than the specified object.
+     * </p>
+     * 
+     * @param object the value to compare the target with.
+     * @return true if the target is greater, false if not.
+     */
     public static final Function<Object,Boolean> greaterThan(final String object) {
         return FnObject.greaterThan(object);
     }
     
     
+    /**
+     * <p>
+     * Returns whether the target object is greater or equal (using natural order, which
+     * is alphabetic for strings) to the specified object.
+     * </p>
+     * 
+     * @param object the value to compare the target with.
+     * @return true if the target is greater or equal, false if not.
+     */
     public static final Function<Object,Boolean> greaterOrEqTo(final String object) {
         return FnObject.greaterOrEqTo(object);
     }
