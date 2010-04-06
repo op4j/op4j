@@ -87,6 +87,9 @@ public final class FnString {
 	
     private static final Function<String,Boolean> TO_BOOLEAN = new ToBoolean();
 	
+    private static final Function<String,List<String>> SPLIT = new Split();
+    private static final Function<String,String[]> SPLIT_AS_ARRAY = new SplitAsArray();
+    
     private static final Function<List<Object>,String> JOIN = new Join();
     private static final Function<Object[],String> JOIN_ARRAY = new JoinArray();
     
@@ -1403,8 +1406,14 @@ public final class FnString {
     }
     
     
+    public static final Function<String, List<String>> split() {
+        return SPLIT;        
+    }
     public static final Function<String, List<String>> split(String separator) {
         return new Split(separator);        
+    }
+    public static final Function<String, String[]> splitAsArray() {
+        return SPLIT_AS_ARRAY;        
     }
     public static final Function<String, String[]> splitAsArray(String separator) {
         return new SplitAsArray(separator);        
@@ -2027,37 +2036,53 @@ public final class FnString {
         
     }
  
-    static final class Split extends Function<String,List<String>> {
+    static final class Split extends AbstractNullAsNullFunction<String,List<String>> {
 
         private final String separator;
+        
+        Split() {
+            super();
+            this.separator = null;
+        }
         
         Split(String separator) {
             super(); 
-            Validate.notNull(separator, "Separator can't be null");
             this.separator = separator;
         }
 
-        public List<String> execute(final String input, final ExecCtx ctx) throws Exception {
-            return Op.on(StringUtils.split(input, this.separator)).toList().get();
+        @Override
+        public List<String> nullAsNullExecute(final String input, final ExecCtx ctx) throws Exception {
+            if (StringUtils.isEmpty(this.separator)) {
+                return Op.on(StringUtils.split(input)).toList().get();
+            } 
+            return Op.on(StringUtils.split(input, this.separator)).toList().get();                       
         }       
     }   
     
-    static final class SplitAsArray extends Function<String,String[]> {
+    static final class SplitAsArray extends AbstractNullAsNullFunction<String,String[]> {
 
         private final String separator;
         
+        SplitAsArray() {
+            super();
+            this.separator = null;
+        }
+        
         SplitAsArray(String separator) {
             super(); 
-            Validate.notNull(separator, "Separator can't be null");
             this.separator = separator;
         }
 
-        public String[] execute(final String input, final ExecCtx ctx) throws Exception {
-            return StringUtils.split(input, this.separator);
+        @Override
+        public String[] nullAsNullExecute(final String input, final ExecCtx ctx) throws Exception {
+            if (StringUtils.isEmpty(this.separator)) {
+                return StringUtils.split(input);
+            } 
+            return StringUtils.split(input, this.separator);                      
         }       
     }   
     
-    static final class Join extends Function<List<Object>,String> {
+    static final class Join extends AbstractNullAsNullFunction<List<Object>,String> {
 
         private final String separator;
         
@@ -2071,7 +2096,8 @@ public final class FnString {
             this.separator = separator;
         }
         
-        public String execute(final List<Object> input, final ExecCtx ctx) throws Exception {
+        @Override
+        public String nullAsNullExecute(final List<Object> input, final ExecCtx ctx) throws Exception {
             if (this.separator != null) {
                 return StringUtils.join(input.toArray(), this.separator);
             }
@@ -2079,7 +2105,7 @@ public final class FnString {
         }       
     }   
     
-    static final class JoinArray extends Function<Object[],String> {
+    static final class JoinArray extends AbstractNullAsNullFunction<Object[],String> {
 
         private final String separator;
         
@@ -2093,7 +2119,8 @@ public final class FnString {
             this.separator = separator;
         }
 
-        public String execute(final Object[] input, final ExecCtx ctx) throws Exception {
+        @Override
+        public String nullAsNullExecute(final Object[] input, final ExecCtx ctx) throws Exception {
             if (this.separator != null) {
                 return StringUtils.join(input, this.separator);
             }
