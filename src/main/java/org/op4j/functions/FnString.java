@@ -59,10 +59,7 @@ import org.op4j.util.VarArgsUtil;
  * @since 1.0
  * 
  * @author Soraya S&aacute;nchez
- *
- */
-/**
- * @author Soraya
+ * @author Daniel Fern&aacute;ndez
  *
  */
 public final class FnString {
@@ -1996,12 +1993,24 @@ public final class FnString {
     
     /**
      * <p>
-     * <i>ASCIIfies</i> a String by removing a set of recognized diacritic symbols and
-     * performing a number of transformations. These are:
+     * <i>ASCIIfies</i> a String containing text in (mainly) European languages by removing a set of 
+     * recognized diacritic symbols and performing a number of transformations. These are:
      * </p>
      * <ul>
-     *   <li>&#192;,&#193;,&#194;,&#195;,&#196;,&#197; = A</li>
+     *   <li>&#192;,&#193;,&#194;,&#195;,&#196;,&#197; / &#224;,&#225;,&#226;,&#227;,&#228;,&#229; = A / a</li>
+     *   <li>&#198; / &#230; = AE / ae</li>
+     *   <li>&#199; / &#231; = C / c</li>
+     *   <li>&#200;,&#201;,&#202;,&#203; / &#232;,&#233;,&#234;,&#235; = E / e</li>
+     *   <li>&#204;,&#205;,&#206;,&#207; / &#236;,&#237;,&#238;,&#239; = I / i</li>
+     *   <li>&#208; / &#240; = D / d</li>
+     *   <li>&#209; / &#241; = N / n</li>
+     *   <li>&#210;,&#211;,&#212;,&#213;,&#214;,&#216; / &#242;,&#243;,&#244;,&#245;,&#246;,&#248; = O / o</li>
+     *   <li>&#217;,&#218;,&#219;,&#220; / &#249;,&#250;,&#251;,&#252; = U / u</li>
+     *   <li>&#221; / &#253;,&#255; = Y / y</li>
+     *   <li>&#222; / &#254; = TH / th</li>
+     *   <li>&#223; = "ss" if the preceding character is lower case, "SS" otherwise.</li>
      * </ul>
+     * 
      * 
      * @return the transformed String
      */
@@ -2009,6 +2018,45 @@ public final class FnString {
         return ASCIIFY;
     }
     
+    
+    
+    /**
+     * <p>
+     * <i>ASCIIfies</i> a String containing text in (mainly) European languages by removing a set of 
+     * recognized diacritic symbols and performing a number of transformations, determined
+     * by the <tt>{@link AsciifyMode}</tt> parameter.
+     * </p>
+     * <p>
+     * Transformations for <tt>AsciifyMode.DEFAULT</tt> are:
+     * </p>
+     * <ul>
+     *   <li>&#192;,&#193;,&#194;,&#195;,&#196;,&#197; / &#224;,&#225;,&#226;,&#227;,&#228;,&#229; = A / a</li>
+     *   <li>&#198; / &#230; = AE / ae</li>
+     *   <li>&#199; / &#231; = C / c</li>
+     *   <li>&#200;,&#201;,&#202;,&#203; / &#232;,&#233;,&#234;,&#235; = E / e</li>
+     *   <li>&#204;,&#205;,&#206;,&#207; / &#236;,&#237;,&#238;,&#239; = I / i</li>
+     *   <li>&#208; / &#240; = D / d</li>
+     *   <li>&#209; / &#241; = N / n</li>
+     *   <li>&#210;,&#211;,&#212;,&#213;,&#214;,&#216; / &#242;,&#243;,&#244;,&#245;,&#246;,&#248; = O / o</li>
+     *   <li>&#217;,&#218;,&#219;,&#220; / &#249;,&#250;,&#251;,&#252; = U / u</li>
+     *   <li>&#221; / &#253;,&#255; = Y / y</li>
+     *   <li>&#222; / &#254; = TH / th</li>
+     *   <li>&#223; = "ss" if the preceding character is lower case, "SS" otherwise.</li>
+     * </ul>
+     * <p>
+     * Transformations for <tt>AsciifyMode.UMLAUT_E</tt> are the same as <tt>DEFAULT</tt>
+     * with the following differences:
+     * </p>
+     * <ul>
+     *   <li>&#196; / &#228; = AE / ae</li>
+     * </ul>
+     * 
+     * 
+     * @return the transformed String
+     */
+    public static final Function<String,String> asciify(final AsciifyMode mode) {
+        return new Asciify(mode);
+    }
     
     
     
@@ -2707,12 +2755,21 @@ public final class FnString {
     }
     
     
+
+    
+    
+    public enum AsciifyMode { DEFAULT, UMLAUT_E }
+    
     
     
     static final class Asciify extends AbstractNullAsNullFunction<String,String> {
 
+        private final static char ESSZETT = '\u00DF'; 
+        
         private static String[] searchList;
         private static String[] replacementList;
+        
+        private final AsciifyMode mode;
         
         static {
             final Map<String,String> replacements = new LinkedHashMap<String,String>();
@@ -2746,14 +2803,13 @@ public final class FnString {
             replacements.put("\u00DC", "U");
             replacements.put("\u00DD", "Y");
             replacements.put("\u00DE", "TH");
-            replacements.put("\u00DF", "SS");
             replacements.put("\u00E0", "a");
             replacements.put("\u00E1", "a");
             replacements.put("\u00E2", "a");
             replacements.put("\u00E3", "a");
             replacements.put("\u00E4", "a");
             replacements.put("\u00E5", "a");
-            replacements.put("\u00E6", "a");
+            replacements.put("\u00E6", "ae");
             replacements.put("\u00E7", "c");
             replacements.put("\u00E8", "e");
             replacements.put("\u00E9", "e");
@@ -2783,9 +2839,51 @@ public final class FnString {
         }
         
         
+        
+        public Asciify(final AsciifyMode mode) {
+            super();
+            this.mode = mode;
+        }
+        
+        public Asciify() {
+            this(AsciifyMode.DEFAULT);
+        }
+
+
+
+
+
         @Override
         protected String nullAsNullExecute(final String object, final ExecCtx ctx) throws Exception {
-            return StringUtils.replaceEach(object, searchList, replacementList);
+            final String result = StringUtils.replaceEach(object, searchList, replacementList);
+            int esTsetIndex;
+            if ((esTsetIndex = result.indexOf(ESSZETT)) == -1) {
+                return result;
+            }
+            int prevIndex = 0;
+            final StringBuilder strBuilder = new StringBuilder();
+            while (esTsetIndex != -1) {
+                strBuilder.append(result.substring(prevIndex,esTsetIndex));
+                if (esTsetIndex > 0) {
+                    int minus = 1;
+                    char lastChar = result.charAt(esTsetIndex - minus);
+                    while (minus <= esTsetIndex && (Character.isWhitespace(lastChar) || lastChar == ESSZETT)) {
+                        lastChar = result.charAt(esTsetIndex - minus);
+                        minus++;
+                    }
+                    if (lastChar >= 'a' && lastChar <= 'z') {
+                        strBuilder.append("ss");
+                    } else {
+                        strBuilder.append("SS");
+                    }
+                } else {
+                    strBuilder.append("SS");
+                }
+                prevIndex = esTsetIndex + 1;
+                esTsetIndex = result.indexOf(ESSZETT, prevIndex);
+            }
+            strBuilder.append(result.substring(prevIndex));
+            return strBuilder.toString();
         }
         
     }

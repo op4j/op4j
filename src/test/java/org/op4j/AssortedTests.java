@@ -813,5 +813,30 @@ public class AssortedTests extends TestCase {
                     .exec(FnString.split()).get());
         
     }
+    
+    
+    @Test
+    public void test56() throws Exception {
+        
+        final String testStr1 = "ﬂﬂ ﬂﬂ a ﬂﬂ nuﬂ NUﬂ nuﬂﬂ NUﬂﬂ ﬂﬂ";
+        final String testStr2 = "ﬂﬂ";
+        final String testStr3 = "LO E «¿ I—∆ N‹ﬂ ﬁOR! aÒeÁ·ÌÈÛ˙";
+        final String testStr4 = "LO E «¿ I—∆ N‹ﬂﬂ";
+        final String testStr5 = "LO E «¿ I—∆ N‹ﬂﬂ ";
+        final String testStr6 = "LO E «¿ I—∆ N‹ﬂﬂ ﬂ";
+        final String testStr7 = "LO E «¿ I—∆ Nuﬂﬂ ﬂ";
+        final String testStr8 = "LO E «¿ I—∆ N‹ﬂﬂ a";
+
+        assertEquals("SSSS SSSS a ssss nuss NUSS nussss NUSSSS SSSS", Op.on(testStr1).exec(FnString.asciify()).get());
+        assertEquals("SSSS", Op.on(testStr2).exec(FnString.asciify()).get());
+        assertEquals("LO E CA INAE NUSS THOR! anecaieou", Op.on(testStr3).exec(FnString.asciify()).get());
+        assertEquals("LO E CA INAE NUSSSS", Op.on(testStr4).exec(FnString.asciify()).get());
+        assertEquals("LO E CA INAE NUSSSS ", Op.on(testStr5).exec(FnString.asciify()).get());
+        assertEquals("LO E CA INAE NUSSSS SS", Op.on(testStr6).exec(FnString.asciify()).get());
+        assertEquals("LO E CA INAE Nussss ss", Op.on(testStr7).exec(FnString.asciify()).get());
+        assertEquals("LO E CA INAE NUSSSS a", Op.on(testStr8).exec(FnString.asciify()).get());
+        
+    }
+    
 }
 

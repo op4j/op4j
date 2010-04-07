@@ -776,6 +776,8 @@ watch.start();
         
         
         System.out.println(Op.on("LO E ÇÀ IÑÆ NÜß ÞOR! añeçáíéóú").exec(FnString.asciify()).get());
+        System.out.println(Op.on("ßß ßß a ßß nuß NUß nußß NUßß ßß").exec(FnString.asciify()).get());
+        System.out.println(Op.on("ß").exec(FnString.asciify()).get());
         
     }
     
