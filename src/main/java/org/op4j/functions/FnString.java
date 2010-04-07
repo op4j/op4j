@@ -442,15 +442,14 @@ public final class FnString {
     
     /**
      * <p>
-     * Converts a String into a Double, using the specified decimal point
-     * configuration ({@link DecimalPoint}) and establishing the specified scale. Rounding
-     * mode is used for setting the scale to the specified value.. The target String should contain no
-     * thousand separators.
+     * Converts a String into a Double, using the specified locale for decimal
+     * point and thousands separator configuration and establishing the specified scale. Rounding
+     * mode is used for setting the scale to the specified value.
      * </p>
      * 
      * @param scale the desired scale for the resulting Double object
      * @param roundingMode the rounding mode to be used when setting the scale
-     * @param decimalPoint the decimal point being used by the String
+     * @param locale the locale defining the way in which the number was written
      * @return the resulting Double object
      */
     public static final Function<String,Double> toDouble(final int scale, final RoundingMode roundingMode, final Locale locale) {
@@ -569,15 +568,14 @@ public final class FnString {
     
     /**
      * <p>
-     * Converts a String into a Float, using the specified decimal point
-     * configuration ({@link DecimalPoint}) and establishing the specified scale. Rounding
-     * mode is used for setting the scale to the specified value.. The target String should contain no
-     * thousand separators.
+     * Converts a String into a Float, using the specified locale for decimal
+     * point and thousands separator configuration and establishing the specified scale. Rounding
+     * mode is used for setting the scale to the specified value.
      * </p>
      * 
      * @param scale the desired scale for the resulting Float object
      * @param roundingMode the rounding mode to be used when setting the scale
-     * @param decimalPoint the decimal point being used by the String
+     * @param locale the locale defining the way in which the number was written
      * @return the resulting Float object
      */
     public static final Function<String,Float> toFloat(final int scale, final RoundingMode roundingMode, final Locale locale) {
