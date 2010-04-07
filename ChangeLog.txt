@@ -1,10 +1,49 @@
 1.0-beta3
 =========
 
-- Structural changes:
-  * FnY (FnBigDecimal, FnBigInteger, FnDouble, FnFloat, FnInteger, FnLong and FnShort) return 
-  types replaced in methods returning Function<X, Boolean> with  Function<Y, Boolean>
+- New extensions:
+  * Ognl function hub class now is an extension on its own: op4j-ognl
+  * New extension for jodatime-related functions: op4j-jodatime
 
+- Documentation
+  * Added web function reference for every function hub class.
+  * Added explanations for all FnString functions. 
+
+- Structural changes:
+  * Separated non "on" functions from Fn into a new FnFunc function hub class.
+  * Updated javaRuntype dependency to version 1.1
+  * Removed all dependencies except javaRuntype and Apache Commons Lang.
+  * FnY (FnBigDecimal, FnBigInteger, FnDouble, FnFloat, FnInteger, FnLong and FnShort) return 
+    types replaced in methods returning Function<X, Boolean> with  Function<Y, Boolean>
+
+- Functions
+  * Added "split" and "join" functions to FnString.
+  * Added "eqValue" and "notEqValue" functions to FnObject, FnNumber and variants for comparing
+    equality using "compareTo(param) == 0" instead of "equals".
+  * Added "if" functions (ifTrue, ifFalse, etc) to FnFunc with "else" side.
+  * Added new "replaceX()" functions to FnString in order to make regular expression-based
+    replacements on Strings.
+  * Added new "extractX()" functions to FnString in order to make regular expression-based
+    substring extractions from Strings.
+  * Added new "matchX()" functions to FnString in order to make regular expression matching
+    on Strings.
+
+- Actions
+  * Removed actions ifNullOrTrue, ifNullOrFalse, ifNotNullAndFalse, ifNotNullAndTrue actions
+    for conditional execution in order to remove conditional execution complexity.
+  * Created new "execIfTrue", "execIfFalse", "execIfNull", "execIfNotNull" actions for conditional
+    execution, both with only "then" and with both "then"+"else" executable functions.
+  * Added new "toMap" actions to arrays, lists and sets for creating maps by specifying two
+    functions instead of one (one function for keys, another for values).
+  * Added a "reverse" action to arrays, lists, maps and sets.
+  * Added new "zip" methods to arrays, lists and sets in order to be able to zip collections
+    instead of separate elements like before.
+    
+- Resolved issues:
+  * Fixed compareTo-based functions (lessThan, greaterThan, lessOrEqTo, greaterOrEqTo) when 
+    null or BigDecimal arguments were passed to the function.
+  * Fixed eq and notEq when null arguments were passed to the function.
+ 
 
 1.0-beta2
 =========
