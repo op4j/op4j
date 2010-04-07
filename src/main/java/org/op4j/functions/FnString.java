@@ -1994,22 +1994,9 @@ public final class FnString {
     /**
      * <p>
      * <i>ASCIIfies</i> a String containing text in (mainly) European languages by removing a set of 
-     * recognized diacritic symbols and performing a number of transformations. These are:
+     * recognized diacritic symbols and performing a number of transformations. Calling this method
+     * is equivalent to calling {@link #asciify(AsciifyMode)} using the <tt>DEFAULT</tt> mode.
      * </p>
-     * <ul>
-     *   <li>&#192;,&#193;,&#194;,&#195;,&#196;,&#197; / &#224;,&#225;,&#226;,&#227;,&#228;,&#229; = A / a</li>
-     *   <li>&#198; / &#230; = AE / ae</li>
-     *   <li>&#199; / &#231; = C / c</li>
-     *   <li>&#200;,&#201;,&#202;,&#203; / &#232;,&#233;,&#234;,&#235; = E / e</li>
-     *   <li>&#204;,&#205;,&#206;,&#207; / &#236;,&#237;,&#238;,&#239; = I / i</li>
-     *   <li>&#208; / &#240; = D / d</li>
-     *   <li>&#209; / &#241; = N / n</li>
-     *   <li>&#210;,&#211;,&#212;,&#213;,&#214;,&#216; / &#242;,&#243;,&#244;,&#245;,&#246;,&#248; = O / o</li>
-     *   <li>&#217;,&#218;,&#219;,&#220; / &#249;,&#250;,&#251;,&#252; = U / u</li>
-     *   <li>&#221; / &#253;,&#255; = Y / y</li>
-     *   <li>&#222; / &#254; = TH / th</li>
-     *   <li>&#223; = "ss" if the preceding character is lower case, "SS" otherwise.</li>
-     * </ul>
      * 
      * 
      * @return the transformed String
@@ -2049,6 +2036,8 @@ public final class FnString {
      * </p>
      * <ul>
      *   <li>&#196; / &#228; = AE / ae</li>
+     *   <li>&#214; / &#246; = OE / oe</li>
+     *   <li>&#220; / &#252; = UE / ue</li>
      * </ul>
      * 
      * 
@@ -2766,8 +2755,10 @@ public final class FnString {
 
         private final static char ESSZETT = '\u00DF'; 
         
-        private static String[] searchList;
-        private static String[] replacementList;
+        private static String[] defaultSearchList;
+        private static String[] defaultReplacementList;
+        private static String[] umlautESearchList;
+        private static String[] umlautEReplacementList;
         
         private final AsciifyMode mode;
         
@@ -2834,8 +2825,18 @@ public final class FnString {
             replacements.put("\u00FD", "y");
             replacements.put("\u00FE", "th");
             replacements.put("\u00FF", "y");
-            searchList = replacements.keySet().toArray(new String[replacements.size()]);
-            replacementList = replacements.values().toArray(new String[replacements.size()]);
+            defaultSearchList = replacements.keySet().toArray(new String[replacements.size()]);
+            defaultReplacementList = replacements.values().toArray(new String[replacements.size()]);
+            
+            replacements.put("\u00C4", "AE");
+            replacements.put("\u00D6", "OE");
+            replacements.put("\u00DC", "UE");
+            replacements.put("\u00E4", "ae");
+            replacements.put("\u00F6", "oe");
+            replacements.put("\u00FC", "ue");
+            umlautESearchList = replacements.keySet().toArray(new String[replacements.size()]);
+            umlautEReplacementList = replacements.values().toArray(new String[replacements.size()]);
+            
         }
         
         
@@ -2855,7 +2856,10 @@ public final class FnString {
 
         @Override
         protected String nullAsNullExecute(final String object, final ExecCtx ctx) throws Exception {
-            final String result = StringUtils.replaceEach(object, searchList, replacementList);
+            final String result =
+                (this.mode.equals(AsciifyMode.UMLAUT_E)?
+                        StringUtils.replaceEach(object, umlautESearchList, umlautEReplacementList) :
+                        StringUtils.replaceEach(object, defaultSearchList, defaultReplacementList));
             int esTsetIndex;
             if ((esTsetIndex = result.indexOf(ESSZETT)) == -1) {
                 return result;

@@ -34,6 +34,7 @@ import org.op4j.functions.FnNumber;
 import org.op4j.functions.FnString;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
+import org.op4j.functions.FnString.AsciifyMode;
 import org.op4j.test.auto.TestOperation;
 
 public class AssortedTests extends TestCase {
@@ -818,23 +819,27 @@ public class AssortedTests extends TestCase {
     @Test
     public void test56() throws Exception {
         
-        final String testStr1 = "ﬂﬂ ﬂﬂ a ﬂﬂ nuﬂ NUﬂ nuﬂﬂ NUﬂﬂ ﬂﬂ";
-        final String testStr2 = "ﬂﬂ";
-        final String testStr3 = "LO E «¿ I—∆ N‹ﬂ ﬁOR! aÒeÁ·ÌÈÛ˙";
-        final String testStr4 = "LO E «¿ I—∆ N‹ﬂﬂ";
-        final String testStr5 = "LO E «¿ I—∆ N‹ﬂﬂ ";
-        final String testStr6 = "LO E «¿ I—∆ N‹ﬂﬂ ﬂ";
-        final String testStr7 = "LO E «¿ I—∆ Nuﬂﬂ ﬂ";
-        final String testStr8 = "LO E «¿ I—∆ N‹ﬂﬂ a";
+        final String testStr1 = "\u00DF\u00DF \u00DF\u00DF a \u00DF\u00DF nu\u00DF NU\u00DF nu\u00DF\u00DF NU\u00DF\u00DF \u00DF\u00DF";
+        final String testStr2 = "\u00DF\u00DF";
+        final String testStr3 = "LO E \u00C7\u00C0 I\u00D1\u00C6 N\u00DC\u00DF \u00DEOR! a\u00F1e\u00E7\u00E1\u00ED\u00E9\u00F3\u00FA \u00E4\u00EB\u00EF\u00F6\u00FC\u00C4\u00CB\u00CF\u00D6\u00DC";
+        final String testStr4 = "LO E \u00C7\u00C0 I\u00D1\u00C6 N\u00DC\u00DF\u00DF";
+        final String testStr5 = "LO E \u00C7\u00C0 I\u00D1\u00C6 N\u00DC\u00DF\u00DF ";
+        final String testStr6 = "LO E \u00C7\u00C0 I\u00D1\u00C6 N\u00DC\u00DF\u00DF \u00DF";
+        final String testStr7 = "LO E \u00C7\u00C0 I\u00D1\u00C6 Nu\u00DF\u00DF \u00DF";
+        final String testStr8 = "LO E \u00C7\u00C0 I\u00D1\u00C6 N\u00DC\u00DF\u00DF a";
+        final String testStr9 = "M\u00DCNCHEN";
+        final String testStr10 = "M\u00DCNCHEN \u00E4\u00EB\u00EF\u00F6\u00FC\u00C4\u00CB\u00CF\u00D6\u00DC";
 
         assertEquals("SSSS SSSS a ssss nuss NUSS nussss NUSSSS SSSS", Op.on(testStr1).exec(FnString.asciify()).get());
         assertEquals("SSSS", Op.on(testStr2).exec(FnString.asciify()).get());
-        assertEquals("LO E CA INAE NUSS THOR! anecaieou", Op.on(testStr3).exec(FnString.asciify()).get());
+        assertEquals("LO E CA INAE NUSS THOR! anecaieou aeiouAEIOU", Op.on(testStr3).exec(FnString.asciify()).get());
         assertEquals("LO E CA INAE NUSSSS", Op.on(testStr4).exec(FnString.asciify()).get());
         assertEquals("LO E CA INAE NUSSSS ", Op.on(testStr5).exec(FnString.asciify()).get());
         assertEquals("LO E CA INAE NUSSSS SS", Op.on(testStr6).exec(FnString.asciify()).get());
         assertEquals("LO E CA INAE Nussss ss", Op.on(testStr7).exec(FnString.asciify()).get());
         assertEquals("LO E CA INAE NUSSSS a", Op.on(testStr8).exec(FnString.asciify()).get());
+        assertEquals("MUENCHEN", Op.on(testStr9).exec(FnString.asciify(AsciifyMode.UMLAUT_E)).get());
+        assertEquals("MUENCHEN aeeioeueAEEIOEUE", Op.on(testStr10).exec(FnString.asciify(AsciifyMode.UMLAUT_E)).get());
         
     }
     
