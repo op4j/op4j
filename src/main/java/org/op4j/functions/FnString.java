@@ -28,8 +28,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -96,6 +98,8 @@ public final class FnString {
     
     private static final Function<List<Object>,String> JOIN = new Join();
     private static final Function<Object[],String> JOIN_ARRAY = new JoinArray();
+    
+    private static final Function<String,String> ASCIIFY = new Asciify();
     
     
     
@@ -1989,6 +1993,26 @@ public final class FnString {
     
     
 	
+    
+    /**
+     * <p>
+     * <i>ASCIIfies</i> a String by removing a set of recognized diacritic symbols and
+     * performing a number of transformations. These are:
+     * </p>
+     * <ul>
+     *   <li>&#192;,&#193;,&#194;,&#195;,&#196;,&#197; = A</li>
+     * </ul>
+     * 
+     * @return the transformed String
+     */
+    public static final Function<String,String> asciify() {
+        return ASCIIFY;
+    }
+    
+    
+    
+    
+    
 	
 	
 	
@@ -2680,5 +2704,90 @@ public final class FnString {
             }
             return StringUtils.join(input);
         }       
-    }   
+    }
+    
+    
+    
+    
+    static final class Asciify extends AbstractNullAsNullFunction<String,String> {
+
+        private static String[] searchList;
+        private static String[] replacementList;
+        
+        static {
+            final Map<String,String> replacements = new LinkedHashMap<String,String>();
+            replacements.put("\u00C0", "A");
+            replacements.put("\u00C1", "A");
+            replacements.put("\u00C2", "A");
+            replacements.put("\u00C3", "A");
+            replacements.put("\u00C4", "A");
+            replacements.put("\u00C5", "A");
+            replacements.put("\u00C6", "AE");
+            replacements.put("\u00C7", "C");
+            replacements.put("\u00C8", "E");
+            replacements.put("\u00C9", "E");
+            replacements.put("\u00CA", "E");
+            replacements.put("\u00CB", "E");
+            replacements.put("\u00CC", "I");
+            replacements.put("\u00CD", "I");
+            replacements.put("\u00CE", "I");
+            replacements.put("\u00CF", "I");
+            replacements.put("\u00D0", "D");
+            replacements.put("\u00D1", "N");
+            replacements.put("\u00D2", "O");
+            replacements.put("\u00D3", "O");
+            replacements.put("\u00D4", "O");
+            replacements.put("\u00D5", "O");
+            replacements.put("\u00D6", "O");
+            replacements.put("\u00D8", "O");
+            replacements.put("\u00D9", "U");
+            replacements.put("\u00DA", "U");
+            replacements.put("\u00DB", "U");
+            replacements.put("\u00DC", "U");
+            replacements.put("\u00DD", "Y");
+            replacements.put("\u00DE", "TH");
+            replacements.put("\u00DF", "SS");
+            replacements.put("\u00E0", "a");
+            replacements.put("\u00E1", "a");
+            replacements.put("\u00E2", "a");
+            replacements.put("\u00E3", "a");
+            replacements.put("\u00E4", "a");
+            replacements.put("\u00E5", "a");
+            replacements.put("\u00E6", "a");
+            replacements.put("\u00E7", "c");
+            replacements.put("\u00E8", "e");
+            replacements.put("\u00E9", "e");
+            replacements.put("\u00EA", "e");
+            replacements.put("\u00EB", "e");
+            replacements.put("\u00EC", "i");
+            replacements.put("\u00ED", "i");
+            replacements.put("\u00EE", "i");
+            replacements.put("\u00EF", "i");
+            replacements.put("\u00F0", "d");
+            replacements.put("\u00F1", "n");
+            replacements.put("\u00F2", "o");
+            replacements.put("\u00F3", "o");
+            replacements.put("\u00F4", "o");
+            replacements.put("\u00F5", "o");
+            replacements.put("\u00F6", "o");
+            replacements.put("\u00F8", "o");
+            replacements.put("\u00F9", "u");
+            replacements.put("\u00FA", "u");
+            replacements.put("\u00FB", "u");
+            replacements.put("\u00FC", "u");
+            replacements.put("\u00FD", "y");
+            replacements.put("\u00FE", "th");
+            replacements.put("\u00FF", "y");
+            searchList = replacements.keySet().toArray(new String[replacements.size()]);
+            replacementList = replacements.values().toArray(new String[replacements.size()]);
+        }
+        
+        
+        @Override
+        protected String nullAsNullExecute(final String object, final ExecCtx ctx) throws Exception {
+            return StringUtils.replaceEach(object, searchList, replacementList);
+        }
+        
+    }
+    
 }
