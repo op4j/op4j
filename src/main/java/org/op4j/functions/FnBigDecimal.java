@@ -267,9 +267,22 @@ public final class FnBigDecimal {
                 groupingUsed, decimalSeparator, 
                 decimalSeparatorAlwaysShown));
     }
+    
+    
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<BigDecimal,Boolean> eq(final Number object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.eq(object));
     }
+    
+    
     public static final Function<BigDecimal,Boolean> eqValue(final BigDecimal object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.eqValue(object));
     }

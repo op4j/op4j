@@ -383,34 +383,103 @@ public final class FnNumber {
     
 
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Number,Boolean> eq(final Number object) {
         return (Function<Number,Boolean>)((Function)FnObject.eq(object));
     }
-   
+
+    
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Number,Boolean> eq(final float object) {
         return (Function<Number,Boolean>)((Function)FnObject.eq(object));
     }
     
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Number,Boolean> eq(final double object) {
         return (Function<Number,Boolean>)((Function)FnObject.eq(object));
     }
+
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Number,Boolean> eq(final byte object) {
         return (Function<Number,Boolean>)((Function)FnObject.eq(object));
     }
     
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Number,Boolean> eq(final short object) {
         return (Function<Number,Boolean>)((Function)FnObject.eq(object));
     }
     
+    
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Number,Boolean> eq(final int object) {
         return (Function<Number,Boolean>)((Function)FnObject.eq(object));
     }
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Number,Boolean> eq(final long object) {
         return (Function<Number,Boolean>)((Function)FnObject.eq(object));
     }
 
+    
     public static final Function<Number,Boolean> eqValue(final Number object) {
         return (Function<Number,Boolean>)((Function)FnObject.eqValue(object));
     }

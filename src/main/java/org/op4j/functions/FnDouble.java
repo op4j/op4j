@@ -269,13 +269,36 @@ public final class FnDouble {
                 groupingUsed, decimalSeparator, 
                 decimalSeparatorAlwaysShown));
     }
+    
+    
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Double,Boolean> eq(final Number object) {
         return (Function<Double,Boolean>)((Function)FnObject.eq(object));
     }
+    
+    
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Double,Boolean> eq(final double object) {
         return (Function<Double,Boolean>)((Function)FnObject.eq(object));
     }
 
+    
     public static final Function<Double,Boolean> eqValue(final Number object) {
         return (Function<Double,Boolean>)((Function)FnObject.eqValue(object));
     }

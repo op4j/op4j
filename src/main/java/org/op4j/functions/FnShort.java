@@ -116,12 +116,35 @@ public final class FnShort {
     public static final Function<Short,String> toPercentStr(String locale, boolean groupingUsed) {
         return (Function<Short,String>)((Function)FnNumber.toPercentStr(locale, groupingUsed));
     }
+    
+    
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Short,Boolean> eq(final Number object) {
         return (Function<Short,Boolean>)((Function)FnObject.eq(object));
     }
+    
+    
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Short,Boolean> eq(final short object) {
         return (Function<Short,Boolean>)((Function)FnObject.eq(object));
     }
+
     
     public static final Function<Short,Boolean> eqValue(final Number object) {
         return (Function<Short,Boolean>)((Function)FnObject.eqValue(object));

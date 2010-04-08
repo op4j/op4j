@@ -57,23 +57,68 @@ public final class FnObject {
 
 	
     
+	/**
+	 * <p>
+	 * Converts the target object to String using the default <tt>toString()</tt> method.
+	 * </p>
+	 * 
+	 * @return the String representation of the target object.
+	 */
     public static final Function<Object,String> toStr() {
         return TO_STRING;
     }
     
+    
+    /**
+     * <p>
+     * Converts the target object to String using the default <tt>toString()</tt> method,
+     * returning null if target is null.
+     * </p>
+     * 
+     * @return the String representation of the target object, or null if target is null.
+     */
     public static final Function<Object,String> toStrNullSafe() {
         return TO_STRING_NULL_SAFE;
     }
     
-    
+
+    /**
+     * <p>
+     * Creates an array of the specified type with only the target object in it.
+     * </p>
+     * 
+     * @param <T> the type of the array elements
+     * @param type the type of the array
+     * @return the resulting array.
+     */
     public static final <T> Function<T,T[]> intoSingletonArrayOf(final Type<T> type) {
         return new IntoSingletonArray<T>(type);
     }
     
+    
+    /**
+     * <p>
+     * Creates a list of the specified type with only the target object in it.
+     * </p>
+     * 
+     * @param <T> the type of the list elements
+     * @param type the type of the list
+     * @return the resulting list.
+     */
     public static final <T> Function<T,List<T>> intoSingletonListOf(final Type<T> type) {
         return new IntoSingletonList<T>();
     }
+
     
+    /**
+     * <p>
+     * Creates a set of the specified type with only the target object in it.
+     * </p>
+     * 
+     * @param <T> the type of the set elements
+     * @param type the type of the set
+     * @return the resulting set.
+     */
     public static final <T> Function<T,Set<T>> intoSingletonSetOf(final Type<T> type) {
         return new IntoSingletonSet<T>();
     }
@@ -83,35 +128,114 @@ public final class FnObject {
     
 
     
-    
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Object,Boolean> eq(final Object object) {
         return new Equals(object);
     }
     
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Object,Boolean> eq(final float object) {
         return new Equals(Float.valueOf(object));
     }
+
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Object,Boolean> eq(final double object) {
         return new Equals(Double.valueOf(object));
     }
     
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Object,Boolean> eq(final byte object) {
         return new Equals(Byte.valueOf(object));
     }
     
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Object,Boolean> eq(final short object) {
         return new Equals(Short.valueOf(object));
     }
     
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Object,Boolean> eq(final int object) {
         return new Equals(Integer.valueOf(object));
     }
     
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Object,Boolean> eq(final long object) {
         return new Equals(Long.valueOf(object));
     }
     
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<Object,Boolean> eq(final boolean object) {
         return new Equals(Boolean.valueOf(object));
     }

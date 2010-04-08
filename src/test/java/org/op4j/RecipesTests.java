@@ -18,6 +18,7 @@ import org.apache.commons.lang.time.DateUtils;
 import org.javaruntype.type.Types;
 import org.junit.Test;
 import org.op4j.functions.DecimalPoint;
+import org.op4j.functions.FnFunc;
 import org.op4j.functions.FnNumber;
 import org.op4j.functions.FnString;
 
@@ -508,6 +509,54 @@ public class RecipesTests extends TestCase {
     
     
     
+    
+    
+    
+    @Test
+    public void testOP4J_017() throws Exception {
+
+        String[] conts = 
+            new String[] { "\u00C1frica", "Am\u00E9rica", "Ant\u00E1rtida", "Asia", "Europa", "Ocean\u00EDa" };
+        final String[] originalConts = conts.clone();
+System.out.println(Arrays.asList(conts));        
+        String[] result =
+            new String[] { "Africa", "America", "Antartida", "Asia", "Europa", "Oceania" };
+        String[] capsResult =
+            new String[] { "AFRICA", "AMERICA", "ANTARTIDA", "ASIA", "EUROPA", "OCEANIA" };
+        
+        {
+            
+            conts = Op.on(conts).map(FnString.asciify()).get();
+
+            assertEquals(String[].class, conts.getClass());
+            assertEquals(Arrays.asList(result), Arrays.asList(conts));
+            
+        }
+        
+        conts = originalConts.clone();
+        
+        {
+            
+            conts = Op.on(conts).forEach().exec(FnString.asciify()).exec(FnString.toUpperCase()).get();
+
+            assertEquals(String[].class, conts.getClass());
+            assertEquals(Arrays.asList(capsResult), Arrays.asList(conts));
+            
+        }
+        
+        conts = originalConts.clone();
+        
+        {
+            
+            conts = Op.on(conts).map(FnFunc.chain(FnString.asciify(), FnString.toUpperCase())).get();
+
+            assertEquals(String[].class, conts.getClass());
+            assertEquals(Arrays.asList(capsResult), Arrays.asList(conts));
+            
+        }
+
+    }
+
     
     
     
