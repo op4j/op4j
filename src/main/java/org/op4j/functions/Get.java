@@ -30,7 +30,6 @@ import java.util.Set;
 import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
-import org.op4j.util.VarArgsUtil;
 
 import com.sun.xml.internal.ws.util.StringUtils;
 
@@ -47,95 +46,94 @@ public final class Get<T,R> extends Function<T,R> {
     
     
     private final Type<R> resultType;
-    private final String methodName;
-    private final Object[] parameters;
+    private final String attributeName;
     
     
     
-    public static Function<Object,Object> attrOfObject(final String methodName, final Object... optionalParameters) {
-        return new Get<Object,Object>(Types.OBJECT, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Function<Object,Object> attrOfObject(final String attributeName) {
+        return new Get<Object,Object>(Types.OBJECT, attributeName);
     }
     
-    public static <R> Function<Object,R> attrOf(final Type<R> resultType, final String methodName, final Object... optionalParameters) {
-        return new Get<Object,R>(resultType, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static <R> Function<Object,R> attrOf(final Type<R> resultType, final String attributeName) {
+        return new Get<Object,R>(resultType, attributeName);
     }
 
 
     
-    public static Function<Object,BigInteger> attrOfBigInteger(final String methodName, final Object... optionalParameters) {
-        return new Get<Object,BigInteger>(Types.BIG_INTEGER, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Function<Object,BigInteger> attrOfBigInteger(final String attributeName) {
+        return new Get<Object,BigInteger>(Types.BIG_INTEGER, attributeName);
     }
     
-    public static Function<Object,BigDecimal> attrOfBigDecimal(final String methodName, final Object... optionalParameters) {
-        return new Get<Object,BigDecimal>(Types.BIG_DECIMAL, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Function<Object,BigDecimal> attrOfBigDecimal(final String attributeName) {
+        return new Get<Object,BigDecimal>(Types.BIG_DECIMAL, attributeName);
     }
     
-    public static Function<Object,Boolean> attrOfBoolean(final String methodName, final Object... optionalParameters) {
-        return new Get<Object,Boolean>(Types.BOOLEAN, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Function<Object,Boolean> attrOfBoolean(final String attributeName) {
+        return new Get<Object,Boolean>(Types.BOOLEAN, attributeName);
     }
     
-    public static Function<Object,Byte> attrOfByte(final String methodName, final Object... optionalParameters) {
-        return new Get<Object,Byte>(Types.BYTE, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Function<Object,Byte> attrOfByte(final String attributeName) {
+        return new Get<Object,Byte>(Types.BYTE, attributeName);
     }
     
-    public static Function<Object,Character> attrOfCharacter(final String methodName, final Object... optionalParameters) {
-        return new Get<Object,Character>(Types.CHARACTER, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Function<Object,Character> attrOfCharacter(final String attributeName) {
+        return new Get<Object,Character>(Types.CHARACTER, attributeName);
     }
     
-    public static Function<Object,Calendar> attrOfCalendar(final String methodName, final Object... optionalParameters) {
-        return new Get<Object,Calendar>(Types.CALENDAR, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Function<Object,Calendar> attrOfCalendar(final String attributeName) {
+        return new Get<Object,Calendar>(Types.CALENDAR, attributeName);
     }
     
-    public static Function<Object,Date> attrOfDate(final String methodName, final Object... optionalParameters) {
-        return new Get<Object,Date>(Types.DATE, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Function<Object,Date> attrOfDate(final String attributeName) {
+        return new Get<Object,Date>(Types.DATE, attributeName);
     }
     
-    public static Function<Object,Double> attrOfDouble(final String methodName, final Object... optionalParameters) {
-        return new Get<Object,Double>(Types.DOUBLE, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Function<Object,Double> attrOfDouble(final String attributeName) {
+        return new Get<Object,Double>(Types.DOUBLE, attributeName);
     }
     
-    public static Function<Object,Float> attrOfFloat(final String methodName, final Object... optionalParameters) {
-        return new Get<Object,Float>(Types.FLOAT, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Function<Object,Float> attrOfFloat(final String attributeName) {
+        return new Get<Object,Float>(Types.FLOAT, attributeName);
     }
     
-    public static Function<Object,Integer> attrOfInteger(final String methodName, final Object... optionalParameters) {
-        return new Get<Object,Integer>(Types.INTEGER, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Function<Object,Integer> attrOfInteger(final String attributeName) {
+        return new Get<Object,Integer>(Types.INTEGER, attributeName);
     }
     
-    public static Function<Object,Long> attrOfLong(final String methodName, final Object... optionalParameters) {
-        return new Get<Object,Long>(Types.LONG, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Function<Object,Long> attrOfLong(final String attributeName) {
+        return new Get<Object,Long>(Types.LONG, attributeName);
     }
     
-    public static Function<Object,Short> attrOfShort(final String methodName, final Object... optionalParameters) {
-        return new Get<Object,Short>(Types.SHORT, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Function<Object,Short> attrOfShort(final String attributeName) {
+        return new Get<Object,Short>(Types.SHORT, attributeName);
     }
     
-    public static Function<Object,String> attrOfString(final String methodName, final Object... optionalParameters) {
-        return new Get<Object,String>(Types.STRING, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Function<Object,String> attrOfString(final String attributeName) {
+        return new Get<Object,String>(Types.STRING, attributeName);
     }
     
-    public static Function<Object,List<String>> attrOfListOfString(final String methodName, final Object... optionalParameters) {
-        return new Get<Object,List<String>>(Types.LIST_OF_STRING, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Function<Object,List<String>> attrOfListOfString(final String attributeName) {
+        return new Get<Object,List<String>>(Types.LIST_OF_STRING, attributeName);
     }
     
-    public static Function<Object,Set<String>> attrOfSetOfString(final String methodName, final Object... optionalParameters) {
-        return new Get<Object,Set<String>>(Types.SET_OF_STRING, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Function<Object,Set<String>> attrOfSetOfString(final String attributeName) {
+        return new Get<Object,Set<String>>(Types.SET_OF_STRING, attributeName);
     }
     
-    public static Function<Object,String[]> attrOfArrayOfString(final String methodName, final Object... optionalParameters) {
-        return new Get<Object,String[]>(Types.ARRAY_OF_STRING, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static Function<Object,String[]> attrOfArrayOfString(final String attributeName) {
+        return new Get<Object,String[]>(Types.ARRAY_OF_STRING, attributeName);
     }
     
-    public static <R> Function<Object,List<R>> attrOfListOf(final Type<R> resultType, final String methodName, final Object... optionalParameters) {
-        return new Get<Object,List<R>>(Types.listOf(resultType), methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static <R> Function<Object,List<R>> attrOfListOf(final Type<R> resultType, final String attributeName) {
+        return new Get<Object,List<R>>(Types.listOf(resultType), attributeName);
     }
     
-    public static <R> Function<Object,Set<R>> attrOfSetOf(final Type<R> resultType, final String methodName, final Object... optionalParameters) {
-        return new Get<Object,Set<R>>(Types.setOf(resultType), methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static <R> Function<Object,Set<R>> attrOfSetOf(final Type<R> resultType, final String attributeName) {
+        return new Get<Object,Set<R>>(Types.setOf(resultType), attributeName);
     }
     
-    public static <R> Function<Object,R[]> attrOfArrayOf(final Type<R> resultType, final String methodName, final Object... optionalParameters) {
-        return new Get<Object,R[]>(Types.arrayOf(resultType), methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    public static <R> Function<Object,R[]> attrOfArrayOf(final Type<R> resultType, final String attributeName) {
+        return new Get<Object,R[]>(Types.arrayOf(resultType), attributeName);
     }
     
     
@@ -144,11 +142,10 @@ public final class Get<T,R> extends Function<T,R> {
     
     
     
-    private Get(final Type<R> resultType, final String attributeName, final Object[] parameters) {
+    private Get(final Type<R> resultType, final String attributeName) {
         Validate.notNull(attributeName, "Attribute name cannot be null");
         this.resultType = resultType;
-        this.methodName = attributeName;
-        this.parameters = parameters;
+        this.attributeName = attributeName;
     }
     
     
@@ -158,12 +155,12 @@ public final class Get<T,R> extends Function<T,R> {
 
         final Class<? super R> resultClass = this.resultType.getRawClass();
         
-        final Expression expression = new Expression(input, "get" + StringUtils.capitalize(this.methodName), this.parameters);
+        final Expression expression = new Expression(input, "get" + StringUtils.capitalize(this.attributeName), null);
         final R result = (R) expression.getValue();
         
         if (result != null && resultClass != null && !Object.class.equals(resultClass)) {
             if (!(resultClass.isAssignableFrom(result.getClass()))) {
-                throw new IllegalStateException("Result of calling method \"" + this.methodName + "\" is not " +
+                throw new IllegalStateException("Result of calling method \"" + this.attributeName + "\" is not " +
                         "assignable from class " + resultClass.getName());
             }
         }
