@@ -62,79 +62,202 @@ public final class FnNumber {
 	
 	
 	
+	/**
+	 * <p>
+	 * It converts the input into a {@link BigDecimal}
+	 * </p>
+	 * 
+	 * @return the {@link BigDecimal}
+	 */
 	public static final Function<Number,BigDecimal> toBigDecimal() {
         return TO_BIG_DECIMAL;
     }
     
+    /**
+     * <p>
+     * It converts the input into a {@link BigDecimal} using the given scale and {@link RoundingMode}
+     * </p>
+     * 
+     * @param scale the scale to be used
+     * @param roundingMode the {@link RoundingMode} to round the input with
+     * @return the {@link BigDecimal}
+     */
     public static final Function<Number,BigDecimal> toBigDecimal(final int scale, final RoundingMode roundingMode) {
         return new ToBigDecimal(scale, roundingMode);
     }
     
     
+    /**
+     * <p>
+     * It converts the input into a {@link BigInteger}
+     * </p>
+     * 
+     * @return the {@link BigInteger}
+     */
     public static final Function<Number,BigInteger> toBigInteger() {
         return TO_BIG_INTEGER;
     }
     
+    /**
+     * <p>
+     * It converts the input into a {@link BigInteger} using the given {@link RoundingMode}
+     * </p>
+     * 
+     * @param roundingMode the {@link RoundingMode} to round the input with
+     * @return the {@link BigInteger}
+     */
     public static final Function<Number,BigInteger> toBigInteger(final RoundingMode roundingMode) {
         return new ToBigInteger(roundingMode);
     }
     
-    
+    /**
+     * <p>
+     * It converts the input into a {@link Double}
+     * </p>
+     * 
+     * @return the {@link Double}
+     */
     public static final Function<Number,Double> toDouble() {
         return TO_DOUBLE;
     }
     
+    /**
+     * <p>
+     * It converts the input into a {@link Double} using the given scale and {@link RoundingMode}
+     * </p>
+     * 
+     * @param scale the scale to be used
+     * @param roundingMode the {@link RoundingMode} to round the input with
+     * @return the {@link Double}
+     */
     public static final Function<Number,Double> toDouble(final int scale, final RoundingMode roundingMode) {
         return new ToDouble(scale, roundingMode);
     }
     
-    
+    /**
+     * <p>
+     * It converts the input into a {@link Float}
+     * </p>
+     * 
+     * @return the {@link Float}
+     */
     public static final Function<Number,Float> toFloat() {
         return TO_FLOAT;
     }
     
+    /**
+     * <p>
+     * It converts the input into a {@link Float} using the given scale and {@link RoundingMode}
+     * </p>
+     * 
+     * @param scale the scale to be used
+     * @param roundingMode the {@link RoundingMode} to round the input with
+     * @return the {@link Float}
+     */
     public static final Function<Number,Float> toFloat(final int scale, final RoundingMode roundingMode) {
         return new ToFloat(scale, roundingMode);
     }
     
-    
+    /**
+     * <p>
+     * It converts the input into a {@link Long}
+     * </p>
+     * 
+     * @return the {@link Long}
+     */
     public static final Function<Number,Long> toLong() {
         return TO_LONG;
     }
     
+    /**
+     * <p>
+     * It converts the input into a {@link Long} using the given {@link RoundingMode}
+     * </p>
+     * 
+     * @param roundingMode the {@link RoundingMode} to round the input with
+     * @return the {@link Long}
+     */
     public static final Function<Number,Long> toLong(final RoundingMode roundingMode) {
         return new ToLong(roundingMode);
     }
     
-    
+    /**
+     * <p>
+     * It converts the input into an {@link Integer}
+     * </p>
+     * 
+     * @return the {@link Integer}
+     */
     public static final Function<Number,Integer> toInteger() {
         return TO_INTEGER;
     }
     
+    /**
+     * <p>
+     * It converts the input into an {@link Integer} using the given {@link RoundingMode}
+     * </p>
+     * 
+     * @param roundingMode the {@link RoundingMode} to round the input with
+     * @return the {@link Integer}
+     */
     public static final Function<Number,Integer> toInteger(final RoundingMode roundingMode) {
         return new ToInteger(roundingMode);
     }
     
-    
+    /**
+     * <p>
+     * It converts the input into a {@link Short}
+     * </p>
+     * 
+     * @return the {@link Short}
+     */
     public static final Function<Number,Short> toShort() {
         return TO_SHORT;
     }
     
+    /**
+     * <p>
+     * It converts the input into a {@link Short} using the given {@link RoundingMode}
+     * </p>
+     * 
+     * @param roundingMode the {@link RoundingMode} to round the input with
+     * @return the {@link Short}
+     */
     public static final Function<Number,Short> toShort(final RoundingMode roundingMode) {
         return new ToShort(roundingMode);
     }
     
-    
+    /**
+     * <p>
+     * It converts the input into a {@link Byte}
+     * </p>
+     * 
+     * @return the {@link Byte}
+     */
     public static final Function<Number,Byte> toByte() {
         return TO_BYTE;
     }
     
+    /**
+     * <p>
+     * It converts the input into a {@link Byte} using the given {@link RoundingMode}
+     * </p>
+     * 
+     * @param roundingMode the {@link RoundingMode} to round the input with
+     * @return the {@link Byte}
+     */
     public static final Function<Number,Byte> toByte(final RoundingMode roundingMode) {
         return new ToByte(roundingMode);
     }
     
     
-    
+    /**
+     * <p>
+     * It converts the input into a {@link Boolean}
+     * </p>
+     * 
+     * @return the {@link Boolean}
+     */
     public static final Function<Number,Boolean> toBoolean() {
         return TO_BOOLEAN;
     }
