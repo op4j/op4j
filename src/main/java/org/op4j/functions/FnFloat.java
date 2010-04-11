@@ -152,12 +152,34 @@ public final class FnFloat {
         return (Function<Float,Boolean>)((Function)FnObject.eqValue(object));
     }
     
+    
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final Function<Float,Boolean> notEq(final Number object) {
         return (Function<Float,Boolean>)((Function)FnObject.notEq(object));
     }
+    
+    
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final Function<Float,Boolean> notEq(final float object) {
         return (Function<Float,Boolean>)((Function)FnObject.notEq(object));
     }
+
     
     public static final Function<Float,Boolean> notEqValue(final Number object) {
         return (Function<Float,Boolean>)((Function)FnObject.notEqValue(object));

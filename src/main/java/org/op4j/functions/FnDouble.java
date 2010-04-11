@@ -306,12 +306,34 @@ public final class FnDouble {
         return (Function<Double,Boolean>)((Function)FnObject.eqValue(object));
     }
     
+    
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final Function<Double,Boolean> notEq(final Number object) {
         return (Function<Double,Boolean>)((Function)FnObject.notEq(object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final Function<Double,Boolean> notEq(final double object) {
         return (Function<Double,Boolean>)((Function)FnObject.notEq(object));
     }
+    
     
     public static final Function<Double,Boolean> notEqValue(final Number object) {
         return (Function<Double,Boolean>)((Function)FnObject.notEqValue(object));

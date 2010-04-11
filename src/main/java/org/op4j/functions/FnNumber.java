@@ -633,30 +633,99 @@ public final class FnNumber {
     
     
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final Function<Number,Boolean> notEq(final Number object) {
         return (Function<Number,Boolean>)((Function)FnObject.notEq(object));
     }
+
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final Function<Number,Boolean> notEq(final float object) {
         return (Function<Number,Boolean>)((Function)FnObject.notEq(object));
     }
     
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final Function<Number,Boolean> notEq(final double object) {
         return (Function<Number,Boolean>)((Function)FnObject.notEq(object));
     }
     
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final Function<Number,Boolean> notEq(final byte object) {
         return (Function<Number,Boolean>)((Function)FnObject.notEq(object));
     }
+
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final Function<Number,Boolean> notEq(final short object) {
         return (Function<Number,Boolean>)((Function)FnObject.notEq(object));
     }
+
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final Function<Number,Boolean> notEq(final int object) {
         return (Function<Number,Boolean>)((Function)FnObject.notEq(object));
     }
+
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * by calling the <tt>equals</tt> method on the target object.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final Function<Number,Boolean> notEq(final long object) {
         return (Function<Number,Boolean>)((Function)FnObject.notEq(object));
     }
