@@ -603,30 +603,106 @@ public final class FnNumber {
     }
 
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * in value, this is, whether <tt>target.compareTo(object) == 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final Function<Number,Boolean> eqValue(final Number object) {
         return (Function<Number,Boolean>)((Function)FnObject.eqValue(object));
     }
     
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * in value, this is, whether <tt>target.compareTo(object) == 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final Function<Number,Boolean> eqValue(final float object) {
         return (Function<Number,Boolean>)((Function)FnObject.eqValue(object));
     }
     
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * in value, this is, whether <tt>target.compareTo(object) == 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final Function<Number,Boolean> eqValue(final double object) {
         return (Function<Number,Boolean>)((Function)FnObject.eqValue(object));
     }
+
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * in value, this is, whether <tt>target.compareTo(object) == 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final Function<Number,Boolean> eqValue(final byte object) {
         return (Function<Number,Boolean>)((Function)FnObject.eqValue(object));
     }
     
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * in value, this is, whether <tt>target.compareTo(object) == 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final Function<Number,Boolean> eqValue(final short object) {
         return (Function<Number,Boolean>)((Function)FnObject.eqValue(object));
     }
+
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * in value, this is, whether <tt>target.compareTo(object) == 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final Function<Number,Boolean> eqValue(final int object) {
         return (Function<Number,Boolean>)((Function)FnObject.eqValue(object));
     }
+
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * in value, this is, whether <tt>target.compareTo(object) == 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final Function<Number,Boolean> eqValue(final long object) {
         return (Function<Number,Boolean>)((Function)FnObject.eqValue(object));
     }
@@ -730,30 +806,107 @@ public final class FnNumber {
         return (Function<Number,Boolean>)((Function)FnObject.notEq(object));
     }
     
+    
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * in value, this is, whether <tt>target.compareTo(object) != 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final Function<Number,Boolean> notEqValue(final Number object) {
         return (Function<Number,Boolean>)((Function)FnObject.notEqValue(object));
     }
+
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * in value, this is, whether <tt>target.compareTo(object) != 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final Function<Number,Boolean> notEqValue(final float object) {
         return (Function<Number,Boolean>)((Function)FnObject.notEqValue(object));
     }
     
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * in value, this is, whether <tt>target.compareTo(object) != 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final Function<Number,Boolean> notEqValue(final double object) {
         return (Function<Number,Boolean>)((Function)FnObject.notEqValue(object));
     }
+
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * in value, this is, whether <tt>target.compareTo(object) != 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final Function<Number,Boolean> notEqValue(final byte object) {
         return (Function<Number,Boolean>)((Function)FnObject.notEqValue(object));
     }
     
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * in value, this is, whether <tt>target.compareTo(object) != 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final Function<Number,Boolean> notEqValue(final short object) {
         return (Function<Number,Boolean>)((Function)FnObject.notEqValue(object));
     }
     
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * in value, this is, whether <tt>target.compareTo(object) != 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final Function<Number,Boolean> notEqValue(final int object) {
         return (Function<Number,Boolean>)((Function)FnObject.notEqValue(object));
     }
     
+
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * in value, this is, whether <tt>target.compareTo(object) != 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final Function<Number,Boolean> notEqValue(final long object) {
         return (Function<Number,Boolean>)((Function)FnObject.notEqValue(object));
     }

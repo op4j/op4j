@@ -132,6 +132,16 @@ public final class FnBigInteger {
     }
     
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * in value, this is, whether <tt>target.compareTo(object) == 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final Function<BigInteger,Boolean> eqValue(final Number object) {
         return (Function<BigInteger,Boolean>)((Function)FnObject.eqValue(object));
     }
@@ -151,9 +161,21 @@ public final class FnBigInteger {
     }
     
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * in value, this is, whether <tt>target.compareTo(object) != 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final Function<BigInteger,Boolean> notEqValue(final Number object) {
         return (Function<BigInteger,Boolean>)((Function)FnObject.notEqValue(object));
     }
+    
+    
     public static final Function<BigInteger,Boolean> lessThan(final Number object) {
         return (Function<BigInteger,Boolean>)((Function)FnObject.lessThan(object));
     }    

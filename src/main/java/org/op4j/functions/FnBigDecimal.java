@@ -283,6 +283,16 @@ public final class FnBigDecimal {
     }
     
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are equal
+     * in value, this is, whether <tt>target.compareTo(object) == 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final Function<BigDecimal,Boolean> eqValue(final BigDecimal object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.eqValue(object));
     }
@@ -300,7 +310,18 @@ public final class FnBigDecimal {
     public static final Function<BigDecimal,Boolean> notEq(final Number object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.notEq(object));
     }
+
     
+    /**
+     * <p>
+     * Determines whether the target object and the specified object are NOT equal
+     * in value, this is, whether <tt>target.compareTo(object) != 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final Function<BigDecimal,Boolean> notEqValue(final BigDecimal object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.notEqValue(object));
     }
