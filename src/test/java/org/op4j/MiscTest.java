@@ -484,7 +484,7 @@ watch.start();
 
         Function<Class,List<Class>> fnImplemented = 
             Fn.on(Types.forClass(Class.class)).unfoldList(
-                    Call.asType(Types.forClass(Class.class), "getSuperclass")).get();
+                    Call.methodFor(Types.forClass(Class.class), "getSuperclass")).get();
                     
         System.out.println(fnImplemented.execute(String.class));
         System.out.println(fnImplemented.execute(Integer.class));
@@ -563,9 +563,9 @@ watch.start();
         String[] arr231 = new String[] { "be", "a", "31aa", "31_l", "31A" };
         
         System.out.println(Arrays.asList(FnArray.ofString().sort().execute(arr231)));
-        System.out.println(Arrays.asList(FnArray.ofString().sortBy(Call.asInteger("length")).execute(arr231)));
+        System.out.println(Arrays.asList(FnArray.ofString().sortBy(Call.methodForInteger("length")).execute(arr231)));
 
-        System.out.println(FnList.ofString().sortBy(Call.asInteger("length")).execute(Arrays.asList(arr231)));
+        System.out.println(FnList.ofString().sortBy(Call.methodForInteger("length")).execute(Arrays.asList(arr231)));
 
         
         String[] datesStr = new String[] {"12-10-1492", "06-12-1978" };

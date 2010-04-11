@@ -778,7 +778,7 @@ public class RecipesTests extends TestCase {
             
             Map<String,Set<String>> cityNamesByCountry =
                 Op.on(cities).toGroupMap(
-                        Call.asString("getCountry"),Call.asString("getName")).get();
+                        Call.methodForString("getCountry"),Call.methodForString("getName")).get();
             
             assertEquals(result, cityNamesByCountry);
             

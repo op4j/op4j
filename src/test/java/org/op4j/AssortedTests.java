@@ -225,7 +225,7 @@ public class AssortedTests extends TestCase {
         final List<String> stringList = this.testUtils.getStringList(10);
         
         try {
-            Op.onList(stringList).forEach().exec(Call.asInteger("toUpperCase")).endFor().toArrayOf(Types.INTEGER).get();
+            Op.onList(stringList).forEach().exec(Call.methodForInteger("toUpperCase")).endFor().toArrayOf(Types.INTEGER).get();
         } catch (ExecutionException e) {
             assertTrue(e.getCause().getMessage().startsWith("Result of calling method"));
         }

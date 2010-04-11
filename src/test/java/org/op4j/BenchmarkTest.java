@@ -72,7 +72,7 @@ public class BenchmarkTest {
                 String[] upperNames1 = null; 
 				for (int i = 0; i < ITERATIONS; i++) {
 					upperNames1 = 
-						Op.onList(users).forEach().exec(Call.asString("getName")).exec(FnString.toUpperCase()).endFor().toArrayOf(Types.STRING).get();
+						Op.onList(users).forEach().exec(Call.methodForString("getName")).exec(FnString.toUpperCase()).endFor().toArrayOf(Types.STRING).get();
 				}
 				
 				stopWatch1.stop();
@@ -117,7 +117,7 @@ public class BenchmarkTest {
                 String[] upperNames2 = null; 
 				for (int i = 0; i < ITERATIONS; i++) {
 				    upperNames2 = 
-						Op.onList(users).forEach().exec(Call.asString("getName")).exec(FnString.toUpperCase()).endFor().toArrayOf(Types.STRING).get();
+						Op.onList(users).forEach().exec(Call.methodForString("getName")).exec(FnString.toUpperCase()).endFor().toArrayOf(Types.STRING).get();
 				}
 				
 				stopWatch2.stop();
@@ -155,7 +155,7 @@ public class BenchmarkTest {
 			Level1ListElementsOperator<List<User>,String> op3 = null;
 			op4jWatch.start();
 			for (int i = 0; i < ITERATIONS; i++) {
-				op3 = op2.exec(Call.asString("getName"));
+				op3 = op2.exec(Call.methodForString("getName"));
 			}
 			op4jWatch.stop();
 			
