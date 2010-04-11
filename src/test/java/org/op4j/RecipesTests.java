@@ -24,6 +24,7 @@ import org.op4j.functions.FnFunc;
 import org.op4j.functions.FnList;
 import org.op4j.functions.FnNumber;
 import org.op4j.functions.FnString;
+import org.op4j.functions.Get;
 
 public class RecipesTests extends TestCase {
 
@@ -777,8 +778,17 @@ public class RecipesTests extends TestCase {
         {
             
             Map<String,Set<String>> cityNamesByCountry =
+                Op.on(cities).toGroupMap(Get.attrOfString("country"), Get.attrOfString("name")).get();
+            
+            assertEquals(result, cityNamesByCountry);
+            
+        }
+        
+        {
+            
+            Map<String,Set<String>> cityNamesByCountry =
                 Op.on(cities).toGroupMap(
-                        Call.methodForString("getCountry"),Call.methodForString("getName")).get();
+                        Call.methodForString("getCountry"), Call.methodForString("getName")).get();
             
             assertEquals(result, cityNamesByCountry);
             
