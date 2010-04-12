@@ -839,87 +839,451 @@ public final class FnLong {
     }
 
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is less than the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) < 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is less than the specified object, false if not
+     */
     public static final Function<Long,Boolean> lessThanBy(final IFunction<Long,?> by, final Number object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is less than the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) < 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is less than the specified object, false if not
+     */
     public static final Function<Long,Boolean> lessThanBy(final IFunction<Long,?> by, final float object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is less than the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) < 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is less than the specified object, false if not
+     */
     public static final Function<Long,Boolean> lessThanBy(final IFunction<Long,?> by, final double object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is less than the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) < 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is less than the specified object, false if not
+     */
     public static final Function<Long,Boolean> lessThanBy(final IFunction<Long,?> by, final byte object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is less than the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) < 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is less than the specified object, false if not
+     */
     public static final Function<Long,Boolean> lessThanBy(final IFunction<Long,?> by, final short object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is less than the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) < 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is less than the specified object, false if not
+     */
     public static final Function<Long,Boolean> lessThanBy(final IFunction<Long,?> by, final int object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is less than the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) < 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is less than the specified object, false if not
+     */
     public static final Function<Long,Boolean> lessThanBy(final IFunction<Long,?> by, final long object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is less or equal to the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) <= 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is less or equal to the specified object, false if not
+     */
     public static final Function<Long,Boolean> lessOrEqToBy(final IFunction<Long,?> by, final Number object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is less or equal to the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) <= 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is less or equal to the specified object, false if not
+     */
     public static final Function<Long,Boolean> lessOrEqToBy(final IFunction<Long,?> by, final float object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is less or equal to the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) <= 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is less or equal to the specified object, false if not
+     */
     public static final Function<Long,Boolean> lessOrEqToBy(final IFunction<Long,?> by, final double object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is less or equal to the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) <= 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is less or equal to the specified object, false if not
+     */
     public static final Function<Long,Boolean> lessOrEqToBy(final IFunction<Long,?> by, final byte object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is less or equal to the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) <= 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is less or equal to the specified object, false if not
+     */
     public static final Function<Long,Boolean> lessOrEqToBy(final IFunction<Long,?> by, final short object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is less or equal to the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) <= 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is less or equal to the specified object, false if not
+     */
     public static final Function<Long,Boolean> lessOrEqToBy(final IFunction<Long,?> by, final int object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is less or equal to the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) <= 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is less or equal to the specified object, false if not
+     */
     public static final Function<Long,Boolean> lessOrEqToBy(final IFunction<Long,?> by, final long object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is greater than the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) > 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is greater than the specified object, false if not
+     */
     public static final Function<Long,Boolean> greaterThanBy(final IFunction<Long,?> by, final Number object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is greater than the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) > 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is greater than the specified object, false if not
+     */
     public static final Function<Long,Boolean> greaterThanBy(final IFunction<Long,?> by, final float object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is greater than the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) > 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is greater than the specified object, false if not
+     */
     public static final Function<Long,Boolean> greaterThanBy(final IFunction<Long,?> by, final double object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is greater than the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) > 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is greater than the specified object, false if not
+     */
     public static final Function<Long,Boolean> greaterThanBy(final IFunction<Long,?> by, final byte object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is greater than the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) > 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is greater than the specified object, false if not
+     */
     public static final Function<Long,Boolean> greaterThanBy(final IFunction<Long,?> by, final short object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is greater than the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) > 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is greater than the specified object, false if not
+     */
     public static final Function<Long,Boolean> greaterThanBy(final IFunction<Long,?> by, final int object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is greater than the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) > 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is greater than the specified object, false if not
+     */
     public static final Function<Long,Boolean> greaterThanBy(final IFunction<Long,?> by, final long object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is greater or equal to the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) >= 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is greater or equal to the specified object, false if not
+     */
     public static final Function<Long,Boolean> greaterOrEqToBy(final IFunction<Long,?> by, final Number object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }    
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is greater or equal to the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) >= 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is greater or equal to the specified object, false if not
+     */
     public static final Function<Long,Boolean> greaterOrEqToBy(final IFunction<Long,?> by, final float object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }    
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is greater or equal to the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) >= 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is greater or equal to the specified object, false if not
+     */
     public static final Function<Long,Boolean> greaterOrEqToBy(final IFunction<Long,?> by, final double object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }    
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is greater or equal to the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) >= 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is greater or equal to the specified object, false if not
+     */
     public static final Function<Long,Boolean> greaterOrEqToBy(final IFunction<Long,?> by, final byte object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }    
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is greater or equal to the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) >= 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is greater or equal to the specified object, false if not
+     */
     public static final Function<Long,Boolean> greaterOrEqToBy(final IFunction<Long,?> by, final short object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }    
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is greater or equal to the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) >= 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is greater or equal to the specified object, false if not
+     */
     public static final Function<Long,Boolean> greaterOrEqToBy(final IFunction<Long,?> by, final int object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }    
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is greater or equal to the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) >= 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is greater or equal to the specified object, false if not
+     */
     public static final Function<Long,Boolean> greaterOrEqToBy(final IFunction<Long,?> by, final long object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }
