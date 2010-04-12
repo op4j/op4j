@@ -72,19 +72,64 @@ public final class FnShort {
 	public static final Function<Short,String> toStr() {
         return (Function<Short,String>)((Function)FnNumber.toStr());
     }   
-    public static final Function<Short,String> toStr(boolean groupingUsed) {
+    /**
+	 * <p>
+	 * It returns the {@link String} representation of the input number either
+	 * using or not using grouping
+	 * </p>
+	 * 
+	 * @param groupingUsed whether or not grouping will be used
+	 * @return
+	 */
+	public static final Function<Short,String> toStr(boolean groupingUsed) {
         return (Function<Short,String>)((Function)FnNumber.toStr(groupingUsed));
     }
-    public static final Function<Short,String> toStr(Locale locale) {
+    /**
+	 * <p>
+	 * It returns the {@link String} representation of the target number in the given {@link Locale}  
+	 * </p>
+	 * 
+	 * @param locale the {@link Locale} to be used
+	 * @return
+	 */
+	public static final Function<Short,String> toStr(Locale locale) {
         return (Function<Short,String>)((Function)FnNumber.toStr(locale));
     }
-    public static final Function<Short,String> toStr(String locale) {
+    /**
+	 * <p>
+	 * It returns the {@link String} representation of the target number in the given locale  
+	 * </p>
+	 * 
+	 * @param locale the locale to be used
+	 * @return
+	 */
+	public static final Function<Short,String> toStr(String locale) {
         return (Function<Short,String>)((Function)FnNumber.toStr(locale));
     }
-    public static final Function<Short,String> toStr(Locale locale, boolean groupingUsed) {
+    /**
+	 * <p>
+	 * It returns the {@link String} representation of the target number in the given {@link Locale}. Grouping 
+	 * will be used depending on the value of the groupingUsed parameter  
+	 * </p>
+	 * 
+	 * @param locale the {@link Locale} to be used
+	 * @param groupingUsed whether or not grouping will be used
+	 * @return
+	 */
+	public static final Function<Short,String> toStr(Locale locale, boolean groupingUsed) {
         return (Function<Short,String>)((Function)FnNumber.toStr(locale, groupingUsed));
     }   
-    public static final Function<Short,String> toStr(String locale, boolean groupingUsed) {
+    /**
+	 * <p>
+	 * It returns the {@link String} representation of the target number in the given locale. Grouping 
+	 * will be used depending on the value of the groupingUsed parameter  
+	 * </p>
+	 * 
+	 * @param locale the locale to be used
+	 * @param groupingUsed whether or not grouping will be used
+	 * @return
+	 */
+	public static final Function<Short,String> toStr(String locale, boolean groupingUsed) {
         return (Function<Short,String>)((Function)FnNumber.toStr(locale, groupingUsed));
     }
     public static final Function<Short,String> toCurrencyStr() {
