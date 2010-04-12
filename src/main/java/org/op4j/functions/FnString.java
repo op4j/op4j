@@ -1621,6 +1621,15 @@ public final class FnString {
      * 
      * @return true if null, false if not
      */
+    
+
+    /**
+     * <p>
+     * Determines whether the target object is null or not.
+     * </p>
+     * 
+     * @return true if the target object is null, false if not.
+     */
     public static final Function<Object,Boolean> isNull() {
         return FnObject.isNull();
     }
@@ -1632,6 +1641,15 @@ public final class FnString {
      * </p>
      * 
      * @return false if null, true if not
+     */
+    
+
+    /**
+     * <p>
+     * Determines whether the target object is null or not.
+     * </p>
+     * 
+     * @return false if the target object is null, true if not.
      */
     public static final Function<Object,Boolean> isNotNull() {
         return FnObject.isNotNull();

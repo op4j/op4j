@@ -2569,10 +2569,28 @@ public final class FnNumber {
     
     
     
+    
+
+    /**
+     * <p>
+     * Determines whether the target object is null or not.
+     * </p>
+     * 
+     * @return true if the target object is null, false if not.
+     */
     public static final Function<Number,Boolean> isNull() {
         return (Function<Number,Boolean>)((Function)FnObject.isNull());
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the target object is null or not.
+     * </p>
+     * 
+     * @return false if the target object is null, true if not.
+     */
     public static final Function<Number,Boolean> isNotNull() {
         return (Function<Number,Boolean>)((Function)FnObject.isNotNull());
     }

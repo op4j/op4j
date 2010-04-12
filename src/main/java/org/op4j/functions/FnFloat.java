@@ -1285,10 +1285,28 @@ public final class FnFloat {
     public static final Function<Float,Boolean> greaterOrEqToBy(final IFunction<Float,?> by, final long object) {
         return (Function<Float,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the target object is null or not.
+     * </p>
+     * 
+     * @return true if the target object is null, false if not.
+     */
     public static final Function<Float,Boolean> isNull() {
         return (Function<Float,Boolean>)((Function)FnObject.isNull());
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the target object is null or not.
+     * </p>
+     * 
+     * @return false if the target object is null, true if not.
+     */
     public static final Function<Float,Boolean> isNotNull() {
         return (Function<Float,Boolean>)((Function)FnObject.isNotNull());
     }

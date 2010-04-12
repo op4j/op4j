@@ -1567,10 +1567,28 @@ public final class FnDouble {
     public static final Function<Double,Boolean> greaterOrEqToBy(final IFunction<Double,?> by, final long object) {
         return (Function<Double,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the target object is null or not.
+     * </p>
+     * 
+     * @return true if the target object is null, false if not.
+     */
     public static final Function<Double,Boolean> isNull() {
         return (Function<Double,Boolean>)((Function)FnObject.isNull());
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the target object is null or not.
+     * </p>
+     * 
+     * @return false if the target object is null, true if not.
+     */
     public static final Function<Double,Boolean> isNotNull() {
         return (Function<Double,Boolean>)((Function)FnObject.isNotNull());
     }

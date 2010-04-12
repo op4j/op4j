@@ -1286,10 +1286,28 @@ public final class FnShort {
     public static final Function<Short,Boolean> greaterOrEqToBy(final IFunction<Short,?> by, final long object) {
         return (Function<Short,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the target object is null or not.
+     * </p>
+     * 
+     * @return true if the target object is null, false if not.
+     */
     public static final Function<Short,Boolean> isNull() {
         return (Function<Short,Boolean>)((Function)FnObject.isNull());
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the target object is null or not.
+     * </p>
+     * 
+     * @return false if the target object is null, true if not.
+     */
     public static final Function<Short,Boolean> isNotNull() {
         return (Function<Short,Boolean>)((Function)FnObject.isNotNull());
     }

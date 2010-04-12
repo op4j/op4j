@@ -1290,10 +1290,28 @@ public final class FnInteger {
     public static final Function<Integer,Boolean> greaterOrEqToBy(final IFunction<Integer,?> by, final long object) {
         return (Function<Integer,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the target object is null or not.
+     * </p>
+     * 
+     * @return true if the target object is null, false if not.
+     */
     public static final Function<Integer,Boolean> isNull() {
         return (Function<Integer,Boolean>)((Function)FnObject.isNull());
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the target object is null or not.
+     * </p>
+     * 
+     * @return false if the target object is null, true if not.
+     */
     public static final Function<Integer,Boolean> isNotNull() {
         return (Function<Integer,Boolean>)((Function)FnObject.isNotNull());
     }

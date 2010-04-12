@@ -1436,10 +1436,28 @@ public final class FnBigDecimal {
     public static final Function<BigDecimal,Boolean> greaterOrEqToBy(final IFunction<BigDecimal,?> by, final long object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the target object is null or not.
+     * </p>
+     * 
+     * @return true if the target object is null, false if not.
+     */
     public static final Function<BigDecimal,Boolean> isNull() {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.isNull());
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the target object is null or not.
+     * </p>
+     * 
+     * @return false if the target object is null, true if not.
+     */
     public static final Function<BigDecimal,Boolean> isNotNull() {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.isNotNull());
     }

@@ -2105,28 +2105,57 @@ public final class FnObject {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
+
+    /**
+     * <p>
+     * Determines whether the target object is null or not.
+     * </p>
+     * 
+     * @return true if the target object is null, false if not.
+     */
     public static final Function<Object,Boolean> isNull() {
         return IS_NULL;
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the target object is null or not.
+     * </p>
+     * 
+     * @return false if the target object is null, true if not.
+     */
     public static final Function<Object,Boolean> isNotNull() {
         return IS_NOT_NULL;
     }
     
     
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the
+     * specified function on the target object is null or not.
+     * </p>
+     * 
+     * @return true if the function result is null, false if not.
+     */
     public static final <X> Function<X,Boolean> isNullBy(final IFunction<X,?> by) {
         return FnFunc.by(by, IS_NULL);
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the
+     * specified function on the target object is null or not.
+     * </p>
+     * 
+     * @return false if the function result is null, true if not.
+     */
     public static final <X> Function<X,Boolean> isNotNullBy(final IFunction<X,?> by) {
         return FnFunc.by(by, IS_NOT_NULL);
     }
