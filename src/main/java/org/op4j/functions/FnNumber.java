@@ -343,18 +343,60 @@ public final class FnNumber {
         return new ToString(groupingUsed);
     }
     
+    /**
+     * <p>
+     * It returns the {@link String} representation of the target number in the given {@link Locale}  
+     * </p>
+     * 
+     * @param locale the {@link Locale} to be used
+     * @return
+     */
     public static final Function<Number,String> toStr(Locale locale) {
         return new ToString(locale);
     }
+    
+    /**
+     * <p>
+     * It returns the {@link String} representation of the target number in the given locale  
+     * </p>
+     * 
+     * @param locale the locale to be used
+     * @return
+     */
     public static final Function<Number,String> toStr(String locale) {
         return new ToString(locale);
     }
+    
+    
+    /**
+     * <p>
+     * It returns the {@link String} representation of the target number in the given {@link Locale}. Grouping 
+     * will be used depending on the value of the groupingUsed parameter  
+     * </p>
+     * 
+     * @param locale the {@link Locale} to be used
+     * @param groupingUsed whether or not grouping will be used
+     * @return
+     */
     public static final Function<Number,String> toStr(Locale locale, boolean groupingUsed) {
         return new ToString(locale, groupingUsed);
     }   
+    
+    /**
+     * <p>
+     * It returns the {@link String} representation of the target number in the given locale. Grouping 
+     * will be used depending on the value of the groupingUsed parameter  
+     * </p>
+     * 
+     * @param locale the locale to be used
+     * @param groupingUsed whether or not grouping will be used
+     * @return
+     */
     public static final Function<Number,String> toStr(String locale, boolean groupingUsed) {
         return new ToString(locale, groupingUsed);
     }
+    
+    
     public static final Function<Number,String> toStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
         return new ToString(NumberFormatType.NUMBER, locale, 
