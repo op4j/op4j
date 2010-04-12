@@ -265,14 +265,38 @@ public final class FnNumber {
 
     
     
+    /**
+     * It rounds the input with the specified scale and rounding mode
+     * 
+     * @param scale the scale to be used
+     * @param roundingMode the {@link RoundingMode} to round the input with
+     * 
+     * @return the {@link BigDecimal}
+     */
     public static final Function<BigDecimal,BigDecimal> roundBigDecimal(final int scale, final RoundingMode roundingMode) {
         return new RoundBigDecimal(scale, roundingMode);
     }
     
+    /**
+     * It rounds the input with the specified scale and rounding mode
+     * 
+     * @param scale the scale to be used
+     * @param roundingMode the {@link RoundingMode} to round the input with
+     * 
+     * @return the {@link Float}
+     */
     public static final Function<Float,Float> roundFloat(final int scale, final RoundingMode roundingMode) {
         return new RoundFloat(scale, roundingMode);
     }
     
+    /**
+     * It rounds the input with the specified scale and rounding mode
+     * 
+     * @param scale the scale to be used
+     * @param roundingMode the {@link RoundingMode} to round the input with
+     * 
+     * @return the {@link Double}
+     */
     public static final Function<Double,Double> roundDouble(final int scale, final RoundingMode roundingMode) {
         return new RoundDouble(scale, roundingMode);
     }
