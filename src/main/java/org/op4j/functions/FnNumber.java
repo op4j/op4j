@@ -112,7 +112,7 @@ public final class FnNumber {
     
     /**
      * <p>
-     * It converts the input into a {@link Double}
+     * It converts the target into a {@link Double}
      * </p>
      * 
      * @return the {@link Double}
@@ -147,7 +147,7 @@ public final class FnNumber {
     
     /**
      * <p>
-     * It converts the input into a {@link Float} using the given scale and {@link RoundingMode}
+     * It converts the target object into a {@link Float} using the given scale and {@link RoundingMode}
      * </p>
      * 
      * @param scale the scale to be used
@@ -183,7 +183,7 @@ public final class FnNumber {
     
     /**
      * <p>
-     * It converts the input into an {@link Integer}
+     * It converts the target into an {@link Integer}
      * </p>
      * 
      * @return the {@link Integer}
@@ -217,7 +217,7 @@ public final class FnNumber {
     
     /**
      * <p>
-     * It converts the input into a {@link Short} using the given {@link RoundingMode}
+     * It converts the target into a {@link Short} using the given {@link RoundingMode}
      * </p>
      * 
      * @param roundingMode the {@link RoundingMode} to round the input with
@@ -266,7 +266,9 @@ public final class FnNumber {
     
     
     /**
-     * It rounds the input with the specified scale and rounding mode
+     * <p>
+     * It rounds the target object with the specified scale and rounding mode
+     * </p>
      * 
      * @param scale the scale to be used
      * @param roundingMode the {@link RoundingMode} to round the input with
@@ -278,7 +280,9 @@ public final class FnNumber {
     }
     
     /**
-     * It rounds the input with the specified scale and rounding mode
+     * <p>
+     * It rounds the target with the specified scale and rounding mode
+     * </p>
      * 
      * @param scale the scale to be used
      * @param roundingMode the {@link RoundingMode} to round the input with
@@ -290,7 +294,9 @@ public final class FnNumber {
     }
     
     /**
-     * It rounds the input with the specified scale and rounding mode
+     * <p>
+     * It rounds the target object with the specified scale and rounding mode
+     * </p>
      * 
      * @param scale the scale to be used
      * @param roundingMode the {@link RoundingMode} to round the input with
@@ -314,12 +320,29 @@ public final class FnNumber {
     
     
     
+    /**
+     * <p>
+     * It returns the {@link String} representation of the input number 
+     * </p>
+     * 
+     * @return the {@link String} the string representation of the input
+     */
     public static final Function<Number,String> toStr() {
         return new ToString();
     }   
+    /**
+     * <p>
+     * It returns the {@link String} representation of the input number either
+     * using or not using grouping
+     * </p>
+     * 
+     * @param groupingUsed whether or not grouping will be used
+     * @return
+     */
     public static final Function<Number,String> toStr(boolean groupingUsed) {
         return new ToString(groupingUsed);
     }
+    
     public static final Function<Number,String> toStr(Locale locale) {
         return new ToString(locale);
     }
