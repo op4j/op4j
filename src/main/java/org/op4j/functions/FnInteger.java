@@ -739,9 +739,37 @@ public final class FnInteger {
         return (Function<Integer,Boolean>)((Function)FnObject.eqBy(by, object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) == 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final Function<Integer,Boolean> eqValueBy(final IFunction<Integer,?> by, final Number object) {
         return (Function<Integer,Boolean>)((Function)FnObject.eqValueBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) == 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final Function<Integer,Boolean> eqValueBy(final IFunction<Integer,?> by, final int object) {
         return (Function<Integer,Boolean>)((Function)FnObject.eqValueBy(by, object));
     }
@@ -778,9 +806,37 @@ public final class FnInteger {
         return (Function<Integer,Boolean>)((Function)FnObject.notEqBy(by, object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are NOT equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) != 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final Function<Integer,Boolean> notEqValueBy(final IFunction<Integer,?> by, final Number object) {
         return (Function<Integer,Boolean>)((Function)FnObject.notEqValueBy(by, object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are NOT equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) != 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final Function<Integer,Boolean> notEqValueBy(final IFunction<Integer,?> by, final int object) {
         return (Function<Integer,Boolean>)((Function)FnObject.notEqValueBy(by, object));
     }

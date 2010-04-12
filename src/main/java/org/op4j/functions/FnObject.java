@@ -1190,34 +1190,146 @@ public final class FnObject {
         return FnFunc.by(by, eq(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) == 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final Object object) {
         return FnFunc.by(by, eqValue(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) == 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final float object) {
         return FnFunc.by(by, eqValue(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) == 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final double object) {
         return FnFunc.by(by, eqValue(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) == 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final byte object) {
         return FnFunc.by(by, eqValue(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) == 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final short object) {
         return FnFunc.by(by, eqValue(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) == 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final int object) {
         return FnFunc.by(by, eqValue(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) == 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final long object) {
         return FnFunc.by(by, eqValue(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) == 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     */
     public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final boolean object) {
         return FnFunc.by(by, eqValue(object));
     }
@@ -1350,34 +1462,146 @@ public final class FnObject {
         return FnFunc.by(by, notEq(object));
     }
 
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are NOT equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) != 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final Object object) {
         return FnFunc.by(by, notEqValue(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are NOT equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) != 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final float object) {
         return FnFunc.by(by, notEqValue(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are NOT equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) != 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final double object) {
         return FnFunc.by(by, notEqValue(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are NOT equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) != 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final byte object) {
         return FnFunc.by(by, notEqValue(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are NOT equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) != 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final short object) {
         return FnFunc.by(by, notEqValue(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are NOT equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) != 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final int object) {
         return FnFunc.by(by, notEqValue(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are NOT equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) != 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final long object) {
         return FnFunc.by(by, notEqValue(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are NOT equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) != 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     */
     public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final boolean object) {
         return FnFunc.by(by, notEqValue(object));
     }
