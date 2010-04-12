@@ -217,6 +217,28 @@ public final class FnBigDecimal {
                 groupingSeparator, decimalSeparator, 
                 decimalSeparatorAlwaysShown));
     }
+    
+    /**
+     * <p>
+     * It returns the {@link String} representation of the target number in the given {@link Locale}. 
+     * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
+     * </p>
+     * <code>toStr(Locale.ENGLISH, 3, 2, 2, true, ',', true) would return 1,000,00 if target number is 1000</code>
+     * <br>
+     * <code>toStr(Locale.ENGLISH, 2, 2, 4, true, ',', true) would return 00,00 if target number is 0</code>
+     *  
+     * @param locale the {@link Locale} to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingUsed whether or not grouping will be used
+     * @param decimalSeparator decimal separator to be used 
+     * @param decimalSeparatorAlwaysShown whether decimal separator should be shown 
+     * even if the decimal part is zero or not
+     * @return
+     */
     public static final Function<BigDecimal,String> toStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
             char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
@@ -226,6 +248,28 @@ public final class FnBigDecimal {
                 groupingUsed, decimalSeparator, 
                 decimalSeparatorAlwaysShown));
     }
+    
+    /**
+     * <p>
+     * It returns the {@link String} representation of the target number in the given locale. 
+     * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
+     * </p>
+     * <code>toStr(Locale.ENGLISH.toString(), 3, 2, 2, ',', '.', true) would return 1,000.00 if target number is 1000</code>
+     * <br>
+     * <code>toStr(Locale.ENGLISH.toString(), 2, 2, 4, ',', '.', true) would return 00.00 if target number is 0</code>
+     *        
+     * @param locale the locale to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingSeparator grouping separator to be used
+     * @param decimalSeparator decimal separator to be used 
+     * @param decimalSeparatorAlwaysShown whether decimal separator should be shown 
+     * even if the decimal part is zero or not
+     * @return the {@link String} representation of the input
+     */
     public static final Function<BigDecimal,String> toStr(String locale, int minIntegerDigits, 
             int minFractionDigits, int maxFractionDigits, 
             char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
@@ -235,6 +279,28 @@ public final class FnBigDecimal {
                 groupingSeparator, decimalSeparator, 
                 decimalSeparatorAlwaysShown));
     }
+    
+    /**
+     * <p>
+     * It returns the {@link String} representation of the target number in the given locale. 
+     * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
+     * </p>
+     * <code>toStr(Locale.ENGLISH.toString(), 3, 2, 2, true, ',', true) would return 1,000,00 if target number is 1000</code>
+     * <br>
+     * <code>toStr(Locale.ENGLISH.toString(), 2, 2, 4, true, ',', true) would return 00,00 if target number is 0</code>
+     *  
+     * @param locale the locale to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingUsed whether or not grouping will be used
+     * @param decimalSeparator decimal separator to be used 
+     * @param decimalSeparatorAlwaysShown whether decimal separator should be shown 
+     * even if the decimal part is zero or not
+     * @return
+     */
     public static final Function<BigDecimal,String> toStr(String locale, int minIntegerDigits, 
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
             char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
