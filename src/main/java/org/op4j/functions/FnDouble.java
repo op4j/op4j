@@ -64,8 +64,15 @@ public final class FnDouble {
 	
 	public static final Function<Double,Double> roundDouble(final int scale, final RoundingMode roundingMode) {
         return FnNumber.roundDouble(scale, roundingMode);
-    }
-    public static final Function<Double,String> toStr() {
+	}
+	/**
+	 * <p>
+	 * It returns the {@link String} representation of the input number
+	 * </p>
+	 *
+	 * @return the {@link String} the string representation of the input
+	 */
+	public static final Function<Double,String> toStr() {
         return (Function<Double,String>)((Function)FnNumber.toStr());
     }   
     public static final Function<Double,String> toStr(boolean groupingUsed) {

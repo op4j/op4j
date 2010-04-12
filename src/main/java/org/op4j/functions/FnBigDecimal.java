@@ -63,7 +63,14 @@ public final class FnBigDecimal {
 	// From FnNumber
 	public static final Function<BigDecimal,BigDecimal> roundBigDecimal(final int scale, final RoundingMode roundingMode) {
         return FnNumber.roundBigDecimal(scale, roundingMode);
-    }
+	}
+	/**
+	 * <p>
+	 * It returns the {@link String} representation of the input number
+	 * </p>
+	 *
+	 * @return the {@link String} the string representation of the input
+	 */
 	public static final Function<BigDecimal,String> toStr() {
 	    return (Function<BigDecimal,String>)((Function)FnNumber.toStr());
     }   

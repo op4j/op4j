@@ -62,6 +62,13 @@ public final class FnBigInteger {
 
 	
 	// From FnNumber
+	/**
+     * <p>
+     * It returns the {@link String} representation of the input number
+     * </p>
+     *
+     * @return the {@link String} the string representation of the input
+     */
 	public static final Function<BigInteger,String> toStr() {
         return (Function<BigInteger,String>)((Function)FnNumber.toStr());
     }   

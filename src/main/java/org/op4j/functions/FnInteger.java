@@ -64,6 +64,13 @@ public final class FnInteger {
     
     
 	// From FnNumber
+	/**
+	 * <p>
+	 * It returns the {@link String} representation of the input number
+	 * </p>
+	 *
+	 * @return the {@link String} the string representation of the input
+	 */
 	public static final Function<Integer,String> toStr() {
         return (Function<Integer,String>)((Function)FnNumber.toStr());
     }   

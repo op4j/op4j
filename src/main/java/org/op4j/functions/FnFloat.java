@@ -61,8 +61,15 @@ public final class FnFloat {
 
 	
 	// From FnNumber
+	/**
+	 * <p>
+	 * It returns the {@link String} representation of the input number
+	 * </p>
+	 *
+	 * @return the {@link String} the string representation of the input
+	 */
 	public static final Function<Float,String> toStr() {
-        return (Function<Float,String>)((Function)FnNumber.toStr());
+	    return (Function<Float,String>)((Function)FnNumber.toStr());
     }   
     public static final Function<Float,String> toStr(boolean groupingUsed) {
         return (Function<Float,String>)((Function)FnNumber.toStr(groupingUsed));

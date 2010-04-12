@@ -61,6 +61,13 @@ public final class FnLong {
 
 	
 	// From FnNumber
+	/**
+     * <p>
+     * It returns the {@link String} representation of the input number
+     * </p>
+     *
+     * @return the {@link String} the string representation of the input
+     */
 	public static final Function<Long,String> toStr() {
         return (Function<Long,String>)((Function)FnNumber.toStr());
     }   

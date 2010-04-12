@@ -62,7 +62,14 @@ public final class FnShort {
 	
 	
 	// From FnNumber
-    public static final Function<Short,String> toStr() {
+	/**
+	 * <p>
+	 * It returns the {@link String} representation of the input number
+	 * </p>
+	 *
+	 * @return the {@link String} the string representation of the input
+	 */
+	public static final Function<Short,String> toStr() {
         return (Function<Short,String>)((Function)FnNumber.toStr());
     }   
     public static final Function<Short,String> toStr(boolean groupingUsed) {
