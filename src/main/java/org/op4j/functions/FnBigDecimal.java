@@ -798,12 +798,36 @@ public final class FnBigDecimal {
     public static final Function<BigDecimal,Boolean> greaterOrEqTo(final long object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final Function<BigDecimal,Boolean> eqBy(final IFunction<BigDecimal,?> by, final Number object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.eqBy(by, object));
     }
     public static final Function<BigDecimal,Boolean> eqValueBy(final IFunction<BigDecimal,?> by, final Number object) {
         return FnObject.eqValueBy(by, object);
     }
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are NOT equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final Function<BigDecimal,Boolean> notEqBy(final IFunction<BigDecimal,?> by, final Number object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.notEqBy(by, object));
     }

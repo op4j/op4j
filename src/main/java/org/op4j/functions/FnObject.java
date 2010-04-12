@@ -1062,34 +1062,130 @@ public final class FnObject {
 
     
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final Object object) {
         return FnFunc.by(by, eq(object));
     }
         
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final float object) {
         return FnFunc.by(by, eq(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final double object) {
         return FnFunc.by(by, eq(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final byte object) {
         return FnFunc.by(by, eq(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final short object) {
         return FnFunc.by(by, eq(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final int object) {
         return FnFunc.by(by, eq(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final long object) {
         return FnFunc.by(by, eq(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     */
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final boolean object) {
         return FnFunc.by(by, eq(object));
     }
@@ -1126,34 +1222,130 @@ public final class FnObject {
         return FnFunc.by(by, eqValue(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are NOT equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final Object object) {
         return FnFunc.by(by, notEq(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are NOT equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final float object) {
         return FnFunc.by(by, notEq(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are NOT equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final double object) {
         return FnFunc.by(by, notEq(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are NOT equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final byte object) {
         return FnFunc.by(by, notEq(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are NOT equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final short object) {
         return FnFunc.by(by, notEq(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are NOT equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final int object) {
         return FnFunc.by(by, notEq(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are NOT equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final long object) {
         return FnFunc.by(by, notEq(object));
     }
     
+    
+
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are NOT equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     */
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final boolean object) {
         return FnFunc.by(by, notEq(object));
     }
