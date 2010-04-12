@@ -325,7 +325,7 @@ public final class FnNumber {
      * It returns the {@link String} representation of the input number 
      * </p>
      * 
-     * @return the {@link String} the string representation of the input
+     * @return the {@link String} representation of the input
      */
     public static final Function<Number,String> toStr() {
         return new ToString();
@@ -337,7 +337,7 @@ public final class FnNumber {
      * </p>
      * 
      * @param groupingUsed whether or not grouping will be used
-     * @return
+     * @return the {@link String} representation of the input
      */
     public static final Function<Number,String> toStr(boolean groupingUsed) {
         return new ToString(groupingUsed);
@@ -349,7 +349,7 @@ public final class FnNumber {
      * </p>
      * 
      * @param locale the {@link Locale} to be used
-     * @return
+     * @return the {@link String} representation of the input
      */
     public static final Function<Number,String> toStr(Locale locale) {
         return new ToString(locale);
@@ -361,7 +361,7 @@ public final class FnNumber {
      * </p>
      * 
      * @param locale the locale to be used
-     * @return
+     * @return the {@link String} representation of the input
      */
     public static final Function<Number,String> toStr(String locale) {
         return new ToString(locale);
@@ -376,7 +376,7 @@ public final class FnNumber {
      * 
      * @param locale the {@link Locale} to be used
      * @param groupingUsed whether or not grouping will be used
-     * @return
+     * @return the {@link String} representation of the input
      */
     public static final Function<Number,String> toStr(Locale locale, boolean groupingUsed) {
         return new ToString(locale, groupingUsed);
@@ -390,13 +390,31 @@ public final class FnNumber {
      * 
      * @param locale the locale to be used
      * @param groupingUsed whether or not grouping will be used
-     * @return
+     * @return the {@link String} representation of the input
      */
     public static final Function<Number,String> toStr(String locale, boolean groupingUsed) {
         return new ToString(locale, groupingUsed);
     }
     
     
+    /**
+     * <p>
+     * It returns the {@link String} representation of the target number in the given {@link Locale}. 
+     * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
+     * </p>
+     * <code>toStr(Locale.ENGLISH, 3, 2, 2, true) would return 010.00 if target number is 10</code>
+     * <br>
+     * <code>toStr(Locale.ENGLISH, 2, 2, 4, true) would return 00.00 if target number is 0</code>
+     *    
+     * @param locale the {@link Locale} to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits
+     * @param groupingUsed whether or not grouping will be used
+     * @return the {@link String} representation of the input
+     */
     public static final Function<Number,String> toStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
         return new ToString(NumberFormatType.NUMBER, locale, 
@@ -404,6 +422,25 @@ public final class FnNumber {
                 minFractionDigits, maxFractionDigits,
                 groupingUsed);
     }
+    
+    /**
+     * <p>
+     * It returns the {@link String} representation of the target number in the given locale. 
+     * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
+     * </p>
+     * <code>toStr(Locale.ENGLISH, 3, 2, 2, true) would return 010.00 if target number is 10</code>
+     * <br>
+     * <code>toStr(Locale.ENGLISH, 2, 2, 4, true) would return 00.00 if target number is 0</code>
+     *    
+     * @param locale the locale to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits
+     * @param groupingUsed whether or not grouping will be used
+     * @return the {@link String} representation of the input
+     */
     public static final Function<Number,String> toStr(String locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
         return new ToString(NumberFormatType.NUMBER, locale, 
@@ -411,6 +448,8 @@ public final class FnNumber {
                 minFractionDigits, maxFractionDigits,
                 groupingUsed);
     }
+    
+    
     public static final Function<Number,String> toStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, 
             char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {

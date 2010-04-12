@@ -67,7 +67,7 @@ public final class FnShort {
 	 * It returns the {@link String} representation of the input number
 	 * </p>
 	 *
-	 * @return the {@link String} the string representation of the input
+	 * @return the {@link String} representation of the input
 	 */
 	public static final Function<Short,String> toStr() {
         return (Function<Short,String>)((Function)FnNumber.toStr());
@@ -79,7 +79,7 @@ public final class FnShort {
 	 * </p>
 	 * 
 	 * @param groupingUsed whether or not grouping will be used
-	 * @return
+	 * @return the {@link String} representation of the input
 	 */
 	public static final Function<Short,String> toStr(boolean groupingUsed) {
         return (Function<Short,String>)((Function)FnNumber.toStr(groupingUsed));
@@ -90,7 +90,7 @@ public final class FnShort {
 	 * </p>
 	 * 
 	 * @param locale the {@link Locale} to be used
-	 * @return
+	 * @return the {@link String} representation of the input
 	 */
 	public static final Function<Short,String> toStr(Locale locale) {
         return (Function<Short,String>)((Function)FnNumber.toStr(locale));
@@ -101,7 +101,7 @@ public final class FnShort {
 	 * </p>
 	 * 
 	 * @param locale the locale to be used
-	 * @return
+	 * @return the {@link String} representation of the input
 	 */
 	public static final Function<Short,String> toStr(String locale) {
         return (Function<Short,String>)((Function)FnNumber.toStr(locale));
@@ -114,7 +114,7 @@ public final class FnShort {
 	 * 
 	 * @param locale the {@link Locale} to be used
 	 * @param groupingUsed whether or not grouping will be used
-	 * @return
+	 * @return the {@link String} representation of the input
 	 */
 	public static final Function<Short,String> toStr(Locale locale, boolean groupingUsed) {
         return (Function<Short,String>)((Function)FnNumber.toStr(locale, groupingUsed));
@@ -127,7 +127,7 @@ public final class FnShort {
 	 * 
 	 * @param locale the locale to be used
 	 * @param groupingUsed whether or not grouping will be used
-	 * @return
+	 * @return the {@link String} representation of the input
 	 */
 	public static final Function<Short,String> toStr(String locale, boolean groupingUsed) {
         return (Function<Short,String>)((Function)FnNumber.toStr(locale, groupingUsed));

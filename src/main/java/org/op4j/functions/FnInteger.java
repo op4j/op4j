@@ -69,7 +69,7 @@ public final class FnInteger {
 	 * It returns the {@link String} representation of the input number
 	 * </p>
 	 *
-	 * @return the {@link String} the string representation of the input
+	 * @return the {@link String} representation of the input
 	 */
 	public static final Function<Integer,String> toStr() {
         return (Function<Integer,String>)((Function)FnNumber.toStr());
@@ -81,7 +81,7 @@ public final class FnInteger {
 	 * </p>
 	 * 
 	 * @param groupingUsed whether or not grouping will be used
-	 * @return
+	 * @return the {@link String} representation of the input
 	 */
 	public static final Function<Integer,String> toStr(boolean groupingUsed) {
         return (Function<Integer,String>)((Function)FnNumber.toStr(groupingUsed));
@@ -92,7 +92,7 @@ public final class FnInteger {
 	 * </p>
 	 * 
 	 * @param locale the {@link Locale} to be used
-	 * @return
+	 * @return the {@link String} representation of the input
 	 */
 	public static final Function<Integer,String> toStr(Locale locale) {
         return (Function<Integer,String>)((Function)FnNumber.toStr(locale));
@@ -103,7 +103,7 @@ public final class FnInteger {
 	 * </p>
 	 * 
 	 * @param locale the locale to be used
-	 * @return
+	 * @return the {@link String} representation of the input
 	 */
 	public static final Function<Integer,String> toStr(String locale) {
         return (Function<Integer,String>)((Function)FnNumber.toStr(locale));
@@ -116,7 +116,7 @@ public final class FnInteger {
 	 * 
 	 * @param locale the {@link Locale} to be used
 	 * @param groupingUsed whether or not grouping will be used
-	 * @return
+	 * @return the {@link String} representation of the input
 	 */
 	public static final Function<Integer,String> toStr(Locale locale, boolean groupingUsed) {
         return (Function<Integer,String>)((Function)FnNumber.toStr(locale, groupingUsed));
@@ -129,7 +129,7 @@ public final class FnInteger {
 	 * 
 	 * @param locale the locale to be used
 	 * @param groupingUsed whether or not grouping will be used
-	 * @return
+	 * @return the {@link String} representation of the input
 	 */
 	public static final Function<Integer,String> toStr(String locale, boolean groupingUsed) {
         return (Function<Integer,String>)((Function)FnNumber.toStr(locale, groupingUsed));
