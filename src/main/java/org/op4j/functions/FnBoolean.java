@@ -46,8 +46,12 @@ public final class FnBoolean {
     private static final ToNumber<Short> TO_SHORT = new ToNumber<Short>(Types.SHORT);
     private static final ToNumber<Byte> TO_BYTE = new ToNumber<Byte>(Types.BYTE);
     private static final Negate NEGATE = new Negate();
-    private static final Function<Object,Boolean> IS_TRUE = eq(true);
-    private static final Function<Object,Boolean> IS_FALSE = eq(false); 
+    
+    @SuppressWarnings("unchecked")
+    private static final Function<Boolean,Boolean> IS_TRUE = (Function<Boolean,Boolean>) (Function<?,?>) eq(true);
+    
+    @SuppressWarnings("unchecked")
+    private static final Function<Boolean,Boolean> IS_FALSE = (Function<Boolean,Boolean>) (Function<?,?>) eq(false);
 
     
     
@@ -56,52 +60,115 @@ public final class FnBoolean {
 	}
 
 	
-	public static final Function<Number,Boolean> toBoolean() {
-        return FnNumber.toBoolean();
-    }
 	
 	
 	
-	
+
+	/**
+	 * <p>
+	 * Converts a Boolean to a BigDecimal. true = 1, false = 0.
+	 * </p>
+	 * 
+	 * @return a BigDecimal representing the boolean target.
+	 */
 	public static final Function<Boolean,BigDecimal> toBigDecimal() {
         return TO_BIG_DECIMAL;
     }
     
     
+    /**
+     * <p>
+     * Converts a Boolean to a BigInteger. true = 1, false = 0.
+     * </p>
+     * 
+     * @return a BigInteger representing the boolean target.
+     */
     public static final Function<Boolean,BigInteger> toBigInteger() {
         return TO_BIG_INTEGER;
     }
     
     
+    /**
+     * <p>
+     * Converts a Boolean to a Double. true = 1, false = 0.
+     * </p>
+     * 
+     * @return a Double representing the boolean target.
+     */
     public static final Function<Boolean,Double> toDouble() {
         return TO_DOUBLE;
     }
     
     
+    /**
+     * <p>
+     * Converts a Boolean to a Float. true = 1, false = 0.
+     * </p>
+     * 
+     * @return a Float representing the boolean target.
+     */
     public static final Function<Boolean,Float> toFloat() {
         return TO_FLOAT;
     }
     
     
+    /**
+     * <p>
+     * Converts a Boolean to a Long. true = 1, false = 0.
+     * </p>
+     * 
+     * @return a Long representing the boolean target.
+     */
     public static final Function<Boolean,Long> toLong() {
         return TO_LONG;
     }
     
     
+    /**
+     * <p>
+     * Converts a Boolean to a Integer. true = 1, false = 0.
+     * </p>
+     * 
+     * @return a Integer representing the boolean target.
+     */
     public static final Function<Boolean,Integer> toInteger() {
         return TO_INTEGER;
     }
     
     
+    /**
+     * <p>
+     * Converts a Boolean to a Short. true = 1, false = 0.
+     * </p>
+     * 
+     * @return a Short representing the boolean target.
+     */
     public static final Function<Boolean,Short> toShort() {
         return TO_SHORT;
     }
     
     
+    /**
+     * <p>
+     * Converts a Boolean to a Byte. true = 1, false = 0.
+     * </p>
+     * 
+     * @return a Byte representing the boolean target.
+     */
     public static final Function<Boolean,Byte> toByte() {
         return TO_BYTE;
     }
 
+    
+    
+    /**
+     * <p>
+     * Negates the target Boolean, returning Boolean.FALSE if the
+     * target object is Boolean.TRUE, and Boolean.TRUE if it is Boolean.FALSE.
+     * </p>
+     * 
+     * @return the negation of the target object.
+     */
     public static final Function<Boolean,Boolean> negate() {
         return NEGATE;
     }
@@ -234,12 +301,28 @@ public final class FnBoolean {
 
     
     
-    
-    public static final Function<Object,Boolean> isTrue() {
+    /**
+     * <p>
+     * Returns true if the target object is <tt>Boolean.TRUE</tt>, false 
+     * if it is <tt>Boolean.FALSE</tt>.
+     * </p>
+     * 
+     * @return true if the target object is Boolean.TRUE, false if Boolean.FALSE
+     */
+    public static final Function<Boolean,Boolean> isTrue() {
         return IS_TRUE;
     }
+
     
-    public static final Function<Object,Boolean> isFalse() {
+    /**
+     * <p>
+     * Returns true if the target object is <tt>Boolean.FALSE</tt>, false 
+     * if it is <tt>Boolean.TRUE</tt>.
+     * </p>
+     * 
+     * @return true if the target object is Boolean.FALSE, false if Boolean.TRUE
+     */
+    public static final Function<Boolean,Boolean> isFalse() {
         return IS_FALSE;
     }
     
@@ -255,14 +338,9 @@ public final class FnBoolean {
     
     
     
-    
-    
-    
-    
-    
     /**
      * <p>
-     * Takes two boolean functions (<tt>Function&lt;?,Boolean&gt;</tt> as
+     * Takes two boolean functions (<tt>Function&lt;?,Boolean&gt;</tt>) as
      * parameters and returns another one which returns true if both functions
      * return true, and false if not.
      * </p>
@@ -278,7 +356,7 @@ public final class FnBoolean {
     
     /**
      * <p>
-     * Takes two boolean functions (<tt>Function&lt;?,Boolean&gt;</tt> as
+     * Takes two boolean functions (<tt>Function&lt;?,Boolean&gt;</tt>) as
      * parameters and returns another one which returns true if any of the functions
      * returns true, and false if not.
      * </p>
@@ -294,7 +372,7 @@ public final class FnBoolean {
     
     /**
      * <p>
-     * Takes a boolean function (<tt>Function&lt;?,Boolean&gt;</tt> as a
+     * Takes a boolean function (<tt>Function&lt;?,Boolean&gt;</tt>) as a
      * parameter and returns another one which returns true if the specified function
      * returns false, and false if the function returns true.
      * </p>
@@ -368,6 +446,7 @@ public final class FnBoolean {
     
     
 	
+    
 	
     
     static final class ToNumber<X extends Number> extends AbstractNullAsNullFunction<Boolean,X> {
