@@ -44,12 +44,22 @@ public final class FnFunc {
     
     
     
-    
-    
-    
+
+    /**
+     * <p>
+     * Takes two boolean functions (<tt>Function&lt;?,Boolean&gt;</tt> as
+     * parameters and returns another one which returns true if both functions
+     * return true, and false if not.
+     * </p>
+     * 
+     * @param left the left side of the "and" operation
+     * @param right the right side of the "and" operation
+     * @return a function returning true if both functions return true, and false if not.
+     */
     public static final <X,R extends X> Function<R,Boolean> and(final IFunction<X,Boolean> left, final IFunction<? super R,Boolean> right) {
         return FnBoolean.and(left, right);
     }
+    
     
     public static final <X,R extends X> Function<R,Boolean> or(final IFunction<X,Boolean> left, final IFunction<? super R,Boolean> right) {
         return FnBoolean.or(left, right);

@@ -22,6 +22,36 @@ package org.op4j.functions;
 
 
 /**
+ * <p>
+ * The interface that every <i>function</i> in op4j must implement.
+ * </p>
+ * <p>
+ * This interface only defines one method: {@link #execute(Object, ExecCtx)},
+ * which receives the target object on which the function will be executed
+ * and an {@link ExecCtx} object containing some metadata about the
+ * execution (for example, the index in an iteration).
+ * </p>
+ * <p>
+ * When creating an implementation class, any function parameters should be 
+ * arguments to the implementation's constructor.
+ * </p>
+ * <p>
+ * Functions can be created anonymously:
+ * </p>
+ * <pre>
+ * String result = 
+ *   Op.on(value).exec(new IFunction<Integer,String>() {
+ *       public String execute(Integer input, ExecCtx ctx) throws Exception {
+ *          return "The input number is: " + input;
+ *       }
+ *   }).get();
+ * </pre>
+ * <p>
+ * If you are creating a <i>function class</i> (instead of an anonymous implementation),
+ * you should consider extending the {@link Function} abstract class, which
+ * includes an easier-to-use {@link Function#execute(Object)} method for executing
+ * the function outside an op4j expression (if needed).
+ * </p>
  * 
  * @since 1.0
  * 
@@ -30,6 +60,28 @@ package org.op4j.functions;
  */
 public interface IFunction<T,R> {
     
+    
+    /**
+     * <p>
+     * Executes the function on the current target object, which is passed
+     * as the <tt>input</tt> parameter. The {@link ExecCtx} parameter 
+     * provides some metadata related to the execution, like the index in
+     * an iteration.
+     * </p>
+     * <p>
+     * The execution of a function can throw any exception.
+     * </p>
+     * <p> 
+     * If you intend to call the <tt>execute</tt> method directly on any of 
+     * your functions (outside an op4j expression), you might prefer using 
+     * {@link Function#execute(Object)} instead.
+     * </p>
+     * 
+     * @param input the target object on which the function is to be executed
+     * @param ctx the context (metadata) for the function execution
+     * @return the result of executing the function
+     * @throws Exception 
+     */
     public R execute(final T input, final ExecCtx ctx) throws Exception;
 
 }
