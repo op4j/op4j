@@ -134,21 +134,82 @@ public final class FnInteger {
 	public static final Function<Integer,String> toStr(String locale, boolean groupingUsed) {
         return (Function<Integer,String>)((Function)FnNumber.toStr(locale, groupingUsed));
     }
+	
+	/**
+     * <p>
+     * It returns the {@link String} representation of the target as a currency in the
+     * default {@link Locale}
+     * </p>
+     * 
+     * @return the {@link String} representation of the input as a currency
+     */
     public static final Function<Integer,String> toCurrencyStr() {
         return (Function<Integer,String>)((Function)FnNumber.toCurrencyStr());
     }
+    
+    /**
+     * <p>
+     * It returns the {@link String} representation of the target as a currency in the
+     * default {@link Locale}
+     * </p>
+     * 
+     * @param groupingUsed whether or not grouping will be used
+     * @return the {@link String} representation of the input as a currency
+     */
     public static final Function<Integer,String> toCurrencyStr(boolean groupingUsed) {
         return (Function<Integer,String>)((Function)FnNumber.toCurrencyStr(groupingUsed));
     }
+    
+    /**
+     * <p>
+     * It returns the {@link String} representation of the target as a currency in the
+     * given {@link Locale}
+     * </p>
+     * 
+     * @param locale the {@link Locale} to be used
+     * @return the {@link String} representation of the input as a currency
+     */
     public static final Function<Integer,String> toCurrencyStr(Locale locale) {
         return (Function<Integer,String>)((Function)FnNumber.toCurrencyStr(locale));
     }
+    
+    /**
+     * <p>
+     * It returns the {@link String} representation of the target as a currency in the
+     * given locale
+     * </p>
+     * 
+     * @param locale the locale to be used
+     * @return the {@link String} representation of the input as a currency
+     */
     public static final Function<Integer,String> toCurrencyStr(String locale) {
         return (Function<Integer,String>)((Function)FnNumber.toCurrencyStr(locale));
     }
+    
+    /**
+     * <p>
+     * It returns the {@link String} representation of the target as a currency in the
+     * given {@link Locale}
+     * </p>
+     * 
+     * @param locale the {@link Locale} to be used
+     * @param groupingUsed whether or not grouping will be used
+     * @return the {@link String} representation of the input as a currency
+     */
     public static final Function<Integer,String> toCurrencyStr(Locale locale, boolean groupingUsed) {
         return (Function<Integer,String>)((Function)FnNumber.toCurrencyStr(locale, groupingUsed));
     }
+    
+    /**
+     * <p>
+     * It returns the {@link String} representation of the target as a currency in the
+     * given locale
+     * </p>
+     * 
+     * @param locale the locale to be used
+     * @param groupingUsed whether or not grouping will be used
+     * @return the {@link String} representation of the input as a currency
+     */
     public static final Function<Integer,String> toCurrencyStr(String locale, boolean groupingUsed) {
         return (Function<Integer,String>)((Function)FnNumber.toCurrencyStr(locale, groupingUsed));
     }
