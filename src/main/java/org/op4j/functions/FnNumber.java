@@ -664,9 +664,9 @@ public final class FnNumber {
      * given {@link Locale}.
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
-     * <code>toStr(Locale.UK, 3, 2, 2, true) would return &pound;1,000.00 if target number is 1000</code>
+     * <code>toCurrencyStr(Locale.UK, 3, 2, 2, true) would return &pound;1,000.00 if target number is 1000</code>
      * <br>
-     * <code>toStr(Locale.UK, 2, 2, 4, true) would return &pound;00.00 if target number is 0</code>
+     * <code>toCurrencyStr(Locale.UK, 2, 2, 4, true) would return &pound;00.00 if target number is 0</code>
      * 
      * 
      * @param locale the {@link Locale} to be used
@@ -692,9 +692,9 @@ public final class FnNumber {
      * given locale taking into account the given parameters.
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
-     * <code>toStr(Locale.UK.toString(), 3, 2, 2, true) would return &pound;1,000.00 if target number is 1000</code>
+     * <code>toCurrencyStr(Locale.UK.toString(), 3, 2, 2, true) would return &pound;1,000.00 if target number is 1000</code>
      * <br>
-     * <code>toStr(Locale.UK.toString(), 2, 2, 4, true) would return &pound;00.00 if target number is 0</code>
+     * <code>toCurrencyStr(Locale.UK.toString(), 2, 2, 4, true) would return &pound;00.00 if target number is 0</code>
      * 
      * 
      * @param locale the locale to be used
@@ -720,9 +720,9 @@ public final class FnNumber {
      * given {@link Locale} taking into account the given parameters.
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
-     * <code>toStr(Locale.UK, 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
+     * <code>toCurrencyStr(Locale.UK, 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
      * <br>
-     * <code>toStr(Locale.UK, 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
+     * <code>toCurrencyStr(Locale.UK, 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
      * 
      * @param locale the {@link Locale} to be used
      * @param minIntegerDigits minimum number of integer digits so, if not enough in the
@@ -753,9 +753,9 @@ public final class FnNumber {
      * given {@link Locale} taking into account the given parameters.
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
-     * <code>toStr(Locale.UK.toString(), 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
+     * <code>toCurrencyStr(Locale.UK.toString(), 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
      * <br>
-     * <code>toStr(Locale.UK.toString(), 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
+     * <code>toCurrencyStr(Locale.UK.toString(), 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
      * 
      * @param locale the {@link Locale} to be used
      * @param minIntegerDigits minimum number of integer digits so, if not enough in the
@@ -786,9 +786,9 @@ public final class FnNumber {
      * given locale taking into account the given parameters.
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
-     * <code>toStr(Locale.UK, 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
+     * <code>toCurrencyStr(Locale.UK, 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
      * <br>
-     * <code>toStr(Locale.UK, 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
+     * <code>toCurrencyStr(Locale.UK, 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
      * 
      * @param locale the locale to be used
      * @param minIntegerDigits minimum number of integer digits so, if not enough in the
@@ -819,9 +819,9 @@ public final class FnNumber {
      * given locale taking into account the given parameters.
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
-     * <code>toStr(Locale.UK.toString(), 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
+     * <code>toCurrencyStr(Locale.UK.toString(), 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
      * <br>
-     * <code>toStr(Locale.UK.toString(), 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
+     * <code>toCurrencyStr(Locale.UK.toString(), 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
      * 
      * @param locale the locale to be used
      * @param minIntegerDigits minimum number of integer digits so, if not enough in the
@@ -848,24 +848,64 @@ public final class FnNumber {
     
     
     
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number.
+     * </p>
+     * 
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Number,String> toPercentStr() {
         return new ToString(NumberFormatType.PERCENT);
     }
+    
+    /**
+     * @param groupingUsed whether or not grouping will be used
+     * @return
+     */
     public static final Function<Number,String> toPercentStr(boolean groupingUsed) {
         return new ToString(NumberFormatType.PERCENT, groupingUsed);
     }
+    /**
+     * @param locale the {@link Locale} to be used
+     * @return
+     */
     public static final Function<Number,String> toPercentStr(Locale locale) {
         return new ToString(NumberFormatType.PERCENT, locale);
     }
+    /**
+     * @param locale the locale to be used
+     * @return
+     */
     public static final Function<Number,String> toPercentStr(String locale) {
         return new ToString(NumberFormatType.PERCENT, locale);
     }
+    /**
+     * @param locale the {@link Locale} to be used
+     * @param groupingUsed whether or not grouping will be used
+     * @return
+     */
     public static final Function<Number,String> toPercentStr(Locale locale, boolean groupingUsed) {
         return new ToString(NumberFormatType.PERCENT, locale, groupingUsed);
     }   
+    /**
+     * @param locale the locale to be used
+     * @param groupingUsed whether or not grouping will be used
+     * @return
+     */
     public static final Function<Number,String> toPercentStr(String locale, boolean groupingUsed) {
         return new ToString(NumberFormatType.PERCENT, locale, groupingUsed);
     }
+    /**
+     * @param locale the {@link Locale} to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingUsed whether or not grouping will be used
+     * @return
+     */
     public static final Function<Number,String> toPercentStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
         return new ToString(NumberFormatType.PERCENT, locale, 
@@ -873,6 +913,16 @@ public final class FnNumber {
                 minFractionDigits, maxFractionDigits,
                 groupingUsed);
     }
+    /**
+     * @param locale the locale to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingUsed whether or not grouping will be used
+     * @return
+     */
     public static final Function<Number,String> toPercentStr(String locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
         return new ToString(NumberFormatType.PERCENT, locale, 
@@ -880,6 +930,19 @@ public final class FnNumber {
                 minFractionDigits, maxFractionDigits,
                 groupingUsed);
     }
+    /**
+     * @param locale the {@link Locale} to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingSeparator grouping separator to be used
+     * @param decimalSeparator decimal separator to be used 
+     * @param decimalSeparatorAlwaysShown whether decimal separator should be shown 
+     * even if the decimal part is zero or not
+     * @return
+     */
     public static final Function<Number,String> toPercentStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, 
             char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
@@ -889,6 +952,19 @@ public final class FnNumber {
                 true, groupingSeparator, decimalSeparator, 
                 decimalSeparatorAlwaysShown);
     }
+    /**
+     * @param locale the locale to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingUsed whether or not grouping will be used
+     * @param decimalSeparator decimal separator to be used 
+     * @param decimalSeparatorAlwaysShown whether decimal separator should be shown 
+     * even if the decimal part is zero or not
+     * @return
+     */
     public static final Function<Number,String> toPercentStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
             char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
@@ -898,6 +974,19 @@ public final class FnNumber {
                 groupingUsed, decimalSeparator, 
                 decimalSeparatorAlwaysShown);
     }
+    /**
+     * @param locale the locale to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingSeparator grouping separator to be used
+     * @param decimalSeparator decimal separator to be used 
+     * @param decimalSeparatorAlwaysShown whether decimal separator should be shown 
+     * even if the decimal part is zero or not
+     * @return
+     */
     public static final Function<Number,String> toPercentStr(String locale, int minIntegerDigits, 
             int minFractionDigits, int maxFractionDigits, 
             char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
@@ -907,6 +996,19 @@ public final class FnNumber {
                 true, groupingSeparator, decimalSeparator, 
                 decimalSeparatorAlwaysShown);
     }
+    /**
+     * @param locale the locale to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingUsed whether or not grouping will be used
+     * @param decimalSeparator decimal separator to be used 
+     * @param decimalSeparatorAlwaysShown whether decimal separator should be shown 
+     * even if the decimal part is zero or not
+     * @return
+     */
     public static final Function<Number,String> toPercentStr(String locale, int minIntegerDigits, 
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
             char decimalSeparator, boolean decimalSeparatorAlwaysShown) {

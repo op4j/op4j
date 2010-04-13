@@ -397,9 +397,9 @@ public final class FnDouble {
      * given {@link Locale}.
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
-     * <code>toStr(Locale.UK, 3, 2, 2, true) would return &pound;1,000.00 if target number is 1000</code>
+     * <code>toCurrencyStr(Locale.UK, 3, 2, 2, true) would return &pound;1,000.00 if target number is 1000</code>
      * <br>
-     * <code>toStr(Locale.UK, 2, 2, 4, true) would return &pound;00.00 if target number is 0</code>
+     * <code>toCurrencyStr(Locale.UK, 2, 2, 4, true) would return &pound;00.00 if target number is 0</code>
      * 
      * 
      * @param locale the {@link Locale} to be used
@@ -425,9 +425,9 @@ public final class FnDouble {
      * given locale taking into account the given parameters.
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
-     * <code>toStr(Locale.UK.toString(), 3, 2, 2, true) would return &pound;1,000.00 if target number is 1000</code>
+     * <code>toCurrencyStr(Locale.UK.toString(), 3, 2, 2, true) would return &pound;1,000.00 if target number is 1000</code>
      * <br>
-     * <code>toStr(Locale.UK.toString(), 2, 2, 4, true) would return &pound;00.00 if target number is 0</code>
+     * <code>toCurrencyStr(Locale.UK.toString(), 2, 2, 4, true) would return &pound;00.00 if target number is 0</code>
      * 
      * 
      * @param locale the locale to be used
@@ -453,9 +453,9 @@ public final class FnDouble {
      * given {@link Locale} taking into account the given parameters.
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
-     * <code>toStr(Locale.UK, 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
+     * <code>toCurrencyStr(Locale.UK, 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
      * <br>
-     * <code>toStr(Locale.UK, 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
+     * <code>toCurrencyStr(Locale.UK, 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
      * 
      * @param locale the {@link Locale} to be used
      * @param minIntegerDigits minimum number of integer digits so, if not enough in the
@@ -486,9 +486,9 @@ public final class FnDouble {
      * given {@link Locale} taking into account the given parameters.
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
-     * <code>toStr(Locale.UK.toString(), 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
+     * <code>toCurrencyStr(Locale.UK.toString(), 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
      * <br>
-     * <code>toStr(Locale.UK.toString(), 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
+     * <code>toCurrencyStr(Locale.UK.toString(), 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
      * 
      * @param locale the {@link Locale} to be used
      * @param minIntegerDigits minimum number of integer digits so, if not enough in the
@@ -519,9 +519,9 @@ public final class FnDouble {
      * given locale taking into account the given parameters.
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
-     * <code>toStr(Locale.UK, 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
+     * <code>toCurrencyStr(Locale.UK, 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
      * <br>
-     * <code>toStr(Locale.UK, 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
+     * <code>toCurrencyStr(Locale.UK, 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
      * 
      * @param locale the locale to be used
      * @param minIntegerDigits minimum number of integer digits so, if not enough in the
@@ -552,9 +552,9 @@ public final class FnDouble {
      * given locale taking into account the given parameters.
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
-     * <code>toStr(Locale.UK.toString(), 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
+     * <code>toCurrencyStr(Locale.UK.toString(), 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
      * <br>
-     * <code>toStr(Locale.UK.toString(), 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
+     * <code>toCurrencyStr(Locale.UK.toString(), 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
      * 
      * @param locale the locale to be used
      * @param minIntegerDigits minimum number of integer digits so, if not enough in the
