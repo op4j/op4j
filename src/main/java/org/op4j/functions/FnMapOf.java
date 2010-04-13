@@ -143,7 +143,7 @@ public final class FnMapOf<K,V> {
     }
     
     public final Function<Map<K,V>,Boolean> notContainsKey(final K key) {
-        return FnFunc.not(containsKey(key));
+        return FnBoolean.not(containsKey(key));
     }
     
     public final Function<Map<K,V>,Boolean> containsAllKeys(final K... keys) {

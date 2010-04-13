@@ -180,7 +180,7 @@ public final class FnBoolean {
      * @return true if both objects are equal, false if not.
      */
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final Boolean object) {
-        return FnFunc.by(by, eq(object));
+        return FnFunc.chain(by, eq(object));
     }
     
     
@@ -196,7 +196,7 @@ public final class FnBoolean {
      * @return true if both objects are equal, false if not.
      */
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final boolean object) {
-        return FnFunc.by(by, eq(object));
+        return FnFunc.chain(by, eq(object));
     }
     
     
@@ -213,7 +213,7 @@ public final class FnBoolean {
      * @return false if both objects are equal, true if not.
      */
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final Boolean object) {
-        return FnFunc.by(by, notEq(object));
+        return FnFunc.chain(by, notEq(object));
     }
     
     
@@ -229,7 +229,7 @@ public final class FnBoolean {
      * @return false if both objects are equal, true if not.
      */
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final boolean object) {
-        return FnFunc.by(by, notEq(object));
+        return FnFunc.chain(by, notEq(object));
     }
 
     
@@ -260,22 +260,51 @@ public final class FnBoolean {
     
     
     
+    /**
+     * <p>
+     * Takes two boolean functions (<tt>Function&lt;?,Boolean&gt;</tt> as
+     * parameters and returns another one which returns true if both functions
+     * return true, and false if not.
+     * </p>
+     * 
+     * @param left the left side of the "and" operation
+     * @param right the right side of the "and" operation
+     * @return a function returning true if both functions return true, and false if not.
+     */
     public static final <X, R extends X> Function<R,Boolean> and(final IFunction<X,Boolean> left, final IFunction<? super R,Boolean> right) {
         return new And<X,R>(left, right);
     }
+
     
+    /**
+     * <p>
+     * Takes two boolean functions (<tt>Function&lt;?,Boolean&gt;</tt> as
+     * parameters and returns another one which returns true if any of the functions
+     * returns true, and false if not.
+     * </p>
+     * 
+     * @param left the left side of the "or" operation
+     * @param right the right side of the "or" operation
+     * @return a function returning true if any of the functions return true, and false if not.
+     */
     public static final <X, R extends X> Function<R,Boolean> or(final IFunction<X,Boolean> left, final IFunction<? super R,Boolean> right) {
         return new Or<X,R>(left, right);
     }
-    
-    public static final <T> Function<T,Boolean> not(final IFunction<T, Boolean> function) {
-        return new Not<T>(function);
-    }
 
     
-    
-    public static final <X,Y> Function<X,Boolean> by(final IFunction<X,Y> by, final IFunction<? super Y, Boolean> eval) {
-        return FnFunc.by(by, eval);
+    /**
+     * <p>
+     * Takes a boolean function (<tt>Function&lt;?,Boolean&gt;</tt> as a
+     * parameter and returns another one which returns true if the specified function
+     * returns false, and false if the function returns true.
+     * </p>
+     * 
+     * @param function the function to be negated
+     * @return a function returning true if the specified function returns false, and false if 
+     *         it returns true.
+     */
+    public static final <T> Function<T,Boolean> not(final IFunction<T, Boolean> function) {
+        return new Not<T>(function);
     }
     
     
@@ -318,7 +347,7 @@ public final class FnBoolean {
      * @return true if the function result is null, false if not.
      */
     public static final <X> Function<X,Boolean> isNullBy(final IFunction<X,?> by) {
-        return by(by, FnObject.isNull());
+        return FnFunc.chain(by, FnObject.isNull());
     }
     
     
@@ -332,7 +361,7 @@ public final class FnBoolean {
      * @return false if the function result is null, true if not.
      */
     public static final <X> Function<X,Boolean> isNotNullBy(final IFunction<X,?> by) {
-        return by(by, FnObject.isNotNull());
+        return FnFunc.chain(by, FnObject.isNotNull());
     }
     
     

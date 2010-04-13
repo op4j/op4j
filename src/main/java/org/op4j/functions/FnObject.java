@@ -1075,7 +1075,7 @@ public final class FnObject {
      * @return true if both objects are equal, false if not.
      */
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final Object object) {
-        return FnFunc.by(by, eq(object));
+        return FnFunc.chain(by, eq(object));
     }
         
     
@@ -1091,7 +1091,7 @@ public final class FnObject {
      * @return true if both objects are equal, false if not.
      */
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final float object) {
-        return FnFunc.by(by, eq(object));
+        return FnFunc.chain(by, eq(object));
     }
     
     
@@ -1107,7 +1107,7 @@ public final class FnObject {
      * @return true if both objects are equal, false if not.
      */
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final double object) {
-        return FnFunc.by(by, eq(object));
+        return FnFunc.chain(by, eq(object));
     }
     
     
@@ -1123,7 +1123,7 @@ public final class FnObject {
      * @return true if both objects are equal, false if not.
      */
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final byte object) {
-        return FnFunc.by(by, eq(object));
+        return FnFunc.chain(by, eq(object));
     }
     
     
@@ -1139,7 +1139,7 @@ public final class FnObject {
      * @return true if both objects are equal, false if not.
      */
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final short object) {
-        return FnFunc.by(by, eq(object));
+        return FnFunc.chain(by, eq(object));
     }
     
     
@@ -1155,7 +1155,7 @@ public final class FnObject {
      * @return true if both objects are equal, false if not.
      */
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final int object) {
-        return FnFunc.by(by, eq(object));
+        return FnFunc.chain(by, eq(object));
     }
     
     
@@ -1171,7 +1171,7 @@ public final class FnObject {
      * @return true if both objects are equal, false if not.
      */
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final long object) {
-        return FnFunc.by(by, eq(object));
+        return FnFunc.chain(by, eq(object));
     }
     
     
@@ -1187,7 +1187,7 @@ public final class FnObject {
      * @return true if both objects are equal, false if not.
      */
     public static final <X> Function<X,Boolean> eqBy(final IFunction<X,?> by, final boolean object) {
-        return FnFunc.by(by, eq(object));
+        return FnFunc.chain(by, eq(object));
     }
     
     
@@ -1205,7 +1205,7 @@ public final class FnObject {
      * @return true if both objects are equal according to "compareTo", false if not.
      */
     public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final Object object) {
-        return FnFunc.by(by, eqValue(object));
+        return FnFunc.chain(by, eqValue(object));
     }
     
     
@@ -1223,7 +1223,7 @@ public final class FnObject {
      * @return true if both objects are equal according to "compareTo", false if not.
      */
     public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final float object) {
-        return FnFunc.by(by, eqValue(object));
+        return FnFunc.chain(by, eqValue(object));
     }
     
     
@@ -1241,7 +1241,7 @@ public final class FnObject {
      * @return true if both objects are equal according to "compareTo", false if not.
      */
     public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final double object) {
-        return FnFunc.by(by, eqValue(object));
+        return FnFunc.chain(by, eqValue(object));
     }
     
     
@@ -1259,7 +1259,7 @@ public final class FnObject {
      * @return true if both objects are equal according to "compareTo", false if not.
      */
     public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final byte object) {
-        return FnFunc.by(by, eqValue(object));
+        return FnFunc.chain(by, eqValue(object));
     }
     
     
@@ -1277,7 +1277,7 @@ public final class FnObject {
      * @return true if both objects are equal according to "compareTo", false if not.
      */
     public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final short object) {
-        return FnFunc.by(by, eqValue(object));
+        return FnFunc.chain(by, eqValue(object));
     }
     
     
@@ -1295,7 +1295,7 @@ public final class FnObject {
      * @return true if both objects are equal according to "compareTo", false if not.
      */
     public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final int object) {
-        return FnFunc.by(by, eqValue(object));
+        return FnFunc.chain(by, eqValue(object));
     }
     
     
@@ -1313,7 +1313,7 @@ public final class FnObject {
      * @return true if both objects are equal according to "compareTo", false if not.
      */
     public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final long object) {
-        return FnFunc.by(by, eqValue(object));
+        return FnFunc.chain(by, eqValue(object));
     }
     
     
@@ -1331,7 +1331,7 @@ public final class FnObject {
      * @return true if both objects are equal according to "compareTo", false if not.
      */
     public static final <X> Function<X,Boolean> eqValueBy(final IFunction<X,?> by, final boolean object) {
-        return FnFunc.by(by, eqValue(object));
+        return FnFunc.chain(by, eqValue(object));
     }
     
     
@@ -1347,7 +1347,7 @@ public final class FnObject {
      * @return false if both objects are equal, true if not.
      */
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final Object object) {
-        return FnFunc.by(by, notEq(object));
+        return FnFunc.chain(by, notEq(object));
     }
     
     
@@ -1363,7 +1363,7 @@ public final class FnObject {
      * @return false if both objects are equal, true if not.
      */
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final float object) {
-        return FnFunc.by(by, notEq(object));
+        return FnFunc.chain(by, notEq(object));
     }
     
     
@@ -1379,7 +1379,7 @@ public final class FnObject {
      * @return false if both objects are equal, true if not.
      */
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final double object) {
-        return FnFunc.by(by, notEq(object));
+        return FnFunc.chain(by, notEq(object));
     }
     
     
@@ -1395,7 +1395,7 @@ public final class FnObject {
      * @return false if both objects are equal, true if not.
      */
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final byte object) {
-        return FnFunc.by(by, notEq(object));
+        return FnFunc.chain(by, notEq(object));
     }
     
     
@@ -1411,7 +1411,7 @@ public final class FnObject {
      * @return false if both objects are equal, true if not.
      */
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final short object) {
-        return FnFunc.by(by, notEq(object));
+        return FnFunc.chain(by, notEq(object));
     }
     
     
@@ -1427,7 +1427,7 @@ public final class FnObject {
      * @return false if both objects are equal, true if not.
      */
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final int object) {
-        return FnFunc.by(by, notEq(object));
+        return FnFunc.chain(by, notEq(object));
     }
     
     
@@ -1443,7 +1443,7 @@ public final class FnObject {
      * @return false if both objects are equal, true if not.
      */
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final long object) {
-        return FnFunc.by(by, notEq(object));
+        return FnFunc.chain(by, notEq(object));
     }
     
     
@@ -1459,7 +1459,7 @@ public final class FnObject {
      * @return false if both objects are equal, true if not.
      */
     public static final <X> Function<X,Boolean> notEqBy(final IFunction<X,?> by, final boolean object) {
-        return FnFunc.by(by, notEq(object));
+        return FnFunc.chain(by, notEq(object));
     }
 
     
@@ -1477,7 +1477,7 @@ public final class FnObject {
      * @return false if both objects are equal according to "compareTo", true if not.
      */
     public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final Object object) {
-        return FnFunc.by(by, notEqValue(object));
+        return FnFunc.chain(by, notEqValue(object));
     }
     
     
@@ -1495,7 +1495,7 @@ public final class FnObject {
      * @return false if both objects are equal according to "compareTo", true if not.
      */
     public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final float object) {
-        return FnFunc.by(by, notEqValue(object));
+        return FnFunc.chain(by, notEqValue(object));
     }
     
     
@@ -1513,7 +1513,7 @@ public final class FnObject {
      * @return false if both objects are equal according to "compareTo", true if not.
      */
     public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final double object) {
-        return FnFunc.by(by, notEqValue(object));
+        return FnFunc.chain(by, notEqValue(object));
     }
     
     
@@ -1531,7 +1531,7 @@ public final class FnObject {
      * @return false if both objects are equal according to "compareTo", true if not.
      */
     public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final byte object) {
-        return FnFunc.by(by, notEqValue(object));
+        return FnFunc.chain(by, notEqValue(object));
     }
     
     
@@ -1549,7 +1549,7 @@ public final class FnObject {
      * @return false if both objects are equal according to "compareTo", true if not.
      */
     public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final short object) {
-        return FnFunc.by(by, notEqValue(object));
+        return FnFunc.chain(by, notEqValue(object));
     }
     
     
@@ -1567,7 +1567,7 @@ public final class FnObject {
      * @return false if both objects are equal according to "compareTo", true if not.
      */
     public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final int object) {
-        return FnFunc.by(by, notEqValue(object));
+        return FnFunc.chain(by, notEqValue(object));
     }
     
     
@@ -1585,7 +1585,7 @@ public final class FnObject {
      * @return false if both objects are equal according to "compareTo", true if not.
      */
     public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final long object) {
-        return FnFunc.by(by, notEqValue(object));
+        return FnFunc.chain(by, notEqValue(object));
     }
     
     
@@ -1603,7 +1603,7 @@ public final class FnObject {
      * @return false if both objects are equal according to "compareTo", true if not.
      */
     public static final <X> Function<X,Boolean> notEqValueBy(final IFunction<X,?> by, final boolean object) {
-        return FnFunc.by(by, notEqValue(object));
+        return FnFunc.chain(by, notEqValue(object));
     }
     
     
@@ -1625,7 +1625,7 @@ public final class FnObject {
      * @return true if function result is less than the specified object, false if not
      */
     public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final Object object) {
-        return FnFunc.by(by, lessThan(object));
+        return FnFunc.chain(by, lessThan(object));
     }
     
     
@@ -1642,7 +1642,7 @@ public final class FnObject {
      * @return true if function result is less than the specified object, false if not
      */
     public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final float object) {
-        return FnFunc.by(by, lessThan(object));
+        return FnFunc.chain(by, lessThan(object));
     }
     
     
@@ -1659,7 +1659,7 @@ public final class FnObject {
      * @return true if function result is less than the specified object, false if not
      */
     public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final double object) {
-        return FnFunc.by(by, lessThan(object));
+        return FnFunc.chain(by, lessThan(object));
     }
     
     
@@ -1676,7 +1676,7 @@ public final class FnObject {
      * @return true if function result is less than the specified object, false if not
      */
     public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final byte object) {
-        return FnFunc.by(by, lessThan(object));
+        return FnFunc.chain(by, lessThan(object));
     }
     
     
@@ -1693,7 +1693,7 @@ public final class FnObject {
      * @return true if function result is less than the specified object, false if not
      */
     public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final short object) {
-        return FnFunc.by(by, lessThan(object));
+        return FnFunc.chain(by, lessThan(object));
     }
     
     
@@ -1710,7 +1710,7 @@ public final class FnObject {
      * @return true if function result is less than the specified object, false if not
      */
     public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final int object) {
-        return FnFunc.by(by, lessThan(object));
+        return FnFunc.chain(by, lessThan(object));
     }
     
     
@@ -1727,7 +1727,7 @@ public final class FnObject {
      * @return true if function result is less than the specified object, false if not
      */
     public static final <X> Function<X,Boolean> lessThanBy(final IFunction<X,?> by, final long object) {
-        return FnFunc.by(by, lessThan(object));
+        return FnFunc.chain(by, lessThan(object));
     }
 
     
@@ -1746,7 +1746,7 @@ public final class FnObject {
      * @return true if function result is less or equal to the specified object, false if not
      */
     public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final Object object) {
-        return FnFunc.by(by, lessOrEqTo(object));
+        return FnFunc.chain(by, lessOrEqTo(object));
     }
     
     
@@ -1763,7 +1763,7 @@ public final class FnObject {
      * @return true if function result is less or equal to the specified object, false if not
      */
     public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final float object) {
-        return FnFunc.by(by, lessOrEqTo(object));
+        return FnFunc.chain(by, lessOrEqTo(object));
     }
     
     
@@ -1780,7 +1780,7 @@ public final class FnObject {
      * @return true if function result is less or equal to the specified object, false if not
      */
     public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final double object) {
-        return FnFunc.by(by, lessOrEqTo(object));
+        return FnFunc.chain(by, lessOrEqTo(object));
     }
     
     
@@ -1797,7 +1797,7 @@ public final class FnObject {
      * @return true if function result is less or equal to the specified object, false if not
      */
     public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final byte object) {
-        return FnFunc.by(by, lessOrEqTo(object));
+        return FnFunc.chain(by, lessOrEqTo(object));
     }
     
     
@@ -1814,7 +1814,7 @@ public final class FnObject {
      * @return true if function result is less or equal to the specified object, false if not
      */
     public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final short object) {
-        return FnFunc.by(by, lessOrEqTo(object));
+        return FnFunc.chain(by, lessOrEqTo(object));
     }
     
     
@@ -1831,7 +1831,7 @@ public final class FnObject {
      * @return true if function result is less or equal to the specified object, false if not
      */
     public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final int object) {
-        return FnFunc.by(by, lessOrEqTo(object));
+        return FnFunc.chain(by, lessOrEqTo(object));
     }
     
     
@@ -1848,7 +1848,7 @@ public final class FnObject {
      * @return true if function result is less or equal to the specified object, false if not
      */
     public static final <X> Function<X,Boolean> lessOrEqToBy(final IFunction<X,?> by, final long object) {
-        return FnFunc.by(by, lessOrEqTo(object));
+        return FnFunc.chain(by, lessOrEqTo(object));
     }
     
     
@@ -1873,7 +1873,7 @@ public final class FnObject {
      * @return true if function result is greater than the specified object, false if not
      */
     public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final Object object) {
-        return FnFunc.by(by, greaterThan(object));
+        return FnFunc.chain(by, greaterThan(object));
     }
     
     
@@ -1890,7 +1890,7 @@ public final class FnObject {
      * @return true if function result is greater than the specified object, false if not
      */
     public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final float object) {
-        return FnFunc.by(by, greaterThan(object));
+        return FnFunc.chain(by, greaterThan(object));
     }
     
     
@@ -1907,7 +1907,7 @@ public final class FnObject {
      * @return true if function result is greater than the specified object, false if not
      */
     public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final double object) {
-        return FnFunc.by(by, greaterThan(object));
+        return FnFunc.chain(by, greaterThan(object));
     }
     
     
@@ -1924,7 +1924,7 @@ public final class FnObject {
      * @return true if function result is greater than the specified object, false if not
      */
     public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final byte object) {
-        return FnFunc.by(by, greaterThan(object));
+        return FnFunc.chain(by, greaterThan(object));
     }
     
     
@@ -1941,7 +1941,7 @@ public final class FnObject {
      * @return true if function result is greater than the specified object, false if not
      */
     public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final short object) {
-        return FnFunc.by(by, greaterThan(object));
+        return FnFunc.chain(by, greaterThan(object));
     }
     
     
@@ -1958,7 +1958,7 @@ public final class FnObject {
      * @return true if function result is greater than the specified object, false if not
      */
     public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final int object) {
-        return FnFunc.by(by, greaterThan(object));
+        return FnFunc.chain(by, greaterThan(object));
     }
     
     
@@ -1975,7 +1975,7 @@ public final class FnObject {
      * @return true if function result is greater than the specified object, false if not
      */
     public static final <X> Function<X,Boolean> greaterThanBy(final IFunction<X,?> by, final long object) {
-        return FnFunc.by(by, greaterThan(object));
+        return FnFunc.chain(by, greaterThan(object));
     }
 
     
@@ -1994,7 +1994,7 @@ public final class FnObject {
      * @return true if function result is greater or equal to the specified object, false if not
      */
     public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final Object object) {
-        return FnFunc.by(by, greaterOrEqTo(object));
+        return FnFunc.chain(by, greaterOrEqTo(object));
     }
     
     
@@ -2011,7 +2011,7 @@ public final class FnObject {
      * @return true if function result is greater or equal to the specified object, false if not
      */
     public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final float object) {
-        return FnFunc.by(by, greaterOrEqTo(object));
+        return FnFunc.chain(by, greaterOrEqTo(object));
     }
     
     
@@ -2028,7 +2028,7 @@ public final class FnObject {
      * @return true if function result is greater or equal to the specified object, false if not
      */
     public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final double object) {
-        return FnFunc.by(by, greaterOrEqTo(object));
+        return FnFunc.chain(by, greaterOrEqTo(object));
     }
     
     
@@ -2045,7 +2045,7 @@ public final class FnObject {
      * @return true if function result is greater or equal to the specified object, false if not
      */
     public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final byte object) {
-        return FnFunc.by(by, greaterOrEqTo(object));
+        return FnFunc.chain(by, greaterOrEqTo(object));
     }
     
     
@@ -2062,7 +2062,7 @@ public final class FnObject {
      * @return true if function result is greater or equal to the specified object, false if not
      */
     public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final short object) {
-        return FnFunc.by(by, greaterOrEqTo(object));
+        return FnFunc.chain(by, greaterOrEqTo(object));
     }
     
     
@@ -2079,7 +2079,7 @@ public final class FnObject {
      * @return true if function result is greater or equal to the specified object, false if not
      */
     public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final int object) {
-        return FnFunc.by(by, greaterOrEqTo(object));
+        return FnFunc.chain(by, greaterOrEqTo(object));
     }
     
     
@@ -2096,7 +2096,7 @@ public final class FnObject {
      * @return true if function result is greater or equal to the specified object, false if not
      */
     public static final <X> Function<X,Boolean> greaterOrEqToBy(final IFunction<X,?> by, final long object) {
-        return FnFunc.by(by, greaterOrEqTo(object));
+        return FnFunc.chain(by, greaterOrEqTo(object));
     }
     
     
@@ -2143,7 +2143,7 @@ public final class FnObject {
      * @return true if the function result is null, false if not.
      */
     public static final <X> Function<X,Boolean> isNullBy(final IFunction<X,?> by) {
-        return FnFunc.by(by, IS_NULL);
+        return FnFunc.chain(by, IS_NULL);
     }
     
     
@@ -2157,7 +2157,7 @@ public final class FnObject {
      * @return false if the function result is null, true if not.
      */
     public static final <X> Function<X,Boolean> isNotNullBy(final IFunction<X,?> by) {
-        return FnFunc.by(by, IS_NOT_NULL);
+        return FnFunc.chain(by, IS_NOT_NULL);
     }
     
     

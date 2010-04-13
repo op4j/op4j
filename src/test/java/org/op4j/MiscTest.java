@@ -552,7 +552,7 @@ watch.start();
                 Op.on(233).exec(FnBoolean.and(FnNumber.greaterThan(44), FnObject.lessThan(534))).get());
         
         System.out.println(
-                Op.on(1233).ifTrue(FnFunc.not(FnFunc.and(FnNumber.greaterThan(44), FnObject.lessThan(534)))).exec(FnInteger.add(10)).get());
+                Op.on(1233).ifTrue(FnBoolean.not(FnBoolean.and(FnNumber.greaterThan(44), FnObject.lessThan(534)))).exec(FnInteger.add(10)).get());
         
         System.out.println(
                 Op.on(1233).exec(FnFunc.chain(FnInteger.add(10), FnNumber.greaterThan(1200))).get());
@@ -590,7 +590,7 @@ watch.start();
             }
         };
         
-        Function<Integer,Boolean> afnb = FnFunc.and(afnb1,afnb2);
+        Function<Integer,Boolean> afnb = FnBoolean.and(afnb1,afnb2);
         
         Function<Number,Boolean> bfnb1 = new Function<Number, Boolean>() {
             public Boolean execute(Number input, ExecCtx ctx) throws Exception {
@@ -602,12 +602,12 @@ watch.start();
                 return Boolean.TRUE;
             }
         };
-        Function<Integer,Boolean> bfnb = FnFunc.and(bfnb1,bfnb2);
+        Function<Integer,Boolean> bfnb = FnBoolean.and(bfnb1,bfnb2);
     
         Op.on(231).ifTrue(afnb).get();
         Op.on(231).ifTrue(bfnb).get();
         
-        Op.on(231).ifTrue(FnFunc.and(afnb1,afnb2)).get();
+        Op.on(231).ifTrue(FnBoolean.and(afnb1,afnb2)).get();
         Op.on(231).ifTrue(FnBoolean.and(bfnb1,bfnb2)).get();
         
         Function<Object,Boolean> cfnb1 = new Function<Object, Boolean>() {
@@ -623,7 +623,7 @@ watch.start();
                 return Boolean.TRUE;
             }
         };
-        Function<Number,Boolean> cfnb = FnFunc.and(cfnb1,cfnb2);
+        Function<Number,Boolean> cfnb = FnBoolean.and(cfnb1,cfnb2);
         
         Function<Number,Boolean> dfnb1 = new Function<Number, Boolean>() {
 
@@ -637,13 +637,13 @@ watch.start();
                 return Boolean.TRUE;
             }
         };
-        Function<Number,Boolean> dfnb = FnFunc.and(dfnb1,dfnb2);
+        Function<Number,Boolean> dfnb = FnBoolean.and(dfnb1,dfnb2);
     
         Op.on(231.2).ifTrue(cfnb).get();
         Op.on(231.1).ifTrue(dfnb).get();
         
-        Op.on(231.2).ifTrue(FnFunc.and(cfnb1,cfnb2)).get();
-        Op.on(231.1).ifTrue(FnFunc.and(dfnb1,dfnb2)).get();
+        Op.on(231.2).ifTrue(FnBoolean.and(cfnb1,cfnb2)).get();
+        Op.on(231.1).ifTrue(FnBoolean.and(dfnb1,dfnb2)).get();
     
         
         Function<Number,Integer> fnz1 = new Function<Number, Integer>() {

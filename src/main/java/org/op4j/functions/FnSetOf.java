@@ -276,7 +276,7 @@ public class FnSetOf<T> {
     }
     
     public final Function<Set<T>,Boolean> notContains(final T object) {
-        return FnFunc.not(contains(object));
+        return FnBoolean.not(contains(object));
     }
     
     public final Function<Set<T>,Boolean> containsAll(final T... objects) {

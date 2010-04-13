@@ -44,35 +44,6 @@ public final class FnFunc {
     
     
     
-
-    /**
-     * <p>
-     * Takes two boolean functions (<tt>Function&lt;?,Boolean&gt;</tt> as
-     * parameters and returns another one which returns true if both functions
-     * return true, and false if not.
-     * </p>
-     * 
-     * @param left the left side of the "and" operation
-     * @param right the right side of the "and" operation
-     * @return a function returning true if both functions return true, and false if not.
-     */
-    public static final <X,R extends X> Function<R,Boolean> and(final IFunction<X,Boolean> left, final IFunction<? super R,Boolean> right) {
-        return FnBoolean.and(left, right);
-    }
-    
-    
-    public static final <X,R extends X> Function<R,Boolean> or(final IFunction<X,Boolean> left, final IFunction<? super R,Boolean> right) {
-        return FnBoolean.or(left, right);
-    }
-    
-    public static final <T> Function<T,Boolean> not(final IFunction<T, Boolean> function) {
-        return FnBoolean.not(function);
-    }
-    
-    public static final <X,Y> Function<X,Boolean> by(final IFunction<X,Y> by, final IFunction<? super Y,Boolean> eval) {
-        return chain(by, eval);
-    }
-    
     
     public static final <X,Y,Z> Function<X,Z> chain(final IFunction<X,Y> fn1, final IFunction<? super Y,Z> fn2) {
         return new Chain<X,Y,Z>(fn1, fn2);
@@ -124,43 +95,43 @@ public final class FnFunc {
     }
     
     public static final <T> Function<T,T> ifNullOrTrueThen(final Type<T> targetType, final IFunction<? super T, Boolean> condition, final IFunction<? super T,? extends T> thenFunction) {
-        return ifTrueThen(targetType, FnFunc.or(FnObject.isNull(),condition), thenFunction);
+        return ifTrueThen(targetType, FnBoolean.or(FnObject.isNull(),condition), thenFunction);
     }
     
     public static final <T,R> Function<T,R> ifNullOrTrueThenElse(
             final Type<T> targetType, 
             final IFunction<? super T, Boolean> condition, final IFunction<? super T,R> thenFunction, final IFunction<? super T,R> elseFunction) {
-        return ifTrueThenElse(targetType, FnFunc.or(FnObject.isNull(),condition), thenFunction, elseFunction);
+        return ifTrueThenElse(targetType, FnBoolean.or(FnObject.isNull(),condition), thenFunction, elseFunction);
     }
     
     public static final <T> Function<T,T> ifNullOrFalseThen(final Type<T> targetType, final IFunction<? super T, Boolean> condition, final IFunction<? super T,? extends T> thenFunction) {
-        return ifTrueThen(targetType, FnFunc.or(FnObject.isNull(), FnFunc.not(condition)), thenFunction);
+        return ifTrueThen(targetType, FnBoolean.or(FnObject.isNull(), FnBoolean.not(condition)), thenFunction);
     }
     
     public static final <T,R> Function<T,R> ifNullOrFalseThenElse(
             final Type<T> targetType, 
             final IFunction<? super T, Boolean> condition, final IFunction<? super T,R> thenFunction, final IFunction<? super T,R> elseFunction) {
-        return ifTrueThenElse(targetType, FnFunc.or(FnObject.isNull(), FnFunc.not(condition)), thenFunction, elseFunction);
+        return ifTrueThenElse(targetType, FnBoolean.or(FnObject.isNull(), FnBoolean.not(condition)), thenFunction, elseFunction);
     }
     
     public static final <T> Function<T,T> ifNotNullAndTrueThen(final Type<T> targetType, final IFunction<? super T, Boolean> condition, final IFunction<? super T,? extends T> thenFunction) {
-        return ifTrueThen(targetType, FnFunc.and(FnObject.isNotNull(),condition), thenFunction);
+        return ifTrueThen(targetType, FnBoolean.and(FnObject.isNotNull(),condition), thenFunction);
     }
     
     public static final <T,R> Function<T,R> ifNotNullAndTrueThenElse(
             final Type<T> targetType, 
             final IFunction<? super T, Boolean> condition, final IFunction<? super T,R> thenFunction, final IFunction<? super T,R> elseFunction) {
-        return ifTrueThenElse(targetType, FnFunc.and(FnObject.isNotNull(),condition), thenFunction, elseFunction);
+        return ifTrueThenElse(targetType, FnBoolean.and(FnObject.isNotNull(),condition), thenFunction, elseFunction);
     }
     
     public static final <T> Function<T,T> ifNotNullAndFalseThen(final Type<T> targetType, final IFunction<? super T, Boolean> condition, final IFunction<? super T,? extends T> thenFunction) {
-        return ifTrueThen(targetType, FnFunc.and(FnObject.isNotNull(), FnFunc.not(condition)), thenFunction);
+        return ifTrueThen(targetType, FnBoolean.and(FnObject.isNotNull(), FnBoolean.not(condition)), thenFunction);
     }
     
     public static final <T,R> Function<T,R> ifNotNullAndFalseThenElse(
             final Type<T> targetType, 
             final IFunction<? super T, Boolean> condition, final IFunction<? super T,R> thenFunction, final IFunction<? super T,R> elseFunction) {
-        return ifTrueThenElse(targetType, FnFunc.and(FnObject.isNotNull(), FnFunc.not(condition)), thenFunction, elseFunction);
+        return ifTrueThenElse(targetType, FnBoolean.and(FnObject.isNotNull(), FnBoolean.not(condition)), thenFunction, elseFunction);
     }
     
     

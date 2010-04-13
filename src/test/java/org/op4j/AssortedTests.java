@@ -26,8 +26,8 @@ import org.op4j.functions.ExecCtx;
 import org.op4j.functions.Fn;
 import org.op4j.functions.FnArray;
 import org.op4j.functions.FnBigDecimal;
+import org.op4j.functions.FnBoolean;
 import org.op4j.functions.FnDouble;
-import org.op4j.functions.FnFunc;
 import org.op4j.functions.FnInteger;
 import org.op4j.functions.FnLong;
 import org.op4j.functions.FnNumber;
@@ -721,14 +721,14 @@ public class AssortedTests extends TestCase {
         assertTrue("null notequals to Double.valueOf(34)", result.get(1)); 
         
         
-        Function<Double,Boolean> fn = FnFunc.or(FnNumber.isNull(), FnDouble.isNull());
+        Function<Double,Boolean> fn = FnBoolean.or(FnNumber.isNull(), FnDouble.isNull());
         Op.on(13434d).exec(fn).get();
-        Op.on(13434d).exec(FnFunc.or(FnNumber.isNull(), FnDouble.isNull())).get();
+        Op.on(13434d).exec(FnBoolean.or(FnNumber.isNull(), FnDouble.isNull())).get();
         
 
-        Function<Double,Boolean> fn1 = FnFunc.or(FnDouble.isNull(), FnNumber.isNull());
+        Function<Double,Boolean> fn1 = FnBoolean.or(FnDouble.isNull(), FnNumber.isNull());
         Op.on(13434d).exec(fn1).get();
-        Op.on(13434d).exec(FnFunc.or(FnDouble.isNull(), FnNumber.isNull())).get();
+        Op.on(13434d).exec(FnBoolean.or(FnDouble.isNull(), FnNumber.isNull())).get();
         
     }
     
