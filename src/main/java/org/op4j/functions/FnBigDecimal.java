@@ -237,7 +237,7 @@ public final class FnBigDecimal {
      * @param decimalSeparator decimal separator to be used 
      * @param decimalSeparatorAlwaysShown whether decimal separator should be shown 
      * even if the decimal part is zero or not
-     * @return
+     * @return the {@link String} representation of the input
      */
     public static final Function<BigDecimal,String> toStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
@@ -299,7 +299,7 @@ public final class FnBigDecimal {
      * @param decimalSeparator decimal separator to be used 
      * @param decimalSeparatorAlwaysShown whether decimal separator should be shown 
      * even if the decimal part is zero or not
-     * @return
+     * @return the {@link String} representation of the input
      */
     public static final Function<BigDecimal,String> toStr(String locale, int minIntegerDigits, 
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
