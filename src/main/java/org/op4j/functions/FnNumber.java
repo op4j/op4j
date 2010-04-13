@@ -689,7 +689,7 @@ public final class FnNumber {
     /**
      * <p>
      * It returns the {@link String} representation of the target as a currency in the
-     * given locale.
+     * given locale taking into account the given parameters.
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
      * <code>toStr(Locale.UK.toString(), 3, 2, 2, true) would return &pound;1,000.00 if target number is 1000</code>
@@ -713,6 +713,30 @@ public final class FnNumber {
                 minFractionDigits, maxFractionDigits,
                 groupingUsed);
     }
+    
+    /**
+     * <p>
+     * It returns the {@link String} representation of the target as a currency in the
+     * given {@link Locale} taking into account the given parameters.
+     * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
+     * </p>
+     * <code>toStr(Locale.UK, 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
+     * <br>
+     * <code>toStr(Locale.UK, 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
+     * 
+     * @param locale the {@link Locale} to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingSeparator grouping separator to be used
+     * @param decimalSeparator decimal separator to be used 
+     * @param decimalSeparatorAlwaysShown whether decimal separator should be shown 
+     * even if the decimal part is zero or not
+     * 
+     * @return the {@link String} representation of the input as a currency
+     */
     public static final Function<Number,String> toCurrencyStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, 
             char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
@@ -722,6 +746,30 @@ public final class FnNumber {
                 true, groupingSeparator, decimalSeparator, 
                 decimalSeparatorAlwaysShown);
     }
+    
+    /**
+     * <p>
+     * It returns the {@link String} representation of the target as a currency in the
+     * given {@link Locale} taking into account the given parameters.
+     * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
+     * </p>
+     * <code>toStr(Locale.UK.toString(), 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
+     * <br>
+     * <code>toStr(Locale.UK.toString(), 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
+     * 
+     * @param locale the {@link Locale} to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingUsed whether or not grouping will be used
+     * @param decimalSeparator decimal separator to be used 
+     * @param decimalSeparatorAlwaysShown whether decimal separator should be shown 
+     * even if the decimal part is zero or not
+     * 
+     * @return the {@link String} representation of the input as a currency
+     */
     public static final Function<Number,String> toCurrencyStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
             char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
@@ -731,6 +779,30 @@ public final class FnNumber {
                 groupingUsed, decimalSeparator, 
                 decimalSeparatorAlwaysShown);
     }
+    
+    /**
+     * <p>
+     * It returns the {@link String} representation of the target as a currency in the
+     * given locale taking into account the given parameters.
+     * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
+     * </p>
+     * <code>toStr(Locale.UK, 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
+     * <br>
+     * <code>toStr(Locale.UK, 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
+     * 
+     * @param locale the locale to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingSeparator grouping separator to be used
+     * @param decimalSeparator decimal separator to be used 
+     * @param decimalSeparatorAlwaysShown whether decimal separator should be shown 
+     * even if the decimal part is zero or not
+     * 
+     * @return the {@link String} representation of the input as a currency
+     */
     public static final Function<Number,String> toCurrencyStr(String locale, int minIntegerDigits, 
             int minFractionDigits, int maxFractionDigits, 
             char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
@@ -740,6 +812,30 @@ public final class FnNumber {
                 true, groupingSeparator, decimalSeparator, 
                 decimalSeparatorAlwaysShown);
     }
+    
+    /**
+     * <p>
+     * It returns the {@link String} representation of the target as a currency in the
+     * given locale taking into account the given parameters.
+     * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
+     * </p>
+     * <code>toStr(Locale.UK.toString(), 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
+     * <br>
+     * <code>toStr(Locale.UK.toString(), 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
+     * 
+     * @param locale the locale to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingUsed whether or not grouping will be used
+     * @param decimalSeparator decimal separator to be used 
+     * @param decimalSeparatorAlwaysShown whether decimal separator should be shown 
+     * even if the decimal part is zero or not
+     * 
+     * @return the {@link String} representation of the input as a currency
+     */
     public static final Function<Number,String> toCurrencyStr(String locale, int minIntegerDigits, 
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
             char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
@@ -3310,9 +3406,12 @@ public final class FnNumber {
                 // It returns a clone of decimalFormatSymbols
                 DecimalFormatSymbols decimalFormatSymbols = asDecimalFormat.getDecimalFormatSymbols();
                 decimalFormatSymbols.setDecimalSeparator(decimalSeparator); 
+                decimalFormatSymbols.setMonetaryDecimalSeparator(decimalSeparator); 
                 asDecimalFormat.setDecimalSeparatorAlwaysShown(decimalSeparatorAlwaysShown);
                 // Update decimalFormatSymbols
                 asDecimalFormat.setDecimalFormatSymbols(decimalFormatSymbols);
+                asDecimalFormat.setDecimalFormatSymbols(decimalFormatSymbols);
+                
             }
         }
         
