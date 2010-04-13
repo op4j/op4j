@@ -191,7 +191,6 @@ public final class FnFunc {
      * </p>
      * 
      * @param targetType the target type
-     * @param condition the condition to be executed on the target object
      * @param thenFunction the function to be executed on the target object is null
      * @param elseFunction the function to be executed on the target object otherwise
      * @return a function that executes the "thenFunction" if the target object is null and "elseFunction" otherwise.
@@ -237,7 +236,6 @@ public final class FnFunc {
      * </p>
      * 
      * @param targetType the target type
-     * @param condition the condition to be executed on the target object
      * @param thenFunction the function to be executed on the target object is not null
      * @param elseFunction the function to be executed on the target object otherwise
      * @return a function that executes the "thenFunction" if the target object is not null and "elseFunction" otherwise.
