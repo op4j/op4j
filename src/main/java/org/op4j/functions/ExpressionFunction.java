@@ -23,6 +23,10 @@ package org.op4j.functions;
 import org.op4j.target.Target;
 
 /**
+ * <p>
+ * Base class for all functions returned by <tt>Fn.on(...)</tt> expressions. Should
+ * never be used directly.
+ * </p>
  * 
  * @since 1.0
  * 

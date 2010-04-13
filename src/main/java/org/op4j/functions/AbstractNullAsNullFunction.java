@@ -23,6 +23,13 @@ package org.op4j.functions;
 
 
 /**
+ * <p>
+ * Base abstract class for functions returning null if the target object is null. 
+ * </p>
+ * <p>
+ * This class can be extended by the user when creating his/her own
+ * functions, if desired.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -45,7 +52,19 @@ public abstract class AbstractNullAsNullFunction<T,R> extends Function<T,R> {
     }
 
 
-    protected abstract R nullAsNullExecute(final T object, final ExecCtx ctx) throws Exception;
+    /**
+     * <p>
+     * Executes the function knowing that the <tt>input</tt> parameter (the target
+     * object) is not null. If the target object is null, the function will 
+     * return null instead of calling this method.
+     * </p>
+     * 
+     * @param input the target object
+     * @param ctx the execution context
+     * @return the result of the function executionO
+     * @throws Exception
+     */
+    protected abstract R nullAsNullExecute(final T input, final ExecCtx ctx) throws Exception;
     
     
     

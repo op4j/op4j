@@ -22,6 +22,14 @@ package org.op4j.functions;
 
 
 /**
+ * <p>
+ * Base abstract class for functions throwing an <tt>IllegalArgumentException</tt> 
+ * if the target object is null. 
+ * </p>
+ * <p>
+ * This class can be extended by the user when creating his/her own
+ * functions, if desired.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -46,7 +54,19 @@ public abstract class AbstractNotNullFunction<T, R> extends Function<T, R> {
     }
 
 
-    protected abstract R notNullExecute(final T object, final ExecCtx ctx) throws Exception;
+    /**
+     * <p>
+     * Executes the function knowing that the <tt>input</tt> parameter (the target
+     * object) is not null. An <tt>IllegalArgumentException</tt> will have been
+     * thrown in the target was null, before this method is called.
+     * </p>
+     * 
+     * @param input the target object
+     * @param ctx the execution context
+     * @return the result of the function execution
+     * @throws Exception
+     */
+    protected abstract R notNullExecute(final T input, final ExecCtx ctx) throws Exception;
     
     
     
