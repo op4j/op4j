@@ -24,8 +24,9 @@ import org.op4j.target.Target;
 
 /**
  * <p>
- * Base class for all functions returned by <tt>Fn.on(...)</tt> expressions. Should
- * never be used directly.
+ * Base class for all functions returned by <tt>Fn.on(...)</tt> expressions.</p>
+ * <p>
+ * This class should NEVER be used directly, nor extended by user-defined functions.
  * </p>
  * 
  * @since 1.0

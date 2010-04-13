@@ -22,6 +22,9 @@ package org.op4j.functions;
 
 
 /**
+ * <p>
+ * Function execution context, contaning execution metadata.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -31,6 +34,19 @@ package org.op4j.functions;
 public interface ExecCtx {
 
 
+    /**
+     * <p>
+     * If the execution of a function is performed during the iteration of an array,
+     * list, map or set, this method will return the iteration index each time the
+     * function is executed (the position of the element in the array, list... on which
+     * the function is being executed). 
+     * </p>
+     * <p>
+     * If execution is performed without iteration involved, this method will return null.
+     * </p>
+     * 
+     * @return the iteration index during an iteration, null elsewhere.
+     */
     public Integer getIndex();
     
     

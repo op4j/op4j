@@ -28,7 +28,7 @@ import org.op4j.util.MapEntry;
 
 /**
  * <p>
- * This is an implementation of {@link IFunction} aimed at map building, which
+ * Base abstract implementation of {@link IFunction} aimed at map building, which
  * substitutes the <tt>execute(...)</tt> method by two more easily implementable
  * {@link #buildKey(Object)} and {@link #buildValue(Object)}, creating map entries
  * from the results of these two methods.

@@ -23,6 +23,14 @@ package org.op4j.functions;
 import org.op4j.util.ValuePair;
 
 /**
+ * <p>
+ * Base abstract implementation of {@link IFunction} aimed at reduction (folding) of arrays,
+ * lists, maps or sets.
+ * </p>
+ * <p>
+ * This function operates on a {@link ValuePair} so that it models a binary operator, with
+ * both a <i>left</i> and a <i>right</i> sides, and produces a result.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -41,7 +49,19 @@ public abstract class Reductor<A,B,R extends A> extends AbstractNotNullFunction<
     public final R notNullExecute(final ValuePair<A,B> input, final ExecCtx ctx) throws Exception {
         return reduce(input.getLeft(), input.getRight(), ctx);
     }
+
     
+    /**
+     * <p>
+     * Executes the reduction operation.
+     * </p>
+     * 
+     * @param left the left side of the binary operation
+     * @param right the right side of the binary operation
+     * @param ctx the execution context
+     * @return the function result
+     * @throws Exception
+     */
     protected abstract R reduce(final A left, final B right, final ExecCtx ctx) throws Exception;
 
 }
