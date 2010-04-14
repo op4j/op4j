@@ -578,24 +578,107 @@ public final class FnDouble {
                 groupingUsed, decimalSeparator, 
                 decimalSeparatorAlwaysShown));
     }
+    
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number.
+     * </p>
+     * 
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Double,String> toPercentStr() {
         return (Function<Double,String>)((Function)FnNumber.toPercentStr());
     }
+    
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number
+     * either using grouping or not depending on the given parameter. So,
+     * </p>
+     * <code>toPercentStr(true) would return 100,000% if target number is 1000</code>
+     * <br>
+     * <code>toPercentStr(false) would return 100000% if target number is 1000</code>
+     * 
+     * @param groupingUsed whether or not grouping will be used
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Double,String> toPercentStr(boolean groupingUsed) {
         return (Function<Double,String>)((Function)FnNumber.toPercentStr(groupingUsed));
     }
+    
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number 
+     * in the given {@link Locale}
+     * </p>
+     * 
+     * @param locale the {@link Locale} to be used
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Double,String> toPercentStr(Locale locale) {
         return (Function<Double,String>)((Function)FnNumber.toPercentStr(locale));
     }
+    
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number 
+     * in the given locale
+     * </p>
+     * 
+     * @param locale the locale to be used
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Double,String> toPercentStr(String locale) {
         return (Function<Double,String>)((Function)FnNumber.toPercentStr(locale));
     }
+    
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number 
+     * in the given {@link Locale}. Grouping will be used depending on the value of the
+     * groupingUsed parameter.
+     * </p>
+     *  
+     * @param locale the {@link Locale} to be used
+     * @param groupingUsed whether or not grouping will be used
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Double,String> toPercentStr(Locale locale, boolean groupingUsed) {
         return (Function<Double,String>)((Function)FnNumber.toPercentStr(locale, groupingUsed));
     }   
+    
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number 
+     * in the given locale. Grouping will be used depending on the value of the
+     * groupingUsed parameter.
+     * </p>
+     * 
+     * @param locale the locale to be used
+     * @param groupingUsed whether or not grouping will be used
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Double,String> toPercentStr(String locale, boolean groupingUsed) {
         return (Function<Double,String>)((Function)FnNumber.toPercentStr(locale, groupingUsed));
     }
+    
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number 
+     * in the given {@link Locale}. 
+     * If necessary, it will add leading or trailing zeros to the string 
+     * based on the given parameters. 
+     * </p>
+     * 
+     * @param locale the {@link Locale} to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingUsed whether or not grouping will be used
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Double,String> toPercentStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
         return (Function<Double,String>)((Function)FnNumber.toPercentStr(locale, 
@@ -603,6 +686,24 @@ public final class FnDouble {
                 minFractionDigits, maxFractionDigits,
                 groupingUsed));
     }
+    
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number 
+     * in the given locale. 
+     * If necessary, it will add leading or trailing zeros to the string 
+     * based on the given parameters. 
+     * </p>
+     * 
+     * @param locale the locale to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingUsed whether or not grouping will be used
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Double,String> toPercentStr(String locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed) {
         return (Function<Double,String>)((Function)FnNumber.toPercentStr(locale, 
@@ -610,6 +711,27 @@ public final class FnDouble {
                 minFractionDigits, maxFractionDigits,
                 groupingUsed));
     }
+    
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number 
+     * in the given {@link Locale} and using the other given parameters as well. 
+     * If necessary, it will add leading or trailing zeros to the string 
+     * based on the given parameters. 
+     * </p>
+     * 
+     * @param locale the {@link Locale} to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingSeparator grouping separator to be used
+     * @param decimalSeparator decimal separator to be used 
+     * @param decimalSeparatorAlwaysShown whether decimal separator should be shown 
+     * even if the decimal part is zero or not
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Double,String> toPercentStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, 
             char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
@@ -619,6 +741,27 @@ public final class FnDouble {
                 groupingSeparator, decimalSeparator, 
                 decimalSeparatorAlwaysShown));
     }
+    
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number 
+     * in the given locale and using the other given parameters as well. 
+     * If necessary, it will add leading or trailing zeros to the string 
+     * based on the given parameters. 
+     * </p>
+     * 
+     * @param locale the locale to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingUsed whether or not grouping will be used
+     * @param decimalSeparator decimal separator to be used 
+     * @param decimalSeparatorAlwaysShown whether decimal separator should be shown 
+     * even if the decimal part is zero or not
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Double,String> toPercentStr(Locale locale, int minIntegerDigits,
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
             char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
@@ -628,6 +771,27 @@ public final class FnDouble {
                 groupingUsed, decimalSeparator, 
                 decimalSeparatorAlwaysShown));
     }
+    
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number 
+     * in the given locale and using the other given parameters as well. 
+     * If necessary, it will add leading or trailing zeros to the string 
+     * based on the given parameters. 
+     * </p>
+     * 
+     * @param locale the locale to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingSeparator grouping separator to be used
+     * @param decimalSeparator decimal separator to be used 
+     * @param decimalSeparatorAlwaysShown whether decimal separator should be shown 
+     * even if the decimal part is zero or not
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Double,String> toPercentStr(String locale, int minIntegerDigits, 
             int minFractionDigits, int maxFractionDigits, 
             char groupingSeparator, char decimalSeparator, boolean decimalSeparatorAlwaysShown) {
@@ -637,6 +801,27 @@ public final class FnDouble {
                 groupingSeparator, decimalSeparator, 
                 decimalSeparatorAlwaysShown));
     }
+    
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number 
+     * in the given locale and using the other given parameters as well. 
+     * If necessary, it will add leading or trailing zeros to the string 
+     * based on the given parameters. 
+     * </p>
+     * 
+     * @param locale the locale to be used
+     * @param minIntegerDigits minimum number of integer digits so, if not enough in the
+     * target number, 0's will be added to the left of the integer part
+     * @param minFractionDigits minimum number of fraction digits so, if not enough in the
+     * target number, 0's will be added to the right of the decimal part
+     * @param maxFractionDigits maximum number of fraction digits
+     * @param groupingUsed whether or not grouping will be used
+     * @param decimalSeparator decimal separator to be used 
+     * @param decimalSeparatorAlwaysShown whether decimal separator should be shown 
+     * even if the decimal part is zero or not
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Double,String> toPercentStr(String locale, int minIntegerDigits, 
             int minFractionDigits, int maxFractionDigits, boolean groupingUsed,
             char decimalSeparator, boolean decimalSeparatorAlwaysShown) {

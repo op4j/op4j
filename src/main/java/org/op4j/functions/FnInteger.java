@@ -213,21 +213,86 @@ public final class FnInteger {
     public static final Function<Integer,String> toCurrencyStr(String locale, boolean groupingUsed) {
         return (Function<Integer,String>)((Function)FnNumber.toCurrencyStr(locale, groupingUsed));
     }
+    
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number.
+     * </p>
+     * 
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Integer,String> toPercentStr() {
         return (Function<Integer,String>)((Function)FnNumber.toPercentStr());
     }
+    
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number
+     * either using grouping or not depending on the given parameter. So,
+     * </p>
+     * <code>toPercentStr(true) would return 100,000% if target number is 1000</code>
+     * <br>
+     * <code>toPercentStr(false) would return 100000% if target number is 1000</code>
+     * 
+     * @param groupingUsed whether or not grouping will be used
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Integer,String> toPercentStr(boolean groupingUsed) {
         return (Function<Integer,String>)((Function)FnNumber.toPercentStr(groupingUsed));
     }
+    
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number 
+     * in the given {@link Locale}
+     * </p>
+     * 
+     * @param locale the {@link Locale} to be used
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Integer,String> toPercentStr(Locale locale) {
         return (Function<Integer,String>)((Function)FnNumber.toPercentStr(locale));
     }
+    
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number 
+     * in the given locale
+     * </p>
+     * 
+     * @param locale the locale to be used
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Integer,String> toPercentStr(String locale) {
         return (Function<Integer,String>)((Function)FnNumber.toPercentStr(locale));
     }
+    
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number 
+     * in the given {@link Locale}. Grouping will be used depending on the value of the
+     * groupingUsed parameter.
+     * </p>
+     *  
+     * @param locale the {@link Locale} to be used
+     * @param groupingUsed whether or not grouping will be used
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Integer,String> toPercentStr(Locale locale, boolean groupingUsed) {
         return (Function<Integer,String>)((Function)FnNumber.toPercentStr(locale, groupingUsed));
     }   
+    
+    /**
+     * <p>
+     * A {@link String} representing a percentage is created from the target number 
+     * in the given locale. Grouping will be used depending on the value of the
+     * groupingUsed parameter.
+     * </p>
+     * 
+     * @param locale the locale to be used
+     * @param groupingUsed whether or not grouping will be used
+     * @return the string representation of the input number as a percentage
+     */
     public static final Function<Integer,String> toPercentStr(String locale, boolean groupingUsed) {
         return (Function<Integer,String>)((Function)FnNumber.toPercentStr(locale, groupingUsed));
     }
