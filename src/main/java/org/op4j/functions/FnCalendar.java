@@ -291,14 +291,40 @@ public final class FnCalendar {
     }
 
     
+    /**
+     * <p>
+     * Rounds the target Calendar, setting the specified field as the 
+     * most significant field.
+     * </p>
+     * <p>
+     * Based on <tt>org.apache.commons.lang.time.DateUtils.round()</tt>.
+     * </p>
+     * 
+     * @param calendarField the field on which the calendar will be rounded (<tt>java.util.Calendar</tt> field).
+     * @return the resulting Calendar
+     */
     public static final Function<Calendar,Calendar> round(final int calendarField) {
         return new Round(calendarField);
     }
+    
 
+    /**
+     * <p>
+     * Truncates the target Calendar, setting the specified field as the 
+     * most significant field.
+     * </p>
+     * <p>
+     * Based on <tt>org.apache.commons.lang.time.DateUtils.truncate()</tt>.
+     * </p>
+     * 
+     * @param calendarField the field on which the calendar will be truncated (<tt>java.util.Calendar</tt> field).
+     * @return the resulting Calendar
+     */
     public static final Function<Calendar,Calendar> truncate(final int calendarField) {
         return new Truncate(calendarField);
     }
 
+    
     public static final Function<Calendar,Boolean> before(final Calendar calendar) {
         return new Before(calendar);
     }
