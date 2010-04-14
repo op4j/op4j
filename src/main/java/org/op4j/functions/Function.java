@@ -27,7 +27,11 @@ import org.op4j.util.ExecCtxImpl;
  * <p>
  * Base abstract implementation for the {@link IFunction} interface, 
  * providing a useful {@link #execute(Object)} method, easier to use 
- * than {@link IFunction#execute(Object, ExecCtx)}. 
+ * than {@link IFunction#execute(Object, ExecCtx)}.
+ * </p>
+ * <p> 
+ * <tt>Function&lt;T,R&gt;</tt> means that the function receives an object of type
+ * <tt>T</tt> (called <i>target</i>) and returns an object of type <tt>R</tt>.
  * </p>
  * <p>
  * You should consider extending this class for every function 

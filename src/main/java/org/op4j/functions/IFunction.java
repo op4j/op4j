@@ -23,7 +23,9 @@ package org.op4j.functions;
 
 /**
  * <p>
- * The interface that every <i>function</i> in op4j must implement.
+ * The interface that every <i>function</i> in op4j must implement. 
+ * <tt>IFunction&lt;T,R&gt;</tt> means that the function receives an object of type
+ * <tt>T</tt> (called <i>target</i>) and returns an object of type <tt>R</tt>.
  * </p>
  * <p>
  * This interface only defines one method: {@link #execute(Object, ExecCtx)},
