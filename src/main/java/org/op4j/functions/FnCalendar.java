@@ -325,36 +325,131 @@ public final class FnCalendar {
     }
 
     
+    /**
+     * <p>
+     * Determines whether the target Calendar represents a moment in time before the
+     * Calendar specified as a parameter.
+     * </p>
+     * 
+     * @param calendar the calendar to compare to
+     * @return true if target is before, false otherwise
+     */
     public static final Function<Calendar,Boolean> before(final Calendar calendar) {
         return new Before(calendar);
     }
 
+    
+    /**
+     * <p>
+     * Determines whether the target Calendar represents a moment in time after the
+     * Calendar specified as a parameter.
+     * </p>
+     * 
+     * @param calendar the calendar to compare to
+     * @return true if target is after, false otherwise
+     */
     public static final Function<Calendar,Boolean> after(final Calendar calendar) {
         return new After(calendar);
     }
     
     
-    
+    /**
+     * <p>
+     * Converts the target Calendar into a String using the specified <tt>pattern</tt>.
+     * The pattern has to be written in the <tt>java.text.SimpleDateFormat</tt> format.
+     * </p>
+     * <p>
+     * As no locale is specified, if pattern includes locale-dependent texts 
+     * like month names (<tt>MMM</tt>) or week days (<tt>EEE</tt>), the default locale
+     * will be used for resolving these components.  
+     * </p>
+     * 
+     * @param pattern the pattern to be used, as specified by <tt>java.text.SimpleDateFormat</tt>.
+     * @return the String representation of the target Calendar.
+     */
     public static final Function<Calendar,String> toStr(final String pattern) {
         return new ToString(pattern);
     }
     
+
+    /**
+     * <p>
+     * Converts the target Calendar into a String using the specified <tt>pattern</tt>.
+     * The pattern has to be written in the <tt>java.text.SimpleDateFormat</tt> format, 
+     * and the specified locale will be used for text-based pattern components (like
+     * month names or week days).
+     * </p>
+     * 
+     * @param pattern the pattern to be used, as specified by <tt>java.text.SimpleDateFormat</tt>.
+     * @param locale the locale to be used for text-based pattern components
+     * @return the String representation of the target Calendar.
+     */
     public static final Function<Calendar,String> toStr(final String pattern, final Locale locale) {
         return new ToString(pattern, locale);
     }
+
     
+    /**
+     * <p>
+     * Converts the target Calendar into a String using the specified <tt>pattern</tt>.
+     * The pattern has to be written in the <tt>java.text.SimpleDateFormat</tt> format, 
+     * and the specified locale will be used for text-based pattern components (like
+     * month names or week days).
+     * </p>
+     * 
+     * @param pattern the pattern to be used, as specified by <tt>java.text.SimpleDateFormat</tt>.
+     * @param locale the locale to be used for text-based pattern components
+     * @return the String representation of the target Calendar.
+     */
     public static final Function<Calendar,String> toStr(final String pattern, final String locale) {
         return new ToString(pattern, locale);
     }
     
+
+    /**
+     * <p>
+     * Converts the target Calendar into a String using the specified date ({@link DateStyle}) 
+     * and time ({@link TimeStyle}) styles. 
+     * </p>
+     * 
+     * @param dateStyle the date style to be used
+     * @param timeStyle the time style to be used
+     * @return the String representation of the Calendar.
+     */
     public static final Function<Calendar,String> toStr(final DateStyle dateStyle, final TimeStyle timeStyle) {
         return new ToString(dateStyle, timeStyle);
     }
     
+    
+    /**
+     * <p>
+     * Converts the target Calendar into a String using the specified date ({@link DateStyle}) 
+     * and time ({@link TimeStyle}) styles, and resolving text-based components like month names
+     * using the specified locale. 
+     * </p>
+     * 
+     * @param dateStyle the date style to be used
+     * @param timeStyle the time style to be used
+     * @param locale the locale to be used
+     * @return the String representation of the Calendar.
+     */
     public static final Function<Calendar,String> toStr(final DateStyle dateStyle, final TimeStyle timeStyle, final Locale locale) {
         return new ToString(dateStyle, timeStyle, locale);
     }
+
     
+    /**
+     * <p>
+     * Converts the target Calendar into a String using the specified date ({@link DateStyle}) 
+     * and time ({@link TimeStyle}) styles, and resolving text-based components like month names
+     * using the specified locale. 
+     * </p>
+     * 
+     * @param dateStyle the date style to be used
+     * @param timeStyle the time style to be used
+     * @param locale the locale to be used
+     * @return the String representation of the Calendar.
+     */
     public static final Function<Calendar,String> toStr(final DateStyle dateStyle, final TimeStyle timeStyle, final String locale) {
         return new ToString(dateStyle, timeStyle, locale);
     }
@@ -364,21 +459,52 @@ public final class FnCalendar {
     
     
     
-    
+    /**
+     * <p>
+     * Converts the target <tt>java.sql.Timestamp</tt> into a Calendar. 
+     * </p>
+     * 
+     * @return the resulting Calendar.
+     */
     public static final Function<Timestamp,Calendar> timestampToCalendar() {
         return TIMESTAMP_TO_CALENDAR;
     }
     
+    
+    /**
+     * <p>
+     * Converts the target <tt>java.sql.Timestamp</tt> into a Calendar, truncating by the
+     * specified field (<tt>java.util.Calendar</tt> constant field).
+     * </p>
+     * 
+     * @return the resulting Calendar.
+     */
     public static final Function<Timestamp,Calendar> timestampToCalendar(final int truncateField) {
         return new TimestampToCalendar(truncateField);
     }
     
     
     
+    /**
+     * <p>
+     * Converts the target Long (representing a time in milliseconds) into a Calendar. 
+     * </p>
+     * 
+     * @return the resulting Calendar.
+     */
     public static final Function<Long,Calendar> timeInMillisToCalendar() {
         return TIME_IN_MILLIS_TO_CALENDAR;
     }
     
+    
+    /**
+     * <p>
+     * Converts the target Long (representing a time in milliseconds) into a Calendar,
+     * truncating by the specified field (<tt>java.util.Calendar</tt> constant field). 
+     * </p>
+     * 
+     * @return the resulting Calendar.
+     */
     public static final Function<Long,Calendar> timeInMillisToCalendar(final int truncateField) {
         return new TimeInMillisToCalendar(truncateField);
     }
@@ -390,24 +516,96 @@ public final class FnCalendar {
     
     
     
+    /**
+     * <p>
+     * Converts a List&lt;Integer&gt; containing the components of a date to a 
+     * <tt>java.util.Calendar</tt> object.
+     * </p>
+     * <p>
+     * The target list can contain the following combinations of elements, 
+     * in the specified order:
+     * </p>
+     * <ul>
+     *   <li>year, month, day</li>
+     *   <li>year, month, day, hour, minute</li>
+     *   <li>year, month, day, hour, minute, second</li>
+     *   <li>year, month, day, hour, minute, second, millisecond</li>
+     * </ul>
+     * 
+     * @return the resulting Calendar
+     */
     public static final Function<List<Integer>, Calendar> fieldIntegerListToCalendar() {
         return FIELD_INTEGER_LIST_TO_CALENDAR;
     }
     
     
     
+    /**
+     * <p>
+     * Converts an Integer[] containing the components of a date to a 
+     * <tt>java.util.Calendar</tt> object.
+     * </p>
+     * <p>
+     * The target array can contain the following combinations of elements, in
+     * the specified order:
+     * </p>
+     * <ul>
+     *   <li>year, month, day</li>
+     *   <li>year, month, day, hour, minute</li>
+     *   <li>year, month, day, hour, minute, second</li>
+     *   <li>year, month, day, hour, minute, second, millisecond</li>
+     * </ul>
+     * 
+     * @return the resulting Calendar
+     */
     public static final Function<Integer[], Calendar> fieldIntegerArrayToCalendar() {
         return FIELD_INTEGER_ARRAY_TO_CALENDAR;
     }
     
     
     
+    /**
+     * <p>
+     * Converts a List&lt;String&gt; containing the components of a date to a 
+     * <tt>java.util.Calendar</tt> object.
+     * </p>
+     * <p>
+     * The target list can contain the following combinations of elements, 
+     * all of them in numeric format, in the specified order:
+     * </p>
+     * <ul>
+     *   <li>year, month, day</li>
+     *   <li>year, month, day, hour, minute</li>
+     *   <li>year, month, day, hour, minute, second</li>
+     *   <li>year, month, day, hour, minute, second, millisecond</li>
+     * </ul>
+     * 
+     * @return the resulting Calendar
+     */
     public static final Function<List<String>, Calendar> fieldStringListToCalendar() {
         return FIELD_STRING_LIST_TO_CALENDAR;
     }
     
     
     
+    /**
+     * <p>
+     * Converts a String[] containing the components of a date to a 
+     * <tt>java.util.Calendar</tt> object.
+     * </p>
+     * <p>
+     * The target array can contain the following combinations of elements, 
+     * all of them in numeric format, in the specified order:
+     * </p>
+     * <ul>
+     *   <li>year, month, day</li>
+     *   <li>year, month, day, hour, minute</li>
+     *   <li>year, month, day, hour, minute, second</li>
+     *   <li>year, month, day, hour, minute, second, millisecond</li>
+     * </ul>
+     * 
+     * @return the resulting Calendar
+     */
     public static final Function<String[], Calendar> fieldStringArrayToCalendar() {
         return FIELD_STRING_ARRAY_TO_CALENDAR;
     }
