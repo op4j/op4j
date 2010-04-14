@@ -1988,74 +1988,172 @@ public final class FnDouble {
 	
 
     /**
-     * @return function that returns the maximum {@link Double} of an object
-     *         implementing {@link Iterable}
-     */
-    public final static Function<Iterable<Double>, Double> max() {
+	 * <p>
+	 * It returns the maximum number from an {@link Iterable} input object
+	 * </p>
+	 * 
+	 * @return the maximum number
+	 */
+	public final static Function<Iterable<Double>, Double> max() {
         return MAX_FUNC;
     }
 
     /**
-     * @return function that returns the minimum {@link Double} of an object
-     *         implementing {@link Iterable}
-     */
-    public final static Function<Iterable<Double>, Double> min() {
+	 * <p>
+	 * It returns the minimum number from an {@link Iterable} input object
+	 * </p>
+	 *
+	 * @return the minimum number
+	 */
+	public final static Function<Iterable<Double>, Double> min() {
         return MIN_FUNC;
     }
 
     /**
-     * @return function that returns the sum of the {@link Double} elements in
-     *         an object implementing {@link Iterable}
-     */
-    public final static Function<Iterable<Double>, Double> sum() {
+	 * <p>
+	 * It returns the sum of all the numbers in the {@link Iterable} input object
+	 * </p>
+	 * 
+	 * @return a number equal to the sum of all the elements in the input {@link Iterable}
+	 */
+	public final static Function<Iterable<Double>, Double> sum() {
         return SUM_FUNC;
     }
 
     /**
-     * @return function that returns the average of the {@link Double} elements
-     *         in an object implementing {@link Iterable}
-     */
-    public final static Function<Iterable<Double>, Double> avg() {
+	 * <p>
+	 * It returns the average of all the numbers in the {@link Iterable} input object
+	 * </p>
+	 * 
+	 * @return a number representing the average of the input numbers
+	 */
+	public final static Function<Iterable<Double>, Double> avg() {
         return AVG_FUNC;
     }
 
-    public final static Function<Iterable<Double>, Double> avg(MathContext mathContext) {
+    /**
+	 * <p>
+	 * It returns the average of all the numbers in the {@link Iterable} input object. The
+	 * given {@link MathContext} will be used to round and set the output precision
+	 * </p>
+	 * 
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * of the average
+	 * 
+	 * @return a number representing the average 
+	 */
+	public final static Function<Iterable<Double>, Double> avg(MathContext mathContext) {
         return new Avg(mathContext);
     }
 
-    public final static Function<Iterable<Double>, Double> avg(RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It returns the average of all the numbers in the {@link Iterable} input object. The
+	 * given {@link RoundingMode} will be used to round the output
+	 * </p>
+	 * 
+	 * @param roundingMode the {@link RoundingMode} to round the average
+	 * 
+	 * @return a number representing the average 
+	 */
+	public final static Function<Iterable<Double>, Double> avg(RoundingMode roundingMode) {
         return new Avg(roundingMode);
     }
 
-    public final static Function<Double[], Double> maxArray() {
+    /**
+	 * <p>
+	 * It returns the maximum number from the input array
+	 * </p>
+	 * 
+	 * @return the maximum number
+	 */
+	public final static Function<Double[], Double> maxArray() {
         return MAX_ARRAY_FUNC;
     }
 
-    public final static Function<Double[], Double> minArray() {
+    /**
+	 * <p>
+	 * It returns the minimum number from the input array
+	 * </p>
+	 * 
+	 * @return the minimum number
+	 */
+	public final static Function<Double[], Double> minArray() {
         return MIN_ARRAY_FUNC;
     }
 
-    public final static Function<Double[], Double> sumArray() {
+    /**
+	 * <p>
+	 * It returns the sum of all the numbers in the input array
+	 * </p>
+	 * 
+	 * @return a number equal to the sum of all the elements in the input array
+	 */
+	public final static Function<Double[], Double> sumArray() {
         return SUM_ARRAY_FUNC;
     }
 
-    public final static Function<Double[], Double> avgArray() {
+    /**
+	 * <p>
+	 * It returns the average of all the numbers in the input array
+	 * </p>
+	 * 
+	 * @return a number representing the average of the input numbers
+	 */
+	public final static Function<Double[], Double> avgArray() {
         return AVG_ARRAY_FUNC;
     }
 
-    public final static Function<Double[], Double> avgArray(MathContext mathContext) {
+    /**
+	 * <p>
+	 * It returns the average of all the numbers in the input array. The
+	 * given {@link MathContext} will be used to round and set the output precision
+	 * </p>
+	 * 
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * of the average
+	 * 
+	 * @return a number representing the average 
+	 */
+	public final static Function<Double[], Double> avgArray(MathContext mathContext) {
         return new AvgArray(mathContext);
     }
 
-    public final static Function<Double[], Double> avgArray(RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It returns the average of all the numbers in the input array. The
+	 * given {@link RoundingMode} will be used to round the output
+	 * </p>
+	 * 
+	 * @param roundingMode the {@link RoundingMode} to round the average
+	 * 
+	 * @return a number representing the average 
+	 */
+	public final static Function<Double[], Double> avgArray(RoundingMode roundingMode) {
         return new AvgArray(roundingMode);
     }
 
-    public final static Function<Double, Double> round(MathContext mathContext) {
+    /**
+	 * <p>
+	 * It rounds the input number with the given {@link MathContext}
+	 * </p>
+	 * 
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * @return the input rounded
+	 */
+	public final static Function<Double, Double> round(MathContext mathContext) {
         return new Round(mathContext);
     }
 
-    public final static Function<Double, Double> round(RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It rounds the input number with the given {@link RoundingMode}
+	 * </p>
+	 * 
+	 * @param roundingMode the {@link RoundingMode} 
+	 * @return the input rounded
+	 */
+	public final static Function<Double, Double> round(RoundingMode roundingMode) {
         return new Round(roundingMode);
     }
 

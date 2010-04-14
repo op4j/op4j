@@ -1863,73 +1863,171 @@ public final class FnBigDecimal {
 	
 	
     /**
-     * @return function that returns the maximum {@link BigDecimal} of an object
-     *         implementing {@link Iterable}
+     * <p>
+     * It returns the maximum number from an {@link Iterable} input object
+     * </p>
+     * 
+     * @return the maximum number
      */
     public final static Function<Iterable<BigDecimal>, BigDecimal> max() {
         return MAX_FUNC;
     }
 
     /**
-     * @return function that returns the minimum {@link BigDecimal} of an object
-     *         implementing {@link Iterable}
+     * <p>
+     * It returns the minimum number from an {@link Iterable} input object
+     * </p>
+     * 
+     * @return the minimum number
      */
     public final static Function<Iterable<BigDecimal>, BigDecimal> min() {
         return MIN_FUNC;
     }
 
     /**
-     * @return function that returns the sum of the {@link BigDecimal} elements
-     *         in an object implementing {@link Iterable}
+     * <p>
+     * It returns the sum of all the numbers in the {@link Iterable} input object
+     * </p>
+     * 
+     * @return a number equal to the sum of all the elements in the input {@link Iterable}
      */
     public final static Function<Iterable<BigDecimal>, BigDecimal> sum() {
         return SUM_FUNC;
     }
 
     /**
-     * @return function that returns the average of the {@link BigDecimal}
-     *         elements in an object implementing {@link Iterable}
+     * <p>
+     * It returns the average of all the numbers in the {@link Iterable} input object
+     * </p>
+     * 
+     * @return a number representing the average of the input numbers
      */
     public final static Function<Iterable<BigDecimal>, BigDecimal> avg() {
         return AVG_FUNC;
     }
 
+    /**
+     * <p>
+     * It returns the average of all the numbers in the {@link Iterable} input object. The
+     * given {@link MathContext} will be used to round and set the output precision
+     * </p>
+     * 
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * of the average
+     * 
+     * @return a number representing the average 
+     */
     public final static Function<Iterable<BigDecimal>, BigDecimal> avg(MathContext mathContext) {
         return new Avg(mathContext);
     }
 
+    /**
+     * <p>
+     * It returns the average of all the numbers in the {@link Iterable} input object. The
+     * given {@link RoundingMode} will be used to round the output
+     * </p>
+     * 
+     * @param roundingMode the {@link RoundingMode} to round the average
+     * 
+     * @return a number representing the average 
+     */
     public final static Function<Iterable<BigDecimal>, BigDecimal> avg(RoundingMode roundingMode) {
         return new Avg(roundingMode);
     }
 
+    /**
+     * <p>
+     * It returns the maximum number from the input array
+     * </p>
+     * 
+     * @return the maximum number
+     */
     public final static Function<BigDecimal[], BigDecimal> maxArray() {
         return MAX_ARRAY_FUNC;
     }
 
+    /**
+     * <p>
+     * It returns the minimum number from the input array
+     * </p>
+     * 
+     * @return the minimum number
+     */
     public final static Function<BigDecimal[], BigDecimal> minArray() {
         return MIN_ARRAY_FUNC;
     }
 
+    /**
+     * <p>
+     * It returns the sum of all the numbers in the input array
+     * </p>
+     * 
+     * @return a number equal to the sum of all the elements in the input array
+     */
     public final static Function<BigDecimal[], BigDecimal> sumArray() {
         return SUM_ARRAY_FUNC;
     }
 
+    /**
+     * <p>
+     * It returns the average of all the numbers in the input array
+     * </p>
+     * 
+     * @return a number representing the average of the input numbers
+     */
     public final static Function<BigDecimal[], BigDecimal> avgArray() {
         return AVG_ARRAY_FUNC;
     }
 
+    /**
+     * <p>
+     * It returns the average of all the numbers in the input array. The
+     * given {@link MathContext} will be used to round and set the output precision
+     * </p>
+     * 
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * of the average
+     * 
+     * @return a number representing the average 
+     */
     public final static Function<BigDecimal[], BigDecimal> avgArray(MathContext mathContext) {
         return new AvgArray(mathContext);
     }
 
+    /**
+     * <p>
+     * It returns the average of all the numbers in the input array. The
+     * given {@link RoundingMode} will be used to round the output
+     * </p>
+     * 
+     * @param roundingMode the {@link RoundingMode} to round the average
+     * 
+     * @return a number representing the average 
+     */
     public final static Function<BigDecimal[], BigDecimal> avgArray(RoundingMode roundingMode) {
         return new AvgArray(roundingMode);
     }
 
+    /**
+     * <p>
+     * It rounds the input number with the given {@link MathContext}
+     * </p>
+     * 
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the input rounded
+     */
     public final static Function<BigDecimal, BigDecimal> round(MathContext mathContext) {
         return new Round(mathContext);
     }
 
+    /**
+     * <p>
+     * It rounds the input number with the given {@link RoundingMode}
+     * </p>
+     * 
+     * @param roundingMode the {@link RoundingMode} 
+     * @return the input rounded
+     */
     public final static Function<BigDecimal, BigDecimal> round(RoundingMode roundingMode) {
         return new Round(roundingMode);
     }

@@ -1448,66 +1448,148 @@ public final class FnShort {
     
     
     /**
-     * @return function that returns the maximum {@link Short} of an object
-     *         implementing {@link Iterable}
-     */
-    public final static Function<Iterable<Short>, Short> max() {
+	 * <p>
+	 * It returns the maximum number from an {@link Iterable} input object
+	 * </p>
+	 * 
+	 * @return the maximum number
+	 */
+	public final static Function<Iterable<Short>, Short> max() {
         return MAX_FUNC;
     }
 
     /**
-     * @return function that returns the minimum {@link Short} of an object
-     *         implementing {@link Iterable}
-     */
-    public final static Function<Iterable<Short>, Short> min() {
+	 * <p>
+	 * It returns the minimum number from an {@link Iterable} input object
+	 * </p>
+	 *
+	 * @return the minimum number
+	 */
+	public final static Function<Iterable<Short>, Short> min() {
         return MIN_FUNC;
     }
 
     /**
-     * @return function that returns the sum of the {@link Short} elements in an
-     *         object implementing {@link Iterable}
-     */
-    public final static Function<Iterable<Short>, Short> sum() {
+	 * <p>
+	 * It returns the sum of all the numbers in the {@link Iterable} input object
+	 * </p>
+	 * 
+	 * @return a number equal to the sum of all the elements in the input {@link Iterable}
+	 */
+	public final static Function<Iterable<Short>, Short> sum() {
         return SUM_FUNC;
     }
 
     /**
-     * @return function that returns the average of the {@link Short} elements
-     *         in an object implementing {@link Iterable}
-     */
-    public final static Function<Iterable<Short>, Short> avg() {
+	 * <p>
+	 * It returns the average of all the numbers in the {@link Iterable} input object
+	 * </p>
+	 * 
+	 * @return a number representing the average of the input numbers
+	 */
+	public final static Function<Iterable<Short>, Short> avg() {
         return AVG_FUNC;
     }
 
-    public final static Function<Iterable<Short>, Short> avg(MathContext mathContext) {
+    /**
+	 * <p>
+	 * It returns the average of all the numbers in the {@link Iterable} input object. The
+	 * given {@link MathContext} will be used to round and set the output precision
+	 * </p>
+	 * 
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * of the average
+	 * 
+	 * @return a number representing the average 
+	 */
+	public final static Function<Iterable<Short>, Short> avg(MathContext mathContext) {
         return new Avg(mathContext);
     }
 
-    public final static Function<Iterable<Short>, Short> avg(RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It returns the average of all the numbers in the {@link Iterable} input object. The
+	 * given {@link RoundingMode} will be used to round the output
+	 * </p>
+	 * 
+	 * @param roundingMode the {@link RoundingMode} to round the average
+	 * 
+	 * @return a number representing the average 
+	 */
+	public final static Function<Iterable<Short>, Short> avg(RoundingMode roundingMode) {
         return new Avg(roundingMode);
     }
 
-    public final static Function<Short[], Short> maxArray() {
+    /**
+	 * <p>
+	 * It returns the maximum number from the input array
+	 * </p>
+	 * 
+	 * @return the maximum number
+	 */
+	public final static Function<Short[], Short> maxArray() {
         return MAX_ARRAY_FUNC;
     }
 
-    public final static Function<Short[], Short> minArray() {
+    /**
+	 * <p>
+	 * It returns the minimum number from the input array
+	 * </p>
+	 * 
+	 * @return the minimum number
+	 */
+	public final static Function<Short[], Short> minArray() {
         return MIN_ARRAY_FUNC;
     }
 
-    public final static Function<Short[], Short> sumArray() {
+    /**
+	 * <p>
+	 * It returns the sum of all the numbers in the input array
+	 * </p>
+	 * 
+	 * @return a number equal to the sum of all the elements in the input array
+	 */
+	public final static Function<Short[], Short> sumArray() {
         return SUM_ARRAY_FUNC;
     }
 
-    public final static Function<Short[], Short> avgArray() {
+    /**
+	 * <p>
+	 * It returns the average of all the numbers in the input array
+	 * </p>
+	 * 
+	 * @return a number representing the average of the input numbers
+	 */
+	public final static Function<Short[], Short> avgArray() {
         return AVG_ARRAY_FUNC;
     }
 
-    public final static Function<Short[], Short> avgArray(MathContext mathContext) {
+    /**
+	 * <p>
+	 * It returns the average of all the numbers in the input array. The
+	 * given {@link MathContext} will be used to round and set the output precision
+	 * </p>
+	 * 
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * of the average
+	 * 
+	 * @return a number representing the average 
+	 */
+	public final static Function<Short[], Short> avgArray(MathContext mathContext) {
         return new AvgArray(mathContext);
     }
 
-    public final static Function<Short[], Short> avgArray(RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It returns the average of all the numbers in the input array. The
+	 * given {@link RoundingMode} will be used to round the output
+	 * </p>
+	 * 
+	 * @param roundingMode the {@link RoundingMode} to round the average
+	 * 
+	 * @return a number representing the average 
+	 */
+	public final static Function<Short[], Short> avgArray(RoundingMode roundingMode) {
         return new AvgArray(roundingMode);
     }
 

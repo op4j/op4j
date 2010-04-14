@@ -1447,66 +1447,148 @@ public final class FnFloat {
     
     
     /**
-     * @return function that returns the maximum {@link Float} of an object
-     *         implementing {@link Iterable}
-     */
-    public final static Function<Iterable<Float>, Float> max() {
+	 * <p>
+	 * It returns the maximum number from an {@link Iterable} input object
+	 * </p>
+	 * 
+	 * @return the maximum number
+	 */
+	public final static Function<Iterable<Float>, Float> max() {
         return MAX_FUNC;
     }
 
     /**
-     * @return function that returns the minimum {@link Float} of an object
-     *         implementing {@link Iterable}
-     */
-    public final static Function<Iterable<Float>, Float> min() {
+	 * <p>
+	 * It returns the minimum number from an {@link Iterable} input object
+	 * </p>
+	 *
+	 * @return the minimum number
+	 */
+	public final static Function<Iterable<Float>, Float> min() {
         return MIN_FUNC;
     }
 
     /**
-     * @return function that returns the sum of the {@link Float} elements in an
-     *         object implementing {@link Iterable}
-     */
-    public final static Function<Iterable<Float>, Float> sum() {
+	 * <p>
+	 * It returns the sum of all the numbers in the {@link Iterable} input object
+	 * </p>
+	 * 
+	 * @return a number equal to the sum of all the elements in the input {@link Iterable}
+	 */
+	public final static Function<Iterable<Float>, Float> sum() {
         return SUM_FUNC;
     }
 
     /**
-     * @return function that returns the average of the {@link Float} elements
-     *         in an object implementing {@link Iterable}
-     */
-    public final static Function<Iterable<Float>, Float> avg() {
+	 * <p>
+	 * It returns the average of all the numbers in the {@link Iterable} input object
+	 * </p>
+	 * 
+	 * @return a number representing the average of the input numbers
+	 */
+	public final static Function<Iterable<Float>, Float> avg() {
         return AVG_FUNC;
     }
 
-    public final static Function<Iterable<Float>, Float> avg(MathContext mathContext) {
+    /**
+	 * <p>
+	 * It returns the average of all the numbers in the {@link Iterable} input object. The
+	 * given {@link MathContext} will be used to round and set the output precision
+	 * </p>
+	 * 
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * of the average
+	 * 
+	 * @return a number representing the average 
+	 */
+	public final static Function<Iterable<Float>, Float> avg(MathContext mathContext) {
         return new Avg(mathContext);
     }
 
-    public final static Function<Iterable<Float>, Float> avg(RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It returns the average of all the numbers in the {@link Iterable} input object. The
+	 * given {@link RoundingMode} will be used to round the output
+	 * </p>
+	 * 
+	 * @param roundingMode the {@link RoundingMode} to round the average
+	 * 
+	 * @return a number representing the average 
+	 */
+	public final static Function<Iterable<Float>, Float> avg(RoundingMode roundingMode) {
         return new Avg(roundingMode);
     }
 
-    public final static Function<Float[], Float> maxArray() {
+    /**
+	 * <p>
+	 * It returns the maximum number from the input array
+	 * </p>
+	 * 
+	 * @return the maximum number
+	 */
+	public final static Function<Float[], Float> maxArray() {
         return MAX_ARRAY_FUNC;
     }
 
-    public final static Function<Float[], Float> minArray() {
+    /**
+	 * <p>
+	 * It returns the minimum number from the input array
+	 * </p>
+	 * 
+	 * @return the minimum number
+	 */
+	public final static Function<Float[], Float> minArray() {
         return MIN_ARRAY_FUNC;
     }
 
-    public final static Function<Float[], Float> sumArray() {
+    /**
+	 * <p>
+	 * It returns the sum of all the numbers in the input array
+	 * </p>
+	 * 
+	 * @return a number equal to the sum of all the elements in the input array
+	 */
+	public final static Function<Float[], Float> sumArray() {
         return SUM_ARRAY_FUNC;
     }
 
-    public final static Function<Float[], Float> avgArray() {
+    /**
+	 * <p>
+	 * It returns the average of all the numbers in the input array
+	 * </p>
+	 * 
+	 * @return a number representing the average of the input numbers
+	 */
+	public final static Function<Float[], Float> avgArray() {
         return AVG_ARRAY_FUNC;
     }
 
-    public final static Function<Float[], Float> avgArray(MathContext mathContext) {
+    /**
+	 * <p>
+	 * It returns the average of all the numbers in the input array. The
+	 * given {@link MathContext} will be used to round and set the output precision
+	 * </p>
+	 * 
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * of the average
+	 * 
+	 * @return a number representing the average 
+	 */
+	public final static Function<Float[], Float> avgArray(MathContext mathContext) {
         return new AvgArray(mathContext);
     }
 
-    public final static Function<Float[], Float> avgArray(RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It returns the average of all the numbers in the input array. The
+	 * given {@link RoundingMode} will be used to round the output
+	 * </p>
+	 * 
+	 * @param roundingMode the {@link RoundingMode} to round the average
+	 * 
+	 * @return a number representing the average 
+	 */
+	public final static Function<Float[], Float> avgArray(RoundingMode roundingMode) {
         return new AvgArray(roundingMode);
     }
 
