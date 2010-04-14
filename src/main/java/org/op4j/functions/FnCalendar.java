@@ -58,70 +58,239 @@ public final class FnCalendar {
 	
 	
 
+	/**
+	 * <p>
+	 * Modifies a Calendar by adding a positive or negative amount to one of its
+	 * fields. 
+	 * </p>
+	 * <p>
+	 * Fields are specified by means of <tt>java.util.Calendar</tt> constants, like
+	 * <tt>FnCalendar.add(Calendar.DAY_OF_MONTH, 1)</tt>.
+	 * </p>
+	 * 
+	 * @param calendarField the field that will be modified (java.util.Calendar constant).
+	 * @param amount the positive or negative amount to be added
+	 * @return the modified Calendar
+	 */
 	public static final Function<Calendar,Calendar> add(final int calendarField, final int amount) {
         return new Add(calendarField, amount);
     }
+
 	
+    /**
+     * <p>
+     * Modifies a Calendar by adding a positive or negative amount to one the
+     * "day" property (<tt>java.util.Calendar.DATE</tt>). 
+     * </p>
+     * 
+     * @param amount the positive or negative amount to be added
+     * @return the modified Calendar
+     */
     public static final Function<Calendar,Calendar> addDays(final int amount) {
         return new Add(Calendar.DATE, amount);
     }
     
+
+    /**
+     * <p>
+     * Modifies a Calendar by adding a positive or negative amount to one the
+     * "hour" property (<tt>java.util.Calendar.HOUR</tt>). 
+     * </p>
+     * 
+     * @param amount the positive or negative amount to be added
+     * @return the modified Calendar
+     */
     public static final Function<Calendar,Calendar> addHours(final int amount) {
         return new Add(Calendar.HOUR, amount);
     }
+
     
+    /**
+     * <p>
+     * Modifies a Calendar by adding a positive or negative amount to one the
+     * "millisecond" property (<tt>java.util.Calendar.MILLISECOND</tt>). 
+     * </p>
+     * 
+     * @param amount the positive or negative amount to be added
+     * @return the modified Calendar
+     */
     public static final Function<Calendar,Calendar> addMilliseconds(final int amount) {
         return new Add(Calendar.MILLISECOND, amount);
     }
+
     
+    /**
+     * <p>
+     * Modifies a Calendar by adding a positive or negative amount to one the
+     * "minute" property (<tt>java.util.Calendar.MINUTE</tt>). 
+     * </p>
+     * 
+     * @param amount the positive or negative amount to be added
+     * @return the modified Calendar
+     */
     public static final Function<Calendar,Calendar> addMinutes(final int amount) {
         return new Add(Calendar.MINUTE, amount);
     }
+
     
+    /**
+     * <p>
+     * Modifies a Calendar by adding a positive or negative amount to one the
+     * "month" property (<tt>java.util.Calendar.MONTH</tt>). 
+     * </p>
+     * 
+     * @param amount the positive or negative amount to be added
+     * @return the modified Calendar
+     */
     public static final Function<Calendar,Calendar> addMonths(final int amount) {
         return new Add(Calendar.MONTH, amount);
     }
+
     
+    /**
+     * <p>
+     * Modifies a Calendar by adding a positive or negative amount to one the
+     * "week" property (<tt>java.util.Calendar.WEEK_OF_YEAR</tt>). 
+     * </p>
+     * 
+     * @param amount the positive or negative amount to be added
+     * @return the modified Calendar
+     */
     public static final Function<Calendar,Calendar> addWeeks(final int amount) {
         return new Add(Calendar.WEEK_OF_YEAR, amount);
     }
+
     
+    /**
+     * <p>
+     * Modifies a Calendar by adding a positive or negative amount to one the
+     * "year" property (<tt>java.util.Calendar.YEAR</tt>). 
+     * </p>
+     * 
+     * @param amount the positive or negative amount to be added
+     * @return the modified Calendar
+     */
     public static final Function<Calendar,Calendar> addYears(final int amount) {
         return new Add(Calendar.YEAR, amount);
     }
 
+    
+    /**
+     * <p>
+     * Modifies a Calendar by setting one of its to the specified value. 
+     * </p>
+     * <p>
+     * Fields are specified by means of <tt>java.util.Calendar</tt> constants, like
+     * <tt>FnCalendar.set(Calendar.DAY_OF_MONTH, 12)</tt>.
+     * </p>
+     * 
+     * @param calendarField the field that will be modified (java.util.Calendar constant).
+     * @param value the new value
+     * @return the modified Calendar
+     */
     public static final Function<Calendar,Calendar> set(final int calendarField, final int value) {
         return new Set(calendarField, value);
     }
     
+    
+    /**
+     * <p>
+     * Modifies a Calendar by setting the "day" property (<tt>java.util.Calendar.DATE</tt>)
+     * to the specified value. 
+     * </p>
+     * 
+     * @param value the new value for the property
+     * @return the modified Calendar
+     */
     public static final Function<Calendar,Calendar> setDay(final int value) {
         return new Set(Calendar.DATE, value);
     }
+
     
+    /**
+     * <p>
+     * Modifies a Calendar by setting the "hour" property (<tt>java.util.Calendar.HOUR</tt>)
+     * to the specified value. 
+     * </p>
+     * 
+     * @param value the new value for the property
+     * @return the modified Calendar
+     */
     public static final Function<Calendar,Calendar> setHour(final int value) {
         return new Set(Calendar.HOUR, value);
     }
+
     
+    /**
+     * <p>
+     * Modifies a Calendar by setting the "millisecond" property (<tt>java.util.Calendar.MILLISECOND</tt>)
+     * to the specified value. 
+     * </p>
+     * 
+     * @param value the new value for the property
+     * @return the modified Calendar
+     */
     public static final Function<Calendar,Calendar> setMillisecond(final int value) {
         return new Set(Calendar.MILLISECOND, value);
     }
+
     
+    /**
+     * <p>
+     * Modifies a Calendar by setting the "minute" property (<tt>java.util.Calendar.MINUTE</tt>)
+     * to the specified value. 
+     * </p>
+     * 
+     * @param value the new value for the property
+     * @return the modified Calendar
+     */
     public static final Function<Calendar,Calendar> setMinute(final int value) {
         return new Set(Calendar.MINUTE, value);
     }
+
     
+    /**
+     * <p>
+     * Modifies a Calendar by setting the "month" property (<tt>java.util.Calendar.MONTH</tt>)
+     * to the specified value. 
+     * </p>
+     * 
+     * @param value the new value for the property
+     * @return the modified Calendar
+     */
     public static final Function<Calendar,Calendar> setMonth(final int value) {
         return new Set(Calendar.MONTH, value);
     }
+
     
+    /**
+     * <p>
+     * Modifies a Calendar by setting the "week" property (<tt>java.util.Calendar.WEEK_OF_YEAR</tt>)
+     * to the specified value. 
+     * </p>
+     * 
+     * @param value the new value for the property
+     * @return the modified Calendar
+     */
     public static final Function<Calendar,Calendar> setWeek(final int value) {
         return new Set(Calendar.WEEK_OF_YEAR, value);
     }
+
     
+    /**
+     * <p>
+     * Modifies a Calendar by setting the "year" property (<tt>java.util.Calendar.YEAR</tt>)
+     * to the specified value. 
+     * </p>
+     * 
+     * @param value the new value for the property
+     * @return the modified Calendar
+     */
     public static final Function<Calendar,Calendar> setYear(final int value) {
         return new Set(Calendar.YEAR, value);
     }
 
+    
     public static final Function<Calendar,Calendar> round(final int calendarField) {
         return new Round(calendarField);
     }
