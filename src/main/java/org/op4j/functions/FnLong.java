@@ -1594,93 +1594,268 @@ public final class FnLong {
         return new AvgArray(roundingMode);
     }
 
-    public final static Function<Long, Long> abs() {
+    /**
+	 * <p>
+	 * It returns the absolute value of the input
+	 * </p>
+	 * 
+	 * @return the absolute value of the input
+	 */
+	public final static Function<Long, Long> abs() {
         return ABS_FUNC;
     }
 
-    public final static Function<Long, Long> add(Number add) {
+    /**
+	 * <p>
+	 * It adds the given number to the target and returns the result
+	 * </p>
+	 * 
+	 * @param add value to be added to the target
+	 * @return the result of the addition of add to the target number
+	 */
+	public final static Function<Long, Long> add(Number add) {
         return new Add(fromNumber(add));
     }
 
-    public final static Function<Long, Long> add(byte add) {
+    /**
+	 * <p>
+	 * It adds the given number to the target and returns the result
+	 * </p>
+	 * 
+	 * @param add value to be added to the target
+	 * @return the result of the addition of add to the target number
+	 */
+	public final static Function<Long, Long> add(byte add) {
         return add(Byte.valueOf(add));
     }
 
-    public final static Function<Long, Long> add(short add) {
+    /**
+	 * <p>
+	 * It adds the given number to the target and returns the result
+	 * </p>
+	 * 
+	 * @param add value to be added to the target
+	 * @return the result of the addition of add to the target number
+	 */
+	public final static Function<Long, Long> add(short add) {
         return add(Short.valueOf(add));
     }
 
-    public final static Function<Long, Long> add(int add) {
+    /**
+	 * <p>
+	 * It adds the given number to the target and returns the result
+	 * </p>
+	 * 
+	 * @param add value to be added to the target
+	 * @return the result of the addition of add to the target number
+	 */
+	public final static Function<Long, Long> add(int add) {
         return add(Integer.valueOf(add));
     }
 
-    public final static Function<Long, Long> add(long add) {
+    /**
+	 * <p>
+	 * It adds the given number to the target and returns the result
+	 * </p>
+	 * 
+	 * @param add value to be added to the target
+	 * @return the result of the addition of add to the target number
+	 */
+	public final static Function<Long, Long> add(long add) {
         return add(Long.valueOf(add));
     }
 
-    public final static Function<Long, Long> add(float add) {
+    /**
+	 * <p>
+	 * It adds the given number to the target and returns the result
+	 * </p>
+	 * 
+	 * @param add value to be added to the target
+	 * @return the result of the addition of add to the target number
+	 */
+	public final static Function<Long, Long> add(float add) {
         return add(Float.valueOf(add));
     }
 
-    public final static Function<Long, Long> add(double add) {
+    /**
+	 * <p>
+	 * It adds the given number to the target and returns the result
+	 * </p>
+	 * 
+	 * @param add value to be added to the target
+	 * @return the result of the addition of add to the target number
+	 */
+	public final static Function<Long, Long> add(double add) {
         return add(Double.valueOf(add));
     }
 
 
-    public final static Function<Long, Long> subtract(Number subtract) {
+    /**
+	 * <p>
+	 * It subtracts the given number from the target and returns the result
+	 * </p>
+	 * 
+	 * @param subtract number to be subtracted from the target
+	 * @return the result of the subtraction
+	 */
+	public final static Function<Long, Long> subtract(Number subtract) {
         return new Subtract(fromNumber(subtract));
     }
 
-    public final static Function<Long, Long> subtract(byte subtract) {
+    /**
+	 * <p>
+	 * It subtracts the given number from the target and returns the result
+	 * </p>
+	 * 
+	 * @param subtract number to be subtracted from the target
+	 * @return the result of the subtraction
+	 */
+	public final static Function<Long, Long> subtract(byte subtract) {
         return subtract(Byte.valueOf(subtract));
     }
 
-    public final static Function<Long, Long> subtract(short subtract) {
+    /**
+	 * <p>
+	 * It subtracts the given number from the target and returns the result
+	 * </p>
+	 * 
+	 * @param subtract number to be subtracted from the target
+	 * @return the result of the subtraction
+	 */
+	public final static Function<Long, Long> subtract(short subtract) {
         return subtract(Short.valueOf(subtract));
     }
 
-    public final static Function<Long, Long> subtract(int subtract) {
+    /**
+	 * <p>
+	 * It subtracts the given number from the target and returns the result
+	 * </p>
+	 * 
+	 * @param subtract number to be subtracted from the target
+	 * @return the result of the subtraction
+	 */
+	public final static Function<Long, Long> subtract(int subtract) {
         return subtract(Integer.valueOf(subtract));
     }
 
-    public final static Function<Long, Long> subtract(long subtract) {
+    /**
+	 * <p>
+	 * It subtracts the given number from the target and returns the result
+	 * </p>
+	 * 
+	 * @param subtract number to be subtracted from the target
+	 * @return the result of the subtraction
+	 */
+	public final static Function<Long, Long> subtract(long subtract) {
         return subtract(Long.valueOf(subtract));
     }
 
-    public final static Function<Long, Long> subtract(float subtract) {
+    /**
+	 * <p>
+	 * It subtracts the given number from the target and returns the result
+	 * </p>
+	 * 
+	 * @param subtract number to be subtracted from the target
+	 * @return the result of the subtraction
+	 */
+	public final static Function<Long, Long> subtract(float subtract) {
         return subtract(Float.valueOf(subtract));
     }
 
-    public final static Function<Long, Long> subtract(double subtract) {
+    /**
+	 * <p>
+	 * It subtracts the given number from the target and returns the result
+	 * </p>
+	 * 
+	 * @param subtract number to be subtracted from the target
+	 * @return the result of the subtraction
+	 */
+	public final static Function<Long, Long> subtract(double subtract) {
         return subtract(Double.valueOf(subtract));
     }
 
 
-    public final static Function<Long, Long> divideBy(Number divisor) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Long, Long> divideBy(Number divisor) {
         return new Divide(fromNumber(divisor));
     }
 
-    public final static Function<Long, Long> divideBy(byte divisor) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Long, Long> divideBy(byte divisor) {
         return divideBy(Byte.valueOf(divisor));
     }
 
-    public final static Function<Long, Long> divideBy(short divisor) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Long, Long> divideBy(short divisor) {
         return divideBy(Short.valueOf(divisor));
     }
 
-    public final static Function<Long, Long> divideBy(int divisor) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Long, Long> divideBy(int divisor) {
         return divideBy(Integer.valueOf(divisor));
     }
 
-    public final static Function<Long, Long> divideBy(long divisor) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Long, Long> divideBy(long divisor) {
         return divideBy(Long.valueOf(divisor));
     }
 
-    public final static Function<Long, Long> divideBy(float divisor) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Long, Long> divideBy(float divisor) {
         return divideBy(Float.valueOf(divisor));
     }
 
-    public final static Function<Long, Long> divideBy(double divisor) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Long, Long> divideBy(double divisor) {
         return divideBy(Double.valueOf(divisor));
     }
 

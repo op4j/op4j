@@ -2032,92 +2032,267 @@ public final class FnBigDecimal {
         return new Round(roundingMode);
     }
 
+    /**
+     * <p>
+     * It returns the absolute value of the input
+     * </p>
+     * 
+     * @return the absolute value of the input
+     */
     public final static Function<BigDecimal, BigDecimal> abs() {
         return ABS_FUNC;
     }
 
+    /**
+     * <p>
+     * It adds the given number to the target and returns the result
+     * </p>
+     * 
+     * @param add value to be added to the target
+     * @return the result of the addition of add to the target number
+     */
     public final static Function<BigDecimal, BigDecimal> add(Number add) {
         return new Add(fromNumber(add));
     }
 
+    /**
+     * <p>
+     * It adds the given number to the target and returns the result
+     * </p>
+     * 
+     * @param add value to be added to the target
+     * @return the result of the addition of add to the target number
+     */
     public final static Function<BigDecimal, BigDecimal> add(byte add) {
         return add(Byte.valueOf(add));
     }
 
+    /**
+     * <p>
+     * It adds the given number to the target and returns the result
+     * </p>
+     * 
+     * @param add value to be added to the target
+     * @return the result of the addition of add to the target number
+     */
     public final static Function<BigDecimal, BigDecimal> add(short add) {
         return add(Short.valueOf(add));
     }
 
+    /**
+     * <p>
+     * It adds the given number to the target and returns the result
+     * </p>
+     * 
+     * @param add value to be added to the target
+     * @return the result of the addition of add to the target number
+     */
     public final static Function<BigDecimal, BigDecimal> add(int add) {
         return add(Integer.valueOf(add));
     }
 
+    /**
+     * <p>
+     * It adds the given number to the target and returns the result
+     * </p>
+     * 
+     * @param add value to be added to the target
+     * @return the result of the addition of add to the target number
+     */
     public final static Function<BigDecimal, BigDecimal> add(long add) {
         return add(Long.valueOf(add));
     }
 
+    /**
+     * <p>
+     * It adds the given number to the target and returns the result
+     * </p>
+     * 
+     * @param add value to be added to the target
+     * @return the result of the addition of add to the target number
+     */
     public final static Function<BigDecimal, BigDecimal> add(float add) {
         return add(Float.valueOf(add));
     }
 
+    /**
+     * <p>
+     * It adds the given number to the target and returns the result
+     * </p>
+     * 
+     * @param add value to be added to the target
+     * @return the result of the addition of add to the target number
+     */
     public final static Function<BigDecimal, BigDecimal> add(double add) {
         return add(Double.valueOf(add));
     }
 
 
+    /**
+     * <p>
+     * It subtracts the given number from the target and returns the result
+     * </p>
+     * 
+     * @param subtract number to be subtracted from the target
+     * @return the result of the subtraction
+     */
     public final static Function<BigDecimal, BigDecimal> subtract(Number subtract) {
         return new Subtract(fromNumber(subtract));
     }
 
+    /**
+     * <p>
+     * It subtracts the given number from the target and returns the result
+     * </p>
+     * 
+     * @param subtract number to be subtracted from the target
+     * @return the result of the subtraction
+     */
     public final static Function<BigDecimal, BigDecimal> subtract(byte subtract) {
         return subtract(Byte.valueOf(subtract));
     }
 
+    /**
+     * <p>
+     * It subtracts the given number from the target and returns the result
+     * </p>
+     * 
+     * @param subtract number to be subtracted from the target
+     * @return the result of the subtraction
+     */
     public final static Function<BigDecimal, BigDecimal> subtract(short subtract) {
         return subtract(Short.valueOf(subtract));
     }
 
+    /**
+     * <p>
+     * It subtracts the given number from the target and returns the result
+     * </p>
+     * 
+     * @param subtract number to be subtracted from the target
+     * @return the result of the subtraction
+     */
     public final static Function<BigDecimal, BigDecimal> subtract(int subtract) {
         return subtract(Integer.valueOf(subtract));
     }
 
+    /**
+     * <p>
+     * It subtracts the given number from the target and returns the result
+     * </p>
+     * 
+     * @param subtract number to be subtracted from the target
+     * @return the result of the subtraction
+     */
     public final static Function<BigDecimal, BigDecimal> subtract(long subtract) {
         return subtract(Long.valueOf(subtract));
     }
 
+    /**
+     * <p>
+     * It subtracts the given number from the target and returns the result
+     * </p>
+     * 
+     * @param subtract number to be subtracted from the target
+     * @return the result of the subtraction
+     */
     public final static Function<BigDecimal, BigDecimal> subtract(float subtract) {
         return subtract(Float.valueOf(subtract));
     }
 
+    /**
+     * <p>
+     * It subtracts the given number from the target and returns the result
+     * </p>
+     * 
+     * @param subtract number to be subtracted from the target
+     * @return the result of the subtraction
+     */
     public final static Function<BigDecimal, BigDecimal> subtract(double subtract) {
         return subtract(Double.valueOf(subtract));
     }
 
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(Number divisor) {
         return new Divide(fromNumber(divisor));
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(byte divisor) {
         return divideBy(Byte.valueOf(divisor));
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(short divisor) {
         return divideBy(Short.valueOf(divisor));
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(int divisor) {
         return divideBy(Integer.valueOf(divisor));
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(long divisor) {
         return divideBy(Long.valueOf(divisor));
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(float divisor) {
         return divideBy(Float.valueOf(divisor));
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(double divisor) {
         return divideBy(Double.valueOf(divisor));
     }
