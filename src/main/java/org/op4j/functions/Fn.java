@@ -1005,7 +1005,20 @@ public final class Fn {
 
     
     
-    
+    /**
+     * <p>
+     * Creates a <i>function expression</i> for building a function operating on
+     * a target object of type ValuePair&lt;L,R&gt;.
+     * </p>
+     * <p>
+     * These functions receiving a {@link ValuePair} are mainly meant to be used
+     * in <i>reduction</i> operations. 
+     * </p>
+     * 
+     * @param leftType type of the left part of the value pair
+     * @param rightType type of the right part of the value pair
+     * @return an operator, ready for chaining
+     */
     @SuppressWarnings("unchecked")
     public static <L,R> Level0GenericUniqOperator<ValuePair<L,R>,ValuePair<L,R>> onValuePairOf(final Type<L> leftType, final Type<R> rightType) {
         return on((Type<ValuePair<L,R>>)(Type<?>)Types.forClass(ValuePair.class, TypeParameters.forType(leftType), TypeParameters.forType(rightType)));
@@ -1020,20 +1033,57 @@ public final class Fn {
     
     
     
+    /**
+     * <p>
+     * Creates a <i>function expression</i> for building a function operating on
+     * a target object of type T[].
+     * </p>
+     * 
+     * @param type the type to be used
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<T[],T> on(final Type<T[]> type) {
         return onArrayOf(Types.arrayComponentOf(type));
     }
+
     
+    /**
+     * <p>
+     * Creates a <i>function expression</i> for building a function operating on
+     * a target object of type List&lt;T&gt;.
+     * </p>
+     * 
+     * @param type the type to be used
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ListOperator<List<T>,T> on(final Type<List<T>> type) {
         return onListOf(Types.listComponentOf(type));
     }
 
     
+    /**
+     * <p>
+     * Creates a <i>function expression</i> for building a function operating on
+     * a target object of type Map&lt;K,V&gt;.
+     * </p>
+     * 
+     * @param type the type to be used
+     * @return an operator, ready for chaining
+     */
     public static <K,V> Level0MapOperator<Map<K,V>,K,V> on(final Type<Map<K,V>> type) {
         return onMapOf(Types.mapKeyComponentOf(type), Types.mapValueComponentOf(type));
     }
 
     
+    /**
+     * <p>
+     * Creates a <i>function expression</i> for building a function operating on
+     * a target object of type Set&lt;T&gt;.
+     * </p>
+     * 
+     * @param type the type to be used
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0SetOperator<Set<T>,T> on(final Type<Set<T>> type) {
         return onSetOf(Types.setComponentOf(type));
     }
@@ -1046,21 +1096,75 @@ public final class Fn {
     
     
     
+    /**
+     * <p>
+     * Creates a <i>function expression</i> for building a function operating on
+     * a target object of type T[], being <tt>Type&lt;T&gt;</tt> a type specified 
+     * as a parameter.
+     * </p>
+     * <p>
+     * This is equivalent to <tt>Fn.on(Types.arrayOf(type))</tt>
+     * </p>
+     * 
+     * @param type the type to be used
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<T[],T> onArrayOf(final Type<T> type) {
         return new Level0ArrayOperator<T[],T>(type, ExecutionTarget.forFn(Normalisation.ARRAY(type.getRawClass())));
     }
 
     
+    /**
+     * <p>
+     * Creates a <i>function expression</i> for building a function operating on
+     * a target object of type List&lt;T&gt;, being <tt>Type&lt;T&gt;</tt> a type specified 
+     * as a parameter.
+     * </p>
+     * <p>
+     * This is equivalent to <tt>Fn.on(Types.listOf(type))</tt>
+     * </p>
+     * 
+     * @param type the type to be used
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ListOperator<List<T>,T> onListOf(final Type<T> type) {
         return new Level0ListOperator<List<T>,T>(ExecutionTarget.forFn(Normalisation.LIST));
     }
 
     
+    /**
+     * <p>
+     * Creates a <i>function expression</i> for building a function operating on
+     * a target object of type Map&lt;K,V&gt;, being both 
+     * <tt>Type&lt;K&gt;</tt> and <tt>Type&lt;V&gt;</tt> type specified 
+     * as parameters.
+     * </p>
+     * <p>
+     * This is equivalent to <tt>Fn.on(Types.mapOf(keyType, valueType))</tt>
+     * </p>
+     * 
+     * @param keyType the type to be used for keys
+     * @param valueType the type to be used for values
+     * @return an operator, ready for chaining
+     */
     public static <K,V> Level0MapOperator<Map<K,V>,K,V> onMapOf(final Type<K> keyType, Type<V> valueType) {
         return new Level0MapOperator<Map<K,V>,K,V>(ExecutionTarget.forFn(Normalisation.MAP));
     }
 
     
+    /**
+     * <p>
+     * Creates a <i>function expression</i> for building a function operating on
+     * a target object of type Set&lt;T&gt;, being <tt>Type&lt;T&gt;</tt> a type specified 
+     * as a parameter.
+     * </p>
+     * <p>
+     * This is equivalent to <tt>Fn.on(Types.setOf(type))</tt>
+     * </p>
+     *
+     * @param type the type to be used
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0SetOperator<Set<T>,T> onSetOf(final Type<T> type) {
         return new Level0SetOperator<Set<T>,T>(ExecutionTarget.forFn(Normalisation.SET));
     }
