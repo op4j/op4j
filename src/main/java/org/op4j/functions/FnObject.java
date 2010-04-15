@@ -2165,6 +2165,14 @@ public final class FnObject {
 
     
     
+    /**
+     * <p>
+     * Replaces the target object with the object specified as a parameter.
+     * </p>
+     * 
+     * @param object the replacement object
+     * @return the replacement object
+     */
     public static final <T> Function<Object,T> replaceWith(final T object) {
         return new ReplaceWith<T>(object);
     }
