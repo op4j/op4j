@@ -68,10 +68,29 @@ public final class Op {
     
     
     
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0GenericUniqOperator<T,T> on(final T target) {
         return new Level0GenericUniqOperator<T,T>(ExecutionTarget.forOp(target, Normalisation.NONE));
     }
+
     
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object, specifying the
+     * target type by means of the <tt>type</tt> parameter.
+     * </p>
+     * 
+     * @param type the type of the target object (input type for the expression)
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0GenericUniqOperator<T,T> on(final Type<T> type, final T target) {
         return new Level0GenericUniqOperator<T,T>(ExecutionTarget.forOp(target, Normalisation.NONE));
     }
@@ -79,103 +98,328 @@ public final class Op {
     
     
     
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0IndefiniteArrayOperator<T[],T> on(final T[] target) {
         return onArray(target);
     }
+
     
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object, specifying the
+     * target type by means of the <tt>type</tt> parameter.
+     * </p>
+     * 
+     * @param type the type of the target object (input type for the expression)
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<T[],T> on(final Type<T[]> type, final T[] target) {
         return onArrayOf(Types.arrayComponentOf(type), target);
     }
 
     
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Byte[],Byte> on(final byte[] target) {
         return onArrayOf(Types.BYTE, ArrayUtils.toObject(target));
     }
 
+
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Short[],Short> on(final short[] target) {
         return onArrayOf(Types.SHORT, ArrayUtils.toObject(target));
     }
 
+
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Integer[],Integer> on(final int[] target) {
         return onArrayOf(Types.INTEGER, ArrayUtils.toObject(target));
     }
 
+
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Long[],Long> on(final long[] target) {
         return onArrayOf(Types.LONG, ArrayUtils.toObject(target));
     }
 
+
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Float[],Float> on(final float[] target) {
         return onArrayOf(Types.FLOAT, ArrayUtils.toObject(target));
     }
 
+
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Double[],Double> on(final double[] target) {
         return onArrayOf(Types.DOUBLE, ArrayUtils.toObject(target));
     }
 
+
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Character[],Character> on(final char[] target) {
         return onArrayOf(Types.CHARACTER, ArrayUtils.toObject(target));
     }
 
+    
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Boolean[],Boolean> on(final boolean[] target) {
         return onArrayOf(Types.BOOLEAN, ArrayUtils.toObject(target));
     }
     
+
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Byte[],Byte> on(final Byte[] target) {
         return onArrayOf(Types.BYTE, target);
     }
 
+
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Short[],Short> on(final Short[] target) {
         return onArrayOf(Types.SHORT, target);
     }
 
+
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Integer[],Integer> on(final Integer[] target) {
         return onArrayOf(Types.INTEGER, target);
     }
 
+
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Long[],Long> on(final Long[] target) {
         return onArrayOf(Types.LONG, target);
     }
 
+
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Float[],Float> on(final Float[] target) {
         return onArrayOf(Types.FLOAT, target);
     }
 
+
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Double[],Double> on(final Double[] target) {
         return onArrayOf(Types.DOUBLE, target);
     }
 
+    
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Character[],Character> on(final Character[] target) {
         return onArrayOf(Types.CHARACTER, target);
     }
 
+    
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Boolean[],Boolean> on(final Boolean[] target) {
         return onArrayOf(Types.BOOLEAN, target);
     }
 
+
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<String[],String> on(final String[] target) {
         return onArrayOf(Types.STRING, target);
     }
 
+
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<BigInteger[],BigInteger> on(final BigInteger[] target) {
         return onArrayOf(Types.BIG_INTEGER, target);
     }
 
+    
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<BigDecimal[],BigDecimal> on(final BigDecimal[] target) {
         return onArrayOf(Types.BIG_DECIMAL, target);
     }
 
+
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Calendar[],Calendar> on(final Calendar[] target) {
         return onArrayOf(Types.CALENDAR, target);
     }
 
+
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Date[],Date> on(final Date[] target) {
         return onArrayOf(Types.DATE, target);
     }
 
+
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<java.sql.Date[],java.sql.Date> on(final java.sql.Date[] target) {
         return onArrayOf(Types.forClass(java.sql.Date.class), target);
     }
 
+    
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ArrayOperator<Timestamp[],Timestamp> on(final Timestamp[] target) {
         return onArrayOf(Types.forClass(Timestamp.class), target);
     }
@@ -183,30 +427,88 @@ public final class Op {
     
     
     
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ListOperator<List<T>,T> on(final List<T> target) {
         return onList(target);
     }
     
+
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object, specifying the
+     * target type by means of the <tt>type</tt> parameter.
+     * </p>
+     * 
+     * @param type the type of the target object (input type for the expression)
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0ListOperator<List<T>,T> on(final Type<List<T>> type, final List<? extends T> target) {
         return onListOf(Types.listComponentOf(type),target);
     }
 
     
     
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <K,V> Level0MapOperator<Map<K,V>,K,V> on(final Map<K,V> target) {
         return onMap(target);
     }
+
     
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object, specifying the
+     * target map key and value types by means of the <tt>keyType</tt> and <tt>valueType</tt> 
+     * parameters.
+     * </p>
+     * 
+     * @param keyType the type of the map keys
+     * @param valueType the type of the map values
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <K,V> Level0MapOperator<Map<K,V>,K,V> on(final Type<K> keyType, final Type<V> valueType, final Map<K,V> target) {
         return onMapOf(keyType, valueType, target);
     }
 
     
     
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object.
+     * </p>
+     * 
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0SetOperator<Set<T>,T> on(final Set<T> target) {
         return onSet(target);
     }
     
+    /**
+     * <p>
+     * Creates an <i>operation expression</i> on the specified target object, specifying the
+     * target type by means of the <tt>type</tt> parameter.
+     * </p>
+     * 
+     * @param type the type of the target object (input type for the expression)
+     * @param target the target object on which the expression will execute
+     * @return an operator, ready for chaining
+     */
     public static <T> Level0SetOperator<Set<T>,T> on(final Type<Set<T>> type, final Set<? extends T> target) {
         return onSetOf(Types.setComponentOf(type),target);
     }
