@@ -2901,15 +2901,43 @@ public final class FnDouble {
     }
 
 
-    public final static Function<Double, Double> pow(int power) {
+    /**
+	 * <p>
+	 * It performs the operation target<sup>power</sup> and returns its value
+	 * </p>
+	 * 
+	 * @param power the power to raise the target to
+	 * @return the result of target<sup>power</sup>
+	 */
+	public final static Function<Double, Double> pow(int power) {
         return new Pow(power);
     }
 
-    public final static Function<Double, Double> pow(int power, MathContext mathContext) {
+    /**
+	 * <p>
+	 * It performs the operation target<sup>power</sup> and returns its value. The result
+	 * precision and rounding mode is specified by the given {@link MathContext}
+	 * </p>
+	 * 
+	 * @param power the power to raise the target to
+	 * @param mathContext the {@link MathContext} to specify precision and {@link RoundingMode}
+	 * @return the result of target<sup>power</sup>
+	 */
+	public final static Function<Double, Double> pow(int power, MathContext mathContext) {
         return new Pow(power, mathContext);
     }
 
-    public final static Function<Double, Double> pow(int power, RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It performs the operation target<sup>power</sup> and returns its value. The result
+	 * rounding mode is specified by the given {@link RoundingMode}
+	 * </p>
+	 * 
+	 * @param power the power to raise the target to
+	 * @param roundingMode the {@link RoundingMode} 
+	 * @return the result of target<sup>power</sup>
+	 */
+	public final static Function<Double, Double> pow(int power, RoundingMode roundingMode) {
         return new Pow(power, roundingMode);
     }	
 	

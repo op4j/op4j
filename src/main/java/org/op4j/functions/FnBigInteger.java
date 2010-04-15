@@ -1835,7 +1835,15 @@ public final class FnBigInteger {
     }
 
 
-    public final static Function<BigInteger, BigInteger> pow(int power) {
+    /**
+	 * <p>
+	 * It performs the operation target<sup>power</sup> and returns its value
+	 * </p>
+	 * 
+	 * @param power the power to raise the target to
+	 * @return the result of target<sup>power</sup>
+	 */
+	public final static Function<BigInteger, BigInteger> pow(int power) {
         return new Pow(power);
     }	
 	
