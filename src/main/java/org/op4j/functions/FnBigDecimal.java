@@ -2298,59 +2298,198 @@ public final class FnBigDecimal {
     }
 
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result with the
+     * precision and rounding mode specified by mathContext
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(Number divisor, MathContext mathContext) {
         return new Divide(fromNumber(divisor), mathContext);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result with the
+     * precision and rounding mode specified by mathContext
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(byte divisor, MathContext mathContext) {
         return divideBy(Byte.valueOf(divisor), mathContext);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result with the
+     * precision and rounding mode specified by mathContext
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(short divisor, MathContext mathContext) {
         return divideBy(Short.valueOf(divisor), mathContext);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result with the
+     * precision and rounding mode specified by mathContext
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(int divisor, MathContext mathContext) {
         return divideBy(Integer.valueOf(divisor), mathContext);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result with the
+     * precision and rounding mode specified by mathContext
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(long divisor, MathContext mathContext) {
         return divideBy(Long.valueOf(divisor), mathContext);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result with the
+     * precision and rounding mode specified by mathContext
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(float divisor, MathContext mathContext) {
         return divideBy(Float.valueOf(divisor), mathContext);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result with the
+     * precision and rounding mode specified by mathContext
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(double divisor, MathContext mathContext) {
         return divideBy(Double.valueOf(divisor), mathContext);
     }
 
-
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result rounded
+     * based on the specified rounding mode
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param roundingMode the {@link RoundingMode} 
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(Number divisor, RoundingMode roundingMode) {
         return new Divide(fromNumber(divisor), roundingMode);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result rounded
+     * based on the specified rounding mode
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param roundingMode the {@link RoundingMode} 
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(byte divisor, RoundingMode roundingMode) {
         return divideBy(Byte.valueOf(divisor), roundingMode);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result rounded
+     * based on the specified rounding mode
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param roundingMode the {@link RoundingMode} 
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(short divisor, RoundingMode roundingMode) {
         return divideBy(Short.valueOf(divisor), roundingMode);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result rounded
+     * based on the specified rounding mode
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param roundingMode the {@link RoundingMode} 
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(int divisor, RoundingMode roundingMode) {
         return divideBy(Integer.valueOf(divisor), roundingMode);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result rounded
+     * based on the specified rounding mode
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param roundingMode the {@link RoundingMode} 
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(long divisor, RoundingMode roundingMode) {
         return divideBy(Long.valueOf(divisor), roundingMode);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result rounded
+     * based on the specified rounding mode
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param roundingMode the {@link RoundingMode} 
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(float divisor, RoundingMode roundingMode) {
         return divideBy(Float.valueOf(divisor), roundingMode);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns its result rounded
+     * based on the specified rounding mode
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param roundingMode the {@link RoundingMode} 
+     * @return the result of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> divideBy(double divisor, RoundingMode roundingMode) {
         return divideBy(Double.valueOf(divisor), roundingMode);
     }

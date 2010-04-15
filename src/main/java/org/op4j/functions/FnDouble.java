@@ -2423,60 +2423,200 @@ public final class FnDouble {
     }
 
 
-    public final static Function<Double, Double> divideBy(Number divisor, MathContext mathContext) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result with the
+	 * precision and rounding mode specified by mathContext
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Double, Double> divideBy(Number divisor, MathContext mathContext) {
         return new Divide(fromNumber(divisor), mathContext);
     }
 
-    public final static Function<Double, Double> divideBy(byte divisor, MathContext mathContext) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result with the
+	 * precision and rounding mode specified by mathContext
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Double, Double> divideBy(byte divisor, MathContext mathContext) {
         return divideBy(Byte.valueOf(divisor), mathContext);
     }
 
-    public final static Function<Double, Double> divideBy(short divisor, MathContext mathContext) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result with the
+	 * precision and rounding mode specified by mathContext
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Double, Double> divideBy(short divisor, MathContext mathContext) {
         return divideBy(Short.valueOf(divisor), mathContext);
     }
 
-    public final static Function<Double, Double> divideBy(int divisor, MathContext mathContext) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result with the
+	 * precision and rounding mode specified by mathContext
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Double, Double> divideBy(int divisor, MathContext mathContext) {
         return divideBy(Integer.valueOf(divisor), mathContext);
     }
 
-    public final static Function<Double, Double> divideBy(long divisor, MathContext mathContext) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result with the
+	 * precision and rounding mode specified by mathContext
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Double, Double> divideBy(long divisor, MathContext mathContext) {
         return divideBy(Long.valueOf(divisor), mathContext);
     }
 
-    public final static Function<Double, Double> divideBy(float divisor, MathContext mathContext) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result with the
+	 * precision and rounding mode specified by mathContext
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Double, Double> divideBy(float divisor, MathContext mathContext) {
         return divideBy(Float.valueOf(divisor), mathContext);
     }
 
-    public final static Function<Double, Double> divideBy(double divisor, MathContext mathContext) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result with the
+	 * precision and rounding mode specified by mathContext
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Double, Double> divideBy(double divisor, MathContext mathContext) {
         return divideBy(Double.valueOf(divisor), mathContext);
     }
 
 
-    public final static Function<Double, Double> divideBy(Number divisor, RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result rounded
+	 * based on the specified rounding mode
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @param roundingMode the {@link RoundingMode} 
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Double, Double> divideBy(Number divisor, RoundingMode roundingMode) {
         return new Divide(fromNumber(divisor), roundingMode);
     }
 
-    public final static Function<Double, Double> divideBy(byte divisor, RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result rounded
+	 * based on the specified rounding mode
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @param roundingMode the {@link RoundingMode} 
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Double, Double> divideBy(byte divisor, RoundingMode roundingMode) {
         return divideBy(Byte.valueOf(divisor), roundingMode);
     }
 
-    public final static Function<Double, Double> divideBy(short divisor, RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result rounded
+	 * based on the specified rounding mode
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @param roundingMode the {@link RoundingMode} 
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Double, Double> divideBy(short divisor, RoundingMode roundingMode) {
         return divideBy(Short.valueOf(divisor), roundingMode);
     }
 
-    public final static Function<Double, Double> divideBy(int divisor, RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result rounded
+	 * based on the specified rounding mode
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @param roundingMode the {@link RoundingMode} 
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Double, Double> divideBy(int divisor, RoundingMode roundingMode) {
         return divideBy(Integer.valueOf(divisor), roundingMode);
     }
 
-    public final static Function<Double, Double> divideBy(long divisor, RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result rounded
+	 * based on the specified rounding mode
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @param roundingMode the {@link RoundingMode} 
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Double, Double> divideBy(long divisor, RoundingMode roundingMode) {
         return divideBy(Long.valueOf(divisor), roundingMode);
     }
 
-    public final static Function<Double, Double> divideBy(float divisor, RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result rounded
+	 * based on the specified rounding mode
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @param roundingMode the {@link RoundingMode} 
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Double, Double> divideBy(float divisor, RoundingMode roundingMode) {
         return divideBy(Float.valueOf(divisor), roundingMode);
     }
 
-    public final static Function<Double, Double> divideBy(double divisor, RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns its result rounded
+	 * based on the specified rounding mode
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @param roundingMode the {@link RoundingMode} 
+	 * @return the result of target/divisor
+	 */
+	public final static Function<Double, Double> divideBy(double divisor, RoundingMode roundingMode) {
         return divideBy(Double.valueOf(divisor), roundingMode);
     }
 
